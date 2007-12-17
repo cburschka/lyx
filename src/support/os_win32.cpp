@@ -16,7 +16,9 @@
 
 #include "support/os.h"
 #include "support/os_win32.h"
+
 #include "support/debug.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

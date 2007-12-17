@@ -29,6 +29,7 @@
 #include "frontends/alert.h"
 
 #include "support/lstrings.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/os.h"
 

@@ -14,6 +14,7 @@
 
 #include "support/os.h"
 #include "support/docstring.h"
+#include "support/FileName.h"
 
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>

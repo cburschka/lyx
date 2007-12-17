@@ -55,11 +55,11 @@ void LastFilesSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !absolutePath(tmp))
+		FileName const file(tmp);
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !file.isAbsolute())
 			continue;
 
 		// read lastfiles
-		FileName const file(tmp);
 		if (file.exists() && !file.isDirectory()
 		    && lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(file);
@@ -109,10 +109,10 @@ void LastOpenedSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !absolutePath(tmp))
+		FileName const file(tmp);
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !file.isAbsolute())
 			continue;
 
-		FileName const file(tmp);
 		if (file.exists() && !file.isDirectory())
 			lastopened.push_back(file);
 		else

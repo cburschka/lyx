@@ -22,6 +22,7 @@
 #include "LyXRC.h"
 #include "Text.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/convert.h"

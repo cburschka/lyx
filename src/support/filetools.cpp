@@ -486,13 +486,6 @@ string const onlyFilename(string const & fname)
 }
 
 
-/// Returns true is path is absolute
-bool absolutePath(string const & path)
-{
-	return FileName(path).isAbsolute();
-}
-
-
 // Create absolute path. If impossible, don't do anything
 // Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
 string const expandPath(string const & path)

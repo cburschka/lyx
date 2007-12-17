@@ -17,6 +17,7 @@
 #include "MathParser.h"
 #include "support/debug.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h" //  LibFileSearch
 #include "support/docstream.h"
 

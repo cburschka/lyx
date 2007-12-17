@@ -16,6 +16,7 @@
 #include "support/debug.h"
 #include "Lexer.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

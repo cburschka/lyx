@@ -29,6 +29,7 @@
 #include "TextClass.h"
 
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 
 using namespace std;

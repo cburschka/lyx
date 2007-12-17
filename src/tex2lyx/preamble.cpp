@@ -18,7 +18,9 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
+
 #include "support/convert.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

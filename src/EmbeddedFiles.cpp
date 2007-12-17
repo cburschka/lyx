@@ -343,7 +343,7 @@ string const EmbeddedFiles::getInzipName(string const & abs_filename, string con
 	// if inzip_name is an absolute path, use filename only to avoid
 	// leaking of filesystem information in inzip_name
 	// The second case covers cases '../path/file' and '.'
-	if (absolutePath(inzip_name) || prefixIs(inzip_name, "."))
+	if (FileName(inzip_name).isAbsolute() || prefixIs(inzip_name, "."))
 		inzip_name = onlyFilename(abs_filename);
 	// if this name has been used...
 	// use _1_name, _2_name etc

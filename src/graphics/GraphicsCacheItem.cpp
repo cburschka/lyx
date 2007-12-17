@@ -20,6 +20,7 @@
 #include "support/debug.h"
 #include "Format.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
 

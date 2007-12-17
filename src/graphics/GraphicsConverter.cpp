@@ -17,6 +17,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"

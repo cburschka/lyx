@@ -13,13 +13,14 @@
 #define LYX_FILETOOL_H
 
 #include "support/docstring.h"
-#include "support/FileName.h"
 
 #include <utility>
 #include <string>
 
 namespace lyx {
 namespace support {
+
+class FileName;
 
 /// Creates the per buffer temporary directory
 std::string const createBufferTmpDir();
@@ -196,9 +197,6 @@ std::string const unzippedFileName(std::string const & zipped_file);
  */
 FileName const unzipFile(FileName const & zipped_file,
 			 std::string const & unzipped_file = std::string());
-
-/// Returns true is path is absolute
-bool absolutePath(std::string const & path);
 
 /// Create absolute path. If impossible, don't do anything
 std::string const expandPath(std::string const & path);

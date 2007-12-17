@@ -18,6 +18,7 @@
 #include "support/debug.h"
 
 #include "support/convert.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gzstream.h"
 #include "support/lstrings.h"

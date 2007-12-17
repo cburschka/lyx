@@ -36,6 +36,7 @@
 #include "MathStream.h"
 
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

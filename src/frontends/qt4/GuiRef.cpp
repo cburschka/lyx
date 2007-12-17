@@ -21,6 +21,7 @@
 
 #include "insets/InsetRef.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
 #include <QLineEdit>

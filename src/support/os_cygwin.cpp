@@ -16,6 +16,7 @@
 
 #include "support/os.h"
 
+#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/debug.h"
 

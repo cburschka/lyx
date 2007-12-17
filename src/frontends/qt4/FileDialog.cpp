@@ -17,9 +17,9 @@
 #include "qt_helpers.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
-
 #include "support/FileFilterList.h"
+#include "support/FileName.h"
+#include "support/gettext.h"
 #include "support/os.h"
 
 /** when this is defined, the code will use

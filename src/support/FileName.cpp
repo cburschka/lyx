@@ -857,8 +857,9 @@ DocFileName::DocFileName(FileName const & abs_filename, bool save_abs)
 
 void DocFileName::set(string const & name, string const & buffer_path)
 {
-	save_abs_path_ = absolutePath(name);
-	FileName::set(save_abs_path_ ? name : makeAbsPath(name, buffer_path).absFilename());
+	FileName::set(name);
+	if (!isAbsolute())
+		FileName::set(makeAbsPath(name, buffer_path).absFilename());
 	zipped_valid_ = false;
 }
 

@@ -21,9 +21,10 @@
 #include "Layout.h"
 #include "Length.h"
 
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include <iostream>
 #include <map>
@@ -1029,8 +1030,10 @@ string const normalize_filename(string const & name)
 /// convention (relative to .lyx file) if it is relative
 void fix_relative_filename(string & name)
 {
-	if (absolutePath(name))
+	FileName fname(name);
+	if (fname.isAbsolute())
 		return;
+
 	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
 	// utf8)
 	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),
