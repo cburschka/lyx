@@ -296,7 +296,6 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	Cursor safe = *this;
 	
 	// store some values to be used inside of the handlers
-	getPos(beforeDispX_, beforeDispY_);
 	beforeDispatchCursor_ = *this;
 	for (; depth(); pop()) {
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
@@ -1074,8 +1073,8 @@ bool Cursor::upDownInMath(bool up)
 	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
-	xo = beforeDispX_;
-
+	xo = theLyXFunc().cursorBeforeDispatchX();
+	
 	// check if we had something else in mind, if not, this is the future
 	// target
 	if (x_target_ == -1)
@@ -1124,8 +1123,9 @@ bool Cursor::upDownInMath(bool up)
 				int x;
 				int y;
 				getPos(x, y);
-				if ((!up && y <= beforeDispY_) ||
-						(up && y >= beforeDispY_))
+				int oy = theLyXFunc().cursorBeforeDispatchY();
+				if ((!up && y <= oy) ||
+						(up && y >= oy))
 					operator=(old);
 				else
 					return true;
@@ -1144,8 +1144,9 @@ bool Cursor::upDownInMath(bool up)
 				int x;
 				int y;
 				getPos(x, y);
-				if ((!up && y <= beforeDispY_) ||
-						(up && y >= beforeDispY_))
+				int oy = theLyXFunc().cursorBeforeDispatchY();
+				if ((!up && y <= oy) ||
+						(up && y >= oy))
 					operator=(old);
 				else
 					return true;
@@ -1167,8 +1168,9 @@ bool Cursor::upDownInMath(bool up)
 		//lyxerr << "updown: popBackward succeeded" << endl;
 		int xnew;
 		int ynew;
+		int yold = theLyXFunc().cursorBeforeDispatchY();
 		getPos(xnew, ynew);
-		if (up ? ynew < beforeDispY_ : ynew > beforeDispY_)
+		if (up ? ynew < yold : ynew > yold)
 			return true;
 	}
 	
@@ -1186,8 +1188,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
-	xo = beforeDispX_;
-	
+	xo = theLyXFunc().cursorBeforeDispatchX();
+
 	// update the targetX - this is here before the "return false"
 	// to set a new target which can be used by InsetTexts above
 	// if we cannot move up/down inside this inset anymore

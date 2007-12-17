@@ -91,6 +91,15 @@ public:
 	Buffer * loadAndViewFile(support::FileName const &  name, ///< File to load.
 		bool tolastfiles = true);  ///< append to the "Open recent" menu?
 
+	/// cursor x position before dispatch started
+	int cursorBeforeDispatchX() const {
+		return cursorPosBeforeDispatchX_;
+	}
+	/// cursor y position before dispatch started
+	int cursorBeforeDispatchY() const {
+		return cursorPosBeforeDispatchY_;
+	}
+
 private:
 	///
 	BufferView * view() const;
@@ -107,6 +116,10 @@ private:
 	KeySequence cancel_meta_seq;
 	///
 	KeyModifier meta_fake_bit;
+
+	/// cursor position before dispatch started
+	int cursorPosBeforeDispatchX_;
+	int cursorPosBeforeDispatchY_;
 
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;
