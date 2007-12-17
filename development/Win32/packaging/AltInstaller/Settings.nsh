@@ -3,8 +3,8 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5.2"
-!define PRODUCT_VERSION_SHORT "152"
+!define PRODUCT_VERSION "1.5.3"
+!define PRODUCT_VERSION_SHORT "153"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -19,12 +19,12 @@
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
-BrandingText "LyXWinInstaller v3.20 - ${INSTALLER_VERSION}"
+BrandingText "LyXWinInstaller v3.21 - ${INSTALLER_VERSION}"
 
 # to check later if this installer version is running at the same time
-!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-20-AltInstaller-${INSTALLER_VERSION}.exe"
-!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-20-AltInstaller-${INSTALLER2_VERSION}.exe"
-!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-20-AltInstaller-${INSTALLER3_VERSION}.exe"
+!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-21-AltInstaller-${INSTALLER_VERSION}.exe"
+!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-21-AltInstaller-${INSTALLER2_VERSION}.exe"
+!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-21-AltInstaller-${INSTALLER3_VERSION}.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 # Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -38,13 +38,13 @@ BrandingText "LyXWinInstaller v3.20 - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX151"
- !define PRODUCT_VERSION_OLD "LyX 1.5.1"
+ !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX152"
+ !define PRODUCT_VERSION_OLD "LyX 1.5.2"
  !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
- !define PRODUCT_VERSION_SHORT_OLD "151"
+ !define PRODUCT_VERSION_SHORT_OLD "152"
  !define JabRefVersion "2.2" # could be an older version
- !define ImageMagickVersion_Old "6.3.5" # could be an older version
- !define GhostscriptVersion_Old "8.60"
+ !define ImageMagickVersion_Old "6.3.6" # could be an older version
+ !define GhostscriptVersion_Old "8.60" # could be an older version
  !define MiKTeXDeliveredVersion "2.6" # could be an older version
 !endif
 
@@ -56,20 +56,20 @@ BrandingText "LyXWinInstaller v3.20 - ${INSTALLER_VERSION}"
 
 # definitions for the Complete installer
 !if ${INSTALLER_VERSION} == "Complete"
- !define GSviewInstall "external\gsv48w32.exe"
- !define JabRefInstall "external\JabRef-2.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.6.2831.exe"
- !define JabRefVersion "2.2"
- !define MiKTeXDeliveredVersion "2.6"
+ !define GSviewInstall "external\gsv49w32.exe"
+ !define JabRefInstall "external\JabRef-2.3.1-Setup.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.7.2904.exe"
+ !define JabRefVersion "2.3.1"
+ !define MiKTeXDeliveredVersion "2.7"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.3.6"
+!define ImageMagickVersion "6.3.7"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.60"
+!define GhostscriptVersion "8.61"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"
 !define AspellDir "$APPDATA\Aspell"
@@ -91,4 +91,7 @@ BrandingText "LyXWinInstaller v3.20 - ${INSTALLER_VERSION}"
 Name "${PRODUCT_NAME}"
 OutFile "${INSTALLER_EXE}"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME} ${PRODUCT_VERSION}"
+
+# set execution level for Windows Vista
+RequestExecutionLevel admin
 

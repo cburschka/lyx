@@ -4,7 +4,7 @@ Function DeleteFiles
  Delete "$INSTDIR\Resources\examples\currency.lyx"
  Delete "$INSTDIR\Resources\examples\de\TabellenBeispiel.lyx"
  Delete "$INSTDIR\Resources\examples\de\Waehrungen.lyx"
- Delete "$INSTDIR\Resources\examples\fr\ExemplesTableaux.lyx
+ Delete "$INSTDIR\Resources\examples\fr\ExemplesTableaux.lyx"
 
 FunctionEnd
 

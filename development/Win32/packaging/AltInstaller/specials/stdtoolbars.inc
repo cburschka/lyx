@@ -255,6 +255,9 @@ ToolbarSet
 		Item "Quadratin space	\\quad" "math-insert \quad"
 		Item "Double quadratin space	\\qquad" "math-insert \qquad"
 		Item "Negative space	\\!" "math-insert \!"
+		Item "Placeholder	\\phantom" "math-insert \phantom"
+		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
+		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
 	End
 	
 	Toolbar "sqrt-square" "Roots"
@@ -271,11 +274,11 @@ ToolbarSet
 	
 	Toolbar "frac-square" "Fractions"
 		Item "Standard	\\frac" "math-insert \frac"
-		Item "No hor. line	\\atop" "math-insert \atop"
-		Item "Nice	\\nicefrac" "math-insert \nicefrac"
-		Item "Text frac (amsmath)	\\tfrac" "math-insert \tfrac"
-		Item "Display frac (amsmath)	\\dfrac" "math-insert \dfrac"
-		Item "Binomial	\\choose"  "math-insert \choose"
+		Item "No horizontal line	\\atop" "math-insert \atop"
+		Item "Nice fraction (3/4)	\\nicefrac" "math-insert \nicefrac"
+		Item "Text fraction (amsmath)	\\tfrac" "math-insert \tfrac"
+		Item "Display fraction (amsmath)	\\dfrac" "math-insert \dfrac"
+		Item "Binomial	\\choose" "math-insert \choose"
 	End
 	
 	Toolbar "font" "Fonts"
@@ -519,9 +522,6 @@ ToolbarSet
 		Item "mathcal L" "math-insert \mathcal L"
 		Item "mathcal H" "math-insert \mathcal H"
 		Item "mathcal O" "math-insert \mathcal O"
-		Item "phantom" "math-insert \phantom"
-		Item "vphantom" "math-insert \vphantom"
-		Item "hphantom" "math-insert \hphantom"
 	End
 	
 	Toolbar "latex_varsz" "Big Operators"
