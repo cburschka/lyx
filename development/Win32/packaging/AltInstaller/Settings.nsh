@@ -40,7 +40,6 @@ BrandingText "LyXWinInstaller v3.21 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX152"
  !define PRODUCT_VERSION_OLD "LyX 1.5.2"
- !define PRODUCT_UNINSTALL_EXE_OLD "$INSTDIR\LyXWinUninstall.exe"
  !define PRODUCT_VERSION_SHORT_OLD "152"
  !define JabRefVersion "2.2" # could be an older version
  !define ImageMagickVersion_Old "6.3.6" # could be an older version

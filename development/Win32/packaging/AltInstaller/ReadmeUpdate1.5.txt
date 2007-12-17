@@ -19,6 +19,8 @@ Prerequisites
 
 You must have the last LyX-version installed, otherwise the update installer
 quits with a varning about the wrong LyX version.
+Note: The last LyX-version should have been installed using also LyXWinInstaller
+to assure that the update works as expected.
 
 ---
 License

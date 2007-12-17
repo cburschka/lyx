@@ -214,8 +214,12 @@ Function ConfigureMiKTeX
    # enable MiKTeX's automatic package installation
    ${if} $MiKTeXVersion == "2.5"
     ExecWait '$LaTeXPath\mpm.com --update-fndb'
-   ${else} # if MiKTeX 2.6 or above
+   ${endif}
+   ${if} $MiKTeXVersion == "2.6"
     ExecWait '$LaTeXPath\mpm.exe --update-fndb'
+   ${endif}
+   ${if} $MiKTeXVersion == "2.7"
+    ExecWait '$LaTeXPath\mpm.exe --update-db'
    ${endif}
    # the following feature is planned to be used for a possible CD-version
    # copy LaTeX-packages needed by LyX
