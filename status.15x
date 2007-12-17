@@ -43,7 +43,7 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Fix LaTeX output of documents with both CJK and non-CJK languages.
-  LyX is usable for multilingual CJK now (bug 4337).
+  LyX is basically ready for multilingual CJK now (bug 4337).
 
 
 * USER INTERFACE:
@@ -58,6 +58,9 @@ What's new
 
 - "Accept compound words" in Preferences->Spellchecker now also works
   with aspell (library) (bug 4408).
+
+- Overwrite selected text when inserting from the math panel (bug 4055,
+  part 2).
 
 
 * DOCUMENTATION
