@@ -258,15 +258,28 @@ string latex_path(string const & p)
 // followed by a colon. Because a colon is not valid in pathes in Unix
 // and at another location in Win32 testing just for the existance
 // of the colon in the 2nd position seems to be enough!
+// FIXME: Port to FileName!
 bool is_absolute_path(string const & p)
 {
 	if (p.empty())
 		return false;
 
-	bool isDosPath = (p.length() > 1 && p[1] == ':');
-	bool isUnixPath = (p[0] == '/');
+	if (p[0] == '/')
+		// Unix style.
+		return true;
 
-	return isDosPath || isUnixPath;
+	if (p.length() <= 1)
+		return false;
+
+	if (p[1] == ':')
+		// 'X:\' style.
+		return true;
+
+	if (p[0] == '\\' && p[1] == '\\')
+		// Network folder style: '\\server\share'
+		return true;
+
+	return false;
 }
 
 
