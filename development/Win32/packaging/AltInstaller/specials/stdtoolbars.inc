@@ -101,8 +101,9 @@ ToolbarSet
 		Item "Insert footnote" "footnote-insert"
 		Item "Insert margin note" "marginalnote-insert"
 		Item "Insert note" "note-insert"
-		Item "Insert URL" "url-insert"
+		Item "Insert Hyperlink" "href-insert"
 		Item "Insert TeX code" "ert-insert"
+		Item "Insert math macro" "math-macro newmacroname newcommand"
 		Item "Include file" "dialog-show-new-inset include"
 		Separator
 		Item "Text style" "dialog-show character"
@@ -161,6 +162,21 @@ ToolbarSet
 		Item "Delete column" "tabular-feature delete-column"
 		Separator
 		Item "Toggle Math Panels" "toolbar-toggle math_panels"
+	End
+
+	Toolbar "math_macros" "Math Macros"
+		Item "Remove Last Parameter" "math-macro-remove-param"
+		Item "Append Parameter" "math-macro-add-param"
+                Separator
+		Item "Make First Non-Optional into Optional Parameter" "math-macro-make-optional"
+		Item "Make Last Optional into Non-Optional Parameter"
+		"math-macro-make-nonoptional"
+                Item "Remove Optional Parameter" "math-macro-remove-optional-param"
+                Item "Insert Optional Parameter" "math-macro-add-optional-param"
+		Separator
+		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
+		Item "Append Parameter Eating From The Right" "math-macro-append-greedy-param"
+                Item "Append Optional Parameter Eating From The Right" "math-macro-add-greedy-optional-param"
 	End
 	
 	Toolbar "minibuffer" "Command Buffer"
@@ -255,6 +271,9 @@ ToolbarSet
 		Item "Quadratin space	\\quad" "math-insert \quad"
 		Item "Double quadratin space	\\qquad" "math-insert \qquad"
 		Item "Negative space	\\!" "math-insert \!"
+		Item "Placeholder	\\phantom" "math-insert \phantom"
+		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
+		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
 	End
 	
 	Toolbar "sqrt-square" "Roots"
@@ -271,11 +290,17 @@ ToolbarSet
 	
 	Toolbar "frac-square" "Fractions"
 		Item "Standard	\\frac" "math-insert \frac"
-		Item "No hor. line	\\atop" "math-insert \atop"
-		Item "Nice	\\nicefrac" "math-insert \nicefrac"
-		Item "Text frac (amsmath)	\\tfrac" "math-insert \tfrac"
-		Item "Display frac (amsmath)	\\dfrac" "math-insert \dfrac"
-		Item "Binomial	\\choose"  "math-insert \choose"
+		Item "No horizontal line	\\atop" "math-insert \atop"
+		Item "Nice fraction (3/4)	\\nicefrac" "math-insert \nicefrac"
+		Item "Unit (km)	\\unit" "math-insert \unitone"
+		Item "Unit (864 m)	\\unit" "math-insert \unittwo"
+		Item "Unit fraction (km/h)	\\unitfrac" "math-insert \unitfrac"
+		Item "Unit fraction (20 km/h)	\\unitfrac" "math-insert \unitfracthree"
+		Item "Text fraction (amsmath)	\\tfrac" "math-insert \tfrac"
+		Item "Display fraction (amsmath)	\\dfrac" "math-insert \dfrac"
+		Item "Binomial	\\binom" "math-insert \binom"
+		Item "Text binomial	\\tbinom" "math-insert \tbinom"
+		Item "Display binomial	\\dbinom" "math-insert \dbinom"
 	End
 	
 	Toolbar "font" "Fonts"
@@ -519,9 +544,6 @@ ToolbarSet
 		Item "mathcal L" "math-insert \mathcal L"
 		Item "mathcal H" "math-insert \mathcal H"
 		Item "mathcal O" "math-insert \mathcal O"
-		Item "phantom" "math-insert \phantom"
-		Item "vphantom" "math-insert \vphantom"
-		Item "hphantom" "math-insert \hphantom"
 	End
 	
 	Toolbar "latex_varsz" "Big Operators"

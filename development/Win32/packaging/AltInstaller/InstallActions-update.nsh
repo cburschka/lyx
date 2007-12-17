@@ -141,8 +141,8 @@ SectionEnd
 Function InstDirChange
 	
   # determine the new name of the install location,
-  # Change the old install path to the new one (currently only when the user
-  # has used the default path settings of the previous LyX-version)
+  # Change the old install path to the new one (only when the user
+  # has used the default path settings of the previous LyX-version, otherwise leave the path as is)
   StrCpy $String $INSTDIR
   StrCpy $Search "${PRODUCT_VERSION_OLD}"
   StrLen $3 $String
