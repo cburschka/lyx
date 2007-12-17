@@ -81,6 +81,15 @@ public:
 	///		not the current buffer
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
+	/// cursor x position before dispatch started
+	int cursorBeforeDispatchX() const {
+		return cursorPosBeforeDispatchX_;
+	}
+	/// cursor y position before dispatch started
+	int cursorBeforeDispatchY() const {
+		return cursorPosBeforeDispatchY_;
+	}
+
 private:
 	///
 	BufferView * view() const;
@@ -97,6 +106,10 @@ private:
 	boost::scoped_ptr<KeySequence> cancel_meta_seq;
 	///
 	key_modifier::state meta_fake_bit;
+
+	/// cursor position before dispatch started
+	int cursorPosBeforeDispatchX_;
+	int cursorPosBeforeDispatchY_;
 
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;

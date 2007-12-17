@@ -223,10 +223,6 @@ private:
 	// of a big inset spanning a whole row and computing coordinates for
 	// displaying the cursor.
 	bool logicalpos_;
-	/// x position before dispatch started
-	int beforeDispX_;
-	/// y position before dispatch started
-	int beforeDispY_;
 	/// position before dispatch started
 	DocIterator beforeDispatchCursor_;
 

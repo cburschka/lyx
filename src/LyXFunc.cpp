@@ -1869,6 +1869,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		default: {
 			BOOST_ASSERT(lyx_view_);
+			view()->cursor().getPos(cursorPosBeforeDispatchX_, cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
