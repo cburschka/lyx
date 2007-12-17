@@ -1,11 +1,11 @@
-This file lists interface changes that might affect users in 1.5.3, some 
-known problems in LyX 1.5.3 and some things you have to take into account
+This file lists interface changes that might affect users in 1.5.4, some 
+known problems in LyX 1.5.4 and some things you have to take into account
 when upgrading from earlier versions to a version of the 1.5.x series.
 Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Known issues in version 1.5.3
+Known issues in version 1.5.4
 ------------------------------------
 
 - On Fedora 8, LyX might crash when inserting a graphic. This is a bug in
@@ -13,15 +13,6 @@ Known issues in version 1.5.3
   until a fixed package is provided, is to uninstall kdelibs4 (or KDE4, for
   that matter). Cf.
   https://bugzilla.redhat.com/show_bug.cgi?id=410391
-
-- Generally, CJK does not work very well yet when it is used in a multilingual
-  context (e.g., Japanese together with English).
-  The LaTeX output might be wrong or LyX might even crash in such cases.
-  Fixes are being worked out, but they have not yet been included in this 
-  release. Cf.
-  http://bugzilla.lyx.org/show_bug.cgi?id=3561
-  http://bugzilla.lyx.org/show_bug.cgi?id=4349
-  http://bugzilla.lyx.org/show_bug.cgi?id=4337
 
 - Cursor restoration problems with Multiple-View:
   When using multiple Windows to edit different parts of the
