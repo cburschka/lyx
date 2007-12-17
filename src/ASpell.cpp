@@ -16,6 +16,7 @@
 #include <aspell.h>
 
 #include "ASpell_local.h"
+#include "LyXRC.h"
 #include "WordLangTuple.h"
 
 #include <boost/assert.hpp>
@@ -65,6 +66,12 @@ void ASpell::addSpeller(string const & lang)
 	// platforms (cygwin, OS X). Therefore we use utf-8, that does
 	// always work.
 	aspell_config_replace(config, "encoding", "utf-8");
+	if (lyxrc.isp_accept_compound)
+		// Consider run-together words as legal compounds
+		aspell_config_replace(config, "run-together", "true");
+	else
+		// Report run-together words as errors
+		aspell_config_replace(config, "run-together", "false");
 	AspellCanHaveError * err = new_aspell_speller(config);
 	if (spell_error_object)
 		delete_aspell_can_have_error(spell_error_object);
