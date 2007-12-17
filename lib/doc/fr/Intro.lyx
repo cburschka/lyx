@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -84,7 +84,6 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
 \author "" 
 \end_header
 
@@ -697,7 +696,7 @@ fonctionne.
 \end_layout
 
 \begin_layout Subsection
-Qu'est-ce donc que LaTeX (et en quoi cela me concerne-t-il) ?
+Qu'est-ce donc que LaTeX ?
 \end_layout
 
 \begin_layout Standard
@@ -739,46 +738,9 @@ l'Utilisateur
 Knuth
 \noun default
  en 1984.
- 
-\begin_inset Quotes fld
-\end_inset
-
-TeX
-\begin_inset Quotes frd
-\end_inset
-
- se prononce comme 
-\begin_inset Quotes fld
-\end_inset
-
-berq !
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-NdT : onomatopée originale : 
-\begin_inset Quotes fld
-\end_inset
-
-blech!
-\begin_inset Quotes frd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes frd
-\end_inset
-
-, ce qui représente bien ce que beaucoup de gens pensent de ce langage.
- Pourtant, la plupart des gens ne comprennent même pas ce qu'est TeX.
  TeX prend une séquence de commandes typographiques, écrites dans un script
  dans un fichier ASCII, et les exécute.
- C'est un peu plus compliqué qu'une machine à écrire, mais pas autant qu'une
- vraie presse d'imprimerie ; cependant, la plupart des 
+ La plupart des 
 \begin_inset Quotes fld
 \end_inset
 
@@ -855,9 +817,6 @@ Knuth
 \noun default
  créa pour masquer nombre de détails typographiques.
  C'est ce à quoi la plupart des gens pensent quand ils pensent à TeX.
- L'utilisateur lambda n'utilise jamais le TeX brut, qui constitue l'ensemble
- des commandes typographiques de base.
- Ceux qui écrivent des nouveaux paquetages le font.
  Et c'est ici que Leslie 
 \noun on
 Lamport
@@ -927,41 +886,53 @@ Voici un résumé :
 \end_layout
 
 \begin_layout Description
-TeX\InsetSpace ~
-: langage de composition avec possibilité de macros.
+TeX: langage de composition avec possibilité de macros.
 \end_layout
 
 \begin_layout Description
-LaTeX\InsetSpace ~
-: paquetage de macros basé sur TeX\SpecialChar \@.
-
-\end_layout
-
-\begin_layout Description
-classes\InsetSpace ~
-: définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
+LaTeX: paquetage de macros basé sur TeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Description
-styles\InsetSpace ~
-: modifications du comportement par défaut de LaTeX d'une façon donnée.
+classes: définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
+
 \end_layout
 
 \begin_layout Description
-LyX\InsetSpace ~
-: traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
+styles: modifications du comportement par défaut de LaTeX d'une façon donnée.
+\end_layout
+
+\begin_layout Description
+LyX: traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
  dans toute sa splendeur.
 \end_layout
 
 \begin_layout Standard
-Le but de cette section était d'expliquer 
-\shape italic
-pourquoi
-\shape default
- LyX fonctionne un peu différemment des autres traitements de texte.
- La raison est simple : LyX utilise LaTeX comme outil d'impression.
- Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits --
+LaTeX rend LyX diffèrent des autres traitements de texte.
+ LyX est une interface graphique utilisateur
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\emph on
+Graphical User Interface
+\emph default
+ (GUI) en anglais
+\end_layout
+
+\end_inset
+
+ d'accueil pour LaTeX, conçue pour saisir des documents sans connaître les
+ macro-commandes de LaTeX.
+ Cependant, LyX ne propose pas d'interface graphique pour toutes les (innombrabl
+es) macros LaTeX existantes, mais il les accepte, ce qui le rend aussi fonctionn
+el que LaTeX.
+\end_layout
+
+\begin_layout Standard
+Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits --
  le 
 \shape italic
 quoi.
@@ -972,113 +943,6 @@ quoi.
 comment
 \shape default
  le présenter.
-\end_layout
-
-\begin_layout Standard
-Oh -- une dernière chose.
- LaTeX se prononce comme TeX.
- Il rime avec 
-\begin_inset Quotes fld
-\end_inset
-
-hey blech
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-ou 
-\begin_inset Quotes fld
-\end_inset
-
-ha blech
-\begin_inset Quotes frd
-\end_inset
-
-, selon votre prononciation du 
-\begin_inset Quotes fld
-\end_inset
-
-a
-\begin_inset Quotes frd
-\end_inset
-
-\SpecialChar \ldots{}
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes frd
-\end_inset
-
-.
- Leslie 
-\noun on
-Lamport
-\noun default
- dit pourtant dans son livre, que 
-\begin_inset Quotes fld
-\end_inset
-
-
-\emph on
-lay
-\emph default
--tecks
-\begin_inset Quotes frd
-\end_inset
-
- est aussi acceptable.
- 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-, de son côté, se prononce 
-\begin_inset Quotes fld
-\end_inset
-
-licks
-\begin_inset Quotes frd
-\end_inset
-
-.
- Ou 
-\begin_inset Quotes fld
-\end_inset
-
-lucks
-\begin_inset Quotes frd
-\end_inset
-
-, ou 
-\begin_inset Quotes fld
-\end_inset
-
-looks
-\begin_inset Quotes frd
-\end_inset
-
-, selon votre contrée d'origine\SpecialChar \ldots{}
- mais de nombreux messages incendiaires ayant
- été émis à ce sujet sur les listes de diffusion de LyX, vous n'avez qu'à
- le prononcer comme bon vous semble.
- Simplement ne le prononcez pas 
-\begin_inset Quotes fld
-\end_inset
-
-word
-\begin_inset Quotes frd
-\end_inset
-
-.
- 
-\family typewriter
-:-)
 \end_layout
 
 \begin_layout Section
@@ -1136,10 +1000,15 @@ lyx-docs@lists.lyx.org
 lyx-users@lists.lyx.org
 \family default
 .
+ Pour les questions spécifiquement francophones, contactez la liste 
+\family typewriter
+lyx-fr@lists.lyx.org
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
-Le Format des manuels
+Le format des manuels
 \end_layout
 
 \begin_layout Standard
@@ -1186,8 +1055,8 @@ Naviguer
 \begin_layout Standard
 Sur la version papier, les références croisées sont affichées avec les bons
  numéros de page, de section ou de sous-section.
- En ligne, à l'inverse, elles apparaissent comme des boîtes grises ainsi
- : 
+ En ligne, à l'inverse, elles apparaissent comme des boîtes grises ainsi:
+ 
 \begin_inset LatexCommand ref
 reference "sec:Contrib"
 
@@ -1197,7 +1066,7 @@ reference "sec:Contrib"
  (Dans la version papier il y a un numéro à la place.) Si vous cliquez sur
  cet insert avec le bouton gauche de la souris, une fenêtre s'ouvre avec
  la liste de toutes les références croisées du document.
- Cette introduction n'en a qu'une, appelée 
+ Cette introduction n'en a que deux, la première est dénommée 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2381,7 +2250,7 @@ majeure partie
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage\SpecialChar \@.
-
+.
 \end_layout
 
 \end_deeper
@@ -2585,122 +2454,7 @@ config.log
 \end_layout
 
 \begin_layout Standard
-Si vous arrivez à faire planter LyX, veuillez prendre le temps de produire
- un backtrace
-\begin_inset Foot
-status collapsed
 
-\begin_layout Standard
-NdT : Terme utilisé dans 
-\family typewriter
-gdb
-\family default
-, désignant la pile d'appel des fonctions.
-\end_layout
-
-\end_inset
-
- avec un exécutable lyx non allégé
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-NdT : et donc traçable (original : 
-\begin_inset Quotes fld
-\end_inset
-
-non-stripped executable
-\begin_inset Quotes frd
-\end_inset
-
-).
-\end_layout
-
-\end_inset
-
-.
- Par défaut, le fichier binaire installé est allégé, mais celui créé dans
- le répertoire source ne l'est pas.
- Lancez donc LyX à partir de gdb en tapant 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-gdb /users/bozo/lyx-1.x.x/src/lyx
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- puis 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-run
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
-.
- Faites planter LyX et retournez dans gdb.
- Faites 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-bt
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- pour produire un backtrace et joignez-le au rapport de bogue
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Si vous voulez être exhaustif, utilisez les commandes 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-info locals
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- et 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-up
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- pour obtenir les valeurs prises par les variables locales dans quelques
- niveaux de la pile.
- 
-\end_layout
-
-\end_inset
-
-.
- Si possible, la description d'un moyen de reproduire le bogue est plus
- importante qu'un backtrace, car nous aurons alors la possibilité de produire
- notre propre backtrace.
- Mais si le bogue n'est pas facilement reproductible, un backtrace est indispens
-able, car c'est peut-être la seule chose dont nous disposerons.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2763,29 +2517,21 @@ avant tout
 \end_layout
 
 \begin_layout Enumerate
-Récupérez le code source de LyX le plus récent.
- Désarchivez-le
-\begin_inset Foot
-status collapsed
+Récupérez le code source de LyX le plus récent
+\newline
 
-\begin_layout Standard
-Les plus aventureux peuvent récupérer les sources les plus récentes sur
- le site d'archivage SVN de LyX - elles sont contenues dans le module 
-\family typewriter
-lyxdoc
-\family default
-.
-\end_layout
+\lang english
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
 
 \end_inset
 
-.
- Vous trouverez dans cette arborescence un répertoire appelé 
-\family typewriter
-lib/doc
-\family default
-.
- Il contient un fichier appelé 
+
+\lang french
+
+\newline
+Dans ce répertoire il existe un fichier appelé 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -2858,7 +2604,7 @@ Contribuer à la traduction francophone
 
 \begin_layout Standard
 Pour participer à la traduction, le principe est le même que pour modifier
- la version originale.
+ la version originale anglophone.
  Il existe une liste de diffusion pour les traducteurs et les utilisateurs
  francophones, à l'adresse 
 \begin_inset LatexCommand url
@@ -2881,8 +2627,19 @@ target "lyx-fr-subscribe@lists.lyx.org"
 \begin_layout Standard
 D'autre part il faut prendre garde à ne modifier que la dernière version
  de la traduction.
- C'est toujours celle qui est sur le serveur SVN.
- On peut y accéder en suivant les indications qui se trouvent sur 
+ C'est toujours celle qui est sur le serveur SVN 
+\lang english
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc/fr"
+
+\end_inset
+
+
+\lang french
+.
+ On peut y accéder également en suivant les indications qui se trouvent
+ sur 
 \begin_inset LatexCommand url
 name "le site des développeurs de LyX"
 target "http://www.devel.lyx.org/"
