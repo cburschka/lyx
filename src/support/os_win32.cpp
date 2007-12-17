@@ -240,7 +240,8 @@ string latex_path(string const & p)
 	// on windows_style_tex_paths_), but we use always forward slashes,
 	// since it gets written into a .tex file.
 
-	if (!windows_style_tex_paths_ && is_absolute_path(p)) {
+	FileName path(p);
+	if (!windows_style_tex_paths_ && path.isAbsolute()) {
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
@@ -249,37 +250,6 @@ string latex_path(string const & p)
 		return cygpath;
 	}
 	return subst(p, '\\', '/');
-}
-
-
-// (Claus H.) On Win32 both Unix and Win32/DOS pathnames are used.
-// Therefore an absolute path could be either a pathname starting
-// with a slash (Unix) or a pathname starting with a drive letter
-// followed by a colon. Because a colon is not valid in pathes in Unix
-// and at another location in Win32 testing just for the existance
-// of the colon in the 2nd position seems to be enough!
-// FIXME: Port to FileName!
-bool is_absolute_path(string const & p)
-{
-	if (p.empty())
-		return false;
-
-	if (p[0] == '/')
-		// Unix style.
-		return true;
-
-	if (p.length() <= 1)
-		return false;
-
-	if (p[1] == ':')
-		// 'X:\' style.
-		return true;
-
-	if (p[0] == '\\' && p[1] == '\\')
-		// Network folder style: '\\server\share'
-		return true;
-
-	return false;
 }
 
 

@@ -85,12 +85,6 @@ string latex_path(string const & p)
 }
 
 
-bool is_absolute_path(string const & p)
-{
-	return !p.empty() && p[0] == '/';
-}
-
-
 char const * popen_read_mode()
 {
 	return "r";

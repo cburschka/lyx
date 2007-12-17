@@ -140,6 +140,12 @@ bool FileName::empty() const
 }
 
 
+bool FileName::isAbsolute() const
+{
+	return d->fi.isAbsolute();
+}
+
+
 string FileName::absFilename() const
 {
 	return fromqstr(d->fi.absoluteFilePath());

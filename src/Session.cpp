@@ -163,9 +163,9 @@ void LastFilePosSection::read(istream & is)
 			itmp >> filepos.pos;
 			itmp.ignore(2);  // ignore ", "
 			getline(itmp, fname);
-			if (!absolutePath(fname))
-				continue;
 			FileName const file(fname);
+			if (!file.isAbsolute())
+				continue;
 			if (file.exists() && !file.isDirectory()
 			    && lastfilepos.size() < num_lastfilepos)
 				lastfilepos[file] = filepos;
@@ -240,9 +240,9 @@ void BookmarksSection::read(istream & is)
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
 			getline(itmp, fname);
-			if (!absolutePath(fname))
-				continue;
 			FileName const file(fname);
+			if (!file.isAbsolute())
+				continue;
 			// only load valid bookmarks
 			if (file.exists() && !file.isDirectory() && idx <= max_bookmarks)
 				bookmarks[idx] = Bookmark(file, pit, pos, 0, 0);

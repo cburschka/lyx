@@ -395,9 +395,10 @@ string const onlyPath(string const & filename)
 // If basepath is empty, use CWD as base.
 FileName const makeAbsPath(string const & relPath, string const & basePath)
 {
+	FileName relative_path(relPath);
 	// checks for already absolute path
-	if (os::is_absolute_path(relPath))
-		return FileName(relPath);
+	if (relative_path.isAbsolute())
+		return relative_path;
 
 	// Copies given paths
 	string tempRel = os::internal_path(relPath);
@@ -406,7 +407,8 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 
 	string tempBase;
 
-	if (os::is_absolute_path(basePath))
+	FileName base_path(basePath);
+	if (base_path.isAbsolute())
 		tempBase = basePath;
 	else
 		tempBase = addPath(FileName::getcwd().absFilename(), basePath);
@@ -487,7 +489,7 @@ string const onlyFilename(string const & fname)
 /// Returns true is path is absolute
 bool absolutePath(string const & path)
 {
-	return os::is_absolute_path(path);
+	return FileName(path).isAbsolute();
 }
 
 
@@ -497,7 +499,8 @@ string const expandPath(string const & path)
 {
 	// checks for already absolute path
 	string rTemp = replaceEnvironmentPath(path);
-	if (os::is_absolute_path(rTemp))
+	FileName abs_path(rTemp);
+	if (abs_path.isAbsolute())
 		return rTemp;
 
 	string temp;

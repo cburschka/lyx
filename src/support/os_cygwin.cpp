@@ -187,7 +187,7 @@ string latex_path(string const & p)
 	// on windows_style_tex_paths_), but we use always forward slashes,
 	// since it gets written into a .tex file.
 
-	if (windows_style_tex_paths_ && is_absolute_path(p)) {
+	if (windows_style_tex_paths_ && FileName(p).isAbsolute()) {
 		string dos_path = convert_path(p, PathStyle(windows));
 		LYXERR(Debug::LATEX, "<Path correction for LaTeX> ["
 			<< p << "]->>[" << dos_path << ']');
@@ -195,18 +195,6 @@ string latex_path(string const & p)
 	}
 
 	return convert_path(p, PathStyle(posix));
-}
-
-
-bool is_absolute_path(string const & p)
-{
-	if (p.empty())
-		return false;
-
-	bool isDosPath = (p.length() > 1 && p[1] == ':');
-	bool isUnixPath = (p[0] == '/');
-
-	return isDosPath || isUnixPath;
 }
 
 

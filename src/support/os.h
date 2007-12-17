@@ -71,10 +71,6 @@ std::string internal_path_list(std::string const & p);
  */
 std::string latex_path(std::string const & p);
 
-/// Is the path absolute?
-/// \p p is encoded in utf8.
-bool is_absolute_path(std::string const & p);
-
 /** Returns a string suitable to be passed to popen when
  *  reading a file.
  */

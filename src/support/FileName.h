@@ -55,6 +55,9 @@ public:
 	virtual void erase();
 	/// Is this filename empty?
 	bool empty() const;
+	/// Is the filename absolute?
+	bool isAbsolute() const;
+
 	/// get the absolute file name in UTF-8 encoding
 	std::string absFilename() const;
 	/**
