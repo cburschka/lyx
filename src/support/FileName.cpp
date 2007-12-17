@@ -262,13 +262,15 @@ bool FileName::isReadableDirectory() const
 
 string FileName::onlyFileName() const
 {
-	return support::onlyFilename(absFilename());
+	return fromqstr(d->fi.fileName());
 }
 
 
 FileName FileName::onlyPath() const
 {
-	return FileName(support::onlyPath(absFilename()));
+	FileName path;
+	path.d->fi.setFile(d->fi.filePath());
+	return path;
 }
 
 
