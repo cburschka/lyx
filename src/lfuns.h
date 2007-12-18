@@ -126,6 +126,12 @@ enum kb_action {
 	LFUN_BUFFER_END_SELECT,
 	LFUN_SPACE_INSERT,              // JSpitzm 20030520
 	LFUN_SPECIALCHAR_INSERT,        // JSpitzm, 20071206
+/**
+ * LFUN_MARK_TOGGLE
+ * \li Action: Toggle between MARK_ON and MARK_OFF
+ * \li Syntax: mark-toggle
+ * \li Origin: poenitz, May 5 2006
+ */
 	LFUN_MARK_TOGGLE,
 	LFUN_CHAR_DELETE_FORWARD,
 	// 60
@@ -198,7 +204,18 @@ enum kb_action {
 	LFUN_WORD_DELETE_FORWARD,
 	LFUN_WORD_DELETE_BACKWARD,
 	LFUN_LINE_DELETE,
+/**
+ * LFUN_MARK_OFF
+ * \li Action: Disable selecting of text-region.
+ * \li Syntax: mark-off
+ */
 	LFUN_MARK_OFF,
+/**
+ * LFUN_MARK_ON
+ * \li Action: Enable selecting of text-region.
+ * \li Notion: After enabling you can simply move arrow keys to get selected region.
+ * \li Syntax: mark-on
+ */
 	LFUN_MARK_ON,
 	// 120
 	LFUN_LAYOUT,
