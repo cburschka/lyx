@@ -14,6 +14,7 @@
 #define ENCODING_H
 
 #include "support/docstring.h"
+#include "support/types.h"
 
 #include <map>
 #include <set>
@@ -23,6 +24,17 @@ namespace lyx {
 namespace support { class FileName; }
 
 class LaTeXFeatures;
+
+class EncodingException : public std::exception {
+public:
+	EncodingException(char_type c);
+	virtual ~EncodingException() throw() {}
+	virtual const char * what() const throw();
+ 
+	char_type failed_char;
+	int par_id;
+	pos_type pos;
+};
 
 
 ///

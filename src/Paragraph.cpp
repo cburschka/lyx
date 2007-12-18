@@ -2024,9 +2024,17 @@ bool Paragraph::latex(Buffer const & buf,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column);
-		else
-			d->latexSpecialChar(os, rp, running_font, runningChange,
-				*style, i, column);
+		else {
+			try {
+				d->latexSpecialChar(os, rp, running_font, runningChange,
+					*style, i, column);
+			} catch (EncodingException & e) {
+				// add location information and throw again.
+				e.par_id = id();
+				e.pos = i;
+				throw(e);
+			}
+		}
 
 		// Set the encoding to that returned from simpleTeXSpecialChars (see
 		// comment for encoding member in OutputParams.h)

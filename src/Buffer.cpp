@@ -999,19 +999,31 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		return false;
 
 	//TexStream ts(ofs.rdbuf(), &texrow());
-
+	ErrorList & errorList = d->errorLists["Export"];
+	errorList.clear();
 	bool failed_export = false;
 	try {
 		d->texrow.reset();
 		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 	}
+	catch (EncodingException & e) {
+		docstring msg = _("Could not find LaTeX command for character '%'");
+		msg[msg.size() - 2] = e.failed_char;
+		errorList.push_back(ErrorItem(msg, _("Some characters of your document are probably not "
+				"representable in the chosen encoding.\n"
+				"Changing the document encoding to utf8 could help."),
+				e.par_id, e.pos, e.pos + 1));
+		failed_export = true;			
+	}
 	catch (iconv_codecvt_facet_exception & e) {
-		lyxerr << "Caught iconv exception: " << e.what() << endl;
+		errorList.push_back(ErrorItem(_("iconv conversion failed"),
+			_(e.what()), -1, 0, 0));
 		failed_export = true;
 	}
 	catch (exception const & e) {
-		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
+		errorList.push_back(ErrorItem(_("conversion failed"),
+			_(e.what()), -1, 0, 0));
 		failed_export = true;
 	}
 	catch (...) {
@@ -1025,14 +1037,8 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		lyxerr << "File '" << fname << "' was not closed properly." << endl;
 	}
 
-	if (failed_export) {
-		Alert::error(_("Encoding error"),
-			_("Some characters of your document are probably not "
-			"representable in the chosen encoding.\n"
-			"Changing the document encoding to utf8 could help."));
-		return false;
-	}
-	return true;
+	errors("Export");
+	return !failed_export;
 }
 
 

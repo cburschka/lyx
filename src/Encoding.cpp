@@ -247,6 +247,18 @@ char_type const max_ucs4 = 0x110000;
 } // namespace anon
 
 
+EncodingException::EncodingException(char_type c)
+	: failed_char(c), par_id(0), pos(0)
+{
+}
+
+
+const char * EncodingException::what() const throw()
+{
+	return "Could not find LaTeX command for a character";
+}
+
+
 Encoding::Encoding(string const & n, string const & l, string const & i,
 		   bool f, Encoding::Package p)
 	: Name_(n), LatexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
@@ -321,10 +333,7 @@ docstring const Encoding::latexChar(char_type c) const
 		// c cannot be encoded in this encoding
 		CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 		if (it == unicodesymbols.end())
-			lyxerr << "Could not find LaTeX command for character 0x"
-			       << hex << c << dec
-			       << ".\nLaTeX export will fail."
-			       << endl;
+			throw EncodingException(c);
 		else
 			return it->second.command;
 	}
