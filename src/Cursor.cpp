@@ -577,6 +577,8 @@ void Cursor::info(odocstream & os) const
 bool Cursor::selHandle(bool sel)
 {
 	//lyxerr << "Cursor::selHandle" << endl;
+	if (mark())
+		sel = true;
 	if (sel == selection())
 		return false;
 

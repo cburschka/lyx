@@ -1038,6 +1038,7 @@ bool Text::dissolveInset(Cursor & cur) {
 		return false;
 
 	cur.recordUndoInset();
+	cur.mark() = false;
 	cur.selHandle(false);
 	// save position
 	pos_type spos = cur.pos();
