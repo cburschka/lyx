@@ -155,7 +155,6 @@ string FileName::absFilename() const
 void FileName::set(string const & name)
 {
 	d->fi.setFile(toqstr(name));
-	BOOST_ASSERT(d->fi.isAbsolute());
 }
 
 
