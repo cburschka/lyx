@@ -268,7 +268,7 @@ string FileName::onlyFileName() const
 FileName FileName::onlyPath() const
 {
 	FileName path;
-	path.d->fi.setFile(d->fi.filePath());
+	path.d->fi.setFile(d->fi.path());
 	return path;
 }
 
