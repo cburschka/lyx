@@ -1279,6 +1279,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			docstring ds = cur.selectionAsString(false);
 			cutSelection(cur, true, false);
 			static_cast<InsetInfo *>(inset)->setInfo(to_utf8(ds));
+			static_cast<InsetInfo *>(inset)->updateInfo(cur.bv().buffer());
 		}
 		insertInset(cur, inset);
 		cur.posForward();

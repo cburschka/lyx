@@ -29,8 +29,8 @@ uses it to display currently used shortcuts.
 
 This inset has two arguments: the type and argument of the information. The
 screen and latex output is the content of the information. An InsetInfo can
-have type "shortcut", "lyxrc", "package", "textclass", or "menu". Arguments
-and outputs vary by type.
+have type "shortcut", "lyxrc", "package", "textclass", "menu", or "buffer".
+Arguments and outputs vary by type.
 
 shortcut: argument of this type of InsetInfo is the name of the LFUN such as
     "math-insert \alpha". The syntax is the same as what is used in the bind
@@ -52,9 +52,10 @@ menu: argument is the name of the LFUN such as "paste". The syntax is the same
     triggers this LFUN. For example, "File > Paste", where '>' is actually
     \lyxarrow (an InsetSpecialChar).
 
+buffer: argument can be one of "name", "path", "class". This inset output the 
+    filename, path, and textclass of this buffer.
 
-Because this inset is intended to be used only by document maintainers,
-there is no GUI, no menu entry for this inset. A user can define a 
+There is currently no GUI, no menu entry for this inset. A user can define a 
 shortcut for "info-insert" (e.g. C-S-I), and
 
 1. input the type and argument of this inset, e.g. "menu paste", in 
@@ -79,6 +80,7 @@ public:
 		PACKAGE_INFO,   // Availability of package
 		TEXTCLASS_INFO, // Availability of textclass
 		MENU_INFO,      // Which menu item is used for certain function
+		BUFFER_INFO,    // Buffer related information
 	};
 
 	///
@@ -99,22 +101,20 @@ public:
 	InsetCode lyxCode() const { return INFO_CODE; }
 	///
 	void setInfo(std::string const & info);
+	/// update info_ and text
+	void updateInfo(Buffer const &);
 	///
 	bool setMouseHover(bool mouse_hover);
 
 private:
 	/// The translator between the information type enum and corresponding string.
 	Translator<info_type, std::string> const & nameTranslator() const;
-	/// update info_ and text
-	void updateInfo();
 	///
 	virtual Inset * clone() const { return new InsetInfo(*this); }
 	///
 	info_type type_;
 	///
 	std::string name_;
-	/// store the buffer parameter
-	BufferParams const & bp_;
 	///
 	bool mouse_hover_;
 };

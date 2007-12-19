@@ -14,6 +14,7 @@
 #include <sstream>
 #include <stack>
 
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "support/debug.h"
@@ -31,6 +32,7 @@
 #include "TextClassList.h"
 
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 
@@ -41,7 +43,7 @@ namespace lyx {
 
 
 InsetInfo::InsetInfo(BufferParams const & bp, string const & name) 
-	: InsetText(bp), type_(UNKNOWN_INFO), name_(), bp_(bp),
+	: InsetText(bp), type_(UNKNOWN_INFO), name_(),
 	  mouse_hover_(false)
 {
 	setAutoBreakRows(true);
@@ -80,6 +82,7 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 	translator.addPair(InsetInfo::PACKAGE_INFO, "package");
 	translator.addPair(InsetInfo::TEXTCLASS_INFO, "textclass");
 	translator.addPair(InsetInfo::MENU_INFO, "menu");
+	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
 
 	return translator;
 }
@@ -95,7 +98,7 @@ Translator<InsetInfo::info_type, string> const & InsetInfo::nameTranslator() con
 
 	
 
-void InsetInfo::read(Buffer const &, Lexer & lex)
+void InsetInfo::read(Buffer const & buf, Lexer & lex)
 {
 	string token;
 	while (lex.isOK()) {
@@ -117,7 +120,7 @@ void InsetInfo::read(Buffer const &, Lexer & lex)
 			_("Missing \\end_inset at this point."),
 			from_utf8(token));
 	}
-	updateInfo();
+	updateInfo(buf);
 }
 
 
@@ -157,24 +160,25 @@ void InsetInfo::setInfo(string const & name)
 	string type;
 	name_ = trim(split(name, type, ' '));
 	type_ = nameTranslator().find(type);
-	updateInfo();
 }
 
 
-void InsetInfo::updateInfo()
+void InsetInfo::updateInfo(Buffer const & buf)
 {
 	InsetText::clear();
+
+	BufferParams const & bp = buf.params();	
 
 	switch (type_) {
 	case UNKNOWN_INFO:
 		setText(_("Unknown Info: ") + from_utf8(name_),
-			bp_.getFont(), false);
+			bp.getFont(), false);
 		break;
 	case SHORTCUT_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action != LFUN_UNKNOWN_ACTION)
 			setText(theTopLevelKeymap().printBindings(func),
-				bp_.getFont(), false);
+				bp.getFont(), false);
 		break;
 	}
 	case LYXRC_INFO: {
@@ -186,33 +190,33 @@ void InsetInfo::updateInfo()
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
-		setText(from_utf8(result), bp_.getFont(), false);
+		setText(from_utf8(result), bp.getFont(), false);
 		break;
 	}
 	case PACKAGE_INFO:
 		// check in packages.lst
 		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"),
-			bp_.getFont(), false);
+			bp.getFont(), false);
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
 		pair<bool, lyx::textclass_type> pp =
 			textclasslist.numberOfClass(name_);
 		setText(pp.first ? _("yes") : _("no"),
-			bp_.getFont(), false);
+			bp.getFont(), false);
 		break;
 	}
 	case MENU_INFO: {
 		stack<docstring> names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action == LFUN_UNKNOWN_ACTION) {
-			setText(_("No menu entry for "), bp_.getFont(), false);
+			setText(_("No menu entry for "), bp.getFont(), false);
 			break;
 		}
 		// iterate through the menubackend to find it
 		Menu menu = menubackend.getMenubar();
 		if (!menu.searchFunc(func, names)) {
-			setText(_("No menu entry for "), bp_.getFont(), false);
+			setText(_("No menu entry for "), bp.getFont(), false);
 			break;
 		}
 		// if find, return its path.
@@ -225,9 +229,20 @@ void InsetInfo::updateInfo()
 				info.insertInset(0, new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR),
 					Change(Change::UNCHANGED));
 			for (i = 0; i < names.top().length(); ++i)
-				info.insertChar(i, names.top()[i], bp_.getFont(), false);
+				info.insertChar(i, names.top()[i], bp.getFont(), false);
 			names.pop();
 		}
+		break;
+	}
+	case BUFFER_INFO: {
+		if (name_ == "name")
+			setText(from_utf8(buf.fileName().onlyFileName()), bp.getFont(), false);
+		else if (name_ == "path")
+			setText(from_utf8(buf.filePath()), bp.getFont(), false);
+		else if (name_ == "class")
+			setText(from_utf8(bp.getTextClass().name()), bp.getFont(), false);
+		else
+			setText(_("Unknown buffer info"), bp.getFont(), false);
 		break;
 	}
 	}
