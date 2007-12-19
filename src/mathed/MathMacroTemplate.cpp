@@ -119,7 +119,8 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & str)
-	: InsetMathNest(3), numargs_(0)
+	: InsetMathNest(3), numargs_(0), optionals_(0), 
+		type_(MacroTypeNewcommand)
 {
 	initMath();
 
@@ -127,6 +128,10 @@ MathMacroTemplate::MathMacroTemplate(docstring const & str)
 	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
+		asArray(from_ascii("invalidmacro"), cell(0));
+		// FIXME: The macro template does not make sense after this.
+		// The whole parsing should not be in a constructor which
+		// has no chance to report failure.
 		return;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
