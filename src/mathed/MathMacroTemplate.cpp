@@ -119,8 +119,8 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & str)
-	: InsetMathNest(3), numargs_(0), optionals_(0), 
-		type_(MacroTypeNewcommand)
+	: InsetMathNest(3), numargs_(0), optionals_(0),
+	type_(from_ascii("newcommand"))
 {
 	initMath();
 
