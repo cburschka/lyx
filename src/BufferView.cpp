@@ -450,12 +450,6 @@ void BufferView::updateScrollbar()
 
 	int h = tm.parMetrics(d->anchor_ref_).height();
 
-	// Normalize anchor/offset (MV):
-	while (d->offset_ref_ > h && d->anchor_ref_ < parsize) {
-		d->anchor_ref_++;
-		d->offset_ref_ -= h;
-		h = tm.parMetrics(d->anchor_ref_).height();
-	}
 	// Look at paragraph heights on-screen
 	int sumh = 0;
 	int nh = 0;
