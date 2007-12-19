@@ -392,9 +392,16 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	bool const full_metrics = flags & Update::Force;
 
-	if (full_metrics || !singleParUpdate())
+	if (full_metrics || !singleParUpdate()) {
+		if (flags & Update::FitCursor) {
+			CursorSlice const & bot = d->cursor_.bottom();
+			TextMetrics const & tm = d->text_metrics_[bot.text()];
+			if (!tm.has(bot.pit()))
+				center();
+		}
 		// We have to update the full screen metrics.
 		updateMetrics();
+	}
 
 	if (!(flags & Update::FitCursor)) {
 		buffer_.changed();
@@ -403,6 +410,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	//FIXME: updateMetrics() does not update paragraph position
 	// This is done at draw() time. So we need a redraw!
+
 	buffer_.changed();
 	if (!fitCursor())
 		// The screen has already been updated thanks to the
@@ -672,13 +680,20 @@ void BufferView::updateOffsetRef()
 	if (height_ == 0)
 		return;
 
+	d->need_centering_ = false;
+
 	CursorSlice & bot = d->cursor_.bottom();
 	TextMetrics & tm = d->text_metrics_[bot.text()];
 	ParagraphMetrics const & pm = tm.parMetrics(bot.pit());
-	int y = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
-	d->offset_ref_ = y + pm.ascent() - height_ / 2;
-
-	d->need_centering_ = false;
+	if (d->anchor_ref_ == 0)
+		d->offset_ref_ = 0;
+	else if (d->anchor_ref_ >= pos_type(bot.text()->paragraphs().size() - 1)) {
+		d->anchor_ref_ = bot.text()->paragraphs().size() - 1;
+		d->offset_ref_ = pm.height() - height_;
+	} else {
+		int y = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
+		d->offset_ref_ = y + pm.ascent() - height_ / 2;
+	}
 }
 
 
@@ -1693,6 +1708,8 @@ void BufferView::updateMetrics()
 		<< " singlepar: 0");
 
 	d->update_strategy_ = FullScreenUpdate;
+
+	updateScrollbar();
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");

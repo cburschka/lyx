@@ -460,7 +460,6 @@ void GuiWorkArea::updateScrollbar()
 {
 	verticalScrollBar()->setTracking(false);
 
-	buffer_view_->updateScrollbar();
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 
 	// do what cursor movement does (some grey)
