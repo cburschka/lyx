@@ -945,6 +945,39 @@ def revert_nobreakdash(document):
     document.header[j] = "\\use_amsmath 2"
 
 
+def revert_nocite_key(body, start, end):
+    'key "..." -> \nocite{...}'
+    for i in range(start, end):
+        if (body[i][0:5] == 'key "'):
+            body[i] = body[i].replace('key "', "\\backslash\nnocite{")
+            body[i] = body[i].replace('"', "}")
+        else:
+            body[i] = ""
+
+
+def revert_nocite(document):
+    "Revert LatexCommand nocite to ERT"
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            return
+        i = i + 1
+        if (document.body[i] == "LatexCommand nocite"):
+            j = find_end_of_inset(document.body, i + 1)
+            if j == -1:
+                #this should not happen
+                document.warning("End of CommandInset citation not found in revert_nocite!")
+                revert_nocite_key(document.body, i + 1, len(document.body))
+                return
+            revert_nocite_key(document.body, i + 1, j)
+            document.body[i-1] = "\\begin_inset ERT"
+            document.body[i] = "status collapsed\n\n" \
+            "\\begin_layout Standard"
+            document.body.insert(j, "\\end_layout\n");
+            i = j
+
+
 def revert_bahasam(document):
     "Set language Bahasa Malaysia to Bahasa Indonesia"
     i = 0
@@ -1032,10 +1065,12 @@ convert = [[277, [fix_wrong_tables]],
            [305, []],
            [306, []],
            [307, []],
-           [308, []]
+           [308, []],
+           [309, []]
           ]
 
-revert =  [[307, [revert_serbianlatin]],
+revert =  [[308, [revert_nocite]],
+           [307, [revert_serbianlatin]],
            [306, [revert_slash, revert_nobreakdash]],
            [305, [revert_interlingua]],
            [304, [revert_bahasam]],

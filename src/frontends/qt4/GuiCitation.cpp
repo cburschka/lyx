@@ -82,7 +82,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	setViewTitle(_("Citation"));
 
 	connect(citationStyleCO, SIGNAL(activated(int)),
-		this, SLOT(changed()));
+		this, SLOT(on_citationStyleCO_currentIndexChanged(int)));
 	connect(fulllistCB, SIGNAL(clicked()),
 		this, SLOT(changed()));
 	connect(forceuppercaseCB, SIGNAL(clicked()),
@@ -188,7 +188,7 @@ void GuiCitation::updateView()
 // called in update() do not need to be called for INTERNAL updates,
 // such as when addPB is pressed, as the list of fields, entries, etc,
 // will not have changed. At the moment, however, the division between
-// fillStyles() and updateStyles() doesn't lend itself to dividing the
+// fillStyles() and updateStyle() doesn't lend itself to dividing the
 // two methods, though they should be divisible.
 void GuiCitation::updateDialog()
 {
@@ -212,7 +212,7 @@ void GuiCitation::updateDialog()
 }
 
 
-void GuiCitation::updateStyle()
+void GuiCitation::updateFormatting(biblio::CiteStyle currentStyle)
 {
 	biblio::CiteEngine const engine = getEngine();
 	bool const natbib_engine =
@@ -222,15 +222,22 @@ void GuiCitation::updateStyle()
 
 	bool const haveSelection = 
 		selectedLV->model()->rowCount() > 0;
-	fulllistCB->setEnabled(natbib_engine && haveSelection);
-	forceuppercaseCB->setEnabled(natbib_engine && haveSelection);
-	textBeforeED->setEnabled(!basic_engine && haveSelection);
-	textBeforeLA->setEnabled(!basic_engine && haveSelection);
-	textAfterED->setEnabled(haveSelection);
-	textAfterLA->setEnabled(haveSelection);
-	citationStyleCO->setEnabled(!basic_engine && haveSelection);
-	citationStyleLA->setEnabled(!basic_engine && haveSelection);
 
+	bool const isNocite = currentStyle == biblio::NOCITE;
+
+	fulllistCB->setEnabled(natbib_engine && haveSelection && !isNocite);
+	forceuppercaseCB->setEnabled(natbib_engine && haveSelection && !isNocite);
+	textBeforeED->setEnabled(!basic_engine && haveSelection && !isNocite);
+	textBeforeLA->setEnabled(!basic_engine && haveSelection && !isNocite);
+	textAfterED->setEnabled(haveSelection && !isNocite);
+	textAfterLA->setEnabled(haveSelection && !isNocite);
+	citationStyleCO->setEnabled(haveSelection);
+	citationStyleLA->setEnabled(haveSelection);
+}
+
+
+void GuiCitation::updateStyle()
+{
 	string const & command = params_.getCmdName();
 
 	// Find the style of the citekeys
@@ -255,8 +262,8 @@ void GuiCitation::updateStyle()
 		fulllistCB->setChecked(false);
 		forceuppercaseCB->setChecked(false);
 	}
+	updateFormatting(cs.style);
 }
-
 
 //This one needs to be called whenever citationStyleCO needs
 //to be updated---and this would be on anything that changes the
@@ -283,12 +290,10 @@ void GuiCitation::fillStyles()
 
 	QStringList sty = citationStyles(curr);
 
-	bool const basic_engine = (getEngine() == biblio::ENGINE_BASIC);
+	citationStyleCO->setEnabled(!sty.isEmpty());
+	citationStyleLA->setEnabled(!sty.isEmpty());
 
-	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
-	citationStyleLA->setEnabled(!sty.isEmpty() && !basic_engine);
-
-	if (sty.isEmpty() || basic_engine)
+	if (sty.isEmpty())
 		return;
 
 	citationStyleCO->insertItems(0, sty);
@@ -403,6 +408,15 @@ void GuiCitation::on_entriesCO_currentIndexChanged(int /*index*/)
 }
 
 
+void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
+{
+	if (index >= 0 && index < citationStyleCO->count()) {
+		vector<biblio::CiteStyle> const & styles = citeStyles_;
+		updateFormatting(styles[index]);
+	}
+}
+
+
 void GuiCitation::on_findLE_textChanged(const QString & text)
 {
 	clearPB->setDisabled(text.isEmpty());
@@ -426,19 +440,24 @@ void GuiCitation::on_regexCB_stateChanged(int)
 
 void GuiCitation::changed()
 {
-	fillStyles();
 	setButtons();
 }
 
 
-void GuiCitation::apply(int const choice, bool const full, bool const force,
+void GuiCitation::apply(int const choice, bool full, bool force,
 	QString before, QString after)
 {
 	if (cited_keys_.isEmpty())
 		return;
 
 	vector<biblio::CiteStyle> const & styles = citeStyles_;
-
+	if (styles[choice] == biblio::NOCITE) {
+		full = false;
+		force = false;
+		before.clear();
+		after.clear();
+	}
+	
 	string const command =
 		biblio::CitationStyle(styles[choice], full, force)
 		.asLatexStr();
@@ -575,17 +594,9 @@ bool GuiCitation::initialiseParams(string const & data)
 
 	biblio::CiteEngine const engine = buffer().params().getEngine();
 
-	bool use_styles = engine != biblio::ENGINE_BASIC;
-
 	bibkeysInfo_.fillWithBibKeys(&buffer());
 	
-	if (citeStyles_.empty())
-		citeStyles_ = biblio::getCiteStyles(engine);
-	else {
-		if ((use_styles && citeStyles_.size() == 1) ||
-		    (!use_styles && citeStyles_.size() != 1))
-			citeStyles_ = biblio::getCiteStyles(engine);
-	}
+	citeStyles_ = biblio::getCiteStyles(engine);
 
 	return true;
 }

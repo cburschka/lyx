@@ -282,7 +282,8 @@ vector<docstring> const BiblioInfo::getCiteStrings(
 	docstring const & key, Buffer const & buf) const
 {
 	biblio::CiteEngine const engine = buf.params().getEngine();
-	if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
+	if (engine == biblio::ENGINE_BASIC || 
+	    engine == biblio::ENGINE_NATBIB_NUMERICAL)
 		return getNumericalStrings(key, buf);
 	else
 		return getAuthorYearStrings(key, buf);
@@ -304,13 +305,17 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 		biblio::getCiteStyles(buf.params().getEngine());
 	
 	vector<docstring> vec(styles.size());
-	for (size_t i = 0; i != vec.size(); ++i) {
+	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {
 		docstring str;
 
 		switch (styles[i]) {
 			case biblio::CITE:
 			case biblio::CITEP:
 				str = from_ascii("[#ID]");
+				break;
+
+			case biblio::NOCITE:
+				str = _("Add to bibliography only.");
 				break;
 
 			case biblio::CITET:
@@ -368,6 +373,10 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 		// jurabib only: Author/Annotator
 		// (i.e. the "before" field, 2nd opt arg)
 				str = author + "/<" + _("before") + '>';
+				break;
+
+			case biblio::NOCITE:
+				str = _("Add to bibliography only.");
 				break;
 
 			case biblio::CITET:
@@ -435,15 +444,15 @@ namespace {
 
 
 char const * const citeCommands[] = {
-	"cite", "citet", "citep", "citealt", "citealp", "citeauthor",
-	"citeyear", "citeyearpar" };
+	"cite", "nocite", "citet", "citep", "citealt", "citealp",
+	"citeauthor", "citeyear", "citeyearpar" };
 
 unsigned int const nCiteCommands =
 		sizeof(citeCommands) / sizeof(char *);
 
 CiteStyle const citeStyles[] = {
-	CITE, CITET, CITEP, CITEALT, CITEALP,
-CITEAUTHOR, CITEYEAR, CITEYEARPAR };
+	CITE, NOCITE, CITET, CITEP, CITEALT,
+CITEALP, CITEAUTHOR, CITEYEAR, CITEYEARPAR };
 
 unsigned int const nCiteStyles =
 		sizeof(citeStyles) / sizeof(CiteStyle);
@@ -517,7 +526,7 @@ vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
 
 	switch (engine) {
 		case ENGINE_BASIC:
-			nStyles = 1;
+			nStyles = 2;
 			start = 0;
 			break;
 		case ENGINE_NATBIB_AUTHORYEAR:

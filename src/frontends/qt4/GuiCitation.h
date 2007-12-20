@@ -65,6 +65,7 @@ private Q_SLOTS:
 	void on_findLE_textChanged(const QString & text);
 	void on_fieldsCO_currentIndexChanged(int index);
 	void on_entriesCO_currentIndexChanged(int index);
+	void on_citationStyleCO_currentIndexChanged(int index);
 	void on_caseCB_stateChanged(int);
 	void on_regexCB_stateChanged(int);
 	void changed();
@@ -84,6 +85,8 @@ private:
 	void fillEntries();
 	/// set the styles combo
 	void updateStyle();
+	/// set the formatting widgets
+	void updateFormatting(biblio::CiteStyle currentStyle);
 	/// last used citation style
 	int style_;
 	

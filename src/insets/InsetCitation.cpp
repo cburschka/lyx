@@ -17,6 +17,7 @@
 #include "BufferParams.h"
 #include "support/debug.h"
 #include "DispatchResult.h"
+#include "support/gettext.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
@@ -36,7 +37,7 @@ namespace {
 vector<string> const init_possible_cite_commands()
 {
 	char const * const possible[] = {
-		"cite", "citet", "citep", "citealt", "citealp",
+		"cite", "nocite", "citet", "citep", "citealt", "citealp",
 		"citeauthor", "citeyear", "citeyearpar",
 		"citet*", "citep*", "citealt*", "citealp*", "citeauthor*",
 		"Citet",  "Citep",  "Citealt",  "Citealp",  "Citeauthor",
@@ -91,7 +92,7 @@ string const
 	string output;
 	switch (engine) {
 		case biblio::ENGINE_BASIC:
-			output = default_str;
+			output = input;
 			break;
 
 		case biblio::ENGINE_NATBIB_AUTHORYEAR:
@@ -125,7 +126,7 @@ string const
 }
 
 
-docstring const getNatbibLabel(Buffer const & buffer,
+docstring const getComplexLabel(Buffer const & buffer,
 			    string const & citeType, docstring const & keyList,
 			    docstring const & before, docstring const & after,
 			    biblio::CiteEngine engine)
@@ -209,16 +210,25 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	}
 
 	docstring after_str;
-	if (!after.empty()) {
-		// The "after" key is appended only to the end of the whole.
+	// The "after" key is appended only to the end of the whole.
+	if (cite_type == "nocite")
+		after_str =  " (" + _("not cited") + ')';
+	else if (!after.empty()) {
 		after_str = ", " + after;
 	}
 
 	// One day, these might be tunable (as they are in BibTeX).
-	char const op  = '('; // opening parenthesis.
-	char const cp  = ')'; // closing parenthesis.
-	// puctuation mark separating citation entries.
-	char const * const sep = ";";
+	char op, cp;	// opening and closing parenthesis.
+	char * sep;	// punctuation mark separating citation entries.
+	if (engine == biblio::ENGINE_BASIC) {
+		op  = '[';
+		cp  = ']';
+		sep = ",";
+	} else {
+		op  = '(';
+		cp  = ')';
+		sep = ";";
+	}
 
 	docstring const op_str = ' ' + docstring(1, op);
 	docstring const cp_str = docstring(1, cp) + ' ';
@@ -239,11 +249,19 @@ docstring const getNatbibLabel(Buffer const & buffer,
 
 		// authors1/<before>;  ... ;
 		//  authors_last, <after>
-		if (cite_type == "cite" && engine == biblio::ENGINE_JURABIB) {
-			if (it == keys.begin())
-				label += author + before_str + sep_str;
-			else
-				label += author + sep_str;
+		if (cite_type == "cite") {
+			if (engine == biblio::ENGINE_BASIC) {
+				label += *it + sep_str;
+			} else if (engine == biblio::ENGINE_JURABIB) {
+				if (it == keys.begin())
+					label += author + before_str + sep_str;
+				else
+					label += author + sep_str;
+			}
+
+		// nocite
+		} else if (cite_type == "nocite") {
+			label += *it + sep_str;
 
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
@@ -324,7 +342,8 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		label = before_str + label;
 	}
 
-	if (cite_type == "citep" || cite_type == "citeyearpar")
+	if (cite_type == "citep" || cite_type == "citeyearpar" || 
+	    (cite_type == "cite" && engine == biblio::ENGINE_BASIC) )
 		label = op + label + cp;
 
 	return label;
@@ -390,10 +409,8 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 
 	docstring label;
 	biblio::CiteEngine const engine = buffer.params().getEngine();
-	if (engine != biblio::ENGINE_BASIC) {
-		label = getNatbibLabel(buffer, getCmdName(), getParam("key"),
-				       before, after, engine);
-	}
+	label = getComplexLabel(buffer, getCmdName(), getParam("key"),
+			       before, after, engine);
 
 	// Fallback to fail-safe
 	if (label.empty())

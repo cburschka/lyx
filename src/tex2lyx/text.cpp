@@ -87,7 +87,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 }
 
 
-char const * const known_latex_commands[] = { "ref", "cite", "label",
+char const * const known_latex_commands[] = { "ref", "cite", "nocite", "label",
  "index", "printindex", "pageref", "url", "vref", "vpageref", "prettyref",
  "eqref", 0 };
 

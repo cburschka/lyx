@@ -36,6 +36,7 @@ enum CiteEngine {
 
 enum CiteStyle {
 	CITE,
+	NOCITE,
 	CITET,
 	CITEP,
 	CITEALT,
