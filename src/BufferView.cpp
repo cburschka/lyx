@@ -454,7 +454,7 @@ void BufferView::updateScrollbar()
 			Row const & row = pm.rows()[i];
 			if (row_pos >= 0) {
 				LYXERR(Debug::SCROLLING, "first visible row " << i
-					<< "(row pos = )" << row_pos << ");");
+					<< "(row pos = " << row_pos << ");");
 				break;
 			}
 			row_pos += row.height();
@@ -469,8 +469,8 @@ void BufferView::updateScrollbar()
 		d->scrollbarParameters_.height += d->par_height_[i];
 	}
 
-	d->scrollbarParameters_.lineScrollHeight =
-		tm.parMetrics(first_visible_pit).rows()[0].height();
+	// We prefer fixed size line scrolling.
+	d->scrollbarParameters_.lineScrollHeight = defaultRowHeight();
 }
 
 
