@@ -424,7 +424,7 @@ void BufferView::updateScrollbar()
 		<< " curr par: " << d->cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight());
 
-	int const parsize = int(t.paragraphs().size() - 1);
+	int const parsize = int(t.paragraphs().size());
 	if (d->par_height_.size() != parsize) {
 		d->par_height_.clear();
 		// FIXME: We assume a default paragraph height of 4 rows. This
@@ -695,12 +695,13 @@ void BufferView::showCursor()
 	int offset = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
 
 	d->anchor_pit_ = bot_pit;
+	Dimension const & row_dim = d->cursor_.textRow().dimension();
 
 	if (d->anchor_pit_ == 0)
 		d->anchor_ypos_ = offset + pm.ascent();
 	else if (d->anchor_pit_ >= pos_type(bot.text()->paragraphs().size() - 1)) {
 		d->anchor_pit_ = bot.text()->paragraphs().size() - 1;
-		d->anchor_ypos_ = offset + pm.height() - height_;
+		d->anchor_ypos_ = height_ - offset - row_dim.descent();
 	} else {
 		d->anchor_ypos_ = offset + pm.ascent() - height_ / 2;
 	}
