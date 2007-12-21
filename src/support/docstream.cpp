@@ -267,6 +267,15 @@ private:
 
 namespace lyx {
 
+template<class Ios>
+void setEncoding(Ios & ios, string const & encoding, std::ios_base::openmode mode)
+{
+	// We must imbue the stream before openening the file
+	std::locale global;
+	std::locale locale(global, new iconv_codecvt_facet(encoding, mode));
+	ios.imbue(locale);
+}
+
 
 const char * iconv_codecvt_facet_exception::what() const throw()
 {
@@ -276,9 +285,7 @@ const char * iconv_codecvt_facet_exception::what() const throw()
 
 idocfstream::idocfstream(string const & encoding) : base()
 {
-	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(encoding, in));
-	imbue(locale);
+	setEncoding(*this, encoding, in);
 }
 
 
@@ -286,19 +293,19 @@ idocfstream::idocfstream(const char* s, std::ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
-	// We must imbue the stream before openening the file
-	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(encoding, in));
-	imbue(locale);
+	setEncoding(*this, encoding, in);
 	open(s, mode);
+}
+
+
+odocfstream::odocfstream(): base()
+{
 }
 
 
 odocfstream::odocfstream(string const & encoding) : base()
 {
-	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(encoding, out));
-	imbue(locale);
+	setEncoding(*this, encoding, out);
 }
 
 
@@ -306,12 +313,16 @@ odocfstream::odocfstream(const char* s, std::ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
-	// We must imbue the stream before openening the file
-	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(encoding, out));
-	imbue(locale);
+	setEncoding(*this, encoding, out);
 	open(s, mode);
 }
+
+
+void odocfstream::reset(string const & encoding)
+{
+	setEncoding(*this, encoding, out);
+}
+
 
 
 SetEnc setEncoding(string const & encoding)

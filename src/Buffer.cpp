@@ -934,7 +934,15 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	LYXERR(Debug::LATEX) << "makeLaTeXFile encoding: "
 		<< encoding << "..." << endl;
 
-	odocfstream ofs(encoding);
+	odocfstream ofs;
+	try { ofs.reset(encoding); }
+	catch (iconv_codecvt_facet_exception & e) {
+		lyxerr << "Caught iconv exception: " << e.what() << endl;
+		Alert::error(_("Iconv software exception Detected"), bformat(_("Please "
+			"verify that the support software for your encoding (%1$s) is "
+			"properly installed"), from_ascii(encoding)));
+		return false;
+	}
 	if (!openFileWrite(ofs, fname))
 		return false;
 
