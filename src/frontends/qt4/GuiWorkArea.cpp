@@ -308,6 +308,8 @@ void GuiWorkArea::redraw()
 	updateScreen();
 	update(0, 0, viewport()->width(), viewport()->height());
 
+	/// \warning: scrollbar updating *must* be done after the BufferView is drawn
+	/// because \c BufferView::updateScrollbar() is called in \c BufferView::draw().
 	updateScrollbar();
 	lyx_view_->updateStatusBar();
 
