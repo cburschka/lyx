@@ -442,20 +442,31 @@ void BufferView::updateScrollbar()
 	for (pit_type pit = first.first; pit <= last.first; ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		d->par_height_[pit] = pm.height();
-		if (first_visible_pit < 0 && pm.position() + pm.descent() > 0)
-			first_visible_pit = pit;
+		if (first_visible_pit >= 0 || pm.position() + pm.descent() <= 0)
+			continue;
+		first_visible_pit = pit;
+		LYXERR(Debug::SCROLLING, "first visible pit " << first_visible_pit);
+		// FIXME: we should look for the first visible row within
+		// the deepest inset!
+		int row_pos = pm.position();
+		size_t const nrows = pm.rows().size();
+		for (size_t i = 0; i != nrows; ++i) {
+			Row const & row = pm.rows()[i];
+			if (row_pos >= 0) {
+				LYXERR(Debug::SCROLLING, "first visible row " << i
+					<< "(row pos = )" << row_pos << ");");
+				break;
+			}
+			row_pos += row.height();
+		}
+		d->scrollbarParameters_.position = row_pos;
 	}
-
-	LYXERR(Debug::SCROLLING, "first_visible_pit " << first_visible_pit);
 
 	d->scrollbarParameters_.height = 0;
 	for (size_t i = 0; i != d->par_height_.size(); ++i) {
+		if (i == first_visible_pit)
+			d->scrollbarParameters_.position += d->scrollbarParameters_.height;
 		d->scrollbarParameters_.height += d->par_height_[i];
-		if (i != first_visible_pit)
-			continue;
-		// FIXME: we should look for the first visible row within
-		// the deepest inset!
-		d->scrollbarParameters_.position = d->scrollbarParameters_.height;
 	}
 
 	d->scrollbarParameters_.lineScrollHeight =
