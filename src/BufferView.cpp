@@ -862,7 +862,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 }
 
 
-Update::flags BufferView::dispatch(FuncRequest const & cmd)
+bool BufferView::dispatch(FuncRequest const & cmd)
 {
 	//lyxerr << [ cmd = " << cmd << "]" << endl;
 
@@ -874,27 +874,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		<< " button[" << cmd.button() << ']');
 
 	Cursor & cur = d->cursor_;
-	// Default Update flags.
-	Update::flags updateFlags = Update::Force | Update::FitCursor;
 
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
 		cur.message(_("Undo"));
 		cur.clearSelection();
-		if (!cur.textUndo()) {
+		if (!cur.textUndo())
 			cur.message(_("No further undo information"));
-			updateFlags = Update::None;
-		}
 		break;
 
 	case LFUN_REDO:
 		cur.message(_("Redo"));
 		cur.clearSelection();
-		if (!cur.textRedo()) {
+		if (!cur.textRedo())
 			cur.message(_("No further redo information"));
-			updateFlags = Update::None;
-		}
 		break;
 
 	case LFUN_FONT_STATE:
@@ -945,7 +939,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 					theLyXFunc().dispatch(FuncRequest(
 						LFUN_BUFFER_SWITCH, b->absFileName()));
 					theLyXFunc().dispatch(cmd);
-					updateFlags = Update::None;
 				}
 				break;
 			}
@@ -1175,13 +1168,14 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		//FIXME: what to do with cur.x_target()?
 		cur.finishUndo();
-		// The metrics are already up to date. see scroll()
-		updateFlags = Update::None;
 		break;
 	}
 
 	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_DOWN_SELECT: {
+		// Those two are not ready yet for consumption.
+		return false;
+
 		cur.selHandle(true);
 		size_t initial_depth = cur.depth();
 		Point const p = getPos(cur, cur.boundary());
@@ -1197,15 +1191,14 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		// But no screen update is needed.
 		d->update_strategy_ = NoScreenUpdate;
 		buffer_.changed();
-		updateFlags = Update::Force | Update::FitCursor;
 		break;
 	}
 
 	default:
-		updateFlags = Update::None;
+		return false;
 	}
 
-	return updateFlags;
+	return true;
 }
 
 

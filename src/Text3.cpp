@@ -486,6 +486,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			cur.undispatched();
 		}
+		cur.updateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_BUFFER_END:
@@ -496,6 +497,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			cur.undispatched();
 		}
+		cur.updateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_CHAR_FORWARD:

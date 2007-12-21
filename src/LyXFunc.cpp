@@ -1744,7 +1744,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LyX::ref().session().bookmarks().clear();
 			break;
 
-		default: {
+		default:
 			BOOST_ASSERT(theApp());
 			// Let the frontend dispatch its own actions.
 			if (theApp()->dispatch(cmd))
@@ -1759,20 +1759,21 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 
-			// FIXME: Probably a good idea to inverse the Cursor and BufferView
-			// dispatching.
+			BOOST_ASSERT(lyx_view_->view());
+			// Let the current BufferView dispatch its own actions.
+			if (view()->dispatch(cmd)) {
+				// The BufferView took care of its own updates if needed.
+				updateFlags = Update::None;
+				break;
+			}
 
 			// Let the current Cursor dispatch its own actions.
-			BOOST_ASSERT(lyx_view_->view());
 			view()->cursor().getPos(cursorPosBeforeDispatchX_,
 						cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
-			if (!view()->cursor().result().dispatched())
-				// Let the current BufferView dispatch its own actions.
-				updateFlags = view()->dispatch(cmd);
-			break;
-		}
+			// Verify that the action has been dispatched.
+			BOOST_ASSERT(view()->cursor().result().dispatched());
 		}
 
 		if (lyx_view_ && lyx_view_->buffer()) {
