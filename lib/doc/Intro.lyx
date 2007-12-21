@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -695,25 +695,27 @@ styles: Alters the default behavior of LaTeX in some way.
 \end_layout
 
 \begin_layout Description
-LyX: Visual, WYSIWYM word-processor that uses LaTeX to do its printing.
+LyX: Visual, WYSIWYM word-processor that uses LaTeX to do its typesetting.
 \end_layout
 
 \begin_layout Standard
-LaTeX makes LyX different from other word processors.
- LyX is a graphical user interface (GUI) frontend for LaTeX, designed to
- typeset documents without knowing LaTeX's macro commands.
- LyX does not provide graphical support for all the countless existing LaTeX
- macros, but can parse all of them.
- Thus LyX is every bit as functional as LaTeX.
-\end_layout
-
-\begin_layout Standard
-Just like LaTeX, LyX focuses on the context of your writing --- 
+This section attempts to account for the difference between LyX and other
+ word processors.
+ Simply put, LaTeX is the difference.
+ By using LaTeX as its backend, LyX helps you think more about 
 \emph on
-what
+ what 
 \emph default
- you are typing.
- The computer then handles how it should look.
+ (as in the 
+\emph on
+words
+\emph default
+) you write.
+ The computer then handles 
+\emph on
+how
+\emph default
+ they should look.
 \end_layout
 
 \begin_layout Section
