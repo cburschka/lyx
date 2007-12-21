@@ -242,8 +242,7 @@ public:
 	int leftMargin(int max_width, pit_type pit) const;
 
 private:
-
-	friend BufferView;
+	friend class BufferView;
 
 	/// The BufferView owner.
 	BufferView * bv_;
