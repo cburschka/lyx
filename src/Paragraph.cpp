@@ -2229,10 +2229,18 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		rp.free_spacing = style->free_spacing;
 		rp.local_font = &font;
 		rp.intitle = style->intitle;
-		pimpl_->simpleTeXSpecialChars(buf, bparams, os,
+		
+		try {
+			pimpl_->simpleTeXSpecialChars(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column, c);
+		} catch (EncodingException & e) {
+			// add location information and throw again.
+			e.par_id = id();
+			e.pos = i;
+			throw(e);
+		}
 
 		// Set the encoding to that returned from simpleTeXSpecialChars (see
 		// comment for encoding member in OutputParams.h)

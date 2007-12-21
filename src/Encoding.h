@@ -24,6 +24,17 @@ namespace support { class FileName; }
 
 class LaTeXFeatures;
 
+class EncodingException : public std::exception {
+public:
+	EncodingException(char_type c);
+	virtual ~EncodingException() throw() {}
+	virtual const char * what() const throw();
+
+	char_type failed_char;
+	int par_id;
+	pos_type pos;
+};
+
 
 ///
 class Encoding {
