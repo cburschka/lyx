@@ -387,35 +387,27 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		return;
 	}
 
-	bool const full_metrics = flags & Update::Force;
+	bool const full_metrics = flags & Update::Force || !singleParUpdate();
 
-	if (full_metrics || !singleParUpdate()) {
-		if (flags & Update::FitCursor && fitCursor()) {
-			showCursor();
-			return;
-		}
+	if (full_metrics)
 		// We have to update the full screen metrics.
 		updateMetrics();
-	}
 
 	if (!(flags & Update::FitCursor)) {
+		// Nothing to do anymore. Trigger a redraw and return
 		buffer_.changed();
 		return;
 	}
 
-	//FIXME: updateMetrics() does not update paragraph position
+	// updateMetrics() does not update paragraph position
 	// This is done at draw() time. So we need a redraw!
-
 	buffer_.changed();
-	if (!fitCursor())
-		// The screen has already been updated thanks to the
-		// 'buffer_.changed()' call three line above. So no need
-		// to redraw again.
-		return;
 
-	// The screen needs to be recentered around the cursor position so
-	// refresh it:
-	showCursor();
+	if (fitCursor()) {
+		// The cursor is off screen so ensure it is visible.
+		// refresh it:
+		showCursor();
+	}
 }
 
 
@@ -691,9 +683,9 @@ void BufferView::showCursor()
 		int ypos = pm.position() + offset;
 		Dimension const & row_dim = d->cursor_.textRow().dimension();
 		if (ypos - row_dim.ascent() < 0)
-			scrollUp(- ypos + d->cursor_.textRow().ascent());
+			scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
-			scrollDown(ypos - height_ + d->cursor_.textRow().descent());
+			scrollDown(ypos - height_ + row_dim.descent());
 		// else, nothing to do, the cursor is already visible so we just return.
 		return;
 	}
