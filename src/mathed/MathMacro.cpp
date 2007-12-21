@@ -52,13 +52,13 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
 		mathMacro_.cell(idx_).metrics(mi, dim);
-		if (!mathMacro_.editing() && !def_.empty())
+		if (!mathMacro_.editing(mi.base.bv) && !def_.empty())
 			def_.metrics(mi, dim);
 		mathMacro_.macro()->lock();
 	}
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
-		if (mathMacro_.editing()) {
+		if (mathMacro_.editing(pi.base.bv)) {
 			// The only way a ArgumentProxy can appear is in a cell of the 
 			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED 
 			// mode and then, in the case of "editing_ == true" the monochrome 
@@ -101,9 +101,8 @@ private:
 
 MathMacro::MathMacro(docstring const & name)
 	: InsetMathNest(0), name_(name), displayMode_(DISPLAY_INIT),
-		attachedArgsNum_(0), previousCurIdx_(-1), 
-		optionals_(0), nextFoldMode_(true),
-		macro_(0), editing_(false), needsUpdate_(false)
+		attachedArgsNum_(0), optionals_(0), nextFoldMode_(true),
+		macro_(0), needsUpdate_(false)
 {}
 
 
@@ -184,7 +183,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		macro_->unlock();
 
 		// calculate dimension with label while editing
-		if (editing_) {
+		if (editing_[mi.base.bv]) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension namedim;
@@ -206,7 +205,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 int MathMacro::kerning() const {
-	if (displayMode_ == DISPLAY_NORMAL && !editing_)
+	if (displayMode_ == DISPLAY_NORMAL)
 		return expanded_.kerning();
 	else
 		return 0;
@@ -231,9 +230,10 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 {
 	// index of child where the cursor is (or -1 if none is edited)
 	int curIdx = -1;
-	if (bvCur)
+	if (bvCur) {
 		curIdx = cursorIdx(*bvCur);
-	previousCurIdx_ = curIdx;
+		previousCurIdx_[&bvCur->bv()] = curIdx;
+	}
 
 	// known macro?
 	if (macro_ == 0)
@@ -247,14 +247,17 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 		return;
 
 	// set edit mode to draw box around if needed
-	bool prevEditing = editing_; 
-	editing_ = false;
-	if (bvCur)
-		editing_ = editMode(*bvCur);
+	bool prevEditing = false;
+	bool editing = false;
+	if (bvCur) {
+		prevEditing = editing_[&bvCur->bv()];
+		editing = editMode(*bvCur);
+		editing_[&bvCur->bv()] = editing;
+	}
 	
 	// editMode changed and we have to switch default value and hole of optional?
 	if (optionals_ > 0 && nargs() > 0 && 
-	    prevEditing != editing_)
+	    prevEditing != editing)
 		needsUpdate_ = true;
 	
 	// macro changed?
@@ -310,7 +313,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (editing_) {
+		if (editing_[pi.base.bv]) {
 			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
@@ -334,13 +337,14 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			expanded_.cell(0).draw(pi, expx, expy);
 
 		// draw frame while editing
-		if (editing_)
+		if (editing_[pi.base.bv])
 			pi.pain.rectangle(x, y - dim.asc, dim.wid, dim.height(), Color_mathmacroframe);
 	}
 
 	// another argument selected?
 	idx_type curIdx = cursorIdx(pi.base.bv->cursor());
-	if (previousCurIdx_ != curIdx || editing_ != editMode(pi.base.bv->cursor()))
+	if (previousCurIdx_[pi.base.bv] != curIdx 
+			|| editing_[pi.base.bv] != editMode(pi.base.bv->cursor()))
 		pi.base.bv->cursor().updateFlags(Update::Force);
 }
 

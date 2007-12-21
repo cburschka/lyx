@@ -18,8 +18,9 @@
 #include "MacroTable.h"
 #include "MathData.h"
 
-namespace lyx {
+#include <map>
 
+namespace lyx {
 
 /// This class contains the data for a macro.
 class MathMacro : public InsetMathNest {
@@ -98,7 +99,6 @@ public:
 	///
 	bool extraBraces() const { return displayMode_ == DISPLAY_NORMAL && arity() > 0; }
 
-	
 	///
 	docstring name() const;
 	///
@@ -139,7 +139,7 @@ protected:
 	/// including the optional ones (even if it can be empty here)
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 	///
-	bool editing() { return editing_; }
+	bool editing(BufferView * bv) { return editing_[bv]; }
 	///
 	MacroData const * macro() { return macro_; }
 
@@ -160,7 +160,7 @@ private:
 	/// number of arguments that were really attached
 	size_t attachedArgsNum_;
 	/// cursor position during last draw
-	idx_type previousCurIdx_;
+	mutable std::map<BufferView const *, idx_type> previousCurIdx_;
 	/// optional argument attached? (only in DISPLAY_NORMAL mode)
 	size_t optionals_;
 	/// fold mode to be set in next metrics call?
@@ -172,7 +172,7 @@ private:
 	/// this might invalidate after metrics was called
 	MacroData const * macro_;
 	///
-	bool editing_;
+	mutable std::map<BufferView const *, bool> editing_;
 	///
 	std::string requires_;
 	/// update macro representation
