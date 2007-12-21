@@ -427,9 +427,9 @@ void BufferView::updateScrollbar()
 	int const parsize = int(t.paragraphs().size());
 	if (d->par_height_.size() != parsize) {
 		d->par_height_.clear();
-		// FIXME: We assume a default paragraph height of 4 rows. This
+		// FIXME: We assume a default paragraph height of 2 rows. This
 		// should probably be pondered with the screen width.
-		d->par_height_.resize(parsize, defaultRowHeight() * 4);
+		d->par_height_.resize(parsize, defaultRowHeight() * 2);
 	}
 
 	// It would be better to fix the scrollbar to understand
@@ -483,8 +483,8 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 void BufferView::scrollDocView(int value)
 {
 	int const offset = value - d->scrollbarParameters_.position;
-	//TextMetrics & tm = d->text_metrics_[&buffer_.text()];
-	if (abs(offset) <= 3*height_) {
+	// If the offset is less than 2 screen height, prefer to scroll instead.
+	if (abs(offset) <= 2 * height_) {
 		scroll(offset);
 		return;
 	}
