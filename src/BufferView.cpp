@@ -374,7 +374,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		|| flags == (Update::Decoration | Update::FitCursor)) {
 		// tell the frontend to update the screen if needed.
 		if (fitCursor()) {
-			center();
+			showCursor();
 			return;
 		}
 		if (flags & Update::Decoration) {
@@ -391,7 +391,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	if (full_metrics || !singleParUpdate()) {
 		if (flags & Update::FitCursor && fitCursor()) {
-			center();
+			showCursor();
 			return;
 		}
 		// We have to update the full screen metrics.
@@ -415,7 +415,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	// The screen needs to be recentered around the cursor position so
 	// refresh it:
-	center();
+	showCursor();
 }
 
 
@@ -638,7 +638,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// So we need a redraw!
 		buffer_.changed();
 		if (fitCursor())
-			center();
+			showCursor();
 	}
 
 	return success;
@@ -667,7 +667,7 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::center()
+void BufferView::showCursor()
 {
 	// We are not properly started yet, delay until resizing is
 	// done.
@@ -1074,7 +1074,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_SCREEN_RECENTER:
-		center();
+		showCursor();
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
@@ -1174,7 +1174,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		Point p = getPos(cur, cur.boundary());
 		if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
-			center();
+			showCursor();
 			p = getPos(cur, cur.boundary());
 		}
 		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);

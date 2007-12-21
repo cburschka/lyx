@@ -125,8 +125,10 @@ public:
 	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
 
-	/// center the document view around the cursor.
-	void center();
+	/// Ensure the cursor is visible.
+	/// This method will automatically scroll and update the BufferView and updated 
+	/// if needed.
+	void showCursor();
 	/// scroll down document by the given number of pixels.
 	void scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.
@@ -272,9 +274,6 @@ private:
 	int height_;
 	///
 	Buffer & buffer_;
-
-	///
-	void updateOffsetRef();
 
 	struct Private;
 	Private * const d;
