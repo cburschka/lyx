@@ -1065,6 +1065,8 @@ void GuiView::newDocument(string const & filename, bool from_template)
 
 	if (b)
 		setBuffer(b);
+	// Ensure the cursor is correctly positionned on screen.
+	view()->showCursor();
 }
 
 
