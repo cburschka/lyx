@@ -1,0 +1,150 @@
+#\DeclareLyXModule[covington.sty]{Defines some special environments useful for linguistics (numbered examples, glosses, semantic markup).}{Linguistics}
+
+# Author: Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 5
+
+# single numbered example with covington.sty
+Style Numbered_Example_(multiline)
+	LatexType             Environment
+	LatexName             example
+	NextNoIndent          1
+	LeftMargin            XExample:
+	LabelSep              xx
+	ParSkip               0.0
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           "Example:"
+	LabelFont
+		Shape         Italic
+		Color         Blue
+	EndFont
+	Preamble
+		\usepackage{covington}
+	EndPreamble
+End
+
+
+# multiple numbered examples with covington.sty
+Style Numbered_Examples_(consecutive)
+	CopyStyle	      Numbered_Example_(multiline)
+	Margin                Static
+	LeftMargin            XExamples:
+	LatexType             Item_Environment
+	LatexName             examples
+	LabelString           "Examples:"
+End
+
+
+# multiple numbered example with covington.sty
+Style Subexample
+	CopyStyle	      Numbered_Example_(multiline)
+	Margin                Static
+	LatexType             Item_Environment
+	LatexName             subexample
+	LeftMargin            XSubexample:
+	LabelString           "Subexample:"
+	Preamble
+		\usepackage{covington}
+		\usepackage{enumitem}
+		\newenvironment{subexample}{%
+			\begin{example}\begin{enumerate}[leftmargin=1.7em]
+			\renewcommand\theenumi{\alph{enumi}}
+			\renewcommand\labelenumi{(\theenumi)}
+			\renewcommand\p@enumi{\theequation\,}}%
+			{\end{enumerate}\end{example}}
+	EndPreamble
+End
+
+
+# glosse (2 lines) with covington.sty
+# mandatory translation must be entered verbatim!
+InsetLayout Custom:Glosse
+	LyXType               custom
+	LabelString           Glosse
+	LatexType             environment
+	LatexName             linggloss
+	Decoration            minimalistic
+	LabelFont
+	  Size                Small
+	EndFont
+	MultiPar              true
+	PassThru              true
+	FreeSpacing           true
+	Preamble
+		\usepackage{covington}
+		\@ifundefined{linggloss}{%
+		\newenvironment{linggloss}[1]{%
+			\gll #1}
+		{\glend}}{}
+	EndPreamble
+End
+
+
+# glosse (3 lines) with covington.sty
+# mandatory translation must be entered verbatim!
+InsetLayout Custom:Tri-Glosse
+	LyXType               custom
+	LabelString           Tri-Glosse
+	LatexType             environment
+	LatexName             lingglosss
+	Decoration            minimalistic
+	LabelFont
+	  Size                Small
+	EndFont
+	MultiPar              true
+	PassThru              true
+	FreeSpacing           true
+	Preamble
+		\usepackage{covington}
+		\@ifundefined{lingglosss}{%
+		\newenvironment{lingglosss}[1]{%
+			\glll #1}
+		{\glend}}{}
+	EndPreamble
+End
+
+
+InsetLayout CharStyle:Expression
+	LyxType               charstyle
+	LabelString           expr.
+	LatexType             command
+	LatexName             lingexpr
+	Font
+	  Shape               Italic
+	EndFont
+	Preamble
+		\newcommand{\lingexpr}[1]{\emph{#1}}
+	EndPreamble
+End
+
+
+InsetLayout CharStyle:Concepts
+	LyxType               charstyle
+	LabelString           concept
+	LatexType             command
+	LatexName             lingconcept
+	Font
+	  Shape               Smallcaps
+	EndFont
+	Preamble
+		\newcommand{\lingconcept}[1]{\textsc{#1}}
+	EndPreamble
+End
+
+
+InsetLayout CharStyle:Meaning
+	LyxType               charstyle
+	LabelString           meaning
+	LatexType             command
+	LatexName             lingmeaning
+	Preamble
+		\usepackage{csquotes}
+		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
+	EndPreamble
+End

@@ -1,0 +1,724 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 308
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\end_preamble
+\begin_modules
+Linguistics
+\end_modules
+\language english
+\inputencoding auto
+\font_roman lmodern
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Writing linguistic papers with LyX
+\end_layout
+
+\begin_layout Author
+Jürgen Spitzmüller
+\newline
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Standard
+
+<spitz@lyx.org>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+18/12/2007
+\end_layout
+
+\begin_layout Abstract
+This paper describes some features that LyX provides to linguists.
+ It demonstrates how to use some native support in order to produce numbered
+ examples, glosses, semantic markup, and phonetic symbols (IPA).
+\end_layout
+
+\begin_layout Section
+Aims and prerequisites
+\end_layout
+
+\begin_layout Standard
+Basically, this paper describes the features of the 
+\begin_inset Quotes eld
+\end_inset
+
+Linguistics
+\begin_inset Quotes erd
+\end_inset
+
+ module that ships with LyX as of version 1.6.0.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Modules
+\begin_inset Quotes erd
+\end_inset
+
+ are support files (introduced with LyX 1.6.0) that can easily be selected
+ for any document.
+ In order to use the Linguistics module, go to 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Class
+\family default
+, select 
+\begin_inset Quotes eld
+\end_inset
+
+Linguistics
+\begin_inset Quotes erd
+\end_inset
+
+ from the list of available modules, and hit the 
+\family sans
+Add
+\family default
+ button to select it for your document (as already done for this document).
+\end_layout
+
+\begin_layout Standard
+You should be able to use the module with any document class (please inform
+ me, if not).
+ However, in order to use all the features, you need to have the following
+ LaTeX packages installed:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+covington.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+
+\end_inset
+
+: This is the base package used for numbered examples and glosses.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+enumitem.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+: This package is used for the Subexamples style.
+ It is generally useful to alter the appearance of lists (such as 
+\emph on
+enumerate
+\emph default
+, 
+\emph on
+itemize
+\emph default
+, 
+\emph on
+description
+\emph default
+).
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+csquotes.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "csquotes"
+
+\end_inset
+
+: Needed for the 
+\emph on
+Meaning
+\emph default
+ character style.
+ The package provides context sensitive quotation marks, depending on the
+ language in use.
+\end_layout
+
+\begin_layout Section
+Numbered examples
+\end_layout
+
+\begin_layout Standard
+Numbered examples are inserted via the layout dropdown box in the toolbar.
+ There are three variants:
+\end_layout
+
+\begin_layout Numbered Example (multiline)
+This is a multiline example [Style 
+\emph on
+Numbered Example (multiline)
+\emph default
+]
+\end_layout
+
+\begin_layout Numbered Example (multiline)
+it can have several paragraphs
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+This is a single example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:single-example"
+
+\end_inset
+
+ [Style 
+\emph on
+Numbered Example (consecutive)
+\emph default
+]
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+Consecutive single examples get their own numbers
+\end_layout
+
+\begin_layout Subexample
+This is a subexample
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:subexample"
+
+\end_inset
+
+ [Style 
+\emph on
+Subexample
+\emph default
+]
+\end_layout
+
+\begin_layout Subexample
+And another one
+\end_layout
+
+\begin_layout Standard
+References to examples are produced as usual: insert a label to the example
+ and a crossreference via 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross references
+\family default
+.
+ We refer here, just for the sake of demonstrating this, to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:single-example"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:subexample"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Glosses
+\end_layout
+
+\begin_layout Standard
+The Linguistics module provides two kinds of glosses, which can be inserted
+ via 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+: The standard 
+\emph on
+Custom:Glosse
+\emph default
+ provides a glosse that consists of two lines and a translation, the 
+\emph on
+Custom:Tri-Glosse
+\emph default
+ insets consists of three lines and a translation.
+ Note that the translation line is mandatory and must be preceded by the
+ command 
+\family typewriter
+
+\backslash
+glt
+\family default
+ which should be inserted verbatim in the Glosse inset (ERT is not needed,
+ and in fact not even possible).
+\end_layout
+
+\begin_layout Standard
+Here is a simple example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom:Glosse
+status open
+
+\begin_layout Standard
+C'est un exemple simple
+\end_layout
+
+\begin_layout Standard
+{This is} an example simple
+\end_layout
+
+\begin_layout Standard
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the braces hold together multi-word expressions.
+ In the same vein, we can make a three-line glosse:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Custom:Tri-Glosse
+status open
+
+\begin_layout Standard
+C'est un exemple simple
+\end_layout
+
+\begin_layout Standard
+{Das ist} ein Beispiel einfach
+\end_layout
+
+\begin_layout Standard
+{This is} an example simple
+\end_layout
+
+\begin_layout Standard
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you want to have numbered glosses, you can simply insert the Glosse inset
+ to a numbered examples paragraph, as follows:
+\end_layout
+
+\begin_layout Numbered Examples (consecutive)
+\begin_inset Flex Custom:Tri-Glosse
+status open
+
+\begin_layout Standard
+Mein Luftkissenfahrzeug ist voller Aale
+\end_layout
+
+\begin_layout Standard
+My skeertuig is vol palings
+\end_layout
+
+\begin_layout Standard
+My hovercraft is {full of} eels
+\end_layout
+
+\begin_layout Standard
+
+\backslash
+glt 
+\begin_inset Quotes els
+\end_inset
+
+Do you have matches?
+\begin_inset Quotes ers
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Semantic Markup (Character Styles)
+\end_layout
+
+\begin_layout Standard
+The Linguistics module comes with some character styles that are common
+ in linguistics:
+\end_layout
+
+\begin_layout Enumerate
+Concept (in small caps): 
+\begin_inset Flex CharStyle:Concepts
+status collapsed
+
+\begin_layout Standard
+concept
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Expression (emphasized): 
+\begin_inset Flex CharStyle:Expression
+status collapsed
+
+\begin_layout Standard
+expression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Meaning (in single quotes): 
+\begin_inset Flex CharStyle:Meaning
+status collapsed
+
+\begin_layout Standard
+meaning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can insert the character styles via the 
+\family sans
+Edit\SpecialChar \menuseparator
+Text Style
+\family default
+ submenu.
+ If you need to change the appearance of these styles later, you can redefine
+ them in the preamble.
+ To make expressions bold, for instance, insert:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand
+\backslash
+lingexpr[1]{
+\backslash
+textbf{#1}}
+\end_layout
+
+\begin_layout Standard
+Similarly, concept (
+\family typewriter
+
+\backslash
+lingconcept
+\family default
+) and meaning (
+\family typewriter
+
+\backslash
+lingmeaning
+\family default
+) can be modified.
+\end_layout
+
+\begin_layout Section
+Phonetic Symbols (IPA)
+\end_layout
+
+\begin_layout Standard
+You do not need the Linguistics module to insert phonetic symbols, this
+ is a base functionality of LyX.
+ However, since this is frequently used by linguists, we will describe it
+ (briefly) in this paper nevertheless.
+\end_layout
+
+\begin_layout Standard
+A prerequisite to use LyX's IPA support is the LaTeX package 
+\emph on
+tipa
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tipa"
+
+\end_inset
+
+.
+ Additionally, if you want to have instant preview, you should have the
+ 
+\emph on
+preview-latex
+\emph default
+ package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "preview"
+
+\end_inset
+
+ installed.
+\end_layout
+
+\begin_layout Standard
+Phonetic symbols can be entered via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special characters\SpecialChar \menuseparator
+Phonetic symbols.
+ 
+\family default
+You get a little frame, where you can insert the symbols using the shortcut
+ notation which is described in the tipa manual.
+ Example: 
+\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+\end_inset
+
+.
+ Given that preview-latex is installed and you have switched on instant
+ preview (in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Graphics
+\family default
+), you'll get a nice preview as soon as the cursor leaves the frame.
+\end_layout
+
+\begin_layout Section
+Further information
+\end_layout
+
+\begin_layout Standard
+For a detailed description of specific possibilities for linguists, please
+ refer to the LinguistLyX page on the LyX wiki 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "linguistlyx"
+
+\end_inset
+
+ (feel free to enter your own hints there).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "covington"
+
+\end_inset
+
+The covington package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "csquotes"
+
+\end_inset
+
+The csquotes package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "enumitem"
+
+\end_inset
+
+The enumitem package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "linguistlyx"
+
+\end_inset
+
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguisti
+c Papers.
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Standard
+
+http://wiki.lyx.org/LyX/LinguistLyX
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "preview"
+
+\end_inset
+
+The preview-latex package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "tipa"
+
+\end_inset
+
+The tipa package and fonts: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ctan.org/tex-archive/fonts/tipa/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

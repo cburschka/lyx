@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 308
+\lyxformat 309
 \begin_document
 \begin_header
 \textclass article
@@ -24,7 +24,7 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
@@ -3561,6 +3561,104 @@ geometry
 a4
 \family default
  or the standard options, though.
+\end_layout
+
+\begin_layout Section
+Packages required by modules
+\end_layout
+
+\begin_layout Subsection
+Linguistics module
+\end_layout
+
+\begin_layout Subsubsection
+covington
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/covington/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+covington
+\family default
+ provides some environments and commands useful for linguistics, such as
+ numbered examples and glosses.
+\end_layout
+
+\begin_layout Subsubsection
+csquotes
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "csquotes
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/csquotes/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+csquotes
+\family default
+ provides context-sensitive quotation marks that adapt to the conventions
+ of the actual document language.
+ It is used by the Linguistics module for the character style Meaning.
+\end_layout
+
+\begin_layout Subsubsection
+enumitem
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/enumitem/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+enumitem
+\family default
+ provides many possibilities to tweak the appaerance of lists (enumerate,
+ itemize, description).
+ It is used by the Linguistics module to fine tune the appearance of numbered
+ subexamples.
 \end_layout
 
 \begin_layout Section
