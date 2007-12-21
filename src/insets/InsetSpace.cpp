@@ -58,21 +58,21 @@ bool InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-		    dim.wid = fm.width(char_type('x')) / 3;
+			dim.wid = fm.width(char_type('M')) / 6;
 			break;
 		case PROTECTED:
 		case NORMAL:
-		    dim.wid = fm.width(char_type('x'));
+			dim.wid = fm.width(char_type(' '));
 			break;
 		case QUAD:
-			dim.wid = 20;
+			dim.wid = fm.width(char_type('M'));
 			break;
 		case QQUAD:
-			dim.wid = 40;
+			dim.wid = 2 * fm.width(char_type('M'));
 			break;
 		case ENSPACE:
 		case ENSKIP:
-			dim.wid = 10;
+			dim.wid = 0.5 * fm.width(char_type('M'));
 			break;
 	}
 	bool const changed = dim_ != dim;
