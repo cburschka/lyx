@@ -1640,7 +1640,7 @@ string Buffer::absFileName() const
 
 string Buffer::filePath() const
 {
-	return d->filename.onlyPath().absFilename();
+	return d->filename.onlyPath().absFilename() + "/";
 }
 
 
