@@ -218,6 +218,16 @@ void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
+bool InsetNote::isMacroScope(Buffer const & buf) const
+{
+	// LyX note has no latex output
+	if (params_.type == InsetNoteParams::Note)
+		return true;
+
+	return InsetCollapsable::isMacroScope(buf);
+}
+
+
 int InsetNote::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams_in) const
 {

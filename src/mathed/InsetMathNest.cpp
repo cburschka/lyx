@@ -994,12 +994,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool fold = cmd.action == LFUN_MATH_MACRO_FOLD;
 		bool found = findMacroToFoldUnfold(it, fold);
 		if (found) {
-			cur.recordUndo();
+			MathMacro * macro = it.nextInset()->asInsetMath()->asMacro();
+			cur.recordUndoInset();
 			if (fold)
-				it.nextInset()->asInsetMath()->asMacro()->fold(cur);
+				macro->fold(cur);
 			else
-				it.nextInset()->asInsetMath()->asMacro()->unfold(cur);
-		}
+				macro->unfold(cur);
+		}
 		break;
 	}
 

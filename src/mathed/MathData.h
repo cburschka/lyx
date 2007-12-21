@@ -27,8 +27,10 @@ namespace lyx {
 
 class BufferView;
 class Cursor;
+class DocIterator;
 class LaTeXFeatures;
 class ReplaceData;
+class MacroContext;
 class MathMacro;
 class MetricsInfo;
 class PainterInfo;
@@ -154,6 +156,10 @@ public:
 	///
 	void swap(MathData & ar) { base_type::swap(ar); }
 
+	/// attach/detach arguments to macros, updating the cur to 
+	/// stay visually at the same position (cur==0 is allowed)
+	void updateMacros(Cursor * cur, MacroContext const & mc);
+
 protected:
 	/// cached values for super/subscript placement
 	mutable int minasc_;
@@ -166,20 +172,18 @@ private:
 	/// is this an exact match at this position?
 	bool find1(MathData const & ar, size_type pos) const;
 
-	/// attach/detach arguments to macros
-	void updateMacros(MetricsInfo & mi);
 	///
-	void detachMacroParameters(Cursor & cur, const size_type macroPos);
+	void detachMacroParameters(Cursor * cur, const size_type macroPos);
 	///
-	void attachMacroParameters(Cursor & cur, const size_type macroPos, 
+	void attachMacroParameters(Cursor * cur, const size_type macroPos, 
 		const size_type macroNumArgs, const int macroOptionals,
 		const bool fromInitToNormalMode, const bool interactiveInit);
 	///
-	void collectOptionalParameters(Cursor & cur, 
+	void collectOptionalParameters(Cursor * cur, 
 		const size_type numOptionalParams, std::vector<MathData> & params, 
 		size_t & pos, const pos_type macroPos, const int thisPos, const int thisSlice);
 	///
-	void collectParameters(Cursor & cur, 
+	void collectParameters(Cursor * cur, 
 		const size_type numParams, std::vector<MathData> & params, 
 		size_t & pos, MathAtom & scriptToPutAround,
 		const pos_type macroPos, const int thisPos, const int thisSlice);

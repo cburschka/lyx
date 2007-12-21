@@ -174,10 +174,19 @@ public:
 	///
 	mutable TocBackend toc_backend;
 
-	/// macro table
-	typedef map<unsigned int, MacroData, greater<int> > PositionToMacroMap;
-	typedef map<docstring, PositionToMacroMap> NameToPositionMacroMap;
-	NameToPositionMacroMap macros;
+	/// macro tables
+	typedef pair<DocIterator, MacroData> ScopeMacro;
+	typedef map<DocIterator, ScopeMacro> PositionScopeMacroMap;
+	typedef map<docstring, PositionScopeMacroMap> NamePositionScopeMacroMap;
+	NamePositionScopeMacroMap macros;
+	bool macro_lock;
+	
+	/// positions of child buffers in the buffer
+	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
+	typedef pair<DocIterator, Buffer const *> ScopeBuffer;
+	typedef map<DocIterator, ScopeBuffer> PositionScopeBufferMap;
+	BufferPositionMap children_positions;
+	PositionScopeBufferMap position_to_children;
 
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
@@ -223,8 +232,9 @@ static FileName createBufferTmpDir()
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
-	  inset(params), toc_backend(&parent), embedded_files(&parent),
-	  timestamp_(0), checksum_(0), wa_(0), undo_(parent)
+	  inset(params), toc_backend(&parent), macro_lock(false),
+	  embedded_files(&parent), timestamp_(0), checksum_(0), wa_(0), 
+	  undo_(parent)
 {
 	temppath = createBufferTmpDir();
 	inset.setAutoBreakRows(true);
@@ -238,6 +248,8 @@ Buffer::Buffer(string const & file, bool readonly)
 	: d(new Impl(*this, FileName(file), readonly)), gui_(0)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
+
+	d->inset.getText(0)->setMacrocontextPosition(par_iterator_begin());
 }
 
 
@@ -251,11 +263,13 @@ Buffer::~Buffer()
 	gui_ = 0;
 
 	Buffer const * master = masterBuffer();
-	if (master != this && use_gui)
+	if (master != this && use_gui) {
 		// We are closing buf which was a child document so we
 		// must update the labels and section numbering of its master
 		// Buffer.
 		updateLabels(*master);
+		master->updateMacros();
+	}
 
 	resetChildDocuments(false);
 
@@ -563,6 +577,8 @@ bool Buffer::readDocument(Lexer & lex)
 		 text().paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, &inset()));
 
+	updateMacros();
+	updateMacroInstances();
 	return res;
 }
 
@@ -1111,11 +1127,19 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
+	// fold macros if possible, still with parent buffer as the
+	// macros will be put in the prefix anyway.
+	updateMacros();
+	updateMacroInstances();
+
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	// This happens for example if only a child document is printed.
 	Buffer const * save_parent = 0;
 	if (output_preamble) {
+		// output the macros visible for this buffer
+		writeParentMacros(os);
+
 		save_parent = d->parent_buffer;
 		d->parent_buffer = 0;
 	}
@@ -1126,8 +1150,14 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	latexParagraphs(*this, paragraphs(), os, d->texrow, runparams);
 
 	// Restore the parenthood if needed
-	if (output_preamble)
+	if (output_preamble) {
 		d->parent_buffer = save_parent;
+
+		// restore macros with correct parent buffer (especially
+		// important for the redefinition flag which depends on the 
+		// parent)
+		updateMacros();
+	}
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1624,6 +1654,7 @@ void Buffer::setParent(Buffer const * buffer)
 {
 	// Avoids recursive include.
 	d->parent_buffer = buffer == this ? 0 : buffer;
+	updateMacros();
 }
 
 
@@ -1642,106 +1673,390 @@ Buffer const * Buffer::masterBuffer() const
 }
 
 
-bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
+template<typename M>
+typename M::iterator greatest_below(M & m, typename M::key_type const & x)
 {
-	Impl::PositionToMacroMap::iterator it;
-	it = d->macros[name].upper_bound(par.macrocontextPosition());
-	if (it != d->macros[name].end())
-		return true;
+	if (m.empty())
+		return m.end();
 
-	// If there is a master buffer, query that
-	Buffer const * master = masterBuffer();
-	if (master && master != this)
-		return master->hasMacro(name);
+	typename M::iterator it = m.lower_bound(x);
+	if (it == m.begin())
+		return m.end();
 
-	return MacroTable::globalMacros().has(name);
+	it--;
+	return it;	
 }
 
 
-bool Buffer::hasMacro(docstring const & name) const
+MacroData const * Buffer::getBufferMacro(docstring const & name, 
+					 DocIterator const & pos) const
 {
-	if( !d->macros[name].empty() )
-		return true;
+	LYXERR(Debug::DEBUG, "Searching for " << to_ascii(name) << " at " << pos);
 
-	// If there is a master buffer, query that
-	Buffer const * master = masterBuffer();
-	if (master && master != this)
-		return master->hasMacro(name);
+	// if paragraphs have no macro context set, pos will be empty
+	if (pos.empty())
+		return 0;
 
-	return MacroTable::globalMacros().has(name);
+	// we haven't found anything yet
+	DocIterator bestPos = par_iterator_begin();
+	MacroData const * bestData = 0;
+	
+	// find macro definitions for name
+	Impl::NamePositionScopeMacroMap::iterator nameIt
+	= d->macros.find(name);
+	if (nameIt != d->macros.end()) {
+		// find last definition in front of pos or at pos itself
+		Impl::PositionScopeMacroMap::const_iterator it
+		= greatest_below(nameIt->second, pos);
+		if (it != nameIt->second.end()) {
+			while (true) {
+				// scope ends behind pos?
+				if (pos < it->second.first) {
+					// Looks good, remember this. If there
+					// is no external macro behind this,
+					// we found the right one already.
+					bestPos = it->first;
+					bestData = &it->second.second;
+					break;
+				}
+				
+				// try previous macro if there is one
+				if (it == nameIt->second.begin())
+					break;
+				it--;
+			}
+		}
+	}
+
+	// find macros in included files
+	Impl::PositionScopeBufferMap::const_iterator it
+	= greatest_below(d->position_to_children, pos);
+	if (it != d->position_to_children.end()) {
+		while (true) {
+			// do we know something better (i.e. later) already?
+			if (it->first < bestPos )		
+				break;
+
+			// scope ends behind pos?
+			if (pos < it->second.first) {
+				// look for macro in external file
+				d->macro_lock = true;
+				MacroData const * data
+				= it->second.second->getMacro(name, false);
+				d->macro_lock = false;
+				if (data) {
+					bestPos = it->first;
+					bestData = data;			       
+					break;
+				}
+			}
+			
+			// try previous file if there is one
+			if (it == d->position_to_children.begin())
+				break;
+			--it;
+		}
+	}
+		
+	// return the best macro we have found
+	return bestData;
 }
 
 
-MacroData const & Buffer::getMacro(docstring const & name,
-	Paragraph const & par) const
+MacroData const * Buffer::getMacro(docstring const & name,
+	DocIterator const & pos, bool global) const
 {
-	Impl::PositionToMacroMap::iterator it;
-	it = d->macros[name].upper_bound(par.macrocontextPosition());
-	if( it != d->macros[name].end() )
-		return it->second;
+	if (d->macro_lock)
+		return 0;       
+
+	// query buffer macros
+	MacroData const * data = getBufferMacro(name, pos);
+	if (data != 0)
+		return data;
 
 	// If there is a master buffer, query that
-	Buffer const * master = masterBuffer();
-	if (master && master != this)
-		return master->getMacro(name);
+	if (d->parent_buffer) {
+		d->macro_lock = true;
+		MacroData const * macro
+		= d->parent_buffer->getMacro(name, *this, false);
+		d->macro_lock = false;
+		if (macro)
+			return macro;
+	}
 
-	return MacroTable::globalMacros().get(name);
+	if (global) {
+		data = MacroTable::globalMacros().get(name);
+		if (data != 0)
+			return data;
+	}
+
+	return 0;
 }
 
 
-MacroData const & Buffer::getMacro(docstring const & name) const
+MacroData const * Buffer::getMacro(docstring const & name, bool global) const
 {
-	Impl::PositionToMacroMap::iterator it;
-	it = d->macros[name].begin();
-	if( it != d->macros[name].end() )
-		return it->second;
+	// set scope end behind the last paragraph
+	DocIterator scope = par_iterator_begin();
+	scope.pit() = scope.lastpit() + 1;
 
-	// If there is a master buffer, query that
-	Buffer const * master = masterBuffer();
-	if (master && master != this)
-		return master->getMacro(name);
-
-	return MacroTable::globalMacros().get(name);
+	return getMacro(name, scope, global);
 }
 
 
-void Buffer::updateMacros()
+MacroData const * Buffer::getMacro(docstring const & name, Buffer const & child, bool global) const
 {
-	// start with empty table
-	d->macros = Impl::NameToPositionMacroMap();
+	// look where the child buffer is included first
+	Impl::BufferPositionMap::iterator it
+	= d->children_positions.find(&child);
+	if (it == d->children_positions.end())
+		return 0;
 
-	// Iterate over buffer
-	ParagraphList & pars = text().paragraphs();
-	for (size_t i = 0, n = pars.size(); i != n; ++i) {
-		// set position again
-		pars[i].setMacrocontextPosition(i);
+	// check for macros at the inclusion position
+	return getMacro(name, it->second, global);
+}
 
-		//lyxerr << "searching main par " << i
-		//	<< " for macro definitions" << endl;
-		InsetList const & insets = pars[i].insetList();
-		InsetList::const_iterator it = insets.begin();
+
+void Buffer::updateEnvironmentMacros(DocIterator & it, 
+				     pit_type lastpit, 
+				     DocIterator & scope) const
+{
+	Paragraph & par = it.paragraph();
+	depth_type depth 
+	= par.params().depth();
+	Length const & leftIndent
+	= par.params().leftIndent();
+
+	// look for macros in each paragraph
+	while (it.pit() <= lastpit) {
+		Paragraph & par = it.paragraph();
+
+		// increased depth?
+		if ((par.params().depth() > depth
+		     || par.params().leftIndent() != leftIndent)
+		    && par.layout()->isEnvironment()) {
+			updateBlockMacros(it, scope);
+			continue;
+		}
+
+		// iterate over the insets of the current paragraph
+		InsetList const & insets = par.insetList();
+		InsetList::const_iterator iit = insets.begin();
 		InsetList::const_iterator end = insets.end();
-		for ( ; it != end; ++it) {
-			if (it->inset->lyxCode() != MATHMACRO_CODE)
+		for (; iit != end; ++iit) {
+			it.pos() = iit->pos;
+			
+			// is it a nested text inset?
+			if (iit->inset->asInsetText()) {
+				// Inset needs its own scope?
+				InsetText const * itext 
+				= iit->inset->asInsetText();
+				bool newScope = itext->isMacroScope(*this);
+
+				// scope which ends just behind die inset	
+				DocIterator insetScope = it;
+				insetScope.pos()++;
+
+				// collect macros in inset
+				it.push_back(CursorSlice(*iit->inset));
+				updateInsetMacros(it, newScope ? insetScope : scope);
+				it.pop_back();
+				continue;
+			}
+					      
+			// is it an external file?
+			if (iit->inset->lyxCode() == INCLUDE_CODE) {
+				// get buffer of external file
+				InsetCommand const & inset 
+				= static_cast<InsetCommand const &>(*iit->inset);
+				InsetCommandParams const & ip = inset.params();
+				d->macro_lock = true;
+				Buffer * child = loadIfNeeded(*this, ip);
+				d->macro_lock = false;
+				if (!child)
+					continue;				
+
+				// register it, but only when it is
+				// included first in the buffer
+				if (d->children_positions.find(child)
+				    == d->children_positions.end())
+					d->children_positions[child] = it;
+				                                				
+				// register child with its scope
+				d->position_to_children[it] = Impl::ScopeBuffer(scope, child);
+
+				continue;
+			}
+
+			if (iit->inset->lyxCode() != MATHMACRO_CODE)
 				continue;
 			
 			// get macro data
-			MathMacroTemplate const & macroTemplate
-			= static_cast<MathMacroTemplate const &>(*it->inset);
+			MathMacroTemplate & macroTemplate
+			= static_cast<MathMacroTemplate &>(*iit->inset);
+			MacroContext mc(*this, it);
+			macroTemplate.updateToContext(mc);
 
 			// valid?
-			if (macroTemplate.validMacro()) {
-				MacroData macro = macroTemplate.asMacroData();
+			bool valid = macroTemplate.validMacro();
+			// FIXME: Should be fixNameAndCheckIfValid() in fact,
+			// then the BufferView's cursor will be invalid in
+			// some cases which leads to crashes.
+			if (!valid)
+				continue;
 
-				// redefinition?
-				// call hasMacro here instead of directly querying mc to
-				// also take the master document into consideration
-				macro.setRedefinition(hasMacro(macroTemplate.name()));
-
-				// register macro (possibly overwrite the previous one of this paragraph)
-				d->macros[macroTemplate.name()][i] = macro;
-			}
+			// register macro
+			d->macros[macroTemplate.name()][it] 
+			= Impl::ScopeMacro(scope, MacroData(*this, it));
 		}
+
+		// next paragraph
+		it.pit()++;
+		it.pos() = 0;
+	}
+}
+
+
+void Buffer::updateBlockMacros(DocIterator & it, DocIterator & scope) const
+{
+	Paragraph & par = it.paragraph();
+		
+	// set scope for macros in this paragraph:
+	// * either the "old" outer scope
+	// * or the scope ending after the environment
+	if (par.layout()->isEnvironment()) {
+		// find end of environment block,
+		DocIterator envEnd = it;
+		pit_type n = it.lastpit() + 1;
+		depth_type depth = par.params().depth();
+		Length const & length = par.params().leftIndent();
+		// looping through the paragraph, basically until
+		// the layout changes or the depth gets smaller.
+		// (the logic of output_latex.cpp's TeXEnvironment)
+		do {
+			envEnd.pit()++;
+			if (envEnd.pit() == n)
+				break;
+		} while (par.layout() == envEnd.paragraph().layout()
+			 || depth < envEnd.paragraph().params().depth()
+			 || length != envEnd.paragraph().params().leftIndent());	       
+		
+		// collect macros from environment block
+		updateEnvironmentMacros(it, envEnd.pit() - 1, envEnd);
+	} else {
+		// collect macros from paragraph
+		updateEnvironmentMacros(it, it.pit(), scope);
+	}
+}
+
+
+void Buffer::updateInsetMacros(DocIterator & it, DocIterator & scope) const
+{
+	// look for macros in each paragraph
+	pit_type n = it.lastpit() + 1;
+	while (it.pit() < n)
+		updateBlockMacros(it, scope);       
+}
+
+
+void Buffer::updateMacros() const
+{
+	if (d->macro_lock)
+		return;
+
+	LYXERR(Debug::DEBUG, "updateMacro of " << d->filename.onlyFileName());
+
+	// start with empty table
+	d->macros.clear();
+	d->children_positions.clear();
+	d->position_to_children.clear();
+
+	// Iterate over buffer, starting with first paragraph
+	// The scope must be bigger than any lookup DocIterator
+	// later. For the global lookup, lastpit+1 is used, hence
+	// we use lastpit+2 here.
+	DocIterator it = par_iterator_begin();
+	DocIterator outerScope = it;
+	outerScope.pit() = outerScope.lastpit() + 2;
+	updateInsetMacros(it, outerScope);
+}
+
+
+void Buffer::updateMacroInstances() const
+{
+	LYXERR(Debug::DEBUG, "updateMacroInstances for " << d->filename.onlyFileName());
+	ParIterator it = par_iterator_begin();
+	ParIterator end = par_iterator_end();
+	for (; it != end; it.forwardPos()) {
+		// look for MathData cells in InsetMathNest insets
+		Inset * inset = it.nextInset();
+		if (!inset)
+			continue;
+
+		InsetMath * minset = inset->asInsetMath();
+		if (!minset)
+			continue;
+
+		// update macro in all cells of the InsetMathNest
+		DocIterator::idx_type n = minset->nargs();
+		MacroContext mc = MacroContext(*this, it);
+		for (DocIterator::idx_type i = 0; i < n; ++i) {
+			MathData & data = minset->cell(i);
+			data.updateMacros(0, mc);
+		}
+	}
+}
+
+
+void Buffer::listMacroNames(MacroNameSet & macros) const
+{
+	if (d->macro_lock)
+		return;
+
+	d->macro_lock = true;
+	
+	// loop over macro names
+	Impl::NamePositionScopeMacroMap::iterator nameIt
+	= d->macros.begin();
+	Impl::NamePositionScopeMacroMap::iterator nameEnd
+	= d->macros.end();
+	for (; nameIt != nameEnd; ++nameIt)
+		macros.insert(nameIt->first);
+
+	// loop over children
+	Impl::BufferPositionMap::iterator it
+	= d->children_positions.begin();	
+	Impl::BufferPositionMap::iterator end
+	= d->children_positions.end();
+	for (; it != end; ++it)
+		it->first->listMacroNames(macros);
+
+	// call parent
+	if (d->parent_buffer)
+		d->parent_buffer->listMacroNames(macros);
+
+	d->macro_lock = false;	
+}
+
+
+void Buffer::writeParentMacros(odocstream & os) const
+{
+	if (!d->parent_buffer)
+		return;
+
+	// collect macro names
+	MacroNameSet names;
+	d->parent_buffer->listMacroNames(names);
+
+	// resolve and output them
+	MacroNameSet::iterator it = names.begin();
+	MacroNameSet::iterator end = names.end();
+	for (; it != end; ++it) {
+		// defined?
+		MacroData const * data = 
+		d->parent_buffer->getMacro(*it, *this, false);
+		if (data)
+			data->write(os, true);		
 	}
 }
 
@@ -2016,6 +2331,10 @@ void Buffer::resetChildDocuments(bool close_them) const
 
 	if (use_gui && masterBuffer() == this)
 		updateLabels(*this);
+
+	// clear references to children in macro tables
+	d->children_positions.clear();
+	d->position_to_children.clear();
 }
 
 
@@ -2037,6 +2356,8 @@ void Buffer::loadChildDocuments() const
 
 	if (use_gui && masterBuffer() == this)
 		updateLabels(*this);
+
+	updateMacros();
 }
 
 
@@ -2088,6 +2409,9 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	filename = addName(temppath(), filename);
 	filename = changeExtension(filename,
 				   formats.extension(backend_format));
+
+	// fix macros
+	updateMacroInstances();
 
 	// Plain text backend
 	if (backend_format == "text")

@@ -410,6 +410,12 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 {
 	BOOST_ASSERT(parit.pit() == 0);
 
+	// set the position of the text in the buffer to be able
+	// to resolve macros in it. This has nothing to do with
+	// labels, but by putting it here we avoid implementing
+	// a whole bunch of traversal routines just for this call.
+	parit.text()->setMacrocontextPosition(parit);
+
 	depth_type maxdepth = 0;
 	pit_type const lastpit = parit.lastpit();
 	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {

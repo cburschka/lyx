@@ -183,10 +183,6 @@ public:
 	///
 	ParagraphParameters params_;
 
-	/// position of the paragraph in the buffer. Only macros from
-	/// paragraphs strictly smaller are visible in this paragraph
-	unsigned int macrocontext_position_;
-	
 	/// for recording and looking up changes
 	Changes changes_;
 
@@ -232,7 +228,6 @@ Paragraph::Private::Private(Paragraph * owner)
 	: owner_(owner), inset_owner_(0), begin_of_body_(0)
 {
 	id_ = paragraph_id++;
-	macrocontext_position_ = 0;
 	text_.reserve(100);
 }
 
@@ -2494,18 +2489,6 @@ int Paragraph::checkBiblio(bool track_changes)
 		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
 
 	return 1;
-}
-
-
-unsigned int Paragraph::macrocontextPosition() const
-{
-	return d->macrocontext_position_;
-}
-
-
-void Paragraph::setMacrocontextPosition(unsigned int pos)
-{
-	d->macrocontext_position_ = pos;
 }
 
 

@@ -2897,6 +2897,15 @@ void InsetTabular::buffer(Buffer const * b)
 }
 
 
+bool InsetTabular::insetAllowed(InsetCode code) const
+{
+	if (code == MATHMACRO_CODE)
+		return false;
+
+	return true;
+}
+
+
 void InsetTabular::write(Buffer const & buf, ostream & os) const
 {
 	os << "Tabular" << endl;

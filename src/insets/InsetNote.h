@@ -62,6 +62,8 @@ public:
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
+	bool isMacroScope(Buffer const & buf) const;
+	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;

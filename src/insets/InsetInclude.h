@@ -131,7 +131,9 @@ private:
 	mutable docstring listings_label_;
 };
 
-
+/// return the child buffer if the file is a LyX doc and is loaded
+Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params);
+	
 /// return loaded Buffer or zero if the file loading did not proceed.
 Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);
 

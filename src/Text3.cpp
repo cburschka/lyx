@@ -1435,8 +1435,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			string const s1 = token(s, ' ', 1);
 			int const nargs = s1.empty() ? 0 : convert<int>(s1);
 			string const s2 = token(s, ' ', 2);
-			string const type = s2.empty() ? "newcommand" : s2;
-			cur.insert(new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, from_utf8(type)));
+			MacroType type = MacroTypeNewcommand;
+			if (s2 == "def")
+				type = MacroTypeDef;
+			cur.insert(new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, type));
 			//cur.nextInset()->edit(cur, true);
 		}
 		break;

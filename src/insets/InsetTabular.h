@@ -679,7 +679,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool insetAllowed(InsetCode) const { return true; }
+	bool insetAllowed(InsetCode code) const;
 	///
 	bool allowSpellCheck() const { return true; }
 	///

@@ -90,18 +90,20 @@ void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: InsetMathNest(3), numargs_(0), optionals_(0), type_(from_ascii("newcommand"))
+	: InsetMathNest(3), numargs_(0), optionals_(0), 
+	  type_(MacroTypeNewcommand)
 {
 	initMath();
 }
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
-	int optionals, docstring const & type, 
+	int optionals, MacroType type, 
 	vector<MathData> const & optionalValues, 
 	MathData const & def, MathData const & display)
-: InsetMathNest(optionals + 3), numargs_(numargs), 
-	optionals_(optionals), optionalValues_(optionalValues), type_(type)
+	: InsetMathNest(optionals + 3), numargs_(numargs), 
+	  optionals_(optionals), optionalValues_(optionalValues),
+	  type_(type)
 {
 	initMath();
 
@@ -150,6 +152,12 @@ docstring MathMacroTemplate::name() const
 }
 
 
+void MathMacroTemplate::updateToContext(MacroContext const & mc) const
+{
+	redefinition_ = mc.get(name()) != 0;
+}
+
+
 void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, from_ascii("mathnormal"));
@@ -157,13 +165,11 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// valid macro?
 	MacroData const * macro = 0;
-	if (validName() && mi.macrocontext.has(name())) {
-		macro = &mi.macrocontext.get(name());
-		if (type_ == from_ascii("newcommand") || type_ == from_ascii("renewcommand")) {
-			// use the MacroData::redefinition_ information instead of MacroContext::has
-			// because the macro is known here already anyway to detect recursive definitions
-			type_ = macro->redefinition() ? from_ascii("renewcommand") : from_ascii("newcommand"); 
-		}
+	if (validName()) {
+		macro = mi.macrocontext.get(name());
+
+		// updateToContext() - avoids another lookup
+		redefinition_ = macro != 0;
 	}
 
 	// create label "{#1}{#2}:="
@@ -220,7 +226,7 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	int real_des = dim.des + dim0.ascent() / 2;
 	dim.asc = max(real_asc, real_des) + dim0.ascent() / 2 + 5;
 	dim.des = max(real_asc, real_des) - dim0.ascent() / 2 + 5;
-	
+
 	setDimCache(mi, dim);
 }
 
@@ -598,7 +604,8 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			int num = numargs_ + 1;
 			if (arg.size() != 0)
 				num = convert<int>(arg);
-			bool on = (num >= optionals_ && numargs_ < 9 && num <= numargs_ + 1);
+			bool on = (num >= optionals_ 
+				   && numargs_ < 9 && num <= numargs_ + 1);
 			flag.enabled(on);
 			break;
 		}
@@ -616,11 +623,14 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 		}
 
 		case LFUN_MATH_MACRO_MAKE_OPTIONAL:
-			flag.enabled(numargs_ > 0 && optionals_ < numargs_ && type_ != from_ascii("def"));
+			flag.enabled(numargs_ > 0 
+				     && optionals_ < numargs_ 
+				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
-			flag.enabled(optionals_ > 0 && type_ != from_ascii("def"));
+			flag.enabled(optionals_ > 0 
+				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
@@ -632,7 +642,8 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			break;
 
 		case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
-			flag.enabled(numargs_ == 0 && type_ != from_ascii("def"));
+			flag.enabled(numargs_ == 0 
+				     && type_ != MacroTypeDef);
 			break;
 
 		default:
@@ -668,13 +679,23 @@ void MathMacroTemplate::write(Buffer const &, ostream & os) const
 
 void MathMacroTemplate::write(WriteStream & os) const
 {
-	if (type_ == "def") {
+	write(os, false);
+}
+
+
+void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
+{
+	if (type_ == MacroTypeDef) {
 		os << "\\def\\" << name().c_str();
 		for (int i = 1; i <= numargs_; ++i)
 			os << '#' << i;
 	} else {
 		// newcommand or renewcommand
-		os << "\\" << type_.c_str() << "{\\" << name().c_str() << '}';
+		if (redefinition_ && !overwriteRedefinition)
+			os << "\\renewcommand";
+		else
+			os << "\\newcommand";
+		os << "{\\" << name().c_str() << '}';
 		if (numargs_ > 0)
 			os << '[' << numargs_ << ']';
 		
@@ -754,14 +775,61 @@ bool MathMacroTemplate::validMacro() const
 }
 
 
-MacroData MathMacroTemplate::asMacroData() const
+bool MathMacroTemplate::fixNameAndCheckIfValid()
 {
-	vector<docstring> defaults(numargs_);
-	for (int i = 0; i < optionals_; ++i)
-		defaults[i] = asString(cell(optIdx(i)));
-	return MacroData(asString(cell(defIdx())), defaults,
-		numargs_, optionals_, asString(cell(displayIdx())), string());
+	// check all the characters/insets in the name cell
+	size_t i = 0;
+	MathData & data = cell(0);
+	while (i < data.size()) {
+		InsetMathChar const * cinset = data[i]->asCharInset();
+		if (cinset) {
+			// valid character in [a-zA-Z]?
+			char_type c = cinset->getChar();
+			if ((c >= 'a' && c <= 'z')
+			    || (c >= 'A' && c <= 'Z')) {
+				++i;
+				continue;
+			}
+		}
+		
+		// throw cell away
+		data.erase(i);
+	}
+
+	// now it should be valid if anything in the name survived
+	return data.size() > 0;
 }
 
+
+void MathMacroTemplate::getDefaults(vector<docstring> & defaults) const
+{
+	defaults.resize(numargs_);
+	for (int i = 0; i < optionals_; ++i)
+		defaults[i] = asString(cell(optIdx(i)));	
+}
+
+
+docstring MathMacroTemplate::definition() const
+{
+	return asString(cell(defIdx()));
+}
+
+
+docstring MathMacroTemplate::displayDefinition() const
+{
+	return asString(cell(displayIdx()));
+}
+
+
+size_t MathMacroTemplate::numArgs() const
+{
+	return numargs_;
+}
+
+
+size_t MathMacroTemplate::numOptionals() const
+{
+	return optionals_;
+}
 
 } // namespace lyx

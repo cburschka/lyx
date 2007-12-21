@@ -270,6 +270,12 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 }
 
 
+bool InsetBranch::isMacroScope(Buffer const & buf) const 
+{
+	// Its own scope if not selected by buffer
+	return !isBranchSelected(buf);
+}
+
 
 string const InsetBranchMailer::name_("branch");
 

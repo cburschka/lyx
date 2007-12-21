@@ -17,6 +17,7 @@
 #include "support/strfwd.h"
 #include "support/types.h"
 
+#include <set>
 #include <string>
 #include <vector>
 
@@ -25,6 +26,7 @@ namespace lyx {
 
 class BufferParams;
 class EmbeddedFiles;
+class DocIterator;
 class ErrorItem;
 class ErrorList;
 class FuncRequest;
@@ -359,16 +361,25 @@ public:
 	//
 	// Macro handling
 	//
-	/// Collect macros in paragraphs
-	void updateMacros();
-	/// Look for macro defined before par (or in the master buffer)
-	bool hasMacro(docstring const & name, Paragraph const & par) const;
-	/// Look for macro defined anywhere in the buffer (or in the master buffer)
-	bool hasMacro(docstring const & name) const;
-	/// Return macro defined before par (or in the master buffer)
-	MacroData const & getMacro(docstring const & name, Paragraph const & par) const;
+	/// Collect macro definitions in paragraphs
+	void updateMacros() const;
+	/// Iterate through the whole buffer and try to resolve macros
+	void updateMacroInstances() const;
+
+	typedef std::set<docstring> MacroNameSet;
+	/// List macro names of this buffer. the parent and the children
+	void listMacroNames(MacroNameSet & macros) const;
+	/// Write out all macros somewhere defined in the parent,
+	/// its parents and its children, which are visible at the beginning 
+	/// of this buffer
+	void writeParentMacros(odocstream & os) const;
+
+	/// Return macro defined before pos (or in the master buffer)
+	MacroData const * getMacro(docstring const & name, DocIterator const & pos, bool global = true) const;
 	/// Return macro defined anywhere in the buffer (or in the master buffer)
-	MacroData const & getMacro(docstring const & name) const;
+	MacroData const * getMacro(docstring const & name, bool global = true) const;
+	/// Return macro defined before the inclusion of the child
+	MacroData const * getMacro(docstring const & name, Buffer const & child, bool global = true) const;
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.
@@ -442,7 +453,30 @@ public:
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
 
 private:
-  /// 
+	/// search for macro in local (buffer) table or in children
+	MacroData const * getBufferMacro(docstring const & name,
+					 DocIterator const & pos) const;
+	/** Update macro table in the whole text inset
+	    \param it at the start of the text inset)
+	*/
+	void updateInsetMacros(DocIterator & it, 
+			       DocIterator & scope) const;
+	/** Update macro table for paragraphs until \c lastpit
+	    \param it in some text inset
+	    \param lastpit last processed paragraph
+	*/
+	void updateEnvironmentMacros(DocIterator & it, 
+				     pit_type lastpit, 
+				     DocIterator & scope) const;
+	/** Update macro table for one paragraph block with 
+	    same layout and depth, until \c lastpit
+	    \param it in some text inset
+	    \param lastpit last processed paragraph
+	*/
+	void updateBlockMacros(DocIterator & it, 
+			       DocIterator & scope) const;
+
+	/// 
 	bool readFileHelper(support::FileName const & s);
 	///
 	std::vector<std::string> backends() const;

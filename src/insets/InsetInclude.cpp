@@ -268,9 +268,7 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 }
 
 
-namespace {
-
-/// return the child buffer if the file is a LyX doc and is loaded
+	/// return the child buffer if the file is a LyX doc and is loaded
 Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params)
 {
 	if (isVerbatim(params) || isListings(params))
@@ -288,9 +286,6 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	else
 		return childBuffer;
 }
-
-} // namespace anon
-
 
 /// return true if the file is or got loaded.
 Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)

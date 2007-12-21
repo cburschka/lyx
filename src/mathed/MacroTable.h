@@ -13,7 +13,10 @@
 #ifndef MATH_MACROTABLE_H
 #define MATH_MACROTABLE_H
 
+#include "DocIterator.h"
+
 #include "support/docstring.h"
+#include "support/types.h"
 
 #include <map>
 #include <vector>
@@ -22,23 +25,32 @@ namespace lyx {
 
 class Buffer;
 class MathData;
+class MathMacroTemplate;
 class Paragraph;
+
+
+enum MacroType {
+	MacroTypeNewcommand,
+	MacroTypeDef
+};
+
 
 ///
 class MacroData {
 public:
-	///
+	/// Constructor to make STL containers happy
 	MacroData();
+	/// Create lazy MacroData which only queries the macro template when needed
+	MacroData(Buffer const & buf, DocIterator const & pos);
+	/// Create non-lazy MacroData which directly queries the macro template
+	MacroData(MathMacroTemplate const & macro);
+
 	///
-	MacroData(docstring const & definition,
-		std::vector<docstring> const & defaults, int nargs, int optionals, 
-		docstring const & display, std::string const & requires);
+	docstring const & definition() const { updateData(); return definition_; }
 	///
-	docstring const & definition() const { return definition_; }
-	///
-	docstring const & display() const { return display_; }
+	docstring const & display() const { updateData(); return display_; }
 	/// arity including optional arguments (if there is any)
-	size_t numargs() const { return numargs_; }
+	size_t numargs() const { updateData(); return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,.., _including_ the possible
 	/// optional argument
 	void expand(std::vector<MathData> const & from, MathData & to) const;
@@ -47,9 +59,9 @@ public:
 	///
 	std::vector<docstring> const & defaults() const;
 	///
-	std::string requires() const { return requires_; }
+	std::string const & requires() const { updateData(); return requires_; }
 	///
-	std::string & requires() { return requires_; }
+	std::string & requires() { updateData(); return requires_; }
 	
 	/// lock while being drawn to avoid recursions
 	int lock() const { return ++lockCount_; }
@@ -62,9 +74,19 @@ public:
 	bool redefinition() const { return redefinition_; }
 	///
 	void setRedefinition(bool redefined) { redefinition_ = redefined; }
+
+	///
+	MacroType type() const { return type_; }
+	///
+	MacroType & type() { return type_; }
 	
+	/// output as TeX macro, only works for lazy MacroData!!!
+	void write(odocstream & os, bool overwriteRedefinition) const;
+
 	///
 	bool operator==(MacroData const & x) const {
+		updateData();
+		x.updateData();
 		return definition_ == x.definition_ 
 			&& numargs_ == x.numargs_
 			&& display_ == x.display_
@@ -77,24 +99,43 @@ public:
 
 private:
 	///
-	docstring definition_;
+	void queryData(MathMacroTemplate const & macro) const;
 	///
-	size_t numargs_;
+	void updateData() const;
 	///
-	docstring display_;
+	Buffer const * buffer_;
+	/// The position of the definition in the buffer.
+	/// There is no guarantee it stays valid if the buffer
+	/// changes. But it (normally) exists only until the 
+	/// next Buffer::updateMacros call where new MacroData
+	/// objects are created for each macro definition.
+	/// In the worst case, it is invalidated and the MacroData 
+	/// returns its defaults values and the user sees unfolded
+	/// macros.
+	mutable DocIterator pos_;
 	///
-	std::string requires_;
+	mutable bool queried_;
+	///
+	mutable docstring definition_;
+	///
+	mutable size_t numargs_;
+	///
+	mutable docstring display_;
+	///
+	mutable std::string requires_;
+	///
+	mutable size_t optionals_;
+	///
+	mutable std::vector<docstring> defaults_;
 	///
 	mutable int lockCount_;
 	///
-	bool redefinition_;
+	mutable bool redefinition_;
 	///
-	size_t optionals_;
-	///
-	std::vector<docstring> defaults_;
+	mutable MacroType type_;
 };
 
-
+	
 /// A lookup table of macro definitions.
 /**
  * This contains a table of "global" macros that are always accessible,
@@ -109,10 +150,8 @@ public:
 	void insert(docstring const & definition, std::string const &);
 	/// Insert pre-digested macro definition
 	void insert(docstring const & name, MacroData const & data);
-	/// Do we have a macro by that name?
-	bool has(docstring const & name) const;
 	///
-	MacroData const & get(docstring const & name) const;
+	MacroData const * get(docstring const & name) const;
 	///
 	void dump();
 
@@ -131,25 +170,17 @@ public:
  **/
 class MacroContext {
 public:
-	/// construct context for insets in par (not including the ones
-	/// defined in par itself)
-	MacroContext(Buffer const & buf, Paragraph const & par);
+	/// construct context for the insets at pos
+	MacroContext(Buffer const & buf, DocIterator const & pos);
 	
-	/// Look for macro
-	bool has(docstring const & name) const;
 	/// Lookup macro
-	MacroData const & get(docstring const & name) const;
-	
-	/// Insert pre-digested macro definition
-	void insert(docstring const & name, MacroData const & data);
+	MacroData const * get(docstring const & name) const;
 	
 private:
-	/// context local macros
-	MacroTable macros_;
 	///
 	Buffer const & buf_;
 	///
-	Paragraph const & par_;
+	DocIterator const & pos_;
 };
 
 } // namespace lyx

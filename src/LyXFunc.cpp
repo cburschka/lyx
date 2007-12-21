@@ -1790,7 +1790,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (flag.enabled()
 			    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 			    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-				lyx_view_->buffer()->markDirty();
+				lyx_view_->buffer()->markDirty();			
 
 			//Do we have a selection?
 			theSelection().haveSelection(view()->cursor().selection());

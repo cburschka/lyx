@@ -76,6 +76,8 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
+	bool isMacroScope(Buffer const & buf) const;
+	///
 	void setLabel(docstring const & l);
 	///
 	virtual void setButtonLabel() {}

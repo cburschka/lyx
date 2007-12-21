@@ -80,8 +80,10 @@ public:
 	bool isBranchSelected(Buffer const & buffer) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	// 
+	///
 	virtual void updateLabels(Buffer const &, ParIterator const &);
+	///
+	bool isMacroScope(Buffer const & buf) const;
 protected:
 	///
 	InsetBranch(InsetBranch const &);

@@ -344,15 +344,6 @@ public:
 	/// was previously past that position. Return 0 otherwise.
 	int checkBiblio(bool track_changes);
 
-	/// To resolve macros properly the paragraphs are numbered.
-	/// Every macro definition is stored with its paragraph number
-	/// as well. Only those macros with a smaller number become 
-	/// visible in a paragraph (plus those in the same paragraph, but
-	/// in an earlier inset.
-	unsigned int macrocontextPosition() const;
-	///
-	void setMacrocontextPosition(unsigned int pos);
-
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the paragraph.
 	void checkAuthors(AuthorList const & authorList);

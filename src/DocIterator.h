@@ -262,6 +262,32 @@ inline bool operator!=(DocIterator const & di1, DocIterator const & di2)
 }
 
 
+inline
+bool operator<(DocIterator const & p, DocIterator const & q)
+{
+	size_t depth = std::min(p.depth(), q.depth());
+	for (size_t i = 0 ; i < depth ; ++i) {
+		if (p[i] != q[i])
+			return p[i] < q[i];
+	}
+	return p.depth() < q.depth();
+}
+
+
+inline	
+bool operator>(DocIterator const & p, DocIterator const & q)
+{
+	return q < p;
+}
+
+
+inline	
+bool operator<=(DocIterator const & p, DocIterator const & q)
+{
+	return !(q < p);
+}
+
+
 // The difference to a ('non stable') DocIterator is the removed
 // (overwritten by 0...) part of the CursorSlice data items. So this thing
 // is suitable for external storage, but not for iteration as such.

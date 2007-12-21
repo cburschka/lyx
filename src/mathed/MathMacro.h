@@ -127,11 +127,11 @@ protected:
 	/// update the display mode (should only be called after detaching arguments)
 	void setDisplayMode(DisplayMode mode);
 	/// compute the next display mode
-	DisplayMode computeDisplayMode(MetricsInfo const & mi) const;
+	DisplayMode computeDisplayMode() const;
 	/// update macro definition
-	void updateMacro(MetricsInfo & mi);
+	void updateMacro(MacroContext const & mc);
 	/// check if macro definition changed, argument changed etc. and adapt
-	void updateRepresentation(MetricsInfo & mi);
+	void updateRepresentation(Cursor const * bvCur);
 	/// empty macro, put arguments into args, possibly strip arity-attachedArgsNum_ empty ones.
 	/// Includes the optional arguments.
 	void detachArguments(std::vector<MathData> & args, bool strip);

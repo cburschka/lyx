@@ -896,12 +896,14 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			t.cs() == "newcommand" ||
 			t.cs() == "renewcommand")
 		{
-			docstring const type = t.cs();
+			MacroType type = MacroTypeNewcommand;
+			if (t.cs() == "def")
+				type = MacroTypeDef;
 			docstring name;
 			int nargs = 0;
 			int optionals = 0;
 			vector<MathData> optionalValues;
-			if (t.cs() == "def") {
+			if (type == MacroTypeDef) {
 				// get name
 				name = getToken().cs();
 
@@ -914,7 +916,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				nargs /= 2;
 				//lyxerr << "read \\def parameter list '" << pars << "'" << endl;
 
-			} else { // t.cs() == "newcommand" || t.cs() == "renewcommand"
+			} else {
 				if (getToken().cat() != catBegin) {
 					error("'{' in \\newcommand expected (1) ");
 					return;

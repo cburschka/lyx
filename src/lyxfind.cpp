@@ -208,6 +208,7 @@ int replace(BufferView * bv, docstring const & searchstr,
 	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer().markDirty();
 	find(bv, searchstr, cs, mw, fw, false);
+	bv->buffer().updateMacros();
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
 	return 1;

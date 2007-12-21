@@ -213,11 +213,11 @@ int MathMacro::kerning() const {
 }
 
 
-void MathMacro::updateMacro(MetricsInfo & mi) 
+void MathMacro::updateMacro(MacroContext const & mc) 
 {
-	if (validName() && mi.macrocontext.has(name())) {
-		macro_ = &mi.macrocontext.get(name());
-		if (macroBackup_ != *macro_) {
+	if (validName()) {
+		macro_ = mc.get(name());	    
+		if (macro_ && macroBackup_ != *macro_) {
 			macroBackup_ = *macro_;
 			needsUpdate_ = true;
 		}
@@ -227,48 +227,60 @@ void MathMacro::updateMacro(MetricsInfo & mi)
 }
 
 
-void MathMacro::updateRepresentation(MetricsInfo & mi) 
+void MathMacro::updateRepresentation(Cursor const * bvCur)
 {
 	// index of child where the cursor is (or -1 if none is edited)
-	int curIdx = cursorIdx(mi.base.bv->cursor());
+	int curIdx = -1;
+	if (bvCur)
+		curIdx = cursorIdx(*bvCur);
 	previousCurIdx_ = curIdx;
 
 	// known macro?
-	if (macro_) {
-		requires_ = macro_->requires();
+	if (macro_ == 0)
+		return;
 
-		if (displayMode_ == DISPLAY_NORMAL) {
-			// set edit mode to draw box around if needed
-			bool prevEditing = editing_; 
-			editing_ = editMode(mi.base.bv->cursor());
+	// update requires
+	requires_ = macro_->requires();
+	
+	// non-normal mode? We are done!
+	if (displayMode_ != DISPLAY_NORMAL)
+		return;
 
-			// editMode changed and we have to switch default value and hole of optional?
-			if (optionals_ > 0 && nargs() > 0 && 
-					prevEditing != editing_)
-				needsUpdate_ = true;
-
-			// macro changed?
-			if (needsUpdate_) {
-				needsUpdate_ = false;
-
-				// get default values of macro
-				vector<docstring> const & defaults = macro_->defaults();
-
-				// create MathMacroArgumentValue objects pointing to the cells of the macro
-				vector<MathData> values(nargs());
-				for (size_t i = 0; i < nargs(); ++i) {
-					if (!cell(i).empty() || i >= defaults.size() || 
-							defaults[i].empty() || curIdx == (int)i)
-						values[i].insert(0, MathAtom(new ArgumentProxy(*this, i)));
-					else
-						values[i].insert(0, MathAtom(new ArgumentProxy(*this, i, defaults[i])));
-				}
-
-				// expanding macro with the values
-				macro_->expand(values, expanded_.cell(0));
-			}
+	// set edit mode to draw box around if needed
+	bool prevEditing = editing_; 
+	editing_ = false;
+	if (bvCur)
+		editing_ = editMode(*bvCur);
+	
+	// editMode changed and we have to switch default value and hole of optional?
+	if (optionals_ > 0 && nargs() > 0 && 
+	    prevEditing != editing_)
+		needsUpdate_ = true;
+	
+	// macro changed?
+	if (needsUpdate_) {
+		needsUpdate_ = false;
+		
+		// get default values of macro
+		vector<docstring> const & defaults = macro_->defaults();
+		
+		// create MathMacroArgumentValue objects pointing to the cells of the macro
+		vector<MathData> values(nargs());
+		for (size_t i = 0; i < nargs(); ++i) {
+			ArgumentProxy * proxy;
+			if (!cell(i).empty() 
+			    || i >= defaults.size() 
+			    || defaults[i].empty() 
+			    || curIdx == (int)i)
+				proxy = new ArgumentProxy(*this, i);
+			else
+				proxy = new ArgumentProxy(*this, i, defaults[i]);
+			values[i].insert(0, MathAtom(proxy));
 		}
-	}
+		
+		// expanding macro with the values
+		macro_->expand(values, expanded_.cell(0));
+	}		
 }
 
 
@@ -359,7 +371,7 @@ void MathMacro::setDisplayMode(MathMacro::DisplayMode mode)
 }
 
 
-MathMacro::DisplayMode MathMacro::computeDisplayMode(MetricsInfo const &) const
+MathMacro::DisplayMode MathMacro::computeDisplayMode() const
 {
 	if (nextFoldMode_ == true && macro_ && !macro_->locked())
 		return DISPLAY_NORMAL;
@@ -531,54 +543,63 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	if (displayMode_ == DISPLAY_NORMAL) {
-		BOOST_ASSERT(macro_);
-
-		os << "\\" << name();
-		bool first = true;
-		idx_type i = 0;
-
-		// Use macroBackup_ instead of macro_ here, because
-		// this is outside the metrics/draw calls, hence the macro_
-		// variable can point to a MacroData which was freed already.
-		vector<docstring> const & defaults = macroBackup_.defaults();
-
-		// Optional argument
-		if (os.latex()) {
-			if (i < optionals_) {
-				// the first real optional, the others are non-optional in latex
-				if (!cell(i).empty()) {
-					first = false;
-					os << "[" << cell(0) << "]";
-				}
-
-				++i;
-			}
-		} else {
-			// In lyx mode print all in any case
-			for (; i < cells_.size() && i < optionals_; ++i) {
-				first = false;
-				os << "[" << cell(i) << "]";
-			}
-		}
-
-		for (; i < cells_.size(); ++i) {
-			if (cell(i).empty() && i < optionals_) {
-				os << "{" << defaults[i] << "}";
-			} else if (cell(i).size() == 1 && cell(i)[0].nucleus()->asCharInset()) {
-				if (first)
-					os << " ";
-				os << cell(i);
-			}	else
-				os << "{" << cell(i) << "}";
-			first = false;
-		}
-		if (first)
-			os.pendingSpace(true);
-	} else {
+	// non-normal mode
+	if (displayMode_ != DISPLAY_NORMAL) {
 		os << "\\" << name() << " ";
 		os.pendingSpace(true);
+		return;
 	}
+
+	// normal mode
+	BOOST_ASSERT(macro_);
+
+	os << "\\" << name();
+	bool first = true;
+	idx_type i = 0;
+	
+	// Use macroBackup_ instead of macro_ here, because
+	// this is outside the metrics/draw calls, hence the macro_
+	// variable can point to a MacroData which was freed already.
+	vector<docstring> const & defaults = macroBackup_.defaults();
+	
+	// Optional argument
+	if (os.latex()) {
+		// Print first optional in LaTeX semantics
+		if (i < optionals_) {
+			// the first real optional, the others are non-optional in latex
+			if (!cell(i).empty()) {
+				first = false;
+				os << "[" << cell(0) << "]";
+			}
+			
+			++i;
+		}
+	} else {
+		// In lyx mode print all in any case
+		for (; i < cells_.size() && i < optionals_; ++i) {
+			first = false;
+				os << "[" << cell(i) << "]";
+		}
+	}
+
+	// Print remaining macros 
+	// (also the further optional parameters in LaTeX mode!)
+	for (; i < cells_.size(); ++i) {
+		if (cell(i).empty() && i < optionals_)
+			os << "{" << defaults[i] << "}";
+		else if (cell(i).size() == 1 
+			 && cell(i)[0].nucleus()->asCharInset()) {
+			if (first)
+				os << " ";
+			os << cell(i);
+		} else
+			os << "{" << cell(i) << "}";
+		first = false;
+	}
+
+	// add space if there was no argument
+	if (first)
+		os.pendingSpace(true);
 }
 
 

@@ -29,7 +29,7 @@ public:
 	MathMacroTemplate();
 	///
 	MathMacroTemplate(docstring const & name, int nargs, int optional, 
-		docstring const & type, 
+	       	MacroType type,
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
 		MathData const & display = MathData());
@@ -43,18 +43,43 @@ public:
 	void write(Buffer const &, std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
+	/// Output LaTeX code, but assume that the macro is not definied yet
+	/// if overwriteRedefinition is true
+	void write(WriteStream & os, bool overwriteRedefinition) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
 		OutputParams const &) const;
+	///
+	bool noFontChange() const { return true; }
 
 	///
 	docstring name() const;
+	///
+	void getDefaults(std::vector<docstring> & defaults) const;
+	///
+	docstring definition() const;
+	///
+	docstring displayDefinition() const;
+	///
+	size_t numArgs() const;
+	///
+	size_t numOptionals() const;
+	///
+	bool redefinition() const { return redefinition_; }
+	///
+	MacroType type() const { return type_; }
+
 	/// check name and possible other formal properties
 	bool validMacro() const;
 	///
 	bool validName() const;
-	///
-	MacroData asMacroData() const;
+	/// Remove everything from the name which makes it invalid 
+	/// and return true iff it is valid.
+	bool fixNameAndCheckIfValid();
+
+	/// decide whether its a redefinition
+	void updateToContext(MacroContext const & mc) const;
+
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -100,10 +125,14 @@ private:
 	mutable int numargs_;
 	///
 	int optionals_;
-	/// keeps the old optional default value when an optional argument is disabled
+	/// keeps the old optional default value when an 
+	/// optional argument is disabled
 	std::vector<MathData> optionalValues_;
-	/// newcommand or renewcommand or def
-	mutable docstring type_;
+
+	/// (re)newcommand or def
+	mutable MacroType type_;
+	/// defined before already?
+	mutable bool redefinition_;
 };
 
 

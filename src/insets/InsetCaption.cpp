@@ -184,6 +184,7 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 	case WRAP_CODE:
 	case CAPTION_CODE:
 	case NEWPAGE_CODE:
+	case MATHMACRO_CODE:
 		return false;
 	default:
 		return InsetText::insetAllowed(code);

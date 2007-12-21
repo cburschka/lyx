@@ -14,6 +14,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include "DocIterator.h"
 #include "ParagraphList.h"
 
 namespace lyx {
@@ -257,6 +258,14 @@ public:
 	/// from \first to \last paragraph
 	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
+	/// To resolve macros properly the texts get their DocIterator.
+	/// Every macro definition is stored with its DocIterator
+	/// as well. Only those macros with a smaller iterator become 
+	/// visible in a paragraph.
+	DocIterator macrocontextPosition() const;
+	///
+	void setMacrocontextPosition(DocIterator const & pos);
+
 public:
 	///
 	ParagraphList pars_;
@@ -287,6 +296,9 @@ private:
 	/// \param asParagraphs whether to paste as paragraphs or as lines
 	void pasteString(Cursor & cur, docstring const & str,
 			bool asParagraphs);
+
+	/// position of the text in the buffer.
+	DocIterator macrocontext_position_;
 };
 
 } // namespace lyx

@@ -86,6 +86,8 @@ public:
 	///
 	bool noFontChange() const { return true; }
 	///
+	bool isMacroScope(Buffer const & buf) const;
+	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;

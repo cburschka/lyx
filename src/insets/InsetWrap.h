@@ -57,6 +57,8 @@ public:
 	///
 	InsetCode lyxCode() const { return WRAP_CODE; }
 	///
+	bool isMacroScope(Buffer const & buf) const { return true; }
+	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///

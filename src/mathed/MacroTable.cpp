@@ -10,14 +10,17 @@
 
 #include <config.h>
 
+#include "InsetMathSqrt.h"
 #include "MacroTable.h"
 #include "MathMacroTemplate.h"
 #include "MathMacroArgument.h"
+#include "MathStream.h"
 #include "MathSupport.h"
-#include "InsetMathSqrt.h"
-
 #include "InsetMathNest.h"
+
 #include "Buffer.h"
+#include "InsetList.h"
+#include "Text.h"
 
 #include "support/debug.h"
 #include "DocIterator.h"
@@ -38,24 +41,32 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 MacroData::MacroData()
-	: numargs_(0), lockCount_(0), redefinition_(false)
+	: queried_(true), numargs_(0), optionals_(0), lockCount_(0),
+	  redefinition_(false), type_(MacroTypeNewcommand)
 {}
 
-
-MacroData::MacroData(docstring const & definition,
-		vector<docstring> const & defaults, 
-		int numargs, int optionals, docstring const & display,
-		string const & requires)
-	: definition_(definition), numargs_(numargs), display_(display),
-		requires_(requires), lockCount_(0), redefinition_(false),
-		optionals_(optionals), defaults_(defaults)
+	
+	
+MacroData::MacroData(Buffer const & buf, DocIterator const & pos)
+	: buffer_(&buf), pos_(pos), queried_(false), numargs_(0),
+	  optionals_(0), lockCount_(0), redefinition_(false),
+	  type_(MacroTypeNewcommand)
 {
-	defaults_.resize(optionals);
 }
+	
+	
+MacroData::MacroData(MathMacroTemplate const & macro)
+	: queried_(false), numargs_(0), optionals_(0), lockCount_(0),
+	  redefinition_(false), type_(MacroTypeNewcommand)
+{
+	queryData(macro);
+}	
 
 
 void MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
+	updateData();
+
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	// FIXME UNICODE
 	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
@@ -81,12 +92,14 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 
 size_t MacroData::optionals() const
 {
+	updateData();
 	return optionals_;
 }
 
 
 vector<docstring> const &  MacroData::defaults() const
 {
+	updateData();
 	return defaults_;
 }
 
@@ -95,6 +108,63 @@ void MacroData::unlock() const
 {
 	--lockCount_;
 	BOOST_ASSERT(lockCount_ >= 0);
+}
+
+
+void MacroData::queryData(MathMacroTemplate const & macro) const
+{
+	if (queried_)
+		return;
+
+	queried_ = true;
+	definition_ = macro.definition();
+	numargs_ = macro.numArgs();
+	display_ = macro.displayDefinition();
+	redefinition_ = macro.redefinition();
+	type_ = macro.type();
+	optionals_ = macro.numOptionals();
+	macro.getDefaults(defaults_);	
+}
+
+
+void MacroData::updateData() const
+{
+	if (queried_)
+		return;
+
+	BOOST_ASSERT(buffer_ != 0);
+	
+	// Try to fix position DocIterator. Should not do anything in theory.
+	pos_.fixIfBroken();
+	
+	// find macro template
+	Inset * inset = pos_.nextInset();
+	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
+		lyxerr << "BUG: No macro template found by MacroData" << endl;
+		return;
+	}
+	
+	// query the data from the macro template
+	queryData(static_cast<MathMacroTemplate const &>(*inset));	
+}
+	
+
+void MacroData::write(odocstream & os, bool overwriteRedefinition) const
+{
+	updateData();
+
+	// find macro template
+	Inset * inset = pos_.nextInset();
+	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
+		lyxerr << "BUG: No macro template found by MacroData" << endl;
+		return;
+	}
+		
+	// output template
+	MathMacroTemplate const & tmpl 
+	= static_cast<MathMacroTemplate const &>(*inset);
+	WriteStream wi(os, false, true);
+	tmpl.write(wi, overwriteRedefinition);
 }
 
 
@@ -111,17 +181,10 @@ MacroTable & MacroTable::globalMacros()
 }
 
 
-bool MacroTable::has(docstring const & name) const
-{
-	return find(name) != end();
-}
-
-
-MacroData const & MacroTable::get(docstring const & name) const
+MacroData const * MacroTable::get(docstring const & name) const
 {
 	const_iterator it = find(name);
-	BOOST_ASSERT(it != end());
-	return it->second;
+	return it == end() ? 0 : &it->second;
 }
 
 
@@ -136,7 +199,7 @@ void MacroTable::insert(docstring const & def, string const & requires)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	MathMacroTemplate mac(def);
-	MacroData data = mac.asMacroData();
+	MacroData data(mac);
 	data.requires() = requires;
 	insert(mac.name(), data);
 }
@@ -154,38 +217,21 @@ void MacroTable::dump()
 }
 
 
-MacroContext::MacroContext(Buffer const & buf, Paragraph const & par)
-	: buf_(buf), par_(par)
+/////////////////////////////////////////////////////////////////////
+//
+// MacroContext
+//
+/////////////////////////////////////////////////////////////////////
+
+MacroContext::MacroContext(Buffer const & buf, DocIterator const & pos)
+	: buf_(buf), pos_(pos)
 {
 }
 
 
-bool MacroContext::has(docstring const & name) const
+MacroData const * MacroContext::get(docstring const & name) const
 {
-	// check if it's a local macro
-	if (macros_.has(name))
-		return true;
-	
-	// otherwise ask the buffer
-	return buf_.hasMacro(name, par_);
+	return buf_.getMacro(name, pos_);
 }
-
-
-MacroData const & MacroContext::get(docstring const & name) const
-{
-	// check if it's a local macro
-	if (macros_.has(name))
-		return macros_.get(name);
-	
-	// ask the buffer for its macros
-	return buf_.getMacro(name, par_);
-}
-
-
-void MacroContext::insert(docstring const & name, MacroData const & data)
-{
-	macros_.insert(name, data);
-}
-
 
 } // namespace lyx

@@ -33,6 +33,8 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
+	bool isMacroScope(Buffer const & buf) const { return true; }
+	///
 	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for

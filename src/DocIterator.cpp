@@ -532,29 +532,6 @@ ostream & operator<<(ostream & os, DocIterator const & dit)
 }
 
 
-bool operator<(DocIterator const & p, DocIterator const & q)
-{
-	size_t depth = min(p.depth(), q.depth());
-	for (size_t i = 0 ; i < depth ; ++i) {
-		if (p[i] != q[i])
-			return p[i] < q[i];
-	}
-	return p.depth() < q.depth();
-}
-
-
-bool operator>(DocIterator const & p, DocIterator const & q)
-{
-	return q < p;
-}
-
-
-bool operator<=(DocIterator const & p, DocIterator const & q)
-{
-	return !(q < p);
-}
-
-
 ///////////////////////////////////////////////////////
 
 StableDocIterator::StableDocIterator(DocIterator const & dit)

@@ -349,9 +349,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		<< ", singlepar = " << (flags & Update::SinglePar)
 		<< "]  buffer: " << &buffer_);
 
-	// Update macro store
-	if (!(cursor().inMathed() && cursor().inMacroMode()))
-		buffer_.updateMacros();
+	buffer_.updateMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().

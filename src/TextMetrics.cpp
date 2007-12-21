@@ -375,35 +375,28 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// so better to calculate that once here.
 	int const right_margin = rightMargin(pm);
 
+	// iterator pointing to paragraph to resolve macros
+	DocIterator parPos = text_->macrocontextPosition();
+	if (!parPos.empty())
+		parPos.pit() = pit;
+
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in Inset.h.
 	Font const bufferfont = buffer.params().getFont();
-	MacroContext mc(buffer, par);
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for (; ii != iend; ++ii) {
-		// the macro must come here, _before_ the metric call, because
-		// the macro should see itself to detect recursions. To find out
-		// whether the macro definition is a redefinition it will look
-		// at the MacroData::redefinition_. So it doesn't get confused
-		// by the already existing macro definition of itself in the 
-		// macro context.
-		if (ii->inset->lyxCode() == MATHMACRO_CODE) {
-			// get macro data
-			MathMacroTemplate const & macroTemplate
-			= static_cast<MathMacroTemplate const &>(*ii->inset);
-
-			// valid?
-			if (macroTemplate.validMacro()) {
-				MacroData macro = macroTemplate.asMacroData();
-
-				// redefinition?
-				macro.setRedefinition(mc.has(macroTemplate.name()));
-
-				// register macro (possibly overwrite the previous one of this paragraph)
-				mc.insert(macroTemplate.name(), macro);
-			}
+		// position already initialized?
+		if (!parPos.empty()) {
+			parPos.pos() = ii->pos;
+		
+			// A macro template would normally not be visible 
+			// by itself. But the tex macro semantics allow 
+			// recursion, so we artifically take the context
+			// after the macro template to simulate this.
+			if (ii->inset->lyxCode() == MATHMACRO_CODE)
+				parPos.pos()++;
 		}
 
 		// do the metric calculation
@@ -412,6 +405,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : getDisplayFont(pit, ii->pos);
+		MacroContext mc(buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);
 		Dimension const old_dim = pm.insetDimension(ii->inset);
