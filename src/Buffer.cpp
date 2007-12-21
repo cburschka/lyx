@@ -1691,7 +1691,7 @@ typename M::iterator greatest_below(M & m, typename M::key_type const & x)
 MacroData const * Buffer::getBufferMacro(docstring const & name, 
 					 DocIterator const & pos) const
 {
-	LYXERR(Debug::DEBUG, "Searching for " << to_ascii(name) << " at " << pos);
+	LYXERR(Debug::MACROS, "Searching for " << to_ascii(name) << " at " << pos);
 
 	// if paragraphs have no macro context set, pos will be empty
 	if (pos.empty())
@@ -1964,7 +1964,7 @@ void Buffer::updateMacros() const
 	if (d->macro_lock)
 		return;
 
-	LYXERR(Debug::DEBUG, "updateMacro of " << d->filename.onlyFileName());
+	LYXERR(Debug::MACROS, "updateMacro of " << d->filename.onlyFileName());
 
 	// start with empty table
 	d->macros.clear();
@@ -1984,7 +1984,7 @@ void Buffer::updateMacros() const
 
 void Buffer::updateMacroInstances() const
 {
-	LYXERR(Debug::DEBUG, "updateMacroInstances for " << d->filename.onlyFileName());
+	LYXERR(Debug::MACROS, "updateMacroInstances for " << d->filename.onlyFileName());
 	ParIterator it = par_iterator_begin();
 	ParIterator end = par_iterator_end();
 	for (; it != end; it.forwardPos()) {

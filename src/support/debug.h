@@ -92,6 +92,8 @@ namespace Debug {
 		///
 		SCROLLING  = (1 << 25),
 		///
+		MACROS     = (1 << 26),
+		///
 		DEBUG      = (1 << 31),
 		///
 		ANY = 0xffffffff

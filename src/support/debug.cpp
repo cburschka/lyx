@@ -63,6 +63,7 @@ ErrorItem errorTags[] = {
 	{ Debug::EXTERNAL,  "external",  N_("External template/inset messages")},
 	{ Debug::PAINTING,  "painting",  N_("RowPainter profiling")},
 	{ Debug::SCROLLING, "scrolling", N_("scrolling debugging")},
+	{ Debug::MACROS,    "macros",    N_("Math macros")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
