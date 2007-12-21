@@ -1205,7 +1205,7 @@ void TextMetrics::newParMetricsDown()
 	// do it and update its position.
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(last.second.position()
-		+ last.second.descent());
+		+ last.second.descent() + par_metrics_[pit].ascent());
 }
 
 
@@ -1219,7 +1219,7 @@ void TextMetrics::newParMetricsUp()
 	// do it and update its position.
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(first.second.position()
-		- first.second.ascent());
+		- first.second.ascent() - par_metrics_[pit].descent());
 }
 
 // y is screen coordinate
