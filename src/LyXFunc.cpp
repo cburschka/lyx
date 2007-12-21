@@ -1772,8 +1772,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 						cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
-			// Verify that the action has been dispatched.
-			BOOST_ASSERT(view()->cursor().result().dispatched());
+			if (!view()->cursor().result().dispatched()) {
+				// No update needed in this case (e.g. when reaching
+				// top of document.
+				updateFlags = Update::None;
+			}
 		}
 
 		if (lyx_view_ && lyx_view_->buffer()) {
