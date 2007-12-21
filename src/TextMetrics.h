@@ -243,6 +243,8 @@ public:
 
 private:
 
+	friend BufferView;
+
 	/// The BufferView owner.
 	BufferView * bv_;
 

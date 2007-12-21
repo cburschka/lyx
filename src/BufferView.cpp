@@ -208,7 +208,7 @@ enum ScreenUpdateStrategy {
 struct BufferView::Private
 {
 	Private(BufferView & bv): wh_(0), cursor_(bv),
-		anchor_ref_(0), offset_ref_(0), need_centering_(false),
+		anchor_pit_(0), anchor_ypos_(0),
 		last_inset_(0), gui_(0)
 	{}
 
@@ -230,11 +230,11 @@ struct BufferView::Private
 	///
 	Cursor cursor_;
 	///
-	pit_type anchor_ref_;
+	pit_type anchor_pit_;
 	///
-	int offset_ref_;
+	int anchor_ypos_;
 	///
-	bool need_centering_;
+	vector<int> par_height_;
 
 	/// keyboard mapping object.
 	Intl intl_;
@@ -332,7 +332,6 @@ bool BufferView::fitCursor()
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
-	center();
 	return true;
 }
 
@@ -373,11 +372,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	if (flags == Update::FitCursor
 		|| flags == (Update::Decoration | Update::FitCursor)) {
-		bool const fit_cursor = fitCursor();
 		// tell the frontend to update the screen if needed.
-		if (fit_cursor) {
-			updateMetrics();
-			buffer_.changed();
+		if (fitCursor()) {
+			center();
 			return;
 		}
 		if (flags & Update::Decoration) {
@@ -393,11 +390,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	bool const full_metrics = flags & Update::Force;
 
 	if (full_metrics || !singleParUpdate()) {
-		if (flags & Update::FitCursor) {
-			CursorSlice const & bot = d->cursor_.bottom();
-			TextMetrics const & tm = d->text_metrics_[bot.text()];
-			if (!tm.has(bot.pit()))
-				center();
+		if (flags & Update::FitCursor && fitCursor()) {
+			center();
+			return;
 		}
 		// We have to update the full screen metrics.
 		updateMetrics();
@@ -418,59 +413,61 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		// to redraw again.
 		return;
 
-	// The screen has been recentered around the cursor position so
+	// The screen needs to be recentered around the cursor position so
 	// refresh it:
-	updateMetrics();
-	buffer_.changed();
+	center();
 }
 
 
 void BufferView::updateScrollbar()
 {
-	Text & t = buffer_.text();
-	TextMetrics & tm = d->text_metrics_[&t];
+	if (height_ == 0)
+		return;
 
-	int const parsize = int(t.paragraphs().size() - 1);
-	if (d->anchor_ref_ >  parsize)  {
-		d->anchor_ref_ = parsize;
-		d->offset_ref_ = 0;
-	}
+	Text & t = buffer_.text();
+	TextMetrics & tm = d->text_metrics_[&t];		
 
 	LYXERR(Debug::GUI, " Updating scrollbar: height: "
 		<< t.paragraphs().size()
 		<< " curr par: " << d->cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight());
 
+	int const parsize = int(t.paragraphs().size() - 1);
+	if (d->par_height_.size() != parsize) {
+		d->par_height_.clear();
+		// FIXME: We assume a default paragraph height of 4 rows. This
+		// should probably be pondered with the screen width.
+		d->par_height_.resize(parsize, defaultRowHeight() * 4);
+	}
+
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh
 
-	// estimated average paragraph height:
-	if (d->wh_ == 0)
-		d->wh_ = height_ / 4;
-
-	int h = tm.parMetrics(d->anchor_ref_).height();
-
 	// Look at paragraph heights on-screen
-	int sumh = 0;
-	int nh = 0;
-	for (pit_type pit = d->anchor_ref_; pit <= parsize; ++pit) {
-		if (sumh > height_)
-			break;
-		int const h2 = tm.parMetrics(pit).height();
-		sumh += h2;
-		nh++;
+	pit_type first_visible_pit = -1;
+	pair<pit_type, ParagraphMetrics const *> first = tm.first();
+	pair<pit_type, ParagraphMetrics const *> last = tm.last();
+	for (pit_type pit = first.first; pit <= last.first; ++pit) {
+		ParagraphMetrics const & pm = tm.parMetrics(pit);
+		d->par_height_[pit] = pm.height();
+		if (first_visible_pit < 0 && pm.position() + pm.descent() > 0)
+			first_visible_pit = pit;
 	}
 
-	BOOST_ASSERT(nh);
-	int const hav = sumh / nh;
-	// More realistic average paragraph height
-	if (hav > d->wh_)
-		d->wh_ = hav;
+	LYXERR(Debug::SCROLLING, "first_visible_pit " << first_visible_pit);
 
-	BOOST_ASSERT(h);
-	d->scrollbarParameters_.height = (parsize + 1) * d->wh_;
-	d->scrollbarParameters_.position = d->anchor_ref_ * d->wh_ + int(d->offset_ref_ * d->wh_ / float(h));
-	d->scrollbarParameters_.lineScrollHeight = int(d->wh_ * defaultRowHeight() / float(h));
+	d->scrollbarParameters_.height = 0;
+	for (size_t i = 0; i != d->par_height_.size(); ++i) {
+		d->scrollbarParameters_.height += d->par_height_[i];
+		if (i != first_visible_pit)
+			continue;
+		// FIXME: we should look for the first visible row within
+		// the deepest inset!
+		d->scrollbarParameters_.position = d->scrollbarParameters_.height;
+	}
+
+	d->scrollbarParameters_.lineScrollHeight =
+		tm.parMetrics(first_visible_pit).rows()[0].height();
 }
 
 
@@ -482,25 +479,33 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 
 void BufferView::scrollDocView(int value)
 {
-	LYXERR(Debug::GUI, "[ value = " << value << "]");
+	int const offset = value - d->scrollbarParameters_.position;
+	//TextMetrics & tm = d->text_metrics_[&buffer_.text()];
+	if (abs(offset) <= 3*height_) {
+		scroll(offset);
+		return;
+	}
 
-	Text & t = buffer_.text();
-	TextMetrics & tm = d->text_metrics_[&t];
+	int par_pos = 0;
+	for (size_t i = 0; i != d->par_height_.size(); ++i) {
+		par_pos += d->par_height_[i];
+		if (par_pos >= value) {
+			d->anchor_pit_ = pit_type(i);
+			break;
+		}
+	}
 
-	float const bar = value / float(d->wh_ * t.paragraphs().size());
+	LYXERR(Debug::SCROLLING, "value = " << value
+		<< "\tanchor_ref_ = " << d->anchor_pit_
+		<< "\tpar_pos = " << par_pos);
 
-	d->anchor_ref_ = int(bar * t.paragraphs().size());
-	if (d->anchor_ref_ >  int(t.paragraphs().size()) - 1)
-		d->anchor_ref_ = int(t.paragraphs().size()) - 1;
-
-	tm.redoParagraph(d->anchor_ref_);
-	int const h = tm.parMetrics(d->anchor_ref_).height();
-	d->offset_ref_ = int((bar * t.paragraphs().size() - d->anchor_ref_) * h);
+	d->anchor_ypos_ = par_pos - value;
 	updateMetrics();
 	buffer_.changed();
 }
 
 
+// FIXME: this method is not working well.
 void BufferView::setCursorFromScrollbar()
 {
 	TextMetrics & tm = d->text_metrics_[&buffer_.text()];
@@ -633,8 +638,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// So we need a redraw!
 		buffer_.changed();
 		if (fitCursor())
-			// We need another redraw because of the screen recentering.
-			buffer_.changed();
+			center();
 	}
 
 	return success;
@@ -663,38 +667,54 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::updateOffsetRef()
+void BufferView::center()
 {
-	// No need to update d->offset_ref_ in this case.
-	if (!d->need_centering_)
-		return;
-
 	// We are not properly started yet, delay until resizing is
 	// done.
 	if (height_ == 0)
 		return;
 
-	d->need_centering_ = false;
+	LYXERR(Debug::SCROLLING, "recentering!");
 
 	CursorSlice & bot = d->cursor_.bottom();
 	TextMetrics & tm = d->text_metrics_[bot.text()];
-	ParagraphMetrics const & pm = tm.parMetrics(bot.pit());
-	if (d->anchor_ref_ == 0)
-		d->offset_ref_ = 0;
-	else if (d->anchor_ref_ >= pos_type(bot.text()->paragraphs().size() - 1)) {
-		d->anchor_ref_ = bot.text()->paragraphs().size() - 1;
-		d->offset_ref_ = pm.height() - height_;
-	} else {
-		int y = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
-		d->offset_ref_ = y + pm.ascent() - height_ / 2;
+
+	int const bot_pit = d->cursor_.bottom().pit();
+	if (bot_pit == tm.first().first - 1)
+		tm.newParMetricsUp();
+	else if (bot_pit == tm.last().first + 1)
+		tm.newParMetricsDown();
+
+	if (tm.has(bot_pit)) {
+		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
+		int offset = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
+		int ypos = pm.position() + offset;
+		Dimension const & row_dim = d->cursor_.textRow().dimension();
+		if (ypos - row_dim.ascent() < 0)
+			scrollUp(- ypos + d->cursor_.textRow().ascent());
+		else if (ypos + row_dim.descent() > height_)
+			scrollDown(ypos - height_ + d->cursor_.textRow().descent());
+		// else, nothing to do, the cursor is already visible so we just return.
+		return;
 	}
-}
 
+	tm.redoParagraph(bot_pit);
+	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
+	int offset = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
 
-void BufferView::center()
-{
-	d->anchor_ref_ = d->cursor_.bottom().pit();
-	d->need_centering_ = true;
+	d->anchor_pit_ = bot_pit;
+
+	if (d->anchor_pit_ == 0)
+		d->anchor_ypos_ = offset + pm.ascent();
+	else if (d->anchor_pit_ >= pos_type(bot.text()->paragraphs().size() - 1)) {
+		d->anchor_pit_ = bot.text()->paragraphs().size() - 1;
+		d->anchor_ypos_ = offset + pm.height() - height_;
+	} else {
+		d->anchor_ypos_ = offset + pm.ascent() - height_ / 2;
+	}
+
+	updateMetrics();
+	buffer_.changed();
 }
 
 
@@ -1155,12 +1175,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			center();
-			updateMetrics();
-			//FIXME: updateMetrics() does not update paragraph position
-			// This is done at draw() time. So we need a redraw!
-			// But no screen update is needed.
-			d->update_strategy_ = NoScreenUpdate;
-			buffer_.changed();
 			p = getPos(cur, cur.boundary());
 		}
 		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
@@ -1243,6 +1257,9 @@ void BufferView::resize(int width, int height)
 	// Update from work area
 	width_ = width;
 	height_ = height;
+
+	// Clear the paragraph height cache.
+	d->par_height_.clear();
 
 	updateMetrics();
 }
@@ -1384,7 +1401,7 @@ void BufferView::scrollDown(int offset)
 			break;
 		tm.newParMetricsDown();
 	}
-	d->offset_ref_ += offset;
+	d->anchor_ypos_ -= offset;
 	updateMetrics();
 	buffer_.changed();
 }
@@ -1408,7 +1425,7 @@ void BufferView::scrollUp(int offset)
 			break;
 		tm.newParMetricsUp();
 	}
-	d->offset_ref_ -= offset;
+	d->anchor_ypos_ += offset;
 	updateMetrics();
 	buffer_.changed();
 }
@@ -1595,7 +1612,7 @@ Cursor const & BufferView::cursor() const
 
 pit_type BufferView::anchor_ref() const
 {
-	return d->anchor_ref_;
+	return d->anchor_pit_;
 }
 
 
@@ -1632,11 +1649,6 @@ void BufferView::updateMetrics()
 	Text & buftext = buffer_.text();
 	pit_type const npit = int(buftext.paragraphs().size());
 
-	if (d->anchor_ref_ > int(npit - 1)) {
-		d->anchor_ref_ = int(npit - 1);
-		d->offset_ref_ = 0;
-	}
-
 	// Clear out the position cache in case of full screen redraw,
 	d->coord_cache_.clear();
 
@@ -1647,63 +1659,50 @@ void BufferView::updateMetrics()
 
 	TextMetrics & tm = textMetrics(&buftext);
 
-	pit_type const pit = d->anchor_ref_;
-	int pit1 = pit;
-	int pit2 = pit;
-
 	// Rebreak anchor paragraph.
-	tm.redoParagraph(pit);
+	tm.redoParagraph(d->anchor_pit_);
+	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
+	anchor_pm.setPosition(d->anchor_ypos_);
 
-	// Take care of anchor offset if case a recentering is needed.
-	updateOffsetRef();
-
-	int y0 = tm.parMetrics(pit).ascent() - d->offset_ref_;
+	LYXERR(Debug::PAINTING, "metrics: "
+		<< " anchor pit = " << d->anchor_pit_
+		<< " anchor ypos = " << d->anchor_ypos_);
 
 	// Redo paragraphs above anchor if necessary.
-	int y1 = y0;
-	while (y1 > 0 && pit1 > 0) {
-		y1 -= tm.parMetrics(pit1).ascent();
-		--pit1;
+	int y1 = d->anchor_ypos_ - anchor_pm.ascent();
+	// We are now just above the anchor paragraph.
+	pit_type pit1 = d->anchor_pit_ - 1;
+	for (; pit1 >= 0 && y1 > 0; --pit1) {
 		tm.redoParagraph(pit1);
-		y1 -= tm.parMetrics(pit1).descent();
-	}
-
-	// Take care of ascent of first line
-	y1 -= tm.parMetrics(pit1).ascent();
-
-	// Normalize anchor for next time
-	d->anchor_ref_ = pit1;
-	d->offset_ref_ = -y1;
-
-	// Grey at the beginning is ugly
-	if (pit1 == 0 && y1 > 0) {
-		y0 -= y1;
-		y1 = 0;
-		d->anchor_ref_ = 0;
+		ParagraphMetrics & pm = tm.par_metrics_[pit1];
+		y1 -= pm.descent();
+		// Save the paragraph position in the cache.
+		pm.setPosition(y1);
+		y1 -= pm.ascent();
 	}
 
 	// Redo paragraphs below the anchor if necessary.
-	int y2 = y0;
-	while (y2 < height_ && pit2 < int(npit) - 1) {
-		y2 += tm.parMetrics(pit2).descent();
-		++pit2;
+	int y2 = d->anchor_ypos_ + anchor_pm.descent();
+	// We are now just below the anchor paragraph.
+	pit_type pit2 = d->anchor_pit_ + 1;
+	for (; pit2 < npit && y2 < height_; ++pit2) {
 		tm.redoParagraph(pit2);
-		y2 += tm.parMetrics(pit2).ascent();
+		ParagraphMetrics & pm = tm.par_metrics_[pit2];
+		y2 += pm.ascent();
+		// Save the paragraph position in the cache.
+		pm.setPosition(y2);
+		y2 += pm.descent();
 	}
 
-	// Take care of descent of last line
-	y2 += tm.parMetrics(pit2).descent();
-
-	LYXERR(Debug::PAINTING, "\n y1: " << y1
-		<< " y2: " << y2
-		<< " pit1: " << pit1
-		<< " pit2: " << pit2
-		<< " npit: " << npit
-		<< " singlepar: 0");
+	LYXERR(Debug::PAINTING, "Metrics: "
+		<< " anchor pit = " << d->anchor_pit_
+		<< " anchor ypos = " << d->anchor_ypos_
+		<< " y1 = " << y1
+		<< " y2 = " << y2
+		<< " pit1 = " << pit1
+		<< " pit2 = " << pit2);
 
 	d->update_strategy_ = FullScreenUpdate;
-
-	updateScrollbar();
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");
@@ -1854,7 +1853,7 @@ void BufferView::draw(frontend::Painter & pain)
 	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
-	int const y = - d->offset_ref_ + tm.parMetrics(d->anchor_ref_).ascent();
+	int const y = tm.first().second->position();
 	PainterInfo pi(this, pain);
 
 	switch (d->update_strategy_) {
@@ -1887,6 +1886,8 @@ void BufferView::draw(frontend::Painter & pain)
 		// Clear background.
 		pain.fillRectangle(0, 0, width_, height_,
 			buffer_.inset().backgroundColor());
+
+		// Draw everything.
 		tm.draw(pi, 0, y);
 
 		// and possibly grey out below
@@ -1896,8 +1897,24 @@ void BufferView::draw(frontend::Painter & pain)
 			pain.fillRectangle(0, y2, width_, height_ - y2, Color_bottomarea);
 		break;
 	}
-
 	LYXERR(Debug::PAINTING, "\n\t\t*** END DRAWING  ***");
+
+	// The scrollbar needs an update.
+	updateScrollbar();
+
+	// Normalize anchor for next time
+	pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
+	pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
+	for (pit_type pit = firstpm.first; pit <= lastpm.first; ++pit) {
+		ParagraphMetrics const & pm = tm.parMetrics(pit);
+		if (pm.position() + pm.descent() > 0) {
+			d->anchor_pit_ = pit;
+			d->anchor_ypos_ = pm.position();
+			break;
+		}
+	}
+	LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
+		<< "  anchor ypos = " << d->anchor_ypos_);
 }
 
 

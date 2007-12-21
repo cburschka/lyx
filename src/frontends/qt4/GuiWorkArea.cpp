@@ -297,8 +297,6 @@ void GuiWorkArea::redraw()
 		buffer_view_->cursor().fixIfBroken();
 	}
 
-	updateScrollbar();
-
 	// update cursor position, because otherwise it has to wait until
 	// the blinking interval is over
 	if (cursor_visible_) {
@@ -310,6 +308,7 @@ void GuiWorkArea::redraw()
 	updateScreen();
 	update(0, 0, viewport()->width(), viewport()->height());
 
+	updateScrollbar();
 	lyx_view_->updateStatusBar();
 
 	if (lyxerr.debugging(Debug::WORKAREA))

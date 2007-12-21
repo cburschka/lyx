@@ -90,6 +90,8 @@ namespace Debug {
 		///
 		PAINTING   = (1 << 24),
 		///
+		SCROLLING  = (1 << 25),
+		///
 		DEBUG      = (1 << 31),
 		///
 		ANY = 0xffffffff
