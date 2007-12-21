@@ -553,6 +553,10 @@ void MathMacro::write(WriteStream & os) const
 	// normal mode
 	BOOST_ASSERT(macro_);
 
+	// optional arguments make macros fragile
+	if (optionals_ > 0 && os.fragile())
+		os << "\\protect";
+	
 	os << "\\" << name();
 	bool first = true;
 	idx_type i = 0;
