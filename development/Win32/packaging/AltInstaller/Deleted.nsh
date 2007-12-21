@@ -1,10 +1,6 @@
 Function DeleteFiles
 
- # list with deleted files for LyX 1.5.3
- Delete "$INSTDIR\Resources\examples\currency.lyx"
- Delete "$INSTDIR\Resources\examples\de\TabellenBeispiel.lyx"
- Delete "$INSTDIR\Resources\examples\de\Waehrungen.lyx"
- Delete "$INSTDIR\Resources\examples\fr\ExemplesTableaux.lyx"
+ # list with deleted files for LyX 1.5.4
 
 FunctionEnd
 
