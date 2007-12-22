@@ -1673,7 +1673,7 @@ void BufferView::updateMetrics()
 	int y1 = d->anchor_ypos_ - anchor_pm.ascent();
 	// We are now just above the anchor paragraph.
 	pit_type pit1 = d->anchor_pit_ - 1;
-	for (; pit1 >= 0 && y1 > 0; --pit1) {
+	for (; pit1 >= 0 && y1 >= 0; --pit1) {
 		tm.redoParagraph(pit1);
 		ParagraphMetrics & pm = tm.par_metrics_[pit1];
 		y1 -= pm.descent();
