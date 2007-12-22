@@ -6,8 +6,12 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Tutorial.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
