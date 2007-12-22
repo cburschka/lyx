@@ -325,7 +325,7 @@ void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 }
 
 
-bool Inset::editing(BufferView * bv) const
+bool Inset::editing(BufferView const * bv) const
 {
 	return bv->cursor().isInside(this);
 }

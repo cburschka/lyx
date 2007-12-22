@@ -131,7 +131,7 @@ public:
 	/// draw inset selection if necessary
 	virtual void drawSelection(PainterInfo &, int, int) const {}
 	///
-	virtual bool editing(BufferView * bv) const;
+	virtual bool editing(BufferView const * bv) const;
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 
