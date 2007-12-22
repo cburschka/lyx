@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -129,8 +129,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
- November 2007
+letzte Änderung: 22.
+ Dezember 2007
 \end_layout
 
 \begin_layout Standard
@@ -310,7 +310,7 @@ Tutorium
  in LyX sind nur verkleidete LaTeX-Ideen.
  Allerdings besitzt LyX einige spezifische Eigenheiten,
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \SpecialChar \ldots{}
@@ -332,7 +332,7 @@ Features
  Sie in jedem Fall einen Blick in das Kapitel\InsetSpace \space{}
 
 \begin_inset LatexCommand vref
-reference "sec:Latexnutzer"
+reference "Latexnutzer"
 
 \end_inset
 
@@ -353,45 +353,13 @@ eine Erklärung aller LyX-Fähigkeiten.
 
 \begin_deeper
 \begin_layout Standard
-Was, Sie wollen ein zweites 
+Die finden Sie im
 \emph on
-Benutzerhandbuch
+ Benutzerhandbuch
 \emph default
-?
-\end_layout
-
-\begin_layout Standard
-Im Ernst, der Sinn dieses Textes ist es, Sie soweit mit LyX vertraut zu
- machen, dass Sie nur noch das 
+ oder in den 
 \emph on
-Benutzerhandbuch
-\emph default
- und vielleicht noch die 
-\emph on
-Hnadbuchergänzungen
-\emph default
- zum arbeiten benötigen.
- Wenn wir nun auch noch alle Fähigkeiten von LyX hier im 
-\emph on
-Tutorium
-\emph default
- auf\SpecialChar \textcompwordmark{}
-listen oder erläutern wollten, wäre es redundant, viel zu lang und auf
- ewig veraltet.
- Dieser Text soll nur die verschiedenen Dinge kurz vorzustellen.
- Denken Sie sich also am Ende eines jeden Kapitels: 
-\begin_inset Quotes gld
-\end_inset
-
-Weitere Informationen im 
-\emph on
-Benutzerhandbuch
-\emph default
-
-\begin_inset Quotes grd
-\end_inset
-
-.
+Handbuchergänzungen.
 \end_layout
 
 \end_deeper
@@ -402,8 +370,13 @@ ausführliche Erklärungen zu LaTeX.
 \begin_deeper
 \begin_layout Standard
 Dies ist nicht nötig.
- Wenn Sie sich wirklich für all die kleinen und feinen Tricks interessieren,
- die mit LaTeX möglich sind, kaufen Sie sich ein spezielles LaTeX-Buch.
+ Wenn Sie ein paar nette LaTeX-Tricks für LyX kennenlernen wollen, schauen
+ Sie in die 
+\emph on
+Eingebette Objekte
+\emph default
+.
+ Ansonsten kaufen Sie sich ein spezielles LaTeX-Buch.
  Es gibt viele gute im Buchhandel.
 \end_layout
 
@@ -422,7 +395,7 @@ Ihr erstes LyX-Dokument
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "Abs:der-erste-text"
+name "der-erste-text"
 
 \end_inset
 
@@ -446,10 +419,7 @@ Benutzerhandbuch
 \emph default
  aus dem Menü 
 \family sans
-\bar under
-H
-\bar default
-ilfe
+Hilfe
 \family default
 .
  Eventuell sollten Sie auch dieses 
@@ -473,11 +443,7 @@ n von LyX benutzt.
  Falls Sie mehrere Dokumente gleichzeitig geöffnet haben, können Sie einfach
  über die Karteikarten, das Menü 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht
+Ansicht
 \family default
  oder mit 
 \family sans
@@ -496,14 +462,6 @@ Strg+Bild
 \end_inset
 
  zwischen diesen wechseln.
- Das Verteilen der Information auf mehrere Texte mag zu Beginn etwas störend
- wirken.
- Aber zum einen hilft es, das 
-\emph on
-Tutorium
-\emph default
- kurz zu halten, zum anderen lernen Sie so den Umgang mit den Hilfetexten,
- was Ihnen auf lange Sicht viel Zeit sparen kann.
 \end_layout
 
 \begin_layout Standard
@@ -519,7 +477,7 @@ Tutorium
 \end_layout
 
 \begin_layout Subsubsection*
-de_beispiel_roh.lyx und de_beispiel_gelyxt.lyx
+beispiel_roh.lyx und beispiel_gelyxt.lyx
 \end_layout
 
 \begin_layout Standard
@@ -527,7 +485,7 @@ Und zum Schluss: Wir haben eine Datei erstellt, anhand der Sie den Umgang
  mit LyX üben können.
  Sie heißt 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
 .
  Stellen Sie sich vor, diese Datei hätte jemand geschrieben, der keine Ahnung
@@ -535,7 +493,7 @@ de_beispiel_roh.lyx
  Immer wenn Sie neue Funktionen von LyX kennenlernen, werden Sie aufgefordert,
  die entsprechenden Abschnitte in 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
  zu korrigieren.
  Außerdem enthält die Datei auch Hinweise und Tipps, wie diese Korrektur
@@ -556,7 +514,7 @@ Notizen
 
  Überprüfen können Sie Ihre Arbeit anhand der Datei 
 \family typewriter
-de_beispiel_gelyxt.lyx
+beispiel_gelyxt.lyx
 \family default
 .
  Sie enthält denselben Text, diesmal aber von einem LyX-Profi geschrieben.
@@ -567,7 +525,31 @@ Die Beispieldateien finden Sie im Verzeichnis
 \family typewriter
 examples/de
 \family default
- des LyX-Installationsordners.
+ des LyX-In\SpecialChar \-
+stal\SpecialChar \-
+la\SpecialChar \-
+tions\SpecialChar \-
+ord\SpecialChar \-
+ners (
+\family sans
+Datei
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Öffnen
+\family default
+\SpecialChar \menuseparator
+Schaltfläche 
+\family sans
+Beispiele
+\family default
+\SpecialChar \menuseparator
+Verzeichnis 
+\series bold
+de
+\series default
+).
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -649,13 +631,36 @@ dvi
 Ansicht\SpecialChar \menuseparator
 DVI
 \family default
-\SpecialChar \@.
- Falls Sie LyX von einer Konsole aus gestartet haben, können Sie dort eine
- ganze Menge Textausgabe sehen.
- Dies sind Meldungen von LaTeX, die Sie im Moment ignorieren können.
- Ist der LaTeX-Lauf erfolgreich beendet, wird LyX einen anderen DVI-Betrachter
- starten, der dann ein eigenes Fenster öffnet, in dem Sie den Text so sehen
- können, wie er später gedruckt aussehen wird.
+ (oder klicken Sie auf den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/buffer-view_dvi.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+)\SpecialChar \@.
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Von jetzt an wird 
+\begin_inset Quotes gld
+\end_inset
+
+oder klicken Sie auf den Werkzeugleistenknopf
+\begin_inset Quotes grd
+\end_inset
+
+ weggelassen.
+\end_layout
+
+\end_inset
+
+ LyX wird einen DVI-Betrachter starten, der dann ein eigenes Fenster öffnet,
+ in dem Sie den Text so sehen können, wie er später gedruckt aussehen wird.
 \begin_inset Foot
 status open
 
@@ -669,8 +674,17 @@ Ansicht\SpecialChar \menuseparator
 Aktualisieren\SpecialChar \menuseparator
 DVI
 \family default
- wählen und, nachdem LaTeX beendet ist, in das DVI-Betrachter-Fenster klicken,
- um die neue Version zu sehen.
+ wählen (
+\begin_inset Graphics
+	filename ../../images/buffer-update_dvi.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+) klicken und, nachdem LaTeX beendet ist, in das DVI-Betrachter-Fenster
+ klicken, um die neue Version zu sehen.
 \end_layout
 
 \end_inset
@@ -690,6 +704,8 @@ Drucken\SpecialChar \ldots{}
 Drucken
 \family default
  klicken.
+ Oder exportieren Sie es mit Datei\SpecialChar \menuseparator
+Exportieren in ein format Ihrer Wahl.
 \end_layout
 
 \begin_layout Standard
@@ -732,6 +748,13 @@ Rückgängig LyX unterstützt mehrfaches Rückgängigmachen.
 Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
+ oder einen Klick auf 
+\begin_inset Graphics
+	filename ../../images/undo.png
+	scale 75
+
+\end_inset
+
  alles, was Sie seit dem Öffnen des Dokumentes verändert haben, zurücknehmen.
  Falls Sie dabei einen oder mehrere Schritte zuviel tun -- kein Problem.
  
@@ -739,6 +762,13 @@ Rückgängig
 Bearbeiten\SpecialChar \menuseparator
 Wiederholen
 \family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/redo.png
+	scale 75
+
+\end_inset
+
  macht das Rückgängigmachen wieder ungeschehen.
 \end_layout
 
@@ -760,19 +790,44 @@ Bear\SpecialChar \-
 beiten\SpecialChar \menuseparator
 Aus\SpecialChar \-
 schnei\SpecialChar \-
-den,
+den (
+\family default
+
+\begin_inset Graphics
+	filename ../../images/cut.png
+	scale 75
+
+\end_inset
+
+
+\family sans
+),
 \family default
  
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Kopieren
 \family default
- und 
+ (
+\begin_inset Graphics
+	filename ../../images/copy.png
+	scale 75
+
+\end_inset
+
+) und 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
 \family default
-, um markierten Text zu bearbeiten.
+ (
+\begin_inset Graphics
+	filename ../../images/paste.png
+	scale 75
+
+\end_inset
+
+), um markierten Text zu bearbeiten.
  Zum Einfügen können Sie auch die 
 \emph on
 mittlere
@@ -789,8 +844,15 @@ Suchen\InsetSpace ~
 Ersetzen\SpecialChar \ldots{}
 
 \family default
- gelangen Sie in einen Dialog, in dem Sie Begriffe (wahlweise unter Berücksichti
-gung von Groß/Klein\SpecialChar \-
+ (
+\begin_inset Graphics
+	filename ../../images/dialog-show_findreplace.png
+	scale 75
+
+\end_inset
+
+) gelangen Sie in einen Dialog, in dem Sie Begriffe (wahlweise unter Berücksicht
+igung von Groß/Klein\SpecialChar \-
 schreibung sowie als ganzes Wort) suchen und ersetzen
  können.
 \begin_inset Foot
@@ -889,23 +951,12 @@ n nutzbringend einzusetzen.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Leerzeichen in Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+WYSIWYM: Leerzeichen in LyX
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "Abs:Leerzeichen"
+name "Leerzeichen"
 
 \end_inset
 
@@ -972,7 +1023,11 @@ n: Sie haben keine grammatische Bedeutung, deshalb benötigt LyX sie nicht.
 \emph on
 Inhalt
 \emph default
- Ihres Textes Gedanken zu machen, anstatt über dessen Formatierung.
+ Ihres Textes Gedanken zu machen, anstatt über dessen 
+\emph on
+Formatierung
+\emph default
+.
  Die 
 \emph on
 Einführung
@@ -1023,12 +1078,13 @@ Formatierung\SpecialChar \menuseparator
 Geschütztes\InsetSpace \space{}
 Leerzeichen
 \family default
-) erzeugen, und das am Bildschirm als kleines, rötliches 
-\begin_inset Quotes gld
-\end_inset
+) erzeugen, und das am Bildschirm etwa so 
+\begin_inset Graphics
+	filename ../../images/math/space.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
 
-u
-\begin_inset Quotes grd
 \end_inset
 
  erscheint.
@@ -1224,7 +1280,7 @@ Standard
  kann sich selbstverständlich über mehrere Absätze erstrecken.
  Die verschiedenen Aufzählungsumgebungen (siehe Abschnitt 
 \begin_inset LatexCommand vref
-reference "sub:Listen-und-Teillisten"
+reference "Listen-und-Teillisten"
 
 \end_inset
 
@@ -1483,7 +1539,7 @@ Abschnitt
  werden -- siehe dazu Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand vref
-reference "sec:Textklassen"
+reference "Textklassen"
 
 \end_inset
 
@@ -1525,7 +1581,7 @@ Unterunterabschn
  Korrigieren Sie die Überschriften der Abschnitte und Unterabschnitte in
  der Datei 
 \begin_inset LatexCommand url
-target "de_beispiel_roh.lyx"
+target "beispiel_roh.lyx"
 
 \end_inset
 
@@ -1538,7 +1594,7 @@ Listen und Teillisten
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sub:Listen-und-Teillisten"
+name "Listen-und-Teillisten"
 
 \end_inset
 
@@ -1572,7 +1628,7 @@ Tutorium
 \end_layout
 
 \begin_layout Itemize
-Eine Präsentation auf Overheadfolien könnte die 
+Eine Präsentation auf Projektionsfolien könnte die 
 \family sans
 Auflistung
 \family default
@@ -1761,7 +1817,7 @@ Strg+Leertaste
 \series default
 : Setzen Sie die Beispielliste in 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -1878,7 +1934,7 @@ Verse
 \family default
  in der Datei 
 \family typewriter
-de_bei\SpecialChar \-
+bei\SpecialChar \-
 spiel_roh.lyx
 \family default
  richtig.
@@ -1911,7 +1967,7 @@ Dokumentklassen und Vorlagen
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:Textklassen"
+name "Textklassen"
 
 \end_inset
 
@@ -2051,13 +2107,6 @@ Besondere Dokumentenklassen
 Handbuchergänzungen
 \emph default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 0.3cm
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2219,13 +2268,6 @@ viele Extras für Adressen, Unterschrift\SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace 0.3cm
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Vorlagen: Briefe schreiben
 \end_layout
@@ -2305,7 +2347,9 @@ letter.lyx
 Im Auswahlmenü der Textumgebungen werden Sie viele Einträge finden, die
  es in den meisten anderen Dokumentklassen nicht gibt, zum Beispiel 
 \family sans
-Absender-Adresse
+Ab\SpecialChar \-
+sen\SpecialChar \-
+der-Adresse
 \family default
 .
  Andere, wie etwa 
@@ -2352,12 +2396,15 @@ Eine Vorlage ist eine ganz normale LyX-Datei.
  Für alle folgenden Briefe können Sie dann diese Version als Vorlage verwenden.
  Sie sollten das alles jetzt vielleicht einfach mal ausprobieren -- schreiben
  Sie doch als Übung einen kleinen Brief an jemanden!
-\begin_inset Foot
-status open
+\end_layout
 
 \begin_layout Standard
-Eine kleine Warnung, wenn Sie mit einer Vorlage arbeiten: Wenn Sie den komplette
-n Text in einer Umgebung entfernen -- also etwa alle Zeilen in der 
+
+\series bold
+Eine kleine Warnung
+\series default
+, wenn Sie mit einer Vorlage arbeiten: Wenn Sie den kompletten Text in einer
+ Umgebung entfernen -- also etwa alle Zeilen in der 
 \family sans
 Absender-Adresse
 \family default
@@ -2367,11 +2414,6 @@ Absender-Adresse
  existieren.
  In diesem Fall müssen Sie die entsprechende Umgebung wie gewohnt über das
  Menü wieder auswählen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2460,7 +2502,7 @@ Zusammenfassung
 \series default
 : Bringen Sie in der Beispieldatei 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
  Überschrift, Autorenname und Datum in die korrekte Form.
 \end_layout
@@ -2471,7 +2513,7 @@ Marken und Querverweise
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:Marken"
+name "Marken"
 
 \end_inset
 
@@ -2508,7 +2550,20 @@ Was das Tutorium ist\SpecialChar \ldots{}
 \family sans
 Einfügen\SpecialChar \menuseparator
 Marke\SpecialChar \ldots{}
+ (
+\family default
 
+\begin_inset Graphics
+	filename ../../images/label-insert.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+).
 \begin_inset Foot
 status open
 
@@ -2540,13 +2595,13 @@ unter
  Marke vorschlägt.
  In diesem Fall wird es 
 \family typewriter
-sec:Was-das-Tutorium 
+sub:Was-das-Tutorium 
 \family default
 sein.
  Sie können den Namen für die Marke ändern.
  Geben Sie zum Beispiel ein 
 \family typewriter
-sec:Was_Tutorium
+sec:Was-das-Tutorium
 \family default
 .
  Dies ist ein einprägsamer Name, den Sie nicht so einfach mit anderen Marken
@@ -2557,7 +2612,7 @@ sec:Was_Tutorium
 
 
 \family typewriter
-sec:
+sub:
 \family default
 
 \begin_inset Quotes grd
@@ -2622,13 +2677,31 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
 \SpecialChar \ldots{}
+
+\family sans
+(
+\family default
+
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_ref.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family sans
+).
+
+\family default
  Es öffnet sich ein Auswahlfeld, in dem Sie die im aktuellen Text definierten
  Marken aufgeführt sehen.
  Suchen Sie den Eintrag 
 \begin_inset Quotes gld
 \end_inset
 
-sec:Was_Tutorium
+sub:Was-das-Tutorium
 \begin_inset Quotes grd
 \end_inset
 
@@ -2752,7 +2825,7 @@ Querverweis
 \series default
  Korrigieren Sie die Querverweise in der Datei 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -2767,7 +2840,7 @@ Fußnoten können Sie entweder über den Menüpunkt
 Einfügen\SpecialChar \menuseparator
 Fußnote
 \family default
- oder den Werkzeugleistenknopf 
+ (
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
@@ -2775,7 +2848,7 @@ Fußnote
 
 \end_inset
 
- einfügen.
+) einfügen.
  Setzen Sie beispielsweise den Cursor hinter das Wort 
 \emph on
 LyX
@@ -2791,7 +2864,7 @@ Fußnote
 \end_layout
 
 \begin_layout LyX-Code
-LyX ist eine Textverarbeitung, die den Schriftsatz beherrscht.
+LyX ist eine Textverarbeitung, die den Schriftsatz be-herrscht.
 \end_layout
 
 \begin_layout Standard
@@ -2841,7 +2914,7 @@ Eine Fußnote kann man übrigens auch ausschneiden und wie gewöhnlichen Text
  kopieren.
  Sie müssen dazu lediglich die Fußnoten-Markierung selektieren
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Es ist wahrscheinlich einfacher, dies über die Tastatur zu tun, da sich
@@ -2860,17 +2933,11 @@ vor
 
  und sie dann wie gewohnt 
 \family sans
-\bar under
-A
-\bar default
-usschneiden
+Ausschneiden
 \family default
  und 
 \family sans
-\bar under
-K
-\bar default
-opieren
+Kopieren
 \family default
 .
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
@@ -2886,7 +2953,7 @@ Randnotizen werden über den Menüpunkt
 Einfügen\SpecialChar \menuseparator
 Randnotiz
 \family default
- oder den Werkzeugleistenknopf 
+ (
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
@@ -2894,7 +2961,7 @@ Randnotiz
 
 \end_inset
 
- eingefügt.
+) eingefügt.
  Eine Randnotiz ist fast wie eine Fußnote, mit den folgenden Unterschieden:
 \end_layout
 
@@ -2935,7 +3002,7 @@ dvi
 \series default
 : Korrigieren Sie die Fußnoten in der Datei 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -2946,7 +3013,7 @@ Literaturverzeichnisse
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:Bibliographie"
+name "Literaturverzeichnisse"
 
 \end_inset
 
@@ -3014,6 +3081,16 @@ Einfügen\SpecialChar \menuseparator
 Zitat
 \family default
 \SpecialChar \ldots{}
+ (
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_citation.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+).
  Das Dialogfenster 
 \family sans
 Zitat
@@ -3108,7 +3185,8 @@ Benutzerhandbuch
 \series default
  Korrigieren Sie Literaturverzeichnis und Zitate in der Datei 
 \family typewriter
-de_beispiel_ roh.lyx
+bei\SpecialChar \-
+spiel_roh.lyx
 \family default
 .
 \end_layout
@@ -3132,7 +3210,16 @@ Liste\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
 Inhaltsverzeichnis
 \family default
-.
+ (
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_toc.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+).
  Der Schriftzug 
 \emph on
 Inhaltsverzeichnis
@@ -3204,7 +3291,8 @@ Um ein Inhaltsverzeichnis zu löschen, können Sie den Platzhalter ganz einfach
 \series default
 : Korrigieren Sie das Inhaltsverzeichnis in der Datei 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.
+ lyx
 \family default
 .
 \end_layout
@@ -3260,7 +3348,9 @@ Schreibe Sie irgendwo in Ihrem LyX-Dokument:
 \end_layout
 
 \begin_layout LyX-Code
-Ich liebe, was Einstein sagte, E=mc^2, weil es so einfach ist.
+Ich liebe, was Einstein sagte, E=mc^2, weil es so einfach
+\newline
+ist.
 \end_layout
 
 \begin_layout Standard
@@ -3289,12 +3379,16 @@ Mathematische Ausdrücke werden im Mathematik-Editor geschrieben, auch bekannt
 matik-Modus.
  Um in den Mathematik-Modus zu kommen, müssen Sie nur den blau beschrifteten
  Schalter 
-\begin_inset Formula $\frac{a+b}{c}$
+\begin_inset Graphics
+	filename ../../images/math-mode.png
+	scale 75
+	scaleBeforeRotation
+
 \end_inset
 
  in der Werkzeugleiste anklicken.
- LyX öffnet dann ein kleines blaues Quadrat, welches von einem purpurroten
- Rechteck umrahmt wird.
+ LyX öffnet dann ein kleines blaues Rechteck, welches an den Ecken purpurrot
+ umrahmt wird.
  Das blaue Quadrat ist ein 
 \emph on
 Einfügepunkt
@@ -3326,6 +3420,7 @@ nicht
 \emph default
 ).
  Das purpurrote Rechteck verschwindet, der Cursor ist rechts neben dem Ausdruck.
+ Der Ausdruck und die enthaltenen Ausdrücke haben jetzt grüne Ecken.
  Wenn jetzt etwas geschrieben wird, dann wird es wieder normaler Text.
 \end_layout
 
@@ -3353,7 +3448,10 @@ Nun kann ein DVI-Lauf gestartet und das Ergebnis angesehen und untersucht
 \end_layout
 
 \begin_layout Standard
-Der Mathematik-Editor ist ein anderes Beispiel für die WYSIWYM-Philosophie.
+Der Mathematik-Editor ist ein anderes Beispiel für die WYSIWYM-Phi\SpecialChar \-
+lo\SpecialChar \-
+so\SpecialChar \-
+phie.
  In LaTeX beschreibt man mathematische Ausdrücke als Texte und Befehle wie
  
 \family typewriter
@@ -3440,7 +3538,16 @@ Backspace
 Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
- funktioniert auch im Mathematik-Modus, ebenso wie 
+ (
+\begin_inset Graphics
+	filename ../../images/undo.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+) funktioniert auch im Mathematik-Modus, ebenso wie 
 \family sans
 Ausschneiden
 \family default
@@ -3541,7 +3648,10 @@ nach
 
 \begin_layout Standard
 Auch die Leertaste können Sie zur Positionierung in mathematischen Gleichungen
- verwenden: Wenn sich der Cursor innerhalb einer Struktur im Mathematik-Editor
+ verwenden: Wenn sich der Cursor innerhalb einer Struktur im Ma\SpecialChar \-
+the\SpecialChar \-
+ma\SpecialChar \-
+tik-Editor
  befindet (Exponenten, Indizes, Brüche, Quadratwurzeln, Begrenzungen, Matrizen
  und alles weitere, was in den folgenden Abschnitten beschrieben wird),
  bewirkt die Leertaste, dass der Cursor 
@@ -3554,7 +3664,10 @@ hinter
 \end_inset
 
  eingeben, ohne dazu die Maus oder die Pfeiltasten verwenden zu müssen.
- Geben Sie am Ende des Exponenten einfach ein Leerzeichen ein, und der Cursor
+\end_layout
+
+\begin_layout Standard
+Geben Sie am Ende des Exponenten einfach ein Leerzeichen ein, und der Cursor
  wird auf die Basislinie zurückgesetzt, wo Sie mit der Eingabe fortfahren
  können.
  Aus diesem Grund müssen Sie bei der Eingabe darauf achten, dass Sie nicht
@@ -3591,7 +3704,7 @@ nicht
  Die Abstände werden von LyX (LaTeX) berechnet (siehe Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand vref
-reference "Abs:Leerzeichen"
+reference "Leerzeichen"
 
 \end_inset
 
@@ -3683,9 +3796,12 @@ _
 \series default
  Schreiben Sie die Gleichung 1 von 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
- im Mathematik-Modus.
+ im Ma\SpecialChar \-
+the\SpecialChar \-
+ma\SpecialChar \-
+tik-Modus.
 \end_layout
 
 \begin_layout Section
@@ -3716,59 +3832,64 @@ Mathe-Werkzeugleiste
  kann über das Menü 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Werkzeugleisten
-\family default
- eingeblendet werden.
- Wenn dort auf 
-\begin_inset Quotes eld
-\end_inset
-
+Werkzeugleisten\SpecialChar \menuseparator
 Mathe
-\begin_inset Quotes erd
+\family default
+ (
+\begin_inset Graphics
+	filename ../../images/toolbar-toggle_math.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
 \end_inset
 
- geklickt wird, wird die Werkzeugleiste permanent am unteren Rand eingeblendet;
- diese Einstellung wird durch ein Häkchen im Menü 
-\family sans
-Werkzeugleisten
-\family default
- angezeigt.
+) eingeblendet werden.
  Wenn nun im Menü 
 \family sans
 Werkzeugleisten
 \family default
  nochmal auf 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Mathe
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- geklickt wird, wird die Werkzeugleiste nur angezeigt, wenn sich der Cursor
+ (
+\begin_inset Graphics
+	filename ../../images/toolbar-toggle_math.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+) geklickt wird, wird die Werkzeugleiste nur angezeigt, wenn sich der Cursor
  in einer Formel befindet; diese Einstellung wird durch die Umbenennung
  des Menüeintrags von 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Mathe
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  zu 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Mathe\InsetSpace ~
 (automatisch)
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  angezeigt.
 \end_layout
 
 \begin_layout Subsection
-Symbole
+Symbole und Griechisch
 \end_layout
 
 \begin_layout Standard
@@ -3788,8 +3909,16 @@ Quadratwurzeln, Akzente und Klammern
 \end_layout
 
 \begin_layout Standard
-Klicken Sie auf den Schalter mit dem Wurzelzeichen, und wählen Sie eine
- Quadratwurzel aus.
+Wenn Sie auf den Schalter 
+\begin_inset Graphics
+	filename ../../images/math/sqrt.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 25bp
+
+\end_inset
+
+ klicken, erhalten Sie eine Quadratwurzel.
  Der Cursor wird automatisch unter das Wurzelzeichen gesetzt (zunächst sehen
  Sie dort das blaue Quadrat als Platzhalter), hier können Sie den Radikanden
  eingeben.
@@ -3810,30 +3939,18 @@ Eine Variable (
 \end_inset
 
 ) zum Beispiel mit einem Pfeil zu versehen, wird genauso gemacht.
- Sie müssen in der 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- unter 
-\family sans
-Symbole
-\family default
- 
-\family sans
-Rahmen-Verzierungen
-\family default
- auswählen und auf eins der Symbole klicken.
- Durch einen Klick auf ein Symbol wird LyX das ausgewählte und einen Einfügepunk
-t darunter oder darüber anzeigen.
- Dort kann das Gewünschte eingefügt und mit der 
-\family sans
-Leertaste
-\family default
- die Dekoration verlassen werden.
- Es gibt zwei Gruppen Dekorationen: die der oberen Gruppe (mit den etwas
- größeren Symbolen) passen ihre Größe automatisch an den eingefügten Text
- an; die der unteren Gruppe haben eine feste Größe und sind vorrangig für
- einzelne Buchstaben gedacht.
+ Wenn der Cursor in einem mathematischen Ausdruck steht, klicken Sie auf
+ den Schalknopf 
+\begin_inset Graphics
+	filename ../../images/math/hat.png
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ und wählen ein Symbol aus.
+ Wenn Sie einen Ausdruck nachträglich verziehren wollen, müssen Sie ihn
+ vorher markieren.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3846,9 +3963,9 @@ Gruppensymbole wie Trennungsstriche, Klammern und Pfeile werden ähnlich,
  Hierzu ist der Knopf mit dem blauen Rechteck, umgeben von rechteckigen
  Klammern (
 \begin_inset Graphics
-	filename ../../images/math/delim.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+	filename ../../images/dialog-show_mathdelimiter.png
+	scale 75
+	scaleBeforeRotation
 
 \end_inset
 
@@ -3938,9 +4055,18 @@ Brüche sind mit dem Mathematik-Editor einfach.
 \family sans
 Brüche
 \family default
--Schalter im Fenster 
+-Schalter 
+\begin_inset Graphics
+	filename ../../images/math/frac-square.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 12bp 22bp
+
+\end_inset
+
+ im Fenster 
 \family sans
-Mathe\InsetSpace ~
+Mathe\InsetSpace \space{}
 Kontrollfläche
 \family default
  anklicken, eine Bruchart auswählen und ein Bruch mit blauen Quadraten im
@@ -3971,6 +4097,21 @@ Kontrollfläche
  schreiben, haben Sie bereits Ihren ersten einfachen Bruch geschrieben.
  Natürlich können Sie auch beliebige andere Ausdrücke in die zwei Quadrate
  schreiben: Variablen mit Exponenten, Quadratwurzeln, andere Brüche, usw.
+ Wenn Sie nur einen Standarbruch benötigen, können Sie auch auf 
+\begin_inset Graphics
+	filename ../../images/math/frac.png
+	scale 60
+	scaleBeforeRotation
+	BoundingBox 0bp 10bp 12bp 22bp
+
+\end_inset
+
+ in der 
+\family sans
+Mathe\InsetSpace \space{}
+Werkzeugleiste
+\family default
+ klicken.
 \end_layout
 
 \begin_layout Standard
@@ -3980,24 +4121,16 @@ Kontrollfläche
 \series default
  Schreiben Sie die Gleichung 2 von 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
- im Mathematik-Modus.
+ im Ma\SpecialChar \-
+the\SpecialChar \-
+ma\SpecialChar \-
+tik-Modus.
 \end_layout
 
 \begin_layout Subsection
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
+TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
 \end_layout
 
 \begin_layout Standard
@@ -4156,9 +4289,12 @@ Listenauswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
 \series default
  Schreiben Sie die Gleichung 3 von 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
- im Mathematik-Modus.
+ im Ma\SpecialChar \-
+the\SpecialChar \-
+ma\SpecialChar \-
+tik-Modus.
 \end_layout
 
 \begin_layout Subsection
@@ -4171,20 +4307,19 @@ name "sec:Matrizen"
 
 \end_inset
 
-Um eine Matrix zu erstellen, klicken Sie auf den Schalter mit den neun kleinen
- Kästchen im Dialogfeld 
-\family sans
-Mathe\InsetSpace ~
-Kontrollfläche
-\family default
-, 
+Um eine Matrix zu erstellen, klicken Sie auf den Schalter 
 \begin_inset Graphics
-	filename ../../images/math/matrix.png
+	filename ../../images/math-matrix.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
+ in der 
+\family sans
+Mathe-Werkzeugleiste
+\family default
 .
  In einem kleinen Fenster können Sie nun die gewünschte Anzahl an Zeilen
  und Spalten einstellen, wählen Sie beispielsweise 2 Zeilen und 3 Spalten.
@@ -4196,6 +4331,11 @@ Kontrollfläche
  Wie gewohnt können Sie an diesen Stellen jede Art von mathematischen Ausdrücken
  einfügen, wie etwa Wurzeln, Brüche oder sogar weitere Matrizen.
  Sie können auch einzelne Felder ganz leer lassen.
+\begin_inset Formula $\begin{array}{ccccc}
+\\\\\\\end{array}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4227,7 +4367,39 @@ Zeilen\InsetSpace ~
 &\InsetSpace ~
 Spalten
 \family default
- tun (sie werden unter/rechts von der aktuellen Cursorposition eingefügt);
+ (
+\begin_inset Graphics
+	filename ../../images/tabular-feature_append-row.png
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_delete-row.png
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_append-column.png
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_delete-column.png
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+) tun (sie werden unter/rechts von der aktuellen Cursorposition eingefügt);
  ebenso können überzählige entfernt werden.
 \end_layout
 
@@ -4275,7 +4447,7 @@ Benutzerhandbuch
 ) oder mehrzeilige Gleichungen enthalten (siehe Kapitel\InsetSpace ~
 
 \begin_inset LatexCommand vref
-reference "sec:gl-systeme"
+reference "Gleichungssysteme"
 
 \end_inset
 
@@ -4370,7 +4542,7 @@ nach
 \series default
  Setzen Sie die verschiedenen Gleichungen in 
 \family typewriter
-de_beispiel_roh.lyx
+beispiel_roh.lyx
 \family default
  in den absetzten Anzeigemodus und sehen Sie sich an, wie sich der Schriftsatz
  verändert.
@@ -4403,7 +4575,7 @@ Mehrzeilige Gleichungen
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:gl-systeme"
+name "Gleichungssysteme"
 
 \end_inset
 
@@ -4664,7 +4836,7 @@ Hanbuchergänzungen
 \end_layout
 
 \begin_layout Section
-Weitere mathematische Sachen
+Weitere mathematische Dinge
 \end_layout
 
 \begin_layout Standard
@@ -4736,7 +4908,7 @@ Einfügen\SpecialChar \menuseparator
 Tabelle\SpecialChar \ldots{}
 
 \family default
- oder einen Klick auf 
+ (
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 70
@@ -4744,7 +4916,7 @@ Tabelle\SpecialChar \ldots{}
 
 \end_inset
 
- legen Sie eine Tabelle an.
+) legen Sie eine Tabelle an, indem Sie mit der Maus die Größe festlegen..
  Klicken Sie nun mit dem 
 \emph on
 rechten Mausknopf
@@ -4759,8 +4931,17 @@ Einstellungen
 \family default
  zu öffnen.
  Hier können umfangreiche Einstellungen einfach vorgenommen werden.
- Wenn der Cursor in der Tabelle steht, erscheint am unteren Fensterrand
- eine Werkzeugleiste mit den wichtigsten Tabellenbefehlen.
+ Wenn Sie auf 
+\begin_inset Graphics
+	filename ../../images/toolbar-toggle_table.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+ klicken, erscheint am unteren Fensterrand eine Werkzeugleiste mit den wichtigst
+en Tabellenbefehlen.
 \end_layout
 
 \begin_layout Itemize
@@ -4770,7 +4951,7 @@ LyX erlaubt die einfache Einbindung von Abbildungen in jedem Format.
 Einfügen\SpecialChar \menuseparator
 Grafik
 \family default
- oder ein Klick auf 
+ (
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -4778,7 +4959,7 @@ Grafik
 
 \end_inset
 
- öffnet eine Dialogbox, in der Sie die Abbildung einfach definieren, skalieren
+) öffnet eine Dialogbox, in der Sie die Abbildung einfach definieren, skalieren
  und drehen können usw.
 \end_layout
 
@@ -4852,7 +5033,11 @@ Alt+D
 \family sans
 N
 \family default
- oder durch die im Menü angezeigte Tastenkombination öffnen können.
+ oder durch die im Menü angezeigte Tastenkombination (hier 
+\family sans
+Strg+N
+\family default
+) öffnen können.
  Diese Tastaturbelegungen sind ebenfalls frei konfigurierbar.
  Lesen Sie dazu 
 \family sans
@@ -4866,7 +5051,7 @@ Anpassung
 LyX kann LaTeX-Dokumente importieren.
  Siehe dazu das Kapitel 
 \begin_inset LatexCommand vref
-reference "sec:tex2lyx"
+reference "tex2lyx"
 
 \end_inset
 
@@ -4904,7 +5089,7 @@ LyX für LaTeX-Benutzer
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:Latexnutzer"
+name "Latexnutzer"
 
 \end_inset
 
@@ -4921,9 +5106,6 @@ dann
  Die kurze Antwort ist: LyX kann auf die eine oder andere Weise fast alles,
  was auch mit LaTeX selber möglich ist, und in jedem Fall vereinfacht es
  die meisten Dinge beim Schreiben eines Textes.
- Derzeit gibt es zwar noch ein paar Unschönheiten, zum Beispiel bei der
- Umwandlung von alten LaTeX-Dokumenten in das neue Format, aber diese Dinge
- werden sicherlich in einer späteren Version von LyX behoben sein.
 \end_layout
 
 \begin_layout Standard
@@ -4946,7 +5128,16 @@ Handbuchergänzungen
 \emph on
 Geheimnisse der LaTeX-Zauberer
 \emph default
-, werden die Unterschiede zwischen LyX und LaTeX sehr viel ausführlicher
+, und in 
+\emph on
+Eingebettet
+\emph default
+e\InsetSpace \space{}
+
+\emph on
+Objekte
+\emph default
+ werden die Unterschiede zwischen LyX und LaTeX sehr viel ausführlicher
  behandelt, dort finden Sie auch viele Tipps, wie Sie diverse LaTeX-Tricks
  auch in LyX einsetzen können.
 \end_layout
@@ -5068,7 +5259,7 @@ en wie WYSIWYG-Tabellen und -Abbildungen bieten.
  LyX wird niemals alle LaTeX-Pakete unterstützen.
  Indem Sie im LaTeX-Vorspann (siehe Abschnitt 
 \begin_inset LatexCommand vref
-reference "sec:Vorspann"
+reference "LaTeX-Vorspann"
 
 \end_inset
 
@@ -5083,14 +5274,14 @@ usepackage {foo}
 \end_layout
 
 \begin_layout Subsection
-LaTeX-Dokumente nach LyX konvertieren -- 
+LaTeX-Dokumente importieren -- 
 \family typewriter
 tex2lyx
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:tex2lyx"
+name "tex2lyx"
 
 \end_inset
 
@@ -5099,7 +5290,8 @@ name "sec:tex2lyx"
 Datei\SpecialChar \menuseparator
 Importieren\SpecialChar \menuseparator
 LaTeX\InsetSpace \space{}
-(plain)
+(plain)\SpecialChar \ldots{}
+
 \family default
  können Sie vorhandene LaTeX-Dateien in LyX übernehmen.
  Dabei wird das Programm 
@@ -5174,7 +5366,8 @@ status collapsed
 
 \end_inset
 
-X
+X\InsetSpace \space{}
+(pdflatex/plain)
 \family default
  wird die von Ihnen editierte Datei (zum Beispiel 
 \family typewriter
@@ -5235,7 +5428,7 @@ Andere Einträge im Vorspann
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "sec:Vorspann"
+name "LaTeX-Vorspann"
 
 \end_inset
 
@@ -5337,7 +5530,7 @@ Zitat
  die in den Datenbanken definierten Referenzen, die im Dialogfeld angezeigt
  werden, verwenden (siehe auch Abschnitt 
 \begin_inset LatexCommand vref
-reference "sec:Bibliographie"
+reference "Literaturverzeichnisse"
 
 \end_inset
 
