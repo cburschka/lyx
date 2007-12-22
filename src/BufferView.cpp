@@ -680,7 +680,15 @@ void BufferView::showCursor()
 	CursorSlice & bot = d->cursor_.bottom();
 	TextMetrics & tm = d->text_metrics_[bot.text()];
 
-	int const bot_pit = d->cursor_.bottom().pit();
+	pos_type const max_pit = pos_type(bot.text()->paragraphs().size() - 1);
+	int bot_pit = d->cursor_.bottom().pit();
+	if (bot_pit > max_pit) {
+		// FIXME: Why does this happen?
+		LYXERR0("bottom pit is greater that max pit: "
+			<< bot_pit << " > " << max_pit);
+		bot_pit = max_pit;
+	}
+
 	if (bot_pit == tm.first().first - 1)
 		tm.newParMetricsUp();
 	else if (bot_pit == tm.last().first + 1)
@@ -708,12 +716,10 @@ void BufferView::showCursor()
 
 	if (d->anchor_pit_ == 0)
 		d->anchor_ypos_ = offset + pm.ascent();
-	else if (d->anchor_pit_ >= pos_type(bot.text()->paragraphs().size() - 1)) {
-		d->anchor_pit_ = bot.text()->paragraphs().size() - 1;
+	else if (d->anchor_pit_ == max_pit)
 		d->anchor_ypos_ = height_ - offset - row_dim.descent();
-	} else {
+	else
 		d->anchor_ypos_ = offset + pm.ascent() - height_ / 2;
-	}
 
 	updateMetrics();
 	buffer_.changed();
@@ -1680,7 +1686,7 @@ void BufferView::updateMetrics()
 	int y2 = d->anchor_ypos_ + anchor_pm.descent();
 	// We are now just below the anchor paragraph.
 	pit_type pit2 = d->anchor_pit_ + 1;
-	for (; pit2 < npit && y2 < height_; ++pit2) {
+	for (; pit2 < npit && y2 <= height_; ++pit2) {
 		tm.redoParagraph(pit2);
 		ParagraphMetrics & pm = tm.par_metrics_[pit2];
 		y2 += pm.ascent();
