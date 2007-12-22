@@ -41,7 +41,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	int kerning() const;
+	int kerning(BufferView const * bv) const;
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

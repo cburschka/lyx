@@ -260,7 +260,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 		atom_dims_.push_back(d);
 		dim += d;
 		if (i == n - 1)
-			kerning_ = at->kerning();
+			kerning_ = at->kerning(mi.base.bv);
 	}
 	// Cache the dimension.
 	mi.base.bv->coordCache().arrays().add(this, dim);

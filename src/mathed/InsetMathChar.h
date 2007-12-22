@@ -30,7 +30,7 @@ public:
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///
-	int kerning() const { return kerning_; }
+	int kerning(BufferView const * bv) const { return kerning_; }
 
 	///
 	void write(WriteStream & os) const;

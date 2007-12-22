@@ -82,7 +82,7 @@ public:
 	///
 	size_t idx() const { return idx_; }
 	///
-	int kerning() const { return mathMacro_.cell(idx_).kerning(); }
+	int kerning(BufferView const * bv) const { return mathMacro_.cell(idx_).kerning(bv); }
 
 private:
 	///
@@ -204,9 +204,9 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int MathMacro::kerning() const {
-	if (displayMode_ == DISPLAY_NORMAL)
-		return expanded_.kerning();
+int MathMacro::kerning(BufferView const * bv) const {
+	if (displayMode_ == DISPLAY_NORMAL && !editing(bv))
+		return expanded_.kerning(bv);
 	else
 		return 0;
 }

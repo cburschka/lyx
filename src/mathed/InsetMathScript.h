@@ -125,7 +125,7 @@ private:
 	/// returns descent of nucleus if any
 	int ndes(BufferView const &) const;
 	/// returns superscript kerning of nucleus if any
-	int nker() const;
+	int nker(BufferView const * bv) const;
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells and return true if a cell has been deleted.

@@ -199,7 +199,7 @@ public:
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
 
 	/// superscript kerning
-	virtual int kerning() const { return 0; }
+	virtual int kerning(BufferView const * bv) const { return 0; }
 };
 
 ///

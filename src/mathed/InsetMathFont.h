@@ -46,7 +46,7 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
-	int kerning() const { return cell(0).kerning(); }
+	int kerning(BufferView const * bv) const { return cell(0).kerning(bv); }
 
 private:
 	virtual Inset * clone() const;

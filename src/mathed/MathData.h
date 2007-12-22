@@ -152,7 +152,7 @@ public:
 	/// additional super/subscript shift
 	int sshift() const { return sshift_; }
 	/// superscript kerning
-	int kerning() const { return kerning_; }
+	int kerning(BufferView const * bv) const { return kerning_; }
 	///
 	void swap(MathData & ar) { base_type::swap(ar); }
 

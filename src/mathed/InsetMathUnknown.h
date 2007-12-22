@@ -52,7 +52,7 @@ public:
 	///
 	bool final() const;
 	///
-	int kerning() const { return kerning_; }
+	int kerning(BufferView const * bv) const { return kerning_; }
 private:
 	virtual Inset * clone() const;
 	///

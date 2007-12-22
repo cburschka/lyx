@@ -253,7 +253,7 @@ int InsetMathScript::dx1(BufferView const & bv) const
 {
 	BOOST_ASSERT(hasUp());
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker();
+	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker(&bv);
 }
 
 
@@ -282,10 +282,10 @@ int InsetMathScript::ndes(BufferView const & bv) const
 }
 
 
-int InsetMathScript::nker() const
+int InsetMathScript::nker(BufferView const * bv) const
 {
 	if (nuc().size()) {
-		int kerning = nuc().kerning();
+		int kerning = nuc().kerning(bv);
 		return kerning > 0 ? kerning : 0;
 	}
 	return 0;
@@ -322,7 +322,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = max(dim.wid, dimdown.width());
 	} else {
 		if (hasUp())
-			dim.wid = max(dim.wid, nker() + dimup.width());
+			dim.wid = max(dim.wid, nker(mi.base.bv) + dimup.width());
 		if (hasDown())
 			dim.wid = max(dim.wid, dimdown.width());
 		dim.wid += nwid(bv);
