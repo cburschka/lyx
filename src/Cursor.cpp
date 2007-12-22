@@ -419,7 +419,8 @@ void Cursor::getPos(int & x, int & y) const
 
 Row const & Cursor::textRow() const
 {
-	ParagraphMetrics const & pm = bv().parMetrics(text(), pit());
+	CursorSlice const & cs = innerTextSlice();
+	ParagraphMetrics const & pm = bv().parMetrics(cs.text(), cs.pit());
 	BOOST_ASSERT(!pm.rows().empty());
 	return pm.getRow(pos(), boundary());
 }
