@@ -36,6 +36,7 @@ What's new
 
 - The on-screen appearance of spaces has been improved.
 
+
 * DOCUMENT INPUT/OUTPUT
 
 
@@ -59,6 +60,8 @@ What's new
   (bug 4349).
 
 - Do not exit after catching an iconv exception (bug 4385, part 2).
+
+- Fix update/drawing of char style insets.
 
 - Fix access to network drives on Windows.
 

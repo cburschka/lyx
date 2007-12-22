@@ -144,7 +144,6 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	getDrawFont(mi.base.font);
 	mi.base.font.reduce(Font(Font::ALL_SANE));
 	mi.base.font.realize(tmpfont);
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	if (params_.show_label) {
@@ -163,8 +162,6 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		theFontMetrics(font).rectText(s, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
-	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	if (params_.show_label)
 		dim.des += ascent();
 	bool const changed = dim_ != dim;
@@ -181,7 +178,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
-	InsetText::draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+	InsetText::draw(pi, x, y);
 	pi.base.font = tmpfont;
 
 	int desc = InsetText::descent();
