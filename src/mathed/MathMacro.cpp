@@ -163,6 +163,9 @@ bool MathMacro::editMode(Cursor const & cur) const {
 
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	// set edit mode for which we will have calculated metrics
+	editing_[mi.base.bv] = editMode(mi.base.bv->cursor());
+
 	// calculate new metrics according to display mode
 	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
 		mathed_string_dim(mi.base.font, from_ascii("\\") + name(), dim);
@@ -246,20 +249,6 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 	if (displayMode_ != DISPLAY_NORMAL)
 		return;
 
-	// set edit mode to draw box around if needed
-	bool prevEditing = false;
-	bool editing = false;
-	if (bvCur) {
-		prevEditing = editing_[&bvCur->bv()];
-		editing = editMode(*bvCur);
-		editing_[&bvCur->bv()] = editing;
-	}
-	
-	// editMode changed and we have to switch default value and hole of optional?
-	if (optionals_ > 0 && nargs() > 0 && 
-	    prevEditing != editing)
-		needsUpdate_ = true;
-	
 	// macro changed?
 	if (needsUpdate_) {
 		needsUpdate_ = false;
@@ -341,7 +330,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.rectangle(x, y - dim.asc, dim.wid, dim.height(), Color_mathmacroframe);
 	}
 
-	// another argument selected?
+	// another argument selected or edit mode changed?
 	idx_type curIdx = cursorIdx(pi.base.bv->cursor());
 	if (previousCurIdx_[pi.base.bv] != curIdx 
 			|| editing_[pi.base.bv] != editMode(pi.base.bv->cursor()))

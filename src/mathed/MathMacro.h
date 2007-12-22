@@ -139,8 +139,6 @@ protected:
 	/// including the optional ones (even if it can be empty here)
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 	///
-	bool editing(BufferView * bv) { return editing_[bv]; }
-	///
 	MacroData const * macro() { return macro_; }
 
 private:
