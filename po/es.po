@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-12-16 17:50+0100\n"
-"PO-Revision-Date: 2007-10-07 13:50+0200\n"
+"PO-Revision-Date: 2007-11-26 23:26+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -785,8 +785,7 @@ msgstr "Usar predeterminados de clase"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
-msgstr ""
-"Guardar configuración como configuración de documento predeterminado de LyX"
+msgstr "Guardar configuración como configuración de documento predeterminado de LyX"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:79
 msgid "Save as Document Defaults"
@@ -1130,8 +1129,7 @@ msgstr "Tamaño de salida"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Ajusta la altura del gráfico. Dejar sin marcar para un ajuste automático."
+msgstr "Ajusta la altura del gráfico. Dejar sin marcar para un ajuste automático."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "Set &height:"
@@ -1143,8 +1141,7 @@ msgstr "Escalar &gráficos (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Ajusta el ancho del gráfico. Dejar sin marcar para un ajuste automático."
+msgstr "Ajusta el ancho del gráfico. Dejar sin marcar para un ajuste automático."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:197
 msgid "Set &width:"
@@ -1370,8 +1367,7 @@ msgstr "Tabla de caracteres e&xtendida"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:157
 msgid "Make spaces in strings visible by a special symbol"
-msgstr ""
-"Hacer visibles los espacios en las cadenas mediante un símbolo especial"
+msgstr "Hacer visibles los espacios en las cadenas mediante un símbolo especial"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:160
 msgid "Space i&n string as symbol"
@@ -1451,8 +1447,7 @@ msgstr "&Cara:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Select the dialect of the programming language, if available"
-msgstr ""
-"Seleccionar el dialecto del lenguaje de programación, si está disponible"
+msgstr "Seleccionar el dialecto del lenguaje de programación, si está disponible"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:389
 msgid "&Dialect:"
@@ -1515,8 +1510,7 @@ msgstr "&Actualizar"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
-msgstr ""
-"Usar la configuración del margen proporcionada por la clase del documento"
+msgstr "Usar la configuración del margen proporcionada por la clase del documento"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
@@ -1722,33 +1716,28 @@ msgid "This text defines the width of the paragraph label"
 msgstr "Este texto define el ancho de la etiqueta del párrafo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:157
-#, fuzzy
 msgid "Lo&ngest label"
 msgstr "Etiqueta más &larga"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:195
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Usar la alineación predeterminada para este párrafo, cualquiera que sea."
+msgstr "Usar la alineación predeterminada para este párrafo, cualquiera que sea."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198
-#, fuzzy
 msgid "Use Paragraph's &Default Alignment"
-msgstr "Usar la alineación predeterminada del párrafo"
+msgstr "Usar la alineación &predeterminada del párrafo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
 msgid "Ri&ght"
-msgstr "Derecha"
+msgstr "&Derecha"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:212
 msgid "&Left"
 msgstr "&Izquierda"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219
-#, fuzzy
 msgid "C&enter"
-msgstr "Centro"
+msgstr "&Centro"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:226
 msgid "&Justified"
@@ -2088,8 +2077,7 @@ msgstr "Opciones del tamaño del papel para el visor DVI:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:210
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
+msgstr "Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:28
 msgid "Ly&XServer pipe:"
@@ -2247,8 +2235,7 @@ msgstr "Tama&ño del papel:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
-"Cualquier otra opción que le gustaría usar con el comando de impresión."
+msgstr "Cualquier otra opción que le gustaría usar con el comando de impresión."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
@@ -2362,8 +2349,7 @@ msgstr "Usar caracteres de &escape:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:115
 msgid "Specify a personal dictionary file other than the default"
-msgstr ""
-"Especificar un archivo diccionario personal distinto del predeterminado"
+msgstr "Especificar un archivo diccionario personal distinto del predeterminado"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:122
 msgid "Personal &dictionary:"
@@ -2461,17 +2447,19 @@ msgstr "El &cursor sigue a la barra de desplazamiento"
 
 #: src/frontends/qt4/ui/PrefUi.ui:380
 msgid "Pixmap Cache"
-msgstr ""
+msgstr "Caché de pixmaps"
 
 #: src/frontends/qt4/ui/PrefUi.ui:392
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
 msgstr ""
+"Marcando esto mejora el rendimiento, pero puede reducir la muestra "
+"en pantalla de las fuentes"
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
-msgstr ""
+msgstr "Activar caché de pi&xmaps"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:768
@@ -2523,9 +2511,8 @@ msgid "Re&verse order"
 msgstr "Orden &inverso"
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-#, fuzzy
 msgid "Copie&s"
-msgstr "Copias"
+msgstr "Copia&s"
 
 #: src/frontends/qt4/ui/PrintUi.ui:164
 msgid "Number of copies"
@@ -2651,8 +2638,7 @@ msgstr "Buscar &hacia atrás"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:45
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Procesar el archivo convertido con este comando ($$FName = nombre de archivo)"
+msgstr "Procesar el archivo convertido con este comando ($$FName = nombre de archivo)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:104
 msgid "&Export formats:"
@@ -2885,8 +2871,7 @@ msgstr "Borde debajo"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"Repetir esta fila como encabezamiento en cada página (excepto en la primera)"
+msgstr "Repetir esta fila como encabezamiento en cada página (excepto en la primera)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
@@ -2960,8 +2945,7 @@ msgid "&Rescan"
 msgstr "&Releer"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostrar contenidos del archivo marcado. Solo posible cuando los archivos son "
 "mostrados con su ruta"
@@ -3536,11 +3520,11 @@ msgstr "Subsubsección*"
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
 #: src/output_plaintext.cpp:145
 msgid "Abstract"
-msgstr "Resumen"
+msgstr "Sinopsis"
 
 #: lib/layouts/IEEEtran.layout:335
 msgid "Abstract---"
-msgstr "Resumen---"
+msgstr "Sinopsis---"
 
 #: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
@@ -3929,7 +3913,7 @@ msgstr "Encabezado derecho:"
 
 #: lib/layouts/apa.layout:83
 msgid "Abstract:"
-msgstr "Resumen:"
+msgstr "Sinopsis:"
 
 #: lib/layouts/apa.layout:92
 msgid "ShortTitle"
@@ -4661,7 +4645,7 @@ msgstr "reprint_reqs_to:"
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:138 lib/layouts/svjour.inc:266
 msgid "Abstract."
-msgstr "Resumen."
+msgstr "Sinopsis."
 
 #: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:154
 #: lib/layouts/amsmaths.inc:525 lib/layouts/svjour.inc:322
@@ -5844,7 +5828,7 @@ msgstr "Encabezamiento de bibliografía"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
-msgstr "RESUMEN:"
+msgstr "SINOPSIS:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
@@ -6442,7 +6426,7 @@ msgstr "InfoAutor:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr "RESUMEN"
+msgstr "SINOPSIS"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
@@ -6788,11 +6772,11 @@ msgstr "Conclusión."
 #: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:380
 #: lib/layouts/amsmaths.inc:555
 msgid "Assumption"
-msgstr "Suposición"
+msgstr "Supuesto"
 
 #: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:570
 msgid "Assumption."
-msgstr "Suposición."
+msgstr "Supuesto."
 
 #: lib/layouts/amsmaths-seq.inc:152
 msgid "Theorem \\arabic{thm}."
@@ -6844,7 +6828,7 @@ msgstr "Conclusión \\arabic{conclusion}."
 
 #: lib/layouts/amsmaths-seq.inc:383
 msgid "Assumption \\arabic{assumption}."
-msgstr "Suposición \\arabic{assumption}."
+msgstr "Supuesto \\arabic{assumption}."
 
 #: lib/layouts/amsmaths.inc:93
 msgid "Corollary @Section@.\\arabic{theorem}."
@@ -6992,11 +6976,11 @@ msgstr "Conclusión*"
 
 #: lib/layouts/amsmaths.inc:559
 msgid "Assumption @Section@.\\arabic{theorem}."
-msgstr "Suposición @Section@.\\arabic{theorem}."
+msgstr "Supuesto @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:567
 msgid "Assumption*"
-msgstr "Suposición*"
+msgstr "Supuesto*"
 
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
@@ -7584,7 +7568,7 @@ msgstr "Tabla|T"
 
 #: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106
 msgid "Math|M"
-msgstr "Ecuación|E"
+msgstr "Ecuaciones|E"
 
 #: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:461
 msgid "Spellchecker...|S"
@@ -7817,7 +7801,7 @@ msgstr "Multi-línea"
 
 #: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:291
 msgid "Math|h"
-msgstr "Ecuación|E"
+msgstr "Ecuaciones|E"
 
 #: lib/ui/classic.ui:216
 msgid "Special Character|S"
@@ -9357,15 +9341,15 @@ msgstr "Espacio negativo\t\\!"
 
 #: lib/ui/stdtoolbars.inc:259
 msgid "Placeholder\t\\phantom"
-msgstr ""
+msgstr "Espacio reservado\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:260
 msgid "Horizontal placeholder\t\\hphantom"
-msgstr ""
+msgstr "Espacio reservado horizontal\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Vertical placeholder\t\\vphantom"
-msgstr ""
+msgstr "Espacio reservado vertical\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:264
 msgid "Roots"
@@ -9400,22 +9384,18 @@ msgid "Standard\t\\frac"
 msgstr "Normal\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:278
-#, fuzzy
 msgid "No horizontal line\t\\atop"
-msgstr "No hor. línea\t\\atop"
+msgstr "Ninguna línea horizontal\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:279
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "Nice\t\\nicefrac"
+msgstr "Fracción simple (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:280
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "Fracción de texto (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:281
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "Fracción en presentación (amsmath)\t\\dfrac"
 
@@ -11456,8 +11436,7 @@ msgstr "No se puede cargar la clase de documento"
 
 #: src/Buffer.cpp:512
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Usando la clase de documento predeterminada, ya que la clase %1$s no se pudo "
 "cargar."
@@ -12586,8 +12565,7 @@ msgstr "Falta comando después de la opción --execute"
 
 #: src/LyX.cpp:1416
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
+msgstr "Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
 
 #: src/LyX.cpp:1428
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -12716,8 +12694,7 @@ msgstr "Sintaxis: set-color <nombre_lyx> <nombre_x11>"
 #: src/LyXFunc.cpp:1604
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr ""
-"set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
+msgstr "set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
 
 #: src/LyXFunc.cpp:1718
 #, c-format
@@ -12844,8 +12821,7 @@ msgstr ""
 "valores predeterminados después de un cambio de clase."
 
 #: src/LyXRC.cpp:2123
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporal entre autoguardados (en segundos). 0 significa no "
 "autoguardado."
@@ -12934,8 +12910,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2192
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Especificar caracteres adicionales que pueden ser parte de una palabra."
+msgstr "Especificar caracteres adicionales que pueden ser parte de una palabra."
 
 #: src/LyXRC.cpp:2196
 msgid ""
@@ -12978,8 +12953,7 @@ msgstr ""
 "documento."
 
 #: src/LyXRC.cpp:2224
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar si un comando de cambio de idioma se necesita al final del "
 "documento."
@@ -13064,10 +13038,8 @@ msgstr ""
 "entorno PATH. Use el formato nativo del OS."
 
 #: src/LyXRC.cpp:2280
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
 
 #: src/LyXRC.cpp:2284
 msgid "Shows a typeset preview of things such as math"
@@ -13127,8 +13099,7 @@ msgstr "Opción para imprimir solo páginas impares."
 
 #: src/LyXRC.cpp:2328
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Opción para especificar una lista separada por comas de páginas a imprimir."
+msgstr "Opción para especificar una lista separada por comas de páginas a imprimir."
 
 #: src/LyXRC.cpp:2332
 msgid "Option to specify the dimensions of the print paper."
@@ -13184,10 +13155,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Programa favorito de impresión, p. ej. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2368
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
 
 #: src/LyXRC.cpp:2372
 msgid ""
@@ -13214,8 +13183,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2391
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
+msgstr "Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
 
 #: src/LyXRC.cpp:2396
 #, no-c-format
@@ -13291,9 +13259,8 @@ msgstr ""
 "contienen tildes. Esto puede que no funcione con todos los diccionarios."
 
 #: src/LyXRC.cpp:2455
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgstr "Activar el caché de pixmaps que podría mejorar el rendimiento en Mac y Windows."
 
 #: src/LyXRC.cpp:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -13448,8 +13415,7 @@ msgstr ""
 
 #: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
+msgstr "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
 #: src/Text.cpp:1821
 msgid "[Change Tracking] "
@@ -13820,9 +13786,8 @@ msgid "Reloading configuration..."
 msgstr "Recargando configuración..."
 
 #: src/callback.cpp:456
-#, fuzzy
 msgid "System reconfiguration failed"
-msgstr "Sistema reconfigurado"
+msgstr "Falló la reconfiguración del sistema"
 
 #: src/callback.cpp:457
 msgid ""
@@ -13830,6 +13795,9 @@ msgid ""
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
+"La reconfiguración del sistema ha fallado.\n"
+"Se usa la clase de texto predeterminada pero LyX puede que no funcione\n"
+"adecuadamente. Por favor, vuelva a reconfigurarlo si es necesario."
 
 #: src/callback.cpp:462
 msgid "System reconfigured"
@@ -14188,8 +14156,7 @@ msgstr "Ningún archivo de registro LaTeX encontrado."
 
 #: src/frontends/controllers/ControlLog.cpp:119
 msgid "No literate programming build log file found."
-msgstr ""
-"Ningún archivo de registro de construcción de programación culta encontrado."
+msgstr "Ningún archivo de registro de construcción de programación culta encontrado."
 
 #: src/frontends/controllers/ControlLog.cpp:122
 msgid "No lyx2lyx error log file found."
@@ -14443,17 +14410,23 @@ msgid ""
 "\n"
 "Exception: "
 msgstr ""
+"LyX atrapó una excepción, ahora intentará guardar todos los documentos "
+"no guardados y salir.\n"
+"\n"
+"Excepción: "
 
 #: src/frontends/qt4/GuiApplication.cpp:273
 #: src/frontends/qt4/GuiApplication.cpp:280
 msgid "Software exception Detected"
-msgstr ""
+msgstr "Detectada excepción del programa"
 
 #: src/frontends/qt4/GuiApplication.cpp:278
 msgid ""
 "LyX has caught some really weird exception, it will now attemp to save all "
 "unsaved documents and exit."
 msgstr ""
+"LyX ha atrapado alguna excepción realmente rara, ahora intentará guardar todos "
+"los documentos no guardados y salir."
 
 #: src/frontends/qt4/GuiApplication.cpp:408
 msgid "About %1"
@@ -14688,8 +14661,7 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Parámetros de listados de entrada a la derecha. Introduzca ? para una lista "
 "de parámetros."
@@ -14855,8 +14827,7 @@ msgstr "Gráficos"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Parámetros de listado de entrada a la derecha. Introduzca ? para una lista "
 "de parámetros."
@@ -15198,9 +15169,8 @@ msgid "Opened CharStyle Inset"
 msgstr "Recuadro CharStyle abierto"
 
 #: src/insets/InsetCharStyle.cpp:226
-#, fuzzy
 msgid "CharStyle: "
-msgstr "Cambio: "
+msgstr "EstiloCaracter: "
 
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
@@ -15413,8 +15383,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Debería estar compuesto de una o más de %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "Use \\footnotesize, \\small, \\itshape, \\ttfamily o algo parecido"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -15513,7 +15482,7 @@ msgstr "Nomenclatura"
 
 #: src/insets/InsetNote.cpp:64
 msgid "Note[[InsetNote]]"
-msgstr ""
+msgstr "Nota[[RecuadroNota]]"
 
 #: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
@@ -15717,7 +15686,7 @@ msgstr "pc"
 
 #: src/lengthcommon.cpp:38
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc[[unidad de medida]]"
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
@@ -15862,7 +15831,7 @@ msgstr ""
 
 #: src/output_plaintext.cpp:148
 msgid "Abstract: "
-msgstr "Resumen: "
+msgstr "Sinopsis: "
 
 #: src/output_plaintext.cpp:160
 msgid "References: "
@@ -15878,10 +15847,8 @@ msgstr "Binario LyX no encontrado"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
 
 #: src/support/Package.cpp.in:569
 #, c-format
@@ -15977,321 +15944,3 @@ msgstr "Usuario desconocido"
 #~ msgid "hphantom"
 #~ msgstr "hphantom"
 
-#~ msgid "&Right"
-#~ msgstr "&Derecha"
-
-#~ msgid "&Center"
-#~ msgstr "&Centro"
-
-#~ msgid "theorem"
-#~ msgstr "teorema"
-
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "Recuadro de teorema abierto"
-
-#~ msgid "Case."
-#~ msgstr "Caso."
-
-#~ msgid "Case \\arabic{case}."
-#~ msgstr "Caso \\arabic{case}."
-
-#~ msgid "Algorithm #."
-#~ msgstr "Algoritmo #."
-
-#~ msgid "Case @Section@.\\arabic{theorem}."
-#~ msgstr "Caso @Section@.\\arabic{theorem}."
-
-#~ msgid "&Load"
-#~ msgstr "&Cargar"
-
-#~ msgid "Acknowledgement \\arabic{theorem}"
-#~ msgstr "Agradecimiento \\arabic{theorem}"
-
-#~ msgid "To &file:"
-#~ msgstr "A &archivo:"
-
-#~ msgid "Co&pies:"
-#~ msgstr "Co&pias:"
-
-#~ msgid "Specify the command option names for your printer command"
-#~ msgstr "Especificar las opciones para el comando de la impresora"
-
-#~ msgid "Printer &name:"
-#~ msgstr "Nombre de la i&mpresora:"
-
-#~ msgid "Columns "
-#~ msgstr "Columnas "
-
-#~ msgid "Overprint "
-#~ msgstr "SobreImprimir "
-
-#~ msgid "Conjecture "
-#~ msgstr "Conjetura "
-
-#~ msgid "Font st&yle:"
-#~ msgstr "E&stilo de la fuente:"
-
-#~ msgid "Use printer name explicitely"
-#~ msgstr "Usar nombre de impresora explícitamente"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "Adaptar &salida"
-
-#~ msgid "&Type:"
-#~ msgstr "&Tipo:"
-
-#~ msgid "Part "
-#~ msgstr "Parte "
-
-#~ msgid "columns "
-#~ msgstr "columnas "
-
-#~ msgid "overprint "
-#~ msgstr "sobreimprimir "
-
-#~ msgid "overlayarea"
-#~ msgstr "Árearecubrimiento"
-
-#~ msgid "Corollary_"
-#~ msgstr "Corolario_"
-
-#~ msgid "Definition. "
-#~ msgstr "Definición. "
-
-#~ msgid "Example. "
-#~ msgstr "Ejemplo. "
-
-#~ msgid "Fact. "
-#~ msgstr "Hecho. "
-
-#~ msgid "Proof. "
-#~ msgstr "Demostración. "
-
-#~ msgid "Theorem. "
-#~ msgstr "Teorema. "
-
-#~ msgid "note: "
-#~ msgstr "nota: "
-
-#~ msgid "&Extended Chars"
-#~ msgstr "Caracteres &extendidos"
-
-#~ msgid "Placement:"
-#~ msgstr "Ubicación:"
-
-#~ msgid "default"
-#~ msgstr "predeterminado"
-
-#~ msgid "common"
-#~ msgstr "común"
-
-#~ msgid "Listings"
-#~ msgstr "Listados"
-
-#~ msgid "Toggle Table of Contents"
-#~ msgstr "Conmutar índice general"
-
-#~ msgid "Toc"
-#~ msgstr "IG"
-
-#~ msgid "Table of Contents|T"
-#~ msgstr "Índice general|g"
-
-#~ msgid "OK"
-#~ msgstr "Aceptar"
-
-#~ msgid "Chinese"
-#~ msgstr "Chino"
-
-#~ msgid "Upper"
-#~ msgstr "Superior"
-
-#~ msgid "Table of contents"
-#~ msgstr "Índice general"
-
-#~ msgid "Number style"
-#~ msgstr "Estilo número"
-
-#~ msgid "Error closing file"
-#~ msgstr "Error al cerrar archivo"
-
-#~ msgid ""
-#~ "The output file could not be closed properly.\n"
-#~ " Probably some characters of your document are not representable in the "
-#~ "chosen encoding.\n"
-#~ "Changing the document encoding to utf8 could help."
-#~ msgstr ""
-#~ "El archivo de salida no pudo ser cerrado adecuadamente.\n"
-#~ " Probablemente algunos caracteres de su documento no son representables "
-#~ "en la codificación elegida.\n"
-#~ "Cambiar la codificación del documento a utf8 podría ayudar."
-
-#~ msgid "block "
-#~ msgstr "bloque "
-
-#~ msgid "Corollary.  "
-#~ msgstr "Corolario.  "
-
-#~ msgid "block showing an example "
-#~ msgstr "bloque mostrando un ejemplo "
-
-#~ msgid "Basic style"
-#~ msgstr "Estilo básico"
-
-#~ msgid "&Caption"
-#~ msgstr "&Leyenda"
-
-#~ msgid "A caption for the List of Listings"
-#~ msgstr "Una leyenda para el listado de listados"
-
-#~ msgid "&Label"
-#~ msgstr "&Etiqueta"
-
-#~ msgid "A Label for the caption"
-#~ msgstr "Una etiqueta para la leyenda"
-
-#~ msgid "<- P&romote"
-#~ msgstr "<- &Promocionar"
-
-#~ msgid "D&own"
-#~ msgstr "&Bajar"
-
-#~ msgid "De&mote ->"
-#~ msgstr "&Degradar ->"
-
-#~ msgid "Upd&ate"
-#~ msgstr "&Actualizar"
-
-#~ msgid "SubSection"
-#~ msgstr "Subsección"
-
-#~ msgid ""
-#~ "No font change defined. Use Character under the Layout menu to define "
-#~ "font change."
-#~ msgstr ""
-#~ "No se definió el cambio de fuente. Usar Carácter bajo el menú Formato "
-#~ "para definir el cambio de fuente."
-
-#~ msgid "Unknown toc list"
-#~ msgstr "Lista ig desconocida"
-
-#~ msgid "Insert glossary entry"
-#~ msgstr "Insertar entrada de glosario"
-
-#~ msgid "Glo"
-#~ msgstr "Glo"
-
-#~ msgid "TeX Code:"
-#~ msgstr "Código TeX:"
-
-#~ msgid "Open this panel as a separate window"
-#~ msgstr "Abrir este panel como una ventana separada"
-
-#~ msgid "&Detach panel"
-#~ msgstr "&Despegar panel"
-
-#~ msgid "Insert spacing"
-#~ msgstr "Insertar espaciado"
-
-#~ msgid "Set limits style"
-#~ msgstr "Configurar estilo límites"
-
-#~ msgid "Set math font"
-#~ msgstr "Configurar fuente de ecuaciones"
-
-#~ msgid "Insert fraction"
-#~ msgstr "Insertar fracción"
-
-#~ msgid "Toggle between display and inline mode"
-#~ msgstr "Cambiar entre el modo insertado y de presentación"
-
-#~ msgid "Show delimiter and bracket dialog"
-#~ msgstr "Paréntesis y delimitadores"
-
-#~ msgid "Math Panel|l"
-#~ msgstr "Panel de ecuaciones|e"
-
-#~ msgid "Math Panel|P"
-#~ msgstr "Panel de ecuaciones|P"
-
-#~ msgid "Show math panel"
-#~ msgstr "Mostrar panel de ecuaciones"
-
-#~ msgid "LyX: Math Roots"
-#~ msgstr "LyX: raíces"
-
-#~ msgid "Cube root\t\\root"
-#~ msgstr "Raíz cúbica\t\\root"
-
-#~ msgid "LyX: Math Styles"
-#~ msgstr "LyX: estilos de ecuaciones"
-
-#~ msgid "LyX: Math Fonts"
-#~ msgstr "LyX: fuentes de ecuaciones"
-
-#~ msgid "The document uses a missing TeX class \"%1$s\".\n"
-#~ msgstr "El documento usa una clase de TeX \"%1$s\" que falta.\n"
-
-#~ msgid "Insert math delimiters"
-#~ msgstr "Insertar delimitadores de ecuaciones"
-
-#~ msgid "E&xtra options"
-#~ msgstr "Opciones e&xtra"
-
-#~ msgid "Alig&nment:"
-#~ msgstr "&Alineación:"
-
-#~ msgid "&From:"
-#~ msgstr "&De:"
-
-#~ msgid "&To:[[as in 'From format x to format y']]"
-#~ msgstr "&A:[[como en 'Del formato x al formato y']]"
-
-#~ msgid "&Converters"
-#~ msgstr "&Convertidores"
-
-#~ msgid "Tell whether this format can contain vector graphics."
-#~ msgstr "Especifica si este formato puede contener gráficos vectoriales."
-
-#~ msgid ""
-#~ "Tell whether this format is a document format. A document cannot be "
-#~ "exported to or viewed in a non-document format."
-#~ msgstr ""
-#~ "Especifica si este formato es un formato de documento. Un documento no "
-#~ "puede ser exportado o visto en un formato no documental."
-
-#~ msgid "The encoding for the screen fonts."
-#~ msgstr "Codificación para las fuentes de pantalla."
-
-#~ msgid "Class Settings"
-#~ msgstr "Configuración de clase"
-
-#~ msgid "Save Bookmark|S"
-#~ msgstr "Guardar marcador|G"
-
-#~ msgid "The bold font in the dialogs."
-#~ msgstr "Fuente negrita en los diálogos."
-
-#~ msgid "The encoding for the menu/popups fonts."
-#~ msgstr "Codificación para las fuentes de los menús/diálogos."
-
-#~ msgid "The normal font in the dialogs."
-#~ msgstr "Fuente normal en los diálogos."
-
-#~ msgid "\tEnd."
-#~ msgstr "\tFin."
-
-#~ msgid "#*"
-#~ msgstr "#*"
-
-#~ msgid "PrettyRef: "
-#~ msgstr "PrettyRef: "
-
-#~ msgid "Opening child document "
-#~ msgstr "Abriendo documento hijo "
-
-#~ msgid "Special Insets|S"
-#~ msgstr "Recuadros especiales|R"
-
-#~ msgid "Insets|n"
-#~ msgstr "Recuadros|c"
