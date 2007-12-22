@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -190,8 +190,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
- November 2007
+letzte Änderung: 22.
+ Dezember 2007
 \end_layout
 
 \begin_layout Standard
@@ -20773,7 +20773,11 @@ Mathed
 \family default
  zu starten.
  Sie können einfach auf den Werkzeugleistenknopf 
-\begin_inset Formula $\frac{a+b}{c}$
+\begin_inset Graphics
+	filename ../../images/math-mode.xpm
+	scale 75
+	scaleBeforeRotation
+
 \end_inset
 
  klicken.
@@ -22079,10 +22083,9 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../../images/math/delim.xpm
-	scale 70
+	filename ../../images/dialog-show_mathdelimiter.xpm
+	scale 75
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -23228,10 +23231,6 @@ Mathe-Matrix
 \family default
  öffnet, in dem Sie verschiedene Optionen setzen können.
  Hier ist ein Beispiel:
-\begin_inset Formula $ $
-\end_inset
-
-
 \begin_inset Formula \[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
@@ -32658,7 +32657,11 @@ Textstil
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\frac{a+b}{c}$
+\begin_inset Graphics
+	filename ../../images/math-mode.xpm
+	scale 75
+	scaleBeforeRotation
+
 \end_inset
 
 : 
