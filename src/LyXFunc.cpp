@@ -1738,6 +1738,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BOOKMARK_GOTO:
 			// go to bookmark, open unopened file and switch to buffer if necessary
 			gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
+			updateFlags = Update::FitCursor;
 			break;
 
 		case LFUN_BOOKMARK_CLEAR:

@@ -176,6 +176,7 @@ void gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 
 	tmpcur.clearSelection();
 	bv->setCursor(tmpcur);
+	bv->showCursor();
 }
 
 
@@ -949,6 +950,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				if (b == &buffer_) {
 					// Set the cursor
 					setCursor(makeDocIterator(par, 0));
+					showCursor();
 				} else {
 					// Switch to other buffer view and resend cmd
 					theLyXFunc().dispatch(FuncRequest(
@@ -1454,7 +1456,7 @@ void BufferView::gotoLabel(docstring const & label)
 		it->getLabelList(buffer_, labels);
 		if (find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
-			processUpdateFlags(Update::FitCursor);
+			showCursor();
 			return;
 		}
 	}
