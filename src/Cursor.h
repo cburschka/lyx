@@ -330,7 +330,7 @@ public:
 	// selection in given cell of atom
 	void handleNest(MathAtom const & at, int cell = 0);
 	///
-	bool isInside(Inset const *);
+	bool isInside(Inset const *) const;
 
 	/// make sure cursor position is valid
 	/// FIXME: It does a subset of fixIfBroken. Maybe merge them?

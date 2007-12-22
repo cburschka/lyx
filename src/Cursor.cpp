@@ -645,7 +645,7 @@ namespace lyx {
 //#define FILEDEBUG 1
 
 
-bool Cursor::isInside(Inset const * p)
+bool Cursor::isInside(Inset const * p) const
 {
 	for (size_t i = 0; i != depth(); ++i)
 		if (&operator[](i).inset() == p)
