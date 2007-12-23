@@ -42,6 +42,10 @@ GuiMenubar::GuiMenubar(GuiView * view, MenuBackend & mbe)
 
 void GuiMenubar::init()
 {
+	// Clear all menubar contents before filling it.
+	owner_->menuBar()->clear();
+	
+	// setup special mac specific menu item
 	macxMenuBarInit();
 
 	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menubackend_.getMenubar().name()));
@@ -56,9 +60,6 @@ void GuiMenubar::init()
 		LYXERR(Debug::GUI, "menu bar entries "
 			<< menubackend_.getMenubar().size());
 	}
-
-	// Clear all menubar contents before filling it.
-	owner_->menuBar()->clear();
 
 	Menu menu;
 	menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
