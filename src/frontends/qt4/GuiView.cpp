@@ -789,7 +789,7 @@ void GuiView::updateToolbars()
 			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
 		bool const mathmacrotemplate =
 			lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled();
-		
+
 		d.toolbars_->update(math, table, review, mathmacrotemplate);
 	} else
 		d.toolbars_->update(false, false, false, false);
