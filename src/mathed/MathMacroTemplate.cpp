@@ -561,15 +561,15 @@ bool MathMacroTemplate::notifyCursorLeaves(Cursor & cur)
 void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
 		if (!it.nextInset())
-						continue;
+			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
-						continue;
+			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		int n = arg->number() - 1;
 		if (from <= n && n <= to) {
 			int cellSlice = cur.find(it.cell());
 			if (cellSlice != -1 && cur[cellSlice].pos() > it.pos())
-					--cur[cellSlice].pos();
+				--cur[cellSlice].pos();
 
 			it.cell().erase(it.pos());
 		}
@@ -582,9 +582,9 @@ void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 void MathMacroTemplate::shiftArguments(size_t from, int by) {
 	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
 		if (!it.nextInset())
-						continue;
+			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
-						continue;
+			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		if (arg->number() >= from + 1)
 			arg->setNumber(arg->number() + by);
