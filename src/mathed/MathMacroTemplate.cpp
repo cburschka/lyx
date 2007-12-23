@@ -1003,6 +1003,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		if (!cell(displayIdx()).empty())
 			os << "\n{" << cell(displayIdx()) << '}';
 	}
+}
 
 
 int MathMacroTemplate::plaintext(Buffer const & buf, odocstream & os,
