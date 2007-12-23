@@ -295,6 +295,8 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 				flag = ToolbarInfo::MATH;
 			else if (!compare_ascii_no_case(*cit, "table"))
 				flag = ToolbarInfo::TABLE;
+			else if (!compare_ascii_no_case(*cit, "mathmacrotemplate"))
+				flag = ToolbarInfo::MATHMACROTEMPLATE;
 			else if (!compare_ascii_no_case(*cit, "review"))
 				flag = ToolbarInfo::REVIEW;
 			else if (!compare_ascii_no_case(*cit, "top"))
@@ -305,6 +307,8 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 				flag = ToolbarInfo::LEFT;
 			else if (!compare_ascii_no_case(*cit, "right"))
 				flag = ToolbarInfo::RIGHT;
+			else if (!compare_ascii_no_case(*cit, "auto"))
+				flag = ToolbarInfo::AUTO;			
 			else {
 				LYXERR(Debug::ANY,
 					"ToolbarBackend::readToolbarSettings: unrecognised token:`"

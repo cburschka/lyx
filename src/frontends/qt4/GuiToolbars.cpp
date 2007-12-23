@@ -208,7 +208,8 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 	} else if (allowauto 
 		   && ((flags & ToolbarInfo::MATH) 
 		       || (flags & ToolbarInfo::TABLE)
-		       || (flags & ToolbarInfo::REVIEW))) {
+		       || (flags & ToolbarInfo::REVIEW)
+					 || (flags & ToolbarInfo::MATHMACROTEMPLATE))) {
 		// for math etc, toggle from on -> auto
 		TurnOffFlag(ON);
 		TurnOnFlag(AUTO);
@@ -223,7 +224,8 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 #undef TurnOffFlag
 
 
-void GuiToolbars::update(bool in_math, bool in_table, bool review)
+void GuiToolbars::update(bool in_math, bool in_table, bool review, 
+	bool in_mathmacrotemplate)
 {
 	updateIcons();
 
@@ -241,7 +243,9 @@ void GuiToolbars::update(bool in_math, bool in_table, bool review)
 		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::TABLE))
 			displayToolbar(*cit, in_table);
 		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::REVIEW))
-			displayToolbar(*cit, review);
+			displayToolbar(*cit, review);	
+		else if ((cit->flags & ToolbarInfo::AUTO) && (cit->flags & ToolbarInfo::MATHMACROTEMPLATE))
+			displayToolbar(*cit, in_mathmacrotemplate);
 	}
 }
 

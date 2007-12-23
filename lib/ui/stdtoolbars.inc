@@ -164,7 +164,7 @@ ToolbarSet
 		Item "Toggle Math Panels" "toolbar-toggle math_panels"
 	End
 
-	Toolbar "math_macros" "Math Macros"
+	Toolbar "mathmacrotemplate" "Math Macros"
 		Item "Remove Last Parameter" "math-macro-remove-param"
 		Item "Append Parameter" "math-macro-add-param"
                 Separator

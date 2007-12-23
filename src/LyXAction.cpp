@@ -243,6 +243,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param", Noop, Math },
 		{ LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param", Noop, Math },
 		{ LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param", Noop, Math },
+		{ LFUN_IN_MATHMACROTEMPLATE, "in-mathmacrotemplate", Noop, Math },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
 		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer, System },
 		{ LFUN_NEW_LINE, "new-line", Noop, Edit },

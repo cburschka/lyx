@@ -645,6 +645,10 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			flag.enabled(numargs_ == 0 
 				     && type_ != MacroTypeDef);
 			break;
+			
+		case LFUN_IN_MATHMACROTEMPLATE:
+			flag.enabled();
+			break;
 
 		default:
 			ret = false;

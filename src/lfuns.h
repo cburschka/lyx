@@ -475,6 +475,7 @@ enum kb_action {
 
 	// 315
 	LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM,
+	LFUN_IN_MATHMACROTEMPLATE,
 	LFUN_LASTACTION                  // end of the table
 };
 
