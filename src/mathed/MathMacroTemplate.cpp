@@ -970,40 +970,26 @@ void MathMacroTemplate::write(WriteStream & os) const
 
 void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 {
-	if (type_ == MacroTypeDef) {
-		os << "\\def\\" << name().c_str();
-		for (int i = 1; i <= numargs_; ++i)
-			os << '#' << i;
-	} else {
-		// newcommand or renewcommand
-		if (redefinition_ && !overwriteRedefinition)
+	// newcommand or renewcommand
+	if (os.latex() && optionals_ > 1)
+		os << "\\newlyxcommand";
+	else {
+		if (redefinition_)
 			os << "\\renewcommand";
 		else
 			os << "\\newcommand";
-		os << "{\\" << name().c_str() << '}';
-		if (numargs_ > 0)
-			os << '[' << numargs_ << ']';
+	}
+	os << "{\\" << name().c_str() << '}';
+	if (numargs_ > 0)
+		os << '[' << numargs_ << ']';
 
-		// optional values
-		if (os.latex()) {
-			// in latex only one optional possible, simulate the others
-			if (optionals_ >= 1) {
-				docstring optValue = asString(cell(optIdx(0)));
-				if (optValue.find(']') != docstring::npos)
-					os << "[{" << cell(optIdx(0)) << "}]";
-				else
-					os << "[" << cell(optIdx(0)) << "]";
-			}
-		} else {
-			// in lyx we handle all optionals as real optionals
-			for (int i = 0; i < optionals_; ++i) {
-				docstring optValue = asString(cell(optIdx(i)));
-				if (optValue.find(']') != docstring::npos)
-					os << "[{" << cell(optIdx(i)) << "}]";
-				else
-					os << "[" << cell(optIdx(i)) << "]";
-			}
-		}
+	// optional values
+	for (int i = 0; i < optionals_; ++i) {
+		docstring optValue = asString(cell(optIdx(i)));
+		if (optValue.find(']') != docstring::npos)
+			os << "[{" << cell(optIdx(i)) << "}]";
+		else
+			os << "[" << cell(optIdx(i)) << "]";
 	}
 
 	os << "{" << cell(defIdx()) << "}";
@@ -1016,7 +1002,6 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		if (!cell(displayIdx()).empty())
 			os << "\n{" << cell(displayIdx()) << '}';
 	}
-}
 
 
 int MathMacroTemplate::plaintext(Buffer const & buf, odocstream & os,

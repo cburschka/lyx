@@ -552,39 +552,28 @@ void MathMacro::write(WriteStream & os) const
 	
 	os << "\\" << name();
 	bool first = true;
+	
+	// Optional arguments:
+	// First find last non-empty optional argument
+	idx_type emptyOptFrom = 0;
 	idx_type i = 0;
-	
-	// Use macroBackup_ instead of macro_ here, because
-	// this is outside the metrics/draw calls, hence the macro_
-	// variable can point to a MacroData which was freed already.
-	vector<docstring> const & defaults = macroBackup_.defaults();
-	
-	// Optional argument
-	if (os.latex()) {
-		// Print first optional in LaTeX semantics
-		if (i < optionals_) {
-			// the first real optional, the others are non-optional in latex
-			if (!cell(i).empty()) {
-				first = false;
-				os << "[" << cell(0) << "]";
-			}
-			
-			++i;
-		}
-	} else {
-		// In lyx mode print all in any case
-		for (; i < cells_.size() && i < optionals_; ++i) {
-			first = false;
-				os << "[" << cell(i) << "]";
-		}
+	for (; i < cells_.size() && i < optionals_; ++i) {
+		if (!cell(i).empty())
+			emptyOptFrom = i + 1;
 	}
-
+	
+	// print out optionals
+	for (i=0; i < cells_.size() && i < emptyOptFrom; ++i) {
+		first = false;
+		os << "[" << cell(i) << "]";
+	}
+	
+	// skip the tailing empty optionals
+	i = optionals_;
+	
 	// Print remaining macros 
-	// (also the further optional parameters in LaTeX mode!)
 	for (; i < cells_.size(); ++i) {
-		if (cell(i).empty() && i < optionals_)
-			os << "{" << defaults[i] << "}";
-		else if (cell(i).size() == 1 
+		if (cell(i).size() == 1 
 			 && cell(i)[0].nucleus()->asCharInset()) {
 			if (first)
 				os << " ";
