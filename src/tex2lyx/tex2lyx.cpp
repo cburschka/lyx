@@ -120,6 +120,7 @@ void add_known_command(string const & command, string const & o1,
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo       bar
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo[x]    bar x
 	// \newcommand{\foo}[1][x]{bar #1} "[1]" true  \foo[x]    bar x
+	// and the same with \newlyxcommand
 	unsigned int nargs = 0;
 	vector<ArgumentType> arguments;
 	string const opt1 = rtrim(ltrim(o1, "["), "]");

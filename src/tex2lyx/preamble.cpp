@@ -461,8 +461,10 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			p.setCatCode('@', catOther);
 		}
 
-		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
-			    || t.cs() == "providecommand") {
+		else if (t.cs() == "newcommand" 
+						 || t.cs() == "renewcommand"
+						 || t.cs() == "providecommand"
+						 || t.cs() == "newlyxcommand") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();

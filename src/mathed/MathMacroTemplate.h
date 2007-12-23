@@ -80,6 +80,9 @@ public:
 	/// Remove everything from the name which makes it invalid 
 	/// and return true iff it is valid.
 	bool fixNameAndCheckIfValid();
+	
+	/// request "external features"
+	virtual void validate(LaTeXFeatures &) const;
 
 	/// decide whether its a redefinition
 	void updateToContext(MacroContext const & mc) const;

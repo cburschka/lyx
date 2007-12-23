@@ -149,6 +149,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		// somewhere, and an ordinary formula
 		// otherwise
 		if (sel.find(from_ascii("\\newcommand")) == string::npos
+				&& sel.find(from_ascii("\\newlyxcommand")) == string::npos
 				&& sel.find(from_ascii("\\def")) == string::npos)
 		{
 			InsetMathHull * formula = new InsetMathHull;

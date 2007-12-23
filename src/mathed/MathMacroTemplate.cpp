@@ -13,6 +13,7 @@
 #include "MathMacroTemplate.h"
 
 #include "DocIterator.h"
+#include "LaTeXFeatures.h"
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
 #include "InsetMathSqrt.h"
@@ -1070,6 +1071,13 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 	return data.size() > 0;
 }
 
+	
+void MathMacroTemplate::validate(LaTeXFeatures & features) const
+{
+	if (optionals_ > 1) {
+		features.require("newlyxcommand");
+	}
+}
 
 void MathMacroTemplate::getDefaults(vector<docstring> & defaults) const
 {

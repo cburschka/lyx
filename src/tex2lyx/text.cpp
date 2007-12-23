@@ -2380,8 +2380,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newcommand" ||
-			 t.cs() == "providecommand" ||
-			 t.cs() == "renewcommand") {
+						 t.cs() == "providecommand" ||
+						 t.cs() == "renewcommand" ||
+						 t.cs() == "newlyxcommand") {
 			// these could be handled by parse_command(), but
 			// we need to call add_known_command() here.
 			string name = t.asInput();

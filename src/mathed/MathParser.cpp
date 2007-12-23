@@ -894,7 +894,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "def" ||
 			t.cs() == "newcommand" ||
-			t.cs() == "renewcommand")
+			t.cs() == "renewcommand" ||
+			t.cs() == "newlyxcommand")
 		{
 			MacroType type = MacroTypeNewcommand;
 			if (t.cs() == "def")
