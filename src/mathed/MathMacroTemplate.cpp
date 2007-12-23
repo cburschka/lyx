@@ -298,7 +298,7 @@ private:
 
 
 InsetNameWrapper::InsetNameWrapper(MathData const * value, 
-																	 MathMacroTemplate const & parent)
+				   MathMacroTemplate const & parent)
 	: InsetMathWrapper(value), parent_(parent)
 {
 }
