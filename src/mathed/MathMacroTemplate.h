@@ -40,6 +40,8 @@ public:
 	///
 	void edit(Cursor & cur, bool left);
 	///
+	Inset * editXY(Cursor & cur, int x, int y);
+	///
 	bool notifyCursorLeaves(Cursor & cur);
 	///
 	void read(Buffer const &, Lexer & lex);
@@ -125,8 +127,10 @@ private:
 	idx_type optIdx(idx_type n) const { return n + 1; }
 	///
 	idx_type displayIdx() const { return optionals_ + 2; }
-	/// The label with some holes to edit
-	mutable MathData label_;
+	///
+	void updateLook() const;
+	/// The representation of the macro tempalte, with some holes to edit
+	mutable MathData look_;
 	///
 	mutable int numargs_;
 	///
@@ -140,7 +144,26 @@ private:
 	/// defined before already?
 	mutable bool redefinition_;
 	///
-	mutable Dimension cellDim_;
+	mutable bool editing_;
+	///
+	void createLook() const;
+	///
+	mutable bool lookOutdated_;
+	/// true if in pre-calculations of metrics to get height of boxes
+	mutable bool premetrics_;
+	///
+	mutable int labelBoxAscent_;
+	///
+	mutable int labelBoxDescent_;
+
+private:
+	friend class InsetLabelBox;
+	///
+	bool premetrics() const { return premetrics_; }
+	///
+	int commonLabelBoxAscent() const { return labelBoxAscent_; }
+	///
+	int commonLabelBoxDescent() const { return labelBoxDescent_; }
 };
 
 
