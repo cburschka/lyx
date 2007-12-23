@@ -111,7 +111,7 @@ CommandMap known_math_environments;
 
 
 void add_known_command(string const & command, string const & o1,
-		       bool o2)
+	unsigned optionalsNum)
 {
 	// We have to handle the following cases:
 	// definition                      o1    o2    invocation result
@@ -127,8 +127,7 @@ void add_known_command(string const & command, string const & o1,
 	if (isStrUnsignedInt(opt1)) {
 		// The command has arguments
 		nargs = convert<unsigned int>(opt1);
-		if (nargs > 0 && o2) {
-			// The first argument is optional
+		for (unsigned int i = 0; i < optionalsNum; ++i) {
 			arguments.push_back(optional);
 			--nargs;
 		}

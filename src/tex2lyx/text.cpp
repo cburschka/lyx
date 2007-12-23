@@ -2393,11 +2393,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			string const command = p.verbatim_item();
 			string const opt1 = p.getOpt();
-			string const opt2 = p.getFullOpt();
-			add_known_command(command, opt1, !opt2.empty());
-			string const ert = name + '{' + command + '}' +
-					   opt1 + opt2 +
-					   '{' + p.verbatim_item() + '}';
+			string optionals;
+			unsigned optionalsNum = 0;
+			while (true) {
+				string const opt = p.getFullOpt();
+				if (opt.empty())
+					break;
+				optionalsNum++;
+				optionals += opt;
+			}
+			add_known_command(command, opt1, optionalsNum);
+			string const ert = name + '{' + command + '}' + opt1
+				+ optionals + '{' + p.verbatim_item() + '}';
 
 			context.check_layout(os);
 			begin_inset(os, "FormulaMacro");
