@@ -600,18 +600,19 @@ void fixMacroInstancesAddRemove(Cursor const & from, docstring const & name, int
 
 		// in front of macro instance?
 		Inset * inset = dit.nextInset();
-		if (inset) {
-			InsetMath * insetMath = inset->asInsetMath();
-			if (insetMath) {
-				MathMacro * macro = insetMath->asMacro();
-				if (macro && macro->name() == name && macro->folded()) {
-					// found macro instance
-					if (insert)
-						macro->insertArgument(n);
-					else
-						macro->removeArgument(n);
-				}
-			}
+		if (!inset)
+			continue;
+		InsetMath * insetMath = inset->asInsetMath();
+		if (!insetMath)
+			continue;
+
+		MathMacro * macro = insetMath->asMacro();
+		if (macro && macro->name() == name && macro->folded()) {
+			// found macro instance
+			if (insert)
+				macro->insertArgument(n);
+			else
+				macro->removeArgument(n);
 		}
 	}
 }
@@ -631,15 +632,15 @@ void fixMacroInstancesOptional(Cursor const & from, docstring const & name, int 
 
 		// in front of macro instance?
 		Inset * inset = dit.nextInset();
-		if (inset) {
-			InsetMath * insetMath = inset->asInsetMath();
-			if (insetMath) {
-				MathMacro * macro = insetMath->asMacro();
-				if (macro && macro->name() == name && macro->folded()) {
-					// found macro instance
-					macro->setOptionals(optionals);
-				}
-			}
+		if (!inset)
+			continue;
+		InsetMath * insetMath = inset->asInsetMath();
+		if (!insetMath)
+			continue;
+		MathMacro * macro = insetMath->asMacro();
+		if (macro && macro->name() == name && macro->folded()) {
+			// found macro instance
+			macro->setOptionals(optionals);
 		}
 	}
 }
@@ -661,14 +662,14 @@ void fixMacroInstancesFunctional(Cursor const & from,
 
 		// in front of macro instance?
 		Inset * inset = dit.nextInset();
-		if (inset) {
-			InsetMath * insetMath = inset->asInsetMath();
-			if (insetMath) {
-				MathMacro * macro = insetMath->asMacro();
-				if (macro && macro->name() == name && macro->folded())
-					F(macro);
-			}
-		}
+		if (!inset)
+			continue;
+		InsetMath * insetMath = inset->asInsetMath();
+		if (!insetMath)
+			continue;
+		MathMacro * macro = insetMath->asMacro();
+		if (macro && macro->name() == name && macro->folded())
+			F(macro);
 	}
 }
 
