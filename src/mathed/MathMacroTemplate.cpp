@@ -66,7 +66,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	
-private:
+protected:
 	///
 	MathMacroTemplate const & parent_;
 	///
@@ -75,8 +75,6 @@ private:
 	docstring const label_;
 	///
 	bool frame_;
-	///
-	mutable Dimension cellDim_;
 };
 
 
@@ -86,6 +84,7 @@ InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
 {
 	cell(0).insert(0, atom);
 }
+
 
 InsetLabelBox::InsetLabelBox(docstring label,
 														 MathMacroTemplate const & parent, bool frame)
@@ -104,7 +103,6 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// kernel
 	cell(0).metrics(mi, dim);
-	cellDim_ = dim;
 
 	// frame
 	if (frame_) {
@@ -120,7 +118,7 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	
 	// label
-	if (label_.length() > 0) {
+	if (parent_.editing(mi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
 		font.setSize(FONT_SIZE_TINY);
@@ -146,12 +144,13 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const 
 {
 	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const cdim = cell(0).dimension(*pi.base.bv);
 	
 	// kernel
-	cell(0).draw(pi, x + (dim.wid - cellDim_.wid) / 2, y);
+	cell(0).draw(pi, x + (dim.wid - cdim.wid) / 2, y);
 	
 	// label
-	if (label_.length() > 0) {
+	if (parent_.editing(pi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
 		font.setSize(FONT_SIZE_TINY);
@@ -178,7 +177,68 @@ void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 	}
 }
 
+
+//////////////////////////////////////////////////////////////////////
+
+class DisplayLabelBox : public InsetLabelBox {
+public:
+	///
+	DisplayLabelBox(MathAtom const & atom, docstring label, 
+									MathMacroTemplate const & parent);
+		
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
 	
+protected:
+	///
+	Inset * clone() const;
+};
+
+
+DisplayLabelBox::DisplayLabelBox(MathAtom const & atom, 
+																 docstring label, 
+																 MathMacroTemplate const & parent)
+	: InsetLabelBox(atom, label, parent, true)
+{
+}
+	
+	
+	
+Inset * DisplayLabelBox::clone() const 
+{
+	return new DisplayLabelBox(*this);
+}
+	
+	
+void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetLabelBox::metrics(mi, dim);
+	if (!parent_.editing(mi.base.bv)
+			&& parent_.cell(parent_.displayIdx()).empty()) {
+		dim.wid = 0;
+		dim.asc = 0;
+		dim.des = 0;
+		setDimCache(mi, dim);
+	}
+}
+
+	
+void DisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
+{
+	if (parent_.editing(pi.base.bv)
+			|| !parent_.cell(parent_.displayIdx()).empty()) {
+		InsetLabelBox::draw(pi, x, y);
+	} else {
+		bool enabled = pi.pain.isDrawingEnabled();
+		pi.pain.setDrawingEnabled(false);
+		InsetLabelBox::draw(pi, x, y);
+		pi.pain.setDrawingEnabled(enabled);
+	}
+}
+	
+
 //////////////////////////////////////////////////////////////////////
 
 class InsetMathWrapper : public InsetMath {
@@ -280,7 +340,7 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 	
 MathMacroTemplate::MathMacroTemplate()
 	: InsetMathNest(3), numargs_(0), optionals_(0), 
-	  type_(MacroTypeNewcommand), editing_(false), lookOutdated_(true)
+	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
 	initMath();
 }
@@ -292,7 +352,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 	MathData const & def, MathData const & display)
 	: InsetMathNest(optionals + 3), numargs_(numargs), 
 	  optionals_(optionals), optionalValues_(optionalValues),
-	  type_(type), editing_(false), lookOutdated_(true)
+	  type_(type), lookOutdated_(true)
 {
 	initMath();
 
@@ -313,7 +373,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 
 MathMacroTemplate::MathMacroTemplate(docstring const & str)
 	: InsetMathNest(3), numargs_(0), optionals_(0),
-	type_(MacroTypeNewcommand), editing_(false), lookOutdated_(true)
+	type_(MacroTypeNewcommand), lookOutdated_(true)
 {
 	initMath();
 
@@ -356,25 +416,20 @@ void MathMacroTemplate::updateLook() const
 	lookOutdated_ = true;
 }
 
+
 void MathMacroTemplate::createLook() const
 {
 	look_.clear();
 
 	// \foo
-	look_.push_back(MathAtom(new InsetLabelBox(
-		 editing_ ? _("name") : docstring(),
-		 *this,
-		 false)));
+	look_.push_back(MathAtom(new InsetLabelBox(_("Name"), *this, false)));
 	MathData & nameData = look_[look_.size() - 1].nucleus()->cell(0);
 	nameData.push_back(MathAtom(new InsetNameWrapper(&cell(0), *this)));
 	
 	// [#1][#2]
 	int i = 0;
 	if (optionals_ > 0) {
-		look_.push_back(MathAtom(new InsetLabelBox(
-			editing_ ? _("optional") : docstring(),
-			*this,
-			false)));
+		look_.push_back(MathAtom(new InsetLabelBox(_("optional"), *this, false)));
 		MathData & optData = look_[look_.size() - 1].nucleus()->cell(0);
 	
 		for (; i < optionals_; ++i) {
@@ -396,22 +451,14 @@ void MathMacroTemplate::createLook() const
 	look_.push_back(MathAtom(new InsetMathChar('=')));
 
 	// definition
-	look_.push_back(
-		MathAtom(new InsetLabelBox(
-				MathAtom(new InsetMathWrapper(&cell(defIdx()))),
-				editing_ ? from_ascii("TeX") : docstring(),
-				*this,
-				true)));
+	look_.push_back(MathAtom(
+		new InsetLabelBox(MathAtom(
+			new InsetMathWrapper(&cell(defIdx()))), _("TeX"), *this,	true)));
 
 	// display
-	if (editing_ || !cell(displayIdx()).empty()) {
-		look_.push_back(
-			MathAtom(new InsetLabelBox(
-				MathAtom(new InsetMathWrapper(&cell(displayIdx()))),
-					editing_ ? from_ascii("LyX") : docstring(),
-					*this,
-					true)));
-	}
+	look_.push_back(MathAtom(
+		new DisplayLabelBox(MathAtom(
+			new InsetMathWrapper(&cell(displayIdx()))), _("LyX"), *this)));
 }
 	
 
@@ -428,14 +475,7 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 		// updateToContext() - avoids another lookup
 		redefinition_ = macro != 0;
 	}
-	
-	// new edit mode?
-	bool realEditing = editing(mi.base.bv);
-	if (editing_ != realEditing) {
-		editing_ = realEditing;
-		lookOutdated_ = true;
-	}
-	
+		
 	// update look?
 	if (lookOutdated_) {
 		lookOutdated_ = false;
@@ -455,12 +495,6 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	// second phase, main metric:
 	premetrics_ = false;
 	look_.metrics(mi, dim);
-		
-	// metrics for invisible display box
-	if (!editing_ && cell(displayIdx()).empty()) {
-		Dimension ddim;
-		cell(displayIdx()).metrics(mi, ddim);
-	}
 	
 	if (macro)
 		macro->unlock();

@@ -107,6 +107,10 @@ protected:
 		FuncStatus & status) const;
 
 private:
+	friend class InsetLabelBox;
+	friend class DisplayLabelBox;
+	
+	///
 	virtual Inset * clone() const;
 
 	/// remove #n with from<=n<=to
@@ -144,8 +148,6 @@ private:
 	/// defined before already?
 	mutable bool redefinition_;
 	///
-	mutable bool editing_;
-	///
 	void createLook() const;
 	///
 	mutable bool lookOutdated_;
@@ -155,9 +157,6 @@ private:
 	mutable int labelBoxAscent_;
 	///
 	mutable int labelBoxDescent_;
-
-private:
-	friend class InsetLabelBox;
 	///
 	bool premetrics() const { return premetrics_; }
 	///
