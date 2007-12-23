@@ -58,9 +58,9 @@ class InsetLabelBox : public InsetMathNest {
 public:
 	///
 	InsetLabelBox(MathAtom const & atom, docstring label, 
-								MathMacroTemplate const & parent, bool frame = false);
+		      MathMacroTemplate const & parent, bool frame = false);
 	InsetLabelBox(docstring label, MathMacroTemplate const & parent, 
-								bool frame = false);
+		      bool frame = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -172,8 +172,8 @@ void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 	int boxHeight = parent_.commonLabelBoxAscent() + parent_.commonLabelBoxDescent();
 	if (frame_) {
 		pi.pain.rectangle(x + 1, y - dim.ascent() + 1, 
-											dim.wid - 2, boxHeight - 2, 
-											Color_mathline);
+				  dim.wid - 2, boxHeight - 2, 
+				  Color_mathline);
 	}
 }
 
@@ -184,7 +184,7 @@ class DisplayLabelBox : public InsetLabelBox {
 public:
 	///
 	DisplayLabelBox(MathAtom const & atom, docstring label, 
-									MathMacroTemplate const & parent);
+			MathMacroTemplate const & parent);
 		
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -198,8 +198,8 @@ protected:
 
 
 DisplayLabelBox::DisplayLabelBox(MathAtom const & atom, 
-																 docstring label, 
-																 MathMacroTemplate const & parent)
+				 docstring label, 
+				 MathMacroTemplate const & parent)
 	: InsetLabelBox(atom, label, parent, true)
 {
 }
@@ -216,7 +216,7 @@ void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetLabelBox::metrics(mi, dim);
 	if (!parent_.editing(mi.base.bv)
-			&& parent_.cell(parent_.displayIdx()).empty()) {
+	    && parent_.cell(parent_.displayIdx()).empty()) {
 		dim.wid = 0;
 		dim.asc = 0;
 		dim.des = 0;
@@ -228,7 +228,7 @@ void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 void DisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 {
 	if (parent_.editing(pi.base.bv)
-			|| !parent_.cell(parent_.displayIdx()).empty()) {
+	    || !parent_.cell(parent_.displayIdx()).empty()) {
 		InsetLabelBox::draw(pi, x, y);
 	} else {
 		bool enabled = pi.pain.isDrawingEnabled();
@@ -299,7 +299,7 @@ private:
 
 InsetNameWrapper::InsetNameWrapper(MathData const * value, 
 																	 MathMacroTemplate const & parent)
-	:	InsetMathWrapper(value), parent_(parent)
+	: InsetMathWrapper(value), parent_(parent)
 {
 }
 
@@ -536,17 +536,6 @@ void MathMacroTemplate::edit(Cursor & cur, bool left)
 	updateLook();
 	cur.updateFlags(Update::Force);
 	InsetMathNest::edit(cur, left);
-}
-	
-	
-Inset * MathMacroTemplate::editXY(Cursor & cur, int x, int y)
-{
-	Inset * ret = InsetMathNest::editXY(cur, x, y);
-/*	if (!editing_ && editing(cur.bv())) {
-		
-		cur.updateFlags(Update::Force);
-	}*/
-	return ret;
 }
 	
 	

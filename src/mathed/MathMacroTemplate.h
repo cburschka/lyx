@@ -40,8 +40,6 @@ public:
 	///
 	void edit(Cursor & cur, bool left);
 	///
-	Inset * editXY(Cursor & cur, int x, int y);
-	///
 	bool notifyCursorLeaves(Cursor & cur);
 	///
 	void read(Buffer const &, Lexer & lex);
