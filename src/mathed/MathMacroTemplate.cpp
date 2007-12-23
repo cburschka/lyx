@@ -57,15 +57,15 @@ using support::bformat;
 class InsetLabelBox : public InsetMathNest {
 public:
 	///
-	InsetLabelBox(MathAtom const & atom, docstring label, 
+	InsetLabelBox(MathAtom const & atom, docstring label,
 		      MathMacroTemplate const & parent, bool frame = false);
-	InsetLabelBox(docstring label, MathMacroTemplate const & parent, 
+	InsetLabelBox(docstring label, MathMacroTemplate const & parent,
 		      bool frame = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	
+
 protected:
 	///
 	MathMacroTemplate const & parent_;
@@ -78,7 +78,7 @@ protected:
 };
 
 
-InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label, 
+InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
 			     MathMacroTemplate const & parent, bool frame)
 :	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
@@ -91,15 +91,15 @@ InsetLabelBox::InsetLabelBox(docstring label,
 :	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
 }
-	
 
-Inset * InsetLabelBox::clone() const 
+
+Inset * InsetLabelBox::clone() const
 {
 	return new InsetLabelBox(*this);
 }
 
 
-void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const 
+void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// kernel
 	cell(0).metrics(mi, dim);
@@ -110,26 +110,26 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += 5;
 		dim.des += 5;
 	}
-		
+
 	// adjust to common height in main metrics phase
 	if (!parent_.premetrics()) {
 		dim.asc = max(dim.asc, parent_.commonLabelBoxAscent());
 		dim.des = max(dim.des, parent_.commonLabelBoxDescent());
 	}
-	
+
 	// label
 	if (parent_.editing(mi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
 		font.setSize(FONT_SIZE_TINY);
 		font.setColor(Color_mathmacrolabel);
-		
+
 		// make space for label and box
 		int lwid = mathed_string_width(font, label_);
 		int maxasc;
 		int maxdes;
-		math_font_max_dim(font, maxasc, maxdes);		
-		
+		math_font_max_dim(font, maxasc, maxdes);
+
 		dim.wid = max(dim.wid, lwid + 2);
 
 		// space for the label
@@ -141,38 +141,38 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const 
+void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const cdim = cell(0).dimension(*pi.base.bv);
-	
+
 	// kernel
 	cell(0).draw(pi, x + (dim.wid - cdim.wid) / 2, y);
-	
+
 	// label
 	if (parent_.editing(pi.base.bv) && label_.length() > 0) {
 		// grey
 		FontInfo font = sane_font;
 		font.setSize(FONT_SIZE_TINY);
 		font.setColor(Color_mathmacrolabel);
-		
+
 		// make space for label and box
 		int lwid = mathed_string_width(font, label_);
 		int maxasc;
 		int maxdes;
 		math_font_max_dim(font, maxasc, maxdes);
-		
+
 		if (lwid < dim.wid)
 			pi.pain.text(x + (dim.wid - lwid) / 2, y + dim.des - maxdes, label_, font);
 		else
 			pi.pain.text(x, y + dim.des - maxdes, label_, font);
 	}
-	
+
 	// draw frame
 	int boxHeight = parent_.commonLabelBoxAscent() + parent_.commonLabelBoxDescent();
 	if (frame_) {
-		pi.pain.rectangle(x + 1, y - dim.ascent() + 1, 
-				  dim.wid - 2, boxHeight - 2, 
+		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
+				  dim.wid - 2, boxHeight - 2,
 				  Color_mathline);
 	}
 }
@@ -183,35 +183,35 @@ void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 class DisplayLabelBox : public InsetLabelBox {
 public:
 	///
-	DisplayLabelBox(MathAtom const & atom, docstring label, 
+	DisplayLabelBox(MathAtom const & atom, docstring label,
 			MathMacroTemplate const & parent);
-		
+
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	
+
 protected:
 	///
 	Inset * clone() const;
 };
 
 
-DisplayLabelBox::DisplayLabelBox(MathAtom const & atom, 
-				 docstring label, 
+DisplayLabelBox::DisplayLabelBox(MathAtom const & atom,
+				 docstring label,
 				 MathMacroTemplate const & parent)
 	: InsetLabelBox(atom, label, parent, true)
 {
 }
-	
-	
-	
-Inset * DisplayLabelBox::clone() const 
+
+
+
+Inset * DisplayLabelBox::clone() const
 {
 	return new DisplayLabelBox(*this);
 }
-	
-	
+
+
 void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetLabelBox::metrics(mi, dim);
@@ -224,7 +224,7 @@ void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 }
 
-	
+
 void DisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 {
 	if (parent_.editing(pi.base.bv)
@@ -237,7 +237,7 @@ void DisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.setDrawingEnabled(enabled);
 	}
 }
-	
+
 
 //////////////////////////////////////////////////////////////////////
 
@@ -249,7 +249,7 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	
+
 private:
 	///
 	Inset * clone() const;
@@ -258,20 +258,20 @@ private:
 };
 
 
-Inset * InsetMathWrapper::clone() const 
+Inset * InsetMathWrapper::clone() const
 {
 	return new InsetMathWrapper(*this);
 }
 
 
-void InsetMathWrapper::metrics(MetricsInfo & mi, Dimension & dim) const 
+void InsetMathWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	value_->metrics(mi, dim);
 	//metricsMarkers2(dim);
 }
 
 
-void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const 
+void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 {
 	value_->draw(pi, x, y);
 	//drawMarkers(pi, x, y);
@@ -288,7 +288,7 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	
+
 private:
 	///
 	MathMacroTemplate const & parent_;
@@ -297,49 +297,49 @@ private:
 };
 
 
-InsetNameWrapper::InsetNameWrapper(MathData const * value, 
+InsetNameWrapper::InsetNameWrapper(MathData const * value,
 				   MathMacroTemplate const & parent)
 	: InsetMathWrapper(value), parent_(parent)
 {
 }
 
 
-Inset * InsetNameWrapper::clone() const 
+Inset * InsetNameWrapper::clone() const
 {
 	return new InsetNameWrapper(*this);
 }
 
 
-void InsetNameWrapper::metrics(MetricsInfo & mi, Dimension & dim) const 
+void InsetNameWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetMathWrapper::metrics(mi, dim);
 	dim.wid += mathed_string_width(mi.base.font, from_ascii("\\"));
 }
 
 
-void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const 
+void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 {
 	// create fonts
 	PainterInfo namepi = pi;
 	if (parent_.validMacro())
 		namepi.base.font.setColor(Color_latex);
 	else
-		namepi.base.font.setColor(Color_error);		
-	
+		namepi.base.font.setColor(Color_error);
+
 	// draw backslash
 	pi.pain.text(x, y, from_ascii("\\"), namepi.base.font);
 	x += mathed_string_width(namepi.base.font, from_ascii("\\"));
-	
+
 	// draw name
 	InsetMathWrapper::draw(namepi, x, y);
 }
 
-	
+
 ///////////////////////////////////////////////////////////////////////
-	
-	
+
+
 MathMacroTemplate::MathMacroTemplate()
-	: InsetMathNest(3), numargs_(0), optionals_(0), 
+	: InsetMathNest(3), numargs_(0), optionals_(0),
 	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
 	initMath();
@@ -347,10 +347,10 @@ MathMacroTemplate::MathMacroTemplate()
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
-	int optionals, MacroType type, 
-	vector<MathData> const & optionalValues, 
+	int optionals, MacroType type,
+	vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
-	: InsetMathNest(optionals + 3), numargs_(numargs), 
+	: InsetMathNest(optionals + 3), numargs_(numargs),
 	  optionals_(optionals), optionalValues_(optionalValues),
 	  type_(type), lookOutdated_(true)
 {
@@ -359,10 +359,10 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
 			<< numargs_ << endl;
-	
+
 	asArray(name, cell(0));
 	optionalValues_.resize(9);
-	for (int i = 0; i < optionals_; ++i) 
+	for (int i = 0; i < optionals_; ++i)
 		cell(optIdx(i)) = optionalValues_[i];
 	cell(defIdx()) = def;
 	cell(displayIdx()) = display;
@@ -410,7 +410,7 @@ void MathMacroTemplate::updateToContext(MacroContext const & mc) const
 	redefinition_ = mc.get(name()) != 0;
 }
 
-	
+
 void MathMacroTemplate::updateLook() const
 {
 	lookOutdated_ = true;
@@ -425,27 +425,27 @@ void MathMacroTemplate::createLook() const
 	look_.push_back(MathAtom(new InsetLabelBox(_("Name"), *this, false)));
 	MathData & nameData = look_[look_.size() - 1].nucleus()->cell(0);
 	nameData.push_back(MathAtom(new InsetNameWrapper(&cell(0), *this)));
-	
+
 	// [#1][#2]
 	int i = 0;
 	if (optionals_ > 0) {
 		look_.push_back(MathAtom(new InsetLabelBox(_("optional"), *this, false)));
 		MathData & optData = look_[look_.size() - 1].nucleus()->cell(0);
-	
+
 		for (; i < optionals_; ++i) {
 			optData.push_back(MathAtom(new InsetMathChar('[')));
 			optData.push_back(MathAtom(new InsetMathWrapper(&cell(1 + i))));
 			optData.push_back(MathAtom(new InsetMathChar(']')));
 		}
 	}
-	
+
 	// {#3}{#4}
 	for (; i < numargs_; ++i) {
 		MathData arg;
 		arg.push_back(MathAtom(new MathMacroArgument(i + 1)));
 		look_.push_back(MathAtom(new InsetMathBrace(arg)));
 	}
-	
+
 	// :=
 	look_.push_back(MathAtom(new InsetMathChar(':')));
 	look_.push_back(MathAtom(new InsetMathChar('=')));
@@ -460,13 +460,13 @@ void MathMacroTemplate::createLook() const
 		new DisplayLabelBox(MathAtom(
 			new InsetMathWrapper(&cell(displayIdx()))), _("LyX"), *this)));
 }
-	
+
 
 void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, from_ascii("mathnormal"));
 	StyleChanger dummy2(mi.base, LM_ST_TEXT);
-	
+
 	// valid macro?
 	MacroData const * macro = 0;
 	if (validName()) {
@@ -475,34 +475,34 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 		// updateToContext() - avoids another lookup
 		redefinition_ = macro != 0;
 	}
-		
+
 	// update look?
 	if (lookOutdated_) {
 		lookOutdated_ = false;
 		createLook();
 	}
-	
+
 	/// metrics for inset contents
 	if (macro)
-		macro->lock();		
-	
+		macro->lock();
+
 	// first phase, premetric:
 	premetrics_ = true;
 	look_.metrics(mi, dim);
 	labelBoxAscent_ = dim.asc;
 	labelBoxDescent_ = dim.des;
-	
+
 	// second phase, main metric:
 	premetrics_ = false;
 	look_.metrics(mi, dim);
-	
+
 	if (macro)
 		macro->unlock();
-	
+
 	dim.wid += 6;
 	dim.des += 2;
 	dim.asc += 2;
-	
+
 	setDimCache(mi, dim);
 }
 
@@ -511,7 +511,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy1(pi.base, from_ascii("mathnormal"));
 	StyleChanger dummy2(pi.base, LM_ST_TEXT);
-	
+
 	setPosCache(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
 
@@ -519,33 +519,33 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	int const a = y - dim.asc + 1;
 	int const w = dim.wid - 2;
 	int const h = dim.height() - 2;
-	pi.pain.rectangle(x, a, w, h, Color_mathframe);	
-	
+	pi.pain.rectangle(x, a, w, h, Color_mathframe);
+
 	// just to be sure: set some dummy values for coord cache
 	for (idx_type i = 0; i < nargs(); ++i) {
 		cell(i).setXY(*pi.base.bv, x, y);
 	}
-	
+
 	// draw contents
 	look_.draw(pi, x + 3, y);
 }
 
-	
+
 void MathMacroTemplate::edit(Cursor & cur, bool left)
 {
 	updateLook();
 	cur.updateFlags(Update::Force);
 	InsetMathNest::edit(cur, left);
 }
-	
-	
+
+
 bool MathMacroTemplate::notifyCursorLeaves(Cursor & cur)
 {
 	updateLook();
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(cur);
 }
-	
+
 
 void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
@@ -563,7 +563,7 @@ void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 			it.cell().erase(it.pos());
 		}
 	}
-	
+
 	updateLook();
 }
 
@@ -647,7 +647,7 @@ void fixMacroInstancesOptional(Cursor const & from, docstring const & name, int 
 
 
 template<class F>
-void fixMacroInstancesFunctional(Cursor const & from, 
+void fixMacroInstancesFunctional(Cursor const & from,
 	docstring const & name, F & fix) {
 	Cursor dit = from;
 
@@ -674,7 +674,7 @@ void fixMacroInstancesFunctional(Cursor const & from,
 }
 
 
-void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy) 
+void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy)
 {
 	if (pos <= numargs_ && pos >= optionals_ && numargs_ < 9) {
 		++numargs_;
@@ -690,7 +690,7 @@ void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy)
 			dit.leaveInset(*this);
 			// TODO: this was dit.forwardPosNoDescend before. Check that this is the same
 			dit.top().forwardPos();
-			
+
 			// fix macro instances
 			fixMacroInstancesAddRemove(dit, name(), pos, true);
 		}
@@ -765,7 +765,7 @@ void MathMacroTemplate::makeOptional(Cursor & cur) {
 void MathMacroTemplate::makeNonOptional(Cursor & cur) {
 	if (numargs_ > 0 && optionals_ > 0) {
 		--optionals_;
-		
+
 		// store default value for later if the use changes his mind
 		optionalValues_[optionals_] = cell(optIdx(optionals_));
 		cells_.erase(cells_.begin() + optIdx(optionals_));
@@ -799,7 +799,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	string const arg = to_utf8(cmd.argument());
 	switch (cmd.action) {
 
-	case LFUN_MATH_MACRO_ADD_PARAM: 
+	case LFUN_MATH_MACRO_ADD_PARAM:
 		if (numargs_ < 9) {
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_;
@@ -810,7 +810,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 
-	case LFUN_MATH_MACRO_REMOVE_PARAM: 
+	case LFUN_MATH_MACRO_REMOVE_PARAM:
 		if (numargs_ > 0) {
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_ - 1;
@@ -883,7 +883,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			int num = numargs_ + 1;
 			if (arg.size() != 0)
 				num = convert<int>(arg);
-			bool on = (num >= optionals_ 
+			bool on = (num >= optionals_
 				   && numargs_ < 9 && num <= numargs_ + 1);
 			flag.enabled(on);
 			break;
@@ -902,13 +902,13 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 		}
 
 		case LFUN_MATH_MACRO_MAKE_OPTIONAL:
-			flag.enabled(numargs_ > 0 
-				     && optionals_ < numargs_ 
+			flag.enabled(numargs_ > 0
+				     && optionals_ < numargs_
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
-			flag.enabled(optionals_ > 0 
+			flag.enabled(optionals_ > 0
 				     && type_ != MacroTypeDef);
 			break;
 
@@ -921,7 +921,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			break;
 
 		case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
-			flag.enabled(numargs_ == 0 
+			flag.enabled(numargs_ == 0
 				     && type_ != MacroTypeDef);
 			break;
 
@@ -947,7 +947,7 @@ void MathMacroTemplate::read(Buffer const &, Lexer & lex)
 		return;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
-	
+
 	updateLook();
 }
 
@@ -983,7 +983,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		os << "{\\" << name().c_str() << '}';
 		if (numargs_ > 0)
 			os << '[' << numargs_ << ']';
-		
+
 		// optional values
 		if (os.latex()) {
 			// in latex only one optional possible, simulate the others
@@ -1046,7 +1046,7 @@ bool MathMacroTemplate::validName() const
 	// valid characters?
 	for (size_t i = 0; i < n.size(); ++i) {
 		if (!(n[i] >= 'a' && n[i] <= 'z') &&
-				!(n[i] >= 'A' && n[i] <= 'Z')) 
+				!(n[i] >= 'A' && n[i] <= 'Z'))
 			return false;
 	}
 
@@ -1076,7 +1076,7 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 				continue;
 			}
 		}
-		
+
 		// throw cell away
 		data.erase(i);
 	}
@@ -1090,7 +1090,7 @@ void MathMacroTemplate::getDefaults(vector<docstring> & defaults) const
 {
 	defaults.resize(numargs_);
 	for (int i = 0; i < optionals_; ++i)
-		defaults[i] = asString(cell(optIdx(i)));	
+		defaults[i] = asString(cell(optIdx(i)));
 }
 
 
@@ -1117,7 +1117,7 @@ size_t MathMacroTemplate::numOptionals() const
 	return optionals_;
 }
 
-	
+
 void MathMacroTemplate::infoize(odocstream & os) const
 {
 	os << "Math Macro: \\" << name();
