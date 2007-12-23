@@ -513,6 +513,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_TOGGLE:
 	case LFUN_DIALOG_SHOW:
 	case LFUN_DIALOG_UPDATE:
+		if (cmd.argument() == "prefs"
+		    || cmd.argument() == "aboutlyx")
+			enable = true;
+		else if (lyx_view_)
+			return lyx_view_->getStatus(cmd);
+		else
+			enable = false;
+		break;
+
 	case LFUN_TOOLBAR_TOGGLE:
 	case LFUN_INSET_APPLY:
 	case LFUN_BUFFER_WRITE:
