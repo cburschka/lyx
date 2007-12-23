@@ -79,7 +79,7 @@ protected:
 
 
 InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label, 
-														 MathMacroTemplate const & parent, bool frame)
+			     MathMacroTemplate const & parent, bool frame)
 :	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
 	cell(0).insert(0, atom);
@@ -87,7 +87,7 @@ InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
 
 
 InsetLabelBox::InsetLabelBox(docstring label,
-														 MathMacroTemplate const & parent, bool frame)
+			     MathMacroTemplate const & parent, bool frame)
 :	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
 }
