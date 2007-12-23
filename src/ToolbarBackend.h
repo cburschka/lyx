@@ -78,7 +78,7 @@ public:
 		RIGHT = 128, //< show at right
 		REVIEW = 256, //< show when change tracking is enabled
 		AUTO = 512,  //< only if AUTO is set, when MATH, TABLE and REVIEW is used
-		MATHMACROTEMPLATE = 1024 //< show in math macro
+		MATHMACROTEMPLATE = 1024 //< show in math macro template
 	};
 	/// the toolbar items
 	typedef std::vector<ToolbarItem> Items;
