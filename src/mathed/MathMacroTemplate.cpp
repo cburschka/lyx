@@ -162,6 +162,15 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, from_ascii("mathnormal"));
 	StyleChanger dummy2(mi.base, LM_ST_TEXT);
+	
+	// tiny font for sublabels
+	FontInfo slFont = sane_font;
+	slFont.decSize();
+	slFont.decSize();
+	slFont.decSize();
+	slFont.decSize();
+	Dimension slDim;
+	bool edit = editing(mi.base.bv);
 
 	// valid macro?
 	MacroData const * macro = 0;
@@ -209,24 +218,42 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = 2 + mathed_string_width(mi.base.font, from_ascii("\\")) +
 		dim0.width() + 
 		labeldim.width() +
-		defdim.width() + 16 + dspdim.width() + 2;	
+		defdim.width() + 10;	
 
 	dim.asc = dim0.ascent();
-	dim.asc = max(dim.asc, labeldim.ascent());
-	dim.asc = max(dim.asc, defdim.ascent());
-	dim.asc = max(dim.asc, dspdim.ascent());
-
 	dim.des = dim0.descent();
+	
+	dim.asc = max(dim.asc, labeldim.ascent());
 	dim.des = max(dim.des, labeldim.descent());
+	
+	dim.asc = max(dim.asc, defdim.ascent());
 	dim.des = max(dim.des, defdim.descent());
-	dim.des = max(dim.des, dspdim.descent());
 
+	// hide empty display cells if not edited
+	if (edit || !cell(displayIdx()).empty()) {
+		// display
+		dim.asc = max(dim.asc, dspdim.ascent());
+		dim.des = max(dim.des, dspdim.descent());
+		if (edit) {
+			mathed_string_dim(slFont, from_ascii("LyX"), slDim);
+			dim.wid += max(dspdim.width(), slDim.wid) + 8;
+		} else
+			dim.wid += dspdim.width() + 8;
+	}
+	
 	// make the name cell vertically centered, and 5 pixel lines margin
 	int real_asc = dim.asc - dim0.ascent() / 2;
 	int real_des = dim.des + dim0.ascent() / 2;
 	dim.asc = max(real_asc, real_des) + dim0.ascent() / 2 + 5;
 	dim.des = max(real_asc, real_des) - dim0.ascent() / 2 + 5;
-
+	cellDim_ = dim;
+	
+	// add sublabels below
+	if (edit) {
+		mathed_string_dim(slFont, from_ascii("Mg"), slDim);
+		dim.des += 2 + slDim.asc + slDim.des + 2;
+	}
+	
 	setDimCache(mi, dim);
 }
 
@@ -235,9 +262,23 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy1(pi.base, from_ascii("mathnormal"));
 	StyleChanger dummy2(pi.base, LM_ST_TEXT);
-
+	
 	setPosCache(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
+	
+	// sublabel font
+	FontInfo slFont = sane_font;
+	slFont.setColor(Color_command);
+	slFont.decSize();
+	slFont.decSize();
+	slFont.decSize();
+	slFont.decSize();
+	bool edit = editing(pi.base.bv);
+
+	// sublabel position
+	Dimension slDim;
+	mathed_string_dim(slFont, from_ascii("Mg"), slDim);
+	int const sly = y + cellDim_.des + slDim.asc + 2;
 
 	// create fonts
 	bool valid = validMacro();
@@ -271,15 +312,41 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	// draw definition
 	cell(defIdx()).draw(pi, x + 2, y);
 	int const w1 = cell(defIdx()).dimension(*pi.base.bv).width();
-	pi.pain.rectangle(x, y - dim.ascent() + 3, w1 + 4, dim.height() - 6, Color_mathline);
+	pi.pain.rectangle(x, y - dim.ascent() + 3, w1 + 4, cellDim_.height() - 6, 
+										Color_mathline);
 	x += w1 + 8;
 
-	// draw display
-	cell(displayIdx()).draw(pi, x + 2, y);
-	int const w2 = cell(displayIdx()).dimension(*pi.base.bv).width();
-	pi.pain.rectangle(x, y - dim.ascent() + 3, w2 + 4, dim.height() - 6, Color_mathline);
+	// hide empty display cells if not edited
+	if (edit || !cell(displayIdx()).empty()) {
+		// draw sublabel
+		if (edit)
+			pi.pain.text(x + 2, sly, from_ascii("LyX"), slFont);
+		
+		// draw display
+		cell(displayIdx()).draw(pi, x + 2, y);
+		int const w2 = cell(displayIdx()).dimension(*pi.base.bv).width();
+		pi.pain.rectangle(x, y - dim.ascent() + 3, w2 + 4, cellDim_.height() - 6, 
+											Color_mathline);
+	} else {
+		// at least update the coord cache if not drawn
+		cell(displayIdx()).setXY(*pi.base.bv, x + 2, y);
+	}
 }
 
+	
+void MathMacroTemplate::edit(Cursor & cur, bool left)
+{
+	cur.updateFlags(Update::Force);
+	InsetMathNest::edit(cur, left);
+}
+	
+	
+bool MathMacroTemplate::notifyCursorLeaves(Cursor & cur)
+{
+	cur.updateFlags(Update::Force);
+	return InsetMathNest::notifyCursorLeaves(cur);
+}
+	
 
 void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
@@ -834,6 +901,12 @@ size_t MathMacroTemplate::numArgs() const
 size_t MathMacroTemplate::numOptionals() const
 {
 	return optionals_;
+}
+
+	
+void MathMacroTemplate::infoize(odocstream & os) const
+{
+	os << "Math Macro: \\" << name();
 }
 
 } // namespace lyx

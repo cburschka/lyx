@@ -38,6 +38,10 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
+	void edit(Cursor & cur, bool left);
+	///
+	bool notifyCursorLeaves(Cursor & cur);
+	///
 	void read(Buffer const &, Lexer & lex);
 	///
 	void write(Buffer const &, std::ostream & os) const;
@@ -90,6 +94,8 @@ public:
 	MathMacroTemplate const * asMacroTemplate() const { return this; }
 	///
 	InsetCode lyxCode() const { return MATHMACRO_CODE; }
+	///
+	void infoize(odocstream & os) const;
 
 protected:
 	///
@@ -133,6 +139,8 @@ private:
 	mutable MacroType type_;
 	/// defined before already?
 	mutable bool redefinition_;
+	///
+	mutable Dimension cellDim_;
 };
 
 
