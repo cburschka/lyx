@@ -308,7 +308,7 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 			else if (!compare_ascii_no_case(*cit, "right"))
 				flag = ToolbarInfo::RIGHT;
 			else if (!compare_ascii_no_case(*cit, "auto"))
-				flag = ToolbarInfo::AUTO;			
+				flag = ToolbarInfo::AUTO;
 			else {
 				LYXERR(Debug::ANY,
 					"ToolbarBackend::readToolbarSettings: unrecognised token:`"

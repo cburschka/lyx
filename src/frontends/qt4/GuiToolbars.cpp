@@ -209,7 +209,7 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 		   && ((flags & ToolbarInfo::MATH) 
 		       || (flags & ToolbarInfo::TABLE)
 		       || (flags & ToolbarInfo::REVIEW)
-					 || (flags & ToolbarInfo::MATHMACROTEMPLATE))) {
+		       || (flags & ToolbarInfo::MATHMACROTEMPLATE))) {
 		// for math etc, toggle from on -> auto
 		TurnOffFlag(ON);
 		TurnOnFlag(AUTO);

@@ -51,7 +51,7 @@ public:
 
 	/// Update the state of the toolbars.
 	void update(bool in_math, bool in_table, bool review, 
-							bool in_mathmacrotemplate);
+		    bool in_mathmacrotemplate);
 
 	/// Is the Toolbar currently visible?
 	bool visible(std::string const & name) const;
