@@ -52,16 +52,16 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
 		mathMacro_.cell(idx_).metrics(mi, dim);
-		if (!mathMacro_.editing(mi.base.bv) && !def_.empty())
+		if (!mathMacro_.editMetrics(mi.base.bv) && !def_.empty())
 			def_.metrics(mi, dim);
 		mathMacro_.macro()->lock();
 	}
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
-		if (mathMacro_.editing(pi.base.bv)) {
+		if (mathMacro_.editMetrics(pi.base.bv)) {
 			// The only way a ArgumentProxy can appear is in a cell of the 
 			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED 
-			// mode and then, in the case of "editing_ == true" the monochrome 
+			// mode and then, if the macro is edited the monochrome 
 			// mode is entered by the MathMacro before calling the cells' draw
 			// method. Then eventually this code is reached and the proxy leaves
 			// monochrome mode temporarely. Hence, if it is not in monochrome 
@@ -82,7 +82,13 @@ public:
 	///
 	size_t idx() const { return idx_; }
 	///
-	int kerning(BufferView const * bv) const { return mathMacro_.cell(idx_).kerning(bv); }
+	int kerning(BufferView const * bv) const
+	{ 
+		if (mathMacro_.editMetrics(bv) || def_.empty())
+			return mathMacro_.cell(idx_).kerning(bv); 
+		else
+			return def_.kerning(bv);
+	}
 
 private:
 	///
@@ -141,8 +147,9 @@ int MathMacro::cursorIdx(Cursor const & cur) const {
 }
 
 
-bool MathMacro::editMode(Cursor const & cur) const {
+bool MathMacro::editMode(BufferView const * bv) const {
 	// find this in cursor trace
+	Cursor const & cur = bv->cursor();
 	for (size_t i = 0; i != cur.depth(); ++i)
 		if (&cur[i].inset() == this) {
 			// look if there is no other macro in edit mode above
@@ -161,10 +168,16 @@ bool MathMacro::editMode(Cursor const & cur) const {
 }
 
 
+bool MathMacro::editMetrics(BufferView const * bv) const
+{
+	return editing_[bv];
+}
+
+
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// set edit mode for which we will have calculated metrics
-	editing_[mi.base.bv] = editMode(mi.base.bv->cursor());
+	// set edit mode for which we will have calculated metrics. But only
+	editing_[mi.base.bv] = editMode(mi.base.bv);
 
 	// calculate new metrics according to display mode
 	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
@@ -180,7 +193,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		BOOST_ASSERT(macro_ != 0);
 
-		// calculate metric finally
+		// calculate metrics finally
 		macro_->lock();
 		expanded_.cell(0).metrics(mi, dim);
 		macro_->unlock();
@@ -205,7 +218,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 int MathMacro::kerning(BufferView const * bv) const {
-	if (displayMode_ == DISPLAY_NORMAL && !editing(bv))
+	if (displayMode_ == DISPLAY_NORMAL && !editing_[bv])
 		return expanded_.kerning(bv);
 	else
 		return 0;
@@ -330,7 +343,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	// another argument selected or edit mode changed?
 	idx_type curIdx = cursorIdx(pi.base.bv->cursor());
 	if (previousCurIdx_[pi.base.bv] != curIdx 
-			|| editing_[pi.base.bv] != editMode(pi.base.bv->cursor()))
+	    || editing_[pi.base.bv] != editMode(pi.base.bv))
 		pi.base.bv->cursor().updateFlags(Update::Force);
 }
 

@@ -140,14 +140,16 @@ protected:
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 	///
 	MacroData const * macro() { return macro_; }
-
+	///
+	bool editMetrics(BufferView const * bv) const;
+	
 private:
 	///
 	virtual Inset * clone() const;
 	/// the index of the cursor slice of the macro, or -1 if it is not edited
 	int cursorIdx(Cursor const & cur) const;
 	///
-	bool editMode(Cursor const & cur) const;
+	bool editMode(BufferView const * bv) const;
 	
 	/// name of macro
 	docstring name_;
