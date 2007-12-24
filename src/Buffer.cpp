@@ -1024,8 +1024,13 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		      runparams, output_preamble, output_body);
 	}
 	catch (EncodingException & e) {
-		docstring msg = _("Could not find LaTeX command for character '%'");
-		msg[msg.size() - 2] = e.failed_char;
+		odocstringstream ods;
+		ods.put(e.failed_char);
+		ostringstream oss;
+		oss << "0x" << hex << e.failed_char << dec;
+		docstring msg = bformat(_("Could not find LaTeX command for character '%1$s'"
+					  " (code point %2$s)"),
+					  ods.str(), from_utf8(oss.str()));
 		errorList.push_back(ErrorItem(msg, _("Some characters of your document are probably not "
 				"representable in the chosen encoding.\n"
 				"Changing the document encoding to utf8 could help."),
