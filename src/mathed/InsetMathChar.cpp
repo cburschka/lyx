@@ -84,8 +84,6 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

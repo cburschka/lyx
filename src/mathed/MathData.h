@@ -132,13 +132,13 @@ public:
 	/// write access to coordinate;
 	void setXY(BufferView & bv, int x, int y) const;
 	/// returns x coordinate of given position in the array
-	int pos2x(size_type pos) const;
+	int pos2x(BufferView const * bv, size_type pos) const;
 	/// returns position of given x coordinate
-	int pos2x(size_type pos, int glue) const;
+	int pos2x(BufferView const * bv, size_type pos, int glue) const;
 	/// returns position of given x coordinate
-	size_type x2pos(int pos) const;
+	size_type x2pos(BufferView const * bv, int pos) const;
 	/// returns position of given x coordinate fstarting from a certain pos
-	size_type x2pos(int targetx, int glue) const;
+	size_type x2pos(BufferView const * bv, int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
 	int dist(BufferView const & bv, int x, int y) const;
@@ -187,8 +187,6 @@ private:
 		const size_type numParams, std::vector<MathData> & params, 
 		size_t & pos, MathAtom & scriptToPutAround,
 		const pos_type macroPos, const int thisPos, const int thisSlice);
-	///
-	mutable std::vector<Dimension> atom_dims_;
 };
 
 ///

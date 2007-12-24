@@ -813,7 +813,7 @@ bool InsetMathGrid::idxUpDown(Cursor & cur, bool up) const
 			return false;
 		cur.idx() += ncols();
 	}
-	cur.pos() = cur.cell().x2pos(cur.x_target() - cur.cell().xo(cur.bv()));
+	cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target() - cur.cell().xo(cur.bv()));
 	return true;
 }
 

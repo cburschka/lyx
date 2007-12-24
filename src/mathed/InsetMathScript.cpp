@@ -340,8 +340,6 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else
 		dim.des = nd;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

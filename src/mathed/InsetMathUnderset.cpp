@@ -38,8 +38,6 @@ void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = dim1.ascent();
 	dim.des = dim1.descent() + dim0.height() + 4;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -79,7 +77,7 @@ bool InsetMathUnderset::idxUpDown(Cursor & cur, bool up) const
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cur.cell().x2pos(cur.x_target());
+	cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target());
 	return true;
 }
 

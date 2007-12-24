@@ -43,8 +43,6 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = max(dim0.descent() - 5, dim1.descent()) + 2;
 	dim.wid = dim0.width() + dim1.width() + 10;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

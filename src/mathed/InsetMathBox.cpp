@@ -56,8 +56,6 @@ void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -93,8 +91,6 @@ void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim, 3); // 1 pixel space, 1 frame, 1 space
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -148,8 +144,6 @@ void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim += cell(1).dimension(*mi.base.bv);
 	dim += cell(2).dimension(*mi.base.bv);
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -213,8 +207,6 @@ void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -274,8 +266,6 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim  += cell(2).dimension(*mi.base.bv);
 	dim.wid += 4 * w_ + 4;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

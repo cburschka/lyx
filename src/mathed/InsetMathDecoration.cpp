@@ -119,8 +119,6 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

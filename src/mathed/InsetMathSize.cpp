@@ -39,8 +39,6 @@ void InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
 	StyleChanger dummy(mi.base, style_);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

@@ -69,8 +69,6 @@ void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = 6;
 	dim.asc = int(h + f * h);
 	dim.des = int(f * h);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

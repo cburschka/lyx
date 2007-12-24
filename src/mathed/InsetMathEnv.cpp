@@ -36,8 +36,6 @@ void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

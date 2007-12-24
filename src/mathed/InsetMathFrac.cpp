@@ -45,7 +45,7 @@ bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cell(target).x2pos(cur.x_target());
+	cur.pos() = cell(target).x2pos(&cur.bv(), cur.x_target());
 	return true;
 }
 
@@ -94,7 +94,7 @@ bool InsetMathFrac::idxForward(Cursor & cur) const
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cell(target).x2pos(cur.x_target());
+	cur.pos() = cell(target).x2pos(&cur.bv(), cur.x_target());
 	return true;
 }
 
@@ -112,7 +112,7 @@ bool InsetMathFrac::idxBackward(Cursor & cur) const
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cell(target).x2pos(cur.x_target());
+	cur.pos() = cell(target).x2pos(&cur.bv(), cur.x_target());
 	return true;
 }
 
@@ -168,8 +168,6 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 	}
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -373,8 +371,6 @@ void InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.wid, dim1.wid) + 2;
 	dim.asc = dim0.height() + 2 + 5;
 	dim.des = dim1.height() + 2 - 5;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -433,8 +429,6 @@ void InsetMathTFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.width()) + 2;
 	dim.asc = dim0.height() + 2 + 5;
 	dim.des = dim1.height() + 2 - 5;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -510,8 +504,6 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = dim1.height() + 4 - 5;
 	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -584,8 +576,6 @@ void InsetMathDBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = dim1.height() + 4 - 5;
 	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
@@ -654,8 +644,6 @@ void InsetMathTBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = dim1.height() + 4 - 5;
 	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

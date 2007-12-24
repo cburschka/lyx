@@ -82,9 +82,6 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
 		    sym_->extra == "funclim")
 			scriptable_ = true;
-
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

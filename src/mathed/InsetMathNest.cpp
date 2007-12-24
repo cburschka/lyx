@@ -131,7 +131,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 	Point const pt2 = coord_cache.getInsets().xy(this);
 	//lyxerr << "retrieving position cache for MathData "
 	//	<< pt.x_ << ' ' << pt.y_ << endl;
-	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());
+	x = pt.x_ - pt2.x_ + ar.pos2x(&bv, sl.pos());
 	y = pt.y_ - pt2.y_;
 //	lyxerr << "pt.y_ : " << pt.y_ << " pt2_.y_ : " << pt2.y_
 //		<< " asc: " << ascent() << "  des: " << descent()
@@ -257,9 +257,9 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 	if (s1.idx() == s2.idx()) {
 		MathData const & c = cell(s1.idx());
 		Geometry const & g = bv.coordCache().getArrays().geometry(&c);
-		int x1 = g.pos.x_ + c.pos2x(s1.pos());
+		int x1 = g.pos.x_ + c.pos2x(pi.base.bv, s1.pos());
 		int y1 = g.pos.y_ - g.dim.ascent();
-		int x2 = g.pos.x_ + c.pos2x(s2.pos());
+		int x2 = g.pos.x_ + c.pos2x(pi.base.bv, s2.pos());
 		int y2 = g.pos.y_ + g.dim.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color_selection);
 	//lyxerr << "InsetMathNest::drawing selection 3: "
@@ -1231,7 +1231,7 @@ Inset * InsetMathNest::editXY(Cursor & cur, int x, int y)
 	MathData & ar = cell(idx_min);
 	cur.push(*this);
 	cur.idx() = idx_min;
-	cur.pos() = ar.x2pos(x - ar.xo(cur.bv()));
+	cur.pos() = ar.x2pos(&cur.bv(), x - ar.xo(cur.bv()));
 
 	//lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
 	if (dist_min == 0) {

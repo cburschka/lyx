@@ -45,8 +45,6 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = dim0.height() + 10;
 	dim.des = dim1.height();
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

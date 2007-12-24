@@ -137,8 +137,6 @@ void InsetLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (!parent_.premetrics())
 			dim.des += maxasc + maxdes + 1;
 	}
-
-	setDimCache(mi, dim);
 }
 
 
@@ -221,7 +219,6 @@ void DisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = 0;
 		dim.asc = 0;
 		dim.des = 0;
-		setDimCache(mi, dim);
 	}
 }
 

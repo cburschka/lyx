@@ -38,8 +38,6 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = dim1.asc + dim0.height() + 4;
 	dim.des = dim1.des;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

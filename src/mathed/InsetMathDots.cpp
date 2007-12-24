@@ -49,8 +49,6 @@ void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	else if (key_->name == "ddots")
 		dh_ = dim.asc;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

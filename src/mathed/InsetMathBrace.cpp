@@ -53,8 +53,6 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = max(dim0.des, t.des);
 	dim.wid = dim0.width() + 2 * t.wid;
 	metricsMarkers(dim);
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

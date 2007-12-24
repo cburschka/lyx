@@ -87,8 +87,6 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = dim0.width() + 2 * dw_ + 8;
 	dim.asc = max(a0, d0) + h0;
 	dim.des = max(a0, d0) - h0;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

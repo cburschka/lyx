@@ -253,11 +253,11 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = 0;
 	dim.wid = 0;
 	Dimension d;
-	atom_dims_.clear();
+	CoordCacheBase<Inset> & coords = mi.base.bv->coordCache().insets();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 		at->metrics(mi, d);
-		atom_dims_.push_back(d);
+		coords.add(at.nucleus(), d);
 		dim += d;
 		if (i == n - 1)
 			kerning_ = at->kerning(mi.base.bv);
@@ -287,12 +287,13 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		|| x >= bv. workWidth())
 		return;
 
+	CoordCacheBase<Inset> & coords = pi.base.bv->coordCache().insets();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
-		bv.coordCache().insets().add(at.nucleus(), x, y);
+		coords.add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
-		x += atom_dims_[i].wid;
+		x += coords.dim(at.nucleus()).wid;
 	}
 }
 
@@ -733,45 +734,47 @@ void MathData::collectParameters(Cursor * cur,
 }
 
 
-int MathData::pos2x(size_type pos) const
+int MathData::pos2x(BufferView const * bv, size_type pos) const
 {
-	return pos2x(pos, 0);
+	return pos2x(bv, pos, 0);
 }
 
 
-int MathData::pos2x(size_type pos, int glue) const
+int MathData::pos2x(BufferView const * bv, size_type pos, int glue) const
 {
 	int x = 0;
 	size_type target = min(pos, size());
+	CoordCacheBase<Inset> const & coords = bv->coordCache().getInsets();
 	for (size_type i = 0; i < target; ++i) {
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
 			x += glue;
 		//lyxerr << "char: " << (*it)->getChar()
 		//	<< "width: " << (*it)->width() << endl;
-		x += atom_dims_[i].wid;
+		x += coords.dim((*it).nucleus()).wid;
 	}
 	return x;
 }
 
 
-MathData::size_type MathData::x2pos(int targetx) const
+MathData::size_type MathData::x2pos(BufferView const * bv, int targetx) const
 {
-	return x2pos(targetx, 0);
+	return x2pos(bv, targetx, 0);
 }
 
 
-MathData::size_type MathData::x2pos(int targetx, int glue) const
+MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue) const
 {
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
+	CoordCacheBase<Inset> const & coords = bv->coordCache().getInsets();
 	// find first position after targetx
 	for (; currx < targetx && it < end(); ++it) {
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
 			currx += glue;
-		currx += atom_dims_[it - begin()].wid;
+		currx += coords.dim((*it).nucleus()).wid;
 	}
 
 	/**
