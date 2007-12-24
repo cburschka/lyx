@@ -40,6 +40,7 @@ private:
 	QTextCharFormat commentFormat;
 	QTextCharFormat keywordFormat;
 	QTextCharFormat mathFormat;
+	QTextCharFormat warningFormat;
 };
 
 

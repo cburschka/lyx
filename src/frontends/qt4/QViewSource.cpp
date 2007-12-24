@@ -78,6 +78,8 @@ LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
 	keywordFormat.setForeground(Qt::darkBlue);
 	keywordFormat.setFontWeight(QFont::Bold);
 	commentFormat.setForeground(Qt::darkGray);
+	warningFormat.setForeground(Qt::red);
+	warningFormat.setFontWeight(QFont::Bold);
 	mathFormat.setForeground(Qt::red);
 }
 
@@ -144,7 +146,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// * that is the first character in a line
 	// * that is preceded by 
 	// ** an even number of backslashes
-	// ** any character other than a backslash                   
+	// ** any character other than a backslash
 	QRegExp exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$"); 
 	text.indexOf(exprComment);
 	index = exprComment.pos(1);
@@ -154,6 +156,16 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, commentFormat);
 		text.indexOf(exprComment, index + length);
 		index = exprComment.pos(1);
+	}
+	// <LyX Warning: ...> ... </LyX Warning>
+	QString opening = QRegExp::escape(qt_("<LyX Warning:"));
+	QString closing = QRegExp::escape(qt_("</LyX Warning>"));
+	QRegExp exprWarning(opening + "[^<]*" + closing);
+	index = text.indexOf(exprWarning);
+	while (index >= 0) {
+		int length = exprWarning.matchedLength();
+		setFormat(index, length, warningFormat);
+		index = text.indexOf(exprWarning, index + length);
 	}
 }
 

@@ -33,8 +33,9 @@ What's new
 
 * USER INTERFACE
 
-- An dialog is displayed if some character can not be encoded properly. The
-  offending character will be highlighted (bug 3511).
+- LyX gives more instructive information if a character cannot be encoded
+  properly. Most notably, the offending character is highlighted both in
+  the work area and in the "View Source" pane (bug 3511).
 
 - The on-screen appearance of spaces has been improved.
 

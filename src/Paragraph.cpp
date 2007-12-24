@@ -2236,10 +2236,16 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column, c);
 		} catch (EncodingException & e) {
-			// add location information and throw again.
-			e.par_id = id();
-			e.pos = i;
-			throw(e);
+			if (runparams.dryrun) {
+				os << _("<LyX Warning: uncodable character>");
+				os.put(c);
+				os << _("</LyX Warning>");
+			} else {
+				// add location information and throw again.
+				e.par_id = id();
+				e.pos = i;
+				throw(e);
+			}
 		}
 
 		// Set the encoding to that returned from simpleTeXSpecialChars (see
