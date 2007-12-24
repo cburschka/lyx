@@ -201,9 +201,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des += 2;
 		}
 	}
-
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 
