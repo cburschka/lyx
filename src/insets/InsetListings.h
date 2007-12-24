@@ -45,7 +45,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool isMacroScope(Buffer const & buf) const { return true; }
+	bool isMacroScope(Buffer const &) const { return true; }
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///

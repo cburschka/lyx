@@ -33,7 +33,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	bool isMacroScope(Buffer const & buf) const { return true; }
+	bool isMacroScope(Buffer const &) const { return true; }
 	///
 	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should

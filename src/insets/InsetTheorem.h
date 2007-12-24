@@ -35,7 +35,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool isMacroScope(Buffer const & buf) const { return true; }
+	bool isMacroScope(Buffer const &) const { return true; }
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
