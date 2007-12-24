@@ -231,7 +231,9 @@ char InsetMathHull::defaultColAlign(col_type col)
 {
 	if (type_ == hullEqnArray)
 		return "rcl"[col];
-	if (type_ >= hullAlign && type_ != hullGather)
+	if (type_ == hullGather)
+		return 'c';
+	if (type_ >= hullAlign)
 		return "rl"[col & 1];
 	return 'c';
 }
