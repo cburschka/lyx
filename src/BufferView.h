@@ -36,6 +36,7 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Inset;
+class Menu;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
@@ -106,6 +107,8 @@ public:
 	ScrollbarParameters const & scrollbarParameters() const;
 	/// \return Tool tip for the given position.
 	docstring toolTip(int x, int y) const;
+	/// \return the context menu for the given position.
+	Menu const & contextMenu(int x, int y) const;
 
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark

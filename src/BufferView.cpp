@@ -39,6 +39,7 @@
 #include "LyXFunc.h"
 #include "Layout.h"
 #include "LyXRC.h"
+#include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -487,6 +488,13 @@ docstring BufferView::toolTip(int x, int y) const
 		// No inset, no tooltip...
 		return docstring();
 	return covering_inset->toolTip(*this, x, y);
+}
+
+
+Menu const & BufferView::contextMenu(int x, int y) const
+{
+	// FIXME: Do something more elaborate here.
+	return menubackend.getMenu(from_ascii("edit"));
 }
 
 

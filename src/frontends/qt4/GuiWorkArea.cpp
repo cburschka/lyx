@@ -23,6 +23,7 @@
 #include "GuiApplication.h"
 #include "GuiKeySymbol.h"
 #include "GuiPainter.h"
+#include "GuiPopupMenu.h"
 #include "GuiView.h"
 #include "KeySymbol.h"
 #include "Language.h"
@@ -44,15 +45,17 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/WorkAreaManager.h"
 
+#include <QContextMenuEvent>
 #include <QInputContext>
+#include <QHelpEvent>
 #include <QLayout>
 #include <QMainWindow>
 #include <QPainter>
-#include <QToolButton>
 #include <QPalette>
 #include <QScrollBar>
 #include <QTabBar>
 #include <QTimer>
+#include <QToolButton>
 
 #include <boost/bind.hpp>
 
@@ -509,6 +512,19 @@ bool GuiWorkArea::event(QEvent * e)
              QToolTip::hideText();
      }
      return QAbstractScrollArea::event(e);
+}
+
+
+void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
+{
+	QPoint pos = e->pos();
+	Menu const & menu = buffer_view_->contextMenu(pos.x(), pos.y());
+	LYXERR(Debug::GUI, "context menu resquested: " << menu.name());
+
+	// FIXME: do something with GuiPopupMenu and MenuBackend.
+	// Some cleanups of GuiPopupMenu and GuiMenubar are needed
+	// before!
+	QAbstractScrollArea::contextMenuEvent(e);
 }
 
 

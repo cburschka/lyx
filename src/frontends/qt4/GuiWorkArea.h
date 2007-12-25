@@ -25,12 +25,13 @@
 #include <QTabWidget>
 #include <QTimer>
 
-class QWidget;
+class QContextMenuEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QKeyEvent;
 class QWheelEvent;
 class QPaintEvent;
+class QWidget;
 
 #ifdef CursorShape
 #undef CursorShape
@@ -166,6 +167,8 @@ private:
 	void updateWindowTitle();
 	///
 	bool event(QEvent *);
+	///
+	void contextMenuEvent(QContextMenuEvent *);
 	///
 	void focusInEvent(QFocusEvent *);
 	///
