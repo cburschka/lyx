@@ -45,8 +45,10 @@ void GuiMenubar::init()
 	// Clear all menubar contents before filling it.
 	owner_->menuBar()->clear();
 	
+#ifdef Q_WS_MACX
 	// setup special mac specific menu item
 	macxMenuBarInit();
+#endif
 
 	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menubackend_.getMenubar().name()));
 
@@ -137,22 +139,9 @@ void GuiMenubar::openByName(QString const & name)
   that this menubar will be used also when one of LyX' dialogs has
   focus. (JMarc)
 */
-QMenuBar * GuiMenubar::menuBar() const
-{
-#ifdef Q_WS_MACX
-	return mac_menubar_;
-#else
-	return owner_->menuBar();
-#endif
-}
-
-#ifdef Q_WS_MACX
-extern void qt_mac_set_menubar_merge(bool b);
-#endif
 
 void GuiMenubar::macxMenuBarInit()
 {
-#ifdef Q_WS_MACX
 	mac_menubar_ = new QMenuBar;
 
 	/* Since Qt 4.2, the qt/mac menu code has special code for
@@ -215,7 +204,6 @@ void GuiMenubar::macxMenuBarInit()
 		qMenu->addAction(action);
 
 	}
-#endif // Q_WS_MACX
 }
 
 } // namespace frontend

@@ -16,13 +16,12 @@
 #include "Action.h"
 #include "GuiPopupMenu.h"
 #include "qt_helpers.h"
+
 #include "LyXFunc.h"
 #include "MenuBackend.h"
 
 #include "support/lstrings.h"
 #include "support/debug.h"
-
-#include <QMenuBar>
 
 namespace lyx {
 namespace frontend {

@@ -48,9 +48,6 @@ public:
 	/// return the menu controller
 	MenuBackend const & backend() { return menubackend_; }
 
-	/// The QMenuBar used by LyX
-	QMenuBar * menuBar() const;
-
 	/// update the state of the menuitems - not needed
 	void updateView();
 
