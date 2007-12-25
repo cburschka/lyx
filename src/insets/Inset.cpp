@@ -125,6 +125,12 @@ docstring Inset::name() const
 }
 
 
+docstring Inset::toolTip(BufferView const &, int, int) const
+{
+	return docstring();
+}
+
+
 Dimension const Inset::dimension(BufferView const & bv) const
 {
 	return bv.coordCache().getInsets().dim(this);

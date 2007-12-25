@@ -479,6 +479,17 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 }
 
 
+docstring BufferView::toolTip(int x, int y) const
+{
+	// Get inset under mouse, if there is one.
+	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
+	if (!covering_inset)
+		// No inset, no tooltip...
+		return docstring();
+	return covering_inset->toolTip(*this, x, y);
+}
+
+
 void BufferView::scrollDocView(int value)
 {
 	int const offset = value - d->scrollbarParameters_.position;
@@ -1268,7 +1279,8 @@ void BufferView::resize(int width, int height)
 }
 
 
-Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
+Inset const * BufferView::getCoveringInset(Text const & text,
+		int x, int y) const
 {
 	TextMetrics & tm = d->text_metrics_[&text];
 	Inset * inset = tm.checkInsetHit(x, y);

@@ -48,6 +48,7 @@ public:
 	
 	InsetCollapsable * asInsetCollapsable() { return this; }
 	InsetCollapsable const * asInsetCollapsable() const { return this; }
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 	docstring name() const { return from_ascii("Collapsable"); }
 	InsetLayout const & getLayout(BufferParams const &) const
 	{ return *layout_; } 

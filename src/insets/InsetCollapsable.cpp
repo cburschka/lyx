@@ -98,7 +98,23 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 }
 
 
-void  InsetCollapsable::setLayout(BufferParams const & bp)
+docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
+{
+	Dimension dim = dimensionCollapsed();
+	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
+		return docstring();
+
+	switch (status_) {
+	case Open:
+		return _("Left-click to collapse the inset");
+	case Collapsed:
+		return _("Left-click to open the inset");
+	}
+	return docstring();
+}
+
+
+void InsetCollapsable::setLayout(BufferParams const & bp)
 {
 	setLayout(bp.getTextClass().insetlayout(name()));
 }

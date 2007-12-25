@@ -165,6 +165,8 @@ private:
 	/// Update window titles of all users.
 	void updateWindowTitle();
 	///
+	bool event(QEvent *);
+	///
 	void focusInEvent(QFocusEvent *);
 	///
 	void focusOutEvent(QFocusEvent *);

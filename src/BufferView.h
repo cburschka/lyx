@@ -104,6 +104,8 @@ public:
 	void updateScrollbar();
 	/// return the Scrollbar Parameters.
 	ScrollbarParameters const & scrollbarParameters() const;
+	/// \return Tool tip for the given position.
+	docstring toolTip(int x, int y) const;
 
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark
@@ -144,6 +146,7 @@ public:
 	int workWidth() const;
 	/// return the pixel height of the document view.
 	int workHeight() const;
+
 
 	/// translate and insert a character, using the correct keymap.
 	void translateAndInsert(char_type c, Text * t, Cursor & cur);
@@ -266,7 +269,7 @@ private:
 		Text const & text, //< The Text where we start searching.
 		int x, //< x-coordinate on screen
 		int y  //< y-coordinate on screen
-		);
+		) const;
 
 	///
 	int width_;

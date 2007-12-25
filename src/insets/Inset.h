@@ -284,6 +284,9 @@ public:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 
+	/// \return Tool tip for this inset.
+	/// This default implementation returns an empty string.
+	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
 	
 	// FIXME This should really disappear in favor of 
 	//	docstring name() const { return from_ascii(insetName(lyxCode()))); }
