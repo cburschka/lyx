@@ -69,7 +69,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case ENSPACE:
 		case ENSKIP:
-			dim.wid = 0.5 * fm.width(char_type('M'));
+			dim.wid = int(0.5 * fm.width(char_type('M')));
 			break;
 	}
 	// Cache the inset dimension. 
