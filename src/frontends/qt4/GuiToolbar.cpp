@@ -122,7 +122,7 @@ PngMap sorted_png_map[] = {
 	{ "nVDash", "nvdash3" },
 	{ "nvDash", "nvdash2" },
 	{ "textrm \\AA", "textrm_AA"},
-	{ "textrm \\O", "textrm_Oe"},
+	{ "textrm \\O", "textrm_O"},
 	{ "vDash", "vdash2" }
 };
 
