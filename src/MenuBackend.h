@@ -259,10 +259,6 @@ private:
 	Menu specialmenu_;
 };
 
-///
-extern MenuBackend menubackend;
-
-
 } // namespace lyx
 
 #endif // MENUBACKEND_H

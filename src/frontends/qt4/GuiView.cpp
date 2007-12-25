@@ -282,7 +282,7 @@ GuiView::GuiView(int id)
 {
 	// GuiToolbars *must* be initialised before GuiMenubar.
 	d.toolbars_ = new GuiToolbars(*this);
-	d.menubar_ = new GuiMenubar(this, menubackend);
+	d.menubar_ = new GuiMenubar(this);
 
 	setCentralWidget(d.stack_widget_);
 

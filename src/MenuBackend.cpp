@@ -39,6 +39,8 @@
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
 
+#include "frontends/Application.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/convert.h"
@@ -68,10 +70,6 @@ private:
 };
 
 } // namespace anon
-
-
-// This is the global menu definition
-MenuBackend menubackend;
 
 
 MenuItem::MenuItem(Kind kind)
@@ -416,7 +414,7 @@ bool Menu::searchFunc(FuncRequest & func, stack<docstring> & names)
 			return true;
 		} else if (m->kind() == MenuItem::Submenu) {
 			names.push(m->label());
-			Menu submenu = menubackend.getMenu(m->submenuname());
+			Menu submenu = theApp()->menuBackend().getMenu(m->submenuname());
 			if (submenu.searchFunc(func, names))
 				return true;
 			else

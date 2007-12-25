@@ -19,7 +19,6 @@
 #include "BufferView.h"
 #include "support/debug.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
@@ -31,8 +30,11 @@
 #include "ParagraphParameters.h"
 #include "TextClassList.h"
 
+#include "frontends/Application.h"
+
 #include "support/docstream.h"
 #include "support/FileName.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 
@@ -214,7 +216,7 @@ void InsetInfo::updateInfo(Buffer const & buf)
 			break;
 		}
 		// iterate through the menubackend to find it
-		Menu menu = menubackend.getMenubar();
+		Menu menu = theApp()->menuBackend().getMenubar();
 		if (!menu.searchFunc(func, names)) {
 			setText(_("No menu entry for "), bp.getFont(), false);
 			break;

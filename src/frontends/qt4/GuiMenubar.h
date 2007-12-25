@@ -19,9 +19,6 @@
 class QMenuBar;
 
 namespace lyx {
-
-class MenuBackend;
-
 namespace frontend {
 
 class GuiView;
@@ -32,7 +29,7 @@ class GuiMenubar : public QObject
 {
 	Q_OBJECT
 public:
-	GuiMenubar(GuiView *, MenuBackend &);
+	GuiMenubar(GuiView *);
 
 	~GuiMenubar();
 
@@ -45,9 +42,6 @@ public:
 	/// return the owning view
 	GuiView * view() { return owner_; }
 
-	/// return the menu controller
-	MenuBackend const & backend() { return menubackend_; }
-
 	/// update the state of the menuitems - not needed
 	void updateView();
 
@@ -57,9 +51,6 @@ private:
 
 	/// owning view
 	GuiView * owner_;
-
-	/// menu controller
-	MenuBackend & menubackend_;
 
 	typedef QHash<QString, GuiPopupMenu *> NameMap;
 

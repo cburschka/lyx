@@ -59,6 +59,7 @@
 #include "insets/InsetText.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -494,7 +495,7 @@ docstring BufferView::toolTip(int x, int y) const
 Menu const & BufferView::contextMenu(int x, int y) const
 {
 	// FIXME: Do something more elaborate here.
-	return menubackend.getMenu(from_ascii("edit"));
+	return theApp()->menuBackend().getMenu(from_ascii("edit"));
 }
 
 

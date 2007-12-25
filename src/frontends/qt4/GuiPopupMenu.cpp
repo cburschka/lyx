@@ -14,6 +14,7 @@
 #include "GuiView.h"
 
 #include "Action.h"
+#include "GuiApplication.h"
 #include "GuiPopupMenu.h"
 #include "qt_helpers.h"
 
@@ -52,6 +53,7 @@ void GuiPopupMenu::updateView()
 	// Here, We make sure that theLyXFunc points to the correct LyXView.
 	theLyXFunc().setLyXView(owner_);
 
+	MenuBackend const & menubackend = guiApp->menuBackend();
 	Menu const & fromLyxMenu = menubackend.getMenu(name_);
 	menubackend.expand(fromLyxMenu, topLevelMenu_, owner_->buffer());
 

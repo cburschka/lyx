@@ -25,6 +25,7 @@ class Buffer;
 class FuncRequest;
 class FuncStatus;
 class Inset;
+class MenuBackend;
 struct RGBColor;
 
 namespace frontend {
@@ -208,6 +209,10 @@ public:
 	* @param fd socket descriptor (file/socket/etc)
 	*/
 	virtual void unregisterSocketCallback(int fd) = 0;
+
+	///
+	virtual MenuBackend const & menuBackend() const = 0;
+	virtual MenuBackend & menuBackend() = 0;
 };
 
 } // namespace frontend

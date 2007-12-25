@@ -1109,7 +1109,7 @@ bool LyX::readUIFile(string const & name, bool include)
 			break;
 		}
 		case ui_menuset:
-			menubackend.read(lex);
+			theApp()->menuBackend().read(lex);
 			break;
 
 		case ui_toolbarset:

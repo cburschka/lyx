@@ -20,6 +20,8 @@
 
 #include "frontends/Application.h"
 
+#include "MenuBackend.h"
+
 #include <QObject>
 #include <QApplication>
 #include <QTranslator>
@@ -62,6 +64,8 @@ public:
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
+	MenuBackend const & menuBackend() const { return menu_backend_; }
+	MenuBackend & menuBackend() { return menu_backend_; }
 	virtual int exec();
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
@@ -135,6 +139,8 @@ private:
 	QTranslator qt_trans_;
 	///
 	std::map<int, SocketNotifier *> socket_notifiers_;
+	///
+	MenuBackend menu_backend_;
 
 #ifdef Q_WS_X11
 public:

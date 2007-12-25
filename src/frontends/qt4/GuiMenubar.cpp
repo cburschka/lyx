@@ -10,13 +10,12 @@
 
 #include <config.h>
 
-// Qt defines a macro 'signals' that clashes with a boost namespace.
-// All is well if the namespace is visible first.
-#include "GuiView.h"
+#include "GuiMenubar.h"
 
 #include "Action.h"
-#include "GuiMenubar.h"
+#include "GuiApplication.h"
 #include "GuiPopupMenu.h"
+#include "GuiView.h"
 
 #include "qt_helpers.h"
 
@@ -33,8 +32,8 @@ namespace frontend {
 
 // MacOSX specific stuff is at the end.
 
-GuiMenubar::GuiMenubar(GuiView * view, MenuBackend & mbe)
-	: owner_(view), menubackend_(mbe)
+GuiMenubar::GuiMenubar(GuiView * view)
+	: owner_(view)
 {
 	init();
 }
@@ -50,21 +49,23 @@ void GuiMenubar::init()
 	macxMenuBarInit();
 #endif
 
-	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menubackend_.getMenubar().name()));
+	/// menu controller
+	MenuBackend & menu_backend = guiApp->menuBackend();
+	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menu_backend.getMenubar().name()));
 
-	if (menubackend_.getMenubar().size() == 0) {
+	if (menu_backend.getMenubar().size() == 0) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
-			<< to_utf8(menubackend_.getMenubar().name()));
+			<< to_utf8(menu_backend.getMenubar().name()));
 		return;
 		//			continue;
 	}
 	else {
 		LYXERR(Debug::GUI, "menu bar entries "
-			<< menubackend_.getMenubar().size());
+			<< menu_backend.getMenubar().size());
 	}
 
 	Menu menu;
-	menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
+	menu_backend.expand(menu_backend.getMenubar(), menu, owner_->buffer());
 
 	Menu::const_iterator m = menu.begin();
 	Menu::const_iterator end = menu.end();
@@ -80,26 +81,20 @@ void GuiMenubar::init()
 			<< " is a submenu named " << to_utf8(m->submenuname()));
 
 		docstring name = m->submenuname();
-		if (!menubackend_.hasMenu(name)) {
+		if (!menu_backend.hasMenu(name)) {
 			LYXERR(Debug::GUI, "\tERROR: " << to_utf8(name)
 				<< " submenu has no menu!");
 			continue;
 		}
 
 		Menu menu;
-		menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
+		menu_backend.expand(menu_backend.getMenubar(), menu, owner_->buffer());
 
 		GuiPopupMenu * qMenu = new GuiPopupMenu(owner_, *m, true);
 		owner_->menuBar()->addMenu(qMenu);
 
 		name_map_[toqstr(name)] = qMenu;
-/*
-		QObject::connect(qMenu, SIGNAL(aboutToShow()), this, SLOT(update()));
-		QObject::connect(qMenu, SIGNAL(triggered(QAction *)), this, SLOT(update()));
-		QObject::connect(qMenu->menuAction(), SIGNAL(triggered()), this, SLOT(update()));
-*/
 	}
-	//QObject::connect(owner_->menuBar(), SIGNAL(triggered()), this, SLOT(update()));
 }
 
 
@@ -185,7 +180,8 @@ void GuiMenubar::macxMenuBarInit()
 				     from_utf8(entries[i].label),
 				     func));
 	}
-	menubackend_.specialMenu(special);
+	MenuBackend & menu_backend = guiApp->menuBackend();
+	menu_backend.specialMenu(special);
 
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
@@ -194,8 +190,8 @@ void GuiMenubar::macxMenuBarInit()
 	// we do not use 'special' because it is a temporary variable,
 	// whereas MenuBackend::specialMenu points to a persistent
 	// copy.
-	Menu::const_iterator cit = menubackend_.specialMenu().begin();
-	Menu::const_iterator end = menubackend_.specialMenu().end();
+	Menu::const_iterator cit = menu_backend.specialMenu().begin();
+	Menu::const_iterator end = menu_backend.specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
 		Action * action = new Action(*owner_, QIcon(), 
 					     toqstr(cit->label()),
