@@ -479,7 +479,6 @@ void GuiWorkArea::updateScrollbar()
 void GuiWorkArea::adjustViewWithScrollBar(int action)
 {
 	stopBlinkingCursor();
-//	QToolTip::hideText();
 	if (action == QAbstractSlider::SliderPageStepAdd)
 		buffer_view_->scrollDown(viewport()->height());
 	else if (action == QAbstractSlider::SliderPageStepSub)
@@ -491,13 +490,6 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 		buffer_view_->setCursorFromScrollbar();
 		lyx_view_->updateLayoutList();
 	}
-/*
-	lyxerr << "QCursor::pos() = " 
-		<< QCursor::pos().x() << " "
-		<< QCursor::pos().y() << " "
-		<<endl;
-	QToolTip::showText(QCursor::pos(), "toto"), verticalScrollBar());
-*/
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
 	QApplication::syncX();
