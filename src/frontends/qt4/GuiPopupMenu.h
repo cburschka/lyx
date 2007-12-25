@@ -20,7 +20,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiMenubar;
+class GuiView;
 
 /// a submenu
 class GuiPopupMenu : public QMenu
@@ -28,7 +28,7 @@ class GuiPopupMenu : public QMenu
 	Q_OBJECT
 public:
 	///
-	GuiPopupMenu(GuiMenubar * owner, MenuItem const & mi,
+	GuiPopupMenu(GuiView * owner, MenuItem const & mi,
 		bool topLevelMenu = false);
 
 	/// populates the menu or one of its submenu
@@ -45,8 +45,8 @@ private:
 	/// add binding keys a the menu item label.
 	void addBinding(docstring & label, MenuItem const & mi);
 
-	/// our owning menubar
-	GuiMenubar * owner_;
+	/// our owning view
+	GuiView * owner_;
 	/// the name of this menu
 	docstring name_;
 	/// Top Level Menu

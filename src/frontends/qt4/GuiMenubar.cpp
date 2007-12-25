@@ -87,7 +87,7 @@ void GuiMenubar::init()
 		Menu menu;
 		menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
 
-		GuiPopupMenu * qMenu = new GuiPopupMenu(this, *m, true);
+		GuiPopupMenu * qMenu = new GuiPopupMenu(owner_, *m, true);
 		owner_->menuBar()->addMenu(qMenu);
 
 		name_map_[toqstr(name)] = qMenu;

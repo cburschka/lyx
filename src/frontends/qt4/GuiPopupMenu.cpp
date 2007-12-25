@@ -15,7 +15,6 @@
 
 #include "Action.h"
 #include "GuiPopupMenu.h"
-#include "GuiMenubar.h"
 #include "qt_helpers.h"
 #include "LyXFunc.h"
 #include "MenuBackend.h"
@@ -28,9 +27,9 @@
 namespace lyx {
 namespace frontend {
 
-GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner, MenuItem const & mi,
+GuiPopupMenu::GuiPopupMenu(GuiView * owner, MenuItem const & mi,
 		bool topLevelMenu)
-	: QMenu(owner->menuBar()), owner_(owner)
+	: QMenu(owner), owner_(owner)
 {
 	name_ = mi.submenuname();
 
@@ -52,12 +51,12 @@ void GuiPopupMenu::updateView()
 		return;
 
 	// Here, We make sure that theLyXFunc points to the correct LyXView.
-	theLyXFunc().setLyXView(owner_->view());
+	theLyXFunc().setLyXView(owner_);
 
-	Menu const & fromLyxMenu = owner_->backend().getMenu(name_);
-	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view()->buffer());
+	Menu const & fromLyxMenu = menubackend.getMenu(name_);
+	menubackend.expand(fromLyxMenu, topLevelMenu_, owner_->buffer());
 
-	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
+	if (!menubackend.hasMenu(topLevelMenu_.name())) {
 		LYXERR(Debug::GUI, "\tWARNING: menu seems empty"
 			<< to_utf8(topLevelMenu_.name()));
 	}
@@ -99,7 +98,7 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 			docstring label = getLabel(*m);
 			addBinding(label, *m);
 
-			Action * action = new Action(*(owner_->view()),
+			Action * action = new Action(*(owner_),
 				QIcon(), toqstr(label), m->func(), QString());
 			qMenu->addAction(action);
 		}
