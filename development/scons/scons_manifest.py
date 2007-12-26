@@ -738,7 +738,6 @@ src_frontends_qt4_header_files = Split('''
     GuiLog.h
     GuiMath.h
     GuiMathMatrix.h
-    GuiMenubar.h
     GuiNomencl.h
     GuiNote.h
     GuiPainter.h
@@ -771,6 +770,7 @@ src_frontends_qt4_header_files = Split('''
     LaTeXHighlighter.h
     LengthCombo.h
     LyXFileDialog.h
+    Menus.h
     PanelStack.h
     TocModel.h
     TocWidget.h
@@ -826,7 +826,6 @@ src_frontends_qt4_files = Split('''
     GuiLog.cpp
     GuiMath.cpp
     GuiMathMatrix.cpp
-    GuiMenubar.cpp
     GuiNomencl.cpp
     GuiNote.cpp
     GuiPainter.cpp
@@ -859,6 +858,7 @@ src_frontends_qt4_files = Split('''
     LengthCombo.cpp
     LaTeXHighlighter.cpp
     LyXFileDialog.cpp
+    Menus.h
     PanelStack.cpp
     TocModel.cpp
     TocWidget.cpp

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiMenubar.h
+ * \file Menus.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,13 +10,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIMENUBAR_H
-#define GUIMENUBAR_H
+#ifndef MENUS_H
+#define MENUS_H
+
+#include "MenuBackend.h"
 
 #include <QObject>
 #include <QHash>
-
-class QMenuBar;
 
 namespace lyx {
 namespace frontend {
@@ -25,32 +25,24 @@ class GuiView;
 class GuiPopupMenu;
 class GuiView;
 
-class GuiMenubar : public QObject
+class Menus : public QObject, public MenuBackend
 {
 	Q_OBJECT
 public:
-	GuiMenubar(GuiView *);
-
-	~GuiMenubar();
+	Menus() {}
 
 	///
-	void init();
+	void fillMenuBar(GuiView * view);
 
 	/// opens a top-level submenu given its name
 	void openByName(QString const & name);
-
-	/// return the owning view
-	GuiView * view() { return owner_; }
 
 	/// update the state of the menuitems - not needed
 	void updateView();
 
 private:
 	/// Initialize specific MACOS X menubar
-	void macxMenuBarInit();
-
-	/// owning view
-	GuiView * owner_;
+	void macxMenuBarInit(GuiView * view);
 
 	typedef QHash<QString, GuiPopupMenu *> NameMap;
 
@@ -61,4 +53,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIMENUBAR_H
+#endif // MENUS_H

@@ -20,9 +20,9 @@
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
-#include "GuiMenubar.h"
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
+#include "Menus.h"
 
 #include "qt_helpers.h"
 
@@ -165,7 +165,6 @@ struct GuiView::GuiViewPrivate
 		delete splitter_;
 		delete bg_widget_;
 		delete stack_widget_;
-		delete menubar_;
 		delete toolbars_;
 	}
 
@@ -242,8 +241,6 @@ public:
 	QSplitter * splitter_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
-	/// view's menubar
-	GuiMenubar * menubar_;
 	/// view's toolbars
 	GuiToolbars * toolbars_;
 	/// The main layout box.
@@ -280,9 +277,11 @@ public:
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate), id_(id)
 {
-	// GuiToolbars *must* be initialised before GuiMenubar.
+	// GuiToolbars *must* be initialised before the menu bar.
 	d.toolbars_ = new GuiToolbars(*this);
-	d.menubar_ = new GuiMenubar(this);
+
+	// Fill up the menu bar.
+	guiApp->menus().fillMenuBar(this);
 
 	setCentralWidget(d.stack_widget_);
 
@@ -1366,7 +1365,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MENU_OPEN:
-			d.menubar_->openByName(toqstr(cmd.argument()));
+			guiApp->menus().openByName(toqstr(cmd.argument()));
 			break;
 
 		case LFUN_FILE_INSERT:
@@ -1596,7 +1595,7 @@ void GuiView::resetDialogs()
 	// Make sure that no LFUN uses any LyXView.
 	theLyXFunc().setLyXView(0);
 	d.toolbars_->init();
-	d.menubar_->init();
+	guiApp->menus().fillMenuBar(this);
 	if (d.layout_)
 		d.layout_->updateContents(true);
 	// Now update controls with current buffer.

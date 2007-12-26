@@ -1,5 +1,5 @@
 /**
- * \file qt4/GuiMenubar.cpp
+ * \file qt4/Menus.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "GuiMenubar.h"
+#include "Menus.h"
 
 #include "Action.h"
 #include "GuiApplication.h"
@@ -18,8 +18,6 @@
 #include "GuiView.h"
 
 #include "qt_helpers.h"
-
-#include "MenuBackend.h"
 
 #include "support/debug.h"
 
@@ -32,40 +30,30 @@ namespace frontend {
 
 // MacOSX specific stuff is at the end.
 
-GuiMenubar::GuiMenubar(GuiView * view)
-	: owner_(view)
-{
-	init();
-}
-
-
-void GuiMenubar::init()
+void Menus::fillMenuBar(GuiView * view)
 {
 	// Clear all menubar contents before filling it.
-	owner_->menuBar()->clear();
+	view->menuBar()->clear();
 	
 #ifdef Q_WS_MACX
 	// setup special mac specific menu item
 	macxMenuBarInit();
 #endif
 
-	/// menu controller
-	MenuBackend & menu_backend = guiApp->menuBackend();
-	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menu_backend.getMenubar().name()));
+	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(getMenubar().name()));
 
-	if (menu_backend.getMenubar().size() == 0) {
+	if (getMenubar().size() == 0) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
-			<< to_utf8(menu_backend.getMenubar().name()));
+			<< to_utf8(getMenubar().name()));
 		return;
-		//			continue;
 	}
 	else {
 		LYXERR(Debug::GUI, "menu bar entries "
-			<< menu_backend.getMenubar().size());
+			<< getMenubar().size());
 	}
 
 	Menu menu;
-	menu_backend.expand(menu_backend.getMenubar(), menu, owner_->buffer());
+	expand(getMenubar(), menu, view->buffer());
 
 	Menu::const_iterator m = menu.begin();
 	Menu::const_iterator end = menu.end();
@@ -81,26 +69,24 @@ void GuiMenubar::init()
 			<< " is a submenu named " << to_utf8(m->submenuname()));
 
 		docstring name = m->submenuname();
-		if (!menu_backend.hasMenu(name)) {
+		if (!hasMenu(name)) {
 			LYXERR(Debug::GUI, "\tERROR: " << to_utf8(name)
 				<< " submenu has no menu!");
 			continue;
 		}
 
 		Menu menu;
-		menu_backend.expand(menu_backend.getMenubar(), menu, owner_->buffer());
+		expand(getMenubar(), menu, view->buffer());
 
-		GuiPopupMenu * qMenu = new GuiPopupMenu(owner_, *m, true);
-		owner_->menuBar()->addMenu(qMenu);
+		GuiPopupMenu * qMenu = new GuiPopupMenu(view, *m, true);
+		view->menuBar()->addMenu(qMenu);
 
 		name_map_[toqstr(name)] = qMenu;
 	}
 }
 
 
-GuiMenubar::~GuiMenubar() {}
-
-void GuiMenubar::openByName(QString const & name)
+void Menus::openByName(QString const & name)
 {
 	if (QMenu * menu = name_map_.value(name))
 		menu->exec(QCursor::pos());
@@ -131,7 +117,7 @@ void GuiMenubar::openByName(QString const & name)
   focus. (JMarc)
 */
 
-void GuiMenubar::macxMenuBarInit()
+void Menus::macxMenuBarInit(GuiView * view)
 {
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
@@ -174,20 +160,19 @@ void GuiMenubar::macxMenuBarInit()
 				     from_utf8(entries[i].label),
 				     func));
 	}
-	MenuBackend & menu_backend = guiApp->menuBackend();
-	menu_backend.specialMenu(special);
+	specialMenu(special);
 
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
-	QMenu * qMenu = owner_->menuBar()->addMenu("special");
+	QMenu * qMenu = view->menuBar()->addMenu("special");
 
 	// we do not use 'special' because it is a temporary variable,
 	// whereas MenuBackend::specialMenu points to a persistent
 	// copy.
-	Menu::const_iterator cit = menu_backend.specialMenu().begin();
-	Menu::const_iterator end = menu_backend.specialMenu().end();
+	Menu::const_iterator cit = specialMenu().begin();
+	Menu::const_iterator end = specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*owner_, QIcon(), 
+		Action * action = new Action(*view, QIcon(), 
 					     toqstr(cit->label()),
 					     cit->func(), QString());
 		action->setMenuRole(entries[i].role);
@@ -199,4 +184,4 @@ void GuiMenubar::macxMenuBarInit()
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiMenubar_moc.cpp"
+#include "Menus_moc.cpp"

@@ -17,10 +17,9 @@
 #include "GuiFontLoader.h"
 #include "GuiClipboard.h"
 #include "GuiSelection.h"
+#include "Menus.h"
 
 #include "frontends/Application.h"
-
-#include "MenuBackend.h"
 
 #include <QObject>
 #include <QApplication>
@@ -64,8 +63,8 @@ public:
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
-	MenuBackend const & menuBackend() const { return menu_backend_; }
-	MenuBackend & menuBackend() { return menu_backend_; }
+	MenuBackend const & menuBackend() const { return menus_; }
+	MenuBackend & menuBackend() { return menus_; }
 	virtual int exec();
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
@@ -76,6 +75,8 @@ public:
 	void unregisterSocketCallback(int fd);
 	//@}
 
+	Menus const & menus() const { return menus_; }
+	Menus & menus() { return menus_; }
 	/// Methods inherited from \c QApplication class
 	//@{
 	bool notify(QObject * receiver, QEvent * event);
@@ -140,7 +141,7 @@ private:
 	///
 	std::map<int, SocketNotifier *> socket_notifiers_;
 	///
-	MenuBackend menu_backend_;
+	Menus menus_;
 
 #ifdef Q_WS_X11
 public:

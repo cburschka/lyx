@@ -94,7 +94,6 @@ SOURCEFILES = \
 	GuiLog.cpp \
 	GuiMath.cpp \
 	GuiMathMatrix.cpp \
-	GuiMenubar.cpp \
 	GuiNomencl.cpp \
 	GuiNote.cpp \
 	GuiPainter.cpp \
@@ -127,6 +126,7 @@ SOURCEFILES = \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	LaTeXHighlighter.cpp \
+	Menus.cpp \
 	PanelStack.cpp \
 	qt_helpers.cpp \
 	TocModel.cpp \
@@ -181,7 +181,6 @@ MOCHEADER = \
 	GuiListings.h \
 	GuiLog.h \
 	GuiMathMatrix.h \
-	GuiMenubar.h \
 	GuiNomencl.h \
 	GuiNote.h \
 	GuiParagraph.h \
@@ -212,6 +211,7 @@ MOCHEADER = \
 	LengthCombo.h \
 	LyXFileDialog.h \
 	LaTeXHighlighter.h \
+	Menus.h \
 	PanelStack.h \
 	qlkey.h \
 	TocModel.h \
