@@ -45,7 +45,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
-#include "MenuBackend.h"
 #include "Paragraph.h"
 #include "TextClass.h"
 #include "Text.h"

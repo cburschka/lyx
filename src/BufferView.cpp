@@ -39,7 +39,6 @@
 #include "LyXFunc.h"
 #include "Layout.h"
 #include "LyXRC.h"
-#include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
