@@ -18,6 +18,9 @@
 #include <QObject>
 #include <QHash>
 
+class QMenu;
+
+
 namespace lyx {
 namespace frontend {
 
