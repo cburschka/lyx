@@ -231,9 +231,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
 		this, SLOT(adjustViewWithScrollBar(int)));
 
-	// disable context menu for the scrollbar
-	verticalScrollBar()->setContextMenuPolicy(Qt::NoContextMenu);
-
 	// PageStep only depends on the viewport height.
 	verticalScrollBar()->setPageStep(viewport()->height());
 
