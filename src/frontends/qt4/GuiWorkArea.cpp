@@ -535,7 +535,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	// FIXME: correct vertical position of the menu WRT screen espace.
 	//pos.ry() += menu->height();
 	menu->exec(pos);
-	QAbstractScrollArea::contextMenuEvent(e);
+	e->accept();
 }
 
 
