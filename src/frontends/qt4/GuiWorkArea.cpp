@@ -56,6 +56,7 @@
 #include <QTabBar>
 #include <QTimer>
 #include <QToolButton>
+#include <QToolTip>
 
 #include <boost/bind.hpp>
 
