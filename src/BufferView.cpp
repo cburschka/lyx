@@ -923,6 +923,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.clearSelection();
 		if (!cur.textUndo())
 			cur.message(_("No further undo information"));
+		showCursor();
 		break;
 
 	case LFUN_REDO:
@@ -930,6 +931,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.clearSelection();
 		if (!cur.textRedo())
 			cur.message(_("No further redo information"));
+		showCursor();
 		break;
 
 	case LFUN_FONT_STATE:
