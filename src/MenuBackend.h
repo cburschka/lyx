@@ -190,7 +190,7 @@ public:
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
-	bool searchFunc(FuncRequest & func, std::stack<docstring> & names);
+	bool searchFunc(FuncRequest & func, std::stack<docstring> & names) const;
 
 private:
 	friend class MenuBackend;

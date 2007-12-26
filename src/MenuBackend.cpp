@@ -404,7 +404,7 @@ void Menu::checkShortcuts() const
 }
 
 
-bool Menu::searchFunc(FuncRequest & func, stack<docstring> & names)
+bool Menu::searchFunc(FuncRequest & func, stack<docstring> & names) const
 {
 	const_iterator m = begin();
 	const_iterator m_end = end();

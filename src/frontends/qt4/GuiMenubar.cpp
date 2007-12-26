@@ -98,11 +98,7 @@ void GuiMenubar::init()
 }
 
 
-GuiMenubar::~GuiMenubar() {
-#ifdef Q_WS_MACX
-	delete mac_menubar_;
-#endif
-}
+GuiMenubar::~GuiMenubar() {}
 
 void GuiMenubar::openByName(QString const & name)
 {
@@ -137,8 +133,6 @@ void GuiMenubar::openByName(QString const & name)
 
 void GuiMenubar::macxMenuBarInit()
 {
-	mac_menubar_ = new QMenuBar;
-
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
 	   work very well with our scheme of creating menus on demand,

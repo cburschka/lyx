@@ -56,9 +56,6 @@ private:
 
 	/// name to menu for openByName
 	NameMap name_map_;
-
-	/// MACOS X special menubar.
-	QMenuBar * mac_menubar_;
 };
 
 } // namespace frontend

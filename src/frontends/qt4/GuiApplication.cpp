@@ -51,6 +51,7 @@
 #include <QFileOpenEvent>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QMenuBar>
 #include <QPixmapCache>
 #include <QRegExp>
 #include <QSessionManager>
@@ -170,6 +171,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 			<< fromqstr(language_name));
 
 #ifdef Q_WS_MACX
+	// all windows in a Mac application share the same menu bar.
+	QMenuBar *menuBar = new QMenuBar(0);
 	// This allows to translate the strings that appear in the LyX menu.
 	addMenuTranslator();
 #endif
