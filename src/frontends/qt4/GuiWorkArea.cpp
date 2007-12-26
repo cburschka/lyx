@@ -519,12 +519,22 @@ bool GuiWorkArea::event(QEvent * e)
 void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 {
 	QPoint pos = e->pos();
-	Menu const & menu = buffer_view_->contextMenu(pos.x(), pos.y());
-	LYXERR(Debug::GUI, "context menu resquested: " << menu.name());
-
-	// FIXME: do something with GuiPopupMenu and MenuBackend.
-	// Some cleanups of GuiPopupMenu and GuiMenubar are needed
-	// before!
+	docstring name = buffer_view_->contextMenu(pos.x(), pos.y());
+	if (name.empty()) {
+		QAbstractScrollArea::contextMenuEvent(e);
+		return;
+	}
+	QMenu * menu = guiApp->menus().menu(toqstr(name));
+	if (!menu) {
+		QAbstractScrollArea::contextMenuEvent(e);
+		return;
+	}
+	// Position the menu to the right.
+	// FIXME: menu position should be different for RTL text.
+	pos.rx() += menu->width();
+	// FIXME: correct vertical position of the menu WRT screen espace.
+	//pos.ry() += menu->height();
+	menu->exec(pos);
 	QAbstractScrollArea::contextMenuEvent(e);
 }
 

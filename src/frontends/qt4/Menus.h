@@ -34,8 +34,8 @@ public:
 	///
 	void fillMenuBar(GuiView * view);
 
-	/// opens a top-level submenu given its name
-	void openByName(QString const & name);
+	/// \return a top-level submenu given its name.
+	QMenu * menu(QString const & name);
 
 	/// update the state of the menuitems - not needed
 	void updateView();
@@ -46,7 +46,7 @@ private:
 
 	typedef QHash<QString, GuiPopupMenu *> NameMap;
 
-	/// name to menu for openByName
+	/// name to menu for \c menu() method.
 	NameMap name_map_;
 };
 

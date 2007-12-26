@@ -288,6 +288,10 @@ public:
 	/// This default implementation returns an empty string.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
 	
+	/// \return Context menu identifier for this inset.
+	/// This default implementation returns an empty string.
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+
 	// FIXME This should really disappear in favor of 
 	//	docstring name() const { return from_ascii(insetName(lyxCode()))); }
 	// There's no reason to be using different names in different places.

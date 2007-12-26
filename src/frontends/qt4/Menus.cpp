@@ -86,10 +86,15 @@ void Menus::fillMenuBar(GuiView * view)
 }
 
 
-void Menus::openByName(QString const & name)
+QMenu * Menus::menu(QString const & name)
 {
-	if (QMenu * menu = name_map_.value(name))
-		menu->exec(QCursor::pos());
+	LYXERR(Debug::GUI, "Context menu requested: "
+		<< qstring_to_ucs4(name));
+	GuiPopupMenu * menu = name_map_.value(name, 0);
+	if (!menu)
+		LYXERR0("resquested context menu not found: "
+			<< qstring_to_ucs4(name));
+	return menu;
 }
 
 

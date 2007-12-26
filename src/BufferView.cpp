@@ -492,10 +492,15 @@ docstring BufferView::toolTip(int x, int y) const
 }
 
 
-Menu const & BufferView::contextMenu(int x, int y) const
+docstring BufferView::contextMenu(int x, int y) const
 {
+	// Get inset under mouse, if there is one.
+	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
+	if (covering_inset)
+		return covering_inset->contextMenu(*this, x, y);
+
 	// FIXME: Do something more elaborate here.
-	return theApp()->menuBackend().getMenu(from_ascii("edit"));
+	return from_ascii("edit");
 }
 
 
