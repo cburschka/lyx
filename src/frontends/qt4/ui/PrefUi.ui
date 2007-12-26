@@ -27,7 +27,197 @@
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item row="6" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>204</width>
+       <height>101</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QGroupBox" name="pixmapCacheGB_2" >
+     <property name="title" >
+      <string>Automatic help</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="tooltipCB" >
+        <property name="toolTip" >
+         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">Checking this allow the automatic display of helpful comments for insets in the main work area of an edited document.&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">&lt;/p>&lt;/body>&lt;/html></string>
+        </property>
+        <property name="text" >
+         <string>Enable &amp;tool tips in main work area</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="2" column="0" colspan="3" >
+    <widget class="QGroupBox" name="GeometryGB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Session</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="allowGeometrySessionCB" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="toolTip" >
+         <string>Restore to cursor position when the file was last closed</string>
+        </property>
+        <property name="text" >
+         <string>Allow saving/restoring of windows geometry</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="loadSessionCB" >
+        <property name="text" >
+         <string>Load opened files from last session</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="restoreCursorCB" >
+        <property name="text" >
+         <string>Restore cursor positions</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3" >
+    <widget class="QGroupBox" name="pixmapCacheGB" >
+     <property name="title" >
+      <string>Pixmap Cache</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="pixmapCacheCB" >
+        <property name="toolTip" >
+         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Checking this improves performance, but might decrease the on-screen quality of fonts.&lt;/p>&lt;/body>&lt;/html></string>
+        </property>
+        <property name="text" >
+         <string>Enable Pi&amp;xmap Cache</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="uiFileLA" >
+     <property name="text" >
+      <string>&amp;User interface file:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>uiFileED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="uiFileED" />
+   </item>
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="uiFilePB" >
+     <property name="text" >
+      <string>Bro&amp;wse...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3" >
+    <widget class="QGroupBox" name="scrollGB" >
+     <property name="title" >
+      <string>Editing</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="cursorFollowsCB" >
+        <property name="text" >
+         <string>Cursor follows &amp;scrollbar</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="sortEnvironmentsCB" >
+        <property name="text" >
+         <string>Sort &amp;Environments alphabetically</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
     <widget class="QGroupBox" name="documentsGB" >
      <property name="title" >
       <string>Documents</string>
@@ -120,161 +310,6 @@
        </layout>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QGroupBox" name="GeometryGB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title" >
-      <string>Session</string>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="allowGeometrySessionCB" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="toolTip" >
-         <string>Restore to cursor position when the file was last closed</string>
-        </property>
-        <property name="text" >
-         <string>Allow saving/restoring of windows geometry</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QCheckBox" name="loadSessionCB" >
-        <property name="text" >
-         <string>Load opened files from last session</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="restoreCursorCB" >
-        <property name="text" >
-         <string>Restore cursor positions</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="5" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="3" >
-    <widget class="QGroupBox" name="pixmapCacheGB" >
-     <property name="title" >
-      <string>Pixmap Cache</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="pixmapCacheCB" >
-        <property name="toolTip" >
-         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Checking this improves performance, but might decrease the on-screen quality of fonts.&lt;/p>&lt;/body>&lt;/html></string>
-        </property>
-        <property name="text" >
-         <string>Enable Pi&amp;xmap Cache</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QGroupBox" name="scrollGB" >
-     <property name="title" >
-      <string>Editing</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="cursorFollowsCB" >
-        <property name="text" >
-         <string>Cursor follows &amp;scrollbar</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="sortEnvironmentsCB" >
-        <property name="text" >
-         <string>Sort &amp;Environments alphabetically</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="uiFilePB" >
-     <property name="text" >
-      <string>Bro&amp;wse...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="uiFileED" />
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="uiFileLA" >
-     <property name="text" >
-      <string>&amp;User interface file:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>uiFileED</cstring>
-     </property>
     </widget>
    </item>
   </layout>

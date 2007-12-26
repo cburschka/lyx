@@ -156,6 +156,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_spell_lib", LyXRC::RC_USE_SPELL_LIB },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
+	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
@@ -265,6 +266,7 @@ void LyXRC::setDefaults() {
 	preview_hashed_labels  = false;
 	preview_scale_factor = "0.9";
 	use_converter_cache = true;
+	use_tooltip = true;
 	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 
@@ -880,6 +882,11 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_USE_PERS_DICT:
 			if (lexrc.next()) {
 				isp_use_pers_dict = lexrc.getBool();
+			}
+			break;
+		case RC_USE_TOOLTIP:
+			if (lexrc.next()) {
+				use_tooltip = lexrc.getBool();
 			}
 			break;
 		case RC_USE_PIXMAP_CACHE:
@@ -2054,6 +2061,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_USE_TOOLTIP:
+		if (ignore_system_lyxrc ||
+		    use_tooltip != system_lyxrc.use_tooltip) {
+			os << "\\use_tooltip "
+			   << convert<string>(use_tooltip)
+			   << '\n';
+		}
 	case RC_USE_PIXMAP_CACHE:
 		if (ignore_system_lyxrc ||
 		    use_pixmap_cache != system_lyxrc.use_pixmap_cache) {
@@ -2667,6 +2681,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_USE_INP_ENC:
 		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
+		break;
+
+	case RC_USE_TOOLTIP:
+		str = _("Enable the automatic appearance of tool tips in the work area.");
 		break;
 
 	case RC_USE_PIXMAP_CACHE:

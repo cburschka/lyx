@@ -504,6 +504,8 @@ bool GuiWorkArea::event(QEvent * e)
 {
     if (e->type() == QEvent::ToolTip) {
          QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
+		 if (!lyxrc.use_tooltip)
+			 return QAbstractScrollArea::event(e);
 		 QPoint pos = helpEvent->pos();
 		 if (pos.x() < viewport()->width()) {
 			 QString s = toqstr(buffer_view_->toolTip(pos.x(), pos.y()));
