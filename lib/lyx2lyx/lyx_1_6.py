@@ -36,6 +36,26 @@ def wrap_into_ert(string, src, dst):
     return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n' 
       + dst + '\n\\end_layout\n\\end_inset\n')
 
+def add_module(module):
+  i = find_token(document.header, "\\begin_modules", 0)
+  if i == -1:
+    #No modules yet included
+    i = find_token(document.header, "\\textclass", 0)
+    if i == -1:
+      document.warning("Malformed LyX document: No \\textclass!!")
+      return
+    modinfo = ["\\begin_modules", module, "\\end_modules"]
+    document.header[i + 1: i + 1] = modinfo
+    return
+  j = find_token(document.header, "\\end_modules", i)
+  if j == -1:
+    document.warning("Malformed LyX document: No \\end_modules.")
+    return
+  k = find_token(document.header, module, i)
+  if k != -1 and k < j:
+    return
+  document.header.insert(i + 1, module)
+
 
 ####################################################################
 
@@ -921,7 +941,7 @@ def revert_slash(document):
         '\\begin_inset ERT\nstatus collapsed\n\n' \
         '\\begin_layout Standard\n\n\n\\backslash\n' \
         'slash{}\n\\end_layout\n\n\\end_inset\n\n')
-	
+
 
 def revert_nobreakdash(document):
     'Revert \\SpecialChar \\nobreakdash- to ERT'
