@@ -53,6 +53,10 @@ What's new
 - Fix LaTeX output of documents with both CJK and non-CJK languages.
   LyX is basically ready for multilingual CJK now (bug 4337).
 
+- Fix internal conversion from ucs4 to cp-1255 (LyX didn't recognize
+  the Hebrew character tav [0x5EA] as a valid character in cp-1255)
+  (bug 4439).
+
 
 * USER INTERFACE:
 
