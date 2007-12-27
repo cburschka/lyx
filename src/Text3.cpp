@@ -1028,8 +1028,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button3)
 			cur.clearSelection();
 
+		bool do_selection = cmd.button() == mouse_button::button1
+			&& cmd.argument() == "region-select";
 		// Set the cursor
-		bool update = bv->mouseSetCursor(cur);
+		bool update = bv->mouseSetCursor(cur, do_selection);
 
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,

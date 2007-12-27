@@ -1344,13 +1344,14 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 }
 
 
-bool BufferView::mouseSetCursor(Cursor & cur)
+bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 {
 	BOOST_ASSERT(&cur.bv() == this);
 
-        // this event will clear selection so we save selection for
-	// persistent selection
-	cap::saveSelection(cursor());
+	if (!select)
+		// this event will clear selection so we save selection for
+		// persistent selection
+		cap::saveSelection(cursor());
 
 	// Has the cursor just left the inset?
 	bool badcursor = false;
@@ -1358,12 +1359,15 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 	if (leftinset)
 		badcursor = notifyCursorLeaves(cursor_, cur);
 
+	// FIXME: shift-mouse selection doesn't work well across insets.
+	bool do_selection = select && &cursor_.anchor().inset() == &cur.inset();
+
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!badcursor && cursor_.inTexted())
+	if (!do_selection && !badcursor && cursor_.inTexted())
 		update |= checkDepm(cur, cursor_);
 
 	// if the cursor was in an empty script inset and the new
@@ -1385,7 +1389,10 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 
 	cursor_.setCursor(dit);
 	cursor_.boundary(cur.boundary());
-	cursor_.clearSelection();
+	if (do_selection)
+		cursor_.setSelection();
+	else
+		cursor_.clearSelection();
 	finishUndo();
 	return update;
 }
