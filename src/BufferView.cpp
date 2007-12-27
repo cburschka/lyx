@@ -830,6 +830,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
+	case LFUN_SCROLL:
 		flag.enabled(true);
 		break;
 
@@ -1218,6 +1219,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_SCROLL:
+		lfunScroll(cmd);
+		break;
+
 	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_DOWN_SELECT: {
 		// Those two are not ready yet for consumption.
@@ -1405,6 +1410,27 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// an update is asked,
 		&& cur.result().update())
 		processUpdateFlags(cur.result().update());
+}
+
+
+void BufferView::lfunScroll(FuncRequest const & cmd)
+{
+	string const scroll_type = cmd.getArg(0);
+	int const scroll_step = 
+		(scroll_type == "line")? d->scrollbarParameters_.lineScrollHeight
+		: (scroll_type == "page")? height_ : 0;
+	if (scroll_step == 0)
+		return;
+	string const scroll_quantity = cmd.getArg(1);
+	if (scroll_quantity == "up")
+		scrollUp(scroll_step);
+	else if (scroll_quantity == "down")
+		scrollDown(scroll_step);
+	else {
+		int const scroll_value = convert<int>(scroll_quantity);
+		if (scroll_value)
+			scroll(scroll_step * scroll_value);
+	}
 }
 
 

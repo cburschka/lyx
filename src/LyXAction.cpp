@@ -276,6 +276,7 @@ void LyXAction::init()
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
+		{ LFUN_SCROLL, "scroll", ReadOnly, Edit },
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
 		{ LFUN_SCREEN_UP, "screen-up", ReadOnly, Edit },
 		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },

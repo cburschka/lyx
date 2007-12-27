@@ -134,6 +134,8 @@ public:
 	/// This method will automatically scroll and update the BufferView and updated 
 	/// if needed.
 	void showCursor();
+	/// LFUN_SCROLL Helper.
+	void lfunScroll(FuncRequest const & cmd);
 	/// scroll down document by the given number of pixels.
 	void scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.
