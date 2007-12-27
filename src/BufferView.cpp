@@ -1194,9 +1194,11 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		if (!cur.result().dispatched())
 			cur.dispatch(tmpcmd);
 
-		if (cur.result().dispatched())
-			cur.clearSelection();
-
+		if (!cur.result().dispatched())
+			// It did not work too; no action needed.
+			break;
+		cur.clearSelection();
+		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
