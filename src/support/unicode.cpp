@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik BjÃ¸nnes
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -133,6 +133,11 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 	size_t outbytesleft = maxoutsize;
 
 	int res = iconv(pimpl_->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
+
+	// flush out remaining data. This is needed because iconv sometimes
+	// holds back chars in the stream, waiting for a combination character
+	// (see e.g. http://sources.redhat.com/bugzilla/show_bug.cgi?id=1124)
+	iconv(pimpl_->cd, NULL, NULL, &outbuf, &outbytesleft);
 
 	//lyxerr << dec;
 	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
