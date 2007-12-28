@@ -35,7 +35,8 @@ namespace lyx {
  * The documentation below is primarily notes about restrictions and
  * oddities relating to the different LFUNs.
  *
- * Doxygen template below.
+ * Doxygen template below. Some notes: Parameters should be set in uppercase
+ * and put in <BRACKETS>, as so.
  */
 
 /**
@@ -52,23 +53,73 @@ enum kb_action {
 	// 0
 	LFUN_NOACTION = 0,
 	LFUN_COMMAND_PREFIX,
+/**
+ * LFUN_SCREEN_RECENTER
+ * \li Action: Recenters the screen on the current cursor position
+ * \li Syntax: screen-recenter
+ */
 	LFUN_SCREEN_RECENTER,
+/**
+ * LFUN_BUFFER_NEW
+ * \li Action: Creates a new buffer (that is, document)
+ * \li Syntax: buffer-new
+ */
 	LFUN_BUFFER_NEW,
+/**
+ * LFUN_BUFFER_WRITE
+ * \li Action: Saves the current buffer
+ * \li Notion: Saves the current buffer to disk, using the filename that\n
+               is already associated with the buffer, asking for one if\n
+               none is yet assigned.
+ * \li Syntax: buffer-write
+ */
 	LFUN_BUFFER_WRITE,
 	// 5
 /**
  * LFUN_BUFFER_WRITE_AS
  * \li Action: Rename and save current buffer.
- * \li Syntax: buffer-write-as <filename>
- * \li Params: <filename> = New name of the buffer/file. A relative path
+ * \li Syntax: buffer-write-as <FILENAME>
+ * \li Params: <FILENAME>: New name of the buffer/file. A relative path
  *             is with respect to the original location of the buffer/file.
  */
 	LFUN_BUFFER_WRITE_AS,
 	LFUN_BUILD_PROGRAM,
+/**
+ * LFUN_BUFFER_VIEW
+ * \li Action: Displays current buffer in chosen format
+ * \li Notion: Displays the contents of the current buffer in the chosen
+               format, for example, PDF or DVI. This runs the necessary
+               converter, calls the defined viewer, and so forth.
+ * \li Syntax: buffer-view <FORMAT>
+ * \li Params: <FORMAT>: The format to display, where this is one of the
+                         formats defined (in the current GUI) in the
+                         Tools>Preferences>File Formats dialog.
+ */
 	LFUN_BUFFER_VIEW,
+/**
+ * LFUN_BUFFER_CLOSE
+ * \li Action: Closes the current buffer
+ * \li Notion: Closes the current buffer, asking whether to save it, etc,
+               if the buffer has been modified.
+ * \li Syntax: buffer-close
+ */
 	LFUN_BUFFER_CLOSE,
+/**
+ * LFUN_LYX_QUIT
+ * \li Action: Terminates the current LyX instance
+ * \li Notion: Terminates the current LyX instance, asking whether to save
+               modified documents, etc.
+ * \li Syntax: lyx-quit
+ */
 	LFUN_LYX_QUIT,
 	// 10
+/**
+ * LFUN_BUFFER_AUTO_SAVE
+ * \li Action: Saves the current buffer to a temporary file
+ * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN 
+               is called automatically by LyX, to "autosave" the current buffer.
+	* \li Syntax: buffer-auto-save
+ */
 	LFUN_BUFFER_AUTO_SAVE,
 	LFUN_UNDO,
 	LFUN_REDO,
@@ -218,9 +269,27 @@ enum kb_action {
  */
 	LFUN_MARK_ON,
 	// 120
+ /**
+ * LFUN_LAYOUT
+ * \li Action: Sets the layout for the current paragraph
+ * \li Syntax: layout <LAYOUT>
+ * \li Params: <LAYOUT>: the layout to use
+ */
 	LFUN_LAYOUT,
+/**
+ * LFUN_LAYOUT_PARAGRAPH
+ * \li Action: Launches the paragraph settings dialog
+ * \li Syntax: layout-paragraph
+ */
 	LFUN_LAYOUT_PARAGRAPH,
-	LFUN_DROP_LAYOUTS_CHOICE,       // used in bindings as of 20060905
+/**
+ * LFUN_DROP_LAYOUTS_CHOICE
+ * \li Action: Displays list of layout choices
+ * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
+               dropbox allowing for choice of layout
+ * \li Syntax: drop-layouts-choice
+ */
+	LFUN_DROP_LAYOUTS_CHOICE,       // used in bindings as of 20071228
 	LFUN_FONT_TYPEWRITER,           // changed from FONT_CODE 20070920
 	LFUN_FONT_SANS,
 	// 125
@@ -312,9 +381,29 @@ enum kb_action {
 	LFUN_SCREEN_FONT_UPDATE,        // ARRae 20000813
 	LFUN_PARAGRAPH_GOTO,            // Dekel 20000826
 	LFUN_REFERENCE_NEXT,            // Dekel 20010114
-	LFUN_BOOKMARK_SAVE,             // Dekel 20010127
+/**
+ * LFUN_BOOKMARK_SAVE
+ * \li Action: Save a bookmark
+ * \li Notion: Saves a numbered bookmark to the sessions file. The number\n
+               must be between 1 and 9, inclusive. Note that bookmarks are\n
+               saved per-session, not per file.
+ * \li Syntax: bookmark-save <NUMBER>
+ * \li Params: <NUMBER>: the number of the bookmark to save.
+ * \li Origin: Dekel, 27 January 2001
+ */
+	LFUN_BOOKMARK_SAVE,
 	// 200
-	LFUN_BOOKMARK_GOTO,             // Dekel 20010127
+/**
+ * LFUN_BOOKMARK_GOTO
+ * \li Action: Goto a bookmark
+ * \li Notion: Moves the cursor to the numbered bookmark, opening the file\n
+               if necessary. Note that bookmarsk are saved per-session, not\n
+               per file.
+ * \li Syntax: bookmark-goto <NUMBER>
+ * \li Params: <NUMBER>: the number of the bookmark to restore.
+ * \li Origin: Dekel, 27 January 2001
+ */
+	LFUN_BOOKMARK_GOTO,
 	LFUN_SELECT_FILE_SYNC,          // Levon 20010214
 	LFUN_MESSAGE,                   // Lgb 20010408; for scripting purposes, output in minibuffer
 	LFUN_CHARS_TRANSPOSE,           // Lgb 20010425
@@ -357,8 +446,8 @@ enum kb_action {
  * \li Action: Change paragraph settings.
  * \li Notion: Overwrite all nonspecified settings to the default ones. 
                Use paragraph-params lfun if you don't want to overwrite others settings.
- * \li Syntax: lfun-paragraph-params-apply [INDENT] [SPACING] [ALIGN] [OTHERS]
- * \li Params: For parameters see lfun-paragraph-params lfun.
+ * \li Syntax: paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS>
+ * \li Params: For parameters see LFUN_PARAGRAPH_PARAMS
  * \li Origin: leeming, 30 Mar 2004
  */
 	LFUN_PARAGRAPH_UPDATE,
@@ -383,7 +472,21 @@ enum kb_action {
 	LFUN_ALL_INSETS_TOGGLE,
 	LFUN_BUFFER_LANGUAGE,
 	// 250
+/**
+ * LFUN_TEXTCLASS_APPLY
+ * \li Action: Sets the text class for the current buffer
+ * \li Syntax: textclass-apply <TEXTCLASS>
+ * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be \n
+                   the filename, minus the ".layout" extension.
+ */
 	LFUN_TEXTCLASS_APPLY,
+/**
+ * LFUN_TEXTCLASS_LOAD
+ * \li Action: Loads information for a textclass from disk
+ * \li Syntax: textclass-load <TEXTCLASS>
+ * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be \n
+                   the filename, minus the ".layout" extension.
+ */
 	LFUN_TEXTCLASS_LOAD,
 	LFUN_BUFFER_SAVE_AS_DEFAULT,
 	LFUN_BUFFER_PARAMS_APPLY,
@@ -416,6 +519,12 @@ enum kb_action {
 	LFUN_WINDOW_NEW,                 // Abdel 20061021
 	LFUN_WINDOW_CLOSE,               // Abdel 20061023
 	LFUN_UNICODE_INSERT,             // Lgb 20061022
+/**
+ * LFUN_BOOKMARK_CLEAR
+ * \li Action: Clears the list of saved bookmarks
+ * \li Syntax: bookmark-clear
+ * \li Origin: bpeng, 31 October 2006
+	*/
 	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
 	LFUN_NOMENCL_INSERT,             // Ugras
 	// 280
@@ -430,18 +539,41 @@ enum kb_action {
 /**
  * LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings
- * \li Notion: Modifies the current paragraph, or currently selected paragraphs. 
+ * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
                This function only modifies, and does not override, existing settings.
- * \li Syntax: lfun_paragraph-params [INDENT] [SPACING] [ALIGN] [OTHERS]
- * \li Params: INDENT:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
-               SPACING: \\paragraph_spacing default|single|onehalf|double|other\n
-	       ALIGN:   \\align block|left|right|center|default\n
-	       OTHERS:  \\labelwidthstring WIDTH|\\start_of_appendix\n
+               Note that the "leftindent" indent setting is deprecated.
+ * \li Syntax: paragraph-params <INDENT> <SPACING> <ALIGN> <OTHERS>
+ * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
+               <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
+               <ALIGN>:   \\align block|left|right|center|default\n
+               <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
  * \li Origin: rgh, Aug 15 2007
  */
-	LFUN_LAYOUT_MODULES_CLEAR,       // rgh, 20070825
-	LFUN_LAYOUT_MODULE_ADD,          // rgh, 20070825
-	LFUN_LAYOUT_RELOAD,              // rgh, 20070903
+/**
+ * LFUN_LAYOUT_MODULES_CLEAR
+ * \li Action: Clears the module list
+ * \li Notion: Clears the list of included modules for the current buffer. 
+ * \li Syntax: layout-modules-clear
+ * \li Origin: rgh, 25 August 2007
+ */
+	LFUN_LAYOUT_MODULES_CLEAR,
+/**
+ * LFUN_LAYOUT_MODULE_ADD
+ * \li Action: Adds a module
+ * \li Notion: Adds a module to the list of included modules for the current buffer.
+ * \li Syntax: layout-module-add <MODULE>
+ * \li Params: <MODULE>: the module to be added
+ * \li Origin: rgh, 25 August 2007
+ */
+	LFUN_LAYOUT_MODULE_ADD,
+/**
+ * LFUN_LAYOUT_RELOAD
+ * \li Action: Reloads layout information
+ * \li Notion: Reloads all layout information for the current buffer.
+ * \li Syntax: layout-reload
+ * \li Origin: rgh, 3 September 2007
+ */
+	LFUN_LAYOUT_RELOAD,
 	// 290
 	LFUN_MASTER_BUFFER_VIEW,         // Tommaso, 20070920
 	LFUN_MASTER_BUFFER_UPDATE,       // Tommaso, 20070920
@@ -477,11 +609,11 @@ enum kb_action {
 	LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM,
 	LFUN_IN_MATHMACROTEMPLATE,
 /** LFUN_SCROLL
- * \li Action: scroll the buffer view.
- * \li Notion: Only about scrolling up or down; do not modify the cursor.
- * \li Syntax: scroll [TYPE] [QUANTITY]
- * \li Params: TYPE:  line|page\n
-               QUANTITY: up|down|<number>\n
+ * \li Action: scroll the buffer view
+ * \li Notion: Only scrolls the screen up or down; does not move the cursor.
+ * \li Syntax: scroll <TYPE> <QUANTITY>
+ * \li Params: <TYPE>:  line|page\n
+               <QUANTITY>: up|down|<number>\n
  * \li Origin: Abdelrazak Younes, Dec 27 2007
 */
 	LFUN_SCROLL,
