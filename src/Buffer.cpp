@@ -118,7 +118,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 309; // Bernhard Reiter: support for \nocite
+int const LYX_FORMAT = 310; // Bernhard Reiter: support for \nocite{*}
 
 } // namespace anon
 

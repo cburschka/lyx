@@ -998,6 +998,33 @@ def revert_nocite(document):
             i = j
 
 
+def revert_btprintall(document):
+    "Revert (non-bibtopic) btPrintAll option to ERT \nocite{*}"
+    i = find_token(document.header, '\\use_bibtopic', 0)
+    if i == -1:
+        document.warning("Malformed lyx document: Missing '\\use_bibtopic'.")
+        return
+    if get_value(document.header, '\\use_bibtopic', 0) == "false":
+        i = 0
+        while i < len(document.body):
+            i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i + 1)
+            if j == -1:
+                #this should not happen
+                document.warning("End of CommandInset bibtex not found in revert_btprintall!")
+                j = len(document.body)
+            for k in range(i, j):
+                if (document.body[k] == 'btprint "btPrintAll"'):
+                    del document.body[k]
+                    document.body.insert(i, "\\begin_inset ERT\n" \
+                    "status collapsed\n\n\\begin_layout Standard\n\n" \
+                    "\\backslash\nnocite{*}\n" \
+                    "\\end_layout\n\\end_inset\n")
+            i = j
+
+
 def revert_bahasam(document):
     "Set language Bahasa Malaysia to Bahasa Indonesia"
     i = 0
@@ -1086,10 +1113,12 @@ convert = [[277, [fix_wrong_tables]],
            [306, []],
            [307, []],
            [308, []],
-           [309, []]
+           [309, []],
+           [310, []]
           ]
 
-revert =  [[308, [revert_nocite]],
+revert =  [[309, [revert_btprintall]],
+           [308, [revert_nocite]],
            [307, [revert_serbianlatin]],
            [306, [revert_slash, revert_nobreakdash]],
            [305, [revert_interlingua]],

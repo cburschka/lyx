@@ -270,15 +270,20 @@ void GuiBibtex::updateContents()
 	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
 
+	if (!bibtopic && btPrintCO->count() == 3)
+		btPrintCO->removeItem(1);
+	else if (bibtopic && btPrintCO->count() < 3)
+		btPrintCO->insertItem(1, qt_("all uncited references", 0));
+
 	docstring btprint = params_["btprint"];
 	int btp = 0;
-	if (btprint == "btPrintNotCited")
+	if ((bibtopic && btprint == "btPrintNotCited") ||
+	   (!bibtopic && btprint == "btPrintAll"))
 		btp = 1;
-	else if (btprint == "btPrintAll")
+	else if (bibtopic && btprint == "btPrintAll")
 		btp = 2;
 
 	btPrintCO->setCurrentIndex(btp);
-	btPrintCO->setEnabled(bibtopic);
 
 	styleCB->clear();
 
@@ -334,26 +339,35 @@ void GuiBibtex::applyView()
 		params_["options"] = bibstyle;
 	}
 
-	// bibtopic allows three kinds of sections:
-	// 1. sections that include all cited references of the database(s)
-	// 2. sections that include all uncited references of the database(s)
-	// 3. sections that include all references of the database(s), cited or not
 	int btp = btPrintCO->currentIndex();
 
-	switch (btp) {
-	case 0:
-		params_["btprint"] = from_ascii("btPrintCited");
-		break;
-	case 1:
-		params_["btprint"] = from_ascii("btPrintNotCited");
-		break;
-	case 2:
-		params_["btprint"] = from_ascii("btPrintAll");
-		break;
+	if (usingBibtopic()) {
+		// bibtopic allows three kinds of sections:
+		// 1. sections that include all cited references of the database(s)
+		// 2. sections that include all uncited references of the database(s)
+		// 3. sections that include all references of the database(s), cited or not
+		switch (btp) {
+		case 0:
+			params_["btprint"] = from_ascii("btPrintCited");
+			break;
+		case 1:
+			params_["btprint"] = from_ascii("btPrintNotCited");
+			break;
+		case 2:
+			params_["btprint"] = from_ascii("btPrintAll");
+			break;
+		}
+	} else {
+		switch (btp) {
+		case 0:
+			params_["btprint"] = docstring();
+			break;
+		case 1:
+			// use \nocite{*}
+			params_["btprint"] = from_ascii("btPrintAll");
+			break;
+		}		
 	}
-
-	if (!usingBibtopic())
-		params_["btprint"] = docstring();
 }
 
 

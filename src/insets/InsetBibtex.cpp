@@ -297,6 +297,11 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	if (!db_out.empty() && !buffer.params().use_bibtopic){
+		docstring btprint = getParam("btprint");
+		if (btprint == "btPrintAll") {
+			os << "\\nocite{*}\n";
+			nlines += 1;
+		}
 		os << "\\bibliography{" << db_out << "}\n";
 		nlines += 1;
 	}
