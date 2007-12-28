@@ -580,7 +580,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 	
 	// This could be used for the no-GUI version. The GUI version is handled in
-	// LyXView::getStatus().
+	// LyXView::getStatus(). See above.
 	/*
 	case LFUN_BUFFER_WRITE:
 	case LFUN_BUFFER_WRITE_AS: {
