@@ -3473,7 +3473,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE:
-		if (tabularStackDirty() && theClipboard().isInternal()) {
+		if (tabularStackDirty() && theClipboard().isInternal() ||
+		    !theClipboard().hasInternal() && theClipboard().hasLyXContents()) {
 			cur.recordUndoInset(INSERT_UNDO);
 			pasteClipboard(cur);
 			break;

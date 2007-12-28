@@ -115,6 +115,19 @@ bool GuiClipboard::isInternal() const
 }
 
 
+bool GuiClipboard::hasInternal() const
+{
+	// Windows and Mac OS X does not have the concept of ownership;
+	// the clipboard is a fully global resource so all applications 
+	// are notified of changes.
+#if (defined(Q_WS_X11))
+	return true;
+#else
+	return false;
+#endif
+}
+
+
 void GuiClipboard::on_dataChanged()
 {
 	text_clipboard_empty_ = qApp->clipboard()->

@@ -55,6 +55,9 @@ public:
 	/// \returns true if the system clipboard has been set within LyX
 	/// (document contents, dialogs count as external here).
 	virtual bool isInternal() const = 0;
+	/// \returns true if the OS has the concept of clipboard ownership,
+	/// which is crucial for our concept of internal clipboard.
+	virtual bool hasInternal() const = 0;
 	/// Is the clipboard empty?
 	/// \returns true if both the LyX and the plaintext versions of the
 	/// clipboard are empty.

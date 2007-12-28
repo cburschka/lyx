@@ -39,6 +39,7 @@ public:
 	void put(std::string const & lyx, docstring const & text);
 	bool hasLyXContents() const;
 	bool isInternal() const;
+	bool hasInternal() const;
 	bool empty() const;
 	//@}
 
