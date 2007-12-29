@@ -41,7 +41,8 @@ using std::string;
 void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	OutputParams const & runparams)
 {
-	odocfstream ofs("UTF-8");
+	odocfstream ofs;
+	ofs << setEncoding("UTF-8");
 	if (!openFileWrite(ofs, fname))
 		return;
 	writePlaintextFile(buf, ofs, runparams);
