@@ -104,10 +104,9 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		text.indexOf(exprComment, index + length);
 		index = exprComment.pos(1);
 	}
-	// <LyX Warning: ...> ... </LyX Warning>
-	QString opening = QRegExp::escape(qt_("<LyX Warning:"));
-	QString closing = QRegExp::escape(qt_("</LyX Warning>"));
-	QRegExp exprWarning(opening + "[^<]*" + closing);
+	// <LyX Warning: ...>
+	QString lyxwarn = qt_("LyX Warning: ");
+	QRegExp exprWarning("<" + lyxwarn + "[^<]*>");
 	index = text.indexOf(exprWarning);
 	while (index >= 0) {
 		int length = exprWarning.matchedLength();

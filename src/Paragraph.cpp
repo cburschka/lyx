@@ -2025,9 +2025,10 @@ bool Paragraph::latex(Buffer const & buf,
 					*style, i, column);
 			} catch (EncodingException & e) {
 				if (runparams.dryrun) {
-					os << _("<LyX Warning: uncodable character>");
+					os << "<" << _("LyX Warning: ")
+					   << _("uncodable character") << " '";
 					os.put(c);
-					os << _("</LyX Warning>");
+					os << "'>";
 				} else {
 					// add location information and throw again.
 					e.par_id = id();
