@@ -42,7 +42,6 @@ void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	OutputParams const & runparams)
 {
 	odocfstream ofs;
-	ofs << setEncoding("UTF-8");
 	if (!openFileWrite(ofs, fname))
 		return;
 	writePlaintextFile(buf, ofs, runparams);

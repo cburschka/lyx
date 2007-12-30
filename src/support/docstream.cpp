@@ -300,12 +300,7 @@ idocfstream::idocfstream(const char* s, std::ios_base::openmode mode,
 
 odocfstream::odocfstream(): base()
 {
-}
-
-
-odocfstream::odocfstream(string const & encoding) : base()
-{
-	setEncoding(*this, encoding, out);
+	setEncoding(*this, "UTF-8", out);
 }
 
 

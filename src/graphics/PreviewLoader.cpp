@@ -576,7 +576,15 @@ void PreviewLoader::Impl::startLoading()
 
 	// we use the encoding of the buffer
 	Encoding const & enc = buffer_.params().encoding();
-	odocfstream of(enc.iconvName());
+	odocfstream of;
+	try { of.reset(enc.iconvName()); }
+	catch (iconv_codecvt_facet_exception & e) {
+		lyxerr << "Caught iconv exception: " << e.what()
+		       << "\nUnable to create LaTeX file: "
+		       << latexfile << endl;
+		return;
+	}
+
 	TexRow texrow;
 	OutputParams runparams(&enc);
 	LaTeXFeatures features(buffer_, buffer_.params(), runparams);

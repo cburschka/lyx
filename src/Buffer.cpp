@@ -1127,7 +1127,6 @@ void Buffer::makeDocBookFile(FileName const & fname,
 {
 	LYXERR(Debug::LATEX) << "makeDocBookFile..." << endl;
 
-	//ofstream ofs;
 	odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
