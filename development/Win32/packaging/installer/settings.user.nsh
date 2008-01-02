@@ -13,7 +13,7 @@
 !ifdef FilesDeps
   !define FILES_DEPS "${FilesDeps}"
 !else
-  !define FILES_DEPS "..\..\..\..\lyx-windows-deps-msvc-qt4"
+  !define FILES_DEPS "..\..\..\..\lyx-windows-deps-msvc2008"
 !endif
 
 !ifdef FilesBundle

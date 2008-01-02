@@ -34,14 +34,14 @@ Lists of files to include in the installer
 
 !macro FileListMSVCBin COMMAND DIRECTORY
 
-  ${FILE}msvcr80.dll"
-  ${FILE}msvcp80.dll"
+  ${FILE}msvcr90.dll"
+  ${FILE}msvcp90.dll"
   
 !macroend
 
 !macro FileListMSVCManifest COMMAND DIRECTORY
 
-  ${FILE}\Microsoft.VC80.CRT.manifest"
+  ${FILE}\Microsoft.VC90.CRT.manifest"
   
 !macroend
 
