@@ -858,7 +858,7 @@ src_frontends_qt4_files = Split('''
     LengthCombo.cpp
     LaTeXHighlighter.cpp
     LyXFileDialog.cpp
-    Menus.h
+    Menus.cpp
     PanelStack.cpp
     TocModel.cpp
     TocWidget.cpp
