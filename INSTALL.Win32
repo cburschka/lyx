@@ -1,64 +1,46 @@
-Compiling LyX 1.5 for Win32
+Compiling LyX 1.6 for Win32
 ===========================
 
-LyX 1.5 can be compiled with Microsoft Visual C++ 2005 (recommended) or MinGW.
+LyX 1.6 can be compiled with Microsoft Visual C++ 2008 (recommended) or MinGW.
 
-Compiling with MSVC 2005
+Compiling with MSVC 2008
 ========================
 
-1	Install MSVC 2005 SP1
+1	Install MSVC 2008
 
-	If you don't have MSVC 2005 installed, download and install the free
-	Express edition from http://msdn.microsoft.com/vstudio/express/visualc/
-	From this page you should also download and install Service Pack 1.
+	If you don't have MSVC 2008 installed, download and install the free
+	Express edition from http://www.microsoft.com/express/vc/
 
-	A hotfix needs to be installed because of a bug in the compiler.
-	Search for VS80sp1-KB930859-X86-ENU.exe on Google and install it.
-
-2	Install the Windows Platform SDK
-
-	see: http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
-	(You don't need to install the IIS, MDAC, and Tablet PC SDK that are
-	 delivered with the Platform SDK.)
-
-3	Configure MSVC
-
-	Follow exactly the steps of
-	http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
-	In Step 3 follow also the things noted as alternative.
-	(If you later get an error message that "windows.h" cannot be found,
- 	 create the global Windows environment variables "INCLUDE" and "LIB".
-	 INCLUDE contains the paths to the "include" folders of the installed
-	 platform SDK and of MSVC. LIB contains the corresponding "lib" folders.)
-
-4	Install Python
+2	Install Python
 
 	Get the latest Python 2.5 version at
-	http://www.python.org/download/releases/2.5/
+	http://www.python.org/download/
 
 	Install in C:\Python25 and add this directory to the PATH environment
 	variable (Start > Settings > Control Panel > System > Advanced >
 	Environment Variables).
 
-5	Install SCons
+3	Install SCons
 
-	Download and install SCons 0.96.92 (or newer, but not 0.96.1) from http://www.scons.org/download.php
+	Download the latest SCons version from http://www.scons.org/download.php
 
-6	Install the dependencies
+4	Install the dependencies
 
-	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc-qt4_3_2.zip
+	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
 	and extract in the root directory of your LyX files (so you will get
-	a directory called lyx-windows-deps-msvc-qt4 next to the other directories
+	a directory called lyx-windows-deps-msvc2008 next to the other directories
 	like src, development etc.).
 
-7	Compile
+5	Compile
 
-	From MS Visual Studio command prompt (not the regular cmd.exe), 
-	run 
-	  > cd <lyx root directory>\development\Win32\packaging
-	  > build_msvc.bat
+	Start a Visual Studio command prompt (Start > Programs >
+	Microsoft Visual C++ 9.0 Express Edition > Visual Studio Tools >
+	Visual Studio 2008 Command Prompt) and run:
 
-8	First start of LyX
+	cd <lyx root directory>\development\Win32\packaging
+	build_msvc.bat
+
+6	First start of LyX
 
 	To start the just compiled lyx.exe, it is necessary to copy the following
 	files to the folder where the just compiled "lyx.exe" is:
@@ -67,37 +49,37 @@ Compiling with MSVC 2005
 	aspell.dll
 	iconv.dll
 	intl.dll
-	Microsoft.VC80.CRT.manifest
-	msvcp80.dll
-	msvcr80.dll
+	Microsoft.VC90.CRT.manifest
+	msvcp90.dll
+	msvcr90.dll
 	QtCore4.dll
 	QtGui4.dll
 
-	msvcp80.dll and msvcr80.dll are the C Runtime and C++ libraries
-	supplied with MSVC 2005. They are freely redistributable.
-	See http://msdn2.microsoft.com/en-us/library/8kche8ah(VS.80).aspx
+	msvcp90.dll and msvcr90.dll are the C Runtime and C++ libraries
+	supplied with MSVC 2008. They are freely redistributable.
+	See http://msdn2.microsoft.com/en-us/library/8kche8ah.aspx
 	for details.
 
 	All of the other .dlls above and the lyx executable are compiled
 	from code released under the GPL which states (section 3) that
-	GPL software may be linked against system files such as msvcp80.dll
-	and msvcr80.dll.
+	GPL software may be linked against system files such as msvcp90.dll
+	and msvcr90.dll.
 
 Compiling with MinGW
 ====================
 
 	These instructions allow you to create a basic LyX build with MinGW.
-	To be able to use all LyX features, compiling with MSVC 2005 is recommended.
+	To be able to use all LyX features, compiling with MSVC 2008 is recommended.
 	Creating an installer for MinGW builds is no longer supported.
 
 1	Install MinGW, and all the gcc-related stuff, and win32api. 
 
-2	download qt-win-opensource-4.x.x-mingw.exe and install to c:\qt\4.2.2.
+2	download qt-win-opensource-4.x.x-mingw.exe and install to c:\qt.
 
 3	install python and scons as instructed above. Set $path for python
 	   to make your life a bit easier.
 
-4	Check out lyx svn to c:\lyx-devel\lyx-1.5.x
+4	Check out lyx svn to c:\lyx-devel\lyx-1.6.x
 
 5	Download zlib binaries and developer files (zlib-1.2.3-bin.zip and
 	   zlib-1.2.3-lib.zip) from http://gnuwin32.sourceforge.net/packages/zlib.htm
@@ -106,13 +88,13 @@ Compiling with MinGW
 	   unpack all of them to the same directory c:\lyx-devel\mingw_deps.
 
 6	start a command window, run commands:
-	   $ cd c:\lyx-devel\lyx-1.5.x
+	   $ cd c:\lyx-devel\lyx-1.6.x
 	   $ scons -f development\scons\SConstruct \
 	       extra_lib_path=..\mingw_deps\lib  \
 		   extra_inc_path=..\mingw_deps\include \
 		   extra_bin_path=..\mingw_deps\bin \
-		   qt_dir=c:\qt\4.2.2 \
-		   DESTDIR=..\lyx-1.5-install \
+		   qt_dir=c:\qt \
+		   DESTDIR=..\lyx-1.6-install \
 		   install
 
 
