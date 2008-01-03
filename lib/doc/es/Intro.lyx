@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -19,8 +19,8 @@
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
   {\usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier} }
+    \usepackage{mathptmx}
+    \usepackage{courier} }
 
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
@@ -31,7 +31,7 @@
   pdfauthor={LyX Team}, pdftex,
   pdftitle={Introducción a LyX},pdfsubject={LyX-documentación Introducción},
   pdfkeywords={LyX, Documentación}]{hyperref}
- 
+
 \else % if dvi or ps is produced
 
  % link all cross references and URLs in dvi output
@@ -44,9 +44,9 @@
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contenidos}{}
+   \pdfbookmark[1]{Índice}{}
    \myTOC
-   \cleardoublepage
+   \clearpage
    \pagenumbering{arabic} }
 
 % redefine the \LyX macro for PDF bookmarks
@@ -121,7 +121,7 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Section
-La Filosofía de LyX
+La filosofía de LyX
 \end_layout
 
 \begin_layout Subsection
@@ -205,7 +205,15 @@ qué carácter va en qué lugar
  Resaltar texto significa cambiar el tipo de letra, similar a cambiar la
  rueda en una máquina de escribir.
  Esta es la filosofía subyacente en un preocesador de textos del tipo WYSIWYG:
- "What You See Is What You Get" (
+ 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset
+
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -301,8 +309,8 @@ Introducción
 
 .
  Eso es todo.
- Si cortas y pegas la sección, será renumerada automáticamente -- en todas
- partes.
+ Si cortas y pegas la sección, será renumerada automáticamente ---en todas
+ partes---.
  Y si introduces correctamente referencias a esa sección (insertando una
  etiqueta de referencia cruzada), LyX las actualizará automáticamente a
  través de todo el documento, de manera que nunca tendrás que escribir un
@@ -364,16 +372,16 @@ lo que ves es lo que quieres decir
  (WYSIWIM, What You See Is What You Mean).
  Es una idea poderosa que simplifica mucho los mecanismos de la escritura
  de documentos.
- Y por esto es por lo que LyX no es idóneo para crear posters y volantes---en
- estos casos 
+ Y por esto es por lo que LyX no es idóneo para crear posters y volantes
+ ---en estos casos 
 \emph on
 sí
 \emph default
  quieres especificar exactamente dónde va cada cosa porque no hay unidades
- funcionales como párrafos, secciones, etc.
+ funcionales como párrafos, secciones, etc---.
  Esto no significa que LyX ha perdido funcionalidad, significa simplemente
- que no es la herramienta adecuada para esas tareas --- para clavar un clavo
- no usas un destornillador.
+ que no es la herramienta adecuada para esas tareas ---para clavar un clavo
+ no usas un destornillador---.
  
 \end_layout
 
@@ -382,12 +390,12 @@ sí
 \end_layout
 
 \begin_layout Subsection
-Diferencias entre LyX y otros Procesadores de Texto
+Diferencias entre LyX y otros procesadores de texto
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Standard
-LyX y Otros Procesadores de Texto
+LyX y otros procesadores de texto
 \end_layout
 
 \end_inset
@@ -463,7 +471,7 @@ Estilo de letra (negrita, cursiva, subrayado, etc.)
 
 \begin_layout Standard
 Aunque existen en LyX, normalmente no se necesitan.
- El programa se preocupa de estas cosas por tí, actuando en consecuencia
+ El programa se preocupa de estas cosas por ti, actuando en consecuencia
  según lo que estés haciendo.
  Diferentes partes del documento son automáticamente puestas en diferente
  tamaño y estilo de letra.
@@ -479,13 +487,13 @@ status collapsed
 Se pueden ajustar todas estas características (sólo el ajuste de unas pocas
  requiere conocimientos de LaTeX), tanto para todo el documento como para
  una parte concreta.
- Ver 
+ Véase la 
 \emph on
 Guía del Usuario
 \emph default
  y/o 
 \emph on
-Características estendidas
+Características extendidas
 \emph default
  para más detalles.
 \end_layout
@@ -718,7 +726,7 @@ lo
 \end_layout
 
 \begin_layout Section
-Navegando por la Documentación
+Navegando por la documentación
 \end_layout
 
 \begin_layout Standard
@@ -744,7 +752,8 @@ trabajo de verdad
 \end_inset
 
 , familia, platos que fregar, cestos del gato que limpiar, etc.
- (Si quieres ayudar, asegúrate de leer la sección 
+ (Si quieres ayudar, asegúrate de leer la sección\InsetSpace ~
+
 \begin_inset LatexCommand ref
 reference "sec:Contrib"
 
@@ -773,12 +782,12 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Subsection
-El Formato de los Manuales
+El Formato de los manuales
 \end_layout
 
 \begin_layout Standard
-Algunos leereis los manuales en versión para imprimir.
- Otros podeis estar leyéndolos en la pantalla de LyX.
+Algunos leeréis los manuales en versión para imprimir.
+ Otros podéis estar leyéndolos en la pantalla de LyX.
  Hay algunas diferencias entre la versión para imprimir y el archivo LyX.
  En primer lugar, el título está simplemente al principio del documento,
  no en una página separada como en algunas de las versiones para imprimir.
@@ -821,8 +830,8 @@ sec:Contrib
 \end_inset
 
 .
- Puedes ir a dicha sección con click-derecha sobre el cuadro o pulsando
- el botón 
+ Puedes ir a dicha sección con clic-derecha sobre el cuadro o pulsando el
+ botón 
 \family sans
 
 \begin_inset Quotes eld
@@ -848,7 +857,7 @@ Volver
 \begin_layout Standard
 Una vez aclaradas algunas diferencias entre las versiones de impresión y
  en pantalla de este archivo, podemos seguir echando un vistazo a su formato.
- De vez en cuendo verás algunas cosas en distintos tipos de letra:
+ De vez en cuando verás algunas cosas en distintos tipos de letra:
 \end_layout
 
 \begin_layout Itemize
@@ -1076,7 +1085,7 @@ Abajo
 \begin_inset Quotes erd
 \end_inset
 
-: autoexplicativas (también llamadas teclas de dirección o cursores).
+: auto-explicativas (también llamadas teclas de dirección o cursores).
 \end_layout
 
 \begin_layout Itemize
@@ -1247,17 +1256,9 @@ También verás de vez en cuando algo como
 \begin_inset Quotes eld
 \end_inset
 
-(Ver 
-\begin_inset Quotes els
-\end_inset
-
-
+(Véase 
 \emph on
 Características extendidas
-\begin_inset Quotes ers
-\end_inset
-
-
 \emph default
 )
 \begin_inset Quotes erd
@@ -1267,15 +1268,7 @@ Características extendidas
  Hemos listado las posibles asociaciones de teclas predeterminadas para
  cada función en su correspondiente entrada en el manual 
 \emph on
-
-\begin_inset Quotes eld
-\end_inset
-
 Características extendidas
-\begin_inset Quotes erd
-\end_inset
-
-
 \emph default
 , así que mira también allí.
  Observa que hay dos mapas de teclado diferentes de uso habitual en la comunidad
@@ -1303,7 +1296,7 @@ en al mapa predeterminado CUA.
 \end_layout
 
 \begin_layout Subsection
-Unidades empleadas en los Manuales
+Unidades empleadas en los manuales
 \end_layout
 
 \begin_layout Standard
@@ -1843,7 +1836,7 @@ em)
 \end_layout
 
 \begin_layout Subsection
-Los Manuales
+Los manuales
 \end_layout
 
 \begin_layout Standard
@@ -1885,7 +1878,7 @@ del
 \InsetSpace ~
 
 \emph default
-Usuario La documentación principal.
+usuario La documentación principal.
  Intentaremos cubrir aquí la mayor parte de las opciones y características
  básicas de LyX.
  El manual principal supone que ya has leído el 
@@ -1896,10 +1889,10 @@ Tutorial
 \end_layout
 
 \begin_layout Description
-Objetos\InsetSpace ~
-Empotrados Ampliación de la 
+Embedded\InsetSpace ~
+Objects Ampliación de la 
 \emph on
-Guía del Usuario
+Guía del usuario
 \emph default
 .
  Explica con detalle el empleo de tablas, gráficos, flotantes, notas y cuadros.
@@ -1908,9 +1901,9 @@ Guía del Usuario
 
 \begin_layout Description
 Características\InsetSpace ~
-Extendidas Ampliación de la 
+extendidas Ampliación de la 
 \emph on
-Guía del Usuario
+Guía del usuario
 \emph default
 .
  Documenta el uso de comandos LaTeX puros, formatos adicionales y característica
@@ -1927,7 +1920,7 @@ s de teclas, internacionalización y ficheros de configuración.
 Configuración\InsetSpace ~
 de\InsetSpace ~
 LaTeX LyX explora tu sistema durante la instalación.
- Este fichero contiene la información que LyX ha extraido de tu instalación.
+ Este fichero contiene la información que LyX ha extraído de tu instalación.
  Examínalo para ver si echas en falta algo que deberías tener.
 \end_layout
 
@@ -1941,9 +1934,9 @@ Guía del Usuario
 \emph on
 algo
 \emph default
- sobre la instalación y personalización, pero remite al lector al 
+ sobre la instalación y personalización, pero remite al lector al manual
 \emph on
-Manual de Personalización
+ Personalización
 \emph default
  para más información.
 \end_layout
@@ -1953,7 +1946,7 @@ De nuevo, destacamos un punto importante:
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 0.51cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -1971,7 +1964,7 @@ Tutorial
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 0.51cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -1984,12 +1977,13 @@ Si no, podrías quedar frustrado sin necesidad.
 \end_layout
 
 \begin_layout Section
+Contribuir al proyecto LyX
 \begin_inset LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Contribuir al Proyecto LyX
+
 \end_layout
 
 \begin_layout Subsection
@@ -1997,7 +1991,7 @@ Colaborar con LyX
 \end_layout
 
 \begin_layout Standard
-LyX está escrito casi todo en lenguaje C++ (el impotador LaTeX está escrito
+LyX está escrito casi todo en lenguaje C++ (el importador LaTeX está escrito
  en Python).
  Es un extenso proyecto, y por tanto no está libre de errores, ni de la
  necesidad de mejoras en el código fuente.
@@ -2088,7 +2082,7 @@ diff
 \end_layout
 
 \begin_layout Subsection
-Contribuir a la Documentación
+Contribuir a la documentación
 \end_layout
 
 \begin_layout Standard
@@ -2099,7 +2093,7 @@ La documentación de LyX es extensa; sin embargo, LyX está en continuo desarrol
 \end_layout
 
 \begin_layout Subsubsection
-Informar de Errores en los Manuales
+Informar de errores en los manuales
 \end_layout
 
 \begin_layout Standard
@@ -2140,7 +2134,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsubsection
-Unirse al Equipo de Documentación
+Unirse al equipo de documentación
 \end_layout
 
 \begin_layout Standard
@@ -2194,7 +2188,7 @@ Guía del usuario
 \end_layout
 
 \begin_layout Enumerate
-Ponte en conacto con el equipo en:
+Ponte en contacto con el equipo en:
 \newline
 
 \family typewriter
