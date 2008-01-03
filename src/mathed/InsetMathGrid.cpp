@@ -625,7 +625,7 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void InsetMathGrid::drawT(TextPainter & pain, int x, int y) const
+void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 {
 //	for (idx_type idx = 0; idx < nargs(); ++idx)
 //		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));

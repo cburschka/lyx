@@ -248,7 +248,7 @@ void InsetMathFrac::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void InsetMathFrac::drawT(TextPainter & pain, int x, int y) const
+void InsetMathFrac::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 {
 	// FIXME: BROKEN!
 	/*

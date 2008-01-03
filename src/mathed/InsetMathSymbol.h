@@ -35,7 +35,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	int kerning(BufferView const * bv) const { return kerning_; }
+	int kerning(BufferView const *) const { return kerning_; }
 
 	///
 	bool isRelOp() const;
