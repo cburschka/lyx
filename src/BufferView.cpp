@@ -68,6 +68,7 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -1168,10 +1169,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
 	
-	case LFUN_BUFFER_TOGGLE_EMBEDDING:
+	case LFUN_BUFFER_TOGGLE_EMBEDDING: {
 		// turn embedding on/off
-		buffer_.embeddedFiles().enable(!buffer_.params().embedded);
+		try {
+			buffer_.embeddedFiles().enable(!buffer_.params().embedded);
+		} catch (ExceptionMessage const & message) {
+			Alert::error(message.title_, message.details_);
+		}
 		break;
+	}
 
 	case LFUN_NEXT_INSET_TOGGLE: {
 		// this is the real function we want to invoke

@@ -193,7 +193,7 @@ public:
 	// try to locate filename, using either absFilename() or embeddedFile()
 	EmbeddedFileList::const_iterator find(std::string filename) const;
 	/// extract all file items, used when disable embedding
-	bool extract() const;
+	bool extractAll() const;
 	/// update all files from external, used when enable embedding
 	bool updateFromExternalFile() const;
 	///

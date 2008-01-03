@@ -31,6 +31,7 @@
 #include "support/gettext.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileZipListDir.h"
 
 #include <sstream>
@@ -134,7 +135,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	// need to make directory?
 	FileName path = ext.onlyPath();
 	if (!path.createPath()) {
-		Alert::error(_("Copy file failure"),
+		throw ExceptionMessage(ErrorException, _("Copy file failure"),
 			bformat(_("Cannot create file path '%1$s'.\n"
 			"Please check whether the path is writeable."),
 			from_utf8(path.absFilename())));
@@ -144,7 +145,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	if (emb.copyTo(ext))
 		return true;
 
-	Alert::error(_("Copy file failure"),
+	throw ExceptionMessage(ErrorException, _("Copy file failure"),
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
 				 "Please check whether the directory exists and is writeable."),
 				from_utf8(emb_file), from_utf8(ext_file)));
@@ -185,8 +186,9 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 		path.createPath();
 	if (ext.copyTo(emb))
 		return true;
-	Alert::error(_("Copy file failure"),
-		 bformat(_("Cannot copy file %1$s to %2$s.\n"
+	throw ExceptionMessage(ErrorException, 
+		_("Copy file failure"),
+		bformat(_("Cannot copy file %1$s to %2$s.\n"
 			   "Please check whether the directory exists and is writeable."),
 				from_utf8(ext_file), from_utf8(emb_file)));
 	//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
@@ -212,11 +214,16 @@ bool EmbeddedFiles::enabled() const
 void EmbeddedFiles::enable(bool flag)
 {
 	if (enabled() != flag) {
-		// if enable, copy all files to temppath()
-		// if disable, extract all files
-		if ((flag && !updateFromExternalFile()) || (!flag && !extract()))
-			return;
-		// if operation is successful
+		// update embedded file list
+		update();
+		// An exception may be thrown.
+		if (flag)
+			// if enable, copy all files to temppath()
+			updateFromExternalFile();
+		else
+			// if disable, extract all files
+			extractAll();
+		// if operation is successful (no exception is thrown)
 		buffer_->markDirty();
 		buffer_->params().embedded = flag;
 		if (flag)
@@ -309,14 +316,25 @@ EmbeddedFiles::find(string filename) const
 }
 
 
-bool EmbeddedFiles::extract() const
+bool EmbeddedFiles::extractAll() const
 {
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();
+	int count_extracted = 0;
+	int count_external = 0;
 	for (; it != it_end; ++it)
-		if (it->embedded())
-			if(!it->extract(buffer_))
-				return false;
+		if (it->embedded()) {
+			if(!it->extract(buffer_)) {
+				throw ExceptionMessage(ErrorException,
+					_("Failed to extract file"),
+					bformat(_("Error: can not extract file %1$s.\n"), it->displayName()));
+			} else
+				count_extracted += 1;
+		} else
+			count_external += 1;
+	docstring const msg = bformat(_("%1$d external files are ignored.\n"
+		"%2$d embedded files are extracted.\n"), count_external, count_extracted);
+	Alert::information(_("Unpacking all files"), msg);
 	return true;
 }
 
@@ -325,10 +343,22 @@ bool EmbeddedFiles::updateFromExternalFile() const
 {
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();
+	int count_embedded = 0;
+	int count_external = 0;
 	for (; it != it_end; ++it)
-		if (it->embedded())
-			if (!it->updateFromExternalFile(buffer_))
+		if (it->embedded()) {
+			if (!it->updateFromExternalFile(buffer_)) {
+				throw ExceptionMessage(ErrorException,
+					_("Failed to embed file"),
+					bformat(_("Error: can not embed file %1$s.\n"), it->displayName()));
 				return false;
+			} else
+				count_external += 1;
+		} else
+			count_external += 1;
+	docstring const msg = bformat(_("%1$d external files are ignored.\n"
+		"%2$d embeddable files are embedded.\n"), count_external, count_embedded);
+	Alert::information(_("Packing all files"), msg);
 	return true;
 }
 
