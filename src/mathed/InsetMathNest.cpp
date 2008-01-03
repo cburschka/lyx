@@ -1141,8 +1141,6 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_SIZE:
 	case LFUN_MATH_SPACE:
 	case LFUN_MATH_LIMITS:
-	case LFUN_MATH_NONUMBER:
-	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_EXTERN:
 		flag.enabled(true);
 		break;
