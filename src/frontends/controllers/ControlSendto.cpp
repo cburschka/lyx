@@ -63,8 +63,10 @@ vector<Format const *> const ControlSendto::allFormats() const
 
 	Buffer const & buffer = kernel().buffer();
 
-	if (buffer.isLatex())
+	if (buffer.isLatex()) {
 		exports.push_back("latex");
+		exports.push_back("pdflatex");
+	}
 	else if (buffer.isDocBook())
 		exports.push_back("docbook");
 	else if (buffer.isLiterate())
