@@ -239,7 +239,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-bool InsetBox::isMacroScope(Buffer const & buf) const
+bool InsetBox::isMacroScope(Buffer const &) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 	return btype != Frameless || params_.inner_box;

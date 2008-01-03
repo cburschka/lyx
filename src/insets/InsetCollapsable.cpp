@@ -798,7 +798,7 @@ InsetCollapsable::Decoration InsetCollapsable::decoration() const
 }
 
 
-bool InsetCollapsable::isMacroScope(Buffer const & buf) const
+bool InsetCollapsable::isMacroScope(Buffer const &) const
 {
 	// layout_ == 0 leads to no latex output, so ignore 
 	// the macros outside
