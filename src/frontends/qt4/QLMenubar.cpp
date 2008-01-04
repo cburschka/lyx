@@ -79,9 +79,6 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 			continue;
 		}
 
-		Menu menu;
-		menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
-
 		QLPopupMenu * qMenu = new QLPopupMenu(this, *m, true);
 		owner_->menuBar()->addMenu(qMenu);
 
