@@ -1074,30 +1074,28 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetMathGrid::doDispatch(cur, cmd);
 		break;
 
-	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NUMBER: {
 		//lyxerr << "toggling all numbers" << endl;
-		if (display()) {
-			recordUndoInset(cur);
-			bool old = numberedType();
-			if (type_ == hullMultline)
-				numbered(nrows() - 1, !old);
-			else
-				for (row_type row = 0; row < nrows(); ++row)
-					numbered(row, !old);
-
-			cur.message(old ? _("No number") : _("Number"));
-		}
+		recordUndoInset(cur);
+		bool old = numberedType();
+		if (type_ == hullMultline)
+			numbered(nrows() - 1, !old);
+		else
+			for (row_type row = 0; row < nrows(); ++row)
+				numbered(row, !old);
+		
+		cur.message(old ? _("No number") : _("Number"));
 		break;
+	}
 
-	case LFUN_MATH_NONUMBER:
-		if (display()) {
+	case LFUN_MATH_NONUMBER: {
 			recordUndoInset(cur);
 			row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			bool old = numbered(r);
 			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
-		}
 		break;
+	}
 
 	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
@@ -1190,17 +1188,27 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FINISHED_RIGHT:
 	case LFUN_UP:
 	case LFUN_DOWN:
-		status.enabled(true);
-		return true;
 	case LFUN_BREAK_LINE:
-	case LFUN_MATH_NUMBER:
-	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
 		status.enabled(true);
 		return true;
+	case LFUN_MATH_NUMBER:
+		// FIXME: what is the right test, this or the one of
+		// LABEL_INSERT?
+		status.enabled(display());
+		status.setOnOff(numberedType());
+		return true;
+	case LFUN_MATH_NONUMBER: {
+		// FIXME: what is the right test, this or the one of
+		// LABEL_INSERT?
+		status.enabled(display());
+		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		status.setOnOff(numbered(r));
+		return true;
+	}
 	case LFUN_LABEL_INSERT:
 		status.enabled(type_ != hullSimple);
 		return true;
