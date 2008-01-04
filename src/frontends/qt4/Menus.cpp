@@ -75,9 +75,6 @@ void Menus::fillMenuBar(GuiView * view)
 			continue;
 		}
 
-		Menu menu;
-		expand(getMenubar(), menu, view->buffer());
-
 		GuiPopupMenu * qMenu = new GuiPopupMenu(view, *m, true);
 		view->menuBar()->addMenu(qMenu);
 
