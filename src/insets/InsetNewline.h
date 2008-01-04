@@ -45,7 +45,7 @@ public:
 	// a line separator)?
 	bool isSpace() const;
 
-	virtual docstring insetLabel() const { return _(""); }
+	virtual docstring insetLabel() const { return docstring(); }
 
 	virtual std::string getLyXName() const { return "\\newline"; }
 
