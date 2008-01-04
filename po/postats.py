@@ -24,13 +24,12 @@ to retrieve the number of translated/fuzzy/untranslated messages,
 and generates a PHP web page.
 
 Invocation:
-   postats.py po_files > "pathToWebPages"/i18n.inc
+   postats.py lyx_version po_files > "pathToWebPages"/i18n.inc
 """
 
-# modify this when you change version
+# modify this when you change branch
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_version="1.6.0svn"
 lyx_branch=""
 
 import os
@@ -139,4 +138,4 @@ $branch_tag = "%s";
 // The data itself
 $podata = array (%s
 )?>
-""" % (lyx_version, branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[1:]]))
+""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:]]))
