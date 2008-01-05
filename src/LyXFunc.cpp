@@ -1659,6 +1659,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
+			buffer->params().makeTextClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1670,6 +1671,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
+			buffer->params().makeTextClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1698,6 +1700,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(new_class);
+			buffer->params().makeTextClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1710,6 +1713,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			textclass_type const tc = buffer->params().getBaseClass();
 			textclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
+			buffer->params().makeTextClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;

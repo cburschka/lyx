@@ -314,6 +314,7 @@ BufferParams::BufferParams()
 	: pimpl_(new Impl)
 {
 	setBaseClass(defaultTextclass());
+	makeTextClass();
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
 	fontsize = "default";
@@ -497,7 +498,6 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		readPreamble(lex);
 	} else if (token == "\\begin_modules") {
 		readModules(lex);
-		makeTextClass();
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -1363,24 +1363,16 @@ void BufferParams::setTextClass(TextClassPtr tc) {
 
 bool BufferParams::setBaseClass(textclass_type tc)
 {
-	bool retVal = true;
-	if (textclasslist[tc].load())
+	if (textclasslist[tc].load()) {
 		baseClass_ = tc;
-	else {
-		docstring s = 
-			bformat(_("The document class %1$s could not be loaded."),
-		 from_utf8(textclasslist[tc].name()));
-		frontend::Alert::error(_("Could not load class"), s);
-		retVal = false;
+		return true;
 	}
-	makeTextClass();
-	return retVal;
-}
-
-
-void BufferParams::setJustBaseClass(textclass_type tc)
-{ 
-	baseClass_ = tc; 
+	
+	docstring s = 
+		bformat(_("The document class %1$s could not be loaded."),
+		from_utf8(textclasslist[tc].name()));
+	frontend::Alert::error(_("Could not load class"), s);
+	return false;
 }
 
 
@@ -1393,6 +1385,7 @@ textclass_type BufferParams::getBaseClass() const
 void BufferParams::makeTextClass()
 {
 	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
+	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 
 	//doing a check in InsetInclude.
@@ -1432,7 +1425,7 @@ vector<string> const & BufferParams::getModules() const {
 
 
 
-bool BufferParams::addLayoutModule(string modName, bool makeClass) {
+bool BufferParams::addLayoutModule(string modName) {
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();
 	for (; it != end; it++) {
@@ -1442,27 +1435,23 @@ bool BufferParams::addLayoutModule(string modName, bool makeClass) {
 	if (it != layoutModules_.end())
 		return false;
 	layoutModules_.push_back(modName);
-	if (makeClass)
-		makeTextClass();
 	return true;
 }
 
-
+/* This is not currently used but may prove useful
 bool BufferParams::addLayoutModules(vector<string>modNames)
 {
 	bool retval = true;
 	vector<string>::const_iterator it = modNames.begin();
 	vector<string>::const_iterator end = modNames.end();
 	for (; it != end; ++it)
-		retval &= addLayoutModule(*it, false);
-	makeTextClass();
+		retval &= addLayoutModule(*it);
 	return retval;
 }
-
+*/
 
 void BufferParams::clearLayoutModules() {
 	layoutModules_.clear();
-	makeTextClass();
 }
 
 

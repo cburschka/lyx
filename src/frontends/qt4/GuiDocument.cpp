@@ -913,7 +913,7 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 void GuiDocument::classChanged()
 {
 	textclass_type const tc = latexModule->classCO->currentIndex();
-	bp_.setJustBaseClass(tc);
+	bp_.setBaseClass(tc);
 	if (lyxrc.auto_reset_options)
 		bp_.useClassDefaults();
 	updateContents();
@@ -1097,12 +1097,14 @@ void GuiDocument::apply(BufferParams & params)
 	params.graphicsDriver =
 		tex_graphics[latexModule->psdriverCO->currentIndex()];
 	
+	// text layout
+	params.setBaseClass(latexModule->classCO->currentIndex());
+
 	// Modules
 	params.clearLayoutModules();
 	QStringList const selMods = selectedModel()->stringList();
 	for (int i = 0; i != selMods.size(); ++i)
 		params.addLayoutModule(lyx::fromqstr(selMods[i]));
-
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
@@ -1121,9 +1123,6 @@ void GuiDocument::apply(BufferParams & params)
 		else
 			params.use_esint = BufferParams::package_off;
 	}
-
-	// text layout
-	params.setJustBaseClass(latexModule->classCO->currentIndex());
 
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		params.pagestyle = "default";
@@ -1639,7 +1638,7 @@ void GuiDocument::updateContents()
 
 void GuiDocument::useClassDefaults()
 {
-	bp_.setJustBaseClass(latexModule->classCO->currentIndex());
+	bp_.setBaseClass(latexModule->classCO->currentIndex());
 	bp_.useClassDefaults();
 	updateContents();
 }
@@ -1742,8 +1741,6 @@ void GuiDocument::dispatchParams()
 
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
-	//FIXME Could this be done last? Then, I think, we'd get the automatic
-	//update mentioned in the next FIXME...
 	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
 
 	// Generate the colours requested by each new branch.

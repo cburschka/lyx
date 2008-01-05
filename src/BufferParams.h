@@ -108,24 +108,19 @@ public:
 	std::string fontsize;
 	///Get the LyX TextClass (that is, the layout file) this document is using.
 	textclass_type getBaseClass() const;
-	///Set the LyX TextClass (that is, the layout file) this document is using.
-	///NOTE This also calls makeTextClass(), to update the local
-	///TextClass.
+	/// Set the LyX TextClass (that is, the layout file) this document is using.
+	/// NOTE: This does not call makeTextClass() to update the local TextClass.
+	/// That needs to be done manually.
 	bool setBaseClass(textclass_type);
-	///Returns the TextClass currently in use: the BaseClass as modified
-	///by modules.
+	/// Adds the module information to the baseClass information to
+	/// create our local TextClass.
+	void makeTextClass();
+	/// Returns the TextClass currently in use: the BaseClass as modified
+	/// by modules.
 	TextClass const & getTextClass() const;
-	///Returns a pointer to the TextClass currently in use: the BaseClass 
-	///as modified by modules. (See \file TextClassPtr.h for the typedef.)
+	/// Returns a pointer to the TextClass currently in use: the BaseClass 
+	/// as modified by modules. (See \file TextClassPtr.h for the typedef.)
 	TextClassPtr getTextClassPtr() const;
-	///Set the LyX TextClass---layout file---this document is using.
-	///This does NOT call makeTextClass() and so should be used with
-	///care. This is most likely not what you want if you are operating on 
-	///BufferParams that are actually associatd with a Buffer. If, on the
-	///other hand, you are using a temporary set of BufferParams---say, in
-	///a controller, it may well be, since in that case the local TextClass
-	///has nothing to do.
-	void setJustBaseClass(textclass_type);
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
@@ -134,10 +129,15 @@ public:
 	std::vector<std::string> const & getModules() const;
 	/// Add a module to the list of modules in use.
 	/// Returns true if module was successfully added.
-	bool addLayoutModule(std::string modName, bool makeClass = true);
-	/// Add a list of modules.
-	/// Returns true if all modules were successfully added.
-	bool addLayoutModules(std::vector<std::string>modNames);
+	/// The makeClass variable signals whether to call makeTextClass. This
+	/// need not be done if we know this isn't the final time through, or if
+	/// the BufferParams do not represent the parameters for an actual buffer
+	/// (as in GuiDocument).
+	bool addLayoutModule(std::string modName);
+	// Add a list of modules.
+	// Returns true if all modules were successfully added.
+	// Currently unused.
+	// bool addLayoutModules(std::vector<std::string>modNames);
 	/// Clear the list
 	void clearLayoutModules();
 
@@ -314,11 +314,7 @@ private:
 	void readBulletsLaTeX(Lexer &);
 	///
 	void readModules(Lexer &);
-	/// Adds the module information to the baseClass information to
-	/// create our local TextClass.
-	void makeTextClass();
 
-	
 	/// for use with natbib
 	biblio::CiteEngine cite_engine_;
 	/// the base TextClass associated with the document
