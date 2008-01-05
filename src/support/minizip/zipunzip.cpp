@@ -55,6 +55,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include "support/FileName.h"
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
@@ -91,6 +92,7 @@
 #define MAXFILENAME (256)
 
 using namespace std;
+using lyx::support::FileName;
 
 
 #ifdef WIN32
@@ -264,70 +266,6 @@ bool zipFiles(string const & zipfile, vector<pair<string, string> > const & file
 
 // adapted from miniunz.c
 
-
-int mymkdir(char const * pathname, unsigned long int mode)
-{
-#if HAVE_MKDIR
-# if MKDIR_TAKES_ONE_ARG
-	// MinGW32
-	return ::mkdir(pathname);
-# else
-	// POSIX
-	return ::mkdir(pathname, mode_t(mode));
-# endif
-#elif defined(_WIN32)
-	// plain Windows 32
-	return CreateDirectory(pathname, 0) != 0 ? 0 : -1;
-#elif HAVE__MKDIR
-	return ::_mkdir(pathname);
-#else
-#   error "Don't know how to create a directory on this system."
-#endif
-}
-
-
-int makedir(char * newdir)
-{
-	char *buffer;
-	char *p;
-	int	len = (int)strlen(newdir);
-	int mode = 0775;
-
-	if (len <= 0)
-		return 1;
-
-	buffer = (char*)malloc(len+1);
-	strcpy(buffer,newdir);
-
-	if (buffer[len-1] == '/')
-		buffer[len-1] = '\0';
-	if (mymkdir(buffer, mode) == 0) {
-		free(buffer);
-		return 0;
-	}
-
-	p = buffer + 1;
-	while (1) {
-		char hold;
-
-		while(*p && *p != '\\' && *p != '/')
-			p++;
-		hold = *p;
-		*p = 0;
-		if (mymkdir(buffer, mode) != 0) {
-			printf("couldn't create directory %s\n",buffer);
-			free(buffer);
-			return 1;
-		}
-		if (hold == 0)
-			break;
-		*p++ = hold;
-	}
-	free(buffer);
-	return 0;
-}
-
-
 /* change_file_date : change the date/time of a file
 	filename : the filename of the file where date/time must be modified
 	dosdate : the new date at the MSDos format (4 bytes)
@@ -374,7 +312,8 @@ int do_extract_currentfile(unzFile uf,
 	const char * password,
 	const char * dirname)
 {
-	char filename_inzip[256];
+	char full_path[1024];
+	char* filename_inzip = full_path;
 	char* filename_withoutpath;
 	char* p;
 	int err=UNZ_OK;
@@ -382,9 +321,16 @@ int do_extract_currentfile(unzFile uf,
 	void* buf;
 	uInt size_buf;
 
+	strcpy(full_path, dirname);
+	while ((*filename_inzip) != '\0') filename_inzip++;
+	if (*(filename_inzip-1) != '/' && *(filename_inzip-1) != '\\') {
+		*filename_inzip = '/';
+		*(++filename_inzip) = '\0';
+	}
+
 	unz_file_info file_info;
 	//uLong ratio=0;
-	err = unzGetCurrentFileInfo(uf,&file_info,filename_inzip,sizeof(filename_inzip),NULL,0,NULL,0);
+	err = unzGetCurrentFileInfo(uf,&file_info,filename_inzip,256,NULL,0,NULL,0);
 
 	if (err!=UNZ_OK) {
 		printf("error %d with zipfile in unzGetCurrentFileInfo\n",err);
@@ -406,42 +352,32 @@ int do_extract_currentfile(unzFile uf,
 	}
 	// this is a directory
 	if ((*filename_withoutpath)=='\0') {
-		if ((*popt_extract_without_path)==0)
-			makedir(filename_inzip);
+		if ((*popt_extract_without_path)==0) {
+			printf("Create directory %s\n", filename_inzip);
+			FileName(filename_inzip).createPath();
+		}
 	}
 	// this is a filename
 	else {
-		char write_filename[1024];
-
-		strcpy(write_filename, dirname);
-		int len = strlen(write_filename);
-		if (write_filename[len-1] != '\\' &&
-			write_filename[len-1] != '/')
-			strcat(write_filename, "/");
-
-		if ((*popt_extract_without_path)==0)
-			strcat(write_filename, filename_inzip);
-		else
-			strcat(write_filename, filename_withoutpath);
-
 		err = unzOpenCurrentFilePassword(uf,password);
 		if (err!=UNZ_OK) {
 			printf("error %d with zipfile in unzOpenCurrentFilePassword\n",err);
 		} else {
-			fout=fopen(write_filename, "wb");
+			fout=fopen(full_path, "wb");
 
 			/* some zipfile don't contain directory alone before file */
 			if ((fout==NULL) && ((*popt_extract_without_path)==0) &&
 				(filename_withoutpath!=(char*)filename_inzip)) {
 				char c=*(filename_withoutpath-1);
 				*(filename_withoutpath-1)='\0';
-				makedir(write_filename);
+				printf("Create directory %s\n", full_path);
+				FileName(full_path).createPath();
 				*(filename_withoutpath-1)=c;
-				fout=fopen(write_filename,"wb");
+				fout=fopen(full_path,"wb");
 			}
 
 			if (fout==NULL) {
-				printf("error opening %s\n",write_filename);
+				printf("error opening %s\n", full_path);
 			}
 		}
 
@@ -464,7 +400,7 @@ int do_extract_currentfile(unzFile uf,
 				fclose(fout);
 
 			if (err==0)
-				change_file_date(write_filename,file_info.dosDate,
+				change_file_date(full_path, file_info.dosDate,
 					file_info.tmu_date);
 		}
 
