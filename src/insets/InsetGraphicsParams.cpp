@@ -145,7 +145,6 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 	// Do not write the default values
 	if (!filename.empty()) {
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
-		os << "\tinzipName " << filename.inzipName() << '\n';
 		os << "\tembed " << (filename.embedded() ? "true" : "false") << '\n';
 	}
 	if (lyxscale != 100)
@@ -196,11 +195,13 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 		lex.eatLine();
 		filename.set(lex.getString(), bufpath);
 	} else if (token == "inzipName") {
+		// this option is currently ignored because only files in
+		// or under current document path is embeddable, and their
+		// inzipName is automatically determined.
 		lex.eatLine();
-		filename.setInzipName(lex.getString());
 	} else if (token == "embed") {
 		lex.next();
-		filename.setEmbed(lex.getBool());		
+		filename.setEmbed(lex.getBool());
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
