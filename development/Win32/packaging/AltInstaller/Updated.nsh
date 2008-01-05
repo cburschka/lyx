@@ -5,6 +5,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
