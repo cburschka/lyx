@@ -186,6 +186,8 @@ protected:
 	///
 	std::vector<std::string> getPackageList(std::string const & modName) const;
 	///
+	bool isModuleAvailable(std::string const & modName) const;
+	///
 	void setLanguage() const;
 	///
 	void saveAsDefault() const;

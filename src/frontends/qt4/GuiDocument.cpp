@@ -951,8 +951,16 @@ void GuiDocument::updateModuleInfo()
 			}
 			pkgdesc += pkgList[i];
 		}
-		if (!pkgdesc.empty())
-			desc += " Requires " + pkgdesc + ".";
+		if (!pkgdesc.empty()) {
+			if (!desc.empty())
+				desc += " ";
+			desc += ("Requires " + pkgdesc + ".");
+		}
+		if (!isModuleAvailable(modName)) {
+			if (!desc.empty())
+				desc += "\n";
+			desc += "WARNING: Some packages are unavailable!";
+		}
 		latexModule->infoML->document()->setPlainText(toqstr(desc));
 	}
 }
@@ -1689,18 +1697,24 @@ string GuiDocument::getModuleDescription(string const & modName) const
 {
 	LyXModule const * const mod = moduleList[modName];
 	if (!mod)
-		return string("Module unavailable!");
+		return string("Module not found!");
 	return mod->description;
 }
 
 
-vector<string>
-GuiDocument::getPackageList(string const & modName) const
+vector<string> GuiDocument::getPackageList(string const & modName) const
 {
 	LyXModule const * const mod = moduleList[modName];
 	if (!mod)
 		return vector<string>(); //empty such thing
 	return mod->packageList;
+}
+
+
+bool GuiDocument::isModuleAvailable(string const & modName) const
+{
+	LyXModule * mod = moduleList[modName];
+	return mod->isAvailable();
 }
 
 

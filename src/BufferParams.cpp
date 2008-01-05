@@ -1413,6 +1413,13 @@ void BufferParams::makeTextClass()
 					endl;
 			continue;
 		}
+		if (!lm->isAvailable()) {
+			docstring const msg =
+						bformat(_("The module %1$s requires a package that is\n"
+						"not available in your LaTeX installation. LaTeX output\n"
+						"may not be possible.\n"), from_utf8(modName));
+			frontend::Alert::warning(_("Package not available"), msg);
+		}
 		FileName layout_file = libFileSearch("layouts", lm->filename);
 		textClass_->read(layout_file, TextClass::MODULE);
 	}
