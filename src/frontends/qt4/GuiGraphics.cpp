@@ -279,7 +279,6 @@ void GuiGraphics::on_browsePB_clicked()
 	docstring const str = browse(qstring_to_ucs4(filename->text()));
 	if (!str.empty()) {
 		filename->setText(toqstr(str));
-		embedCB->setCheckState(Qt::Unchecked);
 		changed();
 	}
 }
@@ -300,6 +299,17 @@ void GuiGraphics::on_editPB_clicked()
 void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
+	EmbeddedFile file = EmbeddedFile(fromqstr(filename), bufferFilepath());
+	if (!file.embeddable()) {
+		embedCB->setCheckState(Qt::Unchecked);
+		embedCB->setDisabled(true);
+	}
+}
+
+
+void GuiGraphics::on_embedCB_toggled(bool)
+{
+	changed();
 }
 
 
@@ -449,7 +459,8 @@ void GuiGraphics::updateContents()
 	string const name =
 		igp.filename.outputFilename(bufferFilepath());
 	filename->setText(toqstr(name));
-    embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
+	embedCB->setEnabled(igp.filename.embeddable());
+	embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
