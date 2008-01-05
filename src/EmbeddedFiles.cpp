@@ -43,28 +43,78 @@ using namespace lyx::support;
 
 namespace lyx {
 
+/** Dir name used for ".." in the bundled file.
+
+Under the lyx temp directory, content.lyx and its embedded files are usually
+saved as
+
+$temp/file.lyx
+$temp/figure1.png     for ./figure1.png)
+$temp/sub/figure2.png for ./sub/figure2.png)
+
+This works fine for embedded files that are in the current or deeper directory
+of the document directory, but not for files such as ../figures/figure.png.
+A unique name $upDirName is chosen to represent .. in such filenames so that
+'up' directories can be stored 'down' the directory tree:
+
+$temp/$upDirName/figures/figure.png     for ../figures/figure.png
+$temp/$upDirName/$upDirName/figure.png  for ../../figure.png
+
+This name has to be fixed because it is used in lyx bundled .zip file.
+
+Note that absolute files are not embeddable because there is no easy
+way to put them under $temp.
+*/
+const std::string upDirName = "LyX.Embed.Dir.Up";
+
 namespace Alert = frontend::Alert;
 
-
-EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
-	bool embed, Inset const * inset)
-	: DocFileName(file, true), inzip_name_(inzip_name), embedded_(embed),
-		inset_list_()
+EmbeddedFile::EmbeddedFile(string const & file, std::string const & buffer_path)
+	: DocFileName("", false), inzip_name_(""), embedded_(false), inset_list_()
 {
-	if (inset != NULL)
-		inset_list_.push_back(inset);
+	set(file, buffer_path);
+}
+
+
+void EmbeddedFile::set(std::string const & filename, std::string const & buffer_path)
+{
+	DocFileName::set(filename, buffer_path);
+	if (filename.empty())
+		return;
+
+	inzip_name_ = to_utf8(makeRelPath(from_utf8(absFilename()),
+			from_utf8(buffer_path)));
+	// if inzip_name_ is an absolute path, this file is not embeddable
+	if (FileName(inzip_name_).isAbsolute())
+		inzip_name_ = "";
+	// replace .. by upDirName
+	if (prefixIs(inzip_name_, "."))
+		inzip_name_ = subst(inzip_name_, "..", upDirName);
+	LYXERR(Debug::FILES, "Create embedded file " << filename <<
+		" with in zip name " << inzip_name_ << endl);
 }
 
 
 string EmbeddedFile::embeddedFile(Buffer const * buf) const
 {
-	return addName(buf->temppath(), inzip_name_);
+	BOOST_ASSERT(embeddable());
+	string temp = buf->temppath();
+	if (!suffixIs(temp, '/'))
+		temp += '/';
+	return temp + inzip_name_;
+}
+
+
+string EmbeddedFile::availableFile(Buffer const * buf) const
+{
+	return embedded() ? embeddedFile(buf) : absFilename();
 }
 
 
 void EmbeddedFile::addInset(Inset const * inset)
 {
-	inset_list_.push_back(inset);
+	if (inset != NULL)
+		inset_list_.push_back(inset);
 }
 
 
@@ -76,36 +126,22 @@ Inset const * EmbeddedFile::inset(int idx) const
 }
 
 
-void EmbeddedFile::saveBookmark(Buffer const * buf, int idx) const
+void EmbeddedFile::setEmbed(bool embed)
 {
-	Inset const * ptr = inset(idx);
-	// This might not be the most efficient method ... 
-	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
-		if (&(*it) == ptr) {
-			// this is basically BufferView::saveBookmark(0)
-			LyX::ref().session().bookmarks().save(
-				FileName(buf->absFileName()),
-				it.bottom().pit(),
-				it.bottom().pos(),
-				it.paragraph().id(),
-				it.pos(),
-				0
-			);
-		}
-	// this inset can not be located. There is something wrong that needs
-	// to be fixed.
-	BOOST_ASSERT(true);
-}
-
-
-string EmbeddedFile::availableFile(Buffer const * buf) const
-{
-	return embedded() ? embeddedFile(buf) : absFilename();
+	if (!embeddable() && embed) {
+		Alert::error(_("Embedding failed."), bformat(
+			_("Cannot embed file %1$s because its path is not relative to document path."),
+			from_utf8(absFilename())));
+		return;
+	}
+	embedded_ = embed;
 }
 
 
 bool EmbeddedFile::extract(Buffer const * buf) const
 {
+	BOOST_ASSERT(embeddable());
+
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 
@@ -113,7 +149,10 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	FileName ext(ext_file);
 
 	if (!emb.exists())
-		return false;
+		throw ExceptionMessage(ErrorException, _("Failed to extract file"),
+			bformat(_("Cannot extract file '%1$s'.\n"
+			"Source file %2$s does not exist"),
+			from_utf8(outputFilename()), from_utf8(emb_file)));
 
 	// if external file already exists ...
 	if (ext.exists()) {
@@ -142,8 +181,10 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 		return false;
 	}
 
-	if (emb.copyTo(ext))
+	if (emb.copyTo(ext)) {
+		LYXERR(Debug::FILES, "Extract file " << emb_file << " to " << ext_file << endl);
 		return true;
+	}
 
 	throw ExceptionMessage(ErrorException, _("Copy file failure"),
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
@@ -155,15 +196,26 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 
 bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 {
+	BOOST_ASSERT(embeddable());
+
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 
 	FileName emb(emb_file);
 	FileName ext(ext_file);
 
-	if (!ext.exists())
-		return false;
-	
+	if (!ext.exists()) {
+		// no need to update
+		if (emb.exists())
+			return true;
+		// no external and internal file
+		throw ExceptionMessage(ErrorException,
+			_("Failed to embed file"),
+			bformat(_("Failed to embed file %1$s.\n"
+			   "Please check whether this file exists and is readable."),
+				from_utf8(ext_file)));
+	}
+
 	// if embedded file already exists ...
 	if (emb.exists()) {
 		// no need to copy if the files are the same
@@ -186,7 +238,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 		path.createPath();
 	if (ext.copyTo(emb))
 		return true;
-	throw ExceptionMessage(ErrorException, 
+	throw ExceptionMessage(ErrorException,
 		_("Copy file failure"),
 		bformat(_("Cannot copy file %1$s to %2$s.\n"
 			   "Please check whether the directory exists and is writeable."),
@@ -202,6 +254,20 @@ void EmbeddedFile::updateInsets(Buffer const * buf) const
 	vector<Inset const *>::const_iterator it_end = inset_list_.end();
 	for (; it != it_end; ++it)
 		const_cast<Inset *>(*it)->updateEmbeddedFile(*buf, *this);
+}
+
+
+bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
+{
+	return lhs.absFilename() == rhs.absFilename()
+		&& lhs.saveAbsPath() == rhs.saveAbsPath()
+		&& lhs.embedded() == rhs.embedded();
+}
+
+
+bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
+{
+	return !(lhs == rhs);
 }
 
 
@@ -232,25 +298,26 @@ void EmbeddedFiles::enable(bool flag)
 }
 
 
-EmbeddedFile & EmbeddedFiles::registerFile(string const & filename,
-	bool embed, Inset const * inset, string const & inzipName)
+EmbeddedFile & EmbeddedFiles::registerFile(EmbeddedFile const & file, Inset const * inset)
 {
-	// filename can be relative or absolute, translate to absolute filename
-	string abs_filename = makeAbsPath(filename, buffer_->filePath()).absFilename();
 	// try to find this file from the list
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		if (it->absFilename() == abs_filename || it->embeddedFile(buffer_) == abs_filename)
-			break;
-	// find this filename, keep the original embedding status
-	if (it != file_list_.end()) {
-		it->addInset(inset);
-		return *it;
-	}
+		if (it->absFilename() == file.absFilename()) {
+			if (it->embedded() != file.embedded()) {
+				Alert::error(_("Wrong embedding status."),
+					bformat(_("File %1$s is included in more than one insets, "
+						"but with different embedding status. Assuming embedding status."),
+						from_utf8(it->outputFilename())));
+				it->setEmbed(true);
+			}
+			it->addInset(inset);
+			return *it;
+		}
 	//
-	file_list_.push_back(EmbeddedFile(abs_filename, 
-		getInzipName(abs_filename, inzipName), embed, inset));
+	file_list_.push_back(file);
+	file_list_.back().addInset(inset);
 	return file_list_.back();
 }
 
@@ -278,11 +345,14 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it) {
 		if (it->embedded()) {
-			string file = it->availableFile(buffer_);
-			if (file.empty())
-				lyxerr << "File " << it->absFilename() << " does not exist. Skip embedding it. " << endl;
-			else
-				filenames.push_back(make_pair(file, it->inzipName()));
+			string file = it->embeddedFile(buffer_);
+			if (!FileName(file).exists())
+				throw ExceptionMessage(ErrorException, _("Failed to write file"),
+					bformat(_("Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"),
+						it->displayName()));
+			filenames.push_back(make_pair(file, it->inzipName()));
+			LYXERR(Debug::FILES, "Writing file " << it->outputFilename()
+				<< " as " << it->inzipName() << endl);
 		}
 	}
 	// write a zip file with all these files. Write to a temp file first, to
@@ -310,7 +380,7 @@ EmbeddedFiles::find(string filename) const
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		if (it->absFilename() == filename || it->embeddedFile(buffer_) == filename)	
+		if (it->absFilename() == filename || it->embeddedFile(buffer_) == filename)
 			return it;
 	return file_list_.end();
 }
@@ -332,7 +402,7 @@ bool EmbeddedFiles::extractAll() const
 				count_extracted += 1;
 		} else
 			count_external += 1;
-	docstring const msg = bformat(_("%1$d external files are ignored.\n"
+	docstring const msg = bformat(_("%1$d external or non-embeddable files are ignored.\n"
 		"%2$d embedded files are extracted.\n"), count_external, count_extracted);
 	Alert::information(_("Unpacking all files"), msg);
 	return true;
@@ -353,48 +423,13 @@ bool EmbeddedFiles::updateFromExternalFile() const
 					bformat(_("Error: can not embed file %1$s.\n"), it->displayName()));
 				return false;
 			} else
-				count_external += 1;
+				count_embedded += 1;
 		} else
 			count_external += 1;
-	docstring const msg = bformat(_("%1$d external files are ignored.\n"
+	docstring const msg = bformat(_("%1$d external or non-embeddable files are ignored.\n"
 		"%2$d embeddable files are embedded.\n"), count_external, count_embedded);
 	Alert::information(_("Packing all files"), msg);
 	return true;
-}
-
-
-string const EmbeddedFiles::getInzipName(string const & abs_filename, string const & name)
-{
-	// register a new one, using relative file path as inzip_name
-	string inzip_name = name;
-	if (name.empty())
-		inzip_name = to_utf8(makeRelPath(from_utf8(abs_filename),
-			from_utf8(buffer_->filePath())));
-	// if inzip_name is an absolute path, use filename only to avoid
-	// leaking of filesystem information in inzip_name
-	// The second case covers cases '../path/file' and '.'
-	if (FileName(inzip_name).isAbsolute() || prefixIs(inzip_name, "."))
-		inzip_name = onlyFilename(abs_filename);
-	// if this name has been used...
-	// use _1_name, _2_name etc
-	string tmp = inzip_name;
-	EmbeddedFileList::iterator it;
-	EmbeddedFileList::iterator it_end = file_list_.end();
-	bool unique_name = false;
-	size_t i = 0;
-	while (!unique_name) {
-		unique_name = true;
-		if (i > 0)
-			inzip_name = convert<string>(i) + "_" + tmp;
-		it = file_list_.begin();
-		for (; it != it_end; ++it)
-			if (it->inzipName() == inzip_name) {
-				unique_name = false;
-				++i;
-				break;
-			}
-	}
-	return inzip_name;
 }
 
 
@@ -406,6 +441,5 @@ void EmbeddedFiles::updateInsets() const
 		if (it->refCount() > 0)
 			it->updateInsets(buffer_);
 }
-
 
 }

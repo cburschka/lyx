@@ -209,7 +209,7 @@ public:
 	 *  \param buffer_path if \c filename has a relative path, generate
 	 *  the absolute path using this.
 	 */
-	void set(std::string const & filename, std::string const & buffer_path);
+	virtual void set(std::string const & filename, std::string const & buffer_path);
 
 	void erase();
 

@@ -77,6 +77,7 @@ TODO
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -93,6 +94,8 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+namespace Alert = frontend::Alert;
 
 namespace {
 
@@ -168,9 +171,20 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
-		if (!p.filename.empty())
+		// when embedding is enabled, change of embedding status leads to actions
+		if (!p.filename.empty() && buffer.embeddedFiles().enabled() ) {
+			try {
+				if (p.filename.embedded())
+					p.filename.updateFromExternalFile(&buffer);
+				else
+					p.filename.extract(&buffer);
+			} catch (ExceptionMessage const & message) {
+				Alert::error(message.title_, message.details_);
+				// do not set parameter if an error happens
+				break;
+			}
 			setParams(p);
-		else
+		} else
 			cur.noUpdate();
 		break;
 	}
@@ -210,8 +224,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetGraphics::registerEmbeddedFiles(Buffer const &, 
 	EmbeddedFiles & files) const
 {
-	files.registerFile(params().filename.absFilename(), 
-		false, this);
+	files.registerFile(params().filename, this);
 }
 
 

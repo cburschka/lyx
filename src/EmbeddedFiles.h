@@ -56,7 +56,10 @@ be embedded. These embedded files can be viewed or edited through
 the embedding dialog. This file can be shared with others more
 easily. 
 
-Format a anb b can be converted easily, by packing/unpacking a .lyx file.
+Format a and b can be converted easily, by packing/unpacking a .lyx file.
+
+NOTE: With current implementation, files with absolute filenames (not in
+or deeper under the current document directory) can not be embedded.
 
 Implementation:
 ======================
@@ -95,14 +98,15 @@ class ErrorList;
 class EmbeddedFile : public support::DocFileName
 {
 public:
-	EmbeddedFile() {};
-
-	EmbeddedFile(std::string const & file, std::string const & inzip_name,
-		bool embedded, Inset const * inset);
-
-	/// filename in the zip file, usually the relative path
+	EmbeddedFile(std::string const & file = std::string(),
+		std::string const & buffer_path = std::string());
+	
+	/// set filename and inzipName.
+	void set(std::string const & filename, std::string const & buffer_path);
+	
+	/// filename in the zip file, which is the relative path
 	std::string inzipName() const { return inzip_name_; }
-	void setInzipName(std::string name) { inzip_name_ = name; }
+
 	/// embedded file, equals to temppath()/inzipName()
 	std::string embeddedFile(Buffer const * buf) const;
 	/// embeddedFile() or absFilename() depending on embedding status
@@ -111,9 +115,6 @@ public:
 	/// add an inset that refers to this file
 	void addInset(Inset const * inset);
 	Inset const * inset(int idx) const;
-	/// save the location of this inset as bookmark so that
-	/// it can be located using LFUN_BOOKMARK_GOTO
-	void saveBookmark(Buffer const * buf, int idx) const;
 	/// Number of Insets this file item is referred
 	/// If refCount() == 0, this file must be manually inserted.
 	/// This fact is used by the update() function to skip updating
@@ -124,7 +125,9 @@ public:
 	bool embedded() const { return embedded_; }
 	/// set embedding status. updateFromExternal() should be called before this
 	/// to copy or sync the embedded file with external one.
-	void setEmbed(bool embed) { embedded_ = embed; }
+	void setEmbed(bool embed);
+	/// Only files in or under current document path is embeddable
+	bool embeddable() const { return inzip_name_ != ""; } 
 
 	/// extract file, does not change embedding status
 	bool extract(Buffer const * buf) const;
@@ -132,9 +135,10 @@ public:
 	bool updateFromExternalFile(Buffer const * buf) const;
 	///
 	/// After the embedding status is changed, update all insets related
-	/// to this file item.
-	/// Because inset pointers may not be up to date, EmbeddedFiles::update()
-	/// would better be called before this function is called.
+	/// to this file item. For example, a graphic inset may need to monitor
+	/// embedded file instead of external file. To make sure inset pointers 
+	/// are up to date, please make sure there is no modification to the
+	/// document between EmbeddedFiles::update() and this function.
 	void updateInsets(Buffer const * buf) const;
 
 private:
@@ -146,6 +150,10 @@ private:
 	/// file item can be referred by several Insets, a vector is used.
 	std::vector<Inset const *> inset_list_;
 };
+
+
+bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
+bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 
 
 class EmbeddedFiles {
@@ -164,15 +172,10 @@ public:
 	void enable(bool flag);
 
 	/// add a file item. 
-	/* \param filename filename to add
-	 * \param embed embedding status. For a new file item, this is always true.
-	 *    If the file already exists, this parameter is ignored.
+	/* \param file Embedded file to add
 	 * \param inset Inset pointer
-	 * \param inzipName suggested inzipname
 	 */
-	EmbeddedFile & registerFile(std::string const & filename, bool embed = false,
-		Inset const * inset = 0,
-		std::string const & inzipName = std::string());
+	EmbeddedFile & registerFile(EmbeddedFile const & file, Inset const * inset = 0);
 
 	/// scan the buffer and get a list of EmbeddedFile
 	void update();
@@ -200,8 +203,6 @@ public:
 	/// update all insets to use embedded files when embedding status is changed
 	void updateInsets() const;
 private:
-	/// get a unique inzip name, a suggestion can be given.
-	std::string const getInzipName(std::string const & name, std::string const & inzipName);
 	/// list of embedded files
 	EmbeddedFileList file_list_;
 	///
