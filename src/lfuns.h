@@ -68,8 +68,8 @@ enum kb_action {
 /**
  * LFUN_BUFFER_WRITE
  * \li Action: Saves the current buffer
- * \li Notion: Saves the current buffer to disk, using the filename that\n
-               is already associated with the buffer, asking for one if\n
+ * \li Notion: Saves the current buffer to disk, using the filename that
+               is already associated with the buffer, asking for one if
                none is yet assigned.
  * \li Syntax: buffer-write
  */
@@ -242,8 +242,22 @@ enum kb_action {
 	// 105
 	LFUN_MATH_DISPLAY,              // Alejandro 180696
 	LFUN_MATH_MODE,                 // Alejandro 040696
-	LFUN_MATH_NUMBER,               // Alejandro 040696
-	LFUN_MATH_NONUMBER,             // Alejandro 180696
+/**
+ * LFUN_MATH_NUMBER
+ * \li Action: Enable numbering of the current formula.
+ * \li Notion: Must be in display formula mode.
+ * \li Syntax: math-number
+ * \li Origin: Alejandro 4 Jun 1996
+ */
+	LFUN_MATH_NUMBER,
+/**
+ * LFUN_MATH_NONUMBER
+ * \li Action: Disable numbering of the current formula.
+ * \li Notion: Must be in display formula mode.
+ * \li Syntax: math-nonumber
+ * \li Origin: Alejandro 18 Jun 1996
+ */
+	LFUN_MATH_NONUMBER,
 	LFUN_MATH_SIZE,                 // Alejandro 150896
 	// 110
 	LFUN_MATH_MACRO,                // ale970510
@@ -384,8 +398,8 @@ enum kb_action {
 /**
  * LFUN_BOOKMARK_SAVE
  * \li Action: Save a bookmark
- * \li Notion: Saves a numbered bookmark to the sessions file. The number\n
-               must be between 1 and 9, inclusive. Note that bookmarks are\n
+ * \li Notion: Saves a numbered bookmark to the sessions file. The number
+               must be between 1 and 9, inclusive. Note that bookmarks are
                saved per-session, not per file.
  * \li Syntax: bookmark-save <NUMBER>
  * \li Params: <NUMBER>: the number of the bookmark to save.
@@ -396,8 +410,8 @@ enum kb_action {
 /**
  * LFUN_BOOKMARK_GOTO
  * \li Action: Goto a bookmark
- * \li Notion: Moves the cursor to the numbered bookmark, opening the file\n
-               if necessary. Note that bookmarsk are saved per-session, not\n
+ * \li Notion: Moves the cursor to the numbered bookmark, opening the file
+               if necessary. Note that bookmarsk are saved per-session, not
                per file.
  * \li Syntax: bookmark-goto <NUMBER>
  * \li Params: <NUMBER>: the number of the bookmark to restore.
@@ -440,7 +454,6 @@ enum kb_action {
 	LFUN_INSET_DIALOG_UPDATE,
 	// 230
 	LFUN_INSET_SETTINGS,
-	LFUN_PARAGRAPH_PARAMS_APPLY,
 /**
  * LFUN_PARAGRAPH_PARAMS_APPLY
  * \li Action: Change paragraph settings.
@@ -450,6 +463,7 @@ enum kb_action {
  * \li Params: For parameters see LFUN_PARAGRAPH_PARAMS
  * \li Origin: leeming, 30 Mar 2004
  */
+	LFUN_PARAGRAPH_PARAMS_APPLY,
 	LFUN_PARAGRAPH_UPDATE,
 	LFUN_EXTERNAL_EDIT,
 	LFUN_BRANCH_INSERT,
@@ -476,7 +490,7 @@ enum kb_action {
  * LFUN_TEXTCLASS_APPLY
  * \li Action: Sets the text class for the current buffer
  * \li Syntax: textclass-apply <TEXTCLASS>
- * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be \n
+ * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be
                    the filename, minus the ".layout" extension.
  */
 	LFUN_TEXTCLASS_APPLY,
@@ -484,7 +498,7 @@ enum kb_action {
  * LFUN_TEXTCLASS_LOAD
  * \li Action: Loads information for a textclass from disk
  * \li Syntax: textclass-load <TEXTCLASS>
- * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be \n
+ * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be
                    the filename, minus the ".layout" extension.
  */
 	LFUN_TEXTCLASS_LOAD,
@@ -535,7 +549,6 @@ enum kb_action {
 	LFUN_TOOLBAR_TOGGLE,             // Edwin 20070521
 	// 285
 	LFUN_BUFFER_WRITE_ALL,           // rgh, gpothier 200707XX
-	LFUN_PARAGRAPH_PARAMS,
 /**
  * LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings
@@ -549,6 +562,7 @@ enum kb_action {
                <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
  * \li Origin: rgh, Aug 15 2007
  */
+	LFUN_PARAGRAPH_PARAMS,
 /**
  * LFUN_LAYOUT_MODULES_CLEAR
  * \li Action: Clears the module list
