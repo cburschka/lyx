@@ -212,6 +212,7 @@ dist_examples_DATA = \
 	examples/iecc07.fen \
 	examples/iecc12.fen \
 	examples/landslide.lyx \
+	examples/linguistics.lyx \
 	examples/listerrors.lyx \
 	examples/listings.lyx \
 	examples/mathed.lyx \

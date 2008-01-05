@@ -2305,6 +2305,7 @@ lib_examples_files = Split('''
     iecc07.fen
     iecc12.fen
     landslide.lyx
+    linguistics.lyx
     listerrors.lyx
     listings.lyx
     mathed.lyx
