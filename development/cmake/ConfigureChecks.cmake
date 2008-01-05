@@ -74,6 +74,7 @@ check_function_exists(getegid HAVE_GETEGID)
 check_function_exists(getgid HAVE_GETGID)
 check_function_exists(getuid HAVE_GETUID)
 check_function_exists(wcslen HAVE_WCSLEN)
+check_function_exists(mkfifo HAVE_MKFIFO)
 
 check_symbol_exists(alloca "malloc.h" HAVE_SYMBOL_ALLOCA)
 check_symbol_exists(asprintf "stdio.h" HAVE_ASPRINTF)

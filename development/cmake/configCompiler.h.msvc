@@ -75,6 +75,7 @@
 /* #undef HAVE_GETGID 1 */
 /* #undef HAVE_GETUID 1 */
 #define HAVE_WCSLEN 1
+/* #undef HAVE_MKFIFO 1 */
 #define HAVE_WPRINTF 1
 #define HAVE_LONG_DOUBLE 1
 #define HAVE_LONG_LONG 1

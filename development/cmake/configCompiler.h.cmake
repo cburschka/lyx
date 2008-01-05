@@ -75,6 +75,7 @@
 #cmakedefine HAVE_GETGID 1
 #cmakedefine HAVE_GETUID 1
 #cmakedefine HAVE_WCSLEN 1
+#cmakedefine HAVE_MKFIFO 1
 #cmakedefine HAVE_WPRINTF 1
 #cmakedefine HAVE_LONG_DOUBLE 1
 #cmakedefine HAVE_LONG_LONG 1
