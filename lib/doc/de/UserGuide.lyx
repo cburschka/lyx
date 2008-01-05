@@ -190,8 +190,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
- Dezember 2007
+letzte Änderung: 4.
+ Januar 2008
 \end_layout
 
 \begin_layout Standard
@@ -14025,8 +14025,7 @@ einigen
 \family sans
 Schreibmaschine
 \family default
-, manchmal auch bei serifenfreiem Text und bei unüblichen Begriffen wie
- 
+, manchmal auch bei serifenfreiem Text, bei unüblichen Begriffen wie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -14034,7 +14033,7 @@ h3knix/m0n0wand
 \begin_inset Quotes grd
 \end_inset
 
-.
+ und zusammengesetzten Worten mit Bindestrich.
 \end_layout
 
 \begin_layout Standard
@@ -14120,6 +14119,14 @@ Strg+
 \begin_inset Quotes grd
 \end_inset
 
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+"-
+\begin_inset Quotes grd
+\end_inset
+
  als ERT benutzen, weil LyX mit 
 \family sans
 Strg+
@@ -14141,6 +14148,102 @@ status collapsed
 X-Code
 \family default
 -Umgebungen (noch) nicht klarkommt.
+\end_layout
+
+\begin_layout Subsubsection
+Zusammengesetzten Worte
+\end_layout
+
+\begin_layout Standard
+Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
+ wie eben oder mit einem Bindestrich zusammengefügt wie bei dem Ungetüm
+ Programmiersprachen-Handbücher.
+ In der Druckansicht werden Sie erkennen, dass dieses Wort über den Rand
+ gedruckt wird.
+ Das liegt daran, dass LaTeX solche Worte nur am Bindestrich trennen kann.
+ Zum Korrigieren gibt es zwei Möglichkeiten:
+\end_layout
+
+\begin_layout Enumerate
+Sie fügen Trennmöglichkeiten ein (
+\family sans
+Strg+
+\family default
+\InsetSpace \thinspace{}
+-), und zwar an jeder infrage kommenden Stelle, weil Sie ja nicht wissen
+ können, wo genau das zusammengesetzte Wort im Laufe der Bearbeitung landen
+ wird: 
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
+ wie eben oder mit einem Bindestrich zusammengefügt wie bei Pro\SpecialChar \-
+gram\SpecialChar \-
+mier\SpecialChar \-
+spra\SpecialChar \-
+chen-
+Hand\SpecialChar \-
+bü\SpecialChar \-
+cher\SpecialChar \ldots{}
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sie benutzen statt des Bindestrichs 
+\begin_inset Quotes gld
+\end_inset
+
+"=
+\begin_inset Quotes grd
+\end_inset
+
+ als ERT (siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "ERT-Kästchen"
+
+\end_inset
+
+).
+ 
+\begin_inset Quotes gld
+\end_inset
+
+"=
+\begin_inset Quotes grd
+\end_inset
+
+ wird in der Druckansicht durch den Bindestrich ersetzt, und LaTeX wendet
+ seine Silbentrennregeln auf beide Teile an:
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
+ wie eben oder mit einem Bindestrich zusammengefügt wie bei Programmiersprachen
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Handbücher\SpecialChar \ldots{}
+
+\begin_inset Quotes grd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
