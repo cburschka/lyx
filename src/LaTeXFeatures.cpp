@@ -406,9 +406,13 @@ bool LaTeXFeatures::mustProvide(string const & name) const
 
 bool LaTeXFeatures::isAvailable(string const & name)
 {
+	string n = name;
 	if (packages_.empty())
 		getAvailable();
-	return find(packages_.begin(), packages_.end(), name) != packages_.end();
+	size_t loc = n.rfind(".sty");
+	if (loc == n.length() - 4) 
+		n = n.erase(name.length() - 4);
+	return find(packages_.begin(), packages_.end(), n) != packages_.end();
 }
 
 
