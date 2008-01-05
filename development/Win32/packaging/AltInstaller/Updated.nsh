@@ -7,6 +7,8 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ SetOutPath "$INSTDIR\Resources\bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
