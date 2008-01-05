@@ -2613,6 +2613,7 @@ lib_layouts_module_files = Split('''
     endnotes.module
     foottoend.module
     hanging.module
+    linguistics.module
     logicalmkup.module
     theorems-ams.module
     theorems-ams-withinsec.module

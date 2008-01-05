@@ -920,6 +920,13 @@ dist_layouts_DATA =\
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
+	layouts/agu-dtd.layout \
+	layouts/agu_stdclass.inc \
+	layouts/agu_stdcounters.inc \
+	layouts/agu_stdlists.inc \
+	layouts/agu_stdsections.inc \
+	layouts/agu_stdtitle.inc \
+	layouts/agums.layout \
 	layouts/aguplus.inc \
 	layouts/amsart-plain.layout \
 	layouts/amsart-seq.layout \
@@ -956,6 +963,7 @@ dist_layouts_DATA =\
 	layouts/dtk.layout \
 	layouts/egs.layout \
 	layouts/elsart.layout \
+	layouts/endnotes.module \
 	layouts/entcs.layout \
 	layouts/europecv.layout \
 	layouts/extarticle.layout \
@@ -963,8 +971,11 @@ dist_layouts_DATA =\
 	layouts/extletter.layout \
 	layouts/extreport.layout \
 	layouts/foils.layout \
+	layouts/foottoend.module \
 	layouts/g-brief-de.layout \
 	layouts/g-brief-en.layout \
+	layouts/g-brief2.layout \
+	layouts/hanging.module \
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
@@ -981,18 +992,24 @@ dist_layouts_DATA =\
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
 	layouts/letter.layout \
+	layouts/linguistics.module \
 	layouts/literate-article.layout \
 	layouts/literate-book.layout \
 	layouts/literate-report.layout \
 	layouts/literate-scrap.inc \
 	layouts/llncs.layout \
+	layouts/logicalmkup.module \
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
 	layouts/manpage.layout \
+	layouts/memoir.layout \
 	layouts/moderncv.layout \
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
+	layouts/numarticle.inc \
+	layouts/numreport.inc \
+	layouts/numrevtex.inc \
 	layouts/paper.layout \
 	layouts/powerdot.layout \
 	layouts/report.layout \
@@ -1020,26 +1037,12 @@ dist_layouts_DATA =\
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
+	layouts/svglobal.layout \
 	layouts/svjog.layout \
 	layouts/svjour.inc \
 	layouts/svprobth.layout \
-	layouts/agums.layout \
-	layouts/memoir.layout \
-	layouts/numarticle.inc \
-	layouts/numreport.inc \
-	layouts/numrevtex.inc \
-	layouts/agu-dtd.layout \
-	layouts/agu_stdclass.inc \
-	layouts/agu_stdcounters.inc \
-	layouts/agu_stdlists.inc \
-	layouts/agu_stdsections.inc \
-	layouts/agu_stdtitle.inc \
-	layouts/g-brief2.layout \
-	layouts/svglobal.layout \
-	layouts/endnotes.module \
-	layouts/foottoend.module \
-	layouts/hanging.module \
-	layouts/logicalmkup.module \
+	layouts/tarticle.layout \
+	layouts/tbook.layout \
 	layouts/theorems.inc \
 	layouts/theorems-ams.inc \
 	layouts/theorems-ams.module \
@@ -1047,8 +1050,6 @@ dist_layouts_DATA =\
 	layouts/theorems-std.module \
 	layouts/theorems-withinchap.module \
 	layouts/theorems-withinsec.module \
-	layouts/tarticle.layout \
-	layouts/tbook.layout \
 	layouts/treport.layout
 
 scriptsdir = $(pkgdatadir)/scripts
