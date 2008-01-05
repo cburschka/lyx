@@ -14,6 +14,7 @@
 #include "ModuleList.h"
 
 #include "support/debug.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 
 #include "support/FileName.h"
@@ -31,6 +32,29 @@ namespace lyx {
 
 //global variable: module list
 ModuleList moduleList;
+
+
+LyXModule::LyXModule(string n, string f, string d,
+	          vector<string> p) : 
+	name(n), filename(f), description(d), packageList(p), checked(false)
+{}
+
+
+bool LyXModule::isAvailable() {
+	if (packageList.empty())
+		return true;
+	if (checked)
+		return available;
+	vector<string>::const_iterator it  = packageList.begin();
+	vector<string>::const_iterator end = packageList.end(); 
+	for (; it != end; ++it) {
+		if (!LaTeXFeatures::isAvailable(*it))
+			available = false;
+			return available;
+	}
+	available = true;
+	return available;
+}
 
 
 // used when sorting the module list.
@@ -124,11 +148,7 @@ void ModuleList::addLayoutModule(string const & moduleName,
 	string const & filename, string const & description,
 	vector<string> const & pkgs)
 {
-	LyXModule lm;
-	lm.name = moduleName;
-	lm.filename = filename;
-	lm.description = description;
-	lm.packageList = pkgs;
+	LyXModule lm(moduleName, filename, description, pkgs);
 	modlist_.push_back(lm);
 }
 

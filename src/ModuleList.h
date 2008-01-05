@@ -23,7 +23,13 @@ namespace lyx {
  *  file, except that it does not stand alone. In that sense, it is more like 
  *  a LaTeX package, where a layout file corresponds to a LaTeX class.
  */
-struct LyXModule {
+class LyXModule {
+public:
+	///
+	LyXModule(std::string n, std::string f, std::string d,
+	          std::vector<std::string> p);
+	/// whether the required packages are available
+	bool isAvailable();
 	/// what appears in the ui
 	std::string name;
 	/// the filename, without any path
@@ -32,7 +38,10 @@ struct LyXModule {
 	std::string description;
 	/// the LaTeX packages on which this depends, if any (not implemented)
 	std::vector<std::string> packageList;
-	/// whether those packages are available (not implemented yet)
+private:
+	///
+	bool checked;
+	///
 	bool available;
 };
 
