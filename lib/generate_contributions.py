@@ -897,7 +897,7 @@ contributers = [
                  "12 November 2007",
                  u"French translations of the documentation"),
 
-    contributer(u"Joan Montané",
+     contributer(u"Joan Montané",
                  "jmontane () gmail ! com",
                  "GPL",
                  "Re: LyX translation updates needed",
@@ -953,13 +953,21 @@ contributers = [
                  "25 February 2005",
                  u"Support for kluwer and ijmpd document classes"),
 
+     contributer(u'Andrey V. Panov',
+                 "panov () canopus ! iacp ! dvo ! ru",
+                 "GPL",
+                 "Re: Russian translation for LyX",
+                 "m=119853644302866",
+                 "24 December 2007",
+                 u"Russian translation of the user interface"),
+
      contributer(u'Sanda Pavel',
-                 "ps () ucw !cz",
+                 "ps () ucw ! cz",
                  "GPL",
                  "Re: czech translation",
                  "m=115522417204086",
-                 "10 august 2006",
-                 u"Czech translation"),
+                 "10 August 2006",
+                 u"Czech translation, support for the LaTeX package hyperref"),
 
      contributer(u'Bo Peng',
                  "ben.bob () gmail ! com",
