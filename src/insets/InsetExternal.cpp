@@ -489,7 +489,8 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetExternal::registerEmbeddedFiles(Buffer const &,
 	EmbeddedFiles & files) const
 {
-	files.registerFile(params_.filename.absFilename(), false, this);
+	// temporarily disable embedding for this inset
+	/* files.registerFile(params_.filename, this); */
 }
 
 

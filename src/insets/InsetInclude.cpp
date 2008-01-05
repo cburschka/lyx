@@ -890,9 +890,11 @@ void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
 	EmbeddedFiles & files) const
 {
 	// include and input are temprarily not considered.
+	/*
 	if (isVerbatim(params()) || isListings(params()))
 		files.registerFile(includedFilename(buffer, params()).absFilename(),
 			false, this);
+	*/
 }
 
 } // namespace lyx
