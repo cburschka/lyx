@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-16 17:50+0100\n"
+"POT-Creation-Date: 2008-01-05 02:51+0100\n"
 "PO-Revision-Date: 2007-12-03 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:822
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
-#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2158
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -1754,7 +1754,7 @@ msgstr "Do &bloku"
 msgid "L&ine spacing:"
 msgstr "Øá&dkování:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1856
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Jedna"
@@ -1763,7 +1763,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1862
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dva"
@@ -11555,15 +11555,28 @@ msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
 #: src/Buffer.cpp:822 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
-#: src/LyXFunc.cpp:2157 src/callback.cpp:186
+#: src/LyXFunc.cpp:2158 src/callback.cpp:186
 msgid "&Overwrite"
 msgstr "&Pøepsat"
 
-#: src/Buffer.cpp:967
-msgid "Encoding error"
-msgstr "Chyba kódování"
+#: src/Buffer.cpp:941
+#, fuzzy
+msgid "Iconv software exception Detected"
+msgstr "Detekována softwarová vyjímka"
 
-#: src/Buffer.cpp:968
+#: src/Buffer.cpp:941
+#, c-format
+msgid ""
+"Please verify that the support software for your encoding (%1$s) is properly "
+"installed"
+msgstr ""
+
+#: src/Buffer.cpp:961
+#, c-format
+msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
+msgstr ""
+
+#: src/Buffer.cpp:964
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11573,28 +11586,38 @@ msgstr ""
 "zvoleném kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/Buffer.cpp:1246
+#: src/Buffer.cpp:971
+#, fuzzy
+msgid "iconv conversion failed"
+msgstr "Konverze se nezdaøila"
+
+#: src/Buffer.cpp:976
+#, fuzzy
+msgid "conversion failed"
+msgstr "Konverze se nezdaøila"
+
+#: src/Buffer.cpp:1227
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/Buffer.cpp:1259
+#: src/Buffer.cpp:1240
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/Buffer.cpp:1260
+#: src/Buffer.cpp:1241
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/Buffer.cpp:1826
+#: src/Buffer.cpp:1807
 msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
-#: src/Buffer.cpp:1837
+#: src/Buffer.cpp:1818
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhled zdrojového kódu pro odstavec %1$d"
 
-#: src/Buffer.cpp:1841
+#: src/Buffer.cpp:1822
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
@@ -11710,12 +11733,12 @@ msgstr "Jedno slovo v dokumentu."
 msgid "Count words"
 msgstr "Spoèítat slova"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1593
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
-#: src/LyXFunc.cpp:2108 src/callback.cpp:148
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
+#: src/LyXFunc.cpp:2109 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11724,31 +11747,31 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1596 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1602 src/LyXFunc.cpp:2002 src/LyXFunc.cpp:2041
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
-#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
+#: src/LyXFunc.cpp:2145 src/LyXFunc.cpp:2161
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView.cpp:1618
+#: src/BufferView.cpp:1625
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.cpp:1629
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
@@ -12669,7 +12692,7 @@ msgstr "&Pùvodní verze"
 msgid "Exiting."
 msgstr "Ukonèování."
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1349
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1351
 msgid "Missing argument"
 msgstr "Chybí argument"
 
@@ -12720,39 +12743,39 @@ msgstr "auto"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav panelu nástrojù \"%1$s\" nastaven na %2$s"
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:1995
 msgid "Select template file"
 msgstr "Vybrat soubor se ¹ablonou"
 
-#: src/LyXFunc.cpp:1997 src/callback.cpp:150
+#: src/LyXFunc.cpp:1998 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "©ablony|#A#a"
 
-#: src/LyXFunc.cpp:2033
+#: src/LyXFunc.cpp:2034
 msgid "Select document to open"
 msgstr "Vybrat dokument k otevøení"
 
-#: src/LyXFunc.cpp:2072
+#: src/LyXFunc.cpp:2073
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otvírání dokumentu %1$s..."
 
-#: src/LyXFunc.cpp:2076
+#: src/LyXFunc.cpp:2077
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s otevøen."
 
-#: src/LyXFunc.cpp:2078
+#: src/LyXFunc.cpp:2079
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nelze otevøít dokument %1$s"
 
-#: src/LyXFunc.cpp:2103
+#: src/LyXFunc.cpp:2104
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vybrat soubor %1$s k importu"
 
-#: src/LyXFunc.cpp:2154 src/callback.cpp:181
+#: src/LyXFunc.cpp:2155 src/callback.cpp:181
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12763,11 +12786,11 @@ msgstr ""
 "\n"
 "Chcete jej pøepsat ?"
 
-#: src/LyXFunc.cpp:2156 src/callback.cpp:185
+#: src/LyXFunc.cpp:2157 src/callback.cpp:185
 msgid "Overwrite document?"
 msgstr "Pøepsat dokument ?"
 
-#: src/LyXFunc.cpp:2219
+#: src/LyXFunc.cpp:2220
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
@@ -13332,21 +13355,31 @@ msgstr " (auto)"
 msgid "No Branch in Document!"
 msgstr "Dokument neobsahuje vìtvení !"
 
-#: src/Paragraph.cpp:1704 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1705 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Nesmyslné v tomto rozvr¾ení !"
 
-#: src/Paragraph.cpp:1764
+#: src/Paragraph.cpp:1765
 msgid "Alignment not permitted"
 msgstr "Zarovnání nepovoleno"
 
-#: src/Paragraph.cpp:1765
+#: src/Paragraph.cpp:1766
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
+
+#: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
+#, fuzzy
+msgid "LyX Warning: "
+msgstr "Verze LyX-u "
+
+#: src/Paragraph.cpp:2241
+#, fuzzy
+msgid "uncodable character"
+msgstr "speciální znak"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -13400,61 +13433,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1822
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1827
+#: src/Text.cpp:1828
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1832
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1853
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1864
+#: src/Text.cpp:1865
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1876
+#: src/Text.cpp:1877
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1882
+#: src/Text.cpp:1883
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1884
+#: src/Text.cpp:1885
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -13470,7 +13503,7 @@ msgstr "Nic k indexaci !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nelze indexovat víc ne¾ jeden odstavec !"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1346
 msgid "Math editor mode"
 msgstr "Mód matematického editoru"
 
@@ -13486,11 +13519,11 @@ msgstr "Rozvr¾ení "
 msgid " not known"
 msgstr " neznámý"
 
-#: src/Text3.cpp:1461 src/Text3.cpp:1473
+#: src/Text3.cpp:1458 src/Text3.cpp:1470
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1590 src/Text3.cpp:1601
+#: src/Text3.cpp:1587 src/Text3.cpp:1598
 msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
@@ -15126,8 +15159,8 @@ msgstr "Vìtev - otevøená vlo¾ka"
 msgid "Branch: "
 msgstr "Vìtev: "
 
-#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
-#: src/insets/InsetCharStyle.cpp:201
+#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:161
+#: src/insets/InsetCharStyle.cpp:198
 msgid "Undef: "
 msgstr "Nedef: "
 
@@ -15147,7 +15180,7 @@ msgstr "Nesmyslné! "
 msgid "Opened CharStyle Inset"
 msgstr "Styl znaku - otevøená vlo¾ka"
 
-#: src/insets/InsetCharStyle.cpp:226
+#: src/insets/InsetCharStyle.cpp:223
 msgid "CharStyle: "
 msgstr "Styl znaku: "
 
@@ -15552,11 +15585,11 @@ msgstr "Neznámý typ Obsahu"
 msgid "Opened table"
 msgstr "Otevøená tabulka"
 
-#: src/insets/InsetTabular.cpp:4303
+#: src/insets/InsetTabular.cpp:4304
 msgid "Error setting multicolumn"
 msgstr "Chyba pøi nastavování více-sloupce"
 
-#: src/insets/InsetTabular.cpp:4304
+#: src/insets/InsetTabular.cpp:4305
 msgid "You cannot set multicolumn vertically."
 msgstr "Nemù¾ete nastavit více-sloupec vertikálnì."
 
@@ -15728,7 +15761,7 @@ msgstr "Øetìzec byl nahrazen."
 msgid " strings have been replaced."
 msgstr " øetìzcù bylo nahrazeno."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1257
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15760,25 +15793,25 @@ msgstr "®ádná vertikální linka (vline) ke smazání"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "No number"
 msgstr "®ádné èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1220
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nelze zmìnit poèet øádkù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1230
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1240
+#: src/mathed/InsetMathHull.cpp:1250
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
@@ -15890,11 +15923,11 @@ msgstr "Adresáø nenalezen"
 msgid "[[Replace with the code of your language]]"
 msgstr "cs"
 
-#: src/support/os_win32.cpp:326
+#: src/support/os_win32.cpp:339
 msgid "System file not found"
 msgstr "Systémový soubor nenalezen"
 
-#: src/support/os_win32.cpp:327
+#: src/support/os_win32.cpp:340
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -15902,11 +15935,11 @@ msgstr ""
 "Nelze naèíst shfolder.dll\n"
 "Prosím naistalujte."
 
-#: src/support/os_win32.cpp:332
+#: src/support/os_win32.cpp:345
 msgid "System function not found"
 msgstr "Systémová funkce nenalezena"
 
-#: src/support/os_win32.cpp:333
+#: src/support/os_win32.cpp:346
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
@@ -15917,6 +15950,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "Encoding error"
+#~ msgstr "Chyba kódování"
 
 #~ msgid "theorem"
 #~ msgstr "teorém"

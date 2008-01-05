@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-16 17:50+0100\n"
+"POT-Creation-Date: 2008-01-05 02:51+0100\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -89,7 +89,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:822
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
-#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2158
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -1835,7 +1835,7 @@ msgstr "Wyrównane"
 msgid "L&ine spacing:"
 msgstr "&Interlinia:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1856
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Pojedyncza"
@@ -1844,7 +1844,7 @@ msgstr "Pojedyncza"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1862
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Podwójna"
@@ -12096,46 +12096,67 @@ msgid "Overwrite modified file?"
 msgstr "Zast±piæ plik?"
 
 #: src/Buffer.cpp:822 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
-#: src/LyXFunc.cpp:2157 src/callback.cpp:186
+#: src/LyXFunc.cpp:2158 src/callback.cpp:186
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Zastêpowanie"
 
-#: src/Buffer.cpp:967
-#, fuzzy
-msgid "Encoding error"
-msgstr "&Kodowanie:"
+#: src/Buffer.cpp:941
+msgid "Iconv software exception Detected"
+msgstr ""
 
-#: src/Buffer.cpp:968
+#: src/Buffer.cpp:941
+#, c-format
+msgid ""
+"Please verify that the support software for your encoding (%1$s) is properly "
+"installed"
+msgstr ""
+
+#: src/Buffer.cpp:961
+#, c-format
+msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
+msgstr ""
+
+#: src/Buffer.cpp:964
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1246
+#: src/Buffer.cpp:971
+#, fuzzy
+msgid "iconv conversion failed"
+msgstr "Nieudana konwersja"
+
+#: src/Buffer.cpp:976
+#, fuzzy
+msgid "conversion failed"
+msgstr "Nieudana konwersja"
+
+#: src/Buffer.cpp:1227
 msgid "Running chktex..."
 msgstr "chktex zosta³ uruchomiony"
 
-#: src/Buffer.cpp:1259
+#: src/Buffer.cpp:1240
 msgid "chktex failure"
 msgstr "b³±d chktex"
 
-#: src/Buffer.cpp:1260
+#: src/Buffer.cpp:1241
 msgid "Could not run chktex successfully."
 msgstr "Nie mo¿na pomy¶lnie uruchomiæ chktex."
 
-#: src/Buffer.cpp:1826
+#: src/Buffer.cpp:1807
 #, fuzzy
 msgid "Preview source code"
 msgstr "Podgl±d gotów"
 
-#: src/Buffer.cpp:1837
+#: src/Buffer.cpp:1818
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Podgl±d gotów"
 
-#: src/Buffer.cpp:1841
+#: src/Buffer.cpp:1822
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Podgl±d gotów"
@@ -12246,12 +12267,12 @@ msgstr "Jedno s³owo w dokumencie."
 msgid "Count words"
 msgstr "Policz s³owa"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1593
 msgid "Select LyX document to insert"
 msgstr "Wybierz dokument LyX-a do wstawienia"
 
-#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
-#: src/LyXFunc.cpp:2108 src/callback.cpp:148
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
+#: src/LyXFunc.cpp:2109 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12260,31 +12281,31 @@ msgstr "Wybierz dokument LyX-a do wstawienia"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o"
 
-#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1596 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
 msgid "Examples|#E#e"
 msgstr "Przyk³ady|#P"
 
-#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1602 src/LyXFunc.cpp:2002 src/LyXFunc.cpp:2041
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-a (*.lyx)"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
-#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
+#: src/LyXFunc.cpp:2145 src/LyXFunc.cpp:2161
 msgid "Canceled."
 msgstr "Zaniechane."
 
-#: src/BufferView.cpp:1618
+#: src/BufferView.cpp:1625
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Wstawianie dokumentu %1$s..."
 
-#: src/BufferView.cpp:1629
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Wstawiono dokument %1$s."
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie mo¿na wstawiæ dokumentu %1$s"
@@ -13207,7 +13228,7 @@ msgstr "&Przywróæ"
 msgid "Exiting."
 msgstr "Zakoñcz|k"
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1349
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1351
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -13260,39 +13281,39 @@ msgstr "Data"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:1995
 msgid "Select template file"
 msgstr "Wybierz plik szablonu"
 
-#: src/LyXFunc.cpp:1997 src/callback.cpp:150
+#: src/LyXFunc.cpp:1998 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "Szablony|#S"
 
-#: src/LyXFunc.cpp:2033
+#: src/LyXFunc.cpp:2034
 msgid "Select document to open"
 msgstr "Wybierz dokument do otwarcia"
 
-#: src/LyXFunc.cpp:2072
+#: src/LyXFunc.cpp:2073
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otwieranie dokumentu %1$s..."
 
-#: src/LyXFunc.cpp:2076
+#: src/LyXFunc.cpp:2077
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s jest ju¿ otwarty."
 
-#: src/LyXFunc.cpp:2078
+#: src/LyXFunc.cpp:2079
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nie mo¿na otworzyæ dokumentu %1$s"
 
-#: src/LyXFunc.cpp:2103
+#: src/LyXFunc.cpp:2104
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wybierz dokument %1$s do importu"
 
-#: src/LyXFunc.cpp:2154 src/callback.cpp:181
+#: src/LyXFunc.cpp:2155 src/callback.cpp:181
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13303,12 +13324,12 @@ msgstr ""
 "\n"
 "Czy chcesz go zast±piæ?"
 
-#: src/LyXFunc.cpp:2156 src/callback.cpp:185
+#: src/LyXFunc.cpp:2157 src/callback.cpp:185
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Zast±piæ dokument?"
 
-#: src/LyXFunc.cpp:2219
+#: src/LyXFunc.cpp:2220
 msgid "Welcome to LyX!"
 msgstr "Witaj w LyXie!"
 
@@ -13859,19 +13880,29 @@ msgstr "Data"
 msgid "No Branch in Document!"
 msgstr "Drukuj dokument"
 
-#: src/Paragraph.cpp:1704 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1705 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Bez sensu w tej konfiguracji!"
 
-#: src/Paragraph.cpp:1764
+#: src/Paragraph.cpp:1765
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1765
+#: src/Paragraph.cpp:1766
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
+
+#: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
+#, fuzzy
+msgid "LyX Warning: "
+msgstr "Wersja LyX-a "
+
+#: src/Paragraph.cpp:2241
+#, fuzzy
+msgid "uncodable character"
+msgstr "znak specjalny"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -13923,63 +13954,63 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1822
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "¦ledzenie zmian|z"
 
-#: src/Text.cpp:1827
+#: src/Text.cpp:1828
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1832
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 #, c-format
 msgid "Font: %1$s"
 msgstr "Czcionka: %1$s"
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", G³êboko¶æ: %1$d"
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1853
 msgid ", Spacing: "
 msgstr ", Odstêp: "
 
-#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Pó³tora"
 
-#: src/Text.cpp:1864
+#: src/Text.cpp:1865
 msgid "Other ("
 msgstr "Inny ("
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Paragraph: "
 msgstr ", Akapit: "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1876
+#: src/Text.cpp:1877
 msgid ", Position: "
 msgstr ", Pozycja: "
 
-#: src/Text.cpp:1882
+#: src/Text.cpp:1883
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1884
+#: src/Text.cpp:1885
 msgid ", Boundary: "
 msgstr ""
 
@@ -13996,7 +14027,7 @@ msgstr "Brak obiektów do indeksowania!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1346
 msgid "Math editor mode"
 msgstr "Tryb edytora matematycznego"
 
@@ -14013,11 +14044,11 @@ msgstr "Ustawienia "
 msgid " not known"
 msgstr " nieznane"
 
-#: src/Text3.cpp:1461 src/Text3.cpp:1473
+#: src/Text3.cpp:1458 src/Text3.cpp:1470
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/Text3.cpp:1590 src/Text3.cpp:1601
+#: src/Text3.cpp:1587 src/Text3.cpp:1598
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -15668,8 +15699,8 @@ msgstr "Otwarta wstawka ga³êzi"
 msgid "Branch: "
 msgstr "Ga³±¼: "
 
-#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
-#: src/insets/InsetCharStyle.cpp:201
+#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:161
+#: src/insets/InsetCharStyle.cpp:198
 msgid "Undef: "
 msgstr "Niezdef.:"
 
@@ -15692,7 +15723,7 @@ msgstr "Bez sensu!"
 msgid "Opened CharStyle Inset"
 msgstr "Otwarta wstawka notki"
 
-#: src/insets/InsetCharStyle.cpp:226
+#: src/insets/InsetCharStyle.cpp:223
 #, fuzzy
 msgid "CharStyle: "
 msgstr "Zmiana: "
@@ -16106,11 +16137,11 @@ msgstr "Nieznany token"
 msgid "Opened table"
 msgstr "Otwarta tabela"
 
-#: src/insets/InsetTabular.cpp:4303
+#: src/insets/InsetTabular.cpp:4304
 msgid "Error setting multicolumn"
 msgstr "B³±d ustawienia wielokolumnowej komórki"
 
-#: src/insets/InsetTabular.cpp:4304
+#: src/insets/InsetTabular.cpp:4305
 msgid "You cannot set multicolumn vertically."
 msgstr "Nie mo¿na ustawiæ wielokolumnowej komórki pionowo"
 
@@ -16289,7 +16320,7 @@ msgstr "Ci±g znaków zosta³ zast±piony."
 msgid " strings have been replaced."
 msgstr " zast±piono."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1257
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16321,25 +16352,25 @@ msgstr "Brak poziomej linii do usuniêcia"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Nieznany token %1$s %2$s\n"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "No number"
 msgstr "Bez numeracji"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "Number"
 msgstr "Numeracja"
 
-#: src/mathed/InsetMathHull.cpp:1220
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1230
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1240
+#: src/mathed/InsetMathHull.cpp:1250
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
@@ -16452,23 +16483,23 @@ msgstr "Nie znaleziono tego ci±gu znaków!"
 msgid "[[Replace with the code of your language]]"
 msgstr "pl"
 
-#: src/support/os_win32.cpp:326
+#: src/support/os_win32.cpp:339
 #, fuzzy
 msgid "System file not found"
 msgstr "Nie znaleziono tego ci±gu znaków!"
 
-#: src/support/os_win32.cpp:327
+#: src/support/os_win32.cpp:340
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
 
-#: src/support/os_win32.cpp:332
+#: src/support/os_win32.cpp:345
 #, fuzzy
 msgid "System function not found"
 msgstr "Nie znaleziono tego ci±gu znaków!"
 
-#: src/support/os_win32.cpp:333
+#: src/support/os_win32.cpp:346
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
@@ -16477,6 +16508,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Nieznany u¿ytkownik"
+
+#, fuzzy
+#~ msgid "Encoding error"
+#~ msgstr "&Kodowanie:"
 
 #, fuzzy
 #~ msgid "Placeholders"

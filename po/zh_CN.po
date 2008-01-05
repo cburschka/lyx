@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-16 17:50+0100\n"
+"POT-Creation-Date: 2008-01-05 02:51+0100\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -82,7 +82,7 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:822
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
-#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2158
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -1744,7 +1744,7 @@ msgstr "分散对齐(&J)"
 msgid "L&ine spacing:"
 msgstr "行距(&i):"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1856
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "单一"
@@ -1753,7 +1753,7 @@ msgstr "单一"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1862
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "双重"
@@ -11565,15 +11565,27 @@ msgid "Overwrite modified file?"
 msgstr "覆盖文件吗？"
 
 #: src/Buffer.cpp:822 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
-#: src/LyXFunc.cpp:2157 src/callback.cpp:186
+#: src/LyXFunc.cpp:2158 src/callback.cpp:186
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
-#: src/Buffer.cpp:967
-msgid "Encoding error"
-msgstr "编码出错"
+#: src/Buffer.cpp:941
+msgid "Iconv software exception Detected"
+msgstr ""
 
-#: src/Buffer.cpp:968
+#: src/Buffer.cpp:941
+#, c-format
+msgid ""
+"Please verify that the support software for your encoding (%1$s) is properly "
+"installed"
+msgstr ""
+
+#: src/Buffer.cpp:961
+#, c-format
+msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
+msgstr ""
+
+#: src/Buffer.cpp:964
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11583,28 +11595,38 @@ msgstr ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 
-#: src/Buffer.cpp:1246
+#: src/Buffer.cpp:971
+#, fuzzy
+msgid "iconv conversion failed"
+msgstr "转换出错"
+
+#: src/Buffer.cpp:976
+#, fuzzy
+msgid "conversion failed"
+msgstr "转换出错"
+
+#: src/Buffer.cpp:1227
 msgid "Running chktex..."
 msgstr "执行 chktex..."
 
-#: src/Buffer.cpp:1259
+#: src/Buffer.cpp:1240
 msgid "chktex failure"
 msgstr "chktex执行出错"
 
-#: src/Buffer.cpp:1260
+#: src/Buffer.cpp:1241
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:1826
+#: src/Buffer.cpp:1807
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:1837
+#: src/Buffer.cpp:1818
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "预览段落 %1$s 之源代码"
 
-#: src/Buffer.cpp:1841
+#: src/Buffer.cpp:1822
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
@@ -11720,12 +11742,12 @@ msgstr "文档有一个词"
 msgid "Count words"
 msgstr "统计字数"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1593
 msgid "Select LyX document to insert"
 msgstr "选择插入的LyX文档"
 
-#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
-#: src/LyXFunc.cpp:2108 src/callback.cpp:148
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
+#: src/LyXFunc.cpp:2109 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11734,31 +11756,31 @@ msgstr "选择插入的LyX文档"
 msgid "Documents|#o#O"
 msgstr "文档|#o#O"
 
-#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1596 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
 msgid "Examples|#E#e"
 msgstr "示例|#E#e"
 
-#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1602 src/LyXFunc.cpp:2002 src/LyXFunc.cpp:2041
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
-#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
+#: src/LyXFunc.cpp:2145 src/LyXFunc.cpp:2161
 msgid "Canceled."
 msgstr "已取消。"
 
-#: src/BufferView.cpp:1618
+#: src/BufferView.cpp:1625
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:1629
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
@@ -12675,7 +12697,7 @@ msgstr "还原(&R)"
 msgid "Exiting."
 msgstr "退出."
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1349
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1351
 msgid "Missing argument"
 msgstr "缺失参数"
 
@@ -12724,39 +12746,39 @@ msgstr "自动"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "工具条 \"%1$s\" 状态设置为 %2$s"
 
-#: src/LyXFunc.cpp:1994
+#: src/LyXFunc.cpp:1995
 msgid "Select template file"
 msgstr "选择模板文件"
 
-#: src/LyXFunc.cpp:1997 src/callback.cpp:150
+#: src/LyXFunc.cpp:1998 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/LyXFunc.cpp:2033
+#: src/LyXFunc.cpp:2034
 msgid "Select document to open"
 msgstr "选择要打开的文档"
 
-#: src/LyXFunc.cpp:2072
+#: src/LyXFunc.cpp:2073
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "打开文档 %1$s ..."
 
-#: src/LyXFunc.cpp:2076
+#: src/LyXFunc.cpp:2077
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:2078
+#: src/LyXFunc.cpp:2079
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "无法打开文档 %1$s"
 
-#: src/LyXFunc.cpp:2103
+#: src/LyXFunc.cpp:2104
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "选择导入文件 %1$s "
 
-#: src/LyXFunc.cpp:2154 src/callback.cpp:181
+#: src/LyXFunc.cpp:2155 src/callback.cpp:181
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12766,11 +12788,11 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/LyXFunc.cpp:2156 src/callback.cpp:185
+#: src/LyXFunc.cpp:2157 src/callback.cpp:185
 msgid "Overwrite document?"
 msgstr "覆盖文件?"
 
-#: src/LyXFunc.cpp:2219
+#: src/LyXFunc.cpp:2220
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
@@ -13332,21 +13354,31 @@ msgstr " (自动)"
 msgid "No Branch in Document!"
 msgstr "文档中无分支!"
 
-#: src/Paragraph.cpp:1704 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1705 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "在此显示布局下无意义"
 
-#: src/Paragraph.cpp:1764
+#: src/Paragraph.cpp:1765
 msgid "Alignment not permitted"
 msgstr "无效对齐方式"
 
-#: src/Paragraph.cpp:1765
+#: src/Paragraph.cpp:1766
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
+
+#: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
+#, fuzzy
+msgid "LyX Warning: "
+msgstr "LyX版本"
+
+#: src/Paragraph.cpp:2241
+#, fuzzy
+msgid "uncodable character"
+msgstr "特殊字符"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -13397,61 +13429,61 @@ msgstr "您不能在段首输入空格。请参阅功能简介。"
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "您不能如此输入两个空格。请参阅功能简介。"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1822
 msgid "[Change Tracking] "
 msgstr "[追踪改变] "
 
-#: src/Text.cpp:1827
+#: src/Text.cpp:1828
 msgid "Change: "
 msgstr "改变: "
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1832
 msgid " at "
 msgstr "在"
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 #, c-format
 msgid "Font: %1$s"
 msgstr "字体: %1$s"
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 深度: %1$d"
 
-#: src/Text.cpp:1852
+#: src/Text.cpp:1853
 msgid ", Spacing: "
 msgstr ", 间隔: "
 
-#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "OneHalf"
 
-#: src/Text.cpp:1864
+#: src/Text.cpp:1865
 msgid "Other ("
 msgstr "其他 ("
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 msgid ", Inset: "
 msgstr ", 嵌入项: "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Id: "
 msgstr ", Id:"
 
-#: src/Text.cpp:1876
+#: src/Text.cpp:1877
 msgid ", Position: "
 msgstr ", 位置:　"
 
-#: src/Text.cpp:1882
+#: src/Text.cpp:1883
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1884
+#: src/Text.cpp:1885
 msgid ", Boundary: "
 msgstr ", 边界: "
 
@@ -13467,7 +13499,7 @@ msgstr "无索引项!"
 msgid "Cannot index more than one paragraph!"
 msgstr "无法索引多于一段落"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1346
 msgid "Math editor mode"
 msgstr "Math editor mode"
 
@@ -13483,11 +13515,11 @@ msgstr "显示布局 "
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1461 src/Text3.cpp:1473
+#: src/Text3.cpp:1458 src/Text3.cpp:1470
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:1590 src/Text3.cpp:1601
+#: src/Text3.cpp:1587 src/Text3.cpp:1598
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -15113,8 +15145,8 @@ msgstr "Opened Branch Inset"
 msgid "Branch: "
 msgstr "分支:"
 
-#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
-#: src/insets/InsetCharStyle.cpp:201
+#: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:161
+#: src/insets/InsetCharStyle.cpp:198
 msgid "Undef: "
 msgstr "Undef: "
 
@@ -15134,7 +15166,7 @@ msgstr "无意义!!!"
 msgid "Opened CharStyle Inset"
 msgstr "打开的字符样式项"
 
-#: src/insets/InsetCharStyle.cpp:226
+#: src/insets/InsetCharStyle.cpp:223
 #, fuzzy
 msgid "CharStyle: "
 msgstr "改变: "
@@ -15533,11 +15565,11 @@ msgstr "未知目录项"
 msgid "Opened table"
 msgstr "打开的表格"
 
-#: src/insets/InsetTabular.cpp:4303
+#: src/insets/InsetTabular.cpp:4304
 msgid "Error setting multicolumn"
 msgstr "设置多列出错"
 
-#: src/insets/InsetTabular.cpp:4304
+#: src/insets/InsetTabular.cpp:4305
 msgid "You cannot set multicolumn vertically."
 msgstr "不能竖向设置多列表格"
 
@@ -15709,7 +15741,7 @@ msgstr "词语已被更新。"
 msgid " strings have been replaced."
 msgstr "词语已被更新。"
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1257
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15741,25 +15773,25 @@ msgstr "没有vline"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "未知表格功能 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "No number"
 msgstr "无编号"
 
-#: src/mathed/InsetMathHull.cpp:1086 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
 msgid "Number"
 msgstr "编号"
 
-#: src/mathed/InsetMathHull.cpp:1220
+#: src/mathed/InsetMathHull.cpp:1230
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "无法改变行数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1230
+#: src/mathed/InsetMathHull.cpp:1240
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "无法改变列数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1240
+#: src/mathed/InsetMathHull.cpp:1250
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "无法向 '%1$s'添加水平网格线"
@@ -15868,11 +15900,11 @@ msgstr "找不到目录"
 msgid "[[Replace with the code of your language]]"
 msgstr "zh_CN"
 
-#: src/support/os_win32.cpp:326
+#: src/support/os_win32.cpp:339
 msgid "System file not found"
 msgstr "未找到系统文件"
 
-#: src/support/os_win32.cpp:327
+#: src/support/os_win32.cpp:340
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -15880,11 +15912,11 @@ msgstr ""
 "无法载入 shfolder.dll\n"
 "请安装."
 
-#: src/support/os_win32.cpp:332
+#: src/support/os_win32.cpp:345
 msgid "System function not found"
 msgstr "未找到系统函数"
 
-#: src/support/os_win32.cpp:333
+#: src/support/os_win32.cpp:346
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
@@ -15895,6 +15927,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知用户"
+
+#~ msgid "Encoding error"
+#~ msgstr "编码出错"
 
 #, fuzzy
 #~ msgid "Placeholders"
