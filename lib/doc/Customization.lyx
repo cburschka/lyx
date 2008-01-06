@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 295
+\lyxformat 310
 \begin_document
 \begin_header
 \textclass book
@@ -58,7 +58,6 @@
 \usepackage{multicol}
 \end_preamble
 \begin_modules
-URL
 Logical Markup
 \end_modules
 \language english
@@ -2100,22 +2099,18 @@ inline false
 status open
 
 \begin_layout Standard
-
 #!/bin/bash
 \end_layout
 
 \begin_layout Standard
-
 FROMFILE=$1
 \end_layout
 
 \begin_layout Standard
-
 TOFILE=`basename $2`
 \end_layout
 
 \begin_layout Standard
-
 cp $FROMFILE /home/you/pdf/$TOFILE
 \end_layout
 
@@ -3764,6 +3759,7 @@ Check out the documentation translation web page at
 status collapsed
 
 \begin_layout Standard
+
 http://www.devel.lyx.org
 \end_layout
 
@@ -3831,6 +3827,7 @@ Sometimes the original document (from the LyX-team) will be updated.
 status collapsed
 
 \begin_layout Standard
+
 http://www.lyx.org/viewcvs.cgi/lyxdoc/
 \end_layout
 
