@@ -45,6 +45,7 @@ bool LyXModule::isAvailable() {
 		return true;
 	if (checked)
 		return available;
+	checked = true;
 	vector<string>::const_iterator it  = packageList.begin();
 	vector<string>::const_iterator end = packageList.end(); 
 	for (; it != end; ++it) {

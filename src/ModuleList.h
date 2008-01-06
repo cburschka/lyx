@@ -23,6 +23,8 @@ namespace lyx {
  *  file, except that it does not stand alone. In that sense, it is more like 
  *  a LaTeX package, where a layout file corresponds to a LaTeX class.
  */
+
+//FIXME Give us some access functions here.
 class LyXModule {
 public:
 	///
