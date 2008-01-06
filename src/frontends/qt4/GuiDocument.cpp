@@ -1713,6 +1713,8 @@ vector<string> GuiDocument::getPackageList(string const & modName) const
 bool GuiDocument::isModuleAvailable(string const & modName) const
 {
 	LyXModule * mod = moduleList[modName];
+	if (!mod)
+		return false;
 	return mod->isAvailable();
 }
 
