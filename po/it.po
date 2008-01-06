@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-01-05 02:51+0100\n"
-"PO-Revision-Date: 2007-12-09 16:08+0100\n"
+"PO-Revision-Date: 2008-01-06 23:01+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -11573,9 +11573,8 @@ msgid "&Overwrite"
 msgstr "&Sovrascrivi"
 
 #: src/Buffer.cpp:941
-#, fuzzy
 msgid "Iconv software exception Detected"
-msgstr "Rilevato problema software"
+msgstr "Rilevato problema software con iconv"
 
 #: src/Buffer.cpp:941
 #, c-format
@@ -11583,11 +11582,13 @@ msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
+"Verificate che il supporto software per l'attuale codifica (%1$s) sia "
+"correttamente installato"
 
 #: src/Buffer.cpp:961
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr ""
+msgstr "Comando LaTeX per il carattere '%1$s' (codice unicode %2$s) non trovato"
 
 #: src/Buffer.cpp:964
 msgid ""
@@ -11600,14 +11601,12 @@ msgstr ""
 "Potrebbe essere di aiuto cambiare la codifica del documento in utf8."
 
 #: src/Buffer.cpp:971
-#, fuzzy
 msgid "iconv conversion failed"
-msgstr "Conversione non riuscita"
+msgstr "Conversione con iconv non riuscita"
 
 #: src/Buffer.cpp:976
-#, fuzzy
 msgid "conversion failed"
-msgstr "Conversione non riuscita"
+msgstr "conversione non riuscita"
 
 #: src/Buffer.cpp:1227
 msgid "Running chktex..."
@@ -13414,14 +13413,12 @@ msgstr ""
 "Uso quello prestabilito."
 
 #: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
-#, fuzzy
 msgid "LyX Warning: "
-msgstr "LyX Versione "
+msgstr "Avviso di LyX: "
 
 #: src/Paragraph.cpp:2241
-#, fuzzy
 msgid "uncodable character"
-msgstr "Carattere speciale"
+msgstr "carattere intraducibile"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
