@@ -640,20 +640,127 @@ enum kb_action {
 	LFUN_WORD_RIGHT,		 // dov, 20071028
 	LFUN_WORD_RIGHT_SELECT,		 // dov, 20071028
 	// 305
+/**
+ * LFUN_MATH_MACRO_FOLD
+ * \li Action: Fold a Math Macro
+ * \li Notion: Fold the Math Macro the cursor is in if it was 
+               unfolded, i.e. displayed as \foo before. 
+ * \li Syntax: math-macro-fold
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_FOLD,
+/**
+ * LFUN_MATH_MACRO_UNFOLD
+ * \li Action: Unfold a Math Macro
+ * \li Notion: Unfold the Math Macro the cursor is in, i.e. 
+               display it as \foo. 
+ * \li Syntax: math-macro-unfold
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_UNFOLD,
+/**
+ * LFUN_MATH_MACRO_ADD_PARAM
+ * \li Action: Add a parameter
+ * \li Notion: Add a parameter to a Math Macro
+ * \li Params: <NUM>: The number of the parameter behind which the new one
+               will be added (1 for the first, i.e. use 0 for add a 
+               parameter at the left), defaults to the last one.
+ * \li Syntax: math-macro-add-param <NUM>
+ * \li Origin: sts, 06 January 2008
+ */	
 	LFUN_MATH_MACRO_ADD_PARAM,
+/**
+ * LFUN_MATH_MACRO_REMOVE_PARAM
+ * \li Action: Remove the last parameter
+ * \li Notion: Remove the last parameter of a Math Macro and
+               remove its value in all instances of the macro 
+               in the buffer.
+ * \li Params: <NUM>: The number of the parameter to be deleted (1 for 
+               the first), defaults to the last one.
+ * \li Syntax: math-macro-remove-param <NUM>
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_REMOVE_PARAM,
+/**
+ * LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
+ * \li Action: Append a greedy parameter
+ * \li Notion: Append a greedy parameter to a Math Macro which
+               eats the following mathed cell in every instance of
+               the macro in the buffer.
+ * \li Syntax: math-macro-append-greedy-param
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_APPEND_GREEDY_PARAM,
 	// 310
+/**
+ * LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
+ * \li Action: Remove a greedy parameter
+ * \li Notion: Remove a greedy parameter of a Math Macro and spit
+               out the values of it in every instance of the macro 
+               in the buffer. If it is an optional parameter the [valud]
+               format is used.
+ * \li Syntax: math-macro-remove-greedy-param
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM,
+/**
+ * LFUN_MATH_MACRO_MAKE_OPTIONAL
+ * \li Action: Make a parameter optional
+ * \li Notion: Turn the first non-optional parameter of a Math Macro
+               into an optional parameter with a default value.
+ * \li Syntax: math-macro-make-optional
+ * \li Origin: sts, 06 January 2008
+ */	
 	LFUN_MATH_MACRO_MAKE_OPTIONAL,
+/**
+ * LFUN_MATH_MACRO_MAKE_NONOPTIONAL
+ * \li Action: Make a parameter non-optional
+ * \li Notion: Turn the last optional parameter of a Math Macro
+               into a non-optional parameter. The default value is
+               remembered to be reused later if the user changes his mind.
+ * \li Syntax: math-macro-make-nonoptional
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_MAKE_NONOPTIONAL,
+/**
+ * LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
+ * \li Action: Add an optional parameter
+ * \li Notion: Insert an optional parameter just behind the 
+               already existing optional parameters.
+ * \li Syntax: math-macro-add-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM,
+/**
+ * LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
+ * \li Action: Remove the last optional parameter
+ * \li Notion: Remove the last optional parameter of a Math Macro and
+               remove it in all the instances of the macro in the buffer.
+ * \li Syntax: math-macro-remove-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM,
 
 	// 315
+/**
+ * LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
+ * \li Action: Add a greedy optional parameter
+ * \li Notion: Add a greedy optional parameter which eats the value
+               from the following cells in mathed which are in the [value]
+               format.
+ * \li Syntax: math-macro-add-greedy-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM,
+/**
+ * LFUN_IN_MATHMACROTEMPLATE
+ * \li Action: Only active in Math Macro definition
+ * \li Notion: Dummy function which is only active in a Math Macro definition. 
+               It's used to toggle the Math Macro toolbar if the cursor moves
+               into a Math Macro definition.
+ * \li Syntax: in-mathmacrotemplate
+ * \li Origin: sts, 06 January 2008
+ */
 	LFUN_IN_MATHMACROTEMPLATE,
 /** LFUN_SCROLL
  * \li Action: scroll the buffer view
