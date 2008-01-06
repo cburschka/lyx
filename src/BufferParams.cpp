@@ -1438,17 +1438,6 @@ bool BufferParams::addLayoutModule(string modName) {
 	return true;
 }
 
-/* This is not currently used but may prove useful
-bool BufferParams::addLayoutModules(vector<string>modNames)
-{
-	bool retval = true;
-	vector<string>::const_iterator it = modNames.begin();
-	vector<string>::const_iterator end = modNames.end();
-	for (; it != end; ++it)
-		retval &= addLayoutModule(*it);
-	return retval;
-}
-*/
 
 void BufferParams::clearLayoutModules() {
 	layoutModules_.clear();

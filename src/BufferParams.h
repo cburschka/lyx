@@ -134,10 +134,6 @@ public:
 	/// the BufferParams do not represent the parameters for an actual buffer
 	/// (as in GuiDocument).
 	bool addLayoutModule(std::string modName);
-	// Add a list of modules.
-	// Returns true if all modules were successfully added.
-	// Currently unused.
-	// bool addLayoutModules(std::vector<std::string>modNames);
 	/// Clear the list
 	void clearLayoutModules();
 
