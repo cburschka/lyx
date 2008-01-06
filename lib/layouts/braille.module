@@ -1,0 +1,152 @@
+#\DeclareLyXModule[braille.sty]{Defines an environment to typeset Braille.}{Braille}
+
+# Author: Uwe Stöhr <uwestoehr@web.de>
+
+Format 5
+
+Preamble
+	\usepackage{braille}
+	\newcommand{\braillenormal}[1]
+	 {\setlength{\brailleunit}{2.4mm}\braille{#1}}
+	% With \brailleunit == 0.75ex, the braille letters will
+	% approximately match the other letters in size.
+	\newcommand{\brailletext}[1]
+	 {\setlength{\brailleunit}{0.75ex}\braille{#1}}
+EndPreamble
+
+# default Braille
+Style Braille_(default)
+	LatexType		command
+	LatexName		braillenormal
+	NextNoIndent		1
+	LeftMargin		XBraille:
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille:"
+	LabelFont
+		Shape		Italic
+		Color		Blue
+	EndFont
+End
+
+# Braille in text size
+Style Braille_(textsize)
+	LatexType		command
+	LatexName		brailletext
+	NextNoIndent		1
+	LeftMargin		XBraille:
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille:"
+	LabelFont
+		Shape		Italic
+		Color		Blue
+	EndFont
+End
+
+# turn on dots
+Style Braille_(dots_on)
+	LatexType		command
+	LatexName		brailleputtinydotstrue
+	NextNoIndent		1
+	KeepEmpty		1
+	LeftMargin		XBraille_dots_on
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille_dots_on"
+	LabelFont
+		Shape		Italic
+		Color		Green
+	EndFont
+End
+
+# turn off dots
+Style Braille_(dots_off)
+	LatexType		command
+	LatexName		brailleputtinydotsfalse
+	NextNoIndent		1
+	KeepEmpty		1
+	LeftMargin		XBraille_dots_off
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille_dots_off"
+	LabelFont
+		Shape		Italic
+		Color		Green
+	EndFont
+End
+
+# turn off dots
+Style Braille_(mirror_on)
+	LatexType		command
+	LatexName		braillemirrortrue
+	NextNoIndent		1
+	KeepEmpty		1
+	LeftMargin		XBraille_mirror_on
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille_mirror_on"
+	LabelFont
+		Shape		Italic
+		Color		Green
+	EndFont
+End
+
+# turn off dots
+Style Braille_(mirror_off)
+	LatexType		command
+	LatexName		braillemirrorfalse
+	NextNoIndent		1
+	KeepEmpty		1
+	LeftMargin		"XBraille mirror off"
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Static
+	LabelString		"Braille mirror off"
+	LabelFont
+		Shape		Italic
+		Color		Green
+	EndFont
+End
+

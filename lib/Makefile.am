@@ -178,6 +178,7 @@ dist_slexamples_DATA = \
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
+	examples/Braille.lyx \
 	examples/CV-image.eps \
 	examples/CV-image.png \
 	examples/Foils.lyx \
@@ -942,6 +943,7 @@ dist_layouts_DATA =\
 	layouts/article.layout \
 	layouts/beamer.layout \
 	layouts/book.layout \
+	layouts/braille.module \
 	layouts/broadway.layout \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \

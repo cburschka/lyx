@@ -1,0 +1,553 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 310
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% color greyed-out notes blue
+\renewenvironment{lyxgreyedout}
+ {\textcolor{blue}\bgroup}{\egroup}
+\end_preamble
+\begin_modules
+Braille
+\end_modules
+\language english
+\inputencoding utf8
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "How to write Braille with LyX"
+\pdf_author "Uwe Stöhr"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2.5cm
+\rightmargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+How to write Braille with LyX
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\newline
+
+\begin_inset CommandInset href
+LatexCommand href
+target "uwestoehr@web.de"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First a general note: The Braille you can create with LaTeX is not a professiona
+l one! Professional Braille can be 6 or 8\InsetSpace \thinspace{}
+dot, while LaTeX only supports
+ only 6\InsetSpace \thinspace{}
+dot Braille without accented characters.
+\end_layout
+
+\begin_layout Standard
+To write Braille with LyX, load the module 
+\family sans
+Braille
+\family default
+ in the document settings under 
+\family sans
+Document\InsetSpace ~
+Class
+\family default
+.
+ Now select the environment 
+\family sans
+Braille\InsetSpace ~
+(default)
+\family default
+ or 
+\family sans
+Braille\InsetSpace ~
+(textsize)
+\family default
+ from the end of LyX's environment selection box and write your text.
+ The other Braille environments are only turn on/off some properties as
+ described below; keep them empty!
+\end_layout
+
+\begin_layout Standard
+Here is an example:
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+with Latin letters:
+\newline
+This is an example sentence written in Braille.
+\end_layout
+
+\begin_layout Standard
+with Braille letters:
+\end_layout
+
+\begin_layout Braille (default)
+This is an example sentence written in Braille.
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+You can see that LaTeX is not able to hyphenate words written in Braille.
+ You have to do this manually.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Only Latin letters, numbers, punctuations, parentheses, and brackets can
+ be printed in Braille.
+ Special characters like 
+\begin_inset Quotes eld
+\end_inset
+
+@
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+$
+\begin_inset Quotes erd
+\end_inset
+
+, accented characters like umlauts, and line breaks are not supported.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ LyX and LaTeX's proper names 
+\begin_inset Quotes eld
+\end_inset
+
+LaTeX
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+LaTeX2e
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+TeX
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+LyX
+\begin_inset Quotes erd
+\end_inset
+
+ must be inserted as ERT, as in the following example:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+Latin: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+LyX
+\end_layout
+
+\end_inset
+
+ is cool!
+\newline
+Braille:
+\end_layout
+
+\begin_layout Braille (default)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+LyX
+\end_layout
+
+\end_inset
+
+ is cool!
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+Here is an overview about the different Braille environments using the example
+ text 
+\begin_inset Quotes eld
+\end_inset
+
+This is Braille.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Default:
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+Size that approximately matches the document's text size:
+\end_layout
+
+\begin_layout Braille (textsize)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Tiny dots can be displayed at empty positions:
+\end_layout
+
+\begin_layout Braille (dots on)
+
+\end_layout
+
+\begin_layout Braille (textsize)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+The text can be printed mirrored to be later able to for "print" Braille
+ by hand with a needle or another suitable method:
+\end_layout
+
+\begin_layout Standard
+Normal:
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+Mirrored:
+\end_layout
+
+\begin_layout Braille (mirror on)
+
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Braille (mirror off)
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Computer Braille that uses 8 dots can be turned on with the command 
+\series bold
+
+\backslash
+brailleeightdotstrue
+\series default
+.
+ But the two extra dots are only used when they are accessed with the command
+ 
+\series bold
+
+\backslash
+braillebox
+\series default
+.
+ For example the command
+\newline
+
+\series bold
+
+\backslash
+braillebox{8175}
+\series default
+
+\newline
+leads to: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+brailleeightdotstrue
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+braillebox{8175}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+brailleeightdotsfalse
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+The size of the default Braille font can be changed by the length 
+\series bold
+
+\backslash
+brailleunit
+\series default
+.
+ Its default value is 2.4\InsetSpace \thinspace{}
+mm.
+ To get e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+double-sized Braille where also the tiny dots have the double
+ size, use this command in ERT in your document:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\newline
+\InsetSpace ~
+{
+\backslash
+setlength{
+\backslash
+brailleunit}{4.8mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\begin_layout Standard
+Double-sized Braille:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\end_layout
+
+\begin_layout Standard
+
+ {
+\backslash
+setlength{
+\backslash
+brailleunit}{4mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\end_layout
+
+\begin_layout Standard
+
+ {
+\backslash
+setlength{
+\backslash
+brailleunit}{2mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+For more informations about the Braille cell dimensions have a look at 
+\begin_inset CommandInset href
+LatexCommand href
+name "Braille cell dimensions"
+target "http://www.tiresias.org/publications/reports/braille_cell.htm"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

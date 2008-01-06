@@ -2271,6 +2271,7 @@ lib_doc_sv_files = Split('''
 
 
 lib_examples_files = Split('''
+    Braille.lyx
     CV-image.eps
     CV-image.png
     Foils.lyx
@@ -2610,6 +2611,7 @@ lib_layouts_inc_files = Split('''
 
 
 lib_layouts_module_files = Split('''
+    braille.module
     endnotes.module
     foottoend.module
     hanging.module
