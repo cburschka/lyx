@@ -121,12 +121,42 @@ enum kb_action {
 	* \li Syntax: buffer-auto-save
  */
 	LFUN_BUFFER_AUTO_SAVE,
+/**
+ * LFUN_UNDO
+ * \li Action: Undoes the last edit
+ * \li Syntax: undo
+ */
 	LFUN_UNDO,
+/**
+ * LFUN_REDO
+ * \li Action: Redoes the last thing undone
+ * \li Syntax: redo
+ */
 	LFUN_REDO,
+/**
+ * LFUN_PASTE
+ * \li Action: Pastes from the active clipboard
+ * \li Syntax: paste
+ */
 	LFUN_PASTE,
+/**
+ * LFUN_PRIMARY_SELECTION_PASTE
+ * \li Action: Pastes the material currently selected
+ * \li Syntax: primary-selection-paste
+ */
 	LFUN_PRIMARY_SELECTION_PASTE,
 	// 15
+/**
+ * LFUN_CUT
+ * \li Action: Cuts to the clipboard
+ * \li Syntax: cut
+ */
 	LFUN_CUT,
+/**
+ * LFUN_COPY
+ * \li Action: Copies to the clipboard the last edit
+ * \li Syntax: copy
+ */
 	LFUN_COPY,
 	LFUN_ERROR_NEXT,
 	LFUN_NOTE_NEXT,
@@ -555,7 +585,7 @@ enum kb_action {
  * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
                This function only modifies, and does not override, existing settings.
                Note that the "leftindent" indent setting is deprecated.
- * \li Syntax: paragraph-params <INDENT> <SPACING> <ALIGN> <OTHERS>
+ * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
  * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
                <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
                <ALIGN>:   \\align block|left|right|center|default\n
