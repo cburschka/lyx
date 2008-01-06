@@ -672,6 +672,8 @@ bool Buffer::readFile(FileName const & filename)
 		FileName lyxfile(addName(temppath(), "content.lyx"));
 		// if both manifest.txt and file.lyx exist, this is am embedded file
 		if (lyxfile.exists()) {
+			// if in bundled format, save checksum of the compressed file, not content.lyx
+			saveCheckSum(filename);
 			params().embedded = true;
 			fname = lyxfile;
 		}
@@ -908,20 +910,19 @@ bool Buffer::writeFile(FileName const & fname) const
 	}
 
 	removeAutosaveFile(d->filename.absFilename());
+
+	if (params().embedded) {
+		message(str + _(" writing embedded files!."));
+		// if embedding is enabled, write file.lyx and all the embedded files
+		// to the zip file fname.
+		if (!d->embedded_files.writeFile(fname)) {
+			message(str + _(" could not write embedded files!."));
+			return false;
+		}
+	}
 	saveCheckSum(d->filename);
 	message(str + _(" done."));
 
-	if (!params().embedded)
-		return true;
-
-	message(str + _(" writing embedded files!."));
-	// if embedding is enabled, write file.lyx and all the embedded files
-	// to the zip file fname.
-	if (!d->embedded_files.writeFile(fname)) {
-		message(str + _(" could not write embedded files!."));
-		return false;
-	}
-	message(str + _(" error while writing embedded files."));
 	return true;
 }
 
