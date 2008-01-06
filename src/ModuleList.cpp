@@ -34,8 +34,8 @@ namespace lyx {
 ModuleList moduleList;
 
 
-LyXModule::LyXModule(string n, string f, string d,
-	          vector<string> p) : 
+LyXModule::LyXModule(string const & n, string const & f, 
+	                   string const & d, vector<string> const & p) : 
 	name(n), filename(f), description(d), packageList(p), checked(false)
 {}
 

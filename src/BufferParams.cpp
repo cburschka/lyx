@@ -1425,7 +1425,7 @@ vector<string> const & BufferParams::getModules() const {
 
 
 
-bool BufferParams::addLayoutModule(string modName) {
+bool BufferParams::addLayoutModule(string const & modName) {
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();
 	for (; it != end; it++) {

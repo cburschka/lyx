@@ -28,8 +28,8 @@ namespace lyx {
 class LyXModule {
 public:
 	///
-	LyXModule(std::string n, std::string f, std::string d,
-	          std::vector<std::string> p);
+	LyXModule(std::string const & n, std::string const & f, 
+	          std::string const & d, std::vector<std::string> const & p);
 	/// whether the required packages are available
 	bool isAvailable();
 	/// what appears in the ui

@@ -133,7 +133,7 @@ public:
 	/// need not be done if we know this isn't the final time through, or if
 	/// the BufferParams do not represent the parameters for an actual buffer
 	/// (as in GuiDocument).
-	bool addLayoutModule(std::string modName);
+	bool addLayoutModule(std::string const & modName);
 	/// Clear the list
 	void clearLayoutModules();
 
