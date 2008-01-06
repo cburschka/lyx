@@ -5827,8 +5827,8 @@ modules
 \emph default
 .
  Modules are to LaTeX packages much as layouts are to LaTeX classes, and
- some modules---such as the URL module---provide support for just such a
- package.
+ some modules---such as the Endnotes module---provide support for just such
+ a package.
  In a sense, layout modules are similar to included files---files like stdsectio
 ns.inc---in that modules are not specific to a given document layout but
  may be used with many different layouts.
@@ -5862,9 +5862,7 @@ A module must begin with a line like the following:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[url.sty]{Adds a character style for the 
-\backslash
-url command.}{URL} 
+DeclareLyXModule[endnotes.sty]{Adds an endnote inset.}{Endnotes} 
 \end_layout
 
 \begin_layout Standard
@@ -5898,9 +5896,13 @@ OK
 \end_inset
 
 .
- It is strongly recommended that you save your work before doing so.
- It is, in fact, strongly recommended that you not attempt to create or
- edit modules while simultaneously working on documents.
+ 
+\emph on
+It is strongly recommended that you save your work before doing so
+\emph default
+.
+ In fact, it is strongly recommended that you not attempt to create or edit
+ modules while simultaneously working on documents.
  Though of course the developers strive to keep LyX stable in such situations,
  syntax errors and the like in your module file could cause strange behavior.
 \end_layout
