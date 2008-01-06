@@ -79,9 +79,9 @@ public:
 	/// If the token belongs to our parameters, read it.
 	bool Read(Lexer & lex, std::string const & token, std::string const & bufpath);
 	/// convert
-  // Only a subset of InsetGraphicsParams is needed for display purposes.
-  // This function also interrogates lyxrc to ascertain whether
-  // to display or not.
+	// Only a subset of InsetGraphicsParams is needed for display purposes.
+	// This function also interrogates lyxrc to ascertain whether
+	// to display or not.
 	graphics::Params as_grfxParams() const;
 
 private:
