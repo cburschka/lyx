@@ -583,7 +583,10 @@ enum kb_action {
 /**
  * LFUN_LAYOUT_RELOAD
  * \li Action: Reloads layout information
- * \li Notion: Reloads all layout information for the current buffer.
+ * \li Notion: Reloads all layout information for the current buffer from disk, thus
+               recognizing any changes that have been made to layout files on the fly. 
+               This is intended to be used only by layout developers and should not be
+               used when one is trying to do actual work.
  * \li Syntax: layout-reload
  * \li Origin: rgh, 3 September 2007
  */
