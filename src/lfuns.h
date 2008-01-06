@@ -315,7 +315,7 @@ enum kb_action {
 	// 120
  /**
  * LFUN_LAYOUT
- * \li Action: Sets the layout for the current paragraph
+ * \li Action: Sets the layout (that is, environment) for the current paragraph
  * \li Syntax: layout <LAYOUT>
  * \li Params: <LAYOUT>: the layout to use
  */
@@ -546,10 +546,44 @@ enum kb_action {
 	LFUN_BIBTEX_DATABASE_ADD,
 	LFUN_BIBTEX_DATABASE_DEL,
 	LFUN_CITATION_INSERT,
-	LFUN_OUTLINE_UP,                 // Vermeer 20060323
+/**
+ * LFUN_OUTLINE_UP
+ * \li Action: Move the current group in the upward direction in the
+               structure of the document.
+ * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
+               the whole substructure of the group.
+ * \li Syntax: outline-up
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
+	LFUN_OUTLINE_UP,
 	// 265
+/**
+ * LFUN_OUTLINE_DOWN
+ * \li Action: Move the current group in the downward direction in the
+               structure of the document.
+ * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
+               the whole substructure of the group.
+ * \li Syntax: outline-down
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 	LFUN_OUTLINE_DOWN,
+/**
+ * LFUN_OUTLINE_IN
+ * \li Action: Moves the current group in the downward direction in the
+               hierarchy of the document structure.
+ * \li Notion: Part -> Chapter -> Section -> etc.
+ * \li Syntax: outline-in
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 	LFUN_OUTLINE_IN,
+/**
+ * LFUN_OUTLINE_OUT
+ * \li Action: Moves the current group in the upward direction in the
+               hierarchy of the document structure.
+ * \li Notion: Part <- Chapter <- Section <- etc.
+ * \li Syntax: outline-out
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 	LFUN_OUTLINE_OUT,
 	LFUN_PARAGRAPH_MOVE_DOWN,        // Edwin 20060408
 	LFUN_PARAGRAPH_MOVE_UP,          // Edwin 20060408
@@ -568,7 +602,7 @@ enum kb_action {
  * \li Action: Clears the list of saved bookmarks
  * \li Syntax: bookmark-clear
  * \li Origin: bpeng, 31 October 2006
-	*/
+ */
 	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
 	LFUN_NOMENCL_INSERT,             // Ugras
 	// 280
@@ -769,7 +803,7 @@ enum kb_action {
  * \li Params: <TYPE>:  line|page\n
                <QUANTITY>: up|down|<number>\n
  * \li Origin: Abdelrazak Younes, Dec 27 2007
-*/
+ */
 	LFUN_SCROLL,
 	LFUN_LASTACTION                  // end of the table
 };
