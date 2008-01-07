@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -203,7 +203,8 @@ Vous en arrivez peut-être à lire ce document après avoir tenté vainement
  Vous en arrivez alors non seulement à écrire, mais également à faire la
  mise en page de vos documents.
  LyX, au contraire, réalise la typographie pour vous, de manière cohérente,
- vous permettant de vous consacrer à l'important, le contenu de votre document.
+ vous permettant de vous consacrer à ce qui est important, le contenu de
+ votre document.
 \end_layout
 
 \begin_layout Standard
@@ -213,7 +214,7 @@ Donc, restez avec nous pour en apprendre plus sur LyX.
 Manuel\InsetSpace ~
 d'Apprentissage
 \shape default
- sera vite rentabilisé.
+ sera vite rentabilisée.
 \end_layout
 
 \begin_layout Section
@@ -347,7 +348,7 @@ l'Utilisateur
 
 \end_deeper
 \begin_layout Itemize
-Description détaillée de LaTeX.
+Une description détaillée de LaTeX.
 \end_layout
 
 \begin_deeper
@@ -443,7 +444,7 @@ d'Apprentissage
 \emph default
 , nous supposons que vous disposez d'une version totalement fonctionnelle
  de LyX, ainsi qu'une distribution LaTeX, et des visionneuses DVI et PDF.
- Cela devrait être le cas pour la pluprt des distributions Linux et BSD
+ Cela devrait être le cas pour la plupart des distributions Linux et BSD
  ainsi que sous Windows où c'est l'installateur LyX qui met tout en place.
 \end_layout
 
@@ -691,7 +692,7 @@ Annuler
 \emph on
 tout
 \emph default
- ; par exemple pas quand on change la classe de document, ce qui est un
+ ; pas par exemple quand on change la classe de document, ce qui est un
  bug de LyX.
 \end_layout
 
@@ -736,7 +737,7 @@ Coller
 ) pour couper, copier et coller.
  Ou bien avec le 
 \shape italic
-bouton milieu
+bouton du milieu
 \shape default
  
 \emph on
@@ -807,7 +808,7 @@ caractères gras
 Style Nom Propre
 \noun default
  (généralement en petites capitales, utilisées pour les noms de personnes)
- à partir des boutons à cocher dans le menu 
+ à partir des listes déroulantes du  menu 
 \family sans
 Éditer\SpecialChar \menuseparator
 Style\InsetSpace ~
@@ -821,7 +822,7 @@ texte
 
 \end_inset
 
- de la barre d'outils.
+ de la barre d'outils).
 \end_layout
 
 \begin_layout Description
@@ -2233,7 +2234,7 @@ Description
  Vous pouvez vous entraîner un moment pour vous rendre compte du comportement
  des nouveaux environnements
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 NdT : il est intéressant de noter ici que les environnements ont parfois
@@ -2246,20 +2247,12 @@ NdT : il est intéressant de noter ici que les environnements ont parfois
 \begin_layout Standard
 Ne pas hésiter à faire 
 \family sans
-Visualiser
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
+Visualiser\SpecialChar \menuseparator
 DVI
 \family default
  ou 
 \family sans
-Visualiser
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
+Visualiser\SpecialChar \menuseparator
 PDF
 \family default
  pour se rendre compte du rendu final.
@@ -2334,7 +2327,8 @@ Environnement
 \end_layout
 
 \begin_layout Standard
-Les modèles peuvent faire gagner beaucoup de temps, et nous vous conseillons
+Les modèles peuvent faire gagner beaucoup de temps, et nous vous conseil\SpecialChar \-
+lons
  vivement de les utiliser autant que possible.
  De plus, ils peuvent aider une personne à apprendre comment utiliser des
  classes de document un peu exotiques.
@@ -2686,6 +2680,10 @@ DVI
 \family sans
 PostScript
 \family default
+ ou 
+\family sans
+PDF
+\family default
 ).
 \end_layout
 
@@ -2758,7 +2756,7 @@ Comme les environnements de chapitre ne sont pas autorisés dans les classes
  d'article, la copie de zones de texte contenant des titres de chapitre
  peut causer des erreurs.
  Si cela arrive, effacez juste les titres des chapitres.
- Pour en savoir plus , voir la section\InsetSpace ~
+ Pour en savoir plus, voir la section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:classes-de-documents"
@@ -2805,10 +2803,7 @@ Les notes de bas de page peuvent être ajoutées grâce au bouton
 \family default
  dans la barre d'outils ou par menu 
 \family sans
-\bar under
-I
-\bar default
-nsérer\SpecialChar \menuseparator
+Insérer\SpecialChar \menuseparator
 Note\InsetSpace ~
 en\InsetSpace ~
 Bas\InsetSpace ~
@@ -2960,10 +2955,7 @@ Les notes en marge peuvent quant à elles être ajoutées grâce au bouton
 
  de la barre d'outils, ou par le menu 
 \family sans
-\bar under
-I
-\bar default
-nsérer\SpecialChar \menuseparator
+Insérer\SpecialChar \menuseparator
 Note\InsetSpace ~
 en\InsetSpace ~
 Marge.
@@ -3272,7 +3264,7 @@ Plan
  de la barre d'outils.
  La méthode par menu fonctionne même si vous n'avez pas de table des matières
  dans votre document.
- C'est un outil très utile dontous pouvez vous servir pour naviguer dans
+ C'est un outil très utile dont vous pouvez vous servir pour naviguer dans
  votre document.
  Un clic sur le titre d'une (sous-)section dans cette table mettra la ligne
  en évidence et déplacera l'affichage (dans la fenêtre d'édition de LyX)
@@ -3366,12 +3358,8 @@ c'est d'une grande simplicité.
 \end_layout
 
 \begin_layout Standard
-Pour l'instant, l'équation n'a pas très belle allure, même dans le rendu
- en 
-\family typewriter
-dvi
-\family default
- ; aucun espace ne sépare le signe 
+Pour l'instant, l'équation n'a pas très belle allure, que ce soit dans LyX
+ ou dans la sortie finale ; aucun espace ne sépare le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3398,14 +3386,25 @@ dvi
 Au lieu de cela, nous allons créer une formule qui sera mise en page correctemen
 t.
  Pour créer une formule, cliquez juste sur le bouton de la barre d'outils
- marqué 
-\begin_inset Formula $\frac{a+b}{c}$
+ 
+\begin_inset Graphics
+	filename ../../images/math-mode.xpm
+	scale 75
+	scaleBeforeRotation
+
 \end_inset
 
- en bleu.
+ ou utilisez le menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Formule\InsetSpace ~
+en\InsetSpace ~
+ligne
+\family default
+.
  LyX ouvrira un petit carré bleu, qui est une formule vide.
- LyX a placé le curseur dans le carré bleu, il ne vous reste donc plus qu'à
- taper 
+ Il ne vous reste donc plus qu'à taper 
 \family typewriter
 E=mc^2
 \family default
@@ -3422,11 +3421,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Faites tourner LaTeX et jetez un œil sur la sortie 
-\family typewriter
-dvi
-\family default
-.
+Faites tourner LaTeX et jetez un œil sur la sortie.
  Remarquez que l'expression a été joliment composée, avec des espaces entre
  les lettres et le signe 
 \begin_inset Quotes fld
@@ -3461,13 +3456,10 @@ sqrt
 \family default
  ; c'est un peu frustrant, car vous ne savez pas à quoi ressemble une expression
  tant que vous n'avez pas fait tourner LaTeX sur votre fichier, et devez
- passer du temps pour trouver une parenthèse manquante ou autre faute.
- D'un autre côté, LyX ne cherche pas un rendu parfait de l'expression à
- l'écran (WYSIWYG), mais donne une très bonne idée du rendu final.
- Dans 99% des cas, vous n'aurez pas à retoucher la taille des polices ou
- l'espacement que LaTeX élabore.
- De cette façon (désolé de radoter comme ça) vous pouvez vous consacrer
- au contenu de vos maths, sans vous soucier de leur apparence.
+ passer du temps pour trouver par exemple, une parenthèse manquante.
+ LyX ne cherche pas un rendu parfait de l'expression à l'écran (WYSIWYG),
+ mais donne une très bonne idée du rendu final.
+ C'est LaTeX qui s'occupe ensuite de la mise en forme professionnelle.
 \end_layout
 
 \begin_layout Section
@@ -3544,16 +3536,17 @@ Couper
 Coller
 \family default
 .
- Faites par contre attention à ceci : lorsque le curseur est juste à droite
- de l'expression et que vous tapez 
-\family sans
-Delete
-\family default
- (ou 
+ Faites par contre attention à ceci : lorsque le curseur est immédiatement
+ à droite ou à gauche de l'expression et que vous appuyez respectivement
+ sur 
 \family sans
 Basckspace
 \family default
-), l'expression entière est effacée.
+ ou sur 
+\family sans
+Suppr
+\family default
+, l'expression entière est effacée.
  Heureusement, 
 \family sans
 Éditer
@@ -3620,7 +3613,11 @@ Haut
 Bas
 \family default
  fera revenir le curseur au niveau normal de saisie.
- En fait, si vous tapez 
+ Si vous tapez 
+\family sans
+Espace
+\family default
+ à la place de 
 \family sans
 Bas
 \family default
@@ -3697,8 +3694,8 @@ Espace
 \family sans
 Esc
 \family default
- pour sortir complètement du mode mathématique) tout ce que vous saisirez
- sera au même niveau.
+ pour sortir complètement de la formule) tout ce que vous saisirez sera
+ au même niveau.
 \end_layout
 
 \begin_layout Standard
@@ -3754,9 +3751,9 @@ Barre\InsetSpace ~
 d'outils\InsetSpace ~
 Math
 \family default
- est un moyen pratique pour écrire ou pour exécuter de nombreuses fonctions
+ est un moyen pratique pour écrire ou pour exécuter de nombreuses opérations
  compliquées d'édition mathématique.
- Plusieurs de ces fonctions peuvent être exécutées depuis le clavier ou
+ Plusieurs de ces opérations peuvent être exécutées depuis le clavier ou
  les menus 
 \family sans
 Éditer\SpecialChar \menuseparator
@@ -3782,7 +3779,8 @@ La
 \family sans
 Barre d'outils Math
 \family default
- peut être activée avec le menu 
+ s'affiche quand le curseur se trouve dans une formule et elle peut être
+ activée manuellement avec le menu 
 \family sans
 Visualiser\SpecialChar \menuseparator
 Barres\InsetSpace ~
@@ -3840,8 +3838,7 @@ Grec et symboles
 \begin_layout Standard
 La 
 \family sans
-Palette\InsetSpace ~
-Mathématique
+Barre d'outils Math
 \family default
  vous permet d'obtenir une vaste gamme de symboles utiles en maths : des
  flèches, des relations, des opérateurs, et des sommes et intégrales.
@@ -3870,13 +3867,12 @@ Racines carrées, accents, et délimiteurs
 \end_layout
 
 \begin_layout Standard
-Pour taper une racine carrée, cliquez simplement sur le bouton portant le
- signe 
-\begin_inset Quotes fld
-\end_inset
+Pour taper une racine carrée, cliquez simplement sur le bouton 
+\begin_inset Graphics
+	filename ../../images/math/sqrt.xpm
+	scale 75
+	scaleBeforeRotation
 
-racine carrée
-\begin_inset Quotes frd
 \end_inset
 
 .
@@ -3901,10 +3897,14 @@ Accentuer un caractère (
 \family sans
 Décoration
 \family default
- dans la 
-\family sans
-Palette
-\family default
+ dans la barre d'outils avec le bouton 
+\begin_inset Graphics
+	filename ../../images/math/hat.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
 .
  Cliquez sur une décoration, et LyX affichera ce signe sur ou sous le point
  d'insertion.
@@ -3921,13 +3921,20 @@ Les délimiteurs tels que les parenthèses, les crochets, et les accolades
 \family sans
 Délimiteurs
 \family default
-, représenté par un rectangle bleu entouré de crochets, pour ouvrir la fenêtre
  
+\begin_inset Graphics
+	filename ../../images/dialog-show_mathdelimiter.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, pour ouvrir la fenêtre de dialogue 
 \family sans
 Délimiteurs.
 
 \family default
- Votre sélection de délimiteurs est affichée dans une boîte.
+ Votre sélection courante de délimiteurs est affichée dans une boîte.
  Par défaut c'est une paire de parenthèses, mais vous pouvez choisir une
  paire de crochets, une accolade et une parenthèse, ou encore choisir le
  carré vide pour avoir quelque chose comme 
@@ -3961,21 +3968,18 @@ Délimiteurs
  Seulement, ces parenthèses seront de la même taille que le texte courant,
  ce qui sera peu agréable à voir si vous avez une grande fraction ou une
  matrice entre les parenthèses.
- L'utilisation de la fenêtre 
-\family sans
-Délimiteurs
-\family default
- garantira des délimiteurs de taille adaptée à ce qu'ils contiennent.
+ Dans ce cas, il vaut mieux utiliser un des trois boutons qui insèrent directeme
+nt par exemple, une paire de parenthèses.
+ 
 \end_layout
 
 \begin_layout Standard
 Vous pouvez aussi mettre des délimiteurs, un signe de racine carrée ou un
- accent (une décoration) sur un texte déjà existant.
+ accent (une décoration) sur une portion de formule existante.
  Sélectionnez la partie de la formule que vous voulez inclure, et cliquez
  simplement sur le bouton adéquat de la 
 \family sans
-Palette\InsetSpace ~
-Mathématique
+Barre d'outils math
 \family default
 .
  Essayez-le pour passer la seconde loi de Newton de la forme scalaire à
@@ -3997,18 +4001,24 @@ Fractions
 \end_layout
 
 \begin_layout Standard
-Les fractions sont très faciles à écrire avec Mathed.
- Cliquez sur le bouton 
+Pour créer une fraction, cliquez sur le bouton 
 \family sans
 Fraction
 \family default
+ 
+\begin_inset Graphics
+	filename ../../images/math/frac.xpm
+	lyxscale 75
+	scale 60
+	scaleBeforeRotation
+
+\end_inset
+
  dans la 
 \family sans
-Palette\InsetSpace ~
-Mathématique,
+Barre d'outils Math
 \family default
- bouton qui porte une barre de fraction et des carrés bleus au numérateur
- et au dénominateur.
+.
  LyX écrit deux points d'insertion dans une fraction, l'un au numérateur
  et l'autre au dénominateur.
  Comme vous devez vous y attendre, vous pouvez utiliser les flèches du clavier
@@ -4105,7 +4115,11 @@ x
 \begin_inset Quotes frd
 \end_inset
 
- (la frappe d'un espace entraîne juste la fermeture du mode Math).
+ (l'appui sur 
+\family sans
+espace
+\family default
+ entraîne juste la sortie de la formule).
  Alors comment obtenir 
 \begin_inset Quotes fld
 \end_inset
@@ -4134,7 +4148,19 @@ x
 \end_layout
 
 \begin_layout Standard
-Cliquez sur 
+Cliquez sur le bouton 
+\begin_inset Graphics
+	filename ../../images/math/functions.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ de la 
+\family sans
+barre d'outils math
+\family default
+ puis sur 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4146,12 +4172,7 @@ sin
 \family sans
 Fonctions
 \family default
- dans la 
-\family sans
-Palette\InsetSpace ~
-Mathématique
-\family default
-.
+ qui apparaît.
  Le mot 
 \begin_inset Quotes fld
 \end_inset
@@ -4160,7 +4181,7 @@ sin
 \begin_inset Quotes frd
 \end_inset
 
- s'inscrit en noir, en police roman droite.
+ s'inscrit dans LyX en noir, en police roman droite.
  Le mot est traité comme un symbole dans son ensemble, et si vous tapez
  
 \family sans
@@ -4175,40 +4196,21 @@ x
 \begin_inset Quotes frd
 \end_inset
 
-, qui sera affiché en italiques bleus, comme vous le désirez en Mathed.
- Dans la sortie 
-\family typewriter
-dvi
-\family default
-, l'expression sera parfaitement rendue.
+, qui sera affiché en italiques bleus, comme vous vous y attendez dans une
+ formule.
+ Dans la sortie finale, l'expression sera parfaitement rendue.
  Vous pouvez le tester.
 \end_layout
 
 \begin_layout Standard
-Parmi les autres fonctions que vous entrerez en mode TeX avec la liste de
- 
+La liste de 
 \family sans
-Fonctions,
+Fonctions
 \family default
- vous trouverez les autres fonctions trigo et leurs inverses, les fonctions
- hyperboliques, les logarithmes, les limites et quelques autres encore.
- Ces fonctions peuvent avoir des 
-\begin_inset Quotes fld
-\end_inset
-
-indices
-\begin_inset Quotes frd
-\end_inset
-
- ou 
-\begin_inset Quotes fld
-\end_inset
-
-exposants
-\begin_inset Quotes frd
-\end_inset
-
-, indispensables pour écrire 
+ contient d'autres fonctions trigo et leurs inverses, les fonctions hyperbolique
+s, les logarithmes, les limites et quelques autres encore.
+ Ces fonctions peuvent avoir des indices ou exposants, indispensables pour
+ écrire 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4262,18 +4264,21 @@ Cliquez sur le bouton
 \family sans
 Matrice
 \family default
+ 
+\begin_inset Graphics
+	filename ../../images/dialog-show_mathmatrix.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
  de la 
 \family sans
-Palette\InsetSpace ~
-Mathématique
+Barre d'outils math
 \family default
 .
- Les deux curseurs coulissants de la fenêtre 
-\family sans
-Matrice
-\family default
- vous permettent de définir les nombres de lignes et de colonnes que vous
- souhaitez avoir dans votre matrice.
+ La fenêtre de dialogue qui apparaît vous permet de définir les nombres
+ de lignes et de colonnes que vous souhaitez avoir dans votre matrice.
  Choisissez 2 lignes et 3 colonnes puis faites 
 \family sans
 OK
@@ -4284,8 +4289,8 @@ OK
 \end_inset
 
 .
- Comme à l'accoutumée, vous pouvez insérer n'importe quelle expression Mathed
- (une racine, une autre matrice, etc.) dans chaque point d'insertion.
+ Comme à l'accoutumée, vous pouvez insérer n'importe quelle expression (une
+ racine, une autre matrice, etc.) dans chaque point d'insertion.
  Vous pouvez également, si vous le souhaitez, en laisser certains vides.
 \end_layout
 
@@ -4302,16 +4307,19 @@ Droite
 \family default
  à la fin d'une case vous fera passer à la case suivante, et la flèche 
 \family sans
-Basse
+Bas
 \family default
  à la ligne de dessous, etc.
 \end_layout
 
 \begin_layout Standard
-Si vous avez soudain besoin de plus de lignes ou de colonnes, faites 
+Si vous avez besoin de changer le nombre de lignes ou de colonnes, faites
+ 
 \family sans
 Éditer\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Lignes\InsetSpace ~
+&\InsetSpace ~
+colonnes\SpecialChar \menuseparator
 Ajouter\InsetSpace ~
 Ligne
 \family default
@@ -4319,20 +4327,45 @@ Ligne
 \family sans
 Ajouter\InsetSpace ~
 Colonne
+\family default
+ ou utilisez les boutons 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_append-row.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_delete-row.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_append-column.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../../images/tabular-feature_delete-column.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ de la 
+\family sans
+Barre d'outils math
 \family default
 .
- Ça ajoute une ligne ou une colonne juste après la position actuelle.
- Vous en avez mis trop ? Faites 
-\family sans
-Supprimer\InsetSpace ~
-Ligne
-\family default
- ou 
-\family sans
-Supprimer\InsetSpace ~
-Colonne
-\family default
- à partir du même menu.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4378,21 +4411,14 @@ hors ligne
 
 .
  De plus, la numérotation et la pose d'étiquettes n'est possible que sur
- les expressions déployées (voir le 
+ les expressions hors ligne (voir le 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
 l'Utilisateur
 \emph default
 ).
- Les équations multi-lignes (voir section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sec:multiligne"
-
-\end_inset
-
-) doivent également être traitées de cette façon.
+ Les équations multi-lignes doivent également être traitées de cette façon.
 \end_layout
 
 \begin_layout Standard
@@ -4401,17 +4427,26 @@ Cliquez sur le bouton
 Hors\InsetSpace ~
 Ligne
 \family default
+ 
+\begin_inset Graphics
+	filename ../../images/math-display.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
  de la 
 \family sans
-Palette\InsetSpace ~
-Mathématique.
+Barre\InsetSpace ~
+d'outils\InsetSpace ~
+math.
 
 \family default
  Ce bouton symbolise deux paires de lignes de texte précédant et suivant
  une boîte bleue centrée.
- LyX ouvre une formule, placée cette fois-ci sur une nouvelle ligne et centrée
- sur la page.
- Insérez-y une expression et lancez LaTeX pour vous rendre compte du résultat.
+ LyX insère une formule, placée cette fois-ci sur une nouvelle ligne et
+ centrée sur la ligne.
+ Tapez-y une expression et lancez LaTeX pour vous rendre compte du résultat.
  Le bouton 
 \family sans
 Hors\InsetSpace ~
@@ -4496,7 +4531,8 @@ Entrée
 suit
 \emph default
  la formule sera le début d'un nouveau paragraphe.
- Il sera donc indenté, ce que vous ne souhaitez probablement pas.
+ Il sera donc eventuellement indenté, en fonction de vos paramètres de paragraph
+e, ce que vous ne souhaitez probablement pas.
  
 \end_layout
 
@@ -4523,14 +4559,12 @@ Exercice
 status open
 
 \begin_layout Standard
-Après avoir sué sur cet exercice, pourquoi n'essayez-vous pas 
+Après avoir sué sur cet exercice, essayez 
 \family sans
 Insérer\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Environnement\InsetSpace ~
-Cas
-\family default
- ?
+Cas.
 \end_layout
 
 \end_inset
@@ -4552,9 +4586,9 @@ En savoir plus sur l'écriture des maths
 \end_layout
 
 \begin_layout Standard
-Mathed peut en faire beaucoup plus.
- Pour le moment, vous êtes sensibilisé avec les bases, et nous ferons donc
- juste référence au 
+L'éditeur mathématique de LyX peut en faire beaucoup plus.
+ Pour le moment, vous êtes sensibilisé avec les bases, et nous vous renvoyons
+ au 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
@@ -4586,14 +4620,11 @@ régler finement la taille des polices et l'espacement au sein d'une expression
  Elle sont d'une puissance redoutable.
  Vous les écrivez en tête du document, et pouvez les utiliser tout au long
  de votre document.
- Si la définition de la macro change, les appels à cette macro tout au long
- du document reflètent ce changement.
- On peut même définir des macros qui possèdent des arguments ;
+ 
 \end_layout
 
 \begin_layout Itemize
-faire un tas d'autres choses que nous n'avons pas le temps de décrire dans
- ce 
+faire un tas d'autres choses que nous ne pouvons décrire dans ce 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
