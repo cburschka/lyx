@@ -17,8 +17,10 @@
 #
 
 Format 6
+
+Requires	chess
+
 Preamble
-	\usepackage[ps,mover]{lyxskak}
 	%%% initialize board
 	\newgame
 EndPreamble
