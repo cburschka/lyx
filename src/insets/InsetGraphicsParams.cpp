@@ -273,7 +273,7 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
 	graphics::Params pars;
-	pars.filename = filename;
+	pars.filename = filename.availableFile();
 	pars.scale = lyxscale;
 	pars.angle = convert<double>(rotateAngle);
 

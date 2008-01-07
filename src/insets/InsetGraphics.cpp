@@ -171,13 +171,9 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
-		// when embedding is enabled, change of embedding status leads to actions
-		if (!p.filename.empty() && buffer.embeddedFiles().enabled() ) {
+		if (!p.filename.empty()) {
 			try {
-				if (p.filename.embedded())
-					p.filename.updateFromExternalFile(&buffer);
-				else
-					p.filename.extract(&buffer);
+				updateEmbeddedFile(buffer, p.filename);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens
@@ -231,11 +227,16 @@ void InsetGraphics::registerEmbeddedFiles(Buffer const &,
 void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
 	EmbeddedFile const & file)
 {
-	BOOST_ASSERT(buf.embeddedFiles().enabled());
-	params_.filename = file;
+	// when embedding is enabled, change of embedding status leads to actions
+	EmbeddedFile temp = file;
+	temp.enable(buf.embeddedFiles().enabled(), &buf);
+	// this will not be set if an exception is thorwn in enable()
+	params_.filename = temp;
+
 	LYXERR(Debug::FILES, "Update InsetGraphic with File " 
 		<< params_.filename.toFilesystemEncoding() 
-		<< ", embedding status: " << params_.filename.embedded());
+		<< ", embedding status: " << params_.filename.embedded()
+		<< ", enabled: " << params_.filename.enabled());
 }
 
 
@@ -279,16 +280,7 @@ void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 	else
 		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
-	// InsetGraphics is read, with filename in params_. We do not know if this file actually
-	// exists or is embedded so we need to get the 'availableFile' from buf.embeddedFiles()
-	if (buf.embeddedFiles().enabled()) {
-		EmbeddedFiles::EmbeddedFileList::const_iterator it = 
-			buf.embeddedFiles().find(params_.filename.toFilesystemEncoding());
-		if (it != buf.embeddedFiles().end())
-			// using available file, embedded or external, depending on file availability and
-			// embedding status.
-			params_.filename = *it;
-	}
+	params_.filename.enable(buf.embeddedFiles().enabled(), &buf);
 	graphic_->update(params().as_grfxParams());
 }
 
@@ -577,7 +569,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (params().filename.empty())
 		return string();
 
-	string const orig_file = params().filename.absFilename();
+	string const orig_file = params().filename.availableFile().absFilename();
+	// this is for dryrun and display purposes, do not use latexFilename
 	string const rel_file = params().filename.relFilename(buf.filePath());
 
 	// previewing source code, no file copying or file format conversion
@@ -586,7 +579,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
-	FileName temp_file = params().filename;
+	FileName temp_file = params().filename.availableFile();
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
@@ -606,7 +599,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	GraphicsCopyStatus status;
 	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(params().filename, temp_path);
+			copyToDirIfNeeded(params().filename.availableFile(), temp_path);
 
 	if (status == FAILURE)
 		return orig_file;
@@ -762,9 +755,6 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// just output a message about it in the latex output.
 	LYXERR(Debug::GRAPHICS, "insetgraphics::latex: Filename = "
 		<< params().filename.absFilename());
-
-	string const relative_file =
-		params().filename.relFilename(buf.filePath());
 
 	bool const file_exists = !params().filename.empty()
 			&& params().filename.isReadableFile();

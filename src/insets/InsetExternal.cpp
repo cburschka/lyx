@@ -182,15 +182,8 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 	os << "External\n"
 	   << "\ttemplate " << templatename() << '\n';
 
-	if (!filename.empty()) {
-		// when we save, we still use the original filename
-		EmbeddedFiles::EmbeddedFileList::const_iterator it = 
-			buffer.embeddedFiles().find(filename.toFilesystemEncoding());
-		if (it != buffer.embeddedFiles().end())
-			os << "\tfilename " << DocFileName(it->absFilename()).outputFilename(buffer.filePath()) << '\n';
-		else
-			os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
- 	}
+	if (!filename.empty())
+		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
 
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
@@ -297,12 +290,6 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 			lex.eatLine();
 			string const name = lex.getString();
 			filename.set(name, buffer.filePath());
-			// maybe this file is embedded
-			EmbeddedFiles::EmbeddedFileList::const_iterator it = buffer.embeddedFiles().find(filename.toFilesystemEncoding());
-			if (it != buffer.embeddedFiles().end())
-				// using available file, embedded or external, depending on file availability and
-				// embedding status.
-				filename = DocFileName(it->availableFile(&buffer));
 			break;
 		}
 

@@ -83,7 +83,7 @@ public:
 	/// return true when file/directory is readable
 	bool isReadableDirectory() const;
 	/// return true when it is a file and readable
-	bool isReadableFile() const;
+	virtual bool isReadableFile() const;
 	/// return true when file/directory is writable
 	bool isWritable() const;
 	/// return true when file/directory is writable (write test file)

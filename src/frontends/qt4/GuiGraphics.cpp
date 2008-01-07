@@ -300,10 +300,6 @@ void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
 	EmbeddedFile file = EmbeddedFile(fromqstr(filename), bufferFilepath());
-	if (!file.embeddable()) {
-		embedCB->setCheckState(Qt::Unchecked);
-		embedCB->setDisabled(true);
-	}
 }
 
 
@@ -459,7 +455,6 @@ void GuiGraphics::updateContents()
 	string const name =
 		igp.filename.outputFilename(bufferFilepath());
 	filename->setText(toqstr(name));
-	embedCB->setEnabled(igp.filename.embeddable());
 	embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	// set the bounding box values

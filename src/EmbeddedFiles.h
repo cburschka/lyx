@@ -103,22 +103,20 @@ public:
 	
 	/// set filename and inzipName.
 	void set(std::string const & filename, std::string const & buffer_path);
-	
+
 	/// filename in the zip file, which is the relative path
 	std::string inzipName() const { return inzip_name_; }
 
 	/// embedded file, equals to temppath()/inzipName()
-	std::string embeddedFile(Buffer const * buf) const;
+	std::string embeddedFile() const;
 	/// embeddedFile() or absFilename() depending on embedding status
-	std::string availableFile(Buffer const * buf) const;
+	/// and whether or not embedding is enabled.
+	FileName availableFile() const;
+	/// 
+	std::string latexFilename(std::string const & buffer_path) const;
 
 	/// add an inset that refers to this file
 	void addInset(Inset const * inset);
-	Inset const * inset(int idx) const;
-	/// Number of Insets this file item is referred
-	/// If refCount() == 0, this file must be manually inserted.
-	/// This fact is used by the update() function to skip updating
-	/// such items.
 	int refCount() const { return inset_list_.size(); }
 
 	/// embedding status of this file
@@ -126,13 +124,16 @@ public:
 	/// set embedding status. updateFromExternal() should be called before this
 	/// to copy or sync the embedded file with external one.
 	void setEmbed(bool embed);
-	/// Only files in or under current document path is embeddable
-	bool embeddable() const { return inzip_name_ != ""; } 
+
+	/// whether or not embedding is enabled in the current buffer
+	bool enabled() const { return temp_path_ != ""; }
+	/// enable embedding of this file
+	void enable(bool flag, Buffer const * buf);
 
 	/// extract file, does not change embedding status
-	bool extract(Buffer const * buf) const;
+	bool extract() const;
 	/// update embedded file from external file, does not change embedding status
-	bool updateFromExternalFile(Buffer const * buf) const;
+	bool updateFromExternalFile() const;
 	///
 	/// After the embedding status is changed, update all insets related
 	/// to this file item. For example, a graphic inset may need to monitor
@@ -140,6 +141,9 @@ public:
 	/// are up to date, please make sure there is no modification to the
 	/// document between EmbeddedFiles::update() and this function.
 	void updateInsets(Buffer const * buf) const;
+
+	/// Check readability of availableFile
+	bool isReadableFile() const;
 
 private:
 	/// filename in zip file
@@ -149,6 +153,11 @@ private:
 	/// Insets that contains this file item. Because a 
 	/// file item can be referred by several Insets, a vector is used.
 	std::vector<Inset const *> inset_list_;
+	/// Embedded file needs to know whether enbedding is enabled,
+	/// and where is the lyx temporary directory. Such information can
+	/// be retrived from a buffer, but a buffer is not always available when
+	/// an EmbeddedFile is used.
+	std::string temp_path_;
 };
 
 
@@ -175,7 +184,7 @@ public:
 	/* \param file Embedded file to add
 	 * \param inset Inset pointer
 	 */
-	EmbeddedFile & registerFile(EmbeddedFile const & file, Inset const * inset = 0);
+	void registerFile(EmbeddedFile const & file, Inset const * inset = 0);
 
 	/// scan the buffer and get a list of EmbeddedFile
 	void update();
@@ -186,22 +195,11 @@ public:
 	void clear() { file_list_.clear(); }
 
 	///
-	EmbeddedFile & operator[](size_t idx) { return *(file_list_.begin() + idx); }
-	EmbeddedFile const & operator[](size_t idx) const { return *(file_list_.begin() + idx); }
-	///
 	EmbeddedFileList::iterator begin() { return file_list_.begin(); }
 	EmbeddedFileList::iterator end() { return file_list_.end(); }
 	EmbeddedFileList::const_iterator begin() const { return file_list_.begin(); }
 	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
-	// try to locate filename, using either absFilename() or embeddedFile()
-	EmbeddedFileList::const_iterator find(std::string filename) const;
-	/// extract all file items, used when disable embedding
-	bool extractAll() const;
-	/// update all files from external, used when enable embedding
-	bool updateFromExternalFile() const;
-	///
-	/// update all insets to use embedded files when embedding status is changed
-	void updateInsets() const;
+
 private:
 	/// list of embedded files
 	EmbeddedFileList file_list_;
