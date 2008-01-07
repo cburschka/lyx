@@ -116,7 +116,7 @@ docstring const MenuItem::shortcut() const
 }
 
 
-docstring const MenuItem::binding(bool forgui) const
+docstring const MenuItem::binding() const
 {
 	if (kind_ != Command)
 		return docstring();

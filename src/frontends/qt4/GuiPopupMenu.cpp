@@ -96,8 +96,7 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 			LYXERR(Debug::GUI, "creating Menu Item "
 				<< to_utf8(m->label()));
 
-			docstring label = getLabel(*m);
-			addBinding(label, *m);
+			docstring const label = getLabel(*m);
 
 			Action * action = new Action(*(owner_),
 				QIcon(), toqstr(label), m->func(), QString());
@@ -109,29 +108,21 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 
 docstring const GuiPopupMenu::getLabel(MenuItem const & mi)
 {
-	docstring const shortcut = mi.shortcut();
-	docstring label = support::subst(mi.label(),
-	from_ascii("&"), from_ascii("&&"));
+	docstring label = support::subst(mi.label(), 
+					 from_ascii("&"), from_ascii("&&"));
 
+	docstring const shortcut = mi.shortcut();
 	if (!shortcut.empty()) {
 		size_t pos = label.find(shortcut);
 		if (pos != docstring::npos)
 			label.insert(pos, 1, char_type('&'));
 	}
 
-	return label;
-}
-
-
-void GuiPopupMenu::addBinding(docstring & label, MenuItem const & mi)
-{
-#ifdef Q_WS_MACX
-	docstring const binding = mi.binding(false);
-#else
-	docstring const binding = mi.binding(true);
-#endif
+	docstring const binding = mi.binding();
 	if (!binding.empty())
 		label += '\t' + binding;
+
+	return label;
 }
 
 

@@ -42,8 +42,6 @@ public Q_SLOTS:
 private:
 	/// Get a Menu item label from the menu backend
 	docstring const getLabel(MenuItem const & mi);
-	/// add binding keys a the menu item label.
-	void addBinding(docstring & label, MenuItem const & mi);
 
 	/// our owning view
 	GuiView * owner_;

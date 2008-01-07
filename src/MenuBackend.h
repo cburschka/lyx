@@ -117,11 +117,8 @@ public:
 	FuncStatus & status() { return status_; }
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
-	/**
-	 * returns the binding associated to this action.
-	 * Use the native UI format when \c forgui is true.
-	 */
-	docstring const binding(bool forgui) const;
+	///returns the binding associated to this action.
+	docstring const binding() const;
 	/// the description of the  submenu (if relevant)
 	docstring const & submenuname() const { return submenuname_; }
 	/// set the description of the  submenu
