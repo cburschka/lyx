@@ -181,8 +181,8 @@ Menuset
 	End
 
 	Menu "edit_math"
-		Item "Toggle Numbering|N" "math-number"
-		Item "Toggle Numbering of Line|u" "math-nonumber"
+		Item "Number whole Formula|N" "math-number"
+		Item "Number this Line|u" "math-nonumber"
 		Submenu "Change Limits Type|L" "edit_math_limits"
 		Separator
 		Submenu "Change Formula Type|F" "edit_math_mutate"
