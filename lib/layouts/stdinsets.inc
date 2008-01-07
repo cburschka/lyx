@@ -43,6 +43,8 @@
 #	FreeSpacing           Preserve multiple spaces etc.
 #	ForceLTR              Force the "latex" language, leading to Left-to-Right
 #	                     (latin) output, e.g., in ERT or URL. A kludge.
+#	Requires              Require a given (supported) feature. Multiple features must
+#			      be comma-separated.
 #End
 
 Format 6
@@ -247,9 +249,7 @@ InsetLayout URL
 	  Color               Blue
 	  Size                Small
 	EndFont
-	Preamble
-	  \usepackage{url}
-	EndPreamble
+	Requires	      url
 End
 
 InsetLayout OptArg

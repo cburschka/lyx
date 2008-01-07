@@ -533,7 +533,8 @@ char const * simplefeatures[] = {
 	"covington",
 	"csquotes",
 	"enumitem",
-	"endnotes"
+	"endnotes",
+	"ifthen"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

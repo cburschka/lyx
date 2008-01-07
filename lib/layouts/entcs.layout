@@ -11,8 +11,10 @@ ClassOptions
 	FontSize   11
 End
 
+Requires	ifthen
+
 Preamble
-	\usepackage{entcsmacro,ifthen}
+	\usepackage{entcsmacro}
 	\newcommand{\theTitle}[1]{}
 	\newcommand{\theAuthor}[1]{}
 	\newcommand{\theAddress}[1]{}

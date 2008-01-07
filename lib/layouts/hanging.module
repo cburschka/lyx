@@ -15,8 +15,8 @@ Style Hanging
   Margin Static
   LeftMargin "MMMM"
   ParIndent "-MMMM"
+  Requires	ifthen
   Preamble
-    \usepackage{ifthen}
     \newlength{\lyxhang}
     \IfFileExists{hanging.sty}{
       \usepackage{hanging}

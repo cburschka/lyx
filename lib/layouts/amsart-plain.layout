@@ -17,8 +17,10 @@ Input amsart.layout
 
 # Use a simpler preamble.
 Preamble
-	\usepackage{amsmath,amsthm}
+	\usepackage{amsthm}
 	\usepackage{amsfonts}
 EndPreamble
+
+Requires	amsmath
 
 Input amsmaths-plain.inc
