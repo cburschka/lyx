@@ -549,6 +549,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		if ((*fit)->dummy())
 			continue;
 		docstring label = from_utf8((*fit)->prettyname());
+		docstring const shortcut = from_utf8((*fit)->shortcut());
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
@@ -570,8 +571,13 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 			BOOST_ASSERT(false);
 			break;
 		}
-		if (!(*fit)->shortcut().empty())
-			label += char_type('|') + from_utf8((*fit)->shortcut());
+		// FIXME: if we had proper support for translating the
+		// format names defined in configure.py, there would
+		// not be a need to check whether the shortcut is
+		// correct. If we add it uncondiitonally, it would
+		// create useless warnings on bad shortcuts
+		if (!shortcut.empty() && contains(label, shortcut))
+			label += char_type('|') + shortcut;
 
 		if (buf)
 			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
