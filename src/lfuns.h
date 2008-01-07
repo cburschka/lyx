@@ -370,7 +370,13 @@ enum kb_action {
 	LFUN_DELETE_FORWARD_SKIP,
 	LFUN_BUFFER_NEW_TEMPLATE,       // Asger 1997-02-02
 	LFUN_BUFFER_RELOAD,             // Asger 1997-02-02
-	LFUN_RECONFIGURE,               // Asger 1997-02-14
+/**
+ * LFUN_RECONFIGURE
+ * \li Action: Reconfigure the automatic settings.
+ * \li Syntax: reconfigure
+ * \li Origin: Asger , 14 Feb 1997
+ */
+	LFUN_RECONFIGURE,
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	// 155
 	LFUN_CELL_SPLIT,
@@ -397,7 +403,13 @@ enum kb_action {
 	LFUN_BUFFER_IMPORT,             // Asger 980724
 	LFUN_COMMAND_SEQUENCE,          // Andre' 991111
 	// 175
-	LFUN_PREFERENCES_SAVE,          // Lgb 991127
+/**
+ * LFUN_PREFERENCES_SAVE
+ * \li Action: Save user preferences.
+ * \li Syntax: preferences-save
+ * \li Origin: Lgb 27 Nov 1999
+ */
+	LFUN_PREFERENCES_SAVE,
 	LFUN_HELP_OPEN,                 // Jug 990627
 	LFUN_DATE_INSERT,               // jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
@@ -585,8 +597,20 @@ enum kb_action {
  * \li Origin: Vermeer, 23 Mar 2006
  */
 	LFUN_OUTLINE_OUT,
-	LFUN_PARAGRAPH_MOVE_DOWN,        // Edwin 20060408
-	LFUN_PARAGRAPH_MOVE_UP,          // Edwin 20060408
+/**
+ * LFUN_PARAGRAPH_MOVE_DOWN
+ * \li Action: Moves the current paragraph downwards in the document.
+ * \li Syntax: paragraph-move-down
+ * \li Origin: Edwin, 8 Apr 2006
+ */
+	LFUN_PARAGRAPH_MOVE_DOWN,
+/**
+ * LFUN_PARAGRAPH_MOVE_UP
+ * \li Action: Moves the current paragraph upwards in the document.
+ * \li Syntax: paragraph-move-up
+ * \li Origin: Edwin, 8 Apr 2006
+ */
+	LFUN_PARAGRAPH_MOVE_UP,
 	// 270
 	LFUN_BUFFER_TOGGLE_COMPRESSION,  // bpeng 20060427
 	LFUN_MATH_BIGDELIM,
