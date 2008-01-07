@@ -82,6 +82,7 @@ enum LayoutTags {
 	LT_PARSKIP,
 	//LT_PLAIN,
 	LT_PREAMBLE,
+	LT_REQUIRES,
 	LT_RIGHTMARGIN,
 	LT_SPACING,
 	LT_TOPSEP,
@@ -179,6 +180,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 		{ "parskip",        LT_PARSKIP },
 		{ "passthru",       LT_PASS_THRU },
 		{ "preamble",       LT_PREAMBLE },
+		{ "requires",       LT_REQUIRES },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
 		{ "textfont",       LT_TEXTFONT },
@@ -484,6 +486,12 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 		case LT_SPACING: // setspace.sty
 			readSpacing(lexrc);
 			break;
+
+		case LT_REQUIRES:
+			if (lexrc.eatLine())
+				requires_ = getVectorFromString(lexrc.getString());
+			break;
+
 		}
 	}
 	lexrc.popTable();

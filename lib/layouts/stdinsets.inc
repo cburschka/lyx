@@ -45,7 +45,7 @@
 #	                     (latin) output, e.g., in ERT or URL. A kludge.
 #End
 
-Format 5
+Format 6
 
 InsetLayout Marginal
 	LabelString           margin

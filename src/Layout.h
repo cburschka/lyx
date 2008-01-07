@@ -19,6 +19,9 @@
 #include "Spacing.h"
 #include "support/docstring.h"
 
+#include <vector>
+#include <string>
+
 namespace lyx {
 
 class Lexer;
@@ -80,6 +83,8 @@ public:
 	docstring const & endlabelstring() const { return endlabelstring_; }
 	///
 	docstring const & preamble() const { return preamble_; }
+	///
+	std::vector<std::string> const & requires() const { return requires_; }
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
@@ -250,6 +255,8 @@ private:
 	std::string itemtag_;
 	/// Macro definitions needed for this layout
 	docstring preamble_;
+	/// Packages needed for this layout
+	std::vector<std::string> requires_;
 };
 
 } // namespace lyx

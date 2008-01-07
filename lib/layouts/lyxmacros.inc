@@ -8,7 +8,7 @@
 # be removed later.
 
 
-Format 5
+Format 6
 Style LyX-Code
 	Margin                Static
 	LatexType             Environment

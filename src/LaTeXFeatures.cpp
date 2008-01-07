@@ -530,6 +530,10 @@ char const * simplefeatures[] = {
 	"mathrsfs",
 	"ascii",
 	"url",
+	"covington",
+	"csquotes",
+	"enumitem",
+	"endnotes"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -541,6 +545,12 @@ string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
 	TextClass const & tclass = params_.getTextClass();
+
+	// FIXME: currently, we can only load packages and macros known
+	// to LyX.
+	// However, with the Require tag of layouts/custom insets,
+	// also inknown packages can be requested. They are silently
+	// swallowed now. We should change this eventually.
 
 	//
 	//  These are all the 'simple' includes.  i.e
@@ -830,15 +840,6 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit]->preamble();
-	}
-
-	InsetLayouts const & insetlayouts = tclass.insetlayouts();
-	InsetLayouts::const_iterator cit2 = insetlayouts.begin();
-	InsetLayouts::const_iterator end2 = insetlayouts.end();
-	for (; cit2 != end2; ++cit2) {
-		if (isRequired(to_utf8(cit2->first))) {
-			tcpreamble << from_utf8(cit2->second.preamble);
-		}
 	}
 
 	return tcpreamble.str();

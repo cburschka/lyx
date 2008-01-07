@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
-Format 5
+Format 6
 InsetLayout Element:Filename
 	LyXType element
 	LabelString Filename

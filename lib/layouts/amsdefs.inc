@@ -4,7 +4,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 # Including the maths stuff
-Format 5
+Format 6
 Input amsmaths.inc
 
 # The AMS documentclasses use the package amsmath and provide the

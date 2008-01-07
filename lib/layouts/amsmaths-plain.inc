@@ -33,7 +33,7 @@
 # - Case (regular only -- defined as an enumeration)
 
 
-Format 5
+Format 6
 
 Style Theorem
 	LatexName             thm*

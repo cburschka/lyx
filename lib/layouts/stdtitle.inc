@@ -8,7 +8,7 @@
 # a document, like title, author and such.
 
 
-Format 5
+Format 6
 Style Title
 	Margin                Static
 	LatexType             Command

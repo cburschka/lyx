@@ -6367,7 +6367,7 @@ int
  don't have an explicit file format).
  The file format that is documented here is 
 \family typewriter
-2
+6
 \family default
 .
 \end_layout
@@ -6564,6 +6564,43 @@ string
  macro (url, boldsymbol,\SpecialChar \ldots{}
 ); the complete list of supported features is unfortunat
 ely not documented.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Requires 
+\family default
+\series default
+[
+\family typewriter
+string
+\family default
+] Whether the class requires the feature
+\family typewriter
+ string
+\family default
+.
+ A feature is in general the name of a package (amsmath, makeidx, \SpecialChar \ldots{}
+) or a
+ macro (url, boldsymbol,\SpecialChar \ldots{}
+).
+ Multiple features must be separated by commas.
+ Note that you can only request supported features; unfortunately, the complete
+ list of supported features is not documented (however, 
+\family sans
+\bar under
+H
+\bar default
+elp\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+aTeX Configuration
+\family default
+ gives an overview of the supported packages).
 \end_layout
 
 \begin_layout Description
@@ -8309,6 +8346,43 @@ EndPreamble
 
 \family typewriter
 \series medium
+Requires 
+\family default
+\series default
+[
+\family typewriter
+string
+\family default
+] Whether the layout requires the feature
+\family typewriter
+ string
+\family default
+.
+ A feature is in general the name of a package (amsmath, makeidx, \SpecialChar \ldots{}
+) or a
+ macro (url, boldsymbol,\SpecialChar \ldots{}
+).
+ Multiple features must be separated by commas.
+ Note that you can only request supported features; unfortunately, the complete
+ list of supported features is not documented (however, 
+\family sans
+\bar under
+H
+\bar default
+elp\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+aTeX Configuration
+\family default
+ gives an overview of the supported packages).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
 DependsOn
 \family default
 \series default
@@ -8972,7 +9046,29 @@ reference "sec:style"
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Description
+
+\family typewriter
+\series medium
+Requires 
+\family default
+\series default
+[
+\family typewriter
+string
+\family default
+] See section\InsetSpace ~
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:style"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection

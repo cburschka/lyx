@@ -51,6 +51,8 @@ public:
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const;
+	///
+	void validate(LaTeXFeatures &) const;
 
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
@@ -63,6 +65,10 @@ private:
 
 	///
 	std::string name_;
+	///
+	std::vector<std::string> packages_;
+	///
+	std::string preamble_;
 };
 
 

@@ -22,6 +22,7 @@
 #include "FuncStatus.h"
 #include "Cursor.h"
 #include "support/gettext.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "Text.h"
 #include "MetricsInfo.h"
@@ -46,6 +47,8 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 	: InsetCollapsable(bp, Collapsed, &il)
 {
 	name_ = il.name;
+	packages_ = il.requires;
+	preamble_ = il.preamble;
 }
 
 
@@ -134,6 +137,19 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 void InsetFlex::textString(Buffer const & buf, odocstream & os) const
 {
 	os << paragraphs().begin()->asString(buf, true);
+}
+
+
+void InsetFlex::validate(LaTeXFeatures & features) const
+{
+	if (!preamble_.empty())
+		features.addPreambleSnippet(preamble_);
+	if (packages_.empty())
+		return;
+	for (vector<string>::const_iterator it = packages_.begin();
+	     it != packages_.end(); ++it) {
+		features.require(*it);
+	}
 }
 
 } // namespace lyx

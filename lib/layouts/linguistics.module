@@ -1,8 +1,8 @@
-#\DeclareLyXModule[covington.sty]{Defines some special environments useful for linguistics (numbered examples, glosses, semantic markup).}{Linguistics}
+#\DeclareLyXModule{Defines some special environments useful for linguistics (numbered examples, glosses, semantic markup).}{Linguistics}
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 5
+Format 6
 
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
@@ -24,9 +24,7 @@ Style Numbered_Example_(multiline)
 		Shape         Italic
 		Color         Blue
 	EndFont
-	Preamble
-		\usepackage{covington}
-	EndPreamble
+	Requires	      covington
 End
 
 
@@ -49,9 +47,8 @@ Style Subexample
 	LatexName             subexample
 	LeftMargin            XSubexample:
 	LabelString           "Subexample:"
+	Requires	      covington,enumitem
 	Preamble
-		\usepackage{covington}
-		\usepackage{enumitem}
 		\newenvironment{subexample}{%
 			\begin{example}\begin{enumerate}[leftmargin=1.7em]
 			\renewcommand\theenumi{\alph{enumi}}
@@ -76,8 +73,8 @@ InsetLayout Custom:Glosse
 	MultiPar              true
 	PassThru              true
 	FreeSpacing           true
+	Requires	      covington
 	Preamble
-		\usepackage{covington}
 		\@ifundefined{linggloss}{%
 		\newenvironment{linggloss}[1]{%
 			\gll #1}
@@ -100,8 +97,8 @@ InsetLayout Custom:Tri-Glosse
 	MultiPar              true
 	PassThru              true
 	FreeSpacing           true
+	Requires	      covington
 	Preamble
-		\usepackage{covington}
 		\@ifundefined{lingglosss}{%
 		\newenvironment{lingglosss}[1]{%
 			\glll #1}
@@ -143,8 +140,8 @@ InsetLayout CharStyle:Meaning
 	LabelString           meaning
 	LatexType             command
 	LatexName             lingmeaning
+	Requires	      csquotes
 	Preamble
-		\usepackage{csquotes}
 		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
 	EndPreamble
 End

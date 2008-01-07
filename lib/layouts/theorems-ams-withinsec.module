@@ -3,11 +3,13 @@
 # Author: Richard Heck <rgheck@comcast.net>
 # Adapted from amsdefs.inc and amsmaths.inc
 
-Format 5
+Format 6
+
+Requires	amsmath
+
 Preamble
-	\usepackage{amsmath}
   \theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
+  \newtheorem{thm}{Theorem}[section]
 EndPreamble
 
 

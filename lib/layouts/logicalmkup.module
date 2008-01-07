@@ -2,7 +2,7 @@
 
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 
-Format 5
+Format 6
 
 InsetLayout CharStyle:Noun
 	LyxType               charstyle
@@ -12,9 +12,7 @@ InsetLayout CharStyle:Noun
 	Font
 	  Shape               Smallcaps
 	EndFont
-	Preamble
-	\newcommand{\noun}[1]{\textsc{#1}}
-	EndPreamble
+	Requires	      noun
 End
 
 

@@ -29,7 +29,7 @@
 # - Assumption
 # - Case (regular only -- defined as an enumeration)
 
-Format 5
+Format 6
 
 # Use a simpler preamble.
 

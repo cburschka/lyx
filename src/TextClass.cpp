@@ -56,7 +56,7 @@ private:
 };
 
 
-int const FORMAT = 5;
+int const FORMAT = 6;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -150,6 +150,7 @@ enum TextClassTags {
 	TC_CLASSOPTIONS,
 	TC_PREAMBLE,
 	TC_PROVIDES,
+	TC_REQUIRES,
 	TC_LEFTMARGIN,
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
@@ -188,6 +189,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		{ "pagestyle",       TC_PAGESTYLE },
 		{ "preamble",        TC_PREAMBLE },
 		{ "provides",        TC_PROVIDES },
+		{ "requires",        TC_REQUIRES },
 		{ "rightmargin",     TC_RIGHTMARGIN },
 		{ "secnumdepth",     TC_SECNUMDEPTH },
 		{ "sides",           TC_SIDES },
@@ -203,7 +205,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		break;
 	case MERGE:
 		LYXERR(Debug::TCLASS, "Reading input file ");
-	  break;
+		break;
 	case MODULE:
 		LYXERR(Debug::TCLASS, "Reading module file ");
 		break;
@@ -388,6 +390,13 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 				provides_.insert(feature);
 			else
 				provides_.erase(feature);
+			break;
+		}
+
+		case TC_REQUIRES: {
+			lexrc.eatLine();
+			string const packages = lexrc.getString();
+			requires_ = getVectorFromString(packages);
 			break;
 		}
 
@@ -609,6 +618,7 @@ enum InsetLayoutTags {
 	IL_NEEDPROTECT,
 	IL_PASSTHRU,
 	IL_PREAMBLE,
+	IL_REQUIRES,
 	IL_END
 };
 
@@ -632,7 +642,8 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "multipar", IL_MULTIPAR },
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "passthru", IL_PASSTHRU },
-		{ "preamble", IL_PREAMBLE }
+		{ "preamble", IL_PREAMBLE },
+		{ "requires", IL_REQUIRES }
 	};
 
 	lexrc.pushTable(elementTags, IL_END);
@@ -647,6 +658,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	FontInfo labelfont = inherit_font;
 	ColorCode bgcolor(Color_background);
 	string preamble;
+	vector<string> requires;
 	bool multipar = false;
 	bool passthru = false;
 	bool needprotect = false;
@@ -659,7 +671,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		int le = lexrc.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			lexrc.printError("Unknown InsetLayout tag `$$Token'");
 			continue;
 		default: break;
 		}
@@ -729,6 +741,12 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		case IL_PREAMBLE:
 			preamble = lexrc.getLongString("EndPreamble");
 			break;
+		case IL_REQUIRES: {
+			lexrc.eatLine();
+			string const packages = lexrc.getString();
+			requires = getVectorFromString(packages);
+			break;
+		}
 		case IL_END:
 			getout = true;
 			break;
@@ -756,8 +774,9 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		// any realization against a given context.
 		labelfont.realize(sane_font);
 		il.labelfont = labelfont;
-		il.bgcolor = bgcolor;		
+		il.bgcolor = bgcolor;
 		il.preamble = preamble;
+		il.requires = requires;
 		insetlayoutlist_[name] = il;
 	}
 
@@ -809,7 +828,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		int le = lexrc.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			lexrc.printError("Unknown float tag `$$Token'");
 			continue;
 		default: break;
 		}
@@ -909,7 +928,7 @@ void TextClass::readCounter(Lexer & lexrc)
 		int le = lexrc.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			lexrc.printError("Unknown counter tag `$$Token'");
 			continue;
 		default: break;
 		}

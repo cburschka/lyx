@@ -137,6 +137,8 @@ public:
 
 	/// is this feature already provided by the class?
 	bool provides(std::string const & p) const;
+	/// features required by the class?
+	std::vector<std::string> requires() const { return requires_; }
 
 	///
 	unsigned int columns() const;
@@ -202,6 +204,8 @@ private:
 	docstring preamble_;
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
+	/// latex packages requested by document class.
+	std::vector<std::string> requires_;
 	///
 	unsigned int columns_;
 	///
