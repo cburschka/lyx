@@ -52,7 +52,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
 		mathMacro_.cell(idx_).metrics(mi, dim);
-		if (!mathMacro_.editMetrics(mi.base.bv) && !def_.empty())
+		if (!mathMacro_.editMetrics(mi.base.bv) 
+		    && mathMacro_.cell(idx_).empty())
 			def_.metrics(mi, dim);
 		mathMacro_.macro()->lock();
 	}
@@ -70,21 +71,19 @@ public:
 			pi.pain.leaveMonochromeMode();
 			mathMacro_.cell(idx_).draw(pi, x, y);
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
-		} else {
-			if (def_.empty())
-				mathMacro_.cell(idx_).draw(pi, x, y);
-			else {
-				mathMacro_.cell(idx_).setXY(*pi.base.bv, x, y);
-				def_.draw(pi, x, y);
-			}
-		}
+		} else if (mathMacro_.cell(idx_).empty()) {
+			mathMacro_.cell(idx_).setXY(*pi.base.bv, x, y);
+			def_.draw(pi, x, y);
+		} else
+			mathMacro_.cell(idx_).draw(pi, x, y);
 	}
 	///
 	size_t idx() const { return idx_; }
 	///
 	int kerning(BufferView const * bv) const
 	{ 
-		if (mathMacro_.editMetrics(bv) || def_.empty())
+		if (mathMacro_.editMetrics(bv)
+		    || !mathMacro_.cell(idx_).empty())
 			return mathMacro_.cell(idx_).kerning(bv); 
 		else
 			return def_.kerning(bv);
