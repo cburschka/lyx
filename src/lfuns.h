@@ -467,12 +467,12 @@ enum kb_action {
 	// 205
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
 	LFUN_OPTIONAL_INSERT,           // Martin 12 Aug 2002
-	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
-	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
-	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002
+	LFUN_MOUSE_PRESS,               // Andrï¿½ 9 Aug 2002
+	LFUN_MOUSE_MOTION,              // Andrï¿½ 9 Aug 2002
+	LFUN_MOUSE_RELEASE,             // Andrï¿½ 9 Aug 2002
 	// 210
-	LFUN_MOUSE_DOUBLE,              // André 9 Aug 2002
-	LFUN_MOUSE_TRIPLE,              // André 9 Aug 2002
+	LFUN_MOUSE_DOUBLE,              // Andrï¿½ 9 Aug 2002
+	LFUN_MOUSE_TRIPLE,              // Andrï¿½ 9 Aug 2002
 	LFUN_WRAP_INSERT,               // Dekel 7 Apr 2002
 	LFUN_CHANGES_TRACK,             // Levon 20021001 (cool date !)
 	LFUN_CHANGES_MERGE,             // Levon 20021016
@@ -481,7 +481,7 @@ enum kb_action {
 	LFUN_CHANGE_REJECT,             // Levon 20021016
 	LFUN_ALL_CHANGES_ACCEPT,        // Levon 20021016
 	LFUN_ALL_CHANGES_REJECT,        // Levon 20021016
-	LFUN_BIBITEM_INSERT,            // André 14 Feb 2003
+	LFUN_BIBITEM_INSERT,            // Andrï¿½ 14 Feb 2003
 	// 220
 	LFUN_DIALOG_SHOW,
 	LFUN_DIALOG_SHOW_NEW_INSET,
@@ -557,8 +557,8 @@ enum kb_action {
  * \li Action: Count the statistics (number of words and characters)
                in the document or in the given selection.
  * \li Notion: Note that this function gives the number of words/chars written,
-               not the number of characters which will be typesetted.
- * \li Syntax: words-count
+               not the number of characters which will be typeset.
+ * \li Syntax: statistics
  * \li Origin: lasgouttes, Jan 27 2004; ps, Jan 8 2008
  */
 	LFUN_STATISTICS,
