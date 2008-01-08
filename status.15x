@@ -56,6 +56,8 @@ What's new
   It is no longer necessary to install the Windows SDK and other patches,
   these things are now also included in the Express edition.
 
+- Viewers wrapper xdg-open was removed due to the problems on environments
+  without desktop managers. Waiting for upstream fixes.
 
 ** Bug fixes:
 *************
