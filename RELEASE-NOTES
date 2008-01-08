@@ -24,10 +24,23 @@ Some of the LyX functions have changed names:
   * LFUN_MENU_SEPARATOR_INSERT: removed. "menu-separator-insert" 
     has been replaced by "specialchar-insert menu-separator"
 
-- new function LFUN_LINE_BREAK, "line-break"
-- new function LFUN_PAGEBREAK_INSERT, "pagebreak-insert"
-- function LFUN_BREAK_LINE, "break-line" has been renamed to LFUN_NEW_LINE, "new-line"
-- function LFUN_PAGEBREAK_INSERT, "pagebreak-insert" has been renamed to LFUN_NEWPAGE_INSERT, "newpage-insert"
+- The function LFUN_BREAK_LINE, "break-line" has been renamed to LFUN_NEW_LINE,
+  "new-line".
+
+- The function LFUN_PAGEBREAK_INSERT, "pagebreak-insert" has been renamed to
+  LFUN_NEWPAGE_INSERT, "newpage-insert".
+
+- The function LFUN_WORDS_COUNT, "words-count", has been replaced by
+  LFUN_STATISTICS, "statistics", which counts more than words.
+
+
+The following new LyX functions have been introduced:
+
+- LFUN_SPECIALCHAR_INSERT, "specialchar-insert" (see above).
+
+- LFUN_LINE_BREAK, "line-break".
+
+- LFUN_PAGEBREAK_INSERT, "pagebreak-insert".
 
 
 Known issues in version 1.5.2
