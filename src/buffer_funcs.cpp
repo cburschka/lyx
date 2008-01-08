@@ -49,6 +49,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -179,6 +180,33 @@ int countWords(DocIterator const & from, DocIterator const & to)
 	}
 
 	return count;
+}
+
+
+int countChars(DocIterator const & from, DocIterator const & to, bool with_blanks)
+{
+	int chars = 0;
+	int blanks = 0;
+	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
+		if (dit.inTexted()
+		    && dit.pos() != dit.lastpos()
+		    && !dit.paragraph().isDeleted(dit.pos())) {
+			if (dit.paragraph().isInset(dit.pos())) {
+				if (dit.paragraph().getInset(dit.pos())->isLetter())
+					++chars;
+				else if (dit.paragraph().getInset(dit.pos())->isSpace() && with_blanks)
+					++blanks;
+			} else {
+				char_type const c = dit.paragraph().getChar(dit.pos());
+				if (isPrintableNonspace(c))
+					++chars;
+				else if (isSpace(c) && with_blanks)
+					++blanks;
+			}
+		}
+	}
+
+	return chars + blanks;
 }
 
 

@@ -103,7 +103,7 @@ Menuset
 		#Item "Read Only" "buffer-toggle-read-only"
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		Item "Thesaurus..." "thesaurus-entry"
-		Item "Count Words|W" "words-count"
+		Item "Statistics...|i" "statistics"
 		Item "Check TeX|h" "buffer-chktex"
 		Submenu "Change Tracking|g" "edit_change"
 		Separator

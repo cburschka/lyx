@@ -491,7 +491,7 @@ Menuset
 	Menu "tools"
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		OptItem "Thesaurus...|T" "thesaurus-entry"
-		Item "Count Words|W" "words-count"
+		Item "Statistics...|a" "statistics"
 		OptItem "Check TeX|h" "buffer-chktex"
 		Item "TeX Information|I" "dialog-show texinfo"
 		Separator

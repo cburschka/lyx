@@ -552,7 +552,16 @@ enum kb_action {
 	LFUN_INSET_REFRESH,
 	LFUN_BUFFER_NEXT,
 	LFUN_BUFFER_PREVIOUS,
-	LFUN_WORDS_COUNT,
+/**
+ * LFUN_STATISTICS
+ * \li Action: Count the statistics (number of words and characters)
+               in the document or in the given selection.
+ * \li Notion: Note that this function gives the number of words/chars written,
+               not the number of characters which will be typesetted.
+ * \li Syntax: words-count
+ * \li Origin: lasgouttes, Jan 27 2004; ps, Jan 8 2008
+ */
+	LFUN_STATISTICS,
 	// 260
 	LFUN_CHANGES_OUTPUT,             // jspitzm 20050121
 	LFUN_BIBTEX_DATABASE_ADD,

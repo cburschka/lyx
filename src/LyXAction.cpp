@@ -369,7 +369,7 @@ void LyXAction::init()
 		{ LFUN_INSET_REFRESH, "", Noop, Hidden },
 		{ LFUN_BUFFER_NEXT, "buffer-next", ReadOnly, Buffer },
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
-		{ LFUN_WORDS_COUNT, "words-count", ReadOnly, System },
+		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
 		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
 		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
