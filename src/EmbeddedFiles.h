@@ -167,46 +167,23 @@ bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 
 
-class EmbeddedFiles {
+class EmbeddedFiles : public std::vector<EmbeddedFile> {
 public:
-	typedef std::vector<EmbeddedFile> EmbeddedFileList;
-public:
-	///
-	EmbeddedFiles(Buffer * buffer = 0) : file_list_(), buffer_(buffer) {}
-	///
-	~EmbeddedFiles() {}
-
-	/// return buffer params embedded flag
-	bool enabled() const;
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.
-	void enable(bool flag);
+	void enable(bool flag, Buffer & buffer);
 
-	/// add a file item. 
+	/// add a file item.
 	/* \param file Embedded file to add
 	 * \param inset Inset pointer
 	 */
-	void registerFile(EmbeddedFile const & file, Inset const * inset = 0);
+	void registerFile(EmbeddedFile const & file, Inset const * inset, Buffer const & buffer);
 
 	/// scan the buffer and get a list of EmbeddedFile
-	void update();
+	void update(Buffer const & buffer);
 
 	/// write a zip file
-	bool writeFile(support::DocFileName const & filename);
-
-	void clear() { file_list_.clear(); }
-
-	///
-	EmbeddedFileList::iterator begin() { return file_list_.begin(); }
-	EmbeddedFileList::iterator end() { return file_list_.end(); }
-	EmbeddedFileList::const_iterator begin() const { return file_list_.begin(); }
-	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
-
-private:
-	/// list of embedded files
-	EmbeddedFileList file_list_;
-	///
-	Buffer * buffer_;
+	bool writeFile(support::DocFileName const & filename, Buffer const & buffer);
 };
 
 } // namespace lyx

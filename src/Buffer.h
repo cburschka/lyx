@@ -407,6 +407,7 @@ public:
 	//@{
 	EmbeddedFiles & embeddedFiles();
 	EmbeddedFiles const & embeddedFiles() const;
+	bool embedded() const;
 	//@}
 
 	Undo & undo();

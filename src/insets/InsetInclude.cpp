@@ -141,7 +141,7 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	EmbeddedFile file(to_utf8(params["filename"]),
 	       onlyPath(parentFilename(buffer)));
 	file.setEmbed(params["embed"] == _("true") ? true : false);
-	file.enable(buffer.embeddedFiles().enabled(), &buffer);
+	file.enable(buffer.embedded(), &buffer);
 	return file;
 }
 
@@ -901,7 +901,7 @@ void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
 	EmbeddedFiles & files) const
 {
-	files.registerFile(includedFilename(buffer, params()), this);
+	files.registerFile(includedFilename(buffer, params()), this, buffer);
 }
 
 

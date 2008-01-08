@@ -233,7 +233,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  inset(params), toc_backend(&parent), macro_lock(false),
-	  embedded_files(&parent), timestamp_(0), checksum_(0), wa_(0), 
+	  embedded_files(), timestamp_(0), checksum_(0), wa_(0), 
 	  undo_(parent)
 {
 	temppath = createBufferTmpDir();
@@ -375,6 +375,12 @@ EmbeddedFiles & Buffer::embeddedFiles()
 EmbeddedFiles const & Buffer::embeddedFiles() const
 {
 	return d->embedded_files;
+}
+
+
+bool Buffer::embedded() const
+{
+	return params().embedded;
 }
 
 
@@ -915,7 +921,7 @@ bool Buffer::writeFile(FileName const & fname) const
 		message(str + _(" writing embedded files!."));
 		// if embedding is enabled, write file.lyx and all the embedded files
 		// to the zip file fname.
-		if (!d->embedded_files.writeFile(fname)) {
+		if (!d->embedded_files.writeFile(fname, *this)) {
 			message(str + _(" could not write embedded files!."));
 			return false;
 		}

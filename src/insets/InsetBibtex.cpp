@@ -341,7 +341,7 @@ EmbeddedFileList const InsetBibtex::getFiles(Buffer const & buffer) const
 			EmbeddedFile file(changeExtension(tmp, "bib"), buffer.filePath());
 			// If the file structure is correct, this should not fail.
 			file.setEmbed(true);
-			file.enable(buffer.embeddedFiles().enabled(), &buffer);
+			file.enable(buffer.embedded(), &buffer);
 			vec.push_back(file);
 		} else {
 			// this includes the cases when the embed parameter is empty
@@ -351,7 +351,7 @@ EmbeddedFileList const InsetBibtex::getFiles(Buffer const & buffer) const
 			if (!file.empty()) {
 				EmbeddedFile efile = EmbeddedFile(file.absFilename(), buffer.filePath());
 				efile.setEmbed(false);
-				efile.enable(buffer.embeddedFiles().enabled(), &buffer);
+				efile.enable(buffer.embedded(), &buffer);
 				vec.push_back(efile);
 			}
 		}
@@ -810,7 +810,7 @@ void InsetBibtex::registerEmbeddedFiles(Buffer const & buffer, EmbeddedFiles & f
 	EmbeddedFileList const dbs = getFiles(buffer);
 	for (vector<EmbeddedFile>::const_iterator it = dbs.begin();
 		it != dbs.end(); ++ it)
-		files.registerFile(*it, this);		
+		files.registerFile(*it, this, buffer);		
 }
 
 

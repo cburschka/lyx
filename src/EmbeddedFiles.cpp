@@ -306,39 +306,33 @@ bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
 }
 
 
-bool EmbeddedFiles::enabled() const
+void EmbeddedFiles::enable(bool flag, Buffer & buffer)
 {
-	return buffer_->params().embedded;
-}
-
-
-void EmbeddedFiles::enable(bool flag)
-{
-	if (enabled() == flag)
+	if (buffer.embedded() == flag)
 		return;
 	
 	// update embedded file list
-	update();
+	update(buffer);
 	
 	int count_embedded = 0;
 	int count_external = 0;
-	EmbeddedFileList::iterator it = file_list_.begin();
-	EmbeddedFileList::iterator it_end = file_list_.end();
+	std::vector<EmbeddedFile>::iterator it = begin();
+	std::vector<EmbeddedFile>::iterator it_end = end();
 	// an exception may be thrown
 	for (; it != it_end; ++it) {
-		it->enable(flag, buffer_);
+		it->enable(flag, &buffer);
 		if (it->embedded())
 			count_embedded ++;
 		else
 			count_external ++;
 	}
 	// if operation is successful (no exception is thrown)
-	buffer_->markDirty();
-	buffer_->params().embedded = flag;
+	buffer.markDirty();
+	buffer.params().embedded = flag;
 
 	// if the operation is successful, update insets
-	for (it = file_list_.begin(); it != it_end; ++it)
-		it->updateInsets(buffer_);
+	for (it = begin(); it != it_end; ++it)
+		it->updateInsets(&buffer);
 	
 	// show result
 	if (flag) {
@@ -353,14 +347,15 @@ void EmbeddedFiles::enable(bool flag)
 }
 
 
-void EmbeddedFiles::registerFile(EmbeddedFile const & file, Inset const * inset)
+void EmbeddedFiles::registerFile(EmbeddedFile const & file,
+	Inset const * inset, Buffer const & buffer)
 {
-	BOOST_ASSERT(!enabled() || file.availableFile().exists());
-	BOOST_ASSERT(!enabled() || file.enabled());
+	BOOST_ASSERT(!buffer.embedded() || file.availableFile().exists());
+	BOOST_ASSERT(!buffer.embedded() || file.enabled());
 
 	// try to find this file from the list
-	EmbeddedFileList::iterator it = file_list_.begin();
-	EmbeddedFileList::iterator it_end = file_list_.end();
+	std::vector<EmbeddedFile>::iterator it = begin();
+	std::vector<EmbeddedFile>::iterator it_end = end();
 	for (; it != it_end; ++it)
 		if (it->absFilename() == file.absFilename()) {
 			if (it->embedded() != file.embedded()) {
@@ -370,39 +365,39 @@ void EmbeddedFiles::registerFile(EmbeddedFile const & file, Inset const * inset)
 						from_utf8(it->outputFilename())));
 				it->setEmbed(true);
 				// update the inset with this embedding status.
-				const_cast<Inset*>(inset)->updateEmbeddedFile(*buffer_, *it);
+				const_cast<Inset*>(inset)->updateEmbeddedFile(buffer, *it);
 			}
 			it->addInset(inset);
 			return;
 		}
 	//
-	file_list_.push_back(file);
-	file_list_.back().addInset(inset);
+	push_back(file);
+	back().addInset(inset);
 }
 
 
-void EmbeddedFiles::update()
+void EmbeddedFiles::update(Buffer const & buffer)
 {
-	file_list_.clear();
+	clear();
 
-	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it)
-		it->registerEmbeddedFiles(*buffer_, *this);
+	for (InsetIterator it = inset_iterator_begin(buffer.inset()); it; ++it)
+		it->registerEmbeddedFiles(buffer, *this);
 }
 
 
-bool EmbeddedFiles::writeFile(DocFileName const & filename)
+bool EmbeddedFiles::writeFile(DocFileName const & filename, Buffer const & buffer)
 {
 	// file in the temporary path has the content
-	string const content = FileName(addName(buffer_->temppath(),
+	string const content = FileName(addName(buffer.temppath(),
 		"content.lyx")).toFilesystemEncoding();
 
 	vector<pair<string, string> > filenames;
 	// add content.lyx to filenames
 	filenames.push_back(make_pair(content, "content.lyx"));
 	// prepare list of embedded file
-	update();
-	EmbeddedFileList::iterator it = file_list_.begin();
-	EmbeddedFileList::iterator it_end = file_list_.end();
+	update(buffer);
+	std::vector<EmbeddedFile>::iterator it = begin();
+	std::vector<EmbeddedFile>::iterator it_end = end();
 	for (; it != it_end; ++it) {
 		if (it->embedded()) {
 			string file = it->embeddedFile();
@@ -417,7 +412,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 	}
 	// write a zip file with all these files. Write to a temp file first, to
 	// avoid messing up the original file in case something goes terribly wrong.
-	DocFileName zipfile(addName(buffer_->temppath(),
+	DocFileName zipfile(addName(buffer.temppath(),
 		onlyFilename(changeExtension(
 			filename.toFilesystemEncoding(), ".zip"))));
 

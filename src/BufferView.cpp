@@ -1178,7 +1178,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_BUFFER_TOGGLE_EMBEDDING: {
 		// turn embedding on/off
 		try {
-			buffer_.embeddedFiles().enable(!buffer_.params().embedded);
+			buffer_.embeddedFiles().enable(!buffer_.params().embedded, buffer_);
 		} catch (ExceptionMessage const & message) {
 			Alert::error(message.title_, message.details_);
 		}
