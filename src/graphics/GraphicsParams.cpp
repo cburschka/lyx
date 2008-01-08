@@ -24,7 +24,8 @@ namespace graphics {
 Params::Params()
 	: display(ColorDisplay),
 	  scale(100),
-	  angle(0)
+	  angle(0),
+	  icon("")
 {}
 
 
@@ -34,7 +35,8 @@ bool operator==(Params const & a, Params const & b)
 		a.display == b.display &&
 		a.bb == b.bb &&
 		a.scale == b.scale &&
-		a.angle == b.angle);
+		a.angle == b.angle &&
+		a.icon == b.icon);
 }
 
 

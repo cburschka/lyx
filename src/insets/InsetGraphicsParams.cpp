@@ -274,6 +274,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
 	graphics::Params pars;
 	pars.filename = filename.availableFile();
+	pars.icon = filename.embedded() ? "pin.png" : "";
 	pars.scale = lyxscale;
 	pars.angle = convert<double>(rotateAngle);
 

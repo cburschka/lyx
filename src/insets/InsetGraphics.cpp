@@ -173,7 +173,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		if (!p.filename.empty()) {
 			try {
-				updateEmbeddedFile(buffer, p.filename);
+				p.filename.enable(buffer.embeddedFiles().enabled(), &buffer);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens

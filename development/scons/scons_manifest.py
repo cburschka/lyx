@@ -1428,6 +1428,7 @@ lib_images_files = Split('''
     note-next.png
     paste.png
     promote.png
+    pin.png
     psnfss1.png
     psnfss2.png
     psnfss3.png
