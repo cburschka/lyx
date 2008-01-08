@@ -44,6 +44,7 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/docstream.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
@@ -116,6 +117,34 @@ bool isInputOrInclude(InsetCommandParams const & params)
  	return t == INPUT || t == INCLUDE;
 }
 
+
+FileName const masterFileName(Buffer const & buffer)
+{
+	return buffer.masterBuffer()->fileName();
+}
+
+
+void add_preview(RenderMonitoredPreview &, InsetInclude const &, Buffer const &);
+
+
+string const parentFilename(Buffer const & buffer)
+{
+	return buffer.absFileName();
+}
+
+
+EmbeddedFile const includedFilename(Buffer const & buffer,
+			      InsetCommandParams const & params)
+{
+	// it is not a good idea to create this EmbeddedFile object
+	// each time, but there seems to be no easy way around.
+	EmbeddedFile file(to_utf8(params["filename"]),
+	       onlyPath(parentFilename(buffer)));
+	file.setEmbed(params["embed"] == _("true") ? true : false);
+	file.enable(buffer.embeddedFiles().enabled(), &buffer);
+	return file;
+}
+
 } // namespace anon
 
 
@@ -140,9 +169,9 @@ CommandInfo const * InsetInclude::findInfo(string const & /* cmdName */)
 	// FIXME
 	// This is only correct for the case of listings, but it'll do for now.
 	// In the other cases, this second parameter should just be empty.
-	static const char * const paramnames[] = {"filename", "lstparams", ""};
-	static const bool isoptional[] = {false, true};
-	static const CommandInfo info = {2, paramnames, isoptional};
+	static const char * const paramnames[] = {"filename", "embed", "lstparams", ""};
+	static const bool isoptional[] = {false, false, true};
+	static const CommandInfo info = {3, paramnames, isoptional};
 	return &info;
 }
 
@@ -172,6 +201,14 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 						from_utf8(par_new.getParamValue("label")),
 						REF_CODE);
 			}
+			try {
+				// test parameter
+				includedFilename(cur.buffer(), p);
+			} catch (ExceptionMessage const & message) {
+				Alert::error(message.title_, message.details_);
+				// do not set parameter if an error happens
+				break;
+			}
 			set(p, cur.buffer());
 			cur.buffer().updateBibfilesCache();
 		} else
@@ -185,33 +222,6 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 }
-
-
-namespace {
-
-FileName const masterFileName(Buffer const & buffer)
-{
-	return buffer.masterBuffer()->fileName();
-}
-
-
-string const parentFilename(Buffer const & buffer)
-{
-	return buffer.absFileName();
-}
-
-
-FileName const includedFilename(Buffer const & buffer,
-			      InsetCommandParams const & params)
-{
-	return makeAbsPath(to_utf8(params["filename"]),
-	       onlyPath(parentFilename(buffer)));
-}
-
-
-void add_preview(RenderMonitoredPreview &, InsetInclude const &, Buffer const &);
-
-} // namespace anon
 
 
 void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
@@ -264,6 +274,8 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 	else
 		temp += from_utf8(onlyFilename(to_utf8(params()["filename"])));
 
+	if (params()["embed"] == _("true"))
+		temp += _(" (embedded)");
 	return temp;
 }
 
@@ -362,7 +374,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (incfile.empty())
 		return 0;
 
-	FileName const included_file = includedFilename(buffer, params());
+	FileName const included_file = includedFilename(buffer, params()).availableFile();
 
 	//Check we're not trying to include ourselves.
 	//FIXME RECURSIVE INCLUDE
@@ -615,7 +627,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	Buffer const & buffer = features.buffer();
 
-	string const included_file = includedFilename(buffer, params()).absFilename();
+	string const included_file = includedFilename(buffer, params()).availableFile().absFilename();
 
 	if (isLyXFilename(included_file))
 		writefile = changeExtension(included_file, ".sgml");
@@ -889,12 +901,18 @@ void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
 	EmbeddedFiles & files) const
 {
-	// include and input are temprarily not considered.
-	/*
-	if (isVerbatim(params()) || isListings(params()))
-		files.registerFile(includedFilename(buffer, params()).absFilename(),
-			false, this);
-	*/
+	files.registerFile(includedFilename(buffer, params()), this);
 }
+
+
+void InsetInclude::updateEmbeddedFile(Buffer const & buf,
+	EmbeddedFile const & file)
+{
+	InsetCommandParams p = params();
+	p["filename"] = from_utf8(file.outputFilename());
+	p["embedded"] = file.embedded() ? _("true") : _("false");
+	set(p, buf);
+}
+
 
 } // namespace lyx

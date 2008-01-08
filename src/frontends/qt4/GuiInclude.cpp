@@ -60,6 +60,7 @@ GuiInclude::GuiInclude(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(editPB, SIGNAL(clicked()), this, SLOT(edit()));
 	connect(browsePB, SIGNAL(clicked()), this, SLOT(browse()));
+	connect(embedCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
 	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -178,6 +179,7 @@ void GuiInclude::typeChanged(int v)
 void GuiInclude::updateContents()
 {
 	filenameED->setText(toqstr(params_["filename"]));
+	embedCB->setCheckState(params_["embed"] == _("true") ?  Qt::Checked : Qt::Unchecked);
 
 	visiblespaceCB->setChecked(false);
 	visiblespaceCB->setEnabled(false);
@@ -247,6 +249,7 @@ void GuiInclude::updateContents()
 void GuiInclude::applyView()
 {
 	params_["filename"] = from_utf8(internal_path(fromqstr(filenameED->text())));
+	params_["embed"] = embedCB->checkState() == Qt::Checked ? _("true") : _("false");
 	params_.preview(previewCB->isChecked());
 
 	int const item = typeCO->currentIndex();

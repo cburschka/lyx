@@ -144,6 +144,8 @@ public:
 
 	/// Check readability of availableFile
 	bool isReadableFile() const;
+	/// Calculate checksum of availableFile
+	unsigned long checksum() const;
 
 private:
 	/// filename in zip file

@@ -98,6 +98,8 @@ public:
 	/// child document can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
 	///
+	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
+	///
 	static CommandInfo const * findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "include"; };

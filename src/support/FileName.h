@@ -75,7 +75,7 @@ public:
 	/// returns time of last write access
 	std::time_t lastModified() const;
 	/// generates a checksum of a file
-	unsigned long checksum() const;
+	virtual unsigned long checksum() const;
 	/// return true when file is readable but not writabel
 	bool isReadOnly() const;
 	/// return true when it names a directory

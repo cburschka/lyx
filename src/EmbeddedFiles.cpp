@@ -286,6 +286,12 @@ bool EmbeddedFile::isReadableFile() const
 }
 
 
+unsigned long EmbeddedFile::checksum() const
+{
+	return availableFile().checksum();
+}
+
+
 bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename()
