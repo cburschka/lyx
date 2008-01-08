@@ -110,6 +110,8 @@ GuiExternal::GuiExternal(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(browsePB, SIGNAL(clicked()),
 		this, SLOT(browseClicked()));
+	connect(embedCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(editClicked()));
 	connect(externalCO, SIGNAL(activated(QString)),
@@ -557,6 +559,7 @@ void GuiExternal::updateContents()
 	string const name =
 		params_.filename.outputFilename(bufferFilepath());
 	fileED->setText(toqstr(name));
+	embedCB->setCheckState(params_.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	externalCO->setCurrentIndex(getTemplateNumber(params_.templatename()));
 	updateTemplate();
@@ -639,6 +642,7 @@ void GuiExternal::updateTemplate()
 void GuiExternal::applyView()
 {
 	params_.filename.set(fromqstr(fileED->text()), bufferFilepath());
+	params_.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 

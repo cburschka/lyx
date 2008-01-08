@@ -80,7 +80,7 @@ public:
 	std::string const & templatename() const { return templatename_; }
 
 	/// The external file.
-	support::DocFileName filename;
+	EmbeddedFile filename;
 	/// How the inset is to be displayed by LyX.
 	external::DisplayType display;
 	/// The scale of the displayed graphic (if shown).
@@ -150,6 +150,8 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// external file can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	///
+	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
 
 protected:
 	InsetExternal(InsetExternal const &);

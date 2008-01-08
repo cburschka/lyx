@@ -31,8 +31,11 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "frontends/alert.h"
+
 #include "graphics/PreviewLoader.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -58,6 +61,8 @@ string defaultTemplateName;
 
 
 namespace lyx {
+
+namespace Alert = frontend::Alert;
 
 extern bool use_gui;
 
@@ -182,9 +187,10 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 	os << "External\n"
 	   << "\ttemplate " << templatename() << '\n';
 
-	if (!filename.empty())
+	if (!filename.empty()) {
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
-
+		os << "\tembed " << (filename.embedded() ? "true" : "false") << '\n';
+	}
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
 		   << external::displayTranslator().find(display)
@@ -241,6 +247,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 	enum ExternalTags {
 		EX_TEMPLATE = 1,
 		EX_FILENAME,
+		EX_EMBED,
 		EX_DISPLAY,
 		EX_LYXSCALE,
 		EX_DRAFT,
@@ -264,6 +271,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		{ "draft",           EX_DRAFT},
 		{ "extra",           EX_EXTRA },
 		{ "filename",        EX_FILENAME},
+		{ "embed",           EX_EMBED},
 		{ "height",          EX_HEIGHT },
 		{ "keepAspectRatio", EX_KEEPASPECTRATIO },
 		{ "lyxscale",        EX_LYXSCALE},
@@ -290,6 +298,12 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 			lex.eatLine();
 			string const name = lex.getString();
 			filename.set(name, buffer.filePath());
+			break;
+		}
+		
+		case EX_EMBED: {
+			lex.next();
+			filename.setEmbed(lex.getBool());
 			break;
 		}
 
@@ -437,6 +451,15 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, p);
+		if (!p.filename.empty()) {
+			try {
+				p.filename.enable(buffer.embeddedFiles().enabled(), &buffer);
+			} catch (ExceptionMessage const & message) {
+				Alert::error(message.title_, message.details_);
+				// do not set parameter if an error happens
+				break;
+			}
+		}
 		setParams(p, buffer);
 		break;
 	}
@@ -476,8 +499,18 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetExternal::registerEmbeddedFiles(Buffer const &,
 	EmbeddedFiles & files) const
 {
-	// temporarily disable embedding for this inset
-	/* files.registerFile(params_.filename, this); */
+	files.registerFile(params_.filename, this);
+}
+
+
+void InsetExternal::updateEmbeddedFile(Buffer const & buf,
+	EmbeddedFile const & file)
+{
+	// when embedding is enabled, change of embedding status leads to actions
+	EmbeddedFile temp = file;
+	temp.enable(buf.embeddedFiles().enabled(), &buf);
+	// this will not be set if an exception is thorwn in enable()
+	params_.filename = temp;
 }
 
 
@@ -532,7 +565,8 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 {
 	graphics::Params gparams;
 
-	gparams.filename = eparams.filename;
+	gparams.filename = eparams.filename.availableFile();
+	gparams.icon = eparams.filename.embedded() ? "pin.png" : "";
 	gparams.scale = eparams.lyxscale;
 	if (eparams.clipdata.clip)
 		gparams.bb = eparams.clipdata.bbox;
@@ -671,8 +705,11 @@ void InsetExternal::write(Buffer const & buffer, ostream & os) const
 void InsetExternal::read(Buffer const & buffer, Lexer & lex)
 {
 	InsetExternalParams params;
-	if (params.read(buffer, lex))
+	if (params.read(buffer, lex)) {
+		// exception handling is not needed as long as embedded files are in place.
+		params.filename.enable(buffer.embeddedFiles().enabled(), & buffer);
 		setParams(params, buffer);
+	}
 }
 
 
