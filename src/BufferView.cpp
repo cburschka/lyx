@@ -745,7 +745,7 @@ void BufferView::showCursor()
 	else if (d->anchor_pit_ == max_pit)
 		d->anchor_ypos_ = height_ - offset - row_dim.descent();
 	else
-		d->anchor_ypos_ = offset + pm.ascent() - height_ / 2;
+		d->anchor_ypos_ = offset + pm.ascent() + height_ / 2;
 
 	updateMetrics();
 	buffer_.changed();
