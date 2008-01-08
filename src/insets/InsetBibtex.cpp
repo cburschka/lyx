@@ -55,9 +55,9 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 CommandInfo const * InsetBibtex::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = 
-		{"options", "btprint", "bibfiles", ""};
-	static const bool isoptional[] = {true, true, false};
-	static const CommandInfo info = {3, paramnames, isoptional};
+		{"options", "btprint", "bibfiles", "embed", ""};
+	static const bool isoptional[] = {true, true, false, false};
+	static const CommandInfo info = {4, paramnames, isoptional};
 	return &info;
 }
 
@@ -88,7 +88,19 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				throw message;
 			break;
 		}
+		//
+		InsetCommandParams orig = params();
 		setParams(p);
+		// test parameter and copy files
+		try {
+			// enable() in getFiles will try to copy files
+			getFiles(cur.buffer());
+		} catch (ExceptionMessage const & message) {
+			Alert::error(message.title_, message.details_);
+			// do not set parameter if an error happens
+			setParams(orig);
+			break;
+		}
 		cur.buffer().updateBibfilesCache();
 		break;
 	}
@@ -310,27 +322,43 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 }
 
 
-FileNameList const InsetBibtex::getFiles(Buffer const & buffer) const
+EmbeddedFileList const InsetBibtex::getFiles(Buffer const & buffer) const
 {
 	FileName path(buffer.filePath());
 	PathChanger p(path);
 
-	FileNameList vec;
+	EmbeddedFileList vec;
 
 	string tmp;
+	string emb;
 	// FIXME UNICODE
 	string bibfiles = to_utf8(getParam("bibfiles"));
+	string embedStatus = to_utf8(getParam("embed"));
 	bibfiles = split(bibfiles, tmp, ',');
+	embedStatus = split(embedStatus, emb, ',');
 	while (!tmp.empty()) {
-		FileName const file = findtexfile(changeExtension(tmp, "bib"), "bib");
-		LYXERR(Debug::LATEX, "Bibfile: " << file);
-
-		// If we didn't find a matching file name just fail silently
-		if (!file.empty())
+		if (emb == "true") {
+			EmbeddedFile file(changeExtension(tmp, "bib"), buffer.filePath());
+			// If the file structure is correct, this should not fail.
+			file.setEmbed(true);
+			file.enable(buffer.embeddedFiles().enabled(), &buffer);
 			vec.push_back(file);
+		} else {
+			// this includes the cases when the embed parameter is empty
+			FileName const file = findtexfile(changeExtension(tmp, "bib"), "bib");
+
+			// If we didn't find a matching file name just fail silently
+			if (!file.empty()) {
+				EmbeddedFile efile = EmbeddedFile(file.absFilename(), buffer.filePath());
+				efile.setEmbed(false);
+				efile.enable(buffer.embeddedFiles().enabled(), &buffer);
+				vec.push_back(efile);
+			}
+		}
 
 		// Get next file name
 		bibfiles = split(bibfiles, tmp, ',');
+		embedStatus = split(embedStatus, emb, ',');
 	}
 
 	return vec;
@@ -578,8 +606,8 @@ namespace {
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		BiblioInfo & keylist, InsetIterator const & /*di*/) const
 {
-	FileNameList const files = getFiles(buffer);
-	for (vector<FileName>::const_iterator it = files.begin();
+	EmbeddedFileList const files = getFiles(buffer);
+	for (vector<EmbeddedFile>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
 		// This bibtex parser is a first step to parse bibtex files
 		// more precisely.
@@ -600,7 +628,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// InsetBibitem can generate non-ASCII keys, and nonstandard
 		// 8bit clean bibtex forks exist.
 		
-		idocfstream ifs(it->toFilesystemEncoding().c_str(),
+		idocfstream ifs(it->availableFile().toFilesystemEncoding().c_str(),
 			ios_base::in,
 			buffer.params().encoding().iconvName());
 
@@ -774,6 +802,42 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
+}
+
+
+void InsetBibtex::registerEmbeddedFiles(Buffer const & buffer, EmbeddedFiles & files) const
+{
+	EmbeddedFileList const dbs = getFiles(buffer);
+	for (vector<EmbeddedFile>::const_iterator it = dbs.begin();
+		it != dbs.end(); ++ it)
+		files.registerFile(*it, this);		
+}
+
+
+void InsetBibtex::updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file)
+{
+	// look for the item and update status
+	docstring bibfiles;
+	docstring embed;
+
+	bool first = true;
+	EmbeddedFileList dbs = getFiles(buf);
+	for (vector<EmbeddedFile>::iterator it = dbs.begin();
+		it != dbs.end(); ++ it) {
+		// update from file
+		if (it->absFilename() == file.absFilename())
+			it->setEmbed(file.embedded());
+		// write parameter string
+		if (!first) {
+			bibfiles += ',';
+			embed += ',';
+			first = false;
+		}
+		bibfiles += from_utf8(it->outputFilename(buf.filePath()));
+		embed += it->embedded() ? _("true") : _("false");
+	}
+	setParam("bibfiles", bibfiles);
+	setParam("embed", embed);
 }
 
 

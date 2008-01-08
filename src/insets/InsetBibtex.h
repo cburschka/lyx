@@ -19,7 +19,7 @@
 namespace lyx {
 
 namespace support {
-class FileNameList;
+class EmbeddedFileList;
 }
 
 
@@ -43,7 +43,7 @@ public:
 	virtual void fillWithBibKeys(Buffer const &,
 		BiblioInfo &, InsetIterator const &) const;
 	///
-	support::FileNameList const getFiles(Buffer const &) const;
+	support::EmbeddedFileList const getFiles(Buffer const &) const;
 	///
 	bool addDatabase(std::string const &);
 	///
@@ -57,6 +57,11 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
+	///
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	///
+	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
+	
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:

@@ -144,10 +144,10 @@ docstring const getComplexLabel(Buffer const & buffer,
 
 	BiblioInfo biblist;
 
-	FileNameList const & bibfilesCache = buffer.getBibfilesCache();
+	support::EmbeddedFileList const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	for (FileNameList::const_iterator it = bibfilesCache.begin();
+	for (support::EmbeddedFileList::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
 		time_t lastw = f.lastModified();

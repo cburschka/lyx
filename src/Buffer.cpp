@@ -207,7 +207,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable FileNameList bibfilesCache_;
+	mutable EmbeddedFileList bibfilesCache_;
 };
 
 /// Creates the per buffer temporary directory
@@ -1384,7 +1384,7 @@ void Buffer::updateBibfilesCache() const
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
-			FileNameList const bibfiles = inset.getFiles(*this);
+			EmbeddedFileList const bibfiles = inset.getFiles(*this);
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -1392,7 +1392,7 @@ void Buffer::updateBibfilesCache() const
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache(*this);
-			FileNameList const & bibfiles =
+			EmbeddedFileList const & bibfiles =
 					inset.getBibfilesCache(*this);
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
@@ -1402,7 +1402,7 @@ void Buffer::updateBibfilesCache() const
 }
 
 
-FileNameList const & Buffer::getBibfilesCache() const
+EmbeddedFileList const & Buffer::getBibfilesCache() const
 {
 	// if this is a child document and the parent is already loaded
 	// use the parent's cache instead

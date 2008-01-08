@@ -13,6 +13,7 @@
 #define FILENAMELIST_H
 
 #include "support/FileName.h"
+#include "EmbeddedFiles.h"
 
 #include <vector>
 
@@ -25,6 +26,10 @@ namespace support {
  * this problem.
  */
 class FileNameList: public std::vector<FileName>
+{
+};
+
+class EmbeddedFileList: public std::vector<EmbeddedFile>
 {
 };
 

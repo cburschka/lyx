@@ -194,8 +194,14 @@ void GuiBibtex::addDatabase()
 			add_->bibLW->setItemSelected(item, false);
 			QList<QListWidgetItem *> matches =
 				databaseLW->findItems(item->text(), Qt::MatchExactly);
-			if (matches.empty())
-				databaseLW->addItem(item->text());
+			if (matches.empty()) {
+				QString label = item->text();
+				QListWidgetItem * db = new QListWidgetItem(label);
+				db->setFlags(db->flags() | Qt::ItemIsSelectable
+					| Qt::ItemIsUserCheckable);
+				db->setCheckState(Qt::Checked);
+				databaseLW->addItem(db);
+			}
 		}
 	}
 
@@ -204,8 +210,13 @@ void GuiBibtex::addDatabase()
 		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
 		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
-		if (matches.empty())
+		if (matches.empty()) {
+			QListWidgetItem * db = new QListWidgetItem(f);
+			db->setFlags(db->flags() | Qt::ItemIsSelectable
+				| Qt::ItemIsUserCheckable);
+			db->setCheckState(Qt::Checked);
 			databaseLW->addItem(f);
+		}
 	}
 
 	changed();
@@ -246,13 +257,21 @@ void GuiBibtex::updateContents()
 	databaseLW->clear();
 
 	docstring bibs = params_["bibfiles"];
+	docstring embs = params_["embed"];
 	docstring bib;
+	docstring emb;
 
 	while (!bibs.empty()) {
 		bibs = split(bibs, bib, ',');
+		embs = split(embs, emb, ',');
 		bib = trim(bib);
-		if (!bib.empty())
-			databaseLW->addItem(toqstr(bib));
+		if (!bib.empty()) {
+			QListWidgetItem * db = new QListWidgetItem(toqstr(bib));
+			db->setFlags(db->flags() | Qt::ItemIsSelectable
+				| Qt::ItemIsUserCheckable);
+			db->setCheckState(emb == _("true") ? Qt::Checked : Qt::Unchecked);
+			databaseLW->addItem(db);
+		}
 	}
 
 	add_->bibLW->clear();
@@ -262,7 +281,11 @@ void GuiBibtex::updateContents()
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(changeExtension(*it, ""));
-		add_->bibLW->addItem(toqstr(bibItem));
+		QListWidgetItem * db = new QListWidgetItem(toqstr(bibItem));
+		db->setFlags(db->flags() & ~Qt::ItemIsSelectable
+				| Qt::ItemIsUserCheckable);
+		db->setCheckState(Qt::Unchecked);
+		add_->bibLW->addItem(db);
 	}
 
 	string bibstyle = getStylefile();
@@ -314,14 +337,18 @@ void GuiBibtex::updateContents()
 void GuiBibtex::applyView()
 {
 	docstring dbs = qstring_to_ucs4(databaseLW->item(0)->text());
+	docstring emb = databaseLW->item(0)->checkState() == Qt::Checked ? _("true") : _("false");
 
 	unsigned int maxCount = databaseLW->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
 		dbs += qstring_to_ucs4(databaseLW->item(i)->text());
+		emb += ',';
+		emb += databaseLW->item(i)->checkState() == Qt::Checked ? _("true") : _("false");
 	}
 
 	params_["bibfiles"] = dbs;
+	params_["embed"] = emb;
 
 	docstring const bibstyle = qstring_to_ucs4(styleCB->currentText());
 	bool const bibtotoc = bibtocCB->isChecked();

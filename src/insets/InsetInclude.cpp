@@ -713,17 +713,17 @@ void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 }
 
 
-FileNameList const &
+EmbeddedFileList const &
 InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
 	Buffer * const tmp = getChildBuffer(buffer, params());
 	if (tmp) {
 		tmp->setParent(0);
-		FileNameList const & cache = tmp->getBibfilesCache();
+		EmbeddedFileList const & cache = tmp->getBibfilesCache();
 		tmp->setParent(&buffer);
 		return cache;
 	}
-	static FileNameList const empty;
+	static EmbeddedFileList const empty;
 	return empty;
 }
 

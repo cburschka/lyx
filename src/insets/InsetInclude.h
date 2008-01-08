@@ -31,7 +31,7 @@ class LaTeXFeatures;
 class RenderMonitoredPreview;
 
 namespace support {
-class FileNameList;
+class EmbeddedFileList;
 }
 
 /// for including tex/lyx files
@@ -74,7 +74,7 @@ public:
 	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	support::FileNameList const &
+	support::EmbeddedFileList const &
 		getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
