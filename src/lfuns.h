@@ -374,7 +374,7 @@ enum kb_action {
  * LFUN_RECONFIGURE
  * \li Action: Reconfigure the automatic settings.
  * \li Syntax: reconfigure
- * \li Origin: Asger , 14 Feb 1997
+ * \li Origin: Asger, 14 Feb 1997
  */
 	LFUN_RECONFIGURE,
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
@@ -407,7 +407,7 @@ enum kb_action {
  * LFUN_PREFERENCES_SAVE
  * \li Action: Save user preferences.
  * \li Syntax: preferences-save
- * \li Origin: Lgb 27 Nov 1999
+ * \li Origin: Lgb, 27 Nov 1999
  */
 	LFUN_PREFERENCES_SAVE,
 	LFUN_HELP_OPEN,                 // Jug 990627
