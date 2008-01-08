@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
@@ -26,6 +27,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
