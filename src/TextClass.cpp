@@ -35,7 +35,6 @@
 
 #include <sstream>
 
-
 using namespace std;
 using namespace lyx::support;
 
@@ -398,10 +397,6 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			lexrc.eatLine();
 			string const packages = lexrc.getString();
 			vector<string> req = getVectorFromString(packages);
-			if (requires_.empty()) {
-				requires_ = req;
-				break;
-			}
 			for (vector<string>::const_iterator it = req.begin();
 			     it != req.end(); ++it) {
 				if (find(requires_.begin(), requires_.end(), *it) == requires_.end())
