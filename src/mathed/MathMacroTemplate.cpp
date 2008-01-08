@@ -393,7 +393,11 @@ MathMacroTemplate::MathMacroTemplate(docstring const & str)
 
 Inset * MathMacroTemplate::clone() const
 {
-	return new MathMacroTemplate(*this);
+	MathMacroTemplate * inset = new MathMacroTemplate(*this);
+	// the parent pointers of the proxy insets above will point to
+	// to the old template. Hence, the look must be updated.
+	inset->updateLook();
+	return inset;
 }
 
 
