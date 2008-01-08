@@ -899,7 +899,7 @@ void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 
 
 void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFiles & files) const
+	EmbeddedFileList & files) const
 {
 	files.registerFile(includedFilename(buffer, params()), this, buffer);
 }

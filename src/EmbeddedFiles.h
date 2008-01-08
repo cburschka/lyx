@@ -167,7 +167,7 @@ bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 
 
-class EmbeddedFiles : public std::vector<EmbeddedFile> {
+class EmbeddedFileList : public std::vector<EmbeddedFile> {
 public:
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.

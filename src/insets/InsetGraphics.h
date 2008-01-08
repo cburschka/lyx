@@ -79,7 +79,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// all graphics can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
 	/// Force inset into LTR environment if surroundings are RTL?

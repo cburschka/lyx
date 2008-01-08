@@ -25,7 +25,7 @@
 namespace lyx {
 
 class BufferParams;
-class EmbeddedFiles;
+class EmbeddedFileList;
 class DocIterator;
 class ErrorItem;
 class ErrorList;
@@ -57,7 +57,6 @@ class WorkAreaManager;
 
 namespace support {
 class FileName;
-class EmbeddedFileList;
 }
 
 /** The buffer object.
@@ -304,7 +303,7 @@ public:
 	void updateBibfilesCache() const;
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	support::EmbeddedFileList const & getBibfilesCache() const;
+	EmbeddedFileList const & getBibfilesCache() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 
@@ -405,8 +404,8 @@ public:
 	TocBackend & tocBackend() const;
 	
 	//@{
-	EmbeddedFiles & embeddedFiles();
-	EmbeddedFiles const & embeddedFiles() const;
+	EmbeddedFileList & embeddedFiles();
+	EmbeddedFileList const & embeddedFiles() const;
 	bool embedded() const;
 	//@}
 

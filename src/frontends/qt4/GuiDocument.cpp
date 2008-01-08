@@ -970,10 +970,10 @@ void GuiDocument::updateEmbeddedFileList()
 {
 	embeddedFilesModule->filesLW->clear();
 	// add current embedded files
-	EmbeddedFiles & files = buffer().embeddedFiles();
+	EmbeddedFileList & files = buffer().embeddedFiles();
 	files.update(buffer());
-	EmbeddedFiles::iterator fit = files.begin();
-	EmbeddedFiles::iterator fit_end = files.end();
+	EmbeddedFileList::iterator fit = files.begin();
+	EmbeddedFileList::iterator fit_end = files.end();
 	for (; fit != fit_end; ++fit) {
 		QString label = toqstr(fit->relFilename(buffer().filePath()));
 		if (fit->refCount() > 1)

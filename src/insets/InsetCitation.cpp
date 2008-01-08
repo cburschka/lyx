@@ -18,12 +18,12 @@
 #include "support/debug.h"
 #include "DispatchResult.h"
 #include "support/gettext.h"
+#include "EmbeddedFiles.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
 #include "support/lstrings.h"
 #include "support/docstream.h"
-#include "support/FileNameList.h"
 
 #include <algorithm>
 
@@ -144,10 +144,10 @@ docstring const getComplexLabel(Buffer const & buffer,
 
 	BiblioInfo biblist;
 
-	support::EmbeddedFileList const & bibfilesCache = buffer.getBibfilesCache();
+	EmbeddedFileList const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	for (support::EmbeddedFileList::const_iterator it = bibfilesCache.begin();
+	for (EmbeddedFileList::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
 		time_t lastw = f.lastModified();

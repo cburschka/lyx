@@ -17,6 +17,7 @@
 #include "BufferParams.h"
 #include "DispatchResult.h"
 #include "support/debug.h"
+#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
@@ -29,7 +30,6 @@
 
 #include "support/ExceptionMessage.h"
 #include "support/docstream.h"
-#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -805,7 +805,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetBibtex::registerEmbeddedFiles(Buffer const & buffer, EmbeddedFiles & files) const
+void InsetBibtex::registerEmbeddedFiles(Buffer const & buffer, EmbeddedFileList & files) const
 {
 	EmbeddedFileList const dbs = getFiles(buffer);
 	for (vector<EmbeddedFile>::const_iterator it = dbs.begin();
@@ -822,7 +822,7 @@ void InsetBibtex::updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & fi
 
 	bool first = true;
 	EmbeddedFileList dbs = getFiles(buf);
-	for (vector<EmbeddedFile>::iterator it = dbs.begin();
+	for (EmbeddedFileList::iterator it = dbs.begin();
 		it != dbs.end(); ++ it) {
 		// update from file
 		if (it->absFilename() == file.absFilename())

@@ -217,7 +217,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 void InsetGraphics::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFiles & files) const
+	EmbeddedFileList & files) const
 {
 	files.registerFile(params().filename, this, buffer);
 }

@@ -30,10 +30,6 @@ class Dimension;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
 
-namespace support {
-class EmbeddedFileList;
-}
-
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {
 public:
@@ -74,7 +70,7 @@ public:
 	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	support::EmbeddedFileList const &
+	EmbeddedFileList const &
 		getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -96,7 +92,7 @@ public:
 	///
 	void updateLabels(Buffer const & buffer, ParIterator const &);
 	/// child document can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
 	///

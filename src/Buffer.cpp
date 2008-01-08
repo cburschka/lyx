@@ -192,7 +192,7 @@ public:
 	map<string, ErrorList> errorLists;
 
 	/// all embedded files of this buffer
-	EmbeddedFiles embedded_files;
+	EmbeddedFileList embedded_files;
 
 	/// timestamp and checksum used to test if the file has been externally
 	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
@@ -366,13 +366,13 @@ TocBackend & Buffer::tocBackend() const
 }
 
 
-EmbeddedFiles & Buffer::embeddedFiles()
+EmbeddedFileList & Buffer::embeddedFiles()
 {
 	return d->embedded_files;
 }
 
 
-EmbeddedFiles const & Buffer::embeddedFiles() const
+EmbeddedFileList const & Buffer::embeddedFiles() const
 {
 	return d->embedded_files;
 }

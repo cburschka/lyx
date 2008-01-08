@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file EmbeddedFiles.cpp
+ * \file EmbeddedFileList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -306,7 +306,7 @@ bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
 }
 
 
-void EmbeddedFiles::enable(bool flag, Buffer & buffer)
+void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 {
 	if (buffer.embedded() == flag)
 		return;
@@ -347,7 +347,7 @@ void EmbeddedFiles::enable(bool flag, Buffer & buffer)
 }
 
 
-void EmbeddedFiles::registerFile(EmbeddedFile const & file,
+void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 	Inset const * inset, Buffer const & buffer)
 {
 	BOOST_ASSERT(!buffer.embedded() || file.availableFile().exists());
@@ -376,7 +376,7 @@ void EmbeddedFiles::registerFile(EmbeddedFile const & file,
 }
 
 
-void EmbeddedFiles::update(Buffer const & buffer)
+void EmbeddedFileList::update(Buffer const & buffer)
 {
 	clear();
 
@@ -385,7 +385,7 @@ void EmbeddedFiles::update(Buffer const & buffer)
 }
 
 
-bool EmbeddedFiles::writeFile(DocFileName const & filename, Buffer const & buffer)
+bool EmbeddedFileList::writeFile(DocFileName const & filename, Buffer const & buffer)
 {
 	// file in the temporary path has the content
 	string const content = FileName(addName(buffer.temppath(),

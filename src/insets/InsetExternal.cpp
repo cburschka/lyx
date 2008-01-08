@@ -497,7 +497,7 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 void InsetExternal::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFiles & files) const
+	EmbeddedFileList & files) const
 {
 	files.registerFile(params_.filename, this, buffer);
 }
