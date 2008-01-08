@@ -127,6 +127,8 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(embedCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
 	connect(WidthCB, SIGNAL( clicked()),
 		this, SLOT(change_adaptor()));
 	connect(HeightCB, SIGNAL( clicked()),
@@ -300,12 +302,6 @@ void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
 	EmbeddedFile file = EmbeddedFile(fromqstr(filename), bufferFilepath());
-}
-
-
-void GuiGraphics::on_embedCB_toggled(bool)
-{
-	changed();
 }
 
 
