@@ -15,7 +15,6 @@ TODO
     * What advanced features the users want to do?
       Implement them in a non latex dependent way, but a logical way.
       LyX should translate it to latex or any other fitting format.
-    * Add a way to roll the image file into the file format.
     * When loading, if the image is not found in the expected place, try
       to find it in the clipart, or in the same directory with the image.
     * The image choosing dialog could show thumbnails of the image formats
