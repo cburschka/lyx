@@ -10,7 +10,9 @@ into account before upgrading.
 The format of the preferences file has changed slightly. LyX 1.5.x is
 able to read old preferences files, but it will save them in the new
 format, so it is not possible to run LyX 1.4.x and 1.5.x with the same
-personal configuration directory.
+personal configuration directory. If you are upgrading from 1.4.x and 
+do not intend to continue using 1.4.x, you should delete your existing 
+preferences file and allow LyX to create a new one.
 
 The list of recently open files is now stored in a different location.
 It will therefore be reset when upgrading from LyX 1.4.x.
