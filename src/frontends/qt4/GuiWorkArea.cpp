@@ -463,12 +463,7 @@ void GuiWorkArea::updateScrollbar()
 	verticalScrollBar()->setTracking(false);
 
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-
-	// do what cursor movement does (some grey)
-	int const h = scroll_.height + viewport()->height() / 4;
-	int scroll_max_ = max(0, h - viewport()->height());
-
-	verticalScrollBar()->setRange(0, scroll_max_);
+	verticalScrollBar()->setRange(0, scroll_.height);
 	verticalScrollBar()->setSliderPosition(scroll_.position);
 	verticalScrollBar()->setSingleStep(scroll_.lineScrollHeight);
 	verticalScrollBar()->setValue(scroll_.position);
