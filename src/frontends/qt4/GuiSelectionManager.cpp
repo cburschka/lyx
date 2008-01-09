@@ -238,25 +238,25 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
 		//Enter key without modifier will add current item.
 		//Ctrl-Enter will add it and close the dialog.
-			//This is designed to work both with the main enter key
-			//and the one on the numeric keypad.
-			if ((keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) &&
-					//We want one or both of Control and Keypad, and nothing else
-					//(KeypadModifier is what you get if you use the Enter key on the
-					//numeric keypad.)
-						(!keyModifiers || 
-						(keyModifiers == Qt::ControlModifier) ||
-						(keyModifiers == Qt::KeypadModifier)  ||
-						(keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier))
-						)
-				) {
-				if (addPB->isEnabled()) {
-					addPB_clicked();
-					okHook(); //signal
-				}
-				event->accept();
-				return true;
-				} 
+		//This is designed to work both with the main enter key
+		//and the one on the numeric keypad.
+		if ((keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) &&
+				//We want one or both of Control and Keypad, and nothing else
+				//(KeypadModifier is what you get if you use the Enter key on the
+				//numeric keypad.)
+					(!keyModifiers || 
+					(keyModifiers == Qt::ControlModifier) ||
+					(keyModifiers == Qt::KeypadModifier)  ||
+					(keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier))
+					)
+			) {
+			if (addPB->isEnabled()) {
+				addPB_clicked();
+				okHook(); //signal
+			}
+			event->accept();
+			return true;
+			} 
 	} else if (obj == selectedLV) {
 		//Delete or backspace key will delete current item
 		//...with control modifier will clear the list
