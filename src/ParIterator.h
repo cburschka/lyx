@@ -81,7 +81,12 @@ ParIterator par_iterator_end(Inset & inset);
 ///
 bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 
-///
+// FIXME: Unfortunately operator!=(ParIterator &, ParIterator &) is implemented with
+// operator!=(DocIterator &, DocIterator &) that gives false if the positions
+// are different, even if the pars are the same. So ultimately it's a bug in
+// operator!=(ParIterator &, ParIterator &) I'd say (nevertheless, I would be
+// reluctant to change it, because I fear that some part of the code could rely on
+// this "bug". --Alfredo
 bool operator!=(ParIterator const & iter1, ParIterator const & iter2);
 
 
