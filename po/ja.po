@@ -1,18 +1,17 @@
-# translation of ja.po to Japanese
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007.
 # translation of ja.po to
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #: src/insets/InsetNewline.h:48
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-12-14 00:14+0100\n"
-"PO-Revision-Date: 2007-10-17 23:43+0900\n"
+"PO-Revision-Date: 2008-01-08 03:58+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
+"Language-Team:  <lyx-devel@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -244,12 +243,11 @@ msgstr "形式(&Y)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr ""
+msgstr "ボックスがページを越えて分割されるようにするには、これをチェックしてください。"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
-#, fuzzy
 msgid "Allow &page breaks"
-msgstr "改段"
+msgstr "改頁を許可する(&P)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/MathMatrixUi.ui:199
 #: src/frontends/qt4/ui/ParagraphUi.ui:76
@@ -829,34 +827,28 @@ msgid "O&pen"
 msgstr "展開(&P)"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:13
-#, fuzzy
 msgid "EmbeddedFiles"
 msgstr "埋め込みファイル"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:38
-#, fuzzy
 msgid "Remove"
-msgstr "削除(&R)"
+msgstr "削除"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:45
-#, fuzzy
 msgid "Add"
-msgstr "追加(&A)"
+msgstr "追加"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:55
-#, fuzzy
 msgid "Extra embedded files:"
-msgstr "埋め込みファイル一覧"
+msgstr "追加の埋め込みファイル:"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:65
-#, fuzzy
 msgid "Save this document in bundled format"
-msgstr "ファイルを同梱形式で保存します"
+msgstr "この文書を同梱形式で保存"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:72
-#, fuzzy
 msgid "Embedded files:"
-msgstr "埋め込みファイル"
+msgstr "埋め込みファイル:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
@@ -1294,9 +1286,8 @@ msgid "URL"
 msgstr "URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:31
-#, fuzzy
 msgid "&Target:"
-msgstr "極大:"
+msgstr "ターゲット(&T):"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:48
 #: src/frontends/qt4/ui/HyperlinkUi.ui:61
@@ -1310,21 +1301,19 @@ msgstr "名前(&N):"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:74
 msgid "Link type"
-msgstr ""
+msgstr "リンク型"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:92
 msgid "&Web"
-msgstr ""
+msgstr "ウェブ(&W)"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:105
-#, fuzzy
 msgid "&Email"
-msgstr "電子メール"
+msgstr "電子メール(&E)"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:118
-#, fuzzy
 msgid "&File"
-msgstr "ファイル(&F):"
+msgstr "ファイル(&F)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -1825,9 +1814,8 @@ msgid "This text defines the width of the paragraph label"
 msgstr "この欄のテキストの幅が段落のラベルの幅を決定します。"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:63
-#, fuzzy
 msgid "Lo&ngest label"
-msgstr "最長のラベル(&L)"
+msgstr "最長のラベル(&N)"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:102
 msgid "Use the default alignment for this paragraph, whatever it is."
@@ -1850,9 +1838,8 @@ msgid "&Center"
 msgstr "中央揃え(&C)"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:133
-#, fuzzy
 msgid "Ri&ght"
-msgstr "右揃え"
+msgstr "右揃え(&G)"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:143
 msgid "Line &spacing"
@@ -1888,8 +1875,7 @@ msgid "&Use hyperref support"
 msgstr "hyperrefサポートを有効にする(&U)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:52
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+msgid "If not stated explicitly, fill title and author from appropriate environments"
 msgstr ""
 "特に指定しなければ，適切な環境からタイトルと著者を自動的に抽出して使用しま"
 "す。"
@@ -1947,7 +1933,6 @@ msgid "Additional o&ptions"
 msgstr "追加オプション(&P)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:255
-#, fuzzy
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr "例: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
@@ -2290,9 +2275,8 @@ msgid "&Document templates:"
 msgstr "文書テンプレート(&D):"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:65
-#, fuzzy
 msgid "&Example files:"
-msgstr "例 #:"
+msgstr "実例ファイル(&E):"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:88
 msgid "&Backup directory:"
@@ -2531,7 +2515,7 @@ msgstr "やや大:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
 msgid "Show key-bindings containing:"
-msgstr ""
+msgstr "以下を含むキー設定を表示する:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
 msgid "&Bind file:"
@@ -2542,9 +2526,8 @@ msgid "B&rowse..."
 msgstr "一覧(&R)..."
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
-#, fuzzy
 msgid "New"
-msgstr "新規(&N):"
+msgstr "新規"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -2608,7 +2591,7 @@ msgstr "ファイルが最後に閉じられたときのカーソル位置を復
 
 #: src/frontends/qt4/ui/PrefUi.ui:157
 msgid "Allow saving/restoring of windows geometry"
-msgstr ""
+msgstr "ウィンドウ座標の保存・復帰を許可"
 
 #: src/frontends/qt4/ui/PrefUi.ui:164
 msgid "Load opened files from last session"
@@ -2620,25 +2603,23 @@ msgstr "カーソル位置を復元します"
 
 #: src/frontends/qt4/ui/PrefUi.ui:194
 msgid "Pixmap Cache"
-msgstr ""
+msgstr "Pixmapキャッシュ"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "Enable Pi&xmap Cache"
-msgstr ""
+msgstr "Pi&xmapキャッシュを有効にする"
 
 #: src/frontends/qt4/ui/PrefUi.ui:228
-#, fuzzy
 msgid "Editing"
-msgstr "終了しまっせ。"
+msgstr "編集中"
 
 #: src/frontends/qt4/ui/PrefUi.ui:246
 msgid "Cursor follows &scrollbar"
 msgstr "カーソルがスクロールバーに従って動くようにする(&S)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:253
-#, fuzzy
 msgid "Sort &Environments alphabetically"
-msgstr "ラベルをアルファベット順にソートする"
+msgstr "環境をアルファベット順にソート(&E)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:273
 msgid "&User interface file:"
@@ -2694,9 +2675,8 @@ msgid "Re&verse order"
 msgstr "印刷順序を逆転(&V)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:149
-#, fuzzy
 msgid "Copie&s"
-msgstr "部数"
+msgstr "部数(&S)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:161
 msgid "Number of copies"
@@ -2833,19 +2813,16 @@ msgid "&Command:"
 msgstr "コマンド(&C):"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:16
-#, fuzzy
 msgid "Edit shortcut"
-msgstr "ショートカット"
+msgstr "ショートカットを編集"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:54
-#, fuzzy
 msgid "Clear"
-msgstr "消去(&L)"
+msgstr "消去"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:61
-#, fuzzy
 msgid "Function:"
-msgstr "函数"
+msgstr "関数:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:68 src/frontends/qt4/GuiPrefs.cpp:1705
 msgid "Shortcut"
@@ -3074,8 +3051,7 @@ msgstr "下の境界線"
 
 #: src/frontends/qt4/ui/TabularUi.ui:902
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905 src/frontends/qt4/ui/TabularUi.ui:918
 #: src/frontends/qt4/ui/TabularUi.ui:928 src/frontends/qt4/ui/TabularUi.ui:938
@@ -3089,8 +3065,7 @@ msgstr "この行が最初のページのヘッダとなる"
 
 #: src/frontends/qt4/ui/TabularUi.ui:925
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:935
 msgid "This row is the footer of the last page"
@@ -3149,8 +3124,7 @@ msgid "&Rescan"
 msgstr "再走査(&R)"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -5877,33 +5851,28 @@ msgid "Classification Codes"
 msgstr "分類コード"
 
 #: lib/layouts/ijmpc.layout:141 lib/layouts/ijmpd.layout:138
-#, fuzzy
 msgid "Definition \\thedefinition."
-msgstr "定義 \\arabic{definition}."
+msgstr "定義 \\thedefinition."
 
 #: lib/layouts/ijmpc.layout:152 lib/layouts/ijmpd.layout:149
 msgid "Step"
 msgstr "ステップ"
 
 #: lib/layouts/ijmpc.layout:156 lib/layouts/ijmpd.layout:153
-#, fuzzy
 msgid "Step \\thestep."
-msgstr "ステップ \\arabic{step}."
+msgstr "ステップ \\thestep."
 
 #: lib/layouts/ijmpc.layout:170 lib/layouts/ijmpd.layout:167
-#, fuzzy
 msgid "Example \\theexample."
-msgstr "例 \\arabic{example}."
+msgstr "例 \\theexample."
 
 #: lib/layouts/ijmpc.layout:180 lib/layouts/ijmpd.layout:178
-#, fuzzy
 msgid "Remark \\theremark."
-msgstr "注釈 \\thetheorem."
+msgstr "注釈 \\theremark."
 
 #: lib/layouts/ijmpc.layout:190 lib/layouts/ijmpd.layout:189
-#, fuzzy
 msgid "Notation \\thenotation."
-msgstr "記法 \\arabic{notation}."
+msgstr "記法 \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
 #: lib/layouts/amsmaths.inc:61 lib/layouts/theorems-ams.inc:21
@@ -5911,28 +5880,24 @@ msgid "Theorem \\thetheorem."
 msgstr "定理 \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:240 lib/layouts/ijmpd.layout:241
-#, fuzzy
 msgid "Corollary \\thecorollary."
-msgstr "系 \\arabic{corollary}."
+msgstr "系 \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:250 lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Lemma \\thelemma."
-msgstr "補題 \\thetheorem."
+msgstr "補題 \\thelemma."
 
 #: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpd.layout:266
-#, fuzzy
 msgid "Proposition \\theproposition."
-msgstr "命題 \\arabic{proposition}."
+msgstr "命題 \\theproposition."
 
 #: lib/layouts/ijmpc.layout:266 lib/layouts/ijmpd.layout:273
 msgid "Prop"
 msgstr "命題"
 
 #: lib/layouts/ijmpc.layout:270 lib/layouts/ijmpd.layout:277
-#, fuzzy
 msgid "Prop \\theprop."
-msgstr "命題 \\arabic{prop}."
+msgstr "命題 \\theprop."
 
 #: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:284
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:454
@@ -5940,19 +5905,16 @@ msgid "Question"
 msgstr "問題"
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:288
-#, fuzzy
 msgid "Question \\thequestion."
-msgstr "問題\\arabic{question}."
+msgstr "問題 \\thequestion."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:299
-#, fuzzy
 msgid "Claim \\theclaim."
-msgstr "主張 \\thetheorem."
+msgstr "主張 \\theclaim."
 
 #: lib/layouts/ijmpc.layout:300 lib/layouts/ijmpd.layout:310
-#, fuzzy
 msgid "Conjecture \\theconjecture."
-msgstr "推論 \\arabic{conjecture}."
+msgstr "推論 \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:303 lib/layouts/ijmpd.layout:313
 msgid "Appendices Section"
@@ -7322,9 +7284,8 @@ msgid "Conclusion*"
 msgstr "結論*"
 
 #: lib/layouts/amsmaths.inc:559
-#, fuzzy
 msgid "Assumption \\thetheorem."
-msgstr "公理 \\thetheorem."
+msgstr "仮定 \\thetheorem."
 
 #: lib/layouts/amsmaths.inc:567
 msgid "Assumption*"
@@ -7525,17 +7486,16 @@ msgid "ERT"
 msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:149
-#, fuzzy
 msgid "Listings"
 msgstr "リスト"
 
 #: lib/layouts/stdinsets.inc:176
 msgid "Idx"
-msgstr ""
+msgstr "Idx"
 
 #: lib/layouts/stdinsets.inc:256
 msgid "opt"
-msgstr "別題"
+msgstr "opt"
 
 #: lib/layouts/stdlayouts.inc:64
 msgid "--Separator--"
@@ -7586,43 +7546,36 @@ msgid "Case \\thetheorem."
 msgstr "ケース \\thetheorem."
 
 #: lib/layouts/endnotes.module:13
-#, fuzzy
 msgid "endnote"
-msgstr "ヘッドノート"
+msgstr "エンドノート"
 
 #: lib/layouts/hanging.module:11
-#, fuzzy
 msgid "Hanging"
-msgstr "ハンガリー語"
+msgstr "ぶら下げ"
 
 #: lib/layouts/logicalmkup.module:9
-#, fuzzy
 msgid "noun"
-msgstr "なし"
+msgstr "名詞(noun)"
 
 #: lib/layouts/logicalmkup.module:23
-#, fuzzy
 msgid "emph"
-msgstr "強調"
+msgstr "強調(emph)"
 
 #: lib/layouts/logicalmkup.module:34
-#, fuzzy
 msgid "strong"
-msgstr "リスト"
+msgstr "強調(strong)"
 
 #: lib/layouts/logicalmkup.module:48
-#, fuzzy
 msgid "code"
-msgstr "コード"
+msgstr "コード(code)"
 
 #: lib/languages:2
 msgid "Afrikaans"
 msgstr "アフリカーンス語"
 
 #: lib/languages:3
-#, fuzzy
 msgid "Albanian"
-msgstr "アルメニア語"
+msgstr "アルバニア語"
 
 #: lib/languages:4
 msgid "American"
@@ -7650,11 +7603,11 @@ msgstr "オーストリア語(新綴方)"
 
 #: lib/languages:11
 msgid "Bahasa Indonesia"
-msgstr ""
+msgstr "インドネシア語"
 
 #: lib/languages:12
 msgid "Bahasa Malaysia"
-msgstr ""
+msgstr "マレーシア語"
 
 #: lib/languages:13
 msgid "Basque"
@@ -7765,9 +7718,8 @@ msgid "Icelandic"
 msgstr "アイスランド語"
 
 #: lib/languages:47
-#, fuzzy
 msgid "Interlingua"
-msgstr "積分記号を挿入"
+msgstr "インテルリングア"
 
 #: lib/languages:48
 msgid "Irish"
@@ -7794,9 +7746,8 @@ msgid "Korean"
 msgstr "韓国語"
 
 #: lib/languages:56
-#, fuzzy
 msgid "Latin"
-msgstr "ラテン入"
+msgstr "ラテン語"
 
 #: lib/languages:57
 msgid "Latvian"
@@ -7807,9 +7758,8 @@ msgid "Lithuanian"
 msgstr "リトアニア語"
 
 #: lib/languages:59
-#, fuzzy
 msgid "Lower Sorbian"
-msgstr "セルビア語"
+msgstr "低ソルビア語"
 
 #: lib/languages:60
 msgid "Hungarian"
@@ -7841,7 +7791,7 @@ msgstr "ロシア語"
 
 #: lib/languages:67
 msgid "North Sami"
-msgstr ""
+msgstr "北サーミ語"
 
 #: lib/languages:68
 msgid "Scottish"
@@ -7852,9 +7802,8 @@ msgid "Serbian"
 msgstr "セルビア語"
 
 #: lib/languages:70
-#, fuzzy
 msgid "Serbian (Latin)"
-msgstr "セルビア語"
+msgstr "セルビア語(ラテン)"
 
 #: lib/languages:71
 msgid "Slovak"
@@ -7885,9 +7834,8 @@ msgid "Ukrainian"
 msgstr "ウクライナ語"
 
 #: lib/languages:78
-#, fuzzy
 msgid "Upper Sorbian"
-msgstr "セルビア語"
+msgstr "上ソルビア語"
 
 #: lib/languages:79
 msgid "Vietnamese"
@@ -8375,9 +8323,8 @@ msgid "Hyphenation Point|P"
 msgstr "ハイフネーション指定(P)|P"
 
 #: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:346
-#, fuzzy
 msgid "Protected Hyphen|y"
-msgstr "保護された空白(R)|R"
+msgstr "保護されたハイフン(Y)|Y"
 
 #: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:364
 msgid "Ligature Break|k"
@@ -8412,13 +8359,12 @@ msgid "End of Sentence|E"
 msgstr "句点(E)|E"
 
 #: lib/ui/classic.ui:254
-#, fuzzy
 msgid "Protected Dash|D"
-msgstr "保護された空白(R)|R"
+msgstr "保護されたダッシュ(D)|D"
 
 #: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:347
 msgid "Breakable Slash|a"
-msgstr ""
+msgstr "改行可能スラッシュ(A)|A"
 
 #: lib/ui/classic.ui:256
 msgid "Single Quote|Q"
@@ -8960,9 +8906,8 @@ msgid "Swap Columns|w"
 msgstr "列を交換(W)|W"
 
 #: lib/ui/stdmenus.inc:189
-#, fuzzy
 msgid "Macro Definition"
-msgstr "定義"
+msgstr "マクロ定義"
 
 #: lib/ui/stdmenus.inc:193
 msgid "Text Style|T"
@@ -9005,32 +8950,28 @@ msgid "Delete Line to Right"
 msgstr "右の罫線を削除"
 
 #: lib/ui/stdmenus.inc:211 lib/ui/stdtoolbars.inc:169
-#, fuzzy
 msgid "Append Parameter"
-msgstr "追加パラメーター"
+msgstr "パラメーターを追加"
 
 #: lib/ui/stdmenus.inc:212 lib/ui/stdtoolbars.inc:168
-#, fuzzy
 msgid "Remove Last Parameter"
-msgstr "パラメーターの一覧"
+msgstr "一番後ろのパラメーターを削除"
 
 #: lib/ui/stdmenus.inc:214 lib/ui/stdtoolbars.inc:171
 msgid "Make First Non-Optional into Optional Parameter"
-msgstr ""
+msgstr "最初の非オプションパラメーターをオプションパラメーターにする"
 
 #: lib/ui/stdmenus.inc:215 lib/ui/stdtoolbars.inc:172
 msgid "Make Last Optional into Non-Optional Parameter"
-msgstr ""
+msgstr "最後のオプションパラメーターを非オプションパラメーターにする"
 
 #: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:175
-#, fuzzy
 msgid "Insert Optional Parameter"
-msgstr "パラメーターの一覧"
+msgstr "オプションのパラメーターを挿入"
 
 #: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:174
-#, fuzzy
 msgid "Remove Optional Parameter"
-msgstr "追加引数挿入枠を展開しました"
+msgstr "オプションのパラメーターを削除"
 
 #: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:178
 msgid "Append Parameter Eating From The Right"
@@ -9110,12 +9051,11 @@ msgstr "全ての挿入枠を閉じる(C)|C"
 
 #: lib/ui/stdmenus.inc:285
 msgid "Unfold Math Macro"
-msgstr ""
+msgstr "数式マクロを開く"
 
 #: lib/ui/stdmenus.inc:286
-#, fuzzy
 msgid "Fold Math Macro"
-msgstr "数式マクロ"
+msgstr "数式マクロをたたむ"
 
 #: lib/ui/stdmenus.inc:288
 msgid "View Source|S"
@@ -9202,9 +9142,8 @@ msgid "Single Quote|S"
 msgstr "シングルクウォート(S)|S"
 
 #: lib/ui/stdmenus.inc:349
-#, fuzzy
 msgid "Phonetic Symbols|P"
-msgstr "発音記号(Y)|Y"
+msgstr "発音記号(P)|P"
 
 #: lib/ui/stdmenus.inc:356
 msgid "Protected Space|P"
@@ -9227,18 +9166,16 @@ msgid "Hyphenation Point|H"
 msgstr "ハイフネーション位置(H)|H"
 
 #: lib/ui/stdmenus.inc:365
-#, fuzzy
 msgid "New Line|e"
-msgstr "左の罫線(L)|L"
+msgstr "新規行(E)|E"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Line Break|B"
 msgstr "改行(B)|B"
 
 #: lib/ui/stdmenus.inc:368
-#, fuzzy
 msgid "New Page|N"
-msgstr "新規(N)|N"
+msgstr "新規頁(N)|N"
 
 #: lib/ui/stdmenus.inc:369
 msgid "Page Break|a"
@@ -9278,7 +9215,7 @@ msgstr "行列(X)|X"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Macro|o"
-msgstr ""
+msgstr "マクロ(O)|O"
 
 #: lib/ui/stdmenus.inc:396 lib/ui/stdtoolbars.inc:164
 msgid "Toggle Math Panels"
@@ -9321,9 +9258,8 @@ msgid "Start Appendix Here|A"
 msgstr "ここから付録を開始(A)|A"
 
 #: lib/ui/stdmenus.inc:448
-#, fuzzy
 msgid "Save in Bundled Format|F"
-msgstr "ファイルを同梱形式で保存します"
+msgstr "同梱形式で保存(F)|F"
 
 #: lib/ui/stdmenus.inc:449
 msgid "Compressed|m"
@@ -9510,9 +9446,8 @@ msgid "Insert TeX code"
 msgstr "TeXコードを挿入"
 
 #: lib/ui/stdtoolbars.inc:106
-#, fuzzy
 msgid "Insert math macro"
-msgstr "数式を挿入"
+msgstr "数式マクロを挿入"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "Include file"
@@ -9667,7 +9602,6 @@ msgid "Insert cases environment"
 msgstr "Cases環境を挿入"
 
 #: lib/ui/stdtoolbars.inc:167
-#, fuzzy
 msgid "Math Macros"
 msgstr "数式マクロ"
 
@@ -9926,15 +9860,15 @@ msgstr "負の空白\t\\!"
 
 #: lib/ui/stdtoolbars.inc:275
 msgid "Placeholder\t\\phantom"
-msgstr ""
+msgstr "埋め草\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "Horizontal placeholder\t\\hphantom"
-msgstr ""
+msgstr "水平方向の埋め草\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:277
 msgid "Vertical placeholder\t\\vphantom"
-msgstr ""
+msgstr "垂直方向の埋め草\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:280
 msgid "Roots"
@@ -9969,12 +9903,10 @@ msgid "Standard\t\\frac"
 msgstr "標準\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:294
-#, fuzzy
 msgid "No horizontal line\t\\atop"
-msgstr "横線なし\t\\atop"
+msgstr "横棒なし\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:295
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "斜め分数(3/4)\t\\nicefrac"
 
@@ -9987,37 +9919,32 @@ msgid "Unit (864 m)\t\\unit"
 msgstr "単位(864 m)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:298
-#, fuzzy
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr "単位分数(km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "単位分数(20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:300
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "文中用分数(amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:301
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "提示用分数(amsmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:302
-#, fuzzy
 msgid "Binomial\t\\binom"
-msgstr "二項係数\t\\choose"
+msgstr "二項係数\t\\binom"
 
 #: lib/ui/stdtoolbars.inc:303
 msgid "Text binomial\t\\tbinom"
-msgstr ""
+msgstr "文中用二項係数\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:304
 msgid "Display binomial\t\\dbinom"
-msgstr ""
+msgstr "提示用二項係数\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "Roman\t\\mathrm"
@@ -12066,8 +11993,7 @@ msgstr "文書クラスを読み込むことができません"
 
 #: src/Buffer.cpp:520
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr "%1$s というクラスを読み込めなかったので，既定の文書クラスを使います。"
 
 #: src/Buffer.cpp:531 src/Buffer.cpp:537 src/BufferView.cpp:959
@@ -12199,39 +12125,35 @@ msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
 #: src/Buffer.cpp:881
-#, fuzzy
 msgid " could not write file!."
-msgstr "ファイルを読むことができませんでした"
+msgstr "ファイルに書き込むことができませんでした！"
 
 #: src/Buffer.cpp:887
 msgid " done."
 msgstr "終わりました。"
 
 #: src/Buffer.cpp:892
-#, fuzzy
 msgid " writing embedded files!."
-msgstr "埋め込みファイル一覧"
+msgstr "埋め込みファイルを書き込んでいます！"
 
 #: src/Buffer.cpp:896
-#, fuzzy
 msgid " could not write embedded files!."
-msgstr "ファイルを読むことができませんでした"
+msgstr "埋め込みファイルを書き込むことができませんでした！"
 
 #: src/Buffer.cpp:899
 msgid " error while writing embedded files."
-msgstr ""
+msgstr "埋め込みファイルを書き込み中にエラー"
 
 #: src/Buffer.cpp:978
-#, fuzzy
 msgid "Iconv software exception Detected"
-msgstr "ソフトウェアの例外エラーを検出しました"
+msgstr "Iconvソフトウェアの例外エラーを検出しました"
 
 #: src/Buffer.cpp:978
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
-msgstr ""
+msgstr "あなたのエンコーディング(%1$s)をサポートするのに必要なソフトウェアがインストールされていることを確認してください"
 
 #: src/Buffer.cpp:1015
 msgid "Encoding error"
@@ -12442,7 +12364,7 @@ msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
 #: src/BufferParams.cpp:1334
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The module %1$s has been requested by\n"
 "this document but has not been found in the list of\n"
@@ -12547,11 +12469,13 @@ msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
 #: src/BufferView.cpp:1944
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
-msgstr "%1$s を読めませんでした。"
+msgstr ""
+"%1$s \n"
+"は読み込み可能ではありません。"
 
 #: src/BufferView.cpp:1945 src/output.cpp:38
 msgid "Could not open file"
@@ -12716,24 +12640,20 @@ msgid "math line"
 msgstr "数式行"
 
 #: src/Color.cpp:128
-#, fuzzy
 msgid "Math macro hovered background"
-msgstr "数式マクロの背景"
+msgstr "数式マクロの浮き上がり背景"
 
 #: src/Color.cpp:129
-#, fuzzy
 msgid "Math macro label"
-msgstr "数式マクロ"
+msgstr "数式マクロのラベル"
 
 #: src/Color.cpp:130
-#, fuzzy
 msgid "Math macro frame"
 msgstr "数式の縁"
 
 #: src/Color.cpp:131
-#, fuzzy
 msgid "Math macro blended out"
-msgstr "数式マクロの背景"
+msgstr "ブレンドアウト時の数式マクロ"
 
 #: src/Color.cpp:132
 msgid "caption frame"
@@ -12800,14 +12720,12 @@ msgid "bottom area"
 msgstr "下部領域"
 
 #: src/Color.cpp:149
-#, fuzzy
 msgid "new page"
-msgstr "on page <参照ページ>"
+msgstr "新規頁"
 
 #: src/Color.cpp:150
-#, fuzzy
 msgid "page break / line break"
-msgstr "改段"
+msgstr "改頁/改段"
 
 #: src/Color.cpp:151
 msgid "frame of button"
@@ -12955,7 +12873,7 @@ msgid "Update embedded file?"
 msgstr "埋め込みファイルを更新しますか？"
 
 #: src/EmbeddedFiles.cpp:169
-#, fuzzy, c-format
+#, c-format
 msgid "Embedded file %1$s already exists, do you want to overwrite it"
 msgstr "%1$sという埋め込みファイルは既に存在します。上書きしますか？"
 
@@ -13327,7 +13245,6 @@ msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
 #: src/LyX.cpp:1177
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13363,9 +13280,11 @@ msgstr ""
 "                  commandはlyxコマンドです。\n"
 "\t-e [--export] fmt\n"
 "                  fmtはエクスポートの型を指定します。\n"
+"                  どのパラメーターを渡せばよいかを見るには\n"
+"                  ツール→設定→ファイル形式→書式 を参照してください。\n"
 "\t-i [--import] fmt file.xxx\n"
 "                  fmtはインポートの型、file.xxxは\n"
-"                  インポートするファイルと指定します。\n"
+"                  インポートするファイルを指定します。\n"
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
@@ -13701,8 +13620,7 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2338
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2345
@@ -13731,8 +13649,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2357
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2361
 msgid ""
@@ -13760,13 +13677,12 @@ msgstr ""
 "してください。例：\"%A, %e. %B %Y\""
 
 #: src/LyXRC.cpp:2386
-#, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
-"キーバインドファイル。絶対パスを指定することもできますし，そうでなければ LyX "
-"はグローバルとローカルの bind/ ディレクトリを見に行きます。"
+"コマンド定義ファイル。絶対パスを指定することもできますし，そうでなければ LyX "
+"はグローバルとローカルの commands/ ディレクトリを見に行きます。"
 
 #: src/LyXRC.cpp:2390
 msgid "New documents will be assigned this language."
@@ -13792,21 +13708,17 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyXを開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2411
 msgid "Specify additional chars that can be part of a word."
 msgstr "単語の一部になりうる文字を追加で指定します。"
 
 #: src/LyXRC.cpp:2415
-#, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
-msgstr ""
-"LyX がテンプレートを選ぶように促すときに表示するパス。空白にしておくと，LyX "
-"を起動したディレクトリが選ばれます。"
+msgstr "LyXが実例を選ぶように促すときに表示するパス。空白にしておくと，LyXを起動したディレクトリが選ばれます。"
 
 #: src/LyXRC.cpp:2419
 msgid ""
@@ -13846,8 +13758,7 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2447
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2451
@@ -13893,8 +13804,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2475
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2479
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -13919,8 +13829,7 @@ msgstr ""
 #: src/LyXRC.cpp:2491
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2496
 msgid ""
@@ -13931,8 +13840,7 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2503
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2507
@@ -14044,8 +13952,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2591
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -14087,11 +13994,8 @@ msgstr ""
 "大きさになります。"
 
 #: src/LyXRC.cpp:2623
-#, fuzzy
 msgid "Allow session manager to save and restore windows geometry."
-msgstr ""
-"セッションマネージャーがウィンドウの位置を保存したり復元したりするのを許可す"
-"る。"
+msgstr "セッションマネージャーがウィンドウ座標を保存したり復元したりするのを許可します。"
 
 #: src/LyXRC.cpp:2627
 msgid ""
@@ -14144,9 +14048,8 @@ msgstr ""
 "全ての辞書で動くとは限りません。"
 
 #: src/LyXRC.cpp:2673
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgstr "Pixmapキャッシュを有効にします。MacやWindowsでパフォーマンスの改善が期待できます。"
 
 #: src/LyXRC.cpp:2680
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -14295,8 +14198,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
 
 #: src/Text.cpp:537
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -14646,7 +14548,6 @@ msgid "Exiting."
 msgstr "終了しまっせ。"
 
 #: src/frontends/qt4/GuiApplication.cpp:447
-#, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -14655,6 +14556,7 @@ msgid ""
 msgstr ""
 "LyXは例外エラーを検出しました。全ての保存されていない文書を保存し，LyXを終了"
 "することを試みます。\n"
+"\n"
 "例外エラー: "
 
 #: src/frontends/qt4/GuiApplication.cpp:451
@@ -14663,13 +14565,10 @@ msgid "Software exception Detected"
 msgstr "ソフトウェアの例外エラーを検出しました"
 
 #: src/frontends/qt4/GuiApplication.cpp:456
-#, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
-msgstr ""
-"LyXは何かほんまにいなげな例外エラーを検出しました。全ての保存されていない文書"
-"を保存し，LyXを終了することを試みます。"
+msgstr "LyXは何か本当に変な例外エラーを検出しました。全ての保存されていない文書を保存し，LyXを終了することを試みます。"
 
 #: src/frontends/qt4/GuiBibitem.cpp:30
 msgid "Bibliography Entry Settings"
@@ -14696,36 +14595,32 @@ msgid "Select a BibTeX style"
 msgstr "BibTeXスタイルを選んで下さい"
 
 #: src/frontends/qt4/GuiBox.cpp:48
-#, fuzzy
 msgid "No frame"
 msgstr "枠なし"
 
 #: src/frontends/qt4/GuiBox.cpp:49
 msgid "Simple rectangular frame"
-msgstr ""
+msgstr "簡素な長方形枠"
 
 #: src/frontends/qt4/GuiBox.cpp:50
-#, fuzzy
 msgid "Oval frame, thin"
-msgstr "楕円形の箱型（細線）"
+msgstr "楕円枠（細線）"
 
 #: src/frontends/qt4/GuiBox.cpp:51
-#, fuzzy
 msgid "Oval frame, thick"
-msgstr "楕円形の箱型（太線）"
+msgstr "楕円枠（太線）"
 
 #: src/frontends/qt4/GuiBox.cpp:52
 msgid "Drop shadow"
-msgstr ""
+msgstr "影を落とす"
 
 #: src/frontends/qt4/GuiBox.cpp:53
-#, fuzzy
 msgid "Shaded background"
-msgstr "注釈の背景"
+msgstr "影の付いた背景"
 
 #: src/frontends/qt4/GuiBox.cpp:54
 msgid "Double rectangular frame"
-msgstr ""
+msgstr "二重線の長方形枠"
 
 #: src/frontends/qt4/GuiBox.cpp:68 src/frontends/qt4/GuiBox.cpp:332
 #: src/frontends/qt4/GuiBox.cpp:367
@@ -14998,8 +14893,7 @@ msgid "Document Settings"
 msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:263 src/frontends/qt4/GuiDocument.cpp:742
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -15226,8 +15120,7 @@ msgstr "子文書"
 #: src/frontends/qt4/GuiInclude.cpp:122 src/frontends/qt4/GuiInclude.cpp:191
 #: src/frontends/qt4/GuiListings.cpp:234 src/frontends/qt4/GuiListings.cpp:374
 #: src/frontends/qt4/GuiListings.cpp:449
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -15373,9 +15266,8 @@ msgid "Paths"
 msgstr "パス"
 
 #: src/frontends/qt4/GuiPrefs.cpp:783
-#, fuzzy
 msgid "Select directory for example files"
-msgstr "テンプレートファイルを選んでください"
+msgstr "実例ファイルのディレクトリを選んでください"
 
 #: src/frontends/qt4/GuiPrefs.cpp:793
 msgid "Select a document templates directory"
@@ -15457,28 +15349,24 @@ msgstr "函数"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2047 src/frontends/qt4/GuiPrefs.cpp:2054
 #: src/frontends/qt4/GuiPrefs.cpp:2061 src/frontends/qt4/GuiPrefs.cpp:2073
-#, fuzzy
 msgid "Failed to create shortcut"
-msgstr "ディレクトリを作成するのに失敗しました。終了します。"
+msgstr "ショートカットを作成するのに失敗しました"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2048
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "未知の機能です。"
+msgstr "未知あるいは無効なLyX関数です"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2055
-#, fuzzy
 msgid "Invalid or empty key sequence"
-msgstr "無効なファイル名"
+msgstr "無効か空のキー列です"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2062
 msgid "Shortcut is already defined"
-msgstr ""
+msgstr "ショートカットは既に定義されています"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2074
-#, fuzzy
 msgid "Can not insert shortcut to the list"
-msgstr "新しい派生枝をリストに加える"
+msgstr "リストにショートカットを加えることができません"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2094
 msgid "Identity"
@@ -15561,9 +15449,8 @@ msgid "Show File"
 msgstr "ファイルを表示"
 
 #: src/frontends/qt4/GuiShowFile.cpp:56
-#, fuzzy
 msgid "Error -> Cannot load file!"
-msgstr "ファイルを編集することができませんでした"
+msgstr "エラー→ファイルを読み込めません！"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:250
 msgid "Spellchecker error"
@@ -15682,9 +15569,8 @@ msgid "Rename and save?"
 msgstr "リネームして保存しますか？"
 
 #: src/frontends/qt4/GuiView.cpp:1253
-#, fuzzy
 msgid "&Retry"
-msgstr "復元(&R)"
+msgstr "再試行(&R)"
 
 #: src/frontends/qt4/GuiView.cpp:1292
 #, c-format
@@ -15833,46 +15719,40 @@ msgstr ""
 "BibTeXはデータベースを見付けることができません。"
 
 #: src/insets/InsetBox.cpp:58
-#, fuzzy
 msgid "simple frame"
-msgstr "挿入枠の縁"
+msgstr "簡素な枠"
 
 #: src/insets/InsetBox.cpp:59
-#, fuzzy
 msgid "frameless"
-msgstr "縁なし"
+msgstr "枠なし"
 
 #: src/insets/InsetBox.cpp:60
 msgid "simple frame, page breaks"
-msgstr ""
+msgstr "簡素な枠・改頁"
 
 #: src/insets/InsetBox.cpp:61
-#, fuzzy
 msgid "oval, thin"
-msgstr "楕円形の箱型（細線）"
+msgstr "楕円枠（細線）"
 
 #: src/insets/InsetBox.cpp:62
-#, fuzzy
 msgid "oval, thick"
-msgstr "楕円形の箱型（太線）"
+msgstr "楕円枠（太線）"
 
 #: src/insets/InsetBox.cpp:63
 msgid "drop shadow"
-msgstr ""
+msgstr "影を落とす"
 
 #: src/insets/InsetBox.cpp:64
-#, fuzzy
 msgid "shaded background"
-msgstr "影付き背景の箱型"
+msgstr "影付き背景"
 
 #: src/insets/InsetBox.cpp:65
-#, fuzzy
 msgid "double frame"
-msgstr "二重線"
+msgstr "二重枠"
 
 #: src/insets/InsetBox.cpp:110
 msgid "Opened Box Inset"
-msgstr "展開された縁付き挿入枠"
+msgstr "展開されたボックス挿入枠"
 
 #: src/insets/InsetBox.cpp:143
 msgid "Box"
@@ -16151,8 +16031,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:278
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:280
@@ -16237,14 +16116,12 @@ msgid "Opened Marginal Note Inset"
 msgstr "展開された傍注挿入枠"
 
 #: src/insets/InsetNewline.h:67
-#, fuzzy
 msgid "line break"
-msgstr "改行(L)|L"
+msgstr "改行"
 
 #: src/insets/InsetNewpage.h:49
-#, fuzzy
 msgid "New Page"
-msgstr "改頁"
+msgstr "新規頁"
 
 #: src/insets/InsetNewpage.h:85
 msgid "Clear Page"
@@ -16264,7 +16141,7 @@ msgstr "用語集"
 
 #: src/insets/InsetNote.cpp:61
 msgid "Note[[InsetNote]]"
-msgstr ""
+msgstr "ノート[[InsetNote]]"
 
 #: src/insets/InsetNote.cpp:63
 msgid "Greyed out"
@@ -16440,7 +16317,7 @@ msgstr "pc"
 
 #: src/lengthcommon.cpp:38
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc[[unit of measure]]"
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
@@ -16591,15 +16468,13 @@ msgid "All files (*)"
 msgstr "全てのファイル (*)"
 
 #: src/support/Package.cpp:439
-#, fuzzy
 msgid "LyX binary not found"
-msgstr "文字列が見つかりません！"
+msgstr "LyXバイナリが見つかりません"
 
 #: src/support/Package.cpp:440
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr "コマンドライン %1$s からLyXバイナリへのパスを特定することができません"
 
 #: src/support/Package.cpp:559
 #, c-format
@@ -16609,11 +16484,13 @@ msgid ""
 "Use the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"\t%1$s\n"
+"を検索しましたが、システムディレクトリを特定することができません。\n"
+"コマンドライン・パラメーターの「-sysdir」を使うか、環境変数LYX_DIR_15xを「chkconfig.ltx」ファイルを含むLyXシステムディレクトリに設定してください。"
 
 #: src/support/Package.cpp:640 src/support/Package.cpp:667
-#, fuzzy
 msgid "File not found"
-msgstr "モジュールが見つかりません"
+msgstr "ファイルが見つかりません"
 
 #: src/support/Package.cpp:641
 #, c-format
@@ -16621,6 +16498,8 @@ msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"無効な%1$sスイッチです。\n"
+"ディレクトリ%2$sの中に%3$sがありません。"
 
 #: src/support/Package.cpp:668
 #, c-format
@@ -16628,6 +16507,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"無効な%1$s環境変数です。\n"
+"ディレクトリ%2$sの中に%3$sがありません。"
 
 #: src/support/Package.cpp:692
 #, c-format
@@ -16635,11 +16516,12 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
+"無効な%1$s環境変数です。\n"
+"%2$sはディレクトリではありません。"
 
 #: src/support/Package.cpp:694
-#, fuzzy
 msgid "Directory not found"
-msgstr "文字列が見つかりません！"
+msgstr "ディレクトリが見つかりません"
 
 #: src/support/debug.cpp:41
 msgid "Program initialisation"
@@ -16769,261 +16651,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知のユーザー"
 
-#~ msgid "&URL:"
-#~ msgstr "&URL:"
-
-#~ msgid "Framed in box"
-#~ msgstr "枠付箱型"
-
-#~ msgid "&Framed"
-#~ msgstr "枠付(&F)"
-
-#~ msgid "&Shaded"
-#~ msgstr "影付き(&S)"
-
-#~ msgid "Shortcuts:"
-#~ msgstr "ショートカット:"
-
-#, fuzzy
-#~ msgid "Search"
-#~ msgstr "検索エラー"
-
-#~ msgid "Scrolling"
-#~ msgstr "スクロール法"
-
-#~ msgid "Save/restore window size, or use fixed size"
-#~ msgstr ""
-#~ "ウィンドウ寸法を保存・復元させる。チェックを外すと以下の固定寸法を使用しま"
-#~ "す。"
-
-#~ msgid "Save/restore window position"
-#~ msgstr "ウィンドウ位置を保存/復元します"
-
-#~ msgid "framed"
-#~ msgstr "枠付き"
-
-#~ msgid "shaded"
-#~ msgstr "影付き"
-
-#~ msgid "Bahasa"
-#~ msgstr "バハサ語"
-
-#~ msgid "Serbo-Croatian"
-#~ msgstr "セルビア-クロアチア語"
-
-#~ msgid "Framed|F"
-#~ msgstr "枠付き(F)|F"
-
-#~ msgid "Shaded|S"
-#~ msgstr "影付き(S)|S"
-
-#~ msgid "phantom"
-#~ msgstr "phantom"
-
-#~ msgid "vphantom"
-#~ msgstr "vphantom"
-
-#~ msgid "hphantom"
-#~ msgstr "hphantom"
-
-#~ msgid ""
-#~ "Could not open the specified document\n"
-#~ "%1$s\n"
-#~ "due to the error: %2$s"
-#~ msgstr ""
-#~ "エラー%2$s により，指定された文書\n"
-#~ "%1$s\n"
-#~ "を開くことができませんでした。"
-
-#~ msgid ""
-#~ "Specify geometry of the main view in width x height (values from last "
-#~ "session will not be used if non-zero values are specified)."
-#~ msgstr ""
-#~ "メインビューのジオメトリを幅×高さで指定してください（非ゼロ値が指定された"
-#~ "ときには最後のセッションでの値は呼び出されません）。"
-
-#~ msgid "Rectangular box"
-#~ msgstr "長方形の箱型"
-
-#~ msgid "Shadow box"
-#~ msgstr "影付きの箱型"
-
-#~ msgid "Double box"
-#~ msgstr "二重線の箱型"
-
-#~ msgid "Boxed"
-#~ msgstr "縁付き"
-
-#~ msgid "ovalbox"
-#~ msgstr "楕円"
-
-#~ msgid "Ovalbox"
-#~ msgstr "楕円"
-
-#~ msgid "Shadowbox"
-#~ msgstr "影付き"
-
-#~ msgid "Doublebox"
-#~ msgstr "二重縁"
-
-#~ msgid "Framed"
-#~ msgstr "枠付き"
-
-#~ msgid "Shaded"
-#~ msgstr "影付き"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " マクロ: %1$s: "
-
-#~ msgid "Embedding status"
-#~ msgstr "埋め込み状態"
-
-#~ msgid "External FIle Name:"
-#~ msgstr "外部ファイル名:"
-
-#~ msgid "Embed selected files"
-#~ msgstr "選択したファイルを埋め込む"
-
-#~ msgid "Do not embed selected files"
-#~ msgstr "選択したファイルを埋め込まない"
-
-#~ msgid "Add embedded file"
-#~ msgstr "埋め込みファイルを追加する"
-
-#~ msgid "Extract selected file, without changing embedding status."
-#~ msgstr "埋め込み状態を変更せずに選択したファイルを抽出する。"
-
-#~ msgid "Update selected file with external files"
-#~ msgstr "選択したファイルを外部ファイルに更新する"
-
-#~ msgid "&Right"
-#~ msgstr "右揃え(&R)"
-
-#~ msgid "Edit"
-#~ msgstr "編集"
-
-#~ msgid "Definition @Section@.\\arabic{definition}."
-#~ msgstr "定義@Section@.\\arabic{definition}."
-
-#~ msgid "Example @Section@.\\arabic{example}."
-#~ msgstr "例@Section@.\\arabic{example}."
-
-#~ msgid "Remark @Section@.\\arabic{remark}."
-#~ msgstr "注釈@Section@.\\arabic{remark}."
-
-#~ msgid "Notation @Section@.\\arabic{notation}."
-#~ msgstr "表記@Section@.\\arabic{notation}."
-
-#~ msgid "Theorem @Section@.\\arabic{theorem}."
-#~ msgstr "定理@Section@.\\arabic{theorem}."
-
-#~ msgid "Corollary @Section@.\\arabic{corollary}."
-#~ msgstr "系@Section@.\\arabic{corollary}."
-
-#~ msgid "Lemma @Section@.\\arabic{lemma}."
-#~ msgstr "補題@Section@.\\arabic{lemma}."
-
-#~ msgid "Proposition @Section@.\\arabic{proposition}."
-#~ msgstr "命題(Proposition)@Section@.\\arabic{proposition}."
-
-#~ msgid "Prop @Section@.\\arabic{prop}."
-#~ msgstr "命題(Prop)@Section@.\\arabic{prop}."
-
-#~ msgid "Question @Section@.\\arabic{question}."
-#~ msgstr "問題@Section@.\\arabic{question}."
-
-#~ msgid "Claim @Section@.\\arabic{claim}."
-#~ msgstr "主張@Section@.\\arabic{claim}."
-
-#~ msgid "Conjecture @Section@.\\arabic{conjecture}."
-#~ msgstr "予想@Section@.\\arabic{conjecture}."
-
-#~ msgid "Corollary @Section@.\\arabic{theorem}."
-#~ msgstr "系 @Section@.\\arabic{theorem}."
-
-#~ msgid "Lemma @Section@.\\arabic{theorem}."
-#~ msgstr "補題 @Section@.\\arabic{theorem}."
-
-#~ msgid "Proposition @Section@.\\arabic{theorem}."
-#~ msgstr "命題 @Section@.\\arabic{theorem}."
-
-#~ msgid "Conjecture @Section@.\\arabic{theorem}."
-#~ msgstr "予想 @Section@.\\arabic{theorem}."
-
-#~ msgid "Criterion @Section@.\\arabic{theorem}."
-#~ msgstr "基準 @Section@.\\arabic{theorem}."
-
-#~ msgid "Algorithm @Section@.\\arabic{theorem}."
-#~ msgstr "アルゴリズム @Section@.\\arabic{theorem}."
-
-#~ msgid "Fact @Section@.\\arabic{theorem}."
-#~ msgstr "事実 @Section@.\\arabic{theorem}."
-
-#~ msgid "Axiom @Section@.\\arabic{theorem}."
-#~ msgstr "公理 @Section@.\\arabic{theorem}."
-
-#~ msgid "Definition @Section@.\\arabic{theorem}."
-#~ msgstr "定義 @Section@.\\arabic{theorem}."
-
-#~ msgid "Example @Section@.\\arabic{theorem}."
-#~ msgstr "例 @Section@.\\arabic{theorem}."
-
-#~ msgid "Condition @Section@.\\arabic{theorem}."
-#~ msgstr "条件 @Section@.\\arabic{theorem}."
-
-#~ msgid "Problem @Section@.\\arabic{theorem}."
-#~ msgstr "問題 @Section@.\\arabic{theorem}."
-
-#~ msgid "Exercise @Section@.\\arabic{theorem}."
-#~ msgstr "円周 @Section@.\\arabic{theorem}."
-
-#~ msgid "Remark @Section@.\\arabic{theorem}."
-#~ msgstr "注釈 @Section@.\\arabic{theorem}."
-
-#~ msgid "Claim @Section@.\\arabic{theorem}."
-#~ msgstr "主張 @Section@.\\arabic{theorem}."
-
-#~ msgid "Note @Section@.\\arabic{theorem}."
-#~ msgstr "注釈 @Section@.\\arabic{theorem}."
-
-#~ msgid "Notation @Section@.\\arabic{theorem}."
-#~ msgstr "記法 @Section@.\\arabic{theorem}."
-
-#~ msgid "Summary @Section@.\\arabic{theorem}."
-#~ msgstr "要約 @Section@.\\arabic{theorem}."
-
-#~ msgid "Acknowledgement @Section@.\\arabic{theorem}."
-#~ msgstr "謝辞 @Section@.\\arabic{theorem}."
-
-#~ msgid "Conclusion @Section@.\\arabic{theorem}."
-#~ msgstr "結論 @Section@.\\arabic{theorem}."
-
-#~ msgid "Assumption @Section@.\\arabic{theorem}."
-#~ msgstr "仮定 @Section@.\\arabic{theorem}."
-
-#~ msgid "UNDEFINED"
-#~ msgstr "未定義"
-
-#~ msgid "Embedded Files|E"
-#~ msgstr "埋め込みファイル(E)|E"
-
-#~ msgid "\\begin_file is missing"
-#~ msgstr "\\begin_fileがありません"
-
-#~ msgid "Manifest error"
-#~ msgstr "埋め込み目録エラー"
-
-#~ msgid "\\begin_manifest is missing"
-#~ msgstr "\\begin_manifestがありません"
-
-#~ msgid "All file (*.*)"
-#~ msgstr "全てのファイル (*.*)"
-
-#~ msgid "Select a file to embed"
-#~ msgstr "埋め込むファイルを選択して下さい"
-
-#~ msgid "theorem"
-#~ msgstr "定理"
-
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "展開された定理挿入枠"
