@@ -910,7 +910,7 @@ void InsetInclude::updateEmbeddedFile(Buffer const & buf,
 {
 	InsetCommandParams p = params();
 	p["filename"] = from_utf8(file.outputFilename());
-	p["embedded"] = file.embedded() ? _("true") : _("false");
+	p["embed"] = file.embedded() ? _("true") : _("false");
 	set(p, buf);
 }
 
