@@ -35,8 +35,11 @@ ModuleList moduleList;
 
 
 LyXModule::LyXModule(string const & n, string const & f, 
-	                   string const & d, vector<string> const & p) : 
-	name(n), filename(f), description(d), packageList(p), checked(false)
+	                   string const & d, vector<string> const & p,
+	                   vector<string> const & r, vector<string> const & e):
+	name(n), filename(f), description(d), 
+	packageList(p), requiredModules(r), excludedModules(e),
+	checked(false)
 {}
 
 
@@ -64,7 +67,7 @@ class ModuleSorter
 public:
 	int operator()(LyXModule const & lm1, LyXModule const & lm2) const
 	{
-		return lm1.name < lm2.name;
+		return lm1.getName() < lm2.getName();
 	}
 };
 
@@ -123,17 +126,37 @@ bool ModuleList::load()
 			//FIXME Add packages
 			if (!lex.next())
 				break;
-			string packages = lex.getString();
-			LYXERR(Debug::TCLASS, "Packages: " << packages);
+			string str = lex.getString();
+			LYXERR(Debug::TCLASS, "Packages: " << str);
 			vector<string> pkgs;
-			while (!packages.empty()) {
+			while (!str.empty()) {
 				string p;
-				packages = split(packages, p, ',');
+				str = split(str, p, ',');
 				pkgs.push_back(p);
 			}
+			if (!lex.next())
+				break;
+			str = lex.getString();
+			LYXERR(Debug::TCLASS, "Required: " << str);
+			vector<string> req;
+			while (!str.empty()) {
+				string p;
+				str = split(str, p, '|');
+				req.push_back(p);
+			}
+			if (!lex.next())
+				break;
+			str = lex.getString();
+			LYXERR(Debug::TCLASS, "Excluded: " << str);
+			vector<string> exc;
+			while (!str.empty()) {
+				string p;
+				str = split(str, p, '|');
+				exc.push_back(p);
+			}
 			// This code is run when we have
-			// modName, fname, desc, and pkgs
-			addLayoutModule(modName, fname, desc, pkgs);
+			// modName, fname, desc, pkgs, req, and exc
+			addLayoutModule(modName, fname, desc, pkgs, req, exc);
 		} // end switch
 	} //end while
 	
@@ -147,9 +170,10 @@ bool ModuleList::load()
 
 void ModuleList::addLayoutModule(string const & moduleName, 
 	string const & filename, string const & description,
-	vector<string> const & pkgs)
+	vector<string> const & pkgs, vector<string> const & req,
+	vector<string> const & exc)
 {
-	LyXModule lm(moduleName, filename, description, pkgs);
+	LyXModule lm(moduleName, filename, description, pkgs, req, exc);
 	modlist_.push_back(lm);
 }
 
@@ -182,7 +206,7 @@ LyXModule * ModuleList::operator[](string const & str)
 {
 	LyXModuleList::iterator it = modlist_.begin();
 	for (; it != modlist_.end(); ++it)
-		if (it->name == str) {
+		if (it->getName() == str) {
 			LyXModule & mod = *it;
 			return &mod;
 		}

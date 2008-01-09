@@ -1421,7 +1421,7 @@ void BufferParams::makeTextClass()
 						"may not be possible.\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Package not available"), msg);
 		}
-		FileName layout_file = libFileSearch("layouts", lm->filename);
+		FileName layout_file = libFileSearch("layouts", lm->getFilename());
 		textClass_->read(layout_file, TextClass::MODULE);
 	}
 }

@@ -134,6 +134,122 @@ vector<pair<string, lyx::docstring> > pagestyles;
 namespace lyx {
 namespace frontend {
 
+namespace {
+	vector<string> getRequiredList(string const & modName) 
+	{
+		LyXModule const * const mod = moduleList[modName];
+		if (!mod)
+			return vector<string>(); //empty such thing
+		return mod->getRequiredModules();
+	}
+
+
+	vector<string> getExcludedList(string const & modName)
+	{
+		LyXModule const * const mod = moduleList[modName];
+		if (!mod)
+			return vector<string>(); //empty such thing
+		return mod->getExcludedModules();
+	}
+
+
+	docstring getModuleDescription(string const & modName)
+	{
+		LyXModule const * const mod = moduleList[modName];
+		if (!mod)
+			return _("Module not found!");
+		return from_ascii(mod->getDescription());
+	}
+
+
+	vector<string> getPackageList(string const & modName)
+	{
+		LyXModule const * const mod = moduleList[modName];
+		if (!mod)
+			return vector<string>(); //empty such thing
+		return mod->getPackageList();
+	}
+
+
+	bool isModuleAvailable(string const & modName)
+	{
+		LyXModule * mod = moduleList[modName];
+		if (!mod)
+			return false;
+		return mod->isAvailable();
+	}
+} //anonymous namespace
+
+
+ModuleSelMan::ModuleSelMan(
+	QListView * availableLV, 
+	QListView * selectedLV,
+	QPushButton * addPB, 
+	QPushButton * delPB, 
+	QPushButton * upPB, 
+	QPushButton * downPB,
+	QStringListModel * availableModel,
+	QStringListModel * selectedModel) :
+GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
+                    upPB, downPB, availableModel, selectedModel) 
+{}
+	
+	
+void ModuleSelMan::updateAddPB() 
+{
+	int const arows = availableLV->model()->rowCount();
+	QModelIndexList const availSels = 
+			availableLV->selectionModel()->selectedIndexes();
+	if (arows == 0 || availSels.isEmpty()  || isSelected(availSels.first())) {
+		addPB->setEnabled(false);
+		return;
+	}
+	
+	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
+	string const modName = fromqstr(idx.data().toString());
+	vector<string> reqs = getRequiredList(modName);
+	vector<string> excl = getExcludedList(modName);
+	
+	if (reqs.empty() && excl.empty()) {
+		addPB->setEnabled(true);
+		return;
+	}
+
+	QStringList const & qsl = selectedModel->stringList();
+	
+	//Check whether some required module is available
+	if (!reqs.empty()) {
+		bool foundOne = false;
+		vector<string>::const_iterator it  = reqs.begin();
+		vector<string>::const_iterator end = reqs.end();
+		for (; it != end; ++it) {
+			if (qsl.contains(toqstr(*it))) {
+				foundOne = true;
+				break;
+			}
+		}
+		if (!foundOne) {
+			addPB->setEnabled(false);
+			return;
+		}
+	}
+	
+	//Check whether any excluded module is being used
+	if (!excl.empty()) {
+		vector<string>::const_iterator it  = excl.begin();
+		vector<string>::const_iterator end = excl.end();
+		for (; it != end; ++it) {
+			if (qsl.contains(toqstr(*it))) {
+				addPB->setEnabled(false);
+				return;
+			}
+		}
+	}
+
+	addPB->setEnabled(true);
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // PreambleModule
@@ -566,7 +682,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(classChanged()));
 	
 	selectionManager = 
-		new GuiSelectionManager(latexModule->availableLV, latexModule->selectedLV, 
+		new ModuleSelMan(latexModule->availableLV, latexModule->selectedLV, 
 			latexModule->addPB, latexModule->deletePB, 
 	 		latexModule->upPB, latexModule->downPB, 
 			availableModel(), selectedModel());
@@ -920,46 +1036,77 @@ void GuiDocument::classChanged()
 }
 
 
+namespace {
+	//This is an insanely complicated attempt to make this sort of thing
+	//work with RTL languages.
+	docstring formatStrVec(vector<string> const & v, docstring const & s) 
+	{
+		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
+		int const vSize = v.size();
+		if (v.size() == 0)
+			return docstring();
+		else if (v.size() == 1) 
+			return from_ascii(v[0]);
+		else if (v.size() == 2) {
+			docstring retval = _("%1$s and %2$s");
+			retval = subst(retval, _("and"), s);
+			return bformat(retval, from_ascii(v[0]), from_ascii(v[1]));
+		}
+		//The idea here is to format all but the last two items...
+		docstring t2 = _("%1$s, %2$s");
+		docstring retval = from_ascii(v[0]);
+		for (int i = 1; i < vSize - 2; ++i)
+			retval = bformat(t2, retval, from_ascii(v[i])); 
+		//...and then to  plug them, and the last two, into this schema
+		docstring t = _("%1$s, %2$s, and %3$s");
+		t = subst(t, _("and"), s);
+		return bformat(t, retval, from_ascii(v[vSize - 2]), from_ascii(v[vSize - 1]));
+	}
+}
+
+
 void GuiDocument::updateModuleInfo()
 {
 	selectionManager->update();
 	//Module description
 	QListView const * const lv = selectionManager->selectedFocused() ?
 	                             latexModule->selectedLV :
-			latexModule->availableLV;
+	                             latexModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty())
 		latexModule->infoML->document()->clear();
 	else {
-		QModelIndex const idx = lv->selectionModel()->currentIndex();
+		QModelIndex const & idx = lv->selectionModel()->currentIndex();
 		string const modName = fromqstr(idx.data().toString());
-		string desc = getModuleDescription(modName);
+		docstring desc = getModuleDescription(modName);
+
 		vector<string> pkgList = getPackageList(modName);
-		string pkgdesc;
-		//this mess formats the package list as "pkg1, pkg2, and pkg3"
-		int const pkgListSize = pkgList.size();
-		for (int i = 0; i < pkgListSize; ++i) {
-			if (i == 1) {
-				if (i == pkgListSize - 1) //last element
-					pkgdesc += " and ";
-				else
-					pkgdesc += ", ";
-			} else if (i > 1) {
-				if (i == pkgListSize - 1) //last element
-					pkgdesc += ", and ";
-				else
-					pkgdesc += ", ";
-			}
-			pkgdesc += pkgList[i];
-		}
+		docstring pkgdesc = formatStrVec(pkgList, _("and"));
 		if (!pkgdesc.empty()) {
 			if (!desc.empty())
-				desc += " ";
-			desc += ("Requires " + pkgdesc + ".");
+				desc += "\n";
+			desc += bformat(_("Package(s) required: %1$s."), pkgdesc);
 		}
+
+		pkgList = getRequiredList(modName);
+		pkgdesc = formatStrVec(pkgList, _("or"));
+		if (!pkgdesc.empty()) {
+			if (!desc.empty())
+				desc += "\n";
+			desc += bformat(_("Module required: %1$s."), pkgdesc);
+		}
+
+		pkgList = getExcludedList(modName);
+		pkgdesc = formatStrVec(pkgList, _( "and"));
+		if (!pkgdesc.empty()) {
+			if (!desc.empty())
+				desc += "\n";
+			desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
+		}
+
 		if (!isModuleAvailable(modName)) {
 			if (!desc.empty())
 				desc += "\n";
-			desc += "WARNING: Some packages are unavailable!";
+			desc += _("WARNING: Some packages are unavailable!");
 		}
 		latexModule->infoML->document()->setPlainText(toqstr(desc));
 	}
@@ -1631,6 +1778,10 @@ void GuiDocument::updateContents()
 	it = selMods.begin();
 	for (; it != selMods.end(); ++it)
 		strlist2.push_back(toqstr(*it));
+	//FIXME It'd be nice to make sure here that the selected
+	//modules are consistent: That required modules are actually
+	//selected, and that we don't have conflicts. If so, we could
+	//at least pop up a warning.
 	selected_model_.setStringList(strlist2);
 
 	updateParams(bp_);
@@ -1680,7 +1831,7 @@ BufferId GuiDocument::id() const
 }
 
 
-vector<string> GuiDocument::getModuleNames()
+vector<string> const & GuiDocument::getModuleNames()
 {
 	return moduleNames_;
 }
@@ -1689,33 +1840,6 @@ vector<string> GuiDocument::getModuleNames()
 vector<string> const & GuiDocument::getSelectedModules()
 {
 	return params().getModules();
-}
-
-
-string GuiDocument::getModuleDescription(string const & modName) const
-{
-	LyXModule const * const mod = moduleList[modName];
-	if (!mod)
-		return string("Module not found!");
-	return mod->description;
-}
-
-
-vector<string> GuiDocument::getPackageList(string const & modName) const
-{
-	LyXModule const * const mod = moduleList[modName];
-	if (!mod)
-		return vector<string>(); //empty such thing
-	return mod->packageList;
-}
-
-
-bool GuiDocument::isModuleAvailable(string const & modName) const
-{
-	LyXModule * mod = moduleList[modName];
-	if (!mod)
-		return false;
-	return mod->isAvailable();
 }
 
 
@@ -1840,7 +1964,7 @@ void GuiDocument::loadModuleNames ()
 	moduleNames_.clear();
 	LyXModuleList::const_iterator it = moduleList.begin();
 	for (; it != moduleList.end(); ++it)
-		moduleNames_.push_back(it->name);
+		moduleNames_.push_back(it->getName());
 	if (!moduleNames_.empty())
 		sort(moduleNames_.begin(), moduleNames_.end());
 }

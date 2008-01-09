@@ -1,4 +1,9 @@
-#\DeclareLyXModule{Defines some theorem environments for use with non-AMS classes. The theorems are numbered within sections of the document. NOTE: Only one of the theorem modules should be used at a time.}{Theorems (By Section)}
+#\DeclareLyXModule{Theorems (By Section)}
+#DescriptionBegin
+#Defines some theorem environments for use with non-AMS classes. The theorems are 
+#numbered by section. 
+#DescriptionEnd
+#Excludes: Theorems (AMS, By Section) | Theorems (AMS) | Theorems (By Chapter) | Theorems
 
 # Author: Richard Heck <rgheck@comcast.net>
 # Adapted from amsmaths.inc

@@ -50,6 +50,8 @@ public:
 	/// Sets the state of the various push buttons, depending upon the
 	/// state of the widgets. (E.g., "delete" is enabled only if the
 	/// selection is non-empty.)
+	/// Note: this is separated out into updateAddPB(), etc, below, 
+	/// for easy over-riding of these functions.
 	void update();
 	
 	/// Not strictly a matter of focus, which may be elsewhere, but
@@ -79,6 +81,22 @@ protected:
 	///Given a QModelIndex from availableLV, determines whether it has
 	///been selected (i.e., is also in selectedLV).
 	bool isSelected(const QModelIndex & idx);
+	///
+	QListView * availableLV;
+	///
+	QListView * selectedLV;
+	///
+	QPushButton * addPB;
+	///
+	QPushButton * deletePB; 
+	///
+	QPushButton * upPB;
+	///
+	QPushButton * downPB;
+	///
+	QStringListModel * availableModel;
+	///
+	QStringListModel * selectedModel;
 
 protected Q_SLOTS:
 	///
@@ -103,15 +121,14 @@ protected Q_SLOTS:
 	bool eventFilter(QObject *, QEvent *);
 
 private:
-	QListView * availableLV;
-	QListView * selectedLV;
-	QPushButton * addPB;
-	QPushButton * deletePB; 
-	QPushButton * upPB;
-	QPushButton * downPB;
-	QStringListModel * availableModel;
-	QStringListModel * selectedModel;
-	//Dialog::View * dialog;
+	///
+	virtual void updateAddPB();
+	///
+	virtual void updateDelPB();
+	///
+	virtual void updateDownPB();
+	///
+	virtual void updateUpPB();
 	
 	bool selectedHasFocus_;
 };

@@ -5862,20 +5862,80 @@ A module must begin with a line like the following:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[endnotes.sty]{Adds an endnote inset.}{Endnotes} 
+DeclareLyXModule[endnotes.sty]{Endnotes} 
 \end_layout
 
 \begin_layout Standard
 The argument in square brackets is optional: It declares any LaTeX packages
  on which the module depends.
- The two mandatory arguments, in curly brackets, are a short description
- of the module and the name of the module, as they should appear in 
+ The mandatory argument, in curly brackets, is the name of the module, as
+ it should appear in 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
 \family default
 .
+ LyX uses the name to identify the module, so it should be unique.
+\end_layout
+
+\begin_layout Standard
+The module declaration should then be followed by lines like the following:
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionBegin 
+\end_layout
+
+\begin_layout LyX-Code
+#Adds an endnote command, in addition to footnotes.
  
+\end_layout
+
+\begin_layout LyX-Code
+#You will need to add  
+\backslash
+theendnotes in ERT where you 
+\end_layout
+
+\begin_layout LyX-Code
+#want the endnotes to appear.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionEnd 
+\end_layout
+
+\begin_layout LyX-Code
+#Requires: Some Module | Some Other Module 
+\end_layout
+
+\begin_layout LyX-Code
+#Excludes: Bad Module 
+\end_layout
+
+\begin_layout Standard
+The description is used in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ to provide the user with information about what the module does.
+ The Requires is used to identify other modules with which this one must
+ be used; the Excludes line is used to identify modules with which this
+ one may not be used.
+ Both are optional, and, as shown, multiple modules should be separated
+ with the pipe symbol: |.
+ Note that the required modules are treated disjunctively: 
+\emph on
+at least one
+\emph default
+ of the required modules must be used.
+ Similarly, 
+\emph on
+no
+\emph default
+ excluded module may be used.
 \end_layout
 
 \begin_layout Standard
@@ -5901,8 +5961,8 @@ OK
 It is strongly recommended that you save your work before doing so
 \emph default
 .
- In fact, it is strongly recommended that you not attempt to create or edit
- modules while simultaneously working on documents.
+ In fact, it is strongly recommended that you not attempt to edit modules
+ while simultaneously working on documents.
  Though of course the developers strive to keep LyX stable in such situations,
  syntax errors and the like in your module file could cause strange behavior.
 \end_layout

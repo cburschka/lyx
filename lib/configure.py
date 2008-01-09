@@ -730,33 +730,71 @@ def checkModulesConfig():
   tx.close()
   print '\tdone'
 
+
 def processModuleFile(file, bool_docbook, bool_linuxdoc):
     ''' process module file and get a line of result
 
-        Declare lines look like this:
-          \DeclareLyXModule[LaTeX Packages]{Description}{ModuleName}...
+        The top of a module file should look like this:
+          #\DeclareLyXModule[LaTeX Packages]{ModuleName}
+          #BeginDescription
+          #...body of description...
+          #EndDescription
+          #Requires: [list of required modules]
+          #Excludes: [list of excluded modules]
+        The last two lines are optional
         We expect output:
-          "ModuleName" "filename" "Description" "Packages"
-        "
+          "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes"
     '''
-    p = re.compile(r'\DeclareLyXModule\s*(?:\[([^]]*)\])?{(.*)}{(.*)}')
-    for line in open(file).readlines():
-        res = p.search(line)
-        if res != None:
-            (packages, desc, modname) = res.groups()
-            #check availability...need to add that
-            if packages == None:
-              packages = ""
-            else:
-              pkgs = [s.strip() for s in packages.split(",")]
-              packages = ",".join(pkgs)
+    p = re.compile(r'\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    r = re.compile(r'#+\s*Requires: (.*)')
+    x = re.compile(r'#+\s*Excludes: (.*)')
+    b = re.compile(r'#+\s*DescriptionBegin\s*$')
+    e = re.compile(r'#+\s*DescriptionEnd\s*$')
 
-            filename = file.split(os.sep)[-1]
-            return '"%s" "%s" "%s" "%s"\n' % (modname, filename, desc, packages)
+    modname = desc = pkgs = req = excl = ""
+    readingDescription = False
+    descLines = []
+
+    for line in open(file).readlines():
+      if readingDescription:
+        res = e.search(line)
+        if res != None:
+          readingDescription = False
+          desc = " ".join(descLines)
+          continue
+        descLines.append(line[1:].strip())
+        continue
+      res = b.search(line)
+      if res != None:
+        readingDescription = True
+        continue
+      res = p.search(line)
+      if res != None:
+          (pkgs, modname) = res.groups()
+          if pkgs == None:
+            pkgs = ""
+          else:
+            tmp = [s.strip() for s in pkgs.split(",")]
+            pkgs = ",".join(tmp)
+
+          filename = file.split(os.sep)[-1]
+          continue
+      res = r.search(line)
+      if res != None:
+        req = res.group(1)
+        tmp = [s.strip() for s in req.split("|")]
+        req = "|".join(tmp)
+        continue
+      res = x.search(line)
+      if res != None:
+        excl = res.group(1)
+        tmp = [s.strip() for s in excl.split("|")]
+        excl = "|".join(tmp)
+        continue
+    if modname != "":
+        return '"%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl)
     print "Module file without \DeclareLyXModule line. "
     sys.exit(2)
-
-
 
 
 def checkTeXAllowSpaces():

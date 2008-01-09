@@ -69,22 +69,52 @@ GuiSelectionManager::GuiSelectionManager(
 
 void GuiSelectionManager::update()
 {
+	updateAddPB();
+	updateDelPB();
+	updateDownPB();
+	updateUpPB();
+}
+
+
+void GuiSelectionManager::updateAddPB()
+{
 	int const arows = availableLV->model()->rowCount();
 	QModelIndexList const availSels = 
 		availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
 		!availSels.isEmpty() &&
 		!isSelected(availSels.first()));
-	
+}
+
+
+void GuiSelectionManager::updateDelPB()
+{
 	int const srows = selectedLV->model()->rowCount();
 	QModelIndexList const selSels = 
 		selectedLV->selectionModel()->selectedIndexes();
 	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
 	deletePB->setEnabled(sel_nr >= 0);
-	upPB->setEnabled(sel_nr > 0);
-	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
 }
 
+
+void GuiSelectionManager::updateDownPB()
+{
+	int const srows = selectedLV->model()->rowCount();
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
+	upPB->setEnabled(sel_nr > 0);
+}
+
+
+void GuiSelectionManager::updateUpPB()
+{
+	int const srows = selectedLV->model()->rowCount();
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
+	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
+}
 
 bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 {
@@ -211,7 +241,7 @@ void GuiSelectionManager::availableLV_clicked(const QModelIndex &)
 
 void GuiSelectionManager::availableLV_doubleClicked(const QModelIndex & idx)
 {
-	if (isSelected(idx))
+	if (isSelected(idx) || !addPB->isEnabled())
 		return;
 	
 	if (idx.isValid())

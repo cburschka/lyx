@@ -67,6 +67,24 @@ public:
 };
 
 
+class ModuleSelMan : public GuiSelectionManager 
+{
+public:
+	ModuleSelMan(
+		QListView * availableLV, 
+		QListView * selectedLV,
+		QPushButton * addPB, 
+		QPushButton * delPB, 
+		QPushButton * upPB, 
+		QPushButton * downPB,
+		QStringListModel * availableModel,
+		QStringListModel * selectedModel);
+private:
+	///
+	virtual void updateAddPB();
+};
+
+
 class GuiDocument : public GuiDialog, public Ui::DocumentUi
 {
 	Q_OBJECT
@@ -178,15 +196,9 @@ protected:
 	///
 	BufferId id() const;
 	/// List of available modules
-	std::vector<std::string> getModuleNames();
+	std::vector<std::string> const & getModuleNames();
 	/// Modules in use in current buffer
 	std::vector<std::string> const & getSelectedModules();
-	///
-	std::string getModuleDescription(std::string const & modName) const;
-	///
-	std::vector<std::string> getPackageList(std::string const & modName) const;
-	///
-	bool isModuleAvailable(std::string const & modName) const;
 	///
 	void setLanguage() const;
 	///
