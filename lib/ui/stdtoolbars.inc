@@ -548,8 +548,8 @@ ToolbarSet
 	End
 	
 	Toolbar "latex_varsz" "Big Operators"
-		Item "int" "math-insert \int"
 		Item "intop" "math-insert \intop"
+		Item "int" "math-insert \int"
 		Item "iint" "math-insert \iint"
 		Item "iintop" "math-insert \iintop"
 		Item "iiint" "math-insert \iiint"
