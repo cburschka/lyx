@@ -140,7 +140,7 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	// each time, but there seems to be no easy way around.
 	EmbeddedFile file(to_utf8(params["filename"]),
 	       onlyPath(parentFilename(buffer)));
-	file.setEmbed(params["embed"] == _("true") ? true : false);
+	file.setEmbed(!params["embed"].empty());
 	file.enable(buffer.embedded(), &buffer);
 	return file;
 }
@@ -202,6 +202,13 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 						REF_CODE);
 			}
 			try {
+				// the embed parameter passed back from the dialog
+				// is "true" or "false", we need to change it.
+				if (p["embed"] == _("false"))
+					p["embed"].clear();
+				else
+					p["embed"] = from_utf8(EmbeddedFile(to_utf8(p["filename"]),
+						onlyPath(parentFilename(cur.buffer()))).inzipName());
 				// test parameter
 				includedFilename(cur.buffer(), p);
 			} catch (ExceptionMessage const & message) {
@@ -274,7 +281,7 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 	else
 		temp += from_utf8(onlyFilename(to_utf8(params()["filename"])));
 
-	if (params()["embed"] == _("true"))
+	if (!params()["embed"].empty())
 		temp += _(" (embedded)");
 	return temp;
 }
@@ -910,7 +917,7 @@ void InsetInclude::updateEmbeddedFile(Buffer const & buf,
 {
 	InsetCommandParams p = params();
 	p["filename"] = from_utf8(file.outputFilename());
-	p["embed"] = file.embedded() ? _("true") : _("false");
+	p["embed"] = file.embedded() ? from_utf8(file.inzipName()) : docstring();
 	set(p, buf);
 }
 

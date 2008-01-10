@@ -90,10 +90,42 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		//
 		InsetCommandParams orig = params();
+		// returned "embed" is composed of "true" or "false", which needs to be adjusted
+		string tmp;
+		string emb;
+		
+		string newBibfiles;
+		string newEmbedStatus;
+		
+		string bibfiles = to_utf8(p["bibfiles"]);
+		string embedStatus = to_utf8(p["embed"]);
+		
+		bibfiles = split(bibfiles, tmp, ',');
+		embedStatus = split(embedStatus, emb, ',');
+		while (!tmp.empty()) {
+			EmbeddedFile file(changeExtension(tmp, "bib"), cur.buffer().filePath());
+			if (!file.exists())
+				continue;
+			if (!newBibfiles.empty())
+				newBibfiles += ",";
+			newBibfiles += tmp;
+			if (!newEmbedStatus.empty())
+				newEmbedStatus += ",";
+			if (emb == "true")
+				newEmbedStatus += file.inzipName();
+			// Get next file name
+			bibfiles = split(bibfiles, tmp, ',');
+			embedStatus = split(embedStatus, emb, ',');
+		}
+		LYXERR(Debug::FILES, "Update parameters from " << p["bibfiles"]
+			<< " " << p["embed"] << " to " << newBibfiles << " "
+			<< newEmbedStatus);
+		p["bibfiles"] = from_utf8(newBibfiles);
+		p["embed"] = from_utf8(newEmbedStatus);
+		
 		setParams(p);
-		// test parameter and copy files
 		try {
-			// enable() in getFiles will try to copy files
+			// test parameter and copy files
 			getFiles(cur.buffer());
 		} catch (ExceptionMessage const & message) {
 			Alert::error(message.title_, message.details_);
@@ -337,7 +369,7 @@ EmbeddedFileList const InsetBibtex::getFiles(Buffer const & buffer) const
 	bibfiles = split(bibfiles, tmp, ',');
 	embedStatus = split(embedStatus, emb, ',');
 	while (!tmp.empty()) {
-		if (emb == "true") {
+		if (!emb.empty()) {
 			EmbeddedFile file(changeExtension(tmp, "bib"), buffer.filePath());
 			// If the file structure is correct, this should not fail.
 			file.setEmbed(true);
@@ -831,10 +863,11 @@ void InsetBibtex::updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & fi
 		if (!first) {
 			bibfiles += ',';
 			embed += ',';
+		} else
 			first = false;
-		}
 		bibfiles += from_utf8(it->outputFilename(buf.filePath()));
-		embed += it->embedded() ? _("true") : _("false");
+		if (it->embedded())
+			embed += from_utf8(it->inzipName());
 	}
 	setParam("bibfiles", bibfiles);
 	setParam("embed", embed);

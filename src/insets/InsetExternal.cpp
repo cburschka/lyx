@@ -189,7 +189,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (!filename.empty()) {
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
-		os << "\tembed " << (filename.embedded() ? "true" : "false") << '\n';
+		os << "\tembed " << (filename.embedded() ? filename.inzipName() : "\"\"") << '\n';
 	}
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
@@ -303,7 +303,9 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		
 		case EX_EMBED: {
 			lex.next();
-			filename.setEmbed(lex.getBool());
+			string const name = lex.getString();
+			filename.setInzipName(name);
+			filename.setEmbed(!name.empty());
 			break;
 		}
 

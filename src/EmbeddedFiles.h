@@ -102,7 +102,27 @@ public:
 		std::string const & buffer_path = std::string());
 	
 	/// set filename and inzipName.
+	/**
+	 * NOTE: inzip_name_ is not unique across operation systems and is not 
+	 * guaranteed to be the same across different versions of lyx.
+	 * inzip_name_ will be saved to the lyx file, and is used to indicate 
+	 * whether or not a file is embedded, and where the embedded file is in
+	 * the bundled file. However, the embedded file will be renamed to the 
+	 * name set here when an EmbeddedFile is enabled. It is therefore
+	 * safe to change the naming scheme here.
+	 *
+	 * NOTE that this treatment does not welcome an UUID solution because
+	 * all embedded files will have to be renamed when an embedded file is
+	 * opened. It is of course possible to use saved inzipname, but that is
+	 * not easy. For example, when a new EmbeddedFile is created with the same
+	 * file as an old one, it needs to be synced to the old inzipname...
+	**/
 	void set(std::string const & filename, std::string const & buffer_path);
+	/** Set the inzip name of an EmbeddedFile, which should be the name
+	 *  of an actual embedded file on disk. When an EmbeddedFile is enabled,
+	 *  this file will be renamed to the default inzipName if needed. 
+	 */
+	void setInzipName(std::string const & name);
 
 	/// filename in the zip file, which is the relative path
 	std::string inzipName() const { return inzip_name_; }
@@ -147,6 +167,13 @@ public:
 	/// Calculate checksum of availableFile
 	unsigned long checksum() const;
 
+private:
+	// calculate inzip_name_ from filename
+	std::string calcInzipName(std::string const & buffer_path);
+	// move an embedded disk file with an existing inzip_name_ to 
+	// an calculated inzip_name_
+	void syncInzipFile(std::string const & buffer_path);
+	
 private:
 	/// filename in zip file
 	std::string inzip_name_;

@@ -215,7 +215,7 @@ void GuiBibtex::addDatabase()
 			db->setFlags(db->flags() | Qt::ItemIsSelectable
 				| Qt::ItemIsUserCheckable);
 			db->setCheckState(Qt::Checked);
-			databaseLW->addItem(f);
+			databaseLW->addItem(db);
 		}
 	}
 
@@ -269,7 +269,7 @@ void GuiBibtex::updateContents()
 			QListWidgetItem * db = new QListWidgetItem(toqstr(bib));
 			db->setFlags(db->flags() | Qt::ItemIsSelectable
 				| Qt::ItemIsUserCheckable);
-			db->setCheckState(emb == _("true") ? Qt::Checked : Qt::Unchecked);
+			db->setCheckState(emb.empty() ? Qt::Unchecked : Qt::Checked);
 			databaseLW->addItem(db);
 		}
 	}
@@ -281,11 +281,7 @@ void GuiBibtex::updateContents()
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(changeExtension(*it, ""));
-		QListWidgetItem * db = new QListWidgetItem(toqstr(bibItem));
-		db->setFlags(db->flags() & ~Qt::ItemIsSelectable
-				| Qt::ItemIsUserCheckable);
-		db->setCheckState(Qt::Unchecked);
-		add_->bibLW->addItem(db);
+		add_->bibLW->addItem(toqstr(bibItem));
 	}
 
 	string bibstyle = getStylefile();

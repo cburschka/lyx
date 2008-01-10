@@ -179,7 +179,7 @@ void GuiInclude::typeChanged(int v)
 void GuiInclude::updateContents()
 {
 	filenameED->setText(toqstr(params_["filename"]));
-	embedCB->setCheckState(params_["embed"] == _("true") ?  Qt::Checked : Qt::Unchecked);
+	embedCB->setCheckState(params_["embed"].empty() ?  Qt::Unchecked : Qt::Checked);
 
 	visiblespaceCB->setChecked(false);
 	visiblespaceCB->setEnabled(false);

@@ -145,7 +145,7 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 	// Do not write the default values
 	if (!filename.empty()) {
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
-		os << "\tembed " << (filename.embedded() ? "true" : "false") << '\n';
+		os << "\tembed " << (filename.embedded() ? filename.inzipName() : "\"\"") << '\n';
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
@@ -201,7 +201,9 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 		lex.eatLine();
 	} else if (token == "embed") {
 		lex.next();
-		filename.setEmbed(lex.getBool());
+		string const name = lex.getString();
+		filename.setInzipName(name);
+		filename.setEmbed(!name.empty());
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();

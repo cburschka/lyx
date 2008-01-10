@@ -43,35 +43,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-/** Dir name used for ".." in the bundled file.
-
-Under the lyx temp directory, content.lyx and its embedded files are usually
-saved as
-
-$temp/$embDirName/file.lyx
-$temp/$embDirName/figure1.png     for ./figure1.png)
-$temp/$embDirName/sub/figure2.png for ./sub/figure2.png)
-
-This works fine for embedded files that are in the current or deeper directory
-of the document directory, but not for files such as ../figures/figure.png.
-A unique name $upDirName is chosen to represent .. in such filenames so that
-'up' directories can be stored 'down' the directory tree:
-
-$temp/$embDirName/$upDirName/figures/figure.png     for ../figures/figure.png
-$temp/$embDirName/$upDirName/$upDirName/figure.png  for ../../figure.png
-
-This name has to be fixed because it is used in lyx bundled .zip file.
-
-Using a similar trick, we use $absDirName for absolute path so that
-an absolute filename can be saved as
-
-$temp/$embDirName/$absDirName/a/absolute/path for /a/absolute/path
-
-*/
-const std::string embDirName = "LyX.Embedded.Files";
-const std::string upDirName = "LyX.Embed.Dir.Up";
-const std::string absDirName = "LyX.Embed.Dir.Abs";
-
 namespace Alert = frontend::Alert;
 
 EmbeddedFile::EmbeddedFile(string const & file, std::string const & buffer_path)
@@ -88,19 +59,19 @@ void EmbeddedFile::set(std::string const & filename, std::string const & buffer_
 	if (filename.empty())
 		return;
 
-	inzip_name_ = to_utf8(makeRelPath(from_utf8(absFilename()),
-			from_utf8(buffer_path)));
-	
-	if (FileName(inzip_name_).isAbsolute())
-		inzip_name_ = absDirName + '/' + inzip_name_;
+	inzip_name_ = calcInzipName(buffer_path);
+}
 
-	// replace .. by upDirName
-	if (prefixIs(inzip_name_, "."))
-		inzip_name_ = subst(inzip_name_, "..", upDirName);
 
-	// to avoid name conflict between $docu_path/file and $temp_path/file
-	// embedded files are in a subdirectory of $temp_path.
-	inzip_name_ = embDirName + '/' + inzip_name_;
+void EmbeddedFile::setInzipName(std::string const & name)
+{
+	if (name.empty() || name == inzip_name_)
+		return;
+
+	// an enabled EmbeededFile should have this problem handled
+	BOOST_ASSERT(!enabled());
+	// file will be synced when it is enabled
+	inzip_name_ = name;
 }
 
 
@@ -148,8 +119,11 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf)
 		temp_path_ = buf->temppath();
 		if (!suffixIs(temp_path_, '/'))
 			temp_path_ += '/';
-		if (embedded())
+		if (embedded()) {
+			if (inzip_name_ != calcInzipName(buf->filePath()))
+				syncInzipFile(buf->filePath());
 			updateFromExternalFile();
+		}
 	} else {
 		extract();
 		temp_path_ = "";
@@ -289,6 +263,95 @@ bool EmbeddedFile::isReadableFile() const
 unsigned long EmbeddedFile::checksum() const
 {
 	return availableFile().checksum();
+}
+
+/**
+Under the lyx temp directory, content.lyx and its embedded files are usually
+saved as
+
+$temp/$embDirName/file.lyx
+$temp/$embDirName/figure1.png     for ./figure1.png)
+$temp/$embDirName/sub/figure2.png for ./sub/figure2.png)
+
+This works fine for embedded files that are in the current or deeper directory
+of the document directory, but not for files such as ../figures/figure.png.
+A unique name $upDirName is chosen to represent .. in such filenames so that
+'up' directories can be stored 'down' the directory tree:
+
+$temp/$embDirName/$upDirName/figures/figure.png     for ../figures/figure.png
+$temp/$embDirName/$upDirName/$upDirName/figure.png  for ../../figure.png
+
+This name has to be fixed because it is used in lyx bundled .zip file.
+
+Using a similar trick, we use $absDirName for absolute path so that
+an absolute filename can be saved as
+
+$temp/$embDirName/$absDirName/a/absolute/path for /a/absolute/path
+
+*/
+const std::string embDirName = "LyX.Embedded.Files";
+const std::string upDirName = "LyX.Embed.Dir.Up";
+const std::string absDirName = "LyX.Embed.Dir.Abs";
+const std::string driveName = "LyX.Embed.Drive";
+const std::string spaceName = "LyX.Embed.Space";
+
+std::string EmbeddedFile::calcInzipName(std::string const & buffer_path)
+{
+	string inzipName = to_utf8(makeRelPath(from_utf8(absFilename()),
+			from_utf8(buffer_path)));
+	
+	if (FileName(inzipName).isAbsolute())
+		inzipName = absDirName + '/' + inzipName;
+
+	// replace .. by upDirName
+	if (prefixIs(inzipName, "."))
+		inzipName = subst(inzipName, "..", upDirName);
+	// replace special characters by their value
+	inzipName = subst(inzipName, ":", driveName);
+	inzipName = subst(inzipName, " ", spaceName);
+
+	// to avoid name conflict between $docu_path/file and $temp_path/file
+	// embedded files are in a subdirectory of $temp_path.
+	inzipName = embDirName + '/' + inzipName;
+	return inzipName;
+}
+
+
+void EmbeddedFile::syncInzipFile(std::string const & buffer_path)
+{
+	BOOST_ASSERT(enabled());
+	string old_emb_file = temp_path_ + '/' + inzip_name_;
+	FileName old_emb(old_emb_file);
+
+	LYXERR(Debug::FILES, " OLD ZIP " << old_emb_file <<
+		" NEW ZIP " << calcInzipName(buffer_path));
+
+	//BOOST_ASSERT(old_emb.exists());
+	
+	string new_inzip_name = calcInzipName(buffer_path);
+	string new_emb_file = temp_path_ + '/' + new_inzip_name;
+	FileName new_emb(new_emb_file);
+	
+	// need to make directory?
+	FileName path = new_emb.onlyPath();
+	if (!path.createPath()) {
+		throw ExceptionMessage(ErrorException, _("Sync file failure"),
+			bformat(_("Cannot create file path '%1$s'.\n"
+			"Please check whether the path is writeable."),
+			from_utf8(path.absFilename())));
+		return;
+	}
+
+	if (old_emb.copyTo(new_emb)) {
+		LYXERR(Debug::FILES, "Sync inzip file from " << inzip_name_ 
+			<< " to " << new_inzip_name);
+		inzip_name_ = new_inzip_name;
+		return;
+	}
+	throw ExceptionMessage(ErrorException, _("Sync file failure"),
+		 bformat(_("Cannot copy file %1$s to %2$s.\n"
+				 "Please check whether the directory exists and is writeable."),
+				from_utf8(old_emb_file), from_utf8(new_emb_file)));
 }
 
 
