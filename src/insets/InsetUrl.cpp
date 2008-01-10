@@ -99,10 +99,9 @@ int InsetUrl::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetUrl::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetUrl::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	plaintext(buf, os, OutputParams(0));
 }
 
 
