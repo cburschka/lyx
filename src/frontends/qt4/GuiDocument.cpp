@@ -42,6 +42,7 @@
 
 #include "insets/InsetListingsParams.h"
 
+//#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -197,7 +198,7 @@ GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
 	
 void ModuleSelMan::updateAddPB() 
 {
-	int const arows = availableLV->model()->rowCount();
+	int const arows = availableModel->stringList().size();
 	QModelIndexList const availSels = 
 			availableLV->selectionModel()->selectedIndexes();
 	if (arows == 0 || availSels.isEmpty()  || isSelected(availSels.first())) {
@@ -247,6 +248,163 @@ void ModuleSelMan::updateAddPB()
 	}
 
 	addPB->setEnabled(true);
+}
+
+void ModuleSelMan::updateDownPB()
+{
+	int const srows = selectedModel->stringList().size();
+	if (srows == 0) {
+		downPB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	//disable if empty or last item is selected
+	if (selSels.empty() || selSels.first().row() == srows - 1) {
+		downPB->setEnabled(false);
+		return;
+	}
+	//determine whether immediately succeding element requires this one
+	QString const curModName = 
+		selectedLV->selectionModel()->currentIndex().data().toString();
+	QStringList const & qsl = selectedModel->stringList();
+	int const curIdx = qsl.indexOf(curModName);
+	if (curIdx < 0 || curIdx == srows - 1) { //this shouldn't happen...
+		downPB->setEnabled(false);
+		return;
+	}
+	string nextModName = fromqstr(qsl[curIdx + 1]);
+
+	vector<string> reqs = getRequiredList(nextModName);
+
+	//if it doesn't require anything....
+	if (reqs.empty()) {
+		downPB->setEnabled(true);
+		return;
+	}
+
+	//FIXME This should perhaps be more flexible and check whether, even 
+	//if this one is required, there is also an earlier one that is required.
+	//enable it if this module isn't required
+	downPB->setEnabled(
+			find(reqs.begin(), reqs.end(), fromqstr(curModName)) == reqs.end());
+}
+
+void ModuleSelMan::updateUpPB() 
+{
+	int const srows = selectedModel->stringList().size();
+	if (srows == 0) {
+		upPB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	//disable if empty or first item is selected
+	if (selSels.empty() || selSels.first().row() == 0) {
+		upPB->setEnabled(false);
+		return;
+	}
+	//determine whether immediately preceding element is required by this one
+	QString const curModName = 
+		selectedLV->selectionModel()->currentIndex().data().toString();
+	vector<string> reqs = getRequiredList(fromqstr(curModName));
+	
+	//if this one doesn't require anything....
+	if (reqs.empty()) {
+		upPB->setEnabled(true);
+		return;
+	}
+
+	QStringList const & qsl = selectedModel->stringList();
+	int const curIdx = qsl.indexOf(curModName);
+	if (curIdx <= 0) { //this shouldn't happen...
+		upPB->setEnabled(false);
+		return;
+	}
+	string preModName = fromqstr(qsl[curIdx - 1]);
+
+	//NOTE This is less flexible than it might be. You could check whether, even 
+	//if this one is required, there is also an earlier one that is required.
+	//enable it if the preceding module isn't required
+	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
+}
+
+void ModuleSelMan::updateDelPB() 
+{
+	int const srows = selectedModel->stringList().size();
+	if (srows == 0) {
+		deletePB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	if (selSels.empty() || selSels.first().row() < 0) {
+		deletePB->setEnabled(false);
+		return;
+	}
+	
+	//determine whether some LATER module requires this one
+	//NOTE Things are arranged so that this is the only way there
+	//can be a problem. At least, we hope so.
+	QString const curModName = 
+			selectedLV->selectionModel()->currentIndex().data().toString();
+	QStringList const & qsl = selectedModel->stringList();
+	
+	//We're looking here for a reason NOT to enable the button. If we
+	//find one, we disable it and return. If we don't, we'll end up at
+	//the end of the function, and then we enable it.
+	QStringList::const_iterator it  = qsl.begin();
+	QStringList::const_iterator end = qsl.end();
+	bool found = false;
+	for (; it != end; ++it) {
+		//skip over the ones preceding this one
+		if (!found) {
+			if (*it == curModName) {
+				found = true;
+			}
+			continue;
+		}
+			
+		string const mod = fromqstr(*it);
+		vector<string> reqs = getRequiredList(mod);
+		//does this one require us?
+		if (find(reqs.begin(), reqs.end(), fromqstr(curModName)) == reqs.end())
+			//no...
+			continue;
+
+		//OK, so there is a module that requires us
+		//is there an EARLIER module that satisfies the require?
+		//NOTE We demand that it be earlier to keep the list of modules
+		//consistent with the rule that a module must be proceeded by a
+		//required module. There would be more flexible ways to proceed,
+		//but that would be a lot more complicated, and the logic here is
+		//already complicated. (That's why I've left the debugging code.)
+		//lyxerr << "Testing " << mod << std::endl;
+		QStringList::const_iterator it2  = qsl.begin();
+		QStringList::const_iterator end2 = qsl.end();
+		for (; it2 != end2; ++it2) {
+			//lyxerr << "In loop: Testing " << fromqstr(*it2) << std::endl;
+			if (*it2 == curModName) { //EARLIER!!
+				//no other module was found before this one, so...
+				//lyxerr << "Reached the end of the loop." << std::endl;
+				deletePB->setEnabled(false);
+				return;
+			}
+			//do we satisfy the require? 
+			if (find(reqs.begin(), reqs.end(), fromqstr(*it2)) != reqs.end()) {
+				//lyxerr << fromqstr(*it2) << " does the trick." << std::endl;
+				break;
+			}
+		}
+		//did we reach the end of the list?
+		if (it2 == end2) {
+			//lyxerr << "Reached end of list." << std::endl;
+			deletePB->setEnabled(false);
+			return;
+		}
+	}
+	//lyxerr << "All's well that ends well." << std::endl;	
+	deletePB->setEnabled(true);
 }
 
 

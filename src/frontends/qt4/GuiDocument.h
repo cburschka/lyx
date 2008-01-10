@@ -82,6 +82,12 @@ public:
 private:
 	///
 	virtual void updateAddPB();
+	///
+	virtual void updateUpPB();
+	///
+	virtual void updateDownPB();
+	///
+	virtual void updateDelPB();
 };
 
 

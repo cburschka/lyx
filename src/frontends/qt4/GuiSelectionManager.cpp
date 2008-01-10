@@ -78,7 +78,7 @@ void GuiSelectionManager::update()
 
 void GuiSelectionManager::updateAddPB()
 {
-	int const arows = availableLV->model()->rowCount();
+	int const arows = availableModel->stringList().size();
 	QModelIndexList const availSels = 
 		availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
@@ -89,7 +89,7 @@ void GuiSelectionManager::updateAddPB()
 
 void GuiSelectionManager::updateDelPB()
 {
-	int const srows = selectedLV->model()->rowCount();
+	int const srows = selectedModel->stringList().size();
 	if (srows == 0) {
 		deletePB->setEnabled(false);
 		return;
@@ -103,7 +103,7 @@ void GuiSelectionManager::updateDelPB()
 
 void GuiSelectionManager::updateUpPB()
 {
-	int const srows = selectedLV->model()->rowCount();
+	int const srows = selectedModel->stringList().size();
 	if (srows == 0) {
 		upPB->setEnabled(false);
 		return;
@@ -117,7 +117,7 @@ void GuiSelectionManager::updateUpPB()
 
 void GuiSelectionManager::updateDownPB()
 {
-	int const srows = selectedLV->model()->rowCount();
+	int const srows = selectedModel->stringList().size();
 	if (srows == 0) {
 		downPB->setEnabled(false);
 		return;

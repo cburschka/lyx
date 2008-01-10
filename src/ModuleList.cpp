@@ -49,12 +49,14 @@ bool LyXModule::isAvailable() {
 	if (checked)
 		return available;
 	checked = true;
+	//check whether all of the required packages are available
 	vector<string>::const_iterator it  = packageList.begin();
 	vector<string>::const_iterator end = packageList.end(); 
 	for (; it != end; ++it) {
-		if (!LaTeXFeatures::isAvailable(*it))
+		if (!LaTeXFeatures::isAvailable(*it)) {
 			available = false;
 			return available;
+		}
 	}
 	available = true;
 	return available;
