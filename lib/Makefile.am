@@ -937,7 +937,6 @@ dist_layouts_DATA =\
 	layouts/amsdefs.inc \
 	layouts/amsmaths-plain.inc \
 	layouts/amsmaths-seq.inc \
-	layouts/amsmaths.inc \
 	layouts/apa.layout \
 	layouts/arab-article.layout \
 	layouts/armenian-article.layout \
@@ -1053,6 +1052,7 @@ dist_layouts_DATA =\
 	layouts/theorems-proof.inc \
 	layouts/theorems-sec.module \
 	layouts/theorems-starred.inc \
+	layouts/theorems-starred.module \
 	layouts/theorems-std.module \
 	layouts/treport.layout
 
