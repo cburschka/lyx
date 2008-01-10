@@ -2594,8 +2594,10 @@ lib_layouts_inc_files = Split('''
     numreport.inc
     numrevtex.inc
     scrclass.inc
+    stdcharstyles.inc
     stdclass.inc
     stdcounters.inc
+    stdcustom.inc
     stdfloats.inc
     stdinsets.inc
     stdlayouts.inc

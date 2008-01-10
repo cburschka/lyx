@@ -1029,7 +1029,9 @@ dist_layouts_DATA =\
 	layouts/slides.layout \
 	layouts/spie.layout \
 	layouts/stdclass.inc \
+	layouts/stdcharstyles.inc \
 	layouts/stdcounters.inc \
+	layouts/stdcustom.inc \
 	layouts/stdfloats.inc \
 	layouts/stdinsets.inc \
 	layouts/stdlayouts.inc \
