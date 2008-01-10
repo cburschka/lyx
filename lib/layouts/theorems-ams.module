@@ -1,27 +1,95 @@
 #\DeclareLyXModule{Theorems (AMS)}
 #DescriptionBegin
-#Defines theorem environments and the proof environment for use with 
-#non-AMS classes, using the extended AMS machinery. The theorems are 
-#numbered consecutively throughout the document. 
+#Defines theorem environments and the proof environment using the extended 
+#AMS machinery. The theorems are numbered consecutively throughout the document. 
 #DescriptionEnd
-#Excludes: Theorems (AMS, By Section) | Theorems | Theorems (By Chapter) | Theorems (By Section)
+#Excludes: Theorems
 
-# Author: Richard Heck <rgheck@comcast.net>
-# Adapted from amsdefs.inc and amsmaths.inc
+# Original Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
 Format 6
 
-Requires	amsmath
-
-Preamble
-  \theoremstyle{plain}
-  \newtheorem{thm}{Theorem}[section]
-EndPreamble
-
+Requires	amsmath,amsthm
 
 Counter
-	Name                 theorem
+	Name theorem
 End
 
+Preamble
+	\theoremstyle{plain}
+EndPreamble
 
-Input theorems-ams.inc
+#Get the order right
+Style Theorem
+End
+
+Style Theorem*
+End
+
+Style Corollary
+End
+
+Style Corollary*
+End
+
+Style Lemma
+End
+
+Style Lemma*
+End
+
+Style Proposition
+End
+
+Style Proposition*
+End
+
+Style Conjecture
+End
+
+Style Conjecture*
+End
+
+Style Definition
+End
+
+Style Definition*
+End
+
+Style Example
+End
+
+Style Example*
+End
+
+Style Problem
+End
+
+Style Problem*
+End
+
+Style Exercise
+End
+
+Style Exercise*
+End
+
+Style Remark
+End
+
+Style Remark*
+End
+
+Style Claim
+End
+
+Style Claim*
+End
+
+Input theorems.inc
+Input theorems-starred.inc
+Input theorems-proof.inc

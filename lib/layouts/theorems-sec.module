@@ -1,0 +1,21 @@
+#\DeclareLyXModule{Theorems (Order By Section)}
+#DescriptionBegin
+#Order theorems by section.
+#DescriptionEnd
+#Requires: Theorems | Theorems (AMS)
+
+# Author: Richard Heck <rgheck@comcast.net>
+# Adapted from amsmaths.inc
+
+Format 6
+
+Counter
+	Name           theorem
+	Within         section
+End
+
+Style Theorem
+	Preamble
+		\newtheorem{thm}{Theorem}[section]
+	EndPreamble
+End

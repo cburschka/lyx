@@ -1,9 +1,9 @@
-#\DeclareLyXModule{Theorems (By Chapter)}
+#\DeclareLyXModule{Theorems (Order By Chapter)}
 #DescriptionBegin
 #Defines some theorem environments for use with non-AMS classes. The theorems are 
 #numbered by chapter.
 #DescriptionEnd
-#Excludes: Theorems (AMS, By Section) | Theorems (AMS) | Theorems | Theorems (By Section)
+#Requires: Theorems | Theorems (AMS)
 
 # Author: Richard Heck <rgheck@comcast.net>
 # Adapted from amsmaths.inc
@@ -15,4 +15,8 @@ Counter
 	Within         chapter
 End
 
-Input theorems.inc
+Style Theorem
+	Preamble
+		\newtheorem{thm}{Theorem}[chapter]
+	EndPreamble
+End

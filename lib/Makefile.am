@@ -1046,13 +1046,14 @@ dist_layouts_DATA =\
 	layouts/svprobth.layout \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
-	layouts/theorems.inc \
-	layouts/theorems-ams.inc \
+	layouts/theorems-ams-extended.module \
 	layouts/theorems-ams.module \
-	layouts/theorems-ams-withinsec.module \
+	layouts/theorems-chap.module \
+	layouts/theorems.inc \
+	layouts/theorems-proof.inc \
+	layouts/theorems-sec.module \
+	layouts/theorems-starred.inc \
 	layouts/theorems-std.module \
-	layouts/theorems-withinchap.module \
-	layouts/theorems-withinsec.module \
 	layouts/treport.layout
 
 scriptsdir = $(pkgdatadir)/scripts

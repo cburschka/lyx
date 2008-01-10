@@ -589,3 +589,35 @@ Style Case
 	  {\end{list}}
 	EndPreamble
 End
+
+Style Proof
+	Margin                First_Dynamic
+	LatexType             Environment
+	LatexName             proof
+	NextNoIndent          1
+	OptionalArgs          1
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           "Proof."
+	EndLabelType          Box
+	Font
+	  Shape               Up
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Italic
+	EndFont
+# We don't want the preamble from Theorem
+	Preamble
+	EndPreamble
+End
+
+

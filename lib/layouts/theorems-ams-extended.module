@@ -1,0 +1,271 @@
+#\DeclareLyXModule{Theorems (AMS-Extended)}
+#DescriptionBegin
+#Defines some additional theorem environments for use with the
+#AMS theorems packages. Includes Criterion, Algorithm, Axiom,
+#Condition, Note, Notation, Summary, Acknowledgement, Conclusion,
+#Fact, Assumption, and Case, in both starred and non-starred forms.
+#DescriptionEnd
+#Requires: Theorems (AMS)
+
+# Original Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
+
+Format 6
+
+Requires	amsmath
+
+# The environnements defined (regular and starred) are :
+# - Criterion
+# - Algorithm
+# - Axiom
+# - Condition
+# - Note
+# - Notation
+# - Summary
+# - Acknowledgement
+# - Conclusion
+# - Fact
+# - Assumption
+# - Case (regular only -- defined as an enumeration)
+
+Style Criterion
+	CopyStyle             Theorem
+	DependsOn	      Theorem
+	LatexName             criterion
+	LabelString           "Criterion \thetheorem."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{criterion}[thm]{Criterion}
+	EndPreamble
+End
+
+Style Criterion*
+	CopyStyle             Theorem*
+	LatexName             criterion*
+	LabelString           "Criterion."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{criterion*}{Criterion}
+	EndPreamble
+End
+
+
+Style Algorithm
+	CopyStyle             Theorem
+	DependsOn	      Theorem
+	LatexName             algorithm
+	LabelString           "Algorithm \thetheorem."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{algorithm}[thm]{Algorithm}
+	EndPreamble
+End
+
+
+Style Algorithm*
+	CopyStyle             Theorem*
+	LatexName             algorithm*
+	LabelString           "Algorithm."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{algorithm*}{Algorithm}
+	EndPreamble
+End
+
+
+Style Axiom
+	CopyStyle             Theorem
+	DependsOn	      Theorem
+	LatexName             ax
+	LabelString           "Axiom \thetheorem."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{ax}[thm]{Axiom}
+	EndPreamble
+End
+
+
+Style Axiom*
+	CopyStyle             Theorem*
+	LatexName             ax*
+	LabelString           "Axiom."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{ax*}{Axiom}
+	EndPreamble
+End
+
+
+Style Condition
+	CopyStyle             Definition
+	LatexName             condition
+	LabelString           "Condition \thetheorem."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem{condition}[thm]{Condition}
+	EndPreamble
+End
+
+
+Style Condition*
+	CopyStyle             Definition*
+	LatexName             condition*
+	LabelString           "Condition."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem*{condition*}{Condition}
+	EndPreamble
+End
+
+
+Style Note
+	CopyStyle             Remark
+	LatexName             note
+	LabelString           "Note \thetheorem."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem{note}[thm]{Note}
+	EndPreamble
+End
+
+
+Style Note*
+	CopyStyle             Remark*
+	LatexName             note*
+	LabelString           "Note."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{note*}{Note}
+	EndPreamble
+End
+
+
+Style Notation
+	CopyStyle             Remark
+	LatexName             notation
+	LabelString           "Notation \thetheorem."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem{notation}[thm]{Notation}
+	EndPreamble
+End
+
+
+Style Notation*
+	CopyStyle             Remark*
+	LatexName             notation*
+	LabelString           "Notation."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{notation*}{Notation}
+	EndPreamble
+End
+
+
+Style Summary
+	CopyStyle             Remark
+	LatexName             summary
+	LabelString           "Summary \thetheorem."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem{summary}[thm]{Summary}
+	EndPreamble
+End
+
+
+Style Summary*
+	CopyStyle             Remark*
+	LatexName             summary*
+	LabelString           "Summary."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{summary*}{Summary}
+	EndPreamble
+End
+
+
+Style Acknowledgement
+	CopyStyle             Remark
+	LatexName             acknowledgement
+	LabelString           "Acknowledgement \thetheorem."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem{acknowledgement}[thm]{Acknowledgement}
+	EndPreamble
+End
+
+
+Style Acknowledgement*
+	CopyStyle             Remark*
+	LatexName             acknowledgement*
+	LabelString           "Acknowledgement."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{acknowledgement*}{Acknowledgement}
+	EndPreamble
+End
+
+
+Style Conclusion
+	CopyStyle             Remark
+	LatexName             conclusion
+	LabelString           "Conclusion \thetheorem."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem{conclusion}[thm]{Conclusion}
+	EndPreamble
+End
+
+
+Style Conclusion*
+	CopyStyle             Remark*
+	LatexName             conclusion*
+	LabelString           "Conclusion."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{conclusion*}{Conclusion}
+	EndPreamble
+End
+
+
+Style Assumption
+	CopyStyle             Theorem
+	DependsOn	      Theorem
+	LatexName             assumption
+	LabelString           "Assumption \thetheorem."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{assumption}[thm]{Assumption}
+	EndPreamble
+End
+
+
+Style Assumption*
+	CopyStyle             Theorem*
+	LatexName             assumption*
+	LabelString           "Assumption."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{assumption*}{Assumption}
+	EndPreamble
+End
+
+
+# Define Case as an enumeration environment
+Style Case
+	CopyStyle             Enumerate
+	LatexName             caseenv
+	LabelType             Static
+	LeftMargin            "MMMMMMN"
+	LabelString           "Case #:"
+	Preamble
+	  \newcounter{casectr}
+	  \newenvironment{caseenv}
+{\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
+{\end{list}}
+	EndPreamble
+End
+

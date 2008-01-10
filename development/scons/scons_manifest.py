@@ -2607,7 +2607,8 @@ lib_layouts_inc_files = Split('''
     stdtitle.inc
     svjour.inc
     theorems.inc
-    theorems-ams.inc
+    theorems-proof.inc
+    theorems-starred.inc
 ''')
 
 
@@ -2618,11 +2619,11 @@ lib_layouts_module_files = Split('''
     hanging.module
     linguistics.module
     logicalmkup.module
+    theorems-ams-extended.module
     theorems-ams.module
-    theorems-ams-withinsec.module
+    theorems-chap.module
+    theorems-sec.module
     theorems-std.module
-    theorems-withinsec.module
-    theorems-withinchap.module
 ''')
 
 lib_scripts_files = Split('''

@@ -1,5 +1,8 @@
-# Author: Richard Heck <rgheck@comcast.net>
-# Adapted from amsmaths.inc
+# Original Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
 # The environnements defined are :
 # - Theorem
@@ -9,19 +12,20 @@
 # - Conjecture
 # - Definition
 # - Example
+# - Problem
 # - Exercise
 # - Remark
-# - Note
 # - Claim
-# - Case
-# - Conclusion
-# - Fact
+# - Proof
+
+Format 6
 
 Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
 	NextNoIndent          1
+	OptionalArgs          1
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4
@@ -33,7 +37,7 @@ Style Theorem
 	AlignPossible         Block, Left
 	LabelType             Counter
 	LabelCounter          theorem
-	LabelString           "Theorem \arabic{theorem}."
+	LabelString           "Theorem \thetheorem."
 	Font
 	  Shape               Italic
 	  Size                Normal
@@ -43,57 +47,75 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
 End
 
+
 Style Corollary
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{cor}[thm]{Corollary}
 	EndPreamble
 End
 
+
 Style Lemma
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{lem}[thm]{Lemma}
 	EndPreamble
 End
 
+
 Style Proposition
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{prop}[thm]{Proposition}
 	EndPreamble
 End
 
+
 Style Conjecture
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{conjecture}[thm]{Conjecture}
 	EndPreamble
 End
 
+
 Style Fact
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{fact}[thm]{Fact}
 	EndPreamble
 End
 
+
 Style Definition
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             defn
 	LabelString           "Definition \thetheorem."
 	Font
@@ -104,6 +126,7 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
+	  \theoremstyle{definition}
 	  \newtheorem{defn}[thm]{Definition}
 	EndPreamble
 End
@@ -114,7 +137,19 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
+	 \theoremstyle{definition}
 	  \newtheorem{example}[thm]{Example}
+	EndPreamble
+End
+
+
+Style Problem
+	CopyStyle             Definition
+	LatexName             problem
+	LabelString           "Problem \thetheorem."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem{problem}[thm]{Problem}
 	EndPreamble
 End
 
@@ -124,13 +159,15 @@ Style Exercise
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
 	Preamble
-	  \newtheorem{xca}{Exercise}
+	  \theoremstyle{definition}
+	  \newtheorem{xca}[thm]{Exercise}
 	EndPreamble
 End
 
 
 Style Remark
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             rem
 	LabelString           "Remark \thetheorem."
 	Font
@@ -142,6 +179,7 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
+	  \theoremstyle{remark}
 	  \newtheorem{rem}[thm]{Remark}
 	EndPreamble
 End
@@ -152,25 +190,9 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
 	Preamble
+	  \theoremstyle{remark}
 	  \newtheorem{claim}[thm]{Claim}
 	EndPreamble
 End
 
-Style Case
-	CopyStyle             Remark
-	LatexName             case
-	LabelString           "Case \thetheorem."
-	Preamble
-	  \newtheorem{case}[thm]{Case}
-	EndPreamble
-End
 
-
-Style Conclusion
-	CopyStyle             Remark
-	LatexName             conclusion
-	LabelString           "Conclusion \thetheorem."
-	Preamble
-	  \newtheorem{conclusion}[thm]{Conclusion}
-	EndPreamble
-End
