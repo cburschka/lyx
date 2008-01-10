@@ -494,19 +494,26 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 
 bool GuiWorkArea::event(QEvent * e)
 {
-    if (e->type() == QEvent::ToolTip) {
-         QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
-		 if (!lyxrc.use_tooltip)
-			 return QAbstractScrollArea::event(e);
-		 QPoint pos = helpEvent->pos();
-		 if (pos.x() < viewport()->width()) {
-			 QString s = toqstr(buffer_view_->toolTip(pos.x(), pos.y()));
-	         QToolTip::showText(helpEvent->globalPos(), s);
-		 }
-         else
-             QToolTip::hideText();
-     }
-     return QAbstractScrollArea::event(e);
+	switch (e->type()) {
+	case QEvent::ToolTip: {
+		QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
+		if (lyxrc.use_tooltip) {
+			QPoint pos = helpEvent->pos();
+			if (pos.x() < viewport()->width()) {
+				QString s = toqstr(buffer_view_->toolTip(pos.x(), pos.y()));
+				QToolTip::showText(helpEvent->globalPos(), s);
+			}
+			else
+				QToolTip::hideText();
+		}
+		// Don't forget to accept the event!
+		e->accept();
+		return true;
+	}
+	default:
+		return QAbstractScrollArea::event(e);
+	}
+	return false;
 }
 
 
