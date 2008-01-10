@@ -17,6 +17,7 @@
 # - Remark
 # - Claim
 # - Proof
+# - Case (regular only -- defined as an enumeration)
 
 Format 6
 
@@ -196,3 +197,17 @@ Style Claim
 End
 
 
+# Define Case as an enumeration environment
+Style Case
+	CopyStyle             Enumerate
+	LatexName             caseenv
+	LabelType             Static
+	LeftMargin            "MMMMMMN"
+	LabelString           "Case #:"
+	Preamble
+	  \newcounter{casectr}
+	  \newenvironment{caseenv}
+{\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
+{\end{list}}
+	EndPreamble
+End
