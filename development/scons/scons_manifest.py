@@ -2573,7 +2573,6 @@ lib_layouts_inc_files = Split('''
     agu_stdtitle.inc
     aguplus.inc
     amsdefs.inc
-    amsmaths.inc
     db_lyxmacros.inc
     db_stdcharstyles.inc
     db_stdclass.inc
