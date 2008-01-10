@@ -930,13 +930,9 @@ dist_layouts_DATA =\
 	layouts/agu_stdtitle.inc \
 	layouts/agums.layout \
 	layouts/aguplus.inc \
-	layouts/amsart-plain.layout \
-	layouts/amsart-seq.layout \
 	layouts/amsart.layout \
 	layouts/amsbook.layout \
 	layouts/amsdefs.inc \
-	layouts/amsmaths-plain.inc \
-	layouts/amsmaths-seq.inc \
 	layouts/apa.layout \
 	layouts/arab-article.layout \
 	layouts/armenian-article.layout \

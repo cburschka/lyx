@@ -2484,8 +2484,6 @@ lib_layouts_files = Split('''
     aastex.layout
     agu-dtd.layout
     agums.layout
-    amsart-plain.layout
-    amsart-seq.layout
     amsart.layout
     amsbook.layout
     apa.layout
@@ -2575,8 +2573,6 @@ lib_layouts_inc_files = Split('''
     agu_stdtitle.inc
     aguplus.inc
     amsdefs.inc
-    amsmaths-plain.inc
-    amsmaths-seq.inc
     amsmaths.inc
     db_lyxmacros.inc
     db_stdcharstyles.inc
