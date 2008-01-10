@@ -61,7 +61,8 @@ Paragraph & CursorSlice::paragraph() const
 pos_type CursorSlice::lastpos() const
 {
 	BOOST_ASSERT(inset_);
-	return inset_->asInsetMath() ? cell().size() : paragraph().size();
+	return inset_->asInsetMath() ? cell().size() 
+		: (text()->empty() ? 0 : paragraph().size());
 }
 
 
