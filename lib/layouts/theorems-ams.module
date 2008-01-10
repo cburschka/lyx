@@ -1,9 +1,11 @@
 #\DeclareLyXModule{Theorems (AMS)}
 #DescriptionBegin
 #Defines theorem environments and the proof environment using the extended 
-#AMS machinery. The theorems are numbered consecutively throughout the document. 
+#AMS machinery. Both numbered and unnumbered types are provided. By default, 
+#the theorems are numbered consecutively throughout the document. This can be
+#changed by loading one of the Theorems (Ordered By ...) modules.
 #DescriptionEnd
-#Excludes: Theorems
+#Excludes: Theorems | Theorems (Starred)
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>

@@ -1,9 +1,10 @@
 #\DeclareLyXModule{Theorems}
 #DescriptionBegin
-#Defines some theorem environments for use with non-AMS classes. The theorems are 
-#numbered consecutively throughout the document. 
+#Defines some theorem environments for use with non-AMS classes. By default, 
+#the theorems are numbered consecutively throughout the document. This can be
+#changed by loading one of the Theorems (Ordered By ...) modules.
 #DescriptionEnd
-#Excludes: Theorems (AMS)
+#Excludes: Theorems (AMS) | Theorems (Starred)
 
 # Author: Richard Heck <rgheck@comcast.net>
 
