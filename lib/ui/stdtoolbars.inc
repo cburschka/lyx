@@ -183,7 +183,7 @@ ToolbarSet
 		Minibuffer
 	End
 	
-	Toolbar "review" "Review"
+	Toolbar "review" "Review[[Toolbar]]"
 		Item "Track changes" "changes-track"
 		Item "Show changes in output" "changes-output"
 		Separator
