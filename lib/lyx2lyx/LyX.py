@@ -80,7 +80,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 2)),
-                   ("1_6", range(277,311), minor_versions("1.6" , 0))] # Bernhard Reiter: \nocite{*}
+                   ("1_6", range(277,312), minor_versions("1.6" , 0))] # Richard Heck: AMS conversion
 
 
 def formats_list():
@@ -388,6 +388,28 @@ class LyX_base:
     def set_textclass(self):
         i = find_token(self.header, "\\textclass", 0)
         self.header[i] = "\\textclass %s" % self.textclass
+
+
+    #Note that the module will be added at the END of the extant ones
+    def add_module(self, module):
+      i = find_token(self.header, "\\begin_modules", 0)
+      if i == -1:
+        #No modules yet included
+        i = find_token(self.header, "\\textclass", 0)
+        if i == -1:
+          self.warning("Malformed LyX document: No \\textclass!!")
+          return
+        modinfo = ["\\begin_modules", module, "\\end_modules"]
+        self.header[i + 1: i + 1] = modinfo
+        return
+      j = find_token(self.header, "\\end_modules", i)
+      if j == -1:
+        self.warning("Malformed LyX document: No \\end_modules.")
+        return
+      k = find_token(self.header, module, i)
+      if k != -1 and k < j:
+        return
+      self.header.insert(j, module)
 
 
     def set_parameter(self, param, value):

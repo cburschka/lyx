@@ -36,27 +36,6 @@ def wrap_into_ert(string, src, dst):
     return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n' 
       + dst + '\n\\end_layout\n\\end_inset\n')
 
-def add_module(module):
-  i = find_token(document.header, "\\begin_modules", 0)
-  if i == -1:
-    #No modules yet included
-    i = find_token(document.header, "\\textclass", 0)
-    if i == -1:
-      document.warning("Malformed LyX document: No \\textclass!!")
-      return
-    modinfo = ["\\begin_modules", module, "\\end_modules"]
-    document.header[i + 1: i + 1] = modinfo
-    return
-  j = find_token(document.header, "\\end_modules", i)
-  if j == -1:
-    document.warning("Malformed LyX document: No \\end_modules.")
-    return
-  k = find_token(document.header, module, i)
-  if k != -1 and k < j:
-    return
-  document.header.insert(i + 1, module)
-
-
 ####################################################################
 
 def fix_wrong_tables(document):
@@ -633,6 +612,43 @@ def convert_url(document):
       document.body[i:k] = newstuff
       i = k
 
+def convert_ams_classes(document):
+  tc = document.textclass
+  if (tc != "amsart" and tc != "amsart-plain" and
+      tc == "amsart-seq" and tc == "amsbook"):
+    return
+  if tc == "amsart-plain":
+    document.textclass = "amsart"
+    document.set_textclass()
+    document.add_module("Theorems (Starred)")
+    return
+  if tc == "amsart-seq":
+    document.textclass = "amsart"
+    document.set_textclass()
+  document.add_module("Theorems (AMS)")
+
+  #Now we want to see if any of the environments in the extended theorems
+  #module were used in this document. If so, we'll add that module, too.
+  layouts = ["Criterion", "Algorithm", "Axiom", "Condition", "Note",  \
+    "Notation", "Summary", "Acknowledgement", "Conclusion", "Fact", \
+    "Assumption"]
+
+  r = re.compile(r'^\\begin_layout (.*?)\*?\s*$')
+  i = 0
+  while True:
+    i = find_token(document.body, "\\begin_layout", i)
+    if i == -1:
+      return
+    m = r.match(document.body[i])
+    if m == None:
+      document.warning("Weirdly formed \\begin_layout at line " + i + " of body!")
+      i += 1
+      continue
+    m = m.group(1)
+    if layouts.count(m) != 0:
+      document.add_module("Theorems (AMS-Extended)")
+      return
+    i += 1
 
 def revert_href(document):
     'Reverts hyperlink insets (href) to url insets (url)'
@@ -1114,10 +1130,12 @@ convert = [[277, [fix_wrong_tables]],
            [307, []],
            [308, []],
            [309, []],
-           [310, []]
+           [310, []],
+           [311, [convert_ams_classes]]
           ]
 
-revert =  [[309, [revert_btprintall]],
+revert =  [[310, []],
+           [309, [revert_btprintall]],
            [308, [revert_nocite]],
            [307, [revert_serbianlatin]],
            [306, [revert_slash, revert_nobreakdash]],

@@ -118,7 +118,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 310; // Bernhard Reiter: support for \nocite{*}
+int const LYX_FORMAT = 311; // Richard Heck: a dummy format to drive the AMS conversion
 
 } // namespace anon
 
