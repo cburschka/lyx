@@ -574,24 +574,23 @@ bool GuiView::event(QEvent * e)
 		}
 		return QMainWindow::event(e);
 	}
+
 	case QEvent::ShortcutOverride: {
+		if (d.current_work_area_)
+			// Nothing special to do.
+			return QMainWindow::event(e);
+
+		// Allow processing of shortcuts that are allowed even when no Buffer
+		// is viewed.
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		if (!d.current_work_area_) {
-			theLyXFunc().setLyXView(this);
-			KeySymbol sym;
-			setKeySymbol(&sym, ke);
-			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
-			e->accept();
-			return true;
-		}
-		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
-			KeySymbol sym;
-			setKeySymbol(&sym, ke);
-			d.current_work_area_->processKeySym(sym, NoModifier);
-			e->accept();
-			return true;
-		}
+		theLyXFunc().setLyXView(this);
+		KeySymbol sym;
+		setKeySymbol(&sym, ke);
+		theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
+		e->accept();
+		return true;
 	}
+
 	default:
 		return QMainWindow::event(e);
 	}

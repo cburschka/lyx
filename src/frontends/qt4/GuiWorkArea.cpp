@@ -510,6 +510,18 @@ bool GuiWorkArea::event(QEvent * e)
 		e->accept();
 		return true;
 	}
+
+	case QEvent::ShortcutOverride: {
+		// We catch this event in order to catch the Tab or Shift+Tab key press
+		// which are otherwise reserved to focus switching between controls
+		// within a dialog.
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+		if (ke->key() != Qt::Key_Tab && ke->key() != Qt::Key_Backtab)
+			return QAbstractScrollArea::event(e);
+		keyPressEvent(ke);
+		return true;
+	}
+
 	default:
 		return QAbstractScrollArea::event(e);
 	}
@@ -700,6 +712,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
 	processKeySym(sym, q_key_state(ev->modifiers()));
+	ev->accept();
 }
 
 
