@@ -225,10 +225,9 @@ int InsetSpace::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetSpace::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetSpace::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	plaintext(buf, os, OutputParams(0));
 }
 
 

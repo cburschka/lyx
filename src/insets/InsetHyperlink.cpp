@@ -157,10 +157,9 @@ int InsetHyperlink::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetHyperlink::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetHyperlink::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	plaintext(buf, os, OutputParams(0));
 }
 
 

@@ -145,10 +145,9 @@ int InsetRef::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetRef::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetRef::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	plaintext(buf, os, OutputParams(0));
 }
 
 

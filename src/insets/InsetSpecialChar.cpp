@@ -287,10 +287,9 @@ int InsetSpecialChar::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetSpecialChar::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetSpecialChar::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	plaintext(buf, os, OutputParams(0));
 }
 
 
