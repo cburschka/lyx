@@ -1188,9 +1188,10 @@ void GuiDocument::classChanged()
 {
 	textclass_type const tc = latexModule->classCO->currentIndex();
 	bp_.setBaseClass(tc);
-	if (lyxrc.auto_reset_options)
+	if (lyxrc.auto_reset_options) {
 		bp_.useClassDefaults();
-	updateContents();
+		updateContents();
+	}
 }
 
 
