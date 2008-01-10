@@ -3,7 +3,6 @@
 
 Format 6
 
-#Get the order right
 Style Theorem
 	CopyStyle Theorem*
 End
