@@ -24,7 +24,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Spanish, new Russian translation of the user interface.
+- Updated Spanish translation of the user interface.
+
+- New Russian translation of the user interface.
 
 - Updated French and Spanish Introduction manual.
 
@@ -91,6 +93,9 @@ What's new
 
 - Overwrite selected text when inserting from the math panel (bug 4055,
   part 2).
+
+- Fix copying of insets to external clipboard and display of insets
+  in the navigaton menu (bug 4472).
 
 - Fix pasting of multiple tabular cells on Mac and Windows (bug 4436).
 
