@@ -534,7 +534,8 @@ char const * simplefeatures[] = {
 	"csquotes",
 	"enumitem",
 	"endnotes",
-	"ifthen"
+	"ifthen",
+	"amsthm"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -575,7 +576,7 @@ string const LaTeXFeatures::getPackages() const
 	     params_.use_esint == BufferParams::package_off)) {
 		packages << "\\usepackage{amsmath}\n";
 	}
-
+	
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
 	// wasysym redefines some integrals (e.g. iint) from amsmath. That
