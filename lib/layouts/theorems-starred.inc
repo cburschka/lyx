@@ -21,10 +21,30 @@
 Format 6
 
 Style Theorem*
-	CopyStyle             Theorem
+	LatexType             Environment
+	Margin                First_Dynamic
 	LatexName             thm*
 	LabelType             Static
 	LabelString           "Theorem."
+	NextNoIndent          1
+	OptionalArgs          1
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Left
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem*{thm*}{Theorem}
@@ -88,10 +108,13 @@ End
 
 
 Style Definition*
-	CopyStyle             Definition
+	CopyStyle             Theorem*
 	LatexName             defn*
-	LabelType             Static
+#LabelType             Static
 	LabelString           "Definition."
+	Font
+	  Shape               Up
+	EndFont
 	Preamble
 	 \theoremstyle{definition}
 	 \newtheorem*{defn*}{Definition}
@@ -133,10 +156,17 @@ End
 
 
 Style Remark*
-	CopyStyle             Remark
+	CopyStyle             Theorem*
 	LatexName             rem*
-	LabelType             Static
 	LabelString           "Remark."
+	Font
+	  Shape               Up
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Series              Medium
+	  Shape               Italic
+	EndFont
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}

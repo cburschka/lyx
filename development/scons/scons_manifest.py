@@ -2607,8 +2607,10 @@ lib_layouts_inc_files = Split('''
     stdtitle.inc
     svjour.inc
     theorems.inc
+    theorems-order.inc
     theorems-proof.inc
     theorems-starred.inc
+    theorems-starred-equivalents.inc
 ''')
 
 
@@ -2623,6 +2625,7 @@ lib_layouts_module_files = Split('''
     theorems-ams.module
     theorems-chap.module
     theorems-sec.module
+    theorems-starred.module
     theorems-std.module
 ''')
 

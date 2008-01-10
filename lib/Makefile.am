@@ -1049,10 +1049,12 @@ dist_layouts_DATA =\
 	layouts/theorems-ams.module \
 	layouts/theorems-chap.module \
 	layouts/theorems.inc \
+	layouts/theorems-order.inc \
 	layouts/theorems-proof.inc \
 	layouts/theorems-sec.module \
 	layouts/theorems-starred.inc \
 	layouts/theorems-starred.module \
+	layouts/theorems-starred-equivalents.inc \
 	layouts/theorems-std.module \
 	layouts/treport.layout
 

@@ -35,7 +35,7 @@ Style Theorem
 	BottomSep             0.7
 	ParSep                0.3
 	Align                 Block
-	AlignPossible         Block, Left
+	AlignPossible         Left
 	LabelType             Counter
 	LabelCounter          theorem
 	LabelString           "Theorem \thetheorem."
