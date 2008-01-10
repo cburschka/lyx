@@ -9,10 +9,13 @@
 
 # Full author contact details are available in file CREDITS
 
-# This script will update a .layout file to format 3
+# This script will update a .layout file to format 6
 
 
 import os, re, string, sys
+
+
+currentFormat = 6
 
 
 def usage(prog_name):
@@ -135,10 +138,10 @@ def convert(lines):
                 match = re_Format.match(lines[i])
                 if match:
                         format = int(match.group(4))
-                        if format > 1 and format < 5:
+                        if format > 1 and format < currentFormat:
                             lines[i] = "Format %d" % (format + 1)
                             only_comment = 0
-                        elif format == 5:
+                        elif format == currentFormat:
                                 # nothing to do
                                 return format
                         else:
@@ -154,6 +157,10 @@ def convert(lines):
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 5:
+          i += 1
+          continue
 
         if format == 4:
             # Handle conversion to long CharStyle names
@@ -396,7 +403,7 @@ def main(argv):
     # Do the real work
     lines = read(input)
     format = 1
-    while (format < 4):
+    while (format < currentFormat):
         format = convert(lines)
     write(output, lines)
 
