@@ -312,7 +312,8 @@ INPUT                  = @top_srcdir@/src
 
 FILE_PATTERNS          = *.C \
                          *.h \
-                         *.c
+                         *.c \
+			 *.cpp
 
 # The RECURSIVE tag can be used to turn specify whether or not subdirectories 
 # should be searched for input files as well. Possible values are YES and NO. 
