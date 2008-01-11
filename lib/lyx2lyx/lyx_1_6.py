@@ -615,7 +615,7 @@ def convert_url(document):
 def convert_ams_classes(document):
   tc = document.textclass
   if (tc != "amsart" and tc != "amsart-plain" and
-      tc == "amsart-seq" and tc == "amsbook"):
+      tc != "amsart-seq" and tc != "amsbook"):
     return
   if tc == "amsart-plain":
     document.textclass = "amsart"

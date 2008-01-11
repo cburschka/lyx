@@ -23,7 +23,6 @@ import sys
 import LyX
 
 if __name__ == "__main__":
-
     args = {}
     args["usage"] = "usage: %prog [options] [file]"
 
