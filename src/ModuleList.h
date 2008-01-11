@@ -57,7 +57,7 @@ private:
 	std::string filename;
 	/// a short description for use in the ui
 	std::string description;
-	/// the LaTeX packages on which this depends, if any (not implemented)
+	/// the LaTeX packages on which this depends, if any
 	std::vector<std::string> packageList;
 	/// Modules this one requires: at least one
 	std::vector<std::string> requiredModules;
