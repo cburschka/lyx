@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -889,6 +889,24 @@ completas
 hace que LyX busque solamente palabras completas, p.\InsetSpace \thinspace{}
 e., si buscamos «estrella»
  se ignorarán palabras como «estrellado».
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Things like notes, floats, etc., the so called insets can be dissolved.
+ This means that the inset is deleted and its content is left as normal
+ text.
+ Dissolving an inset is done by setting the cursor at the beginning of an
+ inset and pressing 
+\family sans
+Backspace
+\family default
+ or by setting the cursor to the end and pressing 
+\family sans
+Delete
+\family default
+.
 \end_layout
 
 \begin_layout Section
