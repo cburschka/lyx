@@ -963,24 +963,30 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			from = doc_iterator_begin(buffer_->inset());
 			to = doc_iterator_end(buffer_->inset());
 		}
-		int const count = countWords(from, to);
+		int const words = countWords(from, to);
+		int const chars = countChars(from, to, false);
+		int const chars_blanks = countChars(from, to, true);
 		docstring message;
-		if (count != 1) {
-			if (cur.selection())
-				message = bformat(_("%1$d words in selection."),
-					  count);
-				else
-					message = bformat(_("%1$d words in document."),
-							  count);
-		}
-		else {
-			if (cur.selection())
-				message = _("One word in selection.");
-			else
-				message = _("One word in document.");
-		}
+		if (cur.selection())
+			message = _("Statistics for the selection:\n");
+		else
+			message = _("Statistics for the document:\n");
+		if (words != 1)
+			message += bformat(_("\n%1$d words"), words);
+		else
+			message += _("\nOne word");
+		if (chars_blanks != 1)
+			message += bformat(_("\n%1$d characters (including blanks)"),
+					  chars_blanks);
+		else
+			message += _("\nOne character (including blanks)");
+		if (chars != 1)
+			message += bformat(_("\n%1$d characters (excluding blanks)"),
+					  chars);
+		else
+			message += _("\nOne character (excluding blanks)");
 
-		Alert::information(_("Count words"), message);
+		Alert::information(_("Statistics"), message);
 	}
 		break;
 

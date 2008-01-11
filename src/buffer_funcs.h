@@ -56,6 +56,9 @@ void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
 
+/// Count the number of chars in the text between these two iterators
+int countChars(DocIterator const & from, DocIterator const & to, bool with_blanks);
+
 /// updates all counters
 void updateLabels(Buffer const &, bool childonly = false);
 
