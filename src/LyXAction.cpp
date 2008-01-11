@@ -59,7 +59,11 @@ void LyXAction::newFunc(kb_action action, string const & name,
 }
 
 
+// Needed for LFUNs documentation to be accepted, since doxygen won't take
+// \var inside functions.
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
 void LyXAction::init()
+#endif
 {
 	// This function was changed to use the array below in initalization
 	// instead of calling newFunc numerous times because of compilation
