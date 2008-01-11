@@ -192,22 +192,12 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	// use such filenames.)
 	// Otherwise, store the (maybe absolute) path to the original,
 	// unmangled database name.
-	typedef boost::char_separator<char_type> Separator;
-	typedef boost::tokenizer<Separator, docstring::const_iterator, docstring> Tokenizer;
-
-	Separator const separator(from_ascii(",").c_str());
-	// The tokenizer must not be called with temporary strings, since
-	// it does not make a copy and uses iterators of the string further
-	// down. getParam returns a reference, so this is OK.
-	Tokenizer const tokens(getParam("bibfiles"), separator);
-	Tokenizer::const_iterator const begin = tokens.begin();
-	Tokenizer::const_iterator const end = tokens.end();
-
+	EmbeddedFileList const bibs = getFiles(buffer);
+	EmbeddedFileList::const_iterator it = bibs.begin();
+	EmbeddedFileList::const_iterator it_end = bibs.end();
 	odocstringstream dbs;
-	for (Tokenizer::const_iterator it = begin; it != end; ++it) {
-		docstring const input = trim(*it);
-		// FIXME UNICODE
-		string utf8input = to_utf8(input);
+	for (; it != it_end; ++it) {
+		string utf8input = removeExtension(it->availableFile().absFilename());
 		string database =
 			normalizeName(buffer, runparams, utf8input, ".bib");
 		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
@@ -236,7 +226,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 							    from_utf8(database));
 		}
 
-		if (it != begin)
+		if (it != bibs.begin())
 			dbs << ',';
 		// FIXME UNICODE
 		dbs << from_utf8(latex_path(database));
