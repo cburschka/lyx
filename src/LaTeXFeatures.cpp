@@ -510,6 +510,7 @@ char const * simplefeatures[] = {
 	  the `float' package. See the caption package documentation
 	  for explanation.*/
 	"float",
+	"rotfloat",
 	"wrapfig",
 	"booktabs",
 	"dvipost",

@@ -118,7 +118,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 311; // Richard Heck: a dummy format to drive the AMS conversion
+int const LYX_FORMAT = 312; // JSpitzm: rotfloat support
 
 } // namespace anon
 

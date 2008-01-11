@@ -36,6 +36,15 @@ def wrap_into_ert(string, src, dst):
     return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n' 
       + dst + '\n\\end_layout\n\\end_inset\n')
 
+def add_to_preamble(document, text):
+    """ Add text to the preamble if it is not already there.
+    Only the first line is checked!"""
+
+    if find_token(document.preamble, text[0], 0) != -1:
+        return
+
+    document.preamble.extend(text)
+
 ####################################################################
 
 def fix_wrong_tables(document):
@@ -1092,6 +1101,77 @@ def revert_serbianlatin(document):
         j = j + 1
 
 
+def revert_rotfloat(document):
+    " Revert sidewaysalgorithm. "
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Float algorithm', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        if get_value(document.body, 'sideways', i, j) != "false":
+            l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
+            if l == -1:
+                document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
+                return
+            document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
+            '\\begin_layout Standard\n\n\n\\backslash\n' \
+            'end{sidewaysalgorithm}\n\\end_layout\n\n\\end_inset\n'
+            del document.body[i+1:l-1]
+            document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
+            '\\begin_layout Standard\n\n\n\\backslash\n' \
+            'begin{sidewaysalgorithm}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
+            add_to_preamble(document,
+                            ['% Commands inserted by lyx2lyx for sideways algorithm float',
+                             '\\usepackage{rotfloat}\n'
+                             '\\floatstyle{ruled}\n'
+                             '\\newfloat{algorithm}{tbp}{loa}\n'
+                             '\\floatname{algorithm}{Algorithm}\n'])
+            i = i + 1
+            continue
+        i = i + 1
+
+
+def revert_widesideways(document):
+    " Revert wide sideways floats. "
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Float', i)
+        if i == -1:
+            return
+        floatline = document.body[i]
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        if get_value(document.body, 'sideways', i, j) != "false":
+            if get_value(document.body, 'wide', i, j) != "false":
+                l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
+                if l == -1:
+                    document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
+                    return
+                floattype = "table"
+                if floatline == "\\begin_inset Float figure":
+                    floattype = "figure"
+                document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Standard\n\n\n\\backslash\n' \
+                'end{sideways' + floattype + '*}\n\\end_layout\n\n\\end_inset\n'
+                del document.body[i+1:l-1]
+                document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Standard\n\n\n\\backslash\n' \
+                'begin{sideways' + floattype + '*}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
+                add_to_preamble(document,
+                                ['\\usepackage{rotfloat}\n'])
+                i = i + 1
+                continue
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1131,10 +1211,12 @@ convert = [[277, [fix_wrong_tables]],
            [308, []],
            [309, []],
            [310, []],
-           [311, [convert_ams_classes]]
+           [311, [convert_ams_classes]],
+           [312, []],
           ]
 
-revert =  [[310, []],
+revert =  [[311, [revert_rotfloat, revert_widesideways]],
+           [310, []],
            [309, [revert_btprintall]],
            [308, [revert_nocite]],
            [307, [revert_serbianlatin]],

@@ -1826,20 +1826,35 @@ def convert_float(document):
 
 
 def revert_float(document):
-    " Revert sideway floats. "
+    " Revert sideways floats. "
     i = 0
     while 1:
         i = find_token_exact(document.body, '\\begin_inset Float', i)
         if i == -1:
             return
+        floatline = document.body[i]
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
             i = i + 1
             continue
         if get_value(document.body, 'sideways', i, j) != "false":
-            document.warning("Conversion of 'sideways true' not yet implemented.")
-            # Don't remove 'sideways' so that people will get warnings by lyx
+            l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
+            if l == -1:
+                document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
+                return
+            floattype = "table"
+            if floatline == "\\begin_inset Float figure":
+                floattype = "figure"
+            document.body[j] = '\\layout Standard\n\\begin_inset ERT\nstatus Collapsed\n\n' \
+            '\\layout Standard\n\n\n\\backslash\n' \
+            'end{sideways' + floattype + '}\n\n\\end_inset\n'
+            del document.body[i+1:l-1]
+            document.body[i] = '\\begin_inset ERT\nstatus Collapsed\n\n' \
+            '\\layout Standard\n\n\n\\backslash\n' \
+            'begin{sideways' + floattype + '}\n\n\\end_inset\n\n'
+            add_to_preamble(document,
+                            ['\\usepackage{rotfloat}\n'])
             i = i + 1
             continue
         del_token(document.body, 'sideways', i, j)

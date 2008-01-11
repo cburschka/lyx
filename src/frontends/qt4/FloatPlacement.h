@@ -46,6 +46,10 @@ public Q_SLOTS:
 Q_SIGNALS:
 	void changed();
 
+private:
+	/// one of figure or table?
+	bool standardfloat_;
+
 };
 
 

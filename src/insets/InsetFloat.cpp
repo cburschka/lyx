@@ -261,7 +261,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	}
 
 	if (params_.sideways)
-		features.require("rotating");
+		features.require("rotfloat");
 
 	features.useFloat(params_.type);
 	InsetCollapsable::validate(features);
@@ -284,13 +284,13 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getTextClass().floats();
-	string tmptype = (params_.wide ? params_.type + "*" : params_.type);
-	if (params_.sideways) {
-		if (params_.type == "table")
-			tmptype = "sidewaystable";
-		else if (params_.type == "figure")
-			tmptype = "sidewaysfigure";
-	}
+	string tmptype = params_.type;
+	if (params_.sideways)
+		tmptype = "sideways" + params_.type;
+	if (params_.wide && (!params_.sideways ||
+			     params_.type == "figure" ||
+			     params_.type == "table"))
+		tmptype += "*";
 	// Figure out the float placement to use.
 	// From lowest to highest:
 	// - float default placement

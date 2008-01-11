@@ -112,6 +112,9 @@ void FloatPlacement::set(lyx::InsetFloatParams const & params)
 {
 	set(params.placement);
 
+	standardfloat_ = (params.type == "figure"
+		|| params.type == "table");
+
 	if (params.wide) {
 		herepossiblyCB->setChecked(false);
 		heredefinitelyCB->setChecked(false);
@@ -120,8 +123,8 @@ void FloatPlacement::set(lyx::InsetFloatParams const & params)
 
 	spanCB->setChecked(params.wide);
 	sidewaysCB->setChecked(params.sideways);
-	sidewaysCB->setEnabled(params.type == "figure"
-		|| params.type == "table");
+	// the package rotfloat only has *-versions for figure and table
+	spanCB->setEnabled(!params.sideways || standardfloat_);
 	checkAllowed();
 }
 
@@ -225,7 +228,7 @@ void FloatPlacement::checkAllowed()
 		ignoreCB->setEnabled(!sideways && !defaults && ignore);
 		herepossiblyCB->setEnabled(!sideways && !defaults && !span);
 		heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
-		spanCB->setEnabled(!sideways);
+		spanCB->setEnabled(!sideways || standardfloat_);
 	} else {
 		topCB->setEnabled(!defaults);
 		bottomCB->setEnabled(!defaults);
