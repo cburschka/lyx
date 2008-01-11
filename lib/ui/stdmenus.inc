@@ -183,8 +183,8 @@ Menuset
 	End
 
 	Menu "edit_math"
-		Item "Number whole Formula|N" "math-number"
-		Item "Number this Line|u" "math-nonumber"
+		Item "Number whole Formula|N" "math-number-toggle"
+		Item "Number this Line|u" "math-number-line-toggle"
 		Submenu "Change Limits Type|L" "edit_math_limits"
 		Submenu "Macro Definition" "edit_math_macro_definition"
 		Separator

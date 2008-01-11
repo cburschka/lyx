@@ -273,21 +273,21 @@ enum kb_action {
 	LFUN_MATH_DISPLAY,              // Alejandro 180696
 	LFUN_MATH_MODE,                 // Alejandro 040696
 /**
- * LFUN_MATH_NUMBER
- * \li Action: Enable numbering of the current formula.
+ * LFUN_MATH_NUMBER_TOGGLE
+ * \li Action: Toggles numbering of the current formula.
  * \li Notion: Must be in display formula mode.
- * \li Syntax: math-number
+ * \li Syntax: math-number-toggle
  * \li Origin: Alejandro 4 Jun 1996
  */
-	LFUN_MATH_NUMBER,
+	LFUN_MATH_NUMBER_TOGGLE,
 /**
- * LFUN_MATH_NONUMBER
- * \li Action: Disable numbering of the current formula.
+ * LFUN_MATH_NUMBER_LINE_TOGGLE
+ * \li Action: Toggles numbering of the current formula line.
  * \li Notion: Must be in display formula mode.
- * \li Syntax: math-nonumber
+ * \li Syntax: math-number-line-toggle
  * \li Origin: Alejandro 18 Jun 1996
  */
-	LFUN_MATH_NONUMBER,
+	LFUN_MATH_NUMBER_LINE_TOGGLE,
 	LFUN_MATH_SIZE,                 // Alejandro 150896
 	// 110
 	LFUN_MATH_MACRO,                // ale970510

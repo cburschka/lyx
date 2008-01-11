@@ -1050,7 +1050,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetMathGrid::doDispatch(cur, cmd);
 		break;
 
-	case LFUN_MATH_NUMBER: {
+	case LFUN_MATH_NUMBER_TOGGLE: {
 		//lyxerr << "toggling all numbers" << endl;
 		cur.recordUndoInset();
 		bool old = numberedType();
@@ -1064,7 +1064,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MATH_NONUMBER: {
+	case LFUN_MATH_NUMBER_LINE_TOGGLE: {
 		cur.recordUndoInset();
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		bool old = numbered(r);
@@ -1171,13 +1171,13 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// we handle these
 		status.enabled(true);
 		return true;
-	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
 		status.enabled(display());
 		status.setOnOff(numberedType());
 		return true;
-	case LFUN_MATH_NONUMBER: {
+	case LFUN_MATH_NUMBER_LINE_TOGGLE: {
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
 		status.enabled(display());

@@ -51,8 +51,8 @@
 \bind "M-m S-L space"		"math-limits empty"
 
 
-\bind "M-m n"			"math-number"
-\bind "M-m S-N"			"math-nonumber"
+\bind "M-m n"			"math-number-toggle"
+\bind "M-m S-N"			"math-number-line-toggle"
 \bind "M-m 8"			"math-insert \infty"
 
 \bind "M-m o 1"   "self-insert \#1"

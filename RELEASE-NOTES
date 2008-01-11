@@ -33,6 +33,12 @@ Some of the LyX functions have changed names:
 - The function LFUN_WORDS_COUNT, "words-count", has been replaced by
   LFUN_STATISTICS, "statistics", which counts more than words.
 
+- The function LFUN_MATH_NUMBER, "math-number", has been renamed to
+  LFUN_MATH_NUMBER_TOGGLE.
+
+- The function LFUN_MATH_NONUMBER, "math-nonumber", has been renamed to
+  LFUN_MATH_NUMBER_LINE_TOGGLE.
+
 
 The following new LyX functions have been introduced:
 
