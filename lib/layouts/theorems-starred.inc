@@ -115,6 +115,10 @@ Style Definition*
 	Font
 	  Shape               Up
 	EndFont
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
 	Preamble
 	 \theoremstyle{definition}
 	 \newtheorem*{defn*}{Definition}

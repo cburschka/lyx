@@ -202,7 +202,7 @@ Style Case
 	CopyStyle             Enumerate
 	LatexName             caseenv
 	LabelType             Static
-	LeftMargin            "MMMMMMN"
+	LeftMargin            "Case ###:"
 	LabelString           "Case #:"
 	Preamble
 	  \newcounter{casectr}
