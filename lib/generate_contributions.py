@@ -1433,6 +1433,14 @@ contributers = [
                  "22 February 2005",
                  u"rotation of wysiwyg figures"),
 
+     contributer(u"Horst Schirmeier",
+                 "horst () schirmeier ! com",
+                 "GPL",
+                 "Re: [patch] reordering capabilities for GuiBibtex",
+                 "m=120009631506298",
+                 "12 January 2008",
+                 u"small fixes"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
