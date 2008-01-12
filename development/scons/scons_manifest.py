@@ -730,6 +730,7 @@ src_frontends_qt4_header_files = Split('''
     GuiGraphics.h
     GuiGraphicsUi.h
     GuiHyperlink.h
+    GuiIdListModel.h
     GuiImage.h
     GuiInclude.h
     GuiIndex.h
@@ -818,6 +819,7 @@ src_frontends_qt4_files = Split('''
     GuiFontMetrics.cpp
     GuiGraphics.cpp
     GuiHyperlink.cpp
+    GuiIdListModel.cpp 
     GuiImage.cpp
     GuiInclude.cpp
     GuiIndex.cpp

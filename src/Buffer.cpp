@@ -118,7 +118,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 312; // JSpitzm: rotfloat support
+int const LYX_FORMAT = 313; // Richard Heck: conversion of module representations
 
 } // namespace anon
 

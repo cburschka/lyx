@@ -34,13 +34,15 @@ namespace lyx {
 ModuleList moduleList;
 
 
-LyXModule::LyXModule(string const & n, string const & f, 
+LyXModule::LyXModule(string const & n, string const & i, 
 	                   string const & d, vector<string> const & p,
 	                   vector<string> const & r, vector<string> const & e):
-	name(n), filename(f), description(d), 
+	name(n), id(i), description(d), 
 	packageList(p), requiredModules(r), excludedModules(e),
 	checked(false)
-{}
+{
+	filename = id + ".module";
+}
 
 
 bool LyXModule::isAvailable() {
@@ -204,11 +206,22 @@ LyXModuleList::iterator ModuleList::end()
 }
 
 
-LyXModule * ModuleList::operator[](string const & str)
+LyXModule * ModuleList::getModuleByName(string const & str)
 {
 	LyXModuleList::iterator it = modlist_.begin();
 	for (; it != modlist_.end(); ++it)
 		if (it->getName() == str) {
+			LyXModule & mod = *it;
+			return &mod;
+		}
+	return 0;
+}
+
+LyXModule * ModuleList::operator[](string const & str)
+{
+	LyXModuleList::iterator it = modlist_.begin();
+	for (; it != modlist_.end(); ++it)
+		if (it->getID() == str) {
 			LyXModule & mod = *it;
 			return &mod;
 		}

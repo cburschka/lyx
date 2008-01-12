@@ -13,10 +13,13 @@
 #ifndef GUIDOCUMENT_H
 #define GUIDOCUMENT_H
 
-#include "GuiDialog.h"
-#include "BulletsModule.h"
-#include "GuiSelectionManager.h"
+#include <QDialog>
+
 #include "BufferParams.h"
+#include "BulletsModule.h"
+#include "GuiDialog.h"
+#include "GuiIdListModel.h"
+#include "GuiSelectionManager.h"
 
 #include "support/types.h"
 
@@ -52,13 +55,6 @@ class PreambleModule;
 ///
 typedef void const * BufferId;
 
-#include <QDialog>
-#include <QStringList>
-#include <QStringListModel>
-
-#include <vector>
-#include <string>
-
 template<class UI>
 class UiWidget : public QWidget, public UI
 {
@@ -77,8 +73,8 @@ public:
 		QPushButton * delPB, 
 		QPushButton * upPB, 
 		QPushButton * downPB,
-		QStringListModel * availableModel,
-		QStringListModel * selectedModel);
+		GuiIdListModel * availableModel,
+		GuiIdListModel * selectedModel);
 private:
 	///
 	virtual void updateAddPB();
@@ -88,6 +84,16 @@ private:
 	virtual void updateDownPB();
 	///
 	virtual void updateDelPB();
+	/// returns availableModel as a GuiIdListModel
+	GuiIdListModel * getAvailableModel() 
+	{
+		return dynamic_cast<GuiIdListModel *>(availableModel);
+	};
+	/// returns selectedModel as a GuiIdListModel
+	GuiIdListModel * getSelectedModel() 
+	{
+		return dynamic_cast<GuiIdListModel *>(selectedModel);
+	};
 };
 
 
@@ -158,22 +164,26 @@ private:
 	std::vector<std::string> lang_;
 
 	/// Available modules
-	QStringListModel * availableModel() { return &available_model_; }
+	GuiIdListModel * availableModel() { return &available_model_; }
 	/// Selected modules
-	QStringListModel * selectedModel() { return &selected_model_; }
+	GuiIdListModel * selectedModel() { return &selected_model_; }
 private:
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	void updateAvailableModules();
+	///
+	void updateSelectedModules();
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
 	/// available modules
-	QStringListModel available_model_;
+	GuiIdListModel available_model_;
 	/// selected modules
-	QStringListModel selected_model_;
+	GuiIdListModel selected_model_;
 
 protected:
 	/// return false if validate_listings_params returns error
@@ -201,10 +211,15 @@ protected:
 	BufferParams const & params() const { return bp_; }
 	///
 	BufferId id() const;
+	///
+	struct modInfoStruct {
+		std::string name;
+		std::string id;
+	};
 	/// List of available modules
-	std::vector<std::string> const & getModuleNames();
+	std::vector<modInfoStruct> const & getModuleInfo();
 	/// Modules in use in current buffer
-	std::vector<std::string> const & getSelectedModules();
+	std::vector<modInfoStruct> const getSelectedModules();
 	///
 	void setLanguage() const;
 	///
@@ -219,11 +234,11 @@ protected:
 	bool providesScale(std::string const & font) const;
 private:
 	///
-	void loadModuleNames();
+	void loadModuleInfo();
 	///
 	BufferParams bp_;
 	/// List of names of available modules
-	std::vector<std::string> moduleNames_;
+	std::vector<modInfoStruct> moduleNames_;
 };
 
 
@@ -256,4 +271,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QDOCUMENT_H
+#endif // GUIDOCUMENT_H

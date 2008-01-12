@@ -922,6 +922,40 @@ def convert_framed_notes(document):
         i = i + 1
 
 
+def convert_module_names(document):
+  modulemap = { 'Braille' : 'braille', 'Endnote' : 'endnotes', 'Foot to End' : 'foottoend',\
+    'Hanging' : 'hanging', 'Linguistics' : 'linguistics', 'Logical Markup' : 'logicalmkup', \
+    'Theorems (AMS-Extended)' : 'theorems-ams-extended', 'Theorems (AMS)' : 'theorems-ams', \
+    'Theorems (Order By Chapter)' : 'theorems-chap', 'Theorems (Order By Section)' : 'theorems-sec', \
+    'Theorems (Starred)' : 'theorems-starred', 'Theorems' : 'theorems-std' }
+  modlist = document.get_module_list()
+  newmodlist = []
+  for mod in modlist:
+    if modulemap.has_key(mod):
+      newmodlist.append(modulemap[mod])
+    else:
+      document.warning("Can't find module %s in the module map!" % mod)
+      newmodlist.append(mod)
+  document.set_module_list(newmodlist)
+
+
+def revert_module_names(document):
+  modulemap = { 'braille' : 'Braille', 'endnotes' : 'Endnote', 'foottoend' : 'Foot to End',\
+    'hanging' : 'Hanging', 'linguistics' : 'Linguistics', 'logicalmkup' : 'Logical Markup', \
+    'theorems-ams-extended' : 'Theorems (AMS-Extended)', 'theorems-ams' : 'Theorems (AMS)', \
+    'theorems-chap' : 'Theorems (Order By Chapter)', 'theorems-sec' : 'Theorems (Order By Section)', \
+    'theorems-starred' : 'Theorems (Starred)', 'theorems-std' : 'Theorems'}
+  modlist = document.get_module_list()
+  newmodlist = []
+  for mod in modlist:
+    if modulemap.has_key(mod):
+      newmodlist.append(modulemap[mod])
+    else:
+      document.warning("Can't find module %s in the module map!" % mod)
+      newmodlist.append(mod)
+  document.set_module_list(newmodlist)
+
+
 def revert_framed_notes(document):
     "Revert framed boxes to notes. "
     i = 0
@@ -1213,9 +1247,11 @@ convert = [[277, [fix_wrong_tables]],
            [310, []],
            [311, [convert_ams_classes]],
            [312, []],
+           [313, [convert_module_names]]
           ]
 
-revert =  [[311, [revert_rotfloat, revert_widesideways]],
+revert =  [[312, [revert_module_names]],
+           [311, [revert_rotfloat, revert_widesideways]],
            [310, []],
            [309, [revert_btprintall]],
            [308, [revert_nocite]],

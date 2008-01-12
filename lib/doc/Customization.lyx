@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 310
+\lyxformat 313
 \begin_document
 \begin_header
 \textclass book
@@ -58,7 +58,7 @@
 \usepackage{multicol}
 \end_preamble
 \begin_modules
-Logical Markup
+logicalmkup
 \end_modules
 \language english
 \inputencoding default
@@ -5907,11 +5907,11 @@ theendnotes in ERT where you
 \end_layout
 
 \begin_layout LyX-Code
-#Requires: Some Module | Some Other Module 
+#Requires: somemodule | othermodule
 \end_layout
 
 \begin_layout LyX-Code
-#Excludes: Bad Module 
+#Excludes: badmodule
 \end_layout
 
 \begin_layout Standard
@@ -5936,6 +5936,32 @@ at least one
 no
 \emph default
  excluded module may be used.
+ Note that modules are identified here by their 
+\emph on
+filenames
+\emph default
+ without the .module extension.
+ So 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+somemodule
+\end_layout
+
+\end_inset
+
+ is really 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+somemodule.module
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5947,7 +5973,7 @@ After creating a new module, you will need to reconfigure and then restart
 Document\SpecialChar \menuseparator
 Settings
 \family default
-, make some change (or even just highlight something), and then hit 
+, highlight something, and then hit 
 \begin_inset Quotes eld
 \end_inset
 

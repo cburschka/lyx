@@ -754,6 +754,8 @@ def processModuleFile(file, bool_docbook, bool_linuxdoc):
     modname = desc = pkgs = req = excl = ""
     readingDescription = False
     descLines = []
+    filename = file.split(os.sep)[-1]
+    filename = filename[:-7]
 
     for line in open(file).readlines():
       if readingDescription:
@@ -776,8 +778,6 @@ def processModuleFile(file, bool_docbook, bool_linuxdoc):
           else:
             tmp = [s.strip() for s in pkgs.split(",")]
             pkgs = ",".join(tmp)
-
-          filename = file.split(os.sep)[-1]
           continue
       res = r.search(line)
       if res != None:

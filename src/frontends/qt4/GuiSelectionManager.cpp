@@ -15,9 +15,13 @@
 #include <config.h>
 #include "GuiSelectionManager.h"
 
+#include "support/debug.h"
+
+using std::vector;
 
 namespace lyx {
 namespace frontend {
+
 
 GuiSelectionManager::GuiSelectionManager(
 	QListView * avail, 
@@ -26,8 +30,8 @@ GuiSelectionManager::GuiSelectionManager(
 	QPushButton * del, 
 	QPushButton * up, 
 	QPushButton * down,
-	QStringListModel * amod,
-	QStringListModel * smod)
+	QAbstractListModel * amod,
+	QAbstractListModel * smod)
 	{
 	availableLV = avail;
 	selectedLV = sel;
@@ -78,7 +82,7 @@ void GuiSelectionManager::update()
 
 void GuiSelectionManager::updateAddPB()
 {
-	int const arows = availableModel->stringList().size();
+	int const arows = availableModel->rowCount();
 	QModelIndexList const availSels = 
 		availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
@@ -89,7 +93,7 @@ void GuiSelectionManager::updateAddPB()
 
 void GuiSelectionManager::updateDelPB()
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		deletePB->setEnabled(false);
 		return;
@@ -103,7 +107,7 @@ void GuiSelectionManager::updateDelPB()
 
 void GuiSelectionManager::updateUpPB()
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		upPB->setEnabled(false);
 		return;
@@ -117,7 +121,7 @@ void GuiSelectionManager::updateUpPB()
 
 void GuiSelectionManager::updateDownPB()
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		downPB->setEnabled(false);
 		return;
@@ -128,10 +132,17 @@ void GuiSelectionManager::updateDownPB()
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
 }
 
+
 bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 {
-	QString const str = idx.data().toString();
-	return selectedModel->stringList().contains(str);
+	if (selectedModel->rowCount() == 0)
+		return false;
+	QVariant const & str = availableModel->data(idx, Qt::DisplayRole);
+	QModelIndexList qmil = 
+			selectedModel->match(selectedModel->index(0), 
+			                     Qt::DisplayRole, str, 
+			                     Qt::MatchExactly | Qt::MatchWrap);
+	return !qmil.empty();
 }
 
 
@@ -155,7 +166,8 @@ void GuiSelectionManager::selectedChanged(const QModelIndex & idx, const QModelI
 }
 
 
-static QModelIndex getSelectedIndex(QListView * lv)
+namespace {
+QModelIndex getSelectedIndex(QListView * lv)
 {
 	QModelIndex retval = QModelIndex();
 	QModelIndexList selIdx = 
@@ -164,6 +176,18 @@ static QModelIndex getSelectedIndex(QListView * lv)
 		retval = selIdx.first();
 	return retval;
 }
+}
+
+
+bool GuiSelectionManager::insertRowToSelected(int i, 
+		QMap<int, QVariant> const & itemData)
+{
+	if (i <= -1 || i > selectedModel->rowCount())
+		return false;
+	if (!selectedModel->insertRow(i))
+		return false;
+	return selectedModel->setItemData(selectedModel->index(i), itemData);
+}
 
 
 void GuiSelectionManager::addPB_clicked()
@@ -171,15 +195,17 @@ void GuiSelectionManager::addPB_clicked()
 	QModelIndex const idxToAdd = getSelectedIndex(availableLV);
 	if (!idxToAdd.isValid())
 		return;
-	QModelIndex idx = selectedLV->currentIndex();
+	QModelIndex const idx = selectedLV->currentIndex();
+	int const srows = selectedModel->rowCount();
 	
-	QStringList keys = selectedModel->stringList();
-	keys.append(idxToAdd.data().toString());
-	selectedModel->setStringList(keys);
+	QMap<int, QVariant> qm = availableModel->itemData(idxToAdd);
+	insertRowToSelected(srows, qm);
+	
 	selectionChanged(); //signal
 	
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
+	
 	updateHook();
 }
 
@@ -190,9 +216,7 @@ void GuiSelectionManager::deletePB_clicked()
 	if (!idx.isValid())
 		return;
 	
-	QStringList keys = selectedModel->stringList();
-	keys.removeAt(idx.row());
-	selectedModel->setStringList(keys);
+	selectedModel->removeRow(idx.row());
 	selectionChanged(); //signal
 	
 	int nrows = selectedLV->model()->rowCount();
@@ -211,13 +235,18 @@ void GuiSelectionManager::deletePB_clicked()
 void GuiSelectionManager::upPB_clicked()
 {
 	QModelIndex idx = selectedLV->currentIndex();
-	
+
 	int const pos = idx.row();
-	QStringList keys = selectedModel->stringList();
-	keys.swap(pos, pos - 1);
-	selectedModel->setStringList(keys);
-	selectionChanged(); //signal
+	if (pos <= 0)
+		return;
 	
+	QMap<int, QVariant> qm = selectedModel->itemData(idx);
+
+	selectedModel->removeRow(pos);
+	insertRowToSelected(pos - 1, qm);
+
+	selectionChanged(); //signal
+
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() - 1, idx.column()));
 	selectedHasFocus_ = true;
 	updateHook();
@@ -227,11 +256,16 @@ void GuiSelectionManager::upPB_clicked()
 void GuiSelectionManager::downPB_clicked()
 {
 	QModelIndex idx = selectedLV->currentIndex();
-	
+
 	int const pos = idx.row();
-	QStringList keys = selectedModel->stringList();
-	keys.swap(pos, pos + 1);
-	selectedModel->setStringList(keys);
+	if (pos >= selectedModel->rowCount() - 1)
+		return;
+
+	QMap<int, QVariant> qm = selectedModel->itemData(idx);
+
+	selectedModel->removeRow(pos);
+	insertRowToSelected(pos + 1, qm);
+
 	selectionChanged(); //signal
 	
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() + 1, idx.column()));
@@ -311,9 +345,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 			if (keyModifiers == Qt::NoModifier && deletePB->isEnabled())
 				deletePB_clicked();
 			else if (keyModifiers == Qt::ControlModifier) {
-				QStringList list = selectedModel->stringList();
-				list.clear();
-				selectedModel->setStringList(list);
+				selectedModel->removeRows(0, selectedModel->rowCount());
 				updateHook();
 			} else
 				//ignore it otherwise

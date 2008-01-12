@@ -189,16 +189,29 @@ ModuleSelMan::ModuleSelMan(
 	QPushButton * delPB, 
 	QPushButton * upPB, 
 	QPushButton * downPB,
-	QStringListModel * availableModel,
-	QStringListModel * selectedModel) :
+	GuiIdListModel * availableModel,
+	GuiIdListModel * selectedModel) :
 GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
                     upPB, downPB, availableModel, selectedModel) 
 {}
 	
 	
+namespace {
+QModelIndex getSelectedIndex(QListView * lv)
+{
+	QModelIndex retval = QModelIndex();
+	QModelIndexList selIdx = 
+			lv->selectionModel()->selectedIndexes();
+	if (!selIdx.empty())
+		retval = selIdx.first();
+	return retval;
+}
+}
+
+
 void ModuleSelMan::updateAddPB() 
 {
-	int const arows = availableModel->stringList().size();
+	int const arows = availableModel->rowCount();
 	QModelIndexList const availSels = 
 			availableLV->selectionModel()->selectedIndexes();
 	if (arows == 0 || availSels.isEmpty()  || isSelected(availSels.first())) {
@@ -207,7 +220,7 @@ void ModuleSelMan::updateAddPB()
 	}
 	
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
-	string const modName = fromqstr(idx.data().toString());
+	string const modName = getAvailableModel()->getIDString(idx.row());
 	vector<string> reqs = getRequiredList(modName);
 	vector<string> excl = getExcludedList(modName);
 	
@@ -216,7 +229,13 @@ void ModuleSelMan::updateAddPB()
 		return;
 	}
 
-	QStringList const & qsl = selectedModel->stringList();
+	int const srows = selectedModel->rowCount();
+	vector<string> selModList;
+	for (int i = 0; i < srows; ++i)
+		selModList.push_back(getSelectedModel()->getIDString(i));
+
+	vector<string>::const_iterator selModStart = selModList.begin();
+	vector<string>::const_iterator selModEnd   = selModList.end();
 	
 	//Check whether some required module is available
 	if (!reqs.empty()) {
@@ -224,7 +243,7 @@ void ModuleSelMan::updateAddPB()
 		vector<string>::const_iterator it  = reqs.begin();
 		vector<string>::const_iterator end = reqs.end();
 		for (; it != end; ++it) {
-			if (qsl.contains(toqstr(*it))) {
+			if (find(selModStart, selModEnd, *it) != selModEnd) {
 				foundOne = true;
 				break;
 			}
@@ -240,7 +259,7 @@ void ModuleSelMan::updateAddPB()
 		vector<string>::const_iterator it  = excl.begin();
 		vector<string>::const_iterator end = excl.end();
 		for (; it != end; ++it) {
-			if (qsl.contains(toqstr(*it))) {
+			if (find(selModStart, selModEnd, *it) != selModEnd) {
 				addPB->setEnabled(false);
 				return;
 			}
@@ -250,9 +269,10 @@ void ModuleSelMan::updateAddPB()
 	addPB->setEnabled(true);
 }
 
+
 void ModuleSelMan::updateDownPB()
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		downPB->setEnabled(false);
 		return;
@@ -265,15 +285,14 @@ void ModuleSelMan::updateDownPB()
 		return;
 	}
 	//determine whether immediately succeding element requires this one
-	QString const curModName = 
-		selectedLV->selectionModel()->currentIndex().data().toString();
-	QStringList const & qsl = selectedModel->stringList();
-	int const curIdx = qsl.indexOf(curModName);
-	if (curIdx < 0 || curIdx == srows - 1) { //this shouldn't happen...
+	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
+	int curRow = curIdx.row();
+	if (curRow < 0 || curRow >= srows - 1) { //this shouldn't happen...
 		downPB->setEnabled(false);
 		return;
 	}
-	string nextModName = fromqstr(qsl[curIdx + 1]);
+	string const curModName = getSelectedModel()->getIDString(curRow);
+	string const nextModName = getSelectedModel()->getIDString(curRow + 1);
 
 	vector<string> reqs = getRequiredList(nextModName);
 
@@ -287,12 +306,12 @@ void ModuleSelMan::updateDownPB()
 	//if this one is required, there is also an earlier one that is required.
 	//enable it if this module isn't required
 	downPB->setEnabled(
-			find(reqs.begin(), reqs.end(), fromqstr(curModName)) == reqs.end());
+			find(reqs.begin(), reqs.end(), curModName) == reqs.end());
 }
 
 void ModuleSelMan::updateUpPB() 
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		upPB->setEnabled(false);
 		return;
@@ -304,10 +323,16 @@ void ModuleSelMan::updateUpPB()
 		upPB->setEnabled(false);
 		return;
 	}
+
 	//determine whether immediately preceding element is required by this one
-	QString const curModName = 
-		selectedLV->selectionModel()->currentIndex().data().toString();
-	vector<string> reqs = getRequiredList(fromqstr(curModName));
+	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
+	int curRow = curIdx.row();
+	if (curRow <= -1 || curRow > srows - 1) { //sanity check
+		downPB->setEnabled(false);
+		return;
+	}
+	string const curModName = getSelectedModel()->getIDString(curRow);
+	vector<string> reqs = getRequiredList(curModName);
 	
 	//if this one doesn't require anything....
 	if (reqs.empty()) {
@@ -315,13 +340,7 @@ void ModuleSelMan::updateUpPB()
 		return;
 	}
 
-	QStringList const & qsl = selectedModel->stringList();
-	int const curIdx = qsl.indexOf(curModName);
-	if (curIdx <= 0) { //this shouldn't happen...
-		upPB->setEnabled(false);
-		return;
-	}
-	string preModName = fromqstr(qsl[curIdx - 1]);
+	string preModName = getSelectedModel()->getIDString(curRow - 1);
 
 	//NOTE This is less flexible than it might be. You could check whether, even 
 	//if this one is required, there is also an earlier one that is required.
@@ -331,7 +350,7 @@ void ModuleSelMan::updateUpPB()
 
 void ModuleSelMan::updateDelPB() 
 {
-	int const srows = selectedModel->stringList().size();
+	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
 		deletePB->setEnabled(false);
 		return;
@@ -346,59 +365,49 @@ void ModuleSelMan::updateDelPB()
 	//determine whether some LATER module requires this one
 	//NOTE Things are arranged so that this is the only way there
 	//can be a problem. At least, we hope so.
-	QString const curModName = 
-			selectedLV->selectionModel()->currentIndex().data().toString();
-	QStringList const & qsl = selectedModel->stringList();
+	QModelIndex const & curIdx = 
+		selectedLV->selectionModel()->currentIndex();
+	int const curRow = curIdx.row();
+	if (curRow < 0 || curRow >= srows) { //this shouldn't happen
+		deletePB->setEnabled(false);
+		return;
+	}
+		
+	QString const curModName = curIdx.data().toString();
 	
 	//We're looking here for a reason NOT to enable the button. If we
 	//find one, we disable it and return. If we don't, we'll end up at
 	//the end of the function, and then we enable it.
-	QStringList::const_iterator it  = qsl.begin();
-	QStringList::const_iterator end = qsl.end();
-	bool found = false;
-	for (; it != end; ++it) {
-		//skip over the ones preceding this one
-		if (!found) {
-			if (*it == curModName) {
-				found = true;
-			}
-			continue;
-		}
-			
-		string const mod = fromqstr(*it);
-		vector<string> reqs = getRequiredList(mod);
+	for (int i = curRow + 1; i < srows; ++i) {
+		string const thisMod = getSelectedModel()->getIDString(i);
+		vector<string> reqs = getRequiredList(thisMod);
 		//does this one require us?
 		if (find(reqs.begin(), reqs.end(), fromqstr(curModName)) == reqs.end())
 			//no...
 			continue;
 
-		//OK, so there is a module that requires us
-		//is there an EARLIER module that satisfies the require?
+		//OK, so this module requires us
+		//is there an EARLIER module that also satisfies the require?
 		//NOTE We demand that it be earlier to keep the list of modules
 		//consistent with the rule that a module must be proceeded by a
 		//required module. There would be more flexible ways to proceed,
 		//but that would be a lot more complicated, and the logic here is
 		//already complicated. (That's why I've left the debugging code.)
-		//lyxerr << "Testing " << mod << std::endl;
-		QStringList::const_iterator it2  = qsl.begin();
-		QStringList::const_iterator end2 = qsl.end();
-		for (; it2 != end2; ++it2) {
-			//lyxerr << "In loop: Testing " << fromqstr(*it2) << std::endl;
-			if (*it2 == curModName) { //EARLIER!!
-				//no other module was found before this one, so...
-				//lyxerr << "Reached the end of the loop." << std::endl;
-				deletePB->setEnabled(false);
-				return;
-			}
+		//lyxerr << "Testing " << thisMod << std::endl;
+		bool foundOne = false;
+		for (int j = 0; j < curRow; ++j) {
+			string const mod = getSelectedModel()->getIDString(j);
+			//lyxerr << "In loop: Testing " << mod << std::endl;
 			//do we satisfy the require? 
-			if (find(reqs.begin(), reqs.end(), fromqstr(*it2)) != reqs.end()) {
-				//lyxerr << fromqstr(*it2) << " does the trick." << std::endl;
+			if (find(reqs.begin(), reqs.end(), mod) != reqs.end()) {
+				//lyxerr << mod << " does the trick." << std::endl;
+				foundOne = true;
 				break;
 			}
 		}
-		//did we reach the end of the list?
-		if (it2 == end2) {
-			//lyxerr << "Reached end of list." << std::endl;
+		//did we find a module to satisfy the require?
+		if (!foundOne) {
+			//lyxerr << "No matching module found." << std::endl;
 			deletePB->setEnabled(false);
 			return;
 		}
@@ -1221,54 +1230,75 @@ namespace {
 		t = subst(t, _("and"), s);
 		return bformat(t, retval, from_ascii(v[vSize - 2]), from_ascii(v[vSize - 1]));
 	}
+	
+	vector<string> idsToNames(vector<string> const & idList)
+	{
+		vector<string> retval;
+		vector<string>::const_iterator it  = idList.begin();
+		vector<string>::const_iterator end = idList.end();
+		for (; it != end; ++it) {
+			LyXModule const * const mod = moduleList[*it];
+			if (!mod)
+				retval.push_back(*it + " (Unavailable)");
+			else
+				retval.push_back(mod->getName());
+		}
+		return retval;
+	}
 }
 
 
 void GuiDocument::updateModuleInfo()
 {
 	selectionManager->update();
+	
 	//Module description
-	QListView const * const lv = selectionManager->selectedFocused() ?
-	                             latexModule->selectedLV :
-	                             latexModule->availableLV;
-	if (lv->selectionModel()->selectedIndexes().isEmpty())
+	bool const focusOnSelected = selectionManager->selectedFocused();
+	QListView const * const lv = 
+			focusOnSelected ? latexModule->selectedLV : latexModule->availableLV;
+	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
 		latexModule->infoML->document()->clear();
-	else {
-		QModelIndex const & idx = lv->selectionModel()->currentIndex();
-		string const modName = fromqstr(idx.data().toString());
-		docstring desc = getModuleDescription(modName);
-
-		vector<string> pkgList = getPackageList(modName);
-		docstring pkgdesc = formatStrVec(pkgList, _("and"));
-		if (!pkgdesc.empty()) {
-			if (!desc.empty())
-				desc += "\n";
-			desc += bformat(_("Package(s) required: %1$s."), pkgdesc);
-		}
-
-		pkgList = getRequiredList(modName);
-		pkgdesc = formatStrVec(pkgList, _("or"));
-		if (!pkgdesc.empty()) {
-			if (!desc.empty())
-				desc += "\n";
-			desc += bformat(_("Module required: %1$s."), pkgdesc);
-		}
-
-		pkgList = getExcludedList(modName);
-		pkgdesc = formatStrVec(pkgList, _( "and"));
-		if (!pkgdesc.empty()) {
-			if (!desc.empty())
-				desc += "\n";
-			desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
-		}
-
-		if (!isModuleAvailable(modName)) {
-			if (!desc.empty())
-				desc += "\n";
-			desc += _("WARNING: Some packages are unavailable!");
-		}
-		latexModule->infoML->document()->setPlainText(toqstr(desc));
+		return;
 	}
+	QModelIndex const & idx = lv->selectionModel()->currentIndex();
+	GuiIdListModel const & idModel = 
+			focusOnSelected  ? selected_model_ : available_model_;
+	string const modName = idModel.getIDString(idx.row());
+	docstring desc = getModuleDescription(modName);
+
+	vector<string> pkgList = getPackageList(modName);
+	docstring pkgdesc = formatStrVec(pkgList, _("and"));
+	if (!pkgdesc.empty()) {
+		if (!desc.empty())
+			desc += "\n";
+		desc += bformat(_("Package(s) required: %1$s."), pkgdesc);
+	}
+
+	pkgList = getRequiredList(modName);
+	if (!pkgList.empty()) {
+		vector<string> const reqDescs = idsToNames(pkgList);
+		pkgdesc = formatStrVec(reqDescs, _("or"));
+		if (!desc.empty())
+			desc += "\n";
+		desc += bformat(_("Module required: %1$s."), pkgdesc);
+	}
+
+	pkgList = getExcludedList(modName);
+	if (!pkgList.empty()) {
+		vector<string> const reqDescs = idsToNames(pkgList);
+		pkgdesc = formatStrVec(reqDescs, _( "and"));
+		if (!desc.empty())
+			desc += "\n";
+		desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
+	}
+
+	if (!isModuleAvailable(modName)) {
+		if (!desc.empty())
+			desc += "\n";
+		desc += _("WARNING: Some packages are unavailable!");
+	}
+
+	latexModule->infoML->document()->setPlainText(toqstr(desc));
 }
 
 
@@ -1408,9 +1438,10 @@ void GuiDocument::apply(BufferParams & params)
 
 	// Modules
 	params.clearLayoutModules();
-	QStringList const selMods = selectedModel()->stringList();
-	for (int i = 0; i != selMods.size(); ++i)
-		params.addLayoutModule(lyx::fromqstr(selMods[i]));
+	int const srows = selected_model_.rowCount();
+	vector<string> selModList;
+	for (int i = 0; i < srows; ++i)
+		params.addLayoutModule(selected_model_.getIDString(i));
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
@@ -1922,27 +1953,40 @@ void GuiDocument::saveDocDefault()
 }
 
 
+void GuiDocument::updateAvailableModules() 
+{
+	available_model_.clear();
+	vector<modInfoStruct> const modInfoList = getModuleInfo();
+	int const mSize = modInfoList.size();
+	for (int i = 0; i < mSize; ++i) {
+		modInfoStruct const & modInfo = modInfoList[i];
+		available_model_.insertRow(i, modInfo.name, modInfo.id);
+	}
+}
+
+
+void GuiDocument::updateSelectedModules() 
+{
+	//and selected ones, too
+	selected_model_.clear();
+	vector<modInfoStruct> const selModList = getSelectedModules();
+	int const sSize = selModList.size();
+	for (int i = 0; i < sSize; ++i) {
+		modInfoStruct const & modInfo = selModList[i];
+		selected_model_.insertRow(i, modInfo.name, modInfo.id);
+	}
+}
+
+
 void GuiDocument::updateContents()
 {
-	//update list of available modules
-	QStringList strlist;
-	vector<string> const modNames = getModuleNames();
-	vector<string>::const_iterator it = modNames.begin();
-	for (; it != modNames.end(); ++it)
-		strlist.push_back(toqstr(*it));
-	available_model_.setStringList(strlist);
-	//and selected ones, too
-	QStringList strlist2;
-	vector<string> const & selMods = getSelectedModules();
-	it = selMods.begin();
-	for (; it != selMods.end(); ++it)
-		strlist2.push_back(toqstr(*it));
+	updateAvailableModules();
+	updateSelectedModules();
+	
 	//FIXME It'd be nice to make sure here that the selected
 	//modules are consistent: That required modules are actually
 	//selected, and that we don't have conflicts. If so, we could
 	//at least pop up a warning.
-	selected_model_.setStringList(strlist2);
-
 	updateParams(bp_);
 }
 
@@ -1973,7 +2017,7 @@ char const * GuiDocument::fontfamilies_gui[5] = {
 bool GuiDocument::initialiseParams(string const &)
 {
 	bp_ = buffer().params();
-	loadModuleNames();
+	loadModuleInfo();
 	return true;
 }
 
@@ -1990,15 +2034,29 @@ BufferId GuiDocument::id() const
 }
 
 
-vector<string> const & GuiDocument::getModuleNames()
+vector<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
 {
 	return moduleNames_;
 }
 
 
-vector<string> const & GuiDocument::getSelectedModules()
+vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 {
-	return params().getModules();
+	vector<string> const & mods = params().getModules();
+	vector<string>::const_iterator it =  mods.begin();
+	vector<string>::const_iterator end = mods.end();
+	vector<modInfoStruct> mInfo;
+	for (; it != end; ++it) {
+		modInfoStruct m;
+		m.id = *it;
+		LyXModule * mod = moduleList[*it];
+		if (mod)
+			m.name = mod->getName();
+		else 
+			m.name = *it + " (Not Found)";
+		mInfo.push_back(m);
+	}
+	return mInfo;
 }
 
 
@@ -2118,14 +2176,17 @@ bool GuiDocument::providesScale(string const & font) const
 }
 
 
-void GuiDocument::loadModuleNames ()
+void GuiDocument::loadModuleInfo()
 {
 	moduleNames_.clear();
-	LyXModuleList::const_iterator it = moduleList.begin();
-	for (; it != moduleList.end(); ++it)
-		moduleNames_.push_back(it->getName());
-	if (!moduleNames_.empty())
-		sort(moduleNames_.begin(), moduleNames_.end());
+	LyXModuleList::const_iterator it  = moduleList.begin();
+	LyXModuleList::const_iterator end = moduleList.end();
+	for (; it != end; ++it) {
+		modInfoStruct m;
+		m.id = it->getID();
+		m.name = it->getName();
+		moduleNames_.push_back(m);
+	}
 }
 
 

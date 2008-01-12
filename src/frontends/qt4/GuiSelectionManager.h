@@ -17,9 +17,13 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <QStringList>
-#include <QStringListModel>
+#include <QAbstractListModel>
 #include <QListView>
 #include <QPushButton>
+
+#include "support/qstring_helpers.h"
+
+#include <vector>
 
 namespace lyx {
 namespace frontend {
@@ -45,8 +49,8 @@ public:
 		QPushButton * delPB, 
 		QPushButton * upPB, 
 		QPushButton * downPB,
-		QStringListModel * availableModel,
-		QStringListModel * selectedModel);
+		QAbstractListModel * availableModel,
+		QAbstractListModel * selectedModel);
 	/// Sets the state of the various push buttons, depending upon the
 	/// state of the widgets. (E.g., "delete" is enabled only if the
 	/// selection is non-empty.)
@@ -82,6 +86,8 @@ protected:
 	///been selected (i.e., is also in selectedLV).
 	bool isSelected(const QModelIndex & idx);
 	///
+ 	bool insertRowToSelected(int i, QMap<int, QVariant> const & itemData);
+	///
 	QListView * availableLV;
 	///
 	QListView * selectedLV;
@@ -94,9 +100,9 @@ protected:
 	///
 	QPushButton * downPB;
 	///
-	QStringListModel * availableModel;
+	QAbstractListModel * availableModel;
 	///
-	QStringListModel * selectedModel;
+	QAbstractListModel * selectedModel;
 
 protected Q_SLOTS:
 	///
@@ -104,13 +110,13 @@ protected Q_SLOTS:
 	///
 	void selectedChanged(const QModelIndex & idx, const QModelIndex &);
 	///
-	void addPB_clicked();
+	virtual void addPB_clicked();
 	///
-	void deletePB_clicked();
+	virtual void deletePB_clicked();
 	///
-	void upPB_clicked();
+	virtual void upPB_clicked();
 	///
-	void downPB_clicked();
+	virtual void downPB_clicked();
 	///
 	void availableLV_clicked(const QModelIndex &);
 	///
@@ -129,7 +135,7 @@ private:
 	virtual void updateDownPB();
 	///
 	virtual void updateUpPB();
-	
+	///
 	bool selectedHasFocus_;
 };
 

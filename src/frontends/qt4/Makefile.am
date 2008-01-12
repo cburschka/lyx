@@ -86,6 +86,7 @@ SOURCEFILES = \
 	GuiFontMetrics.cpp \
 	GuiGraphics.cpp \
 	GuiHyperlink.cpp \
+	GuiIdListModel.cpp \
 	GuiImage.cpp \
 	GuiInclude.cpp \
 	GuiIndex.cpp \
@@ -175,6 +176,7 @@ MOCHEADER = \
 	GuiFontExample.h \
 	GuiGraphics.h \
 	GuiHyperlink.h \
+	GuiIdListModel.h \
 	GuiInclude.h \
 	GuiIndex.h \
 	GuiKeySymbol.h \

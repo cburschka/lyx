@@ -28,7 +28,7 @@ namespace lyx {
 class LyXModule {
 public:
 	///
-	LyXModule(std::string const & n, std::string const & f, 
+	LyXModule(std::string const & n, std::string const & i, 
 	          std::string const & d, std::vector<std::string> const & p,
 	          std::vector<std::string> const & r, 
 	          std::vector<std::string> const & e);
@@ -36,6 +36,8 @@ public:
 	bool isAvailable();
 	///
 	std::string const & getName() const { return name; }
+	///
+	std::string const & getID() const { return id; }
 	///
 	std::string const & getFilename() const { return filename; }
 	///
@@ -53,7 +55,10 @@ public:
 private:
 	/// what appears in the ui
 	std::string name;
-	/// the filename, without any path
+	/// the module's unique identifier
+	/// at present, this is the filename, without the extension
+	std::string id;
+	/// the filename
 	std::string filename;
 	/// a short description for use in the ui
 	std::string description;
@@ -93,8 +98,11 @@ public:
 	bool empty() const { return modlist_.empty(); }
 	/// Returns a pointer to the LyXModule with name str.
 	/// Returns a null pointer if no such module is found.
+	LyXModule * getModuleByName(std::string const & str);
+	/// Returns a pointer to the LyXModule with filename str.
+	/// Returns a null pointer if no such module is found.
 	LyXModule * operator[](std::string const & str);
-private:
+	private:
 	/// noncopyable
 	ModuleList(ModuleList const &);
 	///

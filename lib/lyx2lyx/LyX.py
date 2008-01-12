@@ -80,7 +80,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 2)),
-                   ("1_6", range(277,313), minor_versions("1.6" , 0))] # JSpitzm: rotfloat support
+                   ("1_6", range(277,314), minor_versions("1.6" , 0))] # Richard Heck: conversion of module representations
 
 
 def formats_list():
@@ -410,6 +410,30 @@ class LyX_base:
       if k != -1 and k < j:
         return
       self.header.insert(j, module)
+
+
+    def get_module_list(self):
+      i = find_token(self.header, "\\begin_modules", 0)
+      if (i == -1):
+        return []
+      j = find_token(self.header, "\\end_modules", i)
+      return self.header[i + 1 : j]
+
+
+    def set_module_list(self, mlist):
+      modbegin = find_token(self.header, "\\begin_modules", 0)
+      if (modbegin == -1):
+        #No modules yet included
+        modbegin = find_token(self.header, "\\textclass", 0)
+        if modbegin == -1:
+          self.warning("Malformed LyX document: No \\textclass!!")
+          return
+      modend = find_token(self.header, "\\end_modules", modbegin)
+      if modend == -1:
+        self.warning("Malformed LyX document: No \\end_modules.")
+        return
+      newmodlist = ['\\begin_modules'] + mlist + ['\\end_modules']
+      self.header[modbegin:modend + 1] = newmodlist
 
 
     def set_parameter(self, param, value):
