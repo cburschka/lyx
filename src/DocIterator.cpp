@@ -247,21 +247,13 @@ Inset * DocIterator::innerInsetOfType(int code) const
 }
 
 
-void DocIterator::forwardPos(bool ignorecollapsed)
+// This duplicates code above, but is in the critical path.
+// So please think twice before adding stuff
+void DocIterator::forwardPos()
 {
-	//this dog bites his tail
+	// this dog bites his tail
 	if (empty()) {
 		push_back(CursorSlice(*inset_));
-		return;
-	}
-
-	Inset * const nextinset = nextInset();
-	// jump over collapsables if they are collapsed
-	// FIXME: the check for asInsetMath() shouldn't be necessary
-	// but math insets do not return a sensible editable() state yet.
-	if (ignorecollapsed && nextinset && (!nextinset->asInsetMath()
-	    && nextinset->editable() != Inset::HIGHLY_EDITABLE)) {
-		++top().pos();
 		return;
 	}
 
@@ -299,6 +291,20 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 	// 'tip' is invalid now...
 	if (!empty())
 		++top().pos();
+}
+
+
+void DocIterator::forwardPosIgnoreCollapsed()
+{
+	Inset * const nextinset = nextInset();
+	// FIXME: the check for asInsetMath() shouldn't be necessary
+	// but math insets do not return a sensible editable() state yet.
+	if (nextinset && !nextinset->asInsetMath()
+	    && nextinset->editable() != Inset::HIGHLY_EDITABLE) {
+		++top().pos();
+		return;
+	}
+	forwardPos();
 }
 
 

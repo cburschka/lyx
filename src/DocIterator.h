@@ -159,9 +159,14 @@ public:
 	//
 	/**
 	 * move on one logical position, descend into nested insets
-	 * skip collapsed insets if \p ignorecollapsed is true
+	 * including collapsed insets
 	 */
-	void forwardPos(bool ignorecollapsed = false);
+	void forwardPos();
+	/**
+	 * move on one logical position, descend into nested insets
+	 * skip collapsed insets
+	 */
+	void forwardPosIgnoreCollapsed();
 	/// move on one physical character or inset
 	void forwardChar();
 	/// move on one paragraph
