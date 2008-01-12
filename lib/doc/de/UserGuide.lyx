@@ -190,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 12.
  Januar 2008
 \end_layout
 
@@ -37763,6 +37763,56 @@ target "http://wiki.lyx.org/Windows/Arabic"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+let
+\backslash
+mybibname
+\backslash
+bibname
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+bibname}{
+\backslash
+mybibname
+\backslash
+; 2}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Der Befehl 
+\family typewriter
+
+\backslash
+bibname
+\family default
+ ist der Name des Literaturverzeichnisses in der jeweiligen Dokumentsprache.
+ Er wird hier mit der Nummer 2 versehen, ein zweites Verzeichnis folgt:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset LatexCommand bibtex
 options "../biblio/alphadin"
 bibfiles "../biblio/LyXDocs"
@@ -37774,52 +37824,6 @@ bibfiles "../biblio/LyXDocs"
 
 \begin_layout Standard
 Das obige Literaturverzeichnis stammt aus einer BibTeX-Datenbank.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-addcontentsline{toc}{chapter}{
-\backslash
-bibname
-\backslash
-; 2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Der Befehl 
-\family typewriter
-
-\backslash
-addcontentsline
-\family default
- wird in den 
-\emph on
-Hanbuchergänzungen
-\emph default
- erklärt.
- Er erzeugt einen Eintrag im Inhaltsverzeichnis.
- Dieser Eintrag wird gebraucht, weil hier zwei Literaturverzeichnisse benutzt
- werden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -37895,7 +37899,7 @@ indexname
 \series bold
 
 \backslash
-<Legendes>name
+<Legende>name
 \series default
 .
  Eine Auflistung der möglichen Namen findet man unter

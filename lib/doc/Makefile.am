@@ -90,11 +90,6 @@ dist_esdoc_DATA = \
 	es/Tutorial.lyx \
 	es/UserGuide.lyx
 
-esbibliodocdir = $(pkgdatadir)/doc/es/biblio
-dist_esbibliodoc_DATA = \
-	es/biblio/alphadin.bst \
-	es/biblio/LyXDocs.bib
-
 esclipartdocdir = $(pkgdatadir)/doc/es/clipart
 dist_esclipartdoc_DATA = \
 	es/clipart/ComentNotaImagenQt4.png \
