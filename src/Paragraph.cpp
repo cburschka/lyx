@@ -2224,15 +2224,13 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 bool Paragraph::isHfill(pos_type pos) const
 {
-	return isInset(pos)
-		&& getInset(pos)->lyxCode() == HFILL_CODE;
+	return isInset(pos) && getInset(pos)->lyxCode() == HFILL_CODE;
 }
 
 
 bool Paragraph::isNewline(pos_type pos) const
 {
-	return isInset(pos)
-		&& getInset(pos)->lyxCode() == NEWLINE_CODE;
+	return isInset(pos) && getInset(pos)->lyxCode() == NEWLINE_CODE;
 }
 
 
@@ -2250,10 +2248,8 @@ bool Paragraph::isLetter(pos_type pos) const
 {
 	if (isInset(pos))
 		return getInset(pos)->isLetter();
-	else {
-		char_type const c = d->text_[pos];
-		return isLetterChar(c) || isDigit(c);
-	}
+	char_type const c = d->text_[pos];
+	return isLetterChar(c) || isDigit(c);
 }
 
 
@@ -2366,8 +2362,7 @@ Inset * Paragraph::inInset() const
 
 InsetCode Paragraph::ownerCode() const
 {
-	return d->inset_owner_ ?
-		d->inset_owner_->lyxCode() : NO_CODE;
+	return d->inset_owner_ ? d->inset_owner_->lyxCode() : NO_CODE;
 }
 
 
