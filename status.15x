@@ -47,7 +47,8 @@ What's new
 
 - New shortcut "C-M-n" to create numbered formulas.
 
-- Characters counting added to Count Word function (bug 2819).
+- Characters counting added to "Count Words" function (bug 2819).
+
 
 * DOCUMENT INPUT/OUTPUT
 
@@ -62,6 +63,7 @@ What's new
 - Viewers wrapper xdg-open was removed due to the problems on environments
   without desktop managers. Waiting for upstream fixes.
 
+
 ** Bug fixes:
 *************
 
@@ -73,6 +75,9 @@ What's new
 - Fix internal conversion from ucs4 to cp-1255 (LyX didn't recognize
   the Hebrew character tav [0x5EA] as a valid character in cp-1255)
   (bug 4439).
+
+- Rotated floats are now correctly converted to ERT when exporting to LyX
+  format < 1.4.0.
 
 
 * USER INTERFACE:
@@ -113,6 +118,7 @@ What's new
 
 - Avoid spurious warning messages about translation of "Plain text" at
   start-up.
+
 
 * DOCUMENTATION
 
