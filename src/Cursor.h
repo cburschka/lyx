@@ -217,6 +217,9 @@ public:
 	/// Convenience: prepare undo for the selected paragraphs
 	void recordUndoSelection();
 
+	///
+	void checkBufferStructure();
+
 public:
 	///
 	BufferView * bv_;

@@ -53,9 +53,6 @@ void updateLabels(Buffer const &, bool childonly = false);
 ///
 void updateLabels(Buffer const &, ParIterator &);
 
-///
-void checkBufferStructure(Buffer &, ParIterator const &);
-
 } // namespace lyx
 
 #endif // BUFFER_FUNCS_H

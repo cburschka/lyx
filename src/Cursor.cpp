@@ -14,25 +14,26 @@
 #include <config.h>
 
 #include "Bidi.h"
-#include "BufferView.h"
 #include "Buffer.h"
-#include "Cursor.h"
+#include "BufferView.h"
 #include "CoordCache.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
+#include "Font.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "lfuns.h"
-#include "Font.h"
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
+#include "paragraph_funcs.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 #include "Row.h"
 #include "Text.h"
-#include "Paragraph.h"
-#include "paragraph_funcs.h"
-#include "ParIterator.h"
 #include "TextMetrics.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -1636,6 +1637,16 @@ void Cursor::recordUndoSelection()
 {
 	bv_->buffer().undo().recordUndo(*this, ATOMIC_UNDO,
 		selBegin().pit(), selEnd().pit());
+}
+
+
+void Cursor::checkBufferStructure()
+{
+	if (paragraph().layout()->toclevel == Layout::NOT_IN_TOC)
+		return;
+	Buffer const * master = buffer().masterBuffer();
+	master->tocBackend().updateItem(ParConstIterator(*this));
+	master->structureChanged();
 }
 
 

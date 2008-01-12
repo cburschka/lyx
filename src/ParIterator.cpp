@@ -104,18 +104,6 @@ ParagraphList & ParIterator::plist() const
 }
 
 
-bool operator==(ParIterator const & iter1, ParIterator const & iter2)
-{
-	return DocIterator(iter1) == DocIterator(iter2);
-}
-
-
-bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
-{
-	return !(iter1 == iter2);
-}
-
-
 DocIterator makeDocIterator(ParIterator const & par, pos_type pos)
 {
 	DocIterator dit(par);
@@ -164,9 +152,10 @@ ParagraphList const & ParConstIterator::plist() const
 	return text()->paragraphs();
 }
 
-
+#if 0
 bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
+	// FIXME: this makes two full copies!
 	return DocIterator(iter1) == DocIterator(iter2);
 }
 
@@ -175,6 +164,7 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
 	return !(iter1 == iter2);
 }
+#endif
 
 
 // FIXME: const correctness!

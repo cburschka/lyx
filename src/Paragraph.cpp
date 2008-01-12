@@ -250,15 +250,13 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 }
 
 
-bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const {
+bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
+{
 	// keep the logic here in sync with the logic of eraseChars()
-
-	if (!trackChanges) {
+	if (!trackChanges)
 		return true;
-	}
 
-	Change change = d->changes_.lookup(size());
-
+	Change const change = d->changes_.lookup(size());
 	return change.type == Change::INSERTED && change.author == 0;
 }
 
@@ -292,22 +290,17 @@ void Paragraph::setChange(Change const & change)
 void Paragraph::setChange(pos_type pos, Change const & change)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
-
 	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
-
-	if (change.type != Change::DELETED &&
-	    pos < size() && isInset(pos)) {
+	if (change.type != Change::DELETED && pos < size() && isInset(pos))
 		getInset(pos)->setChange(change);
-	}
 }
 
 
 Change const & Paragraph::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
-
 	return d->changes_.lookup(pos);
 }
 

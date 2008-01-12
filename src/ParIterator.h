@@ -45,7 +45,7 @@ public:
 	///
 	ParIterator(ParIterator const &);
 	///
-	ParIterator(DocIterator const &);
+	explicit ParIterator(DocIterator const &);
 
 	/// This really should be implemented...
 	//ParIterator & operator=(ParIterator const &);
@@ -79,15 +79,15 @@ ParIterator par_iterator_end(Inset & inset);
 
 
 ///
-bool operator==(ParIterator const & iter1, ParIterator const & iter2);
+//bool operator==(ParIterator const & it1, ParIterator const & it2);
 
-// FIXME: Unfortunately operator!=(ParIterator &, ParIterator &) is implemented with
-// operator!=(DocIterator &, DocIterator &) that gives false if the positions
-// are different, even if the pars are the same. So ultimately it's a bug in
-// operator!=(ParIterator &, ParIterator &) I'd say (nevertheless, I would be
-// reluctant to change it, because I fear that some part of the code could rely on
-// this "bug". --Alfredo
-bool operator!=(ParIterator const & iter1, ParIterator const & iter2);
+// FIXME: Unfortunately operator!=(ParIterator &, ParIterator &) is
+// implemented with operator!=(DocIterator &, DocIterator &) that gives
+// false if the positions are different, even if the pars are the same.
+// So ultimately it's a bug in operator!=(ParIterator &, ParIterator &)
+// I'd say (nevertheless, I would be reluctant to change it, because I
+// fear that some part of the code could rely on this "bug". --Alfredo
+//bool operator!=(ParIterator const & it1, ParIterator const & it2);
 
 
 class ParConstIterator : public std::iterator<std::forward_iterator_tag,
@@ -96,11 +96,11 @@ class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 {
 public:
 	///
-	ParConstIterator(): DocIterator() {}
+	ParConstIterator() : DocIterator() {}
 	///
 	ParConstIterator(ParConstIterator const &);
 	///
-	ParConstIterator(DocIterator const &);
+	explicit ParConstIterator(DocIterator const &);
 	///
 
 	ParConstIterator & operator++();
@@ -114,11 +114,9 @@ public:
 	ParagraphList const & plist() const;
 };
 
-bool operator==(ParConstIterator const & iter1,
-		ParConstIterator const & iter2);
+//bool operator==(ParConstIterator const & it1, ParConstIterator const & it2);
 
-bool operator!=(ParConstIterator const & iter1,
-		ParConstIterator const & iter2);
+//bool operator!=(ParConstIterator const & it1, ParConstIterator const & it2);
 
 
 ParConstIterator par_const_iterator_begin(Inset const & inset);

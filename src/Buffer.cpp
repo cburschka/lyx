@@ -948,7 +948,6 @@ bool Buffer::write(ostream & ofs) const
 	    << "\\lyxformat " << LYX_FORMAT << "\n"
 	    << "\\begin_document\n";
 
-
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the document; otherwise set it to 'false'.
 	AuthorList::Authors::const_iterator a_it = params().authors().begin();
@@ -956,8 +955,8 @@ bool Buffer::write(ostream & ofs) const
 	for (; a_it != a_end; ++a_it)
 		a_it->second.setUsed(false);
 
-	ParIterator const end = par_iterator_end();
-	ParIterator it = par_iterator_begin();
+	ParIterator const end = const_cast<Buffer *>(this)->par_iterator_end();
+	ParIterator it = const_cast<Buffer *>(this)->par_iterator_begin();
 	for ( ; it != end; ++it)
 		it->checkAuthors(params().authors());
 
@@ -1487,10 +1486,29 @@ bool Buffer::isMultiLingual() const
 }
 
 
-ParIterator Buffer::getParFromID(int const id) const
+ParConstIterator Buffer::getParFromID(int const id) const
 {
 	ParConstIterator it = par_iterator_begin();
 	ParConstIterator const end = par_iterator_end();
+
+	if (id < 0) {
+		// John says this is called with id == -1 from undo
+		lyxerr << "getParFromID(), id: " << id << endl;
+		return end;
+	}
+
+	for (; it != end; ++it)
+		if (it->id() == id)
+			return it;
+
+	return end;
+}
+
+
+ParIterator Buffer::getParFromID(int const id)
+{
+	ParIterator it = par_iterator_begin();
+	ParIterator const end = par_iterator_end();
 
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
@@ -1989,9 +2007,10 @@ void Buffer::updateMacros() const
 
 void Buffer::updateMacroInstances() const
 {
-	LYXERR(Debug::MACROS, "updateMacroInstances for " << d->filename.onlyFileName());
-	ParIterator it = par_iterator_begin();
-	ParIterator end = par_iterator_end();
+	LYXERR(Debug::MACROS, "updateMacroInstances for "
+		<< d->filename.onlyFileName());
+	ParConstIterator it = par_iterator_begin();
+	ParConstIterator end = par_iterator_end();
 	for (; it != end; it.forwardPos()) {
 		// look for MathData cells in InsetMathNest insets
 		Inset * inset = it.nextInset();

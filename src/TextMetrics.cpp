@@ -1641,7 +1641,7 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 			text_->deleteWordForward(cur);
 		else
 			cap::cutSelection(cur, true, false);
-		checkBufferStructure(cur.buffer(), cur);
+		cur.checkBufferStructure();
 	}
 }
 
