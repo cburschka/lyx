@@ -404,7 +404,7 @@ class LyX_base:
         return
       j = find_token(self.header, "\\end_modules", i)
       if j == -1:
-        self.warning("Malformed LyX document: No \\end_modules.")
+        self.warning("(add_module)Malformed LyX document: No \\end_modules.")
         return
       k = find_token(self.header, module, i)
       if k != -1 and k < j:
@@ -422,15 +422,19 @@ class LyX_base:
 
     def set_module_list(self, mlist):
       modbegin = find_token(self.header, "\\begin_modules", 0)
+      newmodlist = ['\\begin_modules'] + mlist + ['\\end_modules']
       if (modbegin == -1):
         #No modules yet included
-        modbegin = find_token(self.header, "\\textclass", 0)
-        if modbegin == -1:
+        tclass = find_token(self.header, "\\textclass", 0)
+        if tclass == -1:
           self.warning("Malformed LyX document: No \\textclass!!")
           return
+        modbegin = tclass + 1
+        self.header[modbegin:modbegin] = newmodlist
+        return
       modend = find_token(self.header, "\\end_modules", modbegin)
       if modend == -1:
-        self.warning("Malformed LyX document: No \\end_modules.")
+        self.warning("(set_module_list)Malformed LyX document: No \\end_modules.")
         return
       newmodlist = ['\\begin_modules'] + mlist + ['\\end_modules']
       self.header[modbegin:modend + 1] = newmodlist

@@ -929,6 +929,8 @@ def convert_module_names(document):
     'Theorems (Order By Chapter)' : 'theorems-chap', 'Theorems (Order By Section)' : 'theorems-sec', \
     'Theorems (Starred)' : 'theorems-starred', 'Theorems' : 'theorems-std' }
   modlist = document.get_module_list()
+  if len(modlist) == 0:
+    return
   newmodlist = []
   for mod in modlist:
     if modulemap.has_key(mod):
@@ -946,6 +948,8 @@ def revert_module_names(document):
     'theorems-chap' : 'Theorems (Order By Chapter)', 'theorems-sec' : 'Theorems (Order By Section)', \
     'theorems-starred' : 'Theorems (Starred)', 'theorems-std' : 'Theorems'}
   modlist = document.get_module_list()
+  if len(modlist) == 0:
+    return
   newmodlist = []
   for mod in modlist:
     if modulemap.has_key(mod):
