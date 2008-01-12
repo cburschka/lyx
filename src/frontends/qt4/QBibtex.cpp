@@ -221,6 +221,7 @@ void QBibtexDialog::addDatabase()
 			databaseLW->addItem(f);
 	}
 
+	databaseChanged();
 	form_->changed();
 }
 
@@ -230,6 +231,7 @@ void QBibtexDialog::deletePressed()
 	QListWidgetItem *cur = databaseLW->takeItem(databaseLW->currentRow());
 	if (cur) {
 		delete cur;
+		databaseChanged();
 		form_->changed();
 	}
 }
@@ -238,8 +240,8 @@ void QBibtexDialog::deletePressed()
 void QBibtexDialog::upPressed()
 {
 	int row = databaseLW->currentRow();
-	QListWidgetItem *cur;
-	databaseLW->insertItem(row - 1, cur = databaseLW->takeItem(row));
+	QListWidgetItem *cur = databaseLW->takeItem(row);
+	databaseLW->insertItem(row - 1, cur);
 	databaseLW->setCurrentItem(cur);
 	form_->changed();
 }
@@ -248,8 +250,8 @@ void QBibtexDialog::upPressed()
 void QBibtexDialog::downPressed()
 {
 	int row = databaseLW->currentRow();
-	QListWidgetItem *cur;
-	databaseLW->insertItem(row + 1, cur = databaseLW->takeItem(row));
+	QListWidgetItem *cur = databaseLW->takeItem(row);
+	databaseLW->insertItem(row + 1, cur);
 	databaseLW->setCurrentItem(cur);
 	form_->changed();
 }
