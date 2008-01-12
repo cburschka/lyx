@@ -71,6 +71,10 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		this, SLOT( browsePressed()));
 	connect(deletePB, SIGNAL(clicked()),
 		this, SLOT( deletePressed()));
+	connect(upPB, SIGNAL(clicked()),
+		this, SLOT( upPressed()));
+	connect(downPB, SIGNAL(clicked()),
+		this, SLOT( downPressed()));
 	connect(styleCB, SIGNAL(editTextChanged (const QString &)),
 		this, SLOT( change_adaptor()));
 	connect(databaseLW, SIGNAL(itemSelectionChanged()),
@@ -110,6 +114,8 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	connect(add_->closePB, SIGNAL(clicked()),
 		add_, SLOT(reject()));
 
+	// Make sure the delete/up/down buttons are disabled if necessary.
+	databaseChanged();
 }
 
 
@@ -221,15 +227,43 @@ void QBibtexDialog::addDatabase()
 
 void QBibtexDialog::deletePressed()
 {
-	databaseLW->takeItem(databaseLW->currentRow());
+	QListWidgetItem *cur = databaseLW->takeItem(databaseLW->currentRow());
+	if (cur) {
+		delete cur;
+		form_->changed();
+	}
+}
+
+
+void QBibtexDialog::upPressed()
+{
+	int row = databaseLW->currentRow();
+	QListWidgetItem *cur;
+	databaseLW->insertItem(row - 1, cur = databaseLW->takeItem(row));
+	databaseLW->setCurrentItem(cur);
 	form_->changed();
 }
 
+
+void QBibtexDialog::downPressed()
+{
+	int row = databaseLW->currentRow();
+	QListWidgetItem *cur;
+	databaseLW->insertItem(row + 1, cur = databaseLW->takeItem(row));
+	databaseLW->setCurrentItem(cur);
+	form_->changed();
+}
 
 
 void QBibtexDialog::databaseChanged()
 {
 	deletePB->setEnabled(!form_->readOnly() && databaseLW->currentRow() != -1);
+	upPB->setEnabled(!form_->readOnly() &&
+			 databaseLW->count() > 1 &&
+			 databaseLW->currentRow() > 0);
+	downPB->setEnabled(!form_->readOnly() &&
+			   databaseLW->count() > 1 &&
+			   databaseLW->currentRow() < databaseLW->count() - 1);
 }
 
 
@@ -272,7 +306,9 @@ void QBibtex::build_dialog()
 	bcview().addReadOnly(dialog_->styleCB);
 	bcview().addReadOnly(dialog_->bibtocCB);
 	bcview().addReadOnly(dialog_->addBibPB);
-	bcview().addReadOnly(dialog_->deletePB);
+
+	// Delete/Up/Down are handled with more conditions in
+	// QBibtexDialog::databaseChanged().
 }
 
 

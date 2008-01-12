@@ -55,6 +55,8 @@ protected Q_SLOTS:
 	virtual void addPressed();
 	virtual void addDatabase();
 	virtual void deletePressed();
+	virtual void upPressed();
+	virtual void downPressed();
 	virtual void databaseChanged();
 	virtual void availableChanged();
 	void bibEDChanged();
