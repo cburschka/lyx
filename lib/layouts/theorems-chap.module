@@ -1,6 +1,7 @@
 #\DeclareLyXModule{Theorems (Order By Chapter)}
 #DescriptionBegin
-#Numbers theorems and the like by chapter.
+#Numbers theorems and the like by chapter. Use this module only with
+#layouts that provide a chapter environment.
 #DescriptionEnd
 #Requires: theorems-std | theorems-ams
 
@@ -15,6 +16,11 @@ End
 
 Style Theorem
 	Preamble
-		\newtheorem{thm}{Theorem}[chapter]
+		\ifx\thechapter\undefined
+			\newtheorem{thm}{Theorem}
+		\else
+			\newtheorem{thm}{Theorem}[chapter]
+		\fi
+		
 	EndPreamble
 End

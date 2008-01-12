@@ -16,3 +16,21 @@ End
 
 Input theorems.inc
 Input theorems-proof.inc
+
+#This is just a hacked version of the AMS proof environment
+Style Proof
+  Preamble
+    \newenvironment{proof}[1][\proofname]{\par
+      \normalfont\topsep6\p@\@plus6\p@\relax
+      \trivlist
+      \itemindent\parindent
+      \item[\hskip\labelsep
+            \scshape
+        #1]\ignorespaces
+    }{%
+      \endtrivlist\@endpefalse
+    }
+\providecommand{\proofname}{Proof}
+
+  EndPreamble
+End

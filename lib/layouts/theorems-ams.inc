@@ -48,6 +48,7 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
 End
@@ -59,6 +60,7 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{cor}[thm]{Corollary}
 	EndPreamble
 End
@@ -70,6 +72,7 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{lem}[thm]{Lemma}
 	EndPreamble
 End
@@ -81,6 +84,7 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{prop}[thm]{Proposition}
 	EndPreamble
 End
@@ -92,6 +96,7 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{conjecture}[thm]{Conjecture}
 	EndPreamble
 End
@@ -103,6 +108,7 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
+	  \theoremstyle{plain}
 	  \newtheorem{fact}[thm]{Fact}
 	EndPreamble
 End
