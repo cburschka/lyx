@@ -44,6 +44,26 @@ namespace lyx {
      (May 19 1996, 12:04, RvdK)
 */
 
+/* LFUN documentation (a start at least, Chr 2007-08-12)
+ *
+ * The documentation below is primarily notes about restrictions and
+ * oddities relating to the different LFUNs.
+ *
+ * Try to find an appropriate (thematical) place when adding the new LFUN.
+ *
+ * Doxygen template below. Some notes: Parameters should be set in uppercase
+ * and put in <BRACKETS>, as so.
+ */
+
+/**
+ * 
+ * \li Action: 
+ * \li Notion: 
+ * \li Syntax: 
+ * \li Params: 
+ * \li Origin: 
+ */
+
 LyXAction lyxaction;
 
 
@@ -63,7 +83,6 @@ void LyXAction::newFunc(kb_action action, string const & name,
 // \var inside functions.
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 void LyXAction::init()
-#endif
 {
 	// This function was changed to use the array below in initalization
 	// instead of calling newFunc numerous times because of compilation
@@ -82,6 +101,7 @@ void LyXAction::init()
 	};
 
 	ev_item const items[] = {
+#endif
 		{ LFUN_ACCENT_ACUTE, "accent-acute", Noop, Edit },
 		{ LFUN_ACCENT_BREVE, "accent-breve", Noop, Edit },
 		{ LFUN_ACCENT_CARON, "accent-caron", Noop, Edit },
@@ -99,8 +119,6 @@ void LyXAction::init()
 		{ LFUN_ACCENT_UMLAUT, "accent-umlaut", Noop, Edit },
 		{ LFUN_ACCENT_UNDERBAR, "accent-underbar", Noop, Edit },
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
-
-		{ LFUN_APPENDIX, "appendix", Noop, Edit },
 
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
 		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
@@ -132,10 +150,10 @@ void LyXAction::init()
 		{ LFUN_CLEARPAGE_INSERT, "clearpage-insert", Noop, Edit },
 		{ LFUN_CLEARDOUBLEPAGE_INSERT, "cleardoublepage-insert", Noop, Edit },
 		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
+		{ LFUN_APPENDIX, "appendix", Noop, Edit },
+
 #if 0
 		{ LFUN_LIST_INSERT, "list-insert", Noop, Edit },
-#endif
-#if 0
 		{ LFUN_THEOREM_INSERT, "theorem-insert", Noop, Edit },
 #endif
 
@@ -147,7 +165,20 @@ void LyXAction::init()
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
+/** LFUN_SCROLL
+ * \li Action: scroll the buffer view
+ * \li Notion: Only scrolls the screen up or down; does not move the cursor.
+ * \li Syntax: scroll <TYPE> <QUANTITY>
+ * \li Params: <TYPE>:  line|page\n
+               <QUANTITY>: up|down|<number>\n
+ * \li Origin: Abdelrazak Younes, Dec 27 2007
+ */
 		{ LFUN_SCROLL, "scroll", ReadOnly, Edit },
+/**
+ * LFUN_SCREEN_RECENTER
+ * \li Action: Recenters the screen on the current cursor position
+ * \li Syntax: screen-recenter
+ */
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
 		{ LFUN_SCREEN_UP, "screen-up", ReadOnly, Edit },
 		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },
@@ -195,15 +226,56 @@ void LyXAction::init()
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_NEW_LINE, "new-line", Noop, Edit },
 
+/**
+ * LFUN_PARAGRAPH_MOVE_DOWN
+ * \li Action: Moves the current paragraph downwards in the document.
+ * \li Syntax: paragraph-move-down
+ * \li Origin: Edwin, 8 Apr 2006
+ */
 		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop, Edit },
+/**
+ * LFUN_PARAGRAPH_MOVE_UP
+ * \li Action: Moves the current paragraph upwards in the document.
+ * \li Syntax: paragraph-move-up
+ * \li Origin: Edwin, 8 Apr 2006
+ */
 		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
-
+/**
+ * LFUN_COPY
+ * \li Action: Copies to the clipboard the last edit
+ * \li Syntax: copy
+ */
 		{ LFUN_COPY, "copy", ReadOnly, Edit },
+/**
+ * LFUN_CUT
+ * \li Action: Cuts to the clipboard
+ * \li Syntax: cut
+ */
 		{ LFUN_CUT, "cut", Noop, Edit },
+/**
+ * LFUN_PASTE
+ * \li Action: Pastes from the active clipboard
+ * \li Syntax: paste
+ */
 		{ LFUN_PASTE, "paste", Noop, Edit },
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
+/**
+ * LFUN_PRIMARY_SELECTION_PASTE
+ * \li Action: Pastes the material currently selected
+ * \li Syntax: primary-selection-paste
+ */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
+/**
+ * LFUN_UNDO
+ * \li Action: Undoes the last edit
+ * \li Syntax: undo
+ */
 		{ LFUN_UNDO, "undo", Noop, Edit },
+/**
+ * LFUN_REDO
+ * \li Action: Redoes the last thing undone
+ * \li Syntax: redo
+ */
 		{ LFUN_REDO, "redo", Noop, Edit },
 		{ LFUN_REPEAT, "repeat", NoBuffer, Edit },
 		{ LFUN_CHARS_TRANSPOSE, "chars-transpose", Noop, Edit },
@@ -242,18 +314,92 @@ void LyXAction::init()
 		{ LFUN_BIBTEX_DATABASE_ADD, "bibtex-database-add", Noop, Edit },
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
+ /**
+ * LFUN_LAYOUT
+ * \li Action: Sets the layout (that is, environment) for the current paragraph
+ * \li Syntax: layout <LAYOUT>
+ * \li Params: <LAYOUT>: the layout to use
+ */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
+/**
+ * LFUN_LAYOUT_PARAGRAPH
+ * \li Action: Launches the paragraph settings dialog
+ * \li Syntax: layout-paragraph
+ */
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly, Layout },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular", Noop, Layout },
+/**
+ * LFUN_DROP_LAYOUTS_CHOICE
+ * \li Action: Displays list of layout choices
+ * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
+               dropbox allowing for choice of layout
+ * \li Syntax: drop-layouts-choice
+ */
 		{ LFUN_DROP_LAYOUTS_CHOICE, "drop-layouts-choice", ReadOnly, Layout },
+/**
+ * LFUN_LAYOUT_MODULES_CLEAR
+ * \li Action: Clears the module list
+ * \li Notion: Clears the list of included modules for the current buffer.
+ * \li Syntax: layout-modules-clear
+ * \li Origin: rgh, 25 August 2007
+ */
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop, Layout },
+/**
+ * LFUN_LAYOUT_MODULE_ADD
+ * \li Action: Adds a module
+ * \li Notion: Adds a module to the list of included modules for the current buffer.
+ * \li Syntax: layout-module-add <MODULE>
+ * \li Params: <MODULE>: the module to be added
+ * \li Origin: rgh, 25 August 2007
+ */
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
+/**
+ * LFUN_LAYOUT_RELOAD
+ * \li Action: Reloads layout information
+ * \li Notion: Reloads all layout information for the current buffer from disk, thus
+               recognizing any changes that have been made to layout files on the fly.
+               This is intended to be used only by layout developers and should not be
+               used when one is trying to do actual work.
+ * \li Syntax: layout-reload
+ * \li Origin: rgh, 3 September 2007
+ */
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
+/**
+ * LFUN_TEXTCLASS_APPLY
+ * \li Action: Sets the text class for the current buffer
+ * \li Syntax: textclass-apply <TEXTCLASS>
+ * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be
+                   the filename, minus the ".layout" extension.
+ */
 		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop, Layout },
+/**
+ * LFUN_TEXTCLASS_LOAD
+ * \li Action: Loads information for a textclass from disk
+ * \li Syntax: textclass-load <TEXTCLASS>
+ * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be
+                   the filename, minus the ".layout" extension.
+ */
 		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop, Layout },
 
+/**
+ * LFUN_MARK_OFF
+ * \li Action: Disable selecting of text-region.
+ * \li Syntax: mark-off
+ */
 		{ LFUN_MARK_OFF, "mark-off", ReadOnly, Edit },
+/**
+ * LFUN_MARK_ON
+ * \li Action: Enable selecting of text-region.
+ * \li Notion: After enabling you can simply move arrow keys to get selected region.
+ * \li Syntax: mark-on
+ */
 		{ LFUN_MARK_ON, "mark-on", ReadOnly, Edit },
+/**
+ * LFUN_MARK_TOGGLE
+ * \li Action: Toggle between MARK_ON and MARK_OFF
+ * \li Syntax: mark-toggle
+ * \li Origin: poenitz, May 5 2006
+ */
 		{ LFUN_MARK_TOGGLE, "mark-toggle", ReadOnly, Edit },
 		
 		{ LFUN_MATH_DELIM, "math-delim", Noop, Math },
@@ -269,29 +415,184 @@ void LyXAction::init()
 		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", Noop, Math },
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
+/**
+ * LFUN_MATH_NUMBER_LINE_TOGGLE
+ * \li Action: Toggles numbering of the current formula line.
+ * \li Notion: Must be in display formula mode.
+ * \li Syntax: math-number-line-toggle
+ * \li Origin: Alejandro 18 Jun 1996
+ */
 		{ LFUN_MATH_NUMBER_LINE_TOGGLE, "math-number-line-toggle", Noop, Math },
+/**
+ * LFUN_MATH_NUMBER_TOGGLE
+ * \li Action: Toggles numbering of the current formula.
+ * \li Notion: Must be in display formula mode.
+ * \li Syntax: math-number-toggle
+ * \li Origin: Alejandro 4 Jun 1996
+ */
 		{ LFUN_MATH_NUMBER_TOGGLE, "math-number-toggle", Noop, Math },
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_UNFOLD
+ * \li Action: Unfold a Math Macro
+ * \li Notion: Unfold the Math Macro the cursor is in, i.e.
+               display it as \foo.
+ * \li Syntax: math-macro-unfold
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_UNFOLD, "math-macro-unfold", ReadOnly | SingleParUpdate, Math },
+/**
+ * LFUN_MATH_MACRO_FOLD
+ * \li Action: Fold a Math Macro
+ * \li Notion: Fold the Math Macro the cursor is in if it was
+               unfolded, i.e. displayed as \foo before.
+ * \li Syntax: math-macro-fold
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_FOLD, "math-macro-fold", ReadOnly | SingleParUpdate, Math },
+/**
+ * LFUN_MATH_MACRO_ADD_PARAM
+ * \li Action: Add a parameter
+ * \li Notion: Add a parameter to a Math Macro
+ * \li Params: <NUM>: The number of the parameter behind which the new one
+               will be added (1 for the first, i.e. use 0 for add a
+               parameter at the left), defaults to the last one.
+ * \li Syntax: math-macro-add-param <NUM>
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_ADD_PARAM, "math-macro-add-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_REMOVE_PARAM
+ * \li Action: Remove the last parameter
+ * \li Notion: Remove the last parameter of a Math Macro and
+               remove its value in all instances of the macro
+               in the buffer.
+ * \li Params: <NUM>: The number of the parameter to be deleted (1 for
+               the first), defaults to the last one.
+ * \li Syntax: math-macro-remove-param <NUM>
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_REMOVE_PARAM, "math-macro-remove-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
+ * \li Action: Append a greedy parameter
+ * \li Notion: Append a greedy parameter to a Math Macro which
+               eats the following mathed cell in every instance of
+               the macro in the buffer.
+ * \li Syntax: math-macro-append-greedy-param
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_APPEND_GREEDY_PARAM, "math-macro-append-greedy-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
+ * \li Action: Remove a greedy parameter
+ * \li Notion: Remove a greedy parameter of a Math Macro and spit
+               out the values of it in every instance of the macro
+               in the buffer. If it is an optional parameter the [valud]
+               format is used.
+ * \li Syntax: math-macro-remove-greedy-param
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM, "math-macro-remove-greedy-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_MAKE_OPTIONAL
+ * \li Action: Make a parameter optional
+ * \li Notion: Turn the first non-optional parameter of a Math Macro
+               into an optional parameter with a default value.
+ * \li Syntax: math-macro-make-optional
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_MAKE_OPTIONAL, "math-macro-make-optional", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_MAKE_NONOPTIONAL
+ * \li Action: Make a parameter non-optional
+ * \li Notion: Turn the last optional parameter of a Math Macro
+               into a non-optional parameter. The default value is
+               remembered to be reused later if the user changes his mind.
+ * \li Syntax: math-macro-make-nonoptional
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_MAKE_NONOPTIONAL, "math-macro-make-nonoptional", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
+ * \li Action: Add an optional parameter
+ * \li Notion: Insert an optional parameter just behind the
+               already existing optional parameters.
+ * \li Syntax: math-macro-add-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
+ * \li Action: Remove the last optional parameter
+ * \li Notion: Remove the last optional parameter of a Math Macro and
+               remove it in all the instances of the macro in the buffer.
+ * \li Syntax: math-macro-remove-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param", Noop, Math },
+/**
+ * LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
+ * \li Action: Add a greedy optional parameter
+ * \li Notion: Add a greedy optional parameter which eats the value
+               from the following cells in mathed which are in the [value]
+               format.
+ * \li Syntax: math-macro-add-greedy-optional-param
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param", Noop, Math },
+/**
+ * LFUN_IN_MATHMACROTEMPLATE
+ * \li Action: Only active in Math Macro definition
+ * \li Notion: Dummy function which is only active in a Math Macro definition.
+               It's used to toggle the Math Macro toolbar if the cursor moves
+               into a Math Macro definition.
+ * \li Syntax: in-mathmacrotemplate
+ * \li Origin: sts, 06 January 2008
+ */
 		{ LFUN_IN_MATHMACROTEMPLATE, "in-mathmacrotemplate", Noop, Math },
 
 		{ LFUN_PARAGRAPH_DOWN, "paragraph-down", ReadOnly | NoUpdate, Edit },
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
+/**
+ * LFUN_OUTLINE_UP
+ * \li Action: Move the current group in the upward direction in the
+               structure of the document.
+ * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
+               the whole substructure of the group.
+ * \li Syntax: outline-up
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 		{ LFUN_OUTLINE_UP, "outline-up", Noop, Edit },
+/**
+ * LFUN_OUTLINE_DOWN
+ * \li Action: Move the current group in the downward direction in the
+               structure of the document.
+ * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
+               the whole substructure of the group.
+ * \li Syntax: outline-down
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 		{ LFUN_OUTLINE_DOWN, "outline-down", Noop, Edit },
+/**
+ * LFUN_OUTLINE_IN
+ * \li Action: Moves the current group in the downward direction in the
+               hierarchy of the document structure.
+ * \li Notion: Part -> Chapter -> Section -> etc.
+ * \li Syntax: outline-in
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 		{ LFUN_OUTLINE_IN, "outline-in", Noop, Edit },
+/**
+ * LFUN_OUTLINE_OUT
+ * \li Action: Moves the current group in the upward direction in the
+               hierarchy of the document structure.
+ * \li Notion: Part <- Chapter <- Section <- etc.
+ * \li Syntax: outline-out
+ * \li Origin: Vermeer, 23 Mar 2006
+ */
 		{ LFUN_OUTLINE_OUT, "outline-out", Noop, Edit },
 
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
@@ -333,7 +634,29 @@ void LyXAction::init()
 		{ LFUN_INSET_TOGGLE, "", ReadOnly, Hidden },
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 
+/**
+ * LFUN_PARAGRAPH_PARAMS
+ * \li Action: Change paragraph settings
+ * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
+               This function only modifies, and does not override, existing settings.
+               Note that the "leftindent" indent setting is deprecated.
+ * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
+ * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
+               <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
+               <ALIGN>:   \\align block|left|right|center|default\n
+               <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
+ * \li Origin: rgh, Aug 15 2007
+ */
 		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop, Edit },
+/**
+ * LFUN_PARAGRAPH_PARAMS_APPLY
+ * \li Action: Change paragraph settings.
+ * \li Notion: Overwrite all nonspecified settings to the default ones.
+               Use paragraph-params lfun if you don't want to overwrite others settings.
+ * \li Syntax: paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS>
+ * \li Params: For parameters see LFUN_PARAGRAPH_PARAMS
+ * \li Origin: leeming, 30 Mar 2004
+ */
 		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
@@ -348,11 +671,44 @@ void LyXAction::init()
 		{ LFUN_LABEL_INSERT, "label-insert", Noop, Edit },
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
 
+/**
+ * LFUN_BOOKMARK_GOTO
+ * \li Action: Goto a bookmark
+ * \li Notion: Moves the cursor to the numbered bookmark, opening the file
+               if necessary. Note that bookmarsk are saved per-session, not
+               per file.
+ * \li Syntax: bookmark-goto <NUMBER>
+ * \li Params: <NUMBER>: the number of the bookmark to restore.
+ * \li Origin: Dekel, 27 January 2001
+ */
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", NoBuffer, Edit },
+/**
+ * LFUN_BOOKMARK_SAVE
+ * \li Action: Save a bookmark
+ * \li Notion: Saves a numbered bookmark to the sessions file. The number
+               must be between 1 and 9, inclusive. Note that bookmarks are
+               saved per-session, not per file.
+ * \li Syntax: bookmark-save <NUMBER>
+ * \li Params: <NUMBER>: the number of the bookmark to save.
+ * \li Origin: Dekel, 27 January 2001
+ */
 		{ LFUN_BOOKMARK_SAVE, "bookmark-save", ReadOnly, Edit },
+/**
+ * LFUN_BOOKMARK_CLEAR
+ * \li Action: Clears the list of saved bookmarks
+ * \li Syntax: bookmark-clear
+ * \li Origin: bpeng, 31 October 2006
+ */
 		{ LFUN_BOOKMARK_CLEAR, "bookmark-clear", NoBuffer, Edit },
 
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
+/**
+ * LFUN_LYX_QUIT
+ * \li Action: Terminates the current LyX instance
+ * \li Notion: Terminates the current LyX instance, asking whether to save
+               modified documents, etc.
+ * \li Syntax: lyx-quit
+ */
 		{ LFUN_LYX_QUIT, "lyx-quit", NoBuffer, Buffer },
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
@@ -393,24 +749,69 @@ void LyXAction::init()
 
 		{ LFUN_BUILD_PROGRAM, "build-program", ReadOnly, Buffer },
 
+/**
+ * LFUN_BUFFER_AUTO_SAVE
+ * \li Action: Saves the current buffer to a temporary file
+ * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
+               is called automatically by LyX, to "autosave" the current buffer.
+	* \li Syntax: buffer-auto-save
+ */
 		{ LFUN_BUFFER_AUTO_SAVE, "buffer-auto-save", Noop, Buffer },
 		{ LFUN_BUFFER_CHILD_OPEN, "buffer-child-open", ReadOnly, Buffer },
 		{ LFUN_BUFFER_CHKTEX, "buffer-chktex", ReadOnly, Buffer },
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
 		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
+/**
+ * LFUN_BUFFER_CLOSE
+ * \li Action: Closes the current buffer
+ * \li Notion: Closes the current buffer, asking whether to save it, etc,
+               if the buffer has been modified.
+ * \li Syntax: buffer-close
+ */
 		{ LFUN_BUFFER_CLOSE, "buffer-close", ReadOnly, Buffer },
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 		{ LFUN_BUFFER_PRINT, "buffer-print", ReadOnly, Buffer },
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
+/**
+ * LFUN_BUFFER_NEW
+ * \li Action: Creates a new buffer (that is, document)
+ * \li Syntax: buffer-new
+ */
 		{ LFUN_BUFFER_NEW, "buffer-new", NoBuffer, Buffer },
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly, Buffer },
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
+/**
+ * LFUN_BUFFER_VIEW
+ * \li Action: Displays current buffer in chosen format
+ * \li Notion: Displays the contents of the current buffer in the chosen
+               format, for example, PDF or DVI. This runs the necessary
+               converter, calls the defined viewer, and so forth.
+ * \li Syntax: buffer-view <FORMAT>
+ * \li Params: <FORMAT>: The format to display, where this is one of the
+                         formats defined (in the current GUI) in the
+                         Tools>Preferences>File Formats dialog.
+ */
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
+/**
+ * LFUN_BUFFER_WRITE
+ * \li Action: Saves the current buffer
+ * \li Notion: Saves the current buffer to disk, using the filename that
+               is already associated with the buffer, asking for one if
+               none is yet assigned.
+ * \li Syntax: buffer-write
+ */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },
+/**
+ * LFUN_BUFFER_WRITE_AS
+ * \li Action: Rename and save current buffer.
+ * \li Syntax: buffer-write-as <FILENAME>
+ * \li Params: <FILENAME>: New name of the buffer/file. A relative path
+ *             is with respect to the original location of the buffer/file.
+ */
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
 		{ LFUN_BUFFER_WRITE_ALL, "buffer-write-all", ReadOnly, Buffer },
 		{ LFUN_BUFFER_NEXT, "buffer-next", ReadOnly, Buffer },
@@ -436,16 +837,38 @@ void LyXAction::init()
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 
+/**
+ * LFUN_PREFERENCES_SAVE
+ * \li Action: Save user preferences.
+ * \li Syntax: preferences-save
+ * \li Origin: Lgb, 27 Nov 1999
+ */
 		{ LFUN_PREFERENCES_SAVE, "preferences-save", NoBuffer, System },
+/**
+ * LFUN_RECONFIGURE
+ * \li Action: Reconfigure the automatic settings.
+ * \li Syntax: reconfigure
+ * \li Origin: Asger, 14 Feb 1997
+ */
 		{ LFUN_RECONFIGURE, "reconfigure", NoBuffer, System },
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
 		{ LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar", ReadOnly, System },
 
 		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, Edit },
 		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
+/**
+ * LFUN_STATISTICS
+ * \li Action: Count the statistics (number of words and characters)
+               in the document or in the given selection.
+ * \li Notion: Note that this function gives the number of words/chars written,
+               not the number of characters which will be typeset.
+ * \li Syntax: statistics
+ * \li Origin: lasgouttes, Jan 27 2004; ps, Jan 8 2008
+ */
 		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};
 
 	for (int i = 0; items[i].action != LFUN_NOACTION; ++i) {
@@ -454,7 +877,7 @@ void LyXAction::init()
 
 	init = true;
 }
-
+#endif
 
 LyXAction::LyXAction()
 {
