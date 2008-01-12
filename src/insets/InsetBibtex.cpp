@@ -104,8 +104,6 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		embedStatus = split(embedStatus, emb, ',');
 		while (!tmp.empty()) {
 			EmbeddedFile file(changeExtension(tmp, "bib"), cur.buffer().filePath());
-			if (!file.exists())
-				continue;
 			if (!newBibfiles.empty())
 				newBibfiles += ",";
 			newBibfiles += tmp;
