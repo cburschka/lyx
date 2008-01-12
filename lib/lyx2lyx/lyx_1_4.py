@@ -1832,7 +1832,13 @@ def revert_float(document):
         i = find_token_exact(document.body, '\\begin_inset Float', i)
         if i == -1:
             return
-        floatline = document.body[i]
+        line = document.body[i]
+        r = re.compile(r'\\begin_inset Float (.*)$')
+        m = r.match(line)
+        floattype = m.group(1)
+        if floattype != "figure" and floattype != "table":
+            i = i + 1
+            continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
@@ -1843,9 +1849,6 @@ def revert_float(document):
             if l == -1:
                 document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
                 return
-            floattype = "table"
-            if floatline == "\\begin_inset Float figure":
-                floattype = "figure"
             document.body[j] = '\\layout Standard\n\\begin_inset ERT\nstatus Collapsed\n\n' \
             '\\layout Standard\n\n\n\\backslash\n' \
             'end{sideways' + floattype + '}\n\n\\end_inset\n'

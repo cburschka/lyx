@@ -1140,12 +1140,19 @@ def revert_serbianlatin(document):
 
 
 def revert_rotfloat(document):
-    " Revert sidewaysalgorithm. "
+    " Revert sideways custom floats. "
     i = 0
     while 1:
-        i = find_token(document.body, '\\begin_inset Float algorithm', i)
+        i = find_token(document.body, "\\begin_inset Float", i)
         if i == -1:
             return
+        line = document.body[i]
+        r = re.compile(r'\\begin_inset Float (.*)$')
+        m = r.match(line)
+        floattype = m.group(1)
+        if floattype == "figure" or floattype == "table":
+            i = i + 1
+            continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
@@ -1158,17 +1165,20 @@ def revert_rotfloat(document):
                 return
             document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
             '\\begin_layout Standard\n\n\n\\backslash\n' \
-            'end{sidewaysalgorithm}\n\\end_layout\n\n\\end_inset\n'
+            'end{sideways' + floattype + '}\n\\end_layout\n\n\\end_inset\n'
             del document.body[i+1:l-1]
             document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
             '\\begin_layout Standard\n\n\n\\backslash\n' \
-            'begin{sidewaysalgorithm}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
-            add_to_preamble(document,
-                            ['% Commands inserted by lyx2lyx for sideways algorithm float',
-                             '\\usepackage{rotfloat}\n'
-                             '\\floatstyle{ruled}\n'
-                             '\\newfloat{algorithm}{tbp}{loa}\n'
-                             '\\floatname{algorithm}{Algorithm}\n'])
+            'begin{sideways' + floattype + '}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
+            if floattype == "algorithm":
+                add_to_preamble(document,
+                                ['% Commands inserted by lyx2lyx for sideways algorithm float',
+                                 '\\usepackage{rotfloat}\n'
+                                 '\\floatstyle{ruled}\n'
+                                 '\\newfloat{algorithm}{tbp}{loa}\n'
+                                 '\\floatname{algorithm}{Algorithm}\n'])
+            else:
+                document.warning("Cannot create preamble definition for custom float" + floattype + ".")
             i = i + 1
             continue
         i = i + 1
@@ -1181,7 +1191,13 @@ def revert_widesideways(document):
         i = find_token(document.body, '\\begin_inset Float', i)
         if i == -1:
             return
-        floatline = document.body[i]
+        line = document.body[i]
+        r = re.compile(r'\\begin_inset Float (.*)$')
+        m = r.match(line)
+        floattype = m.group(1)
+        if floattype != "figure" and floattype != "table":
+            i = i + 1
+            continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
@@ -1193,9 +1209,6 @@ def revert_widesideways(document):
                 if l == -1:
                     document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
                     return
-                floattype = "table"
-                if floatline == "\\begin_inset Float figure":
-                    floattype = "figure"
                 document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
                 '\\begin_layout Standard\n\n\n\\backslash\n' \
                 'end{sideways' + floattype + '*}\n\\end_layout\n\n\\end_inset\n'
