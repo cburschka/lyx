@@ -40,16 +40,22 @@ struct InsetTablePosLess
 } // namespace anon
 
 
+InsetList::InsetList(InsetList const & il)
+{
+	list_ = il.list_;
+	List::iterator it = list_.begin();
+	List::iterator end = list_.end();
+	for (; it != end; ++it)
+		it->inset = it->inset->clone();
+}
+
 
 InsetList::~InsetList()
 {
-	// If we begin storing a shared_ptr in the List
-	// this code can be removed. (Lgb)
 	List::iterator it = list_.begin();
 	List::iterator end = list_.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		delete it->inset;
-	}
 }
 
 
@@ -120,9 +126,8 @@ void InsetList::increasePosAfterPos(pos_type pos)
 {
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		++it->pos;
-	}
 }
 
 
@@ -130,19 +135,8 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 {
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
-	for (; it != end; ++it) {
-		--it->pos;
-	}
-}
-
-
-InsetList::InsetList(InsetList const & il)
-{
-	list_ = il.list_;
-	List::iterator it = list_.begin();
-	List::iterator end = list_.end();
 	for (; it != end; ++it)
-		it->inset = it->inset->clone();
+		--it->pos;
 }
 
 
