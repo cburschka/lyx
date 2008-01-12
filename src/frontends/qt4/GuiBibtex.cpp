@@ -107,6 +107,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(addBibPB);
 	bc().addReadOnly(deletePB);
+	bc().addReadOnly(upPB);
+	bc().addReadOnly(downPB);
 
 	// Make sure the delete/up/down buttons are disabled if necessary.
 	databaseChanged();
