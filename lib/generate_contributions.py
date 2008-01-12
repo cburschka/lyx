@@ -623,7 +623,7 @@ contributers = [
                  "GPL Statement",
                  "m=117501689204059",
                  "27 March 2007",
-                 u"Bug fixes"),
+                 u"Bug fixes, layout modules, BibTeX code"),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
