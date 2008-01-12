@@ -53,6 +53,8 @@ private Q_SLOTS:
 	void addPressed();
 	void addDatabase();
 	void deletePressed();
+	void upPressed();
+	void downPressed();
 	void databaseChanged();
 	void availableChanged();
 	void bibEDChanged();

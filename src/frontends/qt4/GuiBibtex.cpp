@@ -60,6 +60,10 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(browsePressed()));
 	connect(deletePB, SIGNAL(clicked()),
 		this, SLOT(deletePressed()));
+	connect(upPB, SIGNAL(clicked()),
+		this, SLOT(upPressed()));
+	connect(downPB, SIGNAL(clicked()),
+		this, SLOT(downPressed()));
 	connect(styleCB, SIGNAL(editTextChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(databaseLW, SIGNAL(itemSelectionChanged()),
@@ -103,6 +107,9 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(addBibPB);
 	bc().addReadOnly(deletePB);
+
+	// Make sure the delete/up/down buttons are disabled if necessary.
+	databaseChanged();
 }
 
 
@@ -225,15 +232,39 @@ void GuiBibtex::addDatabase()
 
 void GuiBibtex::deletePressed()
 {
-	databaseLW->takeItem(databaseLW->currentRow());
+	QListWidgetItem *cur = databaseLW->takeItem(databaseLW->currentRow());
+	if (cur) {
+		delete cur;
+		changed();
+	}
+}
+
+
+void GuiBibtex::upPressed()
+{
+	int row = databaseLW->currentRow();
+	QListWidgetItem *cur;
+	databaseLW->insertItem(row - 1, cur = databaseLW->takeItem(row));
+	databaseLW->setCurrentItem(cur);
 	changed();
 }
 
+
+void GuiBibtex::downPressed()
+{
+	int row = databaseLW->currentRow();
+	QListWidgetItem *cur;
+	databaseLW->insertItem(row + 1, cur = databaseLW->takeItem(row));
+	databaseLW->setCurrentItem(cur);
+	changed();
+}
 
 
 void GuiBibtex::databaseChanged()
 {
 	deletePB->setEnabled(!isBufferReadonly() && databaseLW->currentRow() != -1);
+	upPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 && databaseLW->currentRow() > 0);
+	downPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 && databaseLW->currentRow() < databaseLW->count() - 1);
 }
 
 
