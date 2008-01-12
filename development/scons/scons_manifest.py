@@ -2606,6 +2606,7 @@ lib_layouts_inc_files = Split('''
     stdtitle.inc
     svjour.inc
     theorems.inc
+    theorems-ams.inc
     theorems-order.inc
     theorems-proof.inc
     theorems-starred.inc
