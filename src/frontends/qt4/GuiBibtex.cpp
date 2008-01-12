@@ -227,6 +227,7 @@ void GuiBibtex::addDatabase()
 		}
 	}
 
+	databaseChanged();
 	changed();
 }
 
@@ -236,6 +237,7 @@ void GuiBibtex::deletePressed()
 	QListWidgetItem *cur = databaseLW->takeItem(databaseLW->currentRow());
 	if (cur) {
 		delete cur;
+		databaseChanged();
 		changed();
 	}
 }
@@ -244,8 +246,8 @@ void GuiBibtex::deletePressed()
 void GuiBibtex::upPressed()
 {
 	int row = databaseLW->currentRow();
-	QListWidgetItem *cur;
-	databaseLW->insertItem(row - 1, cur = databaseLW->takeItem(row));
+	QListWidgetItem *cur = databaseLW->takeItem(row);
+	databaseLW->insertItem(row - 1, cur);
 	databaseLW->setCurrentItem(cur);
 	changed();
 }
@@ -254,8 +256,8 @@ void GuiBibtex::upPressed()
 void GuiBibtex::downPressed()
 {
 	int row = databaseLW->currentRow();
-	QListWidgetItem *cur;
-	databaseLW->insertItem(row + 1, cur = databaseLW->takeItem(row));
+	QListWidgetItem *cur = databaseLW->takeItem(row);
+	databaseLW->insertItem(row + 1, cur);
 	databaseLW->setCurrentItem(cur);
 	changed();
 }
