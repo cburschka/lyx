@@ -165,7 +165,8 @@ void LyXAction::init()
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
-/** LFUN_SCROLL
+/**
+ * \var lyx::kb_action lyx::LFUN_SCROLL
  * \li Action: scroll the buffer view
  * \li Notion: Only scrolls the screen up or down; does not move the cursor.
  * \li Syntax: scroll <TYPE> <QUANTITY>
@@ -175,7 +176,7 @@ void LyXAction::init()
  */
 		{ LFUN_SCROLL, "scroll", ReadOnly, Edit },
 /**
- * LFUN_SCREEN_RECENTER
+ * \var lyx::kb_action lyx::LFUN_SCREEN_RECENTER
  * \li Action: Recenters the screen on the current cursor position
  * \li Syntax: screen-recenter
  */
@@ -227,52 +228,52 @@ void LyXAction::init()
 		{ LFUN_NEW_LINE, "new-line", Noop, Edit },
 
 /**
- * LFUN_PARAGRAPH_MOVE_DOWN
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_DOWN
  * \li Action: Moves the current paragraph downwards in the document.
  * \li Syntax: paragraph-move-down
  * \li Origin: Edwin, 8 Apr 2006
  */
 		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop, Edit },
 /**
- * LFUN_PARAGRAPH_MOVE_UP
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_UP
  * \li Action: Moves the current paragraph upwards in the document.
  * \li Syntax: paragraph-move-up
  * \li Origin: Edwin, 8 Apr 2006
  */
 		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
 /**
- * LFUN_COPY
+ * \var lyx::kb_action lyx::LFUN_COPY
  * \li Action: Copies to the clipboard the last edit
  * \li Syntax: copy
  */
 		{ LFUN_COPY, "copy", ReadOnly, Edit },
 /**
- * LFUN_CUT
+ * \var lyx::kb_action lyx::LFUN_CUT
  * \li Action: Cuts to the clipboard
  * \li Syntax: cut
  */
 		{ LFUN_CUT, "cut", Noop, Edit },
 /**
- * LFUN_PASTE
+ * \var lyx::kb_action lyx::LFUN_PASTE
  * \li Action: Pastes from the active clipboard
  * \li Syntax: paste
  */
 		{ LFUN_PASTE, "paste", Noop, Edit },
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
 /**
- * LFUN_PRIMARY_SELECTION_PASTE
+ * \var lyx::kb_action lyx::LFUN_PRIMARY_SELECTION_PASTE
  * \li Action: Pastes the material currently selected
  * \li Syntax: primary-selection-paste
  */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
 /**
- * LFUN_UNDO
+ * \var lyx::kb_action lyx::LFUN_UNDO
  * \li Action: Undoes the last edit
  * \li Syntax: undo
  */
 		{ LFUN_UNDO, "undo", Noop, Edit },
 /**
- * LFUN_REDO
+ * \var lyx::kb_action lyx::LFUN_REDO
  * \li Action: Redoes the last thing undone
  * \li Syntax: redo
  */
@@ -315,21 +316,21 @@ void LyXAction::init()
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
  /**
- * LFUN_LAYOUT
+ * \var lyx::kb_action lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph
  * \li Syntax: layout <LAYOUT>
  * \li Params: <LAYOUT>: the layout to use
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
 /**
- * LFUN_LAYOUT_PARAGRAPH
+ * \var lyx::kb_action lyx::LFUN_LAYOUT_PARAGRAPH
  * \li Action: Launches the paragraph settings dialog
  * \li Syntax: layout-paragraph
  */
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly, Layout },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular", Noop, Layout },
 /**
- * LFUN_DROP_LAYOUTS_CHOICE
+ * \var lyx::kb_action lyx::LFUN_DROP_LAYOUTS_CHOICE
  * \li Action: Displays list of layout choices
  * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
                dropbox allowing for choice of layout
@@ -337,7 +338,7 @@ void LyXAction::init()
  */
 		{ LFUN_DROP_LAYOUTS_CHOICE, "drop-layouts-choice", ReadOnly, Layout },
 /**
- * LFUN_LAYOUT_MODULES_CLEAR
+ * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULES_CLEAR
  * \li Action: Clears the module list
  * \li Notion: Clears the list of included modules for the current buffer.
  * \li Syntax: layout-modules-clear
@@ -345,7 +346,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop, Layout },
 /**
- * LFUN_LAYOUT_MODULE_ADD
+ * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULE_ADD
  * \li Action: Adds a module
  * \li Notion: Adds a module to the list of included modules for the current buffer.
  * \li Syntax: layout-module-add <MODULE>
@@ -354,7 +355,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
 /**
- * LFUN_LAYOUT_RELOAD
+ * \var lyx::kb_action lyx::LFUN_LAYOUT_RELOAD
  * \li Action: Reloads layout information
  * \li Notion: Reloads all layout information for the current buffer from disk, thus
                recognizing any changes that have been made to layout files on the fly.
@@ -365,7 +366,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
 /**
- * LFUN_TEXTCLASS_APPLY
+ * \var lyx::kb_action lyx::LFUN_TEXTCLASS_APPLY
  * \li Action: Sets the text class for the current buffer
  * \li Syntax: textclass-apply <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be
@@ -373,7 +374,7 @@ void LyXAction::init()
  */
 		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop, Layout },
 /**
- * LFUN_TEXTCLASS_LOAD
+ * \var lyx::kb_action lyx::LFUN_TEXTCLASS_LOAD
  * \li Action: Loads information for a textclass from disk
  * \li Syntax: textclass-load <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be
@@ -382,20 +383,20 @@ void LyXAction::init()
 		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop, Layout },
 
 /**
- * LFUN_MARK_OFF
+ * \var lyx::kb_action lyx::LFUN_MARK_OFF
  * \li Action: Disable selecting of text-region.
  * \li Syntax: mark-off
  */
 		{ LFUN_MARK_OFF, "mark-off", ReadOnly, Edit },
 /**
- * LFUN_MARK_ON
+ * \var lyx::kb_action lyx::LFUN_MARK_ON
  * \li Action: Enable selecting of text-region.
  * \li Notion: After enabling you can simply move arrow keys to get selected region.
  * \li Syntax: mark-on
  */
 		{ LFUN_MARK_ON, "mark-on", ReadOnly, Edit },
 /**
- * LFUN_MARK_TOGGLE
+ * \var lyx::kb_action lyx::LFUN_MARK_TOGGLE
  * \li Action: Toggle between MARK_ON and MARK_OFF
  * \li Syntax: mark-toggle
  * \li Origin: poenitz, May 5 2006
@@ -416,7 +417,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
 /**
- * LFUN_MATH_NUMBER_LINE_TOGGLE
+ * \var lyx::kb_action lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
  * \li Action: Toggles numbering of the current formula line.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-line-toggle
@@ -424,7 +425,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_NUMBER_LINE_TOGGLE, "math-number-line-toggle", Noop, Math },
 /**
- * LFUN_MATH_NUMBER_TOGGLE
+ * \var lyx::kb_action lyx::LFUN_MATH_NUMBER_TOGGLE
  * \li Action: Toggles numbering of the current formula.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-toggle
@@ -434,7 +435,7 @@ void LyXAction::init()
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
 /**
- * LFUN_MATH_MACRO_UNFOLD
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_UNFOLD
  * \li Action: Unfold a Math Macro
  * \li Notion: Unfold the Math Macro the cursor is in, i.e.
                display it as \foo.
@@ -443,7 +444,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_UNFOLD, "math-macro-unfold", ReadOnly | SingleParUpdate, Math },
 /**
- * LFUN_MATH_MACRO_FOLD
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_FOLD
  * \li Action: Fold a Math Macro
  * \li Notion: Fold the Math Macro the cursor is in if it was
                unfolded, i.e. displayed as \foo before.
@@ -452,7 +453,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_FOLD, "math-macro-fold", ReadOnly | SingleParUpdate, Math },
 /**
- * LFUN_MATH_MACRO_ADD_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_PARAM
  * \li Action: Add a parameter
  * \li Notion: Add a parameter to a Math Macro
  * \li Params: <NUM>: The number of the parameter behind which the new one
@@ -463,7 +464,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_PARAM, "math-macro-add-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_REMOVE_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_PARAM
  * \li Action: Remove the last parameter
  * \li Notion: Remove the last parameter of a Math Macro and
                remove its value in all instances of the macro
@@ -475,7 +476,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_PARAM, "math-macro-remove-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
  * \li Action: Append a greedy parameter
  * \li Notion: Append a greedy parameter to a Math Macro which
                eats the following mathed cell in every instance of
@@ -485,7 +486,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_APPEND_GREEDY_PARAM, "math-macro-append-greedy-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
  * \li Action: Remove a greedy parameter
  * \li Notion: Remove a greedy parameter of a Math Macro and spit
                out the values of it in every instance of the macro
@@ -496,7 +497,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM, "math-macro-remove-greedy-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_MAKE_OPTIONAL
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_OPTIONAL
  * \li Action: Make a parameter optional
  * \li Notion: Turn the first non-optional parameter of a Math Macro
                into an optional parameter with a default value.
@@ -505,7 +506,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_MAKE_OPTIONAL, "math-macro-make-optional", Noop, Math },
 /**
- * LFUN_MATH_MACRO_MAKE_NONOPTIONAL
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_NONOPTIONAL
  * \li Action: Make a parameter non-optional
  * \li Notion: Turn the last optional parameter of a Math Macro
                into a non-optional parameter. The default value is
@@ -515,7 +516,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_MAKE_NONOPTIONAL, "math-macro-make-nonoptional", Noop, Math },
 /**
- * LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
  * \li Action: Add an optional parameter
  * \li Notion: Insert an optional parameter just behind the
                already existing optional parameters.
@@ -524,7 +525,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
  * \li Action: Remove the last optional parameter
  * \li Notion: Remove the last optional parameter of a Math Macro and
                remove it in all the instances of the macro in the buffer.
@@ -533,7 +534,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param", Noop, Math },
 /**
- * LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
+ * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
  * \li Action: Add a greedy optional parameter
  * \li Notion: Add a greedy optional parameter which eats the value
                from the following cells in mathed which are in the [value]
@@ -543,7 +544,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param", Noop, Math },
 /**
- * LFUN_IN_MATHMACROTEMPLATE
+ * \var lyx::kb_action lyx::LFUN_IN_MATHMACROTEMPLATE
  * \li Action: Only active in Math Macro definition
  * \li Notion: Dummy function which is only active in a Math Macro definition.
                It's used to toggle the Math Macro toolbar if the cursor moves
@@ -557,7 +558,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
 /**
- * LFUN_OUTLINE_UP
+ * \var lyx::kb_action lyx::LFUN_OUTLINE_UP
  * \li Action: Move the current group in the upward direction in the
                structure of the document.
  * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
@@ -567,7 +568,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_UP, "outline-up", Noop, Edit },
 /**
- * LFUN_OUTLINE_DOWN
+ * \var lyx::kb_action lyx::LFUN_OUTLINE_DOWN
  * \li Action: Move the current group in the downward direction in the
                structure of the document.
  * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
@@ -577,7 +578,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_DOWN, "outline-down", Noop, Edit },
 /**
- * LFUN_OUTLINE_IN
+ * \var lyx::kb_action lyx::LFUN_OUTLINE_IN
  * \li Action: Moves the current group in the downward direction in the
                hierarchy of the document structure.
  * \li Notion: Part -> Chapter -> Section -> etc.
@@ -586,7 +587,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_IN, "outline-in", Noop, Edit },
 /**
- * LFUN_OUTLINE_OUT
+ * \var lyx::kb_action lyx::LFUN_OUTLINE_OUT
  * \li Action: Moves the current group in the upward direction in the
                hierarchy of the document structure.
  * \li Notion: Part <- Chapter <- Section <- etc.
@@ -635,7 +636,7 @@ void LyXAction::init()
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 
 /**
- * LFUN_PARAGRAPH_PARAMS
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings
  * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
                This function only modifies, and does not override, existing settings.
@@ -649,7 +650,7 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop, Edit },
 /**
- * LFUN_PARAGRAPH_PARAMS_APPLY
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS_APPLY
  * \li Action: Change paragraph settings.
  * \li Notion: Overwrite all nonspecified settings to the default ones.
                Use paragraph-params lfun if you don't want to overwrite others settings.
@@ -672,7 +673,7 @@ void LyXAction::init()
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
 
 /**
- * LFUN_BOOKMARK_GOTO
+ * \var lyx::kb_action lyx::LFUN_BOOKMARK_GOTO
  * \li Action: Goto a bookmark
  * \li Notion: Moves the cursor to the numbered bookmark, opening the file
                if necessary. Note that bookmarsk are saved per-session, not
@@ -683,7 +684,7 @@ void LyXAction::init()
  */
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", NoBuffer, Edit },
 /**
- * LFUN_BOOKMARK_SAVE
+ * \var lyx::kb_action lyx::LFUN_BOOKMARK_SAVE
  * \li Action: Save a bookmark
  * \li Notion: Saves a numbered bookmark to the sessions file. The number
                must be between 1 and 9, inclusive. Note that bookmarks are
@@ -694,7 +695,7 @@ void LyXAction::init()
  */
 		{ LFUN_BOOKMARK_SAVE, "bookmark-save", ReadOnly, Edit },
 /**
- * LFUN_BOOKMARK_CLEAR
+ * \var lyx::kb_action lyx::LFUN_BOOKMARK_CLEAR
  * \li Action: Clears the list of saved bookmarks
  * \li Syntax: bookmark-clear
  * \li Origin: bpeng, 31 October 2006
@@ -703,7 +704,7 @@ void LyXAction::init()
 
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
 /**
- * LFUN_LYX_QUIT
+ * \var lyx::kb_action lyx::LFUN_LYX_QUIT
  * \li Action: Terminates the current LyX instance
  * \li Notion: Terminates the current LyX instance, asking whether to save
                modified documents, etc.
@@ -750,7 +751,7 @@ void LyXAction::init()
 		{ LFUN_BUILD_PROGRAM, "build-program", ReadOnly, Buffer },
 
 /**
- * LFUN_BUFFER_AUTO_SAVE
+ * \var lyx::kb_action lyx::LFUN_BUFFER_AUTO_SAVE
  * \li Action: Saves the current buffer to a temporary file
  * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
                is called automatically by LyX, to "autosave" the current buffer.
@@ -762,7 +763,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
 		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
 /**
- * LFUN_BUFFER_CLOSE
+ * \var lyx::kb_action lyx::LFUN_BUFFER_CLOSE
  * \li Action: Closes the current buffer
  * \li Notion: Closes the current buffer, asking whether to save it, etc,
                if the buffer has been modified.
@@ -774,7 +775,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_PRINT, "buffer-print", ReadOnly, Buffer },
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
 /**
- * LFUN_BUFFER_NEW
+ * \var lyx::kb_action lyx::LFUN_BUFFER_NEW
  * \li Action: Creates a new buffer (that is, document)
  * \li Syntax: buffer-new
  */
@@ -785,7 +786,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly, Buffer },
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
 /**
- * LFUN_BUFFER_VIEW
+ * \var lyx::kb_action lyx::LFUN_BUFFER_VIEW
  * \li Action: Displays current buffer in chosen format
  * \li Notion: Displays the contents of the current buffer in the chosen
                format, for example, PDF or DVI. This runs the necessary
@@ -797,7 +798,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
 /**
- * LFUN_BUFFER_WRITE
+ * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE
  * \li Action: Saves the current buffer
  * \li Notion: Saves the current buffer to disk, using the filename that
                is already associated with the buffer, asking for one if
@@ -806,7 +807,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },
 /**
- * LFUN_BUFFER_WRITE_AS
+ * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE_AS
  * \li Action: Rename and save current buffer.
  * \li Syntax: buffer-write-as <FILENAME>
  * \li Params: <FILENAME>: New name of the buffer/file. A relative path
@@ -838,14 +839,14 @@ void LyXAction::init()
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 
 /**
- * LFUN_PREFERENCES_SAVE
+ * \var lyx::kb_action lyx::LFUN_PREFERENCES_SAVE
  * \li Action: Save user preferences.
  * \li Syntax: preferences-save
  * \li Origin: Lgb, 27 Nov 1999
  */
 		{ LFUN_PREFERENCES_SAVE, "preferences-save", NoBuffer, System },
 /**
- * LFUN_RECONFIGURE
+ * \var lyx::kb_action lyx::LFUN_RECONFIGURE
  * \li Action: Reconfigure the automatic settings.
  * \li Syntax: reconfigure
  * \li Origin: Asger, 14 Feb 1997
@@ -857,7 +858,7 @@ void LyXAction::init()
 		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, Edit },
 		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
 /**
- * LFUN_STATISTICS
+ * \var lyx::kb_action lyx::LFUN_STATISTICS
  * \li Action: Count the statistics (number of words and characters)
                in the document or in the given selection.
  * \li Notion: Note that this function gives the number of words/chars written,
