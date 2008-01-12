@@ -109,6 +109,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(deletePB);
 	bc().addReadOnly(upPB);
 	bc().addReadOnly(downPB);
+	// Delete/Up/Down are handled with more conditions in
+	// databaseChanged().
 
 	// Make sure the delete/up/down buttons are disabled if necessary.
 	databaseChanged();
@@ -265,8 +267,10 @@ void GuiBibtex::downPressed()
 void GuiBibtex::databaseChanged()
 {
 	deletePB->setEnabled(!isBufferReadonly() && databaseLW->currentRow() != -1);
-	upPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 && databaseLW->currentRow() > 0);
-	downPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 && databaseLW->currentRow() < databaseLW->count() - 1);
+	upPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 &&
+			 databaseLW->currentRow() > 0);
+	downPB->setEnabled(!isBufferReadonly() && databaseLW->count() > 1 &&
+			   databaseLW->currentRow() < databaseLW->count() - 1);
 }
 
 
