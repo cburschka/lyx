@@ -1,5 +1,5 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 313
 \begin_document
 \begin_header
 \textclass book
@@ -44,6 +44,11 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+\end_modules
 \language english
 \inputencoding latin1
 \font_roman default
@@ -57,6 +62,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -106,7 +112,8 @@ Principal maintainer of this file is
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -215,7 +222,8 @@ How LyX Uses LaTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxandlatex"
 
 \end_inset
@@ -505,7 +513,8 @@ ile
 
 \begin_layout Section
 Translating LaTeX files into LyX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Translating-LaTeX-files"
 
 \end_inset
@@ -564,7 +573,8 @@ tex2lyx
 \begin_layout Standard
 If you just want to put a piece of LaTeX code into a LyX file, see Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexcodes"
 
 \end_inset
@@ -574,7 +584,8 @@ reference "sec:latexcodes"
 
 \begin_layout Section
 Inserting LaTeX Code into LyX Documents 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Inserting-LaTeX-Code"
 
 \end_inset
@@ -583,7 +594,8 @@ name "sec:Inserting-LaTeX-Code"
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexcodes"
 
 \end_inset
@@ -621,7 +633,7 @@ inlined
  short sections of LaTeX commands.
  
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -928,7 +940,8 @@ About the LaTeX Preamble
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -1416,7 +1429,8 @@ dirty tricks
 
  given in Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "cha:secrets"
 
 \end_inset
@@ -1943,7 +1957,8 @@ Supplemental Tools
 
 \begin_layout Section
 Preparing a Bibliography with BibTeX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Preparing-a-Bibliography"
 
 \end_inset
@@ -2242,8 +2257,13 @@ status collapsed
 
 \begin_layout Standard
 See 
-\begin_inset LatexCommand url
-target "ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
+\end_layout
 
 \end_inset
 
@@ -2261,7 +2281,8 @@ natbib
 
 \begin_layout Subsection
 Sectionated Bibliographies
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sub:Sectionated-Bibliographies"
 
 \end_inset
@@ -2298,8 +2319,13 @@ status collapsed
 
 \begin_layout Standard
 Available from 
-\begin_inset LatexCommand url
-target "ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
+\end_layout
 
 \end_inset
 
@@ -2376,7 +2402,8 @@ bibliography
 .
  Now you can insert multiple BibTeX references (as described in section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Preparing-a-Bibliography"
 
 \end_inset
@@ -2470,7 +2497,8 @@ bibtopic
  LyX (cf.\InsetSpace ~
 section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sub:Sectionated-Bibliographies"
 
 \end_inset
@@ -2479,7 +2507,8 @@ reference "sub:Sectionated-Bibliographies"
  LaTeX-Code (ERT, cf.\InsetSpace ~
 section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Inserting-LaTeX-Code"
 
 \end_inset
@@ -3073,7 +3102,8 @@ usepackage{graphics}
 
 \begin_layout Section
 Itemize Bullet Selection
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bullet"
 
 \end_inset
@@ -3470,7 +3500,7 @@ really
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3490,7 +3520,7 @@ labelitemi
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3569,7 +3599,7 @@ labelitem
 
 \begin_layout Itemize
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3601,7 +3631,7 @@ star
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3640,13 +3670,19 @@ Special Document Classes
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:AMS-LaTeX"
+
+\end_inset
+
 AMS LaTeX
 \end_layout
 
 \begin_layout Standard
 by 
 \noun on
-David Johnson
+David Johnson; updated by Richard Heck
 \end_layout
 
 \begin_layout Standard
@@ -3665,79 +3701,181 @@ The AMS LaTeX layouts are set up to conform to suggested styles for mathematical
  each journal (usually it will entail only changing a single line in the
  TeX output).
  That documentation is available on the Web at 
-\begin_inset LatexCommand url
-target "http://www.ams.org"
+\begin_inset Flex URL
+status open
+
+\begin_layout Standard
+
+http://www.ams.org
+\end_layout
 
 \end_inset
 
  or by ftp at 
-\begin_inset LatexCommand url
-target "ftp://ftp.ams.org/pub/tex/amslatex/"
+\begin_inset Flex URL
+status open
+
+\begin_layout Standard
+
+ftp://ftp.ams.org/pub/tex/amslatex/
+\end_layout
 
 \end_inset
 
-.These layouts are appropriate, and useful, for any mathematical writing.
- There are currently 4 distinct AMS LaTeX layouts: 
+.
+ These layouts are appropriate, and useful, for any mathematical writing.
+ 
+\end_layout
+
+\begin_layout Standard
+There are two basic AMS LaTeX layouts: 
 \end_layout
 
 \begin_layout Enumerate
-amsart: The standard AMS-article format.
- All results and similar statements are numbered as 
-\begin_inset Formula $(n.m)$
-\end_inset
-
-, where the first number refers to the section, and the second refers to
- the total number of results (Theorems, Corollaries, Propositions, Definitions
- and Remarks, etc.) in that section.
- There are also many (but not all) environments available unnumbered, which
- is occasionally needed.
- Unnumbered environments indicated by an asterisk at the end.
-\end_layout
-
-\begin_layout Enumerate
-amsart-seq: Here, numbering for each type of statement is in its own sequence,
- with no reference to the section number.
- There are also many (but not all) environments available unnumbered, which
- is occasionally needed.
- Unnumbered environments indicated by an asterisk at the end.
-\end_layout
-
-\begin_layout Enumerate
-amsart-plain: This one is even more terse, since all the environments are
- unnumbered.
+amsart: The standard AMS article format.
 \end_layout
 
 \begin_layout Enumerate
 amsbook: the standard AMS book (really, monograph) format.
- Numbering is similar to the amsart layout, except that all numbering is
- by 
-\begin_inset Formula $(n.m.p)$
-\end_inset
-
-, where the first number refers to the chapter, the second to the section,
- and the third is the number of the results (Theorems, Corollaries, Propositions
-, Definitions and Remarks, etc.) in that section.
- There are also many (but not all) environments available unnumbered, which
- is occasionally needed.
- Unnumbered environments indicated by an asterisk at the end.
+ 
 \end_layout
 
 \begin_layout Standard
-Any AMS LyX file can be converted to either of the numbering schemes by
- simply changing the document class in the 
-\family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
+These layouts themselves contain only the minimum necessary to use the AMS
+ classes.
+ They do not, in particular, contain any of the `theorem' environments used
+ for setting theorems, lemmas, and the like.
+ These are contained, instead, in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-\bar under
-S
-\bar default
-ettings
-\family default
- dialog.
+\begin_layout Standard
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, which you will need to load separately when you selected one of
+ the AMS classes.
+ Less commonly used environments are in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+ module.
  
+\end_layout
+
+\begin_layout Standard
+By default, theorems and the like are numbered consecutively throughout
+ the document, but this may be modified by loading the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (Order by Section)
+\end_layout
+
+\end_inset
+
+ or, if you are using 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+book (AMS)
+\end_layout
+
+\end_inset
+
+, the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (Order by Chapter)
+\end_layout
+
+\end_inset
+
+.
+ These will number the results as 
+\begin_inset Formula $n.m$
+\end_inset
+
+, where the first number refers to the section (or chapter) and the second
+ refers to the total number of results so far in that section (or chapter).
+ Many environments are also available unnumbered.
+ These are indicated by an asterisk at the end.
+ If you happen to want 
+\emph on
+only
+\emph default
+ unnumbered results, the the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ provides that option.
+\end_layout
+
+\begin_layout Standard
+Note that these modules do not 
+\emph on
+have
+\emph default
+ to be used with the AMS classes.
+ It is perfectly possible to use the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, and the others mentioned, with other classes, such as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+article
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+report
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+book (KOMA-script)
+\end_layout
+
+\end_inset
+
+, and so forth.
 \end_layout
 
 \begin_layout Subsection
@@ -3746,170 +3884,85 @@ What these layouts provide
 
 \begin_layout Standard
 There is a long list of included environments provided by these layouts.
- Most mathematical papers or books will set as special statements most of
- these environments, in AMS-LaTeX there is an opportunity to define an unlimited
- variety of such declarations.
+ In AMS-LaTeX, there is, in fact, an opportunity to define an unlimited
+ variety of `theorem' environments.
  However, the AMS recommends the environments that are available in LyX.
- The list of environments (not counting the standard environments such as
- 
-\family sans
-sections, bibliography, title, author, date
-\family default
-), is:
-\end_layout
-
-\begin_layout Description
-Theorem This is typically used for the statements of major results.
- The word 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-Theorem
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- appears in bold type, along with an automatically-determined number (an
- unnumbered version, 
-\family sans
-Theorem*
-\family default
-, is also available).
- The text is italicized.
-\end_layout
-
-\begin_layout Description
-Corollary This is used for statements which follow fairly directly from
- previous statements.
- Again, these can be major results.
- Unnumbered version 
-\family sans
-Corollary*
-\family default
- is available.
-\end_layout
-
-\begin_layout Description
-Lemma These are smaller results needed to prove other statements.
-\end_layout
-
-\begin_layout Description
-Proposition These are less major results which (hopefully) add to the general
- theory being discussed.
-\end_layout
-
-\begin_layout Description
-Conjecture These are statements provided without justification, which the
- author does not know how to prove, but which seem to be true (to the author,
- at least).
-\end_layout
-
-\begin_layout Description
-Criterion A required condition.
-\end_layout
-
-\begin_layout Description
-Algorithm A general procedure to be used.
-\end_layout
-
-\begin_layout Description
-Axiom This is a property or statement taken as true within the system being
- discussed.
-\end_layout
-
-\begin_layout Description
-Definition Guess what this is for.
- The font, both on-screen and in the output, is different for this environment
- than for the previous ones.
- The heading (
-\begin_inset Quotes eld
-\end_inset
-
-definition
-\begin_inset Quotes erd
-\end_inset
-
-) is still set in boldface, along with the number, if any, but the rest
- is set upright.
-\end_layout
-
-\begin_layout Description
-Example Typeset similarly to Definition.
-\end_layout
-
-\begin_layout Description
-Condition
-\end_layout
-
-\begin_layout Description
-Problem
-\end_layout
-
-\begin_layout Description
-Exercise
-\end_layout
-
-\begin_layout Description
-Remark This environment is also a new type of theorem.
- This is set with the word Remark in italics, and the rest upright.
-\end_layout
-
-\begin_layout Description
-Note Set similarly to the Remark environment.
-\end_layout
-
-\begin_layout Description
-Notation
-\end_layout
-
-\begin_layout Description
-Claim
-\end_layout
-
-\begin_layout Description
-Summary
-\end_layout
-
-\begin_layout Description
-Acknowledgement
-\end_layout
-
-\begin_layout Description
-Case Generally, these are used to break up long arguments, using specific
- instances of some condition.
- The numbering scheme for cases is on its own, not together with other numbered
- statements.
  
 \end_layout
 
-\begin_layout Description
-Conclusion
+\begin_layout Standard
+The following environments---as well as the standard environments, such
+ as 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Standard
+section
 \end_layout
 
-\begin_layout Description
-Fact 
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Standard
+bibliography
 \end_layout
 
-\begin_layout Description
-Proof The word 
-\begin_inset Quotes eld
 \end_inset
 
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
 
-\shape italic
-Proof
-\shape default
+\begin_layout Standard
+title
+\end_layout
 
-\begin_inset Quotes erd
 \end_inset
 
- is set in italics, but the rest is set upright.
- At the end of this environment (other environments can be nested within
- this one, of course) a QED symbol (usually a square, but it can vary with
- different styles) is placed.
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Standard
+author
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Standard
+date
+\end_layout
+
+\end_inset
+
+---are provided by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+article (AMS)
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+book (AMS)
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Description
@@ -3958,8 +4011,185 @@ Translator
 \end_layout
 
 \begin_layout Standard
-In addition, these environments automatically provide the AMS LaTeX and
- AMS fonts packages.
+The following environments are provided by both the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ modules, in the latter case in both starred (unnumbered) and unstarred
+ (numbered) versions.
+ These same environments are provided only in the starred versions by the
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ module:
+\end_layout
+
+\begin_layout Theorem
+This is typically used for the statements of major results.
+ 
+\end_layout
+
+\begin_layout Corollary*
+This is used for statements which follow fairly directly from previous statement
+s.
+ Again, these can be major results.
+ 
+\end_layout
+
+\begin_layout Lemma
+These are smaller results needed to prove other statements.
+\end_layout
+
+\begin_layout Proposition
+These are less major results which (hopefully) add to the general theory
+ being discussed.
+\end_layout
+
+\begin_layout Conjecture
+These are statements provided without justification, which the author does
+ not know how to prove, but which seem to be true (to the author, at least).
+\end_layout
+
+\begin_layout Definition*
+Guess what this is for.
+ The font is different for this environment than for the previous ones.
+ 
+\end_layout
+
+\begin_layout Example*
+Used for examples illustrating proven results.
+\end_layout
+
+\begin_layout Problem
+It's not really known what this is for.
+ You should figure it out.
+\end_layout
+
+\begin_layout Exercise*
+Write a description for this one.
+\end_layout
+
+\begin_layout Remark
+This environment is also a type of theorem, usually a lesser sort of observation.
+\end_layout
+
+\begin_layout Claim*
+Often used in the course of giving a proof of a larger result.
+\end_layout
+
+\begin_layout Case
+Generally, these are used to break up long arguments, using specific instances
+ of some condition.
+ 
+\end_layout
+
+\begin_layout Case
+The numbering scheme for cases is on its own, not together with other numbered
+ statements.
+ 
+\end_layout
+
+\begin_layout Proof
+At the end of this environment , a QED symbol (usually a square, but it
+ can vary with different styles) is placed.
+ If you want to have other environments within this one---for example, Case
+ environments---and have the QED symbol appear only after them, then the
+ other environments need to be nested within the proof environment.
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Nesting"
+
+\end_inset
+
+ of the 
+\emph on
+User's Guide
+\emph default
+ for information on nesting.
+\end_layout
+
+\begin_layout Standard
+And these are provided by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+A required condition.
+\end_layout
+
+\begin_layout Algorithm*
+A general procedure to be used.
+\end_layout
+
+\begin_layout Axiom*
+This is a property or statement taken as true within the system being discussed.
+\end_layout
+
+\begin_layout Condition*
+Sometimes used to state a condition assumed within the present context of
+ discussion.
+\end_layout
+
+\begin_layout Note*
+Similar to a Remark.
+\end_layout
+
+\begin_layout Notation*
+Used for the explanation of, yes, notation.
+\end_layout
+
+\begin_layout Summary
+Do we really need to tell you? 
+\end_layout
+
+\begin_layout Acknowledgement*
+Acknowledgement.
+\end_layout
+
+\begin_layout Conclusion*
+Sometimes used at the end of a long train of argument.
+\end_layout
+
+\begin_layout Fact
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
+\begin_layout Standard
+In addition, the AMS classes automatically provide the AMS LaTeX and AMS
+ fonts packages.
  They need to be available on your system in order to use these environments.
 \end_layout
 
@@ -4018,10 +4248,14 @@ This section describes how LyX can be used to write articles for submission
 \emph on
 Astronomy and Astrophysics
 \emph default
- (
-\begin_inset LatexCommand url
-name "www.edpsciences.fr/aa/"
-target "http://www.edpsciences.fr/aa/"
+ (www.edpsciences.fr/aa/ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.edpsciences.fr/aa/
+\end_layout
 
 \end_inset
 
@@ -4042,8 +4276,13 @@ aa.cls
 
 \begin_layout Standard
 \align center
-\begin_inset LatexCommand url
-target "ftp://ftp.edpsciences.org/pub/aa/readme.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+ftp://ftp.edpsciences.org/pub/aa/readme.html
+\end_layout
 
 \end_inset
 
@@ -4709,8 +4948,13 @@ AASTeX is a set of macros produced by the American Astronomical Society
 
 \begin_layout Standard
 \align center
-\begin_inset LatexCommand url
-target "http://www.journals.uchicago.edu/AAS/AASTeX"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.journals.uchicago.edu/AAS/AASTeX
+\end_layout
 
 \end_inset
 
@@ -4935,7 +5179,7 @@ Things that work as expected
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -5147,7 +5391,7 @@ Document
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -5393,7 +5637,7 @@ Things not implemented, use ERT
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -5535,7 +5779,7 @@ twocolumn
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -5699,7 +5943,8 @@ lock
 
 \begin_layout Subsubsection
 References
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "cite"
 
 \end_inset
@@ -5861,14 +6106,24 @@ ws-ijmpd.cls
 , respectively.
  These files, together with instructions for the authors, can be downloaded
  from the sites 
-\begin_inset LatexCommand url
-target "http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
+\end_layout
 
 \end_inset
 
  and 
-\begin_inset LatexCommand url
-target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
+\end_layout
 
 \end_inset
 
@@ -6419,8 +6674,13 @@ The iopart package provides a document class to create electronic manuscript
  submission to the journals published by the Institute of Physics.
  Instructions for the authors how to create a paper using the iopart class
  can be downloaded together with the iopart package from the site 
-\begin_inset LatexCommand url
-target "ftp://ftp.iop.org/pub/journals/latex2e"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+ftp://ftp.iop.org/pub/journals/latex2e
+\end_layout
 
 \end_inset
 
@@ -6597,15 +6857,25 @@ Astrophysics and Space Science
 Solar Physics
 \emph default
 , but there are many others (see a complete list at 
-\begin_inset LatexCommand url
-target "http://www.wkap.nl/jrnllist.htm/JRNLHOME"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.wkap.nl/jrnllist.htm/JRNLHOME
+\end_layout
 
 \end_inset
 
 ).
  The Kluwer package may be downloaded from the site 
-\begin_inset LatexCommand url
-target "http://www.wkap.nl/kaphtml.htm/STYLEFILES"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.wkap.nl/kaphtml.htm/STYLEFILES
+\end_layout
 
 \end_inset
 
@@ -6626,7 +6896,8 @@ peculiar
 
  commands of the package (see\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "subsec:kluwer_peculiarities"
 
 \end_inset
@@ -6786,7 +7057,8 @@ Peculiarities
 \end_inset
 
  of the Kluwer package
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "subsec:kluwer_peculiarities"
 
 \end_inset
@@ -7693,7 +7965,7 @@ letter (koma-script)
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -7763,7 +8035,7 @@ Verse
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -8693,8 +8965,13 @@ Description
 \begin_layout Standard
 These are the layout files for some of the journal formats used by Springer
  Verlag and listed on 
-\begin_inset LatexCommand url
-target "http://www.springer.de/author/tex/help-journals.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.springer.de/author/tex/help-journals.html
+\end_layout
 
 \end_inset
 
@@ -8872,8 +9149,13 @@ These are the layout files for some of the journals of the American Geophysical
  Society.
  It is assumed that you have both the AGU's own class files and AGUplus
  installed (everything to be found at
-\begin_inset LatexCommand url
-target "ftp://ftp.agu.org/journals/latex/journals"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+ftp://ftp.agu.org/journals/latex/journals
+\end_layout
 
 \end_inset
 
@@ -9085,8 +9367,13 @@ This is the layout file for the European Geophysical Society journals.
 egs.cls
 \family default
  can be downloaded from the web site of the EGS under 
-\begin_inset LatexCommand url
-target "www.copernicus.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+www.copernicus.org
+\end_layout
 
 \end_inset
 
@@ -9122,7 +9409,8 @@ Slides [aka
 Sli
 \noun default
 TeX]
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:slitex"
 
 \end_inset
@@ -9208,7 +9496,8 @@ slides (FoilTeX)
 
 , check out section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:foiltex"
 
 \end_inset
@@ -9285,7 +9574,8 @@ slides
 
 \begin_layout Subsection
 Getting Started
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:slidesetup"
 
 \end_inset
@@ -9413,7 +9703,8 @@ Note
 s.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:slideNote"
 
 \end_inset
@@ -9652,7 +9943,8 @@ LaTeX magic.
 
 \begin_layout Subsubsection
 Quirks of the New Environments
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:slideQuirk"
 
 \end_inset
@@ -9923,7 +10215,8 @@ Slide
 \family default
  environment [in the manner described in section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:slideQuirk"
 
 \end_inset
@@ -10269,7 +10562,8 @@ VisibleText
  invisible and visible, respectively.
  Note from section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:slideQuirk"
 
 \end_inset
@@ -10531,7 +10825,8 @@ Note
 Slide
 \family default
 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:slideNote"
 
 \end_inset
@@ -10711,7 +11006,8 @@ clock
 
  [see section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:slidesetup"
 
 \end_inset
@@ -11107,7 +11403,8 @@ Foils
 \family default
  class [see section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:foiltex"
 
 \end_inset
@@ -11149,7 +11446,8 @@ Foil
 TeX
 \noun default
 ]
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:foiltex"
 
 \end_inset
@@ -11233,7 +11531,8 @@ slides (default)
 
 , check out section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:slitex"
 
 \end_inset
@@ -11389,7 +11688,8 @@ TeX provides extensive footer and header capabilities including a user-defined
  logo.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:foilfoot"
 
 \end_inset
@@ -11597,7 +11897,7 @@ TeX as well as a couple added by LyX.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -11721,7 +12021,7 @@ Comment
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -11788,7 +12088,7 @@ TeX also provides a comprehensive box of goodies for presenting them:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -11870,7 +12170,7 @@ Definition*
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -11927,7 +12227,7 @@ Martin Vermeer
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -11984,7 +12284,7 @@ Header
 \end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -12006,7 +12306,8 @@ Foil
 TeX that aren't directly supported by LyX but I'll tell you what they do
  and how to use them in section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:unsuppfoils"
 
 \end_inset
@@ -12187,7 +12488,8 @@ Selection
 \family default
  dialog described above in section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bullet"
 
 \end_inset
@@ -12236,7 +12538,8 @@ TeX redefines the floating tables and figures so that they appear exactly
 
 \begin_layout Subsubsection
 Page Headers and Footers
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:foilfoot"
 
 \end_inset
@@ -12305,7 +12608,8 @@ Unsupported
 Foil
 \family default
 TeX Goodies
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:unsuppfoils"
 
 \end_inset
@@ -13297,10 +13601,14 @@ Installation
 \begin_layout Standard
 All you need to do is install RevTeX 4, as described in the package's README
  file.
- The package can be found at 
-\begin_inset LatexCommand url
-name "The RevTeX 4 Web Site"
-target "http://publish.aps.org/revtex4/"
+ The package can be found at The RevTeX 4 Web Site 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://publish.aps.org/revtex4/
+\end_layout
 
 \end_inset
 
@@ -13729,8 +14037,13 @@ elsart.cls
 \family default
 ) for submitting articles to their various journals.
  The style file can be downloaded directly from their web site: 
-\begin_inset LatexCommand url
-target "http://authors.elsevier.com/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://authors.elsevier.com/
+\end_layout
 
 \end_inset
 
@@ -13836,8 +14149,13 @@ status collapsed
 
 \begin_layout Standard
 You are invited to send suggestions to 
-\begin_inset LatexCommand url
-target "lyx-devel@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+lyx-devel@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -13868,7 +14186,8 @@ status collapsed
 
 section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Inserting-LaTeX-Code"
 
 \end_inset
@@ -13901,8 +14220,13 @@ status collapsed
 \end_inset
 
 
-\begin_inset LatexCommand url
-target "CTAN:/macros/latex/memoir/memman.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
 
 \end_inset
 
@@ -14166,8 +14490,13 @@ status collapsed
 \end_inset
 
 
-\begin_inset LatexCommand url
-target "CTAN:/macros/latex/memoir/memman.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
 
 \end_inset
 
@@ -14336,7 +14665,8 @@ tex2lyx
  line, LyX will call it automatically when a LaTeX document is imported.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Translating-LaTeX-files"
 
 \end_inset
@@ -14613,7 +14943,8 @@ File->Export->PDF
  There are some issues with fonts that you need to pay attention to: see
  Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:badfonts"
 
 \end_inset
@@ -14635,7 +14966,8 @@ With pdfLaTeX you cannot use pstricks.
 
 \begin_layout Subsubsection
 Why does the text look so bad when viewed with Acrobat Reader?
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:badfonts"
 
 \end_inset
@@ -14735,7 +15067,8 @@ pslatex
  On the other hand, the Postscript fonts have no bold symbol font, so poor
  man's bold must be used (see Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:pdfbold"
 
 \end_inset
@@ -14754,7 +15087,8 @@ To sum up, both the Computer Modern and the Postscript fonts gives good
 Why doesn't the 
 \backslash
 boldsymbol{} command work when I use pslatex?
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:pdfbold"
 
 \end_inset
@@ -14926,8 +15260,13 @@ See the references here:
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/pmwiki.php/FAQ/PDF"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://wiki.lyx.org/pmwiki.php/FAQ/PDF
+\end_layout
 
 \end_inset
 
@@ -15042,8 +15381,13 @@ chktex
 \family default
  program installed, and is grayed out if you don't have it.
  You can get it from your nearest CTAN mirror, or over the Web from 
-\begin_inset LatexCommand url
-target "http://www.ifi.uio.no/~jensthi/chktex/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.ifi.uio.no/~jensthi/chktex/
+\end_layout
 
 \end_inset
 
@@ -15136,7 +15480,8 @@ Space in front of labels and similar commands:
 The label should stick right
  up to the text to avoid falling to a wrong page.
  
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:chktex"
 
 \end_inset
@@ -15161,7 +15506,8 @@ In you are in bad luck,
  the text will break right between the referenced text and reference number,
  and that's a pity.
  See section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:chktex"
 
 \end_inset
@@ -16452,9 +16798,14 @@ The complete Literate Programming FAQ can be found at:
 \end_layout
 
 \begin_layout Quote
-\begin_inset LatexCommand url
-name "Literate Programming FAQ"
-target "http://shelob.ce.ttu.edu/daves/lpfaq/faq.html"
+Literate Programming FAQ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://shelob.ce.ttu.edu/daves/lpfaq/faq.html
+\end_layout
 
 \end_inset
 
@@ -16503,9 +16854,14 @@ The Noweb web page can be found at:
 \end_layout
 
 \begin_layout Quote
-\begin_inset LatexCommand url
-name "Noweb home page"
-target "http://www.cs.virginia.edu/~nr/noweb/"
+Noweb home page 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+
+http://www.cs.virginia.edu/~nr/noweb/
+\end_layout
 
 \end_inset
 
@@ -16518,7 +16874,8 @@ Starting from there you can reach many other interesting links and even
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sub:LyX-and-Literate"
 
 \end_inset
@@ -16858,7 +17215,8 @@ Conversion
 
  tab.
  See section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sub:converters"
 
 \end_inset
@@ -17065,7 +17423,8 @@ status collapsed
 
 \begin_layout Standard
 See section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:converters-etc"
 
 \end_inset
@@ -17656,7 +18015,8 @@ The next thing is the visible presence of the newline character in the screen.
 
 \begin_layout Chapter
 Secrets of the LaTeX Masters
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "cha:secrets"
 
 \end_inset
@@ -17797,7 +18157,7 @@ end{multicols}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -17853,7 +18213,7 @@ ty which utterly submerged my mind.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -17877,7 +18237,7 @@ The same pattern is used when you want more than two columns:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -17917,7 +18277,7 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -17946,7 +18306,7 @@ You can even have columns inside columns:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -17972,7 +18332,7 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18003,7 +18363,7 @@ The youth moved in the best society--had, so far as was known, no enemies
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18046,7 +18406,7 @@ The evidence of those who had played with him-- Mr.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18416,7 +18776,7 @@ vspace*{-8.4ex}
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18446,7 +18806,7 @@ dropped capitals
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18575,7 +18935,7 @@ Mike Ressler
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -18855,7 +19215,7 @@ numlines
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
