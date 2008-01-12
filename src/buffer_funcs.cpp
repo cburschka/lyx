@@ -188,16 +188,20 @@ int countChars(DocIterator const & from, DocIterator const & to, bool with_blank
 	int chars = 0;
 	int blanks = 0;
 	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
+		Paragraph const para = dit.paragraph();
+		pos_type const pos = dit.pos();
+
 		if (dit.inTexted()
-		    && dit.pos() != dit.lastpos()
-		    && !dit.paragraph().isDeleted(dit.pos())) {
-			if (dit.paragraph().isInset(dit.pos())) {
-				if (dit.paragraph().getInset(dit.pos())->isLetter())
+		    && pos != dit.lastpos()
+		    && !para.isDeleted(pos)) {
+			if (para.isInset(pos)) {
+				Inset const * ins = para.getInset(pos);
+				if (ins->isLetter())
 					++chars;
-				else if (dit.paragraph().getInset(dit.pos())->isSpace() && with_blanks)
+				else if (ins->isSpace() && with_blanks)
 					++blanks;
 			} else {
-				char_type const c = dit.paragraph().getChar(dit.pos());
+				char_type const c = para.getChar(pos);
 				if (isPrintableNonspace(c))
 					++chars;
 				else if (isSpace(c) && with_blanks)
