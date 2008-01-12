@@ -111,13 +111,13 @@ private:
 	///
 	void verifyTable();
 	///
-	class pushed_table {
+	class PushedTable {
 	public:
 		///
-		pushed_table()
+		PushedTable()
 			: table_elem(0), table_siz(0) {}
 		///
-		pushed_table(keyword_item * ki, int siz)
+		PushedTable(keyword_item * ki, int siz)
 			: table_elem(ki), table_siz(siz) {}
 		///
 		keyword_item * table_elem;
@@ -125,14 +125,14 @@ private:
 		int table_siz;
 	};
 	///
-	stack<pushed_table> pushed;
+	stack<PushedTable> pushed;
 };
 
 
 
 namespace {
 
-class compare_tags
+class CompareTags
 	: public binary_function<keyword_item, keyword_item, bool> {
 public:
 	// used by lower_bound, sort and sorted
@@ -191,14 +191,14 @@ void Lexer::Pimpl::verifyTable()
 {
 	// Check if the table is sorted and if not, sort it.
 	if (table
-	    && !lyx::sorted(table, table + no_items, compare_tags())) {
+	    && !lyx::sorted(table, table + no_items, CompareTags())) {
 		lyxerr << "The table passed to Lexer is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.
 		lyxerr << "\nUnsorted:" << endl;
 		printTable(lyxerr);
 
-		sort(table, table + no_items, compare_tags());
+		sort(table, table + no_items, CompareTags());
 		lyxerr << "\nSorted:" << endl;
 		printTable(lyxerr);
 	}
@@ -207,7 +207,7 @@ void Lexer::Pimpl::verifyTable()
 
 void Lexer::Pimpl::pushTable(keyword_item * tab, int num)
 {
-	pushed_table tmppu(table, no_items);
+	PushedTable tmppu(table, no_items);
 	pushed.push(tmppu);
 
 	table = tab;
@@ -224,7 +224,7 @@ void Lexer::Pimpl::popTable()
 		return;
 	}
 
-	pushed_table tmp = pushed.top();
+	PushedTable tmp = pushed.top();
 	pushed.pop();
 	table = tmp.table_elem;
 	no_items = tmp.table_siz;
@@ -486,7 +486,7 @@ int Lexer::Pimpl::search_kw(char const * const tag) const
 	keyword_item search_tag = { tag, 0 };
 	keyword_item * res =
 		lower_bound(table, table + no_items,
-			    search_tag, compare_tags());
+			    search_tag, CompareTags());
 	// use the compare_ascii_no_case instead of compare_no_case,
 	// because in turkish, 'i' is not the lowercase version of 'I',
 	// and thus turkish locale breaks parsing of tags.
@@ -574,7 +574,8 @@ bool Lexer::Pimpl::nextToken()
 				} while (c >= ' ' && c != '\\' && is);
 			}
 
-			if (c == '\\') is.putback(c); // put it back
+			if (c == '\\')
+				is.putback(c); // put it back
 			status = LEX_TOKEN;
 		}
 
