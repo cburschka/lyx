@@ -21,11 +21,6 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-GuiIdListModel::GuiIdListModel() :
-		QAbstractListModel()
-{}
-
-
 QVariant GuiIdListModel::data(QModelIndex const & index, int role) const
 {
 	int const row = index.row();

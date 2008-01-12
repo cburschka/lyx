@@ -16,11 +16,11 @@
 #ifndef GUIIDLISTMODEL_H
 #define GUIIDLISTMODEL_H
 
+#include "support/qstring_helpers.h"
+
 #include <QAbstractListModel>
 #include <vector>
 #include <string>
-
-#include "support/qstring_helpers.h"
 
 namespace lyx {
 namespace frontend {
@@ -39,7 +39,7 @@ namespace frontend {
 class GuiIdListModel : public QAbstractListModel {
 public:
 	///
-	explicit GuiIdListModel();
+	explicit GuiIdListModel() {};
 	//////////////////////////////////////////////////////////////////////
 	// Methods overridden from QAbstractListModel
 	//////////////////////////////////////////////////////////////////////
@@ -63,16 +63,16 @@ public:
 	// New methods
 	//////////////////////////////////////////////////////////////////////
 	///
-	inline void setUIString(QModelIndex const & index, QString const & value)
+	void setUIString(QModelIndex const & index, QString const & value)
 			{ setData(index, value); };
 	///
-	inline void setUIString(int const i, std::string const & value)
+	void setUIString(int const i, std::string const & value)
 			{  setUIString(index(i), toqstr(value));  };
 	///
-	inline void setIDString(QModelIndex const & index, QString const & value)
+	void setIDString(QModelIndex const & index, QString const & value)
 			{ setData(index, value, Qt::UserRole); };
 	///
-	inline void setIDString(int const i, std::string const & value)
+	void setIDString(int const i, std::string const & value)
 			{ setIDString(index(i), toqstr(value)); };
 	///
 	virtual QString getIDString(QModelIndex const & index) const
@@ -112,7 +112,7 @@ private:
 	///
 	inline bool rowIsValid(int const i) const
 	{
-		return (i >= 0 && (i <= userData_.size()));
+		return i >= 0 && i <= userData_.size();
 	}
 ;
 };
