@@ -2324,12 +2324,6 @@ lib_doc_es_files = Split('''
 ''')
 
 
-lib_doc_es_biblio_files = Split('''
-    alphadin.bst
-    LyXDocs.bib
-''')
-
-
 lib_doc_es_clipart_files = Split('''
     ComentNotaImagenQt4.png
     CuadroMinipagQt4.png

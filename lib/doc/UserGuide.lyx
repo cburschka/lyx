@@ -60,7 +60,7 @@
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
 \end_preamble
-\options intoc,refpage,idxtotoc,BCOR7mm
+\options intoc,refpage,bibtotoc,idxtotoc,BCOR7mm
 \language english
 \inputencoding auto
 \font_roman default
@@ -128,7 +128,7 @@ lyx-docs@lists.lyx.org
 \newline
 
 \newline
-Version 1.5.3
+Version 1.5.4
 \end_layout
 
 \begin_layout Standard
@@ -37193,49 +37193,6 @@ key "lyxcredit"
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-addcontentsline{toc}{chapter}{
-\backslash
-bibname
-\backslash
-; 1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The command 
-\series bold
-
-\backslash
-addcontentsline
-\series default
- is explained in the 
-\emph on
-Extended Features
-\emph default
- manual.
- It creates a TOC entry.
-\end_layout
-
-\begin_layout Standard
-A manual TOC entry for the bibliography is only necessary because we use
- two different ones in one document.
-\end_layout
-
-\end_inset
-
 The LyX Team: 
 \begin_inset ERT
 status collapsed
@@ -37936,20 +37893,6 @@ target "http://wiki.lyx.org/LyX/LyxFunctionList"
 
 \newpage
 
-\begin_inset LatexCommand bibtex
-options "biblio/alphadin"
-bibfiles "biblio/LyXDocs"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The above bibliography is created from a BibTeX-database.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -37957,9 +37900,22 @@ status collapsed
 
 
 \backslash
-addcontentsline{toc}{chapter}{
+let
+\backslash
+mybibname
 \backslash
 bibname
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+renewcommand{
+\backslash
+bibname}{
+\backslash
+mybibname
 \backslash
 ; 2}
 \end_layout
@@ -37975,24 +37931,30 @@ The command
 \series bold
 
 \backslash
-addcontentsline
+bibname
 \series default
- is explained in the 
-\emph on
-Extended Features
-\emph default
- manual.
- It creates a TOC entry.
-\end_layout
-
-\begin_layout Standard
-A manual TOC entry for the bibliography is only necessary because we use
- two different ones in one document.
+ is the name of the bibliography in the current document language.
+ It is redefined here with the number 2 at the end to state that the following
+ bibliography is the second one:
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand bibtex
+options "biblio/alphadin"
+bibfiles "biblio/LyXDocs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above bibliography is created from a BibTeX-database.
 \end_layout
 
 \begin_layout Standard
