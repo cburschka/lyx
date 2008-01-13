@@ -519,7 +519,6 @@ char const * simplefeatures[] = {
 	"units",
 	"tipa",
 	"framed",
-	"pdfcolmk",
 	"soul",
 	"textcomp",
 	"xcolor",
@@ -598,6 +597,11 @@ string const LaTeXFeatures::getPackages() const
 			packages << "\\usepackage["
 				 << params_.graphicsDriver
 				 << "]{color}\n";
+	}
+
+	// pdfcolmk must be loaded after color
+	if (mustProvide("pdfcolmk")) {
+		packages << "\\usepackage{pdfcolmk}\n";
 	}
 
 	// makeidx.sty
