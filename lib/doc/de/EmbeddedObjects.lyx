@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -303,12 +303,12 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 \newline
 
 \family sans
-Version 1.5.2-0
+Version 1.5.4
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 31.
- Oktober 2007
+letzte Änderung: 13.
+ Januar 2008
 \end_layout
 
 \begin_layout Standard
@@ -25267,25 +25267,6 @@ status open
 Bemerkung\InsetSpace ~
 1:
 \series default
- Wegen eines Fehlers in LyX müssen Sie hinter einer Box ein geschütztes
- Leerzeichen einfügen, um die Box vom nachfolgenden Text zu trennen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Bemerkung\InsetSpace ~
-2:
-\series default
  Boxen dürfen in 
 \family sans
 List-
@@ -25310,7 +25291,7 @@ status open
 
 \series bold
 Bemerkung\InsetSpace ~
-3:
+2:
 \series default
  Boxen ohne 
 \family sans
@@ -25550,8 +25531,7 @@ kante der Box ist in der Zeile.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Description
@@ -25576,8 +25556,7 @@ Die Mitte der Box ist in der Zeile.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Description
@@ -25603,8 +25582,7 @@ kante der Box ist in der Zeile.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Standard
@@ -25653,8 +25631,7 @@ Der Boxinhalt ist am oberen Boxrand ausgerichtet.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Description
@@ -25679,8 +25656,7 @@ Der Boxinhalt ist zentriert ausgerichtet.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Description
@@ -25705,8 +25681,7 @@ Der Boxinhalt ist am unteren Boxrand ausgerichtet.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Description
@@ -25746,8 +25721,7 @@ gleichmäßig verteilt.
 
 \end_inset
 
-\InsetSpace ~
-Dies ist ein Beispieltext.
+ Dies ist ein Beispieltext.
 \end_layout
 
 \begin_layout Standard

@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -311,7 +311,7 @@ Traducción de: Ignacio García
 \newline
 
 \family sans
-Versión 1.5.2-0
+Versión 1.5.4
 \end_layout
 
 \begin_layout Standard
@@ -24652,24 +24652,6 @@ status open
 \series bold
 Nota:
 \series default
- Debido a un error en LyX hay que insertar un espacio protegido detrás de
- un cuadro si se desea separar con un espacio el cuadro y el texto siguiente.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Nota:
-\series default
  Los cuadros no deben ser el ítem en un entorno 
 \family sans
 Enumeración
@@ -24925,7 +24907,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24934,8 +24916,7 @@ Cuadro alineado arriba.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Description
@@ -24951,7 +24932,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24960,8 +24941,7 @@ Cuadro alineado en medio.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Description
@@ -24977,7 +24957,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -24986,8 +24966,7 @@ Cuadro alineado abajo.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Standard
@@ -25020,7 +24999,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25029,8 +25008,7 @@ Cuadro con texto alineado arriba.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Description
@@ -25046,7 +25024,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25055,8 +25033,7 @@ Cuadro con texto alineado en medio.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Description
@@ -25072,7 +25049,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25081,8 +25058,7 @@ Cuadro con texto alineado abajo.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Description
@@ -25098,7 +25074,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25117,8 +25093,7 @@ estirado.
 
 \end_inset
 
-\InsetSpace ~
-Ejemplo de línea de texto.
+ Ejemplo de línea de texto.
 \end_layout
 
 \begin_layout Standard

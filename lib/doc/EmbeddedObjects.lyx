@@ -282,7 +282,7 @@ original author: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.2-0
+Version 1.5.4
 \end_layout
 
 \begin_layout Standard
@@ -24406,24 +24406,6 @@ status open
 \series bold
 Note:
 \series default
- Due to a bug in LyX you have to insert a protected space behind a box when
- you want to separate in a line the box from the following text with a space.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Note:
-\series default
  Boxes must not be the item in an 
 \family sans
 Itemize
@@ -24687,8 +24669,7 @@ This box is top-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Description
@@ -24713,8 +24694,7 @@ This box is middle-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Description
@@ -24739,8 +24719,7 @@ This box is bottom-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Standard
@@ -24782,8 +24761,7 @@ This box text is top-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Description
@@ -24808,8 +24786,7 @@ This box text is middle-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Description
@@ -24834,8 +24811,7 @@ This box text is bottom-aligned.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Description
@@ -24870,8 +24846,7 @@ stretched.
 
 \end_inset
 
-\InsetSpace ~
-This is an example text line.
+ This is an example text line.
 \end_layout
 
 \begin_layout Standard
