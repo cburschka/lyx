@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -290,7 +290,7 @@ version 1.5.2 - novembre 2007
 \newline
 
 \family sans
-Version 1.5.3-0
+Version 1.5.4
 \end_layout
 
 \begin_layout Standard
@@ -24766,24 +24766,6 @@ status open
 \series bold
 Note:
 \series default
- À cause d'un bug de LyX vous devez insérer une espace insécable après une
- boîte si vous voulez la séparer du texte qui la suit par une espace.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Note:
-\series default
  Vous ne pouvez pas employer une boîte comme élément dans un environnement
  de type 
 \family sans
@@ -25045,7 +25027,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25054,8 +25036,7 @@ Cette boîte est alignée sur le haut.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Description
@@ -25071,7 +25052,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25080,8 +25061,7 @@ Cette boîte est alignée au centre.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Description
@@ -25097,7 +25077,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25106,8 +25086,7 @@ Cette boîte est alignée sur le bas.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Standard
@@ -25145,7 +25124,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25154,8 +25133,7 @@ Le texte de cette boîte est aligné sur le haut.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Description
@@ -25171,7 +25149,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25180,8 +25158,7 @@ Le texte de cette boîte est aligné au centre
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Description
@@ -25197,7 +25174,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25206,8 +25183,7 @@ Le texte de cette boîte est aligné en bas.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Description
@@ -25223,7 +25199,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25247,8 +25223,7 @@ allongé.
 
 \end_inset
 
-\InsetSpace ~
-Ceci est un exemple de texte.
+ Ceci est un exemple de texte.
 \end_layout
 
 \begin_layout Standard
