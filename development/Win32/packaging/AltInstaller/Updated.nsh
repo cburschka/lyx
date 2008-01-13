@@ -8,6 +8,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"  
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
