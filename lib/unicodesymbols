@@ -172,8 +172,8 @@
 0x012f "\\k{i}"                   "" "" # LATIN SMALL LETTER I WITH OGONEK
 0x0130 "\\.{I}"                   "" "" # LATIN CAPITAL LETTER I WITH DOT ABOVE
 0x0131 "\\i"                      "" "" # LATIN SMALL LETTER DOTLESS I
-#0x0132 ""                         "" "" # LATIN CAPITAL LIGATURE IJ
-#0x0133 ""                         "" "" # LATIN SMALL LIGATURE IJ
+0x0132 "IJ"                         "" "" # LATIN CAPITAL LIGATURE IJ
+0x0133 "ij"                         "" "" # LATIN SMALL LIGATURE IJ
 0x0134 "\\^{J}"                   "" "" # LATIN CAPITAL LETTER J WITH CIRCUMFLEX
 0x0135 "\\^{\\j}"                 "" "" # LATIN SMALL LETTER J WITH CIRCUMFLEX
 0x0136 "\\c{K}"                   "" "" # LATIN CAPITAL LETTER K WITH CEDILLA
@@ -1567,4 +1567,10 @@
 # miscellaneous mathematical symbols-A
 0x27e8 "\\textlangle"             "textcomp" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+# ligatures
+0xfb00 "ff"                       "" "" # LATIN SMALL LIGATURE FF
+0xfb01 "fi"                       "" "" # LATIN SMALL LIGATURE FI
+0xfb02 "fl"                       "" "" # LATIN SMALL LIGATURE FL
+0xfb03 "ffi"                      "" "" # LATIN SMALL LIGATURE FFI
+0xfb04 "ffl"                      "" "" # LATIN SMALL LIGATURE FFL
 
