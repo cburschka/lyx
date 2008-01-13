@@ -71,7 +71,7 @@ bool GuiIdListModel::insertRows(int row, int count,
 bool GuiIdListModel::removeRows(int row, int count, 
 		QModelIndex const & /*parent*/)
 {
-	if (!rowIsValid(row) || row + count > userData_.size() ||
+	if (!rowIsValid(row) || row + count > int(userData_.size()) ||
 	    count < 0)
 		return false;
 	if (count == 0)
