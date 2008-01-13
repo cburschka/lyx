@@ -276,7 +276,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 			width_string += " - 2\\fboxsep - 2\\fboxrule"/* "-\\shadowsize"*/;
 			break;
 		case Doublebox:
-			width_string += " - 2\\fboxsep - 7.5\\fboxrule - 1.0pt";
+			width_string += " - 2\\fboxsep - 7.5\\fboxrule - 1pt";
 			break;
 		}
 	}
@@ -402,9 +402,8 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		// already done
 		break;
 	}
-	os << "%\n";
 
-	i += 3;
+	i += 2;
 
 	return i;
 }
