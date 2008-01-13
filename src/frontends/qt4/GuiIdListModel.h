@@ -112,7 +112,7 @@ private:
 	///
 	inline bool rowIsValid(int const i) const
 	{
-		return i >= 0 && i <= userData_.size();
+		return i >= 0 && i <= int(userData_.size());
 	}
 ;
 };
