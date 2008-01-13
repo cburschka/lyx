@@ -55,7 +55,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- support to paste text containing ligatures to LyX
+- Support to paste text containing ligatures to LyX.
+
 
 * BUILD/INSTALLATION:
 
@@ -81,6 +82,8 @@ What's new
 
 - Rotated floats are now correctly converted to ERT when exporting to LyX
   format < 1.4.0.
+
+- Fix the LaTeX output of boxes (bug 2492).
 
 
 * USER INTERFACE:
