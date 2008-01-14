@@ -184,12 +184,39 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
 
+/**
+ * \li Action: Breaks the current paragraph at the current location
+ * \li Syntax: break-paragraph
+ */
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
+/**
+ * \li Action: Breaks the current paragraph at the current location,
+               unless used at the beginning of a line, where it sets
+               the label width string to empty.
+ * \li Syntax: break-paragraph-skip
+ */
 		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
-
+/**
+ * \li Action: Inserts a caption inset.
+ * \li Syntax: caption-insert
+ */
 		{ LFUN_CAPTION_INSERT, "caption-insert", Noop, Edit },
+/**
+ * \li Action: Inserts the current date
+ * \li Syntax: date-insert <ARG>
+ * \li Param: <ARG>: Strangely, this is inserted verbatim, no matter
+                     what it is.
+ */
 		{ LFUN_DATE_INSERT, "date-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a footnote inset.
+ * \li Syntax: footnote-insert
+ */
 		{ LFUN_FOOTNOTE_INSERT, "footnote-insert", Noop, Edit },
+/**
+ * \li Action: Inserts an ERT inset.
+ * \li Syntax: ert-insert
+ */
 		{ LFUN_ERT_INSERT, "ert-insert", Noop, Edit },
 		{ LFUN_FLOAT_INSERT, "float-insert", Noop, Edit },
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
