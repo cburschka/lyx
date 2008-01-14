@@ -15,6 +15,9 @@ DefaultStyle       Standard
 PageStyle          Headings
 Provides makeidx   1
 Provides framed    1
+# Memoir has support for line spacing, but uses different names from
+# what setspace.sty does.  
+Provides SetSpace  1
 
 
 ClassOptions

@@ -89,20 +89,24 @@ void Spacing::writeFile(ostream & os, bool para) const
 }
 
 
-string const Spacing::writeEnvirBegin() const
+string const Spacing::writeEnvirBegin(bool useSetSpace) const
 {
 	switch (space) {
 	case Default: break; // do nothing
 	case Single:
-		return "\\begin{singlespace}";
+		return (useSetSpace ? "\\begin{SingleSpace}"
+			: "\\begin{singlespace}");
 	case Onehalf:
-		return "\\begin{onehalfspace}";
+		return (useSetSpace ? "\\begin{OnehalfSpace}"
+			: "\\begin{onehalfspace}");
 	case Double:
-		return "\\begin{doublespace}";
+		return (useSetSpace ? "\\begin{DoubleSpace}" 
+			: "\\begin{doublespace}");
 	case Other:
 	{
 		ostringstream ost;
-		ost << "\\begin{spacing}{"
+		ost << (useSetSpace ? "\\begin{Spacing}{"
+			: "\\begin{spacing}{" )
 		    << getValueAsString() << '}';
 		return ost.str();
 	}
@@ -111,18 +115,21 @@ string const Spacing::writeEnvirBegin() const
 }
 
 
-string const Spacing::writeEnvirEnd() const
+string const Spacing::writeEnvirEnd(bool useSetSpace) const
 {
 	switch (space) {
 	case Default: break; // do nothing
 	case Single:
-		return "\\end{singlespace}";
+		return (useSetSpace ? "\\end{SingleSpace}"
+			: "\\end{singlespace}");
 	case Onehalf:
-		return "\\end{onehalfspace}";
+		return (useSetSpace ? "\\end{OnehalfSpace}"
+			: "\\end{onehalfspace}");
 	case Double:
-		return "\\end{doublespace}";
+		return (useSetSpace ? "\\end{DoubleSpace}" 
+			: "\\end{doublespace}");
 	case Other:
-		return "\\end{spacing}";
+		return (useSetSpace ? "\\end{Spacing}" : "\\end{spacing}") ;
 	}
 	return string();
 }
