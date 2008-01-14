@@ -190,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 12.
+letzte Änderung: 15.
  Januar 2008
 \end_layout
 
@@ -1579,12 +1579,12 @@ Treffer
 \end_layout
 
 \begin_layout Standard
-Dinge wie Notizen, Gleitobjekte, usw.
- können aufgelöst werden.
+Dinge wie Notizen, Gleitobjekte, usw.\InsetSpace \space{}
+können aufgelöst werden.
  Das bedeutet, dass sie gelöscht werden, ihr Inhalt jedoch als normaler
  Text erhalten bleibt.
- Um etwas aufzulösen setzt man den Cursor an den Anfang des Objekts gesetzt
- und drückt die 
+ Um etwas aufzulösen, setzt man den Cursor an den Anfang des Objekts und
+ drückt die 
 \family sans
 Rücktaste
 \family default
@@ -1592,7 +1592,7 @@ Rücktaste
 \family sans
 Entfernen
 \family default
- Taste der Tastatur.
+-Taste der Tastatur.
 \end_layout
 
 \begin_layout Section
@@ -2602,7 +2602,7 @@ begin{sloppypar}
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -3724,7 +3724,7 @@ end{sloppypar}
 
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
@@ -14168,7 +14168,13 @@ X-Code
 \end_layout
 
 \begin_layout Subsubsection
-Zusammengesetzten Worte
+Zusammengesetzte Worte
+\begin_inset LatexCommand label
+name "Zusammengesetzten-Worte"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14178,7 +14184,7 @@ Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
  In der Druckansicht werden Sie erkennen, dass dieses Wort über den Rand
  gedruckt wird.
  Das liegt daran, dass LaTeX solche Worte nur am Bindestrich trennen kann.
- Zum Korrigieren gibt es zwei Möglichkeiten:
+ Zum Korrigieren gibt es mehrere Möglichkeiten:
 \end_layout
 
 \begin_layout Enumerate
@@ -14258,6 +14264,59 @@ status collapsed
 Handbücher\SpecialChar \ldots{}
 
 \begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sie setzen den Abschnitt, in dem sich das zusammengesetzte Wort befindet,
+ mit 
+\family typewriter
+sloppypar
+\family default
+ (siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Sloppypar"
+
+\end_inset
+
+):
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes gld
+\end_inset
+
+Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
+ wie eben oder mit einem Bindestrich zusammengefügt wie bei Programmiersprachen-
+Handbücher\SpecialChar \ldots{}
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
 \end_inset
 
 
@@ -27391,9 +27450,10 @@ name "Zweige"
 \end_layout
 
 \begin_layout Standard
-Manchmal wollen Sie mehrere Versionen desselben Dokuments ausgeben Der Extremfal
-l ist die Ausgabe eines einzigen Dokuments in verschiedenen Sprachen, aber
- als eine Datei und so, dass korrespondierende Teile aufeinander folgen.
+Manchmal wollen Sie mehrere Versionen desselben Dokuments ausgeben.
+ Der Extremfall ist die Ausgabe eines einzigen Dokuments in verschiedenen
+ Sprachen, aber als eine Datei und so, dass korrespondierende Teile aufeinander
+ folgen.
  Dies kann man mit 
 \emph on
 Zweigen
@@ -27457,6 +27517,10 @@ Zweig
 Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
  auf Prüfungsfragen stehen würden.
  In der Druckausgabe sehen Sie die Schülerversion:
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27468,7 +27532,7 @@ Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
 status open
 
 \begin_layout Standard
-Frage: Wer war der erste Physik-Nobelpreis Gewinner?
+Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
 \end_layout
 
 \end_inset
@@ -27490,27 +27554,25 @@ Antwort: Wilhelm Conrad Röntgen
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Um konditionale Ausgaben zu erzeugen wo keine Zweige angegeben werden können,
+Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können
  wie in Formeln, können spezielle LaTeX-Definitionen für jeden Zweig angegeben
  werden.
- Man kann z.\InsetSpace \thinspace{}
-B.
- für den Frage Zweig definieren:
+ Man kann zum Beispiel für den Frage-Zweig definieren:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Eine Einführung in die LaTeX-Syntax ist in Abschnitt\InsetSpace ~
 
-\begin_inset LatexCommand ref
-reference "sub:LaTeX-Syntax"
+\begin_inset LatexCommand vref
+reference "LaTeX-Syntax"
 
 \end_inset
 
@@ -27522,9 +27584,7 @@ reference "sub:LaTeX-Syntax"
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 newcommand{
@@ -27532,9 +27592,7 @@ newcommand{
 Frage}[1]{#1}
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 newcommand{
@@ -27543,12 +27601,10 @@ Antwort}[1]{}
 \end_layout
 
 \begin_layout Standard
-und für den Antwort Zweig
+und für den Antwort-Zweig:
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 newcommand{
@@ -27556,9 +27612,7 @@ newcommand{
 Frage}[1]{}
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 newcommand{
@@ -27647,28 +27701,28 @@ Antwort}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-Nun ist es möglich die Befehle 
-\series bold
+Nun ist es möglich, die Befehle 
+\family typewriter
 
 \backslash
 Frage{\SpecialChar \ldots{}
 }
-\series default
+\family default
  und 
-\series bold
+\family typewriter
 
 \backslash
 Antwort{\SpecialChar \ldots{}
 }
-\series default
+\family default
  zu verwenden um eine konditionale Ausgabe zu erhalten.
- Hier ist eine Beispielformel in der nur der 
-\series bold
+ Hier ist eine Beispielformel, in der nur der 
+\family typewriter
 
 \backslash
 Frage
-\series default
- Teil erscheint:
+\family default
+-Teil erscheint:
 \begin_inset Formula \[
 x^{2}-2x-2\Rightarrow\Frage{x_{1}}\Antwort{x_{2}}=1\Frage{+\sqrt{3}}\Antwort{-\sqrt{3}}.\]
 
@@ -27681,7 +27735,7 @@ x^{2}-2x-2\Rightarrow\Frage{x_{1}}\Antwort{x_{2}}=1\Frage{+\sqrt{3}}\Antwort{-\s
 Innerhalb von Formeln, kann dasselbe auch mit Hilfe von Makros geschehen,
  siehe Abschnitt\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset LatexCommand vref
 reference "Makro-erzeugen"
 
 \end_inset
@@ -27690,9 +27744,9 @@ reference "Makro-erzeugen"
 \end_layout
 
 \begin_layout Section
-ERT und die LaTeX-Syntax
+LaTeX-Syntax und ERT
 \begin_inset LatexCommand label
-name "ERT-und-die-LaTeX-Syntax"
+name "LaTeX-Syntax-und-ERT"
 
 \end_inset
 
@@ -27706,230 +27760,7 @@ name "LaTeX ! -Syntax"
 \end_layout
 
 \begin_layout Subsection
-ERT-Kästchen
-\begin_inset LatexCommand label
-name "ERT-Kästchen"
-
-\end_inset
-
-
-\begin_inset LatexCommand index
-name "ERT"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Weil LyX LaTeX im Hintergrund benutzt, unterstützt es viele LaTeX-Befehle
- und -Konstrukte, aber nicht alle.
- LaTeX enthält hunderte von Paketen, die alle unterschiedliche Befehle haben.
- Jeden Monat werden viele Pakete aktualisiert und neue hinzugefügt.
- Das hat den Vorteil, dass Sie nahezu alles drucksetzen können -- für fast
- jedes Problem gibt es ein LaTeX-Paket.
- Aber LyX kann damit natürlich nicht schritthalten.
-\end_layout
-
-\begin_layout Standard
-Aber das ist kein Problem, denn Sie können jeden LaTeX-Befehl in LyX in
- sogenannten ERT-Kästchen eingeben.
- ERT heißt 
-\begin_inset Quotes gld
-\end_inset
-
-
-\series bold
-E
-\series default
-vil 
-\series bold
-R
-\series default
-ed 
-\series bold
-T
-\series default
-ext
-\begin_inset Quotes grd
-\end_inset
-
-; evil deshalb, weil LyX eigentlich LaTeX-Befehle vermeidet.
- Ein ERT-Kästchen erhalten Sie mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\family default
- oder durch Klicken auf den 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
--Knopf.
- Das Kästchen selber kann auf drei Arten angezeigt werden:
-\family sans
- Eingebettet
-\family default
-, 
-\family sans
-Geschlossen
-\family default
- und 
-\family sans
-Geöffnet
-\family default
-.
- Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
- und wählen in dem Dialogfenster aus, was Sie wollen.
- Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es und umgekehrt.
-\end_layout
-
-\begin_layout Standard
-In das ERT-Kästchen können Sie vollständige oder unvollständige LaTeX-Befehle
- schreiben.
- Unvollständig bedeutet, dass ein Befehlsargument Standard-LyX-Text sein
- kann.
- Wenn Sie zum Beispiel ein Wort im Text mit dem LaTeX-Befehl 
-\family typewriter
-
-\backslash
-fbox
-\family default
- einrahmen wollen, können Sie den Befehlsteil 
-\family typewriter
-
-\backslash
-fbox{
-\family default
- in ein ERT-Kästchen, dann das Wort und schließlich 
-\family typewriter
-}
-\family default
- in ein zweites ERT-Kästchen: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename clipart/ERT.png
-	display none
-	scale 240
-	BoundingBox 0bp 0bp 484bp 28bp
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-ergibt
-\end_layout
-
-\begin_layout Standard
-Dies ist eine Zeile mit einem 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-fbox{
-\end_layout
-
-\end_inset
-
-
-\series bold
-eingerahmten
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- fetten Wort.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das hat den Vorteil, dass Formatierungen einfach mit LyX-Mitteln durchgeführt
- werden können.
- Hier ist ein Beispiel, in dem formatierter 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-fbox{
-\end_layout
-
-\end_inset
-
- 
-\series bold
-Text
-\series default
- und ein Bild 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- eingerahmt werden.
-\end_layout
-
-\begin_layout Description
-
-\series bold
-Bemerkung:
-\series default
- Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
- damit LaTeX weiß, dass der Befehl zu ende ist.
-\end_layout
-
-\begin_layout Subsection
-Die LaTeX-Syntax
+LaTeX-Syntax
 \begin_inset LatexCommand label
 name "LaTeX-Syntax"
 
@@ -27939,19 +27770,108 @@ name "LaTeX-Syntax"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie größere Dokumente oder Bücher schreiben, müssen Sie etwas über
- LaTeX-Befehle wissen, die LyX im Hintergrund benutzt.
- Weil LaTeX auf Befehlen basiert, können Sie Ihren Text 
+Manchmal gibt es Situationen, in denen Sie zusätzliche LaTeX-Befehle benötigen,
+ um ein Dokument 
 \emph on
-programmieren
+schön
 \emph default
-.
- Das hat den Vorteil, dass das Aussehen des Dokuments jederzeit geändert
- werden kann, wenn sie die die richtigen Befehle kennen.
+ zu gestalten oder dokumentenweite Einstellungen zu ändern.
+ Das ist keine Schwäche von LyX, weil Sie diese Befehle auch in reinen LaTeX-Dat
+eien verwenden müßten.
 \end_layout
 
 \begin_layout Standard
-Stellen Sie sich vor, Sie mussten ein Handbuch für ein Produkt schreiben,
+Deshalb sollten Sie ein wenig über LaTeX-Befehle wissen.
+ Alle LaTeX-Befehle fangen mit 
+\family typewriter
+
+\backslash
+
+\family default
+ an.
+ Es gibt folgende Arten:
+\end_layout
+
+\begin_layout Enumerate
+Spezialbefehle mit einem oder zwei Zeichen
+\end_layout
+
+\begin_layout Enumerate
+Befehle der Art 
+\family typewriter
+
+\backslash
+Befehlsname
+\family default
+.
+ Sie enden vor dem ersten Zeichen, der kein Buchstabe ist.
+\end_layout
+
+\begin_layout Enumerate
+Befehle der Art 
+\family typewriter
+
+\backslash
+Befehlsname[Optionen]{Argument}
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Befehle der Art 
+\family typewriter
+
+\backslash
+Befehlsname[Optionen]{Argument1}{Argument2}
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Befehle, deren Befehlsname
+\family typewriter
+ mit einem * endet.
+\end_layout
+
+\begin_layout Subsubsection*
+Beispiele
+\end_layout
+
+\begin_layout Standard
+Ein Spezialbefehl ist 
+\family typewriter
+
+\backslash
+=
+\family default
+, der bei der Silbentrennung in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Zusammengesetzten-Worte"
+
+\end_inset
+
+ beschrieben wird.
+\end_layout
+
+\begin_layout Standard
+Befehle der 3.
+ Art haben Sie mit 
+\family typewriter
+sloppypar
+\family default
+ in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Sloppypar"
+
+\end_inset
+
+ kennengelernt.
+\end_layout
+
+\begin_layout Standard
+Stellen Sie sich vor, Sie müssten ein Handbuch für ein Produkt schreiben,
  und der Termin wäre morgen.
  Gerade hat Ihr Chef Sie für Ihre Arbeit gelobt, möchte aber alle Legenden-Marke
 n fett gedruckt.
@@ -28002,7 +27922,7 @@ status collapsed
 
 X-Vorspann
 \family default
-) folgenden Befehl eintragen:
+ folgenden Befehl eintragen:
 \end_layout
 
 \begin_layout Standard
@@ -28121,14 +28041,237 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
  
 \end_layout
 
+\begin_layout Subsection
+ERT-Kästchen
+\begin_inset LatexCommand label
+name "ERT-Kästchen"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "ERT"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn Sie gezwungen sind oder es wollen, LaTeX-Befehle in LyX zu benutzen,
+ gben Sie diese in ERT-Kästchen ein.
+ ERT heißt 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+E
+\series default
+vil 
+\series bold
+R
+\series default
+ed 
+\series bold
+T
+\series default
+ext
+\begin_inset Quotes grd
+\end_inset
+
+; evil deshalb, weil LyX eigentlich LaTeX-Befehle vermeidet.
+\end_layout
+
+\begin_layout Standard
+Ein ERT-Kästchen erhalten Sie mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+ oder durch Klicken auf den 
+\begin_inset Graphics
+	filename ../../images/ert-insert.png
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+-Knopf.
+ Das Kästchen selber kann auf drei Arten angezeigt werden:
+\family sans
+ Eingebettet
+\family default
+, 
+\family sans
+Geschlossen
+\family default
+ und 
+\family sans
+Geöffnet
+\family default
+.
+ Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
+ und wählen in dem Dialogfenster aus, was Sie wollen.
+ Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es und umgekehrt.
+\end_layout
+
+\begin_layout Standard
+In das ERT-Kästchen können Sie vollständige oder unvollständige LaTeX-Befehle
+ schreiben.
+ Ein vollständiger LaTeX-Befehl ist zum Beispiel die Verwendung von 
+\family typewriter
+slop\SpecialChar \-
+py\SpecialChar \-
+par
+\family default
+ in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Sloppypar"
+
+\end_inset
+
+.
+ Unvollständig bedeutet, dass Sie in ein ERT-Kästchen 
+\family typewriter
+
+\backslash
+Befehlsname[Optionen]{
+\family default
+ schreiben, dann das Argument mit allen gewünschten Formatierungen als LyX-Text
+ und schließlich 
+\family typewriter
+}
+\family default
+ in ein zweites ERT-Kästchen: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename clipart/ERT.png
+	display none
+	scale 240
+	BoundingBox 0bp 0bp 484bp 9bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ergibt
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile mit einem 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+eingerahmten
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ Wort.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das hat den Vorteil, dass Formatierungen einfach mit LyX-Mitteln durchgeführt
+ werden können.
+ Hier ist ein Beispiel, in dem formatierter 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Text
+\series default
+ und ein Bild 
+\begin_inset Graphics
+	filename ../../images/ert-insert.png
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ eingerahmt werden.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Bemerkung:
+\series default
+ Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
+ damit LaTeX weiß, dass der Befehl zu ende ist.
+\end_layout
+
 \begin_layout Section
 Dokumentschnipsel ansehen
 \end_layout
 
 \begin_layout Standard
 LyX gestattet es, Teile Ihres Dokuments in der Druckvorschau anzusehen,
- ohne es zum Beispiel mit Ansicht\SpecialChar \menuseparator
-DVI vollständig zu bearbeiten.
+ ohne es zum Beispiel mit 
+\family sans
+Ansicht\SpecialChar \menuseparator
+DVI
+\family default
+ vollständig zu bearbeiten.
  Wenn Sie Ihre mathematischen Formel als Druckvorschau sehen wollen, müssen
  Sie die notwendigen Pakete wie unten beschrieben installieren und unter
  
