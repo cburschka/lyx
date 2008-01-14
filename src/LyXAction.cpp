@@ -841,8 +841,15 @@ void LyXAction::init()
 /**
  * \var lyx::kb_action lyx::LFUN_CALL
  * \li Action: Executes a command defined in a .def file.
+ * \li Notion: The definitions are by default read from lib/commands/default.def .
+               A .def file allows to define a command with \\define "Name" "lfun"
+               where Name is the name of the new command and lfun is the lfun code
+               to be executed (see e.g. command-sequence LFUN).
+               \\def_file "FileName" allows to include another .def file.
  * \li Syntax: call <CMDNAME>
  * \li Params: <CMDNAME>: Name of the command that must be called.
+                          <CMDNAME> can be consequently used in menu,
+                          toolbar (image) or bind file
  * \li Origin: broider, 2 Oct 2007
  */
 		{ LFUN_CALL, "call", NoBuffer, System },
