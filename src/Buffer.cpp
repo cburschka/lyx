@@ -95,10 +95,6 @@
 #include "support/types.h"
 #include "support/FileZipListDir.h"
 
-#if !defined (HAVE_FORK)
-# define fork() -1
-#endif
-
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -2285,17 +2281,10 @@ int AutoSaveBuffer::generateChild()
 		if (!tmp_ret.empty()) {
 			buffer_.writeFile(tmp_ret);
 			// assume successful write of tmp_ret
-			if (!tmp_ret.moveTo(fname_)) {
+			if (!tmp_ret.moveTo(fname_))
 				failed = true;
-				// most likely couldn't move between
-				// filesystems unless write of tmp_ret
-				// failed so remove tmp file (if it
-				// exists)
-				tmp_ret.removeFile();
-			}
-		} else {
+		} else
 			failed = true;
-		}
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
@@ -2306,9 +2295,8 @@ int AutoSaveBuffer::generateChild()
 					buffer_.message(_("Autosave failed!"));
 			}
 		}
-		if (pid == 0) { // we are the child so...
+		if (pid == 0) // we are the child so...
 			_exit(0);
-		}
 	}
 	return pid;
 }
