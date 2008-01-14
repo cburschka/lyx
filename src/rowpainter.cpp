@@ -96,6 +96,10 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	Font const font = text_metrics_.getDisplayFont(pit_, pos);
 
 	BOOST_ASSERT(inset);
+	// Backup full_repaint status because some insets (InsetTabular)
+	// requires a full repaint
+	bool pi_full_repaint = pi_.full_repaint;
+
 	// FIXME: We should always use font, see documentation of
 	// noFontChange() in Inset.h.
 	pi_.base.font = inset->noFontChange() ?
@@ -113,6 +117,9 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	paintForeignMark(x_, font.language(), dim.descent());
 
 	x_ += dim.width();
+
+	// Restore full_repaint status.
+	pi_.full_repaint = pi_full_repaint;
 
 #ifdef DEBUG_METRICS
 	int const x1 = int(x_ - dim.width());

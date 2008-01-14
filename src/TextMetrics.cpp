@@ -1895,15 +1895,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
 		if (!pi.full_repaint && !row_has_changed) {
-			// Backup full_repaint status because some Inset (InsetTabular)
-			// requires a full repaint
-			bool tmp = pi.full_repaint;
 			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
 			y += row.descent();
-			// Restore full_repaint status.
-			pi.full_repaint = tmp;
 			continue;
 		}
 
