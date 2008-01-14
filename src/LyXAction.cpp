@@ -102,22 +102,86 @@ void LyXAction::init()
 
 	ev_item const items[] = {
 #endif
+/**
+ * \li Action: adds an acute accent (á) to the next character typed
+ * \li Syntax: accent-acute
+ */
 		{ LFUN_ACCENT_ACUTE, "accent-acute", Noop, Edit },
+/**
+ * \li Action: adds a breve accent to the next character typed
+ * \li Syntax: accent-breve
+ */
 		{ LFUN_ACCENT_BREVE, "accent-breve", Noop, Edit },
+/**
+ * \li Action: adds a caron to the next character typed
+ * \li Syntax: accent-caron
+ */
 		{ LFUN_ACCENT_CARON, "accent-caron", Noop, Edit },
+/**
+ * \li Action: adds a cedilla (ç) to the next character typed
+ * \li Syntax: accent-cedilla
+ */
 		{ LFUN_ACCENT_CEDILLA, "accent-cedilla", Noop, Edit },
+/**
+ * \li Action: adds a circle accent (Å) to the next character typed
+ * \li Syntax: accent-circle
+ */
 		{ LFUN_ACCENT_CIRCLE, "accent-circle", Noop, Edit },
+/**
+ * \li Action: adds a circumflex (â) to the next character typed
+ * \li Syntax: accent-circumflex
+ */
 		{ LFUN_ACCENT_CIRCUMFLEX, "accent-circumflex", Noop, Edit },
+/**
+ * \li Action: adds a dot accent to the next character typed
+ * \li Syntax: accent-dot
+ */
 		{ LFUN_ACCENT_DOT, "accent-dot", Noop, Edit },
+/**
+ * \li Action: adds a grave accent (à) to the next character typed
+ * \li Syntax: accent-grave
+ */
 		{ LFUN_ACCENT_GRAVE, "accent-grave", Noop, Edit },
+/**
+ * \li Action: adds a Hungarian umlaut to the next character typed
+ * \li Syntax: accent-grave
+ */
 		{ LFUN_ACCENT_HUNGARIAN_UMLAUT, "accent-hungarian-umlaut", Noop, Edit },
+/**
+ * \li Action: adds a macron to the next character typed
+ * \li Syntax: accent-macron
+ */
 		{ LFUN_ACCENT_MACRON, "accent-macron", Noop, Edit },
+/**
+ * \li Action: adds an ogonek accent to the next character typed
+ * \li Syntax: accent-ogonek
+ */
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
 		{ LFUN_ACCENT_SPECIAL_CARON, "accent-special-caron", Noop, Edit },
+/**
+ * \li Action: adds a tie over the next two character typed
+ * \li Syntax: accent-tie
+ */
 		{ LFUN_ACCENT_TIE, "accent-tie", Noop, Edit },
+/**
+ * \li Action: adds a tilde (ñ) over the next character typed
+ * \li Syntax: accent-tilde
+ */
 		{ LFUN_ACCENT_TILDE, "accent-tilde", Noop, Edit },
+/**
+ * \li Action: adds an umlaut (ö) over the next character typed
+ * \li Syntax: accent-umlaut
+ */
 		{ LFUN_ACCENT_UMLAUT, "accent-umlaut", Noop, Edit },
+/**
+ * \li Action: adds a bar under the next character typed
+ * \li Syntax: accent-underbar
+ */
 		{ LFUN_ACCENT_UNDERBAR, "accent-underbar", Noop, Edit },
+/**
+ * \li Action: adds a dot under the next character typed
+ * \li Syntax: accent-underdot
+ */
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
 
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
