@@ -240,6 +240,7 @@ dist_images_DATA = \
 	images/banner.png \
 	images/bookmark-goto.xpm \
 	images/bookmark-save.xpm \
+	images/box-insert.xpm \
 	images/break-line.xpm \
 	images/buffer-close.xpm \
 	images/buffer-export_dvi.xpm \

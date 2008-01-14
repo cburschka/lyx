@@ -1547,6 +1547,7 @@ lib_images_files = Split('''
     banner.png
     bookmark-goto.xpm
     bookmark-save.xpm
+    box-insert.xpm
     break-line.xpm
     buffer-close.xpm
     buffer-export_dvi.xpm
