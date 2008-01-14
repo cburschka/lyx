@@ -18,8 +18,6 @@
 #include "Language.h"
 #include "Dimension.h"
 
-#include "support/unicode.h"
-
 #include <boost/assert.hpp>
 
 using namespace std;

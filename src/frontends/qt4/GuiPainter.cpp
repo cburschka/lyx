@@ -24,8 +24,6 @@
 #include "Language.h"
 #include "LyXRC.h"
 
-#include "support/unicode.h"
-
 #include <QPixmapCache>
 #include <QTextLayout>
 
