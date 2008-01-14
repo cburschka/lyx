@@ -30,6 +30,10 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\images"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\box-insert.xpm"
+ SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"  
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_4.py"

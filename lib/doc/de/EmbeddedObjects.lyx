@@ -307,7 +307,7 @@ Version 1.5.4
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
+letzte Änderung: 14.
  Januar 2008
 \end_layout
 
@@ -23899,7 +23899,7 @@ usepackage{ftnright}
 placement !h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -23974,7 +23974,7 @@ Standard Fußnoten-Platzierung in einem zweisp.
 placement !h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -24111,7 +24111,7 @@ theendnotes
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -25192,6 +25192,14 @@ Boxen werden mit
 Einfügen\SpecialChar \menuseparator
 Box
 \family default
+ oder dem Schalter 
+\begin_inset Graphics
+	filename ../../images/box-insert.xpm
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
  eingefügt.
  Ein graues Kästchen mit der Aufschrift 
 \begin_inset Quotes gld
