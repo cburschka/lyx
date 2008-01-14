@@ -47,7 +47,6 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/convert.h"
-#include "support/unicode.h"
 
 #include <boost/bind.hpp>
 #include <boost/crc.hpp>
