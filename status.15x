@@ -85,6 +85,10 @@ What's new
 
 - Fix the LaTeX output of boxes (bug 2492).
 
+- Assure that the package "pdfcolmk" is loaded after the package color.
+
+- Consider graphic drivers when loading the package "xcolor".
+
 
 * USER INTERFACE:
 
