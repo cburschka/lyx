@@ -2467,40 +2467,40 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	if (!success)
 		return false;
 
-	if (put_in_tempdir)
+	if (put_in_tempdir) {
 		result_file = tmp_result_file.absFilename();
-	else {
-		result_file = changeExtension(absFileName(), ext);
-		// We need to copy referenced files (e. g. included graphics
-		// if format == "dvi") to the result dir.
-		vector<ExportedFile> const files =
-			runparams.exportdata->externalFiles(format);
-		string const dest = onlyPath(result_file);
-		CopyStatus status = SUCCESS;
-		for (vector<ExportedFile>::const_iterator it = files.begin();
-				it != files.end() && status != CANCEL; ++it) {
-			string const fmt =
-				formats.getFormatFromFile(it->sourceName);
-			status = copyFile(fmt, it->sourceName,
-					  makeAbsPath(it->exportName, dest),
-					  it->exportName, status == FORCE);
-		}
-		if (status == CANCEL) {
-			message(_("Document export cancelled."));
-		} else if (tmp_result_file.exists()) {
-			// Finally copy the main file
-			status = copyFile(format, tmp_result_file,
-					  FileName(result_file), result_file,
-					  status == FORCE);
-			message(bformat(_("Document exported as %1$s "
-							       "to file `%2$s'"),
-						formats.prettyName(format),
-						makeDisplayPath(result_file)));
-		} else {
-			// This must be a dummy converter like fax (bug 1888)
-			message(bformat(_("Document exported as %1$s"),
-						formats.prettyName(format)));
-		}
+		return true;
+	}
+
+	result_file = changeExtension(absFileName(), ext);
+	// We need to copy referenced files (e. g. included graphics
+	// if format == "dvi") to the result dir.
+	vector<ExportedFile> const files =
+		runparams.exportdata->externalFiles(format);
+	string const dest = onlyPath(result_file);
+	CopyStatus status = SUCCESS;
+	for (vector<ExportedFile>::const_iterator it = files.begin();
+		it != files.end() && status != CANCEL; ++it) {
+		string const fmt = formats.getFormatFromFile(it->sourceName);
+		status = copyFile(fmt, it->sourceName,
+			makeAbsPath(it->exportName, dest),
+			it->exportName, status == FORCE);
+	}
+	if (status == CANCEL) {
+		message(_("Document export cancelled."));
+	} else if (tmp_result_file.exists()) {
+		// Finally copy the main file
+		status = copyFile(format, tmp_result_file,
+			FileName(result_file), result_file,
+			status == FORCE);
+		message(bformat(_("Document exported as %1$s "
+			"to file `%2$s'"),
+			formats.prettyName(format),
+			makeDisplayPath(result_file)));
+	} else {
+		// This must be a dummy converter like fax (bug 1888)
+		message(bformat(_("Document exported as %1$s"),
+			formats.prettyName(format)));
 	}
 
 	return true;
