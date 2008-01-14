@@ -529,7 +529,7 @@ void LyXAction::init()
 		{ LFUN_MARK_ON, "mark-on", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_MARK_TOGGLE
- * \li Action: Toggle between MARK_ON and MARK_OFF
+ * \li Action: Toggle between #LFUN_MARK_ON and #LFUN_MARK_OFF .
  * \li Syntax: mark-toggle
  * \li Origin: poenitz, May 5 2006
  */
@@ -969,8 +969,8 @@ void LyXAction::init()
  * \li Notion: The definitions are by default read from lib/commands/default.def .
                A .def file allows to define a command with \\define "<NAME>" "<LFUN>"
                where <NAME> is the name of the new command and <LFUN> is the lfun code
-               to be executed (see e.g. command-sequence LFUN).
-               \\def_file "FileName" allows to include another .def file.
+               to be executed (see e.g. #LFUN_COMMAND_SEQUENCE).
+               \\def_file "FileName" allows to include another .def file. \n
                This is particularly useful in connection with toolbar buttons:
                Since the name of the button image for this lfun is 
                lib/images/commands/<NAME>.png this is the way to assign an image
