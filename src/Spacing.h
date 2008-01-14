@@ -60,10 +60,12 @@ public:
 	void set(Spacing::Space sp, std::string const & val);
 	///
 	void writeFile(std::ostream &, bool para = false) const;
-	///
-	std::string const writeEnvirBegin() const;
-	///
-	std::string const writeEnvirEnd() const;
+	/// useSetSpace is true when using the variant supported by
+	/// the memoir class.
+	std::string const writeEnvirBegin(bool useSetSpace) const;
+	/// useSetSpace is true when using the variant supported by
+	/// the memoir class.
+	std::string const writeEnvirEnd(bool useSetSpace) const;
 
 private:
 	///

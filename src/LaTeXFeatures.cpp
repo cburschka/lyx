@@ -537,11 +537,13 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// setspace.sty
-	if ((params_.spacing().getSpace() != Spacing::Single
-	     && !params_.spacing().isDefault())
-	    || isRequired("setspace")) {
+	if ((isRequired("setspace") 
+	     || ((params_.spacing().getSpace() != Spacing::Single
+		  && !params_.spacing().isDefault())))
+	    && !tclass.provides("SetSpace")) {
 		packages << "\\usepackage{setspace}\n";
 	}
+	bool const upcase = tclass.provides("SetSpace");
 	switch (params_.spacing().getSpace()) {
 	case Spacing::Default:
 	case Spacing::Single:
@@ -549,13 +551,13 @@ string const LaTeXFeatures::getPackages() const
 		//packages += "\\singlespacing\n";
 		break;
 	case Spacing::Onehalf:
-		packages << "\\onehalfspacing\n";
+		packages << (upcase ? "\\OnehalfSpacing\n" : "\\onehalfspacing\n");
 		break;
 	case Spacing::Double:
-		packages << "\\doublespacing\n";
+		packages << (upcase ? "\\DoubleSpacing\n" : "\\doublespacing\n");
 		break;
 	case Spacing::Other:
-		packages << "\\setstretch{"
+		packages << (upcase ? "\\setSingleSpace{" : "\\setstretch{")
 			 << params_.spacing().getValue() << "}\n";
 		break;
 	}

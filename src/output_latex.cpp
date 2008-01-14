@@ -475,6 +475,7 @@ TeXOnePar(Buffer const & buf,
 
 	// In an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
+	bool const useSetSpace = bparams.getTextClass().provides("SetSpace");
 	if (!pit->forceDefaultParagraphs()) {
 		if (pit->params().startOfAppendix()) {
 			os << "\\appendix\n";
@@ -485,7 +486,7 @@ TeXOnePar(Buffer const & buf,
 			&& (pit == paragraphs.begin()
 			    || !boost::prior(pit)->hasSameLayout(*pit)))
 		{
-			os << from_ascii(pit->params().spacing().writeEnvirBegin())
+			os << from_ascii(pit->params().spacing().writeEnvirBegin(useSetSpace))
 			    << '\n';
 			texrow.newline();
 		}
@@ -595,7 +596,7 @@ TeXOnePar(Buffer const & buf,
 				os << '\n';
 				texrow.newline();
 			}
-			os << from_ascii(pit->params().spacing().writeEnvirEnd());
+			os << from_ascii(pit->params().spacing().writeEnvirEnd(useSetSpace));
 			pending_newline = true;
 		}
 	}
