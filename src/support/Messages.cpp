@@ -15,7 +15,6 @@
 #include "support/docstring.h"
 #include "support/environment.h"
 #include "support/Package.h"
-#include "support/unicode.h"
 
 #include <boost/assert.hpp>
 
