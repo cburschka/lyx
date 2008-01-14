@@ -2076,7 +2076,7 @@ void Buffer::writeParentMacros(odocstream & os) const
 		MacroData const * data = 
 		d->parent_buffer->getMacro(*it, *this, false);
 		if (data)
-			data->write(os, true);		
+			data->write(os, true);	
 	}
 }
 

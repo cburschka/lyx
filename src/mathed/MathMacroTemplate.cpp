@@ -970,13 +970,13 @@ void MathMacroTemplate::write(WriteStream & os) const
 }
 
 
-void MathMacroTemplate::write(WriteStream & os, bool /*overwriteRedefinition*/) const
+void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 {
 	// newcommand or renewcommand
 	if (os.latex() && optionals_ > 1)
 		os << "\\newlyxcommand";
 	else {
-		if (redefinition_)
+		if (redefinition_ && !overwriteRedefinition)
 			os << "\\renewcommand";
 		else
 			os << "\\newcommand";
