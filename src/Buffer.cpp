@@ -2271,33 +2271,35 @@ int AutoSaveBuffer::generateChild()
 	pid_t const pid = fork();
 	// If you want to debug the autosave
 	// you should set pid to -1, and comment out the fork.
-	if (pid == 0 || pid == -1) {
-		// pid = -1 signifies that lyx was unable
-		// to fork. But we will do the save
-		// anyway.
-		bool failed = false;
+	if (pid != 0 && pid != -1)
+		return pid;
 
-		FileName const tmp_ret = FileName::tempName("lyxauto");
-		if (!tmp_ret.empty()) {
-			buffer_.writeFile(tmp_ret);
-			// assume successful write of tmp_ret
-			if (!tmp_ret.moveTo(fname_))
-				failed = true;
-		} else
+	// pid = -1 signifies that lyx was unable
+	// to fork. But we will do the save
+	// anyway.
+	bool failed = false;
+	FileName const tmp_ret = FileName::tempName("lyxauto");
+	if (!tmp_ret.empty()) {
+		buffer_.writeFile(tmp_ret);
+		// assume successful write of tmp_ret
+		if (!tmp_ret.moveTo(fname_))
 			failed = true;
+	} else
+		failed = true;
 
-		if (failed) {
-			// failed to write/rename tmp_ret so try writing direct
-			if (!buffer_.writeFile(fname_)) {
-				// It is dangerous to do this in the child,
-				// but safe in the parent, so...
-				if (pid == -1) // emit message signal.
-					buffer_.message(_("Autosave failed!"));
-			}
+	if (failed) {
+		// failed to write/rename tmp_ret so try writing direct
+		if (!buffer_.writeFile(fname_)) {
+			// It is dangerous to do this in the child,
+			// but safe in the parent, so...
+			if (pid == -1) // emit message signal.
+				buffer_.message(_("Autosave failed!"));
 		}
-		if (pid == 0) // we are the child so...
-			_exit(0);
 	}
+
+	if (pid == 0) // we are the child so...
+		_exit(0);
+
 	return pid;
 }
 
