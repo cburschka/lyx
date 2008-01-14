@@ -53,7 +53,6 @@
 #include "support/lstrings.h"
 #include "support/Messages.h"
 #include "support/textutils.h"
-#include "support/unicode.h"
 
 #include <sstream>
 #include <vector>
@@ -1158,11 +1157,9 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			}
 			// this check is to amend a bug. LyX sometimes
 			// inserts '\0' this could cause problems.
-			if (c != '\0') {
-				vector<char> tmp = ucs4_to_utf8(c);
-				tmp.push_back('\0');
-				os << &tmp[0];
-			} else
+			if (c != '\0')
+				os << to_utf8(docstring(1, c));
+			else
 				lyxerr << "ERROR (Paragraph::writeFile):"
 					" NULL char in structure." << endl;
 			++column;
