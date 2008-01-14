@@ -521,7 +521,6 @@ char const * simplefeatures[] = {
 	"framed",
 	"soul",
 	"textcomp",
-	"xcolor",
 	"pmboxdraw",
 	"bbding",
 	"ifsym",
@@ -589,14 +588,16 @@ string const LaTeXFeatures::getPackages() const
 	    (params_.use_esint != BufferParams::package_off || !isRequired("esint")))
 		packages << "\\usepackage{wasysym}\n";
 
-	// color.sty
-	if (mustProvide("color")) {
+	// [x]color.sty
+	if (mustProvide("color") || mustProvide("xcolor")) {
+		string const package =
+			(mustProvide("xcolor") ? "xcolor" : "color");
 		if (params_.graphicsDriver == "default")
-			packages << "\\usepackage{color}\n";
+			packages << "\\usepackage{" << package << "}\n";
 		else
 			packages << "\\usepackage["
 				 << params_.graphicsDriver
-				 << "]{color}\n";
+				 << "]{" << package << "}\n";
 	}
 
 	// pdfcolmk must be loaded after color
