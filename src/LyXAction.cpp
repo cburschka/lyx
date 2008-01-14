@@ -838,6 +838,13 @@ void LyXAction::init()
 
 		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer, System },
 
+/**
+ * \var lyx::kb_action lyx::LFUN_CALL
+ * \li Action: Executes a command defined in a .def file.
+ * \li Syntax: call <CMDNAME>
+ * \li Params: <CMDNAME>: Name of the command that must be called.
+ * \li Origin: broider, 2 Oct 2007
+ */
 		{ LFUN_CALL, "call", NoBuffer, System },
 		{ LFUN_CANCEL, "cancel", NoBuffer, System },
 
