@@ -14,6 +14,7 @@
 
 #include <config.h>
 #include "GuiSelectionManager.h"
+#include "GuiDocument.h"
 
 #include "support/debug.h"
 
@@ -163,19 +164,6 @@ void GuiSelectionManager::selectedChanged(const QModelIndex & idx, const QModelI
 	
 	selectedHasFocus_ = true;
 	updateHook();
-}
-
-
-namespace {
-QModelIndex getSelectedIndex(QListView * lv)
-{
-	QModelIndex retval = QModelIndex();
-	QModelIndexList selIdx = 
-			lv->selectionModel()->selectedIndexes();
-	if (!selIdx.empty())
-		retval = selIdx.first();
-	return retval;
-}
 }
 
 

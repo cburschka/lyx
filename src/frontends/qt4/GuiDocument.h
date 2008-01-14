@@ -53,6 +53,9 @@ class GuiBranches;
 class PreambleModule;
 
 ///
+QModelIndex getSelectedIndex(QListView * lv);
+
+///
 typedef void const * BufferId;
 
 template<class UI>

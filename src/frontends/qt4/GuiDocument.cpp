@@ -59,6 +59,7 @@
 using namespace std;
 using namespace lyx::support;
 
+
 ///
 template<class Pair>
 vector<typename Pair::second_type> const
@@ -69,6 +70,7 @@ getSecond(vector<Pair> const & pr)
 					 boost::bind(&Pair::second, _1));
 	 return tmp;
 }
+
 
 char const * const tex_graphics[] =
 {
@@ -135,6 +137,19 @@ vector<pair<string, lyx::docstring> > pagestyles;
 namespace lyx {
 namespace frontend {
 
+
+/// 
+QModelIndex getSelectedIndex(QListView * lv)
+{
+	QModelIndex retval = QModelIndex();
+	QModelIndexList selIdx = 
+			lv->selectionModel()->selectedIndexes();
+	if (!selIdx.empty())
+		retval = selIdx.first();
+	return retval;
+}
+
+
 namespace {
 	vector<string> getRequiredList(string const & modName) 
 	{
@@ -195,19 +210,6 @@ GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
                     upPB, downPB, availableModel, selectedModel) 
 {}
 	
-	
-namespace {
-QModelIndex getSelectedIndex(QListView * lv)
-{
-	QModelIndex retval = QModelIndex();
-	QModelIndexList selIdx = 
-			lv->selectionModel()->selectedIndexes();
-	if (!selIdx.empty())
-		retval = selIdx.first();
-	return retval;
-}
-}
-
 
 void ModuleSelMan::updateAddPB() 
 {
