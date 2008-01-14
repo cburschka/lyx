@@ -221,13 +221,47 @@ void LyXAction::init()
 		{ LFUN_FLOAT_INSERT, "float-insert", Noop, Edit },
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
+/**
+ * \li Action: Inserts an hfill inset.
+ * \li Syntax: hfill-insert
+ */
 		{ LFUN_HFILL_INSERT, "hfill-insert", Noop, Edit },
+/**
+ * \li Action: Inserts an optional-argument (short title) inset.
+ * \li Syntax: optional-insert
+ */
 		{ LFUN_OPTIONAL_INSERT, "optional-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a horizontal line.
+ * \li Syntax: line-insert
+ */
 		{ LFUN_LINE_INSERT, "line-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a new page.
+ * \li Syntax: newpage-insert
+ */
 		{ LFUN_NEWPAGE_INSERT, "newpage-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a pagebreak.
+ * \li Syntax: pagebreak-insert
+ */
 		{ LFUN_PAGEBREAK_INSERT, "pagebreak-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a marginal note.
+ * \li Syntax: marginalnote-insert
+ */
 		{ LFUN_MARGINALNOTE_INSERT, "marginalnote-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a single unicode character.
+ * \li Syntax: unicode-insert <CHAR>
+ * \li Params: <CHAR>: The character to insert, given as its code
+                       point, in hexadecimal, e.g.: unicode-insert 0x0100.
+ */
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop, Edit },
+/**
+ * \li Action: Inserts a new listings inset.
+ * \li Syntax: listing-insert
+ */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
 		{ LFUN_QUOTE_INSERT, "quote-insert", Noop, Edit },
 		{ LFUN_INFO_INSERT, "info-insert", Noop, Edit },
