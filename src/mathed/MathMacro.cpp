@@ -19,6 +19,7 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
+#include "CoordCache.h"
 #include "Cursor.h"
 #include "support/debug.h"
 #include "LaTeXFeatures.h"
@@ -51,10 +52,13 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
-		mathMacro_.cell(idx_).metrics(mi, dim);
 		if (!mathMacro_.editMetrics(mi.base.bv) 
 		    && mathMacro_.cell(idx_).empty())
 			def_.metrics(mi, dim);
+		else {
+			CoordCache & coords = mi.base.bv->coordCache();
+			dim = coords.arrays().dim(&mathMacro_.cell(idx_));
+		}
 		mathMacro_.macro()->lock();
 	}
 	///
@@ -138,14 +142,6 @@ void MathMacro::cursorPos(BufferView const & bv,
 }
 
 
-int MathMacro::cursorIdx(Cursor const & cur) const {
-	for (size_t i = 0; i != cur.depth(); ++i)
-			if (&cur[i].inset() == this)
-				return cur[i].idx();
-	return -1;
-}
-
-
 bool MathMacro::editMode(BufferView const * bv) const {
 	// find this in cursor trace
 	Cursor const & cur = bv->cursor();
@@ -192,6 +188,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		BOOST_ASSERT(macro_ != 0);
 
+		// metrics are computed here for the cells,
+		// in the proxy we will then use the dim from the cache
+		InsetMathNest::metrics(mi);
+		
 		// calculate metrics finally
 		macro_->lock();
 		expanded_.cell(0).metrics(mi, dim);
@@ -240,13 +240,6 @@ void MathMacro::updateMacro(MacroContext const & mc)
 
 void MathMacro::updateRepresentation(Cursor const * bvCur)
 {
-	// index of child where the cursor is (or -1 if none is edited)
-	int curIdx = -1;
-	if (bvCur) {
-		curIdx = cursorIdx(*bvCur);
-		previousCurIdx_[&bvCur->bv()] = curIdx;
-	}
-
 	// known macro?
 	if (macro_ == 0)
 		return;
@@ -269,19 +262,16 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 		vector<MathData> values(nargs());
 		for (size_t i = 0; i < nargs(); ++i) {
 			ArgumentProxy * proxy;
-			if (!cell(i).empty() 
-			    || i >= defaults.size() 
-			    || defaults[i].empty() 
-			    || curIdx == (int)i)
-				proxy = new ArgumentProxy(*this, i);
-			else
+			if (i < defaults.size()) 
 				proxy = new ArgumentProxy(*this, i, defaults[i]);
+			else
+				proxy = new ArgumentProxy(*this, i);
 			values[i].insert(0, MathAtom(proxy));
 		}
 		
 		// expanding macro with the values
 		macro_->expand(values, expanded_.cell(0));
-	}		
+	}
 }
 
 
@@ -339,10 +329,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.rectangle(x, y - dim.asc, dim.wid, dim.height(), Color_mathmacroframe);
 	}
 
-	// another argument selected or edit mode changed?
-	idx_type curIdx = cursorIdx(pi.base.bv->cursor());
-	if (previousCurIdx_[pi.base.bv] != curIdx 
-	    || editing_[pi.base.bv] != editMode(pi.base.bv))
+	// edit mode changed?
+	if (editing_[pi.base.bv] != editMode(pi.base.bv))
 		pi.base.bv->cursor().updateFlags(Update::Force);
 }
 

@@ -146,8 +146,6 @@ protected:
 private:
 	///
 	virtual Inset * clone() const;
-	/// the index of the cursor slice of the macro, or -1 if it is not edited
-	int cursorIdx(Cursor const & cur) const;
 	///
 	bool editMode(BufferView const * bv) const;
 	
@@ -159,8 +157,6 @@ private:
 	InsetMathSqrt expanded_;
 	/// number of arguments that were really attached
 	size_t attachedArgsNum_;
-	/// cursor position during last draw
-	mutable std::map<BufferView const *, idx_type> previousCurIdx_;
 	/// optional argument attached? (only in DISPLAY_NORMAL mode)
 	size_t optionals_;
 	/// fold mode to be set in next metrics call?
