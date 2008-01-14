@@ -1341,6 +1341,7 @@ lib_images_files = Split('''
     banner.png
     bookmark-goto.png
     bookmark-save.png
+    box-insert.png
     break-line.png
     buffer-close.png
     buffer-export_dvi.png

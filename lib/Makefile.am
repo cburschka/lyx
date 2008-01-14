@@ -247,6 +247,7 @@ dist_images_DATA = \
 	images/banner.png \
 	images/bookmark-goto.png \
 	images/bookmark-save.png \
+	images/box-insert.png \
 	images/break-line.png \
 	images/buffer-close.png \
 	images/buffer-export_dvi.png \
