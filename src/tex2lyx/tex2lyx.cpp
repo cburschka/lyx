@@ -25,7 +25,6 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/unicode.h"
 
 #include <fstream>
 #include <iostream>
