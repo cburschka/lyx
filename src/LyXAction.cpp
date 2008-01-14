@@ -214,6 +214,13 @@ void LyXAction::init()
 		{ LFUN_WORD_UPCASE, "word-upcase", Noop, Edit },
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_THESAURUS_ENTRY
+ * \li Action: Look up thesaurus entries with respect to the word under the cursor.
+ * \li Syntax: thesaurus-entry
+ * \li Origin: Levon, 20 Jul 2001
+ */
+		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
 		{ LFUN_BUFFER_BEGIN, "buffer-begin", ReadOnly, Edit },
 		{ LFUN_BUFFER_BEGIN_SELECT, "buffer-begin-select", ReadOnly, Edit },
 		{ LFUN_BUFFER_END, "buffer-end", ReadOnly, Edit },
@@ -853,10 +860,23 @@ void LyXAction::init()
  */
 		{ LFUN_RECONFIGURE, "reconfigure", NoBuffer, System },
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
+/**
+ * \var lyx::kb_action lyx::LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR
+ * \li Action: Determine whether keep cursor inside the editing window regardless
+               the scrollbar movement.
+ * \li Syntax: toggle-cursor-follows-scrollbar
+ * \li Origin: ARRae, 2 Dec 1997
+ */
 		{ LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar", ReadOnly, System },
-
-		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, Edit },
-		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_SET_COLOR
+ * \li Action: Set the given LyX color to the color defined by the X11 name given.
+ * \li Notion: A new color entry is created if the color is unknown.
+               Color names can be stored as a part of user settings.
+ * \li Syntax: set-color <LYX_NAME> <X11_NAME>
+ * \li Origin: SLior, 11 Jun 2000
+ */
+		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, System },
 /**
  * \var lyx::kb_action lyx::LFUN_STATISTICS
  * \li Action: Count the statistics (number of words and characters)
