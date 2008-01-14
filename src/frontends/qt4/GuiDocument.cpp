@@ -174,7 +174,7 @@ namespace {
 		LyXModule const * const mod = moduleList[modName];
 		if (!mod)
 			return _("Module not found!");
-		return from_ascii(mod->getDescription());
+		return _(mod->getDescription());
 	}
 
 
@@ -1962,7 +1962,7 @@ void GuiDocument::updateAvailableModules()
 	int const mSize = modInfoList.size();
 	for (int i = 0; i < mSize; ++i) {
 		modInfoStruct const & modInfo = modInfoList[i];
-		available_model_.insertRow(i, modInfo.name, modInfo.id);
+		available_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
 }
 
@@ -1975,7 +1975,7 @@ void GuiDocument::updateSelectedModules()
 	int const sSize = selModList.size();
 	for (int i = 0; i < sSize; ++i) {
 		modInfoStruct const & modInfo = selModList[i];
-		selected_model_.insertRow(i, modInfo.name, modInfo.id);
+		selected_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
 }
 

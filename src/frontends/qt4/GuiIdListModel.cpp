@@ -84,7 +84,7 @@ bool GuiIdListModel::removeRows(int row, int count,
 }
 
 
-void GuiIdListModel::insertRow(int const i, std::string const & uiString, 
+void GuiIdListModel::insertRow(int const i, QString const & uiString, 
 		std::string const & idString)
 {
 	insertRows(i, 1);

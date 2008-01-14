@@ -66,8 +66,8 @@ public:
 	void setUIString(QModelIndex const & index, QString const & value)
 			{ setData(index, value); };
 	///
-	void setUIString(int const i, std::string const & value)
-			{  setUIString(index(i), toqstr(value));  };
+	void setUIString(int const i, QString const & value)
+			{  setUIString(index(i), value);  };
 	///
 	void setIDString(QModelIndex const & index, QString const & value)
 			{ setData(index, value, Qt::UserRole); };
@@ -81,12 +81,12 @@ public:
 	virtual std::string getIDString(int const i) const
 			{  return fromqstr(getIDString(index(i))); };
 	///
-	void insertRow(int const i, std::string const & uiString, 
+	void insertRow(int const i, QString const & uiString, 
 			std::string const & idString);
 	/* The following functions are currently unused but are retained here in
 	   case they should at some point be useful.
 	///
-	void setUIString(int const i, QString const & value)
+	void setUIString(int const i, std::string const & value)
 			{ setUIString(index(i), value); };
 	///
 	void setIDString(int const i, QString const & value)
@@ -96,6 +96,9 @@ public:
 	///
 	void insertRow(int const i, QString const & uiString, 
 			QString const & idString);
+	///
+	void insertRow(int const i, std::string const & uiString, 
+			std::string const & idString);
 	/// Returns whether the model contains an item with the given ID
 	bool containsID(QVariant const &) const;
 	*/

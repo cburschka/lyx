@@ -63,34 +63,77 @@ def ui_l10n(input_files, output, base):
     output.close()
 
 
+def writeString(outfile, infile, basefile, lineno, string):
+  string = string.replace('\\', '\\\\').replace('"', '')
+  if string == "":
+    return
+  print >> outfile, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+    (relativePath(infile, basefile), lineno, string)
+
 def layouts_l10n(input_files, output, base):
-    '''Generate pot file from lib/layouts/*.layout and *.inc'''
-    output = open(output, 'w')
-    Style = re.compile(r'^Style\s+(.*)')
-    # include ???LabelString???, but exclude comment lines
-    LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
-    GuiName = re.compile(r'\s*GuiName\s+(.*)')
-    ListName = re.compile(r'\s*ListName\s+(.*)')
-    for src in input_files:
-        input = open(src)
-        for lineno, line in enumerate(input.readlines()):
-            if Style.match(line):
-                (string,) = Style.match(line).groups()
-                string = string.replace('_', ' ')
-            elif LabelString.match(line):
-                (string,) = LabelString.match(line).groups()
-            elif GuiName.match(line):
-                (string,) = GuiName.match(line).groups()
-            elif ListName.match(line):
-                (string,) = ListName.match(line).groups()
-            else:
-                continue
-            string = string.replace('\\', '\\\\').replace('"', '')
-            if string != "":
-                print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                    (relativePath(src, base), lineno+1, string)
-        input.close()
-    output.close()
+  '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
+  out = open(output, 'w')
+  Style = re.compile(r'^Style\s+(.*)')
+  # include ???LabelString???, but exclude comment lines
+  LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
+  GuiName = re.compile(r'\s*GuiName\s+(.*)')
+  ListName = re.compile(r'\s*ListName\s+(.*)')
+  NameRE = re.compile(r'DeclareLyXModule.*{(.*)}')
+  DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
+  DescEnd   = re.compile(r'#+\s*DescriptionEnd\s*$')
+
+  for src in input_files:
+    readingDescription = False
+    descStartLine = -1
+    descLines = []
+    lineno = 0
+    for line in open(src).readlines():
+      lineno += 1
+      if readingDescription:
+        res = DescEnd.search(line)
+        if res != None:
+          readingDescription = False
+          desc = " ".join(descLines)
+          print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+            (relativePath(src, base), lineno + 1, desc)
+          continue
+        descLines.append(line[1:].strip())
+        continue
+      res = DescBegin.search(line)
+      if res != None:
+        readingDescription = True
+        descStartLine = lineno
+        continue
+      res = NameRE.search(line)
+      if res != None:
+        string = res.group(1)
+        string = string.replace('\\', '\\\\').replace('"', '')
+        if string != "":
+          print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+            (relativePath(src, base), lineno + 1, string)
+        continue
+      res = Style.search(line)
+      if res != None:
+        string = res.group(1)
+        string = string.replace('_', ' ')
+        writeString(out, src, base, lineno, string)
+        continue
+      res = LabelString.search(line)
+      if res != None:
+        string = res.group(1)
+        writeString(out, src, base, lineno, string)
+        continue
+      res = GuiName.search(line)
+      if res != None:
+        string = res.group(1)
+        writeString(out, src, base, lineno, string)
+        continue
+      res = ListName.search(line)
+      if res != None:
+        string = res.group(1)
+        writeString(out, src, base, lineno, string)
+        continue
+  out.close()
 
 
 def qt4_l10n(input_files, output, base):
@@ -227,7 +270,7 @@ if __name__ == '__main__':
             base = value
         elif opt in ['-t', '--type']:
             input_type = value
-    if input_type not in ['ui', 'layouts', 'qt4', 'languages', 'external'] or output is None:
+    if input_type not in ['ui', 'layouts', 'modules', 'qt4', 'languages', 'external'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
     if input_type == 'ui':
