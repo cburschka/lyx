@@ -846,6 +846,9 @@ void LyXAction::init()
                where Name is the name of the new command and lfun is the lfun code
                to be executed (see e.g. command-sequence LFUN).
                \\def_file "FileName" allows to include another .def file.
+               This is particularly useful in connection with toolbar buttons:
+               Since the name of the button is derived from <CMDNAME>, a button
+               cannot otherwise be assigned to a complex command-sequence.
  * \li Syntax: call <CMDNAME>
  * \li Params: <CMDNAME>: Name of the command that must be called.
                           <CMDNAME> can be consequently used in menu,
