@@ -24,7 +24,6 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/types.h"
-#include "support/unicode.h"
 
 #include <boost/noncopyable.hpp>
 
