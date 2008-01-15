@@ -224,9 +224,10 @@ void LyXAction::init()
 /**
  * \var lyx::kb_action lyx::LFUN_DATE_INSERT
  * \li Action: Inserts the current date
- * \li Syntax: date-insert <ARG>
- * \li Param: <ARG>: Strangely, this is inserted verbatim, no matter
-                     what it is.
+ * \li Syntax: date-insert [<ARG>]
+ * \li Param: <ARG>: Format of date. The default value (%x) can be set
+                     in Preferences->Date format. For possible formats
+                     see manual page of strftime function.
  * \li Origin: jdblair, 31 Jan 2000
  */
 		{ LFUN_DATE_INSERT, "date-insert", Noop, Edit },
