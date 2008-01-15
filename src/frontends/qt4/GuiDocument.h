@@ -100,6 +100,9 @@ private:
 };
 
 
+typedef void const * BufferId;
+
+
 class GuiDocument : public GuiDialog, public Ui::DocumentUi
 {
 	Q_OBJECT
@@ -175,6 +178,8 @@ private:
 	void applyView();
 	/// update
 	void updateContents();
+	/// force content update
+	void forceUpdate();
 	///
 	void updateAvailableModules();
 	///
@@ -187,6 +192,8 @@ private:
 	GuiIdListModel available_model_;
 	/// selected modules
 	GuiIdListModel selected_model_;
+	/// current buffer
+	BufferId current_id_;
 
 protected:
 	/// return false if validate_listings_params returns error
@@ -243,9 +250,6 @@ private:
 	/// List of names of available modules
 	std::vector<modInfoStruct> moduleNames_;
 };
-
-
-typedef void const * BufferId;
 
 
 class PreambleModule : public UiWidget<Ui::PreambleUi>

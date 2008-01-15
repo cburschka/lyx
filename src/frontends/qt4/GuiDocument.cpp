@@ -47,6 +47,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include "frontends/alert.h"
+
 #include <boost/bind.hpp>
 
 #include <QCloseEvent>
@@ -490,7 +492,7 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 GuiDocument::GuiDocument(GuiView & lv)
-	: GuiDialog(lv, "document")
+	: GuiDialog(lv, "document"), current_id_(0)
 {
 	setupUi(this);
 	setViewTitle(_("Document Settings"));
@@ -841,14 +843,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
-	connect(latexModule->classCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
 	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
 		this, SLOT(classChanged()));
+	connect(latexModule->classCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	
 	selectionManager = 
 		new ModuleSelMan(latexModule->availableLV, latexModule->selectedLV, 
@@ -1200,8 +1202,16 @@ void GuiDocument::classChanged()
 	textclass_type const tc = latexModule->classCO->currentIndex();
 	bp_.setBaseClass(tc);
 	if (lyxrc.auto_reset_options) {
+		if (applyPB->isEnabled()) {
+			int const ret = Alert::prompt(_("Unapplied changes"),
+					_("Some changes in the dialog were not yet applied."
+					"If you do not apply now, they will be lost after this action."),
+					1, 1, _("&Apply"), _("&Dismiss"));
+			if (ret == 0)
+				applyView();
+		}
 		bp_.useClassDefaults();
-		updateContents();
+		forceUpdate();
 	}
 }
 
@@ -1982,6 +1992,9 @@ void GuiDocument::updateSelectedModules()
 
 void GuiDocument::updateContents()
 {
+	if (id() == current_id_)
+		return;
+
 	updateAvailableModules();
 	updateSelectedModules();
 	
@@ -1990,13 +2003,32 @@ void GuiDocument::updateContents()
 	//selected, and that we don't have conflicts. If so, we could
 	//at least pop up a warning.
 	updateParams(bp_);
+	current_id_ = id();
 }
+
+
+void GuiDocument::forceUpdate()
+{
+	// reset to force dialog update
+	current_id_ = 0;
+	updateContents();
+}
+
 
 void GuiDocument::useClassDefaults()
 {
+	if (applyPB->isEnabled()) {
+		int const ret = Alert::prompt(_("Unapplied changes"),
+				_("Some changes in the dialog were not yet applied."
+				  "If you do not apply now, they will be lost after this action."),
+				1, 1, _("&Apply"), _("&Dismiss"));
+		if (ret == 0)
+			applyView();
+	}
+
 	bp_.setBaseClass(latexModule->classCO->currentIndex());
 	bp_.useClassDefaults();
-	updateContents();
+	forceUpdate();
 }
 
 
