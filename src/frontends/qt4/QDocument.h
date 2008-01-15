@@ -121,6 +121,8 @@ private:
 
 class ControlDocument;
 
+typedef void const * BufferId;
+
 class QDocument
 	: public QController<ControlDocument, QView<QDocumentDialog> >
 {
@@ -137,19 +139,20 @@ private:
 	void apply();
 	/// update
 	void update_contents();
+	/// force content update
+	void forceUpdate();
 	/// build the dialog
 	void build_dialog();
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
+	/// current buffer
+	BufferId current_id_;
 protected:
 	/// return false if validate_listings_params returns error
 	virtual bool isValid();
 };
-
-
-typedef void const * BufferId;
 
 
 class PreambleModule : public UiWidget<Ui::PreambleUi>

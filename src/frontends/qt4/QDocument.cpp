@@ -39,6 +39,8 @@
 #include "insets/InsetListingsParams.h"
 #include "controllers/ControlDocument.h"
 
+#include "frontends/alert.h"
+
 #include "support/lstrings.h"
 
 #include <QCloseEvent>
@@ -531,14 +533,14 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
-	connect(latexModule->classCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
 	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
 		this, SLOT(classChanged()));
+	connect(latexModule->classCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = qt_(tex_graphics_gui[n]);
@@ -834,10 +836,18 @@ void QDocumentDialog::classChanged()
 	textclass_type const tc = latexModule->classCO->currentIndex();
 
 	if (form_->controller().loadTextclass(tc)) {
+		if (applyPB->isEnabled()) {
+			int const ret = Alert::prompt(_("Unapplied changes"),
+					_("Some changes in the dialog were not yet applied."
+					  "If you do not apply now, they will be lost after this action."),
+					1, 1, _("&Apply"), _("&Dismiss"));
+			if (ret == 0)
+				form_->apply();
+		}
 		params.textclass = tc;
 		if (lyxrc.auto_reset_options)
 			params.useClassDefaults();
-		form_->update_contents();
+		form_->forceUpdate();
 	} else {
 		latexModule->classCO->setCurrentIndex(params.textclass);
 	}
@@ -1409,7 +1419,7 @@ typedef QController<ControlDocument, QView<QDocumentDialog> >
 
 
 QDocument::QDocument(Dialog & parent)
-	: DocumentBase(parent, _("Document Settings"))
+	: DocumentBase(parent, _("Document Settings")), current_id_(0)
 {}
 
 
@@ -1439,8 +1449,21 @@ void QDocument::update_contents()
 	if (!dialog_.get())
 		return;
 
+	if (controller().id() == current_id_)
+		return;
+
 	dialog_->updateParams(controller().params());
+	current_id_ = controller().id();
 }
+
+
+void QDocument::forceUpdate()
+{
+	// reset to force dialog update
+	current_id_ = 0;
+	update_contents();
+}
+
 
 void QDocument::saveDocDefault()
 {
@@ -1457,8 +1480,16 @@ void QDocument::useClassDefaults()
 	///\todo verify the use of below with lyx-devel:
 	params.textclass = dialog_->latexModule->classCO->currentIndex();
 
+	if (dialog_->applyPB->isEnabled()) {
+		int const ret = Alert::prompt(_("Unapplied changes"),
+				_("Some changes in the dialog were not yet applied."
+				  "If you do not apply now, they will be lost after this action."),
+				1, 1, _("&Apply"), _("&Dismiss"));
+		if (ret == 0)
+			apply();
+	}
 	params.useClassDefaults();
-	update_contents();
+	forceUpdate();
 }
 
 

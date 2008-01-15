@@ -93,6 +93,7 @@ What's new
 
 - Fix LaTeX code for line spacing when using the memoir class.
 
+
 * USER INTERFACE:
 
 - Fix a crash when changing the document encoding while View->Source
@@ -104,6 +105,9 @@ What's new
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
 - Fix update/drawing of char style insets.
+
+- Keep unapplied content of the document settings dialog after
+  clicking in the main window (bug 4302).
 
 - Fix access to network drives on Windows.
 
