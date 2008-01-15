@@ -218,6 +218,7 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_CAPTION_INSERT
  * \li Action: Inserts a caption inset.
  * \li Syntax: caption-insert
+ * \li Origin: Lgb, 18 Jul 2000
  */
 		{ LFUN_CAPTION_INSERT, "caption-insert", Noop, Edit },
 /**
@@ -226,18 +227,21 @@ void LyXAction::init()
  * \li Syntax: date-insert <ARG>
  * \li Param: <ARG>: Strangely, this is inserted verbatim, no matter
                      what it is.
+ * \li Origin: jdblair, 31 Jan 2000
  */
 		{ LFUN_DATE_INSERT, "date-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_FOOTNOTE_INSERT
  * \li Action: Inserts a footnote inset.
  * \li Syntax: footnote-insert
+ * \li Origin: Jug, 7 Mar 2000
  */
 		{ LFUN_FOOTNOTE_INSERT, "footnote-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ERT_INSERT
  * \li Action: Inserts an ERT inset.
  * \li Syntax: ert-insert
+ * \li Origin: Jug, 18 Feb 2000
  */
 		{ LFUN_ERT_INSERT, "ert-insert", Noop, Edit },
 		{ LFUN_FLOAT_INSERT, "float-insert", Noop, Edit },
@@ -253,30 +257,35 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_OPTIONAL_INSERT
  * \li Action: Inserts an optional-argument (short title) inset.
  * \li Syntax: optional-insert
+ * \li Origin: Martin, 12 Aug 2002
  */
 		{ LFUN_OPTIONAL_INSERT, "optional-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_LINE_INSERT
  * \li Action: Inserts a horizontal line.
  * \li Syntax: line-insert
+ * \li Origin: poenitz,  Oct 27 2003
  */
 		{ LFUN_LINE_INSERT, "line-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_NEWPAGE_INSERT
  * \li Action: Inserts a new page.
  * \li Syntax: newpage-insert
+ * \li Origin: uwestoehr, 24 Nov 2007
  */
 		{ LFUN_NEWPAGE_INSERT, "newpage-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_PAGEBREAK_INSERT
  * \li Action: Inserts a pagebreak.
  * \li Syntax: pagebreak-insert
+ * \li Origin: poenitz,  Oct 27 2003
  */
 		{ LFUN_PAGEBREAK_INSERT, "pagebreak-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_MARGINALNOTE_INSERT
  * \li Action: Inserts a marginal note.
  * \li Syntax: marginalnote-insert
+ * \li Origin: Lgb, 26 Jun 2000
  */
 		{ LFUN_MARGINALNOTE_INSERT, "marginalnote-insert", Noop, Edit },
 /**
@@ -285,12 +294,14 @@ void LyXAction::init()
  * \li Syntax: unicode-insert <CHAR>
  * \li Params: <CHAR>: The character to insert, given as its code
                        point, in hexadecimal, e.g.: unicode-insert 0x0100.
+ * \li Origin: Lgb, 22 Oct 2006
  */
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_LISTING_INSERT
  * \li Action: Inserts a new listings inset.
  * \li Syntax: listing-insert
+ * \li Origin: Herbert, 10 Nov 2001; bpeng, 2 May 2007
  */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
 		{ LFUN_QUOTE_INSERT, "quote-insert", Noop, Edit },
