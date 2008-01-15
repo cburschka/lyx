@@ -86,6 +86,7 @@ dist_esdoc_DATA = \
 	es/DocumentoTextoPostizo.txt \
 	es/EmbeddedObjects.lyx \
 	es/Extended.lyx \
+	es/FAQ.lyx \
 	es/Intro.lyx \
 	es/Tutorial.lyx \
 	es/UserGuide.lyx
