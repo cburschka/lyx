@@ -101,7 +101,7 @@ ToolbarSet
 		Item "Insert footnote" "footnote-insert"
 		Item "Insert margin note" "marginalnote-insert"
 		Item "Insert note" "note-insert"
-		Item "Insert box" "box-insert"
+		Item "Insert box" "box-insert Frameless"
 		Item "Insert URL" "url-insert"
 		Item "Insert TeX code" "ert-insert"
 		Item "Include file" "dialog-show-new-inset include"
