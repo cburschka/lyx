@@ -2319,6 +2319,7 @@ lib_doc_es_files = Split('''
     DocumentoTextoPostizo.txt
     EmbeddedObjects.lyx
     Extended.lyx
+    FAQ.lyx
     Intro.lyx
     Tutorial.lyx
     UserGuide.lyx
@@ -2557,6 +2558,7 @@ lib_examples_es_files = Split('''
     ItemizeBullets.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
+    mathed.lyx
     splash.lyx
 ''')
 
