@@ -58,9 +58,6 @@
  \cleardoublepage
  \pagenumbering{arabic}}
 
-% Formatierung von Legenden
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
-
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -33396,6 +33393,21 @@ X-Notiz
 
 \begin_layout Enumerate
 \begin_inset Graphics
+	filename ../../images/box-insert.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+: 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Box
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
 	filename ../../images/url-insert.xpm
 	scale 70
 	scaleBeforeRotation
@@ -34250,8 +34262,7 @@ Einfügen
 
 \begin_layout Subsection
 Mathe\SpecialChar \menuseparator
-Cases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
-lalign, gather und multline-Um\SpecialChar \-
+Cases/AMS align, alignat, flalign, gather und multline-Um\SpecialChar \-
 gebung
 \begin_inset OptArg
 status open
