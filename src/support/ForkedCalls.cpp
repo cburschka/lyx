@@ -108,6 +108,9 @@ ForkedProcess::ForkedProcess()
 {}
 
 
+bool ForkedProcess::IAmAChild = false;
+
+
 void ForkedProcess::emitSignal()
 {
 	if (signal_.get()) {
@@ -123,6 +126,10 @@ int ForkedProcess::run(Starttype type)
 	pid_ = generateChild();
 	if (pid_ <= 0) { // child or fork failed.
 		retval_ = 1;
+		if (pid_ == 0)
+			//we also do this in fork(), too, but maybe someone will try
+			//to bypass that
+			IAmAChild = true; 
 		return retval_;
 	}
 
@@ -181,6 +188,18 @@ void ForkedProcess::kill(int tol)
 		if (wait_for_death)
 			Murder::killItDead(tolerance, pid());
 	}
+}
+
+
+pid_t ForkedProcess::fork() {
+#if !defined (HAVE_FORK)
+	return -1;
+#else
+	pid_t pid = ::fork();
+	if (pid == 0)
+		IAmAChild = true;
+	return pid;
+#endif
 }
 
 

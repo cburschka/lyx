@@ -43,7 +43,7 @@ public:
 	///
 	virtual boost::shared_ptr<ForkedProcess> clone() const = 0;
 
-	/** A SignalType signal is can be emitted once the forked process
+	/** A SignalType signal can be emitted once the forked process
 	 *  has finished. It passes:
 	 *  the PID of the child and;
 	 *  the return value from the child.
@@ -97,11 +97,20 @@ public:
 	 */
 	void kill(int tolerance = 5);
 
+	/// Returns true if this is a child process
+	static bool iAmAChild() { return IAmAChild; }
+
 protected:
 	/** Spawn the child process.
 	 *  Returns returncode from child.
 	 */
 	int run(Starttype type);
+
+	/// implement our own version of fork()
+	/// it just returns -1 if ::fork() is not defined
+	/// otherwise, it forks and sets the global child-process
+	/// boolean IAmAChild
+	pid_t fork();
 
 	/// Callback function
 	SignalTypePtr signal_;
@@ -117,6 +126,9 @@ protected:
 private:
 	/// generate child in background
 	virtual int generateChild() = 0;
+
+	///
+	static bool IAmAChild;
 
 	/// Wait for child process to finish. Updates returncode from child.
 	int waitForChild();

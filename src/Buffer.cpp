@@ -2260,14 +2260,12 @@ private:
 };
 
 
-#if !defined (HAVE_FORK)
-# define fork() -1
-#endif
-
 int AutoSaveBuffer::generateChild()
 {
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
+	// Note that this calls ForkedCalls::fork(), so it's
+	// ok cross-platform.
 	pid_t const pid = fork();
 	// If you want to debug the autosave
 	// you should set pid to -1, and comment out the fork.

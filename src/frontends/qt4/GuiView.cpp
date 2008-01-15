@@ -54,6 +54,7 @@
 #include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -459,6 +460,9 @@ void GuiView::dropEvent(QDropEvent* event)
 
 void GuiView::message(docstring const & str)
 {
+	if (ForkedProcess::iAmAChild())
+		return;
+
 	statusBar()->showMessage(toqstr(str));
 	d.statusbar_timer_.stop();
 	d.statusbar_timer_.start(3000);
