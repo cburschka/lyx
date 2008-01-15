@@ -31,6 +31,14 @@ def relativePath(path, base):
     return path3
 
 
+def writeString(outfile, infile, basefile, lineno, string):
+    string = string.replace('\\', '\\\\').replace('"', '')
+    if string == "":
+        return
+    print >> outfile, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+        (relativePath(infile, basefile), lineno, string)
+
+
 def ui_l10n(input_files, output, base):
     '''Generate pot file from lib/ui/*'''
     output = open(output, 'w')
@@ -63,77 +71,70 @@ def ui_l10n(input_files, output, base):
     output.close()
 
 
-def writeString(outfile, infile, basefile, lineno, string):
-  string = string.replace('\\', '\\\\').replace('"', '')
-  if string == "":
-    return
-  print >> outfile, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-    (relativePath(infile, basefile), lineno, string)
-
 def layouts_l10n(input_files, output, base):
-  '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
-  out = open(output, 'w')
-  Style = re.compile(r'^Style\s+(.*)')
-  # include ???LabelString???, but exclude comment lines
-  LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
-  GuiName = re.compile(r'\s*GuiName\s+(.*)')
-  ListName = re.compile(r'\s*ListName\s+(.*)')
-  NameRE = re.compile(r'DeclareLyXModule.*{(.*)}')
-  DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
-  DescEnd   = re.compile(r'#+\s*DescriptionEnd\s*$')
+    '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
+    out = open(output, 'w')
+    Style = re.compile(r'^Style\s+(.*)')
+    # include ???LabelString???, but exclude comment lines
+    LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
+    GuiName = re.compile(r'\s*GuiName\s+(.*)')
+    ListName = re.compile(r'\s*ListName\s+(.*)')
+    NameRE = re.compile(r'DeclareLyXModule.*{(.*)}')
+    DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
+    DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
 
-  for src in input_files:
-    readingDescription = False
-    descStartLine = -1
-    descLines = []
-    lineno = 0
-    for line in open(src).readlines():
-      lineno += 1
-      if readingDescription:
-        res = DescEnd.search(line)
-        if res != None:
-          readingDescription = False
-          desc = " ".join(descLines)
-          print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-            (relativePath(src, base), lineno + 1, desc)
-          continue
-        descLines.append(line[1:].strip())
-        continue
-      res = DescBegin.search(line)
-      if res != None:
-        readingDescription = True
-        descStartLine = lineno
-        continue
-      res = NameRE.search(line)
-      if res != None:
-        string = res.group(1)
-        string = string.replace('\\', '\\\\').replace('"', '')
-        if string != "":
-          print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-            (relativePath(src, base), lineno + 1, string)
-        continue
-      res = Style.search(line)
-      if res != None:
-        string = res.group(1)
-        string = string.replace('_', ' ')
-        writeString(out, src, base, lineno, string)
-        continue
-      res = LabelString.search(line)
-      if res != None:
-        string = res.group(1)
-        writeString(out, src, base, lineno, string)
-        continue
-      res = GuiName.search(line)
-      if res != None:
-        string = res.group(1)
-        writeString(out, src, base, lineno, string)
-        continue
-      res = ListName.search(line)
-      if res != None:
-        string = res.group(1)
-        writeString(out, src, base, lineno, string)
-        continue
-  out.close()
+    for src in input_files:
+        readingDescription = False
+        descStartLine = -1
+        descLines = []
+        lineno = 0
+        for line in open(src).readlines():
+            lineno += 1
+            if readingDescription:
+                res = DescEnd.search(line)
+                if res != None:
+                    readingDescription = False
+                    desc = " ".join(descLines)
+                    print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                        (relativePath(src, base), lineno + 1, desc)
+                    continue
+                descLines.append(line[1:].strip())
+                continue
+            res = DescBegin.search(line)
+            if res != None:
+                readingDescription = True
+                descStartLine = lineno
+                continue
+            res = NameRE.search(line)
+            if res != None:
+                string = res.group(1)
+                string = string.replace('\\', '\\\\').replace('"', '')
+                if string != "":
+                    print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                        (relativePath(src, base), lineno + 1, string)
+                continue
+            res = Style.search(line)
+            if res != None:
+                string = res.group(1)
+                string = string.replace('_', ' ')
+                writeString(out, src, base, lineno, string)
+                continue
+            res = LabelString.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+            res = GuiName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+            res = ListName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+    out.close()
 
 
 def qt4_l10n(input_files, output, base):
