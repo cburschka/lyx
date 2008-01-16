@@ -449,14 +449,13 @@ void BufferView::updateScrollbar()
 	// Build temporary cursor.
 	Cursor cur(*this);
 	cur.push(buffer_.inset());
-	/*Inset * inset =*/ tm.editXY(cur, width_ / 4, 10);
+	/*Inset * inset =*/ tm.editXY(cur, 0, 10);
 	pit_type const first_visible_pit = cur.bottom().pit();
 	d->scrollbarParameters_.position = coordOffset(cur, cur.boundary()).y_;
-	// FIXME: The screen position (width_/4, 10) works reasonably well
-	// for most texts but in some cases the first visible cursor position is
-	// hard to find when the screen begins with a Label for example. So in the
-	// case where coordOffset() returns (0,0), we should try with another
-	// position and/or look at the returned Inset geometry.
+	d->scrollbarParameters_.position -=
+		tm.parMetrics(first_visible_pit).position();
+	// FIXME: The screen position (0, 10) works reasonably well for most texts
+	// but the top and bottom positions are still not quite correct.
 	LYXERR(Debug::SCROLLING, "first visible pit : " << first_visible_pit);
 	LYXERR(Debug::SCROLLING, "offset from top : "
 		<< d->scrollbarParameters_.position);
