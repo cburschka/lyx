@@ -452,10 +452,11 @@ void BufferView::updateScrollbar()
 	/*Inset * inset =*/ tm.editXY(cur, 0, 10);
 	pit_type const first_visible_pit = cur.bottom().pit();
 	d->scrollbarParameters_.position = coordOffset(cur, cur.boundary()).y_;
-	d->scrollbarParameters_.position -=
-		tm.parMetrics(first_visible_pit).position();
+	ParagraphMetrics const & visible_pm = tm.parMetrics(first_visible_pit);
+	d->scrollbarParameters_.position -= visible_pm.position();
+	d->scrollbarParameters_.position += visible_pm.ascent();
 	// FIXME: The screen position (0, 10) works reasonably well for most texts
-	// but the top and bottom positions are still not quite correct.
+	// but the bottom position is still not correct.
 	LYXERR(Debug::SCROLLING, "first visible pit : " << first_visible_pit);
 	LYXERR(Debug::SCROLLING, "offset from top : "
 		<< d->scrollbarParameters_.position);
