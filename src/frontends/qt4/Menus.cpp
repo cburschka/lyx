@@ -121,6 +121,12 @@ QMenu * Menus::menu(QString const & name)
 
 void Menus::macxMenuBarInit(GuiView * view)
 {
+	// The Mac menubar initialisation must be done only once!
+	static bool done = false;
+	if (done)
+		return;
+	done = true;
+
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
 	   work very well with our scheme of creating menus on demand,
