@@ -409,7 +409,6 @@ public:
 			this, SLOT(setIconSize(QSize)));
 		panel_ = new IconPalette(this);
 		panel_->setWindowTitle(qt_(to_ascii(tbitem_.label_)));
-		connect(bar_, SIGNAL(updated()), panel_, SLOT(updateParent()));
 		setCheckable(true);
 		connect(this, SIGNAL(clicked(bool)), panel_, SLOT(setVisible(bool)));
 		connect(panel_, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));

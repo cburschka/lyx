@@ -48,9 +48,6 @@ public:
 	IconPalette(QWidget * parent);
 	void addButton(QAction *);
 
-public Q_SLOTS:
-	void updateParent();
-
 Q_SIGNALS:
 	void triggered(QAction *);
 	void visible(bool);

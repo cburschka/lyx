@@ -111,6 +111,8 @@ void IconPalette::addButton(QAction * action)
 	QToolButton * tb = new QToolButton;
 	tb->setAutoRaise(true);
 	tb->setDefaultAction(action);
+	QToolButton * pb = qobject_cast<QToolButton *>(parentWidget());
+	tb->setIconSize(pb->iconSize());
 	// trigger tooltip (children of popups do not receive mousemove events)
 	tb->setMouseTracking(true);
 
@@ -201,27 +203,6 @@ void IconPalette::hideEvent(QHideEvent * event )
 		tornoff_ = false;
 		tearoffwidget_->setVisible(!tornoff_);
 	}
-}
-
-
-void IconPalette::updateParent()
-{
-	bool enable = false;
-	// FIXME: so this is commented out for speed considerations
-	// true fix is to repair the updating mechanism of the toolbar
-#if 0
-	for (int i = 0; i < actions_.size(); ++i)
-		if (actions_.at(i)->isEnabled()) {
-			enable = true;
-			break;
-		}
-#else
-	// we check only the first action to enable/disable the menu
-	if (!actions_.isEmpty())
-		enable = actions_.at(0)->isEnabled();
-#endif
-
-	parentWidget()->setEnabled(enable);
 }
 
 
