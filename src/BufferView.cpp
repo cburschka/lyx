@@ -437,31 +437,29 @@ void BufferView::updateScrollbar()
 	// values in [0..1] and divide everything by wh
 
 	// Look at paragraph heights on-screen
-	pit_type first_visible_pit = -1;
 	pair<pit_type, ParagraphMetrics const *> first = tm.first();
 	pair<pit_type, ParagraphMetrics const *> last = tm.last();
 	for (pit_type pit = first.first; pit <= last.first; ++pit) {
-		ParagraphMetrics const & pm = tm.parMetrics(pit);
-		d->par_height_[pit] = pm.height();
-		if (first_visible_pit >= 0 || pm.position() + pm.descent() <= 0)
-			continue;
-		first_visible_pit = pit;
-		LYXERR(Debug::SCROLLING, "first visible pit " << first_visible_pit);
-		// FIXME: we should look for the first visible row within
-		// the deepest inset!
-		int row_pos = pm.position();
-		size_t const nrows = pm.rows().size();
-		for (size_t i = 0; i != nrows; ++i) {
-			Row const & row = pm.rows()[i];
-			if (row_pos >= 0) {
-				LYXERR(Debug::SCROLLING, "first visible row " << i
-					<< "(row pos = " << row_pos << ");");
-				break;
-			}
-			row_pos += row.height();
-		}
-		d->scrollbarParameters_.position = row_pos;
+		d->par_height_[pit] = tm.parMetrics(pit).height();
+		LYXERR(Debug::SCROLLING, "storing height for pit " << pit << " : "
+			<< d->par_height_[pit]);
 	}
+
+
+	// Build temporary cursor.
+	Cursor cur(*this);
+	cur.push(buffer_.inset());
+	/*Inset * inset =*/ tm.editXY(cur, width_ / 4, 10);
+	pit_type const first_visible_pit = cur.bottom().pit();
+	d->scrollbarParameters_.position = coordOffset(cur, cur.boundary()).y_;
+	// FIXME: The screen position (width_/4, 10) works reasonably well
+	// for most texts but in some cases the first visible cursor position is
+	// hard to find when the screen begins with a Label for example. So in the
+	// case where coordOffset() returns (0,0), we should try with another
+	// position and/or look at the returned Inset geometry.
+	LYXERR(Debug::SCROLLING, "first visible pit : " << first_visible_pit);
+	LYXERR(Debug::SCROLLING, "offset from top : "
+		<< d->scrollbarParameters_.position);
 
 	d->scrollbarParameters_.height = 0;
 	for (size_t i = 0; i != d->par_height_.size(); ++i) {
