@@ -413,12 +413,17 @@ public:
 		setCheckable(true);
 		connect(this, SIGNAL(clicked(bool)), panel_, SLOT(setVisible(bool)));
 		connect(panel_, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
+		ToolbarInfo const * tbinfo = 
+			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+		if (tbinfo)
+			// use the icon of first action for the toolbar button
+			setIcon(getIcon(tbinfo->items.begin()->func_, true));
 	}
 
-	void showEvent(QShowEvent * e)
+	void mousePressEvent(QMouseEvent * e)
 	{
 		if (initialized_) {
-			QToolButton::showEvent(e);
+			QToolButton::mousePressEvent(e);
 			return;
 		}
 
@@ -432,15 +437,11 @@ public:
 		}
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
-		for (; it != end; ++it) {
-			if (!getStatus(it->func_).unknown()) {
+		for (; it != end; ++it)
+			if (!getStatus(it->func_).unknown())
 				panel_->addButton(bar_->addItem(*it));
-				// use the icon of first action for the toolbar button
-				if (it == tbinfo->items.begin())
-					setIcon(getIcon(it->func_, true));
-			}
-		}
-		QToolButton::showEvent(e);
+
+		QToolButton::mousePressEvent(e);
 	}
 };
 
