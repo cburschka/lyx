@@ -1604,7 +1604,9 @@ void GuiView::resetDialogs()
 {
 	// Make sure that no LFUN uses any LyXView.
 	theLyXFunc().setLyXView(0);
-	d.toolbars_->init();
+	// FIXME: the "math panels" toolbar takes an awful lot of time to
+	// initialise so we don't do that for the time being.
+	//d.toolbars_->init();
 	guiApp->menus().fillMenuBar(this);
 	if (d.layout_)
 		d.layout_->updateContents(true);
