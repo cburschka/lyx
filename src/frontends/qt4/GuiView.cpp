@@ -584,13 +584,16 @@ bool GuiView::event(QEvent * e)
 			// Nothing special to do.
 			return QMainWindow::event(e);
 
-		// Allow processing of shortcuts that are allowed even when no Buffer
-		// is viewed.
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		if (ke->modifiers() & Qt::AltModifier)
-			// Let Qt handle menu access.
+
+		// Let Qt handle menu access and the Tab keys to navigate keys to navigate
+		// between controls.
+		if (ke->modifiers() & Qt::AltModifier || ke->key() == Qt::Key_Tab 
+			|| ke->key() == Qt::Key_Backtab)
 			return QMainWindow::event(e);
 
+		// Allow processing of shortcuts that are allowed even when no Buffer
+		// is viewed.
 		theLyXFunc().setLyXView(this);
 		KeySymbol sym;
 		setKeySymbol(&sym, ke);
