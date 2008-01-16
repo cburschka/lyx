@@ -587,6 +587,10 @@ bool GuiView::event(QEvent * e)
 		// Allow processing of shortcuts that are allowed even when no Buffer
 		// is viewed.
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+		if (ke->modifiers() & Qt::AltModifier)
+			// Let Qt handle menu access.
+			return QMainWindow::event(e);
+
 		theLyXFunc().setLyXView(this);
 		KeySymbol sym;
 		setKeySymbol(&sym, ke);
