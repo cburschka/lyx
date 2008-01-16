@@ -104,98 +104,115 @@ void LyXAction::init()
 #endif
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_ACUTE
- * \li Action: adds an acute accent (á) to the next character typed
+ * \li Action: adds an acute accent \htmlonly (&aacute;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-acute
  */
 		{ LFUN_ACCENT_ACUTE, "accent-acute", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_BREVE
- * \li Action: adds a breve accent to the next character typed
+ * \li Action: adds a breve accent \htmlonly (&#259;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-breve
  */
 		{ LFUN_ACCENT_BREVE, "accent-breve", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CARON
- * \li Action: adds a caron to the next character typed
+ * \li Action: adds a caron \htmlonly (&#462;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-caron
  */
 		{ LFUN_ACCENT_CARON, "accent-caron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CEDILLA
- * \li Action: adds a cedilla (ç) to the next character typed
+ * \li Action: adds a cedilla \htmlonly (&ccedil;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-cedilla
  */
 		{ LFUN_ACCENT_CEDILLA, "accent-cedilla", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCLE
- * \li Action: adds a circle accent (Å) to the next character typed
+ * \li Action: adds a circle accent \htmlonly (&aring;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-circle
  */
 		{ LFUN_ACCENT_CIRCLE, "accent-circle", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCUMFLEX
- * \li Action: adds a circumflex (â) to the next character typed
+ * \li Action: adds a circumflex \htmlonly (&ecirc;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-circumflex
  */
 		{ LFUN_ACCENT_CIRCUMFLEX, "accent-circumflex", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_DOT
- * \li Action: adds a dot accent to the next character typed
+ * \li Action: adds a dot accent \htmlonly (&#380;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-dot
  */
 		{ LFUN_ACCENT_DOT, "accent-dot", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_GRAVE
- * \li Action: adds a grave accent (à) to the next character typed
+ * \li Action: adds a grave accent \htmlonly (&egrave;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-grave
  */
 		{ LFUN_ACCENT_GRAVE, "accent-grave", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_HUNGARIAN_UMLAUT
- * \li Action: adds a Hungarian umlaut to the next character typed
+ * \li Action: adds a Hungarian umlaut \htmlonly (&#337;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-grave
  */
 		{ LFUN_ACCENT_HUNGARIAN_UMLAUT, "accent-hungarian-umlaut", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_MACRON
- * \li Action: adds a macron to the next character typed
+ * \li Action: adds a macron \htmlonly (&#257;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-macron
  */
 		{ LFUN_ACCENT_MACRON, "accent-macron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_OGONEK
- * \li Action: adds an ogonek accent to the next character typed
+ * \li Action: adds an ogonek accent \htmlonly (&#261;)\endhtmlonly
+               to the next character typed
  * \li Syntax: accent-ogonek
  */
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
 		{ LFUN_ACCENT_SPECIAL_CARON, "accent-special-caron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_TIE
- * \li Action: adds a tie over the next two character typed
+ * \li Action: adds a tie \htmlonly (a&#865;)\endhtmlonly
+               over the next two character typed
+ * \li Notion: the following char will finish the tie.
  * \li Syntax: accent-tie
  */
 		{ LFUN_ACCENT_TIE, "accent-tie", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_TILDE
- * \li Action: adds a tilde (ñ) over the next character typed
+ * \li Action: adds a tilde \htmlonly (&atilde;)\endhtmlonly
+               over the next character typed
  * \li Syntax: accent-tilde
  */
 		{ LFUN_ACCENT_TILDE, "accent-tilde", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UMLAUT
- * \li Action: adds an umlaut (ö) over the next character typed
+ * \li Action: adds an umlaut \htmlonly (&auml;)\endhtmlonly
+               over the next character typed
  * \li Syntax: accent-umlaut
  */
 		{ LFUN_ACCENT_UMLAUT, "accent-umlaut", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERBAR
- * \li Action: adds a bar under the next character typed
+ * \li Action: adds a bar \htmlonly (a&#800;)\endhtmlonly
+               under the next character typed
  * \li Syntax: accent-underbar
  */
 		{ LFUN_ACCENT_UNDERBAR, "accent-underbar", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERDOT
- * \li Action: adds a dot under the next character typed
+ * \li Action: adds a dot \htmlonly (&#7841;)\endhtmlonly
+               under the next character typed
  * \li Syntax: accent-underdot
  */
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
