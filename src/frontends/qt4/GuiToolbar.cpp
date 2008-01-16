@@ -389,6 +389,62 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	return act;
 }
 
+namespace {
+
+class PaletteButton : public QToolButton
+{
+private:
+	GuiToolbar * bar_;
+	ToolbarItem const & tbitem_;
+	IconPalette * panel_;
+	bool initialized_;
+public:
+	PaletteButton(GuiToolbar * bar, ToolbarItem const & item)
+		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
+	{
+		setToolTip(qt_(to_ascii(tbitem_.label_)));
+		setStatusTip(qt_(to_ascii(tbitem_.label_)));
+		setText(qt_(to_ascii(tbitem_.label_)));
+		connect(bar_, SIGNAL(iconSizeChanged(QSize)),
+			this, SLOT(setIconSize(QSize)));
+		panel_ = new IconPalette(this);
+		panel_->setWindowTitle(qt_(to_ascii(tbitem_.label_)));
+		connect(bar_, SIGNAL(updated()), panel_, SLOT(updateParent()));
+		setCheckable(true);
+		connect(this, SIGNAL(clicked(bool)), panel_, SLOT(setVisible(bool)));
+		connect(panel_, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
+	}
+
+	void showEvent(QShowEvent * e)
+	{
+		if (initialized_) {
+			QToolButton::showEvent(e);
+			return;
+		}
+
+		initialized_ = true;
+
+		ToolbarInfo const * tbinfo = 
+			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+		if (!tbinfo) {
+			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
+			return;
+		}
+		ToolbarInfo::item_iterator it = tbinfo->items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo->items.end();
+		for (; it != end; ++it) {
+			if (!getStatus(it->func_).unknown()) {
+				panel_->addButton(bar_->addItem(*it));
+				// use the icon of first action for the toolbar button
+				if (it == tbinfo->items.begin())
+					setIcon(getIcon(it->func_, true));
+			}
+		}
+		QToolButton::showEvent(e);
+	}
+};
+
+}
 
 void GuiToolbar::add(ToolbarItem const & item)
 {
@@ -420,36 +476,10 @@ void GuiToolbar::add(ToolbarItem const & item)
 		addWidget(tb);
 		break;
 		}
-	case ToolbarItem::ICONPALETTE: {
-		QToolButton * tb = new QToolButton(this);
-		tb->setToolTip(qt_(to_ascii(item.label_)));
-		tb->setStatusTip(qt_(to_ascii(item.label_)));
-		tb->setText(qt_(to_ascii(item.label_)));
-		connect(this, SIGNAL(iconSizeChanged(QSize)),
-			tb, SLOT(setIconSize(QSize)));
-		IconPalette * panel = new IconPalette(tb);
-		panel->setWindowTitle(qt_(to_ascii(item.label_)));
-		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
-		ToolbarInfo const * tbinfo = toolbarbackend.getDefinedToolbarInfo(item.name_);
-		if (!tbinfo) {
-			lyxerr << "Unknown toolbar " << item.name_ << endl;
-			break;
-		}
-		ToolbarInfo::item_iterator it = tbinfo->items.begin();
-		ToolbarInfo::item_iterator const end = tbinfo->items.end();
-		for (; it != end; ++it)
-			if (!getStatus(it->func_).unknown()) {
-				panel->addButton(addItem(*it));
-				// use the icon of first action for the toolbar button
-				if (it == tbinfo->items.begin())
-					tb->setIcon(getIcon(it->func_, true));
-			}
-		tb->setCheckable(true);
-		connect(tb, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
-		connect(panel, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
-		addWidget(tb);
+	case ToolbarItem::ICONPALETTE:
+		addWidget(new PaletteButton(this, item));
 		break;
-		}
+
 	case ToolbarItem::POPUPMENU: {
 		QToolButton * tb = new QToolButton;
 		tb->setPopupMode(QToolButton::InstantPopup);

@@ -73,11 +73,12 @@ public:
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 
+	Action * addItem(ToolbarItem const & item);
+
 Q_SIGNALS:
 	void updated();
 
 private:
-	Action * addItem(ToolbarItem const & item);
 
 	QList<Action *> actions_;
 	GuiView & owner_;
