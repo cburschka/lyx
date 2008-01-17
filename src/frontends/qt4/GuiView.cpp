@@ -1269,9 +1269,9 @@ bool GuiView::saveBuffer(Buffer & b)
 			return false;
 		break;
 	case 1:
-		return false;
-	case 2:
 		break;
+	case 2:
+		return false;
 	}
 
 	return saveBuffer(b);
