@@ -444,6 +444,56 @@ public:
 	}
 };
 
+class MenuButton : public QToolButton
+{
+private:
+	GuiToolbar * bar_;
+	ToolbarItem const & tbitem_;
+	IconPalette * panel_;
+	bool initialized_;
+public:
+	MenuButton(GuiToolbar * bar, ToolbarItem const & item)
+		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
+	{
+		setPopupMode(QToolButton::InstantPopup);
+		setToolTip(qt_(to_ascii(tbitem_.label_)));
+		setStatusTip(qt_(to_ascii(tbitem_.label_)));
+		setText(qt_(to_ascii(tbitem_.label_)));
+		setIcon(QPixmap(":images/math/" + toqstr(tbitem_.name_) + ".png"));
+		connect(bar, SIGNAL(iconSizeChanged(QSize)),
+			this, SLOT(setIconSize(QSize)));
+	}
+
+	void mousePressEvent(QMouseEvent * e)
+	{
+		if (initialized_) {
+			QToolButton::mousePressEvent(e);
+			return;
+		}
+
+		initialized_ = true;
+
+		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(tbitem_.label_)), this);
+		m->setWindowTitle(qt_(to_ascii(tbitem_.label_)));
+		m->setTearOffEnabled(true);
+		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
+		ToolbarInfo const * tbinfo = 
+			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+		if (!tbinfo) {
+			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
+			return;
+		}
+		ToolbarInfo::item_iterator it = tbinfo->items.begin();
+		ToolbarInfo::item_iterator const end = tbinfo->items.end();
+		for (; it != end; ++it)
+			if (!getStatus(it->func_).unknown())
+				m->add(bar_->addItem(*it));
+		setMenu(m);
+
+		QToolButton::mousePressEvent(e);
+	}
+};
+
 }
 
 void GuiToolbar::add(ToolbarItem const & item)
@@ -481,31 +531,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		break;
 
 	case ToolbarItem::POPUPMENU: {
-		QToolButton * tb = new QToolButton;
-		tb->setPopupMode(QToolButton::InstantPopup);
-		tb->setToolTip(qt_(to_ascii(item.label_)));
-		tb->setStatusTip(qt_(to_ascii(item.label_)));
-		tb->setText(qt_(to_ascii(item.label_)));
-		tb->setIcon(QPixmap(":images/math/" + toqstr(item.name_) + ".png"));
-		connect(this, SIGNAL(iconSizeChanged(QSize)),
-			tb, SLOT(setIconSize(QSize)));
-
-		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(item.label_)), tb);
-		m->setWindowTitle(qt_(to_ascii(item.label_)));
-		m->setTearOffEnabled(true);
-		connect(this, SIGNAL(updated()), m, SLOT(updateParent()));
-		ToolbarInfo const * tbinfo = toolbarbackend.getDefinedToolbarInfo(item.name_);
-		if (!tbinfo) {
-			lyxerr << "Unknown toolbar " << item.name_ << endl;
-			break;
-		}
-		ToolbarInfo::item_iterator it = tbinfo->items.begin();
-		ToolbarInfo::item_iterator const end = tbinfo->items.end();
-		for (; it != end; ++it)
-			if (!getStatus(it->func_).unknown())
-				m->add(addItem(*it));
-		tb->setMenu(m);
-		addWidget(tb);
+		addWidget(new MenuButton(this, item));
 		break;
 		}
 	case ToolbarItem::COMMAND: {
