@@ -207,7 +207,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
 	setMouseTracking(true);
@@ -230,9 +229,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// Initialize the vertical Scroll Bar
 	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
 		this, SLOT(adjustViewWithScrollBar(int)));
-
-	// PageStep only depends on the viewport height.
-	verticalScrollBar()->setPageStep(viewport()->height());
 
 	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
 		<< "  viewport height: " << viewport()->height());
@@ -460,14 +456,15 @@ void GuiWorkArea::toggleCursor()
 
 void GuiWorkArea::updateScrollbar()
 {
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+
 	verticalScrollBar()->setTracking(false);
 
-	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 	verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	verticalScrollBar()->setPageStep(scroll_.page_step);
 	verticalScrollBar()->setSingleStep(scroll_.single_step);
 	verticalScrollBar()->setValue(scroll_.position);
-//	verticalScrollBar()->setSliderPosition(scroll_.position);
+	verticalScrollBar()->setSliderPosition(scroll_.position);
 
 	verticalScrollBar()->setTracking(true);
 }
@@ -481,7 +478,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 	else if (action == QAbstractSlider::SliderPageStepSub)
 		buffer_view_->scrollUp(viewport()->height());
 	else
-		buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
+		buffer_view_->scrollDocView(verticalScrollBar()->value());
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
@@ -755,7 +752,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
 	if (need_resize_) {
-		verticalScrollBar()->setPageStep(viewport()->height());
 		screen_ = QPixmap(viewport()->width(), viewport()->height());
 		resizeBufferView();
 		updateScreen();
