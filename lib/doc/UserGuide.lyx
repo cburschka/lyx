@@ -9264,52 +9264,12 @@ rève
 \begin_inset Quotes eld
 \end_inset
 
- e + 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-`{}
-\end_layout
-
-\end_inset
-
- 
+ e +\InsetSpace ~
+ ̀ 
 \begin_inset Quotes erd
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The LaTeX command 
-\series bold
-
-\backslash
-`
-\series default
- produces a grave.
- The two braces behind the command prevents the following quotation mark
- to be accented with the grave.
-\newline
-More about ERT and LaTeX-commands is described
- in section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sec:ERT"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
