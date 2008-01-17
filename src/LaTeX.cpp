@@ -641,6 +641,13 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= RERUN;
 				LYXERR(Debug::LATEX)
 					<< "We should rerun." << endl;
+			// package clefval needs 2 latex runs before bibtex
+			} else if (contains(token, "Value of")
+				   && contains(token, "on page")
+				   && contains(token, "undefined")) {
+				retval |= ERROR_RERUN;
+				LYXERR(Debug::LATEX)
+					<< "Force rerun." << endl;
 			} else if (contains(token, "Citation")
 				   && contains(token, "on page")
 				   && contains(token, "undefined")) {
