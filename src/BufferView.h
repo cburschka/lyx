@@ -52,19 +52,16 @@ enum CursorStatus {
 /// Scrollbar Parameters.
 struct ScrollbarParameters
 {
-	void reset(int h = 0, int p = 0, int l = 0)
-	{
-		height = h;
-		position = p;
-		lineScrollHeight = l;
-	}
-
-	/// Total document height in pixels.
-	int height;
+	/// Minimum scrollbar position in pixels.
+	int min;
+	/// Maximum scrollbar position in pixels.
+	int max;
 	/// Current position in the document in pixels.
 	int position;
 	/// Line-scroll amount in pixels.
-	int lineScrollHeight;
+	int single_step;
+	/// Page-scroll amount in pixels.
+	int page_step;
 };
 
 /// Screen view of a Buffer.

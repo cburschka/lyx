@@ -417,6 +417,11 @@ void BufferView::updateScrollbar()
 	if (height_ == 0)
 		return;
 
+	// We prefer fixed size line scrolling.
+	d->scrollbarParameters_.single_step = defaultRowHeight();
+	// We prefer full screen page scrolling.
+	d->scrollbarParameters_.page_step = height_;
+
 	Text & t = buffer_.text();
 	TextMetrics & tm = d->text_metrics_[&t];		
 
@@ -433,9 +438,6 @@ void BufferView::updateScrollbar()
 		d->par_height_.resize(parsize, defaultRowHeight() * 2);
 	}
 
-	// It would be better to fix the scrollbar to understand
-	// values in [0..1] and divide everything by wh
-
 	// Look at paragraph heights on-screen
 	pair<pit_type, ParagraphMetrics const *> first = tm.first();
 	pair<pit_type, ParagraphMetrics const *> last = tm.last();
@@ -445,31 +447,26 @@ void BufferView::updateScrollbar()
 			<< d->par_height_[pit]);
 	}
 
-
-	// Build temporary cursor.
-	Cursor cur(*this);
-	cur.push(buffer_.inset());
-	/*Inset * inset =*/ tm.editXY(cur, 0, 10);
-	pit_type const first_visible_pit = cur.bottom().pit();
-	d->scrollbarParameters_.position = coordOffset(cur, cur.boundary()).y_;
-	ParagraphMetrics const & visible_pm = tm.parMetrics(first_visible_pit);
-	d->scrollbarParameters_.position -= visible_pm.position();
-	d->scrollbarParameters_.position += visible_pm.ascent();
-	// FIXME: The screen position (0, 10) works reasonably well for most texts
-	// but the bottom position is still not correct.
-	LYXERR(Debug::SCROLLING, "first visible pit : " << first_visible_pit);
-	LYXERR(Debug::SCROLLING, "offset from top : "
-		<< d->scrollbarParameters_.position);
-
-	d->scrollbarParameters_.height = 0;
-	for (size_t i = 0; i != d->par_height_.size(); ++i) {
-		if (i == first_visible_pit)
-			d->scrollbarParameters_.position += d->scrollbarParameters_.height;
-		d->scrollbarParameters_.height += d->par_height_[i];
+	int top_pos = first.second->position() - first.second->ascent();
+	int bottom_pos = last.second->position() + last.second->descent();
+	bool first_visible = first.first == 0 && top_pos >= 0;
+	bool last_visible = last.first == parsize  - 1 && bottom_pos <= height_;
+	if (first_visible && last_visible) {
+		d->scrollbarParameters_.min = 0;
+		d->scrollbarParameters_.max = 0;
+		return;
 	}
 
-	// We prefer fixed size line scrolling.
-	d->scrollbarParameters_.lineScrollHeight = defaultRowHeight();
+	d->scrollbarParameters_.min = top_pos;
+	for (size_t i = 0; i != first.first; ++i)
+		d->scrollbarParameters_.min -= d->par_height_[i];
+	d->scrollbarParameters_.max = bottom_pos;
+	for (size_t i = last.first + 1; i != parsize; ++i)
+		d->scrollbarParameters_.max += d->par_height_[i];
+
+	d->scrollbarParameters_.position = 0;
+	// The reference is the top position so we remove one page.
+	d->scrollbarParameters_.max -= d->scrollbarParameters_.page_step;
 }
 
 
@@ -1427,8 +1424,8 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 {
 	string const scroll_type = cmd.getArg(0);
 	int const scroll_step = 
-		(scroll_type == "line")? d->scrollbarParameters_.lineScrollHeight
-		: (scroll_type == "page")? height_ : 0;
+		(scroll_type == "line")? d->scrollbarParameters_.single_step
+		: (scroll_type == "page")? d->scrollbarParameters_.page_step : 0;
 	if (scroll_step == 0)
 		return;
 	string const scroll_quantity = cmd.getArg(1);
