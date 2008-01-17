@@ -396,7 +396,6 @@ class PaletteButton : public QToolButton
 private:
 	GuiToolbar * bar_;
 	ToolbarItem const & tbitem_;
-	IconPalette * panel_;
 	bool initialized_;
 public:
 	PaletteButton(GuiToolbar * bar, ToolbarItem const & item)
@@ -408,11 +407,7 @@ public:
 		setText(label);
 		connect(bar_, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
-		panel_ = new IconPalette(this);
-		panel_->setWindowTitle(label);
 		setCheckable(true);
-		connect(this, SIGNAL(clicked(bool)), panel_, SLOT(setVisible(bool)));
-		connect(panel_, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
 		ToolbarInfo const * tbinfo = 
 			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
 		if (tbinfo)
@@ -435,11 +430,16 @@ public:
 			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
 			return;
 		}
+		IconPalette * panel = new IconPalette(this);
+		QString label = qt_(to_ascii(tbitem_.label_));
+		panel->setWindowTitle(label);
+		connect(this, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
+		connect(panel, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
 			if (!getStatus(it->func_).unknown())
-				panel_->addButton(bar_->addItem(*it));
+				panel->addButton(bar_->addItem(*it));
 
 		QToolButton::mousePressEvent(e);
 	}
@@ -450,7 +450,6 @@ class MenuButton : public QToolButton
 private:
 	GuiToolbar * bar_;
 	ToolbarItem const & tbitem_;
-	IconPalette * panel_;
 	bool initialized_;
 public:
 	MenuButton(GuiToolbar * bar, ToolbarItem const & item)
