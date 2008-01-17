@@ -402,13 +402,14 @@ public:
 	PaletteButton(GuiToolbar * bar, ToolbarItem const & item)
 		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 	{
-		setToolTip(qt_(to_ascii(tbitem_.label_)));
-		setStatusTip(qt_(to_ascii(tbitem_.label_)));
-		setText(qt_(to_ascii(tbitem_.label_)));
+		QString label = qt_(to_ascii(tbitem_.label_));
+		setToolTip(label);
+		setStatusTip(label);
+		setText(label);
 		connect(bar_, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
 		panel_ = new IconPalette(this);
-		panel_->setWindowTitle(qt_(to_ascii(tbitem_.label_)));
+		panel_->setWindowTitle(label);
 		setCheckable(true);
 		connect(this, SIGNAL(clicked(bool)), panel_, SLOT(setVisible(bool)));
 		connect(panel_, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
@@ -456,9 +457,10 @@ public:
 		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 	{
 		setPopupMode(QToolButton::InstantPopup);
-		setToolTip(qt_(to_ascii(tbitem_.label_)));
-		setStatusTip(qt_(to_ascii(tbitem_.label_)));
-		setText(qt_(to_ascii(tbitem_.label_)));
+		QString label = qt_(to_ascii(tbitem_.label_));
+		setToolTip(label);
+		setStatusTip(label);
+		setText(label);
 		setIcon(QPixmap(":images/math/" + toqstr(tbitem_.name_) + ".png"));
 		connect(bar, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
@@ -473,8 +475,9 @@ public:
 
 		initialized_ = true;
 
-		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(tbitem_.label_)), this);
-		m->setWindowTitle(qt_(to_ascii(tbitem_.label_)));
+		QString label = qt_(to_ascii(tbitem_.label_));
+		ButtonMenu * m = new ButtonMenu(label, this);
+		m->setWindowTitle(label);
 		m->setTearOffEnabled(true);
 		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const * tbinfo = 
@@ -496,6 +499,7 @@ public:
 
 }
 
+
 void GuiToolbar::add(ToolbarItem const & item)
 {
 	switch (item.type_) {
@@ -516,9 +520,10 @@ void GuiToolbar::add(ToolbarItem const & item)
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
 		tb->setIcon(getIcon(FuncRequest(LFUN_TABULAR_INSERT), true));
-		tb->setToolTip(qt_(to_ascii(item.label_)));
-		tb->setStatusTip(qt_(to_ascii(item.label_)));
-		tb->setText(qt_(to_ascii(item.label_)));
+		QString label = qt_(to_ascii(item.label_));
+		tb->setToolTip(label);
+		tb->setStatusTip(label);
+		tb->setText(label);
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
