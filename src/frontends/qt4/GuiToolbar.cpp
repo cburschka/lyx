@@ -401,7 +401,7 @@ public:
 	PaletteButton(GuiToolbar * bar, ToolbarItem const & item)
 		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 	{
-		QString label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label_));
 		setToolTip(label);
 		setStatusTip(label);
 		setText(label);
@@ -431,7 +431,7 @@ public:
 			return;
 		}
 		IconPalette * panel = new IconPalette(this);
-		QString label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label_));
 		panel->setWindowTitle(label);
 		connect(this, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
 		connect(panel, SIGNAL(visible(bool)), this, SLOT(setChecked(bool)));
@@ -456,7 +456,7 @@ public:
 		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 	{
 		setPopupMode(QToolButton::InstantPopup);
-		QString label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label_));
 		setToolTip(label);
 		setStatusTip(label);
 		setText(label);
@@ -474,7 +474,7 @@ public:
 
 		initialized_ = true;
 
-		QString label = qt_(to_ascii(tbitem_.label_));
+		QString const label = qt_(to_ascii(tbitem_.label_));
 		ButtonMenu * m = new ButtonMenu(label, this);
 		m->setWindowTitle(label);
 		m->setTearOffEnabled(true);
@@ -519,7 +519,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
 		tb->setIcon(getIcon(FuncRequest(LFUN_TABULAR_INSERT), true));
-		QString label = qt_(to_ascii(item.label_));
+		QString const label = qt_(to_ascii(item.label_));
 		tb->setToolTip(label);
 		tb->setStatusTip(label);
 		tb->setText(label);
