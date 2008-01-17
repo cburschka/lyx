@@ -187,7 +187,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 15.
+letzte Änderung: 17.
  Januar 2008
 \end_layout
 
@@ -11566,45 +11566,16 @@ rève
 \begin_inset Quotes grd
 \end_inset
 
- sucht und nicht nach
-\begin_inset Quotes grd
+ sucht und nicht nach 
+\begin_inset Quotes gld
 \end_inset
 
-e + 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-`{}
-\end_layout
-
-\end_inset
-
-
+ e +\InsetSpace ~
+ ̀ 
 \begin_inset Quotes grd
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Der LaTeX-Befehl 
-\family typewriter
-
-\backslash
-`
-\family default
- erzeugt den Akzent grave.
- Die Klammern danach verhindern, dass der Punkt einen Akzent grave bekommt.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -11647,7 +11618,9 @@ Roman
 \family sans
 Helvetica
 \family default
- -- skaliert auf 92-95% -- als serifenfreien Font und 
+ -- skaliert auf 92\InsetSpace \thinspace{}
+-\InsetSpace \thinspace{}
+95% -- als serifenfreien Font und 
 \family sans
 Courier
 \family default
