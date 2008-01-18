@@ -112,9 +112,6 @@ void EmbeddedFile::setEmbed(bool embed)
 
 void EmbeddedFile::enable(bool flag, Buffer const * buf)
 {
-	if (enabled() == flag)
-		return;
-	
 	if (flag) {
 		temp_path_ = buf->temppath();
 		if (!suffixIs(temp_path_, '/'))
@@ -123,7 +120,8 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf)
 			if (inzip_name_ != calcInzipName(buf->filePath()))
 				syncInzipFile(buf->filePath());
 			updateFromExternalFile();
-		}
+		} else
+			extract();
 	} else {
 		extract();
 		temp_path_ = "";
