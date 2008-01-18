@@ -514,7 +514,8 @@ bool GuiWorkArea::event(QEvent * e)
 		// which are otherwise reserved to focus switching between controls
 		// within a dialog.
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		if (ke->key() != Qt::Key_Tab && ke->key() != Qt::Key_Backtab)
+		if ((ke->key() != Qt::Key_Tab && ke->key() != Qt::Key_Backtab)
+			|| ke->modifiers() & Qt::ControlModifier)
 			return QAbstractScrollArea::event(e);
 		keyPressEvent(ke);
 		return true;
