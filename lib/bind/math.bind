@@ -135,8 +135,10 @@
 \bind "M-m ~S-equal"   "math-insert \neq"
 
 \bind "Escape"         "escape"
-\bind "C-Tab"          "cell-split"
 \bind "M-m space"      "math-space"
+# FIXME: find another shortcut for cell-split as C-Tab is used for buffer-next
+# in 'cua.bind'.
+#\bind "C-Tab"          "cell-split"
 
 # math-macros
 \bind "C-plus"         "math-macro-unfold"
