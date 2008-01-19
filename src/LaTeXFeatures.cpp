@@ -821,7 +821,7 @@ string const LaTeXFeatures::getMacros() const
 
 		macros.precision(prec);
 		
-		if (mustProvide("hyperref"))
+		if (isRequired("hyperref"))
 			macros << changetracking_xcolor_soul_hyperref_def;
 		else
 			macros << changetracking_xcolor_soul_def;
