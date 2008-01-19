@@ -277,7 +277,7 @@ void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
 
 	// Let the default one be at the beginning
 	int i = 1;
-	for (setCurrentIndex(i); currentText() < item;) {
+	for (setCurrentIndex(i); currentText().localeAwareCompare(item) < 0; ) {
 		// e.g. --Separator--
 		if (currentText()[0].category() != QChar::Letter_Uppercase)
 			break;
