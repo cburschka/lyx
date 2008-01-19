@@ -348,6 +348,7 @@ void GuiLayoutBox::selected(const QString & str)
 					       FuncRequest::TOOLBAR);
 			theLyXFunc().setLyXView(&owner_);
 			lyx::dispatch(func);
+			updateContents(false);
 			return;
 		}
 	}
