@@ -968,23 +968,26 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		int const chars_blanks = countChars(from, to, true);
 		docstring message;
 		if (cur.selection())
-			message = _("Statistics for the selection:\n");
+			message = _("Statistics for the selection:");
 		else
-			message = _("Statistics for the document:\n");
+			message = _("Statistics for the document:");
+		message += "\n\n";
 		if (words != 1)
-			message += bformat(_("\n%1$d words"), words);
+			message += bformat(_("%1$d words"), words);
 		else
-			message += _("\nOne word");
+			message += _("One word");
+		message += "\n";
 		if (chars_blanks != 1)
-			message += bformat(_("\n%1$d characters (including blanks)"),
+			message += bformat(_("%1$d characters (including blanks)"),
 					  chars_blanks);
 		else
-			message += _("\nOne character (including blanks)");
+			message += _("One character (including blanks)");
+		message += "\n";
 		if (chars != 1)
-			message += bformat(_("\n%1$d characters (excluding blanks)"),
+			message += bformat(_("%1$d characters (excluding blanks)"),
 					  chars);
 		else
-			message += _("\nOne character (excluding blanks)");
+			message += _("One character (excluding blanks)");
 
 		Alert::information(_("Statistics"), message);
 	}
