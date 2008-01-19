@@ -93,8 +93,7 @@ void GuiIdListModel::insertRow(int const i, QString const & uiString,
 }
 
 
-QMap<int, QVariant> 
-	GuiIdListModel::itemData(QModelIndex const & index ) const 
+QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index ) const
 {
 	int const row = index.row();
 	if (!rowIsValid(row))
@@ -104,10 +103,12 @@ QMap<int, QVariant>
 	return qm;
 }
 
-/* The following functions are currently unused but are retained here in
-   case they should at some point be useful.
+#if 0
+// The following functions are currently unused but are retained here in
+//   case they should at some point be useful.
    
-QStringList GuiIdListModel::getIDStringList() const {
+QStringList GuiIdListModel::getIDStringList() const
+{
 	QStringList qsl;
 	vector<OurData>::const_iterator it  = userData_.begin();
 	vector<OurData>::const_iterator end = userData_.end();
@@ -134,8 +135,8 @@ bool GuiIdListModel::containsID(QVariant const & q) const
 			return true;
 	return false;
 }
-*/
+#endif
 
-}
-}
+} // namespace frontend
+} // namespace lyx
 

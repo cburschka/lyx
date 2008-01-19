@@ -39,12 +39,14 @@ namespace frontend {
 class GuiIdListModel : public QAbstractListModel {
 public:
 	///
-	explicit GuiIdListModel() {};
+	GuiIdListModel() {}
 	//////////////////////////////////////////////////////////////////////
 	// Methods overridden from QAbstractListModel
 	//////////////////////////////////////////////////////////////////////
 	///
-	inline int rowCount(QModelIndex const & parent = QModelIndex()) const;
+	int rowCount(QModelIndex const & parent = QModelIndex()) const
+		{ return userData_.size(); }
+
 	///
 	virtual QVariant data(QModelIndex const & index, 
 	                      int role = Qt::DisplayRole) const;
@@ -53,7 +55,7 @@ public:
 	///
 	bool removeRows(int row, int count, QModelIndex const & parent = QModelIndex());
 	/// 
-	void clear() { removeRows(0, rowCount()); };
+	void clear() { removeRows(0, rowCount()); }
 	///
 	virtual bool setData (QModelIndex const & index, 
 			const QVariant & value, int role = Qt::EditRole );
@@ -64,22 +66,22 @@ public:
 	//////////////////////////////////////////////////////////////////////
 	///
 	void setUIString(QModelIndex const & index, QString const & value)
-			{ setData(index, value); };
+			{ setData(index, value); }
 	///
 	void setUIString(int const i, QString const & value)
-			{  setUIString(index(i), value);  };
+			{ setUIString(index(i), value); }
 	///
 	void setIDString(QModelIndex const & index, QString const & value)
-			{ setData(index, value, Qt::UserRole); };
+			{ setData(index, value, Qt::UserRole); }
 	///
 	void setIDString(int const i, std::string const & value)
-			{ setIDString(index(i), toqstr(value)); };
+			{ setIDString(index(i), toqstr(value)); }
 	///
 	virtual QString getIDString(QModelIndex const & index) const
-			{ return data(index, Qt::UserRole).toString(); };
+			{ return data(index, Qt::UserRole).toString(); }
 	///
 	virtual std::string getIDString(int const i) const
-			{  return fromqstr(getIDString(index(i))); };
+			{ return fromqstr(getIDString(index(i))); }
 	///
 	void insertRow(int const i, QString const & uiString, 
 			std::string const & idString);
@@ -87,10 +89,10 @@ public:
 	   case they should at some point be useful.
 	///
 	void setUIString(int const i, std::string const & value)
-			{ setUIString(index(i), value); };
+			{ setUIString(index(i), value); }
 	///
 	void setIDString(int const i, QString const & value)
-			{ setIDString(index(i), value); };
+			{ setIDString(index(i), value); }
 	///
 	QStringList getIDStringList() const;
 	///
@@ -105,6 +107,7 @@ public:
 private:
 	/// noncopyable
 	GuiIdListModel(GuiIdListModel const &);
+	void operator=(GuiIdListModel const &);
 	///
 	struct OurData {
 		QVariant uiString;
@@ -113,17 +116,12 @@ private:
 	///
 	std::vector<OurData> userData_;
 	///
-	inline bool rowIsValid(int const i) const
+	bool rowIsValid(int const i) const
 	{
 		return i >= 0 && i <= int(userData_.size());
 	}
-;
 };
 
-
-//definition is here to silence a warning
-inline int GuiIdListModel::rowCount(QModelIndex const &) const
-		{ return userData_.size(); }
 
 }
 }
