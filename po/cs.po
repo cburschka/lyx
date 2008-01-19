@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-01-19 12:04+0100\n"
+"POT-Creation-Date: 2008-01-18 23:45+0100\n"
 "PO-Revision-Date: 2007-12-03 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -239,21 +239,18 @@ msgid "St&yle"
 msgstr "St&yl"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:262
-#, fuzzy
 msgid "Move the selected database upwards in the list"
-msgstr "Smazat vybrané databáze"
+msgstr "Pøesuò vybranou databázi v seznamu nahoru"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:55
 msgid "&Up"
 msgstr "&Nahoru"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
-#, fuzzy
 msgid "Move the selected database downwards in the list"
-msgstr "Smazat vybrané databáze"
+msgstr "Pøesuò vybranou databázi v seznamu nahoru"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:275
-#, fuzzy
 msgid "Do&wn"
 msgstr "&Dolù"
 
@@ -8486,14 +8483,12 @@ msgid "Swap Columns|w"
 msgstr "Pøehodit sloupce|i"
 
 #: lib/ui/stdmenus.inc:184
-#, fuzzy
 msgid "Number whole Formula|N"
-msgstr "Oèíslovaný vzorec|l"
+msgstr "Pøepnout oèíslování celého vzorce|l"
 
 #: lib/ui/stdmenus.inc:185
-#, fuzzy
 msgid "Number this Line|u"
-msgstr "Pøepnout èíslování øádky|u"
+msgstr "Pøepnout èíslování této øádky|u"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Text Style|T"
@@ -8956,9 +8951,8 @@ msgid "Insert note"
 msgstr "Vlo¾it poznámku"
 
 #: lib/ui/stdtoolbars.inc:104
-#, fuzzy
 msgid "Insert box"
-msgstr "Vlo¾it poznámku"
+msgstr "Vlo¾it rámeèek"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Insert URL"
@@ -9126,7 +9120,7 @@ msgstr "Zásobník pøíkazù"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Review[[Toolbar]]"
-msgstr ""
+msgstr "Revize"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Track changes"
@@ -11595,9 +11589,8 @@ msgid "&Overwrite"
 msgstr "&Pøepsat"
 
 #: src/Buffer.cpp:941
-#, fuzzy
 msgid "Iconv software exception Detected"
-msgstr "Detekována softwarová vyjímka"
+msgstr "Iconv detekoval softwarovou vyjímku"
 
 #: src/Buffer.cpp:941
 #, c-format
@@ -11605,11 +11598,13 @@ msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
+"Zkontrolujte prosím, ¾e program pro podporu va¹eho kódování (%1$s)"
+"je správnì naistalován."
 
 #: src/Buffer.cpp:961
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr ""
+msgstr "Nepodaøilo se najít pøíkaz LaTeX-u pro znak '%1$s' (hodnota %2$s)"
 
 #: src/Buffer.cpp:964
 msgid ""
@@ -11622,14 +11617,12 @@ msgstr ""
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
 #: src/Buffer.cpp:971
-#, fuzzy
 msgid "iconv conversion failed"
-msgstr "Konverze se nezdaøila"
+msgstr "iconv konverze se nezdaøila"
 
 #: src/Buffer.cpp:976
-#, fuzzy
 msgid "conversion failed"
-msgstr "Konverze se nezdaøila"
+msgstr "konverze se nezdaøila"
 
 #: src/Buffer.cpp:1227
 msgid "Running chktex..."
@@ -11748,45 +11741,42 @@ msgstr "Znaèka nastavena"
 
 #: src/BufferView.cpp:971
 msgid "Statistics for the selection:"
-msgstr ""
+msgstr "Statistika výbìru:"
 
 #: src/BufferView.cpp:973
-#, fuzzy
 msgid "Statistics for the document:"
-msgstr "Pøepni na &dokument"
+msgstr "Statistika aktuálního dokumentu:"
 
 #: src/BufferView.cpp:976
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words"
-msgstr "%1$d slov zkontrolováno."
+msgstr "%1$d slov"
 
 #: src/BufferView.cpp:978
-#, fuzzy
 msgid "One word"
-msgstr "Keyword"
+msgstr "Jedno slovo"
 
 #: src/BufferView.cpp:981
 #, c-format
 msgid "%1$d characters (including blanks)"
-msgstr ""
+msgstr "%1$d znakù (vèetnì mezer)"
 
 #: src/BufferView.cpp:984
 msgid "One character (including blanks)"
-msgstr ""
+msgstr "Jeden znak (vèetnì mezer)"
 
 #: src/BufferView.cpp:987
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr ""
+msgstr "%1$d znakù (kromì mezer)"
 
 #: src/BufferView.cpp:990
 msgid "One character (excluding blanks)"
-msgstr ""
+msgstr "Jeden znak (kromì mezer)"
 
 #: src/BufferView.cpp:992
-#, fuzzy
 msgid "Statistics"
-msgstr "Status"
+msgstr "Statistika"
 
 #: src/BufferView.cpp:1602
 msgid "Select LyX document to insert"
@@ -13427,14 +13417,12 @@ msgstr ""
 "Pøepnuto na standardní."
 
 #: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
-#, fuzzy
 msgid "LyX Warning: "
-msgstr "Verze LyX-u "
+msgstr "Výstraha LyX-u: "
 
 #: src/Paragraph.cpp:2241
-#, fuzzy
 msgid "uncodable character"
-msgstr "speciální znak"
+msgstr "nekódovatelný znak"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -14871,19 +14859,20 @@ msgid "LaTeX Preamble"
 msgstr "Preambule LaTeXu"
 
 #: src/frontends/qt4/QDocument.cpp:840 src/frontends/qt4/QDocument.cpp:1484
-#, fuzzy
 msgid "Unapplied changes"
-msgstr "Sledovat revize"
+msgstr "Neuplatnìné zmìny"
 
 #: src/frontends/qt4/QDocument.cpp:841 src/frontends/qt4/QDocument.cpp:1485
 msgid ""
 "Some changes in the dialog were not yet applied.If you do not apply now, "
 "they will be lost after this action."
 msgstr ""
+"Nìkteré zmìny v dialogovém oknì nebyly zatím uplatnìny. Pokud tak neuèiníte "
+"nyní, budou ztraceny po této akci."
 
 #: src/frontends/qt4/QDocument.cpp:843 src/frontends/qt4/QDocument.cpp:1487
 msgid "&Dismiss"
-msgstr ""
+msgstr "&Odmítnout"
 
 #: src/frontends/qt4/QDocument.cpp:1422
 msgid "Document Settings"
