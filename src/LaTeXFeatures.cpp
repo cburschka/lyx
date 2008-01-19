@@ -173,6 +173,16 @@ static string const changetracking_dvipost_def =
 	"\\newcommand{\\lyxdeleted}[3]{%\n"
 	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n";
 
+static string const changetracking_xcolor_soul_def =
+	"%% Change tracking with soul\n"
+	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
+	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
+
+static string const changetracking_xcolor_soul_hyperref_def =
+	"%% Change tracking with soul\n"
+	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}}{}#3}}\n"
+	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\st{#3}}{}}}\n";
+
 static string const changetracking_none_def =
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
 	"\\newcommand{\\lyxdeleted}[3]{}\n";
@@ -810,9 +820,11 @@ string const LaTeXFeatures::getMacros() const
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
 		macros.precision(prec);
-
-		macros << "\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
-		       << "\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
+		
+		if (mustProvide("hyperref"))
+			macros << changetracking_xcolor_soul_hyperref_def;
+		else
+			macros << changetracking_xcolor_soul_def;
 	}
 
 	if (mustProvide("ct-none"))

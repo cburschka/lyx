@@ -30,7 +30,7 @@ public:
 	/// output to lyx header
 	void writeFile(std::ostream &) const;
 	/// output to tex header
-	void writeLaTeX(odocstream &, bool hyper_required) const;
+	void writeLaTeX(odocstream &) const;
 	/// read tokens from lyx header
 	std::string readToken(Lexer &lex, std::string const & token);
 	/// set implicit settings for hyperref

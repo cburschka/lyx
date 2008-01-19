@@ -884,6 +884,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 			features.require("pifont");
 		}
 	}
+
+	if (pdfoptions().use_hyperref)
+		features.require("hyperref");
 }
 
 
@@ -1243,10 +1246,18 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	//   before hyperref. Then hyperref has a chance to detect babel.
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
 	//   avoid errors with algorithm floats.
-	odocstringstream oss;
 	// use hyperref explicitely when it is required
-	pdfoptions().writeLaTeX(oss, features.isRequired("hyperref"));
-	lyxpreamble += oss.str();
+	/** FIXME: If the textclass provides hyperref, the GUI is
+	    non-functional. To fix this, we would need requires("hyperref")
+	    below, pass getTextClass().provides("hyperref") to
+	    pdfoptions().writeLaTeX(oss) and load the options via
+	    \hypersetup instead of tha package's optional argument.
+	**/
+	if (features.mustProvide("hyperref")) {
+		odocstringstream oss;
+		pdfoptions().writeLaTeX(oss);
+		lyxpreamble += oss.str();
+	}
 
 	// this might be useful...
 	lyxpreamble += "\n\\makeatletter\n";

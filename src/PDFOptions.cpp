@@ -50,6 +50,7 @@ bool PDFOptions::empty() const
 		&& pdfusetitle == x.pdfusetitle;
 }
 
+
 void PDFOptions::writeFile(ostream & os) const
 {
 	os << "\\use_hyperref " << convert<string>(use_hyperref) << '\n';
@@ -85,11 +86,9 @@ void PDFOptions::writeFile(ostream & os) const
 		os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
 }
 
-void PDFOptions::writeLaTeX(odocstream & os, bool hyper_required) const
+
+void PDFOptions::writeLaTeX(odocstream & os) const
 {
-	if (!use_hyperref && !hyper_required)
-		return;
-	
 	string opt;
 	
 	opt = "\\usepackage[";
@@ -199,6 +198,7 @@ string PDFOptions::quoted_options_get() const
 {
 	return quoted_options;
 }
+
 
 // set implicit settings for hyperref
 void PDFOptions::clear()
