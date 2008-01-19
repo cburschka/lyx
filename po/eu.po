@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-01-05 02:51+0100\n"
+"POT-Creation-Date: 2008-01-19 12:04+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -86,8 +86,8 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:822
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
 #: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2158
-#: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
-#: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
+#: src/LyXVC.cpp:175 src/buffer_funcs.cpp:102 src/buffer_funcs.cpp:129
+#: src/buffer_funcs.cpp:170 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -163,7 +163,7 @@ msgstr "&Gehitu"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:885 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:885 src/buffer_funcs.cpp:219 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -242,6 +242,25 @@ msgstr "BibTeX estiloa"
 msgid "St&yle"
 msgstr "Est&iloa"
 
+#: src/frontends/qt4/ui/BibtexUi.ui:262
+#, fuzzy
+msgid "Move the selected database upwards in the list"
+msgstr "Kendu hautatutako datu-basea"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:55
+msgid "&Up"
+msgstr "&Gora"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:272
+#, fuzzy
+msgid "Move the selected database downwards in the list"
+msgstr "Kendu hautatutako datu-basea"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:275
+#, fuzzy
+msgid "Do&wn"
+msgstr "&Behera"
+
 #: src/frontends/qt4/ui/BoxUi.ui:34 src/frontends/qt4/ui/BoxUi.ui:63
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "Barneko kutxa -- beharrezkoa zabalera eta lerro-jauziak finkatzeko"
@@ -251,7 +270,7 @@ msgstr "Barneko kutxa -- beharrezkoa zabalera eta lerro-jauziak finkatzeko"
 #: src/frontends/qt4/ui/TabularUi.ui:769
 #: src/frontends/controllers/ControlBox.cpp:79 src/frontends/qt4/QBox.cpp:100
 #: src/frontends/qt4/QBox.cpp:268 src/frontends/qt4/QBox.cpp:387
-#: src/frontends/qt4/QDocument.cpp:68
+#: src/frontends/qt4/QDocument.cpp:70
 msgid "None"
 msgstr "Bat ere ez"
 
@@ -388,6 +407,7 @@ msgstr "&Berrezarri"
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:86
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:88
 #: src/frontends/qt4/ui/VSpaceUi.ui:158 src/frontends/qt4/ui/WrapUi.ui:206
+#: src/frontends/qt4/QDocument.cpp:843 src/frontends/qt4/QDocument.cpp:1487
 msgid "&Apply"
 msgstr "&Aplikatu"
 
@@ -455,11 +475,11 @@ msgstr "Ta&maina:"
 #: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
 #: src/frontends/controllers/ControlExternal.cpp:234
 #: src/frontends/controllers/ControlGraphics.cpp:170
-#: src/frontends/qt4/QDocument.cpp:67 src/frontends/qt4/QDocument.cpp:77
-#: src/frontends/qt4/QDocument.cpp:88 src/frontends/qt4/QDocument.cpp:98
-#: src/frontends/qt4/QDocument.cpp:302 src/frontends/qt4/QDocument.cpp:339
-#: src/frontends/qt4/QDocument.cpp:351 src/frontends/qt4/QDocument.cpp:755
-#: src/frontends/qt4/QDocument.cpp:803 src/frontends/qt4/QListings.cpp:155
+#: src/frontends/qt4/QDocument.cpp:69 src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:90 src/frontends/qt4/QDocument.cpp:100
+#: src/frontends/qt4/QDocument.cpp:304 src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:353 src/frontends/qt4/QDocument.cpp:757
+#: src/frontends/qt4/QDocument.cpp:805 src/frontends/qt4/QListings.cpp:155
 #: src/frontends/qt4/QListings.cpp:162
 msgid "Default"
 msgstr "Lehenetsia"
@@ -584,7 +604,7 @@ msgstr "Letra-multzoak"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
-#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:585
+#: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
 #: src/frontends/qt4/QPrefs.cpp:1600
 msgid "Language"
 msgstr "Hizkuntza"
@@ -657,10 +677,6 @@ msgstr "Itxi"
 #: src/frontends/qt4/ui/CitationUi.ui:52
 msgid "Move the selected citation up"
 msgstr "Eraman hautatutako zitazioa gora"
-
-#: src/frontends/qt4/ui/CitationUi.ui:55
-msgid "&Up"
-msgstr "&Gora"
 
 #: src/frontends/qt4/ui/CitationUi.ui:73
 msgid "Move the selected citation down"
@@ -1808,7 +1824,7 @@ msgid "L&ine spacing:"
 msgstr "L&erro-tartea:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1856
-#: src/frontends/qt4/QDocument.cpp:245
+#: src/frontends/qt4/QDocument.cpp:247
 msgid "Single"
 msgstr "Bakuna"
 
@@ -1817,14 +1833,14 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1862
-#: src/frontends/qt4/QDocument.cpp:249
+#: src/frontends/qt4/QDocument.cpp:251
 msgid "Double"
 msgstr "Bikoitza"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:712 src/frontends/qt4/ui/TabularUi.ui:731
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
+#: src/frontends/qt4/QDocument.cpp:253 src/frontends/qt4/QDocument.cpp:354
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
@@ -2083,31 +2099,31 @@ msgstr "Paper-&tamaina lehenetsia:"
 msgid "Te&X encoding:"
 msgstr "Te&X kodeketa:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:353
+#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:355
 msgid "US letter"
 msgstr "US gutuna"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:354
+#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:356
 msgid "US legal"
 msgstr "US legala"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:355
+#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:357
 msgid "US executive"
 msgstr "US exekutiboa"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:356
+#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:358
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:357
+#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:359
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:358
+#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:360
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:361
+#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:363
 msgid "B5"
 msgstr "B5"
 
@@ -3210,15 +3226,15 @@ msgstr "Onartutako tarte-motak"
 msgid "DefSkip"
 msgstr "JauziLehenetsia"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:238
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/QDocument.cpp:240
 msgid "SmallSkip"
 msgstr "JauziTtipia"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:239
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/QDocument.cpp:241
 msgid "MedSkip"
 msgstr "JauziNormala"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:240
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/QDocument.cpp:242
 msgid "BigSkip"
 msgstr "JauziHandia"
 
@@ -3262,7 +3278,7 @@ msgstr "&Unitateak:"
 #: lib/layouts/g-brief2.layout:30 lib/layouts/hollywood.layout:360
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
-#: lib/layouts/manpage.layout:17 lib/layouts/memoir.layout:26
+#: lib/layouts/manpage.layout:17 lib/layouts/memoir.layout:29
 #: lib/layouts/moderncv.layout:16 lib/layouts/paper.layout:14
 #: lib/layouts/powerdot.layout:106 lib/layouts/revtex.layout:22
 #: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
@@ -3271,7 +3287,7 @@ msgstr "&Unitateak:"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:147
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:146
 msgid "Standard"
 msgstr "Estandarra"
 
@@ -3406,7 +3422,7 @@ msgstr "Definizioa #:"
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:98 lib/layouts/amsmaths-seq.inc:259
 #: lib/layouts/amsmaths.inc:303 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocument.cpp:489
+#: src/frontends/qt4/QDocument.cpp:491
 msgid "Example"
 msgstr "Adibidea"
 
@@ -3510,7 +3526,7 @@ msgstr "Kasua #:"
 #: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
-#: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:51
+#: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:54
 #: lib/layouts/moderncv.layout:29 lib/layouts/paper.layout:44
 #: lib/layouts/powerdot.layout:224 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
@@ -3532,7 +3548,7 @@ msgstr "Atala"
 #: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
 #: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
 #: lib/layouts/llncs.layout:52 lib/layouts/ltugboat.layout:65
-#: lib/layouts/memoir.layout:56 lib/layouts/moderncv.layout:49
+#: lib/layouts/memoir.layout:59 lib/layouts/moderncv.layout:49
 #: lib/layouts/paper.layout:53 lib/layouts/revtex.layout:49
 #: lib/layouts/revtex4.layout:55 lib/layouts/siamltex.layout:59
 #: lib/layouts/simplecv.layout:48 lib/layouts/agu_stdsections.inc:40
@@ -3550,7 +3566,7 @@ msgstr "Azpiatala"
 #: lib/layouts/amsbook.layout:64 lib/layouts/ijmpc.layout:124
 #: lib/layouts/ijmpd.layout:120 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
-#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:61
+#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:64
 #: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
 #: lib/layouts/revtex4.layout:63 lib/layouts/siamltex.layout:65
 #: lib/layouts/agu_stdsections.inc:50 lib/layouts/db_stdsections.inc:44
@@ -3632,8 +3648,8 @@ msgstr "Indize-sarrera --"
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
 #: lib/layouts/foils.layout:216 lib/layouts/ijmpc.layout:358
 #: lib/layouts/ijmpd.layout:369 lib/layouts/latex8.layout:118
-#: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:138
-#: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:145
+#: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:141
+#: lib/layouts/memoir.layout:143 lib/layouts/moderncv.layout:145
 #: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
 #: lib/layouts/powerdot.layout:292 lib/layouts/report.layout:12
@@ -3643,7 +3659,7 @@ msgstr "Indize-sarrera --"
 #: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:228
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:589
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -3838,14 +3854,14 @@ msgid "Email"
 msgstr "Helb. el."
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.inc:110 src/frontends/qt4/QThesaurus.cpp:148
+#: lib/ui/stdtoolbars.inc:111 src/frontends/qt4/QThesaurus.cpp:148
 msgid "Thesaurus"
 msgstr "Sinonimoak"
 
 #: lib/layouts/aastex.layout:73 lib/layouts/amsbook.layout:92
 #: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
 #: lib/layouts/llncs.layout:68 lib/layouts/ltugboat.layout:105
-#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:71
+#: lib/layouts/memoir.layout:69 lib/layouts/paper.layout:71
 #: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:71
 #: lib/layouts/siamltex.layout:71 lib/layouts/agu_stdsections.inc:60
 #: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
@@ -4087,7 +4103,7 @@ msgid "Seriate"
 msgstr "Seriea"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.cpp:568
+#: src/buffer_funcs.cpp:596
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -4376,7 +4392,7 @@ msgid "Note:"
 msgstr "Ohar"
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/powerdot.layout:378
-#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
+#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:114
 msgid "Table"
 msgstr "Taula"
 
@@ -4654,7 +4670,7 @@ msgid "Datum:"
 msgstr "Data:"
 
 #: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
-#: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
+#: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:74
 #: lib/layouts/paper.layout:80 lib/layouts/agu_stdsections.inc:70
 #: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:57
 #: lib/layouts/scrclass.inc:89 lib/layouts/stdsections.inc:105
@@ -5900,7 +5916,7 @@ msgstr "@Section@.\\arabic{claim}. aldarrikapena."
 msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "@Section@.\\arabic{conjecture}. aierua."
 
-#: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
+#: lib/layouts/iopart.layout:73
 #, fuzzy
 msgid "Review"
 msgstr "berraztertu"
@@ -6009,7 +6025,7 @@ msgstr "Egile arrunta:"
 msgid "E-mail:"
 msgstr "Helb.El.:"
 
-#: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
+#: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:49
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
 #: lib/layouts/db_stdsections.inc:20 lib/layouts/numarticle.inc:14
 #: lib/layouts/numreport.inc:12 lib/layouts/scrclass.inc:53
@@ -6106,23 +6122,23 @@ msgstr "Kodea"
 msgid "SGML"
 msgstr "SGML"
 
-#: lib/layouts/memoir.layout:76
+#: lib/layouts/memoir.layout:79
 msgid "Chapterprecis"
 msgstr "KapituluZehaztua"
 
-#: lib/layouts/memoir.layout:97
+#: lib/layouts/memoir.layout:100
 msgid "Epigraph"
 msgstr "Epigrafea"
 
-#: lib/layouts/memoir.layout:109
+#: lib/layouts/memoir.layout:112
 msgid "Poemtitle"
 msgstr "Olerki-titulua"
 
-#: lib/layouts/memoir.layout:127
+#: lib/layouts/memoir.layout:130
 msgid "Poemtitle*"
 msgstr "Olerki-titulua*"
 
-#: lib/layouts/memoir.layout:151
+#: lib/layouts/memoir.layout:154
 msgid "Legend"
 msgstr "Legenda"
 
@@ -7478,7 +7494,7 @@ msgstr "Alemana"
 msgid "German (new spelling)"
 msgstr "Alemaniera (hizkera berria)"
 
-#: lib/languages:38 lib/ui/stdtoolbars.inc:438
+#: lib/languages:38 lib/ui/stdtoolbars.inc:439
 msgid "Greek"
 msgstr "Grekoa"
 
@@ -7860,11 +7876,11 @@ msgstr "Erdian|Erdian"
 msgid "Bottom|B"
 msgstr "Behean|B"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:159
 msgid "Toggle Numbering|N"
 msgstr "Txandakatu zenbakera|n"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:160
 msgid "Toggle Numbering of Line|u"
 msgstr "Txandakatu lerro-zenbakera|b"
 
@@ -8658,6 +8674,16 @@ msgstr "Kopiatu zutabea"
 msgid "Swap Columns|w"
 msgstr "Trukatu zutabeak"
 
+#: lib/ui/stdmenus.inc:184
+#, fuzzy
+msgid "Number whole Formula|N"
+msgstr "Zenbatutako formula|Z"
+
+#: lib/ui/stdmenus.inc:185
+#, fuzzy
+msgid "Number this Line|u"
+msgstr "Txandakatu lerro-zenbakera|b"
+
 #: lib/ui/stdmenus.inc:190
 msgid "Text Style|T"
 msgstr "Testu-estiloa|T"
@@ -8941,7 +8967,7 @@ msgstr "Matematika mugatzailea"
 msgid "Matrix|x"
 msgstr "Matematika matrizea"
 
-#: lib/ui/stdmenus.inc:369 lib/ui/stdtoolbars.inc:163
+#: lib/ui/stdmenus.inc:369 lib/ui/stdtoolbars.inc:164
 #, fuzzy
 msgid "Toggle Math Panels"
 msgstr "Matematikako panela"
@@ -9164,1590 +9190,1594 @@ msgstr "Txertatu oin-oharra"
 msgid "Insert margin note"
 msgstr "Txertatu albo-oharra"
 
-#: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:182
+#: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:183
 msgid "Insert note"
 msgstr "Txertatu oharra"
 
 #: lib/ui/stdtoolbars.inc:104
+#, fuzzy
+msgid "Insert box"
+msgstr "Txertatu oharra"
+
+#: lib/ui/stdtoolbars.inc:105
 msgid "Insert URL"
 msgstr "Txertatu URLa"
 
-#: lib/ui/stdtoolbars.inc:105
+#: lib/ui/stdtoolbars.inc:106
 #, fuzzy
 msgid "Insert TeX code"
 msgstr "Txertatu TeX kodea"
 
-#: lib/ui/stdtoolbars.inc:106
+#: lib/ui/stdtoolbars.inc:107
 msgid "Include file"
 msgstr "Txertatu fitxategia"
 
-#: lib/ui/stdtoolbars.inc:108
+#: lib/ui/stdtoolbars.inc:109
 msgid "Text style"
 msgstr "TeX estiloa"
 
-#: lib/ui/stdtoolbars.inc:109
+#: lib/ui/stdtoolbars.inc:110
 msgid "Paragraph settings"
 msgstr "Paragrafo-ezarpenak"
 
-#: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
+#: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
 msgid "Add row"
 msgstr "Gehitu errenkada"
 
-#: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
+#: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
 msgid "Add column"
 msgstr "Gehitu zutabea"
 
-#: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
+#: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
+#: lib/ui/stdtoolbars.inc:118 lib/ui/stdtoolbars.inc:162
 msgid "Delete column"
 msgstr "Ezabatu zutabea"
 
-#: lib/ui/stdtoolbars.inc:119
+#: lib/ui/stdtoolbars.inc:120
 msgid "Set top line"
 msgstr "Ezarri goiko ertza"
 
-#: lib/ui/stdtoolbars.inc:120
+#: lib/ui/stdtoolbars.inc:121
 msgid "Set bottom line"
 msgstr "Ezarri beheko ertza"
 
-#: lib/ui/stdtoolbars.inc:121
+#: lib/ui/stdtoolbars.inc:122
 msgid "Set left line"
 msgstr "Ezarri ezkerreko ertza"
 
-#: lib/ui/stdtoolbars.inc:122
+#: lib/ui/stdtoolbars.inc:123
 msgid "Set right line"
 msgstr "Ezarri eskuineko ertza"
 
-#: lib/ui/stdtoolbars.inc:123
+#: lib/ui/stdtoolbars.inc:124
 msgid "Set all lines"
 msgstr "Ezarri ertz guztiak"
 
-#: lib/ui/stdtoolbars.inc:124
+#: lib/ui/stdtoolbars.inc:125
 msgid "Unset all lines"
 msgstr "Kendu ertz guztiak"
 
-#: lib/ui/stdtoolbars.inc:126
+#: lib/ui/stdtoolbars.inc:127
 msgid "Align left"
 msgstr "Lerrokatu ezkerrean"
 
-#: lib/ui/stdtoolbars.inc:127
+#: lib/ui/stdtoolbars.inc:128
 msgid "Align center"
 msgstr "Lerrokatu erdian"
 
-#: lib/ui/stdtoolbars.inc:128
+#: lib/ui/stdtoolbars.inc:129
 msgid "Align right"
 msgstr "Lerrokatu eskuinean"
 
-#: lib/ui/stdtoolbars.inc:130
+#: lib/ui/stdtoolbars.inc:131
 msgid "Align top"
 msgstr "Lerrokatu goian"
 
-#: lib/ui/stdtoolbars.inc:131
+#: lib/ui/stdtoolbars.inc:132
 msgid "Align middle"
 msgstr "Lerrokatu erdian"
 
-#: lib/ui/stdtoolbars.inc:132
+#: lib/ui/stdtoolbars.inc:133
 msgid "Align bottom"
 msgstr "Lerrokatu behean"
 
-#: lib/ui/stdtoolbars.inc:134
+#: lib/ui/stdtoolbars.inc:135
 msgid "Rotate cell"
 msgstr "Biratu gelaxka"
 
-#: lib/ui/stdtoolbars.inc:135
+#: lib/ui/stdtoolbars.inc:136
 msgid "Rotate table"
 msgstr "Biratu taula"
 
-#: lib/ui/stdtoolbars.inc:136
+#: lib/ui/stdtoolbars.inc:137
 msgid "Set multi-column"
 msgstr "Ezarri zutabe anitza"
 
-#: lib/ui/stdtoolbars.inc:139
+#: lib/ui/stdtoolbars.inc:140
 #, fuzzy
 msgid "Math"
 msgstr "Matematikak"
 
-#: lib/ui/stdtoolbars.inc:140
+#: lib/ui/stdtoolbars.inc:141
 msgid "Set display mode"
 msgstr "Ezarri adierazpen era"
 
-#: lib/ui/stdtoolbars.inc:142
+#: lib/ui/stdtoolbars.inc:143
 msgid "Subscript"
 msgstr "Azpindizea"
 
-#: lib/ui/stdtoolbars.inc:143
+#: lib/ui/stdtoolbars.inc:144
 msgid "Superscript"
 msgstr "Goi-indizea"
 
-#: lib/ui/stdtoolbars.inc:144
+#: lib/ui/stdtoolbars.inc:145
 msgid "Insert square root"
 msgstr "Txertatu erro karratua"
 
-#: lib/ui/stdtoolbars.inc:145
+#: lib/ui/stdtoolbars.inc:146
 msgid "Insert root"
 msgstr "Txertatu erroa"
 
-#: lib/ui/stdtoolbars.inc:146
+#: lib/ui/stdtoolbars.inc:147
 #, fuzzy
 msgid "Insert standard fraction"
 msgstr "Txertatu zatikia"
 
-#: lib/ui/stdtoolbars.inc:147
+#: lib/ui/stdtoolbars.inc:148
 msgid "Insert sum"
 msgstr "Txertatu batuketa"
 
-#: lib/ui/stdtoolbars.inc:148
+#: lib/ui/stdtoolbars.inc:149
 msgid "Insert integral"
 msgstr "Txertatu integrala"
 
-#: lib/ui/stdtoolbars.inc:149
+#: lib/ui/stdtoolbars.inc:150
 msgid "Insert product"
 msgstr "Txertatu biderketa"
 
-#: lib/ui/stdtoolbars.inc:151
+#: lib/ui/stdtoolbars.inc:152
 msgid "Insert ( )"
 msgstr "Txertatu ( )"
 
-#: lib/ui/stdtoolbars.inc:152
+#: lib/ui/stdtoolbars.inc:153
 msgid "Insert [ ]"
 msgstr "Txertatu [ ]"
 
-#: lib/ui/stdtoolbars.inc:153
+#: lib/ui/stdtoolbars.inc:154
 msgid "Insert { }"
 msgstr "Txertatu { }"
 
-#: lib/ui/stdtoolbars.inc:154
+#: lib/ui/stdtoolbars.inc:155
 #, fuzzy
 msgid "Insert delimiters"
 msgstr "Txertatu mugatzaileak"
 
-#: lib/ui/stdtoolbars.inc:156
+#: lib/ui/stdtoolbars.inc:157
 msgid "Insert matrix"
 msgstr "Txertatu matrizea"
 
-#: lib/ui/stdtoolbars.inc:157
+#: lib/ui/stdtoolbars.inc:158
 msgid "Insert cases environment"
 msgstr "Txertatu kasu-ingurunea"
 
-#: lib/ui/stdtoolbars.inc:166
+#: lib/ui/stdtoolbars.inc:167
 #, fuzzy
 msgid "Command Buffer"
 msgstr "Amaierako k&omandoa:"
 
 #: lib/ui/stdtoolbars.inc:171
+msgid "Review[[Toolbar]]"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:172
 msgid "Track changes"
 msgstr "Aldaketen aztarna"
 
-#: lib/ui/stdtoolbars.inc:172
+#: lib/ui/stdtoolbars.inc:173
 msgid "Show changes in output"
 msgstr "Erakutsi aldaketak irteeran"
 
-#: lib/ui/stdtoolbars.inc:174
+#: lib/ui/stdtoolbars.inc:175
 msgid "Next change"
 msgstr "Hurrengo aldaketa"
 
-#: lib/ui/stdtoolbars.inc:175
+#: lib/ui/stdtoolbars.inc:176
 msgid "Accept change"
 msgstr "Onartu aldaketa"
 
-#: lib/ui/stdtoolbars.inc:176
+#: lib/ui/stdtoolbars.inc:177
 msgid "Reject change"
 msgstr "Baztertu aldaketa"
 
-#: lib/ui/stdtoolbars.inc:178
+#: lib/ui/stdtoolbars.inc:179
 msgid "Merge changes"
 msgstr "Batu aldaketak"
 
-#: lib/ui/stdtoolbars.inc:179
+#: lib/ui/stdtoolbars.inc:180
 msgid "Accept all changes"
 msgstr "Onartu aldaketa guztiak"
 
-#: lib/ui/stdtoolbars.inc:180
+#: lib/ui/stdtoolbars.inc:181
 msgid "Reject all changes"
 msgstr "Baztertu aldaketa guztiak"
 
-#: lib/ui/stdtoolbars.inc:183
+#: lib/ui/stdtoolbars.inc:184
 msgid "Next note"
 msgstr "Hurrengo oharra"
 
-#: lib/ui/stdtoolbars.inc:186
+#: lib/ui/stdtoolbars.inc:187
 #, fuzzy
 msgid "View/Update"
 msgstr "Gorde dokumentua"
 
-#: lib/ui/stdtoolbars.inc:187
+#: lib/ui/stdtoolbars.inc:188
 #, fuzzy
 msgid "View DVI"
 msgstr "Ikusi|I"
 
-#: lib/ui/stdtoolbars.inc:188
+#: lib/ui/stdtoolbars.inc:189
 #, fuzzy
 msgid "Update DVI"
 msgstr "&Eguneratu"
 
-#: lib/ui/stdtoolbars.inc:189
+#: lib/ui/stdtoolbars.inc:190
 msgid "View PDF (pdflatex)"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:190
+#: lib/ui/stdtoolbars.inc:191
 msgid "Update PDF (pdflatex)"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:191
+#: lib/ui/stdtoolbars.inc:192
 #, fuzzy
 msgid "View PostScript"
 msgstr "Post Scriptum:"
 
-#: lib/ui/stdtoolbars.inc:192
+#: lib/ui/stdtoolbars.inc:193
 #, fuzzy
 msgid "Update PostScript"
 msgstr "Post Scriptum:"
 
-#: lib/ui/stdtoolbars.inc:195
+#: lib/ui/stdtoolbars.inc:196
 #, fuzzy
 msgid "Math Panels"
 msgstr "Matematikako panela"
 
-#: lib/ui/stdtoolbars.inc:196
+#: lib/ui/stdtoolbars.inc:197
 #, fuzzy
 msgid "Math Spacings"
 msgstr "LyX: matematika espazioa"
 
-#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:270
 #, fuzzy
 msgid "Styles"
 msgstr "Estiloa"
 
-#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:276
+#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:277
 #, fuzzy
 msgid "Fractions"
 msgstr "LyX: frakzioak"
 
-#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:285
-#: src/frontends/qt4/QDocument.cpp:581
+#: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:286
+#: src/frontends/qt4/QDocument.cpp:583
 msgid "Fonts"
 msgstr "Letra-tipoak"
 
-#: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:216
+#: lib/ui/stdtoolbars.inc:201 lib/ui/stdtoolbars.inc:217
 #, fuzzy
 msgid "Functions"
 msgstr "&Funtzioak"
 
-#: lib/ui/stdtoolbars.inc:217
+#: lib/ui/stdtoolbars.inc:218
 msgid "arccos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:218
+#: lib/ui/stdtoolbars.inc:219
 #, fuzzy
 msgid "arcsin"
 msgstr "albo"
 
-#: lib/ui/stdtoolbars.inc:219
+#: lib/ui/stdtoolbars.inc:220
 #, fuzzy
 msgid "arctan"
 msgstr "Katalana"
 
-#: lib/ui/stdtoolbars.inc:220
+#: lib/ui/stdtoolbars.inc:221
 #, fuzzy
 msgid "arg"
 msgstr "Handia"
 
-#: lib/ui/stdtoolbars.inc:221
+#: lib/ui/stdtoolbars.inc:222
 msgid "bmod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:222
+#: lib/ui/stdtoolbars.inc:223
 msgid "cos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:223
+#: lib/ui/stdtoolbars.inc:224
 #, fuzzy
 msgid "cosh"
 msgstr "Eskoziera"
 
-#: lib/ui/stdtoolbars.inc:224
+#: lib/ui/stdtoolbars.inc:225
 #, fuzzy
 msgid "cot"
 msgstr "auk."
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:226
 #, fuzzy
 msgid "coth"
 msgstr "Eskoziera"
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:227
 #, fuzzy
 msgid "csc"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:228
 msgid "deg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:228
+#: lib/ui/stdtoolbars.inc:229
 #, fuzzy
 msgid "det"
 msgstr "lehenetsia"
 
-#: lib/ui/stdtoolbars.inc:229
+#: lib/ui/stdtoolbars.inc:230
 #, fuzzy
 msgid "dim"
 msgstr "Ertaina"
 
-#: lib/ui/stdtoolbars.inc:230
+#: lib/ui/stdtoolbars.inc:231
 #, fuzzy
 msgid "exp"
 msgstr "ex"
 
-#: lib/ui/stdtoolbars.inc:231
+#: lib/ui/stdtoolbars.inc:232
 msgid "gcd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:232
+#: lib/ui/stdtoolbars.inc:233
 #, fuzzy
 msgid "hom"
 msgstr "teorema"
 
-#: lib/ui/stdtoolbars.inc:233
+#: lib/ui/stdtoolbars.inc:234
 #, fuzzy
 msgid "inf"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:235
 #, fuzzy
 msgid "ker"
 msgstr "Hizlaria"
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:236
 msgid "lg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:237
 #, fuzzy
 msgid "lim"
 msgstr "Aldarrikapena"
 
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:238
 msgid "liminf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:239
 msgid "limsup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:240
 msgid "ln"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:241
 #, fuzzy
 msgid "log"
 msgstr "&Globala"
 
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:242
 #, fuzzy
 msgid "max"
 msgstr "Faxa"
 
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:243
 #, fuzzy
 msgid "min"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:244
 #, fuzzy
 msgid "sec"
 msgstr "GehituAtal"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:245
 #, fuzzy
 msgid "sin"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:246
 #, fuzzy
 msgid "sinh"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:246
+#: lib/ui/stdtoolbars.inc:247
 #, fuzzy
 msgid "sup"
 msgstr "sp"
 
-#: lib/ui/stdtoolbars.inc:247
+#: lib/ui/stdtoolbars.inc:248
 #, fuzzy
 msgid "tan"
 msgstr "eta"
 
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:249
 #, fuzzy
 msgid "tanh"
 msgstr "Adarra"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:250
 #, fuzzy
 msgid "Pr"
 msgstr "Gehigarria"
 
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:253
 #, fuzzy
 msgid "Spacings"
 msgstr "&Tartea:"
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:254
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Zuriune txikia\t\\,"
 
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:255
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Zuriune ertaina\t\\:"
 
-#: lib/ui/stdtoolbars.inc:255
+#: lib/ui/stdtoolbars.inc:256
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Zuriune handia\t\\;"
 
-#: lib/ui/stdtoolbars.inc:256
+#: lib/ui/stdtoolbars.inc:257
 #, fuzzy
 msgid "Quadratin space\t\\quad"
 msgstr "Koadratin zuriunea\t\\quad"
 
-#: lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:258
 #, fuzzy
 msgid "Double quadratin space\t\\qquad"
 msgstr "Koadratin zuriune bikoitza\t\\qquad"
 
-#: lib/ui/stdtoolbars.inc:258
+#: lib/ui/stdtoolbars.inc:259
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Zuriune negatiboa\t\\!"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:260
 msgid "Placeholder\t\\phantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:260
+#: lib/ui/stdtoolbars.inc:261
 msgid "Horizontal placeholder\t\\hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:261
+#: lib/ui/stdtoolbars.inc:262
 msgid "Vertical placeholder\t\\vphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:265
 #, fuzzy
 msgid "Roots"
 msgstr "oina"
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:266
 #, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Erro karratua\t\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:267
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "Beste erroa\t\\root"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:271
 #, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "Adierazpen estiloa\t\\displaystyle"
 
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:272
 #, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "Testu normalaren estiloa\t\\textstyle"
 
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:273
 #, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Script-estiloa (txikia)\t\\scriptstyle"
 
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:274
 #, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript-estiloa (txikiagoa)\t\\scriptscriptstyle"
 
-#: lib/ui/stdtoolbars.inc:277
+#: lib/ui/stdtoolbars.inc:278
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Estandarra\t\\frac"
 
-#: lib/ui/stdtoolbars.inc:278
+#: lib/ui/stdtoolbars.inc:279
 #, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "Marra hor. ez\\atop"
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:280
 #, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "Polita\t\\nicefrac"
 
-#: lib/ui/stdtoolbars.inc:280
+#: lib/ui/stdtoolbars.inc:281
 #, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "Testu-frakzioa (amsmath)\t\\tfrac"
 
-#: lib/ui/stdtoolbars.inc:281
+#: lib/ui/stdtoolbars.inc:282
 #, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "Adierazpen frak. (amsmath)\t\\dfrac"
 
-#: lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:283
 #, fuzzy
 msgid "Binomial\t\\choose"
 msgstr "Binomiala\t\\choose"
 
-#: lib/ui/stdtoolbars.inc:286
+#: lib/ui/stdtoolbars.inc:287
 #, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "Erromatar\t\\mathrm"
 
-#: lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:288
 #, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "Lodia\t\\mathbf"
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:289
 #, fuzzy
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "Ikur lodia\t\\boldsymbol"
 
-#: lib/ui/stdtoolbars.inc:289
+#: lib/ui/stdtoolbars.inc:290
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans serif\t\\mathsf"
 
-#: lib/ui/stdtoolbars.inc:290
+#: lib/ui/stdtoolbars.inc:291
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Etzana\t\\mathit"
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:292
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Idazmakina\t\\mathtt"
 
-#: lib/ui/stdtoolbars.inc:292
+#: lib/ui/stdtoolbars.inc:293
 #, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Blackboard\t\\mathbb"
 
-#: lib/ui/stdtoolbars.inc:293
+#: lib/ui/stdtoolbars.inc:294
 #, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktur\t\\mathfrak"
 
-#: lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:295
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kaligrafia\t\\mathcal"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:296
 #, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "Testu normalaren modua\t\\textrm"
 
-#: lib/ui/stdtoolbars.inc:298
-msgid "Dots"
-msgstr "Puntuak"
-
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
-msgid "ldots"
+msgid "Dots"
 msgstr "Puntuak"
 
 #: lib/ui/stdtoolbars.inc:300
 #, fuzzy
-msgid "cdots"
+msgid "ldots"
 msgstr "Puntuak"
 
 #: lib/ui/stdtoolbars.inc:301
 #, fuzzy
-msgid "vdots"
+msgid "cdots"
 msgstr "Puntuak"
 
 #: lib/ui/stdtoolbars.inc:302
 #, fuzzy
+msgid "vdots"
+msgstr "Puntuak"
+
+#: lib/ui/stdtoolbars.inc:303
+#, fuzzy
 msgid "ddots"
 msgstr "Puntuak"
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:306
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "Marko-apaingarriak"
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:307
 #, fuzzy
 msgid "hat"
 msgstr "Kapitulua"
 
-#: lib/ui/stdtoolbars.inc:307
+#: lib/ui/stdtoolbars.inc:308
 #, fuzzy
 msgid "tilde"
 msgstr "Fitxategia"
 
-#: lib/ui/stdtoolbars.inc:308
+#: lib/ui/stdtoolbars.inc:309
 msgid "bar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:309
+#: lib/ui/stdtoolbars.inc:310
 #, fuzzy
 msgid "grave"
 msgstr "berdea"
 
-#: lib/ui/stdtoolbars.inc:310
+#: lib/ui/stdtoolbars.inc:311
 #, fuzzy
 msgid "dot"
 msgstr "auk."
 
-#: lib/ui/stdtoolbars.inc:311
+#: lib/ui/stdtoolbars.inc:312
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:312
+#: lib/ui/stdtoolbars.inc:313
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:313
+#: lib/ui/stdtoolbars.inc:314
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:315
 msgid "vec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:316
 #, fuzzy
 msgid "acute"
 msgstr "Data"
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:317
 #, fuzzy
 msgid "ddot"
 msgstr "dd"
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:318
 #, fuzzy
 msgid "breve"
 msgstr "Aurrebista"
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:319
 #, fuzzy
 msgid "overline"
 msgstr "Esloveniera"
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:320
 msgid "overbrace"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:321
 #, fuzzy
 msgid "overleftarrow"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:322
 msgid "overrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:323
 msgid "overleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:323
+#: lib/ui/stdtoolbars.inc:324
 #, fuzzy
 msgid "overset"
 msgstr "Berrezarri"
 
-#: lib/ui/stdtoolbars.inc:324
+#: lib/ui/stdtoolbars.inc:325
 #, fuzzy
 msgid "underline"
 msgstr "Azpimarratu %1$s, "
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:326
 #, fuzzy
 msgid "underbrace"
 msgstr "Azpimarratua"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:327
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:327
+#: lib/ui/stdtoolbars.inc:328
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:328
+#: lib/ui/stdtoolbars.inc:329
 msgid "underleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:330
 #, fuzzy
 msgid "underset"
 msgstr "Bertsoa"
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:333
 msgid "Arrows"
 msgstr "Geziak"
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:334
 #, fuzzy
 msgid "leftarrow"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:335
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:336
 msgid "downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:337
 #, fuzzy
 msgid "uparrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:338
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:339
 msgid "leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:340
 #, fuzzy
 msgid "Leftarrow"
 msgstr "Ezkerrean"
 
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:341
 #, fuzzy
 msgid "Rightarrow"
 msgstr "EskuinGoiburua"
 
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:342
 msgid "Downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:343
 #, fuzzy
 msgid "Uparrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:344
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:345
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:346
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:347
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:348
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:349
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:350
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:351
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:352
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:353
 msgid "rightharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:354
 #, fuzzy
 msgid "mapsto"
 msgstr "Epigrafea"
 
-#: lib/ui/stdtoolbars.inc:354
+#: lib/ui/stdtoolbars.inc:355
 msgid "longmapsto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:355
+#: lib/ui/stdtoolbars.inc:356
 #, fuzzy
 msgid "nwarrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:356
+#: lib/ui/stdtoolbars.inc:357
 #, fuzzy
 msgid "nearrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:357
+#: lib/ui/stdtoolbars.inc:358
 msgid "leftharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:358
+#: lib/ui/stdtoolbars.inc:359
 msgid "rightharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:360
 msgid "hookleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:361
 msgid "hookrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:362
 #, fuzzy
 msgid "swarrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:363
 #, fuzzy
 msgid "searrow"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:363 lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:364 lib/ui/stdtoolbars.inc:632
 msgid "rightleftharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:367
 msgid "Operators"
 msgstr "Eragileak"
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:368
 msgid "pm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:369
 #, fuzzy
 msgid "cap"
 msgstr "Ebakina"
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:370
 #, fuzzy
 msgid "diamond"
 msgstr "eta"
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:371
 #, fuzzy
 msgid "oplus"
 msgstr "Zutabeak"
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:372
 #, fuzzy
 msgid "mp"
 msgstr "Enfasia"
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:373
 msgid "cup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:374
 msgid "bigtriangleup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:375
 #, fuzzy
 msgid "ominus"
 msgstr "minuturo"
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:376
 msgid "times"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:377
 #, fuzzy
 msgid "uplus"
 msgstr "Irteera"
 
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:378
 msgid "bigtriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:378
+#: lib/ui/stdtoolbars.inc:379
 #, fuzzy
 msgid "otimes"
 msgstr "Kopiak"
 
-#: lib/ui/stdtoolbars.inc:379
+#: lib/ui/stdtoolbars.inc:380
 msgid "div"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:380
+#: lib/ui/stdtoolbars.inc:381
 #, fuzzy
 msgid "sqcap"
 msgstr "Ebakina"
 
-#: lib/ui/stdtoolbars.inc:381
+#: lib/ui/stdtoolbars.inc:382
 #, fuzzy
 msgid "triangleright"
 msgstr "Guztirako altuera"
 
-#: lib/ui/stdtoolbars.inc:382
+#: lib/ui/stdtoolbars.inc:383
 #, fuzzy
 msgid "oslash"
 msgstr "Poloniera"
 
-#: lib/ui/stdtoolbars.inc:383
+#: lib/ui/stdtoolbars.inc:384
 msgid "cdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:384
+#: lib/ui/stdtoolbars.inc:385
 msgid "sqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:385
+#: lib/ui/stdtoolbars.inc:386
 msgid "triangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:386
+#: lib/ui/stdtoolbars.inc:387
 #, fuzzy
 msgid "odot"
 msgstr "oina"
 
-#: lib/ui/stdtoolbars.inc:387
+#: lib/ui/stdtoolbars.inc:388
 msgid "star"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:388
+#: lib/ui/stdtoolbars.inc:389
 #, fuzzy
 msgid "vee"
 msgstr "Esloveniera"
 
-#: lib/ui/stdtoolbars.inc:389
+#: lib/ui/stdtoolbars.inc:390
 #, fuzzy
 msgid "amalg"
 msgstr "Helb. el."
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:391
 msgid "bigcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:391
+#: lib/ui/stdtoolbars.inc:392
 #, fuzzy
 msgid "setminus"
 msgstr "minuturo"
 
-#: lib/ui/stdtoolbars.inc:392
+#: lib/ui/stdtoolbars.inc:393
 msgid "wedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:394
 #, fuzzy
 msgid "dagger"
 msgstr "Handiagoa"
 
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:395
 #, fuzzy
 msgid "circ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:395
+#: lib/ui/stdtoolbars.inc:396
 #, fuzzy
 msgid "bullet"
 msgstr "Buletak"
 
-#: lib/ui/stdtoolbars.inc:396
+#: lib/ui/stdtoolbars.inc:397
 #, fuzzy
 msgid "wr"
 msgstr "doitu: "
 
-#: lib/ui/stdtoolbars.inc:397
+#: lib/ui/stdtoolbars.inc:398
 #, fuzzy
 msgid "ddagger"
 msgstr "Handiagoa"
 
-#: lib/ui/stdtoolbars.inc:400
+#: lib/ui/stdtoolbars.inc:401
 msgid "Relations"
 msgstr "Erlazioak"
 
-#: lib/ui/stdtoolbars.inc:401
+#: lib/ui/stdtoolbars.inc:402
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:402
+#: lib/ui/stdtoolbars.inc:403
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:403
+#: lib/ui/stdtoolbars.inc:404
 msgid "equiv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:404
+#: lib/ui/stdtoolbars.inc:405
 #, fuzzy
 msgid "models"
 msgstr "Kodea"
 
-#: lib/ui/stdtoolbars.inc:405
+#: lib/ui/stdtoolbars.inc:406
 #, fuzzy
 msgid "prec"
 msgstr "pc"
 
-#: lib/ui/stdtoolbars.inc:406
+#: lib/ui/stdtoolbars.inc:407
 #, fuzzy
 msgid "succ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:408
 msgid "sim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:409
 msgid "perp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:410
 #, fuzzy
 msgid "preceq"
 msgstr "babestua"
 
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:411
 msgid "succeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:412
 msgid "simeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:413
 msgid "mid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:414
 #, fuzzy
 msgid "ll"
 msgstr "&Guztia"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:415
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:416
 msgid "asymp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:417
 #, fuzzy
 msgid "parallel"
 msgstr "Aldakorra"
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:418
 #, fuzzy
 msgid "subset"
 msgstr "Azpiazpiatala"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:419
 msgid "supset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:420
 #, fuzzy
 msgid "approx"
 msgstr "Parbox"
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:421
 #, fuzzy
 msgid "smile"
 msgstr "Fitxategia"
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:422
 msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:422
+#: lib/ui/stdtoolbars.inc:423
 msgid "supseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:423
+#: lib/ui/stdtoolbars.inc:424
 #, fuzzy
 msgid "cong"
 msgstr "aktibatuta"
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:425
 #, fuzzy
 msgid "frown"
 msgstr "Herria"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:426
 msgid "sqsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:427
 msgid "sqsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:428
 #, fuzzy
 msgid "doteq"
 msgstr "oharra"
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:429
 msgid "neq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:429 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:430 src/lengthcommon.cpp:38
 msgid "in"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:430
+#: lib/ui/stdtoolbars.inc:431
 msgid "ni"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:431
+#: lib/ui/stdtoolbars.inc:432
 #, fuzzy
 msgid "propto"
 msgstr "auk."
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:433
 #, fuzzy
 msgid "notin"
 msgstr "oharra"
 
-#: lib/ui/stdtoolbars.inc:433
+#: lib/ui/stdtoolbars.inc:434
 msgid "vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:434
+#: lib/ui/stdtoolbars.inc:435
 msgid "dashv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:435
+#: lib/ui/stdtoolbars.inc:436
 #, fuzzy
 msgid "bowtie"
 msgstr "oharra"
 
-#: lib/ui/stdtoolbars.inc:439
+#: lib/ui/stdtoolbars.inc:440
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:441
 msgid "beta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:442
 #, fuzzy
 msgid "gamma"
 msgstr "Lema"
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:443
 #, fuzzy
 msgid "delta"
 msgstr "lehenetsia"
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:444
 #, fuzzy
 msgid "epsilon"
 msgstr "Bertsioa"
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:445
 msgid "varepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:445
+#: lib/ui/stdtoolbars.inc:446
 msgid "zeta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:447
 #, fuzzy
 msgid "eta"
 msgstr "Magenta"
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:448
 #, fuzzy
 msgid "theta"
 msgstr "testua"
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:449
 #, fuzzy
 msgid "vartheta"
 msgstr "Parentesikoa"
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:450
 #, fuzzy
 msgid "iota"
 msgstr "Biratu"
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:451
 msgid "kappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:451
+#: lib/ui/stdtoolbars.inc:452
 msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:452 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:453 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr "mu"
 
-#: lib/ui/stdtoolbars.inc:453
+#: lib/ui/stdtoolbars.inc:454
 msgid "nu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:454
+#: lib/ui/stdtoolbars.inc:455
 #, fuzzy
 msgid "xi"
 msgstr "x"
 
-#: lib/ui/stdtoolbars.inc:455
+#: lib/ui/stdtoolbars.inc:456
 msgid "pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:456
+#: lib/ui/stdtoolbars.inc:457
 msgid "varpi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:457
+#: lib/ui/stdtoolbars.inc:458
 msgid "rho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:458
+#: lib/ui/stdtoolbars.inc:459
 #, fuzzy
 msgid "varrho"
 msgstr "Gezia"
 
-#: lib/ui/stdtoolbars.inc:459
+#: lib/ui/stdtoolbars.inc:460
 msgid "sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:460
+#: lib/ui/stdtoolbars.inc:461
 msgid "varsigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:461
+#: lib/ui/stdtoolbars.inc:462
 #, fuzzy
 msgid "tau"
 msgstr "Egoera"
 
-#: lib/ui/stdtoolbars.inc:462
+#: lib/ui/stdtoolbars.inc:463
 #, fuzzy
 msgid "upsilon"
 msgstr "Galdera"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:464
 msgid "phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:465
 msgid "varphi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:466
 msgid "chi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:467
 #, fuzzy
 msgid "psi"
 msgstr "ps"
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:468
 #, fuzzy
 msgid "omega"
 msgstr "Erromatarra"
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:469
 #, fuzzy
 msgid "Gamma"
 msgstr "Lema"
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:470
 #, fuzzy
 msgid "Delta"
 msgstr "E&zabatu"
 
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:471
 #, fuzzy
 msgid "Theta"
 msgstr "Thailandiera"
 
-#: lib/ui/stdtoolbars.inc:471
+#: lib/ui/stdtoolbars.inc:472
 #, fuzzy
 msgid "Lambda"
 msgstr "Herrialdea"
 
-#: lib/ui/stdtoolbars.inc:472
+#: lib/ui/stdtoolbars.inc:473
 msgid "Xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:474
 msgid "Pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:475
 #, fuzzy
 msgid "Sigma"
 msgstr "Txikia"
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:476
 msgid "Upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:476
+#: lib/ui/stdtoolbars.inc:477
 msgid "Phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:477
+#: lib/ui/stdtoolbars.inc:478
 msgid "Psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:479
 msgid "Omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:482
 msgid "Miscellaneous"
 msgstr "Hainbat"
 
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:483
 #, fuzzy
 msgid "nabla"
 msgstr "&Taula luzea"
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:484
 #, fuzzy
 msgid "partial"
 msgstr "Aldakorra"
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:485
 #, fuzzy
 msgid "infty"
 msgstr "Ttipi-ttipia"
 
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:486
 msgid "prime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:487
 #, fuzzy
 msgid "ell"
 msgstr "hspell"
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:488
 #, fuzzy
 msgid "emptyset"
 msgstr "hutsik"
 
-#: lib/ui/stdtoolbars.inc:488
+#: lib/ui/stdtoolbars.inc:489
 #, fuzzy
 msgid "exists"
 msgstr "Eskerrona"
 
-#: lib/ui/stdtoolbars.inc:489
+#: lib/ui/stdtoolbars.inc:490
 #, fuzzy
 msgid "forall"
 msgstr "Normala"
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:491
 #, fuzzy
 msgid "imath"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:492
 #, fuzzy
 msgid "jmath"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:493
 #, fuzzy
 msgid "Re"
 msgstr "Gorria"
 
-#: lib/ui/stdtoolbars.inc:493
+#: lib/ui/stdtoolbars.inc:494
 #, fuzzy
 msgid "Im"
 msgstr "Elementuak"
 
-#: lib/ui/stdtoolbars.inc:494
+#: lib/ui/stdtoolbars.inc:495
 #, fuzzy
 msgid "aleph"
 msgstr "Sakonera"
 
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:496
 #, fuzzy
 msgid "wp"
 msgstr "doitu: "
 
-#: lib/ui/stdtoolbars.inc:496 lib/ui/stdtoolbars.inc:575
+#: lib/ui/stdtoolbars.inc:497 lib/ui/stdtoolbars.inc:576
 #, fuzzy
 msgid "hbar"
 msgstr "sakonera-barra"
 
-#: lib/ui/stdtoolbars.inc:497 lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:498 lib/ui/stdtoolbars.inc:583
 #, fuzzy
 msgid "angle"
 msgstr "Bakuna"
 
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:499
 #, fuzzy
 msgid "top"
 msgstr "Utopia"
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:500
 #, fuzzy
 msgid "bot"
 msgstr "auk."
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:501
 #, fuzzy
 msgid "Vert"
 msgstr "Bertsoa"
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:502
 msgid "neg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:503
 #, fuzzy
 msgid "flat"
 msgstr "mugikorra: "
 
-#: lib/ui/stdtoolbars.inc:503
+#: lib/ui/stdtoolbars.inc:504
 #, fuzzy
 msgid "natural"
 msgstr "Sinadura"
 
-#: lib/ui/stdtoolbars.inc:504
+#: lib/ui/stdtoolbars.inc:505
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:506
 msgid "surd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:507
 #, fuzzy
 msgid "triangle"
 msgstr "Bakuna"
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:508
 msgid "diamondsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:509
 #, fuzzy
 msgid "heartsuit"
 msgstr "heredatua"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:510
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:511
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:512
 msgid "textrm \\AA"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:513
 #, fuzzy
 msgid "textrm \\O"
 msgstr "testua"
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:514
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:515
 #, fuzzy
 msgid "_"
 msgstr "_/"
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:516
 #, fuzzy
 msgid "mathrm T"
 msgstr "mat. markoa"
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:517
 #, fuzzy
 msgid "mathbb N"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:518
 #, fuzzy
 msgid "mathbb Z"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:519
 #, fuzzy
 msgid "mathbb Q"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:520
 #, fuzzy
 msgid "mathbb R"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:520
+#: lib/ui/stdtoolbars.inc:521
 #, fuzzy
 msgid "mathbb C"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:521
+#: lib/ui/stdtoolbars.inc:522
 #, fuzzy
 msgid "mathbb H"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:522
+#: lib/ui/stdtoolbars.inc:523
 #, fuzzy
 msgid "mathcal F"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:524
 #, fuzzy
 msgid "mathcal L"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:524
+#: lib/ui/stdtoolbars.inc:525
 #, fuzzy
 msgid "mathcal H"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:525
+#: lib/ui/stdtoolbars.inc:526
 #, fuzzy
 msgid "mathcal O"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.inc:528
+#: lib/ui/stdtoolbars.inc:529
 #, fuzzy
 msgid "Big Operators"
 msgstr "Eragile handiak"
 
-#: lib/ui/stdtoolbars.inc:529
+#: lib/ui/stdtoolbars.inc:530
 #, fuzzy
 msgid "intop"
 msgstr "Lerrokatu goian"
 
-#: lib/ui/stdtoolbars.inc:530
+#: lib/ui/stdtoolbars.inc:531
 #, fuzzy
 msgid "int"
 msgstr "in"
-
-#: lib/ui/stdtoolbars.inc:531
-#, fuzzy
-msgid "iintop"
-msgstr "Lerrokatu goian"
 
 #: lib/ui/stdtoolbars.inc:532
 #, fuzzy
@@ -10756,7 +10786,7 @@ msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:533
 #, fuzzy
-msgid "iiintop"
+msgid "iintop"
 msgstr "Lerrokatu goian"
 
 #: lib/ui/stdtoolbars.inc:534
@@ -10764,15 +10794,16 @@ msgid "iiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:535
-msgid "iiiintop"
-msgstr ""
+#, fuzzy
+msgid "iiintop"
+msgstr "Lerrokatu goian"
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "iiiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:537
-msgid "dotsintop"
+msgid "iiiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:538
@@ -10780,9 +10811,8 @@ msgid "dotsint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:539
-#, fuzzy
-msgid "ointop"
-msgstr "Kontua"
+msgid "dotsintop"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:540
 #, fuzzy
@@ -10791,7 +10821,7 @@ msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:541
 #, fuzzy
-msgid "oiintop"
+msgid "ointop"
 msgstr "Kontua"
 
 #: lib/ui/stdtoolbars.inc:542
@@ -10800,995 +10830,1000 @@ msgid "oiint"
 msgstr "Letra-tipoak"
 
 #: lib/ui/stdtoolbars.inc:543
+#, fuzzy
+msgid "oiintop"
+msgstr "Kontua"
+
+#: lib/ui/stdtoolbars.inc:544
 msgid "ointctrclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:544
+#: lib/ui/stdtoolbars.inc:545
 msgid "ointctrclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:545
+#: lib/ui/stdtoolbars.inc:546
 msgid "ointclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:546
+#: lib/ui/stdtoolbars.inc:547
 msgid "ointclockwise"
 msgstr ""
-
-#: lib/ui/stdtoolbars.inc:547
-#, fuzzy
-msgid "sqintop"
-msgstr "Lerrokatu goian"
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "sqint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:549
-msgid "sqiintop"
-msgstr ""
+#, fuzzy
+msgid "sqintop"
+msgstr "Lerrokatu goian"
 
 #: lib/ui/stdtoolbars.inc:550
 msgid "sqiint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
-msgid "sum"
+msgid "sqiintop"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
+msgid "sum"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:553
 #, fuzzy
 msgid "prod"
 msgstr "babestua"
 
-#: lib/ui/stdtoolbars.inc:553
+#: lib/ui/stdtoolbars.inc:554
 msgid "coprod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:554
+#: lib/ui/stdtoolbars.inc:555
 msgid "bigsqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:555
+#: lib/ui/stdtoolbars.inc:556
 msgid "bigotimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:556
+#: lib/ui/stdtoolbars.inc:557
 msgid "bigodot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:557
+#: lib/ui/stdtoolbars.inc:558
 msgid "bigoplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:558
+#: lib/ui/stdtoolbars.inc:559
 msgid "bigcap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:559
+#: lib/ui/stdtoolbars.inc:560
 msgid "bigcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:560
+#: lib/ui/stdtoolbars.inc:561
 msgid "biguplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:561
+#: lib/ui/stdtoolbars.inc:562
 msgid "bigvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:562
+#: lib/ui/stdtoolbars.inc:563
 msgid "bigwedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:565
+#: lib/ui/stdtoolbars.inc:566
 msgid "AMS Miscellaneous"
 msgstr "AMS hainbat"
 
-#: lib/ui/stdtoolbars.inc:566
+#: lib/ui/stdtoolbars.inc:567
 msgid "digamma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:567
+#: lib/ui/stdtoolbars.inc:568
 msgid "varkappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:568
+#: lib/ui/stdtoolbars.inc:569
 #, fuzzy
 msgid "beth"
 msgstr "Sakonera"
 
-#: lib/ui/stdtoolbars.inc:569
+#: lib/ui/stdtoolbars.inc:570
 #, fuzzy
 msgid "daleth"
 msgstr "lehenetsia"
 
-#: lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:571
 msgid "gimel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:571
+#: lib/ui/stdtoolbars.inc:572
 msgid "ulcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:572
+#: lib/ui/stdtoolbars.inc:573
 msgid "urcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:573
+#: lib/ui/stdtoolbars.inc:574
 #, fuzzy
 msgid "llcorner"
 msgstr "Ertz guztiak"
 
-#: lib/ui/stdtoolbars.inc:574
+#: lib/ui/stdtoolbars.inc:575
 msgid "lrcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:576
+#: lib/ui/stdtoolbars.inc:577
 msgid "hslash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:578
 #, fuzzy
 msgid "vartriangle"
 msgstr "Aldakorra"
 
-#: lib/ui/stdtoolbars.inc:578
+#: lib/ui/stdtoolbars.inc:579
 msgid "triangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:579
+#: lib/ui/stdtoolbars.inc:580
 #, fuzzy
 msgid "square"
 msgstr "Euskara"
 
-#: lib/ui/stdtoolbars.inc:580
+#: lib/ui/stdtoolbars.inc:581
 #, fuzzy
 msgid "lozenge"
 msgstr "Esloveniera"
 
-#: lib/ui/stdtoolbars.inc:581
+#: lib/ui/stdtoolbars.inc:582
 msgid "circledS"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:583
+#: lib/ui/stdtoolbars.inc:584
 msgid "measuredangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:584
+#: lib/ui/stdtoolbars.inc:585
 #, fuzzy
 msgid "nexists"
 msgstr "Indize-zerrenda|I"
 
-#: lib/ui/stdtoolbars.inc:585
+#: lib/ui/stdtoolbars.inc:586
 msgid "mho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:586
+#: lib/ui/stdtoolbars.inc:587
 #, fuzzy
 msgid "Finv"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:587
+#: lib/ui/stdtoolbars.inc:588
 #, fuzzy
 msgid "Game"
 msgstr "Izena"
 
-#: lib/ui/stdtoolbars.inc:588
+#: lib/ui/stdtoolbars.inc:589
 msgid "Bbbk"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:589
+#: lib/ui/stdtoolbars.inc:590
 msgid "backprime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:590
+#: lib/ui/stdtoolbars.inc:591
 msgid "varnothing"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:591
+#: lib/ui/stdtoolbars.inc:592
 msgid "blacktriangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:592
+#: lib/ui/stdtoolbars.inc:593
 msgid "blacktriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:593
+#: lib/ui/stdtoolbars.inc:594
 #, fuzzy
 msgid "blacksquare"
 msgstr "beltza"
 
-#: lib/ui/stdtoolbars.inc:594
+#: lib/ui/stdtoolbars.inc:595
 msgid "blacklozenge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:595
+#: lib/ui/stdtoolbars.inc:596
 msgid "bigstar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:596
+#: lib/ui/stdtoolbars.inc:597
 msgid "sphericalangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:597
+#: lib/ui/stdtoolbars.inc:598
 #, fuzzy
 msgid "complement"
 msgstr "iruzkina"
 
-#: lib/ui/stdtoolbars.inc:598
+#: lib/ui/stdtoolbars.inc:599
 #, fuzzy
 msgid "eth"
 msgstr "Sakonera"
 
-#: lib/ui/stdtoolbars.inc:599
+#: lib/ui/stdtoolbars.inc:600
 msgid "diagup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:600
+#: lib/ui/stdtoolbars.inc:601
 msgid "diagdown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:603
+#: lib/ui/stdtoolbars.inc:604
 #, fuzzy
 msgid "AMS Arrows"
 msgstr "AMS geziak"
 
-#: lib/ui/stdtoolbars.inc:604
+#: lib/ui/stdtoolbars.inc:605
 msgid "dashleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:605
+#: lib/ui/stdtoolbars.inc:606
 msgid "dashrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:606
+#: lib/ui/stdtoolbars.inc:607
 msgid "leftleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:607
+#: lib/ui/stdtoolbars.inc:608
 msgid "leftrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:608
+#: lib/ui/stdtoolbars.inc:609
 msgid "rightrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:609
+#: lib/ui/stdtoolbars.inc:610
 msgid "rightleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:610
+#: lib/ui/stdtoolbars.inc:611
 #, fuzzy
 msgid "Lleftarrow"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.inc:611
+#: lib/ui/stdtoolbars.inc:612
 #, fuzzy
 msgid "Rrightarrow"
 msgstr "EskuinGoiburua"
 
-#: lib/ui/stdtoolbars.inc:612
+#: lib/ui/stdtoolbars.inc:613
 msgid "twoheadleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:613
+#: lib/ui/stdtoolbars.inc:614
 msgid "twoheadrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:614
+#: lib/ui/stdtoolbars.inc:615
 msgid "leftarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:615
+#: lib/ui/stdtoolbars.inc:616
 msgid "rightarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:616
+#: lib/ui/stdtoolbars.inc:617
 msgid "looparrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:617
+#: lib/ui/stdtoolbars.inc:618
 #, fuzzy
 msgid "looparrowright"
 msgstr "Copyright"
 
-#: lib/ui/stdtoolbars.inc:618
+#: lib/ui/stdtoolbars.inc:619
 msgid "curvearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:619
+#: lib/ui/stdtoolbars.inc:620
 msgid "curvearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:620
+#: lib/ui/stdtoolbars.inc:621
 msgid "circlearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:621
+#: lib/ui/stdtoolbars.inc:622
 msgid "circlearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:622
+#: lib/ui/stdtoolbars.inc:623
 msgid "Lsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:623
+#: lib/ui/stdtoolbars.inc:624
 msgid "Rsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:624
+#: lib/ui/stdtoolbars.inc:625
 #, fuzzy
 msgid "upuparrows"
 msgstr "Geziak"
 
-#: lib/ui/stdtoolbars.inc:625
+#: lib/ui/stdtoolbars.inc:626
 msgid "downdownarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:626
+#: lib/ui/stdtoolbars.inc:627
 msgid "upharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:627
+#: lib/ui/stdtoolbars.inc:628
 msgid "upharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:628
+#: lib/ui/stdtoolbars.inc:629
 msgid "downharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:629
+#: lib/ui/stdtoolbars.inc:630
 msgid "downharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:630
+#: lib/ui/stdtoolbars.inc:631
 msgid "leftrightharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:632
+#: lib/ui/stdtoolbars.inc:633
 msgid "rightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:633
+#: lib/ui/stdtoolbars.inc:634
 msgid "leftrightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:634
+#: lib/ui/stdtoolbars.inc:635
 #, fuzzy
 msgid "nleftarrow"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.inc:635
+#: lib/ui/stdtoolbars.inc:636
 msgid "nrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:636
+#: lib/ui/stdtoolbars.inc:637
 msgid "nleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:637
+#: lib/ui/stdtoolbars.inc:638
 msgid "nLeftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:638
+#: lib/ui/stdtoolbars.inc:639
 #, fuzzy
 msgid "nRightarrow"
 msgstr "EskuinGoiburua"
 
-#: lib/ui/stdtoolbars.inc:639
+#: lib/ui/stdtoolbars.inc:640
 msgid "nLeftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:640
+#: lib/ui/stdtoolbars.inc:641
 msgid "multimap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:643
+#: lib/ui/stdtoolbars.inc:644
 #, fuzzy
 msgid "AMS Relations"
 msgstr "AMS erlazioak"
 
-#: lib/ui/stdtoolbars.inc:644
+#: lib/ui/stdtoolbars.inc:645
 msgid "leqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:645
+#: lib/ui/stdtoolbars.inc:646
 msgid "geqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:646
+#: lib/ui/stdtoolbars.inc:647
 msgid "leqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:647
+#: lib/ui/stdtoolbars.inc:648
 msgid "geqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:648
+#: lib/ui/stdtoolbars.inc:649
 msgid "eqslantless"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:649
+#: lib/ui/stdtoolbars.inc:650
 msgid "eqslantgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:650
+#: lib/ui/stdtoolbars.inc:651
 msgid "lesssim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:651
+#: lib/ui/stdtoolbars.inc:652
 msgid "gtrsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:652
+#: lib/ui/stdtoolbars.inc:653
 msgid "lessapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:653
+#: lib/ui/stdtoolbars.inc:654
 msgid "gtrapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:654
+#: lib/ui/stdtoolbars.inc:655
 msgid "approxeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:655
+#: lib/ui/stdtoolbars.inc:656
 #, fuzzy
 msgid "triangleq"
 msgstr "Bakuna"
 
-#: lib/ui/stdtoolbars.inc:656
+#: lib/ui/stdtoolbars.inc:657
 msgid "lessdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:657
+#: lib/ui/stdtoolbars.inc:658
 msgid "gtrdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:658
+#: lib/ui/stdtoolbars.inc:659
 msgid "lll"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:659
+#: lib/ui/stdtoolbars.inc:660
 msgid "ggg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:660
+#: lib/ui/stdtoolbars.inc:661
 msgid "lessgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:661
+#: lib/ui/stdtoolbars.inc:662
 #, fuzzy
 msgid "gtrless"
 msgstr "Marko gabe"
 
-#: lib/ui/stdtoolbars.inc:662
+#: lib/ui/stdtoolbars.inc:663
 msgid "lesseqgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:663
+#: lib/ui/stdtoolbars.inc:664
 #, fuzzy
 msgid "gtreqless"
 msgstr "Marko gabe"
 
-#: lib/ui/stdtoolbars.inc:664
+#: lib/ui/stdtoolbars.inc:665
 msgid "lesseqqgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:665
+#: lib/ui/stdtoolbars.inc:666
 #, fuzzy
 msgid "gtreqqless"
 msgstr "Marko gabe"
 
-#: lib/ui/stdtoolbars.inc:666
+#: lib/ui/stdtoolbars.inc:667
 msgid "eqcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:667
+#: lib/ui/stdtoolbars.inc:668
 msgid "circeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:668
+#: lib/ui/stdtoolbars.inc:669
 msgid "thicksim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:669
+#: lib/ui/stdtoolbars.inc:670
 msgid "thickapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:670
+#: lib/ui/stdtoolbars.inc:671
 #, fuzzy
 msgid "backsim"
 msgstr "beltza"
 
-#: lib/ui/stdtoolbars.inc:671
+#: lib/ui/stdtoolbars.inc:672
 msgid "backsimeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:672
+#: lib/ui/stdtoolbars.inc:673
 msgid "subseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:673
+#: lib/ui/stdtoolbars.inc:674
 msgid "supseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:674
+#: lib/ui/stdtoolbars.inc:675
 #, fuzzy
 msgid "Subset"
 msgstr "Gaia"
 
-#: lib/ui/stdtoolbars.inc:675
+#: lib/ui/stdtoolbars.inc:676
 #, fuzzy
 msgid "Supset"
 msgstr "Azpiatala"
 
-#: lib/ui/stdtoolbars.inc:676
+#: lib/ui/stdtoolbars.inc:677
 msgid "sqsubset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:677
+#: lib/ui/stdtoolbars.inc:678
 msgid "sqsupset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:678
+#: lib/ui/stdtoolbars.inc:679
 msgid "preccurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:679
+#: lib/ui/stdtoolbars.inc:680
 msgid "succcurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:680
+#: lib/ui/stdtoolbars.inc:681
 msgid "curlyeqprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:681
+#: lib/ui/stdtoolbars.inc:682
 msgid "curlyeqsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:682
+#: lib/ui/stdtoolbars.inc:683
 msgid "precsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:683
+#: lib/ui/stdtoolbars.inc:684
 msgid "succsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:684
+#: lib/ui/stdtoolbars.inc:685
 msgid "precapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:685
+#: lib/ui/stdtoolbars.inc:686
 msgid "succapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:686
+#: lib/ui/stdtoolbars.inc:687
 msgid "vartriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:687
+#: lib/ui/stdtoolbars.inc:688
 #, fuzzy
 msgid "vartriangleright"
 msgstr "Oinarri-lerroa eskuinean"
 
-#: lib/ui/stdtoolbars.inc:688
+#: lib/ui/stdtoolbars.inc:689
 msgid "trianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:689
+#: lib/ui/stdtoolbars.inc:690
 msgid "trianglerighteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:690
+#: lib/ui/stdtoolbars.inc:691
 #, fuzzy
 msgid "bumpeq"
 msgstr "urdina"
 
-#: lib/ui/stdtoolbars.inc:691
+#: lib/ui/stdtoolbars.inc:692
 #, fuzzy
 msgid "Bumpeq"
 msgstr "Urdina"
 
-#: lib/ui/stdtoolbars.inc:692
+#: lib/ui/stdtoolbars.inc:693
 msgid "doteqdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:693
+#: lib/ui/stdtoolbars.inc:694
 msgid "risingdotseq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:694
+#: lib/ui/stdtoolbars.inc:695
 msgid "fallingdotseq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:695
+#: lib/ui/stdtoolbars.inc:696
 #, fuzzy
 msgid "vDash"
 msgstr "Daniera"
 
-#: lib/ui/stdtoolbars.inc:696
+#: lib/ui/stdtoolbars.inc:697
 msgid "Vvdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:697
+#: lib/ui/stdtoolbars.inc:698
 msgid "Vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:698
+#: lib/ui/stdtoolbars.inc:699
 msgid "shortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:699
+#: lib/ui/stdtoolbars.inc:700
 msgid "shortparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:700
+#: lib/ui/stdtoolbars.inc:701
 #, fuzzy
 msgid "smallsmile"
 msgstr "Ttipia"
 
-#: lib/ui/stdtoolbars.inc:701
+#: lib/ui/stdtoolbars.inc:702
 msgid "smallfrown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:702
+#: lib/ui/stdtoolbars.inc:703
 msgid "blacktriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:703
+#: lib/ui/stdtoolbars.inc:704
 msgid "blacktriangleright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:704
+#: lib/ui/stdtoolbars.inc:705
 #, fuzzy
 msgid "because"
 msgstr "Txikitu"
 
-#: lib/ui/stdtoolbars.inc:705
+#: lib/ui/stdtoolbars.inc:706
 #, fuzzy
 msgid "therefore"
 msgstr "teorema"
 
-#: lib/ui/stdtoolbars.inc:706
+#: lib/ui/stdtoolbars.inc:707
 msgid "backepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:707
+#: lib/ui/stdtoolbars.inc:708
 msgid "varpropto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:708
+#: lib/ui/stdtoolbars.inc:709
 msgid "between"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:710
 msgid "pitchfork"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:712
+#: lib/ui/stdtoolbars.inc:713
 #, fuzzy
 msgid "AMS Negative Relations"
 msgstr "Ezeztatutako AMS erlazioak"
 
-#: lib/ui/stdtoolbars.inc:713
+#: lib/ui/stdtoolbars.inc:714
 #, fuzzy
 msgid "nless"
 msgstr "Zentzugabea."
 
-#: lib/ui/stdtoolbars.inc:714
+#: lib/ui/stdtoolbars.inc:715
 #, fuzzy
 msgid "ngtr"
 msgstr "Sarrera"
 
-#: lib/ui/stdtoolbars.inc:715
+#: lib/ui/stdtoolbars.inc:716
 #, fuzzy
 msgid "nleq"
 msgstr "Bakuna"
 
-#: lib/ui/stdtoolbars.inc:716
+#: lib/ui/stdtoolbars.inc:717
 #, fuzzy
 msgid "ngeq"
 msgstr "Bakuna"
 
-#: lib/ui/stdtoolbars.inc:717
+#: lib/ui/stdtoolbars.inc:718
 msgid "nleqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:718
+#: lib/ui/stdtoolbars.inc:719
 msgid "ngeqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:719
+#: lib/ui/stdtoolbars.inc:720
 msgid "nleqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:720
+#: lib/ui/stdtoolbars.inc:721
 msgid "ngeqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:721
+#: lib/ui/stdtoolbars.inc:722
 msgid "lneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:722
+#: lib/ui/stdtoolbars.inc:723
 #, fuzzy
 msgid "gneq"
 msgstr "Ez ikusi egin"
 
-#: lib/ui/stdtoolbars.inc:723
+#: lib/ui/stdtoolbars.inc:724
 msgid "lneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:724
+#: lib/ui/stdtoolbars.inc:725
 msgid "gneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:725
+#: lib/ui/stdtoolbars.inc:726
 #, fuzzy
 msgid "lvertneqq"
 msgstr "Esloveniera"
 
-#: lib/ui/stdtoolbars.inc:726
+#: lib/ui/stdtoolbars.inc:727
 msgid "gvertneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:727
+#: lib/ui/stdtoolbars.inc:728
 #, fuzzy
 msgid "lnsim"
 msgstr "Aldarrikapena"
 
-#: lib/ui/stdtoolbars.inc:728
+#: lib/ui/stdtoolbars.inc:729
 msgid "gnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:729
+#: lib/ui/stdtoolbars.inc:730
 msgid "lnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:730
+#: lib/ui/stdtoolbars.inc:731
 msgid "gnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:731
+#: lib/ui/stdtoolbars.inc:732
 msgid "nprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:732
+#: lib/ui/stdtoolbars.inc:733
 msgid "nsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:733
+#: lib/ui/stdtoolbars.inc:734
 #, fuzzy
 msgid "npreceq"
 msgstr "babestua"
 
-#: lib/ui/stdtoolbars.inc:734
+#: lib/ui/stdtoolbars.inc:735
 msgid "nsucceq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:735
+#: lib/ui/stdtoolbars.inc:736
 msgid "precnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:736
+#: lib/ui/stdtoolbars.inc:737
 msgid "succnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:737
+#: lib/ui/stdtoolbars.inc:738
 msgid "precnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:738
+#: lib/ui/stdtoolbars.inc:739
 msgid "succnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:739
+#: lib/ui/stdtoolbars.inc:740
 #, fuzzy
 msgid "subsetneq"
 msgstr "Azpiazpiatala"
 
-#: lib/ui/stdtoolbars.inc:740
+#: lib/ui/stdtoolbars.inc:741
 msgid "supsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:741
+#: lib/ui/stdtoolbars.inc:742
 #, fuzzy
 msgid "subsetneqq"
 msgstr "Azpiazpiatala"
 
-#: lib/ui/stdtoolbars.inc:742
+#: lib/ui/stdtoolbars.inc:743
 msgid "supsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:743
+#: lib/ui/stdtoolbars.inc:744
 msgid "nsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:744
+#: lib/ui/stdtoolbars.inc:745
 msgid "nsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:745
+#: lib/ui/stdtoolbars.inc:746
 msgid "nsupseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:746
+#: lib/ui/stdtoolbars.inc:747
 msgid "nvdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:747
+#: lib/ui/stdtoolbars.inc:748
 #, fuzzy
 msgid "nvDash"
 msgstr "Daniera"
 
-#: lib/ui/stdtoolbars.inc:748
+#: lib/ui/stdtoolbars.inc:749
 #, fuzzy
 msgid "nVDash"
 msgstr "Daniera"
 
-#: lib/ui/stdtoolbars.inc:749
+#: lib/ui/stdtoolbars.inc:750
 msgid "varsubsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:750
+#: lib/ui/stdtoolbars.inc:751
 msgid "varsupsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:751
+#: lib/ui/stdtoolbars.inc:752
 msgid "varsubsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:752
+#: lib/ui/stdtoolbars.inc:753
 msgid "varsupsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:753
+#: lib/ui/stdtoolbars.inc:754
 msgid "ntriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:754
+#: lib/ui/stdtoolbars.inc:755
 #, fuzzy
 msgid "ntriangleright"
 msgstr "Guztirako altuera"
 
-#: lib/ui/stdtoolbars.inc:755
+#: lib/ui/stdtoolbars.inc:756
 msgid "ntrianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:756
+#: lib/ui/stdtoolbars.inc:757
 msgid "ntrianglerighteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:757
+#: lib/ui/stdtoolbars.inc:758
 #, fuzzy
 msgid "ncong"
 msgstr "bat ere ez"
 
-#: lib/ui/stdtoolbars.inc:758
+#: lib/ui/stdtoolbars.inc:759
 msgid "nsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:759
+#: lib/ui/stdtoolbars.inc:760
 msgid "nmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:760
+#: lib/ui/stdtoolbars.inc:761
 msgid "nshortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:761
+#: lib/ui/stdtoolbars.inc:762
 msgid "nparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:762
+#: lib/ui/stdtoolbars.inc:763
 msgid "nshortparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:765
+#: lib/ui/stdtoolbars.inc:766
 #, fuzzy
 msgid "AMS Operators"
 msgstr "AMS eragileak"
 
-#: lib/ui/stdtoolbars.inc:766
+#: lib/ui/stdtoolbars.inc:767
 msgid "dotplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:767
+#: lib/ui/stdtoolbars.inc:768
 msgid "smallsetminus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:768
+#: lib/ui/stdtoolbars.inc:769
 #, fuzzy
 msgid "Cap"
 msgstr "Epigrafea"
 
-#: lib/ui/stdtoolbars.inc:769
+#: lib/ui/stdtoolbars.inc:770
 #, fuzzy
 msgid "Cup"
 msgstr "Ebaki"
 
-#: lib/ui/stdtoolbars.inc:770
+#: lib/ui/stdtoolbars.inc:771
 #, fuzzy
 msgid "barwedge"
 msgstr "Handia"
 
-#: lib/ui/stdtoolbars.inc:771
+#: lib/ui/stdtoolbars.inc:772
 msgid "veebar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:772
+#: lib/ui/stdtoolbars.inc:773
 #, fuzzy
 msgid "doublebarwedge"
 msgstr "bikoitza"
 
-#: lib/ui/stdtoolbars.inc:773
+#: lib/ui/stdtoolbars.inc:774
 #, fuzzy
 msgid "boxminus"
 msgstr "minuturo"
 
-#: lib/ui/stdtoolbars.inc:774
+#: lib/ui/stdtoolbars.inc:775
 msgid "boxtimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:775
+#: lib/ui/stdtoolbars.inc:776
 #, fuzzy
 msgid "boxdot"
 msgstr "oina"
 
-#: lib/ui/stdtoolbars.inc:776
+#: lib/ui/stdtoolbars.inc:777
 msgid "boxplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:777
+#: lib/ui/stdtoolbars.inc:778
 #, fuzzy
 msgid "divideontimes"
 msgstr "GardenkiEdukiak"
 
-#: lib/ui/stdtoolbars.inc:778
+#: lib/ui/stdtoolbars.inc:779
 msgid "ltimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:779
+#: lib/ui/stdtoolbars.inc:780
 #, fuzzy
 msgid "rtimes"
 msgstr "Britainiera"
 
-#: lib/ui/stdtoolbars.inc:780
+#: lib/ui/stdtoolbars.inc:781
 msgid "leftthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:781
+#: lib/ui/stdtoolbars.inc:782
 msgid "rightthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:782
+#: lib/ui/stdtoolbars.inc:783
 msgid "curlywedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:783
+#: lib/ui/stdtoolbars.inc:784
 msgid "curlyvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:784
+#: lib/ui/stdtoolbars.inc:785
 msgid "circleddash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:785
+#: lib/ui/stdtoolbars.inc:786
 msgid "circledast"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:786
+#: lib/ui/stdtoolbars.inc:787
 msgid "circledcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:787
+#: lib/ui/stdtoolbars.inc:788
 #, fuzzy
 msgid "centerdot"
 msgstr "Erdian"
 
-#: lib/ui/stdtoolbars.inc:788
+#: lib/ui/stdtoolbars.inc:789
 #, fuzzy
 msgid "intercal"
 msgstr "Hitzez hitz"
@@ -12181,33 +12216,53 @@ msgstr "Marka ezabatuta"
 msgid "Mark set"
 msgstr "Marka ezarrita"
 
-#: src/BufferView.cpp:970
-#, c-format
-msgid "%1$d words in selection."
-msgstr "%1$d hitz hautapenean."
+#: src/BufferView.cpp:971
+msgid "Statistics for the selection:"
+msgstr ""
 
 #: src/BufferView.cpp:973
-#, c-format
-msgid "%1$d words in document."
-msgstr "%1$d hitz dokumentuan."
+#, fuzzy
+msgid "Statistics for the document:"
+msgstr "&Aldatu dokumentura"
+
+#: src/BufferView.cpp:976
+#, fuzzy, c-format
+msgid "%1$d words"
+msgstr "%1$d hitz aztertuta."
 
 #: src/BufferView.cpp:978
-msgid "One word in selection."
-msgstr "Hitz bat hautapenean."
+#, fuzzy
+msgid "One word"
+msgstr "Gako-hitza"
 
-#: src/BufferView.cpp:980
-msgid "One word in document."
-msgstr "Hitz bat dokumentuan."
+#: src/BufferView.cpp:981
+#, c-format
+msgid "%1$d characters (including blanks)"
+msgstr ""
 
-#: src/BufferView.cpp:983
-msgid "Count words"
-msgstr "Zenbatu hitzak"
+#: src/BufferView.cpp:984
+msgid "One character (including blanks)"
+msgstr ""
 
-#: src/BufferView.cpp:1593
+#: src/BufferView.cpp:987
+#, c-format
+msgid "%1$d characters (excluding blanks)"
+msgstr ""
+
+#: src/BufferView.cpp:990
+msgid "One character (excluding blanks)"
+msgstr ""
+
+#: src/BufferView.cpp:992
+#, fuzzy
+msgid "Statistics"
+msgstr "Egoera"
+
+#: src/BufferView.cpp:1602
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.cpp:1595 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
+#: src/BufferView.cpp:1604 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
 #: src/LyXFunc.cpp:2109 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12217,31 +12272,31 @@ msgstr "Hautatu LyX dokumentua txertatzeko"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.cpp:1596 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
+#: src/BufferView.cpp:1605 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.cpp:1602 src/LyXFunc.cpp:2002 src/LyXFunc.cpp:2041
+#: src/BufferView.cpp:1611 src/LyXFunc.cpp:2002 src/LyXFunc.cpp:2041
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
+#: src/BufferView.cpp:1623 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
 #: src/LyXFunc.cpp:2145 src/LyXFunc.cpp:2161
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.cpp:1625
+#: src/BufferView.cpp:1634
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1645
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -13161,11 +13216,11 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/LyXFunc.cpp:965 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:965 src/buffer_funcs.cpp:193
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua berreskuratu?"
 
-#: src/LyXFunc.cpp:966 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:966 src/LyXVC.cpp:175 src/buffer_funcs.cpp:194
 msgid "&Revert"
 msgstr "&Berreskuratu"
 
@@ -13815,47 +13870,47 @@ msgstr "Leheneratu dokumentuaren gordetako bertsiora?"
 msgid "No Documents Open!"
 msgstr "Ez da dokumenturik ireki!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:575 src/MenuBackend.cpp:597
-#: src/MenuBackend.cpp:620 src/MenuBackend.cpp:706 src/MenuBackend.cpp:821
+#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Ez da dokumenturik ireki!"
 
-#: src/MenuBackend.cpp:543
+#: src/MenuBackend.cpp:544
 #, fuzzy
 msgid "Plain Text"
 msgstr "Testu soila"
 
-#: src/MenuBackend.cpp:545
+#: src/MenuBackend.cpp:546
 #, fuzzy
 msgid "Plain Text, Join Lines"
 msgstr "Testu soila lerro gisa"
 
-#: src/MenuBackend.cpp:721
+#: src/MenuBackend.cpp:727
 #, fuzzy
 msgid "Master Document"
 msgstr "Gorde dokumentua"
 
-#: src/MenuBackend.cpp:750
+#: src/MenuBackend.cpp:756
 #, fuzzy
 msgid "List of listings"
 msgstr "Irudien zerrenda"
 
-#: src/MenuBackend.cpp:754
+#: src/MenuBackend.cpp:760
 #, fuzzy
 msgid "Other floats"
 msgstr "Beste letra-ezarpen batzuk"
 
-#: src/MenuBackend.cpp:764
+#: src/MenuBackend.cpp:770
 msgid "No Table of contents"
 msgstr "Ez dago gaien aurkibiderik"
 
-#: src/MenuBackend.cpp:810
+#: src/MenuBackend.cpp:816
 #, fuzzy
 msgid " (auto)"
 msgstr "Data"
 
-#: src/MenuBackend.cpp:829
+#: src/MenuBackend.cpp:835
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Inprimatua dokumentua"
@@ -13961,7 +14016,7 @@ msgstr ", Sakonera: %1$d"
 msgid ", Spacing: "
 msgstr ", Tartea: "
 
-#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:249
 msgid "OneHalf"
 msgstr "Bat eta erdi"
 
@@ -14067,7 +14122,7 @@ msgstr "Betegarri bertikala"
 msgid "protected"
 msgstr "babestua"
 
-#: src/buffer_funcs.cpp:81
+#: src/buffer_funcs.cpp:82
 #, c-format
 msgid ""
 "The specified document\n"
@@ -14078,11 +14133,11 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/buffer_funcs.cpp:83
+#: src/buffer_funcs.cpp:84
 msgid "Could not read document"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/buffer_funcs.cpp:96
+#: src/buffer_funcs.cpp:97
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14093,19 +14148,19 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/buffer_funcs.cpp:99
+#: src/buffer_funcs.cpp:100
 msgid "Load emergency save?"
 msgstr "Larrialdian gordetakoa kargatu?"
 
-#: src/buffer_funcs.cpp:100
+#: src/buffer_funcs.cpp:101
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/buffer_funcs.cpp:100
+#: src/buffer_funcs.cpp:101
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/buffer_funcs.cpp:123
+#: src/buffer_funcs.cpp:124
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14116,32 +14171,32 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/buffer_funcs.cpp:126
+#: src/buffer_funcs.cpp:127
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/buffer_funcs.cpp:127
+#: src/buffer_funcs.cpp:128
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/buffer_funcs.cpp:127
+#: src/buffer_funcs.cpp:128
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/buffer_funcs.cpp:166
+#: src/buffer_funcs.cpp:167
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s dokumentuaren bertsio-kontrola erabiliz eskuratzea nahi?"
 
-#: src/buffer_funcs.cpp:168
+#: src/buffer_funcs.cpp:169
 msgid "Retrieve from version control?"
 msgstr "Berreskuratu bertsio-kontroletik?"
 
-#: src/buffer_funcs.cpp:169
+#: src/buffer_funcs.cpp:170
 msgid "&Retrieve"
 msgstr "&Berreskuratu"
 
-#: src/buffer_funcs.cpp:189
+#: src/buffer_funcs.cpp:190
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -14152,11 +14207,11 @@ msgstr ""
 "\n"
 "Gordetako bertsioa berreskuratzea nahi duzu?"
 
-#: src/buffer_funcs.cpp:193
+#: src/buffer_funcs.cpp:194
 msgid "&Switch to document"
 msgstr "&Aldatu dokumentura"
 
-#: src/buffer_funcs.cpp:214
+#: src/buffer_funcs.cpp:215
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -14167,15 +14222,15 @@ msgstr ""
 "\n"
 "Dokumentu berria sortzea nahi duzu?"
 
-#: src/buffer_funcs.cpp:217
+#: src/buffer_funcs.cpp:218
 msgid "Create new document?"
 msgstr "Sortu dokumentu berria?"
 
-#: src/buffer_funcs.cpp:218
+#: src/buffer_funcs.cpp:219
 msgid "&Create"
 msgstr "&Sortu"
 
-#: src/buffer_funcs.cpp:243
+#: src/buffer_funcs.cpp:244
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -14186,19 +14241,19 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/buffer_funcs.cpp:245
+#: src/buffer_funcs.cpp:246
 msgid "Could not read template"
 msgstr "Ezin izan da txantiloia irakurri"
 
-#: src/buffer_funcs.cpp:565
+#: src/buffer_funcs.cpp:593
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:571
+#: src/buffer_funcs.cpp:599
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:574
+#: src/buffer_funcs.cpp:602
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -14982,7 +15037,7 @@ msgstr ""
 msgid "Bibliography Entry Settings"
 msgstr "Bibliografia-sarreren ezarpenak"
 
-#: src/frontends/qt4/QBibtex.cpp:259
+#: src/frontends/qt4/QBibtex.cpp:294
 msgid "BibTeX Bibliography"
 msgstr "BibTex bibliografia"
 
@@ -15003,11 +15058,11 @@ msgid "Activated"
 msgstr "Aktibatua"
 
 #: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QBranches.cpp:145
-#: src/frontends/qt4/QDocument.cpp:858
+#: src/frontends/qt4/QDocument.cpp:868
 msgid "Yes"
 msgstr "Bai"
 
-#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:857
+#: src/frontends/qt4/QBranches.cpp:73 src/frontends/qt4/QDocument.cpp:867
 msgid "No"
 msgstr "Ez"
 
@@ -15075,243 +15130,258 @@ msgstr "(Bat ere ez)"
 msgid "Variable"
 msgstr "Aldakorra"
 
-#: src/frontends/qt4/QDocument.cpp:77
+#: src/frontends/qt4/QDocument.cpp:79
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
-#: src/frontends/qt4/QDocument.cpp:77
+#: src/frontends/qt4/QDocument.cpp:79
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:80
 msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:80
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:80
 msgid "Palatino"
 msgstr "Palatino"
 
-#: src/frontends/qt4/QDocument.cpp:78
+#: src/frontends/qt4/QDocument.cpp:80
 msgid "Bitstream Charter"
 msgstr "Bitstream Charter"
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:81
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:81
 msgid "Bookman"
 msgstr "Bookman"
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:81
 msgid "Utopia"
 msgstr "Utopia"
 
-#: src/frontends/qt4/QDocument.cpp:79
+#: src/frontends/qt4/QDocument.cpp:81
 msgid "Bera Serif"
 msgstr "Bera Serif"
 
-#: src/frontends/qt4/QDocument.cpp:80
+#: src/frontends/qt4/QDocument.cpp:82
 msgid "Concrete Roman"
 msgstr "Concrete Roman"
 
-#: src/frontends/qt4/QDocument.cpp:80
+#: src/frontends/qt4/QDocument.cpp:82
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: src/frontends/qt4/QDocument.cpp:88
+#: src/frontends/qt4/QDocument.cpp:90
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: src/frontends/qt4/QDocument.cpp:88
+#: src/frontends/qt4/QDocument.cpp:90
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:91
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:91
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:91
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: src/frontends/qt4/QDocument.cpp:89
+#: src/frontends/qt4/QDocument.cpp:91
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: src/frontends/qt4/QDocument.cpp:98
+#: src/frontends/qt4/QDocument.cpp:100
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: src/frontends/qt4/QDocument.cpp:99
+#: src/frontends/qt4/QDocument.cpp:101
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: src/frontends/qt4/QDocument.cpp:99
+#: src/frontends/qt4/QDocument.cpp:101
 msgid "Courier"
 msgstr "Courier"
 
-#: src/frontends/qt4/QDocument.cpp:99
+#: src/frontends/qt4/QDocument.cpp:101
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: src/frontends/qt4/QDocument.cpp:99
+#: src/frontends/qt4/QDocument.cpp:101
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: src/frontends/qt4/QDocument.cpp:100
+#: src/frontends/qt4/QDocument.cpp:102
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
+#: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/QDocument.cpp:241
+#: src/frontends/qt4/QDocument.cpp:243
 msgid "Length"
 msgstr "Luzera"
 
-#: src/frontends/qt4/QDocument.cpp:286 src/frontends/qt4/QDocument.cpp:292
-#: src/frontends/qt4/QDocument.cpp:298
+#: src/frontends/qt4/QDocument.cpp:288 src/frontends/qt4/QDocument.cpp:294
+#: src/frontends/qt4/QDocument.cpp:300
 msgid " (not installed)"
 msgstr " (instalatu gabe)"
 
-#: src/frontends/qt4/QDocument.cpp:303
+#: src/frontends/qt4/QDocument.cpp:305
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocument.cpp:304
+#: src/frontends/qt4/QDocument.cpp:306
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocument.cpp:305
+#: src/frontends/qt4/QDocument.cpp:307
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocument.cpp:340
+#: src/frontends/qt4/QDocument.cpp:342
 msgid "empty"
 msgstr "hutsik"
 
-#: src/frontends/qt4/QDocument.cpp:341
+#: src/frontends/qt4/QDocument.cpp:343
 msgid "plain"
 msgstr "laua"
 
-#: src/frontends/qt4/QDocument.cpp:342
+#: src/frontends/qt4/QDocument.cpp:344
 msgid "headings"
 msgstr "izenburuak"
 
-#: src/frontends/qt4/QDocument.cpp:343
+#: src/frontends/qt4/QDocument.cpp:345
 msgid "fancy"
 msgstr "sofistikatua"
 
-#: src/frontends/qt4/QDocument.cpp:359
+#: src/frontends/qt4/QDocument.cpp:361
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocument.cpp:360
+#: src/frontends/qt4/QDocument.cpp:362
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocument.cpp:463
+#: src/frontends/qt4/QDocument.cpp:465
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX-ek huts egin du"
 
-#: src/frontends/qt4/QDocument.cpp:469
+#: src/frontends/qt4/QDocument.cpp:471
 msgid "``text''"
 msgstr "``testua''"
 
-#: src/frontends/qt4/QDocument.cpp:470
+#: src/frontends/qt4/QDocument.cpp:472
 msgid "''text''"
 msgstr "''testua''"
 
-#: src/frontends/qt4/QDocument.cpp:471
+#: src/frontends/qt4/QDocument.cpp:473
 msgid ",,text``"
 msgstr ",,testua``"
 
-#: src/frontends/qt4/QDocument.cpp:472
+#: src/frontends/qt4/QDocument.cpp:474
 msgid ",,text''"
 msgstr ",,testua''"
 
-#: src/frontends/qt4/QDocument.cpp:473
+#: src/frontends/qt4/QDocument.cpp:475
 msgid "<<text>>"
 msgstr "<<testua>>"
 
-#: src/frontends/qt4/QDocument.cpp:474
+#: src/frontends/qt4/QDocument.cpp:476
 msgid ">>text<<"
 msgstr ">>testua<<"
 
-#: src/frontends/qt4/QDocument.cpp:490
+#: src/frontends/qt4/QDocument.cpp:492
 msgid "Numbered"
 msgstr "Zenbatuta"
 
-#: src/frontends/qt4/QDocument.cpp:491
+#: src/frontends/qt4/QDocument.cpp:493
 msgid "Appears in TOC"
 msgstr "Gaien aurkibidean dago"
 
-#: src/frontends/qt4/QDocument.cpp:511
+#: src/frontends/qt4/QDocument.cpp:513
 msgid "Author-year"
 msgstr "Egile-urtea"
 
-#: src/frontends/qt4/QDocument.cpp:512
+#: src/frontends/qt4/QDocument.cpp:514
 msgid "Numerical"
 msgstr "Numerikoa"
 
-#: src/frontends/qt4/QDocument.cpp:554
+#: src/frontends/qt4/QDocument.cpp:556
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Erabilkaitza: %1$s"
 
-#: src/frontends/qt4/QDocument.cpp:580 src/frontends/qt4/QDocument.cpp:593
+#: src/frontends/qt4/QDocument.cpp:582 src/frontends/qt4/QDocument.cpp:595
 msgid "Document Class"
 msgstr "Dokumentu-klasea"
 
-#: src/frontends/qt4/QDocument.cpp:582
+#: src/frontends/qt4/QDocument.cpp:584
 msgid "Text Layout"
 msgstr "Testu-diseinua"
 
-#: src/frontends/qt4/QDocument.cpp:583
+#: src/frontends/qt4/QDocument.cpp:585
 msgid "Page Layout"
 msgstr "Orri-diseinua"
 
-#: src/frontends/qt4/QDocument.cpp:584
+#: src/frontends/qt4/QDocument.cpp:586
 msgid "Page Margins"
 msgstr "Orri-marjinak"
 
-#: src/frontends/qt4/QDocument.cpp:586
+#: src/frontends/qt4/QDocument.cpp:588
 msgid "Numbering & TOC"
 msgstr "Numerazioa eta Aurkibidea"
 
-#: src/frontends/qt4/QDocument.cpp:588
+#: src/frontends/qt4/QDocument.cpp:590
 msgid "Math Options"
 msgstr "Matematika aukerak"
 
-#: src/frontends/qt4/QDocument.cpp:589
+#: src/frontends/qt4/QDocument.cpp:591
 msgid "Float Placement"
 msgstr "Mugikor-kokapena"
 
-#: src/frontends/qt4/QDocument.cpp:590
+#: src/frontends/qt4/QDocument.cpp:592
 msgid "Bullets"
 msgstr "Buletak"
 
-#: src/frontends/qt4/QDocument.cpp:591
+#: src/frontends/qt4/QDocument.cpp:593
 msgid "Branches"
 msgstr "Adarrak"
 
-#: src/frontends/qt4/QDocument.cpp:592 src/frontends/qt4/QDocument.cpp:604
+#: src/frontends/qt4/QDocument.cpp:594 src/frontends/qt4/QDocument.cpp:606
 msgid "LaTeX Preamble"
 msgstr "LaTeX hitzaurrea"
 
-#: src/frontends/qt4/QDocument.cpp:1412
+#: src/frontends/qt4/QDocument.cpp:840 src/frontends/qt4/QDocument.cpp:1484
+#, fuzzy
+msgid "Unapplied changes"
+msgstr "Aldaketen aztarna"
+
+#: src/frontends/qt4/QDocument.cpp:841 src/frontends/qt4/QDocument.cpp:1485
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:843 src/frontends/qt4/QDocument.cpp:1487
+msgid "&Dismiss"
+msgstr ""
+
+#: src/frontends/qt4/QDocument.cpp:1422
 msgid "Document Settings"
 msgstr "Dokumentu-ezarpenak"
 
@@ -16032,47 +16102,47 @@ msgstr "G&arbitu"
 msgid "Clear Double Page"
 msgstr "G&arbitu"
 
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:146 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "Erref: "
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "Ekuazioa"
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "EkErref: "
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "Orri-zenbakia"
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "Orrialdea: "
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "Testu-erako orri-zenbakia"
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "Testu-orria: "
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "Estandarra+Testu-orria"
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "Erref+Testua: "
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "ErrefGisakoa"
 
-#: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormatua:"
@@ -16452,6 +16522,21 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#~ msgid "%1$d words in selection."
+#~ msgstr "%1$d hitz hautapenean."
+
+#~ msgid "%1$d words in document."
+#~ msgstr "%1$d hitz dokumentuan."
+
+#~ msgid "One word in selection."
+#~ msgstr "Hitz bat hautapenean."
+
+#~ msgid "One word in document."
+#~ msgstr "Hitz bat dokumentuan."
+
+#~ msgid "Count words"
+#~ msgstr "Zenbatu hitzak"
 
 #~ msgid "Encoding error"
 #~ msgstr "Kodeketako errorea"
