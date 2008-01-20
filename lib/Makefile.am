@@ -147,6 +147,10 @@ dist_itexamples_DATA = \
 	examples/it/ItemizeBullets.lyx \
 	examples/it/splash.lyx
 
+jaexamplesdir = $(pkgdatadir)/examples/ja
+dist_itexamples_DATA = \
+	examples/ja/splash.lyx
+
 nlexamplesdir = $(pkgdatadir)/examples/nl
 dist_nlexamples_DATA = \
 	examples/nl/multicol.lyx \
