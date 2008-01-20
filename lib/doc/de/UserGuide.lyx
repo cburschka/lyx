@@ -187,7 +187,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
+letzte Änderung: 18.
  Januar 2008
 \end_layout
 
@@ -14138,6 +14138,10 @@ X-Code
 \end_layout
 
 \begin_layout Subsubsection
+Eigenheiten der deutschen Sprache
+\end_layout
+
+\begin_layout Paragraph
 Zusammengesetzte Worte
 \begin_inset LatexCommand label
 name "Zusammengesetzten-Worte"
@@ -14290,6 +14294,69 @@ end{sloppypar}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Weggelassene Wortteile
+\end_layout
+
+\begin_layout Standard
+Wenn Sie einen Satz wie den folgenden schreiben:
+\end_layout
+
+\begin_layout Standard
+\noindent
+Weil LyX LaTeX im Hintergrund benutzt, unterstützt es viele LaTeX-Befehle
+ und -Konstrukte, aber nicht alle.
+\end_layout
+
+\begin_layout Standard
+kann es wie hier vorkommen, dass die Zeile nach dem 
+\begin_inset Quotes gld
+\end_inset
+
+-
+\begin_inset Quotes grd
+\end_inset
+
+-Zeichen umgebrochen wird, was natürlich Unsinn ist.
+ Dann verwendet man am besten auch die bereits oben erwähnte 
+\family typewriter
+
+\backslash
+mbox
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+Weil LyX LaTeX im Hintergrund benutzt, unterstützt es viele LaTeX-Befehle
+ und 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+-Konstrukte
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+, aber nicht alle.
 \end_layout
 
 \begin_layout Subsection
