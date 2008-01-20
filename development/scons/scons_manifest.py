@@ -2597,6 +2597,11 @@ lib_examples_it_files = Split('''
 ''')
 
 
+lib_examples_ja_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_nl_files = Split('''
     multicol.lyx
     opsommingstekens.lyx
