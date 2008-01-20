@@ -1,0 +1,149 @@
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language japanese
+\inputencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXへようこそ！
+\end_layout
+
+\begin_layout Section*
+LyXを使うために最初に知っておくべきことがら
+\end_layout
+
+\begin_layout Enumerate
+LyXはすばらしい取扱説明書群を同梱しています。−−−これを使ってください！まず
+\family sans
+ヘルプ(
+\bar under
+H
+\bar default
+)\SpecialChar \menuseparator
+LyXの紹介(
+\bar under
+I
+\bar default
+)を選んでください。これは、各
+\family default
+取扱
+\family sans
+説明書のきわめて簡単な紹介をしています。その後、ヘルプ(
+\bar under
+H
+\bar default
+)\SpecialChar \menuseparator
+チュートリアル(
+\bar under
+T
+\bar default
+)
+\family default
+を読んで、LyXの使い方を学んでください。
+\end_layout
+
+\begin_layout Enumerate
+LyXは、われわれが「文書プロセッサ」と呼ぶところのものです。デザインとして、通常のワードプロセッサとは違います−−−文書を書くことを簡単にするのです。しかし、
+違いはわずかですので、恐れることはありません。取扱説明書を読めば、すべてあきらかになるでしょう。
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+取扱説明書を読んでくださいともう言いましたっけ。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+LyXの出力は素晴らしく見栄えがします！ご覧になりたければ、たったいま
+\family sans
+表示(
+\bar under
+V
+\bar default
+)\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+VI を選んでください。
+\end_layout
+
+\begin_layout Enumerate
+なんといっても、LyXは、（ほとんど）全てのLaTeXの機能を実現することができます。それから、そう、LyXはLaTeXファイルをインポートすることができます。
+熟練したLaTeXユーザーの方々は、チュートリアルの他の部分はざっと飛ばし読みして、「LaTeXユーザーのためのLyX」という章を読んでください。（その他の方々
+へ：LyXを使うのにLaTeXを知っている必要はありませんので、ご安心ください。）
+\end_layout
+
+\begin_layout Enumerate
+LyXは、英語以外の言語を読み書きする方に向けた機能をたくさん備えています。それに加えて、キーの割り当てやツールバーや、その他多くの特徴が、たいへん自由に設定可
+能です。詳しくは、
+\family sans
+ヘルプ(
+\bar under
+H
+\bar default
+)\SpecialChar \menuseparator
+カスタマイズ(
+\bar under
+C
+\bar default
+)
+\family default
+を見てください。
+\end_layout
+
+\begin_layout Enumerate
+LyXのホームページは、
+\family typewriter
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
+
+\end_inset
+
+
+\family default
+にあります。LyXの情報を得たり、LyXのメーリングリストに加入したり、LyXのグラフィカル・ツアーを見てみたり、さまざまなことができます。
+\end_layout
+
+\end_body
+\end_document
