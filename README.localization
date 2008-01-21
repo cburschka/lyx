@@ -45,7 +45,7 @@ then you will see in it the untranslated strings and a place to write your
 translation for them.
 
 
-4) WHAT SHOULD I DO WITH THE '&', '|', '$, '%' AND [[]] CHARACTERS?
+4) WHAT SHOULD I DO WITH THE '&', '|', '$, '%' {} AND [[]] CHARACTERS?
 
 '&' stands for underlined characters (shortcut) in dialog boxes.
 '|' stands for underlined characters in menus.
@@ -65,6 +65,10 @@ experience crashes when running LyX.
 [[Context]] is used to distinguish otherwise identical strings, which could
 have different translation dependent on the Context. [[Context]] appears only
 in msgid string and should not be repeated in the translated version.
+
+{} refer to counters and must not be translated. Example would be:
+msgid "Algorithm \\arabic{theorem}"
+msgstr "Algoritmus \\arabic{theorem}"
 
 
 5) WHAT IS pocheck.pl AND HOW DO I USE IT?
