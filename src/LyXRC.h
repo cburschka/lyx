@@ -124,6 +124,7 @@ public:
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
+		RC_SHOW_MACRO_LABEL,
 		RC_SPELL_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
@@ -340,6 +341,8 @@ public:
 	std::string default_language;
 	///
 	bool cursor_follows_scrollbar;
+	///
+	bool show_macro_label;
 	///
 	bool dialogs_iconify_with_main;
 	///

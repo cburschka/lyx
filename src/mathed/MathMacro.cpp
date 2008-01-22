@@ -23,6 +23,7 @@
 #include "Cursor.h"
 #include "support/debug.h"
 #include "LaTeXFeatures.h"
+#include "LyXRC.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "Undo.h"
@@ -198,7 +199,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		macro_->unlock();
 
 		// calculate dimension with label while editing
-		if (editing_[mi.base.bv]) {
+		if (lyxrc.show_macro_label && editing_[mi.base.bv]) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension namedim;
@@ -301,7 +302,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (editing_[pi.base.bv]) {
+		if (lyxrc.show_macro_label && editing_[pi.base.bv]) {
 			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
@@ -309,24 +310,25 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			font.setColor(Color_mathmacrolabel);
 			Dimension namedim;
 			mathed_string_dim(font, name(), namedim);
-#if 0
-			pi.pain.fillRectangle(x, y - dim.asc, 2 + namedim.width() + 2, dim.height(), Color_mathmacrobg);
-			pi.pain.text(x + 2, y, name(), font);
-			expx += 2 + namew + 2;
-#endif
+
 			pi.pain.fillRectangle(x, y - dim.asc, dim.wid, 1 + namedim.height() + 1, Color_mathmacrobg);
 			pi.pain.text(x + 1, y - dim.asc + namedim.asc + 2, name(), font);
 			expx += (dim.wid - expanded_.cell(0).dimension(*pi.base.bv).width()) / 2;
+		}
 
+		if (editing_[pi.base.bv]) {
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
 			expanded_.cell(0).draw(pi, expx, expy);
 			pi.pain.leaveMonochromeMode();
+
+			if (lyxrc.show_macro_label)
+				pi.pain.rectangle(x, y - dim.asc, dim.wid, 
+						  dim.height(), Color_mathmacroframe);
 		} else
 			expanded_.cell(0).draw(pi, expx, expy);
 
-		// draw frame while editing
-		if (editing_[pi.base.bv])
-			pi.pain.rectangle(x, y - dim.asc, dim.wid, dim.height(), Color_mathmacroframe);
+		if (!lyxrc.show_macro_label)
+			drawMarkers(pi, x, y);
 	}
 
 	// edit mode changed?

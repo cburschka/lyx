@@ -214,6 +214,13 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="showMacroLabelCB" >
+        <property name="text" >
+         <string>Show a box with the macro name around Math Macros</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -317,6 +324,7 @@ p, li { white-space: pre-wrap; }
  <tabstops>
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
+  <tabstop>tooltipCB</tabstop>
   <tabstop>allowGeometrySessionCB</tabstop>
   <tabstop>restoreCursorCB</tabstop>
   <tabstop>loadSessionCB</tabstop>
@@ -324,6 +332,9 @@ p, li { white-space: pre-wrap; }
   <tabstop>autoSaveSB</tabstop>
   <tabstop>lastfilesSB</tabstop>
   <tabstop>cursorFollowsCB</tabstop>
+  <tabstop>sortEnvironmentsCB</tabstop>
+  <tabstop>showMacroLabelCB</tabstop>
+  <tabstop>pixmapCacheCB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>

@@ -137,6 +137,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
+	{ "\\show_macro_label", LyXRC::RC_SHOW_MACRO_LABEL },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
@@ -260,6 +261,7 @@ void LyXRC::setDefaults() {
 	tex_allows_spaces = false;
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
+	show_macro_label = true;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
@@ -834,6 +836,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			if (lexrc.next()) {
 				cursor_follows_scrollbar = lexrc.getBool();
+			}
+			break;
+
+		case RC_SHOW_MACRO_LABEL:
+			if (lexrc.next()) {
+				show_macro_label = lexrc.getBool();
 			}
 			break;
 
@@ -1571,6 +1579,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
 			   << convert<string>(cursor_follows_scrollbar) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_SHOW_MACRO_LABEL:
+		if (ignore_system_lyxrc ||
+		    show_macro_label
+		    != system_lyxrc.show_macro_label) {
+			os << "\\show_macro_label "
+			   << convert<string>(show_macro_label) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2383,6 +2400,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = _("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+
+	case RC_SHOW_MACRO_LABEL:
+		str = _("Show a small box around a Math Macro with the macro name when the cursor is inside.");
 		break;
 
 	case RC_CUSTOM_EXPORT_COMMAND:
