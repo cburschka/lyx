@@ -143,7 +143,7 @@ dist_itexamples_DATA = \
 	examples/it/splash.lyx
 	
 jaexamplesdir = $(pkgdatadir)/examples/ja
-dist_itexamples_DATA = \
+dist_jaexamples_DATA = \
 	examples/ja/splash.lyx
 
 nlexamplesdir = $(pkgdatadir)/examples/nl
