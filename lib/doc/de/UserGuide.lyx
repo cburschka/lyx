@@ -18,12 +18,7 @@
 
 % Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}
- {\usepackage{lmodern}} % if it exists
- {% wenn nicht vorhanden
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier}
- } % Ende des Nein-Zweiges
+ {\usepackage{lmodern}}{}
 
 % Alle Querverweise und URLs als Link darstellen
 % In der PDF-Ausgabe
@@ -187,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 18.
+letzte Änderung: 22.
  Januar 2008
 \end_layout
 

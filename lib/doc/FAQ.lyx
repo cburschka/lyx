@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -17,12 +17,16 @@
 \paperfontsize default
 \spacing single
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -33,6 +37,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -62,28 +67,21 @@ This is the list of Frequently Asked Questions for LyX, the Open Source
  document processor that provides a What-You-See-Is-What-You-Mean environment
  for producing high quality documents.
  For further help, you may wish to contact the LyX User Group mailing list
- at
-\family default
- 
+ at 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
-
-\emph default
  
 \emph on
 after
 \emph default
  you have read through the docs.
-
-\emph default
  
-\emph on
-
 \end_layout
 
 \begin_layout Abstract
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -148,32 +146,24 @@ So, line- and page-breaks aren't your problem anymore.
  anymore.
  Recalling what font you used for all of your section headings isn't your
  problem anymore.
- You tell LyX (and LaTeX) what
-\emph default
- 
+ You tell LyX (and LaTeX) what 
 \emph on
 kind
 \emph default
- of document you're editing and what
-\emph default
- 
+ of document you're editing and what 
 \emph on
 type
 \emph default
  of paragraph this-or-that text is, the computer can typeset it accordingly.
  Of course you can also still do some low-level formatting for fine-tuning.
  However, the proper way with LyX is to tell the computer what the text
-
-\emph default
  
 \emph on
 is
 \emph default
 , not what it should look like.
  So, we like to say that LyX gives you WYSIWYM editing (What You See Is
- What You
-\emph default
- 
+ What You 
 \emph on
 Mean
 \emph default
@@ -206,6 +196,7 @@ Dissertations (260 pages in a single document, longer using include files)
 for example, 
 \begin_inset LatexCommand url
 target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
+
 \end_inset
 
 
@@ -238,6 +229,7 @@ Books
 see 
 \begin_inset LatexCommand url
 target "http://www.postgresql.org/docs/awbook.html"
+
 \end_inset
 
  for an example on PostgreSQL
@@ -300,6 +292,7 @@ Where do I start?
 The website 
 \begin_inset LatexCommand url
 target "www.lyx.org"
+
 \end_inset
 
  is the first place to go for anything related to LyX.
@@ -318,6 +311,7 @@ Tutorial
 Another basic introductory guide may be found at 
 \begin_inset LatexCommand url
 target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
+
 \end_inset
 
 
@@ -329,17 +323,8 @@ Does LyX run on my computer?
 
 \begin_layout Standard
 At this time, you need to have the X Window system to run LyX.
- OS/2 and Win32 ports exist, but you need to have an Xserver
-\emph on
-
-\emph default
- 
-installed
-\emph on
-
-\emph default
- 
-and running on these systems.
+ OS/2 and Win32 ports exist, but you need to have an Xserver installed and
+ running on these systems.
  LyX is known to run on the following platforms (and probably a zillion
  others):
 \end_layout
@@ -399,6 +384,7 @@ Version 1.0 of xforms is available under the LGPL and its sources (and binaries)
  can be found from 
 \begin_inset LatexCommand url
 target "http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz"
+
 \end_inset
 
 , which however requires some tinkering to get running.
@@ -416,6 +402,7 @@ Where should I look on the World Wide Web for LyX stuff?
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.lyx.org"
+
 \end_inset
 
 
@@ -424,6 +411,7 @@ target "www.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "bugzilla.lyx.org"
+
 \end_inset
 
 , if you want to report a bug in LyX.
@@ -432,6 +420,7 @@ target "bugzilla.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.devel.lyx.org"
+
 \end_inset
 
 , if you are interested in the real blood and guts.
@@ -445,6 +434,7 @@ Known mirror sites include:
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.mx.lyx.org"
+
 \end_inset
 
 
@@ -453,6 +443,7 @@ target "www.mx.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.no.lyx.org"
+
 \end_inset
 
 
@@ -461,6 +452,7 @@ target "www.no.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.it.lyx.org"
+
 \end_inset
 
 
@@ -543,6 +535,7 @@ docs
 ; definitely see 
 \begin_inset LatexCommand url
 target "http://www.lyx.org/internet/mailing.php3"
+
 \end_inset
 
  for the full details.
@@ -565,6 +558,7 @@ Okay, wise guy! Where are they archived?
 Announce: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
+
 \end_inset
 
 
@@ -574,6 +568,7 @@ target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 Users: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+
 \end_inset
 
 
@@ -583,6 +578,7 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 Devel: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
+
 \end_inset
 
 
@@ -599,9 +595,7 @@ Can I read/write LaTeX files?
 \begin_layout Standard
 Yes.
  LyX outputs LaTeX files that are either machine or human friendly.
- The
-\family default
- 
+ The 
 \family typewriter
 tex2lyx
 \family default
@@ -650,9 +644,7 @@ word2x produces LaTeX, HTML and plain text output.
 wvware (found at www.wvware.com, or the abisource CVS repository for the latest).
  This was previously called msWordView.
  Very good, only tends to produce visually formatted LaTeX/HTML.
- Is however highly configurable: a config file
-\family default
- 
+ Is however highly configurable: a config file 
 \family typewriter
 wvLaTeX.xml
 \family default
@@ -765,6 +757,7 @@ Most of the above packages are available as precompiled binaries for a variety
  be obtained from 
 \begin_inset LatexCommand url
 target "ftp://ftp.lyx.org/pub/lyx/bin/"
+
 \end_inset
 
 .
@@ -806,9 +799,7 @@ insert the following LaTeX code
 \end_layout
 
 \begin_layout Enumerate
-Click the TeX toolbar button or select
-\family default
- 
+Click the TeX toolbar button or select 
 \family sans
 \bar under
 I
@@ -839,9 +830,7 @@ A lot of people have been complaining about the ERT inset introduced in
 \end_layout
 
 \begin_layout Itemize
-You can collapse the ERT like any other floats by using
-\family default
- 
+You can collapse the ERT like any other floats by using 
 \family sans
 \bar under
 E
@@ -853,14 +842,11 @@ l
 \bar default
 ose float
 \family default
- (bound to
-\family default
- 
+ (bound to 
 \family sans
 C-i
 \family default
- 
-by default)
+ by default)
 \end_layout
 
 \begin_layout Itemize
@@ -912,6 +898,7 @@ how do I?
  topics, see Herbert Voss' spectacular collection at 
 \begin_inset LatexCommand url
 target "http://tug.org/TeXnik/"
+
 \end_inset
 
 .
@@ -928,9 +915,7 @@ How do I get rid of the date under the title?
 \end_layout
 
 \begin_layout Standard
-The simplest solution is to open the menu
-\family default
- 
+The simplest solution is to open the menu 
 \family sans
 \bar under
 L
@@ -1008,45 +993,33 @@ Is it possible to do this for figures and tables as well?
 \end_layout
 
 \begin_layout Standard
-Replace the phrase
-\family default
- 
+Replace the phrase 
 \family typewriter
 
 \backslash
 theequation
 \family default
- with
-\family default
- 
+ with 
 \family typewriter
 
 \backslash
 thetable
 \family default
- or
-\family default
- 
+ or 
 \family typewriter
 
 \backslash
 thefigure
 \family default
- and then replace
-\family default
- 
+ and then replace 
 \family typewriter
 equation
 \family default
- with
-\family default
- 
+ with 
 \family typewriter
 table
 \family default
- or
-\family default
- 
+ or 
 \family typewriter
 figure
 \family default
@@ -1061,9 +1034,7 @@ How do I change to footnote numbers to symbols (star, dagger, etc.)?
 \end_layout
 
 \begin_layout Standard
-Add
-\family default
- 
+Add 
 \family typewriter
 
 \backslash
@@ -1188,49 +1159,37 @@ How do I insert a fixed amount of horizontal space?
 \end_layout
 
 \begin_layout Standard
-There are various ERT commands to use:
-\family default
- 
+There are various ERT commands to use: 
 \family typewriter
 
 \backslash
 enspace
 \family default
- (1/2 em),
-\family default
- 
+ (1/2 em), 
 \family typewriter
 
 \backslash
 thinspace
 \family default
- (1/6 em),
-\family default
- 
+ (1/6 em), 
 \family typewriter
 
 \backslash
 negthinspace
 \family default
- (-1/6 em),
-\family default
- 
+ (-1/6 em), 
 \family typewriter
 
 \backslash
 quad
 \family default
- (1 em),
-\family default
- 
+ (1 em), 
 \family typewriter
 
 \backslash
 qquad
 \family default
- (2 em),
-\family default
- 
+ (2 em), 
 \family typewriter
 
 \backslash
@@ -1258,41 +1217,29 @@ m
 \end_inset
 
  in the current font.
- The length argument of the
-\family default
- 
+ The length argument of the 
 \family typewriter
 
 \backslash
 hspace
 \family default
- command is any valid TeX length; units can be
-\family default
- 
+ command is any valid TeX length; units can be 
 \family typewriter
 mm
 \family default
- (millimeters),
-\family default
- 
+ (millimeters), 
 \family typewriter
 cm
 \family default
- (centimeters),
-\family default
- 
+ (centimeters), 
 \family typewriter
 in
 \family default
- (inches),
-\family default
- 
+ (inches), 
 \family typewriter
 pt
 \family default
- (points = 1/72 inch),
-\family default
- 
+ (points = 1/72 inch), 
 \family typewriter
 em
 \family default
@@ -1304,9 +1251,7 @@ m
 \begin_inset Quotes erd
 \end_inset
 
-), or
-\family default
- 
+), or 
 \family typewriter
 ex
 \family default
@@ -1319,17 +1264,13 @@ x
 \end_inset
 
 ).
- Examples:
-\family default
- 
+ Examples: 
 \family typewriter
 
 \backslash
 hspace{1in}
 \family default
-,
-\family default
- 
+, 
 \family typewriter
 
 \backslash
@@ -1344,9 +1285,7 @@ How can I make citations show up as [1,2,3,6] or [1-3,6] rather than [1][2][3][6
 \end_layout
 
 \begin_layout Standard
-Insert
-\family default
- 
+Insert 
 \family typewriter
 
 \backslash
@@ -1428,17 +1367,13 @@ How do I get LyX to put the figure exactly where I want it?
 \end_layout
 
 \begin_layout Standard
-Select
-\family default
- 
+Select 
 \family sans
 Layout\SpecialChar \menuseparator
 Document
 \family default
 .
- In the
-\family default
- 
+ In the 
 \family sans
 Float Placement
 \family default
@@ -1500,18 +1435,14 @@ too many unprocessed floats
 \end_layout
 
 \begin_layout Standard
-The easiest way to work around this is to insert a
-\family default
- 
+The easiest way to work around this is to insert a 
 \family typewriter
 
 \backslash
 clearpage
 \family default
  command somewhere in the document where a pagebreak would be appropriate.
- While a pagebreak would simply start a new page,
-\family default
- 
+ While a pagebreak would simply start a new page, 
 \family typewriter
 
 \backslash
@@ -1519,9 +1450,7 @@ clearpage
 \family default
  processes all remaining floats, then begins a new page.
  This may lead to an unsightly stack of figures in the middle of your document;
- you may need to use several
-\family default
- 
+ you may need to use several 
 \family typewriter
 
 \backslash
@@ -1616,9 +1545,7 @@ and that is all you need to do.
 If you have an older version of LyX, you can use the same syntax if you
  are running X, because it will cause LyX windows to pop up onto your screen.
  If you have the Xvfb command available, you can resort to a deeper level
- of subterfuge (under
-\family default
- 
+ of subterfuge (under 
 \family typewriter
 bash
 \family default
@@ -1654,9 +1581,7 @@ How do I create PDF files from my LyX document?
 \end_layout
 
 \begin_layout Standard
-Read Section 5.3.6 of the
-\emph default
- 
+Read Section 5.3.6 of the 
 \emph on
 Extended Features
 \emph default
@@ -1664,9 +1589,7 @@ Extended Features
 \end_layout
 
 \begin_layout Subsection
-Why do the fonts in my document look so bad in
-\family default
- 
+Why do the fonts in my document look so bad in 
 \family typewriter
 acroread
 \family default
@@ -1674,9 +1597,7 @@ acroread
 \end_layout
 
 \begin_layout Standard
-The problem and the solution are also discussed in Section 5.3.6 of the
-\emph default
- 
+The problem and the solution are also discussed in Section 5.3.6 of the 
 \emph on
 Extended Features
 \emph default
@@ -1702,6 +1623,7 @@ A couple of users reported that they couldn't get recent Ghostscript versions
 \begin_layout Standard
 \begin_inset LatexCommand url
 target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
+
 \end_inset
 
 
@@ -1748,18 +1670,14 @@ You still haven't answered my question!
 Then RTFM, especially the Tutorial.
  The documentation really is quite good.
  (Besides, I helped write parts of it :-) If you think your problem may
- be LaTeX related, then look in
-\emph default
- 
+ be LaTeX related, then look in 
 \emph on
 LaTeX, A Document Preparation System, 2nd Ed.
 
 \emph default
  by Leslie Lamport (1994).
  There are also numerous example files included with LyX.
- Try
-\family default
- 
+ Try 
 \family sans
 File\SpecialChar \menuseparator
 Open\SpecialChar \menuseparator
@@ -1811,9 +1729,7 @@ Feedback is invited.
 
 \begin_layout Standard
 Send comments, suggested additions, world record document claims, etc.
- to
-\emph default
- 
+ to 
 \emph on
 lyx-docs@lists.lyx.org.
 \end_layout

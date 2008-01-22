@@ -10,12 +10,7 @@
 
 % Schriften für bessere PDF-Ansichten
 \IfFileExists{lmodern.sty}
- {\usepackage{lmodern}} % wenn vorhanden
- {% wenn nicht vorhanden
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier}
- } % Ende des Nein-Zweiges
+ {\usepackage{lmodern}}{}
 
 % Alle Querverweise und URLs als Link darstellen
 % In der PDF-Ausgabe
@@ -307,7 +302,7 @@ Version 1.5.4
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 14.
+letzte Änderung: 22.
  Januar 2008
 \end_layout
 

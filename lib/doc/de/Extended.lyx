@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -18,12 +18,7 @@
 
 % set fonts for nicer pdf view
 \IfFileExists{lmodern.sty}
- {\usepackage{lmodern}} % if it exists
- {% if it exists not
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier}
- } % end if it exists not
+ {\usepackage{lmodern}}{}
 
 % link all cross references and URLs
 % in pdf output
@@ -147,8 +142,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 30.
- Oktober 2007
+letzte Änderung: 22.
+ Januar 2008
 \end_layout
 
 \begin_layout Standard

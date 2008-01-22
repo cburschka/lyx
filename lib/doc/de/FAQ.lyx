@@ -1,10 +1,10 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage{a4wide}
+
 \end_preamble
 \language ngerman
 \inputencoding auto
@@ -20,12 +20,16 @@
 \paperfontsize default
 \spacing single
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -36,6 +40,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -71,8 +76,8 @@ Peter Sütterlin.
 \end_layout
 
 \begin_layout Date
-28.\InsetSpace ~
-September 2007
+22.\InsetSpace ~
+Januar 2008
 \end_layout
 
 \begin_layout Abstract

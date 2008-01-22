@@ -1,4 +1,4 @@
-#LyX 1.5.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -17,10 +17,7 @@
 \ifpdf % if pdflatex is used
 
  % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
-  {\usepackage[scaled=0.92]{helvet}
-    \usepackage{mathptmx}
-    \usepackage{courier} }
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
