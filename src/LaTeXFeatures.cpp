@@ -557,7 +557,7 @@ string const LaTeXFeatures::getPackages() const
 		packages << (upcase ? "\\DoubleSpacing\n" : "\\doublespacing\n");
 		break;
 	case Spacing::Other:
-		packages << (upcase ? "\\setSingleSpace{" : "\\setstretch{")
+		packages << (upcase ? "\\setSpacing{" : "\\setstretch{")
 			 << params_.spacing().getValue() << "}\n";
 		break;
 	}
