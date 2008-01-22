@@ -181,7 +181,8 @@ private:
 	///
 	void collectOptionalParameters(Cursor * cur, 
 		const size_type numOptionalParams, std::vector<MathData> & params, 
-		size_t & pos, const pos_type macroPos, const int thisPos, const int thisSlice);
+		size_t & pos, MathAtom & scriptToPutAround,
+		const pos_type macroPos, const int thisPos, const int thisSlice);
 	///
 	void collectParameters(Cursor * cur, 
 		const size_type numParams, std::vector<MathData> & params, 

@@ -561,7 +561,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	// find arguments behind the macro
 	if (!interactiveInit) {
 		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
-			macroPos, thisPos, thisSlice);
+			scriptToPutAround, macroPos, thisPos, thisSlice);
 		collectParameters(cur, macroNumArgs, detachedArgs, p,
 			scriptToPutAround, macroPos, thisPos, thisSlice);
 	}
@@ -614,10 +614,13 @@ void MathData::attachMacroParameters(Cursor * cur,
 
 void MathData::collectOptionalParameters(Cursor * cur, 
 	const size_type numOptionalParams, vector<MathData> & params, 
-	size_t & pos, const pos_type macroPos, const int thisPos, const int thisSlice)
+	size_t & pos, MathAtom & scriptToPutAround,
+	const pos_type macroPos, const int thisPos, const int thisSlice)
 {
 	// insert optional arguments?
-	while (params.size() < numOptionalParams && pos < size()) {
+	while (params.size() < numOptionalParams 
+	       && pos < size()
+	       && !scriptToPutAround.nucleus()) {
 		// is a [] block following which could be an optional parameter?
 		if (operator[](pos)->getChar() != '[')
 			break;
@@ -625,9 +628,23 @@ void MathData::collectOptionalParameters(Cursor * cur,
 		// found possible optional argument, look for "]"
 		size_t right = pos + 1;
 		for (; right < size(); ++right) {
-			if (operator[](right)->getChar() == ']')
+			MathAtom & cell = operator[](right);
+
+			if (cell->getChar() == ']')
 				// found right end
 				break;
+			
+			// maybe "]" with a script around?
+			InsetMathScript * script = cell.nucleus()->asScriptInset();
+			if (!script)
+				continue;
+			if (script->nuc().size() != 1)
+				continue;
+			if (script->nuc()[0]->getChar() == ']') {
+				// script will be put around the macro later
+				scriptToPutAround = cell;
+				break;
+			}
 		}
 		
 		// found?
@@ -676,7 +693,9 @@ void MathData::collectParameters(Cursor * cur,
 	const pos_type macroPos, const int thisPos, const int thisSlice) 
 {
 	// insert normal arguments
-	for (; params.size() < numParams && pos < size();) {
+	while (params.size() < numParams
+	       && pos < size()
+	       && !scriptToPutAround.nucleus()) {
 		MathAtom & cell = operator[](pos);
 		
 		// fix cursor
