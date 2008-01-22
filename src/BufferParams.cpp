@@ -863,6 +863,10 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	if (use_esint == package_on)
 		features.require("esint");
 
+	// Document-level line spacing
+	if (spacing().getSpace() != Spacing::Single && !spacing().isDefault())
+		features.require("setspace");
+
 	// the bullet shapes are buffer level not paragraph level
 	// so they are tested here
 	for (int i = 0; i < 4; ++i) {
@@ -1205,6 +1209,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// The optional packages;
 	docstring lyxpreamble(from_ascii(features.getPackages()));
+
+	// Line spacing
+	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
 
 	// We try to load babel late, in case it interferes
 	// with other packages.	But some packages also need babel to be loaded

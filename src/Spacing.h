@@ -17,8 +17,8 @@
 #else
 
 #include "support/strfwd.h"
-#include <string>
 
+#include <string>
 
 namespace lyx {
 
@@ -64,6 +64,9 @@ public:
 	/// useSetSpace is true when using the variant supported by
 	/// the memoir class.
 	std::string const writeEnvirEnd(bool useSetSpace) const;
+	/// useSetSpace is true when using the variant supported by
+	/// the memoir class.
+	std::string const writePreamble(bool useSetSpace) const;
 
 private:
 	///

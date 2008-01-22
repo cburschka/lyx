@@ -544,7 +544,8 @@ char const * simplefeatures[] = {
 	"enumitem",
 	"endnotes",
 	"ifthen",
-	"amsthm"
+	"amsthm",
+	"listings"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -652,30 +653,8 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// setspace.sty
-	if ((isRequired("setspace") 
-	     || ((params_.spacing().getSpace() != Spacing::Single
-		  && !params_.spacing().isDefault())))
-	    && !tclass.provides("SetSpace")) {
+	if (mustProvide("setspace") && !tclass.provides("SetSpace"))
 		    packages << "\\usepackage{setspace}\n";
-	}
-	bool const upcase = tclass.provides("SetSpace");
-	switch (params_.spacing().getSpace()) {
-	case Spacing::Default:
-	case Spacing::Single:
-		// we dont use setspace.sty so dont print anything
-		//packages += "\\singlespacing\n";
-		break;
-	case Spacing::Onehalf:
-		packages << (upcase ? "\\OnehalfSpacing\n" : "\\onehalfspacing\n");
-		break;
-	case Spacing::Double:
-		packages << (upcase ? "\\DoubleSpacing\n" : "\\doublespacing\n");
-		break;
-	case Spacing::Other:
-		packages << (upcase ? "\\setSingleSpace{" : "\\setstretch{")
-			 << params_.spacing().getValue() << "}\n";
-		break;
-	}
 
 	// amssymb.sty
 	if (mustProvide("amssymb")
@@ -723,9 +702,6 @@ string const LaTeXFeatures::getPackages() const
 			    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
 			    "\\makenomenclature\n";
 	}
-
-	if (mustProvide("listings"))
-		packages << "\\usepackage{listings}\n";
 
 	return packages.str();
 }
