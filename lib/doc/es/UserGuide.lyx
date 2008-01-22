@@ -17,10 +17,7 @@
 \ifpdf % if pdflatex is used
 
  % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
- \usepackage[scaled=0.92]{helvet}
- \usepackage{mathptmx}
- \usepackage{courier} }
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
@@ -147,7 +144,7 @@ del t
 \newline
 
 \newline
-Versión 1.5.3
+Versión 1.5.4
 \end_layout
 
 \begin_layout Standard

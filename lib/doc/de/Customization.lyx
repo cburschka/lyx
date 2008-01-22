@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -18,12 +18,7 @@
 
 % Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}
- {\usepackage{lmodern}} % if it exists
- {% wenn nicht vorhanden
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier}
- } % Ende des Nein-Zweiges
+ {\usepackage{lmodern}}{}
 
 % Alle Querverweise und URLs als Link darstellen
 % In der PDF-Ausgabe
@@ -150,8 +145,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 1.\InsetSpace ~
-November 2007
+letzte Änderung: 22.\InsetSpace ~
+Januar 2008
 \end_layout
 
 \begin_layout Standard
