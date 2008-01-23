@@ -1128,9 +1128,15 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
+	// load children, if not already done. 
+	// This includes an updateMacro() call.
+	// Don't move this behind the parent_buffer=0 code below,
+	// because then the macros will not get the right "redefinition"
+	// flag as they don't see the parent macros which are output before.
+	loadChildDocuments();
+
 	// fold macros if possible, still with parent buffer as the
 	// macros will be put in the prefix anyway.
-	updateMacros();
 	updateMacroInstances();
 
 	// if we are doing a real file with body, even if this is the
@@ -1144,8 +1150,6 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		save_parent = d->parent_buffer;
 		d->parent_buffer = 0;
 	}
-
-	loadChildDocuments();
 
 	// the real stuff
 	latexParagraphs(*this, paragraphs(), os, d->texrow, runparams);
