@@ -497,7 +497,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 {
-	drawWithMargin(pi, x, y, 0, 0);
+	drawWithMargin(pi, x, y, 1, 1);
 }
 
 
