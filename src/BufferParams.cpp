@@ -1254,15 +1254,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
 	//   avoid errors with algorithm floats.
 	// use hyperref explicitely when it is required
-	/** FIXME: If the textclass provides hyperref, the GUI is
-	    non-functional. To fix this, we would need requires("hyperref")
-	    below, pass getTextClass().provides("hyperref") to
-	    pdfoptions().writeLaTeX(oss) and load the options via
-	    \hypersetup instead of tha package's optional argument.
-	**/
-	if (features.mustProvide("hyperref")) {
+	if (features.isRequired("hyperref")) {
 		odocstringstream oss;
-		pdfoptions().writeLaTeX(oss);
+		pdfoptions().writeLaTeX(oss, getTextClass().provides("hyperref"));
 		lyxpreamble += oss.str();
 	}
 

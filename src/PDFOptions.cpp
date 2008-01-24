@@ -87,11 +87,10 @@ void PDFOptions::writeFile(ostream & os) const
 }
 
 
-void PDFOptions::writeLaTeX(odocstream & os) const
+void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) const
 {
 	string opt;
 	
-	opt = "\\usepackage[";
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
 	// hyperref option "unicode"
 	opt += "unicode=true, ";
@@ -123,8 +122,7 @@ void PDFOptions::writeLaTeX(odocstream & os) const
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
 	
-	opt = rtrim(opt,",");
-	opt += "]\n {hyperref}\n";
+
 
 	// load the pdftitle etc. as hypersetup, otherwise you'll get
 	// LaTeX-errors when using non-latin characters
@@ -142,8 +140,25 @@ void PDFOptions::writeLaTeX(odocstream & os) const
 		hyperset += quoted_options_get();
 	}
 	hyperset = rtrim(hyperset,",");
-	if (!hyperset.empty())
-		opt += "\\hypersetup{" + hyperset + "}\n ";
+
+
+	// use in \\usepackage parameter as not all options can be handled inside \\hypersetup
+	if (!hyperref_already_provided) {
+		opt = rtrim(opt,",");
+		opt = "\\usepackage[" + opt + "]\n {hyperref}\n";
+
+		if (!hyperset.empty())
+			opt += "\\hypersetup{" + hyperset + "}\n ";
+	} else
+		// only in case hyperref is already loaded by the current text class
+		// try to put it into hyperset
+		//
+		// FIXME: this still does not fix the cases where hyperref is loaded
+		//        and the option is active only when part of usepackage parameter
+		//        (e.g. pdfusetitle).
+		{
+			opt = "\\hypersetup{" + opt + hyperset + "}\n ";
+		}
 	
 	// FIXME UNICODE
 	os << from_utf8(opt);
