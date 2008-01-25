@@ -1073,7 +1073,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	}
 
 	// the real stuff
-	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+	latexParagraphs(*this, text(), os, texrow(), runparams);
 
 	// Restore the parenthood if needed
 	if (output_preamble)
@@ -1826,7 +1826,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		// output paragraphs
 		if (isLatex()) {
 			texrow().reset();
-			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+			latexParagraphs(*this, text(), os, texrow(), runparams);
 		} else {
 			// DocBook
 			docbookParagraphs(paragraphs(), *this, os, runparams);

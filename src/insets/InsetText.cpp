@@ -287,7 +287,7 @@ int InsetText::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
 	TexRow texrow;
-	latexParagraphs(buf, paragraphs(), os, texrow, runparams);
+	latexParagraphs(buf, text_, os, texrow, runparams);
 	return texrow.rows();
 }
 
