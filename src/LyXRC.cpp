@@ -137,7 +137,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
-	{ "\\show_macro_label", LyXRC::RC_SHOW_MACRO_LABEL },
+	{ "\\macro_edit_style", LyXRC::RC_MACRO_EDIT_STYLE },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
@@ -261,7 +261,7 @@ void LyXRC::setDefaults() {
 	tex_allows_spaces = false;
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
-	show_macro_label = true;
+	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
@@ -839,9 +839,13 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
-		case RC_SHOW_MACRO_LABEL:
+		case RC_MACRO_EDIT_STYLE:
 			if (lexrc.next()) {
-				show_macro_label = lexrc.getBool();
+				switch (lexrc.getInteger()) {
+				case 0: macro_edit_style = MACRO_EDIT_INLINE_BOX; break;
+				case 1: macro_edit_style = MACRO_EDIT_INLINE; break;
+				case 2: macro_edit_style = MACRO_EDIT_LIST; break;
+				}
 			}
 			break;
 
@@ -1582,12 +1586,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_SHOW_MACRO_LABEL:
+	case RC_MACRO_EDIT_STYLE:
 		if (ignore_system_lyxrc ||
-		    show_macro_label
-		    != system_lyxrc.show_macro_label) {
-			os << "\\show_macro_label "
-			   << convert<string>(show_macro_label) << '\n';
+		    macro_edit_style
+		    != system_lyxrc.macro_edit_style) {
+			os << "\\macro_edit_style ";
+			switch (macro_edit_style) {
+			case MACRO_EDIT_INLINE_BOX: os << "0\n"; break;
+			case MACRO_EDIT_INLINE: os << "1\n"; break;
+			case MACRO_EDIT_LIST: os << "2\n"; break;
+			}
 		}
 		if (tag != RC_LAST)
 			break;

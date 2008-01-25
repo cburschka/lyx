@@ -186,6 +186,46 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = max(bsdim.ascent(), dim.ascent());
 		dim.des = max(bsdim.descent(), dim.descent());
 		metricsMarkers(dim);
+	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST 
+		   && editing_[mi.base.bv]) {
+		// Macro will be edited in a old-style list mode here:
+
+		BOOST_ASSERT(macro_ != 0);
+		Dimension fontDim;
+		FontInfo labelFont = sane_font;
+		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
+		
+		// get dimension of components of list view
+		Dimension nameDim;
+		nameDim.wid = mathed_string_width(mi.base.font, from_ascii("Macro \\") + name() + ": ");
+		nameDim.asc = fontDim.asc;
+		nameDim.des = fontDim.des;
+
+		Dimension argDim;
+		argDim.wid = mathed_string_width(labelFont, from_ascii("#9: "));
+		argDim.asc = fontDim.asc;
+		argDim.des = fontDim.des;
+		
+		Dimension defDim;
+		definition_.metrics(mi, defDim);
+		
+		// add them up
+		dim.wid = nameDim.wid + defDim.wid;
+		dim.asc = max(nameDim.asc, defDim.asc);
+		dim.des = max(nameDim.des, defDim.des);
+		
+		for (idx_type i = 0; i < nargs(); ++i) {
+			Dimension cdim;
+			cell(i).metrics(mi, cdim);
+			dim.des += max(argDim.height(), cdim.height()) + 1;
+			dim.wid = max(dim.wid, argDim.wid + cdim.wid);
+		}
+		
+		// make space for box and markers, 2 pixels
+		dim.asc += 1;
+		dim.des += 1;
+		dim.wid += 2;
+		metricsMarkers2(dim);
 	} else {
 		BOOST_ASSERT(macro_ != 0);
 
@@ -199,7 +239,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		macro_->unlock();
 
 		// calculate dimension with label while editing
-		if (lyxrc.show_macro_label && editing_[mi.base.bv]) {
+		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX 
+		    && editing_[mi.base.bv]) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension namedim;
@@ -213,6 +254,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc += 1 + namedim.height() + 1;
 			dim.des += 2;
 		}
+	 
 	}
 }
 
@@ -272,6 +314,10 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 		
 		// expanding macro with the values
 		macro_->expand(values, expanded_.cell(0));
+
+		// get definition for list edit mode
+		docstring const & display = macro_->display();
+		asArray(display.empty() ? macro_->definition() : display, definition_);
 	}
 }
 
@@ -297,12 +343,68 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		x += mathed_string_width(pi2.base.font, from_ascii("\\")) + 1;
 		cell(0).draw(pi2, x, y);
 		drawMarkers(pi2, expx, expy);
+	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
+		   && editing_[pi.base.bv]) {
+		// Macro will be edited in a old-style list mode here:
+		
+		CoordCache & coords = pi.base.bv->coordCache();
+		FontInfo const & labelFont = sane_font;
+		
+		// markers and box needs two pixels
+		x += 2;
+		
+		// get maximal font height
+		Dimension fontDim;
+		math_font_max_dim(pi.base.font, fontDim.asc, fontDim.des);
+		
+		// draw label
+		docstring label = from_ascii("Macro \\") + name() + from_ascii(": ");
+		pi.pain.text(x, y, label, labelFont);
+		x += mathed_string_width(labelFont, label);
+
+		// draw definition
+		definition_.draw(pi, x, y);
+		Dimension defDim
+		= coords.arrays().dim(&definition_);
+		y += max(fontDim.des, defDim.des);
+				
+		// draw parameters
+		docstring str = from_ascii("#9");
+		int strw1 = mathed_string_width(labelFont, from_ascii("#9"));
+		int strw2 = mathed_string_width(labelFont, from_ascii(": "));
+		
+		for (idx_type i = 0; i < nargs(); ++i) {
+			// position of label
+			Dimension cdim
+			= coords.arrays().dim(&cell(i));
+			x = expx + 2;
+			y += max(fontDim.asc, cdim.asc) + 1;
+			
+			// draw label
+			str[1] = '1' + i;
+			pi.pain.text(x, y, str, labelFont);
+			x += strw1;
+			pi.pain.text(x, y, from_ascii(":"), labelFont);
+			x += strw2;
+			
+			// draw paramter
+			cell(i).draw(pi, x, y);
+			
+			// next line
+			y += max(fontDim.des, cdim.des);
+		}
+		
+		pi.pain.rectangle(expx + 1, expy - dim.asc + 1, dim.wid - 3, 
+				  dim.height() - 2, Color_mathmacroframe);
+		drawMarkers2(pi, expx, expy);
 	} else {
+		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
+		
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (lyxrc.show_macro_label && editing_[pi.base.bv]) {
+		if (drawBox && editing_[pi.base.bv]) {
 			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
@@ -321,13 +423,13 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			expanded_.cell(0).draw(pi, expx, expy);
 			pi.pain.leaveMonochromeMode();
 
-			if (lyxrc.show_macro_label)
+			if (drawBox)
 				pi.pain.rectangle(x, y - dim.asc, dim.wid, 
 						  dim.height(), Color_mathmacroframe);
 		} else
 			expanded_.cell(0).draw(pi, expx, expy);
 
-		if (!lyxrc.show_macro_label)
+		if (!drawBox)
 			drawMarkers(pi, x, y);
 	}
 

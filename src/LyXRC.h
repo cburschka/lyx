@@ -83,6 +83,7 @@ public:
 		RC_SORT_LAYOUTS,
 		RC_USELASTFILEPOS,
 		RC_LOADSESSION,
+		RC_MACRO_EDIT_STYLE,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
 		RC_NUMLASTFILES,
@@ -124,7 +125,6 @@ public:
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
-		RC_SHOW_MACRO_LABEL,
 		RC_SPELL_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
@@ -342,7 +342,13 @@ public:
 	///
 	bool cursor_follows_scrollbar;
 	///
-	bool show_macro_label;
+	enum MacroEditStyle {
+		MACRO_EDIT_INLINE_BOX = 0,
+		MACRO_EDIT_INLINE,
+		MACRO_EDIT_LIST
+	};
+	///
+	MacroEditStyle macro_edit_style;
 	///
 	bool dialogs_iconify_with_main;
 	///

@@ -1621,7 +1621,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(sortEnvironmentsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(showMacroLabelCB, SIGNAL(clicked()),
+	connect(macroEditStyleCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(autoSaveSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
@@ -1645,7 +1645,11 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
 	rc.sort_layouts = sortEnvironmentsCB->isChecked();
-	rc.show_macro_label = showMacroLabelCB->isChecked();
+	switch (macroEditStyleCO->currentIndex()) {
+		case 0: rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE_BOX; break;
+		case 1:	rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE; break;
+		case 2:	rc.macro_edit_style = LyXRC::MACRO_EDIT_LIST;	break;
+	}
 	rc.autosave = autoSaveSB->value() * 60;
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
@@ -1662,7 +1666,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	allowGeometrySessionCB->setChecked(rc.allow_geometry_session);
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	sortEnvironmentsCB->setChecked(rc.sort_layouts);
-	showMacroLabelCB->setChecked(rc.show_macro_label);
+	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
 	// convert to minutes
 	int mins(rc.autosave / 60);
 	if (rc.autosave && !mins)

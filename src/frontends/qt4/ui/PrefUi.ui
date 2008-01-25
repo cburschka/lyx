@@ -215,10 +215,22 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QCheckBox" name="showMacroLabelCB" >
-        <property name="text" >
-         <string>Show a box with the macro name around Math Macros</string>
-        </property>
+       <widget class="QComboBox" name="macroEditStyleCO" >
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros inline with a box around</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros inline with the name in the status bar</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros with a parameter list (like in LyX &lt; 1.6)</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
@@ -325,15 +337,15 @@ p, li { white-space: pre-wrap; }
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
   <tabstop>tooltipCB</tabstop>
-  <tabstop>allowGeometrySessionCB</tabstop>
   <tabstop>restoreCursorCB</tabstop>
+  <tabstop>allowGeometrySessionCB</tabstop>
   <tabstop>loadSessionCB</tabstop>
   <tabstop>autoSaveCB</tabstop>
   <tabstop>autoSaveSB</tabstop>
   <tabstop>lastfilesSB</tabstop>
   <tabstop>cursorFollowsCB</tabstop>
   <tabstop>sortEnvironmentsCB</tabstop>
-  <tabstop>showMacroLabelCB</tabstop>
+  <tabstop>macroEditStyleCO</tabstop>
   <tabstop>pixmapCacheCB</tabstop>
  </tabstops>
  <includes>
