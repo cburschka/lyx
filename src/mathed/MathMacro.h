@@ -153,7 +153,7 @@ private:
 	docstring name_;
 	/// current display mode
 	DisplayMode displayMode_;
-	/// display mode before change
+	/// expanded macro with ArgumentProxies
 	InsetMathSqrt expanded_;
 	/// number of arguments that were really attached
 	size_t attachedArgsNum_;
