@@ -1577,27 +1577,62 @@ void BufferParams::readModules(Lexer & lex)
 }
 
 
-string const BufferParams::paperSizeName() const
+string const BufferParams::paperSizeName(Papersize_Purpose const & purpose) const
 {
 	char real_papersize = papersize;
 	if (real_papersize == PAPER_DEFAULT)
 		real_papersize = lyxrc.default_papersize;
 
 	switch (real_papersize) {
+	case PAPER_DEFAULT:
+		// could be anything, so don't guess
+		return string();
+	case PAPER_CUSTOM: {
+		if (purpose == XDVI && !paperwidth.empty() &&
+		    !paperheight.empty()) {
+			// heightxwidth<unit>
+			string first = paperwidth;
+			string second = paperheight;
+			if (orientation == ORIENTATION_LANDSCAPE)
+				first.swap(second);
+			// cut off unit.
+			return first.erase(first.length() - 2)
+				+ "x" + second;
+		}
+		return string();
+	}
 	case PAPER_A3:
 		return "a3";
 	case PAPER_A4:
 		return "a4";
 	case PAPER_A5:
 		return "a5";
+	case PAPER_B3:
+		// dvips and dvipdfm do not know this
+		if (purpose == DVIPS || purpose == DVIPDFM)
+			return string();
+		return "b3";
+	case PAPER_B4:
+		// dvipdfm does not know this
+		if (purpose == DVIPDFM)
+			return string();
+		return "b4";
 	case PAPER_B5:
+		// dvipdfm does not know this
+		if (purpose == DVIPDFM)
+			return string();
 		return "b5";
 	case PAPER_USEXECUTIVE:
+		// dvipdfm does not know this
+		if (purpose == DVIPDFM)
+			return string();
 		return "foolscap";
 	case PAPER_USLEGAL:
 		return "legal";
 	case PAPER_USLETTER:
 	default:
+		if (purpose == XDVI)
+			return "us";
 		return "letter";
 	}
 }
@@ -1617,9 +1652,9 @@ string const BufferParams::dvips_options() const
 		result += ' ' + paperwidth;
 		result += ',' + paperheight;
 	} else {
-		string const paper_option = paperSizeName();
-		if (paper_option != "letter" ||
-		    orientation != ORIENTATION_LANDSCAPE) {
+		string const paper_option = paperSizeName(DVIPS);
+		if (!paper_option.empty() && (paper_option != "letter" ||
+		    orientation != ORIENTATION_LANDSCAPE)) {
 			// dvips won't accept -t letter -t landscape.
 			// In all other cases, include the paper size
 			// explicitly.
