@@ -155,7 +155,7 @@ private:
 	DisplayMode displayMode_;
 	/// expanded macro with ArgumentProxies
 	InsetMathSqrt expanded_;
-	/// editing look of macro
+	/// macro definition with #1,#2,.. insets
 	MathData definition_;
 	/// number of arguments that were really attached
 	size_t attachedArgsNum_;
