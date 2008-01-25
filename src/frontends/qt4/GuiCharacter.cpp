@@ -288,6 +288,13 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(toggleallCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
+#ifdef Q_WS_MACX
+	// On Mac it's common to have tool windows which are always in the
+	// foreground and are hidden when the main window is not focused.
+	setWindowFlags(Qt::Tool);
+	autoapplyCB->setChecked(true);
+#endif
+
 	family = getFamilyData();
 	series = getSeriesData();
 	shape  = getShapeData();

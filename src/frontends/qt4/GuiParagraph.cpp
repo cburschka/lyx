@@ -62,8 +62,15 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	connect(labelWidth, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
 
-
+#ifdef Q_WS_MACX
+	// On Mac it's common to have tool windows which are always in the
+	// foreground and are hidden when the main window is not focused.
+	setWindowFlags(Qt::Tool);
+	synchronizedViewCB->setChecked(true);
+#else
 	synchronizedViewCB->setChecked(false);
+#endif
+
 	on_synchronizedViewCB_toggled();
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
