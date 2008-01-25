@@ -91,7 +91,7 @@ int InsetMathMBox::latex(Buffer const & buf, odocstream & os,
 {
 	os << "\\mbox{\n";
 	TexRow texrow;
-	latexParagraphs(buf, text_.paragraphs(), os, texrow, runparams);
+	latexParagraphs(buf, text_, os, texrow, runparams);
 	os << "}";
 	return texrow.rows();
 }

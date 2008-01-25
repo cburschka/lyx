@@ -23,9 +23,9 @@ class Buffer;
 class BufferParams;
 class Encoding;
 class Paragraph;
-class ParagraphList;
 class OutputParams;
 class TexRow;
+class Text;
 
 /// Export up to \p number optarg insets
 int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
@@ -38,7 +38,7 @@ int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
     \sa Buffer::writeLaTeXSource for the reason.
  */
 void latexParagraphs(Buffer const & buf,
-		     ParagraphList const & paragraphs,
+		     Text const & text,
 		     odocstream & ofs,
 		     TexRow & texrow,
 		     OutputParams const &,

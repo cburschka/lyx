@@ -70,7 +70,7 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexheader);
 	TexRow texrow;
-	latexParagraphs(buf, paragraphs(), os, texrow, runparams,
+	latexParagraphs(buf, text_, os, texrow, runparams,
 			layout_->latexparagraph);
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexfooter);
