@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-01-22 23:40+0100\n"
-"PO-Revision-Date: 2008-01-06 23:01+0100\n"
+"PO-Revision-Date: 2008-01-25 14:53+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -239,21 +239,18 @@ msgid "St&yle"
 msgstr "Sti&le"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:262
-#, fuzzy
 msgid "Move the selected database upwards in the list"
-msgstr "Rimuovi il database selezionato"
+msgstr "Sposta in alto il database selezionato"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:55
 msgid "&Up"
 msgstr "S&u"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
-#, fuzzy
 msgid "Move the selected database downwards in the list"
-msgstr "Rimuovi il database selezionato"
+msgstr "Sposta in basso il database selezionato"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:275
-#, fuzzy
 msgid "Do&wn"
 msgstr "&Giù"
 
@@ -8491,14 +8488,12 @@ msgid "Swap Columns|w"
 msgstr "Scambia colonne"
 
 #: lib/ui/stdmenus.inc:184
-#, fuzzy
 msgid "Number whole Formula|N"
 msgstr "Formula numerata|n"
 
 #: lib/ui/stdmenus.inc:185
-#, fuzzy
 msgid "Number this Line|u"
-msgstr "Commuta numerazione di riga|z"
+msgstr "Numera questa riga|r"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Text Style|T"
@@ -8961,9 +8956,8 @@ msgid "Insert note"
 msgstr "Inserisci nota"
 
 #: lib/ui/stdtoolbars.inc:104
-#, fuzzy
 msgid "Insert box"
-msgstr "Inserisci nota"
+msgstr "Inserisci casella"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Insert URL"
@@ -9131,7 +9125,7 @@ msgstr "Linea di comando"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Review[[Toolbar]]"
-msgstr ""
+msgstr "Revisioni"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Track changes"
@@ -11760,45 +11754,42 @@ msgstr "Evidenziazione impostata"
 
 #: src/BufferView.cpp:971
 msgid "Statistics for the selection:"
-msgstr ""
+msgstr "Statistiche per la selezione:"
 
 #: src/BufferView.cpp:973
-#, fuzzy
 msgid "Statistics for the document:"
-msgstr "&Passa al documento"
+msgstr "Statistiche per il documento:"
 
 #: src/BufferView.cpp:976
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words"
-msgstr "sono state controllate %1$d parole."
+msgstr "%1$d parole"
 
 #: src/BufferView.cpp:978
-#, fuzzy
 msgid "One word"
-msgstr "Parola chiave"
+msgstr "Una parola"
 
 #: src/BufferView.cpp:981
 #, c-format
 msgid "%1$d characters (including blanks)"
-msgstr ""
+msgstr "%1$d caratteri (spazi inclusi)"
 
 #: src/BufferView.cpp:984
 msgid "One character (including blanks)"
-msgstr ""
+msgstr "Un carattere (spazi inclusi)"
 
 #: src/BufferView.cpp:987
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr ""
+msgstr "%1$d caratteri (spazi esclusi)"
 
 #: src/BufferView.cpp:990
 msgid "One character (excluding blanks)"
-msgstr ""
+msgstr "Un carattere (spazi esclusi)"
 
 #: src/BufferView.cpp:992
-#, fuzzy
 msgid "Statistics"
-msgstr "Stato"
+msgstr "Statistiche"
 
 #: src/BufferView.cpp:1602
 msgid "Select LyX document to insert"
@@ -14917,19 +14908,20 @@ msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
 
 #: src/frontends/qt4/QDocument.cpp:840 src/frontends/qt4/QDocument.cpp:1484
-#, fuzzy
 msgid "Unapplied changes"
-msgstr "Tracciamento modifiche"
+msgstr "Modifiche non salvate"
 
 #: src/frontends/qt4/QDocument.cpp:841 src/frontends/qt4/QDocument.cpp:1485
 msgid ""
 "Some changes in the dialog were not yet applied.If you do not apply now, "
 "they will be lost after this action."
 msgstr ""
+"Alcune modifiche nella finestra di dialogo non sono state ancora applicate."
+"Se non lo fate adesso, verranno abbandonate dopo questa azione."
 
 #: src/frontends/qt4/QDocument.cpp:843 src/frontends/qt4/QDocument.cpp:1487
 msgid "&Dismiss"
-msgstr ""
+msgstr "&Abbandona"
 
 #: src/frontends/qt4/QDocument.cpp:1422
 msgid "Document Settings"
@@ -16070,21 +16062,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
-
-#~ msgid "%1$d words in selection."
-#~ msgstr "%1$d parole nella selezione."
-
-#~ msgid "%1$d words in document."
-#~ msgstr "%1$d parole nel documento."
-
-#~ msgid "One word in selection."
-#~ msgstr "Una sola parola nella selezione."
-
-#~ msgid "One word in document."
-#~ msgstr "Una sola parola nel documento "
-
-#~ msgid "Count words"
-#~ msgstr "Conta parole"
-
-#~ msgid "Encoding error"
-#~ msgstr "Errore di codifica"
