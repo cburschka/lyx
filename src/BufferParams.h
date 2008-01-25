@@ -249,8 +249,20 @@ public:
 	std::vector<unsigned int> author_map;
 	///
 	std::string const dvips_options() const;
+	/** The return value of paperSizeName() depends on the
+	 *  purpose for which the paper size is needed, since they
+	 *  support different subsets of paper sizes.
+	*/
+	enum Papersize_Purpose {
+		///
+		DVIPS,
+		///
+		DVIPDFM,
+		///
+		XDVI
+	};
 	///
-	std::string const paperSizeName() const;
+	std::string const paperSizeName(Papersize_Purpose const & purpose) const;
 	/// set up if and how babel is called
 	std::string const babelCall(std::string const & lang_opts) const;
 	/// handle inputenc etc.

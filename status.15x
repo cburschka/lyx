@@ -99,6 +99,12 @@ What's new
 
 - Perform additional latex run if package clefval is used.
 
+- The "dvi viewer paper options" switch now supports all known
+  paper sizes (bug 4432).
+
+- "letter" is no more hardcoded as default dvips paper size
+  (bug 2098).
+
 
 * USER INTERFACE:
 
