@@ -112,6 +112,9 @@ void EmbeddedFile::setEmbed(bool embed)
 
 void EmbeddedFile::enable(bool flag, Buffer const * buf)
 {
+	if (enabled() == flag)
+		return;
+
 	if (flag) {
 		temp_path_ = buf->temppath();
 		if (!suffixIs(temp_path_, '/'))
