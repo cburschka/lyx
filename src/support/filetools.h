@@ -46,11 +46,11 @@ FileName const fileOpenSearch(std::string const & path,
 
 /// How to search files
 enum search_mode {
-	// The file must exist (return an empty file name otherwise)
-	standard_mode,
+	/// The file must exist (return an empty file name otherwise)
+	must_exist,
 	/// Only do file name expansion, return the complete name even if
 	/// the file does not exist
-	allow_unreadable
+	may_not_exist
 };
 
 /** Returns the real name of file name in directory path, with optional
@@ -61,7 +61,7 @@ enum search_mode {
 FileName const fileSearch(std::string const & path,
 			     std::string const & name,
 			     std::string const & ext = std::string(),
-			     search_mode mode = standard_mode);
+			     search_mode mode = must_exist);
 
 ///
 bool isLyXFilename(std::string const & filename);

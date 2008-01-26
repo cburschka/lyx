@@ -1930,9 +1930,9 @@ void LyXFunc::open(string const & fname)
 		filename = fname;
 
 	// get absolute path of file and add ".lyx" to the filename if
-	// necessary. we allow_unreadable because the file may not exist.
+	// necessary. 
 	FileName const fullname = 
-			fileSearch(string(), filename, "lyx", support::allow_unreadable);
+			fileSearch(string(), filename, "lyx", support::may_not_exist);
 	if (!fullname.empty())
 		filename = fullname.absFilename();
 

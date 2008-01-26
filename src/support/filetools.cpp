@@ -200,12 +200,12 @@ FileName const fileSearch(string const & path, string const & name,
 		return fullname;
 	if (ext.empty())
 		// We are done.
-		return mode == allow_unreadable ? fullname : FileName();
+		return mode == may_not_exist ? fullname : FileName();
 	// Only add the extension if it is not already the extension of
 	// fullname.
 	if (getExtension(fullname.absFilename()) != ext)
 		fullname = FileName(addExtension(fullname.absFilename(), ext));
-	if (fullname.isReadableFile() || mode == allow_unreadable)
+	if (fullname.isReadableFile() || mode == may_not_exist)
 		return fullname;
 	return FileName();
 }
@@ -375,6 +375,10 @@ string const onlyPath(string const & filename)
 // Convert relative path into absolute path based on a basepath.
 // If relpath is absolute, just use that.
 // If basepath is empty, use CWD as base.
+// Note that basePath can be a relative path, in the sense that it may
+// not begin with "/" (e.g.), but it should NOT contain such constructs
+// as "/../".
+// FIXME It might be nice if the code didn't simply assume that.
 FileName const makeAbsPath(string const & relPath, string const & basePath)
 {
 	FileName relative_path(relPath);
