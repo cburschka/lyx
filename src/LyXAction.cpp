@@ -1020,7 +1020,6 @@ void LyXAction::init()
 		{ LFUN_FILE_NEW, "file-new", NoBuffer, Buffer },
 		{ LFUN_FILE_OPEN, "file-open", NoBuffer, Buffer },
 
-		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer, System },
 
 /**
  * \var lyx::kb_action lyx::LFUN_CALL
@@ -1039,6 +1038,18 @@ void LyXAction::init()
  * \li Origin: broider, 2 Oct 2007
  */
 		{ LFUN_CALL, "call", NoBuffer, System },
+/**
+ * \var lyx::kb_action lyx::LFUN_META_PREFIX
+ * \li Action: Simulate halting Meta key (Alt key on PCs).
+ * \li Notion: Used for buffer editation not for GUI control.
+ * \li Syntax: meta-prefix
+ */
+		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer, System },
+/**
+ * \var lyx::kb_action lyx::LFUN_CANCEL
+ * \li Action: Cancels sequence prepared by #LFUN_META_PREFIX .
+ * \li Syntax: cancel
+ */
 		{ LFUN_CANCEL, "cancel", NoBuffer, System },
 
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
