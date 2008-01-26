@@ -407,6 +407,15 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	string rTemp = tempRel;
 	string temp;
 
+	// Check for a leading "~"
+	// Split by first /
+	rTemp = split(rTemp, temp, '/');
+	if (temp == "~") {
+		tempBase = package().home_dir().absFilename();
+		tempRel = rTemp;
+	}
+
+	rTemp = tempRel;
 	while (!rTemp.empty()) {
 		// Split by next /
 		rTemp = split(rTemp, temp, '/');
@@ -414,15 +423,22 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 		if (temp == ".") continue;
 		if (temp == "..") {
 			// Remove one level of TempBase
-			string::difference_type i = tempBase.length() - 2;
-			if (i < 0)
-				i = 0;
+			if (tempBase.length() <= 1) {
+				//this is supposed to be an absolute path, so...
+				tempBase = "/";
+				continue;
+			}
+			//erase a trailing slash if there is one
+			if (suffixIs(tempBase, "/"))
+				tempBase.erase(tempBase.length() - 1, string::npos);
+
+			string::size_type i = tempBase.length() - 1;
 			while (i > 0 && tempBase[i] != '/')
 				--i;
 			if (i > 0)
 				tempBase.erase(i, string::npos);
 			else
-				tempBase += '/';
+				tempBase = '/';
 		} else if (temp.empty() && !rTemp.empty()) {
 				tempBase = os::current_root() + rTemp;
 				rTemp.erase();
