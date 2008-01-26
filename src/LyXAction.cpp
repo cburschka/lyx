@@ -1059,6 +1059,14 @@ void LyXAction::init()
  * \li Origin: Asger, 14 Feb 1997
  */
 		{ LFUN_RECONFIGURE, "reconfigure", NoBuffer, System },
+/**
+ * \var lyx::kb_action lyx::LFUN_LYXRC_APPLY
+ * \li Action: Apply the given settings to user preferences.
+ * \li Syntax: lyxrc-apply <SETTINGS>
+ * \li Params: <SETTINGS>: settings which are to be set. Take a look into ~/.lyx/preferences
+                           to get an idea which commands to use and their syntax.
+                           #lyx::LyXRC::LyXRCTags has the list of possible commands.
+ */
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
 /**
  * \var lyx::kb_action lyx::LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR
