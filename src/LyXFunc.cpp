@@ -2055,8 +2055,12 @@ void LyXFunc::open(string const & fname)
 		filename = fname;
 
 	// get absolute path of file and add ".lyx" to the filename if
-	// necessary
-	FileName const fullname = fileSearch(string(), filename, "lyx");
+	// necessary. we allow_unreadable because the file may not exist.
+	// note that this is really misnamed: it should really be 
+	// support::may_not_exist (see filetools.h). this is fixed in
+	// trunk.
+	FileName const fullname = 
+			fileSearch(string(), filename, "lyx", support::allow_unreadable);
 	if (!fullname.empty())
 		filename = fullname.absFilename();
 
