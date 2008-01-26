@@ -521,7 +521,7 @@ void PrefScreenFonts::update(LyXRC const & rc)
 
 	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
 #if defined(Q_WS_X11)
-	pixmapCacheGB->setEnabled(false);
+	pixmapCacheCB->setEnabled(false);
 #endif
 	
 }
