@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>342</width>
-    <height>365</height>
+    <width>371</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -351,6 +351,13 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="pixmapCacheCB" >
+     <property name="text" >
+      <string>Use Pixmap Cache to speed up font rendering</string>
+     </property>
     </widget>
    </item>
    <item>

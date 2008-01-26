@@ -437,6 +437,8 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(screenHugerED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(pixmapCacheCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 
 	screenTinyED->setValidator(new QDoubleValidator(screenTinyED));
 	screenSmallestED->setValidator(new QDoubleValidator(screenSmallestED));
@@ -474,6 +476,7 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 	rc.font_sizes[FONT_SIZE_LARGEST] = fromqstr(screenLargestED->text());
 	rc.font_sizes[FONT_SIZE_HUGE] = fromqstr(screenHugeED->text());
 	rc.font_sizes[FONT_SIZE_HUGER] = fromqstr(screenHugerED->text());
+	rc.use_pixmap_cache = pixmapCacheCB->isChecked();
 
 	if (rc.font_sizes != oldrc.font_sizes
 		|| rc.roman_font_name != oldrc.roman_font_name
@@ -515,6 +518,12 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	screenLargestED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGEST]));
 	screenHugeED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGE]));
 	screenHugerED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGER]));
+
+	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
+#if defined(Q_WS_X11)
+	pixmapCacheGB->setEnabled(false);
+#endif
+	
 }
 
 
@@ -1631,8 +1640,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(pixmapCacheCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 }
 
@@ -1654,7 +1661,6 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
-	rc.use_pixmap_cache = pixmapCacheCB->isChecked();
 }
 
 
@@ -1675,10 +1681,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
-	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
-#if defined(Q_WS_X11)
-	pixmapCacheGB->setEnabled(false);
-#endif
 }
 
 
