@@ -508,7 +508,12 @@ void BufferView::scrollDocView(int value)
 		return;
 	}
 
-	int par_pos = 0;
+	// cut off at the top
+	if (value < d->scrollbarParameters_.min)
+		value = d->scrollbarParameters_.min;
+
+	// find paragraph at target positin
+	int par_pos = d->scrollbarParameters_.min;
 	for (size_t i = 0; i != d->par_height_.size(); ++i) {
 		par_pos += d->par_height_[i];
 		if (par_pos >= value) {
@@ -521,7 +526,15 @@ void BufferView::scrollDocView(int value)
 		<< "\tanchor_ref_ = " << d->anchor_pit_
 		<< "\tpar_pos = " << par_pos);
 
+	// cut off at the end of the buffer
+	if (value > par_pos) {
+		value = d->scrollbarParameters_.max;
+		d->anchor_pit_ = d->par_height_.size() - 1;
+	}
+
+	// set pixel offset of screen to anchor pit
 	d->anchor_ypos_ = par_pos - value;
+
 	updateMetrics();
 	buffer_.changed();
 }
