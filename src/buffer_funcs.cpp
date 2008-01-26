@@ -80,7 +80,14 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 		return checkAndLoadLyXFile(filename);
 	}
 
-	if (filename.isReadableFile()) {
+	if (filename.exists()) {
+		if (!filename.isReadableFile()) {
+			docstring text = bformat(_("The file %1$s exists but is not "
+				"readable by the current user."),
+				from_utf8(filename.absFilename()));
+			Alert::error(_("File not readable!"), text);
+			return 0;
+		}
 		Buffer * b = theBufferList().newBuffer(filename.absFilename());
 		if (!b)
 			// Buffer creation is not possible.
