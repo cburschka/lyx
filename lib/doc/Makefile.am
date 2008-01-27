@@ -59,7 +59,9 @@ dist_dedoc_DATA = \
 	de/EmbeddedObjects.lyx \
 	de/Extended.lyx \
 	de/FAQ.lyx \
+	de/Formelnummerierung.lyx \
 	de/Intro.lyx \
+	de/Math.lyx \
 	de/Tutorial.lyx \
 	de/UserGuide.lyx
 
@@ -217,8 +219,10 @@ dist_doc_DATA = \
 	EmbeddedObjects.lyx \
 	Extended.lyx \
 	FAQ.lyx \
+	Formula-numbering.lyx \
 	Intro.lyx \
 	LaTeXConfig.lyx \
+	Math.lyx \
 	Reference.lyx \
 	Shortcuts.lyx \
 	Tutorial.lyx \

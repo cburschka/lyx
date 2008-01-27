@@ -2024,8 +2024,10 @@ lib_doc_files = Split('''
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
+    Formula-numbering.lyx
     Intro.lyx
     LaTeXConfig.lyx
+    Math.lyx
     Reference.lyx
     Shortcuts.lyx
     Tutorial.lyx
@@ -2095,7 +2097,9 @@ lib_doc_de_files = Split('''
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
+    Formelnummerierung.lyx
     Intro.lyx
+    Math.lyx
     Tutorial.lyx
     UserGuide.lyx
 ''')
@@ -2308,7 +2312,6 @@ lib_examples_files = Split('''
     linguistics.lyx
     listerrors.lyx
     listings.lyx
-    mathed.lyx
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
@@ -2341,7 +2344,6 @@ lib_examples_de_files = Split('''
     Minipage.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
-    mathed.lyx
     multicol.lyx
     splash.lyx
 ''')

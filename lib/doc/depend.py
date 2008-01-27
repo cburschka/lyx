@@ -30,7 +30,7 @@ import os
 
 import re
 
-possible_documents = ("Intro", "FAQ", "Tutorial", "UserGuide", "EmbeddedObjects", "Extended", "Customization")
+possible_documents = ("Customization", "EmbeddedObjects", "Extended", "FAQ", "Intro", "Math", "Tutorial", "UserGuide")
 
 def documents(srcdir, lang, dir_prefix = None):
     '''Return documents for specified language. Translated files are in lang 

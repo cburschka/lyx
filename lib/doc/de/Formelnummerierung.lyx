@@ -1,0 +1,376 @@
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{ifpdf}
+
+\ifpdf
+
+\usepackage[colorlinks=true,
+ pdftitle=Formelnummerierung, pdfpagemode=none,
+ pdfpagelayout=OneColumn, pdfstartview=XYZ,
+ pdfauthor={Uwe Stöhr},
+ pdfsubject={LaTeX/LyX-Nummerierungsbeispiel},
+ pdfkeywords={LaTeX, Nummerierung, LyX}]{hyperref}
+
+\else % if DVI
+
+\usepackage[colorlinks=true, hypertex]{hyperref}
+
+\fi
+
+%Roemischen Gleichungszaehler einrichten  
+\newcounter{roem}
+\renewcommand{\theroem}{\roman{roem}}
+
+%Merken des Originalzaehlers
+\newcommand{\c@org@eq}{}
+\let\c@org@eq\c@equation
+\newcommand{\org@theeq}{}
+\let\org@theeq\theequation
+
+%\setroem aktiviert den roemischen Gleichungszaehler
+\newcommand{\setroem}{
+  \let\c@equation\c@roem
+  \let\theequation\theroem}
+
+%\setarab aktiviert den urspruenglichen arabischen Gleichungszaehler
+\newcommand{\setarab}{
+  \let\c@equation\c@org@eq
+  \let\theequation\org@theeq}
+\end_preamble
+\options fleqn
+\language ngerman
+\inputencoding auto
+\font_roman ae
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Diese Datei ist ein Beispiel zur Verwendung von zwei verschiedenen Formelkategor
+ien.
+ Die eine wird arabisch, die andere römisch nummeriert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+A=B\label{eq:B}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=C\label{eq:C}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setroem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=D\label{eq:D}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=E\label{eq:E}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setarab
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=F\label{eq:F}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=G\label{eq:G}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setroem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=H\label{eq:H}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=I\label{eq:I}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Querverweise: 
+\begin_inset LatexCommand eqref
+reference "eq:B"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:C"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:F"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:G"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:D"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:E"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:H"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:I"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\begin_inset VSpace medskip
+\end_inset
+
+Um dieses Beispiel zu erzeugen, muss zuerst für die römisch zu nummerierenden
+ Formeln ein eigener Gleichungszähler angelegt werden.
+ Dazu gibt man im LaTeX-Vorspann Folgendes ein:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcounter{roem}
+\newline
+
+\backslash
+renewcommand{
+\backslash
+theroem}{
+\backslash
+roman{roem}}
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+Damit sich LaTeX den Zählerstand des arabischen Zählers 
+\series bold
+equation
+\series default
+ merkt, gibt man im Vorspann
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+c@org@eq}{}
+\newline
+
+\backslash
+let
+\backslash
+c@org@eq
+\backslash
+c@equation
+\newline
+
+\backslash
+newcommand{
+\backslash
+org@theeq}{}
+\newline
+
+\backslash
+let
+\backslash
+org@theeq
+\backslash
+theequation
+\end_layout
+
+\begin_layout Standard
+ein.
+ Um im Dokument zwischen den beiden Nummerierungen umschalten zu können,
+ werden folgende beiden Befehle im Vorspann definiert:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setroem}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@roem
+\backslash
+let
+\backslash
+theequation
+\backslash
+theroem}
+\end_layout
+
+\begin_layout Standard
+für römische Nummerierung und
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setarab}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@org@eq
+\backslash
+let
+\backslash
+theequation
+\backslash
+org@theeq}
+\end_layout
+
+\begin_layout Standard
+für arabische.
+\end_layout
+
+\begin_layout Standard
+Jede Formel im Dokument wird standardmäßig arabisch nummeriert.
+ Um auf römische Nummerierung umzuschalten, wird im TeX-Modus der Befehl
+ 
+\series bold
+
+\backslash
+setroem
+\series default
+ eingegeben.
+ Auf arabische Nummerierung wird mit dem Befehl 
+\series bold
+
+\backslash
+setarab
+\series default
+ umgeschaltet.
+\end_layout
+
+\end_body
+\end_document

@@ -90,7 +90,6 @@ dist_deexamples_DATA = \
 	examples/de/beispiel_roh.lyx \
 	examples/de/Dezimal.lyx \
 	examples/de/splash.lyx \
-	examples/de/mathed.lyx \
 	examples/de/multicol.lyx
 
 esexamplesdir = $(pkgdatadir)/examples/es
@@ -221,7 +220,6 @@ dist_examples_DATA = \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
 	examples/listings.lyx \
-	examples/mathed.lyx \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
