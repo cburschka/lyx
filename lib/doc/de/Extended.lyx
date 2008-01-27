@@ -142,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
+letzte Änderung: 25.
  Januar 2008
 \end_layout
 
@@ -1697,7 +1697,8 @@ hoffset
 \family typewriter
 
 \backslash
-voffset
+voff\SpecialChar \-
+set
 \family default
 .
  Ihre Namen sollten selbsterklärend sein.
@@ -3071,6 +3072,18 @@ bibunits
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Zunächst kreuzen Sie in
 \family sans
  Dokument\SpecialChar \menuseparator
@@ -3134,7 +3147,19 @@ Strg+L
 btUnit
 \family default
  zitiert werden, enthalten.
- 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -15948,7 +15973,31 @@ make\SpecialChar \-
 at\SpecialChar \-
 other
 \family default
-, mit Ausnahme derjenigen Einträge, die Sie selber in den LaTeX-Vorspann
+, mit Ausnahme derjenigen Einträge, die Sie selber in den LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Vorspann
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+siehe 
+\emph on
+Benutzerhandbuch
+\emph default
+, Zusammengesetzte Worte
+\end_layout
+
+\end_inset
+
  eingefügt haben.
 \end_layout
 
@@ -17784,7 +17833,7 @@ svjour
 \family default
 )
 \begin_inset LatexCommand index
-name "en"
+name "Springer-Zeitschriften"
 
 \end_inset
 

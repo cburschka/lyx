@@ -182,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 25.
  Januar 2008
 \end_layout
 
@@ -902,7 +902,8 @@ Es gibt viele andere benutzerdefinierbare Optionen, die man in LyX speichern
  kann.
  Beim Start liest LyX eine globale Konfigurationsdatei mit dem Namen 
 \family typewriter
-lyxrc.defaults
+lyxrc.de\SpecialChar \-
+faults
 \family default
 .
  Danach wird versucht, in Ihrem Heimatverzeichnis die Datei 
@@ -2712,9 +2713,34 @@ book\InsetSpace ~
 
 \begin_layout Description
 broadway Layout zum Schreiben von Theaterstücken.
- Dies ist keine LaTeX-Dokument\SpecialChar \-
-klasse, sondern eine, die zusammen mit LyX
- ausgeliefert wird.
+ Dies ist keine LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Dokumentklasse
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+siehe 
+\begin_inset LatexCommand ref
+reference "Zusammengesetzte-Worte"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, sondern eine, die zusammen mit LyX ausgeliefert wird.
 \end_layout
 
 \begin_layout Description
@@ -2724,10 +2750,18 @@ vitae für Lebensläufe
 
 \begin_layout Description
 hollywood für spezielle Filmskripte der US Filmindustrie.
- Dies ist keine LaTeX-Do\SpecialChar \-
-ku\SpecialChar \-
-mentklasse, sondern eine, die zusammen mit LyX
- ausgeliefert wird.
+ Dies ist keine LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Dokumentklasse, sondern eine, die zusammen mit LyX ausgeliefert wird.
 \end_layout
 
 \begin_layout Description
@@ -10227,7 +10261,7 @@ Standard
 Blocksatz
 \family default
  bedeutet, bei dem der Leerraum zwischen den Worten variabel ist und jede
- Zeile des Absatzes den Platz zwischen den beiden Rändern ausfüllt..
+ Zeile des Absatzes den Platz zwischen den beiden Rändern ausfüllt.
  Wenn Sie das Kreuz entfernen, haben Sie drei weitere Möglichkeiten:
 \family sans
  Links, Rechts
@@ -14139,7 +14173,7 @@ Eigenheiten der deutschen Sprache
 \begin_layout Paragraph
 Zusammengesetzte Worte
 \begin_inset LatexCommand label
-name "Zusammengesetzten-Worte"
+name "Zusammengesetzte-Worte"
 
 \end_inset
 
@@ -16177,7 +16211,18 @@ name "Grafikformate"
 
 \begin_layout Standard
 Sie können Grafiken in aller bekannten Formate einfügen, aber weil jedes
- Druckausgabe-Format nur bestimmte Grafikformate zulässt, benutzt LyX 
+ Druckausgabe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Format nur bestimmte Grafikformate zulässt, benutzt LyX 
 \family typewriter
 ImageMagick
 \family default
@@ -27879,7 +27924,7 @@ Ein Spezialbefehl ist
 , der bei der Silbentrennung in Abschnitt\InsetSpace \space{}
 
 \begin_inset LatexCommand vref
-reference "Zusammengesetzten-Worte"
+reference "Zusammengesetzte-Worte"
 
 \end_inset
 
@@ -28187,7 +28232,18 @@ Befehlsname[Optionen]{
 \family typewriter
 }
 \family default
- in ein zweites ERT-Kästchen: 
+ in ein zweites ERT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Kästchen: 
 \end_layout
 
 \begin_layout Standard
@@ -29658,7 +29714,7 @@ name "Zeichentabellen"
 \begin_layout Standard
 Tabelle 
 \begin_inset LatexCommand vref
-reference "cap:Der-latin1-Zeichensatz"
+reference "ISO8859-15-Zeichensatz"
 
 \end_inset
 
