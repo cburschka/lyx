@@ -126,7 +126,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
+letzte Änderung: 25.
  Januar 2008
 \end_layout
 
@@ -671,7 +671,7 @@ Ansicht\SpecialChar \menuseparator
 Aktualisieren\SpecialChar \menuseparator
 DVI
 \family default
- wählen (
+ wählen oder auf 
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.xpm
 	scale 70
@@ -680,8 +680,8 @@ DVI
 
 \end_inset
 
-) klicken und, nachdem LaTeX beendet ist, in das DVI-Betrachter-Fenster
- klicken, um die neue Version zu sehen.
+ klicken und, nachdem LaTeX beendet ist, in das DVI-Betrachter-Fenster klicken,
+ um die neue Version zu sehen.
 \end_layout
 
 \end_inset
@@ -2861,7 +2861,18 @@ Fußnote
 \end_layout
 
 \begin_layout LyX-Code
-LyX ist eine Textverarbeitung, die den Schriftsatz be-herrscht.
+LyX ist eine Textverarbeitung, die den Schriftsatz be
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"-
+\end_layout
+
+\end_inset
+
+herrscht.
 \end_layout
 
 \begin_layout Standard
@@ -4912,7 +4923,9 @@ LyX unterstützt WYSIWYG-Tabellen.
  Mit der Auswahl 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Tabelle\SpecialChar \ldots{}
+Ta\SpecialChar \-
+bel\SpecialChar \-
+le\SpecialChar \ldots{}
 
 \family default
  (
