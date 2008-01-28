@@ -610,10 +610,12 @@ void RowPainter::paintLast()
 		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
-		int x = is_rtl ? nestMargin() + changebarMargin() : width_ - size;
+		int x = is_rtl ? nestMargin() + changebarMargin() : width_
+			- text_metrics_.rightMargin(pm_) - size - Inset::TEXT_TO_INSET_OFFSET;
 
-		if (width_ - int(row_.width()) <= size)
-			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);
+		int const rem = width_ - row_.width() - size;
+		if (rem <= 0)
+			x += rem * (is_rtl ? 1 : -1);
 
 		if (endlabel == END_LABEL_BOX)
 			pi_.pain.rectangle(x, y, size, size, Color_eolmarker);
