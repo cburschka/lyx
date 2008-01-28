@@ -1054,6 +1054,13 @@ void LyXAction::init()
 
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
+/**
+ * \var lyx::kb_action lyx::LFUN_COMMAND_SEQUENCE
+ * \li Action: Run more commands (LFUN and its parameters) in a sequence.
+ * \li Syntax: command-sequence <CMDS>
+ * \li Params: <CMDS>: Sequence of commands separated by semicolons.
+ * \li Sample: command-sequence cut; ert-insert; self-insert \; paste; self-insert {}; inset-toggle;
+ */
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 
 /**
