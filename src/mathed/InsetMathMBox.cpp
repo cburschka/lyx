@@ -80,7 +80,7 @@ void InsetMathMBox::write(Buffer const & buf, WriteStream & ws) const
 		ws << "\\mbox{\n";
 		TexRow texrow;
 		OutputParams runparams(&buf.params().encoding());
-		latexParagraphs(buf, text_.paragraphs(), ws.os(), texrow, runparams);
+		latexParagraphs(buf, text_, ws.os(), texrow, runparams);
 		ws.addlines(texrow.rows());
 		ws << "}";
 	} else {
