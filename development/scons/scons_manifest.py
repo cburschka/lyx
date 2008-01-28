@@ -2500,7 +2500,6 @@ lib_examples_files = Split('''
     landslide.lyx
     listerrors.lyx
     listings.lyx
-    mathed.lyx
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
@@ -2533,7 +2532,6 @@ lib_examples_de_files = Split('''
     Minipage.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
-    mathed.lyx
     multicol.lyx
     splash.lyx
 ''')
