@@ -991,13 +991,6 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 
 	// then the layouts
 	features.useLayout(layout.name());
-	if (!layout.requires().empty()) {
-		vector<string> req = layout.requires();
-		for (vector<string>::const_iterator it = req.begin();
-		     it != req.end(); ++it) {
-			features.require(*it);
-		}
-	}
 
 	// then the fonts
 	fontlist_.validate(features);
@@ -2543,7 +2536,7 @@ Inset const * Paragraph::getInset(pos_type pos) const
 
 
 void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
-		pos_type right, TextCase action)
+		pos_type & right, TextCase action)
 {
 	// process sequences of modified characters; in change
 	// tracking mode, this approach results in much better

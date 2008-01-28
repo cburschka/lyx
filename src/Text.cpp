@@ -823,9 +823,11 @@ void Text::changeCase(Cursor & cur, TextCase action)
 	CursorSlice from;
 	CursorSlice to;
 
+	bool gotsel = false;
 	if (cur.selection()) {
 		from = cur.selBegin();
 		to = cur.selEnd();
+		gotsel = true;
 	} else {
 		from = cur.top();
 		getWord(from, to, PARTIAL_WORD);
@@ -850,10 +852,13 @@ void Text::changeCase(Cursor & cur, TextCase action)
 	}
 
 	// the selection may have changed due to logically-only deleted chars
-	setCursor(cur, begPit, begPos);
-	cur.resetAnchor();
-	setCursor(cur, endPit, right);
-	cur.setSelection();
+	if (gotsel) {
+		setCursor(cur, begPit, begPos);
+		cur.resetAnchor();
+		setCursor(cur, endPit, right);
+		cur.setSelection();
+	} else
+		setCursor(cur, endPit, right);
 
 	cur.checkBufferStructure();
 }

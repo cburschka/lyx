@@ -350,7 +350,7 @@ public:
 
 	///
 	void changeCase(BufferParams const & bparams, pos_type pos,
-		pos_type right, TextCase action);
+		pos_type & right, TextCase action);
 
 	/// find \param str string inside Paragraph.
 	/// \return true if the specified string is at the specified position
