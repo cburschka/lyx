@@ -127,10 +127,14 @@ public:
 	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
 
-	/// Ensure the cursor is visible.
-	/// This method will automatically scroll and update the BufferView and updated 
+	/// Ensure that the BufferView cursor is visible.
+	/// This method will automatically scroll and update the BufferView
 	/// if needed.
 	void showCursor();
+	/// Ensure the passed cursor \p dit is visible.
+	/// This method will automatically scroll and update the BufferView
+	/// if needed.
+	void showCursor(DocIterator const & dit);
 	/// LFUN_SCROLL Helper.
 	void lfunScroll(FuncRequest const & cmd);
 	/// scroll down document by the given number of pixels.

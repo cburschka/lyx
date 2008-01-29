@@ -501,16 +501,30 @@ docstring BufferView::contextMenu(int x, int y) const
 
 void BufferView::scrollDocView(int value)
 {
+	// cut off at the top
+	if (value <= d->scrollbarParameters_.min) {
+		DocIterator dit = doc_iterator_begin(buffer_.inset());
+		showCursor(dit);
+		LYXERR(Debug::SCROLLING, "scroll to top");
+		return;
+	}
+
+	// cut off at the top
+	if (value >= d->scrollbarParameters_.max) {
+		DocIterator dit = doc_iterator_end(buffer_.inset());
+		dit.backwardPos();
+		showCursor(dit);
+		LYXERR(Debug::SCROLLING, "scroll to bottom");
+		return;
+	}
+
+
 	int const offset = value - d->scrollbarParameters_.position;
 	// If the offset is less than 2 screen height, prefer to scroll instead.
 	if (abs(offset) <= 2 * height_) {
 		scroll(offset);
 		return;
 	}
-
-	// cut off at the top
-	if (value < d->scrollbarParameters_.min)
-		value = d->scrollbarParameters_.min;
 
 	// find paragraph at target positin
 	int par_pos = d->scrollbarParameters_.min;
@@ -704,6 +718,12 @@ int BufferView::workWidth() const
 
 void BufferView::showCursor()
 {
+	showCursor(d->cursor_);
+}
+
+
+void BufferView::showCursor(DocIterator const & dit)
+{
 	// We are not properly started yet, delay until resizing is
 	// done.
 	if (height_ == 0)
@@ -711,11 +731,11 @@ void BufferView::showCursor()
 
 	LYXERR(Debug::SCROLLING, "recentering!");
 
-	CursorSlice & bot = d->cursor_.bottom();
+	CursorSlice const & bot = dit.bottom();
 	TextMetrics & tm = d->text_metrics_[bot.text()];
 
 	pos_type const max_pit = pos_type(bot.text()->paragraphs().size() - 1);
-	int bot_pit = d->cursor_.bottom().pit();
+	int bot_pit = bot.pit();
 	if (bot_pit > max_pit) {
 		// FIXME: Why does this happen?
 		LYXERR0("bottom pit is greater that max pit: "
@@ -730,9 +750,13 @@ void BufferView::showCursor()
 
 	if (tm.has(bot_pit)) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-		int offset = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
+		BOOST_ASSERT(!pm.rows().empty());
+		// FIXME: smooth scrolling doesn't work in mathed.
+		CursorSlice const & cs = dit.innerTextSlice();
+		int offset = coordOffset(dit, dit.boundary()).y_;
 		int ypos = pm.position() + offset;
-		Dimension const & row_dim = d->cursor_.textRow().dimension();
+		Dimension const & row_dim =
+			pm.getRow(cs.pos(), dit.boundary()).dimension();
 		if (ypos - row_dim.ascent() < 0)
 			scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
@@ -743,10 +767,12 @@ void BufferView::showCursor()
 
 	tm.redoParagraph(bot_pit);
 	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-	int offset = coordOffset(d->cursor_, d->cursor_.boundary()).y_;
+	int offset = coordOffset(dit, dit.boundary()).y_;
 
 	d->anchor_pit_ = bot_pit;
-	Dimension const & row_dim = d->cursor_.textRow().dimension();
+	CursorSlice const & cs = dit.innerTextSlice();
+	Dimension const & row_dim =
+		pm.getRow(cs.pos(), dit.boundary()).dimension();
 
 	if (d->anchor_pit_ == 0)
 		d->anchor_ypos_ = offset + pm.ascent();
