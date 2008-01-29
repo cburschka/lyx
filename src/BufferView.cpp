@@ -501,6 +501,13 @@ docstring BufferView::contextMenu(int x, int y) const
 
 void BufferView::scrollDocView(int value)
 {
+	int const offset = value - d->scrollbarParameters_.position;
+	// If the offset is less than 2 screen height, prefer to scroll instead.
+	if (abs(offset) <= 2 * height_) {
+		scroll(offset);
+		return;
+	}
+
 	// cut off at the top
 	if (value <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(buffer_.inset());
@@ -515,14 +522,6 @@ void BufferView::scrollDocView(int value)
 		dit.backwardPos();
 		showCursor(dit);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
-		return;
-	}
-
-
-	int const offset = value - d->scrollbarParameters_.position;
-	// If the offset is less than 2 screen height, prefer to scroll instead.
-	if (abs(offset) <= 2 * height_) {
-		scroll(offset);
 		return;
 	}
 
