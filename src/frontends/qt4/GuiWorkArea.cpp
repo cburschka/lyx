@@ -227,8 +227,8 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 					this));
 
 	// Initialize the vertical Scroll Bar
-	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
-		this, SLOT(adjustViewWithScrollBar(int)));
+	QObject::connect(verticalScrollBar(), SIGNAL(valueChanged(int)),
+		this, SLOT(scrollTo(int)));
 
 	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
 		<< "  viewport height: " << viewport()->height());
@@ -458,27 +458,21 @@ void GuiWorkArea::updateScrollbar()
 {
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 
-	verticalScrollBar()->setTracking(false);
-
 	verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	verticalScrollBar()->setPageStep(scroll_.page_step);
 	verticalScrollBar()->setSingleStep(scroll_.single_step);
+	// Block the scrollbar signal to prevent recursive signal/slot calling.
+	verticalScrollBar()->blockSignals(true);
 	verticalScrollBar()->setValue(scroll_.position);
 	verticalScrollBar()->setSliderPosition(scroll_.position);
-
-	verticalScrollBar()->setTracking(true);
+	verticalScrollBar()->blockSignals(false);
 }
 
 
-void GuiWorkArea::adjustViewWithScrollBar(int action)
+void GuiWorkArea::scrollTo(int value)
 {
 	stopBlinkingCursor();
-	if (action == QAbstractSlider::SliderPageStepAdd)
-		buffer_view_->scrollDown(viewport()->height());
-	else if (action == QAbstractSlider::SliderPageStepSub)
-		buffer_view_->scrollUp(viewport()->height());
-	else
-		buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
+	buffer_view_->scrollDocView(value);
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
@@ -667,7 +661,6 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 	int const lines = qApp->wheelScrollLines() * e->delta() / 120;
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
 			lines *  verticalScrollBar()->singleStep());
-	adjustViewWithScrollBar();
 }
 
 

@@ -132,13 +132,12 @@ Q_SIGNALS:
 	void titleChanged(GuiWorkArea *);
 
 private Q_SLOTS:
-	/// Adjust the LyX buffer view with the position of the scrollbar.
+	/// Scroll the BufferView.
 	/**
-	* The action argument is not used in the the code, it is there
-	* only for the connection to the vertical srollbar signal which
-	* emits an 'int' action.
+	  * This is a slot for the valueChanged() signal of the vertical scrollbar.
+	  * \p value value of the scrollbar.
 	*/
-	void adjustViewWithScrollBar(int action = 0);
+	void scrollTo(int value);
 	/// timer to limit triple clicks
 	void doubleClickTimeout();
 	/// toggle the cursor's visibility
