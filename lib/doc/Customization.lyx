@@ -3393,7 +3393,12 @@ mo
 \family typewriter
 gettext
 \family default
-, but in short, this is what you do (
+.
+ You should also read the 
+\family typewriter
+LYX-SOURCE-DIR/README.localisation
+\family default
+ file, but in short, this is what you do (
 \series bold
 xx
 \series default
@@ -3468,17 +3473,6 @@ gettext
 xx
 \series default
 -language.
- There is a tool named 
-\family typewriter
-scgen.pl
-\family default
- written in Prolog in 
-\family typewriter
-LYX-SOURCE-DIR/development/tools/
-\family default
- that may be useful to help determine short-cut keys.
- Note that XForms (version 0.86 at least) can't handle anything but 7-bit
- characters as shortcut keys.
  You should also fill also out the information at the beginning of the new
  
 \family typewriter
@@ -3592,15 +3586,7 @@ gettext
 \begin_layout Standard
 If you've written a translation file for a language that LyX does not currently
  support, feel free to submit it for inclusion by sending a patch.
- In this case, we recommend that you read the 
-\family typewriter
-README
-\family default
- provided in the 
-\family typewriter
-LYX-SOURCE-DIR/po/
-\family default
- directory for more instructions.
+ 
 \end_layout
 
 \begin_layout Subsubsection
