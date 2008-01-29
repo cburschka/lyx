@@ -478,7 +478,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 	else if (action == QAbstractSlider::SliderPageStepSub)
 		buffer_view_->scrollUp(viewport()->height());
 	else
-		buffer_view_->scrollDocView(verticalScrollBar()->value());
+		buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
