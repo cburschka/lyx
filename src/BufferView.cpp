@@ -509,7 +509,7 @@ void BufferView::scrollDocView(int value)
 		return;
 	}
 
-	// cut off at the top
+	// cut off at the bottom
 	if (value >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(buffer_.inset());
 		dit.backwardPos();
@@ -526,31 +526,27 @@ void BufferView::scrollDocView(int value)
 		return;
 	}
 
-	// find paragraph at target positin
+	// find paragraph at target position
 	int par_pos = d->scrollbarParameters_.min;
-	for (size_t i = 0; i != d->par_height_.size(); ++i) {
+	pit_type i = 0;
+	for (; i != d->par_height_.size(); ++i) {
 		par_pos += d->par_height_[i];
-		if (par_pos >= value) {
-			d->anchor_pit_ = pit_type(i);
+		if (par_pos >= value)
 			break;
-		}
 	}
 
-	LYXERR(Debug::SCROLLING, "value = " << value
-		<< "\tanchor_ref_ = " << d->anchor_pit_
-		<< "\tpar_pos = " << par_pos);
-
-	// cut off at the end of the buffer
-	if (value > par_pos) {
-		value = d->scrollbarParameters_.max;
-		d->anchor_pit_ = d->par_height_.size() - 1;
+	if (par_pos < value) {
+		// It seems we didn't find the correct pit so stay on the safe side and
+		// scroll to bottom.
+		LYXERR0("scrolling position not found!");
+		scrollDocView(d->scrollbarParameters_.max);
+		return;
 	}
 
-	// set pixel offset of screen to anchor pit
-	d->anchor_ypos_ = par_pos - value;
-
-	updateMetrics();
-	buffer_.changed();
+	DocIterator dit = doc_iterator_begin(buffer_.inset());
+	dit.pit() = i;
+	LYXERR(Debug::SCROLLING, "value = " << value << " -> scroll to pit " << i);
+	showCursor(dit);
 }
 
 
