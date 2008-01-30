@@ -25,10 +25,8 @@ What's new
 * DOCUMENTATION AND LOCALIZATION
 
 - New manual "LyX's detailed math manual" available in English and German.
-  It includes the content of the example file "mathed.lyx" that has therefore
-  been deleted.
-
-- New Russian translation of the user interface.
+  It includes the content of the example file "mathed.lyx", which is
+  no more shipped separately.
 
 - New Spanish translation of the FAQ manual and the mathed example file.
 
@@ -39,6 +37,8 @@ What's new
 - Updated German, French, and Spanish Tutorial manual.
 
 - Updated German User's Guide manual.
+
+- New Russian translation of the user interface.
 
 - Updated Czech, Italian, and Spanish translations of the user interface.
 
@@ -109,7 +109,6 @@ What's new
 - "letter" is no more hardcoded as default dvips paper size
   (bug 2098).
 
-- Fix crash when opening a document with relative path (bug 4517).
 
 * USER INTERFACE:
 
@@ -119,9 +118,11 @@ What's new
 - Fix an assertion when inserting a non-CJK character in a CJK paragraph
   (bug 4349).
 
+- Fix a crash when opening a document with relative path (bug 4517).
+
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
-- Fix update/drawing of char style insets.
+- Fix update/drawing of character style insets.
 
 - Keep unapplied content of the document settings dialog after
   clicking in the main window (bug 4302).
