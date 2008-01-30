@@ -1052,6 +1052,12 @@ void LyXAction::init()
  */
 		{ LFUN_CANCEL, "cancel", NoBuffer, System },
 
+/**
+ * \var lyx::kb_action lyx::LFUN_COMMAND_EXECUTE
+ * \li Action: Opens the minibuffer toolbar so that the user can type in there.
+ * \li Notion: Usually bound to M-x shortcut.
+ * \li Syntax: command-execute
+ */
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
 /**
