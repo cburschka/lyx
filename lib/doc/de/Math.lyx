@@ -155,7 +155,7 @@
  {\setboolean{eurosym}{false}}
 
 % benutzt in Kap. 22.4
-% testen ob Paket upgreek instaliert ist
+% testen ob Paket braket installiert ist
 \newboolean{braket}
 \IfFileExists{braket.sty}
  {\usepackage{braket}
@@ -163,7 +163,7 @@
  {\setboolean{braket}{false}}
 
 % benutzt in Kap. 22.10
-% testen ob Paket upgreek instaliert ist
+% testen ob Paket upgreek installiert ist
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
  {\usepackage{upgreek}

@@ -148,7 +148,7 @@
  {\setboolean{eurosym}{false}}
 
 % needed in sec. 22.4
-% check for package upgreek
+% check for package braket
 \newboolean{braket}
 \IfFileExists{braket.sty}
  {\usepackage{braket}
