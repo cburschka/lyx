@@ -28,7 +28,7 @@
 
 #include "ui_PrefPlaintextUi.h"
 #include "ui_PrefDateUi.h"
-#include "ui_PrefKeyboardUi.h"
+#include "ui_PrefInputUi.h"
 #include "ui_PrefLatexUi.h"
 #include "ui_PrefScreenFontsUi.h"
 #include "ui_PrefColorsUi.h"
@@ -106,11 +106,11 @@ public:
 };
 
 
-class PrefKeyboard : public PrefModule, public Ui::PrefKeyboardUi
+class PrefInput : public PrefModule, public Ui::PrefInputUi
 {
 	Q_OBJECT
 public:
-	PrefKeyboard(GuiPreferences * form, QWidget * parent = 0);
+	PrefInput(GuiPreferences * form, QWidget * parent = 0);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);

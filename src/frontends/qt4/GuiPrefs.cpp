@@ -246,12 +246,12 @@ void PrefDate::update(LyXRC const & rc)
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefKeyboard
+// PrefInput
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefKeyboard::PrefKeyboard(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Keyboard"), form, parent)
+PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
+	: PrefModule(_("Keyboard/Mouse"), form, parent)
 {
 	setupUi(this);
 
@@ -261,34 +261,38 @@ PrefKeyboard::PrefKeyboard(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(secondKeymapED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
+		this, SIGNAL(changed()));
 }
 
 
-void PrefKeyboard::apply(LyXRC & rc) const
+void PrefInput::apply(LyXRC & rc) const
 {
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymapCB->isChecked();
 	rc.primary_kbmap = internal_path(fromqstr(firstKeymapED->text()));
 	rc.secondary_kbmap = internal_path(fromqstr(secondKeymapED->text()));
+	rc.mouse_wheel_speed = mouseWheelSpeedSB->value();
 }
 
 
-void PrefKeyboard::update(LyXRC const & rc)
+void PrefInput::update(LyXRC const & rc)
 {
 	// FIXME: can derive CB from the two EDs
 	keymapCB->setChecked(rc.use_kbmap);
 	firstKeymapED->setText(toqstr(external_path(rc.primary_kbmap)));
 	secondKeymapED->setText(toqstr(external_path(rc.secondary_kbmap)));
+	mouseWheelSpeedSB->setValue(rc.mouse_wheel_speed);
 }
 
 
-QString PrefKeyboard::testKeymap(QString keymap)
+QString PrefInput::testKeymap(QString keymap)
 {
 	return toqstr(form_->browsekbmap(from_utf8(internal_path(fromqstr(keymap)))));
 }
 
 
-void PrefKeyboard::on_firstKeymapPB_clicked(bool)
+void PrefInput::on_firstKeymapPB_clicked(bool)
 {
 	QString const file = testKeymap(firstKeymapED->text());
 	if (!file.isEmpty())
@@ -296,7 +300,7 @@ void PrefKeyboard::on_firstKeymapPB_clicked(bool)
 }
 
 
-void PrefKeyboard::on_secondKeymapPB_clicked(bool)
+void PrefInput::on_secondKeymapPB_clicked(bool)
 {
 	QString const file = testKeymap(secondKeymapED->text());
 	if (!file.isEmpty())
@@ -304,7 +308,7 @@ void PrefKeyboard::on_secondKeymapPB_clicked(bool)
 }
 
 
-void PrefKeyboard::on_keymapCB_toggled(bool keymap)
+void PrefInput::on_keymapCB_toggled(bool keymap)
 {
 	firstKeymapLA->setEnabled(keymap);
 	secondKeymapLA->setEnabled(keymap);
@@ -2154,7 +2158,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	add(new PrefScreenFonts(this));
 	add(new PrefColors(this));
 	add(new PrefDisplay);
-	add(new PrefKeyboard(this));
+	add(new PrefInput(this));
 
 	add(new PrefPaths(this));
 
