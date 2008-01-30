@@ -147,6 +147,14 @@
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
 
+% needed in sec. 22.4
+% check for package upgreek
+\newboolean{braket}
+\IfFileExists{braket.sty}
+ {\usepackage{braket}
+  \setboolean{braket}{true}}
+ {\setboolean{braket}{false}}
+
 % needed in sec. 22.10
 % check for package upgreek
 \newboolean{upgreek}
@@ -21155,7 +21163,7 @@ eurosym
 \end_layout
 
 \begin_layout Standard
-You need to install the package 
+You need to install the LaTeX-package 
 \series bold
 eurosym
 \series default
@@ -30488,7 +30496,7 @@ status collapsed
 \series bold
 braket
 \series default
- is part of every LaTeX standard installation.
+ should be part of every LaTeX standard installation.
 \end_layout
 
 \end_inset
@@ -30511,6 +30519,32 @@ usepackage{braket}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifbraket 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following table will only be displayed when the LaTeX-package 
+\series bold
+braket
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
 The following commands are defined:
 \end_layout
 
@@ -30641,6 +30675,57 @@ Braket
  assures that all vertical bars are set in the size of the surrounding brackets:
 \begin_inset Formula \[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following will be displayed when the LaTeX-package 
+\series bold
+braket
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the LaTeX-package 
+\series bold
+braket
+\series default
+ to see the rest of this subsection in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 
@@ -32051,7 +32136,7 @@ upgreek
 \end_layout
 
 \begin_layout Standard
-You need to install the package 
+You need to install the LaTeX-package 
 \series bold
 upgreek
 \series default

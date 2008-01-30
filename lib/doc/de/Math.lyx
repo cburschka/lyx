@@ -154,6 +154,14 @@
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
 
+% benutzt in Kap. 22.4
+% testen ob Paket upgreek instaliert ist
+\newboolean{braket}
+\IfFileExists{braket.sty}
+ {\usepackage{braket}
+  \setboolean{braket}{true}}
+ {\setboolean{braket}{false}}
+
 % benutzt in Kap. 22.10
 % testen ob Paket upgreek instaliert ist
 \newboolean{upgreek}
@@ -30718,7 +30726,7 @@ status collapsed
 \series bold
 braket
 \series default
- ist Teil jeder LaTeX-Standardinstallation.
+ sollte Teil jeder LaTeX-Standardinstallation sein.
 \end_layout
 
 \end_inset
@@ -30742,6 +30750,33 @@ usepackage{braket}
 
 \begin_layout Standard
 geladen wird.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifbraket 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die folgende Tabelle erscheint nur im Ausdruck wenn das LaTeX-Paket 
+\series bold
+braket
+\series default
+ installiert ist:
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30876,6 +30911,57 @@ Braket
  Klammern gesetzt werden:
 \begin_inset Formula \[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Folgendes erscheint im Ausdruck wenn das LaTeX-Paket 
+\series bold
+braket
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+braket 
+\series default
+muss installiert sein, um den Rest dieses Abschnitts im Ausdruck zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 
