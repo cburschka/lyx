@@ -267,7 +267,7 @@ UIFILES = \
 	PrefDisplayUi.ui \
 	PrefFileformatsUi.ui \
 	PrefIdentityUi.ui \
-	PrefKeyboardUi.ui \
+	PrefInputUi.ui \
 	PrefLanguageUi.ui \
 	PrefLatexUi.ui \
 	PrefPathsUi.ui \
