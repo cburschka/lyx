@@ -98,6 +98,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\macro_edit_style", LyXRC::RC_MACRO_EDIT_STYLE },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
+	{ "\\mouse_wheel_speed", LyXRC::RC_MOUSE_WHEEL_SPEED },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
@@ -228,6 +229,7 @@ void LyXRC::setDefaults() {
 	auto_region_delete = true;
 	auto_reset_options = false;
 	plaintext_linelen = 65;
+	mouse_wheel_speed = 1.0;
 	num_lastfiles = maxlastfiles;
 	check_lastfiles = true;
 	use_lastfilepos = true;
@@ -731,6 +733,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_LOADSESSION:
 			if (lexrc.next()) {
 				load_session = lexrc.getBool();
+			}
+			break;
+
+		case RC_MOUSE_WHEEL_SPEED:
+			if (lexrc.next()) {
+				mouse_wheel_speed = lexrc.getFloat();
 			}
 			break;
 
@@ -1942,6 +1950,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_MOUSE_WHEEL_SPEED:
+		if (ignore_system_lyxrc ||
+		    mouse_wheel_speed != system_lyxrc.mouse_wheel_speed) {
+			os << "\\mouse_wheel_speed " << mouse_wheel_speed << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_NUMLASTFILES:
 		if (ignore_system_lyxrc ||
 		    num_lastfiles != system_lyxrc.num_lastfiles) {
@@ -2528,6 +2543,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_MARK_FOREIGN_LANGUAGE:
 		str = _("Select to control the highlighting of words with a language foreign to that of the document.");
+		break;
+
+	case RC_MOUSE_WHEEL_SPEED:
+		str = bformat(_("The scrolling speed of the mouse wheel. "),
+		      maxlastfiles);
 		break;
 
 	case RC_NUMLASTFILES:

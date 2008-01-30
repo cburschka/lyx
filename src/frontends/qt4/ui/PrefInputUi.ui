@@ -1,0 +1,187 @@
+<ui version="4.0" >
+ <class>PrefKeyboardUi</class>
+ <widget class="QWidget" name="PrefKeyboardUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>392</width>
+    <height>297</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QGroupBox" name="keyboardGB" >
+     <property name="title" >
+      <string>Keyboard</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" colspan="3" >
+       <widget class="QCheckBox" name="keymapCB" >
+        <property name="text" >
+         <string>Use &amp;keyboard map</string>
+        </property>
+        <property name="checked" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="firstKeymapLA" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>&amp;First:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>firstKeymapED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="firstKeymapED" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QPushButton" name="firstKeymapPB" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>Br&amp;owse...</string>
+        </property>
+        <property name="autoDefault" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="secondKeymapLA" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>S&amp;econd:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>secondKeymapED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="secondKeymapED" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QPushButton" name="secondKeymapPB" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>Bro&amp;wse...</string>
+        </property>
+        <property name="autoDefault" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="mouseGB" >
+     <property name="title" >
+      <string>Mouse</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="scrollingSpeedLA" >
+        <property name="text" >
+         <string>Wheel scrolling speed:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QDoubleSpinBox" name="mouseWheelSpeedSB" >
+        <property name="toolTip" >
+         <string>1.0 is the standard scrolling speed with the mouse wheel. Higher values will speed it up, low values slow it down.</string>
+        </property>
+        <property name="decimals" >
+         <number>1</number>
+        </property>
+        <property name="minimum" >
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum" >
+         <double>10.000000000000000</double>
+        </property>
+        <property name="singleStep" >
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value" >
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

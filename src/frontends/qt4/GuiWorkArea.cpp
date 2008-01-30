@@ -658,9 +658,15 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	int const lines = qApp->wheelScrollLines() * e->delta() / 120;
+	double const lines = qApp->wheelScrollLines()
+		* lyxrc.mouse_wheel_speed
+		* e->delta() / 120.0;
+	lyxerr << "wheelScrollLines = " << qApp->wheelScrollLines()
+		<< " delta = " << e->delta()
+		<< " lines = " << lines
+		<< std::endl;
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
-			lines *  verticalScrollBar()->singleStep());
+		int(lines *  verticalScrollBar()->singleStep()));
 }
 
 

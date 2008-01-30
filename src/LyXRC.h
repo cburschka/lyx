@@ -86,6 +86,7 @@ public:
 		RC_MACRO_EDIT_STYLE,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
+		RC_MOUSE_WHEEL_SPEED,
 		RC_NUMLASTFILES,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
@@ -253,6 +254,8 @@ public:
 	/// Whether or not save/restore session information
 	/// like windows position and geometry.
 	bool allow_geometry_session;
+	/// Scrolling speed of the mouse wheel
+	double mouse_wheel_speed;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// Screen font sizes in points for each font size

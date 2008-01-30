@@ -2214,6 +2214,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_MACRO_EDIT_STYLE:
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
+	case LyXRC::RC_MOUSE_WHEEL_SPEED:
 	case LyXRC::RC_NUMLASTFILES:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
