@@ -13,7 +13,7 @@ Known issues in version 1.5.4
   via EPS). This is a bug in the kdelibs package (the kimg_eps library, to be
   precise) included in the KDE 4 pre-releases and in KDE 4.0. The problem has
   been resolved for KDE 4.0.1. Until KDE 4.0.1 is available, there are two
-  (rather inconvenient) workarounds::
+  (rather inconvenient) workarounds:
   * uninstall kdelibs4 (or KDE4, for that matter) or
   * disable graphics preview in Tools->Preferences->Graphics
   Cf. http://bugzilla.lyx.org/show_bug.cgi?id=4409
