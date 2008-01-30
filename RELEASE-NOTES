@@ -10,14 +10,18 @@ Known issues in version 1.5.4
 
 - If KDE 4 (the kdelibs4 package, for that matter) is installed, LyX might
   crash when previewing an EPS graphic (or any other graphic that is converted
-  via EPS). This is a bug in the kdelibs4 package (the kimg_eps library, to be
-  precise). Until the problem has been resolved on the KDE side, there are two
-  workarounds, both rather inconvenient, unfortunately:
+  via EPS). This is a bug in the kdelibs package (the kimg_eps library, to be
+  precise) included in the KDE 4 pre-releases and in KDE 4.0. The problem has
+  been resolved for KDE 4.0.1. Until KDE 4.0.1 is available, there are two
+  (rather inconvenient) workarounds::
   * uninstall kdelibs4 (or KDE4, for that matter) or
   * disable graphics preview in Tools->Preferences->Graphics
   Cf. http://bugzilla.lyx.org/show_bug.cgi?id=4409
   and
   https://bugs.kde.org/show_bug.cgi?id=156957
+
+  We encourage all KDE 4 users to upgrade to KDE 4.0.1 (or newer) as soon as
+  possible.
 
 - Cursor restoration problems with Multiple-View:
   When using multiple Windows to edit different parts of the
