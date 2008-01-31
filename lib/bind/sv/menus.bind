@@ -108,8 +108,10 @@
 \bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
 \bind "M-p v"			"layout Verse"
 
-\bind "M-p Left"		"depth-decrement"
-\bind "M-p Right"		"depth-increment"
+\bind "M-p Left"		"outline-out"
+\bind "M-p Right"		"outline-in"
+\bind "M-p Up"			"outline-up"
+\bind "M-p Down"		"outline-down"
 
 
 #

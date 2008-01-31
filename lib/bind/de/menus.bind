@@ -105,8 +105,10 @@
 \bind "M-a space"		"drop-layouts-choice"
 \bind "M-a v"			"layout Verse"
 
-\bind "M-a Left"		"depth-decrement"
-\bind "M-a Right"		"depth-increment"
+\bind "M-a Left"		"outline-out"
+\bind "M-a Right"		"outline-in"
+\bind "M-a Up"			"outline-up"
+\bind "M-a Down"		"outline-down"
 
 # Obsolete Tastenbelegung: in die persönliche *.bind Datei kopieren und
 # auskommentieren wenn diese Tastenbelegung gewünscht ist.
