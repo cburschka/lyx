@@ -30,9 +30,12 @@ QURLDialog::QURLDialog(UrlView * form)
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
 
-    connect( urlED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
-    connect( hyperlinkCB, SIGNAL( clicked() ), this, SLOT( changed_adaptor() ) );
-    connect( nameED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
+	connect(urlED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(changed_adaptor()));
+	connect(hyperlinkCB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
+	connect(nameED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(changed_adaptor()));
 
 	setFocusProxy(urlED);
 }
