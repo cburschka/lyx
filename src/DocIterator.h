@@ -225,19 +225,29 @@ public:
 
 private:
 	/**
-	 * When the cursor position is i, is the cursor after the i-th char
-	 * or before the i+1-th char ? Normally, these two interpretations are
-	 * equivalent, except when the fonts of the i-th and i+1-th char
-	 * differ.
-	 * We use boundary_ to distinguish between the two options:
-	 * If boundary_=true, then the cursor is after the i-th char
-	 * and if boundary_=false, then the cursor is before the i+1-th char.
+	 * Normally, when the cursor is at position i, it is painted *before*
+	 * the character at position i. However, what if we want the cursor 
+	 * painted *after* position i? That's what boundary_ is for: if
+	 * boundary_==true, the cursor is painted *after* position i-1, instead
+	 * of before position i.
 	 *
-	 * We currently use the boundary only when the language direction of
-	 * the i-th char is different than the one of the i+1-th char.
-	 * In this case it is important to distinguish between the two
-	 * cursor interpretations, in order to give a reasonable behavior to
-	 * the user.
+	 * Note 1: Usually, after i-1 or before i are actually the same place!
+	 * However, this is not the case when i-1 and i are not painted 
+	 * contiguously, and in these cases we sometimes do want to have control
+	 * over whether to paint before i or after i-1.
+	 * Some concrete examples of where this happens:
+	 * a. i-1 at the end of one row, i at the beginning of next row
+	 * b. in bidi text, at transitions between RTL and LTR or vice versa
+	 *
+	 * Note 2: Why i and i-1? Why, if boundary_==false means: *before* i, 
+	 * couldn't boundary_==true mean: *after* i? 
+	 * Well, the reason is this: cursor position is not used only for 
+	 * painting the cursor, but it also affects other things, for example:
+	 * where the next insertion will be placed (it is inserted at the current
+	 * position, pushing anything at the current position and beyond forward).
+	 * Now, when the current position is i and boundary_==true, insertion would
+	 * happen *before* i. If the cursor, however, were painted *after* i, that
+	 * would be very unnatural...
 	 */
 	bool boundary_;
 	///
