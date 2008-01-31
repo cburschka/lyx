@@ -61,6 +61,7 @@ namespace lyx {
  * \li Notion: 
  * \li Syntax: 
  * \li Params: 
+ * \li Sample:
  * \li Origin: 
  */
 
@@ -104,122 +105,122 @@ void LyXAction::init()
 #endif
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_ACUTE
- * \li Action: adds an acute accent \htmlonly (&aacute;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds an acute accent \htmlonly (&aacute;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-acute
  */
 		{ LFUN_ACCENT_ACUTE, "accent-acute", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_BREVE
- * \li Action: adds a breve accent \htmlonly (&#259;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a breve accent \htmlonly (&#259;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-breve
  */
 		{ LFUN_ACCENT_BREVE, "accent-breve", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CARON
- * \li Action: adds a caron \htmlonly (&#462;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a caron \htmlonly (&#462;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-caron
  */
 		{ LFUN_ACCENT_CARON, "accent-caron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CEDILLA
- * \li Action: adds a cedilla \htmlonly (&ccedil;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a cedilla \htmlonly (&ccedil;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-cedilla
  */
 		{ LFUN_ACCENT_CEDILLA, "accent-cedilla", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCLE
- * \li Action: adds a circle accent \htmlonly (&aring;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a circle accent \htmlonly (&aring;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-circle
  */
 		{ LFUN_ACCENT_CIRCLE, "accent-circle", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCUMFLEX
- * \li Action: adds a circumflex \htmlonly (&ecirc;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a circumflex \htmlonly (&ecirc;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-circumflex
  */
 		{ LFUN_ACCENT_CIRCUMFLEX, "accent-circumflex", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_DOT
- * \li Action: adds a dot accent \htmlonly (&#380;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a dot accent \htmlonly (&#380;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-dot
  */
 		{ LFUN_ACCENT_DOT, "accent-dot", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_GRAVE
- * \li Action: adds a grave accent \htmlonly (&egrave;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a grave accent \htmlonly (&egrave;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-grave
  */
 		{ LFUN_ACCENT_GRAVE, "accent-grave", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_HUNGARIAN_UMLAUT
- * \li Action: adds a Hungarian umlaut \htmlonly (&#337;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a Hungarian umlaut \htmlonly (&#337;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-grave
  */
 		{ LFUN_ACCENT_HUNGARIAN_UMLAUT, "accent-hungarian-umlaut", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_MACRON
- * \li Action: adds a macron \htmlonly (&#257;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds a macron \htmlonly (&#257;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-macron
  */
 		{ LFUN_ACCENT_MACRON, "accent-macron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_OGONEK
- * \li Action: adds an ogonek accent \htmlonly (&#261;)\endhtmlonly
-               to the next character typed
+ * \li Action: Adds an ogonek accent \htmlonly (&#261;)\endhtmlonly
+               to the next character typed.
  * \li Syntax: accent-ogonek
  */
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
 		{ LFUN_ACCENT_SPECIAL_CARON, "accent-special-caron", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_TIE
- * \li Action: adds a tie \htmlonly (a&#865;)\endhtmlonly
-               over the next two character typed
+ * \li Action: Adds a tie \htmlonly (a&#865;)\endhtmlonly
+               over the next two character typed.
  * \li Notion: the following char will finish the tie.
  * \li Syntax: accent-tie
  */
 		{ LFUN_ACCENT_TIE, "accent-tie", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_TILDE
- * \li Action: adds a tilde \htmlonly (&atilde;)\endhtmlonly
-               over the next character typed
+ * \li Action: Adds a tilde \htmlonly (&atilde;)\endhtmlonly
+               over the next character typed.
  * \li Syntax: accent-tilde
  */
 		{ LFUN_ACCENT_TILDE, "accent-tilde", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UMLAUT
- * \li Action: adds an umlaut \htmlonly (&auml;)\endhtmlonly
-               over the next character typed
+ * \li Action: Adds an umlaut \htmlonly (&auml;)\endhtmlonly
+               over the next character typed.
  * \li Syntax: accent-umlaut
  */
 		{ LFUN_ACCENT_UMLAUT, "accent-umlaut", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERBAR
- * \li Action: adds a bar \htmlonly (a&#800;)\endhtmlonly
-               under the next character typed
+ * \li Action: Adds a bar \htmlonly (a&#800;)\endhtmlonly
+               under the next character typed.
  * \li Syntax: accent-underbar
  */
 		{ LFUN_ACCENT_UNDERBAR, "accent-underbar", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERDOT
- * \li Action: adds a dot \htmlonly (&#7841;)\endhtmlonly
-               under the next character typed
+ * \li Action: Adds a dot \htmlonly (&#7841;)\endhtmlonly
+               under the next character typed.
  * \li Syntax: accent-underdot
  */
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
 
 /**
  * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH
- * \li Action: Breaks the current paragraph at the current location
+ * \li Action: Breaks the current paragraph at the current location.
  * \li Syntax: break-paragraph
  */
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
@@ -240,7 +241,7 @@ void LyXAction::init()
 		{ LFUN_CAPTION_INSERT, "caption-insert", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_DATE_INSERT
- * \li Action: Inserts the current date
+ * \li Action: Inserts the current date.
  * \li Syntax: date-insert [<ARG>]
  * \li Param: <ARG>: Format of date. The default value (%x) can be set
                      in Preferences->Date format. For possible formats
@@ -351,7 +352,7 @@ void LyXAction::init()
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_SCROLL
- * \li Action: scroll the buffer view
+ * \li Action: Scroll the buffer view.
  * \li Notion: Only scrolls the screen up or down; does not move the cursor.
  * \li Syntax: scroll <TYPE> <QUANTITY>
  * \li Params: <TYPE>:  line|page\n
@@ -361,7 +362,7 @@ void LyXAction::init()
 		{ LFUN_SCROLL, "scroll", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_SCREEN_RECENTER
- * \li Action: Recenters the screen on the current cursor position
+ * \li Action: Recenters the screen on the current cursor position.
  * \li Syntax: screen-recenter
  */
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
@@ -371,19 +372,19 @@ void LyXAction::init()
 		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD
- * \li Action: moves the cursor one position logically backwards
+ * \li Action: Moves the cursor one position logically backwards.
  * \li Notion: This is not the action which should be bound to the arrow keys,
- * 			   because backwards may be left or right, depending on the 
- * 			   language. The arrow keys should be bound to LFUN_CHAR_LEFT or 
- * 			   LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+               because backwards may be left or right, depending on the
+               language. The arrow keys should be bound to #LFUN_CHAR_LEFT or
+               #LFUN_CHAR_RIGHT actions, which in turn may employ this one.
  * \li Syntax: char-backward
  */
 		{ LFUN_CHAR_BACKWARD, "char-backward", ReadOnly | NoUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD_SELECT
- * \li Action: moves the cursor one position logically backwards, adding 
- * 			   traversed position to the selection
- * \li Notion: \sa lyx::LFUN_CHAR_BACKWARD
+ * \li Action: Moves the cursor one position logically backwards, adding
+               traversed position to the selection.
+ * \li Notion: See also #LFUN_CHAR_BACKWARD.
  * \li Syntax: char-backward-select
  */
 		{ LFUN_CHAR_BACKWARD_SELECT, "char-backward-select", ReadOnly | SingleParUpdate, Edit },
@@ -391,61 +392,61 @@ void LyXAction::init()
 		{ LFUN_CHAR_DELETE_FORWARD, "delete-forward", SingleParUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD
- * \li Action: moves the cursor one position logically forward
+ * \li Action: Moves the cursor one position logically forward.
  * \li Notion: This is not the action which should be bound to the arrow keys,
- * 			   because forward may be left or right, depending on the language.
- * 			   The arrow keys should be bound to LFUN_CHAR_LEFT or 
- * 			   LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+               because forward may be left or right, depending on the language.
+               The arrow keys should be bound to #LFUN_CHAR_LEFT or
+               #LFUN_CHAR_RIGHT actions, which in turn may employ this one.
  * \li Syntax: char-forward
  */
 		{ LFUN_CHAR_FORWARD, "char-forward", ReadOnly | NoUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD_SELECT
- * \li Action: moves the cursor one position logically forward, adding 
- * 			   traversed position to the selection
- * \li Notion: \sa lyx::LFUN_CHAR_FORWARD
+ * \li Action: Moves the cursor one position logically forward, adding
+               traversed position to the selection.
+ * \li Notion: See also #LFUN_CHAR_FORWARD.
  * \li Syntax: char-forward-select
  */
 		{ LFUN_CHAR_FORWARD_SELECT, "char-forward-select", ReadOnly | SingleParUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_LEFT
- * \li Action: moves the cursor one position "to the left"
+ * \li Action: Moves the cursor one position "to the left".
  * \li Notion: This is the action which should be taken when the "left" key
- * 			   is pressed. Generally, it moves the cursor one position to the
- * 			   left. However, in Bidi text this become slightly more 
- * 			   complicated, and there are different modes of cursor movement.
- * 			   In "visual mode", this moves left, plain and simple. In "logical
- * 			   mode", movement is logically forward in RTL paragraphs, and 
- * 			   logically backwards in LTR paragraphs.
+               is pressed. Generally, it moves the cursor one position to the
+               left. However, in Bidi text this become slightly more
+               complicated, and there are different modes of cursor movement.
+               In "visual mode", this moves left, plain and simple. In "logical
+               mode", movement is logically forward in RTL paragraphs, and
+               logically backwards in LTR paragraphs.
  * \li Syntax: char-left
  */
 		{ LFUN_CHAR_LEFT, "char-left", ReadOnly | NoUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_LEFT_SELECT
- * \li Action: moves the cursor one position "to the left", adding 
- * 			   traversed position to the selection
- * \li Notion: \sa lyx::LFUN_CHAR_LEFT for exact details of the movement.
+ * \li Action: Moves the cursor one position "to the left", adding 
+               traversed position to the selection.
+ * \li Notion: See also #LFUN_CHAR_LEFT for exact details of the movement.
  * \li Syntax: char-left-select
  */
 		{ LFUN_CHAR_LEFT_SELECT, "char-left-select", ReadOnly | SingleParUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT
- * \li Action: moves the cursor one position "to the right"
+ * \li Action: Moves the cursor one position "to the right".
  * \li Notion: This is the action which should be taken when the "right" key
- * 			   is pressed. Generally, it moves the cursor one position to the
- * 			   right. However, in Bidi text this become slightly more 
- * 			   complicated, and there are different modes of cursor movement.
- * 			   In "visual mode", this moves right, plain and simple. In "logical
- * 			   mode", movement is logically forward in LTR paragraphs, and 
- * 			   logically backwards in RTL paragraphs.
+               is pressed. Generally, it moves the cursor one position to the
+               right. However, in Bidi text this become slightly more
+               complicated, and there are different modes of cursor movement.
+               In "visual mode", this moves right, plain and simple. In "logical
+               mode", movement is logically forward in LTR paragraphs, and
+               logically backwards in RTL paragraphs.
  * \li Syntax: char-right
  */
 		{ LFUN_CHAR_RIGHT, "char-right", ReadOnly | NoUpdate, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT_SELECT
- * \li Action: moves the cursor one position "to the right", adding 
- * 			   traversed position to the selection
- * \li Notion: \sa lyx::LFUN_CHAR_RIGHT for exact details of the movement.
+ * \li Action: Moves the cursor one position "to the right", adding
+               traversed position to the selection.
+ * \li Notion: See also #LFUN_CHAR_RIGHT for exact details of the movement.
  * \li Syntax: char-right-select
  */
 		{ LFUN_CHAR_RIGHT_SELECT, "char-right-select", ReadOnly | SingleParUpdate, Edit },
@@ -504,38 +505,38 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_COPY
- * \li Action: Copies to the clipboard the last edit
+ * \li Action: Copies to the clipboard the last edit.
  * \li Syntax: copy
  */
 		{ LFUN_COPY, "copy", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_CUT
- * \li Action: Cuts to the clipboard
+ * \li Action: Cuts to the clipboard.
  * \li Syntax: cut
  */
 		{ LFUN_CUT, "cut", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_PASTE
- * \li Action: Pastes from the active clipboard
+ * \li Action: Pastes from the active clipboard.
  * \li Syntax: paste
  */
 		{ LFUN_PASTE, "paste", Noop, Edit },
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_PRIMARY_SELECTION_PASTE
- * \li Action: Pastes the material currently selected
+ * \li Action: Pastes the material currently selected.
  * \li Syntax: primary-selection-paste
  */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_UNDO
- * \li Action: Undoes the last edit
+ * \li Action: Undoes the last edit.
  * \li Syntax: undo
  */
 		{ LFUN_UNDO, "undo", Noop, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_REDO
- * \li Action: Redoes the last thing undone
+ * \li Action: Redoes the last thing undone.
  * \li Syntax: redo
  */
 		{ LFUN_REDO, "redo", Noop, Edit },
@@ -578,29 +579,29 @@ void LyXAction::init()
 
  /**
  * \var lyx::kb_action lyx::LFUN_LAYOUT
- * \li Action: Sets the layout (that is, environment) for the current paragraph
+ * \li Action: Sets the layout (that is, environment) for the current paragraph.
  * \li Syntax: layout <LAYOUT>
  * \li Params: <LAYOUT>: the layout to use
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_LAYOUT_PARAGRAPH
- * \li Action: Launches the paragraph settings dialog
+ * \li Action: Launches the paragraph settings dialog.
  * \li Syntax: layout-paragraph
  */
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly, Layout },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_DROP_LAYOUTS_CHOICE
- * \li Action: Displays list of layout choices
+ * \li Action: Displays list of layout choices.
  * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
-               dropbox allowing for choice of layout
+               dropbox allowing for choice of layout.
  * \li Syntax: drop-layouts-choice
  */
 		{ LFUN_DROP_LAYOUTS_CHOICE, "drop-layouts-choice", ReadOnly, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULES_CLEAR
- * \li Action: Clears the module list
+ * \li Action: Clears the module list.
  * \li Notion: Clears the list of included modules for the current buffer.
  * \li Syntax: layout-modules-clear
  * \li Origin: rgh, 25 August 2007
@@ -608,7 +609,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULE_ADD
- * \li Action: Adds a module
+ * \li Action: Adds a module.
  * \li Notion: Adds a module to the list of included modules for the current buffer.
  * \li Syntax: layout-module-add <MODULE>
  * \li Params: <MODULE>: the module to be added
@@ -617,7 +618,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_LAYOUT_RELOAD
- * \li Action: Reloads layout information
+ * \li Action: Reloads layout information.
  * \li Notion: Reloads all layout information for the current buffer from disk, thus
                recognizing any changes that have been made to layout files on the fly.
                This is intended to be used only by layout developers and should not be
@@ -628,7 +629,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_TEXTCLASS_APPLY
- * \li Action: Sets the text class for the current buffer
+ * \li Action: Sets the text class for the current buffer.
  * \li Syntax: textclass-apply <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be
                    the filename, minus the ".layout" extension.
@@ -636,7 +637,7 @@ void LyXAction::init()
 		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop, Layout },
 /**
  * \var lyx::kb_action lyx::LFUN_TEXTCLASS_LOAD
- * \li Action: Loads information for a textclass from disk
+ * \li Action: Loads information for a textclass from disk.
  * \li Syntax: textclass-load <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be
                    the filename, minus the ".layout" extension.
@@ -697,7 +698,7 @@ void LyXAction::init()
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_UNFOLD
- * \li Action: Unfold a Math Macro
+ * \li Action: Unfold a Math Macro.
  * \li Notion: Unfold the Math Macro the cursor is in, i.e.
                display it as \foo.
  * \li Syntax: math-macro-unfold
@@ -706,7 +707,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_UNFOLD, "math-macro-unfold", ReadOnly | SingleParUpdate, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_FOLD
- * \li Action: Fold a Math Macro
+ * \li Action: Fold a Math Macro.
  * \li Notion: Fold the Math Macro the cursor is in if it was
                unfolded, i.e. displayed as \foo before.
  * \li Syntax: math-macro-fold
@@ -715,8 +716,8 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_FOLD, "math-macro-fold", ReadOnly | SingleParUpdate, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_PARAM
- * \li Action: Add a parameter
- * \li Notion: Add a parameter to a Math Macro
+ * \li Action: Add a parameter.
+ * \li Notion: Add a parameter to a Math Macro.
  * \li Params: <NUM>: The number of the parameter behind which the new one
                will be added (1 for the first, i.e. use 0 for add a
                parameter at the left), defaults to the last one.
@@ -726,7 +727,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_ADD_PARAM, "math-macro-add-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_PARAM
- * \li Action: Remove the last parameter
+ * \li Action: Remove the last parameter.
  * \li Notion: Remove the last parameter of a Math Macro and
                remove its value in all instances of the macro
                in the buffer.
@@ -738,7 +739,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_REMOVE_PARAM, "math-macro-remove-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
- * \li Action: Append a greedy parameter
+ * \li Action: Append a greedy parameter.
  * \li Notion: Append a greedy parameter to a Math Macro which
                eats the following mathed cell in every instance of
                the macro in the buffer.
@@ -748,7 +749,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_APPEND_GREEDY_PARAM, "math-macro-append-greedy-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
- * \li Action: Remove a greedy parameter
+ * \li Action: Remove a greedy parameter.
  * \li Notion: Remove a greedy parameter of a Math Macro and spit
                out the values of it in every instance of the macro
                in the buffer. If it is an optional parameter the [valud]
@@ -759,7 +760,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM, "math-macro-remove-greedy-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_OPTIONAL
- * \li Action: Make a parameter optional
+ * \li Action: Make a parameter optional.
  * \li Notion: Turn the first non-optional parameter of a Math Macro
                into an optional parameter with a default value.
  * \li Syntax: math-macro-make-optional
@@ -768,7 +769,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_MAKE_OPTIONAL, "math-macro-make-optional", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_NONOPTIONAL
- * \li Action: Make a parameter non-optional
+ * \li Action: Make a parameter non-optional.
  * \li Notion: Turn the last optional parameter of a Math Macro
                into a non-optional parameter. The default value is
                remembered to be reused later if the user changes his mind.
@@ -778,7 +779,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_MAKE_NONOPTIONAL, "math-macro-make-nonoptional", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
- * \li Action: Add an optional parameter
+ * \li Action: Add an optional parameter.
  * \li Notion: Insert an optional parameter just behind the
                already existing optional parameters.
  * \li Syntax: math-macro-add-optional-param
@@ -787,7 +788,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
- * \li Action: Remove the last optional parameter
+ * \li Action: Remove the last optional parameter.
  * \li Notion: Remove the last optional parameter of a Math Macro and
                remove it in all the instances of the macro in the buffer.
  * \li Syntax: math-macro-remove-optional-param
@@ -796,7 +797,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
- * \li Action: Add a greedy optional parameter
+ * \li Action: Add a greedy optional parameter.
  * \li Notion: Add a greedy optional parameter which eats the value
                from the following cells in mathed which are in the [value]
                format.
@@ -806,7 +807,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param", Noop, Math },
 /**
  * \var lyx::kb_action lyx::LFUN_IN_MATHMACROTEMPLATE
- * \li Action: Only active in Math Macro definition
+ * \li Action: Only active in Math Macro definition.
  * \li Notion: Dummy function which is only active in a Math Macro definition.
                It's used to toggle the Math Macro toolbar if the cursor moves
                into a Math Macro definition.
@@ -898,7 +899,7 @@ void LyXAction::init()
 
 /**
  * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS
- * \li Action: Change paragraph settings
+ * \li Action: Change paragraph settings.
  * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
                This function only modifies, and does not override, existing settings.
                Note that the "leftindent" indent setting is deprecated.
@@ -924,31 +925,35 @@ void LyXAction::init()
 
 /**
  * \var lyx::kb_action lyx::LFUN_FINISHED_FORWARD
- * \li Action: moves the cursor out of the current slice, going forward
+ * \li Action: Moves the cursor out of the current slice, going forward.
  * \li Notion: Cursor movement within an inset may be different than cursor
- * 			   movement in the surrounding text. This action should be called
- * 			   automatically by the cursor movement within the inset, when 
- * 			   movement within the inset has ceased (reached the end of the
- * 			   last paragraph, for example), in order to move correctly 
- * 			   back into the surrounding text.
+               movement in the surrounding text. This action should be called
+               automatically by the cursor movement within the inset, when
+               movement within the inset has ceased (reached the end of the
+               last paragraph, for example), in order to move correctly
+               back into the surrounding text.
+ * \li Syntax: finished-forward
  */
 		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
 /**
  * \var lyx::kb_action lyx::LFUN_FINISHED_BACKWARD
- * \li Action: moves the cursor out of the current slice, going backwards
- * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ * \li Action: Moves the cursor out of the current slice, going backwards.
+ * \li Notion: See also #LFUN_FINISHED_FORWARD.
+ * \li Syntax: finished-backward
  */
 		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
 /**
  * \var lyx::kb_action lyx::LFUN_FINISHED_RIGHT
- * \li Action: moves the cursor out of the current slice, going right
- * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ * \li Action: Moves the cursor out of the current slice, going right.
+ * \li Notion: See also #LFUN_FINISHED_FORWARD
+ * \li Syntax: finished-right
  */
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
 /**
  * \var lyx::kb_action lyx::LFUN_FINISHED_LEFT
- * \li Action: moves the cursor out of the current slice, going left
- * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ * \li Action: Moves the cursor out of the current slice, going left.
+ * \li Notion: See also #LFUN_FINISHED_FORWARD.
+ * \li Syntax: finished-left
  */
 		{ LFUN_FINISHED_LEFT, "", ReadOnly, Hidden },
 
@@ -960,7 +965,7 @@ void LyXAction::init()
 
 /**
  * \var lyx::kb_action lyx::LFUN_BOOKMARK_GOTO
- * \li Action: Goto a bookmark
+ * \li Action: Goto a bookmark.
  * \li Notion: Moves the cursor to the numbered bookmark, opening the file
                if necessary. Note that bookmarsk are saved per-session, not
                per file.
@@ -971,7 +976,7 @@ void LyXAction::init()
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", NoBuffer, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_BOOKMARK_SAVE
- * \li Action: Save a bookmark
+ * \li Action: Save a bookmark.
  * \li Notion: Saves a numbered bookmark to the sessions file. The number
                must be between 1 and 9, inclusive. Note that bookmarks are
                saved per-session, not per file.
@@ -982,7 +987,7 @@ void LyXAction::init()
 		{ LFUN_BOOKMARK_SAVE, "bookmark-save", ReadOnly, Edit },
 /**
  * \var lyx::kb_action lyx::LFUN_BOOKMARK_CLEAR
- * \li Action: Clears the list of saved bookmarks
+ * \li Action: Clears the list of saved bookmarks.
  * \li Syntax: bookmark-clear
  * \li Origin: bpeng, 31 October 2006
  */
@@ -991,7 +996,7 @@ void LyXAction::init()
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_LYX_QUIT
- * \li Action: Terminates the current LyX instance
+ * \li Action: Terminates the current LyX instance.
  * \li Notion: Terminates the current LyX instance, asking whether to save
                modified documents, etc.
  * \li Syntax: lyx-quit
@@ -1038,7 +1043,7 @@ void LyXAction::init()
 
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_AUTO_SAVE
- * \li Action: Saves the current buffer to a temporary file
+ * \li Action: Saves the current buffer to a temporary file.
  * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
                is called automatically by LyX, to "autosave" the current buffer.
 	* \li Syntax: buffer-auto-save
@@ -1050,7 +1055,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_CLOSE
- * \li Action: Closes the current buffer
+ * \li Action: Closes the current buffer.
  * \li Notion: Closes the current buffer, asking whether to save it, etc,
                if the buffer has been modified.
  * \li Syntax: buffer-close
@@ -1062,7 +1067,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_NEW
- * \li Action: Creates a new buffer (that is, document)
+ * \li Action: Creates a new buffer (that is, document).
  * \li Syntax: buffer-new
  */
 		{ LFUN_BUFFER_NEW, "buffer-new", NoBuffer, Buffer },
@@ -1073,7 +1078,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_VIEW
- * \li Action: Displays current buffer in chosen format
+ * \li Action: Displays current buffer in chosen format.
  * \li Notion: Displays the contents of the current buffer in the chosen
                format, for example, PDF or DVI. This runs the necessary
                converter, calls the defined viewer, and so forth.
@@ -1085,7 +1090,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE
- * \li Action: Saves the current buffer
+ * \li Action: Saves the current buffer.
  * \li Notion: Saves the current buffer to disk, using the filename that
                is already associated with the buffer, asking for one if
                none is yet assigned.
