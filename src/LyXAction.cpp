@@ -369,15 +369,85 @@ void LyXAction::init()
 		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },
 
 		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD
+ * \li Action: moves the cursor one position logically backwards
+ * \li Notion: This is not the action which should be bound to the arrow keys,
+ * 			   because backwards may be left or right, depending on the 
+ * 			   language. The arrow keys should be bound to LFUN_CHAR_LEFT or 
+ * 			   LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+ * \li Syntax: char-backward
+ */
 		{ LFUN_CHAR_BACKWARD, "char-backward", ReadOnly | NoUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD_SELECT
+ * \li Action: moves the cursor one position logically backwards, adding 
+ * 			   traversed position to the selection
+ * \li Notion: \sa lyx::LFUN_CHAR_BACKWARD
+ * \li Syntax: char-backward-select
+ */
 		{ LFUN_CHAR_BACKWARD_SELECT, "char-backward-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_CHAR_DELETE_BACKWARD, "delete-backward", SingleParUpdate, Edit },
 		{ LFUN_CHAR_DELETE_FORWARD, "delete-forward", SingleParUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD
+ * \li Action: moves the cursor one position logically forward
+ * \li Notion: This is not the action which should be bound to the arrow keys,
+ * 			   because forward may be left or right, depending on the language.
+ * 			   The arrow keys should be bound to LFUN_CHAR_LEFT or 
+ * 			   LFUN_CHAR_RIGHT actions, which in turn may employ this one.
+ * \li Syntax: char-forward
+ */
 		{ LFUN_CHAR_FORWARD, "char-forward", ReadOnly | NoUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD_SELECT
+ * \li Action: moves the cursor one position logically forward, adding 
+ * 			   traversed position to the selection
+ * \li Notion: \sa lyx::LFUN_CHAR_FORWARD
+ * \li Syntax: char-forward-select
+ */
 		{ LFUN_CHAR_FORWARD_SELECT, "char-forward-select", ReadOnly | SingleParUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_LEFT
+ * \li Action: moves the cursor one position "to the left"
+ * \li Notion: This is the action which should be taken when the "left" key
+ * 			   is pressed. Generally, it moves the cursor one position to the
+ * 			   left. However, in Bidi text this become slightly more 
+ * 			   complicated, and there are different modes of cursor movement.
+ * 			   In "visual mode", this moves left, plain and simple. In "logical
+ * 			   mode", movement is logically forward in RTL paragraphs, and 
+ * 			   logically backwards in LTR paragraphs.
+ * \li Syntax: char-left
+ */
 		{ LFUN_CHAR_LEFT, "char-left", ReadOnly | NoUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_LEFT_SELECT
+ * \li Action: moves the cursor one position "to the left", adding 
+ * 			   traversed position to the selection
+ * \li Notion: \sa lyx::LFUN_CHAR_LEFT for exact details of the movement.
+ * \li Syntax: char-left-select
+ */
 		{ LFUN_CHAR_LEFT_SELECT, "char-left-select", ReadOnly | SingleParUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT
+ * \li Action: moves the cursor one position "to the right"
+ * \li Notion: This is the action which should be taken when the "right" key
+ * 			   is pressed. Generally, it moves the cursor one position to the
+ * 			   right. However, in Bidi text this become slightly more 
+ * 			   complicated, and there are different modes of cursor movement.
+ * 			   In "visual mode", this moves right, plain and simple. In "logical
+ * 			   mode", movement is logically forward in LTR paragraphs, and 
+ * 			   logically backwards in RTL paragraphs.
+ * \li Syntax: char-right
+ */
 		{ LFUN_CHAR_RIGHT, "char-right", ReadOnly | NoUpdate, Edit },
+/**
+ * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT_SELECT
+ * \li Action: moves the cursor one position "to the right", adding 
+ * 			   traversed position to the selection
+ * \li Notion: \sa lyx::LFUN_CHAR_RIGHT for exact details of the movement.
+ * \li Syntax: char-right-select
+ */
 		{ LFUN_CHAR_RIGHT_SELECT, "char-right-select", ReadOnly | SingleParUpdate, Edit },
 
 		{ LFUN_WORD_BACKWARD, "word-backward", ReadOnly | NoUpdate, Edit },
@@ -852,9 +922,34 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
+/**
+ * \var lyx::kb_action lyx::LFUN_FINISHED_FORWARD
+ * \li Action: moves the cursor out of the current slice, going forward
+ * \li Notion: Cursor movement within an inset may be different than cursor
+ * 			   movement in the surrounding text. This action should be called
+ * 			   automatically by the cursor movement within the inset, when 
+ * 			   movement within the inset has ceased (reached the end of the
+ * 			   last paragraph, for example), in order to move correctly 
+ * 			   back into the surrounding text.
+ */
 		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
+/**
+ * \var lyx::kb_action lyx::LFUN_FINISHED_BACKWARD
+ * \li Action: moves the cursor out of the current slice, going backwards
+ * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ */
 		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
+/**
+ * \var lyx::kb_action lyx::LFUN_FINISHED_RIGHT
+ * \li Action: moves the cursor out of the current slice, going right
+ * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ */
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
+/**
+ * \var lyx::kb_action lyx::LFUN_FINISHED_LEFT
+ * \li Action: moves the cursor out of the current slice, going left
+ * \li Notion: \sa lyx::LFUN_FINISHED_FORWARD
+ */
 		{ LFUN_FINISHED_LEFT, "", ReadOnly, Hidden },
 
 		{ LFUN_LANGUAGE, "language", Noop, Edit },
