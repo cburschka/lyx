@@ -111,8 +111,11 @@
 \bind "M-p space"		"drop-layouts-choice"
 \bind "M-p v"			"layout Verse"
 
-\bind "M-p Left"		"depth-decrement"
-\bind "M-p Right"		"depth-increment"
+\bind "M-p Left"		"outline-out"
+\bind "M-p Right"		"outline-in"
+\bind "M-p Up"			"outline-up"
+\bind "M-p Down"		"outline-down"
+
 
 # These are kept for backwards compatibility (only make sense on US keyboard)
 \bind "M-p S-at"		"layout Section*"	# M-p S-2
