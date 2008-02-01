@@ -144,12 +144,7 @@ void InsetFlex::validate(LaTeXFeatures & features) const
 {
 	if (!preamble_.empty())
 		features.addPreambleSnippet(preamble_);
-	if (packages_.empty())
-		return;
-	for (vector<string>::const_iterator it = packages_.begin();
-	     it != packages_.end(); ++it) {
-		features.require(*it);
-	}
+	features.require(packages_);
 }
 
 } // namespace lyx

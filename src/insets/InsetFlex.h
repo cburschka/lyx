@@ -66,7 +66,7 @@ private:
 	///
 	std::string name_;
 	///
-	std::vector<std::string> packages_;
+	std::set<std::string> packages_;
 	///
 	std::string preamble_;
 };

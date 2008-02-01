@@ -302,7 +302,7 @@ static string const newlyxcommand_def =
 //
 /////////////////////////////////////////////////////////////////////
 
-LaTeXFeatures::PackagesList LaTeXFeatures::packages_;
+LaTeXFeatures::Packages LaTeXFeatures::packages_;
 
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
@@ -322,10 +322,13 @@ bool LaTeXFeatures::useBabel() const
 
 void LaTeXFeatures::require(string const & name)
 {
-	if (isRequired(name))
-		return;
+	features_.insert(name);
+}
 
-	features_.push_back(name);
+
+void LaTeXFeatures::require(set<string> const & names)
+{
+	features_.insert(names.begin(), names.end());
 }
 
 
@@ -353,11 +356,7 @@ void LaTeXFeatures::getAvailable()
 			finished = true;
 			break;
 		default:
-			string const name = lex.getString();
-			PackagesList::const_iterator begin = packages_.begin();
-			PackagesList::const_iterator end   = packages_.end();
-			if (find(begin, end, name) == end)
-				packages_.push_back(name);
+			packages_.insert(lex.getString());
 		}
 	}
 }
@@ -378,17 +377,16 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 	TextClass const & tclass = params_.getTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
-		list<docstring>::const_iterator cit = usedLayouts_.begin();
-		list<docstring>::const_iterator end = usedLayouts_.end();
-		for (; cit != end; ++cit) {
-			if (layoutname == *cit)
-				return;
-		}
+		if (find(usedLayouts_.begin(), usedLayouts_.end(), layoutname) 
+		    != usedLayouts_.end())
+			return;
 
-		LayoutPtr const & lyt = tclass[layoutname];
-		if (!lyt->depends_on().empty()) {
+		Layout const & layout = *tclass[layoutname];
+		require(layout.requires());
+
+		if (!layout.depends_on().empty()) {
 			++level;
-			useLayout(lyt->depends_on());
+			useLayout(layout.depends_on());
 			--level;
 		}
 		usedLayouts_.push_back(layoutname);
@@ -404,7 +402,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 
 bool LaTeXFeatures::isRequired(string const & name) const
 {
-	return find(features_.begin(), features_.end(), name) != features_.end();
+	return features_.find(name) != features_.end();
 }
 
 
@@ -428,8 +426,8 @@ bool LaTeXFeatures::isAvailable(string const & name)
 
 void LaTeXFeatures::addPreambleSnippet(string const & preamble)
 {
-	FeaturesList::const_iterator begin = preamble_snippets_.begin();
-	FeaturesList::const_iterator end   = preamble_snippets_.end();
+	SnippetList::const_iterator begin = preamble_snippets_.begin();
+	SnippetList::const_iterator end   = preamble_snippets_.end();
 	if (find(begin, end, preamble) == end)
 		preamble_snippets_.push_back(preamble);
 }
@@ -713,8 +711,8 @@ string const LaTeXFeatures::getMacros() const
 
 	if (!preamble_snippets_.empty())
 		macros << '\n';
-	FeaturesList::const_iterator pit  = preamble_snippets_.begin();
-	FeaturesList::const_iterator pend = preamble_snippets_.end();
+	SnippetList::const_iterator pit  = preamble_snippets_.begin();
+	SnippetList::const_iterator pend = preamble_snippets_.end();
 	for (; pit != pend; ++pit)
 		macros << *pit << '\n';
 

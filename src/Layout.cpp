@@ -488,8 +488,10 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 			break;
 
 		case LT_REQUIRES:
-			if (lexrc.eatLine())
-				requires_ = getVectorFromString(lexrc.getString());
+			lexrc.eatLine();
+			vector<string> const req = 
+				getVectorFromString(lexrc.getString());
+			requires_.insert(req.begin(), req.end());
 			break;
 
 		}

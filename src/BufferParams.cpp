@@ -810,13 +810,7 @@ void BufferParams::writeFile(ostream & os) const
 
 void BufferParams::validate(LaTeXFeatures & features) const
 {
-	if (!getTextClass().requires().empty()) {
-		vector<string> req = getTextClass().requires();
-		for (vector<string>::const_iterator it = req.begin();
-		     it != req.end(); ++it) {
-			features.require(*it);
-		}
-	}
+	features.require(getTextClass().requires());
 
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");

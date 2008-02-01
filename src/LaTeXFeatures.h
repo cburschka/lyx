@@ -66,8 +66,10 @@ public:
 	void showStruct() const;
 	///
 	void addPreambleSnippet(std::string const &);
-	/// Provide a string name-space to the requirements
+	/// Add a feature name requirements
 	void require(std::string const & name);
+	/// Add a set of feature names requirements
+	void require(std::set<std::string> const & names);
 	/// Which of the required packages are installed?
 	static void getAvailable();
 	/// Is the (required) package available?
@@ -105,16 +107,18 @@ public:
 private:
 	std::list<docstring> usedLayouts_;
 
+	/// The features that are needed by the document
+	typedef std::set<std::string> Features;
+	///
+	Features features_;
 	/// Static preamble bits from the external material insets
-	typedef std::list<std::string> FeaturesList;
+	typedef std::list<std::string> SnippetList;
 	///
-	FeaturesList features_;
-	///
-	FeaturesList preamble_snippets_;
+	SnippetList preamble_snippets_;
 	/// The available (required) packages
-	typedef std::list<std::string> PackagesList;
+	typedef std::set<std::string> Packages;
 	///
-	static PackagesList packages_;
+	static Packages packages_;
 	///
 	typedef std::set<Language const *> LanguageList;
 	/// used languages (only those that are supported by babel)

@@ -19,7 +19,7 @@
 #include "Spacing.h"
 #include "support/docstring.h"
 
-#include <vector>
+#include <set>
 #include <string>
 
 namespace lyx {
@@ -84,7 +84,7 @@ public:
 	///
 	docstring const & preamble() const { return preamble_; }
 	///
-	std::vector<std::string> const & requires() const { return requires_; }
+	std::set<std::string> const & requires() const { return requires_; }
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
@@ -256,7 +256,7 @@ private:
 	/// Macro definitions needed for this layout
 	docstring preamble_;
 	/// Packages needed for this layout
-	std::vector<std::string> requires_;
+	std::set<std::string> requires_;
 };
 
 } // namespace lyx

@@ -15,7 +15,7 @@
 
 #include "support/docstring.h"
 
-#include <vector>
+#include <set>
 #include <string>
 
 namespace lyx {
@@ -34,7 +34,7 @@ public:
 	FontInfo labelfont;
 	ColorCode bgcolor;
 	std::string preamble;
-	std::vector<std::string> requires;
+	std::set<std::string> requires;
 	bool multipar;
 	bool passthru;
 	bool needprotect;

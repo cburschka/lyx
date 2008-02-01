@@ -395,13 +395,9 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 		case TC_REQUIRES: {
 			lexrc.eatLine();
-			string const packages = lexrc.getString();
-			vector<string> req = getVectorFromString(packages);
-			for (vector<string>::const_iterator it = req.begin();
-			     it != req.end(); ++it) {
-				if (find(requires_.begin(), requires_.end(), *it) == requires_.end())
-					requires_.push_back(*it);
-			}
+			vector<string> const req 
+				= getVectorFromString(lexrc.getString());
+			requires_.insert(req.begin(), req.end());
 			break;
 		}
 
@@ -663,7 +659,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	FontInfo labelfont = inherit_font;
 	ColorCode bgcolor(Color_background);
 	string preamble;
-	vector<string> requires;
+	set<string> requires;
 	bool multipar = false;
 	bool passthru = false;
 	bool needprotect = false;
@@ -748,8 +744,9 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			break;
 		case IL_REQUIRES: {
 			lexrc.eatLine();
-			string const packages = lexrc.getString();
-			requires = getVectorFromString(packages);
+			vector<string> const req 
+				= getVectorFromString(lexrc.getString());
+			requires.insert(req.begin(), req.end());
 			break;
 		}
 		case IL_END:
