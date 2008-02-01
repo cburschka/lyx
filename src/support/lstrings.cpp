@@ -477,11 +477,7 @@ bool prefixIs(string const & a, string const & pre)
 {
 	size_t const prelen = pre.length();
 	size_t const alen = a.length();
-
-	if (prelen > alen || a.empty())
-		return false;
-	else
-		return a.compare(0, prelen, pre) == 0;
+	return prelen <= alen && !a.empty() && a.compare(0, prelen, pre) == 0;
 }
 
 
@@ -489,11 +485,7 @@ bool prefixIs(docstring const & a, docstring const & pre)
 {
 	size_t const prelen = pre.length();
 	size_t const alen = a.length();
-
-	if (prelen > alen || a.empty())
-		return false;
-	else
-		return a.compare(0, prelen, pre) == 0;
+	return prelen <= alen && !a.empty() && a.compare(0, prelen, pre) == 0;
 }
 
 
@@ -516,10 +508,7 @@ bool suffixIs(string const & a, string const & suf)
 {
 	size_t const suflen = suf.length();
 	size_t const alen = a.length();
-	if (suflen > alen)
-		return false;
-	else
-		return a.compare(alen - suflen, suflen, suf) == 0;
+	return suflen <= alen && a.compare(alen - suflen, suflen, suf) == 0;
 }
 
 
