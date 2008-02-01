@@ -68,6 +68,7 @@ What's new
 
 - Improve cursor movement around lines with ending line-breaks.
 
+
 * DOCUMENT INPUT/OUTPUT
 
 - Support to paste text containing ligatures to LyX.
@@ -159,7 +160,9 @@ What's new
 - Avoid spurious warning messages about translation of "Plain text" at
   start-up.
 
-- Unicode support for missing space modifier letters.
+- Add unicode support for missing space modifier letters.
+
+- Add unicode support for many IPA characters.
 
 - The case-changing functions do not select text anymore.
 
