@@ -14,18 +14,13 @@
 #include "support/lstrings.h"
 
 #include "support/convert.h"
-#include "support/debug.h"
 #include "support/qstring_helpers.h"
 #include "support/textutils.h"
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>
 
-#include <cctype>
-#include <cstdlib>
-
 #include <algorithm>
-#include <sstream>
 
 using namespace std;
 
@@ -485,11 +480,8 @@ bool prefixIs(string const & a, string const & pre)
 
 	if (prelen > alen || a.empty())
 		return false;
-#if defined(STD_STRING_IS_GOOD)
-	return a.compare(0, prelen, pre) == 0;
-#else
-	return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
-#endif
+	else
+		return a.compare(0, prelen, pre) == 0;
 }
 
 
@@ -524,16 +516,10 @@ bool suffixIs(string const & a, string const & suf)
 {
 	size_t const suflen = suf.length();
 	size_t const alen = a.length();
-
 	if (suflen > alen)
 		return false;
-
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-	string tmp(a, alen - suflen);
-	return ::strncmp(tmp.c_str(), suf.c_str(), suflen) == 0;
-#else
-	return a.compare(alen - suflen, suflen, suf) == 0;
-#endif
+	else
+		return a.compare(alen - suflen, suflen, suf) == 0;
 }
 
 
