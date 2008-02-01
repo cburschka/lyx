@@ -5,13 +5,12 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
- File /r "$INSTDIR\Resources\doc"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\bind"
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"  
- SetOutPath "$INSTDIR\Resources\bind"
- File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\examples\es"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\es\mathed.lyx"
  SetOutPath "$INSTDIR\Resources\examples\ja"
