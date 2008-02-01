@@ -1061,6 +1061,16 @@ void LyXAction::init()
  * \li Syntax: buffer-close
  */
 		{ LFUN_BUFFER_CLOSE, "buffer-close", ReadOnly, Buffer },
+/**
+ * \var lyx::kb_action lyx::LFUN_BUFFER_EXPORT
+ * \li Action: Exports the current buffer (document) to the given format.
+ * \li Syntax: buffer-export <FORMAT>
+ * \li Params: <FORMAT> is either "custom" or one of the formats which you
+                        can find in Tools->Preferences->File formats->Format.
+			Usual format you will enter is "pdf2" (pdflatex),
+			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.
+ * \li Origin: Lgb, 29 Jul 1997
+ */
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 		{ LFUN_BUFFER_PRINT, "buffer-print", ReadOnly, Buffer },
@@ -1166,6 +1176,7 @@ void LyXAction::init()
  * \li Syntax: command-sequence <CMDS>
  * \li Params: <CMDS>: Sequence of commands separated by semicolons.
  * \li Sample: command-sequence cut; ert-insert; self-insert \; paste; self-insert {}; inset-toggle;
+ * \li Origin: Andre', 11 Nov 1999
  */
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 
