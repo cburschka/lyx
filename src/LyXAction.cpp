@@ -1069,6 +1069,9 @@ void LyXAction::init()
                         can find in Tools->Preferences->File formats->Format.
 			Usual format you will enter is "pdf2" (pdflatex),
 			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.
+			In case of "custom" you will be asked for a format you
+			want to start from and for the command that you want to
+			apply to this format.
  * \li Origin: Lgb, 29 Jul 1997
  */
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
