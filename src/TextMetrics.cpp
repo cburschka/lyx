@@ -893,9 +893,10 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	bool const rtl = lastrow ? text_->isRTL(buffer, par) : false;
 	if (lastrow &&
 	    ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-	     (!rtl && !left_side && vc == end  && x > tmpx + 5)))
-		c = end;
-	else if (vc == row.pos()) {
+	     (!rtl && !left_side && vc == end  && x > tmpx + 5))) {
+		if (!par.isNewline(end - 1))
+			c = end;
+	} else if (vc == row.pos()) {
 		c = bidi.vis2log(vc);
 		if (bidi.level(c) % 2 == 1)
 			++c;
