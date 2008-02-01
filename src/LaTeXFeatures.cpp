@@ -18,7 +18,6 @@
 
 #include "Color.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -28,9 +27,11 @@
 #include "LyXRC.h"
 #include "TextClass.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -414,13 +415,12 @@ bool LaTeXFeatures::mustProvide(string const & name) const
 
 bool LaTeXFeatures::isAvailable(string const & name)
 {
-	string n = name;
 	if (packages_.empty())
 		getAvailable();
-	size_t loc = n.rfind(".sty");
-	if (loc == n.length() - 4) 
-		n = n.erase(name.length() - 4);
-	return find(packages_.begin(), packages_.end(), n) != packages_.end();
+	string n = name;
+	if (suffixIs(n, ".sty"))
+		n.erase(name.length() - 4);
+	return packages_.find(n) != packages_.end();
 }
 
 
