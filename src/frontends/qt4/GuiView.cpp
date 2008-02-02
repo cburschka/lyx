@@ -615,17 +615,17 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 }
 
 
-void GuiView::setBusy(bool yes)
+void GuiView::setBusy(bool busy)
 {
 	if (d.current_work_area_) {
-		d.current_work_area_->setUpdatesEnabled(!yes);
-		if (yes)
+		d.current_work_area_->setUpdatesEnabled(busy);
+		if (busy)
 			d.current_work_area_->stopBlinkingCursor();
 		else
 			d.current_work_area_->startBlinkingCursor();
 	}
 
-	if (yes)
+	if (busy)
 		QApplication::setOverrideCursor(Qt::WaitCursor);
 	else
 		QApplication::restoreOverrideCursor();
