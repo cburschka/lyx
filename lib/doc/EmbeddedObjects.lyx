@@ -19333,8 +19333,7 @@ hypcap
 \series bold
 
 \backslash
-usepackage[f\SpecialChar \textcompwordmark{}
-igure]{hypcap}
+usepackage[figure]{hypcap}
 \end_layout
 
 \begin_layout Standard
@@ -19985,6 +19984,180 @@ e
 \end_layout
 
 \begin_layout Section
+Floats Side by Side
+\begin_inset LatexCommand index
+name "Floats ! Side by side"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To place floats side by side, like for Figure\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "fig:Float-left"
+
+\end_inset
+
+ and 
+\begin_inset LatexCommand ref
+reference "fig:Float-right"
+
+\end_inset
+
+, only 
+\emph on
+one
+\emph default
+ float is used.
+ In it two minipage boxes are inserted.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Minipages are explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ The width is set to 45\InsetSpace \thinspace{}
+-50\InsetSpace \thinspace{}
+column% and the box alignment to 
+\family sans
+Bottom
+\family default
+ for each minipage.
+ The minipage boxes contain the image and the caption in the same way as
+ they are in a float.
+ The only difference is that the image unit 
+\family sans
+Column\InsetSpace ~
+Width\InsetSpace ~
+%
+\family default
+ is now calculated according to the width of the minipage boxes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename clipart/mobius.eps
+	lyxscale 50
+	width 100col%
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Float-left"
+
+\end_inset
+
+Float on the left side.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\hfill
+
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename clipart/platypus.eps
+	lyxscale 50
+	width 100col%
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Float-right"
+
+\end_inset
+
+Float on the right side.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Caption Formatting
 \begin_inset LatexCommand index
 name "Caption ! Formatting"
@@ -20138,8 +20311,7 @@ usepackage[tableposition=top]{caption}
 \series bold
 
 \backslash
-captionsetup[f\SpecialChar \textcompwordmark{}
-igure]{labelfont={tt}, textfont=it, indention=1cm,%
+captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%
 \newline
 
 \begin_inset ERT
@@ -20872,8 +21044,7 @@ let
 \backslash
 MyFigure
 \backslash
-f\SpecialChar \textcompwordmark{}
-igure
+figure
 \newline
 
 \begin_inset ERT
@@ -20892,11 +21063,9 @@ hphantom{ }
 \backslash
 let
 \backslash
-MyEndf\SpecialChar \textcompwordmark{}
-igure
+MyEndfigure
 \backslash
-endf\SpecialChar \textcompwordmark{}
-igure
+endfigure
 \newline
 
 \begin_inset ERT
@@ -20913,14 +21082,11 @@ hphantom{ }
 
 
 \backslash
-renewenvironment{f\SpecialChar \textcompwordmark{}
-igure}{
+renewenvironment{figure}{
 \backslash
-begin{SCf\SpecialChar \textcompwordmark{}
-igure}}{
+begin{SCfigure}}{
 \backslash
-end{SCf\SpecialChar \textcompwordmark{}
-igure}}}
+end{SCfigure}}}
 \end_layout
 
 \begin_layout Standard
@@ -20949,8 +21115,7 @@ hphantom{ }
 \backslash
 let
 \backslash
-f\SpecialChar \textcompwordmark{}
-igure
+figure
 \backslash
 MyFigure
 \newline
@@ -20971,11 +21136,9 @@ hphantom{ }
 \backslash
 let
 \backslash
-endf\SpecialChar \textcompwordmark{}
-igure
+endfigure
 \backslash
-MyEndf\SpecialChar \textcompwordmark{}
-igure}
+MyEndfigure}
 \end_layout
 
 \begin_layout Standard
@@ -21121,8 +21284,7 @@ b
 \series bold
 
 \backslash
-sidecaptionvpos{f\SpecialChar \textcompwordmark{}
-igure}{c}
+sidecaptionvpos{figure}{c}
 \end_layout
 
 \begin_layout Standard

@@ -302,8 +302,8 @@ Version 1.5.4
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 27.
- Januar 2008
+letzte Änderung: 2.
+ Februar 2008
 \end_layout
 
 \begin_layout Standard
@@ -20665,8 +20665,7 @@ Dasselbe können Sie für alle Überschriften von Kapiteln, Abschnitten und
 \begin_layout Standard
 Es gibt auch noch das LaTeX-Paket 
 \series bold
-f\SpecialChar \textcompwordmark{}
-lafter
+flafter
 \series default
 
 \begin_inset LatexCommand index
@@ -20971,6 +20970,176 @@ e
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Gleitobjekte nebeneinander
+\begin_inset LatexCommand index
+name "Gleitobjekte ! nebeneinander"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um Gleitobjekte nebeneinander zu setzen, wie bei Abbildung\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "fig:Gleitobjekt-links"
+
+\end_inset
+
+ und 
+\begin_inset LatexCommand ref
+reference "fig:Gleitobjekt-rechts"
+
+\end_inset
+
+, wird nur 
+\emph on
+ein
+\emph default
+ Gleitobjekt verwendet.
+ In dieses werden zwei Minipage Boxen eingefügt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Minipages sind in Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "abs:Minipage"
+
+\end_inset
+
+ erklärt.
+\end_layout
+
+\end_inset
+
+ Die Breite wird für jede Minipage auf 45\InsetSpace \thinspace{}
+-50\InsetSpace \thinspace{}
+Spalten% und die Box Ausrichtung
+ auf 
+\family sans
+Unten
+\family default
+ gesetzt.
+ Die Minipage Boxen enthalten das Bild und die Beschriftung, so wie in einem
+ Gleitobjekt.
+ Der einzige Unterschied ist, dass die Bildeinheit 
+\family sans
+Spaltenbreite\InsetSpace ~
+%
+\family default
+ nun bezüglich der Breite der Minipage Boxen berechnet wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX1.5.x/lib/doc/clipart/mobius.eps
+	lyxscale 50
+	width 100col%
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Gleitobjekt-links"
+
+\end_inset
+
+Gleitobjekt auf der linken Seite.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\hfill
+
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX1.5.x/lib/doc/clipart/platypus.eps
+	lyxscale 50
+	width 100col%
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Gleitobjekt-rechts"
+
+\end_inset
+
+Gleitobjekt auf der rechten Seite.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -21853,8 +22022,7 @@ let
 \backslash
 MyFigure
 \backslash
-f\SpecialChar \textcompwordmark{}
-igure
+figure
 \newline
 
 \begin_inset ERT
@@ -21873,11 +22041,9 @@ hphantom{ }
 \backslash
 let
 \backslash
-MyEndf\SpecialChar \textcompwordmark{}
-igure
+MyEndfigure
 \backslash
-endf\SpecialChar \textcompwordmark{}
-igure
+endfigure
 \newline
 
 \begin_inset ERT
@@ -21894,14 +22060,11 @@ hphantom{ }
 
 
 \backslash
-renewenvironment{f\SpecialChar \textcompwordmark{}
-igure}{
+renewenvironment{figure}{
 \backslash
-begin{SCf\SpecialChar \textcompwordmark{}
-igure}}{
+begin{SCfigure}}{
 \backslash
-end{SCf\SpecialChar \textcompwordmark{}
-igure}}}
+end{SCfigure}}}
 \end_layout
 
 \begin_layout Standard
@@ -21930,8 +22093,7 @@ hphantom{ }
 \backslash
 let
 \backslash
-f\SpecialChar \textcompwordmark{}
-igure
+figure
 \backslash
 MyFigure
 \newline
@@ -21952,11 +22114,9 @@ hphantom{ }
 \backslash
 let
 \backslash
-endf\SpecialChar \textcompwordmark{}
-igure
+endfigure
 \backslash
-MyEndf\SpecialChar \textcompwordmark{}
-igure}
+MyEndfigure}
 \series default
 
 \lyxline
