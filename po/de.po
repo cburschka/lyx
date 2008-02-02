@@ -82,12 +82,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.5.0\n"
+"Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-02 00:55+0100\n"
-"PO-Revision-Date: 2008-02-02 01:48+0100\n"
+"PO-Revision-Date: 2008-02-03 00:13+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
-"Language-Team: German <de@li.org>\n"
+"Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -907,14 +907,13 @@ msgid "Regular E&xpression"
 msgstr "&Regulärer Ausdruck"
 
 #: src/frontends/qt4/ui/CitationUi.ui:231
-#, fuzzy
 msgid "Entry Types:"
-msgstr "Eintrag:"
+msgstr "Eintragstypen:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:248
 #: src/frontends/qt4/GuiCitation.cpp:327
 msgid "All Entry Types"
-msgstr ""
+msgstr "Alle Eintragstypen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:269
 msgid "Case Se&nsitive"
@@ -1048,9 +1047,8 @@ msgid "Extra embedded files:"
 msgstr "Weitere eingebettete Dateien"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:65
-#, fuzzy
 msgid "Save this document in bundled format"
-msgstr "Als Dokument-Standards speichern"
+msgstr "Dieses Dokument im gebündelten Format speichern"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:72
 msgid "Embedded files:"
@@ -2740,7 +2738,7 @@ msgstr "Groß:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:365
 msgid "Use Pixmap Cache to speed up font rendering"
-msgstr ""
+msgstr "Pixmap Cache benutzen um Darstellung von Zeichen zu beschleunigen"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
 msgid "Show key-bindings containing:"
@@ -5724,11 +5722,11 @@ msgstr "Muttersprache:"
 
 #: lib/layouts/europecv.layout:110
 msgid "LangHeader"
-msgstr ""
+msgstr "SprachKopf"
 
 #: lib/layouts/europecv.layout:114
 msgid "Language Header:"
-msgstr ""
+msgstr "Sprache Kopfzeile:"
 
 #: lib/layouts/europecv.layout:120
 #: lib/layouts/moderncv.layout:116
@@ -5745,11 +5743,11 @@ msgstr "Letzte Sprache:"
 
 #: lib/layouts/europecv.layout:129
 msgid "LangFooter"
-msgstr ""
+msgstr "SprachFuß"
 
 #: lib/layouts/europecv.layout:133
 msgid "Language Footer:"
-msgstr ""
+msgstr "Sprache Fußzeile:"
 
 #: lib/layouts/europecv.layout:136
 msgid "End"
@@ -7741,9 +7739,8 @@ msgid "Orgdiv"
 msgstr "div"
 
 #: lib/layouts/agu_stdtitle.inc:428
-#, fuzzy
 msgid "Orgname"
-msgstr "Nachname"
+msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
@@ -8266,18 +8263,16 @@ msgid "Braille mirror off"
 msgstr "Braille Spiegeln aus"
 
 #: lib/layouts/endnotes.module:2
-#, fuzzy
 msgid "Endnote"
-msgstr "Kopfnotiz"
+msgstr "Endnote"
 
 #: lib/layouts/endnotes.module:6
 msgid "Adds an endnote command, in addition to footnotes. You will need to add \theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 
 #: lib/layouts/endnotes.module:17
-#, fuzzy
 msgid "endnote"
-msgstr "Kopfnotiz"
+msgstr "endnote"
 
 #: lib/layouts/foottoend.module:2
 #, fuzzy
@@ -8382,7 +8377,7 @@ msgstr "Code"
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
-msgstr ""
+msgstr "Theoreme (AMS-erweitert)"
 
 #: lib/layouts/theorems-ams-extended.module:8
 msgid "Defines some additional theorem environments for use with the AMS theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both starred and non-starred forms."
@@ -14083,6 +14078,8 @@ msgid ""
 "Cannot extract file '%1$s'.\n"
 "Source file %2$s does not exist"
 msgstr ""
+"Kann Datei '%1$s' nicht entpacken.\n"
+"Quelldatei %2$s existiert nicht"
 
 #: src/EmbeddedFiles.cpp:162
 msgid "Overwrite external file?"
@@ -14124,18 +14121,17 @@ msgstr ""
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/EmbeddedFiles.cpp:211
-#, fuzzy
 msgid "Failed to embed file"
-msgstr "Eingebettete Datei aktualisieren?"
+msgstr "Einbetten der Datei fehlgeschlagen"
 
 #: src/EmbeddedFiles.cpp:212
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Failed to embed file %1$s.\n"
 "Please check whether this file exists and is readable."
 msgstr ""
-"Die Sicherungskopie %1$s kann nicht erstellt werden.\n"
-"Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
+"Einbetten der Datei %1$s fehlgeschlagen.\n"
+"Bitte prüfen Sie, ob die Datei existiert und lesbar ist."
 
 #: src/EmbeddedFiles.cpp:224
 msgid "Update embedded file?"
@@ -14161,11 +14157,12 @@ msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embeddable files are embedded.\n"
 msgstr ""
+"%1$d externe Dateien werden ignoriert.\n"
+"%2$d eingebettete Dateien werden eingebettet.\n"
 
 #: src/EmbeddedFiles.cpp:405
-#, fuzzy
 msgid "Packing all files"
-msgstr "Alle Seiten drucken"
+msgstr "Alle Dateien packen"
 
 #: src/EmbeddedFiles.cpp:407
 #, c-format
@@ -14173,6 +14170,8 @@ msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embedded files are extracted.\n"
 msgstr ""
+"%1$d externe Dateien werden ignoriert.\n"
+"%2$d eingebettete Dateien werden entpackt.\n"
 
 #: src/EmbeddedFiles.cpp:409
 msgid "Unpacking all files"
@@ -14204,12 +14203,12 @@ msgid "Save failure"
 msgstr "Speichern ist fehlgeschlagen"
 
 #: src/EmbeddedFiles.cpp:487
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"Die Sicherungskopie %1$s kann nicht erstellt werden.\n"
+"Datei %1$s konnte nicht erstellt werden.\n"
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/Exporter.cpp:44
@@ -14507,7 +14506,7 @@ msgstr "Keine Textklasse gefunden"
 
 #: src/LyX.cpp:587
 msgid "LyX cannot continue because no textclass is found. You can either reconfigure normally, or reconfigure using default textclasses, or quit LyX."
-msgstr ""
+msgstr "LyX kann nicht fortfahren weil keine Textklasse gefunden wurde. Sie können LyX entweder normal rekonfigurieren, oder unter Verwendung der Standardtextklassen rekonfigurieren, oder beenden."
 
 #: src/LyX.cpp:591
 msgid "&Reconfigure"
@@ -14704,6 +14703,9 @@ msgid ""
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
+"Die Systemkonfiguration ist fehlgeschlagen.\n"
+"Eine Standardtextklasse wird verwendet aber LyX könnte nicht in der Lage sein korrekt zu arbeiten.\n"
+"Bitte rekonfigurieren Sie nochmals wenn nötig."
 
 #: src/LyXFunc.cpp:208
 msgid "System reconfigured"
@@ -15353,9 +15355,8 @@ msgstr ""
 
 #: src/Paragraph.cpp:2018
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108
-#, fuzzy
 msgid "LyX Warning: "
-msgstr "LyX Version "
+msgstr "LyX Warnung:"
 
 #: src/Paragraph.cpp:2019
 msgid "uncodable character"
