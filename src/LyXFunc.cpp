@@ -77,7 +77,6 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/FileDialog.h"
-#include "frontends/FontLoader.h"
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Selection.h"
