@@ -197,11 +197,20 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 {
 	buffer.workAreaManager().add(this);
 	// Setup the signals
-	cursor_timeout_.setInterval(400);
 	connect(&cursor_timeout_, SIGNAL(timeout()),
 		this, SLOT(toggleCursor()));
+	
+	int const time = QApplication::cursorFlashTime() / 2;
+	if (time > 0) {
+		cursor_timeout_.setInterval(time);
+		cursor_timeout_.start();
+	} else
+		// let's initialize this just to be safe
+		cursor_timeout_.setInterval(500);
 
-	cursor_timeout_.start();
+	general_timer_.setInterval(500);
+	connect(&general_timer_, SIGNAL(timeout()),
+		this, SLOT(handleRegularEvents()));
 
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
@@ -276,6 +285,11 @@ void GuiWorkArea::stopBlinkingCursor()
 void GuiWorkArea::startBlinkingCursor()
 {
 	showCursor();
+	//we're not supposed to cache this value.
+	int const time = QApplication::cursorFlashTime() / 2;
+	if (time <= 0)
+		return;
+	cursor_timeout_.setInterval(time);
 	cursor_timeout_.start();
 }
 
@@ -446,10 +460,11 @@ void GuiWorkArea::toggleCursor()
 		hideCursor();
 	else
 		showCursor();
+}
 
-	// Use this opportunity to deal with any child processes that
-	// have finished but are waiting to communicate this fact
-	// to the rest of LyX.
+
+void GuiWorkArea::handleRegularEvents()
+{
 	ForkedCallsController::handleCompletedProcesses();
 }
 
