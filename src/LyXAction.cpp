@@ -1076,7 +1076,27 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
+/**
+ * \var lyx::kb_action lyx::LFUN_BUFFER_PRINT
+ * \li Action: Prints the current document.
+ * \li Notion: Many settings can be given via the preferences dialog.
+ * \li Syntax: buffer-print <TARGET> <TARGET-NAME> <COMMAND>
+ * \li Params: <TARGET> is either "printer" or "file".
+               <TARGER-NAME> is either "default" or file name or printer name.
+	       <COMMAND> command ensuring the printing job.
+ * \li Sample: buffer-print file "/trash/newfile1.ps" "dvips"
+ * \li Origin: leeming, 28 Mar 2004
+ */
 		{ LFUN_BUFFER_PRINT, "buffer-print", ReadOnly, Buffer },
+/**
+ * \var lyx::kb_action lyx::LFUN_BUFFER_IMPORT
+ * \li Action: Import a given file as a lyx document.
+ * \li Notion: File can be imported iff lyx file format is (transitively) reachable via
+               defined convertors in preferences. Look into File->Import menu to get
+	       an idea of the currently active import formats.
+ * \li Syntax: buffer-import <FORMAT> [<FILE>]
+ * \li Origin: Asger, 24 Jul 1998
+ */
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
 /**
  * \var lyx::kb_action lyx::LFUN_BUFFER_NEW
