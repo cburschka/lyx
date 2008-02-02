@@ -211,6 +211,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	general_timer_.setInterval(500);
 	connect(&general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
+	general_timer_.start();
 
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
