@@ -258,8 +258,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 							    "layout");
 
 				if (tmp.empty()) {
-					lexrc.printError("Could not find input"
-							 "file: " + inc);
+					lexrc.printError("Could not find input file: " + inc);
 					error = true;
 				} else if (read(tmp, MERGE)) {
 					lexrc.printError("Error reading input"
