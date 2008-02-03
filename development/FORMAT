@@ -61,8 +61,8 @@ LyX file-format changes
 	* Format incremented to 297: support for Albanian, lower Sorbian,
 	  fixed upper Sorbian language
 
-2007-10-?? Richard Heck <rgheck@bobjweil.com>
-	* Format incremented to 296: ?Include insets are no longer insets?
+2007-10-23 Richard Heck <rgheck@comcast.net>
+	* Format incremented to 296: InsetInclude becomes an InsetCommand
 
 2007-10-12 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 295: get rid of the htmlurl command that was
@@ -88,7 +88,7 @@ LyX file-format changes
 2007-10-03 Martin Vermeer <martin.vermeer@tkk.fi>
 	* Format incremented to 289: make Index a collapsable inset.
 
-2007-09-25 Richard Heck <rgheck@bobjweil.com>
+2007-09-25 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 288: Change how command insets are
 	  represented in LyX files.
 
@@ -122,7 +122,7 @@ LyX file-format changes
 	* format incremented to 282: lyx files can be zipfiles with
           embedded documents.
 
-2007-08-29 Richard Heck <rgheck@bobjweil.com>
+2007-08-29 Richard Heck <rgheck@comcast.net>
 
 	* format incremented to 281: allow modules for layout files.
 
