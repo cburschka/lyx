@@ -438,8 +438,8 @@
 0x0235 "\\textctn"                "tipa" "" # LATIN SMALL LETTER N WITH CURL
 0x0236 "\\textctt"                "tipa" "" # LATIN SMALL LETTER T WITH CURL
 0x0237 "\\j"                      "" "" # LATIN SMALL LETTER DOTLESS J
-0x0238 "\\textdblig"              "tipa" "" # LATIN SMALL LETTER DB DIGRAPH
-0x0239 "\\textqplig"              "tipa" "" # LATIN SMALL LETTER QP DIGRAPH
+0x0238 "\\textdblig"              "tipx" "" # LATIN SMALL LETTER DB DIGRAPH
+0x0239 "\\textqplig"              "tipx" "" # LATIN SMALL LETTER QP DIGRAPH
 #
 # IPA extensions
 #
@@ -497,7 +497,7 @@
 0x0282 "\\textrtails"             "tipa" "" # LATIN SMALL LETTER S WITH HOOK
 0x0283 "\\textesh"                "tipa" "" # LATIN SMALL LETTER ESH
 0x0284 "\\texthtbardotlessj"      "tipa" "" # LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
-0x0285 "\\textlooptoprevesh"      "tipa" "" # LATIN SMALL LETTER SQUAT REVERSED ESH
+0x0285 "\\textlooptoprevesh"      "tipx" "" # LATIN SMALL LETTER SQUAT REVERSED ESH
 0x0286 "\\textctesh"              "tipa" "" # LATIN SMALL LETTER ESH WITH CURL
 0x0287 "\\textturnt"              "tipa" "" # LATIN SMALL LETTER TURNED T
 0x0288 "\\textrtailt"             "tipa" "" # LATIN SMALL LETTER T WITH RETROFLEX HOOK
@@ -908,9 +908,9 @@
 0x1d08 "\\textrevepsilon"         "tipa" "" # LATIN SMALL LETTER TURNED OPEN E
 #0x1d09 ""                         "" "" # LATIN SMALL LETTER TURNED I
 0x1d0a "\\textscj"                "tipa" "" # LATIN LETTER SMALL CAPITAL J
-0x1d0b "\\textsck"                "tipa" "" # LATIN LETTER SMALL CAPITAL K
+0x1d0b "\\textsck"                "tipx" "" # LATIN LETTER SMALL CAPITAL K
 #0x1d0c ""                         "" "" # LATIN LETTER SMALL CAPITAL L WITH STROKE
-0x1d0d "\\textscm"                "tipa" "" # LATIN LETTER SMALL CAPITAL M
+0x1d0d "\\textscm"                "tipx" "" # LATIN LETTER SMALL CAPITAL M
 #0x1d0e ""                         "" "" # LATIN LETTER SMALL CAPITAL REVERSED N
 #0x1d0f ""                         "" "" # LATIN LETTER SMALL CAPITAL O
 #0x1d10 ""                         "" "" # LATIN LETTER SMALL CAPITAL OPEN O
@@ -921,8 +921,8 @@
 #0x1d15 ""                         "" "" # LATIN LETTER SMALL CAPITAL OU
 #0x1d16 ""                         "" "" # LATIN SMALL LETTER TOP HALF O
 #0x1d17 ""                         "" "" # LATIN SMALL LETTER BOTTOM HALF O
-0x1d18 "\\textscp"                "tipa" "" # LATIN LETTER SMALL CAPITAL P
-0x1d19 "\\textrevscr"             "tipa" "" # LATIN LETTER SMALL CAPITAL REVERSED R
+0x1d18 "\\textscp"                "tipx" "" # LATIN LETTER SMALL CAPITAL P
+0x1d19 "\\textrevscr"             "tipx" "" # LATIN LETTER SMALL CAPITAL REVERSED R
 #0x1d1a ""                         "" "" # LATIN LETTER SMALL CAPITAL TURNED R
 #0x1d1b ""                         "" "" # LATIN LETTER SMALL CAPITAL T
 0x1d1c "\\textscu"                "tipa" "" # LATIN LETTER SMALL CAPITAL U
