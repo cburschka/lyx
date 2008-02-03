@@ -10,7 +10,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
- File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"  
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\examples\es"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\es\mathed.lyx"
  SetOutPath "$INSTDIR\Resources\examples\ja"
@@ -19,10 +19,13 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\images\box-insert.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\buffer-update_pdf2.xpm"
  SetOutPath "$INSTDIR\Resources\layouts"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"  
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrlttr2.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_4.py"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\koma-letter2.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
