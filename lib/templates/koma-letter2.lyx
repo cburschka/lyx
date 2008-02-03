@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -21,7 +21,7 @@
 %,footsepline=true%             separate the footer with a line on page >1
 %pagenumber=botcenter%   position of the page number (see docu)
 %,parskip=false%          Use indent instead of skip (more options cf. docu)
-,fromalign=center%        alignment of the address
+fromalign=center%        alignment of the address
 ,fromrule=aftername%    separate the address with a line?
 ,fromphone=true%         print sender phone number
 %,fromfax=true%          print sender fax number
@@ -90,80 +90,61 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Name
-
 The LyX Developers Team
 \end_layout
 
 \begin_layout SenderAddress
-
 140 Map Road
 \newline
-CVS City
+SVN City
 \end_layout
 
 \begin_layout Telephone
-
-0011/222
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+0011/222\InsetSpace \thinspace{}
 333
 \end_layout
 
 \begin_layout E-Mail
-
 lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout URL
-
 www.lyx.org
 \end_layout
 
 \begin_layout Backaddress
-
 The LyX Developers Team
 \newline
 140 Map Road
 \newline
-CVS City
+SVN City
 \end_layout
 
 \begin_layout Signature
-
 The LyX Team
 \end_layout
 
 \begin_layout Subject
-
 New KOMA letter layout 
 \end_layout
 
 \begin_layout Place
-
 The Internet
 \end_layout
 
 \begin_layout Date
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 today
@@ -175,7 +156,6 @@ today
 \end_layout
 
 \begin_layout Address
-
 Mr X.
  Ample
 \newline
@@ -185,20 +165,16 @@ Mr X.
 \end_layout
 
 \begin_layout Opening
-
 Dear Mr.
  Ample,
 \end_layout
 
 \begin_layout Standard
-
 This template illustrates the use of the new scrlttr2 class (introduced
  with KOMA-script v.
  2.9).
  This letter class is very flexible.
- Have a look at
-\family default
- 
+ Have a look at 
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
@@ -210,10 +186,9 @@ Preamble
 status collapsed
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand url
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf"
+
 \end_inset
 
 
@@ -225,30 +200,16 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-scri
 \end_layout
 
 \begin_layout Closing
-
 Have fun with it,
 \end_layout
 
 \begin_layout PS
-
-P.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
-S.: The blue colored items have to be before the address, the magenta colored
+p.\InsetSpace \thinspace{}
+s.: The blue colored items have to be before the address, the magenta colored
  after it.
 \end_layout
 
 \begin_layout CC
-
 The LyX Users
 \end_layout
 
