@@ -263,7 +263,7 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_DATE_INSERT
  * \li Action: Inserts the current date.
  * \li Syntax: date-insert [<ARG>]
- * \li Param: <ARG>: Format of date. The default value (%x) can be set
+ * \li Params: <ARG>: Format of date. The default value (%x) can be set
                      in Preferences->Date format. For possible formats
                      see manual page of strftime function.
  * \li Origin: jdblair, 31 Jan 2000
@@ -387,7 +387,7 @@ void LyXAction::init()
  * \li Notion: Only scrolls the screen up or down; does not move the cursor.
  * \li Syntax: scroll <TYPE> <QUANTITY>
  * \li Params: <TYPE>:  line|page\n
-               <QUANTITY>: up|down|<number>\n
+               <QUANTITY>: up|down|<number>
  * \li Origin: Abdelrazak Younes, Dec 27 2007
  * \endvar
  */
@@ -627,7 +627,7 @@ void LyXAction::init()
 		{ LFUN_BIBTEX_DATABASE_ADD, "bibtex-database-add", Noop, Edit },
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
- /*!
+/*!
  * \var lyx::kb_action lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph.
  * \li Syntax: layout <LAYOUT>
@@ -1232,7 +1232,7 @@ void LyXAction::init()
  * \li Action: Rename and save current buffer.
  * \li Syntax: buffer-write-as <FILENAME>
  * \li Params: <FILENAME>: New name of the buffer/file. A relative path
- *             is with respect to the original location of the buffer/file.
+               is with respect to the original location of the buffer/file.
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
