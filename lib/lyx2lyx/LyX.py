@@ -80,7 +80,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 2)),
-                   ("1_6", range(277,314), minor_versions("1.6" , 0))] # Richard Heck: conversion of module representations
+                   ("1_6", range(277,315), minor_versions("1.6" , 0))] # Uwe Stöhr: scrlttr2 for serial letters
 
 
 def formats_list():

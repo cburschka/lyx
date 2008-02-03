@@ -2,6 +2,7 @@
 #  \DeclareLaTeXClass[scrlttr2]{letter (KOMA-Script v.2)}
 # KOMA scrlettr2 textclass definition file.
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/17.
+# Uwe Stöhr <uwestoehr@web.de>, 2008/2/03.
 
 Format 6
 Style Standard
@@ -40,10 +41,6 @@ Style Address
 	LatexType             Command
 	LatexName             begin
 	LatexParam            {letter}
-	#Ugly hack!
-	Preamble
-	\AtEndDocument{\end{letter}}
-	EndPreamble
 	KeepEmpty             1
 	LeftMargin            xxxxxxxxxxxx::xx
 	LabelSep              xx
@@ -53,7 +50,6 @@ Style Address
 	Align                 Left
 	LabelType             Static
 	LabelString           "Address:"
-
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -76,7 +72,6 @@ Style NextAddress
 	Align                 Left
 	LabelType             Static
 	LabelString           "Next Address:"
-
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -98,7 +93,6 @@ Style Opening
 	Align                 Left
 	LabelType             Static
 	LabelString           "Opening:"
-
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -143,7 +137,7 @@ Style Name
 	LatexName             setkomavar
 	LatexParam            {fromname}
 	KeepEmpty             1
-	LeftMargin            xxxxxxxxxxxx::xx
+	LeftMargin            xxxxxxxxxxxxxxxxx::xx
 	LabelSep              xx
 	TopSep                0.4
 	BottomSep             0.4
@@ -325,4 +319,22 @@ Style Invoice
 	LatexName             setkomavar
 	LatexParam            {invoice}
 	LabelString           "Invoice no.:"
+End
+
+
+Style EndLetter
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             end{letter}
+	KeepEmpty             1
+	TopSep                1
+	ParSkip               0.4
+	Align                 Block
+	LabelSep              xx
+	LabelType             Static
+	LabelString           "End of letter"
+	LabelFont
+	  Series              Bold
+	  Color               Green
+	EndFont
 End

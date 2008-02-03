@@ -2283,6 +2283,7 @@ lib_examples_files = Split('''
     Minipage.lyx
     aa_sample.lyx
     aas_sample.lyx
+    addressExample.adr
     amsart-test.lyx
     amsbook-test.lyx
     armenian-article.lyx
@@ -2317,6 +2318,9 @@ lib_examples_files = Split('''
     noweb2lyx.lyx
     powerdot-example.lyx
     script_form.lyx
+    serial_letter1.lyx
+    serial_letter2.lyx
+    serial_letter3.lyx
     simplecv.lyx
     splash.lyx
 ''')
@@ -2345,6 +2349,9 @@ lib_examples_de_files = Split('''
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
     multicol.lyx
+    serienbrief1.lyx
+    serienbrief2.lyx
+    serienbrief3.lyx
     splash.lyx
 ''')
 

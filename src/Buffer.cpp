@@ -114,7 +114,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 313; // Richard Heck: conversion of module representations
+int const LYX_FORMAT = 314; // Uwe Stöhr: scrlttr2 for serial letters
 
 } // namespace anon
 

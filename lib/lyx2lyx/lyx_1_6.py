@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2007 José Matos <jamatos@lyx.org>
+# Copyright (C) 2007-2008 The LyX Team <lyx-devel@lists.lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -1223,6 +1223,31 @@ def revert_widesideways(document):
         i = i + 1
 
 
+def convert_serial_letter(document):
+    " adds an EndLetter environment to scrlttr2 documents. "
+    tc = document.textclass
+    if (tc == "scrlttr2"):
+        i = len(document.body)
+        document.body[i-2] = '\\begin_layout EndLetter\n' \
+        '\\begin_inset Note Note\n' \
+        'status collapsed\n\n' \
+        '\\begin_layout Standard\n' \
+        'keep this environment empty\n' \
+        '\\end_layout\n\n' \
+        '\\end_inset\n\n\n' \
+        '\\end_layout\n\n'
+        i = 0
+        # remove ERT insets containing "\end{letter}"
+        while True:
+            i = find_token(document.body, "\\begin_inset ERT", i)
+            document.warning(str(i))
+            if i == -1:
+                return
+            if document.body[i+7] == "end{letter}":
+                del document.body[i-1:i+14]
+            i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1264,10 +1289,12 @@ convert = [[277, [fix_wrong_tables]],
            [310, []],
            [311, [convert_ams_classes]],
            [312, []],
-           [313, [convert_module_names]]
+           [313, [convert_module_names]],
+           [314, [convert_serial_letter]]
           ]
 
-revert =  [[312, [revert_module_names]],
+revert =  [[313, []],
+           [312, [revert_module_names]],
            [311, [revert_rotfloat, revert_widesideways]],
            [310, []],
            [309, [revert_btprintall]],
