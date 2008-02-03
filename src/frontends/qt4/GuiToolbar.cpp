@@ -269,6 +269,13 @@ void GuiLayoutBox::set(docstring const & layout)
 
 void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
 {
+	//FIXME 
+	//Since we are only storing the text used for display, we have no choice
+	//below but to compare translated strings to figure out which layout the
+	//user wants. This is not ideal. A better way is the way module names are 
+	//handled in GuiDocument: viz, the untranslated name can be associated 
+	//with the item via QComboBox::setItemData(). It may be that this can
+	//even be done by passing: addItem(item, untransName).
 	int const end = count();
 	if (!sorted || end < 2 || item[0].category() != QChar::Letter_Uppercase) {
 		addItem(item);
@@ -314,10 +321,8 @@ void GuiLayoutBox::updateContents(bool reset)
 
 	TextClass::const_iterator it = text_class_->begin();
 	TextClass::const_iterator const end = text_class_->end();
-	for (; it != end; ++it) {
-		// ignore obsolete entries
+	for (; it != end; ++it)
 		addItemSort(toqstr(translateIfPossible((*it)->name())), lyxrc.sort_layouts);
-	}
 
 	setCurrentIndex(0);
 
@@ -343,6 +348,10 @@ void GuiLayoutBox::selected(const QString & str)
 	TextClass::const_iterator const end = text_class_->end();
 	for (; it != end; ++it) {
 		docstring const & itname = (*it)->name();
+		//FIXME Comparing translated strings is not ideal.
+		//This should be done the way module names are handled
+		//in GuiDocument: viz, the untranslated name should be
+		//associated with the item via QComboBox::setItemData().
 		if (translateIfPossible(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
