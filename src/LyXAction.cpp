@@ -917,7 +917,7 @@ void LyXAction::init()
  * \li Notion: Overwrite all nonspecified settings to the default ones.
                Use paragraph-params lfun if you don't want to overwrite others settings.
  * \li Syntax: paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS>
- * \li Params: For parameters see LFUN_PARAGRAPH_PARAMS
+ * \li Params: For parameters see #LFUN_PARAGRAPH_PARAMS
  * \li Origin: leeming, 30 Mar 2004
  */
 		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
@@ -1068,7 +1068,7 @@ void LyXAction::init()
  * \li Params: <FORMAT> is either "custom" or one of the formats which you
                         can find in Tools->Preferences->File formats->Format.
 			Usual format you will enter is "pdf2" (pdflatex),
-			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.
+			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.\n
 			In case of "custom" you will be asked for a format you
 			want to start from and for the command that you want to
 			apply to this format.
@@ -1081,8 +1081,8 @@ void LyXAction::init()
  * \li Action: Prints the current document.
  * \li Notion: Many settings can be given via the preferences dialog.
  * \li Syntax: buffer-print <TARGET> <TARGET-NAME> <COMMAND>
- * \li Params: <TARGET> is either "printer" or "file".
-               <TARGER-NAME> is either "default" or file name or printer name.
+ * \li Params: <TARGET> is either "printer" or "file".\n
+               <TARGER-NAME> is either "default" or file name or printer name.\n
 	       <COMMAND> command ensuring the printing job.
  * \li Sample: buffer-print file "/trash/newfile1.ps" "dvips"
  * \li Origin: leeming, 28 Mar 2004
@@ -1157,7 +1157,7 @@ void LyXAction::init()
 /**
  * \var lyx::kb_action lyx::LFUN_CALL
  * \li Action: Executes a command defined in a .def file.
- * \li Notion: The definitions are by default read from lib/commands/default.def .
+ * \li Notion: The definitions are by default read from lib/commands/default.def.\n
                A .def file allows to define a command with \\define "<NAME>" "<LFUN>"
                where <NAME> is the name of the new command and <LFUN> is the lfun code
                to be executed (see e.g. #LFUN_COMMAND_SEQUENCE).
