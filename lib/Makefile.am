@@ -92,7 +92,7 @@ dist_deexamples_DATA = \
 	examples/de/multicol.lyx \
 	examples/de/serienbrief1.lyx \
 	examples/de/serienbrief2.lyx \
-	examples/de/serienbrief3.ly \
+	examples/de/serienbrief3.lyx \
 	examples/de/splash.lyx
 
 esexamplesdir = $(pkgdatadir)/examples/es
