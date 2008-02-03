@@ -88,6 +88,10 @@ dnl LYX_CXX_RTTI
 dnl AC_CHECK_HEADERS(ostream istream sstream locale limits ios)
 dnl LYX_CXX_STL_MODERN_STREAMS
 
+### Objective-C compiler
+AC_PROG_OBJC
+_AM_DEPENDENCIES([OBJC])
+
 ### and now some special lyx flags.
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,

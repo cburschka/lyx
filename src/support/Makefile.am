@@ -111,6 +111,16 @@ liblyxsupport_la_SOURCES = \
 	minizip/zip.h \
 	minizip/zipunzip.cpp
 
+if INSTALL_MACOSX
+liblyxsupport_la_SOURCES += \
+	linkback/LinkBack.h \
+	linkback/LinkBack.m \
+	linkback/LinkBackProxy.h \
+	linkback/LinkBackProxy.m \
+	linkback/LinkBackServer.h \
+	linkback/LinkBackServer.m
+endif
+
 ############################## Tests ##################################
 
 EXTRA_DIST += \

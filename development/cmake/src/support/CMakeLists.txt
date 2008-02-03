@@ -13,6 +13,9 @@ file(GLOB support_minizip_sources ${TOP_SRC_DIR}/src/support/minizip/*.c)
 file(GLOB support_minizip_cpp_sources ${TOP_SRC_DIR}/src/support/minizip/*.cpp)
 file(GLOB support_minizip_headers ${TOP_SRC_DIR}/src/support/minizip/*.h)
 
+file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
+file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
+
 list(REMOVE_ITEM support_sources 	
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
 	${TOP_SRC_DIR}/src/support/os_unix.cpp
@@ -23,6 +26,13 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.h
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.c
 	${TOP_SRC_DIR}/src/support/gettext.cpp)
+
+if(APPLE)
+	message(STATUS "Mac LinkBack support")
+else()
+	set(support_linkback_sources "")
+	set(support_linkback_headers "")
+endif()
 
 # needed to compile tex2lyx in merged mode
 set(dont_merge ${TOP_SRC_DIR}/src/support/gettext.cpp)
@@ -40,8 +50,8 @@ include_directories(${TOP_SRC_DIR}/src/support
 
 
 if(NOT MERGE_FILES)
-	set(support_sources ${support_sources} ${support_minizip_sources} ${support_minizip_cpp_sources})
-	set(support_headers ${support_headers} ${support_minizip_headers})
+	set(support_sources ${support_sources} ${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources})
+	set(support_headers ${support_headers} ${support_minizip_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
 	lyx_const_touched_files(_allinone  support_sources)
@@ -51,13 +61,14 @@ else()
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers} ${dont_merge})
+		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
+target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 
-target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY} )
-
-if(WIN32)
+if(APPLE)
+	target_link_libraries(support "objc" "-framework Appkit" "-framework CoreFoundation")
+elseif(WIN32)
 	target_link_libraries(support shlwapi)
 endif()
 
