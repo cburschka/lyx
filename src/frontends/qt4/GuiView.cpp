@@ -618,7 +618,7 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 void GuiView::setBusy(bool busy)
 {
 	if (d.current_work_area_) {
-		d.current_work_area_->setUpdatesEnabled(busy);
+		d.current_work_area_->setUpdatesEnabled(!busy);
 		if (busy)
 			d.current_work_area_->stopBlinkingCursor();
 		else
