@@ -133,6 +133,11 @@ Menuset
 		Separator
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
+		Separator
+		Item "Paste As LinkBack PDF" "paste linkback"
+		Item "Paste As PDF" "paste pdf"
+		Item "Paste As PNG" "paste png"
+		Item "Paste As JPEG" "paste jpeg"
 	End
 
 	Menu "edit_pasterecent"

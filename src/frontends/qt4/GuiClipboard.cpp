@@ -12,26 +12,116 @@
 
 #include <config.h>
 
+#include "Buffer.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "GuiClipboard.h"
 #include "qt_helpers.h"
 
-#include "support/debug.h"
+#include "boost/assert.hpp"
 
 #include <QApplication>
+#include <QBuffer>
 #include <QClipboard>
+#include <QDataStream>
+#include <QFile>
+#include <QImage>
+#include <QMacPasteboardMime>
 #include <QMimeData>
 #include <QString>
+#include <QStringList>
 
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/filetools.h"
+#include "support/FileFilterList.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/alert.h"
+#include "frontends/FileDialog.h"
+
+#include <map>
+
+#ifdef Q_WS_MACX
+#include "support/linkback/LinkBackProxy.h"
+#endif // Q_WS_MACX
 
 using namespace std;
 using namespace lyx::support;
 
-static char const * const mime_type = "application/x-lyx";
+static char const * const lyx_mime_type = "application/x-lyx";
+static char const * const pdf_mime_type = "application/pdf";
 
 namespace lyx {
 
 namespace frontend {
+
+#ifdef Q_WS_MACX
+
+class QMacPasteboardMimeGraphics : public QMacPasteboardMime {
+public:
+	QMacPasteboardMimeGraphics()
+	: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL) {}
+	~QMacPasteboardMimeGraphics() {}
+	QString convertorName();
+	QString flavorFor(const QString &mime);
+	QString mimeFor(QString flav);
+	bool canConvert(const QString &mime, QString flav);
+	QVariant convertToMime(const QString &mime, QList<QByteArray> data, QString flav);
+	QList<QByteArray> convertFromMime(const QString &mime, QVariant data, QString flav);
+};
+
+
+QString QMacPasteboardMimeGraphics::convertorName()
+{
+	return "Graphics";
+}
+
+
+QString QMacPasteboardMimeGraphics::flavorFor(const QString &mime)
+{
+	LYXERR(Debug::ACTION, "flavorFor " << fromqstr(mime));
+	if (mime == QLatin1String(pdf_mime_type))
+		return QLatin1String("com.adobe.pdf");
+	return QString();
+}
+
+
+QString QMacPasteboardMimeGraphics::mimeFor(QString flav)
+{
+	LYXERR(Debug::ACTION, "mimeFor " << fromqstr(flav));
+	if (flav == QLatin1String("com.adobe.pdf"))
+		return QLatin1String(pdf_mime_type);
+	return QString();
+}
+
+
+bool QMacPasteboardMimeGraphics::canConvert(const QString &mime, QString flav)
+{
+	return mimeFor(flav) == mime;
+}
+
+
+QVariant QMacPasteboardMimeGraphics::convertToMime(const QString &mime, QList<QByteArray> data, QString)
+{
+	if(data.count() > 1)
+		qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
+	return data.first();
+}
+
+
+QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(const QString &mime, QVariant data, QString)
+{
+	QList<QByteArray> ret;
+	ret.append(data.toByteArray());
+	return ret;
+}
+
+static QMacPasteboardMimeGraphics * graphicsPasteboardMime;
+
+#endif // Q_WS_MACX
+
 
 GuiClipboard::GuiClipboard()
 {
@@ -39,6 +129,19 @@ GuiClipboard::GuiClipboard()
 		this, SLOT(on_dataChanged()));
 	// initialize clipboard status.
 	on_dataChanged();
+	
+#ifdef Q_WS_MACX
+	if (!graphicsPasteboardMime)
+		graphicsPasteboardMime = new QMacPasteboardMimeGraphics();
+#endif // Q_WS_MACX
+}
+
+
+GuiClipboard::~GuiClipboard()
+{
+#ifdef Q_WS_MACX
+	closeAllLinkBackLinks();
+#endif // Q_WS_MACX
 }
 
 
@@ -53,15 +156,214 @@ string const GuiClipboard::getAsLyX() const
 		LYXERR(Debug::ACTION, "' (no QMimeData)");
 		return string();
 	}
-	if (source->hasFormat(mime_type)) {
+
+	if (source->hasFormat(lyx_mime_type)) {
 		// data from ourself or some other LyX instance
-		QByteArray const ar = source->data(mime_type);
+		QByteArray const ar = source->data(lyx_mime_type);
 		string const s(ar.data(), ar.count());
 		LYXERR(Debug::ACTION, s << "'");
 		return s;
 	}
 	LYXERR(Debug::ACTION, "'");
 	return string();
+}
+
+
+FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
+	Clipboard::GraphicsType & type) const
+{
+	// create file dialog filter according to the existing types in the clipboard
+	vector<Clipboard::GraphicsType> types;
+	if (hasGraphicsContents(Clipboard::LinkBackGraphicsType))
+		types.push_back(Clipboard::LinkBackGraphicsType);
+	if (hasGraphicsContents(Clipboard::PdfGraphicsType))
+		types.push_back(Clipboard::PdfGraphicsType);
+	if (hasGraphicsContents(Clipboard::PngGraphicsType))
+		types.push_back(Clipboard::PngGraphicsType);
+	if (hasGraphicsContents(Clipboard::JpegGraphicsType))
+		types.push_back(Clipboard::JpegGraphicsType);
+	
+	BOOST_ASSERT(!types.empty());
+	
+	// select prefered type if AnyGraphicsType was passed
+	if (type == Clipboard::AnyGraphicsType)
+		type = types.front();
+	
+	// which extension?
+	map<Clipboard::GraphicsType, string> extensions;
+	map<Clipboard::GraphicsType, docstring> typeNames;
+	
+	extensions[Clipboard::LinkBackGraphicsType] = "linkback";
+	extensions[Clipboard::PdfGraphicsType] = "pdf";
+	extensions[Clipboard::PngGraphicsType] = "png";
+	extensions[Clipboard::JpegGraphicsType] = "jpeg";
+	
+	typeNames[Clipboard::LinkBackGraphicsType] = _("LinkBack PDF");
+	typeNames[Clipboard::PdfGraphicsType] = _("PDF");
+	typeNames[Clipboard::PngGraphicsType] = _("PNG");
+	typeNames[Clipboard::JpegGraphicsType] = _("JPEG");
+	
+	// find unused filename with primary extension
+	string document_path = cur.buffer().fileName().onlyPath().absFilename();
+	unsigned newfile_number = 0;
+	FileName filename;
+	do {
+		++newfile_number;
+		filename
+		= FileName(addName(document_path,
+			to_utf8(_("pasted"))
+			+ convert<string>(newfile_number) + "."
+			+ extensions[type]));
+	} while (filename.isReadableFile());
+	
+	while (true) {
+		// create file type filter, putting the prefered on to the front
+		docstring filterSpec;
+		for (unsigned i = 0; i < types.size(); ++i) {
+			docstring s = bformat(_("%1$s Files"), typeNames[types[i]])
+			+ " (*." + from_ascii(extensions[types[i]]) + ")";
+			if (types[i] == type)
+				filterSpec = s + filterSpec;
+			else
+				filterSpec += ";;" + s;
+		}
+		FileFilterList const filter(filterSpec);
+		
+		// show save dialog for the graphic
+		FileDialog dlg(_("Choose a filename to save the pasted graphic as"));
+		FileDialog::Result result =
+		dlg.save(from_utf8(filename.onlyPath().absFilename()), filter,
+			 from_utf8(filename.onlyFileName()));
+		
+		if (result.first == FileDialog::Later)
+			return FileName();
+		
+		string newFilename = to_utf8(result.second);
+		if (newFilename.empty()) {
+			cur.bv().message(_("Canceled."));
+			return FileName();
+		}
+		filename.set(newFilename);
+		
+		// check the extension (the user could have changed it)
+		if (!suffixIs(ascii_lowercase(filename.absFilename()),
+			      "." + extensions[type])) {
+			// the user changed the extension. Check if the type is available
+			unsigned i;
+			for (i = 1; i < types.size(); ++i) {
+				if (suffixIs(ascii_lowercase(filename.absFilename()),
+					     "." + extensions[types[i]])) {
+					type = types[i];
+					break;
+				}
+			}
+			
+			// invalid extension found, or none at all. In the latter
+			// case set the default extensions.
+			if (i == types.size()
+			    && filename.onlyFileName().find('.') == string::npos) {
+				filename.changeExtension("." + extensions[type]);
+			}
+		}
+		
+		// check whether the file exists and warn the user
+		if (!filename.exists())
+			break;
+		int ret = frontend::Alert::prompt(
+			_("Overwrite external file?"),
+			bformat(_("File %1$s already exists, do you want to overwrite it"),
+			from_utf8(filename.absFilename())), 1, 1, _("&Overwrite"), _("&Cancel"));
+		if (ret == 0)
+			// overwrite, hence break the dialog loop
+			break;
+		
+		// not overwrite, hence show the dialog again (i.e. loop)
+	}
+	
+	return filename;
+}
+
+
+FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) const
+{
+	// get the filename from the user
+	FileName filename = getPastedGraphicsFileName(cur, type);
+	if (filename.empty())
+		return FileName();
+
+	// handle image cases first
+	if (type == PngGraphicsType || type == JpegGraphicsType) {
+		// get image from QImage from clipboard
+		QImage image = qApp->clipboard()->image();
+		if (image.isNull()) {
+			LYXERR(Debug::ACTION, "No image in clipboard");
+			return FileName();
+		}
+
+		// convert into graphics format
+		QByteArray ar;
+		QBuffer buffer(&ar);
+		buffer.open(QIODevice::WriteOnly);
+		if (type == PngGraphicsType)
+			image.save(toqstr(filename.absFilename()), "PNG");
+		else if (type == JpegGraphicsType)
+			image.save(toqstr(filename.absFilename()), "JPEG");
+		else
+			BOOST_ASSERT(false);
+		
+		return filename;
+	}
+	
+	// get mime data
+	QMimeData const * source =
+	qApp->clipboard()->mimeData(QClipboard::Clipboard);
+	if (!source) {
+		LYXERR(Debug::ACTION, "0 bytes (no QMimeData)");
+		return FileName();
+	}
+	
+	// get mime for type
+	QString mime;
+	switch (type) {
+	case PdfGraphicsType: mime = pdf_mime_type; break;
+	case LinkBackGraphicsType: mime = pdf_mime_type; break;
+	default: BOOST_ASSERT(false);
+	}
+	
+	// get data
+	if (!source->hasFormat(mime))
+		return FileName();
+	// data from ourself or some other LyX instance
+	QByteArray const ar = source->data(mime);
+	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.data()
+	       << "length = " << ar.count());
+	
+	QFile f(toqstr(filename.absFilename()));
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+		LYXERR(Debug::ACTION, "Error opening file "
+		       << filename.absFilename() << " for writing");
+		return FileName();
+	}
+	
+	// write the (LinkBack) PDF data
+	f.write(ar);
+	if (type == LinkBackGraphicsType) {
+#ifdef Q_WS_MACX
+		void const * linkBackData;
+		unsigned linkBackLen;
+		getLinkBackData(&linkBackData, &linkBackLen);
+		f.write((char *)linkBackData, linkBackLen);
+		quint32 pdfLen = ar.size();
+		QDataStream ds(&f);
+		ds << pdfLen; // big endian by default
+#else
+		// only non-Mac this should never happen
+		BOOST_ASSERT(false);
+#endif // Q_WS_MACX
+	}
+
+	f.close();
+	return filename;
 }
 
 
@@ -87,7 +389,7 @@ void GuiClipboard::put(string const & lyx, docstring const & text)
 	QMimeData * data = new QMimeData;
 	if (!lyx.empty()) {
 		QByteArray const qlyx(lyx.c_str(), lyx.size());
-		data->setData(mime_type, qlyx);
+		data->setData(lyx_mime_type, qlyx);
 	}
 	// Don't test for text.empty() since we want to be able to clear the
 	// clipboard.
@@ -101,7 +403,50 @@ bool GuiClipboard::hasLyXContents() const
 {
 	QMimeData const * const source =
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	return source && source->hasFormat(mime_type);
+	return source && source->hasFormat(lyx_mime_type);
+}
+
+
+bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
+{
+	if (type == AnyGraphicsType) {
+		return hasGraphicsContents(PdfGraphicsType)
+			|| hasGraphicsContents(PngGraphicsType)
+			|| hasGraphicsContents(JpegGraphicsType)
+			|| hasGraphicsContents(LinkBackGraphicsType);
+	}
+
+	QMimeData const * const source =
+	qApp->clipboard()->mimeData(QClipboard::Clipboard);
+	
+	// handle image cases first
+	if (type == PngGraphicsType || type == JpegGraphicsType)
+		return source->hasImage();
+
+	// handle LinkBack for Mac
+#ifdef Q_WS_MACX
+	if (type == LinkBackGraphicsType)
+		return isLinkBackDataInPasteboard();
+#else
+	if (type == LinkBackGraphicsType)
+		return false;
+#endif // Q_WS_MACX
+	
+	// get mime data
+	QStringList const & formats = source->formats();
+	LYXERR(Debug::ACTION, "We found " << formats.size() << " formats");
+	for (int i = 0; i < formats.size(); ++i) {
+		LYXERR(Debug::ACTION, "Found format " << fromqstr(formats[i]));
+	}
+
+	// compute mime for type
+	QString mime;
+	switch (type) {
+	case PdfGraphicsType: mime = pdf_mime_type; break;
+	default: BOOST_ASSERT(false);
+	}
+	
+	return source && source->hasFormat(mime);
 }
 
 
@@ -130,10 +475,19 @@ bool GuiClipboard::hasInternal() const
 
 void GuiClipboard::on_dataChanged()
 {
+	QMimeData const * const source =
+	qApp->clipboard()->mimeData(QClipboard::Clipboard);
+	QStringList l = source->formats();
+	LYXERR(Debug::ACTION, "Qt Clipboard changed. We found the following mime types:");
+	for (int i = 0; i < l.count(); i++) {
+		LYXERR(Debug::ACTION, fromqstr(l.value(i)));
+	}
+	
 	text_clipboard_empty_ = qApp->clipboard()->
 		text(QClipboard::Clipboard).isEmpty();
 
 	has_lyx_contents_ = hasLyXContents();
+	has_graphics_contents_ = hasGraphicsContents();
 }
 
 
@@ -145,7 +499,7 @@ bool GuiClipboard::empty() const
 	// clipboard does not come from LyX.
 	if (!text_clipboard_empty_)
 		return false;
-	return !has_lyx_contents_;
+	return !has_lyx_contents_ && !has_graphics_contents_;
 }
 
 } // namespace frontend

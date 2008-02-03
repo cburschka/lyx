@@ -19,7 +19,11 @@
 #include "support/types.h"
 #include "support/docstring.h"
 
+#include "frontends/Clipboard.h"
+
 #include <vector>
+
+using lyx::frontend::Clipboard;
 
 namespace lyx {
 
@@ -82,10 +86,15 @@ void clearCutStack();
 /// Paste the current selection at \p cur
 /// Does handle undo. Does only work in text, not mathed.
 void pasteSelection(Cursor & cur, ErrorList &);
-/// Replace the current selection with the clipboard contents (internal or
-/// external: which is newer)
+/// Replace the current selection with the clipboard contents as text
+/// (internal or external: which is newer).
 /// Does handle undo. Does only work in text, not mathed.
-void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs = true);
+void pasteClipboardText(Cursor & cur, ErrorList & errorList,
+	bool asParagraphs = true);
+/// Replace the current selection with the clipboard contents as graphic.
+/// Does handle undo. Does only work in text, not mathed.
+void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
+	Clipboard::GraphicsType preferedType = Clipboard::AnyGraphicsType);
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
 void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);

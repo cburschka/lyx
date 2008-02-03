@@ -25,6 +25,11 @@
 #include "support/os.h"
 #include "support/Systemcall.h"
 
+// FIXME: Q_WS_MACX is not available, it's in Qt
+#ifdef USE_MACOSX_PACKAGING
+#include "support/linkback/LinkBackProxy.h"
+#endif
+
 using namespace std;
 using namespace lyx::support;
 
@@ -322,6 +327,18 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 		return false;
 	}
 
+	// LinkBack files look like PDF, but have the .linkback extension
+	string const ext = getExtension(filename.absFilename());
+	if (format_name == "pdf" && ext == "linkback") {
+#ifdef USE_MACOSX_PACKAGING
+		return editLinkBackFile(filename.absFilename().c_str());
+#else
+		Alert::error(_("Cannot edit file"),
+			     _("LinkBack files can only be edited on Apple Mac OSX."));
+		return false;
+#endif // USE_MACOSX_PACKAGING
+	}
+
 	Format const * format = getFormat(format_name);
 	if (format && format->editor().empty() &&
 	    format->isChildFormat())
@@ -334,6 +351,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 				prettyName(format_name)));
 		return false;
 	}
+	
 	// editor is 'auto'
 	if (format->editor() == "auto") {
 		if (os::autoOpenFile(filename.absFilename(), os::EDIT))

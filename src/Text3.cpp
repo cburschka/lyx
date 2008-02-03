@@ -81,7 +81,8 @@ namespace lyx {
 using cap::copySelection;
 using cap::cutSelection;
 using cap::pasteFromStack;
-using cap::pasteClipboard;
+using cap::pasteClipboardText;
+using cap::pasteClipboardGraphics;
 using cap::replaceSelection;
 
 // globals...
@@ -907,22 +908,44 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		charsTranspose(cur);
 		break;
 
-	case LFUN_PASTE:
+	case LFUN_PASTE: {
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
-		if (cmd.argument().empty() && !theClipboard().isInternal())
-			pasteClipboard(cur, bv->buffer().errorList("Paste"));
-		else {
-			string const arg(to_utf8(cmd.argument()));
+
+		// without argument?
+		string const arg = to_utf8(cmd.argument());
+		if (arg.empty()) {
+			if (theClipboard().isInternal())
+				pasteFromStack(cur, bv->buffer().errorList("Paste"), 0);
+			else if (theClipboard().hasGraphicsContents())
+				pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"));
+			else
+				pasteClipboardText(cur, bv->buffer().errorList("Paste"));
+		} else if (isStrUnsignedInt(arg)) {
+			// we have a numerical argument
 			pasteFromStack(cur, bv->buffer().errorList("Paste"),
-					isStrUnsignedInt(arg) ?
-						convert<unsigned int>(arg) :
-						0);
+				       convert<unsigned int>(arg));
+		} else {
+			Clipboard::GraphicsType type;
+			if (arg == "pdf")
+				type = Clipboard::PdfGraphicsType;
+			else if (arg == "png")
+				type = Clipboard::PngGraphicsType;
+			else if (arg == "jpeg")
+				type = Clipboard::JpegGraphicsType;
+			else if (arg == "linkback")
+				type = Clipboard::LinkBackGraphicsType;
+			else
+				BOOST_ASSERT(false);
+
+			pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"), type);
 		}
+
 		bv->buffer().errors("Paste");
 		cur.clearSelection(); // bug 393
 		cur.finishUndo();
 		break;
+	}
 
 	case LFUN_CUT:
 		cutSelection(cur, true, true);
@@ -1016,7 +1039,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE:
 		cur.clearSelection();
-		pasteClipboard(cur, bv->buffer().errorList("Paste"),
+		pasteClipboardText(cur, bv->buffer().errorList("Paste"),
 			       cmd.argument() == "paragraph");
 		bv->buffer().errors("Paste");
 		break;
@@ -2000,22 +2023,37 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = cur.selection();
 		break;
 
-	case LFUN_PASTE:
+	case LFUN_PASTE: {
 		if (cmd.argument().empty()) {
 			if (theClipboard().isInternal())
 				enable = cap::numberOfSelections() > 0;
 			else
 				enable = !theClipboard().empty();
-		} else {
-			string const arg = to_utf8(cmd.argument());
-			if (isStrUnsignedInt(arg)) {
-				unsigned int n = convert<unsigned int>(arg);
-				enable = cap::numberOfSelections() > n;
-			} else
-				// unknown argument
-				enable = false;
+			break;
 		}
+		
+		// we have an argument
+		string const arg = to_utf8(cmd.argument());
+		if (isStrUnsignedInt(arg)) {
+			// it's a number and therefore means the internal stack
+			unsigned int n = convert<unsigned int>(arg);
+			enable = cap::numberOfSelections() > n;
+			break;
+		}
+		
+		// explicit graphics type?
+		if ((arg == "pdf" && theClipboard().hasGraphicsContents(Clipboard::PdfGraphicsType))
+		    || (arg == "png" && theClipboard().hasGraphicsContents(Clipboard::PngGraphicsType))
+		    || (arg == "jpeg" && theClipboard().hasGraphicsContents(Clipboard::JpegGraphicsType))
+		    || (arg == "linkback" && theClipboard().hasGraphicsContents(Clipboard::LinkBackGraphicsType))) {
+			enable = true;
+			break;
+		}
+		
+		// unknown argument
+		enable = false;
 		break;
+	 }
 
 	case LFUN_CLIPBOARD_PASTE:
 		enable = !theClipboard().empty();

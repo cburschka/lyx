@@ -38,6 +38,8 @@
 #include "Undo.h"
 
 #include "insets/InsetFlex.h"
+#include "insets/InsetGraphics.h"
+#include "insets/InsetGraphicsParams.h"
 #include "insets/InsetTabular.h"
 
 #include "mathed/MathData.h"
@@ -60,6 +62,7 @@
 
 using namespace std;
 using namespace lyx::support;
+using lyx::frontend::Clipboard;
 
 namespace lyx {
 
@@ -734,7 +737,7 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 }
 
 
-void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
+void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 {
 	// Use internal clipboard if it is the most recent one
 	if (theClipboard().isInternal()) {
@@ -769,6 +772,26 @@ void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 		cur.text()->insertStringAsParagraphs(cur, text);
 	else
 		cur.text()->insertStringAsLines(cur, text);
+}
+
+
+void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
+			    Clipboard::GraphicsType preferedType)
+{
+	BOOST_ASSERT(theClipboard().hasGraphicsContents(preferedType));
+
+	// get picture from clipboard
+	FileName filename = theClipboard().getAsGraphics(cur, preferedType);
+	if (filename.empty())
+		return;
+
+	// create inset for graphic
+	InsetGraphics * inset = new InsetGraphics;
+	InsetGraphicsParams params;
+	params.filename = EmbeddedFile(filename.absFilename(), cur.buffer().filePath());
+	inset->setParams(params);
+	cur.recordUndo();
+	cur.insert(inset);
 }
 
 
