@@ -44,8 +44,12 @@ class GuiParagraph
 public:
 	GuiParagraph(GuiView & lv);
 
-	/// update
+	/// Dialog inherited methods
+	//@{
 	void updateView();
+	void dispatchParams();
+	bool isBufferDependent() const { return true; }
+	//@}
 
 private:
 	///
@@ -55,20 +59,17 @@ private:
 	///
 	LyXAlignment getAlignmentFromDialog();
 	///
-	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
-	RadioMap radioMap;
-	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
-	AlignmentLabels labelMap;
-
-	QString const alignDefaultLabel;
-
-	void applyView() {}
-	void enableView(bool enable);
-
-	std::string name() const { return "paragraph"; }
-
-private:
-	QString name_;
+	ParagraphParameters & params();
+	///
+	ParagraphParameters const & params() const;
+	///
+	bool haveMulitParSelection();
+	///
+	bool canIndent() const;
+	///
+	LyXAlignment alignPossible() const;
+	///
+	LyXAlignment alignDefault() const;
 
 private Q_SLOTS:
 	///
@@ -84,27 +85,16 @@ private Q_SLOTS:
 
 private:
 	///
-	bool initialiseParams(std::string const & /*data*/) { return true; }
-	/// clean-up on hide.
-	void clearParams() {}
+	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	///
-	void dispatchParams();
+	RadioMap radioMap;
 	///
-	bool isBufferDependent() const { return true; }
+	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
 	///
-	ParagraphParameters & params();
+	AlignmentLabels labelMap;
 	///
-	ParagraphParameters const & params() const;
+	QString const alignDefaultLabel;
 	///
-	bool haveMulitParSelection();
-	///
-	bool canIndent() const;
-	///
-	LyXAlignment alignPossible() const;
-	///
-	LyXAlignment alignDefault() const;
-
-private:
 	ParagraphParameters multiparsel_;
 };
 

@@ -19,8 +19,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-//#include "DialogView.h"
-//#include "DockView.h"
 #include "FuncRequest.h"
 #include "GuiView.h"
 #include "Lexer.h"
@@ -206,11 +204,6 @@ void GuiParagraph::on_applyPB_clicked()
 void GuiParagraph::on_restorePB_clicked()
 {
 	updateView();
-}
-
-
-void GuiParagraph::enableView(bool enable)
-{
 }
 
 

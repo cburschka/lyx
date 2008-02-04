@@ -42,6 +42,13 @@ public:
 protected:
 	///
 	void setViewTitle(docstring const & title);
+
+	/// Dialog inherited methods
+	//@{
+	void applyView() {}
+	bool initialiseParams(std::string const & /*data*/) { return true; }
+	void clearParams() {}
+	//@}
 };
 
 } // namespace frontend
