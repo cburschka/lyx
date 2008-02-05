@@ -73,7 +73,17 @@ fromurl=true%               print sender URL
 \graphics default
 \paperfontsize 11
 \spacing other 1.15
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -246,8 +256,13 @@ Preamble
 status collapsed
 
 \begin_layout Standard
-http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguie
-n.pdf
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
