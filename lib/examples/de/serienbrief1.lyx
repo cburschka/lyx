@@ -135,7 +135,7 @@ Das LyX Team
 \end_layout
 
 \begin_layout Subject
-Neues KOMA letter Layout 
+Neues KOMA letter Layout
 \end_layout
 
 \begin_layout Place
@@ -147,6 +147,7 @@ Im Internet
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 today
@@ -162,6 +163,7 @@ today
 status open
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand*{
@@ -179,6 +181,7 @@ adrentry}[8]{
 status collapsed
 
 \begin_layout Standard
+
 #2 #1
 \backslash
 
@@ -192,17 +195,30 @@ status collapsed
 \end_layout
 
 \begin_layout Opening
-Hallo 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
-#2 #1
+
+
+\backslash
+if #5m{Sehr geehrter Herr #1,} 
+\backslash
+fi
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+if #5w{Sehr geehrte Frau #1,} 
+\backslash
+fi
 \end_layout
 
 \end_inset
 
-,
+
 \end_layout
 
 \begin_layout Standard
@@ -211,7 +227,7 @@ dieses Beispiel zeigt einen Serienbrief an
 alle Personen
 \series default
  einer Adressdatenbank.
- Der Aufbau von Adressdatenbanken ist der unten angegebenen Dokumentation
+ Der Aufbau von Adressdatenbanken ist in der unten angegebenen Dokumentation
  beschrieben.
 \end_layout
 
@@ -271,6 +287,7 @@ keep this environment empty
 status open
 
 \begin_layout Standard
+
 }
 \end_layout
 

@@ -133,7 +133,7 @@ The LyX Team
 \end_layout
 
 \begin_layout Subject
-New KOMA letter layout 
+New KOMA letter layout
 \end_layout
 
 \begin_layout Place
@@ -145,6 +145,7 @@ The Internet
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 today
@@ -160,6 +161,7 @@ today
 status open
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand*{
@@ -177,6 +179,7 @@ adrentry}[8]{
 status open
 
 \begin_layout Standard
+
 
 \backslash
 if #5w
@@ -202,6 +205,7 @@ when person is female
 status collapsed
 
 \begin_layout Standard
+
 #2 #1
 \backslash
 
@@ -221,6 +225,7 @@ Dear Mrs.\InsetSpace ~
 status collapsed
 
 \begin_layout Standard
+
 #1
 \end_layout
 
@@ -256,11 +261,11 @@ Preamble
 status collapsed
 
 \begin_layout Standard
-http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf
+http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguie
+n.pdf
 \end_layout
 
 \end_inset
-
 
  for a detailed description.
 \end_layout
@@ -298,6 +303,7 @@ status open
 
 \begin_layout Standard
 
+
 \backslash
 fi
 \end_layout
@@ -328,6 +334,7 @@ if
 status open
 
 \begin_layout Standard
+
 }
 \end_layout
 
