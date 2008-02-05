@@ -761,6 +761,14 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	if (need_resize_) {
 		screen_ = QPixmap(viewport()->width(), viewport()->height());
 		resizeBufferView();
+		
+		// Update scrollbars which might have changed due different
+		// BufferView dimension. This is especially important when the 
+		// BufferView goes from zero-size to the real-size for the first time,
+		// as the scrollbar paramters are then set for the first time.
+		updateScrollbar();
+		BOOST_ASSERT(need_resize_ == false);
+		
 		updateScreen();
 		hideCursor();
 		showCursor();
