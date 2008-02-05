@@ -1336,6 +1336,8 @@ void BufferView::clearSelection()
 
 void BufferView::resize(int width, int height)
 {
+	bool initialResize = (height_ == 0);
+	
 	// Update from work area
 	width_ = width;
 	height_ = height;
@@ -1344,6 +1346,13 @@ void BufferView::resize(int width, int height)
 	d->par_height_.clear();
 
 	updateMetrics();
+
+	// view got his initial size, make sure that
+	// the cursor has a proper position
+	if (initialResize) {
+		updateScrollbar();
+		showCursor();
+	}
 }
 
 
