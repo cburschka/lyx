@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 309
+\lyxformat 314
 \begin_document
 \begin_header
 \textclass article
@@ -3659,6 +3659,38 @@ enumitem
  itemize, description).
  It is used by the Linguistics module to fine tune the appearance of numbered
  subexamples.
+\end_layout
+
+\begin_layout Subsection
+Braille module
+\end_layout
+
+\begin_layout Subsubsection
+braille
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "braille"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/braille/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+braille 
+\family default
+makes it possible to typeset Braille, a character system for blind people.
 \end_layout
 
 \begin_layout Section
