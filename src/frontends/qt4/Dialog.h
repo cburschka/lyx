@@ -14,7 +14,7 @@
 
 #include "lfuns.h"
 
-#include <QString.h>
+#include <QString>
 #include <string>
 
 class QWidget;
