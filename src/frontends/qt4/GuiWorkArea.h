@@ -121,6 +121,10 @@ public:
 	void stopBlinkingCursor();
 	///
 	void startBlinkingCursor();
+	/// 
+	void startGeneralTimer() { general_timer_.start(); }
+	///
+	void stopGeneralTimer() { general_timer_.stop(); }
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);

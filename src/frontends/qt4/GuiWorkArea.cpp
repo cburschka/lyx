@@ -211,7 +211,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	general_timer_.setInterval(500);
 	connect(&general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
-	general_timer_.start();
+	startGeneralTimer();
 
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
@@ -333,11 +333,16 @@ void GuiWorkArea::redraw()
 void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
 	// In order to avoid bad surprise in the middle of an operation,
-	// we better stop the blinking cursor.
+	// we better stop the blinking cursor...
 	stopBlinkingCursor();
+	// ...and the general timer.
+	stopGeneralTimer();
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
+	
+	// the cursor gets restarted in GuiView::restartCursor()
+	startGeneralTimer();
 }
 
 
@@ -364,11 +369,15 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	else
 		cmd = cmd0;
 
+	bool const notJustMovingTheMouse = 
+		cmd.action != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
+	
 	// In order to avoid bad surprise in the middle of an operation, we better stop
-	// the blinking cursor.
-	if (!(cmd.action == LFUN_MOUSE_MOTION
-		&& cmd.button() == mouse_button::none))
+	// the blinking cursor and the general timer
+	if (notJustMovingTheMouse) {
 		stopBlinkingCursor();
+		stopGeneralTimer();
+	}
 
 	buffer_view_->mouseEventDispatch(cmd);
 
@@ -379,15 +388,15 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	}
 
 	// GUI tweaks except with mouse motion with no button pressed.
-	if (!(cmd.action == LFUN_MOUSE_MOTION
-		&& cmd.button() == mouse_button::none)) {
+	if (notJustMovingTheMouse) {
 		// Slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
 		// of the new status here.
 		lyx_view_->clearMessage();
 
-		// Show the cursor immediately after any operation.
+		// Show the cursor immediately after any operation
 		startBlinkingCursor();
+		startGeneralTimer();
 	}
 }
 
