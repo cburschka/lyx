@@ -13,7 +13,6 @@
 #include "GuiAbout.h"
 
 #include "qt_helpers.h"
-#include "support/gettext.h"
 #include "version.h"
 
 #include "support/filetools.h"
@@ -36,9 +35,9 @@ static QString credits()
 	QTextStream out(&res);
 
 	if (file.isReadable()) {
-		out << toqstr(_("ERROR: LyX wasn't able to read CREDITS file\n"));
-		out << toqstr(_("Please install correctly to estimate the great\n"));
-		out << toqstr(_("amount of work other people have done for the LyX project."));
+		out << qt_("ERROR: LyX wasn't able to read CREDITS file\n");
+		out << qt_("Please install correctly to estimate the great\n");
+		out << qt_("amount of work other people have done for the LyX project.");
 	} else {
 		file.open(QIODevice::ReadOnly);
 		QTextStream ts(&file);
@@ -61,19 +60,19 @@ static QString credits()
 
 static QString copyright()
 {
-	return toqstr(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team"));
+	return qt_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team");
 }
 
 
 static QString license()
 {
-	return toqstr(_("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."));
+	return qt_("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.");
 }
 
 
 static QString disclaimer()
 {
-	return toqstr(_("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."));
+	return qt_("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.");
 }
 
 
@@ -81,25 +80,24 @@ static QString version()
 {
 	QString res;
 	QTextStream out(&res);
-	out << toqstr(_("LyX Version "));
+	out << qt_("LyX Version ");
 	out << lyx_version;
 	out << " (";
 	out << lyx_release_date;
 	out << ")\n";
-	out << toqstr(_("Library directory: "));
+	out << qt_("Library directory: ");
 	out << toqstr(makeDisplayPath(package().system_support().absFilename()));
 	out << "\n";
-	out << toqstr(_("User directory: "));
+	out << qt_("User directory: ");
 	out << toqstr(makeDisplayPath(package().user_support().absFilename()));
 	return res;
 }
 
 
 GuiAbout::GuiAbout(GuiView & lv)
-	: GuiDialog(lv, "aboutlyx")
+	: GuiDialog(lv, "aboutlyx", qt_("About LyX"))
 {
 	setupUi(this);
-	setViewTitle(_("About LyX"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
 

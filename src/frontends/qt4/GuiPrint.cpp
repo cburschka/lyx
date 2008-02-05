@@ -41,10 +41,9 @@ namespace frontend {
 
 
 GuiPrint::GuiPrint(GuiView & lv)
-	: GuiDialog(lv, "print")
+	: GuiDialog(lv, "print", qt_("Print Document"))
 {
 	setupUi(this);
-	setViewTitle(_("Print Document"));
 
 	connect(printPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

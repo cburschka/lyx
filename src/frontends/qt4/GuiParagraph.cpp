@@ -43,10 +43,9 @@ namespace lyx {
 namespace frontend {
 
 GuiParagraph::GuiParagraph(GuiView & lv)
-	: DialogView(lv, "paragraph")
+	: DialogView(lv, "paragraph", qt_("Paragraph Settings"))
 {
 	setupUi(this);
-	setWindowTitle(qt_("Paragraph Settings"));
 
 	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(changed()));

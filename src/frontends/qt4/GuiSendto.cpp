@@ -35,10 +35,9 @@ namespace frontend {
 
 
 GuiSendTo::GuiSendTo(GuiView & lv)
-	: GuiDialog(lv, "sendto")
+	: GuiDialog(lv, "sendto", qt_("Send Document to Command"))
 {
 	setupUi(this);
-	setViewTitle(_("Send Document to Command"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

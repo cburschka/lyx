@@ -269,11 +269,10 @@ static vector<FamilyPair> const getFamilyData()
 
 
 GuiCharacter::GuiCharacter(GuiView & lv)
-	: GuiDialog(lv, "character"), font_(ignore_font),
+	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font),
 	  toggleall_(false), reset_lang_(false)
 {
 	setupUi(this);
-	setViewTitle(_("Text Style"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

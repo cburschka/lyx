@@ -70,10 +70,9 @@ namespace frontend {
 
 
 GuiDelimiter::GuiDelimiter(GuiView & lv)
-	: GuiMath(lv, "mathdelimiter")
+	: GuiMath(lv, "mathdelimiter", qt_("Math Delimiter"))
 {
 	setupUi(this);
-	setViewTitle(_("Math Delimiter"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
 

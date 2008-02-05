@@ -492,11 +492,10 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 GuiDocument::GuiDocument(GuiView & lv)
-	: GuiDialog(lv, "document"), current_id_(0)
+	: GuiDialog(lv, "document", qt_("Document Settings")), current_id_(0)
 {
 	setupUi(this);
-	setViewTitle(_("Document Settings"));
-
+	
 	lang_ = getSecond(getLanguageData(false));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

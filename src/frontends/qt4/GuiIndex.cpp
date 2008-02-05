@@ -32,12 +32,11 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 GuiIndexDialogBase::GuiIndexDialogBase(GuiView & lv,
-		docstring const & title, QString const & label, string const & name)
-	: GuiCommand(lv, name)
+		QString const & title, QString const & label, string const & name)
+	: GuiCommand(lv, name, title)
 {
 	label_ = label;
 	setupUi(this);
-	setViewTitle(title);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -118,7 +117,7 @@ bool GuiIndexDialogBase::isValid()
 
 
 GuiIndex::GuiIndex(GuiView & lv)
-	: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:"), "index") 
+	: GuiIndexDialogBase(lv, qt_("Index Entry"), qt_("&Keyword:"), "index") 
 {
 	keywordED->setWhatsThis( qt_(
 		"The format of the entry in the index.\n"
@@ -148,7 +147,7 @@ Dialog * createGuiIndex(GuiView & lv) { return new GuiIndex(lv); }
 /////////////////////////////////////////////////////////////////
 
 GuiLabel::GuiLabel(GuiView & lv)
-	: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"), "label")
+	: GuiIndexDialogBase(lv, qt_("Label"), qt_("&Label:"), "label")
 {}
 
 

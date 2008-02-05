@@ -35,7 +35,7 @@ namespace lyx {
 namespace frontend {
 
 GuiErrorList::GuiErrorList(GuiView & lv)
-	: GuiDialog(lv, "errorlist")
+	: GuiDialog(lv, "errorlist", qt_("Error List"))
 {
 	setupUi(this);
 
@@ -74,7 +74,7 @@ void GuiErrorList::select(QListWidgetItem * wi)
 
 void GuiErrorList::updateContents()
 {
-	setViewTitle(name_);
+	setTitle(toqstr(name_));
 	errorsLW->clear();
 	descriptionTB->setPlainText(QString());
 

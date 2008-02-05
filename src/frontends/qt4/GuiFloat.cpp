@@ -26,11 +26,10 @@ namespace lyx {
 namespace frontend {
 
 GuiFloat::GuiFloat(GuiView & lv)
-	: GuiDialog(lv, "float")
+	: GuiDialog(lv, "float", qt_("Float Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Float Settings"));
-
+	
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

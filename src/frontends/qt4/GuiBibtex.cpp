@@ -22,11 +22,11 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 #include "LyXRC.h"
-#include "support/gettext.h"
 
 #include "ButtonPolicy.h"
 
 #include "support/filetools.h" // changeExtension
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/FileFilterList.h"
 
@@ -44,11 +44,9 @@ namespace frontend {
 
 
 GuiBibtex::GuiBibtex(GuiView & lv)
-	: GuiCommand(lv, "bibtex")
+	: GuiCommand(lv, "bibtex", qt_("BibTeX Bibliography"))
 {
 	setupUi(this);
-
-	setViewTitle( _("BibTeX Bibliography"));
 
 	QDialog::setModal(true);
 

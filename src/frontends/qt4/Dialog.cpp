@@ -34,8 +34,8 @@ namespace lyx {
 namespace frontend {
 
 
-Dialog::Dialog(GuiView & lv, string const & name)
-	: name_(name), lyxview_(&lv)
+Dialog::Dialog(GuiView & lv, string const & name, QString const & title)
+	: name_(name), title_(title), lyxview_(&lv)
 {}
 
 
@@ -189,6 +189,8 @@ void Dialog::showView()
 		return;
 
 	QWidget * w = asQWidget();
+	w->setWindowTitle(title_);
+
 	QSize const hint = w->sizeHint();
 	if (hint.height() >= 0 && hint.width() >= 0)
 		w->setMinimumSize(hint);

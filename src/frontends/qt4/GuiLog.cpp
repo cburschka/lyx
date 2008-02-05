@@ -99,7 +99,7 @@ void LogHighlighter::highlightBlock(QString const & text)
 /////////////////////////////////////////////////////////////////////
 
 GuiLog::GuiLog(GuiView & lv)
-	: GuiDialog(lv, "log"), type_(LatexLog)
+	: GuiDialog(lv, "log", qt_("LaTeX Log")), type_(LatexLog)
 {
 	setupUi(this);
 
@@ -129,7 +129,7 @@ void GuiLog::closeEvent(QCloseEvent * e)
 
 void GuiLog::updateContents()
 {
-	setViewTitle(title());
+	setTitle(toqstr(title()));
 
 	ostringstream ss;
 	getContents(ss);

@@ -50,7 +50,8 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog(GuiView & lv, std::string const & name);
+	/// \param title is the window title used for decoration.
+	Dialog(GuiView & lv, std::string const & name, QString const & title);
 
 	virtual ~Dialog();
 
@@ -251,6 +252,9 @@ public:
 	//@}
 
 protected:
+	///
+	void setTitle(QString const & title) { title_ = title; }
+	///
 	virtual void apply();
 
 private:
@@ -258,6 +262,8 @@ private:
 	 *  itself to the LyXView.
 	 */
 	std::string const name_;
+	///
+	QString title_;
 	///
 	GuiView * lyxview_;
 

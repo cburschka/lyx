@@ -19,8 +19,8 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiMath::GuiMath(GuiView & lv, string const & name)
-	: GuiDialog(lv, name)
+GuiMath::GuiMath(GuiView & lv, string const & name, QString const & title)
+	: GuiDialog(lv, name, title)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
 	// in "lib/symbols". Unfortunately, some of those are already

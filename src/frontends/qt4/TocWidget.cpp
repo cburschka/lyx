@@ -31,7 +31,6 @@ TocWidget::TocWidget(GuiToc & form, QWidget * parent)
 	: QWidget(parent), depth_(0), form_(form)
 {
 	setupUi(this);
-	setWindowTitle(qt_("Outline"));
 
 	connect(&form_, SIGNAL(modelReset()), SLOT(updateGui()));
 

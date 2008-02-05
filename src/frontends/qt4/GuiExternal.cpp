@@ -89,10 +89,9 @@ char const * const origin_gui_strs[] = {
 
 
 GuiExternal::GuiExternal(GuiView & lv)
-	: GuiDialog(lv, "external"), bbChanged_(false)
+	: GuiDialog(lv, "external", qt_("External Material")), bbChanged_(false)
 {
 	setupUi(this);
-	setViewTitle(_("External Material"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

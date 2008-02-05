@@ -14,8 +14,6 @@
 
 #include "ButtonPolicy.h"
 
-#include "support/gettext.h"
-
 #include <list>
 
 class QWidget;

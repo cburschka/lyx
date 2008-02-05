@@ -41,11 +41,10 @@ namespace lyx {
 namespace frontend {
 
 GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "toc", area, flags), params_(TOC_CODE)
+	: DockView(parent, "toc", qt_("Outline"), area, flags), params_(TOC_CODE)
 {
 	widget_ = new TocWidget(*this);
 	setWidget(widget_);
-	setWindowTitle(widget_->windowTitle());
 }
 
 

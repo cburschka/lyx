@@ -76,10 +76,9 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 
 GuiCitation::GuiCitation(GuiView & lv)
-	: GuiCommand(lv, "citation")
+	: GuiCommand(lv, "citation", qt_("Citation"))
 {
 	setupUi(this);
-	setViewTitle(_("Citation"));
 
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(on_citationStyleCO_currentIndexChanged(int)));

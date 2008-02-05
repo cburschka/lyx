@@ -13,7 +13,12 @@
 #include "GuiThesaurus.h"
 
 #include "qt_helpers.h"
+
+#include "FuncRequest.h"
+#include "lyxfind.h"
+
 #include "support/debug.h"
+#include "support/gettext.h"
 
 #include <QCloseEvent>
 #include <QHeaderView>
@@ -22,8 +27,6 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
-#include "lyxfind.h"
-#include "FuncRequest.h"
 
 using namespace std;
 
@@ -31,10 +34,9 @@ namespace lyx {
 namespace frontend {
 
 GuiThesaurus::GuiThesaurus(GuiView & lv)
-	: GuiDialog(lv, "thesaurus")
+	: GuiDialog(lv, "thesaurus", qt_("Thesaurus"))
 {
 	setupUi(this);
-	setViewTitle(_("Thesaurus"));
 
 	meaningsTV->setColumnCount(1);
 	meaningsTV->header()->hide();

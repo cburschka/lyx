@@ -39,7 +39,8 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	explicit GuiDialog(GuiView & lv, std::string const & name);
+	/// \param title is the window title used for decoration.
+	GuiDialog(GuiView & lv, std::string const & name, QString const & title);
 
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
@@ -59,9 +60,6 @@ public Q_SLOTS:
 	void slotClose();
 
 public:
-	///
-	void setViewTitle(docstring const & title);
-
 	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
@@ -114,7 +112,7 @@ class GuiCommand : public GuiDialog
 public:
 	/// We need to know with what sort of inset we're associated.
 	// FIXME This should probably be an InsetCode
-	GuiCommand(GuiView &, std::string const & name);
+	GuiCommand(GuiView &, std::string const & name, QString const & title);
 	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.

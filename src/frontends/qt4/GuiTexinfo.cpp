@@ -79,10 +79,9 @@ static string texFileFromList(string const & file, string const & type)
 
 
 GuiTexInfo::GuiTexInfo(GuiView & lv)
-	: GuiDialog(lv, "texinfo")
+	: GuiDialog(lv, "texinfo", qt_("TeX Information"))
 {
 	setupUi(this);
-	setViewTitle(_("TeX Information"));
 
 	warningPosted = false;
 	activeStyle = ClsType;

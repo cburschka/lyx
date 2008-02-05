@@ -26,6 +26,7 @@
 #include "FuncRequest.h"
 #include "insets/InsetVSpace.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QCheckBox>
@@ -40,10 +41,9 @@ namespace lyx {
 namespace frontend {
 
 GuiVSpace::GuiVSpace(GuiView & lv)
-	: GuiDialog(lv, "vspace")
+	: GuiDialog(lv, "vspace", qt_("Vertical Space Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Vertical Space Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

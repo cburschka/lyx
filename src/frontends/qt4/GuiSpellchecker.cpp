@@ -54,11 +54,10 @@ namespace frontend {
 
 
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
-	: GuiDialog(lv, "spellchecker"), exitEarly_(false),
+	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0), speller_(0)
 {
 	setupUi(this);
-	setViewTitle(_("Spellchecker"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(replacePB, SIGNAL(clicked()), this, SLOT(replace()));

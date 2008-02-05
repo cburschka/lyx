@@ -26,15 +26,9 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiDialog::GuiDialog(GuiView & lv, string const & name)
-	:  QDialog(&lv), Dialog(lv, name), is_closing_(false)
+GuiDialog::GuiDialog(GuiView & lv, string const & name, QString const & title)
+	:  QDialog(&lv), Dialog(lv, name, "LyX: " + title), is_closing_(false)
 {}
-
-
-void GuiDialog::setViewTitle(docstring const & title)
-{
-	setWindowTitle("LyX: " + toqstr(title));
-}
 
 
 void GuiDialog::setButtonsValid(bool valid)
@@ -126,8 +120,9 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiCommand::GuiCommand(GuiView & lv, string const & name)
-	: GuiDialog(lv, name), params_(insetCode(name)), lfun_name_(name)
+GuiCommand::GuiCommand(GuiView & lv, string const & name,
+	QString const & title)
+	: GuiDialog(lv, name, title), params_(insetCode(name)), lfun_name_(name)
 {
 }
 

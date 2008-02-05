@@ -39,7 +39,6 @@ ViewSourceWidget::ViewSourceWidget(GuiViewSource & controller)
 		highlighter_(new LaTeXHighlighter(document_))
 {
 	setupUi(this);
-	setWindowTitle(qt_("LaTeX Source"));
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
 		this, SLOT(updateView()));
@@ -89,11 +88,10 @@ void ViewSourceWidget::update(bool full_source)
 
 GuiViewSource::GuiViewSource(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "view-source", area, flags)
+	: DockView(parent, "view-source", qt_("LaTeX Source"), area, flags)
 {
 	widget_ = new ViewSourceWidget(*this);
 	setWidget(widget_);
-	setWindowTitle(widget_->windowTitle());
 }
 
 

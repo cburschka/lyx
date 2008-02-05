@@ -19,6 +19,7 @@
 #include "insets/InsetListingsParams.h"
 #include "support/debug.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QLineEdit>
@@ -158,10 +159,9 @@ char const * font_styles_gui[] =
 
 
 GuiListings::GuiListings(GuiView & lv)
-	: GuiDialog(lv, "listings")
+	: GuiDialog(lv, "listings", qt_("Program Listing Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Program Listing Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

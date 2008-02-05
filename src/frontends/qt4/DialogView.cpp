@@ -23,8 +23,9 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-DialogView::DialogView(GuiView & lv, string const & name)
-	: QDialog(&lv), Dialog(lv, name)
+DialogView::DialogView(GuiView & lv, string const & name,
+	QString const & title)
+	: QDialog(&lv), Dialog(lv, name, "LyX: " + title)
 {}
 
 } // namespace frontend

@@ -24,10 +24,9 @@ namespace frontend {
 
 
 GuiBibitem::GuiBibitem(GuiView & lv)
-	: GuiCommand(lv, "bibitem")
+	: GuiCommand(lv, "bibitem", qt_("Bibliography Entry Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Bibliography Entry Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

@@ -29,7 +29,7 @@ namespace lyx {
 namespace frontend {
 
 GuiNomenclature::GuiNomenclature(GuiView & lv)
-	: GuiCommand(lv, "nomenclature")
+	: GuiCommand(lv, "nomenclature", qt_("Nomenclature"))
 {
 	setupUi(this);
 

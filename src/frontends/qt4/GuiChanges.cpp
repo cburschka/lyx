@@ -15,6 +15,7 @@
 
 #include "qt_helpers.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 
@@ -37,10 +38,9 @@ namespace frontend {
 using support::bformat;
 
 GuiChanges::GuiChanges(GuiView & lv)
-	: GuiDialog(lv, "changes")
+	: GuiDialog(lv, "changes", qt_("Merge Changes"))
 {
 	setupUi(this);
-	setViewTitle(_("Merge Changes"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextChange()));

@@ -30,7 +30,8 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	explicit DialogView(GuiView & lv, std::string const & name);
+	/// \param title is the window title used for decoration.
+	DialogView(GuiView & lv, std::string const & name, QString const & title);
 	virtual ~DialogView() {}
 
 	virtual QWidget * asQWidget() { return this; }

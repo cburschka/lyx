@@ -28,10 +28,9 @@ namespace lyx {
 namespace frontend {
 
 GuiMathMatrix::GuiMathMatrix(GuiView & lv)
-	: GuiMath(lv, "mathmatrix")
+	: GuiMath(lv, "mathmatrix", qt_("Math Matrix"))
 {
 	setupUi(this);
-	setViewTitle(_("Math Matrix"));
 
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(5);

@@ -19,6 +19,7 @@
 
 #include "insets/InsetWrap.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QLineEdit>
@@ -31,10 +32,9 @@ namespace lyx {
 namespace frontend {
 
 GuiWrap::GuiWrap(GuiView & lv)
-	: GuiDialog(lv, "wrap")
+	: GuiDialog(lv, "wrap", qt_("Wrap Float Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Wrap Float Settings"));
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

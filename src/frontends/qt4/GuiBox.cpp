@@ -73,10 +73,9 @@ void box_gui_tokens_special_length(vector<string> & ids,
 
 
 GuiBox::GuiBox(GuiView & lv)
-	: GuiDialog(lv, "box"), params_("")
+	: GuiDialog(lv, "box", qt_("Box Settings")), params_("")
 {
 	setupUi(this);
-	setViewTitle(_("Box Settings"));
 
 	// fill the box type choice
 	box_gui_tokens(ids_, gui_names_);

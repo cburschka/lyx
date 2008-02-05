@@ -28,10 +28,9 @@ namespace frontend {
 
 
 GuiShowFile::GuiShowFile(GuiView & lv)
-	: GuiDialog(lv, "file")
+	: GuiDialog(lv, "file", qt_("Show File"))
 {
 	setupUi(this);
-	setViewTitle(_("Show File"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
@@ -51,11 +50,11 @@ void GuiShowFile::updateContents()
 {
 	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));
 
-	docstring contents = filename_.fileContents("UTF-8");
-	if (contents.empty())
-		contents = _("Error -> Cannot load file!");
+	QString contents = toqstr(filename_.fileContents("UTF-8"));
+	if (contents.isEmpty())
+		contents = qt_("Error -> Cannot load file!");
 
-	textTB->setPlainText(toqstr(contents));
+	textTB->setPlainText(contents);
 }
 
 

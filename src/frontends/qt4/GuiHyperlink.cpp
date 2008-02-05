@@ -27,10 +27,9 @@ namespace lyx {
 namespace frontend {
 
 GuiHyperlink::GuiHyperlink(GuiView & lv)
-	: GuiCommand(lv, "href")
+	: GuiCommand(lv, "href",qt_("Hyperlink"))
 {
 	setupUi(this);
-	setViewTitle( _("Hyperlink"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

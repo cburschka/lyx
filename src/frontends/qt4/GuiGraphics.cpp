@@ -113,11 +113,10 @@ vector<RotationOriginPair> getRotationOriginData();
 
 
 GuiGraphics::GuiGraphics(GuiView & lv)
-	: GuiDialog(lv, "graphics")
+	: GuiDialog(lv, "graphics", qt_("Graphics"))
 {
 	setupUi(this);
-	setViewTitle(_("Graphics"));
-
+	
 	//main buttons
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

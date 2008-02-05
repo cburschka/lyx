@@ -33,10 +33,9 @@ namespace lyx {
 namespace frontend {
 
 GuiBranch::GuiBranch(GuiView & lv)
-	: GuiDialog(lv, "branch")
+	: GuiDialog(lv, "branch", qt_("Branch Settings"))
 {
 	setupUi(this);
-	setViewTitle(_("Branch Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

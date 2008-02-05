@@ -32,10 +32,11 @@ public:
 	DockView(
 		GuiView & parent, ///< the main window where to dock.
 		std::string const & name, ///< dialog identifier.
+		QString const & title, ///< dialog title.
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
 	)
-		: QDockWidget(&parent, flags), Dialog(parent, name)
+		: QDockWidget(&parent, flags), Dialog(parent, name, title)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);

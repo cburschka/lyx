@@ -39,10 +39,9 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 
 
 GuiSearch::GuiSearch(GuiView & lv)
-	: GuiDialog(lv, "findreplace")
+	: GuiDialog(lv, "findreplace", qt_("Find and Replace"))
 {
 	setupUi(this);
-	setViewTitle(_("Find and Replace"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));

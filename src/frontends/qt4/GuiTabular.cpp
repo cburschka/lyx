@@ -37,12 +37,11 @@ namespace lyx {
 namespace frontend {
 
 GuiTabular::GuiTabular(GuiView & lv)
-	: GuiDialog(lv, "tabular")
+	: GuiDialog(lv, "tabular", qt_("Table Settings"))
 {
 	active_cell_ = Tabular::npos;
 
 	setupUi(this);
-	setViewTitle(_("Table Settings"));
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	topspaceED->setValidator(new LengthValidator(topspaceED));

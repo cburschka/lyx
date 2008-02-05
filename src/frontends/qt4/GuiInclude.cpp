@@ -47,10 +47,9 @@ namespace frontend {
 
 
 GuiInclude::GuiInclude(GuiView & lv)
-	: GuiCommand(lv, "include")
+	: GuiCommand(lv, "include", qt_("Child Document"))
 {
 	setupUi(this);
-	setViewTitle(_("Child Document"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

@@ -39,10 +39,9 @@ namespace lyx {
 namespace frontend {
 
 GuiRef::GuiRef(GuiView & lv)
-	: GuiCommand(lv, "ref")
+	: GuiCommand(lv, "ref", qt_("Cross-reference"))
 {
 	setupUi(this);
-	setViewTitle(_("Cross-reference"));
 
 	sort_ = false;
 	at_ref_ = false;
