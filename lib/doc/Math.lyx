@@ -371,7 +371,7 @@ Settings\SpecialChar \menuseparator
 Math\InsetSpace ~
 Options
 \family default
-
+).
 \begin_inset Foot
 status collapsed
 
@@ -398,7 +398,7 @@ AmS
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -2706,8 +2706,8 @@ Ctrl-Enter
 
 \begin_layout Standard
 \begin_inset Formula $\begin{cases}
-A & \textrm{für }x>0\\
-B & \textrm{für }x=0\end{cases}$
+A & \textrm{for }x>0\\
+B & \textrm{for }x=0\end{cases}$
 \end_inset
 
 
@@ -2933,79 +2933,12 @@ reference "sub:Mathematical-Symbols"
 \end_inset
 
  and 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{
-\backslash
-hspace{-
-\backslash
-abc}}
-\end_layout
-
-\end_inset
-
-
 \begin_inset LatexCommand ref
 reference "sec:Relations"
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{sec.
-\backslash
-negthinspace}
-\end_layout
-
-\end_inset
-
 ).
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-The 
-\series bold
-
-\backslash
-renewcommand
-\series default
--commands in TeX-mode are necessary that the cross-reference name 
-\begin_inset Quotes eld
-\end_inset
-
-sec.
-\begin_inset Quotes erd
-\end_inset
-
- don't appear twice, see sec.\InsetSpace \thinspace{}
-
-\begin_inset LatexCommand ref
-reference "sub:Verlinkte-Querverweise"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -3149,8 +3082,25 @@ name "Commands ! P ! \\textbackslash phantom"
 
 \end_inset
 
- or the math toolbar button \InsetSpace ~
+ or the math toolbar button\InsetSpace \thinspace{}
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+can be found in the submenu of the toolbar button 
+\begin_inset Graphics
+	filename ../images/math/space.png
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Graphics
 	filename ../images/math/phantom.png
 	scale 85
@@ -4433,19 +4383,6 @@ lccr
 c
 \series default
 .
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-pagebreak 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
