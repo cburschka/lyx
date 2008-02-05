@@ -121,10 +121,6 @@ public:
 	void stopBlinkingCursor();
 	///
 	void startBlinkingCursor();
-	/// 
-	void startGeneralTimer() { general_timer_.start(); }
-	///
-	void stopGeneralTimer() { general_timer_.stop(); }
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
@@ -146,8 +142,6 @@ private Q_SLOTS:
 	void doubleClickTimeout();
 	/// toggle the cursor's visibility
 	void toggleCursor();
-	/// events to be triggered by general_timer_ should go here
-	void handleRegularEvents();
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	void close();
@@ -218,10 +212,6 @@ private:
 
 	///
 	QTimer cursor_timeout_;
-	/// this timer is used for any regular events one wants to
-	/// perform. at present it is used to check if forked processes
-	/// are done.
-	QTimer general_timer_;
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 	///

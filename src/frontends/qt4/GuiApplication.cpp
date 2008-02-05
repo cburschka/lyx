@@ -27,6 +27,7 @@
 
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
+#include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -201,6 +202,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
+
+	general_timer_.setInterval(500);
+	connect(&general_timer_, SIGNAL(timeout()),
+		this, SLOT(handleRegularEvents()));
+	general_timer_.start();
 }
 
 
@@ -402,6 +408,12 @@ QString const GuiApplication::typewriterFontName()
 	font.setFamily("monospace");
 
 	return QFontInfo(font).family();
+}
+
+
+void GuiApplication::handleRegularEvents()
+{
+	ForkedCallsController::handleCompletedProcesses();
 }
 
 

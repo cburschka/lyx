@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QApplication>
+#include <QTimer>
 #include <QTranslator>
 
 #include <map>
@@ -124,6 +125,8 @@ private Q_SLOTS:
 	void execBatchCommands();
 	///
 	void socketDataReceived(int fd);
+	/// events to be triggered by general_timer_ should go here
+	void handleRegularEvents();
 
 private:
 	///
@@ -142,6 +145,10 @@ private:
 	std::map<int, SocketNotifier *> socket_notifiers_;
 	///
 	Menus menus_;
+	/// this timer is used for any regular events one wants to
+	/// perform. at present it is used to check if forked processes
+	/// are done.
+	QTimer general_timer_;
 
 #ifdef Q_WS_X11
 public:
