@@ -74,10 +74,11 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp,
-		CollapseStatus status, InsetLayout const * il)
-	: InsetText(bp), layout_(il), status_(status),
+		CollapseStatus status, TextClassPtr tc)
+	: InsetText(bp), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
+	setLayout(tc);
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
@@ -86,6 +87,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
+		textClass_(rhs.textClass_),
 		layout_(rhs.layout_),
 		labelstring_(rhs.labelstring_),
 		button_dim(rhs.button_dim),
@@ -116,14 +118,20 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	setLayout(bp.getTextClass().insetlayout(name()));
+	setLayout(bp.getTextClassPtr());
 }
 
 
-void InsetCollapsable::setLayout(InsetLayout const & il)
+void InsetCollapsable::setLayout(TextClassPtr tc)
 {
-	layout_ = &il;
-	labelstring_ = layout_->labelstring;
+	textClass_ = tc;
+	if ( tc.get() != 0 ) {
+		layout_ = &tc->insetlayout(name());
+		labelstring_ = layout_->labelstring;
+	} else {
+		layout_ = 0;
+		labelstring_ = _("UNDEFINED");
+	}
 
 	setButtonLabel();
 }

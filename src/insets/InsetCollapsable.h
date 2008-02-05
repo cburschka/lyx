@@ -19,6 +19,8 @@
 #include "InsetText.h"
 
 #include "Box.h"
+#include "TextClass.h"
+#include "TextClassPtr.h"
 
 #include <string>
 
@@ -41,7 +43,7 @@ public:
 	InsetCollapsable(
 		BufferParams const &,
 		CollapseStatus status = Inset::Open,
-		InsetLayout const * il = 0
+		TextClassPtr tc = TextClassPtr((TextClass *)0)
 		);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
@@ -52,10 +54,13 @@ public:
 	docstring name() const { return from_ascii("Collapsable"); }
 	InsetLayout const & getLayout(BufferParams const &) const
 	{ return *layout_; } 
+	InsetLayout const & getLayout() const
+	{ return *layout_; } 
 	///
 	void setLayout(BufferParams const &);
-	/// (Re-)set the character style parameters from \p il
-	void setLayout(InsetLayout const & il);
+	/// (Re-)set the character style parameters from \p tc according
+	/// to name()
+	void setLayout(TextClassPtr tc);
 	///
 	void read(Buffer const &, Lexer &);
 	///
@@ -165,10 +170,11 @@ protected:
 	///
 	virtual void resetParagraphsFont();
 
-protected:
-	///
-	InsetLayout const * layout_;
 private:
+	/// text class to keep the InsetLayout above in memory
+	TextClassPtr textClass_;
+	/// cache for the layout_. Make sure it is in sync with the text class!
+	InsetLayout const * layout_;
 	///
 	Dimension dimensionCollapsed() const;
 	///

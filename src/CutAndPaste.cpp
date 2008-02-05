@@ -445,17 +445,15 @@ void switchBetweenClasses(TextClassPtr const & c1,
 		if (inset->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		docstring const name = inset->name();
-		InsetLayout const & il = tclass2.insetlayout(name);
-		inset->setLayout(il);
-		if (il.labelstring != from_utf8("UNDEFINED"))
+		inset->setLayout(c2);
+		if (inset->getLayout().labelstring != from_utf8("UNDEFINED"))
 			continue;
 		// The flex inset is undefined in tclass2
 		docstring const s = bformat(_(
 			"Flex inset %1$s is "
 			"undefined because of class "
 			"conversion from\n%2$s to %3$s"),
-			name, from_utf8(tclass1.name()),
+			inset->name(), from_utf8(tclass1.name()),
 			from_utf8(tclass2.name()));
 		// To warn the user that something had to be done.
 		errorlist.push_back(ErrorItem(

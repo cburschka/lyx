@@ -43,12 +43,13 @@ namespace lyx {
 
 
 InsetFlex::InsetFlex(BufferParams const & bp,
-				InsetLayout const & il)
-	: InsetCollapsable(bp, Collapsed, &il)
+	TextClassPtr tc, string const & layoutName)
+	: InsetCollapsable(bp, Collapsed, tc),
+	name_(layoutName)
 {
-	name_ = il.name;
-	packages_ = il.requires;
-	preamble_ = il.preamble;
+	setLayout(tc); // again, because now the name is initialized
+	packages_ = getLayout().requires;
+	preamble_ = getLayout().preamble;
 }
 
 
@@ -65,7 +66,7 @@ Inset * InsetFlex::clone() const
 
 bool InsetFlex::undefined() const
 {
-	return layout_->labelstring == from_utf8("UNDEFINED");
+	return getLayout().labelstring == from_utf8("UNDEFINED");
 }
 
 
@@ -118,8 +119,8 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
-		sgml::openTag(os, layout_->latexname,
-			      par->getID(buf, runparams) + layout_->latexparam);
+		sgml::openTag(os, getLayout().latexname,
+			      par->getID(buf, runparams) + getLayout().latexparam);
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
@@ -128,7 +129,7 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	}
 
 	if (!undefined())
-		sgml::closeTag(os, layout_->latexname);
+		sgml::closeTag(os, getLayout().latexname);
 
 	return 0;
 }
