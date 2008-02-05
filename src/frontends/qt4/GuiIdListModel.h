@@ -44,7 +44,7 @@ public:
 	// Methods overridden from QAbstractListModel
 	//////////////////////////////////////////////////////////////////////
 	///
-	int rowCount(QModelIndex const & parent = QModelIndex()) const
+	int rowCount(QModelIndex const & = QModelIndex()) const
 		{ return userData_.size(); }
 
 	///
