@@ -668,10 +668,9 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 	double const lines = qApp->wheelScrollLines()
 		* lyxrc.mouse_wheel_speed
 		* e->delta() / 120.0;
-	lyxerr << "wheelScrollLines = " << qApp->wheelScrollLines()
+	LYXERR(Debug::SCROLLING, "wheelScrollLines = " << qApp->wheelScrollLines()
 		<< " delta = " << e->delta()
-		<< " lines = " << lines
-		<< std::endl;
+		<< " lines = " << lines);
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
 		int(lines *  verticalScrollBar()->singleStep()));
 }
@@ -679,7 +678,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 
 void GuiWorkArea::generateSyntheticMouseEvent()
 {
-// Set things off to generate the _next_ 'pseudo' event.
+	// Set things off to generate the _next_ 'pseudo' event.
 	if (synthetic_mouse_event_.restart_timeout)
 		synthetic_mouse_event_.timeout.start();
 
