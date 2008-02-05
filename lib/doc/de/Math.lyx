@@ -381,7 +381,7 @@ Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Mathe Optionen
 \family default
- aktiviert sein
+ aktiviert sein.
 \begin_inset Foot
 status collapsed
 
@@ -413,7 +413,7 @@ AmS
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -2934,79 +2934,12 @@ reference "sub:Mathematische-Symbole"
 \end_inset
 
  und 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{
-\backslash
-hspace{-
-\backslash
-abc}}
-\end_layout
-
-\end_inset
-
-
 \begin_inset LatexCommand ref
 reference "sec:Relationen"
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{Kap.
-\backslash
-negthinspace}
-\end_layout
-
-\end_inset
-
 ).
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Die 
-\series bold
-
-\backslash
-renewcommand
-\series default
--Befehle im TeX-Modus sind notwendig, damit der Querverweisname 
-\begin_inset Quotes gld
-\end_inset
-
-Kap.
-\begin_inset Quotes grd
-\end_inset
-
- nicht zweimal geschrieben wird, siehe Kap.\InsetSpace \thinspace{}
-
-\begin_inset LatexCommand ref
-reference "sub:Verlinkte-Querverweise"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -3154,8 +3087,25 @@ name "Befehle ! P ! \\textbackslash phantom"
 
 \end_inset
 
- oder den Mathe-Werkzeugleistenknopf \InsetSpace ~
+ oder den Mathe-Werkzeugleistenknopf\InsetSpace \thinspace{}
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+zu finden im Untermenü des Mathe-Werkzeugleistenknopfs 
+\begin_inset Graphics
+	filename ../../images/math/space.xpm
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Graphics
 	filename ../../images/math/phantom.xpm
 	scale 85
@@ -7082,7 +7032,7 @@ Pfeile können über den Mathe-Werkzeugleistenknopf
 
 \end_inset
 
- oder mit den Befehlen eingefügt werden die in den folgenden Unterkapiteln
+ oder mit den Befehlen eingefügt werden, die in den folgenden Unterkapiteln
  aufgelistet sind.
 \end_layout
 
@@ -8401,7 +8351,7 @@ Akzente können über den Mathe-Werkzeugleistenknopf
 
 \end_inset
 
- oder mit den Befehlen eingefügt werden die in den folgenden Unterkapiteln
+ oder mit den Befehlen eingefügt werden, die in den folgenden Unterkapiteln
  aufgelistet sind.
 \end_layout
 
