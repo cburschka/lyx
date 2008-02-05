@@ -16,7 +16,7 @@
 #	Font                  Nothing to put here, below are descriptions of the different
 #                         allowable adjustments for the font used to draw the text
 #                         appearing within the inset text. All these items are optional.
-#	  Color               Color of 
+#	  Color               Color of text
 #	  Size                Font size of the textallowed value: Small, Smaller, ...
 #                         FIXME defined in FontSize in FontEnums.h
 #	  Family              FIXME defined in FontFamily in FontEnums.h
@@ -31,23 +31,25 @@
 #                         optional.
 #	  Color               see definition above (in the Font node).
 #	  Size                see definition above (in the Font node).
-#	  ...
+#
 #	EndFont               Nothing to put here, it's just a markup to indicate that we are
 #                         finished with the LabelFont definition.
 #	MultiPar              Indicates that multiple paragraphs are allowed within the inset
 #                         or not. FIXME: what is the default?
 #	Decoration:           Classic, Minimalistic, Conglomerate. Decoration styles
 #	PassThru              Do not do various LaTeX conversions, like the phrases
-#	                      LaTeX, LyX, quote commands, etc.
+#	                        LaTeX, LyX, quote commands, etc.
 #	KeepEmpty             Do not delete empty paragraphs (?)
 #	FreeSpacing           Preserve multiple spaces etc.
 #	ForceLTR              Force the "latex" language, leading to Left-to-Right
-#	                     (latin) output, e.g., in ERT or URL. A kludge.
+#	                        (latin) output, e.g., in ERT or URL. A kludge.
 #	Requires              Require a given (supported) feature. Multiple features must
-#			      be comma-separated.
+#                         be comma-separated.
 #End
 
 Format 6
+
+Provides stdinsets 1
 
 InsetLayout Marginal
 	LabelString           margin

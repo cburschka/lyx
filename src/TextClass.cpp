@@ -454,33 +454,58 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
 			to_utf8(makeDisplayPath(filename.absFilename())));
 
-	if (rt == BASECLASS) {
-		if (defaultlayout_.empty()) {
-			lyxerr << "Error: Textclass '" << name_
-			       << "' is missing a defaultstyle." << endl;
+	if (rt != BASECLASS) 
+		return error;
+
+	if (defaultlayout_.empty()) {
+		lyxerr << "Error: Textclass '" << name_
+						<< "' is missing a defaultstyle." << endl;
+		error = true;
+	}
+		
+	//Try to erase "stdinsets" from the provides_ set. 
+	//The
+	//  Provides stdinsets 1
+	//declaration simply tells us that the standard insets have been
+	//defined. (It's found in stdinsets.inc but could also be used in
+	//user-defined files.) There isn't really any such package. So we
+	//might as well go ahead and erase it.
+	//If we do not succeed, then it was not there, which means that
+	//the textclass did not provide the definitions of the standard
+	//insets. So we need to try to load them.
+	int erased = provides_.erase("stdinsets");
+	if (!erased) {
+		FileName tmp = libFileSearch("layouts", "stdinsets.inc");
+
+		if (tmp.empty()) {
+			frontend::Alert::warning(_("Missing File"),
+					_("Could not find stdinsets.inc! This may lead to data loss!"));
+			error = true;
+		} else if (read(tmp, MERGE)) {
+			frontend::Alert::warning(_("Corrupt File"),
+					_("Could not read stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		}
-
-		min_toclevel_ = Layout::NOT_IN_TOC;
-		max_toclevel_ = Layout::NOT_IN_TOC;
-		const_iterator cit = begin();
-		const_iterator the_end = end();
-		for ( ; cit != the_end ; ++cit) {
-			int const toclevel = (*cit)->toclevel;
-			if (toclevel != Layout::NOT_IN_TOC) {
-				if (min_toclevel_ == Layout::NOT_IN_TOC)
-					min_toclevel_ = toclevel;
-				else
-					min_toclevel_ = min(min_toclevel_,
-							 toclevel);
-				max_toclevel_ = max(max_toclevel_,
-							 toclevel);
-			}
-		}
-		LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
-			<< ", maximum is " << max_toclevel_);
-
 	}
+
+	min_toclevel_ = Layout::NOT_IN_TOC;
+	max_toclevel_ = Layout::NOT_IN_TOC;
+	const_iterator cit = begin();
+	const_iterator the_end = end();
+	for ( ; cit != the_end ; ++cit) {
+		int const toclevel = (*cit)->toclevel;
+		if (toclevel != Layout::NOT_IN_TOC) {
+			if (min_toclevel_ == Layout::NOT_IN_TOC)
+				min_toclevel_ = toclevel;
+			else
+				min_toclevel_ = min(min_toclevel_,
+							toclevel);
+			max_toclevel_ = max(max_toclevel_,
+							toclevel);
+		}
+	}
+	LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
+		<< ", maximum is " << max_toclevel_);
 
 	return error;
 }
