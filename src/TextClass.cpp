@@ -86,6 +86,19 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 	return true;
 }
 
+
+std::string translateRT(TextClass::ReadType rt) 
+{
+	switch (rt) {
+	case TextClass::BASECLASS:
+		return "textclass";
+	case TextClass::MERGE:
+		return "input file";
+	case TextClass::MODULE:
+		return "module file";
+	}
+}
+
 } // namespace anon
 
 
@@ -199,20 +212,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		{ "tocdepth",        TC_TOCDEPTH }
 	};
 
-	switch (rt) {
-	case BASECLASS:
-		LYXERR(Debug::TCLASS, "Reading textclass ");
-		break;
-	case MERGE:
-		LYXERR(Debug::TCLASS, "Reading input file ");
-		break;
-	case MODULE:
-		LYXERR(Debug::TCLASS, "Reading module file ");
-		break;
-	default:
-		BOOST_ASSERT(false);
-	}
-	LYXERR(Debug::TCLASS, to_utf8(makeDisplayPath(filename.absFilename())));
+	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
+		to_utf8(makeDisplayPath(filename.absFilename())));
 
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
@@ -450,15 +451,10 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		return error;
 	}
 
-	if (rt == MODULE) 
-		LYXERR(Debug::TCLASS, "Finished reading module file "
-				<< to_utf8(makeDisplayPath(filename.absFilename())));
-	else if (rt == MERGE)
-		LYXERR(Debug::TCLASS, "Finished reading input file "
-				<< to_utf8(makeDisplayPath(filename.absFilename())));
-	else { // we are at top level here.
-		LYXERR(Debug::TCLASS, "Finished reading textclass "
-				      << to_utf8(makeDisplayPath(filename.absFilename())));
+	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
+			to_utf8(makeDisplayPath(filename.absFilename())));
+
+	if (rt == BASECLASS) {
 		if (defaultlayout_.empty()) {
 			lyxerr << "Error: Textclass '" << name_
 			       << "' is missing a defaultstyle." << endl;
