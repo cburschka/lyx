@@ -1777,6 +1777,19 @@ void BufferView::updateMetrics()
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(d->anchor_pit_);
 	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
+	
+	// position anchor
+	if (d->anchor_pit_ == 0) {
+		int scrollRange = d->scrollbarParameters_.max - d->scrollbarParameters_.min;
+		
+		// Complete buffer visible? Then it's easy.
+		if (scrollRange == 0)
+			d->anchor_ypos_ = anchor_pm.ascent();
+	
+		// FIXME: Some clever handling needed to show
+		// the _first_ paragraph up to the top if the cursor is
+		// in the first line.
+	}		
 	anchor_pm.setPosition(d->anchor_ypos_);
 
 	LYXERR(Debug::PAINTING, "metrics: "
