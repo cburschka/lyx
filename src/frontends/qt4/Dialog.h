@@ -14,9 +14,9 @@
 
 #include "lfuns.h"
 
+#include <QString.h>
 #include <string>
 
-class QString;
 class QWidget;
 
 namespace lyx {
