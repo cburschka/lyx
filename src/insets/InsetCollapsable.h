@@ -103,7 +103,7 @@ public:
 	 *   -------------+-------------------------------
 	 *   Classic      | *) TopButton, <--x) ButtonOnly
 	 *                | LeftButton
-	 *   Minimalistic | ButtonOnly          NoButton
+	 *   Minimalistic | NoButton            ButtonOnly
 	 *   Conglomerate | SubLabel            Corners
 	 *   ---------------------------------------------
 	 *   *) toggled by openinlined_

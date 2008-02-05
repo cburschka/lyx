@@ -528,9 +528,11 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			// There is no button to right click:
-			if (geometry() == Corners ||
+			if (decoration() == Minimalistic ||
+			    geometry() == Corners ||
 			    geometry() == SubLabel ||
-			    geometry() == NoButton)  {
+			    geometry() == NoButton
+			   )  {
 				if (status_ == Open)
 					setStatus(cur, Collapsed);
 				else
