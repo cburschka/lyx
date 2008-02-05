@@ -48,6 +48,7 @@ string const & Dialog::name() const
 	return name_;
 }
 
+
 bool Dialog::canApply() const
 {
 	FuncRequest const fr(getLfun(), from_ascii(name_));

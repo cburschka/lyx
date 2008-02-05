@@ -27,12 +27,6 @@ DialogView::DialogView(GuiView & lv, string const & name)
 	: QDialog(&lv), Dialog(lv, name)
 {}
 
-
-void DialogView::setViewTitle(docstring const & title)
-{
-	setWindowTitle("LyX: " + toqstr(title));
-}
-
 } // namespace frontend
 } // namespace lyx
 

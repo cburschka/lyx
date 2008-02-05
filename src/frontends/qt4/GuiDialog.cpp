@@ -27,8 +27,14 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, string const & name)
-	: DialogView(lv, name), is_closing_(false)
+	:  QDialog(&lv), Dialog(lv, name), is_closing_(false)
 {}
+
+
+void GuiDialog::setViewTitle(docstring const & title)
+{
+	setWindowTitle("LyX: " + toqstr(title));
+}
 
 
 void GuiDialog::setButtonsValid(bool valid)
@@ -83,7 +89,7 @@ void GuiDialog::enableView(bool enable)
 {
 	bc().setReadOnly(!enable);
 	bc().setValid(enable);
-	DialogView::enableView(enable);
+	Dialog::enableView(enable);
 }
 
 

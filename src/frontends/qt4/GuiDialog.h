@@ -12,18 +12,26 @@
 #ifndef GUIDIALOG_H
 #define GUIDIALOG_H
 
-#include "DialogView.h"
+#include "Dialog.h"
 #include "ButtonController.h"
 
 #include "insets/InsetCommandParams.h"
 
+#include <QDialog>
+
+class QCloseEvent;
+class QShowEvent;
+
 namespace lyx {
 namespace frontend {
 
-/** \c Dialog collects the different parts of a Model-Controller-View
- *  split of a generic dialog together.
- */
-class GuiDialog : public DialogView
+/// Base class for historical LyX dialogs.
+/** 
+  * \warning New dialogs should use the leaner classes \c DialogView or
+  * \c DockView depending on the intent. Eventally, old dialog should be
+  * converted to \c DialogView too.
+  */
+class GuiDialog : public QDialog, public Dialog
 {
 	Q_OBJECT
 
@@ -32,6 +40,9 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	explicit GuiDialog(GuiView & lv, std::string const & name);
+
+	virtual QWidget * asQWidget() { return this; }
+	virtual QWidget const * asQWidget() const { return this; }
 
 public Q_SLOTS:
 	/** \name Buttons
@@ -48,6 +59,9 @@ public Q_SLOTS:
 	void slotClose();
 
 public:
+	///
+	void setViewTitle(docstring const & title);
+
 	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.

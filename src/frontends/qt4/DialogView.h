@@ -16,9 +16,6 @@
 
 #include <QDialog>
 
-class QCloseEvent;
-class QShowEvent;
-
 namespace lyx {
 namespace frontend {
 
@@ -40,9 +37,6 @@ public:
 	virtual QWidget const * asQWidget() const { return this; }
 
 protected:
-	///
-	void setViewTitle(docstring const & title);
-
 	/// Dialog inherited methods
 	//@{
 	void applyView() {}
