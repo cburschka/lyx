@@ -379,7 +379,16 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	DocIterator parPos = text_->macrocontextPosition();
 	if (!parPos.empty())
 		parPos.pit() = pit;
-
+	else {
+		LYXERR(Debug::INFO, "MacroContext not initialised!"
+			<< " Going through the buffer again and hope"
+			<< " the context is better then.");
+		updateLabels(bv_->buffer());
+		parPos = text_->macrocontextPosition();
+		parPos.pit() = pit;
+		BOOST_ASSERT(!parPos.empty());
+	}
+	
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in Inset.h.
