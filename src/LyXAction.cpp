@@ -1093,6 +1093,24 @@ void LyXAction::init()
 		{ LFUN_LYX_QUIT, "lyx-quit", NoBuffer, Buffer },
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_MENUBAR_TOGGLE
+ * \li Action: Toggles visibility of the main menu.
+ * \li Notion: This can be used for the fullscreen mode.
+ * \li Syntax: menubar-toggle
+ * \li Origin: ps, 6 Feb 2008
+ * \endvar
+ */
+		{ LFUN_MENUBAR_TOGGLE, "menubar-toggle", NoBuffer, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_STATUSBAR_TOGGLE
+ * \li Action: Toggles visibility of the main menu.
+ * \li Notion: This can be used for the fullscreen mode.
+ * \li Syntax: statusbar-toggle
+ * \li Origin: ps, 6 Feb 2008
+ * \endvar
+ */
+		{ LFUN_STATUSBAR_TOGGLE, "statusbar-toggle", NoBuffer, Buffer },
 
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
