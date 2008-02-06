@@ -97,6 +97,8 @@ std::string translateRT(TextClass::ReadType rt)
 	case TextClass::MODULE:
 		return "module file";
 	}
+	// shutup warning
+	return string();
 }
 
 } // namespace anon
