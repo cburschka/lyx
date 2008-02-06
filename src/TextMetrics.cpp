@@ -385,8 +385,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			<< " the context is better then.");
 		updateLabels(bv_->buffer());
 		parPos = text_->macrocontextPosition();
-		parPos.pit() = pit;
 		BOOST_ASSERT(!parPos.empty());
+		parPos.pit() = pit;
 	}
 	
 	// redo insets
