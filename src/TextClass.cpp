@@ -28,6 +28,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/lstrings.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
@@ -480,11 +481,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		FileName tmp = libFileSearch("layouts", "stdinsets.inc");
 
 		if (tmp.empty()) {
-			frontend::Alert::warning(_("Missing File"),
-					_("Could not find stdinsets.inc! This may lead to data loss!"));
+			throw ExceptionMessage(WarningException, _("Missing File"),
+				_("Could not find stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		} else if (read(tmp, MERGE)) {
-			frontend::Alert::warning(_("Corrupt File"),
+			throw ExceptionMessage(WarningException, _("Corrupt File"),
 					_("Could not read stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		}
