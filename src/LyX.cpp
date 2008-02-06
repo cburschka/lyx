@@ -625,15 +625,6 @@ void LyX::execBatchCommands()
 	else
 		pimpl_->application_->restoreGuiSession();
 
-	BufferList::iterator I = theBufferList().begin();
-	BufferList::iterator end = theBufferList().end();
-	for (; I != end; ++I) {
-		Buffer * buf = *I;
-		if (buf != buf->masterBuffer())
-			continue;
-		updateLabels(*buf);
-	}
-
 	// Execute batch commands if available
 	if (pimpl_->batch_command.empty())
 		return;
