@@ -17,7 +17,6 @@
 
 #include "LyX.h"
 
-#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"

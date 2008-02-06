@@ -76,7 +76,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
-#include "frontends/FileDialog.h"
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Selection.h"
@@ -107,73 +106,6 @@ extern bool quitting;
 extern bool use_gui;
 
 namespace {
-
-
-bool import(LyXView * lv, FileName const & filename,
-		      string const & format, ErrorList & errorList)
-{
-	docstring const displaypath = makeDisplayPath(filename.absFilename());
-	lv->message(bformat(_("Importing %1$s..."), displaypath));
-
-	FileName const lyxfile(changeExtension(filename.absFilename(), ".lyx"));
-
-	string loader_format;
-	vector<string> loaders = theConverters().loaders();
-	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
-		for (vector<string>::const_iterator it = loaders.begin();
-		     it != loaders.end(); ++it) {
-			if (theConverters().isReachable(format, *it)) {
-				string const tofile =
-					changeExtension(filename.absFilename(),
-						formats.extension(*it));
-				if (!theConverters().convert(0, filename, FileName(tofile),
-							filename, format, *it, errorList))
-					return false;
-				loader_format = *it;
-				break;
-			}
-		}
-		if (loader_format.empty()) {
-			frontend::Alert::error(_("Couldn't import file"),
-				     bformat(_("No information for importing the format %1$s."),
-					 formats.prettyName(format)));
-			return false;
-		}
-	} else {
-		loader_format = format;
-	}
-
-
-	if (loader_format == "lyx") {
-		Buffer * buf = lv->loadDocument(lyxfile);
-		if (!buf) {
-			// we are done
-			lv->message(_("file not imported!"));
-			return false;
-		}
-		updateLabels(*buf);
-		lv->setBuffer(buf);
-		buf->errors("Parse");
-	} else {
-		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
-		if (b)
-			lv->setBuffer(b);
-		else
-			return false;
-		bool as_paragraphs = loader_format == "textparagraph";
-		string filename2 = (loader_format == format) ? filename.absFilename()
-			: changeExtension(filename.absFilename(),
-					  formats.extension(loader_format));
-		lv->view()->insertPlaintextFile(FileName(filename2), as_paragraphs);
-		theLyXFunc().setLyXView(lv);
-		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
-	}
-
-	// we are done
-	lv->message(_("imported."));
-	return true;
-}
-
 
 
 // This function runs "configure" and then rereads lyx.defaults to
@@ -1096,9 +1028,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
+		// FIXME: There is need for a command-line import.
+		/*
 		case LFUN_BUFFER_IMPORT:
 			doImport(argument);
 			break;
+		*/
 
 		case LFUN_BUFFER_AUTO_SAVE:
 			lyx_view_->buffer()->autoSave();
@@ -1855,94 +1790,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
 	if (!dispatch_msg.empty())
 		lyx_view_->message(dispatch_msg);
-}
-
-
-void LyXFunc::doImport(string const & argument)
-{
-	string format;
-	string filename = split(argument, format, ' ');
-
-	LYXERR(Debug::INFO, "LyXFunc::doImport: " << format
-			    << " file: " << filename);
-
-	// need user interaction
-	if (filename.empty()) {
-		string initpath = lyxrc.document_path;
-
-		if (lyx_view_->buffer()) {
-			string const trypath = lyx_view_->buffer()->filePath();
-			// If directory is writeable, use this as default.
-			if (FileName(trypath).isDirWritable())
-				initpath = trypath;
-		}
-
-		docstring const text = bformat(_("Select %1$s file to import"),
-			formats.prettyName(format));
-
-		FileDialog dlg(text, LFUN_BUFFER_IMPORT);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Examples|#E#e"),
-			from_utf8(addPath(package().system_support().absFilename(), "examples")));
-
-		docstring filter = formats.prettyName(format);
-		filter += " (*.";
-		// FIXME UNICODE
-		filter += from_utf8(formats.extension(format));
-		filter += ')';
-
-		FileDialog::Result result =
-			dlg.open(from_utf8(initpath),
-				     FileFilterList(filter),
-				     docstring());
-
-		if (result.first == FileDialog::Later)
-			return;
-
-		filename = to_utf8(result.second);
-
-		// check selected filename
-		if (filename.empty())
-			lyx_view_->message(_("Canceled."));
-	}
-
-	if (filename.empty())
-		return;
-
-	// get absolute path of file
-	FileName const fullname(makeAbsPath(filename));
-
-	FileName const lyxfile(changeExtension(fullname.absFilename(), ".lyx"));
-
-	// Check if the document already is open
-	Buffer * buf = theBufferList().getBuffer(lyxfile.absFilename());
-	if (use_gui && buf) {
-		lyx_view_->setBuffer(buf);
-		if (!lyx_view_->closeBuffer()) {
-			lyx_view_->message(_("Canceled."));
-			return;
-		}
-	}
-
-	// if the file exists already, and we didn't do
-	// -i lyx thefile.lyx, warn
-	if (lyxfile.exists() && fullname != lyxfile) {
-		docstring const file = makeDisplayPath(lyxfile.absFilename(), 30);
-
-		docstring text = bformat(_("The document %1$s already exists.\n\n"
-						     "Do you want to overwrite that document?"), file);
-		int const ret = Alert::prompt(_("Overwrite document?"),
-			text, 0, 1, _("&Overwrite"), _("&Cancel"));
-
-		if (ret == 1) {
-			lyx_view_->message(_("Canceled."));
-			return;
-		}
-	}
-
-	ErrorList errorList;
-	import(lyx_view_, fullname, format, errorList);
-	// FIXME (Abdel 12/08/06): Is there a need to display the error list here?
 }
 
 

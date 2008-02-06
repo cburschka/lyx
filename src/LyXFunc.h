@@ -130,8 +130,6 @@ private:
 		FuncRequest const & ev);
 
 	///
-	void doImport(std::string const &);
-	///
 	void closeBuffer();
 	///
 	void reloadBuffer();
