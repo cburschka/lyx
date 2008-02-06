@@ -31,16 +31,24 @@ Style Labeling
 	EndPreamble
 End
 
+
 Style List
 	Obsoletedby           Labeling
 End
 
+
+Preamble
+	\newif\ifletterclosed
+EndPreamble
 
 
 Style Address
 	LatexType             Command
 	LatexName             begin
 	LatexParam            {letter}
+	Preamble
+		\AtEndDocument{\ifletterclosed\else\end{letter}\fi}
+	EndPreamble
 	KeepEmpty             1
 	LeftMargin            xxxxxxxxxxxx::xx
 	LabelSep              xx
@@ -326,6 +334,9 @@ Style EndLetter
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             end{letter}
+	Preamble
+		\letterclosedtrue
+	EndPreamble
 	KeepEmpty             1
 	TopSep                1
 	ParSkip               0.4
