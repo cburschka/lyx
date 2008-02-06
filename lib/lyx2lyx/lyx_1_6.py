@@ -1227,24 +1227,22 @@ def convert_serial_letter(document):
     " adds an EndLetter environment to scrlttr2 documents. "
     tc = document.textclass
     if (tc == "scrlttr2"):
-        i = len(document.body)
-        document.body[i-2] = '\\begin_layout EndLetter\n' \
-        '\\begin_inset Note Note\n' \
-        'status collapsed\n\n' \
-        '\\begin_layout Standard\n' \
-        'keep this environment empty\n' \
-        '\\end_layout\n\n' \
-        '\\end_inset\n\n\n' \
-        '\\end_layout\n\n'
         i = 0
         # remove ERT insets containing "\end{letter}"
         while True:
             i = find_token(document.body, "\\begin_inset ERT", i)
-            document.warning(str(i))
             if i == -1:
                 return
             if document.body[i+7] == "end{letter}":
                 del document.body[i-1:i+14]
+                document.body[i-1] = '\\begin_layout EndLetter\n' \
+                                     '\\begin_inset Note Note\n' \
+                                     'status collapsed\n\n' \
+                                     '\\begin_layout Standard\n' \
+                                     'keep this environment empty\n' \
+                                     '\\end_layout\n\n' \
+                                     '\\end_inset\n\n\n' \
+                                     '\\end_layout\n\n'
             i = i + 1
 
 
