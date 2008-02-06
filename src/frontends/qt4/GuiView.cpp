@@ -1055,6 +1055,105 @@ static FileName selectTemplateFile()
 }
 
 
+Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
+{
+	setBusy(true);
+
+	Buffer * newBuffer = checkAndLoadLyXFile(filename);
+
+	if (!newBuffer) {
+		message(_("Document not loaded."));
+		setBusy(false);
+		return 0;
+	}
+
+	setBuffer(newBuffer);
+
+	// scroll to the position when the file was last closed
+	if (lyxrc.use_lastfilepos) {
+		LastFilePosSection::FilePos filepos =
+			LyX::ref().session().lastFilePos().load(filename);
+		view()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
+	}
+
+	if (tolastfiles)
+		LyX::ref().session().lastFiles().add(filename);
+
+	setBusy(false);
+	return newBuffer;
+}
+
+
+void GuiView::openDocument(string const & fname)
+{
+	string initpath = lyxrc.document_path;
+
+	if (buffer()) {
+		string const trypath = buffer()->filePath();
+		// If directory is writeable, use this as default.
+		if (FileName(trypath).isDirWritable())
+			initpath = trypath;
+	}
+
+	string filename;
+
+	if (fname.empty()) {
+		FileDialog dlg(_("Select document to open"), LFUN_FILE_OPEN);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Examples|#E#e"),
+				from_utf8(addPath(package().system_support().absFilename(), "examples")));
+
+		FileDialog::Result result =
+			dlg.open(from_utf8(initpath),
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     docstring());
+
+		if (result.first == FileDialog::Later)
+			return;
+
+		filename = to_utf8(result.second);
+
+		// check selected filename
+		if (filename.empty()) {
+			message(_("Canceled."));
+			return;
+		}
+	} else
+		filename = fname;
+
+	// get absolute path of file and add ".lyx" to the filename if
+	// necessary. 
+	FileName const fullname = 
+			fileSearch(string(), filename, "lyx", support::may_not_exist);
+	if (!fullname.empty())
+		filename = fullname.absFilename();
+
+	// if the file doesn't exist, let the user create one
+	if (!fullname.exists()) {
+		// the user specifically chose this name. Believe him.
+		Buffer * const b = newFile(filename, string(), true);
+		if (b)
+			setBuffer(b);
+		return;
+	}
+
+	docstring const disp_fn = makeDisplayPath(filename);
+	message(bformat(_("Opening document %1$s..."), disp_fn));
+
+	docstring str2;
+	Buffer * buf = loadDocument(fullname);
+	if (buf) {
+		updateLabels(*buf);
+		setBuffer(buf);
+		buf->errors("Parse");
+		str2 = bformat(_("Document %1$s opened."), disp_fn);
+	} else {
+		str2 = bformat(_("Could not open document %1$s"), disp_fn);
+	}
+	message(str2);
+}
+
+
 void GuiView::newDocument(string const & filename, bool from_template)
 {
 	FileName initpath(lyxrc.document_path);
@@ -1352,6 +1451,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		bv->cursor().updateFlags(Update::None);
 
 	switch(cmd.action) {
+		case LFUN_FILE_OPEN:
+			openDocument(to_utf8(cmd.argument()));
+			break;
+
 		case LFUN_BUFFER_SWITCH:
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
 			break;

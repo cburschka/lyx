@@ -147,7 +147,7 @@ struct LyX::Impl
 	boost::scoped_ptr<Session> session_;
 
 	/// Files to load at start.
-	vector<FileName> files_to_load_;
+	vector<string> files_to_load_;
 
 	/// The messages translators.
 	map<string, Messages> messages_;
@@ -525,24 +525,22 @@ int LyX::init(int & argc, char * argv[])
 	if (!success)
 		return EXIT_FAILURE;
 
-	for (int argi = argc - 1; argi >= 1; --argi) {
-		// get absolute path of file and add ".lyx" to
-		// the filename if necessary
-		pimpl_->files_to_load_.push_back(fileSearch(string(),
-			os::internal_path(to_utf8(from_local8bit(argv[argi]))),
-			"lyx", may_not_exist));
-	}
+	// Remaining arguments are assumed to be files to load.
+	for (int argi = argc - 1; argi >= 1; --argi)
+		pimpl_->files_to_load_.push_back(to_utf8(from_local8bit(argv[argi])));
 
-	if (first_start)
-		pimpl_->files_to_load_.push_back(i18nLibFileSearch("examples", "splash.lyx"));
+	if (first_start) {
+		pimpl_->files_to_load_.push_back(
+			i18nLibFileSearch("examples", "splash.lyx").absFilename());
+	}
 
 	return EXIT_SUCCESS;
 }
 
 
-void LyX::addFileToLoad(FileName const & fname)
+void LyX::addFileToLoad(string const & fname)
 {
-	vector<FileName>::const_iterator cit = find(
+	vector<string>::const_iterator cit = find(
 		pimpl_->files_to_load_.begin(), pimpl_->files_to_load_.end(),
 		fname);
 
@@ -553,15 +551,20 @@ void LyX::addFileToLoad(FileName const & fname)
 
 void LyX::loadFiles()
 {
-	vector<FileName>::const_iterator it = pimpl_->files_to_load_.begin();
-	vector<FileName>::const_iterator end = pimpl_->files_to_load_.end();
+	vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
+	vector<string>::const_iterator end = pimpl_->files_to_load_.end();
 
 	for (; it != end; ++it) {
-		if (it->empty())
+		// get absolute path of file and add ".lyx" to
+		// the filename if necessary
+		FileName fname = fileSearch(string(), os::internal_path(*it), "lyx",
+			may_not_exist);
+
+		if (fname.empty())
 			continue;
 
-		Buffer * buf = pimpl_->buffer_list_.newBuffer(it->absFilename(), false);
-		if (buf->loadLyXFile(*it)) {
+		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFilename(), false);
+		if (buf->loadLyXFile(fname)) {
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
 				for_each(el.begin(), el.end(),
@@ -578,10 +581,9 @@ void LyX::execBatchCommands()
 	// The advantage of doing this here is that the event loop
 	// is already started. So any need for interaction will be
 	// aknowledged.
-	restoreGuiSession();
 
 	// if reconfiguration is needed.
-	if (textclasslist.empty()) {
+	while (textclasslist.empty()) {
 	    switch (Alert::prompt(
 		    _("No textclass is found"),
 		    _("LyX cannot continue because no textclass is found. "
@@ -601,11 +603,37 @@ void LyX::execBatchCommands()
 			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_RECONFIGURE,
 				" --without-latex-config"));
 			break;
+		default:
+			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_LYX_QUIT));
+			return;
 		}
-		pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_LYX_QUIT));
-		return;
 	}
 	
+	// create the first main window
+	pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
+
+	if (!pimpl_->files_to_load_.empty()) {
+		// if some files were specified at command-line we assume that the
+		// user wants to edit *these* files and not to restore the session.
+		for (size_t i = 0; i != pimpl_->files_to_load_.size(); ++i) {
+			pimpl_->lyxfunc_.dispatch(
+				FuncRequest(LFUN_FILE_OPEN, pimpl_->files_to_load_[i]));
+		}
+		// clear this list to save a few bytes of RAM
+		pimpl_->files_to_load_.clear();
+	}
+	else
+		pimpl_->application_->restoreGuiSession();
+
+	BufferList::iterator I = theBufferList().begin();
+	BufferList::iterator end = theBufferList().end();
+	for (; I != end; ++I) {
+		Buffer * buf = *I;
+		if (buf != buf->masterBuffer())
+			continue;
+		updateLabels(*buf);
+	}
+
 	// Execute batch commands if available
 	if (pimpl_->batch_command.empty())
 		return;
@@ -615,47 +643,6 @@ void LyX::execBatchCommands()
 	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(pimpl_->batch_command));
 }
 
-
-void LyX::restoreGuiSession()
-{
-	// create the main window
-	pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
-
-	// if there is no valid class list, do not load any file. 
-	if (textclasslist.empty())
-		return;
-
-	// if some files were specified at command-line we assume that the
-	// user wants to edit *these* files and not to restore the session.
-	if (!pimpl_->files_to_load_.empty()) {
-		for_each(pimpl_->files_to_load_.begin(),
-			pimpl_->files_to_load_.end(),
-			bind(&LyXFunc::loadAndViewFile, pimpl_->lyxfunc_, _1, true));
-		// clear this list to save a few bytes of RAM
-		pimpl_->files_to_load_.clear();
-		pimpl_->session_->lastOpened().clear();
-
-	} else if (lyxrc.load_session) {
-		vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
-		// do not add to the lastfile list since these files are restored from
-		// last session, and should be already there (regular files), or should
-		// not be added at all (help files).
-		for_each(lastopened.begin(), lastopened.end(),
-			bind(&LyXFunc::loadAndViewFile, pimpl_->lyxfunc_, _1, false));
-
-		// clear this list to save a few bytes of RAM
-		pimpl_->session_->lastOpened().clear();
-	}
-
-	BufferList::iterator I = pimpl_->buffer_list_.begin();
-	BufferList::iterator end = pimpl_->buffer_list_.end();
-	for (; I != end; ++I) {
-		Buffer * buf = *I;
-		if (buf != buf->masterBuffer())
-			continue;
-		updateLabels(*buf);
-	}
-}
 
 /*
 Signals and Windows

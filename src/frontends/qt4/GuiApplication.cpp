@@ -378,6 +378,24 @@ void GuiApplication::execBatchCommands()
 }
 
 
+void GuiApplication::restoreGuiSession()
+{
+	if (!lyxrc.load_session)
+		return;
+
+	Session & session = LyX::ref().session();
+	vector<FileName> const & lastopened = session.lastOpened().getfiles();
+	// do not add to the lastfile list since these files are restored from
+	// last session, and should be already there (regular files), or should
+	// not be added at all (help files).
+	for_each(lastopened.begin(), lastopened.end(),
+		bind(&GuiView::loadDocument, current_view_, _1, false));
+
+	// clear this list to save a few bytes of RAM
+	session.lastOpened().clear();
+}
+
+
 QString const GuiApplication::romanFontName()
 {
 	QFont font;
@@ -429,7 +447,7 @@ bool GuiApplication::event(QEvent * e)
 			// So we acknowledge the event and delay the file opening
 			// until LyX is ready.
 			// FIXME UNICODE: FileName accept an utf8 encoded string.
-			LyX::ref().addFileToLoad(FileName(fromqstr(foe->file())));
+			LyX::ref().addFileToLoad(fromqstr(foe->file()));
 		else
 			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
 				qstring_to_ucs4(foe->file())));

@@ -67,6 +67,12 @@ public:
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///
 	virtual bool closeBuffer() = 0;
+
+	/// load a document into the current workarea.
+	virtual Buffer * loadDocument(
+		support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true  ///< append to the "Open recent" menu?
+		) = 0;
 	///
 	virtual void newDocument(std::string const & filename,
 		bool fromTemplate) = 0;

@@ -110,7 +110,7 @@ public:
 	void execBatchCommands();
 
 	///
-	void addFileToLoad(support::FileName const &);
+	void addFileToLoad(std::string const &);
 
 private:
 	/// noncopyable
@@ -134,9 +134,6 @@ private:
 	This method is used only in non-GUI mode.
 	*/
 	void loadFiles();
-
-	/// Create a View, load files and restore GUI Session.
-	void restoreGuiSession();
 
 	/// initial LyX set up
 	bool init();

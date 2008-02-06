@@ -61,6 +61,7 @@ public:
 	virtual FuncStatus getStatus(FuncRequest const &);
 	virtual bool dispatch(FuncRequest const &);
 	virtual void resetGui();
+	void restoreGuiSession();
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }

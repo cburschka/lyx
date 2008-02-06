@@ -145,7 +145,7 @@ bool import(LyXView * lv, FileName const & filename,
 
 
 	if (loader_format == "lyx") {
-		Buffer * buf = theLyXFunc().loadAndViewFile(lyxfile);
+		Buffer * buf = lv->loadDocument(lyxfile);
 		if (!buf) {
 			// we are done
 			lv->message(_("file not imported!"));
@@ -1125,7 +1125,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			lyx_view_->message(bformat(_("Opening help file %1$s..."),
 				makeDisplayPath(fname.absFilename())));
-			Buffer * buf = loadAndViewFile(fname, false);
+			Buffer * buf = lyx_view_->loadDocument(fname, false);
 			if (buf) {
 				updateLabels(*buf);
 				lyx_view_->setBuffer(buf);
@@ -1194,12 +1194,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_FILE_OPEN:
-			BOOST_ASSERT(lyx_view_);
-			open(argument);
-			updateFlags = Update::None;
-			break;
-
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_NAME:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
@@ -1233,7 +1227,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (theBufferList().exists(s.absFilename()))
 					buf = theBufferList().getBuffer(s.absFilename());
 				else {
-					buf = loadAndViewFile(s);
+					buf = lyx_view_->loadDocument(s);
 					loaded = true;
 				}
 			}
@@ -1387,7 +1381,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else {
 				setMessage(bformat(_("Opening child document %1$s..."),
 					makeDisplayPath(filename.absFilename())));
-				child = loadAndViewFile(filename, true);
+				child = lyx_view_->loadDocument(filename, false);
 				parsed = true;
 			}
 			if (child) {
@@ -1864,105 +1858,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 }
 
 
-Buffer * LyXFunc::loadAndViewFile(FileName const & filename, bool tolastfiles)
-{
-	lyx_view_->setBusy(true);
-
-	Buffer * newBuffer = checkAndLoadLyXFile(filename);
-
-	if (!newBuffer) {
-		lyx_view_->message(_("Document not loaded."));
-		lyx_view_->setBusy(false);
-		return 0;
-	}
-
-	lyx_view_->setBuffer(newBuffer);
-
-	// scroll to the position when the file was last closed
-	if (lyxrc.use_lastfilepos) {
-		LastFilePosSection::FilePos filepos =
-			LyX::ref().session().lastFilePos().load(filename);
-		lyx_view_->view()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
-	}
-
-	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(filename);
-
-	lyx_view_->setBusy(false);
-	return newBuffer;
-}
-
-
-void LyXFunc::open(string const & fname)
-{
-	string initpath = lyxrc.document_path;
-
-	if (lyx_view_->buffer()) {
-		string const trypath = lyx_view_->buffer()->filePath();
-		// If directory is writeable, use this as default.
-		if (FileName(trypath).isDirWritable())
-			initpath = trypath;
-	}
-
-	string filename;
-
-	if (fname.empty()) {
-		FileDialog dlg(_("Select document to open"), LFUN_FILE_OPEN);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Examples|#E#e"),
-				from_utf8(addPath(package().system_support().absFilename(), "examples")));
-
-		FileDialog::Result result =
-			dlg.open(from_utf8(initpath),
-				     FileFilterList(_("LyX Documents (*.lyx)")),
-				     docstring());
-
-		if (result.first == FileDialog::Later)
-			return;
-
-		filename = to_utf8(result.second);
-
-		// check selected filename
-		if (filename.empty()) {
-			lyx_view_->message(_("Canceled."));
-			return;
-		}
-	} else
-		filename = fname;
-
-	// get absolute path of file and add ".lyx" to the filename if
-	// necessary. 
-	FileName const fullname = 
-			fileSearch(string(), filename, "lyx", support::may_not_exist);
-	if (!fullname.empty())
-		filename = fullname.absFilename();
-
-	// if the file doesn't exist, let the user create one
-	if (!fullname.exists()) {
-		// the user specifically chose this name. Believe him.
-		Buffer * const b = newFile(filename, string(), true);
-		if (b)
-			lyx_view_->setBuffer(b);
-		return;
-	}
-
-	docstring const disp_fn = makeDisplayPath(filename);
-	lyx_view_->message(bformat(_("Opening document %1$s..."), disp_fn));
-
-	docstring str2;
-	Buffer * buf = loadAndViewFile(fullname);
-	if (buf) {
-		updateLabels(*buf);
-		lyx_view_->setBuffer(buf);
-		buf->errors("Parse");
-		str2 = bformat(_("Document %1$s opened."), disp_fn);
-	} else {
-		str2 = bformat(_("Could not open document %1$s"), disp_fn);
-	}
-	lyx_view_->message(str2);
-}
-
-
 void LyXFunc::doImport(string const & argument)
 {
 	string format;
@@ -2067,7 +1962,7 @@ void LyXFunc::reloadBuffer()
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(lyx_view_->buffer());
-	Buffer * buf = loadAndViewFile(filename);
+	Buffer * buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	if (buf) {

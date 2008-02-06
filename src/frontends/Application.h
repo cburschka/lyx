@@ -163,6 +163,9 @@ public:
 	///
 	virtual void resetGui() = 0;
 
+	/// Load files and restore GUI Session.
+	virtual void restoreGuiSession() = 0;
+
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
 	///

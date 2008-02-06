@@ -89,6 +89,11 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 	///
 	bool closeBuffer();
+	/// load a document into the current workarea.
+	Buffer * loadDocument(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true);  ///< append to the "Open recent" menu?
+	///
+	void openDocument(std::string const & filename);
 	///
 	void newDocument(std::string const & filename, bool fromTemplate);
 	/// write all buffers, asking the user, returns false if cancelled
