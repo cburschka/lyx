@@ -302,7 +302,7 @@ Version 1.5.4
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Änderung: 7.
  Februar 2008
 \end_layout
 
@@ -19449,13 +19449,11 @@ jekt
 \family default
  eingefügt, wenn das LaTeX-Paket 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "LaTeX-Pakete ! floatflt@f\\/loatf\\/lt"
+name "LaTeX-Pakete ! wrapfig\\vspace{4mm}"
 
 \end_inset
 
@@ -19489,7 +19487,8 @@ reference "abb:This-is-a"
 
 \end_inset
 
- ist zum Beispiel ein textumflossenes Objekt, das 40% der Spaltenbreite
+ ist zum Beispiel ein textumflossenes Objekt, das 40\InsetSpace \thinspace{}
+% der Spaltenbreite
  einnimmt.
 \begin_inset Foot
 status collapsed
@@ -19514,21 +19513,17 @@ reference "kap:In-LyX-verfügbare"
 \begin_layout Standard
 Mit dem LaTeX-Paket 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
  können auch textumflossene Tabellen erstellt werden, aber LyX unterstützt
  das (noch) nicht.
  In der 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
 -Dokumentation
 \begin_inset LatexCommand cite
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -19549,11 +19544,7 @@ status open
 \series bold
 Bemerkung:
 \series default
- Textumflossene Objekte sind sehr 
-\emph on
-zerbrechlich
-\emph default
-.
+ Textumflossene Objekte sind fragil.
  Wenn die Abbildung zu nahe am unteren Seitenrand ist, kann es passieren,
  dass sie gar nicht oder über anderen Text gedruckt wird.
 \end_layout
@@ -19642,57 +19633,6 @@ par}
 end{sloppypar}
 \series default
  gepackt werden, um unnötige manuelle Zeilenumbrüche zu vermeiden.
-\end_layout
-
-\begin_layout Itemize
-Es gibt für textumflossene Objekte noch andere LaTeX-Pakete: 
-\series bold
-picins
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! picins"
-
-\end_inset
-
-,
-\family typewriter
- 
-\family default
-\series bold
-picinpar
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! picinpar"
-
-\end_inset
-
-,
-\family typewriter
- 
-\family default
-\series bold
-wrapfig
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! wrapfig"
-
-\end_inset
-
-, aber sie werden von LyX (noch) nicht unterstützt.
- Diese Pakete machen in etwa das gleiche wie 
-\series bold
-floatflt
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! floatflt@f\\/loatf\\/lt"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -20343,8 +20283,7 @@ hypcap
 \series bold
 
 \backslash
-usepackage[f\SpecialChar \textcompwordmark{}
-igure]{hypcap}
+usepackage[figure]{hypcap}
 \end_layout
 
 \begin_layout Standard
@@ -21349,7 +21288,7 @@ Weitere Informationen über das Paket
 \series default
  finden Sie in seiner Dokumentation 
 \begin_inset LatexCommand cite
-key "caption,caption-de"
+key "caption"
 
 \end_inset
 
@@ -21481,7 +21420,7 @@ men\SpecialChar \-
 ta\SpecialChar \-
 tion 
 \begin_inset LatexCommand cite
-key "koma-script,koma-script-de"
+key "koma-script"
 
 \end_inset
 
@@ -32389,7 +32328,8 @@ status collapsed
 
 
 \backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf}{
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption-deu.pd
+f}{
 \end_layout
 
 \end_inset
@@ -32420,94 +32360,6 @@ name "LaTeX-Pakete ! caption"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "caption-de"
-
-\end_inset
-
-deutsche 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/anleitung.pdf}
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
- caption
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! caption"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
-key "koma-script-de"
-
-\end_inset
-
-deutsche 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.p
-df}{
-\end_layout
-
-\end_inset
-
-
-\series bold
-koma-script
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
-\begin_inset LatexCommand index
-name "LaTeX-Pakete ! koma-script"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
 key "endfloat"
 
 \end_inset
@@ -32528,8 +32380,7 @@ href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloat.p
 
 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset ERT
@@ -32553,7 +32404,7 @@ name "LaTeX-Pakete ! endf\\/loat"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -32565,17 +32416,14 @@ status collapsed
 
 
 \backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf}
-{
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty}{
 \end_layout
 
 \end_inset
 
 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
 
 \begin_inset ERT
@@ -32590,7 +32438,7 @@ status collapsed
 
 -Dokumentation im Internet
 \begin_inset LatexCommand index
-name "LaTeX-Pakete ! floatflt@f\\/loatf\\/lt"
+name "LaTeX-Pakete ! wrapfig\\vspace{4mm}"
 
 \end_inset
 
@@ -32742,7 +32590,7 @@ status collapsed
 
 
 \backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguien.p
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.p
 df}{
 \end_layout
 
