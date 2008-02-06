@@ -2,7 +2,14 @@ Function UpdateModifiedFiles
 
  # list with modified files for LyX 1.5.4
  SetOutPath "$INSTDIR\bin" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\Aiksaurus.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\aspell.dll"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\Microsoft.VC90.CRT.manifest"
+ File "${PRODUCT_SOURCEDIR}\bin\msvcp90.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\msvcr90.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc"
