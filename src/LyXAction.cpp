@@ -1091,6 +1091,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_LYX_QUIT, "lyx-quit", NoBuffer, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_TOOLBAR_TOGGLE
+ * \li Action: Toggles visibility of a given toolbar between on/off/auto.
+ * \li Notion: Skiping "auto" when allowauto is false.
+ * \li Syntax: toolbar-toggle <NAME> [allowauto]
+ * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|
+                       minibuffer|review|view/update|math_panels
+ * \li Origin: Edwin, 21 May 2007
+ * \endvar
+ */
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
 /*!
