@@ -1754,31 +1754,33 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 	// find macros in included files
 	Impl::PositionScopeBufferMap::const_iterator it
 	= greatest_below(d->position_to_children, pos);
-	if (it != d->position_to_children.end()) {
-		while (true) {
-			// do we know something better (i.e. later) already?
-			if (it->first < bestPos )		
-				break;
+	if (it == d->position_to_children.end())
+		// no children before
+		return bestData;
 
-			// scope ends behind pos?
-			if (pos < it->second.first) {
-				// look for macro in external file
-				d->macro_lock = true;
-				MacroData const * data
-				= it->second.second->getMacro(name, false);
-				d->macro_lock = false;
-				if (data) {
-					bestPos = it->first;
-					bestData = data;			       
-					break;
-				}
-			}
-			
-			// try previous file if there is one
-			if (it == d->position_to_children.begin())
+	while (true) {
+		// do we know something better (i.e. later) already?
+		if (it->first < bestPos )
+			break;
+
+		// scope ends behind pos?
+		if (pos < it->second.first) {
+			// look for macro in external file
+			d->macro_lock = true;
+			MacroData const * data
+			= it->second.second->getMacro(name, false);
+			d->macro_lock = false;
+			if (data) {
+				bestPos = it->first;
+				bestData = data;
 				break;
-			--it;
+			}
 		}
+
+		// try previous file if there is one
+		if (it == d->position_to_children.begin())
+			break;
+		--it;
 	}
 		
 	// return the best macro we have found
