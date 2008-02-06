@@ -18803,11 +18803,11 @@ Ceci est une figure habillée et vous lisez la superbe légende qui la décrit.
 
 à la condition que le paquetage LaTeX 
 \series bold
-floatflt
+wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "Paquetages LaTeX! floatflt"
+name "Paquetages LaTeX ! wrapfig\\vspace{4mm}"
 
 \end_inset
 
@@ -18835,16 +18835,14 @@ reference "fig:Figure-enrobée"
 
 \end_inset
 
- est un exemple de flottant d'enrobage avec une largeur de 40
-\begin_inset Formula $\,$
-\end_inset
-
+ est un exemple de flottant d'enrobage avec une largeur de 40\InsetSpace \thinspace{}
 col%.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Les unités disponibles sont expliquées dans
+Les unités disponibles sont expliquées dans l'appendice\InsetSpace ~
+
 \begin_inset LatexCommand ref
 reference "cha:Unités-de-longueur"
 
@@ -18862,21 +18860,17 @@ reference "cha:Unités-de-longueur"
 \begin_layout Standard
 Le paquetage LaTeX 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
  accepte aussi des flottants de tableau d'enrobage, mais ils ne sont pas
  encore gérés par LyX.
  Si vous en avez besoin, voyez la documentation de 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
  
 \begin_inset LatexCommand cite
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -18895,34 +18889,7 @@ Note:
  Les flottants d'enrobage peuvent être fragiles! Par exemple, avoir une
  figure trop près du bas de page peut tout chambouler et faire que le flottant
  n'apparaît pas à l'impression ou qu'il se retrouve par dessus une portion
- de texte
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Le mieux serait d'utiliser la paquetage LaTeX
-\series bold
- wrapf\SpecialChar \textcompwordmark{}
-ig
-\series default
-
-\begin_inset LatexCommand index
-name "Paquetages LaTeX ! wrapfig\\vspace{4mm}"
-
-\end_inset
-
- à la place de 
-\series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
-\series default
-, mais il n'est pas encore accepté par LyX.
-\end_layout
-
-\end_inset
-
-.
+ de texte.
 \end_layout
 
 \end_inset
@@ -19646,8 +19613,7 @@ hypcap
 \series bold
 
 \backslash
-usepackage[f\SpecialChar \textcompwordmark{}
-igure]{hypcap}
+usepackage[figure]{hypcap}
 \end_layout
 
 \begin_layout Standard
@@ -20744,7 +20710,7 @@ caption
 \series default
  nous vous renvoyons à sa documentation 
 \begin_inset LatexCommand cite
-key "caption,caption-de"
+key "caption"
 
 \end_inset
 
@@ -20878,7 +20844,7 @@ koma-script
 \series default
  
 \begin_inset LatexCommand cite
-key "koma-script,koma-script-de"
+key "koma-script"
 
 \end_inset
 
@@ -29806,7 +29772,7 @@ Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
  comme celle-ci : 
 \begin_inset Graphics
 	filename clipart/ChildDocumentQt4.png
-	scale 85
+	scale 50
 	scaleBeforeRotation
 
 \end_inset
@@ -29846,7 +29812,7 @@ Voici un sous-document inséré avec la méthode
 Inclus
 \family default
  : 
-\begin_inset Include \include{DummyDocument1.lyx}
+\begin_inset Include \include{../DummyDocument1.lyx}
 preview false
 
 \end_inset
@@ -30001,7 +29967,7 @@ Voici un sous document inséré en utilisant la méthode
 Incorporé
 \family default
  : 
-\begin_inset Include \input{DummyDocument2.lyx}
+\begin_inset Include \input{../DummyDocument2.lyx}
 preview true
 
 \end_inset
@@ -30059,7 +30025,7 @@ Voici un sous-document inclus en utilisant la méthode
 verbatim
 \family default
  : 
-\begin_inset Include \verbatiminput{DummyTextDocument.txt}
+\begin_inset Include \verbatiminput{../DummyTextDocument.txt}
 preview false
 
 \end_inset
@@ -30076,7 +30042,7 @@ les\InsetSpace ~
 espaces :
 \family default
  
-\begin_inset Include \verbatiminput*{DummyTextDocument.txt}
+\begin_inset Include \verbatiminput*{../DummyTextDocument.txt}
 preview false
 
 \end_inset
@@ -31935,42 +31901,6 @@ name "Paquetages LaTeX ! caption"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "caption-de"
-
-\end_inset
-
-German 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/anleitung.pdf}
-{
-\end_layout
-
-\end_inset
-
-documentation
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- of the LaTeX-package 
-\series bold
-caption
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
 key "endfloat"
 
 \end_inset
@@ -32002,8 +31932,7 @@ status collapsed
 
  of the LaTeX-package 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset LatexCommand index
@@ -32016,7 +31945,7 @@ name "Paquetages LaTeX ! endfloat"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -32028,8 +31957,7 @@ status collapsed
 
 
 \backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf}
-{
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty}{
 \end_layout
 
 \end_inset
@@ -32047,13 +31975,11 @@ status collapsed
 
  of the LaTeX-package 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "Paquetages LaTeX ! floatflt"
+name "Paquetages LaTeX ! wrapfig\\vspace{4mm}"
 
 \end_inset
 
@@ -32212,50 +32138,6 @@ df}{
 \end_inset
 
 Documentation
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- of the LaTeX-package 
-\series bold
-koma-script
-\series default
-
-\begin_inset LatexCommand index
-name "Paquetages LaTeX ! koma-script"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
-key "koma-script-de"
-
-\end_inset
-
-German 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.p
-df}{
-\end_layout
-
-\end_inset
-
-documentation
 \begin_inset ERT
 status collapsed
 
