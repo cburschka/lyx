@@ -69,7 +69,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
-#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"

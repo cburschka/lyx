@@ -81,7 +81,6 @@
 #include "frontends/Selection.h"
 
 #include "support/environment.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
