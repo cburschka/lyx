@@ -243,9 +243,15 @@ void GuiSymbols::on_categoryCO_activated(QString const & text)
 }
 
 
-void GuiSymbols::on_categoryFilterCB_toggled(bool)
+void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 {
 	updateSymbolList();
+	if (on) {
+		QString const category = categoryCO->currentText();
+		if (used_blocks.find(category) != used_blocks.end())
+			symbolsLW->scrollToItem(used_blocks[category],
+				QAbstractItemView::PositionAtTop);
+	}
 }
 
 
@@ -282,7 +288,7 @@ void GuiSymbols::updateSymbolList()
 			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(
 			QString::fromUcs4((uint const *) &c, 1));
-		if (show_all || c > range_start && c < range_end) {
+		if (show_all || c >= range_start && c <= range_end) {
 			lwi->setTextAlignment(Qt::AlignCenter);
 			symbolsLW->addItem(lwi);
 		}
