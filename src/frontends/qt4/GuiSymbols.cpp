@@ -12,22 +12,18 @@
 
 #include "GuiSymbols.h"
 
-#include "Buffer.h"
-#include "BufferView.h"
-
 #include "GuiApplication.h"
 #include "GuiView.h"
-
 #include "qt_helpers.h"
 
+#include "Buffer.h"
+#include "BufferView.h"
 #include "Encoding.h"
+
 #include "support/gettext.h"
 
 #include <QPixmap>
 #include <QListWidgetItem>
-
-// Set to zero if unicode symbols are preferred.
-#define USE_PIXMAP 1
 
 using namespace std;
 
@@ -161,18 +157,28 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	int size = font.pointSize() + 3;
 	font.setPointSize(size);
 	symbolsLW->setFont(font);
-
-	okPB->setEnabled(!chosenLE->text().isEmpty() &&
-		!bufferview()->buffer().isReadonly());
-	applyPB->setEnabled(!chosenLE->text().isEmpty() &&
-		!bufferview()->buffer().isReadonly());
 }
 
 
 void GuiSymbols::updateView()
 {
 	chosenLE->clear();
-	initialiseParams(bufferview()->cursor().getEncoding()->name());
+
+	string const & new_encoding = bufferview()->cursor().getEncoding()->name();
+	if (new_encoding == encoding_)
+		// everything up to date
+		return;
+	if (!new_encoding.empty())
+		encoding_ = new_encoding;
+	updateSymbolList();
+}
+
+
+void GuiSymbols::enableView(bool enable)
+{
+	chosenLE->setEnabled(enable);
+	okPB->setEnabled(enable);
+	applyPB->setEnabled(enable);
 }
 
 
@@ -203,8 +209,9 @@ void GuiSymbols::on_symbolsLW_itemActivated(QListWidgetItem *)
 
 void GuiSymbols::on_chosenLE_textChanged(QString const & text)
 {
-	okPB->setEnabled(!text.isEmpty() && !bufferview()->buffer().isReadonly());
-	applyPB->setEnabled(!text.isEmpty() && !bufferview()->buffer().isReadonly());
+	bool const empty_sel = text.isEmpty();
+	okPB->setEnabled(!empty_sel);
+	applyPB->setEnabled(!empty_sel);
 }
 
 
@@ -245,11 +252,12 @@ void GuiSymbols::updateSymbolList()
 	SymbolsList::const_iterator const end = symbols.end();
 	for (SymbolsList::const_iterator it = symbols.begin(); it != end; ++it) {
 		char_type c = *it;
+		QChar::Category cat = QChar::category((uint) c);
 		// we do not want control or space characters
-		if (QChar(c).category() == QChar::Other_Control ||
-		    QChar(c).category() == QChar::Separator_Space)
+		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
-		QListWidgetItem * lwi = new QListWidgetItem(QChar(c));
+		QListWidgetItem * lwi = new QListWidgetItem(
+			QString::fromUcs4((uint const *) &c, 1));
 		lwi->setTextAlignment(Qt::AlignCenter);
 		symbolsLW->addItem(lwi);
 		QString block = getBlock(c);
@@ -272,19 +280,6 @@ QString const GuiSymbols::getBlock(char_type c) const
 	if (unicode_blocks[i].name)
 		return toqstr(unicode_blocks[i].name);
 	return QString();
-}
-
-
-
-bool GuiSymbols::initialiseParams(string const & data)
-{
-	if (data == encoding_)
-		// everything up to date
-		return true;
-	if (!data.empty())
-		encoding_ = data;
-	updateSymbolList();
-	return true;
 }
 
 

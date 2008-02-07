@@ -14,10 +14,8 @@
 
 #include "DialogView.h"
 #include "ui_SymbolsUi.h"
-#include "Encoding.h"
 
 class QListWidgetItem;
-class Encoding;
 
 namespace lyx {
 namespace frontend {
@@ -33,8 +31,7 @@ public:
 	//@{
 	void updateView();
 	void dispatchParams();
-	bool initialiseParams(std::string const & data);
-	void clearParams() {}
+	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
 	//@}
 
