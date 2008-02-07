@@ -69,6 +69,7 @@ UnicodeBlocks unicode_blocks[] = {
 	{ N_("Tibetan"), 0x0f00, 0x0fbf },
 	{ N_("Georgian"), 0x10a0, 0x10ff },
 	{ N_("Hangul Jamo"), 0x1100, 0x11ff },
+	{ N_("Phonetic Extensions"), 0x1d00, 0x1d7f },
 	{ N_("Latin Extended Additional"), 0x1e00, 0x1eff },
 	{ N_("Greek Extended"), 0x1f00, 0x1fff },
 	{ N_("General Punctuation"), 0x2000, 0x206f },
