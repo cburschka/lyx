@@ -22,9 +22,6 @@
 #include <QCheckBox>
 #include <QListWidgetItem>
 
-// Set to zero if unicode symbols are preferred.
-#define USE_PIXMAP 1
-
 using namespace std;
 
 static char const *  latex_delimiters[] = {
