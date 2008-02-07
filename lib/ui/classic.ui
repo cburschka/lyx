@@ -238,6 +238,7 @@ Menuset
 	End
 
 	Menu "insert_special"
+		Item "Symbols...|b" "dialog-show symbols"
 		Item "Superscript|S" "command-sequence math-mode on; math-superscript; math-insert \text;"
 		Item "Subscript|u" "command-sequence math-mode on; math-subscript; math-insert \text;"
 		Item "Horizontal Fill|H" "hfill-insert"

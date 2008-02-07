@@ -110,6 +110,7 @@ SOURCEFILES = \
 	GuiSetBorder.cpp \
 	GuiShowFile.cpp \
 	GuiSpellchecker.cpp \
+	GuiSymbols.cpp \
 	GuiTabular.cpp \
 	GuiTabularCreate.cpp \
 	GuiTexinfo.cpp \
@@ -198,6 +199,7 @@ MOCHEADER = \
 	GuiSetBorder.h \
 	GuiShowFile.h \
 	GuiSpellchecker.h \
+	GuiSymbols.h \
 	GuiTabularCreate.h \
 	GuiTabular.h \
 	GuiTexinfo.h \
@@ -286,6 +288,7 @@ UIFILES = \
 	ShortcutUi.ui \
 	ShowFileUi.ui \
 	SpellcheckerUi.ui \
+	SymbolsUi.ui \
 	TabularCreateUi.ui \
 	TabularUi.ui \
 	TexinfoUi.ui \

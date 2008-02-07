@@ -344,6 +344,7 @@ Menuset
 	End
 
 	Menu "insert_special"
+		Item "Symbols...|b" "dialog-show symbols"
 		Item "Ellipsis|i" "specialchar-insert dots"
 		Item "End of Sentence|E" "specialchar-insert end-of-sentence"
 		Item "Ordinary Quote|Q" "self-insert \""

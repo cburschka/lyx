@@ -341,6 +341,27 @@ docstring const Encoding::latexChar(char_type c) const
 }
 
 
+set<char_type> Encoding::getSymbolsList()
+{
+	// assure the used encoding is properly initialized
+	if (!complete_)
+		init();
+	BOOST_ASSERT(complete_);
+
+	// first all encodable characters
+	CharSet symbols = encodable_;
+	// add those below start_encodable_
+	for (char_type c = 0; c < start_encodable_; ++c)
+		symbols.insert(c);
+	// now the ones from the unicodesymbols file
+	CharInfoMap::const_iterator const end = unicodesymbols.end();
+	for (CharInfoMap::const_iterator it = unicodesymbols.begin(); it != end; ++it) {
+		symbols.insert(it->first);
+	}
+	return symbols;
+}
+
+
 void Encodings::validate(char_type c, LaTeXFeatures & features)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);

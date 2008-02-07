@@ -981,6 +981,14 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
 			}
 		}
+		else if (name == "symbols") {
+			if (!view() || view()->cursor().inMathed())
+				enable = false;
+			else {
+				InsetCode ic = view()->cursor().inset().lyxCode();
+				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
+			}
+		}
 		else if (name == "latexlog")
 			enable = FileName(buf->logName()).isReadableFile();
 		else if (name == "spellchecker")
@@ -1767,6 +1775,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				string const data = "vc " +
 					Lexer::quoteString(buffer()->lyxvc().getLogFile());
 				showDialog("log", data);
+			} else if (name == "symbols") {
+				data = bv->cursor().getEncoding()->name();
+				if (!data.empty())
+					showDialog("symbols", data);
 			} else
 				showDialog(name, data);
 			break;
@@ -1836,8 +1848,8 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "embedding", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
-"mathdelimiter", "mathmatrix", "note", "paragraph",
-"prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
+"mathdelimiter", "mathmatrix", "note", "paragraph", "prefs", "print", 
+"ref", "sendto", "spellchecker", "symbols", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -2064,6 +2076,7 @@ Dialog * createGuiSearch(GuiView & lv);
 Dialog * createGuiSendTo(GuiView & lv);
 Dialog * createGuiShowFile(GuiView & lv);
 Dialog * createGuiSpellchecker(GuiView & lv);
+Dialog * createGuiSymbols(GuiView & lv);
 Dialog * createGuiTabularCreate(GuiView & lv);
 Dialog * createGuiTabular(GuiView & lv);
 Dialog * createGuiTexInfo(GuiView & lv);
@@ -2141,6 +2154,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiSendTo(*this);
 	if (name == "spellchecker")
 		return createGuiSpellchecker(*this);
+	if (name == "symbols")
+		return createGuiSymbols(*this);
 	if (name == "tabular")
 		return createGuiTabular(*this);
 	if (name == "tabularcreate")
