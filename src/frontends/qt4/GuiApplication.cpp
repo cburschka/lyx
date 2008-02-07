@@ -20,8 +20,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
-#include "frontends/NoGuiFontLoader.h"
-#include "frontends/NoGuiFontMetrics.h"
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
@@ -681,11 +679,6 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 
 frontend::FontLoader & theFontLoader()
 {
-	static frontend::NoGuiFontLoader no_gui_font_loader;
-
-	if (!use_gui)
-		return no_gui_font_loader;
-
 	BOOST_ASSERT(frontend::guiApp);
 	return frontend::guiApp->fontLoader();
 }
@@ -699,11 +692,6 @@ frontend::FontMetrics const & theFontMetrics(Font const & f)
 
 frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 {
-	static frontend::NoGuiFontMetrics no_gui_font_metrics;
-
-	if (!use_gui)
-		return no_gui_font_metrics;
-
 	BOOST_ASSERT(frontend::guiApp);
 	return frontend::guiApp->fontLoader().metrics(f);
 }

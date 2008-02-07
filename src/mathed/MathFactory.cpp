@@ -58,6 +58,8 @@
 
 #include "frontends/FontLoader.h"
 
+#include "LyX.h" // use_gui
+
 using namespace std;
 using namespace lyx::support;
 
@@ -97,6 +99,9 @@ bool math_font_available(docstring & name)
 
 void initSymbols()
 {
+	if (!use_gui)
+		return;
+
 	FileName const filename = libFileSearch(string(), "symbols");
 	LYXERR(Debug::MATHED, "read symbols from " << filename);
 	if (filename.empty()) {
