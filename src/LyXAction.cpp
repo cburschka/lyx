@@ -1190,11 +1190,25 @@ void LyXAction::init()
 			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.\n
 			In case of "custom" you will be asked for a format you
 			want to start from and for the command that you want to
-			apply to this format.
+			apply to this format. Internally the control is then passed
+			to #LFUN_BUFFER_EXPORT_CUSTOM.
  * \li Origin: Lgb, 29 Jul 1997
  * \endvar
  */
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_EXPORT_CUSTOM
+ * \li Action: Exports the current buffer (document) from the given format using
+               the given command on it.
+ * \li Syntax: buffer-export-custom <FORMAT> <COMMAND>
+ * \li Params: <FORMAT> format to start from (LyX will care to produce such
+                        intermediate file).\n
+               <COMMAND> this command will be launched on the file. Note that you can
+	       use "$$FName" string to qualify the intermediate file.
+ * \li Sample: buffer-export-custom dvi dvips -f $$FName -o myfile.ps
+ * \li Origin: leeming, 27 Mar 2004
+ * \endvar
+ */
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_PRINT
