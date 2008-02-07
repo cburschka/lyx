@@ -1156,12 +1156,9 @@ void GuiView::openDocument(string const & fname)
 }
 
 // FIXME: clean that
-static bool import(LyXView * lv, FileName const & filename,
-		      string const & format, ErrorList & errorList)
+static bool import(GuiView * lv, FileName const & filename,
+	string const & format, ErrorList & errorList)
 {
-	docstring const displaypath = makeDisplayPath(filename.absFilename());
-	lv->message(bformat(_("Importing %1$s..."), displaypath));
-
 	FileName const lyxfile(changeExtension(filename.absFilename(), ".lyx"));
 
 	string loader_format;
@@ -1169,16 +1166,17 @@ static bool import(LyXView * lv, FileName const & filename,
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
 		for (vector<string>::const_iterator it = loaders.begin();
 		     it != loaders.end(); ++it) {
-			if (theConverters().isReachable(format, *it)) {
-				string const tofile =
-					changeExtension(filename.absFilename(),
-						formats.extension(*it));
-				if (!theConverters().convert(0, filename, FileName(tofile),
-							filename, format, *it, errorList))
-					return false;
-				loader_format = *it;
-				break;
-			}
+			if (!theConverters().isReachable(format, *it))
+				continue;
+
+			string const tofile =
+				changeExtension(filename.absFilename(),
+				formats.extension(*it));
+			if (!theConverters().convert(0, filename, FileName(tofile),
+				filename, format, *it, errorList))
+				return false;
+			loader_format = *it;
+			break;
 		}
 		if (loader_format.empty()) {
 			frontend::Alert::error(_("Couldn't import file"),
@@ -1186,26 +1184,21 @@ static bool import(LyXView * lv, FileName const & filename,
 					 formats.prettyName(format)));
 			return false;
 		}
-	} else {
+	} else
 		loader_format = format;
-	}
 
 	if (loader_format == "lyx") {
 		Buffer * buf = lv->loadDocument(lyxfile);
-		if (!buf) {
-			// we are done
-			lv->message(_("file not imported!"));
+		if (!buf)
 			return false;
-		}
 		updateLabels(*buf);
 		lv->setBuffer(buf);
 		buf->errors("Parse");
 	} else {
 		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
-		if (b)
-			lv->setBuffer(b);
-		else
+		if (!b)
 			return false;
+		lv->setBuffer(b);
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename.absFilename()
 			: changeExtension(filename.absFilename(),
@@ -1215,8 +1208,6 @@ static bool import(LyXView * lv, FileName const & filename,
 		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 
-	// we are done
-	lv->message(_("imported."));
 	return true;
 }
 
@@ -1287,13 +1278,14 @@ void GuiView::importDocument(string const & argument)
 		}
 	}
 
+	docstring const displaypath = makeDisplayPath(lyxfile.absFilename(), 30);
+
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
 	if (lyxfile.exists() && fullname != lyxfile) {
-		docstring const file = makeDisplayPath(lyxfile.absFilename(), 30);
 
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
-						     "Do you want to overwrite that document?"), file);
+			"Do you want to overwrite that document?"), displaypath);
 		int const ret = Alert::prompt(_("Overwrite document?"),
 			text, 0, 1, _("&Overwrite"), _("&Cancel"));
 
@@ -1303,8 +1295,13 @@ void GuiView::importDocument(string const & argument)
 		}
 	}
 
+	message(bformat(_("Importing %1$s..."), displaypath));
 	ErrorList errorList;
-	import(this, fullname, format, errorList);
+	if (import(this, fullname, format, errorList))
+		message(_("imported."));
+	else
+		message(_("file not imported!"));
+
 	// FIXME (Abdel 12/08/06): Is there a need to display the error list here?
 }
 
