@@ -1,11 +1,10 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES += $(UIFILES:%.ui=ui_%.h)
-CLEANFILES += $(MOCEDFILES)
-
 BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(MOCEDFILES)
 BUILT_SOURCES += Resources.cpp Resources.qrc
+
+CLEANFILES += $(BUILT_SOURCES)
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
@@ -137,22 +136,27 @@ SOURCEFILES = \
 
 NOMOCHEADER = \
 	ButtonController.h \
+	ColorCache.h \
+	DockView.h \
 	FileDialog.h \
+	GuiFontExample.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
+	GuiIdListModel.h \
 	GuiImage.h \
+	GuiKeySymbol.h \
 	GuiMath.h \
 	GuiPainter.h \
 	GuiToolbars.h \
+	LaTeXHighlighter.h \
+	qlkey.h \
 	qt_helpers.h
 
 MOCHEADER = \
 	Action.h \
 	BulletsModule.h \
-	ColorCache.h \
 	CustomizedWidgets.h \
 	DialogView.h \
-	DockView.h \
 	EmptyTable.h \
 	FloatPlacement.h \
 	GuiAbout.h \
@@ -175,13 +179,10 @@ MOCHEADER = \
 	GuiERT.h \
 	GuiExternal.h \
 	GuiFloat.h \
-	GuiFontExample.h \
 	GuiGraphics.h \
 	GuiHyperlink.h \
-	GuiIdListModel.h \
 	GuiInclude.h \
 	GuiIndex.h \
-	GuiKeySymbol.h \
 	GuiListings.h \
 	GuiLog.h \
 	GuiMathMatrix.h \
@@ -215,10 +216,8 @@ MOCHEADER = \
 	InsertTableWidget.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
-	LaTeXHighlighter.h \
 	Menus.h \
 	PanelStack.h \
-	qlkey.h \
 	TocModel.h \
 	TocWidget.h \
 	Validator.h
