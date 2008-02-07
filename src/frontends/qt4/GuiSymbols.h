@@ -15,6 +15,8 @@
 #include "DialogView.h"
 #include "ui_SymbolsUi.h"
 
+#include <map>
+
 class QListWidgetItem;
 
 namespace lyx {
