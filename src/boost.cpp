@@ -18,6 +18,7 @@
 
 #include <exception>
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 using lyx::lyxerr;

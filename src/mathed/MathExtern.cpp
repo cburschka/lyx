@@ -43,6 +43,7 @@
 #include <algorithm>
 #include <sstream>
 #include <fstream>
+#include <memory>
 
 using namespace std;
 using namespace lyx::support;

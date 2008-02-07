@@ -113,7 +113,7 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 	while (tmpdit) {
 		Inset const * inset = tmpdit.nextInset();
 		if (inset
-		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
+		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
 		    static_cast<InsetCommand const *>(inset)->getFirstNonOptParam() == contents)) {
 			dit = tmpdit;
@@ -139,7 +139,7 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	if (same_content) {
 		Inset const * inset = tmpdit.nextInset();
 		if (inset
-		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
+		    && std::find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
 			contents = static_cast<InsetCommand const *>(inset)->getFirstNonOptParam();
 		}
 	}
@@ -1563,7 +1563,7 @@ void BufferView::gotoLabel(docstring const & label)
 	for (InsetIterator it = inset_iterator_begin(buffer_.inset()); it; ++it) {
 		vector<docstring> labels;
 		it->getLabelList(buffer_, labels);
-		if (find(labels.begin(), labels.end(), label) != labels.end()) {
+		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
 			showCursor();
 			return;

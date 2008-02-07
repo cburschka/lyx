@@ -37,6 +37,8 @@
 #include <boost/assert.hpp>
 #include <boost/next_prior.hpp>
 
+#include <cstdlib>
+
 using namespace std;
 
 namespace lyx {

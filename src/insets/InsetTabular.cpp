@@ -61,6 +61,7 @@
 #include <sstream>
 #include <iostream>
 #include <limits>
+#include <cstring>
 
 using namespace std;
 using namespace lyx::support;

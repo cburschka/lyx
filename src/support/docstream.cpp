@@ -15,6 +15,7 @@
 
 #include <cerrno>
 #include <cstdio>
+#include <cstring>
 #include <iconv.h>
 #include <locale>
 

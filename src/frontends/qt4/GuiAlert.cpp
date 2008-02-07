@@ -30,6 +30,7 @@
 #include <QInputDialog>
 
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 using namespace lyx::support;

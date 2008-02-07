@@ -31,6 +31,8 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <cstring>
+
 using namespace std;
 using namespace lyx::support;
 

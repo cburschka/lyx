@@ -14,6 +14,7 @@
 
 #include "Length.h"
 
+#include <cstdlib>
 #include <sstream>
 
 using namespace std;

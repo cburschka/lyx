@@ -16,6 +16,7 @@
 #include "support/debug.h"
 
 #include <boost/assert.hpp>
+#include <climits>
 
 using namespace std;
 
