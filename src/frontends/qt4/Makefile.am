@@ -136,6 +136,7 @@ SOURCEFILES = \
 
 NOMOCHEADER = \
 	ButtonController.h \
+	FileDialog.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiImage.h \

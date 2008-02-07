@@ -12,7 +12,7 @@
 #ifndef LYXFILEDIALOG_H
 #define LYXFILEDIALOG_H
 
-#include "frontends/FileDialog.h"
+#include "FileDialog.h"
 
 #include <QFileDialog>
 

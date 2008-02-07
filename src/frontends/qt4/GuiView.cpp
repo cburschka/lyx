@@ -16,7 +16,7 @@
 #include "GuiView.h"
 
 #include "Dialog.h"
-#include "frontends/FileDialog.h"
+#include "FileDialog.h"
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"

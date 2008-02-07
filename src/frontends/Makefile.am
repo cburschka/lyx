@@ -13,7 +13,6 @@ liblyxfrontends_la_SOURCES = \
 	Application.h \
 	NoGuiFontLoader.h \
 	NoGuiFontMetrics.h \
-	FileDialog.h \
 	FontLoader.h \
 	FontMetrics.h \
 	KeyModifier.h \

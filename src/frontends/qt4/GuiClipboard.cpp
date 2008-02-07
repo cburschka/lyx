@@ -12,13 +12,22 @@
 
 #include <config.h>
 
+#include "FileDialog.h"
+
+#include "frontends/alert.h"
+
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "GuiClipboard.h"
 #include "qt_helpers.h"
 
-#include "boost/assert.hpp"
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/filetools.h"
+#include "support/FileFilterList.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <QApplication>
 #include <QBuffer>
@@ -31,15 +40,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "support/convert.h"
-#include "support/debug.h"
-#include "support/filetools.h"
-#include "support/FileFilterList.h"
-#include "support/gettext.h"
-#include "support/lstrings.h"
-
-#include "frontends/alert.h"
-#include "frontends/FileDialog.h"
+#include "boost/assert.hpp"
 
 #include <map>
 

@@ -14,6 +14,7 @@
 
 #include "qt_helpers.h"
 
+#include "FileDialog.h"
 #include "LengthCombo.h"
 
 #include "support/debug.h"
@@ -21,7 +22,6 @@
 #include "Language.h"
 #include "Length.h"
 
-#include "frontends/FileDialog.h"
 #include "frontends/alert.h"
 
 #include "support/filetools.h"

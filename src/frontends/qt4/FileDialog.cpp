@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "frontends/FileDialog.h"
+#include "FileDialog.h"
 
 #include "LyXFileDialog.h"
 #include "qt_helpers.h"
