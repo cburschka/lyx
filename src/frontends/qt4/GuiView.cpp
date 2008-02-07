@@ -71,6 +71,7 @@
 #include <QDropEvent>
 #include <QList>
 #include <QMenu>
+#include <QMenuBar>
 #include <QPainter>
 #include <QPixmap>
 #include <QPoint>
