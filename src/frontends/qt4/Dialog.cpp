@@ -184,7 +184,10 @@ void Dialog::updateData(string const & data)
 
 void Dialog::showView()
 {
-	updateView();  // make sure its up-to-date
+	// Make sure the dialog controls are correctly enabled/disabled.
+	checkStatus();
+	// Make sure it is up-to-date.
+	updateView(); 
 	if (exitEarly())
 		return;
 
