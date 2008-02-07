@@ -283,7 +283,7 @@ void GuiSymbols::updateSymbolList()
 	SymbolsList::const_iterator const end = symbols.end();
 	for (SymbolsList::const_iterator it = symbols.begin(); it != end; ++it) {
 		char_type c = *it;
-		QChar::Category cat = QChar::category((uint) c);
+		QChar::Category cat = QChar::Category((uint) c);
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
