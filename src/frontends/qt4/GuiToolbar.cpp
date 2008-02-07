@@ -307,7 +307,6 @@ void GuiLayoutBox::updateContents(bool reset)
 		return;
 	}
 
-	setEnabled(true);
 	TextClass const * text_class = &buffer->params().getTextClass();
 	if (!reset && text_class_ == text_class) {
 		set(owner_.view()->cursor().innerParagraph().layout()->name());
@@ -316,23 +315,20 @@ void GuiLayoutBox::updateContents(bool reset)
 
 	text_class_ = text_class;
 
-	setUpdatesEnabled(false);
 	clear();
-
 	TextClass::const_iterator it = text_class_->begin();
 	TextClass::const_iterator const end = text_class_->end();
 	for (; it != end; ++it)
 		addItemSort(toqstr(translateIfPossible((*it)->name())), lyxrc.sort_layouts);
 
-	setCurrentIndex(0);
+	set(owner_.view()->cursor().innerParagraph().layout()->name());
 
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());
-	set(owner_.view()->cursor().innerParagraph().layout()->name());
-	show();
 
-	setUpdatesEnabled(true);
+	setEnabled(!buffer->isReadonly());
+	show();
 }
 
 
