@@ -1788,6 +1788,14 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
+		case LFUN_MENUBAR_TOGGLE:
+			menuBar()->setVisible(!menuBar()->isVisible());
+			break;
+
+		case LFUN_STATUSBAR_TOGGLE:
+			statusBar()->setVisible(!statusBar()->isVisible());
+			break;
+
 		default:
 			return false;
 	}
