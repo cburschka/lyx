@@ -55,7 +55,7 @@ ${DICT} hr-0.51-0 "Hrvatski" hr 1967
 ${DICT} is-0.51.1-0 "Íslenska" is 1536
 ${DICT} it-2.2_20050523-0 "Italiano" it 696
 ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
-${DICT} nl-opentaal200711.exe "Nederlands" nl 1333
+${DICT} nl-opentaal200711 "Nederlands" nl 1333
 ${DICT} nn-0.50.1-1 "Nynorsk" nn 1930
 ${DICT} fa-0.11-0 "Persian" fa 1667
 ${DICT} pl-6.0_20061121-0 "Polski" pl 1859
