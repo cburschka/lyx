@@ -58,13 +58,23 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>301</width>
-       <height>20</height>
+       <width>81</width>
+       <height>31</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" colspan="2" >
+   <item row="0" column="2" >
+    <widget class="QCheckBox" name="categoryFilterCB" >
+     <property name="toolTip" >
+      <string>Select this to display all available characters at once</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Display all</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3" >
     <widget class="QListWidget" name="symbolsLW" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -104,14 +114,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="2" column="0" colspan="3" >
     <widget class="QLineEdit" name="chosenLE" >
      <property name="readOnly" >
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="3" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <item>
       <spacer>

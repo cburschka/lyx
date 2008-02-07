@@ -235,20 +235,43 @@ void GuiSymbols::on_symbolsLW_itemClicked(QListWidgetItem * item)
 
 void GuiSymbols::on_categoryCO_activated(QString const & text)
 {
+	if (!categoryFilterCB->isChecked())
+		updateSymbolList();
 	if (used_blocks.find(text) != used_blocks.end())
-		symbolsLW->scrollToItem(used_blocks[text]);
+		symbolsLW->scrollToItem(used_blocks[text],
+			QAbstractItemView::PositionAtTop);
+}
+
+
+void GuiSymbols::on_categoryFilterCB_toggled(bool)
+{
+	updateSymbolList();
 }
 
 
 void GuiSymbols::updateSymbolList()
 {
+	QString category = categoryCO->currentText();
+	bool const nocategory = category.isEmpty();
+	char_type range_start = 0x0000;
+	char_type range_end = 0x110000;
 	symbolsLW->clear();
 	used_blocks.clear();
 	categoryCO->clear();
+	bool const show_all = categoryFilterCB->isChecked();
 
 	typedef set<char_type> SymbolsList;
 	Encoding enc = *(encodings.getFromLyXName(encoding_));
 	SymbolsList symbols = enc.getSymbolsList();
+
+	if (!show_all) {
+		for (int i = 0 ; i < no_blocks; ++i)
+			if (unicode_blocks[i].name == fromqstr(category)) {
+				range_start = unicode_blocks[i].start;
+				range_end = unicode_blocks[i].end;
+				break;
+			}
+	}
 
 	SymbolsList::const_iterator const end = symbols.end();
 	for (SymbolsList::const_iterator it = symbols.begin(); it != end; ++it) {
@@ -259,9 +282,13 @@ void GuiSymbols::updateSymbolList()
 			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(
 			QString::fromUcs4((uint const *) &c, 1));
-		lwi->setTextAlignment(Qt::AlignCenter);
-		symbolsLW->addItem(lwi);
+		if (show_all || c > range_start && c < range_end) {
+			lwi->setTextAlignment(Qt::AlignCenter);
+			symbolsLW->addItem(lwi);
+		}
 		QString block = getBlock(c);
+		if (category.isEmpty())
+			category = block;
 		if (used_blocks.find(block) == used_blocks.end())
 			used_blocks[block] = lwi;
 	}
@@ -270,6 +297,13 @@ void GuiSymbols::updateSymbolList()
 	for (UsedBlocks::iterator it = used_blocks.begin(); it != used_blocks.end(); ++it) {
 		categoryCO->addItem(it->first);
 	}
+	int old = categoryCO->findText(category);
+	if (old != -1)
+		categoryCO->setCurrentIndex(old);
+	// update again in case the combo has not yet been filled
+	// on first cycle (at dialog initialization)
+	if (nocategory && !category.isEmpty())
+		updateSymbolList();
 }
 
 

@@ -45,6 +45,7 @@ public Q_SLOTS:
 	void on_symbolsLW_itemActivated(QListWidgetItem *);
 	void on_symbolsLW_itemClicked(QListWidgetItem * item);
 	void on_categoryCO_activated(QString const & text);
+	void on_categoryFilterCB_toggled(bool);
 	void on_chosenLE_returnPressed();
 	void on_chosenLE_textChanged(QString const &);
 
