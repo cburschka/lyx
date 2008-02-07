@@ -649,8 +649,6 @@ src_frontends_header_files = Split('''
     KeyModifier.h
     KeySymbol.h
     LyXView.h
-    NoGuiFontLoader.h
-    NoGuiFontMetrics.h
     Painter.h
     Selection.h
     WorkArea.h
