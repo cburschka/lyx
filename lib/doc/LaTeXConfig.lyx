@@ -811,7 +811,7 @@ luximono
 \end_layout
 
 \begin_layout Subsection
-TIPA
+tipa/tipx
 \end_layout
 
 \begin_layout Description
@@ -841,7 +841,14 @@ tipa
 International Phonetic Alphabet
 \emph default
  (IPA).
- The input of these symbols is provided by LyX's math editor.
+ The input of these symbols is provided by LyX's math editor and via the
+ 
+\family sans
+Insert\SpecialChar \menuseparator
+Symbols\SpecialChar \ldots{}
+
+\family default
+ dialog.
 \end_layout
 
 \begin_layout Section
@@ -3923,6 +3930,50 @@ fancy
 \end_layout
 
 \begin_layout Subsection
+ifthen
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "ifthen"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/base/ifthen/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+ifthen
+\family default
+\color none
+ provides conditional commands (
+\emph on
+\color inherit
+if
+\emph default
+\color none
+ 
+\emph on
+\color inherit
+\SpecialChar \ldots{}
+ then \SpecialChar \ldots{}
+ else
+\emph default
+\color none
+) for LaTeX documents.
+ This functionality is needed by some classes and modules.
+\end_layout
+
+\begin_layout Subsection
 jurabib
 \end_layout
 
@@ -4158,6 +4209,35 @@ Notes: The package
 rotating
 \family default
  is needed by LyX to change the orientation of some parts of your documents.
+ Note that it only really works with a PostScript® compatible printer.
+\end_layout
+
+\begin_layout Subsection
+rotfloat
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "rotfloat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/rotfloat
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+rotfloat
+\family default
+ is needed by LyX to rotate floats sideways.
  Note that it only really works with a PostScript® compatible printer.
 \end_layout
 
