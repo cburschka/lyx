@@ -644,7 +644,6 @@ src_tex2lyx_extra_files = Split('''
 src_frontends_header_files = Split('''
     Application.h
     Clipboard.h
-    FileDialog.h
     FontLoader.h
     FontMetrics.h
     KeyModifier.h
@@ -703,6 +702,7 @@ src_frontends_qt4_header_files = Split('''
     DialogView.h
     DockView.h
     EmptyTable.h
+    FileDialog.h
     FloatPlacement.h
     GuiAbout.h
     GuiApplication.h
