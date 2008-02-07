@@ -603,7 +603,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// we kill the triple click if we move
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
-			      q_motion_state(e->buttons()));
+		q_motion_state(e->buttons()));
 
 	// If we're above or below the work area...
 	if (e->y() <= 20 || e->y() >= viewport()->height() - 20) {
@@ -626,11 +626,10 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 			// occurred after the one used to start the timeout
 			// in the first place.
 			return;
-		else {
-			synthetic_mouse_event_.restart_timeout = true;
-			synthetic_mouse_event_.timeout.start();
-			// Fall through to handle this event...
-		}
+
+		synthetic_mouse_event_.restart_timeout = true;
+		synthetic_mouse_event_.timeout.start();
+		// Fall through to handle this event...
 
 	} else if (synthetic_mouse_event_.timeout.running()) {
 		// Store the event, to be possibly handled when the timeout
@@ -647,17 +646,20 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// Has anything changed on-screen since the last QMouseEvent
 	// was received?
 	double const scrollbar_value = verticalScrollBar()->value();
-	if (e->x() != synthetic_mouse_event_.x_old ||
-	    e->y() != synthetic_mouse_event_.y_old ||
-	    scrollbar_value != synthetic_mouse_event_.scrollbar_value_old) {
-		// Yes it has. Store the params used to check this.
-		synthetic_mouse_event_.x_old = e->x();
-		synthetic_mouse_event_.y_old = e->y();
-		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
-
-		// ... and dispatch the event to the LyX core.
-		dispatch(cmd);
+	if (e->x() == synthetic_mouse_event_.x_old
+		&& e->y() == synthetic_mouse_event_.y_old
+		&& scrollbar_value == synthetic_mouse_event_.scrollbar_value_old) {
+		// Nothing changed on-screen since the last QMouseEvent.
+		return;
 	}
+
+	// Yes something has changed. Store the params used to check this.
+	synthetic_mouse_event_.x_old = e->x();
+	synthetic_mouse_event_.y_old = e->y();
+	synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
+
+	// ... and dispatch the event to the LyX core.
+	dispatch(cmd);
 }
 
 
