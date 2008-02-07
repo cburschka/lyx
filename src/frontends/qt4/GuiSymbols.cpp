@@ -92,6 +92,7 @@ UnicodeBlocks unicode_blocks[] = {
 	{ N_("Geometric Shapes"), 0x25a0, 0x25ff },
 	{ N_("Miscellaneous Symbols"), 0x2600, 0x26ff },
 	{ N_("Dingbats"), 0x2700, 0x27bf },
+	{ N_("Miscellaneous Mathematical Symbols-A"), 0x27c0, 0x27ef },
 	{ N_("CJK Symbols and Punctuation"), 0x3000, 0x303f },
 	{ N_("Hiragana"), 0x3040, 0x309f },
 	{ N_("Katakana"), 0x30a0, 0x30ff },
