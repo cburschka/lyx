@@ -226,7 +226,8 @@ void GuiSymbols::on_symbolsLW_itemClicked(QListWidgetItem * item)
 	QString const text = item->text();
 	if (text.isEmpty())
 		return;
-	chosenLE->insert(text);
+	if (chosenLE->isEnabled())
+		chosenLE->insert(text);
 	QString const category = getBlock(text.data()->unicode());
 	categoryCO->setCurrentIndex(categoryCO->findText(category));
 }
