@@ -79,7 +79,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
