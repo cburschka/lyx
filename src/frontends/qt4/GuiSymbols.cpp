@@ -286,7 +286,7 @@ QString const GuiSymbols::getBlock(char_type c) const
 
 void GuiSymbols::dispatchParams()
 {
-	dispatch(FuncRequest(LFUN_SELF_INSERT, fromqstr(chosenLE->text())));
+	dispatch(FuncRequest(getLfun(), fromqstr(chosenLE->text())));
 }
 
 
