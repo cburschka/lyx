@@ -845,7 +845,7 @@ bool LyX::init()
 	pimpl_->lyxfunc_.initKeySequences(&pimpl_->toplevel_keymap_);
 
 	// Read menus
-	if (!readUIFile(lyxrc.ui_file))
+	if (use_gui && !readUIFile(lyxrc.ui_file))
 		return false;
 
 	if (lyxerr.debugging(Debug::LYXRC))
