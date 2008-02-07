@@ -490,8 +490,7 @@
 0x027c "\\textlonglegr"           "tipa" "" # LATIN SMALL LETTER R WITH LONG LEG
 0x027d "\\textrtailr"             "tipa" "" # LATIN SMALL LETTER R WITH TAIL
 0x027e "\\textfishhookr"          "tipa" "" # LATIN SMALL LETTER R WITH FISHHOOK
-#FIXME: not possible to request multiple packages
-#0x027f "\\reflectbox{\\textfishhookr}"  "tipa,graphics" "" # LATIN SMALL LETTER REVERSED R WITH FISHHOOK
+0x027f "\\textlhti"               "tipx" "" # LATIN SMALL LETTER REVERSED R WITH FISHHOOK
 0x0280 "\\textscr"                "tipa" "" # LATIN LETTER SMALL CAPITAL R
 0x0281 "\\textinvscr"             "tipa" "" # LATIN LETTER SMALL CAPITAL INVERTED R
 0x0282 "\\textrtails"             "tipa" "" # LATIN SMALL LETTER S WITH HOOK
@@ -538,6 +537,8 @@
 #0x02ab ""                         "" "" # LATIN SMALL LETTER LZ DIGRAPH
 #0x02ac ""                         "" "" # LATIN LETTER BILABIAL PERCUSSIVE
 #0x02ad ""                         "" "" # LATIN LETTER BIDENTAL PERCUSSIVE
+0x02ae "\\textlhtlongy"            "tipa" "" # LATIN SMALL LETTER TURNED H WITH FISHHOOK
+0x02af "\\textvibyy"               "tipa" "" # LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
 #
 # Spacing Modifier Letters
 #
@@ -552,7 +553,7 @@
 0x02b8 "\\textsuperscript{y}"      "" "" # MODIFIER LETTER SMALL Y
 0x02b9 "\\textasciiacute"          "textcomp" "" # MODIFIER LETTER PRIME
 0x02ba "\\textacutedbl"            "textcomp" "" # MODIFIER LETTER DOUBLE PRIME
-#0x02bb ""                         "" "" # MODIFIER LETTER TURNED COMMA
+0x02bb "\\textquoteleft"           "" "" # MODIFIER LETTER TURNED COMMA
 0x02bc "'"                         "" "" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
@@ -577,8 +578,8 @@
 0x02d1 "\\texthalflength"         "tipa" "" # MODIFIER LETTER HALF TRIANGULAR COLON
 #0x02d2 ""                         "" "" # MODIFIER LETTER CENTRED RIGHT HALF RING
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
-#0x02d4 ""                         "" "" # MODIFIER LETTER UP TACK
-#0x02d5 ""                         "" "" # MODIFIER LETTER DOWN TACK
+0x02d4 "\\textraising{ }"         "tipa" "" # MODIFIER LETTER UP TACK
+0x02d5 "\\textlowering{ }"        "tipa" "" # MODIFIER LETTER DOWN TACK
 0x02d6 "\\ensuremath{+}"          "" "" # MODIFIER LETTER PLUS SIGN
 0x02d7 "\\ensuremath{-}"          "" "" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\u{ }"                   "" "" # BREVE
@@ -588,7 +589,7 @@
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
 0x02dd "\\H{ }"                   "" "" # DOUBLE ACUTE ACCENT
 0x02de "\\textrhoticity"          "tipa" "" # MODIFIER LETTER RHOTIC HOOK
-#0x02df ""                         "" "" # MODIFIER LETTER CROSS ACCENT
+#0x02df ""                        "" "" # MODIFIER LETTER CROSS ACCENT
 0x02e0 "\\textbabygamma"          "tipa" "" # MODIFIER LETTER SMALL GAMMA
 0x02e1 "\\textsuperscript{l}"     "" "" # MODIFIER LETTER SMALL L
 0x02e2 "\\textsuperscript{s}"     "" "" # MODIFIER LETTER SMALL S
@@ -941,60 +942,60 @@
 #0x1d29 ""                         "" "" # GREEK LETTER SMALL CAPITAL RHO
 #0x1d2a ""                         "" "" # GREEK LETTER SMALL CAPITAL PSI
 #0x1d2b ""                         "" "" # CYRILLIC LETTER SMALL CAPITAL EL
-#0x1d2c ""                         "" "" # MODIFIER LETTER CAPITAL A
-#0x1d2d ""                         "" "" # MODIFIER LETTER CAPITAL AE
-#0x1d2e ""                         "" "" # MODIFIER LETTER CAPITAL B
+0x1d2c "\\textsuperscript{A}"      "" "" # MODIFIER LETTER CAPITAL A
+0x1d2d "\\textsuperscript{\\AE}"   "" "" # MODIFIER LETTER CAPITAL AE
+0x1d2e "\\textsuperscript{B}"      "" "" # MODIFIER LETTER CAPITAL B
 #0x1d2f ""                         "" "" # MODIFIER LETTER CAPITAL BARRED B
-#0x1d30 ""                         "" "" # MODIFIER LETTER CAPITAL D
-#0x1d31 ""                         "" "" # MODIFIER LETTER CAPITAL E
+0x1d30 "\\textsuperscript{B}"      "" "" # MODIFIER LETTER CAPITAL D
+0x1d31 "\\textsuperscript{E}"      "" "" # MODIFIER LETTER CAPITAL E
 #0x1d32 ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED E
-#0x1d33 ""                         "" "" # MODIFIER LETTER CAPITAL G
-#0x1d34 ""                         "" "" # MODIFIER LETTER CAPITAL H
-#0x1d35 ""                         "" "" # MODIFIER LETTER CAPITAL I
-#0x1d36 ""                         "" "" # MODIFIER LETTER CAPITAL J
-#0x1d37 ""                         "" "" # MODIFIER LETTER CAPITAL K
-#0x1d38 ""                         "" "" # MODIFIER LETTER CAPITAL L
-#0x1d39 ""                         "" "" # MODIFIER LETTER CAPITAL M
-#0x1d3a ""                         "" "" # MODIFIER LETTER CAPITAL N
+0x1d33 "\\textsuperscript{G}"      "" "" # MODIFIER LETTER CAPITAL G
+0x1d34 "\\textsuperscript{H}"      "" "" # MODIFIER LETTER CAPITAL H
+0x1d35 "\\textsuperscript{I}"      "" "" # MODIFIER LETTER CAPITAL I
+0x1d36 "\\textsuperscript{J}"      "" "" # MODIFIER LETTER CAPITAL J
+0x1d37 "\\textsuperscript{K}"      "" "" # MODIFIER LETTER CAPITAL K
+0x1d38 "\\textsuperscript{L}"      "" "" # MODIFIER LETTER CAPITAL L
+0x1d39 "\\textsuperscript{M}"      "" "" # MODIFIER LETTER CAPITAL M
+0x1d3a "\\textsuperscript{N}"      "" "" # MODIFIER LETTER CAPITAL N
 #0x1d3b ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED N
-#0x1d3c ""                         "" "" # MODIFIER LETTER CAPITAL O
+0x1d3c "\\textsuperscript{O}"      "" "" # MODIFIER LETTER CAPITAL O
 #0x1d3d ""                         "" "" # MODIFIER LETTER CAPITAL OU
-#0x1d3e ""                         "" "" # MODIFIER LETTER CAPITAL P
-#0x1d3f ""                         "" "" # MODIFIER LETTER CAPITAL R
-#0x1d40 ""                         "" "" # MODIFIER LETTER CAPITAL T
-#0x1d41 ""                         "" "" # MODIFIER LETTER CAPITAL U
-#0x1d42 ""                         "" "" # MODIFIER LETTER CAPITAL W
-#0x1d43 ""                         "" "" # MODIFIER LETTER SMALL A
-#0x1d44 ""                         "" "" # MODIFIER LETTER SMALL TURNED A
-#0x1d45 ""                         "" "" # MODIFIER LETTER SMALL ALPHA
+0x1d3e "\\textsuperscript{P}"      "" "" # MODIFIER LETTER CAPITAL P
+0x1d3f "\\textsuperscript{R}"      "" "" # MODIFIER LETTER CAPITAL R
+0x1d40 "\\textsuperscript{T}"      "" "" # MODIFIER LETTER CAPITAL T
+0x1d41 "\\textsuperscript{U}"      "" "" # MODIFIER LETTER CAPITAL U
+0x1d42 "\\textsuperscript{W}"      "" "" # MODIFIER LETTER CAPITAL W
+0x1d43 "\\textsuperscript{a}"      "" "" # MODIFIER LETTER SMALL A
+0x1d44 "\\textsuperscript{\\textturna}" "tipa" "" # MODIFIER LETTER SMALL TURNED A
+0x1d45 "\\textsuperscript{\\textscripta}" "tipa" "" # MODIFIER LETTER SMALL ALPHA
 #0x1d46 ""                         "" "" # MODIFIER LETTER SMALL TURNED AE
-#0x1d47 ""                         "" "" # MODIFIER LETTER SMALL B
-#0x1d48 ""                         "" "" # MODIFIER LETTER SMALL D
-#0x1d49 ""                         "" "" # MODIFIER LETTER SMALL E
-#0x1d4a ""                         "" "" # MODIFIER LETTER SMALL SCHWA
-#0x1d4b ""                         "" "" # MODIFIER LETTER SMALL OPEN E
-#0x1d4c ""                         "" "" # MODIFIER LETTER SMALL TURNED OPEN E
-#0x1d4d ""                         "" "" # MODIFIER LETTER SMALL G
+0x1d47 "\\textsuperscript{b}"      "" "" # MODIFIER LETTER SMALL B
+0x1d48 "\\textsuperscript{d}"      "" "" # MODIFIER LETTER SMALL D
+0x1d49 "\\textsuperscript{e}"      "" "" # MODIFIER LETTER SMALL E
+0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "" # MODIFIER LETTER SMALL SCHWA
+0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "" # MODIFIER LETTER SMALL OPEN E
+0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "" # MODIFIER LETTER SMALL TURNED OPEN E
+0x1d4d "\\textsuperscript{g}"       "" "" # MODIFIER LETTER SMALL G
 #0x1d4e ""                         "" "" # MODIFIER LETTER SMALL TURNED I
-#0x1d4f ""                         "" "" # MODIFIER LETTER SMALL K
-#0x1d50 ""                         "" "" # MODIFIER LETTER SMALL M
-#0x1d51 ""                         "" "" # MODIFIER LETTER SMALL ENG
-#0x1d52 ""                         "" "" # MODIFIER LETTER SMALL O
-#0x1d53 ""                         "" "" # MODIFIER LETTER SMALL OPEN O
+0x1d4f "\\textsuperscript{k}"      "" "" # MODIFIER LETTER SMALL K
+0x1d50 "\\textsuperscript{m}"      "" "" # MODIFIER LETTER SMALL M
+0x1d51 "\\textsuperscript{\\ng}"   "tipa" "" # MODIFIER LETTER SMALL ENG
+0x1d52 "\\textsuperscript{o}"      "" "" # MODIFIER LETTER SMALL O
+0x1d53 "\\textsuperscript{\\textopeno}" "tipa" "" # MODIFIER LETTER SMALL OPEN O
 #0x1d54 ""                         "" "" # MODIFIER LETTER SMALL TOP HALF O
 #0x1d55 ""                         "" "" # MODIFIER LETTER SMALL BOTTOM HALF O
-#0x1d56 ""                         "" "" # MODIFIER LETTER SMALL P
-#0x1d57 ""                         "" "" # MODIFIER LETTER SMALL T
-#0x1d58 ""                         "" "" # MODIFIER LETTER SMALL U
+0x1d56 "\\textsuperscript{p}"      "" "" # MODIFIER LETTER SMALL P
+0x1d57 "\\textsuperscript{t}"      "" "" # MODIFIER LETTER SMALL T
+0x1d58 "\\textsuperscript{u}"      "" "" # MODIFIER LETTER SMALL U
 #0x1d59 ""                         "" "" # MODIFIER LETTER SMALL SIDEWAYS U
-#0x1d5a ""                         "" "" # MODIFIER LETTER SMALL TURNED M
-#0x1d5b ""                         "" "" # MODIFIER LETTER SMALL V
+0x1d5a "\\textsuperscript{\\textturnm}" "tipa" "" # MODIFIER LETTER SMALL TURNED M
+0x1d5b "\\textsuperscript{v}"      "" "" # MODIFIER LETTER SMALL V
 #0x1d5c ""                         "" "" # MODIFIER LETTER SMALL AIN
-#0x1d5d ""                         "" "" # MODIFIER LETTER SMALL BETA
-#0x1d5e ""                         "" "" # MODIFIER LETTER SMALL GREEK GAMMA
-#0x1d5f ""                         "" "" # MODIFIER LETTER SMALL DELTA
-#0x1d60 ""                         "" "" # MODIFIER LETTER SMALL GREEK PHI
-#0x1d61 ""                         "" "" # MODIFIER LETTER SMALL CHI
+0x1d5d "\\textsuperscript{\\textgreek{b}}" "textgreek" "" # MODIFIER LETTER SMALL BETA
+0x1d5e "\\textsuperscript{\\textgreek{g}}" "textgreek" "" # MODIFIER LETTER SMALL GREEK GAMMA
+0x1d5f "\\textsuperscript{\\textgreek{d}}" "textgreek""" # MODIFIER LETTER SMALL DELTA
+0x1d60 "\\textsuperscript{\\textgreek{f}}" "textgreek""" # MODIFIER LETTER SMALL GREEK PHI
+0x1d61 "\\textsuperscript{\\textgreek{q}}" "textgreek""" # MODIFIER LETTER SMALL CHI
 #0x1d62 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER I
 #0x1d63 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER R
 #0x1d64 ""                         "" "" # LATIN SUBSCRIPT SMALL LETTER U
@@ -1006,16 +1007,16 @@
 #0x1d6a ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
-#0x1d6d ""                         "" "" # LATIN SMALL LETTER D WITH MIDDLE TILDE
-#0x1d6e ""                         "" "" # LATIN SMALL LETTER F WITH MIDDLE TILDE
-#0x1d6f ""                         "" "" # LATIN SMALL LETTER M WITH MIDDLE TILDE
-#0x1d70 ""                         "" "" # LATIN SMALL LETTER N WITH MIDDLE TILDE
-#0x1d71 ""                         "" "" # LATIN SMALL LETTER P WITH MIDDLE TILDE
-#0x1d72 ""                         "" "" # LATIN SMALL LETTER R WITH MIDDLE TILDE
-#0x1d73 ""                         "" "" # LATIN SMALL LETTER R WITH FISHHOOK AND MIDDLE TILDE
-#0x1d74 ""                         "" "" # LATIN SMALL LETTER S WITH MIDDLE TILDE
-#0x1d75 ""                         "" "" # LATIN SMALL LETTER T WITH MIDDLE TILDE
-#0x1d76 ""                         "" "" # LATIN SMALL LETTER Z WITH MIDDLE TILDE
+0x1d6d "\\textsuperimposetilde{d}" "tipa" "" # LATIN SMALL LETTER D WITH MIDDLE TILDE
+0x1d6e "\\textsuperimposetilde{f}" "tipa" "" # LATIN SMALL LETTER F WITH MIDDLE TILDE
+0x1d6f "\\textsuperimposetilde{m}" "tipa" "" # LATIN SMALL LETTER M WITH MIDDLE TILDE
+0x1d70 "\\textsuperimposetilde{n}" "tipa" "" # LATIN SMALL LETTER N WITH MIDDLE TILDE
+#0x1d71 ""                          "" "" # LATIN SMALL LETTER P WITH MIDDLE TILDE
+0x1d72 "\\textsuperimposetilde{r}" "tipa" "" # LATIN SMALL LETTER R WITH MIDDLE TILDE
+0x1d73 "\\textsuperimposetilde{\\textfishhookr}" "tipa" "" # LATIN SMALL LETTER R WITH FISHHOOK AND MIDDLE TILDE
+0x1d74 "\\textsuperimposetilde{s}" "tipa" "" # LATIN SMALL LETTER S WITH MIDDLE TILDE
+0x1d75 "\\textsuperimposetilde{t}" "tipa" "" # LATIN SMALL LETTER T WITH MIDDLE TILDE
+0x1d76 "\\textsuperimposetilde{z}" "tipa" "" # LATIN SMALL LETTER Z WITH MIDDLE TILDE
 #0x1d77 ""                         "" "" # LATIN SMALL LETTER TURNED G
 #0x1d78 ""                         "" "" # MODIFIER LETTER CYRILLIC EN
 #0x1d79 ""                         "" "" # LATIN SMALL LETTER INSULAR G
@@ -1024,6 +1025,7 @@
 #0x1d7c ""                         "" "" # LATIN SMALL LETTER IOTA WITH STROKE
 #0x1d7d ""                         "" "" # LATIN SMALL LETTER P WITH STROKE
 0x1d7e "\\textbaru"               "tipa" "" # LATIN SMALL CAPITAL LETTER U WITH STROKE
+#0x1d7f ""                         "" "" # LATIN SMALL LETTER UPSILON WITH STROKE
 #
 # Latin Extended Additional
 #
