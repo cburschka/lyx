@@ -355,9 +355,9 @@ set<char_type> Encoding::getSymbolsList() const
 		symbols.insert(c);
 	// now the ones from the unicodesymbols file
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
-	for (CharInfoMap::const_iterator it = unicodesymbols.begin(); it != end; ++it) {
+	CharInfoMap::const_iterator it = unicodesymbols.begin();
+	for (; it != end; ++it)
 		symbols.insert(it->first);
-	}
 	return symbols;
 }
 
