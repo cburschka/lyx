@@ -22,8 +22,10 @@
 
 #include "support/gettext.h"
 
+#include <QChar>
 #include <QPixmap>
 #include <QListWidgetItem>
+#include <QString>
 
 using namespace std;
 
@@ -283,7 +285,12 @@ void GuiSymbols::updateSymbolList()
 	SymbolsList::const_iterator const end = symbols.end();
 	for (SymbolsList::const_iterator it = symbols.begin(); it != end; ++it) {
 		char_type c = *it;
-		QChar::Category cat = QChar::Category((uint) c);
+#if QT_VERSION >= 0x040300
+		QChar::Category const cat = QChar::category(uint(c));
+#else
+		QChar const qc = uint(c);
+		QChar::Category const cat = qc.category();
+#endif
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
