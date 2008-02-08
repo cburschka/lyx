@@ -263,6 +263,22 @@ void GuiParagraph::updateView()
 }
 
 
+void GuiParagraph::enableView(bool enable)
+{
+	indentCB->setEnabled(enable);
+	linespacing->setEnabled(enable);
+	labelWidth->setEnabled(enable);
+	synchronizedViewCB->setEnabled(enable);
+	applyPB->setEnabled(enable);
+	restorePB->setEnabled(enable);
+	if (!enable)
+		synchronizedViewCB->setChecked(true);
+	RadioMap::const_iterator it = radioMap.begin();
+	for (; it != radioMap.end(); ++it)
+		it->second->setEnabled(enable);
+}
+
+
 ParagraphParameters & GuiParagraph::params()
 {
 	if (haveMulitParSelection()) {
@@ -287,7 +303,7 @@ void GuiParagraph::dispatchParams()
 	if (haveMulitParSelection()) {
 		ostringstream data;
 		multiparsel_.write(data);
-		FuncRequest const fr(LFUN_PARAGRAPH_PARAMS_APPLY, data.str());
+		FuncRequest const fr(getLfun(), data.str());
 		dispatch(fr);
 		return;
 	}
