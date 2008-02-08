@@ -575,6 +575,9 @@ bool GuiView::event(QEvent * e)
 			// The document structure, name and dialogs might have
 			// changed in another view.
 			updateBufferDependent(true);
+			updateToolbars();
+			updateLayoutList();
+			updateStatusBar();
 		} else {
 			setWindowTitle(qt_("LyX"));
 			setWindowIconText(qt_("LyX"));
