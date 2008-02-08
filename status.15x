@@ -128,6 +128,9 @@ What's new
 
 - Fix a crash when opening a document with relative path (bug 4517).
 
+- Fix a crash after converting a formula to eqnarray while a selection
+  was active (bug 4452).
+
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
 - Fix update/drawing of character style insets.
@@ -189,6 +192,6 @@ What's new
 - New script postats.py used to generate translation statistics for the main
   page.
 
-- Dutch dictionary now downloads
+- Dutch dictionary now downloads.
 
 - Fix compilation with gcc 4.3 (soon to be released)

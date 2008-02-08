@@ -1160,6 +1160,10 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
+
+		// FIXME: find some more clever handling of the selection,
+		// i.e. preserve it.
+		cur.clearSelection();
 		//cur.dispatched(FINISHED);
 		break;
 	}
