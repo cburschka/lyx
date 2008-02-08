@@ -1900,7 +1900,7 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 				if (!child)
 					continue;				
 
-				// register it, but only when it is
+				// register its position, but only when it is
 				// included first in the buffer
 				if (d->children_positions.find(child)
 				    == d->children_positions.end())
