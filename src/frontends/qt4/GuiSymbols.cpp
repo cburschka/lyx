@@ -245,8 +245,10 @@ void GuiSymbols::on_symbolsLW_itemClicked(QListWidgetItem * item)
 		return;
 	if (chosenLE->isEnabled())
 		chosenLE->insert(text);
-	QString const category = getBlock(text.data()->unicode());
-	categoryCO->setCurrentIndex(categoryCO->findText(category));
+	if (categoryFilterCB->isChecked()) {
+		QString const category = getBlock(text.data()->unicode());
+		categoryCO->setCurrentIndex(categoryCO->findText(category));
+	}
 }
 
 
@@ -254,7 +256,7 @@ void GuiSymbols::on_categoryCO_activated(QString const & text)
 {
 	if (!categoryFilterCB->isChecked())
 		updateSymbolList(false);
-	if (used_blocks.find(text) != used_blocks.end())
+	else if (used_blocks.find(text) != used_blocks.end())
 		symbolsLW->scrollToItem(used_blocks[text],
 			QAbstractItemView::PositionAtTop);
 }
@@ -262,7 +264,7 @@ void GuiSymbols::on_categoryCO_activated(QString const & text)
 
 void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 {
-	updateSymbolList(false);
+	updateSymbolList(on);
 	if (on) {
 		QString const category = categoryCO->currentText();
 		if (used_blocks.find(category) != used_blocks.end())
