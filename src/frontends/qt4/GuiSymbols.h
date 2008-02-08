@@ -16,6 +16,7 @@
 #include "ui_SymbolsUi.h"
 
 #include <map>
+#include <set>
 
 class QListWidgetItem;
 
@@ -63,6 +64,10 @@ private:
 	typedef std::map<QString, QListWidgetItem *> UsedBlocks;
 	///
 	UsedBlocks used_blocks;
+	/// list of all symbols
+	typedef std::set<char_type> SymbolsList;
+	///
+	SymbolsList symbols_;
 };
 
 } // namespace frontend

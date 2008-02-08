@@ -287,9 +287,10 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	}
 	bool const show_all = categoryFilterCB->isChecked();
 
-	typedef set<char_type> SymbolsList;
-	Encoding enc = *(encodings.getFromLyXName(encoding_));
-	SymbolsList symbols = enc.getSymbolsList();
+	if (symbols_.empty() || update_combo) {
+		Encoding enc = *(encodings.getFromLyXName(encoding_));
+		symbols_ = enc.getSymbolsList();
+	}
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
@@ -300,9 +301,11 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			}
 	}
 
-	SymbolsList::const_iterator const end = symbols.end();
-	for (SymbolsList::const_iterator it = symbols.begin(); it != end; ++it) {
+	SymbolsList::const_iterator const end = symbols_.end();
+	for (SymbolsList::const_iterator it = symbols_.begin(); it != end; ++it) {
 		char_type c = *it;
+		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
+			continue;
 #if QT_VERSION >= 0x040300
 		QChar::Category const cat = QChar::category(uint(c));
 #else
@@ -311,8 +314,6 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 #endif
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
-			continue;
-		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
 			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
 		if (show_all || c >= range_start && c <= range_end) {
