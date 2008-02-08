@@ -110,7 +110,7 @@ void GuiParagraph::checkAlignmentRadioButtons()
 		LyXAlignment const align = it->first;
 		it->second->setEnabled(align & alignPossible());
 	}
-	if (haveMulitParSelection())
+	if (haveMultiParSelection())
 		alignDefaultRB->setText(alignDefaultLabel);
 	else
 		alignDefaultRB->setText(alignDefaultLabel + " ("
@@ -281,7 +281,7 @@ void GuiParagraph::enableView(bool enable)
 
 ParagraphParameters & GuiParagraph::params()
 {
-	if (haveMulitParSelection()) {
+	if (haveMultiParSelection()) {
 		multiparsel_ = ParagraphParameters();
 		// FIXME: It would be nice to initialise the parameters that
 		// are common to all paragraphs.
@@ -300,7 +300,7 @@ ParagraphParameters const & GuiParagraph::params() const
 
 void GuiParagraph::dispatchParams()
 {
-	if (haveMulitParSelection()) {
+	if (haveMultiParSelection()) {
 		ostringstream data;
 		multiparsel_.write(data);
 		FuncRequest const fr(getLfun(), data.str());
@@ -313,7 +313,7 @@ void GuiParagraph::dispatchParams()
 }
 
 
-bool GuiParagraph::haveMulitParSelection()
+bool GuiParagraph::haveMultiParSelection()
 {
 	Cursor cur = bufferview()->cursor();
 	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
@@ -341,16 +341,6 @@ LyXAlignment GuiParagraph::alignDefault() const
 
 Dialog * createGuiParagraph(GuiView & lv)
 {
-#if 0
-	GuiView & guiview = static_cast<GuiView &>(lv);
-#ifdef USE_DOCK_WIDGET
-	return new DockView<ControlParagraph, GuiParagraph>(guiview, "paragraph",
-		Qt::TopDockWidgetArea);
-#else
-	return new DialogView<ControlParagraph, GuiParagraph>(guiview, "paragraph");
-#endif
-#endif
-
 	return new GuiParagraph(lv);
 }
 

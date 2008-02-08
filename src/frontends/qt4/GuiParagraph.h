@@ -65,7 +65,7 @@ private:
 	///
 	ParagraphParameters const & params() const;
 	///
-	bool haveMulitParSelection();
+	bool haveMultiParSelection();
 	///
 	bool canIndent() const;
 	///
