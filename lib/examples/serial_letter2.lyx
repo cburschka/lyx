@@ -1,0 +1,237 @@
+#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass scrlttr2
+\begin_preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Here you can modify the layout of your letter
+%% Have a look at the KOMA script documentation
+%% for details. Most commands are commented out
+%% here (i.e. we use default settings)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Load an *.lco style file (see KOMA documentation)
+\LoadLetterOption{DIN}%                          
+
+%% THE CLASS OPTIONS
+%% Remove preceeding '%' to uncomment an item
+\KOMAoptions{%
+%headsepline=true,%            separate the header with a line on page >1
+%footsepline=true,%             separate the footer with a line on page >1
+%pagenumber=botcenter,%   position of the page number (see docu)
+%parskip=false,%          Use indent instead of skip (more options cf. docu)
+fromalign=center,%        alignment of the address
+fromrule=aftername,%    separate the address with a line?
+fromphone=true,%         print sender phone number
+%fromfax=true,%          print sender fax number
+fromemail=true,%           print sender e-mail address
+fromurl=true%               print sender URL
+%fromlogo=true,%         print a logo (position depends on fromalign)
+%addrfield=false,%        print an address field?
+%backaddress=false,%  print the back address?
+%subject=afteropening,titled,% alternative subject layout and position
+%locfield=narrow,%      width of the (extra) location field
+%foldmarks=false,%      print foldmarks?
+%numericaldate=true,%  date layout
+%refline=wide%             layout of the refline
+}
+
+%% Customize Separators
+%\setkomavar{placeseparator}{ -- }
+\setkomavar{backaddressseparator}{ $\cdot$ }
+%\setkomavar{emailseparator}{ --> }
+%\setkomavar{enclseparator}{ > }
+%\setkomavar{faxseparator}{ --> }
+%\setkomavar{phoneseparator}{ --> }
+%\setkomavar{subjectseparator}{ >>> }
+
+%% Customize fonts
+%% Use LaTeX's standard font commands
+%% Modify with \setkomafont or \addtokomafont
+%% (see KOMA documentation)
+\setkomafont{backaddress}{\rmfamily}
+%\setkomafont{descriptionlabel}{}
+\setkomafont{fromaddress}{\small}
+\setkomafont{fromname}{\scshape}
+%\setkomafont{pagefoot}{}
+%\setkomafont{pagehead}{}
+%\setkomafont{pagenumber}{}
+%\setkomafont{subject}{}
+%\setkomafont{title}{}
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 11
+\spacing other 1.15
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language danish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Name
+The LyX Developers Team
+\end_layout
+
+\begin_layout SenderAddress
+140 Map Road
+\newline
+SVN City
+\end_layout
+
+\begin_layout Telephone
+0011/222\InsetSpace \thinspace{}
+333
+\end_layout
+
+\begin_layout E-Mail
+lyx-users@lists.lyx.org
+\end_layout
+
+\begin_layout URL
+www.lyx.org
+\end_layout
+
+\begin_layout Backaddress
+The LyX Developers Team
+\newline
+140 Map Road
+\newline
+SVN City
+\end_layout
+
+\begin_layout Signature
+The LyX Team
+\end_layout
+
+\begin_layout Subject
+New KOMA letter layout
+\end_layout
+
+\begin_layout Place
+The Internet
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Include \input{addressExample.adr}
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+WILBOE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Opening
+Dear Wilhelm,
+\end_layout
+
+\begin_layout Standard
+this example is a serial letter to 
+\series bold
+one person
+\series default
+ in an address database.
+ The design of address databases is described in the documentation listed
+ below.
+\end_layout
+
+\begin_layout Standard
+This template illustrates the use of the new scrlttr2 class (introduced
+ with KOMA-script v.
+ 2.9).
+ This letter class is very flexible.
+ Have a look at 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Preamble
+\family default
+ for the most common parameters.
+ Please consult the KOMA Script documentation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+http://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf
+\end_layout
+
+\end_inset
+
+ for a detailed description.
+\end_layout
+
+\begin_layout Closing
+Have fun with it,
+\end_layout
+
+\begin_layout PS
+p.\InsetSpace \thinspace{}
+s.: The blue colored items have to be before the address, the magenta colored
+ after it.
+\end_layout
+
+\begin_layout CC
+The LyX Users
+\end_layout
+
+\end_body
+\end_document

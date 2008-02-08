@@ -30,19 +30,23 @@ Style Labeling
 	EndPreamble
 End
 
+
 Style List
 	Obsoletedby           Labeling
 End
 
+
+Preamble
+	\newif\ifletterclosed
+EndPreamble
 
 
 Style Address
 	LatexType             Command
 	LatexName             begin
 	LatexParam            {letter}
-	#Ugly hack!
 	Preamble
-	\AtEndDocument{\end{letter}}
+		\AtEndDocument{\ifletterclosed\else\end{letter}\fi}
 	EndPreamble
 	KeepEmpty             1
 	LeftMargin            xxxxxxxxxxxx::xx
@@ -329,4 +333,25 @@ Style Invoice
 	LatexName             setkomavar
 	LatexParam            {invoice}
 	LabelString           "Invoice no.:"
+End
+
+
+Style EndLetter
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             end{letter}
+	Preamble
+		\letterclosedtrue
+	EndPreamble
+	KeepEmpty             1
+	TopSep                1
+	ParSkip               0.4
+	Align                 Block
+	LabelSep              xx
+	LabelType             Static
+	LabelString           "End of letter"
+	LabelFont
+	  Series              Bold
+	  Color               Green
+	EndFont
 End

@@ -78,14 +78,17 @@ dist_daexamples_DATA = \
 
 deexamplesdir = $(pkgdatadir)/examples/de
 dist_deexamples_DATA = \
-	examples/de/ItemizeBullets.lyx \
-	examples/de/Lebenslauf.lyx \
-	examples/de/Minipage.lyx \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
 	examples/de/Dezimal.lyx \
-	examples/de/splash.lyx \
-	examples/de/multicol.lyx
+	examples/de/ItemizeBullets.lyx \
+	examples/de/Lebenslauf.lyx \
+	examples/de/Minipage.lyx \
+	examples/de/multicol.lyx \
+	examples/de/serienbrief1.lyx \
+	examples/de/serienbrief2.lyx \
+	examples/de/serienbrief3.lyx \
+	examples/de/splash.lyx
 
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
@@ -185,6 +188,7 @@ dist_examples_DATA = \
 	examples/Minipage.lyx \
 	examples/aa_sample.lyx \
 	examples/aas_sample.lyx \
+	examples/addressExample.adr \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
 	examples/armenian-article.lyx \
@@ -218,6 +222,9 @@ dist_examples_DATA = \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
 	examples/script_form.lyx \
+	examples/serial_letter1.lyx \
+	examples/serial_letter2.lyx \
+	examples/serial_letter3.lyx \
 	examples/simplecv.lyx \
 	examples/splash.lyx
 
