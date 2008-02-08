@@ -2171,6 +2171,9 @@ lib_doc_eu_files = Split('''
 
 lib_doc_fr_files = Split('''
     Customization.lyx
+    DocumentBidon1.lyx
+    DocumentBidon2.lyx
+    DocumentTexteBidon.txt
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx

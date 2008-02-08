@@ -122,6 +122,9 @@ dist_eudoc_DATA = \
 frdocdir = $(pkgdatadir)/doc/fr
 dist_frdoc_DATA = \
 	fr/Customization.lyx \
+	fr/DocumentBidon1.lyx \
+	fr/DocumentBidon2.lyx \
+	fr/DocumentTexteBidon.txt \
 	fr/EmbeddedObjects.lyx \
 	fr/Extended.lyx \
 	fr/FAQ.lyx \
