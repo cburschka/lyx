@@ -291,10 +291,8 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	}
 	bool const show_all = categoryFilterCB->isChecked();
 
-	if (symbols_.empty() || update_combo) {
-		Encoding enc = *(encodings.getFromLyXName(encoding_));
-		symbols_ = enc.getSymbolsList();
-	}
+	if (symbols_.empty() || update_combo)
+		symbols_ = encodings.getFromLyXName(encoding_)->getSymbolsList();
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
