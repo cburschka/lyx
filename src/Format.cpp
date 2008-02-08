@@ -30,7 +30,7 @@
 
 using std::string;
 using std::distance;
-
+using std::find_if;
 
 namespace lyx {
 

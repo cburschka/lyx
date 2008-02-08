@@ -109,7 +109,7 @@ namespace {
 // returns the number of the string s in the vector v
 int getItemNo(vector<string> v, string const & s) {
 	vector<string>::const_iterator cit =
-		    find(v.begin(), v.end(), s);
+		std::find(v.begin(), v.end(), s);
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
 }
 

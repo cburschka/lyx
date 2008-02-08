@@ -75,7 +75,7 @@ int ControlRef::getBufferNum() const
 	vector<string> buffers = theBufferList().getFileNames();
 	string const name = kernel().buffer().fileName();
 	vector<string>::const_iterator cit =
-		find(buffers.begin(), buffers.end(), name);
+		std::find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())
 		return 0;
 	return int(cit - buffers.begin());

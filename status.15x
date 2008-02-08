@@ -186,7 +186,9 @@ What's new
 
 * BUILD/INSTALLATION:
 
-- new script postats.py used to generate translation statistics for the main
+- New script postats.py used to generate translation statistics for the main
   page.
 
 - Dutch dictionary now downloads
+
+- Fix compilation with gcc 4.3 (soon to be released)
