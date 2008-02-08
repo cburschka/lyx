@@ -187,6 +187,10 @@ void GuiSymbols::updateView()
 		return;
 	if (!new_encoding.empty())
 		encoding_ = new_encoding;
+	bool const utf8 = toqstr(encoding_).startsWith("utf8");
+	if (utf8)
+		categoryFilterCB->setChecked(false);
+	categoryFilterCB->setEnabled(!utf8);
 	updateSymbolList();
 }
 
