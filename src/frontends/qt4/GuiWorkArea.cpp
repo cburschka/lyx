@@ -544,10 +544,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	}
 	// Position the menu to the right.
 	// FIXME: menu position should be different for RTL text.
-	pos.rx() += menu->width();
-	// FIXME: correct vertical position of the menu WRT screen espace.
-	//pos.ry() += menu->height();
-	menu->exec(pos);
+	menu->exec(e->globalPos());
 	e->accept();
 }
 
