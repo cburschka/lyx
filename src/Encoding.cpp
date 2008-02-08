@@ -341,7 +341,7 @@ docstring const Encoding::latexChar(char_type c) const
 }
 
 
-set<char_type> Encoding::getSymbolsList()
+set<char_type> Encoding::getSymbolsList() const
 {
 	// assure the used encoding is properly initialized
 	if (!complete_)

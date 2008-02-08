@@ -71,7 +71,7 @@ public:
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
-	std::set<char_type> getSymbolsList();
+	std::set<char_type> getSymbolsList() const;
 private:
 	///
 	std::string Name_;
