@@ -330,15 +330,15 @@ docstring const Encoding::latexChar(char_type c) const
 
 	if (c < start_encodable_)
 		return docstring(1, c);
-	if (encodable_.find(c) == encodable_.end()) {
-		// c cannot be encoded in this encoding
-		CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-		if (it == unicodesymbols.end())
-			throw EncodingException(c);
-		else
-			return it->second.command;
-	}
-	return docstring(1, c);
+	if (encodable_.find(c) != encodable_.end())
+		return docstring(1, c);
+
+	// c cannot be encoded in this encoding
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it == unicodesymbols.end())
+		throw EncodingException(c);
+	else
+		return it->second.command;
 }
 
 
@@ -375,8 +375,7 @@ void Encodings::validate(char_type c, LaTeXFeatures & features)
 
 bool Encodings::isComposeChar_hebrew(char_type c)
 {
-	return c <= 0x05c2 && c >= 0x05b0 &&
-	       c != 0x05be && c != 0x05c0;
+	return c <= 0x05c2 && c >= 0x05b0 && c != 0x05be && c != 0x05c0;
 }
 
 
@@ -386,11 +385,9 @@ bool Encodings::isComposeChar_hebrew(char_type c)
 
 bool Encodings::is_arabic_special(char_type c)
 {
-	return (c >= 0x0621 && c <= 0x0625) ||
-		c == 0x0627 || c == 0x0629  ||
-		c == 0x062f || c == 0x0648  ||
-	       (c >= 0x0630 && c <= 0x0632) ||
-       	        c == 0x0649 || c == 0x0698;
+	return (c >= 0x0621 && c <= 0x0625) || (c >= 0x0630 && c <= 0x0632)
+		|| c == 0x0627 || c == 0x0629 || c == 0x062f || c == 0x0648
+		|| c == 0x0649 || c == 0x0698;
 }
 
 
@@ -402,8 +399,8 @@ bool Encodings::isComposeChar_arabic(char_type c)
 
 bool Encodings::is_arabic(char_type c)
 {
-	return c >= arabic_start && c <= arabic_end &&
-	       arabic_table[c-arabic_start][0];
+	return c >= arabic_start && c <= arabic_end
+		&& arabic_table[c-arabic_start][0];
 }
 
 
@@ -433,8 +430,7 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 	if (it == unicodesymbols.end())
 		return false;
 
-	if (it->second.preamble != "textgreek" &&
-	    it->second.preamble != "textcyr")
+	if (it->second.preamble != "textgreek" && it->second.preamble != "textcyr")
 		return false;
 
 	if (preamble.empty()) {
@@ -447,11 +443,8 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 
 Encoding const * Encodings::getFromLyXName(string const & name) const
 {
-	EncodingList::const_iterator it = encodinglist.find(name);
-	if (it != encodinglist.end())
-		return &it->second;
-	else
-		return 0;
+	EncodingList::const_iterator const it = encodinglist.find(name);
+	return it != encodinglist.end() ? &it->second : 0;
 }
 
 
@@ -486,28 +479,26 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		CharInfo info;
 		string flags;
 
-		if (symbolslex.next(true)) {
-			istringstream is(symbolslex.getString());
-			// reading symbol directly does not work if
-			// char_type == wchar_t.
-			boost::uint32_t tmp;
-			if(!(is >> hex >> tmp))
-				break;
-			symbol = tmp;
-		} else
+		if (!symbolslex.next(true))
 			break;
-		if (symbolslex.next(true))
-			info.command = symbolslex.getDocString();
-		else
+
+		istringstream is(symbolslex.getString());
+		// reading symbol directly does not work if
+		// char_type == wchar_t.
+		boost::uint32_t tmp;
+		if(!(is >> hex >> tmp))
 			break;
-		if (symbolslex.next(true))
-			info.preamble = symbolslex.getString();
-		else
+		symbol = tmp;
+
+		if (!symbolslex.next(true))
 			break;
-		if (symbolslex.next(true))
-			flags = symbolslex.getString();
-		else
+		info.command = symbolslex.getDocString();
+		if (!symbolslex.next(true))
 			break;
+		info.preamble = symbolslex.getString();
+		if (!symbolslex.next(true))
+			break;
+		flags = symbolslex.getString();
 
 		info.combining = false;
 		info.feature = false;
