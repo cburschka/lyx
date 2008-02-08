@@ -279,6 +279,9 @@ Encoding::Encoding(string const & n, string const & l, string const & i,
 
 void Encoding::init() const
 {
+	if (complete_)
+		return;
+
 	start_encodable_ = 0;
 	// temporarily switch off lyxerr, since we will generate iconv errors
 	lyxerr.disable();
@@ -288,12 +291,12 @@ void Encoding::init() const
 		for (unsigned short j = 0; j < 256; ++j) {
 			char const c = char(j);
 			vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, iconvName_);
-			if (ucs4.size() == 1) {
-				char_type const c = ucs4[0];
-				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-				if (it == unicodesymbols.end() || !it->second.force)
-					encodable_.insert(c);
-			}
+			if (ucs4.size() != 1)
+				continue;
+			char_type const uc = ucs4[0];
+			CharInfoMap::const_iterator const it = unicodesymbols.find(uc);
+			if (it == unicodesymbols.end() || !it->second.force)
+				encodable_.insert(uc);
 		}
 	} else {
 		// We do not know how many code points this encoding has, and
@@ -323,9 +326,7 @@ void Encoding::init() const
 docstring const Encoding::latexChar(char_type c) const
 {
 	// assure the used encoding is properly initialized
-	if (!complete_)
-		init();
-	BOOST_ASSERT(complete_);
+	init();
 
 	if (c < start_encodable_)
 		return docstring(1, c);
@@ -344,9 +345,7 @@ docstring const Encoding::latexChar(char_type c) const
 set<char_type> Encoding::getSymbolsList() const
 {
 	// assure the used encoding is properly initialized
-	if (!complete_)
-		init();
-	BOOST_ASSERT(complete_);
+	init();
 
 	// first all encodable characters
 	CharSet symbols = encodable_;
