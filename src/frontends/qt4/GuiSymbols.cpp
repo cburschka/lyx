@@ -17,6 +17,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Encoding.h"
 
@@ -143,6 +144,16 @@ UnicodeBlocks unicode_blocks[] = {
 
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
+
+QString getCodePoint(char_type c)
+{
+	QString cp = QString::number(c, 16);
+	while (cp.size() < 4)
+		cp.prepend('0');
+	cp.prepend("0x");
+	return cp;
+}
+
 } // namespace anon
 
 
@@ -167,7 +178,10 @@ void GuiSymbols::updateView()
 {
 	chosenLE->clear();
 
-	string const & new_encoding = bufferview()->cursor().getEncoding()->name();
+	string new_encoding = bufferview()->cursor().getEncoding()->name();
+	if (buffer().params().inputenc != "auto" &&
+	    buffer().params().inputenc != "default")
+		new_encoding = buffer().params().encoding().name();
 	if (new_encoding == encoding_)
 		// everything up to date
 		return;
@@ -239,7 +253,7 @@ void GuiSymbols::on_symbolsLW_itemClicked(QListWidgetItem * item)
 void GuiSymbols::on_categoryCO_activated(QString const & text)
 {
 	if (!categoryFilterCB->isChecked())
-		updateSymbolList();
+		updateSymbolList(false);
 	if (used_blocks.find(text) != used_blocks.end())
 		symbolsLW->scrollToItem(used_blocks[text],
 			QAbstractItemView::PositionAtTop);
@@ -248,7 +262,7 @@ void GuiSymbols::on_categoryCO_activated(QString const & text)
 
 void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 {
-	updateSymbolList();
+	updateSymbolList(false);
 	if (on) {
 		QString const category = categoryCO->currentText();
 		if (used_blocks.find(category) != used_blocks.end())
@@ -258,15 +272,17 @@ void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 }
 
 
-void GuiSymbols::updateSymbolList()
+void GuiSymbols::updateSymbolList(bool update_combo)
 {
 	QString category = categoryCO->currentText();
 	bool const nocategory = category.isEmpty();
 	char_type range_start = 0x0000;
 	char_type range_end = 0x110000;
 	symbolsLW->clear();
-	used_blocks.clear();
-	categoryCO->clear();
+	if (update_combo) {
+		used_blocks.clear();
+		categoryCO->clear();
+	}
 	bool const show_all = categoryFilterCB->isChecked();
 
 	typedef set<char_type> SymbolsList;
@@ -294,22 +310,34 @@ void GuiSymbols::updateSymbolList()
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
+		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
+			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
 		if (show_all || c >= range_start && c <= range_end) {
 			lwi->setTextAlignment(Qt::AlignCenter);
+			lwi->setToolTip(
+				qt_("Character: ") + toqstr(c) + "\n" +
+				qt_("Code Point: ") + getCodePoint(c)
+				);
 			symbolsLW->addItem(lwi);
 		}
-		QString block = getBlock(c);
-		if (category.isEmpty())
-			category = block;
-		if (used_blocks.find(block) == used_blocks.end())
-			used_blocks[block] = lwi;
+		if (update_combo) {
+			QString block = getBlock(c);
+			if (category.isEmpty())
+				category = block;
+			if (used_blocks.find(block) == used_blocks.end())
+				used_blocks[block] = lwi;
+		}
 	}
 
-	// update category combo
-	for (UsedBlocks::iterator it = used_blocks.begin(); it != used_blocks.end(); ++it) {
-		categoryCO->addItem(it->first);
+	if (update_combo) {
+		// update category combo
+		for (UsedBlocks::iterator it = used_blocks.begin();
+		     it != used_blocks.end(); ++it) {
+			categoryCO->addItem(it->first);
+		}
 	}
+
 	int old = categoryCO->findText(category);
 	if (old != -1)
 		categoryCO->setCurrentIndex(old);

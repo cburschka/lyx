@@ -50,8 +50,11 @@ public Q_SLOTS:
 	void on_chosenLE_textChanged(QString const &);
 
 private:
-	/// update the widgets (symbol browser, category combo)
-	void updateSymbolList();
+	/** update the widgets (symbol browser, category combo)
+	 *  \p combo indicates if the combo box has to be refreshed
+	 *  as well (which is rather expensive)
+	**/
+	void updateSymbolList(bool update_combo = true);
 	/// get the unicode block associated with \p c
 	QString const getBlock(char_type c) const;
 	/// the encoding at cursor position
