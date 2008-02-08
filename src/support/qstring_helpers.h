@@ -64,6 +64,16 @@ inline QString const toqstr(docstring const & ucs4)
 	return QString::fromUcs4(reinterpret_cast<uint const *>(ucs4.data()), ucs4.length());
 }
 
+/**
+ * toqstr - convert a UCS4 encoded character into a QString
+ *
+ * This is the preferred method of converting anything that possibly
+ * contains non-ASCII stuff to QString.
+ */
+inline QString const toqstr(char_type ucs4)
+{
+	return QString::fromUcs4(reinterpret_cast<uint const *>(&ucs4), 1);
+}
 
 /**
  * qstring_to_ucs4 - convert a QString into a UCS4 encoded docstring

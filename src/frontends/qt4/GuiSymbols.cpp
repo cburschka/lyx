@@ -294,8 +294,7 @@ void GuiSymbols::updateSymbolList()
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
-		QListWidgetItem * lwi = new QListWidgetItem(
-			QString::fromUcs4((uint const *) &c, 1));
+		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
 		if (show_all || c >= range_start && c <= range_end) {
 			lwi->setTextAlignment(Qt::AlignCenter);
 			symbolsLW->addItem(lwi);
