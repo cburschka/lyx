@@ -1110,8 +1110,8 @@ void LyXAction::init()
  * \li Params: statusbar  : Toggle visibility of the statusbar.\n
                menubar    : Toggle visibility of the menubar.\n
 	       frame      : Toggle visibility of the frames around editing window.\n
-	       fullscreen : Toggle fullscreen mode. This also covers calling the 
-	                    previous functions. However #LFUN_TOOLBAR_TOGGLE for the 
+	       fullscreen : Toggle fullscreen mode. This also covers calling the
+	                    previous functions. However #LFUN_TOOLBAR_TOGGLE for the
 			    custom tweaks of the toolbars should be used.
  * \li Origin: ps, 9 Feb 2007
  * \endvar

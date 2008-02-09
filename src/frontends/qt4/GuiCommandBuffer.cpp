@@ -29,7 +29,6 @@
 
 #include <QHBoxLayout>
 #include <QKeyEvent>
-#include <QLayout>
 #include <QListWidget>
 #include <QMouseEvent>
 #include <QPixmap>

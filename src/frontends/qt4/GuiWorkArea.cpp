@@ -47,7 +47,6 @@
 #include <QContextMenuEvent>
 #include <QInputContext>
 #include <QHelpEvent>
-#include <QLayout>
 #include <QMainWindow>
 #include <QPainter>
 #include <QPalette>
