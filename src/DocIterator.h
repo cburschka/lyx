@@ -23,6 +23,7 @@ class LyXErr;
 class MathAtom;
 class Paragraph;
 class Text;
+class InsetIterator;
 
 
 // The public inheritance should go in favour of a suitable data member
@@ -40,8 +41,6 @@ public:
 public:
 	///
 	DocIterator();
-	///
-	explicit DocIterator(Inset & inset);
 
 	/// access slice at position \p i
 	CursorSlice const & operator[](size_t i) const { return slices_[i]; }
@@ -57,6 +56,8 @@ public:
 
 	/// does this iterator have any content?
 	bool empty() const { return slices_.empty(); }
+	/// is this the end position?
+	bool atEnd() const { return slices_.empty(); }
 
 	//
 	// access to slice at tip
@@ -224,6 +225,11 @@ public:
 	void append(idx_type idx, pos_type pos);
 
 private:
+	friend class InsetIterator;
+	friend DocIterator doc_iterator_begin(Inset & inset);
+	friend DocIterator doc_iterator_end(Inset & inset);
+	///
+	explicit DocIterator(Inset & inset);
 	/**
 	 * Normally, when the cursor is at position i, it is painted *before*
 	 * the character at position i. However, what if we want the cursor 

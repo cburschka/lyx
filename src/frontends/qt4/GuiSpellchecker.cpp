@@ -333,8 +333,8 @@ void GuiSpellchecker::check()
 
 	ptrdiff_t start = 0;
 	ptrdiff_t total = 0;
-	DocIterator it = DocIterator(buffer().inset());
-	for (start = 0; it != cur; it.forwardPos())
+	DocIterator it = doc_iterator_begin(buffer().inset());
+	for (start = 1; it != cur; it.forwardPos())
 		++start;
 
 	for (total = start; it; it.forwardPos())

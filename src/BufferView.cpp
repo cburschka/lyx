@@ -429,7 +429,7 @@ void BufferView::updateScrollbar()
 		<< " curr par: " << d->cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight());
 
-	int const parsize = int(t.paragraphs().size());
+	size_t const parsize = t.paragraphs().size();
 	if (d->par_height_.size() != parsize) {
 		d->par_height_.clear();
 		// FIXME: We assume a default paragraph height of 2 rows. This
@@ -449,7 +449,7 @@ void BufferView::updateScrollbar()
 	int top_pos = first.second->position() - first.second->ascent();
 	int bottom_pos = last.second->position() + last.second->descent();
 	bool first_visible = first.first == 0 && top_pos >= 0;
-	bool last_visible = last.first == parsize  - 1 && bottom_pos <= height_;
+	bool last_visible = last.first + 1 == int(parsize) && bottom_pos <= height_;
 	if (first_visible && last_visible) {
 		d->scrollbarParameters_.min = 0;
 		d->scrollbarParameters_.max = 0;
@@ -457,7 +457,7 @@ void BufferView::updateScrollbar()
 	}
 
 	d->scrollbarParameters_.min = top_pos;
-	for (size_t i = 0; i != first.first; ++i)
+	for (size_t i = 0; i != size_t(first.first); ++i)
 		d->scrollbarParameters_.min -= d->par_height_[i];
 	d->scrollbarParameters_.max = bottom_pos;
 	for (size_t i = last.first + 1; i != parsize; ++i)
@@ -527,7 +527,7 @@ void BufferView::scrollDocView(int value)
 	// find paragraph at target position
 	int par_pos = d->scrollbarParameters_.min;
 	pit_type i = 0;
-	for (; i != d->par_height_.size(); ++i) {
+	for (; i != int(d->par_height_.size()); ++i) {
 		par_pos += d->par_height_[i];
 		if (par_pos >= value)
 			break;
@@ -631,7 +631,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	int top_id, pos_type top_pos)
 {
 	bool success = false;
-	DocIterator doc_it;
+	DocIterator dit;
 
 	d->cursor_.clearSelection();
 
@@ -639,19 +639,19 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	// This is the case for a 'live' bookmark when unique paragraph ID
 	// is used to track bookmarks.
 	if (top_id > 0) {
-		ParIterator par = buffer_.getParFromID(top_id);
-		if (par != buffer_.par_iterator_end()) {
-			doc_it = makeDocIterator(par, min(par->size(), top_pos));
+		dit = buffer_.getParFromID(top_id);
+		if (!dit.atEnd()) {
+			dit.pos() = min(dit.paragraph().size(), top_pos);
 			// Some slices of the iterator may not be
 			// reachable (e.g. closed collapsable inset)
 			// so the dociterator may need to be
 			// shortened. Otherwise, setCursor may crash
 			// lyx when the cursor can not be set to these
 			// insets.
-			size_t const n = doc_it.depth();
+			size_t const n = dit.depth();
 			for (size_t i = 0; i < n; ++i)
-				if (doc_it[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
-					doc_it.resize(i);
+				if (dit[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
+					dit.resize(i);
 					break;
 				}
 			success = true;
@@ -664,16 +664,17 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	// restoration is inaccurate. If a bookmark was within an inset,
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
-	if (static_cast<size_t>(bottom_pit) < buffer_.paragraphs().size()) {
-		doc_it = doc_iterator_begin(buffer_.inset());
-		doc_it.pit() = bottom_pit;
-		doc_it.pos() = min(bottom_pos, doc_it.paragraph().size());
+	if (bottom_pit < int(buffer_.paragraphs().size())) {
+		dit = doc_iterator_begin(buffer_.inset());
+				
+		dit.pit() = bottom_pit;
+		dit.pos() = min(bottom_pos, dit.paragraph().size());
 		success = true;
 	}
 
 	if (success) {
 		// Note: only bottom (document) level pit is set.
-		setCursor(doc_it);
+		setCursor(dit);
 		// set the current font.
 		d->cursor_.setCurrentFont();
 		// To center the screen on this new position we need the
@@ -997,17 +998,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
 
-			ParIterator par = b->getParFromID(id);
-			if (par == b->par_iterator_end()) {
+			DocIterator dit = b->getParFromID(id);
+			if (dit.atEnd()) {
 				LYXERR(Debug::INFO, "No matching paragraph found! [" << id << "].");
 			} else {
-				LYXERR(Debug::INFO, "Paragraph " << par->id()
+				LYXERR(Debug::INFO, "Paragraph " << dit.paragraph().id()
 					<< " found in buffer `"
 					<< b->absFileName() << "'.");
 
 				if (b == &buffer_) {
 					// Set the cursor
-					setCursor(makeDocIterator(par, 0));
+					setCursor(dit);
 					showCursor();
 				} else {
 					// Switch to other buffer view and resend cmd
@@ -1672,9 +1673,9 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	// For an example, see bug 2933:
 	// http://bugzilla.lyx.org/show_bug.cgi?id=2933
 	// The code below could maybe be moved to a DocIterator method.
-	//lyxerr << "cur before " << cur <<endl;
-	DocIterator dit(cur.inset());
-	dit.push_back(cur.bottom());
+	//lyxerr << "cur before " << cur << endl;
+	DocIterator dit = doc_iterator_begin(cur.inset());
+	dit.bottom() = cur.bottom();
 	size_t i = 1;
 	while (i < cur.depth() && dit.nextInset() == &cur[i].inset()) {
 		dit.push_back(cur[i]);

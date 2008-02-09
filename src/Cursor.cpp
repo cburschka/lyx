@@ -272,7 +272,8 @@ void Cursor::reset(Inset & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
-	anchor_ = DocIterator(inset);
+	anchor_ = doc_iterator_begin(inset);
+	anchor_.clear();
 	clearTargetX();
 	selection_ = false;
 	mark_ = false;

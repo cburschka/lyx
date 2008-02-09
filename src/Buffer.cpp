@@ -1485,60 +1485,37 @@ bool Buffer::isMultiLingual() const
 }
 
 
-ParConstIterator Buffer::getParFromID(int const id) const
+DocIterator Buffer::getParFromID(int const id) const
 {
-	ParConstIterator it = par_iterator_begin();
-	ParConstIterator const end = par_iterator_end();
-
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
 		lyxerr << "getParFromID(), id: " << id << endl;
-		return end;
+		return doc_iterator_end(inset());
 	}
 
-	for (; it != end; ++it)
-		if (it->id() == id)
+	for (DocIterator it = doc_iterator_begin(inset()); !it.atEnd(); it.forwardPar())
+		if (it.paragraph().id() == id)
 			return it;
 
-	return end;
-}
-
-
-ParIterator Buffer::getParFromID(int const id)
-{
-	ParIterator it = par_iterator_begin();
-	ParIterator const end = par_iterator_end();
-
-	if (id < 0) {
-		// John says this is called with id == -1 from undo
-		lyxerr << "getParFromID(), id: " << id << endl;
-		return end;
-	}
-
-	for (; it != end; ++it)
-		if (it->id() == id)
-			return it;
-
-	return end;
+	return doc_iterator_end(inset());
 }
 
 
 bool Buffer::hasParWithID(int const id) const
 {
-	ParConstIterator const it = getParFromID(id);
-	return it != par_iterator_end();
+	return !getParFromID(id).atEnd();
 }
 
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return lyx::par_iterator_begin(inset());
+	return ParIterator(doc_iterator_begin(inset()));
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return lyx::par_iterator_end(inset());
+	return ParIterator(doc_iterator_end(inset()));
 }
 
 
@@ -2010,8 +1987,8 @@ void Buffer::updateMacroInstances() const
 {
 	LYXERR(Debug::MACROS, "updateMacroInstances for "
 		<< d->filename.onlyFileName());
-	ParConstIterator it = par_iterator_begin();
-	ParConstIterator end = par_iterator_end();
+	DocIterator it = doc_iterator_begin(inset());
+	DocIterator end = doc_iterator_end(inset());
 	for (; it != end; it.forwardPos()) {
 		// look for MathData cells in InsetMathNest insets
 		Inset * inset = it.nextInset();

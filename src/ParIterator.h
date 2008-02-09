@@ -71,8 +71,6 @@ public:
 };
 
 
-DocIterator makeDocIterator(ParIterator const &, pos_type);
-
 ParIterator par_iterator_begin(Inset & inset);
 
 ParIterator par_iterator_end(Inset & inset);

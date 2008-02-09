@@ -109,21 +109,20 @@ void GuiErrorList::goTo(int item)
 		return;
 
 	Buffer & buf = buffer();
-	ParIterator pit = buf.getParFromID(err.par_id);
+	DocIterator dit = buf.getParFromID(err.par_id);
 
-	if (pit == buf.par_iterator_end()) {
+	if (dit == doc_iterator_end(buf.inset())) {
 		LYXERR0("par id " << err.par_id << " not found");
 		return;
 	}
 
 	// Now make the selection.
-	// This should be implemented using an LFUN. (Angus)
 	// if pos_end is 0, this means it is end-of-paragraph
-	pos_type const end = err.pos_end ? min(err.pos_end, pit->size())
-					 : pit->size();
+	pos_type const s = dit.paragraph().size();
+	pos_type const end = err.pos_end ? min(err.pos_end, s) : s;
 	pos_type const start = min(err.pos_start, end);
 	pos_type const range = end - start;
-	DocIterator const dit = makeDocIterator(pit, start);
+	dit.pos() = start;
 	bufferview()->putSelectionAt(dit, range, false);
 	// FIXME: If we used an LFUN, we would not need this line:
 	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);

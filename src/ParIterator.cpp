@@ -104,15 +104,6 @@ ParagraphList & ParIterator::plist() const
 }
 
 
-DocIterator makeDocIterator(ParIterator const & par, pos_type pos)
-{
-	DocIterator dit(par);
-	dit.pos() = pos;
-	return dit;
-}
-
-
-
 ///
 /// ParConstIterator
 ///

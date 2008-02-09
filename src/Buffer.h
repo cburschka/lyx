@@ -144,9 +144,7 @@ public:
 		pit_type &, pos_type &,
 		Font const &, docstring const &, bool);
 	///
-	ParIterator getParFromID(int id);
-	///
-	ParConstIterator getParFromID(int id) const;
+	DocIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 
