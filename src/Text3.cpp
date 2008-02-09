@@ -197,42 +197,44 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			inset->edit(cur, true);
 		// Now put this into inset
 		static_cast<InsetCollapsable *>(inset)->text_.insertStringAsParagraphs(cur, ds);
-	} else {
-		bool gotsel = false;
-		if (cur.selection()) {
-			lyx::dispatch(FuncRequest(LFUN_CUT));
-			gotsel = true;
-		}
-		text->insertInset(cur, inset);
-
-		if (edit)
-			inset->edit(cur, true);
-
-		if (gotsel && pastesel) {
-			lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-			InsetText * insetText = dynamic_cast<InsetText *>(inset);
-			if (insetText && !insetText->allowMultiPar() 
-			    || cur.lastpit() == 0) {
-				// reset first par to default
-				LayoutPtr const layout =
-					cur.buffer().params().getTextClass().defaultLayout();
-				cur.text()->paragraphs().begin()->layout(layout);
-				cur.pos() = 0;
-				cur.pit() = 0;
-				// Merge multiple paragraphs -- hack
-				while (cur.lastpit() > 0) {
-					mergeParagraph(cur.buffer().params(),
-						cur.text()->paragraphs(), 0);
-				}
-			} else {
-				// reset surrounding par to default
-				docstring const layoutname = 
-					cur.buffer().params().getTextClass().defaultLayoutName();
-				cur.leaveInset(*inset);
-				text->setLayout(cur, layoutname);
-			}
-		}
+		return true;
 	}
+
+	bool gotsel = false;
+	if (cur.selection()) {
+		lyx::dispatch(FuncRequest(LFUN_CUT));
+		gotsel = true;
+	}
+	text->insertInset(cur, inset);
+
+	if (edit)
+		inset->edit(cur, true);
+
+	if (!gotsel || !pastesel)
+		return true;
+
+	lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
+	InsetText * insetText = dynamic_cast<InsetText *>(inset);
+	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
+			// reset first par to default
+			LayoutPtr const layout =
+				cur.buffer().params().getTextClass().defaultLayout();
+			cur.text()->paragraphs().begin()->layout(layout);
+			cur.pos() = 0;
+			cur.pit() = 0;
+			// Merge multiple paragraphs -- hack
+			while (cur.lastpit() > 0) {
+				mergeParagraph(cur.buffer().params(),
+					cur.text()->paragraphs(), 0);
+			}
+	} else {
+		// reset surrounding par to default
+		docstring const layoutname = 
+			cur.buffer().params().getTextClass().defaultLayoutName();
+		cur.leaveInset(*inset);
+		text->setLayout(cur, layoutname);
+	}
+
 	return true;
 }
 
