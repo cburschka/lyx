@@ -15,15 +15,15 @@ BUILT_SOURCES = $(PCH_FILE)
 #########################  Qt stuff  #############################
 #
 
-CLEANFILES += $(MOCEDFILES)
-BUILT_SOURCES += $(MOCEDFILES)
+MOCHEADER = SignalSlotPrivate.h
 
 MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
+CLEANFILES += $(MOCEDFILES)
+BUILT_SOURCES += $(MOCEDFILES)
+
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
-
-MOCHEADER =
 
 liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)
 
@@ -90,6 +90,7 @@ liblyxsupport_la_SOURCES = \
 	Systemcall.h \
 	SignalSlot.cpp \
 	SignalSlot.h \
+	SignalSlotPrivate.cpp \
 	SignalSlotPrivate.h \
 	textutils.h \
 	Translator.h \
