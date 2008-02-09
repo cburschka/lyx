@@ -61,7 +61,7 @@ inline QString const toqstr(docstring const & ucs4)
 {
 	// If possible we let qt do the work, since this version does not
 	// need to be superfast.
-	return QString::fromUcs4(reinterpret_cast<uint const *>(ucs4.data()), ucs4.length());
+	return QString::fromUcs4((uint const *)ucs4.data(), ucs4.length());
 }
 
 /**
@@ -72,7 +72,7 @@ inline QString const toqstr(docstring const & ucs4)
  */
 inline QString const toqstr(char_type ucs4)
 {
-	return QString::fromUcs4(reinterpret_cast<uint const *>(&ucs4), 1);
+	return QString::fromUcs4((uint const *)&ucs4, 1);
 }
 
 /**
