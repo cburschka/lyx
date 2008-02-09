@@ -72,7 +72,8 @@ inline QString const toqstr(docstring const & ucs4)
  */
 inline QString const toqstr(char_type ucs4)
 {
-	return QString::fromUcs4((uint const *)&ucs4, 1);
+	union { char_type c; uint i; } u = { ucs4 };
+	return QString::fromUcs4(&u.i, 1);
 }
 
 /**
