@@ -10,16 +10,18 @@
 
 #include <config.h>
 
+#include "BufferView.h"
+#include "Cursor.h"
+#include "DispatchResult.h"
+#include "FuncRequest.h"
+#include "InsetMathFont.h"
 #include "InsetMathScript.h"
+#include "InsetMathSymbol.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "InsetMathSymbol.h"
-#include "InsetMathFont.h"
-#include "DispatchResult.h"
-#include "Cursor.h"
+
 #include "support/debug.h"
-#include "FuncRequest.h"
 
 #include <boost/assert.hpp>
 
@@ -671,13 +673,11 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 	if (nargs() > 2 && (!cell(1).empty() || !cell(2).empty())) {
 		if (cell(2).empty()) {
 			// must be a subscript...
-			cur.recordUndoInset();
 			removeScript(false);
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
 		} else if (cell(1).empty()) {
 			// must be a superscript...
-			cur.recordUndoInset();
 			removeScript(true);
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
@@ -689,18 +689,25 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 	// The script inset is removed completely.
 	if ((nargs() == 2 && cell(1).empty())
 	    || (nargs() == 3 && cell(1).empty() && cell(2).empty())) {
-		// could be either subscript or super script
-		cur.recordUndoInset();
+		// Make undo step. We cannot use cur for this because
+		// it does not necessarily point to us. The BufferView
+		// cursor though should do.
+		int scriptSlice
+		= cur.bv().cursor().find(this);
+		BOOST_ASSERT(scriptSlice != -1);
+		Cursor scriptCur = cur.bv().cursor();
+		scriptCur.cutOff(scriptSlice);
+		scriptCur.recordUndoInset();
+
 		// Let the script inset commit suicide. This is
 		// modelled on Cursor.pullArg(), but tries not to
 		// invoke notifyCursorLeaves again and does not touch
 		// cur (since the top slice will be deleted
-		// afterwards))
+		// afterwards)
 		MathData ar = cell(0);
-		Cursor tmpcur = cur;
-		tmpcur.pop();
-		tmpcur.cell().erase(tmpcur.pos());
-		tmpcur.cell().insert(tmpcur.pos(), ar);
+		scriptCur.pop();
+		scriptCur.cell().erase(scriptCur.pos());
+		scriptCur.cell().insert(scriptCur.pos(), ar);
 		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 		return true;
 	}
