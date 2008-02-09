@@ -132,6 +132,8 @@ def get_encoding(language, inputencoding, format, cjk_encoding):
         return lang[language][3]
     if inputencoding == "":
         return "latin1"
+    if inputencoding == "utf8x":
+        return "utf8"
     # python does not know the alias latin9
     if inputencoding == "latin9":
         return "iso-8859-15"
