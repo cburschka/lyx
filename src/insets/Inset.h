@@ -212,7 +212,8 @@ public:
 	/// number of columns in gridlike structures
 	virtual size_t ncols() const { return 0; }
 	/// is called when the cursor leaves this inset
-	//  returns true if cursor is now invalid.
+	/// returns true if cursor is now invalid. The cursor parameter
+	/// is _not_ necessarily pointing to the inset.
 	virtual bool notifyCursorLeaves(Cursor &) { return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
