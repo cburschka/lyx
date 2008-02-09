@@ -239,6 +239,8 @@ class TabWorkArea : public QTabWidget
 public:
 	TabWorkArea(QWidget * parent = 0);
 
+	///
+	void setFullScreen(bool full_screen);
 	void showBar(bool show);
 	void closeAll();
 	bool setCurrentWorkArea(GuiWorkArea *);

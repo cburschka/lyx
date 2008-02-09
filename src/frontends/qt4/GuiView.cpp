@@ -1848,17 +1848,15 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 #if QT_VERSION >= 0x040300
 		setContentsMargins(0, 0, 0, 0);
 #endif
-		// FIXME: it is not enough to take care of the current work area.
-		// All work areas are affected by a full screen mode!
-		d.current_work_area_->setFullScreen(false);
+		for (int i = 0; i != d.splitter_->count(); ++i)
+			d.tabWorkArea(i)->setFullScreen(false);
 		menuBar()->show();
 		statusBar()->show();
 	} else {
 		statusBar()->hide();
 		menuBar()->hide();
-		// FIXME: it is not enough to take care of the current work area.
-		// All work areas are affected by a full screen mode!
-		d.current_work_area_->setFullScreen(true);
+		for (int i = 0; i != d.splitter_->count(); ++i)
+			d.tabWorkArea(i)->setFullScreen(true);
 #if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
 #endif

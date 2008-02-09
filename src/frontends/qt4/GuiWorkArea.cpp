@@ -1047,6 +1047,15 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 }
 
 
+void TabWorkArea::setFullScreen(bool full_screen)
+{
+	for (int i = 0; i != count(); ++i) {
+		if (GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i)))
+			wa->setFullScreen(full_screen);
+	}
+}
+
+
 void TabWorkArea::showBar(bool show)
 {
 	tabBar()->setEnabled(show);
