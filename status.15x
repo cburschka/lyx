@@ -18,13 +18,6 @@ order of importance. This is, of course, subjective...]
 What's new
 ==========
 
-Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
-                floats has been removed from all major LaTeX-distributions
-		due to a license conflict. We are therefore forced to switch
-		from floatflt to the package "wrapfig". As consequence of this,
-		the wrap floats in your documents can eventually look
-		different, the position can slightly differ. So you should
-		check the output of your documents where you use wrap floats.
 
 ** Updates:
 ***********
@@ -83,6 +76,9 @@ Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
 
 * DOCUMENT INPUT/OUTPUT
 
+- Use package wrapfig instead of floatflt for wrap figure floats, NOTE that
+  this might slightly change the output (cf. the file RELEASE-NOTES).
+
 - Support to paste text containing ligatures to LyX.
 
 
@@ -107,6 +103,9 @@ Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
 - Fix internal conversion from ucs4 to cp-1255 (LyX didn't recognize
   the Hebrew character tav [0x5EA] as a valid character in cp-1255)
   (bug 4439).
+
+- Fix import of LaTeX files that use the inputenc option "utf8x" (part
+  of bug 4503).
 
 - Rotated floats are now correctly converted to ERT when exporting to LyX
   format < 1.4.0.
@@ -184,7 +183,7 @@ Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
 
 - The case-changing functions do not select text anymore.
 
-- set correct width for labels in document class "letter (KOMA-Script v.2)"
+- Set correct width for labels in document class "letter (KOMA-Script v.2)"
   (bug 4529).
 
 
@@ -207,4 +206,4 @@ Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
 
 - Dutch dictionary now downloads.
 
-- Fix compilation with gcc 4.3 (soon to be released)
+- Fix compilation with gcc 4.3 (soon to be released).

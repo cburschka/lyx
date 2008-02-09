@@ -5,6 +5,16 @@ Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
+Interface changes in version 1.5.4
+------------------------------------
+
+- Due to a license conflict, the LaTeX-package "floatflt" that is used by LyX
+  for wrap figure floats has been removed from all major LaTeX-distributions.
+  Thus, we were forced to switch to the package "wrapfig". As consequence of this,
+  the look and positioning of wrap floats in your documents might slightly differ.
+  Please backup documents with wrap floats before upgrading and check the output.
+
+
 Known issues in version 1.5.4
 ------------------------------------
 
@@ -12,16 +22,15 @@ Known issues in version 1.5.4
   crash when previewing an EPS graphic (or any other graphic that is converted
   via EPS). This is a bug in the kdelibs package (the kimg_eps library, to be
   precise) included in the KDE 4 pre-releases and in KDE 4.0. The problem has
-  been resolved for KDE 4.0.1. Until KDE 4.0.1 is available, there are two
-  (rather inconvenient) workarounds:
+  been resolved for KDE 4.0.1. We encourage all affected KDE 4 users to upgrade 
+  to KDE 4.0.1 (or newer).
+
+  If you have to stick with KDE 4.0 for some reason, there are two workarounds:
   * uninstall kdelibs4 (or KDE4, for that matter) or
   * disable graphics preview in Tools->Preferences->Graphics
   Cf. http://bugzilla.lyx.org/show_bug.cgi?id=4409
   and
   https://bugs.kde.org/show_bug.cgi?id=156957
-
-  We encourage all KDE 4 users to upgrade to KDE 4.0.1 (or newer) as soon as
-  possible.
 
 - Cursor restoration problems with Multiple-View:
   When using multiple Windows to edit different parts of the

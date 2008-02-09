@@ -1,20 +1,25 @@
-Public release of LyX version 1.5.3
+Public release of LyX version 1.5.4
 ====================================
 
-We are pleased to announce the release of LyX 1.5.3. This is a maintenance
-release that further improves the stability and the performance. Besides
-numerous crashes, the display problems that slipped into 1.5.2 with 
-the performance fixes (on the Mac and on Windows) as well as problems 
-entailed to the reworked document classes were fixed. Furthermore, LyX 1.5.3
-comes with speed improvements that should pay off especially on the Mac and
-other UNIXes. Finally, this version also provides some new features.
+We are pleased to announce the release of LyX 1.5.4. This is a maintenance
+release. Besides the usual stability improvements and fixes, this release
+comes with major improvements in the handling of Chinese, Korean and
+Japanese (CJK) languages and scripts, and introduces some minor new
+features (such as a character count option).
 
-A detailed list of changes is appended below.
+All users, especially CJK users, are encouraged to upgrade to this 
+version.
 
-All users, especially the Mac and Windows users, are encouraged to upgrade
-to this version.
+Caveat: We were forced to switch from the LaTeX package 'floatflt' to
+'wrapfig' for wrap figure floats due to a license problem that limited
+the availability of the former package. In general, this should improve
+your documents containing wrap figures, however, it is possible that the
+look and positioning of the floats changes due to the package change. If
+you have documents with wrap floats, please make a backup before upgrading
+and check the output.
 
-The file RELEASE-NOTES lists some remaining known problems.
+A detailed list of changes is appended below, remaining known problems
+are listed in the file RELEASE-NOTES.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -40,37 +45,37 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.5.3 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.5.4 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.3.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.3.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.3.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.3.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.4.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.4.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.4.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.4.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.3.tar.gz
-	http://lyx.cybermirror.org/stable/lyx-1.5.3.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.3.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.3.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.3.tar.gz
-        http://lyx.mirror.fr/stable/lyx-1.5.3.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.4.tar.gz
+	http://lyx.cybermirror.org/stable/lyx-1.5.4.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.4.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.4.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.4.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.5.4.tar.gz
 
 Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.5.3/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.5.4/
 
 If you already have the LyX 1.5.2 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.3.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.3.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.4.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.4.bz2
 
 Note that this patch will not produce valid LyX/Mac sources, since
 some binary files have been added for this release.
 
-If you find what you think is a bug in LyX 1.5.3, you may either
+If you find what you think is a bug in LyX 1.5.4, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://bugzilla.lyx.org
 
@@ -82,251 +87,6 @@ Enjoy!
 
 The LyX team.
 
-What's new in version 1.5.3?
+What's new in version 1.5.4?
 ----------------------------
 
-** Updates:
-***********
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Updated Czech, French, German, Hebrew, Hungarian, Italian, Japanese,
-  Norwegian, Spanish and Traditional Chinese translations of the user
-  interface.
-
-- New Spanish translation of the example file "ItemizeBullets.lyx".
-
-- New French translation of the EmbeddedObjects manual.
-
-- Updated French introduction manual and User's Guide.
-
-- Revised Tutorial
-
-
-* USER INTERFACE
-
-- The way collapsable insets (footnotes, comments etc) are widened has
-  seen a complete overhaul in order to speedup painting when typing
-  within insets. Now these insets take the whole screen width as soon
-  as they contain more than one row of text. Users of Mac/PPC and of
-  Unices with slow X11 server should feel a significant boost in
-  performance thanks to this change.
-
-- The pixmap cache that was introduced in LyX 1.5.2 to improve performance
-  can now be switched on and off in Preferences, since it might decrease
-  on-screen display quality of fonts (subpixel hinting). By default, the
-  cache is disabled. If you experience performance problems, turn in on
-  (Mac and Windows only).
-
-- The behaviour of Return and M-Return has changed: they now allow to either
-  keep current paragraph and depth or to nesting paragraph (bug 2445).
-
-- Add the esint font to the private math fonts. This font assures a
-  consistent on screen looking for all kinds of supported integral signs.
-
-- The slides/foils of presentation classes such as beamer, powerdot, foils
-  and slides are now displayed in the outliner. This makes it easy to navigate
-  to specific slides or move them up and down (bug 78).
-
-- It is now possible to enter greek and cyrillic characters and have them
-  typeset without switching to the proper language.
-
-- Add native Erlang support for listings (bug 4263).
-
-- The on-screen representation of charstyle insets has been polished:
-  they now integrate better in the line. Furthermore, their label is
-  not displayed anymore by default (it can be toggled globally by
-  "View->Open all Insets" and individually by clicking the right mouse
-  button). As a new type of information, the type of a charstyle inset
-  is now displayed in the status bar when the mouse hovers over it.
-
-- Inset-dissolve now works in mathed.
-
-- Placeholders have been moved from the miscellaneous to the spacings section
-  in the math toolbar.
-
-
-* DOCUMENT INPUT/OUTPUT
-
-- tex2lyx now imports the following LaTeX commands and environments:
-  - \newline
-  - environments "framed" and "shaded" from package framed.sty (i.e. framed
-    and shaded notes in LyX)
-  - \selectlanguage, \foreignlanguage, and \inputencoding (bug 27).
-  - all font settings that are natively supported by LyX.
-  - all quotation marks (bug 2703).
-
-- xdg-open and sensible-editor are now detected as possible viewer (wrappers).
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Fix a crash when exporting a file with a branch from the command line
-  (bug 4255).
-
-- Fix a crash when importing an older LyX file (version < 1.5.0) that
-  contains index entries with escaped umlauts (bug 4333).
-
-- Fix a crash when importing an older LyX file (version < 1.1.6) that used
-  the "default" language.
-
-- Exit gracefully and give the user some information if LyX catches an
-  exception from an external program, such as iconv (part of bug 4385).
-
-- Fix LaTeX output of AMS classes when using layouts like Definition but
-  not using also Theorem (bug 4282).
-
-- Remove obsolete LaTeX preamble code that was set when a document contained
-  URLs (bug 2265).
-
-- If there exists a local layout file, use the local copy instead of the
-  system one.
-
-- Use package "float" when the default placement for floats is set to 
-  'Here, definitely'.
-
-- Fix import of bounding box arguments "natheight", "natwidth", "bbllx",
-  "bblly", "bburx" and "bbury" (bug 4418).
-
-
-* USER INTERFACE:
-
-- Fix a crash when using bookmarks in insets (bug 4301).
-
-- Fix a crash when some files or directories are not readable.
-
-- Fix a crash when pasting into a math formula (bug 4318).
-
-- Fix a crash when deleting a row or column of a math matrix while its
-  content is selected (bug 4323).
-
-- Fix a crash when inserting a label after a math matrix (bug 4334).
-
-- Fix a crash when overwriting a selection that spans multiple paragraphs
-  (bug 4317).
-
-- Fix a crash when using the outline-* lfuns within mathed (bug 4330).
-
-- Fix an assertion when entering a math object in a list environment (bug 4335).
-
-- Fix a crash when the cursor leaves the first paragraph of the
-  appendix and it is empty (bug 4352).
-
-- Fix a crash when editing in an inset that contains an horizontal spring 
-  (hfill).
-
-- Fix a crash when pasting text from the clipboard into a multi-line
-  tabular cell (bug 4368).
-
-- Fix a crash when inserting a file in a tabular cell via
-  Insert->File->Plain Text...
-
-- Fix a crash when using the regex search of the citation dialog (bug 4421).
-
-- Correctly adjust screen fonts after the zoom or dpi settings were changed in
-  the preferences (Mac and Windows only) (bug 4268).
-
-- Fix updating of externally modified files on Windows both in the workarea and
-  in the output (bug 3172).
-
-- Fix loading of the CJK package in multilingual documents (part of bug 4337).
-
-- Fix a problem on Windows where invalid names were given to backup files
-  (bug 4287).
-
-- Fix a bug where the spellchecker didn't update the screen display on the last
-  of several misspelled words (bug 3586).
-
-- Fix a bug where the spellchecker skipped the first misspelled word on a second
-  run (bug 2218).
-
-- If the text of footnotes is in a different language than the main text, it
-  was not aligned correctly. This is fixed.
-
-- Fix cut and paste of tabular cells via the external clipboard (bug 4147).
-
-- Fix undo in tabulars after pasting via the external clipboard (bug 4371).
-
-- Fix undo in tabulars after inserting a file via Insert->File->Plain Text...
-
-- Fix middle-mouse paste from other apps into LyX (bug 4394).
-
-- Repair wasy font such that it can also be used on Mac (bug 2326).
-
-- Fix color of some math symbols (bug 2330).
-
-- Fix math display problem with binoms (bug 4308).
-
-- Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
-
-- Fix a bug when adding a math formula column.
-
-- Check and show proper error message if configure.py fails (part of bug 2829).
-
-- Fix DraftDVI preference settings (Windows only).
-
-- Fix bug where strings containing [[double brackets]] appear in user
-  interface.
-
-- Fix several duplicated keyboard accelerators in the paragraph settings dialog
-  (bug 4277).
-
-- Do not close the error dialog on double click (bug 4090).
-
-- Really highlight search text in the find and replace dialog (bug 3999).
-
-- Fix bug that files with non-ascii names are reported as externally modified
-  (bug 4266).
-
-- Disallow paragraph breaks in optional arguments (aka short title) (bug 4359).
-
-- Fix calculation of row metrics with multibyte characters.
-
-- Allow to set optional arguments to Theorem like environments (bug 4344).
-
-- Make sure that the Chapter* layout appears in outline and naviagtion menu 
-  (bug 3888).
-
-- Fix problem after cancelling the Insert Plain Text dialog.
-
-- Distinguish translations for 'Note' between layouts and inset.
-
-- Fix highlighting of comments in the LaTeX source view.
-
-- Improve shortcut behaviour in the Print dialog (bug 4345).
-
-- Fix on-screen numbering of mwrep and mwbk classes (bug 4419).
-
-
-* DOCUMENTATION
-
-- Fix corrupted character in the User's Guide (including the translations).
-
-- Remove the example file "currency.lyx" and its German translation 
-  "Waehrungen.lyx". The file is obsolete, since LyX allows direct insertion
-  of currency symbols as of version 1.5.0.
-
-- Remove the German example file "TabellenBeispiel.lyx" and its French
-  version "ExemplesTableaux.lyx". The files have been obsoleted by the
-  EmbeddedObjects documentation.
-
-- Remove wrong description of math space handling from the German tutorial
-  (bug 4328).
-
-- Document that the list of recently edited files is lost when
-  upgrading from LyX 1.4.x.
-
-* BUILD/INSTALLATION:
-
-- Fix installation of the Spanish User's Guide when building with scons.
-
-- Fix configure.py such that all possible extensions for executables are
-  taken into account when searching for programs (Windows only).
-
-- Make sure that all the files created when compiling are removed by
-  "make clean".
-
-- Fix build problem on MacOS 10.5.1.
