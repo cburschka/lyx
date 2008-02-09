@@ -247,6 +247,9 @@ public:
 
 private:
 	///
+	void lfunUiToggle(FuncRequest const & cmd);
+
+	///
 	void insertLyXFile(docstring const & fname);
 	///
 	void insertPlaintextFile(docstring const & fname,

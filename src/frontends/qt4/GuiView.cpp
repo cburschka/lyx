@@ -1800,56 +1800,72 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_UI_TOGGLE: {
-			string const arg = cmd.getArg(0);
-			if (arg == "statusbar")
-				statusBar()->setVisible(!statusBar()->isVisible());
-			else if (arg == "menubar")
-				menuBar()->setVisible(!menuBar()->isVisible());
-#if QT_VERSION >= 0x040300
-			else if (arg == "frame") {
-				int l, t, r, b;
-				getContentsMargins(&l, &t, &r, &b);
-				//are the frames in default state?
-				if (l == 0) {
-					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-					setContentsMargins(-2, -2, -2, -2);
-				} else {
-					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-					setContentsMargins(0, 0, 0, 0);
-				}
-			}
-#endif
-			else if (arg == "fullscreen") {
-				if (isFullScreen()) {
-					showNormal();
-#if QT_VERSION >= 0x040300
-					setContentsMargins(0, 0, 0, 0);
-#endif
-					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-					d.current_work_area_->bufferView().setFullScreen(false);
-					menuBar()->show();
-					statusBar()->show();
-				} else {
-					statusBar()->hide();
-					menuBar()->hide();
-					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-					d.current_work_area_->bufferView().setFullScreen(true);
-#if QT_VERSION >= 0x040300
-					setContentsMargins(-2, -2, -2, -2);
-#endif
-					showFullScreen();
-				}
-			}
-
+		case LFUN_UI_TOGGLE:
+			lfunUiToggle(cmd);
 			break;
-		}
 
 		default:
 			return false;
 	}
 
 	return true;
+}
+
+
+void GuiView::lfunUiToggle(FuncRequest const & cmd)
+{
+	string const arg = cmd.getArg(0);
+	if (arg == "statusbar") {
+		statusBar()->setVisible(!statusBar()->isVisible());
+		return;
+	}
+	if (arg == "menubar") {
+		menuBar()->setVisible(!menuBar()->isVisible());
+		return;
+	}
+#if QT_VERSION >= 0x040300
+	if (arg == "frame") {
+		int l, t, r, b;
+		getContentsMargins(&l, &t, &r, &b);
+		//are the frames in default state?
+		if (l == 0) {
+			d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+			setContentsMargins(-2, -2, -2, -2);
+		} else {
+			d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+			setContentsMargins(0, 0, 0, 0);
+		}
+		return;
+	}
+#endif
+	if (arg != "fullscreen") {
+		message(bformat(_("LFUN_UI_TOGGLE %1$s unknown command!"), arg));
+		return;
+	}
+
+	if (isFullScreen()) {
+		showNormal();
+#if QT_VERSION >= 0x040300
+		setContentsMargins(0, 0, 0, 0);
+#endif
+		// FIXME: it is not enough to take care of the current work area.
+		// All work areas are affected by a full screen mode!
+		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+		d.current_work_area_->bufferView().setFullScreen(false);
+		menuBar()->show();
+		statusBar()->show();
+	} else {
+		statusBar()->hide();
+		menuBar()->hide();
+		// FIXME: it is not enough to take care of the current work area.
+		// All work areas are affected by a full screen mode!
+		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+		d.current_work_area_->bufferView().setFullScreen(true);
+#if QT_VERSION >= 0x040300
+		setContentsMargins(-2, -2, -2, -2);
+#endif
+		showFullScreen();
+	}
 }
 
 
