@@ -9,20 +9,18 @@
  * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
- *
- * TocBackend mainly used in toc.[Ch]
  */
 
 #ifndef TOC_BACKEND_H
 #define TOC_BACKEND_H
 
-#include <map>
-#include <vector>
-#include <string>
-
 #include "ParIterator.h"
 
 #include "support/strfwd.h"
+
+#include <map>
+#include <vector>
+#include <string>
 
 
 namespace lyx {
@@ -87,29 +85,27 @@ class TocBackend
 {
 public:
 	///
-	TocBackend(Buffer const * buffer = NULL): buffer_(buffer) {}
+	TocBackend(Buffer const * buffer = NULL) : buffer_(buffer) {}
 	///
-	~TocBackend() {}
-	///
-	void setBuffer(Buffer const * buffer)
-	{ buffer_ = buffer; }
+	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
 	void update();
 	///
 	void updateItem(ParConstIterator const & pit);
 
 	///
-	TocList const & tocs() const
-	{ return tocs_; }
+	TocList const & tocs() const { return tocs_; }
 
 	///
 	Toc const & toc(std::string const & type) const;
 	/// Return the first Toc Item before the cursor
-	TocIterator const item(
+
+	TocIterator item(
 		std::string const & type, ///< Type of Toc.
 		ParConstIterator const & ///< The cursor location in the document.
-		) const;
+	) const;
 
+	///
 	void writePlaintextTocList(std::string const & type, odocstream & os) const;
 
 private:
@@ -117,18 +113,15 @@ private:
 	TocList tocs_;
 	///
 	Buffer const * buffer_;
-
 }; // TocBackend
 
-inline
-bool operator==(TocItem const & a, TocItem const & b)
+inline bool operator==(TocItem const & a, TocItem const & b)
 {
 	return a.id() == b.id() && a.str() == b.str() && a.depth() == b.depth();
 }
 
 
-inline
-bool operator!=(TocItem const & a, TocItem const & b)
+inline bool operator!=(TocItem const & a, TocItem const & b)
 {
 	return !(a == b);
 }

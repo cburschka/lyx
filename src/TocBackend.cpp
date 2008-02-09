@@ -40,9 +40,8 @@ namespace lyx {
 //
 ///////////////////////////////////////////////////////////////////////////
 
-TocItem::TocItem(ParConstIterator const & par_it, int d,
-		docstring const & s)
-		: par_it_(par_it), depth_(d), str_(s)
+TocItem::TocItem(ParConstIterator const & par_it, int d, docstring const & s)
+	: par_it_(par_it), depth_(d), str_(s)
 {
 }
 
@@ -189,7 +188,7 @@ void TocBackend::update()
 }
 
 
-TocIterator const TocBackend::item(string const & type,
+TocIterator TocBackend::item(string const & type,
 		ParConstIterator const & par_it) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
