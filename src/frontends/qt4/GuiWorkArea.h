@@ -110,6 +110,8 @@ public:
 	~GuiWorkArea();
 
 	///
+	void setFullScreen(bool full_screen);
+	///
 	void scheduleRedraw() { schedule_redraw_ = true; }
 	///
 	BufferView & bufferView();

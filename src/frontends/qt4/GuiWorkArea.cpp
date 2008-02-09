@@ -257,6 +257,13 @@ void GuiWorkArea::close()
 }
 
 
+void GuiWorkArea::setFullScreen(bool full_screen)
+{
+	setFrameStyle(QFrame::NoFrame);
+	buffer_view_->setFullScreen(full_screen);
+}
+
+
 BufferView & GuiWorkArea::bufferView()
 {
 	return *buffer_view_;

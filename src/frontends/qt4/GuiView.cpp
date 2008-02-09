@@ -1839,7 +1839,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 	}
 #endif
 	if (arg != "fullscreen") {
-		message(bformat(_("LFUN_UI_TOGGLE %1$s unknown command!"), arg));
+		message(bformat(_("LFUN_UI_TOGGLE %1$s unknown command!"), from_utf8(arg)));
 		return;
 	}
 
@@ -1850,8 +1850,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 #endif
 		// FIXME: it is not enough to take care of the current work area.
 		// All work areas are affected by a full screen mode!
-		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-		d.current_work_area_->bufferView().setFullScreen(false);
+		d.current_work_area_->setFullScreen(false);
 		menuBar()->show();
 		statusBar()->show();
 	} else {
@@ -1859,8 +1858,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		menuBar()->hide();
 		// FIXME: it is not enough to take care of the current work area.
 		// All work areas are affected by a full screen mode!
-		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
-		d.current_work_area_->bufferView().setFullScreen(true);
+		d.current_work_area_->setFullScreen(true);
 #if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
 #endif
