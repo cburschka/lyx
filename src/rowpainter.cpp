@@ -647,15 +647,12 @@ void RowPainter::paintOnlyInsets()
 {
 	pos_type const end = row_.endpos();
 	for (pos_type pos = row_.pos(); pos != end; ++pos) {
-		if (!par_.isInset(pos))
-			continue;
-
 		// If outer row has changed, nested insets are repaint completely.
 		Inset const * inset = par_.getInset(pos);
-
+		if (!inset)
+			continue;
 		if (x_ > pi_.base.bv->workWidth())
 			continue;
-
 		x_ = pi_.base.bv->coordCache().getInsets().x(inset);
 		paintInset(inset, pos);
 	}
@@ -730,8 +727,9 @@ void RowPainter::paintText()
 			last_strikeout_x = int(x_);
 		}
 
-		bool const highly_editable_inset = par_.isInset(pos)
-			&& par_.getInset(pos)->editable() == Inset::HIGHLY_EDITABLE;
+		Inset const * inset = par_.getInset(pos);
+		bool const highly_editable_inset = inset
+			&& inset->editable() == Inset::HIGHLY_EDITABLE;
 
 		// If we reach the end of a struck out range, paint it.
 		// We also don't paint across things like tables
@@ -761,9 +759,8 @@ void RowPainter::paintText()
 			paintForeignMark(orig_x, orig_font.language());
 			++vpos;
 
-		} else if (par_.isInset(pos)) {
+		} else if (inset) {
 			// If outer row has changed, nested insets are repaint completely.
-			Inset const * inset = par_.getInset(pos);
 			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
 			paintInset(inset, pos);
 			++vpos;

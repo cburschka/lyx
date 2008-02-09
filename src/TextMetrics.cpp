@@ -570,11 +570,8 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			align = par.params().align();
 
 		// Display-style insets should always be on a centred row
-		// The test on par.size() is to catch zero-size pars, which
-		// would trigger the assert in Paragraph::getInset().
-		//inset = par.size() ? par.getInset(row.pos()) : 0;
-		if (row.pos() < par.size() && par.isInset(row.pos())) {
-			switch(par.getInset(row.pos())->display()) {
+		if (Inset const * inset = par.getInset(row.pos())) {
+			switch (inset->display()) {
 				case Inset::AlignLeft:
 					align = LYX_ALIGN_BLOCK;
 					break;
@@ -783,20 +780,22 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 			point = i + 1;
 			break;
 		}
+		Inset const * inset = 0;
 		// Break before...
 		if (i + 1 < end) {
-			if (par.isInset(i + 1) && par.getInset(i + 1)->display()) {
+			if ((inset = par.getInset(i + 1)) && inset->display()) {
 				point = i + 1;
 				break;
 			}
 			// ...and after.
-			if (par.isInset(i) && par.getInset(i)->display()) {
+			if ((inset = par.getInset(i)) && inset->display()) {
 				point = i + 1;
 				break;
 			}
 		}
 
-		if (!par.isInset(i) || par.getInset(i)->isChar()) {
+		inset = par.getInset(i);
+		if (!inset || inset->isChar()) {
 			// some insets are line separators too
 			if (par.isLineSeparator(i)) {
 				// register breakpoint:
@@ -1821,7 +1820,7 @@ int TextMetrics::leftMargin(int max_width,
 	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
 	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 	       || (layout->labeltype == LABEL_STATIC
-		   && layout->latextype == LATEX_ENVIRONMENT
+		         && layout->latextype == LATEX_ENVIRONMENT
 		   && !isFirstInSequence(pit, pars)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()

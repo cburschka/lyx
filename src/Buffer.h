@@ -16,6 +16,7 @@
 
 #include "support/strfwd.h"
 #include "support/types.h"
+#include "support/SignalSlot.h"
 
 #include <set>
 #include <string>
@@ -494,6 +495,17 @@ private:
 	Impl * const d;
 
 	frontend::GuiBufferDelegate * gui_;
+
+	/// This function is called when the buffer structure is changed.
+	Signal structureChanged_;
+	/// This function is called when some parsing error shows up.
+	//Signal errors(std::string const &) = 0;
+	/// This function is called when some message shows up.
+	//Signal message(docstring const &) = 0;
+	/// This function is called when the buffer busy status change.
+	//Signal setBusy(bool) = 0;
+	/// Reset autosave timers for all users.
+	Signal resetAutosaveTimers_;
 };
 
 

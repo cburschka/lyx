@@ -213,8 +213,8 @@ int ParagraphMetrics::rightMargin(Buffer const & buffer) const
 int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 {
 	// The most special cases are handled first.
-	if (par_->isInset(pos))
-		return insetDimension(par_->getInset(pos)).wid;
+	if (Inset const * inset = par_->getInset(pos))
+		return insetDimension(inset).wid;
 
 	char_type c = par_->getChar(pos);
 
@@ -230,8 +230,9 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 					return 0;
 				c = par_->transformChar(c, pos);
 		} else if (language->lang() == "hebrew" &&
-			Encodings::isComposeChar_hebrew(c))
-			return 0;
+				Encodings::isComposeChar_hebrew(c)) {
+			return 0;	
+		}
 	}
 	return theFontMetrics(font).width(c);
 }

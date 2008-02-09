@@ -77,7 +77,7 @@ Inset * DocIterator::nextInset() const
 	}
 	if (inMathed())
 		return nextAtom().nucleus();
-	return paragraph().isInset(pos()) ? paragraph().getInset(pos()) : 0;
+	return paragraph().getInset(pos());
 }
 
 
@@ -95,7 +95,7 @@ Inset * DocIterator::prevInset() const
 		else
 			return prevAtom().nucleus();
 	}
-	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
+	return paragraph().getInset(pos() - 1);
 }
 
 
@@ -268,12 +268,10 @@ void DocIterator::forwardPos()
 
 	if (tip.pos() != lastp) {
 		// this is impossible for pos() == size()
-		if (inMathed()) {
+		if (inMathed())
 			n = (tip.cell().begin() + tip.pos())->nucleus();
-		} else {
-			if (paragraph().isInset(tip.pos()))
-				n = paragraph().getInset(tip.pos());
-		}
+		else
+			n = paragraph().getInset(tip.pos());
 	}
 
 	if (n && n->isActive()) {
@@ -384,12 +382,10 @@ void DocIterator::backwardPos()
 	// move into an inset to the left if possible
 	Inset * n = 0;
 
-	if (inMathed()) {
+	if (inMathed())
 		n = (top().cell().begin() + top().pos())->nucleus();
-	} else {
-		if (paragraph().isInset(top().pos()))
-			n = paragraph().getInset(top().pos());
-	}
+	else
+		n = paragraph().getInset(top().pos());
 
 	if (n && n->isActive()) {
 		push_back(CursorSlice(*n));
@@ -463,8 +459,8 @@ bool DocIterator::fixIfBroken()
 			// get inset which is supposed to be in the next slice
 			if (cs.inset().inMathed())
 				inset = (cs.cell().begin() + cs.pos())->nucleus();
-			else if (cs.paragraph().isInset(cs.pos()))
-				inset = cs.paragraph().getInset(cs.pos());
+			else if (Inset * csInset = cs.paragraph().getInset(cs.pos()))
+				inset = csInset;
 			else {
 				// there are slices left, so there must be another inset
 				break;

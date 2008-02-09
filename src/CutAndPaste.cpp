@@ -191,10 +191,10 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		// Set the inset owner of this paragraph.
 		tmpbuf->setInsetOwner(pars[pit].inInset());
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
-			if (tmpbuf->isInset(i) &&
-			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
-				// do not track deletion of invalid insets
-				tmpbuf->eraseChar(i--, false);
+			// do not track deletion of invalid insets
+			if (Inset * inset = tmpbuf->getInset(i))
+				if (!pars[pit].insetAllowed(inset->lyxCode()))
+					tmpbuf->eraseChar(i--, false);
 		}
 
 		tmpbuf->setChange(Change(buffer.params().trackChanges ?

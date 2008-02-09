@@ -201,8 +201,7 @@ int countChars(DocIterator const & from, DocIterator const & to, bool with_blank
 		pos_type const pos = dit.pos();
 
 		if (pos != dit.lastpos() && !par.isDeleted(pos)) {
-			if (par.isInset(pos)) {
-				Inset const * ins = par.getInset(pos);
+			if (Inset const * ins = par.getInset(pos)) {
 				if (ins->isLetter())
 					++chars;
 				else if (with_blanks && ins->isSpace())

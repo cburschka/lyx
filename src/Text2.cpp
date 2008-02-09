@@ -42,7 +42,6 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "ParIterator.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
@@ -160,10 +159,9 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 void Text::setInsetFont(BufferView const & bv, pit_type pit,
 		pos_type pos, Font const & font, bool toggleall)
 {
-	BOOST_ASSERT(pars_[pit].isInset(pos) &&
-		     pars_[pit].getInset(pos)->noFontChange());
-
 	Inset * const inset = pars_[pit].getInset(pos);
+	BOOST_ASSERT(inset && inset->noFontChange());
+
 	CursorSlice::idx_type endidx = inset->nargs();
 	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
 		Text * text = cs.text();
@@ -354,13 +352,14 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		if (dit.pos() != dit.lastpos()) {
 			pit_type const pit = dit.pit();
 			pos_type const pos = dit.pos();
-			if (pars_[pit].isInset(pos) &&
-			    pars_[pit].getInset(pos)->noFontChange())
+			Inset * inset = pars_[pit].getInset(pos);
+			if (inset && inset->noFontChange()) {
 				// We need to propagate the font change to all
 				// text cells of the inset (bug 1973).
 				// FIXME: This should change, see documentation
 				// of noFontChange in Inset.h
 				setInsetFont(bv, pit, pos, font, toggleall);
+			}
 			TextMetrics const & tm = bv.textMetrics(this);
 			Font f = tm.getDisplayFont(pit, pos);
 			f.update(font, language, toggleall);

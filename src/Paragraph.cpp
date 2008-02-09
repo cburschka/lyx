@@ -279,8 +279,8 @@ void Paragraph::setChange(Change const & change)
 
 	if (change.type != Change::DELETED) {
 		for (pos_type pos = 0; pos < size(); ++pos) {
-			if (isInset(pos))
-				getInset(pos)->setChange(change);
+			if (Inset * inset = getInset(pos))
+				inset->setChange(change);
 		}
 	}
 }
@@ -292,8 +292,9 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
-	if (change.type != Change::DELETED && pos < size() && isInset(pos))
-		getInset(pos)->setChange(change);
+	if (change.type != Change::DELETED && pos < size())
+			if (Inset * inset = getInset(pos))
+				inset->setChange(change);
 }
 
 
@@ -314,17 +315,15 @@ void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start,
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				// accept changes in nested inset
-				if (pos < size() && isInset(pos))
-					getInset(pos)->acceptChanges(bparams);
-
+				if (Inset * inset = getInset(pos))
+					inset->acceptChanges(bparams);
 				break;
 
 			case Change::INSERTED:
 				d->changes_.set(Change(Change::UNCHANGED), pos);
 				// also accept changes in nested inset
-				if (pos < size() && isInset(pos)) {
-					getInset(pos)->acceptChanges(bparams);
-				}
+				if (Inset * inset = getInset(pos))
+					inset->acceptChanges(bparams);
 				break;
 
 			case Change::DELETED:
@@ -352,9 +351,8 @@ void Paragraph::rejectChanges(BufferParams const & bparams,
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				// reject changes in nested inset
-				if (pos < size() && isInset(pos)) {
-					getInset(pos)->rejectChanges(bparams);
-				}
+				if (Inset * inset = getInset(pos))
+						inset->rejectChanges(bparams);
 				break;
 
 			case Change::INSERTED:
@@ -1113,9 +1111,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 		char_type const c = d->text_[i];
 		switch (c) {
 		case META_INSET:
-		{
-			Inset const * inset = getInset(i);
-			if (inset)
+			if (Inset const * inset = getInset(i)) {
 				if (inset->directWrite()) {
 					// international char, let it write
 					// code directly so it's shorter in
@@ -1129,8 +1125,8 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 					os << "\n\\end_inset\n\n";
 					column = 0;
 				}
-		}
-		break;
+			}
+			break;
 		case '\\':
 			os << "\n\\backslash\n";
 			column = 0;
@@ -2075,8 +2071,7 @@ bool Paragraph::latex(Buffer const & buf,
 bool Paragraph::emptyTag() const
 {
 	for (pos_type i = 0; i < size(); ++i) {
-		if (isInset(i)) {
-			Inset const * inset = getInset(i);
+		if (Inset const * inset = getInset(i)) {
 			InsetCode lyx_code = inset->lyxCode();
 			if (lyx_code != TOC_CODE &&
 			    lyx_code != INCLUDE_CODE &&
@@ -2100,8 +2095,7 @@ bool Paragraph::emptyTag() const
 string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) const
 {
 	for (pos_type i = 0; i < size(); ++i) {
-		if (isInset(i)) {
-			Inset const * inset = getInset(i);
+		if (Inset const * inset = getInset(i)) {
 			InsetCode lyx_code = inset->lyxCode();
 			if (lyx_code == LABEL_CODE) {
 				InsetLabel const * const il = static_cast<InsetLabel const *>(inset);
@@ -2109,7 +2103,6 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 				return "id='" + to_utf8(sgml::cleanID(buf, runparams, id)) + "'";
 			}
 		}
-
 	}
 	return string();
 }
@@ -2119,8 +2112,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 {
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
-		if (isInset(i)) {
-			Inset const * inset = getInset(i);
+		if (Inset const * inset = getInset(i)) {
 			inset->docbook(buf, os, runparams);
 		} else {
 			char_type c = d->text_[i];
@@ -2180,8 +2172,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			}
 		}
 
-		if (isInset(i)) {
-			Inset const * inset = getInset(i);
+		if (Inset const * inset = getInset(i)) {
 			inset->docbook(buf, os, runparams);
 		} else {
 			char_type c = d->text_[i];
@@ -2207,30 +2198,33 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 bool Paragraph::isHfill(pos_type pos) const
 {
-	return isInset(pos) && getInset(pos)->lyxCode() == HFILL_CODE;
+	Inset const * inset = getInset(pos);
+	return inset && inset->lyxCode() == HFILL_CODE;
 }
 
 
 bool Paragraph::isNewline(pos_type pos) const
 {
-	return isInset(pos) && getInset(pos)->lyxCode() == NEWLINE_CODE;
+	Inset const * inset = getInset(pos);
+	return inset && inset->lyxCode() == NEWLINE_CODE;
 }
 
 
 bool Paragraph::isLineSeparator(pos_type pos) const
 {
 	char_type const c = d->text_[pos];
-	return isLineSeparatorChar(c)
-		|| (c == META_INSET && getInset(pos) &&
-		getInset(pos)->isLineSeparator());
+	if (isLineSeparatorChar(c))
+		return true;
+	Inset const * inset = getInset(pos);
+	return inset && inset->isLineSeparator();
 }
 
 
 /// Used by the spellchecker
 bool Paragraph::isLetter(pos_type pos) const
 {
-	if (isInset(pos))
-		return getInset(pos)->isLetter();
+	if (Inset const * inset = getInset(pos))
+		return inset->isLetter();
 	char_type const c = d->text_[pos];
 	return isLetterChar(c) || isDigit(c);
 }
@@ -2525,13 +2519,15 @@ Inset * Paragraph::releaseInset(pos_type pos)
 
 Inset * Paragraph::getInset(pos_type pos)
 {
-	return d->insetlist_.get(pos);
+	return (pos < d->text_.size() && d->text_[pos] == META_INSET)
+		 ? d->insetlist_.get(pos) : 0;
 }
 
 
 Inset const * Paragraph::getInset(pos_type pos) const
 {
-	return d->insetlist_.get(pos);
+	return (pos < d->text_.size() && d->text_[pos] == META_INSET)
+		 ? d->insetlist_.get(pos) : 0;
 }
 
 
