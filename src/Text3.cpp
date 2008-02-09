@@ -268,6 +268,8 @@ bool doInsertInset(Cursor & cur, Text * text,
 		inset->edit(cur, true);
 
 	if (gotsel && pastesel) {
+		// metrics might be invalid at this point (bug 4502)
+		cur.bv().updateMetrics();
 		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
 		// reset first par to default
 		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
