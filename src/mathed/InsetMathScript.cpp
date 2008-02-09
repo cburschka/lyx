@@ -695,9 +695,9 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		int scriptSlice
 		= cur.bv().cursor().find(this);
 		BOOST_ASSERT(scriptSlice != -1);
-		Cursor scriptCur = cur.bv().cursor();
-		scriptCur.cutOff(scriptSlice);
-		scriptCur.recordUndoInset();
+		Cursor & bvCur = cur.bv().cursor();
+		bvCur.cutOff(scriptSlice);
+		bvCur.recordUndoInset();
 
 		// Let the script inset commit suicide. This is
 		// modelled on Cursor.pullArg(), but tries not to
@@ -705,9 +705,14 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		// cur (since the top slice will be deleted
 		// afterwards)
 		MathData ar = cell(0);
-		scriptCur.pop();
-		scriptCur.cell().erase(scriptCur.pos());
-		scriptCur.cell().insert(scriptCur.pos(), ar);
+		bvCur.pop();
+		bvCur.cell().erase(bvCur.pos());
+		bvCur.cell().insert(bvCur.pos(), ar);
+
+		// put cursor behind
+		bvCur.pos() += ar.size();
+
+		// redraw
 		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 		return true;
 	}
