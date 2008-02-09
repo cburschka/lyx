@@ -277,10 +277,11 @@ STANDALONEFILES = \
 	Layout.cpp \
 	TextClass.cpp
 
-if MONOLITHIC_CORE
 
 lyxcore.cpp:
 	@echo -e '$(SOURCEFILESCORE:%=\n#include "%")\n' > $@
+
+if MONOLITHIC_CORE
 
 BUILT_SOURCES += lyxcore.cpp $(STANDALONEFILES)
 CLEANFILES += lyxcore.cpp
@@ -456,10 +457,10 @@ HEADERFILESMATHED = \
 	mathed/MathSupport.h \
 	mathed/TextPainter.h 
 
-if MONOLITHIC_MATHED
-
 lyxmathed.cpp:
 	@echo -e '$(SOURCEFILESMATHED:%=\n#include "%")\n' > $@
+
+if MONOLITHIC_MATHED
 
 BUILT_SOURCES += lyxmathed.cpp
 CLEANFILES += lyxmathed.cpp
@@ -596,10 +597,10 @@ HEADERFILESINSETS = \
 #	insets/InsetTheorem.cpp \
 #	insets/InsetTheorem.h
 
-if MONOLITHIC_INSETS
-
 lyxinsets.cpp:
 	@echo -e '$(SOURCEFILESINSETS:%=\n#include "%")\n' > $@
+
+if MONOLITHIC_INSETS
 
 BUILT_SOURCES += lyxinsets.cpp
 CLEANFILES += lyxinsets.cpp
