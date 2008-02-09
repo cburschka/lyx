@@ -1496,13 +1496,13 @@ bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
 	// find inset in common
 	size_type i;
 	for (i = 0; i < old.depth() && i < cur.depth(); ++i) {
-		if (&old.inset() != &cur.inset())
+		if (&old[i].inset() != &cur[i].inset())
 			break;
 	}
 	
 	// notify everything on top of the common part in old cursor,
 	// but stop if the inset claims the cursor to be invalid now
-	for (;  i < old.depth(); ++i) {
+	for (; i < old.depth(); ++i) {
 		if (old[i].inset().notifyCursorLeaves(cur))
 			return true;
 	}

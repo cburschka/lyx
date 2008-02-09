@@ -479,7 +479,7 @@ bool DocIterator::fixIfBroken()
 }
 
 
-DocIterator::idx_type DocIterator::find(MathData const & cell) const
+int DocIterator::find(MathData const & cell) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
 		if (slices_[l].asInsetMath() && &slices_[l].cell() == &cell)
@@ -489,7 +489,7 @@ DocIterator::idx_type DocIterator::find(MathData const & cell) const
 }
 
 
-DocIterator::idx_type DocIterator::find(InsetMath const * inset) const 
+int DocIterator::find(InsetMath const * inset) const 
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
 		if (slices_[l].asInsetMath() == inset)
@@ -499,14 +499,14 @@ DocIterator::idx_type DocIterator::find(InsetMath const * inset) const
 }
 
 
-void DocIterator::cutOff(DocIterator::idx_type above, vector<CursorSlice> & cut)
+void DocIterator::cutOff(int above, vector<CursorSlice> & cut)
 {
 	cut = vector<CursorSlice>(slices_.begin() + above + 1, slices_.end());
 	slices_.resize(above + 1);
 }
 
 
-void DocIterator::cutOff(DocIterator::idx_type above) 
+void DocIterator::cutOff(int above)
 {
 	slices_.resize(above + 1);
 }
