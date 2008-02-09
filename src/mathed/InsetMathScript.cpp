@@ -664,24 +664,33 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 
 	//LYXERR0("InsetMathScript::notifyCursorLeaves: 1 " << cur);
 
-	// remove empty scripts if possible
-	if (nargs() > 2) {
-		// Case of two scripts. In this case, 1 = super, 2 = sub
-		if (cur.idx() == 2 && cell(2).empty()) {
+	// Remove empty scripts if possible:
+
+	// The case of two scripts, but only one got empty (1 = super, 2 = sub).
+	// We keep the script inset, but remove the empty script.
+	if (nargs() > 2 && (!cell(1).empty() || !cell(2).empty())) {
+		if (cell(2).empty()) {
 			// must be a subscript...
 			cur.recordUndoInset();
 			removeScript(false);
+			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
-		} else if (cur.idx() == 1 && cell(1).empty()) {
+		} else if (cell(1).empty()) {
 			// must be a superscript...
 			cur.recordUndoInset();
 			removeScript(true);
+			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
 		}
-	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
+	}
+	// Now the two suicide cases:
+	// * we have only one script which is empty
+	// * we have two scripts which are both empty.
+	// The script inset is removed completely.
+	if ((nargs() == 2 && cell(1).empty())
+	    || (nargs() == 3 && cell(1).empty() && cell(2).empty())) {
 		// could be either subscript or super script
 		cur.recordUndoInset();
-		removeScript(cell_1_is_up_);
 		// Let the script inset commit suicide. This is
 		// modelled on Cursor.pullArg(), but tries not to
 		// invoke notifyCursorLeaves again and does not touch
@@ -692,6 +701,7 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		tmpcur.pop();
 		tmpcur.cell().erase(tmpcur.pos());
 		tmpcur.cell().insert(tmpcur.pos(), ar);
+		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 		return true;
 	}
 
