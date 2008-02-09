@@ -172,7 +172,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-01-22 23:40+0100\n"
+"POT-Creation-Date: 2008-02-09 02:48+0100\n"
 "PO-Revision-Date: 2007-12-13 13:43+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
@@ -248,7 +248,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:822
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
-#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2158
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2162
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:102 src/buffer_funcs.cpp:129
 #: src/buffer_funcs.cpp:170 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -1930,7 +1930,7 @@ msgstr "&Justifié"
 msgid "L&ine spacing:"
 msgstr "&Interligne :"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1856
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1861
 #: src/frontends/qt4/QDocument.cpp:247
 msgid "Single"
 msgstr "Simple"
@@ -1939,7 +1939,7 @@ msgstr "Simple"
 msgid "1.5"
 msgstr "Un et demi"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1862
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1867
 #: src/frontends/qt4/QDocument.cpp:251
 msgid "Double"
 msgstr "Double"
@@ -3278,7 +3278,7 @@ msgid "Adjust the depth of the navigation tree"
 msgstr "Modifie la profondeur de l'arborescence"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
-#: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:185
+#: lib/layouts/scrlttr2.layout:211 lib/layouts/amsdefs.inc:185
 #: src/frontends/qt4/UrlView.cpp:33
 msgid "URL"
 msgstr "URL"
@@ -3822,7 +3822,7 @@ msgstr "Description"
 
 #: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
-#: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
+#: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:34
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
 #: lib/ui/stdtoolbars.inc:88
 msgid "List"
@@ -3843,7 +3843,7 @@ msgstr "Liste"
 #: lib/layouts/llncs.layout:99 lib/layouts/ltugboat.layout:134
 #: lib/layouts/paper.layout:112 lib/layouts/powerdot.layout:36
 #: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
-#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:271
+#: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:275
 #: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:62 lib/layouts/db_stdtitle.inc:13
@@ -3887,7 +3887,7 @@ msgstr "Auteur"
 #: lib/layouts/ijmpd.layout:53 lib/layouts/iopart.layout:141
 #: lib/layouts/isprs.layout:115 lib/layouts/kluwer.layout:178
 #: lib/layouts/revtex.layout:116 lib/layouts/revtex4.layout:164
-#: lib/layouts/scrlettr.layout:144 lib/layouts/scrlttr2.layout:39
+#: lib/layouts/scrlettr.layout:144 lib/layouts/scrlttr2.layout:44
 #: lib/layouts/aapaper.inc:30 lib/layouts/amsdefs.inc:151
 #: lib/layouts/lyxmacros.inc:43
 msgid "Address"
@@ -3911,7 +3911,7 @@ msgstr "Courrier"
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:143
 #: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
 #: lib/layouts/revtex4.layout:123 lib/layouts/scrlettr.layout:165
-#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:137
+#: lib/layouts/scrlttr2.layout:243 lib/layouts/siamltex.layout:137
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:102
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
@@ -4691,7 +4691,7 @@ msgstr "Adresse :"
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
 #: lib/layouts/g-brief2.layout:843 lib/layouts/scrlettr.layout:61
-#: lib/layouts/scrlttr2.layout:91 lib/layouts/stdletter.inc:50
+#: lib/layouts/scrlttr2.layout:95 lib/layouts/stdletter.inc:50
 msgid "Opening"
 msgstr "Ouverture"
 
@@ -4701,7 +4701,7 @@ msgstr "Anrede:"
 
 #: lib/layouts/dinbrief.layout:59 lib/layouts/g-brief-en.layout:53
 #: lib/layouts/g-brief2.layout:891 lib/layouts/scrlettr.layout:137
-#: lib/layouts/scrlttr2.layout:167 lib/layouts/stdletter.inc:72
+#: lib/layouts/scrlttr2.layout:171 lib/layouts/stdletter.inc:72
 msgid "Signature"
 msgstr "Signature"
 
@@ -4711,7 +4711,7 @@ msgstr "Unterschrift:"
 
 #: lib/layouts/dinbrief.layout:72 lib/layouts/g-brief-en.layout:230
 #: lib/layouts/g-brief2.layout:865 lib/layouts/scrlettr.layout:71
-#: lib/layouts/scrlttr2.layout:113 lib/layouts/stdletter.inc:93
+#: lib/layouts/scrlttr2.layout:117 lib/layouts/stdletter.inc:93
 msgid "Closing"
 msgstr "Fermeture"
 
@@ -4879,7 +4879,7 @@ msgstr "Adresse Auteur"
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:184
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
-#: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:162
+#: lib/layouts/scrlttr2.layout:60 lib/layouts/amsdefs.inc:162
 msgid "Address:"
 msgstr "Adresse :"
 
@@ -5221,7 +5221,7 @@ msgstr "Text:"
 
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:57 lib/layouts/scrlettr.layout:116
-#: lib/layouts/scrlttr2.layout:144 lib/layouts/agu_stdtitle.inc:184
+#: lib/layouts/scrlttr2.layout:148 lib/layouts/agu_stdtitle.inc:184
 msgid "Name"
 msgstr "Nom"
 
@@ -5340,12 +5340,12 @@ msgid "HTTP:"
 msgstr "HTTP:"
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
-#: lib/layouts/scrlttr2.layout:215
+#: lib/layouts/scrlttr2.layout:219
 msgid "Bank"
 msgstr "Banque"
 
 #: lib/layouts/g-brief-de.layout:154 lib/layouts/g-brief-en.layout:154
-#: lib/layouts/scrlttr2.layout:219
+#: lib/layouts/scrlttr2.layout:223
 msgid "Bank:"
 msgstr "Banque :"
 
@@ -5403,7 +5403,7 @@ msgid "Letter:"
 msgstr "Lettre :"
 
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:901
-#: lib/layouts/scrlettr.layout:140 lib/layouts/scrlttr2.layout:171
+#: lib/layouts/scrlettr.layout:140 lib/layouts/scrlttr2.layout:175
 #: lib/layouts/stdletter.inc:84
 msgid "Signature:"
 msgstr "Signature :"
@@ -5506,7 +5506,7 @@ msgstr "CommentairePostal :"
 
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:810
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
-#: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
+#: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:247
 #: lib/layouts/amsdefs.inc:114
 msgid "Date:"
 msgstr "Date :"
@@ -5520,7 +5520,7 @@ msgid "Reference:"
 msgstr "Référence :"
 
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:855
-#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:63
+#: lib/layouts/scrlttr2.layout:107 lib/layouts/stdletter.inc:63
 msgid "Opening:"
 msgstr "Ouverture :"
 
@@ -5533,13 +5533,13 @@ msgid "Encl.:"
 msgstr "P.J. :"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:943
-#: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:133
+#: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:137
 #: lib/layouts/stdletter.inc:114
 msgid "cc:"
 msgstr "cc :"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:876
-#: lib/layouts/scrlttr2.layout:117 lib/layouts/stdletter.inc:97
+#: lib/layouts/scrlttr2.layout:121 lib/layouts/stdletter.inc:97
 msgid "Closing:"
 msgstr "Fermeture :"
 
@@ -6359,24 +6359,24 @@ msgstr "L"
 msgid "O"
 msgstr "O"
 
-#: lib/layouts/scrlettr.layout:83 lib/layouts/scrlttr2.layout:121
+#: lib/layouts/scrlettr.layout:83 lib/layouts/scrlttr2.layout:125
 msgid "PS"
 msgstr "PS"
 
-#: lib/layouts/scrlettr.layout:94 lib/layouts/scrlttr2.layout:129
+#: lib/layouts/scrlettr.layout:94 lib/layouts/scrlttr2.layout:133
 msgid "CC"
 msgstr "CC"
 
-#: lib/layouts/scrlettr.layout:109 lib/layouts/scrlttr2.layout:137
+#: lib/layouts/scrlettr.layout:109 lib/layouts/scrlttr2.layout:141
 msgid "Encl"
 msgstr "P.J."
 
-#: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:140
+#: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:144
 #: lib/layouts/stdletter.inc:122
 msgid "encl:"
 msgstr "P.J. :"
 
-#: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:183
+#: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:187
 #: lib/layouts/stdletter.inc:135
 msgid "Telephone"
 msgstr "Téléphone"
@@ -6385,148 +6385,158 @@ msgstr "Téléphone"
 msgid "Telephone:"
 msgstr "Téléphone :"
 
-#: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:231
+#: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:235
 msgid "Place"
 msgstr "Lieu"
 
-#: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:235
+#: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:239
 msgid "Place:"
 msgstr "Lieu :"
 
-#: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:247
+#: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:251
 msgid "Backaddress"
 msgstr "Adresse_Retour"
 
-#: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:251
+#: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:255
 msgid "Backaddress:"
 msgstr "Adresse_Retour :"
 
-#: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:255
+#: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:259
 msgid "Specialmail"
 msgstr "CourrierSpécial"
 
-#: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:259
+#: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:263
 msgid "Specialmail:"
 msgstr "CourrierSpécial :"
 
-#: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:263
+#: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:127
 msgid "Location"
 msgstr "Adresse"
 
-#: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:267
+#: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:271
 #: lib/layouts/stdletter.inc:131
 msgid "Location:"
 msgstr "Adresse :"
 
-#: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:275
+#: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:279
 msgid "Title:"
 msgstr "Titre :"
 
-#: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:279
+#: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:283
 #: lib/layouts/scrclass.inc:168
 msgid "Subject"
 msgstr "Sujet"
 
-#: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:283
+#: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:287
 msgid "Subject:"
 msgstr "Sujet :"
 
-#: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:287
+#: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:291
 msgid "Yourref"
 msgstr "Votre_Réf"
 
-#: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:291
+#: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:295
 msgid "Your ref.:"
 msgstr "Vos réf. :"
 
-#: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:303
+#: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:307
 msgid "Yourmail"
 msgstr "Votremail"
 
-#: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:307
+#: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:311
 msgid "Your letter of:"
 msgstr "Votre lettre du :"
 
-#: lib/layouts/scrlettr.layout:228 lib/layouts/scrlttr2.layout:311
+#: lib/layouts/scrlettr.layout:228 lib/layouts/scrlttr2.layout:315
 msgid "Myref"
 msgstr "Ma_Réf"
 
-#: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:315
+#: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:319
 msgid "Our ref.:"
 msgstr "Nos réf. :"
 
-#: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:319
+#: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:323
 msgid "Customer"
 msgstr "Client"
 
-#: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:323
+#: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:327
 msgid "Customer no.:"
 msgstr "Numéro de client :"
 
-#: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:327
+#: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:331
 msgid "Invoice"
 msgstr "Facture"
 
-#: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:331
+#: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:335
 msgid "Invoice no.:"
 msgstr "Numéro de facture :"
 
-#: lib/layouts/scrlttr2.layout:68
+#: lib/layouts/scrlttr2.layout:72
 msgid "NextAddress"
 msgstr "ProchaineAdresse"
 
-#: lib/layouts/scrlttr2.layout:80
+#: lib/layouts/scrlttr2.layout:84
 msgid "Next Address:"
 msgstr "Prochaine Adresse :"
 
-#: lib/layouts/scrlttr2.layout:125
+#: lib/layouts/scrlttr2.layout:129
 msgid "Post Scriptum:"
 msgstr "Post Scriptum :"
 
-#: lib/layouts/scrlttr2.layout:157
+#: lib/layouts/scrlttr2.layout:161
 msgid "Sender Name:"
 msgstr "Nom de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:175
+#: lib/layouts/scrlttr2.layout:179
 msgid "SenderAddress"
 msgstr "AdresseExpéditeur"
 
-#: lib/layouts/scrlttr2.layout:179
+#: lib/layouts/scrlttr2.layout:183
 msgid "Sender Address:"
 msgstr "Adresse de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:187
+#: lib/layouts/scrlttr2.layout:191
 msgid "Sender Phone:"
 msgstr "Téléphone de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:191
+#: lib/layouts/scrlttr2.layout:195
 msgid "Fax"
 msgstr "Fax"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:199
 msgid "Sender Fax:"
 msgstr "Fax de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:199
+#: lib/layouts/scrlttr2.layout:203
 msgid "E-Mail"
 msgstr "E-mail"
 
-#: lib/layouts/scrlttr2.layout:203
+#: lib/layouts/scrlttr2.layout:207
 msgid "Sender E-Mail:"
 msgstr "E-mail de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:211
+#: lib/layouts/scrlttr2.layout:215
 msgid "Sender URL:"
 msgstr "URL de l'expéditeur :"
 
-#: lib/layouts/scrlttr2.layout:223
+#: lib/layouts/scrlttr2.layout:227
 msgid "Logo"
 msgstr "Logo"
 
-#: lib/layouts/scrlttr2.layout:227
+#: lib/layouts/scrlttr2.layout:231
 msgid "Logo:"
 msgstr "Logo :"
+
+#: lib/layouts/scrlttr2.layout:339
+#, fuzzy
+msgid "EndLetter"
+msgstr "Lettre"
+
+#: lib/layouts/scrlttr2.layout:352
+#, fuzzy
+msgid "End of letter"
+msgstr "Point Final|F"
 
 #: lib/layouts/seminar.layout:46
 msgid "LandscapeSlide"
@@ -8027,7 +8037,7 @@ msgstr "Environnement Gather"
 msgid "Multline Environment"
 msgstr "Environnement Multline"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:291
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:291 lib/ui/stdmenus.inc:483
 msgid "Math|h"
 msgstr "Math|h"
 
@@ -8472,23 +8482,23 @@ msgstr "Options Avancées|O"
 msgid "Embedded Objects|m"
 msgstr "Objets Insérés|b"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:483
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:484
 msgid "Customization|C"
 msgstr "Personnalisation|P"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:484
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:485
 msgid "FAQ|F"
 msgstr "FAQ|F"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:486
 msgid "Table of Contents|a"
 msgstr "Table des Matières|M"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:486
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:487
 msgid "LaTeX Configuration|L"
 msgstr "Configuration LaTeX|X"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:488
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:489
 msgid "About LyX|X"
 msgstr "À Propos de LyX...|L"
 
@@ -11811,7 +11821,7 @@ msgid "Overwrite modified file?"
 msgstr "Écraser le fichier modifié ?"
 
 #: src/Buffer.cpp:822 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
-#: src/LyXFunc.cpp:2158 src/callback.cpp:186
+#: src/LyXFunc.cpp:2162 src/callback.cpp:186
 msgid "&Overwrite"
 msgstr "É&craser"
 
@@ -12014,7 +12024,7 @@ msgid "Select LyX document to insert"
 msgstr "Choisir le document à insérer"
 
 #: src/BufferView.cpp:1604 src/LyXFunc.cpp:1997 src/LyXFunc.cpp:2036
-#: src/LyXFunc.cpp:2109 src/callback.cpp:148
+#: src/LyXFunc.cpp:2113 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12023,7 +12033,7 @@ msgstr "Choisir le document à insérer"
 msgid "Documents|#o#O"
 msgstr "Documents|#D"
 
-#: src/BufferView.cpp:1605 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2110
+#: src/BufferView.cpp:1605 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2114
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
@@ -12032,8 +12042,8 @@ msgstr "Exemples|#E#e"
 msgid "LyX Documents (*.lyx)"
 msgstr "Documents LyX (*.lyx)"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2131
-#: src/LyXFunc.cpp:2145 src/LyXFunc.cpp:2161
+#: src/BufferView.cpp:1623 src/LyXFunc.cpp:2051 src/LyXFunc.cpp:2135
+#: src/LyXFunc.cpp:2149 src/LyXFunc.cpp:2165
 msgid "Canceled."
 msgstr "Annulé."
 
@@ -12305,7 +12315,7 @@ msgstr ""
 "du format %1$s vers le format %2$s.\n"
 "Définissez un convertisseur dans les préférences."
 
-#: src/Converter.cpp:431 src/Format.cpp:320 src/Format.cpp:379
+#: src/Converter.cpp:431 src/Format.cpp:321 src/Format.cpp:380
 msgid "Executing command: "
 msgstr "Exécution de la commande : "
 
@@ -12317,7 +12327,7 @@ msgstr "Erreurs de compilation"
 msgid "There were errors during the build process."
 msgstr "Il y a eu des erreurs pendant la compilation."
 
-#: src/Converter.cpp:479 src/Format.cpp:327 src/Format.cpp:386
+#: src/Converter.cpp:479 src/Format.cpp:328 src/Format.cpp:387
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Une erreur s'est produite lors de l'exécution de %1$s."
@@ -12549,11 +12559,11 @@ msgstr "Langue : %1$s, "
 msgid "  Number %1$s"
 msgstr "  Nombre %1$s"
 
-#: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292 src/Format.cpp:326
+#: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292 src/Format.cpp:327
 msgid "Cannot view file"
 msgstr "Impossible de visualiser le fichier"
 
-#: src/Format.cpp:270 src/Format.cpp:340
+#: src/Format.cpp:270 src/Format.cpp:341
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fichier inexistant : %1$s"
@@ -12568,16 +12578,16 @@ msgstr "Pas d´information pour visualiser %1$s"
 msgid "Auto-view file %1$s failed"
 msgstr "Échec de l'auto-visualisation du fichier %1$s"
 
-#: src/Format.cpp:339 src/Format.cpp:352 src/Format.cpp:362 src/Format.cpp:385
+#: src/Format.cpp:340 src/Format.cpp:353 src/Format.cpp:363 src/Format.cpp:386
 msgid "Cannot edit file"
 msgstr "Impossible d'éditer le fichier"
 
-#: src/Format.cpp:353
+#: src/Format.cpp:354
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Pas d´information pour éditer %1$s"
 
-#: src/Format.cpp:363
+#: src/Format.cpp:364
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Échec de l'auto-édition du fichier %1$s"
@@ -13042,27 +13052,27 @@ msgstr "Modèles|#M#m"
 msgid "Select document to open"
 msgstr "Choisir le document à ouvrir"
 
-#: src/LyXFunc.cpp:2073
+#: src/LyXFunc.cpp:2077
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture du document %1$s..."
 
-#: src/LyXFunc.cpp:2077
+#: src/LyXFunc.cpp:2081
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s ouvert."
 
-#: src/LyXFunc.cpp:2079
+#: src/LyXFunc.cpp:2083
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible d'ouvrir le document %1$s"
 
-#: src/LyXFunc.cpp:2104
+#: src/LyXFunc.cpp:2108
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Choisir le fichier %1$s à importer"
 
-#: src/LyXFunc.cpp:2155 src/callback.cpp:181
+#: src/LyXFunc.cpp:2159 src/callback.cpp:181
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13073,11 +13083,11 @@ msgstr ""
 "\n"
 "Voulez-vous écrire par dessus ce document ?"
 
-#: src/LyXFunc.cpp:2157 src/callback.cpp:185
+#: src/LyXFunc.cpp:2161 src/callback.cpp:185
 msgid "Overwrite document?"
 msgstr "Écraser le document ?"
 
-#: src/LyXFunc.cpp:2220
+#: src/LyXFunc.cpp:2224
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
@@ -13750,61 +13760,61 @@ msgstr ""
 "Vous ne pouvez pas entrer deux espaces ainsi. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/Text.cpp:1822
+#: src/Text.cpp:1827
 msgid "[Change Tracking] "
 msgstr "[Suivi des Modifications] "
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1833
 msgid "Change: "
 msgstr "Modification : "
 
-#: src/Text.cpp:1832
+#: src/Text.cpp:1837
 msgid " at "
 msgstr " le "
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1847
 #, c-format
 msgid "Font: %1$s"
 msgstr "Police : %1$s"
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1852
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profondeur : %1$d"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1858
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/Text.cpp:1859 src/frontends/qt4/QDocument.cpp:249
+#: src/Text.cpp:1864 src/frontends/qt4/QDocument.cpp:249
 msgid "OneHalf"
 msgstr "Un et Demi"
 
-#: src/Text.cpp:1865
+#: src/Text.cpp:1870
 msgid "Other ("
 msgstr "Autre ("
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1879
 msgid ", Inset: "
 msgstr ", Insert : "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1880
 msgid ", Paragraph: "
 msgstr ", Paragraphe : "
 
-#: src/Text.cpp:1876
+#: src/Text.cpp:1881
 msgid ", Id: "
 msgstr ", Identifiant : "
 
-#: src/Text.cpp:1877
+#: src/Text.cpp:1882
 msgid ", Position: "
 msgstr ", Position : "
 
-#: src/Text.cpp:1883
+#: src/Text.cpp:1888
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1885
+#: src/Text.cpp:1890
 msgid ", Boundary: "
 msgstr ", Frontière : "
 
@@ -13820,7 +13830,7 @@ msgstr "Rien à faire !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Impossible d'indexer plus d'un paragraphe !"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1346
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1350
 msgid "Math editor mode"
 msgstr "Mode éditeur mathématique"
 
@@ -16109,7 +16119,7 @@ msgstr "1 chaîne remplacée."
 msgid " strings have been replaced."
 msgstr " chaînes remplacées."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1257
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1261
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16150,17 +16160,17 @@ msgstr "Pas de numéro"
 msgid "Number"
 msgstr "Numéro"
 
-#: src/mathed/InsetMathHull.cpp:1230
+#: src/mathed/InsetMathHull.cpp:1234
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Ne peut pas changer le nombre de lignes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1240
+#: src/mathed/InsetMathHull.cpp:1244
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Ne peut pas changer le nombre de colonnes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1250
+#: src/mathed/InsetMathHull.cpp:1254
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Ne peut pas ajouter les lignes de grille horizontales dans '%1$s'"
