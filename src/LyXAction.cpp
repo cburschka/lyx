@@ -1104,23 +1104,19 @@ void LyXAction::init()
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_MENUBAR_TOGGLE
- * \li Action: Toggles visibility of the main menu.
- * \li Notion: This can be used for the fullscreen mode.
- * \li Syntax: menubar-toggle
- * \li Origin: ps, 6 Feb 2008
+ * \var lyx::kb_action lyx::LFUN_UI_TOGGLE
+ * \li Action: Various UI visibility-toggling actions.
+ * \li Syntax: ui-toggle <statusbar|menubar|frame|fullscreen>
+ * \li Params: statusbar  : Toggle visibility of the statusbar.\n
+               menubar    : Toggle visibility of the menubar.\n
+	       frame      : Toggle visibility of the frames around editing window.\n
+	       fullscreen : Toggle fullscreen mode. This also covers calling the 
+	                    previous functions. However #LFUN_TOOLBAR_TOGGLE for the 
+			    custom tweaks of the toolbars should be used.
+ * \li Origin: ps, 9 Feb 2007
  * \endvar
  */
-		{ LFUN_MENUBAR_TOGGLE, "menubar-toggle", NoBuffer, Buffer },
-/*!
- * \var lyx::kb_action lyx::LFUN_STATUSBAR_TOGGLE
- * \li Action: Toggles visibility of the main menu.
- * \li Notion: This can be used for the fullscreen mode.
- * \li Syntax: statusbar-toggle
- * \li Origin: ps, 6 Feb 2008
- * \endvar
- */
-		{ LFUN_STATUSBAR_TOGGLE, "statusbar-toggle", NoBuffer, Buffer },
+		{ LFUN_UI_TOGGLE, "ui-toggle", NoBuffer, Buffer },
 
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },

@@ -1800,13 +1800,48 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_MENUBAR_TOGGLE:
-			menuBar()->setVisible(!menuBar()->isVisible());
-			break;
+		case LFUN_UI_TOGGLE: {
+			string const arg = cmd.getArg(0);
+			if (arg == "statusbar")
+				statusBar()->setVisible(!statusBar()->isVisible());
+			else if (arg == "menubar")
+				menuBar()->setVisible(!menuBar()->isVisible());
+#if QT_VERSION >= 0x040300
+			else if (arg == "frame") {
+				int l, t, r, b;
+				getContentsMargins(&l, &t, &r, &b);
+				//are the frames in default state?
+				if (l == 0) {
+					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+					setContentsMargins(-2, -2, -2, -2);
+				} else {
+					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+					setContentsMargins(0, 0, 0, 0);
+				}
+			}
+#endif
+			else if (arg == "fullscreen") {
+				if (isFullScreen()) {
+					showNormal();
+#if QT_VERSION >= 0x040300
+					setContentsMargins(0, 0, 0, 0);
+#endif
+					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+					menuBar()->show();
+					statusBar()->show();
+				} else {
+					statusBar()->hide();
+					menuBar()->hide();
+					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+#if QT_VERSION >= 0x040300
+					setContentsMargins(-2, -2, -2, -2);
+#endif
+					showFullScreen();
+				}
+			}
 
-		case LFUN_STATUSBAR_TOGGLE:
-			statusBar()->setVisible(!statusBar()->isVisible());
 			break;
+		}
 
 		default:
 			return false;
