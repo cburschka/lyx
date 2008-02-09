@@ -80,7 +80,7 @@ void QWrapDialog::change_adaptor()
 typedef QController<ControlWrap, QView<QWrapDialog> > wrap_base_class;
 
 QWrap::QWrap(Dialog & parent)
-	: wrap_base_class(parent, _("Text Wrap Settings"))
+	: wrap_base_class(parent, _("Wrap Float Settings"))
 {
 }
 
@@ -113,16 +113,16 @@ void QWrap::apply()
 
 	switch (dialog_->valignCO->currentIndex()) {
 	case 0:
-		params.placement.erase();
+		params.placement = "o";
 		break;
 	case 1:
-		params.placement = "l";
+		params.placement = "i";
 		break;
 	case 2:
-		params.placement = "r";
+		params.placement = "l";
 		break;
 	case 3:
-		params.placement = "p";
+		params.placement = "r";
 		break;
 	}
 }
@@ -131,12 +131,9 @@ void QWrap::apply()
 static string const numtostr(double val)
 {
 	string a = convert<string>(val);
-#ifdef WITH_WARNINGS
-#warning Will this test ever trigger? (Lgb)
-#endif
-	if (a == "0")
-		a.erase();
 	return a;
+	//0pt is a legal width now, it yields a 
+	//wrapfloat just wide enough for the contents.
 }
 
 
@@ -149,11 +146,11 @@ void QWrap::update_contents()
 	dialog_->unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;
-	if (params.placement == "l")
+	if (params.placement == "i")
 		item = 1;
-	else if (params.placement == "r")
+	else if (params.placement == "l")
 		item = 2;
-	else if (params.placement == "p")
+	else if (params.placement == "r")
 		item = 3;
 
 	dialog_->valignCO->setCurrentIndex(item);

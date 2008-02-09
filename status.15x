@@ -18,6 +18,13 @@ order of importance. This is, of course, subjective...]
 What's new
 ==========
 
+Important Note: The LaTeX-package "floatflt" that is used by LyX for wrap
+                floats has been removed from all major LaTeX-distributions
+		due to a license conflict. We are therefore forced to switch
+		from floatflt to the package "wrapfig". As consequence of this,
+		the wrap floats in your documents can eventually look
+		different, the position can slightly differ. So you should
+		check the output of your documents where you use wrap floats.
 
 ** Updates:
 ***********
@@ -135,7 +142,7 @@ What's new
   was active (bug 4452).
 
 - Fix an assertion when inserting a box in a list while at least one
-  paragraph of that list was selected (bug 5402).
+  paragraph of that list was selected (bug 4502).
 
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
