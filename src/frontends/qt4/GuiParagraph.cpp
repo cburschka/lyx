@@ -122,8 +122,6 @@ void GuiParagraph::alignmentToRadioButtons(LyXAlignment align)
 {
 	RadioMap::const_iterator it = radioMap.begin();
 	for (;it != radioMap.end(); ++it) {
-		if (!it->second->isEnabled())
-			continue;
 		it->second->blockSignals(true);
 		it->second->setChecked(align == it->first);
 		it->second->blockSignals(false);
