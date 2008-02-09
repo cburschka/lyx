@@ -99,7 +99,6 @@ Win32/packaging/AltInstaller/informations/InstallerStructure.odg \
 Win32/packaging/AltInstaller/informations/InstallerStructure.pdf \
 Win32/packaging/AltInstaller/informations/ISO_3166.html \
 Win32/packaging/AltInstaller/icons/lyx_doc.svg \
-Win32/packaging/AltInstaller/icons/lyx_logo_vert150.bmp \
 Win32/packaging/AltInstaller/icons/Lydia.svg \
 Win32/packaging/AltInstaller/icons/lyx.ico \
 Win32/packaging/AltInstaller/icons/lyx_32x32.ico \
@@ -135,7 +134,6 @@ Win32/packaging/AltInstaller/ChangeLog.txt \
 Win32/packaging/AltInstaller/ReadmeSmall1.6.txt \
 Win32/packaging/AltInstaller/MissingPrograms.nsh \
 Win32/packaging/AltInstaller/ReadmePackage1.6.txt \
-Win32/packaging/Microsoft.VC80.CRT.manifest \
 Win32/packaging/build_msvs_debug.bat \
 Win32/packaging/build_msvc.bat \
 Win32/pdfview/pdfview.nsi \
@@ -152,9 +150,6 @@ scons/qt4.py \
 scons/scons_manifest.py \
 scons/SConstruct \
 scons/scons_utils.py \
-scons/scons_utils.pyc \
-scons/scons_manifest.pyc \
-scons/qt4.pyc \
 cmake/boost/libs/signals/CMakeLists.txt \
 cmake/boost/libs/filesystem/CMakeLists.txt \
 cmake/boost/libs/iostreams/CMakeLists.txt \
