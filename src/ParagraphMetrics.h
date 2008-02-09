@@ -33,6 +33,7 @@ namespace lyx {
 typedef std::vector<Row> RowList;
 
 class Buffer;
+class BufferView;
 class BufferParams;
 class Font;
 class Inset;
@@ -76,7 +77,7 @@ public:
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
 	///
-	int rightMargin(Buffer const & buffer) const;
+	int rightMargin(BufferView const & bv) const;
 	///
 	int singleWidth(pos_type pos, Font const & Font) const;
 

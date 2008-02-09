@@ -1827,12 +1827,14 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					setContentsMargins(0, 0, 0, 0);
 #endif
 					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+					d.current_work_area_->bufferView().setFullScreen(false);
 					menuBar()->show();
 					statusBar()->show();
 				} else {
 					statusBar()->hide();
 					menuBar()->hide();
 					d.current_work_area_->setFrameStyle(QFrame::NoFrame);
+					d.current_work_area_->bufferView().setFullScreen(true);
 #if QT_VERSION >= 0x040300
 					setContentsMargins(-2, -2, -2, -2);
 #endif

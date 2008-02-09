@@ -79,13 +79,22 @@ struct ScrollbarParameters
 class BufferView {
 public:
 	///
-	BufferView(Buffer & buffer);
+	explicit BufferView(Buffer & buffer);
 	///
 	~BufferView();
 
 	/// return the buffer being viewed.
 	Buffer & buffer();
 	Buffer const & buffer() const;
+
+	///
+	void setFullScreen(bool full_screen) { full_screen_ = full_screen; }
+
+	/// right margin
+	int rightMargin() const;
+
+	/// left margin
+	int leftMargin() const;
 
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to
@@ -282,6 +291,8 @@ private:
 	///
 	int height_;
 	///
+	bool full_screen_;
+	///
 	Buffer & buffer_;
 
 	struct Private;
@@ -293,9 +304,6 @@ inline int nestMargin() { return 15; }
 
 /// margin for changebar
 inline int changebarMargin() { return 12; }
-
-/// right margin
-inline int rightMargin() { return 10; }
 
 } // namespace lyx
 

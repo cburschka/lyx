@@ -220,13 +220,13 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 
 int TextMetrics::rightMargin(ParagraphMetrics const & pm) const
 {
-	return main_text_? pm.rightMargin(bv_->buffer()) : 0;
+	return main_text_? pm.rightMargin(*bv_) : 0;
 }
 
 
 int TextMetrics::rightMargin(pit_type const pit) const
 {
-	return main_text_? par_metrics_[pit].rightMargin(bv_->buffer()) : 0;
+	return main_text_? par_metrics_[pit].rightMargin(*bv_) : 0;
 }
 
 
@@ -1697,7 +1697,7 @@ int TextMetrics::leftMargin(int max_width,
 	int l_margin = 0;
 
 	if (text_->isMainText(buffer))
-		l_margin += changebarMargin();
+		l_margin += bv_->leftMargin();
 
 	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
 		tclass.leftmargin());

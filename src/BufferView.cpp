@@ -257,7 +257,7 @@ struct BufferView::Private
 
 
 BufferView::BufferView(Buffer & buf)
-	: width_(0), height_(0), buffer_(buf), d(new Private(*this))
+	: width_(0), height_(0), full_screen_(false), buffer_(buf), d(new Private(*this))
 {
 	d->xsel_cache_.set = false;
 	d->intl_.initKeyMapper(lyxrc.use_kbmap);
@@ -284,6 +284,18 @@ BufferView::~BufferView()
 	LyX::ref().session().lastFilePos().save(buffer_.fileName(), fp);
 
 	delete d;
+}
+
+
+int BufferView::rightMargin() const
+{
+	return full_screen_? width_ / 4 : 10;
+}
+
+
+int BufferView::leftMargin() const
+{
+	return full_screen_? width_ / 4 : 10;
 }
 
 

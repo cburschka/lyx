@@ -195,13 +195,13 @@ void ParagraphMetrics::dump() const
 	}
 }
 
-int ParagraphMetrics::rightMargin(Buffer const & buffer) const
+int ParagraphMetrics::rightMargin(BufferView const & bv) const
 {
-	BufferParams const & params = buffer.params();
+	BufferParams const & params = bv.buffer().params();
 	TextClass const & tclass = params.getTextClass();
 	frontend::FontMetrics const & fm = theFontMetrics(params.getFont());
 	int const r_margin =
-		lyx::rightMargin()
+		bv.rightMargin()
 		+ fm.signedWidth(tclass.rightmargin())
 		+ fm.signedWidth(par_->layout()->rightmargin)
 		* 4 / (par_->getDepth() + 4);
