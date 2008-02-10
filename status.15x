@@ -143,6 +143,9 @@ What's new
 - Fix an assertion when inserting a box in a list while at least one
   paragraph of that list was selected (bug 4502).
 
+- Fix a crash when opening a file that resides in a hidden directory
+  (bug 4513).
+
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
 - Fix update/drawing of character style insets.

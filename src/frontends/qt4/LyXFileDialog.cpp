@@ -52,6 +52,13 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 		      toqstr(t), toqstr(p), toqstr(filters.as_string())),
 		      b1_(0), b2_(0)
 {
+	QString const path = toqstr(p);
+	QDir dir(path);
+	// FIXME: workaround for a bug in qt which makes LyX crash
+	// with hidden paths (bug 4513). Recheck with recent Qt versions.
+	if (path.contains("/."))
+		dir.setFilter(QDir::Hidden);
+	setDirectory(dir);
 	setWindowTitle(toqstr(t));
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();
