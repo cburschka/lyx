@@ -200,11 +200,20 @@ docstring const InsetText::editMessage() const
 }
 
 
-void InsetText::edit(Cursor & cur, bool left)
+void InsetText::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
 {
-	//lyxerr << "InsetText: edit left/right" << endl;
-	int const pit = left ? 0 : paragraphs().size() - 1;
-	int const pos = left ? 0 : paragraphs().back().size();
+	pit_type const pit = front ? 0 : paragraphs().size() - 1;
+	pos_type pos = front ? 0 : paragraphs().back().size();
+
+	// if visual information is not to be ignored, move to extreme right/left
+	if (entry_from != IGNORE_ENTRY_DIRECTION) {
+		Cursor temp_cur = cur;
+		temp_cur.pit() = pit;
+		temp_cur.pos() = pos;
+		temp_cur.posVisToRowExtremity(entry_from == ENTER_FROM_LEFT);
+		pos = temp_cur.pos();
+	}
+
 	text_.setCursor(cur.top(), pit, pos);
 	cur.clearSelection();
 	cur.finishUndo();

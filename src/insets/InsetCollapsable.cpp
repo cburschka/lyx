@@ -466,11 +466,11 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 }
 
 
-void InsetCollapsable::edit(Cursor & cur, bool left)
+void InsetCollapsable::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(*this);
-	InsetText::edit(cur, left);
+	InsetText::edit(cur, front, entry_from);
 }
 
 

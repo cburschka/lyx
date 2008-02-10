@@ -509,10 +509,10 @@ void MathMacro::validate(LaTeXFeatures & features) const
 }
 
 
-void MathMacro::edit(Cursor & cur, bool left)
+void MathMacro::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
 {
 	cur.updateFlags(Update::Force);
-	InsetMathNest::edit(cur, left);
+	InsetMathNest::edit(cur, front, entry_from);
 }
 
 

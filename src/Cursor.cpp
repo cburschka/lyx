@@ -5,6 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author Alfredo Braunstein
+ * \author Dov Feldstern
  * \author André Pönitz
  * \author Stefan Schimanski
  *
@@ -450,6 +451,276 @@ bool Cursor::posForward()
 		return false;
 	++pos();
 	return true;
+}
+
+
+void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
+{
+	// preparing bidi tables
+	Paragraph const & par = paragraph();
+	Buffer const & buf = buffer();
+	Row const & row = textRow();
+	Bidi bidi;
+	bidi.computeTables(par, buf, row);
+
+	LYXERR(Debug::RTL, "bidi: " << row.pos() << "--" << row.endpos());
+
+	// The cursor is painted *before* the character at pos(), or, if 'boundary'
+	// is true, *after* the character at (pos() - 1). So we already have one
+	// known position around the cursor:
+	pos_type known_pos = boundary() ? pos() - 1 : pos();
+	
+	// Whether 'known_pos' is to the left or to the right of the cursor depends
+	// on whether it is an RTL or LTR character...
+	bool const cur_is_RTL = 
+		par.getFontSettings(buf.params(), known_pos).isVisibleRightToLeft();
+	// ... in the following manner:
+	// For an RTL character, "before" means "to the right" and "after" means
+	// "to the left"; and for LTR, it's the reverse. So, 'known_pos' is to the
+	// right of the cursor if (RTL && boundary) or (!RTL && !boundary):
+	bool known_pos_on_right = (cur_is_RTL == boundary());
+
+	// So we now know one of the positions surrounding the cursor. Let's 
+	// determine the other one:
+	
+	if (known_pos_on_right) {
+		// edge-case: we're at the end of the paragraph, there isn't really any
+		// position any further to the right 
+		if (known_pos == lastpos()) {
+			right_pos = -1;
+			left_pos = row.endpos() - 1;
+			return;
+		}
+		// the normal case
+		right_pos = known_pos;
+		// *visual* position of 'left_pos':
+		pos_type v_left_pos = bidi.log2vis(right_pos) - 1;
+		// If the position we just identified as 'left_pos' is a "skipped 
+		// separator" (a separator which is at the logical end of a row,
+		// except for the last row in a paragraph; such separators are not
+		// painted, so they "are not really there"; note that in bidi text,
+		// such a separator could appear visually in the middle of a row),
+		// set 'left_pos' to the *next* position to the left.
+		if (bidi.inRange(v_left_pos) 
+				&& bidi.vis2log(v_left_pos) + 1 == row.endpos() 
+				&& row.endpos() < lastpos()
+				&& par.isSeparator(bidi.vis2log(v_left_pos))) {
+			--v_left_pos;
+		}
+		// calculate the logical position of 'left_pos', if in row
+		if (!bidi.inRange(v_left_pos))
+			left_pos = -1;
+		else
+			left_pos = bidi.vis2log(v_left_pos);
+		// If the position we identified as 'right_pos' is a "skipped 
+		// separator", set 'right_pos' to the *next* position to the right.
+		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos() 
+				&& par.isSeparator(right_pos)) {
+			pos_type v_right_pos = bidi.log2vis(right_pos) + 1;
+			if (!bidi.inRange(v_right_pos))
+				right_pos = -1;
+			else
+				right_pos = bidi.vis2log(v_right_pos);
+		}
+	} 
+	else { // known_pos is on the left
+		// edge-case: we're at the end of the paragraph, there isn't really any
+		// position any further to the left
+		if (known_pos == lastpos()) {
+			left_pos = -1;
+			right_pos = row.endpos() - 1;
+			return;
+		}
+		// the normal case
+		left_pos = known_pos;
+		// *visual* position of 'right_pos'
+		pos_type v_right_pos = bidi.log2vis(left_pos) + 1;
+		// If the position we just identified as 'right_pos' is a "skipped 
+		// separator", set 'right_pos' to the *next* position to the right.
+		if (bidi.inRange(v_right_pos) 
+				&& bidi.vis2log(v_right_pos) + 1 == row.endpos() 
+				&& row.endpos() < lastpos()
+				&& par.isSeparator(bidi.vis2log(v_right_pos))) {
+			++v_right_pos;
+		}
+		// calculate the logical position of 'right_pos', if in row
+		if (!bidi.inRange(v_right_pos)) 
+			right_pos = -1;
+		else
+			right_pos = bidi.vis2log(v_right_pos);
+		// If the position we identified as 'left_pos' is a "skipped 
+		// separator", set 'left_pos' to the *next* position to the left.
+		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos() 
+				&& par.isSeparator(left_pos)) {
+			pos_type v_left_pos = bidi.log2vis(left_pos) - 1;
+			if (!bidi.inRange(v_left_pos))
+				left_pos = -1;
+			else
+				left_pos = bidi.vis2log(v_left_pos);
+		}
+	}
+	return;
+}
+
+
+bool Cursor::posVisToNewRow(bool movingLeft)
+{
+	Paragraph const & par = paragraph();
+	Buffer const & buf = buffer();
+	Row const & row = textRow();
+	bool par_is_LTR = !par.isRTL(buf.params());
+	
+	// if moving left in an LTR paragraph or moving right in an RTL one, 
+	// move to previous row
+	if (par_is_LTR == movingLeft) {
+		if (row.pos() == 0) { // we're at first row in paragraph
+			if (pit() == 0) // no previous paragraph! don't move
+				return false;
+			// move to last pos in previous par
+			--pit();
+			pos() = lastpos();
+			boundary(false);
+		} else { // move to previous row in this par
+			pos() = row.pos() - 1; // this is guaranteed to be in previous row
+			boundary(false);
+		}
+	}
+	// if moving left in an RTL paragraph or moving right in an LTR one, 
+	// move to next row
+	else {
+		if (row.endpos() == lastpos()) { // we're at last row in paragraph
+			if (pit() == lastpit()) // last paragraph! don't move
+				return false;
+			// move to first row in next par
+			++pit();
+			pos() = 0;
+			boundary(false);
+		} else { // move to next row in this par
+			pos() = row.endpos();
+			boundary(false);
+		}
+	}
+	
+	// make sure we're at left-/right-most pos in new row
+	posVisToRowExtremity(!movingLeft);
+
+	return true;
+}
+
+
+void Cursor::posVisToRowExtremity(bool left)  
+{
+	// prepare bidi tables
+	Paragraph const & par = paragraph();
+	Buffer const & buf = buffer();
+	Row const & row = textRow();
+	Bidi bidi;
+	bidi.computeTables(par, buf, row);
+
+	LYXERR(Debug::RTL, "entering extremity: " << pit() << "," << pos() << ","
+		<< (boundary() ? 1 : 0));
+
+	if (left) { // move to leftmost position
+		// if this is an RTL paragraph, and we're at the last row in the
+		// paragraph, move to lastpos
+		if (par.isRTL(buf.params()) && row.endpos() == lastpos())
+			pos() = lastpos();
+		else {
+			pos() = bidi.vis2log(row.pos());
+
+			// Moving to the leftmost position in the row, the cursor should
+			// normally be placed to the *left* of the leftmost position.
+			// A very common exception, though, is if the leftmost character 
+			// also happens to be the separator at the (logical) end of the row
+			// --- in this case, the separator is positioned beyond the left 
+			// margin, and we don't want to move the cursor there (moving to 
+			// the left of the separator is equivalent to moving to the next
+			// line). So, in this case we actually want to place the cursor 
+			// to the *right* of the leftmost position (the separator). 
+			// Another exception is if we're moving to the logically last 
+			// position in the row, which is *not* a separator: this means
+			// that the entire row has no separators (if there were any, the 
+			// row would have been broken there); and therefore in this case
+			// we also move to the *right* of the last position (this indicates
+			// to the user that there is no space after this position, and is 
+			// consistent with the behavior in the middle of a row --- moving
+			// right or left moves to the next/previous character; if we were
+			// to move to the *left* of this position, that would simulate 
+			// a separator which is not really there!). 
+			// Finally, there is an exception to the previous exception: if 
+			// this non-separator-but-last-position-in-row is an inset, then
+			// we *do* want to stay to the left of it anyway: this is the 
+			// "boundary" which we simulate at insets.
+			
+			bool right_of_pos = false; // do we want to be to the right of pos?
+
+			// as explained above, if at last pos in row, stay to the right
+			if ((pos() == row.endpos() - 1) && !par.isInset(pos()))
+				right_of_pos = true;
+
+			// Now we know if we want to be to the left or to the right of pos,
+			// let's make sure we are where we want to be.
+			bool new_pos_is_RTL = 
+				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
+
+			if (new_pos_is_RTL == !right_of_pos) {
+				++pos();
+				boundary(true);
+			}
+			
+		}
+	}
+	else { // move to rightmost position
+		// if this is an LTR paragraph, and we're at the last row in the
+		// paragraph, move to lastpos
+		if (!par.isRTL(buf.params()) && row.endpos() == lastpos())
+			pos() = lastpos();
+		else {
+			pos() = bidi.vis2log(row.endpos() - 1);
+
+			// Moving to the rightmost position in the row, the cursor should
+			// normally be placed to the *right* of the rightmost position.
+			// A very common exception, though, is if the rightmost character 
+			// also happens to be the separator at the (logical) end of the row
+			// --- in this case, the separator is positioned beyond the right 
+			// margin, and we don't want to move the cursor there (moving to 
+			// the right of the separator is equivalent to moving to the next
+			// line). So, in this case we actually want to place the cursor 
+			// to the *left* of the rightmost position (the separator). 
+			// Another exception is if we're moving to the logically last 
+			// position in the row, which is *not* a separator: this means
+			// that the entire row has no separators (if there were any, the 
+			// row would have been broken there); and therefore in this case
+			// we also move to the *left* of the last position (this indicates
+			// to the user that there is no space after this position, and is 
+			// consistent with the behavior in the middle of a row --- moving
+			// right or left moves to the next/previous character; if we were
+			// to move to the *right* of this position, that would simulate 
+			// a separator which is not really there!). 
+			// Finally, there is an exception to the previous exception: if 
+			// this non-separator-but-last-position-in-row is an inset, then
+			// we *do* want to stay to the right of it anyway: this is the 
+			// "boundary" which we simulate at insets.
+			
+			bool left_of_pos = false; // do we want to be to the left of pos?
+
+			// as explained above, if at last pos in row, stay to the left
+			if ((pos() == row.endpos() - 1) && !par.isInset(pos()))
+				left_of_pos = true;
+
+			// Now we know if we want to be to the left or to the right of pos,
+			// let's make sure we are where we want to be.
+			bool new_pos_is_RTL = 
+				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
+
+			if (new_pos_is_RTL == left_of_pos) {
+				++pos();
+				boundary(true);
+			}
+		}
+	}
+	LYXERR(Debug::RTL, "leaving extremity: " << pit() << "," << pos() << ","
+		<< (boundary() ? 1 : 0));
 }
 
 

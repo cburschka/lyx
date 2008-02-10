@@ -38,7 +38,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
 	///
 	bool notifyCursorLeaves(Cursor & cur);
 	///

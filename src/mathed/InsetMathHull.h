@@ -199,7 +199,8 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	void edit(Cursor & cur, bool front);
+	void edit(Cursor & cur, bool front, 
+		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

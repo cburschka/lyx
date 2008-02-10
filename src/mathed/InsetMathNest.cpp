@@ -1205,11 +1205,13 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathNest::edit(Cursor & cur, bool left)
+void InsetMathNest::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
 {
 	cur.push(*this);
-	cur.idx() = left ? 0 : cur.lastidx();
-	cur.pos() = left ? 0 : cur.lastpos();
+	bool enter_front = (entry_from == Inset::ENTER_FROM_RIGHT || 
+		(entry_from == Inset::IGNORE_ENTRY_DIRECTION && front));
+	cur.idx() = enter_front ? 0 : cur.lastidx();
+	cur.pos() = enter_front ? 0 : cur.lastpos();
 	cur.resetAnchor();
 	//lyxerr << "InsetMathNest::edit, cur:\n" << cur << endl;
 }

@@ -49,7 +49,7 @@ public:
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual void edit(Cursor & cur, bool left);
+	virtual void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
 	///
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 	///

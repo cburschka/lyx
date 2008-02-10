@@ -73,7 +73,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
 	///
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 	///

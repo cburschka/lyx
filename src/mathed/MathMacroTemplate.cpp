@@ -533,11 +533,11 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMacroTemplate::edit(Cursor & cur, bool left)
+void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
 {
 	updateLook();
 	cur.updateFlags(Update::Force);
-	InsetMathNest::edit(cur, left);
+	InsetMathNest::edit(cur, front, entry_from);
 }
 
 

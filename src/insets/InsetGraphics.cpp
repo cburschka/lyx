@@ -239,7 +239,7 @@ void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
 }
 
 
-void InsetGraphics::edit(Cursor & cur, bool)
+void InsetGraphics::edit(Cursor & cur, bool, EntryDirectionType)
 {
 	InsetGraphicsMailer(*this).showDialog(&cur.bv());
 }

@@ -106,6 +106,12 @@ public:
 	bool & macromode() { return macromode_; }
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
+	/// return logical positions between which the cursor is situated
+	/**
+	 * If the cursor is at the edge of a row, the position which is "over the 
+	 * edge" will be returned as -1.
+	 */
+	void getSurroundingPos(pos_type & left_pos, pos_type & right_pos);
 	/// the row in the paragraph we're in
 	Row const & textRow() const;
 
@@ -116,6 +122,22 @@ public:
 	bool posBackward();
 	/// move one step forward
 	bool posForward();
+	/// move visually to next/previous row
+	/**
+	 * Assuming we were to keep moving left (right) from the current cursor
+	 * position, place the cursor at the rightmost (leftmost) edge of the 
+	 * new row to which we would move according to visual-mode cursor movement.
+	 * This could be either the next or the previous row, depending on the
+	 * direction in which we're moving, and whether we're in an LTR or RTL 
+	 * paragraph. 
+	 * @note: The new position may even be in a new paragraph.
+	 * @note: This method will not move out of the current slice.
+	 * @return: false if not moved (no more rows to move to in given direction)
+	 * @return: true if moved
+	 */
+	bool posVisToNewRow(bool movingLeft);
+	/// move to right or left extremity of the current row
+	void posVisToRowExtremity(bool left);
 
 	/// insert an inset
 	void insert(Inset *);

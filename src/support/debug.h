@@ -93,6 +93,8 @@ namespace Debug {
 		SCROLLING  = (1 << 25),
 		///
 		MACROS     = (1 << 26),
+		///	rtl-related
+		RTL        = (1 << 27),
 		///
 		DEBUG      = (1 << 31),
 		///

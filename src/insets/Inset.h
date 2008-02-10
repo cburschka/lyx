@@ -66,6 +66,12 @@ namespace graphics { class PreviewLoader; }
 class Inset {
 public:
 	///
+	enum EntryDirectionType {
+		IGNORE_ENTRY_DIRECTION,
+		ENTER_FROM_RIGHT,
+		ENTER_FROM_LEFT,
+	};
+	///
 	typedef ptrdiff_t  difference_type;
 	/// short of anything else reasonable
 	typedef size_t     size_type;
@@ -119,7 +125,8 @@ public:
 		FuncStatus & status) const;
 
 	/// cursor enters
-	virtual void edit(Cursor & cur, bool left);
+	virtual void edit(Cursor & cur, bool front, 
+		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
 	/// cursor enters
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 

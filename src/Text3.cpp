@@ -531,29 +531,50 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_LEFT_SELECT:
-		//FIXME: for visual cursor, really move left
-		if (reverseDirectionNeeded(cur)) {
-			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+		if (lyxrc.visual_cursor) {
+			needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_LEFT_SELECT);
+			needsUpdate |= cursorVisLeft(cur);
+			if (!needsUpdate && oldTopSlice == cur.top()
+					&& cur.boundary() == oldBoundary) {
+				cur.undispatched();
+				cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			}
 		} else {
-			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+			if (reverseDirectionNeeded(cur)) {
+				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+			} else {
+				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+			}
+			dispatch(cur, cmd);
+			return;
 		}
-		dispatch(cur, cmd);
-		return;
+		break;
 
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_RIGHT_SELECT:
-		//FIXME: for visual cursor, really move right
-		if (reverseDirectionNeeded(cur)) {
-			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+		if (lyxrc.visual_cursor) {
+			needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_RIGHT_SELECT);
+			needsUpdate |= cursorVisRight(cur);
+			if (!needsUpdate && oldTopSlice == cur.top()
+					&& cur.boundary() == oldBoundary) {
+				cur.undispatched();
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			}
 		} else {
-			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+			if (reverseDirectionNeeded(cur)) {
+				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+			} else {
+				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+			}
+			dispatch(cur, cmd);
+			return;
 		}
-		dispatch(cur, cmd);
-		return;
+		break;
+		
 
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN_SELECT:
@@ -1582,18 +1603,24 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_LEFT:
 		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_LEFT:\n" << cur);
-		if (reverseDirectionNeeded(cur)) {
-			++cur.pos();
-			cur.setCurrentFont();
-		}
+		// We're leaving an inset, going left. If the inset is LTR, we're 
+		// leaving from the front, so we should not move (remain at --- but
+		// not in --- the inset). If the inset is RTL, move left, without 
+		// entering the inset itself; i.e., move to after the inset.
+		if (cur.paragraph().getFontSettings(
+				cur.bv().buffer().params(), cur.pos()).isRightToLeft())
+			cursorVisLeft(cur, true);
 		break;
 
 	case LFUN_FINISHED_RIGHT:
 		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_RIGHT:\n" << cur);
-		if (!reverseDirectionNeeded(cur)) {
-			++cur.pos();
-			cur.setCurrentFont();
-		}
+		// We're leaving an inset, going right. If the inset is RTL, we're 
+		// leaving from the front, so we should not move (remain at --- but
+		// not in --- the inset). If the inset is LTR, move right, without 
+		// entering the inset itself; i.e., move to after the inset.
+		if (!cur.paragraph().getFontSettings(
+				cur.bv().buffer().params(), cur.pos()).isRightToLeft())
+			cursorVisRight(cur, true);
 		break;
 
 	case LFUN_FINISHED_BACKWARD:

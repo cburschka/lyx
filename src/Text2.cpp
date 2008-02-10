@@ -22,6 +22,7 @@
 
 #include "Text.h"
 
+#include "Bidi.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"
@@ -594,6 +595,24 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 }
 
 
+bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool movingLeft)
+{
+	if (cur.selection())
+		return false;
+	if (cur.pos() == -1)
+		return false;
+	if (cur.pos() == cur.lastpos())
+		return false;
+	Paragraph & par = cur.paragraph();
+	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : 0;
+	if (!inset || inset->editable() != Inset::HIGHLY_EDITABLE)
+		return false;
+	inset->edit(cur, movingForward, 
+		movingLeft ? Inset::ENTER_FROM_RIGHT : Inset::ENTER_FROM_LEFT);
+	return true;
+}
+
+
 bool Text::cursorBackward(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
@@ -633,6 +652,166 @@ bool Text::cursorBackward(Cursor & cur)
 	if (cur.pit() > 0)
 		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size(), true, false);
 	return false;
+}
+
+
+bool Text::cursorVisLeft(Cursor & cur, bool skip_inset)
+{
+	pit_type new_pit = cur.pit(); // the paragraph to which we will move
+	pos_type new_pos; // the position we will move to
+	bool new_boundary; // will we move to a boundary position?
+	pos_type left_pos; // position visually left of current cursor
+	pos_type right_pos; // position visually right of current cursor
+	bool new_pos_is_RTL; // is new position we're moving to RTL?
+
+	cur.getSurroundingPos(left_pos, right_pos);
+
+	LYXERR(Debug::RTL, left_pos <<"|"<< right_pos << " (pos: "<<cur.pos()<<")");
+
+	// Are we at an inset?
+	Cursor temp_cur = cur;
+	temp_cur.pos() = left_pos;
+	temp_cur.boundary(false);
+	if (!skip_inset && 
+		checkAndActivateInsetVisual(temp_cur, left_pos >= cur.pos(), true)) {
+		LYXERR(Debug::RTL, "entering inset at: " << temp_cur.pos());
+		cur = temp_cur; // set the real cursor to new position inside inset!
+		return false;
+	}
+
+	// Are we already at leftmost pos in row?
+	if (left_pos == -1) {
+		
+		Cursor new_cur = cur;
+		if (!new_cur.posVisToNewRow(true)) {
+			LYXERR(Debug::RTL, "not moving!");
+			return false;
+		}
+		
+		// we actually move the cursor at the end of this function, for now 
+		// just keep track of the new position...
+		new_pit = new_cur.pit();
+		new_pos = new_cur.pos();
+		new_boundary = new_cur.boundary();
+
+		LYXERR(Debug::RTL, "left edge, moving: " << int(new_pit) << "," 
+			<< int(new_pos) << "," << (new_boundary ? 1 : 0));
+
+	}
+	// normal movement to the left
+	else {
+		// Recall, if the cursor is at position 'x', that means *before* 
+		// the character at position 'x'. In RTL, "before" means "to the 
+		// right of", in LTR, "to the left of". So currently our situation
+		// is this: the position to our left is 'left_pos' (i.e., we're 
+		// currently to the right of 'left_pos'). In order to move to the 
+		// left, it depends whether or not the character at 'left_pos' is RTL.
+		new_pos_is_RTL = cur.paragraph().getFontSettings(
+			cur.bv().buffer().params(), left_pos).isVisibleRightToLeft();
+		// If the character at 'left_pos' *is* RTL, then in order to move to
+		// the left of it, we need to be *after* 'left_pos', i.e., move to
+		// position 'left_pos' + 1.
+		if (new_pos_is_RTL) {
+			new_pos = left_pos + 1;
+			// if the position *after* left_pos is not RTL, set boundary to 
+			// true (we want to be *after* left_pos, not before left_pos + 1!)
+			new_boundary = !cur.paragraph().getFontSettings(
+				cur.bv().buffer().params(), new_pos).isVisibleRightToLeft();
+		}
+		// Otherwise (if the character at position 'left_pos' is LTR), then
+		// moving to the left of it is as easy as setting the new position
+		// to 'left_pos'.
+		else {
+			new_pos = left_pos;
+			new_boundary = false;
+		}
+	
+	}
+
+	LYXERR(Debug::RTL, "moving to: " << new_pos 
+		<< (new_boundary ? " (boundary)" : ""));
+
+	return setCursor(cur, new_pit, new_pos, true, new_boundary);
+}
+
+
+bool Text::cursorVisRight(Cursor & cur, bool skip_inset)
+{
+	pit_type new_pit = cur.pit(); // the paragraph to which we will move
+	pos_type new_pos; // the position we will move to
+	bool new_boundary; // will we move to a boundary position?
+	pos_type left_pos; // position visually left of current cursor
+	pos_type right_pos; // position visually right of current cursor
+	bool new_pos_is_RTL; // is new position we're moving to RTL?
+
+	cur.getSurroundingPos(left_pos, right_pos);
+
+	LYXERR(Debug::RTL, left_pos <<"|"<< right_pos << " (pos: "<<cur.pos()<<")");
+
+	// Are we at an inset?
+	Cursor temp_cur = cur;
+	temp_cur.pos() = right_pos;
+	temp_cur.boundary(false);
+	if (!skip_inset &&
+		checkAndActivateInsetVisual(temp_cur, right_pos >= cur.pos(), false)) {
+		LYXERR(Debug::RTL, "entering inset at: " << temp_cur.pos());
+		cur = temp_cur; // set the real cursor to new position inside inset!
+		return false;
+	}
+
+	// Are we already at rightmost pos in row?
+	if (right_pos == -1) {
+		
+		Cursor new_cur = cur;
+		if (!new_cur.posVisToNewRow(false)) {
+			LYXERR(Debug::RTL, "not moving!");
+			return false;
+		}
+		
+		// we actually move the cursor at the end of this function, for now 
+		// just keep track of the new position...
+		new_pit = new_cur.pit();
+		new_pos = new_cur.pos();
+		new_boundary = new_cur.boundary();
+
+		LYXERR(Debug::RTL, "right edge, moving: " << int(new_pit) << "," 
+			<< int(new_pos) << "," << (new_boundary ? 1 : 0));
+
+	}
+	// normal movement to the right
+	else {
+		// Recall, if the cursor is at position 'x', that means *before* 
+		// the character at position 'x'. In RTL, "before" means "to the 
+		// right of", in LTR, "to the left of". So currently our situation
+		// is this: the position to our right is 'right_pos' (i.e., we're 
+		// currently to the left of 'right_pos'). In order to move to the 
+		// right, it depends whether or not the character at 'right_pos' is RTL.
+		new_pos_is_RTL = cur.paragraph().getFontSettings(
+			cur.bv().buffer().params(), right_pos).isVisibleRightToLeft();
+		// If the character at 'right_pos' *is* LTR, then in order to move to
+		// the right of it, we need to be *after* 'right_pos', i.e., move to
+		// position 'right_pos' + 1.
+		if (!new_pos_is_RTL) {
+			new_pos = right_pos + 1;
+			// if the position *after* right_pos is RTL, set boundary to 
+			// true (we want to be *after* right_pos, not before right_pos + 1!)
+			new_boundary = cur.paragraph().getFontSettings(
+				cur.bv().buffer().params(), new_pos).isVisibleRightToLeft();
+		}
+		// Otherwise (if the character at position 'right_pos' is RTL), then
+		// moving to the right of it is as easy as setting the new position
+		// to 'right_pos'.
+		else {
+			new_pos = right_pos;
+			new_boundary = false;
+		}
+	
+	}
+
+	LYXERR(Debug::RTL, "moving to: " << new_pos 
+		<< (new_boundary ? " (boundary)" : ""));
+
+	return setCursor(cur, new_pit, new_pos, true, new_boundary);
 }
 
 

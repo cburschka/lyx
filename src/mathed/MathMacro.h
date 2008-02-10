@@ -46,7 +46,7 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 

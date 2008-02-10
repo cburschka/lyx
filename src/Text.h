@@ -169,11 +169,23 @@ public:
 	 * Returns true if an update is needed after the move.
 	 */
 	bool cursorBackward(Cursor & cur);
+	/// Move cursor visually one position to the left
+	/**
+	 * \param skip_inset if true, don't enter insets
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorVisLeft(Cursor & cur, bool skip_inset = false);
 	/// Move cursor one position forward
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
 	bool cursorForward(Cursor & cur);
+	/// Move cursor visually one position to the right
+	/**
+	 * \param skip_inset if true, don't enter insets
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorVisRight(Cursor & cur, bool skip_inset = false);
 	///
 	bool cursorBackwardOneWord(Cursor & cur);
 	///
@@ -241,6 +253,8 @@ public:
 
 	///
 	bool checkAndActivateInset(Cursor & cur, bool front);
+	///
+	bool checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool movingLeft);
 
 	///
 	void write(Buffer const & buf, std::ostream & os) const;

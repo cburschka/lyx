@@ -72,7 +72,8 @@ public:
 		return p_[name];
 	}
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front, 
+		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
 	///
 	RenderButton & button() const { return button_; }
 	///

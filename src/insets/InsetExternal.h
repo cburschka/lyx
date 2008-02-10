@@ -145,7 +145,7 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// external file can be embedded

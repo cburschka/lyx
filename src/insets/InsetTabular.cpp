@@ -3151,7 +3151,7 @@ docstring const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::edit(Cursor & cur, bool left)
+void InsetTabular::edit(Cursor & cur, bool, EntryDirectionType)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	cur.finishUndo();
