@@ -152,7 +152,7 @@ End
 InsetLayout Listings
 	LabelString           Listings
 	LatexType             none
-	Decoration            minimalistic
+	Decoration            classic
 	Font
 	  Color               foreground
 	  Family              typewriter
@@ -168,7 +168,7 @@ InsetLayout Listings
 End
 
 InsetLayout Branch
-	Decoration            minimalistic
+	Decoration            classic
 	LabelFont
 	  Color               Red
 	  Size                Small
@@ -180,7 +180,7 @@ InsetLayout Index
 	LabelString           Idx
 	LatexType             command
 	LatexName             index
-	Decoration            minimalistic
+	Decoration            classic
 	Font
 	  Color               Green
 	  Size                Small
@@ -238,7 +238,7 @@ InsetLayout URL
 	LyXType               standard
 	LatexName             url
 	LatexType             command
-	Decoration            minimalistic
+	Decoration            classic
 	LabelString           URL
 	PassThru              true
 	ForceLTR              true
