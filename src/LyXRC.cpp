@@ -163,7 +163,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	// compatibility with versions older than 1.4.0 only
-	{ "\\viewer", LyXRC::RC_VIEWER}
+	{ "\\viewer", LyXRC::RC_VIEWER},
+	{ "\\visual_cursor" ,LyXRC::RC_VISUAL_CURSOR}
 };
 
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
@@ -247,6 +248,7 @@ void LyXRC::setDefaults() {
 	isp_use_esc_chars = false;
 	use_kbmap = false;
 	rtl_support = true;
+	visual_cursor = false;
 	auto_number = true;
 	mark_foreign_language = true;
 	language_auto_begin = true;
@@ -993,6 +995,11 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_RTL_SUPPORT:
 			if (lexrc.next()) {
 				rtl_support = lexrc.getBool();
+			}
+			break;
+		case RC_VISUAL_CURSOR:
+			if (lexrc.next()) {
+				visual_cursor = lexrc.getBool();
 			}
 			break;
 		case RC_AUTO_NUMBER:
@@ -2144,6 +2151,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_VISUAL_CURSOR:
+		if (ignore_system_lyxrc ||
+			visual_cursor != system_lyxrc.visual_cursor) {
+			os << "\\visual_cursor " << convert<string>(visual_cursor) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_LANGUAGE_PACKAGE:
 		if (ignore_system_lyxrc ||
 		    language_package != system_lyxrc.language_package) {
@@ -2652,6 +2666,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_RTL_SUPPORT:
 		str = _("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+		break;
+
+	case RC_VISUAL_CURSOR:
+		str = _("Select to have visual bidi cursor movement, unselect for logical movement.");
 		break;
 
 	case RC_SCREEN_DPI:

@@ -1438,7 +1438,11 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 {
 	setupUi(this);
 
-	connect(rtlCB, SIGNAL(clicked()),
+	connect(rtlGB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(visualCursorRB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(logicalCursorRB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(markForeignCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1476,7 +1480,8 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 void PrefLanguage::apply(LyXRC & rc) const
 {
 	// FIXME: remove rtl_support bool
-	rc.rtl_support = rtlCB->isChecked();
+	rc.rtl_support = rtlGB->isChecked();
+	rc.visual_cursor = rtlGB->isChecked() && visualCursorRB->isChecked();
 	rc.mark_foreign_language = markForeignCB->isChecked();
 	rc.language_auto_begin = autoBeginCB->isChecked();
 	rc.language_auto_end = autoEndCB->isChecked();
@@ -1492,7 +1497,11 @@ void PrefLanguage::apply(LyXRC & rc) const
 void PrefLanguage::update(LyXRC const & rc)
 {
 	// FIXME: remove rtl_support bool
-	rtlCB->setChecked(rc.rtl_support);
+	rtlGB->setChecked(rc.rtl_support);
+	if (rc.visual_cursor)
+		visualCursorRB->setChecked(true);
+	else
+		logicalCursorRB->setChecked(true);
 	markForeignCB->setChecked(rc.mark_foreign_language);
 	autoBeginCB->setChecked(rc.language_auto_begin);
 	autoEndCB->setChecked(rc.language_auto_end);

@@ -145,6 +145,7 @@ public:
 		RC_USE_SPELL_LIB,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
+		RC_VISUAL_CURSOR,
 		RC_LAST
 	};
 
@@ -336,6 +337,8 @@ public:
 	bool language_use_babel;
 	///
 	bool rtl_support;
+	/// bidi cursor movement: true = visual, false = logical
+	bool visual_cursor;
 	///
 	bool auto_number;
 	///
