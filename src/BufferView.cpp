@@ -286,16 +286,21 @@ BufferView::~BufferView()
 	delete d;
 }
 
+// Put this user variable in lyxrc or pass it through setFullScreen()
+static int const max_row_width = 700;
 
 int BufferView::rightMargin() const
 {
-	return full_screen_? width_ / 4 : 10;
+	if (!full_screen_ || width_ < max_row_width + 20)
+		return 10;
+
+	return (width_ - max_row_width) / 2;
 }
 
 
 int BufferView::leftMargin() const
 {
-	return full_screen_? width_ / 4 : 10;
+	return rightMargin();
 }
 
 
