@@ -153,6 +153,10 @@ private:
 	/// Find a macro to fold or unfold, starting at searchCur and searchCur.nextInset() pointing to a macro
 	/// afterwards if found
 	bool findMacroToFoldUnfold(Cursor & searchCur, bool fold) const;
+	/// move cursor forward
+	bool cursorMathForward(Cursor & cur);
+	/// move cursor backwards
+	bool cursorMathBackward(Cursor & cur);
 
 protected:
 	/// we store the cells in a vector

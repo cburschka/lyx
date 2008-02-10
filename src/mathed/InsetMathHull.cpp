@@ -1027,6 +1027,8 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_BACKWARD:
 	case LFUN_FINISHED_FORWARD:
+	case LFUN_FINISHED_RIGHT:
+	case LFUN_FINISHED_LEFT:
 		//lyxerr << "action: " << cmd.action << endl;
 		InsetMathGrid::doDispatch(cur, cmd);
 		notifyCursorLeaves(cur);
@@ -1166,6 +1168,8 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 	case LFUN_FINISHED_BACKWARD:
 	case LFUN_FINISHED_FORWARD:
+	case LFUN_FINISHED_RIGHT:
+	case LFUN_FINISHED_LEFT:
 	case LFUN_UP:
 	case LFUN_DOWN:
 	case LFUN_NEW_LINE:

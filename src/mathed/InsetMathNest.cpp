@@ -43,6 +43,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
+#include "LyXRC.h"
 #include "support/gettext.h"
 #include "Text.h"
 #include "OutputParams.h"
@@ -490,77 +491,79 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		lfunMouseRelease(cur, cmd);
 		break;
 
+	case LFUN_FINISHED_LEFT: // in math, left is backwards
 	case LFUN_FINISHED_BACKWARD:
 		cur.bv().cursor() = cur;
 		break;
 
+	case LFUN_FINISHED_RIGHT: // in math, right is forward
 	case LFUN_FINISHED_FORWARD:
 		++cur.pos();
 		cur.bv().cursor() = cur;
 		break;
 
+	case LFUN_CHAR_RIGHT:
+	case LFUN_CHAR_LEFT:
+	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_FORWARD:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
-	case LFUN_CHAR_FORWARD_SELECT:
-		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
-		cur.autocorrect() = false;
-		cur.clearTargetX();
-		cur.macroModeClose();
-		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
-			cur.pushBackward(*cur.nextAtom().nucleus());
-			cur.inset().idxFirst(cur);
-		} else if (cur.posForward() || idxForward(cur)
-			|| cur.popForward() || cur.selection())
-			;
-		else {
-			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-			cur.undispatched();
-		}
-		break;
-
-	case LFUN_CHAR_BACKWARD:
-		cur.updateFlags(Update::Decoration | Update::FitCursor);
-	case LFUN_CHAR_BACKWARD_SELECT:
-		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
-		cur.autocorrect() = false;
-		cur.clearTargetX();
-		cur.macroModeClose();
-		if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
-			cur.posBackward();
-			cur.push(*cur.nextAtom().nucleus());
-			cur.inset().idxLast(cur);
-		} else if (cur.posBackward() || idxBackward(cur)
-			|| cur.popBackward() || cur.selection())
-			;
-		else {
-			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
-			cur.undispatched();
-		}
-		break;
-
-	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_RIGHT_SELECT:
-		//FIXME: for visual cursor, really move right
-		if (reverseDirectionNeeded(cur))
-			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
-		else 
-			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
-		doDispatch(cur, cmd);
-		break;
-
-	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_LEFT_SELECT:
-		//FIXME: for visual cursor, really move left
-		if (reverseDirectionNeeded(cur))
-			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
-		else 
-			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
-		doDispatch(cur, cmd);
+	case LFUN_CHAR_BACKWARD_SELECT:
+	case LFUN_CHAR_FORWARD_SELECT: {
+		// are we in a selection?
+		bool select = (cmd.action == LFUN_CHAR_RIGHT_SELECT 
+					   || cmd.action == LFUN_CHAR_LEFT_SELECT
+					   || cmd.action == LFUN_CHAR_BACKWARD_SELECT
+					   || cmd.action == LFUN_CHAR_FORWARD_SELECT);
+		// are we moving forward or backwards? 
+		// If the command was RIGHT or LEFT, then whether we're moving forward
+		// or backwards depends on the cursor movement mode (logical or visual):
+		//  * in visual mode, since math is always LTR, right -> forward, 
+		//    left -> backwards
+		//  * in logical mode, the mapping is determined by the
+		//    reverseDirectionNeeded() function
+		
+		bool forward;
+		kb_action finish_lfun;
+
+		if (cmd.action == LFUN_CHAR_FORWARD 
+				|| cmd.action == LFUN_CHAR_FORWARD_SELECT) {
+			forward = true;
+			finish_lfun = LFUN_FINISHED_FORWARD;
+		}
+		else if (cmd.action == LFUN_CHAR_BACKWARD
+				|| cmd.action == LFUN_CHAR_BACKWARD_SELECT) {
+			forward = false;
+			finish_lfun = LFUN_FINISHED_BACKWARD;
+		}
+		else {
+			bool right = (cmd.action == LFUN_CHAR_RIGHT_SELECT
+						  || cmd.action == LFUN_CHAR_RIGHT);
+			if (lyxrc.visual_cursor || !reverseDirectionNeeded(cur))
+				forward = right;
+			else 
+				forward = !right;
+
+			if (right)
+				finish_lfun = LFUN_FINISHED_RIGHT;
+			else
+				finish_lfun = LFUN_FINISHED_LEFT;
+		}
+		// Now that we know exactly what we want to do, let's do it!
+		cur.selHandle(select);
+		cur.autocorrect() = false;
+		cur.clearTargetX();
+		cur.macroModeClose();
+		// try moving forward or backwards as necessary...
+		if (!(forward ? cursorMathForward(cur) : cursorMathBackward(cur))) {
+			// ... and if movement failed, then finish forward or backwards
+			// as necessary
+			cmd = FuncRequest(finish_lfun);
+			cur.undispatched();
+		}
 		break;
+	}
 
 	case LFUN_DOWN:
 	case LFUN_UP:
@@ -1581,6 +1584,43 @@ bool InsetMathNest::script(Cursor & cur, bool up,
 	cur.resetAnchor();
 	//lyxerr << "inserting selection 2:\n" << save_selection << endl;
 	return true;
+}
+
+
+bool InsetMathNest::cursorMathForward(Cursor & cur)
+{
+	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
+		cur.pushBackward(*cur.nextAtom().nucleus());
+		cur.inset().idxFirst(cur);
+		return true;
+	} 
+	if (cur.posForward() || idxForward(cur) || cur.selection())
+		return true;
+	// try to pop forwards --- but don't pop out of math! leave that to
+	// the FINISH lfuns
+	int s = cur.depth() - 2;
+	if (s >= 0 && cur[s].inset().asInsetMath())
+		return cur.popForward();
+	return false;
+}
+
+
+bool InsetMathNest::cursorMathBackward(Cursor & cur)
+{
+	if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
+		cur.posBackward();
+		cur.push(*cur.nextAtom().nucleus());
+		cur.inset().idxLast(cur);
+		return true;
+	} 
+	if (cur.posBackward() || idxBackward(cur) || cur.selection())
+		return true;
+	// try to pop backwards --- but don't pop out of math! leave that to 
+	// the FINISH lfuns
+	int s = cur.depth() - 2;
+	if (s >= 0 && cur[s].inset().asInsetMath())
+		return cur.popBackward();
+	return false;
 }
 
 
