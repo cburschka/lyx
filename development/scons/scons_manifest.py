@@ -334,6 +334,7 @@ src_support_files = Split('''
     Package.cpp
     Path.cpp
     SignalSlot.cpp
+    SignalSlotPrivate.cpp
     Systemcall.cpp
     Timeout.cpp
     convert.cpp
