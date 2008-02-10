@@ -23495,8 +23495,13 @@ reference "fig:Notas-al-final----notas-al-pie"
 \end_inset
 
 .
- Para usar notas finales en vez de notas al pie, carga el paquete LaTeX
- 
+ Para usar notas finales
+\begin_inset LatexCommand index
+name "Notas finales"
+
+\end_inset
+
+ en vez de notas al pie, carga el paquete LaTeX 
 \series bold
 endnotes
 \series default

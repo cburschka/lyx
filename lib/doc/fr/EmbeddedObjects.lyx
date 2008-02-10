@@ -23635,7 +23635,7 @@ notes de fin
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \begin_inset Note Note
 status collapsed
 
@@ -23645,7 +23645,12 @@ J'ai pas trouvé mieux pour endnotes (NdT)
 
 \end_inset
 
-.
+
+\begin_inset LatexCommand index
+name "Notes de fin"
+
+\end_inset
+
  Pour utiliser des notes de fin à la place des notes de bas de page dans
  votre document, chargez le paquetage LaTeX 
 \series bold
