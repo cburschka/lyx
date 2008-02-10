@@ -1730,6 +1730,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 		} else
 			d->cursor_.setSelection(d->cursor_, length);
 	}
+	showCursor();
 }
 
 

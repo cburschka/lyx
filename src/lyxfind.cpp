@@ -307,11 +307,9 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	} else {
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
-		bool const found = find(bv, search,
-					casesensitive, matchword, forward);
-
-		if (!found)
-			// emit message signal.
+		if (find(bv, search, casesensitive, matchword, forward))
+			bv->showCursor();
+		else
 			bv->message(_("String not found!"));
 	}
 }
