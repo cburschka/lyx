@@ -1108,7 +1108,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORD_FIND:
-		find(this, cmd);
+		if (find(this, cmd))
+			showCursor();
+		else
+			message(_("String not found!"));
 		break;
 
 	case LFUN_WORD_REPLACE: {

@@ -244,10 +244,10 @@ docstring const replace2string(docstring const & search, docstring const & repla
 }
 
 
-void find(BufferView * bv, FuncRequest const & ev)
+bool find(BufferView * bv, FuncRequest const & ev)
 {
 	if (!bv || ev.action != LFUN_WORD_FIND)
-		return;
+		return false;
 
 	//lyxerr << "find called, cmd: " << ev << endl;
 
@@ -261,12 +261,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	bool const found = find(bv, search,
-				  casesensitive, matchword, forward);
-
-	if (!found)
-		// emit message signal.
-		bv->message(_("String not found!"));
+	return find(bv, search, casesensitive, matchword, forward);
 }
 
 
