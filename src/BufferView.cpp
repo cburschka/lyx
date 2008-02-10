@@ -1730,7 +1730,9 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 		} else
 			d->cursor_.setSelection(d->cursor_, length);
 	}
-	showCursor();
+	// Ensure a redraw happens in any case because the new selection could 
+	// possibly be on the same screen as the previous selection.
+	processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 
