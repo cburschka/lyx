@@ -10,14 +10,29 @@ AC_DEFUN([LYX_CHECK_VERSION],[
 echo "configuring LyX version" AC_PACKAGE_VERSION
 lyx_devel_version=no
 lyx_prerelease=no
-case AC_PACKAGE_VERSION in
-  *svn*) lyx_devel_version=yes
-         AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
-         LYX_DATE="not released yet"
-         echo "WARNING: This is a development version. Expect bugs.";;
-  *pre*|*alpha*|*beta*|*rc*) lyx_prerelease=yes
-        echo "WARNING: This is a prerelease. Be careful and backup your documents.";;
-esac
+build_type=release
+AC_MSG_CHECKING([for build type])
+AC_ARG_ENABLE(build-type,
+  AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=dev(elopment), rel(ease) or pre(release)]),
+  [case $enableval in 
+    dev*) lyx_devel_version=yes
+          build_type=development;;
+    pre*) lyx_prerelease=yes
+          build_type=prerelease;;
+    rel*) ;;
+    *) AC_ERROR([Bad build type specification \"$enableval\". Please use one of dev(elopment), rel(ease) or pre(release)]);;
+   esac],
+  [case AC_PACKAGE_VERSION in
+    *svn*) lyx_devel_version=yes
+          build_type=development;;
+    *pre*|*alpha*|*beta*|*rc*) lyx_prerelease=yes
+          build_type=prerelease;;
+   esac])
+AC_MSG_RESULT([$build_type])
+if test $lyx_devel_version == yes ; then
+           AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
+           LYX_DATE="not released yet"
+fi
 AC_SUBST(lyx_devel_version)])
 
 

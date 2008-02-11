@@ -42,21 +42,14 @@ Requirements
 ------------
 
 First of all, you will also need a recent C++ compiler, where recent
-means that the compilers are close to C++ standard conforming.
-Compilers that are known to compile LyX are gcc 2.95.x and later
-and Digital C++ version 6.1 and later. Please tell us your experience
-with other compilers.
+means that the compilers are close to C++ standard conforming (gcc 3.x).
 
-It is _not_ possible to compile LyX with gcc 2.7.x and 2.8.x.
-
-LyX 1.4.x makes great use of C++ Standard Template Library (STL).
+LyX 1.6.x makes great use of C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
-library to be able to compile this version of LyX. Users of gcc 2.95.x
-will have to install the STLPort version of these libraries as the
-ones that come with gcc 2.95.x are too broken for us to use.
+library to be able to compile this version of LyX. 
 
-LyX has been tested with Qt 4.2.0. The only special point to 
-make is that you must ensure that both LyX and the Qt libraries are 
+LyX has been tested with Qt 4.2.x and Qt 4.3.x. The only special point
+to make is that you must ensure that both LyX and the Qt libraries are
 compiled with the same C++ compiler.
 
 Note that if Qt is using Xft2/fontconfig, you may need to install the
@@ -65,8 +58,7 @@ maths symbols displayed properly. To find out, type:
 
 	ldd `which lyx` | grep fontconfig
 
-at the console. Both RH8 and Debian unstable distributions are known
-to use fontconfig.
+at the console. Most recent distributions are known to use fontconfig.
 
 If, however, your version of Qt does not use fontconfig, then TeX
 fonts should be added to the font path. 'man xset' is your friend.
@@ -87,7 +79,7 @@ The two following programs should be available at configuration time:
 
   o LaTeX2e should be correctly setup for the user you are logged in
     as. Otherwise, LyX will not be able to run a number of tests. Note
-    that users can run these tests manually with Edit>Reconfigure.
+    that users can run these tests manually with Tools>Reconfigure.
 
   o Python 2.3 or newer installed to be able to import older LyX files
     with the lyx2lyx script (this script is called automatically when
@@ -107,6 +99,21 @@ to create the Makefile by typing
 For more complicated cases, LyX configure takes the following specific
 flags:
 
+  o --enable-build-type=[rel(ease), dev(elopment), pre(release)]
+    allows to tweak the compiled code. The options are equivalent to:
+
+    release: --enable-optimization=-O2 --disable-assertions 
+             --disable-stdlib-debug --disable-concept-checks
+             --disable-warnings --disable-debug
+
+    prerelease: --enable-optimization=-O2 --enable-assertions 
+             --disable-stdlib-debug --enable-concept-checks
+             --enable-warnings --enable-debug
+
+    prerelease: --enable-optimization=-O --enable-assertions 
+             --enable-stdlib-debug --enable-concept-checks
+             --enable-warnings --enable-debug
+
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
     (i.e. search in standard places). You can specify several
@@ -120,10 +127,10 @@ flags:
        --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
     If DIRECTORY is not specified, the current prefix is used.
 
-  o --with-version-suffix will install LyX as lyx-<version>, e.g. lyx-1.4.1
-    The LyX data directory will be something like <whatever>/lyx-1.4.1/.
+  o --with-version-suffix will install LyX as lyx-<version>, e.g. lyx-1.6.1
+    The LyX data directory will be something like <whatever>/lyx-1.6.1/.
     Additionally your user configuration files will be found in e.g.
-    $HOME/.lyx-1.4.1
+    $HOME/.lyx-1.6.1
 
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
@@ -134,13 +141,6 @@ flags:
     --program-suffix and the others will not affect the shared LyX
     directory etc. so it is recommended that you use --with-version-suffix
     (or --prefix) instead.
-
-  o --enable-optimization=VALUE enables you to set optimization to a
-    higher level as the default (-O), for example --enable-optimization=-O3.
-
-  o --disable-optimization - you can use this to disable compiler
-    optimization of LyX. The compile may be much quicker with some
-    compilers, but LyX will run more slowly.
 
 There are also flags to control the internationalization support in
 LyX:
@@ -201,6 +201,13 @@ this file.
 
 In particular, the following options could be useful in some desperate
 cases:
+
+  o --enable-optimization=VALUE enables you to set optimization to a
+    higher level as the default (-O), for example --enable-optimization=-O3.
+
+  o --disable-optimization - you can use this to disable compiler
+    optimization of LyX. The compile may be much quicker with some
+    compilers, but LyX will run more slowly.
 
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try to
@@ -310,58 +317,9 @@ team member or users to help compiling on some particular
 architectures. If you find that some of this hints are wrong, please
 notify us.
 
-  o On SUN Sparc Solaris 8, you need gnumake. The LyX makefiles do not
+  o On SUN Sparc Solaris, you need gnumake. The LyX makefiles do not
     work with Solaris make.
 
     The Solaris ar seg-faults trying to build the insets library. You
     will need to use the ar from the GNU binutils for this subdirectory.
 
-  o LyX can be compiled on Tru64 Unix with either GNU's gcc or the default
-    Compaq cxx compiler.
-
-    There are no Alpha-specific problems with gcc.
-
-    The following notes all refer to compilation with the Compaq cxx compiler.
-
-    LyX cannot be compiled on Tru64 Unix 4.0d or 4.0e with the default cxx
-    compiler. You should upgrade to at least cxx V6.2, to be found at
-    ftp::/ftp.compaq.com/pub/products/C-CXX/tru64/cxx/CXX622V40.tar. Users
-    running Tru64 Unix 4.0f and greater should have no real problems compiling
-    LyX.
-
-    cxx V6.2 will compile LyX out of the box.
-    cxx V6.3-020 is also known to work, although there is a bug in
-    /usr/include/cxx/deque that will break compilation in FormPreferences.C.
-    Compaq are investigating, but a patch that works /now/ is:
-
---- /usr/include/cxx/deque_safe Mon Mar  4 21:09:50 2002
-+++ /usr/include/cxx/deque      Mon Mar  4 21:09:00 2002
-@@ -570,9 +570,11 @@
-       {
-         if (size() >= x.size())
-           erase(copy(x.begin(), x.end(), begin()), end());
--        else
--          copy(x.begin() + size(), x.end(),
--               inserter(*this,copy(x.begin(),x.begin()+size(),begin())));
-+        else {
-+         const_iterator mid = x.begin() + difference_type(size());
-+         copy(x.begin(), mid, begin());
-+         insert(end(), mid, x.end());
-+       }
-       }
-       return *this;
-     }
-
-    At the time of writing, cxx V6.5-026 is the latest cxx compiler. It is
-    /not/ recommended. The compiler itself appears to be both buggy and
-    extremely bloated (trebling the size of the stripped LyX binary).
-
-    In order to compile LyX with the cxx compiler, you should run configure
-    with the following flags:
-	CXX='cxx -std strict_ansi'
-	CXXFLAGS='-nopure_cname -nocleanup -ptr /tmp/lyx_cxx_repository -O2'
-	CC='cc -std1'
-    The -nopure_cname flag is needed for compilers V6.3 and above because
-    LyX makes use of functions like popen, pclose that are defined in the
-    c version of <stdio.h> but are not formally part of any c/c++ standard.
-    They are not, therefore, included in the <cstdio> header file.
