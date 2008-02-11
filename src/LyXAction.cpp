@@ -1233,10 +1233,21 @@ void LyXAction::init()
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_NEW
  * \li Action: Creates a new buffer (that is, document).
- * \li Syntax: buffer-new
+ * \li Notion: Implicit path can be set in Preferences dialog.
+ * \li Syntax: buffer-new [<FILE>]
+ * \li Params: <FILE>: filename of created file with absolute path.
  * \endvar
  */
 		{ LFUN_BUFFER_NEW, "buffer-new", NoBuffer, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_NEW_TEMPLATE
+ * \li Action: Creates a new buffer (that is, document) from a template.
+ * \li Action: Path for new files and templates can be set in Preferences dialog.
+               Template will be asked for via Open-dialog.
+ * \li Syntax: buffer-new-template [<FILE>]
+ * \li Params: <FILE>: filename of created file with absolute path.
+ * \endvar
+ */
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
