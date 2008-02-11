@@ -164,7 +164,7 @@ bool CursorSlice::at_begin() const
 
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset_ == &q.inset_
+	return p.inset_ == q.inset_
 	       && p.idx_ == q.idx_
 	       && p.pit_ == q.pit_
 	       && p.pos_ == q.pos_;
@@ -173,7 +173,7 @@ bool operator==(CursorSlice const & p, CursorSlice const & q)
 
 bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset_ != &q.inset_
+	return p.inset_ != q.inset_
 	       || p.idx_ != q.idx_
 	       || p.pit_ != q.pit_
 	       || p.pos_ != q.pos_;
@@ -182,7 +182,7 @@ bool operator!=(CursorSlice const & p, CursorSlice const & q)
 
 bool operator<(CursorSlice const & p, CursorSlice const & q)
 {
-	if (&p.inset_ != &q.inset_) {
+	if (p.inset_ != q.inset_) {
 		LYXERR0("can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q);
 		BOOST_ASSERT(false);
@@ -210,13 +210,13 @@ bool operator<=(CursorSlice const & p, CursorSlice const & q)
 ostream & operator<<(ostream & os, CursorSlice const & item)
 {
 	return os
-	   << "inset: " << (void *)&item.inset_
+	   << "inset: " << (void *)item.inset_
 //	   << " text: " << item.text()
 	   << " idx: " << item.idx_
 	   << " par: " << item.pit_
 	   << " pos: " << item.pos_
-//	   << " x: " << item.inset_.x()
-//	   << " y: " << item.inset_.y()
+//	   << " x: " << item.inset_->x()
+//	   << " y: " << item.inset_->y()
 ;
 }
 
