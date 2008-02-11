@@ -129,6 +129,9 @@ What's new
 
 * USER INTERFACE:
 
+- Fix crashes after LyX tried to access files on non-existing or unmounted
+  drives (bugs 4052, 4440, 4534).
+
 - Fix a crash when changing the document encoding while View->Source
   is open (bug 3561).
 
