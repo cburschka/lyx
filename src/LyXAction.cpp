@@ -1109,6 +1109,7 @@ void LyXAction::init()
  * \li Syntax: ui-toggle <statusbar|menubar|frame|fullscreen>
  * \li Params: statusbar  : Toggle visibility of the statusbar.\n
                menubar    : Toggle visibility of the menubar.\n
+	       scrollbar  : Toggle visibility of the scrollbar.\n
 	       frame      : Toggle visibility of the frames around editing window.\n
 	       fullscreen : Toggle fullscreen mode. This also covers calling the
 	                    previous functions. However #LFUN_TOOLBAR_TOGGLE for the

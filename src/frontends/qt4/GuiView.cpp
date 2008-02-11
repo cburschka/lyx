@@ -84,6 +84,7 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QUrl>
+#include <QScrollBar>
 
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
@@ -1815,6 +1816,18 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 void GuiView::lfunUiToggle(FuncRequest const & cmd)
 {
 	string const arg = cmd.getArg(0);
+	if (arg == "scrollbar") {
+		// hide() is of no help
+		if (d.current_work_area_->verticalScrollBarPolicy() ==
+			Qt::ScrollBarAlwaysOff)
+
+			d.current_work_area_->setVerticalScrollBarPolicy(
+				Qt::ScrollBarAsNeeded);
+		else
+			d.current_work_area_->setVerticalScrollBarPolicy(
+				Qt::ScrollBarAlwaysOff);
+		return;
+	}
 	if (arg == "statusbar") {
 		statusBar()->setVisible(!statusBar()->isVisible());
 		return;
