@@ -207,8 +207,8 @@ void InsetCommandParams::read(Lexer & lex)
 		string const insetType = lex.getString();
 		InsetCode const code = insetCode(insetType);
 		if (code != insetCode_) {
-			lex.printError("InsetCommand: Attempt to change type of parameters.");
-			throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
+			lex.printError("InsetCommandParams: Attempt to change type of inset.");
+			throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
 				from_utf8("Attempt to change type of parameters."));
 		}
 	}
@@ -217,22 +217,22 @@ void InsetCommandParams::read(Lexer & lex)
 		lex.next();
 		string const test = lex.getString();
 		if (test != "LatexCommand") {
-			lex.printError("InsetCommand: no LatexCommand line found.");
-			throw ExceptionMessage(WarningException, _("InsetCommand error:"),
+			lex.printError("InsetCommandParams: No LatexCommand line found.");
+			throw ExceptionMessage(WarningException, _("InsetCommandParams error:"),
 				from_utf8("Can't find LatexCommand line."));
 		}
 	}
 	lex.next();
 	cmdName_ = lex.getString();
 	if (!isCompatibleCommand(insetCode_, cmdName_)){
-		lex.printError("InsetCommand: Incompatible command name " + cmdName_ + ".");
-		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
+		lex.printError("InsetCommandParams: Incompatible command name " + cmdName_ + ".");
+		throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
 		                       from_utf8("Incompatible command name."));
 	}
 
 	info_ = findInfo(insetCode_, cmdName_);
 	if (!info_) {
-		lex.printError("InsetCommand: Unknown inset name `$$Token'");
+		lex.printError("InsetCommandParams: Unknown inset name `$$Token'");
 		throw ExceptionMessage(WarningException,
 			_("Unknown inset name: "), from_utf8(insetType()));
 	}
@@ -255,7 +255,7 @@ void InsetCommandParams::read(Lexer & lex)
 		} else {
 			lex.printError("Unknown parameter name `$$Token' for command " + cmdName_);
 			throw ExceptionMessage(WarningException,
-				_("Inset Command: ") + from_ascii(cmdName_),
+				_("InsetCommandParams: ") + from_ascii(cmdName_),
 				_("Unknown parameter name: ") + from_utf8(token));
 		}
 	}
