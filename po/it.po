@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-09 02:48+0100\n"
-"PO-Revision-Date: 2008-02-01 12:05+0100\n"
+"PO-Revision-Date: 2008-02-11 00:49+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -5322,17 +5322,17 @@ msgstr "Apertura:"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:911
 msgid "Encl."
-msgstr "Encl."
+msgstr "All."
 
 #: lib/layouts/g-brief-en.layout:217 lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
-msgstr "Encl.:"
+msgstr "All.:"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:943
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:137
 #: lib/layouts/stdletter.inc:114
 msgid "cc:"
-msgstr "cc:"
+msgstr "e p.c.:"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:121 lib/layouts/stdletter.inc:97
@@ -5353,7 +5353,7 @@ msgstr "NomeRigaB"
 
 #: lib/layouts/g-brief2.layout:107
 msgid "NameRowB:"
-msgstr ":NomeRigaB:"
+msgstr "NomeRigaB:"
 
 #: lib/layouts/g-brief2.layout:116
 msgid "NameRowC"
@@ -6165,12 +6165,12 @@ msgstr "CC"
 
 #: lib/layouts/scrlettr.layout:109 lib/layouts/scrlttr2.layout:141
 msgid "Encl"
-msgstr "Encl"
+msgstr "Allegati"
 
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:144
 #: lib/layouts/stdletter.inc:122
 msgid "encl:"
-msgstr "encl:"
+msgstr "Allegati:"
 
 #: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:187
 #: lib/layouts/stdletter.inc:135
@@ -6183,11 +6183,11 @@ msgstr "Telefono:"
 
 #: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:235
 msgid "Place"
-msgstr "Posto"
+msgstr "Luogo"
 
 #: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:239
 msgid "Place:"
-msgstr "posto:"
+msgstr "Luogo:"
 
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:251
 msgid "Backaddress"
@@ -6199,21 +6199,21 @@ msgstr "Indirizzo di ritorno:"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:259
 msgid "Specialmail"
-msgstr "Posta speciale"
+msgstr "Indirizzo speciale"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:263
 msgid "Specialmail:"
-msgstr "Posta speciale:"
+msgstr "Indirizzo speciale:"
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:127
 msgid "Location"
-msgstr "Locazione"
+msgstr "Sede"
 
 #: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:271
 #: lib/layouts/stdletter.inc:131
 msgid "Location:"
-msgstr "Locazione:"
+msgstr "Sede:"
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:279
 msgid "Title:"
@@ -6230,35 +6230,35 @@ msgstr "Soggetto:"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:291
 msgid "Yourref"
-msgstr "Il tuo riferimento"
+msgstr "Vostro riferimento"
 
 #: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:295
 msgid "Your ref.:"
-msgstr "Il tuo riferimento:"
+msgstr "Vostro riferimento:"
 
 #: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:307
 msgid "Yourmail"
-msgstr "La tua posta"
+msgstr "Vostra lettera"
 
 #: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:311
 msgid "Your letter of:"
-msgstr "La tua lettera di:"
+msgstr "Vostra lettera del:"
 
 #: lib/layouts/scrlettr.layout:228 lib/layouts/scrlttr2.layout:315
 msgid "Myref"
-msgstr "Il mio riferimento"
+msgstr "Nostro riferimento"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:319
 msgid "Our ref.:"
-msgstr "Il nostro riferimento:"
+msgstr "Nostro riferimento:"
 
 #: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:323
 msgid "Customer"
-msgstr "Acquirente"
+msgstr "Cliente"
 
 #: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:327
 msgid "Customer no.:"
-msgstr "Acquirente numero:"
+msgstr "Numero cliente:"
 
 #: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:331
 msgid "Invoice"
@@ -6266,15 +6266,15 @@ msgstr "Fattura"
 
 #: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:335
 msgid "Invoice no.:"
-msgstr "Fattura numero:"
+msgstr "Numero fattura:"
 
 #: lib/layouts/scrlttr2.layout:72
 msgid "NextAddress"
-msgstr "Prossimo indirizzo"
+msgstr "Indirizzo successivo"
 
 #: lib/layouts/scrlttr2.layout:84
 msgid "Next Address:"
-msgstr "Prossimo indirizzo:"
+msgstr "Indirizzo successivo:"
 
 #: lib/layouts/scrlttr2.layout:129
 msgid "Post Scriptum:"
@@ -6290,7 +6290,7 @@ msgstr "Indirizzo mittente"
 
 #: lib/layouts/scrlttr2.layout:183
 msgid "Sender Address:"
-msgstr "Indirizzo del mittente:"
+msgstr "Indirizzo mittente:"
 
 #: lib/layouts/scrlttr2.layout:191
 msgid "Sender Phone:"
@@ -6306,15 +6306,15 @@ msgstr "Fax mittente:"
 
 #: lib/layouts/scrlttr2.layout:203
 msgid "E-Mail"
-msgstr "Posta elettronica"
+msgstr "Email"
 
 #: lib/layouts/scrlttr2.layout:207
 msgid "Sender E-Mail:"
-msgstr "Posta elettronica mittente:"
+msgstr "Email mittente:"
 
 #: lib/layouts/scrlttr2.layout:215
 msgid "Sender URL:"
-msgstr "Inserisci URL:"
+msgstr "URL mittente:"
 
 #: lib/layouts/scrlttr2.layout:227
 msgid "Logo"
@@ -6325,14 +6325,12 @@ msgid "Logo:"
 msgstr "Logo:"
 
 #: lib/layouts/scrlttr2.layout:339
-#, fuzzy
 msgid "EndLetter"
-msgstr "Lettera"
+msgstr "Fine lettera"
 
 #: lib/layouts/scrlttr2.layout:352
-#, fuzzy
 msgid "End of letter"
-msgstr "Punto di fine frase|f"
+msgstr "Fine della lettera"
 
 #: lib/layouts/seminar.layout:46
 msgid "LandscapeSlide"
