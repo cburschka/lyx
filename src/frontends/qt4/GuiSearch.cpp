@@ -14,13 +14,13 @@
 
 #include "GuiSearch.h"
 
+#include "qt_helpers.h"
+
 #include "FuncRequest.h"
 #include "lyxfind.h"
 
-#include "qt_helpers.h"
-
-#include <QLineEdit>
 #include <QCloseEvent>
+#include <QLineEdit>
 #include <QShowEvent>
 
 using namespace std;
