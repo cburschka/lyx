@@ -175,7 +175,22 @@ bool isFileReadable(FileName const & filename)
 		lyxerr << fe.what() << endl;
 		return false;
 	}
+}
 
+
+bool doesFileExist(FileName const & filename)
+{
+	std::string const path = filename.toFilesystemEncoding();
+	try {
+		// fs::exists can throw an exception
+		// f.ex. if the drive was unmounted.
+		return fs::exists(path);
+	} catch (fs::filesystem_error const & fe){
+		lyxerr << "doesFileExist() error with path: "
+			<< path << endl;
+		lyxerr << fe.what() << endl;
+		return false;
+	}
 }
 
 
@@ -240,7 +255,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 	vector<FileName> dirlist;
 
 	string const encoded_dir = dir.toFilesystemEncoding();
-	if (!(fs::exists(encoded_dir) && fs::is_directory(encoded_dir))) {
+	if (!(doesFileExist(dir) && fs::is_directory(encoded_dir))) {
 		LYXERR(Debug::FILES)
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
@@ -643,7 +658,7 @@ string const normalizePath(string const & path)
 string const getFileContents(FileName const & fname)
 {
 	string const encodedname = fname.toFilesystemEncoding();
-	if (fs::exists(encodedname)) {
+	if (doesFileExist(fname)) {
 		ifstream ifs(encodedname.c_str());
 		ostringstream ofs;
 		if (ifs && ofs) {
@@ -1135,7 +1150,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 	// If the file can be found directly, we just return a
 	// absolute path version of it.
 	FileName const absfile(makeAbsPath(fil));
-	if (fs::exists(absfile.toFilesystemEncoding()))
+	if (doesFileExist(absfile))
 		return absfile;
 
 	// No we try to find it using kpsewhich.
@@ -1180,7 +1195,7 @@ void removeAutosaveFile(string const & filename)
 	a += onlyFilename(filename);
 	a += '#';
 	FileName const autosave(a);
-	if (fs::exists(autosave.toFilesystemEncoding()))
+	if (doesFileExist(autosave))
 		unlink(autosave);
 }
 
@@ -1249,15 +1264,15 @@ int compare_timestamps(FileName const & filename1, FileName const & filename2)
 	string const file1 = filename1.toFilesystemEncoding();
 	string const file2 = filename2.toFilesystemEncoding();
 	int cmp = 0;
-	if (fs::exists(file1) && fs::exists(file2)) {
+	if (doesFileExist(filename1) && doesFileExist(filename2)) {
 		double const tmp = difftime(fs::last_write_time(file1),
 					    fs::last_write_time(file2));
 		if (tmp != 0)
 			cmp = tmp > 0 ? 1 : -1;
 
-	} else if (fs::exists(file1)) {
+	} else if (doesFileExist(filename1)) {
 		cmp = 1;
-	} else if (fs::exists(file2)) {
+	} else if (doesFileExist(filename2)) {
 		cmp = -1;
 	}
 

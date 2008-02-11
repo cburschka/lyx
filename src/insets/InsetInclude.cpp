@@ -62,6 +62,7 @@ using support::bformat;
 using support::changeExtension;
 using support::contains;
 using support::copy;
+using support::doesFileExist;
 using support::DocFileName;
 using support::FileName;
 using support::getFileContents;
@@ -402,7 +403,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	Buffer * buf = theBufferList().getBuffer(included_file.absFilename());
 	if (!buf) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		if (!fs::exists(included_file.toFilesystemEncoding()))
+		if (!doesFileExist(included_file))
 			return false;
 		if (use_gui) {
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN,

@@ -88,6 +88,11 @@ bool isDirWriteable(FileName const & path);
  */
 bool isFileReadable(FileName const & path);
 
+/** Does the file exist ?
+  Returns true if the file `path' exists.
+ */
+bool doesFileExist(FileName const & path);
+
 ///
 bool isLyXFilename(std::string const & filename);
 

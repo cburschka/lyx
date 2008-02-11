@@ -38,6 +38,7 @@ using support::absolutePath;
 using support::bformat;
 using support::compare_ascii_no_case;
 using support::contains;
+using support::doesFileExist;
 using support::FileName;
 using support::libScriptSearch;
 using support::makeDisplayPath;
@@ -265,7 +266,7 @@ void Formats::setViewer(string const & name, string const & command)
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
 {
-	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
+	if (filename.empty() || !doesFileExist(filename)) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
 				from_utf8(filename.absFilename())));
@@ -336,7 +337,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 bool Formats::edit(Buffer const & buffer, FileName const & filename,
 			 string const & format_name) const
 {
-	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
+	if (filename.empty() || !doesFileExist(filename)) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
 				from_utf8(filename.absFilename())));

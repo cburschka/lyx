@@ -50,6 +50,7 @@
 #include <boost/filesystem/operations.hpp>
 
 #include "support/textutils.h"
+#include "support/filetools.h"
 using std::min;
 using std::string;
 
@@ -60,6 +61,7 @@ using namespace std;
 
 using support::bformat;
 using support::FileName;
+using support::doesFileExist;
 using support::libFileSearch;
 using support::makeAbsPath;
 using support::makeDisplayPath;
@@ -77,7 +79,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	BOOST_ASSERT(b);
 
 	// File information about normal file
-	if (!fs::exists(s.toFilesystemEncoding())) {
+	if (!doesFileExist(s)) {
 		docstring const file = makeDisplayPath(s.absFilename(), 50);
 		docstring text = bformat(_("The specified document\n%1$s"
 						     "\ncould not be read."), file);
@@ -88,8 +90,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	// Check if emergency save file exists and is newer.
 	FileName const e(s.absFilename() + ".emergency");
 
-	if (fs::exists(e.toFilesystemEncoding()) &&
-	    fs::exists(s.toFilesystemEncoding()) &&
+	if (doesFileExist(e) && doesFileExist(s) &&
 	    fs::last_write_time(e.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
 	{
 		docstring const file = makeDisplayPath(s.absFilename(), 20);
@@ -115,8 +116,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	// Now check if autosave file is newer.
 	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
 
-	if (fs::exists(a.toFilesystemEncoding()) &&
-	    fs::exists(s.toFilesystemEncoding()) &&
+	if (doesFileExist(a) && doesFileExist(s) &&
 	    fs::last_write_time(a.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
 	{
 		docstring const file = makeDisplayPath(s.absFilename(), 20);

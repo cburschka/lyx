@@ -116,6 +116,7 @@ using support::addPath;
 using support::bformat;
 using support::changeExtension;
 using support::contains;
+using support::doesFileExist;
 using support::FileFilterList;
 using support::FileName;
 using support::fileSearch;
@@ -496,7 +497,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = buf->lyxvc().inUse();
 		break;
 	case LFUN_BUFFER_RELOAD:
-		enable = !buf->isUnnamed() && fs::exists(buf->fileName())
+		enable = !buf->isUnnamed() && doesFileExist(FileName(buf->fileName()))
 			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
 		break;
 
@@ -1138,7 +1139,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FileName const filename(makeAbsPath(target_name,
 							lyx_view_->buffer()->filePath()));
 				FileName const dvifile(makeAbsPath(dviname, path));
-				if (fs::exists(filename.toFilesystemEncoding())) {
+				if (doesFileExist(filename)) {
 					docstring text = bformat(
 						_("The file %1$s already exists.\n\n"
 						  "Do you want to overwrite that file?"),
@@ -2065,7 +2066,7 @@ void LyXFunc::open(string const & fname)
 		filename = fullname.absFilename();
 
 	// if the file doesn't exist, let the user create one
-	if (!fs::exists(fullname.toFilesystemEncoding())) {
+	if (!doesFileExist(fullname)) {
 		// the user specifically chose this name. Believe him.
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)
@@ -2153,7 +2154,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
-	if (fs::exists(lyxfile.toFilesystemEncoding()) && fullname != lyxfile) {
+	if (doesFileExist(lyxfile) && fullname != lyxfile) {
 		docstring const file = makeDisplayPath(lyxfile.absFilename(), 30);
 
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
@@ -2279,9 +2280,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DISPLAY_GRAPHICS:
 	case LyXRC::RC_DOCUMENTPATH:
 		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
-			string const encoded = FileName(
-				lyxrc_new.document_path).toFilesystemEncoding();
-			if (fs::exists(encoded) && fs::is_directory(encoded))
+			FileName encoded = FileName(lyxrc_new.document_path);
+			if (doesFileExist(encoded) &&
+			    fs::is_directory(encoded.toFilesystemEncoding()))
 				support::package().document_dir() = FileName(lyxrc.document_path);
 		}
 	case LyXRC::RC_ESC_CHARS:

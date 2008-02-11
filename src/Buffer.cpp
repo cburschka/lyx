@@ -114,6 +114,7 @@ using support::changeExtension;
 using support::cmd_ret;
 using support::createBufferTmpDir;
 using support::destroyDir;
+using support::doesFileExist;
 using support::FileName;
 using support::getFormatFromContents;
 using support::libFileSearch;
@@ -372,8 +373,8 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	// If no Latex log or Build log is newer, show Build log
 
-	if (fs::exists(bname.toFilesystemEncoding()) &&
-	    (!fs::exists(fname.toFilesystemEncoding()) ||
+	if (doesFileExist(bname) &&
+	    (!doesFileExist(fname) ||
 	     fs::last_write_time(fname.toFilesystemEncoding()) < fs::last_write_time(bname.toFilesystemEncoding()))) {
 		LYXERR(Debug::FILES) << "Log name calculated as: " << bname << endl;
 		return make_pair(Buffer::buildlog, bname.absFilename());
@@ -792,7 +793,7 @@ bool Buffer::save() const
 	bool madeBackup = false;
 
 	// make a backup if the file already exists
-	if (lyxrc.make_backup && fs::exists(encodedFilename)) {
+	if (lyxrc.make_backup && doesFileExist(pimpl_->filename)) {
 		backupName = FileName(fileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
@@ -814,7 +815,7 @@ bool Buffer::save() const
 	}
 
 	// ask if the disk file has been externally modified (use checksum method)
-	if (fs::exists(encodedFilename) && isExternallyModified(checksum_method)) {
+	if (doesFileExist(pimpl_->filename) && isExternallyModified(checksum_method)) {
 		docstring const file = makeDisplayPath(fileName(), 20);
 		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
 							     "you want to overwrite this file?"), file);
@@ -1579,7 +1580,7 @@ bool Buffer::isBakClean() const
 
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
-	BOOST_ASSERT(fs::exists(pimpl_->filename.toFilesystemEncoding()));
+	BOOST_ASSERT(doesFileExist(pimpl_->filename));
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method 
 		|| pimpl_->timestamp_ != fs::last_write_time(pimpl_->filename.toFilesystemEncoding()))
@@ -1589,7 +1590,7 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 
 void Buffer::saveCheckSum(FileName const & file) const
 {
-	if (fs::exists(file.toFilesystemEncoding())) {
+	if (doesFileExist(file)) {
 		pimpl_->timestamp_ =
 			fs::last_write_time(file.toFilesystemEncoding());
 		pimpl_->checksum_ = sum(file);

@@ -37,6 +37,7 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
+using support::doesFileExist;
 using support::FileName;
 using support::libFileSearch;
 using support::makeDisplayPath;
@@ -922,7 +923,7 @@ bool TextClass::load(string const & path) const
 	FileName layout_file;
 	if (!path.empty())
 		layout_file = FileName(addName(path, name_ + ".layout"));
-	if (layout_file.empty() || !fs::exists(layout_file.toFilesystemEncoding()))
+	if (layout_file.empty() || !doesFileExist(layout_file))
 		layout_file = libFileSearch("layouts", name_, "layout");
 	loaded_ = const_cast<TextClass*>(this)->read(layout_file) == 0;
 

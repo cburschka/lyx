@@ -56,6 +56,7 @@ using support::absolutePath;
 using support::bformat;
 using support::changeExtension;
 using support::contains;
+using support::doesFileExist;
 using support::FileName;
 using support::findtexfile;
 using support::getcwd;
@@ -213,7 +214,7 @@ int LaTeX::run(TeXErrors & terr)
 	//             remake the dependency file.
 	//
 
-	bool had_depfile = fs::exists(depfile.toFilesystemEncoding());
+	bool had_depfile = doesFileExist(depfile);
 	bool run_bibtex = false;
 	FileName const aux_file(changeExtension(file.absFilename(), "aux"));
 
@@ -230,7 +231,7 @@ int LaTeX::run(TeXErrors & terr)
 		// have aborted on error last time... in which cas we need
 		// to re-run latex and collect the error messages
 		// (even if they are the same).
-		if (!fs::exists(output_file.toFilesystemEncoding())) {
+		if (!doesFileExist(output_file)) {
 			LYXERR(Debug::DEPEND)
 				<< "re-running LaTeX because output file doesn't exist."
 				<< endl;
@@ -291,7 +292,7 @@ int LaTeX::run(TeXErrors & terr)
 	// memoir (at least) writes an empty *idx file in the first place.
 	// A second latex run is needed.
 	FileName const idxfile(changeExtension(file.absFilename(), ".idx"));
-	rerun = fs::exists(idxfile.toFilesystemEncoding()) &&
+	rerun = doesFileExist(idxfile) &&
 		fs::is_empty(idxfile.toFilesystemEncoding());
 
 	// run makeindex
@@ -480,7 +481,7 @@ LaTeX::scanAuxFiles(FileName const & file)
 		FileName const file2(basename
 			+ '.' + convert<string>(i)
 			+ ".aux");
-		if (!fs::exists(file2.toFilesystemEncoding()))
+		if (!doesFileExist(file2))
 			break;
 		result.push_back(scanAuxFile(file2));
 	}
@@ -777,30 +778,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 namespace {
 
-/**
- * Wrapper around fs::exists that can handle invalid file names.
- * In theory we could test with fs::native whether a filename is valid
- * before calling fs::exists, but in practice it is unusable: On windows it
- * does not allow spaces, and on unix it does not allow absolute file names.
- * This function has the disadvantage that it catches also other errors than
- * invalid names, but for dependency checking we can live with that.
- */
-bool exists(FileName const & possible_name) {
-	try {
-		return fs::exists(possible_name.toFilesystemEncoding());
-	}
-	catch (fs::filesystem_error const & fe) {
-		LYXERR(Debug::DEPEND) << "Got error `" << fe.what()
-			<< "' while checking whether file `" << possible_name
-			<< "' exists." << endl;
-		return false;
-	}
-}
-
-
 bool insertIfExists(FileName const & absname, DepTable & head)
 {
-	if (exists(absname) &&
+	if (doesFileExist(absname) &&
 	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		head.insert(absname, true);
 		return true;
@@ -858,7 +838,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// check for spaces
 	while (contains(foundfile, ' ')) {
-		if (exists(absname))
+		if (doesFileExist(absname))
 			// everything o.k.
 			break;
 		else {
@@ -866,7 +846,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			// marks; those have to be removed
 			string unquoted = subst(foundfile, "\"", "");
 			absname = makeAbsPath(unquoted);
-			if (exists(absname))
+			if (doesFileExist(absname))
 				break;
 			// strip off part after last space and try again
 			string strippedfile;
@@ -880,7 +860,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	if (exists(absname) &&
+	if (doesFileExist(absname) &&
 	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		// FIXME: This regex contained glo, but glo is used by the old
 		// version of nomencl.sty. Do we need to put it back?

@@ -43,6 +43,7 @@ namespace fs = boost::filesystem;
 namespace lyx {
 
 using support::addName;
+using support::doesFileExist;
 using support::FileFilterList;
 using support::FileName;
 using support::isFileReadable;
@@ -89,7 +90,7 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support().absFilename(), "clipart");
 	string const encoded_clipdir = FileName(clipdir).toFilesystemEncoding();
-	if (!(fs::exists(encoded_clipdir) && fs::is_directory(encoded_clipdir)))
+	if (!(doesFileExist(FileName(clipdir)) && fs::is_directory(encoded_clipdir)))
 		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));

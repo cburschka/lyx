@@ -47,6 +47,7 @@ using support::addName;
 using support::bformat;
 using support::changeExtension;
 using support::contains;
+using support::doesFileExist;
 using support::FileName;
 using support::makeAbsPath;
 using support::makeDisplayPath;
@@ -78,7 +79,7 @@ vector<string> const Backends(Buffer const & buffer)
 /// ask the user what to do if a file already exists
 int checkOverwrite(FileName const & filename)
 {
-	if (fs::exists(filename.toFilesystemEncoding())) {
+	if (doesFileExist(filename)) {
 		docstring text = bformat(_("The file %1$s already exists.\n\n"
 						     "Do you want to overwrite that file?"),
 				      makeDisplayPath(filename.absFilename()));
@@ -243,7 +244,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
-		} else if (fs::exists(tmp_result_file.toFilesystemEncoding())) {
+		} else if (doesFileExist(tmp_result_file)) {
 			// Finally copy the main file
 			status = copyFile(format, tmp_result_file,
 					  FileName(result_file), result_file,

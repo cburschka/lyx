@@ -80,6 +80,25 @@ string itoa(unsigned int i)
 }
 
 
+namespace {
+
+bool fileExists(fs::path path)
+{
+	try {
+		// fs::exists can throw an exception
+		// f.ex. if the drive was unmounted.
+		return fs::exists(path);
+	} catch (fs::filesystem_error const & fe){
+		lyxerr << "error while checking file existence: "
+			<< path << endl;
+		lyxerr << fe.what() << endl;
+		return false;
+	}
+}
+
+} // namespace anon
+
+
 /// Returns the absolute pathnames of all lyx local sockets in
 /// file system encoding.
 /// Parts stolen from lyx::support::DirList().
@@ -89,7 +108,7 @@ vector<fs::path> lyxSockets(string const & dir, string const & pid)
 
 	fs::path dirpath(dir);
 
-	if (!fs::exists(dirpath) || !fs::is_directory(dirpath)) {
+	if (!fileExists(dirpath) || !fs::is_directory(dirpath)) {
 		lyxerr << dir << " does not exist or is not a directory."
 		       << endl;
 		return dirlist;
@@ -101,7 +120,7 @@ vector<fs::path> lyxSockets(string const & dir, string const & pid)
 	for (; beg != end; ++beg) {
 		if (prefixIs(beg->leaf(), "lyx_tmpdir" + pid)) {
 			fs::path lyxsocket = beg->path() / "lyxsocket";
-			if (fs::exists(lyxsocket)) {
+			if (fileExists(lyxsocket)) {
 				dirlist.push_back(lyxsocket);
 			}
 		}

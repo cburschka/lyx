@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/FileMonitor.h"
+#include "support/filetools.h"
 #include "support/FileName.h"
 #include "support/lyxlib.h"
 
@@ -92,7 +93,7 @@ void FileMonitor::start() const
 	if (monitoring())
 		return;
 
-	if (!fs::exists(pimpl_->filename_.toFilesystemEncoding()))
+	if (!doesFileExist(pimpl_->filename_))
 		return;
 
 	pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename_.toFilesystemEncoding());
@@ -157,7 +158,7 @@ void FileMonitor::Impl::monitorFile()
 {
 	bool changed = false;
 
-	if (!fs::exists(filename_.toFilesystemEncoding())) {
+	if (!doesFileExist(filename_)) {
 		changed = timestamp_ || checksum_;
 		timestamp_ = 0;
 		checksum_ = 0;

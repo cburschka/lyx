@@ -27,6 +27,7 @@
 namespace lyx {
 namespace fs = boost::filesystem;
 
+using support::doesFileExist;
 using support::FileName;
 using support::addName;
 using support::libFileSearch;
@@ -183,7 +184,7 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
 	FileName const layout_file(addName(path, textclass + ".layout"));
-	if (fs::exists(layout_file.toFilesystemEncoding())) {
+	if (doesFileExist(layout_file)) {
 		LYXERR(Debug::TCLASS) << "Adding class " << textclass << " from directory " << path << endl;
 		// Read .layout file and get description, real latex classname etc
 		//

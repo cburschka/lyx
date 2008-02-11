@@ -71,6 +71,7 @@ using boost::shared_ptr;
 namespace lyx {
 
 using support::bformat;
+using support::doesFileExist;
 using support::FileFilterList;
 using support::FileName;
 using support::ForkedProcess;
@@ -176,7 +177,7 @@ bool writeAs(Buffer * buffer, string const & newname)
 	} else 
 		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
 
-	if (fs::exists(FileName(fname).toFilesystemEncoding())) {
+	if (doesFileExist(FileName(fname))) {
 		docstring const file = makeDisplayPath(fname, 30);
 		docstring text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "

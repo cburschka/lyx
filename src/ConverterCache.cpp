@@ -43,6 +43,7 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
+using support::doesFileExist;
 using support::FileName;
 
 namespace {
@@ -135,7 +136,7 @@ void ConverterCache::Impl::readIndex()
 		CacheItem item(orig_from_name, to_format, timestamp, checksum);
 
 		// Don't cache files that do not exist anymore
-		if (!fs::exists(orig_from_name.toFilesystemEncoding())) {
+		if (!doesFileExist(orig_from_name)) {
 			LYXERR(Debug::FILES) << "Not caching file `"
 				<< orig_from << "' (does not exist anymore)."
 				<< std::endl;
@@ -146,7 +147,7 @@ void ConverterCache::Impl::readIndex()
 		// Don't add items that are not in the cache anymore
 		// This can happen if two instances of LyX are running
 		// at the same time and update the index file independantly.
-		if (!fs::exists(item.cache_name.toFilesystemEncoding())) {
+		if (!doesFileExist(item.cache_name)) {
 			LYXERR(Debug::FILES) << "Not caching file `"
 				<< orig_from
 				<< "' (cached copy does not exist anymore)."
@@ -228,7 +229,7 @@ void ConverterCache::init()
 	// We do this here and not in the constructor because package() gets
 	// initialized after all static variables.
 	cache_dir = FileName(addName(support::package().user_support().absFilename(), "cache"));
-	if (!fs::exists(cache_dir.toFilesystemEncoding()))
+	if (!doesFileExist(cache_dir))
 		if (support::mkdir(cache_dir, 0700) != 0) {
 			lyxerr << "Could not create cache directory `"
 			       << cache_dir << "'." << std::endl;

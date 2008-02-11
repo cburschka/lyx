@@ -81,6 +81,7 @@ using support::changeExtension;
 using support::createDirectory;
 using support::createLyXTmpDir;
 using support::destroyDir;
+using support::doesFileExist;
 using support::FileName;
 using support::fileSearch;
 using support::getEnv;
@@ -964,7 +965,7 @@ bool LyX::init()
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
 	FileName const document_path(lyxrc.document_path);
-	if (fs::exists(document_path.toFilesystemEncoding()) &&
+	if (doesFileExist(document_path) &&
 	    fs::is_directory(document_path.toFilesystemEncoding()))
 		package().document_dir() = document_path;
 
@@ -1109,11 +1110,11 @@ bool needsUpdate(string const & file)
 		firstrun = false;
 	}
 
-	string const absfile = FileName(addName(
-		package().user_support().absFilename(), file)).toFilesystemEncoding();
-	return (! fs::exists(absfile))
+	FileName absfile = FileName(addName(
+		package().user_support().absFilename(), file));
+	return (!doesFileExist(absfile))
 		|| (fs::last_write_time(configure_script)
-		    > fs::last_write_time(absfile));
+		    > fs::last_write_time(absfile.toFilesystemEncoding()));
 }
 
 }
@@ -1124,7 +1125,8 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	// Does user directory exist?
 	string const user_support =
 		package().user_support().toFilesystemEncoding();
-	if (fs::exists(user_support) && fs::is_directory(user_support)) {
+	if (doesFileExist(package().user_support()) &&
+	    fs::is_directory(user_support)) {
 		first_start = false;
 
 		return needsUpdate("lyxrc.defaults")
