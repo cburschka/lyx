@@ -770,6 +770,10 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		// is not shown in floatlist.
 		else if (cit->first == "listing")
 			label = _("List of listings");
+		else if (cit->first == "note")
+			label = _("List of Notes");
+		else if (cit->first == "footnote")
+			label = _("List of Foot notes");
 		// this should not happen now, but if something else like
 		// listings is added later, this can avoid an empty menu name.
 		else
