@@ -24,6 +24,7 @@
 #include "OutputParams.h"
 #include "ParIterator.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "support/lstrings.h"
 
@@ -71,6 +72,18 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 	
 	}
 	InsetCollapsable::updateLabels(buf, it);
+}
+
+
+void InsetFoot::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+{
+	ParConstIterator pit = par_const_iterator_begin(*this);
+
+	Toc & toc = toclist["footnote"];
+	// FIXME: we probably want the footnote number too.
+	docstring str;
+	str = getNewLabel(str);
+	toc.push_back(TocItem(pit, 0, str));
 }
 
 

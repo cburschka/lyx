@@ -77,6 +77,8 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &);
+	///
+	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 protected:
 	InsetNote(InsetNote const &);
 	///

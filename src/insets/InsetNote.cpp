@@ -30,7 +30,9 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "ParIterator.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "support/docstream.h"
 #include "support/Translator.h"
@@ -215,6 +217,18 @@ void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
 	Counters savecnt = tclass.counters();
 	InsetCollapsable::updateLabels(buf, it);
 	tclass.counters() = savecnt;
+}
+
+
+void InsetNote::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+{
+	ParConstIterator pit = par_const_iterator_begin(*this);
+
+	Toc & toc = toclist["note"];
+	// FIXME: we probably want the note type too.
+	docstring str;
+	str = getNewLabel(str);
+	toc.push_back(TocItem(pit, 0, str));
 }
 
 

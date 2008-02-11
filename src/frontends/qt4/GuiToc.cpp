@@ -221,6 +221,12 @@ docstring GuiToc::guiName(string const & type) const
 	if (type == "tableofcontents")
 		return _("Table of Contents");
 
+	if (type == "footnote")
+		return _("List of Foot notes");
+
+	if (type == "note")
+		return _("List of Notes");
+
 	FloatList const & floats = buffer().params().getTextClass().floats();
 	if (floats.typeExist(type))
 		return _(floats.getType(type).listName());
