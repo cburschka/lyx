@@ -204,12 +204,11 @@ TocIterator TocBackend::item(string const & type,
 	--it;
 
 	ParConstIterator par_it_text = par_it;
-	if (par_it_text.inMathed())
-		// It would be better to do
-		//   par_it_text.backwardInset();
-		// but this method does not exist.
+	if (par_it_text.inMathed()) {
+		// We are only interested in text so remove the math CursorSlice.
 		while (par_it_text.inMathed())
-			par_it_text.backwardPos();
+			par_it_text.pop_back();
+	}
 
 	for (; it != last; --it) {
 		// We verify that we don't compare contents of two
