@@ -76,8 +76,6 @@ public:
 	///
 	std::string const & type() const { return type_; }
 	///
-	void setType(std::string const & type) { type_ = type; }
-	///
 	void setCustomLabel(docstring const & label);
 	///
 	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;

@@ -275,6 +275,8 @@ void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 	TextClass const & tclass = buf.params().getTextClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
+	// Memorize type for addToToc().
+	type_ = type;
 	if (type.empty())
 		full_label_ = buf.B_("Senseless!!! ");
 	else {
