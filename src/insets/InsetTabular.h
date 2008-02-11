@@ -745,7 +745,7 @@ public:
 	/// set the owning buffer
 	void buffer(Buffer const * buf);
 	/// lock cell with given index
-	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?

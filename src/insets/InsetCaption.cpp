@@ -162,7 +162,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCaption::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
+void InsetCaption::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.push(*this);
 	InsetText::edit(cur, front, entry_from);

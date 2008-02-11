@@ -516,7 +516,7 @@ void InsetExternal::updateEmbeddedFile(Buffer const & buf,
 }
 
 
-void InsetExternal::edit(Cursor & cur, bool, EntryDirectionType)
+void InsetExternal::edit(Cursor & cur, bool, EntryDirection)
 {
 	InsetExternalMailer(*this).showDialog(&cur.bv());
 }

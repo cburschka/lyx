@@ -200,17 +200,17 @@ docstring const InsetText::editMessage() const
 }
 
 
-void InsetText::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
+void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	pit_type const pit = front ? 0 : paragraphs().size() - 1;
 	pos_type pos = front ? 0 : paragraphs().back().size();
 
 	// if visual information is not to be ignored, move to extreme right/left
-	if (entry_from != IGNORE_ENTRY_DIRECTION) {
+	if (entry_from != ENTRY_DIRECTION_IGNORE) {
 		Cursor temp_cur = cur;
 		temp_cur.pit() = pit;
 		temp_cur.pos() = pos;
-		temp_cur.posVisToRowExtremity(entry_from == ENTER_FROM_LEFT);
+		temp_cur.posVisToRowExtremity(entry_from == ENTRY_DIRECTION_LEFT);
 		pos = temp_cur.pos();
 	}
 

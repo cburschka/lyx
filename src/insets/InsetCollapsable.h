@@ -163,7 +163,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	void edit(Cursor & cur, bool front, 
-		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

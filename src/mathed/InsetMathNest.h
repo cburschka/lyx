@@ -49,7 +49,7 @@ public:
 		bool boundary, int & x, int & y) const;
 	///
 	void edit(Cursor & cur, bool front, 
-		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 

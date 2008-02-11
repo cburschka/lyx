@@ -200,7 +200,7 @@ public:
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	void edit(Cursor & cur, bool front, 
-		EntryDirectionType entry_from = IGNORE_ENTRY_DIRECTION);
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

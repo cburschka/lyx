@@ -213,7 +213,7 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 }
 
 
-void Inset::edit(Cursor &, bool, EntryDirectionType)
+void Inset::edit(Cursor &, bool, EntryDirection)
 {
 	LYXERR(Debug::INSETS, "edit left/right");
 }

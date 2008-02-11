@@ -1208,11 +1208,11 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathNest::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
+void InsetMathNest::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.push(*this);
-	bool enter_front = (entry_from == Inset::ENTER_FROM_RIGHT || 
-		(entry_from == Inset::IGNORE_ENTRY_DIRECTION && front));
+	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_RIGHT || 
+		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
 	cur.idx() = enter_front ? 0 : cur.lastidx();
 	cur.pos() = enter_front ? 0 : cur.lastpos();
 	cur.resetAnchor();

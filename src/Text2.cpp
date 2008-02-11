@@ -608,7 +608,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 	if (!inset || inset->editable() != Inset::HIGHLY_EDITABLE)
 		return false;
 	inset->edit(cur, movingForward, 
-		movingLeft ? Inset::ENTER_FROM_RIGHT : Inset::ENTER_FROM_LEFT);
+		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);
 	return true;
 }
 

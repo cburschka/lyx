@@ -160,7 +160,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetCommand::edit(Cursor & cur, bool, EntryDirectionType)
+void InsetCommand::edit(Cursor & cur, bool, EntryDirection)
 {
 	if (!mailer_name_.empty())
 		InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());

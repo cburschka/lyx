@@ -533,7 +533,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
+void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	updateLook();
 	cur.updateFlags(Update::Force);

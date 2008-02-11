@@ -1314,11 +1314,11 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 }
 
 
-void InsetMathHull::edit(Cursor & cur, bool front, EntryDirectionType entry_from)
+void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.push(*this);
-	bool enter_front = (entry_from == Inset::ENTER_FROM_LEFT || 
-		(entry_from == Inset::IGNORE_ENTRY_DIRECTION && front));
+	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT || 
+		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
 	enter_front ? idxFirst(cur) : idxLast(cur);
 	// The inset formula dimension is not necessarily the same as the
 	// one of the instant preview image, so we have to indicate to the

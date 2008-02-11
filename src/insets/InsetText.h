@@ -113,7 +113,7 @@ public:
 	void addPreview(graphics::PreviewLoader &) const;
 
 	///
-	void edit(Cursor & cur, bool front, EntryDirectionType entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 
