@@ -2519,14 +2519,14 @@ Inset * Paragraph::releaseInset(pos_type pos)
 
 Inset * Paragraph::getInset(pos_type pos)
 {
-	return (pos < d->text_.size() && d->text_[pos] == META_INSET)
+	return (pos < pos_type(d->text_.size()) && d->text_[pos] == META_INSET)
 		 ? d->insetlist_.get(pos) : 0;
 }
 
 
 Inset const * Paragraph::getInset(pos_type pos) const
 {
-	return (pos < d->text_.size() && d->text_[pos] == META_INSET)
+	return (pos < pos_type(d->text_.size()) && d->text_[pos] == META_INSET)
 		 ? d->insetlist_.get(pos) : 0;
 }
 
