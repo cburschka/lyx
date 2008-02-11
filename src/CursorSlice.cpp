@@ -68,7 +68,7 @@ pos_type CursorSlice::lastpos() const
 
 pit_type CursorSlice::lastpit() const
 {
-	if (inset().inMathed())
+	if (inset_->inMathed())
 		return 0;
 	return text()->paragraphs().size() - 1;
 }
@@ -91,58 +91,58 @@ CursorSlice::col_type CursorSlice::col() const
 void CursorSlice::forwardPos()
 {
 	//  move on one position if possible
-	if (pos() < lastpos()) {
+	if (pos_ < lastpos()) {
 		//lyxerr << "... next pos" << endl;
-		++pos();
+		++pos_;
 		return;
 	}
 
 	// otherwise move on one paragraph if possible
-	if (pit() < lastpit()) {
+	if (pit_ < lastpit()) {
 		//lyxerr << "... next par" << endl;
-		++pit();
-		pos() = 0;
+		++pit_;
+		pos_ = 0;
 		return;
 	}
 
 	// otherwise move on one cell
 	//lyxerr << "... next idx" << endl;
 
-	BOOST_ASSERT(idx() < nargs());
+	BOOST_ASSERT(idx_ < nargs());
 
-	++idx();
-	pit() = 0;
-	pos() = 0;
+	++idx_;
+	pit_ = 0;
+	pos_ = 0;
 }
 
 
 void CursorSlice::forwardIdx()
 {
-	BOOST_ASSERT(idx() < nargs());
+	BOOST_ASSERT(idx_ < nargs());
 
-	++idx();
-	pit() = 0;
-	pos() = 0;
+	++idx_;
+	pit_ = 0;
+	pos_ = 0;
 }
 
 
 void CursorSlice::backwardPos()
 {
-	if (pos() != 0) {
-		--pos();
+	if (pos_ != 0) {
+		--pos_;
 		return;
 	}
 
-	if (pit() != 0) {
-		--pit();
-		pos() = lastpos();
+	if (pit_ != 0) {
+		--pit_;
+		pos_ = lastpos();
 		return;
 	}
 
-	if (idx() != 0) {
-		--idx();
-		pit() = lastpit();
-		pos() = lastpos();
+	if (idx_ != 0) {
+		--idx_;
+		pit_ = lastpit();
+		pos_ = lastpos();
 		return;
 	}
 
@@ -152,46 +152,46 @@ void CursorSlice::backwardPos()
 
 bool CursorSlice::at_end() const 
 {
-	return idx() == lastidx() && pit() == lastpit() && pos() == lastpos();
+	return idx_ == lastidx() && pit_ == lastpit() && pos_ == lastpos();
 }
 
 
 bool CursorSlice::at_begin() const
 {
-	return idx() == 0 && pit() == 0 && pos() == 0;
+	return idx_ == 0 && pit_ == 0 && pos_ == 0;
 }
 
 
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset() == &q.inset()
-	       && p.idx() == q.idx()
-	       && p.pit() == q.pit()
-	       && p.pos() == q.pos();
+	return &p.inset_ == &q.inset_
+	       && p.idx_ == q.idx_
+	       && p.pit_ == q.pit_
+	       && p.pos_ == q.pos_;
 }
 
 
 bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset() != &q.inset()
-	       || p.idx() != q.idx()
-	       || p.pit() != q.pit()
-	       || p.pos() != q.pos();
+	return &p.inset_ != &q.inset_
+	       || p.idx_ != q.idx_
+	       || p.pit_ != q.pit_
+	       || p.pos_ != q.pos_;
 }
 
 
 bool operator<(CursorSlice const & p, CursorSlice const & q)
 {
-	if (&p.inset() != &q.inset()) {
+	if (&p.inset_ != &q.inset_) {
 		LYXERR0("can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q);
 		BOOST_ASSERT(false);
 	}
-	if (p.idx() != q.idx())
-		return p.idx() < q.idx();
-	if (p.pit() != q.pit())
-		return p.pit() < q.pit();
-	return p.pos() < q.pos();
+	if (p.idx_ != q.idx_)
+		return p.idx_ < q.idx_;
+	if (p.pit_ != q.pit_)
+		return p.pit_ < q.pit_;
+	return p.pos_ < q.pos_;
 }
 
 
@@ -210,13 +210,13 @@ bool operator<=(CursorSlice const & p, CursorSlice const & q)
 ostream & operator<<(ostream & os, CursorSlice const & item)
 {
 	return os
-	   << "inset: " << (void *)&item.inset()
+	   << "inset: " << (void *)&item.inset_
 //	   << " text: " << item.text()
-	   << " idx: " << item.idx()
-	   << " par: " << item.pit()
-	   << " pos: " << item.pos()
-//	   << " x: " << item.inset().x()
-//	   << " y: " << item.inset().y()
+	   << " idx: " << item.idx_
+	   << " par: " << item.pit_
+	   << " pos: " << item.pos_
+//	   << " x: " << item.inset_.x()
+//	   << " y: " << item.inset_.y()
 ;
 }
 

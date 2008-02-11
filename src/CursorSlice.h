@@ -56,6 +56,15 @@ public:
 	///
 	explicit CursorSlice(Inset &);
 
+	/// comparison operators.
+	//@{
+	friend bool operator==(CursorSlice const &, CursorSlice const &);
+	friend bool operator!=(CursorSlice const &, CursorSlice const &);
+	friend bool operator<(CursorSlice const &, CursorSlice const &);
+	friend bool operator>(CursorSlice const &, CursorSlice const &);
+	friend bool operator<=(CursorSlice const &, CursorSlice const &);
+	//@}
+
 	/// the current inset
 	Inset & inset() const { return *inset_; }
 	/// return the cell this cursor is in
@@ -153,17 +162,6 @@ private:
 	/// position in this cell
 	pos_type pos_;
 };
-
-/// test for equality
-bool operator==(CursorSlice const &, CursorSlice const &);
-/// test for inequality
-bool operator!=(CursorSlice const &, CursorSlice const &);
-/// test for order
-bool operator<(CursorSlice const &, CursorSlice const &);
-/// test for order
-bool operator>(CursorSlice const &, CursorSlice const &);
-/// test for order
-bool operator<=(CursorSlice const &, CursorSlice const &);
 
 
 } // namespace lyx
