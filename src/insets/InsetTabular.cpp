@@ -3153,13 +3153,13 @@ docstring const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::edit(Cursor & cur, bool, EntryDirection direction)
+void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	cur.finishUndo();
 	cur.selection() = false;
 	cur.push(*this);
-	if (direction == ENTRY_DIRECTION_LEFT) {
+	if (front) {
 		if (isRightToLeft(cur))
 			cur.idx() = tabular.getLastCellInRow(0);
 		else
