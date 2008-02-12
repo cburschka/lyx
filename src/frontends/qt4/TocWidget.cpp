@@ -228,7 +228,8 @@ void TocWidget::updateGui(int selected_type)
 		QString item = toqstr(type_names[i]);
 		typeCO->addItem(item);
 	}
-	typeCO->setCurrentIndex(selected_type);
+	if (selected_type != -1)
+		typeCO->setCurrentIndex(selected_type);
 	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());

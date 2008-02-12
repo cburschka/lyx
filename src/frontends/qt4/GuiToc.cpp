@@ -140,14 +140,15 @@ TocList const & GuiToc::tocs() const
 bool GuiToc::initialiseParams(string const & data)
 {
 	LYXERR(Debug::GUI, data);
+	LYXERR0(data);
 	QString str = QString::fromUtf8(data.c_str());
 	string new_type = "tableofcontents";
 	if (str.contains("floatlist")) {
-		if (str.contains("figure"))
+		if (str.contains("\"figure"))
 			new_type = "figure";
-		else if (str.contains("table"))
+		else if (str.contains("\"table"))
 			new_type = "table";
-		else if (str.contains("algorithm"))
+		else if (str.contains("\"algorithm"))
 			new_type = "algorithm";
 	}
 
@@ -170,7 +171,6 @@ bool GuiToc::initialiseParams(string const & data)
 			break;
 		}
 	}
-
 	widget_->updateGui(selected_type);
 
 	return true;
