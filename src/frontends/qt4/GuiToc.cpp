@@ -140,10 +140,11 @@ TocList const & GuiToc::tocs() const
 bool GuiToc::initialiseParams(string const & data)
 {
 	LYXERR(Debug::GUI, data);
-	LYXERR0(data);
 	QString str = QString::fromUtf8(data.c_str());
-	string new_type = "tableofcontents";
-	if (str.contains("floatlist")) {
+	string new_type;
+	if (str.contains("tableofcontents"))
+		new_type = "tableofcontents";
+	else if (str.contains("floatlist")) {
 		if (str.contains("\"figure"))
 			new_type = "figure";
 		else if (str.contains("\"table"))

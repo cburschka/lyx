@@ -221,7 +221,7 @@ void TocWidget::updateGui(int selected_type)
 		return;
 	}
 
-	QString current_text = typeCO->currentText();
+	QString const current_text = typeCO->currentText();
 	typeCO->blockSignals(true);
 	typeCO->clear();
 	for (size_t i = 0; i != type_names.size(); ++i) {
@@ -230,6 +230,12 @@ void TocWidget::updateGui(int selected_type)
 	}
 	if (selected_type != -1)
 		typeCO->setCurrentIndex(selected_type);
+	else {
+		int const new_index = typeCO->findText(current_text);
+		if (new_index != -1)
+			typeCO->setCurrentIndex(new_index);
+	}
+
 	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());
