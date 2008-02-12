@@ -32,8 +32,6 @@ TocWidget::TocWidget(GuiToc & form, QWidget * parent)
 {
 	setupUi(this);
 
-	connect(&form_, SIGNAL(modelReset()), SLOT(updateGui()));
-
 	moveOutTB->setIcon(QIcon(":/images/promote.png"));
 	moveInTB->setIcon(QIcon(":/images/demote.png"));
 	moveUpTB->setIcon(QIcon(":/images/up.png"));
@@ -212,7 +210,7 @@ void TocWidget::updateView()
 }
 
 
-void TocWidget::updateGui()
+void TocWidget::updateGui(int selected_type)
 {
 	vector<docstring> const & type_names = form_.typeNames();
 	if (type_names.empty()) {
@@ -224,20 +222,13 @@ void TocWidget::updateGui()
 	}
 
 	QString current_text = typeCO->currentText();
-	//lyxerr << "current_text " << fromqstr(current_text) << endl;
 	typeCO->blockSignals(true);
 	typeCO->clear();
-	int current_type = -1;
 	for (size_t i = 0; i != type_names.size(); ++i) {
 		QString item = toqstr(type_names[i]);
 		typeCO->addItem(item);
-		if (item == current_text)
-			current_type = i;
 	}
-	if (current_type != -1)
-		typeCO->setCurrentIndex(current_type);
-	else
-		typeCO->setCurrentIndex(form_.selectedType());
+	typeCO->setCurrentIndex(selected_type);
 	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());

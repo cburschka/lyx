@@ -32,9 +32,10 @@ public:
 	/// Update the display of the dialog whilst it is still visible.
 	void updateView();
 
-protected Q_SLOTS:
 	/// Update Gui of the display.
-	void updateGui();
+	void updateGui(int selected_type);
+
+protected Q_SLOTS:
 	///
 	void setTocModel(size_t type);
 	///

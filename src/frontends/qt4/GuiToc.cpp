@@ -41,7 +41,7 @@ namespace lyx {
 namespace frontend {
 
 GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "toc", qt_("Outline"), area, flags), params_(TOC_CODE)
+	: DockView(parent, "toc", qt_("Outline"), area, flags)
 {
 	widget_ = new TocWidget(*this);
 	setWidget(widget_);
@@ -139,7 +139,15 @@ TocList const & GuiToc::tocs() const
 
 bool GuiToc::initialiseParams(string const & data)
 {
-	InsetCommandMailer::string2params("toc", data, params_);
+	LYXERR(Debug::GUI, data);
+	QString str = QString::fromUtf8(data.c_str());
+	string new_type = "tableofcontents";
+	if (str.contains("floatlist")) {
+		if (str.contains("figure"))
+			new_type = "figure";
+		else if (str.contains("table"))
+			new_type = "table";
+	}
 
 	types_.clear();
 	type_names_.clear();
@@ -153,20 +161,16 @@ bool GuiToc::initialiseParams(string const & data)
 		toc_models_.push_back(new TocModel(it->second));
 	}
 
-	string selected_type ;
-	if (params_["type"].empty()) //Then plain toc...
-		selected_type = params_.getCmdName();
-	else
-		selected_type = to_ascii(params_["type"]);
-	selected_type_ = -1;
+	int selected_type = -1;
 	for (size_t i = 0;  i != types_.size(); ++i) {
-		if (selected_type == types_[i]) {
-			selected_type_ = i;
+		if (new_type == types_[i]) {
+			selected_type = i;
 			break;
 		}
 	}
 
-	modelReset();
+	widget_->updateGui(selected_type);
+
 	return true;
 }
 
@@ -237,9 +241,6 @@ docstring GuiToc::guiName(string const & type) const
 
 void GuiToc::dispatchParams()
 {
-	string const lfun = 
-		InsetCommandMailer::params2string("toc", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

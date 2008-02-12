@@ -83,9 +83,6 @@ public:
 	std::vector<docstring> const & typeNames() const
 	{ return type_names_; }
 
-	///
-	int selectedType() { return selected_type_; }
-
 	/// Return the first TocItem before the cursor
 	TocIterator currentTocItem(int type) const;
 
@@ -102,21 +99,16 @@ public:
 
 	std::vector<std::string> types_;
 	std::vector<docstring> type_names_;
-	int selected_type_;
 
 	/// Return the guiname from a given cmdName of the TOC param
 	docstring guiName(std::string const & type) const;
 
 	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
+	void clearParams() {}
 	///
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
 };
 
 } // namespace frontend
