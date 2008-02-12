@@ -1018,24 +1018,24 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			DocIterator dit = b->getParFromID(id);
 			if (dit.atEnd()) {
 				LYXERR(Debug::INFO, "No matching paragraph found! [" << id << "].");
-			} else {
-				LYXERR(Debug::INFO, "Paragraph " << dit.paragraph().id()
-					<< " found in buffer `"
-					<< b->absFileName() << "'.");
-
-				if (b == &buffer_) {
-					// Set the cursor
-					setCursor(dit);
-					showCursor();
-				} else {
-					// Switch to other buffer view and resend cmd
-					theLyXFunc().dispatch(FuncRequest(
-						LFUN_BUFFER_SWITCH, b->absFileName()));
-					theLyXFunc().dispatch(cmd);
-				}
-				break;
+				++i;
+				continue;
 			}
-			++i;
+			LYXERR(Debug::INFO, "Paragraph " << dit.paragraph().id()
+				<< " found in buffer `"
+				<< b->absFileName() << "'.");
+
+			if (b == &buffer_) {
+				// Set the cursor
+				setCursor(dit);
+				processUpdateFlags(Update::Force | Update::FitCursor);
+			} else {
+				// Switch to other buffer view and resend cmd
+				theLyXFunc().dispatch(FuncRequest(
+					LFUN_BUFFER_SWITCH, b->absFileName()));
+				theLyXFunc().dispatch(cmd);
+			}
+			break;
 		}
 		break;
 	}
