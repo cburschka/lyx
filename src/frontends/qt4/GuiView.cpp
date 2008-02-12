@@ -538,6 +538,7 @@ void GuiView::updateStatusBar()
 	if (d.statusbar_timer_.isActive())
 		return;
 
+	theLyXFunc().setLyXView(this);
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 }
 
