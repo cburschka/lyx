@@ -2892,69 +2892,12 @@ reference "sub:Symboles-mathématiques"
 \end_inset
 
  et 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{
-\backslash
-hspace{-
-\backslash
-abc}}
-\end_layout
-
-\end_inset
-
-
 \begin_inset LatexCommand ref
 reference "sec:Relations"
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-renewcommand{
-\backslash
-sectionautorefname}{sec.
-\backslash
-negthinspace}
-\end_layout
-
-\end_inset
-
 ).
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Les commandes 
-\backslash
-renewcommand en mode TeX sont nécessaires pour éviter que le nom de référence
- croisée 
-\begin_inset Quotes eld
-\end_inset
-
-sec.
-\begin_inset Quotes erd
-\end_inset
-
- n'apparaisse pas deux fois.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
