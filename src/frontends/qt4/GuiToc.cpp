@@ -147,6 +147,8 @@ bool GuiToc::initialiseParams(string const & data)
 			new_type = "figure";
 		else if (str.contains("table"))
 			new_type = "table";
+		else if (str.contains("algorithm"))
+			new_type = "algorithm";
 	}
 
 	types_.clear();
