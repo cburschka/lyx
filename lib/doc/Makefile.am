@@ -129,6 +129,7 @@ dist_frdoc_DATA = \
 	fr/Extended.lyx \
 	fr/FAQ.lyx \
 	fr/Intro.lyx \
+	fr/Math.lyx \
 	fr/Tutorial.lyx \
 	fr/UserGuide.lyx
 
