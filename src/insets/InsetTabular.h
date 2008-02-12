@@ -734,8 +734,9 @@ public:
 	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!
 	/// should all paragraphs be output with "Standard" layout?
-	bool forceDefaultParagraphs(idx_type cell = 0) const;
-
+	virtual bool allowParagraphCustomization(idx_type cell = 0) const;
+	///
+	virtual bool forceEmptyLayout() { return true; }
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 

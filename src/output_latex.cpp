@@ -108,7 +108,9 @@ TeXEnvironment(Buffer const & buf,
 
 	BufferParams const & bparams = buf.params();
 
-	LayoutPtr const & style = pit->layout();
+	LayoutPtr const & style = pit->forceEmptyLayout() ?
+			bparams.getTextClass().emptyLayout() :
+			pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
@@ -284,7 +286,6 @@ TeXOnePar(Buffer const & buf,
 	LYXERR(Debug::LATEX, "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'");
 	BufferParams const & bparams = buf.params();
-	LayoutPtr style;
 	ParagraphList const & paragraphs = text.paragraphs();
 
 	if (runparams_in.verbatim) {
@@ -303,12 +304,14 @@ TeXOnePar(Buffer const & buf,
 		return ++pit;
 	}
 
+	// FIXME This comment doesn't make sense. What's the
+	// length got to do with forceEmptyLayout()? I.e., what
+	// was forceDefaultParagraphs()?
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
-	if (!pit->forceDefaultParagraphs())
-		style = pit->layout();
-	else
-		style = bparams.getTextClass().defaultLayout();
+	LayoutPtr const style = pit->forceEmptyLayout() ?
+		bparams.getTextClass().emptyLayout() :
+		pit->layout();
 
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style->needprotect;
@@ -476,10 +479,8 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	// In an inset with unlimited length (all in one row),
-	// don't allow any special options in the paragraph
 	bool const useSetSpace = bparams.getTextClass().provides("SetSpace");
-	if (!pit->forceDefaultParagraphs()) {
+	if (pit->allowParagraphCustomization()) {
 		if (pit->params().startOfAppendix()) {
 			os << "\\appendix\n";
 			texrow.newline();
@@ -590,7 +591,7 @@ TeXOnePar(Buffer const & buf,
 			pending_newline = true;
 	}
 
-	if (!pit->forceDefaultParagraphs()) {
+	if (pit->allowParagraphCustomization()) {
 		if (!pit->params().spacing().isDefault()
 			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
@@ -791,8 +792,10 @@ void latexParagraphs(Buffer const & buf,
 		// any special options in the paragraph and also we don't allow
 		// any environment other than the default layout of the
 		// text class to be valid!
-		if (!par->forceDefaultParagraphs()) {
-			LayoutPtr const & layout = par->layout();
+		if (par->allowParagraphCustomization()) {
+			LayoutPtr const & layout = par->forceEmptyLayout() ?
+					tclass.emptyLayout() :
+					par->layout();
 
 			if (layout->intitle) {
 				if (already_title) {

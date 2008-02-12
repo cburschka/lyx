@@ -15,6 +15,7 @@
 #include "InsetBox.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
@@ -25,6 +26,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "TextClass.h"
 
 #include "support/Translator.h"
 
@@ -85,7 +87,10 @@ BoxTranslatorLoc const & boxtranslator_loc()
 
 InsetBox::InsetBox(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp), params_(label)
-{}
+{
+	if (forceEmptyLayout())
+		paragraphs().back().layout(bp.getTextClass().emptyLayout());
+}
 
 
 InsetBox::InsetBox(InsetBox const & in)
@@ -173,7 +178,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 }
 
 
-bool InsetBox::forceDefaultParagraphs(idx_type) const
+bool InsetBox::forceEmptyLayout() const
 {
 	return !params_.inner_box;
 }

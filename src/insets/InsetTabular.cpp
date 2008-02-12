@@ -484,7 +484,9 @@ Tabular::cellstruct::cellstruct(BufferParams const & bp)
 	  usebox(BOX_NONE),
 	  rotate(false),
 	  inset(new InsetText(bp))
-{}
+{
+	inset->paragraphs().back().layout(bp.getTextClass().emptyLayout());
+}
 
 
 Tabular::cellstruct::cellstruct(cellstruct const & cs)
@@ -1090,7 +1092,7 @@ void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 	cur.push(*inset);
 	// undo information has already been recorded
 	inset->getText(0)->setLayout(cur.bv().buffer(), 0, cur.lastpit() + 1,
-			bp.getTextClass().defaultLayoutName());
+			bp.getTextClass().emptyLayoutName());
 	cur.pop();
 }
 
@@ -4701,7 +4703,7 @@ void InsetTabular::rejectChanges(BufferParams const & bparams)
 }
 
 
-bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
+bool InsetTabular::allowParagraphCustomization(idx_type cell) const
 {
 	return tabular.getPWidth(cell).zero();
 }

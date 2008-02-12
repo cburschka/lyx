@@ -43,7 +43,7 @@ public:
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	bool forceDefaultParagraphs(idx_type) const { return true; }
+	virtual bool allowParagraphCustomization(idx_type) const { return false; }
 
 	///
 	int plaintext(Buffer const &, odocstream &,

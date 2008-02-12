@@ -73,7 +73,10 @@ void breakParagraph(BufferParams const & bparams,
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
-	tmp->layout(bparams.getTextClass().defaultLayout());
+	if (par.useEmptyLayout())
+		tmp->layout(bparams.getTextClass().emptyLayout());
+	else
+		tmp->layout(bparams.getTextClass().defaultLayout());
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par.inInset());
 

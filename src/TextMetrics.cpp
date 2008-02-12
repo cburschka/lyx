@@ -1709,6 +1709,7 @@ int TextMetrics::leftMargin(int max_width,
 			if (pars[newpar].layout()->isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
 			}
+			//FIXME Should this check for emptyLayout() as well?
 			if (par.layout() == tclass.defaultLayout()) {
 				if (pars[newpar].params().noindent())
 					parindent.erase();
@@ -1830,7 +1831,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-	    && (par.layout() != tclass.defaultLayout()
+	    && (par.layout() != tclass.defaultLayout() //should this check emptyLayout()?
 		|| buffer.params().paragraph_separation ==
 		   BufferParams::PARSEP_INDENT))
 	{

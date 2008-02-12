@@ -109,6 +109,13 @@ public:
 	docstring const & defaultLayoutName() const;
 	///
 	LayoutPtr const & defaultLayout() const;
+	/// returns a special layout for use when we don't really want one,
+	/// e.g., in table cells
+	LayoutPtr const & emptyLayout() const 
+			{ return operator[](emptylayout_); };
+	///
+	docstring const & emptyLayoutName() const 
+			{ return emptylayout_; }
 	///
 	std::string const & name() const;
 	///
@@ -200,6 +207,8 @@ private:
 	std::string class_header_;
 	///
 	docstring defaultlayout_;
+	/// name of empty layout
+	static const docstring emptylayout_;
 	/// preamble text to support layout styles
 	docstring preamble_;
 	/// latex packages loaded by document class.

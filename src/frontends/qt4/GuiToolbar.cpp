@@ -304,22 +304,41 @@ void GuiLayoutBox::updateContents(bool reset)
 		clear();
 		setEnabled(false);
 		text_class_ = 0;
+		inset_ = 0;
 		return;
 	}
 
 	TextClass const * text_class = &buffer->params().getTextClass();
-	if (!reset && text_class_ == text_class) {
+	Inset const * inset = 
+		owner_.view()->cursor().innerParagraph().inInset();
+
+	// we'll only update the layout list if the text class has changed
+	// or we've moved from one inset to another
+	if (!reset && text_class_ == text_class && inset_ == inset) {
 		set(owner_.view()->cursor().innerParagraph().layout()->name());
 		return;
 	}
 
+	inset_ = inset;
 	text_class_ = text_class;
 
 	clear();
 	TextClass::const_iterator it = text_class_->begin();
 	TextClass::const_iterator const end = text_class_->end();
-	for (; it != end; ++it)
-		addItemSort(toqstr(translateIfPossible((*it)->name())), lyxrc.sort_layouts);
+
+	for (; it != end; ++it) {
+		docstring const & name = (*it)->name();
+		// if this inset requires the empty layout, we skip the default
+		// layout
+		if (name == text_class_->defaultLayoutName() && inset &&
+		    (inset->forceEmptyLayout() || inset->useEmptyLayout()))
+			continue;
+		// if it doesn't require the empty layout, we skip it
+		if (name == text_class_->emptyLayoutName() && inset &&
+		    !inset->forceEmptyLayout() && !inset->useEmptyLayout())
+			continue;
+		addItemSort(toqstr(translateIfPossible(name)), lyxrc.sort_layouts);
+	}
 
 	set(owner_.view()->cursor().innerParagraph().layout()->name());
 

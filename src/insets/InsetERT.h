@@ -67,8 +67,10 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	bool forceDefaultParagraphs(idx_type) const { return true; }
-	/// should paragraph indendation be ommitted in any case?
+	virtual bool forceEmptyLayout() const { return true; }
+	///
+	virtual bool allowParagraphCustomization(idx_type) const { return false; }
+	/// should paragraph indendation be omitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
 protected:
 	InsetERT(InsetERT const &);

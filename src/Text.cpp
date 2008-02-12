@@ -103,8 +103,20 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 
 		TextClass const & tclass = bp.getTextClass();
 
-		if (layoutname.empty()) {
+		if (layoutname.empty())
 			layoutname = tclass.defaultLayoutName();
+
+		if (par.forceEmptyLayout()) 
+			// in this case only the empty layout is allowed
+			layoutname = tclass.emptyLayoutName();
+		else if (par.useEmptyLayout()) {
+			// in this case, default layout maps to empty layout 
+			if (layoutname == tclass.defaultLayoutName())
+				layoutname = tclass.emptyLayoutName();
+		} else { 
+			// otherwise, the empty layout maps to the default
+			if (layoutname == tclass.emptyLayoutName())
+				layoutname = tclass.defaultLayoutName();
 		}
 
 		bool hasLayout = tclass.hasLayout(layoutname);
@@ -113,7 +125,9 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 			errorList.push_back(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
 			layoutname, from_utf8(tclass.name())), par.id(), 0, par.size()));
-			layoutname = tclass.defaultLayoutName();
+			layoutname = par.useEmptyLayout() ? 
+					tclass.emptyLayoutName() :
+					tclass.defaultLayoutName();
 		}
 
 		par.layout(bp.getTextClass()[layoutname]);
@@ -388,9 +402,11 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	if (sensitive) {
 		if (cur.pos() == 0)
 			// set to standard-layout
+		//FIXME Check if this should be emptyLayout() in some cases
 			pars_[cpit].applyLayout(tclass.defaultLayout());
 		else
 			// set to standard-layout
+			//FIXME Check if this should be emptyLayout() in some cases
 			pars_[next_par].applyLayout(tclass.defaultLayout());
 	}
 
@@ -868,31 +884,37 @@ bool Text::handleBibitems(Cursor & cur)
 {
 	if (cur.paragraph().layout()->labeltype != LABEL_BIBLIO)
 		return false;
+
+	if (cur.pos() != 0)
+		return false;
+
+	BufferParams const & bufparams = cur.buffer().params();
+	Paragraph const & par = cur.paragraph();
+	Cursor prevcur = cur;
+	if (cur.pit() > 0) {
+		--prevcur.pit();
+		prevcur.pos() = prevcur.lastpos();
+	}
+	Paragraph const & prevpar = prevcur.paragraph();
+
 	// if a bibitem is deleted, merge with previous paragraph
 	// if this is a bibliography item as well
-	if (cur.pos() == 0) {
-		BufferParams const & bufparams = cur.buffer().params();
-		Paragraph const & par = cur.paragraph();
-		Cursor prevcur = cur;
-		if (cur.pit() > 0) {
-			--prevcur.pit();
-			prevcur.pos() = prevcur.lastpos();
-		}
-		Paragraph const & prevpar = prevcur.paragraph();
-		if (cur.pit() > 0 && par.layout() == prevpar.layout()) {
-			cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
-			mergeParagraph(bufparams, cur.text()->paragraphs(),
-				       prevcur.pit());
-			updateLabels(cur.buffer());
-			setCursorIntern(cur, prevcur.pit(), prevcur.pos());
-			cur.updateFlags(Update::Force);
-		// if not, reset the paragraph to default
-		} else
-			cur.paragraph().layout(
-				bufparams.getTextClass().defaultLayout());
+	if (cur.pit() > 0 && par.layout() == prevpar.layout()) {
+		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
+		mergeParagraph(bufparams, cur.text()->paragraphs(),
+							prevcur.pit());
+		updateLabels(cur.buffer());
+		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
+		cur.updateFlags(Update::Force);
 		return true;
-	}
-	return false;
+	} 
+
+	// otherwise reset to default
+	if (par.useEmptyLayout())
+		cur.paragraph().layout(bufparams.getTextClass().emptyLayout());
+	else
+		cur.paragraph().layout(bufparams.getTextClass().defaultLayout());
+	return true;
 }
 
 
@@ -974,8 +996,10 @@ bool Text::backspacePos0(Cursor & cur)
 	// layouts. I think it is a real bug of all other
 	// word processors to allow it. It confuses the user.
 	// Correction: Pasting is always allowed with standard-layout
+	// or the empty layout.
 	else if (par.layout() == prevpar.layout()
-		 || par.layout() == tclass.defaultLayout()) {
+		 || par.layout() == tclass.defaultLayout()
+		 || par.layout() == tclass.emptyLayout()) {
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;

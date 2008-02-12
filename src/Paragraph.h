@@ -145,8 +145,11 @@ public:
 	///
 	InsetCode ownerCode() const;
 	///
-	bool forceDefaultParagraphs() const;
-
+	bool forceEmptyLayout() const;
+	///
+	bool allowParagraphCustomization() const;
+	///
+	bool useEmptyLayout() const;
 	///
 	pos_type size() const;
 	///

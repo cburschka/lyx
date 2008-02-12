@@ -1601,9 +1601,21 @@ void Paragraph::setBeginOfBody()
 }
 
 
-bool Paragraph::forceDefaultParagraphs() const
+bool Paragraph::forceEmptyLayout() const
 {
-	return inInset() && inInset()->forceDefaultParagraphs(0);
+	return inInset() && inInset()->forceEmptyLayout();
+}
+
+
+bool Paragraph::allowParagraphCustomization() const
+{
+	return inInset() && inInset()->allowParagraphCustomization(0);
+}
+
+
+bool Paragraph::useEmptyLayout() const
+{
+	return inInset() && inInset()->useEmptyLayout();
 }
 
 
@@ -1805,7 +1817,7 @@ bool Paragraph::latex(Buffer const & buf,
 	// any special options in the paragraph and also we don't allow
 	// any environment other than the default layout of the text class
 	// to be valid!
-	bool asdefault = forceDefaultParagraphs();
+	bool asdefault = forceEmptyLayout();
 
 	if (asdefault) {
 		style = bparams.getTextClass().defaultLayout();

@@ -217,7 +217,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
 			// reset first par to default
-			LayoutPtr const layout =
+			LayoutPtr const layout = insetText->useEmptyLayout() ?
+				cur.buffer().params().getTextClass().emptyLayout() :
 				cur.buffer().params().getTextClass().defaultLayout();
 			cur.text()->paragraphs().begin()->layout(layout);
 			cur.pos() = 0;
@@ -229,8 +230,9 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			}
 	} else {
 		// reset surrounding par to default
-		docstring const layoutname = 
-			cur.buffer().params().getTextClass().defaultLayoutName();
+		docstring const layoutname = insetText->useEmptyLayout() ?
+				cur.buffer().params().getTextClass().emptyLayoutName() :
+				cur.buffer().params().getTextClass().defaultLayoutName();
 		cur.leaveInset(*inset);
 		text->setLayout(cur, layoutname);
 	}
@@ -1015,13 +1017,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		docstring layout = cmd.argument();
 		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(layout));
 
-		docstring const old_layout = cur.paragraph().layout()->name();
-
-		// Derive layout number from given argument (string)
-		// and current buffer's textclass (number)
+		Paragraph const & para = cur.paragraph();
+		docstring const old_layout = para.layout()->name();
 		TextClass const & tclass = bv->buffer().params().getTextClass();
+
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
+
+		if (para.forceEmptyLayout()) 
+			// in this case only the empty layout is allowed
+			layout = tclass.emptyLayoutName();
+		else if (para.useEmptyLayout()) {
+			// in this case, default layout maps to empty layout 
+			if (layout == tclass.defaultLayoutName())
+				layout = tclass.emptyLayoutName();
+		} else { 
+			// otherwise, the empty layout maps to the default
+			if (layout == tclass.emptyLayoutName())
+				layout = tclass.defaultLayoutName();
+		}
+
 		bool hasLayout = tclass.hasLayout(layout);
 
 		// If the entry is obsolete, use the new one instead.
@@ -1385,7 +1400,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
 		pars.back().setInsetOwner(pars[0].inInset());
-		pars.back().layout(tclass.defaultLayout());
+		if (pars.back().useEmptyLayout())
+			pars.back().layout(tclass.emptyLayout());
+		else
+			pars.back().layout(tclass.defaultLayout());
 
 		int cap_pit = pars.size() - 1;
 
@@ -1395,8 +1413,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!content) {
 			pars.push_back(Paragraph());
 			pars.back().setInsetOwner(pars[0].inInset());
-			pars.back().layout(tclass.defaultLayout());
-
+			if (pars.back().useEmptyLayout())
+				pars.back().layout(tclass.emptyLayout());
+			else
+				pars.back().layout(tclass.defaultLayout());
 		}
 
 		// reposition the cursor to the caption
@@ -1646,7 +1666,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		params2string(cur.paragraph(), data);
 
 		// Will the paragraph accept changes from the dialog?
-		bool const accept = !cur.inset().forceDefaultParagraphs(cur.idx());
+		bool const accept = 
+			cur.inset().allowParagraphCustomization(cur.idx());
 
 		data = "update " + convert<string>(accept) + '\n' + data;
 		bv->updateDialog("paragraph", data);
@@ -1689,6 +1710,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				breakParagraph(cur);
 			}
 
+			//FIXME Check if this should be emptyLayout()
 			setLayout(cur, tclass.defaultLayoutName());
 			ParagraphParameters p;
 			setParagraphs(cur, p);

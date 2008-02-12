@@ -62,6 +62,8 @@ public:
 	/// to name()
 	void setLayout(TextClassPtr tc);
 	///
+	virtual bool useEmptyLayout() { return true; }
+	///
 	void read(Buffer const &, Lexer &);
 	///
 	void write(Buffer const &, std::ostream &) const;
@@ -157,6 +159,8 @@ public:
 	virtual bool allowEmpty() const { return layout_->keepempty; }
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return layout_->forceltr; }
+	///
+	virtual bool useEmptyLayout() const { return true; }
 
 protected:
 	///

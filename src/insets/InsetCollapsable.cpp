@@ -82,6 +82,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
+	paragraphs().back().layout(bp.getTextClass().emptyLayout());
 }
 
 

@@ -35,6 +35,7 @@
 #include "support/os.h"
 
 #include <sstream>
+#include <strstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -124,7 +125,13 @@ TextClass::TextClass(string const & fn, string const & cln,
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
+	// a hack to make this available for translation
+	// i'm sure there must be a better way (rgh)
+	_("PlainLayout");
 }
+
+
+docstring const TextClass::emptylayout_ = from_ascii("PlainLayout");
 
 
 bool TextClass::isTeXClassAvailable() const
@@ -217,6 +224,27 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
 		to_utf8(makeDisplayPath(filename.absFilename())));
+
+	// Define the `empty' layout used in table cells, ert, etc. Note that 
+	// we do this before loading any layout file, so that classes can 
+	// override features of this layout if they should choose to do so.
+	if (rt == BASECLASS) {
+		static char const * s = "Margin Static\n"
+			"LatexType Paragraph\n"
+			"LatexName dummy\n"
+			"Align Block\n"
+			"AlignPossible Left, Right, Center\n"
+			"LabelType No_Label\n"
+			"End";
+		istrstream ss(s);
+		Lexer lex(textClassTags, sizeof(textClassTags) / sizeof(textClassTags[0]));
+		lex.setStream(ss);
+		Layout lay;
+		lay.setName(emptylayout_);
+		bool error = readStyle(lex, lay);
+		BOOST_ASSERT(!error);
+		layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
+	}
 
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
@@ -1052,7 +1080,7 @@ LayoutPtr const & TextClass::operator[](docstring const & name) const
 
 bool TextClass::deleteLayout(docstring const & name)
 {
-	if (name == defaultLayoutName())
+	if (name == defaultLayoutName() || name == emptyLayoutName())
 		return false;
 
 	LayoutList::iterator it =

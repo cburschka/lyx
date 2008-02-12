@@ -286,9 +286,15 @@ public:
 
 	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(InsetCode) const { return false; }
-	/// if this inset has paragraphs should they be output all as default
-	/// paragraphs with the default layout of the text class?
-	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
+	/// should this inset use the empty layout by default rather than 
+	/// the standard layout? (default: only if that is forced.)
+	virtual bool useEmptyLayout() const { return forceEmptyLayout(); }
+	/// if this inset has paragraphs should they be forced to use the
+	/// empty layout?
+	virtual bool forceEmptyLayout() const { return false; }
+	/// if this inset has paragraphs should the user be allowed to
+	/// customize alignment, etc?
+	virtual bool allowParagraphCustomization(idx_type) const { return true; }
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 

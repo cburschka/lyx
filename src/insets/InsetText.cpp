@@ -69,7 +69,10 @@ InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
 	paragraphs().push_back(Paragraph());
-	paragraphs().back().layout(bp.getTextClass().defaultLayout());
+	if (useEmptyLayout())
+		paragraphs().back().layout(bp.getTextClass().emptyLayout());
+	else
+		paragraphs().back().layout(bp.getTextClass().defaultLayout());
 	init();
 }
 

@@ -143,11 +143,12 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 	}
 
-	// If we are in an inset which returns forceDefaultParagraphs,
-	// set the paragraphs to default
-	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
+	// set the paragraphs to empty layout if necessary
+	// note that we are doing this if the empty layout is
+	// supposed to be the default, not just if it is forced
+	if (cur.inset().useEmptyLayout()) {
 		LayoutPtr const layout =
-			buffer.params().getTextClass().defaultLayout();
+			buffer.params().getTextClass().emptyLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();
 				par != end; ++par)
@@ -400,35 +401,35 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
-void switchBetweenClasses(TextClassPtr const & c1, 
-	TextClassPtr const & c2, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(TextClassPtr const & oldone, 
+	TextClassPtr const & newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 
 	BOOST_ASSERT(!in.paragraphs().empty());
-	if (c1 == c2)
+	if (oldone == newone)
 		return;
 	
-	TextClass const & tclass1 = *c1;
-	TextClass const & tclass2 = *c2;
+	TextClass const & oldtc = *oldone;
+	TextClass const & newtc = *newone;
 
 	// layouts
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
 		docstring const name = it->layout()->name();
-		bool hasLayout = tclass2.hasLayout(name);
+		bool hasLayout = newtc.hasLayout(name);
 
 		if (hasLayout)
-			it->layout(tclass2[name]);
+			it->layout(newtc[name]);
 		else
-			it->layout(tclass2.defaultLayout());
+			it->layout(newtc.defaultLayout());
 
-		if (!hasLayout && name != tclass1.defaultLayoutName()) {
+		if (!hasLayout && name != oldtc.defaultLayoutName()) {
 			docstring const s = bformat(
 						 _("Layout had to be changed from\n%1$s to %2$s\n"
 						"because of class conversion from\n%3$s to %4$s"),
 			 name, it->layout()->name(),
-			 from_utf8(tclass1.name()), from_utf8(tclass2.name()));
+			 from_utf8(oldtc.name()), from_utf8(newtc.name()));
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
 						      it->id(), 0,
@@ -445,16 +446,16 @@ void switchBetweenClasses(TextClassPtr const & c1,
 		if (inset->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		inset->setLayout(c2);
+		inset->setLayout(newone);
 		if (inset->getLayout().labelstring != from_utf8("UNDEFINED"))
 			continue;
-		// The flex inset is undefined in tclass2
+		// The flex inset is undefined in newtc
 		docstring const s = bformat(_(
 			"Flex inset %1$s is "
 			"undefined because of class "
 			"conversion from\n%2$s to %3$s"),
-			inset->name(), from_utf8(tclass1.name()),
-			from_utf8(tclass2.name()));
+			inset->name(), from_utf8(oldtc.name()),
+			from_utf8(newtc.name()));
 		// To warn the user that something had to be done.
 		errorlist.push_back(ErrorItem(
 				_("Undefined flex inset"),
