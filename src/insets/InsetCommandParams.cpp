@@ -178,7 +178,7 @@ void InsetCommandParams::setCmdName(string const & name)
 		LYXERR0("InsetCommand: Incompatible command name " << 
 				name << ".");
 		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
-		                       from_utf8("Incompatible command name."));
+		                       _("Incompatible command name."));
 	}
 
 	cmdName_ = name;
@@ -209,7 +209,7 @@ void InsetCommandParams::read(Lexer & lex)
 		if (code != insetCode_) {
 			lex.printError("InsetCommandParams: Attempt to change type of inset.");
 			throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
-				from_utf8("Attempt to change type of parameters."));
+		                         _("Attempt to change type of parameters."));
 		}
 	}
 
@@ -219,7 +219,7 @@ void InsetCommandParams::read(Lexer & lex)
 		if (test != "LatexCommand") {
 			lex.printError("InsetCommandParams: No LatexCommand line found.");
 			throw ExceptionMessage(WarningException, _("InsetCommandParams error:"),
-				from_utf8("Can't find LatexCommand line."));
+			                       _("Can't find LatexCommand line."));
 		}
 	}
 	lex.next();
@@ -227,14 +227,14 @@ void InsetCommandParams::read(Lexer & lex)
 	if (!isCompatibleCommand(insetCode_, cmdName_)){
 		lex.printError("InsetCommandParams: Incompatible command name " + cmdName_ + ".");
 		throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
-		                       from_utf8("Incompatible command name."));
+		                       _("Incompatible command name."));
 	}
 
 	info_ = findInfo(insetCode_, cmdName_);
 	if (!info_) {
 		lex.printError("InsetCommandParams: Unknown inset name `$$Token'");
 		throw ExceptionMessage(WarningException,
-			_("Unknown inset name: "), from_utf8(insetType()));
+		                       _("Unknown inset name: "), from_utf8(insetType()));
 	}
 	
 	string token;
