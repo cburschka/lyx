@@ -12,7 +12,6 @@ tools/convert_kmap.py \
 tools/generate_symbols_list.py \
 tools/unicodesymbols.py \
 tools/x-font \
-tools/README.bin.example \
 tools/README \
 tools/count_total_lines_of_compiled_code.sh \
 tools/count_lines_of_included_code.sh \

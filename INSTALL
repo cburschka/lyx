@@ -284,31 +284,6 @@ the source code directory.  After you have installed LyX for one
 architecture, use `make distclean' before reconfiguring for another
 architecture.
 
-Preparing a binary distribution for the use of others
-------------------------------------------------------
-
-  o Compile LyX with the right compiler switches for your
-    architecture. Make sure you use the --without-latex-config switch
-    of configure, since others might not be interested by your
-    configuration :-)
-
-  o Create a file README.bin describing your distribution and
-    referring to *you* if problems arise. As a model, you can use the
-    file development/tools/README.bin.example, which can be a good
-    starting point.
-
-  o Type `make bindist'. This will create a file
-    lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture
-    and the peculiarities of your build (e.g. static vs. dynamic).
-
-  o Check that everything is correct by unpacking the distribution
-    in some private place and running it. In particular, check the
-    output of `ldd lyx' to know which libraries are really needed.
-
-  o Upload your binary file to ftp.devel.lyx.org:/pub/incoming, and
-    notify larsbj@lyx.org.
-
-
 Problems
 --------
 
