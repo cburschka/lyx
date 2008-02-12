@@ -84,6 +84,8 @@ public:
 	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
 	bool isMacroScope(Buffer const & buf) const;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 protected:
 	///
 	InsetBranch(InsetBranch const &);

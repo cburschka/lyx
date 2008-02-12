@@ -103,7 +103,9 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 {
 	Dimension dim = dimensionCollapsed();
-	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
+	if (geometry() == NoButton)
+		return layout_->labelstring;
+	else if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
 		return docstring();
 
 	switch (status_) {

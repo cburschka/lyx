@@ -76,6 +76,12 @@ void InsetBranch::read(Buffer const & buf, Lexer & lex)
 }
 
 
+docstring InsetBranch::toolTip(BufferView const & bv, int x, int y) const
+{
+	return _("Branch: ") + params_.branch;
+}
+
+
 void InsetBranch::setButtonLabel()
 {
 	docstring s = _("Branch: ") + params_.branch;
