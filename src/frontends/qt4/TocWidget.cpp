@@ -248,20 +248,13 @@ void TocWidget::updateGui()
 		return;
 	}
 
-	QString current_text = typeCO->currentText();
-	//lyxerr << "current_text " << fromqstr(current_text) << endl;
 	typeCO->blockSignals(true);
 	typeCO->clear();
-	int current_type = -1;
 	for (size_t i = 0; i != type_names.size(); ++i) {
 		QString item = toqstr(type_names[i]);
 		typeCO->addItem(item);
-		if (item == current_text)
-			current_type = i;
 	}
-	if (current_type != -1)
-		typeCO->setCurrentIndex(current_type);
-	else
+	if (form_->selectedType() != -1)
 		typeCO->setCurrentIndex(form_->selectedType());
 	typeCO->blockSignals(false);
 
