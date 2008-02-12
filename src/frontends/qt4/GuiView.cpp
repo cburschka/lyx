@@ -584,6 +584,7 @@ bool GuiView::event(QEvent * e)
 			setWindowTitle(qt_("LyX"));
 			setWindowIconText(qt_("LyX"));
 		}
+		setFocus();
 		return QMainWindow::event(e);
 	}
 
