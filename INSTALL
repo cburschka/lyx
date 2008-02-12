@@ -100,19 +100,21 @@ For more complicated cases, LyX configure takes the following specific
 flags:
 
   o --enable-build-type=[rel(ease), dev(elopment), pre(release)]
-    allows to tweak the compiled code. The options are equivalent to:
+    allows to tweak the compiled code. The following table describes
+    the settings in terms of various options that are described later
 
-    release: --enable-optimization=-O2 --disable-assertions 
-             --disable-stdlib-debug --disable-concept-checks
-             --disable-warnings --disable-debug
+                      release   prerelease  development
+    optimization        -O2         -O2         -O
+    assertions                       X           X
+    stdlib-debug                                 X
+    concept-checks                   X           X
+    warnings                         X           X
+    debug                            X           X
 
-    prerelease: --enable-optimization=-O2 --enable-assertions 
-             --disable-stdlib-debug --enable-concept-checks
-             --enable-warnings --enable-debug
-
-    development: --enable-optimization=-O --enable-assertions
-             --enable-stdlib-debug --enable-concept-checks
-             --enable-warnings --enable-debug
+    The default are as follows in terms of version number
+    release: stable release (1.x.y)
+    prerelease: version number contains alpha, beta, rc or pre.
+    development: version number contains svn.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
@@ -199,8 +201,11 @@ give a value to the CXX variable.
 If you encounter problems, please read the section 'Problems' at the end of
 this file.
 
-In particular, the following options could be useful in some desperate
-cases:
+The following options allow to tweak more precisely the generated code:
+
+  o --enable-profiling instruments the code for use with the gprof
+    profiler. The result are only meaningful in conjunction with
+    --enable-build-type=release.
 
   o --enable-optimization=VALUE enables you to set optimization to a
     higher level as the default (-O), for example --enable-optimization=-O3.
