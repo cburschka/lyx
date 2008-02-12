@@ -110,7 +110,7 @@ flags:
              --disable-stdlib-debug --enable-concept-checks
              --enable-warnings --enable-debug
 
-    prerelease: --enable-optimization=-O --enable-assertions 
+    development: --enable-optimization=-O --enable-assertions
              --enable-stdlib-debug --enable-concept-checks
              --enable-warnings --enable-debug
 
