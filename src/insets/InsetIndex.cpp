@@ -14,10 +14,12 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
+#include "TocBackend.h"
+
+#include "support/gettext.h"
 
 #include <ostream>
 
@@ -59,6 +61,17 @@ void InsetIndex::write(Buffer const & buf, ostream & os) const
 }
 
 
+void InsetIndex::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+{
+	ParConstIterator pit = par_const_iterator_begin(*this);
+
+	Toc & toc = toclist["index"];
+	docstring str;
+	str = getNewLabel(str);
+	toc.push_back(TocItem(pit, 0, str));
+}
+
+
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
@@ -89,6 +102,5 @@ InsetCode InsetPrintIndex::lyxCode() const
 {
 	return INDEX_PRINT_CODE;
 }
-
 
 } // namespace lyx

@@ -42,6 +42,8 @@ public:
 		    OutputParams const &) const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
+	///
+	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 private:
 	///
 	virtual Inset * clone() const;

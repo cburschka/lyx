@@ -768,8 +768,10 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 			label = _(floatName);
 		// BUG3633: listings is not a proper float so its name
 		// is not shown in floatlist.
+		else if (cit->first == "index")
+			label = _("List of Indexes");
 		else if (cit->first == "listing")
-			label = _("List of listings");
+			label = _("List of Listings");
 		else if (cit->first == "note")
 			label = _("List of Notes");
 		else if (cit->first == "footnote")

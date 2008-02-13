@@ -231,6 +231,9 @@ docstring GuiToc::guiName(string const & type) const
 	if (type == "footnote")
 		return _("List of Foot notes");
 
+	if (type == "index")
+		return _("List of Indexes");
+
 	if (type == "note")
 		return _("List of Notes");
 
