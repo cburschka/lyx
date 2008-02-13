@@ -1243,7 +1243,7 @@ void LyXAction::init()
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_NEW_TEMPLATE
  * \li Action: Creates a new buffer (that is, document) from a template.
- * \li Action: Path for new files and templates can be set in Preferences dialog.
+ * \li Notion: Path for new files and templates can be set in Preferences dialog.
                Template will be asked for via Open-dialog.
  * \li Syntax: buffer-new-template [<FILE>]
  * \li Params: <FILE>: filename of created file with absolute path.
@@ -1251,6 +1251,15 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_SWITCH
+ * \li Action: Switch to the given buffer.
+ * \li Notion: This is useful also in case you need simultaneously more views of the edited
+               document in different LyX windows.
+ * \li Syntax: buffer-new-template <BUFFER>
+ * \li Params: <BUFFER>: already opened document which is to be shown.
+ * \endvar
+ */
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly, Buffer },
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
