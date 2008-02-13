@@ -143,16 +143,16 @@ bool TextClass::isTeXClassAvailable() const
 bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
-	if (!lay.read(lexrc, *this)) {
-		// Resolve fonts
-		lay.resfont = lay.font;
-		lay.resfont.realize(defaultfont());
-		lay.reslabelfont = lay.labelfont;
-		lay.reslabelfont.realize(defaultfont());
-		return false; // no errors
+	if (lay.read(lexrc, *this)) {
+		lyxerr << "Error parsing style `" << to_utf8(lay.name()) << '\'' << endl;
+		return false;
 	}
-	lyxerr << "Error parsing style `" << to_utf8(lay.name()) << '\'' << endl;
-	return true;
+	// Resolve fonts
+	lay.resfont = lay.font;
+	lay.resfont.realize(defaultfont());
+	lay.reslabelfont = lay.labelfont;
+	lay.reslabelfont.realize(defaultfont());
+	return true; // no errors
 }
 
 
@@ -321,16 +321,16 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						+ lexrc.getString() + " is probably not valid UTF-8!";
 					lexrc.printError(s.c_str());
 					Layout lay;
-					error = readStyle(lexrc, lay);
+					error = !readStyle(lexrc, lay);
 				} else if (hasLayout(name)) {
 					Layout * lay = operator[](name).get();
-					error = readStyle(lexrc, *lay);
+					error = !readStyle(lexrc, *lay);
 				} else {
 					Layout lay;
 					lay.setName(name);
 					if (le == TC_ENVIRONMENT)
 						lay.is_environment = true;
-					error = readStyle(lexrc, lay);
+					error = !readStyle(lexrc, lay);
 					if (!error)
 						layoutlist_.push_back(
 							boost::shared_ptr<Layout>(new Layout(lay))

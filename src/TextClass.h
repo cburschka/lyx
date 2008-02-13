@@ -184,7 +184,7 @@ public:
 private:
 	///
 	bool deleteLayout(docstring const &);
-	///
+	/// \return true for success.
 	bool readStyle(Lexer &, Layout &);
 	/// Layout file name
 	std::string name_;
