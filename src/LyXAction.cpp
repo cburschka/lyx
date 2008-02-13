@@ -358,6 +358,21 @@ void LyXAction::init()
 		{ LFUN_INFO_INSERT, "info-insert", Noop, Edit },
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
 		{ LFUN_BOX_INSERT, "box-insert", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_FLEX_INSERT
+ * \li Action: Inserts CharStyle, Custom inset or XML short element.
+ * \li Notion: Look into the Customization manual for more information about
+               these elements.\n
+	       For dissolving the element see #LFUN_INSET_DISSOLVE.
+ * \li Syntax: flex-insert <TYPE:Name>
+ * \li Params: TYPE: CharStyle|Custom|Element|Standard
+               Name: The identificator of a given character style, custom inset
+	             or xml element type.
+	             This name must be defined either in your layout file
+		     or imported by some module.
+ * \li Sample: flex-insert CharStyle:Code
+ * \endvar
+ */
 		{ LFUN_FLEX_INSERT, "flex-insert", Noop, Edit },
 		{ LFUN_SELF_INSERT, "self-insert", SingleParUpdate, Hidden },
 		{ LFUN_SPACE_INSERT, "space-insert", Noop, Edit },
