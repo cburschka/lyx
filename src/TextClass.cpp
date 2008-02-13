@@ -241,7 +241,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		lex.setStream(ss);
 		Layout lay;
 		lay.setName(emptylayout_);
-		bool error = readStyle(lex, lay);
+		/*bool error =*/ readStyle(lex, lay);
 		BOOST_ASSERT(!error);
 		layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
 	}
