@@ -182,12 +182,14 @@ static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 static bool doInsertInset(Cursor & cur, Text * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
-	Inset * inset = createInset(cur.bv().buffer(), cmd);
+	Buffer & buffer = cur.bv().buffer();
+	BufferParams const & bparams = buffer.params();
+	Inset * inset = createInset(buffer, cmd);
 	if (!inset)
 		return false;
 
 	if (InsetCollapsable * ci = inset->asInsetCollapsable())
-		ci->setLayout(cur.bv().buffer().params());
+		ci->setLayout(bparams);
 
 	cur.recordUndo();
 	if (cmd.action == LFUN_INDEX_INSERT) {
@@ -216,23 +218,21 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
-			// reset first par to default
-			LayoutPtr const layout = insetText->useEmptyLayout() ?
-				cur.buffer().params().getTextClass().emptyLayout() :
-				cur.buffer().params().getTextClass().defaultLayout();
-			cur.text()->paragraphs().begin()->layout(layout);
-			cur.pos() = 0;
-			cur.pit() = 0;
-			// Merge multiple paragraphs -- hack
-			while (cur.lastpit() > 0) {
-				mergeParagraph(cur.buffer().params(),
-					cur.text()->paragraphs(), 0);
-			}
+		// reset first par to default
+		LayoutPtr const layout = insetText->useEmptyLayout()
+			? bparams.getTextClass().emptyLayout()
+			: bparams.getTextClass().defaultLayout();
+		cur.text()->paragraphs().begin()->layout(layout);
+		cur.pos() = 0;
+		cur.pit() = 0;
+		// Merge multiple paragraphs -- hack
+		while (cur.lastpit() > 0)
+			mergeParagraph(bparams, cur.text()->paragraphs(), 0);
 	} else {
 		// reset surrounding par to default
-		docstring const layoutname = insetText->useEmptyLayout() ?
-				cur.buffer().params().getTextClass().emptyLayoutName() :
-				cur.buffer().params().getTextClass().defaultLayoutName();
+		docstring const layoutname = insetText->useEmptyLayout()
+			? bparams.getTextClass().emptyLayoutName()
+			: bparams.getTextClass().defaultLayoutName();
 		cur.leaveInset(*inset);
 		text->setLayout(cur, layoutname);
 	}
@@ -1354,13 +1354,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 #endif
 	case LFUN_CAPTION_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
-		// Open the inset, and move the current selection
-		// inside it.
-		doInsertInset(cur, this, cmd, true, true);
-		cur.posForward();
-		// These insets are numbered.
-		updateLabels(bv->buffer());
-		break;
 	case LFUN_NOTE_INSERT:
 	case LFUN_FLEX_INSERT:
 	case LFUN_BOX_INSERT:
@@ -1371,10 +1364,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_OPTIONAL_INSERT:
 	case LFUN_ENVIRONMENT_INSERT:
+	case LFUN_INDEX_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posForward();
+		// Some insets are numbered, others are shown in the outline pane so
+		// let's update the labels and the toc backend.
+		updateLabels(bv->buffer());
 		break;
 
 	case LFUN_TABULAR_INSERT:
@@ -1433,11 +1430,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// caption.
 		break;
 	}
-
-	case LFUN_INDEX_INSERT:
-		doInsertInset(cur, this, cmd, true, true);
-		cur.posForward();
-		break;
 
 	case LFUN_NOMENCL_INSERT: {
 		FuncRequest cmd1 = cmd;
