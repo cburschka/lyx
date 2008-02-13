@@ -52,6 +52,7 @@ public:
 	///
 	Layout();
 	/// Reads a layout definition from file
+	/// \return false on success. FIXME: this is bad API, should return true!
 	bool read(Lexer &, TextClass const &);
 	///
 	void readAlign(Lexer &);

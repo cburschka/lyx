@@ -67,6 +67,7 @@ public:
 		MODULE //>This is a layout module
 	};
 	/// Performs the read of the layout file.
+	/// \return false on success. FIXME: this is bad API, should return true!
 	bool read(support::FileName const & filename, ReadType rt = BASECLASS);
 	///
 	void readOutputType(Lexer &);
