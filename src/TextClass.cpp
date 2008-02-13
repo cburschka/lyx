@@ -241,8 +241,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		lex.setStream(ss);
 		Layout lay;
 		lay.setName(emptylayout_);
-		/*bool error =*/ readStyle(lex, lay);
-		BOOST_ASSERT(!error);
+		if (!readStyle(lex, lay)) {
+			// FIXME: Couldn't we provide some feedback to the user here?
+			// Use ExceptionMessage maybe?
+			BOOST_ASSERT(false);
+		}
 		layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
 	}
 
