@@ -202,7 +202,6 @@ enum kb_action {
 	// 140
 	LFUN_FILE_INSERT_PLAINTEXT,     // CFO-G 1997-11-19
 	LFUN_FILE_INSERT_PLAINTEXT_PARA,// Levon 2001-02-14
-	LFUN_FILE_NEW,                  // for scripting purposes
 	LFUN_FILE_OPEN,
 	LFUN_PARAGRAPH_UP,              // Asger 1996-10-01
 	// 145

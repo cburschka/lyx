@@ -593,7 +593,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
-	case LFUN_FILE_NEW:
 	case LFUN_FILE_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_MENU_OPEN:
@@ -1113,19 +1112,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->buffer()->lyxvc().undoLast();
 			reloadBuffer();
 			break;
-
-		// --- buffers ----------------------------------------
-
-		case LFUN_FILE_NEW: {
-			BOOST_ASSERT(lyx_view_);
-			string name;
-			string tmpname = split(argument, name, ':'); // Split filename
-			Buffer * const b = newFile(name, tmpname);
-			if (b)
-				lyx_view_->setBuffer(b);
-			updateFlags = Update::None;
-			break;
-		}
 
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_NAME:

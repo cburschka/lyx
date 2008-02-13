@@ -1298,7 +1298,6 @@ void LyXAction::init()
 		{ LFUN_FILE_INSERT, "file-insert", Noop, Edit },
 		{ LFUN_FILE_INSERT_PLAINTEXT, "file-insert-plaintext", Noop, Edit },
 		{ LFUN_FILE_INSERT_PLAINTEXT_PARA, "file-insert-plaintext-para", Noop, Edit },
-		{ LFUN_FILE_NEW, "file-new", NoBuffer, Buffer },
 		{ LFUN_FILE_OPEN, "file-open", NoBuffer, Buffer },
 
 
