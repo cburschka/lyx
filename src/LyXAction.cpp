@@ -1298,6 +1298,13 @@ void LyXAction::init()
 		{ LFUN_FILE_INSERT, "file-insert", Noop, Edit },
 		{ LFUN_FILE_INSERT_PLAINTEXT, "file-insert-plaintext", Noop, Edit },
 		{ LFUN_FILE_INSERT_PLAINTEXT_PARA, "file-insert-plaintext-para", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_FILE_OPEN
+ * \li Action: Open LyX document.
+ * \li Syntax: file-open [<FILE>]
+ * \li Params: <FILE>: Filename to be opened.
+ * \endvar
+ */
 		{ LFUN_FILE_OPEN, "file-open", NoBuffer, Buffer },
 
 
