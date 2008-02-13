@@ -14,8 +14,10 @@
 #include "InsetMarginal.h"
 
 #include "Buffer.h"
-#include "support/gettext.h"
 #include "OutputParams.h"
+#include "TocBackend.h"
+
+#include "support/gettext.h"
 
 #include <ostream>
 
@@ -76,5 +78,15 @@ int InsetMarginal::docbook(Buffer const & buf, odocstream & os,
 	return i;
 }
 
+
+void InsetMarginal::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+{
+	ParConstIterator pit = par_const_iterator_begin(*this);
+
+	Toc & toc = toclist["marginalnote"];
+	docstring str;
+	str = getNewLabel(str);
+	toc.push_back(TocItem(pit, 0, str));
+}
 
 } // namespace lyx

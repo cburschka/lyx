@@ -41,6 +41,8 @@ public:
 		    OutputParams const & runparams) const;
 	///
 	virtual docstring const editMessage() const;
+	///
+	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:

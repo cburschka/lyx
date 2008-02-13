@@ -227,13 +227,14 @@ docstring GuiToc::guiName(string const & type) const
 {
 	if (type == "tableofcontents")
 		return _("Table of Contents");
-
 	if (type == "footnote")
 		return _("List of Foot notes");
-
+	if (type == "listing")
+		return _("List of Listings");
 	if (type == "index")
 		return _("List of Indexes");
-
+	if (type == "marginalnote")
+		return _("List of Marginal notes");
 	if (type == "note")
 		return _("List of Notes");
 

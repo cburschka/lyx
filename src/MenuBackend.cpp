@@ -772,6 +772,8 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 			label = _("List of Indexes");
 		else if (cit->first == "listing")
 			label = _("List of Listings");
+		else if (cit->first == "marginalnote")
+			label = _("List of Marginal notes");
 		else if (cit->first == "note")
 			label = _("List of Notes");
 		else if (cit->first == "footnote")
