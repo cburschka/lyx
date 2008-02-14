@@ -152,7 +152,7 @@ End
 InsetLayout Listings
 	LabelString           Listings
 	LatexType             none
-	Decoration            classic
+	Decoration            minimalistic
 	Font
 	  Color               foreground
 	  Family              typewriter
