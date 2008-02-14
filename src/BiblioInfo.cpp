@@ -232,8 +232,8 @@ vector<docstring> const BiblioInfo::getKeys() const
 vector<docstring> const BiblioInfo::getFields() const
 {
 	vector<docstring> bibfields;
-	set<docstring>::const_iterator it = fieldNames.begin();
-	set<docstring>::const_iterator end = fieldNames.end();
+	set<docstring>::const_iterator it = fieldNames_.begin();
+	set<docstring>::const_iterator end = fieldNames_.end();
 	for (; it != end; ++it)
 		bibfields.push_back(*it);
 	sort(bibfields.begin(), bibfields.end());
@@ -244,8 +244,8 @@ vector<docstring> const BiblioInfo::getFields() const
 vector<docstring> const BiblioInfo::getEntries() const
 {
 	vector<docstring> bibentries;
-	set<docstring>::const_iterator it = entryTypes.begin();
-	set<docstring>::const_iterator end = entryTypes.end();
+	set<docstring>::const_iterator it = entryTypes_.begin();
+	set<docstring>::const_iterator end = entryTypes_.end();
 	for (; it != end; ++it)
 		bibentries.push_back(*it);
 	sort(bibentries.begin(), bibentries.end());

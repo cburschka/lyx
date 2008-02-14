@@ -192,11 +192,16 @@ public:
 	///
 	BibTeXInfo & operator[](docstring const & f) { return bimap_[f]; }
 	///
-	std::set<docstring> fieldNames;
+	void addFieldName(docstring const & f) { fieldNames_.insert(f); }
 	///
-	std::set<docstring> entryTypes;
+	void addEntryType(docstring const & f) { entryTypes_.insert(f); }
 private:
-	 std::map<docstring, BibTeXInfo> bimap_;
+	///
+	std::set<docstring> fieldNames_;
+	///
+	std::set<docstring> entryTypes_;
+	/// our map: keys --> BibTeXInfo
+	std::map<docstring, BibTeXInfo> bimap_;
 };
 
 } // namespace lyx

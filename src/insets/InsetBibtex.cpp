@@ -766,12 +766,12 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 					keyvalmap[name] = value;
 					data += "\n\n" + value;
-					keylist.fieldNames.insert(name);
+					keylist.addFieldName(name);
 					readNext = removeWSAndComma(ifs);
 				}
 
 				// add the new entry
-				keylist.entryTypes.insert(entryType);
+				keylist.addEntryType(entryType);
 				keyvalmap.allData(data);
 				keylist[key] = keyvalmap;
 			}
