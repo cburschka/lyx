@@ -1,11 +1,11 @@
 <ui version="4.0" >
- <class>IndexUi</class>
- <widget class="QDialog" name="IndexUi" >
+ <class>LabelUi</class>
+ <widget class="QDialog" name="LabelUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>203</width>
+    <width>300</width>
     <height>82</height>
    </rect>
   </property>
@@ -36,7 +36,7 @@
         <string/>
        </property>
        <property name="text" >
-        <string/>
+        <string>&amp;Label:</string>
        </property>
        <property name="buddy" >
         <cstring>keywordED</cstring>

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiIndex.h
+ * \file GuiLabel.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,22 +10,21 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIINDEX_H
-#define GUIINDEX_H
+#ifndef GUILABEL_H
+#define GUILABEL_H
 
 #include "GuiDialog.h"
-#include "ui_IndexUi.h"
+#include "ui_LabelUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiIndexDialogBase : public GuiCommand, public Ui::IndexUi
+class GuiLabel : public GuiCommand, public Ui::LabelUi
 {
 	Q_OBJECT
 
 public:
-	GuiIndexDialogBase(GuiView & lv, QString const & title,
-		QString const & label, std::string const & name);
+	GuiLabel(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -40,23 +39,6 @@ private:
 	void applyView();
 	/// update
 	void updateContents();
-
-	///
-	QString label_;
-};
-
-
-class GuiIndex : public GuiIndexDialogBase
-{
-public:
-	GuiIndex(GuiView & lv);
-};
-
-
-class GuiLabel : public GuiIndexDialogBase
-{
-public:
-	GuiLabel(GuiView & lv);
 };
 
 
