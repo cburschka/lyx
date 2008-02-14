@@ -112,14 +112,14 @@ public:
 	///
 	docstring entryType() const { return entryType_; }
 private:
+	/// true if from BibTeX; false if from bibliography environment
+	bool isBibTeX_;
 	/// the BibTeX key for this entry
 	docstring bibKey_;
 	/// a single string containing all BibTeX data associated with this key
 	docstring allData_;
 	/// the BibTeX entry type (article, book, incollection, ...)
 	docstring entryType_;
-	/// true if from BibTeX; false if from bibliography environment
-	bool isBibTeX_;
 	/// our map: <field, value>
 	std::map <docstring, docstring> bimap_;
 };
@@ -129,8 +129,10 @@ private:
 /// from BibTeX or from bibliography environments.
 /// BiblioInfo.first is the bibliography key
 /// BiblioInfo.second is the data for that key
-class BiblioInfo : public std::map<docstring, BibTeXInfo> {
+class BiblioInfo {
 public:
+	///
+	typedef std::map<docstring, BibTeXInfo>::const_iterator const_iterator;
 	/// Returns a sorted vector of bibliography keys
 	std::vector<docstring> const getKeys() const;
 	/// Returns a sorted vector of present BibTeX fields
@@ -149,7 +151,7 @@ public:
 	docstring const getInfo(docstring const & key) const;
 	
 	/**
-	  * "Translates the available Citation Styles into strings for a given key,
+	  * "Translates" the available Citation Styles into strings for a given key,
 	  * either numerical or author-year depending upon the active engine. (See
 	  * below for those methods.)
 	  */
@@ -177,9 +179,24 @@ public:
 		*/
 	std::vector<docstring> const
 			getAuthorYearStrings(docstring const & key, Buffer const & buf) const;
-
+	///
+	const_iterator begin() const { return bimap_.begin(); }
+	///
+	void clear() { bimap_.clear(); }
+	///
+	bool empty() const { return bimap_.empty(); }
+	///
+	const_iterator end() const { return bimap_.end(); }
+	///
+	const_iterator find(docstring const & f) const { return bimap_.find(f); }
+	///
+	BibTeXInfo & operator[](docstring const & f) { return bimap_[f]; }
+	///
 	std::set<docstring> fieldNames;
+	///
 	std::set<docstring> entryTypes;
+private:
+	 std::map<docstring, BibTeXInfo> bimap_;
 };
 
 } // namespace lyx
