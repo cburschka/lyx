@@ -149,6 +149,9 @@ What's new
 - Fix a crash when opening a file that resides in a hidden directory
   (bug 4513).
 
+- Fix a crash when deleting outlined insets while the outline panel 
+  is open (bug 4547).
+
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
 - Fix update/drawing of character style insets.
