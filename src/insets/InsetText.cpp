@@ -185,13 +185,14 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
 	if (drawFrame_ || pi.full_repaint) {
-		int const w = tm.width() + 2 * TEXT_TO_INSET_OFFSET;
+		int const w = tm.width() + TEXT_TO_INSET_OFFSET;
 		int const yframe = y - TEXT_TO_INSET_OFFSET - tm.ascent();
 		int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
+		int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
 		if (pi.full_repaint)
-			pi.pain.fillRectangle(x, yframe, w, h, backgroundColor());
+			pi.pain.fillRectangle(xframe, yframe, w, h, backgroundColor());
 		if (drawFrame_)
-			pi.pain.rectangle(x, yframe, w, h, frameColor());
+			pi.pain.rectangle(xframe, yframe, w, h, frameColor());
 	}
 	tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 }
