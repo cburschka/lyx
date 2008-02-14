@@ -106,20 +106,20 @@ public:
 	docstring & operator[](docstring const & f) 
 		{ return bimap_[f]; }
 	///
-	docstring const & allData() const { return allData_; }
+	docstring const & allData() const { return all_data_; }
 	///
-	void setAllData(docstring const & d) { allData_ = d; }
+	void setAllData(docstring const & d) { all_data_ = d; }
 	///
-	docstring entryType() const { return entryType_; }
+	docstring entryType() const { return entry_type_; }
 private:
 	/// true if from BibTeX; false if from bibliography environment
-	bool isBibTeX_;
+	bool is_bibtex_;
 	/// the BibTeX key for this entry
-	docstring bibKey_;
+	docstring bib_key_;
 	/// a single string containing all BibTeX data associated with this key
-	docstring allData_;
+	docstring all_data_;
 	/// the BibTeX entry type (article, book, incollection, ...)
-	docstring entryType_;
+	docstring entry_type_;
 	/// our map: <field, value>
 	std::map <docstring, docstring> bimap_;
 };
@@ -192,14 +192,14 @@ public:
 	///
 	BibTeXInfo & operator[](docstring const & f) { return bimap_[f]; }
 	///
-	void addFieldName(docstring const & f) { fieldNames_.insert(f); }
+	void addFieldName(docstring const & f) { field_names_.insert(f); }
 	///
-	void addEntryType(docstring const & f) { entryTypes_.insert(f); }
+	void addEntryType(docstring const & f) { entry_types_.insert(f); }
 private:
 	///
-	std::set<docstring> fieldNames_;
+	std::set<docstring> field_names_;
 	///
-	std::set<docstring> entryTypes_;
+	std::set<docstring> entry_types_;
 	/// our map: keys --> BibTeXInfo
 	std::map<docstring, BibTeXInfo> bimap_;
 };
