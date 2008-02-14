@@ -220,7 +220,7 @@ void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
-void InsetNote::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+void InsetNote::addToToc(TocList & toclist, Buffer const & /*buf*/, ParConstIterator const &) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 
