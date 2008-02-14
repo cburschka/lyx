@@ -191,7 +191,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	if (!filename.isReadableFile()) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
 		       << endl;
-		return true;
+		return false;
 	}
 
 	keyword_item textClassTags[] = {
@@ -242,8 +242,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		Layout lay;
 		lay.setName(emptylayout_);
 		if (!readStyle(lex, lay)) {
-			// FIXME: Couldn't we provide some feedback to the user here?
-			// Use ExceptionMessage maybe?
+			// The only way this happens is because the hardcoded layout above
+			// is wrong.
 			BOOST_ASSERT(false);
 		}
 		layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
@@ -295,7 +295,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 				if (tmp.empty()) {
 					lexrc.printError("Could not find input file: " + inc);
 					error = true;
-				} else if (read(tmp, MERGE)) {
+				} else if (!read(tmp, MERGE)) {
 					lexrc.printError("Error reading input"
 							 "file: " + tmp.absFilename());
 					error = true;
@@ -321,6 +321,9 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						+ lexrc.getString() + " is probably not valid UTF-8!";
 					lexrc.printError(s.c_str());
 					Layout lay;
+					//FIXME If we're just dropping this layout, do we really
+					//care whether there's an error?? Or should we just set
+					//error to true, since we couldn't even read the name?
 					error = !readStyle(lexrc, lay);
 				} else if (hasLayout(name)) {
 					Layout * lay = operator[](name).get();
@@ -332,20 +335,20 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						lay.is_environment = true;
 					error = !readStyle(lexrc, lay);
 					if (!error)
-						layoutlist_.push_back(
-							boost::shared_ptr<Layout>(new Layout(lay))
-							);
+						layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
 
 					if (defaultlayout_.empty()) {
-						// We do not have a default
-						// layout yet, so we choose
-						// the first layout we
-						// encounter.
+						// We do not have a default layout yet, so we choose
+						// the first layout we encounter.
 						defaultlayout_ = name;
 					}
 				}
 			}
 			else {
+				//FIXME Should we also eat the style here? viz:
+				//Layout lay;
+				//readStyle(lexrc, lay);
+				//as above...
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
 			}
@@ -358,8 +361,6 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 				if (!deleteLayout(style))
 					lyxerr << "Cannot delete style `"
 					       << to_utf8(style) << '\'' << endl;
-//					lexrc.printError("Cannot delete style"
-//							 " `$$Token'");
 			}
 			break;
 
@@ -407,7 +408,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			tocdepth_ = lexrc.getInteger();
 			break;
 
-			// First step to support options
+		// First step to support options
 		case TC_CLASSOPTIONS:
 			readClassOptions(lexrc);
 			break;
@@ -444,25 +445,31 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			if (lexrc.next())
 				rightmargin_ = lexrc.getDocString();
 			break;
+
 		case TC_INSETLAYOUT:
 			if (lexrc.next()) {
 				docstring const name = subst(lexrc.getDocString(), '_', ' ');
 				readInsetLayout(lexrc, name);
 			}
 			break;
+
 		case TC_FLOAT:
 			readFloat(lexrc);
 			break;
+
 		case TC_COUNTER:
 			readCounter(lexrc);
 			break;
+
 		case TC_TITLELATEXTYPE:
 			readTitleType(lexrc);
 			break;
+
 		case TC_TITLELATEXNAME:
 			if (lexrc.next())
 				titlename_ = lexrc.getString();
 			break;
+
 		case TC_NOFLOAT:
 			if (lexrc.next()) {
 				string const nofloat = lexrc.getString();
@@ -470,6 +477,9 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			}
 			break;
 		}
+
+		//Note that this is triggered the first time through the loop unless
+		//we hit a format tag.
 		if (format != FORMAT)
 			break;
 	}
@@ -482,14 +492,14 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		if (!error)
 			error = read(tempfile, rt);
 		tempfile.removeFile();
-		return error;
+		return !error;
 	}
 
 	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
 			to_utf8(makeDisplayPath(filename.absFilename())));
 
 	if (rt != BASECLASS) 
-		return error;
+		return !error;
 
 	if (defaultlayout_.empty()) {
 		lyxerr << "Error: Textclass '" << name_
@@ -515,9 +525,9 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			throw ExceptionMessage(WarningException, _("Missing File"),
 				_("Could not find stdinsets.inc! This may lead to data loss!"));
 			error = true;
-		} else if (read(tmp, MERGE)) {
+		} else if (!read(tmp, MERGE)) {
 			throw ExceptionMessage(WarningException, _("Corrupt File"),
-					_("Could not read stdinsets.inc! This may lead to data loss!"));
+				_("Could not read stdinsets.inc! This may lead to data loss!"));
 			error = true;
 		}
 	}
@@ -541,7 +551,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
 		<< ", maximum is " << max_toclevel_);
 
-	return error;
+	return !error;
 }
 
 
@@ -1109,7 +1119,7 @@ bool TextClass::load(string const & path) const
 		layout_file = FileName(addName(path, name_ + ".layout"));
 	if (layout_file.empty() || !layout_file.exists())
 		layout_file = libFileSearch("layouts", name_, "layout");
-	loaded_ = const_cast<TextClass*>(this)->read(layout_file) == 0;
+	loaded_ = const_cast<TextClass*>(this)->read(layout_file);
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
