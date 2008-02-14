@@ -18,6 +18,8 @@
 #include "Language.h"
 #include "Dimension.h"
 
+#include "insets/Inset.h"
+
 #include <boost/assert.hpp>
 
 using namespace std;
@@ -175,11 +177,12 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 
+static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
+
 void GuiFontMetrics::rectText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
-	static int const d = 2;
-	w = width(str) + d * 2 + 2;
+	w = width(str) + Inset::TEXT_TO_INSET_OFFSET;
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
 }
@@ -189,8 +192,7 @@ void GuiFontMetrics::rectText(docstring const & str,
 void GuiFontMetrics::buttonText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
-	static int const d = 3;
-	w = width(str) + d * 2 + 2;
+	w = width(str) + 2 * Inset::TEXT_TO_INSET_OFFSET;
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
 }
