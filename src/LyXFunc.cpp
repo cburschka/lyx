@@ -453,7 +453,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE:
-	case LFUN_UI_TOGGLE:
 	case LFUN_INSET_APPLY:
 	case LFUN_BUFFER_WRITE:
 	case LFUN_BUFFER_WRITE_AS:
@@ -602,6 +601,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_BUFFER_CHILD_OPEN:
+	case LFUN_UI_TOGGLE:
 	case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
