@@ -732,8 +732,8 @@ src_frontends_qt4_header_files = Split('''
     GuiIdListModel.h
     GuiImage.h
     GuiInclude.h
-    GuiIndex.h
     GuiKeySymbol.h
+    GuiLabel.h
     GuiListings.h
     GuiLog.h
     GuiMath.h
@@ -822,8 +822,8 @@ src_frontends_qt4_files = Split('''
     GuiIdListModel.cpp 
     GuiImage.cpp
     GuiInclude.cpp
-    GuiIndex.cpp
     GuiKeySymbol.cpp
+    GuiLabel.cpp
     GuiListings.cpp
     GuiLog.cpp
     GuiMath.cpp
@@ -904,7 +904,7 @@ src_frontends_qt4_ui_files = Split('''
     GraphicsUi.ui
     HyperlinkUi.ui
     IncludeUi.ui
-    IndexUi.ui
+    LabelUi.ui
     LaTeXUi.ui
     LanguageUi.ui
     ListingsUi.ui
