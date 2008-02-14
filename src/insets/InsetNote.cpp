@@ -20,7 +20,6 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
 #include "FuncRequest.h"
@@ -34,6 +33,7 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/Translator.h"
 
@@ -138,7 +138,7 @@ docstring const InsetNote::editMessage() const
 
 docstring InsetNote::name() const 
 {
-	return from_ascii(string("Note") + string(":") + string(notetranslator().find(params_.type)));
+	return from_ascii("Note:" + notetranslator().find(params_.type));
 }
 
 
@@ -225,9 +225,8 @@ void InsetNote::addToToc(TocList & toclist, Buffer const & /*buf*/, ParConstIter
 	ParConstIterator pit = par_const_iterator_begin(*this);
 
 	Toc & toc = toclist["note"];
-	// FIXME: we probably want the note type too.
-	docstring str;
-	str = getNewLabel(str);
+	docstring const str = notetranslator_loc().find(params_.type)
+		+ from_ascii(": ") + getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
 }
 
