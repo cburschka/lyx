@@ -225,8 +225,9 @@ void InsetNote::addToToc(TocList & toclist, Buffer const & /*buf*/, ParConstIter
 	ParConstIterator pit = par_const_iterator_begin(*this);
 
 	Toc & toc = toclist["note"];
-	docstring const str = notetranslator_loc().find(params_.type)
-		+ from_ascii(": ") + getNewLabel(str);
+	docstring str;
+	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
+		+ getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
 }
 
