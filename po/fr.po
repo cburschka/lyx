@@ -173,7 +173,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-09 02:48+0100\n"
-"PO-Revision-Date: 2007-12-13 13:43+0100\n"
+"PO-Revision-Date: 2008-02-14 10:18+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -406,21 +406,18 @@ msgid "St&yle"
 msgstr "&Style"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:262
-#, fuzzy
 msgid "Move the selected database upwards in the list"
-msgstr "Enlève la base de données sélectionnée"
+msgstr "Déplacer la base de données sélectionnée vers le haut de la liste"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:55
 msgid "&Up"
 msgstr "&Haut"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
-#, fuzzy
 msgid "Move the selected database downwards in the list"
-msgstr "Enlève la base de données sélectionnée"
+msgstr "Déplacer la base de données sélectionnée vers le bas de la liste"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:275
-#, fuzzy
 msgid "Do&wn"
 msgstr "&Bas"
 
@@ -6529,14 +6526,12 @@ msgid "Logo:"
 msgstr "Logo :"
 
 #: lib/layouts/scrlttr2.layout:339
-#, fuzzy
 msgid "EndLetter"
-msgstr "Lettre"
+msgstr "FinLettre"
 
 #: lib/layouts/scrlttr2.layout:352
-#, fuzzy
 msgid "End of letter"
-msgstr "Point Final|F"
+msgstr "Fin de lettre"
 
 #: lib/layouts/seminar.layout:46
 msgid "LandscapeSlide"
@@ -8705,17 +8700,15 @@ msgstr "Copier Colonne|e"
 
 #: lib/ui/stdmenus.inc:180
 msgid "Swap Columns|w"
-msgstr "Échanger Colonnes|É"
+msgstr "Échanger Colonnes|e"
 
 #: lib/ui/stdmenus.inc:184
-#, fuzzy
 msgid "Number whole Formula|N"
-msgstr "Formule numérotée|n"
+msgstr "Formule entière numérotée|n"
 
 #: lib/ui/stdmenus.inc:185
-#, fuzzy
 msgid "Number this Line|u"
-msgstr "(Dés)Activer Numérotation de cette Ligne|m"
+msgstr "Numéroter cette ligne|m"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Text Style|T"
@@ -9181,9 +9174,8 @@ msgid "Insert note"
 msgstr "Insérer une note"
 
 #: lib/ui/stdtoolbars.inc:104
-#, fuzzy
 msgid "Insert box"
-msgstr "Insérer une note"
+msgstr "Insérer une boîte"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Insert URL"
@@ -9351,7 +9343,7 @@ msgstr "Zone de Commande"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Review[[Toolbar]]"
-msgstr ""
+msgstr "Suivi des modifications"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Track changes"
@@ -11826,21 +11818,20 @@ msgid "&Overwrite"
 msgstr "É&craser"
 
 #: src/Buffer.cpp:941
-#, fuzzy
 msgid "Iconv software exception Detected"
-msgstr "Détection d'une exception logicielle"
+msgstr "Détection d'une exception logicielle dans le logiciel iconv"
 
 #: src/Buffer.cpp:941
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
-msgstr ""
+msgstr "Merci de vérifier que le support pour votre encodage (%1$s) est correctement installé"
 
 #: src/Buffer.cpp:961
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr ""
+msgstr "Commande LaTeX pour le caractère '%1$s' introuvable (point %2$s du code)"
 
 #: src/Buffer.cpp:964
 msgid ""
@@ -11853,14 +11844,12 @@ msgstr ""
 "Changer l'encodage du document pour l'utf8 devrait améliorer les choses."
 
 #: src/Buffer.cpp:971
-#, fuzzy
 msgid "iconv conversion failed"
-msgstr "Conversion échouée"
+msgstr "Échec conversion iconv"
 
 #: src/Buffer.cpp:976
-#, fuzzy
 msgid "conversion failed"
-msgstr "Conversion échouée"
+msgstr "Échec conversion"
 
 #: src/Buffer.cpp:1227
 msgid "Running chktex..."
@@ -11979,45 +11968,42 @@ msgstr "Marque posée"
 
 #: src/BufferView.cpp:971
 msgid "Statistics for the selection:"
-msgstr ""
+msgstr "Statistiques pour la sélection :"
 
 #: src/BufferView.cpp:973
-#, fuzzy
 msgid "Statistics for the document:"
-msgstr "&Passer au document"
+msgstr "Statitiques pour le document :"
 
 #: src/BufferView.cpp:976
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words"
-msgstr "%1$d mots vérifiés."
+msgstr "%1$d mots"
 
 #: src/BufferView.cpp:978
-#, fuzzy
 msgid "One word"
-msgstr "Mot-Clé"
+msgstr "Un mot"
 
 #: src/BufferView.cpp:981
 #, c-format
 msgid "%1$d characters (including blanks)"
-msgstr ""
+msgstr "%1$d caractères (espaces inclus)"
 
 #: src/BufferView.cpp:984
 msgid "One character (including blanks)"
-msgstr ""
+msgstr "Un caractère (espaces inclus)"
 
 #: src/BufferView.cpp:987
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr ""
+msgstr "%1$d caractères (espaces exclus)"
 
 #: src/BufferView.cpp:990
 msgid "One character (excluding blanks)"
-msgstr ""
+msgstr "Un caractère (espaces exclus)"
 
 #: src/BufferView.cpp:992
-#, fuzzy
 msgid "Statistics"
-msgstr "Statut"
+msgstr "Statistiques"
 
 #: src/BufferView.cpp:1602
 msgid "Select LyX document to insert"
@@ -13698,14 +13684,12 @@ msgstr ""
 "Utilise l'alignement par défaut."
 
 #: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
-#, fuzzy
 msgid "LyX Warning: "
-msgstr "LyX Version "
+msgstr "Avertissement LyX :"
 
 #: src/Paragraph.cpp:2241
-#, fuzzy
 msgid "uncodable character"
-msgstr "caractère spécial"
+msgstr "caractère incodable"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -15145,19 +15129,18 @@ msgid "LaTeX Preamble"
 msgstr "Préambule LaTeX"
 
 #: src/frontends/qt4/QDocument.cpp:840 src/frontends/qt4/QDocument.cpp:1484
-#, fuzzy
 msgid "Unapplied changes"
-msgstr "Suivre les modifications"
+msgstr "Modifications non appliquées"
 
 #: src/frontends/qt4/QDocument.cpp:841 src/frontends/qt4/QDocument.cpp:1485
 msgid ""
 "Some changes in the dialog were not yet applied.If you do not apply now, "
 "they will be lost after this action."
-msgstr ""
+msgstr "Certaines modifications dans le dialogue n'ont pas encore été appliquées. Si vous ne la appliquez pas maintenant, elles seront perdues après cette action."
 
 #: src/frontends/qt4/QDocument.cpp:843 src/frontends/qt4/QDocument.cpp:1487
 msgid "&Dismiss"
-msgstr ""
+msgstr "Aban&donner"
 
 #: src/frontends/qt4/QDocument.cpp:1422
 msgid "Document Settings"
