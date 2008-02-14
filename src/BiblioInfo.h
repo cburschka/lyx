@@ -106,9 +106,9 @@ public:
 	docstring & operator[](docstring const & f) 
 		{ return bimap_[f]; }
 	///
-	docstring allData() const { return allData_; }
+	docstring const & allData() const { return allData_; }
 	///
-	void allData(docstring const & d) { allData_ = d; }
+	void setAllData(docstring const & d) { allData_ = d; }
 	///
 	docstring entryType() const { return entryType_; }
 private:

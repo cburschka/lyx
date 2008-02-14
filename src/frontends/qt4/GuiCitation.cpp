@@ -376,15 +376,15 @@ void GuiCitation::findText(QString const & text, bool reset)
 	//"All Entry Types" is first.
 	index = entriesCO->currentIndex() - 1; 
 	vector<docstring> const & entries = availableEntries();
-	docstring entryType;
+	docstring entry_type;
 	if (index < 0 || index >= int(entries.size()))
-		entryType = from_ascii("");
+		entry_type = from_ascii("");
 	else 
-		entryType = entries[index];
+		entry_type = entries[index];
 	
 	bool const case_sentitive = caseCB->checkState();
 	bool const reg_exp = regexCB->checkState();
-	findKey(text, onlyKeys, field, entryType, 
+	findKey(text, onlyKeys, field, entry_type, 
 	               case_sentitive, reg_exp, reset);
 	//FIXME
 	//It'd be nice to save and restore the current selection in 
@@ -505,7 +505,7 @@ void GuiCitation::init()
 
 
 void GuiCitation::findKey(QString const & str, bool only_keys,
-	docstring field, docstring entryType,
+	docstring field, docstring entry_type,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
 	// Used for optimisation: store last searched string.
@@ -541,10 +541,10 @@ void GuiCitation::findKey(QString const & str, bool only_keys,
 
 	QStringList result;
 	
-	// First, filter by entryType, which will be faster than 
+	// First, filter by entry_type, which will be faster than 
 	// what follows, so we may get to do that on less.
 	vector<docstring> keyVector = to_docstring_vector(keys);
-	filterByEntryType(keyVector, entryType);
+	filterByEntryType(keyVector, entry_type);
 	
 	if (str.isEmpty())
 		result = to_qstring_list(keyVector);
@@ -627,9 +627,9 @@ vector<docstring> const GuiCitation::availableEntries() const
 
 
 void GuiCitation::filterByEntryType(
-	vector<docstring> & keyVector, docstring entryType) 
+	vector<docstring> & keyVector, docstring entry_type) 
 {
-	if (entryType.empty())
+	if (entry_type.empty())
 		return;
 	
 	vector<docstring>::iterator it = keyVector.begin();
@@ -641,7 +641,7 @@ void GuiCitation::filterByEntryType(
 		BiblioInfo::const_iterator cit = bibkeysInfo_.find(key);
 		if (cit == bibkeysInfo_.end())
 			continue;
-		if (cit->second.entryType() == entryType)
+		if (cit->second.entryType() == entry_type)
 			result.push_back(key);
 	}
 	keyVector = result;

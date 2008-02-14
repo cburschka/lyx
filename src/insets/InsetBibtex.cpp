@@ -772,7 +772,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 				// add the new entry
 				keylist.addEntryType(entryType);
-				keyvalmap.allData(data);
+				keyvalmap.setAllData(data);
 				keylist[key] = keyvalmap;
 			}
 		} //< searching '@'
