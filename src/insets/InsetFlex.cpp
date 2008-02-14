@@ -79,7 +79,7 @@ docstring const InsetFlex::editMessage() const
 void InsetFlex::write(Buffer const & buf, ostream & os) const
 {
 	os << "Flex " <<
-		name_.empty() ? "undefined" : name_ << "\n";
+		(name_.empty() ? "undefined" : name_) << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
