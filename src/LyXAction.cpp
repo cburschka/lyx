@@ -366,10 +366,13 @@ void LyXAction::init()
 	       For dissolving the element see #LFUN_INSET_DISSOLVE.
  * \li Syntax: flex-insert <TYPE:Name>
  * \li Params: TYPE: CharStyle|Custom|Element|Standard
-               Name: The identificator of a given character style, custom inset
-	             or xml element type.
-	             This name must be defined either in your layout file
-		     or imported by some module.
+		     Identifies whether this is a Character Style, a
+		     Custom Inset or an XML Element, and which dynamical 
+		     sub-menu this flex inset is in on the LyX menu tree. 
+		     If Standard (currently unused): none of these.
+	       Name: This name must be defined either in your layout file
+		     or imported by some module. The definition is\n
+		     InsetLayout <TYPE:Name>
  * \li Sample: flex-insert CharStyle:Code
  * \endvar
  */
