@@ -192,9 +192,8 @@ void GuiFontMetrics::rectText(docstring const & str,
 void GuiFontMetrics::buttonText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
-	w = width(str) + 2 * Inset::TEXT_TO_INSET_OFFSET;
-	ascent = metrics_.ascent() + d;
-	descent = metrics_.descent() + d;
+	rectText(str, w, ascent, descent);
+	w += Inset::TEXT_TO_INSET_OFFSET;
 }
 
 
