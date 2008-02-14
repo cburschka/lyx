@@ -641,7 +641,7 @@ void GuiCitation::filterByEntryType(
 		BiblioInfo::const_iterator cit = bibkeysInfo_.find(key);
 		if (cit == bibkeysInfo_.end())
 			continue;
-		if (cit->second.entryType == entryType)
+		if (cit->second.entryType() == entryType)
 			result.push_back(key);
 	}
 	keyVector = result;
@@ -725,7 +725,7 @@ vector<docstring> GuiCitation::searchKeys(
 		if (only_keys)
 			data = to_utf8(*it);
 		else if (field.empty())
-			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData);
+			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
 		else if (kvm.hasField(field))
 			data = to_utf8(kvm.getValueForField(field));
 		

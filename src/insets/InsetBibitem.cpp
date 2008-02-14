@@ -198,12 +198,11 @@ void InsetBibitem::fillWithBibKeys(Buffer const & buf,
 	BiblioInfo & keys, InsetIterator const & it) const
 {
 	docstring const key = getParam("key");
-	BibTeXInfo keyvalmap;
+	BibTeXInfo keyvalmap(false);
 	keyvalmap[from_ascii("label")] = getParam("label");
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(buf, false);
-	keyvalmap.isBibTeX = false;
 	keys[key] = keyvalmap;
 }
 

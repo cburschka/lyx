@@ -740,8 +740,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				docstring value;
 				docstring commaNewline;
 				docstring data;
-				BibTeXInfo keyvalmap;
-				keyvalmap.entryType = entryType;
+				BibTeXInfo keyvalmap(key, entryType);
 				
 				bool readNext = removeWSAndComma(ifs);
  
@@ -773,9 +772,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 				// add the new entry
 				keylist.entryTypes.insert(entryType);
-				keyvalmap.allData = data;
-				keyvalmap.isBibTeX = true;
-				keyvalmap.bibKey = key;
+				keyvalmap.allData(data);
 				keylist[key] = keyvalmap;
 			}
 		} //< searching '@'

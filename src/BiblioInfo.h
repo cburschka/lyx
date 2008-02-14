@@ -73,13 +73,18 @@ std::vector<CiteStyle> const getCiteStyles(CiteEngine const );
 /// bibliography entry.
 /// The keys are BibTeX fields (e.g., author, title, etc), 
 /// and the values are the associated field values.
-class BibTeXInfo : public std::map<docstring, docstring> {
+class BibTeXInfo {
 public:
 	///
-	BibTeXInfo();
-	///Search for the given field and return the associated info.
-	///The point of this is that BibTeXInfo::operator[] has no const
-	///form.
+	typedef std::map<docstring, docstring>::const_iterator const_iterator;
+	/// argument sets isBibTeX_, so should be false only if it's coming
+	/// from a bibliography environment
+	BibTeXInfo(bool ib = true);
+	/// constructor that sets the entryType
+	BibTeXInfo(docstring const & key, docstring const & type);
+	/// Search for the given field and return the associated info.
+	/// The point of this is that BibTeXInfo::operator[] has no const
+	/// form.
 	docstring const & getValueForField(docstring const & field) const;
 	///
 	docstring const & getValueForField(std::string const & field) const;
@@ -91,14 +96,32 @@ public:
 	docstring const getYear() const;
 	/// Returns formatted BibTeX data suitable for framing.
 	docstring const getInfo() const;
+	///
+	int count(docstring const & f) const { return bimap_.count(f); }
+	///
+	const_iterator find(docstring const & f) const { return bimap_.find(f); }
+	///
+	const_iterator end() const { return bimap_.end(); }
+	///
+	docstring & operator[](docstring const & f) 
+		{ return bimap_[f]; }
+	///
+	docstring allData() const { return allData_; }
+	///
+	void allData(docstring const & d) { allData_ = d; }
+	///
+	docstring entryType() const { return entryType_; }
+private:
 	/// the BibTeX key for this entry
-	docstring bibKey;
+	docstring bibKey_;
 	/// a single string containing all BibTeX data associated with this key
-	docstring allData;
+	docstring allData_;
 	/// the BibTeX entry type (article, book, incollection, ...)
-	docstring entryType;
+	docstring entryType_;
 	/// true if from BibTeX; false if from bibliography environment
-	bool isBibTeX;
+	bool isBibTeX_;
+	/// our map: <field, value>
+	std::map <docstring, docstring> bimap_;
 };
 
 

@@ -42,8 +42,13 @@ namespace lyx {
 //
 //////////////////////////////////////////////////////////////////////
 
-BibTeXInfo::BibTeXInfo()
-	: isBibTeX(true)
+BibTeXInfo::BibTeXInfo(bool ib)
+	: isBibTeX_(ib)
+{}
+
+	
+BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
+	: isBibTeX_(true), bibKey_(key), entryType_(type)
 {}
 
 	
@@ -97,7 +102,7 @@ static docstring familyName(docstring const & name)
 
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
-	if (!isBibTeX) 
+	if (!isBibTeX_) 
 		return docstring();
  
 	docstring author = getValueForField("author");
@@ -105,7 +110,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 	if (author.empty()) {
 		author = getValueForField("editor");
 		if (author.empty())
-			return bibKey;
+			return bibKey_;
 	}
 
 	// OK, we've got some names. Let's format them.
@@ -126,7 +131,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 
 docstring const BibTeXInfo::getYear() const
 {
-	if (!isBibTeX) 
+	if (!isBibTeX_) 
 		return docstring();
  
 	docstring year = getValueForField("year");
@@ -138,7 +143,7 @@ docstring const BibTeXInfo::getYear() const
 
 docstring const BibTeXInfo::getInfo() const
 {
-	if (!isBibTeX) {
+	if (!isBibTeX_) {
 		BibTeXInfo::const_iterator it = find(from_ascii("ref"));
 		return it->second;
 	}
