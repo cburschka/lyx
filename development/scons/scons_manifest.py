@@ -2638,6 +2638,7 @@ lib_layouts_module_files = Split('''
     hanging.module
     linguistics.module
     logicalmkup.module
+    minimalistic.module
     theorems-ams-extended.module
     theorems-ams.module
     theorems-chap.module

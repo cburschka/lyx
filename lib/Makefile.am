@@ -1012,6 +1012,7 @@ dist_layouts_DATA =\
 	layouts/lyxmacros.inc \
 	layouts/manpage.layout \
 	layouts/memoir.layout \
+	layouts/minimalistic.module \
 	layouts/moderncv.layout \
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
