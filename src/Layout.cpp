@@ -498,7 +498,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 	}
 	lexrc.popTable();
 
-	return error;
+	return !error;
 }
 
 

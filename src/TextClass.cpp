@@ -143,7 +143,7 @@ bool TextClass::isTeXClassAvailable() const
 bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
-	if (lay.read(lexrc, *this)) {
+	if (!lay.read(lexrc, *this)) {
 		lyxerr << "Error parsing style `" << to_utf8(lay.name()) << '\'' << endl;
 		return false;
 	}
