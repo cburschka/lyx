@@ -115,7 +115,7 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(TocList & toclist, Buffer const & buf,
+void InsetCaption::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
 	if (type_.empty())
@@ -124,7 +124,7 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf,
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = toclist[type_];
+	Toc & toc = buf.tocBackend().toc(type_);
 	docstring const str = full_label_ + ". " + pit->asString(buf, false);
 	toc.push_back(TocItem(pit, 0, str));
 }

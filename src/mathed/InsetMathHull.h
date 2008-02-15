@@ -33,7 +33,7 @@ public:
 	///
 	~InsetMathHull();
 	///
-	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

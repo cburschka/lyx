@@ -92,6 +92,12 @@ Toc const & TocBackend::toc(string const & type) const
 }
 
 
+Toc & TocBackend::toc(string const & type)
+{
+	return tocs_[type];
+}
+
+
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
 	if (toc("tableofcontents").empty()) {
@@ -157,7 +163,7 @@ void TocBackend::update()
 		InsetList::const_iterator end = pit->insetList().end();
 		for (; it != end; ++it) {
 			Inset & inset = *it->inset;
-			inset.addToToc(tocs_, *buffer_, pit);
+			inset.addToToc(*buffer_, pit);
 			switch (inset.lyxCode()) {
 			case OPTARG_CODE: {
 				if (!tocstring.empty())

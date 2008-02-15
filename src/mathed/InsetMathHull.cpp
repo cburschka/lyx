@@ -194,7 +194,7 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 }
 
 
-void InsetMathHull::addToToc(TocList & toclist, Buffer const & buf,
+void InsetMathHull::addToToc(Buffer const & buf,
 	ParConstIterator const & pit) const
 {
 	vector<docstring> labels;
@@ -202,7 +202,7 @@ void InsetMathHull::addToToc(TocList & toclist, Buffer const & buf,
 	if (labels.empty())
 		return;
 
-	Toc & toc = toclist["equation"];
+	Toc & toc = buf.tocBackend().toc("equation");
 	toc.push_back(TocItem(pit, 0, labels[0]));
 }
 

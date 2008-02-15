@@ -11,6 +11,7 @@
 
 #include "InsetIndex.h"
 
+#include "Buffer.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -61,13 +62,13 @@ void InsetIndex::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetIndex::addToToc(TocList & toclist, Buffer const & buf,
+void InsetIndex::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = toclist["index"];
+	Toc & toc = buf.tocBackend().toc("index");
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));

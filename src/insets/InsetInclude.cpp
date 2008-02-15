@@ -853,7 +853,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
+void InsetInclude::addToToc(Buffer const & buffer,
 	ParConstIterator const & cpit) const
 {
 	if (isListings(params())) {
@@ -861,7 +861,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
 		string caption = p.getParamValue("caption");
 		if (caption.empty())
 			return;
-		Toc & toc = toclist["listing"];
+		Toc & toc = buffer.tocBackend().toc("listing");
 		docstring const str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
 		ParConstIterator pit = cpit;
@@ -873,6 +873,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
 	if (!childbuffer)
 		return;
 
+	TocList & toclist = buffer.tocBackend().tocs();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();
 	TocList::const_iterator it = childtoclist.begin();
 	TocList::const_iterator const end = childtoclist.end();

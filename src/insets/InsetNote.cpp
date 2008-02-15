@@ -220,13 +220,13 @@ void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
-void InsetNote::addToToc(TocList & toclist, Buffer const & /*buf*/,
+void InsetNote::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = toclist["note"];
+	Toc & toc = buf.tocBackend().toc("note");
 	docstring str;
 	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
 		+ getNewLabel(str);

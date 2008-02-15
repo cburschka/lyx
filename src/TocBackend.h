@@ -95,11 +95,13 @@ public:
 
 	///
 	TocList const & tocs() const { return tocs_; }
+	TocList & tocs() { return tocs_; }
 
 	///
 	Toc const & toc(std::string const & type) const;
-	/// Return the first Toc Item before the cursor
+	Toc & toc(std::string const & type);
 
+	/// Return the first Toc Item before the cursor
 	TocIterator item(
 		std::string const & type, ///< Type of Toc.
 		ParConstIterator const & ///< The cursor location in the document.

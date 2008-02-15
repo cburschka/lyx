@@ -79,13 +79,13 @@ int InsetMarginal::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetMarginal::addToToc(TocList & toclist, Buffer const &/* buf*/,
+void InsetMarginal::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = toclist["marginalnote"];
+	Toc & toc = buf.tocBackend().toc("marginalnote");
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));

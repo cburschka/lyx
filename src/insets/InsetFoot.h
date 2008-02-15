@@ -43,7 +43,7 @@ public:
 	/// Update the counters of this inset and of its contents
 	void updateLabels(Buffer const &, ParIterator const &);
 	///
-	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 
 protected:
 	InsetFoot(InsetFoot const &);

@@ -75,13 +75,13 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
-void InsetFoot::addToToc(TocList & toclist, Buffer const & buf,
+void InsetFoot::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = toclist["footnote"];
+	Toc & toc = buf.tocBackend().toc("footnote");
 	// FIXME: we probably want the footnote number too.
 	docstring str;
 	str = getNewLabel(str);

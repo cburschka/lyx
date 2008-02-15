@@ -42,7 +42,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:

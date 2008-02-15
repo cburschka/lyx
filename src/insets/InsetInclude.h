@@ -88,7 +88,7 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 	///
 	void updateLabels(Buffer const & buffer, ParIterator const &);
 	/// child document can be embedded

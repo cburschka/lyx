@@ -369,7 +369,7 @@ public:
 	virtual void addPreview(graphics::PreviewLoader &) const {}
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
-	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
+	virtual void addToToc(Buffer const &, ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
 	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const {}
 	/// use embedded or external file after the embedding status of a file is changed
