@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-15 13:25+0100\n"
-"PO-Revision-Date: 2008-02-11 00:49+0100\n"
+"PO-Revision-Date: 2008-02-15 10:29+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3173,14 +3173,12 @@ msgstr ""
 "automatico"
 
 #: src/frontends/qt4/ui/WrapUi.ui:50
-#, fuzzy
 msgid "Outer (default)"
-msgstr "LaTeX default"
+msgstr "Esterno (default)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:55
-#, fuzzy
 msgid "Inner"
-msgstr "In&terno:"
+msgstr "Interno"
 
 #: src/frontends/qt4/ui/WrapUi.ui:100
 msgid "Units of width value"
@@ -15176,9 +15174,8 @@ msgid "Vertical Space Settings"
 msgstr "Impostazioni spazio verticale"
 
 #: src/frontends/qt4/QWrap.cpp:83
-#, fuzzy
 msgid "Wrap Float Settings"
-msgstr "Impostazioni oggetti mobili"
+msgstr "Impostazioni figura immersa nel testo"
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"
@@ -15720,14 +15717,12 @@ msgid "Opened Text Inset"
 msgstr "E' stato aperto l'inserto Testo"
 
 #: src/insets/InsetTheorem.cpp:41
-#, fuzzy
 msgid "theorem"
-msgstr "Teorema"
+msgstr "teorema"
 
 #: src/insets/InsetTheorem.cpp:91
-#, fuzzy
 msgid "Opened Theorem Inset"
-msgstr "E' stato aperto l'inserto Nota"
+msgstr "E' stato aperto l'inserto Teorema"
 
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
