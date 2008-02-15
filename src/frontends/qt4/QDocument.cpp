@@ -1495,7 +1495,9 @@ void QDocument::useClassDefaults()
 
 bool QDocument::isValid()
 {
-	return dialog_->validate_listings_params().empty();
+	return (dialog_->validate_listings_params().empty() &&
+		(dialog_->textLayoutModule->skipCO->currentIndex() != 3 ||
+		 !dialog_->textLayoutModule->skipLE->text().isEmpty()));
 }
 
 

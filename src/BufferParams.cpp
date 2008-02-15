@@ -520,7 +520,11 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		paragraph_separation = parseptranslator().find(parsep);
 	} else if (token == "\\defskip") {
 		lex.next();
-		pimpl_->defskip = VSpace(lex.getString());
+		string defskip = lex.getString();
+		if (defskip == "defskip")
+			// this is invalid
+			defskip = "medskip";
+		pimpl_->defskip = VSpace(defskip);
 	} else if (token == "\\quotes_language") {
 		string quotes_lang;
 		lex >> quotes_lang;
