@@ -234,6 +234,15 @@ InsetLayout table
 	MultiPar              true
 End
 
+InsetLayout algorithm
+	LabelString           Algorithm
+	LabelFont
+	  Color               collapsable
+	  Size                Small
+	EndFont
+	MultiPar              true
+End
+
 InsetLayout URL
 	LyXType               standard
 	LatexName             url
