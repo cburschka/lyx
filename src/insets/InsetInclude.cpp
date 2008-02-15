@@ -19,20 +19,18 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "TocBackend.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -43,10 +41,12 @@
 #include "insets/RenderPreview.h"
 #include "insets/InsetListingsParams.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
 #include "support/convert.h"
@@ -845,11 +845,11 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 {
 	Buffer const & buffer = ploader.buffer();
-	if (preview_wanted(params(), buffer)) {
-		preview_->setAbsFile(includedFilename(buffer, params()));
-		docstring const snippet = latex_string(*this, buffer);
-		preview_->addPreview(snippet, ploader);
-	}
+	if (!preview_wanted(params(), buffer))
+		return;
+	preview_->setAbsFile(includedFilename(buffer, params()));
+	docstring const snippet = latex_string(*this, buffer);
+	preview_->addPreview(snippet, ploader);
 }
 
 
@@ -886,22 +886,24 @@ void InsetInclude::addToToc(Buffer const & buffer,
 void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer, params());
-	if (childbuffer)
+	if (childbuffer) {
 		lyx::updateLabels(*childbuffer, true);
-	else if (isListings(params())) {
-		InsetListingsParams const par(to_utf8(params()["lstparams"]));
-		if (par.getParamValue("caption").empty())
-			listings_label_.clear();
-		else {
-			Counters & counters = buffer.params().getTextClass().counters();
-			docstring const cnt = from_ascii("listing");
-			if (counters.hasCounter(cnt)) {
-				counters.step(cnt);
-				listings_label_ = buffer.B_("Program Listing ")
-					+ convert<docstring>(counters.value(cnt));
-			} else
-				listings_label_ = buffer.B_("Program Listing");
-		}
+		return;
+	}
+	if (!isListings(params()))
+		return;
+
+	InsetListingsParams const par(to_utf8(params()["lstparams"]));
+	if (par.getParamValue("caption").empty()) {
+		listings_label_.clear();
+		return;
+	}
+	Counters & counters = buffer.params().getTextClass().counters();
+	docstring const cnt = from_ascii("listing");
+	listings_label_ = buffer.B_("Program Listing");
+	if (counters.hasCounter(cnt)) {
+		counters.step(cnt);
+		listings_label_ += " " + convert<docstring>(counters.value(cnt));
 	}
 }
 
