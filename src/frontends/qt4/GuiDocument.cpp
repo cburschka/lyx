@@ -2033,7 +2033,9 @@ void GuiDocument::useClassDefaults()
 
 bool GuiDocument::isValid()
 {
-	return validate_listings_params().empty();
+	return (validate_listings_params().empty() &&
+		(textLayoutModule->skipCO->currentIndex() != 3 ||
+		 !textLayoutModule->skipLE->text().isEmpty()));
 }
 
 
