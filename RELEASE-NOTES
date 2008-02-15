@@ -39,6 +39,9 @@ Some of the LyX functions have changed names:
 - The function LFUN_MATH_NONUMBER, "math-nonumber", has been renamed to
   LFUN_MATH_NUMBER_LINE_TOGGLE.
 
+- The function LFUN_CHARSTYLE_INSERT, "charstyle-insert", has been renamed to 
+  LFUN_FLEX_INSERT, "flex-insert". It now handles beside charstyles, also 
+  custom insets and XML short element insets.
 
 The following new LyX functions have been introduced:
 
