@@ -61,7 +61,7 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 {
 	TextClass const & tclass = buf.params().getTextClass();
 	Counters & cnts = tclass.counters();
-	docstring const & foot = from_ascii("footnote");
+	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();
 	if (!outer.layout()->intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
