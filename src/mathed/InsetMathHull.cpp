@@ -38,9 +38,11 @@
 #include "support/gettext.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
+#include "ParIterator.h"
 #include "sgml.h"
 #include "Text.h"
 #include "TextPainter.h"
+#include "TocBackend.h"
 
 #include "insets/RenderPreview.h"
 #include "insets/InsetLabel.h"
@@ -189,6 +191,19 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	preview_.reset(new RenderPreview(*other.preview_, this));
 
 	return *this;
+}
+
+
+void InsetMathHull::addToToc(TocList & toclist, Buffer const & buf,
+	ParConstIterator const & pit) const
+{
+	vector<docstring> labels;
+	getLabelList(buf, labels);
+	if (labels.empty())
+		return;
+
+	Toc & toc = toclist["equation"];
+	toc.push_back(TocItem(pit, 0, labels[0]));
 }
 
 

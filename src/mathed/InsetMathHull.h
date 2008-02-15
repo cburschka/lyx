@@ -13,11 +13,13 @@
 #define MATH_HULLINSET_H
 
 #include "InsetMathGrid.h"
+
 #include <boost/scoped_ptr.hpp>
 
 
 namespace lyx {
 
+class ParConstIterator;
 class RenderPreview;
 
 
@@ -30,6 +32,8 @@ public:
 	explicit InsetMathHull(HullType type);
 	///
 	~InsetMathHull();
+	///
+	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

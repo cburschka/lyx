@@ -227,6 +227,8 @@ docstring GuiToc::guiName(string const & type) const
 {
 	if (type == "tableofcontents")
 		return _("Table of Contents");
+	if (type == "equation")
+		return _("List of Equations");
 	if (type == "footnote")
 		return _("List of Foot notes");
 	if (type == "listing")
