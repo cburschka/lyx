@@ -75,9 +75,11 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
-void InsetFoot::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+void InsetFoot::addToToc(TocList & toclist, Buffer const & buf,
+	ParConstIterator const & cpit) const
 {
-	ParConstIterator pit = par_const_iterator_begin(*this);
+	ParConstIterator pit = cpit;
+	pit.push_back(*this);
 
 	Toc & toc = toclist["footnote"];
 	// FIXME: we probably want the footnote number too.

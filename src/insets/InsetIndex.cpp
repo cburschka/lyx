@@ -61,9 +61,11 @@ void InsetIndex::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetIndex::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+void InsetIndex::addToToc(TocList & toclist, Buffer const & buf,
+	ParConstIterator const & cpit) const
 {
-	ParConstIterator pit = par_const_iterator_begin(*this);
+	ParConstIterator pit = cpit;
+	pit.push_back(*this);
 
 	Toc & toc = toclist["index"];
 	docstring str;

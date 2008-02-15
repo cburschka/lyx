@@ -854,7 +854,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 
 
 void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
-	ParConstIterator const & pit) const
+	ParConstIterator const & cpit) const
 {
 	if (isListings(params())) {
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
@@ -864,8 +864,8 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
 		Toc & toc = toclist["listing"];
 		docstring const str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
-		// This inset does not have a valid ParConstIterator
-		// so it has to use the iterator of its parent paragraph
+		ParConstIterator pit = cpit;
+		pit.push_back(*this);
 		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}
