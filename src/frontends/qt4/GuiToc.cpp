@@ -96,12 +96,6 @@ QModelIndex GuiToc::currentIndex(int type) const
 	if (type < 0)
 		return QModelIndex();
 
-	// FIXME: The TocBackend infrastructure is not ready for LOF and LOT
-	// This is because a proper ParConstIterator is not constructed in
-	// InsetCaption::addToToc()
-	if(!canOutline(type))
-		return QModelIndex();
-
 	return toc_models_[type]->modelIndex(currentTocItem(type));
 }
 
