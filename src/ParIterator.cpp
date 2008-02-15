@@ -119,6 +119,12 @@ ParConstIterator::ParConstIterator(ParConstIterator const & pi)
 {}
 
 
+void ParConstIterator::push_back(Inset const & inset)
+{
+	DocIterator::push_back(CursorSlice(const_cast<Inset &>(inset)));
+}
+
+
 ParConstIterator & ParConstIterator::operator++()
 {
 	DocIterator::forwardPar();

@@ -100,6 +100,7 @@ public:
 	///
 	explicit ParConstIterator(DocIterator const &);
 	///
+	void push_back(Inset const &);
 
 	ParConstIterator & operator++();
 	///
