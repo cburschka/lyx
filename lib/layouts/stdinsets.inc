@@ -66,7 +66,7 @@ InsetLayout Marginal
 	  Misc                No_Bar
 	EndFont
 	LabelFont
-	  Color               Red
+	  Color               marginlabel
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -87,7 +87,7 @@ InsetLayout Foot
 	  Misc                No_Bar
 	EndFont
 	LabelFont
-	  Color               Green
+	  Color               footlabel
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -170,7 +170,7 @@ End
 InsetLayout Branch
 	Decoration            classic
 	LabelFont
-	  Color               Red
+	  Color               branchlabel
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -182,7 +182,7 @@ InsetLayout Index
 	LatexName             index
 	Decoration            classic
 	Font
-	  Color               Green
+	  Color               latex
 	  Size                Small
 	  Family              Roman
 	  Shape               Up
@@ -192,7 +192,7 @@ InsetLayout Index
 	  Misc                No_Bar
 	EndFont
 	LabelFont
-	  Color               Green
+	  Color               indexlabel
 	  Size                Small
 	EndFont
 	MultiPar              false
@@ -253,11 +253,11 @@ InsetLayout URL
 	ForceLTR              true
 	Font
 	  Family              Typewriter
-	  Color               Blue
+	  Color               urltext
 	EndFont
 	LabelFont
 	  Family              Typewriter
-	  Color               Blue
+	  Color               urllabel
 	  Size                Small
 	EndFont
 	Requires	      url

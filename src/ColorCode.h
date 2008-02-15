@@ -64,6 +64,19 @@ enum ColorCode
 	/// Shaded box background
 	Color_shadedbg,
 
+	/// Label color for branches
+	Color_branchlabel,
+	/// Label color for footnotes
+	Color_footlabel,
+	/// Label color for index insets
+	Color_indexlabel,
+	/// Label color for margin notes
+	Color_marginlabel,
+	/// Label color for URL insets
+	Color_urllabel,
+	/// Label color for URL text
+	Color_urltext,
+
 	/// Color for the depth bars in the margin
 	Color_depthbar,
 	/// Color for marking foreign language words
