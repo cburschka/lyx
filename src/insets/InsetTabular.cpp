@@ -1962,7 +1962,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 		if (topLine(i))
 			++tmp;
 	}
-	if (use_booktabs && row == 0) {
+	if (use_booktabs && row == 0 && topLine(row)) {
 		os << "\\toprule ";
 	} else if (tmp == n - fcell) {
 		os << (use_booktabs ? "\\midrule " : "\\hline ");
@@ -1998,7 +1998,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 		if (bottomLine(i))
 			++tmp;
 	}
-	if (use_booktabs && row == rowCount() - 1) {
+	if (use_booktabs && row == rowCount() - 1 && bottomLine(row)) {
 		os << "\\bottomrule";
 	} else if (tmp == n - fcell) {
 		os << (use_booktabs ? "\\midrule" : "\\hline");
