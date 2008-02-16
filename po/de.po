@@ -85,7 +85,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-02 00:55+0100\n"
-"PO-Revision-Date: 2008-02-03 00:13+0100\n"
+"PO-Revision-Date: 2008-02-16 18:20+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -4980,7 +4980,7 @@ msgstr "Block"
 
 #: lib/layouts/beamer.layout:645
 msgid "Block ( ERT[{title}] body ):"
-msgstr ""
+msgstr "Block ( ERT[{Titel}] Haupttext ):"
 
 #: lib/layouts/beamer.layout:660
 msgid "ExampleBlock"
@@ -4988,7 +4988,7 @@ msgstr "BeispielBlock"
 
 #: lib/layouts/beamer.layout:670
 msgid "Block ( ERT[{title}] example text ):"
-msgstr ""
+msgstr "Block ( ERT[{Titel}] Beispieltext ):"
 
 #: lib/layouts/beamer.layout:689
 msgid "AlertBlock"
@@ -4996,7 +4996,7 @@ msgstr "AlarmBlock"
 
 #: lib/layouts/beamer.layout:699
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr ""
+msgstr "Block ( ERT[{Titel}] Warnungstext ):"
 
 #: lib/layouts/beamer.layout:743
 msgid "Title (Plain Frame)"
@@ -5523,7 +5523,7 @@ msgstr "Akzeptiert:"
 
 #: lib/layouts/egs.layout:444
 msgid "Offsets"
-msgstr ""
+msgstr "Offsets"
 
 #: lib/layouts/egs.layout:457
 msgid "reprint_reqs_to:"
@@ -6601,11 +6601,11 @@ msgstr "TITEL ÜBER:"
 
 #: lib/layouts/hollywood.layout:249
 msgid "INTERCUT"
-msgstr ""
+msgstr "ZWISCHENSCHNITT"
 
 #: lib/layouts/hollywood.layout:260
 msgid "INTERCUT WITH:"
-msgstr ""
+msgstr "ZWISCHENSCHNITT MIT:"
 
 #: lib/layouts/hollywood.layout:264
 #: lib/layouts/hollywood.layout:275
@@ -6753,7 +6753,7 @@ msgstr "Papier"
 
 #: lib/layouts/iopart.layout:102
 msgid "Prelim"
-msgstr ""
+msgstr "Titelei"
 
 #: lib/layouts/iopart.layout:108
 msgid "Rapid"
@@ -6957,7 +6957,7 @@ msgstr "SGML"
 
 #: lib/layouts/memoir.layout:81
 msgid "Chapterprecis"
-msgstr ""
+msgstr "Kapitelsynopse"
 
 #: lib/layouts/memoir.layout:101
 msgid "Epigraph"
@@ -7085,7 +7085,7 @@ msgstr "Preprint"
 #: lib/layouts/revtex4.layout:153
 #: lib/layouts/revtex4.layout:158
 msgid "AltAffiliation"
-msgstr ""
+msgstr "Zweite Zugehörigkeit"
 
 #: lib/layouts/revtex4.layout:174
 #: lib/layouts/amsdefs.inc:171
@@ -8340,9 +8340,8 @@ msgid "expr."
 msgstr "exp"
 
 #: lib/layouts/linguistics.module:130
-#, fuzzy
 msgid "concept"
-msgstr "&Akzeptieren"
+msgstr "Konzept"
 
 #: lib/layouts/linguistics.module:144
 msgid "meaning"
@@ -8533,7 +8532,7 @@ msgstr "Nummeriert Theoreme u. ä. mit jedem Abschnitt."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Starred)"
-msgstr ""
+msgstr "Theoreme (mit Stern)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid "Defines only unnumbered theorem environments, and the proof environment, using the extended AMS machinery."
@@ -10227,9 +10226,8 @@ msgid "Branch|B"
 msgstr "Zweig|w"
 
 #: lib/ui/stdmenus.inc:318
-#, fuzzy
 msgid "Custom insets"
-msgstr "Kunde"
+msgstr "Benutzerdefinierte Einfügungen"
 
 #: lib/ui/stdmenus.inc:319
 msgid "File|e"
@@ -15785,17 +15783,15 @@ msgstr "BibTeX-Literaturverzeichnis"
 #: src/frontends/qt4/GuiBibtex.cpp:373
 #: src/frontends/qt4/GuiBibtex.cpp:380
 #: src/frontends/qt4/GuiInclude.cpp:252
-#, fuzzy
 msgid "true"
-msgstr "Struktur"
+msgstr "wahr"
 
 #: src/frontends/qt4/GuiBibtex.cpp:373
 #: src/frontends/qt4/GuiBibtex.cpp:380
 #: src/frontends/qt4/GuiInclude.cpp:252
 #: src/insets/InsetInclude.cpp:207
-#, fuzzy
 msgid "false"
-msgstr "Fall"
+msgstr "falsch"
 
 #: src/frontends/qt4/GuiBibtex.cpp:445
 msgid "BibTeX Databases (*.bib)"
@@ -15985,9 +15981,8 @@ msgid "Text Style"
 msgstr "Textstil"
 
 #: src/frontends/qt4/GuiCitation.cpp:313
-#, fuzzy
 msgid "Keys"
-msgstr "&Schlüssel:"
+msgstr "Schlüssel"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "Next command"
@@ -17065,9 +17060,8 @@ msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
 #: src/insets/InsetCitation.cpp:215
-#, fuzzy
 msgid "not cited"
-msgstr "geschützt"
+msgstr "nicht zitiert"
 
 #: src/insets/InsetCollapsable.cpp:109
 msgid "Left-click to collapse the inset"
@@ -17124,9 +17118,8 @@ msgid "External template %1$s is not installed"
 msgstr "Externe Vorlage %1$s ist nicht installiert"
 
 #: src/insets/InsetFlex.cpp:74
-#, fuzzy
 msgid "Opened Flex Inset"
-msgstr "Geöffnete Text-Einfügung"
+msgstr "Geöffnete Flex-Einfügung"
 
 #: src/insets/InsetFloat.cpp:113
 #: src/insets/InsetFloat.cpp:374
@@ -17251,9 +17244,8 @@ msgid "Index"
 msgstr "Stichwortverzeichnis"
 
 #: src/insets/InsetInfo.cpp:68
-#, fuzzy
 msgid "Information regarding "
-msgstr "Keine Informationen vorhanden, um %1$s zu bearbeiten"
+msgstr "Information bezüglich"
 
 #: src/insets/InsetInfo.cpp:70
 msgid " "
@@ -17270,9 +17262,8 @@ msgstr "ja"
 
 #: src/insets/InsetInfo.cpp:200
 #: src/insets/InsetInfo.cpp:207
-#, fuzzy
 msgid "no"
-msgstr "keine"
+msgstr ""
 
 #: src/insets/InsetInfo.cpp:215
 #: src/insets/InsetInfo.cpp:221
@@ -17698,9 +17689,9 @@ msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Es können keine vertikalen Gitterlinien in '%1$s' hinzugefügt werden."
 
 #: src/mathed/InsetMathCases.cpp:97
-#, fuzzy, c-format
+#, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Keine vertikalen Gitterlinien in '%1$s'"
+msgstr "Keine vertikalen Gitterlinien in 'Fallunterscheidung': %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1358
 msgid "Only one row"
