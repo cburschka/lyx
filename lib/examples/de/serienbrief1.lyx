@@ -167,7 +167,7 @@ status open
 \backslash
 renewcommand*{
 \backslash
-adrentry}[8]{
+adrentry}[8]{%
 \end_layout
 
 \end_inset
@@ -177,7 +177,25 @@ adrentry}[8]{
 
 \begin_layout Address
 \begin_inset ERT
-status collapsed
+status inlined
+
+\begin_layout Standard
+
+{}
+\backslash
+if #5f{Frau} 
+\backslash
+fi
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+if #5m{Herrn} 
+\backslash
+fi
+\end_layout
 
 \begin_layout Standard
 
@@ -185,6 +203,11 @@ status collapsed
 \backslash
 
 \backslash
+
+\end_layout
+
+\begin_layout Standard
+
 #3
 \end_layout
 
@@ -195,13 +218,13 @@ status collapsed
 
 \begin_layout Opening
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
 
 \backslash
-if #5m{Sehr geehrter Herr #1,} 
+if #5m{Sehr geehrter Herr #1,}
 \backslash
 fi
 \end_layout
@@ -210,7 +233,7 @@ fi
 
 
 \backslash
-if #5w{Sehr geehrte Frau #1,} 
+if #5f{Sehr geehrte Frau #1,}
 \backslash
 fi
 \end_layout
@@ -259,13 +282,13 @@ Viel Spaß!
 \end_layout
 
 \begin_layout PS
-p.\InsetSpace \thinspace{}
-s.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
+P.\InsetSpace \thinspace{}
+S.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
  danach.
 \end_layout
 
 \begin_layout CC
-Die LyX User
+Die LyX-User
 \end_layout
 
 \begin_layout EndLetter
@@ -283,7 +306,7 @@ Diese Umgebung muss leer sein.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
