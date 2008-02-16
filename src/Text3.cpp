@@ -374,7 +374,7 @@ void Text::number(Cursor & cur)
 {
 	FontInfo font = ignore_font;
 	font.setNumber(FONT_TOGGLE);
-	toggleAndShow(cur, this, Font(font));
+	toggleAndShow(cur, this, Font(font, ignore_language));
 }
 
 
