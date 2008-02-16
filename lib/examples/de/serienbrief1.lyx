@@ -108,7 +108,7 @@ fromurl=true%               print sender URL
 \begin_body
 
 \begin_layout Name
-Das LyX Entwickler Team
+Das LyX-Entwicklerteam
 \end_layout
 
 \begin_layout SenderAddress
@@ -132,7 +132,7 @@ www.lyx.org
 \end_layout
 
 \begin_layout Backaddress
-Das LyX Entwickler Team
+Das LyX-Entwicklerteam
 \newline
 Planstr.
  140
@@ -141,11 +141,11 @@ Planstr.
 \end_layout
 
 \begin_layout Signature
-Das LyX Team
+Das LyX-Team
 \end_layout
 
 \begin_layout Subject
-Neues KOMA letter Layout
+Neues KOMA-Brief-Layout
 \end_layout
 
 \begin_layout Place
@@ -188,9 +188,27 @@ adrentry}[8]{
 
 \begin_layout Address
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
+
+{}
+\backslash
+if #5f{Frau} 
+\backslash
+fi
+\end_layout
+
+\begin_layout PlainLayout
+
+
+\backslash
+if #5m{Herrn} 
+\backslash
+fi
+\end_layout
+
+\begin_layout PlainLayout
 
 #2 #1
 \backslash
@@ -221,7 +239,7 @@ fi
 
 
 \backslash
-if #5w{Sehr geehrte Frau #1,} 
+if #5f{Sehr geehrte Frau #1,} 
 \backslash
 fi
 \end_layout
@@ -252,7 +270,29 @@ Einstellungen\SpecialChar \menuseparator
 LaTeX-Vorspann
 \family default
  finden sich die Einstellmöglichkeiten der meisten gebräuchlichen Parameter.
- Die KOMA Script Dokumentation
+ Die KOMA
+\begin_inset ERT
+status collapsed
+
+\begin_layout PlainLayout
+
+"=
+\end_layout
+
+\end_inset
+
+Script
+\begin_inset ERT
+status collapsed
+
+\begin_layout PlainLayout
+
+"=
+\end_layout
+
+\end_inset
+
+Dokumentation
 \begin_inset Foot
 status collapsed
 
@@ -276,13 +316,13 @@ Viel Spaß!
 \end_layout
 
 \begin_layout PS
-p.\InsetSpace \thinspace{}
-s.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
+P.\InsetSpace \thinspace{}
+S.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
  danach.
 \end_layout
 
 \begin_layout CC
-Die LyX User
+Die LyX-User
 \end_layout
 
 \begin_layout EndLetter

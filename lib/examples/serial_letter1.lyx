@@ -176,7 +176,7 @@ status open
 \backslash
 renewcommand*{
 \backslash
-adrentry}[8]{
+adrentry}[8]{%
 \end_layout
 
 \end_inset
@@ -186,7 +186,7 @@ adrentry}[8]{
 
 \begin_layout Address
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -194,6 +194,11 @@ status collapsed
 \backslash
 
 \backslash
+
+\end_layout
+
+\begin_layout Standard
+
 #3
 \end_layout
 
@@ -219,7 +224,7 @@ fi
 
 
 \backslash
-if #5w{Dear Mrs.~#1,} 
+if #5f{Dear Mrs.~#1,} 
 \backslash
 fi
 \end_layout

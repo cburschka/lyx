@@ -192,7 +192,7 @@ status open
 
 
 \backslash
-if #5w
+if #5f
 \end_layout
 
 \end_inset
@@ -202,7 +202,7 @@ if #5w
 status open
 
 \begin_layout Standard
-when person is female
+condition for this letter: gender [#5] must be female [f]
 \end_layout
 
 \end_inset
@@ -212,7 +212,7 @@ when person is female
 
 \begin_layout Address
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -220,6 +220,11 @@ status collapsed
 \backslash
 
 \backslash
+
+\end_layout
+
+\begin_layout Standard
+
 #3
 \end_layout
 
