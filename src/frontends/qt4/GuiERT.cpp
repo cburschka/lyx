@@ -41,13 +41,6 @@ GuiERT::GuiERT(GuiView & lv)
 }
 
 
-void GuiERT::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiERT::change_adaptor()
 {
 	changed();

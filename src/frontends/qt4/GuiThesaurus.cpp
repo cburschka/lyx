@@ -72,13 +72,6 @@ void GuiThesaurus::change_adaptor()
 }
 
 
-void GuiThesaurus::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 void GuiThesaurus::entryChanged()
 {
 	updateLists();

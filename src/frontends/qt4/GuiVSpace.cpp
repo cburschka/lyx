@@ -82,13 +82,6 @@ GuiVSpace::GuiVSpace(GuiView & lv)
 }
 
 
-void GuiVSpace::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiVSpace::change_adaptor()
 {
 	changed();

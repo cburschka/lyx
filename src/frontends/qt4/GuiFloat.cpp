@@ -59,13 +59,6 @@ void GuiFloat::change_adaptor()
 }
 
 
-void GuiFloat::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiFloat::updateContents()
 {
 	floatFP->set(params_);

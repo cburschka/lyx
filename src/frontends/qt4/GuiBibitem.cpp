@@ -14,7 +14,6 @@
 #include "qt_helpers.h"
 #include "FuncRequest.h"
 
-#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -47,13 +46,6 @@ GuiBibitem::GuiBibitem(GuiView & lv)
 void GuiBibitem::change_adaptor()
 {
 	changed();
-}
-
-
-void GuiBibitem::closeEvent(QCloseEvent *e)
-{
-	slotClose();
-	e->accept();
 }
 
 

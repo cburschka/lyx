@@ -42,13 +42,6 @@ GuiNote::GuiNote(GuiView & lv)
 }
 
 
-void GuiNote::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiNote::change_adaptor()
 {
 	changed();

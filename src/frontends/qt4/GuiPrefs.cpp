@@ -2211,13 +2211,6 @@ void GuiPreferences::add(PrefModule * module)
 }
 
 
-void GuiPreferences::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiPreferences::change_adaptor()
 {
 	changed();

@@ -60,9 +60,6 @@ private Q_SLOTS:
 	void bibEDChanged();
 
 private:
-	void closeEvent(QCloseEvent * e);
-
-private:
 	///
 	bool isValid();
 	/// Apply changes

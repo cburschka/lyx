@@ -70,13 +70,6 @@ void GuiSearch::showEvent(QShowEvent * e)
 }
 
 
-void GuiSearch::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 void GuiSearch::findChanged()
 {
 	if (findCO->currentText().isEmpty()) {

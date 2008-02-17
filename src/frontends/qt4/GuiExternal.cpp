@@ -271,13 +271,6 @@ void GuiExternal::change_adaptor()
 }
 
 
-void GuiExternal::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiExternal::editClicked()
 {
 	editExternal();

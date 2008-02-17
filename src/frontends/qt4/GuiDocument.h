@@ -141,9 +141,6 @@ private Q_SLOTS:
 	void classChanged();
 	void updateModuleInfo();
 	void updateEmbeddedFileList();
-	
-private:
-	void closeEvent(QCloseEvent * e);
 
 private:
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;

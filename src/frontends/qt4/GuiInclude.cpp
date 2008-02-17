@@ -127,13 +127,6 @@ void GuiInclude::set_listings_msg()
 }
 
 
-void GuiInclude::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiInclude::typeChanged(int v)
 {
 	switch (v) {

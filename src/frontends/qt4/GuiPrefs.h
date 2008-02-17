@@ -436,8 +436,6 @@ public Q_SLOTS:
 	void change_adaptor();
 
 public:
-	//
-	void closeEvent(QCloseEvent * e);
 	///
 	void add(PrefModule * module);
 	/// Apply changes

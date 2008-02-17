@@ -62,13 +62,6 @@ void GuiHyperlink::changed_adaptor()
 }
 
 
-void GuiHyperlink::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiHyperlink::updateContents()
 {
 	targetED->setText(toqstr(params_["target"]));

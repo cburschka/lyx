@@ -37,7 +37,7 @@ protected Q_SLOTS:
 	void nextChange();
 
 private:
-	void closeEvent(QCloseEvent * e);
+	///
 	void updateContents();
 
 	/// Nothing to initialise in this case.

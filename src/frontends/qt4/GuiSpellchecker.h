@@ -47,8 +47,6 @@ private Q_SLOTS:
 	void reject();
 
 private:
-	///
-	void closeEvent(QCloseEvent * e);
 	/// update from controller
 	void partialUpdate(int id);
 	///

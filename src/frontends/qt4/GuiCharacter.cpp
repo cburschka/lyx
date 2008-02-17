@@ -377,13 +377,6 @@ void GuiCharacter::change_adaptor()
 }
 
 
-void GuiCharacter::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 template<class A, class B>
 static int findPos2nd(vector<pair<A, B> > const & vec, B const & val)
 {

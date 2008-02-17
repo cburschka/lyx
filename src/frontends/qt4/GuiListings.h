@@ -44,7 +44,6 @@ private Q_SLOTS:
 	/// show dialect when language is chosen
 	void on_languageCO_currentIndexChanged(int);
 private:
-	void closeEvent(QCloseEvent * e);
 	/// return false if validate_listings_params returns error
 	bool isValid();
 	/// Apply changes

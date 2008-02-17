@@ -38,9 +38,6 @@ private Q_SLOTS:
 	void pagebreakClicked();
 
 private:
-	///
-	void closeEvent(QCloseEvent * e);
-
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items

@@ -54,13 +54,6 @@ GuiChanges::GuiChanges(GuiView & lv)
 }
 
 
-void GuiChanges::closeEvent(QCloseEvent *e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiChanges::updateContents()
 {
 	docstring text;

@@ -50,8 +50,6 @@ private Q_SLOTS:
 
 private:
 	///
-	void closeEvent(QCloseEvent * e);
-	///
 	void updateStyles(TexFileType);
 	///
 	void updateStyles();

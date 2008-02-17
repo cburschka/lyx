@@ -58,6 +58,8 @@ public Q_SLOTS:
 	void slotApply();
 	// Close button clicked or closed from WindowManager
 	void slotClose();
+	///
+	void closeEvent(QCloseEvent * e);
 
 public:
 	/** Check whether we may apply our data.

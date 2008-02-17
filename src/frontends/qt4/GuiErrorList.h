@@ -34,8 +34,6 @@ public Q_SLOTS:
 
 private:
 	///
-	void closeEvent(QCloseEvent *);
-	///
 	void showEvent(QShowEvent *);
 	/// update contents
 	void updateContents();

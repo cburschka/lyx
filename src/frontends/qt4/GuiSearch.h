@@ -34,7 +34,6 @@ private Q_SLOTS:
 
 private:
 	void showEvent(QShowEvent * e);
-	void closeEvent(QCloseEvent * e);
 	///
 	bool initialiseParams(std::string const &) { return true; }
 	void clearParams() {}

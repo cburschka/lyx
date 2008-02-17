@@ -37,7 +37,6 @@ private Q_SLOTS:
 	void itemClicked(QTreeWidgetItem *, int);
 
 private:
-	void closeEvent(QCloseEvent * e);
 	/// update
 	void updateContents();
 	///

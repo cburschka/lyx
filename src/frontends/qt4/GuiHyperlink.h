@@ -31,7 +31,6 @@ public Q_SLOTS:
 	void changed_adaptor();
 
 private:
-	void closeEvent(QCloseEvent *);
 	///
 	bool isValid();
 	/// apply dialog

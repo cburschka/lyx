@@ -39,7 +39,6 @@ private Q_SLOTS:
 	void slotFormatSelected(QListWidgetItem *) {}
 
 private:
-	void closeEvent(QCloseEvent * e);
 	///
 	bool isValid();
 	/// Apply from dialog

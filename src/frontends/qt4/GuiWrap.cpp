@@ -84,13 +84,6 @@ GuiWrap::GuiWrap(GuiView & lv)
 }
 
 
-void GuiWrap::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiWrap::change_adaptor()
 {
 	changed();

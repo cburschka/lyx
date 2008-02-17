@@ -37,7 +37,6 @@ private Q_SLOTS:
 	void on_copyPB_clicked();
 
 private:
-	void closeEvent(QCloseEvent * e);
 	/// Apply changes
 	void applyView() {}
 

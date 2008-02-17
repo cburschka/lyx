@@ -60,8 +60,7 @@ public:
 	typedef std::map<std::string, QString> MapType;
 
 private:
-	void closeEvent(QCloseEvent * e);
-	//
+	///
 	bool activateAspectratio() const;
 	/// Apply changes
 	void applyView();

@@ -29,8 +29,6 @@ public:
 	GuiShowFile(GuiView & lv);
 
 private:
-	///
-	void closeEvent(QCloseEvent * e);
 	/// update
 	void updateContents();
 	///

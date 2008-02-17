@@ -113,13 +113,6 @@ void GuiTexInfo::change_adaptor()
 }
 
 
-void GuiTexInfo::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiTexInfo::rescanClicked()
 {
 	// build new *Files.lst

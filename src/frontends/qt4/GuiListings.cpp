@@ -238,13 +238,6 @@ GuiListings::GuiListings(GuiView & lv)
 }
 
 
-void GuiListings::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiListings::change_adaptor()
 {
 	changed();

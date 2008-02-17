@@ -110,13 +110,6 @@ void GuiSpellchecker::replaceChanged(const QString & str)
 }
 
 
-void GuiSpellchecker::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 void GuiSpellchecker::reject()
 {
 	slotClose();

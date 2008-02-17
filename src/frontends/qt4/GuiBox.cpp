@@ -144,13 +144,6 @@ GuiBox::GuiBox(GuiView & lv)
 }
 
 
-void GuiBox::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiBox::change_adaptor()
 {
 	changed();

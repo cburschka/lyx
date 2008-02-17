@@ -60,8 +60,6 @@ private:
 		LISTINGS,
 	};
 	///
-	void closeEvent(QCloseEvent * e);
-	///
 	void updateLists();
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();

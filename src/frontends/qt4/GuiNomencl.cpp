@@ -63,13 +63,6 @@ void GuiNomenclature::reject()
 }
 
 
-void GuiNomenclature::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiNomenclature::updateContents()
 {
 	prefixED->setText(toqstr(params_["prefix"]));

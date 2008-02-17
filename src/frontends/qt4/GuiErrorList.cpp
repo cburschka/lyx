@@ -49,13 +49,6 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 }
 
 
-void GuiErrorList::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiErrorList::showEvent(QShowEvent * e)
 {
 	errorsLW->setCurrentRow(0);

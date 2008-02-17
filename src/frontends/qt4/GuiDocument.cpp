@@ -1034,13 +1034,6 @@ void GuiDocument::set_listings_msg()
 }
 
 
-void GuiDocument::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiDocument::setLSpacing(int item)
 {
 	textLayoutModule->lspacingLE->setEnabled(item == 3);

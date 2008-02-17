@@ -31,6 +31,13 @@ GuiDialog::GuiDialog(GuiView & lv, string const & name, QString const & title)
 {}
 
 
+void GuiDialog::closeEvent(QCloseEvent *e)
+{
+	slotClose();
+	e->accept();
+}
+
+
 void GuiDialog::setButtonsValid(bool valid)
 {
 	bc().setValid(valid);

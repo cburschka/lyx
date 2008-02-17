@@ -70,8 +70,6 @@ private Q_SLOTS:
 
 private:
 	///
-	void closeEvent(QCloseEvent * e);
-	///
 	bool isValid() { return true; }
 	/// update borders
 	void update_borders();

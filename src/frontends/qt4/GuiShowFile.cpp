@@ -39,13 +39,6 @@ GuiShowFile::GuiShowFile(GuiView & lv)
 }
 
 
-void GuiShowFile::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiShowFile::updateContents()
 {
 	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));

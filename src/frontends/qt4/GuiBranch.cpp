@@ -47,13 +47,6 @@ GuiBranch::GuiBranch(GuiView & lv)
 }
 
 
-void GuiBranch::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiBranch::change_adaptor()
 {
 	changed();

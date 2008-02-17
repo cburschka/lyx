@@ -27,7 +27,6 @@ public:
 private Q_SLOTS:
 	void change_adaptor();
 private:
-	void closeEvent(QCloseEvent * e);
 	/// Apply changes
 	void applyView();
 	/// Update dialog before showing it

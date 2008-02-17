@@ -161,13 +161,6 @@ void GuiTabular::change_adaptor()
 }
 
 
-void GuiTabular::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 void GuiTabular::booktabsChanged(bool)
 {
 	changed();

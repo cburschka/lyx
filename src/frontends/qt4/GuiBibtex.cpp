@@ -278,13 +278,6 @@ void GuiBibtex::availableChanged()
 }
 
 
-void GuiBibtex::closeEvent(QCloseEvent *e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiBibtex::updateContents()
 {
 	bool bibtopic = usingBibtopic();

@@ -268,13 +268,6 @@ void GuiGraphics::change_bb()
 }
 
 
-void GuiGraphics::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	GuiDialog::closeEvent(e);
-}
-
-
 void GuiGraphics::on_browsePB_clicked()
 {
 	docstring const str = browse(qstring_to_ucs4(filename->text()));

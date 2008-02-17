@@ -120,13 +120,6 @@ GuiLog::GuiLog(GuiView & lv)
 }
 
 
-void GuiLog::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiLog::updateContents()
 {
 	setTitle(toqstr(title()));

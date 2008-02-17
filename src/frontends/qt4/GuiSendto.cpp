@@ -65,13 +65,6 @@ void GuiSendTo::changed_adaptor()
 }
 
 
-void GuiSendTo::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
-}
-
-
 void GuiSendTo::updateContents()
 {
 	all_formats_ = allFormats();

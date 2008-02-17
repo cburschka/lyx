@@ -180,7 +180,7 @@ void GuiRef::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	reset_dialog();
-	GuiDialog::closeEvent(e);
+	e->accept();
 }
 
 

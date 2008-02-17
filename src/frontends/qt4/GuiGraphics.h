@@ -53,7 +53,7 @@ private Q_SLOTS:
 	void on_angle_textChanged(const QString &);
 
 private:
-	void closeEvent(QCloseEvent * e);
+	///
 	bool isValid();
 	/// Apply changes
 	void applyView();
