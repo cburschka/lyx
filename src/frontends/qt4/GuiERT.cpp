@@ -18,7 +18,6 @@
 
 #include <QRadioButton>
 #include <QPushButton>
-#include <QCloseEvent>
 
 using namespace std;
 

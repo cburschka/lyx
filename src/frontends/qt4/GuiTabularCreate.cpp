@@ -17,7 +17,6 @@
 
 #include "support/convert.h"
 
-#include <QCloseEvent>
 #include <QSpinBox>
 #include <QPushButton>
 

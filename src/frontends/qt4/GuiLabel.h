@@ -32,8 +32,6 @@ private Q_SLOTS:
 
 private:
 	///
-	void closeEvent(QCloseEvent * e);
-	///
 	bool isValid();
 	/// Apply changes
 	void applyView();

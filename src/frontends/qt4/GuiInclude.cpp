@@ -33,7 +33,6 @@
 
 #include <QPushButton>
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLineEdit>
 
 #include <utility>

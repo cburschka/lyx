@@ -19,7 +19,6 @@
 #include "FuncRequest.h"
 #include "lyxfind.h"
 
-#include <QCloseEvent>
 #include <QLineEdit>
 #include <QShowEvent>
 

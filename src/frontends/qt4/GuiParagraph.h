@@ -25,7 +25,6 @@
 #include "qt_helpers.h"
 #include "support/debug.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 #include <QSettings>
 #include <QShowEvent>

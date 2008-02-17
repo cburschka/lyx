@@ -31,7 +31,6 @@
 #include "support/gettext.h"
 
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 

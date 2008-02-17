@@ -18,7 +18,6 @@
 #include "insets/InsetCommand.h"
 
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 

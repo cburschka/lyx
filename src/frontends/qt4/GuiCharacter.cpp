@@ -21,7 +21,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 
-#include <QCloseEvent>
 
 using namespace std;
 

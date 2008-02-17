@@ -23,7 +23,6 @@
 #include "support/lstrings.h"
 
 #include <QLineEdit>
-#include <QCloseEvent>
 #include <QPushButton>
 
 using namespace std;

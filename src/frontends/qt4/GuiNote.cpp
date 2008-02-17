@@ -17,8 +17,6 @@
 
 #include "insets/InsetNote.h"
 
-#include <QCloseEvent>
-
 using namespace std;
 
 namespace lyx {

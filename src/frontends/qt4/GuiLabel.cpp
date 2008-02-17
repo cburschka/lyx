@@ -18,7 +18,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QCloseEvent>
 
 using namespace std;
 
@@ -59,13 +58,6 @@ void GuiLabel::change_adaptor()
 void GuiLabel::reject()
 {
 	slotClose();
-}
-
-
-void GuiLabel::closeEvent(QCloseEvent * e)
-{
-	slotClose();
-	e->accept();
 }
 
 

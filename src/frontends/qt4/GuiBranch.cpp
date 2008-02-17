@@ -25,7 +25,6 @@
 #include "insets/InsetBranch.h"
 
 #include <QPushButton>
-#include <QCloseEvent>
 
 using namespace std;
 

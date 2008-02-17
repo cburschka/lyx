@@ -56,7 +56,6 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QValidator>
-#include <QCloseEvent>
 
 #include <iomanip>
 #include <sstream>

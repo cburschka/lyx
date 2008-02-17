@@ -17,7 +17,6 @@
 
 #include "insets/InsetFloat.h"
 
-#include <QCloseEvent>
 #include <QPushButton>
 
 using namespace std;

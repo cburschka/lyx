@@ -25,7 +25,6 @@
 
 #include "insets/InsetTabular.h"
 
-#include <QCloseEvent>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QRadioButton>

@@ -30,7 +30,6 @@
 #include "support/lstrings.h"
 
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QValidator>

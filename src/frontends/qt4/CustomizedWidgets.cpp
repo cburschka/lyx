@@ -26,7 +26,6 @@
 #include "GuiKeySymbol.h"
 
 #include <QApplication>
-#include <QCloseEvent>
 
 #include "support/qstring_helpers.h"
 

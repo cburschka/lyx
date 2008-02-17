@@ -21,7 +21,6 @@
 #include <QPushButton>
 #include <QTextEdit>
 #include <QWhatsThis>
-#include <QCloseEvent>
 
 using namespace std;
 

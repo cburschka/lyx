@@ -38,7 +38,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include <QCloseEvent>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>

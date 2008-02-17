@@ -28,7 +28,6 @@
 #include "lyxfind.h"
 #include "LyXRC.h"
 
-#include <QCloseEvent>
 #include <QTextBrowser>
 
 

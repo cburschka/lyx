@@ -33,7 +33,6 @@
 #include <QPushButton>
 #include <QListWidget>
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLineEdit>
 
 using namespace std;

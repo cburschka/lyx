@@ -26,7 +26,6 @@
 #include <QListWidget>
 #include <QTextBrowser>
 #include <QPushButton>
-#include <QCloseEvent>
 
 using namespace std;
 using namespace lyx::support;

@@ -29,7 +29,6 @@
 
 #include <QPushButton>
 #include <QLineEdit>
-#include <QCloseEvent>
 
 using namespace std;
 

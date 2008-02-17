@@ -22,7 +22,6 @@
 
 #include "qt_helpers.h"
 
-#include <QCloseEvent>
 #include <QCheckBox>
 #include <QListWidget>
 #include <QPushButton>

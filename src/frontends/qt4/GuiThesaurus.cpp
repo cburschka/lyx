@@ -20,7 +20,6 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
-#include <QCloseEvent>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QPushButton>

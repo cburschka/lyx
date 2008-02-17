@@ -15,7 +15,6 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
-#include <QCloseEvent>
 #include <QShowEvent>
 
 using namespace std;

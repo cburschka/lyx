@@ -18,7 +18,6 @@
 #include "support/gettext.h"
 #include "Lexer.h"
 
-#include <QCloseEvent>
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
 #include <QClipboard>

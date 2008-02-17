@@ -43,7 +43,6 @@
 #include <boost/bind.hpp>
 
 #include <QCheckBox>
-#include <QCloseEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
