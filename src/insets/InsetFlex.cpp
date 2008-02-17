@@ -30,9 +30,6 @@
 #include "paragraph_funcs.h"
 #include "sgml.h"
 
-#include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
-
 #include "support/convert.h"
 
 #include <sstream>
