@@ -36,7 +36,6 @@
 #include "Lexer.h"
 #include "Undo.h"
 
-#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/convert.h"
