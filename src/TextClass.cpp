@@ -35,7 +35,6 @@
 #include "support/os.h"
 
 #include <sstream>
-#include <strstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -236,7 +235,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			"AlignPossible Left, Right, Center\n"
 			"LabelType No_Label\n"
 			"End";
-		istrstream ss(s);
+		istringstream ss(s);
 		Lexer lex(textClassTags, sizeof(textClassTags) / sizeof(textClassTags[0]));
 		lex.setStream(ss);
 		Layout lay;
