@@ -220,7 +220,9 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
 			params_.labelfont.color());
 
-		pi.base.bv->message(_("CharStyle: ") + s);
+		//FIXME: I had to disable this, since it triggers a crash
+		// (cf. http://bugzilla.lyx.org/show_bug.cgi?id=4559)
+		//pi.base.bv->message(_("CharStyle: ") + s);
 	}
 }
 

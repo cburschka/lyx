@@ -155,6 +155,11 @@ What's new
 - Fix a crash following the input of an invalid paragraph separation
   value in the document settings dialog (bug 4556).
 
+- Fix a crash when inserting a math formula into a char style inset.
+  To fix this, the status bar information that was displayed when
+  hovering over a char style has to be disabled for the time being
+  (bug 4559).
+
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
 - Fix update/drawing of character style insets.
