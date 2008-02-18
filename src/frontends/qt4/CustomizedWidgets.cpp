@@ -27,6 +27,7 @@
 
 #include <QApplication>
 #include <QKeyEvent>
+#include <QShowEvent>
 
 #include "support/qstring_helpers.h"
 

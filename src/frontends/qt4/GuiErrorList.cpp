@@ -24,8 +24,9 @@
 #include "support/lstrings.h"
 
 #include <QListWidget>
-#include <QTextBrowser>
 #include <QPushButton>
+#include <QShowEvent>
+#include <QTextBrowser>
 
 using namespace std;
 using namespace lyx::support;
