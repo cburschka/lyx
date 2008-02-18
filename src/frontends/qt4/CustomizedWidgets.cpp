@@ -26,6 +26,7 @@
 #include "GuiKeySymbol.h"
 
 #include <QApplication>
+#include <QKeyEvent>
 
 #include "support/qstring_helpers.h"
 
