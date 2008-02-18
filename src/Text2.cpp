@@ -28,7 +28,6 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Bullet.h"
 #include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -348,22 +347,22 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 	// nested insets.
 	Language const * language = buffer.params().language;
 	for (CursorSlice dit = begin; dit != end; dit.forwardPos()) {
-		if (dit.pos() != dit.lastpos()) {
-			pit_type const pit = dit.pit();
-			pos_type const pos = dit.pos();
-			Inset * inset = pars_[pit].getInset(pos);
-			if (inset && inset->noFontChange()) {
-				// We need to propagate the font change to all
-				// text cells of the inset (bug 1973).
-				// FIXME: This should change, see documentation
-				// of noFontChange in Inset.h
-				setInsetFont(bv, pit, pos, font, toggleall);
-			}
-			TextMetrics const & tm = bv.textMetrics(this);
-			Font f = tm.getDisplayFont(pit, pos);
-			f.update(font, language, toggleall);
-			setCharFont(buffer, pit, pos, f, tm.font_);
+		if (dit.pos() == dit.lastpos())
+			continue;
+		pit_type const pit = dit.pit();
+		pos_type const pos = dit.pos();
+		Inset * inset = pars_[pit].getInset(pos);
+		if (inset && inset->noFontChange()) {
+			// We need to propagate the font change to all
+			// text cells of the inset (bug 1973).
+			// FIXME: This should change, see documentation
+			// of noFontChange in Inset.h
+			setInsetFont(bv, pit, pos, font, toggleall);
 		}
+		TextMetrics const & tm = bv.textMetrics(this);
+		Font f = tm.getDisplayFont(pit, pos);
+		f.update(font, language, toggleall);
+		setCharFont(buffer, pit, pos, f, tm.font_);
 	}
 }
 
@@ -419,25 +418,23 @@ docstring Text::getStringToIndex(Cursor const & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	docstring idxstring;
 	if (cur.selection())
-		idxstring = cur.selectionAsString(false);
-	else {
-		// Try implicit word selection. If there is a change
-		// in the language the implicit word selection is
-		// disabled.
-		Cursor tmpcur = cur;
-		selectWord(tmpcur, PREVIOUS_WORD);
+		return cur.selectionAsString(false);
 
-		if (!tmpcur.selection())
-			cur.message(_("Nothing to index!"));
-		else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
-			cur.message(_("Cannot index more than one paragraph!"));
-		else
-			idxstring = tmpcur.selectionAsString(false);
-	}
+	// Try implicit word selection. If there is a change
+	// in the language the implicit word selection is
+	// disabled.
+	Cursor tmpcur = cur;
+	selectWord(tmpcur, PREVIOUS_WORD);
 
-	return idxstring;
+	if (!tmpcur.selection())
+		cur.message(_("Nothing to index!"));
+	else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
+		cur.message(_("Cannot index more than one paragraph!"));
+	else
+		return tmpcur.selectionAsString(false);
+	
+	return docstring();
 }
 
 
@@ -448,13 +445,14 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 	pit_type undopit = undoSpan(cur.selEnd().pit());
 	recUndo(cur, cur.selBegin().pit(), undopit - 1);
 
+	//FIXME UNICODE
+	string const argument = to_utf8(arg);
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
 		ParagraphParameters params = par.params();
-		params.read(to_utf8(arg), merge);
-		Layout const & layout = *(par.layout());
-		par.params().apply(params, layout);
+		params.read(argument, merge);
+		par.params().apply(params, *par.layout());
 	}
 }
 
@@ -484,8 +482,8 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
-				    Change(cur.buffer().params().trackChanges ?
-					   Change::INSERTED : Change::UNCHANGED));
+		Change(cur.buffer().params().trackChanges
+		? Change::INSERTED : Change::UNCHANGED));
 }
 
 
@@ -493,7 +491,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 {
 	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(),
-					 cur.current_font, str, autoBreakRows_);
+		cur.current_font, str, autoBreakRows_);
 }
 
 
