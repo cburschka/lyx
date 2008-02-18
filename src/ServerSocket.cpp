@@ -16,13 +16,13 @@
 
 #include "ServerSocket.h"
 
-#include "support/debug.h"
 #include "FuncRequest.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 
 #include "frontends/Application.h"
 
+#include "support/debug.h"
 #include "support/environment.h"
 #include "support/FileName.h"
 #include "support/socktools.h"

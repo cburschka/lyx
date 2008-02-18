@@ -14,8 +14,8 @@
 #include "GuiTexinfo.h"
 
 #include "FuncRequest.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"

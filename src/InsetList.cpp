@@ -16,9 +16,10 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BranchList.h"
-#include "support/debug.h"
 
 #include "insets/InsetBranch.h"
+
+#include "support/debug.h"
 
 using namespace std;
 

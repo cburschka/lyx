@@ -27,8 +27,8 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 
 #include "frontends/FontMetrics.h"

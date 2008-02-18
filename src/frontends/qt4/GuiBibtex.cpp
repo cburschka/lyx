@@ -17,7 +17,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "ui_BibtexAddUi.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -25,10 +24,11 @@
 
 #include "ButtonPolicy.h"
 
+#include "support/debug.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h" // changeExtension
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/FileFilterList.h"
 
 #include <QPushButton>
 #include <QListWidget>

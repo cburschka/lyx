@@ -16,7 +16,6 @@
 
 #include "MathExtern.h"
 
-#include "support/debug.h"
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"
@@ -35,6 +34,7 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"

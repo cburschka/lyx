@@ -42,7 +42,6 @@
 
 #include "insets/InsetListingsParams.h"
 
-//#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

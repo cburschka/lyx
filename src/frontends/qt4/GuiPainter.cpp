@@ -16,13 +16,12 @@
 #include "GuiApplication.h"
 #include "GuiFontMetrics.h"
 #include "GuiImage.h"
-
-#include "GuiApplication.h"
 #include "qt_helpers.h"
 
-#include "support/debug.h"
 #include "Language.h"
 #include "LyXRC.h"
+
+#include "support/debug.h"
 
 #include <QPixmapCache>
 #include <QTextLayout>

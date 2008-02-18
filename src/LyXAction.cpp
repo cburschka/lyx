@@ -15,9 +15,9 @@
 
 #include "LyXAction.h"
 
-#include "support/debug.h"
 #include "FuncRequest.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <boost/assert.hpp>

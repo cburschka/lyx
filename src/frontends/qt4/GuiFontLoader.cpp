@@ -14,10 +14,10 @@
 #include "GuiFontLoader.h"
 #include "qt_helpers.h"
 
-#include "support/debug.h"
 #include "LyXRC.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"

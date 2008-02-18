@@ -25,13 +25,13 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 
 #include <algorithm>
 

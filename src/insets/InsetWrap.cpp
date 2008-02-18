@@ -18,13 +18,11 @@
 #include "BufferView.h"
 #include "Counters.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "OutputParams.h"
@@ -33,6 +31,8 @@
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 
 using namespace std;
 

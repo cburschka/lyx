@@ -14,11 +14,13 @@
 #include "GuiListings.h"
 
 #include "qt_helpers.h"
+
 #include "FuncRequest.h"
+
 #include "insets/InsetListings.h"
 #include "insets/InsetListingsParams.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 

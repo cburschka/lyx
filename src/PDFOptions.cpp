@@ -12,10 +12,11 @@
 
 #include "PDFOptions.h"
 
-#include "support/convert.h"
-#include "support/lstrings.h"
-#include "support/debug.h"
 #include "Lexer.h"
+
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 #include <string>

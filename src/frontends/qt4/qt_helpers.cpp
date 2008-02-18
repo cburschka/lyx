@@ -17,14 +17,14 @@
 #include "FileDialog.h"
 #include "LengthCombo.h"
 
-#include "support/debug.h"
-#include "support/gettext.h"
+#include "frontends/alert.h"
+
 #include "Language.h"
 #include "Length.h"
 
-#include "frontends/alert.h"
-
+#include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"

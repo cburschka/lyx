@@ -47,10 +47,9 @@
 #include "MathParser.h"
 #include "MathSupport.h"
 
-#include "support/debug.h"
-
 #include "insets/InsetCommand.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // LibFileSearch

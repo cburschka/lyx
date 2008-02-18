@@ -12,8 +12,6 @@
 
 #include "InsetNewpage.h"
 
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -22,8 +20,10 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
 #include "support/docstring.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 
 using namespace std;
 

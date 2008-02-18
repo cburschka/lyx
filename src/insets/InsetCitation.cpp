@@ -15,15 +15,15 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "support/gettext.h"
 #include "EmbeddedFiles.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
-#include "support/lstrings.h"
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 

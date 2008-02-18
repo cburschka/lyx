@@ -13,9 +13,10 @@
 #include "MailInset.h"
 
 #include "BufferView.h"
-#include "support/debug.h"
 
 #include "frontends/Application.h"
+
+#include "support/debug.h"
 
 #include <boost/assert.hpp>
 

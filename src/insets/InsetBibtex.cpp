@@ -16,11 +16,9 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
-#include "support/debug.h"
 #include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -28,9 +26,11 @@
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/docstream.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Path.h"

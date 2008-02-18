@@ -20,6 +20,7 @@
 #include "MetricsInfo.h"
 
 #include "LaTeXFeatures.h"
+
 #include "support/debug.h"
 
 #include <ostream>

@@ -14,7 +14,6 @@
 
 #include "DocIterator.h"
 
-#include "support/debug.h"
 #include "InsetList.h"
 #include "Paragraph.h"
 #include "Text.h"
@@ -23,6 +22,8 @@
 #include "mathed/InsetMath.h"
 
 #include "insets/InsetTabular.h"
+
+#include "support/debug.h"
 
 #include <boost/assert.hpp>
 

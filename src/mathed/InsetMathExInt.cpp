@@ -15,8 +15,8 @@
 #include "MathStream.h"
 #include "MathStream.h"
 #include "InsetMathSymbol.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/docstring.h"
 
 

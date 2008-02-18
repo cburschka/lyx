@@ -16,8 +16,8 @@
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "GraphicsCache.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/Timeout.h"
 
 #include <boost/bind.hpp>

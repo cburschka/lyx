@@ -21,7 +21,6 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "FuncStatus.h"
@@ -29,6 +28,8 @@
 #include "Undo.h"
 
 #include "frontends/Painter.h"
+
+#include "support/debug.h"
 
 #include <ostream>
 #include <vector>

@@ -16,7 +16,6 @@
 
 #include "GuiGraphics.h"
 
-#include "support/debug.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "LyXRC.h"
@@ -24,7 +23,6 @@
 #include "Validator.h"
 
 #include "FuncRequest.h"
-#include "support/gettext.h"
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
@@ -33,8 +31,10 @@
 #include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"

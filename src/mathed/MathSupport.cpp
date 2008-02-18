@@ -18,13 +18,12 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
-#include "support/debug.h"
-
-#include "support/docstream.h"
-
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
+
+#include "support/debug.h"
+#include "support/docstream.h"
 
 #include <map>
 #include <sstream>

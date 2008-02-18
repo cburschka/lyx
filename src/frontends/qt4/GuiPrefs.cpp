@@ -20,9 +20,7 @@
 #include "BufferList.h"
 #include "Color.h"
 #include "ConverterCache.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "GuiFontExample.h"
 #include "GuiKeySymbol.h"
 #include "KeyMap.h"
@@ -32,12 +30,14 @@
 #include "paper.h"
 #include "Session.h"
 
+#include "support/debug.h"
+#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/FileFilterList.h"
 
 #include "graphics/GraphicsTypes.h"
 

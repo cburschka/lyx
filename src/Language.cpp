@@ -14,11 +14,11 @@
 
 #include "Language.h"
 
-#include "support/debug.h"
 #include "Encoding.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 
+#include "support/debug.h"
 #include "support/FileName.h"
 
 #include <ostream>

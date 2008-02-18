@@ -42,7 +42,6 @@
 #include "VSpace.h"
 
 #include "frontends/alert.h"
-#include "frontends/FontMetrics.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"

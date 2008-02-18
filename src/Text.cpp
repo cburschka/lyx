@@ -47,9 +47,6 @@
 #include "VSpace.h"
 #include "WordLangTuple.h"
 
-#include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
-
 #include "insets/InsetText.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetCaption.h"
@@ -80,8 +77,6 @@ namespace lyx {
 
 using cap::cutSelection;
 using cap::pasteParagraphList;
-
-using frontend::FontMetrics;
 
 namespace {
 

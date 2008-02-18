@@ -28,11 +28,9 @@
 #include "Counters.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -46,15 +44,18 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 
-#include "support/convert.h"
-#include "support/docstream.h"
-#include "support/FileName.h"
-#include "support/lstrings.h"
-
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
+
+
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/docstream.h"
+#include "support/FileName.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <boost/scoped_ptr.hpp>
 

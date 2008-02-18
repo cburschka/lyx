@@ -12,13 +12,13 @@
 
 #include "Action.h"
 
-#include "support/debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "GuiView.h"
 #include "LyXFunc.h"
 #include "qt_helpers.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 namespace lyx {

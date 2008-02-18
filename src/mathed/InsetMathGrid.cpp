@@ -21,15 +21,15 @@
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 
-#include "support/lstrings.h"
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 

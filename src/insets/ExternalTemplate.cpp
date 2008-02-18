@@ -13,9 +13,9 @@
 
 #include "ExternalTemplate.h"
 
-#include "support/debug.h"
 #include "Lexer.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Package.h"

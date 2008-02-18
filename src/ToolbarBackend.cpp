@@ -14,12 +14,14 @@
 #include "ToolbarBackend.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
+
 #include <boost/bind.hpp>
+
 #include <algorithm>
 
 using namespace std;

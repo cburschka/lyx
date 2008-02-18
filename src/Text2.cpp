@@ -47,8 +47,6 @@
 #include "TextMetrics.h"
 #include "VSpace.h"
 
-#include "frontends/FontMetrics.h"
-
 #include "insets/InsetEnvironment.h"
 
 #include "mathed/InsetMathHull.h"

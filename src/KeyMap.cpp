@@ -15,11 +15,11 @@
 
 #include "KeyMap.h"
 
-#include "support/debug.h"
 #include "KeySequence.h"
 #include "LyXAction.h"
 #include "Lexer.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"

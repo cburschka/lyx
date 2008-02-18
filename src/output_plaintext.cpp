@@ -14,8 +14,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Layout.h"
 #include "output.h"
 #include "OutputParams.h"
@@ -23,6 +21,8 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using namespace std;

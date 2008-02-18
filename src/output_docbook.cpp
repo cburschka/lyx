@@ -17,7 +17,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "support/debug.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -27,8 +26,9 @@
 #include "sgml.h"
 #include "TextClass.h"
 
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/lstrings.h"
 #include "support/types.h"
 
 #include <boost/next_prior.hpp>

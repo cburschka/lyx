@@ -22,9 +22,7 @@
 #include "buffer_funcs.h"
 #include "BufferView.h"
 #include "Changes.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "Text.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
@@ -32,7 +30,9 @@
 #include "frontends/alert.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using namespace std;

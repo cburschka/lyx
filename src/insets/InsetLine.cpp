@@ -12,7 +12,6 @@
 
 #include "InsetLine.h"
 
-#include "support/debug.h"
 #include "Dimension.h"
 #include "Font.h"
 #include "MetricsInfo.h"
@@ -20,9 +19,11 @@
 #include "OutputParams.h"
 #include "Text.h"
 
+#include "frontends/Painter.h"
+
+#include "support/debug.h"
 #include "support/docstream.h"
 
-#include "frontends/Painter.h"
 
 
 using namespace std;

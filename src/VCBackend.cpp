@@ -11,12 +11,12 @@
 #include <config.h>
 
 #include "VCBackend.h"
-#include "support/debug.h"
 #include "Buffer.h"
 
-#include "support/Path.h"
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/Path.h"
 #include "support/Systemcall.h"
 
 #include <boost/regex.hpp>

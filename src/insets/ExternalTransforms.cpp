@@ -13,7 +13,6 @@
 #include "ExternalTransforms.h"
 
 #include "support/debug.h"
-
 #include "support/lstrings.h"
 #include "support/lyxlib.h" // float_equal
 #include "support/convert.h"

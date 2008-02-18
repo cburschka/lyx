@@ -19,12 +19,10 @@
 
 #include "Buffer.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -35,8 +33,10 @@
 
 #include "graphics/PreviewLoader.h"
 
+#include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"

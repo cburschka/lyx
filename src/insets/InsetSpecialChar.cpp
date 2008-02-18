@@ -14,7 +14,6 @@
 
 #include "InsetSpecialChar.h"
 
-#include "support/debug.h"
 #include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -23,6 +22,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 
 using namespace std;

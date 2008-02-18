@@ -19,11 +19,11 @@
 #include "InsetMathNest.h"
 
 #include "Buffer.h"
+#include "DocIterator.h"
 #include "InsetList.h"
 #include "Text.h"
 
 #include "support/debug.h"
-#include "DocIterator.h"
 
 #include <boost/assert.hpp>
 

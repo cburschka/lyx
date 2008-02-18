@@ -27,11 +27,11 @@
 #include "InsetRef.h"
 #include "InsetTOC.h"
 
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Lexer.h"
 
+#include "support/debug.h"
 #include "support/ExceptionMessage.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/docstream.h"
 

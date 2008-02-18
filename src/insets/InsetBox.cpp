@@ -19,7 +19,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
-#include "support/debug.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
@@ -28,6 +27,7 @@
 #include "MetricsInfo.h"
 #include "TextClass.h"
 
+#include "support/debug.h"
 #include "support/Translator.h"
 
 #include <sstream>

@@ -20,7 +20,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
-#include "support/debug.h"
 #include "DocIterator.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
@@ -31,6 +30,7 @@
 
 #include "insets/Inset.h"
 
+#include "support/debug.h"
 #include "support/limited_stack.h"
 
 #include <algorithm>

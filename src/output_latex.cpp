@@ -14,7 +14,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "Encoding.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -31,6 +30,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetOptArg.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <boost/next_prior.hpp>

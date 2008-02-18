@@ -20,15 +20,16 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Layout.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "TextClass.h"
 #include "ToolbarBackend.h"
+
+#include "support/debug.h"
+#include "support/gettext.h"
 
 using namespace std;
 

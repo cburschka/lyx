@@ -17,11 +17,9 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "Layout.h"
 #include "LyXAction.h"
@@ -33,6 +31,8 @@
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <sstream>

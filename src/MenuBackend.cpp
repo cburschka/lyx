@@ -23,11 +23,9 @@
 #include "BufferParams.h"
 #include "Converter.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Format.h"
-#include "support/gettext.h"
 #include "KeyMap.h"
 #include "Session.h"
 #include "LyXAction.h"
@@ -41,9 +39,11 @@
 
 #include "frontends/Application.h"
 
-#include "support/filetools.h"
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 

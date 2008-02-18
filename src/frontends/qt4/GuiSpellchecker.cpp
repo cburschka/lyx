@@ -20,15 +20,15 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 
-#include "support/textutils.h"
+#include "support/debug.h"
 #include "support/docstring.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <QListWidgetItem>
 

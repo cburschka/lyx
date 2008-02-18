@@ -15,7 +15,6 @@
 
 #include "InsetSpace.h"
 
-#include "support/debug.h"
 #include "Dimension.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -24,6 +23,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 
 using namespace std;

@@ -20,11 +20,9 @@
 #include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "InsetList.h"
 #include "Intl.h"
 #include "lyxfind.h"
@@ -49,6 +47,8 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>

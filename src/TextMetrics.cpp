@@ -27,7 +27,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "FontIterator.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
@@ -48,6 +47,8 @@
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
+
+#include "support/debug.h"
 
 using namespace std;
 

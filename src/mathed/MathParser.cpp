@@ -63,8 +63,8 @@ following hack as starting point to write some macros:
 #include "MathSupport.h"
 
 #include "Lexer.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/convert.h"
 #include "support/docstream.h"
 

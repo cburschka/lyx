@@ -23,17 +23,9 @@
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
-#include "support/ExceptionMessage.h"
-#include "support/FileName.h"
-#include "support/ForkedCalls.h"
-#include "support/lstrings.h"
-#include "support/os.h"
-#include "support/Package.h"
-
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferView.h"
-#include "support/debug.h"
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -43,6 +35,14 @@
 #include "LyXRC.h"
 #include "Session.h"
 #include "version.h"
+
+#include "support/debug.h"
+#include "support/ExceptionMessage.h"
+#include "support/FileName.h"
+#include "support/ForkedCalls.h"
+#include "support/lstrings.h"
+#include "support/os.h"
+#include "support/Package.h"
 
 #include <QApplication>
 #include <QClipboard>

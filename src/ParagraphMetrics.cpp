@@ -24,8 +24,6 @@
 #include "BufferView.h"
 #include "Counters.h"
 #include "Encoding.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Layout.h"
@@ -44,9 +42,11 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetOptArg.h"
 
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
-#include "support/convert.h"
 
 #include <boost/bind.hpp>
 #include <boost/crc.hpp>

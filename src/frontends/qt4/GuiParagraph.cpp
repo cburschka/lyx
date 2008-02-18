@@ -15,6 +15,8 @@
 
 #include "GuiParagraph.h"
 
+#include "qt_helpers.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -24,7 +26,6 @@
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
-#include "qt_helpers.h"
 #include "Spacing.h"
 
 #include "support/debug.h"

@@ -17,16 +17,16 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Text.h"
 
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/convert.h"
-#include "support/docstream.h"
 
 using namespace std;
 using namespace lyx::support;

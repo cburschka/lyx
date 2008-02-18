@@ -17,7 +17,6 @@
 #include "Buffer.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
@@ -40,6 +39,7 @@
 
 #include "insets/InsetText.h"
 
+#include "support/debug.h"
 #include "support/textutils.h"
 
 #include <boost/crc.hpp>

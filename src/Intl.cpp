@@ -14,9 +14,9 @@
 #include <config.h>
 
 #include "Intl.h"
-#include "support/debug.h"
 #include "LyXRC.h"
 
+#include "support/debug.h"
 
 namespace lyx {
 

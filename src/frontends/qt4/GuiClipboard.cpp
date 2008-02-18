@@ -14,13 +14,14 @@
 
 #include "FileDialog.h"
 
+#include "GuiClipboard.h"
+#include "qt_helpers.h"
+
 #include "frontends/alert.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "GuiClipboard.h"
-#include "qt_helpers.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

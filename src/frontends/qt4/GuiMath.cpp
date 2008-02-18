@@ -11,8 +11,10 @@
 #include <config.h>
 
 #include "GuiMath.h"
-#include "support/debug.h"
+
 #include "FuncRequest.h"
+
+#include "support/debug.h"
 
 using namespace std;
 

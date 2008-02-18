@@ -18,8 +18,6 @@
 
 #include "Color.h"
 #include "Counters.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Layout.h"
@@ -28,10 +26,12 @@
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
 #include "support/ExceptionMessage.h"
-#include "support/lstrings.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/os.h"
 
 #include <sstream>

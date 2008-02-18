@@ -14,15 +14,14 @@
 #ifndef GUIPARAGRAPH_H
 #define GUIPARAGRAPH_H
 
-// Uncomment this if you prefer dock widget
-//#define USE_DOCK_WIDGET
-
-#include "Layout.h"
-#include "ui_ParagraphUi.h"
 #include "DialogView.h"
-#include "ParagraphParameters.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
+#include "ui_ParagraphUi.h"
+
+#include "Layout.h"
+#include "ParagraphParameters.h"
+
 #include "support/debug.h"
 
 #include <QDialog>

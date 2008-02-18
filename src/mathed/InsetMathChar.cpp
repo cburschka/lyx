@@ -17,13 +17,13 @@
 #include "MathStream.h"
 #include "MetricsInfo.h"
 
-#include "support/debug.h"
 #include "Dimension.h"
 #include "TextPainter.h"
 
-#include "support/lstrings.h"
-
 #include "frontends/FontMetrics.h"
+
+#include "support/debug.h"
+#include "support/lstrings.h"
 
 
 namespace lyx {

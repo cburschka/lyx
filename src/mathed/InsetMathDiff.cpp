@@ -13,6 +13,7 @@
 #include "InsetMathDiff.h"
 #include "MathData.h"
 #include "MathStream.h"
+
 #include "support/debug.h"
 
 

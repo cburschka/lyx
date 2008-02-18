@@ -21,11 +21,9 @@
 
 #include "LyXRC.h"
 
-#include "support/debug.h"
 #include "Color.h"
 #include "Converter.h"
 #include "Format.h"
-#include "support/gettext.h"
 #include "Session.h"
 #include "Lexer.h"
 #include "FontEnums.h"
@@ -34,8 +32,10 @@
 #include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/environment.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/userinfo.h"

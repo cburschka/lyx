@@ -11,8 +11,10 @@
 #include <config.h>
 
 #include "ButtonController.h"
-#include "support/debug.h"
+
 #include "qt_helpers.h"
+
+#include "support/debug.h"
 
 #include <QPushButton>
 #include <QLineEdit>

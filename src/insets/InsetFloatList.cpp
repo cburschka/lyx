@@ -14,18 +14,18 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "TocBackend.h"
 #include "TextClass.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <ostream>

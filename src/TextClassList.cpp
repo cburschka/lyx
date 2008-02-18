@@ -13,9 +13,9 @@
 
 #include "TextClassList.h"
 #include "TextClass.h"
-#include "support/debug.h"
 #include "Lexer.h"
 
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 

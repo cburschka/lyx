@@ -15,7 +15,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "support/debug.h"
 #include "Dimension.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -27,6 +26,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
 #include "support/docstring.h"
 #include "support/docstream.h"
 #include "support/lstrings.h"

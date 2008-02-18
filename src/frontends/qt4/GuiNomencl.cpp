@@ -13,8 +13,9 @@
 
 #include "GuiNomencl.h"
 
-#include "support/debug.h"
 #include "qt_helpers.h"
+
+#include "support/debug.h"
 
 #include <QLabel>
 #include <QLineEdit>

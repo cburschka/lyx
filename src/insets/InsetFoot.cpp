@@ -10,7 +10,6 @@
  */
 
 #include <config.h>
-#include "support/debug.h"
 
 #include "InsetFoot.h"
 
@@ -26,6 +25,7 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <ostream>

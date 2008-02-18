@@ -18,13 +18,14 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 #include "TextMetrics.h"
+
+#include "support/debug.h"
 
 using namespace std;
 

@@ -18,12 +18,10 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FloatList.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -35,7 +33,9 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 
 using namespace std;
 

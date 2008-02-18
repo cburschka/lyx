@@ -17,14 +17,14 @@
 
 #include "BufferList.h"
 #include "LaTeX.h"
-#include "support/gettext.h"
 #include "LyXRC.h"
-#include "support/debug.h"
 #include "DepTable.h"
 
+#include "support/debug.h"
 #include "support/convert.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 #include "support/os.h"

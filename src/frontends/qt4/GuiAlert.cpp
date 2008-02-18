@@ -16,11 +16,11 @@
 #include "frontends/Application.h"
 
 #include "qt_helpers.h"
-#include "support/debug.h"
 #include "LyX.h" // for lyx::use_gui
 #include "ui_AskForTextUi.h"
 #include "support/gettext.h"
 
+#include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
 

@@ -12,8 +12,9 @@
 
 #include "GuiLabel.h"
 
-#include "support/debug.h"
 #include "qt_helpers.h"
+
+#include "support/debug.h"
 
 #include <QLabel>
 #include <QPushButton>

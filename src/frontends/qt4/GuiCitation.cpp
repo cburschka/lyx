@@ -15,22 +15,22 @@
 
 #include "GuiCitation.h"
 
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "qt_helpers.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 
-#include "support/lstrings.h"
-#include "support/docstring.h"
-
 #include "insets/InsetCommand.h"
 
-#include <vector>
-#include <string>
+#include "support/debug.h"
+#include "support/docstring.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <QCloseEvent>
 #include <QShowEvent>
+
+#include <vector>
+#include <string>
 
 #undef KeyPress
 

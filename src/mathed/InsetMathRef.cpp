@@ -16,10 +16,8 @@
 #include "LaTeXFeatures.h"
 #include "Buffer.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathSupport.h"
@@ -27,6 +25,9 @@
 #include "sgml.h"
 
 #include "insets/InsetCommand.h"
+
+#include "support/debug.h"
+#include "support/gettext.h"
 
 #include <ostream>
 

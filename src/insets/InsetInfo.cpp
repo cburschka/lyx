@@ -17,7 +17,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "support/debug.h"
 #include "FuncRequest.h"
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
@@ -32,6 +31,7 @@
 
 #include "frontends/Application.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"

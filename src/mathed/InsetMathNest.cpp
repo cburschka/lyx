@@ -38,25 +38,23 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
-#include "support/gettext.h"
-#include "Text.h"
 #include "OutputParams.h"
-
-#include "support/lstrings.h"
-#include "support/textutils.h"
-#include "support/docstream.h"
+#include "Text.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
-#include "FuncRequest.h"
+#include "support/debug.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
+#include "support/textutils.h"
+#include "support/docstream.h"
 
 #include <sstream>
 

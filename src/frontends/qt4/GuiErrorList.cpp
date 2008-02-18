@@ -12,15 +12,15 @@
 
 #include "GuiErrorList.h"
 
-#include "Buffer.h"
-#include "BufferView.h"
-#include "support/debug.h"
-#include "support/gettext.h"
-#include "Text.h"
-#include "ParIterator.h"
-
 #include "qt_helpers.h"
 
+#include "Buffer.h"
+#include "BufferView.h"
+#include "ParIterator.h"
+#include "Text.h"
+
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QListWidget>

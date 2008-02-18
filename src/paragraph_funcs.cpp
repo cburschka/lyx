@@ -14,13 +14,14 @@
 
 #include "BufferParams.h"
 #include "Changes.h"
-#include "support/debug.h"
 #include "InsetList.h"
 #include "Layout.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "Text.h"
 #include "TextClass.h"
+
+#include "support/debug.h"
 
 #include <boost/next_prior.hpp>
 

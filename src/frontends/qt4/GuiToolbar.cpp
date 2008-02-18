@@ -14,21 +14,6 @@
 
 #include <config.h>
 
-#include "Buffer.h"
-#include "BufferParams.h"
-#include "BufferView.h"
-#include "Cursor.h"
-#include "support/debug.h"
-#include "FuncRequest.h"
-#include "FuncStatus.h"
-#include "support/gettext.h"
-#include "IconPalette.h"
-#include "Layout.h"
-#include "LyXFunc.h"
-#include "Paragraph.h"
-#include "TextClass.h"
-#include "ToolbarBackend.h"
-
 #include "GuiView.h"
 #include "GuiCommandBuffer.h"
 #include "GuiToolbar.h"
@@ -36,9 +21,24 @@
 #include "Action.h"
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
-#include "LyXRC.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "IconPalette.h"
+#include "Layout.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
+#include "Paragraph.h"
+#include "TextClass.h"
+#include "ToolbarBackend.h"
+
+#include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 

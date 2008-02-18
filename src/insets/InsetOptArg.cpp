@@ -13,9 +13,8 @@
 #include "InsetOptArg.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
-
 #include "support/docstream.h"
+#include "support/gettext.h"
 
 using namespace std;
 

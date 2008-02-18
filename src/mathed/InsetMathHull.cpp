@@ -32,10 +32,8 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
@@ -52,6 +50,8 @@
 
 #include "frontends/Painter.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <sstream>

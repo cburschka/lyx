@@ -14,6 +14,7 @@
 
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
+
 #include "support/debug.h"
 
 

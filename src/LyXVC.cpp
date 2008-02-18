@@ -17,13 +17,13 @@
 
 #include "LyXVC.h"
 #include "VCBackend.h"
-#include "support/debug.h"
 #include "Buffer.h"
-#include "support/gettext.h"
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using namespace std;

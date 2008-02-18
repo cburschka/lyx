@@ -15,8 +15,8 @@
 #include "GuiSelection.h"
 
 #include "qt_helpers.h"
-#include "support/debug.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <QApplication>
