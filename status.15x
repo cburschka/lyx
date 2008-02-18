@@ -24,9 +24,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New manual "LyX's detailed math manual" available in English, French, and
-  German. It includes the content of the example file "mathed.lyx", which is
-  no more shipped separately.
+- New manual "LyX's detailed math manual" available in English, French,
+  and German. It includes the content of the example file "mathed.lyx",
+  which is no more shipped separately.
 
 - New section "Floats Side by Side" in the EmbeddedObjects manual.
 
@@ -42,10 +42,11 @@ What's new
 
 - New Russian translation of the user interface.
 
-- Updated Czech, French, German, Hungarian, Italian, Portuguese and Spanish
-  translations of the user interface.
+- Updated Czech, French, German, Hungarian, Italian, Portuguese and
+  Spanish translations of the user interface.
 
-- New example files how to create serial letters.
+- New example files that demonstrate how to create serial letters with
+  the KOMA letter class.
 
 
 * USER INTERFACE
@@ -60,12 +61,12 @@ What's new
 
 - New shortcut "C-M-n" to create numbered formulas.
 
-- Characters counting added to "Count Words" function (bug 2819).
+- Character counting added to "Count Words" function (bug 2819).
 
 - The BibTeX dialog now has buttons to move databases up or down
   the list.
 
-- New toolbar button to creates boxes.
+- New toolbar button to create boxes.
 
 - Keyboard shortcuts for TOC window buttons were introduced. For outlining
   you can use "M-p Left/Right/Up/Down" keys. Note that depth-in/decrement 
@@ -76,8 +77,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Use package wrapfig instead of floatflt for wrap figure floats, NOTE that
-  this might slightly change the output (cf. the file RELEASE-NOTES).
+- Use package wrapfig instead of floatflt for wrap figure floats. Note
+  that this might slightly change the output (cf. the file RELEASE-NOTES).
 
 - Support to paste text containing ligatures to LyX.
 
@@ -149,16 +150,16 @@ What's new
 - Fix a crash when opening a file that resides in a hidden directory
   (bug 4513).
 
-- Fix a crash when deleting outlined insets while the outline panel 
+- Fix a crash when deleting outlined insets while the outline panel
   is open (bug 4547).
 
 - Fix a crash following the input of an invalid paragraph separation
   value in the document settings dialog (bug 4556).
 
-- Fix a crash when inserting a math formula into a char style inset.
-  To fix this, the status bar information that was displayed when
-  hovering over a char style has to be disabled for the time being
-  (bug 4559).
+- Fix a crash when inserting a math formula into a character style
+  inset. In order to fix this, the status bar information that was
+  displayed when hovering over a char style had to be disabled for
+  the time being (bug 4559).
 
 - Do not exit after catching an iconv exception (bug 4385, part 2).
 
@@ -203,8 +204,8 @@ What's new
 
 - The case-changing functions do not select text anymore.
 
-- Set correct width for labels in document class "letter (KOMA-Script v.2)"
-  (bug 4529).
+- Set correct width for labels in document class "letter (KOMA-Script
+  v.2)" (bug 4529).
 
 - Fix section counter problem in Portuguese localization.
 
@@ -218,15 +219,15 @@ What's new
 - Fix a document preamble font entry that prevented the User's Guide
   from beeing exported to PDF in some cases.
 
-- Make the template file "koma-letter2.lyx" compilable.
+- Fix preamble error in the template file "koma-letter2.lyx".
 
 
 * BUILD/INSTALLATION:
 
 - Small cleanup to the INSTALL file.
 
-- New script postats.py used to generate translation statistics for the main
-  page.
+- New script postats.py used to generate translation statistics for the
+  main page.
 
 - Dutch dictionary now downloads.
 
