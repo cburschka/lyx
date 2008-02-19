@@ -66,6 +66,11 @@ public:
 		RC_EXAMPLEPATH,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
+		RC_FULL_SCREEN_LIMIT,
+		RC_FULL_SCREEN_SCROLLBAR,
+		RC_FULL_SCREEN_TABBAR,
+		RC_FULL_SCREEN_TOOLBARS,
+		RC_FULL_SCREEN_WIDTH,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
 		RC_KBMAP,
@@ -394,6 +399,16 @@ public:
 	unsigned int converter_cache_maxage;
 	/// Sort layouts alphabetically
 	bool sort_layouts;
+	/// Toggle toolbars in fullscreen mode?
+	bool full_screen_toolbars;
+	/// Toggle scrollbar in fullscreen mode?
+	bool full_screen_scrollbar;
+	/// Toggle tabbar in fullscreen mode?
+	bool full_screen_tabbar;
+	/// Limit the text width?
+	bool full_screen_limit;
+	/// Width of limited screen (in pixels) in fullscreen mode
+	int full_screen_width;
 };
 
 

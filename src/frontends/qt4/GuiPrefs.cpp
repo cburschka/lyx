@@ -1652,6 +1652,16 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+	connect(fullscreenLimitGB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
+		this, SIGNAL(changed()));
+	connect(toggleTabbarCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(toggleScrollbarCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(toggleToolbarsCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 }
 
@@ -1673,6 +1683,11 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
+	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
+	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
+	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
+	rc.full_screen_width = fullscreenWidthSB->value();
+	rc.full_screen_limit = fullscreenLimitGB->isChecked();
 }
 
 
@@ -1693,6 +1708,12 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
+	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
+	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
+	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
+	fullscreenWidthSB->setValue(rc.full_screen_width);
+	fullscreenLimitGB->setChecked(rc.full_screen_limit);
+
 }
 
 

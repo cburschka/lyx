@@ -221,6 +221,28 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 	}
 	tbi->flags = static_cast<ToolbarInfo::Flags>(flags);
 }
+
+
+void GuiToolbars::toggleFullScreen(bool start_full_screen)
+{
+	// extracts the toolbars from the backend
+	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
+	int flags;
+
+	for (; cit != end; ++cit) {
+
+		if (start_full_screen) {
+			flags = cit->before_fullscreen = cit->flags;
+			TurnOffFlag(ON);
+			TurnOffFlag(AUTO);
+			TurnOnFlag(OFF);
+		} else
+			flags = cit->before_fullscreen;
+
+		cit->flags = static_cast<ToolbarInfo::Flags>(flags);
+	}
+}
 #undef TurnOnFlag
 #undef TurnOffFlag
 

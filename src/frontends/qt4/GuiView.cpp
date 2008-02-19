@@ -395,10 +395,19 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Make sure that no LFUN use this close to be closed View.
 	theLyXFunc().setLyXView(0);
+
+	// Save toolbars configuration
+	if (isFullScreen()) {
+	 d.toolbars_->toggleFullScreen(!isFullScreen());
+	 updateToolbars();
+	}
+
 	// Make sure the timer time out will not trigger a statusbar update.
 	d.statusbar_timer_.stop();
 
-	if (lyxrc.allow_geometry_session) {
+	// Saving fullscreen requires additional tweaks in the toolbar code.
+	// It wouldn't also work under linux natively.
+	if (lyxrc.allow_geometry_session && !isFullScreen()) {
 		QSettings settings;
 		QString const key = "view-" + QString::number(id_);
 #ifdef Q_WS_X11
@@ -1855,6 +1864,9 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		return;
 	}
 
+	if (lyxrc.full_screen_toolbars)
+		d.toolbars_->toggleFullScreen(!isFullScreen());
+
 	if (isFullScreen()) {
 		showNormal();
 #if QT_VERSION >= 0x040300
@@ -1864,7 +1876,13 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 			d.tabWorkArea(i)->setFullScreen(false);
 		menuBar()->show();
 		statusBar()->show();
+		if (lyxrc.full_screen_scrollbar && d.current_work_area_)
+			d.current_work_area_->
+				setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	} else {
+		if (lyxrc.full_screen_scrollbar && d.current_work_area_)
+			d.current_work_area_->
+				setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 		statusBar()->hide();
 		menuBar()->hide();
 		for (int i = 0; i != d.splitter_->count(); ++i)

@@ -80,6 +80,11 @@ keyword_item lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
+	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
+	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
+	{ "\\fullscreen_tabbar", LyXRC::RC_FULL_SCREEN_TABBAR },
+	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
+	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
@@ -275,6 +280,12 @@ void LyXRC::setDefaults() {
 	use_tooltip = true;
 	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
+	// Fullscreen settings
+	full_screen_limit = false;
+	full_screen_toolbars = true;
+	full_screen_tabbar = true;
+	full_screen_scrollbar = true;
+	full_screen_width = 700;
 
 	user_name = to_utf8(support::user_name());
 
@@ -1195,6 +1206,26 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next())
 				sort_layouts = lexrc.getBool();
 			break;
+		case RC_FULL_SCREEN_LIMIT:
+			if (lexrc.next())
+				full_screen_limit = lexrc.getBool();
+			break;
+		case RC_FULL_SCREEN_TOOLBARS:
+			if (lexrc.next())
+				full_screen_toolbars = lexrc.getBool();
+			break;
+		case RC_FULL_SCREEN_SCROLLBAR:
+			if (lexrc.next())
+				full_screen_scrollbar = lexrc.getBool();
+			break;
+		case RC_FULL_SCREEN_TABBAR:
+			if (lexrc.next())
+				full_screen_tabbar = lexrc.getBool();
+			break;
+		case RC_FULL_SCREEN_WIDTH:
+			if (lexrc.next())
+				full_screen_width = lexrc.getInteger();
+			break;
 
 		case RC_LAST: break; // this is just a dummy
 		}
@@ -1720,6 +1751,52 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_FULL_SCREEN_LIMIT:
+		if (ignore_system_lyxrc ||
+		    full_screen_limit != system_lyxrc.full_screen_limit) {
+			os << "\\fullscreen_limit "
+			   << convert<string>(full_screen_limit)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_TOOLBARS:
+		if (ignore_system_lyxrc ||
+		    full_screen_toolbars != system_lyxrc.full_screen_toolbars) {
+			os << "\\fullscreen_toolbars "
+			   << convert<string>(full_screen_toolbars)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_SCROLLBAR:
+		if (ignore_system_lyxrc ||
+		    full_screen_scrollbar != system_lyxrc.full_screen_scrollbar) {
+			os << "\\fullscreen_scrollbar "
+			   << convert<string>(full_screen_scrollbar)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_TABBAR:
+		if (ignore_system_lyxrc ||
+		    full_screen_tabbar != system_lyxrc.full_screen_tabbar) {
+			os << "\\fullscreen_tabbar "
+			   << convert<string>(full_screen_tabbar)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_WIDTH:
+		if (ignore_system_lyxrc ||
+		    full_screen_width != system_lyxrc.full_screen_width) {
+			os << "\\fullscreen_width "
+			   << convert<string>(full_screen_width)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 
 		os << "\n#\n"
 		   << "# COLOR SECTION ###################################\n"

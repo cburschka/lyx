@@ -1053,6 +1053,9 @@ void TabWorkArea::setFullScreen(bool full_screen)
 		if (GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i)))
 			wa->setFullScreen(full_screen);
 	}
+
+	if (lyxrc.full_screen_tabbar)
+		showBar(!full_screen && count()>1);
 }
 
 

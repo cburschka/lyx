@@ -294,6 +294,7 @@ Menuset
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
+		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Submenu "Toolbars|b" "toolbars"
 		Separator
 	    Documents

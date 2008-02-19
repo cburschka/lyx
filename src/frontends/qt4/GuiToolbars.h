@@ -62,6 +62,8 @@ public:
 	/// Show or hide the command buffer.
 	void showCommandBuffer(bool show_it);
 
+	/// toggle visibility of toolbars and save its flags for return
+	void toggleFullScreen(bool start_full_screen);
 
 private:
 	/// Add a new toolbar. if newline==true, start from a new line

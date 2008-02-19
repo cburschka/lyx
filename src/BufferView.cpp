@@ -286,15 +286,16 @@ BufferView::~BufferView()
 	delete d;
 }
 
-// Put this user variable in lyxrc or pass it through setFullScreen()
-static int const max_row_width = 700;
 
 int BufferView::rightMargin() const
 {
-	if (!full_screen_ || width_ < max_row_width + 20)
-		return 10;
+	// The additional test for the case the outliner is opened.
+	if (!full_screen_ ||
+		!lyxrc.full_screen_limit ||
+		width_ < lyxrc.full_screen_width + 20)
+			return 10;
 
-	return (width_ - max_row_width) / 2;
+	return (width_ - lyxrc.full_screen_width) / 2;
 }
 
 

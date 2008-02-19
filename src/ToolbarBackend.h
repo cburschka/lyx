@@ -96,6 +96,8 @@ public:
 	Items items;
 	/// flags
 	Flags flags;
+	/// store flags when coming to fullscreen mode
+	Flags before_fullscreen;
 
 	/// read a toolbar from the file
 	ToolbarInfo & read(Lexer &);
