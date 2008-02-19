@@ -100,9 +100,6 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
-
-extern bool quitting;
-
 namespace frontend {
 
 namespace {

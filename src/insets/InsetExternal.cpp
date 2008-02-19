@@ -25,6 +25,7 @@
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "LyX.h" // use_gui
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -63,8 +64,6 @@ string defaultTemplateName;
 namespace lyx {
 
 namespace Alert = frontend::Alert;
-
-extern bool use_gui;
 
 namespace external {
 

@@ -18,7 +18,6 @@
  */
 
 #include <config.h>
-#include <vector>
 
 #include "LyXFunc.h"
 
@@ -56,7 +55,6 @@
 #include "Server.h"
 #include "Session.h"
 #include "TextClassList.h"
-#include "ToolbarBackend.h"
 
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
@@ -91,6 +89,7 @@
 #include "support/os.h"
 
 #include <sstream>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;
@@ -100,9 +99,6 @@ namespace lyx {
 using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
-
-extern bool quitting;
-extern bool use_gui;
 
 namespace {
 

@@ -25,10 +25,10 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LyX.h" // quitting
+#include "MetricsInfo.h"
 #include "Text.h"
 #include "TextClass.h"
-#include "MetricsInfo.h"
-#include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
 #include "frontends/Application.h"
@@ -42,8 +42,6 @@
 using namespace std;
 
 namespace lyx {
-
-extern bool quitting;
 
 class InsetName {
 public:
