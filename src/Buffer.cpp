@@ -2312,6 +2312,9 @@ void Buffer::autoSave() const
 
 void Buffer::resetChildDocuments(bool close_them) const
 {
+	if (text().empty())
+		return;
+
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() != INCLUDE_CODE)
 			continue;
