@@ -52,18 +52,29 @@ initialisation should be done before the instanciation of this class.
 
  Application (this is the frontend really, should probably be renamed).
    |
-   LyXView-1 (M1 WorkAreas, M1 <= N)
+   LyXView-1 (one or more in case of split-view mode).
    |  |
-   |  <tab-widget>
-   |     | (many)
-   |     WorkArea-1
-   |       |
-   |       BufferView <-----------> Buffer-c
-   |         |
-   |         Cursor
+   |  <tab-widget-1-1> 
+   |  |  |
+   |  |  WorkArea-1-1-1 (M1-1 WorkAreas, M1-1 <= N)
+   |  |  | |
+   |  |  | BufferView <-----------> Buffer-c
+   |  |  |   |
+   |  |  |   Cursor
+   |  |  |
+   |  |  WorkArea-1-1-2
+   |  |  | |
+   |  |  | BufferView <-----------> Buffer-a
+   |  |  |   |
+   |  |  |   Cursor
+   |  |
+   |  <tab-widget-1-2> 
    |
-   LyXView-2 (M2 WorkAreas, M2 <= N, M2 independent of M1)
-      |
+   LyXView-2 (one or more in case of split-view mode).
+   |  |
+   |  <tab-widget-2-1>
+   |  |  |
+   |  |  WorkArea-2-1-1 (M2-1 WorkAreas, M2-1 <= N, M2-1 independent of M1-1)
      ...
 
 
