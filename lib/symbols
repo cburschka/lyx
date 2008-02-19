@@ -894,7 +894,7 @@ iffont cmsy
 \def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
 \def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
 \def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
-\def\implies{\Longrightarrow}
+\def\implies{\Longrightarrow}                                     amsmath
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}
 \def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow}
 \def\models{\vert\kern-7mu\lyxeq}
