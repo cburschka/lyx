@@ -40,6 +40,8 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
+	///
+	InsetText(InsetText const &);
 
 	///
 	Dimension const dimension(BufferView const &) const;
@@ -133,8 +135,6 @@ public:
 	virtual bool isMacroScope(Buffer const &) const { return true; }
 	///
 	virtual bool allowMultiPar() const { return true; }
-	///
-	InsetText(InsetText const &);
 
 	// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &);
@@ -147,8 +147,7 @@ protected:
 
 private:
 	///
-	void init();
-
+	void setParagraphOwner();
 	///
 	bool drawFrame_;
 	///

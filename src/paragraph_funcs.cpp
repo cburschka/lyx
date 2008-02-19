@@ -72,14 +72,14 @@ void breakParagraph(BufferParams const & bparams,
 
 	Paragraph & par = pars[par_offset];
 
+	// remember to set the inset_owner
+	tmp->setInsetOwner(par.inInset());
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	if (par.useEmptyLayout())
 		tmp->layout(bparams.getTextClass().emptyLayout());
 	else
 		tmp->layout(bparams.getTextClass().defaultLayout());
-	// remember to set the inset_owner
-	tmp->setInsetOwner(par.inInset());
 
 	// layout stays the same with latex-environments
 	if (keep_layout) {

@@ -567,10 +567,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 
 	// read main text
-	bool const res = text().read(*this, lex, errorList);
-	for_each(text().paragraphs().begin(),
-		 text().paragraphs().end(),
-		 bind(&Paragraph::setInsetOwner, _1, &inset()));
+	bool const res = text().read(*this, lex, errorList, &inset());
 
 	updateMacros();
 	updateMacroInstances();

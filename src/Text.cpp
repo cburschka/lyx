@@ -101,10 +101,10 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		if (layoutname.empty())
 			layoutname = tclass.defaultLayoutName();
 
-		if (par.forceEmptyLayout()) 
+		if (par.forceEmptyLayout()) {
 			// in this case only the empty layout is allowed
 			layoutname = tclass.emptyLayoutName();
-		else if (par.useEmptyLayout()) {
+		} else if (par.useEmptyLayout()) {
 			// in this case, default layout maps to empty layout 
 			if (layoutname == tclass.defaultLayoutName())
 				layoutname = tclass.emptyLayoutName();
@@ -1159,7 +1159,8 @@ void Text::write(Buffer const & buf, ostream & os) const
 }
 
 
-bool Text::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
+bool Text::read(Buffer const & buf, Lexer & lex, 
+		ErrorList & errorList, Inset * insetPtr)
 {
 	depth_type depth = 0;
 
@@ -1188,6 +1189,7 @@ bool Text::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
 			Paragraph par;
 			par.params().depth(depth);
 			par.setFont(0, Font(inherit_font, buf.params().language));
+			par.setInsetOwner(insetPtr);
 			pars_.push_back(par);
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer

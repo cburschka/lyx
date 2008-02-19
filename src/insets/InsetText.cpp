@@ -69,11 +69,12 @@ InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
 	paragraphs().push_back(Paragraph());
+	Paragraph & ourpar = paragraphs().back();
 	if (useEmptyLayout())
-		paragraphs().back().layout(bp.getTextClass().emptyLayout());
+		ourpar.layout(bp.getTextClass().emptyLayout());
 	else
-		paragraphs().back().layout(bp.getTextClass().defaultLayout());
-	init();
+		ourpar.layout(bp.getTextClass().defaultLayout());
+	ourpar.setInsetOwner(this);
 }
 
 
@@ -84,7 +85,7 @@ InsetText::InsetText(InsetText const & in)
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
 	text_.paragraphs() = in.text_.paragraphs();
-	init();
+	setParagraphOwner();
 }
 
 
@@ -92,7 +93,7 @@ InsetText::InsetText()
 {}
 
 
-void InsetText::init()
+void InsetText::setParagraphOwner()
 {
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, this));
@@ -145,8 +146,7 @@ void InsetText::read(Buffer const & buf, Lexer & lex)
 	Paragraph oldpar = *paragraphs().begin();
 	paragraphs().clear();
 	ErrorList errorList;
-	bool res = text_.read(buf, lex, errorList);
-	init();
+	bool res = text_.read(buf, lex, errorList, this);
 
 	if (!res) {
 		lex.printError("Missing \\end_inset at this point. "
