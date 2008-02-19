@@ -1160,7 +1160,7 @@ void Text::write(Buffer const & buf, ostream & os) const
 
 
 bool Text::read(Buffer const & buf, Lexer & lex, 
-		ErrorList & errorList, Inset * insetPtr)
+		ErrorList & errorList, InsetText * insetPtr)
 {
 	depth_type depth = 0;
 

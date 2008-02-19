@@ -260,12 +260,8 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// returns whether we've seen our usual 'end' marker
 	/// insetPtr is the containing Inset
-	/// FIXME This should really take an InsetText, but it can't yet
-	/// do so because Buffer::inset() returns an Inset and we have no
-	/// access to the InsetText hidden away in Buffer::Impl. This is 
-	/// easy enough to fix but will have to wait a bit.
 	bool read(Buffer const & buf, Lexer & lex, ErrorList & errorList, 
-	          Inset * insetPtr);
+	          InsetText * insetPtr);
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
 	/// \retval true if a change has happened and we need a redraw.
