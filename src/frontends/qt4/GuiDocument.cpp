@@ -536,6 +536,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(enableSkip(bool)));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
+		this, SLOT(setColSep()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
@@ -1090,6 +1092,12 @@ void GuiDocument::setCustomPapersize(int papersize)
 }
 
 
+void GuiDocument::setColSep()
+{
+	setCustomMargins(marginsModule->marginCB->checkState() == Qt::Checked);
+}
+
+
 void GuiDocument::setCustomMargins(bool custom)
 {
 	marginsModule->topL->setEnabled(!custom);
@@ -1120,9 +1128,11 @@ void GuiDocument::setCustomMargins(bool custom)
 	marginsModule->footskipLE->setEnabled(!custom);
 	marginsModule->footskipUnit->setEnabled(!custom);
 
-	marginsModule->columnsepL->setEnabled(!custom);
-	marginsModule->columnsepLE->setEnabled(!custom);
-	marginsModule->columnsepUnit->setEnabled(!custom);
+	bool const enableColSep = !custom && 
+			textLayoutModule->twoColumnCB->checkState() == Qt::Checked;
+	marginsModule->columnsepL->setEnabled(enableColSep);
+	marginsModule->columnsepLE->setEnabled(enableColSep);
+	marginsModule->columnsepUnit->setEnabled(enableColSep);
 }
 
 

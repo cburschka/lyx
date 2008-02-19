@@ -131,6 +131,7 @@ private Q_SLOTS:
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);
+	void setColSep();
 	void setCustomMargins(bool);
 	void romanChanged(int);
 	void sansChanged(int);
