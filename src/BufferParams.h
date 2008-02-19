@@ -165,6 +165,8 @@ public:
 	std::string headsep;
 	///
 	std::string footskip;
+	///
+	std::string columnsep;
 
 	/* some LaTeX options */
 	/// The graphics driver

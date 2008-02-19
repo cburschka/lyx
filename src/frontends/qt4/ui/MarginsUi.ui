@@ -171,6 +171,19 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="columnsepL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>&amp;Column Sep:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>columnsepLE</cstring>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -345,6 +358,30 @@
           </item>
           <item>
             <widget class="LengthCombo" native="1" name="footskipUnit" >
+            <property name="enabled" >
+              <bool>false</bool>
+            </property>
+            </widget>
+          </item>
+          </layout>
+       </item>
+       <item>
+          <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item>
+            <widget class="QLineEdit" name="columnsepLE" >
+            <property name="enabled" >
+              <bool>false</bool>
+            </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="LengthCombo" native="1" name="columnsepUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>

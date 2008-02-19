@@ -619,6 +619,8 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> headsep;
 	} else if (token == "\\footskip") {
 		lex >> footskip;
+	} else if (token == "\\columnsep") {
+		lex >> columnsep;
 	} else if (token == "\\paperfontsize") {
 		lex >> fontsize;
 	} else if (token == "\\papercolumns") {
@@ -768,6 +770,9 @@ void BufferParams::writeFile(ostream & os) const
 	if (!footskip.empty())
 		os << "\\footskip "
 		   << VSpace(footskip).asLyXCommand() << '\n';
+	if (!columnsep.empty())
+		os << "\\columnsep " 
+			 << VSpace(columnsep).asLyXCommand() << '\n';
 	os << "\\secnumdepth " << secnumdepth
 	   << "\n\\tocdepth " << tocdepth
 	   << "\n\\paragraph_separation "
@@ -1139,6 +1144,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
 		if (!footskip.empty())
 			os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
+		if (!columnsep.empty())
+			os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
 		os << "}\n";
 		texrow.newline();
 	}

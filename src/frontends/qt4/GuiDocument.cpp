@@ -718,6 +718,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(marginsModule->columnsepLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(marginsModule->columnsepUnit, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	marginsModule->topLE->setValidator(unsignedLengthValidator(
 		marginsModule->topLE));
 	marginsModule->bottomLE->setValidator(unsignedLengthValidator(
@@ -732,6 +736,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		marginsModule->headheightLE));
 	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
 		marginsModule->footskipLE));
+	marginsModule->columnsepLE->setValidator(unsignedLengthValidator(
+		marginsModule->columnsepLE));
 
 	bc().addCheckedLineEdit(marginsModule->topLE,
 		marginsModule->topL);
@@ -747,6 +753,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		marginsModule->headheightL);
 	bc().addCheckedLineEdit(marginsModule->footskipLE,
 		marginsModule->footskipL);
+	bc().addCheckedLineEdit(marginsModule->columnsepLE,
+		marginsModule->columnsepL);
 
 
 	langModule = new UiWidget<Ui::LanguageUi>;
@@ -1111,6 +1119,10 @@ void GuiDocument::setCustomMargins(bool custom)
 	marginsModule->footskipL->setEnabled(!custom);
 	marginsModule->footskipLE->setEnabled(!custom);
 	marginsModule->footskipUnit->setEnabled(!custom);
+
+	marginsModule->columnsepL->setEnabled(!custom);
+	marginsModule->columnsepLE->setEnabled(!custom);
+	marginsModule->columnsepUnit->setEnabled(!custom);
 }
 
 
@@ -1600,6 +1612,7 @@ void GuiDocument::apply(BufferParams & params)
 	params.headheight = widgetsToLength(m->headheightLE, m->headheightUnit);
 	params.headsep = widgetsToLength(m->headsepLE, m->headsepUnit);
 	params.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
+	params.columnsep = widgetsToLength(m->columnsepLE, m->columnsepUnit);
 
 	branchesModule->apply(params);
 
@@ -1908,6 +1921,9 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	lengthToWidgets(m->footskipLE, m->footskipUnit,
 		params.footskip, defaultUnit);
+
+	lengthToWidgets(m->columnsepLE, m->columnsepUnit,
+		params.columnsep, defaultUnit);
 
 	branchesModule->update(params);
 

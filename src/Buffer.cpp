@@ -113,7 +113,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 314; // Uwe Stöhr: scrlttr2 for serial letters
+int const LYX_FORMAT = 315; // Richard Heck: column separation
 
 } // namespace anon
 
@@ -466,6 +466,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().headheight.erase();
 	params().headsep.erase();
 	params().footskip.erase();
+	params().columnsep.erase();
 	params().listings_params.clear();
 	params().clearLayoutModules();
 	params().pdfoptions().clear();

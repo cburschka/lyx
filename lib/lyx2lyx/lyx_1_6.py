@@ -960,6 +960,24 @@ def revert_module_names(document):
   document.set_module_list(newmodlist)
 
 
+def revert_colsep(document):
+    i = find_token(document.header, "\\columnsep", 0)
+    if i == -1:
+        return
+    colsepline = document.header[i]
+    r = re.compile(r'\\columnsep (.*)')
+    m = r.match(colsepline)
+    if not m:
+        document.warning("Malformed column separation line!")
+        return
+    colsep = m.group(1)
+    del document.header[i]
+    #it seems to be safe to add the package even if it is already used
+    pretext = ["\\usepackage{geometry}", "\\geometry{columnsep=" + colsep + "}"]
+
+    add_to_preamble(document, pretext)
+
+
 def revert_framed_notes(document):
     "Revert framed boxes to notes. "
     i = 0
@@ -1265,10 +1283,12 @@ convert = [[277, [fix_wrong_tables]],
            [311, [convert_ams_classes]],
            [312, []],
            [313, [convert_module_names]],
-           [314, []]
+           [314, []],
+           [315, []]
           ]
 
-revert =  [[313, []],
+revert =  [[314, [revert_colsep]],
+           [313, []],
            [312, [revert_module_names]],
            [311, [revert_rotfloat, revert_widesideways]],
            [310, []],
