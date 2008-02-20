@@ -37,7 +37,8 @@ import sys
 
 # Reset the locale
 import locale
-locale.setlocale(locale.LC_ALL, '') 
+locale.setlocale(locale.LC_ALL, 'C') 
+os.environ['LC_ALL'] = 'C'
 
 def extract_number(line, issues, prop):
     """
