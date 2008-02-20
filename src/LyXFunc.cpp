@@ -452,6 +452,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_INSET_APPLY:
 	case LFUN_BUFFER_WRITE:
 	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_SPLIT_VIEW:
 		if (lyx_view_)
 			return lyx_view_->getStatus(cmd);
 		enable = false;

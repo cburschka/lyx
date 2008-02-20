@@ -706,23 +706,21 @@ GuiWorkArea * GuiView::workArea(Buffer & buffer)
 
 GuiWorkArea * GuiView::addWorkArea(Buffer & buffer)
 {
-
 	// Automatically create a TabWorkArea if there are none yet.
-	if (!d.splitter_->count())
-		addTabWorkArea();
-
-	TabWorkArea * tab_widget = d.currentTabWorkArea();
+	TabWorkArea * tab_widget = d.splitter_->count() 
+		? d.currentTabWorkArea() : addTabWorkArea();
 	return tab_widget->addWorkArea(buffer, *this);
 }
 
 
-void GuiView::addTabWorkArea()
+TabWorkArea * GuiView::addTabWorkArea()
 {
 	TabWorkArea * twa = new TabWorkArea;
 	QObject::connect(twa, SIGNAL(currentWorkAreaChanged(GuiWorkArea *)),
 		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
 	d.splitter_->addWidget(twa);
 	d.stack_widget_->setCurrentWidget(d.splitter_);
+	return twa;
 }
 
 
@@ -964,6 +962,10 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BUFFER_WRITE_AS:
+		enable = buf;
+		break;
+
+	case LFUN_SPLIT_VIEW:
 		enable = buf;
 		break;
 
@@ -1812,6 +1814,15 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			lfunUiToggle(cmd);
 			// Make sure the keyboard focus stays in the work area.
 			setFocus();
+			break;
+
+		case LFUN_SPLIT_VIEW:
+			if (Buffer * buf = buffer()) {
+				TabWorkArea * twa = addTabWorkArea();
+				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
+				setCurrentWorkArea(wa);
+				connectBufferView(wa->bufferView());
+			}
 			break;
 
 		default:

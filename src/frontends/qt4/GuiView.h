@@ -39,6 +39,7 @@ class Dialog;
 class GuiLayoutBox;
 class GuiToolbar;
 class GuiWorkArea;
+class TabWorkArea;
 
 /**
  * GuiView - Qt4 implementation of LyXView
@@ -160,7 +161,7 @@ private Q_SLOTS:
 
 private:
 	///
-	void addTabWorkArea();
+	TabWorkArea * addTabWorkArea();
 
 	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);

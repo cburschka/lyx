@@ -413,6 +413,7 @@ enum kb_action {
 	LFUN_IN_MATHMACROTEMPLATE,
 	LFUN_SCROLL,
 	LFUN_UI_TOGGLE,
+	LFUN_SPLIT_VIEW,
 	LFUN_LASTACTION                  // end of the table
 };
 

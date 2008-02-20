@@ -1140,6 +1140,8 @@ void LyXAction::init()
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
 
+		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
+
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop, Edit },
 		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer, Edit },
