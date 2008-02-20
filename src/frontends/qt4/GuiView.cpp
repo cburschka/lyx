@@ -1811,6 +1811,8 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_UI_TOGGLE:
 			lfunUiToggle(cmd);
+			// Make sure the keyboard focus stays in the work area.
+			setFocus();
 			break;
 
 		default:
