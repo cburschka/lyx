@@ -1885,6 +1885,11 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		showFullScreen();
 		statusBar()->hide();
 		menuBar()->hide();
+		if (d.current_work_area_) {
+			// It seems there is a bug somewhere preventing the scrollbar to
+			// show up with updated parameters. This work-around seems to work.
+			d.current_work_area_->verticalScrollBar()->show();
+		}
 	}
 }
 
