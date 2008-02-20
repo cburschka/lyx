@@ -184,9 +184,10 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 			lex.pushToken(token);
 		}
 	}
-	InsetText::read(buf, lex);
-
+	//this must be set before we enter InsetText::read()
 	setLayout(buf.params());
+
+	InsetText::read(buf, lex);
 
 	if (!token_found)
 		status_ = isOpen() ? Open : Collapsed;
