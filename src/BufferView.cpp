@@ -1357,23 +1357,16 @@ void BufferView::clearSelection()
 
 void BufferView::resize(int width, int height)
 {
-	bool initialResize = (height_ == 0);
-	
 	// Update from work area
 	width_ = width;
 	height_ = height;
 
 	// Clear the paragraph height cache.
 	d->par_height_.clear();
-
+	// Redo the metrics.
 	updateMetrics();
-
-	// view got his initial size, make sure that
-	// the cursor has a proper position
-	if (initialResize) {
-		updateScrollbar();
-		showCursor();
-	}
+	// Make sure the current cursor is visible.
+	showCursor();
 }
 
 
