@@ -1374,7 +1374,6 @@ void BufferView::resize(int width, int height)
 		updateScrollbar();
 		showCursor();
 	}
-	processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 
