@@ -224,17 +224,16 @@ struct GuiView::GuiViewPrivate
 			// The first TabWorkArea is always the first one, if any.
 			return tabWorkArea(0);
 
-		TabWorkArea * tab_widget = 0;
 		for (int i = 0; i != splitter_->count(); ++i) {
 			QWidget * w = splitter_->widget(i);
 			if (!w->hasFocus())
 				continue;
-			tab_widget = dynamic_cast<TabWorkArea *>(w);
-			if (tab_widget)
-				break;
+			if (TabWorkArea * tab_widget = dynamic_cast<TabWorkArea *>(w))
+				return tab_widget;
 		}
 
-		return tab_widget;
+		// None has the focus so we just take the first one.
+		return tabWorkArea(0);
 	}
 
 public:
