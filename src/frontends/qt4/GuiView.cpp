@@ -1868,29 +1868,23 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		d.toolbars_->toggleFullScreen(!isFullScreen());
 
 	if (isFullScreen()) {
-		showNormal();
+		for (int i = 0; i != d.splitter_->count(); ++i)
+			d.tabWorkArea(i)->setFullScreen(false);
 #if QT_VERSION >= 0x040300
 		setContentsMargins(0, 0, 0, 0);
 #endif
-		for (int i = 0; i != d.splitter_->count(); ++i)
-			d.tabWorkArea(i)->setFullScreen(false);
+		showNormal();
 		menuBar()->show();
 		statusBar()->show();
-		if (lyxrc.full_screen_scrollbar && d.current_work_area_)
-			d.current_work_area_->
-				setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	} else {
-		if (lyxrc.full_screen_scrollbar && d.current_work_area_)
-			d.current_work_area_->
-				setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-		statusBar()->hide();
-		menuBar()->hide();
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
 #if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
 #endif
 		showFullScreen();
+		statusBar()->hide();
+		menuBar()->hide();
 	}
 }
 
