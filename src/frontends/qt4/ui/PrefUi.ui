@@ -362,11 +362,7 @@
       <item row="0" column="0" >
        <widget class="QCheckBox" name="tooltipCB" >
         <property name="toolTip" >
-         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">Checking this allow the automatic display of helpful comments for insets in the main work area of an edited document.&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">&lt;/p>&lt;/body>&lt;/html></string>
+         <string>Checking this allow the automatic display of helpful comments for insets in the main work area of an edited document</string>
         </property>
         <property name="text" >
          <string>Enable &amp;tool tips in main work area</string>
