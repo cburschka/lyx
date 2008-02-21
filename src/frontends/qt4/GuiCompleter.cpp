@@ -53,14 +53,16 @@ protected:
 		QStyleOptionViewItemV3 opt = setOptions(index, option);
 		QVariant value = index.data(Qt::DisplayRole);
 		QPixmap pixmap = qvariant_cast<QPixmap>(value);
-		const QSize size = pixmap.size();
-
+		
 		// draw
 		painter->save();
 		drawBackground(painter, opt, index);
-		painter->drawPixmap(option.rect.left() + (16 - size.width()) / 2,
-			option.rect.top() + (option.rect.height() - size.height()) / 2,
-			pixmap);
+		if (!pixmap.isNull()) {
+			const QSize size = pixmap.size();
+			painter->drawPixmap(option.rect.left() + (16 - size.width()) / 2,
+				option.rect.top() + (option.rect.height() - size.height()) / 2,
+				pixmap);
+		}
 		drawFocus(painter, opt, option.rect);
 		painter->restore();
 	}
@@ -107,10 +109,13 @@ public:
 			if (!QPixmapCache::find("completion" + name, scaled)) {
 				// load icon from disk
 				QPixmap p = QPixmap(name);
+				if (!p.isNull()) {
+					// scale it to 16x16 or smaller
+					scaled
+					= p.scaled(min(16, p.width()), min(16, p.height()), 
+						Qt::KeepAspectRatio, Qt::SmoothTransformation);
+				}
 
-				// scale it to 16x16 or smaller
-				scaled = p.scaled(min(16, p.width()), min(16, p.height()), 
-					Qt::KeepAspectRatio, Qt::SmoothTransformation);
 				QPixmapCache::insert("completion" + name, scaled);
 			}
 			return scaled;
