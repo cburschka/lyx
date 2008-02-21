@@ -79,7 +79,7 @@ public:
 	}
 	///
 	virtual docstring data(size_t idx) const {
-		std::set<docstring>::iterator it
+		std::set<docstring>::const_iterator it
 		= buf_.registeredWords().begin();
 		for (size_t i = 0; i < idx; ++i)
 			it++;
@@ -88,7 +88,7 @@ public:
 
 private:
 	Buffer const & buf_;
-	std::set<docstring>::iterator const it_;
+	std::set<docstring>::const_iterator const it_;
 	size_t pos_;
 };
 
