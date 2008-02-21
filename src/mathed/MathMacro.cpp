@@ -800,6 +800,12 @@ void MathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 {
 	// get inset dimensions
 	dim = cur.bv().coordCache().insets().dim(this);
+	// FIXME: these 3 are no accurate, but should depend on the font.
+	// Now the popup jumps down if you enter a char with descent > 0.
+	dim.des += 3;
+	dim.asc += 3;
+	
+	// and position
 	Point xy
 	= cur.bv().coordCache().insets().xy(this);
 	x = xy.x_;
