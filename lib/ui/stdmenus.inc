@@ -294,7 +294,7 @@ Menuset
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
-		Item "Split view horizontally|H" "split-view horizontal"
+		Item "Split view horizontally|h" "split-view horizontal"
 		Item "Split view vertically|v" "split-view vertical"
 		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Submenu "Toolbars|b" "toolbars"
