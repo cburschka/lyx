@@ -1365,8 +1365,6 @@ void BufferView::resize(int width, int height)
 	d->par_height_.clear();
 	// Redo the metrics.
 	updateMetrics();
-	// Make sure the current cursor is visible.
-	showCursor();
 }
 
 
