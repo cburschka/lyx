@@ -1813,6 +1813,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_SPLIT_VIEW:
 			if (Buffer * buf = buffer()) {
+				string const orientation = cmd.getArg(0);
+				d.splitter_->setOrientation(orientation == "vertical"
+					? Qt::Vertical : Qt::Horizontal);
 				TabWorkArea * twa = addTabWorkArea();
 				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
 				setCurrentWorkArea(wa);
