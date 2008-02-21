@@ -571,7 +571,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 }
 
 
-void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
+void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
 	lyx_view_->setCurrentWorkArea(this);
 	// Repaint the whole screen.
@@ -580,12 +580,14 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 	viewport()->repaint();
 
 	startBlinkingCursor();
+	QAbstractScrollArea::focusInEvent(e);
 }
 
 
-void GuiWorkArea::focusOutEvent(QFocusEvent * /*event*/)
+void GuiWorkArea::focusOutEvent(QFocusEvent * e)
 {
 	stopBlinkingCursor();
+	QAbstractScrollArea::focusOutEvent(e);
 }
 
 
@@ -596,6 +598,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
 			q_button_state(e->button()));
 		dispatch(cmd);
+		e->accept();
 		return;
 	}
 
@@ -604,6 +607,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 		q_button_state(e->button()));
 	dispatch(cmd, q_key_state(e->modifiers()));
+	e->accept();
 }
 
 
@@ -615,6 +619,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
 	dispatch(cmd);
+	e->accept();
 }
 
 
@@ -624,6 +629,8 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
 		q_motion_state(e->buttons()));
+
+	e->accept();
 
 	// If we're above or below the work area...
 	if (e->y() <= 20 || e->y() >= viewport()->height() - 20) {
@@ -695,6 +702,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 		<< " lines = " << lines);
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
 		int(lines *  verticalScrollBar()->singleStep()));
+	e->accept();
 }
 
 
@@ -757,6 +765,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 			ev->x(), ev->y(),
 			q_button_state(ev->button()));
 	dispatch(cmd);
+	ev->accept();
 }
 
 
@@ -764,6 +773,7 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
 	QAbstractScrollArea::resizeEvent(ev);
 	need_resize_ = true;
+	ev->accept();
 }
 
 
@@ -789,6 +799,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	QPainter pain(viewport());
 	pain.drawPixmap(rc, screen_, rc);
 	cursor_->draw(pain);
+	ev->accept();
 }
 
 
