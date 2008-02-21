@@ -453,6 +453,13 @@ void GuiCompleter::tab()
 		// try to activate the inline completion
 		if (cur.inset().inlineCompletionSupported(cur)) {
 			showInline();
+			
+			// show popup without delay because the completion was not unique
+			if (lyxrc.completion_popup_after_complete
+			    && !popupVisible()
+			    && popup()->model()->rowCount() > 1)
+				popup_timer_.start(0);
+
 			return;
 		}
 		// or try popup
