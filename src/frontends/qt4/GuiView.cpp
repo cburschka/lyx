@@ -225,11 +225,9 @@ struct GuiView::GuiViewPrivate
 			return tabWorkArea(0);
 
 		for (int i = 0; i != splitter_->count(); ++i) {
-			QWidget * w = splitter_->widget(i);
-			if (!w->hasFocus())
-				continue;
-			if (TabWorkArea * tab_widget = dynamic_cast<TabWorkArea *>(w))
-				return tab_widget;
+			TabWorkArea * twa = tabWorkArea(i);
+			if (current_work_area_ == twa->currentWorkArea())
+				return twa;
 		}
 
 		// None has the focus so we just take the first one.
@@ -695,11 +693,8 @@ GuiToolbar * GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 
 GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
-	for (int i = 0; i != d.splitter_->count(); ++i) {
-		GuiWorkArea * wa = d.tabWorkArea(i)->workArea(buffer);
-		if (wa)
-			return wa;
-	}
+	if (TabWorkArea * twa = d.currentTabWorkArea())
+		return twa->workArea(buffer);
 	return 0;
 }
 
@@ -1821,7 +1816,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				TabWorkArea * twa = addTabWorkArea();
 				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
 				setCurrentWorkArea(wa);
-				connectBufferView(wa->bufferView());
 			}
 			break;
 
