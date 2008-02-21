@@ -107,6 +107,8 @@ private:
 	QTimer inline_timer_;
 	///
 	QString last_selection_;
+	/// lock to stop updates of the inline completion
+	int updateLock_;
 }; // GuiCompleter
 
 } // namespace frontend

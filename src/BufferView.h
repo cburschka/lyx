@@ -169,8 +169,9 @@ public:
 	/// return the position in the buffer of the inline completion postfix.
 	DocIterator const & inlineCompletionPos() const;
 	/// set the inline completion postfix and its position in the buffer.
-	void setInlineCompletion(DocIterator const & pos, docstring const & completion,
-		size_t uniqueChars = 0);
+	/// Updates the updateFlags in \c cur.
+	void setInlineCompletion(Cursor & cur, DocIterator const & pos,
+		docstring const & completion, size_t uniqueChars = 0);
 
 	/// translate and insert a character, using the correct keymap.
 	void translateAndInsert(char_type c, Text * t, Cursor & cur);

@@ -119,12 +119,13 @@ public:
 	}
 
 private:
+	///
 	Inset::CompletionListPtr list;
 };
 
 
 GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
-	: QCompleter(parent), gui_(gui)
+	: QCompleter(parent), gui_(gui), updateLock_(0)
 {
 	// Setup the completion popup
 	setModel(new GuiCompletionModel(this, Inset::CompletionListPtr()));
@@ -235,10 +236,8 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 			inline_timer_.stop();
 
 		// hide old inline completion
-		if (inlineVisible()) {
-			gui_->bufferView().setInlineCompletion(DocIterator(), docstring());
-			cur.updateFlags(Update::Force | Update::SinglePar);
-		}
+		if (inlineVisible())
+			gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
 	}
 
 	// we inserted something and are in a possible popup state?
@@ -261,7 +260,10 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 void GuiCompleter::updateVisibility(bool start, bool keep)
 {
 	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
 	updateVisibility(cur, start, keep);
+	
 	if (cur.disp_.update())
 		gui_->bufferView().processUpdateFlags(cur.disp_.update());
 }
@@ -320,8 +322,7 @@ void GuiCompleter::updateInline(Cursor & cur, QString const & completion)
 
 	// set inline completion at cursor position
 	size_t uniqueTo = max(longestUniqueCompletion().size(), prefix.size());
-	gui_->bufferView().setInlineCompletion(cur, postfix, uniqueTo - prefix.size());
-	cur.updateFlags(Update::Force | Update::SinglePar);
+	gui_->bufferView().setInlineCompletion(cur, cur, postfix, uniqueTo - prefix.size());
 }
 
 
@@ -344,9 +345,6 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	complete(insetRect);
 	QTreeView * p = static_cast<QTreeView *>(popup());
 	p->setColumnWidth(0, popup()->width() - 22 - p->verticalScrollBar()->width());
-	
-	// update highlight
-	updateInline(cur, currentCompletion());
 }
 
 
@@ -404,6 +402,8 @@ void GuiCompleter::showInline(Cursor & cur)
 void GuiCompleter::showPopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
 	showPopup(cur);
 
 	// redraw if needed
@@ -415,6 +415,8 @@ void GuiCompleter::showPopup()
 void GuiCompleter::showInline()
 {
 	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
 	showInline(cur);
 
 	// redraw if needed
@@ -438,8 +440,9 @@ void GuiCompleter::activate()
 void GuiCompleter::tab()
 {
 	BufferView * bv = &gui_->bufferView();
-	Cursor & cur = bv->cursor();
-
+	Cursor cur = bv->cursor();
+	cur.updateFlags(Update::None);
+	
 	// check that inline completion is active
 	if (!inlineVisible()) {
 		// try to activate the inline completion
@@ -504,7 +507,7 @@ QString GuiCompleter::currentCompletion() const
 
 
 void GuiCompleter::setCurrentCompletion(QString const & s)
-{
+{	
 	QAbstractItemModel const & model = *popup()->model();
 	size_t n = model.rowCount();
 	if (n == 0)
@@ -512,7 +515,9 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 
 	// select the first if s is empty
 	if (s.length() == 0) {
+		updateLock_++;
 		popup()->setCurrentIndex(model.index(0, 0));
+		updateLock_--;
 		return;
 	}
 
@@ -530,7 +535,9 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 	if (i == n)
 		i = 0;
 
+	updateLock_++;
 	popup()->setCurrentIndex(model.index(i, 0));
+	updateLock_--;
 }
 
 
@@ -561,11 +568,14 @@ docstring GuiCompleter::longestUniqueCompletion() const {
 
 void GuiCompleter::popupActivated(const QString & completion)
 {
-	Cursor & cur = gui_->bufferView().cursor();
+	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = from_utf8(fromqstr(completion.mid(prefix.length())));
 	cur.inset().insertCompletion(cur, postfix, true);
 	updateVisibility(cur, false);
+	
 	if (cur.disp_.update())
 		gui_->bufferView().processUpdateFlags(cur.disp_.update());
 }
@@ -573,8 +583,14 @@ void GuiCompleter::popupActivated(const QString & completion)
 
 void GuiCompleter::popupHighlighted(const QString & completion)
 {
+	if (updateLock_ > 0)
+		return;
+
 	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
 	updateInline(cur, completion);
+	
 	if (cur.disp_.update())
 		gui_->bufferView().processUpdateFlags(cur.disp_.update());
 }

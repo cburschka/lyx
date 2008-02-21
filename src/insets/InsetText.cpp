@@ -540,8 +540,10 @@ bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
 {
 	if (!completionSupported(cur))
 		return false;
-	
+
+	BOOST_ASSERT(cur.bv().cursor() == cur);
 	cur.insert(s);
+	cur.bv().cursor() = cur;
 	return true;
 }
 

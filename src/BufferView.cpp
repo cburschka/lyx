@@ -2190,12 +2190,51 @@ DocIterator const & BufferView::inlineCompletionPos() const
 }
 
 
-void BufferView::setInlineCompletion(DocIterator const & pos, 
+bool samePar(DocIterator const & a, DocIterator const & b)
+{
+	if (a.empty() && b.empty())
+		return true;
+	if (a.empty() || b.empty())
+		return false;
+	return &a.innerParagraph() == &b.innerParagraph();
+}
+
+
+void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos, 
 	docstring const & completion, size_t uniqueChars)
 {
-	d->inlineCompletionPos = pos;
+	uniqueChars = min(completion.size(), uniqueChars);
+	bool changed = d->inlineCompletion != completion
+		|| d->inlineCompletionUniqueChars != uniqueChars;
+	bool singlePar = true;
 	d->inlineCompletion = completion;
 	d->inlineCompletionUniqueChars = min(completion.size(), uniqueChars);
+	
+	lyxerr << "setInlineCompletion pos=" << pos << " completion=" << completion << " uniqueChars=" << uniqueChars << std::endl;
+	
+	// at new position?
+	DocIterator const & old = d->inlineCompletionPos;
+	if (old != pos) {
+		lyxerr << "inlineCompletionPos changed" << std::endl;
+		// old or pos are in another paragraph?
+		if ((!samePar(cur, pos) && !pos.empty())
+		    || (!samePar(cur, old) && !old.empty())) {
+			singlePar = false;
+			lyxerr << "different paragraph" << std::endl;
+		}
+		d->inlineCompletionPos = pos;
+	}
+	
+	// set update flags
+	if (changed) {
+		lyxerr << "inlineCompletion changed" << std::endl;
+		
+		Update::flags flags
+		= cur.disp_.update() | Update::Force;
+		if (singlePar && !(flags | Update::SinglePar))
+		    flags = flags | Update::SinglePar;
+		cur.updateFlags(flags);
+	}
 }
 
 } // namespace lyx
