@@ -14,8 +14,6 @@
 
 #include "InsetMath.h"
 
-#include <deque>
-
 namespace lyx {
 
 class MathCompletionList : public Inset::CompletionList {
@@ -40,8 +38,6 @@ private:
 	static std::vector<docstring> globals;
 	///
 	std::vector<docstring> locals;
-	///
-	static std::deque<docstring> favorites;
 };
 
 /** Abstract base class for all math objects that contain nested items.
@@ -146,7 +142,7 @@ public:
 	///
 	bool automaticPopupCompletion() const;
 	///
-	CompletionListPtr completionList(Cursor const & cur) const;
+	CompletionList const * completionList(Cursor const & cur) const;
 	///
 	docstring completionPrefix(Cursor const & cur) const;
 	///

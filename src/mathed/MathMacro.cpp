@@ -763,12 +763,12 @@ bool MathMacro::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionListPtr MathMacro::completionList(Cursor const & cur) const
+Inset::CompletionList const * MathMacro::completionList(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionList(cur);
 
-	return CompletionListPtr(new MathCompletionList(cur.bv().cursor()));
+	return new MathCompletionList(cur.bv().cursor());
 }
 
 

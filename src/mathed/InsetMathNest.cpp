@@ -58,7 +58,6 @@
 #include "support/docstream.h"
 
 #include <algorithm>
-#include <deque>
 #include <sstream>
 
 using namespace std;
@@ -1612,12 +1611,12 @@ bool InsetMathNest::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionListPtr InsetMathNest::completionList(Cursor const & cur) const
+Inset::CompletionList const * InsetMathNest::completionList(Cursor const & cur) const
 {
 	if (!cur.inMacroMode())
-		return CompletionListPtr();
+		return 0;
 	
-	return CompletionListPtr(new MathCompletionList(cur));
+	return new MathCompletionList(cur);
 }
 
 
@@ -1805,20 +1804,17 @@ MathCompletionList::~MathCompletionList()
 
 size_type MathCompletionList::size() const
 {
-	return favorites.size() + locals.size() + globals.size();
+	return locals.size() + globals.size();
 }
 
 
 docstring MathCompletionList::data(size_t idx) const
 {
-	size_t fsize = favorites.size();
 	size_t lsize = locals.size();
-	if (idx >= fsize + lsize)
-		return globals[idx - lsize - fsize];
-	else if (idx >= fsize)
-		return locals[idx - fsize];
+	if (idx >= lsize)
+		return globals[idx - lsize];
 	else
-		return favorites[idx];
+		return locals[idx];
 }
 
 
@@ -1826,39 +1822,16 @@ std::string MathCompletionList::icon(size_t idx) const
 {
 	// get the latex command
 	docstring cmd;
-	size_t fsize = favorites.size();
 	size_t lsize = locals.size();
-	if (idx >= fsize + lsize)
-		cmd = globals[idx - lsize - fsize];
-	else if (idx >= fsize)
-		cmd = locals[idx - fsize];
+	if (idx >= lsize)
+		cmd = globals[idx - lsize];
 	else
-		cmd = favorites[idx];
+		cmd = locals[idx];
 	
 	// get the icon resource name by stripping the backslash
 	return "images/math/" + to_utf8(cmd.substr(1)) + ".png";
 }
 
-
-
-void MathCompletionList::addToFavorites(docstring const & completion)
-{
-	// remove old occurrence
-	std::deque<docstring>::iterator it;
-	for (it = favorites.begin(); it != favorites.end(); ++it) {
-		if (*it == completion) {
-			favorites.erase(it);
-			break;
-		}
-	}
-
-	// put it to the front
-	favorites.push_front(completion);
-	favorites.resize(min(int(favorites.size()), 10));
-}
-
-
 std::vector<docstring> MathCompletionList::globals;
-std::deque<docstring> MathCompletionList::favorites;
 
 } // namespace lyx

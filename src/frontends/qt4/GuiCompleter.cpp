@@ -72,8 +72,11 @@ protected:
 class GuiCompletionModel : public QAbstractListModel {
 public:
 	///
-	GuiCompletionModel(QObject * parent, Inset::CompletionListPtr l)
-	: QAbstractListModel(parent), list(l) {}
+	GuiCompletionModel(QObject * parent, Inset::CompletionList const * l)
+	: QAbstractListModel(parent), list_(l) {}
+	///
+	~GuiCompletionModel()
+		{ delete list_; }
 	///
 	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const
 	{
@@ -82,16 +85,16 @@ public:
 	///
 	int rowCount(const QModelIndex & /*parent*/ = QModelIndex()) const
 	{
-		if (list.get() == 0)
+		if (list_ == 0)
 			return 0;
 		else
-			return list->size();
+			return list_->size();
 	}
 
 	///
 	QVariant data(const QModelIndex & index, int role) const
 	{
-		if (list.get() == 0)
+		if (list_ == 0)
 			return QVariant();
 
 		if (index.row() < 0 || index.row() >= rowCount())
@@ -101,11 +104,11 @@ public:
 		    return QVariant();
 		    
 		if (index.column() == 0)
-			return toqstr(list->data(index.row()));
+			return toqstr(list_->data(index.row()));
 		else if (index.column() == 1) {
 			// get icon from cache
 			QPixmap scaled;
-			QString const name = ":" + toqstr(list->icon(index.row()));
+			QString const name = ":" + toqstr(list_->icon(index.row()));
 			if (!QPixmapCache::find("completion" + name, scaled)) {
 				// load icon from disk
 				QPixmap p = QPixmap(name);
@@ -125,7 +128,7 @@ public:
 
 private:
 	///
-	Inset::CompletionListPtr list;
+	Inset::CompletionList const * list_;
 };
 
 
@@ -133,7 +136,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	: QCompleter(parent), gui_(gui), updateLock_(0)
 {
 	// Setup the completion popup
-	setModel(new GuiCompletionModel(this, Inset::CompletionListPtr()));
+	setModel(new GuiCompletionModel(this, 0));
 	setCompletionMode(QCompleter::PopupCompletion);
 	setWidget(gui_);
 	

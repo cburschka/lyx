@@ -297,7 +297,6 @@ public:
 		/// returns the resource string used to load an icon.
 		virtual std::string icon(size_t /*idx*/) const { return std::string(); }
 	};
-	typedef boost::shared_ptr<CompletionList> CompletionListPtr;
 
 	/// Returns true if the inset supports completions.
 	virtual bool completionSupported(Cursor const &) const { return false; }
@@ -312,8 +311,9 @@ public:
 	virtual bool automaticPopupCompletion() const { return true; }
 	/// Returns completion suggestions at cursor position. Return an
 	/// null pointer if no completion is a available or possible.
-	virtual CompletionListPtr completionList(Cursor const &) const 
-		{ return CompletionListPtr(); }
+	/// The caller is responsible to free the return object!
+	virtual CompletionList const * completionList(Cursor const &) const 
+		{ return 0; }
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
 	virtual docstring completionPrefix(Cursor const &) const 
