@@ -1827,8 +1827,15 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_CLOSE_TAB_GROUP:
-			if (TabWorkArea * twa = d.currentTabWorkArea())
+			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				delete twa;
+				twa = d.currentTabWorkArea();
+				// Switch to the next GuiWorkArea in the found TabWorkArea.
+				d.current_work_area_ = twa? twa->currentWorkArea() : 0;
+				if (d.splitter_->count() == 0)
+					// No more work area, switch to the background widget.
+					d.setBackground();
+			}
 			break;
 
 		default:
