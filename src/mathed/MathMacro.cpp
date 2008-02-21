@@ -725,6 +725,9 @@ void MathMacro::infoize2(odocstream & os) const
 
 bool MathMacro::completionSupported(Cursor const & cur) const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::completionSupported(cur);
+
 	return lyxrc.completion_popup_math
 		&& displayMode() == DISPLAY_UNFOLDED
 		&& cur.bv().cursor().pos() == int(name().size());
@@ -733,6 +736,9 @@ bool MathMacro::completionSupported(Cursor const & cur) const
 
 bool MathMacro::inlineCompletionSupported(Cursor const & cur) const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::inlineCompletionSupported(cur);
+
 	return lyxrc.completion_inline_math
 		&& displayMode() == DISPLAY_UNFOLDED
 		&& cur.bv().cursor().pos() == int(name().size());
@@ -741,24 +747,36 @@ bool MathMacro::inlineCompletionSupported(Cursor const & cur) const
 
 bool MathMacro::automaticInlineCompletion() const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::automaticInlineCompletion();
+
 	return lyxrc.completion_inline_math;
 }
 
 
 bool MathMacro::automaticPopupCompletion() const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::automaticPopupCompletion();
+
 	return lyxrc.completion_popup_math;
 }
 
 
 Inset::CompletionListPtr MathMacro::completionList(Cursor const & cur) const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::completionList(cur);
+
 	return CompletionListPtr(new MathCompletionList(cur.bv().cursor()));
 }
 
 
 docstring MathMacro::completionPrefix(Cursor const & cur) const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::completionPrefix(cur);
+
 	if (!completionSupported(cur))
 		return docstring();
 	
@@ -769,7 +787,10 @@ docstring MathMacro::completionPrefix(Cursor const & cur) const
 bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 					bool finished)
 {
-	if (completionSupported(cur))
+	if (displayMode() != DISPLAY_UNFOLDED)
+		return InsetMathNest::insertCompletion(cur, s, finished);
+
+	if (!completionSupported(cur))
 		return false;
 
 	// append completion
@@ -798,6 +819,9 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 void MathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Dimension & dim) const
 {
+	if (displayMode() != DISPLAY_UNFOLDED)
+		InsetMathNest::completionPosAndDim(cur, x, y, dim);
+	
 	// get inset dimensions
 	dim = cur.bv().coordCache().insets().dim(this);
 	// FIXME: these 3 are no accurate, but should depend on the font.
