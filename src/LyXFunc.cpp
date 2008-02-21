@@ -2003,6 +2003,12 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SORT_LAYOUTS:
+	case LyXRC::RC_FULL_SCREEN_LIMIT:
+	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:
+	case LyXRC::RC_FULL_SCREEN_TABBAR:
+	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
+	case LyXRC::RC_FULL_SCREEN_WIDTH:
+	case LyXRC::RC_VISUAL_CURSOR:
 	case LyXRC::RC_VIEWER:
 	case LyXRC::RC_LAST:
 		break;
