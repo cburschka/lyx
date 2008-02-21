@@ -12,7 +12,13 @@
 #ifndef MATH_FACTORY_H
 #define MATH_FACTORY_H
 
+#include <map>
+
+#include "MathParser.h"
+
 #include "support/strfwd.h"
+
+using std::map;
 
 namespace lyx {
 
@@ -29,6 +35,8 @@ MathAtom createInsetMath(char const * const);
  */
 bool createInsetMath_fromDialogStr(docstring const &, MathData &);
 
+typedef map<docstring, latexkeys> WordList;
+WordList const & mathedWordList();
 
 } // namespace lyx
 

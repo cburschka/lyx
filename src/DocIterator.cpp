@@ -428,6 +428,9 @@ void DocIterator::updateInsets(Inset * inset)
 
 bool DocIterator::fixIfBroken()
 {
+	if (empty())
+		return false;
+
 	// Go through the slice stack from the bottom. 
 	// Check that all coordinates (idx, pit, pos) are correct and
 	// that the inset is the one which is claimed to be there

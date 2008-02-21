@@ -367,6 +367,7 @@ public:
 	void updateMacroInstances() const;
 
 	typedef std::set<docstring> MacroNameSet;
+
 	/// List macro names of this buffer. the parent and the children
 	void listMacroNames(MacroNameSet & macros) const;
 	/// Write out all macros somewhere defined in the parent,
@@ -453,6 +454,11 @@ public:
 	///
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
 
+	/// Register word for completion word list.
+	void registerWord(docstring const & word);
+	///
+	std::set<docstring> const & registeredWords() const { return words_; }
+	
 private:
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,
@@ -504,6 +510,8 @@ private:
 	//Signal setBusy(bool) = 0;
 	/// Reset autosave timers for all users.
 	Signal resetAutosaveTimers_;
+	
+	std::set<docstring> words_;
 };
 
 

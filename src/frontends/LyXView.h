@@ -91,6 +91,12 @@ public:
 	///
 	virtual void restartCursor() = 0;
 
+	/// Update the completion popup and the inline completion state.
+	/// If \c start is true, then a new completion might be started.
+	/// If \c keep is true, an active completion will be kept active
+	/// even though the cursor moved.
+	virtual void updateCompletion(bool start, bool keep) = 0;
+
 private:
 	/// noncopyable
 	LyXView(LyXView const &);

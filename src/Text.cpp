@@ -564,6 +564,8 @@ void Text::insertChar(Cursor & cur, char_type c)
 
 void Text::charInserted(Cursor & cur)
 {
+	Paragraph & par = cur.paragraph();
+
 	// Here we call finishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it. (Lgb)
 	static unsigned int counter;
@@ -572,6 +574,27 @@ void Text::charInserted(Cursor & cur)
 	} else {
 		cur.finishUndo();
 		counter = 0;
+	}
+
+	// register word if a non-letter was entered
+	if (cur.pos() > 1
+	    && par.isLetter(cur.pos() - 2)
+	    && !par.isLetter(cur.pos() - 1)) {
+		// get the word in front of cursor
+		BOOST_ASSERT(this == cur.text());
+		CursorSlice focus = cur.top();
+		focus.backwardPos();
+		CursorSlice from = focus;
+		CursorSlice to = focus;
+		getWord(from, to, PREVIOUS_WORD);
+		if (focus == from || to == from)
+			return;
+		docstring word
+		= par.asString(cur.buffer(), from.pos(), to.pos(), false);
+
+		// register words longer than 5 characters
+		if (word.length() > 5)
+			cur.buffer().registerWord(word);
 	}
 }
 

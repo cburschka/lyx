@@ -49,6 +49,14 @@ public:
 		RC_BINDFILE,
 		RC_CHECKLASTFILES,
 		RC_CHKTEX_COMMAND,
+		RC_COMPLETION_INLINE_DELAY,
+		RC_COMPLETION_INLINE_MATH,
+		RC_COMPLETION_INLINE_TEXT,
+		RC_COMPLETION_INLINE_DOTS,
+		RC_COMPLETION_POPUP_DELAY,
+		RC_COMPLETION_POPUP_MATH,
+		RC_COMPLETION_POPUP_TEXT,
+		RC_COMPLETION_POPUP_AFTER_COMPLETE,
 		RC_CONVERTER,
 		RC_CONVERTER_CACHE_MAXAGE,
 		RC_COPIER,
@@ -409,6 +417,22 @@ public:
 	bool full_screen_limit;
 	/// Width of limited screen (in pixels) in fullscreen mode
 	int full_screen_width;
+	///
+	double completion_inline_delay;
+	///
+	bool completion_inline_math;
+	///
+	bool completion_inline_text;
+	///
+	int completion_inline_dots;
+	///
+	double completion_popup_delay;
+	///
+	bool completion_popup_math;
+	///
+	bool completion_popup_text;
+	///
+	bool completion_popup_after_complete;
 };
 
 

@@ -34,6 +34,7 @@
 #include "MathSupport.h"
 
 #include "Bidi.h"
+#include "Buffer.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -56,6 +57,8 @@
 #include "support/textutils.h"
 #include "support/docstream.h"
 
+#include <algorithm>
+#include <deque>
 #include <sstream>
 
 using namespace std;
@@ -1585,6 +1588,90 @@ bool InsetMathNest::script(Cursor & cur, bool up,
 }
 
 
+bool InsetMathNest::completionSupported(Cursor const & cur) const
+{
+	return cur.inMacroMode();
+}
+
+
+bool InsetMathNest::inlineCompletionSupported(Cursor const & cur) const
+{
+	return cur.inMacroMode();
+}
+
+
+bool InsetMathNest::automaticInlineCompletion() const
+{
+	return lyxrc.completion_inline_math;
+}
+
+
+bool InsetMathNest::automaticPopupCompletion() const
+{
+	return lyxrc.completion_popup_math;
+}
+
+
+Inset::CompletionListPtr InsetMathNest::completionList(Cursor const & cur) const
+{
+	if (!cur.inMacroMode())
+		return CompletionListPtr();
+	
+	return CompletionListPtr(new MathCompletionList(cur));
+}
+
+
+docstring InsetMathNest::completionPrefix(Cursor const & cur) const
+{
+	if (!cur.inMacroMode())
+		return docstring();
+	
+	return cur.activeMacro()->name();
+}
+
+
+bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s,
+				     bool finished)
+{
+	if (!cur.inMacroMode())
+		return false;
+
+	// append completion to active macro
+	InsetMathUnknown * inset = cur.activeMacro();
+	inset->setName(inset->name() + s);
+
+	// finish macro
+	if (finished) {
+#if 0
+		// FIXME: this creates duplicates in the completion popup
+		// which looks ugly. Moreover the changes the list lengths
+		// which seems to
+		confuse the popup as well.
+		MathCompletionList::addToFavorites(inset->name());
+#endif
+		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, " "));
+	}
+
+	return true;
+}
+
+
+void InsetMathNest::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+					Dimension & dim) const
+{
+	Inset const * inset = cur.activeMacro();
+	if (!inset)
+		return;
+
+	// get inset dimensions
+	dim = cur.bv().coordCache().insets().dim(inset);
+	Point xy
+	= cur.bv().coordCache().insets().xy(inset);
+	x = xy.x_;
+	y = xy.y_;
+}
+
+
 bool InsetMathNest::cursorMathForward(Cursor & cur)
 {
 	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
@@ -1621,5 +1708,151 @@ bool InsetMathNest::cursorMathBackward(Cursor & cur)
 	return false;
 }
 
+
+////////////////////////////////////////////////////////////////////
+
+MathCompletionList::MathCompletionList(Cursor const & cur)
+{
+	// fill it with macros from the buffer
+	Buffer::MacroNameSet macros;
+	cur.buffer().listMacroNames(macros);
+	Buffer::MacroNameSet::const_iterator it;
+	for (it = macros.begin(); it != macros.end(); ++it) {
+		if (cur.buffer().getMacro(*it, cur, false))
+			locals.push_back("\\" + *it);
+	}
+	sort(locals.begin(), locals.end());
+
+	if (globals.size() > 0)
+		return;
+
+	// fill in global macros
+	macros.clear();
+	MacroTable::globalMacros().getMacroNames(macros);
+	lyxerr << "Globals completion macros: ";
+	for (it = macros.begin(); it != macros.end(); ++it) {
+		lyxerr << "\\" + *it << " ";
+		globals.push_back("\\" + *it);
+	}
+	lyxerr << std::endl;
+
+	// fill in global commands
+	globals.push_back(from_ascii("\\boxed"));
+	globals.push_back(from_ascii("\\fbox"));
+	globals.push_back(from_ascii("\\framebox"));
+	globals.push_back(from_ascii("\\makebox"));
+	globals.push_back(from_ascii("\\kern"));
+	globals.push_back(from_ascii("\\xrightarrow"));
+	globals.push_back(from_ascii("\\xleftarrow"));
+	globals.push_back(from_ascii("\\split"));
+	globals.push_back(from_ascii("\\gathered"));
+	globals.push_back(from_ascii("\\aligned"));
+	globals.push_back(from_ascii("\\alignedat"));
+	globals.push_back(from_ascii("\\cases"));
+	globals.push_back(from_ascii("\\substack"));
+	globals.push_back(from_ascii("\\subarray"));
+	globals.push_back(from_ascii("\\array"));
+	globals.push_back(from_ascii("\\sqrt"));
+	globals.push_back(from_ascii("\\root"));
+	globals.push_back(from_ascii("\\tabular"));
+	globals.push_back(from_ascii("\\stackrel"));
+	globals.push_back(from_ascii("\\binom"));
+	globals.push_back(from_ascii("\\choose"));
+	globals.push_back(from_ascii("\\choose"));
+	globals.push_back(from_ascii("\\frac"));
+	globals.push_back(from_ascii("\\over"));
+	globals.push_back(from_ascii("\\nicefrac"));
+	globals.push_back(from_ascii("\\unitfrac"));
+	globals.push_back(from_ascii("\\unitfracthree"));
+	globals.push_back(from_ascii("\\unitone"));
+	globals.push_back(from_ascii("\\unittwo"));
+	globals.push_back(from_ascii("\\infer"));
+	globals.push_back(from_ascii("\\atop"));
+	globals.push_back(from_ascii("\\lefteqn"));
+	globals.push_back(from_ascii("\\boldsymbol"));
+	globals.push_back(from_ascii("\\color"));
+	globals.push_back(from_ascii("\\normalcolor"));
+	globals.push_back(from_ascii("\\textcolor"));
+	globals.push_back(from_ascii("\\dfrac"));
+	globals.push_back(from_ascii("\\tfrac"));
+	globals.push_back(from_ascii("\\dbinom"));
+	globals.push_back(from_ascii("\\tbinom"));
+	globals.push_back(from_ascii("\\hphantom"));
+	globals.push_back(from_ascii("\\phantom"));
+	globals.push_back(from_ascii("\\vphantom"));
+	WordList const & words = mathedWordList();
+	WordList::const_iterator it2;
+	lyxerr << "Globals completion commands: ";
+	for (it2 = words.begin(); it2 != words.end(); ++it2) {
+		globals.push_back("\\" + (*it2).first);
+		lyxerr << "\\" + (*it2).first << " ";
+	}
+	lyxerr << std::endl;
+	sort(globals.begin(), globals.end());
+}
+
+
+MathCompletionList::~MathCompletionList()
+{
+}
+
+
+size_type MathCompletionList::size() const
+{
+	return favorites.size() + locals.size() + globals.size();
+}
+
+
+docstring MathCompletionList::data(size_t idx) const
+{
+	size_t fsize = favorites.size();
+	size_t lsize = locals.size();
+	if (idx >= fsize + lsize)
+		return globals[idx - lsize - fsize];
+	else if (idx >= fsize)
+		return locals[idx - fsize];
+	else
+		return favorites[idx];
+}
+
+
+std::string MathCompletionList::icon(size_t idx) const 
+{
+	// get the latex command
+	docstring cmd;
+	size_t fsize = favorites.size();
+	size_t lsize = locals.size();
+	if (idx >= fsize + lsize)
+		cmd = globals[idx - lsize - fsize];
+	else if (idx >= fsize)
+		cmd = locals[idx - fsize];
+	else
+		cmd = favorites[idx];
+	
+	// get the icon resource name by stripping the backslash
+	return "images/math/" + to_utf8(cmd.substr(1)) + ".png";
+}
+
+
+
+void MathCompletionList::addToFavorites(docstring const & completion)
+{
+	// remove old occurrence
+	std::deque<docstring>::iterator it;
+	for (it = favorites.begin(); it != favorites.end(); ++it) {
+		if (*it == completion) {
+			favorites.erase(it);
+			break;
+		}
+	}
+
+	// put it to the front
+	favorites.push_front(completion);
+	favorites.resize(min(int(favorites.size()), 10));
+}
+
+
+std::vector<docstring> MathCompletionList::globals;
+std::deque<docstring> MathCompletionList::favorites;
 
 } // namespace lyx

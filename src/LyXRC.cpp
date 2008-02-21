@@ -63,6 +63,14 @@ keyword_item lyxrcTags[] = {
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\completion_inline_delay", LyXRC::RC_COMPLETION_INLINE_DELAY },
+	{ "\\completion_inline_math", LyXRC::RC_COMPLETION_INLINE_MATH },
+	{ "\\completion_inline_text", LyXRC::RC_COMPLETION_INLINE_TEXT },
+	{ "\\completion_inline_dots", LyXRC::RC_COMPLETION_INLINE_DOTS },
+	{ "\\completion_popup_delay", LyXRC::RC_COMPLETION_POPUP_DELAY },
+	{ "\\completion_popup_math", LyXRC::RC_COMPLETION_POPUP_MATH },
+	{ "\\completion_popup_text", LyXRC::RC_COMPLETION_POPUP_TEXT },
+	{ "\\completion_popup_after_complete", LyXRC::RC_COMPLETION_POPUP_AFTER_COMPLETE },
 	{ "\\converter", LyXRC::RC_CONVERTER },
 	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
@@ -280,6 +288,9 @@ void LyXRC::setDefaults() {
 	use_tooltip = true;
 	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
+	user_name = to_utf8(support::user_name());
+	user_email = to_utf8(support::user_email());
+
 	// Fullscreen settings
 	full_screen_limit = false;
 	full_screen_toolbars = true;
@@ -287,9 +298,14 @@ void LyXRC::setDefaults() {
 	full_screen_scrollbar = true;
 	full_screen_width = 700;
 
-	user_name = to_utf8(support::user_name());
-
-	user_email = to_utf8(support::user_email());
+	completion_popup_math = true;
+	completion_popup_text = false;
+	completion_popup_delay = 2.0;
+	completion_popup_after_complete = true;
+	completion_inline_math = true;
+	completion_inline_text = false;
+	completion_inline_dots = -1;
+	completion_inline_delay = 0.2;
 }
 
 
@@ -752,6 +768,54 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_MOUSE_WHEEL_SPEED:
 			if (lexrc.next()) {
 				mouse_wheel_speed = lexrc.getFloat();
+			}
+			break;
+
+		case RC_COMPLETION_INLINE_DELAY:
+			if (lexrc.next()) {
+				completion_inline_delay = lexrc.getFloat();
+			}
+			break;
+
+		case RC_COMPLETION_INLINE_MATH:
+			if (lexrc.next()) {
+				completion_inline_math = lexrc.getBool();
+			}
+			break;
+
+		case RC_COMPLETION_INLINE_TEXT:
+			if (lexrc.next()) {
+				completion_inline_text = lexrc.getBool();
+			}
+			break;
+
+		case RC_COMPLETION_INLINE_DOTS:
+			if (lexrc.next()) {
+				completion_inline_dots = lexrc.getInteger();
+			}
+			break;
+
+		case RC_COMPLETION_POPUP_DELAY:
+			if (lexrc.next()) {
+				completion_popup_delay = lexrc.getFloat();
+			}
+			break;
+
+		case RC_COMPLETION_POPUP_MATH:
+			if (lexrc.next()) {
+				completion_popup_math = lexrc.getBool();
+			}
+			break;
+
+		case RC_COMPLETION_POPUP_TEXT:
+			if (lexrc.next()) {
+				completion_popup_text = lexrc.getBool();
+			}
+			break;
+
+		case RC_COMPLETION_POPUP_AFTER_COMPLETE:
+			if (lexrc.next()) {
+				completion_popup_after_complete = lexrc.getBool();
 			}
 			break;
 
@@ -2041,6 +2105,69 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_COMPLETION_INLINE_DELAY:
+		if (ignore_system_lyxrc ||
+		    completion_inline_delay != system_lyxrc.completion_inline_delay) {
+			os << "\\completion_inline_delay " << completion_inline_delay << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_INLINE_MATH:
+		if (ignore_system_lyxrc ||
+		    completion_inline_math != system_lyxrc.completion_inline_math) {
+			os << "\\completion_inline_math "
+				<< convert<string>(completion_inline_math) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_INLINE_TEXT:
+		if (ignore_system_lyxrc ||
+		    completion_inline_text != system_lyxrc.completion_inline_text) {
+			os << "\\completion_inline_text "
+				<< convert<string>(completion_inline_text) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_INLINE_DOTS:
+		if (ignore_system_lyxrc ||
+		    completion_inline_dots != system_lyxrc.completion_inline_dots) {
+			os << "\\completion_inline_dots "
+				<< convert<string>(completion_inline_dots) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_POPUP_DELAY:
+		if (ignore_system_lyxrc ||
+		    completion_popup_delay != system_lyxrc.completion_popup_delay) {
+			os << "\\completion_popup_delay " << completion_popup_delay << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_POPUP_MATH:
+		if (ignore_system_lyxrc ||
+		    completion_popup_math != system_lyxrc.completion_popup_math) {
+			os << "\\completion_popup_math "
+				<< convert<string>(completion_popup_math) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_POPUP_TEXT:
+		if (ignore_system_lyxrc ||
+		    completion_popup_text != system_lyxrc.completion_popup_text) {
+			os << "\\completion_popup_text "
+				<< convert<string>(completion_popup_text) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_COMPLETION_POPUP_AFTER_COMPLETE:
+		if (ignore_system_lyxrc ||
+		    completion_popup_after_complete
+		    != system_lyxrc.completion_popup_after_complete) {
+			os << "\\completion_popup_after_complete "
+				<< convert<string>(completion_popup_after_complete) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_NUMLASTFILES:
 		if (ignore_system_lyxrc ||
 		    num_lastfiles != system_lyxrc.num_lastfiles) {
@@ -2637,8 +2764,40 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_MOUSE_WHEEL_SPEED:
-		str = bformat(_("The scrolling speed of the mouse wheel. "),
+		str = bformat(_("The scrolling speed of the mouse wheel."),
 		      maxlastfiles);
+		break;
+
+	case RC_COMPLETION_POPUP_DELAY:
+		str = _("The completion popup delay.");
+		break;
+
+	case RC_COMPLETION_POPUP_MATH:
+		str = _("Select to display the completion popup in math mode.");
+		break;
+
+	case RC_COMPLETION_POPUP_TEXT:
+		str = _("Select to display the completion popup in text mode.");
+		break;
+
+	case RC_COMPLETION_POPUP_AFTER_COMPLETE:
+		str = _("Show the completion popup without delay after non-unique completion attempt.");
+		break;
+
+	case RC_COMPLETION_POPUP_DELAY:
+		str = _("The inline completion delay.");
+		break;
+
+	case RC_COMPLETION_INLINE_MATH:
+		str = _("Select to display the inline completion in math mode.");
+		break;
+
+	case RC_COMPLETION_INLINE_TEXT:
+		str = _("Select to display the inline completion in text mode.");
+		break;
+
+	case RC_COMPLETION_INLINE_DOTS:
+		str = _("Use \"...\" to shorten long completions.");
 		break;
 
 	case RC_NUMLASTFILES:

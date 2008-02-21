@@ -71,6 +71,17 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 	BOOST_ASSERT(pit >= 0);
 	BOOST_ASSERT(pit < int(text.paragraphs().size()));
+
+	// check for possible inline completion
+	DocIterator const & inlineCompletionPos = pi_.base.bv->inlineCompletionPos();
+	inlineCompletionVPos_ = -1;
+	if (inlineCompletionPos.inTexted()
+	    && inlineCompletionPos.text() == &text_
+	    && inlineCompletionPos.pit() == pit_) {
+		// draw visually behind the previous character
+		// FIXME: probably special RTL handling needed here
+		inlineCompletionVPos_ = bidi_.log2vis(inlineCompletionPos.pos() - 1);
+	}
 }
 
 
@@ -688,7 +699,7 @@ void RowPainter::paintText()
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
 	if (end > 0 && end < par_.size() && par_.isSeparator(end - 1))
 		skipped_sep_vpos = bidi_.log2vis(end - 1);
-	
+
 	for (pos_type vpos = row_.pos(); vpos < end; ) {
 		if (x_ > pi_.base.bv->workWidth())
 			break;
@@ -710,6 +721,11 @@ void RowPainter::paintText()
 		if (vpos < font_span.first || vpos > font_span.last) {
 			font_span = par_.fontSpan(vpos);
 			font = text_metrics_.getDisplayFont(pit_, vpos);
+
+			// split font span if inline completion is inside
+			if (font_span.first <= inlineCompletionVPos_
+			    && font_span.last > inlineCompletionVPos_)
+				font_span.last = inlineCompletionVPos_;
 		}
 
 		const int width_pos = pm_.singleWidth(pos, font);
@@ -768,6 +784,32 @@ void RowPainter::paintText()
 		} else {
 			// paint as many characters as possible.
 			paintFromPos(vpos);
+		}
+
+		// Is the inline completion here?
+		// FIXME: RTL support needed here
+		if (vpos - 1 == inlineCompletionVPos_) {
+			docstring const & completion = pi_.base.bv->inlineCompletion();
+			FontInfo f = font.fontInfo();
+
+			// draw the unique and the non-unique completion part
+			// Note: this is not time-critical as it is
+			// only done once per screen.
+			size_t uniqueTo = pi_.base.bv->inlineCompletionUniqueChars();
+			docstring s1 = completion.substr(0, uniqueTo);
+			docstring s2 = completion.substr(uniqueTo);
+
+			if (s1.size() > 0) {
+				f.setColor(Color_inlinecompletion);
+				pi_.pain.text(x_, yo_, s1, f);
+				x_ += theFontMetrics(font).width(s1);
+			}
+
+			if (s2.size() > 0) {
+				f.setColor(Color_nonunique_inlinecompletion);
+				pi_.pain.text(x_, yo_, s2, f);
+				x_ += theFontMetrics(font).width(s2);
+			}
 		}
 	}
 

@@ -69,9 +69,6 @@ bool has_math_fonts;
 
 namespace {
 
-// file scope
-typedef map<docstring, latexkeys> WordList;
-
 WordList theWordList;
 
 
@@ -220,6 +217,11 @@ void initSymbols()
 
 
 } // namespace anon
+
+WordList const & mathedWordList()
+{
+	return theWordList;
+}
 
 
 void initMath()

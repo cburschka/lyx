@@ -175,6 +175,24 @@ private:
 	std::string requires_;
 	/// update macro representation
 	bool needsUpdate_;
+
+public:
+	///
+	bool completionSupported(Cursor const &) const;
+	///
+	bool inlineCompletionSupported(Cursor const & cur) const;
+	///
+	bool automaticInlineCompletion() const;
+	///
+	bool automaticPopupCompletion() const;
+	///
+	CompletionListPtr completionList(Cursor const & cur) const;
+	///
+	docstring completionPrefix(Cursor const & cur) const;
+	///
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	///
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 };
 
 } // namespace lyx

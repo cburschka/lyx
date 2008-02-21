@@ -32,6 +32,7 @@ public:
 	void setName(docstring const & name);
 	///
 	docstring name() const;
+
 	/// identifies UnknownInsets
 	InsetMathUnknown const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets

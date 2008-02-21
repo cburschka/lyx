@@ -1292,6 +1292,12 @@ InsetMathUnknown * Cursor::activeMacro()
 }
 
 
+InsetMathUnknown const * Cursor::activeMacro() const
+{
+	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
+}
+
+
 void Cursor::pullArg()
 {
 	// FIXME: Look here

@@ -162,6 +162,15 @@ public:
 	/// return the pixel height of the document view.
 	int workHeight() const;
 
+	/// return the inline completion postfix.
+	docstring const & inlineCompletion() const;
+	/// return the number of unique characters in the inline completion.
+	size_t const & inlineCompletionUniqueChars() const;
+	/// return the position in the buffer of the inline completion postfix.
+	DocIterator const & inlineCompletionPos() const;
+	/// set the inline completion postfix and its position in the buffer.
+	void setInlineCompletion(DocIterator const & pos, docstring const & completion,
+		size_t uniqueChars = 0);
 
 	/// translate and insert a character, using the correct keymap.
 	void translateAndInsert(char_type c, Text * t, Cursor & cur);

@@ -1467,6 +1467,30 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
+/*!
+ * \var lyx::kb_action lyx::LFUN_COMPLETION_INLINE
+ * \li Action: Show the inline completion at the cursor position.
+ * \li Syntax: completion-inline
+ * \li Origin: sts, Feb 19 2008
+ * \endvar
+ */
+		{ LFUN_COMPLETION_INLINE, "completion-inline", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_COMPLETION_POPUP
+ * \li Action: Show the completion popup at the cursor position.
+ * \li Syntax: completion-popup
+ * \li Origin: sts, Feb 19 2008
+ * \endvar
+ */
+		{ LFUN_COMPLETION_POPUP, "completion-popup", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_COMPLETION_COMPLETE
+ * \li Action: Try to complete the word or command at the cursor position.
+ * \li Syntax: complete
+ * \li Origin: sts, Feb 19 2007
+ * \endvar
+ */
+		{ LFUN_COMPLETION_COMPLETE, "complete", SingleParUpdate, Edit },
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS

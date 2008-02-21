@@ -21,10 +21,11 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "LaTeXFeatures.h"
-#include "LyXRC.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
+#include "LaTeXFeatures.h"
+#include "LyXFunc.h"
+#include "LyXRC.h"
 #include "Undo.h"
 
 #include "frontends/Painter.h"
@@ -719,6 +720,90 @@ void MathMacro::infoize2(odocstream & os) const
 {
 	os << "Macro: " << name();
 
+}
+
+
+bool MathMacro::completionSupported(Cursor const & cur) const
+{
+	return lyxrc.completion_popup_math
+		&& displayMode() == DISPLAY_UNFOLDED
+		&& cur.bv().cursor().pos() == int(name().size());
+}
+
+
+bool MathMacro::inlineCompletionSupported(Cursor const & cur) const
+{
+	return lyxrc.completion_inline_math
+		&& displayMode() == DISPLAY_UNFOLDED
+		&& cur.bv().cursor().pos() == int(name().size());
+}
+
+
+bool MathMacro::automaticInlineCompletion() const
+{
+	return lyxrc.completion_inline_math;
+}
+
+
+bool MathMacro::automaticPopupCompletion() const
+{
+	return lyxrc.completion_popup_math;
+}
+
+
+Inset::CompletionListPtr MathMacro::completionList(Cursor const & cur) const
+{
+	return CompletionListPtr(new MathCompletionList(cur.bv().cursor()));
+}
+
+
+docstring MathMacro::completionPrefix(Cursor const & cur) const
+{
+	if (!completionSupported(cur))
+		return docstring();
+	
+	return "\\" + name();
+}
+
+
+bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
+					bool finished)
+{
+	if (completionSupported(cur))
+		return false;
+
+	// append completion
+	docstring newName = name() + s;
+	asArray(newName, cell(0));
+	cur.bv().cursor().pos() = name().size();
+	cur.updateFlags(Update::Force);
+	
+	// finish macro
+	if (finished) {
+#if 0
+		// FIXME: this creates duplicates in the completion popup
+		// which looks ugly. Moreover the changes the list lengths
+		// which seems to confuse the popup as well.
+		MathCompletionList::addToFavorites(inset->name());
+#endif
+		cur.bv().cursor().pop();
+		++cur.bv().cursor().pos();
+		cur.updateFlags(Update::Force | Update::SinglePar);
+	}
+	
+	return true;
+}
+
+
+void MathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
+	Dimension & dim) const
+{
+	// get inset dimensions
+	dim = cur.bv().coordCache().insets().dim(this);
+	Point xy
+	= cur.bv().coordCache().insets().xy(this);
+	x = xy.x_;
+	y = xy.y_;
 }
 
 

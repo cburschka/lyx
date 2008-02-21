@@ -2664,4 +2664,10 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 	}
 }
 
+
+void Buffer::registerWord(docstring const & word)
+{
+	words_.insert(word);
+}
+
 } // namespace lyx

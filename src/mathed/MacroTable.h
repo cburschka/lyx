@@ -19,6 +19,7 @@
 #include "support/types.h"
 
 #include <map>
+#include <set>
 #include <vector>
 
 namespace lyx {
@@ -28,12 +29,10 @@ class MathData;
 class MathMacroTemplate;
 class Paragraph;
 
-
 enum MacroType {
 	MacroTypeNewcommand,
 	MacroTypeDef
 };
-
 
 ///
 class MacroData {
@@ -154,6 +153,8 @@ public:
 	MacroData const * get(docstring const & name) const;
 	///
 	void dump();
+	///
+	void getMacroNames(std::set<docstring> & names) const;
 
 	/// the global list
 	static MacroTable & globalMacros();

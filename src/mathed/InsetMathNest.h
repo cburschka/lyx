@@ -14,9 +14,35 @@
 
 #include "InsetMath.h"
 
+#include <deque>
 
 namespace lyx {
 
+class MathCompletionList : public Inset::CompletionList {
+public:
+	///
+	MathCompletionList(Cursor const & cur);
+	///
+	virtual ~MathCompletionList();
+
+	///
+	virtual size_t size() const;
+	///
+	virtual docstring data(size_t idx) const;
+	///
+	virtual std::string icon(size_t idx) const;
+
+	///
+	static void addToFavorites(docstring const & completion);
+
+private:
+	///
+	static std::vector<docstring> globals;
+	///
+	std::vector<docstring> locals;
+	///
+	static std::deque<docstring> favorites;
+};
 
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a
@@ -110,6 +136,23 @@ public:
 	bool setMouseHover(bool mouse_hover);
 	///
 	bool mouseHovered() const { return mouse_hover_; }
+
+	///
+	bool completionSupported(Cursor const &) const;
+	///
+	bool inlineCompletionSupported(Cursor const & cur) const;
+	///
+	bool automaticInlineCompletion() const;
+	///
+	bool automaticPopupCompletion() const;
+	///
+	CompletionListPtr completionList(Cursor const & cur) const;
+	///
+	docstring completionPrefix(Cursor const & cur) const;
+	///
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	///
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 
 protected:
 	///

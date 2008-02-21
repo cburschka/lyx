@@ -730,6 +730,16 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 
 	pos_type const body_pos = par.beginOfBody();
 
+	// check for possible inline completion
+	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
+	pos_type inlineCompletionVPos = -1;
+	if (inlineCompletionPos.inTexted()
+	    && inlineCompletionPos.text() == text_
+	    && inlineCompletionPos.pit() == pit) {
+		// draw visually behind the previous character
+		// FIXME: probably special RTL handling needed here
+		inlineCompletionVPos = inlineCompletionPos.pos() - 1;
+	}
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then choose the possible break
@@ -747,6 +757,13 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
 		int thiswidth = pm.singleWidth(i, *fi);
+
+		// add inline completion width
+		if (inlineCompletionVPos == i) {
+			docstring const & completion = bv_->inlineCompletion();
+			if (completion.length() > 0)
+				thiswidth += theFontMetrics(*fi).width(completion);
+		}
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
@@ -830,6 +847,17 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 	int w = leftMargin(max_width_, pit, first);
 	int label_end = labelEnd(pit);
 
+	// check for possible inline completion
+	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
+	pos_type inlineCompletionVPos = -1;
+	if (inlineCompletionPos.inTexted()
+	    && inlineCompletionPos.text() == text_
+	    && inlineCompletionPos.pit() == pit) {
+		// draw visually behind the previous character
+		// FIXME: probably special RTL handling needed here
+		inlineCompletionVPos = inlineCompletionPos.pos() - 1;
+	}
+
 	pos_type const body_pos = par.beginOfBody();
 	pos_type i = first;
 
@@ -845,6 +873,13 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 				w = max(w, label_end);
 			}
 			w += pm.singleWidth(i, *fi);
+
+			// add inline completion width
+			if (inlineCompletionVPos == i) {
+				docstring const & completion = bv_->inlineCompletion();
+				if (completion.length() > 0)
+					w += theFontMetrics(*fi).width(completion);
+			}
 		}
 	}
 
@@ -862,7 +897,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 
 
 Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
-		pos_type const end) const
+		pos_type const end, bool topBottomSpace) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	// get the maximum ascent and the maximum descent
@@ -933,7 +968,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	ParagraphList const & pars = text_->paragraphs();
 
 	// is it a top line?
-	if (first == 0) {
+	if (first == 0 && topBottomSpace) {
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
@@ -1004,7 +1039,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	}
 
 	// is it a bottom line?
-	if (end >= par.size()) {
+	if (end >= par.size() && topBottomSpace) {
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
@@ -1039,7 +1074,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// following code in another method specially tailored for the
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
-	if (main_text_) {
+	if (main_text_ && topBottomSpace) {
 		if (pit == 0 && first == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&

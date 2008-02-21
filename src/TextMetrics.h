@@ -124,6 +124,15 @@ public:
 	
 	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
+	/// Returns the height of the row (width member is set to 0).
+	/// If \c topBottomSpace is true, extra space is added for the
+	/// top and bottom row.
+	Dimension rowHeight(
+		pit_type const pit,
+		pos_type const first,
+		pos_type const end,
+		bool topBottomSpace = true) const;
+
 private:
 	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
@@ -142,16 +151,9 @@ private:
 		pit_type first
 		) const;
 
-	/// sets row.width to the minimum space a row needs on the screen in pixel
+	/// returns the minimum space a row needs on the screen in pixel
 	int rowWidth(
 		int right_margin,
-		pit_type const pit,
-		pos_type const first,
-		pos_type const end
-		) const;
-
-	/// Calculate and set the height of the row (width member is set to 0)
-	Dimension rowHeight(
 		pit_type const pit,
 		pos_type const first,
 		pos_type const end

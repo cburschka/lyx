@@ -65,6 +65,36 @@ namespace lyx {
 using graphics::PreviewLoader;
 
 
+class TextCompletionList : public Inset::CompletionList {
+public:
+	///
+	TextCompletionList(Cursor const & cur)
+	: buf_(cur.buffer()), it_(buf_.registeredWords().begin()), pos_(0) {}
+	///
+	virtual ~TextCompletionList() {}
+
+	///
+	virtual size_t size() const {
+		return buf_.registeredWords().size();
+	}
+	///
+	virtual docstring data(size_t idx) const {
+		std::set<docstring>::iterator it
+		= buf_.registeredWords().begin();
+		for (size_t i = 0; i < idx; ++i)
+			it++;
+		return *it;
+	}
+
+private:
+	Buffer const & buf_;
+	std::set<docstring>::iterator const it_;
+	size_t pos_;
+};
+
+
+/////////////////////////////////////////////////////////////////////
+
 InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
@@ -441,6 +471,100 @@ void InsetText::updateLabels(Buffer const & buf, ParIterator const & it)
 	it2.forwardPos();
 	BOOST_ASSERT(&it2.inset() == this && it2.pit() == 0);
 	lyx::updateLabels(buf, it2);
+}
+
+
+bool InsetText::completionSupported(Cursor const & cur) const
+{
+	Cursor const & bvCur = cur.bv().cursor();
+	if (&bvCur.inset() != this)
+		return false;
+	Paragraph const & par = cur.paragraph();
+	return cur.pos() > 0
+		&& !par.isLetter(cur.pos())
+		&& par.isLetter(cur.pos() - 1);
+}
+
+
+bool InsetText::inlineCompletionSupported(Cursor const & cur) const
+{
+	return completionSupported(cur);
+}
+
+
+bool InsetText::automaticInlineCompletion() const
+{
+	return lyxrc.completion_inline_text;
+}
+
+
+bool InsetText::automaticPopupCompletion() const
+{
+	return lyxrc.completion_popup_text;
+}
+
+
+Inset::CompletionListPtr InsetText::completionList(Cursor const & cur) const
+{
+	if (!completionSupported(cur))
+		return CompletionListPtr();
+
+	return CompletionListPtr(new TextCompletionList(cur));
+}
+
+
+docstring InsetText::previousWord(Buffer const & buffer, CursorSlice const & sl) const
+{
+	CursorSlice from = sl;
+	CursorSlice to = sl;
+	text_.getWord(from, to, PREVIOUS_WORD);
+	if (sl == from || to == from)
+		return docstring();
+	
+	Paragraph const & par = sl.paragraph();
+	return par.asString(buffer, from.pos(), to.pos(), false);
+}
+
+
+docstring InsetText::completionPrefix(Cursor const & cur) const
+{
+	if (!completionSupported(cur))
+		return docstring();
+	
+	return previousWord(cur.buffer(), cur.top());
+}
+
+
+bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
+				     bool finished)
+{
+	if (!completionSupported(cur))
+		return false;
+	
+	cur.insert(s);
+	return true;
+}
+
+
+void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+					Dimension & dim) const
+{
+	// get word in front of cursor
+	docstring word = previousWord(cur.buffer(), cur.top());
+	DocIterator wordStart = cur;
+	wordStart.pos() -= word.length();
+	
+	// get position on screen of the word start
+	Point lxy = cur.bv().getPos(wordStart, false);
+	x = lxy.x_;
+	y = lxy.y_;
+
+	// Calculate dimensions of the word
+	TextMetrics const & tm = cur.bv().textMetrics(&text_);
+	dim = tm.rowHeight(cur.pit(), wordStart.pos(), cur.pos(), false);
+	Point rxy = cur.bv().getPos(cur, cur.boundary());
+	dim.wid = abs(rxy.x_ - x);
+	x = (rxy.x_ < x) ? x - dim.wid : x; // for RTL
 }
 
 

@@ -238,6 +238,13 @@ struct BufferView::Private
 	///
 	vector<int> par_height_;
 
+	///
+	DocIterator inlineCompletionPos;
+	///
+	docstring inlineCompletion;
+	///
+	size_t inlineCompletionUniqueChars;
+
 	/// keyboard mapping object.
 	Intl intl_;
 
@@ -777,6 +784,10 @@ void BufferView::showCursor(DocIterator const & dit)
 		// else, nothing to do, the cursor is already visible so we just return.
 		return;
 	}
+
+	// fix inline completion position
+	if (d->inlineCompletionPos.fixIfBroken())
+		d->inlineCompletionPos = DocIterator();
 
 	tm.redoParagraph(bot_pit);
 	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
@@ -1753,6 +1764,10 @@ bool BufferView::singleParUpdate()
 	TextMetrics & tm = textMetrics(&buftext);
 	int old_height = tm.parMetrics(bottom_pit).height();
 
+	// make sure inline completion pointer is ok
+	if (d->inlineCompletionPos.fixIfBroken())
+		d->inlineCompletionPos = DocIterator();
+
 	// In Single Paragraph mode, rebreak only
 	// the (main text, not inset!) paragraph containing the cursor.
 	// (if this paragraph contains insets etc., rebreaking will
@@ -1789,6 +1804,10 @@ void BufferView::updateMetrics()
 
 	TextMetrics & tm = textMetrics(&buftext);
 
+	// make sure inline completion pointer is ok
+	if (d->inlineCompletionPos.fixIfBroken())
+		d->inlineCompletionPos = DocIterator();
+	
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(d->anchor_pit_);
 	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
@@ -2150,6 +2169,33 @@ void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 
 	updateMetrics();
 	buffer_.changed();
+}
+
+
+docstring const & BufferView::inlineCompletion() const
+{
+	return d->inlineCompletion;
+}
+
+
+size_t const & BufferView::inlineCompletionUniqueChars() const
+{
+	return d->inlineCompletionUniqueChars;
+}
+
+
+DocIterator const & BufferView::inlineCompletionPos() const
+{
+	return d->inlineCompletionPos;
+}
+
+
+void BufferView::setInlineCompletion(DocIterator const & pos, 
+	docstring const & completion, size_t uniqueChars)
+{
+	d->inlineCompletionPos = pos;
+	d->inlineCompletion = completion;
+	d->inlineCompletionUniqueChars = min(completion.size(), uniqueChars);
 }
 
 } // namespace lyx

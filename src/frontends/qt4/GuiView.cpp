@@ -1044,6 +1044,24 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_COMPLETION_INLINE:
+		if (!d.current_work_area_
+		    || !d.current_work_area_->completer().inlinePossible(view()->cursor()))
+		    enable = false;
+		break;
+
+	case LFUN_COMPLETION_POPUP:
+		if (!d.current_work_area_
+		    || !d.current_work_area_->completer().popupPossible(view()->cursor()))
+		    enable = false;
+		break;
+
+	case LFUN_COMPLETION_COMPLETE:
+		if (!d.current_work_area_
+			|| !d.current_work_area_->completer().inlinePossible(view()->cursor()))
+		    enable = false;
+		break;
+
 	default:
 		if (!view()) {
 			enable = false;
@@ -1815,6 +1833,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			setFocus();
 			break;
 
+		case LFUN_COMPLETION_INLINE:
+			if (d.current_work_area_)
+				d.current_work_area_->completer().showInline();
+			break;
+
 		case LFUN_SPLIT_VIEW:
 			if (Buffer * buf = buffer()) {
 				string const orientation = cmd.getArg(0);
@@ -1824,7 +1847,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
 				setCurrentWorkArea(wa);
 			}
-			break;
 
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
@@ -1836,6 +1858,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					// No more work area, switch to the background widget.
 					d.setBackground();
 			}
+			
+		case LFUN_COMPLETION_POPUP:
+			if (d.current_work_area_)
+				d.current_work_area_->completer().showPopup();
+			break;
+
+
+		case LFUN_COMPLETION_COMPLETE:
+			if (d.current_work_area_)
+				d.current_work_area_->completer().tab();
 			break;
 
 		default:
@@ -1937,6 +1969,13 @@ void GuiView::restartCursor()
 	// Take this occasion to update the toobars and layout list.
 	updateLayoutList();
 	updateToolbars();
+}
+
+
+void GuiView::updateCompletion(bool start, bool keep)
+{
+	if (d.current_work_area_)
+		d.current_work_area_->completer().updateVisibility(start, keep);
 }
 
 namespace {

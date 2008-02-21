@@ -73,6 +73,7 @@ SOURCEFILES = \
 	GuiClipboard.cpp \
 	GuiCommandBuffer.cpp \
 	GuiCommandEdit.cpp \
+	GuiCompleter.cpp \
 	GuiDelimiter.cpp \
 	GuiDialog.cpp \
 	GuiDocument.cpp \
@@ -172,6 +173,7 @@ MOCHEADER = \
 	GuiClipboard.h \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \
+	GuiCompleter.h \
 	GuiDelimiter.h \
 	GuiDialog.h \
 	GuiDocument.h \

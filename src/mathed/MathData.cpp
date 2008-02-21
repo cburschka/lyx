@@ -28,6 +28,8 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 
+#include "mathed/InsetMathUnknown.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
 
@@ -252,17 +254,33 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	Cursor & cur = mi.base.bv->cursor();
 	const_cast<MathData*>(this)->updateMacros(&cur, mi.macrocontext);
 
+	DocIterator const & inlineCompletionPos = mi.base.bv->inlineCompletionPos();
+	MathData const * inlineCompletionData = 0;
+	if (inlineCompletionPos.inMathed())
+		inlineCompletionData = &inlineCompletionPos.cell();
+
 	dim.asc = 0;
 	dim.wid = 0;
 	Dimension d;
 	CoordCacheBase<Inset> & coords = mi.base.bv->coordCache().insets();
-	for (size_t i = 0, n = size(); i != n; ++i) {
+	for (pos_type i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 		at->metrics(mi, d);
 		coords.add(at.nucleus(), d);
 		dim += d;
 		if (i == n - 1)
 			kerning_ = at->kerning(mi.base.bv);
+		
+		// HACK to draw completion suggestion inline
+		if (inlineCompletionData != this
+		    || size_t(inlineCompletionPos.pos()) != i + 1)
+			continue;
+		
+		docstring const & completion = mi.base.bv->inlineCompletion();
+		if (completion.length() == 0)
+			continue;
+		
+		dim.wid += mathed_string_width(mi.base.font, completion);
 	}
 	// Cache the dimension.
 	mi.base.bv->coordCache().arrays().add(this, dim);
@@ -289,6 +307,11 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		|| x >= bv. workWidth())
 		return;
 
+	DocIterator const & inlineCompletionPos = bv.inlineCompletionPos();
+	MathData const * inlineCompletionData = 0;
+	if (inlineCompletionPos.inMathed())
+		inlineCompletionData = &inlineCompletionPos.cell();
+
 	CoordCacheBase<Inset> & coords = pi.base.bv->coordCache().insets();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
@@ -296,6 +319,34 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
 		x += coords.dim(at.nucleus()).wid;
+		
+		// Is the inline completion here?
+		if (inlineCompletionData != this
+		    || size_t(inlineCompletionPos.pos()) != i + 1)
+			continue;
+		docstring const & completion = bv.inlineCompletion();
+		if (completion.length() == 0)
+			continue;
+		FontInfo f = pi.base.font;
+		
+		// draw the unique and the non-unique completion part
+		// Note: this is not time-critical as it is
+		// only done once per screen.
+		size_t uniqueTo = bv.inlineCompletionUniqueChars();
+		docstring s1 = completion.substr(0, uniqueTo);
+		docstring s2 = completion.substr(uniqueTo);
+		
+		if (s1.size() > 0) {
+			f.setColor(Color_inlinecompletion);
+			pi.pain.text(x, y, s1, f);
+			x += mathed_string_width(f, s1);
+		}
+		
+		if (s2.size() > 0) {
+			f.setColor(Color_nonunique_inlinecompletion);
+			pi.pain.text(x, y, s2, f);
+			x += mathed_string_width(f, s2);
+		}
 	}
 }
 

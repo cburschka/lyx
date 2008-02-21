@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>392</width>
-    <height>297</height>
+    <width>432</width>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -105,6 +105,190 @@
     </widget>
    </item>
    <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Completion</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" >
+      <item>
+       <widget class="QGroupBox" name="groupBox_2" >
+        <property name="title" >
+         <string>Popup</string>
+        </property>
+        <property name="flat" >
+         <bool>false</bool>
+        </property>
+        <layout class="QVBoxLayout" >
+         <item>
+          <widget class="QCheckBox" name="popupMathCB" >
+           <property name="toolTip" >
+            <string>Show the popup in math mode after the delay.</string>
+           </property>
+           <property name="text" >
+            <string>Automatically show in math mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="popupTextCB" >
+           <property name="toolTip" >
+            <string>Show the popup after the set delay in text mode.</string>
+           </property>
+           <property name="text" >
+            <string>Automatically show in text mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="popupAfterCompleteCB" >
+           <property name="toolTip" >
+            <string>When the TAB completion is not unique, there won't be a delay of the popup. It will be shown right away.</string>
+           </property>
+           <property name="text" >
+            <string>Show without delay for non-unique completions</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <item>
+            <widget class="QLabel" name="label_3" >
+             <property name="text" >
+              <string>Delay</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="popupDelaySB" >
+             <property name="toolTip" >
+              <string>After the cursor has not moved for this time, the completion popup is shown if it is available.</string>
+             </property>
+             <property name="maximum" >
+              <double>10.000000000000000</double>
+             </property>
+             <property name="singleStep" >
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label" >
+             <property name="text" >
+              <string>s</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3" >
+        <property name="title" >
+         <string>Inline</string>
+        </property>
+        <property name="flat" >
+         <bool>false</bool>
+        </property>
+        <layout class="QVBoxLayout" >
+         <item>
+          <widget class="QCheckBox" name="inlineMathCB" >
+           <property name="toolTip" >
+            <string>Show the grey inline completion behind the cursor in math mode after the delay.</string>
+           </property>
+           <property name="text" >
+            <string>Automatically show in math mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="inlineTextCB" >
+           <property name="toolTip" >
+            <string>Show the grey inline completion behind the cursor in text mode after the delay.</string>
+           </property>
+           <property name="text" >
+            <string>Automatically show in text mode</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="inlineDotsCB" >
+           <property name="toolTip" >
+            <string>Long completions are cut-off and shown with "...".</string>
+           </property>
+           <property name="text" >
+            <string>Use "..." to shorten long completions</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <item>
+            <widget class="QLabel" name="label_4" >
+             <property name="text" >
+              <string>Delay</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="inlineDelaySB" >
+             <property name="toolTip" >
+              <string>After the cursor has not moved for this time, the inline completion is shown if it is available.</string>
+             </property>
+             <property name="maximum" >
+              <double>10.000000000000000</double>
+             </property>
+             <property name="singleStep" >
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2" >
+             <property name="text" >
+              <string>s</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="mouseGB" >
      <property name="title" >
       <string>Mouse</string>
@@ -144,7 +328,7 @@
          <double>0.100000000000000</double>
         </property>
         <property name="value" >
-         <double>1.000000000000000</double>
+         <double>1.100000000000000</double>
         </property>
        </widget>
       </item>
@@ -175,7 +359,7 @@
      <property name="sizeHint" >
       <size>
        <width>20</width>
-       <height>20</height>
+       <height>51</height>
       </size>
      </property>
     </spacer>

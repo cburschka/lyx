@@ -246,6 +246,9 @@ public:
 	///
 	void disconnectDialog(std::string const & name);
 
+	///
+	void updateCompletion(bool start, bool keep);
+
 private:
 	///
 	void lfunUiToggle(FuncRequest const & cmd);

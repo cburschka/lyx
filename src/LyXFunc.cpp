@@ -366,9 +366,17 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
+			lyx_view_->updateCompletion(true, true);
 		}
 	} else {
 		dispatch(func);
+		if (func.action == LFUN_CHAR_DELETE_BACKWARD)
+			// backspace is not a self-insertion. But it
+			// still should not hide the completion popup.
+			// FIXME: more clever way to detect those movements
+			lyx_view_->updateCompletion(false, true);
+		else
+			lyx_view_->updateCompletion(false, false);
 	}
 
 	lyx_view_->restartCursor();
@@ -454,6 +462,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_SPLIT_VIEW:
 	case LFUN_CLOSE_TAB_GROUP:
+		if (lyx_view_)
+			return lyx_view_->getStatus(cmd);
+		enable = false;
+		break;
+
+	case LFUN_COMPLETION_POPUP:
+	case LFUN_COMPLETION_INLINE:
+	case LFUN_COMPLETION_COMPLETE:
 		if (lyx_view_)
 			return lyx_view_->getStatus(cmd);
 		enable = false;
@@ -1897,6 +1913,14 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
 	case LyXRC::RC_CHECKLASTFILES:
+	case LyXRC::RC_COMPLETION_INLINE_DELAY:
+	case LyXRC::RC_COMPLETION_INLINE_MATH:
+	case LyXRC::RC_COMPLETION_INLINE_TEXT:
+	case LyXRC::RC_COMPLETION_INLINE_DOTS:
+	case LyXRC::RC_COMPLETION_POPUP_DELAY:
+	case LyXRC::RC_COMPLETION_POPUP_MATH:
+	case LyXRC::RC_COMPLETION_POPUP_TEXT:
+	case LyXRC::RC_COMPLETION_POPUP_AFTER_COMPLETE:
 	case LyXRC::RC_USELASTFILEPOS:
 	case LyXRC::RC_LOADSESSION:
 	case LyXRC::RC_CHKTEX_COMMAND:

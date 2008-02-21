@@ -350,6 +350,8 @@ public:
 	bool inMacroMode() const;
 	/// get access to the macro we are currently typing
 	InsetMathUnknown * activeMacro();
+	/// get access to the macro we are currently typing
+	InsetMathUnknown const * activeMacro() const;
 
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom

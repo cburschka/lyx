@@ -128,10 +128,11 @@ void GuiCommandBuffer::cancel()
 
 void GuiCommandBuffer::dispatch()
 {
-	dispatch(fromqstr(edit_->text()));
+	QString cmd = edit_->text();
 	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
+	dispatch(fromqstr(cmd));
 }
 
 

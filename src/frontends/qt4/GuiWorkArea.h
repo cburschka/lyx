@@ -14,8 +14,12 @@
 #define WORKAREA_H
 
 #include "frontends/WorkArea.h"
+#include "frontends/qt4/GuiCompleter.h"
 
+#include "DocIterator.h"
 #include "FuncRequest.h"
+#include "qt_helpers.h"
+#include "support/docstring.h"
 #include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
@@ -44,6 +48,7 @@ class Buffer;
 namespace frontend {
 
 class GuiView;
+class GuiWorkArea;
 
 /// types of cursor in work area
 enum CursorShape {
@@ -129,6 +134,9 @@ public:
 	///
 	void resizeBufferView();
 
+	///
+	GuiCompleter & completer() { return completer_; }
+	
 Q_SIGNALS:
 	///
 	void titleChanged(GuiWorkArea *);
@@ -149,6 +157,8 @@ private Q_SLOTS:
 	void close();
 
 private:
+	friend class GuiCompleter;
+
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
 	///
@@ -229,6 +239,9 @@ private:
 	bool schedule_redraw_;
 	///
 	int preedit_lines_;
+
+	///
+	GuiCompleter completer_;
 }; // GuiWorkArea
 
 

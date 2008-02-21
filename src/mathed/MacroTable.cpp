@@ -205,6 +205,13 @@ void MacroTable::insert(docstring const & def, string const & requires)
 }
 
 
+void MacroTable::getMacroNames(std::set<docstring> & names) const
+{
+	for (const_iterator it = begin(); it != end(); ++it)
+		names.insert(it->first);
+}
+
+
 void MacroTable::dump()
 {
 	lyxerr << "\n------------------------------------------" << endl;

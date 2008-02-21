@@ -48,6 +48,10 @@ enum ColorCode
 	Color_latex,
 	/// The color used for previews
 	Color_preview,
+	/// Inline completion color
+	Color_inlinecompletion,
+	/// Inline completion color for the non-unique part
+	Color_nonunique_inlinecompletion,
 
 	/// Text color for notes
 	Color_note,

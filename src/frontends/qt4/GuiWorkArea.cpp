@@ -189,9 +189,9 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
-	  cursor_visible_(false),
-    need_resize_(false), schedule_redraw_(false),
-		preedit_lines_(1)
+	cursor_visible_(false),
+	need_resize_(false), schedule_redraw_(false),
+	preedit_lines_(1), completer_(this)
 {
 	buffer.workAreaManager().add(this);
 	// Setup the signals
@@ -240,7 +240,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
-
 
 
 GuiWorkArea::~GuiWorkArea()
@@ -386,6 +385,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
+		completer_.updateVisibility(false, false);
 		lyx_view_->updateLayoutList();
 		lyx_view_->updateToolbars();
 	}
@@ -452,15 +452,20 @@ void GuiWorkArea::showCursor()
 	int h = asc + des;
 	int x = 0;
 	int y = 0;
-	buffer_view_->cursor().getPos(x, y);
+	Cursor & cur = buffer_view_->cursor();
+	cur.getPos(x, y);
 	y -= asc;
 
 	// if it doesn't touch the screen, don't try to show it
+	bool cursorInView = true;
 	if (y + h < 0 || y >= viewport()->height())
-		return;
+		cursorInView = false;
 
-	cursor_visible_ = true;
-	showCursor(x, y, h, shape);
+	// show cursor on screen
+	if (cursorInView) {
+		cursor_visible_ = true;
+		showCursor(x, y, h, shape);
+	}
 }
 
 
@@ -727,6 +732,24 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
+	// intercept some keys if completion popup is visible
+	if (completer_.popupVisible()) {
+		switch (ev->key()) {
+		case Qt::Key_Enter:
+		case Qt::Key_Return:
+			completer_.activate();
+			ev->accept();
+			return;
+		}
+	}
+	
+	// intercept tab for inline completion
+	if (ev->key() == Qt::Key_Tab) {
+		completer_.tab();
+		ev->accept();
+		return;
+	}
+	
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
 	// \todo FIXME: remove hard coded Qt keys, process the key binding
