@@ -1487,7 +1487,7 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_COMPLETION_COMPLETE
  * \li Action: Try to complete the word or command at the cursor position.
  * \li Syntax: complete
- * \li Origin: sts, Feb 19 2007
+ * \li Origin: sts, Feb 19 2008
  * \endvar
  */
 		{ LFUN_COMPLETION_COMPLETE, "complete", SingleParUpdate, Edit },
