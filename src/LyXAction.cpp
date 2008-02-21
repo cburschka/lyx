@@ -1144,7 +1144,7 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_SPLIT_VIEW
  * \li Action: Creates another split view of current buffer.
  * \li Notion: All split views act in the same way indpendently.
- * \li Syntax: split-buffer <vertical|horizontal>
+ * \li Syntax: split-view <vertical|horizontal>
  * \li Params: horizontal : The work areas are laid out side by side.\n
                vertical   : The work areas laid out vertically.\n
  * \li Origin: abdel, 20 Feb 2007
@@ -1152,6 +1152,16 @@ void LyXAction::init()
  */
 		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_CLOSE_TAB_GROUP
+ * \li Action: Close the current tab group.
+ * \li Notion: This only closes the work areas, not the buffer themselves.
+               The still opened buffers can be visualized in another tab group.
+ * \li Syntax: close-tab-group
+ * \li Origin: abdel, 21 Feb 2007
+ * \endvar
+ */
+		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop, Edit },
 		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer, Edit },

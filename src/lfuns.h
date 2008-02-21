@@ -414,6 +414,7 @@ enum kb_action {
 	LFUN_SCROLL,
 	LFUN_UI_TOGGLE,
 	LFUN_SPLIT_VIEW,
+	LFUN_CLOSE_TAB_GROUP,
 	LFUN_LASTACTION                  // end of the table
 };
 

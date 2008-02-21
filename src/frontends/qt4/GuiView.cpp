@@ -964,6 +964,10 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		enable = buf;
 		break;
 
+	case LFUN_CLOSE_TAB_GROUP:
+		enable = d.currentTabWorkArea();
+		break;
+
 	case LFUN_TOOLBAR_TOGGLE:
 		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
 		break;
@@ -1820,6 +1824,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
 				setCurrentWorkArea(wa);
 			}
+			break;
+
+		case LFUN_CLOSE_TAB_GROUP:
+			if (TabWorkArea * twa = d.currentTabWorkArea())
+				delete twa;
 			break;
 
 		default:
