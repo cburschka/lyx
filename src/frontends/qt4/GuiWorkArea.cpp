@@ -1077,10 +1077,10 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
     closeBufferButton->setPalette(pal);
 	// FIXME: rename the icon to closebuffer.png
 	closeBufferButton->setIcon(QIcon(":/images/closetab.png"));
-	closeBufferButton->setText("Close Buffer");
+	closeBufferButton->setText("Close File");
 	closeBufferButton->setAutoRaise(true);
 	closeBufferButton->setCursor(Qt::ArrowCursor);
-	closeBufferButton->setToolTip(tr("Close Buffer"));
+	closeBufferButton->setToolTip(qt_("Close File"));
 	closeBufferButton->setEnabled(true);
 	QObject::connect(closeBufferButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentBuffer()));
@@ -1092,7 +1092,7 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 	closeTabButton->setText("Hide tab");
 	closeTabButton->setAutoRaise(true);
 	closeTabButton->setCursor(Qt::ArrowCursor);
-	closeTabButton->setToolTip(tr("Hide tab"));
+	closeTabButton->setToolTip(qt_("Hide tab"));
 	closeTabButton->setEnabled(true);
 	QObject::connect(closeTabButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentTab()));
