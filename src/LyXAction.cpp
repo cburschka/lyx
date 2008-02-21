@@ -1147,7 +1147,7 @@ void LyXAction::init()
  * \li Syntax: split-view <vertical|horizontal>
  * \li Params: horizontal : The work areas are laid out side by side.\n
                vertical   : The work areas laid out vertically.\n
- * \li Origin: abdel, 20 Feb 2007
+ * \li Origin: abdel, 20 Feb 2008
  * \endvar
  */
 		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
@@ -1158,7 +1158,7 @@ void LyXAction::init()
  * \li Notion: This only closes the work areas, not the buffer themselves.
                The still opened buffers can be visualized in another tab group.
  * \li Syntax: close-tab-group
- * \li Origin: abdel, 21 Feb 2007
+ * \li Origin: abdel, 21 Feb 2008
  * \endvar
  */
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
