@@ -75,12 +75,12 @@ public:
 	GuiCompletionModel(QObject * parent, Inset::CompletionListPtr l)
 	: QAbstractListModel(parent), list(l) {}
 	///
-	int columnCount(const QModelIndex & parent = QModelIndex()) const
+	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const
 	{
 		return 2;
 	}
 	///
-	int rowCount(const QModelIndex & parent = QModelIndex()) const
+	int rowCount(const QModelIndex & /*parent*/ = QModelIndex()) const
 	{
 		if (list.get() == 0)
 			return 0;
@@ -248,12 +248,12 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 	// we inserted something and are in a possible popup state?
 	if (!popupVisible() && possiblePopupState && start
 		&& cur.inset().automaticPopupCompletion())
-		popup_timer_.start(lyxrc.completion_popup_delay * 1000.0);
+		popup_timer_.start(int(lyxrc.completion_popup_delay * 1000));
 
 	// we inserted something and are in a possible inline completion state?
 	if (!inlineVisible() && possibleInlineState && start
 		&& cur.inset().automaticInlineCompletion())
-		inline_timer_.start(lyxrc.completion_inline_delay * 1000.0);
+		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
 
 	// update prefix if popup is visible or if it will be visible soon
 	if (popupVisible() || inlineVisible()

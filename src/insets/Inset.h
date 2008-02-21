@@ -295,7 +295,7 @@ public:
 		/// returns the string shown in the gui.
 		virtual docstring data(size_t idx) const =0;
 		/// returns the resource string used to load an icon.
-		virtual std::string icon(size_t idx) const { return std::string(); }
+		virtual std::string icon(size_t /*idx*/) const { return std::string(); }
 	};
 	typedef boost::shared_ptr<CompletionList> CompletionListPtr;
 
@@ -304,7 +304,8 @@ public:
 	/// Returns true if the inset supports inline completions at the
 	/// cursor position. In this case the completion might be stored
 	/// in the BufferView's inlineCompletion property.
-	virtual bool inlineCompletionSupported(Cursor const & cur) const { return false; }
+	virtual bool inlineCompletionSupported(Cursor const & /*cur*/) const 
+		{ return false; }
 	/// Return true if the inline completion should be automatic.
 	virtual bool automaticInlineCompletion() const { return true; }
 	/// Return true if the popup completion should be automatic.
@@ -312,20 +313,21 @@ public:
 	/// Returns completion suggestions at cursor position. Return an
 	/// null pointer if no completion is a available or possible.
 	virtual CompletionListPtr completionList(Cursor const &) const 
-	{
-		return CompletionListPtr();
-	}
+		{ return CompletionListPtr(); }
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
-	virtual docstring completionPrefix(Cursor const &) const { return docstring(); }
+	virtual docstring completionPrefix(Cursor const &) const 
+		{ return docstring(); }
 	/// Do a completion at the cursor position. Return true on success.
 	/// The completion does not contain the prefix. If finished is true, the
 	/// completion is final. If finished is false, completion might only be
 	/// a partial completion.
-	virtual bool insertCompletion(Cursor & cur, docstring const & completion, 
-		bool finished) { return false; }
+	virtual bool insertCompletion(Cursor & /*cur*/, 
+		docstring const & /*completion*/, bool /*finished*/) 
+		{ return false; }
 	/// Get the completion inset position and size
-	virtual void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const {}
+	virtual void completionPosAndDim(Cursor const &, int & /*x*/, int & /*y*/, 
+		Dimension & /*dim*/) const {}
 
 	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(InsetCode) const { return false; }
