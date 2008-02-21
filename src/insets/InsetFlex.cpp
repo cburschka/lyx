@@ -61,12 +61,6 @@ Inset * InsetFlex::clone() const
 }
 
 
-bool InsetFlex::undefined() const
-{
-	return getLayout().labelstring == from_utf8("UNDEFINED");
-}
-
-
 docstring const InsetFlex::editMessage() const
 {
 	return _("Opened Flex Inset");

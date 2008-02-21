@@ -161,7 +161,9 @@ public:
 	virtual bool forceLTR() const { return layout_->forceltr; }
 	///
 	virtual bool useEmptyLayout() const { return true; }
-
+	/// Is this inset's layout defined in the document's textclass?
+	/// May be wrong after textclass change or paste from another document
+	bool undefined() const;
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

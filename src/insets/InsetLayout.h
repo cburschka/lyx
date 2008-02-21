@@ -23,6 +23,12 @@ namespace lyx {
 ///
 class InsetLayout {
 public:
+	InsetLayout() : 
+		name("undefined"),
+		labelstring(from_utf8("UNDEFINED")),
+		font(sane_font), labelfont(sane_font),
+		bgcolor(Color_error)
+		{ labelfont.setColor(Color_error); };
 	std::string name;
 	std::string lyxtype;
 	docstring labelstring;

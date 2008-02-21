@@ -182,6 +182,8 @@ public:
 	int max_toclevel() const;
 	/// returns true if the class has a ToC structure
 	bool hasTocLevels() const;
+	///
+	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
 private:
 	///
 	bool deleteLayout(docstring const &);
@@ -265,6 +267,8 @@ private:
 	int min_toclevel_;
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel_;
+	///
+	static InsetLayout empty_insetlayout_;
 };
 
 

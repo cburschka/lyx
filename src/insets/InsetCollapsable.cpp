@@ -132,7 +132,7 @@ void InsetCollapsable::setLayout(TextClassPtr tc)
 		layout_ = &tc->insetlayout(name());
 		labelstring_ = layout_->labelstring;
 	} else {
-		layout_ = 0;
+		layout_ = &TextClass::emptyInsetLayout();
 		labelstring_ = _("UNDEFINED");
 	}
 
@@ -882,6 +882,13 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 	// Force inclusion of preamble snippet in layout file
 	features.require(layout_->name);
 	InsetText::validate(features);
+}
+
+
+bool InsetCollapsable::undefined() const
+{
+	std::string const & n = getLayout().name;
+	return n.empty() || n == TextClass::emptyInsetLayout().name;
 }
 
 

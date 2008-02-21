@@ -449,7 +449,7 @@ void switchBetweenClasses(TextClassPtr const & oldone,
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
 		inset->setLayout(newone);
-		if (inset->getLayout().labelstring != from_utf8("UNDEFINED"))
+		if (!inset->undefined())
 			continue;
 		// The flex inset is undefined in newtc
 		docstring const s = bformat(_(

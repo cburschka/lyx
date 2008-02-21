@@ -31,9 +31,6 @@ public:
 	///
 	docstring name() const { return from_utf8(name_); }
 
-	/// Is this character style defined in the document's textclass?
-	/// May be wrong after textclass change or paste from another document
-	bool undefined() const;
 	///
 	virtual docstring const editMessage() const;
 	///

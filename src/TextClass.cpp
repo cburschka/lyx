@@ -133,6 +133,9 @@ TextClass::TextClass(string const & fn, string const & cln,
 docstring const TextClass::emptylayout_ = from_ascii("PlainLayout");
 
 
+InsetLayout TextClass::empty_insetlayout_;
+
+
 bool TextClass::isTeXClassAvailable() const
 {
 	return texClassAvail_;
@@ -1168,12 +1171,7 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 			break;
 		n = n.substr(0,i);
 	}
-	static InsetLayout empty;
-	empty.labelstring = from_utf8("UNDEFINED");
-	empty.labelfont = sane_font;
-	empty.labelfont.setColor(Color_error);
-	empty.bgcolor = Color_error;
-	return empty;
+	return empty_insetlayout_;
 }
 
 
