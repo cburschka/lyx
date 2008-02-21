@@ -1140,6 +1140,16 @@ void LyXAction::init()
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_SPLIT_VIEW
+ * \li Action: Creates another split view of current buffer.
+ * \li Notion: All split views act in the same way indpendently.
+ * \li Syntax: split-buffer <vertical|horizontal>
+ * \li Params: horizontal : The work areas are laid out side by side.\n
+               vertical   : The work areas laid out vertically.\n
+ * \li Origin: abdel, 20 Feb 2007
+ * \endvar
+ */
 		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
 
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
