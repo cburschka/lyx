@@ -1036,21 +1036,35 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 	pal.setColor(QPalette::Inactive, QPalette::Button,
 		pal.color(QPalette::Inactive, QPalette::Window));
 
+	QObject::connect(this, SIGNAL(currentChanged(int)),
+		this, SLOT(on_currentTabChanged(int)));
+
+	QToolButton * closeBufferButton = new QToolButton(this);
+    closeBufferButton->setPalette(pal);
+	// FIXME: rename the icon to closebuffer.png
+	closeBufferButton->setIcon(QIcon(":/images/closetab.png"));
+	closeBufferButton->setText("Close Buffer");
+	closeBufferButton->setAutoRaise(true);
+	closeBufferButton->setCursor(Qt::ArrowCursor);
+	closeBufferButton->setToolTip(tr("Close Buffer"));
+	closeBufferButton->setEnabled(true);
+	QObject::connect(closeBufferButton, SIGNAL(clicked()),
+		this, SLOT(closeCurrentBuffer()));
+	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
+
 	QToolButton * closeTabButton = new QToolButton(this);
     closeTabButton->setPalette(pal);
+	// FIXME: we need another icon for this.
 	closeTabButton->setIcon(QIcon(":/images/closetab.png"));
-	closeTabButton->setText("Close");
+	closeTabButton->setText("Minimize Buffer");
 	closeTabButton->setAutoRaise(true);
 	closeTabButton->setCursor(Qt::ArrowCursor);
 	closeTabButton->setToolTip(tr("Close tab"));
 	closeTabButton->setEnabled(true);
-
-	QObject::connect(this, SIGNAL(currentChanged(int)),
-		this, SLOT(on_currentTabChanged(int)));
 	QObject::connect(closeTabButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentTab()));
+	setCornerWidget(closeTabButton, Qt::TopLeftCorner);
 
-	setCornerWidget(closeTabButton);
 	setUsesScrollButtons(true);
 }
 
@@ -1182,9 +1196,15 @@ void TabWorkArea::on_currentTabChanged(int i)
 }
 
 
-void TabWorkArea::closeCurrentTab()
+void TabWorkArea::closeCurrentBuffer()
 {
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
+}
+
+
+void TabWorkArea::closeCurrentTab()
+{
+	removeWorkArea(currentWorkArea());
 }
 
 

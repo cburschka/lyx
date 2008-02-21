@@ -257,6 +257,8 @@ public Q_SLOTS:
 	///
 	void on_currentTabChanged(int index);
 	///
+	void closeCurrentBuffer();
+	///
 	void closeCurrentTab();
 	///
 	void updateTabText(GuiWorkArea *);
