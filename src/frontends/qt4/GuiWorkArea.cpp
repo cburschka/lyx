@@ -1065,12 +1065,11 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 
 	QToolButton * closeTabButton = new QToolButton(this);
     closeTabButton->setPalette(pal);
-	// FIXME: we need another icon for this.
-	closeTabButton->setIcon(QIcon(":/images/closetab.png"));
-	closeTabButton->setText("Minimize Buffer");
+	closeTabButton->setIcon(QIcon(":/images/hidetab.png"));
+	closeTabButton->setText("Hide tab");
 	closeTabButton->setAutoRaise(true);
 	closeTabButton->setCursor(Qt::ArrowCursor);
-	closeTabButton->setToolTip(tr("Close tab"));
+	closeTabButton->setToolTip(tr("Hide tab"));
 	closeTabButton->setEnabled(true);
 	QObject::connect(closeTabButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentTab()));

@@ -1398,6 +1398,7 @@ lib_images_files = Split('''
     font-sans.png
     footnote-insert.png
     href-insert.png
+    hidetab.png
     index-insert.png
     label-insert.png
     layout-document.png

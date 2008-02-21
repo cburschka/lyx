@@ -312,6 +312,7 @@ dist_images_DATA = \
 	images/font-sans.png \
 	images/footnote-insert.png \
 	images/href-insert.png \
+	images/hidetab.png \
 	images/index-insert.png \
 	images/label-insert.png \
 	images/layout.png \
