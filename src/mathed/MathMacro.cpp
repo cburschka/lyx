@@ -801,12 +801,6 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 	
 	// finish macro
 	if (finished) {
-#if 0
-		// FIXME: this creates duplicates in the completion popup
-		// which looks ugly. Moreover the changes the list lengths
-		// which seems to confuse the popup as well.
-		MathCompletionList::addToFavorites(inset->name());
-#endif
 		cur.bv().cursor().pop();
 		++cur.bv().cursor().pos();
 		cur.updateFlags(Update::Force | Update::SinglePar);
