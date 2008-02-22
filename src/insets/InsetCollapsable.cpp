@@ -366,8 +366,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				xx2, y + desc,
 				layout_->labelfont().color());
 		}
-		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, y + desc - 4,
-			layout_->labelfont().color());
+		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, 
+			y + desc - 4, layout_->labelfont().color());
 
 		// the label below the text. Can be toggled.
 		if (geometry() == SubLabel) {
@@ -474,7 +474,8 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 }
 
 
-void InsetCollapsable::edit(Cursor & cur, bool front, EntryDirection entry_from)
+void InsetCollapsable::edit(
+		Cursor & cur, bool front, EntryDirection entry_from)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(*this);
@@ -792,7 +793,8 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp) const
+docstring InsetCollapsable::floatName(
+		string const & type, BufferParams const & bp) const
 {
 	FloatList const & floats = bp.getTextClass().floats();
 	FloatList::const_iterator it = floats[type];
