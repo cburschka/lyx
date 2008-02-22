@@ -765,6 +765,10 @@ void RowPainter::paintText()
 
 			x_ += row_.label_hfill + lwidth - width_pos;
 		}
+		
+		// Is the inline completion in front of character?
+		if (font.isRightToLeft() && vpos == inlineCompletionVPos_)
+			paintInlineCompletion(vpos, font);		
 
 		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
@@ -786,31 +790,9 @@ void RowPainter::paintText()
 			paintFromPos(vpos);
 		}
 
-		// Is the inline completion here?
-		// FIXME: RTL support needed here
-		if (vpos - 1 == inlineCompletionVPos_) {
-			docstring const & completion = pi_.base.bv->inlineCompletion();
-			FontInfo f = font.fontInfo();
-
-			// draw the unique and the non-unique completion part
-			// Note: this is not time-critical as it is
-			// only done once per screen.
-			size_t uniqueTo = pi_.base.bv->inlineCompletionUniqueChars();
-			docstring s1 = completion.substr(0, uniqueTo);
-			docstring s2 = completion.substr(uniqueTo);
-
-			if (s1.size() > 0) {
-				f.setColor(Color_inlinecompletion);
-				pi_.pain.text(x_, yo_, s1, f);
-				x_ += theFontMetrics(font).width(s1);
-			}
-
-			if (s2.size() > 0) {
-				f.setColor(Color_nonunique_inlinecompletion);
-				pi_.pain.text(x_, yo_, s2, f);
-				x_ += theFontMetrics(font).width(s2);
-			}
-		}
+		// Is the inline completion after character?
+		if (!font.isRightToLeft() && vpos - 1 == inlineCompletionVPos_)
+			paintInlineCompletion(vpos, font);
 	}
 
 	// if we reach the end of a struck out range, paint it
@@ -822,6 +804,36 @@ void RowPainter::paintText()
 		pi_.pain.line(last_strikeout_x, middle, int(x_), middle,
 			Color_deletedtext, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
+	}
+}
+
+
+void RowPainter::paintInlineCompletion(pos_type & vpos, Font const & font)
+{
+	docstring completion = pi_.base.bv->inlineCompletion();
+	FontInfo f = font.fontInfo();
+	
+	// right to left?
+	if (font.isRightToLeft())
+		reverse(completion.begin(), completion.end());
+	
+	// draw the unique and the non-unique completion part
+	// Note: this is not time-critical as it is
+	// only done once per screen.
+	size_t uniqueTo = pi_.base.bv->inlineCompletionUniqueChars();
+	docstring s1 = completion.substr(0, uniqueTo);
+	docstring s2 = completion.substr(uniqueTo);
+	
+	if (s1.size() > 0) {
+		f.setColor(Color_inlinecompletion);
+		pi_.pain.text(x_, yo_, s1, f);
+		x_ += theFontMetrics(font).width(s1);
+	}
+	
+	if (s2.size() > 0) {
+		f.setColor(Color_nonunique_inlinecompletion);
+		pi_.pain.text(x_, yo_, s2, f);
+		x_ += theFontMetrics(font).width(s2);
 	}
 }
 
