@@ -15,7 +15,6 @@
 
 #include "ColorCode.h"
 #include "FontInfo.h"
-#include "Lexer.h"
 
 #include "support/docstring.h"
 
@@ -24,6 +23,8 @@
 
 namespace lyx {
 
+class Lexer;
+	
 ///
 class InsetLayout {
 public:

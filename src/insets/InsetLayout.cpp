@@ -16,6 +16,7 @@
 
 #include "Color.h"
 #include "Font.h"
+#include "Lexer.h"
 #include "support/lstrings.h"
 
 #include <vector>
