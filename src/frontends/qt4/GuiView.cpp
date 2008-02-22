@@ -1847,6 +1847,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
 				setCurrentWorkArea(wa);
 			}
+			break;
 
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
@@ -1858,6 +1859,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					// No more work area, switch to the background widget.
 					d.setBackground();
 			}
+			break;
 			
 		case LFUN_COMPLETION_POPUP:
 			if (d.current_work_area_)
