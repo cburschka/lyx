@@ -15,6 +15,7 @@
 
 #include "ColorCode.h"
 #include "FontInfo.h"
+#include "Lexer.h"
 
 #include "support/docstring.h"
 
@@ -29,7 +30,9 @@ public:
 	///
 	InsetLayout();
 	///
-	std::string name() const { return name_; };
+	bool read(Lexer & lexrc);
+	///
+	docstring name() const { return name_; };
 	///
 	std::string lyxtype() const { return lyxtype_; };
 	///
@@ -67,7 +70,7 @@ public:
 	bool isForceLtr() const { return forceltr_; };
 private:
 	///
-	std::string name_;
+	docstring name_;
 	///
 	std::string lyxtype_;
 	///
@@ -102,9 +105,6 @@ private:
 	bool keepempty_;
 	///
 	bool forceltr_;
-	
-	//FIXME This will be removed.
-	friend class TextClass;
 };
 
 } // namespace lyx

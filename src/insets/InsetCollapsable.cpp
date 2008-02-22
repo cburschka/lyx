@@ -880,14 +880,14 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 		return;
 
 	// Force inclusion of preamble snippet in layout file
-	features.require(layout_->name());
+	features.require(to_utf8(layout_->name()));
 	InsetText::validate(features);
 }
 
 
 bool InsetCollapsable::undefined() const
 {
-	std::string const & n = getLayout().name();
+	docstring const & n = getLayout().name();
 	return n.empty() || n == TextClass::emptyInsetLayout().name();
 }
 

@@ -80,8 +80,6 @@ public:
 	///
 	void readCharStyle(Lexer &, std::string const &);
 	///
-	void readInsetLayout(Lexer &, docstring const &);
-	///
 	void readFloat(Lexer &);
 	///
 	void readCounter(Lexer &);
