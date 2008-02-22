@@ -388,14 +388,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "Text::dispatch: cmd: " << cmd);
 
+	BufferView * bv = &cur.bv();
+	TextMetrics & tm = bv->textMetrics(this);
+	if (!tm.has(cur.pit()))
+		lyx::dispatch(FuncRequest(LFUN_SCREEN_RECENTER));
+
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
 	// at the end?
 	cur.noUpdate();
 
 	BOOST_ASSERT(cur.text() == this);
-	BufferView * bv = &cur.bv();
-	TextMetrics & tm = cur.bv().textMetrics(this);
 	CursorSlice oldTopSlice = cur.top();
 	bool oldBoundary = cur.boundary();
 	bool sel = cur.selection();
