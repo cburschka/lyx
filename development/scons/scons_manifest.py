@@ -1052,6 +1052,7 @@ src_insets_files = Split('''
     InsetIndex.cpp
     InsetInfo.cpp
     InsetLabel.cpp
+    InsetLayout.cpp
     InsetLine.cpp
     InsetListings.cpp
     InsetListingsParams.cpp

@@ -824,27 +824,27 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	// Here add element to list if getout == true
 	if (getout) {
 		InsetLayout il;
-		il.name = to_ascii(name);
-		il.lyxtype = lyxtype;
-		il.labelstring = labelstring;
-		il.decoration = decoration;
-		il.latextype = latextype;
-		il.latexname = latexname;
-		il.latexparam = latexparam;
-		il.multipar = multipar;
-		il.passthru = passthru;
-		il.needprotect = needprotect;
-		il.freespacing = freespacing;
-		il.forceltr = forceltr;
-		il.keepempty = keepempty;
-		il.font = font;
+		il.name_ = to_ascii(name);
+		il.lyxtype_ = lyxtype;
+		il.labelstring_ = labelstring;
+		il.decoration_ = decoration;
+		il.latextype_ = latextype;
+		il.latexname_ = latexname;
+		il.latexparam_ = latexparam;
+		il.multipar_ = multipar;
+		il.passthru_ = passthru;
+		il.needprotect_ = needprotect;
+		il.freespacing_ = freespacing;
+		il.forceltr_ = forceltr;
+		il.keepempty_ = keepempty;
+		il.font_ = font;
 		// The label font is generally used as-is without
 		// any realization against a given context.
 		labelfont.realize(sane_font);
-		il.labelfont = labelfont;
-		il.bgcolor = bgcolor;
-		il.preamble = preamble;
-		il.requires = requires;
+		il.labelfont_ = labelfont;
+		il.bgcolor_ = bgcolor;
+		il.preamble_ = preamble;
+		il.requires_ = requires;
 		insetlayoutlist_[name] = il;
 	}
 

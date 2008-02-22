@@ -67,7 +67,7 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 		cnts.step(foot);
 		//FIXME: the counter should format itself.
 		setLabel(support::bformat(from_ascii("%1$s %2$s"), 
-					  getLayout(buf.params()).labelstring, 
+					  getLayout(buf.params()).labelstring(), 
 					  cnts.theCounter(foot)));
 	
 	}

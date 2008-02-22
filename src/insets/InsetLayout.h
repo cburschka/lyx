@@ -4,6 +4,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Martin Vermeer
+ * \author Richard Heck
+ *
  * Full author contact details are available in file CREDITS.
  */
 
@@ -23,30 +26,85 @@ namespace lyx {
 ///
 class InsetLayout {
 public:
-	InsetLayout() : 
-		name("undefined"),
-		labelstring(from_utf8("UNDEFINED")),
-		font(sane_font), labelfont(sane_font),
-		bgcolor(Color_error)
-		{ labelfont.setColor(Color_error); };
-	std::string name;
-	std::string lyxtype;
-	docstring labelstring;
-	std::string decoration;
-	std::string latextype;
-	std::string latexname;
-	std::string latexparam;
-	FontInfo font;
-	FontInfo labelfont;
-	ColorCode bgcolor;
-	std::string preamble;
-	std::set<std::string> requires;
-	bool multipar;
-	bool passthru;
-	bool needprotect;
-	bool freespacing;
-	bool keepempty;
-	bool forceltr;
+	///
+	InsetLayout();
+	///
+	std::string name() const { return name_; };
+	///
+	std::string lyxtype() const { return lyxtype_; };
+	///
+	docstring labelstring() const { return labelstring_; };
+	///
+	//FIXME This could be an enum
+	std::string decoration() const { return decoration_; };
+	///
+	std::string latextype() const { return latextype_; };
+	///
+	std::string latexname() const { return latexname_; };
+	///
+	std::string latexparam() const { return latexparam_; };
+	///
+	FontInfo font() const { return font_; };
+	///
+	FontInfo labelfont() const { return labelfont_; };
+	///
+	ColorCode bgcolor() const { return bgcolor_; };
+	///
+	std::string preamble() const { return preamble_; };
+	///
+	std::set<std::string> requires() const { return requires_; };
+	///
+	bool isMultiPar() const { return multipar_; };
+	///
+	bool isPassThru() const { return passthru_; };
+	///
+	bool isNeedProtect() const { return needprotect_; };
+	///
+	bool isFreeSpacing() const { return freespacing_; };
+	///
+	bool isKeepEmpty() const { return keepempty_; };
+	///
+	bool isForceLtr() const { return forceltr_; };
+private:
+	///
+	std::string name_;
+	///
+	std::string lyxtype_;
+	///
+	docstring labelstring_;
+	///
+	std::string decoration_;
+	///
+	std::string latextype_;
+	///
+	std::string latexname_;
+	///
+	std::string latexparam_;
+	///
+	FontInfo font_;
+	///
+	FontInfo labelfont_;
+	///
+	ColorCode bgcolor_;
+	///
+	std::string preamble_;
+	///
+	std::set<std::string> requires_;
+	///
+	bool multipar_;
+	///
+	bool passthru_;
+	///
+	bool needprotect_;
+	///
+	bool freespacing_;
+	///
+	bool keepempty_;
+	///
+	bool forceltr_;
+	
+	//FIXME This will be removed.
+	friend class TextClass;
 };
 
 } // namespace lyx

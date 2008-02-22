@@ -515,6 +515,7 @@ SOURCEFILESINSETS = \
 	insets/InsetIndex.cpp \
 	insets/InsetInfo.cpp \
 	insets/InsetLabel.cpp \
+	insets/InsetLayout.cpp \
 	insets/InsetLine.cpp \
 	insets/InsetListings.cpp \
 	insets/InsetListingsParams.cpp \

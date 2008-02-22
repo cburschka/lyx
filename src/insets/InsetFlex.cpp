@@ -45,8 +45,8 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 	name_(layoutName)
 {
 	setLayout(tc); // again, because now the name is initialized
-	packages_ = getLayout().requires;
-	preamble_ = getLayout().preamble;
+	packages_ = getLayout().requires();
+	preamble_ = getLayout().preamble();
 }
 
 
@@ -111,8 +111,8 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
-		sgml::openTag(os, getLayout().latexname,
-			      par->getID(buf, runparams) + getLayout().latexparam);
+		sgml::openTag(os, getLayout().latexname(),
+			      par->getID(buf, runparams) + getLayout().latexparam());
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
@@ -121,7 +121,7 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	}
 
 	if (!undefined())
-		sgml::closeTag(os, getLayout().latexname);
+		sgml::closeTag(os, getLayout().latexname());
 
 	return 0;
 }

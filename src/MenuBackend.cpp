@@ -648,7 +648,7 @@ void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 	InsetLayouts::const_iterator end = insetlayouts.end();
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
-		if (cit->second.lyxtype == s)
+		if (cit->second.lyxtype() == s)
 			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, 
 				label, FuncRequest(LFUN_FLEX_INSERT,
 						label)));

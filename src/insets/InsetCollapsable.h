@@ -47,15 +47,20 @@ public:
 		);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
-	
+	///
 	InsetCollapsable * asInsetCollapsable() { return this; }
+	///
 	InsetCollapsable const * asInsetCollapsable() const { return this; }
+	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	docstring name() const { return from_ascii("Collapsable"); }
+	///
 	InsetLayout const & getLayout(BufferParams const &) const
-	{ return *layout_; } 
+		{ return *layout_; } 
+	///
 	InsetLayout const & getLayout() const
-	{ return *layout_; } 
+		{ return *layout_; } 
 	///
 	void setLayout(BufferParams const &);
 	/// (Re-)set the character style parameters from \p tc according
@@ -74,7 +79,8 @@ public:
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
-		bool boundary, int & x, int & y) const;
+	///
+	bool boundary, int & x, int & y) const;
 	///
 	bool hitButton(FuncRequest const &) const;
 	///
@@ -144,8 +150,8 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	virtual ColorCode backgroundColor() const {return layout_->bgcolor; }
-
+	virtual ColorCode backgroundColor() const {return layout_->bgcolor(); }
+	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
@@ -154,11 +160,11 @@ public:
 	virtual InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 	/// Allow multiple blanks
-	virtual bool isFreeSpacing() const { return layout_->freespacing; }
+	virtual bool isFreeSpacing() const { return layout_->isFreeSpacing(); }
 	/// Don't eliminate empty paragraphs
-	virtual bool allowEmpty() const { return layout_->keepempty; }
+	virtual bool allowEmpty() const { return layout_->isKeepEmpty(); }
 	/// Force inset into LTR environment if surroundings are RTL?
-	virtual bool forceLTR() const { return layout_->forceltr; }
+	virtual bool forceLTR() const { return layout_->isForceLtr(); }
 	///
 	virtual bool useEmptyLayout() const { return true; }
 	/// Is this inset's layout defined in the document's textclass?
