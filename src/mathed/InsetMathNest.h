@@ -142,7 +142,7 @@ public:
 	///
 	bool automaticPopupCompletion() const;
 	///
-	CompletionList const * completionList(Cursor const & cur) const;
+	CompletionList const * createCompletionList(Cursor const & cur) const;
 	///
 	docstring completionPrefix(Cursor const & cur) const;
 	///

@@ -1607,7 +1607,8 @@ bool InsetMathNest::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const * InsetMathNest::completionList(Cursor const & cur) const
+Inset::CompletionList const *
+InsetMathNest::createCompletionList(Cursor const & cur) const
 {
 	if (!cur.inMacroMode())
 		return 0;

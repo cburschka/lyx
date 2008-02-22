@@ -364,7 +364,9 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 		old = last_selection_;
 	
 	// set new model
-	setModel(new GuiCompletionModel(this, cur.inset().completionList(cur)));
+	Inset::CompletionList const * list
+	= cur.inset().createCompletionList(cur);
+	setModel(new GuiCompletionModel(this, list));
 	
 	// show popup
 	if (popupUpdate)

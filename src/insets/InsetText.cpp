@@ -504,7 +504,8 @@ bool InsetText::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const * InsetText::completionList(Cursor const & cur) const
+Inset::CompletionList const 
+* InsetText::createCompletionList(Cursor const & cur) const
 {
 	if (!completionSupported(cur))
 		return 0;

@@ -317,7 +317,7 @@ public:
 	/// Returns completion suggestions at cursor position. Return an
 	/// null pointer if no completion is a available or possible.
 	/// The caller is responsible to free the returned object!
-	virtual CompletionList const * completionList(Cursor const &) const 
+	virtual CompletionList const * createCompletionList(Cursor const &) const 
 		{ return 0; }
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
