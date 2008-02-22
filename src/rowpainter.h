@@ -63,7 +63,7 @@ private:
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
 	void paintInset(Inset const * inset, pos_type const pos);
-	void paintInlineCompletion(pos_type & vpos, Font const & font);
+	void paintInlineCompletion(Font const & font);
 	
 	/// return left margin
 	int leftMargin() const;

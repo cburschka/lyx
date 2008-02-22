@@ -768,7 +768,7 @@ void RowPainter::paintText()
 		
 		// Is the inline completion in front of character?
 		if (font.isRightToLeft() && vpos == inlineCompletionVPos_)
-			paintInlineCompletion(vpos, font);		
+			paintInlineCompletion(font);		
 
 		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
@@ -792,7 +792,7 @@ void RowPainter::paintText()
 
 		// Is the inline completion after character?
 		if (!font.isRightToLeft() && vpos - 1 == inlineCompletionVPos_)
-			paintInlineCompletion(vpos, font);
+			paintInlineCompletion(font);
 	}
 
 	// if we reach the end of a struck out range, paint it
@@ -808,7 +808,7 @@ void RowPainter::paintText()
 }
 
 
-void RowPainter::paintInlineCompletion(pos_type & vpos, Font const & font)
+void RowPainter::paintInlineCompletion(Font const & font)
 {
 	docstring completion = pi_.base.bv->inlineCompletion();
 	FontInfo f = font.fontInfo();
