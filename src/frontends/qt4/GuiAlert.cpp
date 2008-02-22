@@ -105,7 +105,7 @@ int prompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b1, docstring const & b2, docstring const & b3)
 {
-	lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
+	//lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
 	if (!use_gui || lyxerr.debugging()) {
 		lyxerr << title0 << '\n'
 		       << "----------------------------------------\n"
@@ -129,7 +129,7 @@ int prompt(docstring const & title0, docstring const & question,
 	qApp->changeOverrideCursor(Qt::ArrowCursor);
 
 	// FIXME replace that with guiApp->currentView()
-	LYXERR0("FOCUS: " << qApp->focusWidget());
+	//LYXERR0("FOCUS: " << qApp->focusWidget());
 	int res = QMessageBox::information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),
