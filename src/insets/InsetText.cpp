@@ -481,7 +481,7 @@ bool InsetText::completionSupported(Cursor const & cur) const
 		return false;
 	Paragraph const & par = cur.paragraph();
 	return cur.pos() > 0
-		&& !par.isLetter(cur.pos())
+		&& (cur.pos() >= par.size() || !par.isLetter(cur.pos()))
 		&& par.isLetter(cur.pos() - 1);
 }
 
