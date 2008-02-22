@@ -221,9 +221,14 @@ public:
 	virtual size_t nrows() const { return 0; }
 	/// number of columns in gridlike structures
 	virtual size_t ncols() const { return 0; }
-	/// is called when the cursor leaves this inset
-	/// returns true if cursor is now invalid.
-	virtual bool notifyCursorLeaves(Cursor const &, Cursor &) { return false; }
+	/// Is called when the cursor leaves this inset.
+	/// Returns true if cursor is now invalid, e.g. if former 
+	/// insets in higher cursor slices of \c old do not exist 
+	/// anymore.
+	/// \c old is the old cursor, i.e. there is a slice pointing to this.
+	/// \c cur is the new cursor. Use the update flags to cause a redraw.
+	virtual bool notifyCursorLeaves(Cursor const & /*old*/, Cursor & /*cur*/)
+		{ return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
 	virtual bool setMouseHover(bool) { return false; }
