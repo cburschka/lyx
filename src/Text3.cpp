@@ -406,10 +406,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Signals that a full-screen update is required
 	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action,
 		LyXAction::NoUpdate) || singleParUpdate);
-	// Remember the old paragraph metric (_outer_ paragraph!)
-	ParagraphMetrics const & pm = cur.bv().parMetrics(
-		cur.bottom().text(), cur.bottom().pit());
-	Dimension olddim = pm.dim();
 
 	switch (cmd.action) {
 
@@ -1820,16 +1816,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// FIXME: the following code should go in favor of fine grained
 	// update flag treatment.
 	if (singleParUpdate) {
-		// Inserting characters does not change par height
-		ParagraphMetrics const & pms
-			= cur.bv().parMetrics(cur.bottom().text(), cur.bottom().pit());
-		if (pms.dim().height() == olddim.height()) {
-			// if so, update _only_ this paragraph
-			cur.updateFlags(Update::SinglePar |
-				Update::FitCursor);
-			return;
-		}
-		needsUpdate = true;
+		// Inserting characters does not change par height in general. So, try
+		// to update _only_ this paragraph. BufferView will detect if a full
+		// metrics update is needed anyway.
+		cur.updateFlags(Update::SinglePar | Update::FitCursor);
+		return;
 	}
 
 	if (!needsUpdate
