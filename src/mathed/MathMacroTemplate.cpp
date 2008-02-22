@@ -538,11 +538,11 @@ void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from
 }
 
 
-bool MathMacroTemplate::notifyCursorLeaves(Cursor & cur)
+bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	updateLook();
 	cur.updateFlags(Update::Force);
-	return InsetMathNest::notifyCursorLeaves(cur);
+	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
 
 

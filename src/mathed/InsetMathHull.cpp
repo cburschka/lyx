@@ -414,7 +414,7 @@ void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-bool InsetMathHull::notifyCursorLeaves(Cursor & cur)
+bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
@@ -1046,7 +1046,6 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FINISHED_LEFT:
 		//lyxerr << "action: " << cmd.action << endl;
 		InsetMathGrid::doDispatch(cur, cmd);
-		notifyCursorLeaves(cur);
 		cur.undispatched();
 		break;
 

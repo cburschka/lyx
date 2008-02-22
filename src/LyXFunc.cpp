@@ -1705,15 +1705,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			// Let the current Cursor dispatch its own actions.
+			Cursor old = view()->cursor();
 			view()->cursor().getPos(cursorPosBeforeDispatchX_,
 						cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
-			updateFlags = view()->cursor().result().update();
-			if (!view()->cursor().result().dispatched()) {
-				// No update needed in this case (e.g. when reaching
-				// top of document.
-				updateFlags = Update::None;
+
+			// notify insets we just left
+			if (view()->cursor() != old) {
+				old.fixIfBroken();
+				bool badcursor = notifyCursorLeaves(old, view()->cursor());
+				if (badcursor)
+					view()->cursor().fixIfBroken();
 			}
+
+			updateFlags = view()->cursor().result().update();
 		}
 
 		if (lyx_view_ && lyx_view_->buffer()) {

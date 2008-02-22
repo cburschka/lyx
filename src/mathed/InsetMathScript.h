@@ -129,7 +129,7 @@ private:
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells and return true if a cell has been deleted.
-	bool notifyCursorLeaves(Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool cell_1_is_up_;

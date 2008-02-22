@@ -398,7 +398,7 @@ public:
  * Sure that the cursor old is valid, i.e. all inset pointers
  * point to valid insets! Use Cursor::fixIfBroken if necessary.
  */
-bool notifyCursorLeaves(DocIterator const & old, Cursor & cur);
+bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 
 } // namespace lyx

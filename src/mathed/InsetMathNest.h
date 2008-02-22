@@ -97,7 +97,7 @@ public:
 	/// access to the lock
 	void lock(bool);
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 	/// direct access to the cell.
 	/// inlined because shows in profile.

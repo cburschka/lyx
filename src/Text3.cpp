@@ -590,10 +590,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool up = cmd.action == LFUN_UP_SELECT || cmd.action == LFUN_UP;
 		bool const successful = cur.upDownInText(up, needsUpdate);
 		if (successful) {
-			// notify insets which were left and get their update flags 
-			notifyCursorLeaves(cur.beforeDispatchCursor(), cur);
-			cur.fixIfBroken();
-			
 			// redraw if you leave mathed (for the decorations)
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else

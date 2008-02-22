@@ -371,7 +371,7 @@ bool InsetMathNest::setMouseHover(bool mouse_hover)
 }
 
 
-bool InsetMathNest::notifyCursorLeaves(Cursor & /*cur*/)
+bool InsetMathNest::notifyCursorLeaves(Cursor const & /*old*/, Cursor & /*cur*/)
 {
 	// FIXME: look here
 #if 0
@@ -584,12 +584,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// go up/down
 		bool up = cmd.action == LFUN_UP || cmd.action == LFUN_UP_SELECT;
 		bool successful = cur.upDownInMath(up);
-		if (successful) {
-			// notify left insets and give them chance to set update flags
-			lyx::notifyCursorLeaves(cur.beforeDispatchCursor(), cur);
-			cur.fixIfBroken();
+		if (successful)
 			break;
-		}
 		
 		if (cur.fixIfBroken())
 			// FIXME: Something bad happened. We pass the corrected Cursor

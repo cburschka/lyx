@@ -34,6 +34,7 @@ class Change;
 class Cursor;
 class CursorSlice;
 class Dimension;
+class DocIterator;
 class FuncRequest;
 class FuncStatus;
 class InsetCollapsable;
@@ -221,9 +222,8 @@ public:
 	/// number of columns in gridlike structures
 	virtual size_t ncols() const { return 0; }
 	/// is called when the cursor leaves this inset
-	/// returns true if cursor is now invalid. The cursor parameter
-	/// is _not_ necessarily pointing to the inset.
-	virtual bool notifyCursorLeaves(Cursor &) { return false; }
+	/// returns true if cursor is now invalid.
+	virtual bool notifyCursorLeaves(Cursor const &, Cursor &) { return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
 	virtual bool setMouseHover(bool) { return false; }

@@ -56,7 +56,7 @@ public:
 	bool idxLast(Cursor &) const;
 
 	///
-	virtual bool notifyCursorLeaves(Cursor &);
+	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 	
 	/// Remove cell (starting from 0)
 	void removeArgument(pos_type pos);

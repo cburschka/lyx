@@ -377,8 +377,6 @@ void Cursor::pushBackward(Inset & p)
 bool Cursor::popBackward()
 {
 	BOOST_ASSERT(!empty());
-	//lyxerr << "Leaving inset from in front" << endl;
-	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -391,7 +389,6 @@ bool Cursor::popForward()
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset from in back" << endl;
 	const pos_type lp = (depth() > 1) ? (*this)[depth() - 2].lastpos() : 0;
-	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -1768,7 +1765,7 @@ bool Cursor::fixIfBroken()
 }
 
 
-bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
+bool notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	// find inset in common
 	size_type i;
@@ -1780,7 +1777,9 @@ bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
 	// notify everything on top of the common part in old cursor,
 	// but stop if the inset claims the cursor to be invalid now
 	for (; i < old.depth(); ++i) {
-		if (old[i].inset().notifyCursorLeaves(cur))
+		Cursor insetPos = old;
+		insetPos.cutOff(i);
+		if (old[i].inset().notifyCursorLeaves(insetPos, cur))
 			return true;
 	}
 	

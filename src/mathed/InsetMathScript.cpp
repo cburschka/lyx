@@ -660,9 +660,9 @@ void InsetMathScript::infoize2(odocstream & os) const
 }
 
 
-bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
+bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	InsetMathNest::notifyCursorLeaves(cur);
+	InsetMathNest::notifyCursorLeaves(old, cur);
 
 	//LYXERR0("InsetMathScript::notifyCursorLeaves: 1 " << cur);
 
@@ -690,14 +690,13 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 	if ((nargs() == 2 && cell(1).empty())
 	    || (nargs() == 3 && cell(1).empty() && cell(2).empty())) {
 		// Make undo step. We cannot use cur for this because
-		// it does not necessarily point to us. The BufferView
-		// cursor though should do.
-		int scriptSlice
-		= cur.bv().cursor().find(this);
+		// it does not necessarily point to us anymore. But we
+		// should be on top of the cursor old.
+		Cursor insetCur = old;
+		int scriptSlice	= insetCur.find(this);
 		BOOST_ASSERT(scriptSlice != -1);
-		Cursor & bvCur = cur.bv().cursor();
-		bvCur.cutOff(scriptSlice);
-		bvCur.recordUndoInset();
+		insetCur.cutOff(scriptSlice);
+		insetCur.recordUndoInset();
 
 		// Let the script inset commit suicide. This is
 		// modelled on Cursor.pullArg(), but tries not to
@@ -705,12 +704,9 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		// cur (since the top slice will be deleted
 		// afterwards)
 		MathData ar = cell(0);
-		bvCur.pop();
-		bvCur.cell().erase(bvCur.pos());
-		bvCur.cell().insert(bvCur.pos(), ar);
-
-		// put cursor behind
-		bvCur.pos() += ar.size();
+		insetCur.pop();
+		insetCur.cell().erase(insetCur.pos());
+		insetCur.cell().insert(insetCur.pos(), ar);
 
 		// redraw
 		cur.updateFlags(cur.disp_.update() | Update::SinglePar);

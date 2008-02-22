@@ -40,7 +40,7 @@ public:
 	///
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
-	bool notifyCursorLeaves(Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 	///
 	void read(Buffer const &, Lexer & lex);
 	///

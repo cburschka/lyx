@@ -606,10 +606,10 @@ bool MathMacro::idxLast(Cursor & cur) const
 }
 
 
-bool MathMacro::notifyCursorLeaves(Cursor & cur)
+bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	cur.updateFlags(Update::Force);
-	return InsetMathNest::notifyCursorLeaves(cur);
+	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
 
 

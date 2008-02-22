@@ -116,7 +116,7 @@ public:
 	virtual void textString(Buffer const &, odocstream &) const;
 
 	/// get notification when the cursor leaves this inset
-	bool notifyCursorLeaves(Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 	///
 	//bool insetAllowed(InsetCode code) const;
 	///
