@@ -189,7 +189,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetERT::setButtonLabel()
 {
-	if (decoration() == Deco_Classic)
+	if (decoration() == InsetLayout::Classic)
 		setLabel(isOpen() ? _("ERT") : getNewLabel(_("ERT")));
 	else
 		setLabel(getNewLabel(_("ERT")));

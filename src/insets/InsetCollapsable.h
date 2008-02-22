@@ -118,7 +118,7 @@ public:
 	 */
 
 	/// Default looks
-	virtual InsetDecoration decoration() const;
+	virtual InsetLayout::InsetDecoration decoration() const;
 	///
 	enum Geometry {
 		TopButton,

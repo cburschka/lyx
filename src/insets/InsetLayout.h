@@ -26,18 +26,17 @@ namespace lyx {
 class Lexer;
 
 ///
-enum InsetDecoration {
-	Deco_Classic,
-	Deco_Minimalistic,
-	Deco_Conglomerate,
-	Deco_Default
-};
-
-///
 class InsetLayout {
 public:
 	///
 	InsetLayout();
+	///
+	enum InsetDecoration {
+		Classic,
+		Minimalistic,
+		Conglomerate,
+		Default
+	};
 	///
 	bool read(Lexer & lexrc);
 	///

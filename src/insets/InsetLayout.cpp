@@ -60,15 +60,15 @@ enum InsetLayoutTags {
 
 
 namespace {
-	InsetDecoration translateDecoration(std::string const & str) 
+	InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
 	{
 		if (str == "classic")
-			return Deco_Classic;
+			return InsetLayout::Classic;
 		if (str == "minimalistic")
-			return Deco_Minimalistic;
+			return InsetLayout::Minimalistic;
 		if (str == "conglomerate")
-			return Deco_Conglomerate;
-		return Deco_Default;
+			return InsetLayout::Conglomerate;
+		return InsetLayout::Default;
 	}
 }
 
