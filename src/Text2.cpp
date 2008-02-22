@@ -525,9 +525,11 @@ void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str)
 bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 			bool setfont, bool boundary)
 {
+	TextMetrics const & tm = cur.bv().textMetrics(this);
+	bool const update_needed = !tm.has(par);
 	Cursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
-	return cur.bv().checkDepm(cur, old);
+	return cur.bv().checkDepm(cur, old) || update_needed;
 }
 
 
