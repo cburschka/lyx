@@ -41,6 +41,25 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
+class RtlItemDelegate : public QItemDelegate {
+public:
+	explicit RtlItemDelegate(QObject * parent = 0)
+		: QItemDelegate(parent) {}
+
+protected:
+	virtual void drawDisplay(QPainter * painter,
+		QStyleOptionViewItem const & option,
+		QRect const & rect, QString const & text) const
+	{
+		// FIXME: do this more elegantly
+		docstring stltext = qstring_to_ucs4(text);
+		reverse(stltext.begin(), stltext.end());
+		QItemDelegate::drawDisplay(painter, option, rect, toqstr(stltext));
+	}
+};
+
+RtlItemDelegate rtlItemDelegate;
+
 
 class PixmapItemDelegate : public QItemDelegate {
 public:
@@ -73,9 +92,9 @@ protected:
 class GuiCompletionModel : public QAbstractListModel {
 public:
 	///
-	GuiCompletionModel(QObject * parent, 
-		Inset::CompletionList const * l, bool rtl)
-	: QAbstractListModel(parent), list_(l), rtl_(rtl) {}
+	GuiCompletionModel(QObject * parent,
+		Inset::CompletionList const * l)
+		: QAbstractListModel(parent), list_(l) {}
 	///
 	~GuiCompletionModel()
 		{ delete list_; }
@@ -105,12 +124,9 @@ public:
 		if (role != Qt::DisplayRole && role != Qt::EditRole)
 		    return QVariant();
 		    
-		if (index.column() == 0) {
-			docstring s = list_->data(index.row());
-			if (rtl_)
-				reverse(s.begin(), s.end());
-			return toqstr(s);
-		} else if (index.column() == 1) {
+		if (index.column() == 0)
+			return toqstr(list_->data(index.row()));
+		else if (index.column() == 1) {
 			// get icon from cache
 			QPixmap scaled;
 			QString const name = ":" + toqstr(list_->icon(index.row()));
@@ -131,17 +147,9 @@ public:
 		return QVariant();
 	}
 
-	///
-	bool rtl() const 
-	{ 
-		return rtl_; 
-	}
-
 private:
 	///
 	Inset::CompletionList const * list_;
-	///
-	bool rtl_;
 };
 
 
@@ -149,7 +157,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	: QCompleter(parent), gui_(gui), updateLock_(0)
 {
 	// Setup the completion popup
-	setModel(new GuiCompletionModel(this, 0, false));
+	setModel(new GuiCompletionModel(this, 0));
 	setCompletionMode(QCompleter::PopupCompletion);
 	setWidget(gui_);
 	
@@ -162,8 +170,8 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	listView->header()->hide();
 	listView->setIndentation(0);
 	setPopup(listView);
-	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(popup()));
-	
+	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
+
 	// create timeout timers
 	popup_timer_.setSingleShot(true);
 	inline_timer_.setSingleShot(true);
@@ -363,7 +371,7 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	
 	// and calculate the rect of the popup
 	QRect rect;
-	if (static_cast<GuiCompletionModel const *>(model())->rtl())
+	if (popup()->layoutDirection() == Qt::RightToLeft)
 		rect = QRect(x + dim.width() - 200, y - dim.ascent() - 3, 200, dim.height() + 6);
 	else
 		rect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
@@ -392,10 +400,14 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	}
 	popup()->setLayoutDirection(rtl ? Qt::RightToLeft : Qt::LeftToRight);
 
+	// turn the direction of the strings in the popup.
+	// Qt does not do that itself.
+	popup()->setItemDelegateForColumn(0, rtl ? &rtlItemDelegate : 0);
+
 	// set new model
 	Inset::CompletionList const * list
 	= cur.inset().createCompletionList(cur);
-	setModel(new GuiCompletionModel(this, list, rtl));
+	setModel(new GuiCompletionModel(this, list));
 
 	// show popup
 	if (popupUpdate)
