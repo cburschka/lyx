@@ -1266,7 +1266,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					       << to_utf8(l->inset) << "'." << endl;
 					// create generic environment inset
 					cell->push_back(MathAtom(new InsetMathEnv(name)));
-					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+					parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
 				}
 			}
 
@@ -1276,7 +1276,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					<< "'" << endl;
 				// create generic environment inset
 				cell->push_back(MathAtom(new InsetMathEnv(name)));
-				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+				parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
 			}
 		}
 
