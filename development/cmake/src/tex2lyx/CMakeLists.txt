@@ -7,6 +7,7 @@
 project(tex2lyx)
 
 set(LINKED_sources
+	${TOP_SRC_DIR}/src/insets/InsetLayout.cpp
 	${TOP_SRC_DIR}/src/FloatList.cpp
 	${TOP_SRC_DIR}/src/Floating.cpp
 	${TOP_SRC_DIR}/src/Counters.cpp
