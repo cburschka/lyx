@@ -22,6 +22,7 @@
 #include "DispatchResult.h"
 #include "FloatList.h"
 #include "FuncStatus.h"
+#include "InsetLayout.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
