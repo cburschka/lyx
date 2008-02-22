@@ -50,7 +50,7 @@ protected:
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
 		   const QModelIndex &index) const
 	{
-		QStyleOptionViewItemV3 opt = setOptions(index, option);
+		QStyleOptionViewItem opt = setOptions(index, option);
 		QVariant value = index.data(Qt::DisplayRole);
 		QPixmap pixmap = qvariant_cast<QPixmap>(value);
 		
