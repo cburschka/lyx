@@ -687,8 +687,8 @@ void RowPainter::paintText()
 	    && inlineCompletionPos.text() == &text_
 	    && inlineCompletionPos.pit() == pit_
 	    && inlineCompletionPos.pos() >= row_.pos()
-	    && inlineCompletionPos.pos() < row_.endpos()) {
-		// draw visually behind the previous character
+	    && inlineCompletionPos.pos() <= row_.endpos()) {
+		// draw logically behind the previous character
 		inlineCompletionVPos = bidi_.log2vis(inlineCompletionPos.pos() - 1);
 	}
 
@@ -769,7 +769,7 @@ void RowPainter::paintText()
 		
 		// Is the inline completion in front of character?
 		if (font.isRightToLeft() && vpos == inlineCompletionVPos)
-			paintInlineCompletion(font);		
+			paintInlineCompletion(font);
 
 		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
