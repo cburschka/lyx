@@ -24,7 +24,15 @@
 namespace lyx {
 
 class Lexer;
-	
+
+///
+enum InsetDecoration {
+	Deco_Classic,
+	Deco_Minimalistic,
+	Deco_Conglomerate,
+	Deco_Default
+};
+
 ///
 class InsetLayout {
 public:
@@ -39,8 +47,7 @@ public:
 	///
 	docstring labelstring() const { return labelstring_; };
 	///
-	//FIXME This could be an enum
-	std::string decoration() const { return decoration_; };
+	InsetDecoration decoration() const { return decoration_; };
 	///
 	std::string latextype() const { return latextype_; };
 	///
@@ -77,7 +84,7 @@ private:
 	///
 	docstring labelstring_;
 	///
-	std::string decoration_;
+	InsetDecoration decoration_;
 	///
 	std::string latextype_;
 	///

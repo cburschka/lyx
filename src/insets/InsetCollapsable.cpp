@@ -52,7 +52,7 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 InsetCollapsable::Geometry InsetCollapsable::geometry() const
 {
 	switch (decoration()) {
-	case Classic:
+	case Deco_Classic:
 		if (status() == Open) {
 			if (openinlined_)
 				return LeftButton;
@@ -61,11 +61,14 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 		} else
 			return ButtonOnly;
 
-	case Minimalistic:
+	case Deco_Minimalistic:
 		return status() == Open ? NoButton : ButtonOnly ;
 
-	case Conglomerate:
+	case Deco_Conglomerate:
 		return status() == Open ? SubLabel : Corners ;
+
+	case Deco_Default:
+		break; // this shouldn't happen
 	}
 
 	// dummy return value to shut down a warning,
@@ -533,7 +536,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			// There is no button to right click:
-			if (decoration() == Minimalistic ||
+			if (decoration() == Deco_Minimalistic ||
 			    geometry() == Corners ||
 			    geometry() == SubLabel ||
 			    geometry() == NoButton
@@ -798,18 +801,23 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 }
 
 
-InsetCollapsable::Decoration InsetCollapsable::decoration() const
+InsetDecoration InsetCollapsable::decoration() const
 {
-	if (!layout_ || layout_->decoration() == "classic")
-		return Classic;
-	if (layout_->decoration() == "minimalistic")
-		return Minimalistic;
-	if (layout_->decoration() == "conglomerate")
-		return Conglomerate;
+	if (!layout_)
+		return Deco_Classic;
+	InsetDecoration const dec = layout_->decoration();
+	switch (dec) {
+	case Deco_Classic:
+	case Deco_Minimalistic:
+	case Deco_Conglomerate:
+		return dec;
+	case Deco_Default:
+		break;
+	}
 	if (lyxCode() == FLEX_CODE)
 		// FIXME: Is this really necessary?
-		return Conglomerate;
-	return Classic;
+		return Deco_Conglomerate;
+	return Deco_Classic;
 }
 
 

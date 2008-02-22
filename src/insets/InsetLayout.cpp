@@ -59,6 +59,20 @@ enum InsetLayoutTags {
 };
 
 
+namespace {
+	InsetDecoration translateDecoration(std::string const & str) 
+	{
+		if (str == "classic")
+			return Deco_Classic;
+		if (str == "minimalistic")
+			return Deco_Minimalistic;
+		if (str == "conglomerate")
+			return Deco_Conglomerate;
+		return Deco_Default;
+	}
+}
+
+
 bool InsetLayout::read(Lexer & lexrc)
 {
 	name_ = support::subst(lexrc.getDocString(), '_', ' ');
@@ -114,7 +128,7 @@ bool InsetLayout::read(Lexer & lexrc)
 			break;
 		case IL_DECORATION:
 			lexrc.next();
-			decoration_ = lexrc.getString();
+			decoration_ = translateDecoration(lexrc.getString());
 			break;
 		case IL_LATEXNAME:
 			lexrc.next();

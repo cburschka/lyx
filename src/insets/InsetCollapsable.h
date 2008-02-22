@@ -117,14 +117,8 @@ public:
 	 *   x) toggled by autoOpen_
 	 */
 
-	///
-	enum Decoration {
-		Classic,
-		Minimalistic,
-		Conglomerate
-	};
 	/// Default looks
-	virtual Decoration decoration() const;
+	virtual InsetDecoration decoration() const;
 	///
 	enum Geometry {
 		TopButton,
