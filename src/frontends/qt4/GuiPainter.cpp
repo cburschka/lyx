@@ -364,8 +364,6 @@ int GuiPainter::text(int x, int y, docstring const & s,
 			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
-		// We need to draw the text as LTR as we use our own bidi code.
-		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
 		//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 		//	<< " at " << x << "," << y);
