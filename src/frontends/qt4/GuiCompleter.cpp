@@ -20,6 +20,7 @@
 #include "GuiView.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "Paragraph.h"
 #include "version.h"
 
 #include "support/debug.h"
@@ -72,8 +73,9 @@ protected:
 class GuiCompletionModel : public QAbstractListModel {
 public:
 	///
-	GuiCompletionModel(QObject * parent, Inset::CompletionList const * l)
-	: QAbstractListModel(parent), list_(l) {}
+	GuiCompletionModel(QObject * parent, 
+		Inset::CompletionList const * l, bool rtl)
+	: QAbstractListModel(parent), list_(l), rtl_(rtl) {}
 	///
 	~GuiCompletionModel()
 		{ delete list_; }
@@ -103,9 +105,12 @@ public:
 		if (role != Qt::DisplayRole && role != Qt::EditRole)
 		    return QVariant();
 		    
-		if (index.column() == 0)
-			return toqstr(list_->data(index.row()));
-		else if (index.column() == 1) {
+		if (index.column() == 0) {
+			docstring s = list_->data(index.row());
+			if (rtl_)
+				reverse(s.begin(), s.end());
+			return toqstr(s);
+		} else if (index.column() == 1) {
 			// get icon from cache
 			QPixmap scaled;
 			QString const name = ":" + toqstr(list_->icon(index.row()));
@@ -126,9 +131,17 @@ public:
 		return QVariant();
 	}
 
+	///
+	bool rtl() const 
+	{ 
+		return rtl_; 
+	}
+
 private:
 	///
 	Inset::CompletionList const * list_;
+	///
+	bool rtl_;
 };
 
 
@@ -136,7 +149,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	: QCompleter(parent), gui_(gui), updateLock_(0)
 {
 	// Setup the completion popup
-	setModel(new GuiCompletionModel(this, 0));
+	setModel(new GuiCompletionModel(this, 0, false));
 	setCompletionMode(QCompleter::PopupCompletion);
 	setWidget(gui_);
 	
@@ -347,10 +360,16 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	int x;
 	int y;
 	cur.inset().completionPosAndDim(cur, x, y, dim);
-	QRect insetRect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
+	
+	// and calculate the rect of the popup
+	QRect rect;
+	if (static_cast<GuiCompletionModel const *>(model())->rtl())
+		rect = QRect(x + dim.width() - 200, y - dim.ascent() - 3, 200, dim.height() + 6);
+	else
+		rect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
 	
 	// show/update popup
-	complete(insetRect);
+	complete(rect);
 	QTreeView * p = static_cast<QTreeView *>(popup());
 	p->setColumnWidth(0, popup()->width() - 22 - p->verticalScrollBar()->width());
 }
@@ -362,12 +381,22 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	QString old = currentCompletion();
 	if (old.length() == 0)
 		old = last_selection_;
-	
+
+	// set whether rtl
+	bool rtl = false;
+	if (cur.inTexted()) {
+		Paragraph const & par = cur.paragraph();
+		Font const font =
+		par.getFontSettings(cur.bv().buffer().params(), cur.pos());
+		rtl = font.isVisibleRightToLeft();
+	}
+	popup()->setLayoutDirection(rtl ? Qt::RightToLeft : Qt::LeftToRight);
+
 	// set new model
 	Inset::CompletionList const * list
 	= cur.inset().createCompletionList(cur);
-	setModel(new GuiCompletionModel(this, list));
-	
+	setModel(new GuiCompletionModel(this, list, rtl));
+
 	// show popup
 	if (popupUpdate)
 		updatePopup(cur);
