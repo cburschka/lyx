@@ -100,9 +100,6 @@ private:
 	int const yo_;    // current baseline
 	double x_;
 	int width_;
-
-	// -1 if the inline completion is not in this paragraph.
-	pos_type inlineCompletionVPos_;
 };
 
 } // namespace lyx

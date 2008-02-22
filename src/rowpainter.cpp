@@ -71,17 +71,6 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 	BOOST_ASSERT(pit >= 0);
 	BOOST_ASSERT(pit < int(text.paragraphs().size()));
-
-	// check for possible inline completion
-	DocIterator const & inlineCompletionPos = pi_.base.bv->inlineCompletionPos();
-	inlineCompletionVPos_ = -1;
-	if (inlineCompletionPos.inTexted()
-	    && inlineCompletionPos.text() == &text_
-	    && inlineCompletionPos.pit() == pit_) {
-		// draw visually behind the previous character
-		// FIXME: probably special RTL handling needed here
-		inlineCompletionVPos_ = bidi_.log2vis(inlineCompletionPos.pos() - 1);
-	}
 }
 
 
@@ -691,6 +680,16 @@ void RowPainter::paintText()
 	bool is_struckout = false;
 	int last_strikeout_x = 0;
 
+	// check for possible inline completion
+	DocIterator const & inlineCompletionPos = pi_.base.bv->inlineCompletionPos();
+	pos_type inlineCompletionVPos = -1;
+	if (inlineCompletionPos.inTexted()
+	    && inlineCompletionPos.text() == &text_
+	    && inlineCompletionPos.pit() == pit_) {
+		// draw visually behind the previous character
+		inlineCompletionVPos = bidi_.log2vis(inlineCompletionPos.pos() - 1);
+	}
+
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	Font font;
@@ -723,9 +722,9 @@ void RowPainter::paintText()
 			font = text_metrics_.getDisplayFont(pit_, vpos);
 
 			// split font span if inline completion is inside
-			if (font_span.first <= inlineCompletionVPos_
-			    && font_span.last > inlineCompletionVPos_)
-				font_span.last = inlineCompletionVPos_;
+			if (font_span.first <= inlineCompletionVPos
+			    && font_span.last > inlineCompletionVPos)
+				font_span.last = inlineCompletionVPos;
 		}
 
 		const int width_pos = pm_.singleWidth(pos, font);
@@ -767,7 +766,7 @@ void RowPainter::paintText()
 		}
 		
 		// Is the inline completion in front of character?
-		if (font.isRightToLeft() && vpos == inlineCompletionVPos_)
+		if (font.isRightToLeft() && vpos == inlineCompletionVPos)
 			paintInlineCompletion(font);		
 
 		if (par_.isSeparator(pos)) {
@@ -791,7 +790,7 @@ void RowPainter::paintText()
 		}
 
 		// Is the inline completion after character?
-		if (!font.isRightToLeft() && vpos - 1 == inlineCompletionVPos_)
+		if (!font.isRightToLeft() && vpos - 1 == inlineCompletionVPos)
 			paintInlineCompletion(font);
 	}
 
