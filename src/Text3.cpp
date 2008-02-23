@@ -228,8 +228,7 @@ void Text::cursorNext(Cursor & cur)
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
+	setCursorFromCoordinates(cur, cur.x_target(), cur.bv().workHeight() - 1);
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
