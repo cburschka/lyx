@@ -732,13 +732,12 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
-	pos_type inlineCompletionVPos = -1;
+	pos_type inlineCompletionLPos = -1;
 	if (inlineCompletionPos.inTexted()
 	    && inlineCompletionPos.text() == text_
 	    && inlineCompletionPos.pit() == pit) {
-		// draw visually behind the previous character
-		// FIXME: probably special RTL handling needed here
-		inlineCompletionVPos = inlineCompletionPos.pos() - 1;
+		// draw logically behind the previous character
+		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
 	}
 
 	// Now we iterate through until we reach the right margin
@@ -759,7 +758,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		int thiswidth = pm.singleWidth(i, *fi);
 
 		// add inline completion width
-		if (inlineCompletionVPos == i) {
+		if (inlineCompletionLPos == i) {
 			docstring const & completion = bv_->inlineCompletion();
 			if (completion.length() > 0)
 				thiswidth += theFontMetrics(*fi).width(completion);
@@ -849,13 +848,12 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
-	pos_type inlineCompletionVPos = -1;
+	pos_type inlineCompletionLPos = -1;
 	if (inlineCompletionPos.inTexted()
 	    && inlineCompletionPos.text() == text_
 	    && inlineCompletionPos.pit() == pit) {
-		// draw visually behind the previous character
-		// FIXME: probably special RTL handling needed here
-		inlineCompletionVPos = inlineCompletionPos.pos() - 1;
+		// draw logically behind the previous character
+		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
 	}
 
 	pos_type const body_pos = par.beginOfBody();
@@ -875,7 +873,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 			w += pm.singleWidth(i, *fi);
 
 			// add inline completion width
-			if (inlineCompletionVPos == i) {
+			if (inlineCompletionLPos == i) {
 				docstring const & completion = bv_->inlineCompletion();
 				if (completion.length() > 0)
 					w += theFontMetrics(*fi).width(completion);
@@ -1528,6 +1526,18 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
+	// check for possible inline completion in this row
+	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
+	pos_type inlineCompletionVPos = -1;
+	if (inlineCompletionPos.inTexted()
+	    && inlineCompletionPos.text() == text_
+	    && inlineCompletionPos.pit() == pit
+	    && inlineCompletionPos.pos() >= row_pos
+	    && inlineCompletionPos.pos() <= end) {
+		// draw logically behind the previous character
+		inlineCompletionVPos = bidi.log2vis(inlineCompletionPos.pos() - 1);
+	}
+
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	Font font;
@@ -1536,6 +1546,15 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
 	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
 		skipped_sep_vpos = bidi.log2vis(end - 1);
+	
+	// Inline completion RTL special case row_pos == cursor_pos:
+	// "__|b" => cursor_pos is right of __
+	if (row_pos == inlineCompletionVPos && row_pos == cursor_vpos) {
+		font = getDisplayFont(pit, row_pos + 1);
+		docstring const & completion = bv_->inlineCompletion();
+		if (font.isRightToLeft() && completion.length() > 0)
+			x += theFontMetrics(font.fontInfo()).width(completion);
+	}
 	
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		// Skip the separator which is at the logical end of the row
@@ -1558,6 +1577,26 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 		x += pm.singleWidth(pos, font);
 
+		// Inline completion RTL case:
+		// "a__|b", __ of b => non-boundary a-pos is right of __
+		if (vpos + 1 == inlineCompletionVPos 
+		    && (vpos + 1 < cursor_vpos || !boundary_correction)) {
+			font = getDisplayFont(pit, vpos + 1);
+			docstring const & completion = bv_->inlineCompletion();
+			if (font.isRightToLeft() && completion.length() > 0)
+				x += theFontMetrics(font.fontInfo()).width(completion);
+		}
+		
+		//  Inline completion LTR case:
+		// "b|__a", __ of b => non-boundary a-pos is in front of __
+		if (vpos == inlineCompletionVPos
+		    && (vpos + 1 < cursor_vpos || boundary_correction)) {
+			font = getDisplayFont(pit, vpos);
+			docstring const & completion = bv_->inlineCompletion();
+			if (!font.isRightToLeft() && completion.length() > 0)
+				x += theFontMetrics(font.fontInfo()).width(completion);
+		}
+		
 		if (par.isSeparator(pos) && pos >= body_pos)
 			x += row.separator;
 	}
