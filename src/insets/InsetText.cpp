@@ -552,22 +552,28 @@ bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
 void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y, 
 					Dimension & dim) const
 {
+	Cursor const & bvcur = cur.bv().cursor();
+	
 	// get word in front of cursor
-	docstring word = previousWord(cur.buffer(), cur.top());
-	DocIterator wordStart = cur;
+	docstring word = previousWord(cur.buffer(), bvcur.top());
+	DocIterator wordStart = bvcur;
 	wordStart.pos() -= word.length();
 	
-	// get position on screen of the word start
+	// get position on screen of the word start and end
 	Point lxy = cur.bv().getPos(wordStart, false);
-	x = lxy.x_;
-	y = lxy.y_;
-
-	// Calculate dimensions of the word
+	Point rxy = cur.bv().getPos(bvcur, bvcur.boundary());
+	
+	// calculate dimensions of the word
 	TextMetrics const & tm = cur.bv().textMetrics(&text_);
-	dim = tm.rowHeight(cur.pit(), wordStart.pos(), cur.pos(), false);
-	Point rxy = cur.bv().getPos(cur, cur.boundary());
-	dim.wid = abs(rxy.x_ - x);
-	x = (rxy.x_ < x) ? x - dim.wid : x; // for RTL
+	dim = tm.rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
+	dim.wid = abs(rxy.x_ - lxy.x_);
+	
+	// calculate position of word
+	y = lxy.y_;
+	x = min(rxy.x_, lxy.x_);
+	
+	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
+	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
 }
 
 
