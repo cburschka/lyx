@@ -14,8 +14,6 @@
 #ifndef GUI_TOOLBARS_H
 #define GUI_TOOLBARS_H
 
-#include "TextClassPtr.h"
-
 #include "support/docstring.h"
 
 #include <map>
@@ -23,6 +21,7 @@
 namespace lyx {
 
 class ToolbarInfo;
+class TextClassIndex;
 
 namespace frontend {
 
@@ -84,13 +83,10 @@ private:
 	/// Toolbar store providing access to individual toolbars by name.
 	typedef std::map<std::string, GuiToolbar *> ToolbarsMap;
 	ToolbarsMap toolbars_;
-
-	/// The last textclass layout list in the layout choice selector
-	TextClassPtr last_textclass_;
 };
 
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // NOT GUI_TOOLBARS_H
+#endif // GUI_TOOLBARS_H

@@ -598,8 +598,7 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	FloatList const & floats =
-		buf->params().getTextClass().floats();
+	FloatList const & floats = buf->params().textClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -620,8 +619,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	FloatList const & floats =
-		buf->params().getTextClass().floats();
+	FloatList const & floats = buf->params().textClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -643,7 +641,7 @@ void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 		return;
 	}
 	InsetLayouts const & insetlayouts =
-		buf->params().getTextClass().insetlayouts();
+		buf->params().textClass().insetlayouts();
 	InsetLayouts::const_iterator cit = insetlayouts.begin();
 	InsetLayouts::const_iterator end = insetlayouts.end();
 	for (; cit != end; ++cit) {
@@ -743,7 +741,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		tomenu.add(MenuItem(MenuItem::Command, _("Master Document"), f));
 	}
 
-	FloatList const & floatlist = buf->params().getTextClass().floats();
+	FloatList const & floatlist = buf->params().textClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
 	TocList::const_iterator end = toc_list.end();

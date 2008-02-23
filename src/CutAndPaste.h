@@ -14,8 +14,6 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#include "TextClassPtr.h"
-
 #include "support/types.h"
 #include "support/docstring.h"
 
@@ -28,10 +26,11 @@ using lyx::frontend::Clipboard;
 namespace lyx {
 
 class Buffer;
+class Cursor;
 class ErrorList;
 class InsetText;
-class Cursor;
 class ParagraphList;
+class TextClassIndex;
 
 namespace cap {
 
@@ -102,15 +101,15 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			TextClassPtr textclass, ErrorList & errorList);
+			TextClassIndex const & textclass, ErrorList & errorList);
 
 
 /** Needed to switch between different classes. This works
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.
  */
-void switchBetweenClasses(TextClassPtr const & c1, 
-	TextClassPtr const & c2, InsetText & in, ErrorList &);
+void switchBetweenClasses(TextClassIndex const & c1, TextClassIndex const & c2,
+	InsetText & in, ErrorList &);
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.
@@ -140,6 +139,7 @@ void selClearOrDel(Cursor & cur);
 void dirtyTabularStack(bool b);
 /// is the tabular paste stack newer than the ordinary one?
 bool tabularStackDirty();
+
 } // namespace cap
 } // namespce lyx
 

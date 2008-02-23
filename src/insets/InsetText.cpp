@@ -101,9 +101,9 @@ InsetText::InsetText(BufferParams const & bp)
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
 	if (useEmptyLayout())
-		ourpar.layout(bp.getTextClass().emptyLayout());
+		ourpar.layout(bp.textClass().emptyLayout());
 	else
-		ourpar.layout(bp.getTextClass().defaultLayout());
+		ourpar.layout(bp.textClass().defaultLayout());
 	ourpar.setInsetOwner(this);
 }
 

@@ -102,7 +102,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
-			return new InsetFlex(params, params.getTextClassPtr(), s);
+			return new InsetFlex(params, params.textClassIndex(), s);
 		}
 
 		case LFUN_NOTE_INSERT: {
@@ -147,7 +147,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (params.getTextClass().floats().typeExist(argument))
+			if (params.textClass().floats().typeExist(argument))
 				return new InsetFloat(params, argument);
 			lyxerr << "Non-existent float type: " << argument << endl;
 		}
@@ -155,7 +155,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_FLOAT_WIDE_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (params.getTextClass().floats().typeExist(argument)) {
+			if (params.textClass().floats().typeExist(argument)) {
 				auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
 				p->wide(true, params);
 				return p.release();
@@ -477,7 +477,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			lex.next();
 			string s = lex.getString();
 			inset.reset(new InsetFlex(buf.params(), 
-				buf.params().getTextClassPtr(), s));
+				buf.params().textClassIndex(), s));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));

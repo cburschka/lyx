@@ -25,7 +25,6 @@
 #include "Layout.h"
 #include "LyX.h"
 #include "LyXFunc.h"
-#include "TextClass.h"
 #include "ToolbarBackend.h"
 
 #include "support/debug.h"
@@ -138,7 +137,7 @@ void GuiToolbars::init()
 		LYXERR(Debug::INIT, "Adding " << tb->key << " at position "
 			<< tb->info.posx << " " << tb->info.posy);
 		// add toolbar break if posx or posy changes
-		bool newline = tb->info.location == last_loc && (
+	bool newline = tb->info.location == last_loc && (
 			// if two toolbars at the same location, assume uninitialized and add toolbar break
 			(tb->info.posx == last_posx && tb->info.posy == last_posy) ||
 			(last_loc == ToolbarSection::ToolbarInfo::TOP && tb->info.posy != last_posy) ||

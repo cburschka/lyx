@@ -34,7 +34,7 @@ using boost::regex;
 using boost::smatch;
 
 // Gets textclass number from name
-pair<bool, textclass_type> const
+pair<bool, TextClassIndex> const
 TextClassList::numberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
@@ -44,14 +44,24 @@ TextClassList::numberOfClass(string const & textclass) const
 			     textclass));
 
 	return cit != classlist_.end() ?
-		make_pair(true, textclass_type(cit - classlist_.begin())) :
-		make_pair(false, textclass_type(0));
+		make_pair(true, TextClassIndex(cit - classlist_.begin())) :
+		make_pair(false, TextClassIndex(0));
 }
 
 
 // Gets a textclass structure from number
 TextClass const &
-TextClassList::operator[](textclass_type textclass) const
+TextClassList::operator[](TextClassIndex textclass) const
+{
+	if (textclass >= classlist_.size())
+		return classlist_[0];
+	
+	//FIXME I don't believe the following line is actually necessary (rgh)
+	classlist_[textclass].load();
+	return classlist_[textclass];
+}
+
+TextClass & TextClassList::at(TextClassIndex textclass)
 {
 	if (textclass >= classlist_.size())
 		return classlist_[0];
@@ -164,7 +174,8 @@ bool TextClassList::read()
 }
 
 
-void TextClassList::reset(textclass_type const textclass) {
+void TextClassList::reset(TextClassIndex const & textclass)
+{
 	if (textclass >= classlist_.size())
 		return;
 	TextClass const & tc = classlist_[textclass];
@@ -174,7 +185,7 @@ void TextClassList::reset(textclass_type const textclass) {
 }
 
 
-pair<bool, textclass_type> const
+pair<bool, TextClassIndex> const
 TextClassList::addTextClass(string const & textclass, string const & path)
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
@@ -204,7 +215,7 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 					tmpl.load(path);
 				// Do not add this local TextClass to classlist_ if it has
 				// already been loaded by, for example, a master buffer.
-				pair<bool, lyx::textclass_type> pp =
+				pair<bool, lyx::TextClassIndex> pp =
 					textclasslist.numberOfClass(textclass);
 				// only layouts from the same directory are considered to be identical.
 				if (pp.first && classlist_[pp.second].description() == tmpl.description())
@@ -215,7 +226,7 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 		}
 	}
 	// If .layout is not in local directory, or an invalid layout is found, return false
-	return make_pair(false, textclass_type(0));
+	return make_pair(false, TextClassIndex(0));
 }
 
 
@@ -223,7 +234,7 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 TextClassList textclasslist;
 
 
-textclass_type defaultTextclass()
+TextClassIndex defaultTextclass()
 {
 	// We want to return the article class. if `first' is
 	// true in the returned pair, then `second' is the textclass

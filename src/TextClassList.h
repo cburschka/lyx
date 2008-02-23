@@ -44,21 +44,22 @@ public:
 	bool empty() const { return classlist_.empty(); }
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
-	std::pair<bool, textclass_type> const
-	numberOfClass(std::string const & textclass) const;
+	std::pair<bool, TextClassIndex> const
+	numberOfClass(std::string const & textClassName) const;
 
 	///
-	TextClass const & operator[](textclass_type textclass) const;
+	TextClass const & operator[](TextClassIndex index) const;
+	TextClass & at(TextClassIndex index);
 
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
 	
 	/// Clears the textclass so as to force it to be reloaded
-	void reset(textclass_type const textclass);
+	void reset(TextClassIndex const & index);
 
 	/// add a textclass from user local directory.
 	/// Return ture/false, and textclass number
-	std::pair<bool, textclass_type> const
+	std::pair<bool, TextClassIndex> const
 	addTextClass(std::string const & textclass, std::string const & path);
 
 private:
@@ -73,7 +74,7 @@ private:
 ///
 extern TextClassList textclasslist;
 ///
-textclass_type defaultTextclass();
+TextClassIndex defaultTextclass();
 
 
 } // namespace lyx

@@ -73,11 +73,10 @@ void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-namespace {
-
-Translator<InsetInfo::info_type, string> const initTranslator()
+static Translator<InsetInfo::info_type, string> initTranslator()
 {	
-	Translator<InsetInfo::info_type, string> translator(InsetInfo::UNKNOWN_INFO, "unknown");
+	Translator<InsetInfo::info_type, string>
+		translator(InsetInfo::UNKNOWN_INFO, "unknown");
 
 	translator.addPair(InsetInfo::SHORTCUT_INFO, "shortcut");
 	translator.addPair(InsetInfo::LYXRC_INFO, "lyxrc");
@@ -89,16 +88,12 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 	return translator;
 }
 
-} // namespace anon
-
 Translator<InsetInfo::info_type, string> const & InsetInfo::nameTranslator() const
 {
-	static Translator<info_type, string> const translator =
-		initTranslator();
+	static Translator<info_type, string> const translator = initTranslator();
 	return translator;
 }
 
-	
 
 void InsetInfo::read(Buffer const & buf, Lexer & lex)
 {
@@ -128,8 +123,7 @@ void InsetInfo::read(Buffer const & buf, Lexer & lex)
 
 void InsetInfo::write(Buffer const &, ostream & os) const
 {
-	os << "Info\ntype  \""
-	   << nameTranslator().find(type_)
+	os << "Info\ntype  \"" << nameTranslator().find(type_)
 	   << "\"\narg   \"" << name_ << '\"';
 }
 
@@ -202,8 +196,7 @@ void InsetInfo::updateInfo(Buffer const & buf)
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		pair<bool, lyx::textclass_type> pp =
-			textclasslist.numberOfClass(name_);
+		pair<bool, TextClassIndex> pp = textclasslist.numberOfClass(name_);
 		setText(pp.first ? _("yes") : _("no"),
 			bp.getFont(), false);
 		break;
@@ -242,7 +235,7 @@ void InsetInfo::updateInfo(Buffer const & buf)
 		else if (name_ == "path")
 			setText(from_utf8(buf.filePath()), bp.getFont(), false);
 		else if (name_ == "class")
-			setText(from_utf8(bp.getTextClass().name()), bp.getFont(), false);
+			setText(from_utf8(bp.textClass().name()), bp.getFont(), false);
 		else
 			setText(_("Unknown buffer info"), bp.getFont(), false);
 		break;

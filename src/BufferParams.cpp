@@ -283,11 +283,16 @@ public:
 	 */
 	VSpace defskip;
 	PDFOptions pdfoptions;
+
+	/// the base TextClass associated with the document
+	TextClassIndex baseClass_;
+	/// the possibly modular TextClass actually in use
+	TextClassIndex textClass_;
 };
 
 
 BufferParams::Impl::Impl()
-	: defskip(VSpace::MEDSKIP)
+	: defskip(VSpace::MEDSKIP), baseClass_(0), textClass_(0)
 {
 	// set initial author
 	// FIXME UNICODE
@@ -462,8 +467,8 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
-		pair<bool, lyx::textclass_type> pp =
-			make_pair(false, textclass_type(0));
+		pair<bool, TextClassIndex> pp =
+			make_pair(false, TextClassIndex(0));
 		if (!filepath.empty())
 			pp = textclasslist.addTextClass(
 				classname, filepath.absFilename());
@@ -482,7 +487,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// FIXME: this warning will be given even if there exists a local .cls
 		// file. Even worse, the .lyx file can not be compiled or exported
 		// because the textclass is marked as unavilable.
-		if (!getTextClass().isTeXClassAvailable()) {
+		if (!textClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 						 "%1$s.layout,\n"
@@ -677,7 +682,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << textclasslist[baseClass_].name() << '\n';
+	os << "\\textclass " << textClass().name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -819,7 +824,7 @@ void BufferParams::writeFile(ostream & os) const
 
 void BufferParams::validate(LaTeXFeatures & features) const
 {
-	features.require(getTextClass().requires());
+	features.require(textClass().requires());
 
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
@@ -860,8 +865,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("float");
 
 	// AMS Style is at document level
-	if (use_amsmath == package_on
-	    || getTextClass().provides("amsmath"))
+	if (use_amsmath == package_on || textClass().provides("amsmath"))
 		features.require("amsmath");
 	if (use_esint == package_on)
 		features.require("esint");
@@ -902,8 +906,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 {
 	os << "\\documentclass";
 
-	TextClass const & tclass = getTextClass();
-
+	TextClass const & tclass = textClass(); 
 	ostringstream clsoptions; // the document class options.
 
 	if (tokenPos(tclass.opt_fontsize(),
@@ -1243,7 +1246,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// hyperref, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 	if (language->lang() == "japanese-plain" &&
-		!getTextClass().provides("japanese")) {
+		!textClass().provides("japanese")) {
 		//load babel in case it was not loaded due to an empty language list
 		if (language_options.str().empty())
 			lyxpreamble += "\\usepackage{babel}\n";
@@ -1261,7 +1264,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// use hyperref explicitely when it is required
 	if (features.isRequired("hyperref")) {
 		odocstringstream oss;
-		pdfoptions().writeLaTeX(oss, getTextClass().provides("hyperref"));
+		pdfoptions().writeLaTeX(oss, textClass().provides("hyperref"));
 		lyxpreamble += oss.str();
 	}
 
@@ -1343,7 +1346,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = textclasslist[baseClass_];
+	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1359,37 +1362,39 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = textclasslist[baseClass_];
+	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
 
-	return (sides == tclass.sides()
+	return sides == tclass.sides()
 		&& columns == tclass.columns()
 		&& pagestyle == tclass.pagestyle()
 		&& options == tclass.options()
 		&& secnumdepth == tclass.secnumdepth()
-		&& tocdepth == tclass.tocdepth());
+		&& tocdepth == tclass.tocdepth();
 }
 
 
-TextClass const & BufferParams::getTextClass() const
+TextClass const & BufferParams::textClass() const
 {
-	return *textClass_;
+	return textclasslist[pimpl_->textClass_];
 }
 
 
-TextClassPtr BufferParams::getTextClassPtr() const {
-	return textClass_;
+TextClassIndex BufferParams::textClassIndex() const
+{
+	return pimpl_->textClass_;
 }
 
 
-void BufferParams::setTextClass(TextClassPtr tc) {
-	textClass_ = tc;
+void BufferParams::setTextClass(TextClassIndex const & tc)
+{
+	pimpl_->textClass_ = tc;
 }
 
 
-bool BufferParams::setBaseClass(textclass_type tc)
+bool BufferParams::setBaseClass(TextClassIndex const & tc)
 {
 	if (textclasslist[tc].load()) {
-		baseClass_ = tc;
+		pimpl_->baseClass_ = tc;
 		return true;
 	}
 	
@@ -1401,15 +1406,15 @@ bool BufferParams::setBaseClass(textclass_type tc)
 }
 
 
-textclass_type BufferParams::getBaseClass() const
+TextClassIndex BufferParams::baseClass() const
 {
-	return baseClass_;
+	return pimpl_->baseClass_;
 }
 
 
 void BufferParams::makeTextClass()
 {
-	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
+	pimpl_->textClass_ = baseClass();
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 
@@ -1439,7 +1444,7 @@ void BufferParams::makeTextClass()
 			frontend::Alert::warning(_("Package not available"), msg);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
-		if (!textClass_->read(layout_file, TextClass::MODULE)) {
+		if (!textclasslist.at(pimpl_->textClass_).read(layout_file, TextClass::MODULE)) {
 			docstring const msg =
 				bformat(_("Error reading module %1$s\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Read Error"), msg);
@@ -1448,13 +1453,15 @@ void BufferParams::makeTextClass()
 }
 
 
-vector<string> const & BufferParams::getModules() const {
+vector<string> const & BufferParams::getModules() const
+{
 	return layoutModules_;
 }
 
 
 
-bool BufferParams::addLayoutModule(string const & modName) {
+bool BufferParams::addLayoutModule(string const & modName)
+{
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();
 	for (; it != end; it++) {
@@ -1468,14 +1475,15 @@ bool BufferParams::addLayoutModule(string const & modName) {
 }
 
 
-void BufferParams::clearLayoutModules() {
+void BufferParams::clearLayoutModules()
+{
 	layoutModules_.clear();
 }
 
 
 Font const BufferParams::getFont() const
 {
-	FontInfo f = getTextClass().defaultfont();
+	FontInfo f = textClass().defaultfont();
 	if (fontsDefaultFamily == "rmdefault")
 		f.setFamily(ROMAN_FAMILY);
 	else if (fontsDefaultFamily == "sfdefault")
@@ -1516,7 +1524,8 @@ void BufferParams::readLanguage(Lexer & lex)
 
 void BufferParams::readGraphicsDriver(Lexer & lex)
 {
-	if (!lex.next()) return;
+	if (!lex.next())
+		return;
 
 	string const tmptok = lex.getString();
 	// check if tmptok is part of tex_graphics in tex_defs.h
@@ -1540,7 +1549,8 @@ void BufferParams::readGraphicsDriver(Lexer & lex)
 
 void BufferParams::readBullets(Lexer & lex)
 {
-	if (!lex.next()) return;
+	if (!lex.next())
+		return;
 
 	int const index = lex.getInteger();
 	lex.next();
@@ -1559,7 +1569,8 @@ void BufferParams::readBullets(Lexer & lex)
 void BufferParams::readBulletsLaTeX(Lexer & lex)
 {
 	// The bullet class should be able to read this.
-	if (!lex.next()) return;
+	if (!lex.next())
+		return;
 	int const index = lex.getInteger();
 	lex.next(true);
 	docstring const temp_str = lex.getDocString();
@@ -1922,7 +1933,7 @@ biblio::CiteEngine BufferParams::getEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
-	if (getTextClass().provides("natbib")
+	if (textClass().provides("natbib")
 	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
 		return biblio::ENGINE_NATBIB_AUTHORYEAR;
 	return cite_engine_;

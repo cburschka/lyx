@@ -437,14 +437,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
-		if (tmp->params().getBaseClass() != masterBuffer->params().getBaseClass()) {
+		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
 			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
 					      included_file.displayName(),
-					      from_utf8(tmp->params().getTextClass().name()),
-					      from_utf8(masterBuffer->params().getTextClass().name()));
+					      from_utf8(tmp->params().textClass().name()),
+					      from_utf8(masterBuffer->params().textClass().name()));
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
@@ -898,7 +898,7 @@ void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 		listings_label_.clear();
 		return;
 	}
-	Counters & counters = buffer.params().getTextClass().counters();
+	Counters & counters = buffer.params().textClass().counters();
 	docstring const cnt = from_ascii("listing");
 	listings_label_ = buffer.B_("Program Listing");
 	if (counters.hasCounter(cnt)) {

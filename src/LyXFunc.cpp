@@ -713,7 +713,7 @@ void showPrintError(string const & name)
 
 void loadTextClass(string const & name)
 {
-	pair<bool, textclass_type> const tc_pair =
+	pair<bool, TextClassIndex> const tc_pair =
 		textclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
@@ -723,7 +723,7 @@ void loadTextClass(string const & name)
 		return;
 	}
 
-	textclass_type const tc = tc_pair.second;
+	TextClassIndex const tc = tc_pair.second;
 
 	if (!textclasslist[tc].load()) {
 		docstring s = bformat(_("The document class %1$s."
@@ -1535,7 +1535,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			
 			Buffer * buffer = lyx_view_->buffer();
 
-			TextClassPtr oldClass = buffer->params().getTextClassPtr();
+			TextClassIndex oldClass = buffer->params().textClassIndex();
 
 			Cursor & cur = view()->cursor();
 			cur.recordUndoFullDocument();
@@ -1579,7 +1579,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULES_CLEAR: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().getTextClassPtr();
+			TextClassIndex oldClass = buffer->params().textClassIndex();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
 			buffer->params().makeTextClass();
@@ -1591,7 +1591,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULE_ADD: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().getTextClassPtr();
+			TextClassIndex oldClass = buffer->params().textClassIndex();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
 			buffer->params().makeTextClass();
@@ -1606,21 +1606,21 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			loadTextClass(argument);
 
-			pair<bool, textclass_type> const tc_pair =
+			pair<bool, TextClassIndex> const tc_pair =
 				textclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
 
-			textclass_type const old_class = buffer->params().getBaseClass();
-			textclass_type const new_class = tc_pair.second;
+			TextClassIndex const old_class = buffer->params().baseClass();
+			TextClassIndex const new_class = tc_pair.second;
 
 			if (old_class == new_class)
 				// nothing to do
 				break;
 
 			//Save the old, possibly modular, layout for use in conversion.
-			TextClassPtr oldClass = buffer->params().getTextClassPtr();
+			TextClassIndex oldClass = buffer->params().textClassIndex();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(new_class);
 			buffer->params().makeTextClass();
@@ -1632,8 +1632,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_RELOAD: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().getTextClassPtr();
-			textclass_type const tc = buffer->params().getBaseClass();
+			TextClassIndex oldClass = buffer->params().textClassIndex();
+			TextClassIndex const tc = buffer->params().baseClass();
 			textclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
 			buffer->params().makeTextClass();
@@ -1872,7 +1872,7 @@ bool LyXFunc::wasMetaKey() const
 }
 
 
-void LyXFunc::updateLayout(TextClassPtr const & oldlayout,
+void LyXFunc::updateLayout(TextClassIndex const & oldlayout,
                            Buffer * buffer)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
@@ -1880,7 +1880,7 @@ void LyXFunc::updateLayout(TextClassPtr const & oldlayout,
 	StableDocIterator backcur(view()->cursor());
 	ErrorList & el = buffer->errorList("Class Switch");
 	cap::switchBetweenClasses(
-			oldlayout, buffer->params().getTextClassPtr(),
+			oldlayout, buffer->params().textClassIndex(),
 			static_cast<InsetText &>(buffer->inset()), el);
 
 	view()->setCursor(backcur.asDocIterator(&(buffer->inset())));

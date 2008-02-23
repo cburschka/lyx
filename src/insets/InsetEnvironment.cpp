@@ -27,7 +27,7 @@ namespace lyx {
 
 InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, docstring const & name)
-	: InsetText(bp), layout_(bp.getTextClass()[name]), name_(name)
+	: InsetText(bp), layout_(bp.textClass()[name]), name_(name)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);

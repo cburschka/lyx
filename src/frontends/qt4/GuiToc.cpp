@@ -234,7 +234,7 @@ docstring GuiToc::guiName(string const & type) const
 	if (type == "note")
 		return _("List of Notes");
 
-	FloatList const & floats = buffer().params().getTextClass().floats();
+	FloatList const & floats = buffer().params().textClass().floats();
 	if (floats.typeExist(type))
 		return _(floats.getType(type).listName());
 

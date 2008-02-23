@@ -119,7 +119,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	BufferParams const & bp = cur.buffer().params();
 	LayoutPtr const layout =
-			bp.getTextClass().emptyLayout();
+			bp.textClass().emptyLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 

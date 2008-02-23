@@ -1512,7 +1512,7 @@ docstring const Paragraph::translateIfPossible(docstring const & s,
 docstring Paragraph::expandLabel(LayoutPtr const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
-	TextClass const & tclass = bparams.getTextClass();
+	TextClass const & tclass = bparams.textClass();
 
 	docstring fmt;
 	if (process_appendix && d->params_.appendix())
@@ -1817,11 +1817,10 @@ bool Paragraph::latex(Buffer const & buf,
 	// to be valid!
 	bool asdefault = forceEmptyLayout();
 
-	if (asdefault) {
-		style = bparams.getTextClass().defaultLayout();
-	} else {
+	if (asdefault)
+		style = bparams.textClass().defaultLayout();
+	else
 		style = d->layout_;
-	}
 
 	// Current base font for all inherited font changes, without any
 	// change caused by an individual character, except for the language:

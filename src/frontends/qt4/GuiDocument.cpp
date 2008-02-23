@@ -1212,7 +1212,7 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 void GuiDocument::classChanged()
 {
-	textclass_type const tc = latexModule->classCO->currentIndex();
+	TextClassIndex const tc = latexModule->classCO->currentIndex();
 	bp_.setBaseClass(tc);
 	if (lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
@@ -1230,8 +1230,8 @@ void GuiDocument::classChanged()
 
 
 namespace {
-	//This is an insanely complicated attempt to make this sort of thing
-	//work with RTL languages.
+	// This is an insanely complicated attempt to make this sort of thing
+	// work with RTL languages.
 	docstring formatStrVec(vector<string> const & v, docstring const & s) 
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
@@ -1354,7 +1354,7 @@ void GuiDocument::updateEmbeddedFileList()
 
 void GuiDocument::updateNumbering()
 {
-	TextClass const & tclass = bp_.getTextClass();
+	TextClass const & tclass = bp_.textClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
@@ -1443,7 +1443,7 @@ void GuiDocument::apply(BufferParams & params)
 	params.language = lyx::languages.getLanguage(lang_[pos]);
 
 	// numbering
-	if (params.getTextClass().hasTocLevels()) {
+	if (params.textClass().hasTocLevels()) {
 		params.tocdepth = numberingModule->tocSL->value();
 		params.secnumdepth = numberingModule->depthSL->value();
 	}
@@ -1795,7 +1795,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	latexModule->classCO->setCurrentIndex(params.getBaseClass());
+	latexModule->classCO->setCurrentIndex(params.baseClass());
 	
 	updatePagestyle(textClass().opt_pagestyle(),
 				 params.pagestyle);
@@ -2115,7 +2115,7 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 
 TextClass const & GuiDocument::textClass() const
 {
-	return textclasslist[bp_.getBaseClass()];
+	return textclasslist[bp_.baseClass()];
 }
 
 
