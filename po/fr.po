@@ -173,7 +173,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-15 13:25+0100\n"
-"PO-Revision-Date: 2008-02-14 10:18+0100\n"
+"PO-Revision-Date: 2008-02-22 11:49+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -3349,14 +3349,12 @@ msgid "Automatic update"
 msgstr "Mise à jour automatique"
 
 #: src/frontends/qt4/ui/WrapUi.ui:50
-#, fuzzy
 msgid "Outer (default)"
-msgstr "Valeur implicite de LaTeX"
+msgstr "Extérieure (défaut)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:55
-#, fuzzy
 msgid "Inner"
-msgstr "&Intérieure :"
+msgstr "Intérieure"
 
 #: src/frontends/qt4/ui/WrapUi.ui:100
 msgid "Units of width value"
@@ -15392,9 +15390,8 @@ msgid "Vertical Space Settings"
 msgstr "Paramètres d'espacement vertical"
 
 #: src/frontends/qt4/QWrap.cpp:83
-#, fuzzy
 msgid "Wrap Float Settings"
-msgstr "Paramètres de Flottant"
+msgstr "Paramètres d'encapsulation de flottant"
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"
