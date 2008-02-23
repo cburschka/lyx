@@ -17,6 +17,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\addressExample.adr"
