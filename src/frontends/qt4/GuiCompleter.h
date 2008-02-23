@@ -109,6 +109,10 @@ private:
 	QString last_selection_;
 	/// lock to stop updates of the inline completion
 	int updateLock_;
+	/// the BufferView::inlineCursorPos might be reset by destructive
+	/// operations like backspace. Hence, we have to keep this flag
+	/// in addition to know whether the popup is to be kept visible.
+	bool inlineVisible_;
 }; // GuiCompleter
 
 } // namespace frontend

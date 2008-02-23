@@ -154,7 +154,8 @@ private:
 
 
 GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
-	: QCompleter(parent), gui_(gui), updateLock_(0)
+	: QCompleter(parent), gui_(gui), updateLock_(0),
+	  inlineVisible_(false)
 {
 	// Setup the completion popup
 	setModel(new GuiCompletionModel(this, 0));
@@ -233,7 +234,13 @@ bool GuiCompleter::popupVisible() const
 
 bool GuiCompleter::inlineVisible() const
 {
-	return !gui_->bufferView().inlineCompletionPos().empty();
+	// In fact using BufferView::inlineCompletionPos.empty() should be
+	// here. But unfortunately this information is not good enough
+	// because destructive operations like backspace might invalidate
+	// inlineCompletionPos. But then the completion should stay visible
+	// (i.e. reshown on the next update). Hence be keep this information
+	// in the inlineVisible_ variable.
+	return inlineVisible_;
 }
 
 
@@ -265,8 +272,10 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 			inline_timer_.stop();
 
 		// hide old inline completion
-		if (inlineVisible())
+		if (inlineVisible()) {
 			gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
+			inlineVisible_ = false;
+		}
 	}
 
 	// we inserted something and are in a possible popup state?
@@ -352,6 +361,7 @@ void GuiCompleter::updateInline(Cursor & cur, QString const & completion)
 	// set inline completion at cursor position
 	size_t uniqueTo = max(longestUniqueCompletion().size(), prefix.size());
 	gui_->bufferView().setInlineCompletion(cur, cur, postfix, uniqueTo - prefix.size());
+	inlineVisible_ = true;
 }
 
 
@@ -523,7 +533,11 @@ void GuiCompleter::tab()
 	if (completion.size() <= prefix.size()) {
 		// finalize completion
 		cur.inset().insertCompletion(cur, docstring(), true);
+		
+		// hide popup and inline completion
 		popup()->hide();
+		gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
+		inlineVisible_ = false;
 		updateVisibility(false, false);
 		return;
 	}
