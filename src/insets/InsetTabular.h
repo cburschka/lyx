@@ -740,11 +740,6 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 
-	///
-	Buffer const & buffer() const;
-
-	/// set the owning buffer
-	void buffer(Buffer const * buf);
 	/// lock cell with given index
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
@@ -813,8 +808,6 @@ private:
 	bool oneCellHasRotationState(bool rotated,
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
-	///
-	Buffer const * buffer_;
 	///
 	mutable idx_type first_visible_cell;
 	///

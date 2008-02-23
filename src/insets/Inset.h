@@ -90,6 +90,13 @@ public:
 	/// virtual base class destructor
 	virtual ~Inset() {}
 
+	/// change associated Buffer
+	virtual void setBuffer(Buffer * buffer) { buffer_ = buffer; }
+	virtual void setBufferRecursively(Buffer *) {}
+	/// retrieve associated Buffer
+	virtual Buffer * buffer() { return buffer_; }
+	virtual Buffer const * buffer() const { return buffer_; }
+
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
@@ -477,7 +484,8 @@ public:
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
 protected:
-	Inset() {}
+	/// Constructor
+	explicit Inset() : buffer_(0) {}
 
 	/// replicate ourselves
 	friend class InsetList;
@@ -496,6 +504,8 @@ protected:
 	 *  \sa getStatus
 	 */
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+
+	Buffer * buffer_;
 };
 
 } // namespace lyx

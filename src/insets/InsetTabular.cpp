@@ -2869,14 +2869,17 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
-{}
+	  max(columns, col_type(1))), scx_(0)
+{
+	setBuffer(const_cast<Buffer *>(&buf)); // FIXME: remove later
+}
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: Inset(tab), tabular(tab.tabular),
-		buffer_(tab.buffer_), scx_(0)
-{}
+	: Inset(tab), tabular(tab.tabular),  scx_(0)
+{
+	setBuffer(const_cast<Buffer *>(tab.buffer())); // FIXME: remove later
+}
 
 
 InsetTabular::~InsetTabular()
@@ -2888,18 +2891,6 @@ InsetTabular::~InsetTabular()
 Inset * InsetTabular::clone() const
 {
 	return new InsetTabular(*this);
-}
-
-
-Buffer const & InsetTabular::buffer() const
-{
-	return *buffer_;
-}
-
-
-void InsetTabular::buffer(Buffer const * b)
-{
-	buffer_ = b;
 }
 
 
@@ -4867,7 +4858,7 @@ void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 		return print_mailer_error("InsetTabularMailer", in, 2,
 					  "Tabular");
 
-	Buffer const & buffer = inset.buffer();
+	Buffer const & buffer = *inset.buffer();
 	inset.read(buffer, lex);
 }
 
@@ -4876,7 +4867,7 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(inset.buffer(), data);
+	inset.write(*inset.buffer(), data);
 	data << "\\end_inset\n";
 	return data.str();
 }

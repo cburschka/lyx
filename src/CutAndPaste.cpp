@@ -217,21 +217,10 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	ParIterator fend = par_iterator_end(in);
 
 	for (; fpit != fend; ++fpit) {
-		InsetList::const_iterator lit = fpit->insetList().begin();
-		InsetList::const_iterator eit = fpit->insetList().end();
-
-		for (; lit != eit; ++lit) {
-			switch (lit->inset->lyxCode()) {
-			case TABULAR_CODE: {
-				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
-				it->buffer(&buffer);
-				break;
-			}
-
-			default:
-				break; // nothing
-			}
-		}
+		InsetList::const_iterator it = fpit->insetList().begin();
+		InsetList::const_iterator et = fpit->insetList().end();
+		for (; it != et; ++it)
+				it->inset->setBuffer(const_cast<Buffer *>(&buffer));
 	}
 	insertion.swap(in.paragraphs());
 

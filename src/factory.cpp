@@ -75,7 +75,7 @@ namespace lyx {
 namespace Alert = frontend::Alert;
 
 
-Inset * createInset(Buffer & buf, FuncRequest const & cmd)
+Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 {
 	BufferParams const & params = buf.params();
 
@@ -372,6 +372,13 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 	return 0;
 }
 
+Inset * createInset(Buffer & buf, FuncRequest const & cmd)
+{
+	Inset * inset = createInsetHelper(buf, cmd);
+	if (inset)
+		inset->setBuffer(&buf);
+	return inset;
+}
 
 Inset * readInset(Lexer & lex, Buffer const & buf)
 {
