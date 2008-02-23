@@ -42,7 +42,7 @@ public:
 	/// We don't need \begin_inset and \end_inset
 	virtual bool directWrite() const { return true; }
 	/// is this equivalent to a space (which is BTW different from
-	// a line separator)?
+	/// a line separator)?
 	bool isSpace() const;
 
 	virtual docstring insetLabel() const { return docstring(); }
