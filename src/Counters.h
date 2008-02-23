@@ -18,6 +18,7 @@
 #include "support/docstring.h"
 
 #include <map>
+#include <set>
 
 
 namespace lyx {
@@ -105,7 +106,8 @@ public:
 	docstring theCounter(docstring const & c);
 	/// Replace om format all the LaTeX-like macros that depend on
 	/// counters.
-	docstring counterLabel(docstring const & format);
+	docstring counterLabel(docstring const & format, 
+	                       std::set<docstring> * callers = 0);
 	/// Are we in apendix?
 	bool appendix() const { return appendix_; };
 	/// Set the state variable indicating whether we are in appendix.
@@ -115,6 +117,10 @@ public:
 	/// Sets the current enclosing float.
 	void current_float(std::string const & f) { current_float_ = f; }
 private:
+	/// returns the expanded string representation of the counter
+	/// with recursion protection through callers.
+	docstring theCounter(docstring const & c, 
+	                     std::set<docstring> & callers);
 	/// Returns the value of the counter according to the
 	/// numbering scheme numbertype.
 	/* Available numbering schemes are arabic (1, 2,...), roman

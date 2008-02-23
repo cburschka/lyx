@@ -340,22 +340,47 @@ docstring Counters::labelItem(docstring const & ctr,
 
 docstring Counters::theCounter(docstring const & counter)
 {
+	std::set<docstring> callers;
+	return theCounter(counter, callers);
+}
+
+docstring Counters::theCounter(docstring const & counter,
+                               std::set<docstring> & callers)
+{
 	if (!hasCounter(counter))
 		return from_ascii("??");
 
-	Counter const & c = counterList[counter];
-	docstring ls = appendix() ? c.labelStringAppendix() : c.labelString();
+	docstring label;
 
-	if (ls.empty()) {
-		if (!c.master().empty())
-			ls = from_ascii("\\the") + c.master() + from_ascii(".");
-		ls += from_ascii("\\arabic{") + counter + "}";
+	if (callers.find(counter) == callers.end()) {
+		
+		pair<std::set<docstring>::iterator, bool> result = callers.insert(counter);
+
+		Counter const & c = counterList[counter];
+		docstring ls = appendix() ? c.labelStringAppendix() : c.labelString();
+
+		if (ls.empty()) {
+			if (!c.master().empty())
+				ls = from_ascii("\\the") + c.master() + from_ascii(".");
+			ls += from_ascii("\\arabic{") + counter + "}";
+		}
+
+		label = counterLabel(ls, &callers);
+
+		callers.erase(result.first);
+	} else {
+		// recursion detected
+		lyxerr << "Warning: Recursion in label for counter `"
+			   << counter << "' detected"
+			   << endl;
 	}
-	return counterLabel(ls);
+
+	return label;
 }
 
 
-docstring Counters::counterLabel(docstring const & format)
+docstring Counters::counterLabel(docstring const & format,
+                                 std::set<docstring> * callers)
 {
 	docstring label = format;
 
@@ -373,10 +398,11 @@ docstring Counters::counterLabel(docstring const & format)
 		       && lowercase(label[k]) <= 'z')
 			++k;
 		docstring counter = label.substr(j, k - j);
-		docstring repl = theCounter(counter);
+		docstring repl = callers? theCounter(counter, *callers): 
+			                      theCounter(counter);
 		label.replace(i, k - j + 4, repl);
 	}
-	
+
 	while (true) {
 		//lyxerr << "label=" << to_utf8(label) << endl;
 
