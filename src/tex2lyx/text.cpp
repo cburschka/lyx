@@ -421,27 +421,12 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-class isLayout : public unary_function<LayoutPtr, bool> {
-public:
-	isLayout(string const name) : name_(name) {}
-	bool operator()(LayoutPtr const & ptr) const {
-		return ptr->latexname() == name_;
-	}
-private:
-	string const name_;
-};
-
-
-LayoutPtr findLayout(TextClass const & textclass,
-			 string const & name)
+LayoutPtr findLayout(TextClass const & textclass, string const & name)
 {
-	TextClass::const_iterator beg = textclass.begin();
-	TextClass::const_iterator end = textclass.end();
-
-	TextClass::const_iterator
-		it = find_if(beg, end, isLayout(name));
-
-	return (it == end) ? LayoutPtr() : *it;
+	for (size_t i = 0; i != textclass.layoutCount(); ++i)
+		if (textclass.layout(i)->latexname() == name)
+			return textclass.layout(i);
+	return LayoutPtr();
 }
 
 
