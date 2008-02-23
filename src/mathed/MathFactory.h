@@ -35,8 +35,8 @@ MathAtom createInsetMath(char const * const);
  */
 bool createInsetMath_fromDialogStr(docstring const &, MathData &);
 
-typedef map<docstring, latexkeys> WordList;
-WordList const & mathedWordList();
+typedef map<docstring, latexkeys> MathWordList;
+MathWordList const & mathedWordList();
 
 } // namespace lyx
 

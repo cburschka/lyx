@@ -35,6 +35,9 @@ enum MacroType {
 };
 
 ///
+class MacroNameSet : public std::set<docstring> {};
+	
+///
 class MacroData {
 public:
 	/// Constructor to make STL containers happy

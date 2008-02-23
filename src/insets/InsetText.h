@@ -19,6 +19,8 @@
 
 #include "support/types.h"
 
+#include <set>
+
 namespace lyx {
 
 class Buffer;
@@ -29,6 +31,7 @@ class Dimension;
 class ParagraphList;
 class InsetTabular;
 
+class WordList : public std::set<docstring> {};
 
 /**
  A text inset is like a TeX box to write full text

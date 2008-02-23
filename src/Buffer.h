@@ -18,7 +18,6 @@
 #include "support/types.h"
 #include "support/SignalSlot.h"
 
-#include <set>
 #include <string>
 #include <vector>
 
@@ -41,6 +40,7 @@ class LyXVC;
 class LaTeXFeatures;
 class Language;
 class MacroData;
+class MacroNameSet;
 class OutputParams;
 class Paragraph;
 class ParConstIterator;
@@ -50,6 +50,7 @@ class TeXErrors;
 class TexRow;
 class TocBackend;
 class Undo;
+class WordList;
 
 namespace frontend {
 class GuiBufferDelegate;
@@ -366,8 +367,6 @@ public:
 	/// Iterate through the whole buffer and try to resolve macros
 	void updateMacroInstances() const;
 
-	typedef std::set<docstring> MacroNameSet;
-
 	/// List macro names of this buffer. the parent and the children
 	void listMacroNames(MacroNameSet & macros) const;
 	/// Write out all macros somewhere defined in the parent,
@@ -457,7 +456,7 @@ public:
 	/// Register word for completion word list.
 	void registerWord(docstring const & word);
 	///
-	std::set<docstring> const & registeredWords() const { return words_; }
+	WordList const & registeredWords() const;
 	
 private:
 	/// search for macro in local (buffer) table or in children
@@ -510,8 +509,6 @@ private:
 	//Signal setBusy(bool) = 0;
 	/// Reset autosave timers for all users.
 	Signal resetAutosaveTimers_;
-	
-	std::set<docstring> words_;
 };
 
 

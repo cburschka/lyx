@@ -1716,9 +1716,9 @@ bool InsetMathNest::cursorMathBackward(Cursor & cur)
 MathCompletionList::MathCompletionList(Cursor const & cur)
 {
 	// fill it with macros from the buffer
-	Buffer::MacroNameSet macros;
+	MacroNameSet macros;
 	cur.buffer().listMacroNames(macros);
-	Buffer::MacroNameSet::const_iterator it;
+	MacroNameSet::const_iterator it;
 	for (it = macros.begin(); it != macros.end(); ++it) {
 		if (cur.buffer().getMacro(*it, cur, false))
 			locals.push_back("\\" + *it);
@@ -1782,8 +1782,8 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\hphantom"));
 	globals.push_back(from_ascii("\\phantom"));
 	globals.push_back(from_ascii("\\vphantom"));
-	WordList const & words = mathedWordList();
-	WordList::const_iterator it2;
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it2;
 	lyxerr << "Globals completion commands: ";
 	for (it2 = words.begin(); it2 != words.end(); ++it2) {
 		globals.push_back("\\" + (*it2).first);

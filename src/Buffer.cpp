@@ -203,6 +203,9 @@ public:
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	mutable EmbeddedFileList bibfilesCache_;
+	
+	///
+	WordList words_;
 };
 
 /// Creates the per buffer temporary directory
@@ -2667,7 +2670,13 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 
 void Buffer::registerWord(docstring const & word)
 {
-	words_.insert(word);
+	d->words_.insert(word);
+}
+
+
+WordList const & Buffer::registeredWords() const
+{
+	return d->words_;
 }
 
 } // namespace lyx

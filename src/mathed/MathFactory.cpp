@@ -69,7 +69,7 @@ bool has_math_fonts;
 
 namespace {
 
-WordList theWordList;
+MathWordList theWordList;
 
 
 bool math_font_available(docstring & name)
@@ -218,7 +218,7 @@ void initSymbols()
 
 } // namespace anon
 
-WordList const & mathedWordList()
+MathWordList const & mathedWordList()
 {
 	return theWordList;
 }
@@ -237,7 +237,7 @@ void initMath()
 
 latexkeys const * in_word_set(docstring const & str)
 {
-	WordList::iterator it = theWordList.find(str);
+	MathWordList::iterator it = theWordList.find(str);
 	return it != theWordList.end() ? &(it->second) : 0;
 }
 
