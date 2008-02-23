@@ -125,8 +125,8 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 				break;
 			Paragraph const & par =
 				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
-			if (!toc_item->par_it_->getLabelstring().empty())
-				tocstring = toc_item->par_it_->getLabelstring() + ' ';
+			if (!toc_item->par_it_->labelString().empty())
+				tocstring = toc_item->par_it_->labelString() + ' ';
 			tocstring += par.asString(*buffer_, false);
 			break;
 		}
@@ -169,8 +169,8 @@ void TocBackend::update()
 					break;
 				Paragraph const & par =
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
-				if (!pit->getLabelstring().empty())
-					tocstring = pit->getLabelstring() + ' ';
+				if (!pit->labelString().empty())
+					tocstring = pit->labelString() + ' ';
 				tocstring += par.asString(*buffer_, false);
 				break;
 			}

@@ -77,18 +77,18 @@ void breakParagraph(BufferParams const & bparams,
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	if (par.useEmptyLayout())
-		tmp->layout(bparams.textClass().emptyLayout());
+		tmp->setLayout(bparams.textClass().emptyLayout());
 	else
-		tmp->layout(bparams.textClass().defaultLayout());
+		tmp->setLayout(bparams.textClass().defaultLayout());
 
 	// layout stays the same with latex-environments
 	if (keep_layout) {
-		tmp->layout(par.layout());
+		tmp->setLayout(par.layout());
 		tmp->setLabelWidthString(par.params().labelWidthString());
 		tmp->params().depth(par.params().depth());
 	} else if (par.params().depth() > 0) {
 		Paragraph const & hook = pars[outerHook(par_offset, pars)];
-		tmp->layout(hook.layout());
+		tmp->setLayout(hook.layout());
 		// not sure the line below is useful
 		tmp->setLabelWidthString(par.params().labelWidthString());
 		tmp->params().depth(hook.params().depth());
@@ -97,7 +97,7 @@ void breakParagraph(BufferParams const & bparams,
 	bool const isempty = (par.allowEmpty() && par.empty());
 
 	if (!isempty && (par.size() > pos || par.empty())) {
-		tmp->layout(par.layout());
+		tmp->setLayout(par.layout());
 		tmp->params().align(par.params().align());
 		tmp->setLabelWidthString(par.params().labelWidthString());
 
@@ -144,12 +144,12 @@ void breakParagraph(BufferParams const & bparams,
 		par.params().clear();
 		// do not lose start of appendix marker (bug 4212)
 		par.params().startOfAppendix(soa);
-		par.layout(bparams.textClass().defaultLayout());
+		par.setLayout(bparams.textClass().defaultLayout());
 	}
 
 	// layout stays the same with latex-environments
 	if (keep_layout) {
-		par.layout(tmp->layout());
+		par.setLayout(tmp->layout());
 		par.setLabelWidthString(tmp->params().labelWidthString());
 		par.params().depth(tmp->params().depth());
 	}

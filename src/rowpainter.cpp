@@ -505,7 +505,7 @@ void RowPainter::paintFirst()
 		FontInfo const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 
-		docstring const str = par_.getLabelstring();
+		docstring const str = par_.labelString();
 		if (!str.empty()) {
 			double x = x_;
 
@@ -551,8 +551,8 @@ void RowPainter::paintFirst()
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
 		FontInfo const font = getLabelFont();
-		if (!par_.getLabelstring().empty()) {
-			docstring const str = par_.getLabelstring();
+		docstring const str = par_.labelString();
+		if (!str.empty()) {
 			double spacing_val = 1.0;
 			if (!parparams.spacing().isDefault())
 				spacing_val = parparams.spacing().getValue();

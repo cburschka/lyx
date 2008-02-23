@@ -127,11 +127,11 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	// Convert newline to paragraph break in ERT inset.
 	// This should not be here!
-	if (pars[pit].inInset() &&
-	    (pars[pit].inInset()->lyxCode() == ERT_CODE ||
-		pars[pit].inInset()->lyxCode() == LISTINGS_CODE)) {
-		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
-			for (pos_type j = 0; j < insertion[i].size(); ++j) {
+	Inset * inset = pars[pit].inInset();
+	if (inset && (inset->lyxCode() == ERT_CODE ||
+			inset->lyxCode() == LISTINGS_CODE)) {
+		for (size_t i = 0; i != insertion.size(); ++i) {
+			for (pos_type j = 0; j != insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
 					// do not track deletion of newline
 					insertion[i].eraseChar(j, false);
@@ -152,7 +152,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();
 				par != end; ++par)
-			par->layout(layout);
+			par->setLayout(layout);
 	}
 
 	// Make sure there is no class difference.
@@ -421,9 +421,9 @@ void switchBetweenClasses(TextClassIndex const & oldtcindex,
 		bool hasLayout = newtc.hasLayout(name);
 
 		if (hasLayout)
-			it->layout(newtc[name]);
+			it->setLayout(newtc[name]);
 		else
-			it->layout(newtc.defaultLayout());
+			it->setLayout(newtc.defaultLayout());
 
 		if (!hasLayout && name != oldtc.defaultLayoutName()) {
 			docstring const s = bformat(
@@ -621,7 +621,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.layout(bp.textClass().defaultLayout());
+		par.setLayout(bp.textClass().defaultLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		cutstack.push(make_pair(pars, bp.textClassIndex()));
@@ -648,7 +648,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.layout(bp.textClass().defaultLayout());
+		par.setLayout(bp.textClass().defaultLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.textClassIndex()));

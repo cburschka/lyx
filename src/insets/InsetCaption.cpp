@@ -64,7 +64,7 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 	setFrameColor(Color_captionframe);
 	//FIXME Do we need to set all paragraphs here? or will there
 	//always only be one?
-	paragraphs().back().layout(bp.textClass().emptyLayout());
+	paragraphs().back().setLayout(bp.textClass().emptyLayout());
 }
 
 

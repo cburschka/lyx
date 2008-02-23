@@ -539,18 +539,14 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	min_toclevel_ = Layout::NOT_IN_TOC;
 	max_toclevel_ = Layout::NOT_IN_TOC;
-	const_iterator cit = begin();
-	const_iterator the_end = end();
-	for ( ; cit != the_end ; ++cit) {
-		int const toclevel = (*cit)->toclevel;
+	for (size_t i = 0; i != layoutCount(); ++i) {
+		int const toclevel = layout(i)->toclevel;
 		if (toclevel != Layout::NOT_IN_TOC) {
 			if (min_toclevel_ == Layout::NOT_IN_TOC)
 				min_toclevel_ = toclevel;
 			else
-				min_toclevel_ = min(min_toclevel_,
-							toclevel);
-			max_toclevel_ = max(max_toclevel_,
-							toclevel);
+				min_toclevel_ = min(min_toclevel_, toclevel);
+			max_toclevel_ = max(max_toclevel_, toclevel);
 		}
 	}
 	LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
@@ -978,13 +974,13 @@ Counters & TextClass::counters() const
 // will invoke the layout object defined by name = 'CharStyle'.
 // If that doesn't work either, an empty object returns (shouldn't
 // happen).  -- Idea JMarc, comment MV
-InsetLayout const & TextClass::insetlayout(docstring const & name) const 
+InsetLayout const & TextClass::insetLayout(docstring const & name) const 
 {
 	docstring n = name;
 	while (!n.empty()) {
 		if (insetlayoutlist_.count(n) > 0)
 			return insetlayoutlist_[n];
-		docstring::size_type i = n.find(':');
+		size_t i = n.find(':');
 		if (i == string::npos)
 			break;
 		n = n.substr(0,i);

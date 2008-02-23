@@ -486,7 +486,7 @@ Tabular::cellstruct::cellstruct(BufferParams const & bp)
 	  rotate(false),
 	  inset(new InsetText(bp))
 {
-	inset->paragraphs().back().layout(bp.textClass().emptyLayout());
+	inset->paragraphs().back().setLayout(bp.textClass().emptyLayout());
 }
 
 

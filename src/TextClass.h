@@ -58,8 +58,6 @@ class TextClass {
 public:
 	/// The individual styles comprising the document class
 	typedef std::vector<LayoutPtr> LayoutList;
-	/// Enumerate the paragraph styles.
-	typedef LayoutList::const_iterator const_iterator;
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit
 	TextClass(std::string const & = std::string(),
@@ -70,12 +68,12 @@ public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const;
 
-	/// paragraph styles begin iterator.
-	const_iterator begin() const { return layoutlist_.begin(); }
-	/// paragraph styles end iterator
-	const_iterator end() const { return layoutlist_.end(); }
+	/// Enumerate the paragraph styles.
+	size_t layoutCount() const { return layoutlist_.size(); }
+	/// Access the paragraph styles.
+	LayoutPtr const & layout(size_t index) const { return layoutlist_[index]; }
 
-	///Enum used with TextClass::read
+	/// Enum used with TextClass::read
 	enum ReadType { 
 		BASECLASS, //>This is a base class, i.e., top-level layout file
 		MERGE, //>This is a file included in a layout file
@@ -116,9 +114,9 @@ public:
 	/// The Counters present in this document class.
 	Counters & counters() const;
 	/// Inset layouts of this doc class
-	InsetLayouts & insetlayouts() const { return insetlayoutlist_; };
+	InsetLayouts & insetLayouts() const { return insetlayoutlist_; };
 	///
-	InsetLayout const & insetlayout(docstring const & name) const;
+	InsetLayout const & insetLayout(docstring const & name) const;
 	///
 	docstring const & defaultLayoutName() const;
 	///

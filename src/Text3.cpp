@@ -219,10 +219,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
 		// reset first par to default
-		LayoutPtr const layout = insetText->useEmptyLayout()
-			? bparams.textClass().emptyLayout()
-			: bparams.textClass().defaultLayout();
-		cur.text()->paragraphs().begin()->layout(layout);
+		cur.text()->paragraphs().begin()
+			->setEmptyOrDefaultLayout(bparams.textClass());
 		cur.pos() = 0;
 		cur.pit() = 0;
 		// Merge multiple paragraphs -- hack
@@ -268,8 +266,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator end = pars.end();
 
-	TextClass::const_iterator lit = buf.params().textClass().begin();
-	TextClass::const_iterator const lend = buf.params().textClass().end();
+	TextClass const & tc = buf.params().textClass();
 
 	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;
@@ -344,20 +341,22 @@ static void outline(OutlineOp mode, Cursor & cur)
 		}
 		case OutlineIn:
 			buf.undo().recordUndo(cur);
-			for (; lit != lend; ++lit) {
-				if ((*lit)->toclevel == thistoclevel + 1 &&
-				    start->layout()->labeltype == (*lit)->labeltype) {
-					start->layout((*lit));
+			for (size_t i = 0; i != tc.layoutCount(); ++i) {
+				LayoutPtr const & lt = tc.layout(i);
+				if (lt->toclevel == thistoclevel + 1 &&
+				    start->layout()->labeltype == lt->labeltype) {
+					start->setLayout(lt);
 					break;
 				}
 			}
 			break;
 		case OutlineOut:
 			buf.undo().recordUndo(cur);
-			for (; lit != lend; ++lit) {
-				if ((*lit)->toclevel == thistoclevel - 1 &&
-				    start->layout()->labeltype == (*lit)->labeltype) {
-					start->layout((*lit));
+			for (size_t i = 0; i != tc.layoutCount(); ++i) {
+				LayoutPtr const & lt = tc.layout(i);
+				if (lt->toclevel == thistoclevel - 1 &&
+				    start->layout()->labeltype == lt->labeltype) {
+					start->setLayout(lt);
 					break;
 				}
 			}
@@ -1390,11 +1389,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
 		pars.back().setInsetOwner(pars[0].inInset());
-		if (pars.back().useEmptyLayout())
-			pars.back().layout(tclass.emptyLayout());
-		else
-			pars.back().layout(tclass.defaultLayout());
-
+		pars.back().setEmptyOrDefaultLayout(tclass);
 		int cap_pit = pars.size() - 1;
 
 		// if an empty inset was created, we create an additional empty
@@ -1403,10 +1398,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!content) {
 			pars.push_back(Paragraph());
 			pars.back().setInsetOwner(pars[0].inInset());
-			if (pars.back().useEmptyLayout())
-				pars.back().layout(tclass.emptyLayout());
-			else
-				pars.back().layout(tclass.defaultLayout());
+			pars.back().setEmptyOrDefaultLayout(tclass);
 		}
 
 		// reposition the cursor to the caption
@@ -1954,7 +1946,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
 		string s = cmd.getArg(0);
-		InsetLayout il =  cur.buffer().params().textClass().insetlayout(from_utf8(s));
+		InsetLayout il =  cur.buffer().params().textClass().insetLayout(from_utf8(s));
 		if (il.lyxtype() != "charstyle" &&
 		    il.lyxtype() != "custom" &&
 		    il.lyxtype() != "element" &&

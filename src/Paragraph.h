@@ -43,6 +43,7 @@ class MetricsInfo;
 class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
+class TextClass;
 class TexRow;
 
 
@@ -158,7 +159,9 @@ public:
 	///
 	LayoutPtr const & layout() const;
 	///
-	void layout(LayoutPtr const & new_layout);
+	void setLayout(LayoutPtr const & layout);
+	///
+	void setEmptyOrDefaultLayout(TextClass const & tc);
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;
@@ -201,7 +204,7 @@ public:
 	void setBeginOfBody();
 
 	///
-	docstring const & getLabelstring() const;
+	docstring const & labelString() const;
 
 	/// the next two functions are for the manual labels
 	docstring const getLabelWidthString() const;

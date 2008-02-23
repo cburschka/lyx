@@ -125,12 +125,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 					tclass.defaultLayoutName();
 		}
 
-		par.layout(bp.textClass()[layoutname]);
+		par.setLayout(bp.textClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
 		LayoutPtr const & layout = par.layout();
 		if (!layout->obsoleted_by().empty())
-			par.layout(bp.textClass()[layout->obsoleted_by()]);
+			par.setLayout(bp.textClass()[layout->obsoleted_by()]);
 
 		par.params().read(lex);
 
@@ -340,8 +340,7 @@ bool Text::empty() const
 }
 
 
-double Text::spacing(Buffer const & buffer,
-		Paragraph const & par) const
+double Text::spacing(Buffer const & buffer, Paragraph const & par) const
 {
 	if (par.params().spacing().isDefault())
 		return buffer.params().spacing().getValue();
@@ -929,9 +928,9 @@ bool Text::handleBibitems(Cursor & cur)
 
 	// otherwise reset to default
 	if (par.useEmptyLayout())
-		cur.paragraph().layout(bufparams.textClass().emptyLayout());
+		cur.paragraph().setLayout(bufparams.textClass().emptyLayout());
 	else
-		cur.paragraph().layout(bufparams.textClass().defaultLayout());
+		cur.paragraph().setLayout(bufparams.textClass().defaultLayout());
 	return true;
 }
 

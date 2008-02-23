@@ -1473,7 +1473,7 @@ char Paragraph::getAlign() const
 }
 
 
-docstring const & Paragraph::getLabelstring() const
+docstring const & Paragraph::labelString() const
 {
 	return d->params_.labelString();
 }
@@ -2334,9 +2334,18 @@ LayoutPtr const & Paragraph::layout() const
 }
 
 
-void Paragraph::layout(LayoutPtr const & new_layout)
+void Paragraph::setLayout(LayoutPtr const & layout)
 {
-	d->layout_ = new_layout;
+	d->layout_ = layout;
+}
+
+
+void Paragraph::setEmptyOrDefaultLayout(TextClass const & tclass)
+{
+	if (useEmptyLayout())
+		setLayout(tclass.emptyLayout());
+	else
+		setLayout(tclass.defaultLayout());
 }
 
 

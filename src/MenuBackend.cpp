@@ -640,10 +640,10 @@ void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
-	InsetLayouts const & insetlayouts =
-		buf->params().textClass().insetlayouts();
-	InsetLayouts::const_iterator cit = insetlayouts.begin();
-	InsetLayouts::const_iterator end = insetlayouts.end();
+	InsetLayouts const & insetLayouts =
+		buf->params().textClass().insetLayouts();
+	InsetLayouts::const_iterator cit = insetLayouts.begin();
+	InsetLayouts::const_iterator end = insetLayouts.end();
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
 		if (cit->second.lyxtype() == s)

@@ -518,7 +518,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
 		this, SLOT(setLSpacing(int)));
-	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)),
+	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
@@ -1363,15 +1363,13 @@ void GuiDocument::updateNumbering()
 	int const toc = numberingModule->tocSL->value();
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
-	TextClass::const_iterator end = tclass.end();
-	TextClass::const_iterator cit = tclass.begin();
 	QTreeWidgetItem * item = 0;
-	for ( ; cit != end ; ++cit) {
-		int const toclevel = (*cit)->toclevel;
-		if (toclevel != Layout::NOT_IN_TOC
-		    && (*cit)->labeltype == LABEL_COUNTER) {
+	for (size_t i = 0; i != tclass.layoutCount(); ++i) {
+		Layout const & lt = *tclass.layout(i);
+		int const toclevel = lt.toclevel;
+		if (toclevel != Layout::NOT_IN_TOC && lt.labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
-			item->setText(0, toqstr(translateIfPossible((*cit)->name())));
+			item->setText(0, toqstr(translateIfPossible(lt.name())));
 			item->setText(1, (toclevel <= depth) ? yes : no);
 			item->setText(2, (toclevel <= toc) ? yes : no);
 		}

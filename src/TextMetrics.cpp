@@ -998,7 +998,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		     || layout->labeltype == LABEL_BIBLIO
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
 		    && isFirstInSequence(pit, pars)
-		    && !par.getLabelstring().empty())
+		    && !par.labelString().empty())
 		{
 			labeladdon = int(
 				  labelfont_metrics.maxHeight()
@@ -1810,9 +1810,9 @@ int TextMetrics::leftMargin(int max_width,
 			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
 				layout->leftmargin);
 		}
-		if (!par.getLabelstring().empty()) {
+		if (!par.labelString().empty()) {
 			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
-			l_margin += labelfont_metrics.width(par.getLabelstring());
+			l_margin += labelfont_metrics.width(par.labelString());
 			l_margin += labelfont_metrics.width(layout->labelsep);
 		}
 		break;
@@ -1856,7 +1856,7 @@ int TextMetrics::leftMargin(int max_width,
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
 			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
 			l_margin += labelfont_metrics.width(layout->labelsep);
-			l_margin += labelfont_metrics.width(par.getLabelstring());
+			l_margin += labelfont_metrics.width(par.labelString());
 		}
 		break;
 

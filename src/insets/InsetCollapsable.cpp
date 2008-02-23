@@ -87,7 +87,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().layout(bp.textClass().emptyLayout());
+	paragraphs().back().setLayout(bp.textClass().emptyLayout());
 }
 
 
@@ -134,7 +134,7 @@ void InsetCollapsable::setLayout(TextClassIndex tcindex)
 {
 	textClass_ = tcindex;
 	if (tcindex != TextClassIndex(-1)) {
-		layout_ = &textclasslist[tcindex].insetlayout(name());
+		layout_ = &textclasslist[tcindex].insetLayout(name());
 		labelstring_ = layout_->labelstring();
 	} else {
 		layout_ = &TextClass::emptyInsetLayout();

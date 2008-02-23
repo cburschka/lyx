@@ -223,14 +223,9 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 					       << to_utf8(style) << "'\n"
 					       << "All layouts so far:"
 					       << endl;
-					TextClass::const_iterator it =
-						tclass.begin();
-					TextClass::const_iterator end =
-						tclass.end();
-					for (; it != end; ++it) {
-						lyxerr << to_utf8((*it)->name())
+					for (size_t i = 0; i != tclass.layoutCount(); ++i)
+						lyxerr << to_utf8(tclass.layout(i)->name())
 						       << endl;
-					}
 
 					//lexrc.printError("Cannot copy known "
 					//		 "style `$$Token'");

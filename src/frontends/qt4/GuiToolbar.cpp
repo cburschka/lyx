@@ -323,11 +323,10 @@ void GuiLayoutBox::updateContents(bool reset)
 	text_class_ = text_class;
 
 	clear();
-	TextClass::const_iterator it = text_class_->begin();
-	TextClass::const_iterator const end = text_class_->end();
 
-	for (; it != end; ++it) {
-		docstring const & name = (*it)->name();
+	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
+		Layout const & lt = *text_class_->layout(i);
+		docstring const & name = lt.name();
 		// if this inset requires the empty layout, we skip the default
 		// layout
 		if (name == text_class_->defaultLayoutName() && inset &&
@@ -359,14 +358,12 @@ void GuiLayoutBox::selected(const QString & str)
 		return;
 
 	docstring const name = qstring_to_ucs4(str);
-	TextClass::const_iterator it  = text_class_->begin();
-	TextClass::const_iterator const end = text_class_->end();
-	for (; it != end; ++it) {
-		docstring const & itname = (*it)->name();
-		//FIXME Comparing translated strings is not ideal.
-		//This should be done the way module names are handled
-		//in GuiDocument: viz, the untranslated name should be
-		//associated with the item via QComboBox::setItemData().
+	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
+		docstring const & itname = text_class_->layout(i)->name();
+		// FIXME: Comparing translated strings is not ideal.
+		// This should be done the way module names are handled
+		// in GuiDocument: viz, the untranslated name should be
+		// associated with the item via QComboBox::setItemData().
 		if (translateIfPossible(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
