@@ -1,5 +1,5 @@
 /**
- * \file text3.cpp
+ * \file Text3.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -204,8 +204,7 @@ void Text::cursorPrevious(Cursor & cur)
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, 0);
+	setCursorFromCoordinates(cur, cur.x_target(), 0);
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
@@ -215,6 +214,12 @@ void Text::cursorPrevious(Cursor & cur)
 
 	finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
+	/* one of the dispatch calls above may have set the dispatched
+	 * status of the cursor to false. Did I ever say that calling
+	 * cur.dispatch directly is a bad idea? See bug 4570 for a
+	 * possible consequence (JMarc)
+	 */
+	cur.dispatched();
 }
 
 
@@ -235,6 +240,12 @@ void Text::cursorNext(Cursor & cur)
 
 	finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
+	/* one of the dispatch calls above may have set the dispatched
+	 * status of the cursor to false. Did I ever say that calling
+	 * cur.dispatch directly is a bad idea? See bug 4570 for a
+	 * possible consequence (JMarc)
+	 */
+	cur.dispatched();
 }
 
 
