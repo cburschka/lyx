@@ -42,14 +42,63 @@ using namespace lyx::support;
 
 namespace lyx {
 
+ParamInfo::ParamData::ParamData(std::string const & s, bool b) :
+	name_(s), optional_(b)
+{}
+
+
+bool ParamInfo::ParamData::operator==(ParamInfo::ParamData const & rhs) const
+{
+	return name() == rhs.name() && isOptional() == rhs.isOptional();
+}
+
+
+bool ParamInfo::hasParam(std::string const & name) const
+{
+	const_iterator it = begin();
+	for (; it != end(); ++it) {
+		if (it->name() == name)
+			return true;
+	}
+	return false;
+}
+
+
+void ParamInfo::add(std::string const & name, bool opt)
+{ 
+	info_.push_back(ParamData(name, opt)); 
+}
+
+
+bool ParamInfo::operator==(ParamInfo const & rhs) const
+{
+	// the idea here is to check each ParamData for equality
+	const_iterator itL  = begin();
+	const_iterator itR  = rhs.begin();
+	const_iterator endL = end();
+	const_iterator endR = rhs.end();
+	while (true) {
+		// if they both end together, return true
+		if (itL == endL && itR == endR)
+				return true;
+		// but if one ends before the other, return false
+		if (itL == endL || itR == endR)
+			return false;
+		//check this one for equality
+		if (*itL != *itR)
+			return false;
+		// equal, so check the next one
+		++itL;
+		++itR;
+	}
+}
+
 
 InsetCommandParams::InsetCommandParams(InsetCode code)
 	: insetCode_(code), preview_(false)
 {
 	cmdName_ = getDefaultCmd(code);
 	info_ = findInfo(code, cmdName_);
-	BOOST_ASSERT(info_);
-	params_.resize(info_->n);
 }
 
 
@@ -58,12 +107,10 @@ InsetCommandParams::InsetCommandParams(InsetCode code,
 	: insetCode_(code), cmdName_(cmdName), preview_(false)
 {
 	info_ = findInfo(code, cmdName);
-	BOOST_ASSERT(info_);
-	params_.resize(info_->n);
 }
 
 
-CommandInfo const * InsetCommandParams::findInfo(
+ParamInfo const & InsetCommandParams::findInfo(
 	InsetCode code, string const & cmdName)
 {
 	switch (code) {
@@ -96,7 +143,8 @@ CommandInfo const * InsetCommandParams::findInfo(
 	default:
 		BOOST_ASSERT(false);
 	}
-	return 0;
+	static const ParamInfo pi;
+	return pi; // to silence the warning
 }
 
 
@@ -131,7 +179,7 @@ string InsetCommandParams::getDefaultCmd(InsetCode code) {
 		default:
 			BOOST_ASSERT(false);
 	}
-	return string(); //silence the warning
+	return string(); // silence the warning
 }
 
 
@@ -168,7 +216,7 @@ bool InsetCommandParams::isCompatibleCommand(
 		default:
 			BOOST_ASSERT(false);
 	}
-	return false; //silence the warning
+	return false; // silence the warning
 }
 
 
@@ -182,21 +230,7 @@ void InsetCommandParams::setCmdName(string const & name)
 	}
 
 	cmdName_ = name;
-	CommandInfo const * const info = findInfo(insetCode_, cmdName_);
-	if (!info) {
-		LYXERR0("Command '" << name << "' is not compatible with a '" <<
-			insetType() << "' inset.");
-		return;
-	}
-	ParamVector params(info->n);
-	// Overtake parameters with the same name
-	for (size_t i = 0; i < info_->n; ++i) {
-		int j = findToken(info->paramnames, info_->paramnames[i]);
-		if (j >= 0)
-			params[j] = params_[i];
-	}
-	info_ = info;
-	swap(params, params_);
+	info_ = findInfo(insetCode_, cmdName_);
 }
 
 
@@ -231,11 +265,6 @@ void InsetCommandParams::read(Lexer & lex)
 	}
 
 	info_ = findInfo(insetCode_, cmdName_);
-	if (!info_) {
-		lex.printError("InsetCommandParams: Unknown inset name `$$Token'");
-		throw ExceptionMessage(WarningException,
-		                       _("Unknown inset name: "), from_utf8(insetType()));
-	}
 	
 	string token;
 	while (lex.isOK()) {
@@ -248,10 +277,9 @@ void InsetCommandParams::read(Lexer & lex)
 			preview_ = lex.getBool();
 			continue;
 		}
-		int const i = findToken(info_->paramnames, token);
-		if (i >= 0) {
+		if (info_.hasParam(token)) {
 			lex.next(true);
-			params_[i] = lex.getDocString();
+			params_[token] = lex.getDocString();
 		} else {
 			lex.printError("Unknown parameter name `$$Token' for command " + cmdName_);
 			throw ExceptionMessage(WarningException,
@@ -275,12 +303,18 @@ void InsetCommandParams::write(ostream & os) const
 	os << "LatexCommand " << cmdName_ << '\n';
 	if (preview_)
 		os << "preview true\n";
-	for (size_t i = 0; i < info_->n; ++i)
-		if (!params_[i].empty())
+	ParamInfo::const_iterator it  = info_.begin();
+	ParamInfo::const_iterator end = info_.end();
+	for (; it != end; ++it) {
+		std::string const & name = it->name();
+		docstring const & data = (*this)[name];
+		if (!data.empty()) {
 			// FIXME UNICODE
-			os << info_->paramnames[i] << ' '
-			   << Lexer::quoteString(to_utf8(params_[i]))
+			os << name << ' '
+			   << Lexer::quoteString(to_utf8(data))
 			   << '\n';
+		}
+	}
 }
 
 
@@ -288,28 +322,36 @@ docstring const InsetCommandParams::getCommand() const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
 	bool noparam = true;
-	for (size_t i = 0; i < info_->n; ++i) {
-		if (info_->optional[i]) {
-			if (params_[i].empty()) {
-				// We need to write this parameter even if
-				// it is empty if nonempty optional parameters
-				// follow before the next required parameter.
-				for (size_t j = i + 1; j < info_->n; ++j) {
-					if (!info_->optional[j])
-						break;
-					if (!params_[j].empty()) {
-						s += "[]";
-						noparam = false;
-						break;
-					}
-				}
-			} else {
-				s += '[' + params_[i] + ']';
-				noparam = false;
-			}
-		} else {
-			s += '{' + params_[i] + '}';
+	ParamInfo::const_iterator it  = info_.begin();
+	ParamInfo::const_iterator end = info_.end();
+	for (; it != end; ++it) {
+		std::string const & name = it->name();
+		docstring const & data = (*this)[name];
+		if (!it->isOptional()) {
+			s += '{' + data + '}';
 			noparam = false;
+			continue;
+		}
+		if (!data.empty()) {
+			s += '[' + data + ']';
+			noparam = false;
+			continue;
+		}
+		// This param is therefore optional but empty.
+		// But we need to write it anyway if nonempty
+		// optional parameters follow before the next
+		// required parameter.
+		ParamInfo::const_iterator it2 = it;
+		for (++it2; it2 != end; ++it2) {
+			if (!it2->isOptional())
+				break;
+			std::string const & name2 = it2->name();
+			docstring const & data2 = (*this)[name2];
+			if (!data2.empty()) {
+				s += "[]";
+				noparam = false;
+				break;
+			}
 		}
 	}
 	if (noparam)
@@ -320,36 +362,47 @@ docstring const InsetCommandParams::getCommand() const
 }
 
 
+namespace {
+	//predicate for what follows
+	bool paramIsNonOptional(ParamInfo::ParamData pi)
+	{
+		return !pi.isOptional();
+	}
+}
+
 docstring const InsetCommandParams::getFirstNonOptParam() const
 {
-	for (size_t i = 0; i < info_->n; ++i)
-		if (!info_->optional[i])
-			return params_[i];
-	BOOST_ASSERT(false);
-	return docstring();
+	ParamInfo::const_iterator it = 
+		find_if(info_.begin(), info_.end(), paramIsNonOptional);
+	if (it == info_.end())
+		BOOST_ASSERT(false);
+	return (*this)[it->name()];
 }
 
 
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
-	int const i = findToken(info_->paramnames, name);
-	BOOST_ASSERT(i >= 0);
-	return params_[i];
+	static const docstring dummy; //so we don't return a ref to temporary
+	if (!info_.hasParam(name))
+		BOOST_ASSERT(false);
+	ParamMap::const_iterator data = params_.find(name);
+	if (data == params_.end() || data->second.empty())
+		return dummy;
+	return data->second;
 }
 
 
 docstring & InsetCommandParams::operator[](string const & name)
 {
-	int const i = findToken(info_->paramnames, name);
-	BOOST_ASSERT(i >= 0);
-	return params_[i];
+	if (!info_.hasParam(name))
+		BOOST_ASSERT(false);
+	return params_[name];
 }
 
 
 void InsetCommandParams::clear()
 {
-	for (size_t i = 0; i < info_->n; ++i)
-		params_[i].clear();
+	params_.clear();
 }
 
 

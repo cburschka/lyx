@@ -48,12 +48,13 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
-CommandInfo const * InsetFloatList::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetFloatList::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {"type", ""};
-	static const bool isoptional[] = {false};
-	static const CommandInfo info = {1, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("type", false);
+	}
+	return param_info_;
 }
 
 

@@ -5,6 +5,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Richard Heck (conversion to InsetCommand)
+ * \author Bo Peng (embedding stuff)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -164,15 +165,18 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 }
 
 
-CommandInfo const * InsetInclude::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 {
 	// FIXME
 	// This is only correct for the case of listings, but it'll do for now.
 	// In the other cases, this second parameter should just be empty.
-	static const char * const paramnames[] = {"filename", "embed", "lstparams", ""};
-	static const bool isoptional[] = {false, false, true};
-	static const CommandInfo info = {3, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("filename", false);
+		param_info_.add("embed", false);
+		param_info_.add("lstparams", true);
+	}
+	return param_info_;
 }
 
 

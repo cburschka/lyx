@@ -33,13 +33,15 @@ InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetHyperlink::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] =
-		{"name", "target", "type", ""};
-	static const bool isoptional[] = {true, false};
-	static const CommandInfo info = {3, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("name", true);
+		param_info_.add("target", false);
+		param_info_.add("type", false);
+	}
+	return param_info_;
 }
 
 

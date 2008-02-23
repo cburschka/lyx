@@ -80,12 +80,13 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetPrintIndex::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {"name", ""};
-	static const bool isoptional[] = {false};
-	static const CommandInfo info = {1, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("name", false);
+	}
+	return param_info_;
 }
 
 

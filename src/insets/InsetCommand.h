@@ -80,7 +80,7 @@ public:
 	bool setMouseHover(bool mouse_hover);
 	/// Return parameter information for command cmdName.
 	/// Not implemented here. Must be implemented in derived class.
-	static CommandInfo const * findInfo(std::string const & cmdName);
+	static ParamInfo const & findInfo(std::string const & cmdName);
 	/// Return default command for this inset.
 	/// Not implemented here. Must be implemented in derived class.
 	static std::string defaultCommand();

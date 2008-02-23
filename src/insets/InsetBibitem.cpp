@@ -38,8 +38,6 @@ namespace lyx {
 
 
 int InsetBibitem::key_counter = 0;
-
-
 docstring const key_prefix = from_ascii("key-");
 
 
@@ -51,12 +49,14 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
-CommandInfo const * InsetBibitem::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {"label", "key", ""};
-	static const bool isoptional[] = {true, false};
-	static const CommandInfo info = {2, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("label", true);
+		param_info_.add("key", false);
+	}
+	return param_info_;
 }
 
 

@@ -46,7 +46,7 @@ public:
 	/// Update the counter of this inset
 	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "bibitem"; };
 	///
@@ -56,8 +56,8 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
+	///
 	virtual Inset * clone() const;
-
 	/// The label that is set by updateLabels
 	docstring autolabel_;
 	///

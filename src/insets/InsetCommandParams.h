@@ -20,21 +20,57 @@
 #include <iosfwd>
 #include <string>
 #include <vector>
+#include <map>
 
 
 namespace lyx {
 
 class Lexer;
 
-// No parameter may be named "preview", because that is a required
-// flag for all commands.
-struct CommandInfo {
-	/// Number of parameters
-	size_t n;
-	/// Parameter names. paramnames[n] must be "".
-	char const * const * paramnames;
-	/// Tells whether a parameter is optional
-	bool const * optional;
+class ParamInfo {
+public:
+	///
+	class ParamData {
+	// No parameter may be named "preview", because that is a required
+	// flag for all commands.
+	public:
+		///
+		ParamData(std::string const &, bool);
+		///
+		std::string name() const { return name_; }
+		///
+		bool isOptional() const { return optional_; }
+		///
+		bool operator==(ParamData const &) const;
+		/// 
+		bool operator!=(ParamData const & rhs) const
+			{ return !(*this == rhs); }
+	private:
+		///
+		std::string name_;
+		///
+		bool optional_;
+	};
+
+	/// adds a new parameter
+	void add(std::string const & name, bool optional);
+	///
+	bool empty() const { return info_.empty(); }
+	///
+	size_t size() const { return info_.size(); }
+	///
+	typedef std::vector<ParamData>::const_iterator const_iterator;
+	///
+	const_iterator begin() const { return info_.begin(); }
+	///
+	const_iterator end() const { return info_.end(); }
+	///
+	bool hasParam(std::string const & name) const;
+	///
+	bool operator==(ParamInfo const &) const;
+private:
+	///
+	std::vector<ParamData> info_;
 };
 
 
@@ -81,29 +117,27 @@ private:
 	///
 	/// Get information for inset type \p code.
 	/// Returns 0 if the inset is not known.
-	static CommandInfo const * findInfo(InsetCode code);
+	static ParamInfo const & findInfo(InsetCode code);
 	/// Get information for \p code and command \p cmdName.
 	/// Returns 0 if the combination is not known.
 	/// Don't call this without first making sure the command name is
 	/// acceptable to the inset.
-	static CommandInfo const * findInfo(InsetCode code,
+	static ParamInfo const & findInfo(InsetCode code,
 	                                    std::string const & cmdName);
 	///
 	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 	///
 	std::string getDefaultCmd(InsetCode);
 	/// Description of all command properties
-	CommandInfo const * info_;
+	ParamInfo info_;
 	/// what kind of inset we're the parameters for
 	InsetCode insetCode_;
 	/// The name of this command as it appears in .lyx and .tex files
 	std::string cmdName_;
 	///
-	typedef std::vector<docstring> ParamVector;
-	/// The parameters (both optional and required ones). The order is
-	/// the same that is required for LaTeX output. The size of params_
-	/// is always info_->n.
-	ParamVector params_;
+	typedef std::map<std::string, docstring> ParamMap;
+	/// The parameters, by name.
+	ParamMap params_;
 	///
 	bool preview_;
 	///
@@ -111,10 +145,8 @@ private:
 			InsetCommandParams const &);
 };
 
-
 ///
 bool operator==(InsetCommandParams const &, InsetCommandParams const &);
-
 ///
 bool operator!=(InsetCommandParams const &, InsetCommandParams const &);
 

@@ -49,7 +49,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "bibtex"; };
 	///
@@ -61,8 +61,10 @@ public:
 	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
 	
 protected:
+	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
+	///
 	virtual Inset * clone() const;
 
 };

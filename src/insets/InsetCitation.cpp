@@ -375,22 +375,26 @@ docstring const getBasicLabel(docstring const & keyList, docstring const & after
 } // anon namespace
 
 
+ParamInfo InsetCitation::param_info_;
+
+
 InsetCitation::InsetCitation(InsetCommandParams const & p)
 	: InsetCommand(p, "citation")
 {}
 
 
-CommandInfo const * InsetCitation::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
 	// standard cite does only take one argument if jurabib is
 	// not used, but jurabib extends this to two arguments, so
 	// we have to allow both here. InsetCitation takes care that
 	// LaTeX output is nevertheless correct.
-	static const char * const paramnames[] =
-		{"after", "before", "key", ""};
-	static const bool isoptional[] = {true, true, false};
-	static const CommandInfo info = {3, paramnames, isoptional};
-	return &info;
+	if (param_info_.empty()) {
+		param_info_.add("after", true);
+		param_info_.add("before", true);
+		param_info_.add("key", false);
+	}
+	return param_info_;
 }
 
 

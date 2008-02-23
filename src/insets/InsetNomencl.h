@@ -41,7 +41,7 @@ public:
 	///
 	int docbookGlossary(odocstream &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "nomenclature"; };
 	///
@@ -78,7 +78,7 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "printnomenclature"; };
 	///

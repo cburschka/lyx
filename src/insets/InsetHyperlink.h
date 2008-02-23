@@ -49,7 +49,7 @@ public:
 	/// the string that is passed to the TOC
 	void textString(Buffer const &, odocstream &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "href"; };
 	///

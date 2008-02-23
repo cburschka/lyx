@@ -35,12 +35,15 @@ InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetNomencl::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
-	static const bool isoptional[] = {true, false, false};
-	static const CommandInfo info = {3, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("prefix", true);
+		param_info_.add("symbol", false);
+		param_info_.add("description", false);
+	}
+	return param_info_;
 }
 
 
@@ -85,12 +88,13 @@ InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetPrintNomencl::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
-		static const char * const paramnames[] = {"labelwidth", ""};
-		static const bool isoptional[] = {true};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("labelwidth", true);
+	}
+	return param_info_;
 }
 
 

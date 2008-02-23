@@ -30,11 +30,10 @@ InsetHFill::InsetHFill()
 {}
 
 
-CommandInfo const * InsetHFill::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetHFill::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {""};
-	static const CommandInfo info = {0, paramnames, 0};
-	return &info;
+	static ParamInfo param_info_;
+	return param_info_;
 }
 
 

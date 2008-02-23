@@ -50,16 +50,17 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	static CommandInfo const * findInfo(std::string const & cmdName = "");
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "listoftables"; };
 	///
 	static bool isCompatibleCommand(std::string const & s);
 private:
+	///
 	virtual Inset * clone() const
-	{
-		return new InsetFloatList(to_ascii(getParam("type")));
-	}
+		{ return new InsetFloatList(to_ascii(getParam("type"))); }
+	///
+	static ParamInfo param_info_;
 };
 
 

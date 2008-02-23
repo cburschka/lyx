@@ -38,7 +38,7 @@ public:
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "tableofcontents"; };
 	///

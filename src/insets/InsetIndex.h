@@ -65,7 +65,7 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///
-	static CommandInfo const * findInfo(std::string const & cmdName = "");
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "printindex"; };
 	///

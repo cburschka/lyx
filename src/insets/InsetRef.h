@@ -57,7 +57,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "ref"; };
 	///

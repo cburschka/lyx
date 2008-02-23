@@ -52,12 +52,14 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 }
 
 
-CommandInfo const * InsetRef::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = {"name", "reference", ""};
-	static const bool isoptional[] = {true, false};
-	static const CommandInfo info = {2, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("name", true);
+		param_info_.add("reference", false);
+	}
+	return param_info_;
 }
 
 

@@ -53,13 +53,16 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetBibtex::findInfo(string const & /* cmdName */)
+ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 {
-	static const char * const paramnames[] = 
-		{"options", "btprint", "bibfiles", "embed", ""};
-	static const bool isoptional[] = {true, true, false, false};
-	static const CommandInfo info = {4, paramnames, isoptional};
-	return &info;
+	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		param_info_.add("options", true);
+		param_info_.add("btprint", true);
+		param_info_.add("bibfiles", false);
+		param_info_.add("embed", false);
+	}
+	return param_info_;
 }
 
 

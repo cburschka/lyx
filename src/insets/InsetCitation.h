@@ -49,7 +49,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	static CommandInfo const * findInfo(std::string const &);
+	static ParamInfo const & findInfo(std::string const &);
 	//FIXME This is the locus of the design problem we have.
 	//It really ought to do what default_cite_command() does,
 	//but to do that it needs to know what CiteEngine we are
@@ -59,14 +59,16 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & cmd);
 private:
+	///
 	virtual Inset * clone() const
-	{
-		return new InsetCitation(params());
-	}
-
+		{ return new InsetCitation(params()); }
+	/// we'll eventually want to be able to get info on this from the 
+	/// various CiteEngines
+	static ParamInfo param_info_;
 	/// This function does the donkey work of creating the pretty label
 	docstring const generateLabel(Buffer const &) const;
 
+	///
 	class Cache {
 	public:
 		///
