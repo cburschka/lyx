@@ -142,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 9.
+letzte Änderung: 19.
  Februar 2008
 \end_layout
 
@@ -4876,11 +4876,11 @@ Wenn die Abbildung oder Tabelle zu groß ist, um auf den Rest der Seite zu
 \end_layout
 
 \begin_layout Standard
-Zur Zeit können Sie diese Gleitobjekte aber nur rechts oder links, aber
- nicht in der Mitte einer Zeile positionieren, weil LyX hierfür das LaTeX-Paket
- 
+Diese Gleitobjekte können Sie aber nur rechts, links, innen oder außen,
+ aber nicht in der Mitte einer Zeile positionieren, weil LyX hierfür das
+ LaTeX-Paket 
 \family typewriter
-floatflt
+wrapfig
 \family default
  benutzt.
  Für zentrierte Bilder gibt es das LaTeX-Paket 
@@ -6410,9 +6410,17 @@ Name.html
 -Datei (Cascading Style Sheet).
  LyX benutzt 
 \family typewriter
+latex2html
+\family default
+ oder 
+\family typewriter
 htlatex
 \family default
-, aber in 
+ (Paket 
+\family typewriter
+tex4ht
+\family default
+), aber in 
 \family sans
 Werkzeuge
 \family default
