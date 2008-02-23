@@ -113,7 +113,6 @@ src_header_files = Split('''
     Text.h
     TextClass.h
     TextClassList.h
-    TextClassPtr.h
     TextMetrics.h
     Thesaurus.h
     TocBackend.h
