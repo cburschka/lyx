@@ -2204,24 +2204,24 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 	d->inlineCompletion = completion;
 	d->inlineCompletionUniqueChars = min(completion.size(), uniqueChars);
 	
-	lyxerr << "setInlineCompletion pos=" << pos << " completion=" << completion << " uniqueChars=" << uniqueChars << std::endl;
+	//lyxerr << "setInlineCompletion pos=" << pos << " completion=" << completion << " uniqueChars=" << uniqueChars << std::endl;
 	
 	// at new position?
 	DocIterator const & old = d->inlineCompletionPos;
 	if (old != pos) {
-		lyxerr << "inlineCompletionPos changed" << std::endl;
+		//lyxerr << "inlineCompletionPos changed" << std::endl;
 		// old or pos are in another paragraph?
 		if ((!samePar(cur, pos) && !pos.empty())
 		    || (!samePar(cur, old) && !old.empty())) {
 			singlePar = false;
-			lyxerr << "different paragraph" << std::endl;
+			//lyxerr << "different paragraph" << std::endl;
 		}
 		d->inlineCompletionPos = pos;
 	}
 	
 	// set update flags
 	if (changed) {
-		lyxerr << "inlineCompletion changed" << std::endl;
+		//lyxerr << "inlineCompletion changed" << std::endl;
 		
 		Update::flags flags
 		= cur.disp_.update() | Update::Force;
