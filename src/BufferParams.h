@@ -15,9 +15,10 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "BiblioInfo.h"
 #include "Font.h"
+#include "BiblioInfo.h"
 #include "paper.h"
+#include "TextClassPtr.h"
 
 #include "insets/InsetQuotes.h"
 
@@ -42,7 +43,6 @@ class LatexFeatures;
 class PDFOptions;
 class Spacing;
 class TextClass;
-class TextClassIndex;
 class TexRow;
 class VSpace;
 
@@ -106,25 +106,25 @@ public:
 	InsetQuotes::quote_times quotes_times;
 	///
 	std::string fontsize;
-	/// Get the LyX TextClass (that is, the layout file) this document is using.
-	TextClassIndex baseClass() const;
+	///Get the LyX TextClass (that is, the layout file) this document is using.
+	textclass_type getBaseClass() const;
 	/// Set the LyX TextClass (that is, the layout file) this document is using.
 	/// NOTE: This does not call makeTextClass() to update the local TextClass.
 	/// That needs to be done manually.
-	bool setBaseClass(TextClassIndex const & index);
+	bool setBaseClass(textclass_type);
 	/// Adds the module information to the baseClass information to
 	/// create our local TextClass.
 	void makeTextClass();
 	/// Returns the TextClass currently in use: the BaseClass as modified
 	/// by modules.
-	TextClass const & textClass() const;
+	TextClass const & getTextClass() const;
 	/// Returns a pointer to the TextClass currently in use: the BaseClass 
-	/// as modified by modules. (See \file TextClass.h for the definition.)
-	TextClassIndex textClassIndex() const;
+	/// as modified by modules. (See \file TextClassPtr.h for the typedef.)
+	TextClassPtr getTextClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
-	void setTextClass(TextClassIndex const & index);
+	void setTextClass(TextClassPtr);
 	/// List of modules in use
 	std::vector<std::string> const & getModules() const;
 	/// Add a module to the list of modules in use.
@@ -327,6 +327,10 @@ private:
 
 	/// for use with natbib
 	biblio::CiteEngine cite_engine_;
+	/// the base TextClass associated with the document
+	textclass_type baseClass_;
+	/// the possibly modular TextClass actually in use
+	TextClassPtr textClass_;
 	///
 	typedef std::vector<std::string> LayoutModuleList;
 	/// 

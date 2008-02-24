@@ -39,6 +39,9 @@ namespace lyx {
 	/// a type for sizes
 	typedef size_t     size_type;
 
+	/// a type used for numbering text classes
+	typedef size_t     textclass_type;
+
 #else
 
 	// These structs wrap simple things to make them distinguishible
@@ -56,6 +59,19 @@ namespace lyx {
 		private:
 		base_type data_;
 	};
+
+	struct textclass_type {
+		///
+		typedef size_t   base_type;
+		///
+		textclass_type(base_type t) { data_ = t; }
+		///
+		operator base_type() const { return data_; }
+		///
+		private:
+		base_type data_;
+	};
+
 
 #endif
 

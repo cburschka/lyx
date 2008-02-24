@@ -361,7 +361,7 @@ bool Inset::covers(BufferView const & bv, int x, int y) const
 
 InsetLayout const & Inset::getLayout(BufferParams const & bp) const
 {
-	return bp.textClass().insetLayout(name());  
+	return bp.getTextClass().insetLayout(name());  
 }
 
 

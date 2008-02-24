@@ -213,7 +213,7 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	TextClass const & tclass = buf.params().textClass();
+	TextClass const & tclass = buf.params().getTextClass();
 	Counters savecnt = tclass.counters();
 	InsetCollapsable::updateLabels(buf, it);
 	tclass.counters() = savecnt;

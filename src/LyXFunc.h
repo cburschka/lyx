@@ -17,6 +17,7 @@
 
 #include "KeySequence.h"
 #include "lfuns.h"
+#include "TextClassPtr.h"
 
 #include "support/docstring.h"
 
@@ -28,7 +29,6 @@ class FuncRequest;
 class FuncStatus;
 class KeySymbol;
 class Text;
-class TextClassIndex;
 
 namespace support {
 class FileName;
@@ -37,7 +37,6 @@ class FileName;
 namespace frontend {
 class LyXView;
 }
-
 
 /** This class encapsulates all the LyX command operations.
     This is the class of the LyX's "high level event handler".
@@ -137,7 +136,7 @@ private:
 	///
 	bool ensureBufferClean(BufferView * bv);
 	///
-	void updateLayout(TextClassIndex const & oldlayout, Buffer * buffer);
+	void updateLayout(TextClassPtr const & oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp

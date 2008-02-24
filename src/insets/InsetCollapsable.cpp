@@ -30,7 +30,6 @@
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "TextClass.h"
-#include "TextClassList.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -79,15 +78,15 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp,
-		CollapseStatus status, TextClassIndex tc)
-	: InsetText(bp), textClass_(tc), status_(status),
+		CollapseStatus status, TextClassPtr tc)
+	: InsetText(bp), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	setLayout(tc);
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(bp.textClass().emptyLayout());
+	paragraphs().back().setLayout(bp.getTextClass().emptyLayout());
 }
 
 
@@ -111,7 +110,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	Dimension dim = dimensionCollapsed();
 	if (geometry() == NoButton)
 		return layout_->labelstring();
-	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
+	else if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
 		return docstring();
 
 	switch (status_) {
@@ -126,15 +125,15 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	setLayout(bp.textClassIndex());
+	setLayout(bp.getTextClassPtr());
 }
 
 
-void InsetCollapsable::setLayout(TextClassIndex tcindex)
+void InsetCollapsable::setLayout(TextClassPtr tc)
 {
-	textClass_ = tcindex;
-	if (tcindex != TextClassIndex(-1)) {
-		layout_ = &textclasslist[tcindex].insetLayout(name());
+	textClass_ = tc;
+	if ( tc.get() != 0 ) {
+		layout_ = &tc->insetLayout(name());
 		labelstring_ = layout_->labelstring();
 	} else {
 		layout_ = &TextClass::emptyInsetLayout();
@@ -189,8 +188,7 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 			lex.pushToken(token);
 		}
 	}
-
-	// this must be set before we enter InsetText::read()
+	//this must be set before we enter InsetText::read()
 	setLayout(buf.params());
 
 	InsetText::read(buf, lex);
@@ -256,7 +254,8 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case LeftButton:
 	case ButtonOnly:
 		dim = dimensionCollapsed();
-		if (geometry() == TopButton || geometry() == LeftButton) {
+		if (geometry() == TopButton
+		 || geometry() == LeftButton) {
 			Dimension textdim;
 			InsetText::metrics(mi, textdim);
 			openinlined_ = (textdim.wid + dim.wid) < mi.base.textwidth;
@@ -750,10 +749,10 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TABULAR_INSERT:
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:
-		if (layout_->isPassThru()) {
-			flag.enabled(false);
-			return true;
-		}
+	if (layout_->isPassThru()) {
+		flag.enabled(false);
+		return true;
+	} else
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
@@ -797,7 +796,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 docstring InsetCollapsable::floatName(
 		string const & type, BufferParams const & bp) const
 {
-	FloatList const & floats = bp.textClass().floats();
+	FloatList const & floats = bp.getTextClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
 	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());

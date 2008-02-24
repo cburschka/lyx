@@ -96,7 +96,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		font = Font(inherit_font, bp.language);
 		change = Change(Change::UNCHANGED);
 
-		TextClass const & tclass = bp.textClass();
+		TextClass const & tclass = bp.getTextClass();
 
 		if (layoutname.empty())
 			layoutname = tclass.defaultLayoutName();
@@ -125,12 +125,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 					tclass.defaultLayoutName();
 		}
 
-		par.setLayout(bp.textClass()[layoutname]);
+		par.setLayout(bp.getTextClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
 		LayoutPtr const & layout = par.layout();
 		if (!layout->obsoleted_by().empty())
-			par.setLayout(bp.textClass()[layout->obsoleted_by()]);
+			par.setLayout(bp.getTextClass()[layout->obsoleted_by()]);
 
 		par.params().read(lex);
 
@@ -355,7 +355,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
 
-	TextClass const & tclass = cur.buffer().params().textClass();
+	TextClass const & tclass = cur.buffer().params().getTextClass();
 	LayoutPtr const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
@@ -928,9 +928,9 @@ bool Text::handleBibitems(Cursor & cur)
 
 	// otherwise reset to default
 	if (par.useEmptyLayout())
-		cur.paragraph().setLayout(bufparams.textClass().emptyLayout());
+		cur.paragraph().setLayout(bufparams.getTextClass().emptyLayout());
 	else
-		cur.paragraph().setLayout(bufparams.textClass().defaultLayout());
+		cur.paragraph().setLayout(bufparams.getTextClass().defaultLayout());
 	return true;
 }
 
@@ -991,7 +991,7 @@ bool Text::backspacePos0(Cursor & cur)
 	bool needsUpdate = false;
 
 	BufferParams const & bufparams = cur.buffer().params();
-	TextClass const & tclass = bufparams.textClass();
+	TextClass const & tclass = bufparams.getTextClass();
 	ParagraphList & plist = cur.text()->paragraphs();
 	Paragraph const & par = cur.paragraph();
 	Cursor prevcur = cur;
@@ -1116,7 +1116,7 @@ bool Text::dissolveInset(Cursor & cur) {
 		for (; it != it_end; it++)
 			it->changeLanguage(b.params(), latex_language, b.language());
 
-		pasteParagraphList(cur, plist, b.params().textClassIndex(),
+		pasteParagraphList(cur, plist, b.params().getTextClassPtr(),
 				   b.errorList("Paste"));
 		// restore position
 		cur.pit() = min(cur.lastpit(), spit);

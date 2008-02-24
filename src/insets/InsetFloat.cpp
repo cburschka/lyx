@@ -175,7 +175,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetFloat::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	Counters & cnts = buf.params().textClass().counters();
+	Counters & cnts = buf.params().getTextClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
@@ -283,7 +283,7 @@ docstring const InsetFloat::editMessage() const
 int InsetFloat::latex(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
-	FloatList const & floats = buf.params().textClass().floats();
+	FloatList const & floats = buf.params().getTextClass().floats();
 	string tmptype = params_.type;
 	if (params_.sideways)
 		tmptype = "sideways" + params_.type;

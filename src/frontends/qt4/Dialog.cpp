@@ -25,8 +25,6 @@
 #include <QSettings>
 #include <QString>
 
-#include <boost/assert.hpp>
-
 #include <string>
 
 using namespace std;

@@ -27,7 +27,7 @@ class InsetFlex : public InsetCollapsable {
 public:
 	///
 	InsetFlex(BufferParams const &,
-		  TextClassIndex tc, string const & layoutName);
+		  TextClassPtr tc, string const & layoutName);
 	///
 	docstring name() const { return from_utf8(name_); }
 

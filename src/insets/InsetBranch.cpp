@@ -225,7 +225,7 @@ void InsetBranch::updateLabels(Buffer const & buf, ParIterator const & it)
 	if (isBranchSelected(buf))
 		InsetCollapsable::updateLabels(buf, it);
 	else {
-		TextClass const & tclass = buf.params().textClass();
+		TextClass const & tclass = buf.params().getTextClass();
 		Counters savecnt = tclass.counters();
 		InsetCollapsable::updateLabels(buf, it);
 		tclass.counters() = savecnt;
