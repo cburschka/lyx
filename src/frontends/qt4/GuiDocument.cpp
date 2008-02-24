@@ -13,6 +13,7 @@
 
 #include "GuiDocument.h"
 
+#include "BaseClassList.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -37,7 +38,6 @@
 #include "PDFOptions.h"
 #include "qt_helpers.h"
 #include "Spacing.h"
-#include "TextClassList.h"
 #include "Validator.h"
 
 #include "insets/InsetListingsParams.h"
@@ -879,8 +879,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	//FIXME This seems too involved with the kernel. Some of this
 	//should be moved to the kernel---which should perhaps just
 	//give us a list of entries or something of the sort.
-	for (TextClassList::const_iterator cit = textclasslist.begin();
-	     cit != textclasslist.end(); ++cit) {
+	for (BaseClassList::const_iterator cit = baseclasslist.begin();
+	     cit != baseclasslist.end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
 			latexModule->classCO->addItem(toqstr(cit->description()));
 		} else {
@@ -2113,7 +2113,7 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 
 TextClass const & GuiDocument::textClass() const
 {
-	return textclasslist[bp_.baseClass()];
+	return baseclasslist[bp_.baseClass()];
 }
 
 

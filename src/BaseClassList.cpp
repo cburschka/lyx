@@ -1,5 +1,5 @@
 /**
- * \file TextClassList.cpp
+ * \file BaseClassList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "TextClassList.h"
+#include "BaseClassList.h"
 #include "TextClass.h"
 #include "Lexer.h"
 
@@ -35,7 +35,7 @@ using boost::smatch;
 
 // Gets textclass number from name
 pair<bool, BaseClassIndex> const
-TextClassList::numberOfClass(string const & textclass) const
+BaseClassList::numberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist_.begin(), classlist_.end(),
@@ -51,7 +51,7 @@ TextClassList::numberOfClass(string const & textclass) const
 
 // Gets a textclass structure from number
 TextClass const &
-TextClassList::operator[](BaseClassIndex textclass) const
+BaseClassList::operator[](BaseClassIndex textclass) const
 {
 	if (textclass >= classlist_.size())
 		return classlist_[0];
@@ -82,14 +82,14 @@ public:
 
 
 // Reads LyX textclass definitions according to textclass config file
-bool TextClassList::read()
+bool BaseClassList::read()
 {
 	Lexer lex(0, 0);
 	FileName const real_file = libFileSearch("", "textclass.lst");
 	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
 
 	if (real_file.empty()) {
-		lyxerr << "TextClassList::Read: unable to find "
+		lyxerr << "BaseClassList::Read: unable to find "
 			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'. Exiting." << endl;
@@ -102,13 +102,13 @@ bool TextClassList::read()
 	}
 
 	if (!lex.setFile(real_file)) {
-		lyxerr << "TextClassList::Read: "
+		lyxerr << "BaseClassList::Read: "
 			"lyxlex was not able to set file: "
 		       << real_file << endl;
 	}
 
 	if (!lex.isOK()) {
-		lyxerr << "TextClassList::Read: unable to open "
+		lyxerr << "BaseClassList::Read: unable to open "
 			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'\nCheck your installation. LyX can't continue."
@@ -157,7 +157,7 @@ bool TextClassList::read()
 	// in this case. This gives users a second chance to configure lyx if
 	// initial configuration fails. (c.f. bug 2829)
 	if (classlist_.empty())
-		lyxerr << "TextClassList::Read: no textclasses found!"
+		lyxerr << "BaseClassList::Read: no textclasses found!"
 		       << endl;
 	else 
 		// Ok everything loaded ok, now sort the list.
@@ -166,7 +166,7 @@ bool TextClassList::read()
 }
 
 
-void TextClassList::reset(BaseClassIndex const textclass) {
+void BaseClassList::reset(BaseClassIndex const textclass) {
 	if (textclass >= classlist_.size())
 		return;
 	TextClass const & tc = classlist_[textclass];
@@ -177,7 +177,7 @@ void TextClassList::reset(BaseClassIndex const textclass) {
 
 
 pair<bool, BaseClassIndex> const
-TextClassList::addTextClass(string const & textclass, string const & path)
+BaseClassList::addTextClass(string const & textclass, string const & path)
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
@@ -207,7 +207,7 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 				// Do not add this local TextClass to classlist_ if it has
 				// already been loaded by, for example, a master buffer.
 				pair<bool, lyx::BaseClassIndex> pp =
-					textclasslist.numberOfClass(textclass);
+					baseclasslist.numberOfClass(textclass);
 				// only layouts from the same directory are considered to be identical.
 				if (pp.first && classlist_[pp.second].description() == tmpl.description())
 					return pp;
@@ -226,16 +226,16 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 
 
 // Global variable: textclass table.
-TextClassList textclasslist;
+BaseClassList baseclasslist;
 
 
-BaseClassIndex defaultTextclass()
+BaseClassIndex defaultBaseclass()
 {
 	// We want to return the article class. if `first' is
 	// true in the returned pair, then `second' is the textclass
 	// number; if it is false, second is 0. In both cases, second
 	// is what we want.
-	return textclasslist.numberOfClass("article").second;
+	return baseclasslist.numberOfClass("article").second;
 }
 
 
@@ -245,7 +245,7 @@ bool LyXSetStyle()
 {
 	LYXERR(Debug::TCLASS, "LyXSetStyle: parsing configuration...");
 
-	if (!textclasslist.read()) {
+	if (!baseclasslist.read()) {
 		LYXERR(Debug::TCLASS, "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting.");
 		return false;

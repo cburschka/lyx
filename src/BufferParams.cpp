@@ -18,6 +18,7 @@
 #include "BufferParams.h"
 
 #include "Author.h"
+#include "BaseClassList.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Bullet.h"
@@ -29,7 +30,6 @@
 #include "Font.h"
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "TextClassList.h"
 #include "OutputParams.h"
 #include "Spacing.h"
 #include "TexRow.h"
@@ -314,7 +314,7 @@ void BufferParams::MemoryTraits::destroy(BufferParams::Impl * ptr)
 BufferParams::BufferParams()
 	: pimpl_(new Impl)
 {
-	setBaseClass(defaultTextclass());
+	setBaseClass(defaultBaseclass());
 	makeTextClass();
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
@@ -466,17 +466,17 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		pair<bool, lyx::BaseClassIndex> pp =
 			make_pair(false, BaseClassIndex(0));
 		if (!filepath.empty())
-			pp = textclasslist.addTextClass(
+			pp = baseclasslist.addTextClass(
 				classname, filepath.absFilename());
 		if (pp.first)
 			setBaseClass(pp.second);
 		else {
-			pp = textclasslist.numberOfClass(classname);
+			pp = baseclasslist.numberOfClass(classname);
 			if (pp.first)
 				setBaseClass(pp.second);
 			else {
 				// a warning will be given for unknown class
-				setBaseClass(defaultTextclass());
+				setBaseClass(defaultBaseclass());
 				return classname;
 			}
 		}
@@ -678,7 +678,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << textclasslist[pimpl_->baseClass_].name() << '\n';
+	os << "\\textclass " << baseclasslist[pimpl_->baseClass_].name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -1344,7 +1344,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
+	TextClass const & tclass = baseclasslist[pimpl_->baseClass_];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1360,7 +1360,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
+	TextClass const & tclass = baseclasslist[pimpl_->baseClass_];
 
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1389,14 +1389,14 @@ void BufferParams::setTextClass(TextClassPtr tc) {
 
 bool BufferParams::setBaseClass(BaseClassIndex tc)
 {
-	if (textclasslist[tc].load()) {
+	if (baseclasslist[tc].load()) {
 		pimpl_->baseClass_ = tc;
 		return true;
 	}
 	
 	docstring s = 
 		bformat(_("The document class %1$s could not be loaded."),
-		from_utf8(textclasslist[tc].name()));
+		from_utf8(baseclasslist[tc].name()));
 	frontend::Alert::error(_("Could not load class"), s);
 	return false;
 }
@@ -1410,7 +1410,7 @@ BaseClassIndex BufferParams::baseClass() const
 
 void BufferParams::makeTextClass()
 {
-	textClass_.reset(new TextClass(textclasslist[baseClass()]));
+	textClass_.reset(new TextClass(baseclasslist[baseClass()]));
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 

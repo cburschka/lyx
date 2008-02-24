@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "BaseClassList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
@@ -29,7 +30,6 @@
 #include "LayoutPtr.h"
 #include "LyX.h"
 #include "TextClass.h"
-#include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"

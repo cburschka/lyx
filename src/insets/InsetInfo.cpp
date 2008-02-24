@@ -27,7 +27,7 @@
 #include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
-#include "TextClassList.h"
+#include "BaseClassList.h"
 
 #include "frontends/Application.h"
 
@@ -202,7 +202,7 @@ void InsetInfo::updateInfo(Buffer const & buf)
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		pair<bool, lyx::BaseClassIndex> pp = textclasslist.numberOfClass(name_);
+		pair<bool, lyx::BaseClassIndex> pp = baseclasslist.numberOfClass(name_);
 		setText(pp.first ? _("yes") : _("no"),
 			bp.getFont(), false);
 		break;

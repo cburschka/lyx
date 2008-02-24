@@ -17,6 +17,7 @@
 
 #include "LyX.h"
 
+#include "BaseClassList.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
@@ -39,7 +40,6 @@
 #include "Server.h"
 #include "ServerSocket.h"
 #include "Session.h"
-#include "TextClassList.h"
 #include "ToolbarBackend.h"
 
 #include "frontends/alert.h"
@@ -582,7 +582,7 @@ void LyX::execBatchCommands()
 	// aknowledged.
 
 	// if reconfiguration is needed.
-	while (textclasslist.empty()) {
+	while (baseclasslist.empty()) {
 	    switch (Alert::prompt(
 		    _("No textclass is found"),
 		    _("LyX cannot continue because no textclass is found. "

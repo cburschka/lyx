@@ -21,6 +21,7 @@
 
 #include "LyXFunc.h"
 
+#include "BaseClassList.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -54,7 +55,6 @@
 #include "Row.h"
 #include "Server.h"
 #include "Session.h"
-#include "TextClassList.h"
 
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
@@ -715,7 +715,7 @@ void showPrintError(string const & name)
 void loadTextClass(string const & name, string const & buf_path)
 {
 	pair<bool, BaseClassIndex> const tc_pair =
-		textclasslist.numberOfClass(name);
+		baseclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
 		lyxerr << "Document class \"" << name
@@ -726,10 +726,10 @@ void loadTextClass(string const & name, string const & buf_path)
 
 	BaseClassIndex const tc = tc_pair.second;
 
-	if (!textclasslist[tc].load(buf_path)) {
+	if (!baseclasslist[tc].load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
 				   "could not be loaded."),
-				   from_utf8(textclasslist[tc].name()));
+				   from_utf8(baseclasslist[tc].name()));
 		Alert::error(_("Could not load class"), s);
 	}
 }
@@ -1608,7 +1608,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			loadTextClass(argument, buffer->filePath());
 
 			pair<bool, BaseClassIndex> const tc_pair =
-				textclasslist.numberOfClass(argument);
+				baseclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
@@ -1635,7 +1635,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * buffer = lyx_view_->buffer();
 			TextClassPtr oldClass = buffer->params().textClassPtr();
 			BaseClassIndex const tc = buffer->params().baseClass();
-			textclasslist.reset(tc);
+			baseclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
 			buffer->params().makeTextClass();
 			updateLayout(oldClass, buffer);

@@ -76,6 +76,7 @@ endif
 
 SOURCEFILESCORE = \
 	Author.cpp \
+	BaseClassList.cpp \
 	BiblioInfo.cpp \
 	Bidi.cpp \
 	boost.cpp \
@@ -156,7 +157,6 @@ SOURCEFILESCORE = \
 	Text2.cpp \
 	Text3.cpp \
 	TexStream.cpp \
-	TextClassList.cpp \
 	TextMetrics.cpp \
 	TocBackend.cpp \
 	ToolbarBackend.cpp \
@@ -170,6 +170,7 @@ SOURCEFILESCORE = \
 
 HEADERFILESCORE = \
 	Author.h \
+	BaseClassList.h \
 	BiblioInfo.h \
 	Bidi.h \
 	BranchList.h \
@@ -260,7 +261,6 @@ HEADERFILESCORE = \
 	TexStream.h \
 	Text.h \
 	TextClass.h \
-	TextClassList.h \
 	TextClassPtr.h \
 	TextMetrics.h \
 	TocBackend.h \

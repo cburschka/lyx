@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file TextClassList.h
+ * \file BaseClassList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef TEXTCLASSLIST_H
-#define TEXTCLASSLIST_H
+#ifndef BASECLASSLIST_H
+#define BASECLASSLIST_H
 
 #include "TextClass.h"
 
@@ -26,11 +26,25 @@ class Layout;
 /// Reads the style files
 extern bool LyXSetStyle();
 
-///
-class TextClassList {
+/// Index into BaseClassList. Basically a 'strong typedef'.
+class BaseClassIndex {
 public:
 	///
-	TextClassList() {}
+	typedef size_t   base_type;
+	///
+	BaseClassIndex(base_type t) { data_ = t; }
+	///
+	operator base_type() const { return data_; }
+	///
+private:
+	base_type data_;
+};
+
+/// A list of base document classes (*.layout files).
+class BaseClassList {
+public:
+	///
+	BaseClassList() {}
 	///
 	typedef std::vector<TextClass> ClassList;
 	///
@@ -62,18 +76,18 @@ public:
 
 private:
 	/// noncopyable
-	TextClassList(TextClassList const &);
+	BaseClassList(BaseClassList const &);
 	/// nonassignable
-	void operator=(TextClassList const &);
+	void operator=(BaseClassList const &);
 
 	///
 	mutable ClassList classlist_;
 };
 
 ///
-extern TextClassList textclasslist;
+extern BaseClassList baseclasslist;
 ///
-BaseClassIndex defaultTextclass();
+BaseClassIndex defaultBaseclass();
 
 
 } // namespace lyx

@@ -14,6 +14,7 @@
 
 #include "InsetInclude.h"
 
+#include "BaseClassList.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"

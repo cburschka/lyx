@@ -76,7 +76,7 @@ public:
 };
 
 
-//Much of this is borrowed from TextClassList::read()
+//Much of this is borrowed from BaseClassList::read()
 bool ModuleList::load()
 {
 	FileName const real_file = libFileSearch("", "lyxmodules.lst");

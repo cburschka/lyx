@@ -30,6 +30,7 @@ TOP_extra_files = Split('''
 src_header_files = Split('''
     ASpell_local.h
     Author.h
+    BaseClassList.h
     BiblioInfo.h
     Bidi.h
     Box.h
@@ -112,7 +113,6 @@ src_header_files = Split('''
     TexRow.h
     Text.h
     TextClass.h
-    TextClassList.h
     TextClassPtr.h
     TextMetrics.h
     Thesaurus.h
@@ -143,6 +143,7 @@ src_header_files = Split('''
 
 src_pre_files = Split('''
     Author.cpp
+    BaseClassList.cpp
     BiblioInfo.cpp
     Bidi.cpp
     BranchList.cpp
@@ -213,7 +214,6 @@ src_pre_files = Split('''
     Text2.cpp
     Text3.cpp
     TextClass.cpp
-    TextClassList.cpp
     TextMetrics.cpp
     TocBackend.cpp
     ToolbarBackend.cpp

@@ -33,6 +33,7 @@ class FileName;
 }
 
 class AuthorList;
+class BaseClassIndex;
 class BranchList;
 class Bullet;
 class Encoding;
@@ -42,7 +43,6 @@ class LatexFeatures;
 class PDFOptions;
 class Spacing;
 class TextClass;
-class BaseClassIndex;
 class TexRow;
 class VSpace;
 

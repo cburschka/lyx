@@ -15,6 +15,7 @@
 
 #include "CutAndPaste.h"
 
+#include "BaseClassList.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
@@ -30,7 +31,6 @@
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Text.h"
-#include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
