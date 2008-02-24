@@ -107,6 +107,7 @@ public:
 private:
 	/// noncopyable
 	GuiIdListModel(GuiIdListModel const &);
+	///
 	void operator=(GuiIdListModel const &);
 	///
 	struct OurData {
