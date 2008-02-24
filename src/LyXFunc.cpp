@@ -787,7 +787,7 @@ void showPrintError(string const & name)
 }
 
 
-void loadTextclass(string const & name)
+void loadTextclass(string const & name, string const & buf_path)
 {
 	std::pair<bool, textclass_type> const tc_pair =
 		textclasslist.numberOfClass(name);
@@ -801,7 +801,7 @@ void loadTextclass(string const & name)
 
 	textclass_type const tc = tc_pair.second;
 
-	if (!textclasslist[tc].load()) {
+	if (!textclasslist[tc].load(buf_path)) {
 		docstring s = bformat(_("The document could not be converted\n"
 						  "into the document class %1$s."),
 				   from_utf8(textclasslist[tc].name()));
@@ -1762,7 +1762,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			textclass_type const old_class =
 				buffer->params().textclass;
 
-			loadTextclass(argument);
+			loadTextclass(argument, buffer->filePath());
 
 			std::pair<bool, textclass_type> const tc_pair =
 				textclasslist.numberOfClass(argument);
@@ -1793,7 +1793,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_LOAD:
-			loadTextclass(argument);
+			loadTextclass(argument, lyx_view_->buffer()->filePath());
 			break;
 
 		case LFUN_LYXRC_APPLY: {
