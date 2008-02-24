@@ -2560,7 +2560,6 @@ lib_examples_fr_files = Split('''
     Minipage.lyx
     exemple_brut.lyx
     exemple_lyxifie.lyx
-    mathed.lyx
     multicol.lyx
     simplecv.lyx
     splash.lyx
