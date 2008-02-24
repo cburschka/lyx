@@ -29,7 +29,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
-#include "support/types.h"
 
 #include <boost/next_prior.hpp>
 

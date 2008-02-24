@@ -38,6 +38,21 @@ class FloatList;
 /// List of inset layouts
 typedef std::map<docstring, InsetLayout> InsetLayouts;
 
+/// Index into global list of base classes (i.e., *.layout).
+/// Basically a 'strong typedef'.
+class BaseClassIndex {
+public:
+	///
+	typedef size_t   base_type;
+	///
+	BaseClassIndex(base_type t) { data_ = t; }
+	///
+	operator base_type() const { return data_; }
+	///
+private:
+	base_type data_;
+};
+
 /// Stores the layout specification of a LyX document class.
 class TextClass {
 public:

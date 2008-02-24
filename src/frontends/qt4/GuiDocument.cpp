@@ -1212,7 +1212,7 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 void GuiDocument::classChanged()
 {
-	textclass_type const tc = latexModule->classCO->currentIndex();
+	BaseClassIndex const tc = latexModule->classCO->currentIndex();
 	bp_.setBaseClass(tc);
 	if (lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {

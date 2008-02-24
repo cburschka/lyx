@@ -21,8 +21,6 @@
 #include "GuiIdListModel.h"
 #include "GuiSelectionManager.h"
 
-#include "support/types.h"
-
 #include "ui_DocumentUi.h"
 #include "ui_EmbeddedFilesUi.h"
 #include "ui_FontUi.h"

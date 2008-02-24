@@ -16,7 +16,6 @@
 
 #include "TextClassPtr.h"
 
-#include "support/types.h"
 #include "support/docstring.h"
 
 #include "frontends/Clipboard.h"

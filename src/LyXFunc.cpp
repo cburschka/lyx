@@ -714,7 +714,7 @@ void showPrintError(string const & name)
 
 void loadTextClass(string const & name, string const & buf_path)
 {
-	pair<bool, textclass_type> const tc_pair =
+	pair<bool, BaseClassIndex> const tc_pair =
 		textclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
@@ -724,7 +724,7 @@ void loadTextClass(string const & name, string const & buf_path)
 		return;
 	}
 
-	textclass_type const tc = tc_pair.second;
+	BaseClassIndex const tc = tc_pair.second;
 
 	if (!textclasslist[tc].load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
@@ -1607,14 +1607,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			loadTextClass(argument, buffer->filePath());
 
-			pair<bool, textclass_type> const tc_pair =
+			pair<bool, BaseClassIndex> const tc_pair =
 				textclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
 
-			textclass_type const old_class = buffer->params().baseClass();
-			textclass_type const new_class = tc_pair.second;
+			BaseClassIndex const old_class = buffer->params().baseClass();
+			BaseClassIndex const new_class = tc_pair.second;
 
 			if (old_class == new_class)
 				// nothing to do
@@ -1634,7 +1634,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			TextClassPtr oldClass = buffer->params().textClassPtr();
-			textclass_type const tc = buffer->params().baseClass();
+			BaseClassIndex const tc = buffer->params().baseClass();
 			textclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
 			buffer->params().makeTextClass();

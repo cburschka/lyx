@@ -23,7 +23,6 @@
 #include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
-#include "support/types.h"
 
 #include <vector>
 
@@ -43,6 +42,7 @@ class LatexFeatures;
 class PDFOptions;
 class Spacing;
 class TextClass;
+class BaseClassIndex;
 class TexRow;
 class VSpace;
 
@@ -107,11 +107,11 @@ public:
 	///
 	std::string fontsize;
 	///Get the LyX TextClass (that is, the layout file) this document is using.
-	textclass_type baseClass() const;
+	BaseClassIndex baseClass() const;
 	/// Set the LyX TextClass (that is, the layout file) this document is using.
 	/// NOTE: This does not call makeTextClass() to update the local TextClass.
 	/// That needs to be done manually.
-	bool setBaseClass(textclass_type);
+	bool setBaseClass(BaseClassIndex);
 	/// Adds the module information to the baseClass information to
 	/// create our local TextClass.
 	void makeTextClass();
@@ -327,8 +327,6 @@ private:
 
 	/// for use with natbib
 	biblio::CiteEngine cite_engine_;
-	/// the base TextClass associated with the document
-	textclass_type baseClass_;
 	/// the possibly modular TextClass actually in use
 	TextClassPtr textClass_;
 	///

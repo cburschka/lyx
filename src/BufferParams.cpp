@@ -283,11 +283,12 @@ public:
 	 */
 	VSpace defskip;
 	PDFOptions pdfoptions;
+	BaseClassIndex baseClass_;
 };
 
 
 BufferParams::Impl::Impl()
-	: defskip(VSpace::MEDSKIP)
+	: defskip(VSpace::MEDSKIP), baseClass_(0)
 {
 	// set initial author
 	// FIXME UNICODE
@@ -462,8 +463,8 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
-		pair<bool, lyx::textclass_type> pp =
-			make_pair(false, textclass_type(0));
+		pair<bool, lyx::BaseClassIndex> pp =
+			make_pair(false, BaseClassIndex(0));
 		if (!filepath.empty())
 			pp = textclasslist.addTextClass(
 				classname, filepath.absFilename());
@@ -677,7 +678,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << textclasslist[baseClass_].name() << '\n';
+	os << "\\textclass " << textclasslist[pimpl_->baseClass_].name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -1343,7 +1344,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = textclasslist[baseClass_];
+	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1359,7 +1360,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = textclasslist[baseClass_];
+	TextClass const & tclass = textclasslist[pimpl_->baseClass_];
 
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1386,10 +1387,10 @@ void BufferParams::setTextClass(TextClassPtr tc) {
 }
 
 
-bool BufferParams::setBaseClass(textclass_type tc)
+bool BufferParams::setBaseClass(BaseClassIndex tc)
 {
 	if (textclasslist[tc].load()) {
-		baseClass_ = tc;
+		pimpl_->baseClass_ = tc;
 		return true;
 	}
 	
@@ -1401,9 +1402,9 @@ bool BufferParams::setBaseClass(textclass_type tc)
 }
 
 
-textclass_type BufferParams::baseClass() const
+BaseClassIndex BufferParams::baseClass() const
 {
-	return baseClass_;
+	return pimpl_->baseClass_;
 }
 
 

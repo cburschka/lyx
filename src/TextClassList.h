@@ -15,7 +15,6 @@
 #include "TextClass.h"
 
 #include "support/strfwd.h"
-#include "support/types.h"
 
 #include <vector>
 
@@ -44,26 +43,27 @@ public:
 	bool empty() const { return classlist_.empty(); }
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
-	std::pair<bool, textclass_type> const
-	numberOfClass(std::string const & textclass) const;
+	std::pair<bool, BaseClassIndex> const
+		numberOfClass(std::string const & textclass) const;
 
 	///
-	TextClass const & operator[](textclass_type textclass) const;
+	TextClass const & operator[](BaseClassIndex textclass) const;
 
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
 	
 	/// Clears the textclass so as to force it to be reloaded
-	void reset(textclass_type const textclass);
+	void reset(BaseClassIndex const textclass);
 
 	/// add a textclass from user local directory.
 	/// Return ture/false, and textclass number
-	std::pair<bool, textclass_type> const
-	addTextClass(std::string const & textclass, std::string const & path);
+	std::pair<bool, BaseClassIndex> const
+		addTextClass(std::string const & textclass, std::string const & path);
 
 private:
 	/// noncopyable
 	TextClassList(TextClassList const &);
+	/// nonassignable
 	void operator=(TextClassList const &);
 
 	///
@@ -73,7 +73,7 @@ private:
 ///
 extern TextClassList textclasslist;
 ///
-textclass_type defaultTextclass();
+BaseClassIndex defaultTextclass();
 
 
 } // namespace lyx
