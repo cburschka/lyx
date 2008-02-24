@@ -467,6 +467,21 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// known position around the cursor:
 	pos_type known_pos = boundary() ? pos() - 1 : pos();
 	
+	// edge case: if we're at the end of the paragraph, things are a little 
+	// different (because lastpos is a position which does not really "exist" 
+	// --- there's no character there yet).
+	if (known_pos == lastpos()) {
+		if (par.isRTL(buf.params())) {
+			left_pos = -1;
+			right_pos = bidi.vis2log(row.pos());
+		}
+		else { // LTR paragraph
+			right_pos = -1;
+			left_pos = bidi.vis2log(row.endpos() - 1);
+		}
+		return;
+	}
+	
 	// Whether 'known_pos' is to the left or to the right of the cursor depends
 	// on whether it is an RTL or LTR character...
 	bool const cur_is_RTL = 
@@ -481,14 +496,6 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// determine the other one:
 	
 	if (known_pos_on_right) {
-		// edge-case: we're at the end of the paragraph, there isn't really any
-		// position any further to the right 
-		if (known_pos == lastpos()) {
-			right_pos = -1;
-			left_pos = row.endpos() - 1;
-			return;
-		}
-		// the normal case
 		right_pos = known_pos;
 		// *visual* position of 'left_pos':
 		pos_type v_left_pos = bidi.log2vis(right_pos) - 1;
@@ -521,14 +528,6 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		}
 	} 
 	else { // known_pos is on the left
-		// edge-case: we're at the end of the paragraph, there isn't really any
-		// position any further to the left
-		if (known_pos == lastpos()) {
-			left_pos = -1;
-			right_pos = row.endpos() - 1;
-			return;
-		}
-		// the normal case
 		left_pos = known_pos;
 		// *visual* position of 'right_pos'
 		pos_type v_right_pos = bidi.log2vis(left_pos) + 1;

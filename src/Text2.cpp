@@ -711,10 +711,20 @@ bool Text::cursorVisLeft(Cursor & cur, bool skip_inset)
 		// position 'left_pos' + 1.
 		if (new_pos_is_RTL) {
 			new_pos = left_pos + 1;
-			// if the position *after* left_pos is not RTL, set boundary to 
-			// true (we want to be *after* left_pos, not before left_pos + 1!)
-			new_boundary = !cur.paragraph().getFontSettings(
-				cur.bv().buffer().params(), new_pos).isVisibleRightToLeft();
+			// set the boundary to true in two situations:
+			if (
+			// 1. if new_pos is now lastpos (which means that we're moving left
+			// to the end of an RTL chunk which is at the end of an LTR 
+			// paragraph);
+				new_pos == cur.lastpos()
+			// 2. if the position *after* left_pos is not RTL (we want to be 
+			// *after* left_pos, not before left_pos + 1!)
+				|| !cur.paragraph().getFontSettings(cur.bv().buffer().params(),
+						new_pos).isVisibleRightToLeft()
+			)
+				new_boundary = true;
+			else // set the boundary to false
+				new_boundary = false;
 		}
 		// Otherwise (if the character at position 'left_pos' is LTR), then
 		// moving to the left of it is as easy as setting the new position
@@ -791,10 +801,20 @@ bool Text::cursorVisRight(Cursor & cur, bool skip_inset)
 		// position 'right_pos' + 1.
 		if (!new_pos_is_RTL) {
 			new_pos = right_pos + 1;
-			// if the position *after* right_pos is RTL, set boundary to 
-			// true (we want to be *after* right_pos, not before right_pos + 1!)
-			new_boundary = cur.paragraph().getFontSettings(
-				cur.bv().buffer().params(), new_pos).isVisibleRightToLeft();
+			// set the boundary to true in two situations:
+			if (
+			// 1. if new_pos is now lastpos (which means that we're moving 
+			// right to the end of an LTR chunk which is at the end of an
+			// RTL paragraph);
+				new_pos == cur.lastpos()
+			// 2. if the position *after* right_pos is RTL (we want to be 
+			// *after* right_pos, not before right_pos + 1!)
+				|| cur.paragraph().getFontSettings(cur.bv().buffer().params(),
+						new_pos).isVisibleRightToLeft()
+			)
+				new_boundary = true;
+			else // set the boundary to false
+				new_boundary = false;
 		}
 		// Otherwise (if the character at position 'right_pos' is RTL), then
 		// moving to the right of it is as easy as setting the new position
