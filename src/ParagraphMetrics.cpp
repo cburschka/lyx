@@ -62,9 +62,9 @@ using namespace lyx::support;
 namespace lyx {
 
 
-ParagraphMetrics::ParagraphMetrics(Paragraph const & par): position_(-1), par_(&par)
-{
-}
+ParagraphMetrics::ParagraphMetrics(Paragraph const & par) :
+	position_(-1), par_(&par)
+{}
 
 
 ParagraphMetrics & ParagraphMetrics::operator=(

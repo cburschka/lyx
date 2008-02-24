@@ -1230,8 +1230,8 @@ void GuiDocument::classChanged()
 
 
 namespace {
-	//This is an insanely complicated attempt to make this sort of thing
-	//work with RTL languages.
+	// This is an insanely complicated attempt to make this sort of thing
+	// work with RTL languages.
 	docstring formatStrVec(vector<string> const & v, docstring const & s) 
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"

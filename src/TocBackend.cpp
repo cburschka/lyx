@@ -133,8 +133,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	}
 
 	int const toclevel = toc_item->par_it_->layout()->toclevel;
-	if (toclevel != Layout::NOT_IN_TOC
-	    && toclevel >= min_toclevel
+	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
 			tocstring = toc_item->par_it_->asString(*buffer_, true);
 

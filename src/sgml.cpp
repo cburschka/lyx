@@ -123,7 +123,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	// to disable this mangling.
 	TextClass const & tclass = buf.params().textClass();
 	docstring const allowed = from_ascii(
-		runparams.flavor == OutputParams::XML? ".-_:":tclass.options());
+		runparams.flavor == OutputParams::XML ? ".-_:" : tclass.options());
 
 	if (allowed.empty())
 		return orig;
@@ -139,7 +139,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 
 	MangledMap::const_iterator const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
-		return (*known).second;
+		return known->second;
 
 	// make sure it starts with a letter
 	if (!isAlphaASCII(*it) && allowed.find(*it) >= allowed.size())

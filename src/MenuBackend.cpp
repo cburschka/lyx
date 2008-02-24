@@ -598,8 +598,7 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	FloatList const & floats =
-		buf->params().textClass().floats();
+	FloatList const & floats = buf->params().textClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -620,8 +619,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	FloatList const & floats =
-		buf->params().textClass().floats();
+	FloatList const & floats = buf->params().textClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {

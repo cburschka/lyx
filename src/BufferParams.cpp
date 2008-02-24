@@ -1361,12 +1361,12 @@ bool BufferParams::hasClassDefaults() const
 {
 	TextClass const & tclass = textclasslist[baseClass_];
 
-	return (sides == tclass.sides()
+	return sides == tclass.sides()
 		&& columns == tclass.columns()
 		&& pagestyle == tclass.pagestyle()
 		&& options == tclass.options()
 		&& secnumdepth == tclass.secnumdepth()
-		&& tocdepth == tclass.tocdepth());
+		&& tocdepth == tclass.tocdepth();
 }
 
 
@@ -1448,13 +1448,15 @@ void BufferParams::makeTextClass()
 }
 
 
-vector<string> const & BufferParams::getModules() const {
+vector<string> const & BufferParams::getModules() const 
+{
 	return layoutModules_;
 }
 
 
 
-bool BufferParams::addLayoutModule(string const & modName) {
+bool BufferParams::addLayoutModule(string const & modName) 
+{
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();
 	for (; it != end; it++) {
@@ -1468,7 +1470,8 @@ bool BufferParams::addLayoutModule(string const & modName) {
 }
 
 
-void BufferParams::clearLayoutModules() {
+void BufferParams::clearLayoutModules() 
+{
 	layoutModules_.clear();
 }
 
@@ -1516,7 +1519,8 @@ void BufferParams::readLanguage(Lexer & lex)
 
 void BufferParams::readGraphicsDriver(Lexer & lex)
 {
-	if (!lex.next()) return;
+	if (!lex.next()) 
+		return;
 
 	string const tmptok = lex.getString();
 	// check if tmptok is part of tex_graphics in tex_defs.h
@@ -1540,7 +1544,8 @@ void BufferParams::readGraphicsDriver(Lexer & lex)
 
 void BufferParams::readBullets(Lexer & lex)
 {
-	if (!lex.next()) return;
+	if (!lex.next()) 
+		return;
 
 	int const index = lex.getInteger();
 	lex.next();
@@ -1559,7 +1564,8 @@ void BufferParams::readBullets(Lexer & lex)
 void BufferParams::readBulletsLaTeX(Lexer & lex)
 {
 	// The bullet class should be able to read this.
-	if (!lex.next()) return;
+	if (!lex.next()) 
+		return;
 	int const index = lex.getInteger();
 	lex.next(true);
 	docstring const temp_str = lex.getDocString();

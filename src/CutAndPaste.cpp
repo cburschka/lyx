@@ -702,8 +702,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 		PitPosPair ppp;
 
 		boost::tie(ppp, endpit) =
-			pasteSelectionHelper(cur, parlist,
-					     textclass, errorList);
+			pasteSelectionHelper(cur, parlist, textclass, errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
@@ -765,7 +764,7 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 }
 
 
-void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
+void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 			    Clipboard::GraphicsType preferedType)
 {
 	BOOST_ASSERT(theClipboard().hasGraphicsContents(preferedType));

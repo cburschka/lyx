@@ -109,8 +109,7 @@ TeXEnvironment(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 
 	LayoutPtr const & style = pit->forceEmptyLayout() ?
-			bparams.textClass().emptyLayout() :
-			pit->layout();
+			bparams.textClass().emptyLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
@@ -310,8 +309,7 @@ TeXOnePar(Buffer const & buf,
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
 	LayoutPtr const style = pit->forceEmptyLayout() ?
-		bparams.textClass().emptyLayout() :
-		pit->layout();
+		bparams.textClass().emptyLayout() : pit->layout();
 
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style->needprotect;

@@ -102,16 +102,17 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & defaultstyle =
-		buf.params().textClass().defaultLayout();
+	LayoutPtr const & defaultstyle = buf.params().textClass().defaultLayout();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
 		if (par->layout() == defaultstyle && par->emptyTag()) {
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, 
+					outerFont(distance(paragraphs.begin(), par), paragraphs));
 		} else {
 			sgml::openTag(buf, os, runparams, *par);
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, 
+					outerFont(distance(paragraphs.begin(), par), paragraphs));
 			sgml::closeTag(os, *par);
 		}
 	}

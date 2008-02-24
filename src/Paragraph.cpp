@@ -1817,11 +1817,10 @@ bool Paragraph::latex(Buffer const & buf,
 	// to be valid!
 	bool asdefault = forceEmptyLayout();
 
-	if (asdefault) {
+	if (asdefault)
 		style = bparams.textClass().defaultLayout();
-	} else {
+	 else
 		style = d->layout_;
-	}
 
 	// Current base font for all inherited font changes, without any
 	// change caused by an individual character, except for the language:

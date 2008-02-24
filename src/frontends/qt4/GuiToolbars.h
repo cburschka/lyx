@@ -93,4 +93,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // NOT GUI_TOOLBARS_H
+#endif // GUI_TOOLBARS_H
