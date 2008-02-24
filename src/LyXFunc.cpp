@@ -1613,7 +1613,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (!tc_pair.first)
 				break;
 
-			textclass_type const old_class = buffer->params().getBaseClass();
+			textclass_type const old_class = buffer->params().baseClass();
 			textclass_type const new_class = tc_pair.second;
 
 			if (old_class == new_class)
@@ -1634,7 +1634,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			TextClassPtr oldClass = buffer->params().textClassPtr();
-			textclass_type const tc = buffer->params().getBaseClass();
+			textclass_type const tc = buffer->params().baseClass();
 			textclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
 			buffer->params().makeTextClass();

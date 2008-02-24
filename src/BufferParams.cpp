@@ -1401,7 +1401,7 @@ bool BufferParams::setBaseClass(textclass_type tc)
 }
 
 
-textclass_type BufferParams::getBaseClass() const
+textclass_type BufferParams::baseClass() const
 {
 	return baseClass_;
 }
@@ -1409,7 +1409,7 @@ textclass_type BufferParams::getBaseClass() const
 
 void BufferParams::makeTextClass()
 {
-	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
+	textClass_.reset(new TextClass(textclasslist[baseClass()]));
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 

@@ -107,7 +107,7 @@ public:
 	///
 	std::string fontsize;
 	///Get the LyX TextClass (that is, the layout file) this document is using.
-	textclass_type getBaseClass() const;
+	textclass_type baseClass() const;
 	/// Set the LyX TextClass (that is, the layout file) this document is using.
 	/// NOTE: This does not call makeTextClass() to update the local TextClass.
 	/// That needs to be done manually.

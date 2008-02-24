@@ -1793,7 +1793,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	latexModule->classCO->setCurrentIndex(params.getBaseClass());
+	latexModule->classCO->setCurrentIndex(params.baseClass());
 	
 	updatePagestyle(textClass().opt_pagestyle(),
 				 params.pagestyle);
@@ -2113,7 +2113,7 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 
 TextClass const & GuiDocument::textClass() const
 {
-	return textclasslist[bp_.getBaseClass()];
+	return textclasslist[bp_.baseClass()];
 }
 
 
