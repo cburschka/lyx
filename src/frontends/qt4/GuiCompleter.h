@@ -31,6 +31,7 @@ class Buffer;
 namespace frontend {
 
 class GuiWorkArea;
+class RtlItemDelegate;
 
 class GuiCompleter : private QCompleter
 {
@@ -113,6 +114,8 @@ private:
 	/// operations like backspace. Hence, we have to keep this flag
 	/// in addition to know whether the popup is to be kept visible.
 	bool inlineVisible_;
+	///
+	RtlItemDelegate * rtlItemDelegate_;
 }; // GuiCompleter
 
 } // namespace frontend

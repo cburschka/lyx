@@ -170,7 +170,8 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	listView->setIndentation(0);
 	setPopup(listView);
 	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
-
+	rtlItemDelegate_ = new RtlItemDelegate(this);
+	
 	// create timeout timers
 	popup_timer_.setSingleShot(true);
 	inline_timer_.setSingleShot(true);
@@ -410,7 +411,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 
 	// turn the direction of the strings in the popup.
 	// Qt does not do that itself.
-	popup()->setItemDelegateForColumn(0, rtl ? new RtlItemDelegate : 0);
+	popup()->setItemDelegateForColumn(0, rtl ? rtlItemDelegate_ : 0);
 
 	// set new model
 	Inset::CompletionList const * list
