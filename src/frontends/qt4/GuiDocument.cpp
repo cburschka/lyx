@@ -1354,7 +1354,7 @@ void GuiDocument::updateEmbeddedFileList()
 
 void GuiDocument::updateNumbering()
 {
-	TextClass const & tclass = bp_.getTextClass();
+	TextClass const & tclass = bp_.textClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
@@ -1441,7 +1441,7 @@ void GuiDocument::apply(BufferParams & params)
 	params.language = lyx::languages.getLanguage(lang_[pos]);
 
 	// numbering
-	if (params.getTextClass().hasTocLevels()) {
+	if (params.textClass().hasTocLevels()) {
 		params.tocdepth = numberingModule->tocSL->value();
 		params.secnumdepth = numberingModule->depthSL->value();
 	}

@@ -59,7 +59,7 @@ docstring const InsetFoot::editMessage() const
 
 void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	TextClass const & tclass = buf.params().getTextClass();
+	TextClass const & tclass = buf.params().textClass();
 	Counters & cnts = tclass.counters();
 	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();

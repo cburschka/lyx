@@ -1187,19 +1187,19 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 bool Buffer::isLatex() const
 {
-	return params().getTextClass().outputType() == LATEX;
+	return params().textClass().outputType() == LATEX;
 }
 
 
 bool Buffer::isLiterate() const
 {
-	return params().getTextClass().outputType() == LITERATE;
+	return params().textClass().outputType() == LITERATE;
 }
 
 
 bool Buffer::isDocBook() const
 {
-	return params().getTextClass().outputType() == DOCBOOK;
+	return params().textClass().outputType() == DOCBOOK;
 }
 
 
@@ -1230,7 +1230,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	d->texrow.reset();
 
-	TextClass const & tclass = params().getTextClass();
+	TextClass const & tclass = params().textClass();
 	string const top_element = tclass.latexname();
 
 	if (!only_body) {
@@ -1285,7 +1285,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	    << " file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
-	params().getTextClass().counters().reset();
+	params().textClass().counters().reset();
 
 	loadChildDocuments();
 
@@ -2536,7 +2536,7 @@ vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
 vector<string> Buffer::backends() const
 {
 	vector<string> v;
-	if (params().getTextClass().isTeXClassAvailable()) {
+	if (params().textClass().isTeXClassAvailable()) {
 		v.push_back(bufferFormat());
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (v.back() == "latex")

@@ -220,7 +220,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
 		// reset first par to default
 		cur.text()->paragraphs().begin()
-			->setEmptyOrDefaultLayout(bparams.getTextClass());
+			->setEmptyOrDefaultLayout(bparams.textClass());
 		cur.pos() = 0;
 		cur.pit() = 0;
 		// Merge multiple paragraphs -- hack
@@ -229,8 +229,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	} else {
 		// reset surrounding par to default
 		docstring const layoutname = insetText->useEmptyLayout()
-			? bparams.getTextClass().emptyLayoutName()
-			: bparams.getTextClass().defaultLayoutName();
+			? bparams.textClass().emptyLayoutName()
+			: bparams.textClass().defaultLayoutName();
 		cur.leaveInset(*inset);
 		text->setLayout(cur, layoutname);
 	}
@@ -266,7 +266,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator end = pars.end();
 
-	TextClass const & tc = buf.params().getTextClass();
+	TextClass const & tc = buf.params().textClass();
 
 	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;
@@ -1011,7 +1011,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		Paragraph const & para = cur.paragraph();
 		docstring const old_layout = para.layout()->name();
-		TextClass const & tclass = bv->buffer().params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().textClass();
 
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
@@ -1384,7 +1384,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posForward();
 		ParagraphList & pars = cur.text()->paragraphs();
 
-		TextClass const & tclass = bv->buffer().params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().textClass();
 
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
@@ -1675,7 +1675,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FLOAT_LIST: {
-		TextClass const & tclass = bv->buffer().params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().textClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			cur.recordUndo();
 			if (cur.selection())
@@ -1946,7 +1946,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
 		string s = cmd.getArg(0);
-		InsetLayout il =  cur.buffer().params().getTextClass().insetLayout(from_utf8(s));
+		InsetLayout il =  cur.buffer().params().textClass().insetLayout(from_utf8(s));
 		if (il.lyxtype() != "charstyle" &&
 		    il.lyxtype() != "custom" &&
 		    il.lyxtype() != "element" &&

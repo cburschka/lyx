@@ -89,7 +89,7 @@ InsetBox::InsetBox(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp), params_(label)
 {
 	if (forceEmptyLayout())
-		paragraphs().back().setLayout(bp.getTextClass().emptyLayout());
+		paragraphs().back().setLayout(bp.textClass().emptyLayout());
 }
 
 

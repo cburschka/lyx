@@ -86,7 +86,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(bp.getTextClass().emptyLayout());
+	paragraphs().back().setLayout(bp.textClass().emptyLayout());
 }
 
 
@@ -125,7 +125,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	setLayout(bp.getTextClassPtr());
+	setLayout(bp.textClassPtr());
 }
 
 
@@ -796,7 +796,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 docstring InsetCollapsable::floatName(
 		string const & type, BufferParams const & bp) const
 {
-	FloatList const & floats = bp.getTextClass().floats();
+	FloatList const & floats = bp.textClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
 	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());

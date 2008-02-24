@@ -117,10 +117,10 @@ public:
 	void makeTextClass();
 	/// Returns the TextClass currently in use: the BaseClass as modified
 	/// by modules.
-	TextClass const & getTextClass() const;
+	TextClass const & textClass() const;
 	/// Returns a pointer to the TextClass currently in use: the BaseClass 
 	/// as modified by modules. (See \file TextClassPtr.h for the typedef.)
-	TextClassPtr getTextClassPtr() const;
+	TextClassPtr textClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().

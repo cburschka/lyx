@@ -107,7 +107,7 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetWrap::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	Counters & cnts = buf.params().getTextClass().counters();
+	Counters & cnts = buf.params().textClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is

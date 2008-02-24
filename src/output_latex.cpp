@@ -109,7 +109,7 @@ TeXEnvironment(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 
 	LayoutPtr const & style = pit->forceEmptyLayout() ?
-			bparams.getTextClass().emptyLayout() :
+			bparams.textClass().emptyLayout() :
 			pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -310,7 +310,7 @@ TeXOnePar(Buffer const & buf,
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
 	LayoutPtr const style = pit->forceEmptyLayout() ?
-		bparams.getTextClass().emptyLayout() :
+		bparams.textClass().emptyLayout() :
 		pit->layout();
 
 	OutputParams runparams = runparams_in;
@@ -479,7 +479,7 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	bool const useSetSpace = bparams.getTextClass().provides("SetSpace");
+	bool const useSetSpace = bparams.textClass().provides("SetSpace");
 	if (pit->allowParagraphCustomization()) {
 		if (pit->params().startOfAppendix()) {
 			os << "\\appendix\n";
@@ -745,7 +745,7 @@ void latexParagraphs(Buffer const & buf,
 	bool was_title = false;
 	bool already_title = false;
 	BufferParams const & bparams = buf.params();
-	TextClass const & tclass = bparams.getTextClass();
+	TextClass const & tclass = bparams.textClass();
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator endpar = paragraphs.end();

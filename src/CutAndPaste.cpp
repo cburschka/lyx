@@ -120,7 +120,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	TextClassPtr const tc = buffer.params().getTextClassPtr();
+	TextClassPtr const tc = buffer.params().textClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -148,7 +148,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// supposed to be the default, not just if it is forced
 	if (cur.inset().useEmptyLayout()) {
 		LayoutPtr const layout =
-			buffer.params().getTextClass().emptyLayout();
+			buffer.params().textClass().emptyLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();
 				par != end; ++par)
@@ -518,7 +518,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
-				bp.getTextClassPtr(), theCuts);
+				bp.textClassPtr(), theCuts);
 			// Stuff what we got on the clipboard.
 			// Even if there is no selection.
 			putClipboard(theCuts[0].first, theCuts[0].second,
@@ -602,7 +602,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
-			cur.buffer().params().getTextClassPtr(), cutstack);
+			cur.buffer().params().textClassPtr(), cutstack);
 		dirtyTabularStack(false);
 	}
 
@@ -611,10 +611,10 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.setLayout(bp.getTextClass().defaultLayout());
+		par.setLayout(bp.textClass().defaultLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		cutstack.push(make_pair(pars, bp.getTextClassPtr()));
+		cutstack.push(make_pair(pars, bp.textClassPtr()));
 	}
 }
 
@@ -638,10 +638,10 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.setLayout(bp.getTextClass().defaultLayout());
+		par.setLayout(bp.textClass().defaultLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		theCuts.push(make_pair(pars, bp.getTextClassPtr()));
+		theCuts.push(make_pair(pars, bp.textClassPtr()));
 	} else {
 		copySelectionToStack(cur, theCuts);
 	}
@@ -746,7 +746,7 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
-					buffer.params().getTextClassPtr(), errorList);
+					buffer.params().textClassPtr(), errorList);
 				cur.setSelection();
 				return;
 			}

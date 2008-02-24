@@ -482,7 +482,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// FIXME: this warning will be given even if there exists a local .cls
 		// file. Even worse, the .lyx file can not be compiled or exported
 		// because the textclass is marked as unavilable.
-		if (!getTextClass().isTeXClassAvailable()) {
+		if (!textClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 						 "%1$s.layout,\n"
@@ -819,7 +819,7 @@ void BufferParams::writeFile(ostream & os) const
 
 void BufferParams::validate(LaTeXFeatures & features) const
 {
-	features.require(getTextClass().requires());
+	features.require(textClass().requires());
 
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
@@ -861,7 +861,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	// AMS Style is at document level
 	if (use_amsmath == package_on
-	    || getTextClass().provides("amsmath"))
+	    || textClass().provides("amsmath"))
 		features.require("amsmath");
 	if (use_esint == package_on)
 		features.require("esint");
@@ -902,7 +902,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 {
 	os << "\\documentclass";
 
-	TextClass const & tclass = getTextClass();
+	TextClass const & tclass = textClass();
 
 	ostringstream clsoptions; // the document class options.
 
@@ -1243,7 +1243,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// hyperref, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 	if (language->lang() == "japanese-plain" &&
-		!getTextClass().provides("japanese")) {
+		!textClass().provides("japanese")) {
 		//load babel in case it was not loaded due to an empty language list
 		if (language_options.str().empty())
 			lyxpreamble += "\\usepackage{babel}\n";
@@ -1261,7 +1261,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// use hyperref explicitely when it is required
 	if (features.isRequired("hyperref")) {
 		odocstringstream oss;
-		pdfoptions().writeLaTeX(oss, getTextClass().provides("hyperref"));
+		pdfoptions().writeLaTeX(oss, textClass().provides("hyperref"));
 		lyxpreamble += oss.str();
 	}
 
@@ -1370,13 +1370,13 @@ bool BufferParams::hasClassDefaults() const
 }
 
 
-TextClass const & BufferParams::getTextClass() const
+TextClass const & BufferParams::textClass() const
 {
 	return *textClass_;
 }
 
 
-TextClassPtr BufferParams::getTextClassPtr() const {
+TextClassPtr BufferParams::textClassPtr() const {
 	return textClass_;
 }
 
@@ -1475,7 +1475,7 @@ void BufferParams::clearLayoutModules() {
 
 Font const BufferParams::getFont() const
 {
-	FontInfo f = getTextClass().defaultfont();
+	FontInfo f = textClass().defaultfont();
 	if (fontsDefaultFamily == "rmdefault")
 		f.setFamily(ROMAN_FAMILY);
 	else if (fontsDefaultFamily == "sfdefault")
@@ -1922,7 +1922,7 @@ biblio::CiteEngine BufferParams::getEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
-	if (getTextClass().provides("natbib")
+	if (textClass().provides("natbib")
 	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
 		return biblio::ENGINE_NATBIB_AUTHORYEAR;
 	return cite_engine_;

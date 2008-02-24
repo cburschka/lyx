@@ -242,7 +242,7 @@ void InsetInfo::updateInfo(Buffer const & buf)
 		else if (name_ == "path")
 			setText(from_utf8(buf.filePath()), bp.getFont(), false);
 		else if (name_ == "class")
-			setText(from_utf8(bp.getTextClass().name()), bp.getFont(), false);
+			setText(from_utf8(bp.textClass().name()), bp.getFont(), false);
 		else
 			setText(_("Unknown buffer info"), bp.getFont(), false);
 		break;
