@@ -274,8 +274,7 @@ void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
 	//below but to compare translated strings to figure out which layout the
 	//user wants. This is not ideal. A better way is the way module names are 
 	//handled in GuiDocument: viz, the untranslated name can be associated 
-	//with the item via QComboBox::setItemData(). It may be that this can
-	//even be done by passing: addItem(item, untransName).
+	//with the item by using GuiIdListModel.
 	int const end = count();
 	if (!sorted || end < 2 || item[0].category() != QChar::Letter_Uppercase) {
 		addItem(item);
