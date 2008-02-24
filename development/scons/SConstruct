@@ -1622,7 +1622,7 @@ Alias('client', client)
 #
 # tex2lyx
 #
-for file in src_tex2lyx_copied_files:
+for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
     frontend_env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
         [Copy('$TARGET', '$SOURCE')])
 

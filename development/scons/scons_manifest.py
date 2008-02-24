@@ -621,6 +621,11 @@ src_tex2lyx_files = Split('''
 ''')
 
 
+src_tex2lyx_copied_header_files = Split('''
+    insets/InsetLayout.h
+''')
+
+
 src_tex2lyx_copied_files = Split('''
     Color.cpp
     Counters.cpp
