@@ -38,7 +38,7 @@ class FloatList;
 /// List of inset layouts
 typedef std::map<docstring, InsetLayout> InsetLayouts;
 
-/// Index in globel text class list. Basically a 'strong typedef'/
+/// Index in globel text class list. Basically a 'strong typedef'.
 class TextClassIndex
 {
 public:
