@@ -122,7 +122,6 @@ dist_frexamples_DATA = \
 	examples/fr/Minipage.lyx \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
-	examples/fr/mathed.lyx \
 	examples/fr/multicol.lyx \
 	examples/fr/splash.lyx
 
