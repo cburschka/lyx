@@ -628,6 +628,7 @@ src_tex2lyx_copied_files = Split('''
     Layout.cpp
     Lexer.cpp
     TextClass.cpp
+    insets/InsetLayout.cpp
 ''')
 
 
