@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -8375,17 +8375,17 @@ msgstr "창 닫기(Close Window)|d"
 msgid "Redo|R"
 msgstr "재실행(Redo)|d"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "자르기"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "복사하기"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "붙이기"
@@ -12819,7 +12819,7 @@ msgstr "되돌리기(Revert)|R"
 msgid "Exiting."
 msgstr "나가기"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr ""
 
@@ -13550,24 +13550,24 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "수식 편집 모드(Math editor mode)"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "모르는 인용구(Inset)"
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 msgid "Layout "
 msgstr "모양새(Layout)"
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr ""
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "문자 세트(Character set)"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 msgid "Paragraph layout set"
 msgstr "단락 모양새(Paragraph layout)"
 
@@ -15248,11 +15248,6 @@ msgstr ""
 msgid "Opened CharStyle Inset"
 msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
 
-#: src/insets/InsetCharStyle.cpp:223
-#, fuzzy
-msgid "CharStyle: "
-msgstr "변경된 모양새(Changed Layout)"
-
 #: src/insets/InsetCommand.cpp:99
 #, fuzzy
 msgid "LaTeX Command: "
@@ -16026,6 +16021,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "모르는 사용자(user)"
+
+#, fuzzy
+#~ msgid "CharStyle: "
+#~ msgstr "변경된 모양새(Changed Layout)"
 
 #~ msgid "Outer"
 #~ msgstr "바깥쪽(Outer)"

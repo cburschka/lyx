@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2007-12-03 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -8335,17 +8335,17 @@ msgstr "Zavøít okno|a"
 msgid "Redo|R"
 msgstr "Znovu zmìnu|n"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Zkopírovat"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Vlo¾it"
@@ -12745,7 +12745,7 @@ msgstr "&Pùvodní verze"
 msgid "Exiting."
 msgstr "Ukonèování."
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr "Chybí argument"
 
@@ -13558,23 +13558,23 @@ msgstr "Nelze indexovat víc ne¾ jeden odstavec !"
 msgid "Math editor mode"
 msgstr "Mód matematického editoru"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 msgid "Unknown spacing argument: "
 msgstr "Neznámý argument mezery: "
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 msgid "Layout "
 msgstr "Rozvr¾ení "
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr " neznámý"
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
@@ -15247,10 +15247,6 @@ msgstr "Nesmyslné! "
 msgid "Opened CharStyle Inset"
 msgstr "Styl znaku - otevøená vlo¾ka"
 
-#: src/insets/InsetCharStyle.cpp:223
-msgid "CharStyle: "
-msgstr "Styl znaku: "
-
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
 msgstr "Pøíkaz LaTeX-u: "
@@ -16025,6 +16021,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "CharStyle: "
+#~ msgstr "Styl znaku: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Standardní (vnìj¹í)"

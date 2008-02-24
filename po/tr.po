@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -8661,17 +8661,17 @@ msgstr "Pencereyi Kapat|P"
 msgid "Redo|R"
 msgstr "Ýleri al|Ý"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Kes"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopyala"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Yapýþtýr"
@@ -13310,7 +13310,7 @@ msgstr "&Geri dön"
 msgid "Exiting."
 msgstr "Çýk|Ç"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
@@ -14056,25 +14056,25 @@ msgstr "Birden fazla paragraf indekslenemez!"
 msgid "Math editor mode"
 msgstr "Matematik Ayraç"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 #, fuzzy
 msgid "Layout "
 msgstr "Yerleþim|Y"
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr " bilinmiyor"
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "Karakter seti"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf ayarlarý"
@@ -15762,11 +15762,6 @@ msgstr ""
 msgid "Opened CharStyle Inset"
 msgstr "Derinliði Azalt|z"
 
-#: src/insets/InsetCharStyle.cpp:223
-#, fuzzy
-msgid "CharStyle: "
-msgstr "Sayfa: "
-
 #: src/insets/InsetCommand.cpp:99
 #, fuzzy
 msgid "LaTeX Command: "
@@ -16559,6 +16554,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanýcý"
+
+#, fuzzy
+#~ msgid "CharStyle: "
+#~ msgstr "Sayfa: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Öntanýmlý (dýþ)"

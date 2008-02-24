@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -8519,17 +8519,17 @@ msgstr "Itxi leihoa|x"
 msgid "Redo|R"
 msgstr "Berregin|B"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Ebaki"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Itsatsi"
@@ -13241,7 +13241,7 @@ msgstr "&Berreskuratu"
 msgid "Exiting."
 msgstr "Irtetzen"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
@@ -14077,23 +14077,23 @@ msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 msgid "Math editor mode"
 msgstr "Mat. editore-modua"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 msgid "Unknown spacing argument: "
 msgstr "Tartekatze-argumentu ezezaguna: "
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "Karaktere-mota"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa"
 
@@ -15761,11 +15761,6 @@ msgstr "Zentzugabea."
 msgid "Opened CharStyle Inset"
 msgstr "KarakEstiloa barnekoa irekita"
 
-#: src/insets/InsetCharStyle.cpp:223
-#, fuzzy
-msgid "CharStyle: "
-msgstr "Aldaketa: "
-
 #: src/insets/InsetCommand.cpp:99
 #, fuzzy
 msgid "LaTeX Command: "
@@ -16543,6 +16538,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#, fuzzy
+#~ msgid "CharStyle: "
+#~ msgstr "Aldaketa: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Lehenetsia (kanpokoa)"

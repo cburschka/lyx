@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -8341,17 +8341,17 @@ msgstr "关闭窗口(d)|d"
 msgid "Redo|R"
 msgstr "重作(R)|R"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "剪切"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "复制"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "粘贴"
@@ -12764,7 +12764,7 @@ msgstr "还原(&R)"
 msgid "Exiting."
 msgstr "退出."
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr "缺失参数"
 
@@ -13570,23 +13570,23 @@ msgstr "无法索引多于一段落"
 msgid "Math editor mode"
 msgstr "Math editor mode"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 msgid "Unknown spacing argument: "
 msgstr "未知间隔参数: "
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 msgid "Layout "
 msgstr "显示布局 "
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -15249,11 +15249,6 @@ msgstr "无意义!!!"
 msgid "Opened CharStyle Inset"
 msgstr "打开的字符样式项"
 
-#: src/insets/InsetCharStyle.cpp:223
-#, fuzzy
-msgid "CharStyle: "
-msgstr "改变: "
-
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
 msgstr "LaTeX命令: "
@@ -16020,6 +16015,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知用户"
+
+#, fuzzy
+#~ msgid "CharStyle: "
+#~ msgstr "改变: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "缺省(外部)"

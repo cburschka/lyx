@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-15 13:25+0100\n"
+"POT-Creation-Date: 2008-02-24 11:51+0100\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -8566,17 +8566,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Ponów|P"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:850
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Wytnij"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:855
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:832
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Wklej"
@@ -13295,7 +13295,7 @@ msgstr "&Przywróæ"
 msgid "Exiting."
 msgstr "Zakoñcz|k"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1353
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -14098,24 +14098,24 @@ msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 msgid "Math editor mode"
 msgstr "Tryb edytora matematycznego"
 
-#: src/Text3.cpp:735
+#: src/Text3.cpp:745
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Nieznana wstawka"
 
-#: src/Text3.cpp:909
+#: src/Text3.cpp:919
 msgid "Layout "
 msgstr "Ustawienia "
 
-#: src/Text3.cpp:910
+#: src/Text3.cpp:920
 msgid " not known"
 msgstr " nieznane"
 
-#: src/Text3.cpp:1460 src/Text3.cpp:1472
+#: src/Text3.cpp:1470 src/Text3.cpp:1482
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/Text3.cpp:1589 src/Text3.cpp:1600
+#: src/Text3.cpp:1599 src/Text3.cpp:1610
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -15806,11 +15806,6 @@ msgstr "Bez sensu!"
 msgid "Opened CharStyle Inset"
 msgstr "Otwarta wstawka notki"
 
-#: src/insets/InsetCharStyle.cpp:223
-#, fuzzy
-msgid "CharStyle: "
-msgstr "Zmiana: "
-
 #: src/insets/InsetCommand.cpp:99
 #, fuzzy
 msgid "LaTeX Command: "
@@ -16601,6 +16596,10 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Nieznany u¿ytkownik"
+
+#, fuzzy
+#~ msgid "CharStyle: "
+#~ msgstr "Zmiana: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Domy¶lne (zewnêtrzne)"
