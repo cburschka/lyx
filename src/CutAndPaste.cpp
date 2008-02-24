@@ -392,8 +392,8 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
-void switchBetweenClasses(TextClassPtr const & oldone, 
-	TextClassPtr const & newone, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(TextClassPtr oldone, TextClassPtr newone, 
+		InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 
