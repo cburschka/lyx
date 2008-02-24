@@ -58,8 +58,6 @@ protected:
 	}
 };
 
-RtlItemDelegate rtlItemDelegate;
-
 
 class PixmapItemDelegate : public QItemDelegate {
 public:
@@ -412,7 +410,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 
 	// turn the direction of the strings in the popup.
 	// Qt does not do that itself.
-	popup()->setItemDelegateForColumn(0, rtl ? &rtlItemDelegate : 0);
+	popup()->setItemDelegateForColumn(0, rtl ? new RtlItemDelegate : 0);
 
 	// set new model
 	Inset::CompletionList const * list
