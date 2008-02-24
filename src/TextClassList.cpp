@@ -151,6 +151,8 @@ bool TextClassList::read()
 						// fname, clname, desc, and avail
 						TextClass tmpl(fname, clname, desc, avail);
 						if (lyxerr.debugging(Debug::TCLASS)) {
+							// only system layout files are loaded here so no
+							// buffer path is needed.
 							tmpl.load();
 						}
 						classlist_.push_back(tmpl);
@@ -221,6 +223,10 @@ TextClassList::addTextClass(string const & textclass, string const & path)
 				if (pp.first && classlist_[pp.second].description() == tmpl.description())
 					return pp;
 				classlist_.push_back(tmpl);
+				// This textclass is added on request so it will definitely be
+				// used. Load it now because other load() calls may fail if they
+				// are called in a context without buffer path information.
+				classlist_.back().load(path);
 				return make_pair(true, classlist_.size() - 1);
 			}
 		}

@@ -712,7 +712,7 @@ void showPrintError(string const & name)
 }
 
 
-void loadTextClass(string const & name)
+void loadTextClass(string const & name, string const & buf_path)
 {
 	pair<bool, TextClassIndex> const tc_pair =
 		textclasslist.numberOfClass(name);
@@ -726,7 +726,7 @@ void loadTextClass(string const & name)
 
 	TextClassIndex const tc = tc_pair.second;
 
-	if (!textclasslist[tc].load()) {
+	if (!textclasslist[tc].load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
 				   "could not be loaded."),
 				   from_utf8(textclasslist[tc].name()));
@@ -1605,7 +1605,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			loadTextClass(argument);
+			loadTextClass(argument, buffer->filePath());
 
 			pair<bool, TextClassIndex> const tc_pair =
 				textclasslist.numberOfClass(argument);
@@ -1644,7 +1644,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_LOAD:
-			loadTextClass(argument);
+			loadTextClass(argument, lyx_view_->buffer()->filePath());
 			break;
 
 		case LFUN_LYXRC_APPLY: {

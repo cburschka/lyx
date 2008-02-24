@@ -1010,6 +1010,8 @@ string const & TextClass::name() const
 
 string const & TextClass::latexname() const
 {
+	// No buffer path information is needed here because on-demand layout files
+	// have already been loaded, and no path is needed for system layouts.
 	const_cast<TextClass*>(this)->load();
 	return latexname_;
 }
