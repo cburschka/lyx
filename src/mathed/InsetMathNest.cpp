@@ -1805,7 +1805,7 @@ size_type MathCompletionList::size() const
 }
 
 
-docstring MathCompletionList::data(size_t idx) const
+docstring const & MathCompletionList::data(size_t idx) const
 {
 	size_t lsize = locals.size();
 	if (idx >= lsize)
