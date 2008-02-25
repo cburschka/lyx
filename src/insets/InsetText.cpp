@@ -89,7 +89,9 @@ public:
 	}
 
 private:
+	///
 	Buffer const & buf_;
+	///
 	size_t pos_;
 };
 
