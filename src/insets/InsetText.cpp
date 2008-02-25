@@ -66,7 +66,8 @@ namespace lyx {
 using graphics::PreviewLoader;
 
 
-class TextCompletionList : public Inset::CompletionList {
+class TextCompletionList : public Inset::CompletionList
+{
 public:
 	///
 	TextCompletionList(Cursor const & cur)
@@ -77,11 +78,13 @@ public:
 	///
 	virtual bool sorted() const { return true; }
 	///
-	virtual size_t size() const {
+	virtual size_t size() const
+	{
 		return buf_.registeredWords().size();
 	}
 	///
-	virtual docstring data(size_t idx) const {
+	virtual docstring data(size_t idx) const
+	{
 		return buf_.registeredWords().word(idx);
 	}
 
@@ -499,8 +502,8 @@ bool InsetText::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const 
-* InsetText::createCompletionList(Cursor const & cur) const
+Inset::CompletionList const * InsetText::createCompletionList(
+	Cursor const & cur) const
 {
 	if (!completionSupported(cur))
 		return 0;
@@ -509,7 +512,8 @@ Inset::CompletionList const
 }
 
 
-docstring InsetText::previousWord(Buffer const & buffer, CursorSlice const & sl) const
+docstring InsetText::previousWord(Buffer const & buffer,
+	CursorSlice const & sl) const
 {
 	CursorSlice from = sl;
 	CursorSlice to = sl;
@@ -532,7 +536,7 @@ docstring InsetText::completionPrefix(Cursor const & cur) const
 
 
 bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
-				     bool /*finished*/)
+	bool /*finished*/)
 {
 	if (!completionSupported(cur))
 		return false;
@@ -545,7 +549,7 @@ bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
 
 
 void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y, 
-					Dimension & dim) const
+	Dimension & dim) const
 {
 	Cursor const & bvcur = cur.bv().cursor();
 	
