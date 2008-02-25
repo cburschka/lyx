@@ -53,8 +53,8 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("label", true);
-		param_info_.add("key", false);
+		param_info_.add("label", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }

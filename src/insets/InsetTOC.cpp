@@ -36,7 +36,7 @@ ParamInfo const & InsetTOC::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("type", false);
+		param_info_.add("type", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }

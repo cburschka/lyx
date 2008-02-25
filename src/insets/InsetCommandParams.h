@@ -29,17 +29,50 @@ class Lexer;
 
 class ParamInfo {
 public:
+	/// Types of parameters
+	/// WARNING: LATEX_KV_* `parameters' aren't really parameters at all
+	/// but merely markers for where the keyval-type parameters should
+	/// appear in the LaTeX output. ParamInfo::hasParam(name) therefore 
+	/// returns FALSE if the corresponding `parameter' is of type
+	/// LATEX_KV_*.
+	/// It is assumed here that there is exactly one argument that accepts
+	/// the key=value pairs.
+	enum ParamType {
+		LATEX_OPTIONAL,    /// normal optional argument
+		LATEX_REQUIRED,    /// normal required argument
+		LATEX_KV_OPTIONAL, /// optional argument that uses keyval
+		LATEX_KV_REQUIRED, /// required argument that uses keyval
+		LATEX_KEY,         /// a key to be used with keyval argument
+		LYX_INTERNAL       /// a parameter used internally by LyX
+	};
 	///
 	class ParamData {
 	// No parameter may be named "preview", because that is a required
 	// flag for all commands.
 	public:
 		///
-		ParamData(std::string const &, bool);
+		ParamData(std::string const &, ParamType);
 		///
 		std::string name() const { return name_; }
 		///
-		bool isOptional() const { return optional_; }
+		ParamType type() const { return type_; }
+		/// whether this is a key for use with keyval
+		bool isKey() const
+			{ return type_ == LATEX_KEY; }
+		/// whether this is an optional LaTeX argument
+		inline bool isOptional() const;
+		/// whether this is a keyval argument
+		inline bool isKeyValArg() const;
+#if 0
+		//presently unused but perhaps useful at some point
+		/// whether this is a required LaTeX argument
+		bool isRequired() const
+			{ return type_ == ParamInfo::LATEX_REQUIRED ||
+					type_ == ParamInfo::LATEX_KV_REQUIRED; }
+		/// whether this is a LaTeX argument
+		inline bool isLaTeXArgument() const
+			{ return isOptional() || isRequired(); }
+#endif
 		///
 		bool operator==(ParamData const &) const;
 		/// 
@@ -49,11 +82,11 @@ public:
 		///
 		std::string name_;
 		///
-		bool optional_;
+		ParamType type_;
 	};
 
 	/// adds a new parameter
-	void add(std::string const & name, bool optional);
+	void add(std::string const & name, ParamType type);
 	///
 	bool empty() const { return info_.empty(); }
 	///
@@ -61,11 +94,16 @@ public:
 	///
 	typedef std::vector<ParamData>::const_iterator const_iterator;
 	///
-	const_iterator begin() const { return info_.begin(); }
+	const_iterator const begin() const { return info_.begin(); }
 	///
-	const_iterator end() const { return info_.end(); }
-	///
+	const_iterator const end() const { return info_.end(); }
+	/// \return true if name corresponds to a parameter of some sort.
+	/// \return false if the parameter does not exist at all of it it 
+	/// corresponds to a `parameter' of type LATEX_KV_*; these do not 
+	/// really represent parameters but just argument places.
 	bool hasParam(std::string const & name) const;
+	///
+	ParamData const & operator[](std::string const & name) const;
 	///
 	bool operator==(ParamInfo const &) const;
 private:
@@ -103,8 +141,12 @@ public:
 	/// ways that make removal hard.
 	docstring const getFirstNonOptParam() const;
 	/// get parameter \p name
+	/// WARNING: You cannot access LATEX_KV_* arguments in this way.
+	/// LyX will assert if you attempt to do so.
 	docstring const & operator[](std::string const & name) const;
 	/// set parameter \p name
+	/// WARNING: You cannot access LATEX_KV_* arguments in this way.
+	/// LyX will assert if you attempt to do so.
 	docstring & operator[](std::string const & name);
 	///
 	bool preview() const { return preview_; }
@@ -128,6 +170,11 @@ private:
 	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 	///
 	std::string getDefaultCmd(InsetCode);
+	///
+	docstring makeKeyValArgument() const;
+	/// checks whether we need to write an empty optional parameter
+	/// \return true if a non-empty optional parameter follows ci
+	bool writeEmptyOptional(ParamInfo::const_iterator ci) const;
 	/// Description of all command properties
 	ParamInfo info_;
 	/// what kind of inset we're the parameters for
@@ -135,6 +182,9 @@ private:
 	/// The name of this command as it appears in .lyx and .tex files
 	std::string cmdName_;
 	///
+	// if we need to allow more than one value for a parameter, this
+	// could be made a multimap. it may be that the only thing that
+	// would then need changing is operator[].
 	typedef std::map<std::string, docstring> ParamMap;
 	/// The parameters, by name.
 	ParamMap params_;

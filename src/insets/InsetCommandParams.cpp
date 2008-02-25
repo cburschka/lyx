@@ -30,10 +30,10 @@
 #include "Lexer.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/docstream.h"
 
 #include <boost/assert.hpp>
 
@@ -42,55 +42,68 @@ using namespace lyx::support;
 
 namespace lyx {
 
-ParamInfo::ParamData::ParamData(std::string const & s, bool b) :
-	name_(s), optional_(b)
+ParamInfo::ParamData::ParamData(std::string const & s, ParamType t) :
+	name_(s), type_(t)
 {}
+
+
+bool ParamInfo::ParamData::isOptional() const
+{
+	return type_ == ParamInfo::LATEX_OPTIONAL ||
+	       type_ == ParamInfo::LATEX_KV_OPTIONAL;
+}
+
+
+bool ParamInfo::ParamData::isKeyValArg() const
+{
+	return type_ == ParamInfo::LATEX_KV_REQUIRED 
+		|| type_ == ParamInfo::LATEX_KV_OPTIONAL;
+}
 
 
 bool ParamInfo::ParamData::operator==(ParamInfo::ParamData const & rhs) const
 {
-	return name() == rhs.name() && isOptional() == rhs.isOptional();
+	return name() == rhs.name() && type() == rhs.type();
 }
 
 
 bool ParamInfo::hasParam(std::string const & name) const
 {
 	const_iterator it = begin();
-	for (; it != end(); ++it) {
+	const_iterator last = end();
+	for (; it != last; ++it) {
 		if (it->name() == name)
-			return true;
+			return !it->isKeyValArg();
 	}
 	return false;
 }
 
 
-void ParamInfo::add(std::string const & name, bool opt)
+void ParamInfo::add(std::string const & name, ParamType type)
 { 
-	info_.push_back(ParamData(name, opt)); 
+	info_.push_back(ParamData(name, type)); 
 }
 
 
 bool ParamInfo::operator==(ParamInfo const & rhs) const
 {
-	// the idea here is to check each ParamData for equality
-	const_iterator itL  = begin();
-	const_iterator itR  = rhs.begin();
-	const_iterator endL = end();
-	const_iterator endR = rhs.end();
-	while (true) {
-		// if they both end together, return true
-		if (itL == endL && itR == endR)
-				return true;
-		// but if one ends before the other, return false
-		if (itL == endL || itR == endR)
-			return false;
-		//check this one for equality
-		if (*itL != *itR)
-			return false;
-		// equal, so check the next one
-		++itL;
-		++itR;
+	if (size() != rhs.size())
+		return false;
+	return equal(begin(), end(), rhs.begin());
+}
+
+
+ParamInfo::ParamData const & 
+	ParamInfo::operator[](std::string const & name) const
+{
+	BOOST_ASSERT(hasParam(name));
+	const_iterator it = begin();
+	const_iterator last = end();
+	for (; it != last; ++it) {
+		if (it->name() == name)
+			return *it;
 	}
+	return *it; // silence warning
 }
 
 
@@ -318,6 +331,65 @@ void InsetCommandParams::write(ostream & os) const
 }
 
 
+docstring InsetCommandParams::makeKeyValArgument() const
+{
+	odocstringstream os;
+	bool didone = false;
+	ParamInfo::const_iterator it  = info_.begin();
+	ParamInfo::const_iterator end = info_.end();
+	for (; it != end; ++it) {
+		if (!it->isKey())
+			continue;
+		string const & name = it->name();
+		docstring const & data = (*this)[name];
+		if (data.empty())
+			continue;
+		if (didone)
+			os << ",";
+		else 
+			didone = true;
+		os << from_utf8(name) << "=" << data;
+	}
+	return os.str();
+}
+
+
+bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
+{
+	if (!ci->isOptional())
+		BOOST_ASSERT(false);
+	++ci; // we want to start with the next one
+	ParamInfo::const_iterator end = info_.end();
+	for (; ci != end; ++ci) {
+		switch (ci->type()) {
+		case ParamInfo::LATEX_KEY:
+		case ParamInfo::LYX_INTERNAL:
+			break;
+
+		case ParamInfo::LATEX_REQUIRED:
+		case ParamInfo::LATEX_KV_REQUIRED:
+			return false;
+
+		case ParamInfo::LATEX_OPTIONAL: {
+			std::string const & name = ci->name();
+			docstring const & data = (*this)[name];
+			if (!data.empty())
+				return true;
+			break;
+		}
+
+		case ParamInfo::LATEX_KV_OPTIONAL: {
+			docstring data = makeKeyValArgument();
+			if (!data.empty())
+				return true;
+			break;
+		}
+		} //end switch
+	}
+	return false;
+}
+
+
 docstring const InsetCommandParams::getCommand() const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
@@ -326,33 +398,45 @@ docstring const InsetCommandParams::getCommand() const
 	ParamInfo::const_iterator end = info_.end();
 	for (; it != end; ++it) {
 		std::string const & name = it->name();
-		docstring const & data = (*this)[name];
-		if (!it->isOptional()) {
+		switch (it->type()) {
+		case ParamInfo::LATEX_KEY:
+		case ParamInfo::LYX_INTERNAL:
+			break;
+
+		case ParamInfo::LATEX_REQUIRED: {
+			docstring const & data = (*this)[name];
 			s += '{' + data + '}';
 			noparam = false;
-			continue;
+			break;
 		}
-		if (!data.empty()) {
-			s += '[' + data + ']';
+		case ParamInfo::LATEX_KV_REQUIRED: {
+			s += "{" + makeKeyValArgument() + "}";
 			noparam = false;
-			continue;
+			break;
 		}
-		// This param is therefore optional but empty.
-		// But we need to write it anyway if nonempty
-		// optional parameters follow before the next
-		// required parameter.
-		ParamInfo::const_iterator it2 = it;
-		for (++it2; it2 != end; ++it2) {
-			if (!it2->isOptional())
-				break;
-			std::string const & name2 = it2->name();
-			docstring const & data2 = (*this)[name2];
-			if (!data2.empty()) {
-				s += "[]";
+		case ParamInfo::LATEX_OPTIONAL: {
+			docstring const & data = (*this)[name];
+			if (!data.empty()) {
+				s += '[' + data + ']';
 				noparam = false;
-				break;
+			} else if (writeEmptyOptional(it)) {
+					s += "[]";
+					noparam = false;
 			}
+			break;
+		} 
+		case ParamInfo::LATEX_KV_OPTIONAL: {
+			docstring data = makeKeyValArgument();
+			if (!data.empty()) {
+				s += '[' + data + ']';
+				noparam = false;
+			} else if (writeEmptyOptional(it)) {
+					s += "[]";
+					noparam = false;
+				}
+			break;
 		}
+		} //end switch
 	}
 	if (noparam)
 		// Make sure that following stuff does not change the
@@ -362,18 +446,11 @@ docstring const InsetCommandParams::getCommand() const
 }
 
 
-namespace {
-	//predicate for what follows
-	bool paramIsNonOptional(ParamInfo::ParamData pi)
-	{
-		return !pi.isOptional();
-	}
-}
-
 docstring const InsetCommandParams::getFirstNonOptParam() const
 {
 	ParamInfo::const_iterator it = 
-		find_if(info_.begin(), info_.end(), paramIsNonOptional);
+		find_if(info_.begin(), info_.end(), 
+			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
 	if (it == info_.end())
 		BOOST_ASSERT(false);
 	return (*this)[it->name()];
@@ -383,8 +460,7 @@ docstring const InsetCommandParams::getFirstNonOptParam() const
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
 	static const docstring dummy; //so we don't return a ref to temporary
-	if (!info_.hasParam(name))
-		BOOST_ASSERT(false);
+	BOOST_ASSERT(info_.hasParam(name));
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
 		return dummy;
@@ -394,8 +470,8 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 
 docstring & InsetCommandParams::operator[](string const & name)
 {
-	if (!info_.hasParam(name))
-		BOOST_ASSERT(false);
+	BOOST_ASSERT(info_.hasParam(name));
+	ParamInfo::ParamData const & pd = info_[name];
 	return params_[name];
 }
 

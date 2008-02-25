@@ -39,9 +39,9 @@ ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("prefix", true);
-		param_info_.add("symbol", false);
-		param_info_.add("description", false);
+		param_info_.add("prefix", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("symbol", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("description", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }
@@ -92,7 +92,7 @@ ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("labelwidth", true);
+		param_info_.add("labelwidth", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }

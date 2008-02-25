@@ -84,7 +84,7 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("name", false);
+		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }

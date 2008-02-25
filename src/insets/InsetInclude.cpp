@@ -173,9 +173,9 @@ ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 	// In the other cases, this second parameter should just be empty.
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("filename", false);
-		param_info_.add("embed", false);
-		param_info_.add("lstparams", true);
+		param_info_.add("filename", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("lstparams", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("embed", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }

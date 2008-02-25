@@ -57,10 +57,10 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("options", true);
-		param_info_.add("btprint", true);
-		param_info_.add("bibfiles", false);
-		param_info_.add("embed", false);
+		param_info_.add("btprint", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("bibfiles", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("embed", ParamInfo::LYX_INTERNAL);
+		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }

@@ -37,9 +37,9 @@ ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("name", true);
-		param_info_.add("target", false);
-		param_info_.add("type", false);
+		param_info_.add("name", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("target", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("type", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }

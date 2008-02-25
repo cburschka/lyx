@@ -390,9 +390,9 @@ ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 	// we have to allow both here. InsetCitation takes care that
 	// LaTeX output is nevertheless correct.
 	if (param_info_.empty()) {
-		param_info_.add("after", true);
-		param_info_.add("before", true);
-		param_info_.add("key", false);
+		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
 }
