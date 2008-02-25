@@ -14,6 +14,7 @@
 #include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
+#include "TextClassPtr.h"
 
 #include "insets/InsetLayout.h"
 
@@ -22,9 +23,10 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <vector>
-#include <set>
+#include <list>
 #include <map>
+#include <set>
+#include <vector>
 
 namespace lyx {
 
@@ -35,20 +37,37 @@ class Lexer;
 class Counters;
 class FloatList;
 
-/// List of inset layouts
-typedef std::map<docstring, InsetLayout> InsetLayouts;
 
-/// Stores the layout specification of a LyX document class.
+/// A TextClass represents a collection of layout information: At the 
+/// moment, this includes Layout's and InsetLayout's.
+///
+/// The main function of TextClass objecs is to provide layout information
+/// to a Buffer, by being the TextClass associated with the BufferParams for
+/// a given Buffer. This is the object returned by BufferParams::textClass().
+/// These instances of TextClass do not necessarily correspond just to a 
+/// *.layout file---that is, to a LyX "document class" or *.layout file---
+/// since a Buffer's TextClass, though always based upon a "document class" 
+/// may be modified by loading modules.
+
+/// That said, some TextClass instances do correspond strictly to document
+/// classes, that is, to *.layout files. These instances are known in the code
+/// as "base classes". These are cached in BaseClassList.
+///
+/// Though it does not presently exist, one can imagine an extension of this
+/// mechanism that would lead to caching of *.module or *.inc files. In that
+/// case, some TextClass's would just correspond to *.module or *.inc files,
+/// just as some now correspond to *.layout files.
 class TextClass {
 public:
-	/// The individual styles comprising the document class
+	/// The individual paragraph layouts comprising the document class
 	typedef std::vector<LayoutPtr> LayoutList;
+	/// The inset layouts available to this class
+	typedef std::map<docstring, InsetLayout> InsetLayouts;
 	/// Construct a layout with default values. Actual values loaded later.
-	explicit
-	TextClass(std::string const & = std::string(),
-		     std::string const & = std::string(),
-		     std::string const & = std::string(),
-		     bool texClassAvail = false);
+	explicit TextClass(std::string const & = std::string(),
+		                 std::string const & = std::string(),
+		                 std::string const & = std::string(),
+		                 bool texClassAvail = false);
 	
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const;
@@ -90,6 +109,11 @@ public:
 	/// Sees to that the textclass structure has been loaded
 	bool load(std::string const & path = std::string()) const;
 	/// Has this layout file been loaded yet?
+	/// NOTE This only makes sense when used with "static" TextClass
+	/// objects, e.g., ones that represent files on disk, as opposed
+	/// to ones that can be modified by modules.
+	// FIXME Should we have a modular_ variable, set to true when
+	// we load a module, that would force false to be returned here?
 	bool loaded() const { return loaded_; }
 
 	/// the list of floats defined in the document class
@@ -268,8 +292,38 @@ private:
 };
 
 
+/// This is simply a container for the text classes generated when modules
+/// are read, so that they stay in memory for use by Insets, CutAndPaste,
+/// and the like. Since they're constructed via new, they wouldn't actually
+/// disappear without this class---but this class holds the pointers to them
+/// so that they don't leak.
+/// FIXME Some sort of garbage collection or reference counting wouldn't
+/// be a bad idea here. It might be enough to check when a Buffer is closed
+/// (or makeTextClass is called) whether the old TextClass is in use anywhere.
+///
+/// This is a singleton class. Its sole instance is accessed via 
+/// TextClassBundle::get().
+class TextClassBundle {
+public:
+	/// returns a pointer to a new class equal to baseClass
+	TextClassPtr newClass(TextClass const & baseClass);
+	/// Returns the sole instance of this class.
+	static TextClassBundle & get();
+	///
+	~TextClassBundle();
+private:
+	///
+	std::list<TextClassPtr> tc_list_;
+	/// control instantiation
+	TextClassBundle() {};
+	/// noncopyable
+	TextClassBundle(TextClassBundle const &);
+};
+
+
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, PageSides p);
+
 
 } // namespace lyx
 

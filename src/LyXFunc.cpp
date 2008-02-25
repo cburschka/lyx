@@ -1875,8 +1875,7 @@ bool LyXFunc::wasMetaKey() const
 }
 
 
-void LyXFunc::updateLayout(TextClassPtr const & oldlayout,
-                           Buffer * buffer)
+void LyXFunc::updateLayout(TextClassPtr oldlayout,Buffer * buffer)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
 	

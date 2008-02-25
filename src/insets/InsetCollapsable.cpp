@@ -132,8 +132,8 @@ void InsetCollapsable::setLayout(BufferParams const & bp)
 void InsetCollapsable::setLayout(TextClassPtr tc)
 {
 	textClass_ = tc;
-	if ( tc.get() != 0 ) {
-		layout_ = &tc->insetLayout(name());
+	if ( textClass_ != 0 ) {
+		layout_ = &textClass_->insetLayout(name());
 		labelstring_ = layout_->labelstring();
 	} else {
 		layout_ = &TextClass::emptyInsetLayout();

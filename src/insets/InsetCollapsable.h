@@ -42,7 +42,7 @@ public:
 	InsetCollapsable(
 		BufferParams const &,
 		CollapseStatus status = Inset::Open,
-		TextClassPtr tc = TextClassPtr((TextClass *)0)
+		TextClassPtr tc = 0
 		);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
@@ -178,6 +178,7 @@ protected:
 
 private:
 	/// text class to keep the InsetLayout above in memory
+	/// FIXME This probably isn't needed now
 	TextClassPtr textClass_;
 	/// cache for the layout_. Make sure it is in sync with the text class!
 	InsetLayout const * layout_;

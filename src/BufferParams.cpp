@@ -1410,7 +1410,7 @@ BaseClassIndex BufferParams::baseClass() const
 
 void BufferParams::makeTextClass()
 {
-	textClass_.reset(new TextClass(baseclasslist[baseClass()]));
+	textClass_ = TextClassBundle::get().newClass(baseclasslist[baseClass()]);
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 

@@ -6,22 +6,16 @@
  *
  * Full author contact details are available in file CREDITS.
  */
-
 #ifndef TEXTCLASS_PTR_H
 #define TEXTCLASS_PTR_H
-
-#include <boost/shared_ptr.hpp>
 
 namespace lyx {
 
 class TextClass;
 
-/// Global typedef
-/** Shared pointer for possibly modular layout. Needed so that paste,
- *  for example, will still be able to retain the pointer, even when
- *  the buffer itself is closed.
- */
-typedef boost::shared_ptr<TextClass> TextClassPtr;
+// This largely useless typedef is scheduled to be replaced by 
+// something better.
+typedef TextClass * TextClassPtr;
 
 } // namespace lyx
 

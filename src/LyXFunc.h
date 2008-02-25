@@ -136,7 +136,7 @@ private:
 	///
 	bool ensureBufferClean(BufferView * bv);
 	///
-	void updateLayout(TextClassPtr const & oldlayout, Buffer * buffer);
+	void updateLayout(TextClassPtr oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp
