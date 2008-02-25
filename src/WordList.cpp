@@ -10,19 +10,14 @@
 
 #include <config.h>
 
+#include "WordList.h"
+
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/docstring.h"
+#include "support/weighted_btree.h"
+
 #include <boost/assert.hpp>
-
-#include <support/convert.h>
-#include <support/debug.h>
-#include <support/docstring.h>
-#include <support/weighted_btree.h>
-
-#include <WordList.h>
-
-#include <algorithm>
-#include <map>
-#include <iostream>
-#include <set>
 
 namespace lyx {
 
@@ -58,8 +53,7 @@ WordList::~WordList()
 
 docstring const & WordList::word(size_t idx) const
 {
-	Impl::Words::const_iterator it
-	= d->words_.find_summed_weight(idx);
+	Impl::Words::const_iterator it = d->words_.find_summed_weight(idx);
 	BOOST_ASSERT(it != d->words_.end());
 	return it->first;
 }
