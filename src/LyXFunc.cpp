@@ -370,6 +370,8 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		}
 	} else {
 		dispatch(func);
+		if (!lyx_view_)
+			return;
 		if (func.action == LFUN_CHAR_DELETE_BACKWARD)
 			// backspace is not a self-insertion. But it
 			// still should not hide the completion popup.
