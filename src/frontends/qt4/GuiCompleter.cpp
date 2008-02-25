@@ -695,11 +695,12 @@ docstring GuiCompleter::longestUniqueCompletion() const
 				QString const & mids
 				= model.data(model.index(mid, 0), 
 					Qt::EditRole).toString();
-				int sn = s.length();
-				s = commonPrefix(mids, s);
+				size_t oldLen = s.length();
+				size_t len = commonPrefix(mids, s);
+				s = s.left(len);
 
 				// left or right?
-				if (s.length() == sn) {
+				if (oldLen == len) {
 					// middle is not far enough
 					i = mid + 1;
 				} else {
