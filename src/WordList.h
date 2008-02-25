@@ -31,7 +31,7 @@ public:
 	void insert(docstring const & w);
 
 private:
-	class Impl;
+	struct Impl;
 	Impl * d;
 };
 

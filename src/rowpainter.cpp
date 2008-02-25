@@ -827,13 +827,13 @@ void RowPainter::paintInlineCompletion(Font const & font)
 	
 	if (s1.size() > 0) {
 		f.setColor(Color_inlinecompletion);
-		pi_.pain.text(x_, yo_, s1, f);
+		pi_.pain.text(int(x_), yo_, s1, f);
 		x_ += theFontMetrics(font).width(s1);
 	}
 	
 	if (s2.size() > 0) {
 		f.setColor(Color_nonunique_inlinecompletion);
-		pi_.pain.text(x_, yo_, s2, f);
+		pi_.pain.text(int(x_), yo_, s2, f);
 		x_ += theFontMetrics(font).width(s2);
 	}
 }
