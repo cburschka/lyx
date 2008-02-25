@@ -110,11 +110,6 @@ FunctionEnd
 Function InstallAspellDictionary
  # install Aspell dictionaries
 
- # we only have a norwegian dictionary available
- ${if} $LangCode == "nb_NO"
-  StrCpy $LangCode "no_NO" 
- ${endif}
-
  StrCpy $AspellInstallYes ""
 
  # install the english dictionary if not already installed
@@ -289,6 +284,7 @@ Function un.UninstAspell
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-fi"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-fo"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-fr"
+    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-fy"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-ga"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-gd"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-gl"
@@ -300,6 +296,7 @@ Function un.UninstAspell
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-hr"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-hsb"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-hu"
+    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-hy"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-ia"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-id"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-is"
@@ -311,6 +308,7 @@ Function un.UninstAspell
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-mg"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-mi"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-mk"
+    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-ml"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-mn"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-mr"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-ms"
