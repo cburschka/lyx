@@ -303,21 +303,23 @@ private:
 ///
 /// This is a singleton class. Its sole instance is accessed via 
 /// TextClassBundle::get().
+///
+/// See \file TextClassPtr.h for the definition of TextClassPtr.
 class TextClassBundle {
 public:
-	/// returns a pointer to a new class equal to baseClass
+	/// \return Pointer to a new class equal to baseClass
 	TextClassPtr newClass(TextClass const & baseClass);
-	/// Returns the sole instance of this class.
+	/// \return The sole instance of this class.
 	static TextClassBundle & get();
 	///
 	~TextClassBundle();
 private:
-	///
-	std::list<TextClassPtr> tc_list_;
 	/// control instantiation
 	TextClassBundle() {};
 	/// noncopyable
 	TextClassBundle(TextClassBundle const &);
+	///
+	std::list<TextClassPtr> tc_list_;
 };
 
 
