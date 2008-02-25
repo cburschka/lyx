@@ -22,11 +22,19 @@
 namespace lyx {
 
 ///
+WordList theGlobalWordList;
+
+WordList & theWordList()
+{
+	return theGlobalWordList;
+}
+	
+///
 struct WordList::Impl {
 	///
 	size_t c_;
 	///
-	typedef stx::weighted_btree<docstring, size_t> Words;
+	typedef stx::weighted_btree<docstring, size_t, int> Words;
 	///
 	Words words_;
 };
@@ -67,8 +75,22 @@ size_t WordList::size() const
 
 void WordList::insert(docstring const & w)
 {
-	d->words_.insert(w, size_t(1), stx::Void());
+	Impl::Words::iterator it = d->words_.find(w);
+	if (it == d->words_.end())
+		d->words_.insert(w, size_t(1), 1);
+	else
+		it.data()++;
 }
 
-	
+
+void WordList::remove(docstring const & w)
+{
+	Impl::Words::iterator it = d->words_.find(w);
+	if (it != d->words_.end()) {
+		it.data()--;
+		if (it.data() == 0)
+			d->words_.erase(w);
+	}
+}
+
 } // namespace lyx

@@ -2547,7 +2547,7 @@ private:
             left->weights[left->slotuse + i] = right->weights[i];
         }
         left->slotuse += right->slotuse;
-        left->weight += right.weight;
+        left->weight += right->weight;
 
         left->nextleaf = right->nextleaf;
         if (left->nextleaf)
@@ -2600,7 +2600,7 @@ private:
             left->childid[left->slotuse + i] = right->childid[i];
         }
         left->slotuse += right->slotuse;
-        left->weight += right.weight;
+        left->weight += right->weight;
 
         left->childid[left->slotuse] = right->childid[right->slotuse];
 

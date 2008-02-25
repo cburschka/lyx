@@ -50,7 +50,6 @@ class TeXErrors;
 class TexRow;
 class TocBackend;
 class Undo;
-class WordList;
 
 namespace frontend {
 class GuiBufferDelegate;
@@ -452,11 +451,6 @@ public:
 	bool isExportable(std::string const & format) const;
 	///
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
-
-	/// Register word for completion word list.
-	void registerWord(docstring const & word);
-	///
-	WordList const & registeredWords() const;
 	
 private:
 	/// search for macro in local (buffer) table or in children
