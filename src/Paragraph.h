@@ -31,7 +31,6 @@ class Buffer;
 class BufferParams;
 class Change;
 class Counters;
-class Cursor;
 class Inset;
 class InsetBibitem;
 class LaTeXFeatures;
@@ -368,16 +367,8 @@ public:
 		bool mw, ///<
 		pos_type pos, ///< start from here.
 		bool del = true) const;
-	
-	///
-	void updateWords(Cursor const & cur);
 
 private:
-	///
-	void deregisterWords();
-	///
-	void registerWords(Cursor const & cur);
-	
 	/// Pimpl away stuff
 	class Private;
 	///
