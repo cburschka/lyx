@@ -176,6 +176,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
         listView->setSelectionMode(QAbstractItemView::SingleSelection);
 	listView->header()->hide();
 	listView->setIndentation(0);
+	listView->setUniformRowHeights(true);
 	setPopup(listView);
 	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
 	rtlItemDelegate_ = new RtlItemDelegate(this);
@@ -604,14 +605,41 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 		return;
 	}
 
-	// iterate through list until the s is found
-	// FIXME: there must be a better way than this iteration
+	// find old selection in model
 	size_t i;
-	for (i = 0; i < n; ++i) {
-		QString const & is
-		= model.data(model.index(i, 0), Qt::EditRole).toString();
-		if (is == s)
-			break;
+	if (modelSorting() == QCompleter::UnsortedModel) {
+		// In unsorted models, iterate through list until the s is found
+		for (i = 0; i < n; ++i) {
+			QString const & is
+			= model.data(model.index(i, 0), Qt::EditRole).toString();
+			if (is == s)
+				break;
+		}
+	} else {
+		// In sorted models, do binary search for s.
+		i = 0;
+		size_t r = n - 1;
+		do {
+			size_t mid = (r + i) / 2;
+			QString const & mids
+			= model.data(model.index(mid, 0),
+				     Qt::EditRole).toString();
+
+			// left or right?
+			// FIXME: is this really the same order that the docstring
+			// from the CompletionList has?
+			int c = s.compare(mids, Qt::CaseSensitive);
+			if (c == 0) {
+				i = mid;
+				break;
+			} else if (c > 0)
+				// middle is not far enough
+				i = mid + 1;
+			else
+				// middle is too far
+				r = mid - 1;
+
+		} while (r - i > 0 && i < n);
 	}
 
 	// select the first if none was found
@@ -624,25 +652,62 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 }
 
 
-docstring GuiCompleter::longestUniqueCompletion() const {
+size_t commonPrefix(QString const & s1, QString const & s2)
+{
+	// find common prefix
+	size_t j;
+	size_t n1 = s1.length();
+	size_t n2 = s2.length();
+	for (j = 0; j < n1 && j < n2; ++j) {
+		if (s1.at(j) != s2.at(j))
+			break;
+	}
+	return j;
+}
+
+
+docstring GuiCompleter::longestUniqueCompletion() const
+{
 	QAbstractItemModel const & model = *popup()->model();
 	QString s = currentCompletion();
 	size_t n = model.rowCount();
 
-	// iterate through the completions and cut off where s differs
-	for (size_t i = 0; i < n && s.length() > 0; ++i) {
-		QString const & is
-		= model.data(model.index(i, 0), Qt::EditRole).toString();
+	if (modelSorting() == QCompleter::UnsortedModel) {
+		// For unsorted model we cannot do more than iteration.
+		// Iterate through the completions and cut off where s differs
+		for (size_t i = 0; i < n && s.length() > 0; ++i) {
+			QString const & is
+			= model.data(model.index(i, 0), Qt::EditRole).toString();
 
-		// find common prefix
-		size_t j;
-		size_t isn = is.length();
-		size_t sn = s.length();
-		for (j = 0; j < isn && j < sn; ++j) {
-			if (s.at(j) != is.at(j))
-				break;
+			s = s.left(commonPrefix(is, s));
 		}
-		s = s.left(j);
+	} else {
+		// For sorted models we can do binary search multiple times,
+		// each time to find the first string which has s not as prefix.
+		size_t i = 0;
+		while (i < n && s.length() > 0) {
+			// find first string that does not have s as prefix
+			// via binary search in [i,n-1]
+			size_t r = n - 1;
+			do {
+				// get common prefix with the middle string
+				size_t mid = (r + i) / 2;
+				QString const & mids
+				= model.data(model.index(mid, 0), 
+					Qt::EditRole).toString();
+				int sn = s.length();
+				s = commonPrefix(mids, s);
+
+				// left or right?
+				if (s.length() == sn) {
+					// middle is not far enough
+					i = mid + 1;
+				} else {
+					// middle is maybe too far
+					r = mid;
+				}
+			} while (r - i > 0 && i < n);
+		}
 	}
 
 	return from_utf8(fromqstr(s));
