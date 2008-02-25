@@ -1158,6 +1158,25 @@ def is_inset_line(document, i):
     return last_tokens.find('\\') != -1
 
 
+# A wrapper around normalize that handles special cases (cf. bug 3313)
+def normalize(form, text):
+    # do not normalize OHM, ANGSTROM
+    keep_characters = [0x2126,0x212b]
+    result = ''
+    convert = ''
+    for i in text:
+        if ord(i) in keep_characters:
+            if len(convert) > 0:
+                result = result + unicodedata.normalize(form, convert)
+                convert = ''
+            result = result + i
+        else:
+            convert = convert + i
+    if len(convert) > 0:
+        result = result + unicodedata.normalize(form, convert)
+    return result
+
+
 def revert_accent(document):
     inverse_accent_map = {}
     for k in accent_map:
@@ -1190,9 +1209,9 @@ def revert_accent(document):
         # because we never use u'xxx' for string literals, but 'xxx'.
         # Therefore we may have to try two times to normalize the data.
         try:
-            document.body[i] = unicodedata.normalize("NFD", document.body[i])
+            document.body[i] = normalize("NFD", document.body[i])
         except TypeError:
-            document.body[i] = unicodedata.normalize("NFD", unicode(document.body[i], 'utf-8'))
+            document.body[i] = normalize("NFD", unicode(document.body[i], 'utf-8'))
 
     # Replace accented characters with InsetLaTeXAccent
     # Do not convert characters that can be represented in the chosen
@@ -1247,7 +1266,7 @@ def revert_accent(document):
                     accented_char = inverse_accented_map[accented_char]
                 accent = document.body[i][j]
                 try:
-                    dummy = unicodedata.normalize("NFC", accented_char + accent).encode(encoding_stack[-1])
+                    dummy = normalize("NFC", accented_char + accent).encode(encoding_stack[-1])
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:
@@ -1261,7 +1280,7 @@ def revert_accent(document):
 
     # Normalize to "Normal form C" (NFC, pre-composed characters) again
     for i in range(len(document.body)):
-        document.body[i] = unicodedata.normalize("NFC", document.body[i])
+        document.body[i] = normalize("NFC", document.body[i])
 
 
 def normalize_font_whitespace_259(document):
