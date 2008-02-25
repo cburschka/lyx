@@ -27,7 +27,6 @@ What's new
 - Updated Romanian translation of the user interface.
 
 
-
 * USER INTERFACE
 
 
@@ -37,7 +36,6 @@ What's new
 
 - Stop warning messages when a local layout file is opened. Fix bugs caused by
   incorrect reloading of local layout files.
-
 
 
 * BUILD/INSTALLATION:
@@ -52,6 +50,9 @@ What's new
 
 - Fix drawing of top and bottom rules in formal tables (bug 4554).
 
+- Fix reversion of OHM and ANGSTROM characters to LyX < 1.5.0 (rest of
+  bug 3313).
+
 
 * USER INTERFACE:
 
@@ -64,6 +65,4 @@ What's new
 
 
 * BUILD/INSTALLATION:
-
-
 
