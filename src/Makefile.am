@@ -127,6 +127,7 @@ SOURCEFILESCORE = \
 	lengthcommon.cpp \
 	Lexer.cpp \
 	LyX.cpp \
+	LyXAction.cpp
 	lyxfind.cpp \
 	LyXFunc.cpp \
 	LyXRC.cpp \
@@ -142,6 +143,7 @@ SOURCEFILESCORE = \
 	output_plaintext.cpp \
 	Paragraph.cpp \
 	paragraph_funcs.cpp \
+	ParagraphMetrics.cpp \
 	ParagraphParameters.cpp \
 	ParIterator.cpp \
 	PDFOptions.cpp \
@@ -165,8 +167,7 @@ SOURCEFILESCORE = \
 	VCBackend.cpp \
 	version.cpp \
 	VSpace.cpp \
-	ParagraphMetrics.cpp \
-	LyXAction.cpp
+	WordList.cpp
 
 HEADERFILESCORE = \
 	Author.h \
@@ -270,8 +271,9 @@ HEADERFILESCORE = \
 	update_flags.h \
 	VCBackend.h \
 	version.h \
+	VSpace.h \
 	WordLangTuple.h \
-	VSpace.h
+	WordList.h
 
 STANDALONEFILES = \
 	Layout.cpp \

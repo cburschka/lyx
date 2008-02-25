@@ -138,6 +138,7 @@ src_header_files = Split('''
     sgml.h
     update_flags.h
     version.h
+    WordList.h
 ''')
 
 
@@ -234,6 +235,7 @@ src_pre_files = Split('''
     rowpainter.cpp
     sgml.cpp
     version.cpp
+    WordList.cpp
 ''')
 
 
