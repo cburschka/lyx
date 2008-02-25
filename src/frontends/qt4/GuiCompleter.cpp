@@ -97,6 +97,14 @@ public:
 	~GuiCompletionModel()
 		{ delete list_; }
 	///
+	bool sorted() const
+	{
+		if (list_)
+			return list_->sorted();
+		else
+			return false;
+	}
+	///
 	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const
 	{
 		return 2;
@@ -417,6 +425,10 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	Inset::CompletionList const * list
 	= cur.inset().createCompletionList(cur);
 	setModel(new GuiCompletionModel(this, list));
+	if (list->sorted())
+		setModelSorting(QCompleter::CaseSensitivelySortedModel);
+	else
+		setModelSorting(QCompleter::UnsortedModel);
 
 	// show popup
 	if (popupUpdate)

@@ -303,6 +303,8 @@ public:
 		///
 		virtual ~CompletionList() {}
 		///
+		virtual bool sorted() const =0;
+		///
 		virtual size_t size() const =0;
 		/// returns the string shown in the gui.
 		virtual docstring data(size_t idx) const =0;

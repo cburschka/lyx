@@ -60,6 +60,7 @@
 #include "Undo.h"
 #include "VCBackend.h"
 #include "version.h"
+#include "WordList.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"

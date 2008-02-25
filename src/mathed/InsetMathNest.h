@@ -24,6 +24,8 @@ public:
 	virtual ~MathCompletionList();
 
 	///
+	virtual bool sorted() const { return false; }
+	///
 	virtual size_t size() const;
 	///
 	virtual docstring data(size_t idx) const;

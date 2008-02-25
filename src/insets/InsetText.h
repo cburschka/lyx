@@ -29,8 +29,6 @@ class Dimension;
 class ParagraphList;
 class InsetTabular;
 
-class WordList : public std::set<docstring> {};
-
 /**
  A text inset is like a TeX box to write full text
  (including styles and other insets) in a given space.

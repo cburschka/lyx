@@ -43,6 +43,7 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
+#include "WordList.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -69,26 +70,23 @@ class TextCompletionList : public Inset::CompletionList {
 public:
 	///
 	TextCompletionList(Cursor const & cur)
-	: buf_(cur.buffer()), it_(buf_.registeredWords().begin()), pos_(0) {}
+	: buf_(cur.buffer()), pos_(0) {}
 	///
 	virtual ~TextCompletionList() {}
 
+	///
+	virtual bool sorted() const { return true; }
 	///
 	virtual size_t size() const {
 		return buf_.registeredWords().size();
 	}
 	///
 	virtual docstring data(size_t idx) const {
-		std::set<docstring>::const_iterator it
-		= buf_.registeredWords().begin();
-		for (size_t i = 0; i < idx; ++i)
-			it++;
-		return *it;
+		return buf_.registeredWords().word(idx);
 	}
 
 private:
 	Buffer const & buf_;
-	std::set<docstring>::const_iterator const it_;
 	size_t pos_;
 };
 
