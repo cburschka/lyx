@@ -17,8 +17,6 @@
 #include "ColorCode.h"
 #include "Text.h"
 
-#include <set>
-
 namespace lyx {
 
 class Buffer;
