@@ -18,7 +18,7 @@ EXTRA_DIST = config.h.in \
 	paper.h \
 	pch.h
 
-OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
+OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
 noinst_LTLIBRARIES = liblyxcore.la
 bin_PROGRAMS = lyx
@@ -127,7 +127,7 @@ SOURCEFILESCORE = \
 	lengthcommon.cpp \
 	Lexer.cpp \
 	LyX.cpp \
-	LyXAction.cpp
+	LyXAction.cpp \
 	lyxfind.cpp \
 	LyXFunc.cpp \
 	LyXRC.cpp \
