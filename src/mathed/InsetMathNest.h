@@ -28,7 +28,7 @@ public:
 	///
 	virtual size_t size() const;
 	///
-	virtual docstring data(size_t idx) const;
+	virtual docstring const & data(size_t idx) const;
 	///
 	virtual std::string icon(size_t idx) const;
 

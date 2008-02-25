@@ -307,7 +307,7 @@ public:
 		///
 		virtual size_t size() const =0;
 		/// returns the string shown in the gui.
-		virtual docstring data(size_t idx) const =0;
+		virtual docstring const & data(size_t idx) const = 0;
 		/// returns the resource string used to load an icon.
 		virtual std::string icon(size_t /*idx*/) const { return std::string(); }
 	};

@@ -141,8 +141,7 @@ public:
 				QPixmap p = QPixmap(name);
 				if (!p.isNull()) {
 					// scale it to 16x16 or smaller
-					scaled
-					= p.scaled(min(16, p.width()), min(16, p.height()), 
+					scaled = p.scaled(min(16, p.width()), min(16, p.height()), 
 						Qt::KeepAspectRatio, Qt::SmoothTransformation);
 				}
 
@@ -423,8 +422,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	popup()->setItemDelegateForColumn(0, rtl ? rtlItemDelegate_ : 0);
 
 	// set new model
-	Inset::CompletionList const * list
-	= cur.inset().createCompletionList(cur);
+	Inset::CompletionList const * list = cur.inset().createCompletionList(cur);
 	setModel(new GuiCompletionModel(this, list));
 	if (list->sorted())
 		setModelSorting(QCompleter::CaseSensitivelySortedModel);

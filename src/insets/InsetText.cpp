@@ -83,7 +83,7 @@ public:
 		return buf_.registeredWords().size();
 	}
 	///
-	virtual docstring data(size_t idx) const
+	virtual docstring const & data(size_t idx) const
 	{
 		return buf_.registeredWords().word(idx);
 	}
