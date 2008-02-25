@@ -329,7 +329,7 @@ void GuiCompleter::updatePrefix(Cursor & cur)
 	
 	// update completer to new prefix
 	setCompletionPrefix(newPrefix);
-	
+
 	// update popup because its size might have changed
 	if (popupVisible())
 		updatePopup(cur);
@@ -431,6 +431,11 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	else
 		setModelSorting(QCompleter::UnsortedModel);
 
+	// set prefix
+	QString newPrefix = toqstr(cur.inset().completionPrefix(cur));
+	if (newPrefix != completionPrefix())
+		setCompletionPrefix(newPrefix);
+
 	// show popup
 	if (popupUpdate)
 		updatePopup(cur);
@@ -445,7 +450,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 		last_selection_ = s;
 	else
 		last_selection_ = old;
-	
+
 	// show inline completion
 	if (inlineUpdate)
 		updateInline(cur, currentCompletion());
@@ -458,9 +463,8 @@ void GuiCompleter::showPopup(Cursor & cur)
 		return;
 	
 	updateModel(cur, true, inlineVisible());
-	updatePrefix(cur);
 }
-	
+
 
 void GuiCompleter::showInline(Cursor & cur)
 {
@@ -468,7 +472,6 @@ void GuiCompleter::showInline(Cursor & cur)
 		return;
 	
 	updateModel(cur, popupVisible(), true);
-	updatePrefix(cur);
 }
 
 
@@ -619,6 +622,7 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 		// In sorted models, do binary search for s.
 		i = 0;
 		size_t r = n - 1;
+		int c;
 		do {
 			size_t mid = (r + i) / 2;
 			QString const & mids
@@ -628,7 +632,7 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			// left or right?
 			// FIXME: is this really the same order that the docstring
 			// from the CompletionList has?
-			int c = s.compare(mids, Qt::CaseSensitive);
+			c = s.compare(mids, Qt::CaseSensitive);
 			if (c == 0) {
 				i = mid;
 				break;
@@ -637,9 +641,14 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 				i = mid + 1;
 			else
 				// middle is too far
-				r = mid - 1;
+				r = mid;
 
 		} while (r - i > 0 && i < n);
+
+		// loop was left with failed comparison?
+		// i.e. word was not found.
+		if (c != 0)
+			i = n;
 	}
 
 	// select the first if none was found
