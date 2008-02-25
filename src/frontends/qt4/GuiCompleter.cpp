@@ -620,8 +620,7 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 		// In sorted models, do binary search for s.
 		i = 0;
 		size_t r = n - 1;
-		int c;
-		do {
+		while (r >= i && i < n) {
 			size_t mid = (r + i) / 2;
 			QString const & mids
 			= model.data(model.index(mid, 0),
@@ -630,22 +629,23 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			// left or right?
 			// FIXME: is this really the same order that the docstring
 			// from the CompletionList has?
-			c = s.compare(mids, Qt::CaseSensitive);
+			int c = s.compare(mids, Qt::CaseSensitive);
 			if (c == 0) {
 				i = mid;
+				break;
+			} else if (i == r) {
+				i = n;
 				break;
 			} else if (c > 0)
 				// middle is not far enough
 				i = mid + 1;
 			else
 				// middle is too far
-				r = mid;
+				r = mid - 1;
+		}
 
-		} while (r - i > 0 && i < n);
-
-		// loop was left with failed comparison?
-		// i.e. word was not found.
-		if (c != 0)
+		// loop was left without finding anything
+		if (r < i)
 			i = n;
 	}
 
