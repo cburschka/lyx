@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -183,7 +183,7 @@ status collapsed
 
 \begin_layout Date
 letzte Änderung: 25.
- Januar 2008
+ Februar 2008
 \end_layout
 
 \begin_layout Standard
@@ -351,8 +351,66 @@ name "LyX-Hauptfenster"
 \begin_layout Standard
 Wie die meisten Anwendungen hat auch LyX die bekannte Menüleiste am oberen
  Rand des Fensters.
- Darunter befinden sich die Werkzeugleisten mit einer Listenauswahl und
- diversen Schaltknöpfen.
+ Das Aussehen der Menüleiste können Sie leider nicht innerhalb von LyX beeinflus
+sen.
+ Es hängt davon ab, wie LyX kompiliert wurde.
+\end_layout
+
+\begin_layout Subsubsection
+Linux
+\end_layout
+
+\begin_layout Standard
+Weil jeder seinen bevorzugten X-Window-Manager benutzt (KDE, Gnome, xfce\SpecialChar \ldots{}
+),
+ müssen Sie das Paket 
+\family typewriter
+qt4-qtconfig
+\family default
+ installieren und den Befehl 
+\family typewriter
+qtconfig
+\family default
+ ausführen.
+ In dem sich öffnenden Fenster gibt es einige Einstellmöglichkeiten, insbesonder
+e können Sie die Zeichengröße auf der Karteikarte 
+\family sans
+Fonts
+\family default
+ einstellen.
+ Das beeinflußt natürlich alle Programme, die auch Qt benutzen und nicht
+ auf die Ressourcen des X-Window-Managers zurückgreifen.
+ Aber unter KDE sollte es kaum passieren, und Gnome baut nicht auf Qt auf.
+\end_layout
+
+\begin_layout Subsubsection
+Windows XP
+\end_layout
+
+\begin_layout Standard
+In diesem Fall gehen Sie wie gewohnt vor: Rechtsklick auf den Desktop-Hintergrun
+d\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Darstellung
+\family default
+.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Unter der Menüleiste befinden sich die Werkzeugleisten mit einer Listenauswahl
+ und diversen Schaltknöpfen.
  Einige Werkzeugleisten können Sie über 
 \family sans
 Ansicht
@@ -360,7 +418,10 @@ Ansicht
 \SpecialChar \menuseparator
 
 \family sans
-Werkzeugleisten
+Werk\SpecialChar \-
+zeug\SpecialChar \-
+leis\SpecialChar \-
+ten
 \family default
  oder entsprechende Knöpfe in der Standard-Werkzeugleiste an- und ausschalten,
  andere erscheinen automatisch, wenn sich der Cursor in einer bestimmten
