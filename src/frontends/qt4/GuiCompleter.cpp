@@ -745,7 +745,8 @@ void GuiCompleter::popupHighlighted(const QString & completion)
 	Cursor cur = gui_->bufferView().cursor();
 	cur.updateFlags(Update::None);
 	
-	updateInline(cur, completion);
+	if (inlineVisible())
+		updateInline(cur, completion);
 	
 	if (cur.disp_.update())
 		gui_->bufferView().processUpdateFlags(cur.disp_.update());
