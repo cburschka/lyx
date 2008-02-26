@@ -546,6 +546,8 @@ bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
 	BOOST_ASSERT(cur.bv().cursor() == cur);
 	cur.insert(s);
 	cur.bv().cursor() = cur;
+	if (!(cur.disp_.update() & Update::Force))
+		cur.updateFlags(cur.disp_.update() | Update::Force | Update::SinglePar);
 	return true;
 }
 
