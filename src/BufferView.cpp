@@ -2221,13 +2221,10 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 	
 	// set update flags
 	if (changed) {
-		//lyxerr << "inlineCompletion changed" << std::endl;
-		
-		Update::flags flags
-		= cur.disp_.update() | Update::Force;
-		if (singlePar && !(flags | Update::SinglePar))
-		    flags = flags | Update::SinglePar;
-		cur.updateFlags(flags);
+		if (singlePar && !(cur.disp_.update() | Update::Force))
+			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
+		else
+			cur.updateFlags(cur.disp_.update() | Update::Force);
 	}
 }
 

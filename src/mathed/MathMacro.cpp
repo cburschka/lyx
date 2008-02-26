@@ -804,7 +804,7 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 	if (finished) {
 		cur.bv().cursor().pop();
 		++cur.bv().cursor().pos();
-		cur.updateFlags(Update::Force | Update::SinglePar);
+		cur.updateFlags(Update::SinglePar);
 	}
 	
 	return true;
