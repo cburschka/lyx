@@ -390,6 +390,42 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		}
 	}
 
+	while (Buffer * b = buffer()) {
+		if (b->parent()) {
+			// This is a child document, just close the tab after saving
+			// but keep the file loaded.
+			if (!saveBuffer(*b)) {
+				close_event->ignore();
+				return;
+			}
+			removeWorkArea(d.current_work_area_);
+			continue;
+		}
+
+		std::vector<int> const & ids = guiApp->viewIds();
+		for (int i = 0; i != ids.size(); ++i) {
+			if (id_ == ids[i])
+				continue;
+			if (GuiWorkArea * wa = guiApp->view(ids[i]).workArea(*b)) {
+				// FIXME 1: should we put an alert box here that the buffer
+				// is viewed elsewhere?
+				// FIXME 2: should we try to save this buffer in any case?
+				//saveBuffer(b);
+
+				// This buffer is also opened in another view, so
+				// but close the associated work area nevertheless.
+				removeWorkArea(d.current_work_area_);
+				// but don't close it.
+				b = 0;
+				break;
+			}
+		}
+		if (b && !closeBuffer(*b)) {
+			close_event->ignore();
+			return;
+		}
+	}
+
 	// Make sure that no LFUN use this close to be closed View.
 	theLyXFunc().setLyXView(0);
 
