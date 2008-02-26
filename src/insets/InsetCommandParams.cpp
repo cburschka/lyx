@@ -471,7 +471,6 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 docstring & InsetCommandParams::operator[](string const & name)
 {
 	BOOST_ASSERT(info_.hasParam(name));
-	ParamInfo::ParamData const & pd = info_[name];
 	return params_[name];
 }
 
