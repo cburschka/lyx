@@ -274,6 +274,8 @@ PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(popupTextCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(popupAfterCompleteCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
 		this, SIGNAL(changed()));
 }
