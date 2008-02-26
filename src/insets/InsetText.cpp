@@ -474,6 +474,25 @@ void InsetText::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
+bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
+{
+	if (cur.buffer().isClean())
+		return Inset::notifyCursorLeaves(old, cur);
+	
+	// find text inset in old cursor
+	Cursor insetCur = old;
+	int scriptSlice	= insetCur.find(this);
+	BOOST_ASSERT(scriptSlice != -1);
+	insetCur.cutOff(scriptSlice);
+	BOOST_ASSERT(&insetCur.inset() == this);
+	
+	// update the old paragraph's words
+	insetCur.paragraph().updateWords(insetCur.buffer(), insetCur.top());
+	
+	return Inset::notifyCursorLeaves(old, cur);
+}
+
+
 bool InsetText::completionSupported(Cursor const & cur) const
 {
 	Cursor const & bvCur = cur.bv().cursor();

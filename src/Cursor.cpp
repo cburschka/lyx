@@ -1772,6 +1772,15 @@ bool notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		if (&old[i].inset() != &cur[i].inset())
 			break;
 	}
+
+	// update words if we just moved to another paragraph
+	if (i == old.depth() && i == cur.depth()
+	    && !cur.buffer().isClean()
+	    && cur.inTexted() && old.inTexted()
+	    && cur.pit() != old.pit()) {
+		old.paragraph().updateWords(old.buffer(), old.top());
+		return false;
+	}
 	
 	// notify everything on top of the common part in old cursor,
 	// but stop if the inset claims the cursor to be invalid now

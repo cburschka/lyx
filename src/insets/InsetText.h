@@ -137,6 +137,8 @@ public:
 	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
 	virtual Inset * clone() const;
+	///
+	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 	///
 	bool completionSupported(Cursor const &) const;

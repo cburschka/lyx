@@ -2746,6 +2746,7 @@ void Paragraph::registerWords()
 
 void Paragraph::updateWords(Buffer const & buf, CursorSlice const & sl)
 {
+	BOOST_ASSERT(&sl.paragraph() == this);
 	deregisterWords();
 	collectWords(buf, sl);
 	registerWords();
