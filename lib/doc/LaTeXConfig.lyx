@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 314
+\lyxformat 315
 \begin_document
 \begin_header
 \textclass article
@@ -93,7 +93,7 @@ Found
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 The participating hosts in the Comprehensive TeX Archive Network are:
 \end_layout
 
@@ -109,7 +109,7 @@ ftp://ctan.tug.org/tex-archive
 ftp://ftp.tex.ac.uk/tex-archive
 \end_layout
 
-\begin_layout Standard
+\begin_layout PlainLayout
 There are also a zillion mirror sites which are listed at the three primary
  sites.
 \end_layout
@@ -177,7 +177,7 @@ econfigure
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 or, if you want to change the system-wide settings, issue the command 
 \family typewriter
 ./configure
@@ -244,7 +244,7 @@ arg   "chk_fmtversion"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 In case it is not clear to you, this number is the date at which the version
  has been released.
 \end_layout
@@ -1286,7 +1286,7 @@ FTP:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
 \end_layout
@@ -1355,7 +1355,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.sgmltools.org
 \end_layout
@@ -1422,7 +1422,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.dante.de
 \end_layout
@@ -1513,7 +1513,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://math.tulane.edu/~entcs/
 \end_layout
@@ -1844,7 +1844,7 @@ IEEEtran
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.ieee.org
 \end_layout
@@ -1905,7 +1905,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \end_layout
@@ -1948,7 +1948,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
@@ -1991,7 +1991,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
@@ -2192,7 +2192,7 @@ WWW: available from the Kluwer Academic Publishers site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
@@ -2216,7 +2216,7 @@ Astrophysics and Space Science, Solar Physics
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \end_layout
@@ -2466,7 +2466,7 @@ Lecture Notes in Computer Science
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e
 \end_layout
@@ -2664,7 +2664,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://public.lanl.gov/kmh/spie/
 \end_layout
@@ -2685,7 +2685,7 @@ spie.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
 \end_layout
@@ -2767,7 +2767,7 @@ Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://publish.aps.org/revtex4/
 \end_layout
@@ -2878,7 +2878,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.springeronline.com
 \end_layout
@@ -2953,7 +2953,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.springeronline.com
 \end_layout
@@ -3006,7 +3006,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.springeronline.com
 \end_layout
@@ -3074,7 +3074,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.tug.org
 \end_layout
@@ -3115,7 +3115,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 \end_layout
@@ -3381,7 +3381,7 @@ arg   "graphicsdriver"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 Here, a value of 
 \begin_inset Quotes eld
 \end_inset
@@ -3913,8 +3913,8 @@ Notes: The package
 \family sans
 fancybox
 \family default
- is needed to draw frames around boxes (menu Insert \SpecialChar \menuseparator
- Box).
+ is needed to draw frames around boxes (menu Insert\SpecialChar \menuseparator
+Box).
 \end_layout
 
 \begin_layout Subsection
@@ -4032,7 +4032,7 @@ jurabib
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout PlainLayout
 
 http://www.jurabib.org
 \end_layout
@@ -4111,6 +4111,42 @@ natbib
 jurabib
 \family default
  instead).
+\end_layout
+
+\begin_layout Subsection
+nicefrac
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "nicefrac"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+nicefrac
+\family default
+ is needed by LyX to create fractions in text size (like 
+\begin_inset Quotes eld
+\end_inset
+
+3/5
+\begin_inset Quotes erd
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -4356,7 +4392,34 @@ soul
  provides hyphenatable letterspacing (spacing out), underlining, striking
  out, and some derivatives.
  It is needed by LyX to output struck out text in change tracked documents.
- 
+\end_layout
+
+\begin_layout Subsection
+units
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "units"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family typewriter
+units
+\family default
+ is needed by LyX to properly typeset units in formulas.
 \end_layout
 
 \begin_layout Subsection
