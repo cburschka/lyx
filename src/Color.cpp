@@ -104,7 +104,7 @@ ColorSet::ColorSet()
 	{ Color_selection, N_("selection"), "selection", "LightBlue", "selection" },
 	{ Color_latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
 	{ Color_inlinecompletion, N_("inline completion"),
-		"inlinecompletion", "grey70", "inlinecompletion" },
+		"inlinecompletion", "grey60", "inlinecompletion" },
 	{ Color_nonunique_inlinecompletion, N_("non-unique inline completion"),
 		"nonuniqueinlinecompletion", "grey80", "nonuniqueinlinecompletion" },
 	{ Color_preview, N_("previewed snippet"), "preview", "black", "preview" },
