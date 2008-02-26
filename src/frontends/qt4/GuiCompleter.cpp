@@ -613,10 +613,10 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 		}
 	} else {
 		// In sorted models, do binary search for s.
-		i = 0;
-		size_t r = n - 1;
-		while (r >= i && i < n) {
-			size_t mid = (r + i) / 2;
+		int l = 0;
+		int r = n - 1;
+		while (r >= l && l < int(n)) {
+			size_t mid = (r + l) / 2;
 			QString const & mids
 			= model.data(model.index(mid, 0),
 				     Qt::EditRole).toString();
@@ -626,22 +626,25 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			// from the CompletionList has?
 			int c = s.compare(mids, Qt::CaseSensitive);
 			if (c == 0) {
-				i = mid;
+				l = mid;
 				break;
-			} else if (i == r) {
-				i = n;
+			} else if (l == r) {
+				l = n;
 				break;
 			} else if (c > 0)
 				// middle is not far enough
-				i = mid + 1;
+				l = mid + 1;
 			else
 				// middle is too far
 				r = mid - 1;
 		}
 
 		// loop was left without finding anything
-		if (r < i)
+		if (r < l)
 			i = n;
+		else
+			i = l;
+		BOOST_ASSERT(0 <= i && i <= n);
 	}
 
 	// select the first if none was found
