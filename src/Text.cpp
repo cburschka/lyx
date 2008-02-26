@@ -1129,7 +1129,7 @@ bool Text::dissolveInset(Cursor & cur) {
 
 
 void Text::getWord(CursorSlice & from, CursorSlice & to,
-	word_location const loc)
+	word_location const loc) const
 {
 	Paragraph const & from_par = pars_[from.pit()];
 	switch (loc) {
@@ -1161,7 +1161,7 @@ void Text::getWord(CursorSlice & from, CursorSlice & to,
 		break;
 	}
 	to = from;
-	Paragraph & to_par = pars_[to.pit()];
+	Paragraph const & to_par = pars_[to.pit()];
 	while (to.pos() < to_par.size() && to_par.isLetter(to.pos()))
 		++to.pos();
 }

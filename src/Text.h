@@ -134,7 +134,7 @@ public:
 	 *  @param from return here the start of the word
 	 *  @param to return here the end of the word
 	 */
-	void getWord(CursorSlice & from, CursorSlice & to, word_location const);
+	void getWord(CursorSlice & from, CursorSlice & to, word_location const) const;
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
 
