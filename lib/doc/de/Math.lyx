@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -273,9 +273,7 @@ Verfasser: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.4-
-\family default
-1
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -6651,6 +6649,19 @@ name "Befehle ! U ! \\textbackslash underbrace"
 
 \backslash
 overbrace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
 \backslash
 underbrace
 \begin_inset ERT
@@ -17124,7 +17135,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Standard
--
+Alt-z c
 \end_layout
 
 \end_inset
@@ -20106,6 +20117,8 @@ name "Symbole ! sonstige"
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
 <features>
@@ -28387,7 +28400,7 @@ Soll statt einer fortlaufenden Nummer ein beliebiger Ausdruck in den Klammern
 \series bold
 
 \backslash
-tag{Ausdruck}
+tag
 \series default
 
 \begin_inset LatexCommand index
@@ -28406,8 +28419,23 @@ A+B=C\tag{etwas}\label{eq:tag}\end{equation}
 
 \backslash
 tag
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
 \backslash
-{etwas
+leer 
+\end_layout
+
+\end_inset
+
+
+\series bold
+etwas
 \series default
  eingegeben.
 \end_layout
@@ -28418,8 +28446,23 @@ Gibt man stattdessen
 
 \backslash
 tag*
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
 \backslash
-{etwas
+leer 
+\end_layout
+
+\end_inset
+
+
+\series bold
+etwas
 \series default
  ein, verhindert der Stern die Klammern um den Ausdruck:
 \begin_inset Formula \[
