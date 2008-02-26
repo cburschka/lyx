@@ -2306,9 +2306,9 @@ private:
 
             // if the last key of the leaf was changed, the parent is notified
             // and updates the key of this leaf
-            if (slot == leaf->slotuse)
+            if (slot == leaf->slotuse && parent)
             {
-                if (parent && parentslot < parent->slotuse)
+                if (parentslot < parent->slotuse)
                 {
                     BTREE_ASSERT(parent->childid[parentslot] == curr);
                     parent->slotkey[parentslot] = leaf->slotkey[leaf->slotuse - 1];
