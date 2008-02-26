@@ -412,6 +412,8 @@ public:
         typedef iterator                self;
 
     private:
+        friend class weighted_btree;
+
         // *** Members
 
         /// The currently referenced leaf node of the tree
@@ -436,7 +438,7 @@ public:
         // *** Methods
 
         /// Constructor of a mutable iterator
-            inline iterator(typename weighted_btree::leaf_node *l, unsigned short s)
+        inline iterator(typename weighted_btree::leaf_node *l, unsigned short s)
             : currnode(l), currslot(s)
         { }
 
@@ -601,6 +603,8 @@ public:
         typedef const_iterator          self;
 
     private:
+        friend class weighted_btree;
+
         // *** Members
 
         /// The currently referenced leaf node of the tree
@@ -656,6 +660,12 @@ public:
         {
             return currnode->slotkey[currslot];
         }
+
+	/// Weight of the current slot
+	inline weight_type weight() const
+	{
+	    return currnode->weights[currslot];
+	}
 
         /// Read-only reference to the current data object
         inline const data_type& data() const
@@ -1318,8 +1328,36 @@ public:
             ? iterator(leaf, slot) : end();
     }
 
+    /// Changes the weight of the first node with the given key to the
+    /// new weight.
+    void change_weight(iterator & it, weight_type w)
+    {
+        node *n = root;
+        if (!n) return;
+        if (it.weight() == w)
+            return;
+
+        while(!n->isleafnode())
+        {
+            const inner_node *inner = static_cast<const inner_node*>(n);
+            int slot = find_lower(inner, it.key());
+
+            // two step because weight_type might be unsigned
+            n->weight -= it.weight();
+            n->weight += w;
+
+            n = inner->childid[slot];
+        }
+
+        BTREE_ASSERT(n == it.curnode);
+        n->weight -= it.weight();
+	n->weight += w;
+	it.currnode->weights[it.currslot] = w;
+    }
+
     /// Tries to locate a summed weight in the B+ tree and returns an iterator to the
-    /// key/data slot if found. If unsuccessful it returns end().
+    /// key/data slot if found. If unsuccessful it returns end(). It is
+    /// ignoring zero-weight nodes during this.
     iterator find_summed_weight(weight_type weight)
     {
         node *n = root;
@@ -1330,10 +1368,10 @@ public:
             const inner_node *inner = static_cast<const inner_node*>(n);
             int slot = find_summed_weight_lower(inner, weight);
 
-                for (unsigned short s = 0; s < slot; ++s)
-                    weight -= inner->childid[s]->weight;                
+            for (unsigned short s = 0; s < slot; ++s)
+                weight -= inner->childid[s]->weight;
 
-                n = inner->childid[slot];
+            n = inner->childid[slot];
         }
 
         leaf_node *leaf = static_cast<leaf_node*>(n);
@@ -1345,6 +1383,7 @@ public:
         return (slot < leaf->slotuse && weight == 0)
         ? iterator(leaf, slot) : end();
     }
+
 
     ///
     weight_type summed_weight(const key_type &key)
@@ -1397,7 +1436,8 @@ public:
     }
 
     /// Tries to locate a summed weight in the B+ tree and returns an iterator to the
-    /// key/data slot if found. If unsuccessful it returns end().
+    /// key/data slot if found. If unsuccessful it returns end(). It is
+    /// ignoring zero-weight nodes during this.
     const_iterator find_summed_weight(weight_type weight) const
     {
         node *n = root;
