@@ -22,11 +22,19 @@
 namespace lyx {
 
 ///
+WordList theGlobalWordList;
+
+WordList & theWordList()
+{
+	return theGlobalWordList;
+}
+
+///
 struct WordList::Impl {
 	///
 	size_t c_;
 	///
-	typedef stx::weighted_btree<docstring, size_t> Words;
+	typedef stx::weighted_btree<docstring, size_t, int> Words;
 	///
 	Words words_;
 };
@@ -61,14 +69,34 @@ docstring const & WordList::word(size_t idx) const
 
 size_t WordList::size() const
 {
-	return d->words_.size();
+	return d->words_.summed_weight();
 }
 
 
 void WordList::insert(docstring const & w)
 {
-	d->words_.insert(w, size_t(1), stx::Void());
+	Impl::Words::iterator it = d->words_.find(w);
+	if (it == d->words_.end())
+		d->words_.insert(w, size_t(1), 1);
+	else {
+		it.data()++;
+		d->words_.change_weight(it, 1);
+	}
 }
 
-	
+
+void WordList::remove(docstring const & w)
+{
+	Impl::Words::iterator it = d->words_.find(w);
+	if (it != d->words_.end()) {
+		it.data()--;
+		d->words_.change_weight(it, 0);
+		// We will not erase here, but instead we just leave it
+		// in the btree with weight 0. This avoid too much
+		// reorganisation of the tree all the time.
+		//if (it.data() == 0)
+		//	d->words_.erase(w);
+	}
+}
+
 } // namespace lyx

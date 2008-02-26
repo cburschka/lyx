@@ -112,7 +112,7 @@ private:
 	int updateLock_;
 	/// the BufferView::inlineCursorPos might be reset by destructive
 	/// operations like backspace. Hence, we have to keep this flag
-	/// in addition to know whether the popup is to be kept visible.
+	/// in addition to know whether the completion is to be kept visible.
 	bool inlineVisible_;
 	///
 	RtlItemDelegate * rtlItemDelegate_;

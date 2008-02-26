@@ -581,19 +581,7 @@ void Text::charInserted(Cursor & cur)
 	    && !par.isLetter(cur.pos() - 1)) {
 		// get the word in front of cursor
 		BOOST_ASSERT(this == cur.text());
-		CursorSlice focus = cur.top();
-		focus.backwardPos();
-		CursorSlice from = focus;
-		CursorSlice to = focus;
-		getWord(from, to, PREVIOUS_WORD);
-		if (focus == from || to == from)
-			return;
-		docstring word
-		= par.asString(cur.buffer(), from.pos(), to.pos(), false);
-
-		// register words longer than 5 characters
-		if (word.length() > 5)
-			cur.buffer().registerWord(word);
+		cur.paragraph().updateWords(cur.buffer(), cur.top());
 	}
 }
 
@@ -1218,6 +1206,10 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 			// not BufferParams
 			lyx::readParagraph(buf, pars_.back(), lex, errorList);
 
+			// register the words in the global word list
+			CursorSlice sl = CursorSlice(*insetPtr);
+			sl.pit() = pars_.size() - 1;
+			pars_.back().updateWords(buf, sl);
 		} else if (token == "\\begin_deeper") {
 			++depth;
 		} else if (token == "\\end_deeper") {

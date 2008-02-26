@@ -29,11 +29,15 @@ public:
 	size_t size() const;
 	///
 	void insert(docstring const & w);
-
+	///
+	void remove(docstring const & w);
+	
 private:
 	struct Impl;
 	Impl * d;
 };
+
+WordList & theWordList();
 
 } // namespace lyx
 

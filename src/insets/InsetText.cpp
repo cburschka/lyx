@@ -80,12 +80,12 @@ public:
 	///
 	virtual size_t size() const
 	{
-		return buf_.registeredWords().size();
+		return theWordList().size();
 	}
 	///
 	virtual docstring const & data(size_t idx) const
 	{
-		return buf_.registeredWords().word(idx);
+		return theWordList().word(idx);
 	}
 
 private:

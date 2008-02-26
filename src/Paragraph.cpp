@@ -39,7 +39,9 @@
 #include "sgml.h"
 #include "TextClass.h"
 #include "TexRow.h"
+#include "Text.h"
 #include "VSpace.h"
+#include "WordList.h"
 
 #include "frontends/alert.h"
 
@@ -196,6 +198,10 @@ public:
 	typedef docstring TextContainer;
 	///
 	TextContainer text_;
+	
+	typedef std::set<docstring> Words;
+	///
+	Words words_;
 };
 
 
@@ -233,7 +239,8 @@ Paragraph::Private::Private(Paragraph * owner)
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
-	  layout_(p.layout_), begin_of_body_(p.begin_of_body_), text_(p.text_)
+	  layout_(p.layout_), begin_of_body_(p.begin_of_body_), text_(p.text_),
+	  words_(p.words_)
 {
 	id_ = paragraph_id++;
 }
@@ -1039,6 +1046,7 @@ Paragraph::Paragraph(Paragraph const & par)
 	: itemdepth(par.itemdepth),
 	d(new Paragraph::Private(*par.d, this))
 {
+	registerWords();
 }
 
 
@@ -1048,8 +1056,10 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 	if (&par != this) {
 		itemdepth = par.itemdepth;
 
+		deregisterWords();
 		delete d;
 		d = new Private(*par.d, this);
+		registerWords();
 	}
 	return *this;
 }
@@ -1057,6 +1067,7 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 
 Paragraph::~Paragraph()
 {
+	deregisterWords();
 	delete d;
 }
 
@@ -2677,5 +2688,67 @@ bool Paragraph::isSeparator(pos_type pos) const
 	return d->text_[pos] == ' ';
 }
 
+
+void Paragraph::deregisterWords()
+{
+	Private::Words::const_iterator it;
+	WordList & wl = theWordList();
+	for (it = d->words_.begin(); it != d->words_.end(); ++it)
+		wl.remove(*it);
+	d->words_.clear();
+}
+
+
+void Paragraph::collectWords(Buffer const & buf, CursorSlice const & sl)
+{
+	// find new words
+	bool inword = false;
+
+	//lyxerr << "Words: ";
+	pos_type n = size();
+	for (pos_type pos = 0; pos != n; ++pos) {
+		if (isDeleted(pos))
+			continue;
+
+		if (!isLetter(pos)) {
+			inword = false;
+			continue;
+		}
+
+		if (inword)
+			continue;
+
+		inword = true;
+		CursorSlice from = sl;
+		CursorSlice to = sl;
+		from.pos() = pos;
+		to.pos() = pos;
+		from.text()->getWord(from, to, WHOLE_WORD);
+		if (to.pos() - from.pos() < 6)
+			continue;
+		docstring word
+		= asString(buf, from.pos(), to.pos(), false);
+		d->words_.insert(word);
+		//lyxerr << word << " ";
+	}
+	//lyxerr << std::endl;
+}
+
+
+void Paragraph::registerWords()
+{
+	Private::Words::const_iterator it;
+	WordList & wl = theWordList();
+	for (it = d->words_.begin(); it != d->words_.end(); ++it)
+		wl.insert(*it);
+}
+
+
+void Paragraph::updateWords(Buffer const & buf, CursorSlice const & sl)
+{
+	deregisterWords();
+	collectWords(buf, sl);
+	registerWords();
+}
 
 } // namespace lyx
