@@ -49,15 +49,15 @@ ParamInfo::ParamData::ParamData(std::string const & s, ParamType t) :
 
 bool ParamInfo::ParamData::isOptional() const
 {
-	return type_ == ParamInfo::LATEX_OPTIONAL ||
-	       type_ == ParamInfo::LATEX_KV_OPTIONAL;
+	return type_ == ParamInfo::LATEX_OPTIONAL
+	    || type_ == ParamInfo::LATEX_KV_OPTIONAL;
 }
 
 
 bool ParamInfo::ParamData::isKeyValArg() const
 {
 	return type_ == ParamInfo::LATEX_KV_REQUIRED 
-		|| type_ == ParamInfo::LATEX_KV_OPTIONAL;
+	    || type_ == ParamInfo::LATEX_KV_OPTIONAL;
 }
 
 
