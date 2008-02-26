@@ -378,9 +378,10 @@ void GuiCompleter::updatePopup(Cursor & cur)
 		rect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
 	
 	// show/update popup
-	complete(rect);
 	QTreeView * p = static_cast<QTreeView *>(popup());
 	p->setColumnWidth(0, popup()->width() - 22 - p->verticalScrollBar()->width());
+
+	complete(rect);
 }
 
 
