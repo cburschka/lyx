@@ -74,6 +74,11 @@ public Q_SLOTS:
 	/// Show the inline completion.
 	void showInline();
 
+	/// Hide the popup.
+	void hidePopup();
+	/// Hide the inline completion.
+	void hideInline();
+
 private Q_SLOTS:
 	///
 	void popupActivated(const QString & completion);

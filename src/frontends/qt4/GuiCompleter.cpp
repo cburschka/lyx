@@ -498,6 +498,32 @@ void GuiCompleter::showInline()
 }
 
 
+void GuiCompleter::hidePopup()
+{
+	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
+	hidePopup(cur);
+	
+	// redraw if needed
+	if (cur.disp_.update())
+		gui_->bufferView().processUpdateFlags(cur.disp_.update());
+}
+
+
+void GuiCompleter::hideInline()
+{
+	Cursor cur = gui_->bufferView().cursor();
+	cur.updateFlags(Update::None);
+	
+	hideInline(cur);
+	
+	// redraw if needed
+	if (cur.disp_.update())
+		gui_->bufferView().processUpdateFlags(cur.disp_.update());
+}
+
+
 void GuiCompleter::activate()
 {
 	if (!popupVisible() && !inlineVisible())
