@@ -493,10 +493,10 @@ int DocIterator::find(MathData const & cell) const
 }
 
 
-int DocIterator::find(InsetMath const * inset) const 
+int DocIterator::find(Inset const * inset) const 
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
-		if (slices_[l].asInsetMath() == inset)
+		if (&slices_[l].inset() == inset)
 			return l;
 	}
 	return -1;

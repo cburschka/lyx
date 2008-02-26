@@ -214,7 +214,7 @@ public:
 	/// find index of CursorSlice with &cell() == &cell (or -1 if not found)
 	int find(MathData const & cell) const;
 	/// find index of CursorSlice with inset() == inset (or -1 of not found)
-	int find(InsetMath const * inset) const;
+	int find(Inset const * inset) const;
 	/// cut off CursorSlices with index > above and store cut off slices in cut.
 	void cutOff(int above, std::vector<CursorSlice> & cut);
 	/// cut off CursorSlices with index > above
