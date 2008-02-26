@@ -1333,7 +1333,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			return true;
 		}
 
-		if (isAlphaASCII(c)) {
+		if (isAlphaASCII(c) || c == '*') {
 			cur.activeMacro()->setName(name + docstring(1, c));
 			return true;
 		}
