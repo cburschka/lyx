@@ -88,6 +88,10 @@ private:
 	///
 	void showInline(Cursor & cur);
 	///
+	void hidePopup(Cursor & cur);
+	///
+	void hideInline(Cursor & cur);
+	///
 	void updatePopup(Cursor & cur);
 	///
 	void updateInline(Cursor & cur, QString const & completion);

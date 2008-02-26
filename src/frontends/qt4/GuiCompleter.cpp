@@ -262,28 +262,12 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 	bool possibleInlineState = inlinePossible(cur) && cursorInView;
 
 	// we moved or popup state is not ok for popup?
-	if ((moved && !keep) || !possiblePopupState) {
-		// stop an old completion timer
-		if (popup_timer_.isActive())
-			popup_timer_.stop();
-
-		// hide old popup
-		if (popupVisible())
-			popup()->hide();
-	}
+	if ((moved && !keep) || !possiblePopupState)
+		hidePopup(cur);
 
 	// we moved or inline state is not ok for inline completion?
-	if ((moved && !keep) || !possibleInlineState) {
-		// stop an old completion timer
-		if (inline_timer_.isActive())
-			inline_timer_.stop();
-
-		// hide old inline completion
-		if (inlineVisible()) {
-			gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
-			inlineVisible_ = false;
-		}
-	}
+	if ((moved && !keep) || !possibleInlineState)
+		hideInline(cur);
 
 	// we inserted something and are in a possible popup state?
 	if (!popupVisible() && possiblePopupState && start
@@ -464,12 +448,27 @@ void GuiCompleter::showPopup(Cursor & cur)
 }
 
 
+void GuiCompleter::hidePopup(Cursor & cur)
+{
+	popup()->hide();
+	if (popup_timer_.isActive())
+		popup_timer_.stop();
+}
+
+
 void GuiCompleter::showInline(Cursor & cur)
 {
 	if (!inlinePossible(cur))
 		return;
 	
 	updateModel(cur, popupVisible(), true);
+}
+
+
+void GuiCompleter::hideInline(Cursor & cur)
+{
+	gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
+	inlineVisible_ = false;
 }
 
 
@@ -504,10 +503,7 @@ void GuiCompleter::activate()
 	if (!popupVisible() && !inlineVisible())
 		return;
 
-	// Complete with current selection in the popup.
-	QString s = currentCompletion();
-	popup()->hide();
-	popupActivated(s);
+	popupActivated(currentCompletion());
 }
 
 
@@ -548,9 +544,8 @@ void GuiCompleter::tab()
 		cur.inset().insertCompletion(cur, docstring(), true);
 		
 		// hide popup and inline completion
-		popup()->hide();
-		gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
-		inlineVisible_ = false;
+		hidePopup(cur);
+		hideInline(cur);
 		updateVisibility(false, false);
 		return;
 	}
@@ -730,7 +725,8 @@ void GuiCompleter::popupActivated(const QString & completion)
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = from_utf8(fromqstr(completion.mid(prefix.length())));
 	cur.inset().insertCompletion(cur, postfix, true);
-	updateVisibility(cur, false);
+	hidePopup(cur);
+	hideInline(cur);
 	
 	if (cur.disp_.update())
 		gui_->bufferView().processUpdateFlags(cur.disp_.update());
