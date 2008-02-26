@@ -85,7 +85,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-02 00:55+0100\n"
-"PO-Revision-Date: 2008-02-17 15:08+0100\n"
+"PO-Revision-Date: 2008-02-26 18:48+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "Un&ten"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr ""
+msgstr "Dies anwählen, wenn die Box über mehrere Seiten gehen soll"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
 msgid "Allow &page breaks"
@@ -2360,7 +2360,7 @@ msgstr "Mausrad Scrollgeschwindigkeit:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:132
 msgid "1.0 is the standard scrolling speed with the mouse wheel. Higher values will speed it up, low values slow it down."
-msgstr ""
+msgstr "1.0 ist die Standardscrollgeschwindigkeit mit dem Mausrad. Größere Werte erhöhen die Geschwindigkeit, kleinere verringern sie."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:38
 msgid "Use b&abel"
@@ -7859,15 +7859,15 @@ msgstr "Cap"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
-msgstr ""
+msgstr "GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
-msgstr ""
+msgstr "GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
-msgstr ""
+msgstr "GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -8335,9 +8335,8 @@ msgid "Tri-Glosse"
 msgstr ""
 
 #: lib/layouts/linguistics.module:116
-#, fuzzy
 msgid "expr."
-msgstr "exp"
+msgstr "Ausdr."
 
 #: lib/layouts/linguistics.module:130
 msgid "concept"
@@ -14976,7 +14975,7 @@ msgstr "Normalerweise bleibt der LyX-Cursor an seiner Position im Dokument, auch
 
 #: src/LyXRC.cpp:2429
 msgid "Show a small box around a Math Macro with the macro name when the cursor is inside."
-msgstr ""
+msgstr "Zeige eine kleine Box um ein Mathe-Makro mit dem Makronamen, wenn der Cursor innerhalb des Makros ist."
 
 #: src/LyXRC.cpp:2440
 #, no-c-format
@@ -15827,7 +15826,7 @@ msgstr "Ovaler Rahmen, dick"
 
 #: src/frontends/qt4/GuiBox.cpp:52
 msgid "Drop shadow"
-msgstr ""
+msgstr "Schattiert"
 
 #: src/frontends/qt4/GuiBox.cpp:53
 msgid "Shaded background"
@@ -17021,7 +17020,7 @@ msgstr "oval, dick"
 
 #: src/insets/InsetBox.cpp:63
 msgid "drop shadow"
-msgstr ""
+msgstr "schattiert"
 
 #: src/insets/InsetBox.cpp:64
 msgid "shaded background"
@@ -17065,11 +17064,11 @@ msgstr "nicht zitiert"
 
 #: src/insets/InsetCollapsable.cpp:109
 msgid "Left-click to collapse the inset"
-msgstr ""
+msgstr "Links-klicken um die Einfügung zu schließen"
 
 #: src/insets/InsetCollapsable.cpp:111
 msgid "Left-click to open the inset"
-msgstr ""
+msgstr "Links-klicken um die Einfügung zu öffnen"
 
 #: src/insets/InsetCommand.cpp:93
 msgid "LaTeX Command: "
@@ -17245,7 +17244,7 @@ msgstr "Stichwortverzeichnis"
 
 #: src/insets/InsetInfo.cpp:68
 msgid "Information regarding "
-msgstr "Information bezüglich"
+msgstr "Information bezüglich "
 
 #: src/insets/InsetInfo.cpp:70
 msgid " "
@@ -17263,7 +17262,7 @@ msgstr "ja"
 #: src/insets/InsetInfo.cpp:200
 #: src/insets/InsetInfo.cpp:207
 msgid "no"
-msgstr ""
+msgstr "nein"
 
 #: src/insets/InsetInfo.cpp:215
 #: src/insets/InsetInfo.cpp:221
@@ -17271,9 +17270,8 @@ msgid "No menu entry for "
 msgstr "Kein Menü Eintrag für"
 
 #: src/insets/InsetInfo.cpp:247
-#, fuzzy
 msgid "Unknown buffer info"
-msgstr "Unbekannter Benutzer"
+msgstr "Unbekannte Speicherinformation"
 
 #: src/insets/InsetListings.cpp:127
 msgid "Opened Listing Inset"
