@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -202,7 +202,7 @@ Manuel mathématique détaillé de LyX
 \begin_layout Author
 par l'équipe LyX 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \noindent
@@ -258,9 +258,7 @@ traducteur: Siegfried MEUNIER-GUTTIN-CLUZEL
 \newline
 
 \family sans
-Version 1.5.4-
-\family default
-1
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -6556,6 +6554,19 @@ name "Commandes ! U ! \\textbackslash underbrace"
 
 \backslash
 overbrace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \backslash
 underbrace
 \begin_inset ERT
@@ -16569,7 +16580,7 @@ ABC
 \begin_inset Text
 
 \begin_layout Standard
-Alt-z k
+Alt-c c
 \end_layout
 
 \end_inset
@@ -16616,7 +16627,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Standard
-Alt-z f
+Alt-c b
 \end_layout
 
 \end_inset
@@ -16710,7 +16721,7 @@ ABC
 \begin_inset Text
 
 \begin_layout Standard
-Alt-z h
+Alt-c e
 \end_layout
 
 \end_inset
@@ -16895,7 +16906,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Standard
-Alt-z r
+Alt-c r
 \end_layout
 
 \end_inset
@@ -16942,7 +16953,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Standard
-Alt-z s
+Alt-c s
 \end_layout
 
 \end_inset
@@ -16989,7 +17000,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Standard
--
+Alt-c p
 \end_layout
 
 \end_inset
@@ -19980,6 +19991,8 @@ name "Symboles ! divers"
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
 <features>
@@ -28229,7 +28242,7 @@ Si vous voulez avoir une expression de votre choix entre parenthèses après
 \series bold
 
 \backslash
-tag{expression}
+tag
 \series default
 
 \begin_inset LatexCommand index
@@ -28248,8 +28261,23 @@ Dans cet exemple, on a mis la commande
 
 \backslash
 tag
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
 \backslash
-{quelquechose
+spce 
+\end_layout
+
+\end_inset
+
+
+\series bold
+quelquechose
 \series default
  dans la formule.
 \end_layout
@@ -28260,8 +28288,23 @@ Quand on insère la commande
 
 \backslash
 tag*
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
 \backslash
-{quelquechose
+spce 
+\end_layout
+
+\end_inset
+
+
+\series bold
+quelquechose
 \series default
  à la place, l'astérisque supprime les parenthèses autour du texte:
 \begin_inset Formula \[
