@@ -160,18 +160,24 @@ void InsetRef::addToToc(Buffer const & buf,
 {
 	docstring const & label = getParam("reference");
 	Toc & toc = buf.tocBackend().toc("label");
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator end = toc.end();
+	Toc::iterator it = toc.begin();
+	Toc::iterator end = toc.end();
 	for (; it != end; ++it) {
 		if (it->str() == label)
 			break;
 	}
 
-	if (it == end)
-		//FIXME: this is an orphan, is this really possible?
-		return;
-
 	docstring const reflabel = getScreenLabel(buf);
+	if (it == end) {
+		// This label has not been parsed yet so we just add it temporarily.
+		// InsetLabel::addTocToc() will fix that later.
+		toc.push_back(TocItem(cpit, 0, label));
+		toc.push_back(TocItem(cpit, 1, reflabel));
+		return;
+	}
+
+	// The Toc item for this label already exists so let's add
+	// this inset to this node.
 	++it;
 	while (it->str() == reflabel && it != end)
 		++it;
