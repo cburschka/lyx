@@ -42,6 +42,8 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "label"; }
+	///
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

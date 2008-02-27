@@ -233,6 +233,8 @@ docstring GuiToc::guiName(string const & type) const
 		return _("List of Marginal notes");
 	if (type == "note")
 		return _("List of Notes");
+	if (type == "label")
+		return _("Labels and References");
 
 	FloatList const & floats = buffer().params().textClass().floats();
 	if (floats.typeExist(type))

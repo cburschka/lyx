@@ -778,6 +778,8 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 			label = _("List of Notes");
 		else if (cit->first == "footnote")
 			label = _("List of Foot notes");
+		else if (cit->first == "label")
+			label = _("Labels and References");
 		// this should not happen now, but if something else like
 		// listings is added later, this can avoid an empty menu name.
 		else
