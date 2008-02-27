@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -170,6 +170,15 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 
+% Prüfung auf sidecap
+% für seitliche Beschriftungen
+\newboolean{sidecap}
+\IfFileExists{sidecap.sty}
+ {\usepackage{sidecap}
+  \let\marginpar\marginnote
+  \setboolean{sidecap}{true}}
+ {\setboolean{sidecap}{false}}
+
 % Umdefinieren des Makros \LyX für PDF-Lesezeichen
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -298,11 +307,11 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 \newline
 
 \family sans
-Version 1.5.4
+Version 1.5.5
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 8.
+letzte Änderung: 27.
  Februar 2008
 \end_layout
 
@@ -329,9 +338,13 @@ arydshln
 \series bold
 colortbl
 \series default
- und 
+, 
 \series bold
 marginnote
+\series default
+ und 
+\series bold
+sidecap
 \series default
 .
  Wenn sie nicht installiert sind, erfolgt die Ausgabe ohne die Teile, in
@@ -21798,6 +21811,36 @@ leftcaption
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifsidecap
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Der folgende Abschnitt wird nur gedruckt, wenn das LaTeX-Paket 
+\series bold
+sidecap
+\series default
+ installiert ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Um die Beschriftung mit LyX seitlich zu drucken, müssen Sie folgende Befehle
  in den LaTeX-Vorspann schreiben:
 \end_layout
@@ -22624,6 +22667,60 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Der folgende Hinweis wird gedruckt, wenn das LaTeX-Paket 
+\series bold
+sidecap
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+sidecap
+\series default
+ muss installiert sein, um den folgenden Abschnitt in der Ausgabe zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
