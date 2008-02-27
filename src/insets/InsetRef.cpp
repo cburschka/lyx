@@ -179,7 +179,7 @@ void InsetRef::addToToc(Buffer const & buf,
 	// The Toc item for this label already exists so let's add
 	// this inset to this node.
 	++it;
-	while (it != end || it->str() == reflabel)
+	while (it != end && it->str() == reflabel)
 		++it;
 	toc.insert(it, TocItem(cpit, 1, reflabel));
 }
