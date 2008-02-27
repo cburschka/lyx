@@ -472,7 +472,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::cellstruct::cellstruct(Buffer const & buffer)
+Tabular::CellData::CellData(Buffer const & buffer)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -491,7 +491,7 @@ Tabular::cellstruct::cellstruct(Buffer const & buffer)
 }
 
 
-Tabular::cellstruct::cellstruct(cellstruct const & cs)
+Tabular::CellData::CellData(CellData const & cs)
 	: cellno(cs.cellno),
 	  width(cs.width),
 	  multicolumn(cs.multicolumn),
@@ -509,14 +509,14 @@ Tabular::cellstruct::cellstruct(cellstruct const & cs)
 {}
 
 
-Tabular::cellstruct & Tabular::cellstruct::operator=(cellstruct cs)
+Tabular::CellData & Tabular::CellData::operator=(CellData cs)
 {
 	swap(cs);
 	return *this;
 }
 
 
-void Tabular::cellstruct::swap(cellstruct & rhs)
+void Tabular::CellData::swap(CellData & rhs)
 {
 	std::swap(cellno, rhs.cellno);
 	std::swap(width, rhs.width);
@@ -535,7 +535,7 @@ void Tabular::cellstruct::swap(cellstruct & rhs)
 }
 
 
-Tabular::rowstruct::rowstruct()
+Tabular::RowData::RowData()
 	: ascent(0),
 	  descent(0),
 	  top_line(true),
@@ -551,7 +551,7 @@ Tabular::rowstruct::rowstruct()
 {}
 
 
-Tabular::columnstruct::columnstruct()
+Tabular::ColumnData::ColumnData()
 	: alignment(LYX_ALIGN_CENTER),
 	  valignment(LYX_VALIGN_TOP),
 	  left_line(true),
@@ -587,7 +587,7 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 	buffer_ = &buf;
 	row_info = row_vector(rows_arg);
 	column_info = column_vector(columns_arg);
-	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, cellstruct(buf)));
+	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, CellData(buf)));
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
@@ -626,7 +626,7 @@ void Tabular::appendRow(idx_type const cell)
 	row_type const row = cellRow(cell);
 
 	row_vector::iterator rit = row_info.begin() + row;
-	row_info.insert(rit, rowstruct());
+	row_info.insert(rit, RowData());
 	// now set the values of the row before
 	row_info[row] = row_info[row + 1];
 
@@ -637,7 +637,7 @@ void Tabular::appendRow(idx_type const cell)
 	for (row_type i = 0; i < nrows - 1; ++i)
 		swap(cell_info[i], old[i]);
 
-	cell_info = cell_vvector(nrows, cell_vector(ncols, cellstruct(buffer())));
+	cell_info = cell_vvector(nrows, cell_vector(ncols, CellData(buffer())));
 
 	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
@@ -682,13 +682,13 @@ void Tabular::appendColumn(idx_type const cell)
 	col_type const column = cellColumn(cell);
 	col_type const ncols = columnCount();
 	column_vector::iterator cit = column_info.begin() + column + 1;
-	column_info.insert(cit, columnstruct());
+	column_info.insert(cit, ColumnData());
 	// set the column values of the column before
 	column_info[column + 1] = column_info[column];
 
 	BufferParams const & bp = buffer().params();
 	for (row_type i = 0; i < rowCount(); ++i) {
-		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(buffer()));
+		cell_info[i].insert(cell_info[i].begin() + column + 1, CellData(buffer()));
 
 		// care about multicolumns
 		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
@@ -1589,7 +1589,7 @@ bool Tabular::isMultiColumnReal(idx_type cell) const
 }
 
 
-Tabular::cellstruct & Tabular::cellinfo_of_cell(idx_type cell) const
+Tabular::CellData & Tabular::cellinfo_of_cell(idx_type cell) const
 {
 	return cell_info[cellRow(cell)][cellColumn(cell)];
 }
@@ -1597,7 +1597,7 @@ Tabular::cellstruct & Tabular::cellinfo_of_cell(idx_type cell) const
 
 void Tabular::setMultiColumn(idx_type cell, idx_type number)
 {
-	cellstruct & cs = cellinfo_of_cell(cell);
+	CellData & cs = cellinfo_of_cell(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 	cs.alignment = column_info[cellColumn(cell)].alignment;
 	cs.top_line = row_info[cellRow(cell)].top_line;
@@ -1605,7 +1605,7 @@ void Tabular::setMultiColumn(idx_type cell, idx_type number)
 	cs.left_line = column_info[cellColumn(cell)].left_line;
 	cs.right_line = column_info[cellColumn(cell+number-1)].right_line;
 	for (idx_type i = 1; i < number; ++i) {
-		cellstruct & cs1 = cellinfo_of_cell(cell + i);
+		CellData & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cs.inset->appendParagraphs(cs1.inset->paragraphs());
 		cs1.inset->clear();

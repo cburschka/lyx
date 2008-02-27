@@ -459,16 +459,16 @@ public:
 	///
 //private:
 	///
-	class cellstruct {
+	class CellData {
 	public:
 		///
-		cellstruct(Buffer const &);
+		CellData(Buffer const &);
 		///
-		cellstruct(cellstruct const &);
+		CellData(CellData const &);
 		///
-		cellstruct & operator=(cellstruct);
+		CellData & operator=(CellData);
 		///
-		void swap(cellstruct & rhs);
+		void swap(CellData & rhs);
 		///
 		idx_type cellno;
 		///
@@ -498,17 +498,17 @@ public:
 		///
 		boost::shared_ptr<InsetText> inset;
 	};
-	cellstruct & cellinfo_of_cell(idx_type cell) const;
+	CellData & cellinfo_of_cell(idx_type cell) const;
 	///
-	typedef std::vector<cellstruct> cell_vector;
+	typedef std::vector<CellData> cell_vector;
 	///
 	typedef std::vector<cell_vector> cell_vvector;
 
 	///
-	class rowstruct {
+	class RowData {
 	public:
 		///
-		rowstruct();
+		RowData();
 		///
 		int ascent;
 		///
@@ -542,13 +542,13 @@ public:
 		bool newpage;
 	};
 	///
-	typedef std::vector<rowstruct> row_vector;
+	typedef std::vector<RowData> row_vector;
 
 	///
-	class columnstruct {
+	class ColumnData {
 		public:
 		///
-		columnstruct();
+		ColumnData();
 		///
 		LyXAlignment alignment;
 		///
@@ -565,7 +565,7 @@ public:
 		docstring align_special;
 	};
 	///
-	typedef std::vector<columnstruct> column_vector;
+	typedef std::vector<ColumnData> column_vector;
 
 	///
 	idx_type numberofcells;
