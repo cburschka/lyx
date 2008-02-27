@@ -85,7 +85,7 @@ class TocBackend
 {
 public:
 	///
-	TocBackend(Buffer const * buffer = NULL) : buffer_(buffer) {}
+	TocBackend(Buffer const * buffer) : buffer_(buffer) {}
 	///
 	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
