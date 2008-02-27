@@ -38,7 +38,6 @@ class KeyMap;
 class CmdDef;
 
 extern bool use_gui;
-extern bool quitting;
 
 namespace frontend {
 class Application;

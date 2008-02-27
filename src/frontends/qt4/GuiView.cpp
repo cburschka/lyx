@@ -433,20 +433,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	}
 
 	guiApp->unregisterView(id_);
-	if (guiApp->viewCount() > 0) {
-		// Just close the window and do nothing else if this is not the
-		// last window.
-		close_event->accept();
-		return;
-	}
-
-	quitting = true;
-
-	// this is the place where we leave the frontend.
-	// it is the only point at which we start quitting.
 	close_event->accept();
-	// quit the event loop
-	qApp->quit();
 }
 
 
@@ -1783,8 +1770,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_DIALOG_HIDE: {
-			if (quitting)
-				break;
 			guiApp->hideDialogs(to_utf8(cmd.argument()), 0);
 			break;
 		}
@@ -2094,13 +2079,6 @@ bool GuiView::isDialogVisible(string const & name) const
 
 void GuiView::hideDialog(string const & name, Inset * inset)
 {
-	// Don't send the signal if we are quitting, because on MSVC it is
-	// destructed before the cut stack in CutAndPaste.cpp, and this method
-	// is called from some inset destructor if the cut stack is not empty
-	// on exit.
-	if (quitting)
-		return;
-
 	map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
 	if (it == d.dialogs_.end())
 		return;

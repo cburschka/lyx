@@ -83,8 +83,6 @@ namespace os = support::os;
 
 bool use_gui = true;
 
-bool quitting;	// flag, that we are quitting the program
-
 namespace {
 
 // Filled with the command line arguments "foo" of "-sysdir foo" or
@@ -457,10 +455,6 @@ void LyX::prepareExit()
 	// Clear the clipboard and selection stack:
 	cap::clearCutStack();
 	cap::clearSelection();
-
-	// Set a flag that we do quitting from the program,
-	// so no refreshes are necessary.
-	quitting = true;
 
 	// close buffers first
 	pimpl_->buffer_list_.closeAll();

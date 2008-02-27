@@ -25,7 +25,6 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LyX.h" // quitting
 #include "MetricsInfo.h"
 #include "Text.h"
 #include "TextClass.h"
@@ -393,9 +392,7 @@ void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
 
 Buffer const * Inset::updateFrontend() const
 {
-	if (quitting)
-		return 0;
-	return theApp()->updateInset(this);
+	return theApp()? theApp()->updateInset(this) : 0;
 }
 
 } // namespace lyx
