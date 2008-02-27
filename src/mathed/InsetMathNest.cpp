@@ -1253,7 +1253,11 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			return true;
 		}
 
-		if (isAlphaASCII(c)) {
+		// do not finish macro for known * commands
+		WordList const & mwl = mathedWordList();
+		bool star_macro = c == '*'
+			&& (mwl.find(name.substr(1) + "*") != mwl.end());
+		if (isAlphaASCII(c) || star_macro) {
 			cur.activeMacro()->setName(name + docstring(1, c));
 			return true;
 		}
