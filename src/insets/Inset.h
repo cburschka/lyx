@@ -91,11 +91,10 @@ public:
 	virtual ~Inset() {}
 
 	/// change associated Buffer
-	virtual void setBuffer(Buffer * buffer) { buffer_ = buffer; }
-	virtual void setBufferRecursively(Buffer *) {}
+	virtual void setBuffer(Buffer & buffer);
 	/// retrieve associated Buffer
-	virtual Buffer * buffer() { return buffer_; }
-	virtual Buffer const * buffer() const { return buffer_; }
+	virtual Buffer & buffer();
+	virtual Buffer const & buffer() const;
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
@@ -249,28 +248,23 @@ public:
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.
-	virtual void getLabelList(Buffer const &,
-				  std::vector<docstring> & /* list */) const {}
+	virtual void getLabelList(std::vector<docstring> & /* list */) const {}
 
 	/// describe content if cursor inside
 	virtual void infoize(odocstream &) const {}
 	/// describe content if cursor behind
 	virtual void infoize2(odocstream &) const {}
 
-	enum {
-		PLAINTEXT_NEWLINE = 10000
-	};
+	enum { PLAINTEXT_NEWLINE = 10000 };
 
 	/// plain text output in ucs4 encoding
 	/// return the number of characters; in case of multiple lines of
 	/// output, add PLAINTEXT_NEWLINE to the number of chars in the last line
-	virtual int plaintext(Buffer const &, odocstream &,
-			      OutputParams const &) const = 0;
+	virtual int plaintext(odocstream &, OutputParams const &) const = 0;
 	/// docbook output
-	virtual int docbook(Buffer const &, odocstream & os,
-			    OutputParams const &) const;
+	virtual int docbook(odocstream & os, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual void textString(Buffer const &, odocstream &) const {}
+	virtual void textString(odocstream &) const {}
 
 	/** This enum indicates by which means the inset can be modified:
 	- NOT_EDITABLE: the inset's content cannot be modified at all
@@ -288,7 +282,7 @@ public:
 		HIGHLY_EDITABLE
 	};
 	/// what appears in the minibuffer when opening
-	virtual docstring const editMessage() const;
+	virtual docstring editMessage() const;
 	///
 	virtual EDITABLE editable() const;
 	/// can we go further down on mouse click?
@@ -396,21 +390,20 @@ public:
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	/// should paragraph indendation be ommitted in any case?
-	virtual bool neverIndent(Buffer const &) const { return false; }
+	virtual bool neverIndent() const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
 	/// write inset in .lyx format
-	virtual void write(Buffer const &, std::ostream &) const {}
+	virtual void write(std::ostream &) const {}
 	/// read inset in .lyx format
-	virtual void read(Buffer const &, Lexer &) {}
+	virtual void read(Lexer &) {}
 	/** Export the inset to LaTeX.
 	 *  Don't use a temporary stringstream if the final output is
 	 *  supposed to go to a file.
 	 *  \sa Buffer::writeLaTeXSource for the reason.
 	 *  \return the number of rows (\n's) of generated LaTeX code.
 	 */
-	virtual int latex(Buffer const &, odocstream &,
-			  OutputParams const &) const { return 0; }
+	virtual int latex(odocstream &, OutputParams const &) const { return 0; }
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
 	///
@@ -428,16 +421,15 @@ public:
 	virtual void addPreview(graphics::PreviewLoader &) const {}
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
-	virtual void addToToc(Buffer const &, ParConstIterator const &) const {}
+	virtual void addToToc(ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
 	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const {}
 	/// use embedded or external file after the embedding status of a file is changed
 	virtual void updateEmbeddedFile(Buffer const &, EmbeddedFile const &) {}
 	/// Fill keys with BibTeX information
-	virtual void fillWithBibKeys(Buffer const &,
-		BiblioInfo &, InsetIterator const &) const {}
+	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &) {}
+	virtual void updateLabels(ParIterator const &) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

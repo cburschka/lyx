@@ -116,6 +116,34 @@ static TranslatorMap const build_translator()
 }
 
 
+void Inset::setBuffer(Buffer & buffer)
+{
+	buffer_ = &buffer;
+}
+
+
+static Buffer & theDummyBuffer()
+{
+	static Buffer dummyBuffer("nobuffer.lyx", true);
+	return dummyBuffer;
+}
+
+
+Buffer & Inset::buffer()
+{
+	if (buffer_)
+		return *buffer_;
+	LYXERR0("DUMMYBUFFER FOR " << lyxCode());
+	return theDummyBuffer();
+}
+
+
+Buffer const & Inset::buffer() const
+{
+	return const_cast<Inset *>(this)->buffer();
+}
+
+
 docstring Inset::name() const
 {
 	return from_ascii("unknown");
@@ -245,8 +273,7 @@ bool Inset::idxUpDown(Cursor &, bool) const
 }
 
 
-int Inset::docbook(Buffer const &,
-	odocstream &, OutputParams const &) const
+int Inset::docbook(odocstream &, OutputParams const &) const
 {
 	return 0;
 }
@@ -270,7 +297,7 @@ bool Inset::autoDelete() const
 }
 
 
-docstring const Inset::editMessage() const
+docstring Inset::editMessage() const
 {
 	return _("Opened inset");
 }
@@ -366,8 +393,7 @@ InsetLayout const & Inset::getLayout(BufferParams const & bp) const
 
 void Inset::dump() const
 {
-	Buffer buf("foo", 1);
-	write(buf, lyxerr);
+	write(lyxerr);
 }
 
 

@@ -26,7 +26,6 @@ using lyx::frontend::Clipboard;
 
 namespace lyx {
 
-class Buffer;
 class ErrorList;
 class InsetText;
 class Cursor;
@@ -35,11 +34,11 @@ class ParagraphList;
 namespace cap {
 
 /// Get all elements of the cut buffer in plain text format.
-std::vector<docstring> const availableSelections(Buffer const & buffer);
+std::vector<docstring> availableSelections();
 /// Get the number of available elements in the cut buffer.
 size_type numberOfSelections();
 /// Get the sel_index-th element of the cut buffer in plain text format.
-docstring getSelection(Buffer const & buffer, size_t sel_index);
+docstring selection(size_t sel_index);
 
 /**
  * Replace using the font of the first selected character and select

@@ -40,18 +40,15 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	void write(Buffer const &, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	int latex(Buffer const &, odocstream & os,
-		  OutputParams const &) const;
+	int latex(odocstream & os, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
 	///
 	InsetCode lyxCode() const { return MATHMACRO_CODE; }

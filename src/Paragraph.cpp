@@ -115,7 +115,7 @@ public:
 			    bool) const;
 
 	///
-	void latexInset(Buffer const &, BufferParams const &,
+	void latexInset(BufferParams const &,
 				   odocstream &,
 				   TexRow & texrow, OutputParams &,
 				   Font & running_font,
@@ -632,7 +632,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 }
 
 
-void Paragraph::Private::latexInset(Buffer const & buf,
+void Paragraph::Private::latexInset(
 					     BufferParams const & bparams,
 					     odocstream & os,
 					     TexRow & texrow,
@@ -650,7 +650,7 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 	BOOST_ASSERT(inset);
 
 	if (style.pass_thru) {
-		inset->plaintext(buf, os, runparams);
+		inset->plaintext(os, runparams);
 		return;
 	}
 
@@ -743,7 +743,7 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 		}
 	}
 
-	int tmp = inset->latex(buf, os, runparams);
+	int tmp = inset->latex(os, runparams);
 
 	if (close) {
     	if (running_font.language()->lang() == "farsi")
@@ -1072,9 +1072,8 @@ Paragraph::~Paragraph()
 }
 
 
-void Paragraph::write(Buffer const & buf, ostream & os,
-			  BufferParams const & bparams,
-			  depth_type & dth) const
+void Paragraph::write(ostream & os, BufferParams const & bparams,
+	depth_type & dth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
 	if (dth != d->params_.depth()) {
@@ -1126,12 +1125,12 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 					// international char, let it write
 					// code directly so it's shorter in
 					// the file
-					inset->write(buf, os);
+					inset->write(os);
 				} else {
 					if (i)
 						os << '\n';
 					os << "\\begin_inset ";
-					inset->write(buf, os);
+					inset->write(os);
 					os << "\n\\end_inset\n\n";
 					column = 0;
 				}
@@ -1809,8 +1808,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 
 
 // This one spits out the text of the paragraph
-bool Paragraph::latex(Buffer const & buf,
-				BufferParams const & bparams,
+bool Paragraph::latex(BufferParams const & bparams,
 				Font const & outerfont,
 				odocstream & os, TexRow & texrow,
 				OutputParams const & runparams) const
@@ -2021,7 +2019,7 @@ bool Paragraph::latex(Buffer const & buf,
 		// Handle here those cases common to both modes
 		// and then split to handle the two modes separately.
 		if (c == META_INSET)
-			d->latexInset(buf, bparams, os,
+			d->latexInset(bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column);
@@ -2112,7 +2110,8 @@ bool Paragraph::emptyTag() const
 }
 
 
-string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) const
+string Paragraph::getID(Buffer const & buf, OutputParams const & runparams)
+	const
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		if (Inset const * inset = getInset(i)) {
@@ -2128,12 +2127,13 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 }
 
 
-pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputParams const & runparams) const
+pos_type Paragraph::firstWord(odocstream & os, OutputParams const & runparams)
+	const
 {
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
 		if (Inset const * inset = getInset(i)) {
-			inset->docbook(buf, os, runparams);
+			inset->docbook(os, runparams);
 		} else {
 			char_type c = d->text_[i];
 			if (c == ' ')
@@ -2193,7 +2193,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		}
 
 		if (Inset const * inset = getInset(i)) {
-			inset->docbook(buf, os, runparams);
+			inset->docbook(os, runparams);
 		} else {
 			char_type c = d->text_[i];
 
@@ -2298,16 +2298,13 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 }
 
 
-// Convert the paragraph to a string.
-// Used for building the table of contents
-docstring const Paragraph::asString(Buffer const & buffer, bool label) const
+docstring Paragraph::asString(bool label) const
 {
-	return asString(buffer, 0, size(), label);
+	return asString(0, size(), label);
 }
 
 
-docstring const Paragraph::asString(Buffer const & buffer,
-				 pos_type beg, pos_type end, bool label) const
+docstring Paragraph::asString(pos_type beg, pos_type end, bool label) const
 {
 
 	odocstringstream os;
@@ -2320,7 +2317,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 		if (isPrintable(c))
 			os.put(c);
 		else if (c == META_INSET)
-			getInset(i)->textString(buffer, os);
+			getInset(i)->textString(os);
 	}
 
 	return os.str();
@@ -2440,11 +2437,11 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 }
 
 
-int Paragraph::checkBiblio(bool track_changes)
+int Paragraph::checkBiblio(Buffer const & buffer)
 {
-	//FIXME From JS:
-	//This is getting more and more a mess. ...We really should clean
-	//up this bibitem issue for 1.6. See also bug 2743.
+	// FIXME From JS:
+	// This is getting more and more a mess. ...We really should clean
+	// up this bibitem issue for 1.6. See also bug 2743.
 
 	// Add bibitem insets if necessary
 	if (d->layout_->labeltype != LABEL_BIBLIO)
@@ -2454,6 +2451,8 @@ int Paragraph::checkBiblio(bool track_changes)
 		// Insist on it being in pos 0
 		&& d->text_[0] == META_INSET
 		&& d->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
+
+	bool track_changes = buffer.params().trackChanges;
 
 	docstring oldkey;
 	docstring oldlabel;
@@ -2477,13 +2476,13 @@ int Paragraph::checkBiblio(bool track_changes)
 			break;
 	}
 
-	//There was an InsetBibitem at the beginning, and we didn't
-	//have to erase one.
+	// There was an InsetBibitem at the beginning, and we didn't
+	// have to erase one.
 	if (hasbibitem && erasedInsetPosition < 0)
 			return 0;
 
-	//There was an InsetBibitem at the beginning and we did have to
-	//erase one. So we give its properties to the beginning inset.
+	// There was an InsetBibitem at the beginning and we did have to
+	// erase one. So we give its properties to the beginning inset.
 	if (hasbibitem) {
 		InsetBibitem * inset =
 			static_cast<InsetBibitem *>(d->insetlist_.begin()->inset);
@@ -2493,9 +2492,10 @@ int Paragraph::checkBiblio(bool track_changes)
 		return -erasedInsetPosition;
 	}
 
-	//There was no inset at the beginning, so we need to create one with
-	//the key and label of the one we erased.
-	InsetBibitem * inset(new InsetBibitem(InsetCommandParams(BIBITEM_CODE)));
+	// There was no inset at the beginning, so we need to create one with
+	// the key and label of the one we erased.
+	InsetBibitem * inset = new InsetBibitem(InsetCommandParams(BIBITEM_CODE));
+	inset->setBuffer(const_cast<Buffer &>(buffer));
 	// restore values of previously deleted item in this par.
 	if (!oldkey.empty())
 		inset->setParam("key", oldkey);
@@ -2726,8 +2726,7 @@ void Paragraph::collectWords(Buffer const & buf, CursorSlice const & sl)
 		from.text()->getWord(from, to, WHOLE_WORD);
 		if (to.pos() - from.pos() < 6)
 			continue;
-		docstring word
-		= asString(buf, from.pos(), to.pos(), false);
+		docstring word = asString(from.pos(), to.pos(), false);
 		d->words_.insert(word);
 		//lyxerr << word << " ";
 	}

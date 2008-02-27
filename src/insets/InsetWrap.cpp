@@ -105,17 +105,17 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetWrap::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetWrap::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buf.params().textClass().counters();
+	Counters & cnts = buffer().params().textClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
 
-	InsetCollapsable::updateLabels(buf, it);
+	InsetCollapsable::updateLabels(it);
 
-	//reset afterwards
+	// reset afterwards
 	cnts.current_float(saveflt);
 }
 
@@ -178,17 +178,17 @@ void InsetWrapParams::read(Lexer & lex)
 }
 
 
-void InsetWrap::write(Buffer const & buf, ostream & os) const
+void InsetWrap::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetWrap::read(Buffer const & buf, Lexer & lex)
+void InsetWrap::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
@@ -205,14 +205,13 @@ Inset * InsetWrap::clone() const
 }
 
 
-docstring const InsetWrap::editMessage() const
+docstring InsetWrap::editMessage() const
 {
 	return _("Opened Wrap Inset");
 }
 
 
-int InsetWrap::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams) const
+int InsetWrap::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "\\begin{wrap" << from_ascii(params_.type) << '}';
 	// no optional argument when lines are zero
@@ -224,29 +223,28 @@ int InsetWrap::latex(Buffer const & buf, odocstream & os,
 	if (over.value() != 0)
 		os << '[' << from_ascii(params_.overhang.asLatexString()) << ']';
 	os << '{' << from_ascii(params_.width.asLatexString()) << "}%\n";
-	int const i = InsetText::latex(buf, os, runparams);
+	int const i = InsetText::latex(os, runparams);
 	os << "\\end{wrap" << from_ascii(params_.type) << "}%\n";
 	return i + 2;
 }
 
 
-int InsetWrap::plaintext(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+int InsetWrap::plaintext(odocstream & os, OutputParams const & runparams) const
 {
-	os << '[' << buf.B_("wrap") << ' ' << floatName(params_.type, buf.params()) << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	os << '[' << buffer().B_("wrap") << ' '
+		<< floatName(params_.type, buffer().params()) << ":\n";
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetWrap::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	// FIXME UNICODE
 	os << '<' << from_ascii(params_.type) << '>';
-	int const i = InsetText::docbook(buf, os, runparams);
+	int const i = InsetText::docbook(os, runparams);
 	os << "</" << from_ascii(params_.type) << '>';
 	return i;
 }

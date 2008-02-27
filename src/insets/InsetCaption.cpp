@@ -68,14 +68,14 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 }
 
 
-void InsetCaption::write(Buffer const & buf, ostream & os) const
+void InsetCaption::write(ostream & os) const
 {
 	os << "Caption\n";
-	text_.write(buf, os);
+	text_.write(buffer(), os);
 }
 
 
-void InsetCaption::read(Buffer const & buf, Lexer & lex)
+void InsetCaption::read(Lexer & lex)
 {
 #if 0
 	// We will enably this check again when the compability
@@ -86,11 +86,11 @@ void InsetCaption::read(Buffer const & buf, Lexer & lex)
 		       << endl;
 	}
 #endif
-	InsetText::read(buf, lex);
+	InsetText::read(lex);
 }
 
 
-docstring const InsetCaption::editMessage() const
+docstring InsetCaption::editMessage() const
 {
 	return _("Opened Caption Inset");
 }
@@ -115,8 +115,7 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetCaption::addToToc(ParConstIterator const & cpit) const
 {
 	if (type_.empty())
 		return;
@@ -124,8 +123,8 @@ void InsetCaption::addToToc(Buffer const & buf,
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = buf.tocBackend().toc(type_);
-	docstring const str = full_label_ + ". " + pit->asString(buf, false);
+	Toc & toc = buffer().tocBackend().toc(type_);
+	docstring const str = full_label_ + ". " + pit->asString(false);
 	toc.push_back(TocItem(pit, 0, str));
 }
 
@@ -218,7 +217,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCaption::latex(Buffer const & buf, odocstream & os,
+int InsetCaption::latex(odocstream & os,
 			OutputParams const & runparams_in) const
 {
 	// This is a bit too simplistic to take advantage of
@@ -231,68 +230,68 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 	// optional argument.
 	runparams.moving_arg = true;
 	os << "\\caption";
-	int l = latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
+	int l = latexOptArgInsets(paragraphs()[0], os, runparams, 1);
 	os << '{';
-	l += InsetText::latex(buf, os, runparams);
+	l += InsetText::latex(os, runparams);
 	os << "}\n";
 	runparams_in.encoding = runparams.encoding;
 	return l + 1;
 }
 
 
-int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
+int InsetCaption::plaintext(odocstream & os,
 			    OutputParams const & runparams) const
 {
 	os << '[' << full_label_ << "\n";
-	InsetText::plaintext(buf, os, runparams);
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetCaption::docbook(Buffer const & buf, odocstream & os,
+int InsetCaption::docbook(odocstream & os,
 			  OutputParams const & runparams) const
 {
 	int ret;
 	os << "<title>";
-	ret = InsetText::docbook(buf, os, runparams);
+	ret = InsetText::docbook(os, runparams);
 	os << "</title>\n";
 	return ret;
 }
 
 
-int InsetCaption::getArgument(Buffer const & buf, odocstream & os,
+int InsetCaption::getArgument(odocstream & os,
 			OutputParams const & runparams) const
 {
-	return InsetText::latex(buf, os, runparams);
+	return InsetText::latex(os, runparams);
 }
 
 
-int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
+int InsetCaption::getOptArg(odocstream & os,
 			OutputParams const & runparams) const
 {
-	return latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
+	return latexOptArgInsets(paragraphs()[0], os, runparams, 1);
 }
 
 
-void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetCaption::updateLabels(ParIterator const & it)
 {
-	TextClass const & tclass = buf.params().textClass();
+	TextClass const & tclass = buffer().params().textClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
 	// Memorize type for addToToc().
 	type_ = type;
 	if (type.empty())
-		full_label_ = buf.B_("Senseless!!! ");
+		full_label_ = buffer().B_("Senseless!!! ");
 	else {
 		// FIXME: life would be _much_ simpler if listings was
 		// listed in Floating.
 		docstring name;
 		if (type == "listing")
-			name = buf.B_("Listing");
+			name = buffer().B_("Listing");
 		else
-			name = buf.B_(tclass.floats().getType(type).name());
+			name = buffer().B_(tclass.floats().getType(type).name());
 		if (cnts.hasCounter(from_utf8(type))) {
 			cnts.step(from_utf8(type));
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
@@ -303,7 +302,7 @@ void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 	}
 
 	// Do the real work now.
-	InsetText::updateLabels(buf, it);
+	InsetText::updateLabels(it);
 }
 
 

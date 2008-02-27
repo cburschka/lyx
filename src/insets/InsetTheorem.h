@@ -27,7 +27,7 @@ public:
 	///
 	Inset.heorem();
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
 	InsetCode lyxCode() const { return THEOREM_CODE; }
 	///
@@ -35,14 +35,13 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool isMacroScope(Buffer const &) const { return true; }
+	bool isMacroScope() const { return true; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 
 	///
 	mutable unsigned int center_indent_;

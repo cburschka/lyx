@@ -161,14 +161,14 @@ Dimension const InsetText::dimension(BufferView const & bv) const
 }
 
 
-void InsetText::write(Buffer const & buf, ostream & os) const
+void InsetText::write(ostream & os) const
 {
 	os << "Text\n";
-	text_.write(buf, os);
+	text_.write(buffer(), os);
 }
 
 
-void InsetText::read(Buffer const & buf, Lexer & lex)
+void InsetText::read(Lexer & lex)
 {
 	clear();
 
@@ -176,7 +176,7 @@ void InsetText::read(Buffer const & buf, Lexer & lex)
 	Paragraph oldpar = *paragraphs().begin();
 	paragraphs().clear();
 	ErrorList errorList;
-	bool res = text_.read(buf, lex, errorList, this);
+	bool res = text_.read(buffer(), lex, errorList, this);
 
 	if (!res) {
 		lex.printError("Missing \\end_inset at this point. "
@@ -228,7 +228,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring const InsetText::editMessage() const
+docstring InsetText::editMessage() const
 {
 	return _("Opened Text Inset");
 }
@@ -297,17 +297,15 @@ void InsetText::rejectChanges(BufferParams const & bparams)
 }
 
 
-int InsetText::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams) const
+int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 {
 	TexRow texrow;
-	latexParagraphs(buf, text_, os, texrow, runparams);
+	latexParagraphs(buffer(), text_, os, texrow, runparams);
 	return texrow.rows();
 }
 
 
-int InsetText::plaintext(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+int InsetText::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
@@ -321,7 +319,7 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 				os << '\n';
 		}
 		odocstringstream oss;
-		writePlaintextParagraph(buf, *it, oss, runparams, ref_printed);
+		writePlaintextParagraph(buffer(), *it, oss, runparams, ref_printed);
 		docstring const str = oss.str();
 		os << str;
 		// FIXME: len is not computed fully correctly; in principle,
@@ -333,10 +331,9 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetText::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	docbookParagraphs(paragraphs(), buf, os, runparams);
+	docbookParagraphs(paragraphs(), buffer(), os, runparams);
 	return 0;
 }
 
@@ -410,7 +407,7 @@ void InsetText::setFrameColor(ColorCode col)
 }
 
 
-void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
+void InsetText::appendParagraphs(ParagraphList & plist)
 {
 	// There is little we can do here to keep track of changes.
 	// As of 2006/10/20, appendParagraphs is used exclusively by
@@ -422,7 +419,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = pl.insert(pl.end(), *pit);
 	++pit;
-	mergeParagraph(buffer->params(), pl,
+	mergeParagraph(buffer().params(), pl,
 		       distance(pl.begin(), ins) - 1);
 
 	for_each(pit, plist.end(),
@@ -444,12 +441,12 @@ void InsetText::addPreview(PreviewLoader & loader) const
 }
 
 
-//FIXME: instead of this hack, which only works by chance,
+// FIXME: instead of this hack, which only works by chance,
 // cells should have their own insetcell type, which returns CELL_CODE!
-bool InsetText::neverIndent(Buffer const & buffer) const
+bool InsetText::neverIndent() const
 {
 	// this is only true for tabular cells
-	return !text_.isMainText(buffer) && lyxCode() == TEXT_CODE;
+	return !text_.isMainText(buffer()) && lyxCode() == TEXT_CODE;
 }
 
 
@@ -465,12 +462,12 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-void InsetText::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetText::updateLabels(ParIterator const & it)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
 	BOOST_ASSERT(&it2.inset() == this && it2.pit() == 0);
-	lyx::updateLabels(buf, it2);
+	lyx::updateLabels(buffer(), it2);
 }
 
 
@@ -533,8 +530,7 @@ Inset::CompletionList const * InsetText::createCompletionList(
 }
 
 
-docstring InsetText::previousWord(Buffer const & buffer,
-	CursorSlice const & sl) const
+docstring InsetText::previousWord(CursorSlice const & sl) const
 {
 	CursorSlice from = sl;
 	CursorSlice to = sl;
@@ -543,7 +539,7 @@ docstring InsetText::previousWord(Buffer const & buffer,
 		return docstring();
 	
 	Paragraph const & par = sl.paragraph();
-	return par.asString(buffer, from.pos(), to.pos(), false);
+	return par.asString(from.pos(), to.pos(), false);
 }
 
 
@@ -551,8 +547,7 @@ docstring InsetText::completionPrefix(Cursor const & cur) const
 {
 	if (!completionSupported(cur))
 		return docstring();
-	
-	return previousWord(cur.buffer(), cur.top());
+	return previousWord(cur.top());
 }
 
 
@@ -577,7 +572,7 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Cursor const & bvcur = cur.bv().cursor();
 	
 	// get word in front of cursor
-	docstring word = previousWord(cur.buffer(), bvcur.top());
+	docstring word = previousWord(bvcur.top());
 	DocIterator wordStart = bvcur;
 	wordStart.pos() -= word.length();
 	

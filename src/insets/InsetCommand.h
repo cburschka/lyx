@@ -41,17 +41,15 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const &, std::ostream & os) const
-		{ p_.write(os); }
+	void write(std::ostream & os) const { p_.write(os); }
 	///
-	virtual void read(Buffer const &, Lexer & lex)
-		{ p_.read(lex); }
+	void read(Lexer & lex) { p_.read(lex); }
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const & runparams) const;
+	int docbook(odocstream &, OutputParams const & runparams) const;
 	///
 	InsetCode lyxCode() const { return NO_CODE; }
 	///
@@ -106,7 +104,7 @@ protected:
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button
-	virtual docstring const getScreenLabel(Buffer const &) const = 0;
+	virtual docstring screenLabel() const = 0;
 
 private:
 	///

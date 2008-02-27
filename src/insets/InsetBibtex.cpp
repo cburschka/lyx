@@ -146,16 +146,14 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-docstring const InsetBibtex::getScreenLabel(Buffer const &) const
+docstring InsetBibtex::screenLabel() const
 {
 	return _("BibTeX Generated Bibliography");
 }
 
 
-namespace {
-
-string normalizeName(Buffer const & buffer, OutputParams const & runparams,
-		      string const & name, string const & ext)
+static string normalizeName(Buffer const & buffer,
+	OutputParams const & runparams, string const & name, string const & ext)
 {
 	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
 	if (FileName(name).isAbsolute() || !FileName(fname + ext).isReadableFile())
@@ -168,11 +166,8 @@ string normalizeName(Buffer const & buffer, OutputParams const & runparams,
 					 from_utf8(buffer.masterBuffer()->filePath())));
 }
 
-}
 
-
-int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 {
 	// the sequence of the commands:
 	// 1. \bibliographystyle{style}
@@ -194,15 +189,16 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	// use such filenames.)
 	// Otherwise, store the (maybe absolute) path to the original,
 	// unmangled database name.
-	EmbeddedFileList const bibs = getFiles(buffer);
+	EmbeddedFileList const bibs = getFiles(buffer());
 	EmbeddedFileList::const_iterator it = bibs.begin();
 	EmbeddedFileList::const_iterator it_end = bibs.end();
 	odocstringstream dbs;
 	for (; it != it_end; ++it) {
 		string utf8input = removeExtension(it->availableFile().absFilename());
 		string database =
-			normalizeName(buffer, runparams, utf8input, ".bib");
-		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
+			normalizeName(buffer(), runparams, utf8input, ".bib");
+		FileName const try_in_file =
+			makeAbsPath(database + ".bib", buffer().filePath());
 		bool const not_from_texmf = try_in_file.isReadableFile();
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
@@ -212,7 +208,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			DocFileName const in_file = DocFileName(try_in_file);
 			database = removeExtension(in_file.mangledFilename());
 			FileName const out_file = makeAbsPath(database + ".bib",
-					buffer.masterBuffer()->temppath());
+					buffer().masterBuffer()->temppath());
 
 			bool const success = in_file.copyTo(out_file);
 			if (!success) {
@@ -259,8 +255,9 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	int nlines = 0;
 
 	if (!style.empty()) {
-		string base = normalizeName(buffer, runparams, style, ".bst");
-		FileName const try_in_file(makeAbsPath(base + ".bst", buffer.filePath()));
+		string base = normalizeName(buffer(), runparams, style, ".bst");
+		FileName const try_in_file = 
+			makeAbsPath(base + ".bst", buffer().filePath());
 		bool const not_from_texmf = try_in_file.isReadableFile();
 		// If this style does not come from texmf and we are not
 		// exporting to .tex copy it to the tmp directory.
@@ -271,8 +268,8 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			// use new style name
 			DocFileName const in_file = DocFileName(try_in_file);
 			base = removeExtension(in_file.mangledFilename());
-			FileName const out_file(makeAbsPath(base + ".bst",
-					buffer.masterBuffer()->temppath()));
+			FileName const out_file = makeAbsPath(base + ".bst",
+					buffer().masterBuffer()->temppath());
 			bool const success = in_file.copyTo(out_file);
 			if (!success) {
 				lyxerr << "Failed to copy '" << in_file
@@ -282,7 +279,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		}
 		// FIXME UNICODE
 		os << "\\bibliographystyle{"
-		   << from_utf8(latex_path(normalizeName(buffer, runparams, base, ".bst")))
+		   << from_utf8(latex_path(normalizeName(buffer(), runparams, base, ".bst")))
 		   << "}\n";
 		nlines += 1;
 	}
@@ -296,7 +293,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 					      "BibTeX will be unable to find it."));
 	}
 
-	if (!db_out.empty() && buffer.params().use_bibtopic){
+	if (!db_out.empty() && buffer().params().use_bibtopic){
 		os << "\\begin{btSect}{" << db_out << "}\n";
 		docstring btprint = getParam("btprint");
 		if (btprint.empty())
@@ -308,14 +305,14 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	// bibtotoc-Option
-	if (!bibtotoc.empty() && !buffer.params().use_bibtopic) {
+	if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
 		// maybe a problem when a textclass has no "art" as
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(buffer.params().textClass().name(),
+		if (!contains(buffer().params().textClass().name(),
 			      "art")) {
-			if (buffer.params().sides == OneSide) {
+			if (buffer().params().sides == OneSide) {
 				// oneside
 				os << "\\clearpage";
 			} else {
@@ -332,7 +329,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		}
 	}
 
-	if (!db_out.empty() && !buffer.params().use_bibtopic){
+	if (!db_out.empty() && !buffer().params().use_bibtopic) {
 		docstring btprint = getParam("btprint");
 		if (btprint == "btPrintAll") {
 			os << "\\nocite{*}\n";
@@ -627,10 +624,10 @@ namespace {
 
 
 // This method returns a comma separated list of Bibtex entries
-void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
-		BiblioInfo & keylist, InsetIterator const & /*di*/) const
+void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
+	InsetIterator const & /*di*/) const
 {
-	EmbeddedFileList const files = getFiles(buffer);
+	EmbeddedFileList const files = getFiles(buffer());
 	for (vector<EmbeddedFile>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
 		// This bibtex parser is a first step to parse bibtex files
@@ -653,8 +650,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// 8bit clean bibtex forks exist.
 		
 		idocfstream ifs(it->availableFile().toFilesystemEncoding().c_str(),
-			ios_base::in,
-			buffer.params().encoding().iconvName());
+			ios_base::in, buffer().params().encoding().iconvName());
 
 		char_type ch;
 		VarMap strings;

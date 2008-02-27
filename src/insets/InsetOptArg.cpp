@@ -37,45 +37,42 @@ Inset * InsetOptArg::clone() const
 }
 
 
-docstring const InsetOptArg::editMessage() const
+docstring InsetOptArg::editMessage() const
 {
 	return _("Opened Optional Argument Inset");
 }
 
 
-void InsetOptArg::write(Buffer const & buf, ostream & os) const
+void InsetOptArg::write(ostream & os) const
 {
 	os << "OptArg" << "\n";
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-int InsetOptArg::latex(Buffer const &, odocstream &,
-		       OutputParams const &) const
+int InsetOptArg::latex(odocstream &, OutputParams const &) const
 {
 	return 0;
 }
 
 
-int InsetOptArg::plaintext(Buffer const &, odocstream &,
-			   OutputParams const &) const
+int InsetOptArg::plaintext(odocstream &, OutputParams const &) const
 {
 	return 0; // do not output optional arguments
 }
 
 
-int InsetOptArg::docbook(Buffer const &, odocstream &,
-			 OutputParams const &) const
+int InsetOptArg::docbook(odocstream &, OutputParams const &) const
 {
 	return 0;
 }
 
 
-int InsetOptArg::latexOptional(Buffer const & buf, odocstream & os,
+int InsetOptArg::latexOptional(odocstream & os,
 			       OutputParams const & runparams) const
 {
 	odocstringstream ss;
-	int ret = InsetText::latex(buf, ss, runparams);
+	int ret = InsetText::latex(ss, runparams);
 	docstring str = ss.str();
 	if (str.find(']') != docstring::npos)
 		str = '{' + str + '}';

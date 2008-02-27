@@ -31,22 +31,19 @@ public:
 	///
 	docstring name() const { return from_ascii("Marginal"); }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const & runparams) const;
+	int plaintext(odocstream &, OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const & runparams) const;
+	int docbook(odocstream &, OutputParams const & runparams) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 };
 
 

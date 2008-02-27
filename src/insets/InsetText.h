@@ -46,15 +46,15 @@ public:
 	/// empty inset to empty par
 	void clear();
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -64,11 +64,11 @@ public:
 	///
 	InsetText const * asInsetText() const { return this; }
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 
@@ -106,7 +106,7 @@ public:
 	void rejectChanges(BufferParams const & bparams);
 
 	/// append text onto the existing text
-	void appendParagraphs(Buffer * bp, ParagraphList &);
+	void appendParagraphs(ParagraphList &);
 
 	///
 	void addPreview(graphics::PreviewLoader &) const;
@@ -127,16 +127,16 @@ public:
 	///
 	bool allowSpellCheck() const { return true; }
 	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent(Buffer const &) const;
+	bool neverIndent() const;
 	///
-	virtual bool isMacroScope(Buffer const &) const { return true; }
+	virtual bool isMacroScope() const { return true; }
 	///
 	virtual bool allowMultiPar() const { return true; }
 
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const;
 	///
 	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
@@ -171,7 +171,7 @@ private:
 	///
 	mutable pit_type old_pit;
 	///
-	docstring previousWord(Buffer const & buffer, CursorSlice const & sl) const;
+	docstring previousWord(CursorSlice const & sl) const;
 
 public:
 	///

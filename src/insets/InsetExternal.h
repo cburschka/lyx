@@ -110,30 +110,27 @@ class InsetExternal : public Inset, public boost::signals::trackable
 public:
 	InsetExternal();
 	///
-	virtual ~InsetExternal();
+	~InsetExternal();
 	///
-	virtual InsetCode lyxCode() const { return EXTERNAL_CODE; }
+	InsetCode lyxCode() const { return EXTERNAL_CODE; }
 	///
-	virtual EDITABLE editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	virtual void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 
 	/// \returns the number of rows (\n's) of generated code.
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
 	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
@@ -141,7 +138,7 @@ public:
 	///
 	InsetExternalParams const & params() const;
 	///
-	void setParams(InsetExternalParams const &, Buffer const &);
+	void setParams(InsetExternalParams const &);
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
@@ -156,9 +153,9 @@ public:
 protected:
 	InsetExternal(InsetExternal const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

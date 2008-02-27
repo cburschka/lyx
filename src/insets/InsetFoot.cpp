@@ -51,37 +51,36 @@ Inset * InsetFoot::clone() const
 }
 
 
-docstring const InsetFoot::editMessage() const
+docstring InsetFoot::editMessage() const
 {
 	return _("Opened Footnote Inset");
 }
 
 
-void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetFoot::updateLabels(ParIterator const & it)
 {
-	TextClass const & tclass = buf.params().textClass();
+	TextClass const & tclass = buffer().params().textClass();
 	Counters & cnts = tclass.counters();
 	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();
 	if (!outer.layout()->intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
-		//FIXME: the counter should format itself.
+		// FIXME: the counter should format itself.
 		setLabel(support::bformat(from_ascii("%1$s %2$s"), 
-					  getLayout(buf.params()).labelstring(), 
+					  getLayout(buffer().params()).labelstring(), 
 					  cnts.theCounter(foot)));
 	
 	}
-	InsetCollapsable::updateLabels(buf, it);
+	InsetCollapsable::updateLabels(it);
 }
 
 
-void InsetFoot::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetFoot::addToToc(ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = buf.tocBackend().toc("footnote");
+	Toc & toc = buffer().tocBackend().toc("footnote");
 	// FIXME: we probably want the footnote number too.
 	docstring str;
 	str = getNewLabel(str);
@@ -89,8 +88,7 @@ void InsetFoot::addToToc(Buffer const & buf,
 }
 
 
-int InsetFoot::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams_in) const
+int InsetFoot::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
 	// footnotes in titling commands like \title have moving arguments
@@ -103,7 +101,7 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 	else
 		os << "%\n\\footnote{";
 
-	int const i = InsetText::latex(buf, os, runparams);
+	int const i = InsetText::latex(os, runparams);
 	os << "%\n}";
 	runparams_in.encoding = runparams.encoding;
 
@@ -111,22 +109,20 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetFoot::plaintext(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+int InsetFoot::plaintext(odocstream & os, OutputParams const & runparams) const
 {
-	os << '[' << buf.B_("footnote") << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	os << '[' << buffer().B_("footnote") << ":\n";
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetFoot::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetFoot::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	os << "<footnote>";
-	int const i = InsetText::docbook(buf, os, runparams);
+	int const i = InsetText::docbook(os, runparams);
 	os << "</footnote>";
 
 	return i;

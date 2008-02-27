@@ -220,7 +220,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		InsetList::const_iterator it = fpit->insetList().begin();
 		InsetList::const_iterator et = fpit->insetList().end();
 		for (; it != et; ++it)
-				it->inset->setBuffer(const_cast<Buffer *>(&buffer));
+				it->inset->setBuffer(const_cast<Buffer &>(buffer));
 	}
 	insertion.swap(in.paragraphs());
 
@@ -455,7 +455,7 @@ void switchBetweenClasses(TextClassPtr const & oldone,
 }
 
 
-vector<docstring> const availableSelections(Buffer const & buffer)
+vector<docstring> availableSelections()
 {
 	vector<docstring> selList;
 
@@ -469,7 +469,7 @@ vector<docstring> const availableSelections(Buffer const & buffer)
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
-			asciiSel += pit->asString(buffer, false);
+			asciiSel += pit->asString(false);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, docstring::npos,
 						 from_ascii("..."));
@@ -683,10 +683,10 @@ void clearCutStack()
 }
 
 
-docstring getSelection(Buffer const & buf, size_t sel_index)
+docstring selection(size_t sel_index)
 {
 	return sel_index < theCuts.size()
-		? theCuts[sel_index].first.back().asString(buf, false)
+		? theCuts[sel_index].first.back().asString(false)
 		: docstring();
 }
 

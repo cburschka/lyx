@@ -355,8 +355,7 @@ void InsetMathNest::normalize(NormalStream & os) const
 }
 
 
-int InsetMathNest::latex(Buffer const &, odocstream & os,
-			OutputParams const & runparams) const
+int InsetMathNest::latex(odocstream & os, OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
 	write(wi);
@@ -457,7 +456,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			size_t n = 0;
 			idocstringstream is(cmd.argument());
 			is >> n;
-			topaste = cap::getSelection(cur.buffer(), n);
+			topaste = cap::selection(n);
 		}
 		cur.niceInsert(topaste);
 		cur.clearSelection(); // bug 393

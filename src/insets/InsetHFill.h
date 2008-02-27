@@ -27,17 +27,15 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	InsetCode lyxCode() const { return HFILL_CODE; }
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 	/// is this equivalent to a space (which is BTW different from

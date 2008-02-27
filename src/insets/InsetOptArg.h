@@ -32,30 +32,26 @@ public:
 	///
 	docstring name() const { return from_ascii("OptArg"); }
 	/// return an message upon editing
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	/// Standard plain text output -- short-circuited
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
 	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(Buffer const &, odocstream &,
-			  OutputParams const &) const;
+	int latexOptional(odocstream &, OutputParams const &) const;
 	/// Write out to the .lyx file
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 
 	/// should paragraph indendation be ommitted in any case?
-	virtual bool neverIndent(Buffer const &) const { return true; }
+	bool neverIndent() const { return true; }
 protected:
 	InsetOptArg(InsetOptArg const &);
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 };
 
 

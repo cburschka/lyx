@@ -357,13 +357,13 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
-	// FIXME This check ought to be done somewhere else. It is the reason
+	// FIXME: This check ought to be done somewhere else. It is the reason
 	// why text_ is not	const. But then, where else to do it?
 	// Well, how can you end up with either (a) a biblio environment that
 	// has no InsetBibitem or (b) a biblio environment with more than one
 	// InsetBibitem? I think the answer is: when paragraphs are merged;
 	// when layout is set; when material is pasted.
-	int const moveCursor = par.checkBiblio(buffer.params().trackChanges);
+	int const moveCursor = par.checkBiblio(buffer);
 	if (moveCursor > 0)
 		const_cast<Cursor &>(bv_->cursor()).posForward();
 	else if (moveCursor < 0) {
@@ -1901,7 +1901,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
-	    && !(par.inInset() && par.inInset()->neverIndent(buffer))
+	    && !(par.inInset() && par.inInset()->neverIndent())
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 		    && par.isInset(pos)

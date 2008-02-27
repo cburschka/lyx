@@ -24,7 +24,7 @@ public:
 	///
 	explicit InsetTOC(InsetCommandParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -32,11 +32,9 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

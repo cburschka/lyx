@@ -18,8 +18,6 @@
 
 namespace lyx {
 
-class Buffer;
-
 class InsetBranchParams {
 public:
 	explicit InsetBranchParams(docstring const & b = docstring())
@@ -43,13 +41,13 @@ public:
 	///
 	~InsetBranch();
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return BRANCH_CODE; }
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	void setButtonLabel();
 	///
@@ -57,16 +55,13 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
-	void textString(Buffer const & buf, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -77,13 +72,13 @@ public:
 	/** \returns true if params_.branch is listed as 'selected' in
 	    \c buffer. This handles the case of child documents.
 	 */
-	bool isBranchSelected(Buffer const & buffer) const;
+	bool isBranchSelected() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	virtual void updateLabels(ParIterator const &);
 	///
-	bool isMacroScope(Buffer const & buf) const;
+	bool isMacroScope() const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 protected:

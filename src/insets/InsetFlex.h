@@ -32,29 +32,27 @@ public:
 	docstring name() const { return from_utf8(name_); }
 
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	virtual bool allowParagraphCustomization(idx_type) const { return false; }
 
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
 	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent(Buffer const &) const { return true; }
+	bool neverIndent() const { return true; }
 
 protected:
 	InsetFlex(InsetFlex const &);

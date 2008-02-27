@@ -48,15 +48,13 @@ public:
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param list the list of labels in the child buffer.
 	 */
-	void getLabelList(Buffer const & buffer,
-			  std::vector<docstring> & list) const;
+	void getLabelList(std::vector<docstring> & list) const;
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
 	 *  \param it not used here
 	 */
-	virtual void fillWithBibKeys(Buffer const & buffer,
-		BiblioInfo & keys, InsetIterator const & it) const;
+	void fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const;
 	
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
@@ -64,7 +62,7 @@ public:
 	 *  automatic loading of all child documents upon loading the master.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	void updateBibfilesCache(Buffer const & buffer);
+	void updateBibfilesCache();
 	/** Return the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
 	 *  Return an empty vector if the child doc is not loaded.
@@ -75,22 +73,19 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 	///
-	void updateLabels(Buffer const & buffer, ParIterator const &);
+	void updateLabels(ParIterator const &);
 	/// child document can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
 	///
@@ -104,9 +99,9 @@ public:
 protected:
 	InsetInclude(InsetInclude const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
@@ -114,9 +109,9 @@ private:
 	void fileChanged() const;
 
 	/// set the parameters
-	void set(InsetCommandParams const & params, Buffer const &);
+	void setParams(InsetCommandParams const & params);
 	/// get the text displayed on the button
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	/// holds the entity name that defines the file location (SGML)
 	docstring const include_label;
 

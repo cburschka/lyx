@@ -1593,7 +1593,7 @@ void BufferView::gotoLabel(docstring const & label)
 {
 	for (InsetIterator it = inset_iterator_begin(buffer_.inset()); it; ++it) {
 		vector<docstring> labels;
-		it->getLabelList(buffer_, labels);
+		it->getLabelList(labels);
 		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
 			showCursor();

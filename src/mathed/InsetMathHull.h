@@ -33,7 +33,7 @@ public:
 	///
 	~InsetMathHull();
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///
@@ -59,8 +59,7 @@ public:
 	///
 	bool ams() const;
 	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &,
-			  std::vector<docstring> & list) const;
+	void getLabelList(std::vector<docstring> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset
@@ -103,17 +102,15 @@ public:
 	void infoize(odocstream & os) const;
 
 	///
-	void write(Buffer const &, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
@@ -195,7 +192,7 @@ private:
 //
 public:
 	/// what appears in the minibuffer when opening
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	virtual void mutateToText();
 	///

@@ -173,15 +173,15 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetFloat::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetFloat::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buf.params().textClass().counters();
+	Counters & cnts = buffer().params().textClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
 
-	InsetCollapsable::updateLabels(buf, it);
+	InsetCollapsable::updateLabels(it);
 
 	//reset afterwards
 	cnts.current_float(saveflt);
@@ -238,19 +238,19 @@ void InsetFloatParams::read(Lexer & lex)
 }
 
 
-void InsetFloat::write(Buffer const & buf, ostream & os) const
+void InsetFloat::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetFloat::read(Buffer const & buf, Lexer & lex)
+void InsetFloat::read(Lexer & lex)
 {
 	params_.read(lex);
-	wide(params_.wide, buf.params());
-	sideways(params_.sideways, buf.params());
-	InsetCollapsable::read(buf, lex);
+	wide(params_.wide, buffer().params());
+	sideways(params_.sideways, buffer().params());
+	InsetCollapsable::read(lex);
 }
 
 
@@ -274,16 +274,15 @@ Inset * InsetFloat::clone() const
 }
 
 
-docstring const InsetFloat::editMessage() const
+docstring InsetFloat::editMessage() const
 {
 	return _("Opened Float Inset");
 }
 
 
-int InsetFloat::latex(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
+int InsetFloat::latex(odocstream & os, OutputParams const & runparams) const
 {
-	FloatList const & floats = buf.params().textClass().floats();
+	FloatList const & floats = buffer().params().textClass().floats();
 	string tmptype = params_.type;
 	if (params_.sideways)
 		tmptype = "sideways" + params_.type;
@@ -297,7 +296,7 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 	// - document wide default placement
 	// - specific float placement
 	string placement;
-	string const buf_placement = buf.params().float_placement;
+	string const buf_placement = buffer().params().float_placement;
 	string const def_placement = floats.defaultPlacement(params_.type);
 	if (!params_.placement.empty()
 	    && params_.placement != def_placement) {
@@ -319,7 +318,7 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 	}
 	os << '\n';
 
-	int const i = InsetText::latex(buf, os, runparams);
+	int const i = InsetText::latex(os, runparams);
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
 	// In this case, we do not case if the current output line is empty.
@@ -329,23 +328,22 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetFloat::plaintext(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
+int InsetFloat::plaintext(odocstream & os, OutputParams const & runparams) const
 {
-	os << '[' << buf.B_("float") << ' ' << floatName(params_.type, buf.params()) << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	os << '[' << buffer().B_("float") << ' '
+		<< floatName(params_.type, buffer().params()) << ":\n";
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetFloat::docbook(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetFloat::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	// FIXME UNICODE
 	os << '<' << from_ascii(params_.type) << '>';
-	int const i = InsetText::docbook(buf, os, runparams);
+	int const i = InsetText::docbook(os, runparams);
 	os << "</" << from_ascii(params_.type) << '>';
 
 	return i;

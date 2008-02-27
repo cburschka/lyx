@@ -45,7 +45,7 @@ ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 }
 
 
-docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
+docstring InsetHyperlink::screenLabel() const
 {
 	docstring const temp = from_ascii("Hyperlink: ");
 
@@ -64,8 +64,7 @@ docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetHyperlink::latex(Buffer const &, odocstream & os,
-		    OutputParams const & runparams) const
+int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
 	static docstring const backslash = from_ascii("\\");
@@ -130,8 +129,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetHyperlink::plaintext(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetHyperlink::plaintext(odocstream & os, OutputParams const &) const
 {
 	odocstringstream oss;
 
@@ -147,8 +145,7 @@ int InsetHyperlink::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetHyperlink::docbook(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<ulink url=\""
 	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
@@ -159,9 +156,9 @@ int InsetHyperlink::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetHyperlink::textString(Buffer const & buf, odocstream & os) const
+void InsetHyperlink::textString(odocstream & os) const
 {
-	plaintext(buf, os, OutputParams(0));
+	plaintext(os, OutputParams(0));
 }
 
 

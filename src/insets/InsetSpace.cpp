@@ -104,7 +104,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetSpace::write(Buffer const &, ostream & os) const
+void InsetSpace::write(ostream & os) const
 {
 	string command;
 	switch (kind_) {
@@ -137,7 +137,7 @@ void InsetSpace::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetSpace::read(Buffer const &, Lexer & lex)
+void InsetSpace::read(Lexer & lex)
 {
 	lex.next();
 	string const command = lex.getString();
@@ -163,8 +163,7 @@ void InsetSpace::read(Buffer const &, Lexer & lex)
 }
 
 
-int InsetSpace::latex(Buffer const &, odocstream & os,
-		      OutputParams const & runparams) const
+int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -196,16 +195,14 @@ int InsetSpace::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetSpace::plaintext(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << ' ';
 	return 1;
 }
 
 
-int InsetSpace::docbook(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -225,9 +222,9 @@ int InsetSpace::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetSpace::textString(Buffer const & buf, odocstream & os) const
+void InsetSpace::textString(odocstream & os) const
 {
-	plaintext(buf, os, OutputParams(0));
+	plaintext(os, OutputParams(0));
 }
 
 
@@ -235,22 +232,5 @@ Inset * InsetSpace::clone() const
 {
 	return new InsetSpace(kind_);
 }
-
-
-bool InsetSpace::isChar() const
-{
-	return true;
-}
-
-bool InsetSpace::isLetter() const
-{
-	return false;
-}
-
-bool InsetSpace::isSpace() const
-{
-	return true;
-}
-
 
 } // namespace lyx

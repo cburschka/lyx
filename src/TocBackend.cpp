@@ -127,7 +127,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 			if (!toc_item->par_it_->labelString().empty())
 				tocstring = toc_item->par_it_->labelString() + ' ';
-			tocstring += par.asString(*buffer_, false);
+			tocstring += par.asString(false);
 			break;
 		}
 	}
@@ -135,7 +135,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	int const toclevel = toc_item->par_it_->layout()->toclevel;
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
-			tocstring = toc_item->par_it_->asString(*buffer_, true);
+			tocstring = toc_item->par_it_->asString(true);
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
 }
@@ -162,7 +162,8 @@ void TocBackend::update()
 		InsetList::const_iterator end = pit->insetList().end();
 		for (; it != end; ++it) {
 			Inset & inset = *it->inset;
-			inset.addToToc(*buffer_, pit);
+			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
+			inset.addToToc(pit);
 			switch (inset.lyxCode()) {
 			case OPTARG_CODE: {
 				if (!tocstring.empty())
@@ -171,7 +172,7 @@ void TocBackend::update()
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!pit->labelString().empty())
 					tocstring = pit->labelString() + ' ';
-				tocstring += par.asString(*buffer_, false);
+				tocstring += par.asString(false);
 				break;
 			}
 			default:
@@ -185,7 +186,7 @@ void TocBackend::update()
 		    && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			if (tocstring.empty())
-				tocstring = pit->asString(*buffer_, true);
+				tocstring = pit->asString(true);
 			toc.push_back(TocItem(pit, toclevel - min_toclevel,
 				tocstring));
 		}

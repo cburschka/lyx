@@ -708,7 +708,7 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 
 	for (; it != end; ++it)
 		if (it->lyxCode() == MATHMACRO_CODE)
-			it->latex(buffer_, os, runparams);
+			it->latex(os, runparams);
 
 	// All equation labels appear as "(#)" + preview.sty's rendering of
 	// the label name

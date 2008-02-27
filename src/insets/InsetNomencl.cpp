@@ -29,6 +29,12 @@ using namespace std;
 namespace lyx {
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetPrintNomencl
+//
+/////////////////////////////////////////////////////////////////////
+
 InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 	: InsetCommand(p, "nomenclature"),
 	  nomenclature_entry_id(sgml::uniqueID(from_ascii("nomen")))
@@ -47,14 +53,13 @@ ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 }
 
 
-docstring const InsetNomencl::getScreenLabel(Buffer const &) const
+docstring InsetNomencl::screenLabel() const
 {
 	return _("Nom");
 }
 
 
-int InsetNomencl::docbook(Buffer const &, odocstream & os,
-		OutputParams const &) const
+int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<glossterm linkend=\"" << nomenclature_entry_id << "\">"
 	   << sgml::escapeString(getParam("symbol"))
@@ -83,6 +88,12 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetPrintNomencl
+//
+/////////////////////////////////////////////////////////////////////
+
 InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
@@ -98,18 +109,17 @@ ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 }
 
 
-docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const
+docstring InsetPrintNomencl::screenLabel() const
 {
 	return _("Nomenclature");
 }
 
 
-int InsetPrintNomencl::docbook(Buffer const & buf, odocstream & os,
-		OutputParams const &) const
+int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<glossary>\n";
 	int newlines = 2;
-	for (InsetIterator it = inset_iterator_begin(buf.inset()); it;) {
+	for (InsetIterator it = inset_iterator_begin(buffer().inset()); it;) {
 		if (it->lyxCode() == NOMENCL_CODE) {
 			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
 			++it;

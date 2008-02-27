@@ -33,13 +33,13 @@ namespace lyx {
 using frontend::Painter;
 
 
-void InsetLine::read(Buffer const &, Lexer &)
+void InsetLine::read(Lexer &)
 {
 	/* Nothing to read */
 }
 
 
-void InsetLine::write(Buffer const &, ostream & os) const
+void InsetLine::write(ostream & os) const
 {
 	os << "\n\\lyxline\n";
 }
@@ -63,8 +63,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetLine::latex(Buffer const &, odocstream & os,
-		     OutputParams const & runparams) const
+int InsetLine::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "\\lyxline{\\"
 	   << from_ascii(runparams.local_font->latexSize()) << '}';
@@ -72,16 +71,14 @@ int InsetLine::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetLine::plaintext(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+int InsetLine::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << "\n-------------------------------------------\n";
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetLine::docbook(Buffer const &, odocstream & os,
-		       OutputParams const &) const
+int InsetLine::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 0;

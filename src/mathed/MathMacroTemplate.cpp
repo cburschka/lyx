@@ -936,7 +936,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 }
 
 
-void MathMacroTemplate::read(Buffer const &, Lexer & lex)
+void MathMacroTemplate::read(Lexer & lex)
 {
 	MathData ar;
 	mathed_parse_cell(ar, lex.getStream());
@@ -951,7 +951,7 @@ void MathMacroTemplate::read(Buffer const &, Lexer & lex)
 }
 
 
-void MathMacroTemplate::write(Buffer const &, ostream & os) const
+void MathMacroTemplate::write(ostream & os) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, false);
@@ -1004,10 +1004,10 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 }
 
 
-int MathMacroTemplate::plaintext(Buffer const & buf, odocstream & os,
+int MathMacroTemplate::plaintext(odocstream & os,
 				 OutputParams const &) const
 {
-	static docstring const str = '[' + buf.B_("math macro") + ']';
+	static docstring const str = '[' + buffer().B_("math macro") + ']';
 
 	os << str;
 	return str.size();

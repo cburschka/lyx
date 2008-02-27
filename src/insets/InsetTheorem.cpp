@@ -44,7 +44,7 @@ Inset.heorem::InsetTheorem()
 }
 
 
-void Inset.heorem::write(Buffer const * buf, ostream & os) const
+void Inset.heorem::write(ostream & os) const
 {
 	os << name() << "\n";
 	InsetCollapsable::write(buf, os);
@@ -68,7 +68,7 @@ void Inset.heorem::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetTOC::draw(PainterInfo & pi, int x, int y) const
+void InsetTheorem::draw(PainterInfo & pi, int x, int y) const
 {
 	InsetCollapsable::draw(pi, x + center_indent_, y);
 }
@@ -80,8 +80,7 @@ string const Inset.heorem::editMessage() const
 }
 
 
-int Inset.heorem::latex(Buffer const * buf, odocstream & os,
-			OutputParams const & runparams) const
+int Inset.heorem::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "\\begin{theorem}%\n";
 

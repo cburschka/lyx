@@ -38,22 +38,19 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.
 	 */
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.
@@ -105,7 +102,7 @@ private:
 	/// Create the atributes for docbook export.
 	docstring const createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.
-	std::string const prepareFile(Buffer const & buf, OutputParams const &) const;
+	std::string prepareFile(OutputParams const &) const;
 
 	///
 	InsetGraphicsParams params_;

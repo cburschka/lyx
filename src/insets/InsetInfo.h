@@ -92,9 +92,9 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
@@ -102,7 +102,7 @@ public:
 	///
 	void setInfo(std::string const & info);
 	/// update info_ and text
-	void updateInfo(Buffer const &);
+	void updateInfo();
 	///
 	bool setMouseHover(bool mouse_hover);
 

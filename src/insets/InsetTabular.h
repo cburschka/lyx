@@ -241,8 +241,7 @@ public:
 	/// constructor
 	Tabular();
 	/// constructor
-	Tabular(BufferParams const &, col_type columns_arg,
-		   row_type rows_arg);
+	Tabular(Buffer const &, col_type columns_arg, row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(idx_type cell, bool wholerow = false) const;
@@ -325,17 +324,17 @@ public:
 	///
 	int getBeginningOfTextInCell(idx_type cell) const;
 	///
-	void appendRow(BufferParams const &, idx_type cell);
+	void appendRow(idx_type cell);
 	///
 	void deleteRow(row_type row);
 	///
-	void copyRow(BufferParams const &, row_type);
+	void copyRow(row_type);
 	///
-	void appendColumn(BufferParams const &, idx_type cell);
+	void appendColumn(idx_type cell);
 	///
 	void deleteColumn(col_type column);
 	///
-	void copyColumn(BufferParams const &, col_type);
+	void copyColumn(col_type);
 	///
 	bool isFirstCellInRow(idx_type cell) const;
 	///
@@ -349,15 +348,15 @@ public:
 	///
 	idx_type numberOfCellsInRow(idx_type cell) const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const &, Lexer &);
+	void read(Lexer &);
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	//
-	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
+	int docbook(odocstream & os, OutputParams const &) const;
 	///
-	void plaintext(Buffer const &, odocstream &,
+	void plaintext(odocstream &,
 		       OutputParams const & runparams, int const depth,
 		       bool onlydata, char_type delim) const;
 	///
@@ -365,7 +364,7 @@ public:
 	///
 	bool isMultiColumnReal(idx_type cell) const;
 	///
-	void setMultiColumn(Buffer *, idx_type cell, idx_type number);
+	void setMultiColumn(idx_type cell, idx_type number);
 	///
 	idx_type unsetMultiColumn(idx_type cell); // returns number of new cells
 	///
@@ -463,7 +462,7 @@ public:
 	class cellstruct {
 	public:
 		///
-		cellstruct(BufferParams const &);
+		cellstruct(Buffer const &);
 		///
 		cellstruct(cellstruct const &);
 		///
@@ -598,7 +597,7 @@ public:
 	ltType endlastfoot;
 
 	///
-	void init(BufferParams const &, row_type rows_arg,
+	void init(Buffer const &, row_type rows_arg,
 		  col_type columns_arg);
 	///
 	void updateIndexes();
@@ -625,12 +624,11 @@ public:
 	///
 	int TeXCellPostamble(odocstream &, idx_type cell) const;
 	///
-	int TeXLongtableHeaderFooter(odocstream &, Buffer const & buf,
-				     OutputParams const &) const;
+	int TeXLongtableHeaderFooter(odocstream &, OutputParams const &) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
-	int TeXRow(odocstream &, row_type const row, Buffer const & buf,
+	int TeXRow(odocstream &, row_type const row,
 		   OutputParams const &) const;
 	///
 	// helper functions for plain text
@@ -641,16 +639,22 @@ public:
 	bool plaintextBottomHLine(odocstream &, row_type row,
 				  std::vector<unsigned int> const &) const;
 	///
-	void plaintextPrintCell(Buffer const &, odocstream &,
+	void plaintextPrintCell(odocstream &,
 				OutputParams const &,
 				idx_type cell, row_type row, col_type column,
 				std::vector<unsigned int> const &,
 				bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const & buf, odocstream & os, row_type,
-		       OutputParams const &) const;
+	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
+
+	/// change associated Buffer
+	void setBuffer(Buffer const & buffer) { buffer_ = &buffer; }
+	/// retrieve associated Buffer
+	Buffer const & buffer() const { return *buffer_; }
 
 private:
+	Buffer const * buffer_;
+
 	/// renumber cells after structural changes
 	void fixCellNums();
 };
@@ -665,9 +669,9 @@ public:
 	///
 	~InsetTabular();
 	///
-	void read(Buffer const &, Lexer &);
+	void read(Lexer &);
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -675,7 +679,7 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -691,14 +695,11 @@ public:
 	///
 	DisplayType display() const { return tabular.isLongTabular() ? AlignCenter : Inline; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -747,7 +748,7 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 
 	//
 	// Public structures and variables
@@ -765,7 +766,7 @@ protected:
 	int scroll() const { return scx_; }
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 
 	///
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,

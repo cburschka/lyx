@@ -65,35 +65,32 @@ InsetERT::~InsetERT()
 }
 
 
-void InsetERT::write(Buffer const & buf, ostream & os) const
+void InsetERT::write(ostream & os) const
 {
 	os << "ERT" << "\n";
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-docstring const InsetERT::editMessage() const
+docstring InsetERT::editMessage() const
 {
 	return _("Opened ERT Inset");
 }
 
 
-int InsetERT::latex(Buffer const & buf, odocstream & os,
-		    OutputParams const & op) const
+int InsetERT::latex(odocstream & os, OutputParams const & op) const
 {
-	return InsetCollapsable::latex(buf, os, op);
+	return InsetCollapsable::latex(os, op);
 }
 
 
-int InsetERT::plaintext(Buffer const &, odocstream &,
-			OutputParams const &) const
+int InsetERT::plaintext(odocstream &, OutputParams const &) const
 {
 	return 0; // do not output TeX code
 }
 
 
-int InsetERT::docbook(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+int InsetERT::docbook(odocstream & os, OutputParams const &) const
 {
 	// FIXME can we do the same thing here as for LaTeX?
 	ParagraphList::const_iterator par = paragraphs().begin();

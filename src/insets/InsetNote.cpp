@@ -130,7 +130,7 @@ Inset * InsetNote::clone() const
 }
 
 
-docstring const InsetNote::editMessage() const
+docstring InsetNote::editMessage() const
 {
 	return _("Opened Note Inset");
 }
@@ -148,17 +148,17 @@ Inset::DisplayType InsetNote::display() const
 }
 
 
-void InsetNote::write(Buffer const & buf, ostream & os) const
+void InsetNote::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetNote::read(Buffer const & buf, Lexer & lex)
+void InsetNote::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
@@ -211,22 +211,21 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 }
 
-void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetNote::updateLabels(ParIterator const & it)
 {
-	TextClass const & tclass = buf.params().textClass();
+	TextClass const & tclass = buffer().params().textClass();
 	Counters savecnt = tclass.counters();
-	InsetCollapsable::updateLabels(buf, it);
+	InsetCollapsable::updateLabels(it);
 	tclass.counters() = savecnt;
 }
 
 
-void InsetNote::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetNote::addToToc(ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = buf.tocBackend().toc("note");
+	Toc & toc = buffer().tocBackend().toc("note");
 	docstring str;
 	str = notetranslator_loc().find(params_.type) + from_ascii(": ")
 		+ getNewLabel(str);
@@ -234,18 +233,17 @@ void InsetNote::addToToc(Buffer const & buf,
 }
 
 
-bool InsetNote::isMacroScope(Buffer const & buf) const
+bool InsetNote::isMacroScope() const
 {
 	// LyX note has no latex output
 	if (params_.type == InsetNoteParams::Note)
 		return true;
 
-	return InsetCollapsable::isMacroScope(buf);
+	return InsetCollapsable::isMacroScope();
 }
 
 
-int InsetNote::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams_in) const
+int InsetNote::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -258,7 +256,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 	} 
 
 	odocstringstream ss;
-	InsetCollapsable::latex(buf, ss, runparams);
+	InsetCollapsable::latex(ss, runparams);
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:
@@ -281,7 +279,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetNote::plaintext(Buffer const & buf, odocstream & os,
+int InsetNote::plaintext(odocstream & os,
 			 OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
@@ -293,16 +291,15 @@ int InsetNote::plaintext(Buffer const & buf, odocstream & os,
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
-	os << '[' << buf.B_("note") << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	os << '[' << buffer().B_("note") << ":\n";
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetNote::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams_in) const
+int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -315,7 +312,7 @@ int InsetNote::docbook(Buffer const & buf, odocstream & os,
 		runparams.exportdata.reset(new ExportData);
 	}
 
-	int const n = InsetText::docbook(buf, os, runparams);
+	int const n = InsetText::docbook(os, runparams);
 
 	if (params_.type == InsetNoteParams::Comment)
 		os << "\n</remark>\n";

@@ -263,7 +263,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				InsetExternalParams iep;
 				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buf, iep);
 				auto_ptr<InsetExternal> inset(new InsetExternal);
-				inset->setParams(iep, buf);
+				inset->setParams(iep);
 				return inset.release();
 			}
 			
@@ -376,7 +376,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 {
 	Inset * inset = createInsetHelper(buf, cmd);
 	if (inset)
-		inset->setBuffer(&buf);
+		inset->setBuffer(buf);
 	return inset;
 }
 
@@ -459,6 +459,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 					lex.next();
 				return 0;
 		}
+		inset->setBuffer(const_cast<Buffer &>(buf));
 	} else { 
 		// FIXME This branch should be made to use inset codes as the preceding 
 		// branch does. Unfortunately, that will take some doing. It requires
@@ -537,9 +538,9 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			return 0;
 		}
 
-		inset->read(buf, lex);
+		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->read(lex);
 	}
-
 	return inset.release();
 }
 

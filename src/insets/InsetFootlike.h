@@ -31,9 +31,9 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	bool isMacroScope(Buffer const &) const { return true; }
+	bool isMacroScope() const { return true; }
 	///
 	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should

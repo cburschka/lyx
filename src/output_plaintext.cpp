@@ -58,18 +58,13 @@ void writePlaintextFile(Buffer const & buf, odocstream & os,
 }
 
 
-namespace {
-
-pair<int, docstring> const addDepth(int depth, int ldepth)
+static pair<int, docstring> addDepth(int depth, int ldepth)
 {
 	int d = depth * 2;
 	if (ldepth > depth)
 		d += (ldepth - depth) * 2;
 	return make_pair(d, docstring(d, ' '));
 }
-
-}
-
 
 void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & par,
@@ -200,7 +195,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		if (par.isInset(i)) {
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
-			int len = par.getInset(i)->plaintext(buf, os, rp);
+			int len = par.getInset(i)->plaintext(os, rp);
 			if (len >= Inset::PLAINTEXT_NEWLINE)
 				currlinelen = len - Inset::PLAINTEXT_NEWLINE;
 			else

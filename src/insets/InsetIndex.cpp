@@ -39,11 +39,10 @@ InsetIndex::InsetIndex(InsetIndex const & in)
 {}
 
 
-int InsetIndex::docbook(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	os << "<indexterm><primary>";
-	int const i = InsetText::docbook(buf, os, runparams);
+	int const i = InsetText::docbook(os, runparams);
 	os << "</primary></indexterm>";
 	return i;
 }
@@ -55,20 +54,19 @@ Inset * InsetIndex::clone() const
 }
 
 
-void InsetIndex::write(Buffer const & buf, ostream & os) const
+void InsetIndex::write(ostream & os) const
 {
 	os << to_utf8(name()) << "\n";
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetIndex::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetIndex::addToToc(ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;
 	pit.push_back(*this);
 
-	Toc & toc = buf.tocBackend().toc("index");
+	Toc & toc = buffer().tocBackend().toc("index");
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
@@ -90,7 +88,7 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 }
 
 
-docstring const InsetPrintIndex::getScreenLabel(Buffer const &) const
+docstring InsetPrintIndex::screenLabel() const
 {
 	return _("Index");
 }

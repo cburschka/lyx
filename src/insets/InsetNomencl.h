@@ -28,7 +28,7 @@ public:
 	///
 	InsetNomencl(InsetCommandParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	/// Updates needed features for this inset.
@@ -36,8 +36,7 @@ public:
 	///
 	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	int docbookGlossary(odocstream &) const;
 	///
@@ -48,9 +47,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "nomenclature"; }
 private:
-	virtual Inset * clone() const {
-		return new InsetNomencl(params());
-	}
+	Inset * clone() const { return new InsetNomencl(params()); }
 	/// unique id for this nomenclature entry for docbook export
 	docstring nomenclature_entry_id;
 };
@@ -69,14 +66,13 @@ public:
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const;
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -85,9 +81,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printnomenclature"; }
 private:
-	virtual Inset * clone() const {
-		return new InsetPrintNomencl(params());
-	}
+	Inset * clone() const { return new InsetPrintNomencl(params()); }
 };
 
 

@@ -61,21 +61,21 @@ Inset * InsetFlex::clone() const
 }
 
 
-docstring const InsetFlex::editMessage() const
+docstring InsetFlex::editMessage() const
 {
 	return _("Opened Flex Inset");
 }
 
 
-void InsetFlex::write(Buffer const & buf, ostream & os) const
+void InsetFlex::write(ostream & os) const
 {
 	os << "Flex " <<
 		(name_.empty() ? "undefined" : name_) << "\n";
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetFlex::read(Buffer const & buf, Lexer & lex)
+void InsetFlex::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.next();
@@ -92,19 +92,17 @@ void InsetFlex::read(Buffer const & buf, Lexer & lex)
 			break;
 		}
 	}
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
-int InsetFlex::plaintext(Buffer const & buf, odocstream & os,
-			      OutputParams const & runparams) const
+int InsetFlex::plaintext(odocstream & os, OutputParams const & runparams) const
 {
-	return InsetText::plaintext(buf, os, runparams);
+	return InsetText::plaintext(os, runparams);
 }
 
 
-int InsetFlex::docbook(Buffer const & buf, odocstream & os,
-			    OutputParams const & runparams) const
+int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
@@ -112,10 +110,10 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 
 	if (!undefined())
 		sgml::openTag(os, getLayout().latexname(),
-			      par->getID(buf, runparams) + getLayout().latexparam());
+			      par->getID(buffer(), runparams) + getLayout().latexparam());
 
 	for (; par != end; ++par) {
-		par->simpleDocBookOnePar(buf, os, runparams,
+		par->simpleDocBookOnePar(buffer(), os, runparams,
 					 outerFont(distance(beg, par),
 						   paragraphs()));
 	}
@@ -127,9 +125,9 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetFlex::textString(Buffer const & buf, odocstream & os) const
+void InsetFlex::textString(odocstream & os) const
 {
-	os << paragraphs().begin()->asString(buf, true);
+	os << paragraphs().begin()->asString(true);
 }
 
 

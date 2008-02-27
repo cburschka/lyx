@@ -1253,7 +1253,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			idocstringstream is(cmd.argument());
 			int n = 0;
 			is >> n;
-			topaste = cap::getSelection(cur.buffer(), n);
+			topaste = cap::selection(n);
 		}
 		InsetMathGrid grid(1, 1);
 		if (!topaste.empty())

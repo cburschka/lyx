@@ -110,7 +110,7 @@ Inset * InsetBox::clone() const
 }
 
 
-docstring const InsetBox::editMessage() const
+docstring InsetBox::editMessage() const
 {
 	return _("Opened Box Inset");
 }
@@ -126,17 +126,17 @@ docstring InsetBox::name() const
 }
 
 
-void InsetBox::write(Buffer const & buf, ostream & os) const
+void InsetBox::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetBox::read(Buffer const & buf, Lexer & lex)
+void InsetBox::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
@@ -244,20 +244,19 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-bool InsetBox::isMacroScope(Buffer const &) const
+bool InsetBox::isMacroScope() const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 	return btype != Frameless || params_.inner_box;
 }
 
 
-int InsetBox::latex(Buffer const & buf, odocstream & os,
-		    OutputParams const & runparams) const
+int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
 	string width_string = params_.width.asLatexString();
-	bool stdwidth(false);
+	bool stdwidth = false;
 	if (params_.inner_box &&
 			(width_string.find("1.0\\columnwidth") != string::npos
 			|| width_string.find("1.0\\textwidth") != string::npos)) {
@@ -374,7 +373,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		os << "\\begin{shaded}%\n";
 		i += 1;
 
-	i += InsetText::latex(buf, os, runparams);
+	i += InsetText::latex(os, runparams);
 
 	if (btype == Shaded)
 		os << "\\end{shaded}";
@@ -414,8 +413,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBox::plaintext(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetBox::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);
 
@@ -441,7 +439,7 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 			break;
 	}
 
-	InsetText::plaintext(buf, os, runparams);
+	InsetText::plaintext(os, runparams);
 
 	int len = 0;
 	switch (btype) {
@@ -476,10 +474,9 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBox::docbook(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
+int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	return InsetText::docbook(buf, os, runparams);
+	return InsetText::docbook(os, runparams);
 }
 
 

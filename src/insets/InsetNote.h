@@ -46,7 +46,7 @@ public:
 	///
 	~InsetNote();
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
@@ -54,21 +54,21 @@ public:
 	///
 	virtual DisplayType display() const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	void setButtonLabel();
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	bool isMacroScope(Buffer const & buf) const;
+	bool isMacroScope() const;
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -76,18 +76,17 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 protected:
 	InsetNote(InsetNote const &);
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetNoteParams;
-
-	virtual Inset * clone() const;
-
+	///
+	Inset * clone() const;
 	/// used by the constructors
 	void init();
 	///

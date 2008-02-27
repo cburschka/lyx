@@ -48,27 +48,23 @@ Inset * InsetTOC::clone() const
 }
 
 
-docstring const InsetTOC::getScreenLabel(Buffer const & buf) const
+docstring InsetTOC::screenLabel() const
 {
 	if (getCmdName() == "tableofcontents")
-		return buf.B_("Table of Contents");
+		return buffer().B_("Table of Contents");
 	return _("Unknown TOC type");
 }
 
 
-int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
-			OutputParams const &) const
+int InsetTOC::plaintext(odocstream & os, OutputParams const &) const
 {
-	os << getScreenLabel(buffer) << "\n\n";
-
-	buffer.tocBackend().writePlaintextTocList(getCmdName(), os);
-
+	os << screenLabel() << "\n\n";
+	buffer().tocBackend().writePlaintextTocList(getCmdName(), os);
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetTOC::docbook(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";

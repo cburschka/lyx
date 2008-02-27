@@ -233,6 +233,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	  undo_(parent)
 {
 	temppath = createBufferTmpDir();
+	inset.setBuffer(parent);
 	inset.setAutoBreakRows(true);
 	lyxvc.setBuffer(&parent);
 	if (use_gui)
@@ -1367,7 +1368,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 	loadChildDocuments();
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-		it.nextInset()->getLabelList(*this, list);
+		it.nextInset()->getLabelList(list);
 }
 
 
@@ -1394,7 +1395,7 @@ void Buffer::updateBibfilesCache() const
 		} else if (it->lyxCode() == INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
-			inset.updateBibfilesCache(*this);
+			inset.updateBibfilesCache();
 			EmbeddedFileList const & bibfiles =
 					inset.getBibfilesCache(*this);
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
@@ -1851,11 +1852,11 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 				// Inset needs its own scope?
 				InsetText const * itext 
 				= iit->inset->asInsetText();
-				bool newScope = itext->isMacroScope(*this);
+				bool newScope = itext->isMacroScope();
 
-				// scope which ends just behind die inset	
+				// scope which ends just behind the inset	
 				DocIterator insetScope = it;
-				insetScope.pos()++;
+				++insetScope.pos();
 
 				// collect macros in inset
 				it.push_back(CursorSlice(*iit->inset));

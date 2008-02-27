@@ -62,15 +62,15 @@ public:
 	///
 	~InsetBox();
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return BOX_CODE; }
 	///
 	docstring name() const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	void setButtonLabel();
 	///
@@ -84,17 +84,17 @@ public:
 	///
 	virtual bool forceEmptyLayout() const;
 	///
-	bool neverIndent(Buffer const &) const { return true; }
+	bool neverIndent() const { return true; }
 	///
 	bool noFontChange() const { return true; }
 	///
-	bool isMacroScope(Buffer const & buf) const;
+	bool isMacroScope() const;
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

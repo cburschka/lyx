@@ -181,13 +181,13 @@ void InsetExternalParams::settemplate(string const & name)
 }
 
 
-void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
+void InsetExternalParams::write(Buffer const & buf, ostream & os) const
 {
 	os << "External\n"
 	   << "\ttemplate " << templatename() << '\n';
 
 	if (!filename.empty()) {
-		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
+		os << "\tfilename " << filename.outputFilename(buf.filePath()) << '\n';
 		os << "\tembed " << (filename.embedded() ? filename.inzipName() : "\"\"") << '\n';
 	}
 	if (display != defaultDisplayType)
@@ -441,27 +441,25 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, p);
-		external::editExternal(p, buffer);
+		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		external::editExternal(p, buffer());
 		break;
 	}
 
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, p);
+		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (!p.filename.empty()) {
 			try {
-				p.filename.enable(buffer.embedded(), &buffer);
+				p.filename.enable(buffer().embedded(), &buffer());
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens
 				break;
 			}
 		}
-		setParams(p, buffer);
+		setParams(p);
 		break;
 	}
 
@@ -602,7 +600,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 }
 
 
-docstring const getScreenLabel(InsetExternalParams const & params,
+docstring screenLabel(InsetExternalParams const & params,
 			    Buffer const & buffer)
 {
 	external::Template const * const ptr =
@@ -617,11 +615,42 @@ docstring const getScreenLabel(InsetExternalParams const & params,
 				to_utf8(gui), false));
 }
 
-void add_preview_and_start_loading(RenderMonitoredPreview &,
-				   InsetExternal const &,
-				   Buffer const &);
-
 } // namespace anon
+
+
+static bool isPreviewWanted(InsetExternalParams const & params)
+{
+	return params.display == external::PreviewDisplay &&
+		params.filename.isReadableFile();
+}
+
+
+static docstring latexString(InsetExternal const & inset)
+{
+	odocstringstream os;
+	// We don't need to set runparams.encoding since it is not used by
+	// latex().
+	OutputParams runparams(0);
+	runparams.flavor = OutputParams::LATEX;
+	inset.latex(os, runparams);
+	return os.str();
+}
+
+
+static void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
+				   InsetExternal const & inset,
+				   Buffer const & buffer)
+{
+	InsetExternalParams const & params = inset.params();
+
+	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
+	    isPreviewWanted(params)) {
+		renderer.setAbsFile(params.filename);
+		docstring const snippet = latexString(inset);
+		renderer.addPreview(snippet, buffer);
+		renderer.startLoading(buffer);
+	}
+}
 
 
 InsetExternalParams const & InsetExternal::params() const
@@ -630,8 +659,7 @@ InsetExternalParams const & InsetExternal::params() const
 }
 
 
-void InsetExternal::setParams(InsetExternalParams const & p,
-			      Buffer const & buffer)
+void InsetExternal::setParams(InsetExternalParams const & p)
 {
 	params_ = p;
 
@@ -647,7 +675,7 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 			button_ptr = renderer_->asButton();
 		}
 
-		button_ptr->update(getScreenLabel(params_, buffer), true);
+		button_ptr->update(screenLabel(params_, buffer()), true);
 		break;
 	}
 
@@ -675,7 +703,7 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 
 		if (preview_ptr->monitoring())
 			preview_ptr->stopMonitoring();
-		add_preview_and_start_loading(*preview_ptr, *this, buffer);
+		add_preview_and_start_loading(*preview_ptr, *this, buffer());
 
 		break;
 	}
@@ -697,30 +725,29 @@ void InsetExternal::fileChanged() const
 }
 
 
-void InsetExternal::write(Buffer const & buffer, ostream & os) const
+void InsetExternal::write(ostream & os) const
 {
-	params_.write(buffer, os);
+	params_.write(buffer(), os);
 }
 
 
-void InsetExternal::read(Buffer const & buffer, Lexer & lex)
+void InsetExternal::read(Lexer & lex)
 {
 	InsetExternalParams params;
-	if (params.read(buffer, lex)) {
+	if (params.read(buffer(), lex)) {
 		// exception handling is not needed as long as embedded files are in place.
-		params.filename.enable(buffer.embedded(), & buffer);
-		setParams(params, buffer);
+		params.filename.enable(buffer().embedded(), &buffer());
+		setParams(params);
 	}
 }
 
 
-int InsetExternal::latex(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+int InsetExternal::latex(odocstream & os, OutputParams const & runparams) const
 {
 	if (params_.draft) {
 		// FIXME UNICODE
 		os << "\\fbox{\\ttfamily{}"
-		   << from_utf8(params_.filename.outputFilename(buf.filePath()))
+		   << from_utf8(params_.filename.outputFilename(buffer().filePath()))
 		   << "}\n";
 		return 1;
 	}
@@ -746,35 +773,35 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 
 		if (cit != et.formats.end()) {
 			return external::writeExternal(params_, "PDFLaTeX",
-						       buf, os,
+						       buffer(), os,
 						       *(runparams.exportdata),
 						       external_in_tmpdir,
 						       dryrun);
 		}
 	}
 
-	return external::writeExternal(params_, "LaTeX", buf, os,
+	return external::writeExternal(params_, "LaTeX", buffer(), os,
 				       *(runparams.exportdata),
 				       external_in_tmpdir,
 				       dryrun);
 }
 
 
-int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
+int InsetExternal::plaintext(odocstream & os,
 			     OutputParams const & runparams) const
 {
 	os << '\n'; // output external material on a new line
-	external::writeExternal(params_, "Ascii", buf, os,
+	external::writeExternal(params_, "Ascii", buffer(), os,
 				*(runparams.exportdata), false,
 				runparams.dryrun || runparams.inComment);
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetExternal::docbook(Buffer const & buf, odocstream & os,
+int InsetExternal::docbook(odocstream & os,
 			   OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "DocBook", buf, os,
+	return external::writeExternal(params_, "DocBook", buffer(), os,
 				       *(runparams.exportdata), false,
 				       runparams.dryrun || runparams.inComment);
 }
@@ -832,54 +859,15 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 // preview stuff
 //
 
-namespace {
-
-bool preview_wanted(InsetExternalParams const & params)
-{
-	return params.display == external::PreviewDisplay &&
-		params.filename.isReadableFile();
-}
-
-
-docstring const latex_string(InsetExternal const & inset, Buffer const & buffer)
-{
-	odocstringstream os;
-	// We don't need to set runparams.encoding since it is not used by
-	// latex().
-	OutputParams runparams(0);
-	runparams.flavor = OutputParams::LATEX;
-	inset.latex(buffer, os, runparams);
-	return os.str();
-}
-
-
-void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
-				   InsetExternal const & inset,
-				   Buffer const & buffer)
-{
-	InsetExternalParams const & params = inset.params();
-
-	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
-	    preview_wanted(params)) {
-		renderer.setAbsFile(params.filename);
-		docstring const snippet = latex_string(inset, buffer);
-		renderer.addPreview(snippet, buffer);
-		renderer.startLoading(buffer);
-	}
-}
-
-} // namespace anon
-
-
 void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 {
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
 	if (!ptr)
 		return;
 
-	if (preview_wanted(params())) {
+	if (isPreviewWanted(params())) {
 		ptr->setAbsFile(params_.filename);
-		docstring const snippet = latex_string(*this, ploader.buffer());
+		docstring const snippet = latexString(*this);
 		ptr->addPreview(snippet, ploader);
 	}
 }

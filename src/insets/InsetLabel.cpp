@@ -51,23 +51,22 @@ Inset * InsetLabel::clone() const
 }
 
 
-void InsetLabel::getLabelList(Buffer const &, vector<docstring> & list) const
+void InsetLabel::getLabelList(vector<docstring> & list) const
 {
 	list.push_back(getParam("name"));
 }
 
 
-docstring const InsetLabel::getScreenLabel(Buffer const &) const
+docstring InsetLabel::screenLabel() const
 {
 	return getParam("name");
 }
 
 
-void InsetLabel::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetLabel::addToToc(ParConstIterator const & cpit) const
 {
-	Toc & toc = buf.tocBackend().toc("label");
-	toc.push_back(TocItem(cpit, 0, getScreenLabel(buf)));
+	Toc & toc = buffer().tocBackend().toc("label");
+	toc.push_back(TocItem(cpit, 0, screenLabel()));
 }
 
 
@@ -97,16 +96,14 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-int InsetLabel::latex(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+int InsetLabel::latex(odocstream & os, OutputParams const &) const
 {
 	os << escape(getCommand());
 	return 0;
 }
 
 
-int InsetLabel::plaintext(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+int InsetLabel::plaintext(odocstream & os, OutputParams const &) const
 {
 	docstring const str = getParam("name");
 	os << '<' << str << '>';
@@ -114,11 +111,10 @@ int InsetLabel::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetLabel::docbook(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	os << "<!-- anchor id=\""
-	   << sgml::cleanID(buf, runparams, getParam("name"))
+	   << sgml::cleanID(buffer(), runparams, getParam("name"))
 	   << "\" -->";
 	return 0;
 }

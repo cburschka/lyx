@@ -178,8 +178,9 @@ void InsetQuotes::parseString(string const & s)
 }
 
 
-docstring const InsetQuotes::dispString(Language const * loclang) const
+docstring InsetQuotes::dispString() const
 {
+	Language const * loclang = buffer().params().language;
 	string disp;
 	disp += quote_char[quote_index[side_][language_]];
 	if (times_ == DoubleQ)
@@ -235,8 +236,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = 0;
 
 	// FIXME: should we add a language or a font parameter member?
-	docstring const text = dispString(
-		mi.base.bv->buffer().params().language);
+	docstring const text = dispString();
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
 			dim.wid += fm.width('i');
@@ -251,8 +251,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME: should we add a language or a font parameter member?
-	docstring const text = dispString(
-		pi.base.bv->buffer().params().language);
+	docstring const text = dispString();
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		pi.pain.text(x, y, text[0], pi.base.font);
@@ -265,7 +264,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetQuotes::write(Buffer const &, ostream & os) const
+void InsetQuotes::write(ostream & os) const
 {
 	string text;
 	text += language_char[language_];
@@ -275,7 +274,7 @@ void InsetQuotes::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetQuotes::read(Buffer const &, Lexer & lex)
+void InsetQuotes::read(Lexer & lex)
 {
 	lex.next();
 	parseString(lex.getString());
@@ -286,8 +285,7 @@ void InsetQuotes::read(Buffer const &, Lexer & lex)
 }
 
 
-int InsetQuotes::latex(Buffer const &, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetQuotes::latex(odocstream & os, OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
@@ -319,17 +317,15 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
-			   OutputParams const &) const
+int InsetQuotes::plaintext(odocstream & os, OutputParams const &) const
 {
-	docstring const str = dispString(buf.params().language);
+	docstring const str = dispString();
 	os << str;
 	return str.size();
 }
 
 
-int InsetQuotes::docbook(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)
@@ -346,9 +342,9 @@ int InsetQuotes::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetQuotes::textString(Buffer const & buf, odocstream & os) const
+void InsetQuotes::textString(odocstream & os) const
 {
-	os << dispString(buf.params().language);
+	os << dispString();
 }
 
 

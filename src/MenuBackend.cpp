@@ -801,13 +801,9 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandPasteRecent(Menu & tomenu, Buffer const * buf)
+void expandPasteRecent(Menu & tomenu)
 {
-	if (!buf)
-		return;
-
-	vector<docstring> const sel =
-		cap::availableSelections(*buf);
+	vector<docstring> const sel = cap::availableSelections();
 
 	vector<docstring>::const_iterator cit = sel.begin();
 	vector<docstring>::const_iterator end = sel.end();
@@ -929,7 +925,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::PasteRecent:
-			expandPasteRecent(tomenu, buf);
+			expandPasteRecent(tomenu);
 			break;
 
 		case MenuItem::Toolbars:

@@ -126,7 +126,7 @@ string const
 }
 
 
-docstring const getComplexLabel(Buffer const & buffer,
+docstring getComplexLabel(Buffer const & buffer,
 			    string const & citeType, docstring const & keyList,
 			    docstring const & before, docstring const & after,
 			    biblio::CiteEngine engine)
@@ -406,14 +406,14 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 }
 
 
-docstring const InsetCitation::generateLabel(Buffer const & buffer) const
+docstring InsetCitation::generateLabel() const
 {
 	docstring const before = getParam("before");
 	docstring const after  = getParam("after");
 
 	docstring label;
-	biblio::CiteEngine const engine = buffer.params().getEngine();
-	label = getComplexLabel(buffer, getCmdName(), getParam("key"),
+	biblio::CiteEngine const engine = buffer().params().getEngine();
+	label = getComplexLabel(buffer(), getCmdName(), getParam("key"),
 			       before, after, engine);
 
 	// Fallback to fail-safe
@@ -424,14 +424,14 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 }
 
 
-docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
+docstring InsetCitation::screenLabel() const
 {
-	biblio::CiteEngine const engine = buffer.params().getEngine();
+	biblio::CiteEngine const engine = buffer().params().getEngine();
 	if (cache.params == params() && cache.engine == engine)
 		return cache.screen_label;
 
 	// The label has changed, so we have to re-create it.
-	docstring const glabel = generateLabel(buffer);
+	docstring const glabel = generateLabel();
 
 	unsigned int const maxLabelChars = 45;
 
@@ -450,16 +450,15 @@ docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
-			     OutputParams const &) const
+int InsetCitation::plaintext(odocstream & os, OutputParams const &) const
 {
 	docstring str;
 
 	if (cache.params == params() &&
-	    cache.engine == buffer.params().getEngine())
+	    cache.engine == buffer().params().getEngine())
 		str = cache.generated_label;
 	else
-		str = generateLabel(buffer);
+		str = generateLabel();
 
 	os << str;
 	return str.size();
@@ -484,8 +483,7 @@ static docstring const cleanupWhitespace(docstring const & citelist)
 }
 
 
-int InsetCitation::docbook(Buffer const &, odocstream & os,
-			   OutputParams const &) const
+int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 {
 	os << from_ascii("<citation>")
 	   << cleanupWhitespace(getParam("key"))
@@ -494,9 +492,9 @@ int InsetCitation::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetCitation::textString(Buffer const & buf, odocstream & os) const
+void InsetCitation::textString(odocstream & os) const
 {
-	plaintext(buf, os, OutputParams(0));
+	plaintext(os, OutputParams(0));
 }
 
 
@@ -504,10 +502,9 @@ void InsetCitation::textString(Buffer const & buf, odocstream & os) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(Buffer const & buffer, odocstream & os,
-			 OutputParams const &) const
+int InsetCitation::latex(odocstream & os, OutputParams const &) const
 {
-	biblio::CiteEngine cite_engine = buffer.params().getEngine();
+	biblio::CiteEngine cite_engine = buffer().params().getEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));

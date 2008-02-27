@@ -56,23 +56,23 @@ Inset * InsetBranch::clone() const
 }
 
 
-docstring const InsetBranch::editMessage() const
+docstring InsetBranch::editMessage() const
 {
 	return _("Opened Branch Inset");
 }
 
 
-void InsetBranch::write(Buffer const & buf, ostream & os) const
+void InsetBranch::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetBranch::read(Buffer const & buf, Lexer & lex)
+void InsetBranch::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
@@ -153,7 +153,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign") {
 			// The branch inset uses "assign".
-			if (isBranchSelected(cur.buffer())) {
+			if (isBranchSelected()) {
 				if (status() != Open)
 					setStatus(cur, Open);
 				else
@@ -189,9 +189,8 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (cmd.argument() == "open" || cmd.argument() == "close" ||
 		    cmd.argument() == "toggle")
 			flag.enabled(true);
-		else if (cmd.argument() == "assign"
-			   || cmd.argument().empty()) {
-			if (isBranchSelected(cur.buffer()))
+		else if (cmd.argument() == "assign" || cmd.argument().empty()) {
+			if (isBranchSelected())
 				flag.enabled(status() != Open);
 			else
 				flag.enabled(status() != Collapsed);
@@ -206,9 +205,9 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-bool InsetBranch::isBranchSelected(Buffer const & buffer) const
+bool InsetBranch::isBranchSelected() const
 {
-	Buffer const & realbuffer = *buffer.masterBuffer();
+	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	BranchList::const_iterator const end = branchlist.end();
 	BranchList::const_iterator it =
@@ -220,53 +219,50 @@ bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 }
 
 
-void InsetBranch::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetBranch::updateLabels(ParIterator const & it)
 {
-	if (isBranchSelected(buf))
-		InsetCollapsable::updateLabels(buf, it);
+	if (isBranchSelected())
+		InsetCollapsable::updateLabels(it);
 	else {
-		TextClass const & tclass = buf.params().textClass();
+		TextClass const & tclass = buffer().params().textClass();
 		Counters savecnt = tclass.counters();
-		InsetCollapsable::updateLabels(buf, it);
+		InsetCollapsable::updateLabels(it);
 		tclass.counters() = savecnt;
 	}
 }
 
 
-int InsetBranch::latex(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+int InsetBranch::latex(odocstream & os, OutputParams const & runparams) const
 {
-	return isBranchSelected(buf) ?
-		InsetText::latex(buf, os, runparams) : 0;
+	return isBranchSelected() ?  InsetText::latex(os, runparams) : 0;
 }
 
 
-int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
+int InsetBranch::plaintext(odocstream & os,
 			   OutputParams const & runparams) const
 {
-	if (!isBranchSelected(buf))
+	if (!isBranchSelected())
 		return 0;
 
-	os << '[' << buf.B_("branch") << ' ' << params_.branch << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	os << '[' << buffer().B_("branch") << ' ' << params_.branch << ":\n";
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 
-int InsetBranch::docbook(Buffer const & buf, odocstream & os,
+int InsetBranch::docbook(odocstream & os,
 			 OutputParams const & runparams) const
 {
-	return isBranchSelected(buf) ?
-		InsetText::docbook(buf, os, runparams) : 0;
+	return isBranchSelected() ?  InsetText::docbook(os, runparams) : 0;
 }
 
 
-void InsetBranch::textString(Buffer const & buf, odocstream & os) const
+void InsetBranch::textString(odocstream & os) const
 {
-	if (isBranchSelected(buf))
-		os << paragraphs().begin()->asString(buf, true);
+	if (isBranchSelected())
+		os << paragraphs().begin()->asString(true);
 }
 
 
@@ -276,10 +272,10 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetBranch::isMacroScope(Buffer const & buf) const 
+bool InsetBranch::isMacroScope() const 
 {
 	// Its own scope if not selected by buffer
-	return !isBranchSelected(buf);
+	return !isBranchSelected();
 }
 
 

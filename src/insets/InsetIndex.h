@@ -36,17 +36,16 @@ public:
 	///
 	docstring name() const { return from_ascii("Index"); }
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// should paragraph indendation be omitted in any case?
-	bool neverIndent(Buffer const &) const { return true; }
+	bool neverIndent() const { return true; }
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const;
 };
 
 
@@ -63,7 +62,7 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -72,9 +71,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printindex"; }
 private:
-	virtual Inset * clone() const {
-		return new InsetPrintIndex(params());
-	}
+	Inset * clone() const { return new InsetPrintIndex(params()); }
 };
 
 

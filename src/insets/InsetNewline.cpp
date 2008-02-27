@@ -28,13 +28,13 @@ using namespace std;
 namespace lyx {
 
 
-void InsetNewline::read(Buffer const &, Lexer &)
+void InsetNewline::read(Lexer &)
 {
 	/* Nothing to read */
 }
 
 
-void InsetNewline::write(Buffer const &, ostream & os) const
+void InsetNewline::write(ostream & os) const
 {
 	os << "\n" << getLyXName() << '\n';
 }
@@ -49,24 +49,21 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int InsetNewline::latex(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetNewline::latex(odocstream & os, OutputParams const &) const
 {
 	os << from_ascii(getCmdName()) << '\n';
 	return 0;
 }
 
 
-int InsetNewline::plaintext(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+int InsetNewline::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetNewline::docbook(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+int InsetNewline::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 0;

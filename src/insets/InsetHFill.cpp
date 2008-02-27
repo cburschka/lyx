@@ -66,29 +66,27 @@ void InsetHFill::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring const InsetHFill::getScreenLabel(Buffer const &) const
+docstring InsetHFill::screenLabel() const
 {
 	return _("Horizontal Fill");
 }
 
 
-int InsetHFill::plaintext(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+int InsetHFill::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << "     ";
 	return 5;
 }
 
 
-int InsetHFill::docbook(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetHFill::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-void InsetHFill::write(Buffer const &, ostream & os) const
+void InsetHFill::write(ostream & os) const
 {
 	os << "\n\\hfill\n";
 }

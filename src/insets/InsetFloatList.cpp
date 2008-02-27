@@ -66,26 +66,26 @@ bool InsetFloatList::isCompatibleCommand(string const & s)
 }
 
 
-docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
+docstring InsetFloatList::screenLabel() const
 {
-	FloatList const & floats = buf.params().textClass().floats();
+	FloatList const & floats = buffer().params().textClass().floats();
 	FloatList::const_iterator it = floats[to_ascii(getParam("type"))];
 	if (it != floats.end())
-		return buf.B_(it->second.listName());
+		return buffer().B_(it->second.listName());
 	else
 		return _("ERROR: Nonexistent float type!");
 }
 
 
-void InsetFloatList::write(Buffer const &, ostream & os) const
+void InsetFloatList::write(ostream & os) const
 {
 	os << "FloatList " << to_ascii(getParam("type")) << "\n";
 }
 
 
-void InsetFloatList::read(Buffer const & buf, Lexer & lex)
+void InsetFloatList::read(Lexer & lex)
 {
-	FloatList const & floats = buf.params().textClass().floats();
+	FloatList const & floats = buffer().params().textClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
@@ -111,10 +111,9 @@ void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 }
 
 
-int InsetFloatList::latex(Buffer const & buf, odocstream & os,
-			  OutputParams const &) const
+int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 {
-	FloatList const & floats = buf.params().textClass().floats();
+	FloatList const & floats = buffer().params().textClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {
@@ -130,7 +129,7 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 			}
 		} else {
 			os << "\\listof{" << getParam("type") << "}{"
-			   << buf.B_(cit->second.listName()) << "}\n";
+			   << buffer().B_(cit->second.listName()) << "}\n";
 		}
 	} else {
 		os << "%%\\listof{" << getParam("type") << "}{"
@@ -141,12 +140,11 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
-			      OutputParams const &) const
+int InsetFloatList::plaintext(odocstream & os, OutputParams const &) const
 {
-	os << getScreenLabel(buffer) << "\n\n";
+	os << screenLabel() << "\n\n";
 
-	buffer.tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
+	buffer().tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
 
 	return PLAINTEXT_NEWLINE;
 }

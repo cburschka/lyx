@@ -78,7 +78,7 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetVSpace::read(Buffer const &, Lexer & lex)
+void InsetVSpace::read(Lexer & lex)
 {
 	BOOST_ASSERT(lex.isOK());
 	string vsp;
@@ -94,7 +94,7 @@ void InsetVSpace::read(Buffer const &, Lexer & lex)
 }
 
 
-void InsetVSpace::write(Buffer const &, ostream & os) const
+void InsetVSpace::write(ostream & os) const
 {
 	os << "VSpace " << space_.asLyXCommand();
 }
@@ -194,24 +194,21 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetVSpace::latex(Buffer const & buf, odocstream & os,
-		       OutputParams const &) const
+int InsetVSpace::latex(odocstream & os, OutputParams const &) const
 {
-	os << from_ascii(space_.asLatexCommand(buf.params())) << '\n';
+	os << from_ascii(space_.asLatexCommand(buffer().params())) << '\n';
 	return 1;
 }
 
 
-int InsetVSpace::plaintext(Buffer const &, odocstream & os,
-			   OutputParams const &) const
+int InsetVSpace::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << "\n\n";
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetVSpace::docbook(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 1;

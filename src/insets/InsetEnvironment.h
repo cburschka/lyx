@@ -25,19 +25,17 @@ public:
 	///
 	docstring name() const { return name_; }
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	InsetCode lyxCode() const { return ENVIRONMENT_CODE; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -49,7 +47,8 @@ public:
 protected:
 	InsetEnvironment(InsetEnvironment const &);
 private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const;
 	/// the layout
 	LayoutPtr layout_;
 	///

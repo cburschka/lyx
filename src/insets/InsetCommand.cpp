@@ -51,8 +51,7 @@ void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (updateButtonLabel_) {
 		updateButtonLabel_ = false;
-		button_.update(getScreenLabel(mi.base.bv->buffer()),
-			       editable() != NOT_EDITABLE);
+		button_.update(screenLabel(), editable() != NOT_EDITABLE);
 	}
 	button_.metrics(mi, dim);
 }
@@ -79,25 +78,23 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 }
 
 
-int InsetCommand::latex(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetCommand::latex(odocstream & os, OutputParams const &) const
 {
 	os << getCommand();
 	return 0;
 }
 
 
-int InsetCommand::plaintext(Buffer const & buf, odocstream & os,
-			    OutputParams const &) const
+int InsetCommand::plaintext(odocstream & os, OutputParams const &) const
 {
-	docstring const str = "[" + buf.B_("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
+	docstring const str = "[" + buffer().B_("LaTeX Command: ")
+		+ from_utf8(getCmdName()) + "]";
 	os << str;
 	return str.size();
 }
 
 
-int InsetCommand::docbook(Buffer const &, odocstream &,
-			  OutputParams const &) const
+int InsetCommand::docbook(odocstream &, OutputParams const &) const
 {
 	return 0;
 }

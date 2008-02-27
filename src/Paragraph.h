@@ -97,36 +97,30 @@ public:
 	///
 	bool isMultiLingual(BufferParams const &) const;
 
+	/// Convert the paragraph to a string.
+	/// Used for building the table of contents
+	docstring asString(bool label) const;
 	///
-	docstring const asString(Buffer const &, bool label) const;
-	///
-	docstring const asString(Buffer const & buffer,
-				   pos_type beg,
-				   pos_type end,
-				   bool label) const;
+	docstring asString(pos_type beg, pos_type end, bool label) const;
 
 	///
-	void write(Buffer const &, std::ostream &, BufferParams const &,
+	void write(std::ostream &, BufferParams const &,
 		   depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
 	///
-	bool latex(Buffer const &, BufferParams const &,
-			     Font const & outerfont, odocstream &,
-			     TexRow & texrow, OutputParams const &) const;
+	bool latex(BufferParams const &, Font const & outerfont, odocstream &,
+		TexRow & texrow, OutputParams const &) const;
 
 	/// Can we drop the standard paragraph wrapper?
 	bool emptyTag() const;
 
 	/// Get the id of the paragraph, usefull for docbook
-	std::string getID(Buffer const & buf,
-			  OutputParams const & runparams) const;
+	std::string getID(Buffer const & buf, OutputParams const & runparams) const;
 
 	/// Get the first word of a paragraph, return the position where it left
-	pos_type getFirstWord(Buffer const & buf,
-				   odocstream & os,
-				   OutputParams const & runparams) const;
+	pos_type firstWord(odocstream & os, OutputParams const & runparams) const;
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
@@ -350,7 +344,7 @@ public:
 	/// an inset, in which case pos is the position from which the inset
 	/// was deleted, and the cursor will need to be moved back one if it
 	/// was previously past that position. Return 0 otherwise.
-	int checkBiblio(bool track_changes);
+	int checkBiblio(Buffer const & buffer);
 
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the paragraph.

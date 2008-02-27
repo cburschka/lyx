@@ -49,26 +49,23 @@ public:
 	///
 	~InsetWrap();
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return WRAP_CODE; }
 	///
-	bool isMacroScope(Buffer const &) const { return true; }
+	bool isMacroScope() const { return true; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	bool insetAllowed(InsetCode) const;
 	///
@@ -78,14 +75,14 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	virtual docstring name() const { return name_; }
+	docstring name() const { return name_; }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 
 	///
 	InsetWrapParams params_;

@@ -158,7 +158,7 @@ TeXEnvironment(Buffer const & buf,
 	if (style->isEnvironment()) {
 		os << "\\begin{" << from_ascii(style->latexname()) << '}';
 		if (style->optionalargs > 0) {
-			int ret = latexOptArgInsets(buf, *pit, os, runparams,
+			int ret = latexOptArgInsets(*pit, os, runparams,
 						    style->optionalargs);
 			while (ret > 0) {
 				texrow.newline();
@@ -253,8 +253,8 @@ TeXEnvironment(Buffer const & buf,
 }
 
 
-int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
-		      odocstream & os, OutputParams const & runparams, int number)
+int latexOptArgInsets(Paragraph const & par, odocstream & os,
+	OutputParams const & runparams, int number)
 {
 	int lines = 0;
 
@@ -264,7 +264,7 @@ int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 		if (it->inset->lyxCode() == OPTARG_CODE) {
 			InsetOptArg * ins =
 				static_cast<InsetOptArg *>(it->inset);
-			lines += ins->latexOptional(buf, os, runparams);
+			lines += ins->latexOptional(os, runparams);
 			--number;
 		}
 	}
@@ -297,7 +297,7 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		/*bool need_par = */ pit->latex(buf, bparams, outerfont,
+		/*bool need_par = */ pit->latex(bparams, outerfont,
 			os, texrow, runparams_in);
 
 		return ++pit;
@@ -505,7 +505,7 @@ TeXOnePar(Buffer const & buf,
 
 		// Separate handling of optional argument inset.
 		if (style->optionalargs > 0) {
-			int ret = latexOptArgInsets(buf, *pit, os, runparams,
+			int ret = latexOptArgInsets(*pit, os, runparams,
 						    style->optionalargs);
 			while (ret > 0) {
 				texrow.newline();
@@ -526,13 +526,12 @@ TeXOnePar(Buffer const & buf,
 		break;
 	}
 
-	Font const outerfont =
-		outerFont(distance(paragraphs.begin(), pit),
+	Font const outerfont = outerFont(distance(paragraphs.begin(), pit),
 			  paragraphs);
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
-	bool need_par = pit->latex(buf, bparams, outerfont,
+	bool need_par = pit->latex(bparams, outerfont,
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
@@ -545,10 +544,9 @@ TeXOnePar(Buffer const & buf,
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
 
-	Font const font =
-		(pit->empty()
+	Font const font = pit->empty()
 		 ? pit->getLayoutFont(bparams, outerfont)
-		 : pit->getFont(bparams, pit->size() - 1, outerfont));
+		 : pit->getFont(bparams, pit->size() - 1, outerfont);
 
 	bool is_command = style->isCommand();
 

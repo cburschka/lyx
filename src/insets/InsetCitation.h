@@ -30,22 +30,19 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return CITE_CODE; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -60,13 +57,12 @@ public:
 	static bool isCompatibleCommand(std::string const & cmd);
 private:
 	///
-	virtual Inset * clone() const
-		{ return new InsetCitation(params()); }
+	Inset * clone() const { return new InsetCitation(params()); }
 	/// we'll eventually want to be able to get info on this from the 
 	/// various CiteEngines
 	static ParamInfo param_info_;
 	/// This function does the donkey work of creating the pretty label
-	docstring const generateLabel(Buffer const &) const;
+	docstring generateLabel() const;
 
 	///
 	class Cache {

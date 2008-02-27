@@ -42,17 +42,16 @@ public:
 	///
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	void write(Buffer const &, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
 	/// Output LaTeX code, but assume that the macro is not definied yet
 	/// if overwriteRedefinition is true
 	void write(WriteStream & os, bool overwriteRedefinition) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	bool noFontChange() const { return true; }
 

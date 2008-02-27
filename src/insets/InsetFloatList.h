@@ -27,7 +27,7 @@ public:
 	///
 	InsetFloatList(std::string const & type);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -35,18 +35,15 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const &, Lexer &);
+	void read(Lexer &);
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const { return 0; }
+	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const & runparams) const;
+	int plaintext(odocstream &, OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

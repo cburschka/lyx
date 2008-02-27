@@ -45,32 +45,32 @@ Inset * InsetEnvironment::clone() const
 }
 
 
-void InsetEnvironment::write(Buffer const & buf, ostream & os) const
+void InsetEnvironment::write(ostream & os) const
 {
 	os << "Environment " << to_utf8(name()) << "\n";
-	InsetText::write(buf, os);
+	InsetText::write(os);
 }
 
 
-void InsetEnvironment::read(Buffer const & buf, Lexer & lex)
+void InsetEnvironment::read(Lexer & lex)
 {
-	InsetText::read(buf, lex);
+	InsetText::read(lex);
 }
 
 
-docstring const InsetEnvironment::editMessage() const
+docstring InsetEnvironment::editMessage() const
 {
 	return _("Opened Environment Inset: ") + name();
 }
 
 
-int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
+int InsetEnvironment::latex(odocstream & os,
 			    OutputParams const & runparams) const
 {
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexheader);
 	TexRow texrow;
-	latexParagraphs(buf, text_, os, texrow, runparams,
+	latexParagraphs(buffer(), text_, os, texrow, runparams,
 			layout_->latexparagraph);
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexfooter);
@@ -78,11 +78,11 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
+int InsetEnvironment::plaintext(odocstream & os,
 				OutputParams const & runparams) const
 {
 	os << '[' << to_utf8(name()) << ":\n";
-	InsetText::plaintext(buf, os, runparams);
+	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line

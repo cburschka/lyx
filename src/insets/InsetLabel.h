@@ -22,19 +22,19 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return LABEL_CODE; }
 	/// Appends \c list with this label
-	void getLabelList(Buffer const &, std::vector<docstring> & list) const;
+	void getLabelList(std::vector<docstring> & list) const;
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -43,13 +43,13 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "label"; }
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const;
 };
 
 

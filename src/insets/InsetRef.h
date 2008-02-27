@@ -39,7 +39,7 @@ public:
 	InsetRef(InsetCommandParams const &, Buffer const &);
 
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -47,13 +47,13 @@ public:
 	///
 	DisplayType display() const { return Inline; }
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -63,13 +63,12 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s);
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 protected:
 	///
 	InsetRef(InsetRef const &);
-
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
 	Inset * clone() const { return new InsetRef(*this); }

@@ -101,7 +101,7 @@ Translator<InsetInfo::info_type, string>
 
 	
 
-void InsetInfo::read(Buffer const & buf, Lexer & lex)
+void InsetInfo::read(Lexer & lex)
 {
 	string token;
 	while (lex.isOK()) {
@@ -123,11 +123,11 @@ void InsetInfo::read(Buffer const & buf, Lexer & lex)
 			_("Missing \\end_inset at this point."),
 			from_utf8(token));
 	}
-	updateInfo(buf);
+	updateInfo();
 }
 
 
-void InsetInfo::write(Buffer const &, ostream & os) const
+void InsetInfo::write(ostream & os) const
 {
 	os << "Info\ntype  \"" << nameTranslator().find(type_)
 	   << "\"\narg   \"" << name_ << '\"';
@@ -165,11 +165,11 @@ void InsetInfo::setInfo(string const & name)
 }
 
 
-void InsetInfo::updateInfo(Buffer const & buf)
+void InsetInfo::updateInfo()
 {
 	InsetText::clear();
 
-	BufferParams const & bp = buf.params();	
+	BufferParams const & bp = buffer().params();	
 
 	switch (type_) {
 	case UNKNOWN_INFO:
@@ -237,9 +237,10 @@ void InsetInfo::updateInfo(Buffer const & buf)
 	}
 	case BUFFER_INFO: {
 		if (name_ == "name")
-			setText(from_utf8(buf.fileName().onlyFileName()), bp.getFont(), false);
+			setText(from_utf8(buffer().fileName().onlyFileName()),
+				bp.getFont(), false);
 		else if (name_ == "path")
-			setText(from_utf8(buf.filePath()), bp.getFont(), false);
+			setText(from_utf8(buffer().filePath()), bp.getFont(), false);
 		else if (name_ == "class")
 			setText(from_utf8(bp.textClass().name()), bp.getFont(), false);
 		else

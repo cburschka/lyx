@@ -220,7 +220,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 				inset.reset(new InsetSpecialChar);
 			else
 				inset.reset(new InsetSpace);
-			inset->read(buf, lex);
+			inset->read(lex);
 			par.insertInset(par.size(), inset.release(),
 					font, change);
 		}
@@ -228,15 +228,15 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.appendChar('\\', font, change);
 	} else if (token == "\\linebreak") {
 		auto_ptr<Inset> inset(new InsetLinebreak);
-		inset->read(buf, lex);
+		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\newline") {
 		auto_ptr<Inset> inset(new InsetNewline);
-		inset->read(buf, lex);
+		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\LyXTable") {
 		auto_ptr<Inset> inset(new InsetTabular(buf));
-		inset->read(buf, lex);
+		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\hfill") {
 		par.insertInset(par.size(), new InsetHFill, font, change);
@@ -1161,7 +1161,7 @@ void Text::write(Buffer const & buf, ostream & os) const
 	ParagraphList::const_iterator end = paragraphs().end();
 	depth_type dth = 0;
 	for (; pit != end; ++pit)
-		pit->write(buf, os, buf.params(), dth);
+		pit->write(os, buf.params(), dth);
 
 	// Close begin_deeper
 	for(; dth > 0; --dth)
@@ -1311,7 +1311,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 	LayoutPtr layout = pars_[pit].layout();
 
 	docstring text;
-	docstring par_text = pars_[pit].asString(cur.buffer(), false);
+	docstring par_text = pars_[pit].asString(false);
 	string piece;
 	// the return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');

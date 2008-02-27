@@ -43,10 +43,9 @@ public:
 	bool isActive() const { return true; }
 
 	///
-	void write(Buffer const & buf, WriteStream & os) const;
+	void write(WriteStream & os) const;
 	///
-	int latex(Buffer const &, odocstream & os,
-			OutputParams const & runparams) const;
+	int latex(odocstream & os, OutputParams const & runparams) const;
 	///
 	Text * getText(int) const;
 	///

@@ -159,20 +159,18 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_GRAPHICS_EDIT: {
-		Buffer const & buffer = cur.bv().buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
-		editGraphics(p, buffer);
+		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		editGraphics(p, buffer());
 		break;
 	}
 
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
+		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (!p.filename.empty()) {
 			try {
-				p.filename.enable(buffer.embedded(), &buffer);
+				p.filename.enable(buffer().embedded(), &buffer());
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens
@@ -263,23 +261,23 @@ Inset::EDITABLE InsetGraphics::editable() const
 }
 
 
-void InsetGraphics::write(Buffer const & buf, ostream & os) const
+void InsetGraphics::write(ostream & os) const
 {
 	os << "Graphics\n";
-	params().Write(os, buf);
+	params().Write(os, buffer());
 }
 
 
-void InsetGraphics::read(Buffer const & buf, Lexer & lex)
+void InsetGraphics::read(Lexer & lex)
 {
 	string const token = lex.getString();
 
 	if (token == "Graphics")
-		readInsetGraphics(lex, buf.filePath());
+		readInsetGraphics(lex, buffer().filePath());
 	else
 		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
-	params_.filename.enable(buf.embedded(), &buf);
+	params_.filename.enable(buffer().embedded(), &buffer());
 	graphic_->update(params().as_grfxParams());
 }
 
@@ -561,8 +559,7 @@ string const stripExtensionIfPossible(string const & file, string const & to, bo
 } // namespace anon
 
 
-string const InsetGraphics::prepareFile(Buffer const & buf,
-					OutputParams const & runparams) const
+string InsetGraphics::prepareFile(OutputParams const & runparams) const
 {
 	// The following code depends on non-empty filenames
 	if (params().filename.empty())
@@ -570,7 +567,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	string const orig_file = params().filename.availableFile().absFilename();
 	// this is for dryrun and display purposes, do not use latexFilename
-	string const rel_file = params().filename.relFilename(buf.filePath());
+	string const rel_file = params().filename.relFilename(buffer().filePath());
 
 	// previewing source code, no file copying or file format conversion
 	if (runparams.dryrun)
@@ -582,7 +579,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
-	Buffer const * masterBuffer = buf.masterBuffer();
+	Buffer const * masterBuffer = buffer().masterBuffer();
 
 	// Return the output name if we are inside a comment or the file does
 	// not exist.
@@ -734,7 +731,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	if (theConverters().convert(&buf, temp_file, to_file, params().filename,
+	if (theConverters().convert(&buffer(), temp_file, to_file, params().filename,
 			       from, to, el,
 			       Converters::try_default | Converters::try_cache)) {
 		runparams.exportdata->addExternalFile(tex_format,
@@ -747,7 +744,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 }
 
 
-int InsetGraphics::latex(Buffer const & buf, odocstream & os,
+int InsetGraphics::latex(odocstream & os,
 			 OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
@@ -798,7 +795,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// Convert the file if necessary.
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
-	latex_str += prepareFile(buf, runparams);
+	latex_str += prepareFile(runparams);
 	latex_str += '}' + after;
 	// FIXME UNICODE
 	os << from_utf8(latex_str);
@@ -809,8 +806,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
-			     OutputParams const &) const
+int InsetGraphics::plaintext(odocstream & os, OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -820,7 +816,7 @@ int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
 	// FIXME UNICODE
 	// FIXME: We have no idea what the encoding of the filename is
 
-	docstring const str = bformat(buf.B_("Graphics file: %1$s"),
+	docstring const str = bformat(buffer().B_("Graphics file: %1$s"),
 				      from_utf8(params().filename.absFilename()));
 	os << '<' << str << '>';
 
@@ -860,7 +856,7 @@ static int writeImageObject(char const * format, odocstream & os,
 // For explanation on inserting graphics into DocBook checkout:
 // http://en.tldp.org/LDP/LDP-Author-Guide/html/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const &, odocstream & os,
+int InsetGraphics::docbook(odocstream & os,
 			   OutputParams const & runparams) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will

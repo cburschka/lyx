@@ -29,22 +29,21 @@ public:
 	///
 	InsetBibitem(InsetCommandParams const &);
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return BIBITEM_CODE; }
 	///
-	docstring const getBibLabel() const;
+	docstring bibLabel() const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	virtual void fillWithBibKeys(Buffer const &,
-		BiblioInfo &, InsetIterator const &) const;
+	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	virtual void updateLabels(ParIterator const &);
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

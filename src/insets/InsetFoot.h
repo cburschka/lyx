@@ -30,25 +30,22 @@ public:
 	///
 	docstring name() const { return from_ascii("Foot"); }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	/// Update the counters of this inset and of its contents
-	void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 
 protected:
 	InsetFoot(InsetFoot const &);
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 };
 
 

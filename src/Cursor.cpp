@@ -1625,7 +1625,6 @@ docstring Cursor::selectionAsString(bool label) const
 		return docstring();
 
 	if (inTexted()) {
-		Buffer const & buffer = bv().buffer();
 		ParagraphList const & pars = text()->paragraphs();
 
 		// should be const ...
@@ -1635,22 +1634,22 @@ docstring Cursor::selectionAsString(bool label) const
 		size_t const endpos = selEnd().pos();
 
 		if (startpit == endpit)
-			return pars[startpit].asString(buffer, startpos, endpos, label);
+			return pars[startpit].asString(startpos, endpos, label);
 
 		// First paragraph in selection
 		docstring result = pars[startpit].
-			asString(buffer, startpos, pars[startpit].size(), label)
+			asString(startpos, pars[startpit].size(), label)
 				 + parbreak(pars[startpit]);
 
 		// The paragraphs in between (if any)
 		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 			Paragraph const & par = pars[pit];
-			result += par.asString(buffer, 0, par.size(), label)
+			result += par.asString(0, par.size(), label)
 				  + parbreak(pars[pit]);
 		}
 
 		// Last paragraph in selection
-		result += pars[endpit].asString(buffer, 0, endpos, label);
+		result += pars[endpit].asString(0, endpos, label);
 
 		return result;
 	}

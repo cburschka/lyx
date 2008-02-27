@@ -68,31 +68,30 @@ void InsetMathMBox::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathMBox::write(Buffer const & buf, WriteStream & ws) const
+void InsetMathMBox::write(WriteStream & ws) const
 {
 	if (ws.latex()) {
 		ws << "\\mbox{\n";
 		TexRow texrow;
-		OutputParams runparams(&buf.params().encoding());
-		latexParagraphs(buf, text_, ws.os(), texrow, runparams);
+		OutputParams runparams(&buffer().params().encoding());
+		latexParagraphs(buffer(), text_, ws.os(), texrow, runparams);
 		ws.addlines(texrow.rows());
 		ws << "}";
 	} else {
 		ws << "\\mbox{\n";
 		ostringstream os;
-		text_.write(buf, os);
+		text_.write(buffer(), os);
 		ws.os() << from_utf8(os.str());
 		ws << "}";
 	}
 }
 
 
-int InsetMathMBox::latex(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetMathMBox::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "\\mbox{\n";
 	TexRow texrow;
-	latexParagraphs(buf, text_, os, texrow, runparams);
+	latexParagraphs(buffer(), text_, os, texrow, runparams);
 	os << "}";
 	return texrow.rows();
 }

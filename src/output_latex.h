@@ -28,7 +28,7 @@ class TexRow;
 class Text;
 
 /// Export up to \p number optarg insets
-int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
+int latexOptArgInsets(Paragraph const & par,
 		      odocstream & os, OutputParams const & runparams,
 		      int number);
 

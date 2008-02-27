@@ -433,7 +433,7 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 	buf->loadChildDocuments();
 
 	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
-		it->fillWithBibKeys(*buf, *this, it);
+		it->fillWithBibKeys(*this, it);
 }
 
 

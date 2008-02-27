@@ -37,17 +37,17 @@ public:
 	///
 	docstring name() const { return from_ascii("Listings"); }
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
-	bool isMacroScope(Buffer const &) const { return true; }
+	bool isMacroScope() const { return true; }
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex( odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -59,7 +59,7 @@ public:
 protected:
 	InsetListings(InsetListings const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
@@ -67,7 +67,7 @@ private:
 	///
 	void setButtonLabel();
 	///
-	docstring getCaption(Buffer const &, OutputParams const &) const;
+	docstring getCaption(OutputParams const &) const;
 	///
 	InsetListingsParams params_;
 };

@@ -39,11 +39,8 @@ namespace frontend { class Painter; }
 class InsetCollapsable : public InsetText {
 public:
 	///
-	InsetCollapsable(
-		BufferParams const &,
-		CollapseStatus status = Inset::Open,
-		TextClassPtr tc = 0
-		);
+	InsetCollapsable(BufferParams const &,
+		CollapseStatus status = Inset::Open, TextClassPtr tc = 0);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
@@ -55,11 +52,9 @@ public:
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
 	///
-	InsetLayout const & getLayout(BufferParams const &) const
-		{ return *layout_; } 
+	InsetLayout const & getLayout(BufferParams const &) const { return *layout_; } 
 	///
-	InsetLayout const & getLayout() const
-		{ return *layout_; } 
+	InsetLayout const & getLayout() const { return *layout_; } 
 	///
 	void setLayout(BufferParams const &);
 	/// (Re-)set the character style parameters from \p tc according
@@ -68,9 +63,9 @@ public:
 	///
 	virtual bool useEmptyLayout() { return true; }
 	///
-	void read(Buffer const &, Lexer &);
+	void read(Lexer &);
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -89,7 +84,7 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	bool isMacroScope(Buffer const & buf) const;
+	bool isMacroScope() const;
 	///
 	void setLabel(docstring const & l);
 	///
@@ -145,8 +140,7 @@ public:
 	///
 	virtual ColorCode backgroundColor() const {return layout_->bgcolor(); }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

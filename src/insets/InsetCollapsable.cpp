@@ -144,7 +144,7 @@ void InsetCollapsable::setLayout(TextClassPtr tc)
 }
 
 
-void InsetCollapsable::write(Buffer const & buf, ostream & os) const
+void InsetCollapsable::write(ostream & os) const
 {
 	os << "status ";
 	switch (status_) {
@@ -156,11 +156,11 @@ void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 		break;
 	}
 	os << "\n";
-	text_.write(buf, os);
+	text_.write(buffer(), os);
 }
 
 
-void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
+void InsetCollapsable::read(Lexer & lex)
 {
 	bool token_found = false;
 	if (lex.isOK()) {
@@ -189,9 +189,9 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 		}
 	}
 	// this must be set before we enter InsetText::read()
-	setLayout(buf.params());
+	setLayout(buffer().params());
 
-	InsetText::read(buf, lex);
+	InsetText::read(lex);
 
 	if (!token_found)
 		status_ = isOpen() ? Open : Collapsed;
@@ -822,7 +822,7 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-bool InsetCollapsable::isMacroScope(Buffer const &) const
+bool InsetCollapsable::isMacroScope() const
 {
 	// layout_ == 0 leads to no latex output, so ignore 
 	// the macros outside
@@ -838,7 +838,7 @@ bool InsetCollapsable::isMacroScope(Buffer const &) const
 }
 
 
-int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
+int InsetCollapsable::latex(odocstream & os,
 			  OutputParams const & runparams) const
 {
 	// FIXME: What should we do layout_ is 0?
@@ -871,7 +871,7 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 		rp.verbatim = true;
 	if (layout_->isNeedProtect())
 		rp.moving_arg = true;
-	int i = InsetText::latex(buf, os, rp);
+	int i = InsetText::latex(os, rp);
 	if (!layout_->latexname().empty()) {
 		if (layout_->latextype() == "command") {
 			os << "}";

@@ -156,7 +156,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 			istringstream is(to_utf8(sel));
 			Lexer lex(0, 0);
 			lex.setStream(is);
-			formula->read(cur.buffer(), lex);
+			formula->read(lex);
 			if (formula->getType() == hullNone)
 				// Don't create pseudo formulas if
 				// delimiters are left out
@@ -1334,7 +1334,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			docstring ds = cur.selectionAsString(false);
 			cutSelection(cur, true, false);
 			static_cast<InsetInfo *>(inset)->setInfo(to_utf8(ds));
-			static_cast<InsetInfo *>(inset)->updateInfo(cur.bv().buffer());
+			static_cast<InsetInfo *>(inset)->updateInfo();
 		}
 		insertInset(cur, inset);
 		cur.posForward();

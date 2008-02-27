@@ -83,7 +83,7 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-docstring const InsetRef::getScreenLabel(Buffer const &) const
+docstring InsetRef::screenLabel() const
 {
 	docstring temp;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
@@ -102,8 +102,7 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetRef::latex(Buffer const &, odocstream & os,
-		    OutputParams const &) const
+int InsetRef::latex(odocstream & os, OutputParams const &) const
 {
 	// We don't want to output p_["name"], since that is only used 
 	// in docbook. So we construct new params, without it, and use that.
@@ -114,8 +113,7 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetRef::plaintext(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetRef::plaintext(odocstream & os, OutputParams const &) const
 {
 	docstring const str = getParam("reference");
 	os << '[' << str << ']';
@@ -123,23 +121,22 @@ int InsetRef::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetRef::docbook(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
+int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
 	if (name.empty()) {
 		if (runparams.flavor == OutputParams::XML) {
 			os << "<xref linkend=\""
-			   << sgml::cleanID(buf, runparams, getParam("reference"))
+			   << sgml::cleanID(buffer(), runparams, getParam("reference"))
 			   << "\" />";
 		} else {
 			os << "<xref linkend=\""
-			   << sgml::cleanID(buf, runparams, getParam("reference"))
+			   << sgml::cleanID(buffer(), runparams, getParam("reference"))
 			   << "\">";
 		}
 	} else {
 		os << "<link linkend=\""
-		   << sgml::cleanID(buf, runparams, getParam("reference"))
+		   << sgml::cleanID(buffer(), runparams, getParam("reference"))
 		   << "\">"
 		   << getParam("name")
 		   << "</link>";
@@ -149,17 +146,16 @@ int InsetRef::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetRef::textString(Buffer const & buf, odocstream & os) const
+void InsetRef::textString(odocstream & os) const
 {
-	plaintext(buf, os, OutputParams(0));
+	plaintext(os, OutputParams(0));
 }
 
 
-void InsetRef::addToToc(Buffer const & buf,
-	ParConstIterator const & cpit) const
+void InsetRef::addToToc(ParConstIterator const & cpit) const
 {
 	docstring const & label = getParam("reference");
-	Toc & toc = buf.tocBackend().toc("label");
+	Toc & toc = buffer().tocBackend().toc("label");
 	Toc::iterator it = toc.begin();
 	Toc::iterator end = toc.end();
 	for (; it != end; ++it) {
@@ -167,7 +163,7 @@ void InsetRef::addToToc(Buffer const & buf,
 			break;
 	}
 
-	docstring const reflabel = getScreenLabel(buf);
+	docstring const reflabel = screenLabel();
 	if (it == end) {
 		// This label has not been parsed yet so we just add it temporarily.
 		// InsetLabel::addTocToc() will fix that later.

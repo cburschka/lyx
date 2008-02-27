@@ -92,9 +92,9 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetBibitem::read(Buffer const & buf, Lexer & lex)
+void InsetBibitem::read(Lexer & lex)
 {
-	InsetCommand::read(buf, lex);
+	InsetCommand::read(lex);
 
 	if (prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
@@ -103,24 +103,23 @@ void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 }
 
 
-docstring const InsetBibitem::getBibLabel() const
+docstring InsetBibitem::bibLabel() const
 {
 	docstring const & label = getParam("label");
 	return label.empty() ? autolabel_ : label;
 }
 
 
-docstring const InsetBibitem::getScreenLabel(Buffer const &) const
+docstring InsetBibitem::screenLabel() const
 {
-	return getParam("key") + " [" + getBibLabel() + ']';
+	return getParam("key") + " [" + bibLabel() + ']';
 }
 
 
-int InsetBibitem::plaintext(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+int InsetBibitem::plaintext(odocstream & os, OutputParams const &) const
 {
 	odocstringstream oss;
-	oss << '[' << getBibLabel() << "] ";
+	oss << '[' << bibLabel() << "] ";
 
 	docstring const str = oss.str();
 	os << str;
@@ -169,7 +168,7 @@ docstring const bibitemWidest(Buffer const & buffer)
 			continue;
 
 		bitem = static_cast<InsetBibitem const *>(inset);
-		docstring const label = bitem->getBibLabel();
+		docstring const label = bitem->bibLabel();
 
 		// FIXME: we can't be sure using the following that the GUI
 		// version and the command-line version will give the same
@@ -187,36 +186,36 @@ docstring const bibitemWidest(Buffer const & buffer)
 			w = wx;
 	}
 
-	if (bitem && !bitem->getBibLabel().empty())
-		return bitem->getBibLabel();
+	if (bitem && !bitem->bibLabel().empty())
+		return bitem->bibLabel();
 
 	return from_ascii("99");
 }
 
 
-void InsetBibitem::fillWithBibKeys(Buffer const & buf,
-	BiblioInfo & keys, InsetIterator const & it) const
+void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) const
 {
 	docstring const key = getParam("key");
 	BibTeXInfo keyvalmap(false);
 	keyvalmap[from_ascii("label")] = getParam("label");
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
-	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(buf, false);
+	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(false);
 	keys[key] = keyvalmap;
 }
 
 
 /// Update the counters of this inset and of its contents
-void InsetBibitem::updateLabels(Buffer const &buf, ParIterator const &) 
+void InsetBibitem::updateLabels(ParIterator const &) 
 {
-	Counters & counters = buf.params().textClass().counters();
+	Counters & counters = buffer().params().textClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
 	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
 		counters.step(bibitem);
 		autolabel_ = counters.theCounter(bibitem);
-	} else
+	} else {
 		autolabel_ = from_ascii("??");
+	}
 	refresh();
 }
 

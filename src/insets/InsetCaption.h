@@ -28,17 +28,17 @@ public:
 	///
 	virtual ~InsetCaption() {}
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
+	void read(Lexer & lex);
 	///
 	virtual DisplayType display() const;
 	///
-	virtual bool neverIndent(Buffer const &) const { return true; }
+	virtual bool neverIndent() const { return true; }
 	///
 	virtual InsetCode lyxCode() const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
@@ -57,28 +57,23 @@ public:
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(Buffer const &, ParIterator const &);
+	virtual void updateLabels(ParIterator const &);
 	///
-	int latex(Buffer const & buf, odocstream & os,
-		  OutputParams const &) const;
+	int latex(odocstream & os, OutputParams const &) const;
 	///
-	int plaintext(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const;
+	int plaintext(odocstream & os, OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const & buf, odocstream & os,
-		    OutputParams const & runparams) const;
+	int docbook(odocstream & os, OutputParams const & runparams) const;
 	/// return the mandatory argument (LaTeX format) only
-	int getArgument(Buffer const & buf, odocstream & os,
-		  OutputParams const &) const;
+	int getArgument(odocstream & os, OutputParams const &) const;
 	/// return the optional argument(s) only
-	int getOptArg(Buffer const & buf, odocstream & os,
-		  OutputParams const &) const;
+	int getOptArg(odocstream & os, OutputParams const &) const;
 	///
 	std::string const & type() const { return type_; }
 	///
 	void setCustomLabel(docstring const & label);
 	///
-	void addToToc(Buffer const &, ParConstIterator const &) const;
+	void addToToc(ParConstIterator const &) const;
 	/// 
 	virtual bool forceEmptyLayout() const { return true; }
 	/// Captions don't accept alignment, spacing, etc.

@@ -38,7 +38,7 @@ public:
 	virtual InsetMathRef * asRefInset() { return this; }
 
 	/// docbook output
-	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
+	int docbook(odocstream & os, OutputParams const &) const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
 

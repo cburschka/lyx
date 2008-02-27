@@ -62,7 +62,7 @@ Inset * InsetFormulaMacro::clone() const
 }
 
 
-void InsetFormulaMacro::write(Buffer const &, ostream & os) const
+void InsetFormulaMacro::write(ostream & os) const
 {
 	os << "FormulaMacro\n";
 	WriteStream wi(os, false, false);
@@ -70,7 +70,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const &, odocstream & os,
+int InsetFormulaMacro::latex(odocstream & os,
 			     OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
@@ -80,8 +80,7 @@ int InsetFormulaMacro::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetFormulaMacro::plaintext(Buffer const &, odocstream & os,
-				 OutputParams const &) const
+int InsetFormulaMacro::plaintext(odocstream & os, OutputParams const &) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, true);
@@ -93,14 +92,14 @@ int InsetFormulaMacro::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
+int InsetFormulaMacro::docbook(ostream & os,
 			       OutputParams const & runparams) const
 {
-	return plaintext(buf, os, runparams);
+	return plaintext(os, runparams);
 }
 
 
-void InsetFormulaMacro::read(Buffer const &, Lexer & lex)
+void InsetFormulaMacro::read(Lexer & lex)
 {
 	read(lex.getStream());
 }

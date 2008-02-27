@@ -30,15 +30,15 @@ public:
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
-	virtual void read(Buffer const &, Lexer & lex);
+	virtual void read(Lexer & lex);
 
-	virtual void write(Buffer const &, std::ostream & os) const;
+	virtual void write(std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	virtual bool directWrite() const { return true; }
 	/// is this equivalent to a space (which is BTW different from
@@ -54,10 +54,7 @@ public:
 	virtual ColorCode ColorName() const { return Color_eolmarker; }
 
 private:
-	virtual Inset * clone() const
-	{
-		return new InsetNewline;
-	}
+	Inset * clone() const { return new InsetNewline; }
 };
 
 class InsetLinebreak : public InsetNewline {

@@ -32,22 +32,19 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	DisplayType display() const { return Inline; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
@@ -56,11 +53,9 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "href"; }
 	/// Force inset into LTR environment if surroundings are RTL?
-	virtual bool forceLTR() const { return true; }
+	bool forceLTR() const { return true; }
 private:
-	virtual Inset * clone() const {
-		return new InsetHyperlink(params());
-	}
+	Inset * clone() const { return new InsetHyperlink(params()); }
 };
 
 

@@ -77,8 +77,7 @@ void InsetMath::write(WriteStream & os) const
 }
 
 
-int InsetMath::plaintext(Buffer const &, odocstream &,
-			 OutputParams const &) const
+int InsetMath::plaintext(odocstream &, OutputParams const &) const
 {
 	// all math plain text output shall take place in InsetMathHull
 	BOOST_ASSERT(false);

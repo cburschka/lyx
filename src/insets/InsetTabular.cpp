@@ -472,7 +472,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::cellstruct::cellstruct(BufferParams const & bp)
+Tabular::cellstruct::cellstruct(Buffer const & buffer)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -484,9 +484,10 @@ Tabular::cellstruct::cellstruct(BufferParams const & bp)
 	  right_line(false),
 	  usebox(BOX_NONE),
 	  rotate(false),
-	  inset(new InsetText(bp))
+	  inset(new InsetText(buffer.params()))
 {
-	inset->paragraphs().back().setLayout(bp.textClass().emptyLayout());
+	inset->setBuffer(const_cast<Buffer &>(buffer));
+	inset->paragraphs().back().setLayout(buffer.params().textClass().emptyLayout());
 }
 
 
@@ -573,20 +574,20 @@ Tabular::Tabular()
 }
 
 
-Tabular::Tabular(BufferParams const & bp, row_type rows_arg,
-		       col_type columns_arg)
+Tabular::Tabular(Buffer const & buffer, row_type rows_arg, col_type columns_arg)
 {
-	init(bp, rows_arg, columns_arg);
+	init(buffer, rows_arg, columns_arg);
 }
 
 
 // activates all lines and sets all widths to 0
-void Tabular::init(BufferParams const & bp, row_type rows_arg,
+void Tabular::init(Buffer const & buf, row_type rows_arg,
 		      col_type columns_arg)
 {
+	buffer_ = &buf;
 	row_info = row_vector(rows_arg);
 	column_info = column_vector(columns_arg);
-	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, cellstruct(bp)));
+	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, cellstruct(buf)));
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
@@ -619,8 +620,9 @@ void Tabular::fixCellNums()
 }
 
 
-void Tabular::appendRow(BufferParams const & bp, idx_type const cell)
+void Tabular::appendRow(idx_type const cell)
 {
+	BufferParams const & bp = buffer().params();
 	row_type const row = cellRow(cell);
 
 	row_vector::iterator rit = row_info.begin() + row;
@@ -635,7 +637,7 @@ void Tabular::appendRow(BufferParams const & bp, idx_type const cell)
 	for (row_type i = 0; i < nrows - 1; ++i)
 		swap(cell_info[i], old[i]);
 
-	cell_info = cell_vvector(nrows, cell_vector(ncols, cellstruct(bp)));
+	cell_info = cell_vvector(nrows, cell_vector(ncols, cellstruct(buffer())));
 
 	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
@@ -662,12 +664,12 @@ void Tabular::deleteRow(row_type const row)
 }
 
 
-void Tabular::copyRow(BufferParams const & bp, row_type const row)
+void Tabular::copyRow(row_type const row)
 {
 	row_info.insert(row_info.begin() + row, row_info[row]);
 	cell_info.insert(cell_info.begin() + row, cell_info[row]);
 
-	if (bp.trackChanges)
+	if (buffer().params().trackChanges)
 		for (col_type j = 0; j < columnCount(); ++j)
 			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
@@ -675,7 +677,7 @@ void Tabular::copyRow(BufferParams const & bp, row_type const row)
 }
 
 
-void Tabular::appendColumn(BufferParams const & bp, idx_type const cell)
+void Tabular::appendColumn(idx_type const cell)
 {
 	col_type const column = cellColumn(cell);
 	col_type const ncols = columnCount();
@@ -684,8 +686,9 @@ void Tabular::appendColumn(BufferParams const & bp, idx_type const cell)
 	// set the column values of the column before
 	column_info[column + 1] = column_info[column];
 
+	BufferParams const & bp = buffer().params();
 	for (row_type i = 0; i < rowCount(); ++i) {
-		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp));
+		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(buffer()));
 
 		// care about multicolumns
 		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
@@ -725,8 +728,9 @@ void Tabular::deleteColumn(col_type const column)
 }
 
 
-void Tabular::copyColumn(BufferParams const & bp, col_type const column)
+void Tabular::copyColumn(col_type const column)
 {
+	BufferParams const & bp = buffer().params();
 	column_info.insert(column_info.begin() + column, column_info[column]);
 
 	for (row_type i = 0; i < rowCount(); ++i)
@@ -1369,7 +1373,7 @@ Tabular::col_type Tabular::cellRightColumn(idx_type cell) const
 }
 
 
-void Tabular::write(Buffer const & buf, ostream & os) const
+void Tabular::write(ostream & os) const
 {
 	// header line
 	os << "<lyxtabular"
@@ -1441,7 +1445,7 @@ void Tabular::write(Buffer const & buf, ostream & os) const
 			   << write_attribute("special", cell_info[i][j].align_special)
 			   << ">\n";
 			os << "\\begin_inset ";
-			cell_info[i][j].inset->write(buf, os);
+			cell_info[i][j].inset->write(os);
 			os << "\n\\end_inset\n"
 			   << "</cell>\n";
 		}
@@ -1451,14 +1455,13 @@ void Tabular::write(Buffer const & buf, ostream & os) const
 }
 
 
-void Tabular::read(Buffer const & buf, Lexer & lex)
+void Tabular::read(Lexer & lex)
 {
 	string line;
 	istream & is = lex.getStream();
 
 	l_getline(is, line);
-	if (!prefixIs(line, "<lyxtabular ")
-		&& !prefixIs(line, "<Tabular ")) {
+	if (!prefixIs(line, "<lyxtabular ") && !prefixIs(line, "<Tabular ")) {
 		BOOST_ASSERT(false);
 		return;
 	}
@@ -1474,7 +1477,7 @@ void Tabular::read(Buffer const & buf, Lexer & lex)
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	init(buf.params(), rows_arg, columns_arg);
+	init(buffer(), rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got"
@@ -1550,7 +1553,7 @@ void Tabular::read(Buffer const & buf, Lexer & lex)
 			getTokenValue(line, "special", cell_info[i][j].align_special);
 			l_getline(is, line);
 			if (prefixIs(line, "\\begin_inset")) {
-				cell_info[i][j].inset->read(buf, lex);
+				cell_info[i][j].inset->read(lex);
 				l_getline(is, line);
 			}
 			if (!prefixIs(line, "</cell>")) {
@@ -1592,8 +1595,7 @@ Tabular::cellstruct & Tabular::cellinfo_of_cell(idx_type cell) const
 }
 
 
-void Tabular::setMultiColumn(Buffer * buffer, idx_type cell,
-				idx_type number)
+void Tabular::setMultiColumn(idx_type cell, idx_type number)
 {
 	cellstruct & cs = cellinfo_of_cell(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
@@ -1605,7 +1607,7 @@ void Tabular::setMultiColumn(Buffer * buffer, idx_type cell,
 	for (idx_type i = 1; i < number; ++i) {
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
-		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
+		cs.inset->appendParagraphs(cs1.inset->paragraphs());
 		cs1.inset->clear();
 	}
 	updateIndexes();
@@ -2135,7 +2137,7 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell) const
 }
 
 
-int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
+int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 					 OutputParams const & runparams) const
 {
 	if (!is_long_tabular)
@@ -2150,7 +2152,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
 		}
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endhead) {
-				ret += TeXRow(os, i, buf, runparams);
+				ret += TeXRow(os, i, runparams);
 			}
 		}
 		if (endhead.bottomDL) {
@@ -2172,7 +2174,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
 		}
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endfirsthead) {
-				ret += TeXRow(os, i, buf, runparams);
+				ret += TeXRow(os, i, runparams);
 			}
 		}
 		if (endfirsthead.bottomDL) {
@@ -2190,7 +2192,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
 		}
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endfoot) {
-				ret += TeXRow(os, i, buf, runparams);
+				ret += TeXRow(os, i, runparams);
 			}
 		}
 		if (endfoot.bottomDL) {
@@ -2212,7 +2214,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os, Buffer const & buf,
 		}
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endlastfoot) {
-				ret += TeXRow(os, i, buf, runparams);
+				ret += TeXRow(os, i, runparams);
 			}
 		}
 		if (endlastfoot.bottomDL) {
@@ -2235,7 +2237,7 @@ bool Tabular::isValidRow(row_type row) const
 }
 
 
-int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
+int Tabular::TeXRow(odocstream & os, row_type i,
 		       OutputParams const & runparams) const
 {
 	idx_type cell = cellIndex(i, 0);
@@ -2266,21 +2268,21 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 		shared_ptr<InsetText> inset = getCellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
-		bool rtl = par.isRTL(buf.params())
+		bool rtl = par.isRTL(buffer().params())
 			&& !par.empty()
 			&& getPWidth(cell).zero();
 
 		if (rtl) {
-			if (par.getParLanguage(buf.params())->lang() ==
+			if (par.getParLanguage(buffer().params())->lang() ==
 			"farsi")
 				os << "\\textFR{";
-			else if (par.getParLanguage(buf.params())->lang() == "arabic_arabi")
+			else if (par.getParLanguage(buffer().params())->lang() == "arabic_arabi")
 				os << "\\textAR{";
 			// currently, remaning RTL languages are arabic_arabtex and hebrew
 			else
 				os << "\\R{";
 		}
-		ret += inset->latex(buf, os, runparams);
+		ret += inset->latex(os, runparams);
 		if (rtl)
 			os << '}';
 
@@ -2327,8 +2329,7 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 }
 
 
-int Tabular::latex(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
+int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 {
 	int ret = 0;
 
@@ -2402,7 +2403,7 @@ int Tabular::latex(Buffer const & buf, odocstream & os,
 	os << "}\n";
 	++ret;
 
-	ret += TeXLongtableHeaderFooter(os, buf, runparams);
+	ret += TeXLongtableHeaderFooter(os, runparams);
 
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
@@ -2410,7 +2411,7 @@ int Tabular::latex(Buffer const & buf, odocstream & os,
 
 	for (row_type i = 0; i < rowCount(); ++i) {
 		if (isValidRow(i)) {
-			ret += TeXRow(os, i, buf, runparams);
+			ret += TeXRow(os, i, runparams);
 			if (is_long_tabular && row_info[i].newpage) {
 				os << "\\newpage\n";
 				++ret;
@@ -2435,7 +2436,7 @@ int Tabular::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int Tabular::docbookRow(Buffer const & buf, odocstream & os, row_type row,
+int Tabular::docbookRow(odocstream & os, row_type row,
 			   OutputParams const & runparams) const
 {
 	int ret = 0;
@@ -2478,7 +2479,7 @@ int Tabular::docbookRow(Buffer const & buf, odocstream & os, row_type row,
 		}
 
 		os << '>';
-		ret += getCellInset(cell)->docbook(buf, os, runparams);
+		ret += getCellInset(cell)->docbook(os, runparams);
 		os << "</entry>\n";
 		++cell;
 	}
@@ -2487,8 +2488,7 @@ int Tabular::docbookRow(Buffer const & buf, odocstream & os, row_type row,
 }
 
 
-int Tabular::docbook(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	int ret = 0;
 
@@ -2529,7 +2529,7 @@ int Tabular::docbook(Buffer const & buf, odocstream & os,
 		++ret;
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endhead || row_info[i].endfirsthead) {
-				ret += docbookRow(buf, os, i, runparams);
+				ret += docbookRow(os, i, runparams);
 			}
 		}
 		os << "</thead>\n";
@@ -2541,7 +2541,7 @@ int Tabular::docbook(Buffer const & buf, odocstream & os,
 		++ret;
 		for (row_type i = 0; i < rowCount(); ++i) {
 			if (row_info[i].endfoot || row_info[i].endlastfoot) {
-				ret += docbookRow(buf, os, i, runparams);
+				ret += docbookRow(os, i, runparams);
 			}
 		}
 		os << "</tfoot>\n";
@@ -2556,7 +2556,7 @@ int Tabular::docbook(Buffer const & buf, odocstream & os,
 	++ret;
 	for (row_type i = 0; i < rowCount(); ++i) {
 		if (isValidRow(i)) {
-			ret += docbookRow(buf, os, i, runparams);
+			ret += docbookRow(os, i, runparams);
 		}
 	}
 	os << "</tbody>\n";
@@ -2668,14 +2668,14 @@ bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
 }
 
 
-void Tabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
+void Tabular::plaintextPrintCell(odocstream & os,
 			       OutputParams const & runparams,
 			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
 	odocstringstream sstr;
-	getCellInset(cell)->plaintext(buf, sstr, runparams);
+	getCellInset(cell)->plaintext(sstr, runparams);
 
 	if (onlydata) {
 		os << sstr.str();
@@ -2719,7 +2719,7 @@ void Tabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
 }
 
 
-void Tabular::plaintext(Buffer const & buf, odocstream & os,
+void Tabular::plaintext(odocstream & os,
 			   OutputParams const & runparams, int const depth,
 			   bool onlydata, char_type delim) const
 {
@@ -2735,7 +2735,7 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 				if (isMultiColumnReal(cell))
 					continue;
 				odocstringstream sstr;
-				getCellInset(cell)->plaintext(buf, sstr, runparams);
+				getCellInset(cell)->plaintext(sstr, runparams);
 				if (clen[j] < sstr.str().length())
 					clen[j] = sstr.str().length();
 			}
@@ -2747,7 +2747,7 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
 				odocstringstream sstr;
-				getCellInset(cell)->plaintext(buf, sstr, runparams);
+				getCellInset(cell)->plaintext(sstr, runparams);
 				int len = int(sstr.str().length());
 				idx_type const n = cells_in_multicolumn(cell);
 				for (col_type k = j; len > 0 && k < j + n - 1; ++k)
@@ -2768,8 +2768,7 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 				// we don't use operator<< for single UCS4 character.
 				// see explanation in docstream.h
 				os.put(delim);
-			plaintextPrintCell(buf, os, runparams,
-					   cell, i, j, clen, onlydata);
+			plaintextPrintCell(os, runparams, cell, i, j, clen, onlydata);
 			++cell;
 		}
 		os << endl;
@@ -2868,17 +2867,16 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
-	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1))), scx_(0)
+	: tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0)
 {
-	setBuffer(const_cast<Buffer *>(&buf)); // FIXME: remove later
+	setBuffer(const_cast<Buffer &>(buf)); // FIXME: remove later
 }
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: Inset(tab), tabular(tab.tabular),  scx_(0)
 {
-	setBuffer(const_cast<Buffer *>(tab.buffer())); // FIXME: remove later
+	setBuffer(const_cast<Buffer &>(tab.buffer())); // FIXME: remove later
 }
 
 
@@ -2903,18 +2901,18 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 }
 
 
-void InsetTabular::write(Buffer const & buf, ostream & os) const
+void InsetTabular::write(ostream & os) const
 {
 	os << "Tabular" << endl;
-	tabular.write(buf, os);
+	tabular.write(os);
 }
 
 
-void InsetTabular::read(Buffer const & buf, Lexer & lex)
+void InsetTabular::read(Lexer & lex)
 {
 	bool const old_format = (lex.getString() == "\\LyXTable");
 
-	tabular.read(buf, lex);
+	tabular.read(lex);
 
 	if (old_format)
 		return;
@@ -3141,7 +3139,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 }
 
 
-docstring const InsetTabular::editMessage() const
+docstring InsetTabular::editMessage() const
 {
 	return _("Opened table");
 }
@@ -3174,10 +3172,10 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 }
 
 
-void InsetTabular::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetTabular::updateLabels(ParIterator const & it)
 {
 	// In a longtable, tell captions what the current float is
-	Counters & cnts = buf.params().textClass().counters();
+	Counters & cnts = buffer().params().textClass().counters();
 	string const saveflt = cnts.current_float();
 	if (tabular.isLongTabular())
 		cnts.current_float("table");
@@ -3186,7 +3184,7 @@ void InsetTabular::updateLabels(Buffer const & buf, ParIterator const & it)
 	it2.forwardPos();
 	size_t const end = it2.nargs();
 	for ( ; it2.idx() < end; it2.top().forwardIdx())
-		lyx::updateLabels(buf, it2);
+		lyx::updateLabels(buffer(), it2);
 
 	//reset afterwards
 	if (tabular.isLongTabular())
@@ -3801,25 +3799,22 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetTabular::latex(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+int InsetTabular::latex(odocstream & os, OutputParams const & runparams) const
 {
-	return tabular.latex(buf, os, runparams);
+	return tabular.latex(os, runparams);
 }
 
 
-int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
-			    OutputParams const & runparams) const
+int InsetTabular::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	os << '\n'; // output table on a new line
 	int const dp = runparams.linelen > 0 ? runparams.depth : 0;
-	tabular.plaintext(buf, os, runparams, dp, false, 0);
+	tabular.plaintext(os, runparams, dp, false, 0);
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetTabular::docbook(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
+int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	int ret = 0;
 	Inset * master = 0;
@@ -3837,7 +3832,7 @@ int InsetTabular::docbook(Buffer const & buf, odocstream & os,
 		os << "<informaltable>";
 		++ret;
 	}
-	ret += tabular.docbook(buf, os, runparams);
+	ret += tabular.docbook(os, runparams);
 	if (!master) {
 		os << "</informaltable>";
 		++ret;
@@ -4113,7 +4108,6 @@ bool InsetTabular::oneCellHasRotationState(bool rotated,
 void InsetTabular::tabularFeatures(Cursor & cur,
 	Tabular::Feature feature, string const & value)
 {
-	BufferView & bv = cur.bv();
 	col_type sel_col_start;
 	col_type sel_col_end;
 	row_type sel_row_start;
@@ -4192,12 +4186,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::APPEND_ROW:
 		// append the row into the tabular
-		tabular.appendRow(bv.buffer().params(), cur.idx());
+		tabular.appendRow(cur.idx());
 		break;
 
 	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
-		tabular.appendColumn(bv.buffer().params(), cur.idx());
+		tabular.appendColumn(cur.idx());
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 
@@ -4224,11 +4218,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::COPY_ROW:
-		tabular.copyRow(bv.buffer().params(), row);
+		tabular.copyRow(row);
 		break;
 
 	case Tabular::COPY_COLUMN:
-		tabular.copyColumn(bv.buffer().params(), column);
+		tabular.copyColumn(column);
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 
@@ -4276,10 +4270,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		bool lineSet = !tabular.rightLine(cur.idx(), flag);
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setRightLine(
-					tabular.cellIndex(i,j),
-					lineSet,
-					flag);
+				tabular.setRightLine(tabular.cellIndex(i,j), lineSet, flag);
 		break;
 	}
 
@@ -4293,10 +4284,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::ALIGN_BLOCK:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setAlignment(
-					tabular.cellIndex(i, j),
-					setAlign,
-					flag);
+				tabular.setAlignment(tabular.cellIndex(i, j), setAlign, flag);
 		break;
 
 	case Tabular::M_VALIGN_TOP:
@@ -4308,9 +4296,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::VALIGN_MIDDLE:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setVAlignment(
-					tabular.cellIndex(i, j),
-					setVAlign, flag);
+				tabular.setVAlignment(tabular.cellIndex(i, j), setVAlign, flag);
 		break;
 
 	case Tabular::MULTICOLUMN: {
@@ -4327,14 +4313,14 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			if (tabular.isMultiColumn(cur.idx()))
 				tabular.unsetMultiColumn(cur.idx());
 			else
-				tabular.setMultiColumn(&bv.buffer(), cur.idx(), 1);
+				tabular.setMultiColumn(cur.idx(), 1);
 			break;
 		}
 		// we have a selection so this means we just add all this
 		// cells to form a multicolumn cell
 		idx_type const s_start = cur.selBegin().idx();
 		idx_type const s_end = cur.selEnd().idx();
-		tabular.setMultiColumn(&bv.buffer(), s_start, s_end - s_start + 1);
+		tabular.setMultiColumn(s_start, s_end - s_start + 1);
 		cur.idx() = s_start;
 		cur.pit() = 0;
 		cur.pos() = 0;
@@ -4381,8 +4367,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::UNSET_ROTATE_CELL:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.setRotateCell(
-					tabular.cellIndex(i, j), false);
+				tabular.setRotateCell(tabular.cellIndex(i, j), false);
 		break;
 
 	case Tabular::TOGGLE_ROTATE_CELL:
@@ -4560,7 +4545,7 @@ bool InsetTabular::copySelection(Cursor & cur)
 
 	odocstringstream os;
 	OutputParams const runparams(0);
-	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
+	paste_tabular->plaintext(os, runparams, 0, true, '\t');
 	// Needed for the "Edit->Paste recent" menu and the system clipboard.
 	cap::copySelection(cur, os.str());
 
@@ -4709,8 +4694,6 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	if (buf.length() <= 0)
 		return true;
 
-	Buffer const & buffer = bv.buffer();
-
 	col_type cols = 1;
 	row_type rows = 1;
 	col_type maxCols = 1;
@@ -4738,8 +4721,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	col_type ocol = 0;
 	row_type row = 0;
 	if (usePaste) {
-		paste_tabular.reset(
-			new Tabular(buffer.params(), rows, maxCols));
+		paste_tabular.reset(new Tabular(buffer(), rows, maxCols));
 		loctab = paste_tabular.get();
 		cols = 0;
 		dirtyTabularStack(true);
@@ -4770,7 +4752,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Font const font = bv.textMetrics(&inset->text_).
 					getDisplayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
-					       buffer.params().trackChanges);
+					       buffer().params().trackChanges);
 				++cols;
 				++cell;
 			}
@@ -4782,7 +4764,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Font const font = bv.textMetrics(&inset->text_).
 					getDisplayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
-					       buffer.params().trackChanges);
+					       buffer().params().trackChanges);
 			}
 			cols = ocol;
 			++row;
@@ -4798,7 +4780,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
 		Font const font = bv.textMetrics(&inset->text_).getDisplayFont(0, 0);
 		inset->setText(buf.substr(op, len - op), font,
-			buffer.params().trackChanges);
+			buffer().params().trackChanges);
 	}
 	return true;
 }
@@ -4855,11 +4837,9 @@ void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	// by Buffer::readInset
 	lex >> token;
 	if (!lex || token != "Tabular")
-		return print_mailer_error("InsetTabularMailer", in, 2,
-					  "Tabular");
+		return print_mailer_error("InsetTabularMailer", in, 2, "Tabular");
 
-	Buffer const & buffer = *inset.buffer();
-	inset.read(buffer, lex);
+	inset.read(lex);
 }
 
 
@@ -4867,7 +4847,7 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(*inset.buffer(), data);
+	inset.write(data);
 	data << "\\end_inset\n";
 	return data.str();
 }

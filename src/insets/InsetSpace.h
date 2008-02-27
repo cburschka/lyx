@@ -60,32 +60,29 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	/// Will not be used when lyxf3
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 
 	// should this inset be handled like a normal charater
-	bool isChar() const;
+	bool isChar() const { return true; }
 	/// is this equivalent to a letter?
-	bool isLetter() const;
+	bool isLetter() const { return false; }
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
-	bool isSpace() const;
+	bool isSpace() const { return true; }
 private:
 	virtual Inset * clone() const;
 

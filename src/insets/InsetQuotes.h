@@ -79,18 +79,18 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const &, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const &, Lexer & lex);
+	void read(Lexer & lex);
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 
 	/// the string that is passed to the TOC
-	virtual void textString(Buffer const &, odocstream &) const;
+	void textString(odocstream &) const;
 
 	///
 	void validate(LaTeXFeatures &) const;
@@ -100,7 +100,8 @@ public:
 	bool isChar() const { return true; }
 
 private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const;
 
 	///
 	quote_language language_;
@@ -118,7 +119,7 @@ private:
 	///
 	void parseString(std::string const &);
 	///
-	lyx::docstring const dispString(Language const *) const;
+	docstring dispString() const;
 };
 
 } // namespace lyx

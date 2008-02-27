@@ -28,7 +28,7 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -36,10 +36,9 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	int latex(Buffer const &, odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	virtual void fillWithBibKeys(Buffer const &,
-		BiblioInfo &, InsetIterator const &) const;
+	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
 	EmbeddedFileList const getFiles(Buffer const &) const;
 	///

@@ -29,13 +29,13 @@ using namespace std;
 
 namespace lyx {
 
-void InsetNewpage::read(Buffer const &, Lexer &)
+void InsetNewpage::read( Lexer &)
 {
 	/* Nothing to read */
 }
 
 
-void InsetNewpage::write(Buffer const &, ostream & os) const
+void InsetNewpage::write(ostream & os) const
 {
 	os << "\n" << getCmdName() << '\n';
 }
@@ -79,24 +79,21 @@ void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetNewpage::latex(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+int InsetNewpage::latex(odocstream & os, OutputParams const &) const
 {
 	os << from_ascii(getCmdName()) << "{}";
 	return 0;
 }
 
 
-int InsetNewpage::plaintext(Buffer const &, odocstream & os,
-			      OutputParams const &) const
+int InsetNewpage::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetNewpage::docbook(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 0;

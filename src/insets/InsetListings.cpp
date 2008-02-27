@@ -69,22 +69,22 @@ Inset::DisplayType InsetListings::display() const
 }
 
 
-void InsetListings::updateLabels(Buffer const & buf, ParIterator const & it)
+void InsetListings::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buf.params().textClass().counters();
+	Counters & cnts = buffer().params().textClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
 	cnts.current_float("listing");
 
-	InsetCollapsable::updateLabels(buf, it);
+	InsetCollapsable::updateLabels(it);
 
 	//reset afterwards
 	cnts.current_float(saveflt);
 }
 
 
-void InsetListings::write(Buffer const & buf, ostream & os) const
+void InsetListings::write(ostream & os) const
 {
 	os << "listings" << "\n";
 	InsetListingsParams const & par = params();
@@ -96,11 +96,11 @@ void InsetListings::write(Buffer const & buf, ostream & os) const
 		os << "inline true\n";
 	else
 		os << "inline false\n";
-	InsetCollapsable::write(buf, os);
+	InsetCollapsable::write(os);
 }
 
 
-void InsetListings::read(Buffer const & buf, Lexer & lex)
+void InsetListings::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.next();
@@ -118,18 +118,17 @@ void InsetListings::read(Buffer const & buf, Lexer & lex)
 			break;
 		}
 	}
-	InsetCollapsable::read(buf, lex);
+	InsetCollapsable::read(lex);
 }
 
 
-docstring const InsetListings::editMessage() const
+docstring InsetListings::editMessage() const
 {
 	return _("Opened Listing Inset");
 }
 
 
-int InsetListings::latex(Buffer const & buf, odocstream & os,
-		    OutputParams const & runparams) const
+int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 {
 	string param_string = params().params();
 	// NOTE: I use {} to quote text, which is an experimental feature
@@ -184,7 +183,7 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 		// but real_current_font moved to cursor.
 		//rp.local_font = &text_.real_current_font;
 		rp.moving_arg = true;
-		docstring const caption = getCaption(buf, rp);
+		docstring const caption = getCaption(rp);
 		runparams.encoding = rp.encoding;
 		if (param_string.empty() && caption.empty())
 			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}\n";
@@ -272,8 +271,7 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 }
 
 
-docstring InsetListings::getCaption(Buffer const & buf,
-	OutputParams const & runparams) const
+docstring InsetListings::getCaption(OutputParams const & runparams) const
 {
 	if (paragraphs().empty())
 		return docstring();
@@ -287,8 +285,8 @@ docstring InsetListings::getCaption(Buffer const & buf,
 				odocstringstream ods;
 				InsetCaption * ins =
 					static_cast<InsetCaption *>(it->inset);
-				ins->getOptArg(buf, ods, runparams);
-				ins->getArgument(buf, ods, runparams);
+				ins->getOptArg(ods, runparams);
+				ins->getArgument(ods, runparams);
 				return ods.str();
 			}
 		}

@@ -46,20 +46,17 @@ public:
 	///
 	docstring name() const { return from_ascii("ERT"); }
 	///
-	void write(Buffer const & buf, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	virtual docstring const editMessage() const;
+	docstring editMessage() const;
 	///
 	bool insetAllowed(InsetCode code) const;
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	int docbook(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
@@ -71,7 +68,7 @@ public:
 	///
 	virtual bool allowParagraphCustomization(idx_type) const { return false; }
 	/// should paragraph indendation be omitted in any case?
-	bool neverIndent(Buffer const &) const { return true; }
+	bool neverIndent() const { return true; }
 protected:
 	InsetERT(InsetERT const &);
 	///

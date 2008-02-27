@@ -194,15 +194,14 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 }
 
 
-void InsetMathHull::addToToc(Buffer const & buf,
-	ParConstIterator const & pit) const
+void InsetMathHull::addToToc(ParConstIterator const & pit) const
 {
 	vector<docstring> labels;
-	getLabelList(buf, labels);
+	getLabelList(labels);
 	if (labels.empty())
 		return;
 
-	Toc & toc = buf.tocBackend().toc("equation");
+	Toc & toc = buffer().tocBackend().toc("equation");
 	toc.push_back(TocItem(pit, 0, labels[0]));
 }
 
@@ -474,7 +473,7 @@ Inset::DisplayType InsetMathHull::display() const
 }
 
 
-void InsetMathHull::getLabelList(Buffer const &, vector<docstring> & labels) const
+void InsetMathHull::getLabelList(vector<docstring> & labels) const
 {
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
@@ -1341,7 +1340,7 @@ void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 }
 
 
-docstring const InsetMathHull::editMessage() const
+docstring InsetMathHull::editMessage() const
 {
 	return _("Math editor mode");
 }
@@ -1433,7 +1432,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 #endif
 
 
-void InsetMathHull::write(Buffer const &, ostream & os) const
+void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, false);
@@ -1443,7 +1442,7 @@ void InsetMathHull::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetMathHull::read(Buffer const &, Lexer & lex)
+void InsetMathHull::read(Lexer & lex)
 {
 	MathAtom at;
 	mathed_parse_normal(at, lex);
@@ -1451,8 +1450,7 @@ void InsetMathHull::read(Buffer const &, Lexer & lex)
 }
 
 
-int InsetMathHull::plaintext(Buffer const &, odocstream & os,
-			     OutputParams const &) const
+int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -1476,8 +1474,7 @@ int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
-			   OutputParams const & runparams) const
+int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	MathStream ms(os);
 	int res = 0;
@@ -1489,7 +1486,7 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 
 	docstring bname = name;
 	if (!label(0).empty())
-		bname += " id='" + sgml::cleanID(buf, runparams, label(0)) + "'";
+		bname += " id='" + sgml::cleanID(buffer(), runparams, label(0)) + "'";
 
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
@@ -1510,14 +1507,14 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 		ms << ETag("math");
 	} else {
 		ms << MTag("alt role='tex'");
-		res = latex(buf, ls, runparams);
+		res = latex(ls, runparams);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");
 	}
 
 	ms << from_ascii("<graphic fileref=\"eqn/");
 	if (!label(0).empty())
-		ms << sgml::cleanID(buf, runparams, label(0));
+		ms << sgml::cleanID(buffer(), runparams, label(0));
 	else
 		ms << sgml::uniqueID(from_ascii("anon"));
 
@@ -1532,9 +1529,9 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetMathHull::textString(Buffer const & buf, odocstream & os) const
+void InsetMathHull::textString(odocstream & os) const
 {
-	plaintext(buf, os, OutputParams(0));
+	plaintext(os, OutputParams(0));
 }
 
 
