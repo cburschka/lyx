@@ -1066,6 +1066,12 @@ void GuiWorkArea::setReadOnly(bool)
 }
 
 
+bool GuiWorkArea::isFullScreen()
+{
+	return lyx_view_ && lyx_view_->isFullScreen();
+}
+
+
 ////////////////////////////////////////////////////////////////////
 //
 // TabWorkArea 
@@ -1192,12 +1198,17 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 	wa->setUpdatesEnabled(false);
 	// Hide tabbar if there's no tab (avoid a resize and a flashing tabbar
 	// when hiding it again below).
-	showBar(count() > 0);
+	if (!(currentWorkArea() && currentWorkArea()->isFullScreen()))
+		showBar(count() > 0);
 	addTab(wa, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateTabText(GuiWorkArea *)));
-	// Hide tabbar if there's only one tab.
-	showBar(count() > 1);
+	if (currentWorkArea() && currentWorkArea()->isFullScreen())
+		setFullScreen(true);
+	else
+		// Hide tabbar if there's only one tab.
+		showBar(count() > 1);
+
 	return wa;
 }
 
@@ -1216,8 +1227,11 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 	if (count()) {
 		// make sure the next work area is enabled.
 		currentWidget()->setUpdatesEnabled(true);
-		// Hide tabbar if there's only one tab.
-		showBar(count() > 1);
+		if ((currentWorkArea() && currentWorkArea()->isFullScreen()))
+			setFullScreen(true);
+		else
+			// Hide tabbar if there's only one tab.
+			showBar(count() > 1);
 	}
 	return true;
 }
