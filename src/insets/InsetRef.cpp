@@ -15,13 +15,15 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "LyXFunc.h"
 #include "OutputParams.h"
+#include "ParIterator.h"
 #include "sgml.h"
+#include "TocBackend.h"
 
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using namespace std;
@@ -150,6 +152,23 @@ int InsetRef::docbook(Buffer const & buf, odocstream & os,
 void InsetRef::textString(Buffer const & buf, odocstream & os) const
 {
 	plaintext(buf, os, OutputParams(0));
+}
+
+
+void InsetRef::addToToc(Buffer const & buf,
+	ParConstIterator const & cpit) const
+{
+	docstring const & label = getParam("reference");
+	Toc & toc = buf.tocBackend().toc("label");
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator end = toc.end();
+	for (; it != end; ++it) {
+		if (it->str() == label) {
+			++it;
+			toc.insert(it, TocItem(cpit, 1, getScreenLabel(buf)));
+			break;
+		}
+	}
 }
 
 

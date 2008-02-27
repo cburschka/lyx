@@ -62,6 +62,8 @@ public:
 	static std::string defaultCommand() { return "ref"; };
 	///
 	static bool isCompatibleCommand(std::string const & s);
+	///
+	void addToToc(Buffer const &, ParConstIterator const &) const;
 protected:
 	///
 	InsetRef(InsetRef const &);
