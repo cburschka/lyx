@@ -418,7 +418,7 @@ void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
 
 Buffer const * Inset::updateFrontend() const
 {
-	return theApp()? theApp()->updateInset(this) : 0;
+	return theApp() ? theApp()->updateInset(this) : 0;
 }
 
 } // namespace lyx

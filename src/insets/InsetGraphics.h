@@ -76,9 +76,9 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// all graphics can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
+	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
-	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
+	void updateEmbeddedFile(EmbeddedFile const &);
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return true; }
 protected:

@@ -214,19 +214,17 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetGraphics::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFileList & files) const
+void InsetGraphics::registerEmbeddedFiles(EmbeddedFileList & files) const
 {
-	files.registerFile(params().filename, this, buffer);
+	files.registerFile(params().filename, this, buffer());
 }
 
 
-void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
-	EmbeddedFile const & file)
+void InsetGraphics::updateEmbeddedFile(EmbeddedFile const & file)
 {
 	// when embedding is enabled, change of embedding status leads to actions
 	EmbeddedFile temp = file;
-	temp.enable(buf.embedded(), &buf);
+	temp.enable(buffer().embedded(), &buffer());
 	// this will not be set if an exception is thorwn in enable()
 	params_.filename = temp;
 

@@ -160,7 +160,7 @@ public:
 	/// embedded file instead of external file. To make sure inset pointers 
 	/// are up to date, please make sure there is no modification to the
 	/// document between EmbeddedFiles::update() and this function.
-	void updateInsets(Buffer const * buf) const;
+	void updateInsets() const;
 
 	/// Check readability of availableFile
 	bool isReadableFile() const;

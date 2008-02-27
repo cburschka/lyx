@@ -87,9 +87,9 @@ public:
 	///
 	void updateLabels(ParIterator const &);
 	/// child document can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
+	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
-	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
+	void updateEmbeddedFile(EmbeddedFile const & file);
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

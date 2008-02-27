@@ -495,19 +495,17 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetExternal::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFileList & files) const
+void InsetExternal::registerEmbeddedFiles(EmbeddedFileList & files) const
 {
-	files.registerFile(params_.filename, this, buffer);
+	files.registerFile(params_.filename, this, buffer());
 }
 
 
-void InsetExternal::updateEmbeddedFile(Buffer const & buf,
-	EmbeddedFile const & file)
+void InsetExternal::updateEmbeddedFile(EmbeddedFile const & file)
 {
 	// when embedding is enabled, change of embedding status leads to actions
 	EmbeddedFile temp = file;
-	temp.enable(buf.embedded(), &buf);
+	temp.enable(buffer().embedded(), &buffer());
 	// this will not be set if an exception is thorwn in enable()
 	params_.filename = temp;
 }

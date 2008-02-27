@@ -146,9 +146,9 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// external file can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
+	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
-	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
+	void updateEmbeddedFile(EmbeddedFile const &);
 
 protected:
 	InsetExternal(InsetExternal const &);

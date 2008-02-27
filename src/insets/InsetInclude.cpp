@@ -908,15 +908,13 @@ void InsetInclude::updateLabels(ParIterator const &)
 }
 
 
-void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
-	EmbeddedFileList & files) const
+void InsetInclude::registerEmbeddedFiles(EmbeddedFileList & files) const
 {
-	files.registerFile(includedFilename(buffer, params()), this, buffer);
+	files.registerFile(includedFilename(buffer(), params()), this, buffer());
 }
 
 
-void InsetInclude::updateEmbeddedFile(Buffer const & buf,
-	EmbeddedFile const & file)
+void InsetInclude::updateEmbeddedFile(EmbeddedFile const & file)
 {
 	InsetCommandParams p = params();
 	p["filename"] = from_utf8(file.outputFilename());

@@ -246,12 +246,12 @@ bool EmbeddedFile::updateFromExternalFile() const
 }
 
 
-void EmbeddedFile::updateInsets(Buffer const * buf) const
+void EmbeddedFile::updateInsets() const
 {
 	vector<Inset const *>::const_iterator it = inset_list_.begin();
 	vector<Inset const *>::const_iterator it_end = inset_list_.end();
 	for (; it != it_end; ++it)
-		const_cast<Inset *>(*it)->updateEmbeddedFile(*buf, *this);
+		const_cast<Inset *>(*it)->updateEmbeddedFile(*this);
 }
 
 
@@ -386,9 +386,9 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 	for (; it != it_end; ++it) {
 		it->enable(flag, &buffer);
 		if (it->embedded())
-			count_embedded ++;
+			++count_embedded;
 		else
-			count_external ++;
+			++count_external;
 	}
 	// if operation is successful (no exception is thrown)
 	buffer.markDirty();
@@ -396,7 +396,7 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 
 	// if the operation is successful, update insets
 	for (it = begin(); it != it_end; ++it)
-		it->updateInsets(&buffer);
+		it->updateInsets();
 	
 	// show result
 	if (flag) {
@@ -429,7 +429,7 @@ void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 						from_utf8(it->outputFilename())));
 				it->setEmbed(true);
 				// update the inset with this embedding status.
-				const_cast<Inset*>(inset)->updateEmbeddedFile(buffer, *it);
+				const_cast<Inset*>(inset)->updateEmbeddedFile(*it);
 			}
 			it->addInset(inset);
 			return;
@@ -445,7 +445,7 @@ void EmbeddedFileList::update(Buffer const & buffer)
 	clear();
 
 	for (InsetIterator it = inset_iterator_begin(buffer.inset()); it; ++it)
-		it->registerEmbeddedFiles(buffer, *this);
+		it->registerEmbeddedFiles(*this);
 }
 
 
@@ -492,4 +492,4 @@ bool EmbeddedFileList::writeFile(DocFileName const & filename, Buffer const & bu
 	return true;
 }
 
-}
+} // namespace lyx

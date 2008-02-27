@@ -38,9 +38,9 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
-	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
+	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
-	EmbeddedFileList const getFiles(Buffer const &) const;
+	EmbeddedFileList embeddedFiles() const;
 	///
 	bool addDatabase(std::string const &);
 	///
@@ -55,17 +55,15 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
 	///
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFileList &) const;
+	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
-	void updateEmbeddedFile(Buffer const & buf, EmbeddedFile const & file);
-	
+	void updateEmbeddedFile(EmbeddedFile const & file);
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	virtual Inset * clone() const;
-
+	Inset * clone() const;
 };
 
 
