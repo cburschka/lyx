@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -172,6 +172,15 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 
+% check for package sidecap
+% used for captions on the side
+\newboolean{sidecap}
+\IfFileExists{sidecap.sty}
+ {\usepackage{sidecap}
+  \let\marginpar\marginnote
+  \setboolean{sidecap}{true}}
+ {\setboolean{sidecap}{false}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -277,7 +286,7 @@ author: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.4
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -302,9 +311,13 @@ arydshln
 \series bold
 colortbl
 \series default
-, and 
+, 
 \series bold
 marginnote
+\series default
+, and 
+\series bold
+sidecap
 \series default
  must be installed.
  If they are not installed you can export the document anyway but the sections
@@ -20846,6 +20859,36 @@ leftcaption
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifsidecap
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following section will only be displayed when the LaTeX-package 
+\series bold
+sidecap
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To place in LyX the caption of a float on the side, it is necessary to add
  these commands to the document preamble:
 \end_layout
@@ -21694,6 +21737,60 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following will be displayed when the LaTeX-package 
+\series bold
+sidecap
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the LaTeX-package 
+\series bold
+sidecap
+\series default
+ to see the following part of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset

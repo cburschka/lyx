@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -172,6 +172,15 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 
+% check for package sidecap
+% used for captions on the side
+\newboolean{sidecap}
+\IfFileExists{sidecap.sty}
+ {\usepackage{sidecap}
+  \let\marginpar\marginnote
+  \setboolean{sidecap}{true}}
+ {\setboolean{sidecap}{false}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -291,7 +300,7 @@ Traducción de: Ignacio García
 \newline
 
 \family sans
-Versión 1.5.4
+Versión 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -316,9 +325,13 @@ arydshln
 \series bold
 colortbl
 \series default
- y 
+, 
 \series bold
 marginnote
+\series default
+ y 
+\series bold
+sidecap
 \series default
 .
  Si no están instalados, también podrás exportar el documento, pero las
@@ -20946,6 +20959,37 @@ leftcaption
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifsidecap
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+La siguiente sección sólo se mostrará en pantalla si está instalado el paquete
+ LaTeX 
+\series bold
+sidecap
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Para situar en LyX la leyenda de un flotante al lado, es necesario añadir
  estos comandos al preámbulo del documento:
 \end_layout
@@ -21742,7 +21786,7 @@ j
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21758,7 +21802,7 @@ TabBesEnd
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21816,6 +21860,61 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
+ 
+\series bold
+sidecap
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+sidecap
+\series default
+ para ver la parte siguiente en la salida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset

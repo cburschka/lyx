@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -172,6 +172,15 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 
+% check for package sidecap
+% used for captions on the side
+\newboolean{sidecap}
+\IfFileExists{sidecap.sty}
+ {\usepackage{sidecap}
+  \let\marginpar\marginnote
+  \setboolean{sidecap}{true}}
+ {\setboolean{sidecap}{false}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -285,7 +294,7 @@ version 1.5.2 - novembre 2007
 \newline
 
 \family sans
-Version 1.5.4
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -310,9 +319,13 @@ arydshln
 \series bold
 colortbl
 \series default
-, et 
+, 
 \series bold
 marginnote
+\series default
+, et 
+\series bold
+sidecap
 \series default
  doivent être installés.
  Si ce n'est pas le cas, vous pouvez quand même exporter le document mais
@@ -21201,6 +21214,36 @@ leftcaption
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifsidecap
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+La section suivante ne sera affichée que si le paquetage LaTeX 
+\series bold
+sidecap
+\series default
+ a été installé.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Pour pouvoir placer la légende d'un flottant à côté de celui-ci, vous devez
  ajouter ces commandes dans le préambule de votre document :
 \end_layout
@@ -22049,6 +22092,60 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Ce qui suit sera affiché si le paquetage LaTeX 
+\series bold
+sidecap
+\series default
+ n'est pas installé :
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vous devez installer le paquetage LaTeX 
+\series bold
+sidecap
+\series default
+ pour voir la suite de cette section dans la sortie imprimée.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
