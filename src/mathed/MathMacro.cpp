@@ -492,8 +492,9 @@ bool MathMacro::validName() const
 
 	// valid characters?
 	for (size_t i = 0; i<n.size(); ++i) {
-		if (!(n[i] >= 'a' && n[i] <= 'z') &&
-				!(n[i] >= 'A' && n[i] <= 'Z')) 
+		if (!(n[i] >= 'a' && n[i] <= 'z')
+		    && !(n[i] >= 'A' && n[i] <= 'Z')
+		    && n[i] != '*') 
 			return false;
 	}
 
