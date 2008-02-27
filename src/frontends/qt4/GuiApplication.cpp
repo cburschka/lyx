@@ -140,8 +140,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setApplicationName(app_name + "-" + lyx_version);
 
 	//FIXME: quitOnLastWindowClosed is true by default, at least on Windows and
-	// X11 platform. We should have a setting for this in order to let the
-	// application to stay resident.
+	// X11 platforms. We should have a lyxrc setting for this in order to let the
+	// application stay resident.
 	/*
 	if (lyxrc.quit_on_last_window_closed)
 		setQuitOnLastWindowClosed(false);
