@@ -983,9 +983,48 @@ void LyXAction::init()
 		{ LFUN_ALL_CHANGES_ACCEPT, "all-changes-accept", Noop, Edit },
 		{ LFUN_ALL_CHANGES_REJECT, "all-changes-reject", Noop, Edit },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_INSET_APPLY
+ * \li Action: Apply data for an inset.
+ * \li Notion: LFUN_INSET_APPLY is sent from the dialogs when the data should
+               be applied. This is either changed to #LFUN_INSET_MODIFY or
+               #LFUN_INSET_INSERT depending on the context where it is called.
+ * \li Syntax: inset-apply <ARGS>
+ * \li Params: See #LFUN_INSET_INSERT .
+ * \endvar
+ */
 		{ LFUN_INSET_APPLY, "inset-apply", Noop, Edit },
 		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_INSET_INSERT
+ * \li Action: Insert new inset (type given by the parameters).
+ * \li Syntax: inset-insert <INSET> <ARGS>
+ * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|
+                         hyperlink|include|index|label|nomencl|vspace|ref|toc>\n
+               <ARGS>: depends on the given inset. Use "lyx -dbg action" to
+	               explore.
+ * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
+               where <label name> is the name of the referenced label and
+	       <Format> is one of the following: \n
+	       ref -- <reference> \n
+	       eqref -- (<reference>) \n
+	       pageref -- <page> \n
+               vpageref -- on <page> \n
+	       vref -- <reference> on <page> \n
+               prettyref -- Formatted reference
+ * \endvar
+ */
 		{ LFUN_INSET_INSERT, "inset-insert", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_INSET_MODIFY
+ * \li Action: Modify existing inset.
+ * \li Notion: Used for label, floats, listings, box, branch, external, wrap
+               bibtex, ert, command, grahocs, note, vspace, tabular, bibitem,
+	       inlude, ref insets.
+ * \li Syntax: inset-modify <INSET> <ARGS>
+ * \li Params: See #LFUN_INSET_INSERT for further details.
+ * \endvar
+ */
 		{ LFUN_INSET_MODIFY, "", Noop, Hidden },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop, Hidden },
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
