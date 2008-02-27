@@ -1977,9 +1977,10 @@ void GuiView::restartCursor()
 	if (d.current_work_area_)
 		d.current_work_area_->startBlinkingCursor();
 
-	// Take this occasion to update the toobars and layout list.
+	// Take this occasion to update the other GUI elements.
 	updateLayoutList();
 	updateToolbars();
+	updateStatusBar();
 }
 
 
