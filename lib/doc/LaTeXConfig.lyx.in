@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -3001,6 +3001,28 @@ jurabib
 \end_layout
 
 \begin_layout Subsection
+nicefrac
+\end_layout
+
+\begin_layout Description
+Found: @chk_nicefrac@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+nicefrac
+\family default
+ is needed by LyX to create fractions in text size (like ``3/5'').
+\end_layout
+
+\begin_layout Subsection
 nomencl
 \end_layout
 
@@ -3172,7 +3194,24 @@ soul
  provides hyphenatable letterspacing (spacing out), underlining, striking
  out, and some derivatives.
  It is needed by LyX to output struck out text in change tracked documents.
- 
+\end_layout
+
+\begin_layout Subsection
+units
+\end_layout
+
+\begin_layout Description
+Found: @chk_units@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+Notes: The package units is needed by LyX to properly typeset units in formulas.
 \end_layout
 
 \begin_layout Subsection
