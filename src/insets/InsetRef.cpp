@@ -163,12 +163,19 @@ void InsetRef::addToToc(Buffer const & buf,
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator end = toc.end();
 	for (; it != end; ++it) {
-		if (it->str() == label) {
-			++it;
-			toc.insert(it, TocItem(cpit, 1, getScreenLabel(buf)));
+		if (it->str() == label)
 			break;
-		}
 	}
+
+	if (it == end)
+		//FIXME: this is an orphan, is this really possible?
+		return;
+
+	docstring const reflabel = getScreenLabel(buf);
+	++it;
+	while (it->str() == reflabel && it != end)
+		++it;
+	toc.insert(it, TocItem(cpit, 1, reflabel));
 }
 
 
