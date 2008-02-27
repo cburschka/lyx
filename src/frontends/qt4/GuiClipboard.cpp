@@ -64,13 +64,14 @@ namespace frontend {
 class QMacPasteboardMimeGraphics : public QMacPasteboardMime {
 public:
 	QMacPasteboardMimeGraphics()
-	: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL) {}
+		: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL)
+	{}
 	~QMacPasteboardMimeGraphics() {}
 	QString convertorName();
-	QString flavorFor(const QString &mime);
+	QString flavorFor(const QString & mime);
 	QString mimeFor(QString flav);
-	bool canConvert(const QString &mime, QString flav);
-	QVariant convertToMime(const QString &mime, QList<QByteArray> data, QString flav);
+	bool canConvert(const QString & mime, QString flav);
+	QVariant convertToMime(const QString & mime, QList<QByteArray> data, QString flav);
 	QList<QByteArray> convertFromMime(const QString &mime, QVariant data, QString flav);
 };
 
@@ -81,7 +82,7 @@ QString QMacPasteboardMimeGraphics::convertorName()
 }
 
 
-QString QMacPasteboardMimeGraphics::flavorFor(const QString &mime)
+QString QMacPasteboardMimeGraphics::flavorFor(const QString & mime)
 {
 	LYXERR(Debug::ACTION, "flavorFor " << fromqstr(mime));
 	if (mime == QLatin1String(pdf_mime_type))
@@ -99,13 +100,13 @@ QString QMacPasteboardMimeGraphics::mimeFor(QString flav)
 }
 
 
-bool QMacPasteboardMimeGraphics::canConvert(const QString &mime, QString flav)
+bool QMacPasteboardMimeGraphics::canConvert(const QString & mime, QString flav)
 {
 	return mimeFor(flav) == mime;
 }
 
 
-QVariant QMacPasteboardMimeGraphics::convertToMime(const QString &mime, QList<QByteArray> data, QString)
+QVariant QMacPasteboardMimeGraphics::convertToMime(const QString & mime, QList<QByteArray> data, QString)
 {
 	if(data.count() > 1)
 		qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
@@ -211,8 +212,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	FileName filename;
 	do {
 		++newfile_number;
-		filename
-		= FileName(addName(document_path,
+		filename = FileName(addName(document_path,
 			to_utf8(_("pasted"))
 			+ convert<string>(newfile_number) + "."
 			+ extensions[type]));
@@ -221,9 +221,9 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	while (true) {
 		// create file type filter, putting the prefered on to the front
 		docstring filterSpec;
-		for (unsigned i = 0; i < types.size(); ++i) {
+		for (size_t i = 0; i != types.size(); ++i) {
 			docstring s = bformat(_("%1$s Files"), typeNames[types[i]])
-			+ " (*." + from_ascii(extensions[types[i]]) + ")";
+				+ " (*." + from_ascii(extensions[types[i]]) + ")";
 			if (types[i] == type)
 				filterSpec = s + filterSpec;
 			else
@@ -251,8 +251,8 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		if (!suffixIs(ascii_lowercase(filename.absFilename()),
 			      "." + extensions[type])) {
 			// the user changed the extension. Check if the type is available
-			unsigned i;
-			for (i = 1; i < types.size(); ++i) {
+			size_t i;
+			for (i = 1; i != types.size(); ++i) {
 				if (suffixIs(ascii_lowercase(filename.absFilename()),
 					     "." + extensions[types[i]])) {
 					type = types[i];
