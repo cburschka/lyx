@@ -291,7 +291,7 @@ GuiView::GuiView(int id)
 		this, SLOT(clearMessage()));
 
 	// We don't want to keep the window in memory if it is closed.
-	setAttribute(Qt::WA_QuitOnClose, false);
+	setAttribute(Qt::WA_DeleteOnClose, true);
 
 #ifndef Q_WS_MACX
 	// assign an icon to main form. We do not do it under Qt/Mac,
