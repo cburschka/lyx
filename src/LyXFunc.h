@@ -130,8 +130,6 @@ private:
 		FuncRequest const & ev);
 
 	///
-	void closeBuffer();
-	///
 	void reloadBuffer();
 	///
 	bool ensureBufferClean(BufferView * bv);

@@ -1588,6 +1588,11 @@ bool GuiView::closeBuffer()
 
 bool GuiView::closeBuffer(Buffer & buf)
 {
+	// goto bookmark to update bookmark pit.
+	//FIXME: we should update only the bookmarks related to this buffer!
+	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+		theLyXFunc().gotoBookmark(i+1, false, false);
+
 	if (buf.isClean() || buf.paragraphs().empty()) {
 		theBufferList().release(&buf);
 		return true;

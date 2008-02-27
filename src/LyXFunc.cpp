@@ -232,7 +232,8 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	view()->processUpdateFlags(Update::FitCursor);
 }
 
-
+//FIXME: bookmark handling is a frontend issue. This code should be transferred
+// to GuiView and be GuiView and be window dependent.
 void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 {
 	BOOST_ASSERT(lyx_view_);
@@ -833,7 +834,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_CLOSE:
-			closeBuffer();
+			lyx_view_->closeBuffer();
 			updateFlags = Update::None;
 			break;
 
@@ -1791,16 +1792,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
 	if (!dispatch_msg.empty())
 		lyx_view_->message(dispatch_msg);
-}
-
-
-void LyXFunc::closeBuffer()
-{
-	// goto bookmark to update bookmark pit.
-	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
-		gotoBookmark(i+1, false, false);
-	
-	lyx_view_->closeBuffer();
 }
 
 
