@@ -15,10 +15,7 @@
 
 #include "InsetCollapsable.h"
 
-using std::string;
-
 namespace lyx {
-
 
 /** The Flex inset, e.g., CharStyle, Custom inset or XML short element
 
@@ -27,7 +24,7 @@ class InsetFlex : public InsetCollapsable {
 public:
 	///
 	InsetFlex(BufferParams const &,TextClassPtr tc, 
-			string const & layoutName);
+			std::string const & layoutName);
 	///
 	docstring name() const { return from_utf8(name_); }
 

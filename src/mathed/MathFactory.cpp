@@ -72,7 +72,7 @@ namespace {
 MathWordList theWordList;
 
 
-bool math_font_available(docstring & name)
+bool isMathFontAvailable(docstring & name)
 {
 	FontInfo f;
 	augmentFont(f, name);
@@ -121,7 +121,7 @@ void initSymbols()
 			is >> tmp;
 			is >> tmp;
 			docstring t = from_utf8(tmp);
-			skip = !math_font_available(t);
+			skip = !isMathFontAvailable(t);
 			continue;
 		} else if (line.size() >= 4 && line.substr(0, 4) == "else") {
 			skip = !skip;
@@ -177,10 +177,10 @@ void initSymbols()
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
 				LYXERR(Debug::MATHED, "symbol abuse for " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
-			} else if (math_font_available(tmp.inset)) {
+			} else if (isMathFontAvailable(tmp.inset)) {
 				LYXERR(Debug::MATHED, "symbol available for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(charid));
-			} else if (fallbackid && math_font_available(symbol_font)) {
+			} else if (fallbackid && isMathFontAvailable(symbol_font)) {
 				if (tmp.inset == "cmex")
 					tmp.inset = from_ascii("lyxsymbol");
 				else
@@ -212,7 +212,7 @@ void initSymbols()
 	}
 	docstring tmp = from_ascii("cmm");
 	docstring tmp2 = from_ascii("cmsy");
-	has_math_fonts = math_font_available(tmp) && math_font_available(tmp2);
+	has_math_fonts = isMathFontAvailable(tmp) && isMathFontAvailable(tmp2);
 }
 
 
