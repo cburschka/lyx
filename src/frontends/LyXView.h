@@ -49,8 +49,6 @@ public:
 	virtual ~LyXView() {}
 	///
 	virtual int id() const = 0;
-	///
-	virtual void close() = 0;
 
 	/// show busy cursor
 	virtual void setBusy(bool) = 0;

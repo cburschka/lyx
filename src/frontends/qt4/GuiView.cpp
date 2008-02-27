@@ -145,8 +145,8 @@ typedef boost::shared_ptr<Dialog> DialogPtr;
 struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
-		: current_work_area_(0), layout_(0),
-		quitting_by_menu_(false), autosave_timeout_(5000), in_show_(false)
+		: current_work_area_(0), layout_(0), autosave_timeout_(5000),
+		in_show_(false)
 	{
 		// hardcode here the platform specific icon size
 		smallIconSize = 14;	// scaling problems
@@ -263,8 +263,6 @@ public:
 	unsigned int bigIconSize;
 	///
 	QTimer statusbar_timer_;
-	/// are we quitting by the menu?
-	bool quitting_by_menu_;
 	/// auto-saving of buffers
 	Timeout autosave_timeout_;
 	/// flag against a race condition due to multiclicks, see bug #1119
@@ -336,20 +334,6 @@ GuiView::~GuiView()
 }
 
 
-void GuiView::close()
-{
-	d.quitting_by_menu_ = true;
-	d.current_work_area_ = 0;
-	for (int i = 0; i != d.splitter_->count(); ++i) {
-		TabWorkArea * twa = d.tabWorkArea(i);
-		if (twa)
-			twa->closeAll();
-	}
-	QMainWindow::close();
-	d.quitting_by_menu_ = false;
-}
-
-
 void GuiView::setFocus()
 {
 	if (d.current_work_area_)
@@ -381,15 +365,6 @@ void GuiView::showEvent(QShowEvent * e)
 
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
-	// we may have been called through the close window button
-	// which bypasses the LFUN machinery.
-	if (!d.quitting_by_menu_ && guiApp->viewCount() == 1) {
-		if (!quitWriteAll()) {
-			close_event->ignore();
-			return;
-		}
-	}
-
 	while (Buffer * b = buffer()) {
 		if (b->parent()) {
 			// This is a child document, just close the tab after saving
@@ -406,7 +381,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		for (int i = 0; i != ids.size(); ++i) {
 			if (id_ == ids[i])
 				continue;
-			if (GuiWorkArea * wa = guiApp->view(ids[i]).workArea(*b)) {
+			if (guiApp->view(ids[i]).workArea(*b)) {
 				// FIXME 1: should we put an alert box here that the buffer
 				// is viewed elsewhere?
 				// FIXME 2: should we try to save this buffer in any case?
@@ -1627,6 +1602,10 @@ bool GuiView::closeBuffer(Buffer & buf)
 	else
 		file = buf.fileName().displayName(30);
 
+	// Bring this window to top before asking questions.
+	raise();
+	activateWindow();
+
 	docstring const text = bformat(_("The document %1$s has unsaved changes."
 		"\n\nDo you want to save the document or discard the changes?"), file);
 	int const ret = Alert::prompt(_("Save changed document?"),
@@ -1654,17 +1633,6 @@ bool GuiView::closeBuffer(Buffer & buf)
 		LyX::ref().session().lastOpened().add(buf.fileName());
 
 	theBufferList().release(&buf);
-	return true;
-}
-
-
-bool GuiView::quitWriteAll()
-{
-	while (!theBufferList().empty()) {
-		Buffer * b = theBufferList().first();
-		if (!closeBuffer(*b))
-			return false;
-	}
 	return true;
 }
 

@@ -62,7 +62,6 @@ public:
 
 	///
 	int id() const { return id_; }
-	void close();
 	void setFocus();
 	void setBusy(bool);
 	/// returns true if this view has the focus.
@@ -99,8 +98,6 @@ public:
 	void importDocument(std::string const &);
 	///
 	void newDocument(std::string const & filename, bool fromTemplate);
-	/// write all buffers, asking the user, returns false if cancelled
-	bool quitWriteAll();
 
 	/// GuiBufferDelegate.
 	///@{

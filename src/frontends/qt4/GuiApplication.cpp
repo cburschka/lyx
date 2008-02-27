@@ -251,9 +251,6 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		// update bookmark pit of the current buffer before window close
 		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
 			theLyXFunc().gotoBookmark(i+1, false, false);
-		// ask the user for saving changes or cancel quit
-		if (!current_view_->quitWriteAll())
-			break;
 		current_view_->close();
 		break;
 
@@ -261,8 +258,8 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		// quitting is triggered by the gui code
 		// (leaving the event loop).
 		current_view_->message(from_utf8(N_("Exiting.")));
-		if (current_view_->quitWriteAll())
-			closeAllViews();
+		if (closeAllViews())
+			quit();
 		break;
 
 	case LFUN_SCREEN_FONT_UPDATE: {
@@ -548,8 +545,9 @@ void GuiApplication::commitData(QSessionManager & sm)
 	/// The default implementation sends a close event to all
 	/// visible top level widgets when session managment allows
 	/// interaction.
-	/// We are changing that to write all unsaved buffers...
-	if (sm.allowsInteraction() && !current_view_->quitWriteAll())
+	/// We are changing that to close all wiew one by one.
+	/// FIXME: verify if the default implementation is enough now.
+	if (sm.allowsInteraction() && !closeAllViews())
  		sm.cancel();
 }
 
@@ -581,20 +579,14 @@ bool GuiApplication::unregisterView(int id)
 bool GuiApplication::closeAllViews()
 {
 	updateIds(views_, view_ids_);
-	if (views_.empty()) {
-		// quit in CloseEvent will not be triggert
-		qApp->quit();
+	if (views_.empty())
 		return true;
-	}
 
 	map<int, GuiView*> const cmap = views_;
 	map<int, GuiView*>::const_iterator it;
 	for (it = cmap.begin(); it != cmap.end(); ++it) {
-		// TODO: return false when close event was ignored
-		//       e.g. quitWriteAll()->'Cancel'
-		//       maybe we need something like 'bool closeView()'
-		it->second->close();
-		// unregisterd by the CloseEvent
+		if (!it->second->close())
+			return false;
 	}
 
 	views_.clear();
