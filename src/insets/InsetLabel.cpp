@@ -66,15 +66,12 @@ docstring const InsetLabel::getScreenLabel(Buffer const &) const
 void InsetLabel::addToToc(Buffer const & buf,
 	ParConstIterator const & cpit) const
 {
-	ParConstIterator pit = cpit;
-	pit.push_back(*this);
-
 	//FIXME: It would be really, really, really nice if we could
 	// construct a tree here with all the cross-reference to this
 	// label.
 
 	Toc & toc = buf.tocBackend().toc("label");
-	toc.push_back(TocItem(pit, 0, getScreenLabel(buf)));
+	toc.push_back(TocItem(cpit, 0, getScreenLabel(buf)));
 }
 
 
