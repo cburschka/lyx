@@ -345,7 +345,7 @@ bool getTokenValue(string const & str, char const * token, string & ret)
 {
 	ret.erase();
 	size_t token_length = strlen(token);
-	string::size_type pos = str.find(token);
+	size_t pos = str.find(token);
 
 	if (pos == string::npos || pos + token_length + 1 >= str.length()
 		|| str[pos + token_length] != '=')
@@ -4697,8 +4697,8 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	col_type cols = 1;
 	row_type rows = 1;
 	col_type maxCols = 1;
-	docstring::size_type const len = buf.length();
-	docstring::size_type p = 0;
+	size_t const len = buf.length();
+	size_t p = 0;
 
 	while (p < len &&
 	       (p = buf.find_first_of(from_ascii("\t\n"), p)) != docstring::npos) {
@@ -4732,7 +4732,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		row = tabular.cellRow(cell);
 	}
 
-	docstring::size_type op = 0;
+	size_t op = 0;
 	idx_type const cells = loctab->cellCount();
 	p = 0;
 	cols = ocol;
@@ -4750,7 +4750,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
 				Font const font = bv.textMetrics(&inset->text_).
-					getDisplayFont(0, 0);
+					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
 					       buffer().params().trackChanges);
 				++cols;
@@ -4762,7 +4762,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
 				Font const font = bv.textMetrics(&inset->text_).
-					getDisplayFont(0, 0);
+					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
 					       buffer().params().trackChanges);
 			}
@@ -4778,7 +4778,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
-		Font const font = bv.textMetrics(&inset->text_).getDisplayFont(0, 0);
+		Font const font = bv.textMetrics(&inset->text_).displayFont(0, 0);
 		inset->setText(buf.substr(op, len - op), font,
 			buffer().params().trackChanges);
 	}

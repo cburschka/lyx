@@ -128,7 +128,7 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 }
 
 
-bool TextMetrics::has(pit_type pit) const
+bool TextMetrics::contains(pit_type pit) const
 {
 	return par_metrics_.find(pit) != par_metrics_.end();
 }
@@ -241,7 +241,7 @@ void TextMetrics::applyOuterFont(Font & font) const
 }
 
 
-Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
+Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0);
 
@@ -302,7 +302,7 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 	if (boundary && sl.pos() > 0)
 		correction = -1;
 		
-	return getDisplayFont(sl.pit(), sl.pos() + correction).isVisibleRightToLeft();
+	return displayFont(sl.pit(), sl.pos() + correction).isVisibleRightToLeft();
 }
 
 
@@ -317,12 +317,12 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 
 	Paragraph const & par = text_->getPar(pit);
 
-	bool left = getDisplayFont(pit, pos - 1).isVisibleRightToLeft();
+	bool left = displayFont(pit, pos - 1).isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
 		right = par.isRTL(bv_->buffer().params());
 	else
-		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
+		right = displayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;
 }
 
@@ -339,7 +339,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	if (pos == par.size())
 		right = par.isRTL(bv_->buffer().params());
 	else
-		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
+		right = displayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;
 }
 
@@ -414,7 +414,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
-			bufferfont : getDisplayFont(pit, ii->pos);
+			bufferfont : displayFont(pit, ii->pos);
 		MacroContext mc(buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);
@@ -627,7 +627,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		if (body_pos > 0
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
-			row.x += theFontMetrics(text_->getLabelFont(buffer, par)).
+			row.x += theFontMetrics(text_->labelFont(buffer, par)).
 				width(layout->labelsep);
 			if (body_pos <= end)
 				row.x += row.label_hfill;
@@ -684,7 +684,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 		return 0;
 
 	FontMetrics const & fm
-		= theFontMetrics(text_->getLabelFont(buffer, par));
+		= theFontMetrics(text_->labelFont(buffer, par));
 
 	return max(0, fm.width(label) - w);
 }
@@ -767,7 +767,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
 			FontMetrics const & fm = theFontMetrics(
-				text_->getLabelFont(buffer, par));
+				text_->labelFont(buffer, par));
 			int add = fm.width(layout->labelsep);
 			if (par.isLineSeparator(i - 1))
 				add -= singleWidth(pit, i - 1);
@@ -864,7 +864,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 		for ( ; i < end; ++i, ++fi) {
 			if (body_pos > 0 && i == body_pos) {
 				FontMetrics const & fm = theFontMetrics(
-					text_->getLabelFont(buffer, par));
+					text_->labelFont(buffer, par));
 				w += fm.width(par.layout()->labelsep);
 				if (par.isLineSeparator(i - 1))
 					w -= singleWidth(pit, i - 1);
@@ -883,7 +883,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 
 	if (body_pos > 0 && body_pos >= end) {
 		FontMetrics const & fm = theFontMetrics(
-			text_->getLabelFont(buffer, par));
+			text_->labelFont(buffer, par));
 		w += fm.width(par.layout()->labelsep);
 		if (end > 0 && par.isLineSeparator(end - 1))
 			w -= singleWidth(pit, end - 1);
@@ -913,13 +913,13 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = bv_->buffer();
-	Font font = getDisplayFont(pit, first);
+	Font font = displayFont(pit, first);
 	FontSize const tmpsize = font.fontInfo().size();
-	font.fontInfo() = text_->getLayoutFont(buffer, pit);
+	font.fontInfo() = text_->layoutFont(buffer, pit);
 	FontSize const size = font.fontInfo().size();
 	font.fontInfo().setSize(tmpsize);
 
-	FontInfo labelfont = text_->getLabelFont(buffer, par);
+	FontInfo labelfont = text_->labelFont(buffer, par);
 
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 	FontMetrics const & fontmetrics = theFontMetrics(font);
@@ -1129,7 +1129,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			FontMetrics const & fm = theFontMetrics(
-				text_->getLabelFont(buffer, par));
+				text_->labelFont(buffer, par));
 			tmpx += row.label_hfill + fm.width(layout->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(pit, body_pos - 1);
@@ -1550,7 +1550,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	// Inline completion RTL special case row_pos == cursor_pos:
 	// "__|b" => cursor_pos is right of __
 	if (row_pos == inlineCompletionVPos && row_pos == cursor_vpos) {
-		font = getDisplayFont(pit, row_pos + 1);
+		font = displayFont(pit, row_pos + 1);
 		docstring const & completion = bv_->inlineCompletion();
 		if (font.isRightToLeft() && completion.length() > 0)
 			x += theFontMetrics(font.fontInfo()).width(completion);
@@ -1563,7 +1563,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			FontMetrics const & labelfm = theFontMetrics(
-				text_->getLabelFont(buffer, par));
+				text_->labelFont(buffer, par));
 			x += row.label_hfill + labelfm.width(par.layout()->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= singleWidth(pit, body_pos - 1);
@@ -1572,7 +1572,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		// Use font span to speed things up, see above
 		if (pos < font_span.first || pos > font_span.last) {
 			font_span = par.fontSpan(pos);
-			font = getDisplayFont(pit, pos);
+			font = displayFont(pit, pos);
 		}
 
 		x += pm.singleWidth(pos, font);
@@ -1581,7 +1581,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		// "a__|b", __ of b => non-boundary a-pos is right of __
 		if (vpos + 1 == inlineCompletionVPos 
 		    && (vpos + 1 < cursor_vpos || !boundary_correction)) {
-			font = getDisplayFont(pit, vpos + 1);
+			font = displayFont(pit, vpos + 1);
 			docstring const & completion = bv_->inlineCompletion();
 			if (font.isRightToLeft() && completion.length() > 0)
 				x += theFontMetrics(font.fontInfo()).width(completion);
@@ -1591,7 +1591,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		// "b|__a", __ of b => non-boundary a-pos is in front of __
 		if (vpos == inlineCompletionVPos
 		    && (vpos + 1 < cursor_vpos || boundary_correction)) {
-			font = getDisplayFont(pit, vpos);
+			font = displayFont(pit, vpos);
 			docstring const & completion = bv_->inlineCompletion();
 			if (!font.isRightToLeft() && completion.length() > 0)
 				x += theFontMetrics(font.fontInfo()).width(completion);
@@ -1801,7 +1801,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && pit > 0 && pars[pit - 1].layout()->nextnoindent)
 		parindent.erase();
 
-	FontInfo const labelfont = text_->getLabelFont(buffer, par);
+	FontInfo const labelfont = text_->labelFont(buffer, par);
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 
 	switch (layout->margintype) {
@@ -1922,7 +1922,7 @@ int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	return pm.singleWidth(pos, getDisplayFont(pit, pos));
+	return pm.singleWidth(pos, displayFont(pit, pos));
 }
 
 

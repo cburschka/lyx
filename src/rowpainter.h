@@ -69,7 +69,7 @@ private:
 	int leftMargin() const;
 
 	/// return the label font for this row
-	FontInfo const getLabelFont() const;
+	FontInfo labelFont() const;
 
 	/// contains painting related information.
 	PainterInfo & pi_;

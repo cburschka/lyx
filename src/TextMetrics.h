@@ -38,7 +38,7 @@ public:
 	TextMetrics(BufferView *, Text *);
 	
 	///
-	bool has(pit_type pit) const;
+	bool contains(pit_type pit) const;
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
 	///
@@ -68,8 +68,7 @@ public:
 	/// The difference is that this one is used for displaying, and thus we
 	/// are allowed to make cosmetic improvements. For instance make footnotes
 	/// smaller. (Asger)
-	Font getDisplayFont(pit_type pit,
-		pos_type pos) const;
+	Font displayFont(pit_type pit, pos_type pos) const;
 
 	/// There are currently two font mechanisms in LyX:
 	/// 1. The font attributes in a lyxtext, and

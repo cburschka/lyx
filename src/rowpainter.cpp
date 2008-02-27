@@ -74,9 +74,9 @@ RowPainter::RowPainter(PainterInfo & pi,
 }
 
 
-FontInfo const RowPainter::getLabelFont() const
+FontInfo RowPainter::labelFont() const
 {
-	return text_.getLabelFont(pi_.base.bv->buffer(), par_);
+	return text_.labelFont(pi_.base.bv->buffer(), par_);
 }
 
 
@@ -93,7 +93,7 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
-	Font const font = text_metrics_.getDisplayFont(pit_, pos);
+	Font const font = text_metrics_.displayFont(pit_, pos);
 
 	BOOST_ASSERT(inset);
 	// Backup full_repaint status because some insets (InsetTabular)
@@ -174,7 +174,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, FontInfo const & font)
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-					text_metrics_.getDisplayFont(pit_, i));
+					text_metrics_.displayFont(pit_, i));
 				dx = (c == 0x05e8 || // resh
 				      c == 0x05d3)   // dalet
 					? width2 - width
@@ -208,7 +208,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, FontInfo const & font)
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-						text_metrics_.getDisplayFont(pit_, i));
+						text_metrics_.displayFont(pit_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -329,7 +329,7 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
+	Font const orig_font = text_metrics_.displayFont(pit_, pos);
 	double const orig_x = x_;
 
 	// usual characters, no insets
@@ -502,7 +502,7 @@ void RowPainter::paintFirst()
 		      || layout->latextype != LATEX_ENVIRONMENT
 		      || is_seq)) {
 
-		FontInfo const font = getLabelFont();
+		FontInfo const font = labelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 
 		docstring const str = par_.labelString();
@@ -550,7 +550,7 @@ void RowPainter::paintFirst()
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
-		FontInfo const font = getLabelFont();
+		FontInfo const font = labelFont();
 		docstring const str = par_.labelString();
 		if (!str.empty()) {
 			double spacing_val = 1.0;
@@ -606,7 +606,7 @@ void RowPainter::paintLast()
 	switch (endlabel) {
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
-		FontInfo const font = getLabelFont();
+		FontInfo const font = labelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
@@ -627,7 +627,7 @@ void RowPainter::paintLast()
 	}
 
 	case END_LABEL_STATIC: {
-		FontInfo const font = getLabelFont();
+		FontInfo const font = labelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
@@ -721,7 +721,7 @@ void RowPainter::paintText()
 		// Use font span to speed things up, see above
 		if (vpos < font_span.first || vpos > font_span.last) {
 			font_span = par_.fontSpan(vpos);
-			font = text_metrics_.getDisplayFont(pit_, vpos);
+			font = text_metrics_.displayFont(pit_, vpos);
 
 			// split font span if inline completion is inside
 			if (font_span.first <= inlineCompletionVPos
@@ -761,7 +761,7 @@ void RowPainter::paintText()
 		}
 
 		if (body_pos > 0 && pos == body_pos - 1) {
-			int const lwidth = theFontMetrics(getLabelFont())
+			int const lwidth = theFontMetrics(labelFont())
 				.width(layout->labelsep);
 
 			x_ += row_.label_hfill + lwidth - width_pos;
@@ -772,7 +772,7 @@ void RowPainter::paintText()
 			paintInlineCompletion(font);
 
 		if (par_.isSeparator(pos)) {
-			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
+			Font const orig_font = text_metrics_.displayFont(pit_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)

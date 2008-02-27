@@ -73,7 +73,7 @@ bool Text::isMainText(Buffer const & buffer) const
 }
 
 
-FontInfo Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
+FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	LayoutPtr const & layout = pars_[pit].layout();
 
@@ -94,7 +94,7 @@ FontInfo Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 }
 
 
-FontInfo Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
+FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	LayoutPtr const & layout = par.layout();
 
@@ -308,9 +308,9 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	FontInfo layoutfont;
 	pit_type pit = cur.pit();
 	if (cur.pos() < pars_[pit].beginOfBody())
-		layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
+		layoutfont = labelFont(cur.buffer(), pars_[pit]);
 	else
-		layoutfont = getLayoutFont(cur.buffer(), pit);
+		layoutfont = layoutFont(cur.buffer(), pit);
 
 	// Update current font
 	cur.real_current_font.update(font,
@@ -360,7 +360,7 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 			setInsetFont(bv, pit, pos, font, toggleall);
 		}
 		TextMetrics const & tm = bv.textMetrics(this);
-		Font f = tm.getDisplayFont(pit, pos);
+		Font f = tm.displayFont(pit, pos);
 		f.update(font, language, toggleall);
 		setCharFont(buffer, pit, pos, f, tm.font_);
 	}
@@ -526,7 +526,7 @@ bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 			bool setfont, bool boundary)
 {
 	TextMetrics const & tm = cur.bv().textMetrics(this);
-	bool const update_needed = !tm.has(par);
+	bool const update_needed = !tm.contains(par);
 	Cursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
 	return cur.bv().checkDepm(cur, old) || update_needed;

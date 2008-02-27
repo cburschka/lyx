@@ -1825,7 +1825,7 @@ void Cursor::setCurrentFont()
 	// get font
 	BufferParams const & bufparams = buffer().params();
 	current_font = par.getFontSettings(bufparams, cpos);
-	real_current_font = tm.getDisplayFont(cpit, cpos);
+	real_current_font = tm.displayFont(cpit, cpos);
 
 	// special case for paragraph end
 	if (cs.pos() == lastpos()

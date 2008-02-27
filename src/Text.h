@@ -48,9 +48,9 @@ public:
 	bool empty() const;
 
 	///
-	FontInfo getLayoutFont(Buffer const & buffer, pit_type pit) const;
+	FontInfo layoutFont(Buffer const & buffer, pit_type pit) const;
 	///
-	FontInfo getLabelFont(Buffer const & buffer,
+	FontInfo labelFont(Buffer const & buffer,
 		Paragraph const & par) const;
 	/** Set font of character at position \p pos in paragraph \p pit.
 	 *  Must not be called if \p pos denotes an inset with text contents,
@@ -319,4 +319,4 @@ private:
 
 } // namespace lyx
 
-#endif // LYXTEXT_H
+#endif // TEXT_H

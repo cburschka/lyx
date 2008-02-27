@@ -768,7 +768,7 @@ void BufferView::showCursor(DocIterator const & dit)
 	else if (bot_pit == tm.last().first + 1)
 		tm.newParMetricsDown();
 
-	if (tm.has(bot_pit)) {
+	if (tm.contains(bot_pit)) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
 		BOOST_ASSERT(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
@@ -1995,7 +1995,7 @@ Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 {
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics const & tm = textMetrics(bot.text());
-	if (!tm.has(bot.pit()))
+	if (!tm.contains(bot.pit()))
 		return Point(-1, -1);
 
 	Point p = coordOffset(dit, boundary); // offset from outer paragraph

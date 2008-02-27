@@ -387,7 +387,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	BufferView * bv = &cur.bv();
 	TextMetrics & tm = bv->textMetrics(this);
-	if (!tm.has(cur.pit()))
+	if (!tm.contains(cur.pit()))
 		lyx::dispatch(FuncRequest(LFUN_SCREEN_RECENTER));
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
