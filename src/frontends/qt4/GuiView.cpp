@@ -290,9 +290,9 @@ GuiView::GuiView(int id)
 	connect(&d.statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(clearMessage()));
 
-	// Qt bug? signal lastWindowClosed does not work
+	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_QuitOnClose, false);
-	setAttribute(Qt::WA_DeleteOnClose, true);
+
 #ifndef Q_WS_MACX
 	// assign an icon to main form. We do not do it under Qt/Mac,
 	// since the icon is provided in the application bundle.
