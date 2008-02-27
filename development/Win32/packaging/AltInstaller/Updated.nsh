@@ -5,6 +5,18 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
+ SetOutPath "$INSTDIR\Resources\doc"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Math.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Math.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\fr"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
