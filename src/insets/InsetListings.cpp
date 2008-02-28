@@ -71,7 +71,7 @@ Inset::DisplayType InsetListings::display() const
 
 void InsetListings::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buffer().params().textClass().counters();
+	Counters & cnts = buffer().params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is

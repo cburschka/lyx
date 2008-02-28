@@ -14,14 +14,13 @@
 #ifndef GUI_TOOLBARS_H
 #define GUI_TOOLBARS_H
 
-#include "TextClassPtr.h"
-
 #include "support/docstring.h"
 
 #include <map>
 
 namespace lyx {
 
+class DocumentClass;
 class ToolbarInfo;
 
 namespace frontend {
@@ -86,7 +85,7 @@ private:
 	ToolbarsMap toolbars_;
 
 	/// The last textclass layout list in the layout choice selector
-	TextClassPtr last_textclass_;
+	DocumentClass * last_textclass_;
 };
 
 

@@ -18,7 +18,6 @@
 #include "Font.h"
 #include "BiblioInfo.h"
 #include "paper.h"
-#include "TextClassPtr.h"
 
 #include "insets/InsetQuotes.h"
 
@@ -36,6 +35,7 @@ class AuthorList;
 class BaseClassIndex;
 class BranchList;
 class Bullet;
+class DocumentClass;
 class Encoding;
 class Language;
 class Lexer;
@@ -109,27 +109,27 @@ public:
 	///Get the LyX TextClass (that is, the layout file) this document is using.
 	BaseClassIndex baseClass() const;
 	/// Set the LyX TextClass (that is, the layout file) this document is using.
-	/// NOTE: This does not call makeTextClass() to update the local TextClass.
-	/// That needs to be done manually.
+	/// NOTE: This does not call makeDocumentClass() to update the local 
+	/// DocumentClass. That needs to be done manually.
 	bool setBaseClass(BaseClassIndex);
 	/// Adds the module information to the baseClass information to
-	/// create our local TextClass.
-	void makeTextClass();
-	/// Returns the TextClass currently in use: the BaseClass as modified
+	/// create our local DocumentClass.
+	void makeDocumentClass();
+	/// Returns the DocumentClass currently in use: the BaseClass as modified
 	/// by modules.
-	TextClass const & textClass() const;
-	/// Returns a pointer to the TextClass currently in use: the BaseClass 
-	/// as modified by modules. (See \file TextClassPtr.h for the typedef.)
-	TextClassPtr textClassPtr() const;
+	DocumentClass const & documentClass() const;
+	/// \return A pointer to the DocumentClass currently in use: the BaseClass 
+	/// as modified by modules. 
+	DocumentClass * documentClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
-	void setTextClass(TextClassPtr);
+	void setDocumentClass(DocumentClass const * const);
 	/// List of modules in use
 	std::vector<std::string> const & getModules() const;
 	/// Add a module to the list of modules in use.
 	/// Returns true if module was successfully added.
-	/// The makeClass variable signals whether to call makeTextClass. This
+	/// The makeClass variable signals whether to call makeDocumentClass. This
 	/// need not be done if we know this isn't the final time through, or if
 	/// the BufferParams do not represent the parameters for an actual buffer
 	/// (as in GuiDocument).
@@ -327,8 +327,8 @@ private:
 
 	/// for use with natbib
 	biblio::CiteEngine cite_engine_;
-	/// the possibly modular TextClass actually in use
-	TextClassPtr textClass_;
+	///
+	DocumentClass * doc_class_;
 	///
 	typedef std::vector<std::string> LayoutModuleList;
 	/// 

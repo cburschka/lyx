@@ -115,8 +115,7 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	BufferParams const & bp = cur.buffer().params();
-	LayoutPtr const layout =
-			bp.textClass().emptyLayout();
+	LayoutPtr const layout = bp.documentClass().emptyLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 

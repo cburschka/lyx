@@ -262,7 +262,6 @@ HEADERFILESCORE = \
 	TexStream.h \
 	Text.h \
 	TextClass.h \
-	TextClassPtr.h \
 	TextMetrics.h \
 	TocBackend.h \
 	ToolbarBackend.h \

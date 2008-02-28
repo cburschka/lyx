@@ -315,7 +315,7 @@ BufferParams::BufferParams()
 	: pimpl_(new Impl)
 {
 	setBaseClass(defaultBaseclass());
-	makeTextClass();
+	makeDocumentClass();
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
 	fontsize = "default";
@@ -483,7 +483,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// FIXME: this warning will be given even if there exists a local .cls
 		// file. Even worse, the .lyx file can not be compiled or exported
 		// because the textclass is marked as unavilable.
-		if (!textClass().isTeXClassAvailable()) {
+		if (!documentClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 						 "%1$s.layout,\n"
@@ -820,7 +820,7 @@ void BufferParams::writeFile(ostream & os) const
 
 void BufferParams::validate(LaTeXFeatures & features) const
 {
-	features.require(textClass().requires());
+	features.require(documentClass().requires());
 
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
@@ -862,7 +862,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	// AMS Style is at document level
 	if (use_amsmath == package_on
-	    || textClass().provides("amsmath"))
+	    || documentClass().provides("amsmath"))
 		features.require("amsmath");
 	if (use_esint == package_on)
 		features.require("esint");
@@ -903,7 +903,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 {
 	os << "\\documentclass";
 
-	TextClass const & tclass = textClass();
+	DocumentClass const & tclass = documentClass();
 
 	ostringstream clsoptions; // the document class options.
 
@@ -1244,7 +1244,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// hyperref, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 	if (language->lang() == "japanese-plain" &&
-		!textClass().provides("japanese")) {
+		!documentClass().provides("japanese")) {
 		//load babel in case it was not loaded due to an empty language list
 		if (language_options.str().empty())
 			lyxpreamble += "\\usepackage{babel}\n";
@@ -1262,7 +1262,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// use hyperref explicitely when it is required
 	if (features.isRequired("hyperref")) {
 		odocstringstream oss;
-		pdfoptions().writeLaTeX(oss, textClass().provides("hyperref"));
+		pdfoptions().writeLaTeX(oss, documentClass().provides("hyperref"));
 		lyxpreamble += oss.str();
 	}
 
@@ -1371,19 +1371,20 @@ bool BufferParams::hasClassDefaults() const
 }
 
 
-TextClass const & BufferParams::textClass() const
+DocumentClass const & BufferParams::documentClass() const
 {
-	return *textClass_;
+	return *doc_class_;
 }
 
 
-TextClassPtr BufferParams::textClassPtr() const {
-	return textClass_;
+DocumentClass * BufferParams::documentClassPtr() const {
+	return doc_class_;
 }
 
 
-void BufferParams::setTextClass(TextClassPtr tc) {
-	textClass_ = tc;
+void BufferParams::setDocumentClass(DocumentClass const * const tc) {
+	// evil, but this function is evil
+	doc_class_ = const_cast<DocumentClass *>(tc);
 }
 
 
@@ -1408,9 +1409,9 @@ BaseClassIndex BufferParams::baseClass() const
 }
 
 
-void BufferParams::makeTextClass()
+void BufferParams::makeDocumentClass()
 {
-	textClass_ = TextClassBundle::get().newClass(baseclasslist[baseClass()]);
+	doc_class_ = &(DocumentClassBundle::get().newClass(baseclasslist[baseClass()]));
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 
@@ -1427,7 +1428,7 @@ void BufferParams::makeTextClass()
 					"probably need to reconfigure LyX.\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Module not available"),
 					msg + _("Some layouts may not be available."));
-			lyxerr << "BufferParams::makeTextClass(): Module " <<
+			lyxerr << "BufferParams::makeDocumentClass(): Module " <<
 					modName << " requested but not found in module list." <<
 					endl;
 			continue;
@@ -1440,7 +1441,7 @@ void BufferParams::makeTextClass()
 			frontend::Alert::warning(_("Package not available"), msg);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
-		if (!textClass_->read(layout_file, TextClass::MODULE)) {
+		if (!doc_class_->read(layout_file, TextClass::MODULE)) {
 			docstring const msg =
 				bformat(_("Error reading module %1$s\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Read Error"), msg);
@@ -1479,7 +1480,7 @@ void BufferParams::clearLayoutModules()
 
 Font const BufferParams::getFont() const
 {
-	FontInfo f = textClass().defaultfont();
+	FontInfo f = documentClass().defaultfont();
 	if (fontsDefaultFamily == "rmdefault")
 		f.setFamily(ROMAN_FAMILY);
 	else if (fontsDefaultFamily == "sfdefault")
@@ -1929,7 +1930,7 @@ biblio::CiteEngine BufferParams::getEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
-	if (textClass().provides("natbib")
+	if (documentClass().provides("natbib")
 	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
 		return biblio::ENGINE_NATBIB_AUTHORYEAR;
 	return cite_engine_;

@@ -40,11 +40,11 @@ namespace lyx {
 
 
 InsetFlex::InsetFlex(BufferParams const & bp,
-	TextClassPtr tc, string const & layoutName)
-	: InsetCollapsable(bp, Collapsed, tc),
+	DocumentClass * dc, string const & layoutName)
+	: InsetCollapsable(bp, Collapsed, dc),
 	name_(layoutName)
 {
-	setLayout(tc); // again, because now the name is initialized
+	setLayout(dc); // again, because now the name is initialized
 	packages_ = getLayout().requires();
 	preamble_ = getLayout().preamble();
 }

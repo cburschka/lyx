@@ -1764,7 +1764,7 @@ int TextMetrics::leftMargin(int max_width,
 	BOOST_ASSERT(pos <= par.size());
 	Buffer const & buffer = bv_->buffer();
 	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
-	TextClass const & tclass = buffer.params().textClass();
+	DocumentClass const & tclass = buffer.params().documentClass();
 	LayoutPtr const & layout = par.layout();
 
 	docstring parindent = layout->parindent;

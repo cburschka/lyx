@@ -307,7 +307,7 @@ void GuiLayoutBox::updateContents(bool reset)
 		return;
 	}
 
-	TextClass const * text_class = &buffer->params().textClass();
+	DocumentClass const * text_class = &buffer->params().documentClass();
 	Inset const * inset = 
 		owner_.view()->cursor().innerParagraph().inInset();
 

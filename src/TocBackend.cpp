@@ -108,7 +108,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	}
 
 	BufferParams const & bufparams = buffer_->params();
-	const int min_toclevel = bufparams.textClass().min_toclevel();
+	const int min_toclevel = bufparams.documentClass().min_toclevel();
 
 	TocIterator toc_item = item("tableofcontents", par_it);
 
@@ -146,7 +146,7 @@ void TocBackend::update()
 	tocs_.clear();
 
 	BufferParams const & bufparams = buffer_->params();
-	const int min_toclevel = bufparams.textClass().min_toclevel();
+	const int min_toclevel = bufparams.documentClass().min_toclevel();
 
 	Toc & toc = tocs_["tableofcontents"];
 	ParConstIterator pit = buffer_->par_iterator_begin();

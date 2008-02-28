@@ -14,7 +14,6 @@
 #include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
-#include "TextClassPtr.h"
 
 #include "insets/InsetLayout.h"
 
@@ -32,10 +31,10 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Layout;
-class Lexer;
 class Counters;
 class FloatList;
+class Layout;
+class Lexer;
 
 
 /// A TextClass represents a collection of layout information: At the 
@@ -292,34 +291,44 @@ private:
 };
 
 
+/// This class amounts to little more than a `strong typedef'.
+/// Its purpose is to control the creation of TextClass objects
+/// within the DocumentClassBundle. 
+/// These TextClasses represent the layout information that is 
+/// associated with a given buffer.
+class DocumentClass : public TextClass {
+private:
+	/// Constructs a DocumentClass based upon a TextClass.
+	DocumentClass(TextClass const & tc);
+	/// The only class that can create a DocumentClass is
+	/// DocumentClassBundle, which calls the private constructor.
+	friend class DocumentClassBundle;
+};
+
+
 /// This is simply a container for the text classes generated when modules
 /// are read, so that they stay in memory for use by Insets, CutAndPaste,
-/// and the like. Since they're constructed via new, they wouldn't actually
-/// disappear without this class---but this class holds the pointers to them
-/// so that they don't leak.
+/// and the like. 
 /// FIXME Some sort of garbage collection or reference counting wouldn't
 /// be a bad idea here. It might be enough to check when a Buffer is closed
-/// (or makeTextClass is called) whether the old TextClass is in use anywhere.
+/// (or makeDocumentClass is called) whether the old DocumentClass is in use 
+/// anywhere.
 ///
 /// This is a singleton class. Its sole instance is accessed via 
-/// TextClassBundle::get().
-///
-/// See \file TextClassPtr.h for the definition of TextClassPtr.
-class TextClassBundle {
+/// DocumentClassBundle::get().
+class DocumentClassBundle {
 public:
 	/// \return Pointer to a new class equal to baseClass
-	TextClassPtr newClass(TextClass const & baseClass);
+	DocumentClass & newClass(TextClass const & baseClass);
 	/// \return The sole instance of this class.
-	static TextClassBundle & get();
-	///
-	~TextClassBundle();
+	static DocumentClassBundle & get();
 private:
 	/// control instantiation
-	TextClassBundle() {};
+	DocumentClassBundle() {}
 	/// noncopyable
-	TextClassBundle(TextClassBundle const &);
+	DocumentClassBundle(DocumentClassBundle const &);
 	///
-	std::list<TextClassPtr> tc_list_;
+	std::list<DocumentClass> tc_list_;
 };
 
 

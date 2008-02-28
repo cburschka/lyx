@@ -121,7 +121,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	// and adds a number for uniqueness.
 	// If you know what you are doing, you can set allowed==""
 	// to disable this mangling.
-	TextClass const & tclass = buf.params().textClass();
+	DocumentClass const & tclass = buf.params().documentClass();
 	docstring const allowed = from_ascii(
 		runparams.flavor == OutputParams::XML ? ".-_:" : tclass.options());
 
@@ -204,7 +204,7 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 	LayoutPtr const & style = par.layout();
 	string const & name = style->latexname();
 	string param = style->latexparam();
-	Counters & counters = buf.params().textClass().counters();
+	Counters & counters = buf.params().documentClass().counters();
 
 	string id = par.getID(buf, runparams);
 

@@ -236,7 +236,7 @@ docstring GuiToc::guiName(string const & type) const
 	if (type == "label")
 		return _("Labels and References");
 
-	FloatList const & floats = buffer().params().textClass().floats();
+	FloatList const & floats = buffer().params().documentClass().floats();
 	if (floats.typeExist(type))
 		return _(floats.getType(type).listName());
 

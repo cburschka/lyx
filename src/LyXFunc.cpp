@@ -1539,7 +1539,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			
 			Buffer * buffer = lyx_view_->buffer();
 
-			TextClassPtr oldClass = buffer->params().textClassPtr();
+			DocumentClass * oldClass = buffer->params().documentClassPtr();
 
 			Cursor & cur = view()->cursor();
 			cur.recordUndoFullDocument();
@@ -1583,10 +1583,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULES_CLEAR: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().textClassPtr();
+			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
-			buffer->params().makeTextClass();
+			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1595,10 +1595,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULE_ADD: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().textClassPtr();
+			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
-			buffer->params().makeTextClass();
+			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1624,10 +1624,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			//Save the old, possibly modular, layout for use in conversion.
-			TextClassPtr oldClass = buffer->params().textClassPtr();
+			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(new_class);
-			buffer->params().makeTextClass();
+			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1636,11 +1636,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_RELOAD: {
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
-			TextClassPtr oldClass = buffer->params().textClassPtr();
+			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			BaseClassIndex const tc = buffer->params().baseClass();
 			baseclasslist.reset(tc);
 			buffer->params().setBaseClass(tc);
-			buffer->params().makeTextClass();
+			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
@@ -1866,14 +1866,14 @@ bool LyXFunc::wasMetaKey() const
 }
 
 
-void LyXFunc::updateLayout(TextClassPtr oldlayout,Buffer * buffer)
+void LyXFunc::updateLayout(DocumentClass * oldlayout,Buffer * buffer)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
 	
 	StableDocIterator backcur(view()->cursor());
 	ErrorList & el = buffer->errorList("Class Switch");
 	cap::switchBetweenClasses(
-			oldlayout, buffer->params().textClassPtr(),
+			oldlayout, buffer->params().documentClassPtr(),
 			static_cast<InsetText &>(buffer->inset()), el);
 
 	view()->setCursor(backcur.asDocIterator(&(buffer->inset())));

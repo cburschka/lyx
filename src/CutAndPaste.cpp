@@ -70,7 +70,7 @@ namespace {
 
 typedef pair<pit_type, int> PitPosPair;
 
-typedef limited_stack<pair<ParagraphList, TextClassPtr> > CutStack;
+typedef limited_stack<pair<ParagraphList, DocumentClass const *> > CutStack;
 
 CutStack theCuts(10);
 // persistent selection, cleared until the next selection
@@ -106,7 +106,7 @@ bool checkPastePossible(int index)
 
 pair<PitPosPair, pit_type>
 pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
-		     TextClassPtr textclass, ErrorList & errorlist)
+		     DocumentClass const * const docclass, ErrorList & errorlist)
 {
 	Buffer const & buffer = cur.buffer();
 	pit_type pit = cur.pit();
@@ -120,7 +120,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	TextClassPtr const tc = buffer.params().textClassPtr();
+	DocumentClass const * const tc = buffer.params().documentClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -148,7 +148,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// supposed to be the default, not just if it is forced
 	if (cur.inset().useEmptyLayout()) {
 		LayoutPtr const layout =
-			buffer.params().textClass().emptyLayout();
+			buffer.params().documentClass().emptyLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();
 				par != end; ++par)
@@ -162,7 +162,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// since we store pointers to insets at some places and we don't
 	// want to invalidate them.
 	insertion.swap(in.paragraphs());
-	cap::switchBetweenClasses(textclass, tc, in, errorlist);
+	cap::switchBetweenClasses(docclass, tc, in, errorlist);
 	insertion.swap(in.paragraphs());
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
@@ -317,15 +317,15 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
-void putClipboard(ParagraphList const & paragraphs, TextClassPtr textclass,
-		  docstring const & plaintext)
+void putClipboard(ParagraphList const & paragraphs, 
+	DocumentClass const * const docclass, docstring const & plaintext)
 {
 	// For some strange reason gcc 3.2 and 3.3 do not accept
 	// Buffer buffer(string(), false);
 	Buffer buffer("", false);
 	buffer.setUnnamed(true);
 	buffer.paragraphs() = paragraphs;
-	buffer.params().setTextClass(textclass);
+	buffer.params().setDocumentClass(docclass);
 	ostringstream lyx;
 	if (buffer.write(lyx))
 		theClipboard().put(lyx.str(), plaintext);
@@ -336,7 +336,7 @@ void putClipboard(ParagraphList const & paragraphs, TextClassPtr textclass,
 
 void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
-	int start, int end, TextClassPtr tc, CutStack & cutstack)
+	int start, int end, DocumentClass const * const dc, CutStack & cutstack)
 {
 	BOOST_ASSERT(0 <= start && start <= pars[startpit].size());
 	BOOST_ASSERT(0 <= end && end <= pars[endpit].size());
@@ -372,7 +372,8 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	// do not copy text (also nested in insets) which is marked as deleted
 	acceptChanges(copy_pars, buf.params());
 
-	cutstack.push(make_pair(copy_pars, tc));
+	DocumentClass * d = const_cast<DocumentClass *>(dc);
+	cutstack.push(make_pair(copy_pars, d));
 }
 
 } // namespace anon
@@ -392,8 +393,8 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
-void switchBetweenClasses(TextClassPtr const & oldone, 
-		TextClassPtr const & newone, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(DocumentClass const * const oldone, 
+		DocumentClass const * const newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 
@@ -401,8 +402,8 @@ void switchBetweenClasses(TextClassPtr const & oldone,
 	if (oldone == newone)
 		return;
 	
-	TextClass const & oldtc = *oldone;
-	TextClass const & newtc = *newone;
+	DocumentClass const & oldtc = *oldone;
+	DocumentClass const & newtc = *newone;
 
 	// layouts
 	ParIterator end = par_iterator_end(in);
@@ -410,7 +411,9 @@ void switchBetweenClasses(TextClassPtr const & oldone,
 		docstring const name = it->layout()->name();
 		bool hasLayout = newtc.hasLayout(name);
 
-		if (hasLayout)
+		if (in.useEmptyLayout())
+			it->setLayout(newtc.emptyLayout());
+		else if (hasLayout)
 			it->setLayout(newtc[name]);
 		else
 			it->setLayout(newtc.defaultLayout());
@@ -518,7 +521,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
-				bp.textClassPtr(), theCuts);
+				bp.documentClassPtr(), theCuts);
 			// Stuff what we got on the clipboard.
 			// Even if there is no selection.
 			putClipboard(theCuts[0].first, theCuts[0].second,
@@ -602,7 +605,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
-			cur.buffer().params().textClassPtr(), cutstack);
+			cur.buffer().params().documentClassPtr(), cutstack);
 		dirtyTabularStack(false);
 	}
 
@@ -611,10 +614,11 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.setLayout(bp.textClass().defaultLayout());
+		// FIXME This should be the empty layout...right?
+		par.setLayout(bp.documentClass().emptyLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		cutstack.push(make_pair(pars, bp.textClassPtr()));
+		cutstack.push(make_pair(pars, bp.documentClassPtr()));
 	}
 }
 
@@ -638,10 +642,10 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.setLayout(bp.textClass().defaultLayout());
+		par.setLayout(bp.documentClass().emptyLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		theCuts.push(make_pair(pars, bp.textClassPtr()));
+		theCuts.push(make_pair(pars, bp.documentClassPtr()));
 	} else {
 		copySelectionToStack(cur, theCuts);
 	}
@@ -692,7 +696,7 @@ docstring selection(size_t sel_index)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			TextClassPtr textclass, ErrorList & errorList)
+			DocumentClass const * const docclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
@@ -702,7 +706,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 		PitPosPair ppp;
 
 		boost::tie(ppp, endpit) =
-			pasteSelectionHelper(cur, parlist, textclass, errorList);
+			pasteSelectionHelper(cur, parlist, docclass, errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
@@ -745,7 +749,7 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 			if (buffer.readString(lyx)) {
 				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
-					buffer.params().textClassPtr(), errorList);
+					buffer.params().documentClassPtr(), errorList);
 				cur.setSelection();
 				return;
 			}

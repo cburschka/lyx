@@ -78,21 +78,20 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp,
-		CollapseStatus status, TextClassPtr tc)
+		CollapseStatus status, DocumentClass * dc)
 	: InsetText(bp), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
-	setLayout(tc);
+	setLayout(dc);
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(bp.textClass().emptyLayout());
+	paragraphs().back().setLayout(bp.documentClass().emptyLayout());
 }
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
-		textClass_(rhs.textClass_),
 		layout_(rhs.layout_),
 		labelstring_(rhs.labelstring_),
 		button_dim(rhs.button_dim),
@@ -125,15 +124,14 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 
 void InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	setLayout(bp.textClassPtr());
+	setLayout(bp.documentClassPtr());
 }
 
 
-void InsetCollapsable::setLayout(TextClassPtr tc)
+void InsetCollapsable::setLayout(DocumentClass const * const dc)
 {
-	textClass_ = tc;
-	if ( textClass_ != 0 ) {
-		layout_ = &textClass_->insetLayout(name());
+	if (dc != 0) {
+		layout_ = &(dc->insetLayout(name()));
 		labelstring_ = layout_->labelstring();
 	} else {
 		layout_ = &TextClass::emptyInsetLayout();
@@ -795,7 +793,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 docstring InsetCollapsable::floatName(
 		string const & type, BufferParams const & bp) const
 {
-	FloatList const & floats = bp.textClass().floats();
+	FloatList const & floats = bp.documentClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
 	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());

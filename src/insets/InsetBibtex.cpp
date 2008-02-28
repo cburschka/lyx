@@ -293,7 +293,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 					      "BibTeX will be unable to find it."));
 	}
 
-	if (!db_out.empty() && buffer().params().use_bibtopic){
+	if (!db_out.empty() && buffer().params().use_bibtopic) {
 		os << "\\begin{btSect}{" << db_out << "}\n";
 		docstring btprint = getParam("btprint");
 		if (btprint.empty())
@@ -310,8 +310,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(buffer().params().textClass().name(),
-			      "art")) {
+		if (!contains(buffer().params().documentClass().name(), "art")) {
 			if (buffer().params().sides == OneSide) {
 				// oneside
 				os << "\\clearpage";

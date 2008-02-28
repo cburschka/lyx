@@ -1131,28 +1131,24 @@ bool TextClass::hasTocLevels() const
 }
 
 
-TextClassPtr TextClassBundle::newClass(TextClass const & baseClass)
+DocumentClass & DocumentClassBundle::newClass(TextClass const & baseClass)
 {
-	TextClass * tc = new TextClass(baseClass);
-	tc_list_.push_back(tc);
-	return tc;
+	DocumentClass dc(baseClass);
+	tc_list_.push_back(dc);
+	return tc_list_.back();
 }
 
 
-TextClassBundle & TextClassBundle::get()
+DocumentClassBundle & DocumentClassBundle::get()
 {
-	static TextClassBundle singleton; 
+	static DocumentClassBundle singleton; 
 	return singleton; 
 }
 
 
-TextClassBundle::~TextClassBundle()
-{
-	std::list<TextClassPtr>::iterator it  = tc_list_.begin();
-	std::list<TextClassPtr>::iterator end = tc_list_.end();
-	for (; it != end; ++it)
-		delete *it;
-}
+DocumentClass::DocumentClass(TextClass const & tc)
+	: TextClass(tc)
+{}
 
 
 ostream & operator<<(ostream & os, PageSides p)

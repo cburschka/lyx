@@ -208,7 +208,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 /// Update the counters of this inset and of its contents
 void InsetBibitem::updateLabels(ParIterator const &) 
 {
-	Counters & counters = buffer().params().textClass().counters();
+	Counters & counters = buffer().params().documentClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
 	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
 		counters.step(bibitem);

@@ -487,7 +487,7 @@ Tabular::CellData::CellData(Buffer const & buffer)
 	  inset(new InsetText(buffer.params()))
 {
 	inset->setBuffer(const_cast<Buffer &>(buffer));
-	inset->paragraphs().back().setLayout(buffer.params().textClass().emptyLayout());
+	inset->paragraphs().back().setLayout(buffer.params().documentClass().emptyLayout());
 }
 
 
@@ -1097,7 +1097,7 @@ void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 	cur.push(*inset);
 	// undo information has already been recorded
 	inset->getText(0)->setLayout(cur.bv().buffer(), 0, cur.lastpit() + 1,
-			bp.textClass().emptyLayoutName());
+			bp.documentClass().emptyLayoutName());
 	cur.pop();
 }
 
@@ -3175,7 +3175,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 void InsetTabular::updateLabels(ParIterator const & it)
 {
 	// In a longtable, tell captions what the current float is
-	Counters & cnts = buffer().params().textClass().counters();
+	Counters & cnts = buffer().params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 	if (tabular.isLongTabular())
 		cnts.current_float("table");

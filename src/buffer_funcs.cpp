@@ -294,7 +294,7 @@ bool needEnumCounterReset(ParIterator const & it)
 // set the label of a paragraph. This includes the counters.
 void setLabel(Buffer const & buf, ParIterator & it)
 {
-	TextClass const & textclass = buf.params().textClass();
+	DocumentClass const & textclass = buf.params().documentClass();
 	Paragraph & par = it.paragraph();
 	LayoutPtr const & layout = par.layout();
 	Counters & counters = textclass.counters();
@@ -481,7 +481,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 {
 	Buffer const * const master = buf.masterBuffer();
 	// Use the master text class also for child documents
-	TextClass const & textclass = master->params().textClass();
+	DocumentClass const & textclass = master->params().documentClass();
 
 	if (!childonly) {
 		// If this is a child document start with the master

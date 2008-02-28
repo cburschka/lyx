@@ -1522,7 +1522,7 @@ docstring const Paragraph::translateIfPossible(docstring const & s,
 docstring Paragraph::expandLabel(LayoutPtr const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
-	TextClass const & tclass = bparams.textClass();
+	DocumentClass const & tclass = bparams.documentClass();
 
 	docstring fmt;
 	if (process_appendix && d->params_.appendix())
@@ -1827,7 +1827,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 	bool asdefault = forceEmptyLayout();
 
 	if (asdefault)
-		style = bparams.textClass().defaultLayout();
+		style = bparams.documentClass().emptyLayout();
 	 else
 		style = d->layout_;
 

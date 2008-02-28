@@ -68,7 +68,7 @@ bool InsetFloatList::isCompatibleCommand(string const & s)
 
 docstring InsetFloatList::screenLabel() const
 {
-	FloatList const & floats = buffer().params().textClass().floats();
+	FloatList const & floats = buffer().params().documentClass().floats();
 	FloatList::const_iterator it = floats[to_ascii(getParam("type"))];
 	if (it != floats.end())
 		return buffer().B_(it->second.listName());
@@ -85,7 +85,7 @@ void InsetFloatList::write(ostream & os) const
 
 void InsetFloatList::read(Lexer & lex)
 {
-	FloatList const & floats = buffer().params().textClass().floats();
+	FloatList const & floats = buffer().params().documentClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
@@ -113,7 +113,7 @@ void InsetFloatList::read(Lexer & lex)
 
 int InsetFloatList::latex(odocstream & os, OutputParams const &) const
 {
-	FloatList const & floats = buffer().params().textClass().floats();
+	FloatList const & floats = buffer().params().documentClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {

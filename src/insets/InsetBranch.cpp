@@ -76,7 +76,7 @@ void InsetBranch::read(Lexer & lex)
 }
 
 
-docstring InsetBranch::toolTip(BufferView const & bv, int x, int y) const
+docstring InsetBranch::toolTip(BufferView const &, int, int) const
 {
 	return _("Branch: ") + params_.branch;
 }
@@ -224,7 +224,7 @@ void InsetBranch::updateLabels(ParIterator const & it)
 	if (isBranchSelected())
 		InsetCollapsable::updateLabels(it);
 	else {
-		TextClass const & tclass = buffer().params().textClass();
+		DocumentClass const & tclass = buffer().params().documentClass();
 		Counters savecnt = tclass.counters();
 		InsetCollapsable::updateLabels(it);
 		tclass.counters() = savecnt;

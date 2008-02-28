@@ -57,14 +57,14 @@ InsetCaption::InsetCaption(InsetCaption const & ic)
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp), textclass_(bp.textClass())
+	: InsetText(bp), textclass_(bp.documentClass())
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_captionframe);
 	//FIXME Do we need to set all paragraphs here? or will there
 	//always only be one?
-	paragraphs().back().setLayout(bp.textClass().emptyLayout());
+	paragraphs().back().setLayout(bp.documentClass().emptyLayout());
 }
 
 
@@ -277,7 +277,7 @@ int InsetCaption::getOptArg(odocstream & os,
 
 void InsetCaption::updateLabels(ParIterator const & it)
 {
-	TextClass const & tclass = buffer().params().textClass();
+	DocumentClass const & tclass = buffer().params().documentClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
 	// Memorize type for addToToc().
