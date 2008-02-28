@@ -743,9 +743,11 @@ size_t commonPrefix(QString const & s1, QString const & s2)
 docstring GuiCompleter::longestUniqueCompletion() const
 {
 	QAbstractItemModel const & model = *popup()->model();
-	QString s = currentCompletion();
 	size_t n = model.rowCount();
-
+	if (n == 0)
+		return docstring();
+	QString s = model.data(model.index(0, 0), Qt::EditRole).toString();
+	
 	if (modelSorting() == QCompleter::UnsortedModel) {
 		// For unsorted model we cannot do more than iteration.
 		// Iterate through the completions and cut off where s differs
