@@ -33,6 +33,7 @@ class Change;
 class Counters;
 class Cursor;
 class CursorSlice;
+class DocumentClass;
 class Inset;
 class InsetBibitem;
 class LaTeXFeatures;
@@ -45,7 +46,6 @@ class MetricsInfo;
 class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
-class TextClass;
 class TexRow;
 
 
@@ -157,7 +157,7 @@ public:
 	///
 	void setLayout(LayoutPtr const & layout);
 	///
-	void setEmptyOrDefaultLayout(TextClass const & tc);
+	void setEmptyOrDefaultLayout(DocumentClass const & tc);
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;

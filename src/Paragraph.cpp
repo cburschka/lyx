@@ -2348,7 +2348,7 @@ void Paragraph::setLayout(LayoutPtr const & layout)
 }
 
 
-void Paragraph::setEmptyOrDefaultLayout(TextClass const & tclass)
+void Paragraph::setEmptyOrDefaultLayout(DocumentClass const & tclass)
 {
 	if (useEmptyLayout())
 		setLayout(tclass.emptyLayout());
