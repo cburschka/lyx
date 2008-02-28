@@ -813,10 +813,7 @@ void RowPainter::paintInlineCompletion(Font const & font)
 {
 	docstring completion = pi_.base.bv->inlineCompletion();
 	FontInfo f = font.fontInfo();
-	
-	// right to left?
-	if (font.isRightToLeft())
-		reverse(completion.begin(), completion.end());
+	bool rtl = font.isRightToLeft();
 	
 	// draw the unique and the non-unique completion part
 	// Note: this is not time-critical as it is
@@ -824,15 +821,25 @@ void RowPainter::paintInlineCompletion(Font const & font)
 	size_t uniqueTo = pi_.base.bv->inlineCompletionUniqueChars();
 	docstring s1 = completion.substr(0, uniqueTo);
 	docstring s2 = completion.substr(uniqueTo);
+	ColorCode c1 = Color_inlinecompletion;
+	ColorCode c2 = Color_nonunique_inlinecompletion;
 	
+	// right to left?
+	if (rtl) {
+		swap(s1, s2);
+		reverse(s1.begin(), s1.end());
+		reverse(s2.begin(), s2.end());
+		swap(c1, c2);
+	}
+
 	if (s1.size() > 0) {
-		f.setColor(Color_inlinecompletion);
+		f.setColor(c1);
 		pi_.pain.text(int(x_), yo_, s1, f);
 		x_ += theFontMetrics(font).width(s1);
 	}
 	
 	if (s2.size() > 0) {
-		f.setColor(Color_nonunique_inlinecompletion);
+		f.setColor(c2);
 		pi_.pain.text(int(x_), yo_, s2, f);
 		x_ += theFontMetrics(font).width(s2);
 	}
