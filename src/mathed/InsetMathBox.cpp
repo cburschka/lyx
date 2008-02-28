@@ -125,17 +125,17 @@ void InsetMathFBox::infoize(odocstream & os) const
 
 /////////////////////////////////////////////////////////////////////
 //
-// InsetMathFrameBox
+// InsetMathMakebox
 //
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathFrameBox::InsetMathFrameBox()
-	: InsetMathNest(3)
+InsetMathMakebox::InsetMathMakebox(bool framebox)
+	: InsetMathNest(3), framebox_(framebox)
 {}
 
 
-void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	
@@ -151,63 +151,81 @@ void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi, dim1);
 	cell(2).metrics(mi, dim2);
 	
-	dim.wid = 5 + w + dim0.wid + w + 4 + w + dim1.wid + w + 4 + dim2.wid + 5;
+	dim.wid = w + dim0.wid + w + w + dim1.wid + w + 2 + dim2.wid;
 	dim.asc = std::max(std::max(wdim.asc, dim0.asc), std::max(dim1.asc, dim2.asc)); 
 	dim.des = std::max(std::max(wdim.des, dim0.des), std::max(dim1.des, dim2.des));
-	dim.asc += 3;
-	dim.des += 3;
+	
+	if (framebox_) {
+		dim.wid += 4;
+		dim.asc += 3;
+		dim.des += 2;
+	} else {
+		dim.asc += 1;
+		dim.des += 1;
+	}
 	
 	metricsMarkers(dim);
 }
 
 
-void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
+void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 {
 	drawMarkers(pi, x, y);
 	
 	FontSetChanger dummy(pi.base, "textnormal");
-	Dimension const dim = dimension(*pi.base.bv);
+	BufferView const & bv = *pi.base.bv;
 	int w = mathed_char_width(pi.base.font, '[');
 	
-	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
-		dim.width() - 2, dim.height() - 2, Color_foreground);
+	if (framebox_) {
+		Dimension const dim = dimension(*pi.base.bv);
+		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
+				  dim.width() - 2, dim.height() - 2, Color_foreground);
+		x += 2;
+	}
 	
-	x += 5;
-	BufferView const & bv = *pi.base.bv;
-
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w;
 	cell(0).draw(pi, x, y);
 	x += cell(0).dimension(bv).wid;
 	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w + 4;
+	x += w;
 
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w;
 	cell(1).draw(pi, x, y);
 	x += cell(1).dimension(bv).wid;
 	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w + 4;
+	x += w + 2;
 
 	cell(2).draw(pi, x, y);
 }
 
 
-void InsetMathFrameBox::write(WriteStream & os) const
+void InsetMathMakebox::write(WriteStream & os) const
 {
-	os << "\\framebox";
-	os << '[' << cell(0) << ']';
-	if (cell(1).size())
-		os << '[' << cell(1) << ']';
+	os << (framebox_ ? "\\framebox" : "\\makebox");
+	if (cell(0).size() || !os.latex()) {
+		os << '[' << cell(0) << ']';
+		if (cell(1).size() || !os.latex())
+			os << '[' << cell(1) << ']';
+	}
 	os << '{' << cell(2) << '}';
 }
 
 
-void InsetMathFrameBox::normalize(NormalStream & os) const
+void InsetMathMakebox::normalize(NormalStream & os) const
 {
-	os << "[framebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
+	os << (framebox_ ? "[framebox " : "[makebox ")
+	   << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
 }
 
+
+void InsetMathMakebox::infoize(odocstream & os) const
+{
+	os << (framebox_ ? "Framebox" : "Makebox") 
+	   << " (width: " << cell(0)
+	   << " pos: " << cell(1) << ")";
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -259,78 +277,6 @@ void InsetMathBoxed::infoize(odocstream & os) const
 void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// InsetMathMakebox
-//
-/////////////////////////////////////////////////////////////////////
-
-
-InsetMathMakebox::InsetMathMakebox()
-	: InsetMathNest(3)
-{}
-
-
-void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	FontSetChanger dummy(mi.base, from_ascii("textnormal"));
-	w_ = mathed_char_width(mi.base.font, '[');
-	InsetMathNest::metrics(mi);
-	dim   = cell(0).dimension(*mi.base.bv);
-	dim  += cell(1).dimension(*mi.base.bv);
-	dim  += cell(2).dimension(*mi.base.bv);
-	dim.wid += 4 * w_ + 4;
-	metricsMarkers(dim);
-}
-
-
-void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
-{
-	FontSetChanger dummy(pi.base, from_ascii("textnormal"));
-	drawMarkers(pi, x, y);
-
-	drawStrBlack(pi, x, y, from_ascii("["));
-	x += w_;
-	cell(0).draw(pi, x, y);
-	x += cell(0).dimension(*pi.base.bv).width();
-	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w_ + 2;
-
-	drawStrBlack(pi, x, y, from_ascii("["));
-	x += w_;
-	cell(1).draw(pi, x, y);
-	x += cell(1).dimension(*pi.base.bv).wid;
-	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w_ + 2;
-
-	cell(2).draw(pi, x, y);
-	setPosCache(pi, x, y);
-}
-
-
-void InsetMathMakebox::write(WriteStream & os) const
-{
-	os << "\\makebox";
-	os << '[' << cell(0) << ']';
-	if (cell(1).size())
-		os << '[' << cell(1) << ']';
-	os << '{' << cell(2) << '}';
-}
-
-
-void InsetMathMakebox::normalize(NormalStream & os) const
-{
-	os << "[makebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
-}
-
-
-void InsetMathMakebox::infoize(odocstream & os) const
-{
-	os << "Makebox (width: " << cell(0)
-	    << " pos: " << cell(1) << ")";
 }
 
 

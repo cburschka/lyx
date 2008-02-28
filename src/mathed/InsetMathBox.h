@@ -67,32 +67,11 @@ private:
 };
 
 
-/// Extra nesting
-class InsetMathFrameBox : public InsetMathNest {
-public:
-	///
-	InsetMathFrameBox();
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	void write(WriteStream & os) const;
-	/// write normalized content
-	void normalize(NormalStream & ns) const;
-	///
-	mode_type currentMode() const { return TEXT_MODE; }
-private:
-	Inset * clone() const { return new InsetMathFrameBox(*this); }
-};
-
-
-/// Extra nesting: \\makebox.
-// consolidate with InsetMathFrameBox?
+/// Extra nesting: \\makebox or \\framebox.
 class InsetMathMakebox : public InsetMathNest {
 public:
 	///
-	InsetMathMakebox();
+	InsetMathMakebox(bool framebox);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -107,8 +86,8 @@ public:
 	void infoize(odocstream & os) const;
 private:
 	Inset * clone() const { return new InsetMathMakebox(*this); }
-	/// width of '[' in current font
-	mutable int w_;
+	///
+	bool framebox_;
 };
 
 

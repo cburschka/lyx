@@ -302,9 +302,9 @@ MathAtom createInsetMath(docstring const & s)
 	if (s == "fbox")
 		return MathAtom(new InsetMathFBox());
 	if (s == "framebox")
-		return MathAtom(new InsetMathFrameBox);
+		return MathAtom(new InsetMathMakebox(true));
 	if (s == "makebox")
-		return MathAtom(new InsetMathMakebox);
+		return MathAtom(new InsetMathMakebox(false));
 	if (s == "kern")
 		return MathAtom(new InsetMathKern);
 	if (s.substr(0, 8) == "xymatrix") {
