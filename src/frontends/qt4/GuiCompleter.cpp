@@ -130,10 +130,9 @@ public:
 		if (role != Qt::DisplayRole && role != Qt::EditRole)
 		    return QVariant();
 		    
-		if (index.column() == 0) {
-			docstring const word = list_->data(index.row());
-			return toqstr(word);
-		} else if (index.column() == 1) {
+		if (index.column() == 0)
+			return toqstr(list_->data(index.row()));
+		else if (index.column() == 1) {
 			// get icon from cache
 			QPixmap scaled;
 			QString const name = ":" + toqstr(list_->icon(index.row()));

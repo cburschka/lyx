@@ -63,7 +63,12 @@ docstring const & WordList::word(size_t idx) const
 {
 	Impl::Words::const_iterator it = d->words_.find_summed_weight(idx);
 	BOOST_ASSERT(it != d->words_.end());
-	return it->first;
+	
+	// We use the key() method here, and not something like it->first
+	// because the btree only returns (iterator-) temporary value pairs.
+	// If we returned the first component of those here, we get an
+	// invalid reference and therefore strange crashes.
+	return it.key();
 }
 
 
