@@ -1151,6 +1151,17 @@ DocumentClass::DocumentClass(TextClass const & tc)
 {}
 
 
+bool DocumentClass::hasLaTeXLayout(std::string const & lay) const
+{
+	LayoutList::const_iterator it  = layoutlist_.begin();
+	LayoutList::const_iterator end = layoutlist_.end();
+	for (; it != end; ++it)
+		if (it->get()->latexname() == lay)
+			return true;
+	return false;
+}
+
+
 ostream & operator<<(ostream & os, PageSides p)
 {
 	switch (p) {

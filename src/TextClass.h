@@ -205,6 +205,9 @@ public:
 	bool hasTocLevels() const;
 	///
 	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
+protected:
+	/// Paragraph styles used in this layout
+	LayoutList layoutlist_;
 private:
 	///
 	bool deleteLayout(docstring const &);
@@ -265,10 +268,6 @@ private:
 	TitleLatexType titletype_;
 	/// The name of the title command
 	std::string titlename_;
-
-	/// Paragraph styles used in this layout
-	LayoutList layoutlist_;
-
 	/// Input layouts available to this layout
 	mutable InsetLayouts insetlayoutlist_;
 
@@ -299,6 +298,8 @@ private:
 /// These TextClasses represent the layout information that is 
 /// associated with a given buffer.
 class DocumentClass : public TextClass {
+public:
+	bool hasLaTeXLayout(std::string const & lay) const;
 private:
 	/// Constructs a DocumentClass based upon a TextClass.
 	DocumentClass(TextClass const & tc);

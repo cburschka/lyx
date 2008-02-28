@@ -306,11 +306,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 
 	// bibtotoc-Option
 	if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
-		// maybe a problem when a textclass has no "art" as
-		// part of its name, because it's than book.
-		// For the "official" lyx-layouts it's no problem to support
-		// all well
-		if (!contains(buffer().params().documentClass().name(), "art")) {
+		if (buffer().params().documentClass().hasLaTeXLayout("chapter")) {
 			if (buffer().params().sides == OneSide) {
 				// oneside
 				os << "\\clearpage";
@@ -318,14 +314,9 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 				// twoside
 				os << "\\cleardoublepage";
 			}
-
-			// bookclass
 			os << "\\addcontentsline{toc}{chapter}{\\bibname}";
-
-		} else {
-			// article class
+		} else if (buffer().params().documentClass().hasLaTeXLayout("section"))
 			os << "\\addcontentsline{toc}{section}{\\refname}";
-		}
 	}
 
 	if (!db_out.empty() && !buffer().params().use_bibtopic) {
