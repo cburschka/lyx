@@ -310,7 +310,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(buffer().params().baseClass()->name(), "art")) {
+		if (!contains(buffer().params().documentClass().name(), "art")) {
 			if (buffer().params().sides == OneSide) {
 				// oneside
 				os << "\\clearpage";
