@@ -234,6 +234,12 @@ bool GuiCompleter::inlinePossible(Cursor const & cur) const
 }
 
 
+bool GuiCompleter::completionAvailable() const
+{
+	return popup()->model()->rowCount() > 0;
+}
+
+
 bool GuiCompleter::popupVisible() const
 {
 	return popup()->isVisible();
@@ -455,6 +461,9 @@ void GuiCompleter::hidePopup(Cursor & cur)
 	popup()->hide();
 	if (popup_timer_.isActive())
 		popup_timer_.stop();
+	
+	if (!inlineVisible())
+		setModel(new GuiCompletionModel(this, 0));
 }
 
 
@@ -471,6 +480,9 @@ void GuiCompleter::hideInline(Cursor & cur)
 {
 	gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
 	inlineVisible_ = false;
+	
+	if (!popupVisible())
+		setModel(new GuiCompletionModel(this, 0));
 }
 
 

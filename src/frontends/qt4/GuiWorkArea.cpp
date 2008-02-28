@@ -68,6 +68,7 @@ int const CursorWidth = 2;
 #else
 int const CursorWidth = 1;
 #endif
+int const TabIndicatorWidth = 4;
 
 #undef KeyPress
 #undef NoModifier 
@@ -121,48 +122,63 @@ public:
 
 	void draw(QPainter & painter)
 	{
-		if (show_ && rect_.isValid()) {
-			switch (shape_) {
-			case L_SHAPE:
-				painter.fillRect(rect_.x(), rect_.y(), 
-					CursorWidth, rect_.height(), color_);
-				painter.setPen(color_);
-				painter.drawLine(rect_.bottomLeft().x() + CursorWidth, 
-					rect_.bottomLeft().y(),
-					rect_.bottomRight().x(), rect_.bottomLeft().y());
-				break;
-			
-			case REVERSED_L_SHAPE:
-				painter.fillRect(rect_.x() + rect_.height() / 3, rect_.y(), 
-					CursorWidth, rect_.height(), color_);
-				painter.setPen(color_);
-				painter.drawLine(rect_.bottomRight().x() - CursorWidth,
-					rect_.bottomLeft().y(),
-					rect_.bottomLeft().x(), rect_.bottomLeft().y());
-				break;
-					
-			default:
-				painter.fillRect(rect_, color_);
-				break;
+		if (!show_ || !rect_.isValid())
+			return;
+		
+		int l = x_ - rect_.left();
+		int r = rect_.right() - x_;
+		int h = rect_.height();
+
+		painter.fillRect(x_, y_, CursorWidth, h, color_);
+		painter.setPen(color_);
+		if (l_shape_) {
+			if (rtl_)
+				painter.drawLine(x_, y_ + h, x_ - l, y_ + h);
+			else
+				painter.drawLine(x_ + CursorWidth, y_ + h, 
+					x_ + CursorWidth + r, y_ + h);
+		}
+		
+		if (completable_) {
+			int m = y_ + h / 2;
+			int d = TabIndicatorWidth - 1;
+			if (rtl_) {
+				painter.drawLine(x_ - 1 , m - d, x_ - d - 1, m);
+				painter.drawLine(x_ - 1 , m + d, x_ - d - 1, m);
+			} else {
+				painter.drawLine(x_ + CursorWidth , m - d, x_ + d + CursorWidth, m);
+				painter.drawLine(x_ + CursorWidth , m + d, x_ + d + CursorWidth, m);
 			}
 		}
 	}
 
-	void update(int x, int y, int h, CursorShape shape)
+	void update(int x, int y, int h, bool l_shape,
+		bool rtl, bool completable)
 	{
 		color_ = guiApp->colorCache().get(Color_cursor);
-		shape_ = shape;
-		switch (shape) {
-		case L_SHAPE:
-			rect_ = QRect(x, y, CursorWidth + h / 3, h);
-			break;
-		case REVERSED_L_SHAPE:
-			rect_ = QRect(x - h / 3, y, CursorWidth + h / 3, h);
-			break;
-		default: 
-			rect_ = QRect(x, y, CursorWidth, h);
-			break;
+		l_shape_ = l_shape;
+		rtl_ = rtl;
+		completable_ = completable;
+		x_ = x;
+		y_ = y;
+		int l = 0;
+		int r = 0;
+
+		if (l_shape_) {
+			if (rtl)
+				l += h / 3;
+			else
+				r += h / 3;
 		}
+		
+		if (completable_) {
+			if (rtl)
+				l = max(r, TabIndicatorWidth);
+			else
+				r = max(l, TabIndicatorWidth);
+		}
+
+		rect_ = QRect(x - l, y, CursorWidth + r + l, h);
 	}
 
 	void show(bool set_show = true) { show_ = set_show; }
@@ -172,13 +188,21 @@ public:
 
 private:
 	///
-	CursorShape shape_;
+	bool rtl_;
+	///
+	bool l_shape_;
+	///
+	bool completable_;
 	///
 	bool show_;
 	///
 	QColor color_;
 	///
 	QRect rect_;
+	///
+	int x_;
+	///
+	int y_;
 };
 
 
@@ -432,22 +456,19 @@ void GuiWorkArea::showCursor()
 	if (cursor_visible_)
 		return;
 
-	CursorShape shape = BAR_SHAPE;
-
+	// RTL or not RTL
+	bool l_shape = false;
 	Font const & realfont = buffer_view_->cursor().real_current_font;
 	BufferParams const & bp = buffer_view_->buffer().params();
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
 
-	if (!samelang || isrtl != bp.language->rightToLeft()) {
-		shape = L_SHAPE;
-		if (isrtl)
-			shape = REVERSED_L_SHAPE;
-	}
+	if (!samelang || isrtl != bp.language->rightToLeft())
+		l_shape = true;
 
 	// The ERT language hack needs fixing up
 	if (realfont.language() == latex_language)
-		shape = BAR_SHAPE;
+		l_shape = false;
 
 	Font const font = buffer_view_->cursor().getFont();
 	FontMetrics const & fm = theFontMetrics(font);
@@ -466,9 +487,10 @@ void GuiWorkArea::showCursor()
 		cursorInView = false;
 
 	// show cursor on screen
+	bool completable = completer_.completionAvailable();
 	if (cursorInView) {
 		cursor_visible_ = true;
-		showCursor(x, y, h, shape);
+		showCursor(x, y, h, l_shape, isrtl, completable);
 	}
 }
 
@@ -849,7 +871,8 @@ void GuiWorkArea::updateScreen()
 }
 
 
-void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
+void GuiWorkArea::showCursor(int x, int y, int h,
+	bool l_shape, bool rtl, bool completable)
 {
 	if (schedule_redraw_) {
 		buffer_view_->updateMetrics();
@@ -862,7 +885,7 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 		return;
 	}
 
-	cursor_->update(x, y, h, shape);
+	cursor_->update(x, y, h, l_shape, rtl, completable);
 	cursor_->show();
 	viewport()->update(cursor_->rect());
 }

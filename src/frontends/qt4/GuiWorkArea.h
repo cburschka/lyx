@@ -50,16 +50,6 @@ namespace frontend {
 class GuiView;
 class GuiWorkArea;
 
-/// types of cursor in work area
-enum CursorShape {
-	/// normal I-beam
-	BAR_SHAPE,
-	/// L-shape for locked insets of a different language
-	L_SHAPE,
-	/// reverse L-shape for RTL text
-	REVERSED_L_SHAPE
-};
-
 /// for emulating triple click
 class DoubleClick {
 public:
@@ -167,7 +157,8 @@ private:
 	void updateScreen();
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, CursorShape shape);
+	virtual void showCursor(int x, int y, int h,
+		bool l_shape, bool rtl, bool completable);
 
 	/// hide the cursor
 	virtual void removeCursor();

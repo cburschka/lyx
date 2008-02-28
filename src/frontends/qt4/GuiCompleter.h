@@ -51,6 +51,8 @@ public:
 	bool popupPossible(Cursor const & cur) const;
 	///
 	bool inlinePossible(Cursor const & cur) const;
+	///
+	bool completionAvailable() const;
 	/// Activate the current completion, i.e. finalize it.
 	void activate();
 	/// Do a completion as far as it is unique, but at least one character.
