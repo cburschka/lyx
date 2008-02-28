@@ -101,7 +101,7 @@ public:
 
 private:
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetQuotes(*this); }
 
 	///
 	quote_language language_;

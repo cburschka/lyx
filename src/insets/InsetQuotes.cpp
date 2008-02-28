@@ -376,11 +376,4 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	}
 }
 
-
-Inset * InsetQuotes::clone() const
-{
-	return new InsetQuotes(language_, side_, times_);
-}
-
-
 } // namespace lyx
