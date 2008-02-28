@@ -916,6 +916,7 @@ bool Text::handleBibitems(Cursor & cur)
 
 	// otherwise reset to default
 	cur.paragraph().setEmptyOrDefaultLayout(bufparams.documentClass());
+	return true;
 }
 
 
