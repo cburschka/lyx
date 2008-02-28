@@ -468,8 +468,16 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	}
 	catch (ExceptionMessage const & e) {
 		if (e.type_ == ErrorException) {
+			LyX::cref().emergencyCleanup();
+			setQuitOnLastWindowClosed(false);
+			closeAllViews();
 			Alert::error(e.title_, e.details_);
-			LyX::cref().exit(1);
+#ifndef NDEBUG
+			// Properly crash in debug mode in order to get a useful backtrace.
+			abort();
+#endif
+			// In release mode, try to exit gracefully.
+			this->exit(1);
 		} else if (e.type_ == WarningException) {
 			Alert::warning(e.title_, e.details_);
 			return false;
