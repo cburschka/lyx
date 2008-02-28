@@ -42,6 +42,7 @@
 
 #include "insets/InsetListingsParams.h"
 
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -61,6 +62,7 @@ using namespace std;
 using namespace lyx::support;
 
 
+namespace {
 ///
 template<class Pair>
 vector<typename Pair::second_type> const
@@ -135,7 +137,31 @@ char const * tex_fonts_monospaced_gui[] =
 vector<pair<string, lyx::docstring> > pagestyles;
 
 
+} // anonymous namespace
+
 namespace lyx {
+
+namespace {
+// used when sorting the textclass list.
+class less_textclass_avail_desc
+	: public binary_function<string, string, int>
+{
+public:
+	int operator()(string const & lhs, string const & rhs) const
+	{
+		// Ordering criteria:
+		//   1. Availability of text class
+		//   2. Description (lexicographic)
+		TextClass const & tc1 = BaseClassList::get()[lhs];
+		TextClass const & tc2 = BaseClassList::get()[rhs];
+		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
+			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
+			 _(tc1.description()) < _(tc2.description()));
+	}
+};
+
+}
+
 namespace frontend {
 
 
@@ -487,7 +513,6 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 // DocumentDialog
 //
 /////////////////////////////////////////////////////////////////////
-
 
 
 GuiDocument::GuiDocument(GuiView & lv)
@@ -879,15 +904,19 @@ GuiDocument::GuiDocument(GuiView & lv)
 	//FIXME This seems too involved with the kernel. Some of this
 	//should be moved to the kernel---which should perhaps just
 	//give us a list of entries or something of the sort.
-	for (BaseClassList::const_iterator cit = BaseClassList::get().begin();
-	     cit != BaseClassList::get().end(); ++cit) {
-		if (cit->isTeXClassAvailable()) {
-			latexModule->classCO->addItem(toqstr(cit->description()));
-		} else {
-			docstring item =
-				bformat(_("Unavailable: %1$s"), from_utf8(cit->description()));
-			latexModule->classCO->addItem(toqstr(item));
-		}
+	latexModule->classCO->setModel(&classes_model_);
+	BaseClassList const & bcl = BaseClassList::get();
+	vector<BaseClassIndex> classList = bcl.classList();
+	sort(classList.begin(), classList.end(), less_textclass_avail_desc());
+
+	vector<BaseClassIndex>::const_iterator cit  = classList.begin();
+	vector<BaseClassIndex>::const_iterator cen = classList.end();
+	for (int i = 0; cit != cen; ++cit, ++i) {
+		TextClass const & tc = bcl[*cit];
+		docstring item = (tc.isTeXClassAvailable()) ?
+			from_utf8(tc.description()) :
+			bformat(_("Unavailable: %1$s"), from_utf8(tc.description()));
+		classes_model_.insertRow(i, toqstr(item), tc.name());
 	}
 
 	// branches
@@ -1212,8 +1241,14 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 void GuiDocument::classChanged()
 {
-	BaseClassIndex const tc = latexModule->classCO->currentIndex();
-	bp_.setBaseClass(tc);
+	int idx = latexModule->classCO->currentIndex();
+	if (idx < 0) 
+		return;
+	string const classname = classes_model_.getIDString(idx);
+	if (!bp_.setBaseClass(classname)) {
+		Alert::error(_("Error"), _("Unable to set document class."));
+		return;
+	}
 	if (lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
 			int const ret = Alert::prompt(_("Unapplied changes"),
@@ -1287,7 +1322,7 @@ void GuiDocument::updateModuleInfo()
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
 	GuiIdListModel const & idModel = 
-			focusOnSelected  ? selected_model_ : available_model_;
+			focusOnSelected  ? modules_sel_model_ : modules_av_model_;
 	string const modName = idModel.getIDString(idx.row());
 	docstring desc = getModuleDescription(modName);
 
@@ -1457,14 +1492,18 @@ void GuiDocument::apply(BufferParams & params)
 		tex_graphics[latexModule->psdriverCO->currentIndex()];
 	
 	// text layout
-	params.setBaseClass(latexModule->classCO->currentIndex());
+	int idx = latexModule->classCO->currentIndex();
+	if (idx >= 0) {
+		string const classname = classes_model_.getIDString(idx);
+		params.setBaseClass(classname);
+	}
 
 	// Modules
 	params.clearLayoutModules();
-	int const srows = selected_model_.rowCount();
+	int const srows = modules_sel_model_.rowCount();
 	vector<string> selModList;
 	for (int i = 0; i < srows; ++i)
-		params.addLayoutModule(selected_model_.getIDString(i));
+		params.addLayoutModule(modules_sel_model_.getIDString(i));
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
@@ -1746,9 +1785,9 @@ void GuiDocument::updateParams(BufferParams const & params)
 	langModule->otherencodingRB->setChecked(!default_enc);
 
 	// numbering
-	int const min_toclevel = textClass().min_toclevel();
-	int const max_toclevel = textClass().max_toclevel();
-	if (textClass().hasTocLevels()) {
+	int const min_toclevel = documentClass().min_toclevel();
+	int const max_toclevel = documentClass().max_toclevel();
+	if (documentClass().hasTocLevels()) {
 		numberingModule->setEnabled(true);
 		numberingModule->depthSL->setMinimum(min_toclevel - 1);
 		numberingModule->depthSL->setMaximum(max_toclevel);
@@ -1793,9 +1832,14 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	latexModule->classCO->setCurrentIndex(params.baseClass());
-	
-	updatePagestyle(textClass().opt_pagestyle(),
+	string const & classname = params.baseClass()->name();
+	int idx = classes_model_.findIDString(classname);
+	if (idx < 0)
+		lyxerr << "Unable to set layout for classname " << classname << std::endl;
+	else 
+		latexModule->classCO->setCurrentIndex(idx);
+
+	updatePagestyle(documentClass().opt_pagestyle(),
 				 params.pagestyle);
 
 	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
@@ -1855,7 +1899,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	floatModule->set(params.float_placement);
 
 	// Fonts
-	updateFontsize(textClass().opt_fontsize(),
+	updateFontsize(documentClass().opt_fontsize(),
 			params.fontsize);
 
 	int n = findToken(tex_fonts_roman, params.fontsRoman);
@@ -1982,12 +2026,12 @@ void GuiDocument::saveDocDefault()
 
 void GuiDocument::updateAvailableModules() 
 {
-	available_model_.clear();
+	modules_av_model_.clear();
 	vector<modInfoStruct> const modInfoList = getModuleInfo();
 	int const mSize = modInfoList.size();
 	for (int i = 0; i < mSize; ++i) {
 		modInfoStruct const & modInfo = modInfoList[i];
-		available_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
+		modules_av_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
 }
 
@@ -1995,12 +2039,12 @@ void GuiDocument::updateAvailableModules()
 void GuiDocument::updateSelectedModules() 
 {
 	//and selected ones, too
-	selected_model_.clear();
+	modules_sel_model_.clear();
 	vector<modInfoStruct> const selModList = getSelectedModules();
 	int const sSize = selModList.size();
 	for (int i = 0; i < sSize; ++i) {
 		modInfoStruct const & modInfo = selModList[i];
-		selected_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
+		modules_sel_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
 }
 
@@ -2041,7 +2085,12 @@ void GuiDocument::useClassDefaults()
 			applyView();
 	}
 
-	bp_.setBaseClass(latexModule->classCO->currentIndex());
+	int idx = latexModule->classCO->currentIndex();
+	string const classname = classes_model_.getIDString(idx);
+	if (!bp_.setBaseClass(classname)) {
+		Alert::error(_("Error"), _("Unable to set document class."));
+		return;
+	}
 	bp_.useClassDefaults();
 	forceUpdate();
 }
@@ -2111,9 +2160,9 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 }
 
 
-TextClass const & GuiDocument::textClass() const
+DocumentClass const & GuiDocument::documentClass() const
 {
-	return BaseClassList::get()[bp_.baseClass()];
+	return bp_.documentClass();
 }
 
 

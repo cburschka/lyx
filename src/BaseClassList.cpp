@@ -40,52 +40,25 @@ BaseClassList & BaseClassList::get()
 }
 
 
-// Gets textclass number from name
-pair<bool, BaseClassIndex> const
-BaseClassList::numberOfClass(string const & textclass) const
+bool BaseClassList::haveClass(string const & classname) const
 {
-	ClassList::const_iterator cit =
-		find_if(classlist_.begin(), classlist_.end(),
-			bind(equal_to<string>(),
-			     bind(&TextClass::name, _1),
-			     textclass));
-
-	return cit != classlist_.end() ?
-		make_pair(true, BaseClassIndex(cit - classlist_.begin())) :
-		make_pair(false, BaseClassIndex(0));
-}
-
-
-// Gets a textclass structure from number
-TextClass const &
-BaseClassList::operator[](BaseClassIndex textclass) const
-{
-	if (textclass >= classlist_.size())
-		return classlist_[0];
-	
-	//FIXME I don't believe the following line is actually necessary (rgh)
-	classlist_[textclass].load();
-	return classlist_[textclass];
-}
-
-
-// used when sorting the textclass list.
-class less_textclass_avail_desc
-	: public binary_function<TextClass, TextClass, int>
-{
-public:
-	int operator()(TextClass const & tc1,
-		       TextClass const & tc2) const
-	{
-		// Ordering criteria:
-		//   1. Availability of text class
-		//   2. Description (lexicographic)
-
-		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
-			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
-			 tc1.description() < tc2.description());
+	ClassMap::const_iterator it = classmap_.begin();
+	ClassMap::const_iterator en = classmap_.end();
+	for (; it != en; ++it) {
+		if (it->first == classname)
+			return true;
 	}
-};
+	return false;
+}
+
+
+// Gets a textclass structure from string
+TextClass const & 
+	BaseClassList::operator[](string const & classname) const
+{
+	BOOST_ASSERT(haveClass(classname));
+	return classmap_[classname];
+}
 
 
 // Reads LyX textclass definitions according to textclass config file
@@ -152,7 +125,7 @@ bool BaseClassList::read()
 							// buffer path is needed.
 							tmpl.load();
 						}
-						classlist_.push_back(tmpl);
+						classmap_[fname] = tmpl;
 					}
 				}
 			}
@@ -160,35 +133,64 @@ bool BaseClassList::read()
 	}
 	LYXERR(Debug::TCLASS, "End of parsing of textclass.lst");
 
-	// lyx will start with an empty classlist_, but only reconfigure is allowed
+	// lyx will start with an empty classmap_, but only reconfigure is allowed
 	// in this case. This gives users a second chance to configure lyx if
 	// initial configuration fails. (c.f. bug 2829)
-	if (classlist_.empty())
+	if (classmap_.empty())
 		lyxerr << "BaseClassList::Read: no textclasses found!"
 		       << endl;
-	else 
-		// Ok everything loaded ok, now sort the list.
-		sort(classlist_.begin(), classlist_.end(), less_textclass_avail_desc());
 	return true;
 }
 
 
-void BaseClassList::reset(BaseClassIndex const textclass) {
-	if (textclass >= classlist_.size())
-		return;
-	TextClass const & tc = classlist_[textclass];
-	TextClass tmpl(tc.name(), tc.latexname(), tc.description(), 
-	               tc.isTeXClassAvailable());
-	classlist_[textclass] = tmpl;
+std::vector<BaseClassIndex> BaseClassList::classList() const
+{
+	std::vector<BaseClassIndex> cl;
+	ClassMap::const_iterator it = classmap_.begin();
+	ClassMap::const_iterator en = classmap_.end();
+	for (; it != en; ++it)
+		cl.push_back(it->first);
+	return cl;
 }
 
 
-pair<bool, BaseClassIndex> const
-BaseClassList::addTextClass(string const & textclass, string const & path)
+void BaseClassList::reset(BaseClassIndex const & classname) {
+	BOOST_ASSERT(haveClass(classname));
+	TextClass const & tc = classmap_[classname];
+	TextClass tmpl(tc.name(), tc.latexname(), tc.description(), 
+	               tc.isTeXClassAvailable());
+	classmap_[classname] = tmpl;
+}
+
+
+string const BaseClassList::localPrefix = "LOCAL:";
+
+
+BaseClassIndex 
+	BaseClassList::addTextClass(string const & textclass, string const & path)
 {
+	// FIXME BUGS
+	// There be bugs here. The way this presently works, the local class gets 
+	// added to the global list of available document classes. It will then
+	// appear on the list in Document>Settings, where it could be chosen in, 
+	// say, a new document, with no real warning that the class may not be
+	// available when the document is saved, since the new document may not be
+	// in the same directory as the layout file.
+	//
+	// Another bug is this: If the Document>Settings dialog is open when a file
+	// with a local layout is opened, the dialog doesn't update.
+	//
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
-	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
-	FileName const layout_file(addName(path, textclass + ".layout"));
+	// NOTE: latex class name is defined in textclass.layout, which can be 
+	// different from textclass
+	string fullName = addName(path, textclass + ".layout");
+	string localIndex = localPrefix + textclass;
+
+	// if the local file has already been loaded, return it
+	if (haveClass(localIndex))
+		return localIndex;
+
+	FileName const layout_file(fullName);
 	if (layout_file.exists()) {
 		LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
 		// Read .layout file and get description, real latex classname etc
@@ -209,36 +211,34 @@ BaseClassList::addTextClass(string const & textclass, string const & path)
 				// now, create a TextClass with description containing path information
 				TextClass tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
-				if (lyxerr.debugging(Debug::TCLASS))
-					tmpl.load(path);
-				// Do not add this local TextClass to classlist_ if it has
+				// Do not add this local TextClass to classmap_ if it has
 				// already been loaded by, for example, a master buffer.
-				pair<bool, lyx::BaseClassIndex> pp = numberOfClass(textclass);
-				// only layouts from the same directory are considered to be identical.
-				if (pp.first && classlist_[pp.second].description() == tmpl.description())
-					return pp;
-				classlist_.push_back(tmpl);
+				if (haveClass(textclass)
+						// FIXME I don't understand this comment (rgh)
+						// only layouts from the same directory are considered to be identical.
+						&& classmap_[textclass].description() == tmpl.description()
+				   )
+					return textclass;
+				classmap_[localIndex] = tmpl;
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they
 				// are called in a context without buffer path information.
-				classlist_.back().load(path);
-				return make_pair(true, classlist_.size() - 1);
+				classmap_[localIndex].load(path);
+				return localIndex;
 			}
 		}
 	}
-	// If .layout is not in local directory, or an invalid layout is found, return false
-	return make_pair(false, BaseClassIndex(0));
+	// If .layout is not in local directory, or an invalid layout is found, return null
+	return string("");
 }
-
 
 
 BaseClassIndex defaultBaseclass()
 {
-	// We want to return the article class. if `first' is
-	// true in the returned pair, then `second' is the textclass
-	// number; if it is false, second is 0. In both cases, second
-	// is what we want.
-	return BaseClassList::get().numberOfClass("article").second;
+	if (BaseClassList::get().haveClass("article"))
+		return string("article");
+	else 
+		return string("");
 }
 
 

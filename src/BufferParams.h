@@ -107,11 +107,14 @@ public:
 	///
 	std::string fontsize;
 	///Get the LyX TextClass (that is, the layout file) this document is using.
-	BaseClassIndex baseClass() const;
+	TextClass const * baseClass() const;
+	///
+	BaseClassIndex const & baseClassID() const;
 	/// Set the LyX TextClass (that is, the layout file) this document is using.
 	/// NOTE: This does not call makeDocumentClass() to update the local 
 	/// DocumentClass. That needs to be done manually.
-	bool setBaseClass(BaseClassIndex);
+	/// \param filename the name of the layout file
+	bool setBaseClass(std::string const & classname);
 	/// Adds the module information to the baseClass information to
 	/// create our local DocumentClass.
 	void makeDocumentClass();

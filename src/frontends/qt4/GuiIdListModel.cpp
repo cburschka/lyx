@@ -93,7 +93,7 @@ void GuiIdListModel::insertRow(int const i, QString const & uiString,
 }
 
 
-QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index ) const
+QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index) const
 {
 	int const row = index.row();
 	if (!rowIsValid(row))
@@ -102,6 +102,18 @@ QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index ) const
 	qm[Qt::UserRole] = userData_[row].idString;
 	return qm;
 }
+
+
+int GuiIdListModel::findIDString(std::string const & idString) 
+{
+	vector<OurData>::const_iterator it  = userData_.begin();
+	vector<OurData>::const_iterator end = userData_.end();
+	for (; it != end; ++it)
+		if (fromqstr(it->idString.toString()) == idString)
+			return it - userData_.begin();
+	return -1;
+}
+
 
 #if 0
 // The following functions are currently unused but are retained here in
@@ -126,15 +138,6 @@ void GuiIdListModel::insertRow(int const i, QString const & uiString,
 	setIDString(i, idString);
 }
 
-bool GuiIdListModel::containsID(QVariant const & q) const
-{
-	vector<OurData>::const_iterator it  = userData_.begin();
-	vector<OurData>::const_iterator end = userData_.end();
-	for (; it != end; ++it)
-		if (it->idString == q)
-			return true;
-	return false;
-}
 #endif
 
 } // namespace frontend

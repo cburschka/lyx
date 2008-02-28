@@ -64,6 +64,7 @@ public:
 };
 
 
+/// SelectionManager for use with modules
 class ModuleSelMan : public GuiSelectionManager 
 {
 public:
@@ -96,9 +97,6 @@ private:
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
 	};
 };
-
-
-typedef void const * BufferId;
 
 
 class GuiDocument : public GuiDialog, public Ui::DocumentUi
@@ -166,9 +164,9 @@ private:
 	std::vector<std::string> lang_;
 
 	/// Available modules
-	GuiIdListModel * availableModel() { return &available_model_; }
+	GuiIdListModel * availableModel() { return &modules_av_model_; }
 	/// Selected modules
-	GuiIdListModel * selectedModel() { return &selected_model_; }
+	GuiIdListModel * selectedModel() { return &modules_sel_model_; }
 private:
 	/// Apply changes
 	void applyView();
@@ -184,10 +182,12 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
+	/// available classes
+	GuiIdListModel classes_model_;
 	/// available modules
-	GuiIdListModel available_model_;
+	GuiIdListModel modules_av_model_;
 	/// selected modules
-	GuiIdListModel selected_model_;
+	GuiIdListModel modules_sel_model_;
 	/// current buffer
 	BufferId current_id_;
 
@@ -210,7 +210,7 @@ protected:
 	/// always true since we don't manipulate document contents
 	bool canApply() const { return true; }
 	///
-	TextClass const & textClass() const;
+	DocumentClass const & documentClass() const;
 	///
 	BufferParams & params() { return bp_; }
 	///

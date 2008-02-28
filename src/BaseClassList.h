@@ -26,11 +26,12 @@ class Layout;
 /// Reads the style files
 extern bool LyXSetStyle();
 
+
 /// Index into BaseClassList. Basically a 'strong typedef'.
 class BaseClassIndex {
 public:
 	///
-	typedef size_t   base_type;
+	typedef std::string base_type;
 	///
 	BaseClassIndex(base_type t) { data_ = t; }
 	///
@@ -39,6 +40,7 @@ public:
 private:
 	base_type data_;
 };
+
 
 /// A list of base document classes (*.layout files).
 /// This is a singleton class. The sole instance is accessed
@@ -50,42 +52,33 @@ public:
 	/// \return The sole instance of this class.
 	static BaseClassList & get();
 	///
-	typedef std::vector<TextClass> ClassList;
+	bool empty() const { return classmap_.empty(); }
 	///
-	typedef ClassList::const_iterator const_iterator;
+	bool haveClass(std::string const & classname) const;
 	///
-	const_iterator begin() const { return classlist_.begin(); }
-	///
-	const_iterator end() const { return classlist_.end(); }
-	///
-	bool empty() const { return classlist_.empty(); }
-
-	/// Gets textclass number from name, -1 if textclass name does not exist
-	std::pair<bool, BaseClassIndex> const
-		numberOfClass(std::string const & textclass) const;
-
-	///
-	TextClass const & operator[](BaseClassIndex textclass) const;
-
+	TextClass const & operator[](std::string const & classname) const;
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
-	
 	/// Clears the textclass so as to force it to be reloaded
-	void reset(BaseClassIndex const textclass);
-
+	void reset(BaseClassIndex const & tc);
 	/// add a textclass from user local directory.
-	/// Return ture/false, and textclass number
-	std::pair<bool, BaseClassIndex> const
+	/// \return the identifier for the loaded file, or else an
+	/// empty string if no file was loaded.
+	BaseClassIndex
 		addTextClass(std::string const & textclass, std::string const & path);
-
+	/// a list of the available classes
+	std::vector<BaseClassIndex> classList() const;
+	/// 
+	static std::string const localPrefix;
 private:
+	///
+	typedef std::map<std::string, TextClass> ClassMap;
 	/// noncopyable
 	BaseClassList(BaseClassList const &);
 	/// nonassignable
 	void operator=(BaseClassList const &);
-
 	///
-	mutable ClassList classlist_;
+	mutable ClassMap classmap_; //FIXME
 };
 
 ///

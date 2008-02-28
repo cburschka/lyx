@@ -85,8 +85,13 @@ public:
 	///
 	void insertRow(int const i, QString const & uiString, 
 			std::string const & idString);
-	/* The following functions are currently unused but are retained here in
-	   case they should at some point be useful.
+	/// \return the index of the (first) item with idString
+	/// \return -1 if not found
+	int findIDString(std::string const & idString);
+
+#if 0
+	//The following functions are currently unused but are retained here in
+	//case they should at some point be useful.
 	///
 	void setUIString(int const i, std::string const & value)
 			{ setUIString(index(i), value); }
@@ -101,9 +106,7 @@ public:
 	///
 	void insertRow(int const i, std::string const & uiString, 
 			std::string const & idString);
-	/// Returns whether the model contains an item with the given ID
-	bool containsID(QVariant const &) const;
-	*/
+#endif
 private:
 	/// noncopyable
 	GuiIdListModel(GuiIdListModel const &);

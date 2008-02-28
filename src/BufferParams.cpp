@@ -288,7 +288,7 @@ public:
 
 
 BufferParams::Impl::Impl()
-	: defskip(VSpace::MEDSKIP), baseClass_(0)
+	: defskip(VSpace::MEDSKIP), baseClass_(string(""))
 {
 	// set initial author
 	// FIXME UNICODE
@@ -463,22 +463,18 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
-		pair<bool, lyx::BaseClassIndex> pp =
-			make_pair(false, BaseClassIndex(0));
+		string tcp;
+		BaseClassList & bcl = BaseClassList::get();
 		if (!filepath.empty())
-			pp = BaseClassList::get().addTextClass(
-				classname, filepath.absFilename());
-		if (pp.first)
-			setBaseClass(pp.second);
-		else {
-			pp = BaseClassList::get().numberOfClass(classname);
-			if (pp.first)
-				setBaseClass(pp.second);
-			else {
-				// a warning will be given for unknown class
-				setBaseClass(defaultBaseclass());
-				return classname;
-			}
+			tcp = bcl.addTextClass(classname, filepath.absFilename());
+		if (!tcp.empty())
+			setBaseClass(tcp);
+		else if (bcl.haveClass(classname)) {
+			setBaseClass(classname);
+		} else {
+			// a warning will be given for unknown class
+			setBaseClass(defaultBaseclass());
+			return classname;
 		}
 		// FIXME: this warning will be given even if there exists a local .cls
 		// file. Even worse, the .lyx file can not be compiled or exported
@@ -678,7 +674,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << BaseClassList::get()[pimpl_->baseClass_].name() << '\n';
+	os << "\\textclass " << baseClass()->name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -1344,7 +1340,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = BaseClassList::get()[pimpl_->baseClass_];
+	DocumentClass const & tclass = documentClass();
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1360,7 +1356,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = BaseClassList::get()[pimpl_->baseClass_];
+	DocumentClass const & tclass = documentClass();
 
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1388,22 +1384,45 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 }
 
 
-bool BufferParams::setBaseClass(BaseClassIndex tc)
+bool BufferParams::setBaseClass(string const & classname)
 {
-	if (BaseClassList::get()[tc].load()) {
-		pimpl_->baseClass_ = tc;
+	string localtc = classname;
+	BaseClassList const & bcl = BaseClassList::get();
+	if (!bcl.haveClass(localtc)) {
+		// OK, let's try again assuming it's a local file
+		localtc = BaseClassList::localPrefix + localtc;
+		if (!bcl.haveClass(localtc)) {
+			docstring s = 
+				bformat(_("The document class %1$s could not be found."),
+				from_utf8(classname));
+			frontend::Alert::error(_("Class not found"), s);
+			return false;
+		}
+	}
+
+	if (bcl[localtc].load()) {
+		pimpl_->baseClass_ = localtc;
 		return true;
 	}
 	
 	docstring s = 
 		bformat(_("The document class %1$s could not be loaded."),
-		from_utf8(BaseClassList::get()[tc].name()));
+		from_utf8(classname));
 	frontend::Alert::error(_("Could not load class"), s);
 	return false;
 }
 
 
-BaseClassIndex BufferParams::baseClass() const
+TextClass const * BufferParams::baseClass() const
+{
+	if (BaseClassList::get().haveClass(pimpl_->baseClass_))
+		return &(BaseClassList::get()[pimpl_->baseClass_]);
+	else 
+		return 0;
+}
+
+
+BaseClassIndex const & BufferParams::baseClassID() const
 {
 	return pimpl_->baseClass_;
 }
@@ -1411,7 +1430,10 @@ BaseClassIndex BufferParams::baseClass() const
 
 void BufferParams::makeDocumentClass()
 {
-	doc_class_ = &(DocumentClassBundle::get().newClass(BaseClassList::get()[baseClass()]));
+	if (!baseClass())
+		return;
+
+	doc_class_ = &(DocumentClassBundle::get().newClass(*baseClass()));
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 

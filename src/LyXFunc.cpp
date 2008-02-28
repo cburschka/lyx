@@ -715,26 +715,23 @@ void showPrintError(string const & name)
 }
 
 
-void loadTextClass(string const & name, string const & buf_path)
+bool loadTextClass(string const & name, string const & buf_path)
 {
-	pair<bool, BaseClassIndex> const tc_pair =
-		BaseClassList::get().numberOfClass(name);
-
-	if (!tc_pair.first) {
+	if (!BaseClassList::get().haveClass(name)) {
 		lyxerr << "Document class \"" << name
 		       << "\" does not exist."
 		       << endl;
-		return;
+		return false;
 	}
 
-	BaseClassIndex const tc = tc_pair.second;
-
-	if (!BaseClassList::get()[tc].load(buf_path)) {
+	TextClass const & tc = BaseClassList::get()[name];
+	if (!tc.load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
-				   "could not be loaded."),
-				   from_utf8(BaseClassList::get()[tc].name()));
+				   "could not be loaded."), from_utf8(name));
 		Alert::error(_("Could not load class"), s);
+		return false;
 	}
+	return true;
 }
 
 
@@ -1608,27 +1605,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			loadTextClass(argument, buffer->filePath());
-
-			pair<bool, BaseClassIndex> const tc_pair =
-				BaseClassList::get().numberOfClass(argument);
-
-			if (!tc_pair.first)
+			if (!loadTextClass(argument, buffer->filePath()))
 				break;
 
-			BaseClassIndex const old_class = buffer->params().baseClass();
-			BaseClassIndex const new_class = tc_pair.second;
+			TextClass const * old_class = buffer->params().baseClass();
+			TextClass const * new_class = &(BaseClassList::get()[argument]);
 
 			if (old_class == new_class)
 				// nothing to do
 				break;
 
 			//Save the old, possibly modular, layout for use in conversion.
-			DocumentClass * oldClass = buffer->params().documentClassPtr();
+			DocumentClass * oldDocClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
-			buffer->params().setBaseClass(new_class);
+			buffer->params().setBaseClass(argument);
 			buffer->params().makeDocumentClass();
-			updateLayout(oldClass, buffer);
+			updateLayout(oldDocClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
@@ -1637,9 +1629,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
-			BaseClassIndex const tc = buffer->params().baseClass();
-			BaseClassList::get().reset(tc);
-			buffer->params().setBaseClass(tc);
+			BaseClassIndex bc = buffer->params().baseClassID();
+			BaseClassList::get().reset(bc);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
