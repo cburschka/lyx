@@ -34,11 +34,14 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/docstream.h"
+#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 
 #include <map>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -122,19 +125,15 @@ void Inset::setBuffer(Buffer & buffer)
 }
 
 
-static Buffer & theDummyBuffer()
-{
-	static Buffer dummyBuffer("nobuffer.lyx", true);
-	return dummyBuffer;
-}
-
-
 Buffer & Inset::buffer()
 {
-	if (buffer_)
-		return *buffer_;
-	LYXERR0("DUMMYBUFFER FOR " << lyxCode());
-	return theDummyBuffer();
+	if (!buffer_) {
+		odocstringstream s;
+		s << "LyX Code: " << lyxCode();
+		throw ExceptionMessage(WarningException, 
+			from_ascii("Inset::buffer_ member not initialized!"), s.str());
+	}
+	return *buffer_;
 }
 
 
