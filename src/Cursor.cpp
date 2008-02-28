@@ -1023,10 +1023,9 @@ void Cursor::insert(Inset * inset)
 {
 	if (inMathed())
 		insert(MathAtom(inset));
-	else {
+	else
 		text()->insertInset(*this, inset);
-		inset->setBuffer(bv_->buffer());
-	}
+	inset->setBuffer(bv_->buffer());
 }
 
 
