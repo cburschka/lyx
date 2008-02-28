@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-26 19:12+0100\n"
+"POT-Creation-Date: 2008-02-28 22:13+0100\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -78,13 +78,13 @@ msgstr ""
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:425
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:864
-#: src/Buffer.cpp:2571 src/Buffer.cpp:2595 src/Buffer.cpp:2630
-#: src/EmbeddedFiles.cpp:164 src/EmbeddedFiles.cpp:226 src/LyXFunc.cpp:697
-#: src/LyXFunc.cpp:846 src/LyXFunc.cpp:1024 src/LyXVC.cpp:160
-#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1364
-#: src/frontends/qt4/GuiView.cpp:1546 src/frontends/qt4/GuiView.cpp:1591
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:865
+#: src/Buffer.cpp:2572 src/Buffer.cpp:2596 src/Buffer.cpp:2631
+#: src/EmbeddedFiles.cpp:164 src/EmbeddedFiles.cpp:226 src/LyXFunc.cpp:698
+#: src/LyXFunc.cpp:844 src/LyXFunc.cpp:1022 src/LyXVC.cpp:160
+#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1326
+#: src/frontends/qt4/GuiView.cpp:1508 src/frontends/qt4/GuiView.cpp:1553
+#: src/frontends/qt4/GuiView.cpp:1604
 msgid "&Cancel"
 msgstr ""
 
@@ -158,8 +158,8 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:112 src/LyXFunc.cpp:806
-#: src/buffer_funcs.cpp:106 src/frontends/qt4/ButtonController.cpp:123
+#: src/frontends/qt4/ui/ShortcutUi.ui:112 src/LyXFunc.cpp:804
+#: src/buffer_funcs.cpp:105 src/frontends/qt4/ButtonController.cpp:123
 msgid "Cancel"
 msgstr ""
 
@@ -354,8 +354,8 @@ msgstr ""
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1222
-#: src/frontends/qt4/GuiDocument.cpp:2039
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1257
+#: src/frontends/qt4/GuiDocument.cpp:2083
 msgid "&Apply"
 msgstr ""
 
@@ -394,7 +394,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:699 src/frontends/qt4/ui/TabularUi.ui:718
 #: src/frontends/qt4/ui/TabularUi.ui:766 src/frontends/qt4/GuiBox.cpp:66
 #: src/frontends/qt4/GuiBox.cpp:154 src/frontends/qt4/GuiBox.cpp:312
-#: src/frontends/qt4/GuiBox.cpp:437 src/frontends/qt4/GuiDocument.cpp:86
+#: src/frontends/qt4/GuiBox.cpp:437 src/frontends/qt4/GuiDocument.cpp:88
 msgid "None"
 msgstr ""
 
@@ -474,13 +474,13 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefLatexUi.ui:178
 #: src/frontends/qt4/ui/TabularUi.ui:704 src/frontends/qt4/ui/TabularUi.ui:723
 #: src/frontends/qt4/ui/TabularUi.ui:771 lib/ui/stdtoolbars.inc:85
-#: src/Font.cpp:179 src/frontends/qt4/GuiDocument.cpp:85
-#: src/frontends/qt4/GuiDocument.cpp:100 src/frontends/qt4/GuiDocument.cpp:116
-#: src/frontends/qt4/GuiDocument.cpp:129 src/frontends/qt4/GuiDocument.cpp:620
-#: src/frontends/qt4/GuiDocument.cpp:657 src/frontends/qt4/GuiDocument.cpp:669
-#: src/frontends/qt4/GuiDocument.cpp:1142
-#: src/frontends/qt4/GuiDocument.cpp:1187
-#: src/frontends/qt4/GuiDocument.cpp:2064 src/frontends/qt4/GuiExternal.cpp:81
+#: src/Font.cpp:179 src/frontends/qt4/GuiDocument.cpp:87
+#: src/frontends/qt4/GuiDocument.cpp:102 src/frontends/qt4/GuiDocument.cpp:118
+#: src/frontends/qt4/GuiDocument.cpp:131 src/frontends/qt4/GuiDocument.cpp:645
+#: src/frontends/qt4/GuiDocument.cpp:682 src/frontends/qt4/GuiDocument.cpp:694
+#: src/frontends/qt4/GuiDocument.cpp:1171
+#: src/frontends/qt4/GuiDocument.cpp:1216
+#: src/frontends/qt4/GuiDocument.cpp:2113 src/frontends/qt4/GuiExternal.cpp:81
 #: src/frontends/qt4/GuiGraphics.cpp:813 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Default"
@@ -599,7 +599,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:965
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:994
 #: src/frontends/qt4/GuiPrefs.cpp:1469
 msgid "Language"
 msgstr "언어"
@@ -862,9 +862,8 @@ msgid "Add"
 msgstr "행 붙이기"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:55
-#, fuzzy
 msgid "Extra embedded files:"
-msgstr "테이블 목록"
+msgstr ""
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:65
 #, fuzzy
@@ -872,9 +871,8 @@ msgid "Save this document in bundled format"
 msgstr "문서의 기본 설정(Document Defaults)으로 저장하시오 "
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:72
-#, fuzzy
 msgid "Embedded files:"
-msgstr "테이블 목록"
+msgstr ""
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
@@ -1309,8 +1307,9 @@ msgid "Specify the link target"
 msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:31
+#, fuzzy
 msgid "Link type"
-msgstr ""
+msgstr "삽입(Insert)|I"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:43
 msgid "Link to the web or to every other target"
@@ -1412,11 +1411,11 @@ msgstr "포함시킬 파일 이름"
 msgid "&Include Type:"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:273
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:274
 msgid "Include"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:264
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:265
 msgid "Input"
 msgstr ""
 
@@ -1424,7 +1423,7 @@ msgstr ""
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:908
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:903
 #, fuzzy
 msgid "Program Listing"
 msgstr "단락 구성(Paragraph settings)"
@@ -1478,8 +1477,8 @@ msgstr "언어(&Language):"
 msgid "&Quote Style:"
 msgstr "인용 형식(&Quote Style):"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:293
-#: src/insets/InsetListings.cpp:255 src/insets/InsetListings.cpp:257
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:292
+#: src/insets/InsetListings.cpp:254 src/insets/InsetListings.cpp:256
 #, fuzzy
 msgid "Listing"
 msgstr "나가기"
@@ -1710,9 +1709,8 @@ msgid "&Foot skip:"
 msgstr ""
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
-#, fuzzy
 msgid "&Column Sep:"
-msgstr "열 복사"
+msgstr ""
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:36
 #: src/frontends/qt4/ui/MathMatrixUi.ui:49
@@ -1823,7 +1821,7 @@ msgid "&Numbering"
 msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:963
+#: src/frontends/qt4/GuiDocument.cpp:992
 msgid "Page Layout"
 msgstr "페이지 모양새(Layout)"
 
@@ -1924,8 +1922,8 @@ msgstr "오른쪽(Right)|R"
 msgid "Line &spacing"
 msgstr "공간을 넣으시오"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1270
-#: src/frontends/qt4/GuiDocument.cpp:563
+#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1267
+#: src/frontends/qt4/GuiDocument.cpp:588
 msgid "Single"
 msgstr ""
 
@@ -1933,15 +1931,15 @@ msgstr ""
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1276
-#: src/frontends/qt4/GuiDocument.cpp:567
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1273
+#: src/frontends/qt4/GuiDocument.cpp:592
 msgid "Double"
 msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:186
 #: src/frontends/qt4/ui/TabularUi.ui:709 src/frontends/qt4/ui/TabularUi.ui:728
 #: src/frontends/qt4/ui/TabularUi.ui:776 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/GuiDocument.cpp:569 src/frontends/qt4/GuiDocument.cpp:670
+#: src/frontends/qt4/GuiDocument.cpp:594 src/frontends/qt4/GuiDocument.cpp:695
 msgid "Custom"
 msgstr ""
 
@@ -1978,7 +1976,7 @@ msgstr "책갈피 지우기(Clear Bookmarks)|C"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:93
 #, fuzzy
 msgid "Open bookmarks"
-msgstr "책갈피 지우기(Clear Bookmarks)|C"
+msgstr "책갈피 2 저장"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:129
 msgid "Number of levels"
@@ -2177,7 +2175,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 #, fuzzy
 msgid "Co&pier:"
-msgstr "보기 프로그램(&Viewer):"
+msgstr "바깥쪽(Outer)"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -2222,16 +2220,19 @@ msgid "Completion"
 msgstr "표제(Caption)"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:119
-msgid "Popup"
-msgstr ""
+#, fuzzy
+msgid "In Text"
+msgstr "보통 문(Plain Text)"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:128
-msgid "Show the popup in math mode after the delay."
+msgid ""
+"Show the grey inline completion behind the cursor in text mode after the "
+"delay."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:131
-#: src/frontends/qt4/ui/PrefInputUi.ui:217
-msgid "Automatically show in math mode"
+#: src/frontends/qt4/ui/PrefInputUi.ui:163
+msgid "Automatic inline completion"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:138
@@ -2239,77 +2240,76 @@ msgid "Show the popup after the set delay in text mode."
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:141
-#: src/frontends/qt4/ui/PrefInputUi.ui:227
-msgid "Automatically show in text mode"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:148
-msgid ""
-"When the TAB completion is not unique, there won't be a delay of the popup. "
-"It will be shown right away."
+#: src/frontends/qt4/ui/PrefInputUi.ui:173
+msgid "Automatic popup"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:151
-msgid "Show without delay for non-unique completions"
-msgstr ""
+#, fuzzy
+msgid "In Math"
+msgstr "수식(Math)"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:160
-#: src/frontends/qt4/ui/PrefInputUi.ui:246
-#, fuzzy
-msgid "Delay"
-msgstr "기본 설정(Default)"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:167
-msgid ""
-"After the cursor has not moved for this time, the completion popup is shown "
-"if it is available."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:180
-#: src/frontends/qt4/ui/PrefInputUi.ui:266
-msgid "s"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:205
-#, fuzzy
-msgid "Inline"
-msgstr "삽입(&Insert)"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:214
 msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:224
-msgid ""
-"Show the grey inline completion behind the cursor in text mode after the "
-"delay."
+#: src/frontends/qt4/ui/PrefInputUi.ui:170
+msgid "Show the popup in math mode after the delay."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:234
-msgid "Long completions are cut-off and shown with \"...\"."
+#: src/frontends/qt4/ui/PrefInputUi.ui:183 lib/layouts/hollywood.layout:280
+msgid "General"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:237
-msgid "Use \"...\" to shorten long completions"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:253
+#: src/frontends/qt4/ui/PrefInputUi.ui:191
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:294
+#: src/frontends/qt4/ui/PrefInputUi.ui:204
+msgid "s inline completion delay"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:228
+msgid ""
+"After the cursor has not moved for this time, the completion popup is shown "
+"if it is available."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:241
+msgid "s popup delay"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:263
+msgid ""
+"When the TAB completion is not unique, there won't be a delay of the popup. "
+"It will be shown right away."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:266
+msgid "Show popup without delay for non-unique completions"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:273
+msgid "Long completions are cut-off and shown with \"...\"."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:276
+msgid "Use \"...\" to shorten long completions"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:289
 msgid "Mouse"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:306
+#: src/frontends/qt4/ui/PrefInputUi.ui:301
 msgid "Wheel scrolling speed:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:316
+#: src/frontends/qt4/ui/PrefInputUi.ui:311
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
@@ -2434,37 +2434,37 @@ msgid "Index command and options (makeindex, xindy)"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:183
-#: src/frontends/qt4/GuiDocument.cpp:671
+#: src/frontends/qt4/GuiDocument.cpp:696
 msgid "US letter"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:188
-#: src/frontends/qt4/GuiDocument.cpp:672
+#: src/frontends/qt4/GuiDocument.cpp:697
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:193
-#: src/frontends/qt4/GuiDocument.cpp:673
+#: src/frontends/qt4/GuiDocument.cpp:698
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:198
-#: src/frontends/qt4/GuiDocument.cpp:674
+#: src/frontends/qt4/GuiDocument.cpp:699
 msgid "A3"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:203
-#: src/frontends/qt4/GuiDocument.cpp:675
+#: src/frontends/qt4/GuiDocument.cpp:700
 msgid "A4"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:208
-#: src/frontends/qt4/GuiDocument.cpp:676
+#: src/frontends/qt4/GuiDocument.cpp:701
 msgid "A5"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:213
-#: src/frontends/qt4/GuiDocument.cpp:679
+#: src/frontends/qt4/GuiDocument.cpp:704
 msgid "B5"
 msgstr ""
 
@@ -2888,8 +2888,8 @@ msgstr ""
 msgid "&User interface file:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:696
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:697
+#: src/frontends/qt4/GuiView.cpp:1604
 msgid "&Save"
 msgstr "저장(&Save)"
 
@@ -2940,7 +2940,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrintUi.ui:149
 #, fuzzy
 msgid "Copie&s"
-msgstr "보기 프로그램(&Viewer):"
+msgstr "바깥쪽(Outer)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:161
 msgid "Number of copies"
@@ -3334,7 +3334,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:905 src/frontends/qt4/ui/TabularUi.ui:918
 #: src/frontends/qt4/ui/TabularUi.ui:928 src/frontends/qt4/ui/TabularUi.ui:938
-#: src/frontends/qt4/GuiView.cpp:1774
+#: src/frontends/qt4/GuiView.cpp:1734
 msgid "on"
 msgstr ""
 
@@ -3561,15 +3561,15 @@ msgstr ""
 msgid "DefSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/GuiDocument.cpp:556
+#: src/frontends/qt4/ui/VSpaceUi.ui:90 src/frontends/qt4/GuiDocument.cpp:581
 msgid "SmallSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/GuiDocument.cpp:557
+#: src/frontends/qt4/ui/VSpaceUi.ui:95 src/frontends/qt4/GuiDocument.cpp:582
 msgid "MedSkip"
 msgstr ""
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/GuiDocument.cpp:558
+#: src/frontends/qt4/ui/VSpaceUi.ui:100 src/frontends/qt4/GuiDocument.cpp:583
 msgid "BigSkip"
 msgstr ""
 
@@ -3602,8 +3602,9 @@ msgid "Unit of width value"
 msgstr ""
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
+#, fuzzy
 msgid "Outer (default)"
-msgstr ""
+msgstr "LaTeX 실행 실패함"
 
 #: src/frontends/qt4/ui/WrapUi.ui:204
 #, fuzzy
@@ -3646,7 +3647,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:168
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:196
 msgid "Standard"
 msgstr ""
 
@@ -3787,7 +3788,7 @@ msgstr ""
 #: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:130
 #: lib/layouts/theorems-ams.inc:136 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:30
-#: src/frontends/qt4/GuiDocument.cpp:810
+#: src/frontends/qt4/GuiDocument.cpp:835
 msgid "Example"
 msgstr ""
 
@@ -3984,7 +3985,7 @@ msgstr ""
 #: lib/layouts/amsdefs.inc:93 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:26 lib/layouts/svjour.inc:249
-#: src/output_plaintext.cpp:138
+#: src/output_plaintext.cpp:133
 msgid "Abstract"
 msgstr ""
 
@@ -4025,7 +4026,7 @@ msgstr ""
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:196
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:38
-#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:967
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:996
 msgid "Bibliography"
 msgstr "참고 문헌 목록(Bibliography)"
 
@@ -4263,7 +4264,7 @@ msgstr ""
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
 #: lib/layouts/siamltex.layout:192 lib/layouts/amsdefs.inc:210
 #: lib/layouts/stdstruct.inc:52 lib/layouts/svjour.inc:337
-#: src/output_plaintext.cpp:150
+#: src/output_plaintext.cpp:145
 msgid "References"
 msgstr ""
 
@@ -4311,10 +4312,10 @@ msgstr ""
 msgid "[Acknowledgements]"
 msgstr ""
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1245
-#: src/frontends/qt4/GuiDocument.cpp:1255
-#: src/frontends/qt4/GuiDocument.cpp:1295
-#: src/frontends/qt4/GuiDocument.cpp:1314
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1280
+#: src/frontends/qt4/GuiDocument.cpp:1290
+#: src/frontends/qt4/GuiDocument.cpp:1330
+#: src/frontends/qt4/GuiDocument.cpp:1349
 msgid "and"
 msgstr ""
 
@@ -4471,7 +4472,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:357 lib/layouts/apa.layout:358
-#: src/buffer_funcs.cpp:391
+#: src/buffer_funcs.cpp:390
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -6108,10 +6109,6 @@ msgstr ""
 msgid "FADE OUT"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:280
-msgid "General"
-msgstr ""
-
 #: lib/layouts/hollywood.layout:293
 msgid "Scene"
 msgstr ""
@@ -6744,9 +6741,8 @@ msgid "Logo:"
 msgstr ""
 
 #: lib/layouts/scrlttr2.layout:333
-#, fuzzy
 msgid "EndLetter"
-msgstr "노우트(Note)"
+msgstr ""
 
 #: lib/layouts/scrlttr2.layout:346
 #, fuzzy
@@ -7273,8 +7269,9 @@ msgid "2000 Mathematics Subject Classification:"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:22
+#, fuzzy
 msgid "Directory"
-msgstr ""
+msgstr "파일을 발견할 수 없음"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
@@ -7439,7 +7436,7 @@ msgid "Dictum"
 msgstr ""
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:140
+#: src/insets/InsetCollapsable.cpp:138
 msgid "UNDEFINED"
 msgstr ""
 
@@ -7447,30 +7444,33 @@ msgstr ""
 msgid "\\Roman{part}"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:63
+#: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:62
 msgid "margin"
 msgstr ""
 
 #: lib/layouts/stdinsets.inc:76
+#, fuzzy
 msgid "foot"
-msgstr ""
+msgstr "폰트"
 
 #: lib/layouts/stdinsets.inc:97 src/Color.cpp:113
+#, fuzzy
 msgid "comment"
-msgstr ""
+msgstr "주석(Comment)"
 
 #: lib/layouts/stdinsets.inc:110 src/Color.cpp:111
-#: src/insets/InsetNote.cpp:296
+#: src/insets/InsetNote.cpp:294
+#, fuzzy
 msgid "note"
-msgstr ""
+msgstr "노우트(Note) #:"
 
 #: lib/layouts/stdinsets.inc:122
 #, fuzzy
 msgid "greyedout"
-msgstr "페이지 모양새(Layout)"
+msgstr "열려있는 노우트(Note) 삽입구"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:193
-#: src/insets/InsetERT.cpp:195
+#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:189
+#: src/insets/InsetERT.cpp:191
 msgid "ERT"
 msgstr ""
 
@@ -7480,8 +7480,9 @@ msgid "Listings"
 msgstr "나가기"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
+#, fuzzy
 msgid "Idx"
-msgstr ""
+msgstr "색인 기재 사항(Index Entry)"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -7507,8 +7508,9 @@ msgid "Chapter \\thechapter"
 msgstr "장 연습문제(Chapter Exercises)"
 
 #: lib/layouts/stdsections.inc:38
+#, fuzzy
 msgid "Appendix \\thechapter"
-msgstr ""
+msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
@@ -7628,13 +7630,13 @@ msgid "Defines an environment to typeset Braille."
 msgstr ""
 
 #: lib/layouts/braille.module:20
+#, fuzzy
 msgid "Braille (default)"
-msgstr ""
+msgstr "LaTeX 실행 실패함"
 
 #: lib/layouts/braille.module:34 lib/layouts/braille.module:56
-#, fuzzy
 msgid "Braille:"
-msgstr "이용 가능한(A&vailable) Branches: "
+msgstr ""
 
 #: lib/layouts/braille.module:42
 msgid "Braille (textsize)"
@@ -7675,7 +7677,7 @@ msgstr ""
 #: lib/layouts/endnotes.module:2
 #, fuzzy
 msgid "Endnote"
-msgstr "노우트(Note)"
+msgstr "노우트(Note) #:"
 
 #: lib/layouts/endnotes.module:6
 msgid ""
@@ -7686,7 +7688,7 @@ msgstr ""
 #: lib/layouts/endnotes.module:17
 #, fuzzy
 msgid "endnote"
-msgstr "노우트(Note)"
+msgstr "노우트(Note) #:"
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -7707,9 +7709,8 @@ msgid "Adds an environment for hanging paragraphs."
 msgstr ""
 
 #: lib/layouts/linguistics.module:2
-#, fuzzy
 msgid "Linguistics"
-msgstr "나가기"
+msgstr ""
 
 #: lib/layouts/linguistics.module:6
 msgid ""
@@ -7778,8 +7779,9 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/logicalmkup.module:12
+#, fuzzy
 msgid "noun"
-msgstr ""
+msgstr "노우트(Note) #:"
 
 #: lib/layouts/logicalmkup.module:24
 #, fuzzy
@@ -7796,9 +7798,8 @@ msgid "code"
 msgstr ""
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic"
-msgstr "나가기"
+msgstr ""
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets as being Minimalistic, for use by old-timers."
@@ -7934,7 +7935,7 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:237
 #, fuzzy
 msgid "Assumption \\thetheorem."
-msgstr "예제 #."
+msgstr "열기(Open)...|O"
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Assumption*"
@@ -8818,7 +8819,7 @@ msgstr "메뉴 분리 기호(Menu Separator)|M"
 msgid "Horizontal Line"
 msgstr ""
 
-#: lib/ui/classic.ui:261 src/insets/InsetNewpage.h:67
+#: lib/ui/classic.ui:261 src/insets/InsetNewpage.h:61
 msgid "Page Break"
 msgstr ""
 
@@ -9186,17 +9187,17 @@ msgid "Redo|R"
 msgstr "재실행(Redo)|d"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
-#: src/mathed/InsetMathNest.cpp:471
+#: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "자르기"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
-#: src/mathed/InsetMathNest.cpp:479
+#: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "복사하기"
 
 #: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
-#: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:451
+#: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "붙이기"
 
@@ -9309,8 +9310,9 @@ msgid "Paste As JPEG"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:148
+#, fuzzy
 msgid "Dissolve CharStyle"
-msgstr ""
+msgstr "변경된 모양새(Changed Layout)"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Customized...|C"
@@ -9414,8 +9416,9 @@ msgid "Delete Line to Right"
 msgstr "오른쪽 줄 지우기"
 
 #: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:170
+#, fuzzy
 msgid "Append Parameter"
-msgstr ""
+msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
 
 #: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:169
 msgid "Remove Last Parameter"
@@ -9520,8 +9523,9 @@ msgid "Unfold Math Macro"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:291
+#, fuzzy
 msgid "Fold Math Macro"
-msgstr ""
+msgstr "수식 선택 사항(Math Options)"
 
 #: lib/ui/stdmenus.inc:293
 msgid "View Source|S"
@@ -10205,7 +10209,7 @@ msgid "Fractions"
 msgstr "형틀 짜기(Formatting)"
 
 #: lib/ui/stdtoolbars.inc:216 lib/ui/stdtoolbars.inc:308
-#: src/frontends/qt4/GuiDocument.cpp:961
+#: src/frontends/qt4/GuiDocument.cpp:990
 msgid "Fonts"
 msgstr "폰트"
 
@@ -12488,7 +12492,7 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
-#: src/BiblioInfo.cpp:122 src/frontends/qt4/GuiDocument.cpp:1244
+#: src/BiblioInfo.cpp:122 src/frontends/qt4/GuiDocument.cpp:1279
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
@@ -12516,52 +12520,53 @@ msgid "Disk Error: "
 msgstr "에러"
 
 #: src/Buffer.cpp:221
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr ""
-
-#: src/Buffer.cpp:273
-msgid "Could not remove temporary directory"
-msgstr ""
+msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
 #: src/Buffer.cpp:274
+#, fuzzy
+msgid "Could not remove temporary directory"
+msgstr "본보기 파일(template)을 읽을 수가 없습니다."
+
+#: src/Buffer.cpp:275
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:505
 msgid "Unknown document class"
 msgstr "모르는 문서 클라스(document class)"
 
-#: src/Buffer.cpp:505
+#: src/Buffer.cpp:506
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:509 src/Text.cpp:284
+#: src/Buffer.cpp:510 src/Text.cpp:284
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "모르는 표시(token): %1$s %2$s\n"
 
-#: src/Buffer.cpp:513 src/Buffer.cpp:520 src/Buffer.cpp:542
+#: src/Buffer.cpp:514 src/Buffer.cpp:521 src/Buffer.cpp:543
 msgid "Document header error"
 msgstr "문서 첫머리(header) 에러"
 
-#: src/Buffer.cpp:519
+#: src/Buffer.cpp:520
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:541
+#: src/Buffer.cpp:542
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:557 src/Buffer.cpp:563 src/BufferView.cpp:1079
+#: src/Buffer.cpp:558 src/Buffer.cpp:564 src/BufferView.cpp:1079
 #: src/BufferView.cpp:1085
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:558 src/BufferView.cpp:1080
+#: src/Buffer.cpp:559 src/BufferView.cpp:1080
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12569,7 +12574,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:564 src/BufferView.cpp:1086
+#: src/Buffer.cpp:565 src/BufferView.cpp:1086
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12577,220 +12582,227 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:715 src/Buffer.cpp:724
-msgid "Document could not be read"
-msgstr ""
-
 #: src/Buffer.cpp:716 src/Buffer.cpp:725
-#, c-format
+#, fuzzy
+msgid "Document could not be read"
+msgstr "문서 형식(Document Class)"
+
+#: src/Buffer.cpp:717 src/Buffer.cpp:726
+#, fuzzy, c-format
 msgid "%1$s could not be read."
-msgstr ""
+msgstr "파일을 읽을 수가 없습니다."
 
-#: src/Buffer.cpp:733 src/Buffer.cpp:816
+#: src/Buffer.cpp:734 src/Buffer.cpp:817
+#, fuzzy
 msgid "Document format failure"
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:734
-#, c-format
+#: src/Buffer.cpp:735
+#, fuzzy, c-format
 msgid "%1$s is not a LyX document."
-msgstr ""
-
-#: src/Buffer.cpp:771
-msgid "Conversion failed"
-msgstr ""
+msgstr "문서를 읽을 수가 없습니다."
 
 #: src/Buffer.cpp:772
+#, fuzzy
+msgid "Conversion failed"
+msgstr "bind 파일을 고르시오"
+
+#: src/Buffer.cpp:773
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:781
+#: src/Buffer.cpp:782
 msgid "Conversion script not found"
 msgstr ""
 
-#: src/Buffer.cpp:782
+#: src/Buffer.cpp:783
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:801
+#: src/Buffer.cpp:802
 msgid "Conversion script failed"
 msgstr ""
 
-#: src/Buffer.cpp:802
+#: src/Buffer.cpp:803
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:817
+#: src/Buffer.cpp:818
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:850
+#: src/Buffer.cpp:851
 msgid "Backup failure"
 msgstr ""
 
-#: src/Buffer.cpp:851
+#: src/Buffer.cpp:852
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:861
+#: src/Buffer.cpp:862
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:863
+#: src/Buffer.cpp:864
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "문서를 덮어 쓸가요?"
 
-#: src/Buffer.cpp:864 src/EmbeddedFiles.cpp:164 src/EmbeddedFiles.cpp:226
-#: src/Exporter.cpp:49 src/LyXFunc.cpp:1024
-#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1364
-#: src/frontends/qt4/GuiView.cpp:1546
+#: src/Buffer.cpp:865 src/EmbeddedFiles.cpp:164 src/EmbeddedFiles.cpp:226
+#: src/Exporter.cpp:49 src/LyXFunc.cpp:1022
+#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1326
+#: src/frontends/qt4/GuiView.cpp:1508
 #, fuzzy
 msgid "&Overwrite"
 msgstr "문서를 덮어 쓸가요?"
 
-#: src/Buffer.cpp:895
+#: src/Buffer.cpp:896
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "문서를 저장하고 있습니다 %1$s..."
 
-#: src/Buffer.cpp:908
+#: src/Buffer.cpp:909
 #, fuzzy
 msgid " could not write file!."
 msgstr "파일을 읽을 수가 없습니다."
 
-#: src/Buffer.cpp:915
-#, fuzzy
+#: src/Buffer.cpp:916
 msgid " writing embedded files!."
-msgstr "테이블 목록"
+msgstr ""
 
-#: src/Buffer.cpp:919
+#: src/Buffer.cpp:920
 #, fuzzy
 msgid " could not write embedded files!."
 msgstr "파일을 읽을 수가 없습니다."
 
-#: src/Buffer.cpp:924
+#: src/Buffer.cpp:925
 msgid " done."
 msgstr ""
 
-#: src/Buffer.cpp:1003
+#: src/Buffer.cpp:1004
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1003
+#: src/Buffer.cpp:1004
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1025
+#: src/Buffer.cpp:1026
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1028
+#: src/Buffer.cpp:1029
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1035
+#: src/Buffer.cpp:1036
+#, fuzzy
 msgid "iconv conversion failed"
-msgstr ""
+msgstr "bind 파일을 고르시오"
 
-#: src/Buffer.cpp:1040
+#: src/Buffer.cpp:1041
 #, fuzzy
 msgid "conversion failed"
-msgstr "시스템이 재설정 되었음"
+msgstr "bind 파일을 고르시오"
 
-#: src/Buffer.cpp:1309
+#: src/Buffer.cpp:1310
 msgid "Running chktex..."
 msgstr ""
 
-#: src/Buffer.cpp:1322
+#: src/Buffer.cpp:1323
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1323
+#: src/Buffer.cpp:1324
+#, fuzzy
 msgid "Could not run chktex successfully."
-msgstr ""
+msgstr "class를 변경시킬 수 없습니다."
 
-#: src/Buffer.cpp:2115
+#: src/Buffer.cpp:2116
 msgid "Preview source code"
 msgstr ""
 
-#: src/Buffer.cpp:2128
+#: src/Buffer.cpp:2129
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr ""
 
-#: src/Buffer.cpp:2132
+#: src/Buffer.cpp:2133
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:2231
+#: src/Buffer.cpp:2232
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:2275
+#: src/Buffer.cpp:2276
+#, fuzzy
 msgid "Autosave failed!"
-msgstr ""
+msgstr "LaTeX 실행 실패함"
 
-#: src/Buffer.cpp:2298
+#: src/Buffer.cpp:2299
+#, fuzzy
 msgid "Autosaving current document..."
-msgstr ""
+msgstr "문서를 저장하고 있습니다 %1$s..."
 
-#: src/Buffer.cpp:2392
+#: src/Buffer.cpp:2393
 msgid "Couldn't export file"
 msgstr "다른 형태의 문서로 저장할(Export) 수 없습니다."
 
-#: src/Buffer.cpp:2393
+#: src/Buffer.cpp:2394
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:2430
+#: src/Buffer.cpp:2431
 msgid "File name error"
 msgstr "파일 이름 에러"
 
-#: src/Buffer.cpp:2431
+#: src/Buffer.cpp:2432
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2472
+#: src/Buffer.cpp:2473
+#, fuzzy
 msgid "Document export cancelled."
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2478
+#: src/Buffer.cpp:2479
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr ""
 
-#: src/Buffer.cpp:2484
-#, c-format
+#: src/Buffer.cpp:2485
+#, fuzzy, c-format
 msgid "Document exported as %1$s"
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2554
+#: src/Buffer.cpp:2555
 #, c-format
 msgid ""
 "The specified document\n"
@@ -12798,11 +12810,11 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/Buffer.cpp:2556
+#: src/Buffer.cpp:2557
 msgid "Could not read document"
 msgstr "문서를 읽을 수가 없습니다."
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2567
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12810,19 +12822,19 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2570
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2570
+#: src/Buffer.cpp:2571
 msgid "&Recover"
 msgstr "회복시키기(&Recover)"
 
-#: src/Buffer.cpp:2570
+#: src/Buffer.cpp:2571
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2590
+#: src/Buffer.cpp:2591
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12830,35 +12842,35 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2593
+#: src/Buffer.cpp:2594
 msgid "Load backup?"
 msgstr ""
 
-#: src/Buffer.cpp:2594
+#: src/Buffer.cpp:2595
 msgid "&Load backup"
 msgstr ""
 
-#: src/Buffer.cpp:2594
+#: src/Buffer.cpp:2595
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2627
+#: src/Buffer.cpp:2628
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2630
 msgid "Retrieve from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2630
+#: src/Buffer.cpp:2631
 msgid "&Retrieve"
 msgstr ""
 
 #: src/BufferList.cpp:228
-#, c-format
+#, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
-msgstr ""
+msgstr "저장된 문서로 되돌릴까요?"
 
 #: src/BufferList.cpp:239 src/BufferList.cpp:252 src/BufferList.cpp:266
 msgid "  Save seems successful. Phew."
@@ -12872,7 +12884,7 @@ msgstr ""
 msgid "  Save failed! Bummer. Document is lost."
 msgstr ""
 
-#: src/BufferParams.cpp:488
+#: src/BufferParams.cpp:484
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -12883,25 +12895,36 @@ msgid ""
 "for more information.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:494
+#: src/BufferParams.cpp:490
+#, fuzzy
 msgid "Document class not available"
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/BufferParams.cpp:495
+#: src/BufferParams.cpp:491
 msgid "LyX will not be able to produce output."
 msgstr ""
 
+#: src/BufferParams.cpp:1396
+#, fuzzy, c-format
+msgid "The document class %1$s could not be found."
+msgstr "문서 형식(Document Class)"
+
 #: src/BufferParams.cpp:1398
+#, fuzzy
+msgid "Class not found"
+msgstr "파일을 발견할 수 없음"
+
+#: src/BufferParams.cpp:1409
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "문서 형식(Document Class)"
 
-#: src/BufferParams.cpp:1400 src/LyXFunc.cpp:735
+#: src/BufferParams.cpp:1411 src/LyXFunc.cpp:731
 #, fuzzy
 msgid "Could not load class"
 msgstr "class를 변경시킬 수 없습니다."
 
-#: src/BufferParams.cpp:1424
+#: src/BufferParams.cpp:1447
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -12910,16 +12933,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1428
+#: src/BufferParams.cpp:1451
 #, fuzzy
 msgid "Module not available"
-msgstr "파일을 읽을 수가 없습니다."
+msgstr "문서 형식(Document Class)"
 
-#: src/BufferParams.cpp:1429
+#: src/BufferParams.cpp:1452
+#, fuzzy
 msgid "Some layouts may not be available."
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/BufferParams.cpp:1437
+#: src/BufferParams.cpp:1460
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -12927,17 +12951,17 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1440
+#: src/BufferParams.cpp:1463
 #, fuzzy
 msgid "Package not available"
-msgstr "파일을 읽을 수가 없습니다."
+msgstr "문서 형식(Document Class)"
 
-#: src/BufferParams.cpp:1445
+#: src/BufferParams.cpp:1468
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1446
+#: src/BufferParams.cpp:1469
 #, fuzzy
 msgid "Read Error"
 msgstr "에러"
@@ -12947,28 +12971,34 @@ msgid "No more insets"
 msgstr ""
 
 #: src/BufferView.cpp:651
+#, fuzzy
 msgid "Save bookmark"
-msgstr ""
+msgstr "책갈피 2 저장"
 
 #: src/BufferView.cpp:984
+#, fuzzy
 msgid "No further undo information"
-msgstr ""
+msgstr "TeX 정보를 갱신할(update) 수 없습니다."
 
 #: src/BufferView.cpp:993
+#, fuzzy
 msgid "No further redo information"
-msgstr ""
+msgstr "TeX 정보를 갱신할(update) 수 없습니다."
 
 #: src/BufferView.cpp:1126 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#, fuzzy
 msgid "String not found!"
-msgstr ""
+msgstr "파일을 발견할 수 없음"
 
 #: src/BufferView.cpp:1148
+#, fuzzy
 msgid "Mark off"
-msgstr ""
+msgstr "표시(Mark)를 했습니다."
 
 #: src/BufferView.cpp:1155
+#, fuzzy
 msgid "Mark on"
-msgstr ""
+msgstr "표시(Mark)를 했습니다."
 
 #: src/BufferView.cpp:1162
 msgid "Mark removed"
@@ -12988,13 +13018,14 @@ msgid "Statistics for the document:"
 msgstr "문서로 전환(&Switch to document) "
 
 #: src/BufferView.cpp:1217
-#, c-format
+#, fuzzy, c-format
 msgid "%1$d words"
-msgstr ""
+msgstr "문서에서 한 글자(One word in document)"
 
 #: src/BufferView.cpp:1219
+#, fuzzy
 msgid "One word"
-msgstr ""
+msgstr "문서에서 한 글자(One word in document)"
 
 #: src/BufferView.cpp:1222
 #, c-format
@@ -13024,14 +13055,14 @@ msgid "Inserting document %1$s..."
 msgstr "문서를 삽입합니다 %1$s..."
 
 #: src/BufferView.cpp:1891
-#, c-format
+#, fuzzy, c-format
 msgid "Document %1$s inserted."
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
 #: src/BufferView.cpp:1893
-#, c-format
+#, fuzzy, c-format
 msgid "Could not insert document %1$s"
-msgstr ""
+msgstr "문서를 읽을 수가 없습니다."
 
 #: src/BufferView.cpp:2119
 #, c-format
@@ -13046,11 +13077,11 @@ msgid "Could not read file"
 msgstr "파일을 읽을 수가 없습니다."
 
 #: src/BufferView.cpp:2128
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
-msgstr ""
+msgstr "파일을 읽을 수가 없습니다."
 
 #: src/BufferView.cpp:2129 src/output.cpp:39
 msgid "Could not open file"
@@ -13079,28 +13110,33 @@ msgid "ChkTeX warning id # "
 msgstr ""
 
 #: src/Color.cpp:92
+#, fuzzy
 msgid "none"
-msgstr ""
+msgstr "노우트(Note) #:"
 
 #: src/Color.cpp:93
+#, fuzzy
 msgid "black"
-msgstr ""
+msgstr "레이블(Label)"
 
 #: src/Color.cpp:94
 msgid "white"
 msgstr ""
 
 #: src/Color.cpp:95
+#, fuzzy
 msgid "red"
-msgstr ""
+msgstr "빨강색"
 
 #: src/Color.cpp:96
+#, fuzzy
 msgid "green"
-msgstr ""
+msgstr "저장(&Save)"
 
 #: src/Color.cpp:97
+#, fuzzy
 msgid "blue"
-msgstr ""
+msgstr "테이블들"
 
 #: src/Color.cpp:98
 msgid "cyan"
@@ -13123,12 +13159,14 @@ msgid "background"
 msgstr ""
 
 #: src/Color.cpp:103
+#, fuzzy
 msgid "text"
-msgstr ""
+msgstr "본문(Text):"
 
 #: src/Color.cpp:104
+#, fuzzy
 msgid "selection"
-msgstr ""
+msgstr "노우트(Note) 구성"
 
 #: src/Color.cpp:105
 msgid "LaTeX text"
@@ -13155,8 +13193,9 @@ msgid "comment background"
 msgstr ""
 
 #: src/Color.cpp:115
+#, fuzzy
 msgid "greyedout inset"
-msgstr ""
+msgstr "열려있는 노우트(Note) 삽입구"
 
 #: src/Color.cpp:116
 msgid "greyedout inset background"
@@ -13193,15 +13232,16 @@ msgstr "레이블(Label)"
 #: src/Color.cpp:123
 #, fuzzy
 msgid "URL text"
-msgstr "LaTeX 텍스트"
+msgstr "본문(Text):"
 
 #: src/Color.cpp:124
 msgid "depth bar"
 msgstr ""
 
 #: src/Color.cpp:125
+#, fuzzy
 msgid "language"
-msgstr ""
+msgstr "언어"
 
 #: src/Color.cpp:126
 msgid "command inset"
@@ -13212,16 +13252,18 @@ msgid "command inset background"
 msgstr ""
 
 #: src/Color.cpp:128
+#, fuzzy
 msgid "command inset frame"
-msgstr ""
+msgstr "모르는 인용구(Inset)"
 
 #: src/Color.cpp:129
 msgid "special character"
 msgstr "특수 문자"
 
 #: src/Color.cpp:130
+#, fuzzy
 msgid "math"
-msgstr ""
+msgstr "수식(Math)"
 
 #: src/Color.cpp:131
 msgid "math background"
@@ -13240,12 +13282,14 @@ msgid "math frame"
 msgstr ""
 
 #: src/Color.cpp:135
+#, fuzzy
 msgid "math corners"
-msgstr ""
+msgstr "수식용 판"
 
 #: src/Color.cpp:136
+#, fuzzy
 msgid "math line"
-msgstr ""
+msgstr "바깥쪽(Outer)"
 
 #: src/Color.cpp:138
 msgid "Math macro hovered background"
@@ -13256,16 +13300,18 @@ msgid "Math macro label"
 msgstr ""
 
 #: src/Color.cpp:140
+#, fuzzy
 msgid "Math macro frame"
-msgstr ""
+msgstr "표제(Caption)"
 
 #: src/Color.cpp:141
 msgid "Math macro blended out"
 msgstr ""
 
 #: src/Color.cpp:142
+#, fuzzy
 msgid "caption frame"
-msgstr ""
+msgstr "표제(Caption)"
 
 #: src/Color.cpp:143
 msgid "collapsable inset text"
@@ -13280,8 +13326,9 @@ msgid "inset background"
 msgstr ""
 
 #: src/Color.cpp:146
+#, fuzzy
 msgid "inset frame"
-msgstr ""
+msgstr "테이블 삽입"
 
 #: src/Color.cpp:147
 msgid "LaTeX error"
@@ -13292,40 +13339,47 @@ msgid "end-of-line marker"
 msgstr ""
 
 #: src/Color.cpp:149
+#, fuzzy
 msgid "appendix marker"
-msgstr ""
+msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
 
 #: src/Color.cpp:150
+#, fuzzy
 msgid "change bar"
-msgstr ""
+msgstr "언어"
 
 #: src/Color.cpp:151
 msgid "Deleted text"
 msgstr "지운 텍스트(Deleted text)"
 
 #: src/Color.cpp:152
+#, fuzzy
 msgid "Added text"
-msgstr ""
+msgstr "지운 텍스트(Deleted text)"
 
 #: src/Color.cpp:153
 msgid "added space markers"
 msgstr ""
 
 #: src/Color.cpp:154
+#, fuzzy
 msgid "top/bottom line"
-msgstr ""
+msgstr "아랫 줄 지우기/긋기"
 
 #: src/Color.cpp:155
+#, fuzzy
 msgid "table line"
-msgstr ""
+msgstr "왼쪽 줄 지우기/긋기"
 
 #: src/Color.cpp:156
+#, fuzzy
 msgid "table on/off line"
-msgstr ""
+msgstr "왼쪽 줄 지우기/긋기"
 
 #: src/Color.cpp:158
+#, fuzzy
 msgid "bottom area"
-msgstr ""
+msgstr "바닥(Bottom) 왼쪽"
 
 #: src/Color.cpp:159
 msgid "new page"
@@ -13352,13 +13406,15 @@ msgid "inherit"
 msgstr ""
 
 #: src/Color.cpp:165
+#, fuzzy
 msgid "ignore"
-msgstr ""
+msgstr "그림"
 
 #: src/Converter.cpp:306 src/Converter.cpp:449 src/Converter.cpp:472
 #: src/Converter.cpp:515
+#, fuzzy
 msgid "Cannot convert file"
-msgstr ""
+msgstr "파일을 편집할 수 없습니다."
 
 #: src/Converter.cpp:307
 #, c-format
@@ -13368,8 +13424,9 @@ msgid ""
 msgstr ""
 
 #: src/Converter.cpp:404 src/Format.cpp:305 src/Format.cpp:377
+#, fuzzy
 msgid "Executing command: "
-msgstr ""
+msgstr "수식 삽입"
 
 #: src/Converter.cpp:444
 msgid "Build errors"
@@ -13422,7 +13479,7 @@ msgstr ""
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:420
+#: src/CutAndPaste.cpp:422
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -13431,18 +13488,18 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:425
+#: src/CutAndPaste.cpp:427
 msgid "Changed Layout"
 msgstr "변경된 모양새(Changed Layout)"
 
-#: src/CutAndPaste.cpp:445
+#: src/CutAndPaste.cpp:447
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:452
+#: src/CutAndPaste.cpp:454
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "열려있는 상자 삽입구(Box Inset)"
@@ -13450,7 +13507,7 @@ msgstr "열려있는 상자 삽입구(Box Inset)"
 #: src/EmbeddedFiles.cpp:149
 #, fuzzy
 msgid "Failed to extract file"
-msgstr "다른 형태의 문서로 저장할(Export) 수 없습니다."
+msgstr "모두 선택"
 
 #: src/EmbeddedFiles.cpp:150
 #, c-format
@@ -13473,7 +13530,7 @@ msgstr ""
 #: src/EmbeddedFiles.cpp:240
 #, fuzzy
 msgid "Copy file failure"
-msgstr "LaTeX 실행 실패함"
+msgstr "파일을 편집할 수 없습니다."
 
 #: src/EmbeddedFiles.cpp:176 src/EmbeddedFiles.cpp:340
 #, c-format
@@ -13493,7 +13550,7 @@ msgstr ""
 #: src/EmbeddedFiles.cpp:211
 #, fuzzy
 msgid "Failed to embed file"
-msgstr "테이블 목록"
+msgstr "파일을 읽을 수가 없습니다."
 
 #: src/EmbeddedFiles.cpp:212
 #, c-format
@@ -13503,9 +13560,8 @@ msgid ""
 msgstr ""
 
 #: src/EmbeddedFiles.cpp:224
-#, fuzzy
 msgid "Update embedded file?"
-msgstr "테이블 목록"
+msgstr ""
 
 #: src/EmbeddedFiles.cpp:225
 #, c-format
@@ -13513,9 +13569,8 @@ msgid "Embedded file %1$s already exists, do you want to overwrite it"
 msgstr ""
 
 #: src/EmbeddedFiles.cpp:339 src/EmbeddedFiles.cpp:352
-#, fuzzy
 msgid "Sync file failure"
-msgstr "LaTeX 실행 실패함"
+msgstr ""
 
 #: src/EmbeddedFiles.cpp:403
 #, c-format
@@ -13525,8 +13580,9 @@ msgid ""
 msgstr ""
 
 #: src/EmbeddedFiles.cpp:405
+#, fuzzy
 msgid "Packing all files"
-msgstr ""
+msgstr "To 파일(&file):"
 
 #: src/EmbeddedFiles.cpp:407
 #, c-format
@@ -13553,7 +13609,7 @@ msgstr ""
 #: src/EmbeddedFiles.cpp:469
 #, fuzzy
 msgid "Failed to write file"
-msgstr "파일을 읽을 수가 없습니다."
+msgstr "문서를 덮어 쓸가요?"
 
 #: src/EmbeddedFiles.cpp:470
 #, c-format
@@ -13573,7 +13629,7 @@ msgid ""
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1020
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1018
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -13581,14 +13637,15 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1023
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1021
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "문서를 덮어 쓸가요?"
 
 #: src/Exporter.cpp:49
+#, fuzzy
 msgid "Overwrite &all"
-msgstr ""
+msgstr "문서를 덮어 쓸가요?"
 
 #: src/Exporter.cpp:50
 msgid "&Cancel export"
@@ -13604,22 +13661,25 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:250
-#: src/frontends/qt4/GuiDocument.cpp:2064
+#: src/frontends/qt4/GuiDocument.cpp:2113
 #: src/frontends/qt4/GuiListings.cpp:158
+#, fuzzy
 msgid "Roman"
-msgstr ""
+msgstr "언어"
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:254
-#: src/frontends/qt4/GuiDocument.cpp:2064
+#: src/frontends/qt4/GuiDocument.cpp:2113
 #: src/frontends/qt4/GuiListings.cpp:158
+#, fuzzy
 msgid "Sans Serif"
-msgstr ""
+msgstr "본문용 Sans Serif 폰트 계열(Text Sans Serif Family)"
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:258
-#: src/frontends/qt4/GuiDocument.cpp:2064
+#: src/frontends/qt4/GuiDocument.cpp:2113
 #: src/frontends/qt4/GuiListings.cpp:158
+#, fuzzy
 msgid "Typewriter"
-msgstr ""
+msgstr "본문용 Typewriter 폰트 계열(Text Typewriter Family)"
 
 #: src/Font.cpp:48
 msgid "Symbol"
@@ -13627,8 +13687,9 @@ msgstr ""
 
 #: src/Font.cpp:50 src/Font.cpp:53 src/Font.cpp:56 src/Font.cpp:62
 #: src/Font.cpp:65
+#, fuzzy
 msgid "Inherit"
-msgstr ""
+msgstr "삽입(&Insert)"
 
 #: src/Font.cpp:50 src/Font.cpp:53 src/Font.cpp:57 src/Font.cpp:62
 #: src/Font.cpp:65
@@ -13644,8 +13705,9 @@ msgid "Bold"
 msgstr ""
 
 #: src/Font.cpp:56 src/frontends/qt4/GuiCharacter.cpp:40
+#, fuzzy
 msgid "Upright"
-msgstr ""
+msgstr "오른쪽(Right)|R"
 
 #: src/Font.cpp:56 src/frontends/qt4/GuiCharacter.cpp:44
 msgid "Italic"
@@ -13697,8 +13759,9 @@ msgid "  Number %1$s"
 msgstr ""
 
 #: src/Format.cpp:253 src/Format.cpp:266 src/Format.cpp:276 src/Format.cpp:311
+#, fuzzy
 msgid "Cannot view file"
-msgstr ""
+msgstr "파일을 편집할 수 없습니다."
 
 #: src/Format.cpp:254 src/Format.cpp:325
 #, c-format
@@ -13780,8 +13843,9 @@ msgid ""
 msgstr ""
 
 #: src/KeySequence.cpp:169
+#, fuzzy
 msgid "   options: "
-msgstr ""
+msgstr "선택 사항(&Options):"
 
 #: src/LaTeX.cpp:61
 #, c-format
@@ -13800,11 +13864,11 @@ msgstr ""
 msgid "Running MakeIndex for nomencl."
 msgstr ""
 
-#: src/LyX.cpp:101
+#: src/LyX.cpp:99
 msgid "Could not read configuration file"
 msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
-#: src/LyX.cpp:102
+#: src/LyX.cpp:100
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -13812,61 +13876,63 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/LyX.cpp:111
+#: src/LyX.cpp:109
 msgid "LyX: reconfiguring user directory"
 msgstr ""
 
-#: src/LyX.cpp:115
+#: src/LyX.cpp:113
 msgid "Done!"
 msgstr ""
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:478
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr ""
 
-#: src/LyX.cpp:486
+#: src/LyX.cpp:480
+#, fuzzy
 msgid "Unable to remove temporary directory"
-msgstr ""
+msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/LyX.cpp:514
+#: src/LyX.cpp:508
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:587
+#: src/LyX.cpp:581
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:588
+#: src/LyX.cpp:582
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:592
+#: src/LyX.cpp:586
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "재구성(Reconfigure)|R"
 
-#: src/LyX.cpp:593
+#: src/LyX.cpp:587
 #, fuzzy
 msgid "&Use Default"
 msgstr "기본 설정(Default)"
 
-#: src/LyX.cpp:594 src/LyX.cpp:981
+#: src/LyX.cpp:588 src/LyX.cpp:975
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/LyX.cpp:738 src/frontends/qt4/GuiView.cpp:547
+#: src/LyX.cpp:732 src/frontends/qt4/GuiView.cpp:509
 msgid "LyX: "
 msgstr ""
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:858
+#, fuzzy
 msgid "Could not create temporary directory"
-msgstr ""
+msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
-#: src/LyX.cpp:865
+#: src/LyX.cpp:859
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13874,44 +13940,44 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:974
+#: src/LyX.cpp:968
 msgid "Missing user LyX directory"
 msgstr ""
 
-#: src/LyX.cpp:975
+#: src/LyX.cpp:969
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:980
+#: src/LyX.cpp:974
 msgid "&Create directory"
 msgstr ""
 
-#: src/LyX.cpp:982
+#: src/LyX.cpp:976
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:986
+#: src/LyX.cpp:980
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr ""
 
-#: src/LyX.cpp:991
+#: src/LyX.cpp:985
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1159
+#: src/LyX.cpp:1153
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1163
+#: src/LyX.cpp:1157
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1174
+#: src/LyX.cpp:1168
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13935,49 +14001,52 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1214 src/support/Package.cpp:560
+#: src/LyX.cpp:1208 src/support/Package.cpp:560
 msgid "No system directory"
 msgstr ""
 
-#: src/LyX.cpp:1215
+#: src/LyX.cpp:1209
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1226
+#: src/LyX.cpp:1220
 msgid "No user directory"
 msgstr ""
 
-#: src/LyX.cpp:1227
+#: src/LyX.cpp:1221
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1238
+#: src/LyX.cpp:1232
+#, fuzzy
 msgid "Incomplete command"
-msgstr ""
+msgstr "수식 삽입"
 
-#: src/LyX.cpp:1239
+#: src/LyX.cpp:1233
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1250
+#: src/LyX.cpp:1244
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1263
+#: src/LyX.cpp:1257
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1268
+#: src/LyX.cpp:1262
 msgid "Missing filename for --import"
 msgstr ""
 
 #: src/LyXFunc.cpp:111
+#, fuzzy
 msgid "Running configure..."
-msgstr ""
+msgstr "재구성(Reconfigure)|R"
 
 #: src/LyXFunc.cpp:121
+#, fuzzy
 msgid "Reloading configuration..."
-msgstr ""
+msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
 #: src/LyXFunc.cpp:127
 #, fuzzy
@@ -14002,35 +14071,37 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/LyXFunc.cpp:357
+#: src/LyXFunc.cpp:358
 msgid "Unknown function."
 msgstr "모르는 함수"
 
-#: src/LyXFunc.cpp:397
+#: src/LyXFunc.cpp:398
 msgid "Nothing to do"
 msgstr ""
 
-#: src/LyXFunc.cpp:416
+#: src/LyXFunc.cpp:417
+#, fuzzy
 msgid "Unknown action"
-msgstr ""
+msgstr "모르는 함수"
 
-#: src/LyXFunc.cpp:422 src/LyXFunc.cpp:679
+#: src/LyXFunc.cpp:423 src/LyXFunc.cpp:680
 msgid "Command disabled"
 msgstr ""
 
-#: src/LyXFunc.cpp:429
+#: src/LyXFunc.cpp:430
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/LyXFunc.cpp:664
+#: src/LyXFunc.cpp:665
+#, fuzzy
 msgid "Document is read-only"
-msgstr ""
+msgstr "문서 첫머리(header) 에러"
 
-#: src/LyXFunc.cpp:673
+#: src/LyXFunc.cpp:674
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:692
+#: src/LyXFunc.cpp:693
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14038,90 +14109,93 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:695 src/frontends/qt4/GuiView.cpp:1632
+#: src/LyXFunc.cpp:696 src/frontends/qt4/GuiView.cpp:1603
 msgid "Save changed document?"
 msgstr "변경된 문서를 저장하시겠습니까?"
 
-#: src/LyXFunc.cpp:710
+#: src/LyXFunc.cpp:711
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:713
+#: src/LyXFunc.cpp:714
 msgid "Print document failed"
 msgstr "문서 인쇄 실패"
 
-#: src/LyXFunc.cpp:732
-#, c-format
+#: src/LyXFunc.cpp:729
+#, fuzzy, c-format
 msgid "The document class %1$s.could not be loaded."
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/LyXFunc.cpp:843
+#: src/LyXFunc.cpp:841
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:845
+#: src/LyXFunc.cpp:843
 msgid "Revert to saved document?"
 msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/LyXFunc.cpp:846 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:844 src/LyXVC.cpp:160
+#, fuzzy
 msgid "&Revert"
-msgstr ""
+msgstr "되돌리기(Revert)|R"
 
-#: src/LyXFunc.cpp:1061 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1059 src/Text3.cpp:1475
 msgid "Missing argument"
 msgstr ""
 
-#: src/LyXFunc.cpp:1070
-#, c-format
+#: src/LyXFunc.cpp:1068
+#, fuzzy, c-format
 msgid "Opening help file %1$s..."
-msgstr ""
+msgstr "하위 문서(child document)를 엽니다 %1$s..."
 
-#: src/LyXFunc.cpp:1313
+#: src/LyXFunc.cpp:1311
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "하위 문서(child document)를 엽니다 %1$s..."
 
-#: src/LyXFunc.cpp:1422
+#: src/LyXFunc.cpp:1420
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1433
+#: src/LyXFunc.cpp:1431
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1525
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1530
+#: src/LyXFunc.cpp:1528
+#, fuzzy
 msgid "Unable to save document defaults"
-msgstr ""
+msgstr "문서의 기본 설정(Document Defaults)으로 저장하시오 "
 
-#: src/LyXFunc.cpp:1820
+#: src/LyXFunc.cpp:1802
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "문서 형식(Document Class)"
 
-#: src/LyXFunc.cpp:1822
+#: src/LyXFunc.cpp:1804
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "문서를 읽을 수가 없습니다."
 
-#: src/LyXFunc.cpp:1859
+#: src/LyXFunc.cpp:1841
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXFunc.cpp:1880
+#: src/LyXFunc.cpp:1862
+#, fuzzy
 msgid "Converting document to new document class..."
-msgstr ""
+msgstr "문서를 삽입합니다 %1$s..."
 
 #: src/LyXRC.cpp:2585
 msgid ""
@@ -14569,8 +14643,9 @@ msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
 #: src/LyXVC.cpp:91
+#, fuzzy
 msgid "Document not saved"
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
 #: src/LyXVC.cpp:92
 msgid "You must save the document before it can be registered."
@@ -14602,8 +14677,9 @@ msgid ""
 msgstr ""
 
 #: src/LyXVC.cpp:159
+#, fuzzy
 msgid "Revert to stored version of document?"
-msgstr ""
+msgstr "저장된 문서로 되돌릴까요?"
 
 #: src/MenuBackend.cpp:492
 #, fuzzy
@@ -14611,7 +14687,7 @@ msgid "No Documents Open!"
 msgstr "열려있는 문서가 없음!"
 
 #: src/MenuBackend.cpp:518 src/MenuBackend.cpp:596 src/MenuBackend.cpp:617
-#: src/MenuBackend.cpp:639 src/MenuBackend.cpp:726 src/MenuBackend.cpp:851
+#: src/MenuBackend.cpp:639 src/MenuBackend.cpp:726 src/MenuBackend.cpp:849
 #, fuzzy
 msgid "No Document Open!"
 msgstr "열려있는 문서가 없음!"
@@ -14621,12 +14697,14 @@ msgid "Plain Text"
 msgstr "보통 문(Plain Text)"
 
 #: src/MenuBackend.cpp:561
+#, fuzzy
 msgid "Plain Text, Join Lines"
-msgstr ""
+msgstr "보통 문(Plain Text)"
 
 #: src/MenuBackend.cpp:741
+#, fuzzy
 msgid "Master Document"
-msgstr ""
+msgstr "문서 저장하기"
 
 #: src/MenuBackend.cpp:770 src/frontends/qt4/GuiToc.cpp:225
 #, fuzzy
@@ -14658,43 +14736,49 @@ msgstr "테이블 목록"
 msgid "List of Foot notes"
 msgstr "그림 목록"
 
-#: src/MenuBackend.cpp:784
+#: src/MenuBackend.cpp:782 src/frontends/qt4/GuiToc.cpp:237
+#, fuzzy
+msgid "Labels and References"
+msgstr "인용되지 않은 모든 참고 문헌들 "
+
+#: src/MenuBackend.cpp:786
 #, fuzzy
 msgid "Other floats"
 msgstr "날짜 형태(format)"
 
-#: src/MenuBackend.cpp:794
+#: src/MenuBackend.cpp:796
 msgid "No Table of contents"
 msgstr "목차 없음"
 
-#: src/MenuBackend.cpp:840
+#: src/MenuBackend.cpp:838
+#, fuzzy
 msgid " (auto)"
-msgstr ""
+msgstr "날짜"
 
-#: src/MenuBackend.cpp:859
+#: src/MenuBackend.cpp:857
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "문서 인쇄"
 
-#: src/Paragraph.cpp:1499 src/frontends/qt4/GuiParagraph.cpp:216
+#: src/Paragraph.cpp:1498 src/frontends/qt4/GuiParagraph.cpp:216
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1565
+#: src/Paragraph.cpp:1564
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1565
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2034 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2032 src/frontends/qt4/LaTeXHighlighter.cpp:108
 msgid "LyX Warning: "
 msgstr ""
 
-#: src/Paragraph.cpp:2035
+#: src/Paragraph.cpp:2033
 #, fuzzy
 msgid "uncodable character"
 msgstr "특수 문자"
@@ -14746,61 +14830,65 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1236
+#: src/Text.cpp:1233
 msgid "[Change Tracking] "
 msgstr ""
 
-#: src/Text.cpp:1242
+#: src/Text.cpp:1239
+#, fuzzy
 msgid "Change: "
-msgstr ""
+msgstr "변경된 모양새(Changed Layout)"
 
-#: src/Text.cpp:1246
+#: src/Text.cpp:1243
 msgid " at "
 msgstr ""
 
-#: src/Text.cpp:1256
-#, c-format
+#: src/Text.cpp:1253
+#, fuzzy, c-format
 msgid "Font: %1$s"
-msgstr ""
+msgstr "폰트"
 
-#: src/Text.cpp:1261
+#: src/Text.cpp:1258
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1267
+#: src/Text.cpp:1264
+#, fuzzy
 msgid ", Spacing: "
-msgstr ""
+msgstr "수식 선택 사항(Math Options)"
 
-#: src/Text.cpp:1273 src/frontends/qt4/GuiDocument.cpp:565
+#: src/Text.cpp:1270 src/frontends/qt4/GuiDocument.cpp:590
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1279
+#: src/Text.cpp:1276
+#, fuzzy
 msgid "Other ("
-msgstr ""
+msgstr "바깥쪽(Outer)"
 
-#: src/Text.cpp:1288
+#: src/Text.cpp:1285
 msgid ", Inset: "
 msgstr ", 삽입구(Inset): "
 
-#: src/Text.cpp:1289
+#: src/Text.cpp:1286
 msgid ", Paragraph: "
 msgstr ", 단락(Paragraph): "
 
-#: src/Text.cpp:1290
+#: src/Text.cpp:1287
+#, fuzzy
 msgid ", Id: "
-msgstr ""
+msgstr ", 삽입구(Inset): "
 
-#: src/Text.cpp:1291
+#: src/Text.cpp:1288
 msgid ", Position: "
 msgstr ""
 
-#: src/Text.cpp:1297
+#: src/Text.cpp:1294
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1299
+#: src/Text.cpp:1296
 msgid ", Boundary: "
 msgstr ""
 
@@ -14816,13 +14904,14 @@ msgstr ""
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
-#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1346
+#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1352
 msgid "Math editor mode"
 msgstr "수식 편집 모드(Math editor mode)"
 
 #: src/Text3.cpp:828
+#, fuzzy
 msgid "Unknown spacing argument: "
-msgstr ""
+msgstr "모르는 인용구(Inset)"
 
 #: src/Text3.cpp:1042
 msgid "Layout "
@@ -14878,58 +14967,61 @@ msgid "Default skip"
 msgstr "기본 건너뜀(Default skip) "
 
 #: src/VSpace.cpp:472
+#, fuzzy
 msgid "Small skip"
-msgstr ""
+msgstr "기본 건너뜀(Default skip) "
 
 #: src/VSpace.cpp:475
+#, fuzzy
 msgid "Medium skip"
-msgstr ""
+msgstr "기본 건너뜀(Default skip) "
 
 #: src/VSpace.cpp:478
 msgid "Big skip"
 msgstr ""
 
 #: src/VSpace.cpp:481
+#, fuzzy
 msgid "Vertical fill"
-msgstr ""
+msgstr "세로(&Vertical) 맞추기:"
 
 #: src/VSpace.cpp:488
 msgid "protected"
 msgstr ""
 
-#: src/buffer_funcs.cpp:71
+#: src/buffer_funcs.cpp:70
 #, c-format
 msgid ""
 "The document %1$s is already loaded and has unsaved changes.\n"
 "Do you want to abandon your changes and reload the version on disk?"
 msgstr ""
 
-#: src/buffer_funcs.cpp:73
+#: src/buffer_funcs.cpp:72
 #, fuzzy
 msgid "Reload saved document?"
 msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/buffer_funcs.cpp:74
+#: src/buffer_funcs.cpp:73
 #, fuzzy
 msgid "&Reload"
 msgstr "교체하기(&Replace)"
 
-#: src/buffer_funcs.cpp:74
+#: src/buffer_funcs.cpp:73
 #, fuzzy
 msgid "&Keep Changes"
 msgstr "다음 변경(Next Change)|C"
 
-#: src/buffer_funcs.cpp:85
+#: src/buffer_funcs.cpp:84
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
 msgstr ""
 
-#: src/buffer_funcs.cpp:88
+#: src/buffer_funcs.cpp:87
 #, fuzzy
 msgid "File not readable!"
-msgstr "파일을 발견할 수 없음"
+msgstr "파일을 읽을 수가 없습니다."
 
-#: src/buffer_funcs.cpp:102
+#: src/buffer_funcs.cpp:101
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -14937,15 +15029,15 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/buffer_funcs.cpp:105
+#: src/buffer_funcs.cpp:104
 msgid "Create new document?"
 msgstr "새 문서를 만들까요?"
 
-#: src/buffer_funcs.cpp:106
+#: src/buffer_funcs.cpp:105
 msgid "&Create"
 msgstr "생성(&Create)"
 
-#: src/buffer_funcs.cpp:134
+#: src/buffer_funcs.cpp:133
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -14953,23 +15045,23 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/buffer_funcs.cpp:136
+#: src/buffer_funcs.cpp:135
 msgid "Could not read template"
 msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
-#: src/buffer_funcs.cpp:388
+#: src/buffer_funcs.cpp:387
 msgid "\\arabic{enumi}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:394
+#: src/buffer_funcs.cpp:393
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:397
+#: src/buffer_funcs.cpp:396
 msgid "\\Alph{enumiv}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:414 src/insets/InsetCaption.cpp:287
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:286
 msgid "Senseless!!! "
 msgstr ""
 
@@ -14978,8 +15070,9 @@ msgid "No debugging message"
 msgstr ""
 
 #: src/client/debug.cpp:40 src/support/debug.cpp:39
+#, fuzzy
 msgid "General information"
-msgstr ""
+msgstr "TeX 정보"
 
 #: src/client/debug.cpp:41 src/support/debug.cpp:67
 msgid "Developers' general debug messages"
@@ -14999,8 +15092,9 @@ msgid "Standard[[Bullets]]"
 msgstr ""
 
 #: src/frontends/qt4/BulletsModule.cpp:41
+#, fuzzy
 msgid "Maths"
-msgstr ""
+msgstr "수식(Math)"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Dings 1"
@@ -15084,8 +15178,9 @@ msgstr ""
 
 #: src/frontends/qt4/GuiApplication.cpp:116
 #: src/frontends/qt4/GuiPrefs.cpp:2206
+#, fuzzy
 msgid "Preferences"
-msgstr ""
+msgstr "선택(Preferences)..."
 
 #: src/frontends/qt4/GuiApplication.cpp:117
 #, fuzzy
@@ -15096,11 +15191,11 @@ msgstr "재구성(Reconfigure)|R"
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:263
+#: src/frontends/qt4/GuiApplication.cpp:265
 msgid "Exiting."
 msgstr "나가기"
 
-#: src/frontends/qt4/GuiApplication.cpp:477
+#: src/frontends/qt4/GuiApplication.cpp:487
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -15108,12 +15203,12 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:481
-#: src/frontends/qt4/GuiApplication.cpp:487
+#: src/frontends/qt4/GuiApplication.cpp:491
+#: src/frontends/qt4/GuiApplication.cpp:497
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:485
+#: src/frontends/qt4/GuiApplication.cpp:495
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -15133,22 +15228,24 @@ msgid "true"
 msgstr ""
 
 #: src/frontends/qt4/GuiBibtex.cpp:363 src/frontends/qt4/GuiBibtex.cpp:370
-#: src/frontends/qt4/GuiInclude.cpp:243 src/insets/InsetInclude.cpp:212
+#: src/frontends/qt4/GuiInclude.cpp:243 src/insets/InsetInclude.cpp:213
 #, fuzzy
 msgid "false"
 msgstr "축적(Scale)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:433 src/frontends/qt4/GuiBibtex.cpp:444
 #: src/frontends/qt4/GuiExternal.cpp:781 src/frontends/qt4/GuiGraphics.cpp:747
-#: src/frontends/qt4/GuiInclude.cpp:327 src/frontends/qt4/GuiView.cpp:1118
-#: src/frontends/qt4/GuiView.cpp:1178 src/frontends/qt4/GuiView.cpp:1312
-#: src/frontends/qt4/GuiView.cpp:1433 src/frontends/qt4/GuiView.cpp:1514
+#: src/frontends/qt4/GuiInclude.cpp:327 src/frontends/qt4/GuiView.cpp:1080
+#: src/frontends/qt4/GuiView.cpp:1140 src/frontends/qt4/GuiView.cpp:1274
+#: src/frontends/qt4/GuiView.cpp:1395 src/frontends/qt4/GuiView.cpp:1476
+#, fuzzy
 msgid "Documents|#o#O"
-msgstr ""
+msgstr "문서(Document)|D"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435
+#, fuzzy
 msgid "BibTeX Databases (*.bib)"
-msgstr ""
+msgstr "BibTeX 스타일(*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "Select a BibTeX database to add"
@@ -15159,13 +15256,14 @@ msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX 스타일(*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:448
+#, fuzzy
 msgid "Select a BibTeX style"
-msgstr ""
+msgstr "BibTeX 형식(styles) 파일들"
 
 #: src/frontends/qt4/GuiBox.cpp:47
 #, fuzzy
 msgid "No frame"
-msgstr "파일이름 "
+msgstr "표제(Caption)"
 
 #: src/frontends/qt4/GuiBox.cpp:48
 msgid "Simple rectangular frame"
@@ -15198,14 +15296,16 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBox.cpp:68 src/frontends/qt4/GuiBox.cpp:326
 #: src/frontends/qt4/GuiBox.cpp:361
+#, fuzzy
 msgid "Depth"
-msgstr ""
+msgstr "기본 설정(Default)"
 
 #: src/frontends/qt4/GuiBox.cpp:69 src/frontends/qt4/GuiBox.cpp:195
 #: src/frontends/qt4/GuiBox.cpp:329 src/frontends/qt4/GuiBox.cpp:364
 #: src/frontends/qt4/GuiBox.cpp:406
+#, fuzzy
 msgid "Total Height"
-msgstr ""
+msgstr "본문 높이(Text Height) %"
 
 #: src/frontends/qt4/GuiBox.cpp:70 src/frontends/qt4/GuiBox.cpp:332
 #: src/frontends/qt4/GuiBox.cpp:367
@@ -15217,8 +15317,9 @@ msgid "Box Settings"
 msgstr "상자 구성(Box Settings)"
 
 #: src/frontends/qt4/GuiBranch.cpp:35
+#, fuzzy
 msgid "Branch Settings"
-msgstr ""
+msgstr "뜨내기 구성(Float Settings)"
 
 #: src/frontends/qt4/GuiBranches.cpp:41
 msgid "Branch"
@@ -15229,17 +15330,19 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiBranches.cpp:145
-#: src/frontends/qt4/GuiDocument.cpp:1365
+#: src/frontends/qt4/GuiDocument.cpp:1400
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1364
+#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1399
+#, fuzzy
 msgid "No"
-msgstr ""
+msgstr "노우트(Note)"
 
 #: src/frontends/qt4/GuiChanges.cpp:40
+#, fuzzy
 msgid "Merge Changes"
-msgstr ""
+msgstr "다음 변경(Next Change)|C"
 
 #: src/frontends/qt4/GuiChanges.cpp:63
 #, c-format
@@ -15258,12 +15361,14 @@ msgstr ""
 #: src/frontends/qt4/GuiCharacter.cpp:166
 #: src/frontends/qt4/GuiCharacter.cpp:220
 #: src/frontends/qt4/GuiCharacter.cpp:246 src/frontends/qt4/qt_helpers.cpp:186
+#, fuzzy
 msgid "No change"
-msgstr ""
+msgstr "언어"
 
 #: src/frontends/qt4/GuiCharacter.cpp:52
+#, fuzzy
 msgid "Small Caps"
-msgstr ""
+msgstr "본문용 Small Caps Shape 폰트"
 
 #: src/frontends/qt4/GuiCharacter.cpp:56
 #: src/frontends/qt4/GuiCharacter.cpp:122
@@ -15271,8 +15376,9 @@ msgstr ""
 #: src/frontends/qt4/GuiCharacter.cpp:206
 #: src/frontends/qt4/GuiCharacter.cpp:232
 #: src/frontends/qt4/GuiCharacter.cpp:262 src/frontends/qt4/qt_helpers.cpp:188
+#, fuzzy
 msgid "Reset"
-msgstr ""
+msgstr "수정됨(Revised)"
 
 #: src/frontends/qt4/GuiCharacter.cpp:144
 msgid "Underbar"
@@ -15326,19 +15432,19 @@ msgstr "본문 형식(Text Style)"
 msgid "Keys"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:203
+#: src/frontends/qt4/GuiClipboard.cpp:204
 msgid "LinkBack PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:204
+#: src/frontends/qt4/GuiClipboard.cpp:205
 msgid "PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:205
+#: src/frontends/qt4/GuiClipboard.cpp:206
 msgid "PNG"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:206
+#: src/frontends/qt4/GuiClipboard.cpp:207
 msgid "JPEG"
 msgstr ""
 
@@ -15353,13 +15459,14 @@ msgid "%1$s Files"
 msgstr ""
 
 #: src/frontends/qt4/GuiClipboard.cpp:235
+#, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
-msgstr ""
+msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/frontends/qt4/GuiClipboard.cpp:245 src/frontends/qt4/GuiView.cpp:1194
-#: src/frontends/qt4/GuiView.cpp:1334 src/frontends/qt4/GuiView.cpp:1350
-#: src/frontends/qt4/GuiView.cpp:1367 src/frontends/qt4/GuiView.cpp:1452
-#: src/frontends/qt4/GuiView.cpp:1490
+#: src/frontends/qt4/GuiClipboard.cpp:245 src/frontends/qt4/GuiView.cpp:1156
+#: src/frontends/qt4/GuiView.cpp:1296 src/frontends/qt4/GuiView.cpp:1312
+#: src/frontends/qt4/GuiView.cpp:1329 src/frontends/qt4/GuiView.cpp:1414
+#: src/frontends/qt4/GuiView.cpp:1452
 msgid "Canceled."
 msgstr "취소됨"
 
@@ -15369,8 +15476,9 @@ msgid "File %1$s already exists, do you want to overwrite it"
 msgstr ""
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:97
+#, fuzzy
 msgid "Next command"
-msgstr ""
+msgstr "수식 삽입"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:43
 msgid "big[[delimiter size]]"
@@ -15394,310 +15502,336 @@ msgstr "수식 구획 문자(Math Delimiter)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:107
 #: src/frontends/qt4/GuiDelimiter.cpp:108
+#, fuzzy
 msgid "(None)"
-msgstr ""
+msgstr "노우트(Note)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:110
 msgid "Variable"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:100
+#: src/frontends/qt4/GuiDocument.cpp:102
 msgid "Computer Modern Roman"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:100
+#: src/frontends/qt4/GuiDocument.cpp:102
+#, fuzzy
 msgid "Latin Modern Roman"
-msgstr ""
+msgstr "표제(Caption)"
 
-#: src/frontends/qt4/GuiDocument.cpp:101
+#: src/frontends/qt4/GuiDocument.cpp:103
 msgid "AE (Almost European)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:101
+#: src/frontends/qt4/GuiDocument.cpp:103
 msgid "Times Roman"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:101
+#: src/frontends/qt4/GuiDocument.cpp:103
+#, fuzzy
 msgid "Palatino"
-msgstr ""
+msgstr "표제(Caption)"
 
-#: src/frontends/qt4/GuiDocument.cpp:102
+#: src/frontends/qt4/GuiDocument.cpp:104
 msgid "Bitstream Charter"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:102
+#: src/frontends/qt4/GuiDocument.cpp:104
 msgid "New Century Schoolbook"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:102
+#: src/frontends/qt4/GuiDocument.cpp:104
+#, fuzzy
 msgid "Bookman"
-msgstr ""
+msgstr "책갈피(Bookmarks)|B"
 
-#: src/frontends/qt4/GuiDocument.cpp:103
+#: src/frontends/qt4/GuiDocument.cpp:105
 msgid "Utopia"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:103
+#: src/frontends/qt4/GuiDocument.cpp:105
 msgid "Bera Serif"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:103
+#: src/frontends/qt4/GuiDocument.cpp:105
 msgid "Concrete Roman"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:103
+#: src/frontends/qt4/GuiDocument.cpp:105
 msgid "Zapf Chancery"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:116
+#: src/frontends/qt4/GuiDocument.cpp:118
 msgid "Computer Modern Sans"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:116
+#: src/frontends/qt4/GuiDocument.cpp:118
+#, fuzzy
 msgid "Latin Modern Sans"
-msgstr ""
+msgstr "표제(Caption)"
 
-#: src/frontends/qt4/GuiDocument.cpp:117
+#: src/frontends/qt4/GuiDocument.cpp:119
 msgid "Helvetica"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:117
+#: src/frontends/qt4/GuiDocument.cpp:119
 msgid "Avant Garde"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:117
+#: src/frontends/qt4/GuiDocument.cpp:119
 msgid "Bera Sans"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:117
+#: src/frontends/qt4/GuiDocument.cpp:119
+#, fuzzy
 msgid "CM Bright"
-msgstr ""
+msgstr "오른쪽 정렬"
 
-#: src/frontends/qt4/GuiDocument.cpp:129
+#: src/frontends/qt4/GuiDocument.cpp:131
 msgid "Computer Modern Typewriter"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:130
+#: src/frontends/qt4/GuiDocument.cpp:132
 msgid "Latin Modern Typewriter"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:130
+#: src/frontends/qt4/GuiDocument.cpp:132
+#, fuzzy
 msgid "Courier"
-msgstr ""
+msgstr "바깥쪽(Outer)"
 
-#: src/frontends/qt4/GuiDocument.cpp:130
+#: src/frontends/qt4/GuiDocument.cpp:132
 msgid "Bera Mono"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:131
+#: src/frontends/qt4/GuiDocument.cpp:133
 msgid "LuxiMono"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:131
+#: src/frontends/qt4/GuiDocument.cpp:133
+#, fuzzy
 msgid "CM Typewriter Light"
-msgstr ""
+msgstr "본문용 Typewriter 폰트 계열(Text Typewriter Family)"
 
-#: src/frontends/qt4/GuiDocument.cpp:177
+#: src/frontends/qt4/GuiDocument.cpp:203
 #, fuzzy
 msgid "Module not found!"
 msgstr "파일을 발견할 수 없음"
 
-#: src/frontends/qt4/GuiDocument.cpp:494
+#: src/frontends/qt4/GuiDocument.cpp:519
+#, fuzzy
 msgid "Document Settings"
-msgstr ""
+msgstr "노우트(Note) 구성"
 
-#: src/frontends/qt4/GuiDocument.cpp:550
-#: src/frontends/qt4/GuiDocument.cpp:1037
+#: src/frontends/qt4/GuiDocument.cpp:575
+#: src/frontends/qt4/GuiDocument.cpp:1066
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:559
+#: src/frontends/qt4/GuiDocument.cpp:584
+#, fuzzy
 msgid "Length"
-msgstr ""
+msgstr "중심(Center)"
 
-#: src/frontends/qt4/GuiDocument.cpp:604 src/frontends/qt4/GuiDocument.cpp:610
-#: src/frontends/qt4/GuiDocument.cpp:616
+#: src/frontends/qt4/GuiDocument.cpp:629 src/frontends/qt4/GuiDocument.cpp:635
+#: src/frontends/qt4/GuiDocument.cpp:641
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:621
+#: src/frontends/qt4/GuiDocument.cpp:646
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:622
+#: src/frontends/qt4/GuiDocument.cpp:647
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:623
+#: src/frontends/qt4/GuiDocument.cpp:648
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:658
+#: src/frontends/qt4/GuiDocument.cpp:683
+#, fuzzy
 msgid "empty"
-msgstr ""
+msgstr "본보기 파일(Template)"
 
-#: src/frontends/qt4/GuiDocument.cpp:659
+#: src/frontends/qt4/GuiDocument.cpp:684
 msgid "plain"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:660
+#: src/frontends/qt4/GuiDocument.cpp:685
 msgid "headings"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:661
+#: src/frontends/qt4/GuiDocument.cpp:686
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:677
+#: src/frontends/qt4/GuiDocument.cpp:702
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:678
+#: src/frontends/qt4/GuiDocument.cpp:703
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:784
+#: src/frontends/qt4/GuiDocument.cpp:809
+#, fuzzy
 msgid "LaTeX default"
-msgstr ""
+msgstr "LaTeX 실행 실패함"
 
-#: src/frontends/qt4/GuiDocument.cpp:790
+#: src/frontends/qt4/GuiDocument.cpp:815
 msgid "``text''"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:791
+#: src/frontends/qt4/GuiDocument.cpp:816
 msgid "''text''"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:792
+#: src/frontends/qt4/GuiDocument.cpp:817
 msgid ",,text``"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:793
+#: src/frontends/qt4/GuiDocument.cpp:818
 msgid ",,text''"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:794
+#: src/frontends/qt4/GuiDocument.cpp:819
 msgid "<<text>>"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:795
+#: src/frontends/qt4/GuiDocument.cpp:820
 msgid ">>text<<"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:811
+#: src/frontends/qt4/GuiDocument.cpp:836
+#, fuzzy
 msgid "Numbered"
-msgstr ""
+msgstr "번호 달린 수식(Numbered Formula)|N"
 
-#: src/frontends/qt4/GuiDocument.cpp:812
+#: src/frontends/qt4/GuiDocument.cpp:837
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:832
+#: src/frontends/qt4/GuiDocument.cpp:857
 msgid "Author-year"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:833
+#: src/frontends/qt4/GuiDocument.cpp:858
 msgid "Numerical"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:888
+#: src/frontends/qt4/GuiDocument.cpp:918
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:960 src/frontends/qt4/GuiDocument.cpp:975
+#: src/frontends/qt4/GuiDocument.cpp:989
+#: src/frontends/qt4/GuiDocument.cpp:1004
 msgid "Document Class"
 msgstr "문서 형식(Document Class)"
 
-#: src/frontends/qt4/GuiDocument.cpp:962
+#: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Text Layout"
 msgstr "본문 모양새(Text Layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:964
+#: src/frontends/qt4/GuiDocument.cpp:993
 msgid "Page Margins"
 msgstr " 페이지 여백(Margins)"
 
-#: src/frontends/qt4/GuiDocument.cpp:966
+#: src/frontends/qt4/GuiDocument.cpp:995
 msgid "Numbering & TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:968
+#: src/frontends/qt4/GuiDocument.cpp:997
 msgid "PDF Properties"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:969
+#: src/frontends/qt4/GuiDocument.cpp:998
 msgid "Math Options"
 msgstr "수식 선택 사항(Math Options)"
 
-#: src/frontends/qt4/GuiDocument.cpp:970
+#: src/frontends/qt4/GuiDocument.cpp:999
 msgid "Float Placement"
 msgstr "뜨내기 배치(Float Placement)"
 
-#: src/frontends/qt4/GuiDocument.cpp:971
+#: src/frontends/qt4/GuiDocument.cpp:1000
 msgid "Bullets"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:972
+#: src/frontends/qt4/GuiDocument.cpp:1001
 msgid "Branches"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:973
-#, fuzzy
+#: src/frontends/qt4/GuiDocument.cpp:1002
 msgid "Embedded Files"
-msgstr "테이블 목록"
-
-#: src/frontends/qt4/GuiDocument.cpp:974 src/frontends/qt4/GuiDocument.cpp:986
-msgid "LaTeX Preamble"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1219
-#: src/frontends/qt4/GuiDocument.cpp:2036
+#: src/frontends/qt4/GuiDocument.cpp:1003
+#: src/frontends/qt4/GuiDocument.cpp:1015
+#, fuzzy
+msgid "LaTeX Preamble"
+msgstr "LaTeX 실행 실패함"
+
+#: src/frontends/qt4/GuiDocument.cpp:1249
+#: src/frontends/qt4/GuiDocument.cpp:2091
+msgid "Error"
+msgstr "에러"
+
+#: src/frontends/qt4/GuiDocument.cpp:1249
+#: src/frontends/qt4/GuiDocument.cpp:2091
+#, fuzzy
+msgid "Unable to set document class."
+msgstr "문서의 기본 설정(Document Defaults)으로 저장하시오 "
+
+#: src/frontends/qt4/GuiDocument.cpp:1254
+#: src/frontends/qt4/GuiDocument.cpp:2080
 msgid "Unapplied changes"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1220
-#: src/frontends/qt4/GuiDocument.cpp:2037
+#: src/frontends/qt4/GuiDocument.cpp:1255
+#: src/frontends/qt4/GuiDocument.cpp:2081
 msgid ""
 "Some changes in the dialog were not yet applied.If you do not apply now, "
 "they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1222
-#: src/frontends/qt4/GuiDocument.cpp:2039
+#: src/frontends/qt4/GuiDocument.cpp:1257
+#: src/frontends/qt4/GuiDocument.cpp:2083
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1249
+#: src/frontends/qt4/GuiDocument.cpp:1284
 #, c-format
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1254
+#: src/frontends/qt4/GuiDocument.cpp:1289
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1299
+#: src/frontends/qt4/GuiDocument.cpp:1334
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1305
+#: src/frontends/qt4/GuiDocument.cpp:1340
 msgid "or"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1308
+#: src/frontends/qt4/GuiDocument.cpp:1343
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1317
+#: src/frontends/qt4/GuiDocument.cpp:1352
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1323
+#: src/frontends/qt4/GuiDocument.cpp:1358
 msgid "WARNING: Some packages are unavailable!"
 msgstr ""
 
@@ -15716,16 +15850,18 @@ msgid "%1$s Errors (%2$s)"
 msgstr ""
 
 #: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:814
+#, fuzzy
 msgid "Top left"
-msgstr ""
+msgstr "상단(top) 중심"
 
 #: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:814
 msgid "Bottom left"
 msgstr "바닥(Bottom) 왼쪽"
 
 #: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:814
+#, fuzzy
 msgid "Baseline left"
-msgstr ""
+msgstr "기준선(Baseline) 중심"
 
 #: src/frontends/qt4/GuiExternal.cpp:83 src/frontends/qt4/GuiGraphics.cpp:815
 msgid "Top center"
@@ -15740,8 +15876,9 @@ msgid "Baseline center"
 msgstr "기준선(Baseline) 중심"
 
 #: src/frontends/qt4/GuiExternal.cpp:84 src/frontends/qt4/GuiGraphics.cpp:816
+#, fuzzy
 msgid "Top right"
-msgstr ""
+msgstr "바닥(Bottom) 오른쪽"
 
 #: src/frontends/qt4/GuiExternal.cpp:84 src/frontends/qt4/GuiGraphics.cpp:816
 msgid "Bottom right"
@@ -15756,20 +15893,23 @@ msgid "External Material"
 msgstr "외부 문서(External Material)"
 
 #: src/frontends/qt4/GuiExternal.cpp:214
+#, fuzzy
 msgid "Scale%"
-msgstr ""
+msgstr "축적(Scale)"
 
 #: src/frontends/qt4/GuiExternal.cpp:775
+#, fuzzy
 msgid "Select external file"
-msgstr ""
+msgstr "모두 선택"
 
 #: src/frontends/qt4/GuiFloat.cpp:28
 msgid "Float Settings"
 msgstr "뜨내기 구성(Float Settings)"
 
 #: src/frontends/qt4/GuiGraphics.cpp:115 src/frontends/qt4/GuiPrefs.cpp:700
+#, fuzzy
 msgid "Graphics"
-msgstr ""
+msgstr "그림(&Graphics)"
 
 #: src/frontends/qt4/GuiGraphics.cpp:734
 msgid "Select graphics file"
@@ -15799,8 +15939,9 @@ msgid "Select document to include"
 msgstr "포함할 문서를 선택하시오"
 
 #: src/frontends/qt4/GuiInclude.cpp:317
+#, fuzzy
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr ""
+msgstr "LyX 문서(*.lyx)"
 
 #: src/frontends/qt4/GuiLabel.cpp:35
 msgid "Label"
@@ -15817,8 +15958,9 @@ msgid "Program Listing Settings"
 msgstr "단락 구성(Paragraph settings)"
 
 #: src/frontends/qt4/GuiListings.cpp:407
+#, fuzzy
 msgid "No dialect"
-msgstr ""
+msgstr "파일(&File):"
 
 #: src/frontends/qt4/GuiLog.cpp:101 src/frontends/qt4/GuiLog.cpp:175
 msgid "LaTeX Log"
@@ -15837,8 +15979,9 @@ msgid "Version Control Log"
 msgstr ""
 
 #: src/frontends/qt4/GuiLog.cpp:207
+#, fuzzy
 msgid "No LaTeX log file found."
-msgstr ""
+msgstr "LaTeX 실행 실패함"
 
 #: src/frontends/qt4/GuiLog.cpp:210
 msgid "No literate programming build log file found."
@@ -15853,12 +15996,14 @@ msgid "No version control log file found."
 msgstr ""
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:31
+#, fuzzy
 msgid "Math Matrix"
-msgstr ""
+msgstr "수식 선택 사항(Math Options)"
 
-#: src/frontends/qt4/GuiNomencl.cpp:32 src/insets/InsetNomencl.cpp:103
+#: src/frontends/qt4/GuiNomencl.cpp:32 src/insets/InsetNomencl.cpp:114
+#, fuzzy
 msgid "Nomenclature"
-msgstr ""
+msgstr "노우트(Note)|N"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -15878,8 +16023,9 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:195
+#, fuzzy
 msgid "Plain text"
-msgstr ""
+msgstr "보통 문(Plain Text)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Date format"
@@ -15894,28 +16040,33 @@ msgid "Screen fonts"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:602
+#, fuzzy
 msgid "Colors"
-msgstr ""
+msgstr "색깔(&Colors)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:771
+#, fuzzy
 msgid "Paths"
-msgstr ""
+msgstr "수식(Math)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:827
+#, fuzzy
 msgid "Select directory for example files"
-msgstr ""
+msgstr "본보기 문서(document templates) directory를 선택하시오"
 
 #: src/frontends/qt4/GuiPrefs.cpp:837
 msgid "Select a document templates directory"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
 #: src/frontends/qt4/GuiPrefs.cpp:847
+#, fuzzy
 msgid "Select a temporary directory"
-msgstr ""
+msgstr "본보기 문서(document templates) directory를 선택하시오"
 
 #: src/frontends/qt4/GuiPrefs.cpp:857
+#, fuzzy
 msgid "Select a backups directory"
-msgstr ""
+msgstr "문서 directory를 선택하시오"
 
 #: src/frontends/qt4/GuiPrefs.cpp:867
 msgid "Select a document directory"
@@ -15950,28 +16101,32 @@ msgid "aspell (library)"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1000
+#, fuzzy
 msgid "Converters"
-msgstr ""
+msgstr "중심(Center)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1270
 msgid "File formats"
 msgstr "파일 형태(formats)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1448
+#, fuzzy
 msgid "Format in use"
-msgstr ""
+msgstr "형틀 짜기(Formatting)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1449
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1558
+#, fuzzy
 msgid "Printer"
-msgstr ""
+msgstr "적분 삽입"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1656 src/frontends/qt4/GuiPrefs.cpp:2243
+#, fuzzy
 msgid "User interface"
-msgstr ""
+msgstr "적분 삽입"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1778
 msgid "Shortcuts"
@@ -16005,8 +16160,9 @@ msgid "Can not insert shortcut to the list"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2173
+#, fuzzy
 msgid "Identity"
-msgstr ""
+msgstr "색인 기재 사항(Index Entry)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2364
 msgid "Choose bind file"
@@ -16017,8 +16173,9 @@ msgid "LyX bind files (*.bind)"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2372
+#, fuzzy
 msgid "Choose UI file"
-msgstr ""
+msgstr "bind 파일을 고르시오"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2373
 msgid "LyX UI files (*.ui)"
@@ -16045,20 +16202,23 @@ msgid "*.ispell"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrint.cpp:44
+#, fuzzy
 msgid "Print Document"
-msgstr ""
+msgstr "문서 인쇄"
 
 #: src/frontends/qt4/GuiPrint.cpp:89
+#, fuzzy
 msgid "Print to file"
-msgstr ""
+msgstr "To 파일(&file):"
 
 #: src/frontends/qt4/GuiPrint.cpp:90
 msgid "PostScript files (*.ps)"
 msgstr ""
 
 #: src/frontends/qt4/GuiRef.cpp:42
+#, fuzzy
 msgid "Cross-reference"
-msgstr ""
+msgstr "상호 참조(Cross-Reference)...|R"
 
 #: src/frontends/qt4/GuiRef.cpp:256
 msgid "&Go Back"
@@ -16069,16 +16229,18 @@ msgid "Jump back"
 msgstr ""
 
 #: src/frontends/qt4/GuiRef.cpp:266
+#, fuzzy
 msgid "Jump to label"
-msgstr ""
+msgstr "레이블로 가기(&Go to Label) "
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
 msgstr "찾아서 교체하기(Find and Replace)"
 
 #: src/frontends/qt4/GuiSendto.cpp:37
+#, fuzzy
 msgid "Send Document to Command"
-msgstr ""
+msgstr "열 문서를 고르시오"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
@@ -16117,17 +16279,18 @@ msgid "%1$d words checked."
 msgstr ""
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:419
+#, fuzzy
 msgid "One word checked."
-msgstr ""
+msgstr "문서에서 한 글자(One word in document)"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:422
+#, fuzzy
 msgid "Spelling check completed"
-msgstr ""
+msgstr "철자 검사기 "
 
 #: src/frontends/qt4/GuiSymbols.cpp:49
-#, fuzzy
 msgid "Basic Latin"
-msgstr "표제(Caption)"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:50
 msgid "Latin-1 Supplement"
@@ -16229,8 +16392,9 @@ msgid "Greek Extended"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
+#, fuzzy
 msgid "General Punctuation"
-msgstr ""
+msgstr "TeX 정보"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 #, fuzzy
@@ -16429,8 +16593,9 @@ msgid "Old Persian"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
+#, fuzzy
 msgid "Deseret"
-msgstr ""
+msgstr "수정됨(Revised)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Shavian"
@@ -16530,8 +16695,9 @@ msgid "Table of Contents"
 msgstr "목차"
 
 #: src/frontends/qt4/GuiVSpace.cpp:43
+#, fuzzy
 msgid "Vertical Space Settings"
-msgstr ""
+msgstr "테이블 구성"
 
 #: src/frontends/qt4/GuiView.cpp:114
 msgid "unknown version"
@@ -16549,68 +16715,71 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:623 src/frontends/qt4/GuiView.cpp:624
+#: src/frontends/qt4/GuiView.cpp:585 src/frontends/qt4/GuiView.cpp:586
 #: src/mathed/MathMacroTemplate.cpp:460
 msgid "LyX"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1117
+#: src/frontends/qt4/GuiView.cpp:1079
+#, fuzzy
 msgid "Select template file"
-msgstr ""
+msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/frontends/qt4/GuiView.cpp:1119 src/frontends/qt4/GuiView.cpp:1515
+#: src/frontends/qt4/GuiView.cpp:1081 src/frontends/qt4/GuiView.cpp:1477
+#, fuzzy
 msgid "Templates|#T#t"
-msgstr ""
+msgstr "본보기 파일(Template)"
 
-#: src/frontends/qt4/GuiView.cpp:1123 src/frontends/qt4/GuiView.cpp:1184
-#: src/frontends/qt4/GuiView.cpp:1440 src/frontends/qt4/GuiView.cpp:1520
+#: src/frontends/qt4/GuiView.cpp:1085 src/frontends/qt4/GuiView.cpp:1146
+#: src/frontends/qt4/GuiView.cpp:1402 src/frontends/qt4/GuiView.cpp:1482
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 문서(*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1141
+#: src/frontends/qt4/GuiView.cpp:1103
 #, fuzzy
 msgid "Document not loaded."
 msgstr "문서 형식(Document Class)"
 
-#: src/frontends/qt4/GuiView.cpp:1177
+#: src/frontends/qt4/GuiView.cpp:1139
 msgid "Select document to open"
 msgstr "열 문서를 고르시오"
 
-#: src/frontends/qt4/GuiView.cpp:1179 src/frontends/qt4/GuiView.cpp:1313
-#: src/frontends/qt4/GuiView.cpp:1434
+#: src/frontends/qt4/GuiView.cpp:1141 src/frontends/qt4/GuiView.cpp:1275
+#: src/frontends/qt4/GuiView.cpp:1396
+#, fuzzy
 msgid "Examples|#E#e"
-msgstr ""
+msgstr "예제."
 
-#: src/frontends/qt4/GuiView.cpp:1217
+#: src/frontends/qt4/GuiView.cpp:1179
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "문서를 엽니다 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1225
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1187
+#, fuzzy, c-format
 msgid "Document %1$s opened."
-msgstr ""
+msgstr "문서 형식(Document Class)"
 
-#: src/frontends/qt4/GuiView.cpp:1227
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1189
+#, fuzzy, c-format
 msgid "Could not open document %1$s"
-msgstr ""
+msgstr "문서를 읽을 수가 없습니다."
 
-#: src/frontends/qt4/GuiView.cpp:1256
+#: src/frontends/qt4/GuiView.cpp:1218
 msgid "Couldn't import file"
 msgstr "파일을 가져올 수(Import) 없습니다."
 
-#: src/frontends/qt4/GuiView.cpp:1257
+#: src/frontends/qt4/GuiView.cpp:1219
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1308
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1270
+#, fuzzy, c-format
 msgid "Select %1$s file to import"
-msgstr ""
+msgstr "삽입할 파일을 고르시오"
 
-#: src/frontends/qt4/GuiView.cpp:1361 src/frontends/qt4/GuiView.cpp:1541
+#: src/frontends/qt4/GuiView.cpp:1323 src/frontends/qt4/GuiView.cpp:1503
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -16618,42 +16787,43 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1363 src/frontends/qt4/GuiView.cpp:1545
+#: src/frontends/qt4/GuiView.cpp:1325 src/frontends/qt4/GuiView.cpp:1507
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "문서를 덮어 쓸가요?"
 
-#: src/frontends/qt4/GuiView.cpp:1372
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1334
+#, fuzzy, c-format
 msgid "Importing %1$s..."
-msgstr ""
+msgstr "문서를 삽입합니다 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1375
+#: src/frontends/qt4/GuiView.cpp:1337
 msgid "imported."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1377
+#: src/frontends/qt4/GuiView.cpp:1339
 #, fuzzy
 msgid "file not imported!"
 msgstr "파일을 발견할 수 없음"
 
-#: src/frontends/qt4/GuiView.cpp:1432
+#: src/frontends/qt4/GuiView.cpp:1394
 msgid "Select LyX document to insert"
 msgstr "삽입할 LyX 문서를 고르시오"
 
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1437
 msgid "Select file to insert"
 msgstr "삽입할 파일을 고르시오"
 
-#: src/frontends/qt4/GuiView.cpp:1512
+#: src/frontends/qt4/GuiView.cpp:1474
+#, fuzzy
 msgid "Choose a filename to save document as"
-msgstr ""
+msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/frontends/qt4/GuiView.cpp:1546 src/frontends/qt4/GuiView.cpp:1591
+#: src/frontends/qt4/GuiView.cpp:1508 src/frontends/qt4/GuiView.cpp:1553
 msgid "&Rename"
 msgstr "새이름 짓기(&Rename)"
 
-#: src/frontends/qt4/GuiView.cpp:1587
+#: src/frontends/qt4/GuiView.cpp:1549
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -16661,16 +16831,16 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1590
+#: src/frontends/qt4/GuiView.cpp:1552
 msgid "Rename and save?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1591
+#: src/frontends/qt4/GuiView.cpp:1553
 #, fuzzy
 msgid "&Retry"
 msgstr "중심(Center)"
 
-#: src/frontends/qt4/GuiView.cpp:1630
+#: src/frontends/qt4/GuiView.cpp:1601
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16678,40 +16848,40 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiView.cpp:1604
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1700
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "문서를 저장하고 있습니다 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1750
+#: src/frontends/qt4/GuiView.cpp:1710
 #, fuzzy
 msgid "All documents saved."
 msgstr "문서 인쇄 실패"
 
-#: src/frontends/qt4/GuiView.cpp:1769
+#: src/frontends/qt4/GuiView.cpp:1729
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "모르는 표시(token): %1$s %2$s\n"
 
-#: src/frontends/qt4/GuiView.cpp:1776
+#: src/frontends/qt4/GuiView.cpp:1736
 msgid "off"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1778
+#: src/frontends/qt4/GuiView.cpp:1738
 #, fuzzy
 msgid "auto"
 msgstr "날짜"
 
-#: src/frontends/qt4/GuiView.cpp:1780
+#: src/frontends/qt4/GuiView.cpp:1740
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1958
+#: src/frontends/qt4/GuiView.cpp:1916
 #, c-format
 msgid "LFUN_UI_TOGGLE %1$s unknown command!"
 msgstr ""
@@ -16731,20 +16901,20 @@ msgstr ""
 msgid "Literate Source"
 msgstr "LaTeX 에러"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1031
+#: src/frontends/qt4/GuiWorkArea.cpp:1078
 msgid " (changed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1035
+#: src/frontends/qt4/GuiWorkArea.cpp:1082
 msgid " (read only)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1083
+#: src/frontends/qt4/GuiWorkArea.cpp:1136
 #, fuzzy
 msgid "Close File"
-msgstr "파일을 보이기(Show File)"
+msgstr "bind 파일을 고르시오"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1095
+#: src/frontends/qt4/GuiWorkArea.cpp:1148
 msgid "Hide tab"
 msgstr ""
 
@@ -16762,8 +16932,8 @@ msgid "space"
 msgstr "공간(space)"
 
 #: src/frontends/qt4/Validator.cpp:175 src/insets/ExternalSupport.cpp:365
-#: src/insets/InsetBibtex.cpp:225 src/insets/InsetGraphics.cpp:614
-#: src/insets/InsetInclude.cpp:424
+#: src/insets/InsetBibtex.cpp:221 src/insets/InsetGraphics.cpp:609
+#: src/insets/InsetInclude.cpp:423
 msgid "Invalid filename"
 msgstr ""
 
@@ -16790,32 +16960,33 @@ msgstr "TeX 정보를 갱신할(update) 수 없습니다."
 msgid "The script `%s' failed."
 msgstr ""
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:226
-#: src/insets/InsetGraphics.cpp:615 src/insets/InsetInclude.cpp:425
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:222
+#: src/insets/InsetGraphics.cpp:610 src/insets/InsetInclude.cpp:424
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
 
-#: src/insets/Inset.cpp:276
+#: src/insets/Inset.cpp:301
+#, fuzzy
 msgid "Opened inset"
-msgstr ""
+msgstr "열려있는 상자 삽입구(Box Inset)"
 
 #: src/insets/InsetBibtex.cpp:151
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX이 생성한 참고 목록(Bibliography)"
 
-#: src/insets/InsetBibtex.cpp:244 src/insets/InsetBibtex.cpp:294
+#: src/insets/InsetBibtex.cpp:240 src/insets/InsetBibtex.cpp:291
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:245
+#: src/insets/InsetBibtex.cpp:241
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:295
+#: src/insets/InsetBibtex.cpp:292
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -16824,7 +16995,7 @@ msgstr ""
 #: src/insets/InsetBox.cpp:60
 #, fuzzy
 msgid "simple frame"
-msgstr "파일이름 "
+msgstr "테이블 삽입"
 
 #: src/insets/InsetBox.cpp:61
 #, fuzzy
@@ -16852,8 +17023,9 @@ msgid "shaded background"
 msgstr ""
 
 #: src/insets/InsetBox.cpp:67
+#, fuzzy
 msgid "double frame"
-msgstr ""
+msgstr "테이블 삽입"
 
 #: src/insets/InsetBox.cpp:115
 msgid "Opened Box Inset"
@@ -16872,10 +17044,11 @@ msgid "Branch: "
 msgstr ""
 
 #: src/insets/InsetBranch.cpp:92
+#, fuzzy
 msgid "Undef: "
-msgstr ""
+msgstr "노우트(Note) #:"
 
-#: src/insets/InsetBranch.cpp:250
+#: src/insets/InsetBranch.cpp:247
 msgid "branch"
 msgstr ""
 
@@ -16884,20 +17057,22 @@ msgid "Opened Caption Inset"
 msgstr "열려있는 표제 삽입구(Opened Caption Inset)"
 
 #: src/insets/InsetCitation.cpp:215
+#, fuzzy
 msgid "not cited"
-msgstr ""
+msgstr "노우트(Note) #:"
 
-#: src/insets/InsetCollapsable.cpp:118
+#: src/insets/InsetCollapsable.cpp:117
 msgid "Left-click to collapse the inset"
 msgstr ""
 
-#: src/insets/InsetCollapsable.cpp:120
+#: src/insets/InsetCollapsable.cpp:119
 msgid "Left-click to open the inset"
 msgstr ""
 
-#: src/insets/InsetCommand.cpp:93
+#: src/insets/InsetCommand.cpp:90
+#, fuzzy
 msgid "LaTeX Command: "
-msgstr ""
+msgstr "수식 삽입"
 
 #: src/insets/InsetCommandParams.cpp:241
 #, fuzzy
@@ -16905,8 +17080,9 @@ msgid "InsetCommand Error: "
 msgstr "수식 삽입"
 
 #: src/insets/InsetCommandParams.cpp:242 src/insets/InsetCommandParams.cpp:277
+#, fuzzy
 msgid "Incompatible command name."
-msgstr ""
+msgstr "수식 삽입"
 
 #: src/insets/InsetCommandParams.cpp:258 src/insets/InsetCommandParams.cpp:276
 #, fuzzy
@@ -16932,22 +17108,24 @@ msgid "InsetCommandParams: "
 msgstr "수식 삽입"
 
 #: src/insets/InsetCommandParams.cpp:300
+#, fuzzy
 msgid "Unknown parameter name: "
-msgstr ""
+msgstr "모르는 인용구(Inset)"
 
 #: src/insets/InsetCommandParams.cpp:307 src/insets/InsetInfo.cpp:123
 msgid "Missing \\end_inset at this point."
 msgstr ""
 
 #: src/insets/InsetERT.cpp:77
+#, fuzzy
 msgid "Opened ERT Inset"
-msgstr ""
+msgstr "열려있는 상자 삽입구(Box Inset)"
 
 #: src/insets/InsetEnvironment.cpp:63
 msgid "Opened Environment Inset: "
 msgstr "열려있는 환경 삽입구(Environment Inset):"
 
-#: src/insets/InsetExternal.cpp:612
+#: src/insets/InsetExternal.cpp:608
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr ""
@@ -16955,10 +17133,10 @@ msgstr ""
 #: src/insets/InsetFlex.cpp:66
 #, fuzzy
 msgid "Opened Flex Inset"
-msgstr "열려있는 뜨내기 삽입구(Opened Float Inset)"
+msgstr "열려있는 상자 삽입구(Box Inset)"
 
-#: src/insets/InsetFloat.cpp:113 src/insets/InsetFloat.cpp:374
-#: src/insets/InsetFloat.cpp:384
+#: src/insets/InsetFloat.cpp:113 src/insets/InsetFloat.cpp:372
+#: src/insets/InsetFloat.cpp:382
 msgid "float: "
 msgstr "뜨내기(float):"
 
@@ -16966,12 +17144,12 @@ msgstr "뜨내기(float):"
 msgid "Opened Float Inset"
 msgstr "열려있는 뜨내기 삽입구(Opened Float Inset)"
 
-#: src/insets/InsetFloat.cpp:335
+#: src/insets/InsetFloat.cpp:333
 #, fuzzy
 msgid "float"
 msgstr "뜨내기(float):"
 
-#: src/insets/InsetFloat.cpp:386
+#: src/insets/InsetFloat.cpp:384
 msgid " (sideways)"
 msgstr ""
 
@@ -16979,20 +17157,21 @@ msgstr ""
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/InsetFloatList.cpp:137
-#, c-format
+#: src/insets/InsetFloatList.cpp:136
+#, fuzzy, c-format
 msgid "List of %1$s"
-msgstr ""
+msgstr "테이블 목록"
 
 #: src/insets/InsetFoot.cpp:56
+#, fuzzy
 msgid "Opened Footnote Inset"
-msgstr ""
+msgstr "열려있는 노우트(Note) 삽입구"
 
-#: src/insets/InsetFoot.cpp:117
+#: src/insets/InsetFoot.cpp:114
 msgid "footnote"
 msgstr "각주(footnote)"
 
-#: src/insets/InsetGraphics.cpp:491 src/insets/InsetInclude.cpp:503
+#: src/insets/InsetGraphics.cpp:487 src/insets/InsetInclude.cpp:502
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -17000,42 +17179,43 @@ msgid ""
 "into the temporary directory."
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:721
+#: src/insets/InsetGraphics.cpp:716
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:823
+#: src/insets/InsetGraphics.cpp:817
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr ""
 
 #: src/insets/InsetHFill.cpp:71
+#, fuzzy
 msgid "Horizontal Fill"
-msgstr ""
+msgstr "가로(&Horizontal) 맞추기"
 
-#: src/insets/InsetInclude.cpp:267
+#: src/insets/InsetInclude.cpp:268
 msgid "Verbatim Input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:270
+#: src/insets/InsetInclude.cpp:271
 msgid "Verbatim Input*"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:290
+#: src/insets/InsetInclude.cpp:291
 msgid " (embedded)"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:398 src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:397 src/insets/InsetInclude.cpp:590
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:399 src/insets/InsetInclude.cpp:594
+#: src/insets/InsetInclude.cpp:398 src/insets/InsetInclude.cpp:591
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:447
+#: src/insets/InsetInclude.cpp:446
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -17043,11 +17223,11 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:453
+#: src/insets/InsetInclude.cpp:452
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:469
+#: src/insets/InsetInclude.cpp:468
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -17055,18 +17235,20 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:473
+#: src/insets/InsetInclude.cpp:472
 #, fuzzy
 msgid "Module not found"
 msgstr "파일을 발견할 수 없음"
 
-#: src/insets/InsetIndex.cpp:95
+#: src/insets/InsetIndex.cpp:93
+#, fuzzy
 msgid "Index"
-msgstr ""
+msgstr "색인 기재 사항(Index Entry)"
 
 #: src/insets/InsetInfo.cpp:68
+#, fuzzy
 msgid "Information regarding "
-msgstr ""
+msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
 #: src/insets/InsetInfo.cpp:70
 msgid " "
@@ -17077,16 +17259,17 @@ msgstr ""
 msgid "Unknown Info: "
 msgstr "모르는 단어:"
 
-#: src/insets/InsetInfo.cpp:200 src/insets/InsetInfo.cpp:206
+#: src/insets/InsetInfo.cpp:200 src/insets/InsetInfo.cpp:205
 #, fuzzy
 msgid "yes"
 msgstr "형식(Style)"
 
-#: src/insets/InsetInfo.cpp:200 src/insets/InsetInfo.cpp:206
+#: src/insets/InsetInfo.cpp:200 src/insets/InsetInfo.cpp:205
+#, fuzzy
 msgid "no"
-msgstr ""
+msgstr "노우트(Note) #:"
 
-#: src/insets/InsetInfo.cpp:214 src/insets/InsetInfo.cpp:220
+#: src/insets/InsetInfo.cpp:213 src/insets/InsetInfo.cpp:219
 msgid "No menu entry for "
 msgstr ""
 
@@ -17225,9 +17408,9 @@ msgid "Parameter %1$s: "
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:659
-#, c-format
+#, fuzzy, c-format
 msgid "Unknown listing parameter name: %1$s"
-msgstr ""
+msgstr "모르는 인용구(Inset)"
 
 #: src/insets/InsetListingsParams.cpp:662
 #, c-format
@@ -17238,24 +17421,25 @@ msgstr ""
 msgid "Opened Marginal Note Inset"
 msgstr "열려있는 방주(Marginal Note) 삽입구"
 
-#: src/insets/InsetNewline.h:67
+#: src/insets/InsetNewline.h:64
 #, fuzzy
 msgid "line break"
 msgstr "줄 바꾸기(Line break)|L"
 
-#: src/insets/InsetNewpage.h:49
+#: src/insets/InsetNewpage.h:46
+#, fuzzy
 msgid "New Page"
-msgstr ""
+msgstr "언어"
 
-#: src/insets/InsetNewpage.h:85
+#: src/insets/InsetNewpage.h:79
 msgid "Clear Page"
 msgstr ""
 
-#: src/insets/InsetNewpage.h:101
+#: src/insets/InsetNewpage.h:95
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/InsetNomencl.cpp:52
+#: src/insets/InsetNomencl.cpp:58
 msgid "Nom"
 msgstr ""
 
@@ -17275,47 +17459,50 @@ msgstr "열려있는 노우트(Note) 삽입구"
 msgid "Opened Optional Argument Inset"
 msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
-#: src/insets/InsetRef.cpp:168 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:196 src/mathed/InsetMathRef.cpp:185
 msgid "Ref: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:169 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:197 src/mathed/InsetMathRef.cpp:186
+#, fuzzy
 msgid "Equation"
-msgstr ""
+msgstr "표제(Caption)"
 
-#: src/insets/InsetRef.cpp:169 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:197 src/mathed/InsetMathRef.cpp:186
 msgid "EqRef: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:170 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:198 src/mathed/InsetMathRef.cpp:187
 msgid "Page Number"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:170 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:198 src/mathed/InsetMathRef.cpp:187
 msgid "Page: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:199 src/mathed/InsetMathRef.cpp:188
 msgid "Textual Page Number"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:199 src/mathed/InsetMathRef.cpp:188
+#, fuzzy
 msgid "TextPage: "
-msgstr ""
+msgstr "본문(Text):"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:200 src/mathed/InsetMathRef.cpp:189
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:200 src/mathed/InsetMathRef.cpp:189
+#, fuzzy
 msgid "Ref+Text: "
-msgstr ""
+msgstr "본문(Text):"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:201 src/mathed/InsetMathRef.cpp:190
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:201 src/mathed/InsetMathRef.cpp:190
 msgid "FormatRef: "
 msgstr ""
 
@@ -17324,25 +17511,27 @@ msgstr ""
 msgid "Unknown TOC type"
 msgstr "모르는 표시(token)"
 
-#: src/insets/InsetTabular.cpp:3146
+#: src/insets/InsetTabular.cpp:3144
 msgid "Opened table"
 msgstr "열려있는 테이블"
 
-#: src/insets/InsetTabular.cpp:4320
+#: src/insets/InsetTabular.cpp:4306
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4321
+#: src/insets/InsetTabular.cpp:4307
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 #: src/insets/InsetText.cpp:233
+#, fuzzy
 msgid "Opened Text Inset"
-msgstr ""
+msgstr "열려있는 상자 삽입구(Box Inset)"
 
 #: src/insets/InsetVSpace.cpp:105
+#, fuzzy
 msgid "Vertical Space"
-msgstr ""
+msgstr "세로(&Vertical) 맞추기:"
 
 #: src/insets/InsetWrap.cpp:45
 msgid "wrap: "
@@ -17352,7 +17541,7 @@ msgstr ""
 msgid "Opened Wrap Inset"
 msgstr "열려있는 싸개 삽입구(Wrap Inset)"
 
-#: src/insets/InsetWrap.cpp:236
+#: src/insets/InsetWrap.cpp:234
 msgid "wrap"
 msgstr ""
 
@@ -17365,24 +17554,27 @@ msgid "Loading..."
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:103
+#, fuzzy
 msgid "Converting to loadable format..."
-msgstr ""
+msgstr "테이블 뜨내기(table float) 삽입"
 
 #: src/insets/RenderGraphic.cpp:106
 msgid "Loaded into memory. Generating pixmap..."
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:109
+#, fuzzy
 msgid "Scaling etc..."
-msgstr ""
+msgstr "보통 문(Plain Text)...|T"
 
 #: src/insets/RenderGraphic.cpp:112
 msgid "Ready to display"
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:115
+#, fuzzy
 msgid "No file found!"
-msgstr ""
+msgstr "파일을 발견할 수 없음"
 
 #: src/insets/RenderGraphic.cpp:118
 msgid "Error converting to loadable format"
@@ -17397,8 +17589,9 @@ msgid "Error generating the pixmap"
 msgstr ""
 
 #: src/insets/RenderGraphic.cpp:127
+#, fuzzy
 msgid "No image"
-msgstr ""
+msgstr "언어"
 
 #: src/insets/RenderPreview.cpp:95
 msgid "Preview loading"
@@ -17409,8 +17602,9 @@ msgid "Preview ready"
 msgstr ""
 
 #: src/insets/RenderPreview.cpp:101
+#, fuzzy
 msgid "Preview failed"
-msgstr ""
+msgstr "문서 인쇄 실패"
 
 #: src/lengthcommon.cpp:37
 msgid "sp"
@@ -17457,24 +17651,28 @@ msgid "Text Width %"
 msgstr "본문 두께(Text Width) %"
 
 #: src/lengthcommon.cpp:39
+#, fuzzy
 msgid "Column Width %"
-msgstr ""
+msgstr "열 복사"
 
 #: src/lengthcommon.cpp:39
+#, fuzzy
 msgid "Page Width %"
-msgstr ""
+msgstr "본문 두께(Text Width) %"
 
 #: src/lengthcommon.cpp:39
+#, fuzzy
 msgid "Line Width %"
-msgstr ""
+msgstr "본문 두께(Text Width) %"
 
 #: src/lengthcommon.cpp:40
 msgid "Text Height %"
 msgstr "본문 높이(Text Height) %"
 
 #: src/lengthcommon.cpp:40
+#, fuzzy
 msgid "Page Height %"
-msgstr ""
+msgstr "본문 높이(Text Height) %"
 
 #: src/lyxfind.cpp:115
 msgid "Search error"
@@ -17485,14 +17683,15 @@ msgid "Search string is empty"
 msgstr ""
 
 #: src/lyxfind.cpp:299
+#, fuzzy
 msgid "String has been replaced."
-msgstr ""
+msgstr "찾아서 교체하기"
 
 #: src/lyxfind.cpp:302
 msgid " strings have been replaced."
 msgstr ""
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1255
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1261
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -17508,8 +17707,9 @@ msgid "Only one row"
 msgstr ""
 
 #: src/mathed/InsetMathGrid.cpp:1364
+#, fuzzy
 msgid "Only one column"
-msgstr ""
+msgstr "열 지우기"
 
 #: src/mathed/InsetMathGrid.cpp:1372
 msgid "No hline to delete"
@@ -17520,42 +17720,43 @@ msgid "No vline to delete"
 msgstr ""
 
 #: src/mathed/InsetMathGrid.cpp:1399
-#, c-format
+#, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr ""
+msgstr "모르는 표시(token): %1$s %2$s\n"
 
-#: src/mathed/InsetMathHull.cpp:1079 src/mathed/InsetMathHull.cpp:1087
+#: src/mathed/InsetMathHull.cpp:1085 src/mathed/InsetMathHull.cpp:1093
+#, fuzzy
 msgid "No number"
-msgstr ""
+msgstr "언어"
 
-#: src/mathed/InsetMathHull.cpp:1079 src/mathed/InsetMathHull.cpp:1087
+#: src/mathed/InsetMathHull.cpp:1085 src/mathed/InsetMathHull.cpp:1093
 msgid "Number"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1228
+#: src/mathed/InsetMathHull.cpp:1234
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1238
+#: src/mathed/InsetMathHull.cpp:1244
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1248
+#: src/mathed/InsetMathHull.cpp:1254
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:889
+#: src/mathed/InsetMathNest.cpp:888
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:892
+#: src/mathed/InsetMathNest.cpp:891
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathRef.cpp:186
+#: src/mathed/InsetMathRef.cpp:185
 msgid "Standard[[mathref]]"
 msgstr ""
 
@@ -17573,17 +17774,17 @@ msgid "math macro"
 msgstr ""
 
 #: src/output.cpp:37
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
 "%1$s."
-msgstr ""
+msgstr "문서를 읽을 수가 없습니다."
 
-#: src/output_plaintext.cpp:141
+#: src/output_plaintext.cpp:136
 msgid "Abstract: "
 msgstr ""
 
-#: src/output_plaintext.cpp:153
+#: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "참고 문헌(References):"
 
@@ -17594,7 +17795,7 @@ msgstr ""
 #: src/support/Package.cpp:441
 #, fuzzy
 msgid "LyX binary not found"
-msgstr "시스템 파일 발견 못함"
+msgstr "파일을 발견할 수 없음"
 
 #: src/support/Package.cpp:442
 #, c-format
@@ -17612,7 +17813,6 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:642 src/support/Package.cpp:669
-#, fuzzy
 msgid "File not found"
 msgstr "파일을 발견할 수 없음"
 
@@ -17643,8 +17843,9 @@ msgid "Directory not found"
 msgstr "파일을 발견할 수 없음"
 
 #: src/support/debug.cpp:40
+#, fuzzy
 msgid "Program initialisation"
-msgstr ""
+msgstr "단락 구성(Paragraph settings)"
 
 #: src/support/debug.cpp:41
 msgid "Keyboard events handling"
@@ -17659,8 +17860,9 @@ msgid "Lyxlex grammar parser"
 msgstr ""
 
 #: src/support/debug.cpp:44
+#, fuzzy
 msgid "Configuration files reading"
-msgstr ""
+msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
 #: src/support/debug.cpp:45
 msgid "Custom keyboard definition"
@@ -17671,8 +17873,9 @@ msgid "LaTeX generation/execution"
 msgstr ""
 
 #: src/support/debug.cpp:47
+#, fuzzy
 msgid "Math editor"
-msgstr ""
+msgstr "수식 편집 모드(Math editor mode)"
 
 #: src/support/debug.cpp:48
 msgid "Font handling"
@@ -17687,28 +17890,32 @@ msgid "Version control"
 msgstr ""
 
 #: src/support/debug.cpp:51
+#, fuzzy
 msgid "External control interface"
-msgstr ""
+msgstr "외부 문서(External Material)"
 
 #: src/support/debug.cpp:52
 msgid "Keep *roff temporary files"
 msgstr ""
 
 #: src/support/debug.cpp:53
+#, fuzzy
 msgid "User commands"
-msgstr ""
+msgstr "수식 삽입"
 
 #: src/support/debug.cpp:54
 msgid "The LyX Lexxer"
 msgstr ""
 
 #: src/support/debug.cpp:55
+#, fuzzy
 msgid "Dependency information"
-msgstr ""
+msgstr "TeX 정보"
 
 #: src/support/debug.cpp:56
+#, fuzzy
 msgid "LyX Insets"
-msgstr ""
+msgstr "LyX: 행렬 삽입"
 
 #: src/support/debug.cpp:57
 msgid "Files used by LyX"
@@ -17731,8 +17938,9 @@ msgid "Change tracking"
 msgstr ""
 
 #: src/support/debug.cpp:62
+#, fuzzy
 msgid "External template/inset messages"
-msgstr ""
+msgstr "외부 응용 프로그램(External Applications)"
 
 #: src/support/debug.cpp:63
 msgid "RowPainter profiling"
@@ -17766,8 +17974,9 @@ msgid ""
 msgstr ""
 
 #: src/support/os_win32.cpp:303
+#, fuzzy
 msgid "System function not found"
-msgstr ""
+msgstr "시스템 파일 발견 못함"
 
 #: src/support/os_win32.cpp:304
 msgid ""
@@ -17779,30 +17988,17 @@ msgstr ""
 msgid "Unknown user"
 msgstr "모르는 사용자(user)"
 
-#~ msgid "Index Entry"
-#~ msgstr "색인 기재 사항(Index Entry)"
+#~ msgid "&Colors"
+#~ msgstr "색깔(&Colors)"
 
-#, fuzzy
-#~ msgid "Unknown inset name: "
-#~ msgstr "모르는 인용구(Inset)"
+#~ msgid "&File formats"
+#~ msgstr "파일 형태(&File formats)"
 
-#, fuzzy
-#~ msgid "Program Listing "
-#~ msgstr "단락 구성(Paragraph settings)"
+#~ msgid "External Applications"
+#~ msgstr "외부 응용 프로그램(External Applications)"
 
 #~ msgid "Count Words|W"
 #~ msgstr " 단어 수 세기(Count Words)|W"
-
-#~ msgid "One word in document."
-#~ msgstr "문서에서 한 글자(One word in document)"
-
-#, fuzzy
-#~ msgid "Search"
-#~ msgstr "검색 에러"
-
-#, fuzzy
-#~ msgid "shaded"
-#~ msgstr "저장|S"
 
 #, fuzzy
 #~ msgid "Framed|F"
@@ -17812,49 +18008,76 @@ msgstr "모르는 사용자(user)"
 #~ msgid "Shaded|S"
 #~ msgstr "저장|S"
 
-#, fuzzy
-#~ msgid "Enable embedding"
-#~ msgstr "테이블 구성"
-
-#, fuzzy
-#~ msgid "External FIle Name:"
-#~ msgstr "외부 문서(External Material)"
-
-#, fuzzy
-#~ msgid "External"
-#~ msgstr "외부 문서(External Material)"
-
-#, fuzzy
-#~ msgid "Action!"
-#~ msgstr "형틀 짜기(Formatting)"
-
-#~ msgid "&File formats"
-#~ msgstr "파일 형태(&File formats)"
-
-#~ msgid "External Applications"
-#~ msgstr "외부 응용 프로그램(External Applications)"
-
-#~ msgid "Algorithm #."
-#~ msgstr "알고리듬 #."
-
 #~ msgid "Insert URL"
 #~ msgstr "URL 삽입"
+
+#, fuzzy
+#~ msgid "Can't load document class"
+#~ msgstr "모르는 문서 클라스(document class)"
+
+#~ msgid "&Switch to document"
+#~ msgstr "문서로 전환(&Switch to document) "
+
+#, fuzzy
+#~ msgid "Formatting document..."
+#~ msgstr "문서를 저장하고 있습니다 %1$s..."
+
+#~ msgid "Index Entry"
+#~ msgstr "색인 기재 사항(Index Entry)"
+
+#, fuzzy
+#~ msgid "LyX: Delimiters"
+#~ msgstr "수식 구획 문자(Math Delimiter)"
 
 #~ msgid "LyX: Insert Matrix"
 #~ msgstr "LyX: 행렬 삽입"
 
-#~ msgid "Text Wrap Settings"
-#~ msgstr "본문 감싸기 구성(Text Wrap Settings)"
+#~ msgid "Language settings"
+#~ msgstr "언어 구성"
+
+#, fuzzy
+#~ msgid "Boxed"
+#~ msgstr "상자(Box)"
 
 #~ msgid "Opened CharStyle Inset"
 #~ msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
 
 #, fuzzy
+#~ msgid "Unknown inset name: "
+#~ msgstr "모르는 인용구(Inset)"
+
+#, fuzzy
+#~ msgid "Program Listing "
+#~ msgstr "단락 구성(Paragraph settings)"
+
+#, fuzzy
+#~ msgid "Framed"
+#~ msgstr "파일이름 "
+
+#, fuzzy
+#~ msgid "Shaded"
+#~ msgstr "저장|S"
+
+#, fuzzy
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "열려있는 노우트(Note) 삽입구"
 
-#~ msgid "Language settings"
-#~ msgstr "언어 구성"
+#~ msgid "Outer"
+#~ msgstr "바깥쪽(Outer)"
+
+#~ msgid "Text Wrap Settings"
+#~ msgstr "본문 감싸기 구성(Text Wrap Settings)"
+
+#, fuzzy
+#~ msgid "One word in selection."
+#~ msgstr "문서에서 한 글자(One word in document)"
+
+#~ msgid "One word in document."
+#~ msgstr "문서에서 한 글자(One word in document)"
+
+#, fuzzy
+#~ msgid "Count words"
+#~ msgstr " 단어 수 세기(Count Words)|W"
 
 #, fuzzy
 #~ msgid "Font st&yle:"
@@ -17863,10 +18086,6 @@ msgstr "모르는 사용자(user)"
 #, fuzzy
 #~ msgid "Example. "
 #~ msgstr "예제."
-
-#, fuzzy
-#~ msgid "note: "
-#~ msgstr "노우트(Note) #:"
 
 #, fuzzy
 #~ msgid "Placement:"
