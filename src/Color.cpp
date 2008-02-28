@@ -114,7 +114,7 @@ ColorSet::ColorSet()
 	{ Color_commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
 	{ Color_greyedout, N_("greyedout inset"), "greyedout", "red", "greyedout" },
 	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
-	{ Color_shadedbg, N_("shaded box"), "shaded", "red", "shaded" },
+	{ Color_shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
 	{ Color_branchlabel, N_("branch label"), "branchlabel", "#c88000", "branchlabel" },
 	{ Color_footlabel, N_("footnote label"), "footlabel", "#00aaff", "footlabel" },
 	{ Color_indexlabel, N_("index label"), "indexlabel", "green", "indexlabel" },
