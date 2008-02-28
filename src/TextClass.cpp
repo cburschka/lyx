@@ -493,11 +493,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		LYXERR(Debug::TCLASS, "Converting layout file from format "
 				      << format << " to " << FORMAT);
 		FileName const tempfile = FileName::tempName();
-		error = !layout2layout(filename, tempfile);
-		if (!error)
-			error = read(tempfile, rt);
+		bool success = layout2layout(filename, tempfile);
+		if (success)
+			 read(tempfile, rt);
 		tempfile.removeFile();
-		return !error;
+		return success;
 	}
 
 	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
