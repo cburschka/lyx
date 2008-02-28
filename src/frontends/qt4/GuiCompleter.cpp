@@ -341,11 +341,13 @@ void GuiCompleter::updatePrefix(Cursor & cur)
 	// if popup is not empty, the new selection will
 	// be our last valid one
 	QString const & s = currentCompletion();
-	if (s.length() > 0)
-		last_selection_ = s;
-	else
-		last_selection_ = old;
-	
+	if (popupVisible() || inlineVisible()) {
+		if (s.length() > 0)
+			last_selection_ = s;
+		else
+			last_selection_ = old;
+	}
+
 	// update inline completion because the default
 	// completion string might have changed
 	if (inlineVisible())
@@ -460,11 +462,13 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	
 	// if popup is not empty, the new selection will
 	// be our last valid one
-	QString const & s = currentCompletion();
-	if (s.length() > 0)
-		last_selection_ = s;
-	else
-		last_selection_ = old;
+	if (popupVisible() || inlineVisible()) {
+		QString const & s = currentCompletion();
+		if (s.length() > 0)
+			last_selection_ = s;
+		else
+			last_selection_ = old;
+	}
 
 	// show inline completion
 	if (inlineUpdate)
