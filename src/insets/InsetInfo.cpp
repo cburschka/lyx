@@ -14,6 +14,7 @@
 #include <sstream>
 #include <stack>
 
+#include "BaseClassList.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -27,7 +28,6 @@
 #include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
-#include "BaseClassList.h"
 
 #include "frontends/Application.h"
 
