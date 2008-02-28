@@ -14,7 +14,6 @@
 #include "Buffer.h"
 
 #include "Author.h"
-#include "BaseClassList.h"
 #include "BiblioInfo.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
@@ -56,6 +55,7 @@
 #include "TexRow.h"
 #include "TexStream.h"
 #include "Text.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 #include "Undo.h"
 #include "VCBackend.h"
