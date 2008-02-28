@@ -129,8 +129,8 @@ Buffer & Inset::buffer()
 {
 	if (!buffer_) {
 		odocstringstream s;
-		s << "LyX Code: " << lyxCode();
-		throw ExceptionMessage(WarningException, 
+		s << "LyX Code: " << lyxCode() << " name: " << name();
+		throw ExceptionMessage(ErrorException, 
 			from_ascii("Inset::buffer_ member not initialized!"), s.str());
 	}
 	return *buffer_;
