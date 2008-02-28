@@ -124,17 +124,21 @@ public:
 		if (show_ && rect_.isValid()) {
 			switch (shape_) {
 			case L_SHAPE:
-				painter.fillRect(rect_.x(), rect_.y(), CursorWidth, rect_.height(), color_);
+				painter.fillRect(rect_.x(), rect_.y(), 
+					CursorWidth, rect_.height(), color_);
 				painter.setPen(color_);
-				painter.drawLine(rect_.bottomLeft().x() + CursorWidth, rect_.bottomLeft().y(),
-												 rect_.bottomRight().x(), rect_.bottomLeft().y());
+				painter.drawLine(rect_.bottomLeft().x() + CursorWidth, 
+					rect_.bottomLeft().y(),
+					rect_.bottomRight().x(), rect_.bottomLeft().y());
 				break;
 			
 			case REVERSED_L_SHAPE:
-				painter.fillRect(rect_.x() + rect_.height() / 3, rect_.y(), CursorWidth, rect_.height(), color_);
+				painter.fillRect(rect_.x() + rect_.height() / 3, rect_.y(), 
+					CursorWidth, rect_.height(), color_);
 				painter.setPen(color_);
-				painter.drawLine(rect_.bottomRight().x() - CursorWidth, rect_.bottomLeft().y(),
-													 rect_.bottomLeft().x(), rect_.bottomLeft().y());
+				painter.drawLine(rect_.bottomRight().x() - CursorWidth,
+					rect_.bottomLeft().y(),
+					rect_.bottomLeft().x(), rect_.bottomLeft().y());
 				break;
 					
 			default:
