@@ -1323,7 +1323,7 @@ public:
 
         leaf_node *leaf = static_cast<leaf_node*>(n);
 
-        int slot = find_lower(leaf, key);
+        unsigned short slot = find_lower(leaf, key);
         return (slot < leaf->slotuse && key_equal(key, leaf->slotkey[slot]))
             ? iterator(leaf, slot) : end();
     }
@@ -1376,7 +1376,7 @@ public:
 
         leaf_node *leaf = static_cast<leaf_node*>(n);
 
-        int slot = find_summed_weight_lower(leaf, weight);
+        unsigned short slot = find_summed_weight_lower(leaf, weight);
         for (unsigned short s = 0; s < slot; ++s)
             weight -= leaf->weights[s];
 
@@ -2049,7 +2049,7 @@ private:
         {
             leaf_node *leaf = static_cast<leaf_node*>(n);
 
-            int slot = find_lower(leaf, key);
+            unsigned short slot = find_lower(leaf, key);
 
             if (!allow_duplicates && slot < leaf->slotuse && key_equal(key, leaf->slotkey[slot])) {
                 return std::pair<iterator, bool>(iterator(leaf, slot), false);
