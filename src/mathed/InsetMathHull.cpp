@@ -196,6 +196,13 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 
 void InsetMathHull::addToToc(ParConstIterator const & pit) const
 {
+	if (!buffer_) {
+		//FIXME: buffer_ should be set at creation for this inset! Problem is
+		// This inset is created at too many places (see Parser::parse1() in
+		// MathParser.cpp).
+		return;
+	}
+
 	vector<docstring> labels;
 	getLabelList(labels);
 	if (labels.empty())
