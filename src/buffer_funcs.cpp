@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-#include "BaseClassList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
