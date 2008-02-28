@@ -362,6 +362,7 @@ void Cursor::pop()
 void Cursor::push(Inset & p)
 {
 	push_back(CursorSlice(p));
+	p.setBuffer(bv_->buffer());
 }
 
 
@@ -1022,8 +1023,10 @@ void Cursor::insert(Inset * inset)
 {
 	if (inMathed())
 		insert(MathAtom(inset));
-	else
+	else {
 		text()->insertInset(*this, inset);
+		inset->setBuffer(bv_->buffer());
+	}
 }
 
 
