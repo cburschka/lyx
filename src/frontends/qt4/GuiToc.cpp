@@ -43,7 +43,7 @@ namespace frontend {
 GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "toc", qt_("Outline"), area, flags)
 {
-	widget_ = new TocWidget(*this);
+	widget_ = new TocWidget(*this, &parent);
 	setWidget(widget_);
 }
 
