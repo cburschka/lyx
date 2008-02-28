@@ -84,8 +84,6 @@ public:
 	mode_type currentMode() const { return TEXT_MODE; }
 private:
 	Inset * clone() const { return new InsetMathFrameBox(*this); }
-	/// width of '[' in current font
-	mutable int w_;
 };
 
 
