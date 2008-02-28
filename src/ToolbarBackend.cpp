@@ -200,6 +200,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 ToolbarBackend::ToolbarBackend()
 {
+	fullScreenWindows = 0;
 }
 
 

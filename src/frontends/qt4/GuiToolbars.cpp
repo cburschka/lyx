@@ -225,6 +225,10 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 
 void GuiToolbars::toggleFullScreen(bool start_full_screen)
 {
+	// we need to know number of fullscreens until every
+	// LyXView has its own toolbar configuration
+	toolbarbackend.fullScreenWindows += start_full_screen ? 1 : -1;
+
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
@@ -233,7 +237,8 @@ void GuiToolbars::toggleFullScreen(bool start_full_screen)
 	for (; cit != end; ++cit) {
 
 		if (start_full_screen) {
-			flags = cit->before_fullscreen = cit->flags;
+			if (toolbarbackend.fullScreenWindows == 1)
+				flags = cit->before_fullscreen = cit->flags;
 			TurnOffFlag(ON);
 			TurnOffFlag(AUTO);
 			TurnOnFlag(OFF);

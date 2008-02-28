@@ -135,6 +135,10 @@ public:
 	///
 	ToolbarInfo * getUsedToolbarInfo(std::string const & name);
 
+	// FIXME should be deleted when every window has its own toolbar config.
+	/// number of toggleFullScreen calls, i.e. number of FullScreen windows.
+	int fullScreenWindows;
+
 private:
 	/// all the defined toolbars
 	Toolbars toolbars;
