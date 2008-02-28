@@ -686,8 +686,8 @@ void RowPainter::paintText()
 	if (inlineCompletionPos.inTexted()
 	    && inlineCompletionPos.text() == &text_
 	    && inlineCompletionPos.pit() == pit_
-	    && inlineCompletionPos.pos() >= row_.pos()
-	    && inlineCompletionPos.pos() <= row_.endpos()) {
+	    && inlineCompletionPos.pos() - 1 >= row_.pos()
+	    && inlineCompletionPos.pos() - 1 < row_.endpos()) {
 		// draw logically behind the previous character
 		inlineCompletionVPos = bidi_.log2vis(inlineCompletionPos.pos() - 1);
 	}

@@ -1532,8 +1532,8 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	if (inlineCompletionPos.inTexted()
 	    && inlineCompletionPos.text() == text_
 	    && inlineCompletionPos.pit() == pit
-	    && inlineCompletionPos.pos() >= row_pos
-	    && inlineCompletionPos.pos() <= end) {
+	    && inlineCompletionPos.pos() - 1 >= row_pos
+	    && inlineCompletionPos.pos() - 1 < end) {
 		// draw logically behind the previous character
 		inlineCompletionVPos = bidi.log2vis(inlineCompletionPos.pos() - 1);
 	}
