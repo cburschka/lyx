@@ -197,10 +197,10 @@ BaseClassList::addTextClass(string const & textclass, string const & path)
 			// look for the \DeclareXXXClass line
 			smatch sub;
 			if (regex_match(line, sub, reg)) {
-				// returns: whole string, classtype (not used here), first option, description
-				BOOST_ASSERT(sub.size()==4);
+				// returns: whole string, classtype (not used here), class name, description
+				BOOST_ASSERT(sub.size() == 4);
 				// now, create a TextClass with description containing path information
-				TextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2),
+				TextClass tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
 				if (lyxerr.debugging(Debug::TCLASS))
 					tmpl.load(path);
