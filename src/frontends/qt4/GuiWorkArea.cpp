@@ -68,7 +68,7 @@ int const CursorWidth = 2;
 #else
 int const CursorWidth = 1;
 #endif
-int const TabIndicatorWidth = 4;
+int const TabIndicatorWidth = 3;
 
 #undef KeyPress
 #undef NoModifier 
@@ -125,29 +125,33 @@ public:
 		if (!show_ || !rect_.isValid())
 			return;
 		
+		int y = rect_.top();
 		int l = x_ - rect_.left();
 		int r = rect_.right() - x_;
-		int h = rect_.height();
+		int bot = rect_.bottom();
 
-		painter.fillRect(x_, y_, CursorWidth, h, color_);
+		// draw vertica linel
+		painter.fillRect(x_, y, CursorWidth, rect_.height(), color_);
+		
+		// draw RTL/LTR indication
 		painter.setPen(color_);
 		if (l_shape_) {
 			if (rtl_)
-				painter.drawLine(x_, y_ + h, x_ - l, y_ + h);
+				painter.drawLine(x_, bot, x_ - l, bot);
 			else
-				painter.drawLine(x_ + CursorWidth, y_ + h, 
-					x_ + CursorWidth + r, y_ + h);
+				painter.drawLine(x_, bot, x_ + CursorWidth + r, bot);
 		}
 		
+		// draw completion triangle
 		if (completable_) {
-			int m = y_ + h / 2;
+			int m = y + rect_.height() / 2;
 			int d = TabIndicatorWidth - 1;
 			if (rtl_) {
-				painter.drawLine(x_ - 1 , m - d, x_ - d - 1, m);
-				painter.drawLine(x_ - 1 , m + d, x_ - d - 1, m);
+				painter.drawLine(x_ - 1, m - d, x_ - 1 - d, m);
+				painter.drawLine(x_ - 1, m + d, x_ - 1 - d, m);
 			} else {
-				painter.drawLine(x_ + CursorWidth , m - d, x_ + d + CursorWidth, m);
-				painter.drawLine(x_ + CursorWidth , m + d, x_ + d + CursorWidth, m);
+				painter.drawLine(x_ + CursorWidth, m - d, x_ + CursorWidth + d, m);
+				painter.drawLine(x_ + CursorWidth, m + d, x_ + CursorWidth + d, m);
 			}
 		}
 	}
@@ -160,10 +164,12 @@ public:
 		rtl_ = rtl;
 		completable_ = completable;
 		x_ = x;
-		y_ = y;
+		
+		// extension to left and right
 		int l = 0;
 		int r = 0;
 
+		// RTL/LTR indication
 		if (l_shape_) {
 			if (rtl)
 				l += h / 3;
@@ -171,13 +177,15 @@ public:
 				r += h / 3;
 		}
 		
+		// completion triangle
 		if (completable_) {
 			if (rtl)
-				l = max(r, TabIndicatorWidth);
+				l = max(l, TabIndicatorWidth);
 			else
-				r = max(l, TabIndicatorWidth);
+				r = max(r, TabIndicatorWidth);
 		}
 
+		// compute overall rectangle
 		rect_ = QRect(x - l, y, CursorWidth + r + l, h);
 	}
 
@@ -187,22 +195,20 @@ public:
 	QRect const & rect() { return rect_; }
 
 private:
-	///
+	/// cursor is in RTL or LTR text
 	bool rtl_;
-	///
+	/// indication for RTL or LTR
 	bool l_shape_;
-	///
+	/// triangle to show that a completion is available
 	bool completable_;
 	///
 	bool show_;
 	///
 	QColor color_;
-	///
+	/// rectangle, possibly with l_shape and completion triangle
 	QRect rect_;
-	///
+	/// x position (were the vertical line is drawn)
 	int x_;
-	///
-	int y_;
 };
 
 
@@ -487,7 +493,9 @@ void GuiWorkArea::showCursor()
 		cursorInView = false;
 
 	// show cursor on screen
-	bool completable = completer_.completionAvailable();
+	bool completable = completer_.completionAvailable()
+		&& !completer_.popupVisible()
+		&& !completer_.inlineVisible();
 	if (cursorInView) {
 		cursor_visible_ = true;
 		showCursor(x, y, h, l_shape, isrtl, completable);

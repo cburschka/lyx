@@ -86,6 +86,8 @@ private Q_SLOTS:
 	void popupActivated(const QString & completion);
 	///
 	void popupHighlighted(const QString & completion);
+	///
+	void updateAvailability();
 	
 private:
 	///

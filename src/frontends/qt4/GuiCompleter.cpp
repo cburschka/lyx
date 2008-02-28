@@ -236,7 +236,14 @@ bool GuiCompleter::inlinePossible(Cursor const & cur) const
 
 bool GuiCompleter::completionAvailable() const
 {
-	return popup()->model()->rowCount() > 0;
+	size_t n = popup()->model()->rowCount();
+
+	// if there is exactly one, we have to check whether it is a 
+	// real completion, i.e. longer than the current prefix.
+	if (n == 1 && completionPrefix() == currentCompletion())
+	    return false;
+
+	return n > 0;
 }
 
 
@@ -286,10 +293,14 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 		&& cur.inset().automaticInlineCompletion())
 		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
 
-	// update prefix if popup is visible or if it will be visible soon
-	if (popupVisible() || inlineVisible()
-	    || popup_timer_.isActive() || inline_timer_.isActive())
-		updatePrefix(cur);
+	// update prefix if any completion is possible
+	bool modelActive = model()->rowCount() > 0;
+	if (possiblePopupState || possibleInlineState) {
+		if (modelActive)
+			updatePrefix(cur);
+		else
+			updateAvailability();
+	}
 }
 
 
@@ -391,6 +402,20 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	complete(rect);
 }
 
+
+void GuiCompleter::updateAvailability()
+{
+	// this should really only be of interest if no completion is
+	// visible yet, i.e. especially if automatic completion is disabled.
+	if (inlineVisible() || popupVisible())
+		return;
+	Cursor & cur = gui_->bufferView().cursor();
+	if (!popupPossible(cur) && !inlinePossible(cur))
+		return;
+	
+	updateModel(cur, false, false);
+}
+	
 
 void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate)
 {
