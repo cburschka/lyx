@@ -202,7 +202,7 @@ void InsetInfo::updateInfo()
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		pair<bool, lyx::BaseClassIndex> pp = baseclasslist.numberOfClass(name_);
+		pair<bool, lyx::BaseClassIndex> pp = BaseClassList::get().numberOfClass(name_);
 		setText(pp.first ? _("yes") : _("no"),
 			bp.getFont(), false);
 		break;

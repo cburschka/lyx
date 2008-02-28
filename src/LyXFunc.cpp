@@ -718,7 +718,7 @@ void showPrintError(string const & name)
 void loadTextClass(string const & name, string const & buf_path)
 {
 	pair<bool, BaseClassIndex> const tc_pair =
-		baseclasslist.numberOfClass(name);
+		BaseClassList::get().numberOfClass(name);
 
 	if (!tc_pair.first) {
 		lyxerr << "Document class \"" << name
@@ -729,10 +729,10 @@ void loadTextClass(string const & name, string const & buf_path)
 
 	BaseClassIndex const tc = tc_pair.second;
 
-	if (!baseclasslist[tc].load(buf_path)) {
+	if (!BaseClassList::get()[tc].load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
 				   "could not be loaded."),
-				   from_utf8(baseclasslist[tc].name()));
+				   from_utf8(BaseClassList::get()[tc].name()));
 		Alert::error(_("Could not load class"), s);
 	}
 }
@@ -1611,7 +1611,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			loadTextClass(argument, buffer->filePath());
 
 			pair<bool, BaseClassIndex> const tc_pair =
-				baseclasslist.numberOfClass(argument);
+				BaseClassList::get().numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
@@ -1638,7 +1638,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * buffer = lyx_view_->buffer();
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			BaseClassIndex const tc = buffer->params().baseClass();
-			baseclasslist.reset(tc);
+			BaseClassList::get().reset(tc);
 			buffer->params().setBaseClass(tc);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);

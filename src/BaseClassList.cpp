@@ -33,6 +33,13 @@ using boost::bind;
 using boost::regex;
 using boost::smatch;
 
+BaseClassList & BaseClassList::get() 
+{
+	static BaseClassList baseclasslist;
+	return baseclasslist;
+}
+
+
 // Gets textclass number from name
 pair<bool, BaseClassIndex> const
 BaseClassList::numberOfClass(string const & textclass) const
@@ -206,8 +213,7 @@ BaseClassList::addTextClass(string const & textclass, string const & path)
 					tmpl.load(path);
 				// Do not add this local TextClass to classlist_ if it has
 				// already been loaded by, for example, a master buffer.
-				pair<bool, lyx::BaseClassIndex> pp =
-					baseclasslist.numberOfClass(textclass);
+				pair<bool, lyx::BaseClassIndex> pp = numberOfClass(textclass);
 				// only layouts from the same directory are considered to be identical.
 				if (pp.first && classlist_[pp.second].description() == tmpl.description())
 					return pp;
@@ -225,9 +231,6 @@ BaseClassList::addTextClass(string const & textclass, string const & path)
 }
 
 
-// Global variable: textclass table.
-BaseClassList baseclasslist;
-
 
 BaseClassIndex defaultBaseclass()
 {
@@ -235,7 +238,7 @@ BaseClassIndex defaultBaseclass()
 	// true in the returned pair, then `second' is the textclass
 	// number; if it is false, second is 0. In both cases, second
 	// is what we want.
-	return baseclasslist.numberOfClass("article").second;
+	return BaseClassList::get().numberOfClass("article").second;
 }
 
 
@@ -245,7 +248,7 @@ bool LyXSetStyle()
 {
 	LYXERR(Debug::TCLASS, "LyXSetStyle: parsing configuration...");
 
-	if (!baseclasslist.read()) {
+	if (!BaseClassList::get().read()) {
 		LYXERR(Debug::TCLASS, "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting.");
 		return false;

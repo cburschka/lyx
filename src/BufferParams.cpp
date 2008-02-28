@@ -466,12 +466,12 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		pair<bool, lyx::BaseClassIndex> pp =
 			make_pair(false, BaseClassIndex(0));
 		if (!filepath.empty())
-			pp = baseclasslist.addTextClass(
+			pp = BaseClassList::get().addTextClass(
 				classname, filepath.absFilename());
 		if (pp.first)
 			setBaseClass(pp.second);
 		else {
-			pp = baseclasslist.numberOfClass(classname);
+			pp = BaseClassList::get().numberOfClass(classname);
 			if (pp.first)
 				setBaseClass(pp.second);
 			else {
@@ -678,7 +678,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << baseclasslist[pimpl_->baseClass_].name() << '\n';
+	os << "\\textclass " << BaseClassList::get()[pimpl_->baseClass_].name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -1344,7 +1344,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = baseclasslist[pimpl_->baseClass_];
+	TextClass const & tclass = BaseClassList::get()[pimpl_->baseClass_];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1360,7 +1360,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = baseclasslist[pimpl_->baseClass_];
+	TextClass const & tclass = BaseClassList::get()[pimpl_->baseClass_];
 
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1390,14 +1390,14 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 
 bool BufferParams::setBaseClass(BaseClassIndex tc)
 {
-	if (baseclasslist[tc].load()) {
+	if (BaseClassList::get()[tc].load()) {
 		pimpl_->baseClass_ = tc;
 		return true;
 	}
 	
 	docstring s = 
 		bformat(_("The document class %1$s could not be loaded."),
-		from_utf8(baseclasslist[tc].name()));
+		from_utf8(BaseClassList::get()[tc].name()));
 	frontend::Alert::error(_("Could not load class"), s);
 	return false;
 }
@@ -1411,7 +1411,7 @@ BaseClassIndex BufferParams::baseClass() const
 
 void BufferParams::makeDocumentClass()
 {
-	doc_class_ = &(DocumentClassBundle::get().newClass(baseclasslist[baseClass()]));
+	doc_class_ = &(DocumentClassBundle::get().newClass(BaseClassList::get()[baseClass()]));
 	
 	//FIXME It might be worth loading the children's modules here,
 	//just as we load their bibliographies and such, instead of just 

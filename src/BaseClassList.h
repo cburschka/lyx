@@ -41,10 +41,14 @@ private:
 };
 
 /// A list of base document classes (*.layout files).
+/// This is a singleton class. The sole instance is accessed
+/// via BaseClassList::get()
 class BaseClassList {
 public:
 	///
 	BaseClassList() {}
+	/// \return The sole instance of this class.
+	static BaseClassList & get();
 	///
 	typedef std::vector<TextClass> ClassList;
 	///
@@ -84,8 +88,6 @@ private:
 	mutable ClassList classlist_;
 };
 
-///
-extern BaseClassList baseclasslist;
 ///
 BaseClassIndex defaultBaseclass();
 

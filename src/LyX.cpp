@@ -576,7 +576,7 @@ void LyX::execBatchCommands()
 	// aknowledged.
 
 	// if reconfiguration is needed.
-	while (baseclasslist.empty()) {
+	while (BaseClassList::get().empty()) {
 	    switch (Alert::prompt(
 		    _("No textclass is found"),
 		    _("LyX cannot continue because no textclass is found. "

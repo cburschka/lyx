@@ -879,8 +879,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	//FIXME This seems too involved with the kernel. Some of this
 	//should be moved to the kernel---which should perhaps just
 	//give us a list of entries or something of the sort.
-	for (BaseClassList::const_iterator cit = baseclasslist.begin();
-	     cit != baseclasslist.end(); ++cit) {
+	for (BaseClassList::const_iterator cit = BaseClassList::get().begin();
+	     cit != BaseClassList::get().end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
 			latexModule->classCO->addItem(toqstr(cit->description()));
 		} else {
@@ -2113,7 +2113,7 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 
 TextClass const & GuiDocument::textClass() const
 {
-	return baseclasslist[bp_.baseClass()];
+	return BaseClassList::get()[bp_.baseClass()];
 }
 
 
