@@ -111,8 +111,10 @@ public:
 	/// NOTE This only makes sense when used with "static" TextClass
 	/// objects, e.g., ones that represent files on disk, as opposed
 	/// to ones that can be modified by modules.
-	// FIXME Should we have a modular_ variable, set to true when
-	// we load a module, that would force false to be returned here?
+	// FIXME Therefore it should return true only for BaseClass objects,
+	// and false for DocumentClass objects.
+	// Indeed, quite generally, those two sorts of objects should now be
+	// disentangled a bit.
 	bool loaded() const { return loaded_; }
 
 	/// the list of floats defined in the document class
