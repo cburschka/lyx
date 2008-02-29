@@ -1019,13 +1019,14 @@ void Cursor::insert(MathAtom const & t)
 }
 
 
-void Cursor::insert(Inset * inset)
+void Cursor::insert(Inset * inset0)
 {
+	BOOST_ASSERT(inset0);
 	if (inMathed())
-		insert(MathAtom(inset));
+		insert(MathAtom(inset0));
 	else
-		text()->insertInset(*this, inset);
-	inset->setBuffer(bv_->buffer());
+		text()->insertInset(*this, inset0);
+	inset().setBuffer(bv_->buffer());
 }
 
 
