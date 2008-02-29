@@ -22,6 +22,8 @@ public:
 	///
 	explicit InsetMathChar(char_type c);
 	///
+	void setBuffer(Buffer &) {}
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
