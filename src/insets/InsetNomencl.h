@@ -47,7 +47,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "nomenclature"; }
 private:
-	Inset * clone() const { return new InsetNomencl(params()); }
+	Inset * clone() const { return new InsetNomencl(*this); }
 	/// unique id for this nomenclature entry for docbook export
 	docstring nomenclature_entry_id;
 };
@@ -81,7 +81,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printnomenclature"; }
 private:
-	Inset * clone() const { return new InsetPrintNomencl(params()); }
+	Inset * clone() const { return new InsetPrintNomencl(*this); }
 };
 
 

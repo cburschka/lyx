@@ -50,7 +50,7 @@ public:
 	virtual ColorCode ColorName() const { return Color_newpage; }
 
 private:
-	Inset * clone() const { return new InsetNewpage; }
+	Inset * clone() const { return new InsetNewpage(*this); }
 };
 
 
@@ -65,10 +65,7 @@ public:
 	ColorCode ColorName() const { return Color_pagebreak; }
 
 private:
-	virtual Inset * clone() const
-	{
-		return new InsetPagebreak;
-	}
+	virtual Inset * clone() const { return new InsetPagebreak(*this); }
 };
 
 
@@ -81,10 +78,7 @@ public:
 	std::string getCmdName() const { return "\\clearpage"; }
 
 private:
-	virtual Inset * clone() const
-	{
-		return new InsetClearPage;
-	}
+	virtual Inset * clone() const { return new InsetClearPage(*this); }
 };
 
 
@@ -97,10 +91,7 @@ public:
 	std::string getCmdName() const { return "\\cleardoublepage"; }
 
 private:
-	virtual Inset * clone() const
-	{
-		return new InsetClearDoublePage;
-	}
+	virtual Inset * clone() const { return new InsetClearDoublePage(*this); }
 };
 
 } // namespace lyx
