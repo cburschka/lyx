@@ -60,14 +60,6 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 }
 
 
-Inset * InsetBibitem::clone() const
-{
-	InsetBibitem * b = new InsetBibitem(params());
-	b->autolabel_ = autolabel_;
-	return b;
-}
-
-
 void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

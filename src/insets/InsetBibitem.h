@@ -56,7 +56,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	virtual Inset * clone() const;
+	virtual Inset * clone() const { return new InsetBibitem(*this); }
 	/// The label that is set by updateLabels
 	docstring autolabel_;
 	///
