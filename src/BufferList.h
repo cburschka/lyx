@@ -59,6 +59,12 @@ public:
 	/// emergency save for all buffers
 	void emergencyWriteAll();
 
+	/// save emergency file for the given buffer
+	/**
+	  * \return a status message towards the user.
+	  */
+	docstring emergencyWrite(Buffer * buf);
+
 	/// return true if no buffers loaded
 	bool empty() const;
 
@@ -107,9 +113,6 @@ private:
 
 	/// storage of all buffers
 	BufferStorage bstore;
-
-	/// save emergency file for the given buffer
-	void emergencyWrite(Buffer * buf);
 };
 
 /// Implementation is in LyX.cpp

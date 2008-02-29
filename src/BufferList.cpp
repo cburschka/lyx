@@ -209,24 +209,23 @@ void BufferList::emergencyWriteAll()
 }
 
 
-void BufferList::emergencyWrite(Buffer * buf)
+docstring BufferList::emergencyWrite(Buffer * buf)
 {
 	// Use ::assert to avoid a loop, BOOST_ASSERT ends up calling ::assert
 	// compare with 0 to avoid pointer/interger comparison
 	// ::assert(buf != 0);
 	if (!buf)
-		return;
+		return _("No file open!");
 
 	// No need to save if the buffer has not changed.
 	if (buf->isClean())
-		return;
+		return docstring();
 
 	string const doc = buf->isUnnamed()
 		? onlyFilename(buf->absFileName()) : buf->absFileName();
 
-	lyxerr << to_utf8(
-		bformat(_("LyX: Attempting to save document %1$s"), from_utf8(doc)))
-		<< endl;
+	docstring user_message = bformat(
+		_("LyX: Attempting to save document %1$s\n"), from_utf8(doc));
 
 	// We try to save three places:
 	// 1) Same place as document. Unless it is an unnamed doc.
@@ -236,10 +235,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 		lyxerr << "  " << s << endl;
 		if (buf->writeFile(FileName(s))) {
 			buf->markClean();
-			lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
-			return;
+			user_message += _("  Save seems successful. Phew.\n");
+			return user_message;
 		} else {
-			lyxerr << to_utf8(_("  Save failed! Trying...")) << endl;
+			user_message += _("  Save failed! Trying...\n");
 		}
 	}
 
@@ -249,11 +248,11 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {
 		buf->markClean();
-		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
-		return;
+		user_message += _("  Save seems successful. Phew.\n");
+		return user_message;
 	}
 
-	lyxerr << to_utf8(_("  Save failed! Trying...")) << endl;
+	user_message += _("  Save failed! Trying...\n");
 
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
@@ -263,10 +262,12 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {
 		buf->markClean();
-		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
-		return;
+		user_message += _("  Save seems successful. Phew.\n");
+		return user_message;
 	}
-	lyxerr << to_utf8(_("  Save failed! Bummer. Document is lost.")) << endl;
+
+	user_message += _("  Save failed! Bummer. Document is lost.");
+	return user_message;
 }
 
 

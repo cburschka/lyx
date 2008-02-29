@@ -467,7 +467,8 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		return QApplication::notify(receiver, event);
 	}
 	catch (ExceptionMessage const & e) {
-		if (e.type_ == ErrorException) {
+		switch(e.type_) { 
+		case ErrorException:
 			LyX::cref().emergencyCleanup();
 			setQuitOnLastWindowClosed(false);
 			closeAllViews();
@@ -478,10 +479,20 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 #endif
 			// In release mode, try to exit gracefully.
 			this->exit(1);
-		} else if (e.type_ == WarningException) {
-			Alert::warning(e.title_, e.details_);
+
+		case BufferException: {
+			Buffer * buf = current_view_->buffer();
+			docstring details = e.details_ + '\n';
+			details += theBufferList().emergencyWrite(buf);
+			theBufferList().release(buf);
+			details += _("\nThe current document was closed.");
+			Alert::error(e.title_, details);
 			return false;
 		}
+		case WarningException:
+			Alert::warning(e.title_, e.details_);
+			return false;
+		};
 	}
 	catch (exception const & e) {
 		docstring s = _("LyX has caught an exception, it will now "

@@ -25,6 +25,7 @@ namespace support {
 
 enum ExceptionType {
 	ErrorException,
+	BufferException,
 	WarningException
 };
 
