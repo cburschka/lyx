@@ -57,7 +57,7 @@ public:
 	static bool isCompatibleCommand(std::string const & cmd);
 private:
 	///
-	Inset * clone() const { return new InsetCitation(params()); }
+	Inset * clone() const { return new InsetCitation(*this); }
 	/// we'll eventually want to be able to get info on this from the 
 	/// various CiteEngines
 	static ParamInfo param_info_;
