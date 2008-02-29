@@ -35,7 +35,7 @@ Qt source hierarcy, and enter:
      cd /path/to/QT4/lib
      rm *.la
 
-2. [Needed only for developmental builds:] automake, version 1.5
+2. [Needed only for developmental builds:] automake, version 1.10
 or higher (check with automake --version). Probably the easiest
 way to get this is to use MacPorts (from http://www.macports.org/)
 and install automake using
@@ -71,12 +71,12 @@ If you did not install pkg-config, first set the LDFLAGS variable:
 
 Then, cd to the top of the LyX source hierarchy, and enter:
 
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
      make
      make install-strip
 
-(Note that the --with-version-suffix=-1.5 option will result in LyX's
-user's directory being located at ~/Library/Application Support/LyX-1.5.)
+(Note that the --with-version-suffix=-1.6 option will result in LyX's
+user's directory being located at ~/Library/Application Support/LyX-1.6)
 
 
 (b) Developmental Versions (svn checkouts)
@@ -91,7 +91,7 @@ If you did not install pkg-config, first set the LDFLAGS variable:
 Then, cd to the top of the LyX source hierarchy, and enter:
 
      ./autogen.sh
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.5 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os 
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
      make
      make install-strip
 
