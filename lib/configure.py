@@ -398,6 +398,15 @@ def checkConverterEntries():
     checkProg('a PS to TXT converter', ['ps2ascii $$i $$o'],
         rc_entry = [ r'\converter ps         text3      "%%"	""' ])
     #
+    checkProg('a PS to EPS converter', ['ps2eps $$i'],
+        rc_entry = [ r'\converter ps         eps      "%%"	""' ])
+    #
+    checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
+        rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
+    #
+    checkProg('a PDF to EPS converter', ['pdftops -eps $$i $$o'],
+        rc_entry = [ r'\converter pdf         eps        "%%"	""' ])
+    #
     checkProg('a DVI to TXT converter', ['catdvi $$i > $$o'],
         rc_entry = [ r'\converter dvi        text4      "%%"	""' ])
     #
