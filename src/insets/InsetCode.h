@@ -44,9 +44,9 @@ enum InsetCode {
 	///
 	LABEL_CODE,
 	///
-	NOTE_CODE, // 10
+	NOTE_CODE,
 	///
-	ACCENT_CODE,
+	ACCENT_CODE, // 10
 	///
 	MATH_CODE,
 	///
@@ -54,9 +54,9 @@ enum InsetCode {
 	///
 	INCLUDE_CODE,
 	///
-	GRAPHICS_CODE, // 15
+	GRAPHICS_CODE,
 	///
-	BIBITEM_CODE,
+	BIBITEM_CODE, // 15
 	///
 	BIBTEX_CODE,
 	///
@@ -64,67 +64,67 @@ enum InsetCode {
 	///
 	ERT_CODE,
 	///
-	FOOT_CODE, // 20
+	FOOT_CODE,
 	///
-	MARGIN_CODE,
+	MARGIN_CODE,  // 20
 	///
 	FLOAT_CODE,
 	///
 	WRAP_CODE,
 	///
-	SPACE_CODE, // 25
+	SPACE_CODE,
 	///
 	SPECIALCHAR_CODE,
 	///
-	TABULAR_CODE,
+	TABULAR_CODE, // 25
 	///
 	EXTERNAL_CODE,
-#if 0
-	///
-	THEOREM_CODE,
-#endif
 	///
 	CAPTION_CODE,
 	///
-	MATHMACRO_CODE, // 30
+	MATHMACRO_CODE,
 	///
 	CITE_CODE,
 	///
-	FLOAT_LIST_CODE,
+	FLOAT_LIST_CODE, // 30
 	///
 	INDEX_PRINT_CODE,
 	///
-	OPTARG_CODE, // 35
+	OPTARG_CODE,
 	///
 	ENVIRONMENT_CODE,
 	///
 	HFILL_CODE,
 	///
-	NEWLINE_CODE,
+	NEWLINE_CODE, // 35
 	///
 	LINE_CODE,
 	///
-	BRANCH_CODE, // 40
+	BRANCH_CODE,
 	///
 	BOX_CODE,
 	///
 	FLEX_CODE,
 	///
-	VSPACE_CODE,
+	VSPACE_CODE, // 40
 	///
 	MATHMACROARG_CODE,
 	///
-	NOMENCL_CODE, // 45
+	NOMENCL_CODE,
 	///
 	NOMENCL_PRINT_CODE,
 	///
 	NEWPAGE_CODE,
 	///
-	LISTINGS_CODE,
+	LISTINGS_CODE, // 45
 	///
 	INFO_CODE,
 	///
-	COLLAPSABLE_CODE,  // 50
+	COLLAPSABLE_CODE,
+#if 0
+	///
+	THEOREM_CODE,
+#endif
 };
 
 /** returns the InsetCode corresponding to the \c name.
