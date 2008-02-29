@@ -300,7 +300,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	
 	// store some values to be used inside of the handlers
 	beforeDispatchCursor_ = *this;
-	for (; depth(); pop()) {
+	for (; depth(); pop(), boundary(false)) {
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this);
 		BOOST_ASSERT(pos() <= lastpos());
