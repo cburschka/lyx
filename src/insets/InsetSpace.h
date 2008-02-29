@@ -84,7 +84,7 @@ public:
 	// a line separator)?
 	bool isSpace() const { return true; }
 private:
-	virtual Inset * clone() const;
+	virtual Inset * clone() const { return new InsetSpace(*this); }
 
 	/// And which kind is this?
 	Kind kind_;

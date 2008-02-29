@@ -45,7 +45,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 private:
-	Inset * clone() const { return new InsetLine; }
+	Inset * clone() const { return new InsetLine(*this); }
 };
 
 

@@ -54,7 +54,7 @@ public:
 	virtual ColorCode ColorName() const { return Color_eolmarker; }
 
 private:
-	Inset * clone() const { return new InsetNewline; }
+	Inset * clone() const { return new InsetNewline(*this); }
 };
 
 class InsetLinebreak : public InsetNewline {
@@ -70,10 +70,7 @@ public:
 	ColorCode ColorName() const { return Color_pagebreak; }
 
 private:
-	virtual Inset * clone() const
-	{
-		return new InsetLinebreak;
-	}
+	virtual Inset * clone() const { return new InsetLinebreak(*this); }
 };
 
 

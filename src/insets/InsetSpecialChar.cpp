@@ -291,12 +291,6 @@ void InsetSpecialChar::textString(odocstream & os) const
 }
 
 
-Inset * InsetSpecialChar::clone() const
-{
-	return new InsetSpecialChar(kind_);
-}
-
-
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == MENU_SEPARATOR)

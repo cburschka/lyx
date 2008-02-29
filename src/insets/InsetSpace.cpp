@@ -228,9 +228,4 @@ void InsetSpace::textString(odocstream & os) const
 }
 
 
-Inset * InsetSpace::clone() const
-{
-	return new InsetSpace(kind_);
-}
-
 } // namespace lyx

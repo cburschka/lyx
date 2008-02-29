@@ -80,7 +80,7 @@ public:
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:
-	Inset * clone() const;
+	Inset * clone() const { return new InsetSpecialChar(*this); };
 
 	/// And which kind is this?
 	Kind kind_;
