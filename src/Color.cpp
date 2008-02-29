@@ -139,6 +139,8 @@ ColorSet::ColorSet()
 	{ Color_mathmacrolabel, N_("Math macro label"), "mathmacrolabel", "#a19992", "mathmacrolabel" },
 	{ Color_mathmacroframe, N_("Math macro frame"), "mathmacroframe", "#ede2d8", "mathmacroframe" },
 	{ Color_mathmacroblend, N_("Math macro blended out"), "mathmacroblend", "black", "mathmacroblend" },
+	{ Color_mathmacrooldarg, N_("Math macro old parameter"), "mathmacrooldarg", "grey80", "mathmacrooldarg" },
+	{ Color_mathmacronewarg, N_("Math macro new parameter"), "mathmacronewarg", "grey20", "mathmacronewarg" },
 	{ Color_captionframe, N_("caption frame"), "captionframe", "DarkRed", "captionframe" },
 	{ Color_collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },
 	{ Color_collapsableframe, N_("collapsable inset frame"), "collapsableframe", "IndianRed", "collapsableframe" },

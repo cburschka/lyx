@@ -112,6 +112,10 @@ enum ColorCode
 	Color_mathmacroframe,
 	/// Macro math blended color 
 	Color_mathmacroblend,
+	/// Macro template color for old parameters 
+	Color_mathmacrooldarg,
+	/// Macro template color for new parameters 
+	Color_mathmacronewarg,
 	/// Math inset frame color under focus
 	Color_mathframe,
 	/// Math inset frame color not under focus

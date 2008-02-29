@@ -118,9 +118,9 @@ private:
 	/// shift every #n with from<=n, i.e. #n -> #(n-by)
 	void shiftArguments(size_t from, int by);
 	///
-	void insertParameter(Cursor & cur, int pos, bool greedy = false);
+	void insertParameter(Cursor & cur, int pos, bool greedy = false, bool addarg = true);
 	///
-	void removeParameter(Cursor & cur, int pos, bool greedy = false );
+	void removeParameter(Cursor & cur, int pos, bool greedy = false);
 	///
 	void makeOptional(Cursor & cur);
 	///
@@ -132,11 +132,21 @@ private:
 	///
 	idx_type displayIdx() const { return optionals_ + 2; }
 	///
-	void updateLook() const;
-	/// The representation of the macro tempalte, with some holes to edit
+	void updateLook(bool editing = false) const;
+	/// look through the macro for #n arguments
+	int maxArgumentInDefinition() const;
+	/// add missing #n arguments up to \c maxArg
+	void insertMissingArguments(int maxArg);
+	/// change the arity
+	void changeArity(Cursor & cur, int newNumArg);
+	/// find arguments in definition and adapt the arity accordingly
+	void commitEditChanges(Cursor & cur);
+	/// The representation of the macro template, with some holes to edit
 	mutable MathData look_;
 	///
 	mutable int numargs_;
+	///
+	mutable int argsInLook_;
 	///
 	int optionals_;
 	/// keeps the old optional default value when an 
@@ -148,7 +158,7 @@ private:
 	/// defined before already?
 	mutable bool redefinition_;
 	///
-	void createLook() const;
+	void createLook(int args) const;
 	///
 	mutable bool lookOutdated_;
 	/// true if in pre-calculations of metrics to get height of boxes

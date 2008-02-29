@@ -77,8 +77,8 @@ protected:
 
 
 InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
-			     MathMacroTemplate const & parent, bool frame)
-:	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
+	MathMacroTemplate const & parent, bool frame)
+	: InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
 	cell(0).insert(0, atom);
 }
@@ -86,7 +86,7 @@ InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
 
 InsetLabelBox::InsetLabelBox(docstring label,
 			     MathMacroTemplate const & parent, bool frame)
-:	InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
+	: InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
 {
 }
 
@@ -274,6 +274,61 @@ void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 
 
 ///////////////////////////////////////////////////////////////////////
+class InsetColoredCell : public InsetMathNest {
+public:
+	///
+	InsetColoredCell(ColorCode min, ColorCode max);
+	///
+	InsetColoredCell(ColorCode min, ColorCode max, MathAtom const & atom);
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+
+protected:
+	///
+	Inset * clone() const;
+	///
+	ColorCode min_;
+	///
+	ColorCode max_;
+};
+
+
+InsetColoredCell::InsetColoredCell(ColorCode min, ColorCode max)
+	: InsetMathNest(1), min_(min), max_(max)
+{
+}
+
+
+InsetColoredCell::InsetColoredCell(ColorCode min, ColorCode max, MathAtom const & atom)
+	: InsetMathNest(1), min_(min), max_(max)
+{
+	cell(0).insert(0, atom);
+}
+
+
+Inset * InsetColoredCell::clone() const
+{
+	return new InsetColoredCell(*this);
+}
+
+
+void InsetColoredCell::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	cell(0).metrics(mi, dim);
+}
+
+
+void InsetColoredCell::draw(PainterInfo & pi, int x, int y) const
+{
+	pi.pain.enterMonochromeMode(min_, max_);
+	cell(0).draw(pi, x, y);
+	pi.pain.leaveMonochromeMode();
+}
+
+
+///////////////////////////////////////////////////////////////////////
 
 class InsetNameWrapper : public InsetMathWrapper {
 public:
@@ -334,7 +389,7 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: InsetMathNest(3), numargs_(0), optionals_(0),
+	: InsetMathNest(3), numargs_(0), argsInLook_(0), optionals_(0),
 	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
 	initMath();
@@ -345,7 +400,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 	int optionals, MacroType type,
 	vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
-	: InsetMathNest(optionals + 3), numargs_(numargs),
+	: InsetMathNest(optionals + 3), numargs_(numargs), argsInLook_(0),
 	  optionals_(optionals), optionalValues_(optionalValues),
 	  type_(type), lookOutdated_(true)
 {
@@ -410,15 +465,16 @@ void MathMacroTemplate::updateToContext(MacroContext const & mc) const
 }
 
 
-void MathMacroTemplate::updateLook() const
+void MathMacroTemplate::updateLook(bool editing) const
 {
 	lookOutdated_ = true;
 }
 
 
-void MathMacroTemplate::createLook() const
+void MathMacroTemplate::createLook(int args) const
 {
 	look_.clear();
+	argsInLook_ = args;
 
 	// \foo
 	look_.push_back(MathAtom(new InsetLabelBox(_("Name"), *this, false)));
@@ -429,12 +485,20 @@ void MathMacroTemplate::createLook() const
 	int i = 0;
 	if (optionals_ > 0) {
 		look_.push_back(MathAtom(new InsetLabelBox(_("optional"), *this, false)));
-		MathData & optData = look_[look_.size() - 1].nucleus()->cell(0);
-
+		
 		for (; i < optionals_; ++i) {
-			optData.push_back(MathAtom(new InsetMathChar('[')));
-			optData.push_back(MathAtom(new InsetMathWrapper(&cell(1 + i))));
-			optData.push_back(MathAtom(new InsetMathChar(']')));
+			MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
+
+			// color it red, if it is to be remove when the cursor leaves
+			if (optionals_ > argsInLook_) {
+				optData->push_back(MathAtom(
+					new InsetColoredCell(Color_mathbg, Color_mathmacrooldarg)));
+				optData = &(*optData)[0].nucleus()->cell(0);
+			}
+
+			optData->push_back(MathAtom(new InsetMathChar('[')));
+			optData->push_back(MathAtom(new InsetMathWrapper(&cell(1 + i))));
+			optData->push_back(MathAtom(new InsetMathChar(']')));
 		}
 	}
 
@@ -442,9 +506,21 @@ void MathMacroTemplate::createLook() const
 	for (; i < numargs_; ++i) {
 		MathData arg;
 		arg.push_back(MathAtom(new MathMacroArgument(i + 1)));
-		look_.push_back(MathAtom(new InsetMathBrace(arg)));
+		if (i >= argsInLook_) {
+			look_.push_back(MathAtom(new InsetColoredCell(
+				Color_mathbg, Color_mathmacrooldarg,
+				MathAtom(new InsetMathBrace(arg)))));
+		} else
+			look_.push_back(MathAtom(new InsetMathBrace(arg)));
 	}
-
+	for (; i < argsInLook_; ++i) {
+		MathData arg;
+		arg.push_back(MathAtom(new MathMacroArgument(i + 1)));
+		look_.push_back(MathAtom(new InsetColoredCell(
+			Color_mathbg, Color_mathmacronewarg,
+			MathAtom(new InsetMathBrace(arg)))));
+	}
+	
 	// :=
 	look_.push_back(MathAtom(new InsetMathChar(':')));
 	look_.push_back(MathAtom(new InsetMathChar('=')));
@@ -476,9 +552,10 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	// update look?
-	if (lookOutdated_) {
+	int argsInDef = maxArgumentInDefinition();
+	if (lookOutdated_ || argsInDef != argsInLook_) {
 		lookOutdated_ = false;
-		createLook();
+		createLook(argsInDef);
 	}
 
 	/// metrics for inset contents
@@ -532,7 +609,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 
 void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
-	updateLook();
+	updateLook(true);
 	cur.updateFlags(Update::Force);
 	InsetMathNest::edit(cur, front, entry_from);
 }
@@ -540,6 +617,7 @@ void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from
 
 bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
+	commitEditChanges(cur);
 	updateLook();
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
@@ -579,6 +657,74 @@ void MathMacroTemplate::shiftArguments(size_t from, int by) {
 	}
 
 	updateLook();
+}
+
+
+int MathMacroTemplate::maxArgumentInDefinition() const
+{
+	int maxArg = 0;
+	MathMacroTemplate * nonConst = const_cast<MathMacroTemplate *>(this);
+	DocIterator it = doc_iterator_begin(*nonConst);
+	it.idx() = defIdx();
+	for (; it; it.forwardChar()) {
+		if (!it.nextInset())
+			continue;
+		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+			continue;
+		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
+		maxArg = std::max(int(arg->number()), maxArg);
+	}
+	return maxArg;
+}
+
+
+void MathMacroTemplate::insertMissingArguments(int maxArg)
+{
+	bool found[9] = { false, false, false, false, false, false, false, false, false };
+	idx_type idx = cell(displayIdx()).empty() ? defIdx() : displayIdx();
+
+	// search for #n macros arguments
+	DocIterator it = doc_iterator_begin(*this);
+	it.idx() = idx;
+	for (; it && it[0].idx() == idx; it.forwardChar()) {
+		if (!it.nextInset())
+			continue;
+		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+			continue;
+		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
+		found[arg->number() - 1] = true;
+	}
+
+	// add missing ones
+	for (int i = 0; i < maxArg; ++i) {
+		if (found[i])
+			continue;
+
+		cell(idx).push_back(MathAtom(new MathMacroArgument(i + 1)));
+	}
+}
+
+
+void MathMacroTemplate::changeArity(Cursor & cur, int newNumArg)
+{
+	// remove parameter which do not appear anymore in the definition
+	for (int i = numargs_; i > newNumArg; --i)
+		removeParameter(cur, numargs_ - 1, false);
+	
+	// add missing parameter
+	for (int i = numargs_; i < newNumArg; ++i)
+		insertParameter(cur, numargs_, false, false);
+}
+
+
+void MathMacroTemplate::commitEditChanges(Cursor & cur)
+{
+	int argsInDef = maxArgumentInDefinition();
+	if (argsInDef != numargs_) {
+		cur.recordUndoFullDocument();
+		changeArity(cur, argsInDef);
+	}
+	insertMissingArguments(argsInDef);
 }
 
 
@@ -673,16 +819,19 @@ void fixMacroInstancesFunctional(Cursor const & from,
 }
 
 
-void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy)
+void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy, bool addarg)
 {
 	if (pos <= numargs_ && pos >= optionals_ && numargs_ < 9) {
 		++numargs_;
-		shiftArguments(pos, 1);
-
+		
 		// append example #n
-		cell(defIdx()).push_back(MathAtom(new MathMacroArgument(pos + 1)));
-		if (!cell(displayIdx()).empty())
-			cell(displayIdx()).push_back(MathAtom(new MathMacroArgument(pos + 1)));
+		if (addarg) {
+			shiftArguments(pos, 1);
+
+			cell(defIdx()).push_back(MathAtom(new MathMacroArgument(pos + 1)));
+			if (!cell(displayIdx()).empty())
+				cell(displayIdx()).push_back(MathAtom(new MathMacroArgument(pos + 1)));
+		}
 
 		if (!greedy) {
 			Cursor dit = cur;
@@ -765,7 +914,7 @@ void MathMacroTemplate::makeNonOptional(Cursor & cur) {
 	if (numargs_ > 0 && optionals_ > 0) {
 		--optionals_;
 
-		// store default value for later if the use changes his mind
+		// store default value for later if the user changes his mind
 		optionalValues_[optionals_] = cell(optIdx(optionals_));
 		cells_.erase(cells_.begin() + optIdx(optionals_));
 
@@ -800,6 +949,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_ADD_PARAM:
 		if (numargs_ < 9) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_;
 			if (arg.size() != 0)
@@ -811,6 +961,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_REMOVE_PARAM:
 		if (numargs_ > 0) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_ - 1;
 			if (arg.size() != 0)
@@ -821,6 +972,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_APPEND_GREEDY_PARAM:
 		if (numargs_ < 9) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			insertParameter(cur, numargs_, true);
 		}
@@ -828,23 +980,27 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		if (numargs_ > 0) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			removeParameter(cur, numargs_ - 1, true);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_OPTIONAL:
+		commitEditChanges(cur);
 		cur.recordUndoFullDocument();
 		makeOptional(cur);
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
+		commitEditChanges(cur);
 		cur.recordUndoFullDocument();
 		makeNonOptional(cur);
 		break;
 
 	case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
 		if (numargs_ < 9) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			insertParameter(cur, optionals_);
 			makeOptional(cur);
@@ -853,12 +1009,14 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
 		if (optionals_ > 0) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			removeParameter(cur, optionals_ - 1);
 		} break;
 
 	case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
 		if (numargs_ == optionals_) {
+			commitEditChanges(cur);
 			cur.recordUndoFullDocument();
 			insertParameter(cur, 0, true);
 			makeOptional(cur);
