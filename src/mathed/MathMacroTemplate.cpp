@@ -617,7 +617,13 @@ void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from
 
 bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	commitEditChanges(cur);
+	// find this in cursor old
+	Cursor insetCur = old;
+	int scriptSlice	= insetCur.find(this);
+	BOOST_ASSERT(scriptSlice != -1);
+	insetCur.cutOff(scriptSlice);
+	
+	commitEditChanges(insetCur);
 	updateLook();
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
