@@ -283,7 +283,7 @@ public:
 	 */
 	VSpace defskip;
 	PDFOptions pdfoptions;
-	BaseClassIndex baseClass_;
+	LayoutFileIndex baseClass_;
 };
 
 
@@ -466,7 +466,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		string tcp;
 		BaseClassList & bcl = BaseClassList::get();
 		if (!filepath.empty())
-			tcp = bcl.addTextClass(classname, filepath.absFilename());
+			tcp = bcl.addLayoutFile(classname, filepath.absFilename());
 		if (!tcp.empty())
 			setBaseClass(tcp);
 		else if (bcl.haveClass(classname)) {
@@ -479,7 +479,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// FIXME: this warning will be given even if there exists a local .cls
 		// file. Even worse, the .lyx file can not be compiled or exported
 		// because the textclass is marked as unavilable.
-		if (!documentClass().isTeXClassAvailable()) {
+		if (!baseClass()->isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
 						 "%1$s.layout,\n"
@@ -1413,7 +1413,7 @@ bool BufferParams::setBaseClass(string const & classname)
 }
 
 
-TextClass const * BufferParams::baseClass() const
+LayoutFile const * BufferParams::baseClass() const
 {
 	if (BaseClassList::get().haveClass(pimpl_->baseClass_))
 		return &(BaseClassList::get()[pimpl_->baseClass_]);
@@ -1422,7 +1422,7 @@ TextClass const * BufferParams::baseClass() const
 }
 
 
-BaseClassIndex const & BufferParams::baseClassID() const
+LayoutFileIndex const & BufferParams::baseClassID() const
 {
 	return pimpl_->baseClass_;
 }

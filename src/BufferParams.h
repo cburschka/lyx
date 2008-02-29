@@ -32,7 +32,7 @@ class FileName;
 }
 
 class AuthorList;
-class BaseClassIndex;
+class LayoutFileIndex;
 class BranchList;
 class Bullet;
 class DocumentClass;
@@ -40,9 +40,9 @@ class Encoding;
 class Language;
 class Lexer;
 class LatexFeatures;
+class LayoutFile;
 class PDFOptions;
 class Spacing;
-class TextClass;
 class TexRow;
 class VSpace;
 
@@ -106,11 +106,11 @@ public:
 	InsetQuotes::quote_times quotes_times;
 	///
 	std::string fontsize;
-	///Get the LyX TextClass (that is, the layout file) this document is using.
-	TextClass const * baseClass() const;
+	///Get the LayoutFile this document is using.
+	LayoutFile const * baseClass() const;
 	///
-	BaseClassIndex const & baseClassID() const;
-	/// Set the LyX TextClass (that is, the layout file) this document is using.
+	LayoutFileIndex const & baseClassID() const;
+	/// Set the LyX layout file this document is using.
 	/// NOTE: This does not call makeDocumentClass() to update the local 
 	/// DocumentClass. That needs to be done manually.
 	/// \param filename the name of the layout file

@@ -25,7 +25,7 @@
 namespace lyx {
 
 class Inset;
-class TextClass;
+class DocumentClass;
 class ToolbarItem;
 
 namespace frontend {
@@ -53,7 +53,7 @@ private Q_SLOTS:
 
 private:
 	GuiView & owner_;
-	TextClass const * text_class_;
+	DocumentClass const * text_class_;
 	Inset const * inset_;
 };
 

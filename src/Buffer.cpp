@@ -14,6 +14,7 @@
 #include "Buffer.h"
 
 #include "Author.h"
+#include "BaseClassList.h"
 #include "BiblioInfo.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
@@ -2535,7 +2536,7 @@ vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
 vector<string> Buffer::backends() const
 {
 	vector<string> v;
-	if (params().documentClass().isTeXClassAvailable()) {
+	if (params().baseClass()->isTeXClassAvailable()) {
 		v.push_back(bufferFormat());
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (v.back() == "latex")

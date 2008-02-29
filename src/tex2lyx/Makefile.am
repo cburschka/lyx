@@ -33,6 +33,7 @@ LINKED_FILES = \
 	../Floating.cpp \
 	../Counters.cpp \
 	../insets/InsetLayout.cpp \
+	../BaseClassList.h \
 	../Layout.h \
 	../Layout.cpp \
 	../TextClass.cpp \

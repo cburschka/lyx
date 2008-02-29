@@ -12,7 +12,7 @@
 #ifndef CONTEXT_H
 #define CONTEXT_H
 
-#include "TextClass.h"
+#include "tex2lyx.h"
 
 #include <iosfwd>
 
@@ -77,7 +77,7 @@ void output_font_change(std::ostream & os, TeXFont const & oldfont,
 class Context {
 public:
 	Context(bool need_layout_,
-		TextClass const & textclass_,
+		TeX2LyXDocClass const & textclass_,
 		LayoutPtr layout_ = LayoutPtr(),
 		LayoutPtr parent_layout_= LayoutPtr(),
 		TeXFont font_ = TeXFont());
@@ -140,7 +140,7 @@ public:
 	static bool empty;
 
 	/// The textclass of the document. Could actually be a global variable
-	TextClass const & textclass;
+	TeX2LyXDocClass const & textclass;
 	/// The layout of the current paragraph
 	LayoutPtr layout;
 	/// The layout of the outer paragraph (for environment layouts)

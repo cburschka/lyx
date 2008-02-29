@@ -134,7 +134,7 @@ void InsetCollapsable::setLayout(DocumentClass const * const dc)
 		layout_ = &(dc->insetLayout(name()));
 		labelstring_ = layout_->labelstring();
 	} else {
-		layout_ = &TextClass::emptyInsetLayout();
+		layout_ = &DocumentClass::emptyInsetLayout();
 		labelstring_ = _("UNDEFINED");
 	}
 
@@ -896,7 +896,7 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 bool InsetCollapsable::undefined() const
 {
 	docstring const & n = getLayout().name();
-	return n.empty() || n == TextClass::emptyInsetLayout().name();
+	return n.empty() || n == DocumentClass::emptyInsetLayout().name();
 }
 
 

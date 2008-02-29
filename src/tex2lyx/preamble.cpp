@@ -15,6 +15,7 @@
 
 #include "tex2lyx.h"
 
+#include "BaseClassList.h"
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
@@ -405,7 +406,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 
 } // anonymous namespace
 
-TextClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
+TeX2LyXDocClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -660,7 +661,7 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
 		exit(1);
 	}
-	TextClass textclass;
+	TeX2LyXDocClass textclass;
 	textclass.read(layoutfilename);
 	if (h_papersides.empty()) {
 		ostringstream ss;

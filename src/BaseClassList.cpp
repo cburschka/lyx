@@ -12,12 +12,16 @@
 #include <config.h>
 
 #include "BaseClassList.h"
-#include "TextClass.h"
+#include "Counters.h"
+#include "Floating.h"
+#include "FloatList.h"
 #include "Lexer.h"
+#include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 
 #include <boost/bind.hpp>
 #include <boost/regex.hpp>
@@ -32,6 +36,16 @@ namespace lyx {
 using boost::bind;
 using boost::regex;
 using boost::smatch;
+
+LayoutFile::LayoutFile(string const & fn, string const & cln,
+			   string const & desc, bool texClassAvail )
+{
+	name_ = fn;
+	latexname_ = cln;
+	description_ = desc;
+	texClassAvail_ = texClassAvail;
+}
+
 
 BaseClassList & BaseClassList::get() 
 {
@@ -52,9 +66,16 @@ bool BaseClassList::haveClass(string const & classname) const
 }
 
 
+LayoutFile const & BaseClassList::operator[](string const & classname) const
+{
+	BOOST_ASSERT(haveClass(classname));
+	return classmap_[classname];
+}
+
+
 // Gets a textclass structure from string
-TextClass const & 
-	BaseClassList::operator[](string const & classname) const
+LayoutFile & 
+	BaseClassList::operator[](string const & classname)
 {
 	BOOST_ASSERT(haveClass(classname));
 	return classmap_[classname];
@@ -119,7 +140,7 @@ bool BaseClassList::read()
 						LYXERR(Debug::TCLASS, "Avail: " << avail);
 						// This code is run when we have
 						// fname, clname, desc, and avail
-						TextClass tmpl(fname, clname, desc, avail);
+						LayoutFile tmpl(fname, clname, desc, avail);
 						if (lyxerr.debugging(Debug::TCLASS)) {
 							// only system layout files are loaded here so no
 							// buffer path is needed.
@@ -143,9 +164,9 @@ bool BaseClassList::read()
 }
 
 
-std::vector<BaseClassIndex> BaseClassList::classList() const
+std::vector<LayoutFileIndex> BaseClassList::classList() const
 {
-	std::vector<BaseClassIndex> cl;
+	std::vector<LayoutFileIndex> cl;
 	ClassMap::const_iterator it = classmap_.begin();
 	ClassMap::const_iterator en = classmap_.end();
 	for (; it != en; ++it)
@@ -154,10 +175,10 @@ std::vector<BaseClassIndex> BaseClassList::classList() const
 }
 
 
-void BaseClassList::reset(BaseClassIndex const & classname) {
+void BaseClassList::reset(LayoutFileIndex const & classname) {
 	BOOST_ASSERT(haveClass(classname));
-	TextClass const & tc = classmap_[classname];
-	TextClass tmpl(tc.name(), tc.latexname(), tc.description(), 
+	LayoutFile const & tc = classmap_[classname];
+	LayoutFile tmpl(tc.name(), tc.latexname(), tc.description(),
 	               tc.isTeXClassAvailable());
 	classmap_[classname] = tmpl;
 }
@@ -166,8 +187,8 @@ void BaseClassList::reset(BaseClassIndex const & classname) {
 string const BaseClassList::localPrefix = "LOCAL:";
 
 
-BaseClassIndex 
-	BaseClassList::addTextClass(string const & textclass, string const & path)
+LayoutFileIndex 
+	BaseClassList::addLayoutFile(string const & textclass, string const & path)
 {
 	// FIXME BUGS
 	// There be bugs here. The way this presently works, the local class gets 
@@ -209,7 +230,7 @@ BaseClassIndex
 				// returns: whole string, classtype (not used here), class name, description
 				BOOST_ASSERT(sub.size() == 4);
 				// now, create a TextClass with description containing path information
-				TextClass tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
+				LayoutFile tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
 				// Do not add this local TextClass to classmap_ if it has
 				// already been loaded by, for example, a master buffer.
@@ -233,7 +254,7 @@ BaseClassIndex
 }
 
 
-BaseClassIndex defaultBaseclass()
+LayoutFileIndex defaultBaseclass()
 {
 	if (BaseClassList::get().haveClass("article"))
 		return string("article");

@@ -715,7 +715,7 @@ void showPrintError(string const & name)
 }
 
 
-bool loadTextClass(string const & name, string const & buf_path)
+bool loadLayoutFile(string const & name, string const & buf_path)
 {
 	if (!BaseClassList::get().haveClass(name)) {
 		lyxerr << "Document class \"" << name
@@ -724,7 +724,7 @@ bool loadTextClass(string const & name, string const & buf_path)
 		return false;
 	}
 
-	TextClass const & tc = BaseClassList::get()[name];
+	LayoutFile & tc = BaseClassList::get()[name];
 	if (!tc.load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
 				   "could not be loaded."), from_utf8(name));
@@ -1605,13 +1605,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			if (!loadTextClass(argument, buffer->filePath()))
+			if (!loadLayoutFile(argument, buffer->filePath()))
 				break;
 
-			TextClass const * old_class = buffer->params().baseClass();
-			TextClass const * new_class = &(BaseClassList::get()[argument]);
+			LayoutFile const * old_layout = buffer->params().baseClass();
+			LayoutFile const * new_layout = &(BaseClassList::get()[argument]);
 
-			if (old_class == new_class)
+			if (old_layout == new_layout)
 				// nothing to do
 				break;
 
@@ -1629,7 +1629,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
-			BaseClassIndex bc = buffer->params().baseClassID();
+			LayoutFileIndex bc = buffer->params().baseClassID();
 			BaseClassList::get().reset(bc);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
@@ -1638,7 +1638,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_LOAD:
-			loadTextClass(argument, lyx_view_->buffer()->filePath());
+			loadLayoutFile(argument, lyx_view_->buffer()->filePath());
 			break;
 
 		case LFUN_LYXRC_APPLY: {

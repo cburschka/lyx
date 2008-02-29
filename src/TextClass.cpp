@@ -16,6 +16,7 @@
 
 #include "TextClass.h"
 
+#include "BaseClassList.h"
 #include "Color.h"
 #include "Counters.h"
 #include "Floating.h"
@@ -105,13 +106,16 @@ std::string translateRT(TextClass::ReadType rt)
 } // namespace anon
 
 
-TextClass::TextClass(string const & fn, string const & cln,
-			   string const & desc, bool texClassAvail )
-	: name_(fn), latexname_(cln), description_(desc),
-	  floatlist_(new FloatList), counters_(new Counters),
-	  texClassAvail_(texClassAvail)
+docstring const TextClass::emptylayout_ = from_ascii("PlainLayout");
+
+
+InsetLayout DocumentClass::empty_insetlayout_;
+
+
+TextClass::TextClass()
 {
-	modular_ = false;
+	floatlist_ = boost::shared_ptr<FloatList>(new FloatList);
+	counters_ = boost::shared_ptr<Counters>(new Counters);
 	outputType_ = LATEX;
 	columns_ = 1;
 	sides_ = OneSide;
@@ -130,18 +134,6 @@ TextClass::TextClass(string const & fn, string const & cln,
 }
 
 
-docstring const TextClass::emptylayout_ = from_ascii("PlainLayout");
-
-
-InsetLayout TextClass::empty_insetlayout_;
-
-
-bool TextClass::isTeXClassAvailable() const
-{
-	return texClassAvail_;
-}
-
-
 bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
@@ -151,9 +143,9 @@ bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 	}
 	// Resolve fonts
 	lay.resfont = lay.font;
-	lay.resfont.realize(defaultfont());
+	lay.resfont.realize(defaultfont_);
 	lay.reslabelfont = lay.labelfont;
-	lay.reslabelfont.realize(defaultfont());
+	lay.reslabelfont.realize(defaultfont_);
 	return true; // no errors
 }
 
@@ -853,24 +845,6 @@ void TextClass::readCounter(Lexer & lexrc)
 }
 
 
-FontInfo const & TextClass::defaultfont() const
-{
-	return defaultfont_;
-}
-
-
-docstring const & TextClass::leftmargin() const
-{
-	return leftmargin_;
-}
-
-
-docstring const & TextClass::rightmargin() const
-{
-	return rightmargin_;
-}
-
-
 bool TextClass::hasLayout(docstring const & n) const
 {
 	docstring const name = n.empty() ? defaultLayoutName() : n;
@@ -949,32 +923,7 @@ bool TextClass::load(string const & path) const
 }
 
 
-FloatList & TextClass::floats()
-{
-	return *floatlist_.get();
-}
-
-
-FloatList const & TextClass::floats() const
-{
-	return *floatlist_.get();
-}
-
-
-Counters & TextClass::counters() const
-{
-	return *counters_.get();
-}
-
-
-// Return the layout object of an inset given by name. If the name
-// is not found as such, the part after the ':' is stripped off, and
-// searched again. In this way, an error fallback can be provided:
-// An erroneous 'CharStyle:badname' (e.g., after a documentclass switch)
-// will invoke the layout object defined by name = 'CharStyle'.
-// If that doesn't work either, an empty object returns (shouldn't
-// happen).  -- Idea JMarc, comment MV
-InsetLayout const & TextClass::insetLayout(docstring const & name) const 
+InsetLayout const & DocumentClass::insetLayout(docstring const & name) const 
 {
 	docstring n = name;
 	while (!n.empty()) {
@@ -1002,136 +951,7 @@ LayoutPtr const & TextClass::defaultLayout() const
 }
 
 
-string const & TextClass::name() const
-{
-	return name_;
-}
-
-
-string const & TextClass::latexname() const
-{
-	// No buffer path information is needed here because on-demand layout files
-	// have already been loaded, and no path is needed for system layouts.
-	const_cast<TextClass*>(this)->load();
-	return latexname_;
-}
-
-
-string const & TextClass::description() const
-{
-	return description_;
-}
-
-
-string const & TextClass::opt_fontsize() const
-{
-	return opt_fontsize_;
-}
-
-
-string const & TextClass::opt_pagestyle() const
-{
-	return opt_pagestyle_;
-}
-
-
-string const & TextClass::options() const
-{
-	return options_;
-}
-
-
-string const & TextClass::class_header() const
-{
-	return class_header_;
-}
-
-
-string const & TextClass::pagestyle() const
-{
-	return pagestyle_;
-}
-
-
-docstring const & TextClass::preamble() const
-{
-	return preamble_;
-}
-
-
-PageSides TextClass::sides() const
-{
-	return sides_;
-}
-
-
-int TextClass::secnumdepth() const
-{
-	return secnumdepth_;
-}
-
-
-int TextClass::tocdepth() const
-{
-	return tocdepth_;
-}
-
-
-OutputType TextClass::outputType() const
-{
-	return outputType_;
-}
-
-
-bool TextClass::provides(string const & p) const
-{
-	return provides_.find(p) != provides_.end();
-}
-
-
-unsigned int TextClass::columns() const
-{
-	return columns_;
-}
-
-
-TitleLatexType TextClass::titletype() const
-{
-	return titletype_;
-}
-
-
-string const & TextClass::titlename() const
-{
-	return titlename_;
-}
-
-
-int TextClass::size() const
-{
-	return layoutlist_.size();
-}
-
-
-int TextClass::min_toclevel() const
-{
-	return min_toclevel_;
-}
-
-
-int TextClass::max_toclevel() const
-{
-	return max_toclevel_;
-}
-
-
-bool TextClass::hasTocLevels() const
-{
-	return min_toclevel_ != Layout::NOT_IN_TOC;
-}
-
-
-DocumentClass & DocumentClassBundle::newClass(TextClass const & baseClass)
+DocumentClass & DocumentClassBundle::newClass(LayoutFile const & baseClass)
 {
 	DocumentClass dc(baseClass);
 	tc_list_.push_back(dc);
@@ -1146,7 +966,7 @@ DocumentClassBundle & DocumentClassBundle::get()
 }
 
 
-DocumentClass::DocumentClass(TextClass const & tc)
+DocumentClass::DocumentClass(LayoutFile const & tc)
 	: TextClass(tc)
 {}
 
@@ -1159,6 +979,18 @@ bool DocumentClass::hasLaTeXLayout(std::string const & lay) const
 		if (it->get()->latexname() == lay)
 			return true;
 	return false;
+}
+
+
+bool DocumentClass::provides(string const & p) const
+{
+	return provides_.find(p) != provides_.end();
+}
+
+
+bool DocumentClass::hasTocLevels() const
+{
+	return min_toclevel_ != Layout::NOT_IN_TOC;
 }
 
 

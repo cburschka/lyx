@@ -48,7 +48,7 @@ namespace lyx {
 
 
 InsetCaption::InsetCaption(InsetCaption const & ic)
-	: InsetText(ic), textclass_(ic.textclass_)
+	: InsetText(ic)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -57,7 +57,7 @@ InsetCaption::InsetCaption(InsetCaption const & ic)
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp), textclass_(bp.documentClass())
+	: InsetText(bp)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);

@@ -34,48 +34,56 @@ namespace support { class FileName; }
 class Counters;
 class FloatList;
 class Layout;
+class LayoutFile;
 class Lexer;
 
 
 /// A TextClass represents a collection of layout information: At the 
 /// moment, this includes Layout's and InsetLayout's.
 ///
-/// The main function of TextClass objecs is to provide layout information
-/// to a Buffer, by being the TextClass associated with the BufferParams for
-/// a given Buffer. This is the object returned by BufferParams::textClass().
-/// These instances of TextClass do not necessarily correspond just to a 
-/// *.layout file---that is, to a LyX "document class" or *.layout file---
-/// since a Buffer's TextClass, though always based upon a "document class" 
-/// may be modified by loading modules.
-
-/// That said, some TextClass instances do correspond strictly to document
-/// classes, that is, to *.layout files. These instances are known in the code
-/// as "base classes". These are cached in BaseClassList.
-///
-/// Though it does not presently exist, one can imagine an extension of this
-/// mechanism that would lead to caching of *.module or *.inc files. In that
-/// case, some TextClass's would just correspond to *.module or *.inc files,
-/// just as some now correspond to *.layout files.
+/// There are two major subclasses of TextClass: LayoutFile and
+/// DocumentClass. These subclasses are what are actually used in LyX.
+/// Simple TextClass objects are not directly constructed in the main 
+/// LyX code---the constructor is protected. (That said, in tex2lyx
+/// there are what amount to simple TextClass objects.)
 class TextClass {
 public:
+	///
+	virtual ~TextClass() {};
+	///////////////////////////////////////////////////////////////////
+	// typedefs
+	///////////////////////////////////////////////////////////////////
 	/// The individual paragraph layouts comprising the document class
 	typedef std::vector<LayoutPtr> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
-	/// Construct a layout with default values. Actual values loaded later.
-	explicit TextClass(std::string const & = std::string(),
-		                 std::string const & = std::string(),
-		                 std::string const & = std::string(),
-		                 bool texClassAvail = false);
-	
-	/// check whether the TeX class is available
-	bool isTeXClassAvailable() const;
 
+	///////////////////////////////////////////////////////////////////
+	// Layout Info
+	///////////////////////////////////////////////////////////////////
+	///
+	LayoutPtr const & defaultLayout() const;
+	///
+	docstring const & defaultLayoutName() const;
+	/// returns a special layout for use when we don't really want one,
+	/// e.g., in table cells
+	LayoutPtr const & emptyLayout() const 
+			{ return operator[](emptylayout_); };
+	/// the name of the empty layout
+	docstring const & emptyLayoutName() const 
+			{ return emptylayout_; }
 	/// Enumerate the paragraph styles.
 	size_t layoutCount() const { return layoutlist_.size(); }
 	/// Access the paragraph styles.
 	LayoutPtr const & layout(size_t index) const { return layoutlist_[index]; }
+	///
+	bool hasLayout(docstring const & name) const;
+	///
+	LayoutPtr const & operator[](docstring const & vname) const;
 
+	///////////////////////////////////////////////////////////////////
+	// reading routines
+	///////////////////////////////////////////////////////////////////
 	/// Enum used with TextClass::read
 	enum ReadType { 
 		BASECLASS, //>This is a base class, i.e., top-level layout file
@@ -85,143 +93,47 @@ public:
 	/// Performs the read of the layout file.
 	/// \return true on success.
 	bool read(support::FileName const & filename, ReadType rt = BASECLASS);
-	///
-	void readOutputType(Lexer &);
-	///
-	void readTitleType(Lexer &);
-	///
-	void readMaxCounter(Lexer &);
-	///
-	void readClassOptions(Lexer &);
-	///
-	void readCharStyle(Lexer &, std::string const &);
-	///
-	void readFloat(Lexer &);
-	///
-	void readCounter(Lexer &);
-	///
-	bool hasLayout(docstring const & name) const;
 
-	///
-	LayoutPtr const & operator[](docstring const & vname) const;
-
-	/// Sees to that the textclass structure has been loaded
+	///////////////////////////////////////////////////////////////////
+	// loading
+	///////////////////////////////////////////////////////////////////
+	/// Sees to it the textclass structure has been loaded
 	bool load(std::string const & path = std::string()) const;
 	/// Has this layout file been loaded yet?
-	/// NOTE This only makes sense when used with "static" TextClass
-	/// objects, e.g., ones that represent files on disk, as opposed
-	/// to ones that can be modified by modules.
-	// FIXME Therefore it should return true only for BaseClass objects,
-	// and false for DocumentClass objects.
-	// Indeed, quite generally, those two sorts of objects should now be
-	// disentangled a bit.
-	bool loaded() const { return loaded_; }
+	/// Overridden by DocumentClass
+	virtual bool loaded() const { return loaded_; }
 
-	/// the list of floats defined in the document class
-	FloatList & floats();
-	/// the list of floats defined in the document class
-	FloatList const & floats() const;
-	/// The Counters present in this document class.
-	Counters & counters() const;
-	/// Inset layouts of this doc class
-	InsetLayouts & insetLayouts() const { return insetlayoutlist_; };
+	///////////////////////////////////////////////////////////////////
+	// accessors
+	///////////////////////////////////////////////////////////////////
 	///
-	InsetLayout const & insetLayout(docstring const & name) const;
+	std::string const & name() const { return name_; };
 	///
-	docstring const & defaultLayoutName() const;
+	std::string const & description() const {	return description_; };
 	///
-	LayoutPtr const & defaultLayout() const;
-	/// returns a special layout for use when we don't really want one,
-	/// e.g., in table cells
-	LayoutPtr const & emptyLayout() const 
-			{ return operator[](emptylayout_); };
-	///
-	docstring const & emptyLayoutName() const 
-			{ return emptylayout_; }
-	///
-	std::string const & name() const;
-	///
-	docstring const & labelstring() const;
-	///
-	std::string const & latexname() const;
-	///
-	std::string const & description() const;
-	///
-	bool isModular() const { return modular_; }
-	/// Sets the layout as a modular one. There is never any
-	/// need to reset this.
-	void markAsModular() { modular_ = true; }
-	///
-	std::string const & opt_fontsize() const;
-	///
-	std::string const & opt_pagestyle() const;
-	///
-	std::string const & options() const;
-	///
-	std::string const & class_header() const;
-	///
-	std::string const & pagestyle() const;
-	///
-	docstring const & preamble() const;
-
-	/// is this feature already provided by the class?
-	bool provides(std::string const & p) const;
-	/// features required by the class?
-	std::set<std::string> const & requires() const { return requires_; }
-
-	///
-	unsigned int columns() const;
-	///
-	PageSides sides() const;
-	///
-	int secnumdepth() const;
-	///
-	int tocdepth() const;
-
-	/// Can be LaTeX, DocBook, etc.
-	OutputType outputType() const;
-
-	///
-	FontInfo const & defaultfont() const;
-
-	/// Text that dictates how wide the left margin is on the screen
-	docstring const & leftmargin() const;
-
-	/// Text that dictates how wide the right margin is on the screen
-	docstring const & rightmargin() const;
-
-	/// The type of command used to produce a title
-	TitleLatexType titletype() const;
-	/// The name of the title command
-	std::string const & titlename() const;
-
-	///
-	int size() const;
-	/// The minimal TocLevel of sectioning layouts
-	int min_toclevel() const;
-	/// The maximal TocLevel of sectioning layouts
-	int max_toclevel() const;
-	/// returns true if the class has a ToC structure
-	bool hasTocLevels() const;
-	///
-	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
+	std::string const & latexname() const { return latexname_; }
 protected:
+	/// Protect construction
+	TextClass();
+	///////////////////////////////////////////////////////////////////
+	// members
+	///////////////////////////////////////////////////////////////////
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
-private:
-	///
-	bool deleteLayout(docstring const &);
-	/// \return true for success.
-	bool readStyle(Lexer &, Layout &);
 	/// Layout file name
 	std::string name_;
 	/// document class name
 	std::string latexname_;
 	/// document class description
 	std::string description_;
-	/// whether this is a modular layout, i.e., whether it has been
-	/// modified by loading of layout modules.
-	bool modular_;
+	/// available types of float, eg. figure, algorithm.
+	boost::shared_ptr<FloatList> floatlist_;
+	/// Types of counters, eg. sections, eqns, figures, avail. in document class.
+	boost::shared_ptr<Counters> counters_;
+	/// Has this layout file been loaded yet?
+	mutable bool loaded_;
+	/// Is the TeX class available?
+	bool texClassAvail_;
 	///
 	std::string opt_fontsize_;
 	///
@@ -260,58 +172,146 @@ private:
 	FontInfo defaultfont_;
 	/// Text that dictates how wide the left margin is on the screen
 	docstring leftmargin_;
-
 	/// Text that dictates how wide the right margin is on the screen
 	docstring rightmargin_;
-
 	/// The type of command used to produce a title
 	TitleLatexType titletype_;
 	/// The name of the title command
 	std::string titlename_;
 	/// Input layouts available to this layout
 	mutable InsetLayouts insetlayoutlist_;
-
-	/// available types of float, eg. figure, algorithm.
-	boost::shared_ptr<FloatList> floatlist_;
-
-	/// Types of counters, eg. sections, eqns, figures, avail. in document class.
-	boost::shared_ptr<Counters> counters_;
-
-	/// Has this layout file been loaded yet?
-	mutable bool loaded_;
-
-	/// Is the TeX class available?
-	bool texClassAvail_;
-
 	/// The minimal TocLevel of sectioning layouts
 	int min_toclevel_;
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel_;
+private:
+	///////////////////////////////////////////////////////////////////
+	// helper routines for reading layout files
+	///////////////////////////////////////////////////////////////////
+	///
+	bool deleteLayout(docstring const &);
+	/// \return true for success.
+	bool readStyle(Lexer &, Layout &);
+	///
+	void readOutputType(Lexer &);
+	///
+	void readTitleType(Lexer &);
+	///
+	void readMaxCounter(Lexer &);
+	///
+	void readClassOptions(Lexer &);
+	///
+	void readCharStyle(Lexer &, std::string const &);
+	///
+	void readFloat(Lexer &);
+	///
+	void readCounter(Lexer &);
+};
+
+
+/// A DocumentClass represents the layout information associated with a
+/// Buffer. It is based upon a LayoutFile, but may be modified by loading
+/// various Modules. It is thus a dynamic object, as opposed to LayoutFile's
+/// which are pretty much static. 
+///
+/// In the main LyX code, DocumentClass objects are created only by
+/// DocumentClassBundle, for which see below.
+class DocumentClass : public TextClass {
+public:
+	///
+	virtual ~DocumentClass() {}
+
+	///////////////////////////////////////////////////////////////////
+	// Layout Info
+	///////////////////////////////////////////////////////////////////
+	/// \return true if there is a Layout with latexname lay
+	bool hasLaTeXLayout(std::string const & lay) const;
+	/// A DocumentClass nevers count as loaded, since it is dynamic
+	virtual bool loaded() { return false; }
+	/// Inset layouts of this doc class
+	InsetLayouts & insetLayouts() const { return insetlayoutlist_; };
+	/// \return the layout object of an inset given by name. If the name
+	/// is not found as such, the part after the ':' is stripped off, and
+	/// searched again. In this way, an error fallback can be provided:
+	/// An erroneous 'CharStyle:badname' (e.g., after a documentclass switch)
+	/// will invoke the layout object defined by name = 'CharStyle'.
+	/// If that doesn't work either, an empty object returns (shouldn't
+	/// happen).  -- Idea JMarc, comment MV
+	///
+	InsetLayout const & insetLayout(docstring const & name) const;
+	/// an empty inset layout for use as a default
+	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
+
+	///////////////////////////////////////////////////////////////////
+	// accessors
+	///////////////////////////////////////////////////////////////////
+	/// the list of floats defined in the document class
+	FloatList & floats() { return *floatlist_.get(); }
+	/// the list of floats defined in the document class
+	FloatList const & floats() const { return *floatlist_.get(); }
+	/// The Counters present in this document class.
+	Counters & counters() const { return *counters_.get(); }
+	///
+	std::string const & opt_fontsize() const { return opt_fontsize_; }
+	///
+	std::string const & opt_pagestyle() const { return opt_pagestyle_; }
+	///
+	std::string const & options() const { return options_; }
+	///
+	std::string const & class_header() const { return class_header_; }
+	///
+	std::string const & pagestyle() const { return pagestyle_; }
+	///
+	docstring const & preamble() const { return preamble_; }
+	/// is this feature already provided by the class?
+	bool provides(std::string const & p) const;
+	/// features required by the class?
+	std::set<std::string> const & requires() const { return requires_; }
+	///
+	unsigned int columns() const { return columns_; }
+	///
+	PageSides sides() const { return sides_; }
+	///
+	int secnumdepth() const { return secnumdepth_; }
+	///
+	int tocdepth() const { return tocdepth_; }
+	///
+	FontInfo const & defaultfont() const { return defaultfont_; }
+	/// Text that dictates how wide the left margin is on the screen
+	docstring const & leftmargin() const { return leftmargin_; }
+	/// Text that dictates how wide the right margin is on the screen
+	docstring const & rightmargin() const { return rightmargin_; }
+	/// The type of command used to produce a title
+	TitleLatexType titletype() const { return titletype_; };
+	/// The name of the title command
+	std::string const & titlename() const { return titlename_; };
+	///
+	int size() const { return layoutlist_.size(); }
+	/// The minimal TocLevel of sectioning layouts
+	int min_toclevel() const { return min_toclevel_; }
+	/// The maximal TocLevel of sectioning layouts
+	int max_toclevel() const { return max_toclevel_; }
+	/// returns true if the class has a ToC structure
+	bool hasTocLevels() const;
+	/// Can be LaTeX, DocBook, etc.
+	OutputType outputType() const { return outputType_; }
+protected:
+	/// Constructs a DocumentClass based upon a LayoutFile.
+	DocumentClass(LayoutFile const & tc);
+	/// Needed in tex2lyx
+	DocumentClass() {};
+private:
+	/// The only class that can create a DocumentClass is
+	/// DocumentClassBundle, which calls the private constructor.
+	friend class DocumentClassBundle;
 	///
 	static InsetLayout empty_insetlayout_;
 };
 
 
-/// This class amounts to little more than a `strong typedef'.
-/// Its purpose is to control the creation of TextClass objects
-/// within the DocumentClassBundle. 
-/// These TextClasses represent the layout information that is 
-/// associated with a given buffer.
-class DocumentClass : public TextClass {
-public:
-	bool hasLaTeXLayout(std::string const & lay) const;
-private:
-	/// Constructs a DocumentClass based upon a TextClass.
-	DocumentClass(TextClass const & tc);
-	/// The only class that can create a DocumentClass is
-	/// DocumentClassBundle, which calls the private constructor.
-	friend class DocumentClassBundle;
-};
-
-
-/// This is simply a container for the text classes generated when modules
-/// are read, so that they stay in memory for use by Insets, CutAndPaste,
-/// and the like. 
+/// DocumentClassBundle is a container for DocumentClass objects, so that 
+/// they stay in memory for use by Insets, CutAndPaste, and the like, even
+/// when their associated Buffers are destroyed.
 /// FIXME Some sort of garbage collection or reference counting wouldn't
 /// be a bad idea here. It might be enough to check when a Buffer is closed
 /// (or makeDocumentClass is called) whether the old DocumentClass is in use 
@@ -322,7 +322,7 @@ private:
 class DocumentClassBundle {
 public:
 	/// \return Pointer to a new class equal to baseClass
-	DocumentClass & newClass(TextClass const & baseClass);
+	DocumentClass & newClass(LayoutFile const & baseClass);
 	/// \return The sole instance of this class.
 	static DocumentClassBundle & get();
 private:

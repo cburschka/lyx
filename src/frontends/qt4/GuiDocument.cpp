@@ -152,8 +152,8 @@ public:
 		// Ordering criteria:
 		//   1. Availability of text class
 		//   2. Description (lexicographic)
-		TextClass const & tc1 = BaseClassList::get()[lhs];
-		TextClass const & tc2 = BaseClassList::get()[rhs];
+		LayoutFile const & tc1 = BaseClassList::get()[lhs];
+		LayoutFile const & tc2 = BaseClassList::get()[rhs];
 		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
 			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
 			 _(tc1.description()) < _(tc2.description()));
@@ -906,13 +906,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 	//give us a list of entries or something of the sort.
 	latexModule->classCO->setModel(&classes_model_);
 	BaseClassList const & bcl = BaseClassList::get();
-	vector<BaseClassIndex> classList = bcl.classList();
+	vector<LayoutFileIndex> classList = bcl.classList();
 	sort(classList.begin(), classList.end(), less_textclass_avail_desc());
 
-	vector<BaseClassIndex>::const_iterator cit  = classList.begin();
-	vector<BaseClassIndex>::const_iterator cen = classList.end();
+	vector<LayoutFileIndex>::const_iterator cit  = classList.begin();
+	vector<LayoutFileIndex>::const_iterator cen = classList.end();
 	for (int i = 0; cit != cen; ++cit, ++i) {
-		TextClass const & tc = bcl[*cit];
+		LayoutFile const & tc = bcl[*cit];
 		docstring item = (tc.isTeXClassAvailable()) ?
 			from_utf8(tc.description()) :
 			bformat(_("Unavailable: %1$s"), from_utf8(tc.description()));

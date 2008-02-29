@@ -16,8 +16,6 @@
 
 namespace lyx {
 
-class TextClass;
-
 /** A caption inset
 */
 class InsetCaption : public InsetText {
@@ -90,8 +88,6 @@ private:
 	std::string type_;
 	///
 	docstring custom_label_;
-	///
-	TextClass const & textclass_;
 };
 
 
