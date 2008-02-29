@@ -82,7 +82,7 @@ public:
 	LayoutFile const & operator[](std::string const & classname) const;
 	///
 	LayoutFile & operator[](std::string const & classname);
-	/// Read textclass list.  Returns false if this fails.
+	/// Read textclass list. Returns false if this fails.
 	bool read();
 	/// Clears the textclass so as to force it to be reloaded
 	void reset(LayoutFileIndex const & tc);

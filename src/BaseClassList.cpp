@@ -73,7 +73,6 @@ LayoutFile const & BaseClassList::operator[](string const & classname) const
 }
 
 
-// Gets a textclass structure from string
 LayoutFile & 
 	BaseClassList::operator[](string const & classname)
 {
