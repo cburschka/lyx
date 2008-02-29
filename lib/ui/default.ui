@@ -24,9 +24,13 @@ Include "stdtoolbars.inc"
 #
 # on: the toolbar is visible
 # off: the toolbar is not visible
+# auto: the toolbar is automatically shown and hidden depending on the
+#       next 3 flags.
+#
 # math: the toolbar is visible only when in math
 # mathmacrotemplate: the toolbar is visible only when in a macro definition
 # table: the toolbar is visible only when in a table
+#
 # top: the toolbar should be at the top of the window
 # bottom: the toolbar should be at the bottom of the window
 # left: the toolbar should be at the left of the window
@@ -40,6 +44,6 @@ Toolbars
 	"table" "table,bottom"
 	"math_panels" "math,bottom"
 	"math" "math,bottom"
-	"mathmacrotemplate" "mathmacrotemplate,bottom"
+	"mathmacrotemplate" "auto,mathmacrotemplate,bottom"
 	"minibuffer" "off,bottom"
 End
