@@ -32,15 +32,15 @@ class FileName;
 }
 
 class AuthorList;
-class LayoutFileIndex;
 class BranchList;
 class Bullet;
 class DocumentClass;
 class Encoding;
 class Language;
-class Lexer;
 class LatexFeatures;
 class LayoutFile;
+class LayoutFileIndex;
+class Lexer;
 class PDFOptions;
 class Spacing;
 class TexRow;
