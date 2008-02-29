@@ -261,30 +261,27 @@ void DocIterator::forwardPos()
 	CursorSlice & tip = top();
 	//lyxerr << "XXX\n" << *this << endl;
 
-	// this is used twice and shows up in the profiler!
-	pos_type const lastp = lastpos();
-
-	// move into an inset to the right if possible
-	Inset * n = 0;
-
-	if (tip.pos() != lastp) {
-		// this is impossible for pos() == size()
+	// not at cell/paragraph end?
+	if (tip.pos() != tip.lastpos()) {
+		// move into an inset to the right if possible
+		Inset * n = 0;
 		if (inMathed())
 			n = (tip.cell().begin() + tip.pos())->nucleus();
 		else
 			n = paragraph().getInset(tip.pos());
+		if (n && n->isActive()) {
+			//lyxerr << "... descend" << endl;
+			push_back(CursorSlice(*n));
+			return;
+		}
 	}
 
-	if (n && n->isActive()) {
-		//lyxerr << "... descend" << endl;
-		push_back(CursorSlice(*n));
-		return;
-	}
-
+	// jump to the next cell/paragraph if possible
 	if (!tip.at_end()) {
 		tip.forwardPos();
 		return;
 	}
+
 	// otherwise leave inset and jump over inset as a whole
 	pop_back();
 	// 'tip' is invalid now...
@@ -373,6 +370,7 @@ void DocIterator::backwardPos()
 		return;
 	}
 
+	// at inset beginning?
 	if (top().at_begin()) {
 		pop_back();
 		return;
@@ -380,14 +378,16 @@ void DocIterator::backwardPos()
 
 	top().backwardPos();
 
+	// entered another cell/paragraph from the right?
+	if (top().pos() == top().lastpos())
+		return;
+
 	// move into an inset to the left if possible
 	Inset * n = 0;
-
 	if (inMathed())
 		n = (top().cell().begin() + top().pos())->nucleus();
 	else
 		n = paragraph().getInset(top().pos());
-
 	if (n && n->isActive()) {
 		push_back(CursorSlice(*n));
 		top().idx() = lastidx();
