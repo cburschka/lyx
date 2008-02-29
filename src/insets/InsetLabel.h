@@ -49,7 +49,7 @@ protected:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetLabel(*this); }
 };
 
 

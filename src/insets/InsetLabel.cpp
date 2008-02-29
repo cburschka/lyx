@@ -45,12 +45,6 @@ ParamInfo const & InsetLabel::findInfo(string const & /* cmdName */)
 }
 
 
-Inset * InsetLabel::clone() const
-{
-	return new InsetLabel(params());
-}
-
-
 void InsetLabel::getLabelList(vector<docstring> & list) const
 {
 	list.push_back(getParam("name"));
