@@ -1969,10 +1969,10 @@ void GuiView::restartCursor()
 }
 
 
-void GuiView::updateCompletion(bool start, bool keep)
+void GuiView::updateCompletion(Cursor & cur, bool start, bool keep)
 {
 	if (d.current_work_area_)
-		d.current_work_area_->completer().updateVisibility(start, keep);
+		d.current_work_area_->completer().updateVisibility(cur, start, keep);
 }
 
 namespace {

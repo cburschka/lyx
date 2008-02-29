@@ -367,19 +367,11 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
-			lyx_view_->updateCompletion(true, true);
 		}
 	} else {
 		dispatch(func);
 		if (!lyx_view_)
 			return;
-		if (func.action == LFUN_CHAR_DELETE_BACKWARD)
-			// backspace is not a self-insertion. But it
-			// still should not hide the completion popup.
-			// FIXME: more clever way to detect those movements
-			lyx_view_->updateCompletion(false, true);
-		else
-			lyx_view_->updateCompletion(false, false);
 	}
 
 	if (lyx_view_)
@@ -1711,6 +1703,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				bool badcursor = notifyCursorLeaves(old, view()->cursor());
 				if (badcursor)
 					view()->cursor().fixIfBroken();
+			}
+
+			// update completion. We do it here and not in
+			// processKeySym to avoid another redraw just for a
+			// changed inline completion
+			if (cmd.origin == FuncRequest::KEYBOARD) {
+				if (cmd.action == LFUN_SELF_INSERT)
+					lyx_view_->updateCompletion(view()->cursor(), true, true);
+				else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
+					lyx_view_->updateCompletion(view()->cursor(), false, true);
+				else
+					lyx_view_->updateCompletion(view()->cursor(), false, false);
 			}
 
 			updateFlags = view()->cursor().result().update();

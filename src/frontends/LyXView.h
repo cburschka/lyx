@@ -21,6 +21,7 @@ namespace support { class FileName; }
 
 class Buffer;
 class BufferView;
+class Cursor;
 class FuncStatus;
 class FuncRequest;
 class Inset;
@@ -92,8 +93,9 @@ public:
 	/// Update the completion popup and the inline completion state.
 	/// If \c start is true, then a new completion might be started.
 	/// If \c keep is true, an active completion will be kept active
-	/// even though the cursor moved.
-	virtual void updateCompletion(bool start, bool keep) = 0;
+	/// even though the cursor moved. The update flags of \c cur might
+	/// be changed.
+	virtual void updateCompletion(Cursor & cur, bool start, bool keep) = 0;
 
 private:
 	/// noncopyable

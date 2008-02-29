@@ -31,6 +31,7 @@ class QShowEvent;
 
 namespace lyx {
 
+class Cursor;
 class ToolbarInfo;
 
 namespace frontend {
@@ -244,7 +245,7 @@ public:
 	void disconnectDialog(std::string const & name);
 
 	///
-	void updateCompletion(bool start, bool keep);
+	void updateCompletion(Cursor & cur, bool start, bool keep);
 
 private:
 	///
