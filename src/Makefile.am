@@ -159,6 +159,7 @@ SOURCEFILESCORE = \
 	Text2.cpp \
 	Text3.cpp \
 	TexStream.cpp \
+	TextClass.cpp \
 	TextMetrics.cpp \
 	TocBackend.cpp \
 	ToolbarBackend.cpp \
@@ -275,8 +276,7 @@ HEADERFILESCORE = \
 	WordList.h
 
 STANDALONEFILES = \
-	Layout.cpp \
-	TextClass.cpp
+	Layout.cpp
 
 
 lyxcore.cpp:
