@@ -38,12 +38,12 @@ Include "stdtoolbars.inc"
 #
 Toolbars
 	"standard" "on,top"
-	"view/update" "on,top"
+	"view/update" "on,right"
 	"extra" "on,top"
-	"review" "review,top"
-	"table" "table,bottom"
-	"math_panels" "math,bottom"
-	"math" "math,bottom"
+	"review" "auto,review,top"
+	"table" "auto,table,bottom"
+	"math_panels" "auto,math,bottom"
+	"math" "auto,math,bottom"
 	"mathmacrotemplate" "auto,mathmacrotemplate,bottom"
 	"minibuffer" "off,bottom"
 End
