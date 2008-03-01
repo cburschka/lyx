@@ -182,6 +182,8 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
+	///
+	void setLayoutComboByIDString(std::string const & idString);
 	/// available classes
 	GuiIdListModel classes_model_;
 	/// available modules

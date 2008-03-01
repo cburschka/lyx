@@ -1242,7 +1242,20 @@ void GuiDocument::classChanged()
 	if (idx < 0) 
 		return;
 	string const classname = classes_model_.getIDString(idx);
-	// FIXME There is a bug here: 4594
+	// check if this is a local layout file
+	if (prefixIs(classname, BaseClassList::localPrefix)) {
+		int const ret = Alert::prompt(_("Local layout file"),
+				_("The layout file you have selected is a local layout"
+				  "file, not one in the system or user directory. Your"
+				  "document may not work with this layout if you do not"
+				  "keep the layout file in the same directory."),
+				  1, 1, _("&Set Layout"), _("&Cancel"));
+		if (ret == 1) {
+			// try to reset the layout combo
+			setLayoutComboByIDString(bp_.baseClassID());
+			return;
+		}
+	}
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
@@ -1830,12 +1843,8 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	string const & classname = params.baseClassID();
-	int idx = classes_model_.findIDString(classname);
-	if (idx < 0)
-		lyxerr << "Unable to set layout for classname " << classname << std::endl;
-	else 
-		latexModule->classCO->setCurrentIndex(idx);
+	string const & layoutID = params.baseClassID();
+	setLayoutComboByIDString(layoutID);
 
 	updatePagestyle(documentClass().opt_pagestyle(),
 				 params.pagestyle);
@@ -2091,6 +2100,17 @@ void GuiDocument::useClassDefaults()
 	}
 	bp_.useClassDefaults();
 	forceUpdate();
+}
+
+
+void GuiDocument::setLayoutComboByIDString(std::string const & idString)
+{
+	int idx = classes_model_.findIDString(idString);
+	if (idx < 0)
+		Alert::warning(_("Can't set layout!"), 
+			bformat(_("Unable to set layout for ID: %1$s"), from_utf8(idString)));
+	else 
+		latexModule->classCO->setCurrentIndex(idx);
 }
 
 
