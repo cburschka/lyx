@@ -92,12 +92,12 @@ docstring const lowercase(docstring const & s);
 /// Does not depend on the locale.
 docstring const uppercase(docstring const & s);
 
-/// Does the string start with this prefix?
-bool prefixIs(docstring const &, char_type);
+/// Does str start with c?
+bool prefixIs(docstring const & str, char_type c);
 
-/// Does the std::string start with this prefix?
-bool prefixIs(std::string const &, std::string const &);
-bool prefixIs(docstring const &, docstring const &);
+/// Does str start with pre?
+bool prefixIs(std::string const & str, std::string const & pre);
+bool prefixIs(docstring const & str, docstring const & pre);
 
 /// Does the string end with this char?
 bool suffixIs(std::string const &, char);
