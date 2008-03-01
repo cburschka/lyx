@@ -53,16 +53,16 @@ enum ColorCode
 	/// Inline completion color for the non-unique part
 	Color_nonunique_inlinecompletion,
 
-	/// Text color for notes
-	Color_note,
+	/// Label color for notes
+	Color_notelabel,
 	/// Background color of notes
 	Color_notebg,
-	/// Text color for comments
-	Color_comment,
+	/// Label color for comments
+	Color_commentlabel,
 	/// Background color of comments
 	Color_commentbg,
-	/// Text color for greyedout inset
-	Color_greyedout,
+	/// Label color for greyedout insets
+	Color_greyedoutlabel,
 	/// Background color of greyedout inset
 	Color_greyedoutbg,
 	/// Shaded box background

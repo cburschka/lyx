@@ -755,7 +755,7 @@ void Font::validate(LaTeXFeatures & features) const
 			// probably we should put here all interface colors used for
 			// font displaying! For now I just add this ones I know of (Jug)
 		case Color_latex:
-		case Color_note:
+		case Color_notelabel:
 			break;
 		default:
 			features.require("color");
