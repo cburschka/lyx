@@ -11395,40 +11395,6 @@ Quand on insère la commande
 framebox
 \series default
 , une boîte apparaît contenant trois boîtes bleues.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-À cause d'un bug de LyX, le curseur doit être placé à gauche, à côté des
- boîtes bleues pour pouvoir les remplir, voir 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2461}{
-\end_layout
-
-\end_inset
-
-LyX-bug #2461
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
  Les deux premières sont entourées de crochets pour signales des arguments
  optionnels.
  La troisième boîte est là pour contenir les portions de formules, comme
