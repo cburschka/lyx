@@ -189,23 +189,14 @@ string const BaseClassList::localPrefix = "LOCAL:";
 LayoutFileIndex 
 	BaseClassList::addLayoutFile(string const & textclass, string const & path)
 {
-	// FIXME BUGS
-	// There be bugs here. The way this presently works, the local class gets 
-	// added to the global list of available document classes. It will then
-	// appear on the list in Document>Settings, where it could be chosen in, 
-	// say, a new document, with no real warning that the class may not be
-	// available when the document is saved, since the new document may not be
-	// in the same directory as the layout file.
-	//
-	// Another bug is this: If the Document>Settings dialog is open when a file
-	// with a local layout is opened, the dialog doesn't update.
+	// FIXME  There is a bug here: 4593
 	//
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be 
 	// different from textclass
 	string fullName = addName(path, textclass + ".layout");
-	string localIndex = localPrefix + textclass;
-
+	string localIndex = localPrefix + fullName;
+	
 	// if the local file has already been loaded, return it
 	if (haveClass(localIndex))
 		return localIndex;
@@ -231,14 +222,6 @@ LayoutFileIndex
 				// now, create a TextClass with description containing path information
 				LayoutFile tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
-				// Do not add this local TextClass to classmap_ if it has
-				// already been loaded by, for example, a master buffer.
-				if (haveClass(textclass)
-						// FIXME I don't understand this comment (rgh)
-						// only layouts from the same directory are considered to be identical.
-						&& classmap_[textclass].description() == tmpl.description()
-				   )
-					return textclass;
 				classmap_[localIndex] = tmpl;
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they

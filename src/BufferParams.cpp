@@ -1386,22 +1386,18 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 
 bool BufferParams::setBaseClass(string const & classname)
 {
-	string localtc = classname;
+	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
 	BaseClassList const & bcl = BaseClassList::get();
-	if (!bcl.haveClass(localtc)) {
-		// OK, let's try again assuming it's a local file
-		localtc = BaseClassList::localPrefix + localtc;
-		if (!bcl.haveClass(localtc)) {
-			docstring s = 
-				bformat(_("The document class %1$s could not be found."),
-				from_utf8(classname));
-			frontend::Alert::error(_("Class not found"), s);
-			return false;
-		}
+	if (!bcl.haveClass(classname)) {
+		docstring s = 
+			bformat(_("The document class %1$s could not be found."),
+			from_utf8(classname));
+		frontend::Alert::error(_("Class not found"), s);
+		return false;
 	}
 
-	if (bcl[localtc].load()) {
-		pimpl_->baseClass_ = localtc;
+	if (bcl[classname].load()) {
+		pimpl_->baseClass_ = classname;
 		return true;
 	}
 	

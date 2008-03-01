@@ -901,9 +901,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex classes
-	//FIXME This seems too involved with the kernel. Some of this
-	//should be moved to the kernel---which should perhaps just
-	//give us a list of entries or something of the sort.
 	latexModule->classCO->setModel(&classes_model_);
 	BaseClassList const & bcl = BaseClassList::get();
 	vector<LayoutFileIndex> classList = bcl.classList();
@@ -916,7 +913,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		docstring item = (tc.isTeXClassAvailable()) ?
 			from_utf8(tc.description()) :
 			bformat(_("Unavailable: %1$s"), from_utf8(tc.description()));
-		classes_model_.insertRow(i, toqstr(item), tc.name());
+		classes_model_.insertRow(i, toqstr(item), *cit);
 	}
 
 	// branches
@@ -1245,6 +1242,7 @@ void GuiDocument::classChanged()
 	if (idx < 0) 
 		return;
 	string const classname = classes_model_.getIDString(idx);
+	// FIXME There is a bug here: 4594
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
@@ -1832,7 +1830,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	string const & classname = params.baseClass()->name();
+	string const & classname = params.baseClassID();
 	int idx = classes_model_.findIDString(classname);
 	if (idx < 0)
 		lyxerr << "Unable to set layout for classname " << classname << std::endl;
