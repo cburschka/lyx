@@ -11435,40 +11435,6 @@ When the command
 framebox
 \series default
  is inserted, a box appears containing three blue boxes.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Due to a bug in LyX the cursor has to be placed left beside blue the boxes
- to fill them, see 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2461}{
-\end_layout
-
-\end_inset
-
-LyX-bug #2461
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
  The first two boxes are surrounded by brackets and denote the two optional
  arguments.
  The third box is for formula parts like for 

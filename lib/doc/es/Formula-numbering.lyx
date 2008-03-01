@@ -1,0 +1,374 @@
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{ifpdf}
+
+\ifpdf
+
+\usepackage[colorlinks=true,
+ pdftitle=Formelnummerierung, pdfpagemode=none,
+ pdfpagelayout=OneColumn, pdfstartview=XYZ,
+ pdfauthor={Uwe Stöhr},
+ pdfsubject={LaTeX/LyX numbering example},
+ pdfkeywords={LaTeX, numbering, LyX}]{hyperref}
+
+\else % if DVI
+
+\usepackage[colorlinks=true, hypertex]{hyperref}
+
+\fi
+
+% define Roman counter
+\newcounter{rom}
+\renewcommand{\therom}{\roman{rom}}
+
+% remember the original counter
+\newcommand{\c@org@eq}{}
+\let\c@org@eq\c@equation
+\newcommand{\org@theeq}{}
+\let\org@theeq\theequation
+
+% \setrom activates the Roman counter
+\newcommand{\setrom}{
+  \let\c@equation\c@rom
+  \let\theequation\therom}
+
+% \setarab activates the original Arabic counter
+\newcommand{\setarab}{
+  \let\c@equation\c@org@eq
+  \let\theequation\org@theeq}
+\end_preamble
+\options fleqn
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Este documento muestra el uso de dos categorías diferentes de ecuaciones.
+ Una está numerada en arábigos, la otra en romanos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+A=B\label{eq:B}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=C\label{eq:C}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=D\label{eq:D}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=E\label{eq:E}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setarab
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=F\label{eq:F}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=G\label{eq:G}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=H\label{eq:H}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=I\label{eq:I}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Referencias cruzadas: 
+\begin_inset LatexCommand eqref
+reference "eq:B"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:C"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:F"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:G"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:D"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:E"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:H"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:I"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\begin_inset VSpace medskip
+\end_inset
+
+Para escribir este ejemplo, primero hay que definir un contador para las
+ fórmulas numeradas en romanos.
+ Para ello se inserta lo siguiente en el preámbulo LaTeX:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcounter{rom}
+\newline
+
+\backslash
+renewcommand{
+\backslash
+therom}{
+\backslash
+roman{rom}}
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+Para guardar el valor del contador arábigo 
+\series bold
+equation
+\series default
+, se añade al preámbulo lo siguiente
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+c@org@eq}{}
+\newline
+
+\backslash
+let
+\backslash
+c@org@eq
+\backslash
+c@equation
+\newline
+
+\backslash
+newcommand{
+\backslash
+org@theeq}{}
+\newline
+
+\backslash
+let
+\backslash
+org@theeq
+\backslash
+theequation
+\end_layout
+
+\begin_layout Standard
+Para poder alternar en el documento entre ambos esquemas de numeración,
+ se definen los siguientes comandos en el preámbulo:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setrom}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@rom
+\backslash
+let
+\backslash
+theequation
+\backslash
+therom}
+\end_layout
+
+\begin_layout Standard
+para la numeración romana y
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setarab}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@org@eq
+\backslash
+let
+\backslash
+theequation
+\backslash
+org@theeq}
+\end_layout
+
+\begin_layout Standard
+para la numeración arábiga.
+\end_layout
+
+\begin_layout Standard
+Cada fórmula será numerada en arábigos por defecto.
+ Para cambiar a numeración en romanos, se inserta el comando 
+\series bold
+
+\backslash
+setrom
+\series default
+ en modo TeX.
+ Con el comando 
+\series bold
+
+\backslash
+setarab
+\series default
+ la numeración retorna a números arábigos.
+\end_layout
+
+\end_body
+\end_document

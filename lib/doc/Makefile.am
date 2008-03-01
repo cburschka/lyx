@@ -89,7 +89,9 @@ dist_esdoc_DATA = \
 	es/EmbeddedObjects.lyx \
 	es/Extended.lyx \
 	es/FAQ.lyx \
+	es/Formula-numbering.lyx \
 	es/Intro.lyx \
+	es/Math.lyx \
 	es/Tutorial.lyx \
 	es/UserGuide.lyx
 

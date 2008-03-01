@@ -11468,40 +11468,6 @@ Wenn man den Befehl
 framebox
 \series default
  eingibt, erscheint eine Box mit drei Eingabefeldern.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Aufgrund eines Fehlers in LyX muss der Cursor links neben die Eingabefelder
- gesetzt werden um sie zu füllen, siehe 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2461}{
-\end_layout
-
-\end_inset
-
-LyX-Fehler #2461
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
  Die ersten beiden sind von eckigen Klammern umgeben und stehen für die
  beiden optionalen Argumente.
  In das dritte Feld wird wie bei 
