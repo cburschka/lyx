@@ -37,12 +37,25 @@ auto_ptr<Inset> InsetMathMakebox::doClone() const
 bool InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, from_ascii("textnormal"));
-	w_ = mathed_char_width(mi.base.font, '[');
-	InsetMathNest::metrics(mi);
-	dim   = cell(0).dim();
-	dim  += cell(1).dim();
-	dim  += cell(2).dim();
-	dim.wid += 4 * w_ + 4;
+
+	Dimension wdim;
+	static docstring bracket = from_ascii("[");
+	mathed_string_dim(mi.base.font, bracket, wdim);
+	int w = wdim.wid;
+	
+	Dimension dim0;
+	Dimension dim1;
+	Dimension dim2;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	cell(2).metrics(mi, dim2);
+	
+	dim.wid = 5 + w + dim0.wid + w + 4 + w + dim1.wid + w + 4 + dim2.wid + 5;
+	dim.asc = std::max(std::max(wdim.asc, dim0.asc), std::max(dim1.asc, dim2.asc));
+	dim.des = std::max(std::max(wdim.des, dim0.des), std::max(dim1.des, dim2.des));
+	dim.asc += 3;
+	dim.des += 3;
+
 	metricsMarkers(dim);
 	if (dim_ == dim)
 		return false;
@@ -53,25 +66,28 @@ bool InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, from_ascii("textnormal"));
 	drawMarkers(pi, x, y);
 
+	FontSetChanger dummy(pi.base, from_ascii("textnormal"));
+	int w = mathed_char_width(pi.base.font, '[');
+
+	x += 5;
+
 	drawStrBlack(pi, x, y, from_ascii("["));
-	x += w_;
+	x += w;
 	cell(0).draw(pi, x, y);
 	x += cell(0).width();
 	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w_ + 2;
+	x += w + 2;
 
 	drawStrBlack(pi, x, y, from_ascii("["));
-	x += w_;
+	x += w;
 	cell(1).draw(pi, x, y);
 	x += cell(1).width();
 	drawStrBlack(pi, x, y, from_ascii("]"));
-	x += w_ + 2;
+	x += w + 4;
 
 	cell(2).draw(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 
