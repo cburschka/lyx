@@ -1383,8 +1383,31 @@ void LyXAction::init()
 		{ LFUN_BUFFER_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop, Buffer },
 		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_FILE_INSERT
+ * \li Action: Inserts another LyX file.
+ * \li Syntax: file-insert [<FILE>]
+ * \li Params: <FILE>: Filename to be inserted.
+ * \endvar
+ */
 		{ LFUN_FILE_INSERT, "file-insert", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_FILE_INSERT_PLAINTEXT
+ * \li Action: Inserts plain text file.
+ * \li Syntax: file-insert-plaintext [<FILE>]
+ * \li Params: <FILE>: Filename to be inserted.
+ * \li Origin: CFO-G, 19 Nov 1997
+ * \endvar
+ */
 		{ LFUN_FILE_INSERT_PLAINTEXT, "file-insert-plaintext", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_FILE_INSERT_PLAINTEXT_PARA
+ * \li Action: Inserts plain text file as paragraph (i.e. join lines).
+ * \li Syntax: file-insert-plaintext-para [<FILE>]
+ * \li Params: <FILE>: Filename to be inserted.
+ * \li Origin: Levon, 14 Feb 2001
+ * \endvar
+ */
 		{ LFUN_FILE_INSERT_PLAINTEXT_PARA, "file-insert-plaintext-para", Noop, Edit },
 /*!
  * \var lyx::kb_action lyx::LFUN_FILE_OPEN
