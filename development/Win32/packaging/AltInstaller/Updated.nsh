@@ -23,6 +23,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
