@@ -1409,7 +1409,7 @@ convert = [[277, [fix_wrong_tables]],
            [316, [convert_subfig]]
           ]
 
-revert =  [[314, [revert_subfig]],
+revert =  [[315, [revert_subfig]],
            [314, [revert_colsep]],
            [313, []],
            [312, [revert_module_names]],
