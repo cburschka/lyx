@@ -43,6 +43,8 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "label"; }
 	///
+	void updateLabels(ParIterator const & it);
+	///
 	void addToToc(ParConstIterator const &) const;
 protected:
 	///

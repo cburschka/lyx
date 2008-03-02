@@ -100,10 +100,12 @@
 #include <boost/shared_ptr.hpp>
 
 #include <algorithm>
-#include <iomanip>
-#include <stack>
-#include <sstream>
 #include <fstream>
+#include <iomanip>
+#include <map>
+#include <sstream>
+#include <stack>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;
@@ -117,10 +119,10 @@ namespace {
 
 int const LYX_FORMAT = 316; // JSpitzm: subfig support
 
-} // namespace anon
-
-
 typedef map<string, bool> DepClean;
+typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
+
+} // namespace anon
 
 class Buffer::Impl
 {
@@ -205,6 +207,8 @@ public:
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	mutable EmbeddedFileList bibfilesCache_;
+
+	mutable RefCache ref_cache_;
 };
 
 /// Creates the per buffer temporary directory
@@ -2064,6 +2068,47 @@ void Buffer::writeParentMacros(odocstream & os) const
 }
 
 
+Buffer::References & Buffer::references(docstring const & label)
+{
+	if (d->parent_buffer)
+		return const_cast<Buffer *>(masterBuffer())->references(label);
+
+	RefCache::iterator it = d->ref_cache_.find(label);
+	if (it != d->ref_cache_.end())
+		return it->second.second;
+
+	static InsetLabel const * dummy_il = 0;
+	static References const dummy_refs;
+	it = d->ref_cache_.insert(make_pair(label, make_pair(dummy_il, dummy_refs))).first;
+	return it->second.second;
+}
+
+
+Buffer::References const & Buffer::references(docstring const & label) const
+{
+	return const_cast<Buffer *>(this)->references(label);
+}
+
+
+void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il)
+{
+	masterBuffer()->d->ref_cache_[label].first = il;
+}
+
+
+InsetLabel const * Buffer::insetLabel(docstring const & label) const
+{
+	return masterBuffer()->d->ref_cache_[label].first;
+}
+
+
+void Buffer::clearReferenceCache() const
+{
+	if (!d->parent_buffer)
+		d->ref_cache_.clear();
+}
+
+
 void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	InsetCode code)
 {
@@ -2326,9 +2371,6 @@ void Buffer::resetChildDocuments(bool close_them) const
 
 		resetParentBuffer(this, ip, close_them);
 	}
-
-	if (use_gui && masterBuffer() == this)
-		updateLabels(*this);
 
 	// clear references to children in macro tables
 	d->children_positions.clear();

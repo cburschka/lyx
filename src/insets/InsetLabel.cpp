@@ -12,17 +12,23 @@
 
 #include "InsetLabel.h"
 
+#include "InsetRef.h"
+
 #include "Buffer.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "InsetIterator.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "Text.h"
 #include "TocBackend.h"
 
-#include "support/lstrings.h"
+#include "frontends/alert.h"
+
 #include "support/lyxalgo.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -57,10 +63,32 @@ docstring InsetLabel::screenLabel() const
 }
 
 
+void InsetLabel::updateLabels(ParIterator const & it)
+{
+	docstring const & label = getParam("name");
+	if (buffer().insetLabel(label))
+		// Problem: We already have an InsetLabel with the same name!
+		return;
+	buffer().setInsetLabel(label, this);
+}
+
+
 void InsetLabel::addToToc(ParConstIterator const & cpit) const
 {
+	docstring const & label = getParam("name");
 	Toc & toc = buffer().tocBackend().toc("label");
-	toc.push_back(TocItem(cpit, 0, screenLabel()));
+	if (buffer().insetLabel(label) != this) {
+		toc.push_back(TocItem(cpit, 0, _("DUPLICATE: ") + label));
+		return;
+	}
+	toc.push_back(TocItem(cpit, 0, label));
+	Buffer::References const & refs = buffer().references(label);
+	Buffer::References::const_iterator it = refs.begin();
+	Buffer::References::const_iterator end = refs.end();
+	for (; it != end; ++it) {
+		ParConstIterator const ref_pit(it->second);
+		toc.push_back(TocItem(ref_pit, 1, it->first->screenLabel()));
+	}
 }
 
 

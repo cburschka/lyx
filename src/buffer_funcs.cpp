@@ -491,6 +491,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 		// start over the counters
 		textclass.counters().reset();
+		buf.clearReferenceCache();
 	}
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);

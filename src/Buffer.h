@@ -31,6 +31,8 @@ class ErrorItem;
 class ErrorList;
 class FuncRequest;
 class Inset;
+class InsetRef;
+class InsetLabel;
 class Font;
 class Format;
 class Lexer;
@@ -451,7 +453,15 @@ public:
 	bool isExportable(std::string const & format) const;
 	///
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
-	
+
+	///
+	typedef std::vector<std::pair<InsetRef *, ParIterator> > References;
+	References & references(docstring const & label);
+	References const & references(docstring const & label) const;
+	void clearReferenceCache() const;
+	void setInsetLabel(docstring const & label, InsetLabel const * il);
+	InsetLabel const * insetLabel(docstring const & label) const;
+
 private:
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,

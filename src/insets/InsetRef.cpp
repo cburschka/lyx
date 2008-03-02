@@ -26,8 +26,8 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-using namespace std;
 using namespace lyx::support;
+using namespace std;
 
 namespace lyx {
 
@@ -152,32 +152,23 @@ void InsetRef::textString(odocstream & os) const
 }
 
 
+void InsetRef::updateLabels(ParIterator const & it)
+{
+	docstring const & label = getParam("reference");
+	buffer().references(label).push_back(make_pair(this, it));
+}
+
+
 void InsetRef::addToToc(ParConstIterator const & cpit) const
 {
 	docstring const & label = getParam("reference");
-	Toc & toc = buffer().tocBackend().toc("label");
-	Toc::iterator it = toc.begin();
-	Toc::iterator end = toc.end();
-	for (; it != end; ++it) {
-		if (it->str() == label)
-			break;
-	}
-
-	docstring const reflabel = screenLabel();
-	if (it == end) {
-		// This label has not been parsed yet so we just add it temporarily.
-		// InsetLabel::addTocToc() will fix that later.
-		toc.push_back(TocItem(cpit, 0, label));
-		toc.push_back(TocItem(cpit, 1, reflabel));
+	if (buffer().insetLabel(label))
+		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
-	}
 
-	// The Toc item for this label already exists so let's add
-	// this inset to this node.
-	++it;
-	while (it != end && it->str() == reflabel)
-		++it;
-	toc.insert(it, TocItem(cpit, 1, reflabel));
+	Toc & toc = buffer().tocBackend().toc("label");
+	docstring const reflabel = _("BROKEN: ") + screenLabel();
+	toc.push_back(TocItem(cpit, 0, reflabel));
 }
 
 
