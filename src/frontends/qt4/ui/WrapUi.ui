@@ -16,10 +16,22 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>6</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>6</number>
    </property>
    <item row="3" column="2" >
@@ -58,9 +70,7 @@
    <item row="1" column="3" >
     <widget class="LengthCombo" name="widthUnitLC" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -92,9 +102,7 @@
    <item row="1" column="1" colspan="2" >
     <widget class="QLineEdit" name="widthED" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -106,11 +114,20 @@
    </item>
    <item row="4" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QPushButton" name="restorePB" >
@@ -235,9 +252,7 @@
       <bool>false</bool>
      </property>
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -253,9 +268,7 @@
       <bool>false</bool>
      </property>
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>13</vsizetype>
+      <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -274,6 +287,16 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="3" >
+    <widget class="QCheckBox" name="floatCB" >
+     <property name="toolTip" >
+      <string>by checking this the placement can float</string>
+     </property>
+     <property name="text" >
+      <string>&amp;float</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -285,6 +308,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>valignCO</tabstop>
+  <tabstop>floatCB</tabstop>
   <tabstop>widthED</tabstop>
   <tabstop>widthUnitLC</tabstop>
   <tabstop>overhangCB</tabstop>
@@ -292,10 +316,10 @@
   <tabstop>overhangUnitLC</tabstop>
   <tabstop>linesCB</tabstop>
   <tabstop>linesSB</tabstop>
-  <tabstop>restorePB</tabstop>
   <tabstop>okPB</tabstop>
-  <tabstop>closePB</tabstop>
   <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
+  <tabstop>restorePB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
@@ -345,8 +369,8 @@
      <y>93</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>164</x>
-     <y>101</y>
+     <x>132</x>
+     <y>108</y>
     </hint>
    </hints>
   </connection>

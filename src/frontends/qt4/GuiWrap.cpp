@@ -40,11 +40,13 @@ GuiWrap::GuiWrap(GuiView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
+	connect(valignCO, SIGNAL(highlighted(QString)),
+		this, SLOT(change_adaptor()));
+	connect(floatCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(widthED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(widthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-		this, SLOT(change_adaptor()));
-	connect(valignCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
 	connect(overhangCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -68,9 +70,10 @@ GuiWrap::GuiWrap(GuiView & lv)
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
 
+	bc().addReadOnly(valignCO);
+	bc().addReadOnly(floatCB);
 	bc().addReadOnly(widthED);
 	bc().addReadOnly(widthUnitLC);
-	bc().addReadOnly(valignCO);
 	bc().addReadOnly(overhangCB);
 	bc().addReadOnly(overhangED);
 	bc().addReadOnly(overhangUnitLC);
@@ -116,18 +119,33 @@ void GuiWrap::applyView()
 		// in InsetWrap.cpp
 		params_.lines = 0;
 
+	bool floatOn = false;
+	if (floatCB->checkState() == Qt::Checked)
+		floatOn = true;
 	switch (valignCO->currentIndex()) {
 	case 0:
-		params_.placement = "o";
+		if (floatOn)
+			params_.placement = "O";
+		else
+			params_.placement = "o";
 		break;
 	case 1:
-		params_.placement = "i";
+		if (floatOn)
+			params_.placement = "I";
+		else
+			params_.placement = "i";
 		break;
 	case 2:
-		params_.placement = "l";
+		if (floatOn)
+			params_.placement = "L";
+		else
+			params_.placement = "l";
 		break;
 	case 3:
-		params_.placement = "r";
+		if (floatOn)
+			params_.placement = "R";
+		else
+			params_.placement = "r";
 		break;
 	}
 }
@@ -156,14 +174,18 @@ void GuiWrap::updateContents()
 		linesCB->setCheckState(Qt::Checked);
 
 	int item = 0;
-	if (params_.placement == "i")
+	if (params_.placement == "i" || params_.placement == "I")
 		item = 1;
-	else if (params_.placement == "l")
+	else if (params_.placement == "l" || params_.placement == "L")
 		item = 2;
-	else if (params_.placement == "r")
+	else if (params_.placement == "r" || params_.placement == "R")
 		item = 3;
 
 	valignCO->setCurrentIndex(item);
+
+	if (params_.placement == "O" || params_.placement == "I"
+		|| params_.placement == "L" || params_.placement == "R")
+		floatCB->setCheckState(Qt::Checked);
 }
 
 

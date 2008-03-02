@@ -1362,6 +1362,24 @@ def revert_subfig(document):
         i = i + 1
 
 
+def revert_wrapplacement(document):
+    "Revert placement options wrap floats (wrapfig)."
+    i = 0
+    while True:
+        i = find_token(document.body, "lines", i)
+        if i == -1:
+            return
+        j = find_token(document.body, "placement", i+1)
+        if j != i + 1:
+            document.warning("Malformed LyX document: Couldn't find placement parameter of wrap float.")
+            return
+        document.body[j] = document.body[j].replace("placement O", "placement o")
+        document.body[j] = document.body[j].replace("placement I", "placement i")
+        document.body[j] = document.body[j].replace("placement L", "placement l")
+        document.body[j] = document.body[j].replace("placement R", "placement r")
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1406,10 +1424,12 @@ convert = [[277, [fix_wrong_tables]],
            [313, [convert_module_names]],
            [314, []],
            [315, []],
-           [316, [convert_subfig]]
+           [316, [convert_subfig]],
+           [317, []]
           ]
 
-revert =  [[315, [revert_subfig]],
+revert =  [[316, [revert_wrapplacement]],
+           [315, [revert_subfig]],
            [314, [revert_colsep]],
            [313, []],
            [312, [revert_module_names]],

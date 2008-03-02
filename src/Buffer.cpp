@@ -117,7 +117,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 316; // JSpitzm: subfig support
+int const LYX_FORMAT = 317; // Uwe Stöhr: float placement support for wrap floats
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
