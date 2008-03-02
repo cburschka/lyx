@@ -854,7 +854,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			*/
 			if (cur.selection())
 				cutSelection(cur, true, false);
-			insertInset(cur, inset);
+			cur.insert(inset);
 			cur.posForward();
 		}
 		break;

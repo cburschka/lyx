@@ -986,6 +986,8 @@ void Cursor::plainInsert(MathAtom const & t)
 {
 	cell().insert(pos(), t);
 	++pos();
+	inset().setBuffer(bv_->buffer());
+	inset().validate();
 }
 
 
@@ -1024,10 +1026,11 @@ void Cursor::insert(Inset * inset0)
 	BOOST_ASSERT(inset0);
 	if (inMathed())
 		insert(MathAtom(inset0));
-	else
+	else {
 		text()->insertInset(*this, inset0);
-	inset().setBuffer(bv_->buffer());
-	inset().validate();
+		inset0->setBuffer(bv_->buffer());
+		inset0->validate();
+	}
 }
 
 
