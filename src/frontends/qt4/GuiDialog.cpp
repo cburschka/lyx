@@ -63,7 +63,7 @@ void GuiDialog::slotOK()
 
 void GuiDialog::slotClose()
 {
-	QDialog::hide();
+	hideView();
 	bc().cancel();
 }
 
