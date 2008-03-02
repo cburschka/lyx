@@ -21,6 +21,13 @@ class InsetLabel : public InsetCommand {
 public:
 	///
 	InsetLabel(InsetCommandParams const &);
+
+	/// verify label and update references.
+	/**
+	  * Overloaded from Inset::validate.
+	  **/
+	void validate();
+
 	///
 	docstring screenLabel() const;
 	///

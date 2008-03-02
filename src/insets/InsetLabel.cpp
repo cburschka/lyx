@@ -43,12 +43,15 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
+void InsetLabel::validate()
+{
+	update(getParam("name"));
+}
+
+
 void InsetLabel::update(docstring const & new_label)
 {
 	docstring const old_label = getParam("name");
-	if (old_label == new_label)
-		return;
-
 	docstring label = new_label;
 	int i = 0;
 	while (buffer().insetLabel(label)) {

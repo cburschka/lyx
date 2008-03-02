@@ -1027,6 +1027,7 @@ void Cursor::insert(Inset * inset0)
 	else
 		text()->insertInset(*this, inset0);
 	inset().setBuffer(bv_->buffer());
+	inset().validate();
 }
 
 

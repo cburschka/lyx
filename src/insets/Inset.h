@@ -91,10 +91,19 @@ public:
 	virtual ~Inset() {}
 
 	/// change associated Buffer
+	/// FIXME this should go.
 	virtual void setBuffer(Buffer & buffer);
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;
+
+	/// validate inset.
+	/**
+	  * This is typically used after this inset is created interactively.
+	  * Intented purpose is to sanitize internal state with regard to current
+	  * Buffer.
+	  **/
+	virtual void validate() {}
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
