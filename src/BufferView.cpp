@@ -1802,6 +1802,10 @@ void BufferView::updateMetrics()
 	if (d->inlineCompletionPos.fixIfBroken())
 		d->inlineCompletionPos = DocIterator();
 	
+	if (d->anchor_pit_ >= npit)
+		// The anchor pit must have been deleted...
+		d->anchor_pit_ = npit - 1;
+
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(d->anchor_pit_);
 	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
