@@ -430,7 +430,6 @@ void GuiPainter::buttonFrame(int x, int y, int w, int h)
 	line(x, y + h - 1, x - 1 + w, y + h - 1, Color_buttonframe);
 }
 
-static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
 
 void GuiPainter::rectText(int x, int y, docstring const & str,
 	FontInfo const & font, ColorCode back, ColorCode frame)
@@ -462,6 +461,8 @@ void GuiPainter::buttonText(int x, int y, docstring const & str,
 
 	FontMetrics const & fm = theFontMetrics(font);
 	fm.buttonText(str, width, ascent, descent);
+
+	static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
 
 	button(x + d, y - ascent, width - d, descent + ascent, mouseHover);
 	text(x + Inset::TEXT_TO_INSET_OFFSET, y, str, font);

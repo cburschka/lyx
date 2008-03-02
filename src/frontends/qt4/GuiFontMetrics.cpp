@@ -177,11 +177,11 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 
-static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
-
 void GuiFontMetrics::rectText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
+	static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
+
 	w = width(str) + Inset::TEXT_TO_INSET_OFFSET;
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
