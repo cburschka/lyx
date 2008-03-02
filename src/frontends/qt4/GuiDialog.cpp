@@ -56,7 +56,7 @@ void GuiDialog::slotOK()
 	is_closing_ = true;
 	apply();
 	is_closing_ = false;
-	QDialog::hide();
+	hideView();
 	bc().ok();
 }
 
