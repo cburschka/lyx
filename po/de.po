@@ -85,7 +85,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-02 00:13+0100\n"
-"PO-Revision-Date: 2008-03-02 13:32+0100\n"
+"PO-Revision-Date: 2008-03-02 13:45+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -14469,12 +14469,9 @@ msgid "Failed to write file"
 msgstr "konnte Datei nicht schreiben"
 
 #: src/EmbeddedFiles.cpp:470
-#, fuzzy, c-format
+#, c-format
 msgid "Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"
-msgstr ""
-"Eingebettete Datei %1$s existiert bereits.\n"
-"\n"
-"Möchten Sie diese Datei überschreiben?"
+msgstr "Eingebettete Datei %1$s existiert nicht. Haben Sie das temporäre Verzeichnis bearbeitet?"
 
 #: src/EmbeddedFiles.cpp:486
 msgid "Save failure"
@@ -14864,7 +14861,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
 #: src/LyX.cpp:1168
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14906,8 +14902,7 @@ msgstr ""
 "                     fmt ist das gewünschte Import-Format, \n"
 "                     file.xxx ist die zu importierende Datei.\n"
 "\t-version           Fasst Version und Erstellungsdatum zusammen.\n"
-"\n"
-"Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
+"Weitere Optionen sind in der LyX man Datei aufgeführt."
 
 #: src/LyX.cpp:1208
 #: src/support/Package.cpp:560
@@ -17461,7 +17456,7 @@ msgstr "CJK Vereinheitlichte Ideogramme Erweiterung B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr ""
+msgstr "CJK Kompatibilität Ideogramme Ergänzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 #, fuzzy
