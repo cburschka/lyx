@@ -320,8 +320,9 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pars.erase(start, finish);
 			return;
 		}
-		case OutlineIn:
-			buf.undo().recordUndo(cur);
+		case OutlineIn: {
+			pit_type const len = distance(start, finish);
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
 				toclevel = start->layout()->toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
@@ -336,9 +337,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 				}
 			}
 			return;
-
-		case OutlineOut:
-			buf.undo().recordUndo(cur);
+		}
+		case OutlineOut: {
+			pit_type const len = distance(start, finish);
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
 				toclevel = start->layout()->toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
@@ -353,6 +355,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 				}
 			}
 			return;
+		}
 	}
 }
 
