@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-02 00:13+0100\n"
+"POT-Creation-Date: 2008-03-02 17:29+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -50,7 +50,7 @@ msgstr "Droetes"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:174 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141
-#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:190
 #, fuzzy
 msgid "&Close"
 msgstr "Cloyu"
@@ -80,7 +80,7 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
 #: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:145
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:167
 #, fuzzy
 msgid "&OK"
 msgstr "I va"
@@ -319,7 +319,7 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Aroymint di coûtchî|#c"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
-#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:226
 #: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
 #, fuzzy
 msgid "Left"
@@ -333,7 +333,7 @@ msgid "Center"
 msgstr "Å mitan|#n"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
-#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:231
 #: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
 #, fuzzy
 msgid "Right"
@@ -396,7 +396,7 @@ msgstr "Aroymint di coûtchî|#c"
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:661
 #: src/frontends/qt4/ui/ParagraphUi.ui:205 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/WrapUi.ui:138
 #, fuzzy
 msgid "&Restore"
 msgstr "Comincî pal difén|#R"
@@ -409,7 +409,7 @@ msgstr "Comincî pal difén|#R"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/ui/WrapUi.ui:180 src/frontends/qt4/GuiDocument.cpp:1268
 #: src/frontends/qt4/GuiDocument.cpp:2090
 #, fuzzy
 msgid "&Apply"
@@ -433,7 +433,7 @@ msgstr "Gåliotaedje"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
 #: src/frontends/qt4/ui/PageLayoutUi.ui:214
-#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:95
 #, fuzzy
 msgid "&Width:"
 msgstr "Lårdjeu"
@@ -443,7 +443,7 @@ msgstr "Lårdjeu"
 msgid "Height value"
 msgstr "Lårdjeu"
 
-#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:103
+#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:111
 #, fuzzy
 msgid "Width value"
 msgstr "Lårdjeu"
@@ -1756,7 +1756,7 @@ msgstr ""
 msgid "&Inline listing"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:185
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:202
 #, fuzzy
 msgid "&Placement:"
 msgstr "Plaece des comas:|#L"
@@ -1950,7 +1950,7 @@ msgstr "Colones"
 msgid "Resize this to the correct table dimensions"
 msgstr ""
 
-#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
+#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:212
 #, fuzzy
 msgid "Vertical alignment"
 msgstr "Aroymint d' astampé|#a"
@@ -4033,52 +4033,61 @@ msgstr ""
 msgid "Automatic update"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:44
+#: src/frontends/qt4/ui/WrapUi.ui:56
 #, fuzzy
 msgid "number of needed lines"
 msgstr "Nombe"
 
-#: src/frontends/qt4/ui/WrapUi.ui:51
+#: src/frontends/qt4/ui/WrapUi.ui:63
 #, fuzzy
 msgid "use number of lines"
 msgstr "% di colones|#o"
 
-#: src/frontends/qt4/ui/WrapUi.ui:54
+#: src/frontends/qt4/ui/WrapUi.ui:66
 #, fuzzy
 msgid "&Line span:"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/ui/WrapUi.ui:78
+#: src/frontends/qt4/ui/WrapUi.ui:88
 #, fuzzy
 msgid "Unit of width value"
 msgstr "Lårdjeu"
 
-#: src/frontends/qt4/ui/WrapUi.ui:199
+#: src/frontends/qt4/ui/WrapUi.ui:216
 #, fuzzy
 msgid "Outer (default)"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: src/frontends/qt4/ui/WrapUi.ui:204
+#: src/frontends/qt4/ui/WrapUi.ui:221
 #, fuzzy
 msgid "Inner"
 msgstr "Sititchî"
 
-#: src/frontends/qt4/ui/WrapUi.ui:222
+#: src/frontends/qt4/ui/WrapUi.ui:239
 msgid "use overhang"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:225
+#: src/frontends/qt4/ui/WrapUi.ui:242
 msgid "Over&hang:"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:246
+#: src/frontends/qt4/ui/WrapUi.ui:261
 #, fuzzy
 msgid "Overhang value"
 msgstr "Lårdjeu"
 
-#: src/frontends/qt4/ui/WrapUi.ui:273
+#: src/frontends/qt4/ui/WrapUi.ui:286
 msgid "Unit of overhang value"
 msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:293
+msgid "by checking this the placement can float"
+msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:296
+#, fuzzy
+msgid "&float"
+msgstr "Pîd del pådje"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -10336,17 +10345,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Rifé"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:961
 #: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "Côper"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:966
 #: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "Copyî"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:921
 #: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "Aclaper"
@@ -15708,7 +15717,7 @@ msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 msgid "&Revert"
 msgstr "Schaper"
 
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1051 src/Text3.cpp:1468
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
@@ -16487,25 +16496,25 @@ msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
 msgid "Math editor mode"
 msgstr "Môde aspougneu matematike"
 
-#: src/Text3.cpp:828
+#: src/Text3.cpp:821
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "I manke èn årgumint"
 
-#: src/Text3.cpp:1042
+#: src/Text3.cpp:1035
 msgid "Layout "
 msgstr "Adjinçmint "
 
-#: src/Text3.cpp:1043
+#: src/Text3.cpp:1036
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/Text3.cpp:1582 src/Text3.cpp:1594
+#: src/Text3.cpp:1575 src/Text3.cpp:1587
 #, fuzzy
 msgid "Character set"
 msgstr "Tåve di caracteres:|#å#a"
 
-#: src/Text3.cpp:1735 src/Text3.cpp:1746
+#: src/Text3.cpp:1728 src/Text3.cpp:1739
 msgid "Paragraph layout set"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
@@ -17440,9 +17449,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 msgid ""
-"The layout file you have selected is a local layoutfile, not one in the "
-"system or user directory. Yourdocument may not work with this layout if you "
-"do notkeep the layout file in the same directory."
+"The layout file you have selected is a local layout\n"
+"file, not one in the system or user directory. Your\n"
+"document may not work with this layout if you do not\n"
+"keep the layout file in the same directory."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1252
@@ -17469,10 +17479,9 @@ msgid "Unapplied changes"
 msgstr "Waitîz dins les candjmints"
 
 #: src/frontends/qt4/GuiDocument.cpp:1266
-#: src/frontends/qt4/GuiDocument.cpp:2088
 msgid ""
-"Some changes in the dialog were not yet applied.If you do not apply now, "
-"they will be lost after this action."
+"Some changes in the dialog were not yet applied.\n"
+"If you do not apply now, they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1268
@@ -17512,6 +17521,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1369
 msgid "WARNING: Some packages are unavailable!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2088
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2110
@@ -19829,6 +19844,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Float"
+#~ msgstr "Floatflt xxx|#F"
 
 #, fuzzy
 #~ msgid "S&ubfigure"

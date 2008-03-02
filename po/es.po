@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-02 00:13+0100\n"
+"POT-Creation-Date: 2008-03-02 17:29+0100\n"
 "PO-Revision-Date: 2007-11-26 23:26+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:174 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141
-#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:190
 msgid "&Close"
 msgstr "&Cerrar"
 
@@ -77,7 +77,7 @@ msgstr "&Fantasma"
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
 #: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:145
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:167
 msgid "&OK"
 msgstr "&Aceptar"
 
@@ -285,7 +285,7 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Alineación horizontal del contenido dentro del cuadro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
-#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:226
 #: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
 msgid "Left"
 msgstr "Izquierda"
@@ -297,7 +297,7 @@ msgid "Center"
 msgstr "Centro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
-#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:231
 #: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
 msgid "Right"
 msgstr "Derecha"
@@ -352,7 +352,7 @@ msgstr "Horizontal"
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:661
 #: src/frontends/qt4/ui/ParagraphUi.ui:205 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/WrapUi.ui:138
 msgid "&Restore"
 msgstr "&Restaurar"
 
@@ -364,7 +364,7 @@ msgstr "&Restaurar"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/ui/WrapUi.ui:180 src/frontends/qt4/GuiDocument.cpp:1268
 #: src/frontends/qt4/GuiDocument.cpp:2090
 msgid "&Apply"
 msgstr "A&plicar"
@@ -384,7 +384,7 @@ msgstr "&Decoración:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
 #: src/frontends/qt4/ui/PageLayoutUi.ui:214
-#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:95
 msgid "&Width:"
 msgstr "A&ncho:"
 
@@ -392,7 +392,7 @@ msgstr "A&ncho:"
 msgid "Height value"
 msgstr "Valor de alto"
 
-#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:103
+#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:111
 msgid "Width value"
 msgstr "Valor de ancho"
 
@@ -1562,7 +1562,7 @@ msgstr "Marcar para los listados insertados"
 msgid "&Inline listing"
 msgstr "&Listado insertado"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:185
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:202
 msgid "&Placement:"
 msgstr "&Ubicación:"
 
@@ -1732,7 +1732,7 @@ msgstr "&Columnas:"
 msgid "Resize this to the correct table dimensions"
 msgstr "Reajustar a las dimensiones de la tabla"
 
-#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
+#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:212
 msgid "Vertical alignment"
 msgstr "Alineación vertical"
 
@@ -3614,53 +3614,62 @@ msgstr "Fuente completa"
 msgid "Automatic update"
 msgstr "Actualización automática"
 
-#: src/frontends/qt4/ui/WrapUi.ui:44
+#: src/frontends/qt4/ui/WrapUi.ui:56
 #, fuzzy
 msgid "number of needed lines"
 msgstr "Número de copias"
 
-#: src/frontends/qt4/ui/WrapUi.ui:51
+#: src/frontends/qt4/ui/WrapUi.ui:63
 #, fuzzy
 msgid "use number of lines"
 msgstr "Número de copias"
 
-#: src/frontends/qt4/ui/WrapUi.ui:54
+#: src/frontends/qt4/ui/WrapUi.ui:66
 #, fuzzy
 msgid "&Line span:"
 msgstr "&Espaciado:"
 
-#: src/frontends/qt4/ui/WrapUi.ui:78
+#: src/frontends/qt4/ui/WrapUi.ui:88
 #, fuzzy
 msgid "Unit of width value"
 msgstr "Unidades del valor de ancho"
 
-#: src/frontends/qt4/ui/WrapUi.ui:199
+#: src/frontends/qt4/ui/WrapUi.ui:216
 #, fuzzy
 msgid "Outer (default)"
 msgstr "Predeterminado LaTeX"
 
-#: src/frontends/qt4/ui/WrapUi.ui:204
+#: src/frontends/qt4/ui/WrapUi.ui:221
 #, fuzzy
 msgid "Inner"
 msgstr "I&nterior:"
 
-#: src/frontends/qt4/ui/WrapUi.ui:222
+#: src/frontends/qt4/ui/WrapUi.ui:239
 msgid "use overhang"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:225
+#: src/frontends/qt4/ui/WrapUi.ui:242
 msgid "Over&hang:"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:246
+#: src/frontends/qt4/ui/WrapUi.ui:261
 #, fuzzy
 msgid "Overhang value"
 msgstr "Valor de alto"
 
-#: src/frontends/qt4/ui/WrapUi.ui:273
+#: src/frontends/qt4/ui/WrapUi.ui:286
 #, fuzzy
 msgid "Unit of overhang value"
 msgstr "Unidades del valor de ancho"
+
+#: src/frontends/qt4/ui/WrapUi.ui:293
+msgid "by checking this the placement can float"
+msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:296
+#, fuzzy
+msgid "&float"
+msgstr "flotante"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -9253,17 +9262,17 @@ msgstr "Cerrar ventana|t"
 msgid "Redo|R"
 msgstr "Rehacer|R"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:961
 #: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "Cortar"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:966
 #: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "Copiar"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:921
 #: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "Pegar"
@@ -14285,7 +14294,7 @@ msgstr "¿Revertir al documento guardado?"
 msgid "&Revert"
 msgstr "&Revertir"
 
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1051 src/Text3.cpp:1468
 msgid "Missing argument"
 msgstr "Falta argumento"
 
@@ -15160,23 +15169,23 @@ msgstr "¡No se puede indexar más de un párrafo!"
 msgid "Math editor mode"
 msgstr "Modo del editor de ecuaciones"
 
-#: src/Text3.cpp:828
+#: src/Text3.cpp:821
 msgid "Unknown spacing argument: "
 msgstr "Argumento de espaciado desconocido: "
 
-#: src/Text3.cpp:1042
+#: src/Text3.cpp:1035
 msgid "Layout "
 msgstr "Estilo "
 
-#: src/Text3.cpp:1043
+#: src/Text3.cpp:1036
 msgid " not known"
 msgstr " no conocido"
 
-#: src/Text3.cpp:1582 src/Text3.cpp:1594
+#: src/Text3.cpp:1575 src/Text3.cpp:1587
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:1735 src/Text3.cpp:1746
+#: src/Text3.cpp:1728 src/Text3.cpp:1739
 msgid "Paragraph layout set"
 msgstr "Estilo de párrafo"
 
@@ -16054,9 +16063,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 msgid ""
-"The layout file you have selected is a local layoutfile, not one in the "
-"system or user directory. Yourdocument may not work with this layout if you "
-"do notkeep the layout file in the same directory."
+"The layout file you have selected is a local layout\n"
+"file, not one in the system or user directory. Your\n"
+"document may not work with this layout if you do not\n"
+"keep the layout file in the same directory."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1252
@@ -16083,10 +16093,9 @@ msgid "Unapplied changes"
 msgstr "Seguir cambios"
 
 #: src/frontends/qt4/GuiDocument.cpp:1266
-#: src/frontends/qt4/GuiDocument.cpp:2088
 msgid ""
-"Some changes in the dialog were not yet applied.If you do not apply now, "
-"they will be lost after this action."
+"Some changes in the dialog were not yet applied.\n"
+"If you do not apply now, they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1268
@@ -16126,6 +16135,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1369
 msgid "WARNING: Some packages are unavailable!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2088
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2110
@@ -18316,6 +18331,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuario desconocido"
+
+#, fuzzy
+#~ msgid "Float"
+#~ msgstr "&Flotante"
 
 #~ msgid "S&ubfigure"
 #~ msgstr "Su&bfigura"

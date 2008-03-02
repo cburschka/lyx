@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-02 00:13+0100\n"
+"POT-Creation-Date: 2008-03-02 17:29+0100\n"
 "PO-Revision-Date: 2008-02-20 12:39+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -53,7 +53,7 @@ msgstr "זכויות יוצרים"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:174 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141
-#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:190
 msgid "&Close"
 msgstr "&סגור"
 
@@ -81,7 +81,7 @@ msgstr "דמה"
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
 #: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:145
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:167
 msgid "&OK"
 msgstr "אישור"
 
@@ -289,7 +289,7 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "יישור אופקי של תוכן התיבה"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
-#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:226
 #: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
 msgid "Left"
 msgstr "שמאל"
@@ -301,7 +301,7 @@ msgid "Center"
 msgstr "מרכז"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
-#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:231
 #: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
 msgid "Right"
 msgstr "ימין"
@@ -356,7 +356,7 @@ msgstr "אופקי"
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:661
 #: src/frontends/qt4/ui/ParagraphUi.ui:205 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/WrapUi.ui:138
 msgid "&Restore"
 msgstr "שחזר"
 
@@ -368,7 +368,7 @@ msgstr "שחזר"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/ui/WrapUi.ui:180 src/frontends/qt4/GuiDocument.cpp:1268
 #: src/frontends/qt4/GuiDocument.cpp:2090
 msgid "&Apply"
 msgstr "החל"
@@ -388,7 +388,7 @@ msgstr "מראה:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
 #: src/frontends/qt4/ui/PageLayoutUi.ui:214
-#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:95
 msgid "&Width:"
 msgstr "רוחב:"
 
@@ -396,7 +396,7 @@ msgstr "רוחב:"
 msgid "Height value"
 msgstr "מידת האורך"
 
-#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:103
+#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:111
 msgid "Width value"
 msgstr "מידת הרוחב"
 
@@ -1563,7 +1563,7 @@ msgstr "בחר בשביל רישומים בתוך השורה"
 msgid "&Inline listing"
 msgstr "&בתוך השורה"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:185
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:202
 msgid "&Placement:"
 msgstr "&מיקום:"
 
@@ -1729,7 +1729,7 @@ msgstr "עמודות:"
 msgid "Resize this to the correct table dimensions"
 msgstr "שנה פה את הגודל כדי לקבל את ממדי הטבלה הנכונים"
 
-#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
+#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:212
 msgid "Vertical alignment"
 msgstr "יישור אנכי"
 
@@ -3595,53 +3595,62 @@ msgstr "מקור מלא"
 msgid "Automatic update"
 msgstr "עדכון אוטומטי"
 
-#: src/frontends/qt4/ui/WrapUi.ui:44
+#: src/frontends/qt4/ui/WrapUi.ui:56
 #, fuzzy
 msgid "number of needed lines"
 msgstr "מספר עותקים"
 
-#: src/frontends/qt4/ui/WrapUi.ui:51
+#: src/frontends/qt4/ui/WrapUi.ui:63
 #, fuzzy
 msgid "use number of lines"
 msgstr "מספר עותקים"
 
-#: src/frontends/qt4/ui/WrapUi.ui:54
+#: src/frontends/qt4/ui/WrapUi.ui:66
 #, fuzzy
 msgid "&Line span:"
 msgstr "מרווח בין שורות:"
 
-#: src/frontends/qt4/ui/WrapUi.ui:78
+#: src/frontends/qt4/ui/WrapUi.ui:88
 #, fuzzy
 msgid "Unit of width value"
 msgstr "יחידות מדידה של הרוחב"
 
-#: src/frontends/qt4/ui/WrapUi.ui:199
+#: src/frontends/qt4/ui/WrapUi.ui:216
 #, fuzzy
 msgid "Outer (default)"
 msgstr "ברירת המחדל של LaTeX"
 
-#: src/frontends/qt4/ui/WrapUi.ui:204
+#: src/frontends/qt4/ui/WrapUi.ui:221
 #, fuzzy
 msgid "Inner"
 msgstr "&פנימיים:"
 
-#: src/frontends/qt4/ui/WrapUi.ui:222
+#: src/frontends/qt4/ui/WrapUi.ui:239
 msgid "use overhang"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:225
+#: src/frontends/qt4/ui/WrapUi.ui:242
 msgid "Over&hang:"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:246
+#: src/frontends/qt4/ui/WrapUi.ui:261
 #, fuzzy
 msgid "Overhang value"
 msgstr "מידת האורך"
 
-#: src/frontends/qt4/ui/WrapUi.ui:273
+#: src/frontends/qt4/ui/WrapUi.ui:286
 #, fuzzy
 msgid "Unit of overhang value"
 msgstr "יחידות מדידה של הרוחב"
+
+#: src/frontends/qt4/ui/WrapUi.ui:293
+msgid "by checking this the placement can float"
+msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:296
+#, fuzzy
+msgid "&float"
+msgstr "אובייקט צף"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -9216,17 +9225,17 @@ msgstr "סגור חלון"
 msgid "Redo|R"
 msgstr "בצע שוב"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:961
 #: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "גזור"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:966
 #: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "העתק"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:921
 #: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "הדבק"
@@ -14190,7 +14199,7 @@ msgstr "לחזור למסמך השמור?"
 msgid "&Revert"
 msgstr "חזור"
 
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1051 src/Text3.cpp:1468
 msgid "Missing argument"
 msgstr "ארגומנט חסר"
 
@@ -14958,23 +14967,23 @@ msgstr "לא יכול לשים באינדקס יותר מפסקה אחת!"
 msgid "Math editor mode"
 msgstr "מצב עורך מתמטיקה"
 
-#: src/Text3.cpp:828
+#: src/Text3.cpp:821
 msgid "Unknown spacing argument: "
 msgstr "ארגומנט מרווח לא ידוע:"
 
-#: src/Text3.cpp:1042
+#: src/Text3.cpp:1035
 msgid "Layout "
 msgstr "פריסה"
 
-#: src/Text3.cpp:1043
+#: src/Text3.cpp:1036
 msgid " not known"
 msgstr "לא ידוע"
 
-#: src/Text3.cpp:1582 src/Text3.cpp:1594
+#: src/Text3.cpp:1575 src/Text3.cpp:1587
 msgid "Character set"
 msgstr "סט תווים"
 
-#: src/Text3.cpp:1735 src/Text3.cpp:1746
+#: src/Text3.cpp:1728 src/Text3.cpp:1739
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -15843,9 +15852,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 msgid ""
-"The layout file you have selected is a local layoutfile, not one in the "
-"system or user directory. Yourdocument may not work with this layout if you "
-"do notkeep the layout file in the same directory."
+"The layout file you have selected is a local layout\n"
+"file, not one in the system or user directory. Your\n"
+"document may not work with this layout if you do not\n"
+"keep the layout file in the same directory."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1252
@@ -15872,10 +15882,9 @@ msgid "Unapplied changes"
 msgstr "עקוב אחר שינויים"
 
 #: src/frontends/qt4/GuiDocument.cpp:1266
-#: src/frontends/qt4/GuiDocument.cpp:2088
 msgid ""
-"Some changes in the dialog were not yet applied.If you do not apply now, "
-"they will be lost after this action."
+"Some changes in the dialog were not yet applied.\n"
+"If you do not apply now, they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1268
@@ -15915,6 +15924,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1369
 msgid "WARNING: Some packages are unavailable!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2088
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2110
@@ -18080,6 +18095,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
+
+#, fuzzy
+#~ msgid "Float"
+#~ msgstr "&אובייקט צף"
 
 #~ msgid "S&ubfigure"
 #~ msgstr "תת-איור"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-02 00:13+0100\n"
+"POT-Creation-Date: 2008-03-02 17:29+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -51,7 +51,7 @@ msgstr "Авторски права"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:174 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141
-#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:190
 msgid "&Close"
 msgstr "(&C)Затвори"
 
@@ -88,7 +88,7 @@ msgstr "Обобщение"
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
 #: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:145
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:167
 msgid "&OK"
 msgstr "&OK"
 
@@ -374,7 +374,7 @@ msgstr "Хориз. Подравняване(H)|#H"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:120
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
-#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:226
 #: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
 msgid "Left"
 msgstr "Ляв"
@@ -389,7 +389,7 @@ msgstr "Центринан"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:133
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
-#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:231
 #: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
 msgid "Right"
 msgstr "Десен"
@@ -462,7 +462,7 @@ msgstr "Хориз. Подравняване(H)|#H"
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:661
 #: src/frontends/qt4/ui/ParagraphUi.ui:205 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/WrapUi.ui:138
 msgid "&Restore"
 msgstr "(&R)Въстанови"
 
@@ -475,7 +475,7 @@ msgstr "(&R)Въстанови"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/ui/WrapUi.ui:180 src/frontends/qt4/GuiDocument.cpp:1268
 #: src/frontends/qt4/GuiDocument.cpp:2090
 msgid "&Apply"
 msgstr "(&A)Установи"
@@ -504,7 +504,7 @@ msgstr "Посвещение"
 # src/frontends/xforms/form_paragraph.C:219
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
 #: src/frontends/qt4/ui/PageLayoutUi.ui:214
-#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:95
 #, fuzzy
 msgid "&Width:"
 msgstr "Ширина"
@@ -520,7 +520,7 @@ msgstr "Ширина"
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:103
+#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:111
 #, fuzzy
 msgid "Width value"
 msgstr "Ширина"
@@ -2034,7 +2034,7 @@ msgid "&Inline listing"
 msgstr "Разстояние"
 
 # src/LColor.C:75
-#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:185
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:202
 #, fuzzy
 msgid "&Placement:"
 msgstr "акцент"
@@ -2260,7 +2260,7 @@ msgid "Resize this to the correct table dimensions"
 msgstr ""
 
 # src/mathed/math_forms.C:147
-#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
+#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:212
 #, fuzzy
 msgid "Vertical alignment"
 msgstr "Верт. Подравняване(V)|#V"
@@ -4707,19 +4707,19 @@ msgid "Automatic update"
 msgstr ""
 
 # src/frontends/kde/printdlg.C:31
-#: src/frontends/qt4/ui/WrapUi.ui:44
+#: src/frontends/qt4/ui/WrapUi.ui:56
 #, fuzzy
 msgid "number of needed lines"
 msgstr "Брой копия за печат"
 
 # src/frontends/kde/printdlg.C:31
-#: src/frontends/qt4/ui/WrapUi.ui:51
+#: src/frontends/qt4/ui/WrapUi.ui:63
 #, fuzzy
 msgid "use number of lines"
 msgstr "Брой копия за печат"
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/ui/WrapUi.ui:54
+#: src/frontends/qt4/ui/WrapUi.ui:66
 #, fuzzy
 msgid "&Line span:"
 msgstr "Разстояние"
@@ -4727,42 +4727,52 @@ msgstr "Разстояние"
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: src/frontends/qt4/ui/WrapUi.ui:78
+#: src/frontends/qt4/ui/WrapUi.ui:88
 #, fuzzy
 msgid "Unit of width value"
 msgstr "Ширина"
 
 # src/ext_l10n.h:133
-#: src/frontends/qt4/ui/WrapUi.ui:199
+#: src/frontends/qt4/ui/WrapUi.ui:216
 #, fuzzy
 msgid "Outer (default)"
 msgstr "LaTeX Протокол(L)|L"
 
 # src/ext_l10n.h:6
-#: src/frontends/qt4/ui/WrapUi.ui:204
+#: src/frontends/qt4/ui/WrapUi.ui:221
 #, fuzzy
 msgid "Inner"
 msgstr "Вмъкни(I)|I"
 
-#: src/frontends/qt4/ui/WrapUi.ui:222
+#: src/frontends/qt4/ui/WrapUi.ui:239
 msgid "use overhang"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:225
+#: src/frontends/qt4/ui/WrapUi.ui:242
 msgid "Over&hang:"
 msgstr ""
 
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: src/frontends/qt4/ui/WrapUi.ui:246
+#: src/frontends/qt4/ui/WrapUi.ui:261
 #, fuzzy
 msgid "Overhang value"
 msgstr "Ширина"
 
-#: src/frontends/qt4/ui/WrapUi.ui:273
+#: src/frontends/qt4/ui/WrapUi.ui:286
 msgid "Unit of overhang value"
 msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:293
+msgid "by checking this the placement can float"
+msgstr ""
+
+# src/frontends/xforms/FormPreferences.C:252
+#: src/frontends/qt4/ui/WrapUi.ui:296
+#, fuzzy
+msgid "&float"
+msgstr "Формати"
 
 # src/ext_l10n.h:361
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
@@ -12083,19 +12093,19 @@ msgid "Redo|R"
 msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:961
 #: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:966
 #: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:921
 #: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "Залепи"
@@ -18217,7 +18227,7 @@ msgid "&Revert"
 msgstr "Регистрирай(R)|R"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1051 src/Text3.cpp:1468
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
@@ -19204,30 +19214,30 @@ msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Text3.cpp:828
+#: src/Text3.cpp:821
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/Text3.cpp:1042
+#: src/Text3.cpp:1035
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/Text3.cpp:1043
+#: src/Text3.cpp:1036
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/Text3.cpp:1582 src/Text3.cpp:1594
+#: src/Text3.cpp:1575 src/Text3.cpp:1587
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/Text3.cpp:1735 src/Text3.cpp:1746
+#: src/Text3.cpp:1728 src/Text3.cpp:1739
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -20292,9 +20302,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 msgid ""
-"The layout file you have selected is a local layoutfile, not one in the "
-"system or user directory. Yourdocument may not work with this layout if you "
-"do notkeep the layout file in the same directory."
+"The layout file you have selected is a local layout\n"
+"file, not one in the system or user directory. Your\n"
+"document may not work with this layout if you do not\n"
+"keep the layout file in the same directory."
 msgstr ""
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
@@ -20325,10 +20336,9 @@ msgid "Unapplied changes"
 msgstr "Вкарай промените(I)|I"
 
 #: src/frontends/qt4/GuiDocument.cpp:1266
-#: src/frontends/qt4/GuiDocument.cpp:2088
 msgid ""
-"Some changes in the dialog were not yet applied.If you do not apply now, "
-"they will be lost after this action."
+"Some changes in the dialog were not yet applied.\n"
+"If you do not apply now, they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1268
@@ -20369,6 +20379,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1369
 msgid "WARNING: Some packages are unavailable!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2088
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
 msgstr ""
 
 # src/frontends/xforms/FormParagraph.C:33
@@ -23007,6 +23023,11 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/frontends/xforms/FormPreferences.C:252
+#, fuzzy
+#~ msgid "Float"
+#~ msgstr "Формати"
 
 # src/ext_l10n.h:351
 #, fuzzy

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-02 00:13+0100\n"
+"POT-Creation-Date: 2008-03-02 17:29+0100\n"
 "PO-Revision-Date: 2007-08-19 23:35+0200\n"
 "Last-Translator: Joan Montané <jmontane@gmail.com>\n"
 "Language-Team: catalan <ca@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:174 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141
-#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/ui/VSpaceUi.ui:168 src/frontends/qt4/ui/WrapUi.ui:190
 msgid "&Close"
 msgstr "&Tanca"
 
@@ -85,7 +85,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
 #: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:145
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/VSpaceUi.ui:145 src/frontends/qt4/ui/WrapUi.ui:167
 msgid "&OK"
 msgstr "&D'acord"
 
@@ -295,7 +295,7 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Aliniament horitzontal del contingut dins la caixa"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
-#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:226
 #: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
 msgid "Left"
 msgstr "Esquerra"
@@ -307,7 +307,7 @@ msgid "Center"
 msgstr "Centrada"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
-#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:231
 #: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
 msgid "Right"
 msgstr "Dreta"
@@ -363,7 +363,7 @@ msgstr "Horitzontal"
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:661
 #: src/frontends/qt4/ui/ParagraphUi.ui:205 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/WrapUi.ui:138
 msgid "&Restore"
 msgstr "&Restaura"
 
@@ -375,7 +375,7 @@ msgstr "&Restaura"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/ui/WrapUi.ui:180 src/frontends/qt4/GuiDocument.cpp:1268
 #: src/frontends/qt4/GuiDocument.cpp:2090
 msgid "&Apply"
 msgstr "&Aplica"
@@ -398,7 +398,7 @@ msgstr "&Decoració:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
 #: src/frontends/qt4/ui/PageLayoutUi.ui:214
-#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:95
 msgid "&Width:"
 msgstr "Am&plada:"
 
@@ -407,7 +407,7 @@ msgstr "Am&plada:"
 msgid "Height value"
 msgstr "Alçada"
 
-#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:103
+#: src/frontends/qt4/ui/BoxUi.ui:350 src/frontends/qt4/ui/WrapUi.ui:111
 #, fuzzy
 msgid "Width value"
 msgstr "Amplada"
@@ -1607,7 +1607,7 @@ msgstr ""
 msgid "&Inline listing"
 msgstr "Llistat &en línia"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:185
+#: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:202
 msgid "&Placement:"
 msgstr "&Posició:"
 
@@ -1782,7 +1782,7 @@ msgstr "&Columnes"
 msgid "Resize this to the correct table dimensions"
 msgstr "Canvia la mida d'això fins a les dimensions de la taula"
 
-#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
+#: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:212
 #, fuzzy
 msgid "Vertical alignment"
 msgstr "Aliniació vertical"
@@ -3673,53 +3673,62 @@ msgstr ""
 msgid "Automatic update"
 msgstr "Actualització automàtica"
 
-#: src/frontends/qt4/ui/WrapUi.ui:44
+#: src/frontends/qt4/ui/WrapUi.ui:56
 #, fuzzy
 msgid "number of needed lines"
 msgstr "Nombre de còpies"
 
-#: src/frontends/qt4/ui/WrapUi.ui:51
+#: src/frontends/qt4/ui/WrapUi.ui:63
 #, fuzzy
 msgid "use number of lines"
 msgstr "Nombre de còpies"
 
-#: src/frontends/qt4/ui/WrapUi.ui:54
+#: src/frontends/qt4/ui/WrapUi.ui:66
 #, fuzzy
 msgid "&Line span:"
 msgstr "Espaiat de línia:"
 
-#: src/frontends/qt4/ui/WrapUi.ui:78
+#: src/frontends/qt4/ui/WrapUi.ui:88
 #, fuzzy
 msgid "Unit of width value"
 msgstr "Unitats d'amplada"
 
-#: src/frontends/qt4/ui/WrapUi.ui:199
+#: src/frontends/qt4/ui/WrapUi.ui:216
 #, fuzzy
 msgid "Outer (default)"
 msgstr "El LaTeX ha fallat"
 
-#: src/frontends/qt4/ui/WrapUi.ui:204
+#: src/frontends/qt4/ui/WrapUi.ui:221
 #, fuzzy
 msgid "Inner"
 msgstr "In&terior"
 
-#: src/frontends/qt4/ui/WrapUi.ui:222
+#: src/frontends/qt4/ui/WrapUi.ui:239
 msgid "use overhang"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:225
+#: src/frontends/qt4/ui/WrapUi.ui:242
 msgid "Over&hang:"
 msgstr ""
 
-#: src/frontends/qt4/ui/WrapUi.ui:246
+#: src/frontends/qt4/ui/WrapUi.ui:261
 #, fuzzy
 msgid "Overhang value"
 msgstr "Alçada"
 
-#: src/frontends/qt4/ui/WrapUi.ui:273
+#: src/frontends/qt4/ui/WrapUi.ui:286
 #, fuzzy
 msgid "Unit of overhang value"
 msgstr "Unitats d'amplada"
+
+#: src/frontends/qt4/ui/WrapUi.ui:293
+msgid "by checking this the placement can float"
+msgstr ""
+
+#: src/frontends/qt4/ui/WrapUi.ui:296
+#, fuzzy
+msgid "&float"
+msgstr "flat"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -9379,17 +9388,17 @@ msgstr "Tanca finestra|d"
 msgid "Redo|R"
 msgstr "Refés|R"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:961
 #: src/mathed/InsetMathNest.cpp:470
 msgid "Cut"
 msgstr "Retalla"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:966
 #: src/mathed/InsetMathNest.cpp:478
 msgid "Copy"
 msgstr "Copia"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:921
 #: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
 msgid "Paste"
 msgstr "Enganxa"
@@ -14413,7 +14422,7 @@ msgstr "Voleu revertir al document salvat?"
 msgid "&Revert"
 msgstr "&Reverteix"
 
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1475
+#: src/LyXFunc.cpp:1051 src/Text3.cpp:1468
 msgid "Missing argument"
 msgstr "Manca argument"
 
@@ -15208,25 +15217,25 @@ msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
 msgid "Math editor mode"
 msgstr "Mode editor matemàtic"
 
-#: src/Text3.cpp:828
+#: src/Text3.cpp:821
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Argument manquant"
 
-#: src/Text3.cpp:1042
+#: src/Text3.cpp:1035
 msgid "Layout "
 msgstr "Format"
 
-#: src/Text3.cpp:1043
+#: src/Text3.cpp:1036
 msgid " not known"
 msgstr " desconegut"
 
-#: src/Text3.cpp:1582 src/Text3.cpp:1594
+#: src/Text3.cpp:1575 src/Text3.cpp:1587
 #, fuzzy
 msgid "Character set"
 msgstr "Joc de caràcters:|#H"
 
-#: src/Text3.cpp:1735 src/Text3.cpp:1746
+#: src/Text3.cpp:1728 src/Text3.cpp:1739
 msgid "Paragraph layout set"
 msgstr "Format de paràgraf modificat"
 
@@ -16126,9 +16135,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 msgid ""
-"The layout file you have selected is a local layoutfile, not one in the "
-"system or user directory. Yourdocument may not work with this layout if you "
-"do notkeep the layout file in the same directory."
+"The layout file you have selected is a local layout\n"
+"file, not one in the system or user directory. Your\n"
+"document may not work with this layout if you do not\n"
+"keep the layout file in the same directory."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1252
@@ -16155,10 +16165,9 @@ msgid "Unapplied changes"
 msgstr "Gestiona els canvis"
 
 #: src/frontends/qt4/GuiDocument.cpp:1266
-#: src/frontends/qt4/GuiDocument.cpp:2088
 msgid ""
-"Some changes in the dialog were not yet applied.If you do not apply now, "
-"they will be lost after this action."
+"Some changes in the dialog were not yet applied.\n"
+"If you do not apply now, they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1268
@@ -16198,6 +16207,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1369
 msgid "WARNING: Some packages are unavailable!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2088
+msgid ""
+"Some changes in the dialog were not yet applied.If you do not apply now, "
+"they will be lost after this action."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2110
@@ -18405,6 +18420,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuari desconegut"
+
+#, fuzzy
+#~ msgid "Float"
+#~ msgstr "&Flotant"
 
 #~ msgid "S&ubfigure"
 #~ msgstr "S&ubfigura"
