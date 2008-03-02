@@ -14,6 +14,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
