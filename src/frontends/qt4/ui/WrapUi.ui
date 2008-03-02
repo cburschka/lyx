@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>359</width>
-    <height>152</height>
+    <height>167</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -16,24 +16,36 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>9</number>
    </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>9</number>
-   </property>
-   <property name="horizontalSpacing" >
+   <property name="spacing" >
     <number>6</number>
    </property>
-   <property name="verticalSpacing" >
-    <number>6</number>
-   </property>
+   <item row="1" column="3" >
+    <widget class="LengthCombo" name="widthUnitLC" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>40</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::StrongFocus</enum>
+     </property>
+     <property name="toolTip" >
+      <string>Unit of width value</string>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="2" >
     <spacer>
      <property name="orientation" >
@@ -67,28 +79,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3" >
-    <widget class="LengthCombo" name="widthUnitLC" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>40</width>
-       <height>22</height>
-      </size>
-     </property>
-     <property name="focusPolicy" >
-      <enum>Qt::StrongFocus</enum>
-     </property>
-     <property name="toolTip" >
-      <string>Unit of width value</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" >
     <widget class="QLabel" name="widthLA" >
      <property name="text" >
@@ -102,7 +92,9 @@
    <item row="1" column="1" colspan="2" >
     <widget class="QLineEdit" name="widthED" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -114,20 +106,11 @@
    </item>
    <item row="4" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
       <number>6</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
-      <number>0</number>
      </property>
      <item>
       <widget class="QPushButton" name="restorePB" >
@@ -252,7 +235,9 @@
       <bool>false</bool>
      </property>
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -268,7 +253,9 @@
       <bool>false</bool>
      </property>
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -290,10 +277,10 @@
    <item row="0" column="3" >
     <widget class="QCheckBox" name="floatCB" >
      <property name="toolTip" >
-      <string>by checking this the placement can float</string>
+      <string>Check this to allow flexible placement</string>
      </property>
      <property name="text" >
-      <string>&amp;float</string>
+      <string>Allow &amp;floating</string>
      </property>
     </widget>
    </item>
