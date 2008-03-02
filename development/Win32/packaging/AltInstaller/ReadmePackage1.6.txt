@@ -47,7 +47,7 @@ ImageMagick
 
 License: ImageMagick license
 
-The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.3.7
+The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.3.9
 
 ---
 Ghostscript

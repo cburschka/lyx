@@ -2,19 +2,12 @@
 ## Editing this file manually may cause lyx to crash.
 
 [toolbars]
-standard = 0 0
-extra = 0 0
-math_panels = 2 1
-math = 2 1
-minibuffer = 1 1
-review = 2 1
-table = 2 1
-view/update = 0 3
-
-[session info]
-IconSizeXY = 20
-WindowHeight = 550
-WindowIsMaximized = no
-WindowPosX = 200
-WindowPosY = 200
-WindowWidth = 720
+standard = 0 0 0 21
+extra = 0 0 0 55
+view/update = 0 3 1245 89
+minibuffer = 1 1 0 0
+review = 2 0 0 0
+table = 2 1 0 911
+mathmacrotemplate = 2 1 0 0
+math = 2 1 0 0
+math_panels = 2 1 0 0
