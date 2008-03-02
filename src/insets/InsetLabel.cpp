@@ -14,6 +14,7 @@
 
 #include "InsetRef.h"
 
+#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
@@ -26,6 +27,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/convert.h"
 #include "support/lyxalgo.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -39,6 +41,38 @@ namespace lyx {
 InsetLabel::InsetLabel(InsetCommandParams const & p)
 	: InsetCommand(p, "label")
 {}
+
+
+void InsetLabel::update(docstring const & new_label)
+{
+	docstring const old_label = getParam("name");
+	if (old_label == new_label)
+		return;
+
+	docstring label = new_label;
+	int i = 0;
+	while (buffer().insetLabel(label)) {
+		label = new_label + '-' + convert<docstring>(i);
+		++i;
+	}
+	setParam("name", label);
+
+	Buffer::References const & refs = buffer().references(old_label);
+	Buffer::References::const_iterator it = refs.begin();
+	Buffer::References::const_iterator end = refs.end();
+	for (; it != end; ++it)
+		it->first->setParam("reference", label);
+
+	if (label != new_label) {
+		// Warn the user that the label has been changed to something else.
+		frontend::Alert::warning(_("Label names must be unique!"),
+			bformat(_("The label %1$s already exists,\n"
+			"it will been changed to %2$s."), new_label, label));
+	}
+	// We need an update of the Buffer reference cache. This is achieved by
+	// updateLabel().
+	lyx::updateLabels(buffer());
+}
 
 
 ParamInfo const & InsetLabel::findInfo(string const & /* cmdName */)
@@ -104,10 +138,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		if (p["name"] != params()["name"])
-			cur.bv().buffer().changeRefsIfUnique(params()["name"],
-					p["name"], REF_CODE);
-		setParams(p);
+		update(p["name"]);
 		break;
 	}
 

@@ -52,6 +52,8 @@ protected:
 private:
 	///
 	Inset * clone() const { return new InsetLabel(*this); }
+	///
+	void update(docstring const & new_label);
 };
 
 
