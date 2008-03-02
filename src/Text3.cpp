@@ -270,23 +270,24 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;
+
+	// Move out (down) from this section header
+	if (finish != end)
+		++finish;
+	// Seek the one (on same level) below
+	for (; finish != end; ++finish) {
+		toclevel = finish->layout()->toclevel;
+		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel) {
+			break;
+		}
+	}
+
 	switch (mode) {
 		case OutlineUp: {
-			// Move out (down) from this section header
-			if (finish != end)
-				++finish;
-			// Seek the one (on same level) below
-			for (; finish != end; ++finish) {
-				toclevel = finish->layout()->toclevel;
-				if (toclevel != Layout::NOT_IN_TOC
-				    && toclevel <= thistoclevel) {
-					break;
-				}
-			}
 			ParagraphList::iterator dest = start;
 			// Move out (up) from this header
 			if (dest == bgn)
-				break;
+				return;
 			// Search previous same-level header above
 			do {
 				--dest;
@@ -296,7 +297,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 				    || toclevel > thistoclevel));
 			// Not found; do nothing
 			if (toclevel == Layout::NOT_IN_TOC || toclevel > thistoclevel)
-				break;
+				return;
 			pit_type const newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
@@ -305,30 +306,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 			start = boost::next(pars.begin(), deletepit);
 			pit = newpit;
 			pars.erase(start, finish);
-			break;
+			return;
 		}
 		case OutlineDown: {
-			// Go down out of current header:
-			if (finish != end)
-				++finish;
-			// Find next same-level header:
-			for (; finish != end; ++finish) {
-				toclevel = finish->layout()->toclevel;
-				if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
-					break;
-			}
 			ParagraphList::iterator dest = finish;
-			// Go one down from *this* header:
-			if (dest != end)
-				++dest;
-			else
-				break;
-			// Go further down to find header to insert in front of:
-			for (; dest != end; ++dest) {
-				toclevel = dest->layout()->toclevel;
-				if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
-					break;
-			}
 			// One such was found:
 			pit_type newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
@@ -337,32 +318,41 @@ static void outline(OutlineOp mode, Cursor & cur)
 			start = boost::next(bgn, pit);
 			pit = newpit - len;
 			pars.erase(start, finish);
-			break;
+			return;
 		}
 		case OutlineIn:
 			buf.undo().recordUndo(cur);
-			for (size_t i = 0; i != tc.layoutCount(); ++i) {
-				LayoutPtr const & lt = tc.layout(i);
-				if (lt->toclevel == thistoclevel + 1 &&
-				    start->layout()->labeltype == lt->labeltype) {
-					start->setLayout(lt);
-					break;
+			for (; start != finish; ++start) {
+				toclevel = start->layout()->toclevel;
+				if (toclevel == Layout::NOT_IN_TOC)
+					continue;
+				for (size_t i = 0; i != tc.layoutCount(); ++i) {
+					LayoutPtr const & lt = tc.layout(i);
+					if (lt->toclevel == toclevel + 1 &&
+					    start->layout()->labeltype == lt->labeltype) {
+						start->setLayout(lt);
+						break;
+					}
 				}
 			}
-			break;
+			return;
+
 		case OutlineOut:
 			buf.undo().recordUndo(cur);
-			for (size_t i = 0; i != tc.layoutCount(); ++i) {
-				LayoutPtr const & lt = tc.layout(i);
-				if (lt->toclevel == thistoclevel - 1 &&
-				    start->layout()->labeltype == lt->labeltype) {
-					start->setLayout(lt);
-					break;
+			for (; start != finish; ++start) {
+				toclevel = start->layout()->toclevel;
+				if (toclevel == Layout::NOT_IN_TOC)
+					continue;
+				for (size_t i = 0; i != tc.layoutCount(); ++i) {
+					LayoutPtr const & lt = tc.layout(i);
+					if (lt->toclevel == toclevel - 1 &&
+						start->layout()->labeltype == lt->labeltype) {
+							start->setLayout(lt);
+							break;
+					}
 				}
 			}
-			break;
-		default:
-			break;
+			return;
 	}
 }
 
