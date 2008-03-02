@@ -192,6 +192,14 @@ void InsetWrap::read(Lexer & lex)
 }
 
 
+void InsetWrap::draw(PainterInfo & pi, int x, int y) const
+{
+	const_cast<InsetWrap &>(*this).setLabel(
+		_("wrap: ") + floatName(params_.type, buffer().params()));
+	InsetCollapsable::draw(pi, x, y);
+}
+
+
 void InsetWrap::validate(LaTeXFeatures & features) const
 {
 	features.require("wrapfig");

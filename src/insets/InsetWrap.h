@@ -53,6 +53,8 @@ public:
 	///
 	void read(Lexer & lex);
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return WRAP_CODE; }
