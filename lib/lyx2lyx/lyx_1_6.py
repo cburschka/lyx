@@ -1241,6 +1241,127 @@ def revert_widesideways(document):
         i = i + 1
 
 
+def convert_subfig(document):
+    " Convert subfigures to subfloats. "
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Graphics', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        k = find_token(document.body, '\tsubcaption', i, j)
+        if k == -1:
+            i = i + 1
+            continue
+        l = find_token(document.body, '\tsubcaptionText', i, j)
+        caption = get_value(document.body, '\tsubcaptionText', i, j).strip('"')
+        savestr = document.body[i]
+        document.body[i] = '\\begin_inset Float figure\nwide false\nsideways false\n' \
+        'status open\n\n\\begin_layout PlainLayout\n\\begin_inset Caption\n\n\\begin_layout PlainLayout\n' \
+        + caption + '\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout PlainLayout\n' + savestr
+        savestr = document.body[j]
+        document.body[j] = '\n\\end_layout\n\n\\end_inset\n' + savestr
+        del document.body[k]
+        del document.body[l]
+
+
+def revert_subfig(document):
+    " Revert subfloats. "
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Float', i)
+        if i == -1:
+            return
+        while 1:
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed lyx document: Missing '\\end_inset' (float).")
+                i = i + 1
+                continue
+            # look for embedded float (= subfloat)
+            k = find_token(document.body, '\\begin_inset Float', i + 1, j)
+            if k == -1:
+                break
+            l = find_end_of_inset(document.body, k)
+            if l == -1:
+                document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
+                i = i + 1
+                continue
+            m = find_token(document.body, "\\begin_layout PlainLayout", k + 1, l)
+            # caption?
+            cap = find_token(document.body, '\\begin_inset Caption', k + 1, l)
+            caption = ''
+            shortcap = ''
+            if cap != -1:
+                capend = find_end_of_inset(document.body, cap)
+                if capend == -1:
+                    document.warning("Malformed lyx document: Missing '\\end_inset' (caption).")
+                    return
+                # label?
+                label = ''
+                lbl = find_token(document.body, '\\begin_inset CommandInset label', cap, capend)
+                if lbl != -1:
+                    lblend = find_end_of_inset(document.body, lbl + 1)
+                    if lblend == -1:
+                        document.warning("Malformed lyx document: Missing '\\end_inset' (label).")
+                        return
+                    for line in document.body[lbl:lblend + 1]:
+                        if line.startswith('name '):
+                            label = line.split()[1].strip('"')
+                            break
+                else:
+                    lbl = capend
+                    lblend = capend
+                    label = ''
+                # opt arg?
+                opt = find_token(document.body, '\\begin_inset OptArg', cap, capend)
+                if opt != -1:
+                    optend = find_end_of_inset(document.body, opt)
+                    if optend == -1:
+                        document.warning("Malformed lyx document: Missing '\\end_inset' (OptArg).")
+                        return
+                    optc = find_token(document.body, "\\begin_layout PlainLayout", opt, optend)
+                    if optc == -1:
+                        document.warning("Malformed LyX document: Missing `\\begin_layout PlainLayout' in Float inset.")
+                        return
+                    optcend = find_end_of(document.body, optc, "\\begin_layout", "\\end_layout")
+                    for line in document.body[optc:optcend]:
+                        if not line.startswith('\\'):
+                            shortcap += line.strip()
+                else:
+                    opt = capend
+                    optend = capend
+                for line in document.body[cap:capend]:
+                    if line in document.body[lbl:lblend]:
+                        continue
+                    elif line in document.body[opt:optend]:
+                        continue
+                    elif not line.startswith('\\'):
+                        caption += line.strip()
+                if len(label) > 0:
+                    caption += "\\backslash\nlabel{" + label + "}"
+            document.body[l] = '\\begin_layout PlainLayout\n\\begin_inset ERT\nstatus collapsed\n\n' \
+            '\\begin_layout PlainLayout\n\n}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout PlainLayout\n'
+            del document.body[cap:capend+1]
+            del document.body[k+1:m-1]
+            insertion = '\\begin_inset ERT\nstatus collapsed\n\n' \
+            '\\begin_layout PlainLayout\n\n\\backslash\n' \
+            'subfloat'
+            if len(shortcap) > 0:
+                insertion = insertion + "[" + shortcap + "]"
+            if len(caption) > 0:
+                insertion = insertion + "[" + caption + "]"
+            insertion = insertion + '{%\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n'
+            document.body[k] = insertion
+            add_to_preamble(document,
+                            ['\\usepackage{subfig}\n'])
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1284,10 +1405,12 @@ convert = [[277, [fix_wrong_tables]],
            [312, []],
            [313, [convert_module_names]],
            [314, []],
-           [315, []]
+           [315, []],
+           [316, [convert_subfig]]
           ]
 
-revert =  [[314, [revert_colsep]],
+revert =  [[314, [revert_subfig]],
+           [314, [revert_colsep]],
            [313, []],
            [312, [revert_module_names]],
            [311, [revert_rotfloat, revert_widesideways]],

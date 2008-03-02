@@ -204,10 +204,6 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	// setChecked(). Note, too, that clicked() would get called whenever it
 	// is clicked, even right clicked (I think), not just whenever it is
 	// toggled.
-	connect(subfigure, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
-	connect(subcaption, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_adaptor()));
 	connect(displayGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(showCB, SIGNAL(currentIndexChanged(int)),
@@ -223,7 +219,6 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	bc().setCancel(closePB);
 
 	bc().addReadOnly(latexoptions);
-	bc().addReadOnly(subfigure);
 	bc().addReadOnly(filenameL);
 	bc().addReadOnly(filename);
 	bc().addReadOnly(browsePB);
@@ -500,10 +495,6 @@ void GuiGraphics::updateContents()
 	clip->setChecked(igp.clip);
 	unzipCB->setChecked(igp.noUnzip);
 
-	// Update the subcaption check button and input field
-	subfigure->setChecked(igp.subcaption);
-	subcaption->setText(toqstr(igp.subcaptionText));
-
 	int item = 0;
 	switch (igp.display) {
 		case graphics::DefaultDisplay: item = 0; break;
@@ -624,8 +615,6 @@ void GuiGraphics::applyView()
 
 	igp.draft = draftCB->isChecked();
 	igp.clip = clip->isChecked();
-	igp.subcaption = subfigure->isChecked();
-	igp.subcaptionText = fromqstr(subcaption->text());
 
 	switch (showCB->currentIndex()) {
 		case 0: igp.display = graphics::DefaultDisplay; break;

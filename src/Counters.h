@@ -116,6 +116,10 @@ public:
 	std::string const & current_float() const { return current_float_; }
 	/// Sets the current enclosing float.
 	void current_float(std::string const & f) { current_float_ = f; }
+	/// Are we in a subfloat?
+	bool isSubfloat() const { return subfloat_; }
+	/// Set the state variable indicating whether we are in a subfloat.
+	void isSubfloat(bool s) { subfloat_ = s; };
 private:
 	/// returns the expanded string representation of the counter
 	/// with recursion protection through callers.
@@ -137,6 +141,8 @@ private:
 	bool appendix_;
 	/// The current enclosing float.
 	std::string current_float_;
+	/// Are we in a subfloat?
+	bool subfloat_;
 };
 
 

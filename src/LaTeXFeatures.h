@@ -82,7 +82,7 @@ public:
 	*/
 	bool mustProvide(std::string const & name) const;
 	///
-	void useFloat(std::string const & name);
+	void useFloat(std::string const & name, bool subfloat = false);
 	///
 	void useLanguage(Language const *);
 	///
@@ -124,7 +124,7 @@ private:
 	/// used languages (only those that are supported by babel)
 	LanguageList UsedLanguages_;
 	///
-	typedef std::set<std::string> UsedFloats;
+	typedef std::map<std::string, bool> UsedFloats;
 	///
 	UsedFloats usedFloats_;
 	///

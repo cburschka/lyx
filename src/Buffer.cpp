@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 315; // Richard Heck: column separation
+int const LYX_FORMAT = 316; // JSpitzm: subfig support
 
 } // namespace anon
 

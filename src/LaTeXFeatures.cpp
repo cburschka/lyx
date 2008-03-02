@@ -433,9 +433,12 @@ void LaTeXFeatures::addPreambleSnippet(string const & preamble)
 }
 
 
-void LaTeXFeatures::useFloat(string const & name)
+void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 {
-	usedFloats_.insert(name);
+	if (!usedFloats_[name])
+		usedFloats_[name] = subfloat;
+	if (subfloat)
+		require("subfig");
 	// We only need float.sty if we use non builtin floats, or if we
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
@@ -510,7 +513,7 @@ char const * simplefeatures[] = {
 	"rotating",
 	"latexsym",
 	"pifont",
-	"subfigure",
+	"subfig",
 	"varioref",
 	"prettyref",
 	/*For a successful cooperation of the `wrapfig' package with the
@@ -914,7 +917,7 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 	UsedFloats::const_iterator end = usedFloats_.end();
 	// ostringstream floats;
 	for (; cit != end; ++cit) {
-		Floating const & fl = floats.getType((*cit));
+		Floating const & fl = floats.getType((cit->first));
 
 		// For builtin floats we do nothing.
 		if (fl.builtin()) continue;
@@ -959,6 +962,8 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			// used several times, when the same style is still in
 			// effect. (Lgb)
 		}
+		if (cit->second)
+			os << "\n\\newsubfloat{" << fl.type() << "}\n";
 	}
 }
 

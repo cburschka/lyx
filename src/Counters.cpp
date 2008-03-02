@@ -171,6 +171,7 @@ void Counters::step(docstring const & ctr)
 void Counters::reset()
 {
 	appendix_ = false;
+	subfloat_ = false;
 	current_float_.erase();
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator const end = counterList.end();

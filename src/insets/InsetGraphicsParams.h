@@ -60,10 +60,6 @@ public:
 	std::string rotateAngle;
 	/// Origin point of rotation
 	std::string rotateOrigin;
-	/// Do we have a subcaption?
-	bool subcaption;
-	/// The text of the subcaption.
-	std::string subcaptionText;
 	/// any userdefined special command
 	std::string special;
 

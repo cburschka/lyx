@@ -643,61 +643,6 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2" >
-        <widget class="QGroupBox" name="subfigure" >
-         <property name="focusPolicy" >
-          <enum>Qt::StrongFocus</enum>
-         </property>
-         <property name="title" >
-          <string>S&amp;ubfigure</string>
-         </property>
-         <property name="flat" >
-          <bool>true</bool>
-         </property>
-         <property name="checkable" >
-          <bool>true</bool>
-         </property>
-         <property name="checked" >
-          <bool>false</bool>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="CaptionLA" >
-            <property name="toolTip" >
-             <string>The caption for the sub-figure</string>
-            </property>
-            <property name="text" >
-             <string>Ca&amp;ption:</string>
-            </property>
-            <property name="buddy" >
-             <cstring>subcaption</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="subcaption" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip" >
-             <string>The caption for the sub-figure</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
@@ -836,8 +781,6 @@
   <tabstop>latexoptions</tabstop>
   <tabstop>draftCB</tabstop>
   <tabstop>unzipCB</tabstop>
-  <tabstop>subfigure</tabstop>
-  <tabstop>subcaption</tabstop>
   <tabstop>displayGB</tabstop>
   <tabstop>showCB</tabstop>
   <tabstop>displayscale</tabstop>

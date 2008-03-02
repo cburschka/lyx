@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 315
+\lyxformat 316
 \begin_document
 \begin_header
 \textclass article
@@ -4307,14 +4307,14 @@ rotfloat
 \end_layout
 
 \begin_layout Subsection
-subfigure
+subfig
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "subfigure"
+arg   "subfig"
 \end_inset
 
 
@@ -4323,17 +4323,18 @@ arg   "subfigure"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/contrib/subfigure
+macros/latex/contrib/subfig
 \end_layout
 
 \begin_layout Description
 Notes: The package 
 \family sans
-subfigure
+subfig
 \family default
- is used by LyX when you select ``subfigure'' in the EPS figure popup.
- Several figures marked in this way can be packed into a single float with
- individual subcaptions.
+ is used by LyX to produce subfloats (i.\InsetSpace \thinspace{}
+e., subfigures, subtables, etc.).
+ Subfloats are floats that are embedded inside other floats and that can
+ have individual subcaptions.
 \end_layout
 
 \begin_layout Subsection

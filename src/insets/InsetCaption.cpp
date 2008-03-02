@@ -220,6 +220,9 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 int InsetCaption::latex(odocstream & os,
 			OutputParams const & runparams_in) const
 {
+	if (in_subfloat_)
+		// caption is output as an optional argument
+		return 0;
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
 	// This code is currently only able to handle the simple
@@ -282,6 +285,7 @@ void InsetCaption::updateLabels(ParIterator const & it)
 	string const & type = cnts.current_float();
 	// Memorize type for addToToc().
 	type_ = type;
+	in_subfloat_ = cnts.isSubfloat();
 	if (type.empty())
 		full_label_ = buffer().B_("Senseless!!! ");
 	else {
@@ -292,11 +296,17 @@ void InsetCaption::updateLabels(ParIterator const & it)
 			name = buffer().B_("Listing");
 		else
 			name = buffer().B_(tclass.floats().getType(type).name());
-		if (cnts.hasCounter(from_utf8(type))) {
-			cnts.step(from_utf8(type));
+		docstring counter = from_utf8(type);
+		if (in_subfloat_) {
+			counter = "sub-" + from_utf8(type);
+			name = bformat(_("Sub-%1$s"),
+				       buffer().B_(tclass.floats().getType(type).name()));
+		}
+		if (cnts.hasCounter(counter)) {
+			cnts.step(counter);
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
-					      name, 
-					      cnts.theCounter(from_utf8(type)));
+					      name,
+					      cnts.theCounter(counter));
 		} else
 			full_label_ = bformat(from_ascii("%1$s #:"), name);	
 	}

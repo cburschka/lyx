@@ -22,8 +22,6 @@ TODO
       filename.
     * Add support for the 'picins' package.
     * Add support for the 'picinpar' package.
-    * Improve support for 'subfigure' - Allow to set the various options
-      that are possible.
 */
 
 /* NOTES:
@@ -764,13 +762,6 @@ int InsetGraphics::latex(odocstream & os,
 	// after the actual includegraphics command.
 	string before;
 	string after;
-	// Do we want subcaptions?
-	if (params().subcaption) {
-		if (runparams.moving_arg)
-			before += "\\protect";
-		before += "\\subfigure[" + params().subcaptionText + "]{";
-		after = '}';
-	}
 
 	if (runparams.moving_arg)
 		before += "\\protect";
@@ -898,9 +889,6 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}
-
-	if (params().subcaption)
-		features.require("subfigure");
 }
 
 

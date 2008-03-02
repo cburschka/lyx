@@ -763,8 +763,12 @@ void TextClass::readFloat(Lexer & lexrc)
 			    style, name, listName, builtin);
 		floatlist_->newFloat(fl);
 		// each float has its own counter
-		counters_->newCounter(from_ascii(type), from_ascii(within), 
+		counters_->newCounter(from_ascii(type), from_ascii(within),
 				      docstring(), docstring());
+		// also define sub-float counters
+		docstring const subtype = "sub-" + from_ascii(type);
+		counters_->newCounter(subtype, from_ascii(type),
+				      "\\alph{" + subtype + "}", docstring());
 	}
 
 	lexrc.popTable();

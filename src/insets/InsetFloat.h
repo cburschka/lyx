@@ -23,7 +23,7 @@ namespace lyx {
 class InsetFloatParams {
 public:
 	///
-	InsetFloatParams() : wide(false), sideways(false) {}
+	InsetFloatParams() : wide(false), sideways(false), subfloat(false) {}
 	///
 	void write(std::ostream & os) const;
 	///
@@ -36,6 +36,8 @@ public:
 	bool wide;
 	///
 	bool sideways;
+	///
+	bool subfloat;
 };
 
 
@@ -79,6 +81,8 @@ public:
 	///
 	void sideways(bool s, BufferParams const &);
 	///
+	void subfloat(bool s, BufferParams const &);
+	///
 	bool  showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }
@@ -91,6 +95,8 @@ protected:
 private:
 	///
 	virtual Inset * clone() const;
+	///
+	docstring getCaption(OutputParams const &) const;
 	///
 	InsetFloatParams params_;
 	///

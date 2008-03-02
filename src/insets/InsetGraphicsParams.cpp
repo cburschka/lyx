@@ -78,8 +78,6 @@ void InsetGraphicsParams::init()
 
 	rotateAngle = "0";		// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
-	subcaption = false;		// subfigure
-	subcaptionText.erase();		// subfigure caption
 	special.erase();		// additional userdefined stuff
 }
 
@@ -102,8 +100,6 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 
 	rotateAngle = igp.rotateAngle;
 	rotateOrigin = igp.rotateOrigin;
-	subcaption = igp.subcaption;
-	subcaptionText = igp.subcaptionText;
 	special = igp.special;
 }
 
@@ -127,8 +123,6 @@ bool operator==(InsetGraphicsParams const & left,
 
 	    left.rotateAngle == right.rotateAngle &&
 	    left.rotateOrigin == right.rotateOrigin &&
-	    left.subcaption == right.subcaption &&
-	    left.subcaptionText == right.subcaptionText &&
 	    left.special == right.special;
 }
 
@@ -180,10 +174,6 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
-	if (subcaption)
-		os << "\tsubcaption\n";
-	if (!subcaptionText.empty())
-		os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
 	if (!special.empty())
 		os << "\tspecial " << special << '\n';
 }
@@ -246,13 +236,6 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	} else if (token == "rotateOrigin") {
 		lex.next();
 		rotateOrigin=lex.getString();
-	} else if (token == "subcaption") {
-		subcaption = true;
-	} else if (token == "subcaptionText") {
-		lex.eatLine();
-		string sub = lex.getString();
-		// strip surrounding " "
-		subcaptionText = sub.substr(1, sub.length() - 2);
 	} else if (token == "special") {
 		lex.eatLine();
 		special = lex.getString();

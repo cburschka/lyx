@@ -5,6 +5,7 @@
  *
  * \author Jürgen Vigna
  * \author Lars Gullik Bjønnes
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,7 @@
 #include <config.h>
 
 #include "InsetFloat.h"
+#include "InsetCaption.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -23,9 +25,11 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "OutputParams.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -131,6 +135,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 		params_.sideways  = params.sideways;
+		params_.subfloat  = params.subfloat;
 		wide(params_.wide, cur.buffer().params());
 		sideways(params_.sideways, cur.buffer().params());
 		break;
@@ -143,6 +148,8 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE: {
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
+			if (params_.subfloat)
+				break;
 			InsetFloatMailer(*this).showDialog(&cur.bv());
 			break;
 		}
@@ -177,14 +184,23 @@ void InsetFloat::updateLabels(ParIterator const & it)
 {
 	Counters & cnts = buffer().params().documentClass().counters();
 	string const saveflt = cnts.current_float();
+	bool const savesubflt = cnts.isSubfloat();
+
+	bool const subflt = it.innerInsetOfType(FLOAT_CODE);
+	// floats can only embed subfloats of their own kind
+	if (subflt)
+		params_.type = saveflt;
+	subfloat(subflt, buffer().params());
 
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
+	cnts.isSubfloat(subflt);
 
 	InsetCollapsable::updateLabels(it);
 
 	//reset afterwards
 	cnts.current_float(saveflt);
+	cnts.isSubfloat(savesubflt);
 }
 
 
@@ -250,6 +266,7 @@ void InsetFloat::read(Lexer & lex)
 	params_.read(lex);
 	wide(params_.wide, buffer().params());
 	sideways(params_.sideways, buffer().params());
+	subfloat(params_.subfloat, buffer().params());
 	InsetCollapsable::read(lex);
 }
 
@@ -263,7 +280,10 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (params_.sideways)
 		features.require("rotfloat");
 
-	features.useFloat(params_.type);
+	if (params_.subfloat)
+		features.require("subfig");
+
+	features.useFloat(params_.type, params_.subfloat);
 	InsetCollapsable::validate(features);
 }
 
@@ -282,6 +302,23 @@ docstring InsetFloat::editMessage() const
 
 int InsetFloat::latex(odocstream & os, OutputParams const & runparams) const
 {
+	if (params_.subfloat) {
+		if (runparams.moving_arg)
+			os << "\\protect";
+		os << "\\subfloat";
+	
+		OutputParams rp = runparams;
+		docstring const caption = getCaption(rp);
+		if (!caption.empty()) {
+			os << caption;
+		}
+		os << '{';
+		int const i = InsetText::latex(os, runparams);
+		os << "}";
+	
+		return i + 1;
+	}
+
 	FloatList const & floats = buffer().params().documentClass().floats();
 	string tmptype = params_.type;
 	if (params_.sideways)
@@ -341,6 +378,7 @@ int InsetFloat::plaintext(odocstream & os, OutputParams const & runparams) const
 
 int InsetFloat::docbook(odocstream & os, OutputParams const & runparams) const
 {
+	// FIXME Implement subfloat!
 	// FIXME UNICODE
 	os << '<' << from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(os, runparams);
@@ -352,9 +390,9 @@ int InsetFloat::docbook(odocstream & os, OutputParams const & runparams) const
 
 bool InsetFloat::insetAllowed(InsetCode code) const
 {
-	return code != FLOAT_CODE
-	    && code != FOOT_CODE
-	    && code != MARGIN_CODE;
+	return code != FOOT_CODE
+	    && code != MARGIN_CODE
+	    && (code != FLOAT_CODE || !params_.subfloat);
 }
 
 
@@ -383,6 +421,42 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 	if (params_.sideways)
 		lab += _(" (sideways)");
 	setLabel(lab);
+}
+
+
+void InsetFloat::subfloat(bool s, BufferParams const & bp)
+{
+	params_.subfloat = s;
+	docstring lab = _("float: ") + floatName(params_.type, bp);
+	if (s)
+		lab = _("subfloat: ") + floatName(params_.type, bp);
+	setLabel(lab);
+}
+
+
+docstring InsetFloat::getCaption(OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == CAPTION_CODE) {
+				odocstringstream ods;
+				InsetCaption * ins =
+					static_cast<InsetCaption *>(it->inset);
+				ins->getOptArg(ods, runparams);
+				ods << '[';
+				ins->getArgument(ods, runparams);
+				ods << ']';
+				return ods.str();
+			}
+		}
+	}
+	return docstring();
 }
 
 
