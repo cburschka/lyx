@@ -107,6 +107,7 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetWrap::updateLabels(ParIterator const & it)
 {
+	setLabel(_("wrap: ") + floatName(params_.type, buffer().params()));
 	Counters & cnts = buffer().params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 
@@ -189,14 +190,6 @@ void InsetWrap::read(Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(lex);
-}
-
-
-void InsetWrap::draw(PainterInfo & pi, int x, int y) const
-{
-	const_cast<InsetWrap &>(*this).setLabel(
-		_("wrap: ") + floatName(params_.type, buffer().params()));
-	InsetCollapsable::draw(pi, x, y);
 }
 
 
