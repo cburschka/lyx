@@ -1245,9 +1245,9 @@ void GuiDocument::classChanged()
 	// check if this is a local layout file
 	if (prefixIs(classname, BaseClassList::localPrefix)) {
 		int const ret = Alert::prompt(_("Local layout file"),
-				_("The layout file you have selected is a local layout"
-				  "file, not one in the system or user directory. Your"
-				  "document may not work with this layout if you do not"
+				_("The layout file you have selected is a local layout\n"
+				  "file, not one in the system or user directory. Your\n"
+				  "document may not work with this layout if you do not\n"
 				  "keep the layout file in the same directory."),
 				  1, 1, _("&Set Layout"), _("&Cancel"));
 		if (ret == 1) {
@@ -1263,7 +1263,7 @@ void GuiDocument::classChanged()
 	if (lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
 			int const ret = Alert::prompt(_("Unapplied changes"),
-					_("Some changes in the dialog were not yet applied."
+					_("Some changes in the dialog were not yet applied.\n"
 					"If you do not apply now, they will be lost after this action."),
 					1, 1, _("&Apply"), _("&Dismiss"));
 			if (ret == 0)
