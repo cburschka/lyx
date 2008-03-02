@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -142,8 +142,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 19.
- Februar 2008
+letzte Änderung: 3.
+ März 2008
 \end_layout
 
 \begin_layout Standard
@@ -6529,8 +6529,11 @@ HTML (MS Word)
 \end_layout
 
 \begin_layout Standard
-Hiermit wird auch eine HTML-Datei erstellt, die von Word gelesen/importiert
- werden kann.
+Hiermit wird auch eine HTML-Datei erstellt, die von Word und OpenOffice
+ gelesen/importiert werden kann.
+ Der Vorteil für deutsche Dokumente ist, daß Umlaute und ß nicht direkt
+ ausgegeben werden, sondern in ihrer Unicode-Kodierung (ü wird zum Beispiel
+ zu &#x00FC;).
 \end_layout
 
 \begin_layout Subsection
