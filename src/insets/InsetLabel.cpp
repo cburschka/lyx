@@ -104,7 +104,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateLabels(ParIterator const & it)
+void InsetLabel::updateLabels(ParIterator const &)
 {
 	docstring const & label = getParam("name");
 	if (buffer().insetLabel(label))
@@ -145,7 +145,11 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
+		docstring old_name = params()["name"];
 		update(p["name"]);
+		if (params()["name"] != old_name)
+			cur.bv().buffer().changeRefsIfUnique(old_name,
+				params()["name"], REF_CODE);
 		break;
 	}
 
