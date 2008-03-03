@@ -1523,13 +1523,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_PARAMS_APPLY: {
 			BOOST_ASSERT(lyx_view_);
-			biblio::CiteEngine const oldEngine =
-					lyx_view_->buffer()->params().getEngine();
 			
 			Buffer * buffer = lyx_view_->buffer();
-
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
-
 			Cursor & cur = view()->cursor();
 			cur.recordUndoFullDocument();
 			
@@ -1546,9 +1542,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			
 			updateLayout(oldClass, buffer);
-			
-			biblio::CiteEngine const newEngine =
-					lyx_view_->buffer()->params().getEngine();
 			
 			updateFlags = Update::Force | Update::FitCursor;
 			// We are here most certainaly because of a change in the document
