@@ -612,7 +612,9 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
-	lyx_view_->setCurrentWorkArea(this);
+	if (lyx_view_->currentWorkArea() != this)
+		lyx_view_->setCurrentWorkArea(this);
+
 	// Repaint the whole screen.
 	// Note: this is different from redraw() as only the backing pixmap
 	// will be redrawn, which is cheap.
