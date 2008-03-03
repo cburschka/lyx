@@ -39,8 +39,12 @@ public:
 	void setChanged(bool c) { changed_ = c; }
 	///
 	void setCrc(size_type crc) const;
-	///
-	void setSelection(pos_type sel_beg, pos_type sel_end);
+	/// Set the selection begin and end.
+	/**
+	  * This is const because we update the selection status only at draw()
+	  * time.
+	  */
+	void setSelection(pos_type sel_beg, pos_type sel_end) const;
 
 	///
 	void pos(pos_type p);
@@ -73,9 +77,9 @@ public:
 	/// the x position of the row
 	double x;
 	///
-	pos_type sel_beg;
+	mutable pos_type sel_beg;
 	///
-	pos_type sel_end;
+	mutable pos_type sel_end;
 private:
 	/// has the Row appearance changed since last drawing?
 	mutable bool changed_;

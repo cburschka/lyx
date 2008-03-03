@@ -423,28 +423,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		changed |= (old_dim != dim);
 	}
 
-	Cursor const & cur = bv_->cursor();
-	DocIterator sel_beg = cur.selectionBegin();
-	DocIterator sel_end = cur.selectionEnd();
-	bool selection = cur.selection()
-		// This is out text.
-		&& cur.text() == text_
-		// if the anchor is outside, this is not our selection 
-		&& cur.anchor().text() == text_
-		&& pit >= sel_beg.pit() && pit <= sel_end.pit();
-
-	// We care only about visible selection.
-	if (selection) {
-		if (pit != sel_beg.pit()) {
-			sel_beg.pit() = pit;
-			sel_beg.pos() = 0;
-		}
-		if (pit != sel_end.pit()) {
-			sel_end.pit() = pit;
-			sel_end.pos() = sel_end.lastpos();
-		}
-	}
-
 	par.setBeginOfBody();
 	pos_type first = 0;
 	size_t row_index = 0;
@@ -467,10 +445,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.setChanged(false);
 		row.pos(first);
 		row.endpos(end);
-		if (selection)
-			row.setSelection(sel_beg.pos(), sel_end.pos());
-		else
-			row.setSelection(-1, -1);
 		row.setDimension(dim);
 		int const max_row_width = max(dim_.wid, dim.wid);
 		computeRowMetrics(pit, row, max_row_width);
@@ -1961,6 +1935,28 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	int const ww = bv_->workHeight();
 	size_t const nrows = pm.rows().size();
 
+	Cursor const & cur = bv_->cursor();
+	DocIterator sel_beg = cur.selectionBegin();
+	DocIterator sel_end = cur.selectionEnd();
+	bool selection = cur.selection()
+		// This is our text.
+		&& cur.text() == text_
+		// if the anchor is outside, this is not our selection 
+		&& cur.anchor().text() == text_
+		&& pit >= sel_beg.pit() && pit <= sel_end.pit();
+
+	// We care only about visible selection.
+	if (selection) {
+		if (pit != sel_beg.pit()) {
+			sel_beg.pit() = pit;
+			sel_beg.pos() = 0;
+		}
+		if (pit != sel_end.pit()) {
+			sel_end.pit() = pit;
+			sel_end.pos() = sel_end.lastpos();
+		}
+	}
+
 	for (size_t i = 0; i != nrows; ++i) {
 
 		Row const & row = pm.rows()[i];
@@ -1972,6 +1968,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
 		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
+
+		if (selection)
+			row.setSelection(sel_beg.pos(), sel_end.pos());
+		else
+			row.setSelection(-1, -1);
 
 		// Row signature; has row changed since last paint?
 		row.setCrc(pm.computeRowSignature(row, bparams));

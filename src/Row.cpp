@@ -61,7 +61,7 @@ void Row::endpos(pos_type p)
 }
 
 
-void Row::setSelection(pos_type beg, pos_type end)
+void Row::setSelection(pos_type beg, pos_type end) const
 {
 	if (pos_ >= beg && pos_ <= end)
 		sel_beg = pos_;
