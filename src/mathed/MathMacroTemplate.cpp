@@ -610,7 +610,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	updateLook(true);
-	cur.updateFlags(Update::Force);
+	cur.updateFlags(Update::SinglePar);
 	InsetMathNest::edit(cur, front, entry_from);
 }
 
