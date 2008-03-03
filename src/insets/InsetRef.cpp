@@ -12,6 +12,7 @@
 #include "InsetRef.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -40,6 +41,14 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 InsetRef::InsetRef(InsetRef const & ir)
 	: InsetCommand(ir), isLatex(ir.isLatex)
 {}
+
+
+void InsetRef::initView()
+{
+	// We need an update of the Buffer reference cache. This is achieved by
+	// updateLabel().
+	lyx::updateLabels(buffer());
+}
 
 
 bool InsetRef::isCompatibleCommand(string const & s) {
@@ -85,20 +94,7 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 docstring InsetRef::screenLabel() const
 {
-	docstring temp;
-	for (int i = 0; !types[i].latex_name.empty(); ++i) {
-		if (getCmdName() == types[i].latex_name) {
-			temp = _(types[i].short_gui_name);
-			break;
-		}
-	}
-	temp += getParam("reference");
-
-	if (!isLatex && !getParam("name").empty()) {
-		temp += "||";
-		temp += getParam("name");
-	}
-	return temp;
+	return screen_label_;
 }
 
 
@@ -155,7 +151,21 @@ void InsetRef::textString(odocstream & os) const
 void InsetRef::updateLabels(ParIterator const & it)
 {
 	docstring const & label = getParam("reference");
+	// register this inset into the buffer reference cache.
 	buffer().references(label).push_back(make_pair(this, it));
+
+	for (int i = 0; !types[i].latex_name.empty(); ++i) {
+		if (getCmdName() == types[i].latex_name) {
+			screen_label_ = _(types[i].short_gui_name);
+			break;
+		}
+	}
+	screen_label_ += getParam("reference");
+
+	if (!isLatex && !getParam("name").empty()) {
+		screen_label_ += "||";
+		screen_label_ += getParam("name");
+	}
 }
 
 
@@ -166,9 +176,10 @@ void InsetRef::addToToc(ParConstIterator const & cpit) const
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
 
+	// It seems that this reference does not point to any valid label.
+	screen_label_ = _("BROKEN: ") + screen_label_;
 	Toc & toc = buffer().tocBackend().toc("label");
-	docstring const reflabel = _("BROKEN: ") + screenLabel();
-	toc.push_back(TocItem(cpit, 0, reflabel));
+	toc.push_back(TocItem(cpit, 0, screen_label_));
 }
 
 

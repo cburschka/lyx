@@ -987,7 +987,7 @@ void Cursor::plainInsert(MathAtom const & t)
 	cell().insert(pos(), t);
 	++pos();
 	inset().setBuffer(bv_->buffer());
-	inset().validate();
+	inset().initView();
 }
 
 
@@ -1029,7 +1029,7 @@ void Cursor::insert(Inset * inset0)
 	else {
 		text()->insertInset(*this, inset0);
 		inset0->setBuffer(bv_->buffer());
-		inset0->validate();
+		inset0->initView();
 	}
 }
 

@@ -97,13 +97,13 @@ public:
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;
 
-	/// validate inset.
+	/// initialize view for this inset.
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
 	  * Buffer.
 	  **/
-	virtual void validate() {}
+	virtual void initView() {}
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }

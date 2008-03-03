@@ -56,12 +56,9 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
-	/// Whether the button label should be recomputed.
-	void refresh() { updateButtonLabel_ = true; }
 	///
 	void setParam(std::string const & name, docstring const & value)
 	{
-		updateButtonLabel_ = true;
 		p_[name] = value;
 	}
 	///
@@ -98,11 +95,7 @@ protected:
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///
-	void setCmdName(std::string const & n)
-	{
-		updateButtonLabel_ = true;
-		p_.setCmdName(n);
-	}
+	void setCmdName(std::string const & n) { p_.setCmdName(n); }
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button
@@ -115,8 +108,6 @@ private:
 	std::string mailer_name_;
 	/// changes color when mouse enters/leaves this inset
 	bool mouse_hover_;
-	///
-	mutable bool updateButtonLabel_;
 	///
 	mutable RenderButton button_;
 };

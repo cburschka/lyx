@@ -43,7 +43,7 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-void InsetLabel::validate()
+void InsetLabel::initView()
 {
 	update(getParam("name"));
 }

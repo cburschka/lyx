@@ -24,9 +24,9 @@ public:
 
 	/// verify label and update references.
 	/**
-	  * Overloaded from Inset::validate.
+	  * Overloaded from Inset::initView.
 	  **/
-	void validate();
+	void initView();
 
 	///
 	docstring screenLabel() const;

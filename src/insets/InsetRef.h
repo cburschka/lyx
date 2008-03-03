@@ -38,6 +38,11 @@ public:
 
 	InsetRef(InsetCommandParams const &, Buffer const &);
 
+	/// verify label and reference.
+	/**
+	  * Overloaded from Inset::initView.
+	  **/
+	void initView();
 	///
 	docstring screenLabel() const;
 	///
@@ -76,6 +81,8 @@ private:
 	Inset * clone() const { return new InsetRef(*this); }
 	///
 	bool isLatex;
+	///
+	mutable docstring screen_label_;
 };
 
 } // namespace lyx

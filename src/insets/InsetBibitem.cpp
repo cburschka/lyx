@@ -208,7 +208,6 @@ void InsetBibitem::updateLabels(ParIterator const &)
 	} else {
 		autolabel_ = from_ascii("??");
 	}
-	refresh();
 }
 
 
