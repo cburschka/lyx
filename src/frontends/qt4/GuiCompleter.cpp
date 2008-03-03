@@ -498,7 +498,13 @@ void GuiCompleter::showPopup(Cursor & cur)
 
 void GuiCompleter::hidePopup(Cursor & cur)
 {
-	popup()->hide();
+	// hide popup asynchronously because we might be here inside of
+	// LFUN dispatchers. Hiding a popup can trigger a focus event on the 
+	// workarea which then redisplays the cursor. But the metrics are not
+	// yet up to date such that the coord cache has not all insets yet. The
+	// cursorPos methods would triggers asserts in the coord cache then.
+	QTimer::singleShot(0, popup(), SLOT(hide()));
+	
 	if (popup_timer_.isActive())
 		popup_timer_.stop();
 	
