@@ -53,11 +53,19 @@ void InsetLabel::update(docstring const & new_label)
 {
 	docstring const old_label = getParam("name");
 	docstring label = new_label;
-	int i = 0;
+	int i = 1;
 	while (buffer().insetLabel(label)) {
 		label = new_label + '-' + convert<docstring>(i);
 		++i;
 	}
+
+	if (label != new_label) {
+		// Warn the user that the label has been changed to something else.
+		frontend::Alert::warning(_("Label names must be unique!"),
+			bformat(_("The label %1$s already exists,\n"
+			"it will been changed to %2$s."), new_label, label));
+	}
+
 	setParam("name", label);
 
 	Buffer::References const & refs = buffer().references(old_label);
@@ -66,12 +74,6 @@ void InsetLabel::update(docstring const & new_label)
 	for (; it != end; ++it)
 		it->first->setParam("reference", label);
 
-	if (label != new_label) {
-		// Warn the user that the label has been changed to something else.
-		frontend::Alert::warning(_("Label names must be unique!"),
-			bformat(_("The label %1$s already exists,\n"
-			"it will been changed to %2$s."), new_label, label));
-	}
 	// We need an update of the Buffer reference cache. This is achieved by
 	// updateLabel().
 	lyx::updateLabels(buffer());
