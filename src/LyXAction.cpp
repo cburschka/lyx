@@ -1340,8 +1340,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_TOGGLE_READ_ONLY
+ * \li Action: Toggle editing mode of the current document between read/write and read-only.
+ * \li Syntax: buffer-toggle-read-only
+ * \li Origin: Lgb, 27 May 1997
+ * \endvar
+ */
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly, Buffer },
-		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_VIEW
  * \li Action: Displays current buffer in chosen format.
@@ -1355,6 +1361,22 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_UPDATE
+ * \li Action: Exports the current document and put the result into the
+               temporary directory.
+ * \li Notion: In case you are already viewing the exported document (see #LFUN_BUFFER_VIEW)
+               the output will be rewriten - updated. This is useful in case your viewer
+	       is able to detect such changes (e.g. ghostview for postscript).
+ * \li Syntax: buffer-update <FORMAT>
+ * \li Params: <FORMAT>: The format to display, where this is one of the
+                         formats defined (in the current GUI) in the
+                         Tools>Preferences>File Formats dialog.
+ * \li Origin: Dekel, 5 Aug 2000
+ * \endvar
+ */
+		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
+
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE
  * \li Action: Saves the current buffer.
