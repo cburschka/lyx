@@ -100,17 +100,20 @@ void InsetLabel::getLabelList(vector<docstring> & list) const
 
 docstring InsetLabel::screenLabel() const
 {
-	return getParam("name");
+	return screen_label_;
 }
 
 
 void InsetLabel::updateLabels(ParIterator const &)
 {
 	docstring const & label = getParam("name");
-	if (buffer().insetLabel(label))
+	if (buffer().insetLabel(label)) {
 		// Problem: We already have an InsetLabel with the same name!
+		screen_label_ = _("DUPLICATE: ") + label;
 		return;
+	}
 	buffer().setInsetLabel(label, this);
+	screen_label_ = label;
 }
 
 
@@ -119,10 +122,10 @@ void InsetLabel::addToToc(ParConstIterator const & cpit) const
 	docstring const & label = getParam("name");
 	Toc & toc = buffer().tocBackend().toc("label");
 	if (buffer().insetLabel(label) != this) {
-		toc.push_back(TocItem(cpit, 0, _("DUPLICATE: ") + label));
+		toc.push_back(TocItem(cpit, 0, screen_label_));
 		return;
 	}
-	toc.push_back(TocItem(cpit, 0, label));
+	toc.push_back(TocItem(cpit, 0, screen_label_));
 	Buffer::References const & refs = buffer().references(label);
 	Buffer::References::const_iterator it = refs.begin();
 	Buffer::References::const_iterator end = refs.end();

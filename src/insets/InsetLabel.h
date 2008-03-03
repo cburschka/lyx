@@ -61,6 +61,8 @@ protected:
 private:
 	///
 	Inset * clone() const { return new InsetLabel(*this); }
+	///
+	docstring screen_label_;
 };
 
 
