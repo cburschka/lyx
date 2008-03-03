@@ -99,9 +99,6 @@ int InsetCommand::docbook(odocstream &, OutputParams const &) const
 void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
-	case LFUN_INSET_REFRESH:
-		break;
-
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(p_.code());
 		InsetCommandMailer::string2params(mailer_name_, to_utf8(cmd.argument()), p);
@@ -141,7 +138,6 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.enabled(false);
 		return true;
 	// we handle these
-	case LFUN_INSET_REFRESH:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.enabled(true);

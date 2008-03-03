@@ -1550,17 +1550,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			biblio::CiteEngine const newEngine =
 					lyx_view_->buffer()->params().getEngine();
 			
-			if (oldEngine != newEngine) {
-				FuncRequest fr(LFUN_INSET_REFRESH);
-	
-				Inset & inset = lyx_view_->buffer()->inset();
-				InsetIterator it  = inset_iterator_begin(inset);
-				InsetIterator const end = inset_iterator_end(inset);
-				for (; it != end; ++it)
-					if (it->lyxCode() == CITE_CODE)
-						it->dispatch(cur, fr);
-			}
-			
 			updateFlags = Update::Force | Update::FitCursor;
 			// We are here most certainaly because of a change in the document
 			// It is then better to make sure that all dialogs are in sync
