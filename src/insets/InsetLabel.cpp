@@ -69,9 +69,9 @@ void InsetLabel::update(docstring const & new_label, bool updaterefs)
 	setParam("name", label);
 
 	if (updaterefs) {
-		Buffer::References const & refs = buffer().references(old_label);
-		Buffer::References::const_iterator it = refs.begin();
-		Buffer::References::const_iterator end = refs.end();
+		Buffer::References & refs = buffer().references(old_label);
+		Buffer::References::iterator it = refs.begin();
+		Buffer::References::iterator end = refs.end();
 		for (; it != end; ++it)
 			it->first->setParam("reference", label);
 	}
@@ -145,11 +145,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		docstring old_name = params()["name"];
 		update(p["name"]);
-		if (params()["name"] != old_name)
-			cur.bv().buffer().changeRefsIfUnique(old_name,
-				params()["name"], REF_CODE);
 		break;
 	}
 
