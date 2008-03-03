@@ -53,14 +53,14 @@ public:
 	void updateLabels(ParIterator const & it);
 	///
 	void addToToc(ParConstIterator const &) const;
+	///
+	void update(docstring const & new_label, bool updaterefs = true);
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
 	Inset * clone() const { return new InsetLabel(*this); }
-	///
-	void update(docstring const & new_label);
 };
 
 

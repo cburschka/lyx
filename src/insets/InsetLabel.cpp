@@ -49,7 +49,7 @@ void InsetLabel::validate()
 }
 
 
-void InsetLabel::update(docstring const & new_label)
+void InsetLabel::update(docstring const & new_label, bool updaterefs)
 {
 	docstring const old_label = getParam("name");
 	docstring label = new_label;
@@ -68,11 +68,13 @@ void InsetLabel::update(docstring const & new_label)
 
 	setParam("name", label);
 
-	Buffer::References const & refs = buffer().references(old_label);
-	Buffer::References::const_iterator it = refs.begin();
-	Buffer::References::const_iterator end = refs.end();
-	for (; it != end; ++it)
-		it->first->setParam("reference", label);
+	if (updaterefs) {
+		Buffer::References const & refs = buffer().references(old_label);
+		Buffer::References::const_iterator it = refs.begin();
+		Buffer::References::const_iterator end = refs.end();
+		for (; it != end; ++it)
+			it->first->setParam("reference", label);
+	}
 
 	// We need an update of the Buffer reference cache. This is achieved by
 	// updateLabel().

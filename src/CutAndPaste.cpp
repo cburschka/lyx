@@ -37,6 +37,7 @@
 #include "Undo.h"
 
 #include "insets/InsetFlex.h"
+#include "insets/InsetCommand.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 #include "insets/InsetTabular.h"
@@ -212,14 +213,36 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// A couple of insets store buffer references so need updating.
 	insertion.swap(in.paragraphs());
 
-	ParIterator fpit = par_iterator_begin(in);
-	ParIterator fend = par_iterator_end(in);
+	InsetIterator const i_end = inset_iterator_end(in);
 
-	for (; fpit != fend; ++fpit) {
-		InsetList::const_iterator it = fpit->insetList().begin();
-		InsetList::const_iterator et = fpit->insetList().end();
-		for (; it != et; ++it)
-				it->inset->setBuffer(const_cast<Buffer &>(buffer));
+	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
+
+		it->setBuffer(const_cast<Buffer &>(buffer));
+
+		switch (it->lyxCode()) {
+ 
+		case LABEL_CODE: {
+			// check for duplicates
+			InsetCommand & lab = static_cast<InsetCommand &>(*it);
+			docstring const oldname = lab.getParam("name");
+			lab.update(oldname, false);
+			docstring const newname = lab.getParam("name");
+			if (oldname != newname) {
+				// adapt the references
+				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
+					if (itt->lyxCode() == REF_CODE) {
+						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
+						if (ref.getParam("reference") == oldname)
+							ref.setParam("reference", newname);
+					}
+				}
+			}
+			break;
+		}
+
+		default:
+			break; // nothing
+		}
 	}
 	insertion.swap(in.paragraphs());
 
