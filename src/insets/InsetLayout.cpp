@@ -166,9 +166,10 @@ bool InsetLayout::read(Lexer & lexrc)
 			needprotect_ = lexrc.getBool();
 			break;
 		case IL_FONT: {
-			font = lyxRead(lexrc, inherit_font);
-			// So: define font before labelfont
-			labelfont_ = font;
+			font_ = lyxRead(lexrc, inherit_font);
+			// If you want to define labelfont, you need to do so after
+			// font is defined.
+			labelfont_ = font_;
 			break;
 		}
 		case IL_BGCOLOR: {
