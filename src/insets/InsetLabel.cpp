@@ -63,7 +63,7 @@ void InsetLabel::update(docstring const & new_label, bool updaterefs)
 		// Warn the user that the label has been changed to something else.
 		frontend::Alert::warning(_("Label names must be unique!"),
 			bformat(_("The label %1$s already exists,\n"
-			"it will been changed to %2$s."), new_label, label));
+			"it will be changed to %2$s."), new_label, label));
 	}
 
 	setParam("name", label);
