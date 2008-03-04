@@ -210,6 +210,12 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 void InsetMathHull::setBuffer(Buffer & buffer)
 {
 	buffer_ = &buffer;
+	for (idx_type i = 0, n = nargs(); i != n; ++i) {
+		MathData & data = cell(i);
+		for (size_t j = 0; j != data.size(); ++j)
+			data[j].nucleus()->setBuffer(buffer);
+	}
+
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
 			label_[i]->setBuffer(buffer);
