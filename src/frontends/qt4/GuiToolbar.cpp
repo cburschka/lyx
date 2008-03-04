@@ -43,10 +43,16 @@
 #include "support/lyxalgo.h" // sorted
 
 #include <QComboBox>
+#include <QHeaderView>
+#include <QKeyEvent>
+#include <QList>
+#include <QPixmap>
+#include <QSortFilterProxyModel>
+#include <QStandardItem>
+#include <QStandardItemModel>
 #include <QToolBar>
 #include <QToolButton>
-#include <QAction>
-#include <QPixmap>
+#include <QVariant>
 
 #include <boost/assert.hpp>
 
@@ -230,6 +236,64 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 //
 /////////////////////////////////////////////////////////////////////
 
+class GuiFilterProxyModel : public QSortFilterProxyModel
+{
+public:
+	///
+	GuiFilterProxyModel(QObject * parent)
+	: QSortFilterProxyModel(parent) {}
+	
+	///
+	QVariant data(const QModelIndex & index, int role) const
+	{
+		GuiLayoutBox * p = static_cast<GuiLayoutBox *>(parent());
+		QString const & f = p->filter();
+
+		if (!f.isEmpty() && index.isValid() && role == Qt::DisplayRole) {
+			// step through data item and put "(x)" for every matching character
+			QString s = QSortFilterProxyModel::data(index, role).toString();
+			QString r;
+			int lastp = -1;
+			p->filter();
+			for (int i = 0; i < f.length(); ++i) {
+				int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
+				BOOST_ASSERT(p != -1);
+				if (lastp == p - 1 && lastp != -1) {
+					// remove ")" and append "x)"
+					r = r.left(r.length() - 1) + s[p] + ")";
+				} else {
+					// append "(x)"
+					r += s.mid(lastp + 1, p - lastp - 1);
+					r += "(" + s[p] + ")";
+				}
+				lastp = p;
+			}
+			r += s.mid(lastp + 1);
+			return r;
+		}
+		
+		return QSortFilterProxyModel::data(index, role);
+	}
+	
+	///
+	void setCharFilter(QString const & f)
+	{
+		setFilterRegExp(charFilterRegExp(f));
+		reset();
+	}
+
+private:
+	///
+	QString charFilterRegExp(QString const & filter)
+	{
+		QString re;
+		for (int i = 0; i < filter.length(); ++i)
+			re += ".*" + QRegExp::escape(filter[i]);
+		return re;
+	}
+};
+
+
 GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	: owner_(owner)
 {
@@ -238,81 +302,169 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	setMinimumWidth(sizeHint().width());
 	setMaxVisibleItems(100);
 
-	QObject::connect(this, SIGNAL(activated(QString)),
-			 this, SLOT(selected(QString)));
+	// set the layout model with two columns
+	// 1st: translated layout names
+	// 2nd: raw layout names
+	model_ = new QStandardItemModel(0, 2, this);
+	filterModel_ = new GuiFilterProxyModel(this);
+	filterModel_->setSourceModel(model_);
+	filterModel_->setDynamicSortFilter(true);
+	filterModel_->setFilterCaseSensitivity(Qt::CaseInsensitive);
+	setModel(filterModel_);
+
+	// for the filtering we have to intercept characters
+	view()->installEventFilter(this);
+	
+	QObject::connect(this, SIGNAL(activated(int)),
+			 this, SLOT(selected(int)));
 	owner_.setLayoutDialog(this);
 	updateContents(true);
 }
 
 
+void GuiLayoutBox::setFilter(QString const & s)
+{
+	// remember old selection
+	int sel = currentIndex();
+	if (sel != -1)
+		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
+
+	filter_ = s;
+	filterModel_->setCharFilter(s);
+	
+	// restore old selection
+	if (lastSel_ != -1) {
+		QModelIndex i = filterModel_->mapFromSource(model_->index(lastSel_, 0));
+		if (i.isValid())
+			setCurrentIndex(i.row());
+	}
+}
+
+
+void GuiLayoutBox::resetFilter()
+{
+	setFilter(QString());
+}
+
+
+bool GuiLayoutBox::eventFilter(QObject *o, QEvent *e)
+{
+	if (e->type() == QEvent::KeyPress) {
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+		bool modified = (ke->modifiers() == Qt::ControlModifier)
+			|| (ke->modifiers() == Qt::AltModifier)
+			|| (ke->modifiers() == Qt::MetaModifier);
+		
+		switch (ke->key()) {
+		case Qt::Key_Escape:
+			if (!modified && !filter_.isEmpty()) {
+				resetFilter();
+				return true;
+			}
+			break;
+		case Qt::Key_Backspace:
+			if (!modified) {
+				// cut off one character
+				setFilter(filter_.left(filter_.length() - 1));
+			}
+			break;
+		default:
+			if (modified || ke->text().isEmpty())
+				break;
+			// find chars for the filter string
+			QString s;
+			for (int i = 0; i < ke->text().length(); ++i) {
+				QChar c = ke->text()[i];
+				if (c.isLetterOrNumber()
+				    || c.isSymbol()
+				    || c.isPunct()
+				    || c.category() == QChar::Separator_Space) {
+					s += c;
+				}
+			}
+			if (!s.isEmpty()) {
+				// append new chars to the filter string
+				setFilter(filter_ + s);
+				return true;
+			}
+			break;
+		}
+	}
+	return QComboBox::eventFilter(o, e);
+}
+
+
 void GuiLayoutBox::set(docstring const & layout)
 {
+	resetFilter();
+	
 	if (!text_class_)
 		return;
 
-	QString const & name = toqstr(translateIfPossible(
-		(*text_class_)[layout]->name()));
-
+	QString const & name = toqstr((*text_class_)[layout]->name());
 	if (name == currentText())
 		return;
 
-	int i = findText(name);
-	if (i == -1) {
+	QList<QStandardItem *> r = model_->findItems(name, Qt::MatchExactly, 1);
+	if (r.empty()) {
 		lyxerr << "Trying to select non existent layout type "
 			<< fromqstr(name) << endl;
 		return;
 	}
 
-	setCurrentIndex(i);
+	setCurrentIndex(filterModel_->mapFromSource(r.first()->index()).row());
 }
 
 
-void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
+void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 {
-	//FIXME 
-	//Since we are only storing the text used for display, we have no choice
-	//below but to compare translated strings to figure out which layout the
-	//user wants. This is not ideal. A better way is the way module names are 
-	//handled in GuiDocument: viz, the untranslated name can be associated 
-	//with the item by using GuiIdListModel.
-	int const end = count();
-	if (!sorted || end < 2 || item[0].category() != QChar::Letter_Uppercase) {
-		addItem(item);
+	QString qitem = toqstr(item);
+	QList<QStandardItem *> row;
+	row.append(new QStandardItem(toqstr(translateIfPossible(item))));
+	row.append(new QStandardItem(qitem));
+
+	// the simple unsorted case
+	int const end = model_->rowCount();
+	if (!sorted || end < 2 || qitem[0].category() != QChar::Letter_Uppercase) {
+		model_->appendRow(row);
 		return;
 	}
 
-	// Let the default one be at the beginning
-	int i = 1;
-	for (setCurrentIndex(i); currentText().localeAwareCompare(item) < 0; ) {
+	// find row to insert the item
+	int i = 1; // skip the Standard layout
+	QString is = model_->item(i, 1)->text();
+	while (is.compare(qitem) < 0) {
 		// e.g. --Separator--
-		if (currentText()[0].category() != QChar::Letter_Uppercase)
+		if (is[0].category() != QChar::Letter_Uppercase)
 			break;
-		if (++i == end)
+		++i;
+		if (i == end)
 			break;
-		setCurrentIndex(i);
+		QString is = model_->item(i, 1)->text();
 	}
 
-	insertItem(i, item);
+	model_->insertRow(i, row);
 }
 
 
 void GuiLayoutBox::updateContents(bool reset)
 {
+	resetFilter();
+	
 	Buffer const * buffer = owner_.buffer();
 	if (!buffer) {
-		clear();
+		model_->clear();
 		setEnabled(false);
 		text_class_ = 0;
 		inset_ = 0;
 		return;
 	}
 
-	DocumentClass const * text_class = &buffer->params().documentClass();
-	Inset const * inset = 
-		owner_.view()->cursor().innerParagraph().inInset();
-
 	// we'll only update the layout list if the text class has changed
 	// or we've moved from one inset to another
+	DocumentClass const * text_class = &buffer->params().documentClass();
+	Inset const * inset = 
+	owner_.view()->cursor().innerParagraph().inInset();
 	if (!reset && text_class_ == text_class && inset_ == inset) {
 		set(owner_.view()->cursor().innerParagraph().layout()->name());
 		return;
@@ -321,8 +473,7 @@ void GuiLayoutBox::updateContents(bool reset)
 	inset_ = inset;
 	text_class_ = text_class;
 
-	clear();
-
+	model_->clear();
 	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
 		Layout const & lt = *text_class_->layout(i);
 		docstring const & name = lt.name();
@@ -335,7 +486,7 @@ void GuiLayoutBox::updateContents(bool reset)
 		if (name == text_class_->emptyLayoutName() && inset &&
 		    !inset->forceEmptyLayout() && !inset->useEmptyLayout())
 			continue;
-		addItemSort(toqstr(translateIfPossible(name)), lyxrc.sort_layouts);
+		addItemSort(name, lyxrc.sort_layouts);
 	}
 
 	set(owner_.view()->cursor().innerParagraph().layout()->name());
@@ -343,32 +494,35 @@ void GuiLayoutBox::updateContents(bool reset)
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());
-
 	setEnabled(!buffer->isReadonly());
 	show();
 }
 
 
-void GuiLayoutBox::selected(const QString & str)
+void GuiLayoutBox::selected(int index)
 {
-	owner_.setFocus();
-	updateContents(false);
-	if (!text_class_)
-		return;
+	// get selection
+	QModelIndex mindex = filterModel_->mapToSource(filterModel_->index(index, 1));
+	docstring const name = qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
 
-	docstring const name = qstring_to_ucs4(str);
+	owner_.setFocus();
+
+	if (!text_class_) {
+		updateContents(false);
+		resetFilter();
+		return;
+	}
+
+	// find corresponding text class
 	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
 		docstring const & itname = text_class_->layout(i)->name();
-		// FIXME: Comparing translated strings is not ideal.
-		// This should be done the way module names are handled
-		// in GuiDocument: viz, the untranslated name should be
-		// associated with the item via QComboBox::setItemData().
-		if (translateIfPossible(itname) == name) {
+		if (itname == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
 			theLyXFunc().setLyXView(&owner_);
 			lyx::dispatch(func);
 			updateContents(false);
+			resetFilter();
 			return;
 		}
 	}

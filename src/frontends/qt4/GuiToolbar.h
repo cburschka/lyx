@@ -22,6 +22,8 @@
 #include <QToolBar>
 #include <QComboBox>
 
+class QStandardItemModel;
+
 namespace lyx {
 
 class Inset;
@@ -31,6 +33,7 @@ class ToolbarItem;
 namespace frontend {
 
 class GuiCommandBuffer;
+class GuiFilterProxyModel;
 class GuiView;
 class Action;
 
@@ -46,15 +49,38 @@ public:
 	/// Populate the layout combobox.
 	void updateContents(bool reset);
 	/// Add Item to Layout box according to sorting settings from preferences
-	void addItemSort(QString const & item, bool sorted);
+	void addItemSort(docstring const & item, bool sorted);
+
+	///
+	bool eventFilter(QObject *o, QEvent *e);
+	///
+	QString const & filter() { return filter_; }
 
 private Q_SLOTS:
-	void selected(const QString & str);
+	///
+	void selected(int index);
 
 private:
+	///
+	void resetFilter();
+	///
+	void setFilter(QString const & s);
+
+	///
 	GuiView & owner_;
+	///
 	DocumentClass const * text_class_;
+	///
 	Inset const * inset_;
+	
+	/// the layout model: 1st column translated, 2nd column raw layout name
+	QStandardItemModel * model_;
+	/// the proxy model filtering \c model_
+	GuiFilterProxyModel * filterModel_;
+	/// the (model-) index of the last successful selection
+	int lastSel_;
+	/// the character filter
+	QString filter_;
 };
 
 
