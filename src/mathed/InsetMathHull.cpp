@@ -699,7 +699,12 @@ void InsetMathHull::swapRow(row_type row)
 		return;
 	if (row + 1 == nrows())
 		--row;
-	swap(nonum_[row], nonum_[row + 1]);
+	// gcc doesn't like this:
+	//	swap(nonum_[row], nonum_[row + 1]);
+	// so we do it manually:
+	bool const b = nonum_[row];
+	nonum_[row] = nonum_[row + 1]
+	nonum_[row + 1] = b;
 	swap(label_[row], label_[row + 1]);
 	InsetMathGrid::swapRow(row);
 }
