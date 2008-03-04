@@ -484,7 +484,7 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	BOOST_ASSERT(&insetCur.inset() == this);
 	
 	// update the old paragraph's words
-	insetCur.paragraph().updateWords(insetCur.buffer(), insetCur.top());
+	insetCur.paragraph().updateWords(insetCur.top());
 	
 	return Inset::notifyCursorLeaves(old, cur);
 }

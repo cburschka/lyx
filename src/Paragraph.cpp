@@ -2699,7 +2699,7 @@ void Paragraph::deregisterWords()
 }
 
 
-void Paragraph::collectWords(Buffer const & buf, CursorSlice const & sl)
+void Paragraph::collectWords(CursorSlice const & sl)
 {
 	// find new words
 	bool inword = false;
@@ -2743,11 +2743,11 @@ void Paragraph::registerWords()
 }
 
 
-void Paragraph::updateWords(Buffer const & buf, CursorSlice const & sl)
+void Paragraph::updateWords(CursorSlice const & sl)
 {
 	BOOST_ASSERT(&sl.paragraph() == this);
 	deregisterWords();
-	collectWords(buf, sl);
+	collectWords(sl);
 	registerWords();
 }
 

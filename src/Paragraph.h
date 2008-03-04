@@ -365,13 +365,13 @@ public:
 		bool del = true) const;
 	
 	///
-	void updateWords(Buffer const & buf, CursorSlice const & sl);
+	void updateWords(CursorSlice const & sl);
 
 private:
 	///
 	void deregisterWords();
 	///
-	void collectWords(Buffer const & buf, CursorSlice const & sl);
+	void collectWords(CursorSlice const & sl);
 	///
 	void registerWords();
 
