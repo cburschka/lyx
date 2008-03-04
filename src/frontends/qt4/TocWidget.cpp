@@ -23,6 +23,7 @@
 #include <QHeaderView>
 #include <QPushButton>
 #include <QTreeWidgetItem>
+#include <QTimer>
 
 #include <vector>
 #include <string>
@@ -259,6 +260,10 @@ void TocWidget::updateGui()
 	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());
+
+	// setTocModel produce QTreeView reset and setting depth again
+	// is needed. That must be done after all Qt updates are processed.
+	QTimer::singleShot(1, this, SLOT(setTreeDepth()));
 }
 
 
