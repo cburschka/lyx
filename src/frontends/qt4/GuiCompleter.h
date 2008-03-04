@@ -88,6 +88,8 @@ private Q_SLOTS:
 	void popupHighlighted(const QString & completion);
 	///
 	void updateAvailability();
+	///
+	void asyncCompletePopup();
 	
 private:
 	///
@@ -127,6 +129,8 @@ private:
 	/// operations like backspace. Hence, we have to keep this flag
 	/// in addition to know whether the completion is to be kept visible.
 	bool inlineVisible_;
+	///
+	bool popupVisible_;
 	///
 	RtlItemDelegate * rtlItemDelegate_;
 }; // GuiCompleter

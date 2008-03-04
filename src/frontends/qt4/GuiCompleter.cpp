@@ -171,7 +171,7 @@ private:
 
 GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	: QCompleter(parent), gui_(gui), updateLock_(0),
-	  inlineVisible_(false)
+	  inlineVisible_(false), popupVisible_(false)
 {
 	// Setup the completion popup
 	setModel(new GuiCompletionModel(this, 0));
@@ -260,7 +260,7 @@ bool GuiCompleter::completionAvailable() const
 
 bool GuiCompleter::popupVisible() const
 {
-	return popup()->isVisible();
+	return popupVisible_;
 }
 
 
@@ -392,9 +392,28 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	if (!cur.inset().completionSupported(cur))
 		return;
 	
-	if (completionCount() == 0)
+	popupVisible_ = true;
+
+	if (completionCount() == 0) {
+		QTimer::singleShot(0, popup(), SLOT(hide()));
 		return;
-	
+	}
+
+	// show asynchronously to avoid lookups before the metrics
+	// have been computed. This can happen because we might be in
+	// the middle of a dispatch.
+	QTimer::singleShot(0, this, SLOT(asyncCompletePopup()));
+}
+
+
+void GuiCompleter::asyncCompletePopup()
+{
+	Cursor cur = gui_->bufferView().cursor();
+	if (!cur.inset().completionSupported(cur)) {
+		popupVisible_ = false;
+		return;
+	}
+
 	// get dimensions of completion prefix
 	Dimension dim;
 	int x;
@@ -504,6 +523,8 @@ void GuiCompleter::showPopup(Cursor & cur)
 
 void GuiCompleter::hidePopup(Cursor & cur)
 {
+	popupVisible_ = false;
+	
 	// hide popup asynchronously because we might be here inside of
 	// LFUN dispatchers. Hiding a popup can trigger a focus event on the 
 	// workarea which then redisplays the cursor. But the metrics are not
@@ -532,6 +553,9 @@ void GuiCompleter::hideInline(Cursor & cur)
 {
 	gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
 	inlineVisible_ = false;
+	
+	if (inline_timer_.isActive())
+		inline_timer_.stop();
 	
 	if (!popupVisible())
 		setModel(new GuiCompletionModel(this, 0));
