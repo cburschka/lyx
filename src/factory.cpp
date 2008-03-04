@@ -194,13 +194,8 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			return new InsetTabular(buf, r, c);
 		}
 
-		case LFUN_CAPTION_INSERT: {
-			auto_ptr<InsetCaption> inset(new InsetCaption(buf));
-			inset->setAutoBreakRows(true);
-			inset->setDrawFrame(true);
-			inset->setFrameColor(Color_captionframe);
-			return inset.release();
-		}
+		case LFUN_CAPTION_INSERT:
+			return new InsetCaption(buf);
 
 		case LFUN_INDEX_PRINT:
 			return new InsetPrintIndex(InsetCommandParams(INDEX_PRINT_CODE));
