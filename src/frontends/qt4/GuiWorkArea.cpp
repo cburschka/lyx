@@ -47,6 +47,9 @@
 #include <QContextMenuEvent>
 #include <QInputContext>
 #include <QHelpEvent>
+#ifdef Q_WS_MAC
+#include <QMacStyle>
+#endif
 #include <QMainWindow>
 #include <QPainter>
 #include <QPalette>
@@ -248,6 +251,11 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	setAcceptDrops(true);
 	setMouseTracking(true);
 	setMinimumSize(100, 70);
+#ifdef Q_WS_MACX
+	setFrameStyle(QFrame::NoFrame);	
+#else
+	setFrameStyle(QFrame::Box);
+#endif
 	updateWindowTitle();
 
 	viewport()->setAutoFillBackground(false);
@@ -298,7 +306,11 @@ void GuiWorkArea::setFullScreen(bool full_screen)
 		if (lyxrc.full_screen_scrollbar)
 			setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	} else {
+#ifdef Q_WS_MACX
+		setFrameStyle(QFrame::NoFrame);	
+#else
 		setFrameStyle(QFrame::Box);
+#endif
 		setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	}
 }
@@ -1115,8 +1127,40 @@ bool GuiWorkArea::isFullScreen()
 //
 ////////////////////////////////////////////////////////////////////
 
+#ifdef Q_WS_MACX
+class NoTabFrameMacStyle : public QMacStyle {
+public:
+	///
+	QRect subElementRect(SubElement element, const QStyleOption * option,
+			     const QWidget * widget = 0 ) const 
+	{
+		QRect rect = QMacStyle::subElementRect(element, option, widget);
+		bool noBar = static_cast<QTabWidget const *>(widget)->count() <= 1;
+		
+		// The Qt Mac style puts the contents into a 3 pixel wide box
+		// which looks very ugly and not like other Mac applications.
+		// Hence we remove this here, and moreover the 16 pixel round
+		// frame above if the tab bar is hidden.
+		if (element == QStyle::SE_TabWidgetTabContents) {
+			rect.adjust(- rect.left(), 0, rect.left(), 0);
+			if (noBar)
+				rect.setTop(0);
+		}
+
+		return rect;
+	}
+};
+
+NoTabFrameMacStyle noTabFramemacStyle;
+#endif
+
+
 TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 {
+#ifdef Q_WS_MACX
+	setStyle(&noTabFramemacStyle);
+#endif
+
 	QPalette pal = palette();
 	pal.setColor(QPalette::Active, QPalette::Button,
 		pal.color(QPalette::Active, QPalette::Window));

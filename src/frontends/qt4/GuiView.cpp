@@ -1906,11 +1906,10 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		int l, t, r, b;
 		getContentsMargins(&l, &t, &r, &b);
 		//are the frames in default state?
+		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 		if (l == 0) {
-			d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 			setContentsMargins(-2, -2, -2, -2);
 		} else {
-			d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 			setContentsMargins(0, 0, 0, 0);
 		}
 		return;
