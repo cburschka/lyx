@@ -51,7 +51,7 @@ protected Q_SLOTS:
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();
 	void on_moveOutTB_clicked();
-	void setTreeDepth() { setTreeDepth(depth_); };
+	void setTreeDepth() { setTreeDepth(depth_); }
 
 protected:
 	///

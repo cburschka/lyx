@@ -243,7 +243,7 @@ void TocWidget::updateGui(int selected_type)
 
 	// setTocModel produce QTreeView reset and setting depth again
 	// is needed. That must be done after all Qt updates are processed.
-	QTimer::singleShot(1, this, SLOT(setTreeDepth()));
+	QTimer::singleShot(0, this, SLOT(setTreeDepth()));
 }
 
 
