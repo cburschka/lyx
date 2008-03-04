@@ -696,6 +696,13 @@ bool Buffer::readFile(FileName const & filename)
 	if (readFile(lex, fname) != success)
 		return false;
 
+	// FIXME: there are insets that don't set the buffer reference
+	// (InsetMathHull at least) so wet explicitely set the buffer in all insets.
+	InsetIterator it = inset_iterator_begin(inset());
+	InsetIterator end = inset_iterator_end(inset());
+	for (; it != end; ++it)
+		it->setBuffer(*this);
+
 	return true;
 }
 
