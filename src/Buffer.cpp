@@ -2394,9 +2394,6 @@ void Buffer::loadChildDocuments() const
 		child->loadChildDocuments();
 	}
 
-	if (use_gui && masterBuffer() == this)
-		updateLabels(*this);
-
 	updateMacros();
 }
 
