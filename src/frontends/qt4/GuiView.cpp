@@ -570,6 +570,10 @@ bool GuiView::event(QEvent * e)
 	//	break;
 
 	case QEvent::WindowActivate: {
+		if (this == guiApp->currentView()) {
+			setFocus();
+			return QMainWindow::event(e);
+		}
 		guiApp->setCurrentView(*this);
 		if (d.current_work_area_) {
 			BufferView & bv = d.current_work_area_->bufferView();
