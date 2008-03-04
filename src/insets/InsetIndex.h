@@ -26,7 +26,7 @@ class LaTeXFeatures;
 class InsetIndex : public InsetCollapsable {
 public:
 	///
-	InsetIndex(BufferParams const &);
+	InsetIndex(Buffer const &);
 	///
 	InsetIndex(InsetIndex const &);
 	///

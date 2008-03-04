@@ -24,7 +24,7 @@ namespace lyx {
 class InsetFoot : public InsetFootlike {
 public:
 	///
-	InsetFoot(BufferParams const &);
+	InsetFoot(Buffer const &);
 	///
 	InsetCode lyxCode() const { return FOOT_CODE; }
 	///
@@ -45,7 +45,7 @@ public:
 protected:
 	InsetFoot(InsetFoot const &);
 private:
-	Inset * clone() const;
+	Inset * clone() const { return new InsetFoot(*this); }
 };
 
 

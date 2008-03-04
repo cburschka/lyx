@@ -24,8 +24,8 @@ using namespace std;
 namespace lyx {
 
 
-InsetFootlike::InsetFootlike(BufferParams const & bp)
-	: InsetCollapsable(bp)
+InsetFootlike::InsetFootlike(Buffer const & buf)
+	: InsetCollapsable(buf)
 {}
 
 

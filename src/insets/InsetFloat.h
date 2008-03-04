@@ -47,7 +47,7 @@ public:
 class InsetFloat : public InsetCollapsable {
 public:
 	///
-	InsetFloat(BufferParams const &, std::string const &);
+	InsetFloat(Buffer const &, std::string const &);
 	///
 	~InsetFloat();
 	///

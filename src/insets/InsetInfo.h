@@ -84,7 +84,7 @@ public:
 	};
 
 	///
-	InsetInfo(BufferParams const & bp, std::string const & info = std::string());
+	InsetInfo(Buffer const & buf, std::string const & info = std::string());
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

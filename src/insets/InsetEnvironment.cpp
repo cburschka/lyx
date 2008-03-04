@@ -12,22 +12,23 @@
 
 #include "InsetEnvironment.h"
 
+#include "Buffer.h"
 #include "BufferParams.h"
-#include "support/gettext.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "TexRow.h"
 #include "TextClass.h"
 
+#include "support/gettext.h"
+
 using namespace std;
 
 namespace lyx {
 
 
-InsetEnvironment::InsetEnvironment
-		(BufferParams const & bp, docstring const & name)
-	: InsetText(bp), layout_(bp.documentClass()[name]), name_(name)
+InsetEnvironment::InsetEnvironment(Buffer const & buf, docstring const & name)
+	: InsetText(buf), layout_(buf.params().documentClass()[name]), name_(name)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -37,12 +38,6 @@ InsetEnvironment::InsetEnvironment
 InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 	: InsetText(in), layout_(in.layout_)
 {}
-
-
-Inset * InsetEnvironment::clone() const
-{
-	return new InsetEnvironment(*this);
-}
 
 
 void InsetEnvironment::write(ostream & os) const

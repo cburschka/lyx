@@ -34,11 +34,13 @@ class InsetTabular;
 class InsetText : public Inset {
 public:
 	///
-	explicit InsetText(BufferParams const &);
+	explicit InsetText(Buffer const & buffer);
 	///
 	InsetText();
 	///
 	InsetText(InsetText const &);
+	///
+	void initParagraphs(Buffer const & buffer);
 
 	///
 	Dimension const dimension(BufferView const &) const;

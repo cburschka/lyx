@@ -98,13 +98,10 @@ private:
 
 /////////////////////////////////////////////////////////////////////
 
-InsetText::InsetText(BufferParams const & bp)
+InsetText::InsetText(Buffer const & buf)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
-	paragraphs().push_back(Paragraph());
-	Paragraph & ourpar = paragraphs().back();
-	ourpar.setEmptyOrDefaultLayout(bp.documentClass());
-	ourpar.setInsetOwner(this);
+	initParagraphs(buf);
 }
 
 
@@ -122,6 +119,16 @@ InsetText::InsetText(InsetText const & in)
 InsetText::InsetText()
 {}
 
+
+void InsetText::initParagraphs(Buffer const & buf)
+{
+	BOOST_ASSERT(paragraphs().empty());
+	buffer_ = const_cast<Buffer *>(&buf);
+	paragraphs().push_back(Paragraph());
+	Paragraph & ourpar = paragraphs().back();
+	ourpar.setEmptyOrDefaultLayout(buf.params().documentClass());
+	ourpar.setInsetOwner(this);
+}
 
 void InsetText::setParagraphOwner()
 {

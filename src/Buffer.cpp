@@ -167,9 +167,6 @@ public:
 	 */
 	bool file_fully_loaded;
 
-	/// our Text that should be wrapped in an InsetText
-	InsetText inset;
-
 	///
 	mutable TocBackend toc_backend;
 
@@ -209,6 +206,9 @@ public:
 	mutable EmbeddedFileList bibfilesCache_;
 
 	mutable RefCache ref_cache_;
+
+	/// our Text that should be wrapped in an InsetText
+	InsetText inset;
 };
 
 /// Creates the per buffer temporary directory
@@ -233,13 +233,11 @@ static FileName createBufferTmpDir()
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
-	  inset(params), toc_backend(&parent), macro_lock(false),
+	  toc_backend(&parent), macro_lock(false),
 	  embedded_files(), timestamp_(0), checksum_(0), wa_(0), 
 	  undo_(parent)
 {
 	temppath = createBufferTmpDir();
-	inset.setBuffer(parent);
-	inset.setAutoBreakRows(true);
 	lyxvc.setBuffer(&parent);
 	if (use_gui)
 		wa_ = new frontend::WorkAreaManager;
@@ -251,6 +249,9 @@ Buffer::Buffer(string const & file, bool readonly)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 
+	d->inset.setBuffer(*this);
+	d->inset.initParagraphs(*this);
+	d->inset.setAutoBreakRows(true);
 	d->inset.getText(0)->setMacrocontextPosition(par_iterator_begin());
 }
 

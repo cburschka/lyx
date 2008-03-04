@@ -27,7 +27,7 @@ namespace lyx {
 class InsetListings : public InsetCollapsable {
 public:
 	///
-	InsetListings(BufferParams const &, InsetListingsParams const & par = InsetListingsParams());
+	InsetListings(Buffer const &, InsetListingsParams const & par = InsetListingsParams());
 	///
 	~InsetListings();
 	///

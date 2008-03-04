@@ -21,7 +21,7 @@ namespace lyx {
 class InsetEnvironment : public InsetText {
 public:
 	///
-	InsetEnvironment(BufferParams const &, docstring const & name);
+	InsetEnvironment(Buffer const &, docstring const & name);
 	///
 	docstring name() const { return name_; }
 	///
@@ -48,7 +48,7 @@ protected:
 	InsetEnvironment(InsetEnvironment const &);
 private:
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetEnvironment(*this); }
 	/// the layout
 	LayoutPtr layout_;
 	///

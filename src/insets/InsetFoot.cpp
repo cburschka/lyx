@@ -35,20 +35,14 @@ using namespace std;
 namespace lyx {
 
 
-InsetFoot::InsetFoot(BufferParams const & bp)
-	: InsetFootlike(bp)
+InsetFoot::InsetFoot(Buffer const & buf)
+	: InsetFootlike(buf)
 {}
 
 
 InsetFoot::InsetFoot(InsetFoot const & in)
 	: InsetFootlike(in)
 {}
-
-
-Inset * InsetFoot::clone() const
-{
-	return new InsetFoot(*this);
-}
 
 
 docstring InsetFoot::editMessage() const

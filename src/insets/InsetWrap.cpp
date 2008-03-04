@@ -39,10 +39,10 @@ using namespace std;
 namespace lyx {
 
 
-InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp), name_(from_utf8(type))
+InsetWrap::InsetWrap(Buffer const & buf, string const & type)
+	: InsetCollapsable(buf), name_(from_utf8(type))
 {
-	setLabel(_("wrap: ") + floatName(type, bp));
+	setLabel(_("wrap: ") + floatName(type, buf.params()));
 	params_.type = type;
 	params_.lines = 0;
 	params_.placement = "o";

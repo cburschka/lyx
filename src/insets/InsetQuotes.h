@@ -69,7 +69,7 @@ public:
 	  */
 	explicit InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
-	InsetQuotes(char_type c, BufferParams const & params);
+	InsetQuotes(Buffer const & buffer, char_type c);
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char_type c, quote_language l, quote_times t);
 	///

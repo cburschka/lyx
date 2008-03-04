@@ -33,7 +33,7 @@ class Language;
 class InsetERT : public InsetCollapsable {
 public:
 	///
-	InsetERT(BufferParams const &, CollapseStatus status = Open);
+	InsetERT(Buffer const &, CollapseStatus status = Open);
 #if 0
 	///
 	InsetERT(BufferParams const &,

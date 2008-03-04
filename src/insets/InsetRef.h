@@ -36,7 +36,7 @@ public:
 	static std::string const & getName(int type);
 
 
-	InsetRef(InsetCommandParams const &, Buffer const &);
+	InsetRef(Buffer const & buffer, InsetCommandParams const &);
 
 	/// verify label and reference.
 	/**

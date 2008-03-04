@@ -102,44 +102,44 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
-			return new InsetFlex(params, params.documentClassPtr(), s);
+			return new InsetFlex(buf, buf.params().documentClassPtr(), s);
 		}
 
 		case LFUN_NOTE_INSERT: {
 			string arg = cmd.getArg(0);
 			if (arg.empty())
 				arg = "Note";
-			return new InsetNote(params, arg);
+			return new InsetNote(buf, arg);
 		}
 
 		case LFUN_BOX_INSERT: {
 			string arg = cmd.getArg(0);
 			if (arg.empty())
 				arg = "Boxed";
-			return new InsetBox(params, arg);
+			return new InsetBox(buf, arg);
 		}
 
 		case LFUN_BRANCH_INSERT: {
 			docstring arg = cmd.argument();
 			if (arg.empty())
 				arg = from_ascii("none");
-			return new InsetBranch(params, InsetBranchParams(arg));
+			return new InsetBranch(buf, InsetBranchParams(arg));
 		}
 
 		case LFUN_ERT_INSERT:
-			return new InsetERT(params);
+			return new InsetERT(buf);
 
 		case LFUN_LISTING_INSERT:
-			return new InsetListings(params);
+			return new InsetListings(buf);
 
 		case LFUN_FOOTNOTE_INSERT:
-			return new InsetFoot(params);
+			return new InsetFoot(buf);
 
 		case LFUN_MARGINALNOTE_INSERT:
-			return new InsetMarginal(params);
+			return new InsetMarginal(buf);
 
 		case LFUN_OPTIONAL_INSERT:
-			return new InsetOptArg(params);
+			return new InsetOptArg(buf);
 
 		case LFUN_BIBITEM_INSERT:
 			return new InsetBibitem(InsetCommandParams(BIBITEM_CODE));
@@ -147,8 +147,8 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (params.documentClass().floats().typeExist(argument))
-				return new InsetFloat(params, argument);
+			if (buf.params().documentClass().floats().typeExist(argument))
+				return new InsetFloat(buf, argument);
 			lyxerr << "Non-existent float type: " << argument << endl;
 		}
 
@@ -156,7 +156,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
 			if (params.documentClass().floats().typeExist(argument)) {
-				auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
+				auto_ptr<InsetFloat> p(new InsetFloat(buf, argument));
 				p->wide(true, params);
 				return p.release();
 			}
@@ -167,13 +167,13 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_WRAP_INSERT: {
 			string const argument = to_utf8(cmd.argument());
 			if (argument == "figure" || argument == "table")
-				return new InsetWrap(params, argument);
+				return new InsetWrap(buf, argument);
 			lyxerr << "Non-existent wrapfig type: " << argument << endl;
 			return 0;
 		}
 
 		case LFUN_INDEX_INSERT:
-			return new InsetIndex(params);
+			return new InsetIndex(buf);
 
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp(NOMENCL_CODE);
@@ -195,7 +195,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		}
 
 		case LFUN_CAPTION_INSERT: {
-			auto_ptr<InsetCaption> inset(new InsetCaption(params));
+			auto_ptr<InsetCaption> inset(new InsetCaption(buf));
 			inset->setAutoBreakRows(true);
 			inset->setDrawFrame(true);
 			inset->setFrameColor(Color_captionframe);
@@ -212,10 +212,10 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			return new InsetTOC(InsetCommandParams(TOC_CODE));
 
 		case LFUN_ENVIRONMENT_INSERT:
-			return new InsetEnvironment(params, cmd.argument());
+			return new InsetEnvironment(buf, cmd.argument());
 
 		case LFUN_INFO_INSERT:
-			return new InsetInfo(params, to_utf8(cmd.argument()));
+			return new InsetInfo(buf, to_utf8(cmd.argument()));
 #if 0
 		case LFUN_THEOREM_INSERT:
 			return new InsetTheorem;
@@ -250,13 +250,13 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case ERT_CODE: {
 				InsetCollapsable::CollapseStatus st;
 				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
-				return new InsetERT(params, st);
+				return new InsetERT(buf, st);
 			}
 				
 			case LISTINGS_CODE: {
 				InsetListingsParams par;
 				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
-				return new InsetListings(params, par);
+				return new InsetListings(buf, par);
 			}
 			
 			case EXTERNAL_CODE: {
@@ -288,7 +288,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			}
 			
 			case INDEX_CODE:
-				return new InsetIndex(params);
+				return new InsetIndex(buf);
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
@@ -305,7 +305,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case REF_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetRef(icp, buf);
+				return new InsetRef(buf, icp);
 			}
 			
 			case TOC_CODE: {
@@ -446,7 +446,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 				break;
 			case REF_CODE:
 				if (!inscmd["name"].empty() || !inscmd["reference"].empty())
-					inset.reset(new InsetRef(inscmd, buf));
+					inset.reset(new InsetRef(buf, inscmd));
 				break;
 			case TOC_CODE:
 				inset.reset(new InsetTOC(inscmd));
@@ -478,58 +478,58 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Graphics") {
 			inset.reset(new InsetGraphics);
 		} else if (tmptok == "Note") {
-			inset.reset(new InsetNote(buf.params(), tmptok));
+			inset.reset(new InsetNote(buf, tmptok));
 		} else if (tmptok == "Box") {
-			inset.reset(new InsetBox(buf.params(), tmptok));
+			inset.reset(new InsetBox(buf, tmptok));
 		} else if (tmptok == "Flex") {
 			lex.next();
 			string s = lex.getString();
-			inset.reset(new InsetFlex(buf.params(), 
+			inset.reset(new InsetFlex(buf, 
 				buf.params().documentClassPtr(), s));
 		} else if (tmptok == "Branch") {
-			inset.reset(new InsetBranch(buf.params(),
+			inset.reset(new InsetBranch(buf,
 						    InsetBranchParams()));
 		} else if (tmptok == "Environment") {
 			lex.next();
-			inset.reset(new InsetEnvironment(buf.params(), lex.getDocString()));
+			inset.reset(new InsetEnvironment(buf, lex.getDocString()));
 		} else if (tmptok == "ERT") {
-			inset.reset(new InsetERT(buf.params()));
+			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {
-			inset.reset(new InsetListings(buf.params()));
+			inset.reset(new InsetListings(buf));
 		} else if (tmptok == "InsetSpace") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
 			inset.reset(new InsetTabular(buf));
 		} else if (tmptok == "Text") {
-			inset.reset(new InsetText(buf.params()));
+			inset.reset(new InsetText(buf));
 		} else if (tmptok == "VSpace") {
 			inset.reset(new InsetVSpace);
 		} else if (tmptok == "Foot") {
-			inset.reset(new InsetFoot(buf.params()));
+			inset.reset(new InsetFoot(buf));
 		} else if (tmptok == "Marginal") {
-			inset.reset(new InsetMarginal(buf.params()));
+			inset.reset(new InsetMarginal(buf));
 		} else if (tmptok == "OptArg") {
-			inset.reset(new InsetOptArg(buf.params()));
+			inset.reset(new InsetOptArg(buf));
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset.reset(new InsetFloat(buf.params(), tmptok));
+			inset.reset(new InsetFloat(buf, tmptok));
 		} else if (tmptok == "Wrap") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset.reset(new InsetWrap(buf.params(), tmptok));
+			inset.reset(new InsetWrap(buf, tmptok));
 #if 0
 		} else if (tmptok == "Theorem") {
 			inset.reset(new InsetList);
 #endif
 		} else if (tmptok == "Caption") {
-			inset.reset(new InsetCaption(buf.params()));
+			inset.reset(new InsetCaption(buf));
 		} else if (tmptok == "Index") {
-			inset.reset(new InsetIndex(buf.params()));
+			inset.reset(new InsetIndex(buf));
 		} else if (tmptok == "FloatList") {
 			inset.reset(new InsetFloatList);
 		} else if (tmptok == "Info") {
-			inset.reset(new InsetInfo(buf.params()));
+			inset.reset(new InsetInfo(buf));
 		} else {
 			lyxerr << "unknown Inset type '" << tmptok
 			       << "'" << endl;

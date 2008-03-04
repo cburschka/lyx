@@ -42,7 +42,7 @@ public:
 class InsetNote : public InsetCollapsable {
 public:
 	///
-	InsetNote(BufferParams const &, std::string const &);
+	InsetNote(Buffer const &, std::string const &);
 	///
 	~InsetNote();
 	///

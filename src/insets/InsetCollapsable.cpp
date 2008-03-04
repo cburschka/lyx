@@ -77,16 +77,16 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 }
 
 
-InsetCollapsable::InsetCollapsable(BufferParams const & bp,
+InsetCollapsable::InsetCollapsable(Buffer const & buf,
 		CollapseStatus status, DocumentClass * dc)
-	: InsetText(bp), status_(status),
+	: InsetText(buf), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	setLayout(dc);
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(bp.documentClass().emptyLayout());
+	paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
 }
 
 

@@ -225,7 +225,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		lyx::dispatch(FuncRequest(LFUN_CUT));
-		Inset * inset = new InsetEnvironment(params, layout);
+		Inset * inset = new InsetEnvironment(bv.buffer(), layout);
 		insertInset(cur, inset);
 		//inset->edit(cur, true);
 		//lyx::dispatch(FuncRequest(LFUN_PASTE));

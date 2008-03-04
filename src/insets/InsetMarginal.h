@@ -25,7 +25,7 @@ namespace lyx {
 class InsetMarginal : public InsetFootlike {
 public:
 	///
-	InsetMarginal(BufferParams const &);
+	InsetMarginal(Buffer const &);
 	///
 	InsetCode lyxCode() const { return MARGIN_CODE; }
 	///

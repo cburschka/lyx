@@ -58,7 +58,7 @@ public:
 class InsetBox : public InsetCollapsable {
 public:
 	///
-	InsetBox(BufferParams const &, std::string const &);
+	InsetBox(Buffer const &, std::string const &);
 	///
 	~InsetBox();
 	///

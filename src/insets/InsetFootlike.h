@@ -23,7 +23,7 @@ namespace lyx {
 class InsetFootlike : public InsetCollapsable {
 public:
 	///
-	InsetFootlike(BufferParams const &);
+	InsetFootlike(Buffer const &);
 	///
 	InsetFootlike(InsetFootlike const &);
 	///

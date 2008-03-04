@@ -56,15 +56,14 @@ InsetCaption::InsetCaption(InsetCaption const & ic)
 }
 
 
-InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp)
+InsetCaption::InsetCaption(Buffer const & buf)
+	: InsetText(buf)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_captionframe);
-	//FIXME Do we need to set all paragraphs here? or will there
-	//always only be one?
-	paragraphs().back().setLayout(bp.documentClass().emptyLayout());
+	// There will always be only one
+	paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
 }
 
 

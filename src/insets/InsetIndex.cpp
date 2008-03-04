@@ -29,8 +29,8 @@ using namespace std;
 namespace lyx {
 
 
-InsetIndex::InsetIndex(BufferParams const & bp)
-	: InsetCollapsable(bp)
+InsetIndex::InsetIndex(Buffer const & buf)
+	: InsetCollapsable(buf)
 {}
 
 

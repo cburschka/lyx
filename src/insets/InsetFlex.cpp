@@ -39,9 +39,9 @@ using namespace std;
 namespace lyx {
 
 
-InsetFlex::InsetFlex(BufferParams const & bp,
+InsetFlex::InsetFlex(Buffer const & buf,
 	DocumentClass * dc, string const & layoutName)
-	: InsetCollapsable(bp, Collapsed, dc),
+	: InsetCollapsable(buf, Collapsed, dc),
 	name_(layoutName)
 {
 	setLayout(dc); // again, because now the name is initialized
@@ -53,12 +53,6 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 InsetFlex::InsetFlex(InsetFlex const & in)
 	: InsetCollapsable(in), name_(in.name_)
 {}
-
-
-Inset * InsetFlex::clone() const
-{
-	return new InsetFlex(*this);
-}
 
 
 docstring InsetFlex::editMessage() const

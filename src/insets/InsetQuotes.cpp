@@ -94,8 +94,8 @@ InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 }
 
 
-InsetQuotes::InsetQuotes(char_type c, BufferParams const & params)
-	: language_(params.quotes_language), times_(params.quotes_times)
+InsetQuotes::InsetQuotes(Buffer const & buf, char_type c)
+	: language_(buf.params().quotes_language), times_(buf.params().quotes_times)
 {
 	getPosition(c);
 }

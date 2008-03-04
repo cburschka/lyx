@@ -106,8 +106,8 @@ void InsetNoteParams::read(Lexer & lex)
 }
 
 
-InsetNote::InsetNote(BufferParams const & bp, string const & label)
-	: InsetCollapsable(bp)
+InsetNote::InsetNote(Buffer const & buf, string const & label)
+	: InsetCollapsable(buf)
 {
 	params_.type = notetranslator().find(label);
 }

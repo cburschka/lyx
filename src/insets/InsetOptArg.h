@@ -25,7 +25,7 @@ namespace lyx {
  */
 class InsetOptArg : public InsetCollapsable {
 public:
-	InsetOptArg(BufferParams const &);
+	InsetOptArg(Buffer const &);
 
 	/// code of the inset
 	InsetCode lyxCode() const { return OPTARG_CODE; }

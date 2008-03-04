@@ -41,8 +41,8 @@ namespace lyx {
 char const lstinline_delimiters[] =
 	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
-InsetListings::InsetListings(BufferParams const & bp, InsetListingsParams const & par)
-	: InsetCollapsable(bp, par.status())
+InsetListings::InsetListings(Buffer const & buf, InsetListingsParams const & par)
+	: InsetCollapsable(buf, par.status())
 {}
 
 

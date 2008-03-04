@@ -37,7 +37,7 @@ public:
 class InsetBranch : public InsetCollapsable {
 public:
 	///
-	InsetBranch(BufferParams const &, InsetBranchParams const &);
+	InsetBranch(Buffer const &, InsetBranchParams const &);
 	///
 	~InsetBranch();
 	///
@@ -83,16 +83,14 @@ public:
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 protected:
 	///
-	InsetBranch(InsetBranch const &);
-	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	docstring name() const { return from_ascii("Branch"); }
 private:
+	///
 	friend class InsetBranchParams;
-
-	virtual Inset * clone() const;
-
+	///
+	Inset * clone() const { return new InsetBranch(*this); }
 	///
 	InsetBranchParams params_;
 };

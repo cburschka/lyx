@@ -85,11 +85,11 @@ BoxTranslatorLoc const & boxtranslator_loc()
 } // anon
 
 
-InsetBox::InsetBox(BufferParams const & bp, string const & label)
-	: InsetCollapsable(bp), params_(label)
+InsetBox::InsetBox(Buffer const & buffer, string const & label)
+	: InsetCollapsable(buffer), params_(label)
 {
 	if (forceEmptyLayout())
-		paragraphs().back().setLayout(bp.documentClass().emptyLayout());
+		paragraphs().back().setLayout(buffer.params().documentClass().emptyLayout());
 }
 
 

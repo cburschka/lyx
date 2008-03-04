@@ -44,8 +44,8 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetInfo::InsetInfo(BufferParams const & bp, string const & name) 
-	: InsetText(bp), type_(UNKNOWN_INFO), name_(),
+InsetInfo::InsetInfo(Buffer const & buf, string const & name) 
+	: InsetText(buf), type_(UNKNOWN_INFO), name_(),
 	  mouse_hover_(false)
 {
 	setAutoBreakRows(true);

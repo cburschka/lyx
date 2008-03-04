@@ -111,10 +111,10 @@ namespace lyx {
 // Lgb
 
 
-InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp), name_(from_utf8(type))
+InsetFloat::InsetFloat(Buffer const & buf, string const & type)
+	: InsetCollapsable(buf), name_(from_utf8(type))
 {
-	setLabel(_("float: ") + floatName(type, bp));
+	setLabel(_("float: ") + floatName(type, buf.params()));
 	params_.type = type;
 }
 

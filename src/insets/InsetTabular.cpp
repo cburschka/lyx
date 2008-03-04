@@ -472,7 +472,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::CellData::CellData(Buffer const & buffer)
+Tabular::CellData::CellData(Buffer const & buf)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -484,10 +484,10 @@ Tabular::CellData::CellData(Buffer const & buffer)
 	  right_line(false),
 	  usebox(BOX_NONE),
 	  rotate(false),
-	  inset(new InsetText(buffer.params()))
+	  inset(new InsetText(buf))
 {
-	inset->setBuffer(const_cast<Buffer &>(buffer));
-	inset->paragraphs().back().setLayout(buffer.params().documentClass().emptyLayout());
+	inset->setBuffer(const_cast<Buffer &>(buf));
+	inset->paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
 }
 
 

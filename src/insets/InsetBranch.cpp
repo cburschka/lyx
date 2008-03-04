@@ -33,26 +33,14 @@ using namespace std;
 namespace lyx {
 
 
-InsetBranch::InsetBranch(BufferParams const & bp,
-			 InsetBranchParams const & params)
-	: InsetCollapsable(bp), params_(params)
-{}
-
-
-InsetBranch::InsetBranch(InsetBranch const & in)
-	: InsetCollapsable(in), params_(in.params_)
+InsetBranch::InsetBranch(Buffer const & buf, InsetBranchParams const & params)
+	: InsetCollapsable(buf), params_(params)
 {}
 
 
 InsetBranch::~InsetBranch()
 {
 	InsetBranchMailer(*this).hideDialog();
-}
-
-
-Inset * InsetBranch::clone() const
-{
-	return new InsetBranch(*this);
 }
 
 

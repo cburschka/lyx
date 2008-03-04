@@ -22,7 +22,7 @@ class InsetCaption : public InsetText {
 public:
 	///
 	InsetCaption(InsetCaption const &);
-	InsetCaption(BufferParams const &);
+	InsetCaption(Buffer const &);
 	///
 	virtual ~InsetCaption() {}
 	///
