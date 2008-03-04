@@ -45,11 +45,11 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 
 void InsetLabel::initView()
 {
-	update(getParam("name"));
+	updateCommand(getParam("name"));
 }
 
 
-void InsetLabel::update(docstring const & new_label, bool updaterefs)
+void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 {
 	docstring const old_label = getParam("name");
 	docstring label = new_label;
@@ -148,7 +148,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		update(p["name"]);
+		updateCommand(p["name"]);
 		break;
 	}
 

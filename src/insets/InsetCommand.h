@@ -82,8 +82,8 @@ public:
 	/// Whether this is a command this inset can represent.
 	/// Not implemented here. Must be implemented in derived class.
 	static bool isCompatibleCommand(std::string const & cmd);
-	/// update label and references. Currently used by InsetLabel.
-	virtual void update(docstring const &, bool) {};
+	/// update label and references.
+	virtual void updateCommand(docstring const &, bool) {};
 
 protected:
 	///

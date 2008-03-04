@@ -54,7 +54,7 @@ public:
 	///
 	void addToToc(ParConstIterator const &) const;
 	///
-	void update(docstring const & new_label, bool updaterefs = true);
+	void updateCommand(docstring const & new_label, bool updaterefs = true);
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

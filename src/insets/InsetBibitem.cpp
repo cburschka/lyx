@@ -12,7 +12,9 @@
 
 #include "InsetBibitem.h"
 
+#include "BiblioInfo.h"
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Counters.h"
@@ -25,8 +27,11 @@
 #include "ParagraphList.h"
 #include "TextClass.h"
 
+#include "frontends/alert.h"
+
 #include "support/lstrings.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/convert.h"
 
 #include <ostream>
@@ -46,6 +51,40 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 {
 	if (getParam("key").empty())
 		setParam("key", key_prefix + convert<docstring>(++key_counter));
+}
+
+
+void InsetBibitem::initView()
+{
+	updateCommand(getParam("key"));
+}
+
+
+void InsetBibitem::updateCommand(docstring const & new_key, bool)
+{
+	docstring const old_key = getParam("key");
+	docstring key = new_key;
+
+	BiblioInfo keys;
+	keys.fillWithBibKeys(&buffer());
+	vector<docstring> bibkeys = keys.getKeys();
+
+	int i = 1;
+
+	if (find(bibkeys.begin(), bibkeys.end(), key) != bibkeys.end()) {
+		// generate unique label
+		key = new_key + '-' + convert<docstring>(i);
+		while (find(bibkeys.begin(), bibkeys.end(), key) != bibkeys.end()) {
+			++i;
+			key = new_key + '-' + convert<docstring>(i);
+		}
+		frontend::Alert::warning(_("Keys must be unique!"),
+			bformat(_("The key %1$s already exists,\n"
+			"it will be changed to %2$s."), new_key, key));
+	}
+	setParam("key", key);
+
+	lyx::updateLabels(buffer());
 }
 
 
@@ -71,10 +110,12 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		if (p["key"] != params()["key"])
-			cur.bv().buffer().changeRefsIfUnique(params()["key"],
-						       p["key"], CITE_CODE);
-		setParams(p);
+		docstring old_key = params()["key"];
+		setParam("label", p["label"]);
+		updateCommand(p["key"]);
+		if (params()["key"] != old_key)
+			cur.bv().buffer().changeRefsIfUnique(old_key,
+				params()["key"], CITE_CODE);
 	}
 
 	default:

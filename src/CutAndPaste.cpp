@@ -225,7 +225,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			// check for duplicates
 			InsetCommand & lab = static_cast<InsetCommand &>(*it);
 			docstring const oldname = lab.getParam("name");
-			lab.update(oldname, false);
+			lab.updateCommand(oldname, false);
 			docstring const newname = lab.getParam("name");
 			if (oldname != newname) {
 				// adapt the references
@@ -234,6 +234,25 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
 						if (ref.getParam("reference") == oldname)
 							ref.setParam("reference", newname);
+					}
+				}
+			}
+			break;
+		}
+
+		case BIBITEM_CODE: {
+			// check for duplicates
+			InsetCommand & bib = static_cast<InsetCommand &>(*it);
+			docstring const oldkey = bib.getParam("key");
+			bib.updateCommand(oldkey, false);
+			docstring const newkey = bib.getParam("key");
+			if (oldkey != newkey) {
+				// adapt the references
+				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
+					if (itt->lyxCode() == CITE_CODE) {
+						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
+						if (ref.getParam("key") == oldkey)
+							ref.setParam("key", newkey);
 					}
 				}
 			}

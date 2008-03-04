@@ -28,6 +28,11 @@ class InsetBibitem : public InsetCommand {
 public:
 	///
 	InsetBibitem(InsetCommandParams const &);
+	/// verify label and update references.
+	/**
+	  * Overloaded from Inset::initView.
+	  **/
+	void initView();
 	///
 	void read(Lexer & lex);
 	///
@@ -51,6 +56,8 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibitem"; }
+	///
+	void updateCommand(docstring const & new_key, bool dummy = false);
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
