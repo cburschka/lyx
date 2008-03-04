@@ -436,7 +436,7 @@ void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 
 	// find row to insert the item
 	int i = 1; // skip the Standard layout
-	QString is = model_->item(i, 1)->text();
+	QString is = model_->item(i, 0)->text();
 	while (is.compare(titem) < 0) {
 		// e.g. --Separator--
 		if (is[0].category() != QChar::Letter_Uppercase)
@@ -444,7 +444,7 @@ void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 		++i;
 		if (i == end)
 			break;
-		is = model_->item(i, 1)->text();
+		is = model_->item(i, 0)->text();
 	}
 
 	model_->insertRow(i, row);
