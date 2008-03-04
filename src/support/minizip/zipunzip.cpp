@@ -272,7 +272,7 @@ bool zipFiles(string const & zipfile, vector<pair<string, string> > const & file
 	filename : the filename of the file where date/time must be modified
 	dosdate : the new date at the MSDos format (4 bytes)
 	tmu_date : the SAME new date at the tm_unz format */
-void change_file_date(const char * filename, uLong /* dosdate */, tm_unz tmu_date)
+void change_file_date(const char * filename, uLong dosdate, tm_unz tmu_date)
 {
 #ifdef WIN32
 	HANDLE hFile;
