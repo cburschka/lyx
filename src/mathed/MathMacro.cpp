@@ -283,7 +283,7 @@ void MathMacro::updateMacro(MacroContext const & mc)
 }
 
 
-void MathMacro::updateRepresentation(Cursor const * bvCur)
+void MathMacro::updateRepresentation()
 {
 	// known macro?
 	if (macro_ == 0)
@@ -297,30 +297,30 @@ void MathMacro::updateRepresentation(Cursor const * bvCur)
 		return;
 
 	// macro changed?
-	if (needsUpdate_) {
-		needsUpdate_ = false;
-		
-		// get default values of macro
-		vector<docstring> const & defaults = macro_->defaults();
-		
-		// create MathMacroArgumentValue objects pointing to the cells of the macro
-		vector<MathData> values(nargs());
-		for (size_t i = 0; i < nargs(); ++i) {
-			ArgumentProxy * proxy;
-			if (i < defaults.size()) 
-				proxy = new ArgumentProxy(*this, i, defaults[i]);
-			else
-				proxy = new ArgumentProxy(*this, i);
-			values[i].insert(0, MathAtom(proxy));
-		}
-		
-		// expanding macro with the values
-		macro_->expand(values, expanded_.cell(0));
-
-		// get definition for list edit mode
-		docstring const & display = macro_->display();
-		asArray(display.empty() ? macro_->definition() : display, definition_);
+	if (!needsUpdate_)
+		return;
+	
+	needsUpdate_ = false;
+	
+	// get default values of macro
+	vector<docstring> const & defaults = macro_->defaults();
+	
+	// create MathMacroArgumentValue objects pointing to the cells of the macro
+	vector<MathData> values(nargs());
+	for (size_t i = 0; i < nargs(); ++i) {
+		ArgumentProxy * proxy;
+		if (i < defaults.size()) 
+			proxy = new ArgumentProxy(*this, i, defaults[i]);
+		else
+			proxy = new ArgumentProxy(*this, i);
+		values[i].insert(0, MathAtom(proxy));
 	}
+	
+	// expanding macro with the values
+	macro_->expand(values, expanded_.cell(0));
+		// get definition for list edit mode
+	docstring const & display = macro_->display();
+	asArray(display.empty() ? macro_->definition() : display, definition_);
 }
 
 
