@@ -130,6 +130,7 @@ dist_frdoc_DATA = \
 	fr/EmbeddedObjects.lyx \
 	fr/Extended.lyx \
 	fr/FAQ.lyx \
+	fr/Formula-numbering.lyx \
 	fr/Intro.lyx \
 	fr/Math.lyx \
 	fr/Tutorial.lyx \

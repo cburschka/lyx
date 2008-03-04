@@ -1,0 +1,375 @@
+#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{ifpdf}
+
+\ifpdf
+
+\usepackage[colorlinks=true,
+ pdftitle=Formelnummerierung, pdfpagemode=none,
+ pdfpagelayout=OneColumn, pdfstartview=XYZ,
+ pdfauthor={Uwe Stöhr},
+ pdfsubject={LaTeX/LyX numbering example},
+ pdfkeywords={LaTeX, numbering, LyX}]{hyperref}
+
+\else % if DVI
+
+\usepackage[colorlinks=true, hypertex]{hyperref}
+
+\fi
+
+% definit le compteur romain
+\newcounter{rom}
+\renewcommand{\therom}{\roman{rom}}
+
+% se souvient du compteur origina
+\newcommand{\c@org@eq}{}
+\let\c@org@eq\c@equation
+\newcommand{\org@theeq}{}
+\let\org@theeq\theequation
+
+% \setrom active le compteur romain
+\newcommand{\setrom}{
+  \let\c@equation\c@rom
+  \let\theequation\therom}
+
+% \setarab active le compteur arabe original
+\newcommand{\setarab}{
+  \let\c@equation\c@org@eq
+  \let\theequation\org@theeq}
+\end_preamble
+\options fleqn
+\language french
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Ce document illustre l'utilisation de deux catégories différentes de formules.
+ L'une est numérotée avec des chiffres arabes, l'autre avec des chiffres
+ romains.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+A=B\label{eq:B}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=C\label{eq:C}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=D\label{eq:D}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=E\label{eq:E}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setarab
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=F\label{eq:F}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=G\label{eq:G}\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setrom
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=H\label{eq:H}\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+A=I\label{eq:I}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Références croisées: 
+\begin_inset LatexCommand eqref
+reference "eq:B"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:C"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:F"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:G"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:D"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:E"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:H"
+
+\end_inset
+
+ , 
+\begin_inset LatexCommand eqref
+reference "eq:I"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\begin_inset VSpace medskip
+\end_inset
+
+Pour créer cet exemple, il faut d'abord définir un compteur pour les formules
+ numérotées avec des chiffres romains.
+ Pour le faire, on insère ce qui suit dans le préambule LaTeX:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcounter{rom}
+\newline
+
+\backslash
+renewcommand{
+\backslash
+therom}{
+\backslash
+roman{rom}}
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+Pour enregistrer la valeur du compteur en chiffres arabes 
+\series bold
+equation
+\series default
+, on ajoute ceci au préambule:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+c@org@eq}{}
+\newline
+
+\backslash
+let
+\backslash
+c@org@eq
+\backslash
+c@equation
+\newline
+
+\backslash
+newcommand{
+\backslash
+org@theeq}{}
+\newline
+
+\backslash
+let
+\backslash
+org@theeq
+\backslash
+theequation
+\end_layout
+
+\begin_layout Standard
+Pour pouvoir permuter entre les deux types de numérotation dans le document,
+ on définit les commandes suivantes dans le préambule:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setrom}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@rom
+\backslash
+let
+\backslash
+theequation
+\backslash
+therom}
+\end_layout
+
+\begin_layout Standard
+pour la numérotation en chiffres romains et
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+setarab}{
+\backslash
+let
+\backslash
+c@equation
+\backslash
+c@org@eq
+\backslash
+let
+\backslash
+theequation
+\backslash
+org@theeq}
+\end_layout
+
+\begin_layout Standard
+pour la numérotation en chiffres arabes.
+\end_layout
+
+\begin_layout Standard
+Chaque formule sera numérotée par défaut avec des chiffres arabes.
+ Pour passer aux chiffres romains, on insère la commande 
+\series bold
+
+\backslash
+setrom
+\series default
+ en code TeX.
+ Avec la commande 
+\series bold
+
+\backslash
+setarab
+\series default
+ la numérotation passe en chiffres arabes.
+\end_layout
+
+\end_body
+\end_document

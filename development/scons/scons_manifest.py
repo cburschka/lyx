@@ -2191,6 +2191,7 @@ lib_doc_fr_files = Split('''
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
+    Formula-numbering.lyx
     Intro.lyx
     Math.lyx
     Tutorial.lyx
