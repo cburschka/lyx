@@ -132,7 +132,7 @@ private:
 	///
 	idx_type displayIdx() const { return optionals_ + 2; }
 	///
-	void updateLook(bool editing = false) const;
+	void updateLook() const;
 	/// look through the macro for #n arguments
 	int maxArgumentInDefinition() const;
 	/// add missing #n arguments up to \c maxArg
