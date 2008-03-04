@@ -173,7 +173,8 @@ private:
 
 GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	: QCompleter(parent), gui_(gui), updateLock_(0),
-	  inlineVisible_(false), popupVisible_(false)
+	  inlineVisible_(false), popupVisible_(false),
+	  modelActive_(false)
 {
 	// Setup the completion popup
 	setModel(new GuiCompletionModel(this, 0));
@@ -250,6 +251,9 @@ bool GuiCompleter::inlinePossible(Cursor const & cur) const
 
 bool GuiCompleter::completionAvailable() const
 {
+	if (!modelActive_)
+		return false;
+
 	size_t n = popup()->model()->rowCount();
 
 	// if there is exactly one, we have to check whether it is a 
@@ -308,7 +312,7 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
 
 	// update prefix if any completion is possible
-	bool modelActive = model()->rowCount() > 0;
+	bool modelActive = modelActive_ && model()->rowCount() > 0;
 	if (possiblePopupState || possibleInlineState) {
 		if (modelActive)
 			updatePrefix(cur);
@@ -402,14 +406,11 @@ void GuiCompleter::updatePopup(Cursor & cur)
 		return;
 	}
 
-	// show asynchronously to avoid lookups before the metrics
-	// have been computed. This can happen because we might be in
-	// the middle of a dispatch.
-	QTimer::singleShot(0, this, SLOT(asyncCompletePopup()));
+	QTimer::singleShot(0, this, SLOT(asyncUpdatePopup()));
 }
 
 
-void GuiCompleter::asyncCompletePopup()
+void GuiCompleter::asyncUpdatePopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
 	if (!cur.inset().completionSupported(cur)) {
@@ -482,6 +483,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	// set new model
 	Inset::CompletionList const * list = cur.inset().createCompletionList(cur);
 	setModel(new GuiCompletionModel(this, list));
+	modelActive_ = true;
 	if (list->sorted())
 		setModelSorting(QCompleter::CaseSensitivelySortedModel);
 	else
@@ -527,17 +529,26 @@ void GuiCompleter::showPopup(Cursor & cur)
 void GuiCompleter::hidePopup(Cursor & cur)
 {
 	popupVisible_ = false;
-	
+
+	if (popup_timer_.isActive())
+		popup_timer_.stop();
+
 	// hide popup asynchronously because we might be here inside of
 	// LFUN dispatchers. Hiding a popup can trigger a focus event on the 
 	// workarea which then redisplays the cursor. But the metrics are not
 	// yet up to date such that the coord cache has not all insets yet. The
 	// cursorPos methods would triggers asserts in the coord cache then.
-	QTimer::singleShot(0, popup(), SLOT(hide()));
+	QTimer::singleShot(0, this, SLOT(asyncHidePopup()));
 	
-	if (popup_timer_.isActive())
-		popup_timer_.stop();
-	
+	// mark that the asynchronous part will reset the model
+	if (!inlineVisible())
+		modelActive_ = false;
+}
+
+
+void GuiCompleter::asyncHidePopup()
+{
+	popup()->hide();
 	if (!inlineVisible())
 		setModel(new GuiCompletionModel(this, 0));
 }
@@ -560,6 +571,19 @@ void GuiCompleter::hideInline(Cursor & cur)
 	if (inline_timer_.isActive())
 		inline_timer_.stop();
 	
+	// Trigger asynchronous part of hideInline. We might be
+	// in a dispatcher here and the setModel call might
+	// trigger focus events which is are not healthy here.
+	QTimer::singleShot(0, this, SLOT(asyncHideModel()));
+
+	// mark that the asynchronous part will reset the model
+	if (!popupVisible())
+		modelActive_ = false;
+}
+
+
+void GuiCompleter::asyncHideInline()
+{
 	if (!popupVisible())
 		setModel(new GuiCompletionModel(this, 0));
 }

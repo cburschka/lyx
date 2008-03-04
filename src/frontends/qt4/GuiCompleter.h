@@ -88,8 +88,12 @@ private Q_SLOTS:
 	void popupHighlighted(const QString & completion);
 	///
 	void updateAvailability();
-	///
-	void asyncCompletePopup();
+	/// the asynchronous part of updatePopup(cur)
+	void asyncUpdatePopup();
+	/// the asynchronous part of hidePopup(cur)
+	void asyncHidePopup();
+	/// the asynchronous part of hideInline(cur)
+	void asyncHideInline();
 	
 private:
 	///
@@ -131,6 +135,9 @@ private:
 	bool inlineVisible_;
 	///
 	bool popupVisible_;
+	/// the model reset is asynchronous in hidePopup/Inline. So let's mark
+	/// a coming reset here by setting it to false.
+	bool modelActive_;
 	///
 	RtlItemDelegate * rtlItemDelegate_;
 }; // GuiCompleter
