@@ -22,7 +22,6 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "InsetList.h"
-#include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeX.h"
 #include "Layout.h"
