@@ -187,13 +187,12 @@ local void init_linkedlist(linkedlist_data* ll)
     ll->first_block = ll->last_block = NULL;
 }
 
-#if 0
 local void free_linkedlist(linkedlist_data* ll)
 {
     free_datablock(ll->first_block);
     ll->first_block = ll->last_block = NULL;
 }
-#endif
+
 
 local int add_data_in_datablock(linkedlist_data* ll, const void* buf, uLong len)
 {
@@ -304,7 +303,7 @@ local void ziplocal_putValue_inmemory (void* dest, uLong x, int nbByte)
 /****************************************************************************/
 
 
-local uLong ziplocal_TmzDateToDosDate(const tm_zip* ptm, uLong /* dosDate */)
+local uLong ziplocal_TmzDateToDosDate(const tm_zip* ptm, uLong dosDate)
 {
     uLong year = (uLong)ptm->tm_year;
     if (year>1980)
