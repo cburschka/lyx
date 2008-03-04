@@ -1544,9 +1544,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateLayout(oldClass, buffer);
 			
 			updateFlags = Update::Force | Update::FitCursor;
-			// We are here most certainaly because of a change in the document
-			// It is then better to make sure that all dialogs are in sync
-			// with current document settings. LyXView::restartCursor() achieve this.
+			// We are most certainly here because of a change in the document
+			// It is then better to make sure that all dialogs are in sync with
+			// current document settings. LyXView::restartCursor() achieve this.
 			lyx_view_->restartCursor();
 			break;
 		}
