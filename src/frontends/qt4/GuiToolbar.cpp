@@ -421,8 +421,10 @@ void GuiLayoutBox::set(docstring const & layout)
 void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 {
 	QString qitem = toqstr(item);
+	QString titem = toqstr(translateIfPossible(item));
+
 	QList<QStandardItem *> row;
-	row.append(new QStandardItem(toqstr(translateIfPossible(item))));
+	row.append(new QStandardItem(titem));
 	row.append(new QStandardItem(qitem));
 
 	// the simple unsorted case
@@ -435,14 +437,14 @@ void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 	// find row to insert the item
 	int i = 1; // skip the Standard layout
 	QString is = model_->item(i, 1)->text();
-	while (is.compare(qitem) < 0) {
+	while (is.compare(titem) < 0) {
 		// e.g. --Separator--
 		if (is[0].category() != QChar::Letter_Uppercase)
 			break;
 		++i;
 		if (i == end)
 			break;
-		QString is = model_->item(i, 1)->text();
+		is = model_->item(i, 1)->text();
 	}
 
 	model_->insertRow(i, row);
