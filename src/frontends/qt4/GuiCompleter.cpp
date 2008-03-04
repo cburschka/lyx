@@ -408,10 +408,16 @@ void GuiCompleter::updatePopup(Cursor & cur)
 	else
 		rect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
 	
+	// Resize the columns in the popup.
+	// This should really be in the constructor. But somehow the treeview
+	// has a bad memory about it and we have to tell him again and again.
+	QTreeView * listView = static_cast<QTreeView *>(popup());
+	listView->header()->setStretchLastSection(false);
+	listView->header()->setResizeMode(0, QHeaderView::Stretch);
+	listView->header()->setResizeMode(1, QHeaderView::Fixed);
+	listView->header()->resizeSection(1, 22);
+	
 	// show/update popup
-	QTreeView * p = static_cast<QTreeView *>(popup());
-	p->setColumnWidth(0, popup()->width() - 22 - p->verticalScrollBar()->width());
-
 	complete(rect);
 }
 
