@@ -1812,7 +1812,7 @@ bool notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	    && !cur.buffer().isClean()
 	    && cur.inTexted() && old.inTexted()
 	    && cur.pit() != old.pit()) {
-		old.paragraph().updateWords(old.buffer(), old.top());
+		old.paragraph().updateWords(old.top());
 		return false;
 	}
 	
