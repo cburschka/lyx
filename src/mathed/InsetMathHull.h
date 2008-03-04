@@ -19,6 +19,7 @@
 
 namespace lyx {
 
+class InsetLabel;
 class ParConstIterator;
 class RenderPreview;
 
@@ -32,6 +33,10 @@ public:
 	explicit InsetMathHull(HullType type);
 	///
 	~InsetMathHull();
+	///
+	void setBuffer(Buffer &);
+	///
+	void updateLabels(ParIterator const &);
 	///
 	void addToToc(ParConstIterator const &) const;
 	///
@@ -180,9 +185,9 @@ private:
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
 	///
-	std::vector<int> nonum_;
+	std::vector<bool> nonum_;
 	///
-	std::vector<docstring> label_;
+	std::vector<InsetLabel *> label_;
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
 	///

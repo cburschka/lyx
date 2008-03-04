@@ -142,7 +142,7 @@ docstring hullName(HullType type)
 
 
 InsetMathHull::InsetMathHull()
-	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1), label_(1),
+	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false), label_(1, 0),
 	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
@@ -155,7 +155,7 @@ InsetMathHull::InsetMathHull()
 
 
 InsetMathHull::InsetMathHull(HullType type)
-	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1), label_(1),
+	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false), label_(1, 0),
 	  preview_(new RenderPreview(this))
 {
 	initMath();
@@ -164,14 +164,18 @@ InsetMathHull::InsetMathHull(HullType type)
 
 
 InsetMathHull::InsetMathHull(InsetMathHull const & other)
-	: InsetMathGrid(other),
-	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
-	  preview_(new RenderPreview(*other.preview_, this))
-{}
+{
+	operator=(other);
+}
 
 
 InsetMathHull::~InsetMathHull()
-{}
+{
+	for (size_t i = 0; i < label_.size(); ++i) {
+		if (label_[i])
+			delete label_[i];
+	}
+}
 
 
 Inset * InsetMathHull::clone() const
@@ -184,13 +188,46 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 {
 	if (this == &other)
 		return *this;
-	*static_cast<InsetMathGrid*>(this) = InsetMathGrid(other);
+	InsetMathGrid::operator=(other);
 	type_  = other.type_;
 	nonum_ = other.nonum_;
+	for (size_t i = 0; i < label_.size(); ++i) {
+		if (label_[i])
+			delete label_[i];
+	}
 	label_ = other.label_;
+	for (size_t i = 0; i != label_.size(); ++i) {
+		if (label_[i])
+			label_[i] = new InsetLabel(*label_[i]);
+	}
 	preview_.reset(new RenderPreview(*other.preview_, this));
 
 	return *this;
+}
+
+
+void InsetMathHull::setBuffer(Buffer & buffer)
+{
+	buffer_ = &buffer;
+	for (size_t i = 0; i != label_.size(); ++i) {
+		if (label_[i])
+			label_[i]->setBuffer(buffer);
+	}
+}
+
+
+void InsetMathHull::updateLabels(ParIterator const & it)
+{
+	if (!buffer_) {
+		//FIXME: buffer_ should be set at creation for this inset! Problem is
+		// This inset is created at too many places (see Parser::parse1() in
+		// MathParser.cpp).
+		return;
+	}
+	for (size_t i = 0; i != label_.size(); ++i) {
+		if (label_[i])
+			label_[i]->updateLabels(it);
+	}
 }
 
 
@@ -203,13 +240,19 @@ void InsetMathHull::addToToc(ParConstIterator const & pit) const
 		return;
 	}
 
-	vector<docstring> labels;
-	getLabelList(labels);
-	if (labels.empty())
-		return;
+	// FIXME: it would be way better to directly use InsetLabel instead of this
+	// label list. But it should be possible to copy&paste the code in
+	// InsetLabel::addToToc() anyway.
 
 	Toc & toc = buffer().tocBackend().toc("equation");
-	toc.push_back(TocItem(pit, 0, labels[0]));
+
+	for (row_type row = 0; row != nrows(); ++row) {
+		if (nonum_[row])
+			continue;
+		if (label_[row])
+			label_[row]->addToToc(pit);
+		toc.push_back(TocItem(pit, 0, nicelabel(row)));
+	}
 }
 
 
@@ -436,22 +479,34 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
 docstring InsetMathHull::label(row_type row) const
 {
 	BOOST_ASSERT(row < nrows());
-	return label_[row];
+	if (InsetLabel * il = label_[row])
+		return il->screenLabel();
+	return docstring();
 }
 
 
 void InsetMathHull::label(row_type row, docstring const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
-	label_[row] = label;
+	if (label_[row]) {
+		label_[row]->updateCommand(label);
+		return;
+	}
+	InsetCommandParams p(LABEL_CODE);
+	p["name"] = label;
+	label_[row] = new InsetLabel(p);
+	if (buffer_)
+		label_[row]->setBuffer(buffer());
 }
 
 
 void InsetMathHull::numbered(row_type row, bool num)
 {
 	nonum_[row] = !num;
-	if (nonum_[row])
-		label_[row].clear();
+	if (nonum_[row] && label_[row]) {
+		delete label_[row];
+		label_[row] = 0;
+	}
 }
 
 
@@ -483,8 +538,8 @@ Inset::DisplayType InsetMathHull::display() const
 void InsetMathHull::getLabelList(vector<docstring> & labels) const
 {
 	for (row_type row = 0; row < nrows(); ++row)
-		if (!label_[row].empty() && nonum_[row] != 1)
-			labels.push_back(label_[row]);
+		if (label_[row] && !nonum_[row])
+			labels.push_back(label_[row]->screenLabel());
 }
 
 
@@ -632,7 +687,7 @@ void InsetMathHull::addRow(row_type row)
 	if (!rowChangeOK())
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
-	label_.insert(label_.begin() + row + 1, docstring());
+	label_.insert(label_.begin() + row + 1, 0);
 	InsetMathGrid::addRow(row);
 }
 
@@ -659,6 +714,8 @@ void InsetMathHull::delRow(row_type row)
 	if (row == nrows() + 1)
 		row--;
 	nonum_.erase(nonum_.begin() + row);
+	if (label_[row])
+		delete label_[row];
 	label_.erase(label_.begin() + row);
 }
 
@@ -683,9 +740,9 @@ docstring InsetMathHull::nicelabel(row_type row) const
 {
 	if (nonum_[row])
 		return docstring();
-	if (label_[row].empty())
+	if (!label_[row])
 		return from_ascii("(#)");
-	return '(' + label_[row] + ')';
+	return '(' + label_[row]->screenLabel() + ')';
 }
 
 
@@ -832,23 +889,23 @@ void InsetMathHull::mutate(HullType newtype)
 	else if (type_ == hullEqnArray) {
 		if (newtype < type_) {
 			// set correct (no)numbering
-			bool allnonum = true;
-			for (row_type row = 0; row < nrows(); ++row)
-				if (!nonum_[row])
-					allnonum = false;
+			nonum_[0] = true;
+			for (row_type row = 0; row < nrows(); ++row) {
+				if (!nonum_[row]) {
+					nonum_[0] = false;
+					break;
+				}
+			}
 
 			// set first non-empty label
-			docstring label;
 			for (row_type row = 0; row < nrows(); ++row) {
-				if (!label_[row].empty()) {
-					label = label_[row];
+				if (label_[row]) {
+					label_[0] = label_[row];
 					break;
 				}
 			}
 
 			glueall();
-			nonum_[0] = allnonum;
-			label_[0] = label;
 			mutate(newtype);
 		} else { // align & Co.
 			changeCols(2);
@@ -921,8 +978,8 @@ docstring InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) c
 {
 	docstring res;
 	if (numberedType()) {
-		if (!label_[row].empty() && !nonum_[row])
-			res += "\\label{" + label_[row] + '}';
+		if (label_[row] && !nonum_[row])
+			res += "\\label{" + label_[row]->screenLabel() + '}';
 		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
