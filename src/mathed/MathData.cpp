@@ -460,7 +460,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		if (inset->asScriptInset())
 			inset = inset->asScriptInset()->nuc()[0].nucleus();
 		BOOST_ASSERT(inset->asMacro());
-		inset->asMacro()->updateRepresentation(cur);
+		inset->asMacro()->updateRepresentation();
 	}
 }
 
