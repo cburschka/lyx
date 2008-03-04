@@ -38,9 +38,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Stop warning messages when a local layout file is opened. Fix bugs caused by
-  incorrect reloading of local layout files.
-
 
 * BUILD/INSTALLATION:
 
@@ -61,6 +58,8 @@ What's new
 
 - Check for PDF->PS, PDF->EPS and PS->EPS converters and use them (bug 3968).
 
+- Stop warning messages when a local layout file is opened. Fix bugs caused by
+  incorrect reloading of local layout files.
 
 * USER INTERFACE:
 
@@ -68,6 +67,7 @@ What's new
 
 - Fix parameter input of the math commands \makebox and \framebox (bug 2461).
 
+- When cutting a selection do not leave a dangling paragraph (bug 3995).
 
 * DOCUMENTATION
 
