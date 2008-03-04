@@ -244,7 +244,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
-    path, iv = checkViewer('a raster image viewer', ['xdg-open', 'xv', 'kview', 'gimp-remote', 'gimp'])
+    path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'])
     path, ie = checkViewer('a raster image editor', ['gimp-remote', 'gimp'])
     addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
@@ -279,23 +279,23 @@ def checkFormatEntries(dtl_tools):
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
-    checkViewer('a Postscript previewer', ['xdg-open', 'kghostview', 'evince', 'gv', 'ghostview -swap'],
+    checkViewer('a Postscript previewer', ['kghostview', 'evince', 'gv', 'ghostview -swap'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a PDF previewer', ['xdg-open', 'kpdf', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
+    checkViewer('a PDF previewer', ['kpdf', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a DVI previewer', ['xdg-open', 'xdvi', 'kdvi'],
+    checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
     #
-    checkViewer('an HTML previewer', ['xdg-open', 'firefox', 'mozilla file://$$p$$i', 'netscape'],
+    checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
     checkViewer('Noteedit', ['noteedit'],
