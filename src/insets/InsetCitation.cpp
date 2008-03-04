@@ -16,13 +16,15 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
-#include "support/gettext.h"
 #include "EmbeddedFiles.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
+#include "ParIterator.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <algorithm>
@@ -426,9 +428,15 @@ docstring InsetCitation::generateLabel() const
 
 docstring InsetCitation::screenLabel() const
 {
+	return cache.screen_label;
+}
+
+
+void InsetCitation::updateLabels(ParIterator const &)
+{
 	biblio::CiteEngine const engine = buffer().params().getEngine();
 	if (cache.params == params() && cache.engine == engine)
-		return cache.screen_label;
+		return;
 
 	// The label has changed, so we have to re-create it.
 	docstring const glabel = generateLabel();
@@ -445,8 +453,13 @@ docstring InsetCitation::screenLabel() const
 	cache.params = params();
 	cache.generated_label = glabel;
 	cache.screen_label = label;
+}
 
-	return label;
+
+void InsetCitation::addToToc(ParConstIterator const & cpit) const
+{
+	Toc & toc = buffer().tocBackend().toc("citation");
+	toc.push_back(TocItem(cpit, 0, cache.screen_label));
 }
 
 

@@ -46,6 +46,11 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
+	void updateLabels(ParIterator const & it);
+	///
+	void addToToc(ParConstIterator const &) const;
+
+	///
 	static ParamInfo const & findInfo(std::string const &);
 	//FIXME This is the locus of the design problem we have.
 	//It really ought to do what default_cite_command() does,
