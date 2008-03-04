@@ -703,7 +703,7 @@ void InsetMathHull::swapRow(row_type row)
 	//	swap(nonum_[row], nonum_[row + 1]);
 	// so we do it manually:
 	bool const b = nonum_[row];
-	nonum_[row] = nonum_[row + 1]
+	nonum_[row] = nonum_[row + 1];
 	nonum_[row + 1] = b;
 	swap(label_[row], label_[row + 1]);
 	InsetMathGrid::swapRow(row);
