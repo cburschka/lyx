@@ -140,9 +140,10 @@ docstring hullName(HullType type)
 	}
 }
 
+static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull()
-	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false), label_(1, 0),
+	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false), label_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
@@ -155,7 +156,7 @@ InsetMathHull::InsetMathHull()
 
 
 InsetMathHull::InsetMathHull(HullType type)
-	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false), label_(1, 0),
+	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false), label_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {
 	initMath();
@@ -687,7 +688,7 @@ void InsetMathHull::addRow(row_type row)
 	if (!rowChangeOK())
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
-	label_.insert(label_.begin() + row + 1, 0);
+	label_.insert(label_.begin() + row + 1, dummy_pointer);
 	InsetMathGrid::addRow(row);
 }
 
