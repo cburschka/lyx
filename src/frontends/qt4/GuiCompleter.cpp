@@ -44,7 +44,7 @@ namespace frontend {
 class RtlItemDelegate : public QItemDelegate {
 public:
 	explicit RtlItemDelegate(QObject * parent = 0)
-		: QItemDelegate(parent) {}
+		: QItemDelegate(parent), enabled_(false) {}
 
 	void setEnabled(bool enabled = true)
 	{
@@ -56,8 +56,10 @@ protected:
 		QStyleOptionViewItem const & option,
 		QRect const & rect, QString const & text) const
 	{
-		if (!enabled_)
-			return QItemDelegate::drawDisplay(painter, option, rect, text);
+		if (!enabled_) {
+			QItemDelegate::drawDisplay(painter, option, rect, text);
+			return;
+		}
 
 		// FIXME: do this more elegantly
 		docstring stltext = qstring_to_ucs4(text);
@@ -188,10 +190,11 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	listView->setIndentation(0);
 	listView->setUniformRowHeights(true);
 	setPopup(listView);
-	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
+	
 	rtlItemDelegate_ = new RtlItemDelegate(this);
 	popup()->setItemDelegateForColumn(0, rtlItemDelegate_);
-
+	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
+	
 	// create timeout timers
 	popup_timer_.setSingleShot(true);
 	inline_timer_.setSingleShot(true);
