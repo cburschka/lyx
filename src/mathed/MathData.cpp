@@ -402,9 +402,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 
 		// arity changed or other reason to detach?
 		if (oldDisplayMode == MathMacro::DISPLAY_NORMAL
-				&& (macroInset->arity() != macroNumArgs
-						|| macroInset->optionals() != macroOptionals
-						|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED)) {
+		    && (macroInset->arity() != macroNumArgs
+			|| macroInset->optionals() != macroOptionals
+			|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED)) {
 
 			detachMacroParameters(cur, i);
 		}
@@ -414,7 +414,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 
 		// Cursor in \label?
 		if (newDisplayMode != MathMacro::DISPLAY_UNFOLDED 
-				&& oldDisplayMode == MathMacro::DISPLAY_UNFOLDED) {
+		    && oldDisplayMode == MathMacro::DISPLAY_UNFOLDED) {
 			// put cursor in front of macro
 			if (cur) {
 				int macroSlice = cur->find(macroInset);
@@ -424,17 +424,18 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		}
 
 		// update the display mode
+		size_t appetite = macroInset->appetite();
 		macroInset->setDisplayMode(newDisplayMode);
 
 		// arity changed?
 		if (newDisplayMode == MathMacro::DISPLAY_NORMAL 
-				&& (macroInset->arity() != macroNumArgs
-						|| macroInset->optionals() != macroOptionals)) {
+		    && (macroInset->arity() != macroNumArgs
+			|| macroInset->optionals() != macroOptionals)) {
 			// is it a virgin macro which was never attached to parameters?
 			bool fromInitToNormalMode
 			= (oldDisplayMode == MathMacro::DISPLAY_INIT 
-				 || oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT)
-				&& newDisplayMode == MathMacro::DISPLAY_NORMAL;
+			   || oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT)
+			  && newDisplayMode == MathMacro::DISPLAY_NORMAL;
 			
 			// if the macro was entered interactively (i.e. not by paste or during
 			// loading), it should not be greedy, but the cursor should
@@ -443,7 +444,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 			
 			// attach parameters
 			attachMacroParameters(cur, i, macroNumArgs, macroOptionals,
-				fromInitToNormalMode, interactive);
+				fromInitToNormalMode, interactive, appetite);
 			
 			if (cur) {
 				// FIXME: proper anchor handling, this removes the selection
@@ -593,7 +594,7 @@ void MathData::detachMacroParameters(Cursor * cur, const size_type macroPos)
 void MathData::attachMacroParameters(Cursor * cur, 
 	const size_type macroPos, const size_type macroNumArgs,
 	const int macroOptionals, const bool fromInitToNormalMode,
-	const bool interactiveInit)
+	const bool interactiveInit, const size_t appetite)
 {
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 
@@ -615,9 +616,9 @@ void MathData::attachMacroParameters(Cursor * cur,
 	if (!interactiveInit) {
 		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
 			scriptToPutAround, macroPos, thisPos, thisSlice);
-		collectParameters(cur, macroNumArgs, detachedArgs, p,
-			scriptToPutAround, macroPos, thisPos, thisSlice);
 	}
+	collectParameters(cur, macroNumArgs, detachedArgs, p,
+		scriptToPutAround, macroPos, thisPos, thisSlice, appetite);
 		
 	// attach arguments back to macro inset
 	macroInset->attachArguments(detachedArgs, macroNumArgs, macroOptionals);
@@ -743,10 +744,14 @@ void MathData::collectOptionalParameters(Cursor * cur,
 void MathData::collectParameters(Cursor * cur, 
 	const size_type numParams, vector<MathData> & params, 
 	size_t & pos, MathAtom & scriptToPutAround,
-	const pos_type macroPos, const int thisPos, const int thisSlice) 
+	const pos_type macroPos, const int thisPos, const int thisSlice,
+	const size_t appetite) 
 {
+	size_t startSize = params.size();
+	
 	// insert normal arguments
 	while (params.size() < numParams
+	       && params.size() - startSize < appetite
 	       && pos < size()
 	       && !scriptToPutAround.nucleus()) {
 		MathAtom & cell = operator[](pos);

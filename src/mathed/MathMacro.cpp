@@ -114,7 +114,7 @@ private:
 MathMacro::MathMacro(docstring const & name)
 	: InsetMathNest(0), name_(name), displayMode_(DISPLAY_INIT),
 		attachedArgsNum_(0), optionals_(0), nextFoldMode_(true),
-		macro_(0), needsUpdate_(false)
+		macro_(0), needsUpdate_(false), appetite_(9)
 {}
 
 
@@ -449,7 +449,7 @@ void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMacro::setDisplayMode(MathMacro::DisplayMode mode)
+void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 {
 	if (displayMode_ != mode) {		
 		// transfer name if changing from or to DISPLAY_UNFOLDED
@@ -464,6 +464,12 @@ void MathMacro::setDisplayMode(MathMacro::DisplayMode mode)
 		displayMode_ = mode;
 		needsUpdate_ = true;
 	}
+	
+	// the interactive init mode is non-greedy by default
+	if (appetite == -1)
+		appetite_ = (mode == DISPLAY_INTERACTIVE_INIT) ? 0 : 9;
+	else
+		appetite_ = size_t(appetite);
 }
 
 

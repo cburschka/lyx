@@ -118,14 +118,16 @@ public:
 		if (n <= int(nargs()))
 			optionals_ = n;
 	}
-	
+	/// Return the maximal number of arguments the macro is greedy for.
+	size_t appetite() const { return appetite_; }
+
 protected:
 	friend class MathData;
 	friend class ArgumentProxy;
 	friend class Cursor;
 
 	/// update the display mode (should only be called after detaching arguments)
-	void setDisplayMode(DisplayMode mode);
+	void setDisplayMode(DisplayMode mode, int appetite = -1);
 	/// compute the next display mode
 	DisplayMode computeDisplayMode() const;
 	/// update macro definition
@@ -142,7 +144,7 @@ protected:
 	MacroData const * macro() { return macro_; }
 	///
 	bool editMetrics(BufferView const * bv) const;
-	
+
 private:
 	///
 	virtual Inset * clone() const;
@@ -175,6 +177,8 @@ private:
 	std::string requires_;
 	/// update macro representation
 	bool needsUpdate_;
+	/// maximal number of arguments the macro is greedy for
+	size_t appetite_;
 
 public:
 	///
