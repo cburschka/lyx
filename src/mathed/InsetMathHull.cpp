@@ -1176,6 +1176,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_INSERT: {
 		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
+		// FIXME: this should be cleaned up to use InsetLabel methods directly.
 		string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p(LABEL_CODE);
@@ -1188,9 +1189,14 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 				numbered(r, true);
 			docstring old = label(r);
 			if (str != old) {
-				cur.bv().buffer().changeRefsIfUnique(old, str,
-							REF_CODE);
-				label(r, str);
+				if (label_[r])
+					// The label will take care of the reference update.
+					label(r, str);
+				else {
+					label(r, str);
+					// Newly created inset so initialize it.
+					label_[r]->initView();
+				}
 			}
 			break;
 		}
