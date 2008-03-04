@@ -52,7 +52,7 @@ public:
 	void addItemSort(docstring const & item, bool sorted);
 
 	///
-	bool eventFilter(QObject *o, QEvent *e);
+	bool eventFilter(QObject * o, QEvent * e);
 	///
 	QString const & filter() { return filter_; }
 

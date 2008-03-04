@@ -347,49 +347,51 @@ void GuiLayoutBox::resetFilter()
 }
 
 
-bool GuiLayoutBox::eventFilter(QObject *o, QEvent *e)
+bool GuiLayoutBox::eventFilter(QObject * o, QEvent * e)
 {
-	if (e->type() == QEvent::KeyPress) {
-		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		bool modified = (ke->modifiers() == Qt::ControlModifier)
-			|| (ke->modifiers() == Qt::AltModifier)
-			|| (ke->modifiers() == Qt::MetaModifier);
-		
-		switch (ke->key()) {
-		case Qt::Key_Escape:
-			if (!modified && !filter_.isEmpty()) {
-				resetFilter();
-				return true;
-			}
-			break;
-		case Qt::Key_Backspace:
-			if (!modified) {
-				// cut off one character
-				setFilter(filter_.left(filter_.length() - 1));
-			}
-			break;
-		default:
-			if (modified || ke->text().isEmpty())
-				break;
-			// find chars for the filter string
-			QString s;
-			for (int i = 0; i < ke->text().length(); ++i) {
-				QChar c = ke->text()[i];
-				if (c.isLetterOrNumber()
-				    || c.isSymbol()
-				    || c.isPunct()
-				    || c.category() == QChar::Separator_Space) {
-					s += c;
-				}
-			}
-			if (!s.isEmpty()) {
-				// append new chars to the filter string
-				setFilter(filter_ + s);
-				return true;
-			}
-			break;
+	if (e->type() != QEvent::KeyPress)
+		return QComboBox::eventFilter(o, e);
+
+	QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+	bool modified = (ke->modifiers() == Qt::ControlModifier)
+		|| (ke->modifiers() == Qt::AltModifier)
+		|| (ke->modifiers() == Qt::MetaModifier);
+	
+	switch (ke->key()) {
+	case Qt::Key_Escape:
+		if (!modified && !filter_.isEmpty()) {
+			resetFilter();
+			return true;
 		}
+		break;
+	case Qt::Key_Backspace:
+		if (!modified) {
+			// cut off one character
+			setFilter(filter_.left(filter_.length() - 1));
+		}
+		break;
+	default:
+		if (modified || ke->text().isEmpty())
+			break;
+		// find chars for the filter string
+		QString s;
+		for (int i = 0; i < ke->text().length(); ++i) {
+			QChar c = ke->text()[i];
+			if (c.isLetterOrNumber()
+			    || c.isSymbol()
+			    || c.isPunct()
+			    || c.category() == QChar::Separator_Space) {
+				s += c;
+			}
+		}
+		if (!s.isEmpty()) {
+			// append new chars to the filter string
+			setFilter(filter_ + s);
+			return true;
+		}
+		break;
 	}
+
 	return QComboBox::eventFilter(o, e);
 }
 
