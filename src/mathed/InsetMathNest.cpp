@@ -1423,13 +1423,14 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		return true;
 	}
 
-	selClearOrDel(cur);
-
 	if (c == '\\') {
 		//lyxerr << "starting with macro" << endl;
-		cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), false)));
+		docstring const safe = cap::grabAndEraseSelection(cur);
+		cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
 		return true;
 	}
+
+	selClearOrDel(cur);
 
 	if (c == '\n') {
 		if (currentMode() == InsetMath::TEXT_MODE)

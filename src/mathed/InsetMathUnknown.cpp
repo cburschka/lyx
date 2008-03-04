@@ -16,11 +16,14 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
+#include "frontends/Painter.h"
+
 
 namespace lyx {
 
-InsetMathUnknown::InsetMathUnknown(docstring const & nm, bool final, bool black)
-	: name_(nm), final_(final), black_(black)
+InsetMathUnknown::InsetMathUnknown(docstring const & nm,
+	docstring const & selection, bool final, bool black)
+	: name_(nm), final_(final), black_(black), selection_(selection)
 {}
 
 
@@ -62,7 +65,6 @@ void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 		drawStrBlack(pi, x, y, name_);
 	else
 		drawStrRed(pi, x, y, name_);
-	setPosCache(pi, x, y);
 }
 
 

@@ -23,6 +23,7 @@ class InsetMathUnknown : public InsetMath {
 public:
 	///
 	explicit InsetMathUnknown(docstring const & name,
+		docstring const & selection = docstring(),
 		bool final = true, bool black = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -33,6 +34,9 @@ public:
 	///
 	docstring name() const;
 
+	///
+	docstring const & selection() const { return selection_; }
+	
 	/// identifies UnknownInsets
 	InsetMathUnknown const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets
@@ -54,6 +58,7 @@ public:
 	bool final() const;
 	///
 	int kerning(BufferView const *) const { return kerning_; }
+
 private:
 	virtual Inset * clone() const;
 	///
@@ -64,6 +69,8 @@ private:
 	bool black_;
 	///
 	mutable int kerning_;
+	/// the selection which was replaced by this
+	docstring selection_;
 };
 
 

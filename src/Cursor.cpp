@@ -43,6 +43,7 @@
 #include "insets/InsetText.h"
 
 #include "mathed/InsetMath.h"
+#include "mathed/InsetMathBrace.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MacroTable.h"
 #include "mathed/MathData.h"
@@ -1208,6 +1209,8 @@ bool Cursor::macroModeClose()
 		return false;
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
+	MathData selection;
+	asArray(p->selection(), selection);
 	docstring const s = p->name();
 	--pos();
 	cell().erase(pos());
@@ -1225,12 +1228,37 @@ bool Cursor::macroModeClose()
 	if (in && in->interpretString(*this, s))
 		return true;
 	MathAtom atom = createInsetMath(name);
+
+	// try to put argument into macro, if we just inserted a macro
+	bool macroArg = false;
 	MathMacro * atomAsMacro = atom.nucleus()->asMacro();
 	if (atomAsMacro) {
-		// make non-greedy, i.e. don't eat parameters from the right
-		atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT);
+		// macros here are still unfolded (in init mode in fact). So
+		// we have to resolve the macro here manually and check its arity
+		// to put the selection behind it if arity > 0.
+		MacroData const * data = buffer().getMacro(atomAsMacro->name());
+		if (selection.size() > 0 && data && data->numargs() - data->optionals() > 0) {
+			macroArg = true;
+			atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT, 1);
+		} else
+			// non-greedy case. Do not touch the arguments behind
+			atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT, 0);
 	}
+
+	// insert remembered selection into first argument of a non-macro
+	else if (atom.nucleus()->nargs() > 0)
+		atom.nucleus()->cell(0).append(selection);
+	
 	plainInsert(atom);
+
+	// finally put the macro argument behind, if needed
+	if (macroArg) {
+		if (selection.size() > 1)
+			plainInsert(MathAtom(new InsetMathBrace(selection)));
+		else
+			insert(selection);
+	}
+	
 	return true;
 }
 
