@@ -378,7 +378,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		}
 
 		std::vector<int> const & ids = guiApp->viewIds();
-		for (int i = 0; i != ids.size(); ++i) {
+		for (size_type i = 0; i != ids.size(); ++i) {
 			if (id_ == ids[i])
 				continue;
 			if (guiApp->view(ids[i]).workArea(*b)) {

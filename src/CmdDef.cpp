@@ -90,17 +90,20 @@ bool CmdDef::read(string const & def_file)
 
 			newCmdDefResult e = newCmdDef(name, def);
 			switch (e) {
-				case CmdDefNameEmpty:
-					lexrc.printError("BN_DEFINE: Command name is empty");
-					error = true;
-					break;
-				case CmdDefExists:
-					lexrc.printError("BN_DEFINE: Command `" + name + "' already defined");
-					error = true;
-					break;
-				case CmdDefInvalid:
-					lexrc.printError("BN_DEFINE: Command definition for `" + name + "' is not valid");
-					error = true;
+			case CmdDefNameEmpty:
+				lexrc.printError("BN_DEFINE: Command name is empty");
+				error = true;
+				break;
+			case CmdDefExists:
+				lexrc.printError("BN_DEFINE: Command `" + name + "' already defined");
+				error = true;
+				break;
+			case CmdDefInvalid:
+				lexrc.printError("BN_DEFINE: Command definition for `" + name + "' is not valid");
+				error = true;
+				break;
+			case CmdDefOk:
+				break;
 			}
 
 			break;

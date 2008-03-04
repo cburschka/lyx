@@ -935,7 +935,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pasteFromStack(cur, bv->buffer().errorList("Paste"),
 				       convert<unsigned int>(arg));
 		} else {
-			Clipboard::GraphicsType type;
+			Clipboard::GraphicsType type = Clipboard::AnyGraphicsType;
 			if (arg == "pdf")
 				type = Clipboard::PdfGraphicsType;
 			else if (arg == "png")

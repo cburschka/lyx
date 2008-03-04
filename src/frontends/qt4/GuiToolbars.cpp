@@ -232,7 +232,7 @@ void GuiToolbars::toggleFullScreen(bool start_full_screen)
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
-	int flags;
+	int flags = 0;
 
 	for (; cit != end; ++cit) {
 
