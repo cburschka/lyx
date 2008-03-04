@@ -538,8 +538,13 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			return 0;
 		}
 
+		// Set the buffer reference for proper parsing of some insets
+		// (InsetCollapsable for example)
 		inset->setBuffer(const_cast<Buffer &>(buf));
 		inset->read(lex);
+		// Set again the buffer for insets that are created inside this inset
+		// (InsetMathHull for example).
+		inset->setBuffer(const_cast<Buffer &>(buf));
 	}
 	return inset.release();
 }
