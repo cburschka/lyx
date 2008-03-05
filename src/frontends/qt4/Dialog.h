@@ -51,7 +51,7 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	/// \param title is the window title used for decoration.
-	Dialog(GuiView & lv, std::string const & name, QString const & title);
+	Dialog(GuiView & lv, QString const & name, QString const & title);
 
 	virtual ~Dialog();
 
@@ -130,10 +130,7 @@ public:
 	//@}
 
 	/// Dialog identifier.
-	/// FIXME for Andre': Now that Dialog is entirely within qt4/
-	/// We can use QString instead in order to avoid <string> inclusion
-	/// or we can pimpl name_.
-	std::string const & name() const;
+	QString name() const { return name_; }
 
 	//@{
 	/** Enable the controller to initialise its data structures.
@@ -261,7 +258,7 @@ private:
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the LyXView.
 	 */
-	std::string const name_;
+	QString const name_;
 	///
 	QString title_;
 	///

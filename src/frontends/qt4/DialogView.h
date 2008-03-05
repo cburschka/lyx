@@ -13,6 +13,7 @@
 #define DIALOGVIEW_H
 
 #include "Dialog.h"
+#include "GuiView.h"
 
 #include <QDialog>
 
@@ -24,15 +25,14 @@ namespace frontend {
  */
 class DialogView : public QDialog, public Dialog
 {
-	Q_OBJECT
-
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	/// \param title is the window title used for decoration.
-	DialogView(GuiView & lv, std::string const & name, QString const & title);
-	virtual ~DialogView() {}
+	DialogView(GuiView & lv, QString const & name, QString const & title)
+		: QDialog(&lv), Dialog(lv, name, "LyX: " + title)
+	{}
 
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }

@@ -40,7 +40,7 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	/// \param title is the window title used for decoration.
-	GuiDialog(GuiView & lv, std::string const & name, QString const & title);
+	GuiDialog(GuiView & lv, QString const & name, QString const & title);
 
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
@@ -114,7 +114,7 @@ class GuiCommand : public GuiDialog
 public:
 	/// We need to know with what sort of inset we're associated.
 	// FIXME This should probably be an InsetCode
-	GuiCommand(GuiView &, std::string const & name, QString const & title);
+	GuiCommand(GuiView &, QString const & name, QString const & title);
 	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.

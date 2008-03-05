@@ -13,6 +13,9 @@
 #include "GuiDialog.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
+#include "FuncRequest.h"
+
+#include "insets/InsetCommand.h"
 
 #include "support/debug.h"
 
@@ -26,15 +29,15 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiDialog::GuiDialog(GuiView & lv, string const & name, QString const & title)
+GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
 	:  QDialog(&lv), Dialog(lv, name, "LyX: " + title), is_closing_(false)
 {}
 
 
-void GuiDialog::closeEvent(QCloseEvent *e)
+void GuiDialog::closeEvent(QCloseEvent * ev)
 {
 	slotClose();
-	e->accept();
+	ev->accept();
 }
 
 
@@ -109,9 +112,6 @@ void GuiDialog::updateView()
 	setUpdatesEnabled(true);
 }
 
-} // namespace frontend
-} // namespace lyx
-
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -119,17 +119,11 @@ void GuiDialog::updateView()
 //
 /////////////////////////////////////////////////////////////////////
 
-#include "FuncRequest.h"
-#include "insets/InsetCommand.h"
 
-using namespace std;
-
-namespace lyx {
-namespace frontend {
-
-GuiCommand::GuiCommand(GuiView & lv, string const & name,
+GuiCommand::GuiCommand(GuiView & lv, QString const & name,
 	QString const & title)
-	: GuiDialog(lv, name, title), params_(insetCode(name)), lfun_name_(name)
+	: GuiDialog(lv, name, title), params_(insetCode(fromqstr(name))),
+		lfun_name_(fromqstr(name))
 {
 }
 

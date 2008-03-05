@@ -36,7 +36,7 @@ struct MathSymbol {
 class GuiMath : public GuiDialog
 {
 public:
-	GuiMath(GuiView & lv, std::string const & name, QString const & title);
+	GuiMath(GuiView & lv, QString const & name, QString const & title);
 
 	/// Nothing to initialise in this case.
 	bool initialiseParams(std::string const &) { return true; }

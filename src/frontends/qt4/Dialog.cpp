@@ -36,7 +36,7 @@ namespace lyx {
 namespace frontend {
 
 
-Dialog::Dialog(GuiView & lv, string const & name, QString const & title)
+Dialog::Dialog(GuiView & lv, QString const & name, QString const & title)
 	: name_(name), title_(title), lyxview_(&lv)
 {}
 
@@ -45,15 +45,9 @@ Dialog::~Dialog()
 {}
 
 
-string const & Dialog::name() const
-{
-	return name_;
-}
-
-
 bool Dialog::canApply() const
 {
-	FuncRequest const fr(getLfun(), from_ascii(name_));
+	FuncRequest const fr(getLfun(), fromqstr(name_));
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
@@ -68,13 +62,13 @@ void Dialog::dispatch(FuncRequest const & fr) const
 
 void Dialog::updateDialog() const
 {
-	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, from_ascii(name_)));
+	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, fromqstr(name_)));
 }
 
 
 void Dialog::disconnect() const
 {
-	lyxview_->disconnectDialog(name_);
+	lyxview_->disconnectDialog(fromqstr(name_));
 }
 
 
@@ -141,7 +135,7 @@ void Dialog::showData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << name()
+		LYXERR0("Dialog \"" << fromqstr(name())
 			<< "\" failed to translate the data string passed to show()");
 		return;
 	}
@@ -175,7 +169,7 @@ void Dialog::updateData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << name()
+		LYXERR0("Dialog \"" << fromqstr(name())
 		       << "\" could not be initialized");
 		return;
 	}
@@ -259,7 +253,7 @@ void Dialog::checkStatus()
 QString Dialog::sessionKey() const
 {
 	return "view-" + QString::number(lyxview_->id())
-		+ "/" + toqstr(name());
+		+ "/" + name();
 }
 
 
