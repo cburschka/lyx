@@ -40,6 +40,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 
 private:
 	virtual std::auto_ptr<Inset> doClone() const;

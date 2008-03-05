@@ -14,6 +14,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
+#include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
 
 
@@ -71,6 +72,14 @@ void InsetMathBox::draw(PainterInfo & pi, int x, int y) const
 void InsetMathBox::infoize(odocstream & os) const
 {
 	os << "Box: " << name_;
+}
+
+
+void InsetMathBox::validate(LaTeXFeatures & features) const
+{
+	if (name_ == "tag" || name_ == "tag*")
+		features.require("amsmath");
+	cell(0).validate(features);
 }
 
 
