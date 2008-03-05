@@ -249,7 +249,7 @@ public:
 	
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
-		const QModelIndex &index) const {
+		QModelIndex const & index) const {
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
 		
 		// Draw using the menu item style (this is how QComboBox does it).
