@@ -57,7 +57,7 @@ public:
 };
 
 
-FileDialog::FileDialog(docstring const & t, kb_action s)
+FileDialog::FileDialog(QString const & t, kb_action s)
 	: private_(new FileDialog::Private), title_(t), success_(s)
 {}
 
@@ -68,32 +68,32 @@ FileDialog::~FileDialog()
 }
 
 
-void FileDialog::setButton1(docstring const & label, docstring const & dir)
+void FileDialog::setButton1(QString const & label, QString const & dir)
 {
 	private_->b1.first = label;
 	private_->b1.second = dir;
 }
 
 
-void FileDialog::setButton2(docstring const & label, docstring const & dir)
+void FileDialog::setButton2(QString const & label, QString const & dir)
 {
 	private_->b2.first = label;
 	private_->b2.second = dir;
 }
 
 
-FileDialog::Result const FileDialog::save(docstring const & path,
+FileDialog::Result FileDialog::save(QString const & path,
 					  FileFilterList const & filters,
-					  docstring const & suggested)
+					  QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << to_utf8(path)
+	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
 			   << "\", mask \"" << to_utf8(filters.as_string())
-			   << "\", suggested \"" << to_utf8(suggested) << '"');
+			   << "\", suggested \"" << fromqstr(suggested) << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith = from_utf8(
+	QString const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
@@ -111,66 +111,64 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	dlg.setAcceptMode(QFileDialog::AcceptSave);
 	dlg.setConfirmOverwrite(false);
 
-	if (!suggested.empty())
-		dlg.selectFile(toqstr(suggested));
+	if (!suggested.isEmpty())
+		dlg.selectFile(suggested);
 
 	LYXERR(Debug::GUI, "Synchronous FileDialog: ");
 	int res = dlg.exec();
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
-		result.second = from_utf8(internal_path(
-					fromqstr(dlg.selectedFiles()[0])));
+		result.second = internalPath(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;
 }
 
 
-FileDialog::Result const FileDialog::open(docstring const & path,
+FileDialog::Result FileDialog::open(QString const & path,
 					  FileFilterList const & filters,
-					  docstring const & suggested)
+					  QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << to_utf8(path)
-			   << "\", mask \"" << to_utf8(filters.as_string())
-			   << "\", suggested \"" << to_utf8(suggested) << '"');
+	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
+			   << "\", mask \"" << filters.as_string()
+			   << "\", suggested \"" << fromqstr(suggested) << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith = from_utf8(
-		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
-	result.second = from_utf8(internal_path(fromqstr(
+	QString const startsWith = toqstr(
+		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
+	result.second = internalPath(
 		QFileDialog::getOpenFileName(qApp->focusWidget(),
-		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
+		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
-	if (!suggested.empty())
-		dlg.selectFile(toqstr(suggested));
+	if (!suggested.isEmpty())
+		dlg.selectFile(suggested);
 
 	LYXERR(Debug::GUI, "Synchronous FileDialog: ");
 	int res = dlg.exec();
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
-		result.second = from_utf8(internal_path(
-					fromqstr(dlg.selectedFiles()[0])));
+		result.second = internalPath(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;
 }
 
 
-FileDialog::Result const FileDialog::opendir(docstring const & path,
-					    docstring const & suggested)
+FileDialog::Result FileDialog::opendir(QString const & path,
+					    QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << to_utf8(path)
-			   << "\", suggested \"" << to_utf8(suggested) << '"');
+	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
+			   << "\", suggested \"" << fromqstr(suggested) << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith = from_utf8(
-		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
+	QString const startsWith = toqstr(
+		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
 	result.second = from_utf8(internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		toqstr(title_),toqstr(startsWith)))));
@@ -181,15 +179,14 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 
 	dlg.setFileMode(QFileDialog::DirectoryOnly);
 
-	if (!suggested.empty())
-		dlg.selectFile(toqstr(suggested));
+	if (!suggested.isEmpty())
+		dlg.selectFile(suggested);
 
 	LYXERR(Debug::GUI, "Synchronous FileDialog: ");
 	int res = dlg.exec();
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
-		result.second = from_utf8(internal_path(
-					fromqstr(dlg.selectedFiles()[0])));
+		result.second = internalPath(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;

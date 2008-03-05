@@ -65,7 +65,7 @@ class PrefModule : public QWidget
 {
 	Q_OBJECT
 public:
-	PrefModule(docstring const & t,
+	PrefModule(QString const & t,
 			GuiPreferences * form = 0, QWidget * parent = 0)
 		: QWidget(parent), title_(t), form_(form)
 	{}
@@ -73,10 +73,10 @@ public:
 	virtual void apply(LyXRC & rc) const = 0;
 	virtual void update(LyXRC const & rc) = 0;
 
-	docstring const & title() const { return title_; }
+	QString const & title() const { return title_; }
 
 protected:
-	docstring title_;
+	QString title_;
 	GuiPreferences * form_;
 
 Q_SIGNALS:
@@ -455,18 +455,16 @@ public:
 	bool isBufferDependent() const { return false; }
 
 	/// various file pickers
-	docstring const browsebind(docstring const & file) const;
-	docstring const browseUI(docstring const & file) const;
-	docstring const browsekbmap(docstring const & file) const;
-	docstring const browsedict(docstring const & file) const;
+	QString browsebind(QString const & file) const;
+	QString browseUI(QString const & file) const;
+	QString browsekbmap(QString const & file) const;
+	QString browsedict(QString const & file) const;
 
 	/// general browse
-	docstring const browse(docstring const & file,
-				 docstring const & title) const;
+	QString browse(QString const & file, QString const & title) const;
 
 	/// browse directory
-	docstring const browsedir(docstring const & path,
-				    docstring const & title) const;
+	QString browsedir(QString const & path, QString const & title) const;
 
 	/// set a color
 	void setColor(ColorCode col, std::string const & hex);

@@ -206,103 +206,6 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	return langs;
 }
 
-
-docstring browseFile(docstring const & filename, docstring const & title,
-	FileFilterList const & filters, bool save,
-	docstring const & label1, docstring const & dir1,
-	docstring const & label2, docstring const & dir2)
-{
-	docstring lastPath = from_ascii(".");
-	if (!filename.empty())
-		lastPath = from_utf8(onlyPath(to_utf8(filename)));
-
-	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
-	dlg.setButton1(label1, dir1);
-	dlg.setButton2(label2, dir2);
-
-	FileDialog::Result result;
-
-	if (save)
-		result = dlg.save(lastPath, filters,
-				      from_utf8(onlyFilename(to_utf8(filename))));
-	else
-		result = dlg.open(lastPath, filters,
-				      from_utf8(onlyFilename(to_utf8(filename))));
-
-	return result.second;
-}
-
-
-docstring browseRelFile(docstring const & filename, docstring const & refpath,
-	docstring const & title, FileFilterList const & filters, bool save,
-	docstring const & label1, docstring const & dir1,
-	docstring const & label2, docstring const & dir2)
-{
-	docstring const fname = from_utf8(makeAbsPath(
-		to_utf8(filename), to_utf8(refpath)).absFilename());
-
-	docstring const outname = browseFile(fname, title, filters, save,
-					  label1, dir1, label2, dir2);
-	docstring const reloutname = makeRelPath(outname, refpath);
-	if (prefixIs(reloutname, from_ascii("../")))
-		return outname;
-	else
-		return reloutname;
-}
-
-
-docstring browseLibFile(docstring const & dir, docstring const & name,
-	docstring const & ext, docstring const & title,
-	FileFilterList const & filters)
-{
-	// FIXME UNICODE
-	docstring const label1 = _("System files|#S#s");
-	docstring const dir1 =
-		from_utf8(addName(package().system_support().absFilename(), to_utf8(dir)));
-
-	docstring const label2 = _("User files|#U#u");
-	docstring const dir2 =
-		from_utf8(addName(package().user_support().absFilename(), to_utf8(dir)));
-
-	docstring const result = browseFile(from_utf8(
-		libFileSearch(to_utf8(dir), to_utf8(name), to_utf8(ext)).absFilename()),
-		title, filters, false, dir1, dir2);
-
-	// remove the extension if it is the default one
-	docstring noextresult;
-	if (from_utf8(getExtension(to_utf8(result))) == ext)
-		noextresult = from_utf8(removeExtension(to_utf8(result)));
-	else
-		noextresult = result;
-
-	// remove the directory, if it is the default one
-	docstring const file = from_utf8(onlyFilename(to_utf8(noextresult)));
-	if (from_utf8(libFileSearch(to_utf8(dir), to_utf8(file), to_utf8(ext)).absFilename()) == result)
-		return file;
-	else
-		return noextresult;
-}
-
-
-docstring browseDir(docstring const & pathname, docstring const & title,
-	docstring const & label1, docstring const & dir1,
-	docstring const & label2, docstring const & dir2)
-{
-	docstring lastPath = from_ascii(".");
-	if (!pathname.empty())
-		lastPath = from_utf8(onlyPath(to_utf8(pathname)));
-
-	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
-	dlg.setButton1(label1, dir1);
-	dlg.setButton2(label2, dir2);
-
-	FileDialog::Result const result =
-		dlg.opendir(lastPath, from_utf8(onlyFilename(to_utf8(pathname))));
-
-	return result.second;
-}
-
-
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
@@ -341,6 +244,24 @@ void getTexFileList(string const & filename, vector<string> & list)
 	// remove empty items and duplicates
 	list.erase(remove(list.begin(), list.end(), ""), list.end());
 	eliminate_duplicates(list);
+}
+
+
+QString internalPath(const QString & str)
+{
+	return toqstr(os::internal_path(fromqstr(str)));
+}
+
+
+QString onlyFilename(const QString & str)
+{
+	return toqstr(support::onlyFilename(fromqstr(str)));
+}
+
+
+QString onlyPath(const QString & str)
+{
+	return toqstr(support::onlyPath(fromqstr(str)));
 }
 
 } // namespace lyx

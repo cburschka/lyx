@@ -232,15 +232,15 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		FileFilterList const filter(filterSpec);
 		
 		// show save dialog for the graphic
-		FileDialog dlg(_("Choose a filename to save the pasted graphic as"));
+		FileDialog dlg(qt_("Choose a filename to save the pasted graphic as"));
 		FileDialog::Result result =
-		dlg.save(from_utf8(filename.onlyPath().absFilename()), filter,
-			 from_utf8(filename.onlyFileName()));
+		dlg.save(toqstr(filename.onlyPath().absFilename()), filter,
+			 toqstr(filename.onlyFileName()));
 		
 		if (result.first == FileDialog::Later)
 			return FileName();
 		
-		string newFilename = to_utf8(result.second);
+		string newFilename = fromqstr(result.second);
 		if (newFilename.empty()) {
 			cur.bv().message(_("Canceled."));
 			return FileName();

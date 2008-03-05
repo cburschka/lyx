@@ -461,9 +461,8 @@ void GuiBibtex::getBibStyles(vector<string> & data) const
 	}
 	vector<string>::iterator it  = data.begin();
 	vector<string>::iterator end = data.end();
-	for (; it != end; ++it) {
-		*it = onlyFilename(*it);
-	}
+	for (; it != end; ++it)
+		*it = support::onlyFilename(*it);
 	// sort on filename only (no path)
 	sort(data.begin(), data.end());
 }
@@ -481,9 +480,8 @@ void GuiBibtex::getBibFiles(vector<string> & data) const
 	}
 	vector<string>::iterator it  = data.begin();
 	vector<string>::iterator end = data.end();
-	for (; it != end; ++it) {
-		*it = onlyFilename(*it);
-	}
+	for (; it != end; ++it)
+		*it = support::onlyFilename(*it);
 	// sort on filename only (no path)
 	sort(data.begin(), data.end());
 }

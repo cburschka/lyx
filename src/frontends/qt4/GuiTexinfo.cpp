@@ -65,7 +65,7 @@ static string texFileFromList(string const & file, string const & type)
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;
 	while ((!contains(classfile, file) ||
-		(onlyFilename(classfile) != file)) &&
+		(support::onlyFilename(classfile) != file)) &&
 		(++count < 1000)) {
 		classfile = token(allClasses, '\n', ++entries);
 	}
@@ -167,7 +167,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 	vector<string>::iterator it1  = data.begin();
 	vector<string>::iterator end1 = data.end();
 	for (; it1 != end1; ++it1)
-		*it1 = onlyFilename(*it1);
+		*it1 = support::onlyFilename(*it1);
 
 	// sort on filename only (no path)
 	sort(data.begin(), data.end());

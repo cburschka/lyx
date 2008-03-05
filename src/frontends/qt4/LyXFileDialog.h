@@ -27,8 +27,8 @@ class LyXFileDialog : public QFileDialog
 	Q_OBJECT
 
 public:
-	LyXFileDialog(docstring const & title,
-		      docstring const & path,
+	LyXFileDialog(QString const & title,
+		      QString const & path,
 		      support::FileFilterList const & filters,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
@@ -38,8 +38,8 @@ public Q_SLOTS:
 	void button2Clicked();
 
 private:
-	docstring b1_dir_;
-	docstring b2_dir_;
+	QString b1_dir_;
+	QString b2_dir_;
 };
 
 } // namespace lyx

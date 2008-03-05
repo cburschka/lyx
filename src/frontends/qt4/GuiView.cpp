@@ -1080,20 +1080,19 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 
 static FileName selectTemplateFile()
 {
-	FileDialog dlg(_("Select template file"));
-	dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-	dlg.setButton1(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
+	FileDialog dlg(qt_("Select template file"));
+	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+	dlg.setButton1(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
 	FileDialog::Result result =
-		dlg.open(from_utf8(lyxrc.template_path),
-			     FileFilterList(_("LyX Documents (*.lyx)")),
-			     docstring());
+		dlg.open(toqstr(lyxrc.template_path),
+			     FileFilterList(_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return FileName();
-	if (result.second.empty())
+	if (result.second.isEmpty())
 		return FileName();
-	return FileName(to_utf8(result.second));
+	return FileName(fromqstr(result.second));
 }
 
 
@@ -1140,20 +1139,18 @@ void GuiView::openDocument(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog dlg(_("Select document to open"), LFUN_FILE_OPEN);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Examples|#E#e"),
-				from_utf8(addPath(package().system_support().absFilename(), "examples")));
+		FileDialog dlg(qt_("Select document to open"), LFUN_FILE_OPEN);
+		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		dlg.setButton2(qt_("Examples|#E#e"),
+				toqstr(addPath(package().system_support().absFilename(), "examples")));
 
 		FileDialog::Result result =
-			dlg.open(from_utf8(initpath),
-				     FileFilterList(_("LyX Documents (*.lyx)")),
-				     docstring());
+			dlg.open(toqstr(initpath), FileFilterList(_("LyX Documents (*.lyx)")));
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = to_utf8(result.second);
+		filename = fromqstr(result.second);
 
 		// check selected filename
 		if (filename.empty()) {
@@ -1274,10 +1271,10 @@ void GuiView::importDocument(string const & argument)
 		docstring const text = bformat(_("Select %1$s file to import"),
 			formats.prettyName(format));
 
-		FileDialog dlg(text, LFUN_BUFFER_IMPORT);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Examples|#E#e"),
-			from_utf8(addPath(package().system_support().absFilename(), "examples")));
+		FileDialog dlg(toqstr(text), LFUN_BUFFER_IMPORT);
+		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		dlg.setButton2(qt_("Examples|#E#e"),
+			toqstr(addPath(package().system_support().absFilename(), "examples")));
 
 		docstring filter = formats.prettyName(format);
 		filter += " (*.";
@@ -1286,14 +1283,12 @@ void GuiView::importDocument(string const & argument)
 		filter += ')';
 
 		FileDialog::Result result =
-			dlg.open(from_utf8(initpath),
-				     FileFilterList(filter),
-				     docstring());
+			dlg.open(toqstr(initpath), FileFilterList(filter));
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = to_utf8(result.second);
+		filename = fromqstr(result.second);
 
 		// check selected filename
 		if (filename.empty())
@@ -1395,22 +1390,21 @@ void GuiView::insertLyXFile(docstring const & fname)
 		initpath = trypath;
 
 	// FIXME UNICODE
-	FileDialog dlg(_("Select LyX document to insert"), LFUN_FILE_INSERT);
-	dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-	dlg.setButton2(_("Examples|#E#e"),
-		from_utf8(addPath(package().system_support().absFilename(),
+	FileDialog dlg(qt_("Select LyX document to insert"), LFUN_FILE_INSERT);
+	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+	dlg.setButton2(qt_("Examples|#E#e"),
+		toqstr(addPath(package().system_support().absFilename(),
 		"examples")));
 
 	FileDialog::Result result =
-		dlg.open(from_utf8(initpath),
-			     FileFilterList(_("LyX Documents (*.lyx)")),
-			     docstring());
+		dlg.open(toqstr(initpath),
+			     FileFilterList(_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return;
 
 	// FIXME UNICODE
-	filename.set(to_utf8(result.second));
+	filename.set(fromqstr(result.second));
 
 	// check selected filename
 	if (filename.empty()) {
@@ -1438,17 +1432,17 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 		return;
 	}
 
-	FileDialog dlg(_("Select file to insert"), (asParagraph ?
+	FileDialog dlg(qt_("Select file to insert"), (asParagraph ?
 		LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
 
-	FileDialog::Result result = dlg.open(from_utf8(bv->buffer().filePath()),
-		FileFilterList(), docstring());
+	FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
+		FileFilterList());
 
 	if (result.first == FileDialog::Later)
 		return;
 
 	// FIXME UNICODE
-	filename.set(to_utf8(result.second));
+	filename.set(fromqstr(result.second));
 
 	// check selected filename
 	if (filename.empty()) {
@@ -1475,10 +1469,10 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 		/// No argument? Ask user through dialog.
 		// FIXME UNICODE
-		FileDialog dlg(_("Choose a filename to save document as"),
+		FileDialog dlg(qt_("Choose a filename to save document as"),
 				   LFUN_BUFFER_WRITE_AS);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
+		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
 		if (!isLyXFilename(fname.absFilename()))
 			fname.changeExtension(".lyx");
@@ -1486,14 +1480,14 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		FileFilterList const filter(_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
-			dlg.save(from_utf8(fname.onlyPath().absFilename()),
+			dlg.save(toqstr(fname.onlyPath().absFilename()),
 				     filter,
-				     from_utf8(fname.onlyFileName()));
+				     toqstr(fname.onlyFileName()));
 
 		if (result.first == FileDialog::Later)
 			return false;
 
-		fname.set(to_utf8(result.second));
+		fname.set(fromqstr(result.second));
 
 		if (fname.empty())
 			return false;

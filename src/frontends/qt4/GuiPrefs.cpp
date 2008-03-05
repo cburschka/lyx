@@ -20,6 +20,7 @@
 #include "BufferList.h"
 #include "Color.h"
 #include "ConverterCache.h"
+#include "FileDialog.h"
 #include "FuncRequest.h"
 #include "GuiFontExample.h"
 #include "GuiKeySymbol.h"
@@ -70,12 +71,162 @@ using namespace lyx::support::os;
 namespace lyx {
 namespace frontend {
 
+/////////////////////////////////////////////////////////////////////
+//
+// Browser Helpers
+//
+/////////////////////////////////////////////////////////////////////
+
+FileName libFileSearch(QString const & dir, QString const & name,
+				QString const & ext = QString())
+{
+	return support::libFileSearch(fromqstr(dir), fromqstr(name), fromqstr(ext));
+}
+
+
+/** Launch a file dialog and return the chosen file.
+	filename: a suggested filename.
+	title: the title of the dialog.
+	pattern: *.ps etc.
+	dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
+*/
+QString browseFile(QString const & filename,
+	QString const & title,
+	support::FileFilterList const & filters,
+	bool save = false,
+	QString const & label1 = QString(),
+	QString const & dir1 = QString(),
+	QString const & label2 = QString(),
+	QString const & dir2 = QString())
+{
+	QString lastPath = ".";
+	if (!filename.isEmpty())
+		lastPath = onlyPath(filename);
+
+	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	dlg.setButton2(label1, dir1);
+	dlg.setButton2(label2, dir2);
+
+	FileDialog::Result result;
+
+	if (save)
+		result = dlg.save(lastPath, filters, onlyFilename(filename));
+	else
+		result = dlg.open(lastPath, filters, onlyFilename(filename));
+
+	return result.second;
+}
+
+
+/** Wrapper around browseFile which tries to provide a filename
+*  relative to the user or system directory. The dir, name and ext
+*  parameters have the same meaning as in the
+*  support::LibFileSearch function.
+*/
+QString browseLibFile(QString const & dir,
+	QString const & name,
+	QString const & ext,
+	QString const & title,
+	support::FileFilterList const & filters)
+{
+	// FIXME UNICODE
+	QString const label1 = qt_("System files|#S#s");
+	QString const dir1 =
+		toqstr(addName(package().system_support().absFilename(), fromqstr(dir)));
+
+	QString const label2 = qt_("User files|#U#u");
+	QString const dir2 =
+		toqstr(addName(package().user_support().absFilename(), fromqstr(dir)));
+
+	QString const result = browseFile(toqstr(
+		libFileSearch(dir, name, ext).absFilename()),
+		title, filters, false, dir1, dir2);
+
+	// remove the extension if it is the default one
+	QString noextresult;
+	if (toqstr(getExtension(fromqstr(result))) == ext)
+		noextresult = toqstr(removeExtension(fromqstr(result)));
+	else
+		noextresult = result;
+
+	// remove the directory, if it is the default one
+	QString const file = onlyFilename(noextresult);
+	if (toqstr(libFileSearch(dir, file, ext).absFilename()) == result)
+		return file;
+	else
+		return noextresult;
+}
+
+
+/** Launch a file dialog and return the chosen directory.
+	pathname: a suggested pathname.
+	title: the title of the dialog.
+	dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
+*/
+QString browseDir(QString const & pathname,
+	QString const & title,
+	QString const & label1 = QString(),
+	QString const & dir1 = QString(),
+	QString const & label2 = QString(),
+	QString const & dir2 = QString())
+{
+	QString lastPath = ".";
+	if (!pathname.isEmpty())
+		lastPath = onlyPath(pathname);
+
+	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	dlg.setButton1(label1, dir1);
+	dlg.setButton2(label2, dir2);
+
+	FileDialog::Result const result =
+		dlg.opendir(lastPath, onlyFilename(pathname));
+
+	return result.second;
+}
+
+
+QString browseRelFile(QString const & filename, QString const & refpath,
+	QString const & title, FileFilterList const & filters, bool save,
+	QString const & label1, QString const & dir1,
+	QString const & label2, QString const & dir2)
+{
+	QString const fname = toqstr(makeAbsPath(
+		fromqstr(filename), fromqstr(refpath)).absFilename());
+
+	QString const outname =
+		browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
+
+	QString const reloutname =
+		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(refpath)));
+
+	if (reloutname.startsWith("../"))
+		return outname;
+	else
+		return reloutname;
+}
+
+} // namespace frontend
+
+docstring browseRelFile(docstring const & filename, docstring const & refpath,
+	docstring const & title, FileFilterList const & filters, bool save,
+	docstring const & label1, docstring const & dir1,
+	docstring const & label2, docstring const & dir2)
+{
+	return qstring_to_ucs4(frontend::browseRelFile(
+		toqstr(filename), toqstr(refpath),
+		toqstr(title), filters, save,
+		toqstr(label1), toqstr(dir1),
+		toqstr(label2), toqstr(dir2)));
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //
 // Helpers
 //
 /////////////////////////////////////////////////////////////////////
+
+namespace frontend {
 
 template<class A>
 static size_t findPos_helper(vector<A> const & vec, A const & val)
@@ -111,7 +262,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	if (!foundry.empty())
 		fontname += " [" + toqstr(foundry) + ']';
 
-	for (int i = 0; i < cb->count(); ++i) {
+	for (int i = 0; i != cb->count(); ++i) {
 		if (cb->itemText(i) == fontname) {
 			cb->setCurrentIndex(i);
 			return;
@@ -192,7 +343,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 /////////////////////////////////////////////////////////////////////
 
 PrefPlaintext::PrefPlaintext(QWidget * parent)
-	: PrefModule(_("Plain text"), 0, parent)
+	: PrefModule(qt_("Plain text"), 0, parent)
 {
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
@@ -223,7 +374,7 @@ void PrefPlaintext::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefDate::PrefDate(QWidget * parent)
-	: PrefModule(_("Date format"), 0, parent)
+	: PrefModule(qt_("Date format"), 0, parent)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(QString)),
@@ -250,7 +401,7 @@ void PrefDate::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Keyboard/Mouse"), form, parent)
+	: PrefModule(qt_("Keyboard/Mouse"), form, parent)
 {
 	setupUi(this);
 
@@ -320,7 +471,7 @@ void PrefInput::update(LyXRC const & rc)
 
 QString PrefInput::testKeymap(QString keymap)
 {
-	return toqstr(form_->browsekbmap(from_utf8(internal_path(fromqstr(keymap)))));
+	return form_->browsekbmap(toqstr(internal_path(fromqstr(keymap))));
 }
 
 
@@ -358,7 +509,7 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 /////////////////////////////////////////////////////////////////////
 
 PrefLatex::PrefLatex(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("LaTeX"), form, parent)
+	: PrefModule(qt_("LaTeX"), form, parent)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(QString)),
@@ -425,7 +576,7 @@ void PrefLatex::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Screen fonts"), form, parent)
+	: PrefModule(qt_("Screen fonts"), form, parent)
 {
 	setupUi(this);
 
@@ -599,7 +750,7 @@ struct ColorSorter
 } // namespace anon
 
 PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
-	: PrefModule( _("Colors"), form, parent)
+	: PrefModule(qt_("Colors"), form, parent)
 {
 	setupUi(this);
 
@@ -697,7 +848,7 @@ void PrefColors::change_lyxObjects_selection()
 /////////////////////////////////////////////////////////////////////
 
 PrefDisplay::PrefDisplay(QWidget * parent)
-	: PrefModule(_("Graphics"), 0, parent)
+	: PrefModule(qt_("Graphics"), 0, parent)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -768,7 +919,7 @@ void PrefDisplay::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Paths"), form, parent)
+	: PrefModule(qt_("Paths"), form, parent)
 {
 	setupUi(this);
 	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(select_exampledir()));
@@ -822,61 +973,55 @@ void PrefPaths::update(LyXRC const & rc)
 
 void PrefPaths::select_exampledir()
 {
-	docstring file(form_->browsedir(
-		from_utf8(internal_path(fromqstr(exampleDirED->text()))),
-		_("Select directory for example files")));
-	if (!file.empty())
-		exampleDirED->setText(toqstr(file));
+	QString file = form_->browsedir(internalPath(exampleDirED->text()),
+		qt_("Select directory for example files"));
+	if (!file.isEmpty())
+		exampleDirED->setText(file);
 }
 
 
 void PrefPaths::select_templatedir()
 {
-	docstring file(form_->browsedir(
-		from_utf8(internal_path(fromqstr(templateDirED->text()))),
-		_("Select a document templates directory")));
-	if (!file.empty())
-		templateDirED->setText(toqstr(file));
+	QString file = form_->browsedir(internalPath(templateDirED->text()),
+		qt_("Select a document templates directory"));
+	if (!file.isEmpty())
+		templateDirED->setText(file);
 }
 
 
 void PrefPaths::select_tempdir()
 {
-	docstring file(form_->browsedir(
-		from_utf8(internal_path(fromqstr(tempDirED->text()))),
-		_("Select a temporary directory")));
-	if (!file.empty())
-		tempDirED->setText(toqstr(file));
+	QString file = form_->browsedir(internalPath(tempDirED->text()),
+		qt_("Select a temporary directory"));
+	if (!file.isEmpty())
+		tempDirED->setText(file);
 }
 
 
 void PrefPaths::select_backupdir()
 {
-	docstring file(form_->browsedir(
-		from_utf8(internal_path(fromqstr(backupDirED->text()))),
-		_("Select a backups directory")));
-	if (!file.empty())
-		backupDirED->setText(toqstr(file));
+	QString file = form_->browsedir(internalPath(backupDirED->text()),
+		qt_("Select a backups directory"));
+	if (!file.isEmpty())
+		backupDirED->setText(file);
 }
 
 
 void PrefPaths::select_workingdir()
 {
-	docstring file(form_->browsedir(
-		from_utf8(internal_path(fromqstr(workingDirED->text()))),
-		_("Select a document directory")));
-	if (!file.empty())
-		workingDirED->setText(toqstr(file));
+	QString file = form_->browsedir(internalPath(workingDirED->text()),
+		qt_("Select a document directory"));
+	if (!file.isEmpty())
+		workingDirED->setText(file);
 }
 
 
 void PrefPaths::select_lyxpipe()
 {
-	docstring file(form_->browse(
-		from_utf8(internal_path(fromqstr(lyxserverDirED->text()))),
-		_("Give a filename for the LyX server pipe")));
-	if (!file.empty())
-		lyxserverDirED->setText(toqstr(file));
+	QString file = form_->browse(internalPath(lyxserverDirED->text()),
+		qt_("Give a filename for the LyX server pipe"));
+	if (!file.isEmpty())
+		lyxserverDirED->setText(file);
 }
 
 
@@ -887,7 +1032,7 @@ void PrefPaths::select_lyxpipe()
 /////////////////////////////////////////////////////////////////////
 
 PrefSpellchecker::PrefSpellchecker(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Spellchecker"), form, parent)
+	: PrefModule(qt_("Spellchecker"), form, parent)
 {
 	setupUi(this);
 
@@ -981,10 +1126,9 @@ void PrefSpellchecker::update(LyXRC const & rc)
 
 void PrefSpellchecker::select_dict()
 {
-	docstring file(form_->browsedict(
-		from_utf8(internal_path(fromqstr(persDictionaryED->text())))));
-	if (!file.empty())
-		persDictionaryED->setText(toqstr(file));
+	QString file = form_->browsedict(internalPath(persDictionaryED->text()));
+	if (!file.isEmpty())
+		persDictionaryED->setText(file);
 }
 
 
@@ -997,7 +1141,7 @@ void PrefSpellchecker::select_dict()
 
 
 PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Converters"), form, parent)
+	: PrefModule(qt_("Converters"), form, parent)
 {
 	setupUi(this);
 
@@ -1267,7 +1411,7 @@ string FormatPrettynameValidator::str(Formats::const_iterator it) const
 
 
 PrefFileformats::PrefFileformats(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("File formats"), form, parent)
+	: PrefModule(qt_("File formats"), form, parent)
 {
 	setupUi(this);
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
@@ -1466,7 +1610,7 @@ void PrefFileformats::on_formatRemovePB_clicked()
 /////////////////////////////////////////////////////////////////////
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-	: PrefModule(_("Language"), 0, parent)
+	: PrefModule(qt_("Language"), 0, parent)
 {
 	setupUi(this);
 
@@ -1555,7 +1699,7 @@ void PrefLanguage::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPrinter::PrefPrinter(QWidget * parent)
-	: PrefModule(_("Printer"), 0, parent)
+	: PrefModule(qt_("Printer"), 0, parent)
 {
 	setupUi(this);
 
@@ -1653,7 +1797,7 @@ void PrefPrinter::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("User interface"), form, parent)
+	: PrefModule(qt_("User interface"), form, parent)
 {
 	setupUi(this);
 
@@ -1752,11 +1896,9 @@ void PrefUserInterface::update(LyXRC const & rc)
 
 void PrefUserInterface::select_ui()
 {
-	docstring const name =
-		from_utf8(internal_path(fromqstr(uiFileED->text())));
-	docstring file = form_->browseUI(name);
-	if (!file.empty())
-		uiFileED->setText(toqstr(file));
+	QString file = form_->browseUI(internalPath(uiFileED->text()));
+	if (!file.isEmpty())
+		uiFileED->setText(file);
 }
 
 
@@ -1775,7 +1917,7 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(_("Shortcuts"), form, parent)
+	: PrefModule(qt_("Shortcuts"), form, parent)
 {
 	setupUi(this);
 
@@ -2018,13 +2160,11 @@ void PrefShortcuts::on_shortcutsTW_itemDoubleClicked()
 
 void PrefShortcuts::select_bind()
 {
-	docstring const name =
-		from_utf8(internal_path(fromqstr(bindFileED->text())));
-	docstring file = form_->browsebind(name);
-	if (!file.empty()) {
-		bindFileED->setText(toqstr(file));
+	QString file = form_->browsebind(internalPath(bindFileED->text()));
+	if (!file.isEmpty()) {
+		bindFileED->setText(file);
 		system_bind_ = KeyMap();
-		system_bind_.read(to_utf8(file));
+		system_bind_.read(fromqstr(file));
 		updateShortcutsTW();
 	}
 }
@@ -2170,7 +2310,7 @@ void PrefShortcuts::shortcut_clearPB_pressed()
 /////////////////////////////////////////////////////////////////////
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-	: PrefModule(_("Identity"), 0, parent)
+	: PrefModule(qt_("Identity"), 0, parent)
 {
 	setupUi(this);
 
@@ -2258,7 +2398,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 void GuiPreferences::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
-	prefsPS->addPanel(module, toqstr(module->title()));
+	prefsPS->addPanel(module, module->title());
 	connect(module, SIGNAL(changed()), this, SLOT(change_adaptor()));
 	modules_.push_back(module);
 }
@@ -2358,52 +2498,43 @@ void GuiPreferences::updateScreenFonts()
 }
 
 
-docstring const GuiPreferences::browsebind(docstring const & file) const
+QString GuiPreferences::browsebind(QString const & file) const
 {
-	return browseLibFile(from_ascii("bind"), file, from_ascii("bind"),
-			     _("Choose bind file"),
+	return browseLibFile("bind", file, "bind", qt_("Choose bind file"),
 			     FileFilterList(_("LyX bind files (*.bind)")));
 }
 
 
-docstring const GuiPreferences::browseUI(docstring const & file) const
+QString GuiPreferences::browseUI(QString const & file) const
 {
-	return browseLibFile(from_ascii("ui"), file, from_ascii("ui"),
-			     _("Choose UI file"),
+	return browseLibFile("ui", file, "ui", qt_("Choose UI file"),
 			     FileFilterList(_("LyX UI files (*.ui)")));
 }
 
 
-docstring const GuiPreferences::browsekbmap(docstring const & file) const
+QString GuiPreferences::browsekbmap(QString const & file) const
 {
-	return browseLibFile(from_ascii("kbd"), file, from_ascii("kmap"),
-			     _("Choose keyboard map"),
+	return browseLibFile("kbd", file, "kmap", qt_("Choose keyboard map"),
 			     FileFilterList(_("LyX keyboard maps (*.kmap)")));
 }
 
 
-docstring const GuiPreferences::browsedict(docstring const & file) const
+QString GuiPreferences::browsedict(QString const & file) const
 {
-	if (lyxrc.use_spell_lib)
-		return browseFile(file,
-				  _("Choose personal dictionary"),
-				  FileFilterList(_("*.pws")));
-	else
-		return browseFile(file,
-				  _("Choose personal dictionary"),
-				  FileFilterList(_("*.ispell")));
+	return browseFile(file, qt_("Choose personal dictionary"),
+		FileFilterList(lyxrc.use_spell_lib ? _("*.pws") : _("*.ispell")));
 }
 
 
-docstring const GuiPreferences::browse(docstring const & file,
-				  docstring const & title) const
+QString GuiPreferences::browse(QString const & file,
+				  QString const & title) const
 {
 	return browseFile(file, title, FileFilterList(), true);
 }
 
 
-docstring const GuiPreferences::browsedir(docstring const & path,
-				     docstring const & title) const
+QString GuiPreferences::browsedir(QString const & path,
+				     QString const & title) const
 {
 	return browseDir(path, title);
 }

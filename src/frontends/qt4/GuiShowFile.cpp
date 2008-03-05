@@ -40,7 +40,7 @@ GuiShowFile::GuiShowFile(GuiView & lv)
 
 void GuiShowFile::updateContents()
 {
-	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));
+	setWindowTitle(onlyFilename(toqstr(filename_.absFilename())));
 
 	QString contents = toqstr(filename_.fileContents("UTF-8"));
 	if (contents.isEmpty())

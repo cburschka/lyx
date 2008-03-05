@@ -321,7 +321,7 @@ docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
 		break;
 	}
 
-	docstring const docpath = from_utf8(onlyPath(buffer().absFileName()));
+	docstring const docpath = from_utf8(support::onlyPath(buffer().absFileName()));
 
 	return browseRelFile(in_name, docpath, title, filters, false, 
 		_("Documents|#o#O"), from_utf8(lyxrc.document_path));
@@ -336,7 +336,7 @@ void GuiInclude::edit(string const & file)
 	else
 		// tex file or other text file in verbatim mode
 		formats.edit(buffer(), 
-			makeAbsPath(file, onlyPath(buffer().absFileName())),
+			makeAbsPath(file, support::onlyPath(buffer().absFileName())),
 			"text");
 }
 

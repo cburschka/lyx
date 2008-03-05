@@ -27,54 +27,52 @@ using namespace lyx::support;
 namespace lyx {
 
 /// return the Qt form of the label
-static docstring const getLabel(docstring const & ucs4str)
+static QString getLabel(QString const & qstr)
 {
-	// FIXME UNICODE
-	string str = to_utf8(ucs4str);
+	// FIXME UNICODE (or "qt-ify")
+	string str = fromqstr(qstr);
 	string label;
 	string sc = split(str, label, '|');
 	if (sc.length() < 2)
-		return from_utf8(label);
+		return toqstr(label);
 	size_t pos = label.find(sc[1]);
 	if (pos != string::npos)
 		label.insert(pos, 1, '&');
-	return from_utf8(label);
+	return toqstr(label);
 }
 
 
-LyXFileDialog::LyXFileDialog(docstring const & t,
-			     docstring const & p,
+LyXFileDialog::LyXFileDialog(QString const & title,
+			     QString const & path,
 			     support::FileFilterList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
 				 // FIXME replace that with guiApp->currentView()
-	: QFileDialog(qApp->focusWidget(),
-		      toqstr(t), toqstr(p), toqstr(filters.as_string()))
+	: QFileDialog(qApp->focusWidget(), title, path, toqstr(filters.as_string()))
 {
-	QString const path = toqstr(p);
 	QDir dir(path);
 	// FIXME: workaround for a bug in qt which makes LyX crash
 	// with hidden paths (bug 4513). Recheck with recent Qt versions.
 	if (path.contains("/."))
 		dir.setFilter(QDir::Hidden);
 	setDirectory(dir);
-	setWindowTitle(toqstr(t));
+	setWindowTitle(title);
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();
 
-	if (!b1.first.empty()) {
+	if (!b1.first.isEmpty()) {
 		b1_dir_ = b1.second;
 		QToolButton * tb = new QToolButton(this);
 		connect(tb, SIGNAL(clicked()), this, SLOT(button1Clicked()));
-		tb->setText(toqstr(getLabel(b1.first)));
+		tb->setText(getLabel(b1.first));
 		layout.at(0)->addWidget(tb);
 	}
 
-	if (!b2.first.empty()) {
+	if (!b2.first.isEmpty()) {
 		b2_dir_ = b2.second;
 		QToolButton * tb = new QToolButton(this);
 		connect(tb, SIGNAL(clicked()), this, SLOT(button2Clicked()));
-		tb->setText(toqstr(getLabel(b2.first)));
+		tb->setText(getLabel(b2.first));
 		layout.at(0)->addWidget(tb);
 	}
 }
@@ -82,13 +80,13 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 
 void LyXFileDialog::button1Clicked()
 {
-	setDirectory(toqstr(b1_dir_));
+	setDirectory(b1_dir_);
 }
 
 
 void LyXFileDialog::button2Clicked()
 {
-	setDirectory(toqstr(b2_dir_));
+	setDirectory(b2_dir_);
 }
 
 } // namespace lyx

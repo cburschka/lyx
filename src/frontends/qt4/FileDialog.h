@@ -14,10 +14,10 @@
 #define FILEDIALOG_H
 
 #include "lfuns.h"
-#include "support/docstring.h"
 
-#include <string>
+#include <QString>
 
+#include <utility>
 
 namespace lyx {
 
@@ -32,7 +32,7 @@ class FileDialog
 {
 public:
 	/// label, directory path button
-	typedef std::pair<docstring, docstring> Button;
+	typedef std::pair<QString, QString> Button;
 
 	/// result type
 	enum ResultType {
@@ -41,7 +41,7 @@ public:
 	};
 
 	/// result return
-	typedef std::pair<FileDialog::ResultType, docstring> Result;
+	typedef std::pair<FileDialog::ResultType, QString> Result;
 
 	/**
 	 * Constructs a file dialog with title \param title.
@@ -54,26 +54,26 @@ public:
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as FileName::getcwd())
 	 */
-	FileDialog(docstring const & title, kb_action a = LFUN_SELECT_FILE_SYNC);
+	FileDialog(QString const & title, kb_action a = LFUN_SELECT_FILE_SYNC);
 
 	~FileDialog();
 
-	void setButton1(docstring const & label, docstring const & dir);
-	void setButton2(docstring const & label, docstring const & dir);
+	void setButton1(QString const & label, QString const & dir);
+	void setButton2(QString const & label, QString const & dir);
 
 	/// Choose a file for opening, starting in directory \c path.
-	Result const open(docstring const & path,
+	Result open(QString const & path,
 			  support::FileFilterList const & filters,
-			  docstring const & suggested);
+			  QString const & suggested = QString());
 
 	/// Choose a directory, starting in directory \c path.
-	Result const opendir(docstring const & path = docstring(),
-			     docstring const & suggested = docstring());
+	Result opendir(QString const & path = QString(),
+			     QString const & suggested = QString());
 
 	/// Choose a file for saving, starting in directory \c  path.
-	Result const save(docstring const & path,
+	Result save(QString const & path,
 			  support::FileFilterList const & filters,
-			  docstring const & suggested);
+			  QString const & suggested = QString());
 
 private:
 	class Private;
@@ -81,7 +81,7 @@ private:
 	Private * private_;
 
 	/// the dialog title
-	docstring title_;
+	QString title_;
 
 	/// success action to perform if not synchronous
 	kb_action success_;
