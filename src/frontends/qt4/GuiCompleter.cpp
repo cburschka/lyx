@@ -74,7 +74,7 @@ private:
 class PixmapItemDelegate : public QItemDelegate {
 public:
 	explicit PixmapItemDelegate(QObject *parent = 0)
-	: QItemDelegate(parent) {}
+		: QItemDelegate(parent) {}
 
 protected:
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
@@ -102,8 +102,7 @@ protected:
 class GuiCompletionModel : public QAbstractListModel {
 public:
 	///
-	GuiCompletionModel(QObject * parent,
-		Inset::CompletionList const * l)
+	GuiCompletionModel(QObject * parent, Inset::CompletionList const * l)
 		: QAbstractListModel(parent), list_(l) {}
 	///
 	~GuiCompletionModel()

@@ -360,7 +360,7 @@ class GuiFilterProxyModel : public QSortFilterProxyModel
 public:
 	///
 	GuiFilterProxyModel(QObject * parent)
-	: QSortFilterProxyModel(parent) {}
+		: QSortFilterProxyModel(parent) {}
 
 	///
 	void setCharFilter(QString const & f)
