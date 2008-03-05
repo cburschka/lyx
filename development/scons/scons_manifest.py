@@ -784,7 +784,6 @@ src_frontends_qt4_header_files = Split('''
     TocModel.h
     TocWidget.h
     Validator.h
-    qlkey.h
     qt_helpers.h
 ''')
 
@@ -797,7 +796,6 @@ src_frontends_qt4_files = Split('''
     ButtonController.cpp
     ColorCache.cpp
     CustomizedWidgets.cpp
-    DialogView.cpp
     EmptyTable.cpp
     FileDialog.cpp
     FloatPlacement.cpp
@@ -1086,8 +1084,6 @@ src_insets_files = Split('''
 
 
 src_insets_extra_files = Split('''
-    InsetTheorem.cpp
-    InsetTheorem.h
     Makefile.am
     pch.h
 ''')
