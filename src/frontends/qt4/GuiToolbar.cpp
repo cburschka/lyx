@@ -262,7 +262,11 @@ public:
 		painter->eraseRect(option.rect);
 		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo->view());
 		painter->restore();
-
+		
+		// don't draw string for separator
+		if (opt.menuItemType == QStyleOptionMenuItem::Separator)
+			return;
+		
 		// Draw the rich text.
 		painter->save();
 		QColor col = opt.palette.text().color();
@@ -334,14 +338,18 @@ private:
 			menuOption.state |= QStyle::State_Selected;
 		menuOption.checkType = QStyleOptionMenuItem::NonExclusive;
 		menuOption.checked = combo->currentIndex() == index.row();
-		menuOption.menuItemType = QStyleOptionMenuItem::Normal;
 		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
 			.replace(QLatin1Char('&'), QLatin1String("&&"));
+		if (menuOption.text.left(2) == "--")
+			menuOption.menuItemType = QStyleOptionMenuItem::Separator;
+		else
+			menuOption.menuItemType = QStyleOptionMenuItem::Normal;
 		menuOption.tabWidth = 0;
 		menuOption.menuRect = option.rect;
 		menuOption.rect = option.rect;
 		menuOption.font = combo->font();
 		menuOption.fontMetrics = QFontMetrics(menuOption.font);
+		
 		return menuOption;
 	}
 };
