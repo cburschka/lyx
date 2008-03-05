@@ -260,7 +260,7 @@ public:
 		QString text = underlineFilter(opt.text);
 		opt.text = QString();
 		painter->eraseRect(option.rect);
-		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo);
+		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo->view());
 		painter->restore();
 
 		// Draw the rich text.
