@@ -73,6 +73,14 @@ void InsetMathBox::infoize(odocstream & os) const
 }
 
 
+void InsetMathBox::validate(LaTeXFeatures & features) const
+{
+	if (name_ == "tag" || name_ == "tag*")
+		features.require("amsmath");
+	cell(0).validate(features);
+}
+
+
 
 /////////////////////////////////////////////////////////////////////
 //

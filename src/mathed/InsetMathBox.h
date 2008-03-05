@@ -36,6 +36,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 
 private:
 	Inset * clone() const { return new InsetMathBox(*this); }
