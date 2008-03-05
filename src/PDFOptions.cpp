@@ -138,7 +138,7 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 		hyperset += "\n pdfkeywords={" + keywords + "},";
 	if (!quoted_options.empty()){
 		hyperset += "\n ";
-		hyperset += quoted_options_get();
+		hyperset += quoted_options;
 	}
 	hyperset = rtrim(hyperset,",");
 
@@ -209,10 +209,10 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 }
 
 
-// prepared for check
-string PDFOptions::quoted_options_get() const
+// check the string from UI
+string PDFOptions::quoted_options_check(string const str) const
 {
-	return quoted_options;
+	return subst(str,"\n","");
 }
 
 

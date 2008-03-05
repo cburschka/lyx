@@ -1697,7 +1697,8 @@ void GuiDocument::apply(BufferParams & params)
 		pdf.pagemode = pdf.pagemode_fullscreen;
 	else
 		pdf.pagemode.clear();
-	pdf.quoted_options = fromqstr(pdfSupportModule->optionsLE->text());
+	pdf.quoted_options = pdf.quoted_options_check(
+				fromqstr(pdfSupportModule->optionsLE->text()));
 
 	// Embedded files
 	// FIXME

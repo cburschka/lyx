@@ -135,8 +135,10 @@ public:
 	std::string quoted_options;
 	/**
 		* Possible syntax check of users additional parameters here.
+		* Returns repaired string. For the time being only newlines
+		* are checked.
 		*/
-	std::string quoted_options_get() const;
+	std::string quoted_options_check(std::string const str) const;
 	
 	
 	/**
