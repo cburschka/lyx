@@ -212,7 +212,7 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 // check the string from UI
 string PDFOptions::quoted_options_check(string const str) const
 {
-	return subst(str,"\n","");
+	return subst(str, "\n", "");
 }
 
 
