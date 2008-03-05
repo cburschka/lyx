@@ -55,34 +55,27 @@ PanelStack::PanelStack(QWidget * parent)
 }
 
 
-void PanelStack::addCategory(docstring const & n, docstring const & parent)
+void PanelStack::addCategory(QString const & name, QString const & parent)
 {
 	QTreeWidgetItem * item = 0;
-	QString const name = toqstr(n);
 
-	LYXERR(Debug::GUI, "addCategory n= " << to_utf8(n) << "   parent= ");
+	LYXERR(Debug::GUI, "addCategory n= " << fromqstr(name) << "   parent= ");
 
 	int depth = 1;
 
-	if (parent.empty()) {
+	if (parent.isEmpty()) {
 		item = new QTreeWidgetItem(list_);
 		item->setText(0, name);
 	}
 	else {
-		PanelMap::iterator it = panel_map_.find(parent);
-		//BOOST_ASSERT(it != panel_map_.end());
-		if (it == panel_map_.end()) {
+		if (!panel_map_.contains(parent))
 			addCategory(parent);
-			it = panel_map_.find(parent);
-		}
-		BOOST_ASSERT(it != panel_map_.end());
-
-		item = new QTreeWidgetItem(it->second);
+		item = new QTreeWidgetItem(panel_map_.value(parent));
 		item->setText(0, name);
 		depth = 2;
 	}
 
-	panel_map_[n] = item;
+	panel_map_[name] = item;
 
 	QFontMetrics fm(list_->font());
 	// calculate the real size the current item needs in the listview
@@ -94,38 +87,34 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 }
 
 
-void PanelStack::addPanel(QWidget * panel, docstring const & name, docstring const & parent)
+void PanelStack::addPanel(QWidget * panel, QString const & name, QString const & parent)
 {
 	addCategory(name, parent);
-	QTreeWidgetItem * item = panel_map_.find(name)->second;
-
+	QTreeWidgetItem * item = panel_map_.value(name);
 	widget_map_[item] = panel;
 	stack_->addWidget(panel);
 	stack_->setMinimumSize(panel->minimumSize());
 }
 
 
-void PanelStack::setCurrentPanel(docstring const & name)
+void PanelStack::setCurrentPanel(QString const & name)
 {
-	PanelMap::const_iterator cit = panel_map_.find(name);
-	BOOST_ASSERT(cit != panel_map_.end());
+	QTreeWidgetItem * item = panel_map_.value(name, 0);
+	BOOST_ASSERT(item);
 
 	// force on first set
-	if (list_->currentItem() ==  cit->second)
-		switchPanel(cit->second);
+	if (list_->currentItem() == item)
+		switchPanel(item);
 
-	list_->setCurrentItem(cit->second);
+	list_->setCurrentItem(item);
 }
 
 
 void PanelStack::switchPanel(QTreeWidgetItem * item,
 			     QTreeWidgetItem * /*previous*/)
 {
-	WidgetMap::const_iterator cit = widget_map_.find(item);
-	if (cit == widget_map_.end())
-		return;
-
-	stack_->setCurrentWidget(cit->second);
+	if (QWidget * w = widget_map_.value(item, 0))
+		stack_->setCurrentWidget(w);
 }
 
 

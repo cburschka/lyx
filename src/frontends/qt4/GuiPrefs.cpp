@@ -2240,7 +2240,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	add(converters);
 	add(formats);
 
-	prefsPS->setCurrentPanel(_("User interface"));
+	prefsPS->setCurrentPanel(qt_("User interface"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
@@ -2258,7 +2258,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 void GuiPreferences::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
-	prefsPS->addPanel(module, module->title());
+	prefsPS->addPanel(module, toqstr(module->title()));
 	connect(module, SIGNAL(changed()), this, SLOT(change_adaptor()));
 	modules_.push_back(module);
 }

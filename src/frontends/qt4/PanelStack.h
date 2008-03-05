@@ -12,11 +12,8 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
-#include "support/docstring.h"
-
 #include <QWidget>
-
-#include <map>
+#include <QHash>
 
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -30,31 +27,30 @@ class PanelStack : public QWidget
 {
 	Q_OBJECT
 public:
+	///
 	PanelStack(QWidget * parent = 0);
 
 	/// add a category with no associated panel
-	void addCategory(docstring const & name,
-		docstring const & parent = docstring());
-
+	void addCategory(QString const & name, QString const & parent = QString());
 	/// add a widget panel with a given name, under the given parent
-	void addPanel(QWidget * panel, docstring const & name,
-		docstring const & parent = docstring());
-
+	void addPanel(QWidget * panel, QString const & name,
+		QString const & parent = QString());
 	/// set current panel by logical name
-	void setCurrentPanel(docstring const &);
-
-	virtual QSize sizeHint() const;
+	void setCurrentPanel(QString const &);
+	///
+	QSize sizeHint() const;
 
 public Q_SLOTS:
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * it, QTreeWidgetItem * previous = 0);
 
 private:
-	typedef std::map<docstring, QTreeWidgetItem *> PanelMap;
-
+	///
+	typedef QHash<QString, QTreeWidgetItem *> PanelMap;
+	///
 	PanelMap panel_map_;
 
-	typedef std::map<QTreeWidgetItem *, QWidget *> WidgetMap;
+	typedef QHash<QTreeWidgetItem *, QWidget *> WidgetMap;
 
 	WidgetMap widget_map_;
 

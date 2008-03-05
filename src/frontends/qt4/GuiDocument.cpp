@@ -983,22 +983,22 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(floatModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
-	docPS->addPanel(latexModule, _("Document Class"));
-	docPS->addPanel(fontModule, _("Fonts"));
-	docPS->addPanel(textLayoutModule, _("Text Layout"));
-	docPS->addPanel(pageLayoutModule, _("Page Layout"));
-	docPS->addPanel(marginsModule, _("Page Margins"));
-	docPS->addPanel(langModule, _("Language"));
-	docPS->addPanel(numberingModule, _("Numbering & TOC"));
-	docPS->addPanel(biblioModule, _("Bibliography"));
-	docPS->addPanel(pdfSupportModule, _("PDF Properties"));
-	docPS->addPanel(mathsModule, _("Math Options"));
-	docPS->addPanel(floatModule, _("Float Placement"));
-	docPS->addPanel(bulletsModule, _("Bullets"));
-	docPS->addPanel(branchesModule, _("Branches"));
-	docPS->addPanel(embeddedFilesModule, _("Embedded Files"));
-	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
-	docPS->setCurrentPanel(_("Document Class"));
+	docPS->addPanel(latexModule, qt_("Document Class"));
+	docPS->addPanel(fontModule, qt_("Fonts"));
+	docPS->addPanel(textLayoutModule, qt_("Text Layout"));
+	docPS->addPanel(pageLayoutModule, qt_("Page Layout"));
+	docPS->addPanel(marginsModule, qt_("Page Margins"));
+	docPS->addPanel(langModule, qt_("Language"));
+	docPS->addPanel(numberingModule, qt_("Numbering & TOC"));
+	docPS->addPanel(biblioModule, qt_("Bibliography"));
+	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
+	docPS->addPanel(mathsModule, qt_("Math Options"));
+	docPS->addPanel(floatModule, qt_("Float Placement"));
+	docPS->addPanel(bulletsModule, qt_("Bullets"));
+	docPS->addPanel(branchesModule, qt_("Branches"));
+	docPS->addPanel(embeddedFilesModule, qt_("Embedded Files"));
+	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
+	docPS->setCurrentPanel(qt_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
@@ -1009,7 +1009,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 void GuiDocument::showPreamble()
 {
-	docPS->setCurrentPanel(_("LaTeX Preamble"));
+	docPS->setCurrentPanel(qt_("LaTeX Preamble"));
 }
 
 
