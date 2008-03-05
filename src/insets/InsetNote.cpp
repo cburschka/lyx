@@ -106,6 +106,12 @@ void InsetNoteParams::read(Lexer & lex)
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetNode
+//
+/////////////////////////////////////////////////////////////////////
+
 InsetNote::InsetNote(Buffer const & buf, string const & label)
 	: InsetCollapsable(buf)
 {
@@ -113,20 +119,9 @@ InsetNote::InsetNote(Buffer const & buf, string const & label)
 }
 
 
-InsetNote::InsetNote(InsetNote const & in)
-	: InsetCollapsable(in), params_(in.params_)
-{}
-
-
 InsetNote::~InsetNote()
 {
 	InsetNoteMailer(*this).hideDialog();
-}
-
-
-Inset * InsetNote::clone() const
-{
-	return new InsetNote(*this);
 }
 
 

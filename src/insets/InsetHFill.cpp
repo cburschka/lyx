@@ -37,12 +37,6 @@ ParamInfo const & InsetHFill::findInfo(string const & /* cmdName */)
 }
 
 
-Inset * InsetHFill::clone() const
-{
-	return new InsetHFill;
-}
-
-
 void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 {
 	// The metrics for this inset are calculated externally in

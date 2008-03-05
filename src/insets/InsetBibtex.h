@@ -54,16 +54,15 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
+private:
 	///
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(EmbeddedFile const & file);
-protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetBibtex(*this); }
 };
 
 

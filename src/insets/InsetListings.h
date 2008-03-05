@@ -33,7 +33,7 @@ public:
 	///
 	InsetCode lyxCode() const { return LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
-	virtual DisplayType display() const;
+	DisplayType display() const;
 	///
 	docstring name() const { return from_ascii("Listings"); }
 	// Update the counters of this inset and of its contents
@@ -47,7 +47,7 @@ public:
 	///
 	bool isMacroScope() const { return true; }
 	///
-	int latex( odocstream &, OutputParams const &) const;
+	int latex(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -56,14 +56,13 @@ public:
 	InsetListingsParams const & params() const { return params_; }
 	///
 	InsetListingsParams & params() { return params_; }
-protected:
-	InsetListings(InsetListings const &);
+private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetListings(*this); }
 	///
 	void setButtonLabel();
 	///

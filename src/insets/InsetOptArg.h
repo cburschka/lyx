@@ -23,10 +23,16 @@ namespace lyx {
  * InsetOptArg. Used to insert a short version of sectioning header etc.
  * automatically, or other optional LaTeX arguments
  */
-class InsetOptArg : public InsetCollapsable {
+class InsetOptArg : public InsetCollapsable
+{
 public:
+	///
 	InsetOptArg(Buffer const &);
 
+	/// Outputting the optional parameter of a LaTeX command
+	int latexOptional(odocstream &, OutputParams const &) const;
+
+private:
 	/// code of the inset
 	InsetCode lyxCode() const { return OPTARG_CODE; }
 	///
@@ -41,17 +47,13 @@ public:
 	/// Standard DocBook output -- short-circuited
 	int docbook(odocstream &, OutputParams const &) const;
 
-	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(odocstream &, OutputParams const &) const;
 	/// Write out to the .lyx file
 	void write(std::ostream & os) const;
 
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
-protected:
-	InsetOptArg(InsetOptArg const &);
-private:
-	Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetOptArg(*this); }
 };
 
 

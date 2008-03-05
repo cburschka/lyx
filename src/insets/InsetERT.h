@@ -34,13 +34,9 @@ class InsetERT : public InsetCollapsable {
 public:
 	///
 	InsetERT(Buffer const &, CollapseStatus status = Open);
-#if 0
-	///
-	InsetERT(BufferParams const &,
-		 Language const *, std::string const & contents, CollapseStatus status);
-#endif
 	///
 	~InsetERT();
+private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }
 	///
@@ -64,20 +60,17 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	virtual bool forceEmptyLayout() const { return true; }
+	bool forceEmptyLayout() const { return true; }
 	///
-	virtual bool allowParagraphCustomization(idx_type) const { return false; }
+	bool allowParagraphCustomization(idx_type) const { return false; }
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
-protected:
-	InsetERT(InsetERT const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-
-private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetERT(*this); }
 	///
 	void setButtonLabel();
 	///

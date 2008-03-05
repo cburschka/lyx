@@ -273,9 +273,8 @@ void InsetFloat::read(Lexer & lex)
 
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
-	if (support::contains(params_.placement, 'H')) {
+	if (support::contains(params_.placement, 'H'))
 		features.require("float");
-	}
 
 	if (params_.sideways)
 		features.require("rotfloat");
@@ -285,12 +284,6 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 
 	features.useFloat(params_.type, params_.subfloat);
 	InsetCollapsable::validate(features);
-}
-
-
-Inset * InsetFloat::clone() const
-{
-	return new InsetFloat(*this);
 }
 
 

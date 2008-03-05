@@ -35,11 +35,6 @@ InsetEnvironment::InsetEnvironment(Buffer const & buf, docstring const & name)
 }
 
 
-InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
-	: InsetText(in), layout_(in.layout_)
-{}
-
-
 void InsetEnvironment::write(ostream & os) const
 {
 	os << "Environment " << to_utf8(name()) << "\n";

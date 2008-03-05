@@ -46,17 +46,6 @@ InsetListings::InsetListings(Buffer const & buf, InsetListingsParams const & par
 {}
 
 
-InsetListings::InsetListings(InsetListings const & in)
-	: InsetCollapsable(in), params_(in.params_)
-{}
-
-
-Inset * InsetListings::clone() const
-{
-	return new InsetListings(*this);
-}
-
-
 InsetListings::~InsetListings()
 {
 	InsetListingsMailer(*this).hideDialog();

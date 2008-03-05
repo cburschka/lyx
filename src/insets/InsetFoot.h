@@ -21,10 +21,12 @@ namespace lyx {
 /** The footnote inset
 
 */
-class InsetFoot : public InsetFootlike {
+class InsetFoot : public InsetFootlike
+{
 public:
 	///
 	InsetFoot(Buffer const &);
+private:
 	///
 	InsetCode lyxCode() const { return FOOT_CODE; }
 	///
@@ -41,10 +43,7 @@ public:
 	void updateLabels(ParIterator const &);
 	///
 	void addToToc(ParConstIterator const &) const;
-
-protected:
-	InsetFoot(InsetFoot const &);
-private:
+	///
 	Inset * clone() const { return new InsetFoot(*this); }
 };
 

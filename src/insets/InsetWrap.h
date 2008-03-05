@@ -49,6 +49,9 @@ public:
 	///
 	~InsetWrap();
 	///
+	InsetWrapParams const & params() const { return params_; }
+private:
+	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
@@ -71,18 +74,15 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	InsetWrapParams const & params() const { return params_; }
-	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
-protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	docstring name() const { return name_; }
-private:
-	Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetWrap(*this); }
 
 	///
 	InsetWrapParams params_;

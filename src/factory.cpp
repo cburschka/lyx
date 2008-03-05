@@ -211,10 +211,6 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_INFO_INSERT:
 			return new InsetInfo(buf, to_utf8(cmd.argument()));
-#if 0
-		case LFUN_THEOREM_INSERT:
-			return new InsetTheorem;
-#endif
 
 		case LFUN_INSET_INSERT: {
 			string const name = cmd.getArg(0);

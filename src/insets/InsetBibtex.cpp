@@ -36,7 +36,6 @@
 #include "support/Path.h"
 #include "support/textutils.h"
 
-#include <boost/tokenizer.hpp>
 #include <limits>
 
 using namespace std;
@@ -63,12 +62,6 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
-}
-
-
-Inset * InsetBibtex::clone() const
-{
-	return new InsetBibtex(*this);
 }
 
 

@@ -478,10 +478,6 @@ endif
 
 noinst_LTLIBRARIES += liblyxinsets.la
 
-EXTRA_DIST += \
-	insets/InsetTheorem.cpp \
-	insets/InsetTheorem.h
-
 SOURCEFILESINSETS = \
 	insets/MailInset.cpp \
 	insets/ExternalSupport.cpp \
@@ -595,9 +591,7 @@ HEADERFILESINSETS = \
 #	insets/InsetList.cpp \
 #	insets/InsetList.h \
 #	insets/InsetSection.h \
-#	insets/InsetSection.cpp \
-#	insets/InsetTheorem.cpp \
-#	insets/InsetTheorem.h
+#	insets/InsetSection.cpp
 
 lyxinsets.cpp:
 	@echo -e '$(SOURCEFILESINSETS:%=\n#include "%")\n' > $@

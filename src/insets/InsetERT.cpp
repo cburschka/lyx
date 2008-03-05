@@ -48,17 +48,6 @@ InsetERT::InsetERT(Buffer const & buf, CollapseStatus status)
 {}
 
 
-InsetERT::InsetERT(InsetERT const & in)
-	: InsetCollapsable(in)
-{}
-
-
-Inset * InsetERT::clone() const
-{
-	return new InsetERT(*this);
-}
-
-
 InsetERT::~InsetERT()
 {
 	InsetERTMailer(*this).hideDialog();

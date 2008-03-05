@@ -19,16 +19,13 @@
 
 namespace lyx {
 
-class LaTeXFeatures;
-
 /** Used to insert index labels
   */
 class InsetIndex : public InsetCollapsable {
 public:
 	///
 	InsetIndex(Buffer const &);
-	///
-	InsetIndex(InsetIndex const &);
+private:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -43,9 +40,8 @@ public:
 	bool neverIndent() const { return true; }
 	///
 	void addToToc(ParConstIterator const &) const;
-private:
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetIndex(*this); }
 };
 
 
@@ -53,6 +49,15 @@ class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
+
+	///
+	static ParamInfo const & findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "printindex"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "printindex"; }
+private:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -64,14 +69,7 @@ public:
 	///
 	docstring screenLabel() const;
 	///
-	static ParamInfo const & findInfo(std::string const &);
-	///
-	static std::string defaultCommand() { return "printindex"; };
-	///
-	static bool isCompatibleCommand(std::string const & s) 
-		{ return s == "printindex"; }
-private:
-	Inset * clone() const { return new InsetPrintIndex(params()); }
+	Inset * clone() const { return new InsetPrintIndex(*this); }
 };
 
 

@@ -155,7 +155,8 @@ protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetExternal(*this); }
 
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

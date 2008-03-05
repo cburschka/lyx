@@ -41,9 +41,9 @@ public:
 	static std::string defaultCommand() { return "tableofcontents"; };
 	///
 	static bool isCompatibleCommand(std::string const & cmd)
-		{return cmd == defaultCommand(); }
+		{ return cmd == defaultCommand(); }
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const { return new InsetTOC(*this); }
 };
 
 

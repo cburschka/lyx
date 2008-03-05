@@ -41,7 +41,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual DisplayType display() const;
+	DisplayType display() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
 	/** Fills \c list
@@ -101,7 +101,7 @@ protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	Inset * clone() const;
+	Inset * clone() const { return new InsetInclude(*this); }
 
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.

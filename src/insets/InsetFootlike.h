@@ -24,8 +24,7 @@ class InsetFootlike : public InsetCollapsable {
 public:
 	///
 	InsetFootlike(Buffer const &);
-	///
-	InsetFootlike(InsetFootlike const &);
+private:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

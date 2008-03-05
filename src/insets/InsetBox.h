@@ -58,9 +58,24 @@ public:
 class InsetBox : public InsetCollapsable {
 public:
 	///
+	enum BoxType {
+		Frameless,
+		Boxed,
+		Framed,
+		ovalbox,
+		Ovalbox,
+		Shadowbox,
+		Shaded,
+		Doublebox
+	};
+	///
 	InsetBox(Buffer const &, std::string const &);
 	///
 	~InsetBox();
+private:
+	///
+	friend class InsetBoxParams;
+	friend class InsetBoxMailer;
 	///
 	docstring editMessage() const;
 	///
@@ -82,7 +97,7 @@ public:
 	//FIXME Is this the one we want? or is it:
 	//allowParagraphCustomization(idx_type)?
 	///
-	virtual bool forceEmptyLayout() const;
+	bool forceEmptyLayout() const;
 	///
 	bool neverIndent() const { return true; }
 	///
@@ -102,28 +117,14 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	enum BoxType {
-		Frameless,
-		Boxed,
-		Framed,
-		ovalbox,
-		Ovalbox,
-		Shadowbox,
-		Shaded,
-		Doublebox
-	};
-protected:
-	InsetBox(InsetBox const &);
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// Is the width forced to some value?
-	virtual bool hasFixedWidth() const;
-private:
-	friend class InsetBoxParams;
-
-	virtual Inset * clone() const;
-
+	bool hasFixedWidth() const;
+	///
+	Inset * clone() const { return new InsetBox(*this); }
 	/// used by the constructors
 	void init();
+
 	///
 	InsetBoxParams params_;
 };

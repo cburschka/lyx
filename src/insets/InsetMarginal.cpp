@@ -30,17 +30,6 @@ InsetMarginal::InsetMarginal(Buffer const & buf)
 {}
 
 
-InsetMarginal::InsetMarginal(InsetMarginal const & in)
-	: InsetFootlike(in)
-{}
-
-
-Inset * InsetMarginal::clone() const
-{
-	return new InsetMarginal(*this);
-}
-
-
 docstring InsetMarginal::editMessage() const
 {
 	return _("Opened Marginal Note Inset");

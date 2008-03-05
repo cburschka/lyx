@@ -138,9 +138,9 @@ public:
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetText(*this); }
 	///
-	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
 	///
 	bool completionSupported(Cursor const &) const;
@@ -159,10 +159,8 @@ public:
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 
-protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
 	void setParagraphOwner();

@@ -250,12 +250,6 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 }
 
 
-Inset * InsetInclude::clone() const
-{
-	return new InsetInclude(*this);
-}
-
-
 docstring InsetInclude::screenLabel() const
 {
 	docstring temp;

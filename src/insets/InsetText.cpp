@@ -151,12 +151,6 @@ void InsetText::clear()
 }
 
 
-Inset * InsetText::clone() const
-{
-	return new InsetText(*this);
-}
-
-
 Dimension const InsetText::dimension(BufferView const & bv) const
 {
 	TextMetrics const & tm = bv.textMetrics(&text_);

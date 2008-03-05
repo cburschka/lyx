@@ -21,65 +21,62 @@ namespace lyx {
 class InsetCaption : public InsetText {
 public:
 	///
-	InsetCaption(InsetCaption const &);
 	InsetCaption(Buffer const &);
 	///
-	virtual ~InsetCaption() {}
+	std::string const & type() const { return type_; }
+	/// return the mandatory argument (LaTeX format) only
+	int getArgument(odocstream & os, OutputParams const &) const;
+	/// return the optional argument(s) only
+	int getOptArg(odocstream & os, OutputParams const &) const;
+private:
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
 	///
-	virtual DisplayType display() const;
+	DisplayType display() const { return AlignCenter; }
 	///
-	virtual bool neverIndent() const { return true; }
+	bool neverIndent() const { return true; }
 	///
-	virtual InsetCode lyxCode() const;
+	InsetCode lyxCode() const { return CAPTION_CODE; }
 	///
 	docstring editMessage() const;
 	///
-	virtual void cursorPos(BufferView const & bv,
+	void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	bool descendable() const { return true; }
 	///
-	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	virtual void draw(PainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
-	virtual Inset * editXY(Cursor & cur, int x, int y);
+	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	bool insetAllowed(InsetCode code) const;
 	///
-	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
-	virtual void updateLabels(ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
 	int latex(odocstream & os, OutputParams const &) const;
 	///
 	int plaintext(odocstream & os, OutputParams const & runparams) const;
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
-	/// return the mandatory argument (LaTeX format) only
-	int getArgument(odocstream & os, OutputParams const &) const;
-	/// return the optional argument(s) only
-	int getOptArg(odocstream & os, OutputParams const &) const;
-	///
-	std::string const & type() const { return type_; }
 	///
 	void setCustomLabel(docstring const & label);
 	///
 	void addToToc(ParConstIterator const &) const;
 	/// 
-	virtual bool forceEmptyLayout() const { return true; }
+	bool forceEmptyLayout() const { return true; }
 	/// Captions don't accept alignment, spacing, etc.
-	virtual bool allowParagraphCustomization(idx_type) const { return false; }
-
-private:
+	bool allowParagraphCustomization(idx_type) const { return false; }
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const { return new InsetCaption(*this); }
+
 	///
 	mutable docstring full_label_;
 	///
@@ -91,20 +88,6 @@ private:
 	///
 	docstring custom_label_;
 };
-
-
-inline
-Inset::DisplayType InsetCaption::display() const
-{
-	return AlignCenter;
-}
-
-
-inline
-InsetCode InsetCaption::lyxCode() const
-{
-	return CAPTION_CODE;
-}
 
 
 } // namespace lyx

@@ -200,12 +200,6 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetWrap::clone() const
-{
-	return new InsetWrap(*this);
-}
-
-
 docstring InsetWrap::editMessage() const
 {
 	return _("Opened Wrap Inset");

@@ -50,7 +50,7 @@ public:
 		{ return s == "hfill"; }
 private:
 	///
-	virtual Inset * clone() const;
+	Inset * clone() const { return new InsetHFill(*this); }
 };
 
 

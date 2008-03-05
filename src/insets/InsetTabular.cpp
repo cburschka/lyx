@@ -2886,12 +2886,6 @@ InsetTabular::~InsetTabular()
 }
 
 
-Inset * InsetTabular::clone() const
-{
-	return new InsetTabular(*this);
-}
-
-
 bool InsetTabular::insetAllowed(InsetCode code) const
 {
 	if (code == MATHMACRO_CODE)

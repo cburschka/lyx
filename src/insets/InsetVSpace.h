@@ -28,6 +28,9 @@ public:
 	InsetVSpace(VSpace const &);
 	///
 	~InsetVSpace();
+	/// How much?
+	VSpace const & space() const { return space_; }
+private:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -44,15 +47,10 @@ public:
 	void write(std::ostream & os) const;
 	///
 	DisplayType display() const { return AlignCenter; }
-	/// How much?
-	VSpace const & space() const { return space_; }
-
-protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-
-private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetVSpace(*this); }
 	///
 	docstring const label() const;
 

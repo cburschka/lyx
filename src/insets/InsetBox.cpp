@@ -93,20 +93,9 @@ InsetBox::InsetBox(Buffer const & buffer, string const & label)
 }
 
 
-InsetBox::InsetBox(InsetBox const & in)
-	: InsetCollapsable(in), params_(in.params_)
-{}
-
-
 InsetBox::~InsetBox()
 {
 	InsetBoxMailer(*this).hideDialog();
-}
-
-
-Inset * InsetBox::clone() const
-{
-	return new InsetBox(*this);
 }
 
 
@@ -119,7 +108,7 @@ docstring InsetBox::editMessage() const
 docstring InsetBox::name() const 
 {
 	// FIXME: UNICODE
-	string name = string("Box");
+	string name = "Box";
 	if (boxtranslator().find(params_.type) == Shaded)
 		name += string(":Shaded");
 	return from_ascii(name);
@@ -162,7 +151,7 @@ void InsetBox::setButtonLabel()
 
 bool InsetBox::hasFixedWidth() const
 {
-      return params_.inner_box || params_.special != "width";
+	return params_.inner_box || params_.special != "width";
 }
 
 

@@ -28,14 +28,15 @@ using namespace std;
 
 namespace lyx {
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetIndex
+//
+///////////////////////////////////////////////////////////////////////
+
 
 InsetIndex::InsetIndex(Buffer const & buf)
 	: InsetCollapsable(buf)
-{}
-
-
-InsetIndex::InsetIndex(InsetIndex const & in)
-	: InsetCollapsable(in)
 {}
 
 
@@ -45,12 +46,6 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 	int const i = InsetText::docbook(os, runparams);
 	os << "</primary></indexterm>";
 	return i;
-}
-
-
-Inset * InsetIndex::clone() const
-{
-	return new InsetIndex(*this);
 }
 
 
@@ -73,6 +68,12 @@ void InsetIndex::addToToc(ParConstIterator const & cpit) const
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetPrintIndex
+//
+///////////////////////////////////////////////////////////////////////
+
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
@@ -81,9 +82,8 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
-	if (param_info_.empty()) {
+	if (param_info_.empty())
 		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
-	}
 	return param_info_;
 }
 

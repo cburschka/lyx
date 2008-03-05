@@ -26,17 +26,6 @@ InsetOptArg::InsetOptArg(Buffer const & buf)
 {}
 
 
-InsetOptArg::InsetOptArg(InsetOptArg const & in)
-	: InsetCollapsable(in)
-{}
-
-
-Inset * InsetOptArg::clone() const
-{
-	return new InsetOptArg(*this);
-}
-
-
 docstring InsetOptArg::editMessage() const
 {
 	return _("Opened Optional Argument Inset");

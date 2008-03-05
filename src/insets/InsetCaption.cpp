@@ -47,15 +47,6 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetCaption::InsetCaption(InsetCaption const & ic)
-	: InsetText(ic)
-{
-	setAutoBreakRows(true);
-	setDrawFrame(true);
-	setFrameColor(Color_captionframe);
-}
-
-
 InsetCaption::InsetCaption(Buffer const & buf)
 	: InsetText(buf)
 {
@@ -312,12 +303,6 @@ void InsetCaption::updateLabels(ParIterator const & it)
 
 	// Do the real work now.
 	InsetText::updateLabels(it);
-}
-
-
-Inset * InsetCaption::clone() const
-{
-	return new InsetCaption(*this);
 }
 
 

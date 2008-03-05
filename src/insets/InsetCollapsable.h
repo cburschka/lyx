@@ -20,15 +20,10 @@
 #include "Box.h"
 #include "TextClass.h"
 
-#include <string>
-
 namespace lyx {
 
 class CursorSlice;
-class FontInfo;
 class InsetLayout;
-class Paragraph;
-class Text;
 
 namespace frontend { class Painter; }
 
@@ -51,7 +46,7 @@ public:
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
 	///
-	InsetLayout const & getLayout(BufferParams const &) const { return *layout_; } 
+	InsetLayout const & getLayout(BufferParams const &) const { return *layout_; }
 	///
 	InsetLayout const & getLayout() const { return *layout_; } 
 	///
@@ -137,13 +132,13 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	virtual ColorCode backgroundColor() const {return layout_->bgcolor(); }
+	ColorCode backgroundColor() const { return layout_->bgcolor(); }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	virtual InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
+	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 	/// Allow multiple blanks
 	virtual bool isFreeSpacing() const { return layout_->isFreeSpacing(); }
@@ -158,7 +153,7 @@ public:
 	bool undefined() const;
 protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	void edit(Cursor & cur, bool front, 
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);

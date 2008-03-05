@@ -83,18 +83,18 @@ public:
 	///
 	void subfloat(bool s, BufferParams const &);
 	///
-	bool  showInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }
+private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
-protected:
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
 	///
-	virtual Inset * clone() const;
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	Inset * clone() const { return new InsetFloat(*this); }
 	///
 	docstring getCaption(OutputParams const &) const;
 	///

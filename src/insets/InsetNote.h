@@ -46,6 +46,9 @@ public:
 	///
 	~InsetNote();
 	///
+	InsetNoteParams const & params() const { return params_; }
+private:
+	///
 	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return NOTE_CODE; }
@@ -72,23 +75,20 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	InsetNoteParams const & params() const { return params_; }
-	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
 	///
 	void addToToc(ParConstIterator const &) const;
-protected:
-	InsetNote(InsetNote const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
-	friend class InsetNoteParams;
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	Inset * clone() const;
+	Inset * clone() const { return new InsetNote(*this); }
 	/// used by the constructors
 	void init();
+	///
+	friend class InsetNoteParams;
+
 	///
 	InsetNoteParams params_;
 };

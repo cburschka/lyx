@@ -42,12 +42,6 @@ ParamInfo const & InsetTOC::findInfo(string const & /* cmdName */)
 }
 
 
-Inset * InsetTOC::clone() const
-{
-	return new InsetTOC(*this);
-}
-
-
 docstring InsetTOC::screenLabel() const
 {
 	if (getCmdName() == "tableofcontents")

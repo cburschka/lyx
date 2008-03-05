@@ -29,11 +29,6 @@ InsetFootlike::InsetFootlike(Buffer const & buf)
 {}
 
 
-InsetFootlike::InsetFootlike(InsetFootlike const & in)
-	: InsetCollapsable(in)
-{}
-
-
 void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontInfo tmpfont = mi.base.font;

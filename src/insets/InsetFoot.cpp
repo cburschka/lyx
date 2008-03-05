@@ -40,11 +40,6 @@ InsetFoot::InsetFoot(Buffer const & buf)
 {}
 
 
-InsetFoot::InsetFoot(InsetFoot const & in)
-	: InsetFootlike(in)
-{}
-
-
 docstring InsetFoot::editMessage() const
 {
 	return _("Opened Footnote Inset");

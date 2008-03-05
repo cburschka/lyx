@@ -51,12 +51,6 @@ InsetVSpace::~InsetVSpace()
 }
 
 
-Inset * InsetVSpace::clone() const
-{
-	return new InsetVSpace(*this);
-}
-
-
 void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

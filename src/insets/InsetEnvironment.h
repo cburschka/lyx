@@ -44,8 +44,6 @@ public:
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
-protected:
-	InsetEnvironment(InsetEnvironment const &);
 private:
 	///
 	Inset * clone() const { return new InsetEnvironment(*this); }

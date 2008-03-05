@@ -53,13 +53,9 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 {
 	switch (decoration()) {
 	case InsetLayout::Classic:
-		if (status() == Open) {
-			if (openinlined_)
-				return LeftButton;
-			else
-				return TopButton;
-		} else
-			return ButtonOnly;
+		if (status() == Open)
+			return openinlined_ ? LeftButton : TopButton;
+		return ButtonOnly;
 
 	case InsetLayout::Minimalistic:
 		return status() == Open ? NoButton : ButtonOnly ;
@@ -130,7 +126,7 @@ void InsetCollapsable::setLayout(BufferParams const & bp)
 
 void InsetCollapsable::setLayout(DocumentClass const * const dc)
 {
-	if (dc != 0) {
+	if (dc) {
 		layout_ = &(dc->insetLayout(name()));
 		labelstring_ = layout_->labelstring();
 	} else {

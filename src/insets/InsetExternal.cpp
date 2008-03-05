@@ -418,12 +418,6 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 {}
 
 
-Inset * InsetExternal::clone() const
-{
-	return new InsetExternal(*this);
-}
-
-
 InsetExternal::~InsetExternal()
 {
 	InsetExternalMailer(*this).hideDialog();

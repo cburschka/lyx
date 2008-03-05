@@ -755,18 +755,17 @@ public:
 	///
 	mutable Tabular tabular;
 
-protected:
+private:
 	///
 	InsetTabular(InsetTabular const &);
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	int scroll() const { return scx_; }
-
-private:
-	Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetTabular(*this); }
 
 	///
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,

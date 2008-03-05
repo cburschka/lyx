@@ -40,10 +40,9 @@ public:
 	docstring editMessage() const;
 	///
 	void addToToc(ParConstIterator const &) const;
-protected:
-	InsetMarginal(InsetMarginal const &);
 private:
-	Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetMarginal(*this); }
 };
 
 
