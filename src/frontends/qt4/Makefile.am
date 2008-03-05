@@ -150,7 +150,6 @@ NOMOCHEADER = \
 	GuiPainter.h \
 	GuiToolbars.h \
 	LaTeXHighlighter.h \
-	qlkey.h \
 	qt_helpers.h
 
 MOCHEADER = \
