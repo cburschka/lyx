@@ -250,7 +250,7 @@ public:
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
 		QModelIndex const & index) const {
-		QComboBox * combo = static_cast<QComboBox const *>(parent());
+		QComboBox * combo = static_cast<QComboBox *>(parent());
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		
 		// draw line with small text string for separator
@@ -327,7 +327,7 @@ public:
 	///
 	QSize sizeHint(QStyleOptionViewItem const & option,
 		QModelIndex const & index) const {
-		QComboBox * combo = static_cast<QComboBox const *>(parent());
+		QComboBox * combo = static_cast<QComboBox *>(parent());
 
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		QSize size = combo->style()->sizeFromContents(
@@ -372,7 +372,7 @@ private:
 	QStyleOptionMenuItem getStyleOption(QStyleOptionViewItem const & option,
 		QModelIndex const & index) const
 	{
-		QComboBox * combo = static_cast<QComboBox const *>(parent());
+		QComboBox * combo = static_cast<QComboBox *>(parent());
 		
 		// create the options for a menu item
 		QStyleOptionMenuItem menuOption;
