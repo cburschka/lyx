@@ -426,6 +426,12 @@ void GuiLayoutBox::setFilter(QString const & s)
 		if (i.isValid())
 			setCurrentIndex(i.row());
 	}
+	
+	// Workaround to resize to content size
+	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
+	//        does not help.
+	if (view()->isVisible())
+		showPopup();
 }
 
 
