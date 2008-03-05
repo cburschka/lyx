@@ -248,7 +248,7 @@ public:
 	: QAbstractItemDelegate(parent) {}
 	
 	///
-	void paint(QPainter * painter, const QStyleOptionViewItem & option,
+	void paint(QPainter * painter, QStyleOptionViewItem const & option,
 		const QModelIndex &index) const {
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
 		
@@ -284,8 +284,8 @@ public:
 	}
 	
 	///
-	QSize sizeHint(const QStyleOptionViewItem &option,
-		const QModelIndex &index) const {
+	QSize sizeHint(QStyleOptionViewItem const & option,
+		QModelIndex const & index) const {
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
 
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
@@ -325,8 +325,8 @@ private:
 	}
 
 	///
-	QStyleOptionMenuItem getStyleOption(const QStyleOptionViewItem &option,
-		const QModelIndex &index) const
+	QStyleOptionMenuItem getStyleOption(QStyleOptionViewItem const & option,
+		QModelIndex const & index) const
 	{
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
 
