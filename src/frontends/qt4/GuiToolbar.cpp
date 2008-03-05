@@ -245,27 +245,68 @@ class FilterItemDelegate : public QAbstractItemDelegate {
 public:
 	///
 	explicit FilterItemDelegate(QObject * parent = 0)
-	: QAbstractItemDelegate(parent) {}
+		: QAbstractItemDelegate(parent) {}
 	
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
 		QModelIndex const & index) const {
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
+		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		
+		// draw line with small text string for separator
+		if (opt.text.left(2) == "--") {
+			painter->save();
+
+			// set options for the separator, the first 8/18 of the vertical space
+			QStyleOptionMenuItem sopt = opt;
+			sopt.state = QStyle::State_Active | QStyle::State_Enabled;
+			sopt.checked = false;
+			sopt.text = QString();
+			sopt.rect.setHeight(sopt.rect.height() * 8 / 18);
+			sopt.menuRect.setHeight(sopt.menuRect.height() * 8 / 18);
+
+			// use the style with an empty text to paint the background
+			painter->eraseRect(sopt.rect);
+			combo->style()->drawControl(QStyle::CE_MenuItem, &sopt, painter, combo->view());
+
+			// draw the centered text, small and bold
+			QPen pen;
+			pen.setWidth(1);
+			pen.setColor(sopt.palette.text().color());
+			painter->setPen(pen);
+			QFont font = sopt.font;
+			font.setBold(true);
+			font.setWeight(QFont::Black);
+			font.setPointSize(sopt.font.pointSize() * 8 / 10);
+			painter->setFont(font);
+			QRect brect;
+			painter->drawText(sopt.rect, Qt::AlignCenter, "Modules", &brect);
+			
+			// draw the horizontal line
+			QColor lcol = sopt.palette.text().color();
+			lcol.setAlpha(127);
+			painter->setPen(lcol);
+			painter->drawLine(sopt.rect.x(), sopt.rect.y() + sopt.rect.height() / 2 ,
+					  brect.left() - 1, sopt.rect.y() + sopt.rect.height() / 2);
+			painter->drawLine(brect.right() + 1, sopt.rect.y() + sopt.rect.height() / 2,
+					  sopt.rect.right(), sopt.rect.y() + sopt.rect.height() / 2);
+			
+			painter->restore();
+			
+			// move rect down 8/20 of the original height
+			opt.rect.setTop(sopt.rect.y() + sopt.rect.height());
+			opt.menuRect = opt.rect;
+		}
+
 		// Draw using the menu item style (this is how QComboBox does it).
 		// But for the rich text drawing below we will call it with an
 		// empty string, and later then draw over it the real string.
 		painter->save();
-		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		QString text = underlineFilter(opt.text);
 		opt.text = QString();
-		painter->eraseRect(option.rect);
+		painter->eraseRect(opt.rect);
 		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo->view());
 		painter->restore();
-		
-		// don't draw string for separator
-		if (opt.menuItemType == QStyleOptionMenuItem::Separator)
-			return;
 		
 		// Draw the rich text.
 		painter->save();
@@ -289,8 +330,11 @@ public:
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
 
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
-		return combo->style()->sizeFromContents(
+		QSize size = combo->style()->sizeFromContents(
 			 QStyle::CT_MenuItem, &opt, option.rect.size(), combo);
+		if (opt.text.left(2) == "--")
+			size.setHeight(size.height() * 18 / 10);
+		return size;
 	}
 	
 private:
@@ -329,26 +373,23 @@ private:
 		QModelIndex const & index) const
 	{
 		QComboBox * combo = static_cast<QComboBox const *>(parent());
-
+		
 		// create the options for a menu item
 		QStyleOptionMenuItem menuOption;
 		menuOption.palette = QApplication::palette("QMenu");
-		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
-		if (option.state & QStyle::State_Selected)
-			menuOption.state |= QStyle::State_Selected;
 		menuOption.checkType = QStyleOptionMenuItem::NonExclusive;
-		menuOption.checked = combo->currentIndex() == index.row();
-		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
-			.replace(QLatin1Char('&'), QLatin1String("&&"));
-		if (menuOption.text.left(2) == "--")
-			menuOption.menuItemType = QStyleOptionMenuItem::Separator;
-		else
-			menuOption.menuItemType = QStyleOptionMenuItem::Normal;
-		menuOption.tabWidth = 0;
+		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
 		menuOption.menuRect = option.rect;
 		menuOption.rect = option.rect;
 		menuOption.font = combo->font();
 		menuOption.fontMetrics = QFontMetrics(menuOption.font);
+		menuOption.tabWidth = 0;
+		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
+			.replace(QLatin1Char('&'), QLatin1String("&&"));
+		menuOption.menuItemType = QStyleOptionMenuItem::Normal;
+		if (option.state & QStyle::State_Selected)
+			menuOption.state |= QStyle::State_Selected;
+		menuOption.checked = combo->currentIndex() == index.row();
 		
 		return menuOption;
 	}
