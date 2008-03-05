@@ -1335,7 +1335,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 #if 0
 	case LFUN_LIST_INSERT:
-	case LFUN_THEOREM_INSERT:
 #endif
 	case LFUN_CAPTION_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
@@ -1925,9 +1924,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 #if 0
 	case LFUN_LIST_INSERT:
 		code = LIST_CODE;
-		break;
-	case LFUN_THEOREM_INSERT:
-		code = THEOREM_CODE;
 		break;
 #endif
 	case LFUN_CAPTION_INSERT:

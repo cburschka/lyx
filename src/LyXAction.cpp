@@ -388,7 +388,6 @@ void LyXAction::init()
 
 #if 0
 		{ LFUN_LIST_INSERT, "list-insert", Noop, Edit },
-		{ LFUN_THEOREM_INSERT, "theorem-insert", Noop, Edit },
 #endif
 
 		{ LFUN_DELETE_BACKWARD_SKIP, "delete-backward-skip", Noop, Edit },
