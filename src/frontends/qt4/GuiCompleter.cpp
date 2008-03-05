@@ -572,7 +572,7 @@ void GuiCompleter::hideInline(Cursor & cur)
 	// Trigger asynchronous part of hideInline. We might be
 	// in a dispatcher here and the setModel call might
 	// trigger focus events which is are not healthy here.
-	QTimer::singleShot(0, this, SLOT(asyncHideModel()));
+	QTimer::singleShot(0, this, SLOT(asyncHideInline()));
 
 	// mark that the asynchronous part will reset the model
 	if (!popupVisible())
