@@ -32,6 +32,7 @@ class ToolbarItem;
 
 namespace frontend {
 
+class FilterItemDelegate;
 class GuiCommandBuffer;
 class GuiFilterProxyModel;
 class GuiView;
@@ -81,6 +82,8 @@ private:
 	int lastSel_;
 	/// the character filter
 	QString filter_;
+	///
+	FilterItemDelegate * filterItemDelegate_;
 };
 
 

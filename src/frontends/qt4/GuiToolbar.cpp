@@ -42,14 +42,19 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 
+#include <QAbstractItemDelegate>
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
 #include <QComboBox>
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QList>
+#include <QPainter>
 #include <QPixmap>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
 #include <QStandardItemModel>
+#include <QTextDocument>
 #include <QToolBar>
 #include <QToolButton>
 #include <QVariant>
@@ -236,45 +241,119 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 //
 /////////////////////////////////////////////////////////////////////
 
+class FilterItemDelegate : public QAbstractItemDelegate {
+public:
+	///
+	explicit FilterItemDelegate(QObject * parent = 0)
+	: QAbstractItemDelegate(parent) {}
+	
+	///
+	void paint(QPainter * painter, const QStyleOptionViewItem & option,
+		const QModelIndex &index) const {
+		QComboBox * combo = static_cast<QComboBox const *>(parent());
+		
+		// Draw using the menu item style (this is how QComboBox does it).
+		// But for the rich text drawing below we will call it with an
+		// empty string, and later then draw over it the real string.
+		QStyleOptionMenuItem opt = getStyleOption(option, index);
+		QString text = underlineFilter(opt.text);
+		opt.text = QString();
+		painter->eraseRect(option.rect);
+		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo);
+		
+		// Draw the rich text.
+		painter->save();
+		
+		QColor col = opt.palette.text().color();
+		if (opt.state & QStyle::State_Selected)
+			col = opt.palette.highlightedText().color();
+		QAbstractTextDocumentLayout::PaintContext context;
+		context.palette.setColor(QPalette::Text, col);
+		
+		QTextDocument doc;
+		doc.setDefaultFont(opt.font);
+		doc.setHtml(text);
+		doc.setPageSize(QSize(opt.rect.width() - 20, opt.rect.height()));
+		painter->translate(opt.rect.x() + 20, opt.rect.y() - opt.rect.height());
+		doc.documentLayout()->draw(painter, context);
+		painter->restore();
+	}
+	
+	///
+	QSize sizeHint(const QStyleOptionViewItem &option,
+		const QModelIndex &index) const {
+		QComboBox * combo = static_cast<QComboBox const *>(parent());
+
+		QStyleOptionMenuItem opt = getStyleOption(option, index);
+		return combo->style()->sizeFromContents(
+			 QStyle::CT_MenuItem, &opt, option.rect.size(), combo);
+	}
+	
+private:
+	///
+	QString underlineFilter(QString const & s) const
+	{
+		// get filter
+		GuiLayoutBox * p = static_cast<GuiLayoutBox *>(parent());
+		QString const & f = p->filter();
+		if (f.isEmpty())
+			return s;
+		
+		// step through data item and put "(x)" for every matching character
+		QString r;
+		int lastp = -1;
+		p->filter();
+		for (int i = 0; i < f.length(); ++i) {
+			int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
+			BOOST_ASSERT(p != -1);
+			if (lastp == p - 1 && lastp != -1) {
+				// remove ")" and append "x)"
+				r = r.left(r.length() - 4) + s[p] + "</u>";
+			} else {
+				// append "(x)"
+				r += s.mid(lastp + 1, p - lastp - 1);
+				r += QString("<u>") + s[p] + "</u>";
+			}
+			lastp = p;
+		}
+		r += s.mid(lastp + 1);
+		return r;
+	}
+
+	///
+	QStyleOptionMenuItem getStyleOption(const QStyleOptionViewItem &option,
+		const QModelIndex &index) const
+	{
+		QComboBox * combo = static_cast<QComboBox const *>(parent());
+
+		// create the options for a menu item
+		QStyleOptionMenuItem menuOption;
+		menuOption.palette = QApplication::palette("QMenu");
+		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
+		if (option.state & QStyle::State_Selected)
+			menuOption.state |= QStyle::State_Selected;
+		menuOption.checkType = QStyleOptionMenuItem::NonExclusive;
+		menuOption.checked = combo->currentIndex() == index.row();
+		menuOption.menuItemType = QStyleOptionMenuItem::Normal;
+		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
+			.replace(QLatin1Char('&'), QLatin1String("&&"));
+		menuOption.tabWidth = 0;
+		menuOption.menuRect = option.rect;
+		menuOption.rect = option.rect;
+		menuOption.font = combo->font();
+		menuOption.fontMetrics = QFontMetrics(menuOption.font);
+		return menuOption;
+	}
+};
+
+
 class GuiFilterProxyModel : public QSortFilterProxyModel
 {
 public:
 	///
 	GuiFilterProxyModel(QObject * parent)
 	: QSortFilterProxyModel(parent) {}
-	
-	///
-	QVariant data(const QModelIndex & index, int role) const
-	{
-		GuiLayoutBox * p = static_cast<GuiLayoutBox *>(parent());
-		QString const & f = p->filter();
 
-		if (!f.isEmpty() && index.isValid() && role == Qt::DisplayRole) {
-			// step through data item and put "(x)" for every matching character
-			QString s = QSortFilterProxyModel::data(index, role).toString();
-			QString r;
-			int lastp = -1;
-			p->filter();
-			for (int i = 0; i < f.length(); ++i) {
-				int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
-				BOOST_ASSERT(p != -1);
-				if (lastp == p - 1 && lastp != -1) {
-					// remove ")" and append "x)"
-					r = r.left(r.length() - 1) + s[p] + ")";
-				} else {
-					// append "(x)"
-					r += s.mid(lastp + 1, p - lastp - 1);
-					r += "(" + s[p] + ")";
-				}
-				lastp = p;
-			}
-			r += s.mid(lastp + 1);
-			return r;
-		}
-		
-		return QSortFilterProxyModel::data(index, role);
-	}
-	
 	///
 	void setCharFilter(QString const & f)
 	{
@@ -295,7 +374,7 @@ private:
 
 
 GuiLayoutBox::GuiLayoutBox(GuiView & owner)
-	: owner_(owner)
+	: owner_(owner), filterItemDelegate_(new FilterItemDelegate(this))
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	setFocusPolicy(Qt::ClickFocus);
@@ -314,6 +393,7 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 
 	// for the filtering we have to intercept characters
 	view()->installEventFilter(this);
+	view()->setItemDelegateForColumn(0, filterItemDelegate_);
 	
 	QObject::connect(this, SIGNAL(activated(int)),
 			 this, SLOT(selected(int)));

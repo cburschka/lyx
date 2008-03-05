@@ -26,7 +26,6 @@
 #include "support/debug.h"
 
 #include <QApplication>
-#include <QAbstractListModel>
 #include <QHeaderView>
 #include <QPainter>
 #include <QPixmapCache>
