@@ -547,7 +547,7 @@ void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 		QString is = model_->item(i, 0)->text();
 		while (is.compare(titem) < 0) {
 			// e.g. --Separator--
-			if (is[0].category() != QChar::Letter_Uppercase)
+			if (is.at(0).category() != QChar::Letter_Uppercase)
 				break;
 			++i;
 			if (i == end)
