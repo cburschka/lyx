@@ -63,6 +63,10 @@ What's new
 - Stop warning messages when a local layout file is opened. Fix bugs caused by
   incorrect reloading of local layout files.
 
+- Use verbose htlatex command instead of oolatex, if available, since the latter
+  caused problems on some systems (bug 4604).
+
+
 * USER INTERFACE:
 
 - Allow to enter starred math commands like "\tag*" (bug 4584).
@@ -72,6 +76,7 @@ What's new
 - Fix parameter input of the math commands \makebox and \framebox (bug 2461).
 
 - When cutting a selection do not leave a dangling paragraph (bug 3995).
+
 
 * DOCUMENTATION
 
