@@ -255,15 +255,16 @@ public:
 		// Draw using the menu item style (this is how QComboBox does it).
 		// But for the rich text drawing below we will call it with an
 		// empty string, and later then draw over it the real string.
+		painter->save();
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		QString text = underlineFilter(opt.text);
 		opt.text = QString();
 		painter->eraseRect(option.rect);
 		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo);
-		
+		painter->restore();
+
 		// Draw the rich text.
 		painter->save();
-		
 		QColor col = opt.palette.text().color();
 		if (opt.state & QStyle::State_Selected)
 			col = opt.palette.highlightedText().color();
@@ -273,8 +274,7 @@ public:
 		QTextDocument doc;
 		doc.setDefaultFont(opt.font);
 		doc.setHtml(text);
-		doc.setPageSize(QSize(opt.rect.width() - 20, opt.rect.height()));
-		painter->translate(opt.rect.x() + 20, opt.rect.y() - opt.rect.height());
+		painter->translate(opt.rect.x() + 20, opt.rect.y());
 		doc.documentLayout()->draw(painter, context);
 		painter->restore();
 	}
@@ -358,7 +358,7 @@ public:
 	void setCharFilter(QString const & f)
 	{
 		setFilterRegExp(charFilterRegExp(f));
-		reset();
+		dataChanged(index(0, 0), index(rowCount() - 1, 1));
 	}
 
 private:
