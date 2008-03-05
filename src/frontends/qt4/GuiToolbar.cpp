@@ -522,17 +522,24 @@ void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
 		return;
 	}
 
-	// find row to insert the item
+	// find row to insert the item, after the separator if it exists
 	int i = 1; // skip the Standard layout
-	QString is = model_->item(i, 0)->text();
-	while (is.compare(titem) < 0) {
-		// e.g. --Separator--
-		if (is[0].category() != QChar::Letter_Uppercase)
-			break;
-		++i;
-		if (i == end)
-			break;
-		is = model_->item(i, 0)->text();
+	
+	QList<QStandardItem *> sep = model_->findItems("--", Qt::MatchStartsWith);
+	if (!sep.isEmpty())
+		i = sep.first()->index().row() + 1;
+	if (i < model_->rowCount()) {
+		// find alphabetic position
+		QString is = model_->item(i, 0)->text();
+		while (is.compare(titem) < 0) {
+			// e.g. --Separator--
+			if (is[0].category() != QChar::Letter_Uppercase)
+				break;
+			++i;
+			if (i == end)
+				break;
+			is = model_->item(i, 0)->text();
+		}
 	}
 
 	model_->insertRow(i, row);
