@@ -182,7 +182,7 @@ InsetLayout Index
 	LatexName             index
 	Decoration            classic
 	Font
-	  Color               latex
+	  Color               foreground
 	  Size                Small
 	  Family              Roman
 	  Shape               Up

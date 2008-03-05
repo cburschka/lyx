@@ -78,7 +78,8 @@ enum ColorCode
 	Color_marginlabel,
 	/// Label color for URL insets
 	Color_urllabel,
-	/// Label color for URL text
+
+	/// Color for URL inset text
 	Color_urltext,
 
 	/// Color for the depth bars in the margin
