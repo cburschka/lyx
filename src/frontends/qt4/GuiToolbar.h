@@ -53,6 +53,9 @@ public:
 	void addItemSort(docstring const & item, bool sorted);
 
 	///
+	void showPopup();
+	
+	///
 	bool eventFilter(QObject * o, QEvent * e);
 	///
 	QString const & filter() { return filter_; }

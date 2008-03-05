@@ -431,13 +431,21 @@ void GuiLayoutBox::setFilter(QString const & s)
 	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
 	//        does not help.
 	if (view()->isVisible())
-		showPopup();
+		QComboBox::showPopup();
 }
 
 
 void GuiLayoutBox::resetFilter()
 {
 	setFilter(QString());
+}
+
+
+void GuiLayoutBox::showPopup()
+{
+	resetFilter();
+	owner_.message(_("Enter characters to filter the layout list."));
+	QComboBox::showPopup();
 }
 
 
