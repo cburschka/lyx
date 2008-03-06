@@ -232,7 +232,7 @@ LayoutFileIndex
 		}
 	}
 	// If .layout is not in local directory, or an invalid layout is found, return null
-	return string("");
+	return string();
 }
 
 
@@ -241,7 +241,7 @@ LayoutFileIndex defaultBaseclass()
 	if (BaseClassList::get().haveClass("article"))
 		return string("article");
 	if (BaseClassList::get().empty())
-		return string("");
+		return string();
 	return BaseClassList::get().classList().front();
 }
 
