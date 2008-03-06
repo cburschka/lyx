@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -125,7 +125,7 @@ lyx-docs@lists.lyx.org
 \newline
 
 \newline
-Version 1.5.4
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -17940,11 +17940,11 @@ Float
 \family default
  if the LaTeX-package 
 \series bold
-floatflt
+wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "LaTeX-packages ! floatflt"
+name "LaTeX-packages ! wrapfig"
 
 \end_inset
 
@@ -18001,16 +18001,16 @@ ng text.
 \begin_layout Standard
 The LaTeX-package 
 \series bold
-floatflt
+wrapfig
 \series default
  also supports table wrap floats, but they are not yet supported by LyX.
  If you need this, read the documentation of 
 \series bold
-floatflt
+wrapfig
 \series default
  
 \begin_inset LatexCommand cite
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -18031,30 +18031,6 @@ wrap float floats might be fragile! E.g.
  having a figure too close to the bottom of the page can mess things up
  in the way that the float doesn't appear in the output or that it is placed
  over some other text.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-The better solution is to use the LaTeX-package 
-\series bold
-wrapfig
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-packages ! wrapfig"
-
-\end_inset
-
- instead of 
-\series bold
-floatflt
-\series default
- but it is currently not supported by LyX.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -18612,6 +18588,15 @@ name "cha:Mathematical-Formulas"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The issues of this chapter are described in detail in the 
+\emph on
+Math
+\emph default
+ manual.
+ There you'll also find tips and tricks for special cases.
 \end_layout
 
 \begin_layout Section
@@ -37487,58 +37472,6 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhd
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
-key "floatflt"
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf}
-{
-\end_layout
-
-\end_inset
-
-Documentation
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- of the LaTeX-package 
-\series bold
-floatflt
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-packages ! floatflt"
-
-\end_inset
-
-:
-\newline
-
-\begin_inset LatexCommand url
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
 key "nomencl"
 
 \end_inset
@@ -37633,6 +37566,57 @@ name "LaTeX-packages ! tipa"
 
 \begin_inset LatexCommand url
 target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "wrapfig"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+wrapfig
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! wrapfig"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty"
 
 \end_inset
 
@@ -37838,6 +37822,47 @@ status collapsed
 
 \begin_inset LatexCommand url
 target "http://wiki.lyx.org/Windows/Hebrew"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "Japanese"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/Windows/Japanese}{
+\end_layout
+
+\end_inset
+
+Wiki-page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ how to set up LyX for Japanese:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Japanese"
 
 \end_inset
 

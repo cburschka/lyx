@@ -167,29 +167,7 @@ eunier-Guttin-Cluzel
 
 
 \newline
-Version 1.5.4
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Pour exporter ce document en PDF, ou en DVI, le paquetage LaTeX 
-\series bold
-hyperref
-\series default
- doit être installé.
- 
-\end_layout
-
-\begin_layout Standard
-Ce paquetage devrait faire partie de toutes les distributions LaTeX.
-\end_layout
-
-\end_inset
-
-
+Version 1.5.5
 \end_layout
 
 \begin_layout Standard
@@ -18100,11 +18078,11 @@ Ceci est une figure habillée et vous lisez la superbe légende qui la décrit.
 
 à la condition que le paquetage LaTeX 
 \series bold
-floatflt
+wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "Paquetages LaTeX! floatflt"
+name "Paquetages LaTeX! wrapfig"
 
 \end_inset
 
@@ -18132,10 +18110,7 @@ reference "cap:Figure-enrobée"
 
 \end_inset
 
- est un exemple de flottant d'enrobage avec une largeur de 40
-\begin_inset Formula $\,$
-\end_inset
-
+ est un exemple de flottant d'enrobage avec une largeur de 40\InsetSpace \thinspace{}
 col%.
 \begin_inset Foot
 status collapsed
@@ -18160,17 +18135,17 @@ reference "cha:Unités-de-longueur"
 \begin_layout Standard
 Le paquetage LaTeX 
 \series bold
-floatflt
+wrapfig
 \series default
  accepte aussi des flottants de tableau d'enrobage, mais ils ne sont pas
  encore gérés par LyX.
  Si vous en avez besoin, voyez la documentation de  
 \series bold
-floatflt
+wrapfig
 \series default
  
 \begin_inset LatexCommand cite
-key "floatflt"
+key "wrapfig"
 
 \end_inset
 
@@ -18191,26 +18166,6 @@ Note:
  n'apparaît pas à l'impression ou qu'il se retrouve par dessus une portion
  de texte
 \family sans
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Le mieux serait d'utiliser la paquetage LaTeX 
-\series bold
-wrapfig
-\series default
-
-\begin_inset LatexCommand index
-name "Paquetages LaTeX ! wrapfig"
-
-\end_inset
-
- à la place de floatflt mais il n'est pas encore accepté par LyX.
-\end_layout
-
-\end_inset
-
 .
 \end_layout
 
@@ -18798,6 +18753,15 @@ name "Formules | see{Math}"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Les sujets de ce chapitre sont traités en détail dans le manuel 
+\emph on
+Math.
+ 
+\emph default
+Vous y trouverez aussi des trucs et astuces pour les cas spéciaux.
 \end_layout
 
 \begin_layout Section
@@ -24022,6 +23986,24 @@ Commande
 \family sans
 d'index
 \family default
+, voyez la section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:LaTeX-settings"
+
+\end_inset
+
+.
+ 
+\lang english
+The available options are listed and explained in
+\lang french
+ 
+\begin_inset LatexCommand cite
+key "makeindex"
+
+\end_inset
+
 .
  Vous pouvez aussi préciser un autre programme pour générer l'index, comme
  par exemple 
@@ -25447,6 +25429,30 @@ usepackage[labelfont=bf]{caption}
 
 \begin_layout Standard
 et votre problème est résolu.
+\lang english
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\lang english
+For more commands provided by the 
+\series bold
+caption
+\series default
+ package, have a look at its documentation, 
+\begin_inset LatexCommand cite
+key "caption"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34830,10 +34836,24 @@ status collapsed
 \end_inset
 
 eX
+\begin_inset LatexCommand label
+name "sub:LaTeX-settings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+??
 \end_layout
 
 \begin_layout Subsection
 Répertoires
+\end_layout
+
+\begin_layout Standard
+??
 \end_layout
 
 \begin_layout Section
@@ -35700,7 +35720,7 @@ href{http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS}{
 
 \end_inset
 
-Credits
+Remerciements
 \begin_inset ERT
 status collapsed
 
@@ -35833,6 +35853,106 @@ target "http://www.tex.ac.uk/cgi-bin/texfaq2html"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
+key "makeindex"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the program 
+\family sans
+makeindex
+\family default
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "caption"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+caption
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! caption"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
 key "fancyhdr"
 
 \end_inset
@@ -35880,55 +36000,13 @@ name "Paquetages LaTeX ! fancyhdr"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset LatexCommand bibitem
-key "floatflt"
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf}
-{
-\end_layout
-
-\end_inset
-
+:
+\newline
 
 \lang english
-Documentation
-\lang french
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- 
-\lang english
-of the LaTeX-package
-\lang french
- 
-\series bold
-floatflt
-\series default
-
-\begin_inset LatexCommand index
-name "Paquetages LaTeX ! floatflt"
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -35983,6 +36061,16 @@ name "Paquetages LaTeX ! nomencl"
 
 \end_inset
 
+:
+\newline
+
+\lang english
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+
+\end_inset
+
 
 \end_layout
 
@@ -36034,6 +36122,70 @@ name "Paquetages LaTeX ! tipa"
 
 \end_inset
 
+\SpecialChar \@.
+
+\newline
+
+\lang english
+
+\begin_inset LatexCommand url
+target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "wrapfig"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+wrapfig
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! wrapfig"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty"
+
+\end_inset
+
 
 \end_layout
 
@@ -36073,7 +36225,15 @@ status collapsed
 
  
 \lang english
-how to set up LyX for Arabic
+how to set up LyX for Arabic:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Arabic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -36112,7 +36272,15 @@ status collapsed
 
  
 \lang english
-how to set up LyX for Armenian
+how to set up LyX for Armenian:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Armenian"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -36151,7 +36319,15 @@ status collapsed
 
  
 \lang english
-how to set up LyX for Farsi
+how to set up LyX for Farsi:;
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Farsi"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -36190,13 +36366,111 @@ status collapsed
 
  
 \lang english
-how to set up LyX for Hebrew
+how to set up LyX for Hebrew:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Hebrew"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "Japanese"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/Windows/Japanese}{
+\end_layout
+
+\end_inset
+
+Wiki-
+\lang english
+page
+\lang french
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+how to set up LyX for Japanese:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Japanese"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "LyX-func"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/LyX/LyxFunctionList}{
+\end_layout
+
+\end_inset
+
+Wiki-page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ with a list of all available LyX-functions:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/LyxFunctionList"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \newpage
-Bibliographie créée à partir d'une base de données BibTeX:
+
 \begin_inset ERT
 status collapsed
 
@@ -36259,6 +36533,12 @@ bibfiles "../biblio/LyXDocs"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The above bibliography is created from a BibTeX-database.
 \end_layout
 
 \begin_layout Standard
