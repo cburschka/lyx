@@ -69,7 +69,7 @@ bool BaseClassList::haveClass(string const & classname) const
 LayoutFile const & BaseClassList::operator[](string const & classname) const
 {
 	BOOST_ASSERT(haveClass(classname));
-	return classmap_[classname];
+	return *classmap_[classname];
 }
 
 
@@ -77,7 +77,7 @@ LayoutFile &
 	BaseClassList::operator[](string const & classname)
 {
 	BOOST_ASSERT(haveClass(classname));
-	return classmap_[classname];
+	return *classmap_[classname];
 }
 
 
@@ -139,11 +139,11 @@ bool BaseClassList::read()
 						LYXERR(Debug::TCLASS, "Avail: " << avail);
 						// This code is run when we have
 						// fname, clname, desc, and avail
-						LayoutFile tmpl(fname, clname, desc, avail);
+						LayoutFile * tmpl = new LayoutFile(fname, clname, desc, avail);
 						if (lyxerr.debugging(Debug::TCLASS)) {
 							// only system layout files are loaded here so no
 							// buffer path is needed.
-							tmpl.load();
+							tmpl->load();
 						}
 						classmap_[fname] = tmpl;
 					}
@@ -176,10 +176,12 @@ std::vector<LayoutFileIndex> BaseClassList::classList() const
 
 void BaseClassList::reset(LayoutFileIndex const & classname) {
 	BOOST_ASSERT(haveClass(classname));
-	LayoutFile const & tc = classmap_[classname];
-	LayoutFile tmpl(tc.name(), tc.latexname(), tc.description(),
-	               tc.isTeXClassAvailable());
+	LayoutFile * tc = classmap_[classname];
+	LayoutFile * tmpl = 
+		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
+		               tc->isTeXClassAvailable());
 	classmap_[classname] = tmpl;
+	delete tc;
 }
 
 
@@ -220,13 +222,15 @@ LayoutFileIndex
 				// returns: whole string, classtype (not used here), class name, description
 				BOOST_ASSERT(sub.size() == 4);
 				// now, create a TextClass with description containing path information
-				LayoutFile tmpl(textclass, sub.str(2) == "" ? textclass : sub.str(2),
-					sub.str(3) + " <" + path + ">", true);
-				classmap_[localIndex] = tmpl;
+				string className(sub.str(2) == "" ? textclass : sub.str(2));
+				string description(sub.str(3) + " <" + path + ">");
+				LayoutFile * tmpl = 
+					new LayoutFile(textclass, className, description, true);
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they
 				// are called in a context without buffer path information.
-				classmap_[localIndex].load(path);
+				tmpl->load(path);
+				classmap_[localIndex] = tmpl;
 				return localIndex;
 			}
 		}

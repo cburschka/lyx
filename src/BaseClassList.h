@@ -16,6 +16,8 @@
 
 #include "support/strfwd.h"
 
+#include <boost/noncopyable.hpp>
+
 #include <vector>
 
 
@@ -45,24 +47,21 @@ private:
 /// This class amounts to little more than a `strong typedef'.
 /// A LayoutFile represents the layout information that is 
 /// contained in a *.layout file.
-class LayoutFile : public TextClass {
+class LayoutFile : public TextClass, boost::noncopyable {
 public:
-	/// This should never be used, but it has to be provided for
-	/// std::map operator[] to work. Something like:
-	///   mapthingy[stuff] = otherthing
-	/// creates an empty object before doing the assignment.
-	LayoutFile() {}
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return texClassAvail_; }
 private:
 	/// Construct a layout with default values. Actual values loaded later.
-	explicit LayoutFile(std::string const &,
-		                 std::string const & = std::string(),
-		                 std::string const & = std::string(),
-		                 bool texClassAvail = false);
+	explicit LayoutFile(std::string const & filename,
+			std::string const & className = std::string(),
+			std::string const & description = std::string(),
+			bool texClassAvail = false);
 	/// The only class that should create a LayoutFile is
 	/// BaseClassList, which calls the private constructor.
 	friend class BaseClassList;
+	/// can't create empty LayoutFile
+	LayoutFile() {};
 };
 
 
@@ -98,7 +97,7 @@ public:
 	static std::string const localPrefix;
 private:
 	///
-	typedef std::map<std::string, LayoutFile> ClassMap;
+	typedef std::map<std::string, LayoutFile *> ClassMap;
 	/// noncopyable
 	BaseClassList(BaseClassList const &);
 	/// nonassignable

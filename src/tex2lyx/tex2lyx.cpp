@@ -397,7 +397,8 @@ void tex2lyx(istream & is, ostream & os)
 	//p.dump();
 
 	stringstream ss;
-	TeX2LyXDocClass textclass = parse_preamble(p, ss, documentclass);
+	TeX2LyXDocClass textclass;
+	parse_preamble(p, ss, documentclass, textclass);
 	captionlayout = LayoutPtr(Layout::forCaption());
 
 	active_environments.push_back("document");

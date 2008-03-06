@@ -35,7 +35,8 @@ class TeX2LyXDocClass : public DocumentClass
 {};
 
 /// in preamble.cpp
-TeX2LyXDocClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
+void parse_preamble(Parser & p, std::ostream & os, 
+	std::string const & forceclass, TeX2LyXDocClass & tc);
 
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;

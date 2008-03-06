@@ -989,9 +989,9 @@ bool TextClass::isEmptyLayout(Layout const & lay) const
 
 DocumentClass & DocumentClassBundle::newClass(LayoutFile const & baseClass)
 {
-	DocumentClass dc(baseClass);
+	DocumentClass * dc = new DocumentClass(baseClass);
 	tc_list_.push_back(dc);
-	return tc_list_.back();
+	return *tc_list_.back();
 }
 
 

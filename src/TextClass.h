@@ -20,6 +20,7 @@
 #include "support/docstring.h"
 #include "support/types.h"
 
+#include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include <list>
@@ -37,6 +38,19 @@ class Layout;
 class LayoutFile;
 class Lexer;
 
+/// Based upon ideas in boost::noncopyable, inheriting from this
+/// class effectively makes the copy constructor protected but the
+/// assignment constructor private.
+class ProtectCopy
+{
+protected:
+	ProtectCopy() {}
+	~ProtectCopy() {}
+	ProtectCopy(const ProtectCopy &) {};
+private:
+	const ProtectCopy & operator=(const ProtectCopy &);
+};
+
 
 /// A TextClass represents a collection of layout information: At the 
 /// moment, this includes Layout's and InsetLayout's.
@@ -46,7 +60,7 @@ class Lexer;
 /// Simple TextClass objects are not directly constructed in the main 
 /// LyX code---the constructor is protected. (That said, in tex2lyx
 /// there are what amount to simple TextClass objects.)
-class TextClass {
+class TextClass : protected ProtectCopy {
 public:
 	///
 	virtual ~TextClass() {};
@@ -242,7 +256,7 @@ private:
 ///
 /// In the main LyX code, DocumentClass objects are created only by
 /// DocumentClassBundle, for which see below.
-class DocumentClass : public TextClass {
+class DocumentClass : public TextClass, boost::noncopyable {
 public:
 	///
 	virtual ~DocumentClass() {}
@@ -328,7 +342,7 @@ protected:
 	DocumentClass() {};
 private:
 	/// The only class that can create a DocumentClass is
-	/// DocumentClassBundle, which calls the private constructor.
+	/// DocumentClassBundle, which calls the protected constructor.
 	friend class DocumentClassBundle;
 	///
 	static InsetLayout empty_insetlayout_;
@@ -345,7 +359,7 @@ private:
 ///
 /// This is a singleton class. Its sole instance is accessed via 
 /// DocumentClassBundle::get().
-class DocumentClassBundle {
+class DocumentClassBundle : boost::noncopyable {
 public:
 	/// \return Pointer to a new class equal to baseClass
 	DocumentClass & newClass(LayoutFile const & baseClass);
@@ -354,10 +368,8 @@ public:
 private:
 	/// control instantiation
 	DocumentClassBundle() {}
-	/// noncopyable
-	DocumentClassBundle(DocumentClassBundle const &);
 	///
-	std::list<DocumentClass> tc_list_;
+	std::list<DocumentClass *> tc_list_;
 };
 
 

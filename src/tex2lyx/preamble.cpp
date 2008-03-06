@@ -406,7 +406,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 
 } // anonymous namespace
 
-TeX2LyXDocClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
+void parse_preamble(Parser & p, ostream & os, 
+	string const & forceclass, TeX2LyXDocClass & tc)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -661,15 +662,13 @@ TeX2LyXDocClass const parse_preamble(Parser & p, ostream & os, string const & fo
 		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
 		exit(1);
 	}
-	TeX2LyXDocClass textclass;
-	textclass.read(layoutfilename);
+	tc.read(layoutfilename);
 	if (h_papersides.empty()) {
 		ostringstream ss;
-		ss << textclass.sides();
+		ss << tc.sides();
 		h_papersides = ss.str();
 	}
-	end_preamble(os, textclass);
-	return textclass;
+	end_preamble(os, tc);
 }
 
 // }])
