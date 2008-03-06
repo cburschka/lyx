@@ -1069,6 +1069,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			   OutputParams const & runparams_in,
 			   bool const output_preamble, bool const output_body) const
 {
+	// The child documents, if any, shall be already loaded at this point.
+
 	OutputParams runparams = runparams_in;
 
 	// validate the buffer.
@@ -1133,12 +1135,10 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
-	// load children, if not already done. 
-	// This includes an updateMacro() call.
 	// Don't move this behind the parent_buffer=0 code below,
 	// because then the macros will not get the right "redefinition"
 	// flag as they don't see the parent macros which are output before.
-	loadChildDocuments();
+	updateMacros();
 
 	// fold macros if possible, still with parent buffer as the
 	// macros will be put in the prefix anyway.
@@ -1292,7 +1292,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	params().documentClass().counters().reset();
 
-	loadChildDocuments();
+	updateMacros();
 
 	sgml::openTag(os, top);
 	os << '\n';
@@ -1346,7 +1346,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	params().validate(features);
 
-	loadChildDocuments();
+	updateMacros();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
@@ -1371,7 +1371,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 		return;
 	}
 
-	loadChildDocuments();
+	updateMacros();
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 		it.nextInset()->getLabelList(list);
@@ -2376,26 +2376,6 @@ void Buffer::resetChildDocuments(bool close_them) const
 	// clear references to children in macro tables
 	d->children_positions.clear();
 	d->position_to_children.clear();
-}
-
-
-void Buffer::loadChildDocuments() const
-{
-	bool parse_error = false;
-		
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() != INCLUDE_CODE)
-			continue;
-		InsetCommand const & inset = static_cast<InsetCommand const &>(*it);
-		InsetCommandParams const & ip = inset.params();
-		Buffer * child = loadIfNeeded(*this, ip);
-		if (!child)
-			continue;
-		parse_error |= !child->errorList("Parse").empty();
-		child->loadChildDocuments();
-	}
-
-	updateMacros();
 }
 
 

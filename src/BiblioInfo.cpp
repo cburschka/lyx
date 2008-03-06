@@ -429,9 +429,6 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 		return;
 	}
 
-	// Pre-load all child documents.
-	buf->loadChildDocuments();
-
 	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
 		it->fillWithBibKeys(*this, it);
 }

@@ -435,8 +435,6 @@ public:
 	///
 	void autoSave() const;
 	///
-	void loadChildDocuments() const;
-	///
 	void resetChildDocuments(bool close_them) const;
 
 	/// return the format of the buffer on a string

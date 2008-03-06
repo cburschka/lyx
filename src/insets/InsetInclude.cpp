@@ -22,6 +22,7 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "ErrorList.h"
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -297,7 +298,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	if (!isLyXFilename(included_file))
 		return 0;
 
-	Buffer * childBuffer = theBufferList().getBuffer(included_file);
+	Buffer * childBuffer = loadIfNeeded(buffer, params); 
 
 	// FIXME: recursive includes
 	return (childBuffer == &buffer) ? 0 : childBuffer;
@@ -332,6 +333,10 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 			//close the buffer we just opened
 			theBufferList().release(child);
 			return 0;
+		}
+	
+		if (!child->errorList("Parse").empty()) {
+			// FIXME: Do something.
 		}
 	}
 	child->setParent(&parent);
