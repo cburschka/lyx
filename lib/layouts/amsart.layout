@@ -21,6 +21,7 @@ End
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -56,7 +57,7 @@ NoStyle                 Chapter*
 #NoStyle                Subparagraph*
 
 NoStyle Verse    # Although mathematicians tend to be poets at times,
-	             # we don't need this.
+                 # we don't need this.
 
 
 Style Section

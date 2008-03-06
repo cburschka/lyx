@@ -11,6 +11,7 @@
 Format 6
 
 Style Proof
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             proof

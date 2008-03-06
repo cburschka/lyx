@@ -32,7 +32,7 @@ Requires	amsmath
 
 Style Criterion
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             criterion
 	LabelString           "Criterion \thetheorem."
 	Preamble
@@ -54,7 +54,7 @@ End
 
 Style Algorithm
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	           Theorem
 	LatexName             algorithm
 	LabelString           "Algorithm \thetheorem."
 	Preamble
@@ -77,7 +77,7 @@ End
 
 Style Axiom
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             ax
 	LabelString           "Axiom \thetheorem."
 	Preamble
@@ -232,7 +232,7 @@ End
 
 Style Assumption
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             assumption
 	LabelString           "Assumption \thetheorem."
 	Preamble

@@ -10,6 +10,7 @@
 
 Format 6
 Style LyX-Code
+	Category              MainText
 	Margin                Static
 	LatexType             Environment
 	LatexName             lyxcode

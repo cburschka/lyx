@@ -9,6 +9,7 @@
 
 Format 6
 Style Itemize
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             itemize
@@ -27,6 +28,7 @@ End
 
 
 Style Enumerate
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             enumerate
@@ -45,6 +47,7 @@ End
 
 
 Style Description
+	Category              List
 	Margin                First_Dynamic
 	LatexType             Item_environment
 	LatexName             description
@@ -67,6 +70,7 @@ End
 
 
 Style List
+	Category              List
 	Margin                Manual
 	LatexType             List_Environment
 	LatexName             lyxlist

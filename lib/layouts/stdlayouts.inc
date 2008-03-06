@@ -9,6 +9,7 @@
 
 Format 6
 Style Quotation
+	Category              MainText
 	Margin                Static
 	LatexType             Environment
 	LatexName             quotation
@@ -27,6 +28,7 @@ End
 
 
 Style Quote
+	Category              MainText
 	Margin                Static
 	LatexType             Environment
 	LatexName             quote
@@ -45,6 +47,7 @@ End
 Style Verse
 	# LaTeX type is first dynamic because of LaTeX implementation.
 	# In LyX this does not make sense.
+	Category              MainText
 	LatexType             Environment
 	LatexName             verse
 	Margin                First_Dynamic
@@ -62,6 +65,7 @@ End
 
 
 Style --Separator--
+	Category              MainText
 	KeepEmpty             1
 	Margin                Dynamic
 	LatexType             Paragraph

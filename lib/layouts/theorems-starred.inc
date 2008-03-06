@@ -21,6 +21,7 @@
 Format 6
 
 Style Theorem*
+	Category              Theorem
 	LatexType             Environment
 	Margin                First_Dynamic
 	LatexName             thm*

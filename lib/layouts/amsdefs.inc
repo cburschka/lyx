@@ -28,6 +28,7 @@ Provides makeidx         1
 ### Now the title stuff. We copy do not use stdstruct.inc to keep
 ### things in the right order
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -49,6 +50,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -68,6 +70,7 @@ End
 
 
 Style Date
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
@@ -91,6 +94,7 @@ End
 
 
 Style Abstract
+	Category              FrontMatter
 	Margin                First_Dynamic
 	LatexType             Environment
 	InTitle               1
@@ -117,6 +121,7 @@ End
 NoStyle Address
 
 Style Address
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1

@@ -22,6 +22,7 @@
 Format 6
 
 Style Theorem
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
@@ -55,7 +56,7 @@ End
 
 Style Corollary
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
@@ -66,7 +67,7 @@ End
 
 Style Lemma
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
@@ -77,7 +78,7 @@ End
 
 Style Proposition
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
@@ -88,7 +89,7 @@ End
 
 Style Conjecture
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
@@ -99,7 +100,7 @@ End
 
 Style Fact
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
@@ -110,7 +111,7 @@ End
 
 Style Definition
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             defn
 	LabelString           "Definition \thetheorem."
 	Font
@@ -162,7 +163,7 @@ End
 
 Style Remark
 	CopyStyle             Theorem
-	DependsOn	      Theorem
+	DependsOn	            Theorem
 	LatexName             rem
 	LabelString           "Remark \thetheorem."
 	Font
@@ -193,6 +194,7 @@ End
 
 # Define Case as an enumeration environment
 Style Case
+	Category              Theorem
 	CopyStyle             Enumerate
 	LatexName             caseenv
 	LabelType             Static

@@ -13,6 +13,7 @@ Style Abstract
 	Margin                Static
 	LatexType             Environment
 	LatexName             abstract
+	Category              FrontMatter
 	NextNoIndent          1
 	LeftMargin            MMM
 	RightMargin           MMM
@@ -39,6 +40,7 @@ Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography
+	Category              BackMatter
 	NextNoIndent          1
 	LeftMargin            MM
 	ParSkip               0.4

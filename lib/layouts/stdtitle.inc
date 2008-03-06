@@ -12,6 +12,7 @@ Format 6
 Style Title
 	Margin                Static
 	LatexType             Command
+	Category              FrontMatter
 	InTitle               1
 	LatexName             title
 	ParSkip               0.4
@@ -30,6 +31,7 @@ End
 Style Author
 	Margin                Static
 	LatexType             Command
+	Category              FrontMatter
 	InTitle               1
 	LatexName             author
 	LabelSep              xxx
@@ -48,6 +50,7 @@ End
 Style Date
 	Margin                Dynamic
 	LatexType             Command
+	Category              FrontMatter
 	InTitle               1
 	LatexName             date
 	LabelSep              xxx
