@@ -426,8 +426,8 @@ LayoutPtr findLayout(TextClass const & textclass, string const & name)
 	DocumentClass::const_iterator lit = textclass.begin();
 	DocumentClass::const_iterator len = textclass.end();
 	for (; lit != len; ++lit)
-		if ((*lit)->latexname() == name)
-			return *lit;
+		if (lit->latexname() == name)
+			return &*lit;
 	return LayoutPtr();
 }
 
@@ -809,7 +809,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	// The single '=' is meant here.
-	else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
+	else if ((newlayout = findLayout(parent_context.textclass, name)) &&
 		  newlayout->isEnvironment()) {
 		eat_whitespace(p, os, parent_context, false);
 		Context context(true, parent_context.textclass, newlayout,
@@ -1062,7 +1062,7 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 	// always must be in an own paragraph.
 	context.new_paragraph(os);
 	Context newcontext(true, context.textclass,
-		context.textclass[from_ascii("Scrap")]);
+		&context.textclass[from_ascii("Scrap")]);
 	newcontext.check_layout(os);
 	os << name;
 	while (p.good()) {
@@ -1514,9 +1514,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if ((p.next_token().asInput() == "*") &&
 			 context.new_layout_allowed &&
 			 // The single '=' is meant here.
-			 (newlayout = findLayout(context.textclass,
-						 t.cs() + '*')).get() &&
-			 newlayout->isCommand()) {
+			 (newlayout = findLayout(context.textclass, t.cs() + '*')) &&
+			  newlayout->isCommand()) {
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
@@ -1524,7 +1523,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// The single '=' is meant here.
 		else if (context.new_layout_allowed &&
-			 (newlayout = findLayout(context.textclass, t.cs())).get() &&
+			 (newlayout = findLayout(context.textclass, t.cs())) &&
 			 newlayout->isCommand()) {
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();

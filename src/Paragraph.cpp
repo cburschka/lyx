@@ -1544,7 +1544,7 @@ docstring Paragraph::expandLabel(LayoutPtr const & layout,
 			docstring parent(fmt, i + 1, j - i - 1);
 			docstring label = from_ascii("??");
 			if (tclass.hasLayout(parent))
-				docstring label = expandLabel(tclass[parent], bparams,
+				docstring label = expandLabel(&(tclass[parent]), bparams,
 						      process_appendix);
 			fmt = docstring(fmt, 0, i) + label 
 				+ docstring(fmt, j + 1, docstring::npos);
@@ -1555,9 +1555,9 @@ docstring Paragraph::expandLabel(LayoutPtr const & layout,
 }
 
 
-void Paragraph::applyLayout(LayoutPtr const & new_layout)
+void Paragraph::applyLayout(Layout const & new_layout)
 {
-	d->layout_ = new_layout;
+	d->layout_ = &new_layout;
 	LyXAlignment const oldAlign = d->params_.align();
 	
 	if (!(oldAlign & d->layout_->alignpossible)) {
@@ -1819,15 +1819,10 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	LayoutPtr style;
 
-	// well we have to check if we are in an inset with unlimited
-	// length (all in one row) if that is true then we don't allow
-	// any special options in the paragraph and also we don't allow
-	// any environment other than the default layout of the text class
-	// to be valid!
 	bool asdefault = forceEmptyLayout();
 
 	if (asdefault)
-		style = bparams.documentClass().emptyLayout();
+		style = &(bparams.documentClass().emptyLayout());
 	 else
 		style = d->layout_;
 

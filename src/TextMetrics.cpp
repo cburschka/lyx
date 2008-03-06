@@ -1719,8 +1719,8 @@ int TextMetrics::leftMargin(int max_width,
 			if (pars[newpar].layout()->isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
 			}
-			//FIXME Should this check for emptyLayout() as well?
-			if (par.layout() == tclass.defaultLayout()) {
+			if (tclass.isDefaultLayout(*par.layout()) 
+			    || tclass.isEmptyLayout(*par.layout())) {
 				if (pars[newpar].params().noindent())
 					parindent.erase();
 				else
@@ -1732,7 +1732,7 @@ int TextMetrics::leftMargin(int max_width,
 	// This happens after sections in standard classes. The 1.3.x
 	// code compared depths too, but it does not seem necessary
 	// (JMarc)
-	if (par.layout() == tclass.defaultLayout()
+	if (tclass.isDefaultLayout(*par.layout())
 	    && pit > 0 && pars[pit - 1].layout()->nextnoindent)
 		parindent.erase();
 
@@ -1831,8 +1831,8 @@ int TextMetrics::leftMargin(int max_width,
 	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
 	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 	       || (layout->labeltype == LABEL_STATIC
-		         && layout->latextype == LATEX_ENVIRONMENT
-		   && !isFirstInSequence(pit, pars)))
+	           && layout->latextype == LATEX_ENVIRONMENT
+	           && !isFirstInSequence(pit, pars)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
@@ -1841,9 +1841,10 @@ int TextMetrics::leftMargin(int max_width,
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-	    && (par.layout() != tclass.defaultLayout() //should this check emptyLayout()?
-		|| buffer.params().paragraph_separation ==
-		   BufferParams::PARSEP_INDENT))
+			&& ((tclass.isDefaultLayout(*par.layout()) 
+	         || tclass.isEmptyLayout(*par.layout()))
+	        || buffer.params().paragraph_separation == BufferParams::PARSEP_INDENT)
+	    )
 	{
 		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
 			parindent);

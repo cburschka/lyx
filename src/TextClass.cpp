@@ -44,14 +44,14 @@ namespace lyx {
 
 namespace {
 
-class LayoutNamesEqual : public unary_function<LayoutPtr, bool> {
+class LayoutNamesEqual : public unary_function<Layout, bool> {
 public:
 	LayoutNamesEqual(docstring const & name)
 		: name_(name)
 	{}
-	bool operator()(LayoutPtr const & c) const
+	bool operator()(Layout const & c) const
 	{
-		return c->name() == name_;
+		return c.name() == name_;
 	}
 private:
 	docstring name_;
@@ -239,8 +239,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			// The only way this happens is because the hardcoded layout above
 			// is wrong.
 			BOOST_ASSERT(false);
-		}
-		layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
+		};
+		layoutlist_.push_back(lay);
 	}
 
 	Lexer lexrc(textClassTags,
@@ -320,8 +320,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 					//error to true, since we couldn't even read the name?
 					error = !readStyle(lexrc, lay);
 				} else if (hasLayout(name)) {
-					Layout * lay = operator[](name).get();
-					error = !readStyle(lexrc, *lay);
+					Layout & lay = operator[](name);
+					error = !readStyle(lexrc, lay);
 				} else {
 					Layout lay;
 					lay.setName(name);
@@ -329,7 +329,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						lay.is_environment = true;
 					error = !readStyle(lexrc, lay);
 					if (!error)
-						layoutlist_.push_back(boost::shared_ptr<Layout>(new Layout(lay)));
+						layoutlist_.push_back(lay);
 
 					if (defaultlayout_.empty()) {
 						// We do not have a default layout yet, so we choose
@@ -531,11 +531,10 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	min_toclevel_ = Layout::NOT_IN_TOC;
 	max_toclevel_ = Layout::NOT_IN_TOC;
-	DocumentClass::const_iterator lit = begin();
-	DocumentClass::const_iterator len = end();
+	const_iterator lit = begin();
+	const_iterator len = end();
 	for (; lit != len; ++lit) {
-		Layout const & lt = **lit;
-		int const toclevel = lt.toclevel;
+		int const toclevel = lit->toclevel;
 		if (toclevel != Layout::NOT_IN_TOC) {
 			if (min_toclevel_ == Layout::NOT_IN_TOC)
 				min_toclevel_ = toclevel;
@@ -863,28 +862,46 @@ bool TextClass::hasLayout(docstring const & n) const
 
 
 
-LayoutPtr const & TextClass::operator[](docstring const & name) const
+Layout const & TextClass::operator[](docstring const & name) const
 {
 	BOOST_ASSERT(!name.empty());
 
-	LayoutList::const_iterator cit =
-		find_if(layoutlist_.begin(),
-			layoutlist_.end(),
-			LayoutNamesEqual(name));
+	const_iterator it = 
+		find_if(begin(), end(), LayoutNamesEqual(name));
 
-	if (cit == layoutlist_.end()) {
+	if (it == end()) {
 		lyxerr << "We failed to find the layout '" << to_utf8(name)
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
-		for (LayoutList::const_iterator it = layoutlist_.begin();
-			 it != layoutlist_.end(); ++it)
-			lyxerr  << " " << to_utf8(it->get()->name()) << endl;
+		for (const_iterator cit = begin(); cit != end(); ++cit)
+			lyxerr  << " " << to_utf8(cit->name()) << endl;
 
 		// we require the name to exist
 		BOOST_ASSERT(false);
 	}
 
-	return *cit;
+	return *it;
+}
+
+
+Layout & TextClass::operator[](docstring const & name)
+{
+	BOOST_ASSERT(!name.empty());
+
+	iterator it = find_if(begin(), end(), LayoutNamesEqual(name));
+
+	if (it == end()) {
+		lyxerr << "We failed to find the layout '" << to_utf8(name)
+		       << "' in the layout list. You MUST investigate!"
+		       << endl;
+		for (const_iterator cit = begin(); cit != end(); ++cit)
+			lyxerr  << " " << to_utf8(cit->name()) << endl;
+
+		// we require the name to exist
+		BOOST_ASSERT(false);
+	}
+
+	return *it;
 }
 
 
@@ -952,9 +969,21 @@ docstring const & TextClass::defaultLayoutName() const
 }
 
 
-LayoutPtr const & TextClass::defaultLayout() const
+Layout const & TextClass::defaultLayout() const
 {
 	return operator[](defaultLayoutName());
+}
+
+
+bool TextClass::isDefaultLayout(Layout const & lay) const 
+{
+	return lay.name() == defaultLayoutName();
+}
+
+
+bool TextClass::isEmptyLayout(Layout const & lay) const 
+{
+	return lay.name() == emptyLayoutName();
 }
 
 
@@ -983,7 +1012,7 @@ bool DocumentClass::hasLaTeXLayout(std::string const & lay) const
 	LayoutList::const_iterator it  = layoutlist_.begin();
 	LayoutList::const_iterator end = layoutlist_.end();
 	for (; it != end; ++it)
-		if (it->get()->latexname() == lay)
+		if (it->latexname() == lay)
 			return true;
 	return false;
 }

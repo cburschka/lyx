@@ -330,10 +330,9 @@ static void outline(OutlineOp mode, Cursor & cur)
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
 				for (; lit != len; ++lit) {
-					LayoutPtr const & lt = *lit;
-					if (lt->toclevel == toclevel + 1 &&
-					    start->layout()->labeltype == lt->labeltype) {
-						start->setLayout(lt);
+					if (lit->toclevel == toclevel + 1 &&
+					    start->layout()->labeltype == lit->labeltype) {
+						start->setLayout(*lit);
 						break;
 					}
 				}
@@ -350,10 +349,9 @@ static void outline(OutlineOp mode, Cursor & cur)
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
 				for (; lit != len; ++lit) {
-					LayoutPtr const & lt = *lit;
-					if (lt->toclevel == toclevel - 1 &&
-						start->layout()->labeltype == lt->labeltype) {
-							start->setLayout(lt);
+					if (lit->toclevel == toclevel - 1 &&
+						start->layout()->labeltype == lit->labeltype) {
+							start->setLayout(*lit);
 							break;
 					}
 				}
@@ -1011,7 +1009,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
-			docstring const & obs = tclass[layout]->obsoleted_by();
+			docstring const & obs = tclass[layout].obsoleted_by();
 			if (!obs.empty())
 				layout = obs;
 		}

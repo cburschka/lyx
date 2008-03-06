@@ -12,15 +12,12 @@
 #ifndef LAYOUTPTR_H
 #define LAYOUTPTR_H
 
-#include <boost/shared_ptr.hpp>
-
-
 namespace lyx {
 
 class Layout;
 
 /// Global typedef
-typedef boost::shared_ptr<Layout> LayoutPtr;
+typedef Layout const * LayoutPtr;
 
 
 } // namespace lyx

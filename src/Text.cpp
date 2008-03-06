@@ -1004,8 +1004,8 @@ bool Text::backspacePos0(Cursor & cur)
 	// Correction: Pasting is always allowed with standard-layout
 	// or the empty layout.
 	else if (par.layout() == prevpar.layout()
-		 || par.layout() == tclass.defaultLayout()
-		 || par.layout() == tclass.emptyLayout()) {
+		 || tclass.isDefaultLayout(*par.layout())
+		 || tclass.isEmptyLayout(*par.layout())) {
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;

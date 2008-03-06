@@ -199,14 +199,14 @@ void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	BOOST_ASSERT(start != end);
 
 	BufferParams const & bufparams = buffer.params();
-	LayoutPtr const & lyxlayout = bufparams.documentClass()[layout];
+	Layout const & lyxlayout = bufparams.documentClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
 		par.applyLayout(lyxlayout);
-		if (lyxlayout->margintype == MARGIN_MANUAL)
+		if (lyxlayout.margintype == MARGIN_MANUAL)
 			par.setLabelWidthString(par.translateIfPossible(
-				lyxlayout->labelstring(), buffer.params()));
+				lyxlayout.labelstring(), buffer.params()));
 	}
 }
 
@@ -218,8 +218,8 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
 	BufferParams const & params = bv.buffer().params();
-	LayoutPtr const & lyxlayout = params.documentClass()[layout];
-	if (lyxlayout->is_environment) {
+	Layout const & lyxlayout = params.documentClass()[layout];
+	if (lyxlayout.is_environment) {
 		// move everything in a new environment inset
 		LYXERR(Debug::DEBUG, "setting layout " << to_utf8(layout));
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));

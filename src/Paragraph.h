@@ -157,6 +157,8 @@ public:
 	///
 	void setLayout(LayoutPtr const & layout);
 	///
+	void setLayout(Layout const & layout) { setLayout(&layout); }
+	///
 	void setEmptyOrDefaultLayout(DocumentClass const & tc);
 
 	/// This is the item depth, only used by enumerate and itemize
@@ -219,7 +221,7 @@ public:
 	/// The maximal possible depth of a paragraph after this one
 	depth_type getMaxDepthAfter() const;
 	///
-	void applyLayout(LayoutPtr const & new_layout);
+	void applyLayout(Layout const & new_layout);
 
 	/// (logically) erase the char at pos; return true if it was actually erased
 	bool eraseChar(pos_type pos, bool trackChanges);

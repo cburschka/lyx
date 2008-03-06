@@ -1414,11 +1414,10 @@ void GuiDocument::updateNumbering()
 	DocumentClass::const_iterator lit = tclass.begin();
 	DocumentClass::const_iterator len = tclass.end();
 	for (; lit != len; ++lit) {
-		Layout const & lt = **lit;
-		int const toclevel = lt.toclevel;
-		if (toclevel != Layout::NOT_IN_TOC && lt.labeltype == LABEL_COUNTER) {
+		int const toclevel = lit->toclevel;
+		if (toclevel != Layout::NOT_IN_TOC && lit->labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
-			item->setText(0, toqstr(translateIfPossible(lt.name())));
+			item->setText(0, toqstr(translateIfPossible(lit->name())));
 			item->setText(1, (toclevel <= depth) ? yes : no);
 			item->setText(2, (toclevel <= toc) ? yes : no);
 		}

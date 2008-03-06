@@ -223,7 +223,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 				if (tclass.hasLayout(style)) {
 					docstring const tmpname = name_;
-					this->operator=(*tclass[style]);
+					this->operator=(tclass[style]);
 					name_ = tmpname;
 				} else {
 					lyxerr << "Cannot copy unknown style `"
@@ -233,7 +233,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 					DocumentClass::const_iterator lit = tclass.begin();
 					DocumentClass::const_iterator len = tclass.end();
 					for (; lit != len; ++lit)
-						lyxerr << to_utf8((*lit)->name()) << endl;
+						lyxerr << to_utf8(lit->name()) << endl;
 
 					//lexrc.printError("Cannot copy known "
 					//		 "style `$$Token'");
@@ -248,7 +248,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 				if (tclass.hasLayout(style)) {
 					docstring const tmpname = name_;
-					this->operator=(*tclass[style]);
+					this->operator=(tclass[style]);
 					name_ = tmpname;
 					if (obsoleted_by().empty())
 						obsoleted_by_ = style;

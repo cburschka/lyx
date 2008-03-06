@@ -546,7 +546,7 @@ void GuiLayoutBox::set(docstring const & layout)
 	if (!text_class_)
 		return;
 
-	QString const & name = toqstr((*text_class_)[layout]->name());
+	QString const & name = toqstr((*text_class_)[layout].name());
 	if (name == currentText())
 		return;
 
@@ -631,8 +631,7 @@ void GuiLayoutBox::updateContents(bool reset)
 	DocumentClass::const_iterator lit = text_class_->begin();
 	DocumentClass::const_iterator len = text_class_->end();
 	for (; lit != len; ++lit) {
-		Layout const & lt = **lit;
-		docstring const & name = lt.name();
+		docstring const & name = lit->name();
 		// if this inset requires the empty layout, we skip the default
 		// layout
 		if (name == text_class_->defaultLayoutName() && inset &&

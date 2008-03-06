@@ -12,6 +12,7 @@
 
 #include "ColorCode.h"
 #include "FontInfo.h"
+#include "Layout.h"
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
 
@@ -54,7 +55,7 @@ public:
 	// typedefs
 	///////////////////////////////////////////////////////////////////
 	/// The individual paragraph layouts comprising the document class
-	typedef std::vector<LayoutPtr> LayoutList;
+	typedef std::vector<Layout> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
 	///
@@ -63,8 +64,7 @@ public:
 	///////////////////////////////////////////////////////////////////
 	// Iterators
 	///////////////////////////////////////////////////////////////////
-	/// Note that this returns a (LayoutPtr *). We really need a custom
-	/// iterator here.
+	///
 	const_iterator begin() const { return layoutlist_.begin(); }
 	///
 	const_iterator end() const { return layoutlist_.end(); }
@@ -74,12 +74,16 @@ public:
 	// Layout Info
 	///////////////////////////////////////////////////////////////////
 	///
-	LayoutPtr const & defaultLayout() const;
+	Layout const & defaultLayout() const;
 	///
 	docstring const & defaultLayoutName() const;
+	///
+	bool isDefaultLayout(Layout const &) const;
+	/// 
+	bool isEmptyLayout(Layout const &) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
-	LayoutPtr const & emptyLayout() const 
+	Layout const & emptyLayout() const 
 			{ return operator[](emptylayout_); };
 	/// the name of the empty layout
 	docstring const & emptyLayoutName() const 
@@ -89,7 +93,7 @@ public:
 	///
 	bool hasLayout(docstring const & name) const;
 	///
-	LayoutPtr const & operator[](docstring const & vname) const;
+	Layout const & operator[](docstring const & vname) const;
 
 	///////////////////////////////////////////////////////////////////
 	// reading routines
@@ -125,6 +129,19 @@ public:
 protected:
 	/// Protect construction
 	TextClass();
+	///
+	Layout & operator[](docstring const & vname);
+
+	///////////////////////////////////////////////////////////////////
+	// non-const iterators
+	///////////////////////////////////////////////////////////////////
+	///
+	typedef LayoutList::iterator iterator;
+	///
+	iterator begin() { return layoutlist_.begin(); }
+	///
+	iterator end() { return layoutlist_.end(); }
+
 	///////////////////////////////////////////////////////////////////
 	// members
 	///////////////////////////////////////////////////////////////////

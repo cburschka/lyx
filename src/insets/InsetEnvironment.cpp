@@ -58,12 +58,12 @@ int InsetEnvironment::latex(odocstream & os,
 			    OutputParams const & runparams) const
 {
 	// FIXME UNICODE
-	os << from_utf8(layout_->latexheader);
+	os << from_utf8(layout_.latexheader);
 	TexRow texrow;
 	latexParagraphs(buffer(), text_, os, texrow, runparams,
-			layout_->latexparagraph);
+			layout_.latexparagraph);
 	// FIXME UNICODE
-	os << from_utf8(layout_->latexfooter);
+	os << from_utf8(layout_.latexfooter);
 	return texrow.rows();
 }
 
@@ -79,7 +79,7 @@ int InsetEnvironment::plaintext(odocstream & os,
 }
 
 
-LayoutPtr const & InsetEnvironment::layout() const
+Layout const & InsetEnvironment::layout() const
 {
 	return layout_;
 }

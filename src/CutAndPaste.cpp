@@ -147,7 +147,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// note that we are doing this if the empty layout is
 	// supposed to be the default, not just if it is forced
 	if (cur.inset().useEmptyLayout()) {
-		LayoutPtr const layout =
+		Layout const & layout =
 			buffer.params().documentClass().emptyLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();

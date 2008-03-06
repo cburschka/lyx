@@ -104,7 +104,7 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	BufferParams const & bp = cur.buffer().params();
-	LayoutPtr const layout = bp.documentClass().emptyLayout();
+	Layout const layout = bp.documentClass().emptyLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
@@ -136,8 +136,8 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// start of an existing paragraph get the buffer language
 		// and not latex_language, so we take this brute force
 		// approach.
-		cur.current_font.fontInfo() = layout->font;
-		cur.real_current_font.fontInfo() = layout->font;
+		cur.current_font.fontInfo() = layout.font;
+		cur.real_current_font.fontInfo() = layout.font;
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}

@@ -93,10 +93,10 @@ Context::Context(bool need_layout_,
 	  layout(layout_), parent_layout(parent_layout_),
 	  font(font_)
 {
-	if (!layout.get())
-		layout = textclass.defaultLayout();
-	if (!parent_layout.get())
-		parent_layout = textclass.defaultLayout();
+	if (!layout)
+		layout = &textclass.defaultLayout();
+	if (!parent_layout)
+		parent_layout = &textclass.defaultLayout();
 }
 
 
@@ -132,7 +132,7 @@ void Context::check_layout(ostream & os)
 				// that this may require a begin_deeper.
 				if (!deeper_paragraph)
 					begin_deeper(os);
-				begin_layout(os, textclass.defaultLayout(),
+				begin_layout(os, &textclass.defaultLayout(),
 					     font, normalfont);
 				deeper_paragraph = true;
 			}

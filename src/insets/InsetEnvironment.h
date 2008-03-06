@@ -13,11 +13,11 @@
 #define INSETENVIRONMENT_H
 
 #include "InsetText.h"
-#include "LayoutPtr.h"
-
 
 namespace lyx {
 
+class Layout;
+	
 class InsetEnvironment : public InsetText {
 public:
 	///
@@ -39,7 +39,7 @@ public:
 	///
 	Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	LayoutPtr const & layout() const;
+	Layout const & layout() const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
@@ -48,7 +48,7 @@ private:
 	///
 	Inset * clone() const { return new InsetEnvironment(*this); }
 	/// the layout
-	LayoutPtr layout_;
+	Layout const & layout_;
 	///
 	docstring name_;
 };

@@ -101,11 +101,11 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & defaultstyle = buf.params().documentClass().defaultLayout();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
-		if (par->layout() == defaultstyle && par->emptyTag()) {
+		if (buf.params().documentClass().isDefaultLayout(*par->layout()) 
+		    && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs));
 		} else {
@@ -127,7 +127,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      ParagraphList::const_iterator const & pend) {
 	ParagraphList::const_iterator par = pbegin;
 
-	LayoutPtr const & defaultstyle = buf.params().documentClass().defaultLayout();
+	Layout const & defaultstyle = buf.params().documentClass().defaultLayout();
 	LayoutPtr const & bstyle = par->layout();
 	string item_tag;
 
@@ -159,7 +159,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				sep = par->firstWord(os, runparams) + 1;
 				sgml::closeTag(os, bstyle->labeltag());
 			}
-			wrapper = defaultstyle->latexname();
+			wrapper = defaultstyle.latexname();
 			// If a sub list (embedded list) appears next with a
 			// different depth, then there is no need to open
 			// another tag at the current depth.

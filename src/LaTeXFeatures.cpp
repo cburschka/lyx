@@ -382,7 +382,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 		    != usedLayouts_.end())
 			return;
 
-		Layout const & layout = *tclass[layoutname];
+		Layout const & layout = tclass[layoutname];
 		require(layout.requires());
 
 		if (!layout.depends_on().empty()) {
@@ -839,7 +839,7 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
-		tcpreamble << tclass[*cit]->preamble();
+		tcpreamble << tclass[*cit].preamble();
 	}
 
 	return tcpreamble.str();
