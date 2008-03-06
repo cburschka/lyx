@@ -1767,6 +1767,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\atop"));
 	globals.push_back(from_ascii("\\lefteqn"));
 	globals.push_back(from_ascii("\\boldsymbol"));
+	globals.push_back(from_ascii("\\bm"));
 	globals.push_back(from_ascii("\\color"));
 	globals.push_back(from_ascii("\\normalcolor"));
 	globals.push_back(from_ascii("\\textcolor"));

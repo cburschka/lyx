@@ -455,6 +455,7 @@ src_mathed_header_files = Split('''
     InsetMathAMSArray.h
     InsetMathArray.h
     InsetMathBig.h
+    InsetMathBM.h
     InsetMathBoldSymbol.h
     InsetMathBox.h
     InsetMathBrace.h
@@ -523,6 +524,7 @@ src_mathed_files = Split('''
     InsetMathAMSArray.cpp
     InsetMathArray.cpp
     InsetMathBig.cpp
+    InsetMathBM.cpp
     InsetMathBoldSymbol.cpp
     InsetMathBox.cpp
     InsetMathBrace.cpp
