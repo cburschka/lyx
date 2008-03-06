@@ -240,8 +240,9 @@ LayoutFileIndex defaultBaseclass()
 {
 	if (BaseClassList::get().haveClass("article"))
 		return string("article");
-	else 
+	if (BaseClassList::get().empty())
 		return string("");
+	return BaseClassList::get().classList().front();
 }
 
 
