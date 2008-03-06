@@ -172,10 +172,8 @@ InsetMathHull::InsetMathHull(InsetMathHull const & other)
 
 InsetMathHull::~InsetMathHull()
 {
-	for (size_t i = 0; i < label_.size(); ++i) {
-		if (label_[i])
-			delete label_[i];
-	}
+	for (size_t i = 0; i < label_.size(); ++i)
+		delete label_[i];
 }
 
 
@@ -192,10 +190,8 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	InsetMathGrid::operator=(other);
 	type_  = other.type_;
 	nonum_ = other.nonum_;
-	for (size_t i = 0; i < label_.size(); ++i) {
-		if (label_[i])
-			delete label_[i];
-	}
+	for (size_t i = 0; i < label_.size(); ++i)
+		delete label_[i];
 	label_ = other.label_;
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
@@ -726,8 +722,7 @@ void InsetMathHull::delRow(row_type row)
 	if (row == nrows() + 1)
 		row--;
 	nonum_.erase(nonum_.begin() + row);
-	if (label_[row])
-		delete label_[row];
+	delete label_[row];
 	label_.erase(label_.begin() + row);
 }
 
