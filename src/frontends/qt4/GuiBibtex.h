@@ -18,8 +18,7 @@
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
 
-#include "support/docstring.h"
-
+#include <string>
 #include <vector>
 
 namespace lyx {
@@ -68,10 +67,10 @@ private:
 	void updateContents();
 
 	/// Browse for a .bib file
-	docstring const browseBib(docstring const & in_name) const;
+	QString browseBib(QString const & in_name) const;
 
 	/// Browse for a .bst file
-	docstring const browseBst(docstring const & in_name) const;
+	QString browseBst(QString const & in_name) const;
 
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;

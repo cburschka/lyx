@@ -84,15 +84,15 @@ std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 	of the form "../baz/foo.txt", an absolute path is returned. This is
 	intended to be useful for insets which encapsulate files/
 */
-docstring browseRelFile(docstring const & filename,
-	docstring const & refpath,
-	docstring const & title,
+QString browseRelFile(QString const & filename,
+	QString const & refpath,
+	QString const & title,
 	support::FileFilterList const & filters,
 	bool save = false,
-	docstring const & label1 = docstring(),
-	docstring const & dir1 = docstring(),
-	docstring const & label2 = docstring(),
-	docstring const & dir2 = docstring());
+	QString const & label1 = QString(),
+	QString const & dir1 = QString(),
+	QString const & label2 = QString(),
+	QString const & dir2 = QString());
 
 
 /** Build filelists of all availabe bst/cls/sty-files. Done through

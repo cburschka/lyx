@@ -185,6 +185,8 @@ QString browseDir(QString const & pathname,
 }
 
 
+} // namespace frontend
+
 QString browseRelFile(QString const & filename, QString const & refpath,
 	QString const & title, FileFilterList const & filters, bool save,
 	QString const & label1, QString const & dir1,
@@ -194,7 +196,7 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 		fromqstr(filename), fromqstr(refpath)).absFilename());
 
 	QString const outname =
-		browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
+		frontend::browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
 
 	QString const reloutname =
 		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(refpath)));
@@ -203,20 +205,6 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 		return outname;
 	else
 		return reloutname;
-}
-
-} // namespace frontend
-
-docstring browseRelFile(docstring const & filename, docstring const & refpath,
-	docstring const & title, FileFilterList const & filters, bool save,
-	docstring const & label1, docstring const & dir1,
-	docstring const & label2, docstring const & dir2)
-{
-	return qstring_to_ucs4(frontend::browseRelFile(
-		toqstr(filename), toqstr(refpath),
-		toqstr(title), filters, save,
-		toqstr(label1), toqstr(dir1),
-		toqstr(label2), toqstr(dir2)));
 }
 
 

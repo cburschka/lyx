@@ -264,9 +264,9 @@ void GuiGraphics::change_bb()
 
 void GuiGraphics::on_browsePB_clicked()
 {
-	docstring const str = browse(qstring_to_ucs4(filename->text()));
-	if (!str.empty()) {
-		filename->setText(toqstr(str));
+	QString const str = browse(filename->text());
+	if (!str.isEmpty()) {
+		filename->setText(str);
 		changed();
 	}
 }
@@ -287,7 +287,7 @@ void GuiGraphics::on_editPB_clicked()
 void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
-	EmbeddedFile file = EmbeddedFile(fromqstr(filename), bufferFilepath());
+	EmbeddedFile file = EmbeddedFile(fromqstr(filename), fromqstr(bufferFilepath()));
 }
 
 
@@ -435,7 +435,7 @@ void GuiGraphics::updateContents()
 	}
 
 	string const name =
-		igp.filename.outputFilename(bufferFilepath());
+		igp.filename.outputFilename(fromqstr(bufferFilepath()));
 	filename->setText(toqstr(name));
 	embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
@@ -578,7 +578,7 @@ void GuiGraphics::applyView()
 {
 	InsetGraphicsParams & igp = params_;
 
-	igp.filename.set(fromqstr(filename->text()), bufferFilepath());
+	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilepath()));
 	igp.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	// the bb section
@@ -718,9 +718,9 @@ void GuiGraphics::dispatchParams()
 }
 
 
-docstring const GuiGraphics::browse(docstring const & in_name) const
+QString GuiGraphics::browse(QString const & in_name) const
 {
-	docstring const title = _("Select graphics file");
+	QString const title = qt_("Select graphics file");
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support().absFilename(), "clipart");
@@ -730,16 +730,16 @@ docstring const GuiGraphics::browse(docstring const & in_name) const
 	if (!(clip.exists() && clip.isDirectory()))
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 
-	return browseRelFile(in_name, from_utf8(bufferFilepath()),
+	return browseRelFile(in_name, bufferFilepath(),
 		title, FileFilterList(), false, 
-		_("Clipart|#C#c"), from_utf8(clipdir),
-		_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		qt_("Clipart|#C#c"), toqstr(clipdir),
+		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 }
 
 
 string const GuiGraphics::readBB(string const & file)
 {
-	FileName const abs_file = makeAbsPath(file, bufferFilepath());
+	FileName const abs_file = makeAbsPath(file, fromqstr(bufferFilepath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -768,7 +768,7 @@ string const GuiGraphics::readBB(string const & file)
 bool GuiGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	return makeAbsPath(fname, bufferFilepath()).isReadableFile();
+	return makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
 }
 
 
@@ -784,7 +784,7 @@ void GuiGraphics::editGraphics()
 namespace {
 
 char const * const bb_units[] = { "bp", "cm", "mm", "in" };
-size_t const bb_size = sizeof(bb_units) / sizeof(char *);
+size_t const bb_size = sizeof(bb_units) / sizeof(bb_units[0]);
 
 // These are the strings that are stored in the LyX file and which
 // correspond to the LaTeX identifiers shown in the comments at the

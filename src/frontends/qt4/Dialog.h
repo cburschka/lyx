@@ -227,7 +227,7 @@ public:
 	//@{
 	bool isBufferAvailable() const;
 	bool isBufferReadonly() const;
-	std::string const bufferFilepath() const;
+	QString bufferFilepath() const;
 	//@}
 
 	/// The type of the current buffer.

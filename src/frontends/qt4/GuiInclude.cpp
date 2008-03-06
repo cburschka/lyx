@@ -283,9 +283,9 @@ void GuiInclude::browse()
 	else
 		type = LISTINGS;
 
-	docstring const & name = browse(qstring_to_ucs4(filenameED->text()), type);
-	if (!name.empty())
-		filenameED->setText(toqstr(name));
+	QString name = browse(filenameED->text(), type);
+	if (!name.isEmpty())
+		filenameED->setText(name);
 }
 
 
@@ -305,9 +305,9 @@ bool GuiInclude::isValid()
 }
 
 
-docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
+QString GuiInclude::browse(QString const & in_name, Type in_type) const
 {
-	docstring const title = _("Select document to include");
+	QString const title = qt_("Select document to include");
 
 	// input TeX, verbatim, or LyX file ?
 	FileFilterList filters;
@@ -321,10 +321,10 @@ docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
 		break;
 	}
 
-	docstring const docpath = from_utf8(support::onlyPath(buffer().absFileName()));
+	QString const docpath = toqstr(support::onlyPath(buffer().absFileName()));
 
 	return browseRelFile(in_name, docpath, title, filters, false, 
-		_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 }
 
 

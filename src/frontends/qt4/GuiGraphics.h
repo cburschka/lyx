@@ -74,7 +74,7 @@ private:
 	bool isBufferDependent() const { return true; }
 
 	/// Browse for a file
-	docstring const browse(docstring const &) const;
+	QString browse(QString const &) const;
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
 	/// Control the bb

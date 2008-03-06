@@ -255,10 +255,10 @@ void GuiExternal::bbChanged()
 void GuiExternal::browseClicked()
 {
 	int const choice =  externalCO->currentIndex();
-	docstring const template_name = from_utf8(getTemplate(choice).lyxName);
-	docstring const str = browse(qstring_to_ucs4(fileED->text()), template_name);
-	if (!str.empty()) {
-		fileED->setText(toqstr(str));
+	QString const template_name = toqstr(getTemplate(choice).lyxName);
+	QString const str = browse(fileED->text(), template_name);
+	if (!str.isEmpty()) {
+		fileED->setText(str);
 		changed();
 	}
 }
@@ -548,7 +548,7 @@ void GuiExternal::updateContents()
 	tab->setCurrentIndex(0);
 
 	string const name =
-		params_.filename.outputFilename(bufferFilepath());
+		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
 	embedCB->setCheckState(params_.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
@@ -632,7 +632,7 @@ void GuiExternal::updateTemplate()
 
 void GuiExternal::applyView()
 {
-	params_.filename.set(fromqstr(fileED->text()), bufferFilepath());
+	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilepath()));
 	params_.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
@@ -769,17 +769,16 @@ GuiExternal::getTemplateFilters(string const & template_name) const
 }
 
 
-docstring const GuiExternal::browse(docstring const & input,
-				     docstring const & template_name) const
+QString GuiExternal::browse(QString const & input,
+				     QString const & template_name) const
 {
-	docstring const title =  _("Select external file");
-
-	docstring const bufpath = from_utf8(bufferFilepath());
+	QString const title = qt_("Select external file");
+	QString const bufpath = bufferFilepath();
 	FileFilterList const filter =
-		FileFilterList(from_utf8(getTemplateFilters(to_utf8(template_name))));
+		FileFilterList(from_utf8(getTemplateFilters(fromqstr(template_name))));
 
-	docstring const label1 = _("Documents|#o#O");
-	docstring const dir1 = from_utf8(lyxrc.document_path);
+	QString const label1 = qt_("Documents|#o#O");
+	QString const dir1 = toqstr(lyxrc.document_path);
 
 	return browseRelFile(input, bufpath, title, filter, false, label1, dir1);
 }
@@ -787,7 +786,7 @@ docstring const GuiExternal::browse(docstring const & input,
 
 string const GuiExternal::readBB(string const & file)
 {
-	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
+	FileName const abs_file(makeAbsPath(file, fromqstr(bufferFilepath())));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function

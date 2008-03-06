@@ -20,7 +20,6 @@
 
 #include "Dialog.h"
 #include "PrinterParams.h"
-#include "support/docstring.h"
 
 namespace lyx {
 namespace frontend {

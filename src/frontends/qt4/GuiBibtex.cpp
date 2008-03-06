@@ -128,51 +128,52 @@ void GuiBibtex::change_adaptor()
 
 void GuiBibtex::browsePressed()
 {
-	docstring const file = browseBst(docstring());
+	QString const file = browseBst(QString());
 
-	if (!file.empty()) {
-		// FIXME UNICODE
-		docstring const filen = from_utf8(changeExtension(to_utf8(file), ""));
-		bool present = false;
-		unsigned int pres = 0;
+	if (file.isEmpty())
+		return;
 
-		for (int i = 0; i != styleCB->count(); ++i) {
-			if (qstring_to_ucs4(styleCB->itemText(i)) == filen) {
-				present = true;
-				pres = i;
-			}
+	// FIXME UNICODE
+	QString const filen = toqstr(changeExtension(fromqstr(file), ""));
+	bool present = false;
+	unsigned int pres = 0;
+
+	for (int i = 0; i != styleCB->count(); ++i) {
+		if (styleCB->itemText(i) == filen) {
+			present = true;
+			pres = i;
 		}
-
-		if (!present)
-			styleCB->insertItem(0, toqstr(filen));
-
-		styleCB->setCurrentIndex(pres);
-		changed();
 	}
+
+	if (!present)
+		styleCB->insertItem(0, filen);
+
+	styleCB->setCurrentIndex(pres);
+	changed();
 }
 
 
 void GuiBibtex::browseBibPressed()
 {
-	docstring const file = trim(browseBib(docstring()));
+	QString const file = browseBib(QString()).trimmed();
 
-	if (!file.empty()) {
-		// FIXME UNICODE
-		QString const f = toqstr(changeExtension(to_utf8(file), ""));
-		bool present = false;
+	if (file.isEmpty())
+		return;
 
-		for (int i = 0; i < add_->bibLW->count(); ++i) {
-			if (add_->bibLW->item(i)->text() == f)
-				present = true;
-		}
+	QString const f = toqstr(changeExtension(fromqstr(file), ""));
+	bool present = false;
 
-		if (!present) {
-			add_->bibLW->addItem(f);
-			changed();
-		}
-
-		add_->bibED->setText(f);
+	for (int i = 0; i < add_->bibLW->count(); ++i) {
+		if (add_->bibLW->item(i)->text() == f)
+			present = true;
 	}
+
+	if (!present) {
+		add_->bibLW->addItem(f);
+		changed();
+	}
+
+	add_->bibED->setText(f);
 }
 
 
@@ -186,9 +187,9 @@ void GuiBibtex::addPressed()
 void GuiBibtex::addDatabase()
 {
 	int const sel = add_->bibLW->currentRow();
-	docstring const file = trim(qstring_to_ucs4(add_->bibED->text()));
+	QString const file = add_->bibED->text().trimmed();
 
-	if (sel < 0 && file.empty())
+	if (sel < 0 && file.isEmpty())
 		return;
 
 	// Add the selected browser_bib keys to browser_database
@@ -210,9 +211,9 @@ void GuiBibtex::addDatabase()
 		}
 	}
 
-	if (!file.empty()) {
+	if (!file.isEmpty()) {
 		add_->bibED->clear();
-		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
+		QString const f = toqstr(changeExtension(fromqstr(file), ""));
 		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty()) {
@@ -359,24 +360,24 @@ void GuiBibtex::updateContents()
 
 void GuiBibtex::applyView()
 {
-	docstring dbs = qstring_to_ucs4(databaseLW->item(0)->text());
+	QString dbs = databaseLW->item(0)->text();
 	docstring emb = databaseLW->item(0)->checkState() == Qt::Checked ? _("true") : _("false");
 
 	unsigned int maxCount = databaseLW->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
-		dbs += qstring_to_ucs4(databaseLW->item(i)->text());
+		dbs += databaseLW->item(i)->text();
 		emb += ',';
 		emb += databaseLW->item(i)->checkState() == Qt::Checked ? _("true") : _("false");
 	}
 
-	params_["bibfiles"] = dbs;
+	params_["bibfiles"] = qstring_to_ucs4(dbs);
 	params_["embed"] = emb;
 
 	docstring const bibstyle = qstring_to_ucs4(styleCB->currentText());
 	bool const bibtotoc = bibtocCB->isChecked();
 
-	if (bibtotoc && (!bibstyle.empty())) {
+	if (bibtotoc && !bibstyle.empty()) {
 		// both bibtotoc and style
 		params_["options"] = "bibtotoc," + bibstyle;
 	} else if (bibtotoc) {
@@ -427,25 +428,23 @@ bool GuiBibtex::isValid()
 }
 
 
-docstring const GuiBibtex::browseBib(docstring const & in_name) const
+QString GuiBibtex::browseBib(QString const & in_name) const
 {
-	// FIXME UNICODE
-	docstring const label1 = _("Documents|#o#O");
-	docstring const dir1 = from_utf8(lyxrc.document_path);
+	QString const label1 = qt_("Documents|#o#O");
+	QString const dir1 = toqstr(lyxrc.document_path);
 	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
-	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-		_("Select a BibTeX database to add"), filter, false, label1, dir1);
+	return browseRelFile(in_name, bufferFilepath(),
+		qt_("Select a BibTeX database to add"), filter, false, label1, dir1);
 }
 
 
-docstring const GuiBibtex::browseBst(docstring const & in_name) const
+QString GuiBibtex::browseBst(QString const & in_name) const
 {
-	// FIXME UNICODE
-	docstring const label1 = _("Documents|#o#O");
-	docstring const dir1 = from_utf8(lyxrc.document_path);
+	QString const label1 = qt_("Documents|#o#O");
+	QString const dir1 = toqstr(lyxrc.document_path);
 	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
-	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-		_("Select a BibTeX style"), filter, false, label1, dir1);
+	return browseRelFile(in_name, bufferFilepath(),
+		qt_("Select a BibTeX style"), filter, false, label1, dir1);
 }
 
 

@@ -84,13 +84,10 @@ void GuiPrint::change_adaptor()
 
 void GuiPrint::browseClicked()
 {
-	docstring name =
-		browseRelFile(docstring(), from_utf8(buffer().filePath()),
-			     _("Print to file"),
-			     FileFilterList(_("PostScript files (*.ps)")),
-			     true);
-	QString file = toqstr(name);
-	if (!file.isNull()) {
+	QString file =
+		browseRelFile(QString(), bufferFilepath(), qt_("Print to file"),
+			     FileFilterList(_("PostScript files (*.ps)")), true);
+	if (!file.isEmpty()) {
 		fileED->setText(file);
 		changed();
 	}

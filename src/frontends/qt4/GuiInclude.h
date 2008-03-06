@@ -74,7 +74,7 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	/// Browse for a file
-	docstring browse(docstring const &, Type) const;
+	QString browse(QString const &, Type) const;
 };
 
 } // namespace frontend

@@ -94,8 +94,8 @@ private:
 	std::string const
 	getTemplateFilters(std::string const & template_name) const;
 	///
-	docstring const browse(docstring const & input_file,
-				 docstring const & template_name) const;
+	QString browse(QString const & input_file,
+				 QString const & template_name) const;
 
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
