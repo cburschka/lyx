@@ -423,9 +423,11 @@ void handle_comment(ostream & os, string const & s, Context & context)
 
 LayoutPtr findLayout(TextClass const & textclass, string const & name)
 {
+	DocumentClass::const_iterator lit = textclass.begin();
+	DocumentClass::const_iterator len = textclass.end();
 	for (size_t i = 0; i != textclass.layoutCount(); ++i)
-		if (textclass.layout(i)->latexname() == name)
-			return textclass.layout(i);
+		if ((*lit)->latexname() == name)
+			return *lit;
 	return LayoutPtr();
 }
 
