@@ -665,16 +665,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_SCREEN_UP_SELECT:
-		cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
-		cur.undispatched();
-		break;
-
-	case LFUN_SCREEN_DOWN_SELECT:
-		cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-		cur.undispatched();
-		break;
-
 	case LFUN_CELL_FORWARD:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
 		cur.inset().idxNext(cur);

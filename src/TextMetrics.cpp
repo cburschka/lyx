@@ -32,7 +32,6 @@
 #include "InsetList.h"
 #include "Layout.h"
 #include "Length.h"
-#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "paragraph_funcs.h"
@@ -1608,73 +1607,6 @@ int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 		h += pm.rows()[rit].height();
 	h += pm.rows()[rend].ascent();
 	return h;
-}
-
-
-void TextMetrics::cursorPrevious(Cursor & cur)
-{
-	if (bv_->isTopScreen()) {
-		lyx::dispatch(FuncRequest(cur.selection()
-			? LFUN_BUFFER_BEGIN_SELECT : LFUN_BUFFER_BEGIN));
-		cur.finishUndo();
-		cur.updateFlags(Update::None);
-		return;
-	}
-
-	pos_type cpos = cur.pos();
-	pit_type cpar = cur.pit();
-
-	// Memorize current position.
-	Point p = bv_->getPos(cur, cur.boundary());
-	// Scroll one full page.
-	lyx::dispatch(FuncRequest(LFUN_SCROLL, "page up"));
-	// Try to place the cursor to the same coordinates.
-	setCursorFromCoordinates(cur, p.x_, p.y_);
-	// And move one line up in order to acknowledge in inset movement and/or
-	// selection.
-	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
-
-	if (cpar == cur.pit() && cpos == cur.pos())
-		// we have a row which is taller than the workarea. The
-		// simplest solution is to move to the previous row instead.
-		cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
-
-	cur.finishUndo();
-	cur.updateFlags(Update::Force | Update::FitCursor);
-}
-
-
-void TextMetrics::cursorNext(Cursor & cur)
-{
-	if (bv_->isBottomScreen()) {
-		lyx::dispatch(FuncRequest(cur.selection()
-			? LFUN_BUFFER_END_SELECT : LFUN_BUFFER_END));
-		cur.finishUndo();
-		cur.updateFlags(Update::None);
-		return;
-	}
-
-	pos_type cpos = cur.pos();
-	pit_type cpar = cur.pit();
-
-	// Memorize current position.
-	Point p = bv_->getPos(cur, cur.boundary());
-	// Scroll one full page.
-	lyx::dispatch(FuncRequest(LFUN_SCROLL, "page down"));
-	// Try to place the cursor to the same coordinates.
-	setCursorFromCoordinates(cur, p.x_, p.y_);
-	// And move one line down in order to acknowledge in inset movement and/or
-	// selection.
-	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
-
-	if (cpar == cur.pit() && cpos == cur.pos())
-		// we have a row which is taller than the workarea. The
-		// simplest solution is to move to the next row instead.
-		cur.dispatch(
-			FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
-
-	cur.finishUndo();
-	cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
 

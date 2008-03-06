@@ -604,25 +604,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate |= cursorDownParagraph(cur);
 		break;
 
-	case LFUN_SCREEN_UP_SELECT:
-		needsUpdate |= cur.selHandle(true);
-		if (cur.pit() == 0 && cur.textRow().pos() == 0)
-			cur.undispatched();
-		else {
-			tm.cursorPrevious(cur);
-		}
-		break;
-
-	case LFUN_SCREEN_DOWN_SELECT:
-		needsUpdate |= cur.selHandle(true);
-		if (cur.pit() == cur.lastpit()
-			  && cur.textRow().endpos() == cur.lastpos())
-			cur.undispatched();
-		else {
-			tm.cursorNext(cur);
-		}
-		break;
-
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_BEGIN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
@@ -2137,8 +2118,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DOWN_SELECT:
 	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
-	case LFUN_SCREEN_UP_SELECT:
-	case LFUN_SCREEN_DOWN_SELECT:
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_LINE_END_SELECT:
 	case LFUN_WORD_FORWARD_SELECT:

@@ -1554,7 +1554,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		if (pit() + 1 >= int(text()->paragraphs().size()) &&
 				row + 1 >= int(pm.rows().size()))
 			return false;
-	}	
+	}
 
 	// with and without selection are handled differently
 	if (!selection()) {
@@ -1587,7 +1587,10 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				top().pos() = min(tm.x2pos(pit(), row - 1, xo), top().lastpos());
 			} else if (pit() > 0) {
 				--pit();
-				ParagraphMetrics const & pmcur = bv_->parMetrics(text(), pit());
+				TextMetrics & tm = bv_->textMetrics(text());
+				if (!tm.contains(pit()))
+					tm.newParMetricsUp();
+				ParagraphMetrics const & pmcur = tm.parMetrics(pit());
 				top().pos() = min(tm.x2pos(pit(), pmcur.rows().size() - 1, xo), top().lastpos());
 			}
 		} else {
@@ -1595,6 +1598,9 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				top().pos() = min(tm.x2pos(pit(), row + 1, xo), top().lastpos());
 			} else if (pit() + 1 < int(text()->paragraphs().size())) {
 				++pit();
+				TextMetrics & tm = bv_->textMetrics(text());
+				if (!tm.contains(pit()))
+					tm.newParMetricsDown();
 				top().pos() = min(tm.x2pos(pit(), 0, xo), top().lastpos());
 			}
 		}

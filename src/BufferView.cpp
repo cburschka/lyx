@@ -902,14 +902,9 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
 	case LFUN_SCROLL:
-		flag.enabled(true);
-		break;
-
-	// FIXME: LFUN_SCREEN_DOWN_SELECT should be removed from
-	// everywhere else before this can enabled:
 	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_DOWN_SELECT:
-		flag.enabled(false);
+		flag.enabled(true);
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -1311,26 +1306,37 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		lfunScroll(cmd);
 		break;
 
-	case LFUN_SCREEN_UP_SELECT:
-	case LFUN_SCREEN_DOWN_SELECT: {
-		// Those two are not ready yet for consumption.
-		return false;
-
+	case LFUN_SCREEN_UP_SELECT: {
 		cur.selHandle(true);
-		size_t initial_depth = cur.depth();
-		Point const p = getPos(cur, cur.boundary());
-		scroll(cmd.action == LFUN_SCREEN_UP_SELECT? - height_ : height_);
-		// FIXME: We need to verify if the cursor stayed within an inset...
-		//cur.reset(buffer_.inset());
-		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
-		cur.finishUndo();
-		while (cur.depth() > initial_depth) {
-			cur.forwardInset();
+		if (isTopScreen()) {
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_BEGIN_SELECT));
+			cur.finishUndo();
+			break;
 		}
-		// FIXME: we need to do a redraw again because of the selection
-		// But no screen update is needed.
-		d->update_strategy_ = NoScreenUpdate;
-		buffer_.changed();
+		int y = getPos(cur, cur.boundary()).y_;
+		int const ymin = y - height_ + defaultRowHeight();
+		while (y > ymin && cur.up())
+			y = getPos(cur, cur.boundary()).y_;
+
+		cur.finishUndo();
+		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		break;
+	}
+
+	case LFUN_SCREEN_DOWN_SELECT: {
+		cur.selHandle(true);
+		if (isBottomScreen()) {
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+			cur.finishUndo();
+			break;
+		}
+		int y = getPos(cur, cur.boundary()).y_;
+		int const ymax = y + height_ - defaultRowHeight();
+		while (y < ymax && cur.down())
+			y = getPos(cur, cur.boundary()).y_;
+
+		cur.finishUndo();
+		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 

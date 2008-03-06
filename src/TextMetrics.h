@@ -212,10 +212,6 @@ public:
 		bool boundary) const;
 
 	///
-	void cursorPrevious(Cursor & cur);
-	///
-	void cursorNext(Cursor & cur);
-	///
 	bool cursorHome(Cursor & cur);
 	///
 	bool cursorEnd(Cursor & cur);
