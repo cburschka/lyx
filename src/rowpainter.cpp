@@ -474,16 +474,16 @@ void RowPainter::paintFirst()
 
 	Buffer const & buffer = pi_.base.bv->buffer();
 
-	LayoutPtr const & layout = par_.layout();
+	Layout const & layout = par_.layout();
 
 	if (buffer.params().paragraph_separation == BufferParams::PARSEP_SKIP) {
 		if (pit_ != 0) {
-			if (layout->latextype == LATEX_PARAGRAPH
+			if (layout.latextype == LATEX_PARAGRAPH
 				&& !par_.getDepth()) {
 				y_top += buffer.params().getDefSkip().inPixels(*pi_.base.bv);
 			} else {
-				LayoutPtr const & playout = pars_[pit_ - 1].layout();
-				if (playout->latextype == LATEX_PARAGRAPH
+				Layout const & playout = pars_[pit_ - 1].layout();
+				if (playout.latextype == LATEX_PARAGRAPH
 					&& !pars_[pit_ - 1].getDepth()) {
 					// is it right to use defskip here, too? (AS)
 					y_top += buffer.params().getDefSkip().inPixels(*pi_.base.bv);
@@ -497,9 +497,9 @@ void RowPainter::paintFirst()
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
 	// should we print a label?
-	if (layout->labeltype >= LABEL_STATIC
-	    && (layout->labeltype != LABEL_STATIC
-		      || layout->latextype != LATEX_ENVIRONMENT
+	if (layout.labeltype >= LABEL_STATIC
+	    && (layout.labeltype != LABEL_STATIC
+		      || layout.latextype != LATEX_ENVIRONMENT
 		      || is_seq)) {
 
 		FontInfo const font = labelFont();
@@ -512,7 +512,7 @@ void RowPainter::paintFirst()
 			// this is special code for the chapter layout. This is
 			// printed in an extra row and has a pagebreak at
 			// the top.
-			if (layout->counter == "chapter") {
+			if (layout.counter == "chapter") {
 				double spacing_val = 1.0;
 				if (!parparams.spacing().isDefault()) {
 					spacing_val = parparams.spacing().getValue();
@@ -520,10 +520,10 @@ void RowPainter::paintFirst()
 					spacing_val = buffer.params().spacing().getValue();
 				}
 
-				int const labeladdon = int(fm.maxHeight() * layout->spacing.getValue() * spacing_val);
+				int const labeladdon = int(fm.maxHeight() * layout.spacing.getValue() * spacing_val);
 
-				int const maxdesc = int(fm.maxDescent() * layout->spacing.getValue() * spacing_val)
-					+ int(layout->parsep) * defaultRowHeight();
+				int const maxdesc = int(fm.maxDescent() * layout.spacing.getValue() * spacing_val)
+					+ int(layout.parsep) * defaultRowHeight();
 
 				if (is_rtl) {
 					x = width_ - leftMargin() -
@@ -534,9 +534,9 @@ void RowPainter::paintFirst()
 			} else {
 				if (is_rtl) {
 					x = width_ - leftMargin()
-						+ fm.width(layout->labelsep);
+						+ fm.width(layout.labelsep);
 				} else {
-					x = x_ - fm.width(layout->labelsep)
+					x = x_ - fm.width(layout.labelsep)
 						- fm.width(str);
 				}
 
@@ -547,9 +547,9 @@ void RowPainter::paintFirst()
 	// the labels at the top of an environment.
 	// More or less for bibliography
 	} else if (is_seq &&
-		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
-		layout->labeltype == LABEL_BIBLIO ||
-		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
+		(layout.labeltype == LABEL_TOP_ENVIRONMENT ||
+		layout.labeltype == LABEL_BIBLIO ||
+		layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
 		FontInfo const font = labelFont();
 		docstring const str = par_.labelString();
 		if (!str.empty()) {
@@ -562,14 +562,14 @@ void RowPainter::paintFirst()
 			FontMetrics const & fm = theFontMetrics(font);
 
 			int const labeladdon = int(fm.maxHeight()
-				* layout->spacing.getValue() * spacing_val);
+				* layout.spacing.getValue() * spacing_val);
 
 			int maxdesc =
-				int(fm.maxDescent() * layout->spacing.getValue() * spacing_val
-				+ (layout->labelbottomsep * defaultRowHeight()));
+				int(fm.maxDescent() * layout.spacing.getValue() * spacing_val
+				+ (layout.labelbottomsep * defaultRowHeight()));
 
 			double x = x_;
-			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
+			if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				if (is_rtl)
 					x = leftMargin();
 				x += (width_ - text_metrics_.rightMargin(pm_) - leftMargin()) / 2;
@@ -629,7 +629,7 @@ void RowPainter::paintLast()
 	case END_LABEL_STATIC: {
 		FontInfo const font = labelFont();
 		FontMetrics const & fm = theFontMetrics(font);
-		docstring const & str = par_.layout()->endlabelstring();
+		docstring const & str = par_.layout().endlabelstring();
 		double const x = is_rtl ?
 			x_ - fm.width(str)
 			: - text_metrics_.rightMargin(pm_) - row_.width();
@@ -674,7 +674,7 @@ void RowPainter::paintText()
 		body_pos = 0;
 	}
 
-	LayoutPtr const & layout = par_.layout();
+	Layout const & layout = par_.layout();
 
 	bool running_strikeout = false;
 	bool is_struckout = false;
@@ -762,7 +762,7 @@ void RowPainter::paintText()
 
 		if (body_pos > 0 && pos == body_pos - 1) {
 			int const lwidth = theFontMetrics(labelFont())
-				.width(layout->labelsep);
+				.width(layout.labelsep);
 
 			x_ += row_.label_hfill + lwidth - width_pos;
 		}

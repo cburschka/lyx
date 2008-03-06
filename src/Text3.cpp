@@ -268,7 +268,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	DocumentClass const & tc = buf.params().documentClass();
 
-	int const thistoclevel = start->layout()->toclevel;
+	int const thistoclevel = start->layout().toclevel;
 	int toclevel;
 
 	// Move out (down) from this section header
@@ -276,7 +276,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 		++finish;
 	// Seek the one (on same level) below
 	for (; finish != end; ++finish) {
-		toclevel = finish->layout()->toclevel;
+		toclevel = finish->layout().toclevel;
 		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel) {
 			break;
 		}
@@ -291,7 +291,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			// Search previous same-level header above
 			do {
 				--dest;
-				toclevel = dest->layout()->toclevel;
+				toclevel = dest->layout().toclevel;
 			} while(dest != bgn
 				&& (toclevel == Layout::NOT_IN_TOC
 				    || toclevel > thistoclevel));
@@ -324,14 +324,14 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
-				toclevel = start->layout()->toclevel;
+				toclevel = start->layout().toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
 				for (; lit != len; ++lit) {
 					if (lit->toclevel == toclevel + 1 &&
-					    start->layout()->labeltype == lit->labeltype) {
+					    start->layout().labeltype == lit->labeltype) {
 						start->setLayout(*lit);
 						break;
 					}
@@ -343,14 +343,14 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
-				toclevel = start->layout()->toclevel;
+				toclevel = start->layout().toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
 				for (; lit != len; ++lit) {
 					if (lit->toclevel == toclevel - 1 &&
-						start->layout()->labeltype == lit->labeltype) {
+						start->layout().labeltype == lit->labeltype) {
 							start->setLayout(*lit);
 							break;
 					}
@@ -825,7 +825,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			/*
 			Paragraph & par = pars_[cur.pit()];
 			if (inset->lyxCode() == LABEL_CODE
-				&& par.layout()->labeltype == LABEL_COUNTER) {
+				&& par.layout().labeltype == LABEL_COUNTER) {
 				// Go to the end of the paragraph
 				// Warning: Because of Change-Tracking, the last
 				// position is 'size()' and not 'size()-1':
@@ -852,7 +852,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SPACE_INSERT:
-		if (cur.paragraph().layout()->free_spacing)
+		if (cur.paragraph().layout().free_spacing)
 			insertChar(cur, ' ');
 		else {
 			doInsertInset(cur, this, cmd, false, false);
@@ -978,7 +978,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SERVER_GET_LAYOUT:
-		cur.message(cur.paragraph().layout()->name());
+		cur.message(cur.paragraph().layout().name());
 		break;
 
 	case LFUN_LAYOUT: {
@@ -986,7 +986,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(layout));
 
 		Paragraph const & para = cur.paragraph();
-		docstring const old_layout = para.layout()->name();
+		docstring const old_layout = para.layout().name();
 		DocumentClass const & tclass = bv->buffer().params().documentClass();
 
 		if (layout.empty())
@@ -1028,7 +1028,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pit_type spit = cur.selBegin().pit();
 			pit_type epit = cur.selEnd().pit() + 1;
 			while (spit != epit) {
-				if (pars_[spit].layout()->name() != old_layout) {
+				if (pars_[spit].layout().name() != old_layout) {
 					change_layout = true;
 					break;
 				}
@@ -1073,8 +1073,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph & par = cur.paragraph();
 		pos_type pos = cur.pos();
 		BufferParams const & bufparams = bv->buffer().params();
-		LayoutPtr const & style = par.layout();
-		if (!style->pass_thru
+		Layout const & style = par.layout();
+		if (!style.pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
 			// this avoids a double undo
 			// FIXME: should not be needed, ideally
@@ -1832,7 +1832,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BIBITEM_INSERT:
-		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO
+		enable = (cur.paragraph().layout().labeltype == LABEL_BIBLIO
 			  && cur.pos() == 0);
 		break;
 
@@ -1944,7 +1944,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OPTIONAL_INSERT:
 		code = OPTARG_CODE;
 		enable = cur.paragraph().insetList().count(OPTARG_CODE)
-			< cur.paragraph().layout()->optionalargs;
+			< cur.paragraph().layout().optionalargs;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
 		code = BOX_CODE;
@@ -2092,7 +2092,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
-		enable = (cur.paragraph().layout()->toclevel != Layout::NOT_IN_TOC);
+		enable = (cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC);
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:

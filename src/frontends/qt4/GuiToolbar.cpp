@@ -620,7 +620,7 @@ void GuiLayoutBox::updateContents(bool reset)
 	Inset const * inset = 
 	owner_.view()->cursor().innerParagraph().inInset();
 	if (!reset && text_class_ == text_class && inset_ == inset) {
-		set(owner_.view()->cursor().innerParagraph().layout()->name());
+		set(owner_.view()->cursor().innerParagraph().layout().name());
 		return;
 	}
 
@@ -644,7 +644,7 @@ void GuiLayoutBox::updateContents(bool reset)
 		addItemSort(name, lyxrc.sort_layouts);
 	}
 
-	set(owner_.view()->cursor().innerParagraph().layout()->name());
+	set(owner_.view()->cursor().innerParagraph().layout().name());
 
 	// needed to recalculate size hint
 	hide();

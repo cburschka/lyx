@@ -100,6 +100,27 @@ public:
 	docstring const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
+	///
+	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
+	///
+	bool isCommand() const { return latextype == LATEX_COMMAND; }
+	///
+	bool isEnvironment() const {
+		return latextype == LATEX_ENVIRONMENT
+			|| latextype == LATEX_BIB_ENVIRONMENT
+			|| latextype == LATEX_ITEM_ENVIRONMENT
+			|| latextype == LATEX_LIST_ENVIRONMENT;
+	}
+
+	///
+	bool operator==(Layout const &) const;
+	///
+	bool operator!=(Layout const & rhs) const 
+		{ return !(*this == rhs); }
+
+	////////////////////////////////////////////////////////////////
+	// members
+	////////////////////////////////////////////////////////////////
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
 	    INHERITED_*, it means that the value is specified by
@@ -197,17 +218,6 @@ public:
 	bool needprotect;
 	/// true when empty paragraphs should be kept.
 	bool keepempty;
-	///
-	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
-	///
-	bool isCommand() const { return latextype == LATEX_COMMAND; }
-	///
-	bool isEnvironment() const {
-		return latextype == LATEX_ENVIRONMENT
-			|| latextype == LATEX_BIB_ENVIRONMENT
-			|| latextype == LATEX_ITEM_ENVIRONMENT
-			|| latextype == LATEX_LIST_ENVIRONMENT;
-	}
 	/// Type of LaTeX object
 	LatexType latextype;
 	/// Does this object belong in the title part of the document?

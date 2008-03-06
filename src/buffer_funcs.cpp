@@ -25,7 +25,6 @@
 #include "Language.h"
 #include "LaTeX.h"
 #include "Layout.h"
-#include "LayoutPtr.h"
 #include "LyX.h"
 #include "TextClass.h"
 #include "Paragraph.h"
@@ -233,7 +232,7 @@ depth_type getDepth(DocIterator const & it)
 depth_type getItemDepth(ParIterator const & it)
 {
 	Paragraph const & par = *it;
-	LabelType const labeltype = par.layout()->labeltype;
+	LabelType const labeltype = par.layout().labeltype;
 
 	if (labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
 		return 0;
@@ -257,7 +256,7 @@ depth_type getItemDepth(ParIterator const & it)
 		// that is not more deeply nested.
 		Paragraph & prev_par = *prev_it;
 		depth_type const prev_depth = getDepth(prev_it);
-		if (labeltype == prev_par.layout()->labeltype) {
+		if (labeltype == prev_par.layout().labeltype) {
 			if (prev_depth < min_depth)
 				return prev_par.itemdepth + 1;
 			if (prev_depth == min_depth)
@@ -275,14 +274,14 @@ depth_type getItemDepth(ParIterator const & it)
 bool needEnumCounterReset(ParIterator const & it)
 {
 	Paragraph const & par = *it;
-	BOOST_ASSERT(par.layout()->labeltype == LABEL_ENUMERATE);
+	BOOST_ASSERT(par.layout().labeltype == LABEL_ENUMERATE);
 	depth_type const cur_depth = par.getDepth();
 	ParIterator prev_it = it;
 	while (prev_it.pit()) {
 		--prev_it.top().pit();
 		Paragraph const & prev_par = *prev_it;
 		if (prev_par.getDepth() <= cur_depth)
-			return  prev_par.layout()->labeltype != LABEL_ENUMERATE;
+			return  prev_par.layout().labeltype != LABEL_ENUMERATE;
 	}
 	// start of nested inset: reset
 	return true;
@@ -294,7 +293,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 {
 	DocumentClass const & textclass = buf.params().documentClass();
 	Paragraph & par = it.paragraph();
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
 	if (par.params().startOfAppendix()) {
@@ -308,19 +307,19 @@ void setLabel(Buffer const & buf, ParIterator & it)
 	// Compute the item depth of the paragraph
 	par.itemdepth = getItemDepth(it);
 
-	if (layout->margintype == MARGIN_MANUAL) {
+	if (layout.margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			par.params().labelWidthString(par.translateIfPossible(layout->labelstring(), buf.params()));
+			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), buf.params()));
 	} else {
 		par.params().labelWidthString(docstring());
 	}
 
-	switch(layout->labeltype) {
+	switch(layout.labeltype) {
 	case LABEL_COUNTER:
-		if (layout->toclevel <= buf.params().secnumdepth
-		    && (layout->latextype != LATEX_ENVIRONMENT
+		if (layout.toclevel <= buf.params().secnumdepth
+		    && (layout.latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
-			counters.step(layout->counter);
+			counters.step(layout.counter);
 			par.params().labelString(
 				par.expandLabel(layout, buf.params()));
 		} else
@@ -434,7 +433,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 	case LABEL_STATIC:	
 	case LABEL_BIBLIO:
 		par.params().labelString(
-			par.translateIfPossible(layout->labelstring(), 
+			par.translateIfPossible(layout.labelstring(), 
 						buf.params()));
 		break;
 	}

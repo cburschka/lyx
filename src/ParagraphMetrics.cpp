@@ -203,7 +203,7 @@ int ParagraphMetrics::rightMargin(BufferView const & bv) const
 	int const r_margin =
 		bv.rightMargin()
 		+ fm.signedWidth(tclass.rightmargin())
-		+ fm.signedWidth(par_->layout()->rightmargin)
+		+ fm.signedWidth(par_->layout().rightmargin)
 		* 4 / (par_->getDepth() + 4);
 
 	return r_margin;
@@ -260,7 +260,7 @@ bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
 	}
 
 	// do not expand in some labels
-	if (par_->layout()->margintype != MARGIN_MANUAL && pos < par_->beginOfBody())
+	if (par_->layout().margintype != MARGIN_MANUAL && pos < par_->beginOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and

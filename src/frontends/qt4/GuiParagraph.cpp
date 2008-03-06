@@ -327,13 +327,13 @@ bool GuiParagraph::canIndent() const
 
 LyXAlignment GuiParagraph::alignPossible() const
 {
-	return bufferview()->cursor().innerParagraph().layout()->alignpossible;
+	return bufferview()->cursor().innerParagraph().layout().alignpossible;
 }
 
 
 LyXAlignment GuiParagraph::alignDefault() const
 {
-	return bufferview()->cursor().innerParagraph().layout()->align;
+	return bufferview()->cursor().innerParagraph().layout().align;
 }
 
 

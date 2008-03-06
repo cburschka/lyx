@@ -1956,7 +1956,7 @@ void Cursor::recordUndoSelection()
 
 void Cursor::checkBufferStructure()
 {
-	if (paragraph().layout()->toclevel == Layout::NOT_IN_TOC)
+	if (paragraph().layout().toclevel == Layout::NOT_IN_TOC)
 		return;
 	Buffer const * master = buffer().masterBuffer();
 	master->tocBackend().updateItem(ParConstIterator(*this));

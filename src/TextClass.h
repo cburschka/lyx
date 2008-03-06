@@ -14,7 +14,6 @@
 #include "FontInfo.h"
 #include "Layout.h"
 #include "LayoutEnums.h"
-#include "LayoutPtr.h"
 
 #include "insets/InsetLayout.h"
 

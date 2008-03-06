@@ -592,7 +592,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 		if (*cit == '\n') {
 			if (autobreakrows && (!par.empty() || par.allowEmpty())) {
 				breakParagraph(params(), pars, pit, pos,
-					       par.layout()->isEnvironment());
+					       par.layout().isEnvironment());
 				++pit;
 				pos = 0;
 				space_inserted = true;
@@ -1834,7 +1834,7 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 		// increased depth?
 		if ((par.params().depth() > depth
 		     || par.params().leftIndent() != leftIndent)
-		    && par.layout()->isEnvironment()) {
+		    && par.layout().isEnvironment()) {
 			updateBlockMacros(it, scope);
 			continue;
 		}
@@ -1924,7 +1924,7 @@ void Buffer::updateBlockMacros(DocIterator & it, DocIterator & scope) const
 	// set scope for macros in this paragraph:
 	// * either the "old" outer scope
 	// * or the scope ending after the environment
-	if (par.layout()->isEnvironment()) {
+	if (par.layout().isEnvironment()) {
 		// find end of environment block,
 		DocIterator envEnd = it;
 		pit_type n = it.lastpit() + 1;

@@ -247,7 +247,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 
 	ParagraphList const & pars = text_->paragraphs();
 	Paragraph const & par = pars[pit];
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 	Buffer const & buffer = bv_->buffer();
 	// FIXME: broken?
 	BufferParams const & params = buffer.params();
@@ -258,10 +258,10 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 		Font f = par.getFontSettings(params, pos);
 		if (!text_->isMainText(buffer))
 			applyOuterFont(f);
-		bool lab = layout->labeltype == LABEL_MANUAL && pos < body_pos;
+		bool lab = layout.labeltype == LABEL_MANUAL && pos < body_pos;
 
-		FontInfo const & lf = lab ? layout->labelfont : layout->font;
-		FontInfo rlf = lab ? layout->reslabelfont : layout->resfont;
+		FontInfo const & lf = lab ? layout.labelfont : layout.font;
+		FontInfo rlf = lab ? layout.reslabelfont : layout.resfont;
 		
 		// In case the default family has been customized
 		if (lf.family() == INHERIT_FAMILY)
@@ -272,7 +272,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 
 	// The uncommon case need not be optimized as much
 	FontInfo const & layoutfont = pos < body_pos ? 
-		layout->labelfont : layout->font;
+		layout.labelfont : layout.font;
 
 	Font font = par.getFontSettings(params, pos);
 	font.fontInfo().realize(layoutfont);
@@ -508,10 +508,10 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		row.x = leftMargin(max_width_, pit, row.pos());
 
 	// is there a manual margin with a manual label
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
-	if (layout->margintype == MARGIN_MANUAL
-	    && layout->labeltype == LABEL_MANUAL) {
+	if (layout.margintype == MARGIN_MANUAL
+	    && layout.labeltype == LABEL_MANUAL) {
 		/// We might have real hfills in the label part
 		int nlh = numberOfLabelHfills(par, row);
 
@@ -540,7 +540,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		// set x how you need it
 		int align;
 		if (par.params().align() == LYX_ALIGN_LAYOUT)
-			align = layout->align;
+			align = layout.align;
 		else
 			align = par.params().align();
 
@@ -602,7 +602,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
 			row.x += theFontMetrics(text_->labelFont(buffer, par)).
-				width(layout->labelsep);
+				width(layout.labelsep);
 			if (body_pos <= end)
 				row.x += row.label_hfill;
 		}
@@ -680,7 +680,7 @@ static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 int TextMetrics::labelEnd(pit_type const pit) const
 {
 	// labelEnd is only needed if the layout fills a flushleft label.
-	if (text_->getPar(pit).layout()->margintype != MARGIN_MANUAL)
+	if (text_->getPar(pit).layout().margintype != MARGIN_MANUAL)
 		return 0;
 	// return the beginning of the body
 	return leftMargin(max_width_, pit);
@@ -697,9 +697,9 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	if (pos == end || width < 0)
 		return end;
 
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
-	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX)
+	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX)
 		return addressBreakPoint(pos, par);
 
 	pos_type const body_pos = par.beginOfBody();
@@ -742,7 +742,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		if (body_pos && i == body_pos) {
 			FontMetrics const & fm = theFontMetrics(
 				text_->labelFont(buffer, par));
-			int add = fm.width(layout->labelsep);
+			int add = fm.width(layout.labelsep);
 			if (par.isLineSeparator(i - 1))
 				add -= singleWidth(pit, i - 1);
 
@@ -839,7 +839,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 			if (body_pos > 0 && i == body_pos) {
 				FontMetrics const & fm = theFontMetrics(
 					text_->labelFont(buffer, par));
-				w += fm.width(par.layout()->labelsep);
+				w += fm.width(par.layout().labelsep);
 				if (par.isLineSeparator(i - 1))
 					w -= singleWidth(pit, i - 1);
 				w = max(w, label_end);
@@ -858,7 +858,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 	if (body_pos > 0 && body_pos >= end) {
 		FontMetrics const & fm = theFontMetrics(
 			text_->labelFont(buffer, par));
-		w += fm.width(par.layout()->labelsep);
+		w += fm.width(par.layout().labelsep);
 		if (end > 0 && par.isLineSeparator(end - 1))
 			w -= singleWidth(pit, end - 1);
 		w = max(w, label_end);
@@ -880,7 +880,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// ok, let us initialize the maxasc and maxdesc value.
 	// Only the fontsize count. The other properties
 	// are taken from the layoutfont. Nicer on the screen :)
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
 	// as max get the first character of this row then it can
 	// increase but not decrease the height. Just some point to
@@ -899,7 +899,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	FontMetrics const & fontmetrics = theFontMetrics(font);
 
 	// these are minimum values
-	double const spacing_val = layout->spacing.getValue()
+	double const spacing_val = layout.spacing.getValue()
 		* text_->spacing(buffer, par);
 	//lyxerr << "spacing_val = " << spacing_val << endl;
 	int maxasc  = int(fontmetrics.maxAscent()  * spacing_val);
@@ -948,8 +948,8 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 			&& par.ownerCode() != ERT_CODE
 			&& par.ownerCode() != LISTINGS_CODE
 			&& pit > 0
-			&& ((layout->isParagraph() && par.getDepth() == 0)
-			    || (pars[pit - 1].layout()->isParagraph()
+			&& ((layout.isParagraph() && par.getDepth() == 0)
+			    || (pars[pit - 1].layout().isParagraph()
 				&& pars[pit - 1].getDepth() == 0)))
 		{
 				maxasc += bufparams.getDefSkip().inPixels(*bv_);
@@ -960,25 +960,25 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
-		if (layout->counter == "chapter"
+		if (layout.counter == "chapter"
 		    && !par.params().labelString().empty()) {
 			labeladdon = int(labelfont_metrics.maxHeight()
-				     * layout->spacing.getValue()
+				     * layout.spacing.getValue()
 				     * text_->spacing(buffer, par));
 		}
 
 		// special code for the top label
-		if ((layout->labeltype == LABEL_TOP_ENVIRONMENT
-		     || layout->labeltype == LABEL_BIBLIO
-		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
+		if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
+		     || layout.labeltype == LABEL_BIBLIO
+		     || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
 		    && isFirstInSequence(pit, pars)
 		    && !par.labelString().empty())
 		{
 			labeladdon = int(
 				  labelfont_metrics.maxHeight()
-					* layout->spacing.getValue()
+					* layout.spacing.getValue()
 					* text_->spacing(buffer, par)
-				+ (layout->topsep + layout->labelbottomsep) * dh);
+				+ (layout.topsep + layout.labelbottomsep) * dh);
 		}
 
 		// Add the layout spaces, for example before and after
@@ -992,20 +992,20 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		    && prevpar.getDepth() == par.getDepth()
 		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
-			layoutasc = layout->itemsep * dh;
+			layoutasc = layout.itemsep * dh;
 		} else if (pit != 0 || first != 0) {
-			if (layout->topsep > 0)
-				layoutasc = layout->topsep * dh;
+			if (layout.topsep > 0)
+				layoutasc = layout.topsep * dh;
 		}
 
 		prev = outerHook(pit, pars);
 		if (prev != pit_type(pars.size())) {
-			maxasc += int(pars[prev].layout()->parsep * dh);
+			maxasc += int(pars[prev].layout().parsep * dh);
 		} else if (pit != 0) {
 			Paragraph const & prevpar = pars[pit - 1];
 			if (prevpar.getDepth() != 0 ||
 					prevpar.layout() == layout) {
-				maxasc += int(layout->parsep * dh);
+				maxasc += int(layout.parsep * dh);
 			}
 		}
 	}
@@ -1022,18 +1022,18 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 			double unusual = 0;
 
 			if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
-				usual = pars[cpit].layout()->bottomsep * dh;
+				usual = pars[cpit].layout().bottomsep * dh;
 				cpit = depthHook(cpit, pars, pars[nextpit].getDepth());
 				if (pars[cpit].layout() != pars[nextpit].layout()
 					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
 				{
-					unusual = pars[cpit].layout()->bottomsep * dh;
+					unusual = pars[cpit].layout().bottomsep * dh;
 				}
 				layoutdesc = max(unusual, usual);
 			} else if (pars[cpit].getDepth() == pars[nextpit].getDepth()) {
 				if (pars[cpit].layout() != pars[nextpit].layout()
 					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
-					layoutdesc = int(pars[cpit].layout()->bottomsep * dh);
+					layoutdesc = int(pars[cpit].layout().bottomsep * dh);
 			}
 		}
 	}
@@ -1079,7 +1079,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
 	pos_type c = 0;
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
 	bool left_side = false;
 
@@ -1104,7 +1104,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		if (body_pos > 0 && c == body_pos - 1) {
 			FontMetrics const & fm = theFontMetrics(
 				text_->labelFont(buffer, par));
-			tmpx += row.label_hfill + fm.width(layout->labelsep);
+			tmpx += row.label_hfill + fm.width(layout.labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
@@ -1538,7 +1538,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		if (body_pos > 0 && pos == body_pos - 1) {
 			FontMetrics const & labelfm = theFontMetrics(
 				text_->labelFont(buffer, par));
-			x += row.label_hfill + labelfm.width(par.layout()->labelsep);
+			x += row.label_hfill + labelfm.width(par.layout().labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= singleWidth(pit, body_pos - 1);
 		}
@@ -1700,9 +1700,9 @@ int TextMetrics::leftMargin(int max_width,
 	Buffer const & buffer = bv_->buffer();
 	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
 	DocumentClass const & tclass = buffer.params().documentClass();
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
-	docstring parindent = layout->parindent;
+	docstring parindent = layout.parindent;
 
 	int l_margin = 0;
 
@@ -1716,15 +1716,15 @@ int TextMetrics::leftMargin(int max_width,
 		// find the next level paragraph
 		pit_type newpar = outerHook(pit, pars);
 		if (newpar != pit_type(pars.size())) {
-			if (pars[newpar].layout()->isEnvironment()) {
+			if (pars[newpar].layout().isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
 			}
-			if (tclass.isDefaultLayout(*par.layout()) 
-			    || tclass.isEmptyLayout(*par.layout())) {
+			if (tclass.isDefaultLayout(par.layout()) 
+			    || tclass.isEmptyLayout(par.layout())) {
 				if (pars[newpar].params().noindent())
 					parindent.erase();
 				else
-					parindent = pars[newpar].layout()->parindent;
+					parindent = pars[newpar].layout().parindent;
 			}
 		}
 	}
@@ -1732,34 +1732,34 @@ int TextMetrics::leftMargin(int max_width,
 	// This happens after sections in standard classes. The 1.3.x
 	// code compared depths too, but it does not seem necessary
 	// (JMarc)
-	if (tclass.isDefaultLayout(*par.layout())
-	    && pit > 0 && pars[pit - 1].layout()->nextnoindent)
+	if (tclass.isDefaultLayout(par.layout())
+	    && pit > 0 && pars[pit - 1].layout().nextnoindent)
 		parindent.erase();
 
 	FontInfo const labelfont = text_->labelFont(buffer, par);
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 
-	switch (layout->margintype) {
+	switch (layout.margintype) {
 	case MARGIN_DYNAMIC:
-		if (!layout->leftmargin.empty()) {
+		if (!layout.leftmargin.empty()) {
 			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
-				layout->leftmargin);
+				layout.leftmargin);
 		}
 		if (!par.labelString().empty()) {
-			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			l_margin += labelfont_metrics.signedWidth(layout.labelindent);
 			l_margin += labelfont_metrics.width(par.labelString());
-			l_margin += labelfont_metrics.width(layout->labelsep);
+			l_margin += labelfont_metrics.width(layout.labelsep);
 		}
 		break;
 
 	case MARGIN_MANUAL: {
-		l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+		l_margin += labelfont_metrics.signedWidth(layout.labelindent);
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
 				docstring labstr = par.getLabelWidthString();
 				l_margin += labelfont_metrics.width(labstr);
-				l_margin += labelfont_metrics.width(layout->labelsep);
+				l_margin += labelfont_metrics.width(layout.labelsep);
 			}
 		}
 		break;
@@ -1767,30 +1767,30 @@ int TextMetrics::leftMargin(int max_width,
 
 	case MARGIN_STATIC: {
 		l_margin += theFontMetrics(buffer.params().getFont()).
-			signedWidth(layout->leftmargin) * 4	/ (par.getDepth() + 4);
+			signedWidth(layout.leftmargin) * 4	/ (par.getDepth() + 4);
 		break;
 	}
 
 	case MARGIN_FIRST_DYNAMIC:
-		if (layout->labeltype == LABEL_MANUAL) {
+		if (layout.labeltype == LABEL_MANUAL) {
 			if (pos >= par.beginOfBody()) {
-				l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
+				l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
 			} else {
-				l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+				l_margin += labelfont_metrics.signedWidth(layout.labelindent);
 			}
 		} else if (pos != 0
 			   // Special case to fix problems with
 			   // theorems (JMarc)
-			   || (layout->labeltype == LABEL_STATIC
-			       && layout->latextype == LATEX_ENVIRONMENT
+			   || (layout.labeltype == LABEL_STATIC
+			       && layout.latextype == LATEX_ENVIRONMENT
 			       && !isFirstInSequence(pit, pars))) {
-			l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
-		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
-			   && layout->labeltype != LABEL_BIBLIO
-			   && layout->labeltype !=
+			l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
+		} else if (layout.labeltype != LABEL_TOP_ENVIRONMENT
+			   && layout.labeltype != LABEL_BIBLIO
+			   && layout.labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
-			l_margin += labelfont_metrics.width(layout->labelsep);
+			l_margin += labelfont_metrics.signedWidth(layout.labelindent);
+			l_margin += labelfont_metrics.width(layout.labelsep);
 			l_margin += labelfont_metrics.width(par.labelString());
 		}
 		break;
@@ -1806,7 +1806,7 @@ int TextMetrics::leftMargin(int max_width,
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-		l_margin += theFontMetrics(params.getFont()).signedWidth(layout->leftmargin);
+		l_margin += theFontMetrics(params.getFont()).signedWidth(layout.leftmargin);
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
@@ -1821,17 +1821,17 @@ int TextMetrics::leftMargin(int max_width,
 	LyXAlignment align;
 
 	if (par.params().align() == LYX_ALIGN_LAYOUT)
-		align = layout->align;
+		align = layout.align;
 	else
 		align = par.params().align();
 
 	// set the correct parindent
 	if (pos == 0
-	    && (layout->labeltype == LABEL_NO_LABEL
-	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
-	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
-	       || (layout->labeltype == LABEL_STATIC
-	           && layout->latextype == LATEX_ENVIRONMENT
+	    && (layout.labeltype == LABEL_NO_LABEL
+	       || layout.labeltype == LABEL_TOP_ENVIRONMENT
+	       || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
+	       || (layout.labeltype == LABEL_STATIC
+	           && layout.latextype == LATEX_ENVIRONMENT
 	           && !isFirstInSequence(pit, pars)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
@@ -1841,8 +1841,8 @@ int TextMetrics::leftMargin(int max_width,
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-			&& ((tclass.isDefaultLayout(*par.layout()) 
-	         || tclass.isEmptyLayout(*par.layout()))
+			&& ((tclass.isDefaultLayout(par.layout()) 
+	         || tclass.isEmptyLayout(par.layout()))
 	        || buffer.params().paragraph_separation == BufferParams::PARSEP_INDENT)
 	    )
 	{

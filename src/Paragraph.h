@@ -17,7 +17,7 @@
 #define PARAGRAPH_H
 
 #include "FontEnums.h"
-#include "LayoutPtr.h"
+#include "Layout.h"
 
 #include "insets/InsetCode.h"
 
@@ -153,11 +153,9 @@ public:
 	bool empty() const;
 
 	///
-	LayoutPtr const & layout() const;
+	Layout const & layout() const;
 	///
-	void setLayout(LayoutPtr const & layout);
-	///
-	void setLayout(Layout const & layout) { setLayout(&layout); }
+	void setLayout(Layout const & layout);
 	///
 	void setEmptyOrDefaultLayout(DocumentClass const & tc);
 
@@ -212,7 +210,7 @@ public:
 	docstring const translateIfPossible(docstring const & label,
 		BufferParams const & bparams) const;
 	/// Expand the counters for the labelstring of \c layout
-	docstring expandLabel(LayoutPtr const &, BufferParams const &,
+	docstring expandLabel(Layout const &, BufferParams const &,
 		bool process_appendix = true) const;
 	/// Actual paragraph alignment used
 	char getAlign() const;

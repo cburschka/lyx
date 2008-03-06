@@ -43,7 +43,7 @@ ParagraphList::const_iterator searchParagraph(
 	ParagraphList::const_iterator p,
   ParagraphList::const_iterator const & pend)
 {
-	for (++p; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p)
+	for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p)
 		;
 
 	return p;
@@ -54,12 +54,12 @@ ParagraphList::const_iterator searchCommand(
 		ParagraphList::const_iterator p,
 		ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & bstyle = p->layout();
+	Layout const & bstyle = p->layout();
 
 	for (++p; p != pend; ++p) {
-		LayoutPtr const & style = p->layout();
-		if (style->latextype == LATEX_COMMAND
-				&& style->commanddepth <= bstyle->commanddepth)
+		Layout const & style = p->layout();
+		if (style.latextype == LATEX_COMMAND
+				&& style.commanddepth <= bstyle.commanddepth)
 			return p;
 	}
 	return pend;
@@ -70,14 +70,14 @@ ParagraphList::const_iterator searchEnvironment(
 		ParagraphList::const_iterator p,
 		ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & bstyle = p->layout();
+	Layout const & bstyle = p->layout();
 	size_t const depth = p->params().depth();
 	for (++p; p != pend; ++p) {
-		LayoutPtr const & style = p->layout();
-		if (style->latextype == LATEX_COMMAND)
+		Layout const & style = p->layout();
+		if (style.latextype == LATEX_COMMAND)
 			return p;
 
-		if (style->latextype == LATEX_PARAGRAPH) {
+		if (style.latextype == LATEX_PARAGRAPH) {
 			if (p->params().depth() > depth)
 				continue;
 			return p;
@@ -86,7 +86,7 @@ ParagraphList::const_iterator searchEnvironment(
 		if (p->params().depth() < depth)
 			return p;
 
-		if (style->latexname() != bstyle->latexname()
+		if (style.latexname() != bstyle.latexname()
 				&& p->params().depth() == depth)
 			return p;
 	}
@@ -104,7 +104,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
-		if (buf.params().documentClass().isDefaultLayout(*par->layout()) 
+		if (buf.params().documentClass().isDefaultLayout(par->layout()) 
 		    && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs));
@@ -128,50 +128,50 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	ParagraphList::const_iterator par = pbegin;
 
 	Layout const & defaultstyle = buf.params().documentClass().defaultLayout();
-	LayoutPtr const & bstyle = par->layout();
+	Layout const & bstyle = par->layout();
 	string item_tag;
 
 	// Opening outter tag
 	sgml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
-	if (bstyle->latextype == LATEX_ENVIRONMENT && bstyle->pass_thru)
+	if (bstyle.latextype == LATEX_ENVIRONMENT && bstyle.pass_thru)
 		os << "<![CDATA[";
 
 	while (par != pend) {
-		LayoutPtr const & style = par->layout();
+		Layout const & style = par->layout();
 		ParagraphList::const_iterator send;
 		string id = par->getID(buf, runparams);
 		string wrapper = "";
 		pos_type sep = 0;
 
 		// Opening inner tag
-		switch (bstyle->latextype) {
+		switch (bstyle.latextype) {
 		case LATEX_ENVIRONMENT:
-			if (!bstyle->innertag().empty()) {
-				sgml::openTag(os, bstyle->innertag(), id);
+			if (!bstyle.innertag().empty()) {
+				sgml::openTag(os, bstyle.innertag(), id);
 			}
 			break;
 
 		case LATEX_ITEM_ENVIRONMENT:
-			if (!bstyle->labeltag().empty()) {
-				sgml::openTag(os, bstyle->innertag(), id);
-				sgml::openTag(os, bstyle->labeltag());
+			if (!bstyle.labeltag().empty()) {
+				sgml::openTag(os, bstyle.innertag(), id);
+				sgml::openTag(os, bstyle.labeltag());
 				sep = par->firstWord(os, runparams) + 1;
-				sgml::closeTag(os, bstyle->labeltag());
+				sgml::closeTag(os, bstyle.labeltag());
 			}
 			wrapper = defaultstyle.latexname();
 			// If a sub list (embedded list) appears next with a
 			// different depth, then there is no need to open
 			// another tag at the current depth.
 			if(par->params().depth() == pbegin->params().depth()) {
-				sgml::openTag(os, bstyle->itemtag());
+				sgml::openTag(os, bstyle.itemtag());
 			}
 			break;
 		default:
 			break;
 		}
 
-		switch (style->latextype) {
+		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			if (par->params().depth() == pbegin->params().depth()) {
@@ -195,10 +195,10 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		}
 
 		// Closing inner tag
-		switch (bstyle->latextype) {
+		switch (bstyle.latextype) {
 		case LATEX_ENVIRONMENT:
-			if (!bstyle->innertag().empty()) {
-				sgml::closeTag(os, bstyle->innertag());
+			if (!bstyle.innertag().empty()) {
+				sgml::closeTag(os, bstyle.innertag());
 				os << '\n';
 			}
 			break;
@@ -212,17 +212,17 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// when par == pend but at the same time that the
 			// current tag is closed.
 			if((par != pend && par->params().depth() == pbegin->params().depth()) || par == pend) {
-				sgml::closeTag(os, bstyle->itemtag());
+				sgml::closeTag(os, bstyle.itemtag());
 			}
-			if (!bstyle->labeltag().empty())
-				sgml::closeTag(os, bstyle->innertag());
+			if (!bstyle.labeltag().empty())
+				sgml::closeTag(os, bstyle.innertag());
 			break;
 		default:
 			break;
 		}
 	}
 
-	if (bstyle->latextype == LATEX_ENVIRONMENT && bstyle->pass_thru)
+	if (bstyle.latextype == LATEX_ENVIRONMENT && bstyle.pass_thru)
 		os << "]]>";
 
 	// Closing outter tag
@@ -240,32 +240,32 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 					  ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator par = pbegin;
-	LayoutPtr const & bstyle = par->layout();
+	Layout const & bstyle = par->layout();
 
 	//Open outter tag
 	sgml::openTag(buf, os, runparams, *pbegin);
 	os << '\n';
 
 	// Label around sectioning number:
-	if (!bstyle->labeltag().empty()) {
-		sgml::openTag(os, bstyle->labeltag());
+	if (!bstyle.labeltag().empty()) {
+		sgml::openTag(os, bstyle.labeltag());
 		// We don't care about appendix in DOCBOOK.
 		os << par->expandLabel(bstyle, buf.params(), false);
-		sgml::closeTag(os, bstyle->labeltag());
+		sgml::closeTag(os, bstyle.labeltag());
 	}
 
 	// Opend inner tag and	close inner tags
-	sgml::openTag(os, bstyle->innertag());
+	sgml::openTag(os, bstyle.innertag());
 	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(distance(paragraphs.begin(), par), paragraphs));
-	sgml::closeTag(os, bstyle->innertag());
+	sgml::closeTag(os, bstyle.innertag());
 	os << '\n';
 
 	++par;
 	while (par != pend) {
-		LayoutPtr const & style = par->layout();
+		Layout const & style = par->layout();
 		ParagraphList::const_iterator send;
 
-		switch (style->latextype) {
+		switch (style.latextype) {
 		case LATEX_COMMAND: {
 			send = searchCommand(par, pend);
 			par = makeCommand(buf, os, runparams, paragraphs, par,send);
@@ -314,11 +314,11 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 	}
 
 	while (par != pend) {
-		LayoutPtr const & style = par->layout();
+		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
 
-		switch (style->latextype) {
+		switch (style.latextype) {
 		case LATEX_COMMAND: {
 			send = searchCommand(par, pend);
 			par = makeCommand(buf, os, runparams, paragraphs, par,send);

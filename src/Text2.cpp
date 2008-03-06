@@ -75,17 +75,17 @@ bool Text::isMainText(Buffer const & buffer) const
 
 FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 {
-	LayoutPtr const & layout = pars_[pit].layout();
+	Layout const & layout = pars_[pit].layout();
 
 	if (!pars_[pit].getDepth())  {
-		FontInfo lf = layout->resfont;
+		FontInfo lf = layout.resfont;
 		// In case the default family has been customized
-		if (layout->font.family() == INHERIT_FAMILY)
+		if (layout.font.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		return lf;
 	}
 
-	FontInfo font = layout->font;
+	FontInfo font = layout.font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
 	font.realize(buffer.params().getFont().fontInfo());
@@ -96,17 +96,17 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 
 FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 {
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
 	if (!par.getDepth()) {
-		FontInfo lf = layout->reslabelfont;
+		FontInfo lf = layout.reslabelfont;
 		// In case the default family has been customized
-		if (layout->labelfont.family() == INHERIT_FAMILY)
+		if (layout.labelfont.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		return lf;
 	}
 
-	FontInfo font = layout->labelfont;
+	FontInfo font = layout.labelfont;
 	// Realize with the fonts of lesser depth.
 	font.realize(buffer.params().getFont().fontInfo());
 
@@ -118,15 +118,15 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt, Font const & display_font)
 {
 	Font font = fnt;
-	LayoutPtr const & layout = pars_[pit].layout();
+	Layout const & layout = pars_[pit].layout();
 
 	// Get concrete layout font to reduce against
 	FontInfo layoutfont;
 
 	if (pos < pars_[pit].beginOfBody())
-		layoutfont = layout->labelfont;
+		layoutfont = layout.labelfont;
 	else
-		layoutfont = layout->font;
+		layoutfont = layout.font;
 
 	// Realize against environment font information
 	if (pars_[pit].getDepth()) {
@@ -136,7 +136,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		       pars_[tp].getDepth()) {
 			tp = outerHook(tp, paragraphs());
 			if (tp != pit_type(paragraphs().size()))
-				layoutfont.realize(pars_[tp].layout()->font);
+				layoutfont.realize(pars_[tp].layout().font);
 		}
 	}
 
@@ -244,7 +244,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 			Paragraph const & par, int max_depth)
 {
-	if (par.layout()->labeltype == LABEL_BIBLIO)
+	if (par.layout().labeltype == LABEL_BIBLIO)
 		return false;
 	int const depth = par.params().depth();
 	if (type == Text::INC_DEPTH && depth < max_depth)
@@ -452,7 +452,7 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 		Paragraph & par = pars_[pit];
 		ParagraphParameters params = par.params();
 		params.read(argument, merge);
-		par.params().apply(params, *par.layout());
+		par.params().apply(params, par.layout());
 	}
 }
 
@@ -470,8 +470,7 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
-		Layout const & layout = *(par.layout());
-		par.params().apply(p, layout);
+		par.params().apply(p, par.layout());
 	}	
 }
 

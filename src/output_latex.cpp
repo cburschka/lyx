@@ -83,7 +83,7 @@ TeXDeeper(Buffer const & buf,
 
 	while (par != paragraphs.end() &&
 		     par->params().depth() == pit->params().depth()) {
-		if (par->layout()->isEnvironment()) {
+		if (par->layout().isEnvironment()) {
 			par = TeXEnvironment(buf, text, par,
 					     os, texrow, runparams);
 		} else {
@@ -108,8 +108,8 @@ TeXEnvironment(Buffer const & buf,
 
 	BufferParams const & bparams = buf.params();
 
-	LayoutPtr const & style = pit->forceEmptyLayout() ?
-		&bparams.documentClass().emptyLayout() : pit->layout();
+	Layout const & style = pit->forceEmptyLayout() ?
+		bparams.documentClass().emptyLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
@@ -155,25 +155,25 @@ TeXEnvironment(Buffer const & buf,
 		leftindent_open = true;
 	}
 
-	if (style->isEnvironment()) {
-		os << "\\begin{" << from_ascii(style->latexname()) << '}';
-		if (style->optionalargs > 0) {
+	if (style.isEnvironment()) {
+		os << "\\begin{" << from_ascii(style.latexname()) << '}';
+		if (style.optionalargs > 0) {
 			int ret = latexOptArgInsets(*pit, os, runparams,
-						    style->optionalargs);
+						    style.optionalargs);
 			while (ret > 0) {
 				texrow.newline();
 				--ret;
 			}
 		}
-		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
+		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << '{'
 			   << pit->params().labelWidthString()
 			   << "}\n";
-		} else if (style->labeltype == LABEL_BIBLIO) {
+		} else if (style.labeltype == LABEL_BIBLIO) {
 			// ale970405
 			os << '{' << bibitemWidest(buf) << "}\n";
 		} else
-			os << from_ascii(style->latexparam()) << '\n';
+			os << from_ascii(style.latexparam()) << '\n';
 		texrow.newline();
 	}
 
@@ -199,7 +199,7 @@ TeXEnvironment(Buffer const & buf,
 			os << '\n';
 			texrow.newline();
 		} else if (par->params().depth() > pit->params().depth()) {
-			if (par->layout()->isParagraph()) {
+			if (par->layout().isParagraph()) {
 			  // Thinko!
 			  // How to handle this? (Lgb)
 			  //&& !suffixIs(os, "\n\n")
@@ -234,8 +234,8 @@ TeXEnvironment(Buffer const & buf,
 		open_encoding_ = none;
 	}
 
-	if (style->isEnvironment()) {
-		os << "\\end{" << from_ascii(style->latexname()) << "}\n";
+	if (style.isEnvironment()) {
+		os << "\\end{" << from_ascii(style.latexname()) << "}\n";
 		texrow.newline();
 	}
 
@@ -308,11 +308,11 @@ TeXOnePar(Buffer const & buf,
 	// was forceDefaultParagraphs()?
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
-	LayoutPtr const style = pit->forceEmptyLayout() ?
-		&bparams.documentClass().emptyLayout() : pit->layout();
+	Layout const style = pit->forceEmptyLayout() ?
+		bparams.documentClass().emptyLayout() : pit->layout();
 
 	OutputParams runparams = runparams_in;
-	runparams.moving_arg |= style->needprotect;
+	runparams.moving_arg |= style.needprotect;
 
 	bool const maintext = text.isMainText(buf);
 	// we are at the beginning of an inset and CJK is already open.
@@ -339,7 +339,7 @@ TeXOnePar(Buffer const & buf,
 
 	if (par_language->babel() != prev_language->babel()
 	    // check if we already put language command in TeXEnvironment()
-	    && !(style->isEnvironment()
+	    && !(style.isEnvironment()
 		 && (pit == paragraphs.begin() ||
 		     (boost::prior(pit)->layout() != pit->layout() &&
 		      boost::prior(pit)->getDepth() <= pit->getDepth())
@@ -493,27 +493,27 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		if (style->isCommand()) {
+		if (style.isCommand()) {
 			os << '\n';
 			texrow.newline();
 		}
 	}
 
-	switch (style->latextype) {
+	switch (style.latextype) {
 	case LATEX_COMMAND:
-		os << '\\' << from_ascii(style->latexname());
+		os << '\\' << from_ascii(style.latexname());
 
 		// Separate handling of optional argument inset.
-		if (style->optionalargs > 0) {
+		if (style.optionalargs > 0) {
 			int ret = latexOptArgInsets(*pit, os, runparams,
-						    style->optionalargs);
+						    style.optionalargs);
 			while (ret > 0) {
 				texrow.newline();
 				--ret;
 			}
 		}
 		else
-			os << from_ascii(style->latexparam());
+			os << from_ascii(style.latexparam());
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -548,9 +548,9 @@ TeXOnePar(Buffer const & buf,
 		 ? pit->getLayoutFont(bparams, outerfont)
 		 : pit->getFont(bparams, pit->size() - 1, outerfont);
 
-	bool is_command = style->isCommand();
+	bool is_command = style.isCommand();
 
-	if (style->resfont.size() != font.fontInfo().size()
+	if (style.resfont.size() != font.fontInfo().size()
 	    && boost::next(pit) != paragraphs.end()
 	    && !is_command) {
 		if (!need_par)
@@ -562,7 +562,7 @@ TeXOnePar(Buffer const & buf,
 		os << '}';
 
 	bool pending_newline = false;
-	switch (style->latextype) {
+	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 		if (boost::next(pit) != paragraphs.end()
@@ -574,8 +574,7 @@ TeXOnePar(Buffer const & buf,
 		// skip it otherwise fall through
 		ParagraphList::const_iterator next = boost::next(pit);
 
-		if (next != paragraphs.end()
-		    && (next->layout() != pit->layout()
+		if (next != paragraphs.end() && (next->layout() != pit->layout()
 			|| next->params().depth() != pit->params().depth()))
 			break;
 	}
@@ -659,16 +658,16 @@ TeXOnePar(Buffer const & buf,
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (boost::next(pit) != paragraphs.end() && open_encoding_ == CJK &&
 	    (boost::next(pit)->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
-	     boost::next(pit)->layout()->isEnvironment() && boost::next(pit)->isMultiLingual(bparams))
+	     boost::next(pit)->layout().isEnvironment() && boost::next(pit)->isMultiLingual(bparams))
 	     // in environments, CJK has to be closed later (nesting!)
-	     && !style->isEnvironment()) {
+	     && !style.isEnvironment()) {
 		os << "\\end{CJK}\n";
 		open_encoding_ = none;
 	}
 
 	// If this is the last paragraph, close the CJK environment
 	// if necessary. If it's an environment, we'll have to \end that first.
-	if (boost::next(pit) == paragraphs.end() && !style->isEnvironment()) {
+	if (boost::next(pit) == paragraphs.end() && !style.isEnvironment()) {
 		switch (open_encoding_) {
 			case CJK: {
 				// end of main text
@@ -789,11 +788,11 @@ void latexParagraphs(Buffer const & buf,
 		// any environment other than the default layout of the
 		// text class to be valid!
 		if (par->allowParagraphCustomization()) {
-			LayoutPtr const & layout = par->forceEmptyLayout() ?
-					&tclass.emptyLayout() :
+			Layout const & layout = par->forceEmptyLayout() ?
+					tclass.emptyLayout() :
 					par->layout();
 
-			if (layout->intitle) {
+			if (layout.intitle) {
 				if (already_title) {
 					lyxerr << "Error in latexParagraphs: You"
 						" should not mix title layouts"
@@ -821,10 +820,10 @@ void latexParagraphs(Buffer const & buf,
 				was_title = false;
 			}
 
-			if (layout->is_environment) {
+			if (layout.is_environment) {
 				par = TeXOnePar(buf, text, par, os, texrow,
 						runparams, everypar);
-			} else if (layout->isEnvironment() ||
+			} else if (layout.isEnvironment() ||
 				   !par->params().leftIndent().zero()) {
 				par = TeXEnvironment(buf, text, par, os,
 						     texrow, runparams);

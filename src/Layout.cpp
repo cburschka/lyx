@@ -830,6 +830,16 @@ docstring const & Layout::depends_on() const
 }
 
 
+bool Layout::operator==(Layout const & rhs) const
+{
+	// This is enough for the applications we actually make,
+	// at least at the moment. But we could check more.
+	return name() == rhs.name()
+		&& latexname() == rhs.latexname()
+		&& latextype == rhs.latextype;
+}
+
+
 Layout * Layout::forCaption()
 {
 	Layout * lay = new Layout();

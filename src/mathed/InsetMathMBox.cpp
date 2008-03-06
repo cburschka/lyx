@@ -39,7 +39,7 @@ InsetMathMBox::InsetMathMBox()
 }
 
 
-InsetMathMBox::InsetMathMBox(LayoutPtr const & layout)
+InsetMathMBox::InsetMathMBox(Layout const & layout)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());

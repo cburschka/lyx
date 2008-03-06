@@ -201,9 +201,9 @@ void sgml::closeTag(odocstream & os, string const & name)
 void sgml::openTag(Buffer const & buf, odocstream & os,
 	OutputParams const & runparams, Paragraph const & par)
 {
-	LayoutPtr const & style = par.layout();
-	string const & name = style->latexname();
-	string param = style->latexparam();
+	Layout const & style = par.layout();
+	string const & name = style.latexname();
+	string param = style.latexparam();
 	Counters & counters = buf.params().documentClass().counters();
 
 	string id = par.getID(buf, runparams);
@@ -220,8 +220,8 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 	} else {
 		if (param.find('#') != string::npos) {
 			// FIXME UNICODE
-			if (!style->counter.empty())
-				counters.step(style->counter);
+			if (!style.counter.empty())
+				counters.step(style.counter);
 			else
 				counters.step(from_ascii(name));
 			int i = counters.value(from_ascii(name));
@@ -236,8 +236,8 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 
 void sgml::closeTag(odocstream & os, Paragraph const & par)
 {
-	LayoutPtr const & style = par.layout();
-	closeTag(os, style->latexname());
+	Layout const & style = par.layout();
+	closeTag(os, style.latexname());
 }
 
 

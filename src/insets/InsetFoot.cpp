@@ -52,7 +52,7 @@ void InsetFoot::updateLabels(ParIterator const & it)
 	Counters & cnts = tclass.counters();
 	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();
-	if (!outer.layout()->intitle && cnts.hasCounter(foot)) {
+	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
 		// FIXME: the counter should format itself.
 		setLabel(support::bformat(from_ascii("%1$s %2$s"), 

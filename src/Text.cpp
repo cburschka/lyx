@@ -128,9 +128,9 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.setLayout(bp.documentClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
-		LayoutPtr const & layout = par.layout();
-		if (!layout->obsoleted_by().empty())
-			par.setLayout(bp.documentClass()[layout->obsoleted_by()]);
+		Layout const & layout = par.layout();
+		if (!layout.obsoleted_by().empty())
+			par.setLayout(bp.documentClass()[layout.obsoleted_by()]);
 
 		par.params().read(lex);
 
@@ -336,7 +336,7 @@ bool Text::empty() const
 {
 	return pars_.empty() || (pars_.size() == 1 && pars_[0].empty()
 		// FIXME: Should we consider the labeled type as empty too? 
-		&& pars_[0].layout()->labeltype == LABEL_NO_LABEL);
+		&& pars_[0].layout().labeltype == LABEL_NO_LABEL);
 }
 
 
@@ -356,12 +356,12 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	pit_type cpit = cur.pit();
 
 	DocumentClass const & tclass = cur.buffer().params().documentClass();
-	LayoutPtr const & layout = cpar.layout();
+	Layout const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
 	// or caption and if it has not the keepempty flag active
 	if (cur.lastpos() == 0 && !cpar.allowEmpty() &&
-	    layout->labeltype != LABEL_SENSITIVE)
+	    layout.labeltype != LABEL_SENSITIVE)
 		return;
 
 	// a layout change may affect also the following paragraph
@@ -374,12 +374,12 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 
 	// What should the layout for the new paragraph be?
 	bool keep_layout = inverse_logic ? 
-		!layout->isEnvironment() 
-		: layout->isEnvironment();
+		!layout.isEnvironment() 
+		: layout.isEnvironment();
 
 	// We need to remember this before we break the paragraph, because
 	// that invalidates the layout variable
-	bool sensitive = layout->labeltype == LABEL_SENSITIVE;
+	bool sensitive = layout.labeltype == LABEL_SENSITIVE;
 
 	// we need to set this before we insert the paragraph.
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
@@ -437,7 +437,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	// try to remove this
 	pit_type const pit = cur.pit();
 
-	bool const freeSpacing = par.layout()->free_spacing ||
+	bool const freeSpacing = par.layout().free_spacing ||
 		par.isFreeSpacing();
 
 	if (lyxrc.auto_number) {
@@ -887,7 +887,7 @@ void Text::changeCase(Cursor & cur, TextCase action)
 
 bool Text::handleBibitems(Cursor & cur)
 {
-	if (cur.paragraph().layout()->labeltype != LABEL_BIBLIO)
+	if (cur.paragraph().layout().labeltype != LABEL_BIBLIO)
 		return false;
 
 	if (cur.pos() != 0)
@@ -1004,8 +1004,8 @@ bool Text::backspacePos0(Cursor & cur)
 	// Correction: Pasting is always allowed with standard-layout
 	// or the empty layout.
 	else if (par.layout() == prevpar.layout()
-		 || tclass.isDefaultLayout(*par.layout())
-		 || tclass.isEmptyLayout(*par.layout())) {
+		 || tclass.isDefaultLayout(par.layout())
+		 || tclass.isEmptyLayout(par.layout())) {
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;
@@ -1305,7 +1305,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 {
 	pit_type pit = cur.pit();
 
-	LayoutPtr layout = pars_[pit].layout();
+	Layout const * layout = &(pars_[pit].layout());
 
 	docstring text;
 	docstring par_text = pars_[pit].asString(false);
@@ -1332,7 +1332,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 
 	// For section, subsection, etc...
 	if (layout->latextype == LATEX_PARAGRAPH && pit != 0) {
-		LayoutPtr const & layout2 = pars_[pit - 1].layout();
+		Layout const * layout2 = &(pars_[pit - 1].layout());
 		if (layout2->latextype != LATEX_PARAGRAPH) {
 			--pit;
 			layout = layout2;

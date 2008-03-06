@@ -312,13 +312,13 @@ void params2string(Paragraph const & par, string & data)
 	ostringstream os;
 	params.write(os);
 
-	LayoutPtr const & layout = par.layout();
+	Layout const & layout = par.layout();
 
 	// Is alignment possible
-	os << "\\alignpossible " << layout->alignpossible << '\n';
+	os << "\\alignpossible " << layout.alignpossible << '\n';
 
 	/// set default alignment
-	os << "\\aligndefault " << layout->align << '\n';
+	os << "\\aligndefault " << layout.align << '\n';
 
 	/// paragraph is always in inset. This is redundant.
 	os << "\\ininset " << 1 << '\n';

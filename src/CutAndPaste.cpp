@@ -449,7 +449,7 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 	// layouts
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
-		docstring const name = it->layout()->name();
+		docstring const name = it->layout().name();
 		bool hasLayout = newtc.hasLayout(name);
 
 		if (in.useEmptyLayout())
@@ -463,7 +463,7 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 			docstring const s = bformat(
 						 _("Layout had to be changed from\n%1$s to %2$s\n"
 						"because of class conversion from\n%3$s to %4$s"),
-			 name, it->layout()->name(),
+			 name, it->layout().name(),
 			 from_utf8(oldtc.name()), from_utf8(newtc.name()));
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(_("Changed Layout"), s,

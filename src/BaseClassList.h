@@ -37,6 +37,7 @@ public:
 	///
 	operator base_type() const { return data_; }
 	///
+	bool empty() const { return data_.empty(); }
 private:
 	base_type data_;
 };

@@ -264,8 +264,8 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 	pit_type pit = p;
 	depth_type par_depth = pars[p].getDepth();
 	while (pit != pit_type(pars.size())) {
-		LayoutPtr const & layout = pars[pit].layout();
-		int const endlabeltype = layout->endlabeltype;
+		Layout const & layout = pars[pit].layout();
+		int const endlabeltype = layout.endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {
 			if (p + 1 == pit_type(pars.size()))
@@ -299,7 +299,7 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 	       && !tmpfont.resolved()) {
 		par_offset = outerHook(par_offset, pars);
 		if (par_offset != pit_type(pars.size())) {
-			tmpfont.realize(pars[par_offset].layout()->font);
+			tmpfont.realize(pars[par_offset].layout().font);
 			par_depth = pars[par_offset].getDepth();
 		}
 	}
