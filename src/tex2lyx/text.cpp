@@ -425,7 +425,7 @@ LayoutPtr findLayout(TextClass const & textclass, string const & name)
 {
 	DocumentClass::const_iterator lit = textclass.begin();
 	DocumentClass::const_iterator len = textclass.end();
-	for (size_t i = 0; i != textclass.layoutCount(); ++i)
+	for (; lit != len; ++lit)
 		if ((*lit)->latexname() == name)
 			return *lit;
 	return LayoutPtr();
