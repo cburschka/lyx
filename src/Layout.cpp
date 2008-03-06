@@ -37,6 +37,7 @@ enum LayoutTags {
 	LT_ALIGNPOSSIBLE,
 	LT_MARGIN,
 	LT_BOTTOMSEP,
+	LT_CATEGORY,
 	LT_COMMANDDEPTH,
 	LT_COPYSTYLE,
 	LT_DEPENDSON,
@@ -137,6 +138,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
 		{ "bottomsep",      LT_BOTTOMSEP },
+		{ "category",       LT_CATEGORY },
 		{ "commanddepth",   LT_COMMANDDEPTH },
 		{ "copystyle",      LT_COPYSTYLE },
 		{ "dependson",      LT_DEPENDSON },
@@ -207,6 +209,11 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 		switch (static_cast<LayoutTags>(le)) {
 		case LT_END:		// end of structure
 			finished = true;
+			break;
+
+		case LT_CATEGORY:
+			if (lexrc.next())
+				category_ = lowercase(lexrc.getDocString());
 			break;
 
 		case LT_COPYSTYLE:     // initialize with a known style

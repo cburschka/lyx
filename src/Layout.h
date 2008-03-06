@@ -83,6 +83,8 @@ public:
 	///
 	docstring const & endlabelstring() const { return endlabelstring_; }
 	///
+	docstring const & category() const { return category_; }
+	///
 	docstring const & preamble() const { return preamble_; }
 	///
 	std::set<std::string> const & requires() const { return requires_; }
@@ -254,6 +256,10 @@ private:
 	std::string labeltag_;
 	/// Internal tag to surround the item text in a list)
 	std::string itemtag_;
+	/// This is the `category' for this layout. The following are
+	/// recommended basic categories: FrontMatter, BackMatter, MainText,
+	/// Section, Starred, List, Theorem.
+	docstring category_;
 	/// Macro definitions needed for this layout
 	docstring preamble_;
 	/// Packages needed for this layout
