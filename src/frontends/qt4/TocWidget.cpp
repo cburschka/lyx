@@ -213,8 +213,8 @@ void TocWidget::updateView()
 
 void TocWidget::updateGui(int selected_type)
 {
-	vector<docstring> const & type_names = form_.typeNames();
-	if (type_names.empty()) {
+	QStringList const & type_names = form_.typeNames();
+	if (type_names.isEmpty()) {
 		enableControls(false);
 		typeCO->clear();
 		tocTV->setModel(new QStandardItemModel);
@@ -225,10 +225,8 @@ void TocWidget::updateGui(int selected_type)
 	QString const current_text = typeCO->currentText();
 	typeCO->blockSignals(true);
 	typeCO->clear();
-	for (size_t i = 0; i != type_names.size(); ++i) {
-		QString item = toqstr(type_names[i]);
-		typeCO->addItem(item);
-	}
+	for (int i = 0; i != type_names.size(); ++i)
+		typeCO->addItem(type_names[i]);
 	if (selected_type != -1)
 		typeCO->setCurrentIndex(selected_type);
 	else {

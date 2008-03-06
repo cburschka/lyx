@@ -21,9 +21,7 @@
 
 #include "TocBackend.h"
 
-#include <QObject>
 #include <QStandardItemModel>
-#include <QStringListModel>
 
 #include <vector>
 
@@ -80,8 +78,7 @@ public:
 	TocList const & tocs() const;
 
 	/// Return the list of types available
-	std::vector<docstring> const & typeNames() const
-	{ return type_names_; }
+	QStringList const & typeNames() const { return type_names_; }
 
 	/// Return the first TocItem before the cursor
 	TocIterator currentTocItem(int type) const;
@@ -97,9 +94,6 @@ public:
 	///
 	void updateBackend();
 
-	std::vector<std::string> types_;
-	std::vector<docstring> type_names_;
-
 	/// Return the guiname from a given cmdName of the TOC param
 	docstring guiName(std::string const & type) const;
 
@@ -109,6 +103,11 @@ public:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
+
+	///
+	QStringList types_;
+	///
+	QStringList type_names_;
 };
 
 } // namespace frontend

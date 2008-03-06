@@ -135,7 +135,7 @@ bool GuiToc::initialiseParams(string const & data)
 {
 	LYXERR(Debug::GUI, data);
 	QString str = QString::fromUtf8(data.c_str());
-	string new_type;
+	QString new_type;
 	if (str.contains("tableofcontents"))
 		new_type = "tableofcontents";
 	else if (str.contains("floatlist")) {
@@ -154,13 +154,13 @@ bool GuiToc::initialiseParams(string const & data)
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator end = tocs.end();
 	for (; it != end; ++it) {
-		types_.push_back(it->first);
-		type_names_.push_back(guiName(it->first));
+		types_.push_back(toqstr(it->first));
+		type_names_.push_back(toqstr(guiName(it->first)));
 		toc_models_.push_back(new TocModel(it->second));
 	}
 
 	int selected_type = -1;
-	for (size_t i = 0;  i != types_.size(); ++i) {
+	for (int i = 0; i != types_.size(); ++i) {
 		if (new_type == types_[i]) {
 			selected_type = i;
 			break;
@@ -213,7 +213,7 @@ TocIterator GuiToc::currentTocItem(int type) const
 {
 	BOOST_ASSERT(bufferview());
 	ParConstIterator it(bufferview()->cursor());
-	return buffer().masterBuffer()->tocBackend().item(types_[type], it);
+	return buffer().masterBuffer()->tocBackend().item(fromqstr(types_[type]), it);
 }
 
 
