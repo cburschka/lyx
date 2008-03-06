@@ -657,7 +657,8 @@ void GuiLayoutBox::selected(int index)
 {
 	// get selection
 	QModelIndex mindex = filterModel_->mapToSource(filterModel_->index(index, 1));
-	docstring const name = qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
+	docstring const layoutName = 
+		qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
 
 	owner_.setFocus();
 
@@ -668,17 +669,13 @@ void GuiLayoutBox::selected(int index)
 	}
 
 	// find corresponding text class
-	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
-		docstring const & itname = text_class_->layout(i)->name();
-		if (itname == name) {
-			FuncRequest const func(LFUN_LAYOUT, itname,
-					       FuncRequest::TOOLBAR);
-			theLyXFunc().setLyXView(&owner_);
-			lyx::dispatch(func);
-			updateContents(false);
-			resetFilter();
-			return;
-		}
+	if (text_class_->hasLayout(layoutName)) {
+		FuncRequest const func(LFUN_LAYOUT, layoutName, FuncRequest::TOOLBAR);
+		theLyXFunc().setLyXView(&owner_);
+		lyx::dispatch(func);
+		updateContents(false);
+		resetFilter();
+		return;
 	}
 	lyxerr << "ERROR (layoutSelected): layout not found!" << endl;
 }
