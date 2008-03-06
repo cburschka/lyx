@@ -167,6 +167,33 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 }
 
 
+InsetInclude::~InsetInclude()
+{
+	if (isVerbatim(params()) || isListings(params()))
+		return;
+
+
+	string const parent_filename = buffer().absFileName();
+	FileName const included_file = makeAbsPath(to_utf8(params()["filename"]),
+			   onlyPath(parent_filename));
+
+	if (!isLyXFilename(included_file.absFilename()))
+		return;
+
+	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
+	// File not opened, nothing to close.
+	if (!child)
+		return;
+
+	// Child document has a different parent, don't close it.
+	if (child->parent() != &buffer())
+		return;
+
+	//close the buffer.
+	theBufferList().release(child);
+}
+
+
 ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 {
 	// FIXME
@@ -341,37 +368,6 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 	}
 	child->setParent(&parent);
 	return child;
-}
-
-
-void resetParentBuffer(Buffer const * parent, InsetCommandParams const & params,
-	bool close_it)
-{
-	if (isVerbatim(params) || isListings(params))
-		return;
-
-	string const parent_filename = parent->absFileName();
-	FileName const included_file = makeAbsPath(to_utf8(params["filename"]),
-			   onlyPath(parent_filename));
-
-	if (!isLyXFilename(included_file.absFilename()))
-		return;
-
-	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
-	// File not opened, nothing to close.
-	if (!child)
-		return;
-
-	// Child document has a different parent, don't close it.
-	if (child->parent() != parent)
-		return;
-
-	//close the buffer.
-	child->setParent(0);
-	if (close_it)
-		theBufferList().release(child);
-	else
-		updateLabels(*child);
 }
 
 

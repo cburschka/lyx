@@ -434,8 +434,6 @@ public:
 
 	///
 	void autoSave() const;
-	///
-	void resetChildDocuments(bool close_them) const;
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;

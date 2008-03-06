@@ -265,16 +265,9 @@ Buffer::~Buffer()
 	// GuiView already destroyed
 	gui_ = 0;
 
-	Buffer const * master = masterBuffer();
-	if (master != this && use_gui) {
-		// We are closing buf which was a child document so we
-		// must update the labels and section numbering of its master
-		// Buffer.
-		updateLabels(*master);
-		master->updateMacros();
-	}
-
-	resetChildDocuments(false);
+	// clear references to children in macro tables
+	d->children_positions.clear();
+	d->position_to_children.clear();
 
 	if (!d->temppath.destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
@@ -2356,26 +2349,6 @@ void Buffer::autoSave() const
 
 	markBakClean();
 	resetAutosaveTimers();
-}
-
-
-void Buffer::resetChildDocuments(bool close_them) const
-{
-	if (text().empty())
-		return;
-
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() != INCLUDE_CODE)
-			continue;
-		InsetCommand const & inset = static_cast<InsetCommand const &>(*it);
-		InsetCommandParams const & ip = inset.params();
-
-		resetParentBuffer(this, ip, close_them);
-	}
-
-	// clear references to children in macro tables
-	d->children_positions.clear();
-	d->position_to_children.clear();
 }
 
 
