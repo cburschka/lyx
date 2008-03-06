@@ -213,7 +213,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_CATEGORY:
 			if (lexrc.next())
-				category_ = lowercase(lexrc.getDocString());
+				category_ = lexrc.getDocString();
 			break;
 
 		case LT_COPYSTYLE:     // initialize with a known style
