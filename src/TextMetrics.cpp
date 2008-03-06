@@ -32,6 +32,7 @@
 #include "InsetList.h"
 #include "Layout.h"
 #include "Length.h"
+#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "paragraph_funcs.h"
@@ -1615,8 +1616,14 @@ void TextMetrics::cursorPrevious(Cursor & cur)
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, 0);
+	// Memorize current position.
+	Point p = bv_->getPos(cur, cur.boundary());
+	// Scroll one full page.
+	lyx::dispatch(FuncRequest(LFUN_SCROLL, "page up"));
+	// Try to place the cursor to the same coordinates.
+	setCursorFromCoordinates(cur, p.x_, p.y_);
+	// And move one line up in order to acknowledge in inset movement and/or
+	// selection.
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
@@ -1634,8 +1641,14 @@ void TextMetrics::cursorNext(Cursor & cur)
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
+	// Memorize current position.
+	Point p = bv_->getPos(cur, cur.boundary());
+	// Scroll one full page.
+	lyx::dispatch(FuncRequest(LFUN_SCROLL, "page down"));
+	// Try to place the cursor to the same coordinates.
+	setCursorFromCoordinates(cur, p.x_, p.y_);
+	// And move one line down in order to acknowledge in inset movement and/or
+	// selection.
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
