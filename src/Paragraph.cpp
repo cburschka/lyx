@@ -159,7 +159,7 @@ public:
 
 	///
 	void validate(LaTeXFeatures & features,
-		      Layout const & layout) const;
+		      Layout const * layout) const;
 
 	/// Checks if the paragraph contains only text and no inset or font change.
 	bool onlyText(Buffer const & buf, Font const & outerfont,
@@ -190,13 +190,6 @@ public:
 	///
 	InsetList insetlist_;
 
-	// This little bit of indirection is needed so that we can protect
-	// the layout as const but still be able to change layout_.
-	///
-	Layout const & layout() const { return *layout_; }
-	///
-	void setLayout(Layout const & layout) { layout_ = &layout; }
-
 	/// end of label
 	pos_type begin_of_body_;
 
@@ -207,7 +200,6 @@ public:
 	typedef std::set<docstring> Words;
 	///
 	Words words_;
-private:
 	///
 	Layout const * layout_;
 };
@@ -995,14 +987,14 @@ bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
 
 
 void Paragraph::Private::validate(LaTeXFeatures & features,
-				Layout const & layout) const
+				Layout const * layout) const
 {
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");
 
 	// then the layouts
-	features.useLayout(layout.name());
+	features.useLayout(layout->name());
 
 	// then the fonts
 	fontlist_.validate(features);
@@ -1017,7 +1009,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
 			icit->inset->validate(features);
-			if (layout.needprotect &&
+			if (layout->needprotect &&
 			    icit->inset->lyxCode() == FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
@@ -1103,7 +1095,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 	}
 
 	// First write the layout
-	os << "\n\\begin_layout " << to_utf8(d->layout().name()) << '\n';
+	os << "\n\\begin_layout " << to_utf8(d->layout_->name()) << '\n';
 
 	d->params_.write(os);
 
@@ -1183,7 +1175,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 
 void Paragraph::validate(LaTeXFeatures & features) const
 {
-	d->validate(features, d->layout());
+	d->validate(features, d->layout_);
 }
 
 
@@ -1347,9 +1339,9 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	pos_type const body_pos = beginOfBody();
 	if (pos < body_pos)
-		font.fontInfo().realize(d->layout().labelfont);
+		font.fontInfo().realize(d->layout_->labelfont);
 	else
-		font.fontInfo().realize(d->layout().font);
+		font.fontInfo().realize(d->layout_->font);
 
 	font.fontInfo().realize(outerfont.fontInfo());
 	font.fontInfo().realize(bparams.getFont().fontInfo());
@@ -1361,7 +1353,7 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 Font const Paragraph::getLabelFont
 	(BufferParams const & bparams, Font const & outerfont) const
 {
-	FontInfo tmpfont = d->layout().labelfont;
+	FontInfo tmpfont = d->layout_->labelfont;
 	tmpfont.realize(outerfont.fontInfo());
 	tmpfont.realize(bparams.getFont().fontInfo());
 	return Font(tmpfont, getParLanguage(bparams));
@@ -1371,7 +1363,7 @@ Font const Paragraph::getLabelFont
 Font const Paragraph::getLayoutFont
 	(BufferParams const & bparams, Font const & outerfont) const
 {
-	FontInfo tmpfont = d->layout().font;
+	FontInfo tmpfont = d->layout_->font;
 	tmpfont.realize(outerfont.fontInfo());
 	tmpfont.realize(bparams.getFont().fontInfo());
 	return Font(tmpfont, getParLanguage(bparams));
@@ -1441,7 +1433,7 @@ void Paragraph::setFont(pos_type pos, Font const & font)
 
 void Paragraph::makeSameLayout(Paragraph const & par)
 {
-	d->setLayout(par.d->layout());
+	d->layout_ = par.d->layout_;
 	d->params_ = par.d->params_;
 }
 
@@ -1467,7 +1459,7 @@ bool Paragraph::stripLeadingSpaces(bool trackChanges)
 
 bool Paragraph::hasSameLayout(Paragraph const & par) const
 {
-	return par.d->layout() == d->layout()
+	return par.d->layout_ == d->layout_
 		&& d->params_.sameLayout(par.d->params_);
 }
 
@@ -1480,7 +1472,7 @@ depth_type Paragraph::getDepth() const
 
 depth_type Paragraph::getMaxDepthAfter() const
 {
-	if (d->layout().isEnvironment())
+	if (d->layout_->isEnvironment())
 		return d->params_.depth() + 1;
 	else
 		return d->params_.depth();
@@ -1490,7 +1482,7 @@ depth_type Paragraph::getMaxDepthAfter() const
 char Paragraph::getAlign() const
 {
 	if (d->params_.align() == LYX_ALIGN_LAYOUT)
-		return d->layout().align;
+		return d->layout_->align;
 	else
 		return d->params_.align();
 }
@@ -1505,7 +1497,7 @@ docstring const & Paragraph::labelString() const
 // the next two functions are for the manual labels
 docstring const Paragraph::getLabelWidthString() const
 {
-	if (d->layout().margintype == MARGIN_MANUAL)
+	if (d->layout_->margintype == MARGIN_MANUAL)
 		return d->params_.labelWidthString();
 	else
 		return _("Senseless with this layout!");
@@ -1570,10 +1562,10 @@ docstring Paragraph::expandLabel(Layout const & layout,
 
 void Paragraph::applyLayout(Layout const & new_layout)
 {
-	d->setLayout(new_layout);
+	d->layout_ = &new_layout;
 	LyXAlignment const oldAlign = d->params_.align();
 	
-	if (!(oldAlign & d->layout().alignpossible)) {
+	if (!(oldAlign & d->layout_->alignpossible)) {
 		frontend::Alert::warning(_("Alignment not permitted"), 
 			_("The new layout does not permit the alignment previously used.\nSetting to default."));
 		d->params_.align(LYX_ALIGN_LAYOUT);
@@ -1589,7 +1581,7 @@ pos_type Paragraph::beginOfBody() const
 
 void Paragraph::setBeginOfBody()
 {
-	if (d->layout().labeltype != LABEL_MANUAL) {
+	if (d->layout_->labeltype != LABEL_MANUAL) {
 		d->begin_of_body_ = 0;
 		return;
 	}
@@ -1830,14 +1822,11 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	bool return_value = false;
 
-	Layout style;
-
 	bool asdefault = forceEmptyLayout();
 
-	if (asdefault)
-		style = bparams.documentClass().emptyLayout();
-	 else
-		style = d->layout();
+	Layout const & style = asdefault ?
+		bparams.documentClass().emptyLayout() :
+		*d->layout_;
 
 	// Current base font for all inherited font changes, without any
 	// change caused by an individual character, except for the language:
@@ -2178,7 +2167,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 {
 	bool emph_flag = false;
 
-	Layout const & style = d->layout();
+	Layout const & style = *d->layout_;
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
@@ -2346,13 +2335,13 @@ int Paragraph::id() const
 
 Layout const & Paragraph::layout() const
 {
-	return d->layout();
+	return *d->layout_;
 }
 
 
 void Paragraph::setLayout(Layout const & layout)
 {
-	d->setLayout(layout);
+	d->layout_ = &layout;
 }
 
 
@@ -2391,7 +2380,7 @@ ParagraphParameters const & Paragraph::params() const
 
 bool Paragraph::isFreeSpacing() const
 {
-	if (d->layout().free_spacing)
+	if (d->layout_->free_spacing)
 		return true;
 	return d->inset_owner_ && d->inset_owner_->isFreeSpacing();
 }
@@ -2399,7 +2388,7 @@ bool Paragraph::isFreeSpacing() const
 
 bool Paragraph::allowEmpty() const
 {
-	if (d->layout().keepempty)
+	if (d->layout_->keepempty)
 		return true;
 	return d->inset_owner_ && d->inset_owner_->allowEmpty();
 }
@@ -2452,7 +2441,7 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 	// up this bibitem issue for 1.6. See also bug 2743.
 
 	// Add bibitem insets if necessary
-	if (d->layout().labeltype != LABEL_BIBLIO)
+	if (d->layout_->labeltype != LABEL_BIBLIO)
 		return 0;
 
 	bool hasbibitem = !d->insetlist_.empty()
