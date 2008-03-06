@@ -1410,8 +1410,11 @@ void GuiDocument::updateNumbering()
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
 	QTreeWidgetItem * item = 0;
-	for (size_t i = 0; i != tclass.layoutCount(); ++i) {
-		Layout const & lt = *tclass.layout(i);
+
+	DocumentClass::const_iterator lit = tclass.begin();
+	DocumentClass::const_iterator len = tclass.end();
+	for (; lit != len; ++lit) {
+		Layout const & lt = **lit;
 		int const toclevel = lt.toclevel;
 		if (toclevel != Layout::NOT_IN_TOC && lt.labeltype == LABEL_COUNTER) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);

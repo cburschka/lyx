@@ -327,8 +327,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 				toclevel = start->layout()->toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
-				for (size_t i = 0; i != tc.layoutCount(); ++i) {
-					LayoutPtr const & lt = tc.layout(i);
+				DocumentClass::const_iterator lit = tc.begin();
+				DocumentClass::const_iterator len = tc.end();
+				for (; lit != len; ++lit) {
+					LayoutPtr const & lt = *lit;
 					if (lt->toclevel == toclevel + 1 &&
 					    start->layout()->labeltype == lt->labeltype) {
 						start->setLayout(lt);
@@ -345,8 +347,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 				toclevel = start->layout()->toclevel;
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
-				for (size_t i = 0; i != tc.layoutCount(); ++i) {
-					LayoutPtr const & lt = tc.layout(i);
+				DocumentClass::const_iterator lit = tc.begin();
+				DocumentClass::const_iterator len = tc.end();
+				for (; lit != len; ++lit) {
+					LayoutPtr const & lt = *lit;
 					if (lt->toclevel == toclevel - 1 &&
 						start->layout()->labeltype == lt->labeltype) {
 							start->setLayout(lt);

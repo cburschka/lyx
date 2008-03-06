@@ -531,8 +531,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	min_toclevel_ = Layout::NOT_IN_TOC;
 	max_toclevel_ = Layout::NOT_IN_TOC;
-	for (size_t i = 0; i != layoutCount(); ++i) {
-		int const toclevel = layout(i)->toclevel;
+	DocumentClass::const_iterator lit = begin();
+	DocumentClass::const_iterator len = end();
+	for (; lit != len; ++lit) {
+		Layout const & lt = **lit;
+		int const toclevel = lt.toclevel;
 		if (toclevel != Layout::NOT_IN_TOC) {
 			if (min_toclevel_ == Layout::NOT_IN_TOC)
 				min_toclevel_ = toclevel;

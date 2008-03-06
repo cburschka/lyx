@@ -57,6 +57,18 @@ public:
 	typedef std::vector<LayoutPtr> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
+	///
+	typedef LayoutList::const_iterator const_iterator;
+	
+	///////////////////////////////////////////////////////////////////
+	// Iterators
+	///////////////////////////////////////////////////////////////////
+	/// Note that this returns a (LayoutPtr *). We really need a custom
+	/// iterator here.
+	const_iterator begin() const { return layoutlist_.begin(); }
+	///
+	const_iterator end() const { return layoutlist_.end(); }
+
 
 	///////////////////////////////////////////////////////////////////
 	// Layout Info
@@ -74,8 +86,6 @@ public:
 			{ return emptylayout_; }
 	/// Enumerate the paragraph styles.
 	size_t layoutCount() const { return layoutlist_.size(); }
-	/// Access the paragraph styles.
-	LayoutPtr const & layout(size_t index) const { return layoutlist_[index]; }
 	///
 	bool hasLayout(docstring const & name) const;
 	///

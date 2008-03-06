@@ -628,8 +628,10 @@ void GuiLayoutBox::updateContents(bool reset)
 	text_class_ = text_class;
 
 	model_->clear();
-	for (size_t i = 0; i != text_class_->layoutCount(); ++i) {
-		Layout const & lt = *text_class_->layout(i);
+	DocumentClass::const_iterator lit = text_class_->begin();
+	DocumentClass::const_iterator len = text_class_->end();
+	for (; lit != len; ++lit) {
+		Layout const & lt = **lit;
 		docstring const & name = lt.name();
 		// if this inset requires the empty layout, we skip the default
 		// layout
