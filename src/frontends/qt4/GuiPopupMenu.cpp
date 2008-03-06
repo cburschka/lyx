@@ -31,9 +31,9 @@ GuiPopupMenu::GuiPopupMenu(GuiView * owner, MenuItem const & mi,
 		bool topLevelMenu)
 	: QMenu(owner), owner_(owner)
 {
-	name_ = mi.submenuname();
+	name_ = toqstr(mi.submenuname());
 
-	setTitle(toqstr(getLabel(mi)));
+	setTitle(label(mi));
 
 	if (topLevelMenu)
 		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));
@@ -43,18 +43,18 @@ GuiPopupMenu::GuiPopupMenu(GuiView * owner, MenuItem const & mi,
 void GuiPopupMenu::updateView()
 {
 	LYXERR(Debug::GUI, "GuiPopupMenu::updateView()"
-		<< "\tTriggered menu: " << to_utf8(name_));
+		<< "\tTriggered menu: " << fromqstr(name_));
 
 	clear();
 
-	if (name_.empty())
+	if (name_.isEmpty())
 		return;
 
 	// Here, We make sure that theLyXFunc points to the correct LyXView.
 	theLyXFunc().setLyXView(owner_);
 
 	MenuBackend const & menubackend = guiApp->menuBackend();
-	Menu const & fromLyxMenu = menubackend.getMenu(name_);
+	Menu const & fromLyxMenu = menubackend.getMenu(qstring_to_ucs4(name_));
 	menubackend.expand(fromLyxMenu, topLevelMenu_, owner_->buffer());
 
 	if (!menubackend.hasMenu(topLevelMenu_.name())) {
@@ -87,8 +87,8 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 		} else if (m->kind() == MenuItem::Submenu) {
 
 			LYXERR(Debug::GUI, "** creating New Sub-Menu "
-				<< to_utf8(getLabel(*m)));
-			QMenu * subMenu = qMenu->addMenu(toqstr(getLabel(*m)));
+				<< fromqstr(label(*m)));
+			QMenu * subMenu = qMenu->addMenu(label(*m));
 			populate(subMenu, m->submenu());
 
 		} else { // we have a MenuItem::Command
@@ -96,17 +96,15 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 			LYXERR(Debug::GUI, "creating Menu Item "
 				<< to_utf8(m->label()));
 
-			docstring const label = getLabel(*m);
-
 			Action * action = new Action(*(owner_),
-				QIcon(), toqstr(label), m->func(), QString());
+				QIcon(), label(*m), m->func(), QString());
 			qMenu->addAction(action);
 		}
 	}
 }
 
 
-docstring const GuiPopupMenu::getLabel(MenuItem const & mi)
+QString GuiPopupMenu::label(MenuItem const & mi) const
 {
 	docstring label = support::subst(mi.label(), 
 					 from_ascii("&"), from_ascii("&&"));
@@ -122,7 +120,7 @@ docstring const GuiPopupMenu::getLabel(MenuItem const & mi)
 	if (!binding.empty())
 		label += '\t' + binding;
 
-	return label;
+	return toqstr(label);
 }
 
 

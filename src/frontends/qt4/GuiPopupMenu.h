@@ -12,10 +12,9 @@
 #ifndef GUIPOPUPMENU_H
 #define GUIPOPUPMENU_H
 
-#include <QMenu>
-
-#include "FuncRequest.h"
 #include "MenuBackend.h"
+
+#include <QMenu>
 
 namespace lyx {
 namespace frontend {
@@ -33,7 +32,7 @@ public:
 
 	/// populates the menu or one of its submenu
 	/// This is used as a recursive function
-	void populate(QMenu* qMenu, Menu * menu);
+	void populate(QMenu * qMenu, Menu * menu);
 
 public Q_SLOTS:
 	/// populate the toplevel menu and all children
@@ -41,12 +40,12 @@ public Q_SLOTS:
 
 private:
 	/// Get a Menu item label from the menu backend
-	docstring const getLabel(MenuItem const & mi);
+	QString label(MenuItem const & mi) const;
 
 	/// our owning view
 	GuiView * owner_;
 	/// the name of this menu
-	docstring name_;
+	QString name_;
 	/// Top Level Menu
 	Menu topLevelMenu_;
 };
