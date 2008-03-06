@@ -312,6 +312,18 @@ int BufferView::leftMargin() const
 }
 
 
+bool BufferView::isTopScreen() const
+{
+	return d->scrollbarParameters_.position == d->scrollbarParameters_.min;
+}
+
+
+bool BufferView::isBottomScreen() const
+{
+	return d->scrollbarParameters_.position == d->scrollbarParameters_.max;
+}
+
+
 Intl & BufferView::getIntl()
 {
 	return d->intl_;

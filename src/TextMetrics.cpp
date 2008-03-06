@@ -1613,6 +1613,14 @@ int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 
 void TextMetrics::cursorPrevious(Cursor & cur)
 {
+	if (bv_->isTopScreen()) {
+		lyx::dispatch(FuncRequest(cur.selection()
+			? LFUN_BUFFER_BEGIN_SELECT : LFUN_BUFFER_BEGIN));
+		cur.finishUndo();
+		cur.updateFlags(Update::None);
+		return;
+	}
+
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
@@ -1638,6 +1646,14 @@ void TextMetrics::cursorPrevious(Cursor & cur)
 
 void TextMetrics::cursorNext(Cursor & cur)
 {
+	if (bv_->isBottomScreen()) {
+		lyx::dispatch(FuncRequest(cur.selection()
+			? LFUN_BUFFER_END_SELECT : LFUN_BUFFER_END));
+		cur.finishUndo();
+		cur.updateFlags(Update::None);
+		return;
+	}
+
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 

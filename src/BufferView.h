@@ -96,6 +96,12 @@ public:
 	/// left margin
 	int leftMargin() const;
 
+	/// \return true if the BufferView is at the top of the document.
+	bool isTopScreen() const;
+
+	/// \return true if the BufferView is at the bottom of the document.
+	bool isBottomScreen() const;
+
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to
 	 * force an update if screen position changes.
