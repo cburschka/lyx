@@ -93,16 +93,16 @@ FileDialog::Result FileDialog::save(QString const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	QString const startsWith = from_utf8(
-		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
+	QString const startsWith = toqstr(
+		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
-					     toqstr(title_), 
-					     toqstr(startsWith), 
+					     title_, 
+					     startsWith, 
 					     toqstr(filters.as_string()),
 					     0, 
 					     QFileDialog::DontConfirmOverwrite);
-	result.second = from_utf8(internal_path(fromqstr(name)));
+	result.second = toqstr(internal_path(fromqstr(name)));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 #if QT_VERSION != 0x040203
@@ -140,7 +140,7 @@ FileDialog::Result FileDialog::open(QString const & path,
 		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
 	result.second = internalPath(
 		QFileDialog::getOpenFileName(qApp->focusWidget(),
-		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ));
+		title_, startsWith, toqstr(filters.as_string()) ));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -169,9 +169,9 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	QString const startsWith = toqstr(
 		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
-	result.second = from_utf8(internal_path(fromqstr(
+	result.second = toqstr(internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
-		toqstr(title_),toqstr(startsWith)))));
+		title_, startsWith))));
 #else
 	FileFilterList const filter(_("Directories"));
 
