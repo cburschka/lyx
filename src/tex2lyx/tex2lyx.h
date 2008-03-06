@@ -26,6 +26,8 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+typedef Layout const * LayoutPtr;
+
 class Context;
 
 /// A trivial subclass, just to give us a public default constructor

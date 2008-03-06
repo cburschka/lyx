@@ -224,7 +224,6 @@ HEADERFILESCORE = \
 	LaTeXFeatures.h \
 	LaTeX.h \
 	Layout.h \
-	LayoutPtr.h \
 	LayoutEnums.h \
 	Length.h \
 	Lexer.h \
