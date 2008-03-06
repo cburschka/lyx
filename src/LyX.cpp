@@ -28,13 +28,13 @@
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
+#include "FuncStatus.h"
 #include "KeyMap.h"
 #include "Language.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
-#include "MenuBackend.h"
 #include "ModuleList.h"
 #include "Mover.h"
 #include "Server.h"
@@ -1080,7 +1080,7 @@ bool LyX::readUIFile(string const & name, bool include)
 			break;
 		}
 		case ui_menuset:
-			theApp()->menuBackend().read(lex);
+			theApp()->readMenus(lex);
 			break;
 
 		case ui_toolbarset:

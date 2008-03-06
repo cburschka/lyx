@@ -19,7 +19,6 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
-#include <stack>
 
 
 namespace lyx {
@@ -187,7 +186,8 @@ public:
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
-	bool searchFunc(FuncRequest & func, std::stack<docstring> & names) const;
+	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names)
+		const;
 
 private:
 	friend class MenuBackend;

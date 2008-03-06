@@ -29,7 +29,6 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -40,6 +39,7 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/ForkedCalls.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -646,6 +646,19 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 			buffer_ = ptr;
 	}
 	return buffer_;
+}
+
+
+void GuiApplication::readMenus(Lexer & lex)
+{
+	menuBackend().read(lex);
+}
+
+
+bool GuiApplication::searchMenu(FuncRequest const & func,
+	vector<docstring> & names) const
+{
+		return menuBackend().getMenubar().searchMenu(func, names);
 }
 
 

@@ -63,6 +63,8 @@ lyx_SOURCES = \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Box.cpp \
 	Box.h \
+	MenuBackend.cpp \
+	MenuBackend.h \
 	Dimension.cpp \
 	Dimension.h \
 	PrinterParams.cpp \
@@ -132,7 +134,6 @@ SOURCEFILESCORE = \
 	LyXFunc.cpp \
 	LyXRC.cpp \
 	LyXVC.cpp \
-	MenuBackend.cpp \
 	MetricsInfo.cpp \
 	ModuleList.cpp \
 	Mover.cpp \
@@ -234,7 +235,6 @@ HEADERFILESCORE = \
 	LyX.h \
 	LyXRC.h \
 	LyXVC.h \
-	MenuBackend.h \
 	MetricsInfo.h \
 	ModuleList.h \
 	Mover.h \

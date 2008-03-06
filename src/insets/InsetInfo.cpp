@@ -11,9 +11,6 @@
 
 #include "InsetInfo.h"
 
-#include <sstream>
-#include <stack>
-
 #include "BaseClassList.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -25,7 +22,6 @@
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Lexer.h"
-#include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 
@@ -37,6 +33,8 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
+
+#include <sstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -207,15 +205,14 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case MENU_INFO: {
-		stack<docstring> names;
+		vector<docstring> names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action == LFUN_UNKNOWN_ACTION) {
 			setText(_("No menu entry for "), bp.getFont(), false);
 			break;
 		}
 		// iterate through the menubackend to find it
-		Menu menu = theApp()->menuBackend().getMenubar();
-		if (!menu.searchFunc(func, names)) {
+		if (!theApp()->searchMenu(func, names)) {
 			setText(_("No menu entry for "), bp.getFont(), false);
 			break;
 		}
@@ -228,9 +225,9 @@ void InsetInfo::updateInfo()
 			if (i != 0)
 				info.insertInset(0, new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR),
 					Change(Change::UNCHANGED));
-			for (i = 0; i < names.top().length(); ++i)
-				info.insertChar(i, names.top()[i], bp.getFont(), false);
-			names.pop();
+			for (i = 0; i != names.back().length(); ++i)
+				info.insertChar(i, names.back()[i], bp.getFont(), false);
+			names.pop_back();
 		}
 		break;
 	}

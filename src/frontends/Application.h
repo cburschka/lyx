@@ -14,8 +14,11 @@
 #include "ColorCode.h"
 
 #include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <boost/function.hpp>
+
+#include <vector>
 
 
 namespace lyx {
@@ -25,6 +28,7 @@ class Buffer;
 class FuncRequest;
 class FuncStatus;
 class Inset;
+class Lexer;
 class MenuBackend;
 struct RGBColor;
 
@@ -212,6 +216,11 @@ public:
 	virtual void updateColor(ColorCode col) = 0;
 
 	/**
+	* read and create the menu structure
+	*/
+	virtual void readMenus(Lexer & lex) = 0;
+
+	/**
 	* add a callback for socket read notification
 	* @param fd socket descriptor (file/socket/etc)
 	*/
@@ -227,6 +236,9 @@ public:
 	///
 	virtual MenuBackend const & menuBackend() const = 0;
 	virtual MenuBackend & menuBackend() = 0;
+
+	virtual bool searchMenu(FuncRequest const & func,
+		std::vector<docstring> & names) const = 0;
 };
 
 } // namespace frontend

@@ -73,8 +73,10 @@ public:
 	virtual bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	virtual std::string const hexName(ColorCode col);
 	virtual void updateColor(ColorCode col);
+	virtual void readMenus(Lexer & lex);
 	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
+	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names) const;
 	//@}
 
 	Menus const & menus() const { return menus_; }

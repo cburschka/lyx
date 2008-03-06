@@ -404,21 +404,21 @@ void Menu::checkShortcuts() const
 }
 
 
-bool Menu::searchFunc(FuncRequest & func, stack<docstring> & names) const
+bool Menu::searchMenu(FuncRequest const & func, vector<docstring> & names) const
 {
 	const_iterator m = begin();
 	const_iterator m_end = end();
 	for (; m != m_end; ++m) {
 		if (m->kind() == MenuItem::Command && m->func() == func) {
-			names.push(m->label());
+			names.push_back(m->label());
 			return true;
-		} else if (m->kind() == MenuItem::Submenu) {
-			names.push(m->label());
+		}
+		if (m->kind() == MenuItem::Submenu) {
+			names.push_back(m->label());
 			Menu submenu = theApp()->menuBackend().getMenu(m->submenuname());
-			if (submenu.searchFunc(func, names))
+			if (submenu.searchMenu(func, names))
 				return true;
-			else
-				names.pop();
+			names.pop_back();
 		}
 	}
 	return false;

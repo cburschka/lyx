@@ -14,8 +14,9 @@
 
 #include "InsetText.h"
 #include "RenderButton.h"
-#include "support/gettext.h"
 #include "Cursor.h"
+
+#include "support/gettext.h"
 #include "support/Translator.h"
 
 /* InsetInfo displays shortcuts, lyxrc, package and textclass 
