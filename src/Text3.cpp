@@ -281,11 +281,18 @@ bool doInsertInset(Cursor & cur, Text * text,
 		// metrics might be invalid at this point (bug 4502)
 		cur.bv().updateMetrics();
 		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-		// reset first par to default
-		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+		
+		if (cur.lastpit() == 0) {
+			// reset first par to default
 			Layout_ptr const layout =
 				cur.buffer().params().getTextClass().defaultLayout();
 			cur.text()->paragraphs().begin()->layout(layout);
+		} else {
+			// reset surrounding par to default
+			docstring const layoutname =
+				cur.buffer().params().getTextClass().defaultLayoutName();
+			cur.leaveInset(*inset);
+			text->setLayout(cur, layoutname);
 		}
 	}
 	return true;
