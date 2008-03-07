@@ -35,6 +35,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
+#include <algorithm>
 #include <sstream>
 
 #include "boost/assert.hpp"
