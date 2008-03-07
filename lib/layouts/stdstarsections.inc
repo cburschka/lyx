@@ -12,7 +12,7 @@
 Format 6
 Style Part*
 	CopyStyle             Part
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             part*
 	LabelType             No_Label
@@ -22,7 +22,7 @@ End
 
 Style Chapter*
 	CopyStyle             Chapter
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             chapter*
 	LabelType             No_Label
@@ -33,7 +33,7 @@ End
 
 Style Section*
 	CopyStyle             Section
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             section*
 	LabelType             No_Label
@@ -44,7 +44,7 @@ End
 
 Style Subsection*
 	CopyStyle             Subsection
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             subsection*
 	LabelType             No_Label
@@ -55,7 +55,7 @@ End
 
 Style Subsubsection*
 	CopyStyle             Subsubsection
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             subsubsection*
 	LabelType             No_Label
@@ -66,7 +66,7 @@ End
 
 Style Paragraph*
 	CopyStyle             Paragraph
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             paragraph*
 	LabelType             No_Label
@@ -77,7 +77,7 @@ End
 
 Style Subparagraph*
 	CopyStyle             Subparagraph
-	Category              Starred
+	Category              Unnumbered
 	Margin                Static
 	LatexName             subparagraph*
 	LabelType             No_Label
