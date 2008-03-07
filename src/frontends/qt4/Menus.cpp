@@ -209,7 +209,7 @@ void Menus::macxMenuBarInit(GuiView * view)
 		 QAction::ApplicationSpecificRole},
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
-	const size_t num_entries = sizeof(entries) / sizeof(MacMenuEntry);
+	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
 
 	// the special menu for Menus.
 	Menu special;
@@ -218,15 +218,14 @@ void Menus::macxMenuBarInit(GuiView * view)
 				       from_utf8(entries[i].arg));
 		special.add(MenuItem(MenuItem::Command, entries[i].label, func));
 	}
-	specialMenu(special);
+	setSpecialMenu(special);
 
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
 	QMenu * qMenu = view->menuBar()->addMenu("special");
 
 	// we do not use 'special' because it is a temporary variable,
-	// whereas Menus::specialMenu points to a persistent
-	// copy.
+	// whereas Menus::specialMenu points to a persistent copy.
 	Menu::const_iterator cit = specialMenu().begin();
 	Menu::const_iterator end = specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
@@ -234,7 +233,6 @@ void Menus::macxMenuBarInit(GuiView * view)
 					     cit->func(), QString());
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
-
 	}
 }
 
@@ -302,14 +300,7 @@ QString MenuItem::binding() const
 }
 
 
-Menu & Menu::add(MenuItem const & i)
-{
-	items_.push_back(i);
-	return *this;
-}
-
-
-Menu & Menu::addWithStatusCheck(MenuItem const & i)
+void Menu::addWithStatusCheck(MenuItem const & i)
 {
 	switch (i.kind()) {
 
@@ -352,12 +343,10 @@ Menu & Menu::addWithStatusCheck(MenuItem const & i)
 	default:
 		items_.push_back(i);
 	}
-
-	return *this;
 }
 
 
-Menu & Menu::read(Lexer & lex)
+void Menu::read(Lexer & lex)
 {
 	enum Menutags {
 		md_item = 1,
@@ -526,7 +515,6 @@ Menu & Menu::read(Lexer & lex)
 		}
 	}
 	lex.popTable();
-	return *this;
 }
 
 
@@ -588,12 +576,6 @@ bool Menu::searchMenu(FuncRequest const & func, vector<docstring> & names) const
 		}
 	}
 	return false;
-}
-
-
-void Menus::specialMenu(Menu const & menu)
-{
-	specialmenu_ = menu;
 }
 
 

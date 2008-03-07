@@ -167,12 +167,12 @@ public:
 	explicit Menu(QString const & name = QString()) : name_(name) {}
 
 	/// Add the menu item unconditionally
-	Menu & add(MenuItem const &);
+	void add(MenuItem const & item) { items_.push_back(item); }
 	/// Checks the associated FuncRequest status before adding the
 	/// menu item.
-	Menu & addWithStatusCheck(MenuItem const &);
+	void addWithStatusCheck(MenuItem const &);
 	///
-	Menu & read(Lexer &);
+	void read(Lexer &);
 	///
 	QString const & name() const { return name_; }
 	///
@@ -246,7 +246,7 @@ public:
 	    that will be removed by expand() in other menus. This is
 	    used by the Qt/Mac code
 	*/
-	void specialMenu(Menu const &);
+	void setSpecialMenu(Menu const & menu) { specialmenu_ = menu; }
 	///
 	Menu const & specialMenu() { return specialmenu_; }
 
