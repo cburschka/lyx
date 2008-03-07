@@ -65,8 +65,6 @@ public:
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
-	MenuBackend const & menuBackend() const { return menus_; }
-	MenuBackend & menuBackend() { return menus_; }
 	virtual int exec();
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);

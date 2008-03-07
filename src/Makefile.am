@@ -63,8 +63,6 @@ lyx_SOURCES = \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Box.cpp \
 	Box.h \
-	MenuBackend.cpp \
-	MenuBackend.h \
 	Dimension.cpp \
 	Dimension.h \
 	PrinterParams.cpp \

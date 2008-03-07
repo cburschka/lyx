@@ -23,7 +23,6 @@
 #include "GuiApplication.h"
 #include "GuiKeySymbol.h"
 #include "GuiPainter.h"
-#include "GuiPopupMenu.h"
 #include "GuiView.h"
 #include "KeySymbol.h"
 #include "Language.h"
@@ -51,6 +50,7 @@
 #include <QMacStyle>
 #endif
 #include <QMainWindow>
+#include <QMenu>
 #include <QPainter>
 #include <QPalette>
 #include <QScrollBar>

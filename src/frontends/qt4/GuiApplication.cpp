@@ -651,14 +651,14 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 
 void GuiApplication::readMenus(Lexer & lex)
 {
-	menuBackend().read(lex);
+	menus().read(lex);
 }
 
 
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
-		return menuBackend().getMenubar().searchMenu(func, names);
+	return menus().getMenubar().searchMenu(func, names);
 }
 
 

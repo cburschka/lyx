@@ -29,7 +29,6 @@ class FuncRequest;
 class FuncStatus;
 class Inset;
 class Lexer;
-class MenuBackend;
 struct RGBColor;
 
 namespace frontend {
@@ -232,10 +231,6 @@ public:
 	* @param fd socket descriptor (file/socket/etc)
 	*/
 	virtual void unregisterSocketCallback(int fd) = 0;
-
-	///
-	virtual MenuBackend const & menuBackend() const = 0;
-	virtual MenuBackend & menuBackend() = 0;
 
 	virtual bool searchMenu(FuncRequest const & func,
 		std::vector<docstring> & names) const = 0;
