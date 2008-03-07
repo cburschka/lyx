@@ -272,6 +272,8 @@ bool doInsertInset(Cursor & cur, Text * text,
 		lyx::dispatch(FuncRequest(LFUN_CUT));
 		gotsel = true;
 	}
+	bool const emptypar = cur.lastpos() == 0;
+	pos_type ins_pos = cur.pos();
 	text->insertInset(cur, inset);
 
 	if (edit)
@@ -281,8 +283,8 @@ bool doInsertInset(Cursor & cur, Text * text,
 		// metrics might be invalid at this point (bug 4502)
 		cur.bv().updateMetrics();
 		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-		
-		if (cur.lastpit() == 0) {
+
+		if ((cur.lastpit() == 0 || ins_pos != 0) && !emptypar) {
 			// reset first par to default
 			Layout_ptr const layout =
 				cur.buffer().params().getTextClass().defaultLayout();
