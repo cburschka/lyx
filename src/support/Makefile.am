@@ -59,6 +59,7 @@ liblyxsupport_la_SOURCES = \
 	FileName.h \
 	filetools.cpp \
 	filetools.h \
+	foreach.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
 	gettext.cpp \
