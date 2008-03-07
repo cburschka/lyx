@@ -26,6 +26,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 #include <iostream>
 #include <map>
 #include <sstream>

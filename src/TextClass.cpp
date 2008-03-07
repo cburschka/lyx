@@ -37,6 +37,8 @@
 
 #include <sstream>
 
+#include "boost/assert.hpp"
+
 using namespace std;
 using namespace lyx::support;
 
@@ -114,8 +116,6 @@ InsetLayout DocumentClass::empty_insetlayout_;
 
 TextClass::TextClass()
 {
-	floatlist_ = boost::shared_ptr<FloatList>(new FloatList);
-	counters_ = boost::shared_ptr<Counters>(new Counters);
 	outputType_ = LATEX;
 	columns_ = 1;
 	sides_ = OneSide;
@@ -470,7 +470,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		case TC_NOFLOAT:
 			if (lexrc.next()) {
 				string const nofloat = lexrc.getString();
-				floatlist_->erase(nofloat);
+				floatlist_.erase(nofloat);
 			}
 			break;
 		}
@@ -712,8 +712,8 @@ void TextClass::readFloat(Lexer & lexrc)
 		case FT_TYPE:
 			lexrc.next();
 			type = lexrc.getString();
-			if (floatlist_->typeExist(type)) {
-				Floating const & fl = floatlist_->getType(type);
+			if (floatlist_.typeExist(type)) {
+				Floating const & fl = floatlist_.getType(type);
 				placement = fl.placement();
 				ext = fl.ext();
 				within = fl.within();
@@ -763,13 +763,13 @@ void TextClass::readFloat(Lexer & lexrc)
 	if (getout) {
 		Floating fl(type, placement, ext, within,
 			    style, name, listName, builtin);
-		floatlist_->newFloat(fl);
+		floatlist_.newFloat(fl);
 		// each float has its own counter
-		counters_->newCounter(from_ascii(type), from_ascii(within),
+		counters_.newCounter(from_ascii(type), from_ascii(within),
 				      docstring(), docstring());
 		// also define sub-float counters
 		docstring const subtype = "sub-" + from_ascii(type);
-		counters_->newCounter(subtype, from_ascii(type),
+		counters_.newCounter(subtype, from_ascii(type),
 				      "\\alph{" + subtype + "}", docstring());
 	}
 
@@ -816,7 +816,7 @@ void TextClass::readCounter(Lexer & lexrc)
 		case CT_NAME:
 			lexrc.next();
 			name = lexrc.getDocString();
-			if (counters_->hasCounter(name))
+			if (counters_.hasCounter(name))
 				LYXERR(Debug::TCLASS, "Reading existing counter " << to_utf8(name));
 			else
 				LYXERR(Debug::TCLASS, "Reading new counter " << to_utf8(name));
@@ -844,7 +844,7 @@ void TextClass::readCounter(Lexer & lexrc)
 
 	// Here if have a full counter if getout == true
 	if (getout)
-		counters_->newCounter(name, within, 
+		counters_.newCounter(name, within, 
 				      labelstring, labelstring_appendix);
 
 	lexrc.popTable();
@@ -950,9 +950,11 @@ bool TextClass::load(string const & path) const
 InsetLayout const & DocumentClass::insetLayout(docstring const & name) const 
 {
 	docstring n = name;
+	InsetLayouts::const_iterator cen = insetlayoutlist_.end();
 	while (!n.empty()) {
-		if (insetlayoutlist_.count(n) > 0)
-			return insetlayoutlist_[n];
+		InsetLayouts::const_iterator cit = insetlayoutlist_.lower_bound(n);
+		if (cit != cen && cit->first == n)
+			return cit->second;
 		size_t i = n.find(':');
 		if (i == string::npos)
 			break;

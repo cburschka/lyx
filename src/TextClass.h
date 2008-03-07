@@ -11,6 +11,8 @@
 #define TEXTCLASS_H
 
 #include "ColorCode.h"
+#include "Counters.h"
+#include "FloatList.h"
 #include "FontInfo.h"
 #include "Layout.h"
 #include "LayoutEnums.h"
@@ -21,7 +23,6 @@
 #include "support/types.h"
 
 #include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <list>
 #include <map>
@@ -167,9 +168,9 @@ protected:
 	/// document class description
 	std::string description_;
 	/// available types of float, eg. figure, algorithm.
-	boost::shared_ptr<FloatList> floatlist_;
+	mutable FloatList floatlist_;
 	/// Types of counters, eg. sections, eqns, figures, avail. in document class.
-	boost::shared_ptr<Counters> counters_;
+	mutable Counters counters_;
 	/// Has this layout file been loaded yet?
 	mutable bool loaded_;
 	/// Is the TeX class available?
@@ -219,7 +220,7 @@ protected:
 	/// The name of the title command
 	std::string titlename_;
 	/// Input layouts available to this layout
-	mutable InsetLayouts insetlayoutlist_;
+	InsetLayouts insetlayoutlist_;
 	/// The minimal TocLevel of sectioning layouts
 	int min_toclevel_;
 	/// The maximal TocLevel of sectioning layouts
@@ -269,7 +270,7 @@ public:
 	/// A DocumentClass nevers count as loaded, since it is dynamic
 	virtual bool loaded() { return false; }
 	/// Inset layouts of this doc class
-	InsetLayouts & insetLayouts() const { return insetlayoutlist_; };
+	InsetLayouts const & insetLayouts() const { return insetlayoutlist_; };
 	/// \return the layout object of an inset given by name. If the name
 	/// is not found as such, the part after the ':' is stripped off, and
 	/// searched again. In this way, an error fallback can be provided:
@@ -286,11 +287,10 @@ public:
 	// accessors
 	///////////////////////////////////////////////////////////////////
 	/// the list of floats defined in the document class
-	FloatList & floats() { return *floatlist_.get(); }
 	/// the list of floats defined in the document class
-	FloatList const & floats() const { return *floatlist_.get(); }
-	/// The Counters present in this document class.
-	Counters & counters() const { return *counters_.get(); }
+	FloatList const & floats() const { return floatlist_; }
+	///
+	Counters & counters() const { return counters_; }
 	///
 	std::string const & opt_fontsize() const { return opt_fontsize_; }
 	///

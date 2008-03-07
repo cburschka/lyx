@@ -19,6 +19,8 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 #include <iostream>
 #include <sstream>
 #include <vector>
