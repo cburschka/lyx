@@ -701,7 +701,9 @@ void InsetMathHull::swapRow(row_type row)
 		return;
 	if (row + 1 == nrows())
 		--row;
-	// gcc doesn't like this:
+	// gcc implements the standard std::vector<bool> which is *not* a container:
+	//   http://www.gotw.ca/publications/N1185.pdf
+	// As a results, it doesn't like this:
 	//	swap(nonum_[row], nonum_[row + 1]);
 	// so we do it manually:
 	bool const b = nonum_[row];
