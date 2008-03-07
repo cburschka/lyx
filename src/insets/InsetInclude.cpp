@@ -187,6 +187,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 
 InsetInclude::~InsetInclude()
 {
+	delete label_;
 	if (isVerbatim(params()) || isListings(params()))
 		return;
 
