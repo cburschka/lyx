@@ -49,6 +49,7 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+		\usepackage{amsthm}
 		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
