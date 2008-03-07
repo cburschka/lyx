@@ -41,8 +41,9 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
-#include "insets/RenderPreview.h"
+#include "insets/InsetLabel.h"
 #include "insets/InsetListingsParams.h"
+#include "insets/RenderPreview.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -148,22 +149,39 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	return file;
 }
 
+InsetLabel * createLabel(docstring const & label_str)
+{
+	if (label_str.empty())
+		return 0;
+	InsetCommandParams icp(LABEL_CODE);
+	icp["name"] = label_str;
+	return new InsetLabel(icp);
+}
+
 } // namespace anon
 
 
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: InsetCommand(p, "include"), include_label(uniqueID()),
-	  preview_(new RenderMonitoredPreview(this)), set_label_(false)
+	  preview_(new RenderMonitoredPreview(this)), set_label_(false), label_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
+
+	if (isListings(params())) {
+		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
+		label_ = createLabel(from_utf8(listing_params.getParamValue("label")));
+	}
 }
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
-	  preview_(new RenderMonitoredPreview(this)), set_label_(false)
+	  preview_(new RenderMonitoredPreview(this)), set_label_(false), label_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
+
+	if (other.label_)
+		label_ = new InsetLabel(*other.label_);
 }
 
 
@@ -191,6 +209,15 @@ InsetInclude::~InsetInclude()
 
 	//close the buffer.
 	theBufferList().release(child);
+}
+
+
+void InsetInclude::setBuffer(Buffer & buffer)
+{
+	buffer_ = &buffer;
+	if (label_)
+		label_->setBuffer(buffer);
+
 }
 
 
@@ -225,15 +252,17 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandMailer::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
-				InsetListingsParams par_old(to_utf8(params()["lstparams"]));
-				InsetListingsParams par_new(to_utf8(p["lstparams"]));
-				if (par_old.getParamValue("label") !=
-				    par_new.getParamValue("label")
-				    && !par_new.getParamValue("label").empty())
-					cur.bv().buffer().changeRefsIfUnique(
-						from_utf8(par_old.getParamValue("label")),
-						from_utf8(par_new.getParamValue("label")),
-						REF_CODE);
+				InsetListingsParams new_params(to_utf8(p["lstparams"]));
+				docstring const label_str = from_utf8(new_params.getParamValue("label"));
+				if (label_str.empty())
+					delete label_;
+				else if (label_)
+					label_->updateCommand(label_str);
+				else {
+					label_ = createLabel(label_str);
+					label_->setBuffer(buffer());
+					label_->initView();
+				}
 			}
 			try {
 				// the embed parameter passed back from the dialog
@@ -676,13 +705,12 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 void InsetInclude::getLabelList(vector<docstring> & list) const
 {
-	if (isListings(params())) {
-		InsetListingsParams p(to_utf8(params()["lstparams"]));
-		string label = p.getParamValue("label");
-		if (!label.empty())
-			list.push_back(from_utf8(label));
+	if (isListings(params()) && label_) {
+		label_->getLabelList(list);
+		return;
 	}
-	else if (loadIfNeeded(buffer(), params())) {
+	
+	if (loadIfNeeded(buffer(), params())) {
 		string const included_file = includedFilename(buffer(), params()).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		tmp->setParent(0);
@@ -852,6 +880,9 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 void InsetInclude::addToToc(ParConstIterator const & cpit) const
 {
 	if (isListings(params())) {
+		if (label_)
+			label_->addToToc(cpit);
+
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		string caption = p.getParamValue("caption");
 		if (caption.empty())
@@ -878,7 +909,7 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 }
 
 
-void InsetInclude::updateLabels(ParIterator const &)
+void InsetInclude::updateLabels(ParIterator const & it)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer(), params());
 	if (childbuffer) {
@@ -887,6 +918,9 @@ void InsetInclude::updateLabels(ParIterator const &)
 	}
 	if (!isListings(params()))
 		return;
+
+	if (label_)
+		label_->updateLabels(it);
 
 	InsetListingsParams const par(to_utf8(params()["lstparams"]));
 	if (par.getParamValue("caption").empty()) {

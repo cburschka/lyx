@@ -27,6 +27,7 @@ namespace lyx {
 
 class Buffer;
 class Dimension;
+class InsetLabel;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
 
@@ -36,6 +37,8 @@ public:
 	///
 	InsetInclude(InsetCommandParams const &);
 	~InsetInclude();
+
+	void setBuffer(Buffer & buffer);
 
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -123,6 +126,7 @@ private:
 	mutable bool set_label_;
 	mutable RenderButton button_;
 	mutable docstring listings_label_;
+	InsetLabel * label_;
 };
 
 /// return loaded Buffer or zero if the file loading did not proceed.
