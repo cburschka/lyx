@@ -99,8 +99,6 @@ GuiTexInfo::GuiTexInfo(GuiView & lv)
 	connect(fileListLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(enableViewPB()));
 
-	updateStyles(ClsType);
-
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	bc().setCancel(closePB);
 }
@@ -150,7 +148,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 {
 	ContentsType & data = texdata_[type];
 
-	static string filenames[] = { "clsFile.lst", "styFiles.lst", "bstFiles.lst" };
+	static string filenames[] = { "clsFiles.lst", "styFiles.lst", "bstFiles.lst" };
 	string filename = filenames[type];
 
 	getTexFileList(filename, data);
@@ -161,14 +159,12 @@ void GuiTexInfo::updateStyles(TexFileType type)
 		rescanTexStyles();
 		getTexFileList(filename, data);
 	}
-	bool const withFullPath = pathCB->isChecked();
-	if (withFullPath)
-		return;
-	vector<string>::iterator it1  = data.begin();
-	vector<string>::iterator end1 = data.end();
-	for (; it1 != end1; ++it1)
-		*it1 = support::onlyFilename(*it1);
-
+	if (!pathCB->isChecked()) {
+		vector<string>::iterator it1  = data.begin();
+		vector<string>::iterator end1 = data.end();
+		for (; it1 != end1; ++it1)
+			*it1 = support::onlyFilename(*it1);
+	}
 	// sort on filename only (no path)
 	sort(data.begin(), data.end());
 
