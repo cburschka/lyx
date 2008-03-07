@@ -48,11 +48,6 @@ public:
 	DisplayType display() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
-	/** Fills \c list
-	 *  \param buffer the Buffer containing this inset.
-	 *  \param list the list of labels in the child buffer.
-	 */
-	void getLabelList(std::vector<docstring> & list) const;
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.

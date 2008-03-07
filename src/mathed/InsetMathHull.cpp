@@ -538,14 +538,6 @@ Inset::DisplayType InsetMathHull::display() const
 }
 
 
-void InsetMathHull::getLabelList(vector<docstring> & labels) const
-{
-	for (row_type row = 0; row < nrows(); ++row)
-		if (label_[row] && !nonum_[row])
-			labels.push_back(label_[row]->screenLabel());
-}
-
-
 bool InsetMathHull::numberedType() const
 {
 	if (type_ == hullNone)

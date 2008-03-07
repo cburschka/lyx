@@ -34,8 +34,6 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return LABEL_CODE; }
-	/// Appends \c list with this label
-	void getLabelList(std::vector<docstring> & list) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///

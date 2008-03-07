@@ -1352,22 +1352,18 @@ void Buffer::validate(LaTeXFeatures & features) const
 
 void Buffer::getLabelList(vector<docstring> & list) const
 {
-	/// if this is a child document and the parent is already loaded
-	/// Use the parent's list instead  [ale990407]
-	Buffer const * tmp = masterBuffer();
-	if (!tmp) {
-		lyxerr << "masterBuffer() failed!" << endl;
-		BOOST_ASSERT(tmp);
-	}
-	if (tmp != this) {
-		tmp->getLabelList(list);
+	// If this is a child document, use the parent's list instead.
+	if (d->parent_buffer) {
+		masterBuffer()->getLabelList(list);
 		return;
 	}
 
-	updateMacros();
-
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-		it.nextInset()->getLabelList(list);
+	list.clear();
+	Toc & toc = d->toc_backend.toc("label");
+	TocIterator toc_it = toc.begin();
+	TocIterator end = toc.end();
+	for (; toc_it != end; ++toc_it)
+		list.push_back(toc_it->str());
 }
 
 

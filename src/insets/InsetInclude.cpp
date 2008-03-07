@@ -704,23 +704,6 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetInclude::getLabelList(vector<docstring> & list) const
-{
-	if (isListings(params()) && label_) {
-		label_->getLabelList(list);
-		return;
-	}
-	
-	if (loadIfNeeded(buffer(), params())) {
-		string const included_file = includedFilename(buffer(), params()).absFilename();
-		Buffer * tmp = theBufferList().getBuffer(included_file);
-		tmp->setParent(0);
-		tmp->getLabelList(list);
-		tmp->setParent(const_cast<Buffer *>(&buffer()));
-	}
-}
-
-
 void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 	InsetIterator const & /*di*/) const
 {

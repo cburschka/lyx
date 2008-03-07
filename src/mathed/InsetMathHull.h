@@ -63,8 +63,6 @@ public:
 	bool numberedType() const;
 	///
 	bool ams() const;
-	/// Appends \c list with all labels found within this inset.
-	void getLabelList(std::vector<docstring> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset

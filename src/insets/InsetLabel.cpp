@@ -92,12 +92,6 @@ ParamInfo const & InsetLabel::findInfo(string const & /* cmdName */)
 }
 
 
-void InsetLabel::getLabelList(vector<docstring> & list) const
-{
-	list.push_back(getParam("name"));
-}
-
-
 docstring InsetLabel::screenLabel() const
 {
 	return screen_label_;

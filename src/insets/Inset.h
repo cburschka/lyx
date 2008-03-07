@@ -256,8 +256,6 @@ public:
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
-	/// Appends \c list with all labels found within this inset.
-	virtual void getLabelList(std::vector<docstring> & /* list */) const {}
 
 	/// describe content if cursor inside
 	virtual void infoize(odocstream &) const {}

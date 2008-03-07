@@ -49,6 +49,7 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
+#include "TocBackend.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
 
@@ -1609,15 +1610,15 @@ void BufferView::setCursorFromRow(int row)
 
 void BufferView::gotoLabel(docstring const & label)
 {
-	for (InsetIterator it = inset_iterator_begin(buffer_.inset()); it; ++it) {
-		vector<docstring> labels;
-		it->getLabelList(labels);
-		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
-			setCursor(it);
-			showCursor();
-			return;
-		}
+	Toc & toc = buffer().tocBackend().toc("label");
+	TocIterator toc_it = toc.begin();
+	TocIterator end = toc.end();
+	for (; toc_it != end; ++toc_it) {
+		if (label == toc_it->str())
+			dispatch(toc_it->action());
 	}
+	//FIXME: We could do a bit more searching thanks to this:
+	//InsetLabel const * inset = buffer_.insetLabel(label);
 }
 
 
