@@ -1362,8 +1362,10 @@ void Buffer::getLabelList(vector<docstring> & list) const
 	Toc & toc = d->toc_backend.toc("label");
 	TocIterator toc_it = toc.begin();
 	TocIterator end = toc.end();
-	for (; toc_it != end; ++toc_it)
-		list.push_back(toc_it->str());
+	for (; toc_it != end; ++toc_it) {
+		if (toc_it->depth() == 0)
+			list.push_back(toc_it->str());
+	}
 }
 
 
