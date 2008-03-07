@@ -1354,7 +1354,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 {
 	// If this is a child document, use the parent's list instead.
 	if (d->parent_buffer) {
-		masterBuffer()->getLabelList(list);
+		d->parent_buffer->getLabelList(list);
 		return;
 	}
 
@@ -1371,12 +1371,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 void Buffer::updateBibfilesCache() const
 {
-	// if this is a child document and the parent is already loaded
-	// update the parent's cache instead
-	Buffer const * tmp = masterBuffer();
-	BOOST_ASSERT(tmp);
-	if (tmp != this) {
-		tmp->updateBibfilesCache();
+	// If this is a child document, use the parent's cache instead.
+	if (d->parent_buffer) {
+		d->parent_buffer->updateBibfilesCache();
 		return;
 	}
 
@@ -1405,12 +1402,9 @@ void Buffer::updateBibfilesCache() const
 
 EmbeddedFileList const & Buffer::getBibfilesCache() const
 {
-	// if this is a child document and the parent is already loaded
-	// use the parent's cache instead
-	Buffer const * tmp = masterBuffer();
-	BOOST_ASSERT(tmp);
-	if (tmp != this)
-		return tmp->getBibfilesCache();
+	// If this is a child document, use the parent's cache instead.
+	if (d->parent_buffer)
+		return d->parent_buffer->getBibfilesCache();
 
 	// We update the cache when first used instead of at loading time.
 	if (d->bibfilesCache_.empty())
@@ -1775,8 +1769,8 @@ MacroData const * Buffer::getMacro(docstring const & name,
 	// If there is a master buffer, query that
 	if (d->parent_buffer) {
 		d->macro_lock = true;
-		MacroData const * macro
-		= d->parent_buffer->getMacro(name, *this, false);
+		MacroData const * macro	= d->parent_buffer->getMacro(
+			name, *this, false);
 		d->macro_lock = false;
 		if (macro)
 			return macro;
@@ -1802,11 +1796,11 @@ MacroData const * Buffer::getMacro(docstring const & name, bool global) const
 }
 
 
-MacroData const * Buffer::getMacro(docstring const & name, Buffer const & child, bool global) const
+MacroData const * Buffer::getMacro(docstring const & name,
+	Buffer const & child, bool global) const
 {
 	// look where the child buffer is included first
-	Impl::BufferPositionMap::iterator it
-	= d->children_positions.find(&child);
+	Impl::BufferPositionMap::iterator it = d->children_positions.find(&child);
 	if (it == d->children_positions.end())
 		return 0;
 
@@ -1815,15 +1809,12 @@ MacroData const * Buffer::getMacro(docstring const & name, Buffer const & child,
 }
 
 
-void Buffer::updateEnvironmentMacros(DocIterator & it, 
-				     pit_type lastpit, 
-				     DocIterator & scope) const
+void Buffer::updateEnvironmentMacros(DocIterator & it, pit_type lastpit,
+	DocIterator & scope) const
 {
 	Paragraph & par = it.paragraph();
-	depth_type depth 
-	= par.params().depth();
-	Length const & leftIndent
-	= par.params().leftIndent();
+	depth_type depth = par.params().depth();
+	Length const & leftIndent = par.params().leftIndent();
 
 	// look for macros in each paragraph
 	while (it.pit() <= lastpit) {
@@ -1831,7 +1822,7 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 
 		// increased depth?
 		if ((par.params().depth() > depth
-		     || par.params().leftIndent() != leftIndent)
+			|| par.params().leftIndent() != leftIndent)
 		    && par.layout().isEnvironment()) {
 			updateBlockMacros(it, scope);
 			continue;
@@ -1866,7 +1857,7 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 			if (iit->inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
 				InsetCommand const & inset 
-				= static_cast<InsetCommand const &>(*iit->inset);
+					= static_cast<InsetCommand const &>(*iit->inset);
 				InsetCommandParams const & ip = inset.params();
 				d->macro_lock = true;
 				Buffer * child = loadIfNeeded(*this, ip);
@@ -1877,12 +1868,11 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 				// register its position, but only when it is
 				// included first in the buffer
 				if (d->children_positions.find(child)
-				    == d->children_positions.end())
+					== d->children_positions.end())
 					d->children_positions[child] = it;
 				                                				
 				// register child with its scope
 				d->position_to_children[it] = Impl::ScopeBuffer(scope, child);
-
 				continue;
 			}
 
@@ -1904,8 +1894,8 @@ void Buffer::updateEnvironmentMacros(DocIterator & it,
 				continue;
 
 			// register macro
-			d->macros[macroTemplate.name()][it] 
-			= Impl::ScopeMacro(scope, MacroData(*this, it));
+			d->macros[macroTemplate.name()][it] =
+				Impl::ScopeMacro(scope, MacroData(*this, it));
 		}
 
 		// next paragraph
@@ -2015,18 +2005,14 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 	d->macro_lock = true;
 	
 	// loop over macro names
-	Impl::NamePositionScopeMacroMap::iterator nameIt
-	= d->macros.begin();
-	Impl::NamePositionScopeMacroMap::iterator nameEnd
-	= d->macros.end();
+	Impl::NamePositionScopeMacroMap::iterator nameIt = d->macros.begin();
+	Impl::NamePositionScopeMacroMap::iterator nameEnd = d->macros.end();
 	for (; nameIt != nameEnd; ++nameIt)
 		macros.insert(nameIt->first);
 
 	// loop over children
-	Impl::BufferPositionMap::iterator it
-	= d->children_positions.begin();	
-	Impl::BufferPositionMap::iterator end
-	= d->children_positions.end();
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
 	for (; it != end; ++it)
 		it->first->listMacroNames(macros);
 
@@ -2071,7 +2057,8 @@ Buffer::References & Buffer::references(docstring const & label)
 
 	static InsetLabel const * dummy_il = 0;
 	static References const dummy_refs;
-	it = d->ref_cache_.insert(make_pair(label, make_pair(dummy_il, dummy_refs))).first;
+	it = d->ref_cache_.insert(
+		make_pair(label, make_pair(dummy_il, dummy_refs))).first;
 	return it->second.second;
 }
 
@@ -2150,31 +2137,30 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		d->texrow.newline();
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
-		else {
+		else
 			writeDocBookSource(os, absFileName(), runparams, false);
-		}
 	} else {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
-		if (par_begin + 1 == par_end)
+		if (par_begin + 1 == par_end) {
 			os << "% "
 			   << bformat(_("Preview source code for paragraph %1$d"), par_begin)
 			   << "\n\n";
-		else
+		} else {
 			os << "% "
 			   << bformat(_("Preview source code from paragraph %1$s to %2$s"),
 					convert<docstring>(par_begin),
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
+		}
 		d->texrow.newline();
 		d->texrow.newline();
 		// output paragraphs
-		if (isLatex()) {
+		if (isLatex())
 			latexParagraphs(*this, text(), os, d->texrow, runparams);
-		} else {
+		else
 			// DocBook
 			docbookParagraphs(paragraphs(), *this, os, runparams);
-		}
 	}
 }
 
