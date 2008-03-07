@@ -16,7 +16,7 @@
 
 #include "TextClass.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Color.h"
 #include "Counters.h"
 #include "Floating.h"

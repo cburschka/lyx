@@ -18,7 +18,7 @@
 #include "BufferParams.h"
 
 #include "Author.h"
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Bullet.h"
@@ -464,7 +464,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
 		string tcp;
-		BaseClassList & bcl = BaseClassList::get();
+		LayoutFileList & bcl = LayoutFileList::get();
 		if (!filepath.empty())
 			tcp = bcl.addLayoutFile(classname, filepath.absFilename());
 		if (!tcp.empty())
@@ -1387,7 +1387,7 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 bool BufferParams::setBaseClass(string const & classname)
 {
 	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
-	BaseClassList const & bcl = BaseClassList::get();
+	LayoutFileList const & bcl = LayoutFileList::get();
 	if (!bcl.haveClass(classname)) {
 		docstring s = 
 			bformat(_("The document class %1$s could not be found."),
@@ -1411,8 +1411,8 @@ bool BufferParams::setBaseClass(string const & classname)
 
 LayoutFile const * BufferParams::baseClass() const
 {
-	if (BaseClassList::get().haveClass(pimpl_->baseClass_))
-		return &(BaseClassList::get()[pimpl_->baseClass_]);
+	if (LayoutFileList::get().haveClass(pimpl_->baseClass_))
+		return &(LayoutFileList::get()[pimpl_->baseClass_]);
 	else 
 		return 0;
 }

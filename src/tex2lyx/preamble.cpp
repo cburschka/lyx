@@ -15,7 +15,7 @@
 
 #include "tex2lyx.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"

@@ -19,7 +19,7 @@
 
 #include "Paragraph.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Changes.h"

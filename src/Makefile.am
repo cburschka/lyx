@@ -76,7 +76,6 @@ endif
 
 SOURCEFILESCORE = \
 	Author.cpp \
-	BaseClassList.cpp \
 	BiblioInfo.cpp \
 	Bidi.cpp \
 	boost.cpp \
@@ -123,6 +122,7 @@ SOURCEFILESCORE = \
 	Language.cpp \
 	LaTeX.cpp \
 	LaTeXFeatures.cpp \
+	LayoutFile.cpp \
 	Length.cpp \
 	lengthcommon.cpp \
 	Lexer.cpp \
@@ -171,7 +171,6 @@ SOURCEFILESCORE = \
 
 HEADERFILESCORE = \
 	Author.h \
-	BaseClassList.h \
 	BiblioInfo.h \
 	Bidi.h \
 	BranchList.h \
@@ -223,6 +222,7 @@ HEADERFILESCORE = \
 	LaTeX.h \
 	Layout.h \
 	LayoutEnums.h \
+	LayoutFile.h \
 	Length.h \
 	Lexer.h \
 	lfuns.h \

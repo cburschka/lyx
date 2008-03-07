@@ -11,7 +11,7 @@
 
 #include "InsetInfo.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -200,7 +200,7 @@ void InsetInfo::updateInfo()
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		setText(BaseClassList::get().haveClass(name_) ? _("yes") : _("no"),
+		setText(LayoutFileList::get().haveClass(name_) ? _("yes") : _("no"),
 		bp.getFont(), false);
 		break;
 	}

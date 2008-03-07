@@ -1,5 +1,5 @@
 /**
- * \file BaseClassList.cpp
+ * \file LayoutFileList.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Counters.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -47,14 +47,14 @@ LayoutFile::LayoutFile(string const & fn, string const & cln,
 }
 
 
-BaseClassList & BaseClassList::get() 
+LayoutFileList & LayoutFileList::get() 
 {
-	static BaseClassList baseclasslist;
+	static LayoutFileList baseclasslist;
 	return baseclasslist;
 }
 
 
-bool BaseClassList::haveClass(string const & classname) const
+bool LayoutFileList::haveClass(string const & classname) const
 {
 	ClassMap::const_iterator it = classmap_.begin();
 	ClassMap::const_iterator en = classmap_.end();
@@ -66,7 +66,7 @@ bool BaseClassList::haveClass(string const & classname) const
 }
 
 
-LayoutFile const & BaseClassList::operator[](string const & classname) const
+LayoutFile const & LayoutFileList::operator[](string const & classname) const
 {
 	BOOST_ASSERT(haveClass(classname));
 	return *classmap_[classname];
@@ -74,7 +74,7 @@ LayoutFile const & BaseClassList::operator[](string const & classname) const
 
 
 LayoutFile & 
-	BaseClassList::operator[](string const & classname)
+	LayoutFileList::operator[](string const & classname)
 {
 	BOOST_ASSERT(haveClass(classname));
 	return *classmap_[classname];
@@ -82,14 +82,14 @@ LayoutFile &
 
 
 // Reads LyX textclass definitions according to textclass config file
-bool BaseClassList::read()
+bool LayoutFileList::read()
 {
 	Lexer lex(0, 0);
 	FileName const real_file = libFileSearch("", "textclass.lst");
 	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
 
 	if (real_file.empty()) {
-		lyxerr << "BaseClassList::Read: unable to find "
+		lyxerr << "LayoutFileList::Read: unable to find "
 			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'. Exiting." << endl;
@@ -102,13 +102,13 @@ bool BaseClassList::read()
 	}
 
 	if (!lex.setFile(real_file)) {
-		lyxerr << "BaseClassList::Read: "
+		lyxerr << "LayoutFileList::Read: "
 			"lyxlex was not able to set file: "
 		       << real_file << endl;
 	}
 
 	if (!lex.isOK()) {
-		lyxerr << "BaseClassList::Read: unable to open "
+		lyxerr << "LayoutFileList::Read: unable to open "
 			  "textclass file  `"
 		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'\nCheck your installation. LyX can't continue."
@@ -157,13 +157,13 @@ bool BaseClassList::read()
 	// in this case. This gives users a second chance to configure lyx if
 	// initial configuration fails. (c.f. bug 2829)
 	if (classmap_.empty())
-		lyxerr << "BaseClassList::Read: no textclasses found!"
+		lyxerr << "LayoutFileList::Read: no textclasses found!"
 		       << endl;
 	return true;
 }
 
 
-std::vector<LayoutFileIndex> BaseClassList::classList() const
+std::vector<LayoutFileIndex> LayoutFileList::classList() const
 {
 	std::vector<LayoutFileIndex> cl;
 	ClassMap::const_iterator it = classmap_.begin();
@@ -174,7 +174,7 @@ std::vector<LayoutFileIndex> BaseClassList::classList() const
 }
 
 
-void BaseClassList::reset(LayoutFileIndex const & classname) {
+void LayoutFileList::reset(LayoutFileIndex const & classname) {
 	BOOST_ASSERT(haveClass(classname));
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
@@ -185,11 +185,11 @@ void BaseClassList::reset(LayoutFileIndex const & classname) {
 }
 
 
-string const BaseClassList::localPrefix = "LOCAL:";
+string const LayoutFileList::localPrefix = "LOCAL:";
 
 
 LayoutFileIndex 
-	BaseClassList::addLayoutFile(string const & textclass, string const & path)
+	LayoutFileList::addLayoutFile(string const & textclass, string const & path)
 {
 	// FIXME  There is a bug here: 4593
 	//
@@ -242,11 +242,11 @@ LayoutFileIndex
 
 LayoutFileIndex defaultBaseclass()
 {
-	if (BaseClassList::get().haveClass("article"))
+	if (LayoutFileList::get().haveClass("article"))
 		return string("article");
-	if (BaseClassList::get().empty())
+	if (LayoutFileList::get().empty())
 		return string();
-	return BaseClassList::get().classList().front();
+	return LayoutFileList::get().classList().front();
 }
 
 
@@ -256,7 +256,7 @@ bool LyXSetStyle()
 {
 	LYXERR(Debug::TCLASS, "LyXSetStyle: parsing configuration...");
 
-	if (!BaseClassList::get().read()) {
+	if (!LayoutFileList::get().read()) {
 		LYXERR(Debug::TCLASS, "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting.");
 		return false;

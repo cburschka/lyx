@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file BaseClassList.h
+ * \file LayoutFile.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -29,7 +29,7 @@ class Layout;
 extern bool LyXSetStyle();
 
 
-/// Index into BaseClassList. Basically a 'strong typedef'.
+/// Index into LayoutFileList. Basically a 'strong typedef'.
 class LayoutFileIndex {
 public:
 	///
@@ -58,8 +58,8 @@ private:
 			std::string const & description = std::string(),
 			bool texClassAvail = false);
 	/// The only class that should create a LayoutFile is
-	/// BaseClassList, which calls the private constructor.
-	friend class BaseClassList;
+	/// LayoutFileList, which calls the private constructor.
+	friend class LayoutFileList;
 	/// can't create empty LayoutFile
 	LayoutFile() {};
 };
@@ -67,13 +67,13 @@ private:
 
 /// A list of base document classes (*.layout files).
 /// This is a singleton class. The sole instance is accessed
-/// via BaseClassList::get()
-class BaseClassList {
+/// via LayoutFileList::get()
+class LayoutFileList {
 public:
 	///
-	BaseClassList() {}
+	LayoutFileList() {}
 	/// \return The sole instance of this class.
-	static BaseClassList & get();
+	static LayoutFileList & get();
 	///
 	bool empty() const { return classmap_.empty(); }
 	///
@@ -99,9 +99,9 @@ private:
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;
 	/// noncopyable
-	BaseClassList(BaseClassList const &);
+	LayoutFileList(LayoutFileList const &);
 	/// nonassignable
-	void operator=(BaseClassList const &);
+	void operator=(LayoutFileList const &);
 	///
 	mutable ClassMap classmap_; //FIXME
 };

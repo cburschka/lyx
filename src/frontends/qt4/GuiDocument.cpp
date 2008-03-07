@@ -13,7 +13,7 @@
 
 #include "GuiDocument.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -152,8 +152,8 @@ public:
 		// Ordering criteria:
 		//   1. Availability of text class
 		//   2. Description (lexicographic)
-		LayoutFile const & tc1 = BaseClassList::get()[lhs];
-		LayoutFile const & tc2 = BaseClassList::get()[rhs];
+		LayoutFile const & tc1 = LayoutFileList::get()[lhs];
+		LayoutFile const & tc2 = LayoutFileList::get()[rhs];
 		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
 			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
 			 _(tc1.description()) < _(tc2.description()));
@@ -902,7 +902,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	}
 	// latex classes
 	latexModule->classCO->setModel(&classes_model_);
-	BaseClassList const & bcl = BaseClassList::get();
+	LayoutFileList const & bcl = LayoutFileList::get();
 	vector<LayoutFileIndex> classList = bcl.classList();
 	sort(classList.begin(), classList.end(), less_textclass_avail_desc());
 
@@ -1243,7 +1243,7 @@ void GuiDocument::classChanged()
 		return;
 	string const classname = classes_model_.getIDString(idx);
 	// check if this is a local layout file
-	if (prefixIs(classname, BaseClassList::localPrefix)) {
+	if (prefixIs(classname, LayoutFileList::localPrefix)) {
 		int const ret = Alert::prompt(_("Local layout file"),
 				_("The layout file you have selected is a local layout\n"
 				  "file, not one in the system or user directory. Your\n"

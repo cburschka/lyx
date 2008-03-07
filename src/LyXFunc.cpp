@@ -21,7 +21,7 @@
 
 #include "LyXFunc.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -709,14 +709,14 @@ void showPrintError(string const & name)
 
 bool loadLayoutFile(string const & name, string const & buf_path)
 {
-	if (!BaseClassList::get().haveClass(name)) {
+	if (!LayoutFileList::get().haveClass(name)) {
 		lyxerr << "Document class \"" << name
 		       << "\" does not exist."
 		       << endl;
 		return false;
 	}
 
-	LayoutFile & tc = BaseClassList::get()[name];
+	LayoutFile & tc = LayoutFileList::get()[name];
 	if (!tc.load(buf_path)) {
 		docstring s = bformat(_("The document class %1$s."
 				   "could not be loaded."), from_utf8(name));
@@ -1583,7 +1583,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			LayoutFile const * old_layout = buffer->params().baseClass();
-			LayoutFile const * new_layout = &(BaseClassList::get()[argument]);
+			LayoutFile const * new_layout = &(LayoutFileList::get()[argument]);
 
 			if (old_layout == new_layout)
 				// nothing to do
@@ -1604,7 +1604,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * buffer = lyx_view_->buffer();
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			LayoutFileIndex bc = buffer->params().baseClassID();
-			BaseClassList::get().reset(bc);
+			LayoutFileList::get().reset(bc);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;

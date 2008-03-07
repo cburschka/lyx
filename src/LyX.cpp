@@ -17,7 +17,7 @@
 
 #include "LyX.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
@@ -576,7 +576,7 @@ void LyX::execBatchCommands()
 	// aknowledged.
 
 	// if reconfiguration is needed.
-	while (BaseClassList::get().empty()) {
+	while (LayoutFileList::get().empty()) {
 	    switch (Alert::prompt(
 		    _("No textclass is found"),
 		    _("LyX cannot continue because no textclass is found. "

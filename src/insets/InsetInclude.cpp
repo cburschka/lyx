@@ -14,7 +14,7 @@
 
 #include "InsetInclude.h"
 
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"

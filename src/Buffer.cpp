@@ -14,7 +14,7 @@
 #include "Buffer.h"
 
 #include "Author.h"
-#include "BaseClassList.h"
+#include "LayoutFile.h"
 #include "BiblioInfo.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"

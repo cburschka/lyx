@@ -30,7 +30,6 @@ TOP_extra_files = Split('''
 src_header_files = Split('''
     ASpell_local.h
     Author.h
-    BaseClassList.h
     BiblioInfo.h
     Bidi.h
     Box.h
@@ -82,6 +81,7 @@ src_header_files = Split('''
     Language.h
     Layout.h
     LayoutEnums.h
+    LayoutFile.h
     Length.h
     Lexer.h
     LyX.h
@@ -142,7 +142,6 @@ src_header_files = Split('''
 
 src_pre_files = Split('''
     Author.cpp
-    BaseClassList.cpp
     BiblioInfo.cpp
     Bidi.cpp
     BranchList.cpp
@@ -187,6 +186,7 @@ src_pre_files = Split('''
     LaTeXFeatures.cpp
     Language.cpp
     Layout.cpp
+    LayoutFile.cpp
     Length.cpp
     Lexer.cpp
     LyX.cpp
