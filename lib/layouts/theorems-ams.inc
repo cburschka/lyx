@@ -209,7 +209,8 @@ Style Case
 	Preamble
 	  \newcounter{casectr}
 	  \newenvironment{caseenv}
-{\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
-{\end{list}}
+			{\begin{list}{\bfseries\upshape Case \arabic{casectr}:}%
+			{}\setcounter{casectr}{0}\usecounter{casectr}}%
+		{\end{list}}
 	EndPreamble
 End
