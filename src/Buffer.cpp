@@ -2107,25 +2107,19 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	InsetCode code)
 {
 	//FIXME: This does not work for child documents yet.
-	BOOST_ASSERT(code == CITE_CODE || code == REF_CODE);
+	BOOST_ASSERT(code == CITE_CODE);
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
-
 	string paramName;
-	if (code == CITE_CODE) {
-		BiblioInfo keys;
-		keys.fillWithBibKeys(this);
-		BiblioInfo::const_iterator bit  = keys.begin();
-		BiblioInfo::const_iterator bend = keys.end();
+	BiblioInfo keys;
+	keys.fillWithBibKeys(this);
+	BiblioInfo::const_iterator bit  = keys.begin();
+	BiblioInfo::const_iterator bend = keys.end();
 
-		for (; bit != bend; ++bit)
-			// FIXME UNICODE
-			labels.push_back(bit->first);
-		paramName = "key";
-	} else {
-		getLabelList(labels);
-		paramName = "reference";
-	}
+	for (; bit != bend; ++bit)
+		// FIXME UNICODE
+		labels.push_back(bit->first);
+	paramName = "key";
 
 	if (count(labels.begin(), labels.end(), from) > 1)
 		return;
