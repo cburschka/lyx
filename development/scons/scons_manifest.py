@@ -89,7 +89,6 @@ src_header_files = Split('''
     LyXFunc.h
     LyXRC.h
     LyXVC.h
-    MenuBackend.h
     MetricsInfo.h
     ModuleList.h
     Mover.h
@@ -194,7 +193,6 @@ src_pre_files = Split('''
     LyXFunc.cpp
     LyXRC.cpp
     LyXVC.cpp
-    MenuBackend.cpp
     MetricsInfo.cpp
     Mover.cpp
     OutputParams.cpp
