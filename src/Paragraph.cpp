@@ -159,7 +159,7 @@ public:
 
 	///
 	void validate(LaTeXFeatures & features,
-		      Layout const * layout) const;
+		      Layout const & layout) const;
 
 	/// Checks if the paragraph contains only text and no inset or font change.
 	bool onlyText(Buffer const & buf, Font const & outerfont,
@@ -987,14 +987,14 @@ bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
 
 
 void Paragraph::Private::validate(LaTeXFeatures & features,
-				Layout const * layout) const
+				Layout const & layout) const
 {
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");
 
 	// then the layouts
-	features.useLayout(layout->name());
+	features.useLayout(layout.name());
 
 	// then the fonts
 	fontlist_.validate(features);
@@ -1009,7 +1009,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
 			icit->inset->validate(features);
-			if (layout->needprotect &&
+			if (layout.needprotect &&
 			    icit->inset->lyxCode() == FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
@@ -1175,7 +1175,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 
 void Paragraph::validate(LaTeXFeatures & features) const
 {
-	d->validate(features, d->layout_);
+	d->validate(features, *d->layout_);
 }
 
 
