@@ -140,9 +140,10 @@ void InsetText::setParagraphOwner()
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
+	BOOST_ASSERT(!pars.empty());
 
 	// This is a gross hack...
-	Layout old_layout = pars.begin()->layout();
+	Layout const & old_layout = pars.begin()->layout();
 
 	pars.clear();
 	pars.push_back(Paragraph());
