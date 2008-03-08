@@ -152,6 +152,8 @@ public:
 		func_.origin = FuncRequest::MENU;
 	}
 
+	~MenuItem() {}
+
 	/// The label of a given menuitem
 	QString label() const {	return label_.split('|')[0]; }
 
@@ -197,9 +199,9 @@ public:
 	/// set the description of the  submenu
 	void submenuname(QString const & name) { submenuname_ = name; }
 	///
-	Menu * submenu() const { return submenu_; }
+	Menu * submenu() const { return submenu_.get(); }
 	///
-	void setSubmenu(Menu * menu) { submenu_ = menu; }
+	void setSubmenu(Menu * menu) { submenu_.reset(menu); }
 
 private:
 	///
@@ -215,7 +217,7 @@ private:
 	///
 	FuncStatus status_;
 	///
-	Menu * submenu_;
+	boost::shared_ptr<Menu> submenu_;
 };
 
 ///
@@ -288,6 +290,8 @@ public:
 	{
 		setTitle(label(mi));
 	}
+
+	~GuiPopupMenu() { delete top_level_menu; }
 
 	/// populates the menu or one of its submenu
 	/// This is used as a recursive function
@@ -970,12 +974,12 @@ void Menu::expandToc(Buffer const * buf)
 			continue;
 
 		// All the rest is for floats
-		auto_ptr<Menu> menu(new Menu);
+		Menu * submenu = new Menu;
 		TocIterator ccit = cit->second.begin();
 		TocIterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
 			QString const label = limitStringLength(ccit->str());
-			menu->add(MenuItem(MenuItem::Command, label,
+			submenu->add(MenuItem(MenuItem::Command, label,
 					   FuncRequest(ccit->action())));
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
@@ -1005,7 +1009,7 @@ void Menu::expandToc(Buffer const * buf)
 		else
 			label = qt_("Other floats");
 		MenuItem item(MenuItem::Submenu, label);
-		item.setSubmenu(menu.release());
+		item.setSubmenu(submenu);
 		add(item);
 	}
 
@@ -1096,8 +1100,6 @@ void Menu::expandBranches(Buffer const * buf)
 
 
 struct Menus::Impl {
-	///
-	void add(Menu const &);
 	///
 	bool hasMenu(QString const &) const;
 	///
@@ -1288,8 +1290,7 @@ void Menus::Impl::expand(Menu const & frommenu, Menu & tomenu,
 		case MenuItem::Submenu: {
 			MenuItem item(*cit);
 			item.setSubmenu(new Menu(cit->submenuname()));
-			expand(getMenu(cit->submenuname()),
-			       *item.submenu(), buf);
+			expand(getMenu(cit->submenuname()), *item.submenu(), buf);
 			tomenu.addWithStatusCheck(item);
 		}
 		break;
@@ -1310,12 +1311,6 @@ void Menus::Impl::expand(Menu const & frommenu, Menu & tomenu,
 
 	// Check whether the shortcuts are unique
 	tomenu.checkShortcuts();
-}
-
-
-void Menus::Impl::add(Menu const & menu)
-{
-	menulist_.push_back(menu);
 }
 
 
@@ -1394,7 +1389,7 @@ void Menus::read(Lexer & lex)
 			else {
 				Menu menu(name);
 				menu.read(lex);
-				d->add(menu);
+				d->menulist_.push_back(menu);
 			}
 			break;
 		}
