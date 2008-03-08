@@ -1226,6 +1226,13 @@ void LyXAction::init()
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
 		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly, System },
 		{ LFUN_SERVER_GET_XY, "server-get-xy", ReadOnly, System },
+/*!
+ * \var lyx::kb_action lyx::LFUN_SERVER_GOTO_FILE_ROW
+ * \li Action: Sets the cursor position based on the row number of generated TeX file.
+ * \li Syntax: server-goto-file-row <FILE_NAME> <ROW_NUMBER>
+ * \li Origin: Edmar, 23 Dec 1998
+ * \endvar
+ */
 		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly, System },
 		{ LFUN_SERVER_NOTIFY, "server-notify", ReadOnly, System },
 		{ LFUN_SERVER_SET_XY, "server-set-xy", ReadOnly, System },
