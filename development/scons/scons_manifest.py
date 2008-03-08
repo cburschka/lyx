@@ -749,7 +749,6 @@ src_frontends_qt4_header_files = Split('''
     GuiNote.h
     GuiPainter.h
     GuiParagraph.h
-    GuiPopupMenu.h
     GuiPrefs.h
     GuiPrint.h
     GuiRef.h
@@ -838,7 +837,6 @@ src_frontends_qt4_files = Split('''
     GuiNote.cpp
     GuiPainter.cpp
     GuiParagraph.cpp
-    GuiPopupMenu.cpp
     GuiPrefs.cpp
     GuiPrint.cpp
     GuiRef.cpp
