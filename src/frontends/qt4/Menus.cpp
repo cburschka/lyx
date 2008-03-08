@@ -1421,7 +1421,7 @@ void Menus::fillMenuBar(GuiView * view)
 	
 #ifdef Q_WS_MACX
 	// setup special mac specific menu item
-	macxMenuBarInit(view);
+	d->macxMenuBarInit(view);
 #endif
 
 	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
