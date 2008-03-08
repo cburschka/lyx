@@ -246,6 +246,7 @@ QStringList texFileList(QString const & filename)
 	QSet<QString> set;
 	for (size_t i = 0; i != doclist.size(); ++i) {
 		QString file = toqstr(doclist[i]);
+		file.replace("\r", "");
 		while (file.contains("//"))
 			file.replace("//", "/");
 		if (!file.isEmpty())

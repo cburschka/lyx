@@ -149,7 +149,7 @@ void GuiTexInfo::enableViewPB()
 void GuiTexInfo::updateStyles(TexFileType type)
 {
 	static QString const filenames[] = {
-		"clsFile.lst", "styFiles.lst", "bstFiles.lst"
+		"clsFiles.lst", "styFiles.lst", "bstFiles.lst"
 	};
 
 	QString const filename = filenames[type];
