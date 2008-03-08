@@ -21,6 +21,8 @@
 
 Format 6
 
+Requires amsthm
+
 Style Theorem
 	Category              Theorem
 	Margin                First_Dynamic
@@ -49,7 +51,6 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
-		\usepackage{amsthm}
 		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
