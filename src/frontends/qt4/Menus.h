@@ -16,6 +16,8 @@
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 
+#include "support/strfwd.h"
+
 #include <QObject>
 #include <QHash>
 
@@ -29,6 +31,7 @@ namespace lyx {
 
 class Lexer;
 class Buffer;
+class Toc;
 
 namespace frontend {
 
@@ -166,11 +169,6 @@ public:
 	///
 	explicit Menu(QString const & name = QString()) : name_(name) {}
 
-	/// Add the menu item unconditionally
-	void add(MenuItem const & item) { items_.push_back(item); }
-	/// Checks the associated FuncRequest status before adding the
-	/// menu item.
-	void addWithStatusCheck(MenuItem const &);
 	///
 	void read(Lexer &);
 	///
@@ -184,14 +182,9 @@ public:
 	///
 	MenuItem const & operator[](size_t) const;
 	///
-	bool hasFunc(FuncRequest const &) const;
-	///
 	const_iterator begin() const { return items_.begin(); }
 	///
 	const_iterator end() const { return items_.end(); }
-
-	// Check whether the menu shortcuts are unique
-	void checkShortcuts() const;
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
@@ -201,6 +194,28 @@ public:
 private:
 	friend class Menus;
 	///
+	bool hasFunc(FuncRequest const &) const;
+	/// Add the menu item unconditionally
+	void add(MenuItem const & item) { items_.push_back(item); }
+	/// Checks the associated FuncRequest status before adding the
+	/// menu item.
+	void addWithStatusCheck(MenuItem const &);
+	// Check whether the menu shortcuts are unique
+	void checkShortcuts() const;
+	///
+	void expandLastfiles();
+	void expandDocuments();
+	void expandBookmarks();
+	void expandFormats(MenuItem::Kind kind, Buffer const * buf);
+	void expandFloatListInsert(Buffer const * buf);
+	void expandFloatInsert(Buffer const * buf);
+	void expandFlexInsert(Buffer const * buf, std::string s);
+	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
+	void expandToc(Buffer const * buf);
+	void expandPasteRecent();
+	void expandToolbars();
+	void expandBranches(Buffer const * buf);
+
 	ItemList items_;
 	///
 	QString name_;

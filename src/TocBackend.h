@@ -70,7 +70,8 @@ protected:
 
 
 ///
-typedef std::vector<TocItem> Toc;
+class Toc : public std::vector<TocItem> {};
+
 typedef Toc::const_iterator TocIterator;
 
 /// The ToC list.

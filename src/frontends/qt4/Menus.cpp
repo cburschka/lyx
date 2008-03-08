@@ -595,8 +595,10 @@ QString limitStringLength(docstring const & str)
 	return toqstr(str);
 }
 
+} // namespace anon
 
-void expandLastfiles(Menu & tomenu)
+
+void Menu::expandLastfiles()
 {
 	LastFilesSection::LastFiles const & lf = LyX::cref().session().lastFiles().lastFiles();
 	LastFilesSection::LastFiles::const_iterator lfit = lf.begin();
@@ -607,12 +609,12 @@ void expandLastfiles(Menu & tomenu)
 		string const file = lfit->absFilename();
 		QString const label = QString("%1. %2|%3").arg(ii)
 			.arg(toqstr(makeDisplayPath(file, 30))).arg(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, file)));
+		add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, file)));
 	}
 }
 
 
-void expandDocuments(Menu & tomenu)
+void Menu::expandDocuments()
 {
 	Buffer * first = theBufferList().first();
 	if (first) {
@@ -626,20 +628,20 @@ void expandDocuments(Menu & tomenu)
 				label += "*";
 			if (ii < 10)
 				label = QString::number(ii) + ". " + label + '|' + QString::number(ii);
-			tomenu.add(MenuItem(MenuItem::Command, label,
+			add(MenuItem(MenuItem::Command, label,
 				FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
 			
 			b = theBufferList().next(b);
 			++ii;
 		} while (b != first); 
 	} else {
-		tomenu.add(MenuItem(MenuItem::Command, qt_("No Documents Open!"),
+		add(MenuItem(MenuItem::Command, qt_("No Documents Open!"),
 		           FuncRequest(LFUN_NOACTION)));
 	}
 }
 
 
-void expandBookmarks(Menu & tomenu)
+void Menu::expandBookmarks()
 {
 	lyx::BookmarksSection const & bm = LyX::cref().session().bookmarks();
 
@@ -648,17 +650,17 @@ void expandBookmarks(Menu & tomenu)
 			string const file = bm.bookmark(i).filename.absFilename();
 			QString const label = QString("%1. %2|%3").arg(i)
 				.arg(toqstr(makeDisplayPath(file, 20))).arg(i);
-			tomenu.add(MenuItem(MenuItem::Command, label,
+			add(MenuItem(MenuItem::Command, label,
 				FuncRequest(LFUN_BOOKMARK_GOTO, convert<docstring>(i))));
 		}
 	}
 }
 
 
-void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
+void Menu::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 {
 	if (!buf && kind != MenuItem::ImportFormats) {
-		tomenu.add(MenuItem(MenuItem::Command,
+		add(MenuItem(MenuItem::Command,
 				    qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
@@ -724,19 +726,19 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 			label += '|' + shortcut;
 
 		if (buf)
-			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
+			addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				FuncRequest(action, (*fit)->name())));
 		else
-			tomenu.add(MenuItem(MenuItem::Command, label,
+			add(MenuItem(MenuItem::Command, label,
 				FuncRequest(action, (*fit)->name())));
 	}
 }
 
 
-void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
+void Menu::expandFloatListInsert(Buffer const * buf)
 {
 	if (!buf) {
-		tomenu.add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
+		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -745,7 +747,7 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
-		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command,
+		addWithStatusCheck(MenuItem(MenuItem::Command,
 				    qt_(cit->second.listName()),
 				    FuncRequest(LFUN_FLOAT_LIST,
 						cit->second.type())));
@@ -753,10 +755,10 @@ void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandFloatInsert(Menu & tomenu, Buffer const * buf)
+void Menu::expandFloatInsert(Buffer const * buf)
 {
 	if (!buf) {
-		tomenu.add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
+		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -767,17 +769,17 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 	for (; cit != end; ++cit) {
 		// normal float
 		QString const label = qt_(cit->second.name());
-		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
+		addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,
 						cit->second.type())));
 	}
 }
 
 
-void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
+void Menu::expandFlexInsert(Buffer const * buf, string s)
 {
 	if (!buf) {
-		tomenu.add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
+		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -788,7 +790,7 @@ void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
 		if (cit->second.lyxtype() == s)
-			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, 
+			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(label), FuncRequest(LFUN_FLEX_INSERT,
 						label)));
 	}
@@ -797,7 +799,7 @@ void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 
 size_t const max_number_of_items = 25;
 
-void expandToc2(Menu & tomenu, Toc const & toc_list,
+void Menu::expandToc2(Toc const & toc_list,
 		size_t from, size_t to, int depth)
 {
 	int shortcut_count = 0;
@@ -818,7 +820,7 @@ void expandToc2(Menu & tomenu, Toc const & toc_list,
 				if (label.contains(QString::number(shortcut_count + 1)))
 					label += '|' + QString::number(++shortcut_count);
 			}
-			tomenu.add(MenuItem(MenuItem::Command, label,
+			add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
 		}
 	} else {
@@ -837,14 +839,13 @@ void expandToc2(Menu & tomenu, Toc const & toc_list,
 					label += '|' + QString::number(++shortcut_count);
 			}
 			if (new_pos == pos + 1) {
-				tomenu.add(MenuItem(MenuItem::Command,
+				add(MenuItem(MenuItem::Command,
 						    label, FuncRequest(toc_list[pos].action())));
 			} else {
 				MenuItem item(MenuItem::Submenu, label);
 				item.setSubmenu(new Menu);
-				expandToc2(*item.submenu(),
-					   toc_list, pos, new_pos, depth + 1);
-				tomenu.add(item);
+				item.submenu()->expandToc2(toc_list, pos, new_pos, depth + 1);
+				add(item);
 			}
 			pos = new_pos;
 		}
@@ -852,7 +853,7 @@ void expandToc2(Menu & tomenu, Toc const & toc_list,
 }
 
 
-void expandToc(Menu & tomenu, Buffer const * buf)
+void Menu::expandToc(Buffer const * buf)
 {
 	// To make things very cleanly, we would have to pass buf to
 	// all MenuItem constructors and to expandToc2. However, we
@@ -860,7 +861,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 	// OK, so we avoid this unnecessary overhead (JMarc)
 
 	if (!buf) {
-		tomenu.add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
+		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
@@ -875,7 +876,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		ParIterator const pit = par_iterator_begin(master->inset());
 		string const arg = convert<string>(pit->id());
 		FuncRequest f(LFUN_PARAGRAPH_GOTO, arg);
-		tomenu.add(MenuItem(MenuItem::Command, qt_("Master Document"), f));
+		add(MenuItem(MenuItem::Command, qt_("Master Document"), f));
 	}
 
 	FloatList const & floatlist = buf->params().documentClass().floats();
@@ -924,22 +925,22 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 			label = qt_("Other floats");
 		MenuItem item(MenuItem::Submenu, label);
 		item.setSubmenu(menu.release());
-		tomenu.add(item);
+		add(item);
 	}
 
 	// Handle normal TOC
 	cit = toc_list.find("tableofcontents");
 	if (cit == end) {
-		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command,
+		addWithStatusCheck(MenuItem(MenuItem::Command,
 				    qt_("No Table of contents"),
 				    FuncRequest()));
 	} else {
-		expandToc2(tomenu, cit->second, 0, cit->second.size(), 0);
+		expandToc2(cit->second, 0, cit->second.size(), 0);
 	}
 }
 
 
-void expandPasteRecent(Menu & tomenu)
+void Menu::expandPasteRecent()
 {
 	vector<docstring> const sel = cap::availableSelections();
 
@@ -947,13 +948,13 @@ void expandPasteRecent(Menu & tomenu)
 	vector<docstring>::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
-		tomenu.add(MenuItem(MenuItem::Command, toqstr(*cit),
+		add(MenuItem(MenuItem::Command, toqstr(*cit),
 				    FuncRequest(LFUN_PASTE, convert<string>(index))));
 	}
 }
 
 
-void expandToolbars(Menu & tomenu)
+void Menu::expandToolbars()
 {
 	//
 	// extracts the toolbars from the backend
@@ -974,16 +975,16 @@ void expandToolbars(Menu & tomenu)
 		// in the case of auto.
 		if (cit->flags & ToolbarInfo::AUTO)
 			label += qt_(" (auto)");
-		tomenu.add(MenuItem(MenuItem::Command, label,
+		add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name + " allowauto")));
 	}
 }
 
 
-void expandBranches(Menu & tomenu, Buffer const * buf)
+void Menu::expandBranches(Buffer const * buf)
 {
 	if (!buf) {
-		tomenu.add(MenuItem(MenuItem::Command,
+		add(MenuItem(MenuItem::Command,
 				    qt_("No Document Open!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
@@ -991,7 +992,7 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 
 	BufferParams const & params = buf->masterBuffer()->params();
 	if (params.branchlist().empty()) {
-		tomenu.add(MenuItem(MenuItem::Command,
+		add(MenuItem(MenuItem::Command,
 				    qt_("No Branch in Document!"),
 				    FuncRequest(LFUN_NOACTION)));
 		return;
@@ -1004,14 +1005,11 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 		docstring label = cit->getBranch();
 		if (ii < 10)
 			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
-		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->getBranch())));
 	}
 }
-
-
-} // namespace anon
 
 
 void Menus::expand(Menu const & frommenu, Menu & tomenu,
@@ -1024,58 +1022,58 @@ void Menus::expand(Menu const & frommenu, Menu & tomenu,
 	     cit != frommenu.end() ; ++cit) {
 		switch (cit->kind()) {
 		case MenuItem::Lastfiles:
-			expandLastfiles(tomenu);
+			tomenu.expandLastfiles();
 			break;
 
 		case MenuItem::Documents:
-			expandDocuments(tomenu);
+			tomenu.expandDocuments();
 			break;
 
 		case MenuItem::Bookmarks:
-			expandBookmarks(tomenu);
+			tomenu.expandBookmarks();
 			break;
 
 		case MenuItem::ImportFormats:
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
-			expandFormats(cit->kind(), tomenu, buf);
+			tomenu.expandFormats(cit->kind(), buf);
 			break;
 
 		case MenuItem::CharStyles:
-			expandFlexInsert(tomenu, buf, "charstyle");
+			tomenu.expandFlexInsert(buf, "charstyle");
 			break;
 
 		case MenuItem::Custom:
-			expandFlexInsert(tomenu, buf, "custom");
+			tomenu.expandFlexInsert(buf, "custom");
 			break;
 
 		case MenuItem::Elements:
-			expandFlexInsert(tomenu, buf, "element");
+			tomenu.expandFlexInsert(buf, "element");
 			break;
 
 		case MenuItem::FloatListInsert:
-			expandFloatListInsert(tomenu, buf);
+			tomenu.expandFloatListInsert(buf);
 			break;
 
 		case MenuItem::FloatInsert:
-			expandFloatInsert(tomenu, buf);
+			tomenu.expandFloatInsert(buf);
 			break;
 
 		case MenuItem::PasteRecent:
-			expandPasteRecent(tomenu);
+			tomenu.expandPasteRecent();
 			break;
 
 		case MenuItem::Toolbars:
-			expandToolbars(tomenu);
+			tomenu.expandToolbars();
 			break;
 
 		case MenuItem::Branches:
-			expandBranches(tomenu, buf);
+			tomenu.expandBranches(buf);
 			break;
 
 		case MenuItem::Toc:
-			expandToc(tomenu, buf);
+			tomenu.expandToc(buf);
 			break;
 
 		case MenuItem::Submenu: {
