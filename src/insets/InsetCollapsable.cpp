@@ -896,4 +896,16 @@ bool InsetCollapsable::undefined() const
 }
 
 
+docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
+	int y) const
+{
+	if (geometry() != NoButton) {
+		Dimension dim = dimensionCollapsed();
+		if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
+			return docstring();
+	}
+
+	return InsetText::contextMenu(bv, x, y);
+}
+
 } // namespace lyx

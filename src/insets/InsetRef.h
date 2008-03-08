@@ -71,6 +71,8 @@ public:
 	void updateLabels(ParIterator const & it);
 	///
 	void addToToc(ParConstIterator const &) const;
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 protected:
 	///
 	InsetRef(InsetRef const &);

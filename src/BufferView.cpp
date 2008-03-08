@@ -531,8 +531,7 @@ docstring BufferView::contextMenu(int x, int y) const
 	if (covering_inset)
 		return covering_inset->contextMenu(*this, x, y);
 
-	// FIXME: Do something more elaborate here.
-	return from_ascii("edit");
+	return buffer_.inset().contextMenu(*this, x, y);
 }
 
 

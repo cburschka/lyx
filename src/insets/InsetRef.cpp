@@ -183,6 +183,13 @@ void InsetRef::addToToc(ParConstIterator const & cpit) const
 }
 
 
+docstring InsetRef::contextMenu(BufferView const &, int, int) const
+{
+	// FIXME: find a way to create a menu with "Goto label" inside.
+	return docstring();
+}
+
+
 void InsetRef::validate(LaTeXFeatures & features) const
 {
 	if (getCmdName() == "vref" || getCmdName() == "vpageref")
