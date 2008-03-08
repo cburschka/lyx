@@ -20,7 +20,6 @@
 
 #include "Action.h"
 #include "GuiApplication.h"
-#include "GuiPopupMenu.h"
 #include "GuiView.h"
 
 #include "BranchList.h"
@@ -32,18 +31,19 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "Format.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "KeyMap.h"
-#include "Session.h"
+#include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h" // for lastfiles
 #include "LyXFunc.h"
-#include "Lexer.h"
 #include "Paragraph.h"
+#include "qt_helpers.h"
+#include "Session.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
-
-#include "frontends/Application.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -51,13 +51,16 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include "qt_helpers.h"
-
 #include <QCursor>
+#include <QHash>
 #include <QMenuBar>
+#include <QString>
+
+#include <boost/shared_ptr.hpp>
 
 #include <algorithm>
 #include <ostream>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;
@@ -68,6 +71,228 @@ namespace frontend {
 
 namespace {
 
+// MacOSX specific stuff is at the end.
+
+class Menu;
+
+///
+class MenuItem {
+public:
+	/// The type of elements that can be in a menu
+	enum Kind {
+		///
+		Command,
+		///
+		Submenu,
+		///
+		Separator,
+		/** This is the list of last opened file,
+		    typically for the File menu. */
+		Lastfiles,
+		/** This is the list of opened Documents,
+		    typically for the Documents menu. */
+		Documents,
+		/** This is the bookmarks */
+		Bookmarks,
+		///
+		Toc,
+		/** This is a list of viewable formats
+		    typically for the File->View menu. */
+		ViewFormats,
+		/** This is a list of updatable formats
+		    typically for the File->Update menu. */
+		UpdateFormats,
+		/** This is a list of exportable formats
+		    typically for the File->Export menu. */
+		ExportFormats,
+		/** This is a list of importable formats
+		    typically for the File->Export menu. */
+		ImportFormats,
+		/** This is the list of elements available
+		 * for insertion into document. */
+		CharStyles,
+		/** This is the list of user-configurable
+		insets to insert into document */
+		Custom,
+		/** This is the list of XML elements to
+		insert into the document */
+		Elements,
+		/** This is the list of floats that we can
+		    insert a list for. */
+		FloatListInsert,
+		/** This is the list of floats that we can
+		    insert. */
+		FloatInsert,
+		/** This is the list of selections that can
+		    be pasted. */
+		PasteRecent,
+		/** toolbars */
+		Toolbars,
+		/** Available branches in document */
+		Branches
+	};
+
+	explicit MenuItem(Kind kind);
+
+	MenuItem(Kind kind,
+		 QString const & label,
+		 QString const & submenu = QString(),
+		 bool optional = false);
+
+	MenuItem(Kind kind,
+		 QString const & label,
+		 FuncRequest const & func,
+		 bool optional = false);
+
+	/// This one is just to please boost::shared_ptr<>
+	~MenuItem();
+	/// The label of a given menuitem
+	QString label() const;
+	/// The keyboard shortcut (usually underlined in the entry)
+	QString shortcut() const;
+	/// The complete label, with label and shortcut separated by a '|'
+	QString fulllabel() const { return label_;}
+	/// The kind of entry
+	Kind kind() const { return kind_; }
+	/// the action (if relevant)
+	FuncRequest const & func() const { return func_; }
+	/// returns true if the entry should be ommited when disabled
+	bool optional() const { return optional_; }
+	/// returns the status of the lfun associated with this entry
+	FuncStatus const & status() const { return status_; }
+	/// returns the status of the lfun associated with this entry
+	FuncStatus & status() { return status_; }
+	/// returns the status of the lfun associated with this entry
+	void status(FuncStatus const & status) { status_ = status; }
+	///returns the binding associated to this action.
+	QString binding() const;
+	/// the description of the  submenu (if relevant)
+	QString const & submenuname() const { return submenuname_; }
+	/// set the description of the  submenu
+	void submenuname(QString const & name) { submenuname_ = name; }
+	///
+	Menu * submenu() const { return submenu_.get(); }
+	///
+	void setSubmenu(Menu * menu);
+
+private:
+	///
+	Kind kind_;
+	///
+	QString label_;
+	///
+	FuncRequest func_;
+	///
+	QString submenuname_;
+	///
+	bool optional_;
+	///
+	FuncStatus status_;
+	///
+	boost::shared_ptr<Menu> submenu_;
+};
+
+///
+class Menu {
+public:
+	///
+	typedef std::vector<MenuItem> ItemList;
+	///
+	typedef ItemList::const_iterator const_iterator;
+
+	///
+	explicit Menu(QString const & name = QString()) : name_(name) {}
+
+	///
+	void read(Lexer &);
+	///
+	QString const & name() const { return name_; }
+	///
+	bool empty() const { return items_.empty(); }
+	/// Clear the menu content.
+	void clear() { items_.clear(); }
+	///
+	size_t size() const { return items_.size(); }
+	///
+	MenuItem const & operator[](size_t) const;
+	///
+	const_iterator begin() const { return items_.begin(); }
+	///
+	const_iterator end() const { return items_.end(); }
+	
+	// search for func in this menu iteratively, and put menu
+	// names in a stack.
+	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names)
+		const;
+
+private:
+	friend class Menus;
+	///
+	bool hasFunc(FuncRequest const &) const;
+	/// Add the menu item unconditionally
+	void add(MenuItem const & item) { items_.push_back(item); }
+	/// Checks the associated FuncRequest status before adding the
+	/// menu item.
+	void addWithStatusCheck(MenuItem const &);
+	// Check whether the menu shortcuts are unique
+	void checkShortcuts() const;
+	///
+	void expandLastfiles();
+	void expandDocuments();
+	void expandBookmarks();
+	void expandFormats(MenuItem::Kind kind, Buffer const * buf);
+	void expandFloatListInsert(Buffer const * buf);
+	void expandFloatInsert(Buffer const * buf);
+	void expandFlexInsert(Buffer const * buf, std::string s);
+	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
+	void expandToc(Buffer const * buf);
+	void expandPasteRecent();
+	void expandToolbars();
+	void expandBranches(Buffer const * buf);
+
+	ItemList items_;
+	///
+	QString name_;
+};
+
+/// a submenu
+class GuiPopupMenu : public QMenu
+{
+public:
+	///
+	GuiPopupMenu(GuiView * owner, MenuItem const & mi, bool top_level)
+		: QMenu(owner), owner_(owner), top_level_(top_level)
+	{
+		name_ = mi.submenuname();
+		setTitle(label(mi));
+	}
+
+	/// populates the menu or one of its submenu
+	/// This is used as a recursive function
+	void populate(QMenu * qMenu, Menu * menu);
+
+	/// Get a Menu item label from the menu backend
+	QString label(MenuItem const & mi) const;
+
+	void showEvent(QShowEvent * ev)
+	{
+		if (top_level_)
+			guiApp->menus().updateMenu(name_);
+		QMenu::showEvent(ev);
+	}
+
+	bool const top_level_;
+
+	///
+	Menu topLevelMenu_;
+
+	/// our owning view
+	GuiView * owner_;
+	/// the name of this menu
+	QString name_;
+};
+
+
 class MenuNamesEqual
 {
 public:
@@ -77,9 +302,136 @@ private:
 	QString name_;
 };
 
+///
+typedef std::vector<Menu> MenuList;
+///
+typedef MenuList::const_iterator const_iterator;
+///
+typedef MenuList::iterator iterator;
+
+
+void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
+{
+	LYXERR(Debug::GUI, "populating menu " << fromqstr(menu->name()));
+	if (menu->size() == 0) {
+		LYXERR(Debug::GUI, "\tERROR: empty menu " << fromqstr(menu->name()));
+		return;
+	}
+	LYXERR(Debug::GUI, " *****  menu entries " << menu->size());
+
+	Menu::const_iterator m = menu->begin();
+	Menu::const_iterator end = menu->end();
+
+	for (; m != end; ++m) {
+
+		if (m->kind() == MenuItem::Separator) {
+
+			qMenu->addSeparator();
+			LYXERR(Debug::GUI, "adding Menubar Separator");
+
+		} else if (m->kind() == MenuItem::Submenu) {
+
+			LYXERR(Debug::GUI, "** creating New Sub-Menu "
+				<< fromqstr(label(*m)));
+			QMenu * subMenu = qMenu->addMenu(label(*m));
+			populate(subMenu, m->submenu());
+
+		} else { // we have a MenuItem::Command
+
+			LYXERR(Debug::GUI, "creating Menu Item "
+				<< fromqstr(m->label()));
+
+			Action * action = new Action(*owner_,
+				QIcon(), label(*m), m->func(), QString());
+			qMenu->addAction(action);
+		}
+	}
+}
+
+
+QString GuiPopupMenu::label(MenuItem const & mi) const
+{
+	QString label = mi.label();
+	label.replace("&", "&&");
+
+	QString shortcut = mi.shortcut();
+	if (!shortcut.isEmpty()) {
+		int pos = label.indexOf(shortcut);
+		if (pos != -1)
+			//label.insert(pos, 1, char_type('&'));
+			label.replace(pos, 0, "&");
+	}
+
+	QString const binding = mi.binding();
+	if (!binding.isEmpty())
+		label += '\t' + binding;
+
+	return label;
+}
+
 } // namespace anon
 
-// MacOSX specific stuff is at the end.
+struct Menus::Impl {
+	///
+	void add(Menu const &);
+	///
+	bool hasMenu(QString const &) const;
+	///
+	Menu & getMenu(QString const &);
+	///
+	Menu const & getMenu(QString const &) const;
+	///
+	bool empty() const { return menulist_.empty(); }
+	/** This defines a menu whose entries list the FuncRequests
+	    that will be removed by expand() in other menus. This is
+	    used by the Qt/Mac code
+	*/
+	void setSpecialMenu(Menu const & menu) { specialmenu_ = menu; }
+	///
+	Menu const & specialMenu() { return specialmenu_; }
+
+	/// Expands some special entries of the menu
+	/** The entries with the following kind are expanded to a
+	    sequence of Command MenuItems: Lastfiles, Documents,
+	    ViewFormats, ExportFormats, UpdateFormats, Branches
+	*/
+	void expand(Menu const & frommenu, Menu & tomenu,
+		    Buffer const *) const;
+	///
+	const_iterator begin() const { return menulist_.begin(); }
+	///
+	iterator begin() { return menulist_.begin(); }
+	///
+	const_iterator end() const { return menulist_.end(); }
+	///
+	iterator end() { return menulist_.end(); }
+
+	///
+	MenuList menulist_;
+	///
+	Menu menubar_;
+	///
+	Menu specialmenu_;
+
+	/// Initialize specific MACOS X menubar
+	void macxMenuBarInit(GuiView * view);
+
+	typedef QHash<QString, GuiPopupMenu *> NameMap;
+
+	/// name to menu for \c menu() method.
+	NameMap name_map_;
+};
+
+
+Menus::Menus(): d(new Impl) {}
+
+
+bool Menus::searchMenu(FuncRequest const & func,
+	vector<docstring> & names) const
+{
+	return d->menubar_.searchMenu(func, names);
+}
+
 
 void Menus::fillMenuBar(GuiView * view)
 {
@@ -91,20 +443,20 @@ void Menus::fillMenuBar(GuiView * view)
 	macxMenuBarInit(view);
 #endif
 
-	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(getMenubar().name()));
+	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
 
-	if (getMenubar().size() == 0) {
+	if (d->menubar_.size() == 0) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
-			<< fromqstr(getMenubar().name()));
+			<< fromqstr(d->menubar_.name()));
 		return;
 	}
 	else {
 		LYXERR(Debug::GUI, "menu bar entries "
-			<< getMenubar().size());
+			<< d->menubar_.size());
 	}
 
 	Menu menu;
-	expand(getMenubar(), menu, view->buffer());
+	d->expand(d->menubar_, menu, view->buffer());
 
 	Menu::const_iterator m = menu.begin();
 	Menu::const_iterator end = menu.end();
@@ -120,24 +472,48 @@ void Menus::fillMenuBar(GuiView * view)
 			<< " is a submenu named " << fromqstr(m->submenuname()));
 
 		QString name = m->submenuname();
-		if (!hasMenu(name)) {
+		if (!d->hasMenu(name)) {
 			LYXERR(Debug::GUI, "\tERROR: " << fromqstr(name)
 				<< " submenu has no menu!");
 			continue;
 		}
 
-		GuiPopupMenu * qMenu = new GuiPopupMenu(view, *m, true);
-		view->menuBar()->addMenu(qMenu);
+		GuiPopupMenu * qmenu = new GuiPopupMenu(view, *m, true);
+		view->menuBar()->addMenu(qmenu);
 
-		name_map_[name] = qMenu;
+		d->name_map_[name] = qmenu;
 	}
+}
+
+
+void Menus::updateMenu(QString const & name)
+{
+	GuiPopupMenu * qmenu = d->name_map_[name];
+	LYXERR(Debug::GUI, "GuiPopupMenu::updateView()"
+		<< "\tTriggered menu: " << fromqstr(qmenu->name_));
+	qmenu->clear();
+
+	if (qmenu->name_.isEmpty())
+		return;
+
+	// Here, We make sure that theLyXFunc points to the correct LyXView.
+	theLyXFunc().setLyXView(qmenu->owner_);
+
+	Menu const & fromLyxMenu = d->getMenu(qmenu->name_);
+	d->expand(fromLyxMenu, qmenu->topLevelMenu_, qmenu->owner_->buffer());
+
+	if (!d->hasMenu(qmenu->topLevelMenu_.name())) {
+		LYXERR(Debug::GUI, "\tWARNING: menu seems empty"
+			<< fromqstr(qmenu->topLevelMenu_.name()));
+	}
+	qmenu->populate(qmenu, &qmenu->topLevelMenu_);
 }
 
 
 QMenu * Menus::menu(QString const & name)
 {
 	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
-	GuiPopupMenu * menu = name_map_.value(name, 0);
+	GuiPopupMenu * menu = d->name_map_.value(name, 0);
 	if (!menu)
 		LYXERR0("resquested context menu not found: " << fromqstr(name));
 	return menu;
@@ -168,7 +544,7 @@ QMenu * Menus::menu(QString const & name)
   focus. (JMarc)
 */
 
-void Menus::macxMenuBarInit(GuiView * view)
+void Menus::Impl::macxMenuBarInit(GuiView * view)
 {
 	// The Mac menubar initialisation must be done only once!
 	static bool done = false;
@@ -1012,7 +1388,7 @@ void Menu::expandBranches(Buffer const * buf)
 }
 
 
-void Menus::expand(Menu const & frommenu, Menu & tomenu,
+void Menus::Impl::expand(Menu const & frommenu, Menu & tomenu,
 			 Buffer const * buf) const
 {
 	if (!tomenu.empty())
@@ -1135,17 +1511,17 @@ void Menus::read(Lexer & lex)
 	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case md_menubar:
-			menubar_.read(lex);
+			d->menubar_.read(lex);
 			break;
 		case md_menu: {
 			lex.next(true);
 			QString const name = toqstr(lex.getDocString());
-			if (hasMenu(name)) {
-				getMenu(name).read(lex);
+			if (d->hasMenu(name)) {
+				d->getMenu(name).read(lex);
 			} else {
 				Menu menu(name);
 				menu.read(lex);
-				add(menu);
+				d->add(menu);
 			}
 			break;
 		}
@@ -1162,19 +1538,19 @@ void Menus::read(Lexer & lex)
 }
 
 
-void Menus::add(Menu const & menu)
+void Menus::Impl::add(Menu const & menu)
 {
 	menulist_.push_back(menu);
 }
 
 
-bool Menus::hasMenu(QString const & name) const
+bool Menus::Impl::hasMenu(QString const & name) const
 {
 	return find_if(begin(), end(), MenuNamesEqual(name)) != end();
 }
 
 
-Menu const & Menus::getMenu(QString const & name) const
+Menu const & Menus::Impl::getMenu(QString const & name) const
 {
 	const_iterator cit = find_if(begin(), end(), MenuNamesEqual(name));
 	if (cit == end())
@@ -1184,19 +1560,13 @@ Menu const & Menus::getMenu(QString const & name) const
 }
 
 
-Menu & Menus::getMenu(QString const & name)
+Menu & Menus::Impl::getMenu(QString const & name)
 {
 	iterator it = find_if(begin(), end(), MenuNamesEqual(name));
 	if (it == end())
 		lyxerr << "No submenu named " << fromqstr(name) << endl;
 	BOOST_ASSERT(it != end());
 	return (*it);
-}
-
-
-Menu const & Menus::getMenubar() const
-{
-	return menubar_;
 }
 
 

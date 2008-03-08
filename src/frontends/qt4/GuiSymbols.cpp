@@ -20,6 +20,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Encoding.h"
+#include "FuncRequest.h"
 
 #include "support/gettext.h"
 

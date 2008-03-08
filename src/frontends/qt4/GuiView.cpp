@@ -37,6 +37,7 @@
 #include "Cursor.h"
 #include "ErrorList.h"
 #include "Format.h"
+#include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
 #include "Intl.h"

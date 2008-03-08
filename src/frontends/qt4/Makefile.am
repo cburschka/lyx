@@ -98,7 +98,6 @@ SOURCEFILES = \
 	GuiNote.cpp \
 	GuiPainter.cpp \
 	GuiParagraph.cpp \
-	GuiPopupMenu.cpp \
 	GuiPrefs.cpp \
 	GuiPrint.cpp \
 	GuiRef.cpp \
@@ -150,6 +149,7 @@ NOMOCHEADER = \
 	GuiPainter.h \
 	GuiToolbars.h \
 	LaTeXHighlighter.h \
+	Menus.h \
 	qt_helpers.h
 
 MOCHEADER = \
@@ -189,7 +189,6 @@ MOCHEADER = \
 	GuiNomencl.h \
 	GuiNote.h \
 	GuiParagraph.h \
-	GuiPopupMenu.h \
 	GuiPrefs.h \
 	GuiPrint.h \
 	GuiRef.h \
@@ -216,7 +215,6 @@ MOCHEADER = \
 	InsertTableWidget.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
-	Menus.h \
 	PanelStack.h \
 	TocModel.h \
 	TocWidget.h \

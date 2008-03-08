@@ -658,7 +658,7 @@ void GuiApplication::readMenus(Lexer & lex)
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
-	return menus().getMenubar().searchMenu(func, names);
+	return menus().searchMenu(func, names);
 }
 
 
