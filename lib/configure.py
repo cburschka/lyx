@@ -390,6 +390,9 @@ def checkConverterEntries():
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
         rc_entry = [ r'\converter latex      rtf        "%%"	"needaux"' ])
     #
+    checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
+        rc_entry = [ r'\converter rtf      html        "%%"	""' ])
+    #
     checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
     #
