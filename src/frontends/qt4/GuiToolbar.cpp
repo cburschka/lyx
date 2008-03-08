@@ -80,23 +80,23 @@ namespace frontend {
 namespace {
 
 struct PngMap {
-	char const * key;
-	char const * value;
+	QString key;
+	QString value;
 };
 
 
 bool operator<(PngMap const & lhs, PngMap const & rhs)
 {
-		return strcmp(lhs.key, rhs.key) < 0;
+		return lhs.key < rhs.key;
 }
 
 
 class CompareKey {
 public:
-	CompareKey(string const & name) : name_(name) {}
+	CompareKey(QString const & name) : name_(name) {}
 	bool operator()(PngMap const & other) const { return other.key == name_; }
 private:
-	string const name_;
+	QString const name_;
 };
 
 
@@ -140,7 +140,7 @@ PngMap sorted_png_map[] = {
 size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
 
 
-string const find_png(string const & name)
+QString findPng(QString const & name)
 {
 	PngMap const * const begin = sorted_png_map;
 	PngMap const * const end = begin + nr_sorted_png_map;
@@ -148,29 +148,30 @@ string const find_png(string const & name)
 
 	PngMap const * const it = find_if(begin, end, CompareKey(name));
 
-	string png_name;
-	if (it != end)
+	QString png_name;
+	if (it != end) {
 		png_name = it->value;
-	else {
-		png_name = subst(name, "_", "underscore");
-		png_name = subst(png_name, ' ', '_');
+	} else {
+		png_name = name;
+		png_name.replace('_', "underscore");
+		png_name.replace(' ', '_');
 
 		// This way we can have "math-delim { }" on the toolbar.
-		png_name = subst(png_name, "(", "lparen");
-		png_name = subst(png_name, ")", "rparen");
-		png_name = subst(png_name, "[", "lbracket");
-		png_name = subst(png_name, "]", "rbracket");
-		png_name = subst(png_name, "{", "lbrace");
-		png_name = subst(png_name, "}", "rbrace");
-		png_name = subst(png_name, "|", "bars");
-		png_name = subst(png_name, ",", "thinspace");
-		png_name = subst(png_name, ":", "mediumspace");
-		png_name = subst(png_name, ";", "thickspace");
-		png_name = subst(png_name, "!", "negthinspace");
+		png_name.replace('(', "lparen");
+		png_name.replace(')', "rparen");
+		png_name.replace('[', "lbracket");
+		png_name.replace(']', "rbracket");
+		png_name.replace('{', "lbrace");
+		png_name.replace('}', "rbrace");
+		png_name.replace('|', "bars");
+		png_name.replace(',', "thinspace");
+		png_name.replace(':', "mediumspace");
+		png_name.replace(';', "thickspace");
+		png_name.replace('!', "negthinspace");
 	}
 
-	LYXERR(Debug::GUI, "find_png(" << name << ")\n"
-		<< "Looking for math PNG called \"" << png_name << '"');
+	LYXERR(Debug::GUI, "findPng(" << fromqstr(name) << ")\n"
+		<< "Looking for math PNG called \"" << fromqstr(png_name) << '"');
 	return png_name;
 }
 
@@ -182,36 +183,36 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 {
 	initializeResources();
 	QPixmap pm;
-	string name1;
-	string name2;
-	string path;
-	string fullname;
-
+	QString name1;
+	QString name2;
+	QString path;
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty()) {
 			path = "math/";
-			name1 = find_png(to_utf8(f.argument()).substr(1));
+			name1 = findPng(toqstr(f.argument()).mid(1));
 		}
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
 		path = "math/";
-		name1 = find_png(to_utf8(f.argument()));
+		name1 = findPng(toqstr(f.argument()));
 		break;
 	case LFUN_CALL:
 		path = "commands/";
-		name1 = to_utf8(f.argument());
+		name1 = toqstr(f.argument());
 		break;
 	default:
-		name2 = lyxaction.getActionName(f.action);
+		name2 = toqstr(lyxaction.getActionName(f.action));
 		name1 = name2;
 
-		if (!f.argument().empty())
-			name1 = subst(name2 + ' ' + to_utf8(f.argument()), ' ', '_');
+		if (!f.argument().empty()) {
+			name1 = name2 + ' ' + toqstr(f.argument());
+			name1.replace(' ', '_');
+		}
 	}
 
-	fullname = libFileSearch("images/" + path, name1, "png").absFilename();
+	string fullname = libFileSearch("images/" + path, name1, "png").absFilename();
 	if (pm.load(toqstr(fullname)))
 		return pm;
 
@@ -219,10 +220,10 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 	if (pm.load(toqstr(fullname)))
 		return pm;
 
-	if (pm.load(":/images/" + toqstr(path + name1) + ".png"))
+	if (pm.load(":/images/" + path + name1 + ".png"))
 		return pm;
 
-	if (pm.load(":/images/" + toqstr(path + name2) + ".png"))
+	if (pm.load(":/images/" + path + name2 + ".png"))
 		return pm;
 
 	LYXERR(Debug::GUI, "Cannot find icon for command \""
@@ -245,11 +246,13 @@ class FilterItemDelegate : public QAbstractItemDelegate {
 public:
 	///
 	explicit FilterItemDelegate(QObject * parent = 0)
-		: QAbstractItemDelegate(parent) {}
+		: QAbstractItemDelegate(parent)
+	{}
 	
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
-		QModelIndex const & index) const {
+		QModelIndex const & index) const
+	{
 		QComboBox * combo = static_cast<QComboBox *>(parent());
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		
@@ -326,7 +329,8 @@ public:
 	
 	///
 	QSize sizeHint(QStyleOptionViewItem const & option,
-		QModelIndex const & index) const {
+		QModelIndex const & index) const
+	{
 		QComboBox * combo = static_cast<QComboBox *>(parent());
 
 		QStyleOptionMenuItem opt = getStyleOption(option, index);

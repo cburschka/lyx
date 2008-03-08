@@ -19,11 +19,8 @@
 #include "qt_helpers.h" // for LanguagePair
 #include "Font.h"
 
-#include <vector>
-
 
 namespace lyx {
-
 namespace frontend {
 
 enum FontState {
@@ -40,11 +37,12 @@ enum FontState {
 };
 
 typedef std::pair<QString, FontFamily> FamilyPair;
+typedef std::pair<QString, FontFamily> FamilyPair;
 typedef std::pair<QString, FontSeries> SeriesPair;
 typedef std::pair<QString, FontShape>  ShapePair;
 typedef std::pair<QString, FontSize>   SizePair;
-typedef std::pair<QString, FontState> BarPair;
-typedef std::pair<QString, ColorCode> ColorPair;
+typedef std::pair<QString, FontState>  BarPair;
+typedef std::pair<QString, ColorCode>  ColorPair;
 
 class GuiCharacter : public GuiDialog, public Ui::CharacterUi
 {
@@ -62,13 +60,13 @@ private:
 	/// update
 	void updateContents();
 
-	std::vector<FamilyPair> family;
-	std::vector<SeriesPair> series;
-	std::vector<ShapePair>  shape;
-	std::vector<SizePair>   size;
-	std::vector<BarPair>    bar;
-	std::vector<ColorPair>  color;
-	std::vector<LanguagePair> language;
+	QList<FamilyPair> family;
+	QList<SeriesPair> series;
+	QList<ShapePair>  shape;
+	QList<SizePair>   size;
+	QList<BarPair>    bar;
+	QList<ColorPair>  color;
+	QList<LanguagePair> language;
 
 	///
 	bool initialiseParams(std::string const & data);
@@ -94,7 +92,7 @@ private:
 	///
 	void setColor(ColorCode);
 	///
-	void setLanguage(std::string const &);
+	void setLanguage(QString const &);
 
 	///
 	FontFamily getFamily() const;
@@ -109,7 +107,7 @@ private:
 	///
 	ColorCode getColor() const;
 	///
-	std::string getLanguage() const;
+	QString getLanguage() const;
 
 private:
 	///

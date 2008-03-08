@@ -24,6 +24,7 @@
 
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/foreach.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
@@ -32,12 +33,11 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-#include <QComboBox>
 #include <QCheckBox>
-#include <QPalette>
+#include <QComboBox>
 #include <QLineEdit>
-
-#include <boost/cregex.hpp>
+#include <QPalette>
+#include <QSet>
 
 #include <algorithm>
 #include <fstream>
@@ -47,6 +47,13 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+FileName libFileSearch(QString const & dir, QString const & name,
+				QString const & ext)
+{
+	return support::libFileSearch(fromqstr(dir), fromqstr(name), fromqstr(ext));
+}
+
 namespace frontend {
 
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
@@ -146,7 +153,8 @@ class Sorter
 {
 public:
 #if !defined(USE_WCHAR_T) && defined(__GNUC__)
-	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const {
+	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const
+	{
 		return lhs.first < rhs.first;
 	}
 #else
@@ -157,12 +165,13 @@ public:
 		} catch (...) {
 			loc_ok = false;
 		}
-	};
+	}
 
-	bool operator()(LanguagePair const & lhs,
-			LanguagePair const & rhs) const {
+	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const
+	{
+		//  FIXME: would that be "QString::localeAwareCompare()"?
 		if (loc_ok)
-			return loc_(lhs.first, rhs.first);
+			return loc_(fromqstr(lhs.first), fromqstr(rhs.first));
 		else
 			return lhs.first < rhs.first;
 	}
@@ -176,35 +185,34 @@ private:
 } // namespace anon
 
 
-vector<LanguagePair> const getLanguageData(bool character_dlg)
+QList<LanguagePair> languageData(bool character_dlg)
 {
-	size_t const size = languages.size() + (character_dlg ? 2 : 0);
-
-	vector<LanguagePair> langs(size);
+	size_t const offset = character_dlg ? 2 : 0;
+	vector<LanguagePair> langs(languages.size() + offset);
 
 	if (character_dlg) {
-		langs[0].first = _("No change");
+		langs[0].first = qt_("No change");
 		langs[0].second = "ignore";
-		langs[1].first = _("Reset");
+		langs[1].first = qt_("Reset");
 		langs[1].second = "reset";
 	}
 
-	size_t i = character_dlg ? 2 : 0;
-	for (Languages::const_iterator cit = languages.begin();
-	     cit != languages.end(); ++cit) {
-		langs[i].first  = _(cit->second.display());
-		langs[i].second = cit->second.lang();
-		++i;
+	Languages::const_iterator it = languages.begin();
+	for (size_t i = 0; i != languages.size(); ++i, ++it) {
+		langs[i + offset].first  = qt_(it->second.display());
+		langs[i + offset].second = toqstr(it->second.lang());
 	}
 
 	// Don't sort "ignore" and "reset"
-	vector<LanguagePair>::iterator begin = character_dlg ?
-		langs.begin() + 2 : langs.begin();
-
+	vector<LanguagePair>::iterator begin = langs.begin() + offset;
 	sort(begin, langs.end(), Sorter());
 
-	return langs;
+	QList<LanguagePair> list;
+	foreach (LanguagePair const & l, langs)
+		list.append(l);
+	return list;
 }
+
 
 void rescanTexStyles()
 {
@@ -223,27 +231,29 @@ void rescanTexStyles()
 }
 
 
-void getTexFileList(string const & filename, vector<string> & list)
+QStringList texFileList(QString const & filename)
 {
-	list.clear();
-	FileName const file = libFileSearch("", filename);
+	QStringList list;
+	FileName const file = libFileSearch(QString(), filename);
 	if (file.empty())
-		return;
+		return list;
 
 	// FIXME Unicode.
 	vector<docstring> doclist = 
 		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
 
 	// Normalise paths like /foo//bar ==> /foo/bar
-	boost::RegEx regex("/{2,}");
-	vector<docstring>::iterator it  = doclist.begin();
-	vector<docstring>::iterator end = doclist.end();
-	for (; it != end; ++it)
-		list.push_back(regex.Merge(to_utf8(*it), "/"));
+	QSet<QString> set;
+	for (size_t i = 0; i != doclist.size(); ++i) {
+		QString file = toqstr(doclist[i]);
+		while (file.contains("//"))
+			file.replace("//", "/");
+		if (!file.isEmpty())
+			set.insert(file);
+	}
 
-	// remove empty items and duplicates
-	list.erase(remove(list.begin(), list.end(), ""), list.end());
-	eliminate_duplicates(list);
+	// remove duplicates
+	return QList<QString>::fromSet(set);
 }
 
 
@@ -262,6 +272,34 @@ QString onlyFilename(const QString & str)
 QString onlyPath(const QString & str)
 {
 	return toqstr(support::onlyPath(fromqstr(str)));
+}
+
+
+QString changeExtension(QString const & oldname, QString const & ext)
+{
+	return toqstr(support::changeExtension(fromqstr(oldname), fromqstr(ext)));
+}
+
+/// Remove the extension from \p name
+QString removeExtension(QString const & name)
+{
+	return toqstr(support::removeExtension(fromqstr(name)));
+}
+
+/** Add the extension \p ext to \p name.
+ Use this instead of changeExtension if you know that \p name is without
+ extension, because changeExtension would wrongly interpret \p name if it
+ contains a dot.
+ */
+QString addExtension(QString const & name, QString const & ext)
+{
+	return toqstr(support::addExtension(fromqstr(name), fromqstr(ext)));
+}
+
+/// Return the extension of the file (not including the .)
+QString getExtension(QString const & name)
+{
+	return toqstr(support::getExtension(fromqstr(name)));
 }
 
 } // namespace lyx

@@ -1196,7 +1196,7 @@ void GuiView::openDocument(string const & fname)
 static bool import(GuiView * lv, FileName const & filename,
 	string const & format, ErrorList & errorList)
 {
-	FileName const lyxfile(changeExtension(filename.absFilename(), ".lyx"));
+	FileName const lyxfile(support::changeExtension(filename.absFilename(), ".lyx"));
 
 	string loader_format;
 	vector<string> loaders = theConverters().loaders();
@@ -1207,7 +1207,7 @@ static bool import(GuiView * lv, FileName const & filename,
 				continue;
 
 			string const tofile =
-				changeExtension(filename.absFilename(),
+				support::changeExtension(filename.absFilename(),
 				formats.extension(*it));
 			if (!theConverters().convert(0, filename, FileName(tofile),
 				filename, format, *it, errorList))
@@ -1238,7 +1238,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		lv->setBuffer(b);
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename.absFilename()
-			: changeExtension(filename.absFilename(),
+			: support::changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
 		lv->view()->insertPlaintextFile(FileName(filename2), as_paragraphs);
 		theLyXFunc().setLyXView(lv);
@@ -1301,7 +1301,7 @@ void GuiView::importDocument(string const & argument)
 	// get absolute path of file
 	FileName const fullname(makeAbsPath(filename));
 
-	FileName const lyxfile(changeExtension(fullname.absFilename(), ".lyx"));
+	FileName const lyxfile(support::changeExtension(fullname.absFilename(), ".lyx"));
 
 	// Check if the document already is open
 	Buffer * buf = theBufferList().getBuffer(lyxfile.absFilename());

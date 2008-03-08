@@ -35,6 +35,7 @@
 #include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/foreach.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -76,13 +77,6 @@ namespace frontend {
 // Browser Helpers
 //
 /////////////////////////////////////////////////////////////////////
-
-FileName libFileSearch(QString const & dir, QString const & name,
-				QString const & ext = QString())
-{
-	return support::libFileSearch(fromqstr(dir), fromqstr(name), fromqstr(ext));
-}
-
 
 /** Launch a file dialog and return the chosen file.
 	filename: a suggested filename.
@@ -144,8 +138,8 @@ QString browseLibFile(QString const & dir,
 
 	// remove the extension if it is the default one
 	QString noextresult;
-	if (toqstr(getExtension(fromqstr(result))) == ext)
-		noextresult = toqstr(removeExtension(fromqstr(result)));
+	if (getExtension(result) == ext)
+		noextresult = removeExtension(result);
 	else
 		noextresult = result;
 
@@ -216,15 +210,12 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 
 namespace frontend {
 
-template<class A>
-static size_t findPos_helper(vector<A> const & vec, A const & val)
+static int findPos_helper(QStringList const & vec, QString const & val)
 {
-	typedef typename vector<A>::const_iterator Cit;
-
-	Cit it = find(vec.begin(), vec.end(), val);
-	if (it == vec.end())
-		return 0;
-	return distance(vec.begin(), it);
+	for (int i = 0; i != vec.size(); ++i)
+		if (vec[i] == val)
+			return i;
+	return 0;
 }
 
 
@@ -1630,13 +1621,9 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	vector<LanguagePair> const langs = getLanguageData(false);
-	vector<LanguagePair>::const_iterator lit  = langs.begin();
-	vector<LanguagePair>::const_iterator lend = langs.end();
-	lang_.clear();
-	for (; lit != lend; ++lit) {
-		defaultLanguageCO->addItem(toqstr(lit->first));
-		lang_.push_back(lit->second);
+	foreach (LanguagePair const & lpair, languageData(false)) {
+		defaultLanguageCO->addItem(lpair.first);
+		lang_.append(lpair.second);
 	}
 }
 
@@ -1654,7 +1641,7 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_package = fromqstr(languagePackageED->text());
 	rc.language_command_begin = fromqstr(startCommandED->text());
 	rc.language_command_end = fromqstr(endCommandED->text());
-	rc.default_language = lang_[defaultLanguageCO->currentIndex()];
+	rc.default_language = fromqstr(lang_[defaultLanguageCO->currentIndex()]);
 }
 
 
@@ -1675,7 +1662,7 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 
-	int const pos = int(findPos_helper(lang_, rc.default_language));
+	int const pos = findPos_helper(lang_, toqstr(rc.default_language));
 	defaultLanguageCO->setCurrentIndex(pos);
 }
 

@@ -49,13 +49,10 @@
 
 #include "frontends/alert.h"
 
-#include <boost/bind.hpp>
-
 #include <QCloseEvent>
 #include <QScrollBar>
 #include <QTextCursor>
 
-#include <algorithm>
 #include <sstream>
 
 using namespace std;
@@ -63,17 +60,6 @@ using namespace lyx::support;
 
 
 namespace {
-///
-template<class Pair>
-vector<typename Pair::second_type> const
-getSecond(vector<Pair> const & pr)
-{
-	 vector<typename Pair::second_type> tmp(pr.size());
-	 transform(pr.begin(), pr.end(), tmp.begin(),
-					 boost::bind(&Pair::second, _1));
-	 return tmp;
-}
-
 
 char const * const tex_graphics[] =
 {
@@ -519,8 +505,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document", qt_("Document Settings")), current_id_(0)
 {
 	setupUi(this);
-	
-	lang_ = getSecond(getLanguageData(false));
+
+	QList<LanguagePair> langs = languageData(false);	
+	for (int i = 0; i != langs.size(); ++i)
+		lang_.append(langs[i].second);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -797,12 +785,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	// language & quotes
-	vector<LanguagePair> const langs = getLanguageData(false);
-	vector<LanguagePair>::const_iterator lit  = langs.begin();
-	vector<LanguagePair>::const_iterator lend = langs.end();
-	for (; lit != lend; ++lit) {
-		langModule->languageCO->addItem(toqstr(lit->first));
-	}
+
+	QList<LanguagePair>::const_iterator lit  = langs.begin();
+	QList<LanguagePair>::const_iterator lend = langs.end();
+	for (; lit != lend; ++lit)
+		langModule->languageCO->addItem(lit->first);
 
 	// Always put the default encoding in the first position.
 	// It is special because the displayed text is translated.
@@ -818,7 +805,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->quoteStyleCO->addItem(qt_(",,text''"));
 	langModule->quoteStyleCO->addItem(qt_("<<text>>"));
 	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
-
 
 
 	numberingModule = new UiWidget<Ui::NumberingUi>;
@@ -1486,7 +1472,7 @@ void GuiDocument::apply(BufferParams & params)
 	params.quotes_language = lga;
 
 	int const pos = langModule->languageCO->currentIndex();
-	params.language = lyx::languages.getLanguage(lang_[pos]);
+	params.language = lyx::languages.getLanguage(fromqstr(lang_[pos]));
 
 	// numbering
 	if (params.documentClass().hasTocLevels()) {
@@ -1659,11 +1645,10 @@ void GuiDocument::apply(BufferParams & params)
 		params.orientation = ORIENTATION_PORTRAIT;
 
 	// margins
-	params.use_geometry =
-		(!marginsModule->marginCB->isChecked()
-		|| geom_papersize);
+	params.use_geometry = !marginsModule->marginCB->isChecked()
+		|| geom_papersize;
 
-	Ui::MarginsUi const * m(marginsModule);
+	Ui::MarginsUi const * m = marginsModule;
 
 	params.leftmargin = widgetsToLength(m->innerLE, m->innerUnit);
 	params.topmargin = widgetsToLength(m->topLE, m->topUnit);
@@ -1707,17 +1692,12 @@ void GuiDocument::apply(BufferParams & params)
 }
 
 
-/** Return the position of val in the vector if found.
-    If not found, return 0.
- */
-template<class A>
-static size_t findPos(vector<A> const & vec, A const & val)
+static int findPos(QStringList const & vec, QString const & val)
 {
-	typename vector<A>::const_iterator it =
-		find(vec.begin(), vec.end(), val);
-	if (it == vec.end())
-		return 0;
-	return distance(vec.begin(), it);
+	for (int i = 0; i != vec.size(); ++i)
+		if (vec[i] == val)
+			return i;
+	return 0;
 }
 
 
@@ -1773,8 +1753,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 		params.use_bibtopic);
 
 	// language & quotes
-	int const pos = int(findPos(lang_,
-				    params.language->lang()));
+	int const pos = findPos(lang_, toqstr(params.language->lang()));
 	langModule->languageCO->setCurrentIndex(pos);
 
 	langModule->quoteStyleCO->setCurrentIndex(
@@ -2039,7 +2018,7 @@ void GuiDocument::updateAvailableModules()
 	modules_av_model_.clear();
 	vector<modInfoStruct> const modInfoList = getModuleInfo();
 	int const mSize = modInfoList.size();
-	for (int i = 0; i < mSize; ++i) {
+	for (int i = 0; i != mSize; ++i) {
 		modInfoStruct const & modInfo = modInfoList[i];
 		modules_av_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
@@ -2048,11 +2027,11 @@ void GuiDocument::updateAvailableModules()
 
 void GuiDocument::updateSelectedModules() 
 {
-	//and selected ones, too
+	// and selected ones, too
 	modules_sel_model_.clear();
 	vector<modInfoStruct> const selModList = getSelectedModules();
 	int const sSize = selModList.size();
-	for (int i = 0; i < sSize; ++i) {
+	for (int i = 0; i != sSize; ++i) {
 		modInfoStruct const & modInfo = selModList[i];
 		modules_sel_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
 	}
@@ -2119,9 +2098,9 @@ void GuiDocument::setLayoutComboByIDString(std::string const & idString)
 
 bool GuiDocument::isValid()
 {
-	return (validate_listings_params().empty() &&
-		(textLayoutModule->skipCO->currentIndex() != 3 ||
-		 !textLayoutModule->skipLE->text().isEmpty()));
+	return validate_listings_params().empty()
+		&& (textLayoutModule->skipCO->currentIndex() != 3
+			|| !textLayoutModule->skipLE->text().isEmpty());
 }
 
 

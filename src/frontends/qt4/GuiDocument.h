@@ -160,8 +160,8 @@ private:
 
 	GuiSelectionManager * selectionManager;
 
-	// FIXME
-	std::vector<std::string> lang_;
+	///
+	QStringList lang_;
 
 	/// Available modules
 	GuiIdListModel * availableModel() { return &modules_av_model_; }

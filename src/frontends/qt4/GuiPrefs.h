@@ -318,7 +318,7 @@ public:
 	void update(LyXRC const & rc);
 
 private:
-	std::vector<std::string> lang_;
+	QStringList lang_;
 };
 
 

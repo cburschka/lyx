@@ -17,6 +17,7 @@
 
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/foreach.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 
@@ -35,17 +36,16 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-
-static string texFileFromList(string const & file, string const & type)
+static QString texFileFromList(QString const & file, QString const & type)
 {
-	string file_ = file;
+	QString file_ = file;
 	// do we need to add the suffix?
-	if (!(getExtension(file) == type))
+	if (getExtension(file) != type)
 		file_ += '.' + type;
 
-	lyxerr << "Searching for file " << file_ << endl;
+	lyxerr << "Searching for file " << fromqstr(file_) << endl;
 
-	string lstfile = type + "Files.lst";
+	QString lstfile = type + "Files.lst";
 	if (type == "cls")
 		lstfile = "clsFiles.lst";
 	else if (type == "sty")
@@ -54,26 +54,26 @@ static string texFileFromList(string const & file, string const & type)
 		lstfile = "bstFiles.lst";
 	else if (type == "bib")
 		lstfile = "bibFiles.lst";
-	FileName const abslstfile = libFileSearch(string(), lstfile);
+	FileName const abslstfile = libFileSearch(QString(), lstfile);
 	if (abslstfile.empty()) {
-		lyxerr << "File `'" << lstfile << "' not found." << endl;
-		return string();
+		lyxerr << "File `'" << fromqstr(lstfile) << "' not found." << endl;
+		return QString();
 	}
 	// FIXME UNICODE
 	string const allClasses = to_utf8(abslstfile.fileContents("UTF-8"));
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;
-	while ((!contains(classfile, file) ||
-		(support::onlyFilename(classfile) != file)) &&
-		(++count < 1000)) {
+	while ((!contains(classfile, fromqstr(file))
+						|| support::onlyFilename(classfile) != fromqstr(file))
+					&& ++count < 1000) {
 		classfile = token(allClasses, '\n', ++entries);
 	}
 
 	// now we have filename with full path
 	lyxerr << "with full path: " << classfile << endl;
 
-	return classfile;
+	return toqstr(classfile);
 }
 
 
@@ -82,8 +82,8 @@ GuiTexInfo::GuiTexInfo(GuiView & lv)
 {
 	setupUi(this);
 
-	warningPosted = false;
-	activeStyle = ClsType;
+	warningPosted_ = false;
+	activeStyle_ = ClsType;
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
@@ -121,11 +121,13 @@ void GuiTexInfo::rescanClicked()
 
 void GuiTexInfo::viewClicked()
 {
-	size_t const fitem = fileListLW->currentRow();
-	vector<string> const & data = texdata_[activeStyle];
-	string file = data[fitem];
+	// takes advantage of enum order
+	static QString const ext[] = { "cls", "sty", "bst" };
+	int const fitem = fileListLW->currentRow();
+	QStringList const & data = texdata_[activeStyle_];
+	QString file = data[fitem];
 	if (!pathCB->isChecked())
-		file = texFileFromList(data[fitem], fileType(activeStyle));
+		file = texFileFromList(data[fitem], ext[activeStyle_]);
 	viewFile(file);
 }
 
@@ -146,51 +148,51 @@ void GuiTexInfo::enableViewPB()
 
 void GuiTexInfo::updateStyles(TexFileType type)
 {
-	ContentsType & data = texdata_[type];
+	static QString const filenames[] = {
+		"clsFile.lst", "styFiles.lst", "bstFiles.lst"
+	};
 
-	static string filenames[] = { "clsFiles.lst", "styFiles.lst", "bstFiles.lst" };
-	string filename = filenames[type];
+	QString const filename = filenames[type];
 
-	getTexFileList(filename, data);
+	QStringList data = texFileList(filename);
 	if (data.empty()) {
 		// build filelists of all availabe bst/cls/sty-files.
 		// Done through kpsewhich and an external script,
 		// saved in *Files.lst
 		rescanTexStyles();
-		getTexFileList(filename, data);
+		data = texFileList(filename);
 	}
+
 	if (!pathCB->isChecked()) {
-		vector<string>::iterator it1  = data.begin();
-		vector<string>::iterator end1 = data.end();
-		for (; it1 != end1; ++it1)
-			*it1 = support::onlyFilename(*it1);
+		for (int i = 0; i != data.size(); ++i)
+			data[i] = onlyFilename(data[i]);
 	}
 	// sort on filename only (no path)
-	sort(data.begin(), data.end());
+	data.sort();
 
 	fileListLW->clear();
-	ContentsType::const_iterator it  = data.begin();
-	ContentsType::const_iterator end = data.end();
-	for (; it != end; ++it)
-		fileListLW->addItem(toqstr(*it));
+	foreach (QString const & item, data)
+		fileListLW->addItem(item);
 
-	activeStyle = type;
+	activeStyle_ = type;
+	texdata_[type] = data;
 }
 
 
 void GuiTexInfo::updateStyles()
 {
-	updateStyles(activeStyle);
+	updateStyles(activeStyle_);
 }
 
 
-void GuiTexInfo::viewFile(string const & filename) const
+void GuiTexInfo::viewFile(QString const & filename) const
 {
-	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + filename));
+	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + fromqstr(filename)));
 }
 
 
 /// get a class with full path from the list
+/*
 string GuiTexInfo::classOptions(string const & classname) const
 {
 	FileName const filename(texFileFromList(classname, "cls"));
@@ -210,14 +212,7 @@ string GuiTexInfo::classOptions(string const & classname) const
 	}
 	return optionList;
 }
-
-
-string GuiTexInfo::fileType(TexFileType type) const
-{
-	// takes advantage of enum order
-	static string const ext[] = { "cls", "sty", "bst" };
-	return ext[type];
-}
+*/
 
 
 Dialog * createGuiTexInfo(GuiView & lv) { return new GuiTexInfo(lv); }

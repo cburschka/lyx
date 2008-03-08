@@ -133,8 +133,7 @@ void GuiBibtex::browsePressed()
 	if (file.isEmpty())
 		return;
 
-	// FIXME UNICODE
-	QString const filen = toqstr(changeExtension(fromqstr(file), ""));
+	QString const filen = changeExtension(file, "");
 	bool present = false;
 	unsigned int pres = 0;
 
@@ -160,7 +159,7 @@ void GuiBibtex::browseBibPressed()
 	if (file.isEmpty())
 		return;
 
-	QString const f = toqstr(changeExtension(fromqstr(file), ""));
+	QString const f = changeExtension(file, "");
 	bool present = false;
 
 	for (int i = 0; i < add_->bibLW->count(); ++i) {
@@ -213,7 +212,7 @@ void GuiBibtex::addDatabase()
 
 	if (!file.isEmpty()) {
 		add_->bibED->clear();
-		QString const f = toqstr(changeExtension(fromqstr(file), ""));
+		QString const f = changeExtension(file, "");
 		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty()) {
@@ -304,15 +303,11 @@ void GuiBibtex::updateContents()
 
 	add_->bibLW->clear();
 
-	vector<string> bib_str;
-	getBibFiles(bib_str);
-	for (vector<string>::const_iterator it = bib_str.begin();
-		it != bib_str.end(); ++it) {
-		string bibItem(changeExtension(*it, ""));
-		add_->bibLW->addItem(toqstr(bibItem));
-	}
+	QStringList bibfiles = bibFiles();
+	for (int i = 0; i != bibfiles.count(); ++i)
+		add_->bibLW->addItem(changeExtension(bibfiles[i], ""));
 
-	string bibstyle = getStylefile();
+	QString bibstyle = styleFile();
 
 	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
@@ -334,20 +329,18 @@ void GuiBibtex::updateContents()
 
 	styleCB->clear();
 
-	int item_nr(-1);
+	int item_nr = -1;
 
-	vector<string> str;
-	getBibStyles(str);
-	for (vector<string>::const_iterator it = str.begin();
-		it != str.end(); ++it) {
-		string item(changeExtension(*it, ""));
+	QStringList str = bibStyles();
+	for (int i = 0; i != str.count(); ++i) {
+		QString item = changeExtension(str[i], "");
 		if (item == bibstyle)
-			item_nr = int(it - str.begin());
-		styleCB->addItem(toqstr(item));
+			item_nr = i;
+		styleCB->addItem(item);
 	}
 
-	if (item_nr == -1 && !bibstyle.empty()) {
-		styleCB->addItem(toqstr(bibstyle));
+	if (item_nr == -1 && !bibstyle.isEmpty()) {
+		styleCB->addItem(bibstyle);
 		item_nr = styleCB->count() - 1;
 	}
 
@@ -448,41 +441,35 @@ QString GuiBibtex::browseBst(QString const & in_name) const
 }
 
 
-void GuiBibtex::getBibStyles(vector<string> & data) const
+QStringList GuiBibtex::bibStyles() const
 {
-	data.clear();
-
-	getTexFileList("bstFiles.lst", data);
-	// test, if we have a valid list, otherwise run rescan
-	if (data.empty()) {
+	QStringList data = texFileList("bstFiles.lst");
+	// test whether we have a valid list, otherwise run rescan
+	if (data.isEmpty()) {
 		rescanBibStyles();
-		getTexFileList("bstFiles.lst", data);
+		data = texFileList("bstFiles.lst");
 	}
-	vector<string>::iterator it  = data.begin();
-	vector<string>::iterator end = data.end();
-	for (; it != end; ++it)
-		*it = support::onlyFilename(*it);
+	for (int i = 0; i != data.size(); ++i)
+		data[i] = onlyFilename(data[i]);
 	// sort on filename only (no path)
-	sort(data.begin(), data.end());
+	data.sort();
+	return data;
 }
 
 
-void GuiBibtex::getBibFiles(vector<string> & data) const
+QStringList GuiBibtex::bibFiles() const
 {
-	data.clear();
-
-	getTexFileList("bibFiles.lst", data);
-	// test, if we have a valid list, otherwise run rescan
-	if (data.empty()) {
+	QStringList data = texFileList("bibFiles.lst");
+	// test whether we have a valid list, otherwise run rescan
+	if (data.isEmpty()) {
 		rescanBibStyles();
-		getTexFileList("bibFiles.lst", data);
+		data = texFileList("bibFiles.lst");
 	}
-	vector<string>::iterator it  = data.begin();
-	vector<string>::iterator end = data.end();
-	for (; it != end; ++it)
-		*it = support::onlyFilename(*it);
+	for (int i = 0; i != data.size(); ++i)
+		data[i] = onlyFilename(data[i]);
 	// sort on filename only (no path)
-	sort(data.begin(), data.end());
+	data.sort();
+	return data;
 }
 
 
@@ -504,45 +491,48 @@ bool GuiBibtex::bibtotoc() const
 }
 
 
-string const GuiBibtex::getStylefile() const
+QString GuiBibtex::styleFile() const
 {
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
 	biblio::CiteEngine const engine = buffer().params().getEngine();
-	docstring defaultstyle;
+	QString defaultstyle;
 	switch (engine) {
 	case biblio::ENGINE_BASIC:
-		defaultstyle = from_ascii("plain");
+		defaultstyle = "plain";
 		break;
 	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-		defaultstyle = from_ascii("plainnat");
+		defaultstyle = "plainnat";
 		break;
 	case biblio::ENGINE_NATBIB_NUMERICAL:
-		defaultstyle = from_ascii("plainnat");
+		defaultstyle = "plainnat";
 		break;
 	case biblio::ENGINE_JURABIB:
-		defaultstyle = from_ascii("jurabib");
+		defaultstyle = "jurabib";
 		break;
 	}
 
-	docstring bst = params_["options"];
+	QString bst = toqstr(params_["options"]);
 	if (bibtotoc()){
 		// bibstyle exists?
-		if (contains(bst, ',')) {
-			docstring bibtotoc = from_ascii("bibtotoc");
-			bst = split(bst, bibtotoc, ',');
-		} else
-			bst.erase();
+		int pos = bst.indexOf(',');
+		if (pos != -1) {
+			// FIXME: check
+			// docstring bibtotoc = from_ascii("bibtotoc");
+			// bst = split(bst, bibtotoc, ',');
+			bst = bst.mid(pos);	
+		} else {
+			bst.clear();
+		}
 	}
 
 	// propose default style file for new insets
 	// existing insets might have (legally) no bst files
 	// (if the class already provides a style)
-	if (bst.empty() && params_["bibfiles"].empty())
+	if (bst.isEmpty() && params_["bibfiles"].empty())
 		bst = defaultstyle;
 
-	// FIXME UNICODE
-	return to_utf8(bst);
+	return bst;
 }
 
 

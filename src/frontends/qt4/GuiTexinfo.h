@@ -17,9 +17,6 @@
 #include "ui_TexinfoUi.h"
 #include "qt_helpers.h"
 
-#include <map>
-#include <vector>
-
 
 namespace lyx {
 namespace frontend {
@@ -32,7 +29,7 @@ public:
 	///
 	GuiTexInfo(GuiView & lv);
 	/// the file extensions. order matters in GuiTexInfo::fileType()
-	enum TexFileType { ClsType, StyType, BstType };
+	enum TexFileType { ClsType = 0, StyType, BstType, DummyLastType };
 
 public Q_SLOTS:
 	///
@@ -49,14 +46,6 @@ private Q_SLOTS:
 	void enableViewPB();
 
 private:
-	///
-	void updateStyles(TexFileType);
-	///
-	void updateStyles();
-	///
-	bool warningPosted;
-	///
-	TexFileType activeStyle;
 	/// Nothing to initialise in this case.
 	bool initialiseParams(std::string const &) { return true; }
 	///
@@ -68,15 +57,21 @@ private:
 	///
 	void apply() {}
 
-	/// show contents af a file
-	void viewFile(std::string const & filename) const;
-	/// show all classoptions
-	std::string classOptions(std::string const & filename) const;
-	/// return file type as string
-	std::string fileType(TexFileType type) const;
+	///
+	void updateStyles(TexFileType);
+	///
+	void updateStyles();
+	///
+	bool warningPosted_;
+	///
+	TexFileType activeStyle_;
 
-	typedef std::vector<std::string> ContentsType;
-	std::map<TexFileType, ContentsType> texdata_;
+	/// show contents af a file
+	void viewFile(QString const & filename) const;
+	/// show all classoptions
+	//std::string classOptions(std::string const & filename) const;
+
+	QStringList texdata_[DummyLastType];
 };
 
 

@@ -18,13 +18,8 @@
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
 
-#include <string>
-#include <vector>
 
 namespace lyx {
-
-namespace support { class FileFilterList; }
-
 namespace frontend {
 
 class GuiBibtexAddDialog : public QDialog, public Ui::BibtexAddUi
@@ -43,7 +38,7 @@ class GuiBibtex : public GuiCommand, public Ui::BibtexUi
 	Q_OBJECT
 
 public:
-	GuiBibtex(GuiView & lv);
+	explicit GuiBibtex(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -68,14 +63,12 @@ private:
 
 	/// Browse for a .bib file
 	QString browseBib(QString const & in_name) const;
-
 	/// Browse for a .bst file
 	QString browseBst(QString const & in_name) const;
-
 	/// get the list of bst files
-	void getBibStyles(std::vector<std::string> & data) const;
+	QStringList bibStyles() const;
 	/// get the list of bib files
-	void getBibFiles(std::vector<std::string> & data) const;
+	QStringList bibFiles() const;
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
@@ -84,7 +77,7 @@ private:
 	/// should we put the bibliography to the TOC?
 	bool bibtotoc() const;
 	/// which stylefile do we use?
-	std::string const getStylefile() const;
+	QString styleFile() const;
 
 	///
 	GuiBibtexAddDialog * add_;

@@ -27,243 +27,90 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-static vector<ShapePair> const getShapeData()
+static QList<ShapePair> shapeData()
 {
-	vector<ShapePair> shape(6);
-
-	ShapePair pr;
-
-	pr.first = qt_("No change");
-	pr.second = IGNORE_SHAPE;
-	shape[0] = pr;
-
-	pr.first = qt_("Upright");
-	pr.second = UP_SHAPE;
-	shape[1] = pr;
-
-	pr.first = qt_("Italic");
-	pr.second = ITALIC_SHAPE;
-	shape[2] = pr;
-
-	pr.first = qt_("Slanted");
-	pr.second = SLANTED_SHAPE;
-	shape[3] = pr;
-
-	pr.first = qt_("Small Caps");
-	pr.second = SMALLCAPS_SHAPE;
-	shape[4] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = INHERIT_SHAPE;
-	shape[5] = pr;
-
-	return shape;
+	QList<ShapePair> shapes;
+	shapes << ShapePair(qt_("No change"), IGNORE_SHAPE);
+	shapes << ShapePair(qt_("Upright"), UP_SHAPE);
+	shapes << ShapePair(qt_("Italic"), ITALIC_SHAPE);
+	shapes << ShapePair(qt_("Slanted"), SLANTED_SHAPE);
+	shapes << ShapePair(qt_("Small Caps"), SMALLCAPS_SHAPE);
+	shapes << ShapePair(qt_("Reset"), INHERIT_SHAPE);
+	return shapes;
 }
 
 
-static vector<SizePair> const getSizeData()
+static QList<SizePair> sizeData()
 {
-	vector<SizePair> size(14);
-
-	SizePair pr;
-
-	pr.first = qt_("No change");
-	pr.second = FONT_SIZE_IGNORE;
-	size[0] = pr;
-
-	pr.first = qt_("Tiny");
-	pr.second = FONT_SIZE_TINY;
-	size[1] = pr;
-
-	pr.first = qt_("Smallest");
-	pr.second = FONT_SIZE_SCRIPT;
-	size[2] = pr;
-
-	pr.first = qt_("Smaller");
-	pr.second = FONT_SIZE_FOOTNOTE;
-	size[3] = pr;
-
-	pr.first = qt_("Small");
-	pr.second = FONT_SIZE_SMALL;
-	size[4] = pr;
-
-	pr.first = qt_("Normal");
-	pr.second = FONT_SIZE_NORMAL;
-	size[5] = pr;
-
-	pr.first = qt_("Large");
-	pr.second = FONT_SIZE_LARGE;
-	size[6] = pr;
-
-	pr.first = qt_("Larger");
-	pr.second = FONT_SIZE_LARGER;
-	size[7] = pr;
-
-	pr.first = qt_("Largest");
-	pr.second = FONT_SIZE_LARGEST;
-	size[8] = pr;
-
-	pr.first = qt_("Huge");
-	pr.second = FONT_SIZE_HUGE;
-	size[9] = pr;
-
-	pr.first = qt_("Huger");
-	pr.second = FONT_SIZE_HUGER;
-	size[10] = pr;
-
-	pr.first = qt_("Increase");
-	pr.second = FONT_SIZE_INCREASE;
-	size[11] = pr;
-
-	pr.first = qt_("Decrease");
-	pr.second = FONT_SIZE_DECREASE;
-	size[12] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = FONT_SIZE_INHERIT;
-	size[13] = pr;
-
-	return size;
+	QList<SizePair> sizes;
+	sizes << SizePair(qt_("No change"), FONT_SIZE_IGNORE);
+	sizes << SizePair(qt_("Tiny"), FONT_SIZE_TINY);
+	sizes << SizePair(qt_("Smallest"), FONT_SIZE_SCRIPT);
+	sizes << SizePair(qt_("Smaller"), FONT_SIZE_FOOTNOTE);
+	sizes << SizePair(qt_("Small"), FONT_SIZE_SMALL);
+	sizes << SizePair(qt_("Normal"), FONT_SIZE_NORMAL);
+	sizes << SizePair(qt_("Large"), FONT_SIZE_LARGE);
+	sizes << SizePair(qt_("Larger"), FONT_SIZE_LARGER);
+	sizes << SizePair(qt_("Largest"), FONT_SIZE_LARGEST);
+	sizes << SizePair(qt_("Huge"), FONT_SIZE_HUGE);
+	sizes << SizePair(qt_("Huger"), FONT_SIZE_HUGER);
+	sizes << SizePair(qt_("Increase"), FONT_SIZE_INCREASE);
+	sizes << SizePair(qt_("Decrease"), FONT_SIZE_DECREASE);
+	sizes << SizePair(qt_("Reset"), FONT_SIZE_INHERIT);
+	return sizes;
 }
 
 
-static vector<BarPair> const getBarData()
+static QList<BarPair> barData()
 {
-	vector<BarPair> bar(5);
-
-	BarPair pr;
-
-	pr.first = qt_("No change");
-	pr.second = IGNORE;
-	bar[0] = pr;
-
-	pr.first = qt_("Emph");
-	pr.second = EMPH_TOGGLE;
-	bar[1] = pr;
-
-	pr.first = qt_("Underbar");
-	pr.second = UNDERBAR_TOGGLE;
-	bar[2] = pr;
-
-	pr.first = qt_("Noun");
-	pr.second = NOUN_TOGGLE;
-	bar[3] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = INHERIT;
-	bar[4] = pr;
-
-	return bar;
+	QList<BarPair> bars;
+	bars << BarPair(qt_("No change"), IGNORE);
+	bars << BarPair(qt_("Emph"),      EMPH_TOGGLE);
+	bars << BarPair(qt_("Underbar"),  UNDERBAR_TOGGLE);
+	bars << BarPair(qt_("Noun"),      NOUN_TOGGLE);
+	bars << BarPair(qt_("Reset"),     INHERIT);
+	return bars;
 }
 
 
-static vector<ColorPair> const getColorData()
+static QList<ColorPair> colorData()
 {
-	vector<ColorPair> color(11);
-
-	ColorPair pr;
-
-	pr.first = qt_("No change");
-	pr.second = Color_ignore;
-	color[0] = pr;
-
-	pr.first = qt_("No color");
-	pr.second = Color_none;
-	color[1] = pr;
-
-	pr.first = qt_("Black");
-	pr.second = Color_black;
-	color[2] = pr;
-
-	pr.first = qt_("White");
-	pr.second = Color_white;
-	color[3] = pr;
-
-	pr.first = qt_("Red");
-	pr.second = Color_red;
-	color[4] = pr;
-
-	pr.first = qt_("Green");
-	pr.second = Color_green;
-	color[5] = pr;
-
-	pr.first = qt_("Blue");
-	pr.second = Color_blue;
-	color[6] = pr;
-
-	pr.first = qt_("Cyan");
-	pr.second = Color_cyan;
-	color[7] = pr;
-
-	pr.first = qt_("Magenta");
-	pr.second = Color_magenta;
-	color[8] = pr;
-
-	pr.first = qt_("Yellow");
-	pr.second = Color_yellow;
-	color[9] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = Color_inherit;
-	color[10] = pr;
-
-	return color;
+	QList<ColorPair> colors;
+	colors << ColorPair(qt_("No change"), Color_ignore);
+	colors << ColorPair(qt_("No color"), Color_none);
+	colors << ColorPair(qt_("Black"), Color_black);
+	colors << ColorPair(qt_("White"), Color_white);
+	colors << ColorPair(qt_("Red"), Color_red);
+	colors << ColorPair(qt_("Green"), Color_green);
+	colors << ColorPair(qt_("Blue"), Color_blue);
+	colors << ColorPair(qt_("Cyan"), Color_cyan);
+	colors << ColorPair(qt_("Magenta"), Color_magenta);
+	colors << ColorPair(qt_("Yellow"), Color_yellow);
+	colors << ColorPair(qt_("Reset"), Color_inherit);
+	return colors;
 }
 
 
-static vector<SeriesPair> const getSeriesData()
+static QList<SeriesPair> seriesData()
 {
-	vector<SeriesPair> series(4);
-
-	SeriesPair pr;
-
-	pr.first = qt_("No change");
-	pr.second = IGNORE_SERIES;
-	series[0] = pr;
-
-	pr.first = qt_("Medium");
-	pr.second = MEDIUM_SERIES;
-	series[1] = pr;
-
-	pr.first = qt_("Bold");
-	pr.second = BOLD_SERIES;
-	series[2] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = INHERIT_SERIES;
-	series[3] = pr;
-
+	QList<SeriesPair> series;
+	series << SeriesPair(qt_("No change"), IGNORE_SERIES);
+	series << SeriesPair(qt_("Medium"),    MEDIUM_SERIES);
+	series << SeriesPair(qt_("Bold"),      BOLD_SERIES);
+	series << SeriesPair(qt_("Reset"),     INHERIT_SERIES);
 	return series;
 }
 
 
-static vector<FamilyPair> const getFamilyData()
+static QList<FamilyPair> familyData()
 {
-	vector<FamilyPair> family(5);
-
-	FamilyPair pr;
-
-	pr.first = qt_("No change");
-	pr.second = IGNORE_FAMILY;
-	family[0] = pr;
-
-	pr.first = qt_("Roman");
-	pr.second = ROMAN_FAMILY;
-	family[1] = pr;
-
-	pr.first = qt_("Sans Serif");
-	pr.second = SANS_FAMILY;
-	family[2] = pr;
-
-	pr.first = qt_("Typewriter");
-	pr.second = TYPEWRITER_FAMILY;
-	family[3] = pr;
-
-	pr.first = qt_("Reset");
-	pr.second = INHERIT_FAMILY;
-	family[4] = pr;
-
-	return family;
+	QList<FamilyPair> families;
+	families << FamilyPair(qt_("No change"),  IGNORE_FAMILY);
+	families << FamilyPair(qt_("Roman"),      ROMAN_FAMILY);
+	families << FamilyPair(qt_("Sans Serif"), SANS_FAMILY);
+	families << FamilyPair(qt_("Typewriter"), TYPEWRITER_FAMILY);
+	families << FamilyPair(qt_("Reset"),      INHERIT_FAMILY);
+	return families;
 }
 
 
@@ -293,42 +140,42 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	autoapplyCB->setChecked(true);
 #endif
 
-	family = getFamilyData();
-	series = getSeriesData();
-	shape  = getShapeData();
-	size   = getSizeData();
-	bar    = getBarData();
-	color  = getColorData();
-	language = getLanguageData(true);
+	family = familyData();
+	series = seriesData();
+	shape  = shapeData();
+	size   = sizeData();
+	bar    = barData();
+	color  = colorData();
+	language = languageData(true);
 
-	for (vector<FamilyPair>::const_iterator cit = family.begin();
+	for (QList<FamilyPair>::const_iterator cit = family.begin();
 		cit != family.end(); ++cit) {
 		familyCO->addItem(cit->first);
 	}
 
-	for (vector<SeriesPair>::const_iterator cit = series.begin();
+	for (QList<SeriesPair>::const_iterator cit = series.begin();
 		cit != series.end(); ++cit) {
 		seriesCO->addItem(cit->first);
 	}
-	for (vector<ShapePair>::const_iterator cit = shape.begin();
+	for (QList<ShapePair>::const_iterator cit = shape.begin();
 		cit != shape.end(); ++cit) {
 		shapeCO->addItem(cit->first);
 	}
-	for (vector<SizePair>::const_iterator cit = size.begin();
+	for (QList<SizePair>::const_iterator cit = size.begin();
 		cit != size.end(); ++cit) {
 		sizeCO->addItem(cit->first);
 	}
-	for (vector<BarPair>::const_iterator cit = bar.begin();
+	for (QList<BarPair>::const_iterator cit = bar.begin();
 		cit != bar.end(); ++cit) {
 		miscCO->addItem(cit->first);
 	}
-	for (vector<ColorPair>::const_iterator cit = color.begin();
+	for (QList<ColorPair>::const_iterator cit = color.begin();
 		cit != color.end(); ++cit) {
 		colorCO->addItem(cit->first);
 	}
-	for (vector<LanguagePair>::const_iterator cit = language.begin();
+	for (QList<LanguagePair>::const_iterator cit = language.begin();
 		cit != language.end(); ++cit) {
-		langCO->addItem(toqstr(cit->first));
+		langCO->addItem(cit->first);
 	}
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
@@ -376,16 +223,12 @@ void GuiCharacter::change_adaptor()
 }
 
 
-template<class A, class B>
-static int findPos2nd(vector<pair<A, B> > const & vec, B const & val)
+template<class B>
+static int findPos2nd(QList<pair<QString, B> > const & vec, B const & val)
 {
-	typedef typename vector<pair<A, B> >::const_iterator
-		const_iterator;
-
-	for (const_iterator cit = vec.begin(); cit != vec.end(); ++cit)
-		if (cit->second == val)
-			return int(cit - vec.begin());
-
+	for (int i = 0; i != vec.size(); ++i)
+		if (vec[i].second == val)
+			return i;
 	return 0;
 }
 
@@ -566,17 +409,17 @@ void GuiCharacter::setColor(ColorCode val)
 }
 
 
-string GuiCharacter::getLanguage() const
+QString GuiCharacter::getLanguage() const
 {
 	if (reset_lang_)
 		return "reset";
 	if (font_.language())
-		return font_.language()->lang();
+		return toqstr(font_.language()->lang());
 	return "ignore";
 }
 
 
-void GuiCharacter::setLanguage(string const & val)
+void GuiCharacter::setLanguage(QString const & val)
 {
 	if (val == "ignore")
 		font_.setLanguage(ignore_language);
@@ -585,7 +428,7 @@ void GuiCharacter::setLanguage(string const & val)
 		// Ignored in getLanguage, but needed for dispatchParams
 		font_.setLanguage(buffer().params().language);
 	} else {
-		font_.setLanguage(languages.getLanguage(val));
+		font_.setLanguage(languages.getLanguage(fromqstr(val)));
 	}
 }
 

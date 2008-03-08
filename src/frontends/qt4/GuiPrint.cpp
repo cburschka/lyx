@@ -179,7 +179,7 @@ void GuiPrint::applyView()
 bool GuiPrint::initialiseParams(string const &)
 {
 	/// get global printer parameters
-	string const name = changeExtension(buffer().absFileName(),
+	string const name = support::changeExtension(buffer().absFileName(),
 					lyxrc.print_file_extension);
 	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
 

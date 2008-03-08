@@ -17,19 +17,19 @@
 #include "support/qstring_helpers.h"
 #include "support/strfwd.h"
 
-#include <vector>
-
 class QComboBox;
 class QLineEdit;
 class QCheckBox;
 class QString;
 class QWidget;
+template <class T> class QList;
 
 class LengthCombo;
 
 namespace lyx {
 
 namespace support { class FileFilterList; }
+namespace support { class FileName; }
 
 namespace frontend {
 
@@ -71,12 +71,15 @@ QString const qt_(char const * str, const char * comment = 0);
 QString const qt_(std::string const & str);
 
 ///
-typedef std::pair<docstring, std::string> LanguagePair;
+typedef std::pair<QString, QString> LanguagePair;
 
 /** If the caller is the character dialog, add "No change" and "Reset"
 *  to the vector.
 */
-std::vector<LanguagePair> const getLanguageData(bool character_dlg);
+QList<LanguagePair> languageData(bool character_dlg);
+
+support::FileName libFileSearch(QString const & dir, QString const & name,
+				QString const & ext = QString());
 
 /** Wrapper around browseFile which tries to provide a filename
 	relative to relpath.  If the relative path is of the form "foo.txt"
@@ -103,12 +106,27 @@ void rescanTexStyles();
 /** Fill \c contents from one of the three texfiles.
  *  Each entry in the file list is returned as a name_with_path
  */
-void getTexFileList(std::string const & filename, std::vector<std::string> & contents);
+QStringList texFileList(QString const & filename);
 
 // wrapper around the docstring versions
-QString internalPath(const QString &);
-QString onlyFilename(const QString & str);
-QString onlyPath(const QString & str);
+QString internalPath(QString const &);
+QString onlyFilename(QString const & str);
+QString onlyPath(QString const & str);
+
+QString changeExtension(QString const & oldname, QString const & extension);
+
+/// Remove the extension from \p name
+QString removeExtension(QString const & name);
+
+/** Add the extension \p ext to \p name.
+ Use this instead of changeExtension if you know that \p name is without
+ extension, because changeExtension would wrongly interpret \p name if it
+ contains a dot.
+ */
+QString addExtension(QString const & name, QString const & extension);
+
+/// Return the extension of the file (not including the .)
+QString getExtension(QString const & name);
 
 } // namespace lyx
 
