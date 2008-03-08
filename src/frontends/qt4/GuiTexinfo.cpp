@@ -15,11 +15,9 @@
 
 #include "FuncRequest.h"
 
-#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/foreach.h"
 #include "support/FileName.h"
-#include "support/lstrings.h"
 
 #include "qt_helpers.h"
 
@@ -27,9 +25,6 @@
 #include <QListWidget>
 #include <QPushButton>
 #include <QStringList>
-
-#include <fstream>
-#include <algorithm>
 
 using namespace std;
 using namespace lyx::support;
