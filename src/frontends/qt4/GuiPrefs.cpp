@@ -1621,7 +1621,9 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	foreach (LanguagePair const & lpair, languageData(false)) {
+	//foreach (LanguagePair const & lpair, languageData(false)) {
+	QList<LanguagePair> l = languageData(false);
+	foreach (LanguagePair const & lpair, l) {
 		defaultLanguageCO->addItem(lpair.first);
 		lang_.append(lpair.second);
 	}
