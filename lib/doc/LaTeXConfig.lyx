@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 316
+#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 317
 \begin_document
 \begin_header
 \textclass article
@@ -3260,6 +3260,58 @@ texconfig
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+bm
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "bm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+bm
+\family default
+ package defines a command 
+\family typewriter
+
+\backslash
+bm
+\family default
+ which makes its argument bold.
+ The argument may be any maths object from a single symbol to an expression.
+ This is closely related to the specification of the 
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+ 
+\family sans
+amsbsy
+\family default
+ command in AMS-LaTeX, but 
+\family typewriter
+
+\backslash
+bm
+\family default
+ is rather more careful in the way it does things.
+\end_layout
+
 \begin_layout Subsection
 booktabs
 \end_layout
