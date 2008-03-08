@@ -351,7 +351,7 @@ def checkConverterEntries():
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [ r'\converter literate   latex      "%%"	""' ])
     #
-    checkProg('an HTML -> LaTeX converter', ['html2latex $$i'],
+    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i'],
         rc_entry = [ r'\converter html       latex      "%%"	""' ])
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
