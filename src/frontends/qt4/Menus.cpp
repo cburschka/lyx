@@ -51,8 +51,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
-
 #include "qt_helpers.h"
 
 #include <QCursor>
@@ -62,7 +60,6 @@
 #include <ostream>
 
 using namespace std;
-using boost::bind;
 using namespace lyx::support;
 
 
@@ -263,7 +260,7 @@ MenuItem::~MenuItem()
 {}
 
 
-void MenuItem::submenu(Menu * menu)
+void MenuItem::setSubmenu(Menu * menu)
 {
 	submenu_.reset(menu);
 }
@@ -526,11 +523,12 @@ MenuItem const & Menu::operator[](size_type i) const
 
 bool Menu::hasFunc(FuncRequest const & func) const
 {
-	return find_if(begin(), end(),
-		       bind(equal_to<FuncRequest>(),
-			    bind(&MenuItem::func, _1),
-			    func)) != end();
+	for (const_iterator it = begin(), et = end(); it != et; ++it)
+		if (it->func() == func)
+			return true;
+	return false;
 }
+
 
 void Menu::checkShortcuts() const
 {
@@ -843,7 +841,7 @@ void expandToc2(Menu & tomenu, Toc const & toc_list,
 						    label, FuncRequest(toc_list[pos].action())));
 			} else {
 				MenuItem item(MenuItem::Submenu, label);
-				item.submenu(new Menu);
+				item.setSubmenu(new Menu);
 				expandToc2(*item.submenu(),
 					   toc_list, pos, new_pos, depth + 1);
 				tomenu.add(item);
@@ -925,7 +923,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		else
 			label = qt_("Other floats");
 		MenuItem item(MenuItem::Submenu, label);
-		item.submenu(menu.release());
+		item.setSubmenu(menu.release());
 		tomenu.add(item);
 	}
 
@@ -1082,7 +1080,7 @@ void Menus::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::Submenu: {
 			MenuItem item(*cit);
-			item.submenu(new Menu(cit->submenuname()));
+			item.setSubmenu(new Menu(cit->submenuname()));
 			expand(getMenu(cit->submenuname()),
 			       *item.submenu(), buf);
 			tomenu.addWithStatusCheck(item);

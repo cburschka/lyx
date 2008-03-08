@@ -40,15 +40,12 @@
 #include "support/Package.h"
 #include "support/types.h"
 
-#include <boost/bind.hpp>
-
 #include <QCheckBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QValidator>
 
-#include <algorithm>
 #include <cmath>
 #include <utility>
 
@@ -84,26 +81,29 @@ static void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 				lengthCombo->currentLengthItem());
 }
 
+
 template<class Pair>
-vector<typename Pair::first_type> const
-getFirst(vector<Pair> const & pr)
+vector<typename Pair::first_type> getFirst(vector<Pair> const & pr)
 {
-	vector<typename Pair::first_type> tmp(pr.size());
-	transform(pr.begin(), pr.end(), tmp.begin(),
-		  boost::bind(&Pair::first, _1));
+	size_t const n = pr.size();
+	vector<typename Pair::first_type> tmp(n);
+	for (size_t i = 0; i != n; ++i)
+		tmp[i] = pr[i].first;
 	return tmp;
 }
 
+
 ///
 template<class Pair>
-vector<typename Pair::second_type> const
-getSecond(vector<Pair> const & pr)
+vector<typename Pair::second_type> getSecond(vector<Pair> const & pr)
 {
-	 vector<typename Pair::second_type> tmp(pr.size());
-	 transform(pr.begin(), pr.end(), tmp.begin(),
-		   boost::bind(&Pair::second, _1));
-	 return tmp;
+	size_t const n = pr.size();
+	vector<typename Pair::second_type> tmp(n);
+	for (size_t i = 0; i != n; ++i)
+		tmp[i] = pr[i].second;
+	return tmp;
 }
+
 
 /// The (tranlated) GUI string and it's LaTeX equivalent.
 typedef pair<docstring, string> RotationOriginPair;

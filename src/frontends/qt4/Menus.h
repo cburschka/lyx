@@ -135,7 +135,7 @@ public:
 	///
 	Menu * submenu() const { return submenu_.get(); }
 	///
-	void submenu(Menu * menu);
+	void setSubmenu(Menu * menu);
 
 private:
 	///
