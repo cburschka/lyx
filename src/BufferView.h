@@ -36,7 +36,6 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Inset;
-class Menu;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
