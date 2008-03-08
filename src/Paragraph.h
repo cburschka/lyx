@@ -154,7 +154,7 @@ public:
 
 	///
 	Layout const & layout() const;
-	///
+	/// Do not pass a temporary to this!
 	void setLayout(Layout const & layout);
 	///
 	void setEmptyOrDefaultLayout(DocumentClass const & tc);
