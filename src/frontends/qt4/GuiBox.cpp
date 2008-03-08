@@ -26,48 +26,48 @@
 #include "insets/InsetBox.h"
 
 #include "support/lstrings.h"
+#include "support/foreach.h"
 
 #include <QPushButton>
 #include <QLineEdit>
 
 using namespace std;
 
+
 namespace lyx {
 namespace frontend {
 
-
-void box_gui_tokens(vector<string> & ids, vector<docstring> & gui_names)
+static QStringList boxGuiIds()
 {
-	char const * const ids_[] = {
-		"Frameless", "Boxed", "ovalbox",
-		"Ovalbox", "Shadowbox", "Shaded", "Doublebox"};
-	size_t const ids_size = sizeof(ids_) / sizeof(char *);
-	ids = vector<string>(ids_, ids_ + ids_size);
-	gui_names.clear();
-	gui_names.push_back(_("No frame"));
-	gui_names.push_back(_("Simple rectangular frame"));
-	gui_names.push_back(_("Oval frame, thin"));
-	gui_names.push_back(_("Oval frame, thick"));
-	gui_names.push_back(_("Drop shadow"));
-	gui_names.push_back(_("Shaded background"));
-	gui_names.push_back(_("Double rectangular frame"));
+	return QStringList()
+		<< "Frameless" << "Boxed"
+		<< "ovalbox" << "Ovalbox"
+		<< "Shadowbox" << "Shaded"
+		<< "Doublebox";
 }
 
 
-void box_gui_tokens_special_length(vector<string> & ids,
-	vector<docstring> & gui_names)
+static QStringList boxGuiNames()
 {
-	char const * const ids_[] = {
-		"none", "height", "depth",
-		"totalheight", "width"};
-	size_t const ids_size = sizeof(ids_) / sizeof(char *);
-	ids = vector<string>(ids_, ids_ + ids_size);
-	gui_names.clear();
-	gui_names.push_back(_("None"));
-	gui_names.push_back(_("Height"));
-	gui_names.push_back(_("Depth"));
-	gui_names.push_back(_("Total Height"));
-	gui_names.push_back(_("Width"));
+	return QStringList()
+		<< qt_("No frame") << qt_("Simple rectangular frame")
+		<< qt_("Oval frame, thin") << qt_("Oval frame, thick")
+		<< qt_("Drop shadow") << qt_("Shaded background")
+		<< qt_("Double rectangular frame");
+}
+
+
+static QStringList boxGuiSpecialLengthIds()
+{
+	return QStringList() << "none" << "height" << "depth"
+		<< "totalheight" << "width";
+}
+
+
+static QStringList boxGuiSpecialLengthNames()
+{
+	return QStringList() << qt_("None") << qt_("Height") << qt_("Depth")
+		<< qt_("Total Height") << qt_("Width");
 }
 
 
@@ -77,15 +77,17 @@ GuiBox::GuiBox(GuiView & lv)
 	setupUi(this);
 
 	// fill the box type choice
-	box_gui_tokens(ids_, gui_names_);
-	for (unsigned int i = 0; i < gui_names_.size(); ++i)
-		typeCO->addItem(toqstr(gui_names_[i]));
+	ids_ = boxGuiIds();
+	gui_names_ = boxGuiNames();
+	foreach (QString const & str, gui_names_)
+		typeCO->addItem(str);
 
 	// add the special units to the height choice
 	// width needs different handling
-	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
-	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i)
-		heightUnitsLC->addItem(toqstr(gui_names_spec_[i]));
+	ids_spec_ = boxGuiSpecialLengthIds();
+	gui_names_spec_ = boxGuiSpecialLengthNames();
+	foreach (QString const & str, gui_names_spec_)
+		heightUnitsLC->addItem(str);
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -100,17 +102,17 @@ GuiBox::GuiBox(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(heightCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(heightED, SIGNAL(textChanged(const QString &)),
+	connect(heightED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT) ),
+	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(restoreClicked()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
 	connect(halignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(innerBoxCO, SIGNAL(activated(const QString&)),
-		this, SLOT(innerBoxChanged(const QString &)));
+	connect(innerBoxCO, SIGNAL(activated(QString)),
+		this, SLOT(innerBoxChanged(QString)));
 	connect(innerBoxCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(pagebreakCB, SIGNAL(stateChanged(int)),
 		this, SLOT(pagebreakClicked()));
@@ -149,7 +151,7 @@ void GuiBox::change_adaptor()
 }
 
 
-void GuiBox::innerBoxChanged(const QString & str)
+void GuiBox::innerBoxChanged(QString const & str)
 {
 	bool const ibox = (str != qt_("None"));
 	valignCO->setEnabled(ibox);
@@ -191,9 +193,9 @@ void GuiBox::restoreClicked()
 	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightCB->setCheckState(Qt::Checked);
 	heightED->setText("1");
-	for (int j = 0; j < heightUnitsLC->count(); j++) {
-		if (heightUnitsLC->itemText(j) == qt_("Total Height"))
-			heightUnitsLC->setCurrentItem(j);
+	for (int i = 0; i != heightUnitsLC->count(); ++i) {
+		if (heightUnitsLC->itemText(i) == qt_("Total Height"))
+			heightUnitsLC->setCurrentItem(i);
 	}
 }
 
@@ -210,29 +212,32 @@ void GuiBox::pagebreakClicked()
 		heightED->setEnabled(false);
 		heightUnitsLC->setEnabled(false);
 		setSpecial(false);
-	} else
+	} else {
 		typeChanged(typeCO->currentIndex());
+	}
 	change_adaptor();
 }
 
+
 void GuiBox::updateContents()
 {
-	string type = params_.type;
+	QString type = toqstr(params_.type);
 	if (type == "Framed") {
 		pagebreakCB->setChecked(true);
 		type = "Boxed";
-	} else
+	} else {
 		pagebreakCB->setChecked(false);
+	}
 
 	pagebreakCB->setEnabled(type == "Boxed");
 
-	for (unsigned int i = 0; i < gui_names_.size(); ++i) {
+	for (int i = 0; i != gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			typeCO->setCurrentIndex(i);
 	}
 
 	// default: minipage
-	unsigned int inner_type = 2;
+	int inner_type = 2;
 	if (!params_.inner_box)
 		// none
 		inner_type = 0;
@@ -261,38 +266,37 @@ void GuiBox::updateContents()
 	lengthToWidgets(widthED, widthUnitsLC,
 		(params_.width).asString(), default_unit);
 
-	string const special = params_.special;
-	if (!special.empty() && special != "none") {
+	QString const special = toqstr(params_.special);
+	if (!special.isEmpty() && special != "none") {
 		QString spc;
-		for (unsigned int i = 0; i < gui_names_spec_.size(); i++) {
+		for (int i = 0; i != gui_names_spec_.size(); ++i) {
 			if (special == ids_spec_[i])
-				spc = toqstr(gui_names_spec_[i].c_str());
+				spc = gui_names_spec_[i];
 		}
-		for (int j = 0; j < widthUnitsLC->count(); j++) {
-			if (widthUnitsLC->itemText(j) == spc)
-				widthUnitsLC->setCurrentIndex(j);
+		for (int i = 0; i != widthUnitsLC->count(); ++i) {
+			if (widthUnitsLC->itemText(i) == spc)
+				widthUnitsLC->setCurrentIndex(i);
 		}
 	}
 
 	lengthToWidgets(heightED, heightUnitsLC,
 		(params_.height).asString(), default_unit);
 	
-	string const height_special = params_.height_special;
-	if (!height_special.empty() && height_special != "none") {
+	QString const height_special = toqstr(params_.height_special);
+	if (!height_special.isEmpty() && height_special != "none") {
 		QString hspc;
-		for (unsigned int i = 0; i != gui_names_spec_.size(); i++) {
+		for (int i = 0; i != gui_names_spec_.size(); ++i) {
 			if (height_special == ids_spec_[i])
-				hspc = toqstr(gui_names_spec_[i].c_str());
+				hspc = gui_names_spec_[i];
 		}
-		for (int j = 0; j != heightUnitsLC->count(); j++) {
-			if (heightUnitsLC->itemText(j) == hspc)
-				heightUnitsLC->setCurrentIndex(j);
+		for (int i = 0; i != heightUnitsLC->count(); ++i) {
+			if (heightUnitsLC->itemText(i) == hspc)
+				heightUnitsLC->setCurrentIndex(i);
 		}
 	}
 	// set no optional height when the value is the default "1\height"
 	// (special units like \height are handled as "in",
-	if (height_special == "totalheight" &&  
-		params_.height == Length("1in"))
+	if (height_special == "totalheight" &&  params_.height == Length("1in"))
 		heightCB->setCheckState(Qt::Unchecked);
 	else
 		heightCB->setCheckState(Qt::Checked);
@@ -307,7 +311,7 @@ void GuiBox::applyView()
 	if (pagebreak)
 		params_.type = "Framed";
 	else
-		params_.type = ids_[typeCO->currentIndex()];
+		params_.type = fromqstr(ids_[typeCO->currentIndex()]);
 
 	params_.inner_box = (!pagebreak && innerBoxCO->currentText() != qt_("None"));
 	params_.use_parbox = (!pagebreak && innerBoxCO->currentText() == qt_("Parbox"));
@@ -338,7 +342,7 @@ void GuiBox::applyView()
 		i = 0;
 		spec = false;
 	}
-	params_.special = ids_spec_[i];
+	params_.special = fromqstr(ids_spec_[i]);
 
 	string width;
 	if (spec) {
@@ -373,7 +377,7 @@ void GuiBox::applyView()
 		i = 0;
 		spec = false;
 	}
-	params_.height_special = ids_spec_[i];
+	params_.height_special = fromqstr(ids_spec_[i]);
 
 	string height;
 	if (spec  && !isValidLength(fromqstr(heightED->text()))) {
@@ -391,28 +395,31 @@ void GuiBox::applyView()
 		params_.height = Length(height);
 	else {
 		params_.height = Length("1in");
-		params_.height_special = ids_spec_[3];
+		params_.height_special = fromqstr(ids_spec_[3]);
 	}
 }
 
 
 void GuiBox::setSpecial(bool ibox)
 {
-	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
+	// FIXME: Needed? Already done in the constructor
+	ids_spec_ = boxGuiSpecialLengthIds();
+	gui_names_spec_ = boxGuiSpecialLengthNames();
+
 	// check if the widget contains the special units
 	int count = widthUnitsLC->count();
 	bool has_special = false;
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i != count; ++i)
 		if (widthUnitsLC->itemText(i).contains(qt_("Total Height")) > 0)
 			has_special = true;
 	// insert 'em if needed...
 	if (!ibox && !has_special) {
-		for (unsigned int i = 1; i < gui_names_spec_.size(); i++)
-			widthUnitsLC->addItem(toqstr(gui_names_spec_[i]));
+		for (int i = 1; i < gui_names_spec_.size(); ++i)
+			widthUnitsLC->addItem(gui_names_spec_[i]);
 	// ... or remove 'em if needed
 	} else if (ibox && has_special) {
 		widthUnitsLC->clear();
-		for (int i = 0; i < num_units; i++)
+		for (int i = 0; i != num_units; ++i)
 			widthUnitsLC->addItem(qt_(unit_name_gui[i]));
 	}
 }

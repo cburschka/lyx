@@ -32,7 +32,7 @@ public:
 
 private Q_SLOTS:
 	void change_adaptor();
-	void innerBoxChanged(const QString &);
+	void innerBoxChanged(QString const &);
 	void typeChanged(int);
 	void restoreClicked();
 	void pagebreakClicked();
@@ -58,13 +58,13 @@ private:
 	bool isBufferDependent() const { return true; }
 
 	///
-	std::vector<std::string> ids_;
+	QStringList ids_;
 	///
-	std::vector<docstring> gui_names_;
+	QStringList gui_names_;
 	///
-	std::vector<std::string> ids_spec_;
+	QStringList ids_spec_;
 	///
-	std::vector<docstring> gui_names_spec_;
+	QStringList gui_names_spec_;
 
 	///
 	InsetBoxParams params_;
