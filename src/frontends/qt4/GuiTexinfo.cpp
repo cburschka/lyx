@@ -26,6 +26,7 @@
 #include <QCheckBox>
 #include <QListWidget>
 #include <QPushButton>
+#include <QStringList>
 
 #include <fstream>
 #include <algorithm>
@@ -38,42 +39,16 @@ namespace frontend {
 
 static QString texFileFromList(QString const & file, QString const & type)
 {
-	QString file_ = file;
-	// do we need to add the suffix?
-	if (getExtension(file) != type)
-		file_ += '.' + type;
-
-	lyxerr << "Searching for file " << fromqstr(file_) << endl;
-
 	QString lstfile = type + "Files.lst";
-	if (type == "cls")
-		lstfile = "clsFiles.lst";
-	else if (type == "sty")
-		lstfile = "styFiles.lst";
-	else if (type == "bst")
-		lstfile = "bstFiles.lst";
-	else if (type == "bib")
-		lstfile = "bibFiles.lst";
 	FileName const abslstfile = libFileSearch(QString(), lstfile);
-	if (abslstfile.empty()) {
-		lyxerr << "File `'" << fromqstr(lstfile) << "' not found." << endl;
+	if (abslstfile.empty())
 		return QString();
-	}
-	// FIXME UNICODE
-	string const allClasses = to_utf8(abslstfile.fileContents("UTF-8"));
-	int entries = 0;
-	string classfile = token(allClasses, '\n', entries);
-	int count = 0;
-	while ((!contains(classfile, fromqstr(file))
-						|| support::onlyFilename(classfile) != fromqstr(file))
-					&& ++count < 1000) {
-		classfile = token(allClasses, '\n', ++entries);
-	}
-
-	// now we have filename with full path
-	lyxerr << "with full path: " << classfile << endl;
-
-	return toqstr(classfile);
+	QString cs = toqstr(abslstfile.fileContents("UTF-8"));
+	cs.replace("\r", "");
+	QStringList const result = cs.split("\n").filter(file);
+	if (result.empty())
+		return QString();
+	return result.at(0);
 }
 
 
