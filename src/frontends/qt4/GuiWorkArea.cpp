@@ -53,6 +53,7 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPalette>
+#include <QPixmapCache>
 #include <QScrollBar>
 #include <QTabBar>
 #include <QTimer>
@@ -743,19 +744,29 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 }
 
 
-void GuiWorkArea::wheelEvent(QWheelEvent * e)
+void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	double const lines = qApp->wheelScrollLines()
-		* lyxrc.mouse_wheel_speed
-		* e->delta() / 120.0;
-	LYXERR(Debug::SCROLLING, "wheelScrollLines = " << qApp->wheelScrollLines()
-		<< " delta = " << e->delta()
-		<< " lines = " << lines);
-	verticalScrollBar()->setValue(verticalScrollBar()->value() -
-		int(lines *  verticalScrollBar()->singleStep()));
-	e->accept();
+	int delta = ev->delta() / 120;
+	if (ev->modifiers() & Qt::ControlModifier) {
+		lyxrc.zoom -= 5 * delta;
+		if (lyxrc.zoom < 10)
+			lyxrc.zoom = 10;
+		// The global QPixmapCache is used in GuiPainter to cache text
+		// painting so we must reset it.
+		QPixmapCache::clear();
+		guiApp->fontLoader().update();
+		lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+	} else {
+		double const lines = qApp->wheelScrollLines()
+			* lyxrc.mouse_wheel_speed * delta;
+		LYXERR(Debug::SCROLLING, "wheelScrollLines = " << qApp->wheelScrollLines()
+			<< " delta = " << ev->delta() << " lines = " << lines);
+		verticalScrollBar()->setValue(verticalScrollBar()->value() -
+			int(lines *  verticalScrollBar()->singleStep()));
+	}
+	ev->accept();
 }
 
 

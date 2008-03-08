@@ -793,6 +793,7 @@ void PrefColors::update(LyXRC const & /*rc*/)
 	change_lyxObjects_selection();
 }
 
+
 void PrefColors::change_color()
 {
 	int const row = lyxObjectsLW->currentRow();
