@@ -21,6 +21,7 @@
 #include "Action.h"
 #include "GuiApplication.h"
 #include "GuiView.h"
+#include "qt_helpers.h"
 
 #include "BranchList.h"
 #include "Buffer.h"
@@ -39,7 +40,6 @@
 #include "LyX.h" // for lastfiles
 #include "LyXFunc.h"
 #include "Paragraph.h"
-#include "qt_helpers.h"
 #include "Session.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -132,24 +132,34 @@ public:
 		Branches
 	};
 
-	explicit MenuItem(Kind kind);
+	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
 
 	MenuItem(Kind kind,
 		 QString const & label,
 		 QString const & submenu = QString(),
-		 bool optional = false);
+		 bool optional = false)
+		: kind_(kind), label_(label), submenuname_(submenu), optional_(optional)
+	{
+		BOOST_ASSERT(kind == Submenu);
+	}
 
 	MenuItem(Kind kind,
 		 QString const & label,
 		 FuncRequest const & func,
-		 bool optional = false);
+		 bool optional = false)
+		: kind_(kind), label_(label), func_(func), optional_(optional)
+	{
+		func_.origin = FuncRequest::MENU;
+	}
 
-	/// This one is just to please boost::shared_ptr<>
-	~MenuItem();
 	/// The label of a given menuitem
-	QString label() const;
+	QString label() const {	return label_.split('|')[0]; }
+
 	/// The keyboard shortcut (usually underlined in the entry)
-	QString shortcut() const;
+	QString shortcut() const
+	{
+		return label_.contains('|') ? label_.split('|')[1] : QString();
+	}
 	/// The complete label, with label and shortcut separated by a '|'
 	QString fulllabel() const { return label_;}
 	/// The kind of entry
@@ -164,16 +174,32 @@ public:
 	FuncStatus & status() { return status_; }
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
+
 	///returns the binding associated to this action.
-	QString binding() const;
+	QString binding() const
+	{
+		if (kind_ != Command)
+			return QString();
+		// Get the keys bound to this action, but keep only the
+		// first one later
+		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
+		if (bindings.size())
+			return toqstr(bindings.begin()->print(KeySequence::ForGui));
+
+		LYXERR(Debug::KBMAP, "No binding for "
+			<< lyxaction.getActionName(func_.action)
+			<< '(' << func_.argument() << ')');
+		return QString();
+	}
+
 	/// the description of the  submenu (if relevant)
 	QString const & submenuname() const { return submenuname_; }
 	/// set the description of the  submenu
 	void submenuname(QString const & name) { submenuname_ = name; }
 	///
-	Menu * submenu() const { return submenu_.get(); }
+	Menu * submenu() const { return submenu_; }
 	///
-	void setSubmenu(Menu * menu);
+	void setSubmenu(Menu * menu) { submenu_ = menu; }
 
 private:
 	///
@@ -189,7 +215,7 @@ private:
 	///
 	FuncStatus status_;
 	///
-	boost::shared_ptr<Menu> submenu_;
+	Menu * submenu_;
 };
 
 ///
@@ -285,7 +311,7 @@ public:
 	QString name;
 };
 
-
+/// Helper for std::find_if
 class MenuNamesEqual
 {
 public:
@@ -295,6 +321,7 @@ private:
 	QString name_;
 };
 
+
 ///
 typedef std::vector<Menu> MenuList;
 ///
@@ -302,6 +329,9 @@ typedef MenuList::const_iterator const_iterator;
 ///
 typedef MenuList::iterator iterator;
 
+/////////////////////////////////////////////////////////////////////
+// GuiPopupMenu implementation
+/////////////////////////////////////////////////////////////////////
 
 void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 {
@@ -348,293 +378,9 @@ QString GuiPopupMenu::label(MenuItem const & mi) const
 	return label;
 }
 
-} // namespace anon
-
-
-struct Menus::Impl {
-	///
-	void add(Menu const &);
-	///
-	bool hasMenu(QString const &) const;
-	///
-	Menu & getMenu(QString const &);
-	///
-	Menu const & getMenu(QString const &) const;
-
-	/// Expands some special entries of the menu
-	/** The entries with the following kind are expanded to a
-	    sequence of Command MenuItems: Lastfiles, Documents,
-	    ViewFormats, ExportFormats, UpdateFormats, Branches
-	*/
-	void expand(Menu const & frommenu, Menu & tomenu,
-		    Buffer const *) const;
-
-	/// Initialize specific MACOS X menubar
-	void macxMenuBarInit(GuiView * view);
-
-	/// Mac special menu.
-	/** This defines a menu whose entries list the FuncRequests
-	    that will be removed by expand() in other menus. This is
-	    used by the Qt/Mac code
-	*/
-	Menu specialmenu_;
-
-	///
-	MenuList menulist_;
-	///
-	Menu menubar_;
-
-	typedef QHash<QString, GuiPopupMenu *> NameMap;
-
-	/// name to menu for \c menu() method.
-	NameMap name_map_;
-};
-
-
-Menus::Menus(): d(new Impl) {}
-
-
-bool Menus::searchMenu(FuncRequest const & func,
-	vector<docstring> & names) const
-{
-	return d->menubar_.searchMenu(func, names);
-}
-
-
-void Menus::fillMenuBar(GuiView * view)
-{
-	// Clear all menubar contents before filling it.
-	view->menuBar()->clear();
-	
-#ifdef Q_WS_MACX
-	// setup special mac specific menu item
-	macxMenuBarInit(view);
-#endif
-
-	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
-
-	if (d->menubar_.size() == 0) {
-		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
-			<< fromqstr(d->menubar_.name()));
-		return;
-	}
-	else {
-		LYXERR(Debug::GUI, "menu bar entries "
-			<< d->menubar_.size());
-	}
-
-	Menu menu;
-	d->expand(d->menubar_, menu, view->buffer());
-
-	Menu::const_iterator m = menu.begin();
-	Menu::const_iterator end = menu.end();
-
-	for (; m != end; ++m) {
-
-		if (m->kind() != MenuItem::Submenu) {
-			LYXERR(Debug::GUI, "\tERROR: not a submenu " << fromqstr(m->label()));
-			continue;
-		}
-
-		LYXERR(Debug::GUI, "menu bar item " << fromqstr(m->label())
-			<< " is a submenu named " << fromqstr(m->submenuname()));
-
-		QString name = m->submenuname();
-		if (!d->hasMenu(name)) {
-			LYXERR(Debug::GUI, "\tERROR: " << fromqstr(name)
-				<< " submenu has no menu!");
-			continue;
-		}
-
-		GuiPopupMenu * qmenu = new GuiPopupMenu(view, *m, true);
-		view->menuBar()->addMenu(qmenu);
-
-		d->name_map_[name] = qmenu;
-	}
-}
-
-
-void Menus::updateMenu(QString const & name)
-{
-	GuiPopupMenu * qmenu = d->name_map_[name];
-	LYXERR(Debug::GUI, "GuiPopupMenu::updateView()"
-		<< "\tTriggered menu: " << fromqstr(qmenu->name));
-	qmenu->clear();
-
-	if (qmenu->name.isEmpty())
-		return;
-
-	// Here, We make sure that theLyXFunc points to the correct LyXView.
-	theLyXFunc().setLyXView(qmenu->view);
-
-	Menu const & fromLyxMenu = d->getMenu(qmenu->name);
-	d->expand(fromLyxMenu, *qmenu->top_level_menu, qmenu->view->buffer());
-
-	if (!d->hasMenu(qmenu->top_level_menu->name())) {
-		LYXERR(Debug::GUI, "\tWARNING: menu seems empty"
-			<< fromqstr(qmenu->top_level_menu->name()));
-	}
-	qmenu->populate(qmenu, qmenu->top_level_menu);
-}
-
-
-QMenu * Menus::menu(QString const & name)
-{
-	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
-	GuiPopupMenu * menu = d->name_map_.value(name, 0);
-	if (!menu)
-		LYXERR0("resquested context menu not found: " << fromqstr(name));
-	return menu;
-}
-
-
-/// Some special Qt/Mac support hacks
-
-/*
-  Here is what the Qt documentation says about how a menubar is chosen:
-
-     1) If the window has a QMenuBar then it is used. 2) If the window
-     is a modal then its menubar is used. If no menubar is specified
-     then a default menubar is used (as documented below) 3) If the
-     window has no parent then the default menubar is used (as
-     documented below).
-
-     The above 3 steps are applied all the way up the parent window
-     chain until one of the above are satisifed. If all else fails a
-     default menubar will be created, the default menubar on Qt/Mac is
-     an empty menubar, however you can create a different default
-     menubar by creating a parentless QMenuBar, the first one created
-     will thus be designated the default menubar, and will be used
-     whenever a default menubar is needed.
-
-  Thus, for Qt/Mac, we add the menus to a free standing menubar, so
-  that this menubar will be used also when one of LyX' dialogs has
-  focus. (JMarc)
-*/
-
-void Menus::Impl::macxMenuBarInit(GuiView * view)
-{
-	// The Mac menubar initialisation must be done only once!
-	static bool done = false;
-	if (done)
-		return;
-	done = true;
-
-	/* Since Qt 4.2, the qt/mac menu code has special code for
-	   specifying the role of a menu entry. However, it does not
-	   work very well with our scheme of creating menus on demand,
-	   and therefore we need to put these entries in a special
-	   invisible menu. (JMarc)
-	*/
-
-	/* The entries of our special mac menu. If we add support for
-	 * special entries in Menus, we could imagine something
-	 * like
-	 *    SpecialItem About " "About LyX" "dialog-show aboutlyx"
-	 * and therefore avoid hardcoding. I am not sure it is worth
-	 * the hassle, though. (JMarc)
-	 */
-	struct MacMenuEntry {
-		kb_action action;
-		char const * arg;
-		char const * label;
-		QAction::MenuRole role;
-	};
-
-	MacMenuEntry entries[] = {
-		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
-		 QAction::AboutRole},
-		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
-		 QAction::PreferencesRole},
-		{LFUN_RECONFIGURE, "", "Reconfigure",
-		 QAction::ApplicationSpecificRole},
-		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
-	};
-	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
-
-	// the special menu for Menus.
-	for (size_t i = 0 ; i < num_entries ; ++i) {
-		FuncRequest const func(entries[i].action,
-				       from_utf8(entries[i].arg));
-		specialmenu_.add(MenuItem(MenuItem::Command, entries[i].label, func));
-	}
-
-	// add the entries to a QMenu that will eventually be empty
-	// and therefore invisible.
-	QMenu * qMenu = view->menuBar()->addMenu("special");
-	Menu::const_iterator cit = specialmenu_.begin();
-	Menu::const_iterator end = specialmenu_.end();
-	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*view, QIcon(), cit->label(),
-					     cit->func(), QString());
-		action->setMenuRole(entries[i].role);
-		qMenu->addAction(action);
-	}
-}
-
-
-MenuItem::MenuItem(Kind kind)
-	: kind_(kind), optional_(false)
-{}
-
-
-MenuItem::MenuItem(Kind kind, QString const & label,
-		   QString const & submenu, bool optional)
-	: kind_(kind), label_(label),
-	  submenuname_(submenu), optional_(optional)
-{
-	BOOST_ASSERT(kind == Submenu);
-}
-
-
-MenuItem::MenuItem(Kind kind, QString const & label,
-		   FuncRequest const & func, bool optional)
-	: kind_(kind), label_(label), func_(func), optional_(optional)
-{
-	func_.origin = FuncRequest::MENU;
-}
-
-
-MenuItem::~MenuItem()
-{}
-
-
-void MenuItem::setSubmenu(Menu * menu)
-{
-	submenu_.reset(menu);
-}
-
-
-QString MenuItem::label() const
-{
-	return label_.split('|')[0];
-}
-
-
-QString MenuItem::shortcut() const
-{
-	return label_.contains('|') ? label_.split('|')[1] : QString();
-}
-
-
-QString MenuItem::binding() const
-{
-	if (kind_ != Command)
-		return QString();
-
-	// Get the keys bound to this action, but keep only the
-	// first one later
-	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
-
-	if (bindings.size())
-		return toqstr(bindings.begin()->print(KeySequence::ForGui));
-
-	LYXERR(Debug::KBMAP, "No binding for "
-		<< lyxaction.getActionName(func_.action)
-		<< '(' << func_.argument() << ')');
-	return QString();
-}
-
+/////////////////////////////////////////////////////////////////////
+// Menu implementation
+/////////////////////////////////////////////////////////////////////
 
 void Menu::addWithStatusCheck(MenuItem const & i)
 {
@@ -916,8 +662,6 @@ bool Menu::searchMenu(FuncRequest const & func, vector<docstring> & names) const
 }
 
 
-namespace {
-
 bool compareFormat(Format const * p1, Format const * p2)
 {
 	return *p1 < *p2;
@@ -933,8 +677,6 @@ QString limitStringLength(docstring const & str)
 
 	return toqstr(str);
 }
-
-} // namespace anon
 
 
 void Menu::expandLastfiles()
@@ -1350,6 +1092,134 @@ void Menu::expandBranches(Buffer const * buf)
 	}
 }
 
+} // namespace anon
+
+
+struct Menus::Impl {
+	///
+	void add(Menu const &);
+	///
+	bool hasMenu(QString const &) const;
+	///
+	Menu & getMenu(QString const &);
+	///
+	Menu const & getMenu(QString const &) const;
+
+	/// Expands some special entries of the menu
+	/** The entries with the following kind are expanded to a
+	    sequence of Command MenuItems: Lastfiles, Documents,
+	    ViewFormats, ExportFormats, UpdateFormats, Branches
+	*/
+	void expand(Menu const & frommenu, Menu & tomenu,
+		    Buffer const *) const;
+
+	/// Initialize specific MACOS X menubar
+	void macxMenuBarInit(GuiView * view);
+
+	/// Mac special menu.
+	/** This defines a menu whose entries list the FuncRequests
+	    that will be removed by expand() in other menus. This is
+	    used by the Qt/Mac code
+	*/
+	Menu specialmenu_;
+
+	///
+	MenuList menulist_;
+	///
+	Menu menubar_;
+
+	typedef QHash<QString, GuiPopupMenu *> NameMap;
+
+	/// name to menu for \c menu() method.
+	NameMap name_map_;
+};
+
+
+/////////////////////////////////////////////////////////////////////
+// Menus::Impl implementation
+/////////////////////////////////////////////////////////////////////
+
+/*
+  Here is what the Qt documentation says about how a menubar is chosen:
+
+     1) If the window has a QMenuBar then it is used. 2) If the window
+     is a modal then its menubar is used. If no menubar is specified
+     then a default menubar is used (as documented below) 3) If the
+     window has no parent then the default menubar is used (as
+     documented below).
+
+     The above 3 steps are applied all the way up the parent window
+     chain until one of the above are satisifed. If all else fails a
+     default menubar will be created, the default menubar on Qt/Mac is
+     an empty menubar, however you can create a different default
+     menubar by creating a parentless QMenuBar, the first one created
+     will thus be designated the default menubar, and will be used
+     whenever a default menubar is needed.
+
+  Thus, for Qt/Mac, we add the menus to a free standing menubar, so
+  that this menubar will be used also when one of LyX' dialogs has
+  focus. (JMarc)
+*/
+void Menus::Impl::macxMenuBarInit(GuiView * view)
+{
+	// The Mac menubar initialisation must be done only once!
+	static bool done = false;
+	if (done)
+		return;
+	done = true;
+
+	/* Since Qt 4.2, the qt/mac menu code has special code for
+	   specifying the role of a menu entry. However, it does not
+	   work very well with our scheme of creating menus on demand,
+	   and therefore we need to put these entries in a special
+	   invisible menu. (JMarc)
+	*/
+
+	/* The entries of our special mac menu. If we add support for
+	 * special entries in Menus, we could imagine something
+	 * like
+	 *    SpecialItem About " "About LyX" "dialog-show aboutlyx"
+	 * and therefore avoid hardcoding. I am not sure it is worth
+	 * the hassle, though. (JMarc)
+	 */
+	struct MacMenuEntry {
+		kb_action action;
+		char const * arg;
+		char const * label;
+		QAction::MenuRole role;
+	};
+
+	MacMenuEntry entries[] = {
+		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
+		 QAction::AboutRole},
+		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
+		 QAction::PreferencesRole},
+		{LFUN_RECONFIGURE, "", "Reconfigure",
+		 QAction::ApplicationSpecificRole},
+		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
+	};
+	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
+
+	// the special menu for Menus.
+	for (size_t i = 0 ; i < num_entries ; ++i) {
+		FuncRequest const func(entries[i].action,
+				       from_utf8(entries[i].arg));
+		specialmenu_.add(MenuItem(MenuItem::Command, entries[i].label, func));
+	}
+
+	// add the entries to a QMenu that will eventually be empty
+	// and therefore invisible.
+	QMenu * qMenu = view->menuBar()->addMenu("special");
+	Menu::const_iterator cit = specialmenu_.begin();
+	Menu::const_iterator end = specialmenu_.end();
+	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
+		Action * action = new Action(*view, QIcon(), cit->label(),
+					     cit->func(), QString());
+		action->setMenuRole(entries[i].role);
+		qMenu->addAction(action);
+	}
+}
+
 
 void Menus::Impl::expand(Menu const & frommenu, Menu & tomenu,
 			 Buffer const * buf) const
@@ -1443,6 +1313,47 @@ void Menus::Impl::expand(Menu const & frommenu, Menu & tomenu,
 }
 
 
+void Menus::Impl::add(Menu const & menu)
+{
+	menulist_.push_back(menu);
+}
+
+
+bool Menus::Impl::hasMenu(QString const & name) const
+{
+	return find_if(menulist_.begin(), menulist_.end(),
+		MenuNamesEqual(name)) != menulist_.end();
+}
+
+
+Menu const & Menus::Impl::getMenu(QString const & name) const
+{
+	const_iterator cit = find_if(menulist_.begin(), menulist_.end(),
+		MenuNamesEqual(name));
+	if (cit == menulist_.end())
+		lyxerr << "No submenu named " << fromqstr(name) << endl;
+	BOOST_ASSERT(cit != menulist_.end());
+	return (*cit);
+}
+
+
+Menu & Menus::Impl::getMenu(QString const & name)
+{
+	iterator it = find_if(menulist_.begin(), menulist_.end(),
+		MenuNamesEqual(name));
+	if (it == menulist_.end())
+		lyxerr << "No submenu named " << fromqstr(name) << endl;
+	BOOST_ASSERT(it != menulist_.end());
+	return (*it);
+}
+
+/////////////////////////////////////////////////////////////////////
+// Menus implementation
+/////////////////////////////////////////////////////////////////////
+
+Menus::Menus(): d(new Impl) {}
+
+
 void Menus::read(Lexer & lex)
 {
 	enum Menutags {
@@ -1500,40 +1411,98 @@ void Menus::read(Lexer & lex)
 }
 
 
-void Menus::Impl::add(Menu const & menu)
+bool Menus::searchMenu(FuncRequest const & func,
+	vector<docstring> & names) const
 {
-	menulist_.push_back(menu);
+	return d->menubar_.searchMenu(func, names);
 }
 
 
-bool Menus::Impl::hasMenu(QString const & name) const
+void Menus::fillMenuBar(GuiView * view)
 {
-	return find_if(menulist_.begin(), menulist_.end(),
-		MenuNamesEqual(name)) != menulist_.end();
+	// Clear all menubar contents before filling it.
+	view->menuBar()->clear();
+	
+#ifdef Q_WS_MACX
+	// setup special mac specific menu item
+	macxMenuBarInit(view);
+#endif
+
+	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
+
+	if (d->menubar_.size() == 0) {
+		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
+			<< fromqstr(d->menubar_.name()));
+		return;
+	}
+	else {
+		LYXERR(Debug::GUI, "menu bar entries "
+			<< d->menubar_.size());
+	}
+
+	Menu menu;
+	d->expand(d->menubar_, menu, view->buffer());
+
+	Menu::const_iterator m = menu.begin();
+	Menu::const_iterator end = menu.end();
+
+	for (; m != end; ++m) {
+
+		if (m->kind() != MenuItem::Submenu) {
+			LYXERR(Debug::GUI, "\tERROR: not a submenu " << fromqstr(m->label()));
+			continue;
+		}
+
+		LYXERR(Debug::GUI, "menu bar item " << fromqstr(m->label())
+			<< " is a submenu named " << fromqstr(m->submenuname()));
+
+		QString name = m->submenuname();
+		if (!d->hasMenu(name)) {
+			LYXERR(Debug::GUI, "\tERROR: " << fromqstr(name)
+				<< " submenu has no menu!");
+			continue;
+		}
+
+		GuiPopupMenu * qmenu = new GuiPopupMenu(view, *m, true);
+		view->menuBar()->addMenu(qmenu);
+
+		d->name_map_[name] = qmenu;
+	}
 }
 
 
-Menu const & Menus::Impl::getMenu(QString const & name) const
+void Menus::updateMenu(QString const & name)
 {
-	const_iterator cit = find_if(menulist_.begin(), menulist_.end(),
-		MenuNamesEqual(name));
-	if (cit == menulist_.end())
-		lyxerr << "No submenu named " << fromqstr(name) << endl;
-	BOOST_ASSERT(cit != menulist_.end());
-	return (*cit);
+	GuiPopupMenu * qmenu = d->name_map_[name];
+	LYXERR(Debug::GUI, "GuiPopupMenu::updateView()"
+		<< "\tTriggered menu: " << fromqstr(qmenu->name));
+	qmenu->clear();
+
+	if (qmenu->name.isEmpty())
+		return;
+
+	// Here, We make sure that theLyXFunc points to the correct LyXView.
+	theLyXFunc().setLyXView(qmenu->view);
+
+	Menu const & fromLyxMenu = d->getMenu(qmenu->name);
+	d->expand(fromLyxMenu, *qmenu->top_level_menu, qmenu->view->buffer());
+
+	if (!d->hasMenu(qmenu->top_level_menu->name())) {
+		LYXERR(Debug::GUI, "\tWARNING: menu seems empty"
+			<< fromqstr(qmenu->top_level_menu->name()));
+	}
+	qmenu->populate(qmenu, qmenu->top_level_menu);
 }
 
 
-Menu & Menus::Impl::getMenu(QString const & name)
+QMenu * Menus::menu(QString const & name)
 {
-	iterator it = find_if(menulist_.begin(), menulist_.end(),
-		MenuNamesEqual(name));
-	if (it == menulist_.end())
-		lyxerr << "No submenu named " << fromqstr(name) << endl;
-	BOOST_ASSERT(it != menulist_.end());
-	return (*it);
+	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
+	GuiPopupMenu * menu = d->name_map_.value(name, 0);
+	if (!menu)
+		LYXERR0("resquested context menu not found: " << fromqstr(name));
+	return menu;
 }
-
 
 } // namespace frontend
 } // namespace lyx

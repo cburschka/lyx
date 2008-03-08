@@ -23,9 +23,7 @@ class QString;
 namespace lyx {
 
 class Lexer;
-class Buffer;
 class FuncRequest;
-class Toc;
 
 namespace frontend {
 
