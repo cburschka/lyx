@@ -152,6 +152,7 @@ public:
 		func_.origin = FuncRequest::MENU;
 	}
 
+	// boost::shared_ptr<Menu> needs this apprently...
 	~MenuItem() {}
 
 	/// The label of a given menuitem
