@@ -128,6 +128,9 @@ public:
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return true; }
 
+	///
+	virtual docstring contextMenu(BufferView const &, int, int) const;
+
 protected:
 	InsetMathHull(InsetMathHull const &);
 

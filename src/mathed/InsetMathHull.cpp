@@ -1606,4 +1606,10 @@ void InsetMathHull::textString(odocstream & os) const
 }
 
 
+docstring InsetMathHull::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-math");
+}
+
+
 } // namespace lyx
