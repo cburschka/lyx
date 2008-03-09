@@ -57,6 +57,8 @@ private:
 	///
 	virtual DisplayType display() const;
 	///
+	bool noFontChange() const { return params_.type != InsetNoteParams::Note; }
+	///
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
