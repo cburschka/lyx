@@ -149,7 +149,6 @@ NOMOCHEADER = \
 	GuiPainter.h \
 	GuiToolbars.h \
 	LaTeXHighlighter.h \
-	Menus.h \
 	qt_helpers.h
 
 MOCHEADER = \
@@ -215,6 +214,7 @@ MOCHEADER = \
 	InsertTableWidget.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
+	Menus.h \
 	PanelStack.h \
 	TocModel.h \
 	TocWidget.h \

@@ -30,6 +30,29 @@ namespace frontend {
 
 class GuiView;
 
+class Menu : public QMenu
+{
+	Q_OBJECT
+public:
+	///
+	Menu(GuiView * gv, QString const & name, bool top_level);
+
+	~Menu();
+
+private Q_SLOTS:
+	///
+	void updateView();
+
+private:
+	friend class Menus;
+
+	/// Use the Pimpl idiom to hide the internals.
+	struct Impl;
+	/// The pointer never changes although *d's contents may.
+	Impl * const d;
+};
+
+
 class Menus
 {
 public:
@@ -42,7 +65,7 @@ public:
 	void fillMenuBar(GuiView * view);
 
 	/// \return a top-level submenu given its name.
-	QMenu * menu(QString const & name, GuiView & view);
+	Menu * menu(QString const & name, GuiView & view);
 
 	///
 	void read(Lexer &);
@@ -55,24 +78,6 @@ private:
 	struct Impl;
 	/// The pointer never changes although *d's contents may.
 	Impl * const d;
-};
-
-
-class GuiPopupMenuBase : public QMenu
-{
-	Q_OBJECT
-	
-public:
-	///
-	GuiPopupMenuBase(QWidget * parent = 0)
-		: QMenu(parent)
-	{
-		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));
-	}
-	
-private Q_SLOTS:
-	///
-	virtual void updateView() = 0;
 };
 
 } // namespace frontend
