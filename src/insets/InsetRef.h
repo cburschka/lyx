@@ -71,13 +71,9 @@ public:
 	void updateLabels(ParIterator const & it);
 	///
 	void addToToc(ParConstIterator const &) const;
-	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 protected:
 	///
 	InsetRef(InsetRef const &);
-	///
-	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
 	Inset * clone() const { return new InsetRef(*this); }

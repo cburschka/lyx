@@ -611,7 +611,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;
 	}
-	QMenu * menu = guiApp->menus().menu(toqstr(name));
+	QMenu * menu = guiApp->menus().menu(toqstr(name), *lyx_view_);
 	if (!menu) {
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;

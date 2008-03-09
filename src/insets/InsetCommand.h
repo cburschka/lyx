@@ -84,6 +84,8 @@ public:
 	static bool isCompatibleCommand(std::string const & cmd);
 	/// update label and references.
 	virtual void updateCommand(docstring const &, bool) {};
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 protected:
 	///

@@ -74,24 +74,6 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 }
 
 
-void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
-{
-	switch (cmd.action) {
-	case LFUN_MOUSE_RELEASE:
-		// Eventually trigger dialog with button 3 not 1
-		if (cmd.button() == mouse_button::button3)
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO,
-						  getParam("reference")));
-		else
-			InsetCommand::doDispatch(cur, cmd);
-		break;
-
-	default:
-		InsetCommand::doDispatch(cur, cmd);
-	}
-}
-
-
 docstring InsetRef::screenLabel() const
 {
 	return screen_label_;
@@ -180,13 +162,6 @@ void InsetRef::addToToc(ParConstIterator const & cpit) const
 	screen_label_ = _("BROKEN: ") + screen_label_;
 	Toc & toc = buffer().tocBackend().toc("label");
 	toc.push_back(TocItem(cpit, 0, screen_label_));
-}
-
-
-docstring InsetRef::contextMenu(BufferView const &, int, int) const
-{
-	// FIXME: find a way to create a menu with "Goto label" inside.
-	return docstring();
 }
 
 

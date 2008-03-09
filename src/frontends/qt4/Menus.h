@@ -41,7 +41,7 @@ public:
 	void fillMenuBar(GuiView * view);
 
 	/// \return a top-level submenu given its name.
-	QMenu * menu(QString const & name);
+	QMenu * menu(QString const & name, GuiView & view);
 
 	///
 	void read(Lexer &);

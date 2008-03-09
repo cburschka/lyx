@@ -292,6 +292,14 @@ public:
 		setTitle(label(mi));
 	}
 
+	///
+	GuiPopupMenu(GuiView * gv, QString const & name_, bool top_level)
+		: QMenu(gv), top_level_menu(top_level? new Menu : 0), view(gv),
+		name(name_)
+	{
+		setTitle(name_);
+	}
+
 	~GuiPopupMenu() { delete top_level_menu; }
 
 	/// populates the menu or one of its submenu
@@ -1480,23 +1488,29 @@ void Menus::updateMenu(QString const & name)
 	// Here, We make sure that theLyXFunc points to the correct LyXView.
 	theLyXFunc().setLyXView(qmenu->view);
 
+	if (!d->hasMenu(qmenu->name)) {
+		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
+			<< fromqstr(qmenu->name));
+		return;
+	}
+
 	Menu const & fromLyxMenu = d->getMenu(qmenu->name);
 	d->expand(fromLyxMenu, *qmenu->top_level_menu, qmenu->view->buffer());
-
-	if (!d->hasMenu(qmenu->top_level_menu->name())) {
-		LYXERR(Debug::GUI, "\tWARNING: menu seems empty"
-			<< fromqstr(qmenu->top_level_menu->name()));
-	}
 	qmenu->populate(qmenu, qmenu->top_level_menu);
 }
 
 
-QMenu * Menus::menu(QString const & name)
+QMenu * Menus::menu(QString const & name, GuiView & view)
 {
 	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
 	GuiPopupMenu * menu = d->name_map_.value(name, 0);
-	if (!menu)
+	if (!menu && !name.startsWith("context-")) {
 		LYXERR0("resquested context menu not found: " << fromqstr(name));
+		return 0;
+	}
+
+	menu = new GuiPopupMenu(&view, name, true);
+	d->name_map_[name] = menu;
 	return menu;
 }
 

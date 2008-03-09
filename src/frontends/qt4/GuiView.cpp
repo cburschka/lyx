@@ -1667,7 +1667,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MENU_OPEN:
-			if (QMenu * menu = guiApp->menus().menu(toqstr(cmd.argument())))
+			if (QMenu * menu = guiApp->menus().menu(toqstr(cmd.argument()), *this))
 				menu->exec(QCursor::pos());
 			break;
 
