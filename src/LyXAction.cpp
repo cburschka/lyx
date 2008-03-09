@@ -1527,14 +1527,14 @@ void LyXAction::init()
  */
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR
+ * \var lyx::kb_action lyx::LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE
  * \li Action: Determine whether keep cursor inside the editing window regardless
                the scrollbar movement.
  * \li Syntax: toggle-cursor-follows-scrollbar
  * \li Origin: ARRae, 2 Dec 1997
  * \endvar
  */
-		{ LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar", ReadOnly, System },
+		{ LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE, "cursor-follows-scrollbar-toggle", ReadOnly, System },
 /*!
  * \var lyx::kb_action lyx::LFUN_SET_COLOR
  * \li Action: Set the given LyX color to the color defined by the X11 name given.

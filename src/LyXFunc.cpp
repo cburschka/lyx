@@ -607,7 +607,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_BUFFER_CHILD_OPEN:
 	case LFUN_UI_TOGGLE:
-	case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
+	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
 	case LFUN_KEYMAP_SECONDARY:
@@ -1324,7 +1324,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
+		case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 			BOOST_ASSERT(lyx_view_);
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 			break;
