@@ -5,9 +5,9 @@
  *
  * \author John Levon
  * \author Asger Alstrup
- * \author Lars Gullik BjÃ¸nnes
+ * \author Lars Gullik Bønnes
  * \author Jean-Marc Lasgouttes
- * \author AndrÃ© PÃ¶nitz
+ * \author André Pönitz
  * \author Dekel Tsur
  * \author Martin Vermeer
  *
