@@ -2067,7 +2067,7 @@ void GuiDocument::useClassDefaults()
 {
 	if (applyPB->isEnabled()) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
-				_("Some changes in the dialog were not yet applied."
+				_("Some changes in the dialog were not yet applied.\n"
 				  "If you do not apply now, they will be lost after this action."),
 				1, 1, _("&Apply"), _("&Dismiss"));
 		if (ret == 0)
