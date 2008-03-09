@@ -77,6 +77,8 @@ public:
 	InsetNoteParams const & params() const { return params_; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	///
+	bool noFontChange() const { return params_.type != InsetNoteParams::Note; }
 protected:
 	InsetNote(InsetNote const &);
 	///

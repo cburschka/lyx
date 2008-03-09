@@ -69,6 +69,10 @@ What's new
 
 - Assure amsthm is loaded if a theorem is defined with \theoremstyle.
 
+- Close font macros (such as \emph) before comments, greyedout, framed
+  and shaded notes, thus fixing a problem where documents couldn't be
+  compiled anymore.
+
 
 * USER INTERFACE:
 
