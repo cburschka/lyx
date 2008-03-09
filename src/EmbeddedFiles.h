@@ -141,14 +141,13 @@ public:
 
 	/// embedding status of this file
 	bool embedded() const { return embedded_; }
-	/// set embedding status. updateFromExternal() should be called before this
-	/// to copy or sync the embedded file with external one.
+	/// set embedding status. 
 	void setEmbed(bool embed);
 
 	/// whether or not embedding is enabled in the current buffer
 	bool enabled() const { return temp_path_ != ""; }
 	/// enable embedding of this file
-	void enable(bool flag, Buffer const * buf);
+	void enable(bool flag, Buffer const * buf, bool updateFile);
 
 	/// extract file, does not change embedding status
 	bool extract() const;
@@ -198,7 +197,7 @@ class EmbeddedFileList : public std::vector<EmbeddedFile> {
 public:
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.
-	void enable(bool flag, Buffer & buffer);
+	void enable(bool flag, Buffer & buffer, bool updateFile);
 
 	/// add a file item.
 	/* \param file Embedded file to add

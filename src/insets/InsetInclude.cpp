@@ -145,7 +145,7 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	EmbeddedFile file(to_utf8(params["filename"]),
 	       onlyPath(parentFilename(buffer)));
 	file.setEmbed(!params["embed"].empty());
-	file.enable(buffer.embedded(), &buffer);
+	file.enable(buffer.embedded(), &buffer, false);
 	return file;
 }
 
@@ -252,6 +252,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(INCLUDE_CODE);
 		InsetCommandMailer::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
+			Buffer const & buf = cur.buffer();
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
 				docstring const label_str = from_utf8(new_params.getParamValue("label"));
@@ -272,7 +273,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					p["embed"].clear();
 				else
 					p["embed"] = from_utf8(EmbeddedFile(to_utf8(p["filename"]),
-						onlyPath(parentFilename(cur.buffer()))).inzipName());
+						onlyPath(parentFilename(buf))).inzipName());
 				// test parameter
 				includedFilename(cur.buffer(), p);
 			} catch (ExceptionMessage const & message) {

@@ -184,11 +184,6 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	if (token == "filename") {
 		lex.eatLine();
 		filename.set(lex.getString(), bufpath);
-	} else if (token == "inzipName") {
-		// this option is currently ignored because only files in
-		// or under current document path is embeddable, and their
-		// inzipName is automatically determined.
-		lex.eatLine();
 	} else if (token == "embed") {
 		lex.next();
 		string const name = lex.getString();

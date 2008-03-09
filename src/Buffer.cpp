@@ -571,6 +571,10 @@ bool Buffer::readDocument(Lexer & lex)
 	// read main text
 	bool const res = text().read(*this, lex, errorList, &(d->inset));
 
+	// Enable embeded files, which will set temp path and move
+	// inconsistent inzip files if needed.
+	embeddedFiles().enable(params().embedded, *this, false);
+
 	updateMacros();
 	updateMacroInstances();
 	return res;

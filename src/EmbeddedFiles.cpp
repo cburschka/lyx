@@ -110,10 +110,18 @@ void EmbeddedFile::setEmbed(bool embed)
 }
 
 
-void EmbeddedFile::enable(bool flag, Buffer const * buf)
+void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 {
-	if (enabled() == flag)
-		return;
+	// This function will be called when
+	// 1. through EmbeddedFiles::enable() when a file is read. Files
+	//    should be in place so no updateFromExternalFile or extract()
+	//    should be called. (updateFile should be false in this case).
+	// 2. through menu item enable/disable. updateFile should be true.
+	// 3. A single embedded file is added or modified. updateFile
+	//    can be true or false.
+	LYXERR(Debug::FILES, (flag ? "Enable" : "Disable") 
+		<< " " << absFilename() 
+		<< (updateFile ? " (update file)." : " (no update)."));
 
 	if (flag) {
 		temp_path_ = buf->temppath();
@@ -122,11 +130,12 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf)
 		if (embedded()) {
 			if (inzip_name_ != calcInzipName(buf->filePath()))
 				syncInzipFile(buf->filePath());
-			updateFromExternalFile();
-		} else
-			extract();
+			if (updateFile)
+				updateFromExternalFile();
+		}
 	} else {
-		extract();
+		if (embedded() && updateFile)
+			extract();
 		temp_path_ = "";
 	}
 }
@@ -370,11 +379,8 @@ bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
 }
 
 
-void EmbeddedFileList::enable(bool flag, Buffer & buffer)
+void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 {
-	if (buffer.embedded() == flag)
-		return;
-	
 	// update embedded file list
 	update(buffer);
 	
@@ -384,7 +390,7 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 	std::vector<EmbeddedFile>::iterator it_end = end();
 	// an exception may be thrown
 	for (; it != it_end; ++it) {
-		it->enable(flag, &buffer);
+		it->enable(flag, &buffer, updateFile);
 		if (it->embedded())
 			++count_embedded;
 		else
@@ -397,7 +403,10 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 	// if the operation is successful, update insets
 	for (it = begin(); it != it_end; ++it)
 		it->updateInsets();
-	
+
+	if (!updateFile)
+		return;
+
 	// show result
 	if (flag) {
 		docstring const msg = bformat(_("%1$d external files are ignored.\n"
@@ -414,7 +423,6 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer)
 void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 	Inset const * inset, Buffer const & buffer)
 {
-	BOOST_ASSERT(!buffer.embedded() || file.availableFile().exists());
 	BOOST_ASSERT(!buffer.embedded() || file.enabled());
 
 	// try to find this file from the list

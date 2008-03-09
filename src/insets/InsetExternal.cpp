@@ -446,7 +446,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (!p.filename.empty()) {
 			try {
-				p.filename.enable(buffer().embedded(), &buffer());
+				p.filename.enable(buffer().embedded(), &buffer(), true);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens
@@ -497,11 +497,7 @@ void InsetExternal::registerEmbeddedFiles(EmbeddedFileList & files) const
 
 void InsetExternal::updateEmbeddedFile(EmbeddedFile const & file)
 {
-	// when embedding is enabled, change of embedding status leads to actions
-	EmbeddedFile temp = file;
-	temp.enable(buffer().embedded(), &buffer());
-	// this will not be set if an exception is thorwn in enable()
-	params_.filename = temp;
+	params_.filename = file;
 }
 
 
@@ -728,7 +724,7 @@ void InsetExternal::read(Lexer & lex)
 	InsetExternalParams params;
 	if (params.read(buffer(), lex)) {
 		// exception handling is not needed as long as embedded files are in place.
-		params.filename.enable(buffer().embedded(), &buffer());
+		params.filename.enable(buffer().embedded(), &buffer(), false);
 		setParams(params);
 	}
 }

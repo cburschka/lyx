@@ -168,7 +168,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (!p.filename.empty()) {
 			try {
-				p.filename.enable(buffer().embedded(), &buffer());
+				p.filename.enable(buffer().embedded(), &buffer(), true);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// do not set parameter if an error happens
@@ -220,16 +220,8 @@ void InsetGraphics::registerEmbeddedFiles(EmbeddedFileList & files) const
 
 void InsetGraphics::updateEmbeddedFile(EmbeddedFile const & file)
 {
-	// when embedding is enabled, change of embedding status leads to actions
-	EmbeddedFile temp = file;
-	temp.enable(buffer().embedded(), &buffer());
-	// this will not be set if an exception is thorwn in enable()
-	params_.filename = temp;
-
-	LYXERR(Debug::FILES, "Update InsetGraphic with File " 
-		<< params_.filename.toFilesystemEncoding() 
-		<< ", embedding status: " << params_.filename.embedded()
-		<< ", enabled: " << params_.filename.enabled());
+	// only properties of an embedded file can be changed here.
+	params_.filename = file;
 }
 
 
@@ -273,7 +265,7 @@ void InsetGraphics::read(Lexer & lex)
 	else
 		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
-	params_.filename.enable(buffer().embedded(), &buffer());
+	params_.filename.enable(buffer().embedded(), &buffer(), false);
 	graphic_->update(params().as_grfxParams());
 }
 

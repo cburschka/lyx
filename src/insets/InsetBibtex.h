@@ -15,10 +15,9 @@
 #include <map>
 #include "InsetCommand.h"
 #include "BiblioInfo.h"
+#include "EmbeddedFiles.h"
 
 namespace lyx {
-
-class EmbeddedFileList;
 
 
 /** Used to insert BibTeX's information
@@ -54,11 +53,25 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
+	/// create bibfiles_ from params bibfiles and embed
+	/**
+		\param bibfiles comma separated bib files
+		\param embed comma separated embed status
+		\param boolStatus if true, embed has values true/false, which 
+			needs to be converted to inzip names.
+		\param updateFile whether or not try to update file.
+	*/
+	void createBibFiles(docstring const & bibfiles, docstring const & embed,
+		bool boolStatus, bool updateFile) const;
+	/// update bibfiles and embed from bibfiles_
+	void updateParam();
 private:
 	///
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(EmbeddedFile const & file);
+	/// embedded bib files
+	mutable EmbeddedFileList bibfiles_;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

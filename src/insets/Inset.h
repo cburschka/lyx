@@ -431,7 +431,8 @@ public:
 	virtual void addToToc(ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
 	virtual void registerEmbeddedFiles(EmbeddedFileList &) const {}
-	/// use embedded or external file after the embedding status of a file is changed
+	/// update the properties of an embedded file of an inset
+	/// the name of the embedded file should not change.
 	virtual void updateEmbeddedFile(EmbeddedFile const &) {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const {}
