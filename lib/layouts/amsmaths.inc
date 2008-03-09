@@ -68,6 +68,7 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+	  \@ifundefined{theoremstyle}{\usepackage{amsthm}}{}
 	  \theoremstyle{plain}
 	  \newtheorem{thm}{Theorem}[section]
 	EndPreamble
@@ -76,6 +77,7 @@ End
 
 Style Theorem*
 	CopyStyle             Theorem
+	DependsOn	      Theorem
 	LatexName             thm*
 	LabelType             Static
 	LabelString           "Theorem."
@@ -100,6 +102,7 @@ End
 
 Style Corollary*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             cor*
 	LabelString           "Corollary."
 	Preamble
@@ -123,6 +126,7 @@ End
 
 Style Lemma*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             lem*
 	LabelString           "Lemma."
 	Preamble
@@ -146,6 +150,7 @@ End
 
 Style Proposition*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             prop*
 	LabelString           "Proposition."
 	Preamble
@@ -158,6 +163,7 @@ End
 Style Conjecture
 	CopyStyle             Theorem
 	DependsOn	      Theorem
+	DependsOn	      Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture @Section@.\arabic{theorem}."
 	Preamble
@@ -169,6 +175,7 @@ End
 
 Style Conjecture*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             conjecture*
 	LabelString           "Conjecture."
 	Preamble
@@ -191,6 +198,7 @@ End
 
 Style Criterion*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             criterion*
 	LabelString           "Criterion."
 	Preamble
@@ -214,6 +222,7 @@ End
 
 Style Algorithm*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             algorithm*
 	LabelString           "Algorithm."
 	Preamble
@@ -237,6 +246,7 @@ End
 
 Style Fact*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             fact*
 	LabelString           "Fact."
 	Preamble
@@ -260,6 +270,7 @@ End
 
 Style Axiom*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             ax*
 	LabelString           "Axiom."
 	Preamble
@@ -290,6 +301,7 @@ End
 
 Style Definition*
 	CopyStyle             Definition
+	DependsOn	      Theorem
 	LatexName             defn*
 	LabelType             Static
 	LabelString           "Definition."
@@ -302,6 +314,7 @@ End
 
 Style Example
 	CopyStyle             Definition
+	DependsOn	      Theorem
 	LatexName             example
 	LabelString           "Example @Section@.\arabic{theorem}."
 	Preamble
@@ -313,6 +326,7 @@ End
 
 Style Example*
 	CopyStyle             Definition*
+	DependsOn	      Theorem
 	LatexName             example*
 	LabelString           "Example."
 	Preamble
@@ -324,6 +338,7 @@ End
 
 Style Condition
 	CopyStyle             Definition
+	DependsOn	      Theorem
 	LatexName             condition
 	LabelString           "Condition @Section@.\arabic{theorem}."
 	Preamble
@@ -335,6 +350,7 @@ End
 
 Style Condition*
 	CopyStyle             Definition*
+	DependsOn	      Theorem
 	LatexName             condition*
 	LabelString           "Condition."
 	Preamble
@@ -346,6 +362,7 @@ End
 
 Style Problem
 	CopyStyle             Definition
+	DependsOn	      Theorem
 	LatexName             problem
 	LabelString           "Problem @Section@.\arabic{theorem}."
 	Preamble
@@ -357,6 +374,7 @@ End
 
 Style Problem*
 	CopyStyle             Definition*
+	DependsOn	      Theorem
 	LatexName             problem*
 	LabelString           "Problem."
 	Preamble
@@ -368,6 +386,7 @@ End
 
 Style Exercise
 	CopyStyle             Definition
+	DependsOn	      Theorem
 	LatexName             xca
 	LabelString           "Exercise @Section@.\arabic{theorem}."
 	Preamble
@@ -379,6 +398,7 @@ End
 
 Style Exercise*
 	CopyStyle             Definition*
+	DependsOn	      Theorem
 	LatexName             xca*
 	LabelString           "Exercise."
 	Preamble
@@ -410,6 +430,7 @@ End
 
 Style Remark*
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             rem*
 	LabelType             Static
 	LabelString           "Remark."
@@ -422,6 +443,7 @@ End
 
 Style Claim
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             claim
 	LabelString           "Claim @Section@.\arabic{theorem}."
 	Preamble
@@ -433,6 +455,7 @@ End
 
 Style Claim*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             claim*
 	LabelString           "Claim."
 	Preamble
@@ -444,6 +467,7 @@ End
 
 Style Note
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             note
 	LabelString           "Note @Section@.\arabic{theorem}."
 	Preamble
@@ -455,6 +479,7 @@ End
 
 Style Note*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             note*
 	LabelString           "Note."
 	Preamble
@@ -466,6 +491,7 @@ End
 
 Style Notation
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             notation
 	LabelString           "Notation @Section@.\arabic{theorem}."
 	Preamble
@@ -477,6 +503,7 @@ End
 
 Style Notation*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             notation*
 	LabelString           "Notation."
 	Preamble
@@ -488,6 +515,7 @@ End
 
 Style Summary
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             summary
 	LabelString           "Summary @Section@.\arabic{theorem}."
 	Preamble
@@ -499,6 +527,7 @@ End
 
 Style Summary*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             summary*
 	LabelString           "Summary."
 	Preamble
@@ -510,6 +539,7 @@ End
 
 Style Acknowledgement
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             acknowledgement
 	LabelString           "Acknowledgement @Section@.\arabic{theorem}."
 	Preamble
@@ -521,6 +551,7 @@ End
 
 Style Acknowledgement*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             acknowledgement*
 	LabelString           "Acknowledgement."
 	Preamble
@@ -532,6 +563,7 @@ End
 
 Style Conclusion
 	CopyStyle             Remark
+	DependsOn	      Theorem
 	LatexName             conclusion
 	LabelString           "Conclusion @Section@.\arabic{theorem}."
 	Preamble
@@ -543,6 +575,7 @@ End
 
 Style Conclusion*
 	CopyStyle             Remark*
+	DependsOn	      Theorem
 	LatexName             conclusion*
 	LabelString           "Conclusion."
 	Preamble
@@ -566,6 +599,7 @@ End
 
 Style Assumption*
 	CopyStyle             Theorem*
+	DependsOn	      Theorem
 	LatexName             assumption*
 	LabelString           "Assumption."
 	Preamble

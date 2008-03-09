@@ -66,6 +66,8 @@ What's new
 - Use verbose htlatex command instead of oolatex, if available, since the latter
   caused problems on some systems (bug 4604).
 
+- Assure amsthm is loaded if a theorem is defined with \theoremstyle.
+
 
 * USER INTERFACE:
 
