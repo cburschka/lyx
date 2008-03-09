@@ -767,7 +767,7 @@ void LyXAction::init()
 		{ LFUN_MATH_NUMBER_LINE_TOGGLE, "math-number-line-toggle", Noop, Math },
 /*!
  * \var lyx::kb_action lyx::LFUN_MATH_NUMBER_TOGGLE
- * \li Action: Toggles numbering of the current formula.
+ * \li Action: Toggles numbering/labeling of the current formula.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-toggle
  * \li Origin: Alejandro 4 Jun 1996
