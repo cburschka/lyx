@@ -1380,6 +1380,14 @@ def revert_wrapplacement(document):
         i = i + 1
 
 
+def remove_extra_embedded_files(document):
+    "Remove \extra_embedded_files from buffer params"
+    i = find_token(document.header, '\\extra_embedded_files', 0)
+    if i == -1:
+        document.warning("Malformed lyx document: Missing '\\extra_embedded_files'.")
+        return
+    document.header.pop(i)
+
 ##
 # Conversion hub
 #
@@ -1425,10 +1433,12 @@ convert = [[277, [fix_wrong_tables]],
            [314, []],
            [315, []],
            [316, [convert_subfig]],
-           [317, []]
+           [317, []],
+           [318, []],
           ]
 
-revert =  [[316, [revert_wrapplacement]],
+revert =  [[317, [remove_extra_embedded_files]],
+           [316, [revert_wrapplacement]],
            [315, [revert_subfig]],
            [314, [revert_colsep]],
            [313, []],

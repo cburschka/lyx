@@ -270,6 +270,9 @@ public:
 	bool compressed;
 	///
 	bool embedded;
+	///
+	std::vector<std::string> & extraEmbeddedFiles();
+	std::vector<std::string> const & extraEmbeddedFiles() const;
 
 	/// the author list for the document
 	AuthorList & authors();

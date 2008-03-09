@@ -137,7 +137,7 @@ public:
 
 	/// add an inset that refers to this file
 	void addInset(Inset const * inset);
-	int refCount() const { return inset_list_.size(); }
+	void clearInsets() const { inset_list_.clear(); }
 
 	/// embedding status of this file
 	bool embedded() const { return embedded_; }
@@ -180,7 +180,7 @@ private:
 	bool embedded_;
 	/// Insets that contains this file item. Because a 
 	/// file item can be referred by several Insets, a vector is used.
-	std::vector<Inset const *> inset_list_;
+	mutable std::vector<Inset const *> inset_list_;
 	/// Embedded file needs to know whether enbedding is enabled,
 	/// and where is the lyx temporary directory. Such information can
 	/// be retrived from a buffer, but a buffer is not always available when

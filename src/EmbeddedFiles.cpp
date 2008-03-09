@@ -59,7 +59,8 @@ void EmbeddedFile::set(std::string const & filename, std::string const & buffer_
 	if (filename.empty())
 		return;
 
-	inzip_name_ = calcInzipName(buffer_path);
+	if (!buffer_path.empty())
+		inzip_name_ = calcInzipName(buffer_path);
 }
 
 
@@ -386,8 +387,8 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 	
 	int count_embedded = 0;
 	int count_external = 0;
-	std::vector<EmbeddedFile>::iterator it = begin();
-	std::vector<EmbeddedFile>::iterator it_end = end();
+	iterator it = begin();
+	iterator it_end = end();
 	// an exception may be thrown
 	for (; it != it_end; ++it) {
 		it->enable(flag, &buffer, updateFile);
@@ -443,6 +444,7 @@ void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 			return;
 		}
 	//
+	file.clearInsets();
 	push_back(file);
 	back().addInset(inset);
 }
@@ -454,6 +456,17 @@ void EmbeddedFileList::update(Buffer const & buffer)
 
 	for (InsetIterator it = inset_iterator_begin(buffer.inset()); it; ++it)
 		it->registerEmbeddedFiles(*this);
+
+	// add extra embedded files
+	vector<string> extra = buffer.params().extraEmbeddedFiles();
+	vector<string>::iterator it = extra.begin();
+	vector<string>::iterator it_end = extra.end();
+	for (; it != it_end; ++it) {
+		EmbeddedFile file = EmbeddedFile(*it, buffer.filePath());
+		file.setEmbed(true);
+		file.enable(buffer.embedded(), &buffer, true);
+		insert(end(), file);
+	}
 }
 
 
@@ -468,8 +481,9 @@ bool EmbeddedFileList::writeFile(DocFileName const & filename, Buffer const & bu
 	filenames.push_back(make_pair(content, "content.lyx"));
 	// prepare list of embedded file
 	update(buffer);
-	std::vector<EmbeddedFile>::iterator it = begin();
-	std::vector<EmbeddedFile>::iterator it_end = end();
+	//
+	iterator it = begin();
+	iterator it_end = end();
 	for (; it != it_end; ++it) {
 		if (it->embedded()) {
 			string file = it->embeddedFile();

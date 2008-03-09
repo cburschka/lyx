@@ -20,7 +20,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Color.h"
-#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "FuncRequest.h"
@@ -44,6 +43,7 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -919,12 +919,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// embedded files
 	embeddedFilesModule = new UiWidget<Ui::EmbeddedFilesUi>;
-	connect(embeddedFilesModule->bundleCB, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
 	connect(embeddedFilesModule->addPB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(addExtraEmbeddedFile()));
 	connect(embeddedFilesModule->removePB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(removeExtraEmbeddedFile()));
 
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
@@ -1359,28 +1357,32 @@ void GuiDocument::updateModuleInfo()
 }
 
 
-void GuiDocument::updateEmbeddedFileList()
+void GuiDocument::setExtraEmbeddedFileList()
 {
-	embeddedFilesModule->filesLW->clear();
+	embeddedFilesModule->extraLW->clear();
 	// add current embedded files
-	EmbeddedFileList & files = buffer().embeddedFiles();
-	files.update(buffer());
-	EmbeddedFileList::iterator fit = files.begin();
-	EmbeddedFileList::iterator fit_end = files.end();
-	for (; fit != fit_end; ++fit) {
-		QString label = toqstr(fit->relFilename(buffer().filePath()));
-		if (fit->refCount() > 1)
-			label += " (" + QString::number(fit->refCount()) + ")";
-		QListWidgetItem * item = new QListWidgetItem(label);
-		item->setFlags(item->flags() | Qt::ItemIsSelectable
-			| Qt::ItemIsUserCheckable);
-		if(fit->embedded())
-			item->setCheckState(Qt::Checked);
-		else
-			item->setCheckState(Qt::Unchecked);
-		// index of the currently used ParConstIterator
-		embeddedFilesModule->filesLW->addItem(item);
-	}
+	vector<string> const & files = buffer().params().extraEmbeddedFiles();
+	vector<string>::const_iterator fit = files.begin();
+	vector<string>::const_iterator fit_end = files.end();
+	for (; fit != fit_end; ++fit)
+		embeddedFilesModule->extraLW->addItem(toqstr(*fit));
+}
+
+
+void GuiDocument::addExtraEmbeddedFile()
+{
+	QString file = browseRelFile(QString(), bufferFilepath(),
+		qt_("Extra embedded file"), FileFilterList(), true);
+
+	if (embeddedFilesModule->extraLW->findItems(file, Qt::MatchExactly).empty())
+		embeddedFilesModule->extraLW->addItem(file);
+}
+
+
+void GuiDocument::removeExtraEmbeddedFile()
+{
+	int index = embeddedFilesModule->extraLW->currentRow();
+	delete embeddedFilesModule->extraLW->takeItem(index);
 }
 
 
@@ -1688,7 +1690,12 @@ void GuiDocument::apply(BufferParams & params)
 				fromqstr(pdfSupportModule->optionsLE->text()));
 
 	// Embedded files
-	// FIXME
+	vector<string> & files = params.extraEmbeddedFiles();
+	files.clear();
+	for (size_t i = 0; i < embeddedFilesModule->extraLW->count(); ++i) {
+		QListWidgetItem * item = embeddedFilesModule->extraLW->item(i);
+		files.push_back(fromqstr(item->text()));
+	}
 }
 
 
@@ -1993,9 +2000,8 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	pdfSupportModule->optionsLE->setText(
 		toqstr(pdf.quoted_options));
-
-	// embedded files
-	updateEmbeddedFileList();
+	
+	setExtraEmbeddedFileList();
 }
 
 

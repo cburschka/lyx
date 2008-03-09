@@ -275,6 +275,7 @@ public:
 
 	AuthorList authorlist;
 	BranchList branchlist;
+	vector<string> extraEmbeddedFiles;
 	Bullet temp_bullets[4];
 	Bullet user_defined_bullets[4];
 	Spacing spacing;
@@ -376,6 +377,18 @@ AuthorList & BufferParams::authors()
 AuthorList const & BufferParams::authors() const
 {
 	return pimpl_->authorlist;
+}
+
+
+vector<string> & BufferParams::extraEmbeddedFiles()
+{
+	return pimpl_->extraEmbeddedFiles;
+}
+
+
+vector<string> const & BufferParams::extraEmbeddedFiles() const
+{
+	return pimpl_->extraEmbeddedFiles;
 }
 
 
@@ -658,6 +671,16 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 				toktmp << endl;
 			return toktmp;
 		}
+	} else if (token == "\\extra_embedded_files") {
+		extraEmbeddedFiles().clear();
+		string par;
+		lex >> par;
+		string tmp;
+		par = split(par, tmp, ',');
+		while (!tmp.empty()) {
+			extraEmbeddedFiles().push_back(tmp);
+			par = split(par, tmp, ',');
+		}
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -811,6 +834,19 @@ void BufferParams::writeFile(ostream & os) const
 		else
 			os << "\\author " << Author() << "\n";
 	}
+
+	vector<string>::const_iterator e_it = extraEmbeddedFiles().begin();
+	vector<string>::const_iterator e_end = extraEmbeddedFiles().end();
+	os << "\\extra_embedded_files \"";
+	bool first = true;
+	for (; e_it != e_end; ++e_it) {
+		if (!first)
+			os << ",";
+		else
+			first = false;
+		os << *e_it;
+	}
+	os << "\"\n";
 }
 
 

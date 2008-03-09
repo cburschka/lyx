@@ -137,7 +137,9 @@ private Q_SLOTS:
 	void portraitChanged();
 	void classChanged();
 	void updateModuleInfo();
-	void updateEmbeddedFileList();
+	void setExtraEmbeddedFileList();
+	void addExtraEmbeddedFile();
+	void removeExtraEmbeddedFile();
 
 private:
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;

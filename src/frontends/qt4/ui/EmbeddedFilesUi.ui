@@ -19,7 +19,31 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="6" column="1" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="extraLBL" >
+     <property name="text" >
+      <string>Extra embedded files:</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="3" row="1" column="0" >
+    <widget class="QListWidget" name="extraLW" />
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="addPB" >
+     <property name="text" >
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QPushButton" name="removePB" >
+     <property name="text" >
+      <string>Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -31,47 +55,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="5" column="1" >
-    <widget class="QPushButton" name="removePB" >
-     <property name="text" >
-      <string>Remove</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" >
-    <widget class="QPushButton" name="addPB" >
-     <property name="text" >
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="3" row="4" column="0" >
-    <widget class="QListWidget" name="extraLW" />
-   </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="extraLBL" >
-     <property name="text" >
-      <string>Extra embedded files:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QListWidget" name="filesLW" />
-   </item>
-   <item row="0" column="0" >
-    <widget class="QCheckBox" name="bundleCB" >
-     <property name="text" >
-      <string>Save this document in bundled format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="filesLBL" >
-     <property name="text" >
-      <string>Embedded files:</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
