@@ -535,8 +535,16 @@ Menuset
 # InsetRef context menu
 #
 	Menu "context-ref"
-		Item "Next Cross-Reference|R" "reference-next"
-		Item "Go to Label|L" "label-goto"
+		Item "Next Cross-Reference|N" "reference-next"
+		Item "Go to Label|G" "label-goto"
 	End
 
+#
+# InsetLabel context menu
+#
+	Menu "context-label"
+		Item "Next Cross-Reference|N" "reference-next"
+		Item "Go back to Reference|G" "bookmark-goto 0"
+	End
+	
 End
