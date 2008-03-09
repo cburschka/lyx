@@ -305,6 +305,7 @@ src_support_header_files = Split('''
     docstring.h
     environment.h
     filetools.h
+    foreach.h
     gettext.h
     gzstream.h
     limited_stack.h
