@@ -15,9 +15,10 @@
 
 #include "support/docstring.h"
 
+#include <Qmenu>
+
 #include <vector>
 
-class QMenu;
 class QString;
 
 namespace lyx {
@@ -54,6 +55,24 @@ private:
 	struct Impl;
 	/// The pointer never changes although *d's contents may.
 	Impl * const d;
+};
+
+
+class GuiPopupMenuBase : public QMenu
+{
+	Q_OBJECT
+	
+public:
+	///
+	GuiPopupMenuBase(QWidget * parent = 0)
+		: QMenu(parent)
+	{
+		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));
+	}
+	
+private Q_SLOTS:
+	///
+	virtual void updateView() = 0;
 };
 
 } // namespace frontend

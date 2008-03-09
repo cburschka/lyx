@@ -281,13 +281,13 @@ public:
 };
 
 /// a submenu
-class GuiPopupMenu : public QMenu
+class GuiPopupMenu : public GuiPopupMenuBase
 {
 public:
 	///
 	GuiPopupMenu(GuiView * gv, MenuItem const & mi, bool top_level)
-		: QMenu(gv), top_level_menu(top_level? new Menu : 0), view(gv),
-		name(mi.submenuname())
+		: GuiPopupMenuBase(gv), top_level_menu(top_level? new Menu : 0),
+		view(gv), name(mi.submenuname())
 	{
 		setTitle(label(mi));
 	}
@@ -309,19 +309,20 @@ public:
 	/// Get a Menu item label from the menu backend
 	QString label(MenuItem const & mi) const;
 
-	void showEvent(QShowEvent * ev)
-	{
-		if (top_level_menu)
-			guiApp->menus().updateMenu(name);
-		QMenu::showEvent(ev);
-	}
-
 	/// Only needed for top level menus.
 	Menu * top_level_menu;
 	/// our owning view
 	GuiView * view;
 	/// the name of this menu
 	QString name;
+	
+private Q_SLOTS:
+	///
+	void updateView()
+	{
+		if (top_level_menu)
+			guiApp->menus().updateMenu(name);
+	}
 };
 
 /// Helper for std::find_if
