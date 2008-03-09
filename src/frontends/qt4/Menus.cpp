@@ -294,7 +294,7 @@ public:
 
 	///
 	GuiPopupMenu(GuiView * gv, QString const & name_, bool top_level)
-		: QMenu(gv), top_level_menu(top_level? new Menu : 0), view(gv),
+		: GuiPopupMenuBase(gv), top_level_menu(top_level? new Menu : 0), view(gv),
 		name(name_)
 	{
 		setTitle(name_);

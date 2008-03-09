@@ -15,7 +15,7 @@
 
 #include "support/docstring.h"
 
-#include <Qmenu>
+#include <QMenu>
 
 #include <vector>
 
