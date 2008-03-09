@@ -1489,6 +1489,7 @@ void Menus::updateMenu(QString const & name)
 	theLyXFunc().setLyXView(qmenu->view);
 
 	if (!d->hasMenu(qmenu->name)) {
+		qmenu->addAction(qt_("No action defined!"));
 		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
 			<< fromqstr(qmenu->name));
 		return;
