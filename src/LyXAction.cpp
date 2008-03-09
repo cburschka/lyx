@@ -1068,7 +1068,6 @@ void LyXAction::init()
                movement within the inset has ceased (reached the end of the
                last paragraph, for example), in order to move correctly
                back into the surrounding text.
- * \li Syntax: finished-forward
  * \endvar
  */
 		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
@@ -1076,7 +1075,6 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_FINISHED_BACKWARD
  * \li Action: Moves the cursor out of the current slice, going backwards.
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
- * \li Syntax: finished-backward
  * \endvar
  */
 		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
@@ -1084,7 +1082,6 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_FINISHED_RIGHT
  * \li Action: Moves the cursor out of the current slice, going right.
  * \li Notion: See also #LFUN_FINISHED_FORWARD
- * \li Syntax: finished-right
  * \endvar
  */
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
@@ -1092,13 +1089,22 @@ void LyXAction::init()
  * \var lyx::kb_action lyx::LFUN_FINISHED_LEFT
  * \li Action: Moves the cursor out of the current slice, going left.
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
- * \li Syntax: finished-left
  * \endvar
  */
 		{ LFUN_FINISHED_LEFT, "", ReadOnly, Hidden },
 
 		{ LFUN_LANGUAGE, "language", Noop, Edit },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_LABEL_GOTO
+ * \li Action: Goto a label.
+ * \li Syntax: label-goto [<LABEL>]
+ * \li Params: <LABEL>: Requested label. If no label is given and refernce
+			is on cursor position, Bookmark 0 is saved and
+			cursor moves to the position of referenced label.
+ * \li Origin: Ale, 6 Aug 1997
+ * \endvar
+ */
 		{ LFUN_LABEL_GOTO, "label-goto", ReadOnly, Edit },
 		{ LFUN_LABEL_INSERT, "label-insert", Noop, Edit },
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
