@@ -808,7 +808,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
-			handleFont(cur, cmd.argument(), "mathbf");
+			handleFont(cur, cmd.argument(), "boldsymbol");
 		break;
 	case LFUN_FONT_SANS:
 		if (currentMode() == TEXT_MODE)
