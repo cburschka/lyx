@@ -46,7 +46,6 @@ What's new
 
 
 
-
 ** Bug fixes:
 *************
 
@@ -57,15 +56,17 @@ What's new
 - Fix reversion of OHM and ANGSTROM characters to LyX < 1.5.0 (rest of
   bug 3313).
 
-- Check for the LaTeX packages "nicefrac" and "units" that are used by LyX.
+- Check for the LaTeX packages "nicefrac" and "units" that are used by
+  LyX.
 
-- Check for PDF->PS, PDF->EPS and PS->EPS converters and use them (bug 3968).
+- Check for PDF->PS, PDF->EPS and PS->EPS converters and use them (bug
+  3968).
 
-- Stop warning messages when a local layout file is opened. Fix bugs caused by
-  incorrect reloading of local layout files.
+- Stop warning messages when a local layout file is opened. Fix bugs
+  caused by incorrect reloading of local layout files.
 
-- Use verbose htlatex command instead of oolatex, if available, since the latter
-  caused problems on some systems (bug 4604).
+- Use verbose htlatex command instead of oolatex, if available, since the
+  latter caused problems on some systems (bug 4604).
 
 - Assure amsthm is loaded if a theorem is defined with \theoremstyle.
 
@@ -76,11 +77,12 @@ What's new
 
 * USER INTERFACE:
 
-- Allow to enter starred math commands like "\tag*" (bug 4584).
+- Allow to enter starred math commands such as \tag* (bug 4584).
 
 - Load amsmath when \tag or \tag* is used (bug 4586).
 
-- Fix parameter input of the math commands \makebox and \framebox (bug 2461).
+- Fix parameter input of the math commands \makebox and \framebox (bug
+  2461).
 
 - When cutting a selection do not leave a dangling paragraph (bug 3995).
 
