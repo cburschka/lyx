@@ -598,8 +598,7 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 
 docstring InsetText::contextMenu(BufferView const &, int, int) const
 {
-	// FIXME: Do something more elaborate here.
-	return from_ascii("edit");
+	return from_ascii("context-edit");
 }
 
 
