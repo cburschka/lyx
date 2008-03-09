@@ -535,7 +535,7 @@ Menuset
 # InsetMath context menu
 #
 	Menu "context-math"
-		Item "Equation label|L" "label-insert"
+		Item "Equation Label|L" "label-insert"
 	End
 
 
