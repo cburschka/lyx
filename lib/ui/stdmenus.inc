@@ -531,4 +531,12 @@ Menuset
 		Item "About LyX|X" "dialog-show aboutlyx"
 	End
 
+#
+# InsetRef context menu
+#
+	Menu "context-ref"
+		Item "Next Cross-Reference|R" "reference-next"
+		Item "Go to Label|L" "label-goto"
+	End
+
 End
