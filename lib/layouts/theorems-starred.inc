@@ -50,6 +50,7 @@ Style Theorem*
 	  \theoremstyle{plain}
 	  \newtheorem*{thm*}{Theorem}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -61,6 +62,7 @@ Style Corollary*
 	  \theoremstyle{plain}
 	  \newtheorem*{cor*}{Corollary}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -72,6 +74,7 @@ Style Lemma*
 	  \theoremstyle{plain}
 	  \newtheorem*{lem*}{Lemma}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -83,6 +86,7 @@ Style Proposition*
 	  \theoremstyle{plain}
 	  \newtheorem*{prop*}{Proposition}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -94,6 +98,7 @@ Style Conjecture*
 	  \theoremstyle{plain}
 	  \newtheorem*{conjecture*}{Conjecture}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -105,6 +110,7 @@ Style Fact*
 	  \theoremstyle{plain}
 	  \newtheorem*{fact*}{Fact}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -124,6 +130,7 @@ Style Definition*
 	 \theoremstyle{definition}
 	 \newtheorem*{defn*}{Definition}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -135,6 +142,7 @@ Style Example*
 	  \theoremstyle{definition}
 	  \newtheorem*{example*}{Example}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -146,6 +154,7 @@ Style Problem*
 	  \theoremstyle{definition}
 	  \newtheorem*{problem*}{Problem}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -157,6 +166,7 @@ Style Exercise*
 	  \theoremstyle{definition}
 	  \newtheorem*{xca*}{Exercise}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -176,6 +186,7 @@ Style Remark*
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -187,5 +198,6 @@ Style Claim*
 	  \theoremstyle{remark}
 	  \newtheorem*{claim*}{Claim}
 	EndPreamble
+	Requires              amsthm
 End
 

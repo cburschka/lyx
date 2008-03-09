@@ -51,12 +51,13 @@ Style Theorem
 	Preamble
 		\newtheorem{thm}{Theorem}
 	EndPreamble
+	Requires              amsthm
 End
 
 
 Style Corollary
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
@@ -67,7 +68,7 @@ End
 
 Style Lemma
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
@@ -78,7 +79,7 @@ End
 
 Style Proposition
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
@@ -89,7 +90,7 @@ End
 
 Style Conjecture
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
@@ -100,7 +101,7 @@ End
 
 Style Fact
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
@@ -111,7 +112,7 @@ End
 
 Style Definition
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             defn
 	LabelString           "Definition \thetheorem."
 	Font
@@ -133,9 +134,10 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
-	 \theoremstyle{definition}
+	  \theoremstyle{definition}
 	  \newtheorem{example}[thm]{Example}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -147,6 +149,7 @@ Style Problem
 	  \theoremstyle{definition}
 	  \newtheorem{problem}[thm]{Problem}
 	EndPreamble
+	Requires              amsthm
 End
 
 
@@ -158,12 +161,13 @@ Style Exercise
 	  \theoremstyle{definition}
 	  \newtheorem{xca}[thm]{Exercise}
 	EndPreamble
+	Requires              amsthm
 End
 
 
 Style Remark
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             rem
 	LabelString           "Remark \thetheorem."
 	Font
@@ -189,6 +193,7 @@ Style Claim
 	  \theoremstyle{remark}
 	  \newtheorem{claim}[thm]{Claim}
 	EndPreamble
+	Requires              amsthm
 End
 
 
