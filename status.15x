@@ -35,10 +35,11 @@ What's new
 
 * USER INTERFACE
 
-- Fix the automatic uncollapsing of outliner during updates (bug 3740).
-
 
 * DOCUMENT INPUT/OUTPUT
+
+- Add support for the HTML-to-LaTeX converters gnuhtml2latex and
+  htmltolatex (bug 4615).
 
 
 * BUILD/INSTALLATION:
@@ -81,6 +82,8 @@ What's new
 
 - Improve the behaviour when inserting a collapsable inset over a multi-
   paragraph selection.
+
+- Fix the automatic uncollapsing of outliner during updates (bug 3740).
 
 
 * DOCUMENTATION
