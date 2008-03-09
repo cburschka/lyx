@@ -536,6 +536,7 @@ Menuset
 #
 	Menu "context-math"
 		Item "Equation Label|L" "label-insert"
+		Item "Toggle Labeling/Numbering|T" "math-number-toggle"
 	End
 
 
