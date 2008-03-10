@@ -1,5 +1,5 @@
 #LyX 1.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 317
+\lyxformat 318
 \begin_document
 \begin_header
 \textclass article
@@ -36,6 +36,7 @@
 \output_changes false
 \author "" 
 \author "" 
+\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -4536,6 +4537,34 @@ Float)
 .
  It allows you to create a figure float which is narrower than the full
  page and wrap the text around it.
+\end_layout
+
+\begin_layout Subsection
+xargs
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "xargs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/xargs/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family typewriter
+xargs
+\family default
+ is used by LyX if you insert math macros with optional arguments.
 \end_layout
 
 \begin_layout Subsection
