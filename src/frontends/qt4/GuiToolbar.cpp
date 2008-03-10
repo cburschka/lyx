@@ -46,7 +46,6 @@
 #include <QAbstractItemDelegate>
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
-#include <QClearLook>
 #include <QComboBox>
 #include <QFontMetrics>
 #include <QHeaderView>
