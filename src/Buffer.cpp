@@ -174,6 +174,8 @@ public:
 	typedef pair<DocIterator, MacroData> ScopeMacro;
 	typedef map<DocIterator, ScopeMacro> PositionScopeMacroMap;
 	typedef map<docstring, PositionScopeMacroMap> NamePositionScopeMacroMap;
+	/// map from the macro name to the position map,
+	/// which maps the macro definition position to the scope and the MacroData.
 	NamePositionScopeMacroMap macros;
 	bool macro_lock;
 	
@@ -181,7 +183,9 @@ public:
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
 	typedef pair<DocIterator, Buffer const *> ScopeBuffer;
 	typedef map<DocIterator, ScopeBuffer> PositionScopeBufferMap;
+	/// position of children buffers in this buffer
 	BufferPositionMap children_positions;
+	/// map from children inclusion positions to their scope and their buffer
 	PositionScopeBufferMap position_to_children;
 
 	/// Container for all sort of Buffer dependant errors.
