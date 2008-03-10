@@ -1715,8 +1715,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
 				lyx_view_->buffer()->markDirty();			
 
-			//Do we have a selection?
+			// Do we have a selection?
 			theSelection().haveSelection(view()->cursor().selection());
+			
+			// update gui
+			lyx_view_->restartCursor();
 		}
 	}
 	if (lyx_view_) {
