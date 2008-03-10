@@ -2407,13 +2407,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		
 		else if (t.cs() == "newcommandx" ||
 			 t.cs() == "renewcommandx") {
+			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
+
+			// get command name
 			string command;
 			if (p.next_token().cat() == catBegin)
 				command = p.verbatim_item();
 			else 
 				command = "\\" + p.get_token().cs();
 			
+			// get arity, we do not check that it fits to the given
+			// optional parameters here.
 			string const opt1 = p.getOpt();
+			
+			// get options and default values for optional parameters
 			std::vector<string> optionalValues;
 			int optionalsNum = 0;
 			if (p.next_token().character() == '[') {
@@ -2479,10 +2486,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			}
 			
+			// concat the default values to the optionals string
 			string optionals;
 			for (unsigned i = 0; i < optionalValues.size(); ++i)
 				optionals += "[" + optionalValues[i] + "]";
 			
+			// register and output command
 			add_known_command(command, opt1, optionalsNum);
 			string const ert = "\\newcommand{" + command + '}' + opt1
 			+ optionals + '{' + p.verbatim_item() + '}';
