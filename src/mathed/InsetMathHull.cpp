@@ -1184,10 +1184,17 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (col(cur.idx()) + 1 == ncols()
-		    && cur.pos() == cur.lastpos()
-		    && !label(row(cur.idx())).empty()) {
-			cur.recordUndoInset();
-			label(row(cur.idx()), docstring());
+		    && cur.pos() == cur.lastpos()) {
+			if (!label(row(cur.idx())).empty()) {
+				cur.recordUndoInset();
+				label(row(cur.idx()), docstring());
+			} else if (numbered(row(cur.idx()))) {
+				cur.recordUndoInset();
+				numbered(row(cur.idx()), false);
+			} else {
+				InsetMathGrid::doDispatch(cur, cmd);
+				return;
+			}
 		} else {
 			InsetMathGrid::doDispatch(cur, cmd);
 			return;
