@@ -1,0 +1,7 @@
+#!/usr/bin/perl -w
+
+while (<>) {
+	s/property name=\"(top|left|right|bottom)Margin\"/property name=\"margin\"/;
+	s/property name=\"(horizont|vertic)Spacing\"/property name=\"spacing\"/;
+	print;
+}
