@@ -549,6 +549,7 @@ char const * simplefeatures[] = {
 	"amsthm",
 	"listings",
 	"bm"
+	"xargs"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

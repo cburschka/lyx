@@ -1133,10 +1133,16 @@ void MathMacroTemplate::write(WriteStream & os) const
 
 void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 {
+	bool xargs = false;
 	// newcommand or renewcommand
-	if (os.latex() && optionals_ > 1)
-		os << "\\newlyxcommand";
-	else {
+	if (os.latex() && optionals_ > 1) {
+		if (redefinition_ && !overwriteRedefinition)
+			os << "\\renewcommandx";
+		else
+			os << "\\newcommandx";
+		xargs = true;
+		//os << "\\newcommandx";
+	} else {
 		if (redefinition_ && !overwriteRedefinition)
 			os << "\\renewcommand";
 		else
@@ -1147,14 +1153,30 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		os << '[' << numargs_ << ']';
 
 	// optional values
-	for (int i = 0; i < optionals_; ++i) {
-		docstring optValue = asString(cell(optIdx(i)));
-		if (optValue.find(']') != docstring::npos)
-			os << "[{" << cell(optIdx(i)) << "}]";
-		else
-			os << "[" << cell(optIdx(i)) << "]";
+	if (xargs) {
+		os << "[usedefault";
+		for (int i = 0; i < optionals_; ++i) {
+			docstring optValue = asString(cell(optIdx(i)));
+			if (optValue.find(']') != docstring::npos
+			    || optValue.find('=') != docstring::npos)
+				os << ", " << i + 1 << "="
+				   << "{" << cell(optIdx(i)) << "}";
+			else
+				os << ", " << i + 1 << "="
+				   << cell(optIdx(i));
+		}		
+		os << "]";
+	} else {
+		for (int i = 0; i < optionals_; ++i) {
+			docstring optValue = asString(cell(optIdx(i)));
+			if (optValue.find(']') != docstring::npos)
+				os << "[{" << cell(optIdx(i)) << "}]";
+			else
+				os << "[" << cell(optIdx(i)) << "]";
+		}
 	}
 
+	
 	os << "{" << cell(defIdx()) << "}";
 
 	if (os.latex()) {
@@ -1239,7 +1261,8 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 void MathMacroTemplate::validate(LaTeXFeatures & features) const
 {
 	if (optionals_ > 1) {
-		features.require("newlyxcommand");
+		//features.require("newlyxcommand");
+		features.require("xargs");
 	}
 }
 
