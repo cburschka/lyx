@@ -223,9 +223,8 @@ LayoutFileIndex
 				BOOST_ASSERT(sub.size() == 4);
 				// now, create a TextClass with description containing path information
 				string className(sub.str(2) == "" ? textclass : sub.str(2));
-				string description(sub.str(3) + " <" + path + ">");
 				LayoutFile * tmpl = 
-					new LayoutFile(textclass, className, description, true);
+					new LayoutFile(textclass, className, localIndex, true);
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they
 				// are called in a context without buffer path information.

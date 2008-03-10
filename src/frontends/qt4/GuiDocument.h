@@ -135,6 +135,7 @@ private Q_SLOTS:
 	void setSkip(int);
 	void enableSkip(bool);
 	void portraitChanged();
+	void browseLayout();
 	void classChanged();
 	void updateModuleInfo();
 	void setExtraEmbeddedFileList();

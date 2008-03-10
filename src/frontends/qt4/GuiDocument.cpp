@@ -870,6 +870,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(classChanged()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(latexModule->layoutPB, SIGNAL(clicked()),
+		this, SLOT(browseLayout()));
 	
 	selectionManager = 
 		new ModuleSelMan(latexModule->availableLV, latexModule->selectedLV, 
@@ -1217,6 +1219,49 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 	if (nn > 0)
 		pageLayoutModule->pagestyleCO->setCurrentIndex(nn);
+}
+
+
+void GuiDocument::browseLayout()
+{
+	QString const label1 = qt_("Layouts|#o#O");
+	QString const dir1 = toqstr(lyxrc.document_path);
+	FileFilterList const filter(_("LyX Layout (*.layout)"));
+	QString file = browseRelFile(QString(), bufferFilepath(),
+		qt_("Local layout file"), filter, false,
+		label1, dir1);
+
+	if (!suffixIs(fromqstr(file), ".layout"))
+		return;
+
+	FileName layoutFile = makeAbsPath(fromqstr(file),
+		fromqstr(bufferFilepath()));
+	
+	// load the layout file
+	LayoutFileList & bcl = LayoutFileList::get();
+	string classname = layoutFile.onlyFileName();
+	LayoutFileIndex name = bcl.addLayoutFile(
+		classname.substr(0, classname.size() - 7),
+		layoutFile.onlyPath().absFilename());
+
+	if (name.empty()) {
+		Alert::error(_("Error"),
+			_("Unable to read local layout file."));		
+		return;
+	}
+
+	// do not trigger classChanged if there is no change.
+	if (latexModule->classCO->currentText() == toqstr(name))
+		return;
+		
+	// add to combo box
+	int idx = latexModule->classCO->findText(toqstr(name));
+	if (idx == -1) {
+		classes_model_.insertRow(0, toqstr(name), name);
+		latexModule->classCO->setCurrentIndex(0);
+	} else
+		latexModule->classCO->setCurrentIndex(idx);
+	classChanged();
 }
 
 
