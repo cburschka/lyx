@@ -7,6 +7,7 @@
  * \author John Levon
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
+ * \author Stefan Schimanski
  * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
@@ -415,9 +416,12 @@ private:
 		int ymid = y - 1 - fm.xHeight() / 2; // -1 for the baseline
 		
 		// draw the horizontal line
-		painter->drawLine(opt.rect.x(), ymid, left - 1, ymid);
-		painter->drawLine(right + 1, ymid, opt.rect.right(), ymid);
-		
+		if (!category.isEmpty()) {
+			painter->drawLine(opt.rect.x(), ymid, left - 1, ymid);
+			painter->drawLine(right + 1, ymid, opt.rect.right(), ymid);
+		} else
+			painter->drawLine(opt.rect.x(), ymid, opt.rect.right(), ymid);
+			
 		painter->restore();
 	}
 
