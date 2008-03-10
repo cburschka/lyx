@@ -400,7 +400,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 	int optionals, MacroType type,
 	vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
-	: InsetMathNest(optionals + 3), numargs_(numargs), argsInLook_(0),
+	: InsetMathNest(optionals + 3), numargs_(numargs), argsInLook_(numargs),
 	  optionals_(optionals), optionalValues_(optionalValues),
 	  type_(type), lookOutdated_(true)
 {
@@ -486,14 +486,13 @@ void MathMacroTemplate::createLook(int args) const
 	if (optionals_ > 0) {
 		look_.push_back(MathAtom(new InsetLabelBox(_("optional"), *this, false)));
 		
+		MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
 		for (; i < optionals_; ++i) {
-			MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
-
-			// color it red, if it is to be remove when the cursor leaves
-			if (optionals_ > argsInLook_) {
+			// color it light grey, if it is to be removed when the cursor leaves
+			if (i == argsInLook_) {
 				optData->push_back(MathAtom(
 					new InsetColoredCell(Color_mathbg, Color_mathmacrooldarg)));
-				optData = &(*optData)[0].nucleus()->cell(0);
+				optData = &(*optData)[optData->size() - 1].nucleus()->cell(0);
 			}
 
 			optData->push_back(MathAtom(new InsetMathChar('[')));
@@ -598,9 +597,8 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.rectangle(x, a, w, h, Color_mathframe);
 
 	// just to be sure: set some dummy values for coord cache
-	for (idx_type i = 0; i < nargs(); ++i) {
+	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).setXY(*pi.base.bv, x, y);
-	}
 
 	// draw contents
 	look_.draw(pi, x + 3, y);
@@ -1148,7 +1146,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 			for (int i = 0; i < optionals_; ++i) {
 				docstring optValue = asString(cell(optIdx(i)));
 				if (optValue.find(']') != docstring::npos
-				    || optValue.find('=') != docstring::npos)
+				    || optValue.find(',') != docstring::npos)
 					os << ", " << i + 1 << "="
 					<< "{" << cell(optIdx(i)) << "}";
 				else
