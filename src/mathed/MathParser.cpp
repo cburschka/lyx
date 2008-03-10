@@ -1031,7 +1031,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						optionals = max(n, optionals);
 					} else if (nextToken().cat() == catLetter) {
 						// we in fact ignore every non-optional
-						// parameters
+						// parameter
 						
 						// get option name
 						docstring opt;
