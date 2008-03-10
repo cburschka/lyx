@@ -573,8 +573,15 @@ bool MenuDefinition::searchMenu(FuncRequest const & func, vector<docstring> & na
 		}
 		if (m->kind() == MenuItem::Submenu) {
 			names.push_back(qstring_to_ucs4(m->label()));
-			MenuDefinition const & submenu = *m->submenu();
-			if (submenu.searchMenu(func, names))
+			MenuDefinition const * submenu = m->submenu();
+			if (!submenu) {
+				LYXERR(Debug::GUI, "Warning: non existing sub menu label="
+					<< fromqstr(m->label())
+					<< " name=" << fromqstr(m->submenuname()));
+				names.pop_back();
+				continue;
+			}
+			if (submenu->searchMenu(func, names))
 				return true;
 			names.pop_back();
 		}
@@ -1418,7 +1425,9 @@ void Menus::read(Lexer & lex)
 bool Menus::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
-	return d->menubar_.searchMenu(func, names);
+	MenuDefinition menu;
+	d->expand(d->menubar_, menu, 0);
+	return menu.searchMenu(func, names);
 }
 
 
