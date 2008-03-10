@@ -453,8 +453,7 @@ char const * simplefeatures[] = {
 	"ifthen",
 	"amsthm",
 	"listings",
-	"bm",
-	"xargs"
+	"bm"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -590,6 +589,11 @@ string const LaTeXFeatures::getPackages() const
 	// jurabib -- we need version 0.6 at least.
 	if (mustProvide("jurabib")) {
 		packages << "\\usepackage{jurabib}[2004/01/25]\n";
+	}
+	
+	// xargs -- we need version 1.09 at least
+	if (mustProvide("xargs")) {
+		packages << "\\usepackage{xargs}[2008/03/08]\n";
 	}
 
 	// bibtopic -- the dot provides the aux file naming which
