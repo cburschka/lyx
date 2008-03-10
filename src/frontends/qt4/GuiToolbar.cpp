@@ -58,6 +58,7 @@
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QTextDocument>
+#include <QTextFrame>
 #include <QToolBar>
 #include <QToolButton>
 #include <QVariant>
@@ -263,9 +264,10 @@ public:
 		QSortFilterProxyModel const * model
 		= static_cast<QSortFilterProxyModel const *>(index.model());
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
-
+		
 		painter->eraseRect(opt.rect);
 		
+		QFontMetrics fm(opt.font);
 		QString text = underlineFilter(opt.text);
 		opt.text = QString();
 		
@@ -282,7 +284,6 @@ public:
 				paintCategoryHeader(painter, opt, 
 					category(*index.model(), index.row()));
 
-				QFontMetrics fm(opt.font);
 				opt.rect.setTop(opt.rect.top() + headerHeight(opt));
 				opt.menuRect = opt.rect;
 			}
@@ -306,7 +307,13 @@ public:
 		QTextDocument doc;
 		doc.setDefaultFont(opt.font);
 		doc.setHtml(text);
-		painter->translate(opt.rect.x() + 5, opt.rect.y());
+		
+		QTextFrameFormat fmt = doc.rootFrame()->frameFormat();
+		fmt.setMargin(0);
+		doc.rootFrame()->setFrameFormat(fmt);
+		
+		painter->translate(opt.rect.x() + 5,
+			opt.rect.y() + (opt.rect.height() - fm.height()) / 2);
 		doc.documentLayout()->draw(painter, context);
 		painter->restore();
 	}
