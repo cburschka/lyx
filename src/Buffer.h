@@ -462,25 +462,11 @@ private:
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,
 					 DocIterator const & pos) const;
-	/** Update macro table in the whole text inset
-	    \param it at the start of the text inset)
-	*/
-	void updateInsetMacros(DocIterator & it, 
-			       DocIterator & scope) const;
-	/** Update macro table for paragraphs until \c lastpit
+	/** Update macro table starting with position of it
 	    \param it in some text inset
-	    \param lastpit last processed paragraph
 	*/
-	void updateEnvironmentMacros(DocIterator & it, 
-				     pit_type lastpit, 
+	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
-	/** Update macro table for one paragraph block with 
-	    same layout and depth, until \c lastpit
-	    \param it in some text inset
-	    \param lastpit last processed paragraph
-	*/
-	void updateBlockMacros(DocIterator & it, 
-			       DocIterator & scope) const;
 
 	/// 
 	bool readFileHelper(support::FileName const & s);

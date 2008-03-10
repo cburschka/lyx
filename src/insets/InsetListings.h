@@ -45,8 +45,6 @@ public:
 	///
 	docstring editMessage() const;
 	///
-	bool isMacroScope() const { return true; }
-	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;

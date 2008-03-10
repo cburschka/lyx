@@ -61,8 +61,6 @@ public:
 	///
 	InsetCode lyxCode() const { return FLOAT_CODE; }
 	///
-	bool isMacroScope() const { return true; }
-	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;

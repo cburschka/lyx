@@ -1133,40 +1133,51 @@ void MathMacroTemplate::write(WriteStream & os) const
 
 void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 {
-	bool xargs = false;
-	// newcommand or renewcommand
-	if (os.latex() && optionals_ > 1) {
-		if (redefinition_ && !overwriteRedefinition)
-			os << "\\renewcommandx";
-		else
-			os << "\\newcommandx";
-		xargs = true;
-		//os << "\\newcommandx";
+	if (os.latex()) {
+		if (optionals_ > 0) {
+			// macros with optionals use the xargs package, e.g.:
+			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
+			if (redefinition_ && !overwriteRedefinition)
+				os << "\\renewcommandx";
+			else
+				os << "\\newcommandx";
+
+			os << "\\" << name().c_str()
+			   << "[" << numargs_ << "]"
+			   << "[usedefault, addprefix=\\global";
+			for (int i = 0; i < optionals_; ++i) {
+				docstring optValue = asString(cell(optIdx(i)));
+				if (optValue.find(']') != docstring::npos
+				    || optValue.find('=') != docstring::npos)
+					os << ", " << i + 1 << "="
+					<< "{" << cell(optIdx(i)) << "}";
+				else
+					os << ", " << i + 1 << "="
+					<< cell(optIdx(i));
+			}
+			os << "]";
+		} else {
+			// macros without optionals use standard _global_ \def macros:
+			// \global\def\foo#1#2{#1,#2}
+			os << "\\global\\def\\" << name().c_str();
+			docstring param = from_ascii("#0");
+			for (int i = 1; i <= numargs_; ++i) { 
+				param[1] = '0' + i;
+				os << param;
+			}
+		}
 	} else {
+		// in LyX output we use some pseudo syntax which is implementation
+		// independent, e.g.
+		// \newcommand{\foo}[2][default}{#1,#2}
 		if (redefinition_ && !overwriteRedefinition)
 			os << "\\renewcommand";
 		else
 			os << "\\newcommand";
-	}
-	os << "{\\" << name().c_str() << '}';
-	if (numargs_ > 0)
-		os << '[' << numargs_ << ']';
+		os << "{\\" << name().c_str() << '}';
+		if (numargs_ > 0)
+			os << '[' << numargs_ << ']';
 
-	// optional values
-	if (xargs) {
-		os << "[usedefault";
-		for (int i = 0; i < optionals_; ++i) {
-			docstring optValue = asString(cell(optIdx(i)));
-			if (optValue.find(']') != docstring::npos
-			    || optValue.find('=') != docstring::npos)
-				os << ", " << i + 1 << "="
-				   << "{" << cell(optIdx(i)) << "}";
-			else
-				os << ", " << i + 1 << "="
-				   << cell(optIdx(i));
-		}		
-		os << "]";
-	} else {
 		for (int i = 0; i < optionals_; ++i) {
 			docstring optValue = asString(cell(optIdx(i)));
 			if (optValue.find(']') != docstring::npos)
@@ -1176,7 +1187,6 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		}
 	}
 
-	
 	os << "{" << cell(defIdx()) << "}";
 
 	if (os.latex()) {
@@ -1260,7 +1270,7 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 	
 void MathMacroTemplate::validate(LaTeXFeatures & features) const
 {
-	if (optionals_ > 1) {
+	if (optionals_ > 0) {
 		//features.require("newlyxcommand");
 		features.require("xargs");
 	}

@@ -131,7 +131,7 @@ public:
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const;
 	///
-	virtual bool isMacroScope() const { return true; }
+	virtual bool isMacroScope() const { return false; }
 	///
 	virtual bool allowMultiPar() const { return true; }
 

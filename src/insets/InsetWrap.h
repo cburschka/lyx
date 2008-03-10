@@ -60,8 +60,6 @@ private:
 	///
 	InsetCode lyxCode() const { return WRAP_CODE; }
 	///
-	bool isMacroScope() const { return true; }
-	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;

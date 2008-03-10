@@ -816,22 +816,6 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-bool InsetCollapsable::isMacroScope() const
-{
-	// layout_ == 0 leads to no latex output, so ignore 
-	// the macros outside
-	if (!layout_)
-		return true;
-
-	// see InsetCollapsable::latex(...) below. In these case
-	// an environment is opened there
-	if (!layout_->latexname().empty())
-		return true;
-
-	return false;
-}
-
-
 int InsetCollapsable::latex(odocstream & os,
 			  OutputParams const & runparams) const
 {

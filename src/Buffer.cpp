@@ -1813,24 +1813,13 @@ MacroData const * Buffer::getMacro(docstring const & name,
 }
 
 
-void Buffer::updateEnvironmentMacros(DocIterator & it, pit_type lastpit,
-	DocIterator & scope) const
+void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 {
-	Paragraph & par = it.paragraph();
-	depth_type depth = par.params().depth();
-	Length const & leftIndent = par.params().leftIndent();
+	pit_type lastpit = it.lastpit();
 
 	// look for macros in each paragraph
 	while (it.pit() <= lastpit) {
 		Paragraph & par = it.paragraph();
-
-		// increased depth?
-		if ((par.params().depth() > depth
-			|| par.params().leftIndent() != leftIndent)
-		    && par.layout().isEnvironment()) {
-			updateBlockMacros(it, scope);
-			continue;
-		}
 
 		// iterate over the insets of the current paragraph
 		InsetList const & insets = par.insetList();
@@ -1852,7 +1841,7 @@ void Buffer::updateEnvironmentMacros(DocIterator & it, pit_type lastpit,
 
 				// collect macros in inset
 				it.push_back(CursorSlice(*iit->inset));
-				updateInsetMacros(it, newScope ? insetScope : scope);
+				updateMacros(it, newScope ? insetScope : scope);
 				it.pop_back();
 				continue;
 			}
@@ -1909,48 +1898,6 @@ void Buffer::updateEnvironmentMacros(DocIterator & it, pit_type lastpit,
 }
 
 
-void Buffer::updateBlockMacros(DocIterator & it, DocIterator & scope) const
-{
-	Paragraph & par = it.paragraph();
-		
-	// set scope for macros in this paragraph:
-	// * either the "old" outer scope
-	// * or the scope ending after the environment
-	if (par.layout().isEnvironment()) {
-		// find end of environment block,
-		DocIterator envEnd = it;
-		pit_type n = it.lastpit() + 1;
-		depth_type depth = par.params().depth();
-		Length const & length = par.params().leftIndent();
-		// looping through the paragraph, basically until
-		// the layout changes or the depth gets smaller.
-		// (the logic of output_latex.cpp's TeXEnvironment)
-		do {
-			envEnd.pit()++;
-			if (envEnd.pit() == n)
-				break;
-		} while (par.layout() == envEnd.paragraph().layout()
-			 || depth < envEnd.paragraph().params().depth()
-			 || length != envEnd.paragraph().params().leftIndent());	       
-		
-		// collect macros from environment block
-		updateEnvironmentMacros(it, envEnd.pit() - 1, envEnd);
-	} else {
-		// collect macros from paragraph
-		updateEnvironmentMacros(it, it.pit(), scope);
-	}
-}
-
-
-void Buffer::updateInsetMacros(DocIterator & it, DocIterator & scope) const
-{
-	// look for macros in each paragraph
-	pit_type n = it.lastpit() + 1;
-	while (it.pit() < n)
-		updateBlockMacros(it, scope);       
-}
-
-
 void Buffer::updateMacros() const
 {
 	if (d->macro_lock)
@@ -1970,7 +1917,7 @@ void Buffer::updateMacros() const
 	DocIterator it = par_iterator_begin();
 	DocIterator outerScope = it;
 	outerScope.pit() = outerScope.lastpit() + 2;
-	updateInsetMacros(it, outerScope);
+	updateMacros(it, outerScope);
 }
 
 

@@ -103,8 +103,6 @@ private:
 	///
 	bool noFontChange() const { return true; }
 	///
-	bool isMacroScope() const;
-	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;

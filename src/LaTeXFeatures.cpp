@@ -548,7 +548,7 @@ char const * simplefeatures[] = {
 	"ifthen",
 	"amsthm",
 	"listings",
-	"bm"
+	"bm",
 	"xargs"
 };
 
