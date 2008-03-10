@@ -197,7 +197,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-09 17:26+0100\n"
-"PO-Revision-Date: 2008-03-07 16:20+0100\n"
+"PO-Revision-Date: 2008-03-10 10:48+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -929,7 +929,7 @@ msgstr "Selon la &Casse"
 
 #: src/frontends/qt4/ui/CitationUi.ui:279
 msgid "Formatting"
-msgstr "Mise en Forme"
+msgstr "Mise en page"
 
 #: src/frontends/qt4/ui/CitationUi.ui:294
 msgid "Natbib citation style to use"
@@ -1059,7 +1059,7 @@ msgstr "Enregistrer ce document sous forme de liasse"
 
 #: src/frontends/qt4/ui/EmbeddedFilesUi.ui:72
 msgid "Embedded files:"
-msgstr "Fichiers inclus"
+msgstr "Fichiers associés :"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
@@ -1605,7 +1605,7 @@ msgstr "Modules"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:95
 msgid "S&elected:"
-msgstr "Sél&ectionné"
+msgstr "Sél&ectionné :"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:105
 msgid "A&vailable:"
@@ -1991,7 +1991,7 @@ msgstr "Style des en-têtes et pieds de page"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:125
 msgid "Headings &style:"
-msgstr "Style d'en-têtes :"
+msgstr "St&yle d'en-têtes :"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:135
 msgid "&Landscape"
@@ -2042,7 +2042,7 @@ msgstr "Utilise l'alignement par défaut pour ce paragraphe, quel qu'il soit."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:105
 msgid "Paragraph's &Default"
-msgstr "Alignement implicite des paragraphes"
+msgstr "Alignement &implicite des paragraphes"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:112
 msgid "&Justified"
@@ -2273,7 +2273,7 @@ msgstr "Aperçu sur le &vif :"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
 msgid "&New..."
-msgstr "&Nouvelle :"
+msgstr "&Nouvelle..."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:51
 msgid "S&hort Name:"
@@ -2740,7 +2740,7 @@ msgstr "Pa&ysage :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "Number of Co&pies:"
-msgstr "Nombre d'exemplaires :"
+msgstr "Nombre d'exempl&aires :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -2980,15 +2980,15 @@ msgstr "Écran &utilisé (pixels) :"
 
 #: src/frontends/qt4/ui/PrefUi.ui:153
 msgid "Toggle tabba&r"
-msgstr "Activer/désactiver la palette Tableaux"
+msgstr "Activer/désactiver la palette Ta&bleaux"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
 msgid "To&ggle scrollbar"
-msgstr "Activer/désactiver l'ascenseur"
+msgstr "Activer/désactiver l'&ascenseur"
 
 #: src/frontends/qt4/ui/PrefUi.ui:175
 msgid "T&oggle toolbars"
-msgstr "Activer/désactiver les palettes d'outils"
+msgstr "Activer/désactiver les palettes d'&outils"
 
 #: src/frontends/qt4/ui/PrefUi.ui:185
 msgid "Editing"
@@ -3245,7 +3245,7 @@ msgstr "&Commande :"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:16
 msgid "Edit shortcut"
-msgstr "Modifier &raccourci"
+msgstr "Modifier raccourci"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:54
 msgid "Clear"
@@ -3768,7 +3768,7 @@ msgstr "utiliser nombre de lignes"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
 msgid "&Line span:"
-msgstr "Portée de la &ligne"
+msgstr "Portée de la &ligne :"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
@@ -7938,7 +7938,7 @@ msgstr ""
 # à revoir, accord avec les autres mots incertain
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
-msgstr "nom"
+msgstr "nom propre"
 
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
@@ -8807,7 +8807,7 @@ msgstr "Environnement Align|A"
 
 #: lib/ui/classic.ui:203
 msgid "AlignAt Environment"
-msgstr "Environnement AlignAt|l"
+msgstr "Environnement AlignAt"
 
 #: lib/ui/classic.ui:204
 msgid "Flalign Environment|F"
@@ -8851,7 +8851,7 @@ msgstr "Note en Marge|M"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr "Titre court|c"
+msgstr "Titre court"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
@@ -9183,7 +9183,7 @@ msgstr "Réduire la Profondeur d'Environnement|f"
 
 #: lib/ui/classic.ui:350
 msgid "Increase Environment Depth|i"
-msgstr "Augmenter la profondeur d'environnement"
+msgstr "Augmenter la profondeur d'environnement|g"
 
 #: lib/ui/classic.ui:351
 msgid "Start Appendix Here|S"
@@ -9216,7 +9216,7 @@ msgstr "Note Suivante|N"
 
 #: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:481
 msgid "Go to Label|L"
-msgstr "Aller à l'Étiquette|A"
+msgstr "Aller à l'étiquette|A"
 
 #: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:477
 msgid "Bookmarks|B"
@@ -9372,7 +9372,7 @@ msgstr "Coller une Sélection Récente|c"
 
 #: lib/ui/stdmenus.inc:92
 msgid "Paste Special"
-msgstr "Collage Spécial|i"
+msgstr "Collage Spécial"
 
 #: lib/ui/stdmenus.inc:94
 msgid "Select All"
@@ -9640,7 +9640,7 @@ msgstr "Math Famille Sans Empattement|S"
 
 #: lib/ui/stdmenus.inc:243
 msgid "Math Bold Series|B"
-msgstr "Math Série Grasse"
+msgstr "Math Série Grasse|G"
 
 #: lib/ui/stdmenus.inc:245
 msgid "Text Normal Font|T"
@@ -9753,7 +9753,7 @@ msgstr "Référence Croisée...|R"
 
 #: lib/ui/stdmenus.inc:334
 msgid "Caption"
-msgstr "Légende|d"
+msgstr "Légende"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Index Entry|d"
@@ -9965,28 +9965,24 @@ msgid "Shortcuts|S"
 msgstr "Raccourcis|c"
 
 #: lib/ui/stdmenus.inc:538
-#, fuzzy
 msgid "Equation Label|L"
-msgstr "Aller à l'Étiquette|A"
+msgstr "Étiquette d'équation|a"
 
 #: lib/ui/stdmenus.inc:539
-#, fuzzy
 msgid "Toggle Labeling/Numbering|T"
-msgstr "(Dés)Activer Numérotation|N"
+msgstr "(Dés)Activer étiquetage/numérotation|n"
 
 #: lib/ui/stdmenus.inc:547 lib/ui/stdmenus.inc:555
-#, fuzzy
 msgid "Next Cross-Reference|N"
-msgstr "Référence Croisée Suivante|R"
+msgstr "Référence croisée suivante|R"
 
 #: lib/ui/stdmenus.inc:548
-#, fuzzy
 msgid "Go to Label|G"
-msgstr "Aller à l'Étiquette|A"
+msgstr "Aller à l'étiquette|A"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Go back to Reference|G"
-msgstr ""
+msgstr "Retourner à la référence|u"
 
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -12643,7 +12639,7 @@ msgstr "avant"
 
 #: src/Buffer.cpp:225
 msgid "Disk Error: "
-msgstr "Erreur disque :"
+msgstr "Erreur disque : "
 
 #: src/Buffer.cpp:226
 #, c-format
@@ -12737,7 +12733,7 @@ msgstr "%1$s n'est pas un document LyX."
 
 #: src/Buffer.cpp:775
 msgid "Conversion failed"
-msgstr "Conversion échouée"
+msgstr "Échec conversion"
 
 #: src/Buffer.cpp:776
 #, c-format
@@ -15039,7 +15035,7 @@ msgstr ""
 
 #: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
 msgid "LyX Warning: "
-msgstr "Avertissement LyX :"
+msgstr "Avertissement LyX : "
 
 #: src/Paragraph.cpp:2030
 msgid "uncodable character"
@@ -16928,11 +16924,11 @@ msgstr "Symboles"
 
 #: src/frontends/qt4/GuiSymbols.cpp:325
 msgid "Character: "
-msgstr "Caractère :"
+msgstr "Caractère : "
 
 #: src/frontends/qt4/GuiSymbols.cpp:326
 msgid "Code Point: "
-msgstr "Code point :"
+msgstr "Code point : "
 
 #: src/frontends/qt4/GuiTabular.cpp:39
 msgid "Table Settings"
@@ -16988,7 +16984,7 @@ msgstr "Étiquettes et références"
 
 #: src/frontends/qt4/GuiToolbar.cpp:492
 msgid "Enter characters to filter the layout list."
-msgstr ""
+msgstr "Saisir des caractères pour filtrer la liste des formats."
 
 #: src/frontends/qt4/GuiVSpace.cpp:43
 msgid "Vertical Space Settings"
@@ -17255,9 +17251,8 @@ msgid "No Branch in Document!"
 msgstr "Pas de Branche dans le  Document"
 
 #: src/frontends/qt4/Menus.cpp:1493
-#, fuzzy
 msgid "No action defined!"
-msgstr "Aucune modification de police définie."
+msgstr "Aucune action définie !"
 
 #: src/frontends/qt4/Validator.cpp:148
 msgid "space"
@@ -17431,11 +17426,11 @@ msgstr "Erreur de paramètres de commande d'insert : "
 
 #: src/insets/InsetCommandParams.cpp:259
 msgid "Attempt to change type of parameters."
-msgstr "Tentative de modification des paramètres :"
+msgstr "Tentative de modification des paramètres."
 
 #: src/insets/InsetCommandParams.cpp:268
 msgid "InsetCommandParams error:"
-msgstr "Erreur de paramètres de commande d'insert : "
+msgstr "Erreur de paramètres de commande d'insert :"
 
 #: src/insets/InsetCommandParams.cpp:269
 msgid "Can't find LatexCommand line."
@@ -17634,7 +17629,7 @@ msgstr ""
 
 #: src/insets/InsetLabel.cpp:106
 msgid "DUPLICATE: "
-msgstr "DUPLICATION :"
+msgstr "DUPLICATION : "
 
 #: src/insets/InsetListings.cpp:116
 msgid "Opened Listing Inset"
@@ -17834,7 +17829,7 @@ msgstr "Insert de paramètre optionnel ouvert"
 
 #: src/insets/InsetRef.cpp:162
 msgid "BROKEN: "
-msgstr "CASSÉ :"
+msgstr "CASSÉ : "
 
 #: src/insets/InsetRef.cpp:180 src/mathed/InsetMathRef.cpp:185
 msgid "Ref: "
@@ -18837,7 +18832,7 @@ msgstr "Utilisateur inconnu"
 
 #, fuzzy
 #~ msgid "No vertical grid lines in '%1$s'"
-#~ msgstr "Ne peut pas ajouter de lignes de grille verticales dans '%1$s'"
+#~ msgstr "Aucune ligne de grille verticale dans '%1$s'"
 
 #, fuzzy
 #~ msgid "Enable embedding"
