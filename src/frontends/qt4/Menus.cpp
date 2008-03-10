@@ -5,7 +5,7 @@
  *
  * \author John Levon
  * \author Asger Alstrup
- * \author Lars Gullik Bønnes
+ * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
  * \author André Pönitz
  * \author Dekel Tsur
