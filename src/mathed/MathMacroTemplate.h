@@ -98,6 +98,8 @@ public:
 	InsetCode lyxCode() const { return MATHMACRO_CODE; }
 	///
 	void infoize(odocstream & os) const;
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
 
 protected:
 	///

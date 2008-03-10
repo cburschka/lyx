@@ -575,5 +575,18 @@ Menuset
 		Item "Paragraph Settings...|P" "layout-paragraph"
 	End
 
-	
+	Menu "context-math-macro-definition"
+		Item "Append Parameter" "math-macro-add-param"
+		Item "Remove Last Parameter" "math-macro-remove-param"
+                Separator
+		Item "Make First Non-Optional into Optional Parameter" "math-macro-make-optional"
+		Item "Make Last Optional into Non-Optional Parameter" "math-macro-make-nonoptional"
+                Item "Insert Optional Parameter" "math-macro-add-optional-param"
+                Item "Remove Optional Parameter" "math-macro-remove-optional-param"
+		Separator
+		Item "Append Parameter Eating From The Right" "math-macro-append-greedy-param"
+                Item "Append Optional Parameter Eating From The Right" "math-macro-add-greedy-optional-param"
+		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
+	End
+
 End

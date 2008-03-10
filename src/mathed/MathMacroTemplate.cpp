@@ -1311,4 +1311,10 @@ void MathMacroTemplate::infoize(odocstream & os) const
 	os << "Math Macro: \\" << name();
 }
 
+
+docstring MathMacroTemplate::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-math-macro-definition");
+}
+
 } // namespace lyx
