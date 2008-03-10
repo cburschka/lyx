@@ -893,159 +893,185 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if ((t.cs() == "global" && nextToken().cs() == "def") ||
-			t.cs() == "def" ||
-			t.cs() == "newcommand" ||
-			t.cs() == "renewcommand" ||
-			t.cs() == "newlyxcommand" ||
-			t.cs() == "newcommandx" ||
-			t.cs() == "renewcommandx")
-		{
-			MacroType type = MacroTypeNewcommand;
-			if (t.cs() == "global") {
+			 t.cs() == "def") {
+			if (t.cs() == "global")
 				getToken();
-				type = MacroTypeDef;
-			}
-			if (t.cs() == "def")
-				type = MacroTypeDef;
-			if (t.cs() == "newcommandx" || t.cs() == "renewcommandx")
-				type = MacroTypeNewcommandx;
-			docstring name;
+			
+			// get name
+			docstring name = getToken().cs();
+			
+			// read parameters
 			int nargs = 0;
-			int optionals = 0;
-			vector<MathData> optionalValues;
-			if (type == MacroTypeDef) {
-				// get name
-				name = getToken().cs();
-
-				// read parameter
-				docstring pars;
-				while (good() && nextToken().cat() != catBegin) {
-					pars += getToken().cs();
-					++nargs;
-				}
-				nargs /= 2;
-				//lyxerr << "read \\def parameter list '" << pars << "'" << endl;
-
-			} else if (type == MacroTypeNewcommandx) {
-				// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
-				// name
-				if (nextToken().cat() == catBegin) {
-					getToken();
-					name = getToken().cs();
-					if (getToken().cat() != catEnd) {
-						error("'}' in \\newcommandx expected");
-						return;
-					}
-				} else
-					name = getToken().cs();
+			docstring pars;
+			while (good() && nextToken().cat() != catBegin) {
+				pars += getToken().cs();
+				++nargs;
+			}
+			nargs /= 2;
+			
+			// read definition
+			MathData def;
+			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
+			
+			// is a version for display attached?
+			skipSpaces();
+			MathData display;
+			if (nextToken().cat() == catBegin)
+				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
+			
+			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs,
+			       0, MacroTypeDef, vector<MathData>(), def, display)));
+		}
+		
+		else if (t.cs() == "newcommand" ||
+			 t.cs() == "renewcommand" ||
+			 t.cs() == "newlyxcommand") {
+			// get name
+			if (getToken().cat() != catBegin) {
+				error("'{' in \\newcommand expected (1) ");
+				return;
+			}
+			docstring name = getToken().cs();
+			if (getToken().cat() != catEnd) {
+				error("'}' in \\newcommand expected");
+				return;
+			}
 				
-				// arity
-				docstring const arg = getArg('[', ']');
-				if (arg.empty()) {
-					error("[num] in \\newcommandx expected");
-					return;
-				}
+			// get arity
+			docstring const arg = getArg('[', ']');
+			int nargs = 0;
+			if (!arg.empty())
 				nargs = convert<int>(arg);
 				
-				// options
-				if (nextToken().character() == '[') {
-					// skip '['
-					getToken();
+			// optional argument given?
+			skipSpaces();
+			int optionals = 0;
+			vector<MathData> optionalValues;
+			while (nextToken().character() == '[') {
+				getToken();
+				optionalValues.push_back(MathData());
+				parse(optionalValues[optionals], FLAG_BRACK_LAST, mode);
+				++optionals;
+			}
+			
+			MathData def;
+			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
+			
+			// is a version for display attached?
+			skipSpaces();
+			MathData display;
+			if (nextToken().cat() == catBegin)
+				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
+			
+			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs,
+				optionals, MacroTypeNewcommand, optionalValues, def, display)));
+			
+		}
+		
+		else if (t.cs() == "newcommandx" ||
+			 t.cs() == "renewcommandx") {
+			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
+			// get name
+			docstring name;
+			if (nextToken().cat() == catBegin) {
+				getToken();
+				name = getToken().cs();
+				if (getToken().cat() != catEnd) {
+					error("'}' in \\newcommandx expected");
+					return;
+				}
+			} else
+				name = getToken().cs();
+				
+			// get arity
+			docstring const arg = getArg('[', ']');
+			if (arg.empty()) {
+				error("[num] in \\newcommandx expected");
+				return;
+			}
+			int nargs = convert<int>(arg);
+			
+			// get options
+			int optionals = 0;
+			vector<MathData> optionalValues;
+			if (nextToken().character() == '[') {
+				// skip '['
+				getToken();
 					
-					// handle 'opt=value' options, separated by ','.
-					skipSpaces();
-					while (nextToken().character() != ']' && good()) {
-						if (nextToken().character() >= '1'
-						    && nextToken().character() <= '9') {
-							// optional value -> get parameter number
-							int n = getChar() - '0';
-							if (n > nargs) {
-								error("Arity of \\newcommandx too low for given optional parameter.");
-								return;
-							}
-							
-							// skip '='
-							if (getToken().character() != '=') {
-								error("'=' and optional parameter value expected for \\newcommandx");
-								return;
-							}
-							
-							// get value
-							optionalValues.resize(max(size_t(n), optionalValues.size()));
-							optionalValues[n - 1].clear();
-							while (nextToken().character() != ']'
-							       && nextToken().character() != ',') {
-								MathData data;
-								parse(data, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
-								optionalValues[n - 1].append(data);
-							}
-							optionals = max(n, optionals);
-						} else if (nextToken().cat() == catLetter) {
-							// we in fact ignore every non-optional
-							// parameters
-							
-							// get option name
-							docstring opt;
-							while (nextToken().cat() == catLetter)
-								opt += getChar();
-							
-							// value?
-							skipSpaces();
-							MathData value;
-							if (nextToken().character() == '=') {
-								getToken();
-								while (nextToken().character() != ']'
-									&& nextToken().character() != ',')
-									parse(value, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
-							}
-						} else {
-							error("option for \\newcommandx expected");
+				// handle 'opt=value' options, separated by ','.
+				skipSpaces();
+				while (nextToken().character() != ']' && good()) {
+					if (nextToken().character() >= '1'
+					    && nextToken().character() <= '9') {
+						// optional value -> get parameter number
+						int n = getChar() - '0';
+						if (n > nargs) {
+							error("Arity of \\newcommandx too low "
+							      "for given optional parameter.");
 							return;
 						}
-
-						// skip komma
+						
+						// skip '='
+						if (getToken().character() != '=') {
+							error("'=' and optional parameter value "
+							      "expected for \\newcommandx");
+							return;
+						}
+						
+						// get value
+						int optNum = max(size_t(n), optionalValues.size());
+						optionalValues.resize(optNum);
+						optionalValues[n - 1].clear();
+						while (nextToken().character() != ']'
+						       && nextToken().character() != ',') {
+							MathData data;
+							parse(data, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
+							optionalValues[n - 1].append(data);
+						}
+						optionals = max(n, optionals);
+					} else if (nextToken().cat() == catLetter) {
+						// we in fact ignore every non-optional
+						// parameters
+						
+						// get option name
+						docstring opt;
+						while (nextToken().cat() == catLetter)
+							opt += getChar();
+					
+						// value?
 						skipSpaces();
-						if (nextToken().character() == ',') {
-							getChar();
-							skipSpaces();
-						} else if (nextToken().character() != ']') {
-							error("Expecting ',' or ']' in options of \\newcommandx");
-							return;
+						MathData value;
+						if (nextToken().character() == '=') {
+							getToken();
+							while (nextToken().character() != ']'
+								&& nextToken().character() != ',')
+								parse(value, FLAG_ITEM, 
+								      InsetMath::UNDECIDED_MODE);
 						}
+					} else {
+						error("option for \\newcommandx expected");
+						return;
 					}
 					
-					// skip ']'
-					if (!good())
+					// skip komma
+					skipSpaces();
+					if (nextToken().character() == ',') {
+						getChar();
+						skipSpaces();
+					} else if (nextToken().character() != ']') {
+						error("Expecting ',' or ']' in options "
+						      "of \\newcommandx");
 						return;
-					getToken();
+					}
 				}
-			} else {
-				if (getToken().cat() != catBegin) {
-					error("'{' in \\newcommand expected (1) ");
+				
+				// skip ']'
+				if (!good())
 					return;
-				}
-
-				name = getToken().cs();
-
-				if (getToken().cat() != catEnd) {
-					error("'}' in \\newcommand expected");
-					return;
-				}
-
-				docstring const arg = getArg('[', ']');
-				if (!arg.empty())
-					nargs = convert<int>(arg);
-
-				// optional argument given?
-				skipSpaces();
-				while (nextToken().character() == '[') {
-					getToken();
-					optionalValues.push_back(MathData());
-					parse(optionalValues[optionals], FLAG_BRACK_LAST, mode);
-					++optionals;
-				}
+				getToken();
 			}
 
+			// get definition
 			MathData def;
 			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
 
@@ -1056,7 +1082,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
 			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs,
-				optionals, type, optionalValues, def, display)));
+				optionals, MacroTypeNewcommandx, optionalValues, def, 
+				display)));
 		}
 
 		else if (t.cs() == "(") {
