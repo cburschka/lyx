@@ -1268,10 +1268,11 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 	
 void MathMacroTemplate::validate(LaTeXFeatures & features) const
 {
-	if (optionals_ > 0) {
-		//features.require("newlyxcommand");
+	// we need global optional macro arguments. They are not available 
+	// with \def, and \newcommand does not support global macros. So we
+	// are bound to xargs also for the single-optional-parameter case.
+	if (optionals_ > 0)
 		features.require("xargs");
-	}
 }
 
 void MathMacroTemplate::getDefaults(vector<docstring> & defaults) const
