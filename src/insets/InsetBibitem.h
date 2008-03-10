@@ -34,6 +34,8 @@ public:
 	  **/
 	void initView();
 	///
+	bool isLabeled() const { return true; }
+	///
 	void read(Lexer & lex);
 	///
 	docstring screenLabel() const;

@@ -38,11 +38,8 @@ public:
 
 	InsetRef(Buffer const & buffer, InsetCommandParams const &);
 
-	/// verify label and reference.
-	/**
-	  * Overloaded from Inset::initView.
-	  **/
-	void initView();
+	///
+	bool isLabeled() const { return true; }
 	///
 	docstring screenLabel() const;
 	///

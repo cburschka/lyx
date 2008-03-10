@@ -101,9 +101,14 @@ public:
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
-	  * Buffer.
+	  * Buffer. The default implementation calls updateLabels(buffer()) is
+	  * the inset is labeled.
+	  *
+	  * \sa isLabeled()
 	  **/
-	virtual void initView() {}
+	virtual void initView();
+	/// \return true if this inset is labeled.
+	virtual bool isLabeled() const { return false; }
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }

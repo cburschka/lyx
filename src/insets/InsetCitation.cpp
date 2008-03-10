@@ -386,14 +386,6 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 {}
 
 
-void InsetCitation::initView()
-{
-	// We need an update of the Buffer reference cache. This is achieved by
-	// updateLabel().
-	lyx::updateLabels(buffer());
-}
-
-
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
 	// standard cite does only take one argument if jurabib is

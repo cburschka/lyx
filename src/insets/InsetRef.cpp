@@ -12,7 +12,6 @@
 #include "InsetRef.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -41,14 +40,6 @@ InsetRef::InsetRef(Buffer const & buf, InsetCommandParams const & p)
 InsetRef::InsetRef(InsetRef const & ir)
 	: InsetCommand(ir), isLatex(ir.isLatex)
 {}
-
-
-void InsetRef::initView()
-{
-	// We need an update of the Buffer reference cache. This is achieved by
-	// updateLabel().
-	lyx::updateLabels(buffer());
-}
 
 
 bool InsetRef::isCompatibleCommand(string const & s) {

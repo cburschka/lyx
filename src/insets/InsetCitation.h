@@ -30,7 +30,7 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	void initView();
+	bool isLabeled() const { return true; }
 	///
 	docstring screenLabel() const;
 	///

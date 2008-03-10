@@ -16,6 +16,7 @@
 
 #include "Inset.h"
 
+#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -147,6 +148,13 @@ Buffer const & Inset::buffer() const
 docstring Inset::name() const
 {
 	return from_ascii("unknown");
+}
+
+
+void Inset::initView()
+{
+	if (isLabeled())
+		lyx::updateLabels(buffer());
 }
 
 

@@ -29,6 +29,9 @@ public:
 	void initView();
 
 	///
+	bool isLabeled() const { return true; }
+
+	///
 	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
