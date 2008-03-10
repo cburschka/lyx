@@ -479,7 +479,7 @@ private:
 		menuOption.font = combo->font();
 		menuOption.fontMetrics = QFontMetrics(menuOption.font);
 		menuOption.rect = option.rect;
-		menuOption.rect.setHeight(menuOption.fontMetrics.height() + 2);
+		menuOption.rect.setHeight(menuOption.fontMetrics.height());
 		menuOption.menuRect = menuOption.rect;
 		menuOption.tabWidth = 0;
 		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
