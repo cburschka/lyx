@@ -1439,8 +1439,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\\bibitem ";
 			os << p.getOpt();
 			os << '{' << p.verbatim_item() << '}' << "\n";
+		} 
+		
+		else if(t.cs() == "global") {
+			// skip global which can appear in front of e.g. "def"
 		}
-
+		
 		else if (t.cs() == "def") {
 			context.check_layout(os);
 			eat_whitespace(p, os, context, false);
@@ -2395,6 +2399,94 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const ert = name + '{' + command + '}' + opt1
 				+ optionals + '{' + p.verbatim_item() + '}';
 
+			context.check_layout(os);
+			begin_inset(os, "FormulaMacro");
+			os << "\n" << ert;
+			end_inset(os);
+		}
+		
+		else if (t.cs() == "newcommandx" ||
+			 t.cs() == "renewcommandx") {
+			string command;
+			if (p.next_token().cat() == catBegin)
+				command = p.verbatim_item();
+			else 
+				command = "\\" + p.get_token().cs();
+			
+			string const opt1 = p.getOpt();
+			std::vector<string> optionalValues;
+			int optionalsNum = 0;
+			if (p.next_token().character() == '[') {
+				// skip '['
+				p.get_token();
+				
+				// handle 'opt=value' options, separated by ','.
+				eat_whitespace(p, os, context, false);
+				while (p.next_token().character() != ']' && p.good()) {
+					char_type nextc = p.next_token().character();
+					if (nextc >= '1' && nextc <= '9') {
+						// optional value -> get parameter number
+						int n = p.getChar() - '0';
+
+						// skip '='
+						if (p.next_token().character() != '=') {
+							cerr << "'=' expected after numeral option of \\newcommandx" << std::endl;
+							// try to find ] or ,
+							while (p.next_token().character() != ','
+							       && p.next_token().character() != ']')
+								p.get_token();
+							continue;
+						} else
+							p.get_token();
+						
+						// get value
+						optionalValues.resize(max(size_t(n), optionalValues.size()));
+						optionalValues[n - 1].clear();
+						while (p.next_token().character() != ']'
+						       && p.next_token().character() != ',')
+							optionalValues[n - 1] += p.verbatim_item();
+						optionalsNum = max(n, optionalsNum);
+					} else if (p.next_token().cat() == catLetter) {
+						// we in fact ignore every non-optional
+						// parameters
+						
+						// get option name
+						docstring opt;
+						while (p.next_token().cat() == catLetter)
+							opt += p.getChar();
+						
+						// value?
+						eat_whitespace(p, os, context, false);
+						if (p.next_token().character() == '=') {
+							p.get_token();
+							while (p.next_token().character() != ']'
+							       && p.next_token().character() != ',')
+								p.verbatim_item();
+						}
+					} else
+						return;
+					
+					// skip komma
+					eat_whitespace(p, os, context, false);
+					if (p.next_token().character() == ',') {
+						p.getChar();
+						eat_whitespace(p, os, context, false);
+					} else if (p.next_token().character() != ']')
+						continue;
+				}
+				
+				// skip ']'
+				p.get_token();
+			}
+			
+			string optionals;
+			for (unsigned i = 0; i < optionalValues.size(); ++i)
+				optionals += "[" + optionalValues[i] + "]";
+			
+			add_known_command(command, opt1, optionalsNum);
+			string const ert = "\\newcommand{" + command + '}' + opt1
+			+ optionals + '{' + p.verbatim_item() + '}';
+			
 			context.check_layout(os);
 			begin_inset(os, "FormulaMacro");
 			os << "\n" << ert;
