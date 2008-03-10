@@ -892,14 +892,23 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->back().nucleus()->lock(true);
 		}
 
-		else if (t.cs() == "def" ||
+		else if ((t.cs() == "global" && nextToken().cs() == "def") ||
+			t.cs() == "def" ||
 			t.cs() == "newcommand" ||
 			t.cs() == "renewcommand" ||
-			t.cs() == "newlyxcommand")
+			t.cs() == "newlyxcommand" ||
+			t.cs() == "newcommandx" ||
+			t.cs() == "renewcommandx")
 		{
 			MacroType type = MacroTypeNewcommand;
+			if (t.cs() == "global") {
+				getToken();
+				type = MacroTypeDef;
+			}
 			if (t.cs() == "def")
 				type = MacroTypeDef;
+			if (t.cs() == "newcommandx" || t.cs() == "renewcommandx")
+				type = MacroTypeNewcommandx;
 			docstring name;
 			int nargs = 0;
 			int optionals = 0;
@@ -917,6 +926,99 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				nargs /= 2;
 				//lyxerr << "read \\def parameter list '" << pars << "'" << endl;
 
+			} else if (type == MacroTypeNewcommandx) {
+				// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
+				// name
+				if (nextToken().cat() == catBegin) {
+					getToken();
+					name = getToken().cs();
+					if (getToken().cat() != catEnd) {
+						error("'}' in \\newcommandx expected");
+						return;
+					}
+				} else
+					name = getToken().cs();
+				
+				// arity
+				docstring const arg = getArg('[', ']');
+				if (arg.empty()) {
+					error("[num] in \\newcommandx expected");
+					return;
+				}
+				nargs = convert<int>(arg);
+				
+				// options
+				if (nextToken().character() == '[') {
+					// skip '['
+					getToken();
+					
+					// handle 'opt=value' options, separated by ','.
+					skipSpaces();
+					while (nextToken().character() != ']' && good()) {
+						if (nextToken().character() >= '1'
+						    && nextToken().character() <= '9') {
+							// optional value -> get parameter number
+							int n = getChar() - '0';
+							if (n > nargs) {
+								error("Arity of \\newcommandx too low for given optional parameter.");
+								return;
+							}
+							
+							// skip '='
+							if (getToken().character() != '=') {
+								error("'=' and optional parameter value expected for \\newcommandx");
+								return;
+							}
+							
+							// get value
+							optionalValues.resize(max(size_t(n), optionalValues.size()));
+							optionalValues[n - 1].clear();
+							while (nextToken().character() != ']'
+							       && nextToken().character() != ',') {
+								MathData data;
+								parse(data, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
+								optionalValues[n - 1].append(data);
+							}
+							optionals = max(n, optionals);
+						} else if (nextToken().cat() == catLetter) {
+							// we in fact ignore every non-optional
+							// parameters
+							
+							// get option name
+							docstring opt;
+							while (nextToken().cat() == catLetter)
+								opt += getChar();
+							
+							// value?
+							skipSpaces();
+							MathData value;
+							if (nextToken().character() == '=') {
+								getToken();
+								while (nextToken().character() != ']'
+									&& nextToken().character() != ',')
+									parse(value, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
+							}
+						} else {
+							error("option for \\newcommandx expected");
+							return;
+						}
+
+						// skip komma
+						skipSpaces();
+						if (nextToken().character() == ',') {
+							getChar();
+							skipSpaces();
+						} else if (nextToken().character() != ']') {
+							error("Expecting ',' or ']' in options of \\newcommandx");
+							return;
+						}
+					}
+					
+					// skip ']'
+					if (!good())
+						return;
+					getToken();
+				}
 			} else {
 				if (getToken().cat() != catBegin) {
 					error("'{' in \\newcommand expected (1) ");
@@ -953,8 +1055,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, optionals, type, 
-																										 optionalValues, def, display)));
+			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs,
+				optionals, type, optionalValues, def, display)));
 		}
 
 		else if (t.cs() == "(") {

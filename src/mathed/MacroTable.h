@@ -31,6 +31,7 @@ class Paragraph;
 
 enum MacroType {
 	MacroTypeNewcommand,
+	MacroTypeNewcommandx,
 	MacroTypeDef
 };
 
