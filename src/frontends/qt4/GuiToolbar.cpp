@@ -54,7 +54,6 @@
 #include <QListView>
 #include <QPainter>
 #include <QPixmap>
-#include <QPlastiqueStyle>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
 #include <QStandardItemModel>
