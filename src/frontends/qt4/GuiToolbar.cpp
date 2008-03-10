@@ -49,6 +49,7 @@
 #include <QComboBox>
 #include <QFontMetrics>
 #include <QHeaderView>
+#include <QItemDelegate>
 #include <QKeyEvent>
 #include <QList>
 #include <QListView>
@@ -249,53 +250,61 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 //
 /////////////////////////////////////////////////////////////////////
 
-class LayoutItemDelegate : public QAbstractItemDelegate {
+class LayoutItemDelegate : public QItemDelegate {
 public:
 	///
 	explicit LayoutItemDelegate(QObject * parent = 0)
-		: QAbstractItemDelegate(parent)
+		: QItemDelegate(parent)
 	{}
 	
 	///
 	void paint(QPainter * painter, QStyleOptionViewItem const & option,
 		QModelIndex const & index) const
 	{
-		QComboBox * combo = static_cast<QComboBox *>(parent());
-		QSortFilterProxyModel const * model
-		= static_cast<QSortFilterProxyModel const *>(index.model());
-		QStyleOptionMenuItem opt = getStyleOption(option, index);
+		QStyleOptionViewItem opt = option;
 		
-		painter->eraseRect(opt.rect);
-		
-		QString text = underlineFilter(opt.text);
-		opt.text = QString();
+		// default background
+		painter->fillRect(opt.rect, opt.palette.background().color());
 		
 		// category header?
 		if (lyxrc.group_layouts) {
+			QSortFilterProxyModel const * model
+			= static_cast<QSortFilterProxyModel const *>(index.model());
+			
 			QString stdCat = category(*model->sourceModel(), 0);
 			QString cat = category(*index.model(), index.row());
 			
 			// not the standard layout and not the same as in the previous line?
 			if (stdCat != cat
 			    && (index.row() == 0 || cat != category(*index.model(), index.row() - 1))) {
+				painter->save();
+				
+				// draw unselected background
+				QStyle::State state = opt.state;
+				opt.state = opt.state & ~QStyle::State_Selected;
+				drawBackground(painter, opt, index);
+				opt.state = state;
+				
 				// draw category header
-				paintBackground(painter, opt);
-				paintCategoryHeader(painter, opt, 
+				drawCategoryHeader(painter, opt, 
 					category(*index.model(), index.row()));
 
 				// move rect down below header
-				opt.rect.moveTop(opt.rect.top() + headerHeight(opt));
-				opt.menuRect = opt.rect;
+				opt.rect.setTop(opt.rect.top() + headerHeight(opt));
+				
+				painter->restore();
 			}
 		}
 
-		// Draw using the menu item style (this is how QComboBox does it).
-		// But for the rich text drawing below we will call it with an
-		// empty string, and later then draw over it the real string.
-		painter->save();
-		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo->view());
-		painter->restore();
-		
+		QItemDelegate::paint(painter, opt, index);
+	}
+	
+	///
+	void drawDisplay(QPainter * painter, QStyleOptionViewItem const & opt,
+		const QRect & rect, const QString & text ) const
+	{
+		QString utext = underlineFilter(text);
+
 		// Draw the rich text.
 		painter->save();
 		QColor col = opt.palette.text().color();
@@ -306,7 +315,7 @@ public:
 		
 		QTextDocument doc;
 		doc.setDefaultFont(opt.font);
-		doc.setHtml(text);
+		doc.setHtml(utext);
 		
 		QTextFrameFormat fmt = doc.rootFrame()->frameFormat();
 		fmt.setMargin(0);
@@ -319,18 +328,13 @@ public:
 	}
 	
 	///
-	QSize sizeHint(QStyleOptionViewItem const & option,
+	QSize sizeHint(QStyleOptionViewItem const & opt,
 		QModelIndex const & index) const
 	{
 		GuiLayoutBox * combo = static_cast<GuiLayoutBox *>(parent());
 		QSortFilterProxyModel const * model
-		= static_cast<QSortFilterProxyModel const *>(index.model());
-		
-		// we use a compressed menu style here
-		QStyleOptionMenuItem opt = getStyleOption(option, index);
-		QSize size = combo->style()->sizeFromContents(
-			 QStyle::CT_MenuItem, &opt, opt.rect.size(), combo);
-		size.setHeight(opt.rect.height());
+		= static_cast<QSortFilterProxyModel const *>(index.model());	
+		QSize size = QItemDelegate::sizeHint(opt, index);
 		
 		/// QComboBox uses the first row height to estimate the
 		/// complete popup height during QComboBox::showPopup().
@@ -369,37 +373,16 @@ private:
 	{
 		return model.data(model.index(row, 2), Qt::DisplayRole).toString();
 	}
-	
-	/// 
-	void paintBackground(QPainter * painter, QStyleOptionMenuItem const & opt) const
-	{
-		QComboBox * combo = static_cast<QComboBox *>(parent());
-
-		// we only want to paint a background using the style, so
-		// disable every thing else
-		QStyleOptionMenuItem sopt = opt;
-		sopt.menuRect = sopt.rect;
-		sopt.state = QStyle::State_Active | QStyle::State_Enabled;
-		sopt.checked = false;
-		sopt.text = QString();
 		
-		painter->save();
-		combo->style()->drawControl(QStyle::CE_MenuItem, &sopt, 
-			painter, combo->view());
-		painter->restore();
-	}
-	
 	///
-	int headerHeight(QStyleOptionMenuItem const & opt) const
+	int headerHeight(QStyleOptionViewItem const & opt) const
 	{
 		return opt.fontMetrics.height() * 8 / 10;
 	}
 	///
-	void paintCategoryHeader(QPainter * painter, QStyleOptionMenuItem const & opt,
+	void drawCategoryHeader(QPainter * painter, QStyleOptionViewItem const & opt,
 		QString const & category) const
 	{
-		painter->save();
-		
 		// slightly blended color
 		QColor lcol = opt.palette.text().color();
 		lcol.setAlpha(127);
@@ -430,8 +413,6 @@ private:
 			painter->drawLine(right + 1, ymid, opt.rect.right(), ymid);
 		} else
 			painter->drawLine(opt.rect.x(), ymid, opt.rect.right(), ymid);
-			
-		painter->restore();
 	}
 
 	
@@ -463,32 +444,6 @@ private:
 		}
 		r += s.mid(lastp + 1);
 		return r;
-	}
-
-	///
-	QStyleOptionMenuItem getStyleOption(QStyleOptionViewItem const & option,
-		QModelIndex const & index) const
-	{
-		QComboBox * combo = static_cast<QComboBox *>(parent());
-		
-		// create the options for a menu item
-		QStyleOptionMenuItem menuOption;
-		menuOption.palette = QApplication::palette("QMenu");
-		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
-		menuOption.font = combo->font();
-		menuOption.fontMetrics = QFontMetrics(menuOption.font);
-		menuOption.rect = option.rect;
-		menuOption.rect.setHeight(menuOption.fontMetrics.height());
-		menuOption.menuRect = menuOption.rect;
-		menuOption.tabWidth = 0;
-		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
-			.replace(QLatin1Char('&'), QLatin1String("&&"));
-		menuOption.menuItemType = QStyleOptionMenuItem::Normal;
-		if (option.state & QStyle::State_Selected)
-			menuOption.state |= QStyle::State_Selected;
-		menuOption.checkType = QStyleOptionMenuItem::NotCheckable;
-		menuOption.checked = false;
-		return menuOption;
 	}
 };
 
