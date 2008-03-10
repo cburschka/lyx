@@ -10,7 +10,9 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -19,6 +21,12 @@
    <string/>
   </property>
   <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item row="2" column="0" colspan="3" >
     <widget class="QGroupBox" name="GeometryGB" >
      <property name="title" >
@@ -28,10 +36,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="horizontalSpacing" >
-       <number>4</number>
+      <property name="margin" >
+       <number>9</number>
       </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>4</number>
       </property>
       <item row="0" column="0" >
@@ -76,6 +84,12 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item rowspan="3" row="0" column="2" >
        <widget class="QGroupBox" name="fullscreenLimitGB" >
         <property name="title" >
@@ -85,13 +99,19 @@
          <bool>true</bool>
         </property>
         <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
          <item row="0" column="1" >
           <widget class="QSpinBox" name="fullscreenWidthSB" >
-           <property name="minimum" >
-            <number>0</number>
-           </property>
            <property name="maximum" >
             <number>10000</number>
+           </property>
+           <property name="minimum" >
+            <number>0</number>
            </property>
            <property name="singleStep" >
             <number>10</number>
@@ -144,7 +164,9 @@
       <item row="0" column="0" >
        <widget class="QCheckBox" name="toggleToolbarsCB" >
         <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>0</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -169,10 +191,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="horizontalSpacing" >
-       <number>4</number>
+      <property name="margin" >
+       <number>9</number>
       </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>4</number>
       </property>
       <item row="0" column="0" >
@@ -227,8 +249,20 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item row="1" column="0" colspan="4" >
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
          <widget class="QLabel" name="lastfilesLA" >
           <property name="text" >
@@ -283,11 +317,11 @@
       </item>
       <item row="0" column="1" >
        <widget class="QSpinBox" name="autoSaveSB" >
-        <property name="minimum" >
-         <number>1</number>
-        </property>
         <property name="maximum" >
          <number>300</number>
+        </property>
+        <property name="minimum" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -326,10 +360,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="horizontalSpacing" >
-       <number>4</number>
+      <property name="margin" >
+       <number>9</number>
       </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>4</number>
       </property>
       <item row="0" column="0" >
