@@ -1107,6 +1107,13 @@ void LyXAction::init()
  */
 		{ LFUN_LABEL_GOTO, "label-goto", ReadOnly, Edit },
 		{ LFUN_LABEL_INSERT, "label-insert", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_REFERENCE_NEXT
+ * \li Action: Goto the next label or cross-reference.
+ * \li Syntax: reference-next
+ * \li Origin: Dekel, 14 Jan 2001
+ * \endvar
+ */
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
 
 /*!
