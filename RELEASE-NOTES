@@ -39,13 +39,20 @@ Some of the LyX functions have changed names:
 - The function LFUN_MATH_NONUMBER, "math-nonumber", has been renamed to
   LFUN_MATH_NUMBER_LINE_TOGGLE.
 
-- The function LFUN_CHARSTYLE_INSERT, "charstyle-insert", has been renamed to 
-  LFUN_FLEX_INSERT, "flex-insert". It now handles beside charstyles, also 
+- The function LFUN_CHARSTYLE_INSERT, "charstyle-insert", has been renamed to
+  LFUN_FLEX_INSERT, "flex-insert". It now handles beside charstyles, also
   custom insets and XML short element insets.
 
 - The function LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar"
   has been renamed to LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE,
   "cursor-follows-scrollbar-toggle".
+
+- The function LFUN_FONT_CODE, "font-code", has been renamed to
+  LFUN_FONT_TYPEWRITER, "font-typewriter".
+
+- The functions LFUN_HTML_INSERT, "html-insert", LFUN_URL_INSERT, "url-insert" was
+  superseded by LFUN_HYPERLINK_INSERT, "href-insert".
+
 
 The following new LyX functions have been introduced:
 
@@ -54,6 +61,85 @@ The following new LyX functions have been introduced:
 - LFUN_LINE_BREAK, "line-break".
 
 - LFUN_PAGEBREAK_INSERT, "pagebreak-insert".
+
+- LFUN_COMPLETION_INLINE, "completion-inline".
+
+- LFUN_COMPLETION_POPUP, "completion-popup".
+
+- LFUN_COMPLETION_COMPLETE, "complete".
+
+- LFUN_CLOSE_TAB_GROUP, "close-tab-group".
+
+- LFUN_SPLIT_VIEW, "split-view".
+
+- LFUN_UI_TOGGLE, "ui-toggle".
+
+- LFUN_SCROLL, "scroll".
+
+- LFUN_MATH_MACRO, "math-macro".
+
+- LFUN_MATH_MACRO_UNFOLD, "math-macro-unfold".
+
+- LFUN_MATH_MACRO_FOLD, "math-macro-fold".
+
+- LFUN_MATH_MACRO_ADD_PARAM, "math-macro-add-param".
+
+- LFUN_MATH_MACRO_REMOVE_PARAM, "math-macro-remove-param".
+
+- LFUN_MATH_MACRO_APPEND_GREEDY_PARAM, "math-macro-append-greedy-param".
+
+- LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM, "math-macro-remove-greedy-param".
+
+- LFUN_MATH_MACRO_MAKE_OPTIONAL, "math-macro-make-optional".
+
+- LFUN_MATH_MACRO_MAKE_NONOPTIONAL, "math-macro-make-nonoptional".
+
+- LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param".
+
+- LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param".
+
+- LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param".
+
+- LFUN_WORD_LEFT, "word-left".
+
+- LFUN_WORD_LEFT_SELECT, "word-left-select".
+
+- LFUN_WORD_RIGHT, "word-right".
+
+- LFUN_WORD_RIGHT_SELECT, "word-right-select".
+
+- LFUN_CHAR_LEFT, "char-left".
+
+- LFUN_CHAR_LEFT_SELECT, "char-left-select".
+
+- LFUN_CHAR_RIGHT, "char-right".
+
+- LFUN_CHAR_RIGHT_SELECT, "char-right-select".
+
+- LFUN_FINISHED_FORWARD, "".
+
+- LFUN_FINISHED_BACKWARD, "".
+
+- LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding".
+
+- LFUN_INFO_INSERT, "info-insert".
+
+- LFUN_LAYOUT_RELOAD, "layout-reload".
+
+- LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear".
+
+- LFUN_LAYOUT_MODULE_ADD, "layout-module-add".
+
+
+The following new LyX functions have been removed:
+
+- LFUN_FILE_NEW.
+
+- LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT.
+
+- LFUN_FONT_CODE.
+
+For the detailed description of LyX functions look into doxygen documentation.
 
 
 Known issues in version 1.5.2
