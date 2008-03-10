@@ -30,6 +30,8 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
+	void initView();
+	///
 	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

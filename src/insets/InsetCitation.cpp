@@ -14,6 +14,7 @@
 #include "InsetCitation.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
 #include "EmbeddedFiles.h"
@@ -385,6 +386,14 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 {}
 
 
+void InsetCitation::initView()
+{
+	// We need an update of the Buffer reference cache. This is achieved by
+	// updateLabel().
+	lyx::updateLabels(buffer());
+}
+
+
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
 	// standard cite does only take one argument if jurabib is
@@ -465,16 +474,8 @@ void InsetCitation::addToToc(ParConstIterator const & cpit) const
 
 int InsetCitation::plaintext(odocstream & os, OutputParams const &) const
 {
-	docstring str;
-
-	if (cache.params == params() &&
-	    cache.engine == buffer().params().getEngine())
-		str = cache.generated_label;
-	else
-		str = generateLabel();
-
-	os << str;
-	return str.size();
+	os << cache.generated_label;
+	return cache.generated_label.size();
 }
 
 
