@@ -93,6 +93,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\fullscreen_tabbar", LyXRC::RC_FULL_SCREEN_TABBAR },
 	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
 	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
+	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
@@ -272,6 +273,7 @@ void LyXRC::setDefaults() {
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	sort_layouts = false;
+	group_layouts = true;
 	default_language = "english";
 	show_banner = true;
 	windows_style_tex_paths = false;
@@ -1270,6 +1272,10 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next())
 				sort_layouts = lexrc.getBool();
 			break;
+		case RC_GROUP_LAYOUTS:
+			if (lexrc.next())
+				group_layouts = lexrc.getBool();
+			break;
 		case RC_FULL_SCREEN_LIMIT:
 			if (lexrc.next())
 				full_screen_limit = lexrc.getBool();
@@ -1458,6 +1464,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    sort_layouts != system_lyxrc.sort_layouts) {
 			os << "# Sort layouts alphabetically.\n"
 			   << "\\sort_layouts " << convert<string>(sort_layouts) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_GROUP_LAYOUTS:
+		if (ignore_system_lyxrc ||
+		    group_layouts != system_lyxrc.group_layouts) {
+			os << "# Group layouts by their category.\n"
+			   << "\\group_layouts " << convert<string>(group_layouts) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;

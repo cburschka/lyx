@@ -18,26 +18,27 @@
 
 #include "Session.h"
 
+#include <QAbstractProxyModel>
+#include <QComboBox>
 #include <QList>
 #include <QToolBar>
-#include <QComboBox>
 
+class QSortFilterProxyModel;
 class QStandardItemModel;
 
 namespace lyx {
 
-class Inset;
 class DocumentClass;
+class Inset;
 class ToolbarItem;
 
 namespace frontend {
 
-class FilterItemDelegate;
-class GuiCommandBuffer;
-class GuiFilterProxyModel;
-class GuiView;
 class Action;
-
+class GuiCommandBuffer;
+class GuiLayoutFilterModel;
+class GuiView;
+class LayoutItemDelegate;
 
 class GuiLayoutBox : public QComboBox
 {
@@ -50,7 +51,8 @@ public:
 	/// Populate the layout combobox.
 	void updateContents(bool reset);
 	/// Add Item to Layout box according to sorting settings from preferences
-	void addItemSort(docstring const & item, bool sorted);
+	void addItemSort(docstring const & item, docstring const & category,
+		bool sorted, bool sortedByCat);
 
 	///
 	void showPopup();
@@ -65,11 +67,17 @@ private Q_SLOTS:
 	void selected(int index);
 
 private:
+	friend class LayoutItemDelegate;
+
 	///
 	void resetFilter();
 	///
 	void setFilter(QString const & s);
-
+	///
+	QString charFilterRegExp(QString const & filter);
+	///
+	void countCategories();
+	
 	///
 	GuiView & owner_;
 	///
@@ -80,13 +88,17 @@ private:
 	/// the layout model: 1st column translated, 2nd column raw layout name
 	QStandardItemModel * model_;
 	/// the proxy model filtering \c model_
-	GuiFilterProxyModel * filterModel_;
+	GuiLayoutFilterModel * filterModel_;
 	/// the (model-) index of the last successful selection
 	int lastSel_;
 	/// the character filter
 	QString filter_;
 	///
-	FilterItemDelegate * filterItemDelegate_;
+	LayoutItemDelegate * layoutItemDelegate_;
+	///
+	unsigned visibleCategories_;
+	///
+	bool inShowPopup_;
 };
 
 

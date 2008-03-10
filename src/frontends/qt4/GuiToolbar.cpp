@@ -46,9 +46,11 @@
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
 #include <QComboBox>
+#include <QFontMetrics>
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QList>
+#include <QListView>
 #include <QPainter>
 #include <QPixmap>
 #include <QSortFilterProxyModel>
@@ -60,6 +62,9 @@
 #include <QVariant>
 
 #include <boost/assert.hpp>
+
+#include <map>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;
@@ -242,10 +247,10 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 //
 /////////////////////////////////////////////////////////////////////
 
-class FilterItemDelegate : public QAbstractItemDelegate {
+class LayoutItemDelegate : public QAbstractItemDelegate {
 public:
 	///
-	explicit FilterItemDelegate(QObject * parent = 0)
+	explicit LayoutItemDelegate(QObject * parent = 0)
 		: QAbstractItemDelegate(parent)
 	{}
 	
@@ -254,60 +259,38 @@ public:
 		QModelIndex const & index) const
 	{
 		QComboBox * combo = static_cast<QComboBox *>(parent());
+		QSortFilterProxyModel const * model
+		= static_cast<QSortFilterProxyModel const *>(index.model());
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
+
+		painter->eraseRect(opt.rect);
 		
-		// draw line with small text string for separator
-		if (opt.text.left(2) == "--") {
-			painter->save();
-
-			// set options for the separator, the first 8/18 of the vertical space
-			QStyleOptionMenuItem sopt = opt;
-			sopt.state = QStyle::State_Active | QStyle::State_Enabled;
-			sopt.checked = false;
-			sopt.text = QString();
-			sopt.rect.setHeight(sopt.rect.height() * 8 / 18);
-			sopt.menuRect.setHeight(sopt.menuRect.height() * 8 / 18);
-
-			// use the style with an empty text to paint the background
-			painter->eraseRect(sopt.rect);
-			combo->style()->drawControl(QStyle::CE_MenuItem, &sopt, painter, combo->view());
-
-			// draw the centered text, small and bold
-			QPen pen;
-			pen.setWidth(1);
-			pen.setColor(sopt.palette.text().color());
-			painter->setPen(pen);
-			QFont font = sopt.font;
-			font.setBold(true);
-			font.setWeight(QFont::Black);
-			font.setPointSize(sopt.font.pointSize() * 8 / 10);
-			painter->setFont(font);
-			QRect brect;
-			painter->drawText(sopt.rect, Qt::AlignCenter, "Modules", &brect);
+		QString text = underlineFilter(opt.text);
+		opt.text = QString();
+		
+		// category header?
+		if (lyxrc.group_layouts) {
+			QString stdCat = category(*model->sourceModel(), 0);
+			QString cat = category(*index.model(), index.row());
 			
-			// draw the horizontal line
-			QColor lcol = sopt.palette.text().color();
-			lcol.setAlpha(127);
-			painter->setPen(lcol);
-			painter->drawLine(sopt.rect.x(), sopt.rect.y() + sopt.rect.height() / 2 ,
-					  brect.left() - 1, sopt.rect.y() + sopt.rect.height() / 2);
-			painter->drawLine(brect.right() + 1, sopt.rect.y() + sopt.rect.height() / 2,
-					  sopt.rect.right(), sopt.rect.y() + sopt.rect.height() / 2);
-			
-			painter->restore();
-			
-			// move rect down 8/20 of the original height
-			opt.rect.setTop(sopt.rect.y() + sopt.rect.height());
-			opt.menuRect = opt.rect;
+			// not the standard layout and not the same as in the previous line?
+			if (stdCat != cat
+			    && (index.row() == 0 || cat != category(*index.model(), index.row() - 1))) {
+				// draw category header
+				paintBackground(painter, opt);
+				paintCategoryHeader(painter, opt, 
+					category(*index.model(), index.row()));
+
+				QFontMetrics fm(opt.font);
+				opt.rect.setTop(opt.rect.top() + headerHeight(opt));
+				opt.menuRect = opt.rect;
+			}
 		}
 
 		// Draw using the menu item style (this is how QComboBox does it).
 		// But for the rich text drawing below we will call it with an
 		// empty string, and later then draw over it the real string.
 		painter->save();
-		QString text = underlineFilter(opt.text);
-		opt.text = QString();
-		painter->eraseRect(opt.rect);
 		combo->style()->drawControl(QStyle::CE_MenuItem, &opt, painter, combo->view());
 		painter->restore();
 		
@@ -322,7 +305,7 @@ public:
 		QTextDocument doc;
 		doc.setDefaultFont(opt.font);
 		doc.setHtml(text);
-		painter->translate(opt.rect.x() + 20, opt.rect.y());
+		painter->translate(opt.rect.x() + 5, opt.rect.y());
 		doc.documentLayout()->draw(painter, context);
 		painter->restore();
 	}
@@ -331,17 +314,114 @@ public:
 	QSize sizeHint(QStyleOptionViewItem const & option,
 		QModelIndex const & index) const
 	{
-		QComboBox * combo = static_cast<QComboBox *>(parent());
-
+		GuiLayoutBox * combo = static_cast<GuiLayoutBox *>(parent());
+		QSortFilterProxyModel const * model
+		= static_cast<QSortFilterProxyModel const *>(index.model());
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		QSize size = combo->style()->sizeFromContents(
 			 QStyle::CT_MenuItem, &opt, option.rect.size(), combo);
-		if (opt.text.left(2) == "--")
-			size.setHeight(size.height() * 18 / 10);
+
+		/// QComboBox uses the first row height to estimate the
+		/// complete popup height during QComboBox::showPopup().
+		/// To avoid scrolling we have to sneak in space for the headers.
+		/// So we tweak this value accordingly. It's not nice, but the
+		/// only possible way it seems.
+		if (lyxrc.group_layouts && index.row() == 0 && combo->inShowPopup_) {
+			int itemHeight = size.height();
+			
+			// we have to show \c cats many headers:
+			unsigned cats = combo->visibleCategories_;
+			
+			// and we have \c n items to distribute the needed space over
+			unsigned n = combo->model()->rowCount();
+			
+			// so the needed average height (rounded upwards) is:
+			size.setHeight((headerHeight(opt) * cats + itemHeight * n + n - 1) / n); 
+			return size;
+		}
+
+		// Add space for the category headers here?
+		// Not for the standard layout though.
+		QString stdCat = category(*model->sourceModel(), 0);
+		QString cat = category(*index.model(), index.row());
+		if (lyxrc.group_layouts && stdCat != cat
+		    && (index.row() == 0 || cat != category(*index.model(), index.row() - 1))) {
+			size.setHeight(size.height() + headerHeight(opt));
+		}
+
 		return size;
 	}
 	
 private:
+	///
+	QString category(QAbstractItemModel const & model, int row) const
+	{
+		return model.data(model.index(row, 2), Qt::DisplayRole).toString();
+	}
+	
+	/// 
+	void paintBackground(QPainter * painter, QStyleOptionMenuItem const & opt) const
+	{
+		QComboBox * combo = static_cast<QComboBox *>(parent());
+
+		// we only want to paint a background using the style, so
+		// disable every thing else
+		QStyleOptionMenuItem sopt = opt;
+		sopt.menuRect = sopt.rect;
+		sopt.state = QStyle::State_Active | QStyle::State_Enabled;
+		sopt.checked = false;
+		sopt.text = QString();
+		
+		painter->save();
+		combo->style()->drawControl(QStyle::CE_MenuItem, &sopt, 
+			painter, combo->view());
+		painter->restore();
+	}
+	
+	///
+	int headerHeight(QStyleOptionMenuItem const & opt) const
+	{
+		QFontMetrics fm(opt.font);
+		return fm.height() * 8 / 10;
+	}
+	///
+	void paintCategoryHeader(QPainter * painter, QStyleOptionMenuItem const & opt,
+		QString const & category) const
+	{
+		painter->save();
+		
+		// slightly blended color
+		QColor lcol = opt.palette.text().color();
+		lcol.setAlpha(127);
+		painter->setPen(lcol);
+		
+		// set 80% scaled, bold font
+		QFont font = opt.font;
+		font.setBold(true);
+		font.setWeight(QFont::Black);
+		font.setPointSize(opt.font.pointSize() * 8 / 10);
+		painter->setFont(font);
+		
+		// draw the centered text
+		QFontMetrics fm(font);
+		int w = fm.width(category);
+		int x = opt.rect.x() + (opt.rect.width() - w) / 2;
+		int y = opt.rect.y() + fm.ascent();
+		int left = x;
+		int right = x + w;
+		painter->drawText(x, y, category);
+		
+		// the vertical position of the line: middle of lower case chars
+		int ymid = y - 1 - fm.xHeight() / 2; // -1 for the baseline
+		
+		// draw the horizontal line
+		painter->drawLine(opt.rect.x(), ymid, left - 1, ymid);
+		painter->drawLine(right + 1, ymid, opt.rect.right(), ymid);
+		
+		painter->restore();
+	}
+
+	
 	///
 	QString underlineFilter(QString const & s) const
 	{
@@ -381,7 +461,6 @@ private:
 		// create the options for a menu item
 		QStyleOptionMenuItem menuOption;
 		menuOption.palette = QApplication::palette("QMenu");
-		menuOption.checkType = QStyleOptionMenuItem::NonExclusive;
 		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
 		menuOption.menuRect = option.rect;
 		menuOption.rect = option.rect;
@@ -393,41 +472,32 @@ private:
 		menuOption.menuItemType = QStyleOptionMenuItem::Normal;
 		if (option.state & QStyle::State_Selected)
 			menuOption.state |= QStyle::State_Selected;
-		menuOption.checked = combo->currentIndex() == index.row();
-		
+		menuOption.checkType = QStyleOptionMenuItem::NotCheckable;
+		menuOption.checked = false;
 		return menuOption;
 	}
 };
 
 
-class GuiFilterProxyModel : public QSortFilterProxyModel
-{
+class GuiLayoutFilterModel : public QSortFilterProxyModel {
 public:
 	///
-	GuiFilterProxyModel(QObject * parent)
-		: QSortFilterProxyModel(parent) {}
-
+	GuiLayoutFilterModel(QObject * parent = 0)
+		: QSortFilterProxyModel(parent)
+	{}
+	
 	///
-	void setCharFilter(QString const & f)
+	void triggerLayoutChange()
 	{
-		setFilterRegExp(charFilterRegExp(f));
-		dataChanged(index(0, 0), index(rowCount() - 1, 1));
-	}
-
-private:
-	///
-	QString charFilterRegExp(QString const & filter)
-	{
-		QString re;
-		for (int i = 0; i < filter.length(); ++i)
-			re += ".*" + QRegExp::escape(filter[i]);
-		return re;
+		layoutAboutToBeChanged();
+		layoutChanged();
 	}
 };
 
 
 GuiLayoutBox::GuiLayoutBox(GuiView & owner)
-	: owner_(owner), filterItemDelegate_(new FilterItemDelegate(this))
+	: owner_(owner), lastSel_(-1), layoutItemDelegate_(new LayoutItemDelegate(this)),
+	  visibleCategories_(0), inShowPopup_(false)
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	setFocusPolicy(Qt::ClickFocus);
@@ -438,15 +508,13 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	// 1st: translated layout names
 	// 2nd: raw layout names
 	model_ = new QStandardItemModel(0, 2, this);
-	filterModel_ = new GuiFilterProxyModel(this);
+	filterModel_ = new GuiLayoutFilterModel(this);
 	filterModel_->setSourceModel(model_);
-	filterModel_->setDynamicSortFilter(true);
-	filterModel_->setFilterCaseSensitivity(Qt::CaseInsensitive);
 	setModel(filterModel_);
 
 	// for the filtering we have to intercept characters
 	view()->installEventFilter(this);
-	view()->setItemDelegateForColumn(0, filterItemDelegate_);
+	view()->setItemDelegateForColumn(0, layoutItemDelegate_);
 	
 	QObject::connect(this, SIGNAL(activated(int)),
 			 this, SLOT(selected(int)));
@@ -457,13 +525,23 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 
 void GuiLayoutBox::setFilter(QString const & s)
 {
+	if (!s.isEmpty())
+		owner_.message(_("Filtering layouts with \"" + fromqstr(s) + "\". "
+			"Press ESC to remove filter."));
+	else
+		owner_.message(_("Enter characters to filter the layout list."));
+	
+	bool enabled = view()->updatesEnabled();
+	view()->setUpdatesEnabled(false);
+
 	// remember old selection
 	int sel = currentIndex();
 	if (sel != -1)
 		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
 
 	filter_ = s;
-	filterModel_->setCharFilter(s);
+	filterModel_->setFilterRegExp(charFilterRegExp(filter_));
+	countCategories();
 	
 	// restore old selection
 	if (lastSel_ != -1) {
@@ -475,8 +553,56 @@ void GuiLayoutBox::setFilter(QString const & s)
 	// Workaround to resize to content size
 	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
 	//        does not help.
-	if (view()->isVisible())
+	if (view()->isVisible()) {
+		// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
+		// the hack in the item delegate to make space for the headers.
+		// We do not call our implementation of showPopup because that
+		// would reset the filter again. This is only needed if the user clicks
+		// on the QComboBox.
+		BOOST_ASSERT(!inShowPopup_);
+		inShowPopup_ = true;
 		QComboBox::showPopup();
+		inShowPopup_ = false;
+
+		// The item delegate hack is off again. So trigger a relayout of the popup.
+		filterModel_->triggerLayoutChange();
+	}
+	
+	view()->setUpdatesEnabled(enabled);
+}
+
+
+void GuiLayoutBox::countCategories()
+{
+	int n = filterModel_->rowCount();
+	visibleCategories_ = 0;
+	if (n == 0 || !lyxrc.group_layouts)
+		return;
+
+	// skip the "Standard" category
+	QString prevCat = model_->index(0, 2).data().toString(); 
+
+	// count categories
+	for (int i = 0; i < n; ++i) {
+		QString cat = filterModel_->index(i, 2).data().toString();
+		if (cat != prevCat)
+			++visibleCategories_;
+		prevCat = cat;
+	}
+}
+
+
+QString GuiLayoutBox::charFilterRegExp(QString const & filter)
+{
+	QString re;
+	for (int i = 0; i < filter.length(); ++i) {
+		QChar c = filter[i];
+		if (c.isLower())
+			re += ".*[" + QRegExp::escape(c) + QRegExp::escape(c.toUpper()) + "]";
+		else
+			re += ".*" + QRegExp::escape(c);
+	}
+	return re;
 }
 
 
@@ -488,9 +614,24 @@ void GuiLayoutBox::resetFilter()
 
 void GuiLayoutBox::showPopup()
 {
-	resetFilter();
 	owner_.message(_("Enter characters to filter the layout list."));
+
+	bool enabled = view()->updatesEnabled();
+	view()->setUpdatesEnabled(false);
+
+	resetFilter();
+
+	// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
+	// the hack in the item delegate to make space for the headers.
+	BOOST_ASSERT(!inShowPopup_);
+	inShowPopup_ = true;
 	QComboBox::showPopup();
+	inShowPopup_ = false;
+	
+	// The item delegate hack is off again. So trigger a relayout of the popup.
+	filterModel_->triggerLayoutChange();
+	
+	view()->setUpdatesEnabled(enabled);
 }
 
 
@@ -565,40 +706,55 @@ void GuiLayoutBox::set(docstring const & layout)
 }
 
 
-void GuiLayoutBox::addItemSort(docstring const & item, bool sorted)
+void GuiLayoutBox::addItemSort(docstring const & item, docstring const & category,
+	bool sorted, bool sortedByCat)
 {
 	QString qitem = toqstr(item);
 	QString titem = toqstr(translateIfPossible(item));
+	QString qcat = toqstr(translateIfPossible(category));
 
 	QList<QStandardItem *> row;
 	row.append(new QStandardItem(titem));
 	row.append(new QStandardItem(qitem));
+	row.append(new QStandardItem(qcat));
 
-	// the simple unsorted case
+	// the first entry is easy
 	int const end = model_->rowCount();
-	if (!sorted || end < 2 || qitem[0].category() != QChar::Letter_Uppercase) {
+	if (end == 0) {
 		model_->appendRow(row);
 		return;
 	}
 
-	// find row to insert the item, after the separator if it exists
-	int i = 1; // skip the Standard layout
-	
-	QList<QStandardItem *> sep = model_->findItems("--", Qt::MatchStartsWith);
-	if (!sep.isEmpty())
-		i = sep.first()->index().row() + 1;
-	if (i < model_->rowCount()) {
-		// find alphabetic position
-		QString is = model_->item(i, 0)->text();
-		while (is.compare(titem) < 0) {
-			// e.g. --Separator--
-			if (is.at(0).category() != QChar::Letter_Uppercase)
-				break;
+	// find category
+	int i = 0;
+	if (sortedByCat) {
+		while (i < end && model_->item(i, 2)->text() != qcat)
 			++i;
-			if (i == end)
-				break;
-			is = model_->item(i, 0)->text();
-		}
+	}
+
+	// skip the Standard layout
+	if (i == 0)
+		++i;
+	
+	// the simple unsorted case
+	if (!sorted) {
+		if (sortedByCat) {
+			// jump to the end of the category group
+			while (i < end && model_->item(i, 2)->text() == qcat)
+				++i;
+			model_->insertRow(i, row);
+		} else
+			model_->appendRow(row);
+		return;
+	}
+
+	// find row to insert the item, after the separator if it exists
+	if (i < end) {
+		// find alphabetic position
+		while (i != end
+		       && model_->item(i, 0)->text().compare(titem) < 0 
+		       && (!sortedByCat || model_->item(i, 2)->text() == qcat))
+			++i;
 	}
 
 	model_->insertRow(i, row);
@@ -645,11 +801,12 @@ void GuiLayoutBox::updateContents(bool reset)
 		if (name == text_class_->emptyLayoutName() && inset &&
 		    !inset->forceEmptyLayout() && !inset->useEmptyLayout())
 			continue;
-		addItemSort(name, lyxrc.sort_layouts);
+		addItemSort(name, lit->category(), lyxrc.sort_layouts, lyxrc.group_layouts);
 	}
 
 	set(owner_.view()->cursor().innerParagraph().layout().name());
-
+	countCategories();
+	
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());

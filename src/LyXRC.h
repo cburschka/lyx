@@ -79,6 +79,8 @@ public:
 		RC_FULL_SCREEN_TABBAR,
 		RC_FULL_SCREEN_TOOLBARS,
 		RC_FULL_SCREEN_WIDTH,
+		RC_GEOMETRY_SESSION,
+		RC_GROUP_LAYOUTS,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
 		RC_KBMAP,
@@ -93,8 +95,6 @@ public:
 		RC_LANGUAGE_GLOBAL_OPTIONS,
 		RC_LANGUAGE_PACKAGE,
 		RC_LANGUAGE_USE_BABEL,
-		RC_SORT_LAYOUTS,
-		RC_USELASTFILEPOS,
 		RC_LOADSESSION,
 		RC_MACRO_EDIT_STYLE,
 		RC_MAKE_BACKUP,
@@ -134,17 +134,18 @@ public:
 		RC_SCREEN_FONT_SIZES,
 		RC_SCREEN_FONT_TYPEWRITER,
 		RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
-		RC_GEOMETRY_SESSION,
 		RC_SCREEN_ZOOM,
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
+		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
 		RC_TEX_EXPECTS_WINDOWS_PATHS,
 		RC_UIFILE,
+		RC_USELASTFILEPOS,
 		RC_USER_EMAIL,
 		RC_USER_NAME,
 		RC_USETEMPDIR,
@@ -407,6 +408,8 @@ public:
 	unsigned int converter_cache_maxage;
 	/// Sort layouts alphabetically
 	bool sort_layouts;
+	/// Group layout by their category
+	bool group_layouts;
 	/// Toggle toolbars in fullscreen mode?
 	bool full_screen_toolbars;
 	/// Toggle scrollbar in fullscreen mode?
