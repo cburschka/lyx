@@ -46,6 +46,7 @@
 #include <QAbstractItemDelegate>
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
+#include <QClearLook>
 #include <QComboBox>
 #include <QFontMetrics>
 #include <QHeaderView>
@@ -54,6 +55,7 @@
 #include <QListView>
 #include <QPainter>
 #include <QPixmap>
+#include <QPlastiqueStyle>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
 #include <QStandardItemModel>
@@ -267,7 +269,6 @@ public:
 		
 		painter->eraseRect(opt.rect);
 		
-		QFontMetrics fm(opt.font);
 		QString text = underlineFilter(opt.text);
 		opt.text = QString();
 		
@@ -284,7 +285,8 @@ public:
 				paintCategoryHeader(painter, opt, 
 					category(*index.model(), index.row()));
 
-				opt.rect.setTop(opt.rect.top() + headerHeight(opt));
+				// move rect down below header
+				opt.rect.moveTop(opt.rect.top() + headerHeight(opt));
 				opt.menuRect = opt.rect;
 			}
 		}
@@ -313,7 +315,7 @@ public:
 		doc.rootFrame()->setFrameFormat(fmt);
 		
 		painter->translate(opt.rect.x() + 5,
-			opt.rect.y() + (opt.rect.height() - fm.height()) / 2);
+			opt.rect.y() + (opt.rect.height() - opt.fontMetrics.height()) / 2);
 		doc.documentLayout()->draw(painter, context);
 		painter->restore();
 	}
@@ -325,10 +327,13 @@ public:
 		GuiLayoutBox * combo = static_cast<GuiLayoutBox *>(parent());
 		QSortFilterProxyModel const * model
 		= static_cast<QSortFilterProxyModel const *>(index.model());
+		
+		// we use a compressed menu style here
 		QStyleOptionMenuItem opt = getStyleOption(option, index);
 		QSize size = combo->style()->sizeFromContents(
-			 QStyle::CT_MenuItem, &opt, option.rect.size(), combo);
-
+			 QStyle::CT_MenuItem, &opt, opt.rect.size(), combo);
+		size.setHeight(opt.rect.height());
+		
 		/// QComboBox uses the first row height to estimate the
 		/// complete popup height during QComboBox::showPopup().
 		/// To avoid scrolling we have to sneak in space for the headers.
@@ -389,8 +394,7 @@ private:
 	///
 	int headerHeight(QStyleOptionMenuItem const & opt) const
 	{
-		QFontMetrics fm(opt.font);
-		return fm.height() * 8 / 10;
+		return opt.fontMetrics.height() * 8 / 10;
 	}
 	///
 	void paintCategoryHeader(QPainter * painter, QStyleOptionMenuItem const & opt,
@@ -412,7 +416,7 @@ private:
 		
 		// draw the centered text
 		QFontMetrics fm(font);
-		int w = fm.width(category);
+		int w = opt.fontMetrics.width(category);
 		int x = opt.rect.x() + (opt.rect.width() - w) / 2;
 		int y = opt.rect.y() + fm.ascent();
 		int left = x;
@@ -473,10 +477,11 @@ private:
 		QStyleOptionMenuItem menuOption;
 		menuOption.palette = QApplication::palette("QMenu");
 		menuOption.state = QStyle::State_Active | QStyle::State_Enabled;
-		menuOption.menuRect = option.rect;
-		menuOption.rect = option.rect;
 		menuOption.font = combo->font();
 		menuOption.fontMetrics = QFontMetrics(menuOption.font);
+		menuOption.rect = option.rect;
+		menuOption.rect.setHeight(menuOption.fontMetrics.height() + 2);
+		menuOption.menuRect = menuOption.rect;
 		menuOption.tabWidth = 0;
 		menuOption.text = index.model()->data(index, Qt::DisplayRole).toString()
 			.replace(QLatin1Char('&'), QLatin1String("&&"));
