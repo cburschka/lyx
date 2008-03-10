@@ -1692,7 +1692,7 @@ void GuiDocument::apply(BufferParams & params)
 	// Embedded files
 	vector<string> & files = params.extraEmbeddedFiles();
 	files.clear();
-	for (size_t i = 0; i < embeddedFilesModule->extraLW->count(); ++i) {
+	for (int i = 0; i < embeddedFilesModule->extraLW->count(); ++i) {
 		QListWidgetItem * item = embeddedFilesModule->extraLW->item(i);
 		files.push_back(fromqstr(item->text()));
 	}
