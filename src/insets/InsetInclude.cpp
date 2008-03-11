@@ -470,13 +470,12 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
 			docstring text = bformat(_("Included file `%1$s'\n"
-						"has textclass `%2$s'\n"
-							     "while parent file has textclass `%3$s'."),
-					      included_file.displayName(),
-					      from_utf8(tmp->params().documentClass().name()),
-					      from_utf8(masterBuffer->params().documentClass().name()));
+				"has textclass `%2$s'\n"
+				"while parent file has textclass `%3$s'."),
+				included_file.displayName(),
+				from_utf8(tmp->params().documentClass().name()),
+				from_utf8(masterBuffer->params().documentClass().name()));
 			Alert::warning(_("Different textclasses"), text);
-			//return 0;
 		}
 
 		// Make sure modules used in child are all included in master
@@ -492,9 +491,9 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 				find(masterModules.begin(), masterModules.end(), module);
 			if (found != masterModules.end()) {
 				docstring text = bformat(_("Included file `%1$s'\n"
-							"uses module `%2$s'\n"
-							"which is not used in parent file."),
-				       included_file.displayName(), from_utf8(module));
+					"uses module `%2$s'\n"
+					"which is not used in parent file."),
+					included_file.displayName(), from_utf8(module));
 				Alert::warning(_("Module not found"), text);
 			}
 		}
@@ -885,7 +884,10 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 		return;
 
 	Toc & toc = buffer().tocBackend().toc("child");
-	toc.push_back(TocItem(cpit, 0, childbuffer->fileName().displayName()));
+	docstring str = childbuffer->fileName().displayName();
+	if (!params()["embed"].empty())
+		str += _(" (embedded)");
+	toc.push_back(TocItem(cpit, 0, str));
 
 	TocList & toclist = buffer().tocBackend().tocs();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();
@@ -893,7 +895,7 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 	TocList::const_iterator const end = childtoclist.end();
 	for(; it != end; ++it)
 		toclist[it->first].insert(toclist[it->first].end(),
-				it->second.begin(), it->second.end());
+			it->second.begin(), it->second.end());
 }
 
 
