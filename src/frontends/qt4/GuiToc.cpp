@@ -145,8 +145,11 @@ bool GuiToc::initialiseParams(string const & data)
 			new_type = "table";
 		else if (str.contains("\"algorithm"))
 			new_type = "algorithm";
-	} else
+	} else if (!data.empty())
 		new_type = toqstr(data);
+	else
+		// Default to Outliner.
+		new_type = "tableofcontents";
 
 	types_.clear();
 	type_names_.clear();
