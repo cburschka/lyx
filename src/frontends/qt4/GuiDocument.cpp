@@ -1416,8 +1416,14 @@ void GuiDocument::setExtraEmbeddedFileList()
 
 void GuiDocument::addExtraEmbeddedFile()
 {
+	QString const label1 = qt_("Documents|#o#O");
+	QString const dir1 = toqstr(lyxrc.document_path);
+	FileFilterList const filter(_("LyX Layout (*.layout);;LaTeX Classes (*.{cls,sty});;BibTeX Databases (*.{bib,bst})"));
 	QString file = browseRelFile(QString(), bufferFilepath(),
-		qt_("Extra embedded file"), FileFilterList(), true);
+		qt_("Extra embedded file"), filter, true, label1, dir1);
+
+	if (file.isEmpty())
+		return;
 
 	if (embeddedFilesModule->extraLW->findItems(file, Qt::MatchExactly).empty())
 		embeddedFilesModule->extraLW->addItem(file);
