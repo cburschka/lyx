@@ -1579,7 +1579,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			if (!loadLayoutFile(argument, buffer->filePath()))
+			if (!loadLayoutFile(argument, buffer->temppath()) &&
+				!loadLayoutFile(argument, buffer->filePath()))
 				break;
 
 			LayoutFile const * old_layout = buffer->params().baseClass();
@@ -1612,6 +1613,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_LOAD:
+			loadLayoutFile(argument, lyx_view_->buffer()->temppath()) ||
 			loadLayoutFile(argument, lyx_view_->buffer()->filePath());
 			break;
 

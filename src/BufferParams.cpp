@@ -469,7 +469,7 @@ void BufferParams::setDefSkip(VSpace const & vs)
 
 
 string const BufferParams::readToken(Lexer & lex, string const & token,
-	FileName const & filepath)
+	FileName const & filepath, FileName const & temppath)
 {
 	if (token == "\\textclass") {
 		lex.next();
@@ -478,8 +478,10 @@ string const BufferParams::readToken(Lexer & lex, string const & token,
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
-		if (!filepath.empty())
-			tcp = bcl.addLayoutFile(classname, filepath.absFilename());
+		if (!temppath.empty())
+			tcp = bcl.addLayoutFile(classname, temppath.absFilename(), LayoutFileList::Embedded);
+		if (tcp.empty() && !filepath.empty())
+			tcp = bcl.addLayoutFile(classname, filepath.absFilename(), LayoutFileList::Local);
 		if (!tcp.empty())
 			setBaseClass(tcp);
 		else if (bcl.haveClass(classname)) {

@@ -86,15 +86,24 @@ public:
 	bool read();
 	/// Clears the textclass so as to force it to be reloaded
 	void reset(LayoutFileIndex const & tc);
+
+	enum Layout_Type {
+		System,
+		Local,
+		Embedded
+	};
+	
 	/// add a textclass from user local directory.
 	/// \return the identifier for the loaded file, or else an
 	/// empty string if no file was loaded.
 	LayoutFileIndex
-		addLayoutFile(std::string const & textclass, std::string const & path);
+		addLayoutFile(std::string const & textclass, std::string const & path,
+			Layout_Type type);
 	/// a list of the available classes
 	std::vector<LayoutFileIndex> classList() const;
 	/// 
 	static std::string const localPrefix;
+	static std::string const embeddedPrefix;
 private:
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;

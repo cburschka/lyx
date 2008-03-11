@@ -166,7 +166,6 @@ public:
 	/// Calculate checksum of availableFile
 	unsigned long checksum() const;
 
-private:
 	// calculate inzip_name_ from filename
 	std::string calcInzipName(std::string const & buffer_path);
 	// move an embedded disk file with an existing inzip_name_ to 
@@ -204,6 +203,9 @@ public:
 	 * \param inset Inset pointer
 	 */
 	void registerFile(EmbeddedFile const & file, Inset const * inset, Buffer const & buffer);
+
+	/// validate embedded fies after a file is read.
+	void validate(Buffer const & buffer);
 
 	/// scan the buffer and get a list of EmbeddedFile
 	void update(Buffer const & buffer);

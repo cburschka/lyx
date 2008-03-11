@@ -186,10 +186,12 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 
 
 string const LayoutFileList::localPrefix = "LOCAL:";
+string const LayoutFileList::embeddedPrefix = "EMBED:";
 
 
 LayoutFileIndex 
-	LayoutFileList::addLayoutFile(string const & textclass, string const & path)
+	LayoutFileList::addLayoutFile(string const & textclass, string const & path,
+		Layout_Type type)
 {
 	// FIXME  There is a bug here: 4593
 	//
@@ -197,7 +199,12 @@ LayoutFileIndex
 	// NOTE: latex class name is defined in textclass.layout, which can be 
 	// different from textclass
 	string fullName = addName(path, textclass + ".layout");
-	string localIndex = localPrefix + fullName;
+	string localIndex;
+	
+	if (type == Local)
+		localIndex = localPrefix + fullName;
+	else if (type == Embedded)
+		localIndex = embeddedPrefix + textclass;
 	
 	// if the local file has already been loaded, return it
 	if (haveClass(localIndex))

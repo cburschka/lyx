@@ -129,8 +129,6 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 		if (!suffixIs(temp_path_, '/'))
 			temp_path_ += '/';
 		if (embedded()) {
-			if (inzip_name_ != calcInzipName(buf->filePath()))
-				syncInzipFile(buf->filePath());
 			if (updateFile)
 				updateFromExternalFile();
 		}
@@ -299,8 +297,14 @@ an absolute filename can be saved as
 
 $temp/$embDirName/$absDirName/a/absolute/path for /a/absolute/path
 
+FIXME:
+embDirName is set to . so that embedded layout and class files can be
+used directly. However, putting all embedded files directly under
+the temp directory may lead to file conflicts. For example, if a user
+embeds a file blah.log in blah.lyx, it will be replaced when
+'latex blah.tex' is called.
 */
-const std::string embDirName = "LyX.Embedded.Files";
+const std::string embDirName = ".";
 const std::string upDirName = "LyX.Embed.Dir.Up";
 const std::string absDirName = "LyX.Embed.Dir.Abs";
 const std::string driveName = "LyX.Embed.Drive";
@@ -334,12 +338,18 @@ void EmbeddedFile::syncInzipFile(std::string const & buffer_path)
 	string old_emb_file = temp_path_ + '/' + inzip_name_;
 	FileName old_emb(old_emb_file);
 
+	if (!old_emb.exists())
+		throw ExceptionMessage(ErrorException, _("Failed to open file"),
+			bformat(_("Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"),
+				old_emb.displayName()));
+
+	string new_inzip_name = calcInzipName(buffer_path);
+	if (new_inzip_name == inzip_name_)
+		return;
+
 	LYXERR(Debug::FILES, " OLD ZIP " << old_emb_file <<
 		" NEW ZIP " << calcInzipName(buffer_path));
 
-	//BOOST_ASSERT(old_emb.exists());
-	
-	string new_inzip_name = calcInzipName(buffer_path);
 	string new_emb_file = temp_path_ + '/' + new_inzip_name;
 	FileName new_emb(new_emb_file);
 	
@@ -450,6 +460,46 @@ void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 }
 
 
+void EmbeddedFileList::validate(Buffer const & buffer)
+{
+	clear();
+	
+	for (InsetIterator it = inset_iterator_begin(buffer.inset()); it; ++it)
+		it->registerEmbeddedFiles(*this);
+
+	iterator it = begin();
+	iterator it_end = end();
+	for (; it != it_end; ++it) {
+		if (buffer.embedded() && it->embedded())
+			// An exception will be raised if inzip file does not exist
+			it->syncInzipFile(buffer.filePath());
+		else
+			// inzipName may be OS dependent
+			it->setInzipName(it->calcInzipName(buffer.filePath()));
+	}
+	for (it = begin(); it != it_end; ++it)
+		it->updateInsets();
+	
+	if (!buffer.embedded())
+		return;
+
+	// check if extra embedded files exist
+	vector<string> extra = buffer.params().extraEmbeddedFiles();
+	vector<string>::iterator e_it = extra.begin();
+	vector<string>::iterator e_end = extra.end();
+	for (; e_it != e_end; ++e_it) {
+		EmbeddedFile file = EmbeddedFile(*e_it, buffer.filePath());
+		// do not update from external file
+		file.enable(true, &buffer, false);
+		// but we do need to check file existence.
+		if (!FileName(file.embeddedFile()).exists())
+			throw ExceptionMessage(ErrorException, _("Failed to open file"),
+				bformat(_("Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"),
+					file.displayName()));
+	}
+}
+
+
 void EmbeddedFileList::update(Buffer const & buffer)
 {
 	clear();
@@ -464,7 +514,7 @@ void EmbeddedFileList::update(Buffer const & buffer)
 	for (; it != it_end; ++it) {
 		EmbeddedFile file = EmbeddedFile(*it, buffer.filePath());
 		file.setEmbed(true);
-		file.enable(buffer.embedded(), &buffer, true);
+		file.enable(buffer.embedded(), &buffer, false);
 		insert(end(), file);
 	}
 }

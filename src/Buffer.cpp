@@ -502,7 +502,8 @@ int Buffer::readHeader(Lexer & lex)
 		LYXERR(Debug::PARSER, "Handling document header token: `"
 				      << token << '\'');
 
-		string unknown = params().readToken(lex, token, d->filename.onlyPath());
+		string unknown = params().readToken(lex, token, d->filename.onlyPath(),
+			d->temppath);
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\' && token == "\\textclass") {
 				Alert::warning(_("Unknown document class"),
@@ -577,7 +578,19 @@ bool Buffer::readDocument(Lexer & lex)
 
 	// Enable embeded files, which will set temp path and move
 	// inconsistent inzip files if needed.
-	embeddedFiles().enable(params().embedded, *this, false);
+	try {
+		embeddedFiles().validate(*this);
+		embeddedFiles().enable(params().embedded, *this, false);
+	} catch (ExceptionMessage const & message) {
+		Alert::error(message.title_, message.details_);
+		Alert::warning(_("Failed to read embedded files"),
+		       _("Due to most likely a bug, LyX failed to locate all embedded "
+				 "file. If you unzip the LyX file, you should be able to see and "
+				 "open content.lyx which is your main text. You may also be able "
+				 "to recover some embedded files. Please report this bug to the "
+				 "lyx-devel mailing list."));
+		return false;
+	}
 
 	updateMacros();
 	updateMacroInstances();
