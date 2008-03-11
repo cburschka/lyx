@@ -39,6 +39,7 @@ public:
 	~InsetInclude();
 
 	void setBuffer(Buffer & buffer);
+	bool isLabeled() const { return true; }
 
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
