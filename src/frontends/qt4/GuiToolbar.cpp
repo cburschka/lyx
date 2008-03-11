@@ -264,7 +264,7 @@ public:
 		QStyleOptionViewItem opt = option;
 		
 		// default background
-		painter->fillRect(opt.rect, opt.palette.background().color());
+		painter->fillRect(opt.rect, opt.palette.color(QPalette::Base));
 		
 		// category header?
 		if (lyxrc.group_layouts) {
