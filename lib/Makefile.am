@@ -1056,15 +1056,16 @@ dist_layouts_DATA =\
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
 	layouts/theorems-ams-extended.module \
+	layouts/theorems-ams.inc \
 	layouts/theorems-ams.module \
 	layouts/theorems-chap.module \
 	layouts/theorems.inc \
 	layouts/theorems-order.inc \
 	layouts/theorems-proof.inc \
 	layouts/theorems-sec.module \
+	layouts/theorems-starred-equivalents.inc \
 	layouts/theorems-starred.inc \
 	layouts/theorems-starred.module \
-	layouts/theorems-starred-equivalents.inc \
 	layouts/theorems-std.module \
 	layouts/treport.layout
 
