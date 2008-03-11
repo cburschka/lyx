@@ -893,6 +893,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		add(MenuItem(MenuItem::Command, qt_("Master Document"), f));
 	}
 
+	MenuDefinition other_lists;
+	
 	FloatList const & floatlist = buf->params().documentClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
@@ -913,11 +915,15 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
 		QString label;
-		if (!floatName.empty())
+		bool in_other_list = true;
+		if (!floatName.empty()) {
 			label = qt_(floatName);
-		// BUG3633: listings is not a proper float so its name
-		// is not shown in floatlist.
-		else if (cit->first == "equation")
+			in_other_list = false;
+		}
+		else if (cit->first == "child") {
+			label = qt_("Child Documents");
+			in_other_list = false;
+		} else if (cit->first == "equation")
 			label = qt_("List of Equations");
 		else if (cit->first == "index")
 			label = qt_("List of Indexes");
@@ -933,14 +939,25 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			label = qt_("Labels and References");
 		else if (cit->first == "citation")
 			label = qt_("List of Citations");
-		// this should not happen now, but if something else like
-		// listings is added later, this can avoid an empty menu name.
 		else
-			label = qt_("Other floats");
+			// This should not happen unless the entry is missing above.
+			label = qt_("Other floats: ") + toqstr(cit->first);
+
 		MenuItem item(MenuItem::Submenu, label);
 		item.setSubmenu(submenu);
+		if (in_other_list)
+			other_lists.add(item);
+		else {
+			item.setSubmenu(submenu);
+			add(item);
+		}
+	}
+	if (!other_lists.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("Other Lists"));
+		item.setSubmenu(other_lists);
 		add(item);
 	}
+
 
 	// Handle normal TOC
 	cit = toc_list.find("tableofcontents");

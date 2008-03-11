@@ -884,6 +884,9 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 	if (!childbuffer)
 		return;
 
+	Toc & toc = buffer().tocBackend().toc("child");
+	toc.push_back(TocItem(cpit, 0, childbuffer->fileName().displayName()));
+
 	TocList & toclist = buffer().tocBackend().tocs();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();
 	TocList::const_iterator it = childtoclist.begin();

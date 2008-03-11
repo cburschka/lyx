@@ -221,6 +221,8 @@ docstring GuiToc::guiName(string const & type) const
 {
 	if (type == "tableofcontents")
 		return _("Table of Contents");
+	if (type == "child")
+		return _("Child Documents");
 	if (type == "equation")
 		return _("List of Equations");
 	if (type == "footnote")
