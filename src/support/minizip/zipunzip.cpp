@@ -355,7 +355,7 @@ int do_extract_currentfile(unzFile uf,
 	// this is a directory
 	if ((*filename_withoutpath)=='\0') {
 		if ((*popt_extract_without_path)==0) {
-			printf("Create directory %s\n", filename_inzip);
+			// printf("Create directory %s\n", filename_inzip);
 			FileName(filename_inzip).createPath();
 		}
 	}
