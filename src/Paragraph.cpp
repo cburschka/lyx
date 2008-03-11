@@ -48,6 +48,8 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
+// needed only for inTableCell()
+#include "insets/InsetText.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -1614,9 +1616,26 @@ void Paragraph::setBeginOfBody()
 }
 
 
+namespace {
+	// This is a hack based upon one in InsetText::neverIndent().
+	// When we have a real InsetTableCell, then we won't need this
+	// method, because InsetTableCell will return the right values.
+	// The #include "insets/InsetText.h" can also be removed then.
+	bool inTableCell(Inset const * inset)
+	{
+		InsetText const * txt = inset->asInsetText();
+		if (!txt)
+			return false;
+		return txt->isTableCell();
+	}
+}
+
+
 bool Paragraph::forceEmptyLayout() const
 {
-	return inInset() && inInset()->forceEmptyLayout();
+	Inset * inset = inInset();
+	return inset && 
+		(inTableCell(inset) || inInset()->forceEmptyLayout());
 }
 
 
@@ -1628,7 +1647,9 @@ bool Paragraph::allowParagraphCustomization() const
 
 bool Paragraph::useEmptyLayout() const
 {
-	return inInset() && inInset()->useEmptyLayout();
+	Inset * inset = inInset();
+	return inset && 
+		(inTableCell(inset) || inInset()->useEmptyLayout());
 }
 
 

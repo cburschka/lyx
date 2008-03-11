@@ -128,6 +128,8 @@ public:
 	bool insetAllowed(InsetCode) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
+	///
+	bool isTableCell() const;
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const;
 	///
