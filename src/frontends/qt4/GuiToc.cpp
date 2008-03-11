@@ -145,7 +145,8 @@ bool GuiToc::initialiseParams(string const & data)
 			new_type = "table";
 		else if (str.contains("\"algorithm"))
 			new_type = "algorithm";
-	}
+	} else
+		new_type = toqstr(data);
 
 	types_.clear();
 	type_names_.clear();
@@ -225,6 +226,8 @@ docstring GuiToc::guiName(string const & type) const
 		return _("Child Documents");
 	if (type == "embedded")
 		return _("Embedded Files");
+	if (type == "graphics")
+		return _("List of Graphics");
 	if (type == "equation")
 		return _("List of Equations");
 	if (type == "footnote")

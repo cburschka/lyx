@@ -875,13 +875,15 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 		if (caption.empty())
 			return;
 		Toc & toc = backend.toc("listing");
-		docstring const str = convert<docstring>(toc.size() + 1)
+		docstring str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
+		if (embedded_status) {
+			backend.toc("embedded").push_back(TocItem(cpit, 0, str));
+			str += _(" (embedded)");
+		}
 		ParConstIterator pit = cpit;
 		pit.push_back(*this);
 		toc.push_back(TocItem(pit, 0, str));
-		if (embedded_status)
-			backend.toc("embedded").push_back(TocItem(cpit, 0, str));
 		return;
 	}
 	Buffer const * const childbuffer = getChildBuffer(buffer(), params());
@@ -895,11 +897,11 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 
 	Toc & toc = backend.toc("child");
 	docstring str = childbuffer->fileName().displayName();
-	if (embedded_status)
-		str += _(" (embedded)");
-	toc.push_back(TocItem(cpit, 0, str));
-	if (embedded_status)
+	if (embedded_status) {
 		backend.toc("embedded").push_back(TocItem(cpit, 0, str));
+		str += _(" (embedded)");
+	}
+	toc.push_back(TocItem(cpit, 0, str));
 
 	TocList & toclist = backend.tocs();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();

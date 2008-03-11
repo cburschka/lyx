@@ -34,6 +34,7 @@ public:
 	///
 	~InsetGraphics();
 	///
+	bool isLabeled() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	EDITABLE editable() const;
@@ -79,6 +80,9 @@ public:
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(EmbeddedFile const &);
+	///
+	void addToToc(ParConstIterator const &) const;
+
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return true; }
 protected:

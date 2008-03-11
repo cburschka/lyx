@@ -54,6 +54,7 @@ TODO
 #include "Converter.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "EmbeddedFiles.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -66,7 +67,7 @@ TODO
 #include "Mover.h"
 #include "OutputParams.h"
 #include "sgml.h"
-#include "EmbeddedFiles.h"
+#include "TocBackend.h"
 
 #include "frontends/alert.h"
 
@@ -912,6 +913,19 @@ void InsetGraphics::editGraphics(InsetGraphicsParams const & p,
 {
 	formats.edit(buffer, p.filename,
 		     formats.getFormatFromFile(p.filename));
+}
+
+
+void InsetGraphics::addToToc(ParConstIterator const & cpit) const
+{
+	TocBackend & backend = buffer().tocBackend();
+
+	docstring str = params_.filename.displayName();
+	if (params_.filename.embedded()) {
+		backend.toc("embedded").push_back(TocItem(cpit, 0, str));
+		str += _(" (embedded)");
+	}
+	backend.toc("graphics").push_back(TocItem(cpit, 0, str));
 }
 
 

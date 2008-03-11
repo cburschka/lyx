@@ -904,15 +904,6 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (cit->first == "tableofcontents")
 			continue;
 
-		// All the rest is for floats
-		MenuDefinition submenu;
-		TocIterator ccit = cit->second.begin();
-		TocIterator eend = cit->second.end();
-		for (; ccit != eend; ++ccit) {
-			QString const label = limitStringLength(ccit->str());
-			submenu.add(MenuItem(MenuItem::Command, label,
-					   FuncRequest(ccit->action())));
-		}
 		string const & floatName = floatlist.getType(cit->first).listName();
 		QString label;
 		bool in_other_list = true;
@@ -925,6 +916,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			in_other_list = false;
 		} else if (cit->first == "embedded")
 			label = qt_("Embedded Files");
+		else if (cit->first == "graphics")
+			label = qt_("List of Graphics");
 		else if (cit->first == "equation")
 			label = qt_("List of Equations");
 		else if (cit->first == "index")
@@ -944,6 +937,21 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		else
 			// This should not happen unless the entry is missing above.
 			label = qt_("Other floats: ") + toqstr(cit->first);
+
+		MenuDefinition submenu;
+
+		if (cit->second.size() >= 30) {
+			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
+			submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
+		} else {
+			TocIterator ccit = cit->second.begin();
+			TocIterator eend = cit->second.end();
+			for (; ccit != eend; ++ccit) {
+				QString const label = limitStringLength(ccit->str());
+				submenu.add(MenuItem(MenuItem::Command, label,
+					FuncRequest(ccit->action())));
+			}
+		}
 
 		MenuItem item(MenuItem::Submenu, label);
 		item.setSubmenu(submenu);
