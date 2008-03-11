@@ -88,14 +88,6 @@ void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-Dimension const InsetMathAMSArray::dimension(BufferView const & bv) const
-{
-	Dimension dim = InsetMathGrid::dimension(bv);
-	dim.wid += 14;
-	return dim;
-}
-
-
 void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
