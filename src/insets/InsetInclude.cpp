@@ -145,6 +145,7 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	EmbeddedFile file(to_utf8(params["filename"]),
 	       onlyPath(parentFilename(buffer)));
 	file.setEmbed(!params["embed"].empty());
+	file.setInzipName(toutf8(params["embed"]));
 	file.enable(buffer.embedded(), &buffer, false);
 	return file;
 }
