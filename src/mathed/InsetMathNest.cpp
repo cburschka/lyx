@@ -416,65 +416,70 @@ void InsetMathNest::handleFont(Cursor & cur, docstring const & arg, docstring co
 	if (cur.inset().asInsetMath()->name() == font) {
 		cur.recordUndoInset();
 		cur.handleFont(to_utf8(font));
-	} else {
-		CursorSlice i1 = cur.selBegin();
-		CursorSlice i2 = cur.selEnd();
-		if (!i1.inset().asInsetMath())
-			return;
-		if (i1.idx() == i2.idx()) {
-			// the easy case where only one cell is selected
-			cur.recordUndo();
-			cur.handleNest(createInsetMath(font));
-			cur.insert(arg);
-			return;
-		}
-		
-		// multiple selected cells in a simple non-grid inset
-		if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
-			cur.recordUndoInset();
-			for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
-				// select cell
-				cur.idx() = i;
-				cur.pos() = 0;
-				cur.resetAnchor();
-				cur.pos() = cur.lastpos();
-				cur.setSelection();
-				
-				// change font of cell
-				cur.handleNest(createInsetMath(font));
-				cur.insert(arg);
-				
-				// cur is in the font inset now. If the loop continues,
-				// we need to get outside again for the next cell
-				if (i + 1 <= i2.idx())
-					cur.pop_back();
-			}
-			return;
-		}
+	} else
+		handleNest(cur, createInsetMath(font), arg);
+}
 
-		// the complicated case with multiple selected cells in a grid
+
+void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest, docstring const & arg)
+{
+	CursorSlice i1 = cur.selBegin();
+	CursorSlice i2 = cur.selEnd();
+	if (!i1.inset().asInsetMath())
+		return;
+	if (i1.idx() == i2.idx()) {
+		// the easy case where only one cell is selected
+		cur.recordUndo();
+		cur.handleNest(nest);
+		cur.insert(arg);
+		return;
+	}
+	
+	// multiple selected cells in a simple non-grid inset
+	if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
 		cur.recordUndoInset();
-		Inset::row_type r1, r2;
-		Inset::col_type c1, c2;
-		cap::region(i1, i2, r1, r2, c1, c2);
-		for (Inset::row_type row = r1; row <= r2; ++row) {
-			for (Inset::col_type col = c1; col <= c2; ++col) {
-				// select cell
-				cur.idx() = i1.asInsetMath()->index(row, col);
-				cur.pos() = 0;
-				cur.resetAnchor();
-				cur.pos() = cur.lastpos();
-				cur.setSelection();
-
-				// change font of cell
-				cur.handleNest(createInsetMath(font));
-				cur.insert(arg);
-
-				// cur is in the font inset now. If the loop continues,
-				// we need to get outside again for the next cell
-				if (col + 1 <= c2 || row + 1 <= r2)
-					cur.pop_back();
-			}
+		for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
+			// select cell
+			cur.idx() = i;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.pos() = cur.lastpos();
+			cur.setSelection();
+			
+			// change font of cell
+			cur.handleNest(nest);
+			cur.insert(arg);
+			
+			// cur is in the font inset now. If the loop continues,
+			// we need to get outside again for the next cell
+			if (i + 1 <= i2.idx())
+				cur.pop_back();
+		}
+		return;
+	}
+	
+	// the complicated case with multiple selected cells in a grid
+	cur.recordUndoInset();
+	Inset::row_type r1, r2;
+	Inset::col_type c1, c2;
+	cap::region(i1, i2, r1, r2, c1, c2);
+	for (Inset::row_type row = r1; row <= r2; ++row) {
+		for (Inset::col_type col = c1; col <= c2; ++col) {
+			// select cell
+			cur.idx() = i1.asInsetMath()->index(row, col);
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.pos() = cur.lastpos();
+			cur.setSelection();
+			
+			// 
+			cur.handleNest(nest);
+			cur.insert(arg);
+		
+			// cur is in the font inset now. If the loop continues,
+			// we need to get outside again for the next cell
+			if (col + 1 <= c2 || row + 1 <= r2)
+				cur.pop_back();
 		}
 	}
 }
@@ -486,10 +491,8 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
-	if (font.fontInfo().color() != Color_ignore) {
-		MathAtom at = MathAtom(new InsetMathColor(true, font.fontInfo().color()));
-		cur.handleNest(at, 0);
-	}
+	if (font.fontInfo().color() != Color_ignore)
+		handleNest(cur, MathAtom(new InsetMathColor(true, font.fontInfo().color())));
 	
 	// FIXME: support other font changes here as well?
 }
