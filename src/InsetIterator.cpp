@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alfredo Braunstein
- * \author AndrÃ© PÃ¶nitz
+ * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
  */
