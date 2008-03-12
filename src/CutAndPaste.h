@@ -137,7 +137,7 @@ void selClearOrDel(Cursor & cur);
  *  ordinary paste. Therefore which one is newer.
  */
 //FIXME: this is a workaround for bug 1919. Replace this by
-//an all-for-one-paste mechanism in 1.5
+//an all-for-one-paste mechanism in 1.7
 /// store whether tabular or ordinary paste stack is newer
 void dirtyTabularStack(bool b);
 /// is the tabular paste stack newer than the ordinary one?
