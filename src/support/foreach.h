@@ -8,10 +8,24 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * A collection of unicode conversion functions, using iconv.
  */
 
 #ifndef FOREACH_H
+#define FOREACH_H
+
+// Code stolen from Q_FOREACH, augmented to use a reference to the
+// original container instead of a copy. Copies are cheap (if not
+// mutated) for Qt's containers due to copy-on-write. The are less
+// cheap for Standard containers, that's why the modification.
+// Drawback is that we can't use temporary containers as they
+// will be destroyed before the loop is finished. So always write
+//  
+//  Container const & container = functionReturningTemporaryOrReference()
+//  foreach (ContainerItem const & item, container) {
+//   ...
+//  }
+//
+// to extend the lifetime of the reference.
 
 #if defined(Q_CC_GNU) && !defined(Q_CC_INTEL)
 
