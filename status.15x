@@ -80,6 +80,9 @@ What's new
 - Fix LaTeX error "unknown color 'ignore'" when setting text style
   attributes in mathed (bug 4091).
 
+- Use package bm for bold math symbols obtained through the \boldsymbol
+  macro, such that bold super and subscripts have the correct size even
+  when not using amsmath.
 
 * USER INTERFACE:
 

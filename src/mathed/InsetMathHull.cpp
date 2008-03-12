@@ -518,7 +518,6 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 	//if (features.amsstyle)
 	//  return;
 
-	features.require("boldsymbol");
 	//features.binom      = true;
 
 	InsetMathGrid::validate(features);
