@@ -236,22 +236,6 @@ void LyXAction::init()
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH
- * \li Action: Breaks the current paragraph at the current location.
- * \li Syntax: break-paragraph
- * \endvar
- */
-		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
-/*!
- * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH_SKIP
- * \li Action: Breaks the current paragraph at the current location,
-               unless used at the beginning of a line, where it sets
-               the label width string to empty.
- * \li Syntax: break-paragraph-skip
- * \endvar
- */
-		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
-/*!
  * \var lyx::kb_action lyx::LFUN_CAPTION_INSERT
  * \li Action: Inserts a caption inset.
  * \li Syntax: caption-insert
@@ -548,22 +532,6 @@ void LyXAction::init()
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_NEW_LINE, "new-line", Noop, Edit },
 
-/*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_DOWN
- * \li Action: Moves the current paragraph downwards in the document.
- * \li Syntax: paragraph-move-down
- * \li Origin: Edwin, 8 Apr 2006
- * \endvar
- */
-		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop, Edit },
-/*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_UP
- * \li Action: Moves the current paragraph upwards in the document.
- * \li Syntax: paragraph-move-up
- * \li Origin: Edwin, 8 Apr 2006
- * \endvar
- */
-		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
 /*!
  * \var lyx::kb_action lyx::LFUN_COPY
  * \li Action: Copies to the clipboard the last edit.
@@ -908,6 +876,26 @@ void LyXAction::init()
  */
 		{ LFUN_IN_MATHMACROTEMPLATE, "in-mathmacrotemplate", Noop, Math },
 
+/*!
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_DOWN
+ * \li Action: Moves the current paragraph downwards in the document.
+ * \li Syntax: paragraph-move-down
+ * \li Origin: Edwin, 8 Apr 2006
+ * \endvar
+ */
+		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_UP
+ * \li Action: Moves the current paragraph upwards in the document.
+ * \li Syntax: paragraph-move-up
+ * \li Origin: Edwin, 8 Apr 2006
+ * \endvar
+ */
+		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
+
+		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
+		{ LFUN_PARAGRAPH_UP, "paragraph-up", ReadOnly | NoUpdate, Edit },
+		{ LFUN_PARAGRAPH_UP_SELECT, "paragraph-up-select", ReadOnly, Edit },
 		{ LFUN_PARAGRAPH_DOWN, "paragraph-down", ReadOnly | NoUpdate, Edit },
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
 /*!
@@ -920,6 +908,23 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH
+ * \li Action: Breaks the current paragraph at the current location.
+ * \li Syntax: break-paragraph
+ * \endvar
+ */
+		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH_SKIP
+ * \li Action: Breaks the current paragraph at the current location,
+               unless used at the beginning of a line, where it sets
+               the label width string to empty.
+ * \li Syntax: break-paragraph-skip
+ * \endvar
+ */
+		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
+
 /*!
  * \var lyx::kb_action lyx::LFUN_OUTLINE_UP
  * \li Action: Move the current group in the upward direction in the
@@ -962,10 +967,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_OUTLINE_OUT, "outline-out", Noop, Edit },
-
-		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
-		{ LFUN_PARAGRAPH_UP, "paragraph-up", ReadOnly | NoUpdate, Edit },
-		{ LFUN_PARAGRAPH_UP_SELECT, "paragraph-up-select", ReadOnly, Edit },
 
 		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop, Edit },
 		{ LFUN_GRAPHICS_EDIT, "graphics-edit", Noop, Edit },
