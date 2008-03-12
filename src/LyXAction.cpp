@@ -910,6 +910,15 @@ void LyXAction::init()
 
 		{ LFUN_PARAGRAPH_DOWN, "paragraph-down", ReadOnly | NoUpdate, Edit },
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_GOTO
+ * \li Action: Jump to a paragraph given by its id number.
+ * \li Notion: Note that id number of paragraph is not the sequential number of paragraph
+               seen on the screen. Moreover the id is unique for all opened buffers (documents).
+ * \li Syntax: paragraph-goto <PAR_ID_NUMBER>
+ * \li Origin: Dekel, 26 Aug 2000
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
 /*!
  * \var lyx::kb_action lyx::LFUN_OUTLINE_UP
