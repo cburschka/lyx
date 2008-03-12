@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-02-24 11:51+0100\n"
-"PO-Revision-Date: 2007-12-03 04:42+0200\n"
+"PO-Revision-Date: 2008-03-12 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -142,7 +142,7 @@ msgstr "Vyberte tuto mo¾nost, pokud chcete rozdìlit bibliografii do sekcí"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:130
 msgid "S&ectioned bibliography"
-msgstr "&Literatura (sekce)"
+msgstr "&Bibliografie (sekce)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
@@ -176,11 +176,11 @@ msgstr "&Procházet..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:34
 msgid "Add bibliography to the table of contents"
-msgstr "Pøidat literaturu (bibliografii) do obsahu"
+msgstr "Pøidat bibliografii do obsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:37
 msgid "Add bibliography to &TOC"
-msgstr "Pøidat Literaturu k O&bsahu"
+msgstr "Pøidat bibliografii k O&bsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:52 src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "This bibliography section contains..."
@@ -3577,7 +3577,7 @@ msgstr "Index Terms---"
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
 #: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:589
 msgid "Bibliography"
-msgstr "Literatura"
+msgstr "Bibliografie"
 
 #: lib/layouts/IEEEtran.layout:381 lib/layouts/IEEEtran.layout:392
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
