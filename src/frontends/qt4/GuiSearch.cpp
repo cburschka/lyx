@@ -64,6 +64,7 @@ GuiSearch::GuiSearch(GuiView & lv)
 
 void GuiSearch::showEvent(QShowEvent * e)
 {
+	findPB->setFocus();
 	findCO->lineEdit()->selectAll();
 	GuiDialog::showEvent(e);
 }
