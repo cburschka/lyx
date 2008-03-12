@@ -494,12 +494,6 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 
 void GuiLayoutBox::setFilter(QString const & s)
 {
-	if (!s.isEmpty())
-		owner_.message(_("Filtering layouts with \"" + fromqstr(s) + "\". "
-			"Press ESC to remove filter."));
-	else
-		owner_.message(_("Enter characters to filter the layout list."));
-	
 	bool enabled = view()->updatesEnabled();
 	view()->setUpdatesEnabled(false);
 
@@ -535,6 +529,12 @@ void GuiLayoutBox::setFilter(QString const & s)
 
 		// The item delegate hack is off again. So trigger a relayout of the popup.
 		filterModel_->triggerLayoutChange();
+		
+		if (!s.isEmpty())
+			owner_.message(_("Filtering layouts with \"" + fromqstr(s) + "\". "
+					 "Press ESC to remove filter."));
+		else
+			owner_.message(_("Enter characters to filter the layout list."));
 	}
 	
 	view()->setUpdatesEnabled(enabled);
