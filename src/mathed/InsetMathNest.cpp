@@ -430,7 +430,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	bv_funcs::string2font(to_utf8(arg), font, b);
-	if (font.color() != Color::inherit) {
+	if (font.color() != Color::inherit && font.color() != Color::ignore) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}

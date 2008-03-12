@@ -77,6 +77,9 @@ What's new
   and shaded notes, thus fixing a problem where documents couldn't be
   compiled anymore.
 
+- Fix LaTeX error "unknown color 'ignore'" when setting text style
+  attributes in mathed (bug 4091).
+
 
 * USER INTERFACE:
 
