@@ -149,6 +149,8 @@ void QSearch::build_dialog()
 
 void QSearch::update_contents()
 {
+	dialog_->findPB->setFocus();
+	dialog_->findCO->setFocus();
 	dialog_->findCO->lineEdit()->selectAll();
 }
 
