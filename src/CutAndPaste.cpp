@@ -456,6 +456,23 @@ bool reduceSelectionToOneCell(Cursor & cur)
 }
 
 
+bool multipleCellsSelected(Cursor const & cur)
+{
+	if (!cur.selection() || !cur.inMathed())
+		return false;
+	
+	CursorSlice i1 = cur.selBegin();
+	CursorSlice i2 = cur.selEnd();
+	if (!i1.inset().asInsetMath())
+		return false;
+	
+	if (i1.idx() == i2.idx())
+		return false;
+	
+	return true;
+}
+
+
 void switchBetweenClasses(DocumentClass const * const oldone, 
 		DocumentClass const * const newone, InsetText & in, ErrorList & errorlist)
 {

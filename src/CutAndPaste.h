@@ -121,6 +121,8 @@ void eraseSelection(Cursor & cur);
 /// start. If the selection is inside only one cell, nothing is done. Return
 /// true if the selection now does not span multiple cells anymore.
 bool reduceSelectionToOneCell(Cursor & cur);
+/// Returns true if multiple cells are selected in mathed.
+bool multipleCellsSelected(Cursor const & cur);
 /// Erase the selection and return it as a string.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 docstring grabAndEraseSelection(Cursor & cur);

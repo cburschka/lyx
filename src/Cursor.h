@@ -236,7 +236,7 @@ public:
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullDocument();
 
-	/// Convenience: prepare undo for the selected paragraphs
+	/// Convenience: prepare undo for the selected paragraphs or cells
 	void recordUndoSelection();
 
 	///

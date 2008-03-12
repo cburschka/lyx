@@ -1949,8 +1949,14 @@ void Cursor::recordUndoFullDocument()
 
 void Cursor::recordUndoSelection()
 {
-	bv_->buffer().undo().recordUndo(*this, ATOMIC_UNDO,
-		selBegin().pit(), selEnd().pit());
+	if (inMathed()) {
+		if (cap::multipleCellsSelected(*this))
+			recordUndoInset();
+		else
+			recordUndo();
+	} else
+		bv_->buffer().undo().recordUndo(*this, ATOMIC_UNDO,
+			selBegin().pit(), selEnd().pit());
 }
 
 

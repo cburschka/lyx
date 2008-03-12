@@ -501,7 +501,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_PASTE: {
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		docstring topaste;
@@ -736,7 +736,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// May affect external cell:
 			cur.recordUndoInset();
 		else
-			cur.recordUndo();
+			cur.recordUndoSelection();
 		// if the inset can not be removed from within, delete it
 		if (!cur.backspace()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
@@ -750,7 +750,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// May affect external cell:
 			cur.recordUndoInset();
 		else
-			cur.recordUndo();
+			cur.recordUndoSelection();
 		// if the inset can not be removed from within, delete it
 		if (!cur.erase()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
@@ -777,7 +777,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SELF_INSERT:
 		if (cmd.argument().size() != 1) {
-			cur.recordUndo();
+			cur.recordUndoSelection();
 			docstring const arg = cmd.argument();
 			if (!interpretString(cur, arg))
 				cur.insert(arg);
@@ -793,7 +793,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// A side effect is that an undo before the macro is finished
 		// undoes the complete macro, not only the last character.
 		if (!cur.inMacroMode())
-			cur.recordUndo();
+			cur.recordUndoSelection();
 
 		// spacial handling of space. If we insert an inset
 		// via macro mode, we want to put the cursor inside it
@@ -832,7 +832,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument().empty()) {
 			// do superscript if LyX handles
 			// deadkeys
-			cur.recordUndo();
+			cur.recordUndoSelection();
 			script(cur, true, grabAndEraseSelection(cur));
 		}
 		break;
@@ -941,7 +941,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_SIZE:
 #if 0
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		cur.setSize(arg);
 #endif
 		break;
@@ -1009,7 +1009,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
 		break;
 
@@ -1021,13 +1021,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_SUBSCRIPT:
 		// interpret this as if a _ was typed
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		interpretChar(cur, '_');
 		break;
 
 	case LFUN_MATH_SUPERSCRIPT:
 		// interpret this as if a ^ was typed
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		interpretChar(cur, '^');
 		break;
 		
@@ -1049,7 +1049,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_QUOTE_INSERT:
 		// interpret this as if a straight " was typed
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		interpretChar(cur, '\"');
 		break;
 
@@ -1057,7 +1057,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
-		cur.recordUndo();
+		cur.recordUndoSelection();
 		if (cmd.argument() == "^" || cmd.argument() == "_") {
 			interpretChar(cur, cmd.argument()[0]);
 		} else
@@ -1079,7 +1079,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_INSERT: {
 		MathData ar;
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
-			cur.recordUndo();
+			cur.recordUndoSelection();
 			cur.insert(ar);
 		} else
 			cur.undispatched();

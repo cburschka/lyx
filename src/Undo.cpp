@@ -363,7 +363,7 @@ void Undo::recordUndoInset(DocIterator & cur, UndoKind kind)
 {
 	DocIterator c = cur;
 	c.pop_back();
-	d->doRecordUndo(kind, c, c.pit(), c.pit(),	cur, false, true);
+	d->doRecordUndo(kind, c, c.pit(), c.pit(), cur, false, true);
 }
 
 
