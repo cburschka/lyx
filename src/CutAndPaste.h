@@ -131,7 +131,10 @@ void selDel(Cursor & cur);
 /// Clear or delete the selection if one exists, depending on lyxrc setting.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 void selClearOrDel(Cursor & cur);
-
+/// Calculate rectangular region of cell between \c i1 and \c i2.
+void region(CursorSlice const & i1, CursorSlice const & i2,
+    Inset::row_type & r1, Inset::row_type & r2,
+    Inset::col_type & c1, Inset::col_type & c2);
 /** Tabular has its own paste stack for multiple cells
  *  but it needs to know whether there is a more recent
  *  ordinary paste. Therefore which one is newer.
