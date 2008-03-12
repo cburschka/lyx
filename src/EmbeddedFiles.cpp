@@ -405,7 +405,6 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 			++count_external;
 	}
 	// if operation is successful (no exception is thrown)
-	buffer.markDirty();
 	buffer.params().embedded = flag;
 
 	// if the operation is successful, update insets
