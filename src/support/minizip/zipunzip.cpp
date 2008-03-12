@@ -372,7 +372,7 @@ int do_extract_currentfile(unzFile uf,
 				(filename_withoutpath!=(char*)filename_inzip)) {
 				char c=*(filename_withoutpath-1);
 				*(filename_withoutpath-1)='\0';
-				printf("Create directory %s\n", full_path);
+				// printf("Create directory %s\n", full_path);
 				FileName(full_path).createPath();
 				*(filename_withoutpath-1)=c;
 				fout=fopen(full_path,"wb");
