@@ -486,10 +486,12 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
-	if (font.fontInfo().color() != Color_inherit) {
+	if (font.fontInfo().color() != Color_ignore) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.fontInfo().color()));
 		cur.handleNest(at, 0);
 	}
+	
+	// FIXME: support other font changes here as well?
 }
 
 
