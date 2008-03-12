@@ -1580,6 +1580,8 @@ bool GuiView::closeBuffer(Buffer & buf)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
 	if (buf.isClean() || buf.paragraphs().empty()) {
+		if (buf.masterBuffer() == &buf)
+			LyX::ref().session().lastOpened().add(buf.fileName());
 		theBufferList().release(&buf);
 		return true;
 	}

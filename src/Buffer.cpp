@@ -51,7 +51,6 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "PDFOptions.h"
-#include "Session.h"
 #include "sgml.h"
 #include "TexRow.h"
 #include "TexStream.h"
