@@ -128,10 +128,8 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 		temp_path_ = buf->temppath();
 		if (!suffixIs(temp_path_, '/'))
 			temp_path_ += '/';
-		if (embedded()) {
-			if (updateFile)
-				updateFromExternalFile();
-		}
+		if (embedded() && updateFile)
+			updateFromExternalFile();
 	} else {
 		if (embedded() && updateFile)
 			extract();
@@ -153,11 +151,10 @@ bool EmbeddedFile::extract() const
 	if (!emb.exists()) {
 		if (ext.exists())
 			return true;
-		else
-			throw ExceptionMessage(ErrorException, _("Failed to extract file"),
-				bformat(_("Cannot extract file '%1$s'.\n"
-				"Source file %2$s does not exist"),
-				from_utf8(outputFilename()), from_utf8(emb_file)));
+		throw ExceptionMessage(ErrorException, _("Failed to extract file"),
+			bformat(_("Cannot extract file '%1$s'.\n"
+			"Source file %2$s does not exist"),
+			from_utf8(outputFilename()), from_utf8(emb_file)));
 	}
 
 	// if external file already exists ...
@@ -556,10 +553,9 @@ bool EmbeddedFileList::writeFile(DocFileName const & filename, Buffer const & bu
 	// copy file back
 	if (!zipfile.copyTo(filename)) {
 		Alert::error(_("Save failure"),
-				 bformat(_("Cannot create file %1$s.\n"
+			 bformat(_("Cannot create file %1$s.\n"
 					   "Please check whether the directory exists and is writeable."),
 					 from_utf8(filename.absFilename())));
-		//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 	}
 	return true;
 }

@@ -20,7 +20,7 @@
 
 /**
 
-This file, and the embedding dialog implemented in src/frontends, implements
+This file, and the embed checkbox in dialogs of InsetGraphics etc, implements
 an 'Embedded Files' feature of lyx.
 
 
@@ -32,11 +32,10 @@ format is used when Document->Save in bundled format is selected.
 
 2. Embedded file.lyx file is a zip file, with content.lyx and embedded files. 
 
-3. The embedding status of embedded files can be set at the inset level,
-or from Document->Settings->Embedded Files.
+3. The embedding status of embedded files are set from individual insets.
 
 4. Extra files such as .cls and .layout can be embedded from Document->
-Settings->Embedded Files->Extra Files.
+Settings->Embedded Files->Extra Embedded Files.
 
 5. When Document->Save in bundled format is selected, all embedded files
 become bundled. Changes to the external version of this file does not
@@ -54,12 +53,9 @@ of .lyx file and better use of version control systems.
 b. The embedded way. Figures etc are inserted to .lyx file and will
 be embedded. These embedded files can be viewed or edited through
 the embedding dialog. This file can be shared with others more
-easily. 
+easily.
 
 Format a and b can be converted easily, by packing/unpacking a .lyx file.
-
-NOTE: With current implementation, files with absolute filenames (not in
-or deeper under the current document directory) can not be embedded.
 
 Implementation:
 ======================
@@ -72,7 +68,7 @@ EmbeddedFiles::update(), Inset::registerEmbeddedFiles()).
 
 3. When a lyx file file.lyx is saved, it is save to tmppath()/content.lyx
 first. Embedded files are compressed along with content.lyx.
-If embedding is disabled, file.lyx is saved in the usual pure-text form.
+If embedding is disabled, file.lyx is saved in the usual pure-text format.
 (c.f. Buffer::writeFile(), EmbeddedFiles::writeFile())
 
 4. When a lyx file.lyx file is opened, if it is a zip file, it is
@@ -104,12 +100,14 @@ public:
 	/// set filename and inzipName.
 	/**
 	 * NOTE: inzip_name_ is not unique across operation systems and is not 
-	 * guaranteed to be the same across different versions of lyx.
-	 * inzip_name_ will be saved to the lyx file, and is used to indicate 
+	 * guaranteed to be the same across different versions of LyX.
+	 * inzip_name_ will be saved to the LyX file, and is used to indicate 
 	 * whether or not a file is embedded, and where the embedded file is in
-	 * the bundled file. However, the embedded file will be renamed to the 
-	 * name set here when an EmbeddedFile is enabled. It is therefore
-	 * safe to change the naming scheme here.
+	 * the bundled file. When a file is read, the stored inzip names are used
+	 * at first. EmbeddedFiles::validate() will then scan these embedded files
+	 * and update their inzip name, moving bundled files around if needed.
+	 * This scheme has the advantage that it is safe to change how inzip files
+	 * are saved in a bundled file.
 	 *
 	 * NOTE that this treatment does not welcome an UUID solution because
 	 * all embedded files will have to be renamed when an embedded file is
@@ -119,12 +117,11 @@ public:
 	**/
 	void set(std::string const & filename, std::string const & buffer_path);
 	/** Set the inzip name of an EmbeddedFile, which should be the name
-	 *  of an actual embedded file on disk. When an EmbeddedFile is enabled,
-	 *  this file will be renamed to the default inzipName if needed. 
+	 *  of an actual embedded file on disk.
 	 */
 	void setInzipName(std::string const & name);
 
-	/// filename in the zip file, which is the relative path
+	/// filename in the zip file, which is related to buffer temp directory.
 	std::string inzipName() const { return inzip_name_; }
 
 	/// embedded file, equals to temppath()/inzipName()
@@ -132,11 +129,12 @@ public:
 	/// embeddedFile() or absFilename() depending on embedding status
 	/// and whether or not embedding is enabled.
 	FileName availableFile() const;
-	/// 
+	/// relative file name or inzipName()
 	std::string latexFilename(std::string const & buffer_path) const;
 
 	/// add an inset that refers to this file
 	void addInset(Inset const * inset);
+	/// clear all isnets that associated with this file.
 	void clearInsets() const { inset_list_.clear(); }
 
 	/// embedding status of this file
@@ -145,6 +143,13 @@ public:
 	void setEmbed(bool embed);
 
 	/// whether or not embedding is enabled in the current buffer
+	/**
+	 * An embedded file needs to know the temp path of a buffer to know
+	 * where its embedded copy is. This has to be stored within EmbeddedFile
+	 * because this class is often used when Buffer is unavailable. However,
+	 * when an embedded file is copied to another buffer, temp_path_ has
+	 * to be updated and file copying may be needed.
+	 */
 	bool enabled() const { return temp_path_ != ""; }
 	/// enable embedding of this file
 	void enable(bool flag, Buffer const * buf, bool updateFile);
@@ -156,9 +161,7 @@ public:
 	///
 	/// After the embedding status is changed, update all insets related
 	/// to this file item. For example, a graphic inset may need to monitor
-	/// embedded file instead of external file. To make sure inset pointers 
-	/// are up to date, please make sure there is no modification to the
-	/// document between EmbeddedFiles::update() and this function.
+	/// embedded file instead of external file.
 	void updateInsets() const;
 
 	/// Check readability of availableFile
@@ -169,7 +172,7 @@ public:
 	// calculate inzip_name_ from filename
 	std::string calcInzipName(std::string const & buffer_path);
 	// move an embedded disk file with an existing inzip_name_ to 
-	// an calculated inzip_name_
+	// a calculated inzip_name_, if they differ.
 	void syncInzipFile(std::string const & buffer_path);
 	
 private:
