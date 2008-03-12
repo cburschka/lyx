@@ -434,6 +434,28 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
+bool reduceSelectionToOneCell(Cursor & cur)
+{
+	if (!cur.selection() || !cur.inMathed())
+		return false;
+
+	CursorSlice i1 = cur.selBegin();
+	CursorSlice i2 = cur.selEnd();
+	if (!i1.inset().asInsetMath())
+		return false;
+
+	// the easy case: do nothing if only one cell is selected
+	if (i1.idx() == i2.idx())
+		return true;
+	
+	cur.top().pos() = 0;
+	cur.resetAnchor();
+	cur.top().pos() = cur.top().lastpos();
+	
+	return true;
+}
+
+
 void switchBetweenClasses(DocumentClass const * const oldone, 
 		DocumentClass const * const newone, InsetText & in, ErrorList & errorlist)
 {
@@ -932,8 +954,10 @@ docstring grabSelection(Cursor const & cur)
 	if (!cur.selection())
 		return docstring();
 
-	// FIXME: What is wrong with the following?
 #if 0
+	// grab selection by glueing multiple cells together. This is not what
+	// we want because selections spanning multiple cells will get "&" and "\\"
+	// seperators.
 	ostringstream os;
 	for (DocIterator dit = cur.selectionBegin();
 	     dit != cur.selectionEnd(); dit.forwardPos())

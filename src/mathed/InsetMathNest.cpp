@@ -1415,8 +1415,11 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 
 	if (c == '\\') {
 		//lyxerr << "starting with macro" << endl;
-		docstring const safe = cap::grabAndEraseSelection(cur);
-		cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+		bool reduced = cap::reduceSelectionToOneCell(cur);
+		if (reduced || !cur.selection()) {
+			docstring const safe = cap::grabAndEraseSelection(cur);
+			cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+		}
 		return true;
 	}
 

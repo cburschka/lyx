@@ -116,6 +116,11 @@ docstring grabSelection(Cursor const & cur);
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 /// Calls saveSelection.
 void eraseSelection(Cursor & cur);
+/// Reduce the selected text in mathed to only one cell. If it spans multiple
+/// cells, the cursor is moved the end of the current cell and the anchor to the
+/// start. If the selection is inside only one cell, nothing is done. Return
+/// true if the selection now does not span multiple cells anymore.
+bool reduceSelectionToOneCell(Cursor & cur);
 /// Erase the selection and return it as a string.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 docstring grabAndEraseSelection(Cursor & cur);
