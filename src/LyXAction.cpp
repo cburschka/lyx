@@ -924,6 +924,33 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS
+ * \li Action: Change paragraph settings.
+ * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
+               This function only modifies, and does not override, existing settings.
+               Note that the "leftindent" indent setting is deprecated.
+ * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
+ * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
+               <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
+               <ALIGN>:   \\align block|left|right|center|default\n
+               <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
+ * \li Origin: rgh, Aug 15 2007
+ * \endvar
+ */
+		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop, Edit },
+/*!
+ * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS_APPLY
+ * \li Action: Change paragraph settings.
+ * \li Notion: Overwrite all nonspecified settings to the default ones.
+               Use paragraph-params lfun if you don't want to overwrite others settings.
+ * \li Syntax: paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS>
+ * \li Params: For parameters see #LFUN_PARAGRAPH_PARAMS
+ * \li Origin: leeming, 30 Mar 2004
+ * \endvar
+ */
+		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
+		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
 /*!
  * \var lyx::kb_action lyx::LFUN_OUTLINE_UP
@@ -1040,34 +1067,6 @@ void LyXAction::init()
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
 		{ LFUN_INSET_TOGGLE, "", ReadOnly, Hidden },
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
-
-/*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS
- * \li Action: Change paragraph settings.
- * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
-               This function only modifies, and does not override, existing settings.
-               Note that the "leftindent" indent setting is deprecated.
- * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
- * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
-               <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
-               <ALIGN>:   \\align block|left|right|center|default\n
-               <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
- * \li Origin: rgh, Aug 15 2007
- * \endvar
- */
-		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop, Edit },
-/*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS_APPLY
- * \li Action: Change paragraph settings.
- * \li Notion: Overwrite all nonspecified settings to the default ones.
-               Use paragraph-params lfun if you don't want to overwrite others settings.
- * \li Syntax: paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS>
- * \li Params: For parameters see #LFUN_PARAGRAPH_PARAMS
- * \li Origin: leeming, 30 Mar 2004
- * \endvar
- */
-		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
-		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
 /*!
  * \var lyx::kb_action lyx::LFUN_FINISHED_FORWARD
