@@ -29,6 +29,7 @@
 #include "Text.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
@@ -442,7 +443,11 @@ docstring InsetMathHull::label(row_type row) const
 void InsetMathHull::label(row_type row, docstring const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
-	label_[row] = label;
+	if (label.empty()) {
+		nonum_[row] = true;
+		label_[row].clear();
+	} else
+		label_[row] = label;
 }
 
 
@@ -1118,6 +1123,19 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 	}
+
+	case LFUN_WORD_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_FORWARD:
+		if (col(cur.idx()) + 1 == ncols()
+		    && cur.pos() == cur.lastpos()
+		    && !label(row(cur.idx())).empty()) {
+			recordUndoInset(cur);
+			label(row(cur.idx()), docstring());
+		} else {
+			InsetMathGrid::doDispatch(cur, cmd);
+			return;
+		}
+		break;
 
 	case LFUN_INSET_INSERT: {
 		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
