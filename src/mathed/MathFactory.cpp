@@ -14,7 +14,6 @@
 
 #include "InsetMathAMSArray.h"
 #include "InsetMathArray.h"
-#include "InsetMathBM.h"
 #include "InsetMathBoldSymbol.h"
 #include "InsetMathBox.h"
 #include "InsetMathCases.h"
@@ -376,10 +375,10 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::ATOP));
 	if (s == "lefteqn")
 		return MathAtom(new InsetMathLefteqn);
-	if (s == "boldsymbol")
-		return MathAtom(new InsetMathBoldSymbol);
-	if (s == "bm")
-		return MathAtom(new InsetMathBM);
+	if (s == "boldsymbol" || s == "bm")
+		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BOLD));
+	if (s == "heavysymbol" || s == "hm")
+		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::HEAVY));
 	if (s == "color" || s == "normalcolor")
 		return MathAtom(new InsetMathColor(true));
 	if (s == "textcolor")

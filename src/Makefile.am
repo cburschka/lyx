@@ -329,7 +329,6 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathAMSArray.cpp \
 	mathed/InsetMathArray.cpp \
 	mathed/InsetMathBig.cpp \
-	mathed/InsetMathBM.cpp \
 	mathed/InsetMathBoldSymbol.cpp \
 	mathed/InsetMathBox.cpp \
 	mathed/InsetMathBrace.cpp \
@@ -395,7 +394,6 @@ HEADERFILESMATHED = \
 	mathed/InsetMathAMSArray.h \
 	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.h \
-	mathed/InsetMathBM.h \
 	mathed/InsetMathBoldSymbol.h \
 	mathed/InsetMathBox.h \
 	mathed/InsetMathBrace.h \

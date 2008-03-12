@@ -136,10 +136,6 @@ static string const floatingfootnote_def =
 	"  \\expandafter\\noexpand\\csname SF@gobble@opt \\endcsname}\n"
 	"\\def\\SF@gobble@twobracket[#1]#2{}\n";
 
-static string const boldsymbol_def =
-	"%% Bold symbol macro for standard LaTeX users\n"
-	"\\providecommand{\\boldsymbol}[1]{\\mbox{\\boldmath $#1$}}\n";
-
 static string const binom_def =
 	"%% Binom macro for standard LaTeX users\n"
 	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n";
@@ -664,8 +660,6 @@ string const LaTeXFeatures::getMacros() const
 		macros << guillemotright_def << '\n';
 
 	// Math mode
-	if (mustProvide("boldsymbol") && !isRequired("amsmath"))
-		macros << boldsymbol_def << '\n';
 	if (mustProvide("binom") && !isRequired("amsmath"))
 		macros << binom_def << '\n';
 	if (mustProvide("mathcircumflex"))
