@@ -57,12 +57,8 @@ public:
 	/**
 		\param bibfiles comma separated bib files
 		\param embed comma separated embed status
-		\param boolStatus if true, embed has values true/false, which 
-			needs to be converted to inzip names.
-		\param updateFile whether or not try to update file.
 	*/
-	void createBibFiles(docstring const & bibfiles, docstring const & embed,
-		bool boolStatus, bool updateFile) const;
+	void createBibFiles(docstring const & bibfiles, docstring const & embed) const;
 	/// update bibfiles and embed from bibfiles_
 	void updateParam();
 private:

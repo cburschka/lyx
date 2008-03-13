@@ -17,6 +17,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "EmbeddedFiles.h"
 #include "ui_BibtexAddUi.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -24,7 +25,10 @@
 
 #include "ButtonPolicy.h"
 
+#include "frontends/alert.h"
+
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h" // changeExtension
 #include "support/gettext.h"
@@ -353,18 +357,34 @@ void GuiBibtex::updateContents()
 
 void GuiBibtex::applyView()
 {
-	QString dbs = databaseLW->item(0)->text();
-	docstring emb = databaseLW->item(0)->checkState() == Qt::Checked ? _("true") : _("false");
+	docstring dbs;
+	docstring emb;
 
 	unsigned int maxCount = databaseLW->count();
-	for (unsigned int i = 1; i < maxCount; i++) {
-		dbs += ',';
-		dbs += databaseLW->item(i)->text();
-		emb += ',';
-		emb += databaseLW->item(i)->checkState() == Qt::Checked ? _("true") : _("false");
+	Buffer & buf = buffer();
+	for (unsigned int i = 0; i < maxCount; i++) {
+		if (i != 0) {
+			dbs += ',';
+			emb += ',';
+		}
+		QString filename = databaseLW->item(i)->text();
+		dbs += qstring_to_ucs4(filename);
+		try {
+			EmbeddedFile file(fromqstr(changeExtension(filename, "bib")),
+				buf.filePath());
+			file.setEmbed(databaseLW->item(i)->checkState() == Qt::Checked);
+			// move file around if needed, an exception may be raised.
+			file.enable(buf.embedded(), &buf, true);
+			// if things are OK..., 
+			if (file.embedded())
+				emb += from_utf8(file.inzipName());
+		} catch (ExceptionMessage const & message) {
+			Alert::error(message.title_, message.details_);
+			// failed to embed
+		}
 	}
 
-	params_["bibfiles"] = qstring_to_ucs4(dbs);
+	params_["bibfiles"] = dbs;
 	params_["embed"] = emb;
 
 	docstring const bibstyle = qstring_to_ucs4(styleCB->currentText());

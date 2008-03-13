@@ -27,8 +27,8 @@
 #include "frontends/alert.h"
 
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
 #include "support/docstream.h"
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -86,17 +86,8 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		//
-		InsetCommandParams orig = params();
-		try {
-			// returned "embed" is composed of "true" or "false", which needs to be adjusted
-			createBibFiles(p["bibfiles"], p["embed"], true, true);
-			updateParam();
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-			// do not set parameter if an error happens
-			setParams(orig);
-			break;
-		}
+		createBibFiles(p["bibfiles"], p["embed"]);
+		updateParam();
 		buffer().updateBibfilesCache();
 		break;
 	}
@@ -736,7 +727,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 
 
 void InsetBibtex::createBibFiles(docstring const & bibParam,
-	docstring const & embedParam, bool boolStatus, bool updateFile) const
+	docstring const & embedParam) const
 {
 	bibfiles_.clear();
 	
@@ -755,14 +746,9 @@ void InsetBibtex::createBibFiles(docstring const & bibParam,
 	while (!tmp.empty()) {
 		EmbeddedFile file(changeExtension(tmp, "bib"), buffer().filePath());
 		
-		if (boolStatus) {
-			BOOST_ASSERT(emb == "true" || emb == "false");
-			file.setEmbed(emb == "true");
-		} else {
-			file.setInzipName(emb);
-			file.setEmbed(emb != "");
-		}
-		file.enable(buffer().embedded(), &buffer(), updateFile);
+		file.setInzipName(emb);
+		file.setEmbed(!emb.empty());
+		file.enable(buffer().embedded(), &buffer(), false);
 		bibfiles_.push_back(file);
 		// Get next file name
 		bibfiles = split(bibfiles, tmp, ',');
@@ -796,7 +782,7 @@ void InsetBibtex::updateParam()
 void InsetBibtex::registerEmbeddedFiles(EmbeddedFileList & files) const
 {
 	if (bibfiles_.empty())
-		createBibFiles(params()["bibfiles"], params()["embed"], false, false);
+		createBibFiles(params()["bibfiles"], params()["embed"]);
 
 	EmbeddedFileList::const_iterator it = bibfiles_.begin();
 	EmbeddedFileList::const_iterator it_end = bibfiles_.end();
