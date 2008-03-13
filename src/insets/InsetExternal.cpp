@@ -30,12 +30,9 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
-#include "frontends/alert.h"
-
 #include "graphics/PreviewLoader.h"
 
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -62,8 +59,6 @@ string defaultTemplateName;
 
 
 namespace lyx {
-
-namespace Alert = frontend::Alert;
 
 namespace external {
 
@@ -444,15 +439,6 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
-		if (!p.filename.empty()) {
-			try {
-				p.filename.enable(buffer().embedded(), &buffer(), true);
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// do not set parameter if an error happens
-				break;
-			}
-		}
 		setParams(p);
 		break;
 	}
