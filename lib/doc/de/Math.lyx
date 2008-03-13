@@ -27864,33 +27864,7 @@ Marke
 \begin_layout Standard
 Der Name der Marke erscheint in LyX in zwei runden Klammern hinter der Formel.
  Eine Formel mit Marke wird immer nummeriert.
- Wird die Nummerierung abgeschaltet, wird die Marke gelöscht.
- Dies ist momentan die einzige Möglichkeit eine Marke zu löschen, siehe
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2556}{
-\end_layout
-
-\end_inset
-
-LyX-Fehler #2556
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-.
+ Wird die Marke gelöscht, wird die Nummerierung abgeschaltet und umgekehrt.
 \end_layout
 
 \begin_layout Standard
@@ -27907,7 +27881,7 @@ Querverweis
 \end_inset
 
  eingefügt.
- Ein Querverweis uaf Formeln erscheint im Ausdruck als Formelnummer.
+ Ein Querverweis auf Formeln erscheint im Ausdruck als Formelnummer.
  Wenn man im Querverweis Dialogfenster das Format 
 \series bold
 (<Querverweis>)

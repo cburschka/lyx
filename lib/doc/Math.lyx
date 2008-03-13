@@ -27720,32 +27720,7 @@ Label
 The name of the label is displayed in LyX within two parentheses behind
  formula.
  A formula with a label is always numbered.
- The label is deleted when the numbering is turned off.
- This is at the moment the only way to delete a label, see 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2556}{
-\end_layout
-
-\end_inset
-
-LyX-bug #2556
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-.
+ When a label is deleted, the numbering is turned off, and vice versa.
 \end_layout
 
 \begin_layout Standard

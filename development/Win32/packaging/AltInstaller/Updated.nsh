@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- # list with modified files for LyX 1.5.5
+ # list with modified files for LyX 1.6-svn-rxxxxx
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
