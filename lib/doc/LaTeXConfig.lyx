@@ -1,4 +1,4 @@
-#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 318
 \begin_document
 \begin_header
@@ -3278,7 +3278,7 @@ arg   "bm"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/required/tools
+macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
@@ -3286,31 +3286,49 @@ Notes: The
 \family sans
 bm
 \family default
- package defines a command 
+ package defines commands to access bold math symbols.
+ The basic command is 
 \family typewriter
 
 \backslash
 bm
 \family default
- which makes its argument bold.
- The argument may be any maths object from a single symbol to an expression.
- This is closely related to the specification of the 
+ (aliased to 
 \family typewriter
 
 \backslash
 boldsymbol
 \family default
- 
-\family sans
-amsbsy
-\family default
- command in AMS-LaTeX, but 
+) which makes its argument bold.
+ The argument may be any math object from a single symbol to an expression.
+ If available, ultra bold fonts can be accesed through the 
 \family typewriter
 
 \backslash
+hm
+\family default
+ command (aliased to 
+\family typewriter
+
+\backslash
+heavysymbol
+\family default
+).
+ The 
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+ command is similar to the 
+\family sans
+amsmath
+\family default
+ command with same name, but the 
+\family sans
 bm
 \family default
- is rather more careful in the way it does things.
+ version is rather more careful in the way it does things.
 \end_layout
 
 \begin_layout Subsection

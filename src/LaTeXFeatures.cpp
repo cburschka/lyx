@@ -448,8 +448,7 @@ char const * simplefeatures[] = {
 	"endnotes",
 	"ifthen",
 	"amsthm",
-	"listings",
-	"bm"
+	"listings"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -611,6 +610,12 @@ string const LaTeXFeatures::getPackages() const
 			    "\\providecommand{\\makenomenclature}{\\makeglossary}\n"
 			    "\\makenomenclature\n";
 	}
+
+	// bm -- this package interrogates the font allocations to determine
+	// which bold fonts are available, so it is best loaded as the last one,
+	// and, in any case, after amsmath.
+	if (mustProvide("bm"))
+		packages << "\\usepackage{bm}\n";
 
 	return packages.str();
 }
