@@ -252,7 +252,6 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(INCLUDE_CODE);
 		InsetCommandMailer::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
-			Buffer const & buf = cur.buffer();
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
 				docstring const label_str = from_utf8(new_params.getParamValue("label"));
