@@ -16,6 +16,7 @@
 
 #include "GuiGraphics.h"
 
+#include "Buffer.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "LyXRC.h"
@@ -28,10 +29,13 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
+#include "frontends/alert.h"
+
 #include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -579,7 +583,19 @@ void GuiGraphics::applyView()
 	InsetGraphicsParams & igp = params_;
 
 	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilepath()));
-	igp.filename.setEmbed(embedCB->checkState() == Qt::Checked);
+	try {
+		Buffer & buf = buffer();
+		EmbeddedFile file(fromqstr(filename->text()), buf.filePath());
+		file.setEmbed(embedCB->checkState() == Qt::Checked);
+		// move file around if needed, an exception may be raised.
+		file.enable(buf.embedded(), &buf, true);
+		// if things are OK..., embed igp.filename
+		igp.filename.setEmbed(file.embedded());
+	} catch (ExceptionMessage const & message) {
+		Alert::error(message.title_, message.details_);
+		// failed to embed
+		igp.filename.setEmbed(false);
+	}
 
 	// the bb section
 	igp.bb.erase();

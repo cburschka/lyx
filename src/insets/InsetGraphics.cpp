@@ -167,16 +167,9 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
-		if (!p.filename.empty()) {
-			try {
-				p.filename.enable(buffer().embedded(), &buffer(), true);
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// do not set parameter if an error happens
-				break;
-			}
+		if (!p.filename.empty())
 			setParams(p);
-		} else
+		else
 			cur.noUpdate();
 		break;
 	}
