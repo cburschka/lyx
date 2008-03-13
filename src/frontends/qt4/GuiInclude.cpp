@@ -15,6 +15,7 @@
 #include "GuiInclude.h"
 
 #include "Buffer.h"
+#include "EmbeddedFiles.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
@@ -23,8 +24,11 @@
 #include "qt_helpers.h"
 #include "LyXRC.h"
 
+#include "frontends/alert.h"
+
 #include "support/os.h"
 #include "support/lstrings.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 
@@ -240,7 +244,19 @@ void GuiInclude::updateContents()
 void GuiInclude::applyView()
 {
 	params_["filename"] = from_utf8(internal_path(fromqstr(filenameED->text())));
-	params_["embed"] = embedCB->checkState() == Qt::Checked ? _("true") : _("false");
+	params_["embed"].clear();
+	try {
+		Buffer & buf = buffer();
+		EmbeddedFile file(to_utf8(params_["filename"]), buf.filePath());
+		file.setEmbed(embedCB->checkState() == Qt::Checked);
+		// move file around if needed, an exception may be raised.
+		file.enable(buf.embedded(), &buf, true);
+		// if things are OK..., set params_["embed"]
+		params_["embed"] = file.embedded() ? from_utf8(file.inzipName()) : docstring();
+	} catch (ExceptionMessage const & message) {
+		Alert::error(message.title_, message.details_);
+		// params_["embed"] will be empty if a file is failed to embed
+	}
 	params_.preview(previewCB->isChecked());
 
 	int const item = typeCO->currentIndex();

@@ -47,7 +47,6 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -266,24 +265,6 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					label_->setBuffer(buffer());
 					label_->initView();
 				}
-			}
-			try {
-				// the embed parameter passed back from the dialog
-				// is "true" or "false", we need to change it.
-				EmbeddedFile file = EmbeddedFile(to_utf8(p["filename"]),
-					onlyPath(parentFilename(buf)));
-				file.setEmbed(p["embed"] == _("true"));
-				// move file around if needed, an exception may be raised.
-				file.enable(buf.embedded(), &buf, true);
-				// if things are OK..., set p["embed"]
-				if (file.embedded())
-					p["embed"] = from_utf8(file.inzipName());
-				else
-					p["embed"].clear();
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// do not set parameter if an error happens
-				break;
 			}
 			setParams(p);
 			buffer().updateBibfilesCache();

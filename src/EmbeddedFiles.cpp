@@ -131,7 +131,9 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 		if (embedded() && updateFile)
 			updateFromExternalFile();
 	} else {
-		if (embedded() && updateFile)
+		// when a new embeddeed file is created, it is not enabled, and 
+		// there is no need to extract.
+		if (enabled() && embedded() && updateFile)
 			extract();
 		temp_path_ = "";
 	}
