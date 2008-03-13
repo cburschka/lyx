@@ -142,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
+letzte Änderung: 11.
  März 2008
 \end_layout
 
@@ -389,7 +389,7 @@ Sprache
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/dialog-show_character.png
+	filename ../../images/dialog-show_character.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -500,7 +500,7 @@ DVI (Strg+D
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
+	filename ../../images/buffer-view_dvi.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -537,7 +537,7 @@ PDF
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
+	filename ../../images/buffer-view_pdf2.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -563,7 +563,7 @@ Postscript (Strg+T
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../images/buffer-view_ps.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -594,7 +594,7 @@ Drucken\SpecialChar \ldots{}
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/dialog-show_print.png
+	filename ../../images/dialog-show_print.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -658,7 +658,7 @@ DVI (Strg+D
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
+	filename ../../images/buffer-view_dvi.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -684,7 +684,7 @@ Postscript (Strg+T
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../images/buffer-view_ps.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -709,7 +709,7 @@ Drucken
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/dialog-show_print.png
+	filename ../../images/dialog-show_print.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -743,7 +743,7 @@ Postscript (Strg+T
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../images/buffer-view_ps.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -784,7 +784,7 @@ Drucken\SpecialChar \ldots{}
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/dialog-show_print.png
+	filename ../../images/dialog-show_print.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -1145,7 +1145,7 @@ Strg+L
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/ert-insert.png
+	filename ../../images/ert-insert.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -2666,7 +2666,7 @@ DVI
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
+	filename ../../images/buffer-view_dvi.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -3135,7 +3135,7 @@ Strg+L
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/ert-insert.png
+	filename ../../images/ert-insert.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -3233,7 +3233,7 @@ oder
 \family default
 
 \begin_inset Graphics
-	filename ../../images/index-insert.png
+	filename ../../images/index-insert.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -3538,7 +3538,7 @@ Nomenklartureintrag\SpecialChar \ldots{}
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/nomencl-insert.png
+	filename ../../images/nomencl-insert.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -4790,7 +4790,7 @@ oder
 \family default
 
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.xpm
 	scale 70
 	BoundingBox 0bp 6bp 22bp 22bp
 
@@ -4807,7 +4807,7 @@ Tabelle
 \family default
 oder 
 \begin_inset Graphics
-	filename ../../images/tabular-insert.png
+	filename ../../images/tabular-insert.xpm
 	scale 70
 	BoundingBox 0bp 6bp 22bp 22bp
 
@@ -4858,7 +4858,7 @@ Absatz-Einstellungen\SpecialChar \ldots{}
 \family default
  (
 \begin_inset Graphics
-	filename ../../images/layout-paragraph.png
+	filename ../../images/layout-paragraph.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -6209,6 +6209,21 @@ Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
 \end_layout
 
 \begin_layout Subsection
+HTML\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+Um diesen Menüpunkt sehen zu können, müssen Sie das Linux-Paket 
+\family typewriter
+[gnu]html2latex
+\family default
+ installieren.
+ Dann können Sie html-Dateien importieren.
+ Allerdings werden bei Tabellen nur deren Inhalte importiert.
+\end_layout
+
+\begin_layout Subsection
 LaTeX (plain)
 \begin_inset LatexCommand index
 name "Dateiformat!Import!LaTeX"
@@ -6248,7 +6263,12 @@ name "Dateiformat!Import!MS Word"
 \end_layout
 
 \begin_layout Standard
-Hiermit können Word-Dokumente (.
+Um diesen Menüpunkt sehen zu können, müssen Sie das Linux-Paket 
+\family typewriter
+mv
+\family default
+ installieren.
+ Hiermit können Word-Dokumente (.
 \family typewriter
 doc
 \family default
@@ -6526,6 +6546,12 @@ latex2html -no_subdir -no_navigation -split 0 -show_section_numbers $$i
 
 \begin_layout Subsection
 HTML (MS Word)
+\begin_inset LatexCommand index
+name "Dateiformat!Import!MS Word (HTML)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6613,16 +6639,7 @@ nen 1.3.x bearbeiten können.
 \end_layout
 
 \begin_layout Subsection
-OpenDocument
-\end_layout
-
-\begin_layout Standard
-Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
- OpenOffice gelesen werden kann.
-\end_layout
-
-\begin_layout Subsection
-MS Word (HTML)
+OpenDocumentOpen Document
 \begin_inset LatexCommand index
 name "Dateiformat!Import!MS Word (HTML)"
 
@@ -6632,8 +6649,8 @@ name "Dateiformat!Import!MS Word (HTML)"
 \end_layout
 
 \begin_layout Standard
-Hiermit können Sie Ihre LyX-Dokumente in ein HTML-Format exportieren, das
- von MS Word gelesen werden kann.
+Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
+ OpenOffice gelesen werden kann.
 \end_layout
 
 \begin_layout Subsection
@@ -11955,8 +11972,8 @@ hangafter=-3
 \end_inset
 
  iejenigen unter Ihnen, denen der Stil alter Bücher gefällt, würden sicherlich
- in Ihren Texten auch gerne jene abgesetzten großen Buchstaben am Anfang
- eines Kapitels verwenden.
+ in Ihren Texten auch gerne jene abgesetzten großen Buchstaben (Initialen)
+ am Anfang eines Kapitels verwenden.
  Mit etwas Kenntnis von LaTeX ist dies durchaus möglich --- allerdings etwas
  aufwendig, wie das Beispiel am Anfang dieses Absatzes zeigt.
 \begin_inset Foot
@@ -12124,6 +12141,29 @@ bigdrop
 dropping
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Das neue LaTeX-System 
+\family typewriter
+texlive
+\family default
+ kennt die oben genannten Pakete nicht mehr.
+ Dafür gibt es in 
+\family typewriter
+texlive-latex-extra
+\family default
+ das Paket 
+\family typewriter
+lettrine
+\family default
+, um Initialen zu erzeugen.
+ Es bietet umfangreiche Möglichkeiten zur Gestaltung von Initialen, die
+ in der Dokumentation von 
+\family typewriter
+lettrine
+\family default
+ beschieben sind.
 \end_layout
 
 \begin_layout Section
@@ -13734,7 +13774,7 @@ Benutzerhandbuch
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen (
 \begin_inset Graphics
-	filename ../../images/layout-paragraph.png
+	filename ../../images/layout-paragraph.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -17844,7 +17884,7 @@ Absatz-Einstellungen
 \InsetSpace \space{}
 (
 \begin_inset Graphics
-	filename ../../images/layout-paragraph.png
+	filename ../../images/layout-paragraph.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
