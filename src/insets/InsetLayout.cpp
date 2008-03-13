@@ -29,6 +29,7 @@ namespace lyx {
 
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), labelstring_(from_ascii("UNDEFINED")),
+	decoration_(InsetLayout::Classic),
 	font_(sane_font), labelfont_(sane_font), bgcolor_(Color_error), 
 	multipar_(false), passthru_(false), needprotect_(false),
 	freespacing_(false), keepempty_(false), forceltr_(false)

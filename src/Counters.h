@@ -73,6 +73,8 @@ private:
 /// Every instantiation is an array of counters of type Counter.
 class Counters {
 public:
+	///
+	Counters() : appendix_(false), subfloat_(false) {}
 	/// Add a new counter to array.
 	void newCounter(docstring const & newc);
 	/// Add new counter having oldc as its master and ls as its label.

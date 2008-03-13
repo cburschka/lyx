@@ -301,7 +301,7 @@ public:
 	
 	///
 	void drawDisplay(QPainter * painter, QStyleOptionViewItem const & opt,
-		const QRect & rect, const QString & text ) const
+			 const QRect & /*rect*/, const QString & text ) const
 	{
 		QString utext = underlineFilter(text);
 
