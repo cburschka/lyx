@@ -28314,42 +28314,9 @@ Etiqueta
 En LyX, el nombre de la etiqueta se muestra entre paréntesis detrás de la
  ecuación.
  Una ecuación con etiqueta se numera siempre.
- La etiqueta se borra si se desactiva la numeración.
- De momento, es la única forma de borrar una etiqueta.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-véase 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=2556}{
-\end_layout
-
-\end_inset
-
-LyX-bug #2556
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ 
+\lang english
+When a label is deleted, the numbering is turned off, and vice versa.
 \end_layout
 
 \begin_layout Standard
