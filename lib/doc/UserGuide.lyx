@@ -35015,6 +35015,11 @@ stdtoolbars.inc
 stdmenus.inc
 \shape default
 , respectively.
+ Both files are loaded by the 
+\emph on
+default.ui
+\emph default
+ file.
  To create your own menu and toolbar layout, start with a copy of these
  files and edit the entries.
 \end_layout
@@ -35413,8 +35418,9 @@ inside
  The fonts that appear on the output are independent from these fonts, and
  set in the menu 
 \family sans
-Layout\SpecialChar \menuseparator
-Document
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts
 \family default
 .
 \end_layout

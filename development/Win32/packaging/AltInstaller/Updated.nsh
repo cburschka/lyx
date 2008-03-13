@@ -12,6 +12,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"

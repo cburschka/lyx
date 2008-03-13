@@ -152,7 +152,7 @@ Rebollo
 <lyx-fr@lists.lyx.org>
 \family default
 .
- Mise à jour de la traduction pour la version 1.5.2 : 
+ Mise à jour de la traduction à partir de la version 1.5.2 : 
 \noun on
 Siegfried 
 \noun default
@@ -990,21 +990,18 @@ trouvées
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Things like notes, floats, etc., the so called insets can be dissolved.
- This means that the inset is deleted and its content is left as normal
- text.
- Dissolving an inset is done by setting the cursor at the beginning of an
- inset and pressing 
+Les choses commes les notes, les flottants, etc.
+ ce que l'on appelle les inserts, peuvent être dissous.
+ Cela signifie que l'insert est détruit et que son contenu est laissé comme
+ du texte normal.
+ Pour dissoudre un insert, on place le curseur au début de l'insert et on
+ appuie sur la touche 
 \family sans
 Backspace
 \family default
- or by setting the cursor to the end and pressing 
+ ou on place le curseur à la fin et on appuie sur 
 \family sans
-Delete
-\family default
-.
+Suppr.
 \end_layout
 
 \begin_layout Section
@@ -1099,7 +1096,7 @@ Refaire
 \begin_layout Section
 Opérations à la Souris
 \begin_inset LatexCommand index
-name "Operations à la souris"
+name "Opérations à la souris"
 
 \end_inset
 
@@ -9676,14 +9673,14 @@ cm
 
 )
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 En chargeant le paquetage LaTeX 
 \series bold
 aeguill
 \begin_inset LatexCommand index
-name "Paquetage LaTeX ! aeguill"
+name "Paquetages LaTeX ! aeguill"
 
 \end_inset
 
@@ -10130,7 +10127,7 @@ name "sub:Réglage-fin-avec"
 
 
 \begin_inset LatexCommand index
-name "Dialogue ! Style de Texte"
+name "Dialogues ! Style du Texte"
 
 \end_inset
 
@@ -22599,7 +22596,7 @@ name "Table des matières"
 
 
 \begin_inset LatexCommand index
-name "Outline"
+name "Plan"
 
 \end_inset
 
@@ -23948,45 +23945,7 @@ makeindex
 \family default
  pour la génération des index.
  Ce programme peut être contrôlé par des options qui sont modifiées dans
- la fenêtre de dialogue des préférences de LyX dans la rubrique 
-\family sans
-Outputs
-\family default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Pas traduit (NdT)
-\end_layout
-
-\end_inset
-
-, 
-\family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\family default
- dans le champ 
-\family sans
-Commande
-\family default
-\InsetSpace ~
-
-\family sans
-d'index
-\family default
-, voyez la section\InsetSpace ~
+ la fenêtre de dialogue des préférences de LyX , voyez la section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:LaTeX-settings"
@@ -23994,18 +23953,18 @@ reference "sub:LaTeX-settings"
 \end_inset
 
 .
- 
-\lang english
-The available options are listed and explained in
-\lang french
- 
+ Les options disponibles sont listées et expliquées dans 
 \begin_inset LatexCommand cite
 key "makeindex"
 
 \end_inset
 
 .
- Vous pouvez aussi préciser un autre programme pour générer l'index, comme
+ 
+\end_layout
+
+\begin_layout Standard
+Vous pouvez aussi préciser un autre programme pour générer l'index, comme
  par exemple 
 \family sans
 xindy
@@ -25429,19 +25388,15 @@ usepackage[labelfont=bf]{caption}
 
 \begin_layout Standard
 et votre problème est résolu.
-\lang english
-
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-
-\lang english
-For more commands provided by the 
+Pour les autres commandes proposées par le paquetage 
 \series bold
 caption
 \series default
- package, have a look at its documentation, 
+, jetez un œil à sa documentation 
 \begin_inset LatexCommand cite
 key "caption"
 
@@ -30411,7 +30366,7 @@ Activer un des menus va lancer un programme de visualisation.
  Le visualiseur peut être choisi dans les préférences, voir\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cha:Fenêtre-Préférences"
+reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
@@ -30669,7 +30624,7 @@ name "Paquetages LaTeX ! tipa"
 
 \end_inset
 
- installed.
+.
 \newline
 Pour plus d'information voyez la documentation de 
 \series bold
@@ -30693,7 +30648,7 @@ target "http://wiki.lyx.org/LyX/LinguistLyX"
 \end_layout
 
 \begin_layout Subsection
-Formats
+Typographie spéciale
 \end_layout
 
 \begin_layout Standard
@@ -30778,7 +30733,7 @@ reference "sub:Lignes-Horizontales"
 \end_layout
 
 \begin_layout Description
-Ressort\InsetSpace ~
+Espacement\InsetSpace ~
 Vertical Insère un ressort de remplissage vertical, décrit section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -30816,8 +30771,10 @@ reference "sub:Ligatures"
 \end_layout
 
 \begin_layout Description
-Line\InsetSpace ~
-Break Inserts a forced linebreak, see section\InsetSpace ~
+Passage\InsetSpace ~
+à\InsetSpace ~
+la\InsetSpace ~
+ligne Insère un passage à la ligne forcé, voir section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Saut-de-ligne"
@@ -30970,7 +30927,7 @@ Pour insérer des fichiers et inclure soit le fichier, soit son contenu dans
  votre document.
  Le chapitre 
 \emph on
-External Stuff
+Trucs externes
 \emph default
  du manuel 
 \emph on
@@ -31264,7 +31221,7 @@ Le format est indépendant de la langue du document.
  LyX offre d'autres manières d'insérer une date qui sont expliquées dans
  la section 
 \emph on
-External Material
+Objets Externes
 \emph default
  du manuel 
 \emph on
@@ -31761,10 +31718,10 @@ XeTeX
 \family default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-XeTeX est un programme de typographye TeX, une alternative à .
+XeTeX est un programme de typographie TeX, une alternative à LaTeX.
  Il accepte Unicode de façon native et ses fichiers sont supposés être codés
  en UTF-8.
  Vous pouvez trouver plus d'information sur LyX avec XeTeX ici: 
@@ -31980,7 +31937,7 @@ reference "sub:Syntaxe-de-Latex"
 \begin_layout Section
 Le Menu Outils
 \begin_inset LatexCommand index
-name "Menu ! Tools"
+name "Menu ! Outils"
 
 \end_inset
 
@@ -34006,8 +33963,15 @@ name "sec:Ui"
 \end_layout
 
 \begin_layout Standard
-D'abord un avertissement : Vous devez redémarrer LyX pour que les modifications
- des fichiers 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Vous devez redémarrer LyX pour que les modifications des fichiers 
 \family typewriter
 .ui
 \family default
@@ -34018,57 +33982,66 @@ D'abord un avertissement : Vous devez redémarrer LyX pour que les modifications
  soient pris en compte.
 \end_layout
 
-\begin_layout Subsubsection*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Le fichier de description de l'interface utilisateur
+\begin_inset LatexCommand index
+name "Personnalisation ! des barres d'outils"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Personnalisation ! des menus"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 On peut changer l'apparence des menus et des barres d'outils en choisissant
- un autre fichier 
+ un autre fichier de description de l'interface utilisateur
+\family typewriter
+ 
+\family default
+(
 \family typewriter
 .ui
 \family default
-.
- Pour l'instant, il n'existe qu'un fichier, 
-\family typewriter
-default.ui
-\family default
-.
+).
  Un fichier 
 \family typewriter
 .ui
 \family default
  est un fichier texte dans lequel les éléments des menus et des barres d'outils
  sont listés.
- Pour créer un nouveau fichier 
-\family typewriter
-.ui
-\family default
-, partez d'une copie de 
-\family typewriter
+ Les boutons des barres d'outils et les éléments de menu sont décrits dans
+ les fichiers 
+\emph on
+stdtoolbars.inc
+\emph default
+ et 
+\emph on
+stdmenus.inc
+\emph default
+ respectivement, ces derniers étant ensuite utilisés par le fichier 
+\emph on
 default.ui
-\family default
- qui se trouve dans le répertoire 
-\family typewriter
-lyx/share/lyx
-\family default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Pour moi il est dans LyX15/Ressource/ui, mais je suis sous Windows XP ...
-\end_layout
-
-\end_inset
-
- et éditez les éléments que vous voulez modifier.
+\emph default
+.
+ Pour créer une nouvelle disposition de menu ou de barre d'outils, partez
+ d'une copie de ces fichiers et éditez les éléments que vous voulez modifier.
 \end_layout
 
 \begin_layout Standard
-
+La syntaxe des fichiers
 \family sans
-La syntaxe des fichiers 
+ 
 \family typewriter
 .ui
 \family default
@@ -34147,6 +34120,52 @@ s.
 \end_layout
 
 \begin_layout Standard
+La syntaxe des éléments est la suivante:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\series bold
+Item 
+\begin_inset Quotes erd
+\end_inset
+
+nom de menu ou de bouton
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+fonction LyX
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace smallskip*
+\end_inset
+
+Toutes les fonctions de LyX sont listées dans 
+\begin_inset LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Maintenant voyons un exemple : Supposons que nous utilisons souvent le menu
  
 \family sans
@@ -34154,36 +34173,25 @@ Naviguer\SpecialChar \menuseparator
 Signets 
 \family default
 et que de ce fait nous voulions un signet supplémentaire, vous pouvez ajouter
- simplement les lignes 
+ simplement la ligne 
 \newline
 
-\newline
-Item "Enregistrer Signet 4" "bookmark-save 4"
-\newline
-Item
- "Aller au Signet 4" "bookmark-goto 4"
-\newline
-
-\newline
-à la section du menu naviguer dans
- le fichier .ui, pour disposer d'un sixième signet.
-\family sans
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Je ne suis pas sûr que ça marche, cette section du manuel me semble dépassée
- ( j'ai déjà 5 signets dans mon menu, et il n'y a plus de 'aller au signet
- 1' ...(NdT)
-\end_layout
-
+\begin_inset VSpace smallskip*
 \end_inset
 
 
+\series bold
+Item "Enregistrer Signet 6" "bookmark-save 6"
+\series default
+
+\begin_inset VSpace smallskip*
+\end_inset
+
+à la section du menu naviguer dans le fichier .inc, pour disposer d'un sixième
+ signet.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Le fichier Bind
 \begin_inset LatexCommand label
 name "sec:Fichier-bind"
@@ -34246,15 +34254,6 @@ pt
 \end_inset
 
  pour le Portugais.
- LyX permet l'internationalisation de l'interface utilisateur, voyez la
- section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sec:Selecting-an-alternative"
-
-\end_inset
-
-.
  Quand vous utilisez LyX dans une langue donnée, il va essayer d'utiliser
  les fichiers .bind appropriés.
 \end_layout
@@ -34287,12 +34286,7 @@ Si vous voulez personnaliser les raccourcis clavier, modifiez les fichiers
 \family typewriter
 .bind
 \family default
- avec un éditeur de texte et n'oubliez pas de charger les fichiers modifiés
- dans LyX en utilisant la fenêtre de dialogue 
-\family sans
-Préférences
-\family default
-.
+ avec un éditeur de texte.
  La syntaxe des fichiers 
 \family typewriter
 .bind
@@ -34302,29 +34296,183 @@ Préférences
 
 \begin_layout Standard
 
-\family typewriter
+\series bold
 
 \backslash
-bind <combinaison de touches> <fonction-lyx>
+bind 
+\begin_inset Quotes eld
+\end_inset
+
+combinaison de touches
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+fonction-lyx
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 La combinaison de touche et le nom de la fonction LyX (avec tous ses arguments)
  doivent être mis entre "guillemets".
- Toutes les fonctions de LyX sont listées dans le 
+ Toutes les fonctions de LyX sont listées dans 
+\begin_inset LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+
 \emph on
-Manuel de Référence.
+.
  
+\end_layout
+
+\begin_layout Subsubsection
+Session
+\end_layout
+
+\begin_layout Standard
+Quand l'option 
+\family sans
+Enregistre\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restaure la taille de la fenêtre, utilise une taille fixe sinon
+\family default
+, n'est pas cochée, vous pouvez donner la taille de la fenêtre principale
+ de LyX quand LyX démarre.
+\end_layout
+
+\begin_layout Standard
+Avec l'option 
+\family sans
+Enregistre\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restaure la position de la fenêtre
+\family default
+ LyX sera ouvert avec sa fenêtre principale à la position qu'elle avait
+ lors de la dernière utilisation.
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Restaure la position du curseur
+\family default
+ met le curseur à la position qu'il avait dans le fichier la dernière fois.
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Charge les fichiers ouverts lors de la dernière session
+\family default
+ ouvre tous les fichiers qui étaient ouverts lors de la dernière session
+ LyX.
+\end_layout
+
+\begin_layout Subsubsection
+Documents
+\begin_inset LatexCommand label
+name "sub:Documents de sauvegarde"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Sauvegarde ! Documents"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quand l'option 
+\family sans
+Sauvegarde automatique
+\family default
+ est activée, vous pouvez préciser le temps entre deux sauvegardes.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Nombre maximum de fichiers
+\family default
+ est le nombre de fichiers récents que LyX doit afficher dans le menu 
+\family sans
+Fichier\SpecialChar \menuseparator
+Documents\InsetSpace ~
+récents
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Défilement
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Le curseur suit la barre de défilement
+\family default
+ place le curseur en haut de la partie de document qui est actuellement
+ visible quand il y a défilement.
+\end_layout
+
+\begin_layout Subsubsection
+Le cache pixmap
+\end_layout
+
+\begin_layout Standard
+Avec l'option 
+\family sans
+Activer le cache pixmap
+\family default
+ cochée, LyX a besoin de redessiner l'écran moins souvent.
+ Cela donne de meilleure performances, en particulier avec des systèmes
+ lents.
+ D'un autre côté, les caractères peuvent paraître un peu flous à l'écran.
+ Vous activerez ce cache ou non selon que vous préférez ou non la vitesse
+ par rapport à l'esthétique.
+ Notez que le cache pixmap n'est disponible et utile que sous Mac\InsetSpace ~
+OS et Windows.
 \end_layout
 
 \begin_layout Subsection
 Polices d'Écran
+\begin_inset LatexCommand label
+name "sub:Polices-d'Écran"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Polices ! d'écran"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Ces polices sont utilisées pour afficher votre document à l'écran.
- Notez que cette section ne traite que des polices qui sont utilisées à
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+Notez que cette section ne traite que des polices qui sont utilisées à 
 \emph on
 l'intérieur 
 \emph default
@@ -34343,6 +34491,11 @@ Polices
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Par défaut LyX utilise 
 \emph on
@@ -34356,11 +34509,27 @@ ou
 \emph on
 helvética 
 \emph default
-(cela dépend du système) comme police sans sérif et 
+(cela dépend du système) comme police 
+\family sans
+sans sérif
+\family default
+ et 
 \emph on
-courrier 
+courier 
 \emph default
-comme police à chasse fixe ou machine à écrire.
+comme police à 
+\family typewriter
+chasse fixe
+\family default
+ ou machine à écrire.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez changer la taille des polices avec le réglage du 
+\family sans
+Zoom
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -34373,11 +34542,8 @@ Résolution DPI
 dots per inch
 \emph default
 ).
-\end_layout
-
-\begin_layout Standard
-Les tailles de polices sont données comme des hauteurs de lettre en points
- ( une lettre de 72\InsetSpace \thinspace{}
+ Les tailles de polices sont données comme des hauteurs de lettre en points.
+ Une lettre de 72\InsetSpace \thinspace{}
 points ayant une taille de 1\InsetSpace \thinspace{}
 pouce, voyez l'appendice\InsetSpace ~
 
@@ -34386,9 +34552,16 @@ reference "cha:Unités-de-longueur"
 
 \end_inset
 
- pour les unités de longueur utilisées dans LyX).
- Les tailles de polices sont les mêmes que celles utilisées pour une police
- de document de 10\InsetSpace \thinspace{}
+ pour les unités de longueur utilisées dans LyX.
+ 
+\end_layout
+
+\begin_layout Standard
+Les 
+\family sans
+Tailles de polices
+\family default
+ sont les mêmes que celles utilisées pour une police de document de 10\InsetSpace \thinspace{}
 pt.
  Pour plus de détails voyez la section\InsetSpace ~
 
@@ -34402,6 +34575,18 @@ reference "sub:Document-Polices"
 
 \begin_layout Subsection
 Couleurs
+\begin_inset LatexCommand index
+name "Couleurs ! Écran de LyX"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Préférences ! Couleurs"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34415,14 +34600,25 @@ Modifier
 
 \begin_layout Subsection
 Graphique
+\begin_inset LatexCommand index
+name "Préférences ! Graphique"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Ici, vous pouvez préciser comment LyX doit afficher les graphiques.
+ L'option 
+\family sans
+Aperçu sur le vif
+\family default
+ permet la prévisualisation de petits morceaux de votre document.
  Voyez la section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Apperçu-de-morceaux"
+reference "sec:Aperçu-de-morceaux"
 
 \end_inset
 
@@ -34431,47 +34627,274 @@ reference "sec:Apperçu-de-morceaux"
 
 \begin_layout Subsection
 Clavier
+\begin_inset LatexCommand label
+name "sub:Clavier"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Réaffectation clavier"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Préférences ! Réaffectation clavier"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Si vous avez un clavier Tchèque et que vous voulez l'utiliser comme un clavier
- Roumain, vous pouvez utiliser le fichier de carte de clavier nommé
+Normalement les réglages de clavier doivent se faire au niveau de votre
+ système d'exploitation.
+ Dans le cas où cela ne serait pas possible, LyX fournit des carte de réaffectat
+ion clavier (
+\emph on
+keyboard map
+\emph default
+).
+ Si par exemple, vous avez un clavier Tchèque et que vous voulez l'utiliser
+ comme un clavier Roumain, vous pouvez utiliser le fichier de carte de clavier
+ nommé
 \family sans
  romanian.kmap
 \family default
 .
- Normalement les réglages de clavier doivent se faire au niveau de votre
- système d'exploitation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
  Ces cartes de clavier sont fournies seulement comme solution provisoire
  et elles ne fonctionnent pas sur tous les systèmes.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Répertoires
 \end_layout
 
+\begin_layout Description
+Répertoire\InsetSpace ~
+de\InsetSpace ~
+travail C'est le répertoire de travail de LyX.
+ C'est la valeur par défaut pour les opérations 
+\family sans
+Ouvrir
+\family default
+, 
+\family sans
+Enregistrer
+\family default
+ et 
+\family sans
+Enregistrer sous
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Modèles\InsetSpace ~
+de\InsetSpace ~
+documents Ce répertoire sera ouvert quand vous utlisez le menu
+ 
+\family sans
+Fichier\SpecialChar \menuseparator
+Nouveau\InsetSpace ~
+avec\InsetSpace ~
+Modèle
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Répertoire\InsetSpace ~
+de\InsetSpace ~
+sauvegarde
+\begin_inset LatexCommand index
+name "Sauvegarde ! Répertoire"
+
+\end_inset
+
+ Les copies de sauvegarde seront enregistrées dans ce répertoire.
+ Si aucun nom de répertoire n'est donné, mais que les sauvegardes sont activées
+ comme c'est décrit dans la section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Documents de sauvegarde"
+
+\end_inset
+
+, le 
+\family sans
+Répertoire de travail
+\family default
+ sera utilisé pour enregistrer les sauvegardes.
+\newline
+Les fichiers de sauvegarde
+ ont l'extension 
+\begin_inset Quotes eld
+\end_inset
+
+.lyx~
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Tube\InsetSpace ~
+du\InsetSpace ~
+serveur\InsetSpace ~
+LyX Ici, vous pouvez entrer le nom d'un tube Unix.
+ Ce tube est utilisé pour tranférer des informations à partir de programmes
+ externes vers LyX.
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Cette fonction ne marche pas avec Windows.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+Répertoire\InsetSpace ~
+temporaire Les fichiers temporaires sont enregistrés dans ce répertoir
+e.
+\end_layout
+
+\begin_layout Description
+Préfixe\InsetSpace ~
+PATH Ce champ contient une liste de chemins vers des programmes externes.
+ Quand LyX a besoin d'un programme externe, il cherche dans cette liste
+ pour savoir où le trouver sur le système.
+ Sous Windows ou Mac\InsetSpace ~
+OS, la liste des chemins est automatiquement remplie
+ quand LyX est configuré, de sorte que vous ne devriez pas avoir à la modifier.
+ Sous Unix\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+Linux, la liste des chemins ne devra être modifiée que si vous
+ voulez utiliser des programmes externes qui ne se trouvent pas dans le
+ chemin normal de votre système ($PATH).
+\end_layout
+
 \begin_layout Section
 Identité
 \end_layout
 
+\begin_layout Standard
+Ici vous pouvez ajouter votre nom et votre adresse de courriel (
+\emph on
+email
+\emph default
+).
+ Cette identité sera utilisée quand vous aurez activé le suivi des modifications
+ comme c'est décrit dans la section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Suivi-de-modifications"
+
+\end_inset
+
+, pour marquer les modifications que vous avez effectuées comme étant les
+ vôtres.
+\end_layout
+
 \begin_layout Section
 Paramètres de Langue
+\begin_inset LatexCommand index
+name "Préférences ! Langue"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Langue ! Paramètres"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Langue
 \end_layout
 
-\begin_layout Standard
-La 
+\begin_layout Description
+
 \family sans
 Langue\InsetSpace ~
 par\InsetSpace ~
 Défaut
 \family default
  est la langue qui sera utilisée dans les nouveaux documents.
- Le paquetage linguistique devrait toujours être babel.
- Babel traduit certain mots automatiquement dans la langue du document.
+ 
+\end_layout
+
+\begin_layout Description
+Paquetage\InsetSpace ~
+linguistique est la commande LaTeX qui parmet de charger le paquetage
+ LaTeX qui gère les problèmes linguistiques.
+ La valeur par défaut est 
+\family sans
+
+\backslash
+usepackage{babel}
+\family default
+ qui charge le paquetage 
+\series bold
+babel
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Pour une introduction à la syntaxe LaTeX, voyez la section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:ERT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+
+\series default
+ 
+\series bold
+
+\newline
+Babel
+\series default
+ traduit automatiquement en interne certain mots dans la langue du document.
  Par exemple le mot 
 \begin_inset Quotes eld
 \end_inset
@@ -34485,26 +34908,59 @@ n de babel.
 
 \series bold
  
-\backslash
-usepackage{babel}
-\series default
- est la commande LaTeX qui demande d'utiliser le paquetage babel.
- Pour une introduction à la syntaxe de LaTeX , voyez la section\InsetSpace ~
+\end_layout
 
-\begin_inset LatexCommand ref
-reference "sec:ERT"
+\begin_layout Description
+
+\family sans
+Commande\InsetSpace ~
+de\InsetSpace ~
+début 
+\family default
+Quand on a besoin d'un paquetage LaTeX spécial pour écrire dans une langue
+ donnée, vous pouvez définir ici la commande qui est utilisée pour démarrer
+ le paquetage.
+ Par exemple, on a besoin de la commande de début 
+\family sans
+
+\backslash
+begin{arabtext} 
+\family default
+pour écrire en arabe avec le paquetage 
+\series bold
+ArabTeX
+\series default
+, voir 
+\begin_inset LatexCommand cite
+key "Arabic"
 
 \end_inset
 
 .
+ La valeur par défaut est la commande 
+\series bold
+babel
+\series default
+ 
+\family sans
+
+\backslash
+selectlanguage{$$lang}
+\family default
+.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Description
+Commande\InsetSpace ~
+de\InsetSpace ~
+fin Homologue de 
 \family sans
-Commande de début/de fin
+Commande de début
 \family default
- ???
+.
+ Certains paquetages, n'ont pas besoin de commande de fin puisque la commande
+ de début permet d'activer et de désactiver le paquetage.
+ C'est le cas pris par défaut.
 \end_layout
 
 \begin_layout Standard
@@ -34517,17 +34973,46 @@ babel détermine si babel est utilisé ou non
 \end_layout
 
 \begin_layout Description
-Global ??
+Global Quand cette option est activée, les langues utilisées dans le document
+ sont ajoutées comme options aux options de classes de document, de sorte
+ qu'elles puissent être utilisées par tous les paquetages LaTeX.
+ Dans le cas contraire, elles sont utilisées comme option du seul paquetage
+ 
+\series bold
+babel
+\series default
+.
 \end_layout
 
 \begin_layout Description
 Auto\InsetSpace ~
-début ??
+début Quand cette option est activée, le document commence avec la langue
+ de document choisie.
+ Quand elle n'est pas activée, la 
+\family sans
+Commande de début
+\family default
+ est explicitement mise au début du document dans la sortie LaTeX.
+ Cela assure que l'on utilise la bonne langue quand on utilise une autre
+ 
+\family sans
+Commande de début
+\family default
+ que celle proposée par défaut.
 \end_layout
 
 \begin_layout Description
 Auto\InsetSpace ~
-fin ??
+fin Homologue de 
+\family sans
+Auto début.
+ 
+\family default
+Quand elle n'est pas activée, la commande 
+\family sans
+Commande de fin
+\family default
+ est mise à la fin du document dans la sortie LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -34571,10 +35056,150 @@ Sorties
 
 \begin_layout Subsection
 Imprimante
+\begin_inset LatexCommand label
+name "sub:Imprimante"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Imprimante"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Paramètres ! Imprimante"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Imprimante\InsetSpace ~
+par\InsetSpace ~
+défaut Ici, vous pouvez préciser votre imprimante par défaut.
+ Le nom sera utilisé quand on exécutera la 
+\family sans
+Commande d'impression
+\family default
+.
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note: 
+\series default
+Vous pouvez laisser ce champ vide sous Windows puisqu'il n'a aucun effet
+ sur ces systèmes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Adapter\InsetSpace ~
+la\InsetSpace ~
+sortie\InsetSpace ~
+à\InsetSpace ~
+l'imprimante Cette option n'est active qu'avec la 
+\family sans
+Commande d'impression
+\family default
+\series bold
+ 
+\series default
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+dvips
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ Elle active un fichier de configuration pour dvips.
+ C'est une option à réserver aux experts de dvips.
+\end_layout
+
+\begin_layout Description
+Commande\InsetSpace ~
+d'impression C'est la commande que LyX\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+LaTeX utilisent pour imprimer.
+ Pour la plupart des systèmes, c'est par défaut 
+\family sans
+dvips
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Options\InsetSpace ~
+de\InsetSpace ~
+commande\InsetSpace ~
+de\InsetSpace ~
+l'imprimante C'est ici que vous pouvez préciser des options
+ pour l'imprimante.
+ Vous pourrez trouver une liste des options d'imprimante avec des explications
+ dans la documentation du programme qui fournit la 
+\family sans
+Commande d'impression
+\family default
+ que vous utilisez.
 \end_layout
 
 \begin_layout Subsection
 Format de la date
+\begin_inset LatexCommand index
+name "Format de la date"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Paramètres ! Format de la date"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le format de la date peut être un des formats ou un mélange des formats
+ listés ici:
+\newline
+
+\begin_inset LatexCommand url
+target "http://unixhelp.ed.ac.uk/CGI/man-cgi?date"
+
+\end_inset
+
+
+\newline
+Par exemple, le format
+\newline
+
+\family typewriter
+%d/%m/%y
+\family default
+
+\newline
+imprimera la date sous la forme jour/mois/année.
+\newline
+Voici un extrait de cette
+ liste:
 \end_layout
 
 \begin_layout Standard
@@ -34792,10 +35417,14 @@ ions)
 Texte brut
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 
 \family sans
-Longueur de la ligne exportée
+Longueur\InsetSpace ~
+de\InsetSpace ~
+la\InsetSpace ~
+ligne\InsetSpace ~
+exportée
 \family default
  détermine le nombre maximum de caractères imprimés sur une ligne quand
  on utilise le menu 
@@ -34809,10 +35438,11 @@ Texte Brut.
  sous la forme d'une unique ligne sans fin.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 
 \family sans
-Commande roff
+Commande\InsetSpace ~
+roff
 \family default
  définit une commande supplémentaire pour produire des tableaux ASCII avec
  une meilleure apparence grâce aux commandes UNIX 
@@ -34842,212 +35472,368 @@ name "sub:LaTeX-settings"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-??
-\end_layout
-
-\begin_layout Subsection
-Répertoires
-\end_layout
-
-\begin_layout Standard
-??
-\end_layout
-
-\begin_layout Section
-Convertisseurs
-\end_layout
-
-\begin_layout Standard
-LyX possède un mécanisme puissant pour effectuer des conversions vers ou
- à partir de n'importe quel format de fichier en utilisant des programmes
- externes.
- Prenez une paire de formats, par exemple 
-\family sans
-LaTeX
-\family default
- et 
-\family sans
-PDF 
-\family default
-et définissez un convertisseur de l'un des formats vers l'autre.
- Dans notre exemple, il existe deux mécanismes possibles:
-\end_layout
-
-\begin_layout Enumerate
-Une conversion directe de LaTeX vers PDF en utilisant 
-\series bold
-pdflatex
-\end_layout
-
-\begin_layout Enumerate
-Un chemin un peu plus détourné utilisant des convertisseurs et des formats
- intermédiaires: de LaTeX vers DVI (en utilisant 
-\series bold
-latex
-\series default
-), de DVI vers Postscript® (en utilisant 
-\series bold
-dvips
-\series default
-) puis de PostScript® vers PDF (en utilisant 
-\series bold
-ps2pdf
-\series default
-)
-\end_layout
-
-\begin_layout Standard
-LyX va toujours choisir le plus court chemin, ce qui fait que si vous voulez
- pouvoir choisir entre les deux méthodes précédentes, vous devez donner
- deux noms au format des fichiers 
-\family typewriter
-.pdf
-\family default
-.
- Les deux sont inclus dans la liste de la fenêtre 
-\family sans
-Préférences
-\family default
-.
- Jetez-y un coup d'oeil et essayez d'inventer votre propre convertisseur!
-\end_layout
-
-\begin_layout Standard
-En plus, chaque format peut avoir un visualiseur qui lui est associé.
- Par exemple, vous pouvez vouloir utiliser 
-\family typewriter
-Ghostview
-\family default
- pour visualiser les fichiers PostScript, ou 
-\family typewriter
-xdvi
-\family default
- pour prévisualiser les sorties LaTeX.
- Vous pouvez modifier le visualiseur qui sera utilisé ( et les options qui
- lui sont passées ) en utilisant 
-\family sans
-Outils
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Préférences
-\family default
- puis la rubrique 
-\family sans
-convertisseurs
-\family default
-.
- Par exemple, pour changer de visualiseur 
-\family typewriter
-dvi
-\family default
-, choisissez le format DVI dans la fenêtre de dialogue, et changer le visualiseu
-rs pour par exemple 
-\family typewriter
-kdvi
-\family default
-, et cliquez sur 
-\family sans
-appliquer
-\family default
-.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Je ne pense pas que ce soit encore valable (NdT)
-\end_layout
+\begin_inset LatexCommand index
+name "Paramètres ! LaTeX"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-Formats de Fichiers
-\end_layout
-
-\begin_layout Section
-Copieurs
-\end_layout
-
-\begin_layout Section
-BibTeX et makeindex
-\end_layout
+\begin_layout Description
+Encodage\InsetSpace ~
+T
+\begin_inset ERT
+status collapsed
 
 \begin_layout Standard
-Les commandes utilisées pour générer une bibliographie (par défaut c'est
+
+{}
+\end_layout
+
+\end_inset
+
+eX C'est l'encodage par défaut pour la police du document.
  
-\family typewriter
-bibtex
+\family sans
+T1
 \family default
-) et un index ( par défaut c'est 
-\family typewriter
-makeindex
-\family default
- avec les options 
-\family typewriter
--c
+ est l'encodage par défaut et couvre les langues occidentales et les symboles.
+ 
+\family sans
+T2A, T2B, T2C, LCY
 \family default
  et 
-\family typewriter
--q
+\family sans
+X2
 \family default
-) peuvent être modifiées.
- 
+ sont pour le cyrillique.
+ Des combinaisons d'encodages sont possibles, comme 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+T1, T2B
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Les encodages de polices sont en principe chargés automatiquement par les
+ paquetages linguistiques que LyX mets en place en interne.
+ De sorte qu'il n'y a pas de raison de changer l'encodage par défaut.
+\end_layout
+
+\begin_layout Description
+Taille\InsetSpace ~
+de\InsetSpace ~
+papier\InsetSpace ~
+par\InsetSpace ~
+défaut C'est la taille qui sera utilisée pour les nouveaux
+ documents.
+ La valeur 
+\family sans
+Défaut
+\family default
+ dépend des paramètres de votre système LaTeX.
+\end_layout
+
+\begin_layout Description
+Remettre\InsetSpace ~
+à\InsetSpace ~
+zéro\InsetSpace ~
+les\InsetSpace ~
+options\InsetSpace ~
+quand\InsetSpace ~
+la\InsetSpace ~
+classe\InsetSpace ~
+de\InsetSpace ~
+document\InsetSpace ~
+change Retire toutes les options
+ de classe de document qui ont été mises manuellement dans la fenêtre de
+ dialogue 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres
+\family default
+ quand on change la classe du document.
 \end_layout
 
 \begin_layout Standard
-Par exemple, 
-\family typewriter
-xindy
+Dans le champ 
+\family sans
+Applications externes 
 \family default
- peut être recommandé comme remplacement pour 
-\family typewriter
-makeindex
+vous pouvez spécifier des commandes avec des paramètres pour les applications
+ qui sont listées.
+ Avant de changer quoi que ce soit ici, il est fortement recommandé de lire
+ les manuels des applications concernées.
+ Actuellement on peut mettre les commandes suivantes:
+\end_layout
+
+\begin_layout Description
+Commande\InsetSpace ~
+CheckTeX Commande pour le programme 
+\family sans
+CheckTeX
+\family default
+ qui est décrit dans la section 
+\emph on
+Vérifier TeX 
+\emph default
+du manuel 
+\emph on
+Options avancées
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Commande\InsetSpace ~
+BibTeX Commande pour le programme 
+\family sans
+BibTeX
+\family default
+ qui génère la bibliographie, voir section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Bases-de-Données-Biblio"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Commande\InsetSpace ~
+d'index Commande pour le programme qui génère l'index, voir section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Programme-d'indexation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Option\InsetSpace ~
+de\InsetSpace ~
+papier\InsetSpace ~
+de\InsetSpace ~
+la\InsetSpace ~
+visionneuse\InsetSpace ~
+DVI Ces commandes n'ont d'effet que quand on
+ utilise le programme 
+\family sans
+xdvi 
+\family default
+comme visionneuse DVI.
+\end_layout
+
+\begin_layout Subsection
+Répertoires
+\begin_inset LatexCommand index
+name "Répertoires"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Paramètres ! Répertoires"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le sous-menu 
+\family sans
+Répertoires
+\family default
+ n'est disponible qu'avec la version Windows de LyX.
+ L'option 
+\family sans
+Chemins Windows dans les fichiers LaTeX
+\family default
+ fait que l'on va utiliser des chemins dans le style de Windows:
+\end_layout
+
+\begin_layout Standard
+C:
+\backslash
+test
+\backslash
+bonjour
+\end_layout
+
+\begin_layout Standard
+à la place des chemins dans le style Unix:
+\end_layout
+
+\begin_layout Standard
+C:/test/bonjour
+\end_layout
+
+\begin_layout Section
+Convertisseurs
+\begin_inset LatexCommand index
+name "Convertisseurs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ici, vous allez trouver la liste des commandes de convertisseurs définies
+ pour convertir des fichiers d'un format vers un autre.
+ Vous pouvez les modifier ou en créer de nouveaux.
+ Pour modifier un convertisseur, sélectionnez-le, changez le contenu du
+ champ 
+\family sans
+Convertisseur
+\family default
+ et/ou du champ 
+\family sans
+Autres Options
+\family default
+, puis appuyez sur le bouton 
+\family sans
+Modifier
+\family default
+.
+ Pour créer un nouveau convertisseur, sélectionnez un de ceux qui sont proposés,
+ choisissez un format différent dans la liste déroulante 
+\family sans
+Vers le format
+\family default
+, modifiez le champ 
+\family sans
+Convertisseur
+\family default
+, et appuyez sur le bouton 
+\family sans
+Ajouter
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-La commande à entrer est
-\end_layout
+Quand l'option 
+\family sans
+Fichier cache du convertisseur
+\family default
+ est activée, les conversions seront mise en cache pour une durée qui est
+ précisée par le champ 
+\family sans
+Age maximum (en jours).
 
-\begin_layout Quote
-
-\family typewriter
-makeindex.sh -m $$lang
+\family default
+ Ceci signifie que les fichiers n'ont pas besoin d'être reconvertis à chaque
+ fois que vous réouvrez votre document; les fichiers convertis qui se trouvent
+ dans le cache seront utilisés à la place.
 \end_layout
 
 \begin_layout Standard
-où le paramètre fictif 
-\family typewriter
-$$lang
-\family default
- sera remplacé par la langue (babel) choisie pour le document.
- Vous devez avoir installé les paquetages LaTeX 
-\family typewriter
-xindy
+Vous trouverez plus d'information sur les convertisseurs, en particulier
+ au sujet des variables et des drapeaux qui peuvent être utilisés dans la
+ définition du convertisseur, dans la section 
+\emph on
+Convertisseurs
+\emph default
+ du manuel 
+\emph on
+Personnalisation
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Formats de Fichiers
+\begin_inset LatexCommand label
+name "sec:Formats-de-Fichiers"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Formats de fichiers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ici, vous allez trouver la liste des formats de fichiers que LyX peut manipuler.
+ Vous pouvez modifier la visionneuse et le programme d'édition qui doivent
+ être utilisés avec certains formats.
+ Pour créer un nouveau format, sélectionnez un de ceux qui sont proposés,
+ changez le contenu des champs 
+\family sans
+Format
 \family default
  et 
-\family typewriter
-make-rules
+\family sans
+Nom d'interface
 \family default
- (
-\family typewriter
-xindy-make-rules
+, et appuyez sur le bouton 
+\family sans
+Ajouter
 \family default
-).
- Tapez 
-\family typewriter
-makeindex.sh
-\family default
- sans paramètres dans une fenêtre de commande pour avoir une page d'aide.
+.
+\end_layout
+
+\begin_layout Standard
+Vous trouverez plus d'information, en particulier sur les options qui peuvent
+ être utilisées dans la définition du format dans la section 
+\emph on
+Formats 
+\emph default
+du manuel 
+\emph on
+Personnalisation.
+\end_layout
+
+\begin_layout Section
+Copieurs
+\begin_inset LatexCommand index
+name "Copieurs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ici, vous allez trouver la liste des copieurs définis.
+ Comme toutes les conversions d'un format vers un autre ont lieu dans le
+ répertoire temporaire de LyX, il est parfois nécessaire de modifier un
+ fichier avant de le recopier dans le répertoire temporaire pour que la
+ conversion puisse avoir lieu.
+ C'est ce que fait un Copieur.
+\end_layout
+
+\begin_layout Standard
+Vous trouverez plus d'information au sujet des copieurs dans la section
+ 
+\emph on
+Copieurs 
+\emph default
+du manuel 
+\emph on
+Personnalisation
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Chapter
@@ -35707,9 +36493,9 @@ key "lyxcredit"
 
 \end_inset
 
-The LyX Team: 
+L'équipe LyX: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -35732,26 +36518,22 @@ status collapsed
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
-
-\lang english
-The command 
+La commande 
 \series bold
 
 \backslash
 href
 \series default
- is explained in the 
+ est expliquée dans le manuel 
 \emph on
-Extended Features
+Options avancées
 \emph default
- manual.
- It creates a hyperlink.
+.
+ Elle crée un hyperlien.
 \end_layout
 
 \end_inset
@@ -35824,7 +36606,7 @@ key "TeXCatalogue"
 
 \end_inset
 
-The TeX Catalogue:
+Le Catalogue TeX:
 \newline
 
 \begin_inset LatexCommand url
@@ -35858,8 +36640,6 @@ key "makeindex"
 \end_inset
 
 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -35883,7 +36663,7 @@ status collapsed
 
 \end_inset
 
- of the program 
+ du programme 
 \family sans
 makeindex
 \family default
@@ -35904,8 +36684,6 @@ key "caption"
 
 \end_inset
 
-
-\lang english
 
 \begin_inset ERT
 status collapsed
@@ -35930,13 +36708,13 @@ status collapsed
 
 \end_inset
 
- of the LaTeX-package 
+ du paquetage LaTeX 
 \series bold
 caption
 \series default
 
 \begin_inset LatexCommand index
-name "LaTeX-packages ! caption"
+name "Paquetages LaTeX  ! caption"
 
 \end_inset
 
@@ -35971,11 +36749,7 @@ href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.p
 
 \end_inset
 
-
-\lang english
 Documentation
-\lang french
-
 \begin_inset ERT
 status collapsed
 
@@ -35986,11 +36760,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-of the LaTeX-package
-\lang french
- 
+ du paquetage LaTeX 
 \series bold
 fancyhdr
 \series default
@@ -36002,8 +36772,6 @@ name "Paquetages LaTeX ! fancyhdr"
 
 :
 \newline
-
-\lang english
 
 \begin_inset LatexCommand url
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
@@ -36032,11 +36800,7 @@ href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 
 \end_inset
 
-
-\lang english
 Documentation
-\lang french
-
 \begin_inset ERT
 status collapsed
 
@@ -36047,11 +36811,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-of the LaTeX-package
-\lang french
- 
+ du paquetage LaTeX 
 \series bold
 nomencl
 \series default
@@ -36063,8 +36823,6 @@ name "Paquetages LaTeX ! nomencl"
 
 :
 \newline
-
-\lang english
 
 \begin_inset LatexCommand url
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
@@ -36093,11 +36851,7 @@ href{http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf}{
 
 \end_inset
 
-
-\lang english
-Docume
-\lang french
-ntation
+Documentation
 \begin_inset ERT
 status collapsed
 
@@ -36108,11 +36862,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-of the LaTeX-package
-\lang french
- 
+ du paquetage LaTeX 
 \series bold
 tipa
 \series default
@@ -36125,8 +36875,6 @@ name "Paquetages LaTeX ! tipa"
 \SpecialChar \@.
 
 \newline
-
-\lang english
 
 \begin_inset LatexCommand url
 target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
@@ -36142,8 +36890,6 @@ key "wrapfig"
 
 \end_inset
 
-
-\lang english
 
 \begin_inset ERT
 status collapsed
@@ -36168,13 +36914,13 @@ status collapsed
 
 \end_inset
 
- of the LaTeX-package 
+ du paquetage LaTeX 
 \series bold
 wrapfig
 \series default
 
 \begin_inset LatexCommand index
-name "LaTeX-packages ! wrapfig"
+name "Paquetages LaTeX  ! wrapfig"
 
 \end_inset
 
@@ -36208,11 +36954,7 @@ href{http://wiki.lyx.org/Windows/Arabic}{
 
 \end_inset
 
-Wiki-
-\lang english
-page
-\lang french
-
+ page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36223,9 +36965,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-how to set up LyX for Arabic:
+ comment configurer LyX pour l'arabe:
 \newline
 
 \begin_inset LatexCommand url
@@ -36255,11 +36995,7 @@ href{http://wiki.lyx.org/Windows/Armenian}{
 
 \end_inset
 
-Wiki-
-\lang english
-page
-\lang french
-
+page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36270,9 +37006,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-how to set up LyX for Armenian:
+ comment configurer LyX pour l'arménien:
 \newline
 
 \begin_inset LatexCommand url
@@ -36302,11 +37036,7 @@ href{http://wiki.lyx.org/Windows/Farsi}{
 
 \end_inset
 
-Wiki-
-\lang english
-page
-\lang french
-
+page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36317,9 +37047,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-how to set up LyX for Farsi:;
+ comment configurer LyX pour le farsi:;
 \newline
 
 \begin_inset LatexCommand url
@@ -36349,11 +37077,7 @@ href{http://wiki.lyx.org/Windows/Hebrew}{
 
 \end_inset
 
-Wiki-
-\lang english
-page
-\lang french
-
+page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36364,9 +37088,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-how to set up LyX for Hebrew:
+ comment configurer LyX pour l'hébreu:
 \newline
 
 \begin_inset LatexCommand url
@@ -36396,11 +37118,7 @@ href{http://wiki.lyx.org/Windows/Japanese}{
 
 \end_inset
 
-Wiki-
-\lang english
-page
-\lang french
-
+page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36411,10 +37129,12 @@ status collapsed
 
 \end_inset
 
- 
+ comment configurer LyX pour le japonnais:
 \lang english
-how to set up LyX for Japanese:
+
 \newline
+
+\lang french
 
 \begin_inset LatexCommand url
 target "http://wiki.lyx.org/Windows/Japanese"
@@ -36431,8 +37151,6 @@ key "LyX-func"
 \end_inset
 
 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -36445,7 +37163,7 @@ href{http://wiki.lyx.org/LyX/LyxFunctionList}{
 
 \end_inset
 
-Wiki-page
+page Wiki
 \begin_inset ERT
 status collapsed
 
@@ -36456,7 +37174,7 @@ status collapsed
 
 \end_inset
 
- with a list of all available LyX-functions:
+ avec une liste de toutes les fonctions LyX disponibles:
 \newline
 
 \begin_inset LatexCommand url
@@ -36472,7 +37190,7 @@ target "http://wiki.lyx.org/LyX/LyxFunctionList"
 \newpage
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -36501,23 +37219,19 @@ mybibname
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
-
-\lang english
-The command 
+La commande 
 \series bold
 
 \backslash
 bibname
 \series default
- is the name of the bibliography in the current document language.
- It is redefined here with the number 2 at the end to state that the following
- bibliography is the second one:
+ est le nom de la bibliographie dans la langue actuelle.
+ Elle est redéfinie ici avec le numéro 2 à la fin pour signaler que cette
+ bibliographie est bien la seconde:
 \end_layout
 
 \end_inset
@@ -36536,9 +37250,7 @@ bibfiles "../biblio/LyXDocs"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The above bibliography is created from a BibTeX-database.
+La bibliographie ci-dessus a été créée à partir d'une base de données BibTeX.
 \end_layout
 
 \begin_layout Standard
