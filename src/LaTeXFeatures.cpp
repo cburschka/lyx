@@ -436,8 +436,7 @@ char const * simplefeatures[] = {
 	"txfonts",
 	"mathrsfs",
 	"ascii",
-	"url",
-	"bm"
+	"url"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -613,6 +612,9 @@ string const LaTeXFeatures::getPackages() const
 
 	if (mustProvide("listings"))
 		packages << "\\usepackage{listings}\n";
+
+	if (mustProvide("bm"))
+		packages << "\\usepackage{bm}\n";
 
 	return packages.str();
 }

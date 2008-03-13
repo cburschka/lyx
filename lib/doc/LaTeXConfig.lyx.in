@@ -2491,6 +2491,70 @@ texconfig
 
 \end_deeper
 \begin_layout Subsection
+bm
+\end_layout
+
+\begin_layout Description
+Found: @chk_bm@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+bm
+\family default
+ package defines commands to access bold math symbols.
+ The basic command is 
+\family typewriter
+
+\backslash
+bm
+\family default
+ (aliased to 
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+) which make its argument bold.
+ The argument may be any math object from a single symbol to an expression.
+ If available, ultra bold fonts can be accessed through the 
+\family typewriter
+
+\backslash
+hm
+\family default
+ command (aliased to 
+\family typewriter
+
+\backslash
+heavysymbol
+\family default
+).
+ The 
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+ command is similar to the 
+\family sans
+amsmath
+\family default
+ command with same name, but the 
+\family sans
+bm
+\family default
+ version is rather more careful in the way it does things.
+\end_layout
+
+\begin_layout Subsection
 color
 \end_layout
 
