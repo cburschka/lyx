@@ -21,12 +21,13 @@ t=0
 #for i in `find ../../src/graphics -name '*.cpp'` ; do
 #for i in `find ../../src/graphics -name '*.cpp'` ; do
 #for i in `find ../../src/support/chdir.cpp` ; do
+defines=-DQT_NO_STL -DQT_NO_KEYWORDS
 for i in `find ../.. -name '*.cpp'` ; do
 	#echo $i
-	#echo "g++ $inc -DQT_NO_STL -E $i"
-	#g++ $inc -DQT_NO_STL -E $i > tmp/`basename $i`
-	g++ $inc -DQT_NO_STL -E $i > t
-	l=`g++ $inc -DQT_NO_STL -E $i | wc -l`
+	#echo "g++ $inc $defines -E $i"
+	#g++ $inc $defines -E $i > tmp/`basename $i`
+	g++ $inc $defines -E $i > t
+	l=`g++ $inc $defines -E $i | wc -l`
 	f=`cat $i | wc -l`
 	s=$[s + l]
 	t=$[t + f]
