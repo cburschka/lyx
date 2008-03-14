@@ -393,8 +393,7 @@ void GuiApplication::createView(QString const & geometry_arg)
 	// register view
 	views_[id] = view;
 	updateIds(views_, view_ids_);
-	
-	theLyXFunc().setLyXView(view);
+
 	view->show();
 	if (!geometry_arg.isEmpty()) {
 #ifdef Q_WS_WIN

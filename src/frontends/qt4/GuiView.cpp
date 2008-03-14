@@ -277,6 +277,11 @@ GuiView::GuiView(int id)
 	// GuiToolbars *must* be initialised before the menu bar.
 	d.toolbars_ = new GuiToolbars(*this);
 
+	// set ourself as the current view. This is needed for the menu bar
+	// filling, at least for the static special menu item on Mac. Otherwise
+	// they are greyed out.
+	theLyXFunc().setLyXView(this);
+	
 	// Fill up the menu bar.
 	guiApp->menus().fillMenuBar(menuBar(), this);
 
