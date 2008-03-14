@@ -659,9 +659,11 @@ bool GuiLayoutBox::eventFilter(QObject * o, QEvent * e)
 	
 void GuiLayoutBox::setIconSize(QSize size)
 {
+#ifdef Q_WS_MAC
 	bool small = size.height() < 20;
 	setAttribute(Qt::WA_MacSmallSize, small);
 	setAttribute(Qt::WA_MacNormalSize, !small);
+#endif
 }
 
 
