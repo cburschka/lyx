@@ -446,10 +446,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_TOGGLE:
 	case LFUN_DIALOG_SHOW:
 	case LFUN_DIALOG_UPDATE:
-		if (cmd.argument() == "prefs"
-		    || cmd.argument() == "aboutlyx")
-			enable = true;
-		else if (lyx_view_)
+		// FIXME: add special handling for about and prefs dialogs here
+		// which do not depend on GuiView.
+		if (lyx_view_)
 			return lyx_view_->getStatus(cmd);
 		else
 			enable = false;
