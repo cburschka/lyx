@@ -20,6 +20,7 @@
 #include <vector>
 
 class QString;
+class QMenuBar;
 
 namespace lyx {
 
