@@ -1848,7 +1848,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_width = fullscreenWidthSB->value();
 	rc.full_screen_limit = fullscreenLimitGB->isChecked();
-	rc.single_window = openDocumentsInTabsCB->isChecked();
+	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
 }
 
 
@@ -1875,7 +1875,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	fullscreenWidthSB->setValue(rc.full_screen_width);
 	fullscreenLimitGB->setChecked(rc.full_screen_limit);
-	openDocumentsInTabsCB->setChecked(rc.single_window);
+	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
 }
 
 

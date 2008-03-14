@@ -153,7 +153,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
-	{ "\\single_window", LyXRC::RC_SINGLE_WINDOW },
+	{ "\\open_buffers_in_tabs", LyXRC::RC_OPEN_BUFFERS_IN_TABS },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
@@ -294,9 +294,9 @@ void LyXRC::setDefaults() {
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
 #ifdef __APPLE_CC__
-	single_window = false;
+	open_buffers_in_tabs = false;
 #else
-	single_window = true;
+	open_buffers_in_tabs = true;
 #endif
 
 	// Fullscreen settings
@@ -1302,9 +1302,9 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next())
 				full_screen_width = lexrc.getInteger();
 			break;
-		case RC_SINGLE_WINDOW:
+		case RC_OPEN_BUFFERS_IN_TABS:
 			if (lexrc.next())
-				single_window = lexrc.getBool();
+				open_buffers_in_tabs = lexrc.getBool();
 				break;
 
 		case RC_LAST: break; // this is just a dummy
@@ -1884,11 +1884,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_SINGLE_WINDOW:
+	case RC_OPEN_BUFFERS_IN_TABS:
 		if (ignore_system_lyxrc ||
-		    single_window != system_lyxrc.single_window) {
-			os << "\\single_window "
-			   << convert<string>(single_window)
+		    open_buffers_in_tabs != system_lyxrc.open_buffers_in_tabs) {
+			os << "\\open_buffers_in_tabs "
+			   << convert<string>(open_buffers_in_tabs)
 			   << '\n';
 		}
 		if (tag != RC_LAST)

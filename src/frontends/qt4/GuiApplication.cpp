@@ -318,14 +318,14 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BUFFER_NEW:
 		if (viewCount() == 0
-		    || (!lyxrc.single_window && current_view_->buffer() != 0))
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0))
 			createView();
 		current_view_->newDocument(to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
 		if (viewCount() == 0 
-		    || (!lyxrc.single_window && current_view_->buffer() != 0)) {
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
 			if (!current_view_->buffer())
@@ -336,7 +336,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FILE_OPEN:
 		if (viewCount() == 0
-		    || (!lyxrc.single_window && current_view_->buffer() != 0)) {
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
 			createView();
 			current_view_->openDocument(to_utf8(cmd.argument()));
 			if (!current_view_->buffer())

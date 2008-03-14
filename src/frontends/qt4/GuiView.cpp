@@ -543,7 +543,7 @@ void GuiView::on_lastWorkAreaRemoved()
 #ifdef Q_WS_MAC
 	// On Mac close the view if there is no Tab open anymore,
 	// but only if no splitter is visible
-	if (!lyxrc.single_window && d.splitter_->count() == 1) {
+	if (!lyxrc.open_buffers_in_tabs && d.splitter_->count() == 1) {
 		TabWorkArea * twa = qobject_cast<TabWorkArea *>(d.splitter_->widget(0));
 		if (twa && twa->count() == 0) {
 			// close the view, as no tab is open anymore
