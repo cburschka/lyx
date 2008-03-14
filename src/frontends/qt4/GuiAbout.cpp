@@ -60,7 +60,7 @@ static QString credits()
 
 static QString copyright()
 {
-	return qt_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team");
+	return qt_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2008 LyX Team");
 }
 
 
