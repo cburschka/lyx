@@ -284,6 +284,35 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_BUFFER_NEW:
+		if (viewCount() == 0
+		    || (!lyxrc.single_window && current_view_->buffer() != 0))
+			createView();
+		current_view_->newDocument(to_utf8(cmd.argument()), false);
+		break;
+
+	case LFUN_BUFFER_NEW_TEMPLATE:
+		if (viewCount() == 0 
+		    || (!lyxrc.single_window && current_view_->buffer() != 0)) {
+			createView();
+			current_view_->newDocument(to_utf8(cmd.argument()), true);
+			if (!current_view_->buffer())
+				current_view_->close();
+		} else
+			current_view_->newDocument(to_utf8(cmd.argument()), true);
+		break;
+
+	case LFUN_FILE_OPEN:
+		if (viewCount() == 0
+		    || (!lyxrc.single_window && current_view_->buffer() != 0)) {
+			createView();
+			current_view_->openDocument(to_utf8(cmd.argument()));
+			if (!current_view_->buffer())
+				current_view_->close();
+		} else
+			current_view_->openDocument(to_utf8(cmd.argument()));
+		break;
+
 	default:
 		// Notify the caller that the action has not been dispatched.
 		return false;
@@ -346,7 +375,7 @@ void GuiApplication::createView(QString const & geometry_arg)
 #endif
 	}
 	view->setFocus();
-
+	setActiveWindow(view);
 	setCurrentView(*view);
 }
 

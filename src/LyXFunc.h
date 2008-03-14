@@ -55,7 +55,7 @@ public:
 
 	///
 	void setLyXView(frontend::LyXView * lv);
-
+	
 	///
 	void initKeySequences(KeyMap * kb);
 

@@ -332,6 +332,13 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0" colspan="4">
+       <widget class="QCheckBox" name="openDocumentsInTabsCB" >
+        <property name="text" >
+         <string>Open documents in &amp;tabs</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -412,6 +419,7 @@
   <tabstop>autoSaveCB</tabstop>
   <tabstop>autoSaveSB</tabstop>
   <tabstop>lastfilesSB</tabstop>
+  <tabstop>openDocumentsInTabsCB</tabstop>
   <tabstop>cursorFollowsCB</tabstop>
   <tabstop>sortEnvironmentsCB</tabstop>
   <tabstop>groupEnvironmentsCB</tabstop>

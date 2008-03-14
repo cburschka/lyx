@@ -1783,6 +1783,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		autoSaveSB, SLOT(setEnabled(bool)));
 	connect(autoSaveCB, SIGNAL(toggled(bool)),
 		TextLabel1, SLOT(setEnabled(bool)));
+	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(uiFilePB, SIGNAL(clicked()),
 		this, SLOT(select_ui()));
 	connect(uiFileED, SIGNAL(textChanged(QString)),
@@ -1846,6 +1848,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_width = fullscreenWidthSB->value();
 	rc.full_screen_limit = fullscreenLimitGB->isChecked();
+	rc.single_window = openDocumentsInTabsCB->isChecked();
 }
 
 
@@ -1872,7 +1875,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	fullscreenWidthSB->setValue(rc.full_screen_width);
 	fullscreenLimitGB->setChecked(rc.full_screen_limit);
-
+	openDocumentsInTabsCB->setChecked(rc.single_window);
 }
 
 

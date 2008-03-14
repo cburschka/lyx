@@ -1639,10 +1639,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		bv->cursor().updateFlags(Update::None);
 
 	switch(cmd.action) {
-		case LFUN_FILE_OPEN:
-			openDocument(to_utf8(cmd.argument()));
-			break;
-
 		case LFUN_BUFFER_IMPORT:
 			importDocument(to_utf8(cmd.argument()));
 			break;

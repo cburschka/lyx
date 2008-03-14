@@ -138,6 +138,7 @@ public:
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
+		RC_SINGLE_WINDOW,
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_TEMPDIRPATH,
@@ -436,6 +437,8 @@ public:
 	bool completion_popup_text;
 	///
 	bool completion_popup_after_complete;
+	/// Open new buffers in the current window as tab.
+	bool single_window;
 };
 
 
