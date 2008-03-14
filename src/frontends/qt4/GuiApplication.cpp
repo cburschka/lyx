@@ -161,9 +161,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(app_name + "-" + lyx_version);
 
-	//FIXME: quitOnLastWindowClosed is true by default, at least on Windows and
-	// X11 platforms. We should have a lyxrc setting for this in order to let the
-	// application stay resident.
+	// FIXME: quitOnLastWindowClosed is true by default. We should have a
+	// lyxrc setting for this in order to let the application stay resident.
+	// But then we need some kind of dock icon, at least on Windows.
 	/*
 	if (lyxrc.quit_on_last_window_closed)
 		setQuitOnLastWindowClosed(false);
