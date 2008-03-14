@@ -320,9 +320,13 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BUFFER_NEW:
 		if (viewCount() == 0
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0))
-			createView();
-		current_view_->newDocument(to_utf8(cmd.argument()), false);
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
+			createView(QString(), false); // keep hidden
+			current_view_->newDocument(to_utf8(cmd.argument()), false);
+			current_view_->show();
+			setActiveWindow(current_view_);
+		} else
+			current_view_->newDocument(to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
@@ -376,7 +380,7 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 }
 
 
-void GuiApplication::createView(QString const & geometry_arg)
+void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 {
 	// release the keyboard which might have been grabed by the global
 	// menubar on Mac to catch shortcuts even without any GuiView.
@@ -398,7 +402,11 @@ void GuiApplication::createView(QString const & geometry_arg)
 	views_[id] = view;
 	updateIds(views_, view_ids_);
 
-	view->show();
+	if (autoShow) {
+		view->show();
+		setActiveWindow(view);
+	}
+
 	if (!geometry_arg.isEmpty()) {
 #ifdef Q_WS_WIN
 		int x, y;
@@ -413,7 +421,6 @@ void GuiApplication::createView(QString const & geometry_arg)
 #endif
 	}
 	view->setFocus();
-	setActiveWindow(view);
 	setCurrentView(*view);
 }
 
