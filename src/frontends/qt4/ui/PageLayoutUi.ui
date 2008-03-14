@@ -102,6 +102,9 @@
      <property name="toolTip" >
       <string>Choose a particular paper size, or set your own with "Custom"</string>
      </property>
+     <property name="maxVisibleItems" >
+      <number>20</number>
+     </property>
     </widget>
    </item>
    <item row="7" column="1" colspan="2" >

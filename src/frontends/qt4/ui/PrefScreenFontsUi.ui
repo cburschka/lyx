@@ -37,6 +37,9 @@
        </property>
        <item row="1" column="1" >
         <widget class="QComboBox" name="screenSansCO" >
+         <property name="maxVisibleItems" >
+          <number>20</number>
+         </property>
          <property name="duplicatesEnabled" >
           <bool>false</bool>
          </property>
@@ -90,6 +93,9 @@
        </item>
        <item row="0" column="1" >
         <widget class="QComboBox" name="screenRomanCO" >
+         <property name="maxVisibleItems" >
+          <number>20</number>
+         </property>
          <property name="duplicatesEnabled" >
           <bool>false</bool>
          </property>
@@ -129,6 +135,9 @@
        </item>
        <item row="2" column="1" >
         <widget class="QComboBox" name="screenTypewriterCO" >
+         <property name="maxVisibleItems" >
+          <number>20</number>
+         </property>
          <property name="duplicatesEnabled" >
           <bool>false</bool>
          </property>
