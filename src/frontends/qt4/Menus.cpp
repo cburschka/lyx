@@ -1145,8 +1145,9 @@ Menu::~Menu()
 
 void Menu::updateView()
 {
-	guiApp->menus().updateMenu(d->name);
+	guiApp->menus().updateMenu(this);
 }
+
 
 /////////////////////////////////////////////////////////////////////
 // Menus::Impl definition and implementation
@@ -1183,7 +1184,7 @@ struct Menus::Impl {
 	///
 	MenuDefinition menubar_;
 
-	typedef QHash<QString, Menu *> NameMap;
+	typedef QMap<GuiView *, QHash<QString, Menu *> > NameMap;
 
 	/// name to menu for \c menu() method.
 	NameMap name_map_;
@@ -1510,17 +1511,16 @@ void Menus::fillMenuBar(GuiView * view)
 
 		Menu * menu = new Menu(view, m->submenuname(), true);
 		menu->setTitle(label(*m));
-		view->menuBar()->addMenu(menu);
+		qmb->addMenu(menu);
 
-		d->name_map_[name] = menu;
+		d->name_map_[view][name] = menu;
 	}
 }
 
 
-void Menus::updateMenu(QString const & name)
+void Menus::updateMenu(Menu * qmenu)
 {
-	Menu * qmenu = d->name_map_[name];
-	LYXERR(Debug::GUI, "Triggered menu: " << fromqstr(name));
+	LYXERR(Debug::GUI, "Triggered menu: " << fromqstr(qmenu->d->name));
 	qmenu->clear();
 
 	if (qmenu->d->name.isEmpty())
@@ -1529,14 +1529,14 @@ void Menus::updateMenu(QString const & name)
 	// Here, We make sure that theLyXFunc points to the correct LyXView.
 	theLyXFunc().setLyXView(qmenu->d->view);
 
-	if (!d->hasMenu(name)) {
+	if (!d->hasMenu(qmenu->d->name)) {
 		qmenu->addAction(qt_("No action defined!"));
 		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
 			<< fromqstr(qmenu->d->name));
 		return;
 	}
 
-	MenuDefinition const & fromLyxMenu = d->getMenu(name);
+	MenuDefinition const & fromLyxMenu = d->getMenu(qmenu->d->name);
 	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, qmenu->d->view->buffer());
 	qmenu->d->populate(*qmenu, *qmenu->d->top_level_menu);
 }
@@ -1545,14 +1545,14 @@ void Menus::updateMenu(QString const & name)
 Menu * Menus::menu(QString const & name, GuiView & view)
 {
 	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
-	Menu * menu = d->name_map_.value(name, 0);
+	Menu * menu = d->name_map_[&view].value(name, 0);
 	if (!menu && !name.startsWith("context-")) {
 		LYXERR0("requested context menu not found: " << fromqstr(name));
 		return 0;
 	}
 
 	menu = new Menu(&view, name, true);
-	d->name_map_[name] = menu;
+	d->name_map_[&view][name] = menu;
 	return menu;
 }
 

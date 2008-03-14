@@ -37,8 +37,9 @@ public:
 	///
 	Menu(GuiView * gv, QString const & name, bool top_level);
 
+	///
 	~Menu();
-
+	
 private Q_SLOTS:
 	///
 	void updateView();
@@ -71,7 +72,7 @@ public:
 	void read(Lexer &);
 
 	///
-	void updateMenu(QString const & name);
+	void updateMenu(Menu * qmenu);
 
 private:
 	/// Use the Pimpl idiom to hide the internals.
