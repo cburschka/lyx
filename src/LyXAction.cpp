@@ -1356,6 +1356,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },
+/*!
+ * \var lyx::kb_action lyx::LFUN_BUFFER_RELOAD
+ * \li Action: Reverts opened document.
+ * \li Syntax: buffer-reload
+ * \li Origin: Asger, 2 Feb 1997
+ * \endvar
+ */
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 /*!
  * \var lyx::kb_action lyx::LFUN_BUFFER_SWITCH
@@ -1466,7 +1473,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FILE_OPEN, "file-open", NoBuffer, Buffer },
-
 
 /*!
  * \var lyx::kb_action lyx::LFUN_CALL
