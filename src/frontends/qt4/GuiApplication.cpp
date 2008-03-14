@@ -376,6 +376,9 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 
 void GuiApplication::createView(QString const & geometry_arg)
 {
+	if (global_menubar_)
+		global_menubar_->releaseKeyboard();
+
 	// create new view
 	updateIds(views_, view_ids_);
 	int id = 0;
