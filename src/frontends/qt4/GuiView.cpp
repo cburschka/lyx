@@ -366,6 +366,10 @@ void GuiView::showEvent(QShowEvent * e)
 
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
+	// it can happen that this event arrives without selecting the view,
+	// e.g. when clicking the close button on a background window.
+	theLyXFunc().setLyXView(this);
+
 	while (Buffer * b = buffer()) {
 		if (b->parent()) {
 			// This is a child document, just close the tab after saving
