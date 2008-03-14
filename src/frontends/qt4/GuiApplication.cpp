@@ -169,6 +169,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		setQuitOnLastWindowClosed(false);
 	*/
 #ifdef Q_WS_MAC
+	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
+	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
 #endif
 	
