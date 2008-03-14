@@ -1324,7 +1324,9 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 		else
 			// Hide tabbar if there's only one tab.
 			showBar(count() > 1);
-	}
+	} else
+		lastWorkAreaRemoved();
+
 	return true;
 }
 

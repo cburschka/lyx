@@ -534,6 +534,22 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 }
 
 
+void GuiView::on_lastWorkAreaRemoved()
+{
+#ifdef Q_WS_MAC
+	// On Mac close the view if there is no Tab open anymore,
+	// but only if no splitter is visible
+	if (d.splitter_->count() == 1) {
+		TabWorkArea * twa = qobject_cast<TabWorkArea *>(d.splitter_->widget(0));
+		if (twa && twa->count() == 0) {
+			// close the view, as no tab is open anymore
+			QTimer::singleShot(0, this, SLOT(close()));
+		}
+	}
+#endif
+}
+
+
 void GuiView::updateStatusBar()
 {
 	// let the user see the explicit message
@@ -716,6 +732,9 @@ TabWorkArea * GuiView::addTabWorkArea()
 	TabWorkArea * twa = new TabWorkArea;
 	QObject::connect(twa, SIGNAL(currentWorkAreaChanged(GuiWorkArea *)),
 		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
+	QObject::connect(twa, SIGNAL(lastWorkAreaRemoved()),
+			 this, SLOT(on_lastWorkAreaRemoved()));
+
 	d.splitter_->addWidget(twa);
 	d.stack_widget_->setCurrentWidget(d.splitter_);
 	return twa;
@@ -1108,7 +1127,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 		setBusy(false);
 		return 0;
 	}
-
+	
 	setBuffer(newBuffer);
 
 	// scroll to the position when the file was last closed

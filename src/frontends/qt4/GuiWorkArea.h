@@ -258,6 +258,8 @@ public:
 Q_SIGNALS:
 	///
 	void currentWorkAreaChanged(GuiWorkArea *);
+	///
+	void lastWorkAreaRemoved();
 
 public Q_SLOTS:
 	///

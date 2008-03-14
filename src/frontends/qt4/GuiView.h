@@ -151,6 +151,8 @@ private Q_SLOTS:
 
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
+	///
+	void on_lastWorkAreaRemoved();
 
 	/// slots to change the icon size
 	void smallSizedIcons();
