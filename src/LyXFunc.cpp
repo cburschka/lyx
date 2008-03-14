@@ -105,10 +105,11 @@ namespace {
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-void reconfigure(LyXView & lv, string const & option)
+void reconfigure(LyXView * lv, string const & option)
 {
 	// emit message signal.
-	lv.message(_("Running configure..."));
+	if (lv)
+		lv->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	PathChanger p(package().user_support());
@@ -118,7 +119,8 @@ void reconfigure(LyXView & lv, string const & option)
 	int ret = one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
-	lv.message(_("Reloading configuration..."));
+	if (lv)
+		lv->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
@@ -293,7 +295,8 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 
 	if (keysym.isModifier()) {
 		LYXERR(Debug::KEY, "isModifier true");
-		lyx_view_->restartCursor();
+		if (lyx_view_)
+			lyx_view_->restartCursor();
 		return;
 	}
 
@@ -384,7 +387,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	Buffer * buf = lyx_view_? lyx_view_->buffer() : 0;
+	Buffer * buf = lyx_view_ ? lyx_view_->buffer() : 0;
 
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
@@ -1039,9 +1042,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_RECONFIGURE:
-			BOOST_ASSERT(lyx_view_);
 			// argument is any additional parameter to the configure.py command
-			reconfigure(*lyx_view_, argument);
+			reconfigure(lyx_view_, argument);
 			break;
 
 		case LFUN_HELP_OPEN: {
@@ -1659,8 +1661,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// Nothing more to do.
 				return;
 
+			// Everything below is only for active lyx_view_
+			if (lyx_view_ == 0)
+				break;
+
 			// Let the current LyXView dispatch its own actions.
-			BOOST_ASSERT(lyx_view_);
 			if (lyx_view_->dispatch(cmd)) {
 				if (lyx_view_->view())
 					updateFlags = lyx_view_->view()->cursor().result().update();

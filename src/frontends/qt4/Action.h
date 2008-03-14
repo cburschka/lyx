@@ -34,8 +34,8 @@ class Action : public QAction
 	Q_OBJECT
 
 public:
-	Action(GuiView & lyxView, QIcon const & icon, QString const & text,
-		FuncRequest const & func, QString const & tooltip);
+	Action(GuiView * lyxView, QIcon const & icon, QString const & text,
+		FuncRequest const & func, QString const & tooltip, QObject * parent);
 
 	void update();
 
@@ -48,7 +48,7 @@ private Q_SLOTS:
 
 private:
 	FuncRequest const & func_ ;
-	GuiView & lyxView_;
+	GuiView * lyxView_;
 };
 
 

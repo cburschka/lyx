@@ -278,7 +278,7 @@ GuiView::GuiView(int id)
 	d.toolbars_ = new GuiToolbars(*this);
 
 	// Fill up the menu bar.
-	guiApp->menus().fillMenuBar(this);
+	guiApp->menus().fillMenuBar(menuBar(), this);
 
 	setCentralWidget(d.stack_widget_);
 
@@ -2024,7 +2024,7 @@ void GuiView::resetDialogs()
 	// FIXME: the "math panels" toolbar takes an awful lot of time to
 	// initialise so we don't do that for the time being.
 	//d.toolbars_->init();
-	guiApp->menus().fillMenuBar(this);
+	guiApp->menus().fillMenuBar(menuBar(), this);
 	if (d.layout_)
 		d.layout_->updateContents(true);
 	// Now update controls with current buffer.

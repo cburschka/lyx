@@ -25,10 +25,10 @@ namespace lyx {
 namespace frontend {
 
 
-Action::Action(GuiView & lyxView, QIcon const & icon,
+Action::Action(GuiView * lyxView, QIcon const & icon,
 	  QString const & text, FuncRequest const & func,
-	  QString const & tooltip)
-	: QAction(&lyxView), func_(func), lyxView_(lyxView)
+	  QString const & tooltip, QObject * parent)
+	: QAction(parent), func_(func), lyxView_(lyxView)
 {
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);
@@ -62,7 +62,10 @@ void Action::update()
 void Action::action()
 {
 	//LYXERR(Debug::ACTION, "calling LyXFunc::dispatch: func_: ");
-	theLyXFunc().setLyXView(&lyxView_);
+
+	if (lyxView_)
+		theLyXFunc().setLyXView(lyxView_);
+
 	lyx::dispatch(func_);
 	triggered(this);
 }

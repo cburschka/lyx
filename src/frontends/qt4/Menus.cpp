@@ -1114,8 +1114,8 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 			populate(*subMenu, m->submenu());
 		} else {
 			// we have a MenuItem::Command
-			qMenu.addAction(new Action(*view, QIcon(), label(*m), m->func(),
-				QString()));
+			qMenu.addAction(new Action(view, QIcon(), label(*m), 
+				m->func(), QString(), &qMenu));
 		}
 	}
 }
@@ -1167,10 +1167,10 @@ struct Menus::Impl {
 	    ViewFormats, ExportFormats, UpdateFormats, Branches
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
-		    Buffer const *) const;
+		Buffer const *) const;
 
 	/// Initialize specific MACOS X menubar
-	void macxMenuBarInit(GuiView * view);
+	void macxMenuBarInit(GuiView * view, QMenuBar * qmb);
 
 	/// Mac special menu.
 	/** This defines a menu whose entries list the FuncRequests
@@ -1211,7 +1211,7 @@ struct Menus::Impl {
   that this menubar will be used also when one of LyX' dialogs has
   focus. (JMarc)
 */
-void Menus::Impl::macxMenuBarInit(GuiView * view)
+void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 {
 	// The Mac menubar initialisation must be done only once!
 	static bool done = false;
@@ -1260,12 +1260,12 @@ void Menus::Impl::macxMenuBarInit(GuiView * view)
 
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
-	QMenu * qMenu = view->menuBar()->addMenu("special");
+	QMenu * qMenu = qmb->addMenu("special");
 	MenuDefinition::const_iterator cit = specialmenu_.begin();
 	MenuDefinition::const_iterator end = specialmenu_.end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*view, QIcon(), cit->label(),
-					     cit->func(), QString());
+		Action * action = new Action(view, QIcon(), cit->label(),
+			cit->func(), QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
 	}
@@ -1464,14 +1464,14 @@ bool Menus::searchMenu(FuncRequest const & func,
 }
 
 
-void Menus::fillMenuBar(GuiView * view)
+void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view)
 {
 	// Clear all menubar contents before filling it.
-	view->menuBar()->clear();
+	qmb->clear();
 	
 #ifdef Q_WS_MACX
 	// setup special mac specific menu item
-	d->macxMenuBarInit(view);
+	d->macxMenuBarInit(view, qmb);
 #endif
 
 	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
@@ -1487,7 +1487,10 @@ void Menus::fillMenuBar(GuiView * view)
 	}
 
 	MenuDefinition menu;
-	d->expand(d->menubar_, menu, view->buffer());
+	Buffer * buf = 0;
+	if (view)
+		buf = view->buffer();
+	d->expand(d->menubar_, menu, buf);
 
 	MenuDefinition::const_iterator m = menu.begin();
 	MenuDefinition::const_iterator end = menu.end();
@@ -1537,7 +1540,10 @@ void Menus::updateMenu(Menu * qmenu)
 	}
 
 	MenuDefinition const & fromLyxMenu = d->getMenu(qmenu->d->name);
-	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, qmenu->d->view->buffer());
+	Buffer * buf = 0;
+	if (qmenu->d->view)
+		buf = qmenu->d->view->buffer();
+	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, buf);
 	qmenu->d->populate(*qmenu, *qmenu->d->top_level_menu);
 }
 

@@ -839,9 +839,8 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
-	Action * act = new Action(owner_,
-		getIcon(item.func_, false),
-	  toqstr(item.label_), item.func_, toqstr(item.label_));
+	Action * act = new Action(&owner_, getIcon(item.func_, false),
+		toqstr(item.label_), item.func_, toqstr(item.label_), this);
 	actions_.append(act);
 	return act;
 }
