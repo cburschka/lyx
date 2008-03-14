@@ -1213,12 +1213,6 @@ struct Menus::Impl {
 */
 void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 {
-	// The Mac menubar initialisation must be done only once!
-	static bool done = false;
-	if (done)
-		return;
-	done = true;
-
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
 	   work very well with our scheme of creating menus on demand,
@@ -1251,13 +1245,16 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
 
-	// the special menu for Menus.
-	for (size_t i = 0 ; i < num_entries ; ++i) {
-		FuncRequest const func(entries[i].action,
-				       from_utf8(entries[i].arg));
-		specialmenu_.add(MenuItem(MenuItem::Command, entries[i].label, func));
+	// the special menu for Menus. Fill it up only once.
+	if (specialmenu_.size() == 0) {
+		for (size_t i = 0 ; i < num_entries ; ++i) {
+			FuncRequest const func(entries[i].action,
+				from_utf8(entries[i].arg));
+			specialmenu_.add(MenuItem(MenuItem::Command, 
+				entries[i].label, func));
+		}
 	}
-
+	
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
 	QMenu * qMenu = qmb->addMenu("special");
