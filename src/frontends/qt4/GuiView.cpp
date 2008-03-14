@@ -407,8 +407,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Save toolbars configuration
 	if (isFullScreen()) {
-	 d.toolbars_->toggleFullScreen(!isFullScreen());
-	 updateToolbars();
+		d.toolbars_->toggleFullScreen(!isFullScreen());
+		updateToolbars();
 	}
 
 	// Make sure the timer time out will not trigger a statusbar update.
@@ -1184,6 +1184,7 @@ void GuiView::openDocument(string const & fname)
 	Buffer * buf = loadDocument(fullname);
 	if (buf) {
 		updateLabels(*buf);
+		
 		setBuffer(buf);
 		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);

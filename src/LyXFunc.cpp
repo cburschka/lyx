@@ -1926,6 +1926,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
 	case LyXRC::RC_FORMAT:
+	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_INPUT:
 	case LyXRC::RC_KBMAP:

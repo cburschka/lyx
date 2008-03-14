@@ -1162,14 +1162,14 @@ public:
 	}
 };
 
-NoTabFrameMacStyle noTabFramemacStyle;
+NoTabFrameMacStyle noTabFrameMacStyle;
 #endif
 
 
 TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 {
 #ifdef Q_WS_MACX
-	setStyle(&noTabFramemacStyle);
+	setStyle(&noTabFrameMacStyle);
 #endif
 
 	QPalette pal = palette();

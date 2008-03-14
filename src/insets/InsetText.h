@@ -160,6 +160,7 @@ public:
 	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
+
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
