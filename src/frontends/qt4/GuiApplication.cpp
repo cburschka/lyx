@@ -378,6 +378,8 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 
 void GuiApplication::createView(QString const & geometry_arg)
 {
+	// release the keyboard which might have been grabed by the global
+	// menubar on Mac to catch shortcuts even without any GuiView.
 	if (global_menubar_)
 		global_menubar_->releaseKeyboard();
 
