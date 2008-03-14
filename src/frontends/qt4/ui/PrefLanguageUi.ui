@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>345</width>
-    <height>401</height>
+    <width>410</width>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,127 +19,33 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="4" column="0" >
-    <widget class="QCheckBox" name="useBabelCB" >
-     <property name="text" >
-      <string>Use b&amp;abel</string>
+   <item row="10" column="0" colspan="3" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>RTL </string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QComboBox" name="defaultLanguageCO" >
-     <property name="maxVisibleItems" >
-      <number>20</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QLineEdit" name="startCommandED" />
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="languagePackageLA" >
-     <property name="text" >
-      <string>Language pac&amp;kage:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>languagePackageED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="languagePackageED" />
-   </item>
-   <item row="10" column="0" colspan="2" >
+   <item row="11" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
+      <enum>QSizePolicy::Fixed</enum>
      </property>
      <property name="sizeHint" >
       <size>
        <width>20</width>
-       <height>20</height>
+       <height>5</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="8" column="0" colspan="2" >
-    <widget class="QCheckBox" name="markForeignCB" >
-     <property name="text" >
-      <string>Mark &amp;foreign languages</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="defaultLanguageLA" >
-     <property name="text" >
-      <string>&amp;Default language:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>defaultLanguageCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="startCommandLA" >
-     <property name="text" >
-      <string>Command s&amp;tart:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>startCommandED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" >
-    <widget class="QLineEdit" name="endCommandED" />
-   </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="endCommandLA" >
-     <property name="text" >
-      <string>Command e&amp;nd:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>endCommandED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" >
-    <widget class="QCheckBox" name="globalCB" >
-     <property name="text" >
-      <string>&amp;Global</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="7" column="0" >
-    <widget class="QCheckBox" name="autoEndCB" >
-     <property name="text" >
-      <string>Auto &amp;end</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" >
-    <widget class="QCheckBox" name="autoBeginCB" >
-     <property name="text" >
-      <string>Auto &amp;begin</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" >
+   <item row="12" column="0" >
     <widget class="QGroupBox" name="rtlGB" >
      <property name="toolTip" >
       <string>Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).</string>
@@ -155,7 +61,7 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>4</number>
+       <number>3</number>
       </property>
       <property name="spacing" >
        <number>6</number>
@@ -198,6 +104,142 @@
        </layout>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="13" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="9" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0" colspan="2" >
+    <widget class="QCheckBox" name="useBabelCB" >
+     <property name="text" >
+      <string>Use b&amp;abel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="3" >
+    <widget class="QCheckBox" name="markForeignCB" >
+     <property name="text" >
+      <string>Mark &amp;foreign languages</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2" >
+    <widget class="QCheckBox" name="autoEndCB" >
+     <property name="text" >
+      <string>Auto &amp;end</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2" >
+    <widget class="QCheckBox" name="autoBeginCB" >
+     <property name="text" >
+      <string>Auto &amp;begin</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2" >
+    <widget class="QCheckBox" name="globalCB" >
+     <property name="text" >
+      <string>&amp;Global</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="endCommandLA" >
+     <property name="text" >
+      <string>Command e&amp;nd:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>endCommandED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="startCommandLA" >
+     <property name="text" >
+      <string>Command s&amp;tart:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>startCommandED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="languagePackageLA" >
+     <property name="text" >
+      <string>Language pac&amp;kage:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>languagePackageED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="defaultLanguageLA" >
+     <property name="text" >
+      <string>&amp;Default language:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>defaultLanguageCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="1" >
+    <widget class="QLineEdit" name="endCommandED" />
+   </item>
+   <item row="1" column="1" >
+    <widget class="QLineEdit" name="languagePackageED" />
+   </item>
+   <item row="2" column="1" >
+    <widget class="QLineEdit" name="startCommandED" />
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="defaultLanguageCO" >
+     <property name="maxVisibleItems" >
+      <number>20</number>
+     </property>
     </widget>
    </item>
   </layout>
