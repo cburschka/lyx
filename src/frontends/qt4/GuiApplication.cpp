@@ -315,16 +315,25 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 
 void GuiApplication::createView(QString const & geometry_arg)
 {
+	if (global_menubar_)
+		global_menubar_->releaseKeyboard();
+
+	// create new view
 	updateIds(views_, view_ids_);
 	int id = 0;
 	while (views_.find(id) != views_.end())
 		id++;
-	views_[id] = new GuiView(id);
+	GuiView * view = new GuiView(id);
+	
+	// copy the icon size from old view
+	if (viewCount() > 0)
+		view->setIconSize(current_view_->iconSize());
+
+	// register view
+	views_[id] = view;
 	updateIds(views_, view_ids_);
-
-	GuiView * view  = views_[id];
+	
 	theLyXFunc().setLyXView(view);
-
 	view->show();
 	if (!geometry_arg.isEmpty()) {
 #ifdef Q_WS_WIN

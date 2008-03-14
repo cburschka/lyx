@@ -464,8 +464,9 @@ public:
 };
 
 
-GuiLayoutBox::GuiLayoutBox(GuiView & owner)
-	: owner_(owner), lastSel_(-1), layoutItemDelegate_(new LayoutItemDelegate(this)),
+GuiLayoutBox::GuiLayoutBox(GuiToolbar * bar, GuiView & owner)
+	: owner_(owner), bar_(bar), lastSel_(-1),
+	  layoutItemDelegate_(new LayoutItemDelegate(this)),
 	  visibleCategories_(0), inShowPopup_(false)
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
@@ -486,7 +487,10 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	view()->setItemDelegateForColumn(0, layoutItemDelegate_);
 	
 	QObject::connect(this, SIGNAL(activated(int)),
-			 this, SLOT(selected(int)));
+		this, SLOT(selected(int)));
+	QObject::connect(bar_, SIGNAL(iconSizeChanged(QSize)),
+		this, SLOT(setIconSize(QSize)));
+
 	owner_.setLayoutDialog(this);
 	updateContents(true);
 }
@@ -650,6 +654,14 @@ bool GuiLayoutBox::eventFilter(QObject * o, QEvent * e)
 	}
 
 	return QComboBox::eventFilter(o, e);
+}
+
+	
+void GuiLayoutBox::setIconSize(QSize size)
+{
+	bool small = size.height() < 20;
+	setAttribute(Qt::WA_MacSmallSize, small);
+	setAttribute(Qt::WA_MacNormalSize, !small);
 }
 
 
@@ -962,7 +974,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		addSeparator();
 		break;
 	case ToolbarItem::LAYOUTS:
-		layout_ = new GuiLayoutBox(owner_);
+		layout_ = new GuiLayoutBox(this, owner_);
 		addWidget(layout_);
 		break;
 	case ToolbarItem::MINIBUFFER:

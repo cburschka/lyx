@@ -44,7 +44,7 @@ class GuiLayoutBox : public QComboBox
 {
 	Q_OBJECT
 public:
-	GuiLayoutBox(GuiView &);
+	GuiLayoutBox(GuiToolbar * bar, GuiView &);
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
@@ -65,6 +65,8 @@ public:
 private Q_SLOTS:
 	///
 	void selected(int index);
+	///
+	void setIconSize(QSize size);
 
 private:
 	friend class LayoutItemDelegate;
@@ -80,6 +82,8 @@ private:
 	
 	///
 	GuiView & owner_;
+	///
+	GuiToolbar * bar_;
 	///
 	DocumentClass const * text_class_;
 	///
@@ -119,17 +123,22 @@ public:
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 
+	///
 	Action * addItem(ToolbarItem const & item);
 
 Q_SIGNALS:
+	///
 	void updated();
 
 private:
-
+	///
 	QList<Action *> actions_;
+	///
 	GuiView & owner_;
 
+	///
 	GuiLayoutBox * layout_;
+	///
 	GuiCommandBuffer * command_buffer_;
 };
 
