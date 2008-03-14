@@ -39,6 +39,7 @@ namespace frontend {
 
 class GuiView;
 class LyXView;
+class GlobalMenuBar;
 class GuiWorkArea;
 class SocketNotifier;
 
@@ -72,6 +73,7 @@ public:
 	virtual std::string const hexName(ColorCode col);
 	virtual void updateColor(ColorCode col);
 	virtual void readMenus(Lexer & lex);
+	virtual void initGlobalMenu();
 	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names) const;
@@ -87,7 +89,7 @@ public:
 
 	/// Create the main window with given geometry settings.
 	/// \param geometry_arg: only for Windows platform.
-	void createView(QString const & geometry_arg);
+	void createView(QString const & geometry_arg = QString());
 	///
 	GuiView const * currentView() const { return current_view_; }
 	///
@@ -128,7 +130,9 @@ private Q_SLOTS:
 	void socketDataReceived(int fd);
 	/// events to be triggered by general_timer_ should go here
 	void handleRegularEvents();
-
+	///
+	void onLastWindowClosed();
+	
 private:
 	///
 	bool closeAllViews();
@@ -171,6 +175,8 @@ public:
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events
 	GuiView * current_view_;
+	/// only used on mac
+	GlobalMenuBar * global_menubar_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

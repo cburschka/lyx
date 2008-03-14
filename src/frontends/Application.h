@@ -220,6 +220,11 @@ public:
 	virtual void readMenus(Lexer & lex) = 0;
 
 	/**
+	* initialize the global menubar on Mac
+	*/
+	virtual void initGlobalMenu() = 0;
+	
+	/**
 	* add a callback for socket read notification
 	* @param fd socket descriptor (file/socket/etc)
 	*/

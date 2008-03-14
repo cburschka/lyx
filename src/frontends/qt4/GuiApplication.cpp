@@ -16,6 +16,7 @@
 
 #include "qt_helpers.h"
 #include "GuiImage.h"
+#include "GuiKeySymbol.h"
 #include "GuiView.h"
 
 #include "frontends/alert.h"
@@ -121,6 +122,27 @@ public:
 	}
 };
 
+class GlobalMenuBar : public QMenuBar
+{
+public:
+	///
+	GlobalMenuBar() : QMenuBar(0) {}
+	
+	///
+	bool event(QEvent * e)
+	{
+		if (e->type() == QEvent::ShortcutOverride) {
+			//	    && activeWindow() == 0) {
+			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+			KeySymbol sym;
+			setKeySymbol(&sym, ke);
+			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
+			e->accept();
+			return true;
+		}
+		return false;
+	}
+};
 
 ///////////////////////////////////////////////////////////////
 // You can find more platform specific stuff
@@ -132,7 +154,7 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(), current_view_(0)
+	: QApplication(argc, argv), Application(), current_view_(0), global_menubar_(0)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
@@ -146,7 +168,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (lyxrc.quit_on_last_window_closed)
 		setQuitOnLastWindowClosed(false);
 	*/
-
+#ifdef Q_WS_MAC
+	setQuitOnLastWindowClosed(false);
+#endif
+	
 #ifdef Q_WS_X11
 	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
@@ -175,11 +200,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 			<< fromqstr(language_name));
 
 #ifdef Q_WS_MACX
-	// all windows in a Mac application share the same menu bar.
-	QMenuBar *menuBar = new QMenuBar(0);
 	// This allows to translate the strings that appear in the LyX menu.
 	addMenuTranslator();
 #endif
+	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(onLastWindowClosed()));
 
 	using namespace lyx::graphics;
 
@@ -210,6 +234,14 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	connect(&general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
 	general_timer_.start();
+	
+#ifdef Q_WS_MACX
+	if (global_menubar_ == 0) {
+		// Create the global default menubar which is shown for the dialogs
+		// and if no GuiView is visible.
+		global_menubar_ = new GlobalMenuBar();
+	}
+#endif	
 }
 
 
@@ -696,6 +728,19 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 	return menus().searchMenu(func, names);
 }
 
+
+void GuiApplication::initGlobalMenu()
+{
+	if (global_menubar_)
+		menus().fillMenuBar(global_menubar_, 0);
+}
+
+
+void GuiApplication::onLastWindowClosed()
+{
+	if (global_menubar_)
+		global_menubar_->grabKeyboard();
+}
 
 ////////////////////////////////////////////////////////////////////////
 // X11 specific stuff goes here...
