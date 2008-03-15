@@ -444,7 +444,6 @@ void InsetMathHull::label(row_type row, docstring const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
 	if (label.empty()) {
-		nonum_[row] = true;
 		label_[row].clear();
 	} else
 		label_[row] = label;
@@ -688,7 +687,7 @@ docstring InsetMathHull::nicelabel(row_type row) const
 		return docstring();
 	if (label_[row].empty())
 		return from_ascii("(#)");
-	return '(' + label_[row] + ')';
+	return '(' + label_[row] + from_ascii(", #)");
 }
 
 
