@@ -1,0 +1,1268 @@
+#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 318
+\begin_document
+\begin_header
+\textclass amsart
+\begin_modules
+theorems-ams
+\end_modules
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\branch Branch1
+\selected 1
+\color #fa8a00
+\end_branch
+\branch Branch2
+\selected 0
+\color #00fabc
+\end_branch
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\extra_embedded_files ""
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Macro Scopes
+\end_layout
+
+\begin_layout Section
+Simple
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\backslash foo\mbox{ should be }\backslash foo\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\newcommand{\foo}{A}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\foo\mbox{ should be }A\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Redefinition
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{B}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula \[
+B\mbox{ should be }B\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+In Paragraph Redefinition
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{C}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }C$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{D}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Environment
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout PlainLayout
+\begin_inset Formula $\foo\mbox{ should be }D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Environment local Definitions
+\end_layout
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{E}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }E$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{F}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }F$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Definitions in Paragraph Style Environments
+\end_layout
+
+\begin_layout Abstract
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{G}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{H}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H\mbox{ should be }H$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{H2}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }H2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }H2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theorem and Proofs
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $1=0$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{I}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }I$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Because 
+\begin_inset Formula $2=1$
+\end_inset
+
+.
+\begin_inset Formula $\foo\mbox{ should be }I$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{J}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }J$
+\end_inset
+
+.
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{K}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Blub 
+\begin_inset Formula $\foo\mbox{ should be }K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tables
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout PlainLayout
+\begin_inset Formula $\foo\mbox{ should be }K$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout PlainLayout
+bla
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{L}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $L\mbox{ should be }L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout PlainLayout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Depth and nested Paragraphs
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $x$
+\end_inset
+
+ be 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{M}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }M$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }M$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{N}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }N$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+And furthermore let 
+\begin_inset Formula $y$
+\end_inset
+
+ be 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\foo\mbox{ should be }N$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{O}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }O$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $z$
+\end_inset
+
+ be 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\foo\mbox{ should be }O$
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{P}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }P$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+Still definition: 
+\begin_inset Formula $\foo\mbox{ should be }P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+And outside the definition: 
+\begin_inset Formula $\foo\mbox{ should be }P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Branch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Branch1
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{Q}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }Q\mbox{ if Branch1 is selected}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Branch2
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{R}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\foo\mbox{ should be }Q\mbox{ if Branch2 is deselected}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Macros in non-environment blocks
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Some bold font block: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{R}
+\end_inset
+
+
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now normal again: 
+\begin_inset Formula $\foo\mbox{ should be }R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Some bold font block where the macro itself is not bold: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{S}
+\end_inset
+
+
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now normal again: 
+\begin_inset Formula $\foo\mbox{ should be }S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some 
+\series bold
+bold font block not starting at the paragraph start: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{T}
+\end_inset
+
+
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }T$
+\end_inset
+
+ Some tail text.
+\end_layout
+
+\begin_layout Standard
+Some 
+\series bold
+bold font block not starting at the paragraph start:
+\begin_inset Formula $\foo\mbox{ should be }T$
+\end_inset
+
+.
+ Some tail text.
+\end_layout
+
+\begin_layout Standard
+Some 
+\series bold
+bold font block with an 
+\begin_inset Note Comment
+status open
+
+\begin_layout PlainLayout
+
+\series bold
+note 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}{U}
+\end_inset
+
+
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+inset
+\end_layout
+
+\end_inset
+
+ in between.
+\end_layout
+
+\begin_layout Standard
+Some 
+\series bold
+bold font block with an 
+\begin_inset Note Comment
+status open
+
+\begin_layout PlainLayout
+note inset 
+\end_layout
+
+\end_inset
+
+ in between.
+\end_layout
+
+\begin_layout Section
+InsetTexts
+\end_layout
+
+\begin_layout Standard
+Float: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{V}
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainLayout
+\begin_inset Caption
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $\foo\mbox{ should be }V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainLayout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX-Note: 
+\begin_inset Note Note
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{X}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }X$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comment: 
+\begin_inset Note Comment
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{Y}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }Y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Greyed out: 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout PlainLayout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset FormulaMacro
+\renewcommand{\foo}{Z}
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Formula $\foo\mbox{ should be }Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\foo\mbox{ should be }Z$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
