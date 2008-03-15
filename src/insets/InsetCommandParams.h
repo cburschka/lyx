@@ -15,9 +15,9 @@
 #define INSETCOMMANDPARAMS_H
 
 #include "InsetCode.h"
+
 #include "support/docstring.h"
 
-#include <iosfwd>
 #include <string>
 #include <vector>
 #include <map>
@@ -121,7 +121,7 @@ public:
 	explicit InsetCommandParams(InsetCode code,
 			std::string const & cmdName);
 	///
-	std::string insetType() const { return insetName(insetCode_); }
+	std::string insetType() const;
 	///
 	InsetCode code() const { return insetCode_; }
 	///

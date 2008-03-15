@@ -429,4 +429,10 @@ Buffer const * Inset::updateFrontend() const
 	return theApp() ? theApp()->updateInset(this) : 0;
 }
 
+
+docstring Inset::completionPrefix(Cursor const &) const 
+{
+	return docstring();
+}
+
 } // namespace lyx

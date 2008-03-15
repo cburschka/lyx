@@ -11,38 +11,38 @@
 #include <config.h>
 
 #include "InsetText.h"
-#include "InsetNewline.h"
 
-#include "Buffer.h"
 #include "buffer_funcs.h"
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CompletionList.h"
 #include "CoordCache.h"
-#include "CutAndPaste.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
 #include "Intl.h"
-#include "lyxfind.h"
 #include "Lexer.h"
+#include "lyxfind.h"
 #include "LyXRC.h"
-#include "Text.h"
 #include "MetricsInfo.h"
-#include "OutputParams.h"
 #include "output_docbook.h"
 #include "output_latex.h"
+#include "OutputParams.h"
 #include "output_plaintext.h"
-#include "Paragraph.h"
 #include "paragraph_funcs.h"
+#include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Row.h"
 #include "sgml.h"
-#include "TextClass.h"
-#include "TextMetrics.h"
 #include "TexRow.h"
+#include "TextClass.h"
+#include "Text.h"
+#include "TextMetrics.h"
 #include "WordList.h"
 
 #include "frontends/alert.h"
@@ -66,7 +66,7 @@ namespace lyx {
 using graphics::PreviewLoader;
 
 
-class TextCompletionList : public Inset::CompletionList
+class TextCompletionList : public CompletionList
 {
 public:
 	///
@@ -529,13 +529,9 @@ bool InsetText::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const * InsetText::createCompletionList(
-	Cursor const & cur) const
+CompletionList const * InsetText::createCompletionList(Cursor const & cur) const
 {
-	if (!completionSupported(cur))
-		return 0;
-
-	return new TextCompletionList(cur);
+	return completionSupported(cur) ? new TextCompletionList(cur) : 0;
 }
 
 

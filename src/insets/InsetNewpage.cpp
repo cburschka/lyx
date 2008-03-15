@@ -27,6 +27,7 @@
 
 using namespace std;
 
+
 namespace lyx {
 
 void InsetNewpage::read( Lexer &)

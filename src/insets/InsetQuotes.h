@@ -12,52 +12,47 @@
 #ifndef INSET_QUOTES_H
 #define INSET_QUOTES_H
 
-
 #include "Inset.h"
 
-#include "support/types.h"
+#include "support/docstring.h"
 
 
 namespace lyx {
 
-class BufferParams;
-class Language;
-class LaTeXFeatures;
-
-
 /** Quotes.
   Used for the various quotes. German, English, French, all either
   double or single **/
-class InsetQuotes : public Inset {
+class InsetQuotes : public Inset
+{
 public:
 	///
-	enum quote_language {
+	enum QuoteLanguage {
 		///
-		EnglishQ,
+		EnglishQuotes,
 		///
-		SwedishQ,
+		SwedishQuotes,
 		///
-		GermanQ,
+		GermanQuotes,
 		///
-		PolishQ,
+		PolishQuotes,
 		///
-		FrenchQ,
+		FrenchQuotes,
 		///
-		DanishQ
+		DanishQuotes
 	};
 	///
-	enum quote_side {
+	enum QuoteSide {
 		///
-		LeftQ,
+		LeftQuote,
 		///
-		RightQ
+		RightQuote
 	};
 	///
-	enum quote_times {
+	enum QuoteTimes {
 		///
-		SingleQ,
+		SingleQuotes,
 		///
-		DoubleQ
+		DoubleQuotes
 	};
 
 	/** The constructor works like this:
@@ -71,7 +66,7 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(Buffer const & buffer, char_type c);
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(char_type c, quote_language l, quote_times t);
+	InsetQuotes(char_type c, QuoteLanguage l, QuoteTimes t);
 	///
 	docstring name() const;
 	///
@@ -103,23 +98,23 @@ private:
 	///
 	Inset * clone() const { return new InsetQuotes(*this); }
 
-	///
-	quote_language language_;
-	///
-	quote_side side_;
-	///
-	quote_times times_;
-
 	/** The parameters of the constructor are the language, the
 	    side and the multiplicity of the quote.
 	 */
-	InsetQuotes(quote_language l, quote_side s, quote_times t);
+	InsetQuotes(QuoteLanguage l, QuoteSide s, QuoteTimes t);
 	/// Decide whether we need left or right quotation marks
-	void getPosition(char_type c);
+	void setSide(char_type c);
 	///
 	void parseString(std::string const &);
 	///
-	docstring dispString() const;
+	docstring displayString() const;
+
+	///
+	QuoteLanguage language_;
+	///
+	QuoteSide side_;
+	///
+	QuoteTimes times_;
 };
 
 } // namespace lyx

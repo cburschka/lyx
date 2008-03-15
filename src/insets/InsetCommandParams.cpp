@@ -40,10 +40,17 @@
 using namespace std;
 using namespace lyx::support;
 
+
 namespace lyx {
 
-ParamInfo::ParamData::ParamData(std::string const & s, ParamType t) :
-	name_(s), type_(t)
+/////////////////////////////////////////////////////////////////////
+//
+// ParamInfo::ParamData
+//
+/////////////////////////////////////////////////////////////////////
+
+ParamInfo::ParamData::ParamData(std::string const & s, ParamType t)
+	: name_(s), type_(t)
 {}
 
 
@@ -107,6 +114,13 @@ ParamInfo::ParamData const &
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetCommandParams
+//
+/////////////////////////////////////////////////////////////////////
+
+
 InsetCommandParams::InsetCommandParams(InsetCode code)
 	: insetCode_(code), preview_(false)
 {
@@ -158,6 +172,12 @@ ParamInfo const & InsetCommandParams::findInfo(
 	}
 	static const ParamInfo pi;
 	return pi; // to silence the warning
+}
+
+
+std::string InsetCommandParams::insetType() const
+{
+	return insetName(insetCode_);
 }
 
 

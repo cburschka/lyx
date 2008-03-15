@@ -56,15 +56,15 @@ vector<string> const init_possible_cite_commands()
 }
 
 
-vector<string> const & possible_cite_commands()
+vector<string> const & possibleCiteCommands()
 {
 	static vector<string> const possible = init_possible_cite_commands();
 	return possible;
 }
 
 
-//FIXME See the header for the issue.
-string const default_cite_command(biblio::CiteEngine engine)
+// FIXME See the header for the issue.
+string defaultCiteCommand(biblio::CiteEngine engine)
 {
 	string str;
 	switch (engine) {
@@ -85,10 +85,9 @@ string const default_cite_command(biblio::CiteEngine engine)
 }
 
 		
-string const 
-		asValidLatexCommand(string const & input, biblio::CiteEngine const engine)
+string asValidLatexCommand(string const & input, biblio::CiteEngine const engine)
 {
-	string const default_str = default_cite_command(engine);
+	string const default_str = defaultCiteCommand(engine);
 	if (!InsetCitation::isCompatibleCommand(input))
 		return default_str;
 
@@ -129,7 +128,7 @@ string const
 }
 
 
-docstring getComplexLabel(Buffer const & buffer,
+docstring complexLabel(Buffer const & buffer,
 			    string const & citeType, docstring const & keyList,
 			    docstring const & before, docstring const & after,
 			    biblio::CiteEngine engine)
@@ -353,7 +352,7 @@ docstring getComplexLabel(Buffer const & buffer,
 }
 
 
-docstring const getBasicLabel(docstring const & keyList, docstring const & after)
+docstring basicLabel(docstring const & keyList, docstring const & after)
 {
 	docstring keys = keyList;
 	docstring label;
@@ -366,8 +365,9 @@ docstring const getBasicLabel(docstring const & keyList, docstring const & after
 			keys = ltrim(split(keys, key, ','));
 			label += ", " + key;
 		}
-	} else
+	} else {
 		label = keys;
+	}
 
 	if (!after.empty())
 		label += ", " + after;
@@ -403,7 +403,7 @@ ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 
 bool InsetCitation::isCompatibleCommand(string const & cmd)
 {
-	vector<string> const & possibles = possible_cite_commands();
+	vector<string> const & possibles = possibleCiteCommands();
 	vector<string>::const_iterator const end = possibles.end();
 	return find(possibles.begin(), end, cmd) != end;
 }
@@ -415,13 +415,13 @@ docstring InsetCitation::generateLabel() const
 	docstring const after  = getParam("after");
 
 	docstring label;
-	biblio::CiteEngine const engine = buffer().params().getEngine();
-	label = getComplexLabel(buffer(), getCmdName(), getParam("key"),
+	biblio::CiteEngine const engine = buffer().params().citeEngine();
+	label = complexLabel(buffer(), getCmdName(), getParam("key"),
 			       before, after, engine);
 
 	// Fallback to fail-safe
 	if (label.empty())
-		label = getBasicLabel(getParam("key"), after);
+		label = basicLabel(getParam("key"), after);
 
 	return label;
 }
@@ -435,7 +435,7 @@ docstring InsetCitation::screenLabel() const
 
 void InsetCitation::updateLabels(ParIterator const &)
 {
-	biblio::CiteEngine const engine = buffer().params().getEngine();
+	biblio::CiteEngine const engine = buffer().params().citeEngine();
 	if (cache.params == params() && cache.engine == engine)
 		return;
 
@@ -510,7 +510,7 @@ void InsetCitation::textString(odocstream & os) const
 // should revert to \cite[]{}
 int InsetCitation::latex(odocstream & os, OutputParams const &) const
 {
-	biblio::CiteEngine cite_engine = buffer().params().getEngine();
+	biblio::CiteEngine cite_engine = buffer().params().citeEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));
@@ -532,7 +532,7 @@ int InsetCitation::latex(odocstream & os, OutputParams const &) const
 
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
-	switch (features.bufferParams().getEngine()) {
+	switch (features.bufferParams().citeEngine()) {
 	case biblio::ENGINE_BASIC:
 		break;
 	case biblio::ENGINE_NATBIB_AUTHORYEAR:

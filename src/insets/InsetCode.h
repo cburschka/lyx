@@ -15,15 +15,8 @@
 #ifndef INSETCODE_H
 #define INSETCODE_H
 
-#include <string>
-
 namespace lyx {
 
-/** This is not quite the correct place for this enum. I think
-    the correct would be to let each subclass of Inset declare
-    its own enum code. Actually the notion of an InsetCode
-    should be avoided, but I am not sure how this could be done
-    in a cleaner way. */
 enum InsetCode {
 	///
 	NO_CODE, // 0
@@ -126,14 +119,6 @@ enum InsetCode {
 	THEOREM_CODE,
 #endif
 };
-
-/** returns the InsetCode corresponding to the \c name.
-*   Eg, insetCode("branch") == BRANCH_CODE
-*   Implemented in 'Inset.cpp'.
-*/
-InsetCode insetCode(std::string const & name);
-/// the other way
-std::string insetName(InsetCode);
 
 } // namespace lyx
 

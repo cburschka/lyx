@@ -19,10 +19,8 @@
 #include "InsetCode.h"
 
 #include "support/strfwd.h"
+#include "support/types.h"
 
-#include <boost/shared_ptr.hpp>
-
-#include <vector>
 
 namespace lyx {
 
@@ -31,6 +29,7 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class Change;
+class CompletionList;
 class Cursor;
 class CursorSlice;
 class Dimension;
@@ -59,6 +58,14 @@ class EmbeddedFileList;
 
 namespace graphics { class PreviewLoader; }
 
+
+/** returns the InsetCode corresponding to the \c name.
+*   Eg, insetCode("branch") == BRANCH_CODE
+*   Implemented in 'Inset.cpp'.
+*/
+InsetCode insetCode(std::string const & name);
+/// the other way
+std::string insetName(InsetCode);
 
 /// Common base class to all insets
 
@@ -304,20 +311,6 @@ public:
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 
-	class CompletionList {
-	public:
-		///
-		virtual ~CompletionList() {}
-		///
-		virtual bool sorted() const =0;
-		///
-		virtual size_t size() const =0;
-		/// returns the string shown in the gui.
-		virtual docstring const & data(size_t idx) const = 0;
-		/// returns the resource string used to load an icon.
-		virtual std::string icon(size_t /*idx*/) const { return std::string(); }
-	};
-
 	/// Returns true if the inset supports completions.
 	virtual bool completionSupported(Cursor const &) const { return false; }
 	/// Returns true if the inset supports inline completions at the
@@ -336,8 +329,7 @@ public:
 		{ return 0; }
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
-	virtual docstring completionPrefix(Cursor const &) const 
-		{ return docstring(); }
+	virtual docstring completionPrefix(Cursor const &) const;
 	/// Do a completion at the cursor position. Return true on success.
 	/// The completion does not contain the prefix. If finished is true, the
 	/// completion is final. If finished is false, completion might only be
