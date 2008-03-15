@@ -1411,22 +1411,18 @@ msgid "Edit the file"
 msgstr "Editovat soubor"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
-#, fuzzy
 msgid "Modules"
-msgstr "Vprostøed"
+msgstr "Moduly"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:95
-#, fuzzy
 msgid "S&elected:"
-msgstr "&Smazat"
+msgstr "&Vybrané:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:105
-#, fuzzy
 msgid "A&vailable:"
-msgstr "Dostupné &vìtve:"
+msgstr "&Dostupné:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:125
-#, fuzzy
 msgid "&Postscript driver:"
 msgstr "O&vladaè pro postscript:"
 
@@ -1444,19 +1440,16 @@ msgid "&Options:"
 msgstr "&Mo¾nosti:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
-#, fuzzy
 msgid "Encoding"
-msgstr "&Kódování:"
+msgstr "Kódování:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:63
-#, fuzzy
 msgid "&Other:"
-msgstr "V&nìj¹í:"
+msgstr "&Jiný:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:70
-#, fuzzy
 msgid "Language &Default"
-msgstr "Language Header:"
+msgstr "&Standardní pro daný jazyk"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:105
 msgid "&Quote Style:"
@@ -1910,9 +1903,8 @@ msgid "Style used for the page header and footer"
 msgstr "Styl pou¾itý pro hlavièku a patièku stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:125
-#, fuzzy
 msgid "Headings &style:"
-msgstr "Styl &stránky:"
+msgstr "Styl &hlavièky:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:135
 msgid "&Landscape"
@@ -1929,9 +1921,8 @@ msgid "&Format:"
 msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:224
-#, fuzzy
 msgid "&Orientation:"
-msgstr "Orientace"
+msgstr "&Orientace:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:250
 msgid "Lay out the page for double-sided printing"
@@ -1942,7 +1933,6 @@ msgid "&Two-sided document"
 msgstr "&Dvoustranný dokument"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:28
-#, fuzzy
 msgid "&Indent Paragraph"
 msgstr "Ods&adit odstavec"
 
@@ -1964,9 +1954,8 @@ msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr "Pou¾ít standardní zarovnání pro tento odstavec, a» u¾ je jakékoliv."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:105
-#, fuzzy
 msgid "Paragraph's &Default"
-msgstr "Pou¾ít standardní &zarovnání odstavce"
+msgstr "Standardní &zarovnání"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:112
 msgid "&Justified"
@@ -1985,9 +1974,8 @@ msgid "Ri&ght"
 msgstr "Na&pravo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:143
-#, fuzzy
 msgid "Line &spacing"
-msgstr "Øá&dkování:"
+msgstr "Øá&dkování"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1267
 #: src/frontends/qt4/GuiDocument.cpp:576
@@ -2096,14 +2084,12 @@ msgid "Instant &Preview:"
 msgstr "&Okam¾itý náhled (vzorce):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
-#, fuzzy
 msgid "&New..."
-msgstr "&Nová:"
+msgstr "&Nový..."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:51
-#, fuzzy
 msgid "S&hort Name:"
-msgstr "&Tøídit jako::"
+msgstr "&Zkratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:82
 msgid "Vector graphi&cs format"
@@ -2130,9 +2116,8 @@ msgid "E&xtension:"
 msgstr "Pøípo&na:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
-#, fuzzy
 msgid "Co&pier:"
-msgstr "S&kript:"
+msgstr "&Kopír.skript:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -2172,50 +2157,47 @@ msgid "Bro&wse..."
 msgstr "P&rocházet..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:110
-#, fuzzy
 msgid "Completion"
-msgstr "Popisek"
+msgstr "Automatické doplòování"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:119
-#, fuzzy
 msgid "In Text"
-msgstr "Jako prostý text"
+msgstr "V textu"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:128
 msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
 msgstr ""
+"Zobrazovat doplnìní za kurzorem na dané øádce po prodlevì"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:131
 #: src/frontends/qt4/ui/PrefInputUi.ui:163
 msgid "Automatic inline completion"
-msgstr ""
+msgstr "Automatické doplòování v øádce"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:138
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
+msgstr "Zobraz vyskakovací menu po prodlevì"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:141
 #: src/frontends/qt4/ui/PrefInputUi.ui:173
-#, fuzzy
 msgid "Automatic popup"
-msgstr "Automatická aktualizace"
+msgstr "Automatické menu"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:151
-#, fuzzy
 msgid "In Math"
-msgstr "Matematika"
+msgstr "Ve vzorcích"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:160
 msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
-msgstr ""
+msgstr "Zobrazovat doplnìní za kurzorem na dané øádce po prodlevì"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:170
 msgid "Show the popup in math mode after the delay."
-msgstr ""
+msgstr "Zobraz vyskakovací menu po prodlevì"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:183 lib/layouts/hollywood.layout:280
 msgid "General"
@@ -2226,53 +2208,56 @@ msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
 msgstr ""
+"Dostupné doplnìní v øádce bude zobrazeno, jestli¾e se kurzor nepohne po tuto dobu."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:204
 msgid "s inline completion delay"
-msgstr ""
+msgstr "s - prodleva pro øádkové doplnìní"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:228
 msgid ""
 "After the cursor has not moved for this time, the completion popup is shown "
 "if it is available."
 msgstr ""
+"Dostupné doplnìní ve vyskakovacím menu bude zobrazeno, jestli¾e se kurzor nepohne po tuto dobu."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:241
 msgid "s popup delay"
-msgstr ""
+msgstr "s - prodleva pro doplnìní v menu"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:263
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
 msgstr ""
+"Jestli¾e doplnìní na klávesu TAB není unikátní, zobrazí se vyskakovací menu okam¾itì."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:266
 msgid "Show popup without delay for non-unique completions"
-msgstr ""
+msgstr "Pøi nejednoznaènosti zobrazit vyskakovací menu bez prodlevy"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:273
 msgid "Long completions are cut-off and shown with \"...\"."
-msgstr ""
+msgstr "Dlouhé doplòující slova budou zkráceny pomocí \"...\"."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:276
 msgid "Use \"...\" to shorten long completions"
-msgstr ""
+msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:289
-#, fuzzy
 msgid "Mouse"
-msgstr "More"
+msgstr "My¹ka ply¹ka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:301
 msgid "Wheel scrolling speed:"
-msgstr ""
+msgstr "Rychlost posouvání textu pomocí koleèka my¹i:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:311
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
 msgstr ""
+"1.0 je standardní rychlost. Vy¹¹í hodnoty zrychlí, ni¾¹í zpomalí."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
 msgid "Use b&abel"
@@ -2322,18 +2307,16 @@ msgid "&Right-to-left language support"
 msgstr "Podpora psaní zp&rava-doleva"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:170
-#, fuzzy
 msgid "Cursor movement:"
-msgstr "Komentáø"
+msgstr "Pohyb kurzoru:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:180
-#, fuzzy
 msgid "Logical"
-msgstr "Topical"
+msgstr "Logický"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:190
 msgid "Visual"
-msgstr ""
+msgstr "Visuální"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:25
 msgid "Set class options to default on class change"
@@ -2370,7 +2353,6 @@ msgid "CheckTeX start options and flags"
 msgstr "Nastavení pro CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:97
-#, fuzzy
 msgid "&Index command:"
 msgstr "Pøíkaz &rejstøíku:"
 
@@ -2379,7 +2361,6 @@ msgid "&BibTeX command:"
 msgstr "Pøíkaz &BibTeX-u:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:117
-#, fuzzy
 msgid "&DVI viewer paper size options:"
 msgstr "Velikost papíru pro &DVI prohlí¾eè:"
 
@@ -2452,9 +2433,8 @@ msgid "&Document templates:"
 msgstr "©ablony &dokumentu:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:65
-#, fuzzy
 msgid "&Example files:"
-msgstr "Example #:"
+msgstr "Dokumenty s pøíklady:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:88
 msgid "&Backup directory:"
@@ -2691,12 +2671,11 @@ msgid "Large:"
 msgstr "Velké:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:359
-#, fuzzy
 msgid ""
 "Checking this improves performance, but might decrease the on-screen quality "
 "of fonts"
 msgstr ""
-"Mù¾e zlep¹it rychlost vykreslování, ale mù¾e zhor¹it zobrazení fontù na "
+"Zlep¹í rychlost vykreslování, ale mù¾e zhor¹it zobrazení fontù na "
 "obrazovce."
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:362
@@ -2712,9 +2691,8 @@ msgid "&Bind file:"
 msgstr "&Soubor klávesových zkratek:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
-#, fuzzy
 msgid "New"
-msgstr "&Nová:"
+msgstr "Nový"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -2774,34 +2752,30 @@ msgstr "Naèíst soubory otevøené v pøedchozí relaci"
 
 #: src/frontends/qt4/ui/PrefUi.ui:78
 msgid "Fullscreen"
-msgstr ""
+msgstr "Celoobrazovkový mód"
 
 #: src/frontends/qt4/ui/PrefUi.ui:96
 msgid "&Limit text width"
-msgstr ""
+msgstr "&Omezit ¹íøku textu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:127
 msgid "Screen us&ed (pixels):"
-msgstr ""
+msgstr "©íøka v pixelech:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:153
-#, fuzzy
 msgid "Toggle tabba&r"
 msgstr "Pøepnout panel nástrojù pro tabulku"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
-#, fuzzy
 msgid "To&ggle scrollbar"
-msgstr "Pøepnout matematický panel nástrojù"
+msgstr "Pøepínat posuvník"
 
 #: src/frontends/qt4/ui/PrefUi.ui:175
-#, fuzzy
 msgid "T&oggle toolbars"
-msgstr "Pøepnout matematický panel nástrojù"
+msgstr "Pøepínat panely nástrojù"
 
 #: src/frontends/qt4/ui/PrefUi.ui:185
-#, fuzzy
-msgid "Editing"
+msgid "Editace"
 msgstr "Ukonèování."
 
 #: src/frontends/qt4/ui/PrefUi.ui:203
@@ -2809,25 +2783,24 @@ msgid "Cursor follows &scrollbar"
 msgstr "&Kurzor následuje posuvník"
 
 #: src/frontends/qt4/ui/PrefUi.ui:210
-#, fuzzy
 msgid "Sort &environments alphabetically"
-msgstr "Setøídit znaèky v abecedním poøádku"
+msgstr "Tøídit nabídku prostøedí v &abecedním poøádku"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "Edit Math Macros inline with a box around"
-msgstr ""
+msgstr "Editace matematických maker v øádku s rámeèkem kolem"
 
 #: src/frontends/qt4/ui/PrefUi.ui:223
 msgid "Edit Math Macros inline with the name in the status bar"
-msgstr ""
+msgstr "Editace mat. maker v øádku, jméno makra ve stavovém øádku"
 
 #: src/frontends/qt4/ui/PrefUi.ui:228
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr ""
+msgstr "Editace mat. maker se seznamem parametrù (jako v LyXu < 1.6)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:236
 msgid "&Group environments by their category"
-msgstr ""
+msgstr "&Seskupit nabídku prostøedí dle kategorií"
 
 #: src/frontends/qt4/ui/PrefUi.ui:246
 msgid "Documents"
@@ -2842,24 +2815,23 @@ msgid "minutes"
 msgstr "minut"
 
 #: src/frontends/qt4/ui/PrefUi.ui:331
-#, fuzzy
 msgid "B&ackup documents, every"
-msgstr "Zá&lohovat dokumenty "
+msgstr "Zá&lohovat dokumenty, ka¾dých "
 
 #: src/frontends/qt4/ui/PrefUi.ui:354
-#, fuzzy
 msgid "Automatic help"
-msgstr "Automatická aktualizace"
+msgstr "Automatická nápovìda"
 
 #: src/frontends/qt4/ui/PrefUi.ui:372
 msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
+"Zobrazuje komentáøe s nápovìdou pro vlo¾ky v editovaném dokumentu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:375
 msgid "Enable &tool tips in main work area"
-msgstr ""
+msgstr "Zapnout &bublinovou nápovìdu na pracovní plo¹e"
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "&User interface file:"
@@ -3053,24 +3025,20 @@ msgid "&Command:"
 msgstr "&Pøíkaz:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:16
-#, fuzzy
 msgid "Edit shortcut"
-msgstr "&Zkratka:"
+msgstr "Editovat &zkratku"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:54
-#, fuzzy
 msgid "Clear"
-msgstr "S&mazat"
+msgstr "Zru¹it"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:61
-#, fuzzy
 msgid "Function:"
-msgstr "Funkce"
+msgstr "Funkce:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:68 src/frontends/qt4/GuiPrefs.cpp:1908
-#, fuzzy
 msgid "Shortcut"
-msgstr "&Zkratka:"
+msgstr "Zkratka"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Suggestions:"
@@ -3117,18 +3085,16 @@ msgid "Replace with selected word"
 msgstr "Nahraï oznaèeným slovem"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:42
-#, fuzzy
 msgid "Ca&tegory:"
-msgstr "Popis&ek:"
+msgstr "K&ategorie:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:70
 msgid "Select this to display all available characters at once"
-msgstr ""
+msgstr "Za¹krtnìte pro zobrazení v¹ech symbolù najednou"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:73
-#, fuzzy
 msgid "&Display all"
-msgstr "Zo&brazit:"
+msgstr "Zo&brazit v¹echny"
 
 #: src/frontends/qt4/ui/TabularUi.ui:38
 msgid "&Table Settings"
@@ -3420,7 +3386,6 @@ msgid "Spacing"
 msgstr "Mezera"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:68
-#, fuzzy
 msgid "Separate paragraphs with"
 msgstr "Oddìlit odstavce èím"
 
@@ -3568,24 +3533,20 @@ msgid "Automatic update"
 msgstr "Automatická aktualizace"
 
 #: src/frontends/qt4/ui/WrapUi.ui:45
-#, fuzzy
 msgid "Unit of width value"
 msgstr "Jednotky ¹íøky"
 
 #: src/frontends/qt4/ui/WrapUi.ui:68
-#, fuzzy
 msgid "number of needed lines"
-msgstr "Poèet kopií"
+msgstr "poèet potøebných kopií"
 
 #: src/frontends/qt4/ui/WrapUi.ui:75
-#, fuzzy
 msgid "use number of lines"
-msgstr "Poèet kopií"
+msgstr "pou¾ít poèet øádek"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
-#, fuzzy
 msgid "&Line span:"
-msgstr "Øád&kování:"
+msgstr "&Rozpìtí øádek:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
@@ -3601,25 +3562,23 @@ msgstr ""
 
 #: src/frontends/qt4/ui/WrapUi.ui:225
 msgid "Over&hang:"
-msgstr ""
+msgstr "Pøesa&h"
 
 #: src/frontends/qt4/ui/WrapUi.ui:246
-#, fuzzy
 msgid "Overhang value"
-msgstr "Hodnota vý¹ky"
+msgstr "Hodnota pøesahu"
 
 #: src/frontends/qt4/ui/WrapUi.ui:273
-#, fuzzy
 msgid "Unit of overhang value"
-msgstr "Jednotky ¹íøky"
+msgstr "Jednotky pøesahu"
 
 #: src/frontends/qt4/ui/WrapUi.ui:280
 msgid "Check this to allow flexible placement"
-msgstr ""
+msgstr "Povoluje promìnlivé umístìní"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
-msgstr ""
+msgstr "Plovoucí &objekt"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -4726,13 +4685,12 @@ msgid "Note:"
 msgstr "Note:"
 
 #: lib/layouts/beamer.layout:1052
-#, fuzzy
 msgid "Alert"
-msgstr "AlertBlock"
+msgstr "Alert"
 
 #: lib/layouts/beamer.layout:1063
 msgid "Structure"
-msgstr ""
+msgstr "Structure"
 
 #: lib/layouts/beamer.layout:1074 lib/layouts/powerdot.layout:377
 #: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:229
@@ -6106,63 +6064,53 @@ msgid "Classification Codes"
 msgstr "Classification Codes"
 
 #: lib/layouts/ijmpc.layout:141 lib/layouts/ijmpd.layout:138
-#, fuzzy
 msgid "Definition \\thedefinition."
-msgstr "Definition \\arabic{definition}."
+msgstr "Definition \\thedefinition."
 
 #: lib/layouts/ijmpc.layout:152 lib/layouts/ijmpd.layout:149
 msgid "Step"
 msgstr "Step"
 
 #: lib/layouts/ijmpc.layout:156 lib/layouts/ijmpd.layout:153
-#, fuzzy
 msgid "Step \\thestep."
-msgstr "Step \\arabic{step}."
+msgstr "Step \\thestep."
 
 #: lib/layouts/ijmpc.layout:170 lib/layouts/ijmpd.layout:167
-#, fuzzy
 msgid "Example \\theexample."
-msgstr "Example \\arabic{example}."
+msgstr "Example \\theexample."
 
 #: lib/layouts/ijmpc.layout:180 lib/layouts/ijmpd.layout:178
-#, fuzzy
 msgid "Remark \\theremark."
-msgstr "Remark \\arabic{remark}."
+msgstr "Remark \\theremark."
 
 #: lib/layouts/ijmpc.layout:190 lib/layouts/ijmpd.layout:189
-#, fuzzy
 msgid "Notation \\thenotation."
-msgstr "Notation \\arabic{notation}."
+msgstr "Notation \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
 #: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
-#, fuzzy
 msgid "Theorem \\thetheorem."
-msgstr "Theorem \\arabic{theorem}."
+msgstr "Theorem \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:240 lib/layouts/ijmpd.layout:241
-#, fuzzy
 msgid "Corollary \\thecorollary."
-msgstr "Corollary \\arabic{corollary}."
+msgstr "Corollary \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:250 lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Lemma \\thelemma."
-msgstr "Lemma \\arabic{lemma}."
+msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpd.layout:266
-#, fuzzy
 msgid "Proposition \\theproposition."
-msgstr "Proposition \\arabic{proposition}."
+msgstr "Proposition \\theproposition."
 
 #: lib/layouts/ijmpc.layout:266 lib/layouts/ijmpd.layout:273
 msgid "Prop"
 msgstr "Prop"
 
 #: lib/layouts/ijmpc.layout:270 lib/layouts/ijmpd.layout:277
-#, fuzzy
 msgid "Prop \\theprop."
-msgstr "Prop \\arabic{prop}."
+msgstr "Prop \\theprop."
 
 #: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:284
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:454
@@ -6170,19 +6118,16 @@ msgid "Question"
 msgstr "Question"
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:288
-#, fuzzy
 msgid "Question \\thequestion."
-msgstr "Question \\arabic{question}."
+msgstr "Question \\thequestion."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:299
-#, fuzzy
 msgid "Claim \\theclaim."
-msgstr "Claim \\arabic{claim}."
+msgstr "Claim \\theclaim."
 
 #: lib/layouts/ijmpc.layout:300 lib/layouts/ijmpd.layout:310
-#, fuzzy
 msgid "Conjecture \\theconjecture."
-msgstr "Conjecture \\arabic{conjecture}."
+msgstr "Conjecture \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:303 lib/layouts/ijmpd.layout:313
 msgid "Appendices Section"
@@ -6872,14 +6817,12 @@ msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus not supported in recent A&A:"
 
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
-#, fuzzy
 msgid "Firstname"
-msgstr "FirstName"
+msgstr "Firstname"
 
 #: lib/layouts/agu_stdclass.inc:50
-#, fuzzy
 msgid "Fname"
-msgstr "Frame"
+msgstr "Fname"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
@@ -6896,38 +6839,32 @@ msgid "Emph"
 msgstr "Zvýraznìný"
 
 #: lib/layouts/agu_stdclass.inc:126
-#, fuzzy
 msgid "Abbrev"
-msgstr "breve"
+msgstr "Abbrev"
 
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "Citation-number"
 
 #: lib/layouts/agu_stdclass.inc:148
-#, fuzzy
 msgid "Volume"
-msgstr "Column"
+msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:159
-#, fuzzy
 msgid "Day"
-msgstr "Zobrazení"
+msgstr "Day"
 
 #: lib/layouts/agu_stdclass.inc:170
-#, fuzzy
 msgid "Month"
-msgstr "Matematika"
+msgstr "Month"
 
 #: lib/layouts/agu_stdclass.inc:181
-#, fuzzy
 msgid "Year"
-msgstr "S&mazat"
+msgstr "Year"
 
 #: lib/layouts/agu_stdclass.inc:192
-#, fuzzy
 msgid "Issue-number"
-msgstr "msnumber"
+msgstr "Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
@@ -7126,54 +7063,44 @@ msgid "ISSN"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:334
-#, fuzzy
 msgid "CODEN"
-msgstr "SCENE"
+msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:346
-#, fuzzy
 msgid "SS-Code"
-msgstr "Code"
+msgstr "SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:357
-#, fuzzy
 msgid "SS-Title"
-msgstr "Titulek"
+msgstr "SS-Title"
 
 #: lib/layouts/agu_stdtitle.inc:369
-#, fuzzy
 msgid "CCC-Code"
-msgstr "CCC code:"
+msgstr "CCC-Code"
 
 #: lib/layouts/agu_stdtitle.inc:393
-#, fuzzy
 msgid "Dscr"
-msgstr "&Neukládat"
+msgstr "Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:417
-#, fuzzy
 msgid "Orgdiv"
-msgstr "div"
+msgstr "Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:428
-#, fuzzy
 msgid "Orgname"
-msgstr "Surname"
+msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:450
-#, fuzzy
 msgid "City"
-msgstr "infty"
+msgstr "City"
 
 #: lib/layouts/agu_stdtitle.inc:472
-#, fuzzy
 msgid "Postcode"
-msgstr "Posting-order"
+msgstr "Postcode"
 
 #: lib/layouts/agu_stdtitle.inc:483
-#, fuzzy
 msgid "Country"
-msgstr "Heslo"
+msgstr "Country"
 
 #: lib/layouts/aguplus.inc:130
 msgid "CCC"
@@ -7339,9 +7266,8 @@ msgid "\\Alph{chapter}"
 msgstr "\\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:48
-#, fuzzy
 msgid "\\arabic{footnote}"
-msgstr "Note \\arabic{note}."
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
@@ -7437,9 +7363,8 @@ msgid "UNDEFINED"
 msgstr ""
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "\\Roman{part}"
-msgstr "Èást \\Roman{part}"
+msgstr "\\Roman{part}"
 
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:51
 msgid "margin"
@@ -7525,58 +7450,48 @@ msgid "Offprints:"
 msgstr "Offprints:"
 
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
-#, fuzzy
 msgid "Corollary \\thetheorem."
-msgstr "Corollary \\arabic{theorem}"
+msgstr "Corollary \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
-#, fuzzy
 msgid "Lemma \\thetheorem."
-msgstr "Lemma \\arabic{theorem}"
+msgstr "Lemma \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
-#, fuzzy
 msgid "Proposition \\thetheorem."
-msgstr "Proposition \\arabic{theorem}"
+msgstr "Proposition \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
-#, fuzzy
 msgid "Conjecture \\thetheorem."
-msgstr "Conjecture \\arabic{theorem}"
+msgstr "Conjecture \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
-msgstr ""
+msgstr "Fact \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
-#, fuzzy
 msgid "Definition \\thetheorem."
-msgstr "Definition \\arabic{theorem}"
+msgstr "Definition \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
-#, fuzzy
 msgid "Example \\thetheorem."
-msgstr "Example \\arabic{theorem}"
+msgstr "Example \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
-#, fuzzy
 msgid "Problem \\thetheorem."
-msgstr "Problem \\arabic{theorem}"
+msgstr "Problem \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
-#, fuzzy
 msgid "Exercise \\thetheorem."
-msgstr "Exercise @Section@.\\arabic{theorem}."
+msgstr "Exercise \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
-#, fuzzy
 msgid "Remark \\thetheorem."
-msgstr "Remark \\arabic{theorem}"
+msgstr "Remark \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
-#, fuzzy
 msgid "Claim \\thetheorem."
-msgstr "Claim \\arabic{theorem}"
+msgstr "Claim \\thetheorem."
 
 #: lib/layouts/theorems-order.inc:34 lib/layouts/theorems-starred.inc:93
 msgid "Conjecture*"
@@ -7830,9 +7745,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:37
-#, fuzzy
 msgid "Criterion \\thetheorem."
-msgstr "Criterion \\arabic{theorem}"
+msgstr "Criterion \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:44
 msgid "Criterion*"
@@ -7843,9 +7757,8 @@ msgid "Criterion."
 msgstr "Criterion."
 
 #: lib/layouts/theorems-ams-extended.module:59
-#, fuzzy
 msgid "Algorithm \\thetheorem."
-msgstr "Algorithm \\arabic{theorem}"
+msgstr "Algorithm \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:67
 msgid "Algorithm*"
@@ -7857,7 +7770,7 @@ msgstr "Algorithm."
 
 #: lib/layouts/theorems-ams-extended.module:82
 msgid "Axiom \\thetheorem."
-msgstr ""
+msgstr "Axiom \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:90
 msgid "Axiom*"
@@ -7868,9 +7781,8 @@ msgid "Axiom."
 msgstr "Axiom."
 
 #: lib/layouts/theorems-ams-extended.module:104
-#, fuzzy
 msgid "Condition \\thetheorem."
-msgstr "Condition @Section@.\\arabic{theorem}."
+msgstr "Condition \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:112
 msgid "Condition*"
@@ -7881,9 +7793,8 @@ msgid "Condition."
 msgstr "Condition."
 
 #: lib/layouts/theorems-ams-extended.module:126
-#, fuzzy
 msgid "Note \\thetheorem."
-msgstr "Note \\arabic{theorem}"
+msgstr "Note \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:134
 msgid "Note*"
@@ -7894,9 +7805,8 @@ msgid "Note."
 msgstr "Note."
 
 #: lib/layouts/theorems-ams-extended.module:148
-#, fuzzy
 msgid "Notation \\thetheorem."
-msgstr "Notation @Section@.\\arabic{theorem}."
+msgstr "Notation \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:156
 msgid "Notation*"
@@ -7907,9 +7817,8 @@ msgid "Notation."
 msgstr "Notation."
 
 #: lib/layouts/theorems-ams-extended.module:170
-#, fuzzy
 msgid "Summary \\thetheorem."
-msgstr "Summary @Section@.\\arabic{theorem}."
+msgstr "Summary \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:178
 msgid "Summary*"
@@ -7920,9 +7829,8 @@ msgid "Summary."
 msgstr "Summary."
 
 #: lib/layouts/theorems-ams-extended.module:192
-#, fuzzy
 msgid "Acknowledgement \\thetheorem."
-msgstr "Acknowledgement \\arabic{theorem}"
+msgstr "Acknowledgement \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:200
 msgid "Acknowledgement*"
@@ -7933,9 +7841,8 @@ msgid "Conclusion"
 msgstr "Conclusion"
 
 #: lib/layouts/theorems-ams-extended.module:214
-#, fuzzy
 msgid "Conclusion \\thetheorem."
-msgstr "Conclusion @Section@.\\arabic{theorem}."
+msgstr "Conclusion \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:222
 msgid "Conclusion*"
@@ -7950,9 +7857,8 @@ msgid "Assumption"
 msgstr "Assumption"
 
 #: lib/layouts/theorems-ams-extended.module:237
-#, fuzzy
 msgid "Assumption \\thetheorem."
-msgstr "Assumption @Section@.\\arabic{theorem}."
+msgstr "Assumption \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Assumption*"
@@ -7963,9 +7869,8 @@ msgid "Assumption."
 msgstr "Assumption."
 
 #: lib/layouts/theorems-ams.module:2
-#, fuzzy
 msgid "Theorems (AMS)"
-msgstr "Theorem. "
+msgstr "Theorems (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
 msgid ""
@@ -8004,9 +7909,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/theorems-std.module:2
-#, fuzzy
 msgid "Theorems"
-msgstr "Theorem"
+msgstr "Theorems"
 
 #: lib/layouts/theorems-std.module:7
 msgid ""
@@ -8020,9 +7924,8 @@ msgid "Afrikaans"
 msgstr "Afrikán¹tina"
 
 #: lib/languages:3
-#, fuzzy
 msgid "Albanian"
-msgstr "Armén¹tina"
+msgstr "Albán¹tina"
 
 #: lib/languages:4
 msgid "American"
@@ -8196,9 +8099,8 @@ msgid "Korean"
 msgstr "Korej¹tina"
 
 #: lib/languages:56
-#, fuzzy
 msgid "Latin"
-msgstr "LatinOn"
+msgstr "Latina"
 
 #: lib/languages:57
 msgid "Latvian"
@@ -8214,9 +8116,8 @@ msgid "Lower Sorbian"
 msgstr "Hornolu¾ická srb¹tina"
 
 #: lib/languages:60
-#, fuzzy
 msgid "Hungarian"
-msgstr "Bulhar¹tina"
+msgstr "Maïar¹tina"
 
 #: lib/languages:61
 msgid "Norsk"
@@ -8292,9 +8193,8 @@ msgid "Upper Sorbian"
 msgstr "Hornolu¾ická srb¹tina"
 
 #: lib/languages:79
-#, fuzzy
 msgid "Vietnamese"
-msgstr "Jméno souboru"
+msgstr "Vietnam¹tina"
 
 #: lib/languages:80
 msgid "Welsh"
@@ -8457,9 +8357,8 @@ msgid "Thesaurus..."
 msgstr "Tezaurus..."
 
 #: lib/ui/classic.ui:106
-#, fuzzy
 msgid "Statistics...|i"
-msgstr "Statistika"
+msgstr "Statistika...|i"
 
 #: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
@@ -8763,9 +8662,8 @@ msgid "External Material...|x"
 msgstr "Externí materiál...|m"
 
 #: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:351
-#, fuzzy
 msgid "Symbols...|b"
-msgstr "Symbol"
+msgstr "Symboly...|S"
 
 #: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:363
 msgid "Superscript|S"
@@ -8786,7 +8684,7 @@ msgstr "Znaèka dìlení slova|a"
 #: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:356
 #, fuzzy
 msgid "Protected Hyphen|y"
-msgstr "Chránìná mezera|r"
+msgstr "Chránìný spojovník/pomlèka|p"
 
 #: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:374
 msgid "Ligature Break|k"
@@ -8821,13 +8719,12 @@ msgid "End of Sentence|E"
 msgstr "Konec vìty|K"
 
 #: lib/ui/classic.ui:255
-#, fuzzy
 msgid "Protected Dash|D"
-msgstr "Chránìná mezera|r"
+msgstr "Chránìná pomlèka|p"
 
 #: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:357
 msgid "Breakable Slash|a"
-msgstr ""
+msgstr "Nechránìné lomítko|l"
 
 #: lib/ui/classic.ui:257
 msgid "Single Quote|Q"
@@ -9387,9 +9284,8 @@ msgid "Number this Line|u"
 msgstr "Pøepnout èíslování této øádky|u"
 
 #: lib/ui/stdmenus.inc:194
-#, fuzzy
 msgid "Macro Definition"
-msgstr "Definition"
+msgstr "Definice makra"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Text Style|T"
@@ -9432,27 +9328,24 @@ msgid "Delete Line to Right"
 msgstr "Smazat linku napravo"
 
 #: lib/ui/stdmenus.inc:216 lib/ui/stdmenus.inc:579 lib/ui/stdtoolbars.inc:170
-#, fuzzy
 msgid "Append Parameter"
-msgstr "Dal¹í parametry"
+msgstr "Pøidej parametr"
 
 #: lib/ui/stdmenus.inc:217 lib/ui/stdmenus.inc:580 lib/ui/stdtoolbars.inc:169
-#, fuzzy
 msgid "Remove Last Parameter"
-msgstr "Parametry výpisu"
+msgstr "Vyma¾ poslední parametr"
 
 #: lib/ui/stdmenus.inc:219 lib/ui/stdmenus.inc:582 lib/ui/stdtoolbars.inc:172
 msgid "Make First Non-Optional into Optional Parameter"
-msgstr ""
+msgstr "Zmìnit první povinný parametr na volitelný"
 
 #: lib/ui/stdmenus.inc:220 lib/ui/stdmenus.inc:583 lib/ui/stdtoolbars.inc:173
 msgid "Make Last Optional into Non-Optional Parameter"
-msgstr ""
+msgstr "Zmìnit poslední volitelný parametr na povinný "
 
 #: lib/ui/stdmenus.inc:221 lib/ui/stdmenus.inc:584 lib/ui/stdtoolbars.inc:176
-#, fuzzy
 msgid "Insert Optional Parameter"
-msgstr "Parametry výpisu"
+msgstr "Vlo¾it volitelný parametr"
 
 #: lib/ui/stdmenus.inc:222 lib/ui/stdmenus.inc:585 lib/ui/stdtoolbars.inc:175
 #, fuzzy
@@ -9460,14 +9353,17 @@ msgid "Remove Optional Parameter"
 msgstr "Volitelný argument - otevøená vlo¾ka"
 
 #: lib/ui/stdmenus.inc:224 lib/ui/stdmenus.inc:587 lib/ui/stdtoolbars.inc:179
+#, fuzzy
 msgid "Append Parameter Eating From The Right"
-msgstr ""
+msgstr "Pøidat pohlcování parametru zprava"
 
 #: lib/ui/stdmenus.inc:225 lib/ui/stdmenus.inc:588 lib/ui/stdtoolbars.inc:180
+#, fuzzy
 msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+msgstr "Pøidat pohlcování volitelného parametru zprava"
 
 #: lib/ui/stdmenus.inc:226 lib/ui/stdmenus.inc:589 lib/ui/stdtoolbars.inc:178
+#, fuzzy
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
@@ -9537,12 +9433,11 @@ msgstr "Zavøi v¹echny vlo¾ky|Z"
 
 #: lib/ui/stdmenus.inc:290
 msgid "Unfold Math Macro"
-msgstr ""
+msgstr "Rozbalit matematické makro"
 
 #: lib/ui/stdmenus.inc:291
-#, fuzzy
 msgid "Fold Math Macro"
-msgstr "mat. makro"
+msgstr "Zabalit matematické makro"
 
 #: lib/ui/stdmenus.inc:293
 msgid "View Source|S"
@@ -9550,19 +9445,19 @@ msgstr "Zdrojový text pro LaTeX|x"
 
 #: lib/ui/stdmenus.inc:297
 msgid "Split View Horizontally|i"
-msgstr ""
+msgstr "Horizontální rozdìlení|r"
 
 #: lib/ui/stdmenus.inc:298
 msgid "Split View Vertically|V"
-msgstr ""
+msgstr "Vertikální rozdìlení|V"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Close Tab Group|G"
-msgstr ""
+msgstr "Uzavøi skupinu panelù|U"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Fullscreen|l"
-msgstr ""
+msgstr "Celoobrazovkový mód"
 
 #: lib/ui/stdmenus.inc:301
 msgid "Toolbars|b"
@@ -9589,9 +9484,8 @@ msgid "Branch|B"
 msgstr "Vìtev|V"
 
 #: lib/ui/stdmenus.inc:327
-#, fuzzy
 msgid "Custom insets"
-msgstr "Customer"
+msgstr "Vlastní vlo¾ky"
 
 #: lib/ui/stdmenus.inc:328
 msgid "File|e"
@@ -9621,9 +9515,10 @@ msgstr "Heslo nomenklatury...|y"
 msgid "Table...|T"
 msgstr "Tabulka...|T"
 
+#TODO
 #: lib/ui/stdmenus.inc:341
 msgid "Hyperlink|k"
-msgstr ""
+msgstr "Hyperlink|l"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Short Title|S"
@@ -9646,7 +9541,6 @@ msgid "Single Quote|S"
 msgstr "Jednoduchá uvozovka|J"
 
 #: lib/ui/stdmenus.inc:359
-#, fuzzy
 msgid "Phonetic Symbols|P"
 msgstr "Fonetické symboly|F"
 
@@ -9670,14 +9564,15 @@ msgstr "Vertikální mezera...|V"
 msgid "Hyphenation Point|H"
 msgstr "Znaèka dìlení slova|a"
 
+#TODO
 #: lib/ui/stdmenus.inc:375
-#, fuzzy
 msgid "New Line|e"
-msgstr "Linka vlevo|l"
+msgstr "Nový øádek"
 
+#TODO
 #: lib/ui/stdmenus.inc:376
 msgid "Line Break|B"
-msgstr "Konec øádku|K"
+msgstr "Zalomení øádku|k"
 
 #: lib/ui/stdmenus.inc:378
 #, fuzzy
@@ -9811,18 +9706,16 @@ msgid "Thesaurus...|T"
 msgstr "Tezaurus...|T"
 
 #: lib/ui/stdmenus.inc:504
-#, fuzzy
 msgid "Statistics...|a"
-msgstr "Statistika"
+msgstr "Statistika...|S"
 
 #: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr "Informace TeX-u|I"
 
 #: lib/ui/stdmenus.inc:526
-#, fuzzy
 msgid "Shortcuts|S"
-msgstr "&Zkratka:"
+msgstr "Klávesové zkratky|z"
 
 #: lib/ui/stdmenus.inc:538
 #, fuzzy
