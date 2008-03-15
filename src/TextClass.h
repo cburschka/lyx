@@ -289,7 +289,6 @@ public:
 	/// will invoke the layout object defined by name = 'CharStyle'.
 	/// If that doesn't work either, an empty object returns (shouldn't
 	/// happen).  -- Idea JMarc, comment MV
-	///
 	InsetLayout const & insetLayout(docstring const & name) const;
 	/// an empty inset layout for use as a default
 	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
@@ -297,7 +296,6 @@ public:
 	///////////////////////////////////////////////////////////////////
 	// accessors
 	///////////////////////////////////////////////////////////////////
-	/// the list of floats defined in the document class
 	/// the list of floats defined in the document class
 	FloatList const & floats() const { return floatlist_; }
 	///
