@@ -102,9 +102,9 @@ public:
 	 */
 	PARSEP paragraph_separation;
 	///
-	InsetQuotes::quote_language quotes_language;
+	InsetQuotes::QuoteLanguage quotes_language;
 	///
-	InsetQuotes::quote_times quotes_times;
+	InsetQuotes::QuoteTimes quotes_times;
 	///
 	std::string fontsize;
 	///Get the LayoutFile this document is using.
