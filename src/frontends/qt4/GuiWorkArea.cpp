@@ -1473,9 +1473,11 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 	QPixmap pixmap(r.size());
 	render(&pixmap, - r.topLeft());
 	drag->setPixmap(pixmap);
+	drag->exec();
+#else
+	drag->start(Qt::MoveAction);
 #endif
 	
-	drag->exec();
 }
 
 
