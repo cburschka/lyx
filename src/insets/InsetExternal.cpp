@@ -419,6 +419,14 @@ InsetExternal::~InsetExternal()
 }
 
 
+void InsetExternal::setBuffer(Buffer & buffer)
+{
+	if (buffer_)
+		params_.filename = params_.filename.copyTo(&buffer);
+	Inset::setBuffer(buffer);
+}
+
+
 void InsetExternal::statusChanged() const
 {
 	updateFrontend();

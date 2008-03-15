@@ -34,6 +34,8 @@ public:
 	///
 	~InsetGraphics();
 	///
+	void setBuffer(Buffer & buffer);
+	///
 	bool isLabeled() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

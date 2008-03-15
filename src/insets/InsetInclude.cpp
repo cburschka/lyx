@@ -215,6 +215,12 @@ InsetInclude::~InsetInclude()
 
 void InsetInclude::setBuffer(Buffer & buffer)
 {
+	if (buffer_) {
+		EmbeddedFile file_from = includedFilename(*buffer_, params());
+		EmbeddedFile file_to = file_from.copyTo(&buffer);
+		if (file_to.embedded())
+			setParam("embed", from_utf8(file_to.inzipName()));
+	}
 	buffer_ = &buffer;
 	if (label_)
 		label_->setBuffer(buffer);

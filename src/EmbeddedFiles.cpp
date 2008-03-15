@@ -254,6 +254,64 @@ bool EmbeddedFile::updateFromExternalFile() const
 }
 
 
+EmbeddedFile EmbeddedFile::copyTo(Buffer const * buf)
+{
+	EmbeddedFile file = EmbeddedFile(absFilename(), buf->filePath());
+	file.setEmbed(embedded());
+	file.enable(buf->embedded(), buf, false);
+	
+	// use external file.
+	if (!embedded())
+		return file;
+
+	LYXERR(Debug::FILES, "Copy " << availableFile()
+		<< " to " << file.availableFile());
+
+	FileName from_file = availableFile();
+	FileName to_file = file.availableFile();
+
+	if (!from_file.exists()) {
+		// no from file
+		throw ExceptionMessage(ErrorException,
+			_("Failed to copy embedded file"),
+			bformat(_("Failed to embed file %1$s.\n"
+			   "Please check whether the source file is available"),
+				from_utf8(absFilename())));
+		file.setEmbed(false);
+		return file;
+	}
+
+	// if destination file already exists ...
+	if (to_file.exists()) {
+		// no need to copy if the files are the same
+		if (checksum() == to_file.checksum())
+			return file;
+		// other wise, ask if overwrite
+		int const ret = Alert::prompt(
+			_("Update embedded file?"),
+			bformat(_("Embedded file %1$s already exists, do you want to overwrite it"),
+				from_utf8(to_file.absFilename())), 1, 1, _("&Overwrite"), _("&Cancel"));
+		if (ret != 0)
+			// if the user does not want to overwrite, we still consider it
+			// a successful operation.
+			return file;
+	}
+	// copy file
+	// need to make directory?
+	FileName path = to_file.onlyPath();
+	if (!path.isDirectory())
+		path.createPath();
+	if (from_file.copyTo(to_file))
+		return file;
+	throw ExceptionMessage(ErrorException,
+		_("Copy file failure"),
+		bformat(_("Cannot copy file %1$s to %2$s.\n"
+			   "Please check whether the directory exists and is writeable."),
+				from_utf8(from_file.absFilename()), from_utf8(to_file.absFilename())));
+	return file;
+}
+
+
 void EmbeddedFile::updateInsets() const
 {
 	vector<Inset const *>::const_iterator it = inset_list_.begin();
@@ -414,7 +472,7 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 	for (it = begin(); it != it_end; ++it)
 		it->updateInsets();
 
-	if (!updateFile)
+	if (!updateFile || (count_external == 0 && count_embedded == 0))
 		return;
 
 	// show result

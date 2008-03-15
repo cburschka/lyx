@@ -154,6 +154,14 @@ InsetGraphics::~InsetGraphics()
 }
 
 
+void InsetGraphics::setBuffer(Buffer & buffer)
+{
+	if (buffer_)
+		params_.filename = params_.filename.copyTo(&buffer);
+	Inset::setBuffer(buffer);
+}
+
+
 void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

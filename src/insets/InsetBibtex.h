@@ -27,6 +27,8 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
+	void setBuffer(Buffer & buffer);
+	///
 	docstring screenLabel() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

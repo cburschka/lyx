@@ -158,6 +158,8 @@ public:
 	bool extract() const;
 	/// update embedded file from external file, does not change embedding status
 	bool updateFromExternalFile() const;
+	/// copy an embedded file to another buffer
+	EmbeddedFile copyTo(Buffer const * buf);
 	///
 	/// After the embedding status is changed, update all insets related
 	/// to this file item. For example, a graphic inset may need to monitor

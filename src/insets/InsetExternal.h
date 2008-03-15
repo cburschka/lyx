@@ -112,6 +112,8 @@ public:
 	///
 	~InsetExternal();
 	///
+	void setBuffer(Buffer & buffer);
+	///
 	InsetCode lyxCode() const { return EXTERNAL_CODE; }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

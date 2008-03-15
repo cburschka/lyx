@@ -52,6 +52,18 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
+void InsetBibtex::setBuffer(Buffer & buffer)
+{
+	if (buffer_) {
+		EmbeddedFileList::iterator it = bibfiles_.begin();
+		EmbeddedFileList::iterator it_end = bibfiles_.end();
+		for (; it != it_end; ++it)
+			*it = it->copyTo(&buffer);
+	}
+	Inset::setBuffer(buffer);
+}
+
+
 ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
