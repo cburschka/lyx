@@ -491,7 +491,6 @@ void InsetMathHull::label(row_type row, docstring const & label)
 	if (label_[row]) {
 		if (label.empty()) {
 			delete label_[row];
-			nonum_[row] = true;
 			label_[row] = dummy_pointer;
 		} else
 			label_[row]->updateCommand(label);
@@ -753,7 +752,7 @@ docstring InsetMathHull::nicelabel(row_type row) const
 		return docstring();
 	if (!label_[row])
 		return from_ascii("(#)");
-	return '(' + label_[row]->screenLabel() + ')';
+	return '(' + label_[row]->screenLabel() + from_ascii(", #)");
 }
 
 
