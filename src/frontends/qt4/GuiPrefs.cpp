@@ -1795,14 +1795,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(allowGeometrySessionCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(cursorFollowsCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(sortEnvironmentsCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(groupEnvironmentsCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(macroEditStyleCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
 	connect(autoSaveSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(autoSaveCB, SIGNAL(clicked()),
@@ -1810,16 +1802,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
-	connect(fullscreenLimitGB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed()));
-	connect(toggleTabbarCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
-	connect(toggleScrollbarCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
-	connect(toggleToolbarsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 }
@@ -1831,23 +1813,10 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
-	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
-	rc.sort_layouts = sortEnvironmentsCB->isChecked();
-	rc.group_layouts = groupEnvironmentsCB->isChecked();
-	switch (macroEditStyleCO->currentIndex()) {
-		case 0: rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE_BOX; break;
-		case 1:	rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE; break;
-		case 2:	rc.macro_edit_style = LyXRC::MACRO_EDIT_LIST;	break;
-	}
 	rc.autosave = autoSaveSB->value() * 60;
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
-	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
-	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
-	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
-	rc.full_screen_width = fullscreenWidthSB->value();
-	rc.full_screen_limit = fullscreenLimitGB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
 }
 
@@ -1858,10 +1827,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
 	allowGeometrySessionCB->setChecked(rc.allow_geometry_session);
-	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
-	sortEnvironmentsCB->setChecked(rc.sort_layouts);
-	groupEnvironmentsCB->setChecked(rc.group_layouts);
-	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
 	// convert to minutes
 	int mins(rc.autosave / 60);
 	if (rc.autosave && !mins)
@@ -1870,11 +1835,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
-	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
-	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
-	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
-	fullscreenWidthSB->setValue(rc.full_screen_width);
-	fullscreenLimitGB->setChecked(rc.full_screen_limit);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
 }
 
@@ -1884,6 +1844,69 @@ void PrefUserInterface::select_ui()
 	QString file = form_->browseUI(internalPath(uiFileED->text()));
 	if (!file.isEmpty())
 		uiFileED->setText(file);
+}
+
+/////////////////////////////////////////////////////////////////////
+//
+// PrefEdit
+//
+/////////////////////////////////////////////////////////////////////
+
+PrefEdit::PrefEdit(GuiPreferences * form, QWidget * parent)
+	: PrefModule(qt_("Editing"), form, parent)
+{
+	setupUi(this);
+
+	connect(cursorFollowsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(sortEnvironmentsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(groupEnvironmentsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(macroEditStyleCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
+	connect(fullscreenLimitGB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
+		this, SIGNAL(changed()));
+	connect(toggleTabbarCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(toggleScrollbarCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(toggleToolbarsCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+}
+
+
+void PrefEdit::apply(LyXRC & rc) const
+{
+	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
+	rc.sort_layouts = sortEnvironmentsCB->isChecked();
+	rc.group_layouts = groupEnvironmentsCB->isChecked();
+	switch (macroEditStyleCO->currentIndex()) {
+		case 0: rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE_BOX; break;
+		case 1:	rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE; break;
+		case 2:	rc.macro_edit_style = LyXRC::MACRO_EDIT_LIST;	break;
+	}
+	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
+	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
+	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
+	rc.full_screen_width = fullscreenWidthSB->value();
+	rc.full_screen_limit = fullscreenLimitGB->isChecked();
+}
+
+
+void PrefEdit::update(LyXRC const & rc)
+{
+	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
+	sortEnvironmentsCB->setChecked(rc.sort_layouts);
+	groupEnvironmentsCB->setChecked(rc.group_layouts);
+	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
+	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
+	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
+	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
+	fullscreenWidthSB->setValue(rc.full_screen_width);
+	fullscreenLimitGB->setChecked(rc.full_screen_limit);
 }
 
 
@@ -2340,6 +2363,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
 	add(new PrefUserInterface(this));
+	add(new PrefEdit(this));
 	add(new PrefShortcuts(this));
 	add(new PrefScreenFonts(this));
 	add(new PrefColors(this));

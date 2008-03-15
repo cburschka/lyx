@@ -33,6 +33,7 @@
 #include "ui_PrefScreenFontsUi.h"
 #include "ui_PrefColorsUi.h"
 #include "ui_PrefDisplayUi.h"
+#include "ui_PrefEditUi.h"
 #include "ui_PrefPathsUi.h"
 #include "ui_PrefShortcutsUi.h"
 #include "ui_PrefSpellcheckerUi.h"
@@ -345,6 +346,18 @@ public:
 public Q_SLOTS:
 	void select_ui();
 };
+
+
+class PrefEdit : public PrefModule, public Ui::PrefEditUi
+{
+	Q_OBJECT
+public:
+	PrefEdit(GuiPreferences * form, QWidget * parent = 0);
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+};
+
 
 
 class GuiShortcutDialog : public QDialog, public Ui::shortcutUi

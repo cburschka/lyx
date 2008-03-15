@@ -926,6 +926,7 @@ src_frontends_qt4_ui_files = Split('''
     PrefConvertersUi.ui
     PrefDateUi.ui
     PrefDisplayUi.ui
+    PrefEditUi.ui
     PrefFileformatsUi.ui
     PrefIdentityUi.ui
     PrefInputUi.ui

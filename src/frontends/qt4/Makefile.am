@@ -265,6 +265,7 @@ UIFILES = \
 	PrefConvertersUi.ui \
 	PrefDateUi.ui \
 	PrefDisplayUi.ui \
+	PrefEditUi.ui \
 	PrefFileformatsUi.ui \
 	PrefIdentityUi.ui \
 	PrefInputUi.ui \

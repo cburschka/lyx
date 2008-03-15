@@ -1,0 +1,225 @@
+<ui version="4.0" >
+ <class>PrefEditUi</class>
+ <widget class="QWidget" name="PrefEditUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>459</width>
+    <height>406</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="scrollGB" >
+     <property name="title" >
+      <string>Editing</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="cursorFollowsCB" >
+        <property name="text" >
+         <string>Cursor follows &amp;scrollbar</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="sortEnvironmentsCB" >
+        <property name="text" >
+         <string>Sort &amp;environments alphabetically</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="groupEnvironmentsCB" >
+        <property name="text" >
+         <string>&amp;Group environments by their category</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="macroEditStyleCO" >
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros inline with a box around</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros inline with the name in the status bar</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Edit Math Macros with a parameter list (like in LyX &lt; 1.6)</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="fullscreenGB" >
+     <property name="title" >
+      <string>Fullscreen</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item rowspan="3" row="0" column="2" >
+       <widget class="QGroupBox" name="fullscreenLimitGB" >
+        <property name="title" >
+         <string>&amp;Limit text width</string>
+        </property>
+        <property name="checkable" >
+         <bool>true</bool>
+        </property>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="0" column="1" >
+          <widget class="QSpinBox" name="fullscreenWidthSB" >
+           <property name="maximum" >
+            <number>10000</number>
+           </property>
+           <property name="minimum" >
+            <number>0</number>
+           </property>
+           <property name="singleStep" >
+            <number>10</number>
+           </property>
+           <property name="value" >
+            <number>700</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="label_2" >
+           <property name="text" >
+            <string>Screen us&amp;ed (pixels):</string>
+           </property>
+           <property name="buddy" >
+            <cstring>fullscreenWidthSB</cstring>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="toggleTabbarCB" >
+        <property name="text" >
+         <string>Toggle tabba&amp;r</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="toggleScrollbarCB" >
+        <property name="text" >
+         <string>To&amp;ggle scrollbar</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="toggleToolbarsCB" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>T&amp;oggle toolbars</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>395</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="4" margin="9" />
+ <tabstops>
+  <tabstop>cursorFollowsCB</tabstop>
+  <tabstop>sortEnvironmentsCB</tabstop>
+  <tabstop>groupEnvironmentsCB</tabstop>
+  <tabstop>macroEditStyleCO</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
