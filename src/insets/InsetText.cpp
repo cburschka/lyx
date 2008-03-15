@@ -43,7 +43,6 @@
 #include "TextClass.h"
 #include "Text.h"
 #include "TextMetrics.h"
-#include "WordList.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -64,36 +63,6 @@ using boost::ref;
 namespace lyx {
 
 using graphics::PreviewLoader;
-
-
-class TextCompletionList : public CompletionList
-{
-public:
-	///
-	TextCompletionList(Cursor const & cur)
-	: buf_(cur.buffer()), pos_(0) {}
-	///
-	virtual ~TextCompletionList() {}
-
-	///
-	virtual bool sorted() const { return true; }
-	///
-	virtual size_t size() const
-	{
-		return theWordList().size();
-	}
-	///
-	virtual docstring const & data(size_t idx) const
-	{
-		return theWordList().word(idx);
-	}
-
-private:
-	///
-	Buffer const & buf_;
-	///
-	size_t pos_;
-};
 
 
 /////////////////////////////////////////////////////////////////////
@@ -504,10 +473,7 @@ bool InsetText::completionSupported(Cursor const & cur) const
 	Cursor const & bvCur = cur.bv().cursor();
 	if (&bvCur.inset() != this)
 		return false;
-	Paragraph const & par = cur.paragraph();
-	return cur.pos() > 0
-		&& (cur.pos() >= par.size() || !par.isLetter(cur.pos()))
-		&& par.isLetter(cur.pos() - 1);
+	return text_.completionSupported(cur);
 }
 
 
@@ -531,20 +497,7 @@ bool InsetText::automaticPopupCompletion() const
 
 CompletionList const * InsetText::createCompletionList(Cursor const & cur) const
 {
-	return completionSupported(cur) ? new TextCompletionList(cur) : 0;
-}
-
-
-docstring InsetText::previousWord(CursorSlice const & sl) const
-{
-	CursorSlice from = sl;
-	CursorSlice to = sl;
-	text_.getWord(from, to, PREVIOUS_WORD);
-	if (sl == from || to == from)
-		return docstring();
-	
-	Paragraph const & par = sl.paragraph();
-	return par.asString(from.pos(), to.pos(), false);
+	return completionSupported(cur) ? text_.createCompletionList(cur) : 0;
 }
 
 
@@ -552,50 +505,25 @@ docstring InsetText::completionPrefix(Cursor const & cur) const
 {
 	if (!completionSupported(cur))
 		return docstring();
-	return previousWord(cur.top());
+	return text_.completionPrefix(cur);
 }
 
 
 bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
-	bool /*finished*/)
+	bool finished)
 {
 	if (!completionSupported(cur))
 		return false;
 
-	BOOST_ASSERT(cur.bv().cursor() == cur);
-	cur.insert(s);
-	cur.bv().cursor() = cur;
-	if (!(cur.disp_.update() & Update::Force))
-		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
-	return true;
+	return text_.insertCompletion(cur, s, finished);
 }
 
 
 void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y, 
 	Dimension & dim) const
 {
-	Cursor const & bvcur = cur.bv().cursor();
-	
-	// get word in front of cursor
-	docstring word = previousWord(bvcur.top());
-	DocIterator wordStart = bvcur;
-	wordStart.pos() -= word.length();
-	
-	// get position on screen of the word start and end
-	Point lxy = cur.bv().getPos(wordStart, false);
-	Point rxy = cur.bv().getPos(bvcur, bvcur.boundary());
-	
-	// calculate dimensions of the word
 	TextMetrics const & tm = cur.bv().textMetrics(&text_);
-	dim = tm.rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
-	dim.wid = abs(rxy.x_ - lxy.x_);
-	
-	// calculate position of word
-	y = lxy.y_;
-	x = min(rxy.x_, lxy.x_);
-	
-	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
-	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
+	tm.completionPosAndDim(cur, x, y, dim);
 }
 
 

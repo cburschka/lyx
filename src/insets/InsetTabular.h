@@ -55,6 +55,7 @@ class BufferView;
 class Buffer;
 class BufferParams;
 class Paragraph;
+class CompletionList;
 class CursorSlice;
 
 namespace frontend { class Painter; }
@@ -749,6 +750,23 @@ public:
 	bool descendable() const { return true; }
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
+
+	///
+	bool completionSupported(Cursor const &) const;
+	///
+	bool inlineCompletionSupported(Cursor const & cur) const;
+	///
+	bool automaticInlineCompletion() const;
+	///
+	bool automaticPopupCompletion() const;
+	///
+	CompletionList const * createCompletionList(Cursor const & cur) const;
+	///
+	docstring completionPrefix(Cursor const & cur) const;
+	///
+	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
+	///
+	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 
 	//
 	// Public structures and variables

@@ -2088,6 +2088,33 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	}
 }
 
+
+void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+	Dimension & dim) const
+{
+	Cursor const & bvcur = cur.bv().cursor();
+	
+	// get word in front of cursor
+	docstring word = text_->previousWord(bvcur.top());
+	DocIterator wordStart = bvcur;
+	wordStart.pos() -= word.length();
+	
+	// get position on screen of the word start and end
+	Point lxy = cur.bv().getPos(wordStart, false);
+	Point rxy = cur.bv().getPos(bvcur, bvcur.boundary());
+	
+	// calculate dimensions of the word
+	dim = rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
+	dim.wid = abs(rxy.x_ - lxy.x_);
+	
+	// calculate position of word
+	y = lxy.y_;
+	x = min(rxy.x_, lxy.x_);
+	
+	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
+	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
+}
+
 //int TextMetrics::pos2x(pit_type pit, pos_type pos) const
 //{
 //	ParagraphMetrics const & pm = par_metrics_[pit];

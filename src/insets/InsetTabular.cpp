@@ -35,6 +35,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXFunc.h"
+#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "paragraph_funcs.h"
@@ -4797,6 +4798,62 @@ bool InsetTabular::tablemode(Cursor & cur) const
 }
 
 
+bool InsetTabular::completionSupported(Cursor const & cur) const
+{
+	Cursor const & bvCur = cur.bv().cursor();
+	if (&bvCur.inset() != this)
+		return false;
+	return cur.text()->completionSupported(cur);
+}
+
+
+bool InsetTabular::inlineCompletionSupported(Cursor const & cur) const
+{
+	return completionSupported(cur);
+}
+
+
+bool InsetTabular::automaticInlineCompletion() const
+{
+	return lyxrc.completion_inline_text;
+}
+
+
+bool InsetTabular::automaticPopupCompletion() const
+{
+	return lyxrc.completion_popup_text;
+}
+
+
+CompletionList const * InsetTabular::createCompletionList(Cursor const & cur) const
+{
+	return completionSupported(cur) ? cur.text()->createCompletionList(cur) : 0;
+}
+
+
+docstring InsetTabular::completionPrefix(Cursor const & cur) const
+{
+	if (!completionSupported(cur))
+		return docstring();
+	return cur.text()->completionPrefix(cur);
+}
+
+
+bool InsetTabular::insertCompletion(Cursor & cur, docstring const & s, bool finished)
+{
+	if (!completionSupported(cur))
+		return false;
+
+	return cur.text()->insertCompletion(cur, s, finished);
+}
+
+
+void InsetTabular::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+				    Dimension & dim) const
+{
+	TextMetrics const & tm = cur.bv().textMetrics(cur.text());
+	tm.completionPosAndDim(cur, x, y, dim);
+}
 
 
 string const InsetTabularMailer::name_("tabular");

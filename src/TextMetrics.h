@@ -238,6 +238,10 @@ public:
 	int leftMargin(int max_width, pit_type pit, pos_type pos) const;
 	int leftMargin(int max_width, pit_type pit) const;
 
+	/// calculates the position of a completion popup
+	void completionPosAndDim(Cursor const & cur, int & x, int & y, 
+		Dimension & dim) const;
+
 private:
 	friend class BufferView;
 

@@ -22,6 +22,7 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class BufferView;
+class CompletionList;
 class CursorSlice;
 class Dimension;
 class ParagraphList;
@@ -174,8 +175,6 @@ private:
 	ColorCode frame_color_;
 	///
 	mutable pit_type old_pit;
-	///
-	docstring previousWord(CursorSlice const & sl) const;
 
 public:
 	///

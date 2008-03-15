@@ -26,8 +26,8 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
+#include "CompletionList.h"
 #include "Cursor.h"
-#include "ParIterator.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -42,10 +42,12 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
+#include "WordList.h"
 
 #include "insets/InsetText.h"
 #include "insets/InsetBibitem.h"
@@ -330,6 +332,35 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 
 
 } // namespace anon
+
+class TextCompletionList : public CompletionList
+{
+public:
+	///
+	TextCompletionList(Cursor const & cur)
+	: buf_(cur.buffer()), pos_(0) {}
+	///
+	virtual ~TextCompletionList() {}
+	
+	///
+	virtual bool sorted() const { return true; }
+	///
+	virtual size_t size() const
+	{
+		return theWordList().size();
+	}
+	///
+	virtual docstring const & data(size_t idx) const
+	{
+		return theWordList().word(idx);
+	}
+	
+private:
+	///
+	Buffer const & buf_;
+	///
+	size_t pos_;
+};
 
 
 bool Text::empty() const
@@ -1448,5 +1479,49 @@ void Text::setMacrocontextPosition(DocIterator const & pos)
 	macrocontext_position_ = pos;
 }
 
+
+docstring Text::previousWord(CursorSlice const & sl) const
+{
+	CursorSlice from = sl;
+	CursorSlice to = sl;
+	getWord(from, to, PREVIOUS_WORD);
+	if (sl == from || to == from)
+		return docstring();
+	
+	Paragraph const & par = sl.paragraph();
+	return par.asString(from.pos(), to.pos(), false);
+}
+
+
+bool Text::completionSupported(Cursor const & cur) const
+{
+	Paragraph const & par = cur.paragraph();
+	return cur.pos() > 0
+		&& (cur.pos() >= par.size() || !par.isLetter(cur.pos()))
+		&& par.isLetter(cur.pos() - 1);
+}
+
+
+CompletionList const * Text::createCompletionList(Cursor const & cur) const
+{
+	return new TextCompletionList(cur);
+}
+
+
+bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
+{	
+	BOOST_ASSERT(cur.bv().cursor() == cur);
+	cur.insert(s);
+	cur.bv().cursor() = cur;
+	if (!(cur.disp_.update() & Update::Force))
+		cur.updateFlags(cur.disp_.update() | Update::SinglePar);
+	return true;
+}
+	
+	
+docstring Text::completionPrefix(Cursor const & cur) const
+{
+	return previousWord(cur.top());
+}
 
 } // namespace lyx

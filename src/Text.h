@@ -22,6 +22,7 @@ namespace lyx {
 class Buffer;
 class BufferParams;
 class BufferView;
+class CompletionList;
 class CursorSlice;
 class DocIterator;
 class ErrorList;
@@ -137,7 +138,9 @@ public:
 	void getWord(CursorSlice & from, CursorSlice & to, word_location const) const;
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
-
+	/// convenience function get the previous word or an empty string
+	docstring previousWord(CursorSlice const & sl) const;
+	
 	/// what type of change operation to make
 	enum ChangeOp {
 		ACCEPT,
@@ -281,6 +284,15 @@ public:
 	DocIterator macrocontextPosition() const;
 	///
 	void setMacrocontextPosition(DocIterator const & pos);
+
+	///
+	bool completionSupported(Cursor const & cur) const;
+	///
+	CompletionList const * createCompletionList(Cursor const & cur) const;
+	///
+	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/);
+	///
+	docstring completionPrefix(Cursor const & cur) const;
 
 public:
 	///
