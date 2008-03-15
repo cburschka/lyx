@@ -26,6 +26,7 @@
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QResizeEvent>
+#include <QTabBar>
 #include <QTabWidget>
 #include <QTimer>
 
@@ -262,8 +263,6 @@ Q_SIGNALS:
 	void lastWorkAreaRemoved();
 
 public Q_SLOTS:
-	///
-	void on_currentTabChanged(int index);
 	/// close current buffer, or the one given by \c clicked_tab_
 	void closeCurrentBuffer();
 	/// close current tab, or the one given by \c clicked_tab_
@@ -273,11 +272,49 @@ public Q_SLOTS:
 	
 private Q_SLOTS:
 	///
+	void on_currentTabChanged(int index);
+	///
 	void showContextMenu(const QPoint & pos);
+	///
+	void moveTab(int fromIndex, int toIndex);
 
 private:
 	int clicked_tab_;
 }; // TabWorkArea
+
+
+class DragTabBar : public QTabBar
+{
+	Q_OBJECT
+public:
+	///
+	DragTabBar(QWidget * parent=0);
+
+#if QT_VERSION < 0x040300
+	///
+	int tabAt(QPoint const & position) const;
+#endif
+
+protected:
+	///
+	void mousePressEvent(QMouseEvent * event);
+	///
+	void mouseMoveEvent(QMouseEvent * event);
+	///
+	void dragEnterEvent(QDragEnterEvent * event);
+	///
+	void dropEvent(QDropEvent * event);
+
+private:
+	///
+	QPoint dragStartPos_;
+	///
+	int dragCurrentIndex_;
+
+Q_SIGNALS:
+	///
+	void tabMoveRequested(int fromIndex, int toIndex);
+};
 
 } // namespace frontend
 } // namespace lyx
