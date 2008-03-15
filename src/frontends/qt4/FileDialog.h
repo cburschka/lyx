@@ -13,7 +13,7 @@
 #ifndef FILEDIALOG_H
 #define FILEDIALOG_H
 
-#include "lfuns.h"
+#include "FuncCode.h"
 
 #include <QString>
 
@@ -54,7 +54,7 @@ public:
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as FileName::getcwd())
 	 */
-	FileDialog(QString const & title, kb_action a = LFUN_SELECT_FILE_SYNC);
+	FileDialog(QString const & title, FuncCode a = LFUN_SELECT_FILE_SYNC);
 
 	~FileDialog();
 
@@ -84,7 +84,7 @@ private:
 	QString title_;
 
 	/// success action to perform if not synchronous
-	kb_action success_;
+	FuncCode success_;
 };
 
 } // namespace lyx

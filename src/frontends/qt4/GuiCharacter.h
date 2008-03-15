@@ -77,7 +77,7 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	kb_action getLfun() const { return LFUN_FONT_FREE_UPDATE; }
+	FuncCode getLfun() const { return LFUN_FONT_FREE_UPDATE; }
 
 	///
 	void setFamily(FontFamily);

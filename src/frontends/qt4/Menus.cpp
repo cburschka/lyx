@@ -682,7 +682,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 
 	typedef vector<Format const *> Formats;
 	Formats formats;
-	kb_action action;
+	FuncCode action;
 
 	switch (kind) {
 	case MenuItem::ImportFormats:
@@ -1228,7 +1228,7 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 	 * the hassle, though. (JMarc)
 	 */
 	struct MacMenuEntry {
-		kb_action action;
+		FuncCode action;
 		char const * arg;
 		char const * label;
 		QAction::MenuRole role;

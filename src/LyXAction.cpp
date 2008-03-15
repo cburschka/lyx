@@ -56,7 +56,7 @@ namespace lyx {
  */
 
 /*!
- * \var lyx::kb_action lyx::LFUN_
+ * \var lyx::FuncCode lyx::LFUN_
  * \li Action: 
  * \li Notion: 
  * \li Syntax: 
@@ -69,11 +69,11 @@ namespace lyx {
 LyXAction lyxaction;
 
 
-void LyXAction::newFunc(kb_action action, string const & name,
+void LyXAction::newFunc(FuncCode action, string const & name,
 			unsigned int attrib, LyXAction::func_type type)
 {
 	lyx_func_map[name] = action;
-	func_info tmpinfo;
+	FuncInfo tmpinfo;
 	tmpinfo.name = name;
 	tmpinfo.attrib = attrib;
 	tmpinfo.type = type;
@@ -96,7 +96,7 @@ void LyXAction::init()
 	if (init) return;
 
 	struct ev_item {
-		kb_action action;
+		FuncCode action;
 		char const * name;
 		unsigned int attrib;
 		func_type type;
@@ -105,7 +105,7 @@ void LyXAction::init()
 	ev_item const items[] = {
 #endif
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_ACUTE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_ACUTE
  * \li Action: Adds an acute accent \htmlonly (&aacute;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-acute
@@ -113,7 +113,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_ACUTE, "accent-acute", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_BREVE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_BREVE
  * \li Action: Adds a breve accent \htmlonly (&#259;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-breve
@@ -121,7 +121,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_BREVE, "accent-breve", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_CARON
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_CARON
  * \li Action: Adds a caron \htmlonly (&#462;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-caron
@@ -129,7 +129,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_CARON, "accent-caron", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_CEDILLA
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_CEDILLA
  * \li Action: Adds a cedilla \htmlonly (&ccedil;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-cedilla
@@ -137,7 +137,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_CEDILLA, "accent-cedilla", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCLE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_CIRCLE
  * \li Action: Adds a circle accent \htmlonly (&aring;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-circle
@@ -145,7 +145,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_CIRCLE, "accent-circle", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_CIRCUMFLEX
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_CIRCUMFLEX
  * \li Action: Adds a circumflex \htmlonly (&ecirc;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-circumflex
@@ -153,7 +153,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_CIRCUMFLEX, "accent-circumflex", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_DOT
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_DOT
  * \li Action: Adds a dot accent \htmlonly (&#380;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-dot
@@ -161,7 +161,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_DOT, "accent-dot", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_GRAVE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_GRAVE
  * \li Action: Adds a grave accent \htmlonly (&egrave;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-grave
@@ -169,7 +169,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_GRAVE, "accent-grave", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_HUNGARIAN_UMLAUT
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_HUNGARIAN_UMLAUT
  * \li Action: Adds a Hungarian umlaut \htmlonly (&#337;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-grave
@@ -177,7 +177,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_HUNGARIAN_UMLAUT, "accent-hungarian-umlaut", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_MACRON
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_MACRON
  * \li Action: Adds a macron \htmlonly (&#257;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-macron
@@ -185,7 +185,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_MACRON, "accent-macron", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_OGONEK
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_OGONEK
  * \li Action: Adds an ogonek accent \htmlonly (&#261;)\endhtmlonly
                to the next character typed.
  * \li Syntax: accent-ogonek
@@ -194,7 +194,7 @@ void LyXAction::init()
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
 		{ LFUN_ACCENT_SPECIAL_CARON, "accent-special-caron", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_TIE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_TIE
  * \li Action: Adds a tie \htmlonly (a&#865;)\endhtmlonly
                over the next two character typed.
  * \li Notion: the following char will finish the tie.
@@ -203,7 +203,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_TIE, "accent-tie", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_TILDE
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_TILDE
  * \li Action: Adds a tilde \htmlonly (&atilde;)\endhtmlonly
                over the next character typed.
  * \li Syntax: accent-tilde
@@ -211,7 +211,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_TILDE, "accent-tilde", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_UMLAUT
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_UMLAUT
  * \li Action: Adds an umlaut \htmlonly (&auml;)\endhtmlonly
                over the next character typed.
  * \li Syntax: accent-umlaut
@@ -219,7 +219,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_UMLAUT, "accent-umlaut", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERBAR
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_UNDERBAR
  * \li Action: Adds a bar \htmlonly (a&#800;)\endhtmlonly
                under the next character typed.
  * \li Syntax: accent-underbar
@@ -227,7 +227,7 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_UNDERBAR, "accent-underbar", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ACCENT_UNDERDOT
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_UNDERDOT
  * \li Action: Adds a dot \htmlonly (&#7841;)\endhtmlonly
                under the next character typed.
  * \li Syntax: accent-underdot
@@ -236,7 +236,7 @@ void LyXAction::init()
 		{ LFUN_ACCENT_UNDERDOT, "accent-underdot", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_CAPTION_INSERT
+ * \var lyx::FuncCode lyx::LFUN_CAPTION_INSERT
  * \li Action: Inserts a caption inset.
  * \li Syntax: caption-insert
  * \li Origin: Lgb, 18 Jul 2000
@@ -244,7 +244,7 @@ void LyXAction::init()
  */
 		{ LFUN_CAPTION_INSERT, "caption-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_DATE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_DATE_INSERT
  * \li Action: Inserts the current date.
  * \li Syntax: date-insert [<ARG>]
  * \li Params: <ARG>: Format of date. The default value (%x) can be set
@@ -255,7 +255,7 @@ void LyXAction::init()
  */
 		{ LFUN_DATE_INSERT, "date-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_FOOTNOTE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_FOOTNOTE_INSERT
  * \li Action: Inserts a footnote inset.
  * \li Syntax: footnote-insert
  * \li Origin: Jug, 7 Mar 2000
@@ -263,7 +263,7 @@ void LyXAction::init()
  */
 		{ LFUN_FOOTNOTE_INSERT, "footnote-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_ERT_INSERT
+ * \var lyx::FuncCode lyx::LFUN_ERT_INSERT
  * \li Action: Inserts an ERT inset.
  * \li Syntax: ert-insert
  * \li Origin: Jug, 18 Feb 2000
@@ -274,14 +274,14 @@ void LyXAction::init()
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_HFILL_INSERT
+ * \var lyx::FuncCode lyx::LFUN_HFILL_INSERT
  * \li Action: Inserts an hfill inset.
  * \li Syntax: hfill-insert
  * \endvar
  */
 		{ LFUN_HFILL_INSERT, "hfill-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_OPTIONAL_INSERT
+ * \var lyx::FuncCode lyx::LFUN_OPTIONAL_INSERT
  * \li Action: Inserts an optional-argument (short title) inset.
  * \li Syntax: optional-insert
  * \li Origin: Martin, 12 Aug 2002
@@ -289,7 +289,7 @@ void LyXAction::init()
  */
 		{ LFUN_OPTIONAL_INSERT, "optional-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_LINE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_LINE_INSERT
  * \li Action: Inserts a horizontal line.
  * \li Syntax: line-insert
  * \li Origin: poenitz,  Oct 27 2003
@@ -297,7 +297,7 @@ void LyXAction::init()
  */
 		{ LFUN_LINE_INSERT, "line-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_NEWPAGE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_NEWPAGE_INSERT
  * \li Action: Inserts a new page.
  * \li Syntax: newpage-insert
  * \li Origin: uwestoehr, 24 Nov 2007
@@ -305,7 +305,7 @@ void LyXAction::init()
  */
 		{ LFUN_NEWPAGE_INSERT, "newpage-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PAGEBREAK_INSERT
+ * \var lyx::FuncCode lyx::LFUN_PAGEBREAK_INSERT
  * \li Action: Inserts a pagebreak.
  * \li Syntax: pagebreak-insert
  * \li Origin: poenitz,  Oct 27 2003
@@ -313,7 +313,7 @@ void LyXAction::init()
  */
 		{ LFUN_PAGEBREAK_INSERT, "pagebreak-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_MARGINALNOTE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_MARGINALNOTE_INSERT
  * \li Action: Inserts a marginal note.
  * \li Syntax: marginalnote-insert
  * \li Origin: Lgb, 26 Jun 2000
@@ -321,7 +321,7 @@ void LyXAction::init()
  */
 		{ LFUN_MARGINALNOTE_INSERT, "marginalnote-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_UNICODE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_UNICODE_INSERT
  * \li Action: Inserts a single unicode character.
  * \li Syntax: unicode-insert <CHAR>
  * \li Params: <CHAR>: The character to insert, given as its code
@@ -331,7 +331,7 @@ void LyXAction::init()
  */
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_LISTING_INSERT
+ * \var lyx::FuncCode lyx::LFUN_LISTING_INSERT
  * \li Action: Inserts a new listings inset.
  * \li Syntax: listing-insert
  * \li Origin: Herbert, 10 Nov 2001; bpeng, 2 May 2007
@@ -343,7 +343,7 @@ void LyXAction::init()
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
 		{ LFUN_BOX_INSERT, "box-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_FLEX_INSERT
+ * \var lyx::FuncCode lyx::LFUN_FLEX_INSERT
  * \li Action: Inserts CharStyle, Custom inset or XML short element.
  * \li Notion: Look into the Customization manual for more information about
                these elements.\n
@@ -383,7 +383,7 @@ void LyXAction::init()
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_SCROLL
+ * \var lyx::FuncCode lyx::LFUN_SCROLL
  * \li Action: Scroll the buffer view.
  * \li Notion: Only scrolls the screen up or down; does not move the cursor.
  * \li Syntax: scroll <TYPE> <QUANTITY>
@@ -394,7 +394,7 @@ void LyXAction::init()
  */
 		{ LFUN_SCROLL, "scroll", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_SCREEN_RECENTER
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_RECENTER
  * \li Action: Recenters the screen on the current cursor position.
  * \li Syntax: screen-recenter
  * \endvar
@@ -405,7 +405,7 @@ void LyXAction::init()
 
 		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD
+ * \var lyx::FuncCode lyx::LFUN_CHAR_BACKWARD
  * \li Action: Moves the cursor one position logically backwards.
  * \li Notion: This is not the action which should be bound to the arrow keys,
                because backwards may be left or right, depending on the
@@ -416,7 +416,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_BACKWARD, "char-backward", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_BACKWARD_SELECT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_BACKWARD_SELECT
  * \li Action: Moves the cursor one position logically backwards, adding
                traversed position to the selection.
  * \li Notion: See also #LFUN_CHAR_BACKWARD.
@@ -427,7 +427,7 @@ void LyXAction::init()
 		{ LFUN_CHAR_DELETE_BACKWARD, "delete-backward", SingleParUpdate, Edit },
 		{ LFUN_CHAR_DELETE_FORWARD, "delete-forward", SingleParUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD
+ * \var lyx::FuncCode lyx::LFUN_CHAR_FORWARD
  * \li Action: Moves the cursor one position logically forward.
  * \li Notion: This is not the action which should be bound to the arrow keys,
                because forward may be left or right, depending on the language.
@@ -438,7 +438,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_FORWARD, "char-forward", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_FORWARD_SELECT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_FORWARD_SELECT
  * \li Action: Moves the cursor one position logically forward, adding
                traversed position to the selection.
  * \li Notion: See also #LFUN_CHAR_FORWARD.
@@ -447,7 +447,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_FORWARD_SELECT, "char-forward-select", ReadOnly | SingleParUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_LEFT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_LEFT
  * \li Action: Moves the cursor one position "to the left".
  * \li Notion: This is the action which should be taken when the "left" key
                is pressed. Generally, it moves the cursor one position to the
@@ -461,7 +461,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_LEFT, "char-left", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_LEFT_SELECT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_LEFT_SELECT
  * \li Action: Moves the cursor one position "to the left", adding 
                traversed position to the selection.
  * \li Notion: See also #LFUN_CHAR_LEFT for exact details of the movement.
@@ -470,7 +470,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_LEFT_SELECT, "char-left-select", ReadOnly | SingleParUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_RIGHT
  * \li Action: Moves the cursor one position "to the right".
  * \li Notion: This is the action which should be taken when the "right" key
                is pressed. Generally, it moves the cursor one position to the
@@ -484,7 +484,7 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_RIGHT, "char-right", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CHAR_RIGHT_SELECT
+ * \var lyx::FuncCode lyx::LFUN_CHAR_RIGHT_SELECT
  * \li Action: Moves the cursor one position "to the right", adding
                traversed position to the selection.
  * \li Notion: See also #LFUN_CHAR_RIGHT for exact details of the movement.
@@ -512,7 +512,7 @@ void LyXAction::init()
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_THESAURUS_ENTRY
+ * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
  * \li Syntax: thesaurus-entry
  * \li Origin: Levon, 20 Jul 2001
@@ -533,21 +533,21 @@ void LyXAction::init()
 		{ LFUN_NEW_LINE, "new-line", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_COPY
+ * \var lyx::FuncCode lyx::LFUN_COPY
  * \li Action: Copies to the clipboard the last edit.
  * \li Syntax: copy
  * \endvar
  */
 		{ LFUN_COPY, "copy", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_CUT
+ * \var lyx::FuncCode lyx::LFUN_CUT
  * \li Action: Cuts to the clipboard.
  * \li Syntax: cut
  * \endvar
  */
 		{ LFUN_CUT, "cut", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PASTE
+ * \var lyx::FuncCode lyx::LFUN_PASTE
  * \li Action: Pastes from the active clipboard.
  * \li Syntax: paste
  * \endvar
@@ -555,21 +555,21 @@ void LyXAction::init()
 		{ LFUN_PASTE, "paste", Noop, Edit },
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PRIMARY_SELECTION_PASTE
+ * \var lyx::FuncCode lyx::LFUN_PRIMARY_SELECTION_PASTE
  * \li Action: Pastes the material currently selected.
  * \li Syntax: primary-selection-paste
  * \endvar
  */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_UNDO
+ * \var lyx::FuncCode lyx::LFUN_UNDO
  * \li Action: Undoes the last edit.
  * \li Syntax: undo
  * \endvar
  */
 		{ LFUN_UNDO, "undo", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_REDO
+ * \var lyx::FuncCode lyx::LFUN_REDO
  * \li Action: Redoes the last thing undone.
  * \li Syntax: redo
  * \endvar
@@ -613,7 +613,7 @@ void LyXAction::init()
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_LAYOUT
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph.
  * \li Syntax: layout <LAYOUT>
  * \li Params: <LAYOUT>: the layout to use
@@ -621,7 +621,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_LAYOUT_PARAGRAPH
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_PARAGRAPH
  * \li Action: Launches the paragraph settings dialog.
  * \li Syntax: layout-paragraph
  * \endvar
@@ -629,7 +629,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly, Layout },
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_DROP_LAYOUTS_CHOICE
+ * \var lyx::FuncCode lyx::LFUN_DROP_LAYOUTS_CHOICE
  * \li Action: Displays list of layout choices.
  * \li Notion: In the current (as of 2007) Qt4 frontend, this LFUN opens the
                dropbox allowing for choice of layout.
@@ -638,7 +638,7 @@ void LyXAction::init()
  */
 		{ LFUN_DROP_LAYOUTS_CHOICE, "drop-layouts-choice", ReadOnly, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULES_CLEAR
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_MODULES_CLEAR
  * \li Action: Clears the module list.
  * \li Notion: Clears the list of included modules for the current buffer.
  * \li Syntax: layout-modules-clear
@@ -647,7 +647,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_LAYOUT_MODULE_ADD
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_MODULE_ADD
  * \li Action: Adds a module.
  * \li Notion: Adds a module to the list of included modules for the current buffer.
  * \li Syntax: layout-module-add <MODULE>
@@ -657,7 +657,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_LAYOUT_RELOAD
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_RELOAD
  * \li Action: Reloads layout information.
  * \li Notion: Reloads all layout information for the current buffer from disk, thus
                recognizing any changes that have been made to layout files on the fly.
@@ -669,7 +669,7 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_TEXTCLASS_APPLY
+ * \var lyx::FuncCode lyx::LFUN_TEXTCLASS_APPLY
  * \li Action: Sets the text class for the current buffer.
  * \li Syntax: textclass-apply <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to set. Note that this must be
@@ -678,7 +678,7 @@ void LyXAction::init()
  */
 		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop, Layout },
 /*!
- * \var lyx::kb_action lyx::LFUN_TEXTCLASS_LOAD
+ * \var lyx::FuncCode lyx::LFUN_TEXTCLASS_LOAD
  * \li Action: Loads information for a textclass from disk.
  * \li Syntax: textclass-load <TEXTCLASS>
  * \li Params: <TEXTCLASS>: the textclass to load. Note that this must be
@@ -688,14 +688,14 @@ void LyXAction::init()
 		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop, Layout },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_MARK_OFF
+ * \var lyx::FuncCode lyx::LFUN_MARK_OFF
  * \li Action: Disable selecting of text-region.
  * \li Syntax: mark-off
  * \endvar
  */
 		{ LFUN_MARK_OFF, "mark-off", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_MARK_ON
+ * \var lyx::FuncCode lyx::LFUN_MARK_ON
  * \li Action: Enable selecting of text-region.
  * \li Notion: After enabling you can simply move arrow keys to get selected region.
  * \li Syntax: mark-on
@@ -703,7 +703,7 @@ void LyXAction::init()
  */
 		{ LFUN_MARK_ON, "mark-on", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_MARK_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_MARK_TOGGLE
  * \li Action: Toggle between #LFUN_MARK_ON and #LFUN_MARK_OFF .
  * \li Syntax: mark-toggle
  * \li Origin: poenitz, May 5 2006
@@ -725,7 +725,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
  * \li Action: Toggles numbering of the current formula line.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-line-toggle
@@ -734,7 +734,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_NUMBER_LINE_TOGGLE, "math-number-line-toggle", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_NUMBER_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_MATH_NUMBER_TOGGLE
  * \li Action: Toggles numbering/labeling of the current formula.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-toggle
@@ -745,7 +745,7 @@ void LyXAction::init()
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_UNFOLD
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_UNFOLD
  * \li Action: Unfold a Math Macro.
  * \li Notion: Unfold the Math Macro the cursor is in, i.e.
                display it as \foo.
@@ -755,7 +755,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_UNFOLD, "math-macro-unfold", ReadOnly | SingleParUpdate, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_FOLD
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_FOLD
  * \li Action: Fold a Math Macro.
  * \li Notion: Fold the Math Macro the cursor is in if it was
                unfolded, i.e. displayed as \foo before.
@@ -765,7 +765,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_FOLD, "math-macro-fold", ReadOnly | SingleParUpdate, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_ADD_PARAM
  * \li Action: Add a parameter.
  * \li Notion: Add a parameter to a Math Macro.
  * \li Params: <NUM>: The number of the parameter behind which the new one
@@ -777,7 +777,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_PARAM, "math-macro-add-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_REMOVE_PARAM
  * \li Action: Remove the last parameter.
  * \li Notion: Remove the last parameter of a Math Macro and
                remove its value in all instances of the macro
@@ -790,7 +790,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_PARAM, "math-macro-remove-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_APPEND_GREEDY_PARAM
  * \li Action: Append a greedy parameter.
  * \li Notion: Append a greedy parameter to a Math Macro which
                eats the following mathed cell in every instance of
@@ -801,7 +801,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_APPEND_GREEDY_PARAM, "math-macro-append-greedy-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM
  * \li Action: Remove a greedy parameter.
  * \li Notion: Remove a greedy parameter of a Math Macro and spit
                out the values of it in every instance of the macro
@@ -813,7 +813,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM, "math-macro-remove-greedy-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_OPTIONAL
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_MAKE_OPTIONAL
  * \li Action: Make a parameter optional.
  * \li Notion: Turn the first non-optional parameter of a Math Macro
                into an optional parameter with a default value.
@@ -823,7 +823,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_MAKE_OPTIONAL, "math-macro-make-optional", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_MAKE_NONOPTIONAL
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_MAKE_NONOPTIONAL
  * \li Action: Make a parameter non-optional.
  * \li Notion: Turn the last optional parameter of a Math Macro
                into a non-optional parameter. The default value is
@@ -834,7 +834,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_MAKE_NONOPTIONAL, "math-macro-make-nonoptional", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM
  * \li Action: Add an optional parameter.
  * \li Notion: Insert an optional parameter just behind the
                already existing optional parameters.
@@ -844,7 +844,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM, "math-macro-add-optional-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM
  * \li Action: Remove the last optional parameter.
  * \li Notion: Remove the last optional parameter of a Math Macro and
                remove it in all the instances of the macro in the buffer.
@@ -854,7 +854,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM, "math-macro-remove-optional-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM
  * \li Action: Add a greedy optional parameter.
  * \li Notion: Add a greedy optional parameter which eats the value
                from the following cells in mathed which are in the [value]
@@ -865,7 +865,7 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM, "math-macro-add-greedy-optional-param", Noop, Math },
 /*!
- * \var lyx::kb_action lyx::LFUN_IN_MATHMACROTEMPLATE
+ * \var lyx::FuncCode lyx::LFUN_IN_MATHMACROTEMPLATE
  * \li Action: Only active in Math Macro definition.
  * \li Notion: Dummy function which is only active in a Math Macro definition.
                It's used to toggle the Math Macro toolbar if the cursor moves
@@ -877,7 +877,7 @@ void LyXAction::init()
 		{ LFUN_IN_MATHMACROTEMPLATE, "in-mathmacrotemplate", Noop, Math },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_DOWN
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_MOVE_DOWN
  * \li Action: Moves the current paragraph downwards in the document.
  * \li Syntax: paragraph-move-down
  * \li Origin: Edwin, 8 Apr 2006
@@ -885,7 +885,7 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_MOVE_UP
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_MOVE_UP
  * \li Action: Moves the current paragraph upwards in the document.
  * \li Syntax: paragraph-move-up
  * \li Origin: Edwin, 8 Apr 2006
@@ -899,7 +899,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_DOWN, "paragraph-down", ReadOnly | NoUpdate, Edit },
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_GOTO
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_GOTO
  * \li Action: Jump to a paragraph given by its id number.
  * \li Notion: Note that id number of paragraph is not the sequential number of paragraph
                seen on the screen. Moreover the id is unique for all opened buffers (documents).
@@ -909,14 +909,14 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH
+ * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
  * \li Action: Breaks the current paragraph at the current location.
  * \li Syntax: break-paragraph
  * \endvar
  */
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_BREAK_PARAGRAPH_SKIP
+ * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH_SKIP
  * \li Action: Breaks the current paragraph at the current location,
                unless used at the beginning of a line, where it sets
                the label width string to empty.
@@ -925,7 +925,7 @@ void LyXAction::init()
  */
 		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings.
  * \li Notion: Modifies the current paragraph, or currently selected paragraphs.
                This function only modifies, and does not override, existing settings.
@@ -940,7 +940,7 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_PARAGRAPH_PARAMS_APPLY
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_PARAMS_APPLY
  * \li Action: Change paragraph settings.
  * \li Notion: Overwrite all nonspecified settings to the default ones.
                Use paragraph-params lfun if you don't want to overwrite others settings.
@@ -953,7 +953,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_OUTLINE_UP
+ * \var lyx::FuncCode lyx::LFUN_OUTLINE_UP
  * \li Action: Move the current group in the upward direction in the
                structure of the document.
  * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
@@ -964,7 +964,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_UP, "outline-up", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_OUTLINE_DOWN
+ * \var lyx::FuncCode lyx::LFUN_OUTLINE_DOWN
  * \li Action: Move the current group in the downward direction in the
                structure of the document.
  * \li Notion: The "group" can be Part/Chapter/Section/etc. It moves
@@ -975,7 +975,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_DOWN, "outline-down", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_OUTLINE_IN
+ * \var lyx::FuncCode lyx::LFUN_OUTLINE_IN
  * \li Action: Moves the current group in the downward direction in the
                hierarchy of the document structure.
  * \li Notion: Part -> Chapter -> Section -> etc.
@@ -985,7 +985,7 @@ void LyXAction::init()
  */
 		{ LFUN_OUTLINE_IN, "outline-in", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_OUTLINE_OUT
+ * \var lyx::FuncCode lyx::LFUN_OUTLINE_OUT
  * \li Action: Moves the current group in the upward direction in the
                hierarchy of the document structure.
  * \li Notion: Part <- Chapter <- Section <- etc.
@@ -1020,7 +1020,7 @@ void LyXAction::init()
 		{ LFUN_ALL_CHANGES_REJECT, "all-changes-reject", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_INSET_APPLY
+ * \var lyx::FuncCode lyx::LFUN_INSET_APPLY
  * \li Action: Apply data for an inset.
  * \li Notion: LFUN_INSET_APPLY is sent from the dialogs when the data should
                be applied. This is either changed to #LFUN_INSET_MODIFY or
@@ -1032,7 +1032,7 @@ void LyXAction::init()
 		{ LFUN_INSET_APPLY, "inset-apply", Noop, Edit },
 		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_INSET_INSERT
+ * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|
@@ -1052,7 +1052,7 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_INSERT, "inset-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_INSET_MODIFY
+ * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
  * \li Action: Modify existing inset.
  * \li Notion: Used for label, floats, listings, box, branch, external, wrap
                bibtex, ert, command, grahocs, note, vspace, tabular, bibitem,
@@ -1069,7 +1069,7 @@ void LyXAction::init()
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_FINISHED_FORWARD
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_FORWARD
  * \li Action: Moves the cursor out of the current slice, going forward.
  * \li Notion: Cursor movement within an inset may be different than cursor
                movement in the surrounding text. This action should be called
@@ -1081,21 +1081,21 @@ void LyXAction::init()
  */
 		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
 /*!
- * \var lyx::kb_action lyx::LFUN_FINISHED_BACKWARD
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_BACKWARD
  * \li Action: Moves the cursor out of the current slice, going backwards.
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
  * \endvar
  */
 		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
 /*!
- * \var lyx::kb_action lyx::LFUN_FINISHED_RIGHT
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_RIGHT
  * \li Action: Moves the cursor out of the current slice, going right.
  * \li Notion: See also #LFUN_FINISHED_FORWARD
  * \endvar
  */
 		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
 /*!
- * \var lyx::kb_action lyx::LFUN_FINISHED_LEFT
+ * \var lyx::FuncCode lyx::LFUN_FINISHED_LEFT
  * \li Action: Moves the cursor out of the current slice, going left.
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
  * \endvar
@@ -1105,7 +1105,7 @@ void LyXAction::init()
 		{ LFUN_LANGUAGE, "language", Noop, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_LABEL_GOTO
+ * \var lyx::FuncCode lyx::LFUN_LABEL_GOTO
  * \li Action: Goto a label.
  * \li Syntax: label-goto [<LABEL>]
  * \li Params: <LABEL>: Requested label. If no label is given and refernce
@@ -1117,7 +1117,7 @@ void LyXAction::init()
 		{ LFUN_LABEL_GOTO, "label-goto", ReadOnly, Edit },
 		{ LFUN_LABEL_INSERT, "label-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_REFERENCE_NEXT
+ * \var lyx::FuncCode lyx::LFUN_REFERENCE_NEXT
  * \li Action: Go to the next label or cross-reference.
  * \li Syntax: reference-next
  * \li Origin: Dekel, 14 Jan 2001
@@ -1126,7 +1126,7 @@ void LyXAction::init()
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_BOOKMARK_GOTO
+ * \var lyx::FuncCode lyx::LFUN_BOOKMARK_GOTO
  * \li Action: Goto a bookmark.
  * \li Notion: Moves the cursor to the numbered bookmark, opening the file
                if necessary. Note that bookmarsk are saved per-session, not
@@ -1138,7 +1138,7 @@ void LyXAction::init()
  */
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", NoBuffer, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_BOOKMARK_SAVE
+ * \var lyx::FuncCode lyx::LFUN_BOOKMARK_SAVE
  * \li Action: Save a bookmark.
  * \li Notion: Saves a numbered bookmark to the sessions file. The number
                must be between 1 and 9, inclusive. Note that bookmarks are
@@ -1150,7 +1150,7 @@ void LyXAction::init()
  */
 		{ LFUN_BOOKMARK_SAVE, "bookmark-save", ReadOnly, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_BOOKMARK_CLEAR
+ * \var lyx::FuncCode lyx::LFUN_BOOKMARK_CLEAR
  * \li Action: Clears the list of saved bookmarks.
  * \li Syntax: bookmark-clear
  * \li Origin: bpeng, 31 October 2006
@@ -1160,7 +1160,7 @@ void LyXAction::init()
 
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_LYX_QUIT
+ * \var lyx::FuncCode lyx::LFUN_LYX_QUIT
  * \li Action: Terminates the current LyX instance.
  * \li Notion: Terminates the current LyX instance, asking whether to save
                modified documents, etc.
@@ -1169,7 +1169,7 @@ void LyXAction::init()
  */
 		{ LFUN_LYX_QUIT, "lyx-quit", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_TOOLBAR_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_TOOLBAR_TOGGLE
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
  * \li Notion: Skiping "auto" when allowauto is false.
  * \li Syntax: toolbar-toggle <NAME> [allowauto]
@@ -1181,7 +1181,7 @@ void LyXAction::init()
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_UI_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_UI_TOGGLE
  * \li Action: Various UI visibility-toggling actions.
  * \li Syntax: ui-toggle <statusbar|menubar|frame|fullscreen>
  * \li Params: statusbar  : Toggle visibility of the statusbar.\n
@@ -1200,7 +1200,7 @@ void LyXAction::init()
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_SPLIT_VIEW
+ * \var lyx::FuncCode lyx::LFUN_SPLIT_VIEW
  * \li Action: Creates another split view of current buffer.
  * \li Notion: All split views act in the same way indpendently.
  * \li Syntax: split-view <vertical|horizontal>
@@ -1212,7 +1212,7 @@ void LyXAction::init()
 		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_CLOSE_TAB_GROUP
+ * \var lyx::FuncCode lyx::LFUN_CLOSE_TAB_GROUP
  * \li Action: Close the current tab group.
  * \li Notion: This only closes the work areas, not the buffer themselves.
                The still opened buffers can be visualized in another tab group.
@@ -1249,7 +1249,7 @@ void LyXAction::init()
 		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly, System },
 		{ LFUN_SERVER_GET_XY, "server-get-xy", ReadOnly, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_SERVER_GOTO_FILE_ROW
+ * \var lyx::FuncCode lyx::LFUN_SERVER_GOTO_FILE_ROW
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
  * \li Syntax: server-goto-file-row <LYX_FILE_NAME> <ROW_NUMBER>
  * \li Origin: Edmar, 23 Dec 1998
@@ -1262,7 +1262,7 @@ void LyXAction::init()
 		{ LFUN_BUILD_PROGRAM, "build-program", ReadOnly, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_AUTO_SAVE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_AUTO_SAVE
  * \li Action: Saves the current buffer to a temporary file.
  * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
                is called automatically by LyX, to "autosave" the current buffer.
@@ -1275,7 +1275,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
 		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_CLOSE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_CLOSE
  * \li Action: Closes the current buffer.
  * \li Notion: Closes the current buffer, asking whether to save it, etc,
                if the buffer has been modified.
@@ -1284,7 +1284,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_CLOSE, "buffer-close", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_EXPORT
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT
  * \li Action: Exports the current buffer (document) to the given format.
  * \li Syntax: buffer-export <FORMAT>
  * \li Params: <FORMAT> is either "custom" or one of the formats which you
@@ -1300,7 +1300,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_EXPORT, "buffer-export", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_EXPORT_CUSTOM
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT_CUSTOM
  * \li Action: Exports the current buffer (document) from the given format using
                the given command on it.
  * \li Syntax: buffer-export-custom <FORMAT> <COMMAND>
@@ -1314,7 +1314,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_PRINT
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_PRINT
  * \li Action: Prints the current document.
  * \li Notion: Many settings can be given via the preferences dialog.
  * \li Syntax: buffer-print <TARGET> <TARGET-NAME> <COMMAND>
@@ -1327,7 +1327,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_PRINT, "buffer-print", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_IMPORT
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_IMPORT
  * \li Action: Import a given file as a lyx document.
  * \li Notion: File can be imported iff lyx file format is (transitively) reachable via
                defined convertors in preferences. Look into File->Import menu to get
@@ -1338,7 +1338,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_NEW
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_NEW
  * \li Action: Creates a new buffer (that is, document).
  * \li Notion: Implicit path can be set in Preferences dialog.
  * \li Syntax: buffer-new [<FILE>]
@@ -1347,7 +1347,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_NEW, "buffer-new", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_NEW_TEMPLATE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_NEW_TEMPLATE
  * \li Action: Creates a new buffer (that is, document) from a template.
  * \li Notion: Path for new files and templates can be set in Preferences dialog.
                Template will be asked for via Open-dialog.
@@ -1357,7 +1357,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_RELOAD
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_RELOAD
  * \li Action: Reverts opened document.
  * \li Syntax: buffer-reload
  * \li Origin: Asger, 2 Feb 1997
@@ -1365,7 +1365,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_SWITCH
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_SWITCH
  * \li Action: Switch to the given buffer.
  * \li Notion: This is useful also in case you need simultaneously more views of the edited
                document in different LyX windows.
@@ -1375,7 +1375,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_TOGGLE_READ_ONLY
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_READ_ONLY
  * \li Action: Toggle editing mode of the current document between read/write and read-only.
  * \li Syntax: buffer-toggle-read-only
  * \li Origin: Lgb, 27 May 1997
@@ -1383,7 +1383,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_VIEW
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_VIEW
  * \li Action: Displays current buffer in chosen format.
  * \li Notion: Displays the contents of the current buffer in the chosen
                format, for example, PDF or DVI. This runs the necessary
@@ -1396,7 +1396,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_UPDATE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_UPDATE
  * \li Action: Exports the current document and put the result into the
                temporary directory.
  * \li Notion: In case you are already viewing the exported document (see #LFUN_BUFFER_VIEW)
@@ -1412,7 +1412,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE
  * \li Action: Saves the current buffer.
  * \li Notion: Saves the current buffer to disk, using the filename that
                is already associated with the buffer, asking for one if
@@ -1422,7 +1422,7 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly, Buffer },
 /*!
- * \var lyx::kb_action lyx::LFUN_BUFFER_WRITE_AS
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE_AS
  * \li Action: Rename and save current buffer.
  * \li Syntax: buffer-write-as <FILENAME>
  * \li Params: <FILENAME>: New name of the buffer/file. A relative path
@@ -1440,7 +1440,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_FILE_INSERT
+ * \var lyx::FuncCode lyx::LFUN_FILE_INSERT
  * \li Action: Inserts another LyX file.
  * \li Syntax: file-insert [<FILE>]
  * \li Params: <FILE>: Filename to be inserted.
@@ -1448,7 +1448,7 @@ void LyXAction::init()
  */
 		{ LFUN_FILE_INSERT, "file-insert", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_FILE_INSERT_PLAINTEXT
+ * \var lyx::FuncCode lyx::LFUN_FILE_INSERT_PLAINTEXT
  * \li Action: Inserts plain text file.
  * \li Syntax: file-insert-plaintext [<FILE>]
  * \li Params: <FILE>: Filename to be inserted.
@@ -1457,7 +1457,7 @@ void LyXAction::init()
  */
 		{ LFUN_FILE_INSERT_PLAINTEXT, "file-insert-plaintext", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_FILE_INSERT_PLAINTEXT_PARA
+ * \var lyx::FuncCode lyx::LFUN_FILE_INSERT_PLAINTEXT_PARA
  * \li Action: Inserts plain text file as paragraph (i.e. join lines).
  * \li Syntax: file-insert-plaintext-para [<FILE>]
  * \li Params: <FILE>: Filename to be inserted.
@@ -1466,7 +1466,7 @@ void LyXAction::init()
  */
 		{ LFUN_FILE_INSERT_PLAINTEXT_PARA, "file-insert-plaintext-para", Noop, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_FILE_OPEN
+ * \var lyx::FuncCode lyx::LFUN_FILE_OPEN
  * \li Action: Open LyX document.
  * \li Syntax: file-open [<FILE>]
  * \li Params: <FILE>: Filename to be opened.
@@ -1475,7 +1475,7 @@ void LyXAction::init()
 		{ LFUN_FILE_OPEN, "file-open", NoBuffer, Buffer },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_CALL
+ * \var lyx::FuncCode lyx::LFUN_CALL
  * \li Action: Executes a command defined in a .def file.
  * \li Notion: The definitions are by default read from lib/commands/default.def.\n
                A .def file allows to define a command with \\define "<NAME>" "<LFUN>"
@@ -1493,7 +1493,7 @@ void LyXAction::init()
  */
 		{ LFUN_CALL, "call", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_META_PREFIX
+ * \var lyx::FuncCode lyx::LFUN_META_PREFIX
  * \li Action: Simulate halting Meta key (Alt key on PCs).
  * \li Notion: Used for buffer editation not for GUI control.
  * \li Syntax: meta-prefix
@@ -1501,7 +1501,7 @@ void LyXAction::init()
  */
 		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_CANCEL
+ * \var lyx::FuncCode lyx::LFUN_CANCEL
  * \li Action: Cancels sequence prepared by #LFUN_META_PREFIX .
  * \li Syntax: cancel
  * \endvar
@@ -1509,7 +1509,7 @@ void LyXAction::init()
 		{ LFUN_CANCEL, "cancel", NoBuffer, System },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_COMMAND_EXECUTE
+ * \var lyx::FuncCode lyx::LFUN_COMMAND_EXECUTE
  * \li Action: Opens the minibuffer toolbar so that the user can type in there.
  * \li Notion: Usually bound to M-x shortcut.
  * \li Syntax: command-execute
@@ -1518,7 +1518,7 @@ void LyXAction::init()
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
 /*!
- * \var lyx::kb_action lyx::LFUN_COMMAND_SEQUENCE
+ * \var lyx::FuncCode lyx::LFUN_COMMAND_SEQUENCE
  * \li Action: Run more commands (LFUN and its parameters) in a sequence.
  * \li Syntax: command-sequence <CMDS>
  * \li Params: <CMDS>: Sequence of commands separated by semicolons.
@@ -1529,7 +1529,7 @@ void LyXAction::init()
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 
 /*!
- * \var lyx::kb_action lyx::LFUN_PREFERENCES_SAVE
+ * \var lyx::FuncCode lyx::LFUN_PREFERENCES_SAVE
  * \li Action: Save user preferences.
  * \li Syntax: preferences-save
  * \li Origin: Lgb, 27 Nov 1999
@@ -1537,7 +1537,7 @@ void LyXAction::init()
  */
 		{ LFUN_PREFERENCES_SAVE, "preferences-save", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_RECONFIGURE
+ * \var lyx::FuncCode lyx::LFUN_RECONFIGURE
  * \li Action: Reconfigure the automatic settings.
  * \li Syntax: reconfigure
  * \li Origin: Asger, 14 Feb 1997
@@ -1545,7 +1545,7 @@ void LyXAction::init()
  */
 		{ LFUN_RECONFIGURE, "reconfigure", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_LYXRC_APPLY
+ * \var lyx::FuncCode lyx::LFUN_LYXRC_APPLY
  * \li Action: Apply the given settings to user preferences.
  * \li Syntax: lyxrc-apply <SETTINGS>
  * \li Params: <SETTINGS>: settings which are to be set. Take a look into ~/.lyx/preferences
@@ -1555,7 +1555,7 @@ void LyXAction::init()
  */
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE
+ * \var lyx::FuncCode lyx::LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE
  * \li Action: Determine whether keep cursor inside the editing window regardless
                the scrollbar movement.
  * \li Syntax: toggle-cursor-follows-scrollbar
@@ -1564,7 +1564,7 @@ void LyXAction::init()
  */
 		{ LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE, "cursor-follows-scrollbar-toggle", ReadOnly, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_SET_COLOR
+ * \var lyx::FuncCode lyx::LFUN_SET_COLOR
  * \li Action: Set the given LyX color to the color defined by the X11 name given.
  * \li Notion: A new color entry is created if the color is unknown.
                Color names can be stored as a part of user settings.
@@ -1574,7 +1574,7 @@ void LyXAction::init()
  */
 		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_STATISTICS
+ * \var lyx::FuncCode lyx::LFUN_STATISTICS
  * \li Action: Count the statistics (number of words and characters)
                in the document or in the given selection.
  * \li Notion: Note that this function gives the number of words/chars written,
@@ -1585,7 +1585,7 @@ void LyXAction::init()
  */
 		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
 /*!
- * \var lyx::kb_action lyx::LFUN_COMPLETION_INLINE
+ * \var lyx::FuncCode lyx::LFUN_COMPLETION_INLINE
  * \li Action: Show the inline completion at the cursor position.
  * \li Syntax: completion-inline
  * \li Origin: sts, Feb 19 2008
@@ -1593,7 +1593,7 @@ void LyXAction::init()
  */
 		{ LFUN_COMPLETION_INLINE, "completion-inline", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_COMPLETION_POPUP
+ * \var lyx::FuncCode lyx::LFUN_COMPLETION_POPUP
  * \li Action: Show the completion popup at the cursor position.
  * \li Syntax: completion-popup
  * \li Origin: sts, Feb 19 2008
@@ -1601,7 +1601,7 @@ void LyXAction::init()
  */
 		{ LFUN_COMPLETION_POPUP, "completion-popup", ReadOnly | NoUpdate, Edit },
 /*!
- * \var lyx::kb_action lyx::LFUN_COMPLETION_COMPLETE
+ * \var lyx::FuncCode lyx::LFUN_COMPLETION_COMPLETE
  * \li Action: Try to complete the word or command at the cursor position.
  * \li Syntax: complete
  * \li Origin: sts, Feb 19 2008
@@ -1645,21 +1645,21 @@ FuncRequest LyXAction::lookupFunc(string const & func) const
 }
 
 
-string const LyXAction::getActionName(kb_action action) const
+string const LyXAction::getActionName(FuncCode action) const
 {
 	info_map::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.name : string();
 }
 
 
-LyXAction::func_type const LyXAction::getActionType(kb_action action) const
+LyXAction::func_type const LyXAction::getActionType(FuncCode action) const
 {
 	info_map::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.type : Hidden;
 }
 
 
-bool LyXAction::funcHasFlag(kb_action action,
+bool LyXAction::funcHasFlag(FuncCode action,
 			    LyXAction::func_attrib flag) const
 {
 	info_map::const_iterator ici = lyx_info_map.find(action);

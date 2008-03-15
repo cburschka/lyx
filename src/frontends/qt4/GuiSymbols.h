@@ -36,7 +36,7 @@ public:
 	void dispatchParams();
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
-	virtual kb_action getLfun() const { return LFUN_SELF_INSERT; }
+	virtual FuncCode getLfun() const { return LFUN_SELF_INSERT; }
 	//@}
 
 public Q_SLOTS:

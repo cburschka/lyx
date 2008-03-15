@@ -14,7 +14,8 @@
 #ifndef TRANS_H
 #define TRANS_H
 
-#include "lfuns.h"
+#include "FuncCode.h"
+
 #include "support/docstring.h"
 
 #include <list>
@@ -70,7 +71,7 @@ enum tex_accent {
 };
 
 
-struct tex_accent_struct {
+struct TeXAccent {
 	///
 	tex_accent accent;
 	/// UCS4 code point of this accent
@@ -78,11 +79,11 @@ struct tex_accent_struct {
 	///
 	char const * name;
 	///
-	kb_action action;
+	FuncCode action;
 };
 
 ///
-extern tex_accent_struct get_accent(kb_action action);
+extern TeXAccent get_accent(FuncCode action);
 
 
 ///
@@ -162,8 +163,7 @@ private:
 
 
 ///
-inline
-docstring const & Trans::match(char_type c)
+inline docstring const & Trans::match(char_type c)
 {
 	std::map<char_type, docstring>::iterator it = keymap_.find(c);
 	if (it != keymap_.end()) {

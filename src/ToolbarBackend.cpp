@@ -141,12 +141,12 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 		case TO_MINIBUFFER:
 			add(ToolbarItem(ToolbarItem::MINIBUFFER,
-				FuncRequest(kb_action(ToolbarItem::MINIBUFFER))));
+				FuncRequest(FuncCode(ToolbarItem::MINIBUFFER))));
 			break;
 
 		case TO_SEPARATOR:
 			add(ToolbarItem(ToolbarItem::SEPARATOR,
-				FuncRequest(kb_action(ToolbarItem::SEPARATOR))));
+				FuncRequest(FuncCode(ToolbarItem::SEPARATOR))));
 			break;
 
 		case TO_POPUPMENU:
@@ -169,14 +169,14 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 		case TO_LAYOUTS:
 			add(ToolbarItem(ToolbarItem::LAYOUTS,
-				FuncRequest(kb_action(ToolbarItem::LAYOUTS))));
+				FuncRequest(FuncCode(ToolbarItem::LAYOUTS))));
 			break;
 
 		case TO_TABLEINSERT:
 			if (lex.next(true)) {
 				docstring const tooltip = lex.getDocString();
 				add(ToolbarItem(ToolbarItem::TABLEINSERT,
-					FuncRequest(kb_action(ToolbarItem::TABLEINSERT)), tooltip));
+					FuncRequest(FuncCode(ToolbarItem::TABLEINSERT)), tooltip));
 			}
 			break;
 

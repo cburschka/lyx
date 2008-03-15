@@ -55,7 +55,7 @@ private:
 	///
 	bool canApplyToReadOnly() const { return true; }
 	///
-	kb_action getLfun() const { return LFUN_BUFFER_PRINT; }
+	FuncCode getLfun() const { return LFUN_BUFFER_PRINT; }
 
 	///
 	PrinterParams params_;

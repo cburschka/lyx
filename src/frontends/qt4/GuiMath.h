@@ -13,7 +13,7 @@
 #define GUIMATH_H
 
 #include "GuiDialog.h"
-#include "lfuns.h" // for kb_action
+#include "FuncCode.h"
 #include "FontEnums.h"
 
 #include <map>
@@ -45,7 +45,7 @@ public:
 	bool isBufferDependent() const { return true; }
 
 	/// dispatch an LFUN
-	void dispatchFunc(kb_action action,
+	void dispatchFunc(FuncCode action,
 		std::string const & arg = std::string()) const;
 	/// Insert a math symbol into the doc.
 	void dispatchInsert(std::string const & name) const;

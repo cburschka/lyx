@@ -12,7 +12,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-#include "lfuns.h"
+#include "FuncCode.h"
 
 #include <QString>
 #include <string>
@@ -164,7 +164,7 @@ public:
 	 * It should be used in dispatchParams(), too for consistency reasons.
 	 *  \returns the lfun that is sent for applying the data.
 	 */
-	virtual kb_action getLfun() const { return LFUN_INSET_APPLY; }
+	virtual FuncCode getLfun() const { return LFUN_INSET_APPLY; }
 
 	/** Check whether we may apply our data.
 	 *

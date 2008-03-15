@@ -23,9 +23,9 @@
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "Font.h"
+#include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"
-#include "lfuns.h"
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
 #include "paragraph_funcs.h"

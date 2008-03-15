@@ -2055,7 +2055,7 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		KeySequence const & seq, item_type tag)
 {
-	kb_action action = lfun.action;
+	FuncCode action = lfun.action;
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name) 
 			+ " " + lfun.argument());

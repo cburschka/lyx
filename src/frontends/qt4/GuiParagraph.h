@@ -48,7 +48,7 @@ public:
 	void dispatchParams();
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
-	virtual kb_action getLfun() const { return LFUN_PARAGRAPH_PARAMS_APPLY; }
+	virtual FuncCode getLfun() const { return LFUN_PARAGRAPH_PARAMS_APPLY; }
 	//@}
 
 private:

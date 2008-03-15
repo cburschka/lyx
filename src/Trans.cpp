@@ -67,7 +67,7 @@ namespace lyx {
    |                  | semivoiced_sound |                  |
    |                  |                  |LFUN_ACCENT_SPECIAL_CARON| special caron
    */
-static tex_accent_struct lyx_accent_table[] = {
+static TeXAccent lyx_accent_table[] = {
 	{TEX_NOACCENT,   0,      "",                LFUN_NOACTION},
 	{TEX_ACUTE,      0x0301, "acute",           LFUN_ACCENT_ACUTE},
 	{TEX_GRAVE,      0x0300, "grave",           LFUN_ACCENT_GRAVE},
@@ -90,7 +90,7 @@ static tex_accent_struct lyx_accent_table[] = {
 };
 
 
-tex_accent_struct get_accent(kb_action action)
+TeXAccent get_accent(FuncCode action)
 {
 	int i = 0;
 	while (i <= TEX_MAX_ACCENT) {
@@ -98,8 +98,8 @@ tex_accent_struct get_accent(kb_action action)
 			return lyx_accent_table[i];
 		++i;
 	}
-	struct tex_accent_struct temp = { static_cast<tex_accent>(0), 0,
-					  0, static_cast<kb_action>(0)};
+	struct TeXAccent temp = { static_cast<tex_accent>(0), 0,
+					  0, static_cast<FuncCode>(0)};
 	return temp;
 }
 

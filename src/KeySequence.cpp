@@ -13,10 +13,9 @@
 #include <config.h>
 
 #include "KeySequence.h"
+#include "KeyMap.h"
 
 #include "support/gettext.h"
-#include "KeyMap.h"
-#include "lfuns.h"
 
 #include "frontends/KeySymbol.h"
 
@@ -38,9 +37,8 @@ FuncRequest const & KeySequence::addkey(KeySymbol const & key,
 	modifiers.push_back(make_pair(mod, nmod));
 	sequence.push_back(key);
 
-	if (curmap) {
+	if (curmap)
 		return curmap->lookup(key, mod, this);
-	}
 
 	static FuncRequest unknown(LFUN_UNKNOWN_ACTION);
 	return unknown;

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lfuns.h
+ * \file FuncCode.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,11 +13,8 @@
  * - add correct test to the corresponding ::getStatus() method
  */
 
-#ifndef LFUNS_H
-#define LFUNS_H
-
-#include "support/strfwd.h"
-
+#ifndef FUNCCODE_H
+#define FUNCCODE_H
 
 namespace lyx {
 
@@ -29,7 +26,8 @@ namespace lyx {
  * BufferView::dispatch(), Cursor::dispatch() and
  * Inset*::doDispatch();
  */
-enum kb_action {
+enum FuncCode
+{
 	LFUN_UNKNOWN_ACTION = -1,
 	// 0
 	LFUN_NOACTION = 0,
@@ -424,4 +422,4 @@ enum kb_action {
 
 } // namespace lyx
 
-#endif // LFUNS_H
+#endif // FUNCCODE_H

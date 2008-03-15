@@ -594,7 +594,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//    reverseDirectionNeeded() function
 		
 		bool forward;
-		kb_action finish_lfun;
+		FuncCode finish_lfun;
 
 		if (cmd.action == LFUN_CHAR_FORWARD 
 				|| cmd.action == LFUN_CHAR_FORWARD_SELECT) {

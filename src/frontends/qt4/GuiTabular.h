@@ -86,7 +86,7 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	kb_action getLfun() const { return LFUN_TABULAR_FEATURE; }
+	FuncCode getLfun() const { return LFUN_TABULAR_FEATURE; }
 
 	///
 	Tabular::idx_type getActiveCell() const;

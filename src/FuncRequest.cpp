@@ -29,24 +29,24 @@ FuncRequest::FuncRequest(Origin o)
 {}
 
 
-FuncRequest::FuncRequest(kb_action act, Origin o)
+FuncRequest::FuncRequest(FuncCode act, Origin o)
 	: action(act), origin(o), x(0), y(0), button_(mouse_button::none)
 {}
 
 
-FuncRequest::FuncRequest(kb_action act, docstring const & arg, Origin o)
+FuncRequest::FuncRequest(FuncCode act, docstring const & arg, Origin o)
 	: action(act), argument_(arg), origin(o), x(0), y(0),
 	  button_(mouse_button::none)
 {}
 
 
-FuncRequest::FuncRequest(kb_action act, string const & arg, Origin o)
+FuncRequest::FuncRequest(FuncCode act, string const & arg, Origin o)
 	: action(act), argument_(from_utf8(arg)), origin(o), x(0), y(0),
 	  button_(mouse_button::none)
 {}
 
 
-FuncRequest::FuncRequest(kb_action act, int ax, int ay,
+FuncRequest::FuncRequest(FuncCode act, int ax, int ay,
 			 mouse_button::state but, Origin o)
 	: action(act), origin(o), x(ax), y(ay), button_(but)
 {}

@@ -2235,7 +2235,7 @@ DocumentClass const & GuiDocument::documentClass() const
 
 
 static void dispatch_bufferparams(Dialog const & dialog,
-	BufferParams const & bp, kb_action lfun)
+	BufferParams const & bp, FuncCode lfun)
 {
 	ostringstream ss;
 	ss << "\\begin_header\n";

@@ -19,8 +19,8 @@
 #include "ColorCode.h"
 #include "Converter.h"
 #include "Format.h"
+#include "FuncCode.h"
 #include "KeyMap.h"
-#include "lfuns.h"
 #include "LyXRC.h"
 #include "Mover.h"
 

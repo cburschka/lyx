@@ -15,8 +15,8 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
+#include "FuncCode.h"
 #include "KeySequence.h"
-#include "lfuns.h"
 
 #include "support/docstring.h"
 
@@ -60,7 +60,7 @@ public:
 	void initKeySequences(KeyMap * kb);
 
 	/// return the status bar state string
-	docstring const viewStatusMessage();
+	docstring viewStatusMessage();
 
 	///
 	void processKeySym(KeySymbol const & key, KeyModifier state);
@@ -80,7 +80,7 @@ public:
 	/// Buffer to store result messages
 	docstring const getMessage() const { return dispatch_buffer; }
 	/// Handle a accented char key sequence
-	void handleKeyFunc(kb_action action);
+	void handleKeyFunc(FuncCode action);
 	/// goto a bookmark
 	/// openFile: whether or not open a file if the file is not opened
 	/// switchToBuffer: whether or not switch to buffer if the buffer is
@@ -88,13 +88,9 @@ public:
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
 	/// cursor x position before dispatch started
-	int cursorBeforeDispatchX() const {
-		return cursorPosBeforeDispatchX_;
-	}
+	int cursorBeforeDispatchX() const { return cursorPosBeforeDispatchX_; }
 	/// cursor y position before dispatch started
-	int cursorBeforeDispatchY() const {
-		return cursorPosBeforeDispatchY_;
-	}
+	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
 
 private:
 	///

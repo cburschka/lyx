@@ -63,7 +63,7 @@ GuiMath::GuiMath(GuiView & lv, QString const & name, QString const & title)
 }
 
 
-void GuiMath::dispatchFunc(kb_action action, string const & arg) const
+void GuiMath::dispatchFunc(FuncCode action, string const & arg) const
 {
 	dispatch(FuncRequest(action, arg));
 }

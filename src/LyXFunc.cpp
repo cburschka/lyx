@@ -216,7 +216,7 @@ void LyXFunc::setLyXView(LyXView * lv)
 }
 
 
-void LyXFunc::handleKeyFunc(kb_action action)
+void LyXFunc::handleKeyFunc(FuncCode action)
 {
 	char_type c = encoded_last_key;
 
@@ -737,7 +737,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
 	string const argument = to_utf8(cmd.argument());
-	kb_action const action = cmd.action;
+	FuncCode const action = cmd.action;
 
 	LYXERR(Debug::ACTION, "\nLyXFunc::dispatch: cmd: " << cmd);
 	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
@@ -1810,7 +1810,7 @@ void LyXFunc::setMessage(docstring const & m) const
 }
 
 
-docstring const LyXFunc::viewStatusMessage()
+docstring LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())

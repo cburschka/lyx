@@ -261,7 +261,7 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 	BindingList::const_iterator it = list.begin();
 	BindingList::const_iterator it_end = list.end();
 	for (; it != it_end; ++it) {
-		kb_action action = it->request.action;
+		FuncCode action = it->request.action;
 		string arg = to_utf8(it->request.argument());
 
 		os << tag << " \""
@@ -476,7 +476,7 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, int tag) const
 		LyXAction::const_func_iterator fit = lyxaction.func_begin();
 		LyXAction::const_func_iterator fit_end = lyxaction.func_end();
 		for (; fit != fit_end; ++fit) {
-			kb_action action = fit->second;
+			FuncCode action = fit->second;
 			bool has_action = false;
 			BindingList::const_iterator it = list.begin();
 			BindingList::const_iterator it_end = list.end();

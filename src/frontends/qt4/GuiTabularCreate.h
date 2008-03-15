@@ -44,7 +44,7 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	kb_action getLfun() const { return LFUN_TABULAR_INSERT; }
+	FuncCode getLfun() const { return LFUN_TABULAR_INSERT; }
 
 	///
 	typedef std::pair<size_t, size_t> rowsCols;
