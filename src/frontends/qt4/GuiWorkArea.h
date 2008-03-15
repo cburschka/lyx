@@ -264,12 +264,19 @@ Q_SIGNALS:
 public Q_SLOTS:
 	///
 	void on_currentTabChanged(int index);
-	///
+	/// close current buffer, or the one given by \c clicked_tab_
 	void closeCurrentBuffer();
-	///
+	/// close current tab, or the one given by \c clicked_tab_
 	void closeCurrentTab();
 	///
 	void updateTabText(GuiWorkArea *);
+	
+private Q_SLOTS:
+	///
+	void showContextMenu(const QPoint & pos);
+
+private:
+	int clicked_tab_;
 }; // TabWorkArea
 
 } // namespace frontend

@@ -1166,7 +1166,8 @@ NoTabFrameMacStyle noTabFrameMacStyle;
 #endif
 
 
-TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
+TabWorkArea::TabWorkArea(QWidget * parent)
+	: QTabWidget(parent), clicked_tab_(-1)
 {
 #ifdef Q_WS_MACX
 	setStyle(&noTabFrameMacStyle);
@@ -1196,17 +1197,10 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 		this, SLOT(closeCurrentBuffer()));
 	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
 
-	QToolButton * closeTabButton = new QToolButton(this);
-	closeTabButton->setPalette(pal);
-	closeTabButton->setIcon(QIcon(":/images/hidetab.png"));
-	closeTabButton->setText("Hide tab");
-	closeTabButton->setAutoRaise(true);
-	closeTabButton->setCursor(Qt::ArrowCursor);
-	closeTabButton->setToolTip(qt_("Hide tab"));
-	closeTabButton->setEnabled(true);
-	QObject::connect(closeTabButton, SIGNAL(clicked()),
-		this, SLOT(closeCurrentTab()));
-	setCornerWidget(closeTabButton, Qt::TopLeftCorner);
+	// make us responsible for the context menu of the tabbar
+	tabBar()->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(tabBar(), SIGNAL(customContextMenuRequested(const QPoint &)),
+		this, SLOT(showContextMenu(const QPoint &)));
 
 	setUsesScrollButtons(true);
 }
@@ -1351,13 +1345,22 @@ void TabWorkArea::on_currentTabChanged(int i)
 
 void TabWorkArea::closeCurrentBuffer()
 {
+	if (clicked_tab_ != -1)
+		setCurrentIndex(clicked_tab_);
+
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 
 void TabWorkArea::closeCurrentTab()
 {
-	removeWorkArea(currentWorkArea());
+	if (clicked_tab_ == -1)
+		removeWorkArea(currentWorkArea());
+	else {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_)); 
+		BOOST_ASSERT(wa);
+		removeWorkArea(wa);
+	}
 }
 
 
@@ -1368,6 +1371,25 @@ void TabWorkArea::updateTabText(GuiWorkArea * wa)
 		return;
 	setTabText(i, wa->windowTitle());
 }
+
+
+void TabWorkArea::showContextMenu(const QPoint & pos)
+{
+	// which tab?
+	clicked_tab_ = tabBar()->tabAt(pos);
+	if (clicked_tab_ != -1) {
+		// show tab popup
+		QMenu popup;
+		popup.addAction(QIcon(":/images/hidetab.png"),
+			 qt_("Hide tab"), this, SLOT(closeCurrentTab()));
+		popup.addAction(QIcon(":/images/closetab.png"),
+			 qt_("Close tab"), this, SLOT(closeCurrentBuffer()));
+		popup.exec(tabBar()->mapToGlobal(pos));
+		
+		clicked_tab_ = -1;
+	}
+}
+
 
 } // namespace frontend
 } // namespace lyx
