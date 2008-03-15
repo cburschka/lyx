@@ -1468,11 +1468,10 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 	drag->setMimeData(mimeData);
 	
 #if QT_VERSION >= 0x040300
-	// FIXME: gives garbage for tab != 0.
 	// get tab pixmap as cursor
 	QRect r = tabRect(tab);
 	QPixmap pixmap(r.size());
-	render(&pixmap, r.topLeft());
+	render(&pixmap, - r.topLeft());
 	drag->setPixmap(pixmap);
 #endif
 	
