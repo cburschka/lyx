@@ -1616,6 +1616,19 @@ void Paragraph::setBeginOfBody()
 }
 
 
+bool Paragraph::forceEmptyLayout() const
+{
+	Inset const * const inset = inInset();
+	return inset && inInset()->forceEmptyLayout();
+}
+
+
+bool Paragraph::allowParagraphCustomization() const
+{
+	return inInset() && inInset()->allowParagraphCustomization(0);
+}
+
+
 namespace {
 	// This is a hack based upon one in InsetText::neverIndent().
 	// When we have a real InsetTableCell, then we won't need this
@@ -1631,23 +1644,9 @@ namespace {
 }
 
 
-bool Paragraph::forceEmptyLayout() const
-{
-	Inset * inset = inInset();
-	return inset && 
-		(inTableCell(inset) || inInset()->forceEmptyLayout());
-}
-
-
-bool Paragraph::allowParagraphCustomization() const
-{
-	return inInset() && inInset()->allowParagraphCustomization(0);
-}
-
-
 bool Paragraph::useEmptyLayout() const
 {
-	Inset * inset = inInset();
+	Inset const * const inset = inInset();
 	return inset && 
 		(inTableCell(inset) || inInset()->useEmptyLayout());
 }
