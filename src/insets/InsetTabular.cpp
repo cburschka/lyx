@@ -681,28 +681,25 @@ void Tabular::copyRow(row_type const row)
 void Tabular::appendColumn(idx_type const cell)
 {
 	col_type const column = cellColumn(cell);
-	col_type const ncols = columnCount();
 	column_vector::iterator cit = column_info.begin() + column + 1;
 	column_info.insert(cit, ColumnData());
+	col_type const ncols = columnCount();
 	// set the column values of the column before
 	column_info[column + 1] = column_info[column];
 
-	BufferParams const & bp = buffer().params();
 	for (row_type i = 0; i < rowCount(); ++i) {
 		cell_info[i].insert(cell_info[i].begin() + column + 1, CellData(buffer()));
-
-		// care about multicolumns
-		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
-			cell_info[i][column + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
-
-		if (column + 2 >= ncols
-		    || cell_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN)
-			cell_info[i][column + 1].multicolumn = Tabular::CELL_NORMAL;
+		col_type c = column + 2;
+		while (c < ncols 
+			&& cell_info[i][c].multicolumn == CELL_PART_OF_MULTICOLUMN) {
+			cell_info[i][c].multicolumn = CELL_NORMAL;
+			++c;
+		}
 	}
 	//++column;
 	for (row_type i = 0; i < rowCount(); ++i) {
 		cell_info[i][column + 1].inset->clear();
-		if (bp.trackChanges)
+		if (buffer().params().trackChanges)
 			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
 	}
 	fixCellNums();
