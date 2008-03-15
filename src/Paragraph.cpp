@@ -1632,7 +1632,10 @@ bool Paragraph::allowParagraphCustomization() const
 namespace {
 	// This is a hack based upon one in InsetText::neverIndent().
 	// When we have a real InsetTableCell, then we won't need this
-	// method, because InsetTableCell will return the right values.
+	// method, because InsetTableCell will return the right values,
+	// viz: InsetTableCell::useEmptyLayout() should return true, but
+	// InsetTableCell::forceEmptyLayout() should still return false.
+	//
 	// The #include "insets/InsetText.h" can also be removed then.
 	bool inTableCell(Inset const * inset)
 	{
