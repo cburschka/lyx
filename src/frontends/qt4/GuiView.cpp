@@ -283,7 +283,7 @@ GuiView::GuiView(int id)
 	theLyXFunc().setLyXView(this);
 	
 	// Fill up the menu bar.
-	guiApp->menus().fillMenuBar(menuBar(), this);
+	guiApp->menus().fillMenuBar(menuBar(), this, true);
 
 	setCentralWidget(d.stack_widget_);
 

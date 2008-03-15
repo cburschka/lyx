@@ -746,7 +746,7 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 void GuiApplication::initGlobalMenu()
 {
 	if (global_menubar_)
-		menus().fillMenuBar(global_menubar_, 0);
+		menus().fillMenuBar(global_menubar_, 0, true);
 }
 
 

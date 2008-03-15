@@ -1461,15 +1461,17 @@ bool Menus::searchMenu(FuncRequest const & func,
 }
 
 
-void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view)
+void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 {
-	// Clear all menubar contents before filling it.
-	qmb->clear();
-	
+	if (initial) {
 #ifdef Q_WS_MACX
-	// setup special mac specific menu item
-	d->macxMenuBarInit(view, qmb);
+		// setup special mac specific menu item
+		d->macxMenuBarInit(view, qmb);
 #endif
+	} else {
+		// Clear all menubar contents before filling it.
+		qmb->clear();
+	}
 
 	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
 

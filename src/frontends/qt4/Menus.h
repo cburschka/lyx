@@ -64,7 +64,7 @@ public:
 	bool searchMenu(FuncRequest const & func,
 		std::vector<docstring> & names) const;
 	///
-	void fillMenuBar(QMenuBar * qmb, GuiView * view);
+	void fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial = false);
 
 	/// \return a top-level submenu given its name.
 	Menu * menu(QString const & name, GuiView & view);
