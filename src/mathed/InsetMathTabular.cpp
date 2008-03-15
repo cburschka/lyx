@@ -34,11 +34,6 @@ InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n,
 {}
 
 
-InsetMathTabular::InsetMathTabular(docstring const & name, char valign,
-		docstring const & halign)
-	: InsetMathGrid(valign, halign), name_(name)
-{}
-
 
 Inset * InsetMathTabular::clone() const
 {
@@ -75,9 +70,10 @@ void InsetMathTabular::write(WriteStream & os) const
 		os << "\\protect";
 	os << "\\begin{" << name_ << '}';
 
-	if (v_align_ == 't' || v_align_ == 'b')
-		os << '[' << char(v_align_) << ']';
-	os << '{' << halign() << "}\n";
+	char const v = verticalAlignment();
+	if (v == 't' || v == 'b')
+		os << '[' << v << ']';
+	os << '{' << horizontalAlignments() << "}\n";
 
 	InsetMathGrid::write(os);
 

@@ -91,10 +91,8 @@ public:
 	};
 
 public:
-	/// sets nrows and ncols to 1
+	/// sets nrows and ncols to 1, vertical alingment to 'c'
 	InsetMathGrid();
-	/// constructor from columns description, creates one row
-	InsetMathGrid(char valign, docstring const & halign);
 	/// Note: columns first!
 	InsetMathGrid(col_type m, row_type n);
 	///
@@ -113,18 +111,20 @@ public:
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
+	/// extract number of columns from alignment string
+	static col_type guessColumns(docstring const & halign);
+	/// accepts some LaTeX column codes: p,m,!,@,M,<,>
+	void setHorizontalAlignments(docstring const & align);
 	///
-	void halign(docstring const & align);
+	void setHorizontalAlignment(char c, col_type col);
 	///
-	void halign(char c, col_type col);
+	char horizontalAlignment(col_type col) const;
 	///
-	char halign(col_type col) const;
+	docstring horizontalAlignments() const;
+	/// 't', 'b', or 'm'
+	void setVerticalAlignment(char c);
 	///
-	docstring halign() const;
-	///
-	void valign(char c);
-	///
-	char valign() const;
+	char verticalAlignment() const;
 	///
 	void vcrskip(Length const &, row_type row);
 	///
@@ -219,7 +219,8 @@ public:
 	//void octave(OctaveStream &) const;
 
 protected:
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
@@ -232,8 +233,6 @@ protected:
 				      bool fragile) const;
 	/// returns proper 'end of column' code for LaTeX
 	virtual docstring eocString(col_type col, col_type lastcol) const;
-	/// extract number of columns from alignment string
-	col_type guessColumns(docstring const & halign) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(Cursor & cur);
 
@@ -245,13 +244,14 @@ protected:
 	std::vector<ColInfo> colinfo_;
 	/// cell info
 	std::vector<CellInfo> cellinfo_;
+private:
 	///
 	char v_align_; // add approp. type
-private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const;
 };
 
 
-
 } // namespace lyx
+
 #endif

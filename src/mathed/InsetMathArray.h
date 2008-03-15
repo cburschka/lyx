@@ -26,8 +26,6 @@ public:
 	///
 	InsetMathArray(docstring const &, int m, int n,
 		char valign, docstring const & halign);
-	///
-	InsetMathArray(docstring const &, char valign, docstring const & halign);
 	/// convenience constructor from whitespace/newline separated data
 	InsetMathArray(docstring const &, docstring const & str);
 	///

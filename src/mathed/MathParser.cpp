@@ -1299,14 +1299,16 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (name == "array" || name == "subarray") {
 				docstring const valign = parse_verbatim_option() + 'c';
 				docstring const halign = parse_verbatim_item();
-				cell->push_back(MathAtom(new InsetMathArray(name, (char)valign[0], halign)));
+				cell->push_back(MathAtom(new InsetMathArray(name,
+					InsetMathGrid::guessColumns(halign), 1, (char)valign[0], halign)));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
 			else if (name == "tabular") {
 				docstring const valign = parse_verbatim_option() + 'c';
 				docstring const halign = parse_verbatim_item();
-				cell->push_back(MathAtom(new InsetMathTabular(name, (char)valign[0], halign)));
+				cell->push_back(MathAtom(new InsetMathTabular(name,
+					InsetMathGrid::guessColumns(halign), 1, (char)valign[0], halign)));
 				parse2(cell->back(), FLAG_END, InsetMath::TEXT_MODE, false);
 			}
 

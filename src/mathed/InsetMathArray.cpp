@@ -39,12 +39,6 @@ InsetMathArray::InsetMathArray(docstring const & name, int m, int n,
 {}
 
 
-InsetMathArray::InsetMathArray(docstring const & name, char valign,
-		docstring const & halign)
-	: InsetMathGrid(valign, halign), name_(name)
-{}
-
-
 InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 	: InsetMathGrid(1, 1), name_(name)
 {
@@ -105,9 +99,10 @@ void InsetMathArray::write(WriteStream & os) const
 		os << "\\protect";
 	os << "\\begin{" << name_ << '}';
 
-	if (v_align_ == 't' || v_align_ == 'b')
-		os << '[' << char(v_align_) << ']';
-	os << '{' << halign() << "}\n";
+	char const v = verticalAlignment();
+	if (v == 't' || v == 'b')
+		os << '[' << v << ']';
+	os << '{' << horizontalAlignments() << "}\n";
 
 	InsetMathGrid::write(os);
 

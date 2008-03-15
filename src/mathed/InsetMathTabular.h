@@ -27,8 +27,6 @@ public:
 	InsetMathTabular(docstring const &, int m, int n,
 		char valign, docstring const & halign);
 	///
-	InsetMathTabular(docstring const &, char valign, docstring const & halign);
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	Dimension const dimension(BufferView const &) const;
@@ -49,7 +47,7 @@ public:
 	void maple(MapleStream &) const;
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 	///
 	docstring name_;
 };

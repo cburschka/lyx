@@ -97,19 +97,6 @@ InsetMathGrid::ColInfo::ColInfo()
 //////////////////////////////////////////////////////////////
 
 
-InsetMathGrid::InsetMathGrid(char v, docstring const & h)
-	: InsetMathNest(guessColumns(h)),
-	  rowinfo_(2),
-	  colinfo_(guessColumns(h) + 1),
-	  cellinfo_(1 * guessColumns(h))
-{
-	setDefaults();
-	valign(v);
-	halign(h);
-	//lyxerr << "created grid with " << ncols() << " columns" << endl;
-}
-
-
 InsetMathGrid::InsetMathGrid()
 	: InsetMathNest(1),
 	  rowinfo_(1 + 1),
@@ -140,8 +127,8 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h
 		v_align_(v)
 {
 	setDefaults();
-	valign(v);
-	halign(h);
+	setVerticalAlignment(v);
+	setHorizontalAlignments(h);
 }
 
 
@@ -171,7 +158,7 @@ void InsetMathGrid::setDefaults()
 }
 
 
-void InsetMathGrid::halign(docstring const & hh)
+void InsetMathGrid::setHorizontalAlignments(docstring const & hh)
 {
 	col_type col = 0;
 	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it) {
@@ -253,7 +240,7 @@ void InsetMathGrid::halign(docstring const & hh)
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh) const
+InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh)
 {
 	col_type col = 0;
 	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it)
@@ -268,7 +255,7 @@ InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh) const
 }
 
 
-void InsetMathGrid::halign(char h, col_type col)
+void InsetMathGrid::setHorizontalAlignment(char h, col_type col)
 {
 	colinfo_[col].align_ = h;
 	if (!colinfo_[col].special_.empty()) {
@@ -280,13 +267,13 @@ void InsetMathGrid::halign(char h, col_type col)
 }
 
 
-char InsetMathGrid::halign(col_type col) const
+char InsetMathGrid::horizontalAlignment(col_type col) const
 {
 	return colinfo_[col].align_;
 }
 
 
-docstring InsetMathGrid::halign() const
+docstring InsetMathGrid::horizontalAlignments() const
 {
 	docstring res;
 	for (col_type col = 0; col < ncols(); ++col) {
@@ -302,13 +289,13 @@ docstring InsetMathGrid::halign() const
 }
 
 
-void InsetMathGrid::valign(char c)
+void InsetMathGrid::setVerticalAlignment(char c)
 {
 	v_align_ = c;
 }
 
 
-char InsetMathGrid::valign() const
+char InsetMathGrid::verticalAlignment() const
 {
 	return v_align_;
 }
@@ -1133,17 +1120,17 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		string s;
 		is >> s;
 		if (s == "valign-top")
-			valign('t');
+			setVerticalAlignment('t');
 		else if (s == "valign-middle")
-			valign('c');
+			setVerticalAlignment('c');
 		else if (s == "valign-bottom")
-			valign('b');
+			setVerticalAlignment('b');
 		else if (s == "align-left")
-			halign('l', cur.col());
+			setHorizontalAlignment('l', cur.col());
 		else if (s == "align-right")
-			halign('r', cur.col());
+			setHorizontalAlignment('r', cur.col());
 		else if (s == "align-center")
-			halign('c', cur.col());
+			setHorizontalAlignment('c', cur.col());
 		else if (s == "append-row")
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				addRow(cur.row());
@@ -1398,12 +1385,14 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
 		}
 
-		status.setOnOff((s == "align-left" && halign(cur.col()) == 'l')
-			   || (s == "align-right"   && halign(cur.col()) == 'r')
-			   || (s == "align-center"  && halign(cur.col()) == 'c')
-			   || (s == "valign-top"    && valign() == 't')
-			   || (s == "valign-bottom" && valign() == 'b')
-			   || (s == "valign-middle" && valign() == 'm'));
+		char const ha = horizontalAlignment(cur.col());
+		char const va = verticalAlignment();
+		status.setOnOff((s == "align-left" && ha == 'l')
+			   || (s == "align-right"   && ha == 'r')
+			   || (s == "align-center"  && ha == 'c')
+			   || (s == "valign-top"    && va == 't')
+			   || (s == "valign-bottom" && va == 'b')
+			   || (s == "valign-middle" && va == 'm'));
 
 #if 0
 		// FIXME: What did this code do?
