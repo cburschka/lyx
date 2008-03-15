@@ -1599,7 +1599,7 @@ bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 
 bool InsetMathNest::script(Cursor & cur, bool up)
 {
-		script(cur, up, docstring());
+	return script(cur, up, docstring());
 }
 
 

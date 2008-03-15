@@ -296,7 +296,8 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 	case LFUN_LYX_QUIT:
 		// quitting is triggered by the gui code
 		// (leaving the event loop).
-		current_view_->message(from_utf8(N_("Exiting.")));
+		if (current_view_)
+			current_view_->message(from_utf8(N_("Exiting.")));
 		if (closeAllViews())
 			quit();
 		break;
@@ -421,7 +422,7 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 #endif
 	}
 	view->setFocus();
-	setCurrentView(*view);
+	setCurrentView(view);
 }
 
 

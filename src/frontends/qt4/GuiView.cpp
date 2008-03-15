@@ -336,6 +336,10 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
+	if (guiApp->currentView() == this)
+		guiApp->setCurrentView(0);
+	theLyXFunc().setLyXView(0);
+	
 	delete &d;
 }
 
@@ -600,7 +604,7 @@ bool GuiView::event(QEvent * e)
 			setFocus();
 			return QMainWindow::event(e);
 		}
-		guiApp->setCurrentView(*this);
+		guiApp->setCurrentView(this);
 		if (d.current_work_area_) {
 			BufferView & bv = d.current_work_area_->bufferView();
 			connectBufferView(bv);

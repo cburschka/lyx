@@ -96,7 +96,7 @@ public:
 	///
 	GuiView * currentView() { return current_view_; }
 	///
-	void setCurrentView(GuiView & view) { current_view_ = &view; }
+	void setCurrentView(GuiView * view) { current_view_ = view; }
 	///
 	virtual size_t viewCount() const { return view_ids_.size(); }
 	///
