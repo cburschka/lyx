@@ -351,7 +351,7 @@ BufferParams::BufferParams()
 	listings_params = string();
 	pagestyle = "default";
 	compressed = false;
-	embedded = false;
+	embedded = lyxrc.use_bundled_format;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 		temp_bullet(iter) = ITEMIZE_DEFAULTS[iter];

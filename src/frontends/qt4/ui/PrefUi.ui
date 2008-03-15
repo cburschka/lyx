@@ -171,6 +171,13 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="0" colspan="4" >
+       <widget class="QCheckBox" name="useBundledCB" >
+         <property name="text" >
+         <string>Use &amp;bundled format for new documents</string>
+         </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -252,6 +259,7 @@
   <tabstop>autoSaveSB</tabstop>
   <tabstop>lastfilesSB</tabstop>
   <tabstop>openDocumentsInTabsCB</tabstop>
+  <tabstop>useBundledCB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
