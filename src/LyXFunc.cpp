@@ -2069,8 +2069,10 @@ void LyXFunc::open(string const & fname)
 	if (!doesFileExist(fullname)) {
 		// the user specifically chose this name. Believe him.
 		Buffer * const b = newFile(filename, string(), true);
-		if (b)
+		if (b) {
+			updateLabels(*b);
 			lyx_view_->setBuffer(b);
+		}
 		return;
 	}
 
