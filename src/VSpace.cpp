@@ -23,10 +23,13 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 #include <cstring>
 
 using namespace std;
 using namespace lyx::support;
+
 
 namespace lyx {
 

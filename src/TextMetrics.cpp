@@ -50,15 +50,16 @@
 
 #include "support/debug.h"
 
+#include <boost/assert.hpp>
+
 using namespace std;
+
 
 namespace lyx {
 
 using frontend::FontMetrics;
 
-namespace {
-
-int numberOfSeparators(Paragraph const & par, Row const & row)
+static int numberOfSeparators(Paragraph const & par, Row const & row)
 {
 	pos_type const first = max(row.pos(), par.beginOfBody());
 	pos_type const last = row.endpos() - 1;
@@ -71,7 +72,7 @@ int numberOfSeparators(Paragraph const & par, Row const & row)
 }
 
 
-int numberOfLabelHfills(Paragraph const & par, Row const & row)
+static int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
 	pos_type last = row.endpos() - 1;
 	pos_type first = row.pos();
@@ -92,7 +93,7 @@ int numberOfLabelHfills(Paragraph const & par, Row const & row)
 }
 
 
-int numberOfHfills(Paragraph const & par, Row const & row)
+static int numberOfHfills(Paragraph const & par, Row const & row)
 {
 	pos_type const last = row.endpos();
 	pos_type first = row.pos();
@@ -113,7 +114,13 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 	return n;
 }
 
-} // namespace anon
+
+/////////////////////////////////////////////////////////////////////
+//
+// TextMetrics
+//
+/////////////////////////////////////////////////////////////////////
+
 
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	: bv_(bv), text_(text)
@@ -944,7 +951,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
-		    == BufferParams::PARSEP_SKIP
+		    == BufferParams::ParagraphSkipSeparation
 			&& par.ownerCode() != ERT_CODE
 			&& par.ownerCode() != LISTINGS_CODE
 			&& pit > 0
@@ -1843,7 +1850,7 @@ int TextMetrics::leftMargin(int max_width,
 		    && par.getInset(pos)->display())
 			&& ((tclass.isDefaultLayout(par.layout()) 
 	         || tclass.isEmptyLayout(par.layout()))
-	        || buffer.params().paragraph_separation == BufferParams::PARSEP_INDENT)
+	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
 	    )
 	{
 		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(

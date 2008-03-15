@@ -14,6 +14,8 @@
 
 #include "InsetMath.h"
 
+#include "support/docstring.h"
+
 
 namespace lyx {
 

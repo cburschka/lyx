@@ -36,6 +36,7 @@
 using namespace std;
 using namespace lyx::support;
 
+
 namespace lyx {
 
 /////////////////////////////////////////////////////////////////////
@@ -515,9 +516,8 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// pdfcolmk must be loaded after color
-	if (mustProvide("pdfcolmk")) {
+	if (mustProvide("pdfcolmk"))
 		packages << "\\usepackage{pdfcolmk}\n";
-	}
 
 	// makeidx.sty
 	if (isRequired("makeidx")) {
@@ -551,13 +551,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// lyxskak.sty --- newer chess support based on skak.sty
-	if (mustProvide("chess")) {
+	if (mustProvide("chess"))
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";
-	}
 
 	// setspace.sty
 	if (mustProvide("setspace") && !tclass.provides("SetSpace"))
-		    packages << "\\usepackage{setspace}\n";
+    packages << "\\usepackage{setspace}\n";
 
 	// amssymb.sty
 	if (mustProvide("amssymb")
@@ -573,29 +572,25 @@ string const LaTeXFeatures::getPackages() const
 	// natbib.sty
 	if (mustProvide("natbib")) {
 		packages << "\\usepackage[";
-		if (params_.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL) {
+		if (params_.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL)
 			packages << "numbers";
-		} else {
+		else
 			packages << "authoryear";
-		}
 		packages << "]{natbib}\n";
 	}
 
 	// jurabib -- we need version 0.6 at least.
-	if (mustProvide("jurabib")) {
+	if (mustProvide("jurabib"))
 		packages << "\\usepackage{jurabib}[2004/01/25]\n";
-	}
 	
 	// xargs -- we need version 1.09 at least
-	if (mustProvide("xargs")) {
+	if (mustProvide("xargs"))
 		packages << "\\usepackage{xargs}[2008/03/08]\n";
-	}
 
 	// bibtopic -- the dot provides the aux file naming which
 	// LyX can detect.
-	if (mustProvide("bibtopic")) {
+	if (mustProvide("bibtopic"))
 		packages << "\\usepackage[dot]{bibtopic}\n";
-	}
 
 	if (mustProvide("xy"))
 		packages << "\\usepackage[all]{xy}\n";

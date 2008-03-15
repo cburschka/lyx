@@ -1090,14 +1090,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else
 				c = par.getChar(pos - 1);
 			string arg = to_utf8(cmd.argument());
-			if (arg == "single")
-				cur.insert(new InsetQuotes(c,
-				    bufparams.quotes_language,
-				    InsetQuotes::SingleQ));
-			else
-				cur.insert(new InsetQuotes(c,
-				    bufparams.quotes_language,
-				    InsetQuotes::DoubleQ));
+			cur.insert(new InsetQuotes(c, bufparams.quotes_language,
+				(arg == "single") ? InsetQuotes::SingleQuotes
+					: InsetQuotes::DoubleQuotes));
 			cur.posForward();
 		}
 		else

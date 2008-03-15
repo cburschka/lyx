@@ -27,9 +27,7 @@
 
 namespace lyx {
 
-namespace support {
-class FileName;
-}
+namespace support { class FileName; }
 
 class AuthorList;
 class BranchList;
@@ -54,21 +52,20 @@ class VSpace;
 class BufferParams {
 public:
 	///
-	enum PARSEP {
+	enum ParagraphSeparation {
 		///
-		PARSEP_INDENT,
+		ParagraphIndentSeparation,
 		///
-		PARSEP_SKIP
+		ParagraphSkipSeparation
 	};
 	///
 	BufferParams();
-	~BufferParams();
 
 	/// get l10n translated to the buffers language
-	docstring const B_(std::string const & l10n) const;
+	docstring B_(std::string const & l10n) const;
 
 	/// read a header token, if unrecognised, return it or an unknown class name
-	std::string const readToken(Lexer & lex,
+	std::string readToken(Lexer & lex,
 		std::string const & token, ///< token to read.
 		support::FileName const & filepath,
 		support::FileName const & temppath); ///< where to look for local layout file.
@@ -87,20 +84,18 @@ public:
 
 	///
 	void useClassDefaults();
-
 	///
 	bool hasClassDefaults() const;
 
 	///
 	VSpace const & getDefSkip() const;
-
 	///
 	void setDefSkip(VSpace const & vs);
 
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.
 	 */
-	PARSEP paragraph_separation;
+	ParagraphSeparation paragraph_separation;
 	///
 	InsetQuotes::QuoteLanguage quotes_language;
 	///
@@ -287,7 +282,7 @@ public:
 	 *  purpose for which the paper size is needed, since they
 	 *  support different subsets of paper sizes.
 	*/
-	enum Papersize_Purpose {
+	enum PapersizePurpose {
 		///
 		DVIPS,
 		///
@@ -296,9 +291,9 @@ public:
 		XDVI
 	};
 	///
-	std::string const paperSizeName(Papersize_Purpose const & purpose) const;
+	std::string paperSizeName(PapersizePurpose purpose) const;
 	/// set up if and how babel is called
-	std::string const babelCall(std::string const & lang_opts) const;
+	std::string babelCall(std::string const & lang_opts) const;
 	/// handle inputenc etc.
 	void writeEncodingPreamble(odocstream & os, LaTeXFeatures & features,
 					      TexRow & texrow) const;
@@ -309,8 +304,7 @@ public:
 				     int const & sfscale, int const & ttscale) const;
 
 	/// get the appropriate cite engine (natbib handling)
-	biblio::CiteEngine getEngine() const;
-
+	biblio::CiteEngine citeEngine() const;
 	///
 	void setCiteEngine(biblio::CiteEngine const);
 

@@ -29,6 +29,7 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 
+#include <boost/assert.hpp>
 #include <boost/bind.hpp>
 
 #include <algorithm>
@@ -95,7 +96,8 @@ void BufferList::release(Buffer * buf)
 Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 {
 	auto_ptr<Buffer> tmpbuf;
-	try { tmpbuf.reset(new Buffer(s, ronly));
+	try {
+		tmpbuf.reset(new Buffer(s, ronly));
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);

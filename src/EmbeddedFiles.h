@@ -150,7 +150,7 @@ public:
 	 * when an embedded file is copied to another buffer, temp_path_ has
 	 * to be updated and file copying may be needed.
 	 */
-	bool enabled() const { return temp_path_ != ""; }
+	bool enabled() const { return !temp_path_.empty(); }
 	/// enable embedding of this file
 	void enable(bool flag, Buffer const * buf, bool updateFile);
 
@@ -205,7 +205,8 @@ public:
 	/* \param file Embedded file to add
 	 * \param inset Inset pointer
 	 */
-	void registerFile(EmbeddedFile const & file, Inset const * inset, Buffer const & buffer);
+	void registerFile(EmbeddedFile const & file, Inset const * inset,
+		Buffer const & buffer);
 
 	/// validate embedded fies after a file is read.
 	void validate(Buffer const & buffer);

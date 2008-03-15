@@ -151,16 +151,16 @@ private:
 	bool disconnectOnApply() const { return true; }
 
 	/// \return the list of all available bibliography keys.
-	std::vector<docstring> const availableKeys() const;
+	std::vector<docstring> availableKeys() const;
 	/// \return the list of all used BibTeX fields
-	std::vector<docstring> const availableFields() const;
+	std::vector<docstring> availableFields() const;
 	/// \return the list of all used BibTeX entry types
-	std::vector<docstring> const availableEntries() const;
+	std::vector<docstring> availableEntries() const;
 	///
 	void filterByEntryType(
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
-	biblio::CiteEngine getEngine() const;
+	biblio::CiteEngine citeEngine() const;
 
 	/// \return information for this key.
 	docstring getInfo(docstring const & key) const;

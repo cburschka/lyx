@@ -14,9 +14,10 @@
 
 #include "InsetMath.h"
 
+#include "support/docstring.h"
+
 
 namespace lyx {
-
 
 /// LaTeX names for objects that we really don't know
 class InsetMathUnknown : public InsetMath {
@@ -60,7 +61,9 @@ public:
 	int kerning(BufferView const *) const { return kerning_; }
 
 private:
-	virtual Inset * clone() const;
+	///
+	Inset * clone() const { return new InsetMathUnknown(*this); }
+
 	///
 	docstring name_;
 	/// are we finished creating the name?
@@ -73,6 +76,6 @@ private:
 	docstring selection_;
 };
 
-
 } // namespace lyx
+
 #endif

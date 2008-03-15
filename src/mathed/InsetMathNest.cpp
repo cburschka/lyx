@@ -25,6 +25,7 @@
 #include "InsetMathSpace.h"
 #include "InsetMathSymbol.h"
 #include "InsetMathUnknown.h"
+#include "MathCompletionList.h"
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathMacro.h"
@@ -408,7 +409,8 @@ void InsetMathNest::handleFont
 }
 
 
-void InsetMathNest::handleFont(Cursor & cur, docstring const & arg, docstring const & font)
+void InsetMathNest::handleFont(Cursor & cur, docstring const & arg,
+	docstring const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
@@ -416,12 +418,20 @@ void InsetMathNest::handleFont(Cursor & cur, docstring const & arg, docstring co
 	if (cur.inset().asInsetMath()->name() == font) {
 		cur.recordUndoInset();
 		cur.handleFont(to_utf8(font));
-	} else
+	} else {
 		handleNest(cur, createInsetMath(font), arg);
+	}
 }
 
 
-void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest, docstring const & arg)
+void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest)
+{
+	handleNest(cur, nest, docstring());
+}
+
+
+void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
+	docstring const & arg)
 {
 	CursorSlice i1 = cur.selBegin();
 	CursorSlice i2 = cur.selEnd();
@@ -460,11 +470,11 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest, docstring co
 	
 	// the complicated case with multiple selected cells in a grid
 	cur.recordUndoInset();
-	Inset::row_type r1, r2;
-	Inset::col_type c1, c2;
+	row_type r1, r2;
+	col_type c1, c2;
 	cap::region(i1, i2, r1, r2, c1, c2);
-	for (Inset::row_type row = r1; row <= r2; ++row) {
-		for (Inset::col_type col = c1; col <= c2; ++col) {
+	for (row_type row = r1; row <= r2; ++row) {
+		for (col_type col = c1; col <= c2; ++col) {
 			// select cell
 			cur.idx() = i1.asInsetMath()->index(row, col);
 			cur.pos() = 0;
@@ -502,7 +512,6 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetMathNest: request: " << cmd << endl;
-	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
 
@@ -1588,6 +1597,12 @@ bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 }
 
 
+bool InsetMathNest::script(Cursor & cur, bool up)
+{
+		script(cur, up, docstring());
+}
+
+
 bool InsetMathNest::script(Cursor & cur, bool up,
 		docstring const & save_selection)
 {
@@ -1666,7 +1681,7 @@ bool InsetMathNest::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const *
+CompletionList const *
 InsetMathNest::createCompletionList(Cursor const & cur) const
 {
 	if (!cur.inMacroMode())

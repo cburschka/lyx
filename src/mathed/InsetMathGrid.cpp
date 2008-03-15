@@ -31,16 +31,17 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 #include <sstream>
 
 using namespace std;
 using namespace lyx::support;
 
+
 namespace lyx {
 
-namespace {
-
-docstring verboseHLine(int n)
+static docstring verboseHLine(int n)
 {
 	docstring res;
 	for (int i = 0; i < n; ++i)
@@ -51,14 +52,13 @@ docstring verboseHLine(int n)
 }
 
 
-int extractInt(istream & is)
+static int extractInt(istream & is)
 {
 	int num = 1;
 	is >> num;
 	return (num == 0) ? 1 : num;
 }
 
-}
 
 
 //////////////////////////////////////////////////////////////
@@ -67,7 +67,6 @@ int extractInt(istream & is)
 InsetMathGrid::CellInfo::CellInfo()
 	: dummy_(false)
 {}
-
 
 
 

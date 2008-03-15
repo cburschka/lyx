@@ -42,6 +42,7 @@
 #include "support/debug.h"
 #include "support/textutils.h"
 
+#include <boost/assert.hpp>
 #include <boost/crc.hpp>
 
 #include <ostream>
@@ -473,10 +474,9 @@ void RowPainter::paintFirst()
 		y_top += paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
 	Buffer const & buffer = pi_.base.bv->buffer();
-
 	Layout const & layout = par_.layout();
 
-	if (buffer.params().paragraph_separation == BufferParams::PARSEP_SKIP) {
+	if (buffer.params().paragraph_separation == BufferParams::ParagraphSkipSeparation) {
 		if (pit_ != 0) {
 			if (layout.latextype == LATEX_PARAGRAPH
 				&& !par_.getDepth()) {

@@ -34,6 +34,8 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileZipListDir.h"
 
+#include <boost/assert.hpp>
+
 #include <sstream>
 #include <fstream>
 #include <utility>
@@ -46,8 +48,7 @@ namespace lyx {
 namespace Alert = frontend::Alert;
 
 EmbeddedFile::EmbeddedFile(string const & file, std::string const & buffer_path)
-	: DocFileName("", false), inzip_name_(""), embedded_(false), inset_list_(),
-	temp_path_("")
+	: DocFileName("", false), embedded_(false), inset_list_()
 {
 	set(file, buffer_path);
 }

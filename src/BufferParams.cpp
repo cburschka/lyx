@@ -95,13 +95,14 @@ namespace lyx {
 namespace {
 
 // Paragraph separation
-typedef Translator<string, BufferParams::PARSEP> ParSepTranslator;
+typedef Translator<string, BufferParams::ParagraphSeparation> ParSepTranslator;
 
 
 ParSepTranslator const init_parseptranslator()
 {
-	ParSepTranslator translator(string_paragraph_separation[0], BufferParams::PARSEP_INDENT);
-	translator.addPair(string_paragraph_separation[1], BufferParams::PARSEP_SKIP);
+	ParSepTranslator translator
+		(string_paragraph_separation[0], BufferParams::ParagraphIndentSeparation);
+	translator.addPair(string_paragraph_separation[1], BufferParams::ParagraphSkipSeparation);
 	return translator;
 }
 
@@ -114,17 +115,18 @@ ParSepTranslator const & parseptranslator()
 
 
 // Quotes language
-typedef Translator<string, InsetQuotes::quote_language> QuotesLangTranslator;
+typedef Translator<string, InsetQuotes::QuoteLanguage> QuotesLangTranslator;
 
 
 QuotesLangTranslator const init_quoteslangtranslator()
 {
-	QuotesLangTranslator translator(string_quotes_language[0], InsetQuotes::EnglishQ);
-	translator.addPair(string_quotes_language[1], InsetQuotes::SwedishQ);
-	translator.addPair(string_quotes_language[2], InsetQuotes::GermanQ);
-	translator.addPair(string_quotes_language[3], InsetQuotes::PolishQ);
-	translator.addPair(string_quotes_language[4], InsetQuotes::FrenchQ);
-	translator.addPair(string_quotes_language[5], InsetQuotes::DanishQ);
+	QuotesLangTranslator translator
+		(string_quotes_language[0], InsetQuotes::EnglishQuotes);
+	translator.addPair(string_quotes_language[1], InsetQuotes::SwedishQuotes);
+	translator.addPair(string_quotes_language[2], InsetQuotes::GermanQuotes);
+	translator.addPair(string_quotes_language[3], InsetQuotes::PolishQuotes);
+	translator.addPair(string_quotes_language[4], InsetQuotes::FrenchQuotes);
+	translator.addPair(string_quotes_language[5], InsetQuotes::DanishQuotes);
 	return translator;
 }
 
@@ -140,7 +142,7 @@ QuotesLangTranslator const & quoteslangtranslator()
 typedef Translator<string, PAPER_SIZE> PaperSizeTranslator;
 
 
-PaperSizeTranslator const init_papersizetranslator()
+static PaperSizeTranslator initPaperSizeTranslator()
 {
 	PaperSizeTranslator translator(string_papersize[0], PAPER_DEFAULT);
 	translator.addPair(string_papersize[1], PAPER_CUSTOM);
@@ -159,7 +161,7 @@ PaperSizeTranslator const init_papersizetranslator()
 
 PaperSizeTranslator const & papersizetranslator()
 {
-	static PaperSizeTranslator translator = init_papersizetranslator();
+	static PaperSizeTranslator translator = initPaperSizeTranslator();
 	return translator;
 }
 
@@ -317,8 +319,8 @@ BufferParams::BufferParams()
 {
 	setBaseClass(defaultBaseclass());
 	makeDocumentClass();
-	paragraph_separation = PARSEP_INDENT;
-	quotes_language = InsetQuotes::EnglishQ;
+	paragraph_separation = ParagraphIndentSeparation;
+	quotes_language = InsetQuotes::EnglishQuotes;
 	fontsize = "default";
 
 	/*  PaperLayout */
@@ -357,11 +359,7 @@ BufferParams::BufferParams()
 }
 
 
-BufferParams::~BufferParams()
-{}
-
-
-docstring const BufferParams::B_(string const & l10n) const
+docstring BufferParams::B_(string const & l10n) const
 {
 	BOOST_ASSERT(language);
 	return getMessages(language->code()).get(l10n);
@@ -468,7 +466,7 @@ void BufferParams::setDefSkip(VSpace const & vs)
 }
 
 
-string const BufferParams::readToken(Lexer & lex, string const & token,
+string BufferParams::readToken(Lexer & lex, string const & token,
 	FileName const & filepath, FileName const & temppath)
 {
 	if (token == "\\textclass") {
@@ -1650,7 +1648,7 @@ void BufferParams::readModules(Lexer & lex)
 }
 
 
-string const BufferParams::paperSizeName(Papersize_Purpose const & purpose) const
+string BufferParams::paperSizeName(PapersizePurpose purpose) const
 {
 	char real_papersize = papersize;
 	if (real_papersize == PAPER_DEFAULT)
@@ -1742,7 +1740,7 @@ string const BufferParams::dvips_options() const
 }
 
 
-string const BufferParams::babelCall(string const & lang_opts) const
+string BufferParams::babelCall(string const & lang_opts) const
 {
 	string lang_pack = lyxrc.language_package;
 	if (lang_pack != "\\usepackage{babel}")
@@ -1982,7 +1980,7 @@ Encoding const & BufferParams::encoding() const
 }
 
 
-biblio::CiteEngine BufferParams::getEngine() const
+biblio::CiteEngine BufferParams::citeEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
@@ -1993,7 +1991,7 @@ biblio::CiteEngine BufferParams::getEngine() const
 }
 
 
-void BufferParams::setCiteEngine(biblio::CiteEngine const cite_engine)
+void BufferParams::setCiteEngine(biblio::CiteEngine cite_engine)
 {
 	cite_engine_ = cite_engine;
 }

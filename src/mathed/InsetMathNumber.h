@@ -14,12 +14,12 @@
 
 #include "InsetMath.h"
 
+#include "support/docstring.h"
+
 
 namespace lyx {
 
-
-/** Some inset that "is" a number
- *  mainly for math-extern
+/** Some inset that "is" a number mainly for math-extern
  */
 class InsetMathNumber : public InsetMath {
 public:
@@ -55,4 +55,5 @@ private:
 
 
 } // namespace lyx
+
 #endif

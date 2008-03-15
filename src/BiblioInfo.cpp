@@ -286,7 +286,7 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 vector<docstring> const BiblioInfo::getCiteStrings(
 	docstring const & key, Buffer const & buf) const
 {
-	biblio::CiteEngine const engine = buf.params().getEngine();
+	biblio::CiteEngine const engine = buf.params().citeEngine();
 	if (engine == biblio::ENGINE_BASIC || 
 	    engine == biblio::ENGINE_NATBIB_NUMERICAL)
 		return getNumericalStrings(key, buf);
@@ -307,7 +307,7 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 		return vector<docstring>();
 
 	vector<biblio::CiteStyle> const & styles = 
-		biblio::getCiteStyles(buf.params().getEngine());
+		biblio::getCiteStyles(buf.params().citeEngine());
 	
 	vector<docstring> vec(styles.size());
 	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {
@@ -367,7 +367,7 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 		return vector<docstring>();
 
 	vector<biblio::CiteStyle> const & styles = 
-		getCiteStyles(buf.params().getEngine());
+		getCiteStyles(buf.params().citeEngine());
 	
 	vector<docstring> vec(styles.size());
 	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {

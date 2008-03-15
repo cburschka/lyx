@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-MathMacroArgument::MathMacroArgument(size_t n)
+MathMacroArgument::MathMacroArgument(int n)
 	: number_(n)
 {
 	if (n < 1 || n > 9) {
@@ -43,7 +43,7 @@ Inset * MathMacroArgument::clone() const
 }
 
 
-void MathMacroArgument::setNumber(size_t n)
+void MathMacroArgument::setNumber(int n)
 {
 	if (n < 1 || n > 9) {
 		LYXERR0("MathMacroArgument::setNumber: wrong Argument id: " << n);

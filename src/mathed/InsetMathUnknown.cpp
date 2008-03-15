@@ -27,12 +27,6 @@ InsetMathUnknown::InsetMathUnknown(docstring const & nm,
 {}
 
 
-Inset * InsetMathUnknown::clone() const
-{
-	return new InsetMathUnknown(*this);
-}
-
-
 docstring InsetMathUnknown::name() const
 {
 	return name_;

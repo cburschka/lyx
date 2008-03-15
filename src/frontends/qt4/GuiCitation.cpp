@@ -213,7 +213,7 @@ void GuiCitation::updateDialog()
 
 void GuiCitation::updateFormatting(biblio::CiteStyle currentStyle)
 {
-	biblio::CiteEngine const engine = getEngine();
+	biblio::CiteEngine const engine = citeEngine();
 	bool const natbib_engine =
 		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
 		engine == biblio::ENGINE_NATBIB_NUMERICAL;
@@ -590,13 +590,9 @@ void GuiCitation::setCitedKeys()
 bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommandMailer::string2params(lfun_name_, data, params_);
-
-	biblio::CiteEngine const engine = buffer().params().getEngine();
-
+	biblio::CiteEngine const engine = buffer().params().citeEngine();
 	bibkeysInfo_.fillWithBibKeys(&buffer());
-	
 	citeStyles_ = biblio::getCiteStyles(engine);
-
 	return true;
 }
 
@@ -608,19 +604,19 @@ void GuiCitation::clearParams()
 }
 
 
-vector<docstring> const GuiCitation::availableKeys() const
+vector<docstring> GuiCitation::availableKeys() const
 {
 	return bibkeysInfo_.getKeys();
 }
 
 
-vector<docstring> const GuiCitation::availableFields() const
+vector<docstring> GuiCitation::availableFields() const
 {
 	return bibkeysInfo_.getFields();
 }
 
 
-vector<docstring> const GuiCitation::availableEntries() const
+vector<docstring> GuiCitation::availableEntries() const
 {
 	return bibkeysInfo_.getEntries();
 }
@@ -648,9 +644,9 @@ void GuiCitation::filterByEntryType(
 }
 
 
-biblio::CiteEngine GuiCitation::getEngine() const
+biblio::CiteEngine GuiCitation::citeEngine() const
 {
-	return buffer().params().getEngine();
+	return buffer().params().citeEngine();
 }
 
 

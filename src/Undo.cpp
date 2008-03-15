@@ -33,14 +33,16 @@
 #include "support/debug.h"
 #include "support/limited_stack.h"
 
+#include <boost/assert.hpp>
+
 #include <algorithm>
 #include <ostream>
 
 using namespace std;
 using namespace lyx::support;
 
-namespace lyx {
 
+namespace lyx {
 
 /**
 These are the elements put on the undo stack. Each object contains complete
@@ -61,8 +63,9 @@ Obviously, the stored ranged should be as small as possible. However, it
 there is a lower limit: The StableDocIterator pointing stored in the undo
 class must be valid after the changes, too, as it will used as a pointer
 where to insert the stored bits when performining undo.
-
 */
+
+
 struct UndoElement
 {
 	/// Which kind of operation are we recording for?
@@ -88,7 +91,7 @@ struct UndoElement
 
 struct Undo::Private
 {
-	Private(Buffer & buffer): buffer_(buffer) {}
+	Private(Buffer & buffer) : buffer_(buffer) {}
 	
 	// Returns false if no undo possible.
 	bool textUndoOrRedo(DocIterator & cur, bool isUndoOperation);
@@ -119,9 +122,16 @@ struct Undo::Private
 };
 
 
-Undo::Undo(Buffer & buffer): d(new Undo::Private(buffer))
-{
-}
+/////////////////////////////////////////////////////////////////////
+//
+// Undo
+//
+/////////////////////////////////////////////////////////////////////
+
+
+Undo::Undo(Buffer & buffer)
+	: d(new Undo::Private(buffer))
+{}
 
 
 Undo::~Undo()
@@ -142,11 +152,7 @@ bool Undo::hasRedoStack() const
 }
 
 
-
-
-namespace {
-
-ostream & operator<<(ostream & os, UndoElement const & undo)
+static ostream & operator<<(ostream & os, UndoElement const & undo)
 {
 	return os << " from: " << undo.from << " end: " << undo.end
 		<< " cell:\n" << undo.cell
@@ -154,15 +160,19 @@ ostream & operator<<(ostream & os, UndoElement const & undo)
 }
 
 
-bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
+static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
 {
 	StableDocIterator tmpi2 = i2;
 	tmpi2.pos() = i1.pos();
 	return i1 == tmpi2;
 }
 
-} // namespace anon
 
+/////////////////////////////////////////////////////////////////////
+//
+// Undo::Private
+//
+///////////////////////////////////////////////////////////////////////
 
 void Undo::Private::doRecordUndo(UndoKind kind,
 	DocIterator const & cell,

@@ -17,8 +17,8 @@
 
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 InsetMathNumber::InsetMathNumber(docstring const & s)
 	: str_(s)

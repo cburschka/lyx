@@ -17,6 +17,7 @@
 #include "DockView.h"
 #include "TocWidget.h"
 #include "FuncRequest.h"
+
 #include "insets/InsetCommand.h"
 
 #include "TocModel.h"
@@ -32,6 +33,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+
+#include <boost/assert.hpp>
 
 #include <algorithm>
 

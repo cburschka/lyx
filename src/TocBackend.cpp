@@ -30,7 +30,10 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 
+#include <boost/assert.hpp>
+
 using namespace std;
+
 
 namespace lyx {
 

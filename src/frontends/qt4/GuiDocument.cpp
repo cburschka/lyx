@@ -1512,25 +1512,25 @@ void GuiDocument::apply(BufferParams & params)
 				fromqstr(langModule->encodingCO->currentText());
 	}
 
-	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
+	InsetQuotes::QuoteLanguage lga = InsetQuotes::EnglishQuotes;
 	switch (langModule->quoteStyleCO->currentIndex()) {
 	case 0:
-		lga = InsetQuotes::EnglishQ;
+		lga = InsetQuotes::EnglishQuotes;
 		break;
 	case 1:
-		lga = InsetQuotes::SwedishQ;
+		lga = InsetQuotes::SwedishQuotes;
 		break;
 	case 2:
-		lga = InsetQuotes::GermanQ;
+		lga = InsetQuotes::GermanQuotes;
 		break;
 	case 3:
-		lga = InsetQuotes::PolishQ;
+		lga = InsetQuotes::PolishQuotes;
 		break;
 	case 4:
-		lga = InsetQuotes::FrenchQ;
+		lga = InsetQuotes::FrenchQuotes;
 		break;
 	case 5:
-		lga = InsetQuotes::DanishQ;
+		lga = InsetQuotes::DanishQuotes;
 		break;
 	}
 	params.quotes_language = lga;
@@ -1622,9 +1622,9 @@ void GuiDocument::apply(BufferParams & params)
 		InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
 
 	if (textLayoutModule->indentRB->isChecked())
-		params.paragraph_separation = BufferParams::PARSEP_INDENT;
+		params.paragraph_separation = BufferParams::ParagraphIndentSeparation;
 	else
-		params.paragraph_separation = BufferParams::PARSEP_SKIP;
+		params.paragraph_separation = BufferParams::ParagraphSkipSeparation;
 
 	switch (textLayoutModule->skipCO->currentIndex()) {
 	case 0:
@@ -1806,17 +1806,17 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
-		params.getEngine() == biblio::ENGINE_BASIC);
+		params.citeEngine() == biblio::ENGINE_BASIC);
 
 	biblioModule->citeNatbibRB->setChecked(
-		params.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL ||
-		params.getEngine() == biblio::ENGINE_NATBIB_AUTHORYEAR);
+		params.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL ||
+		params.citeEngine() == biblio::ENGINE_NATBIB_AUTHORYEAR);
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		params.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL);
+		params.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
-		params.getEngine() == biblio::ENGINE_JURABIB);
+		params.citeEngine() == biblio::ENGINE_JURABIB);
 
 	biblioModule->bibtopicCB->setChecked(
 		params.use_bibtopic);
@@ -1907,7 +1907,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	}
 	setLSpacing(nitem);
 
-	if (params.paragraph_separation == BufferParams::PARSEP_INDENT)
+	if (params.paragraph_separation == BufferParams::ParagraphIndentSeparation)
 		textLayoutModule->indentRB->setChecked(true);
 	else
 		textLayoutModule->skipRB->setChecked(true);

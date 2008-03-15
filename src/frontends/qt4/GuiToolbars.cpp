@@ -31,6 +31,9 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
+#include <boost/assert.hpp>
+
+
 using namespace std;
 
 namespace lyx {

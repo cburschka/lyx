@@ -23,6 +23,7 @@
 
 #include "support/debug.h"
 
+#include <boost/assert.hpp>
 #include <boost/next_prior.hpp>
 
 using namespace std;

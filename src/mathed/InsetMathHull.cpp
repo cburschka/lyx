@@ -445,9 +445,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-namespace {
-
-docstring const latex_string(InsetMathHull const & inset)
+static docstring latexString(InsetMathHull const & inset)
 {
 	odocstringstream ls;
 	WriteStream wi(ls, false, false);
@@ -455,13 +453,11 @@ docstring const latex_string(InsetMathHull const & inset)
 	return ls.str();
 }
 
-} // namespace anon
-
 
 void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		docstring const snippet = latex_string(*this);
+		docstring const snippet = latexString(*this);
 		preview_->addPreview(snippet, ploader);
 	}
 }
@@ -471,7 +467,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
-		docstring const snippet = latex_string(*this);
+		docstring const snippet = latexString(*this);
 		preview_->addPreview(snippet, buffer);
 		preview_->startLoading(buffer);
 		cur.updateFlags(Update::Force);

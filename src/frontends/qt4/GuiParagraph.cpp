@@ -218,7 +218,7 @@ void GuiParagraph::updateView()
 		labelWidth->setText(toqstr(labelwidth));
 	} else {
 		labelwidthGB->setEnabled(false);
-		labelWidth->setText("");
+		labelWidth->setText(QString());
 	}
 
 	// alignment
@@ -320,8 +320,8 @@ bool GuiParagraph::haveMultiParSelection()
 	
 bool GuiParagraph::canIndent() const
 {
-	return buffer().params().paragraph_separation ==
-		BufferParams::PARSEP_INDENT;
+	return buffer().params().paragraph_separation
+		== BufferParams::ParagraphIndentSeparation;
 }
 
 

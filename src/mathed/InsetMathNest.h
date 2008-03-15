@@ -14,33 +14,10 @@
 
 #include "InsetMath.h"
 
+// FIXME: remove
+#include "support/docstring.h"
+
 namespace lyx {
-
-class MathCompletionList : public Inset::CompletionList {
-public:
-	///
-	MathCompletionList(Cursor const & cur);
-	///
-	virtual ~MathCompletionList();
-
-	///
-	virtual bool sorted() const { return false; }
-	///
-	virtual size_t size() const;
-	///
-	virtual docstring const & data(size_t idx) const;
-	///
-	virtual std::string icon(size_t idx) const;
-
-	///
-	static void addToFavorites(docstring const & completion);
-
-private:
-	///
-	static std::vector<docstring> globals;
-	///
-	std::vector<docstring> locals;
-};
 
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a
@@ -172,15 +149,16 @@ protected:
 	/// Grab and erase selection and insert the InsetMathNest atom in every
 	/// previously selected cell, insert the grabbed former data and \c arg
 	/// in the first cell of the inserted atom.
+	void handleNest(Cursor & cur, MathAtom const & nest);
 	void handleNest(Cursor & cur, MathAtom const & nest,
-		docstring const & arg = docstring());
+		docstring const & arg);
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
 	bool interpretChar(Cursor & cur, char_type c);
 	///
-	bool script(Cursor & cur, bool,
-		docstring const & save_selection = docstring());
+	bool script(Cursor & cur, bool);
+	bool script(Cursor & cur, bool, docstring const & save_selection);
 
 public:
 	/// interpret \p str and insert the result at the current position of

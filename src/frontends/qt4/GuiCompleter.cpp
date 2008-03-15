@@ -14,6 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
+#include "CompletionList.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
@@ -102,7 +103,7 @@ protected:
 class GuiCompletionModel : public QAbstractListModel {
 public:
 	///
-	GuiCompletionModel(QObject * parent, Inset::CompletionList const * l)
+	GuiCompletionModel(QObject * parent, CompletionList const * l)
 		: QAbstractListModel(parent), list_(l) {}
 	///
 	~GuiCompletionModel()
@@ -164,8 +165,8 @@ public:
 	}
 
 private:
-	///
-	Inset::CompletionList const * list_;
+	/// owned by us
+	CompletionList const * list_;
 };
 
 
@@ -479,7 +480,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	rtlItemDelegate_->setEnabled(rtl);
 
 	// set new model
-	Inset::CompletionList const * list = cur.inset().createCompletionList(cur);
+	CompletionList const * list = cur.inset().createCompletionList(cur);
 	setModel(new GuiCompletionModel(this, list));
 	modelActive_ = true;
 	if (list->sorted())

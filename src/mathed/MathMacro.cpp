@@ -13,9 +13,11 @@
 #include <config.h>
 
 #include "MathMacro.h"
-#include "MathSupport.h"
+
+#include "MathCompletionList.h"
 #include "MathExtern.h"
 #include "MathStream.h"
+#include "MathSupport.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -770,7 +772,7 @@ bool MathMacro::automaticPopupCompletion() const
 }
 
 
-Inset::CompletionList const * 
+CompletionList const * 
 MathMacro::createCompletionList(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)

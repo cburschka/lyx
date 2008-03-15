@@ -515,7 +515,7 @@ QString GuiBibtex::styleFile() const
 {
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
-	biblio::CiteEngine const engine = buffer().params().getEngine();
+	biblio::CiteEngine const engine = buffer().params().citeEngine();
 	QString defaultstyle;
 	switch (engine) {
 	case biblio::ENGINE_BASIC:
