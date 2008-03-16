@@ -57,8 +57,15 @@ void InsetBibtex::setBuffer(Buffer & buffer)
 	if (buffer_) {
 		EmbeddedFileList::iterator it = bibfiles_.begin();
 		EmbeddedFileList::iterator it_end = bibfiles_.end();
-		for (; it != it_end; ++it)
-			*it = it->copyTo(&buffer);
+		for (; it != it_end; ++it) {
+			try {
+				*it = it->copyTo(&buffer);
+			} catch (ExceptionMessage const & message) {
+				Alert::error(message.title_, message.details_);
+				// failed to embed
+				it->setEmbed(false);
+			}		
+		}
 	}
 	Inset::setBuffer(buffer);
 }

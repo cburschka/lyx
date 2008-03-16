@@ -30,9 +30,12 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "frontends/alert.h"
+
 #include "graphics/PreviewLoader.h"
 
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -59,6 +62,8 @@ string defaultTemplateName;
 
 
 namespace lyx {
+
+namespace Alert = frontend::Alert;
 
 namespace external {
 
@@ -421,8 +426,17 @@ InsetExternal::~InsetExternal()
 
 void InsetExternal::setBuffer(Buffer & buffer)
 {
-	if (buffer_)
-		params_.filename = params_.filename.copyTo(&buffer);
+	if (buffer_) {
+		try {
+			// a file may not be copied successfully when, e.g. buffer_
+			// has already been closed.
+			params_.filename = params_.filename.copyTo(&buffer);
+		} catch (ExceptionMessage const & message) {
+			Alert::error(message.title_, message.details_);
+			// failed to embed
+			params_.filename.setEmbed(false);
+		}
+	}
 	Inset::setBuffer(buffer);
 }
 

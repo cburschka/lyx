@@ -156,8 +156,17 @@ InsetGraphics::~InsetGraphics()
 
 void InsetGraphics::setBuffer(Buffer & buffer)
 {
-	if (buffer_)
-		params_.filename = params_.filename.copyTo(&buffer);
+	if (buffer_) {
+		try {
+			// a file may not be copied successfully when, e.g. buffer_
+			// has already been closed.
+			params_.filename = params_.filename.copyTo(&buffer);
+		} catch (ExceptionMessage const & message) {
+			Alert::error(message.title_, message.details_);
+			// failed to embed
+			params_.filename.setEmbed(false);
+		}
+	}
 	Inset::setBuffer(buffer);
 }
 
