@@ -44,6 +44,7 @@ src_header_files = Split('''
     CmdDef.h
     Color.h
     ColorCode.h
+    CompletionList.h
     Converter.h
     ConverterCache.h
     CoordCache.h
@@ -67,6 +68,7 @@ src_header_files = Split('''
     FontIterator.h
     FontList.h
     Format.h
+    FuncCode.h
     FuncRequest.h
     FuncStatus.h
     Graph.h
@@ -123,7 +125,6 @@ src_header_files = Split('''
     WordLangTuple.h
     buffer_funcs.h
     factory.h
-    lfuns.h
     lyxfind.h
     output.h
     output_docbook.h
@@ -500,6 +501,7 @@ src_mathed_header_files = Split('''
     MacroTable.h
     MathAtom.h
     MathAutoCorrect.h
+    MathCompletionList.h
     MathData.h
     MathExtern.h
     MathFactory.h
