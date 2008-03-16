@@ -1603,7 +1603,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMPLETION_COMPLETE
  * \li Action: Try to complete the word or command at the cursor position.
- * \li Syntax: complete
+ * \li Syntax: completion-complete
  * \li Origin: sts, Feb 19 2008
  * \endvar
  */
