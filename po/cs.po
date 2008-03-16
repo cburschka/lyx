@@ -2932,7 +2932,7 @@ msgstr "&Znaèky v:"
 
 #: src/frontends/qt4/ui/RefUi.ui:163
 msgid "Cross-reference as it appears in output"
-msgstr "Køí¾ová reference tak, jak se objeví na výstupu"
+msgstr "Køí¾ový odkaz tak, jak se objeví na výstupu"
 
 #: src/frontends/qt4/ui/RefUi.ui:167
 msgid "<reference>"
@@ -6485,9 +6485,8 @@ msgid "PACS number:"
 msgstr "PACS number:"
 
 #: lib/layouts/scrbook.layout:17
-#, fuzzy
 msgid "\\thechapter"
-msgstr "\\Alph{chapter}"
+msgstr "\\thechapter"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:26
 #: lib/layouts/scrclass.inc:33
@@ -7383,9 +7382,8 @@ msgid "note"
 msgstr "poznámka"
 
 #: lib/layouts/stdinsets.inc:122
-#, fuzzy
 msgid "greyedout"
-msgstr "Za¹edlé"
+msgstr "za¹edlé"
 
 #: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:178
 #: src/insets/InsetERT.cpp:180
@@ -7393,14 +7391,12 @@ msgid "ERT"
 msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:153
-#, fuzzy
 msgid "Listings"
-msgstr "Seznam"
+msgstr "Výpisy"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
-#, fuzzy
 msgid "Idx"
-msgstr "Idx: "
+msgstr "Idx"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -7415,19 +7411,16 @@ msgid "--- Separate Environment ---"
 msgstr "--- Oddìlit Prostøedí ---"
 
 #: lib/layouts/stdsections.inc:14
-#, fuzzy
 msgid "Part \\thepart"
-msgstr "Èást \\Roman{part}"
+msgstr "Èást \\thepart"
 
 #: lib/layouts/stdsections.inc:39
-#, fuzzy
 msgid "Chapter \\thechapter"
-msgstr "Kapitola \\arabic{chapter}"
+msgstr "Kapitola \\thechapter"
 
 #: lib/layouts/stdsections.inc:40
-#, fuzzy
 msgid "Appendix \\thechapter"
-msgstr "Pøíloha \\Alph{chapter}"
+msgstr "Pøíloha \\thechapter"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
@@ -7953,11 +7946,11 @@ msgstr "Rakousky (nový pravopis)"
 
 #: lib/languages:11
 msgid "Bahasa Indonesia"
-msgstr ""
+msgstr "Indoné¹tina"
 
 #: lib/languages:12
 msgid "Bahasa Malaysia"
-msgstr ""
+msgstr "Malaj¹tina"
 
 #: lib/languages:13
 msgid "Basque"
@@ -8069,9 +8062,8 @@ msgid "Icelandic"
 msgstr "Island¹tina"
 
 #: lib/languages:47
-#, fuzzy
 msgid "Interlingua"
-msgstr "Vlo¾it integrál"
+msgstr "Interlingua"
 
 #: lib/languages:48
 msgid "Irish"
@@ -8086,9 +8078,8 @@ msgid "Japanese"
 msgstr "Japon¹tina"
 
 #: lib/languages:51
-#, fuzzy
 msgid "Japanese (non-CJK)"
-msgstr "Japon¹tina"
+msgstr "Japon¹tina (non-CJK)"
 
 #: lib/languages:52
 msgid "Kazakh"
@@ -8111,9 +8102,8 @@ msgid "Lithuanian"
 msgstr "Litev¹tina"
 
 #: lib/languages:59
-#, fuzzy
 msgid "Lower Sorbian"
-msgstr "Hornolu¾ická srb¹tina"
+msgstr "Dolnolu¾ická srb¹tina"
 
 #: lib/languages:60
 msgid "Hungarian"
@@ -8156,9 +8146,8 @@ msgid "Serbian"
 msgstr "Srb¹tina"
 
 #: lib/languages:70
-#, fuzzy
 msgid "Serbian (Latin)"
-msgstr "Srb¹tina"
+msgstr "Srb¹tina (latinka)"
 
 #: lib/languages:71
 msgid "Slovak"
@@ -9036,7 +9025,7 @@ msgstr "Roz¹íøené vlastnosti LyXu|R"
 
 #: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:523
 msgid "Embedded Objects|m"
-msgstr "Vkládané objekty|V"
+msgstr "Pøibalené objekty|V"
 
 #: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
@@ -9348,24 +9337,20 @@ msgid "Insert Optional Parameter"
 msgstr "Vlo¾it volitelný parametr"
 
 #: lib/ui/stdmenus.inc:222 lib/ui/stdmenus.inc:585 lib/ui/stdtoolbars.inc:175
-#, fuzzy
 msgid "Remove Optional Parameter"
-msgstr "Volitelný argument - otevøená vlo¾ka"
+msgstr "Smazat volitelný parametr"
 
 #: lib/ui/stdmenus.inc:224 lib/ui/stdmenus.inc:587 lib/ui/stdtoolbars.inc:179
-#, fuzzy
 msgid "Append Parameter Eating From The Right"
 msgstr "Pøidat pohlcování parametru zprava"
 
 #: lib/ui/stdmenus.inc:225 lib/ui/stdmenus.inc:588 lib/ui/stdtoolbars.inc:180
-#, fuzzy
 msgid "Append Optional Parameter Eating From The Right"
 msgstr "Pøidat pohlcování volitelného parametru zprava"
 
 #: lib/ui/stdmenus.inc:226 lib/ui/stdmenus.inc:589 lib/ui/stdtoolbars.inc:178
-#, fuzzy
 msgid "Remove Last Parameter Spitting Out To The Right"
-msgstr ""
+msgstr "Odstranit vyplivnutí posledního parametru doprava"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
@@ -9453,7 +9438,7 @@ msgstr "Vertikální rozdìlení|V"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Close Tab Group|G"
-msgstr "Uzavøi skupinu panelù|U"
+msgstr "Uzavøít skupinu panelù|U"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Fullscreen|l"
@@ -9518,7 +9503,7 @@ msgstr "Tabulka...|T"
 #TODO
 #: lib/ui/stdmenus.inc:341
 msgid "Hyperlink|k"
-msgstr "Hyperlink|l"
+msgstr "Odkaz (hyperlink)|l"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Short Title|S"
@@ -9663,7 +9648,7 @@ msgstr "Zaèít dodatky zde|d"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Save in Bundled Format|F"
-msgstr ""
+msgstr "Ulo¾it ve sbaleném formátu|f"
 
 #: lib/ui/stdmenus.inc:459
 msgid "Compressed|m"
@@ -9718,38 +9703,32 @@ msgid "Shortcuts|S"
 msgstr "Klávesové zkratky|z"
 
 #: lib/ui/stdmenus.inc:538
-#, fuzzy
 msgid "Equation Label|L"
-msgstr "Jdi na znaèku|J"
+msgstr "Znaèka rovnice|r"
 
 #: lib/ui/stdmenus.inc:539
-#, fuzzy
 msgid "Toggle Labeling/Numbering|T"
-msgstr "Pøepnout èíslování|l"
+msgstr "Pøepnout znaèkování/èíslování|l"
 
 #: lib/ui/stdmenus.inc:547 lib/ui/stdmenus.inc:555
-#, fuzzy
 msgid "Next Cross-Reference|N"
 msgstr "Dal¹í køí¾ový odkaz|k"
 
 #: lib/ui/stdmenus.inc:548
-#, fuzzy
 msgid "Go to Label|G"
 msgstr "Jdi na znaèku|J"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Go back to Reference|G"
-msgstr ""
+msgstr "Jdi zpìt na referenci|r"
 
 #: lib/ui/stdmenus.inc:568
-#, fuzzy
 msgid "Jump to Saved Bookmark|B"
-msgstr "Nastav 1.zálo¾ku|N"
+msgstr "Skok na ulo¾enou zálo¾ku|S"
 
 #: lib/ui/stdmenus.inc:573
-#, fuzzy
 msgid "Apply Last Text Style|A"
-msgstr "Styl textu|t"
+msgstr "Pou¾ij poslední Styl textu|t"
 
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -9884,18 +9863,16 @@ msgid "Insert box"
 msgstr "Vlo¾it rámeèek"
 
 #: lib/ui/stdtoolbars.inc:105
-#, fuzzy
 msgid "Insert Hyperlink"
-msgstr "&Generuj odkaz (hyperlink)"
+msgstr "Vlo¾it odkaz (hyperlink)"
 
 #: lib/ui/stdtoolbars.inc:106
 msgid "Insert TeX code"
 msgstr "Vlo¾it TeX-ový kód"
 
 #: lib/ui/stdtoolbars.inc:107
-#, fuzzy
 msgid "Insert math macro"
-msgstr "Vlo¾ mat. výraz"
+msgstr "Vlo¾it matematické makro"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Include file"
@@ -10050,9 +10027,8 @@ msgid "Insert cases environment"
 msgstr "Vlo¾it prostøedí \"cases\""
 
 #: lib/ui/stdtoolbars.inc:168
-#, fuzzy
 msgid "Math Macros"
-msgstr "mat. makro"
+msgstr "Mat. makra"
 
 #: lib/ui/stdtoolbars.inc:183
 msgid "Command Buffer"
@@ -12407,9 +12383,8 @@ msgid "No year"
 msgstr "®ádný rok"
 
 #: src/BiblioInfo.cpp:323 src/BiblioInfo.cpp:384
-#, fuzzy
 msgid "Add to bibliography only."
-msgstr "Pøidat bibliografii k O&bsahu"
+msgstr "Pøidat pouze bibliografii."
 
 #: src/BiblioInfo.cpp:380
 msgid "before"
@@ -12417,13 +12392,14 @@ msgstr "pøed"
 
 #: src/Buffer.cpp:229
 msgid "Disk Error: "
-msgstr ""
+msgstr "Chyba Disku: "
 
 #: src/Buffer.cpp:230
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr "Nelze smazat pomocný adresáø %1$s"
+msgstr ""
+"LyX nemohl vytvoøit pomocný adresáø '%1$s' (mo¾ná je zaplnìn disk?)"
 
 #: src/Buffer.cpp:277
 msgid "Could not remove temporary directory"
@@ -12491,7 +12467,7 @@ msgstr ""
 
 #: src/Buffer.cpp:586
 msgid "Failed to read embedded files"
-msgstr ""
+msgstr "Nepodaøilo se pøeèíst pøibalené soubory"
 
 #: src/Buffer.cpp:587
 msgid ""
@@ -12500,6 +12476,10 @@ msgid ""
 "your main text. You may also be able to recover some embedded files. Please "
 "report this bug to the lyx-devel mailing list."
 msgstr ""
+"Pravdìpodobnì díky chybì se nepodaøilo vyhledat v¹echny pøibalené soubory. "
+"Pokud rozbalíte soubor LyXu (unzip), mìli byste najít soubor content.lyx, který "
+"obsahuje vá¹ hlavní text. Také by mìlo být mo¾né znovu získat nìkteré z"
+" pøibalených souborù. Prosíme nahlaste tuto chybu vývojáøskému týmu."
 
 #: src/Buffer.cpp:736 src/Buffer.cpp:745
 msgid "Document could not be read"
@@ -12598,18 +12578,16 @@ msgid "Saving document %1$s..."
 msgstr "Ukládá se %1$s..."
 
 #: src/Buffer.cpp:929
-#, fuzzy
 msgid " could not write file!."
-msgstr "Soubor nelze pøeèíst"
+msgstr " nepodaøilo se zapsat soubor!"
 
 #: src/Buffer.cpp:936
 msgid " writing embedded files!."
-msgstr ""
+msgstr " zapisování pøibalených souborù!."
 
 #: src/Buffer.cpp:940
-#, fuzzy
 msgid " could not write embedded files!."
-msgstr "Soubor nelze pøeèíst"
+msgstr " nepodaøilo se zapsat pøibalené soubory!."
 
 #: src/Buffer.cpp:945
 msgid " done."
@@ -12796,24 +12774,21 @@ msgid "&Retrieve"
 msgstr "&Obdr¾et"
 
 #: src/BufferList.cpp:218
-#, fuzzy
 msgid "No file open!"
-msgstr "Soubor nenalezen!"
+msgstr "®ádný soubor neotevøen!"
 
 #: src/BufferList.cpp:228
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Attempting to save document %1$s\n"
-msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s"
+msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s\n"
 
 #: src/BufferList.cpp:238 src/BufferList.cpp:251 src/BufferList.cpp:265
-#, fuzzy
 msgid "  Save seems successful. Phew.\n"
-msgstr " Ulo¾ení, zdá se, probìhlo úspì¹nì."
+msgstr " Ulo¾ení, zdá se, probìhlo úspì¹nì.\n"
 
 #: src/BufferList.cpp:241 src/BufferList.cpp:255
-#, fuzzy
 msgid "  Save failed! Trying...\n"
-msgstr " Ulo¾ení se nepovedlo! Nový pokus..."
+msgstr " Ulo¾ení se nepovedlo! Nový pokus...\n"
 
 #: src/BufferList.cpp:269
 msgid "  Save failed! Bummer. Document is lost."
@@ -12845,17 +12820,13 @@ msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopen vytvoøit výstup."
 
 #: src/BufferParams.cpp:1431
-#, fuzzy, c-format
+#, c-format
 msgid "The document class %1$s could not be found."
-msgstr ""
-"Po¾adovaný dokument\n"
-"%1$s\n"
-"nelze pøeèíst."
+msgstr "Tøída dokumentu %1$s nenalezena."
 
 #: src/BufferParams.cpp:1433
-#, fuzzy
 msgid "Class not found"
-msgstr "Soubor nenalezen"
+msgstr "Tøída nenalezena"
 
 #: src/BufferParams.cpp:1443
 #, fuzzy, c-format
@@ -12866,9 +12837,8 @@ msgstr ""
 "nelze pøeèíst."
 
 #: src/BufferParams.cpp:1445 src/LyXFunc.cpp:723
-#, fuzzy
 msgid "Could not load class"
-msgstr "Nelze zmìnit tøídu"
+msgstr "Nelze naèíst tøídu"
 
 #: src/BufferParams.cpp:1481
 #, c-format
@@ -12878,11 +12848,14 @@ msgid ""
 "available modules. If you recently installed it, you\n"
 "probably need to reconfigure LyX.\n"
 msgstr ""
+"Modul %1$s je vy¾adován tímto dokumentem,\n"
+"ale nebyl nalezen v seznamu dostupných modulù.\n"
+"Pokud byl instalován teprve nedávno, budete\n"
+"pravdìpodobnì potøebovat rekonfiguraci LyX-u."
 
 #: src/BufferParams.cpp:1485
-#, fuzzy
 msgid "Module not available"
-msgstr "Tøída dokumentu není dostupná"
+msgstr "Modul není dostupný"
 
 #: src/BufferParams.cpp:1486
 #, fuzzy
@@ -12896,21 +12869,21 @@ msgid ""
 "not available in your LaTeX installation. LaTeX output\n"
 "may not be possible.\n"
 msgstr ""
+"Modul %1$s obsahuje balíèek, který není dostupný ve va¹í\n"
+"LaTeX-ové instalaci. Výstup do LaTeXu nemusí být umo¾nìn."
 
 #: src/BufferParams.cpp:1497
-#, fuzzy
 msgid "Package not available"
-msgstr "Tøída dokumentu není dostupná"
+msgstr "Balíèek není dostupný"
 
 #: src/BufferParams.cpp:1502
 #, c-format
 msgid "Error reading module %1$s\n"
-msgstr ""
+msgstr "Chyba pøi ètení modulu %1$s\n"
 
 #: src/BufferParams.cpp:1503
-#, fuzzy
 msgid "Read Error"
-msgstr "Chyba vyhledávání"
+msgstr "Chyba ètení"
 
 #: src/BufferView.cpp:175
 msgid "No more insets"
@@ -13018,11 +12991,13 @@ msgid "Could not read file"
 msgstr "Soubor nelze pøeèíst"
 
 #: src/BufferView.cpp:2150
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
-msgstr "%1$s nemù¾e být pøeèten."
+msgstr ""
+"%1$s\n"
+" nelze pøeèíst."
 
 #: src/BufferView.cpp:2151 src/output.cpp:39
 msgid "Could not open file"
@@ -13112,40 +13087,36 @@ msgid "LaTeX text"
 msgstr "text LaTeX-u"
 
 #: src/Color.cpp:106
-#, fuzzy
 msgid "inline completion"
-msgstr "&Uvnitø øádku"
+msgstr "doplnìní v øádku"
 
 #: src/Color.cpp:108
 msgid "non-unique inline completion"
-msgstr ""
+msgstr "nejednoznaèné doplnìní v øádku"
 
 #: src/Color.cpp:110
 msgid "previewed snippet"
 msgstr "nahlí¾ený výstøi¾ek"
 
 #: src/Color.cpp:111
-#, fuzzy
 msgid "note label"
-msgstr "Vlo¾it znaèku"
+msgstr "znaèka poznámky"
 
 #: src/Color.cpp:112
 msgid "note background"
 msgstr "pozadí poznámky"
 
 #: src/Color.cpp:113
-#, fuzzy
 msgid "comment label"
-msgstr "komentáø"
+msgstr "znaèka komentáøe"
 
 #: src/Color.cpp:114
 msgid "comment background"
 msgstr "pozadí komentáøe"
 
 #: src/Color.cpp:115
-#, fuzzy
 msgid "greyedout inset label"
-msgstr "vlo¾ka za¹ednutí"
+msgstr "znaèka vlo¾ky za¹ednutí"
 
 #: src/Color.cpp:116
 msgid "greyedout inset background"
@@ -13156,34 +13127,28 @@ msgid "shaded box"
 msgstr "stínovaný rámeèek"
 
 #: src/Color.cpp:118
-#, fuzzy
 msgid "branch label"
-msgstr "vìtev"
+msgstr "znaèka vìtve"
 
 #: src/Color.cpp:119
-#, fuzzy
 msgid "footnote label"
-msgstr "poznámka pod èarou"
+msgstr "znaèka poznámky pod èarou"
 
 #: src/Color.cpp:120
-#, fuzzy
 msgid "index label"
-msgstr "Vlo¾it znaèku"
+msgstr "znaèka hesla rejstøíku"
 
 #: src/Color.cpp:121
-#, fuzzy
 msgid "margin note label"
-msgstr "Pøeskoè na znaèku"
+msgstr "znaèka poznámky na okraj"
 
 #: src/Color.cpp:122
-#, fuzzy
 msgid "URL label"
-msgstr "Znaèka"
+msgstr "znaèka URL"
 
 #: src/Color.cpp:123
-#, fuzzy
 msgid "URL text"
-msgstr "text"
+msgstr "text URL"
 
 #: src/Color.cpp:124
 msgid "depth bar"
@@ -13243,14 +13208,12 @@ msgid "Math macro hovered background"
 msgstr "pozadí makra"
 
 #: src/Color.cpp:139
-#, fuzzy
 msgid "Math macro label"
-msgstr "mat. makro"
+msgstr "znaèka mat. makra"
 
 #: src/Color.cpp:140
-#, fuzzy
 msgid "Math macro frame"
-msgstr "rám (matematika)"
+msgstr "rám mat. makra"
 
 #: src/Color.cpp:141
 #, fuzzy
@@ -13258,14 +13221,12 @@ msgid "Math macro blended out"
 msgstr "pozadí makra"
 
 #: src/Color.cpp:142
-#, fuzzy
 msgid "Math macro old parameter"
-msgstr "&Dal¹í parametry"
+msgstr "starý parametr mat. makra"
 
 #: src/Color.cpp:143
-#, fuzzy
 msgid "Math macro new parameter"
-msgstr "&Dal¹í parametry"
+msgstr "nový parametr mat. makra"
 
 #: src/Color.cpp:144
 msgid "caption frame"
@@ -13332,14 +13293,12 @@ msgid "bottom area"
 msgstr "spodní oblast"
 
 #: src/Color.cpp:161
-#, fuzzy
 msgid "new page"
-msgstr "na stranì <strana>"
+msgstr "nový strana"
 
 #: src/Color.cpp:162
-#, fuzzy
 msgid "page break / line break"
-msgstr "tvrdý konec stránky"
+msgstr "konec øádky/stránky"
 
 #: src/Color.cpp:163
 msgid "frame of button"
@@ -13463,9 +13422,8 @@ msgid "Undefined flex inset"
 msgstr "Text - otevøená vlo¾ka"
 
 #: src/EmbeddedFiles.cpp:157
-#, fuzzy
 msgid "Failed to extract file"
-msgstr "Vybrat externí soubor"
+msgstr "Nepodaøilo se rozbalit soubor"
 
 #: src/EmbeddedFiles.cpp:158
 #, c-format
@@ -13473,73 +13431,65 @@ msgid ""
 "Cannot extract file '%1$s'.\n"
 "Source file %2$s does not exist"
 msgstr ""
+"Nelze rozbalit soubor '%1$s'.\n"
+"Zdrojový soubor %2$s neexistuje"
 
 #: src/EmbeddedFiles.cpp:170 src/frontends/qt4/GuiClipboard.cpp:275
-#, fuzzy
 msgid "Overwrite external file?"
-msgstr "Pøepsat soubor?"
+msgstr "Pøepsat externí soubor?"
 
 #: src/EmbeddedFiles.cpp:171
-#, fuzzy, c-format
+#, c-format
 msgid "External file %1$s already exists, do you want to overwrite it"
-msgstr ""
-"Soubor %1$s ji¾ existuje.\n"
-"\n"
-"Chcete tento soubor pøepsat?"
+msgstr "Externí soubor %1$s ji¾ existuje, chcete tento soubor pøepsat"
 
 #: src/EmbeddedFiles.cpp:183 src/EmbeddedFiles.cpp:195
 #: src/EmbeddedFiles.cpp:248
-#, fuzzy
 msgid "Copy file failure"
-msgstr "Soubor nelze prohlí¾et"
+msgstr "Chyba pøi kopírování souboru"
 
 #: src/EmbeddedFiles.cpp:184 src/EmbeddedFiles.cpp:360
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create file path '%1$s'.\n"
 "Please check whether the path is writeable."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
-"Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
+"Nelze vytvoøit cestu k souboru '%1$s'.\n"
+"Zkontrolujte, zda-li lze danou cestu zapsat."
 
 #: src/EmbeddedFiles.cpp:196 src/EmbeddedFiles.cpp:249
 #: src/EmbeddedFiles.cpp:373
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot copy file %1$s to %2$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
+"Nelze zkopírovat soubor %1$s na %2$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
 #: src/EmbeddedFiles.cpp:219
-#, fuzzy
 msgid "Failed to embed file"
-msgstr "Soubor nelze pøeèíst"
+msgstr "Nepodaøilo se pøibalit soubor"
 
 #: src/EmbeddedFiles.cpp:220
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Failed to embed file %1$s.\n"
 "Please check whether this file exists and is readable."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
-"Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
+"Nelze pøibalit soubor %1$s.\n"
+"Zkontrolujte, zda-li tento soubor existuje a lze èíst."
 
 #: src/EmbeddedFiles.cpp:232
 msgid "Update embedded file?"
-msgstr ""
+msgstr "Aktualizovat pøibalený soubor?"
 
 #: src/EmbeddedFiles.cpp:233
-#, fuzzy, c-format
+#, c-format
 msgid "Embedded file %1$s already exists, do you want to overwrite it"
-msgstr ""
-"Soubor %1$s ji¾ existuje.\n"
-"\n"
-"Chcete tento soubor pøepsat?"
+msgstr "Pøibalený soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat"
 
 #: src/EmbeddedFiles.cpp:342 src/EmbeddedFiles.cpp:496
-#, fuzzy
 msgid "Failed to open file"
 msgstr "Nelze otevøít soubor"
 
@@ -13549,11 +13499,11 @@ msgstr "Nelze otevøít soubor"
 msgid ""
 "Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"
 msgstr ""
+"Pøibalený soubor %1$s neexistuje. Neporu¹ili jste pomocný adresáø LyX-u?"
 
 #: src/EmbeddedFiles.cpp:359 src/EmbeddedFiles.cpp:372
-#, fuzzy
 msgid "Sync file failure"
-msgstr "chktex selhal"
+msgstr "Synchronizace selhala"
 
 #: src/EmbeddedFiles.cpp:423
 #, c-format
@@ -13561,11 +13511,13 @@ msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embeddable files are embedded.\n"
 msgstr ""
+"%1$d externích souborù je ignorováno.\n"
+"%2$d balitelných souborù je pøibaleno.\n"
+
 
 #: src/EmbeddedFiles.cpp:425
-#, fuzzy
 msgid "Packing all files"
-msgstr "Tisk v¹ech stran"
+msgstr "Sbalení v¹ech souborù"
 
 #: src/EmbeddedFiles.cpp:427
 #, c-format
@@ -13573,14 +13525,17 @@ msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embedded files are extracted.\n"
 msgstr ""
+"%1$d externích souborù je ignorováno.\n"
+"%2$d balitelných souborù je rozbaleno.\n"
+
 
 #: src/EmbeddedFiles.cpp:429
 msgid "Unpacking all files"
-msgstr ""
+msgstr "Rozbalení v¹ech souborù"
 
 #: src/EmbeddedFiles.cpp:445
 msgid "Wrong embedding status."
-msgstr ""
+msgstr "Chybný stav sbalení."
 
 #: src/EmbeddedFiles.cpp:446
 #, c-format
@@ -13588,24 +13543,24 @@ msgid ""
 "File %1$s is included in more than one insets, but with different embedding "
 "status. Assuming embedding status."
 msgstr ""
+"Soubor %1$s je zahrnut ve více vlo¾kách s rozdílnými volbami pro sbalení."
+" Pøi konfliktu pøedpokládám volbu pøibalení."
 
 #: src/EmbeddedFiles.cpp:541
-#, fuzzy
 msgid "Failed to write file"
-msgstr "Pøepsat soubor?"
+msgstr "Nepodaøilo se zapsat soubor"
 
 #: src/EmbeddedFiles.cpp:558
-#, fuzzy
 msgid "Save failure"
-msgstr "Zálohování selhalo"
+msgstr "Nepodaøilo se ulo¾it soubor"
 
 #: src/EmbeddedFiles.cpp:559
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
+"Nelze vytvoøit soubor %1$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
 #: src/Exporter.cpp:44 src/LyXFunc.cpp:1010
@@ -13965,7 +13920,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
 #: src/LyX.cpp:1168
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14001,6 +13955,8 @@ msgstr ""
 "                  spustí pøíkaz command LyX-u.\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportní formát.\n"
+"                  Pro seznam formátù se podívejte do sekce\n"
+"                  Nástroje->Nastavení->Formáty souborù."
 "\t-i [--import] fmt soubor.xxx\n"
 "                  kde fmt vybraný formát k importu\n"
 "                  a soubor.xxx je soubor urèený k importu.\n"
@@ -14137,12 +14093,9 @@ msgid "Print document failed"
 msgstr "Tisk dokumentu selhal"
 
 #: src/LyXFunc.cpp:721
-#, fuzzy, c-format
+#, c-format
 msgid "The document class %1$s.could not be loaded."
-msgstr ""
-"Po¾adovaný dokument\n"
-"%1$s\n"
-"nelze pøeèíst."
+msgstr "Tøída dokumentu %1$s nemù¾e být naètena."
 
 #: src/LyXFunc.cpp:833
 #, c-format
@@ -14195,14 +14148,14 @@ msgid "Unable to save document defaults"
 msgstr "Nelze ulo¾it standardní nastavení dokumentu"
 
 #: src/LyXFunc.cpp:1793
-#, fuzzy, c-format
+#, c-format
 msgid "Document %1$s reloaded."
-msgstr "Dokument %1$s otevøen."
+msgstr "Dokument %1$s znovunaèten."
 
 #: src/LyXFunc.cpp:1795
-#, fuzzy, c-format
+#, c-format
 msgid "Could not reload document %1$s"
-msgstr "Nelze pøeèíst dokument"
+msgstr "Nelze znovunaèíst dokument %1$s"
 
 #: src/LyXFunc.cpp:1832
 msgid "Welcome to LyX!"
@@ -15789,9 +15742,8 @@ msgid "Numbering & TOC"
 msgstr "Èíslování & Obsah"
 
 #: src/frontends/qt4/GuiDocument.cpp:980
-#, fuzzy
 msgid "PDF Properties"
-msgstr "Property"
+msgstr "PDF vlasnosti"
 
 #: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Math Options"
@@ -15811,9 +15763,8 @@ msgstr "Vìtve"
 
 #: src/frontends/qt4/GuiDocument.cpp:985 src/frontends/qt4/GuiToc.cpp:231
 #: src/frontends/qt4/Menus.cpp:918
-#, fuzzy
 msgid "Embedded Files"
-msgstr "Vkládané objekty|V"
+msgstr "Pøibalené soubory"
 
 #: src/frontends/qt4/GuiDocument.cpp:986 src/frontends/qt4/GuiDocument.cpp:998
 msgid "LaTeX Preamble"
@@ -15837,9 +15788,8 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1249
 #: src/frontends/qt4/GuiDocument.cpp:1300
 #: src/frontends/qt4/GuiDocument.cpp:2148
-#, fuzzy
 msgid "Error"
-msgstr "Arrow"
+msgstr "Chyba"
 
 #: src/frontends/qt4/GuiDocument.cpp:1250
 msgid "Unable to read local layout file."
