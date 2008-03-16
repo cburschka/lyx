@@ -505,7 +505,8 @@ void GuiWorkArea::showCursor()
 		cursorInView = false;
 
 	// show cursor on screen
-	bool completable = completer_.completionAvailable()
+	bool completable = cur.inset().showCompletionCursor()
+		&& completer_.completionAvailable()
 		&& !completer_.popupVisible()
 		&& !completer_.inlineVisible();
 	if (cursorInView) {

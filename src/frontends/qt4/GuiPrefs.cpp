@@ -406,6 +406,8 @@ PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(popupAfterCompleteCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(cursorTextCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
 		this, SIGNAL(changed()));
 }
@@ -424,6 +426,7 @@ void PrefInput::apply(LyXRC & rc) const
 	rc.completion_popup_delay = popupDelaySB->value();
 	rc.completion_popup_math = popupMathCB->isChecked();
 	rc.completion_popup_text = popupTextCB->isChecked();
+	rc.completion_cursor_text = cursorTextCB->isChecked();
 	rc.completion_popup_after_complete
 	= popupAfterCompleteCB->isChecked();
 	rc.mouse_wheel_speed = mouseWheelSpeedSB->value();
@@ -443,6 +446,7 @@ void PrefInput::update(LyXRC const & rc)
 	popupDelaySB->setValue(rc.completion_popup_delay);
 	popupMathCB->setChecked(rc.completion_popup_math);
 	popupTextCB->setChecked(rc.completion_popup_text);
+	cursorTextCB->setChecked(rc.completion_cursor_text);
 	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
 	mouseWheelSpeedSB->setValue(rc.mouse_wheel_speed);
 }

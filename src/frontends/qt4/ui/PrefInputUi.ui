@@ -142,6 +142,16 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QCheckBox" name="cursorTextCB" >
+           <property name="toolTip" >
+            <string>Show a small triangle on the cursor if a completion is available in text mode.</string>
+           </property>
+           <property name="text" >
+            <string>Cursor indicator</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
@@ -180,7 +190,7 @@
       <item>
        <widget class="QGroupBox" name="groupBox_4" >
         <property name="title" >
-         <string>General[[PrefInput]]</string>
+         <string>General</string>
         </property>
         <layout class="QVBoxLayout" >
          <item>

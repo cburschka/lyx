@@ -63,6 +63,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\completion_cursor_text", LyXRC::RC_COMPLETION_CURSOR_TEXT },
 	{ "\\completion_inline_delay", LyXRC::RC_COMPLETION_INLINE_DELAY },
 	{ "\\completion_inline_dots", LyXRC::RC_COMPLETION_INLINE_DOTS },
 	{ "\\completion_inline_math", LyXRC::RC_COMPLETION_INLINE_MATH },
@@ -308,6 +309,7 @@ void LyXRC::setDefaults() {
 	full_screen_scrollbar = true;
 	full_screen_width = 700;
 
+	completion_cursor_text = true;
 	completion_popup_math = true;
 	completion_popup_text = false;
 	completion_popup_delay = 2.0;
@@ -820,6 +822,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_COMPLETION_POPUP_TEXT:
 			if (lexrc.next()) {
 				completion_popup_text = lexrc.getBool();
+			}
+			break;
+
+		case RC_COMPLETION_CURSOR_TEXT:
+			if (lexrc.next()) {
+				completion_cursor_text = lexrc.getBool();
 			}
 			break;
 
@@ -2206,6 +2214,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_COMPLETION_CURSOR_TEXT:
+		if (ignore_system_lyxrc ||
+		    completion_cursor_text != system_lyxrc.completion_cursor_text) {
+			os << "\\completion_cursor_text "
+			   << convert<string>(completion_cursor_text) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_COMPLETION_POPUP_AFTER_COMPLETE:
 		if (ignore_system_lyxrc ||
 		    completion_popup_after_complete
@@ -2829,6 +2845,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_COMPLETION_POPUP_AFTER_COMPLETE:
 		str = _("Show the completion popup without delay after non-unique completion attempt.");
+		break;
+
+	case RC_COMPLETION_POPUP_TEXT:
+		str = _("Show a small triangle on the cursor to indicate that a completion is available.");
 		break;
 
 	case RC_COMPLETION_POPUP_DELAY:

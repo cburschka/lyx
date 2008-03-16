@@ -760,6 +760,8 @@ public:
 	///
 	bool automaticPopupCompletion() const;
 	///
+	bool showCompletionCursor() const;
+	///
 	CompletionList const * createCompletionList(Cursor const & cur) const;
 	///
 	docstring completionPrefix(Cursor const & cur) const;

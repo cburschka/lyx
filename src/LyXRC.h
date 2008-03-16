@@ -49,6 +49,7 @@ public:
 		RC_BINDFILE,
 		RC_CHECKLASTFILES,
 		RC_CHKTEX_COMMAND,
+		RC_COMPLETION_CURSOR_TEXT,
 		RC_COMPLETION_INLINE_DELAY,
 		RC_COMPLETION_INLINE_MATH,
 		RC_COMPLETION_INLINE_TEXT,
@@ -422,6 +423,8 @@ public:
 	bool full_screen_limit;
 	/// Width of limited screen (in pixels) in fullscreen mode
 	int full_screen_width;
+	///
+	bool completion_cursor_text;
 	///
 	double completion_inline_delay;
 	///

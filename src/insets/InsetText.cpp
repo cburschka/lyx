@@ -495,6 +495,12 @@ bool InsetText::automaticPopupCompletion() const
 }
 
 
+bool InsetText::showCompletionCursor() const
+{
+	return lyxrc.completion_cursor_text;
+}
+
+
 CompletionList const * InsetText::createCompletionList(Cursor const & cur) const
 {
 	return completionSupported(cur) ? text_.createCompletionList(cur) : 0;

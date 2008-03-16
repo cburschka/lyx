@@ -322,6 +322,8 @@ public:
 	virtual bool automaticInlineCompletion() const { return true; }
 	/// Return true if the popup completion should be automatic.
 	virtual bool automaticPopupCompletion() const { return true; }
+	/// Return true if the cursor should indicate a completion.
+	virtual bool showCompletionCursor() const { return true; }
 	/// Returns completion suggestions at cursor position. Return an
 	/// null pointer if no completion is a available or possible.
 	/// The caller is responsible to free the returned object!

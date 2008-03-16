@@ -4822,6 +4822,12 @@ bool InsetTabular::automaticPopupCompletion() const
 }
 
 
+bool InsetTabular::showCompletionCursor() const
+{
+	return lyxrc.completion_cursor_text;
+}
+
+
 CompletionList const * InsetTabular::createCompletionList(Cursor const & cur) const
 {
 	return completionSupported(cur) ? cur.text()->createCompletionList(cur) : 0;
