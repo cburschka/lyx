@@ -925,18 +925,18 @@ bool Buffer::writeFile(FileName const & fname) const
 	}
 
 	if (!retval) {
-		message(str + _(" could not write file!."));
+		message(str + _(" could not write file!"));
 		return false;
 	}
 
 	removeAutosaveFile(d->filename.absFilename());
 
 	if (params().embedded) {
-		message(str + _(" writing embedded files!."));
+		message(str + _(" writing embedded files."));
 		// if embedding is enabled, write file.lyx and all the embedded files
 		// to the zip file fname.
 		if (!d->embedded_files.writeFile(fname, *this)) {
-			message(str + _(" could not write embedded files!."));
+			message(str + _(" could not write embedded files!"));
 			return false;
 		}
 	}

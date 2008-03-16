@@ -168,7 +168,7 @@ bool EmbeddedFile::extract() const
 		// otherwise, ask if overwrite
 		int ret = Alert::prompt(
 			_("Overwrite external file?"),
-			bformat(_("External file %1$s already exists, do you want to overwrite it"),
+			bformat(_("External file %1$s already exists, do you want to overwrite it?"),
 				from_utf8(ext_file)), 1, 1, _("&Overwrite"), _("&Cancel"));
 		if (ret != 0)
 			// if the user does not want to overwrite, we still consider it
