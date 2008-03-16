@@ -487,7 +487,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 			string const module = *it;
 			vector<string>::const_iterator found =
 				find(masterModules.begin(), masterModules.end(), module);
-			if (found != masterModules.end()) {
+			if (found == masterModules.end()) {
 				docstring text = bformat(_("Included file `%1$s'\n"
 					"uses module `%2$s'\n"
 					"which is not used in parent file."),
