@@ -13,7 +13,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
