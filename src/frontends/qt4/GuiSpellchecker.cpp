@@ -198,7 +198,7 @@ void GuiSpellchecker::partialUpdate(int state)
 }
 
 
-static SpellBase * getSpeller(BufferParams const & bp)
+static SpellBase * createSpeller(BufferParams const & bp)
 {
 	string lang = (lyxrc.isp_use_alt_lang)
 		      ? lyxrc.isp_alt_lang
@@ -227,7 +227,7 @@ bool GuiSpellchecker::initialiseParams(string const &)
 {
 	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
 
-	speller_ = getSpeller(buffer().params());
+	speller_ = createSpeller(buffer().params());
 	if (!speller_)
 		return false;
 
