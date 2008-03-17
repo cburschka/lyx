@@ -12829,12 +12829,9 @@ msgid "Class not found"
 msgstr "Tøída nenalezena"
 
 #: src/BufferParams.cpp:1443
-#, fuzzy, c-format
+#, c-format
 msgid "The document class %1$s could not be loaded."
-msgstr ""
-"Po¾adovaný dokument\n"
-"%1$s\n"
-"nelze pøeèíst."
+msgstr "Tøídu dokumentu (%1$s) se nepodaøilo naèíst."
 
 #: src/BufferParams.cpp:1445 src/LyXFunc.cpp:723
 msgid "Could not load class"
@@ -12858,9 +12855,8 @@ msgid "Module not available"
 msgstr "Modul není dostupný"
 
 #: src/BufferParams.cpp:1486
-#, fuzzy
 msgid "Some layouts may not be available."
-msgstr "Tøída dokumentu není dostupná"
+msgstr "Nìkterá rozvr¾ení dokumentu nemusí být dostupná."
 
 #: src/BufferParams.cpp:1494
 #, c-format
@@ -14260,6 +14256,8 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
+"Zobrazit malý rámeèek kolem mat. makra spoleènì se jménem makra v pøípadì, "
+"¾e je kurzor uvnitø."
 
 #: src/LyXRC.cpp:2672
 #, no-c-format
@@ -14271,13 +14269,12 @@ msgstr ""
 "e. %B %Y\"."
 
 #: src/LyXRC.cpp:2676
-#, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
-"Soubor klávesových zkratek. Lze nastavit absolutní cestu; jinak bude LyX "
-"hledat v jeho lokálních a globálních adresáøích bind/ ."
+"Soubor definic pøíkazù. Lze buïto zadat absolutní cestu; jinak bude LyX "
+"hledat v jeho lokálních a globálních adresáøích command/ ."
 
 #: src/LyXRC.cpp:2680
 msgid "New documents will be assigned this language."
@@ -14312,12 +14309,11 @@ msgid "Specify additional chars that can be part of a word."
 msgstr "Urèení dodateèných znakù, které mohou být souèástí slova."
 
 #: src/LyXRC.cpp:2705
-#, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"Cesta kterou LyX nabídne pøi výbìru ¹ablony. Prázdný øetìzec zpùsobí výbìr "
+"Cesta kterou LyX nastaví pøi výbìru pøíkladù. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
 #: src/LyXRC.cpp:2709
@@ -14630,7 +14626,6 @@ msgstr ""
 "velikostina papíru."
 
 #: src/LyXRC.cpp:2954
-#, fuzzy
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Povolit ukládání a znovu-nastavení pozice okna."
 
@@ -14916,22 +14911,20 @@ msgid "PlainLayout"
 msgstr "Rozvr¾ení Stránky"
 
 #: src/TextClass.cpp:523
-#, fuzzy
 msgid "Missing File"
-msgstr "Chybí argument"
+msgstr "Chybìjící soubor"
 
 #: src/TextClass.cpp:524
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
-msgstr ""
+msgstr "Nepodaøilo se najít soubor stdinsets.inc! Toto mù¾e vést ke ztrátì dat!"
 
 #: src/TextClass.cpp:527
-#, fuzzy
 msgid "Corrupt File"
-msgstr "Krátký titulek|i"
+msgstr "Po¹kozený soubor"
 
 #: src/TextClass.cpp:528
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
+msgstr "Nepodaøilo se pøeèíst soubor stdinsets.inc! Toto mù¾e vést ke ztrátì dat!"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -14973,37 +14966,32 @@ msgid "protected"
 msgstr "chránìno"
 
 #: src/buffer_funcs.cpp:68
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s is already loaded and has unsaved changes.\n"
 "Do you want to abandon your changes and reload the version on disk?"
 msgstr ""
-"Dokument %1$s je ji¾ otevøen.\n"
-"\n"
-"Chcete se vrátit k pùvodní (ulo¾ené) verzi ?"
+"Dokument %1$s je ji¾ otevøen a obsahuje neulo¾ené zmìny.\n"
+"Chcete se tìchto zmìn vzdát a naèíst pùvodní verzi z disku?"
 
 #: src/buffer_funcs.cpp:70
-#, fuzzy
 msgid "Reload saved document?"
-msgstr "Vrátit se k pùvodnímu dokumentu ?"
+msgstr "Znovu naèíst dokument?"
 
 #: src/buffer_funcs.cpp:71
-#, fuzzy
 msgid "&Reload"
-msgstr "Nah&raï"
+msgstr "&Znovunaèíst"
 
 #: src/buffer_funcs.cpp:71
-#, fuzzy
 msgid "&Keep Changes"
-msgstr "Slouèit revize"
+msgstr "&Ponechat zmìny"
 
 #: src/buffer_funcs.cpp:82
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
+msgstr "Soubor %1$s existuje, ale není pøístupný pro aktuálního u¾ivatele."
 
 #: src/buffer_funcs.cpp:85
-#, fuzzy
 msgid "File not readable!"
 msgstr "Soubor nelze pøeèíst"
 
@@ -15203,7 +15191,6 @@ msgid ""
 msgstr "Tisk dokumentu selhal"
 
 #: src/frontends/qt4/GuiApplication.cpp:498
-#, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -15211,7 +15198,7 @@ msgid ""
 "Exception: "
 msgstr ""
 "LyX zachytil vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené dokumenty a "
-"skonèit.\n"
+"skonèit.\n\n"
 "Vyjímka: "
 
 #: src/frontends/qt4/GuiApplication.cpp:502
@@ -15220,7 +15207,6 @@ msgid "Software exception Detected"
 msgstr "Detekována softwarová vyjímka"
 
 #: src/frontends/qt4/GuiApplication.cpp:506
-#, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -15436,40 +15422,37 @@ msgid "Text Style"
 msgstr "Styl textu"
 
 #: src/frontends/qt4/GuiCitation.cpp:312
-#, fuzzy
 msgid "Keys"
-msgstr "&Klíè:"
+msgstr "Klíèe"
 
 #: src/frontends/qt4/GuiClipboard.cpp:204
 msgid "LinkBack PDF"
-msgstr ""
+msgstr "LinkBack PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:205
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:206
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: src/frontends/qt4/GuiClipboard.cpp:207
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: src/frontends/qt4/GuiClipboard.cpp:216
-#, fuzzy
 msgid "pasted"
-msgstr "Vlo¾it"
+msgstr "vlo¾eno"
 
 #: src/frontends/qt4/GuiClipboard.cpp:225
 #, c-format
 msgid "%1$s Files"
-msgstr ""
+msgstr "%1$s souborù"
 
 #: src/frontends/qt4/GuiClipboard.cpp:235
-#, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
-msgstr "Vybrat nové jméno souboru pro dokument"
+msgstr "Zvolte jméno souboru pro ulo¾ení vkládaného obrázku"
 
 #: src/frontends/qt4/GuiClipboard.cpp:245 src/frontends/qt4/GuiView.cpp:1158
 #: src/frontends/qt4/GuiView.cpp:1296 src/frontends/qt4/GuiView.cpp:1312
@@ -15479,12 +15462,9 @@ msgid "Canceled."
 msgstr "Zru¹eno."
 
 #: src/frontends/qt4/GuiClipboard.cpp:276
-#, fuzzy, c-format
+#, c-format
 msgid "File %1$s already exists, do you want to overwrite it"
-msgstr ""
-"Soubor %1$s ji¾ existuje.\n"
-"\n"
-"Chcete tento soubor pøepsat?"
+msgstr "Soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:97
 msgid "Next command"
@@ -15616,9 +15596,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/GuiDocument.cpp:189
-#, fuzzy
 msgid "Module not found!"
-msgstr "Soubor nenalezen"
+msgstr "Modul nenalezen!"
 
 #: src/frontends/qt4/GuiDocument.cpp:505
 msgid "Document Settings"
@@ -15771,19 +15750,17 @@ msgid "LaTeX Preamble"
 msgstr "Preambule LaTeXu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1227
-#, fuzzy
 msgid "Layouts|#o#O"
-msgstr "Rozvr¾ení|R"
+msgstr "Rozvr¾ení|#o#O"
 
 #: src/frontends/qt4/GuiDocument.cpp:1229
-#, fuzzy
 msgid "LyX Layout (*.layout)"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Rozvr¾ení dokumentu LyX-u (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1231
 #: src/frontends/qt4/GuiDocument.cpp:1277
 msgid "Local layout file"
-msgstr ""
+msgstr "Lokální soubor s rozvr¾ením"
 
 #: src/frontends/qt4/GuiDocument.cpp:1249
 #: src/frontends/qt4/GuiDocument.cpp:1300
@@ -15793,7 +15770,7 @@ msgstr "Chyba"
 
 #: src/frontends/qt4/GuiDocument.cpp:1250
 msgid "Unable to read local layout file."
-msgstr ""
+msgstr "Nepodaøilo se naèíst lokální soubor s rozvr¾ením dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:1278
 msgid ""
@@ -15802,17 +15779,19 @@ msgid ""
 "document may not work with this layout if you do not\n"
 "keep the layout file in the same directory."
 msgstr ""
+"Soubor s rozvr¾ením dokumentu, který jste zvolili je lokálním\n"
+"souborem, nikoliv systémovým nebo u¾ivatelským.\n"
+"Vá¹ dokument mù¾e mít problémy pokud soubor s rozvr¾ením\n"
+"neponecháte ve stejném adresáøi."
 
 #: src/frontends/qt4/GuiDocument.cpp:1282
 #: src/frontends/qt4/GuiDocument.cpp:1293
-#, fuzzy
 msgid "&Set Layout"
-msgstr "Rozvr¾ení textu"
+msgstr "&Nastavit rozvr¾ení"
 
 #: src/frontends/qt4/GuiDocument.cpp:1289
-#, fuzzy
 msgid "Embedded layout"
-msgstr "Vkládané objekty|V"
+msgstr "Pøibalit rozvr¾ení"
 
 #: src/frontends/qt4/GuiDocument.cpp:1290
 msgid ""
@@ -16190,38 +16169,33 @@ msgid "User interface"
 msgstr "U¾ivatelské rozhraní"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1902
-#, fuzzy
 msgid "Shortcuts"
-msgstr "&Zkratka:"
+msgstr "Klávesové zkratky"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1907
-#, fuzzy
 msgid "Function"
 msgstr "Funkce"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2248 src/frontends/qt4/GuiPrefs.cpp:2255
 #: src/frontends/qt4/GuiPrefs.cpp:2262 src/frontends/qt4/GuiPrefs.cpp:2274
-#, fuzzy
 msgid "Failed to create shortcut"
-msgstr "Selhalo vytváøení adresáøe. Konec."
+msgstr "Selhalo vytvoøení klávesové zkratky"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2249
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "Neznámá funkce."
+msgstr "Neznámá nebo chybná LyX-funkce"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2256
 msgid "Invalid or empty key sequence"
-msgstr ""
+msgstr "Chybná nebo prázdná sekvence kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2263
 msgid "Shortcut is already defined"
-msgstr ""
+msgstr "Zkratka je u¾ definována"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2275
-#, fuzzy
 msgid "Can not insert shortcut to the list"
-msgstr "Pøidat novou vìtev do seznamu"
+msgstr "Nelze pøidat zkratku do seznamu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2295
 msgid "Identity"
@@ -16304,9 +16278,8 @@ msgid "Show File"
 msgstr "Zobraz soubor"
 
 #: src/frontends/qt4/GuiShowFile.cpp:47
-#, fuzzy
 msgid "Error -> Cannot load file!"
-msgstr "Nelze editovat soubor"
+msgstr "Chyba -> Nelze naèíst soubor!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:242
 msgid "Spellchecker error"
