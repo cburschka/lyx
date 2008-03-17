@@ -34,6 +34,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
  SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\classic.ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
 FunctionEnd
