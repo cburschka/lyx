@@ -1007,6 +1007,10 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
 		break;
 
+	case LFUN_UI_TOGGLE:
+		flag.setOnOff(isFullScreen());
+		break;
+
 	case LFUN_DIALOG_TOGGLE:
 		flag.setOnOff(isDialogVisible(cmd.getArg(0)));
 		// fall through to set "enable"

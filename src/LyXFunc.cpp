@@ -446,6 +446,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// FIXME: these cases should be hidden in GuiView::getStatus().
 	case LFUN_DIALOG_TOGGLE:
 	case LFUN_DIALOG_SHOW:
+	case LFUN_UI_TOGGLE:
 	case LFUN_DIALOG_UPDATE:
 		// FIXME: add special handling for about and prefs dialogs here
 		// which do not depend on GuiView.
@@ -609,7 +610,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_BUFFER_CHILD_OPEN:
-	case LFUN_UI_TOGGLE:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
