@@ -273,7 +273,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 			break;
 		int ret = frontend::Alert::prompt(
 			_("Overwrite external file?"),
-			bformat(_("File %1$s already exists, do you want to overwrite it"),
+			bformat(_("File %1$s already exists, do you want to overwrite it?"),
 			from_utf8(filename.absFilename())), 1, 1, _("&Overwrite"), _("&Cancel"));
 		if (ret == 0)
 			// overwrite, hence break the dialog loop

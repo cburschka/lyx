@@ -566,7 +566,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			docstring details = e.details_ + '\n';
 			details += theBufferList().emergencyWrite(buf);
 			theBufferList().release(buf);
-			details += _("\nThe current document was closed.");
+			details += "\n" + _("The current document was closed.");
 			Alert::error(e.title_, details);
 			return false;
 		}
