@@ -83,22 +83,6 @@ CutStack selectionBuffer(1);
 bool dirty_tabular_stack_ = false;
 
 
-void region(CursorSlice const & i1, CursorSlice const & i2,
-	Inset::row_type & r1, Inset::row_type & r2,
-	Inset::col_type & c1, Inset::col_type & c2)
-{
-	Inset & p = i1.inset();
-	c1 = p.col(i1.idx());
-	c2 = p.col(i2.idx());
-	if (c1 > c2)
-		std::swap(c1, c2);
-	r1 = p.row(i1.idx());
-	r2 = p.row(i2.idx());
-	if (r1 > r2)
-		std::swap(r1, r2);
-}
-
-
 bool checkPastePossible(int index)
 {
 	return size_t(index) < theCuts.size() && !theCuts[index].first.empty();
@@ -393,6 +377,22 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 
 namespace cap {
+
+void region(CursorSlice const & i1, CursorSlice const & i2,
+	Inset::row_type & r1, Inset::row_type & r2,
+	Inset::col_type & c1, Inset::col_type & c2)
+{
+	Inset & p = i1.inset();
+	c1 = p.col(i1.idx());
+	c2 = p.col(i2.idx());
+	if (c1 > c2)
+		std::swap(c1, c2);
+	r1 = p.row(i1.idx());
+	r2 = p.row(i2.idx());
+	if (r1 > r2)
+		std::swap(r1, r2);
+}
+
 
 docstring grabAndEraseSelection(Cursor & cur)
 {

@@ -15,6 +15,7 @@
 #define CUTANDPASTE_H
 
 #include "support/docstring.h"
+#include "insets/InsetTabular.h"
 
 #include <vector>
 
@@ -101,6 +102,10 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			  InsetText & in, ErrorList &);
 
+/// Calculate rectangular region of cell between \c i1 and \c i2.
+void region(CursorSlice const & i1, CursorSlice const & i2,
+	Inset::row_type & r1, Inset::row_type & r2,
+	Inset::col_type & c1, Inset::col_type & c2);
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.
 docstring grabSelection(Cursor const & cur);

@@ -417,9 +417,63 @@ void InsetMathNest::handleFont
 		recordUndoInset(cur, Undo::ATOMIC);
 		cur.handleFont(to_utf8(font));
 	} else {
-		recordUndo(cur, Undo::ATOMIC);
-		cur.handleNest(createInsetMath(font));
-		cur.insert(arg);
+		CursorSlice i1 = cur.selBegin();
+		CursorSlice i2 = cur.selEnd();
+		if (!i1.inset().asInsetMath())
+			return;
+		if (i1.idx() == i2.idx()) {
+			// the easy case where only one cell is selected
+			recordUndo(cur, Undo::ATOMIC);
+			cur.handleNest(createInsetMath(font));
+			cur.insert(arg);
+			return;
+		}
+		// multiple selected cells in a simple non-grid inset
+		if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
+			recordUndoInset(cur);
+			for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
+				// select cell
+				cur.idx() = i;
+				cur.pos() = 0;
+				cur.resetAnchor();
+				cur.pos() = cur.lastpos();
+				cur.setSelection();
+				
+				// change font of cell
+				cur.handleNest(createInsetMath(font));
+				cur.insert(arg);
+				
+				// cur is in the font inset now. If the loop continues,
+				// we need to get outside again for the next cell
+				if (i + 1 <= i2.idx())
+					cur.pop_back();
+			}
+			return;
+		}
+		// the complicated case with multiple selected cells in a grid
+		recordUndoInset(cur);
+		Inset::row_type r1, r2;
+		Inset::col_type c1, c2;
+		cap::region(i1, i2, r1, r2, c1, c2);
+		for (Inset::row_type row = r1; row <= r2; ++row) {
+			for (Inset::col_type col = c1; col <= c2; ++col) {
+				// select cell
+				cur.idx() = i1.asInsetMath()->index(row, col);
+				cur.pos() = 0;
+				cur.resetAnchor();
+				cur.pos() = cur.lastpos();
+				cur.setSelection();
+
+				// change font of cell
+				cur.handleNest(createInsetMath(font));
+				cur.insert(arg);
+
+				// cur is in the font inset now. If the loop continues,
+				// we need to get outside again for the next cell
+				if (col + 1 <= c2 || row + 1 <= r2)
+					cur.pop_back();
+			}
+		}
 	}
 }
 
