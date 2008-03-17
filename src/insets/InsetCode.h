@@ -87,11 +87,9 @@ enum InsetCode {
 	///
 	ENVIRONMENT_CODE,
 	///
-	HFILL_CODE,
+	NEWLINE_CODE,
 	///
-	NEWLINE_CODE, // 35
-	///
-	LINE_CODE,
+	LINE_CODE, // 35
 	///
 	BRANCH_CODE,
 	///
@@ -99,9 +97,9 @@ enum InsetCode {
 	///
 	FLEX_CODE,
 	///
-	VSPACE_CODE, // 40
+	VSPACE_CODE,
 	///
-	MATHMACROARG_CODE,
+	MATHMACROARG_CODE, // 40
 	///
 	NOMENCL_CODE,
 	///
@@ -109,9 +107,9 @@ enum InsetCode {
 	///
 	NEWPAGE_CODE,
 	///
-	LISTINGS_CODE, // 45
+	LISTINGS_CODE,
 	///
-	INFO_CODE,
+	INFO_CODE, // 45
 	///
 	COLLAPSABLE_CODE,
 #if 0

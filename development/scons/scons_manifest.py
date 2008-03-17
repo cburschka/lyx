@@ -736,6 +736,7 @@ src_frontends_qt4_header_files = Split('''
     GuiFontLoader.h
     GuiGraphics.h
     GuiGraphicsUi.h
+    GuiHSpace.h
     GuiHyperlink.h
     GuiIdListModel.h
     GuiImage.h
@@ -824,6 +825,7 @@ src_frontends_qt4_files = Split('''
     GuiFontLoader.cpp
     GuiFontMetrics.cpp
     GuiGraphics.cpp
+    GuiHSpace.cpp
     GuiHyperlink.cpp
     GuiIdListModel.cpp 
     GuiImage.cpp
@@ -907,6 +909,7 @@ src_frontends_qt4_ui_files = Split('''
     FloatUi.ui
     FontUi.ui
     GraphicsUi.ui
+    HSpaceUi.ui
     HyperlinkUi.ui
     IncludeUi.ui
     LabelUi.ui
@@ -993,7 +996,6 @@ src_insets_header_files = Split('''
     InsetFootlike.h
     InsetGraphics.h
     InsetGraphicsParams.h
-    InsetHFill.h
     InsetHyperlink.h
     InsetInclude.h
     InsetIndex.h
@@ -1050,7 +1052,6 @@ src_insets_files = Split('''
     InsetFootlike.cpp
     InsetGraphics.cpp
     InsetGraphicsParams.cpp
-    InsetHFill.cpp
     InsetHyperlink.cpp
     InsetInclude.cpp
     InsetIndex.cpp

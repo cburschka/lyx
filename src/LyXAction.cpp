@@ -274,13 +274,6 @@ void LyXAction::init()
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_HFILL_INSERT
- * \li Action: Inserts an hfill inset.
- * \li Syntax: hfill-insert
- * \endvar
- */
-		{ LFUN_HFILL_INSERT, "hfill-insert", Noop, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_OPTIONAL_INSERT
  * \li Action: Inserts an optional-argument (short title) inset.
  * \li Syntax: optional-insert

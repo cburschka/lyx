@@ -33,7 +33,6 @@
 #include "insets/InsetFloatList.h"
 #include "insets/InsetFoot.h"
 #include "insets/InsetGraphics.h"
-#include "insets/InsetHFill.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetIndex.h"
 #include "insets/InsetInfo.h"
@@ -82,8 +81,6 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 	try {
 
 		switch (cmd.action) {
-		case LFUN_HFILL_INSERT:
-			return new InsetHFill;
 
 		case LFUN_LINE_INSERT:
 			return new InsetLine;
@@ -298,6 +295,12 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetRef(buf, icp);
 			}
+
+			case SPACE_CODE: {
+				InsetSpaceParams isp;
+				InsetSpaceMailer::string2params(to_utf8(cmd.argument()), isp);
+				return new InsetSpace(isp);
+			}
 			
 			case TOC_CODE: {
 				InsetCommandParams icp(code);
@@ -320,27 +323,58 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			} //end LFUN_INSET_INSERT
 
 		case LFUN_SPACE_INSERT: {
-			string const name = to_utf8(cmd.argument());
+			string const name = cmd.getArg(0);
+			string const len = cmd.getArg(1);
+			if (name.empty()) {
+				lyxerr << "LyX function 'space-insert' needs an argument." << endl;
+				break;
+			}
+			InsetSpaceParams isp;
 			if (name == "normal")
-				return new InsetSpace(InsetSpace::NORMAL);
-			if (name == "protected")
-				return new InsetSpace(InsetSpace::PROTECTED);
-			if (name == "thin")
-				return new InsetSpace(InsetSpace::THIN);
-			if (name == "quad")
-				return new InsetSpace(InsetSpace::QUAD);
-			if (name == "qquad")
-				return new InsetSpace(InsetSpace::QQUAD);
-			if (name == "enspace")
-				return new InsetSpace(InsetSpace::ENSPACE);
-			if (name == "enskip")
-				return new InsetSpace(InsetSpace::ENSKIP);
-			if (name == "negthinspace")
-				return new InsetSpace(InsetSpace::NEGTHIN);
-			if (name.empty())
-				lyxerr << "LyX function 'space' needs an argument." << endl;
-			else
-				lyxerr << "Wrong argument for LyX function 'space'." << endl;
+				isp.kind = InsetSpaceParams::NORMAL;
+			else if (name == "protected")
+				isp.kind = InsetSpaceParams::PROTECTED;
+			else if (name == "thin")
+				isp.kind = InsetSpaceParams::THIN;
+			else if (name == "quad")
+				isp.kind = InsetSpaceParams::QUAD;
+			else if (name == "qquad")
+				isp.kind = InsetSpaceParams::QQUAD;
+			else if (name == "enspace")
+				isp.kind = InsetSpaceParams::ENSPACE;
+			else if (name == "enskip")
+				isp.kind = InsetSpaceParams::ENSKIP;
+			else if (name == "negthinspace")
+				isp.kind = InsetSpaceParams::NEGTHIN;
+			else if (name == "hfill")
+				isp.kind = InsetSpaceParams::HFILL;
+			else if (name == "dotfill")
+				isp.kind = InsetSpaceParams::DOTFILL;
+			else if (name == "hrulefill")
+				isp.kind = InsetSpaceParams::HRULEFILL;
+			else if (name == "hspace") {
+				if (len.empty() || !isValidLength(len)) {
+					lyxerr << "LyX function 'space-insert hspace' "
+					       << "needs a valid length argument." << endl;
+					break;
+				}
+				isp.kind = InsetSpaceParams::CUSTOM;
+				isp.length = Length(len);
+			}
+			else if (name == "hspace*") {
+				if (len.empty() || !isValidLength(len)) {
+					lyxerr << "LyX function 'space-insert hspace*' "
+					       << "needs a valid length argument." << endl;
+					break;
+				}
+				isp.kind = InsetSpaceParams::CUSTOM_PROTECTED;
+				isp.length = Length(len);
+			}
+			else {
+				lyxerr << "Wrong argument for LyX function 'space-insert'." << endl;
+				break;
+			}
+			return new InsetSpace(isp);
 		}
 		break;
 
@@ -487,7 +521,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {
 			inset.reset(new InsetListings(buf));
-		} else if (tmptok == "InsetSpace") {
+		} else if (tmptok == "Space") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
 			inset.reset(new InsetTabular(buf));

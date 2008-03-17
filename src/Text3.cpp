@@ -1408,7 +1408,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INDEX_PRINT:
 	case LFUN_NOMENCL_PRINT:
 	case LFUN_TOC_INSERT:
-	case LFUN_HFILL_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
@@ -1864,6 +1863,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = NOTE_CODE;
 		else if (cmd.argument() == "ref")
 			code = REF_CODE;
+		else if (cmd.argument() == "space")
+			code = SPACE_CODE;
 		else if (cmd.argument() == "toc")
 			code = TOC_CODE;
 		else if (cmd.argument() == "vspace")
@@ -1966,7 +1967,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// always allow this, since we will inset a raw quote
 		// if an inset is not allowed.
 		break;
-	case LFUN_HFILL_INSERT:
 	case LFUN_SPECIALCHAR_INSERT:
 		code = SPECIALCHAR_CODE;
 		break;

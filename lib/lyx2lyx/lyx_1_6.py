@@ -1363,7 +1363,7 @@ def revert_subfig(document):
 
 
 def revert_wrapplacement(document):
-    "Revert placement options wrap floats (wrapfig)."
+    " Revert placement options wrap floats (wrapfig). "
     i = 0
     while True:
         i = find_token(document.body, "lines", i)
@@ -1381,12 +1381,85 @@ def revert_wrapplacement(document):
 
 
 def remove_extra_embedded_files(document):
-    "Remove \extra_embedded_files from buffer params"
+    " Remove \extra_embedded_files from buffer params "
     i = find_token(document.header, '\\extra_embedded_files', 0)
     if i == -1:
         document.warning("Malformed lyx document: Missing '\\extra_embedded_files'.")
         return
     document.header.pop(i)
+
+
+def convert_spaceinset(document):
+    " Convert '\\InsetSpace foo' to '\\begin_inset Space foo\n\\end_inset' "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\InsetSpace", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\InsetSpace', '\\begin_inset Space')
+        document.body[i] = document.body[i] + "\n\\end_inset"
+
+
+def revert_spaceinset(document):
+    " Revert '\\begin_inset Space foo\n\\end_inset' to '\\InsetSpace foo' "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Space", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        document.body[i] = document.body[i].replace('\\begin_inset Space', '\\InsetSpace')
+        del document.body[j]
+
+
+def convert_hfill(document):
+    " Convert hfill to space inset "
+    i = 0
+    while True:
+        i = find_token(document.body, "\\hfill", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\hfill', '\n\\begin_inset Space \\hfill{}\n\\end_inset')
+
+
+def revert_hfills(document):
+    ' Revert \\hfill commands '
+    for i in range(len(document.body)):
+        document.body[i] = document.body[i].replace('\\InsetSpace \\hfill{}', '\\hfill')
+        document.body[i] = document.body[i].replace('\\InsetSpace \\dotfill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'dotfill{}\n\\end_layout\n\n\\end_inset\n\n')
+        document.body[i] = document.body[i].replace('\\InsetSpace \\hrulefill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'hrulefill{}\n\\end_layout\n\n\\end_inset\n\n')
+
+
+def revert_hspace(document):
+    ' Revert \\InsetSpace \\hspace{} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, "\\InsetSpace \\hspace", i)
+        if i == -1:
+            return
+        length = get_value(document.body, '\\length', i+1)
+        if length == '':
+            document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
+            return
+        del document.body[i+1]
+        document.body[i] = document.body[i].replace('\\InsetSpace \\hspace*{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'hspace*{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
+        document.body[i] = document.body[i].replace('\\InsetSpace \\hspace{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'hspace{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
+
 
 ##
 # Conversion hub
@@ -1435,9 +1508,11 @@ convert = [[277, [fix_wrong_tables]],
            [316, [convert_subfig]],
            [317, []],
            [318, []],
+           [319, [convert_spaceinset, convert_hfill]]
           ]
 
-revert =  [[317, [remove_extra_embedded_files]],
+revert =  [[318, [revert_spaceinset, revert_hfills, revert_hspace]],
+           [317, [remove_extra_embedded_files]],
            [316, [revert_wrapplacement]],
            [315, [revert_subfig]],
            [314, [revert_colsep]],

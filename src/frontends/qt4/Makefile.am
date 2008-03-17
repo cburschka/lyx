@@ -84,6 +84,7 @@ SOURCEFILES = \
 	GuiFontLoader.cpp \
 	GuiFontMetrics.cpp \
 	GuiGraphics.cpp \
+	GuiHSpace.cpp \
 	GuiHyperlink.cpp \
 	GuiIdListModel.cpp \
 	GuiImage.cpp \
@@ -179,6 +180,7 @@ MOCHEADER = \
 	GuiExternal.h \
 	GuiFloat.h \
 	GuiGraphics.h \
+	GuiHSpace.h \
 	GuiHyperlink.h \
 	GuiInclude.h \
 	GuiLabel.h \
@@ -244,6 +246,7 @@ UIFILES = \
 	FloatUi.ui \
 	FontUi.ui \
 	GraphicsUi.ui \
+	HSpaceUi.ui \
 	HyperlinkUi.ui \
 	IncludeUi.ui \
 	LabelUi.ui \

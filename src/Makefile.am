@@ -503,7 +503,6 @@ SOURCEFILESINSETS = \
 	insets/InsetFootlike.cpp \
 	insets/InsetGraphicsParams.cpp \
 	insets/InsetGraphics.cpp \
-	insets/InsetHFill.cpp \
 	insets/InsetHyperlink.cpp \
 	insets/InsetInclude.cpp \
 	insets/InsetIndex.cpp \
@@ -559,7 +558,6 @@ HEADERFILESINSETS = \
 	insets/InsetFootlike.h \
 	insets/InsetGraphicsParams.h \
 	insets/InsetGraphics.h \
-	insets/InsetHFill.h \
 	insets/InsetHyperlink.h \
 	insets/InsetInclude.h \
 	insets/InsetIndex.h \

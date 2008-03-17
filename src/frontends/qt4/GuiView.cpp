@@ -2015,7 +2015,7 @@ char const * const dialognames[] = {
 "citation", "document", "embedding", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
 "mathdelimiter", "mathmatrix", "note", "paragraph", "prefs", "print", 
-"ref", "sendto", "spellchecker", "symbols", "tabular", "tabularcreate",
+"ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -2219,6 +2219,7 @@ Dialog * createGuiERT(GuiView & lv);
 Dialog * createGuiExternal(GuiView & lv);
 Dialog * createGuiFloat(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
+Dialog * createGuiHSpace(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
@@ -2308,6 +2309,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiRef(*this);
 	if (name == "sendto")
 		return createGuiSendTo(*this);
+	if (name == "space")
+		return createGuiHSpace(*this);
 	if (name == "spellchecker")
 		return createGuiSpellchecker(*this);
 	if (name == "symbols")

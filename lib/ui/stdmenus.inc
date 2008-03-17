@@ -366,7 +366,7 @@ Menuset
 		Item "Protected Space|P" "space-insert protected"
 		Item "Inter-word Space|w" "space-insert normal"
 		Item "Thin Space|T" "space-insert thin"
-		Item "Horizontal Fill|F" "hfill-insert"
+		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line|L" "line-insert"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Separator

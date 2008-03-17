@@ -66,6 +66,7 @@
 #include "insets/InsetGraphics.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetNote.h"
+#include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
 #include "insets/InsetVSpace.h"
 #include "insets/InsetWrap.h"
@@ -1233,6 +1234,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case NOTE_CODE: {
 				InsetNoteParams p;
 				data = InsetNoteMailer::params2string(p);
+				break;
+			} 
+			case SPACE_CODE: {
+				InsetSpaceParams p;
+				data = InsetSpaceMailer::params2string(p);
 				break;
 			} 
 			case VSPACE_CODE: {

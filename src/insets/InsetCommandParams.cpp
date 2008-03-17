@@ -18,7 +18,6 @@
 #include "InsetBibtex.h"
 #include "InsetCitation.h"
 #include "InsetFloatList.h"
-#include "InsetHFill.h"
 #include "InsetHyperlink.h"
 #include "InsetInclude.h"
 #include "InsetIndex.h"
@@ -149,8 +148,6 @@ ParamInfo const & InsetCommandParams::findInfo(
 		return InsetCitation::findInfo(cmdName);	
 	case FLOAT_LIST_CODE:
 		return InsetFloatList::findInfo(cmdName);
-	case HFILL_CODE:
-		return InsetHFill::findInfo(cmdName);
 	case HYPERLINK_CODE:
 		return InsetHyperlink::findInfo(cmdName);
 	case INCLUDE_CODE:
@@ -191,8 +188,6 @@ string InsetCommandParams::getDefaultCmd(InsetCode code) {
 			return InsetCitation::defaultCommand();
 		case FLOAT_LIST_CODE:
 			return InsetFloatList::defaultCommand();
-		case HFILL_CODE:
-			return InsetHFill::defaultCommand();
 		case HYPERLINK_CODE:
 			return InsetHyperlink::defaultCommand();
 		case INCLUDE_CODE:
@@ -228,8 +223,6 @@ bool InsetCommandParams::isCompatibleCommand(
 			return InsetCitation::isCompatibleCommand(s);
 		case FLOAT_LIST_CODE:
 			return InsetFloatList::isCompatibleCommand(s);
-		case HFILL_CODE:
-			return InsetHFill::isCompatibleCommand(s);
 		case HYPERLINK_CODE:
 			return InsetHyperlink::isCompatibleCommand(s);
 		case INCLUDE_CODE:

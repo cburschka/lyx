@@ -52,7 +52,6 @@
 #include "insets/InsetText.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetCaption.h"
-#include "insets/InsetHFill.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetNewpage.h"
@@ -199,33 +198,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\color") {
 		lex.next();
 		setLyXColor(lex.getString(), font.fontInfo());
-	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
-
-		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (par.isFreeSpacing()) {
-			if (token == "\\InsetSpace")
-				par.appendChar(' ', font, change);
-			else if (lex.isOK()) {
-				lex.next();
-				string const next_token = lex.getString();
-				if (next_token == "\\-")
-					par.appendChar('-', font, change);
-				else {
-					lex.printError("Token `$$Token' "
-						       "is in free space "
-						       "paragraph layout!");
-				}
-			}
-		} else {
+	} else if (token == "\\SpecialChar") {
 			auto_ptr<Inset> inset;
-			if (token == "\\SpecialChar" )
-				inset.reset(new InsetSpecialChar);
-			else
-				inset.reset(new InsetSpace);
+			inset.reset(new InsetSpecialChar);
 			inset->read(lex);
 			par.insertInset(par.size(), inset.release(),
 					font, change);
-		}
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
 	} else if (token == "\\linebreak") {
@@ -240,8 +218,6 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		auto_ptr<Inset> inset(new InsetTabular(buf));
 		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\hfill") {
-		par.insertInset(par.size(), new InsetHFill, font, change);
 	} else if (token == "\\lyxline") {
 		par.insertInset(par.size(), new InsetLine, font, change);
 	} else if (token == "\\newpage") {

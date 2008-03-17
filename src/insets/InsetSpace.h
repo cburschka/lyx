@@ -17,16 +17,16 @@
 
 
 #include "Inset.h"
+#include "Length.h"
+#include "MailInset.h"
 
 
 namespace lyx {
 
 class LaTeXFeatures;
 
-///  Used to insert different kinds of spaces
-class InsetSpace : public Inset {
+class InsetSpaceParams {
 public:
-
 	/// The different kinds of spaces we support
 	enum Kind {
 		/// Normal space ('\ ')
@@ -44,17 +44,49 @@ public:
 		/// \enspace (0.5em breakable)
 		ENSKIP,
 		/// Negative thin space ('\negthinspace')
-		NEGTHIN
+		NEGTHIN,
+		/// rubber length
+		HFILL,
+		/// rubber length, filled with dots
+		DOTFILL,
+		/// rubber length, filled with a rule
+		HRULEFILL,
+		/// \hspace{length}
+		CUSTOM,
+		/// \hspace*{length}
+		CUSTOM_PROTECTED
 	};
+	///
+	InsetSpaceParams() : kind(NORMAL), length(Length()) {}
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(Lexer & lex);
+	///
+	Kind kind;
+	///
+	Length length;
+};
 
+///  Used to insert different kinds of spaces
+class InsetSpace : public Inset {
+public:
 	///
 	InsetSpace();
+	///
+	~InsetSpace();
 
 	///
 	explicit
-	InsetSpace(Kind k);
+	InsetSpace(InsetSpaceParams par);
 	///
-	Kind kind() const;
+	InsetSpaceParams params() const { return params_; }
+	///
+	InsetSpaceParams::Kind kind() const;
+	///
+	Length length() const;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -73,8 +105,8 @@ public:
 	void textString(odocstream &) const;
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
-	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
+	/// is this an expandible space (rubber length)?
+	bool isStretchableSpace() const;
 
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
@@ -85,9 +117,33 @@ public:
 	bool isSpace() const { return true; }
 private:
 	virtual Inset * clone() const { return new InsetSpace(*this); }
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 
-	/// And which kind is this?
-	Kind kind_;
+	///
+	InsetSpaceParams params_;
+};
+
+
+class InsetSpaceMailer : public MailInset {
+public:
+	///
+	InsetSpaceMailer(InsetSpace & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual std::string const & name() const { return name_; }
+	///
+	virtual std::string const inset2string(Buffer const &) const;
+	///
+	static void string2params(std::string const &, InsetSpaceParams &);
+	///
+	static std::string const params2string(InsetSpaceParams const &);
+private:
+	///
+	static std::string const name_;
+	///
+	InsetSpace & inset_;
 };
 
 
