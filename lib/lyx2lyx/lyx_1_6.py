@@ -1258,15 +1258,15 @@ def convert_subfig(document):
             i = i + 1
             continue
         l = find_token(document.body, '\tsubcaptionText', i, j)
-        caption = get_value(document.body, '\tsubcaptionText', i, j).strip('"')
+        caption = document.body[l][16:].strip('"')
         savestr = document.body[i]
+        del document.body[l]
+        del document.body[k]
         document.body[i] = '\\begin_inset Float figure\nwide false\nsideways false\n' \
         'status open\n\n\\begin_layout PlainLayout\n\\begin_inset Caption\n\n\\begin_layout PlainLayout\n' \
         + caption + '\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout PlainLayout\n' + savestr
         savestr = document.body[j]
         document.body[j] = '\n\\end_layout\n\n\\end_inset\n' + savestr
-        del document.body[k]
-        del document.body[l]
 
 
 def revert_subfig(document):
