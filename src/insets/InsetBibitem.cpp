@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+#include <algorithm>
 
 #include "InsetBibitem.h"
 

@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <algorithm>
 
 #include "InsetList.h"
 
