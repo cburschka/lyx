@@ -355,6 +355,16 @@ void LyXAction::init()
  */
 		{ LFUN_FLEX_INSERT, "flex-insert", Noop, Edit },
 		{ LFUN_SELF_INSERT, "self-insert", SingleParUpdate, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SPACE_INSERT
+ * \li Action: Inserts one of horizontal space insets.
+ * \li Syntax: space-insert <NAME> [<LEN>]
+ * \li Params: <NAME>: normal, protected, thin, quad, qquad, enspace, enskip,
+                       negthinspace, hfill, dotfill, hrulefill, hspace, hspace* \n
+               <LEN>: length for custom spaces (hspace, hspace* for protected)
+ * \li Origin: JSpitzm, 20 May 2003, Mar 17 2008
+ * \endvar
+ */
 		{ LFUN_SPACE_INSERT, "space-insert", Noop, Edit },
 		{ LFUN_HYPERLINK_INSERT, "href-insert", Noop, Edit },
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
