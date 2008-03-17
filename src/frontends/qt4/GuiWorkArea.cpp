@@ -46,7 +46,7 @@
 #include <QContextMenuEvent>
 #include <QInputContext>
 #include <QHelpEvent>
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 #include <QMacStyle>
 #endif
 #include <QMainWindow>
