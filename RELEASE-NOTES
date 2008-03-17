@@ -139,20 +139,14 @@ The following new LyX functions have been removed:
 
 - LFUN_FONT_CODE.
 
+- LFUN_HFILL_INSERT. HFills are now part of InsetSpace and have to be inserted
+  via "space-insert hfill".
+
 For the detailed description of LyX functions look into doxygen documentation.
 
 
 Known issues in version 1.5.2
 ------------------------------------
-
-- LyX might crash if you switch the encoding of a document while the
-  View->Source pane is opened.
-  http://bugzilla.lyx.org/show_bug.cgi?id=3561
-
-- LyX might suddenly slow down when you have copied something in another
-  instance of LyX or in another application. Known workaround: Ctrl+C of
-  some text inside the active window bring the speed back.
-  http://bugzilla.lyx.org/show_bug.cgi?id=4045
 
 - Cursor restoration problems with Multiple-View:
   When using multiple Windows to edit different parts of the
