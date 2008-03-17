@@ -1391,13 +1391,10 @@ def remove_extra_embedded_files(document):
 
 def convert_spaceinset(document):
     " Convert '\\InsetSpace foo' to '\\begin_inset Space foo\n\\end_inset' "
-    i = 0
-    while True:
-        i = find_token(document.body, "\\InsetSpace", i)
-        if i == -1:
-            return
-        document.body[i] = document.body[i].replace('\\InsetSpace', '\\begin_inset Space')
-        document.body[i] = document.body[i] + "\n\\end_inset"
+    for i in range(len(document.body)):
+        if re.search(r'\InsetSpace', document.body[i]):
+            document.body[i] = document.body[i].replace('\\InsetSpace', '\n\\begin_inset Space')
+            document.body[i] = document.body[i] + "\n\\end_inset"
 
 
 def revert_spaceinset(document):
