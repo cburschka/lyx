@@ -573,6 +573,8 @@ Menuset
 		Item "Apply Last Text Style|A" "font-free-apply"
 		Submenu "Text Style|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
+		Separator
+		Item "Fullscreen Mode" "ui-toggle fullscreen"
 	End
 
 	Menu "context-math-macro-definition"
