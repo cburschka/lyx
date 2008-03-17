@@ -74,7 +74,7 @@
 \end_preamble
 \options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
-\inputencoding latin1
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -142,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 16.
  März 2008
 \end_layout
 
@@ -4764,7 +4764,7 @@ Benutzerhandbuch
 \family sans
 Einfügen\SpecialChar \menuseparator
 Gleitobjekt\SpecialChar \menuseparator
-Umflossenes\InsetSpace \space{}
+Umflossenes\SpecialChar \-
 Gleitobjekt
 \family default
  auswählen.
@@ -6277,6 +6277,42 @@ doc
  und in LyX umsetzen müssen.
 \end_layout
 
+\begin_layout Standard
+Weil das von LyX verwendete Konvertierungsprogramm 
+\family typewriter
+wvCleanLatex
+\family default
+ keine entsprechenden Parameter zulässt, sollten Sie vor der Weiterverarbeitung
+ in 
+\family sans
+Dokumente
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Ein\SpecialChar \-
+stel\SpecialChar \-
+lun\SpecialChar \-
+gen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Sprache
+\family default
+ die 
+\family sans
+Sprache
+\family default
+ und den 
+\family sans
+Stil\InsetSpace \space{}
+der\InsetSpace \space{}
+Anführungszeichen
+\family default
+ anpassen.
+\end_layout
+
 \begin_layout Subsection
 NoWeb
 \begin_inset LatexCommand index
@@ -6556,7 +6592,9 @@ name "Dateiformat!Import!MS Word (HTML)"
 
 \begin_layout Standard
 Hiermit wird auch eine HTML-Datei erstellt, die von Word und OpenOffice
- gelesen/importiert werden kann.
+ gelesen/im\SpecialChar \-
+por\SpecialChar \-
+tiert werden kann.
  Der Vorteil für deutsche Dokumente ist, daß Umlaute und ß nicht direkt
  ausgegeben werden, sondern in ihrer Unicode-Kodierung (ü wird zum Beispiel
  zu &#x00FC;).
