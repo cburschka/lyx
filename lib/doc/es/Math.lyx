@@ -295,7 +295,14 @@ was
 .
  Si no están instalados también puedes exportar el documento pero las secciones
  en que se requieren dichos paquetes no aparecerán en la salida.
- 
+\end_layout
+
+\begin_layout Standard
+La última versión PDF de este documento está disponible en:
+\newline
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \end_layout
 
 \end_inset
@@ -319,7 +326,7 @@ name "sec:Introducción"
 Este documento explica las características matemáticas de LyX y además es
  una colección de comandos LaTeX para caracteres y estructuras matemáticas.
  Las explicaciones están diseñadas para el uso de comandos.
- Por consiguiente es preciso que hayas leido la sección 
+ Por consiguiente es preciso que hayas leído la sección 
 \emph on
 Ecuaciones matemáticas
 \emph default
@@ -363,7 +370,7 @@ Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
 Ecuaciones
 \family default
-
+)
 \begin_inset Foot
 status collapsed
 
@@ -372,9 +379,9 @@ La opción
 \family sans
 Usar el paquete de ecuaciones AMS automáticamente
 \family default
- sólo usa 
+ sólo usa ecuaciones 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -385,12 +392,13 @@ AmS
 
 \end_inset
 
+\InsetSpace ~
  si las estructuras matemáticas son soportadas por LyX.
 \end_layout
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -523,7 +531,7 @@ Cambiar tipo de ecuación
 
 \begin_layout Standard
 Para mostrar partes de una ecuación en línea en el tamaño del estilo presentació
-n, añade el comando 
+n, escribe el comando 
 \series bold
 
 \backslash
@@ -535,8 +543,8 @@ name "Comandos ! D ! \\textbackslash displaystyle"
 
 \end_inset
 
- a la ecuación.
- Entonces aparece un nuevo recuadro azul en el que se inserta la parte deseada
+ en la ecuación y pulsa espacio.
+ Entonces aparece un nuevo marco azul en el que se inserta la parte deseada
  de la ecuación.
 \end_layout
 
@@ -621,7 +629,7 @@ name "T@\\TeX ! modo"
 
 \end_inset
 
-de la barra de herramientas o con el menú 
+ de la barra de herramientas o con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Código T
@@ -730,7 +738,7 @@ Ecuación
 Editar\SpecialChar \menuseparator
 Filas y columnas
 \family default
- o la barra de herramientas 
+ o la barra de herramientas de 
 \family sans
 Tabla
 \family default
@@ -753,7 +761,7 @@ name "Texto ! en ecuaciones"
 
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -776,7 +784,6 @@ reference "sub:Texto-en-multilínea"
 
 \end_inset
 
-.
  Este modo se invoca con el atajo 
 \family sans
 Alt-m\InsetSpace ~
@@ -819,7 +826,7 @@ nombre_del_comando[argumento opcional]{argumento requerido}
 \end_layout
 
 \begin_layout Standard
-Un comando empieza siempre por una contrabarra, 
+Un comando empieza siempre por una barra inversa, 
 \series bold
 
 \backslash
@@ -878,7 +885,20 @@ Explicación de la sintaxis
 \end_layout
 
 \begin_layout Itemize
-El símbolo
+El símbolo 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
@@ -900,21 +920,7 @@ name "Comandos ! T ! \\textbackslash textvisiblespace"
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-spce
-\end_layout
-
-\end_inset
-
-\InsetSpace ~
-indica un espacio que se debe introducir.
+ indica que hay que teclear un espacio.
 \end_layout
 
 \begin_layout Itemize
@@ -1514,7 +1520,7 @@ A
 
 \begin_layout Standard
 Como en algunos idiomas la tecla circunflejo funciona como acento, en ese
- caso acentuará las vocales y no funcionará como exponente
+ caso acentuará las vocales y no funcionará como exponente.
 \begin_inset Foot
 status collapsed
 
@@ -1525,7 +1531,6 @@ Dependiendo de la configuración del teclado esto puede suceder también con
 
 \end_inset
 
-.
  Para conseguir exponentes en estos casos debes pulsar 
 \family sans
 Espacio
@@ -2052,7 +2057,7 @@ name "Comandos ! N ! \\textbackslash nicefrac"
 \end_layout
 
 \begin_layout Standard
-En 
+En la 
 \begin_inset LatexCommand ref
 reference "sub:Fracciones-personalizadas"
 
@@ -2093,8 +2098,7 @@ name "Comandos ! S ! \\textbackslash sqrt"
 
 \end_inset
 
- de la barra de herramientas de ecuaciones; todas las demás raíces con el
- comando 
+ de la barra de  ecuaciones; todas las demás raíces con el comando 
 \series bold
 
 \backslash
@@ -2688,7 +2692,7 @@ spce
 
 \end_inset
 
-Ctrl-Enter
+Ctrl-Intro
 \end_layout
 
 \end_inset
@@ -2731,7 +2735,7 @@ cases
 
  de la barra de ecuaciones puedes añadir líneas nuevas con el atajo 
 \family sans
-Ctrl-Enter
+Ctrl-Intro
 \family default
  o con el botón
 \family sans
@@ -4303,7 +4307,7 @@ name "Matrices"
 \end_layout
 
 \begin_layout Standard
-Se pueden insertar matrices con el botón 
+Se pueden insertar con el botón 
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathmatrix.xpm
 	scale 85
@@ -4317,7 +4321,8 @@ Ecuación\SpecialChar \menuseparator
 Matriz
 \family default
 .
- Se te pedirá el número de filas y columnas y la alineación.
+ Aparece una ventana en la que se pide el número de filas y columnas y la
+ alineación.
  La alineación vertical sólo es relevante para matrices en línea:
 \end_layout
 
@@ -4449,7 +4454,7 @@ Filas y columnas
 .
  También se pueden añadir filas nuevas con 
 \family sans
-Ctrl-Enter
+Ctrl-Intro
 \family default
 .
 \end_layout
@@ -4577,7 +4582,7 @@ spce
 ×
 \series default
 2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4618,7 +4623,7 @@ spce
 \end_inset
 
 2×2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4663,7 +4668,7 @@ spce
 ×
 \series default
 2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4756,7 +4761,7 @@ spce
 ×
 \series default
 2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4801,7 +4806,7 @@ spce
 ×
 \series default
 2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4846,7 +4851,7 @@ spce
 ×
 \series default
 2\InsetSpace \thinspace{}
-matrix
+matriz
 \end_layout
 
 \end_inset
@@ -4969,7 +4974,7 @@ arraystretch
 \series default
 .
  Por ejemplo, para doblar la separación de las filas, pones factor 2.
- Además, este se usa para todas las matrices siguientes.
+ Además, éste se usa para todas las matrices siguientes.
  Para volver a la separación original, asigna factor 1 a 
 \series bold
 
@@ -5525,7 +5530,8 @@ El tamaño de los caracteres listados arriba se puede ajustar con los comandos
  descritos en las dos subsecciones siguientes.
  Cuando se emplean esos comandos se pueden usar directamente los caracteres
  <\InsetSpace ~
- y > en vez de los comandos 
+ y >\InsetSpace ~
+ en vez de los comandos 
 \series bold
 
 \backslash
@@ -6676,6 +6682,19 @@ name "Comandos ! U ! \\textbackslash underbrace"
 
 \backslash
 overbrace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \backslash
 underbrace
 \begin_inset ERT
@@ -6825,7 +6844,7 @@ status collapsed
 \begin_layout Standard
 Los comandos para espacios se explican en 
 \begin_inset LatexCommand ref
-reference "sub:Espacios-predefinidos"
+reference "sub:Espacio-predefinido"
 
 \end_inset
 
@@ -6974,9 +6993,9 @@ La primera fila de la ecuación es igual que la segunda fila del ejemplo
  La segunda fila contiene la ecuación junto con la segunda llave.
  Para evitar que haya demasiado espacio entre la llave superior en la primera
  fila y la ecuación hay que reducirlo.
- Esto no es fácil de hacer debido a un fallo de LyX
+ Esto no es fácil de hacer debido a un fallo de LyX.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -7007,7 +7026,6 @@ status collapsed
 
 \end_inset
 
-.
  Una solución es cambiar la separación global de filas en la ecuación, 
 \series bold
 
@@ -9094,7 +9112,7 @@ un solo
  carácter si la parte de la ecuación con la diéresis se marca con idioma
  alemán.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 O algún otro idioma que use acentos, p.\InsetSpace \thinspace{}
@@ -9431,13 +9449,14 @@ sideset
  siempre debe estar delante del operador que debe acentuarse.
  Se puede acentuar con varios caracteres e incluso con otros operadores
  y símbolos.
- Para colocar caracteres sólo detrás, por ejemplo, con 
+ Para colocar con
 \series bold
-
+ 
 \backslash
 sideset
 \series default
-, no debe escribirse nada en el primer par de llaves, pero sin quitarlas.
+ caracteres sólo detrás del operador, por ejemplo, no se escribe nada en
+ el primer par de llaves, pero sin quitarlas.
  
 \end_layout
 
@@ -10791,10 +10810,9 @@ B
 \end_layout
 
 \begin_layout Standard
-Para las unidades físicas hacen falta espacios, porque el espacio entre
- el valor y su unidad es el espacio más pequeño y no el normal.
- Para unidades en el texto el espacio más pequeño se inserta con el menú
- 
+Para las unidades físicas hacen falta espacios, porque entre el valor y
+ su unidad se pone un espacio más pequeño que el normal.
+ Para unidades en el texto se inserta con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
@@ -11497,9 +11515,9 @@ fbox
 \family sans
 Ctrl-m
 \family default
- dentro del recuadro
+ dentro del recuadro,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Debido a un fallo de LyX, 
@@ -11535,7 +11553,7 @@ Ctrl-m
 
 \end_inset
 
-, porque si no el contenido del recuadro sería considerado texto matemático.
+ porque si no el contenido del mismo sería considerado texto matemático.
  Si se usa 
 \series bold
 
@@ -12172,7 +12190,7 @@ name "Cuadros ! sin marco"
 \end_layout
 
 \begin_layout Standard
-Para cuadros sin marco hay los siguientes comandos: 
+Para cuadros sin marco hay los comandos: 
 \series bold
 
 \backslash
@@ -12681,7 +12699,7 @@ red
 \series bold
 white
 \series default
-, y 
+, 
 \series bold
 yellow
 \end_layout
@@ -12898,8 +12916,10 @@ Personalizado
 
 \begin_layout Standard
 Un ejemplo:
+\color red
+
 \begin_inset Formula \begin{equation}
-\int A=B\label{eq:rojo}\end{equation}
+{\color{red}\int A=B}\label{eq:rojo}\end{equation}
 
 \end_inset
 
@@ -12907,8 +12927,10 @@ Un ejemplo:
 \end_layout
 
 \begin_layout Standard
+
+\color green
 \begin_inset Formula \begin{equation}
-{\color{red}{\color{red}{\color{red}\int}A=B}}\label{eq:rojoverde}\end{equation}
+{\color{green}{\color{red}\int A=B}}\label{eq:rojoverde}\end{equation}
 
 \end_inset
 
@@ -13328,7 +13350,7 @@ Decoración
 \emph on
 Cuadro interior
 \emph default
-: Parbox, 
+: Párrafo, 
 \emph on
 Ancho
 \emph default
@@ -13342,10 +13364,13 @@ Alineación Vertical
 Cuadro
 \emph default
 : Medio.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-En LaTeX, un cuadro de párrafo se hace con el comando 
+En LaTeX, un cuadro de párrafo se inserta con el comando 
 \series bold
 
 \backslash
@@ -13413,6 +13438,9 @@ Cuadros
 Objetos incrustados
 \emph default
  para ejemplos.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -13452,7 +13480,7 @@ name "Comandos ! L ! \\textbackslash linewidth"
  es la anchura de línea establecida para el documento.
  Como el marco está por fuera del cuadro de párrafo, hay que restar de dicha
  anchura dos veces la separación del marco y el grosor.
- Como LyX no lo hace automáticamente debido a un fallo
+ Como LyX no lo hace automáticamente debido a un fallo,
 \begin_inset Foot
 status collapsed
 
@@ -13485,13 +13513,13 @@ status collapsed
 
 \end_inset
 
-, hay que usar modo TeX.
+ hay que usar modo TeX.
  Para poder multiplicar y restar en los argumentos hay que cargar en el
  preámbulo LaTeX el paquete LaTeX 
 \series bold
 calc
 \series default
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -13511,7 +13539,7 @@ name "LaTeX ! paquetes ! calc"
 
 \end_inset
 
-, con la línea
+ con la línea
 \end_layout
 
 \begin_layout Standard
@@ -13866,11 +13894,11 @@ Para poder usar todos los comandos de integrales listados aquí, debe estar
 \family sans
 Usar paquete esint automáticamente
 \family default
- de 
+ en el apartado 
 \family sans
 Ecuaciones
 \family default
- en la configuración del documento.
+ de la configuración del documento.
  
 \end_layout
 
@@ -14483,6 +14511,8 @@ oint
  en el estilo en que se presentan los límites, véase
 \series bold
  
+\series default
+
 \begin_inset LatexCommand ref
 reference "sub:Límites-de-operadores"
 
@@ -14924,7 +14954,7 @@ A(x)
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $\prod_{0}^{\infty}A(x)$
+\begin_inset Formula $\raisebox{5mm}{}\prod_{0}^{\infty}A(x)\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15146,7 +15176,7 @@ spce
 
 \end_inset
 
-al principio de la línea.
+ al principio de la línea.
 \end_layout
 
 \begin_layout Standard
@@ -15299,7 +15329,7 @@ para componer el límite inferior.
 \begin_inset VSpace bigskip
 \end_inset
 
-Cómo utilizar un límite para varios operadores se desribe en la 
+Cómo utilizar un límite para varios operadores se describe en la 
 \begin_inset LatexCommand ref
 reference "sub:Operadores-de-usuario"
 
@@ -17605,7 +17635,7 @@ Un comando de tamaño se inserta en modo TeX antes de la ecuación, y se aplica
 \backslash
 normalsize
 \series default
- en modo TeX detraś de la ecuación.
+ en modo TeX detrás de la ecuación.
  
 \end_layout
 
@@ -17822,7 +17852,7 @@ A
 
 \begin_layout Standard
 Si un símbolo no se puede mostrar en distintos tamaños se usará siempre
- el tamño por defecto.
+ el tamaño por defecto.
 \end_layout
 
 \begin_layout Section
@@ -17836,7 +17866,7 @@ name "Letras griegas"
 \end_layout
 
 \begin_layout Standard
-Todas las letras griegas se pueden insertar mediante el botón 
+Todas las letras griegas se pueden insertar además mediante el botón 
 \begin_inset Graphics
 	filename ../../images/math/alpha.xpm
 	scale 85
@@ -20181,8 +20211,6 @@ bot
 
 
 \hfill
-
-\newpage
 
 \end_layout
 
@@ -22884,7 +22912,7 @@ cursiva
 .
  Por eso hay funciones predefinidas, que además se separan un poco del factor
  precedente.
- Se insertan como comandos con una contrabarra delante de su nombre.
+ Se insertan como comandos con una barra inversa  delante de su nombre.
 \end_layout
 
 \begin_layout Standard
@@ -23768,7 +23796,7 @@ name "Funciones ! personalizadas"
 
 \begin_layout Standard
 Para usar una función no predefinida, como por ejemplo la función máximo
- común divisor
+ común divisor, mcd
 \begin_inset Foot
 status collapsed
 
@@ -23802,7 +23830,7 @@ del t.
 
 \end_inset
 
-, mcd, hay dos posibilidades:
+, hay dos posibilidades:
 \end_layout
 
 \begin_layout Itemize
@@ -23878,7 +23906,7 @@ mcd
 \end_layout
 
 \begin_layout Standard
-El resultado es el mismo con ambos métodos como con una función predefinida
+El resultado con ambos métodos es el mismo que con una función predefinida:
 \begin_inset Foot
 status collapsed
 
@@ -23889,7 +23917,7 @@ En LyX, las funciones personalizadas se ven en rojo, las predefinidas en
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -24254,9 +24282,7 @@ raisebox
 \begin_layout Standard
 
 \backslash
-lim
-\backslash
-limits_x
+lim_x
 \backslash
 to
 \begin_inset ERT
@@ -24310,9 +24336,9 @@ x=B
 \end_layout
 
 \begin_layout Standard
-En una ecuación presentada el límite se imprime debajo, como es habitual
+En una ecuación presentada el límite se imprime debajo, como es habitual:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 El estilo 
@@ -24321,9 +24347,9 @@ spanish
 \series default
  de 
 \series bold
-babel 
+babel
 \series default
-hace que el límite se imprima como en la ecuación en línea.
+ lo imprime como en línea.
  Para evitarlo, se puede insertar el comando 
 \series bold
 
@@ -24367,7 +24393,7 @@ del t.
 
 \end_inset
 
-:
+
 \begin_inset Formula \[
 \lim\limits _{x\rightarrow A}=B\]
 
@@ -24393,7 +24419,7 @@ La función módulo es especial, porque existe en cuatro variantes.
 \begin_layout Standard
 En una ecuación presentada:
 \begin_inset Formula \begin{align*}
-\underline{\textrm{Comando}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Resultado}}\\
+\underline{\textrm{Comando}} &  & \underline{\textrm{Resultado}}\\
 \mathrm{a\backslash mod\textrm{\spce}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{\spce}b} &  & a\pmod b\\
 \mathrm{a\backslash bmod\textrm{\spce}b} &  & a\bmod b\\
@@ -24401,10 +24427,6 @@ En una ecuación presentada:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 En una ecuación en línea se pone menos espacio delante del nombre de la
  función para todas las variantes.
 \end_layout
@@ -26020,7 +26042,7 @@ reference "sub:Cuadros-sin-marco"
 \begin_layout Subsection
 Números minúsculos
 \begin_inset LatexCommand index
-name "Números minúsculos"
+name "Números ! minúsculos"
 
 \end_inset
 
@@ -26028,7 +26050,7 @@ name "Números minúsculos"
 \end_layout
 
 \begin_layout Standard
-Los núeros minúsculos se componen con el comando 
+Los números minúsculos se componen con el comando 
 \series bold
 
 \backslash
@@ -26058,7 +26080,7 @@ El comando
 \series bold
 
 \backslash
-oldsylenums{0123456789}
+oldstylenums{0123456789}
 \series default
  genera: 
 \begin_inset Formula $\oldstylenums{0123456789}$
@@ -26236,9 +26258,9 @@ name "°"
 
 \begin_layout Standard
 El símbolo grado ° puede no obstante insertarse directamente si el preámbulo
- LaTeX contiene la línea
+ LaTeX contiene la línea:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Más sobre este asunto en 
@@ -26252,7 +26274,7 @@ reference "sub:Caracteres-de-texto"
 
 \end_inset
 
-: 
+ 
 \end_layout
 
 \begin_layout Standard
@@ -26298,7 +26320,7 @@ Pero
 \backslash
 sim
 \series default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -26314,7 +26336,6 @@ reference "sec:Relaciones"
 
 \end_inset
 
-.
  Como en un cuadro URL (menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -26334,6 +26355,12 @@ typewriter
 href
 \series default
 
+\begin_inset LatexCommand index
+name "Comandos ! H ! \\textbackslash href"
+
+\end_inset
+
+.
 \begin_inset Foot
 status collapsed
 
@@ -26371,12 +26398,6 @@ Objetos incrustados
 \end_inset
 
 
-\begin_inset LatexCommand index
-name "Comandos ! H ! \\textbackslash href"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -26469,8 +26490,6 @@ Configuración
  bajo 
 \family sans
 Clase de documento
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -26534,8 +26553,6 @@ Configuración
  bajo 
 \family sans
 Clase de documento
-\family default
-.
 \end_layout
 
 \end_deeper
@@ -26601,7 +26618,7 @@ Ctrl-Intro
 \series bold
 entorno align
 \series default
-, que se describe en 
+, que se describe en la 
 \begin_inset LatexCommand ref
 reference "sub:Entorno-align-estándar"
 
@@ -26680,7 +26697,7 @@ En LaTeX un espacio adicional para una línea se especifica como argumento
 status collapsed
 
 \begin_layout Standard
-see 
+véase 
 \begin_inset ERT
 status collapsed
 
@@ -26924,7 +26941,7 @@ Una ecuación multilínea forma una matriz.
  Una ecuación en un entorno eqnarray, por ejemplo, es una matriz con tres
  columnas.
  Cambiando la separación de columnas en este entorno se puede cambiar el
- espacio junto al signo de realación.
+ espacio junto al signo de relación.
 \end_layout
 
 \begin_layout Standard
@@ -26942,7 +26959,7 @@ name "Comandos ! A ! \\textbackslash arraycolsep"
 
  según:
 \newline
-column separation = 2\InsetSpace \thinspace{}
+separación de columnas = 2\InsetSpace \thinspace{}
 
 \series bold
 
@@ -27054,15 +27071,21 @@ H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{
 El signo menos al principio de la segunda línea normalmente no aparece como
  operador porque es el primer carácter de la línea.
  No se rodearía de espacio y podría no distinguirse de la raya de fracción.
- Para evitarlo se ha insertado espacio dtrás del menos con el comando 
+ Para evitarlo se ha insertado espacio detrás del menos con el comando 
 \series bold
 
 \backslash
 hspace{3pt}
 \series default
 
+\begin_inset LatexCommand index
+name "Comandos ! H ! \\textbackslash hspace"
+
+\end_inset
+
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase más sobre 
@@ -27083,12 +27106,6 @@ reference "sub:Espacio-variable"
 \end_inset
 
 
-\begin_inset LatexCommand index
-name "Comandos ! H ! \\textbackslash hspace"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
@@ -27255,7 +27272,8 @@ res con tamaño variable no abarcan líneas múltiples.
 \end_layout
 
 \begin_layout Standard
-Para obtener el tamaño adecuado, la primera línea se termina con 
+Para obtener el tamaño adecuado de delimitador para la segunda línea, la
+ primera línea se finaliza con 
 \series bold
 
 \backslash
@@ -27272,24 +27290,28 @@ name "Comandos ! R ! \\textbackslash right"
 
 \backslash
 left.
+\series default
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-Más sobre 
+
 \series bold
+Más sobre 
+\series default
 
 \backslash
 left.
 
-\series default
- y 
 \series bold
+ y 
+\series default
 
 \backslash
 right.
 
-\series default
+\series bold
  en 
 \begin_inset LatexCommand ref
 reference "sub:Tamaño-automático-de"
@@ -27301,8 +27323,6 @@ reference "sub:Tamaño-automático-de"
 
 \end_inset
 
-
-\series default
 
 \begin_inset LatexCommand index
 name "Comandos ! L ! \\textbackslash left"
@@ -27530,7 +27550,7 @@ reference "sub:Espacio-variable"
 \series bold
 Sangrado
 \series default
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -27546,7 +27566,7 @@ reference "sec:Estilos-de-ecuación"
 
 \end_inset
 
-, la ecuación queda sin el 
+ la ecuación queda sin el 
 \series bold
 
 \backslash
@@ -27719,7 +27739,8 @@ El entorno multilínea, como gather, consta de una sola columna.
  Pero la primera línea está alineada a la izquierda, la última a la derecha.
  Las demás están centradas.
  Por tanto este entorno es apropiado para ecuaciones largas.
- Como ejemplo, la ecuación 
+ Como ejemplo, la ecuación\InsetSpace ~
+
 \begin_inset LatexCommand eqref
 reference "eq:lefteqn"
 
@@ -28186,7 +28207,7 @@ General
 \end_layout
 
 \begin_layout Standard
-Las ecuaciones numeradas se pueden generar con el menú 
+Las ecuaciones numeradas se insertan con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Ecuación
@@ -28314,9 +28335,6 @@ Etiqueta
 En LyX, el nombre de la etiqueta se muestra entre paréntesis detrás de la
  ecuación.
  Una ecuación con etiqueta se numera siempre.
- 
-\lang english
-When a label is deleted, the numbering is turned off, and vice versa.
 \end_layout
 
 \begin_layout Standard
@@ -28380,7 +28398,7 @@ reference "eq:Lat"
 
 \end_inset
 
-) se usan mayúsculas para la numeración, a diferencia de (
+) se usan mayúsculas latinas para la numeración, a diferencia de (
 \begin_inset LatexCommand ref
 reference "eq:Rom"
 
@@ -28735,11 +28753,6 @@ name "Numeración de ecuaciones ! personalizada"
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand index
-name "Numeración de ecuaciones ! delimitadores personalizados"
-
-\end_inset
-
 Con la numeración estándar el número se coloca entre paréntesis.
  Para reemplazar los paréntesis con barras verticales, p.\InsetSpace \thinspace{}
 e., se añade al preámbulo
@@ -29038,7 +29051,7 @@ name "Comandos ! \"@\" ! \\textbackslash \"@\"removefromreset"
 \end_layout
 
 \begin_layout Standard
-A veces las ecuaciones se podrían numerar de la siguiente manera:
+A veces las ecuaciones deberían numerarse de la siguiente manera:
 \end_layout
 
 \begin_layout Standard
@@ -29285,7 +29298,7 @@ name "Numeración de ecuaciones ! con letras"
 
 \begin_layout Standard
 Las ecuaciones también se pueden numerar con números romanos y letras latinas.
- Por ejemplo, para numerar con romanos en minúscula
+ Por ejemplo, para numerar con romanos en minúscula,
 \begin_inset Foot
 status collapsed
 
@@ -29321,7 +29334,7 @@ del t
 
 \end_inset
 
-, se inserta el comando
+ se inserta el comando
 \end_layout
 
 \begin_layout Standard
@@ -29362,7 +29375,7 @@ theequation
 \backslash
 roman{equation}
 \series default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -29390,7 +29403,6 @@ reference "sec:Comandos-de-usuario"
 
 \end_inset
 
-.
  
 \series bold
 equation
@@ -30374,8 +30386,12 @@ name "Diagramas"
 Para componer diagramas se necesita el paquete LaTeX 
 \series bold
 amscd
+\series default
+.
+\series bold
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30395,7 +30411,6 @@ name "LaTeX ! paquetes ! amscd"
 
 \end_inset
 
-.
  Se carga en el preámbulo LaTeX con la línea:
 \end_layout
 
@@ -30436,14 +30451,14 @@ name "Comandos ! C ! \\textbackslash CD"
 Ctrl-Intro
 \family default
  se inicia una nueva línea.
- En las líneas impares de insertan relaciones horizontales, en las pares
+ En las líneas impares se insertan relaciones horizontales, en las pares
  verticales.
 \end_layout
 
 \begin_layout Standard
-Para componer las relaciones hay los siguientes comandos
+Para componer las relaciones hay los siguientes comandos:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset LatexCommand label
@@ -30468,7 +30483,7 @@ spanish
 babel
 \series default
 .
- Para evitarlos se pueden sustituir por sus sinónimos 
+ Para evitarlo se pueden sustituir por sus sinónimos 
 \series bold
 )
 \series default
@@ -30494,7 +30509,7 @@ del t.
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Itemize
@@ -30584,7 +30599,7 @@ spce
 
 \end_inset
 
-A@>j>>B@>>k>C@=F Ctrl-Enter
+A@>j>>B@>>k>C@=F Ctrl-Intro
 \newline
 
 \begin_inset ERT
@@ -30635,7 +30650,7 @@ status collapsed
 
 
 \series bold
-V@| Ctrl-Enter
+V@| Ctrl-Intro
 \newline
 
 \begin_inset ERT
@@ -30826,7 +30841,7 @@ El ión
 \end_layout
 
 \begin_layout Standard
-Esta ecuación química puede crearse directamente como ecuación.
+Esta ecuación química puede componerse directamente en modo ecuación.
  Para evitar que los símbolos se impriman en cursiva, se selecciona todo
  y con el atajo 
 \family sans
@@ -30971,9 +30986,9 @@ name "Coma decimal"
 \end_layout
 
 \begin_layout Standard
-En LaTeX, de acuerdo a la convención inglesa, en las ecuaciones se usa la
- coma como separador de grupos numéricos en las ecuaciones.
- Así, habrá un espacio añadido tras la coma en las ecuaciones.
+En LaTeX, de acuerdo con la convención inglesa, se usa la coma como separador
+ de grupos numéricos.
+ Entonces en las fórmulas habrá un espacio añadido detrás de todas las comas.
 \end_layout
 
 \begin_layout Standard
@@ -31074,7 +31089,7 @@ name "LaTeX ! paquetes ! braket"
 
 \end_inset
 
- suministra vectores predefinidos, se carga con la línea de preámbulo LaTeX:
+ suministra vectores predefinidos; se carga con la línea de preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard
@@ -31515,7 +31530,7 @@ muy pequeño
 \end_layout
 
 \begin_layout Standard
-Si no se pone estilo el tamaño se ajusta al entorno como para el comando
+Si no se pone estilo el tamaño se ajusta al entorno, como con el comando
  
 \series bold
 
@@ -32140,7 +32155,7 @@ Las ecuaciones en texto multicolumna son con frecuencia demasiado anchas
 \series bold
 multicol
 \series default
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -32160,7 +32175,7 @@ name "LaTeX ! paquetes ! multicol"
 
 \end_inset
 
-, que se carga en el preámbulo LaTeX con la línea
+ que se carga en el preámbulo LaTeX con la línea
 \end_layout
 
 \begin_layout Standard
@@ -32240,9 +32255,9 @@ mm antes de la ecuación.
 \series bold
 Sangrado
 \series default
-
+,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase estilos de ecuación en 
@@ -32256,7 +32271,7 @@ reference "sec:Estilos-de-ecuación"
 
 \end_inset
 
-, se inserta un espacio de -9\InsetSpace \thinspace{}
+ se inserta un espacio de -9\InsetSpace \thinspace{}
 mm.
 \end_layout
 
@@ -32445,7 +32460,7 @@ Si se usa el estilo
 \series bold
 Sangrado
 \series default
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -32461,7 +32476,7 @@ reference "sec:Estilos-de-ecuación"
 
 \end_inset
 
-, se inserta un 
+ se inserta un 
 \series bold
 
 \backslash
@@ -32502,7 +32517,7 @@ Si se usa el estilo
 \series bold
 Centrado
 \series default
- se emplea el método descrito en 
+ se emplea el método descrito en la 
 \begin_inset LatexCommand ref
 reference "sub:Entorno-flalign"
 
@@ -32828,8 +32843,8 @@ latin9.def
 \series default
  que está en el directorio de LaTeX.
  La codificación sólo debería cambiarse en el preámbulo LaTeX y no en el
- archivo de definición, de lo contrario, nuestros cdocumentos no podrían
- ser editados en otros ordenadores.
+ archivo de definición, de lo contrario nuestros documentos no podrían ser
+ editados en otros ordenadores.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32838,7 +32853,7 @@ latin9.def
 
 \begin_layout Standard
 Además del punto centrado, en este documento se ha definido el signo grado
- ° con la siguiente línea de preámbulo LaTeX, para que se puede insertar
+ ° con la siguiente línea de preámbulo LaTeX, para que se pueda insertar
  directamente en una fórmula:
 \end_layout
 
@@ -33054,9 +33069,9 @@ name "Sinónimos"
 
 \begin_layout Standard
 Algunos caracteres y símbolos se pueden componer con varios comandos sinónimos
- como los que se recogen en esta lista
+ como los que se recogen en esta lista:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase también 
@@ -33065,12 +33080,12 @@ reference "fn:sinónimos"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
