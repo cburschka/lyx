@@ -279,7 +279,7 @@ void InsetCommandParams::read(Lexer & lex)
 		string const test = lex.getString();
 		if (test != "LatexCommand") {
 			lex.printError("InsetCommandParams: No LatexCommand line found.");
-			throw ExceptionMessage(WarningException, _("InsetCommandParams error:"),
+			throw ExceptionMessage(WarningException, _("InsetCommandParams error: "),
 			                       _("Can't find LatexCommand line."));
 		}
 	}

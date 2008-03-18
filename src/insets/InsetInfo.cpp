@@ -65,7 +65,7 @@ void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 		odocstringstream os;
 		os << _("Information regarding ")
 		   <<_(nameTranslator().find(type_))
-		   << _(" ") << from_utf8(name_);
+		   << " " << from_utf8(name_);
 		pi.base.bv->message(os.str());
 	}
 }
