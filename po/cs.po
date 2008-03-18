@@ -1322,19 +1322,16 @@ msgid "Supported spacing types"
 msgstr "Podporované typy mezer"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:204
-#, fuzzy
 msgid "Inter-word space"
-msgstr "Mezera uvnitø slova|M"
+msgstr "Mezera uvnitø slova"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:209
-#, fuzzy
 msgid "Thin space"
-msgstr "Tenká\t\\,"
+msgstr "Tenká mezera"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
-#, fuzzy
 msgid "Negative thin space"
-msgstr "Záporná\t\\!"
+msgstr "Záporná tenká mezera"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:219
 msgid "Enspace (0.5 em)"
@@ -2548,7 +2545,7 @@ msgstr "Auto. &konec"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:249
 msgid "Use the babel package for multilingual support"
-msgstr ""
+msgstr "Pou¾ij balíèek babel pro vícejazyènou podporu"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:252
 msgid "Use b&abel"
@@ -16514,214 +16511,188 @@ msgid "Spelling check completed"
 msgstr "Kontrola pravopisu hotova"
 
 #: src/frontends/qt4/GuiSymbols.cpp:50
-#, fuzzy
 msgid "Basic Latin"
-msgstr "Styly BibTeX-u"
+msgstr "Základní latinka"
 
 #: src/frontends/qt4/GuiSymbols.cpp:51
-#, fuzzy
 msgid "Latin-1 Supplement"
-msgstr "Supplementary"
+msgstr "Latin-1 dodatek"
 
 #: src/frontends/qt4/GuiSymbols.cpp:52
 msgid "Latin Extended-A"
-msgstr ""
+msgstr "Latinka roz¹íøení-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:53
 msgid "Latin Extended-B"
-msgstr ""
+msgstr "Latinka roz¹íøení-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
-#, fuzzy
 msgid "IPA Extensions"
-msgstr "Pøípo&na:"
+msgstr "IPA roz¹íøení"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Spacing Modifier Letters"
-msgstr ""
+msgstr "Akcenty a modifikátory"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Combining Diacritical Marks"
-msgstr ""
+msgstr "Diakritická znaménka"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "Cyrillic"
-msgstr ""
+msgstr "Cyrilika"
 
 #: src/frontends/qt4/GuiSymbols.cpp:61
-#, fuzzy
 msgid "Arabic"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Arab¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Devanagari"
-msgstr ""
+msgstr "Dévanágarí"
 
 #: src/frontends/qt4/GuiSymbols.cpp:63
-#, fuzzy
 msgid "Bengali"
-msgstr "Begin"
+msgstr "Bengál¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:65
-#, fuzzy
 msgid "Gujarati"
-msgstr "SubVariation"
+msgstr "Gud¾arát¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:66
 msgid "Oriya"
-msgstr ""
+msgstr "Oriya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:67
-#, fuzzy
 msgid "Tamil"
-msgstr "Mail"
+msgstr "Tamil¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Telugu"
-msgstr ""
+msgstr "Telug¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
-#, fuzzy
 msgid "Kannada"
-msgstr "Kanada"
+msgstr "Kannad¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Malayalam"
-msgstr ""
+msgstr "Malajálam¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:72
-#, fuzzy
 msgid "Lao"
-msgstr "Rozvr¾ení "
+msgstr "Lao¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
-#, fuzzy
 msgid "Tibetan"
-msgstr "beta"
+msgstr "Tibet¹tina"
 
 #: src/frontends/qt4/GuiSymbols.cpp:74
-#, fuzzy
 msgid "Georgian"
-msgstr "Nìmèina"
+msgstr "Gruzín¹tins"
 
 #: src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Hangul Jamo"
-msgstr ""
+msgstr "Hangul jamo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:76
-#, fuzzy
 msgid "Phonetic Extensions"
-msgstr "Pøípo&na:"
+msgstr "Fonetická roz¹íøení"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Latin Extended Additional"
-msgstr ""
+msgstr "Latinka roz¹íøení"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Greek Extended"
-msgstr ""
+msgstr "Øeètina roz¹íøení"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
-#, fuzzy
 msgid "General Punctuation"
-msgstr "Obecné informace"
+msgstr "Interpunkce"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
-#, fuzzy
 msgid "Superscripts and Subscripts"
-msgstr "Horní index|H"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Currency Symbols"
-msgstr ""
+msgstr "Symboly mìn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "Combining Diacritical Marks for Symbols"
-msgstr ""
+msgstr "Diakritická znaménka"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
-#, fuzzy
 msgid "Letterlike Symbols"
-msgstr "Fonetické symboly|F"
+msgstr "Symboly písmen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:84
-#, fuzzy
 msgid "Number Forms"
-msgstr "Poèet øádek"
+msgstr "Èíselné formy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:86
-#, fuzzy
 msgid "Mathematical Operators"
-msgstr "Mathematica|a"
+msgstr "Matematické operátory"
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
-#, fuzzy
 msgid "Miscellaneous Technical"
-msgstr "Rùzné"
+msgstr "Technické"
 
 #: src/frontends/qt4/GuiSymbols.cpp:88
-#, fuzzy
 msgid "Control Pictures"
-msgstr "Conjecture"
+msgstr "Øídící znaky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:89
 msgid "Optical Character Recognition"
-msgstr ""
+msgstr "OCR"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Enclosed Alphanumerics"
-msgstr ""
+msgstr "Uzavøené alfanumerické znaky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
-#, fuzzy
 msgid "Box Drawing"
-msgstr "Nastevení rámeèku"
+msgstr "Kreslení rámeèkù"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
-#, fuzzy
 msgid "Block Elements"
-msgstr "Acknowledgments"
+msgstr "Kvádry"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
-#, fuzzy
 msgid "Geometric Shapes"
-msgstr "Text. øez kurzíva (italic)"
+msgstr "Geometrické tvary"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
-#, fuzzy
 msgid "Miscellaneous Symbols"
-msgstr "Rùzné"
+msgstr "Rùzné symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
-#, fuzzy
 msgid "Dingbats"
-msgstr "Dings 1"
+msgstr "Dingbats"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr ""
+msgstr "Rùzné matematické symboly-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:97
 msgid "CJK Symbols and Punctuation"
-msgstr ""
+msgstr "CJK symboly a interpunkce"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
 msgid "Hiragana"
-msgstr ""
+msgstr "Hiragana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
-#, fuzzy
 msgid "Katakana"
-msgstr "Katalán¹tina"
+msgstr "Katakana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
-#, fuzzy
 msgid "Bopomofo"
-msgstr "&Spodek øádku:"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:101
 msgid "Hangul Compatibility Jamo"
@@ -17102,9 +17073,8 @@ msgid "imported."
 msgstr "importováno."
 
 #: src/frontends/qt4/GuiView.cpp:1376
-#, fuzzy
 msgid "file not imported!"
-msgstr "Soubor nenalezen"
+msgstr "soubor nebyl importován!"
 
 #: src/frontends/qt4/GuiView.cpp:1431
 msgid "Select LyX document to insert"
@@ -17138,9 +17108,8 @@ msgid "Rename and save?"
 msgstr "Pøejmenovat a ulo¾it ?"
 
 #: src/frontends/qt4/GuiView.cpp:1589
-#, fuzzy
 msgid "&Retry"
-msgstr "&Obnovit"
+msgstr "&Opakovat"
 
 #: src/frontends/qt4/GuiView.cpp:1639
 #, c-format
@@ -17174,7 +17143,6 @@ msgstr "Neznámý panel nástrojù \"%1$s\""
 msgid "off"
 msgstr "vypnuto"
 
-# TODO co to je?
 #: src/frontends/qt4/GuiView.cpp:1772
 msgid "auto"
 msgstr "auto"
@@ -17212,19 +17180,16 @@ msgid " (read only)"
 msgstr " (jen ke ètení)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1194
-#, fuzzy
 msgid "Close File"
-msgstr "Zavøít"
+msgstr "Zavøít soubor"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1390
-#, fuzzy
 msgid "Hide tab"
-msgstr "delta"
+msgstr "Skrýt panel"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1392
-#, fuzzy
 msgid "Close tab"
-msgstr "Zavøít"
+msgstr "Zavøít panel"
 
 #: src/frontends/qt4/GuiWrap.cpp:34
 msgid "Wrap Float Settings"
@@ -17257,18 +17222,16 @@ msgid "Master Document"
 msgstr "Hlavní dokument"
 
 #: src/frontends/qt4/Menus.cpp:939
-#, fuzzy
 msgid "Other floats: "
-msgstr "Dal¹í plovoucí objekty"
+msgstr "Dal¹í plovoucí objekty: "
 
 #: src/frontends/qt4/Menus.cpp:945
 msgid "Open Navigator..."
-msgstr ""
+msgstr "Otevøít navigátor..."
 
 #: src/frontends/qt4/Menus.cpp:966
-#, fuzzy
 msgid "Other Lists"
-msgstr "Dal¹í plovoucí objekty"
+msgstr "Dal¹í seznamy"
 
 #: src/frontends/qt4/Menus.cpp:976
 msgid "No Table of contents"
@@ -17281,12 +17244,11 @@ msgstr " (auto)"
 
 #: src/frontends/qt4/Menus.cpp:1037
 msgid "No Branch in Document!"
-msgstr "Dokument neobsahuje vìtvení !"
+msgstr "Dokument neobsahuje vìtvení!"
 
 #: src/frontends/qt4/Menus.cpp:1535
-#, fuzzy
 msgid "No action defined!"
-msgstr "®ádná zmìna fontu není definována."
+msgstr "®ádná akce není definována!"
 
 #: src/frontends/qt4/Validator.cpp:148
 msgid "space"
@@ -17330,7 +17292,7 @@ msgstr "Otevøená vlo¾ka"
 
 #: src/insets/InsetBibitem.cpp:82
 msgid "Keys must be unique!"
-msgstr ""
+msgstr "Klíè musí být unikátní"
 
 #: src/insets/InsetBibitem.cpp:83
 #, c-format
@@ -17437,38 +17399,35 @@ msgstr ""
 #: src/insets/InsetCitation.cpp:217
 #, fuzzy
 msgid "not cited"
-msgstr "chránìno"
+msgstr "necitováno"
 
 #: src/insets/InsetCollapsable.cpp:113
 msgid "Left-click to collapse the inset"
-msgstr ""
+msgstr "Levý klik pro sbalení vlo¾ky"
 
 #: src/insets/InsetCollapsable.cpp:115
 msgid "Left-click to open the inset"
-msgstr ""
+msgstr "Levý klik pro otevøení vlo¾ky"
 
 #: src/insets/InsetCommand.cpp:86
 msgid "LaTeX Command: "
 msgstr "Pøíkaz LaTeX-u: "
 
 #: src/insets/InsetCommandParams.cpp:255
-#, fuzzy
 msgid "InsetCommand Error: "
-msgstr "Pøíkaz pro vlo¾ku: "
+msgstr "Chyba InsetCommand: "
 
 #: src/insets/InsetCommandParams.cpp:256 src/insets/InsetCommandParams.cpp:291
-#, fuzzy
 msgid "Incompatible command name."
-msgstr "Neúplný pøíkaz"
+msgstr "Nekompatibilní jméno pøíkazu"
 
 #: src/insets/InsetCommandParams.cpp:272 src/insets/InsetCommandParams.cpp:290
-#, fuzzy
 msgid "InsetCommandParams Error: "
-msgstr "Pøíkaz pro vlo¾ku: "
+msgstr "Chyba InsetCommandParams: "
 
 #: src/insets/InsetCommandParams.cpp:273
 msgid "Attempt to change type of parameters."
-msgstr ""
+msgstr "Pokus o zmìnu typu parametrù"
 
 #: src/insets/InsetCommandParams.cpp:282
 #, fuzzy
@@ -17477,12 +17436,11 @@ msgstr "Pøíkaz pro vlo¾ku: "
 
 #: src/insets/InsetCommandParams.cpp:283
 msgid "Can't find LatexCommand line."
-msgstr ""
+msgstr "Nelze nalézt øádku LatexCommand."
 
 #: src/insets/InsetCommandParams.cpp:313
-#, fuzzy
 msgid "InsetCommandParams: "
-msgstr "Pøíkaz pro vlo¾ku: "
+msgstr "InsetCommandParams: "
 
 #: src/insets/InsetCommandParams.cpp:314
 msgid "Unknown parameter name: "
@@ -17609,62 +17567,55 @@ msgid "Different textclasses"
 msgstr "Rozdílné textové tøídy"
 
 #: src/insets/InsetInclude.cpp:491
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Included file `%1$s'\n"
 "uses module `%2$s'\n"
 "which is not used in parent file."
 msgstr ""
 "Zahrnutý soubor `%1$s'\n"
-"je textové tøídy `%2$s'\n"
-"zatímco rodièovský soubor má tøídu `%3$s'."
+"pou¾ívá modul `%2$s',\n"
+"který není pou¾it v rodièovském dokumentu."
 
 #: src/insets/InsetInclude.cpp:495
-#, fuzzy
 msgid "Module not found"
-msgstr "Soubor nenalezen"
+msgstr "Modul nenalezen"
 
 #: src/insets/InsetIndex.cpp:93
 msgid "Index"
 msgstr "Index"
 
 #: src/insets/InsetInfo.cpp:66
-#, fuzzy
 msgid "Information regarding "
-msgstr "®ádná informace pro editaci %1$s"
+msgstr "Informace ohlednì "
 
 #: src/insets/InsetInfo.cpp:68
 msgid " "
 msgstr ""
 
 #: src/insets/InsetInfo.cpp:174
-#, fuzzy
 msgid "Unknown Info: "
-msgstr "Neznámé slovo:"
+msgstr "Neznámá informace: "
 
 #: src/insets/InsetInfo.cpp:198 src/insets/InsetInfo.cpp:203
-#, fuzzy
 msgid "yes"
-msgstr "Styly"
+msgstr "ano"
 
 #: src/insets/InsetInfo.cpp:198 src/insets/InsetInfo.cpp:203
-#, fuzzy
 msgid "no"
-msgstr "Zpìt zmìnu"
+msgstr "ne"
 
 #: src/insets/InsetInfo.cpp:211 src/insets/InsetInfo.cpp:216
-#, fuzzy
 msgid "No menu entry for "
-msgstr "Polo¾ka nomenklatury"
+msgstr "®ádná polo¾ka menu pro "
 
 #: src/insets/InsetInfo.cpp:243
-#, fuzzy
 msgid "Unknown buffer info"
-msgstr "Neznámý u¾ivatel"
+msgstr "Neznámá informace dokumentu"
 
 #: src/insets/InsetLabel.cpp:64
 msgid "Label names must be unique!"
-msgstr ""
+msgstr "Jména znaèek musí být unikátní!"
 
 #: src/insets/InsetLabel.cpp:65
 #, c-format
@@ -17672,10 +17623,12 @@ msgid ""
 "The label %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
+"Znaèka %1$s ji¾ existuje,\n"
+"bude pøejmenována na %2$s."
 
 #: src/insets/InsetLabel.cpp:106
 msgid "DUPLICATE: "
-msgstr ""
+msgstr "DUPLIKÁT: "
 
 #: src/insets/InsetListings.cpp:116
 msgid "Opened Listing Inset"
@@ -17919,29 +17872,24 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/insets/InsetSpace.cpp:73
-#, fuzzy
 msgid "Interword Space"
-msgstr "Mezera uvnitø slova|M"
+msgstr "Mezera uvnitø slova"
 
 #: src/insets/InsetSpace.cpp:76
-#, fuzzy
 msgid "Protected Space"
-msgstr "Chránìná mezera|r"
+msgstr "Chránìná mezera"
 
 #: src/insets/InsetSpace.cpp:79
-#, fuzzy
 msgid "Thin Space"
-msgstr "Tenká mezera|T"
+msgstr "Tenká mezera"
 
 #: src/insets/InsetSpace.cpp:82
-#, fuzzy
 msgid "Quad Space"
-msgstr "Space"
+msgstr "Quad mezera"
 
 #: src/insets/InsetSpace.cpp:85
-#, fuzzy
 msgid "QQuad Space"
-msgstr "Space"
+msgstr "QQuad mezera"
 
 #: src/insets/InsetSpace.cpp:88
 #, fuzzy
@@ -17954,19 +17902,16 @@ msgid "Enskip"
 msgstr "nsim"
 
 #: src/insets/InsetSpace.cpp:94
-#, fuzzy
 msgid "Negative Thin Space"
-msgstr "Záporná\t\\!"
+msgstr "Záporná tenká mezera"
 
 #: src/insets/InsetSpace.cpp:100
-#, fuzzy
 msgid "Protected Horizontal Fill"
-msgstr "Horizontální výplò"
+msgstr "Chránìná horizontální výplò"
 
 #: src/insets/InsetSpace.cpp:103
-#, fuzzy
 msgid "Horizontal Fill (Dots)"
-msgstr "Horizontální výplò"
+msgstr "Horizontální výplò (teèky)"
 
 #: src/insets/InsetSpace.cpp:106
 #, fuzzy
@@ -17974,14 +17919,14 @@ msgid "Horizontal Fill (Rule)"
 msgstr "Horizontální výplò"
 
 #: src/insets/InsetSpace.cpp:109
-#, fuzzy, c-format
+#, c-format
 msgid "Horizontal Space (%1$s)"
-msgstr "Horizontální linka|o"
+msgstr "Horizontální mezera (%1$s)"
 
 #: src/insets/InsetSpace.cpp:113
-#, fuzzy, c-format
+#, c-format
 msgid "Protected Horizontal Space (%1$s)"
-msgstr "Chránìná mezera|r"
+msgstr "Chránìná horizontální mezera (%1$s)"
 
 #: src/insets/InsetTOC.cpp:49
 msgid "Unknown TOC type"
@@ -18223,14 +18168,12 @@ msgid "Standard[[mathref]]"
 msgstr "Standardní"
 
 #: src/mathed/MathMacroTemplate.cpp:487
-#, fuzzy
 msgid "optional"
-msgstr "Horizontální"
+msgstr "volitelné"
 
 #: src/mathed/MathMacroTemplate.cpp:530
-#, fuzzy
 msgid "TeX"
-msgstr "LaTeX"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1204
 msgid "math macro"
@@ -18284,7 +18227,6 @@ msgstr ""
 "`chkconfig.ltx'."
 
 #: src/support/Package.cpp:642 src/support/Package.cpp:669
-#, fuzzy
 msgid "File not found"
 msgstr "Soubor nenalezen"
 
@@ -18420,13 +18362,12 @@ msgid "scrolling debugging"
 msgstr ""
 
 #: src/support/debug.cpp:65
-#, fuzzy
 msgid "Math macros"
-msgstr "mat. makro"
+msgstr "mat. makra"
 
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
-msgstr ""
+msgstr "RTL/Bidi"
 
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"
