@@ -412,15 +412,14 @@ void InsetMathNest::handleFont
 void InsetMathNest::handleFont(Cursor & cur, docstring const & arg,
 	docstring const & font)
 {
+	cur.recordUndoSelection();
+
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-
-	if (cur.inset().asInsetMath()->name() == font) {
-		cur.recordUndoInset();
+	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(to_utf8(font));
-	} else {
+	else
 		handleNest(cur, createInsetMath(font), arg);
-	}
 }
 
 
@@ -439,7 +438,6 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 		return;
 	if (i1.idx() == i2.idx()) {
 		// the easy case where only one cell is selected
-		cur.recordUndo();
 		cur.handleNest(nest);
 		cur.insert(arg);
 		return;
@@ -447,7 +445,6 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 	
 	// multiple selected cells in a simple non-grid inset
 	if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
-		cur.recordUndoInset();
 		for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
 			// select cell
 			cur.idx() = i;
@@ -469,7 +466,6 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 	}
 	
 	// the complicated case with multiple selected cells in a grid
-	cur.recordUndoInset();
 	row_type r1, r2;
 	col_type c1, c2;
 	cap::region(i1, i2, r1, r2, c1, c2);
@@ -497,7 +493,7 @@ void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
 
 void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 {
-	cur.recordUndo();
+	cur.recordUndoSelection();
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
@@ -1073,10 +1069,16 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
 		cur.recordUndoSelection();
-		if (cmd.argument() == "^" || cmd.argument() == "_") {
+		if (cmd.argument() == "^" || cmd.argument() == "_")
 			interpretChar(cur, cmd.argument()[0]);
-		} else
-			cur.niceInsert(cmd.argument());
+		else {
+			MathData ar;
+			asArray(cmd.argument(), ar);
+			if (ar.size() == 1 && ar[0]->asNestInset())
+				handleNest(cur, ar[0]);
+			else
+				cur.niceInsert(cmd.argument());
+		}
 		break;
 		}
 
