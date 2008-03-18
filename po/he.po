@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-09 17:26+0100\n"
+"POT-Creation-Date: 2008-03-18 21:31+0100\n"
 "PO-Revision-Date: 2008-02-20 12:39+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -46,6 +46,7 @@ msgstr "זכויות יוצרים"
 #: src/frontends/qt4/ui/DelimiterUi.ui:107
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
 #: src/frontends/qt4/ui/ExternalUi.ui:696 src/frontends/qt4/ui/FloatUi.ui:85
+#: src/frontends/qt4/ui/HSpaceUi.ui:169
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/LogUi.ui:54
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:97
@@ -72,7 +73,7 @@ msgstr "דמה"
 #: src/frontends/qt4/ui/CitationUi.ui:405
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:676 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:690
+#: src/frontends/qt4/ui/GraphicsUi.ui:690 src/frontends/qt4/ui/HSpaceUi.ui:146
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:609
@@ -88,14 +89,16 @@ msgstr "אישור"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:425
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:868
-#: src/Buffer.cpp:2548 src/Buffer.cpp:2572 src/Buffer.cpp:2607
-#: src/EmbeddedFiles.cpp:173 src/EmbeddedFiles.cpp:235 src/LyXFunc.cpp:690
-#: src/LyXFunc.cpp:836 src/LyXFunc.cpp:1014 src/LyXVC.cpp:160
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:884
+#: src/Buffer.cpp:2511 src/Buffer.cpp:2535 src/Buffer.cpp:2570
+#: src/EmbeddedFiles.cpp:172 src/EmbeddedFiles.cpp:234
+#: src/EmbeddedFiles.cpp:293 src/LyXFunc.cpp:693 src/LyXFunc.cpp:829
+#: src/LyXFunc.cpp:1007 src/LyXVC.cpp:160
 #: src/frontends/qt4/GuiClipboard.cpp:277
-#: src/frontends/qt4/GuiDocument.cpp:1238 src/frontends/qt4/GuiView.cpp:1326
-#: src/frontends/qt4/GuiView.cpp:1507 src/frontends/qt4/GuiView.cpp:1552
-#: src/frontends/qt4/GuiView.cpp:1603
+#: src/frontends/qt4/GuiDocument.cpp:1282
+#: src/frontends/qt4/GuiDocument.cpp:1293 src/frontends/qt4/GuiView.cpp:1363
+#: src/frontends/qt4/GuiView.cpp:1544 src/frontends/qt4/GuiView.cpp:1589
+#: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Cancel"
 msgstr "ביטול"
 
@@ -162,14 +165,13 @@ msgstr "LyX: הוסף מסד נתונים של BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50 src/frontends/qt4/ui/CitationUi.ui:98
-#: src/frontends/qt4/ui/LaTeXUi.ui:81
 msgid "&Add"
 msgstr "הוסף"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:112 src/LyXFunc.cpp:796
+#: src/frontends/qt4/ui/ShortcutUi.ui:112 src/LyXFunc.cpp:799
 #: src/buffer_funcs.cpp:103 src/frontends/qt4/ButtonController.cpp:123
 msgid "Cancel"
 msgstr "ביטול"
@@ -206,7 +208,7 @@ msgstr "&תוכן:"
 msgid "all cited references"
 msgstr "כל ההפניות המובאות בטקטט"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:74 src/frontends/qt4/GuiBibtex.cpp:318
+#: src/frontends/qt4/ui/BibtexUi.ui:74 src/frontends/qt4/GuiBibtex.cpp:322
 msgid "all uncited references"
 msgstr "כל ההפניות אשר אינן מובאות בטקסט"
 
@@ -222,7 +224,7 @@ msgstr "בחר קובץ סגנון"
 msgid "Remove the selected database"
 msgstr "הסר את מסד-הנתונים המסומן"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:151 src/frontends/qt4/ui/LaTeXUi.ui:67
+#: src/frontends/qt4/ui/BibtexUi.ui:151
 msgid "&Delete"
 msgstr "מחק"
 
@@ -256,7 +258,7 @@ msgid "Move the selected database upwards in the list"
 msgstr "הסר את מסד-הנתונים המסומן"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:39
-#: src/frontends/qt4/ui/LaTeXUi.ui:60
+#: src/frontends/qt4/ui/LaTeXUi.ui:113
 msgid "&Up"
 msgstr "למעלה"
 
@@ -265,7 +267,7 @@ msgstr "למעלה"
 msgid "Move the selected database downwards in the list"
 msgstr "הסר את מסד-הנתונים המסומן"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:275
+#: src/frontends/qt4/ui/BibtexUi.ui:275 src/frontends/qt4/ui/LaTeXUi.ui:106
 #, fuzzy
 msgid "Do&wn"
 msgstr "למטה"
@@ -290,19 +292,19 @@ msgstr "יישור אופקי של תוכן התיבה"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:704
+#: src/frontends/qt4/GuiParagraph.cpp:92 src/frontends/qt4/GuiTabular.cpp:675
 msgid "Left"
 msgstr "שמאל"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
-#: src/frontends/qt4/GuiExternal.cpp:83 src/frontends/qt4/GuiGraphics.cpp:804
-#: src/frontends/qt4/GuiParagraph.cpp:94 src/frontends/qt4/GuiTabular.cpp:705
+#: src/frontends/qt4/GuiExternal.cpp:87 src/frontends/qt4/GuiGraphics.cpp:820
+#: src/frontends/qt4/GuiParagraph.cpp:94 src/frontends/qt4/GuiTabular.cpp:676
 msgid "Center"
 msgstr "מרכז"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:706
+#: src/frontends/qt4/GuiParagraph.cpp:93 src/frontends/qt4/GuiTabular.cpp:677
 msgid "Right"
 msgstr "ימין"
 
@@ -363,18 +365,18 @@ msgstr "שחזר"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:686 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:711
+#: src/frontends/qt4/ui/GraphicsUi.ui:711 src/frontends/qt4/ui/HSpaceUi.ui:159
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:161 src/frontends/qt4/ui/VSpaceUi.ui:158
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1254
-#: src/frontends/qt4/GuiDocument.cpp:2072
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1308
+#: src/frontends/qt4/GuiDocument.cpp:2140
 msgid "&Apply"
 msgstr "החל"
 
 #: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:498
-#: src/frontends/qt4/ui/PageLayoutUi.ui:201
+#: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "אורך:"
 
@@ -387,7 +389,7 @@ msgid "&Decoration:"
 msgstr "מראה:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:475
-#: src/frontends/qt4/ui/PageLayoutUi.ui:214
+#: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
 msgstr "רוחב:"
@@ -404,7 +406,8 @@ msgstr "מידת הרוחב"
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "סוג התיבה -- דרוש כדי להגדיר רוחב קבוע ושבירת שורות"
 
-#: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/ListingsUi.ui:270
+#: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:52
+#: src/frontends/qt4/ui/ListingsUi.ui:270
 #: src/frontends/qt4/ui/TabularUi.ui:699 src/frontends/qt4/ui/TabularUi.ui:718
 #: src/frontends/qt4/ui/TabularUi.ui:766 src/frontends/qt4/GuiBox.cpp:69
 #: src/frontends/qt4/GuiBox.cpp:156 src/frontends/qt4/GuiBox.cpp:316
@@ -494,8 +497,8 @@ msgstr "גודל:"
 #: src/frontends/qt4/GuiDocument.cpp:670 src/frontends/qt4/GuiDocument.cpp:682
 #: src/frontends/qt4/GuiDocument.cpp:1154
 #: src/frontends/qt4/GuiDocument.cpp:1199
-#: src/frontends/qt4/GuiDocument.cpp:2113 src/frontends/qt4/GuiExternal.cpp:81
-#: src/frontends/qt4/GuiGraphics.cpp:802 src/frontends/qt4/GuiListings.cpp:151
+#: src/frontends/qt4/GuiDocument.cpp:2181 src/frontends/qt4/GuiExternal.cpp:85
+#: src/frontends/qt4/GuiGraphics.cpp:818 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Default"
 msgstr "ברירת מחדל"
@@ -555,7 +558,7 @@ msgid "&Custom Bullet:"
 msgstr "תבליט מותאם אישית:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
-#: src/frontends/qt4/ui/PDFSupportUi.ui:139
+#: src/frontends/qt4/ui/PDFSupportUi.ui:400
 msgid "&Level:"
 msgstr "רמה:"
 
@@ -614,7 +617,7 @@ msgstr "סדרת גופן"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:977
-#: src/frontends/qt4/GuiPrefs.cpp:1593
+#: src/frontends/qt4/GuiPrefs.cpp:1622
 msgid "Language"
 msgstr "שפה"
 
@@ -624,7 +627,7 @@ msgid "Font color"
 msgstr "צבע גופן"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
-#: src/frontends/qt4/ui/LanguageUi.ui:115
+#: src/frontends/qt4/ui/LanguageUi.ui:99
 msgid "&Language:"
 msgstr "שפה:"
 
@@ -692,7 +695,7 @@ msgstr "הזז את המובאה הנוכחית למעלה"
 msgid "Move the selected citation down"
 msgstr "הזז את המובאה הנוכחית למטה"
 
-#: src/frontends/qt4/ui/CitationUi.ui:58 src/frontends/qt4/ui/LaTeXUi.ui:53
+#: src/frontends/qt4/ui/CitationUi.ui:58
 msgid "&Down"
 msgstr "למטה"
 
@@ -863,29 +866,19 @@ msgstr "פתוח"
 msgid "EmbeddedFiles"
 msgstr "עצמים משובצים"
 
-#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:38
-#, fuzzy
-msgid "Remove"
-msgstr "הסר"
+#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:25
+msgid "Extra embedded files:"
+msgstr ""
 
-#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:45
+#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:44
 #, fuzzy
 msgid "Add"
 msgstr "הוסף"
 
-#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:55
-msgid "Extra embedded files:"
-msgstr ""
-
-#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:65
+#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:51
 #, fuzzy
-msgid "Save this document in bundled format"
-msgstr "שמור הגדרות כברירת מחדל"
-
-#: src/frontends/qt4/ui/EmbeddedFilesUi.ui:72
-#, fuzzy
-msgid "Embedded files:"
-msgstr "עצמים משובצים"
+msgid "Remove"
+msgstr "הסר"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:51
 msgid "File"
@@ -1099,7 +1092,7 @@ msgid "Forma&t:"
 msgstr "פורמט:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
-#: src/frontends/qt4/ui/PDFSupportUi.ui:16
+#: src/frontends/qt4/ui/PDFSupportUi.ui:13
 msgid "Form"
 msgstr ""
 
@@ -1156,7 +1149,7 @@ msgid "&Typewriter:"
 msgstr "מכונת כתיבה:"
 
 #: src/frontends/qt4/ui/FontUi.ui:90
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:111
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "&Roman:"
 msgstr "רומי:"
 
@@ -1300,6 +1293,87 @@ msgstr "מצב טיוטה"
 msgid "&Draft mode"
 msgstr "מצב &טיוטה"
 
+#: src/frontends/qt4/ui/HSpaceUi.ui:28
+#, fuzzy
+msgid "Insert the spacing even after a line break"
+msgstr "הכנס את המרווח גם אחרי שבירת עמוד"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:38
+#, fuzzy
+msgid "&Fill Pattern:"
+msgstr "קובץ:"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:48
+msgid "Select a fill pattern style for HFills"
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:57
+msgid "..............."
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:62
+msgid "________"
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:28
+msgid "&Spacing:"
+msgstr "&מרווח:"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:96 src/frontends/qt4/ui/VSpaceUi.ui:51
+msgid "&Protect:"
+msgstr "מו&גן:"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:200 src/frontends/qt4/ui/VSpaceUi.ui:81
+msgid "Supported spacing types"
+msgstr "סוגי מרווחים נתמכים"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:204
+#, fuzzy
+msgid "Inter-word space"
+msgstr "רווח בין מילים"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:209
+#, fuzzy
+msgid "Thin space"
+msgstr "רווח דק\t\\,"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:214
+#, fuzzy
+msgid "Negative thin space"
+msgstr "רווח שלילי\t\\!"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:219
+msgid "Enspace (0.5 em)"
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:224
+msgid "Quad (1 em)"
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:229
+msgid "QQuad (2 em)"
+msgstr ""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:234 src/insets/InsetSpace.cpp:97
+msgid "Horizontal Fill"
+msgstr "מילוי אופקי"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:239
+#: src/frontends/qt4/ui/ParagraphUi.ui:186
+#: src/frontends/qt4/ui/TabularUi.ui:709 src/frontends/qt4/ui/TabularUi.ui:728
+#: src/frontends/qt4/ui/TabularUi.ui:776 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/GuiDocument.cpp:582 src/frontends/qt4/GuiDocument.cpp:683
+msgid "Custom"
+msgstr "מותאם אישית"
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:250 src/frontends/qt4/ui/VSpaceUi.ui:74
+msgid "Custom value. Needs spacing type \"Custom\"."
+msgstr "ערך מותאם אישית. דורש סוג מרווח \"מותאם אישית\""
+
+#: src/frontends/qt4/ui/HSpaceUi.ui:257 src/frontends/qt4/ui/VSpaceUi.ui:38
+msgid "&Value:"
+msgstr "&ערך:"
+
 #: src/frontends/qt4/ui/HyperlinkUi.ui:28
 #, fuzzy
 msgid "Specify the link target"
@@ -1409,11 +1483,11 @@ msgstr "שם הקובץ שיכלל במסמך"
 msgid "&Include Type:"
 msgstr "סו&ג קובץ:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:327
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:325
 msgid "Include"
 msgstr "כלול"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:318
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:316
 msgid "Input"
 msgstr "קלט"
 
@@ -1421,7 +1495,7 @@ msgstr "קלט"
 msgid "Verbatim"
 msgstr "מילה במילה"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:917
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:934
 msgid "Program Listing"
 msgstr "רישום קוד"
 
@@ -1429,50 +1503,70 @@ msgstr "רישום קוד"
 msgid "Edit the file"
 msgstr "ערוך את הקובץ"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:25
+#: src/frontends/qt4/ui/LaTeXUi.ui:46
+msgid "Document &class:"
+msgstr "&מחלקת מסמך:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:78
 #, fuzzy
 msgid "Modules"
 msgstr "לאמצע"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:95
+#: src/frontends/qt4/ui/LaTeXUi.ui:120
+#, fuzzy
+msgid "De&lete"
+msgstr "מחק"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:134
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
+msgid "A&dd"
+msgstr "הוסף"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:148
 #, fuzzy
 msgid "S&elected:"
 msgstr "מחק"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:105
+#: src/frontends/qt4/ui/LaTeXUi.ui:158
 #, fuzzy
 msgid "A&vailable:"
 msgstr "ענפים זמינים:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:125
+#: src/frontends/qt4/ui/LaTeXUi.ui:179
 #, fuzzy
 msgid "&Postscript driver:"
 msgstr "מ&נהל התקן Postscript:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:161
-msgid "Document &class:"
-msgstr "&מחלקת מסמך:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:174
+#: src/frontends/qt4/ui/LaTeXUi.ui:219
 msgid "&Options:"
 msgstr "&אפשרויות:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:242
+msgid "Click to select a local document class definition file"
+msgstr ""
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:245
+#, fuzzy
+msgid "&Select Local Layout..."
+msgstr "הגדרות טקסט"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 #, fuzzy
 msgid "Encoding"
 msgstr "&קידוד:"
 
+#: src/frontends/qt4/ui/LanguageUi.ui:40
+#, fuzzy
+msgid "Language &Default"
+msgstr "ברירת המחדל של LaTeX"
+
 #: src/frontends/qt4/ui/LanguageUi.ui:63
 #, fuzzy
 msgid "&Other:"
 msgstr "&חיצוניים:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:70
-#, fuzzy
-msgid "Language &Default"
-msgstr "ברירת המחדל של LaTeX"
-
-#: src/frontends/qt4/ui/LanguageUi.ui:105
+#: src/frontends/qt4/ui/LanguageUi.ui:109
 msgid "&Quote Style:"
 msgstr "&סגנון ציטוט:"
 
@@ -1823,39 +1917,39 @@ msgstr "תצורת תאריך"
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr "בחר גודל דף מסויים או הגדר גודל משלך באמצעות \"מותאם אישית\""
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:118
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
 msgstr "סגנון לשימוש בכותרת עליונה ותחתונה של הדף"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:125
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
 #, fuzzy
 msgid "Headings &style:"
 msgstr "סגנון עמוד:"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:135
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
 msgid "&Landscape"
 msgstr "לרוחב"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:142
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
 msgid "&Portrait"
 msgstr "לאורך"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:188
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:89
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
 #: src/frontends/qt4/ui/RefUi.ui:129
 msgid "&Format:"
 msgstr "ת&סדיר:"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:224
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
 #, fuzzy
 msgid "&Orientation:"
 msgstr "כיוון הדף"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:250
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
 msgid "Lay out the page for double-sided printing"
 msgstr "התאם את העמוד להדפסה דו-צדדית"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
 msgid "&Two-sided document"
 msgstr "מסמך דו-צדדי"
 
@@ -1908,7 +2002,7 @@ msgstr "&ימין"
 msgid "Line &spacing"
 msgstr "מרווח &בין שורות:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1267
+#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1274
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Single"
 msgstr "יחיד"
@@ -1917,137 +2011,245 @@ msgstr "יחיד"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1273
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1280
 #: src/frontends/qt4/GuiDocument.cpp:580
 msgid "Double"
 msgstr "כפול"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:186
-#: src/frontends/qt4/ui/TabularUi.ui:709 src/frontends/qt4/ui/TabularUi.ui:728
-#: src/frontends/qt4/ui/TabularUi.ui:776 src/frontends/qt4/ui/VSpaceUi.ui:110
-#: src/frontends/qt4/GuiDocument.cpp:582 src/frontends/qt4/GuiDocument.cpp:683
-msgid "Custom"
-msgstr "מותאם אישית"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:231
 msgid "I&mmediate Apply"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:31
+#: src/frontends/qt4/ui/PDFSupportUi.ui:41
 msgid "&Use hyperref support"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:52
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:55
-msgid "Automatically fill header"
-msgstr ""
-
 #: src/frontends/qt4/ui/PDFSupportUi.ui:62
-msgid "Enable fullscreen PDF presentation"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:65
-msgid "Load in &fullscreen mode"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:72
-#, fuzzy
-msgid "Generate Bookmarks"
-msgstr "מחק סמניות"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:93
-#, fuzzy
-msgid "Open bookmarks"
-msgstr "שמור סמנייה"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:129
-#, fuzzy
-msgid "Number of levels"
-msgstr "מספר עותקים"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:149
-#, fuzzy
-msgid "Numbered bookmarks"
-msgstr "נוסחה ממוספרת"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-#, fuzzy
-msgid "Header Information"
-msgstr "מידע TeX"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:171
-#, fuzzy
-msgid "&Title:"
-msgstr "כותרת:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:184
-#, fuzzy
-msgid "&Author:"
-msgstr "מחבר:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:197
-#, fuzzy
-msgid "&Subject:"
-msgstr "Subset"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:210
-#, fuzzy
-msgid "&Keywords:"
-msgstr "מילת מפתח:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:226
 #, fuzzy
 msgid "Additional o&ptions"
 msgstr "אפשרויות LaTeX נוספות"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:255
+#: src/frontends/qt4/ui/PDFSupportUi.ui:91
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:265
+#: src/frontends/qt4/ui/PDFSupportUi.ui:105
 #, fuzzy
-msgid "Links"
-msgstr "רשימה"
+msgid "&General"
+msgstr "כללי"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:280
+#: src/frontends/qt4/ui/PDFSupportUi.ui:151
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:154
+#, fuzzy
+msgid "Automatically fi&ll header"
+msgstr "עדכון אוטומטי"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:161
+msgid "Enable fullscreen PDF presentation"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:164
+msgid "Load in &fullscreen mode"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:173
+#, fuzzy
+msgid "Header Information"
+msgstr "מידע TeX"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:185
+#, fuzzy
+msgid "&Title:"
+msgstr "כותרת:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:198
+#, fuzzy
+msgid "&Author:"
+msgstr "מחבר:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:211
+#, fuzzy
+msgid "&Subject:"
+msgstr "Subset"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:224
+#, fuzzy
+msgid "&Keywords:"
+msgstr "מילת מפתח:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:241
+#, fuzzy
+msgid "H&yperlinks"
+msgstr "ייצר היפר-קישור"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:274
 msgid "Allows link text to break across lines."
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:283
+#: src/frontends/qt4/ui/PDFSupportUi.ui:277
 #, fuzzy
-msgid "Break links over lines"
+msgid "B&reak links over lines"
 msgstr "&שבור שורות ארוכות"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:290
-msgid "No frames around links"
+#: src/frontends/qt4/ui/PDFSupportUi.ui:284
+msgid "No &frames around links"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:300
+#: src/frontends/qt4/ui/PDFSupportUi.ui:294
 #, fuzzy
-msgid "Color links"
+msgid "C&olor links"
 msgstr "צבעים"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:307
-#: src/frontends/qt4/ui/PDFSupportUi.ui:317
+#: src/frontends/qt4/ui/PDFSupportUi.ui:301
+#: src/frontends/qt4/ui/PDFSupportUi.ui:311
 msgid "Adds \"backlink\" text to the end of each item in the bibliography"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:310
-msgid "&Bibliographical backreferences"
+#: src/frontends/qt4/ui/PDFSupportUi.ui:304
+msgid "B&ibliographical backreferences"
 msgstr ""
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:320
+#: src/frontends/qt4/ui/PDFSupportUi.ui:314
 #, fuzzy
 msgid "Backreference by pa&ge number"
 msgstr "<הפניה> בעמוד <עמוד>"
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:337
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "סימניות"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:349
+#, fuzzy
+msgid "G&enerate Bookmarks"
+msgstr "מחק סמניות"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:370
+#, fuzzy
+msgid "&Open bookmarks"
+msgstr "שמור סמנייה"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:390
+#, fuzzy
+msgid "Number of levels"
+msgstr "מספר עותקים"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:410
+#, fuzzy
+msgid "&Numbered bookmarks"
+msgstr "נוסחה ממוספרת"
+
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
 msgstr "שנה..."
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:25
+#, fuzzy
+msgid "In Math"
+msgstr "מתמטיקה"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:40
+msgid ""
+"Show the grey inline completion behind the cursor in math mode after the "
+"delay."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:43
+#, fuzzy
+msgid "Automatic in&line completion"
+msgstr "&בתוך השורה"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:50
+msgid "Show the popup in math mode after the delay."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:53
+#, fuzzy
+msgid "Automatic p&opup"
+msgstr "עדכון אוטומטי"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:63
+#, fuzzy
+msgid "In Text"
+msgstr "טקסט רגיל"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:78
+msgid ""
+"Show the grey inline completion behind the cursor in text mode after the "
+"delay."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:81
+#, fuzzy
+msgid "Automatic &inline completion"
+msgstr "&בתוך השורה"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:88
+msgid "Show the popup after the set delay in text mode."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:91
+#, fuzzy
+msgid "Automatic &popup"
+msgstr "עדכון אוטומטי"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:98
+msgid ""
+"Show a small triangle on the cursor if a completion is available in text "
+"mode."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:101
+msgid "Cursor i&ndicator"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:111
+#: lib/layouts/hollywood.layout:280
+msgid "General"
+msgstr "כללי"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:134
+msgid ""
+"After the cursor has not moved for this time, the inline completion is shown "
+"if it is available."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:147
+#, fuzzy
+msgid "s inline completion dela&y"
+msgstr "&בתוך השורה"
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:180
+msgid ""
+"After the cursor has not moved for this time, the completion popup is shown "
+"if it is available."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:193
+msgid "s popup d&elay"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:218
+msgid ""
+"When the TAB completion is not unique, there won't be a delay of the popup. "
+"It will be shown right away."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:221
+msgid "Sho&w popup without delay for non-unique completions"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:228
+msgid "Long completions are cut-off and shown with \"...\"."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:231
+msgid "&Use \"...\" to shorten long completions"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
@@ -2064,11 +2266,6 @@ msgstr "מפורמט:"
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
 msgstr "לפורמט:"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
-msgid "A&dd"
-msgstr "הוסף"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 msgid "&Modify"
@@ -2126,6 +2323,63 @@ msgstr "הצג תמונות:"
 msgid "Instant &Preview:"
 msgstr "תצוגה מקדימה של תמונות:"
 
+#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:1889
+#, fuzzy
+msgid "Editing"
+msgstr "יוצא."
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:51
+msgid "Cursor follows &scrollbar"
+msgstr "הסמן עוקב אחרי פס הגלילה"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:58
+#, fuzzy
+msgid "Sort &environments alphabetically"
+msgstr "סדר תוויות בסדר אלפאביתי"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:65
+msgid "&Group environments by their category"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:73
+msgid "Edit Math Macros inline with a box around"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:78
+msgid "Edit Math Macros inline with the name in the status bar"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:83
+msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:94
+msgid "Fullscreen"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:112
+msgid "&Limit text width"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:143
+msgid "Screen us&ed (pixels):"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:169
+#, fuzzy
+msgid "Toggle tabba&r"
+msgstr "הצג/הסתר סרגל טבלה"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:176
+#, fuzzy
+msgid "To&ggle scrollbar"
+msgstr "הצג/הסתר סרגל מתמטיקה"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:191
+#, fuzzy
+msgid "T&oggle toolbars"
+msgstr "הצג/הסתר סרגל מתמטיקה"
+
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
 #, fuzzy
 msgid "&New..."
@@ -2136,31 +2390,31 @@ msgstr "&חדש:"
 msgid "S&hort Name:"
 msgstr "&מיין בתור:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:82
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
 msgid "Vector graphi&cs format"
 msgstr "פ&ורמט ציורי וקטורים"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:99
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:102
 msgid "&Document format"
 msgstr "&פורמט מסמך"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:106
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "&Viewer:"
 msgstr "&תוכנת הצגה:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:122
 msgid "Ed&itor:"
 msgstr "&עורך:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:129
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "S&hortcut:"
 msgstr "&קיצור דרך:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:139
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
 msgid "E&xtension:"
 msgstr "&סיומת:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 #, fuzzy
 msgid "Co&pier:"
 msgstr "&מתעתק:"
@@ -2177,191 +2431,155 @@ msgstr "שמך"
 msgid "Your E-mail address"
 msgstr "כתובת הדוא\"ל שלך"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:19
+#: src/frontends/qt4/ui/PrefInputUi.ui:25
 msgid "Keyboard"
 msgstr "מקלדת"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:31
+#: src/frontends/qt4/ui/PrefInputUi.ui:43
 msgid "Use &keyboard map"
 msgstr "השתמש בפריסת מקלדת"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:44
+#: src/frontends/qt4/ui/PrefInputUi.ui:56
 msgid "&First:"
 msgstr "ראשונה:"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:64
+#: src/frontends/qt4/ui/PrefInputUi.ui:76
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:57
 msgid "Br&owse..."
 msgstr "עיין..."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:77
+#: src/frontends/qt4/ui/PrefInputUi.ui:89
 msgid "S&econd:"
 msgstr "שנייה:"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:97 src/frontends/qt4/ui/PrefUi.ui:378
-msgid "Bro&wse..."
+#: src/frontends/qt4/ui/PrefInputUi.ui:109
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:66
+msgid "B&rowse..."
 msgstr "עיון..."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:110
-#, fuzzy
-msgid "Completion"
-msgstr "כותרת"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:119
-#, fuzzy
-msgid "In Text"
-msgstr "טקסט רגיל"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:128
-msgid ""
-"Show the grey inline completion behind the cursor in text mode after the "
-"delay."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:131
-#: src/frontends/qt4/ui/PrefInputUi.ui:163
-msgid "Automatic inline completion"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:138
-msgid "Show the popup after the set delay in text mode."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:141
-#: src/frontends/qt4/ui/PrefInputUi.ui:173
-#, fuzzy
-msgid "Automatic popup"
-msgstr "עדכון אוטומטי"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:151
-#, fuzzy
-msgid "In Math"
-msgstr "מתמטיקה"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:160
-msgid ""
-"Show the grey inline completion behind the cursor in math mode after the "
-"delay."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:170
-msgid "Show the popup in math mode after the delay."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:183 lib/layouts/hollywood.layout:280
-msgid "General"
-msgstr "כללי"
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:191
-msgid ""
-"After the cursor has not moved for this time, the inline completion is shown "
-"if it is available."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:204
-msgid "s inline completion delay"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:228
-msgid ""
-"After the cursor has not moved for this time, the completion popup is shown "
-"if it is available."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:241
-msgid "s popup delay"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:263
-msgid ""
-"When the TAB completion is not unique, there won't be a delay of the popup. "
-"It will be shown right away."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:266
-msgid "Show popup without delay for non-unique completions"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:273
-msgid "Long completions are cut-off and shown with \"...\"."
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:276
-msgid "Use \"...\" to shorten long completions"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefInputUi.ui:289
+#: src/frontends/qt4/ui/PrefInputUi.ui:122
 #, fuzzy
 msgid "Mouse"
 msgstr "יותר"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:301
-msgid "Wheel scrolling speed:"
+#: src/frontends/qt4/ui/PrefInputUi.ui:140
+msgid "&Wheel scrolling speed:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:311
+#: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:25
-msgid "Use b&abel"
-msgstr "השתמש &ב- Babel"
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:28
+#, fuzzy
+msgid "Right-to-left language support"
+msgstr "&תמיכה בשפות הנכתבות מימין לשמאל"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:38
-msgid "Language pac&kage:"
-msgstr "חבילת שפה:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:67
-msgid "Mark &foreign languages"
-msgstr "סמן &שפות זרות"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:74
-msgid "&Default language:"
-msgstr "שפת ברירת המחדל:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:84
-msgid "Command s&tart:"
-msgstr "פקודת התחלה:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:97
-msgid "Command e&nd:"
-msgstr "פקודת סיום:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:107
-msgid "&Global"
-msgstr "&גלובלי"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:127
-msgid "Auto &end"
-msgstr "&סיים אוטומטית"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:134
-msgid "Auto &begin"
-msgstr "התחל אוטומטית"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:141 src/LyXRC.cpp:2904
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2971
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "בחר כדי לאפשר תמיכה בשפות הנכתבות מימין לשמאל."
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:144
-msgid "&Right-to-left language support"
-msgstr "&תמיכה בשפות הנכתבות מימין לשמאל"
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:49
+msgid "Enable &RTL support"
+msgstr ""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:170
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:77
 #, fuzzy
 msgid "Cursor movement:"
 msgstr "הערה"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:180
-msgid "Logical"
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:87
+#, fuzzy
+msgid "&Logical"
+msgstr "&טבלה ארוכה"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:97
+msgid "&Visual"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:190
-msgid "Visual"
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:109
+msgid "Check to highlight foreign languages visually in the work area"
 msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:112
+msgid "Mark &foreign languages"
+msgstr "סמן &שפות זרות"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:135
+#, fuzzy
+msgid "Select the default language of your documents"
+msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:145
+#, fuzzy
+msgid "The LaTeX command that starts a switch to a foreign language"
+msgstr "פקודת ה- LaTeX לשינוי מקומי של השפה."
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:152
+msgid "Enter the command to load the language package (default: babel)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:159
+#, fuzzy
+msgid "The LaTeX command that ends a switch to a foreign language"
+msgstr "פקודת ה- LaTeX לשינוי מקומי של השפה."
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:179
+msgid "&Default language:"
+msgstr "שפת ברירת המחדל:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:189
+msgid "Language pac&kage:"
+msgstr "חבילת שפה:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:199
+msgid "Command s&tart:"
+msgstr "פקודת התחלה:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:209
+msgid "Command e&nd:"
+msgstr "פקודת סיום:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:219
+msgid ""
+"Check to pass the language globally (to the document class), not locally (to "
+"the language package)"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:222
+msgid "&Global"
+msgstr "&גלובלי"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:229
+msgid ""
+"If checked, the document language is not explicitely set by a language "
+"switch command"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:232
+msgid "Auto &begin"
+msgstr "התחל אוטומטית"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:239
+msgid ""
+"If checked, the document language is not explicitely closed by a language "
+"switch command"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:242
+msgid "Auto &end"
+msgstr "&סיים אוטומטית"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:249
+msgid "Use the babel package for multilingual support"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:252
+msgid "Use b&abel"
+msgstr "השתמש &ב- Babel"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:25
 msgid "Set class options to default on class change"
@@ -2500,7 +2718,7 @@ msgstr "תיקייה זמנית:"
 msgid "&PATH prefix:"
 msgstr "קידומת נתיב:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2598
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2661
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -2659,67 +2877,67 @@ msgstr "מדפסת ברירת מחדל:"
 msgid "Printer co&mmand:"
 msgstr "פקודת הדפסה:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:66
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sa&ns Serif:"
 msgstr "נטול תגים:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:101
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
 msgstr "מכונת כתיבה:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:160
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
 msgstr "DPI של המסך:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:177
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:186
 msgid "&Zoom %:"
 msgstr "הגדלה (%):"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:214
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:223
 msgid "Font Sizes"
 msgstr "גדלי גופן"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:253
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
 msgid "Larger:"
 msgstr "גדול יותר:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:263
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
 msgid "Largest:"
 msgstr "גדול אף יותר:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:276
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:285
 msgid "Huge:"
 msgstr "ענק:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:286
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
 msgid "Hugest:"
 msgstr "יותר ענק:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:296
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
 msgid "Smallest:"
 msgstr "קטן אף יותר:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:306
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
 msgid "Smaller:"
 msgstr "קטן יותר:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:316
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
 msgid "Small:"
 msgstr "קטן:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:326
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
 msgid "Normal:"
 msgstr "רגיל:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:336
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
 msgid "Tiny:"
 msgstr "זעיר:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:346
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
 msgid "Large:"
 msgstr "גדול:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:359
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 #, fuzzy
 msgid ""
 "Checking this improves performance, but might decrease the on-screen quality "
@@ -2727,7 +2945,7 @@ msgid ""
 msgstr ""
 "אפשרות זו משפרת את הביצועים, אך עלולה להפחית את ההצגה של גופנים על המסך"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:362
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "Use Pixmap Cache to speed up font rendering"
 msgstr ""
 
@@ -2738,10 +2956,6 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
 msgid "&Bind file:"
 msgstr "קובץ קשירה:"
-
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:66
-msgid "B&rowse..."
-msgstr "עיון..."
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
 #, fuzzy
@@ -2806,97 +3020,58 @@ msgid "Load opened files from last session"
 msgstr "פתח מסמכים מהפעלה קודמת"
 
 #: src/frontends/qt4/ui/PrefUi.ui:78
-msgid "Fullscreen"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:96
-msgid "&Limit text width"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:127
-msgid "Screen us&ed (pixels):"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:153
-#, fuzzy
-msgid "Toggle tabba&r"
-msgstr "הצג/הסתר סרגל טבלה"
-
-#: src/frontends/qt4/ui/PrefUi.ui:160
-#, fuzzy
-msgid "To&ggle scrollbar"
-msgstr "הצג/הסתר סרגל מתמטיקה"
-
-#: src/frontends/qt4/ui/PrefUi.ui:175
-#, fuzzy
-msgid "T&oggle toolbars"
-msgstr "הצג/הסתר סרגל מתמטיקה"
-
-#: src/frontends/qt4/ui/PrefUi.ui:185
-#, fuzzy
-msgid "Editing"
-msgstr "יוצא."
-
-#: src/frontends/qt4/ui/PrefUi.ui:203
-msgid "Cursor follows &scrollbar"
-msgstr "הסמן עוקב אחרי פס הגלילה"
-
-#: src/frontends/qt4/ui/PrefUi.ui:210
-#, fuzzy
-msgid "Sort &Environments alphabetically"
-msgstr "סדר תוויות בסדר אלפאביתי"
-
-#: src/frontends/qt4/ui/PrefUi.ui:218
-msgid "Edit Math Macros inline with a box around"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:223
-msgid "Edit Math Macros inline with the name in the status bar"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:228
-msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefUi.ui:239
 msgid "Documents"
 msgstr "מסמכים"
 
-#: src/frontends/qt4/ui/PrefUi.ui:262
+#: src/frontends/qt4/ui/PrefUi.ui:101
 msgid "&Maximum last files:"
 msgstr "מספר קבצים אחרונים:"
 
 # אני רושם כל בגלל בעיות בכתיבה מימין לשמאל
-#: src/frontends/qt4/ui/PrefUi.ui:307
+#: src/frontends/qt4/ui/PrefUi.ui:146
 msgid "minutes"
 msgstr "כל"
 
-#: src/frontends/qt4/ui/PrefUi.ui:324
+#: src/frontends/qt4/ui/PrefUi.ui:163
 #, fuzzy
 msgid "B&ackup documents, every"
 msgstr "גבה מסמכים"
 
-#: src/frontends/qt4/ui/PrefUi.ui:347
+#: src/frontends/qt4/ui/PrefUi.ui:170
+#, fuzzy
+msgid "Open documents in &tabs"
+msgstr "פתח מסמך"
+
+#: src/frontends/qt4/ui/PrefUi.ui:177
+#, fuzzy
+msgid "Use &bundled format for new documents"
+msgstr "לא יכול לקרוא את המסמך"
+
+#: src/frontends/qt4/ui/PrefUi.ui:200
 #, fuzzy
 msgid "Automatic help"
 msgstr "עדכון אוטומטי"
 
-#: src/frontends/qt4/ui/PrefUi.ui:365
+#: src/frontends/qt4/ui/PrefUi.ui:218
 msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:368
+#: src/frontends/qt4/ui/PrefUi.ui:221
 msgid "Enable &tool tips in main work area"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:388
+#: src/frontends/qt4/ui/PrefUi.ui:231
+msgid "Bro&wse..."
+msgstr "עיון..."
+
+#: src/frontends/qt4/ui/PrefUi.ui:241
 msgid "&User interface file:"
 msgstr "קובץ ממשק משתמש:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:689
-#: src/frontends/qt4/GuiView.cpp:1603
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:692
+#: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Save"
 msgstr "שמור"
 
@@ -3097,7 +3272,7 @@ msgstr "&נקה"
 msgid "Function:"
 msgstr "פונקציות"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:68 src/frontends/qt4/GuiPrefs.cpp:1904
+#: src/frontends/qt4/ui/ShortcutUi.ui:68 src/frontends/qt4/GuiPrefs.cpp:1967
 #, fuzzy
 msgid "Shortcut"
 msgstr "&קיצור דרך:"
@@ -3190,7 +3365,7 @@ msgid "Horizontal alignment in column"
 msgstr "יישור אופקי בעמודה"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137 src/frontends/qt4/GuiParagraph.cpp:91
-#: src/frontends/qt4/GuiTabular.cpp:708
+#: src/frontends/qt4/GuiTabular.cpp:679
 msgid "Justified"
 msgstr "מיושר לשני הכיוונים"
 
@@ -3344,7 +3519,7 @@ msgstr "חזור על שורה זו ככותרת בכל עמוד מלבד הרא
 
 #: src/frontends/qt4/ui/TabularUi.ui:905 src/frontends/qt4/ui/TabularUi.ui:918
 #: src/frontends/qt4/ui/TabularUi.ui:928 src/frontends/qt4/ui/TabularUi.ui:938
-#: src/frontends/qt4/GuiView.cpp:1733
+#: src/frontends/qt4/GuiView.cpp:1768
 msgid "on"
 msgstr "פועל"
 
@@ -3543,29 +3718,9 @@ msgstr "החלף בין תוכן עניינים, רשימת איורים או ר
 msgid "Adjust the depth of the navigation tree"
 msgstr "התאם את העומק של עץ הניווט"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:28
-msgid "&Spacing:"
-msgstr "&מרווח:"
-
-#: src/frontends/qt4/ui/VSpaceUi.ui:38
-msgid "&Value:"
-msgstr "&ערך:"
-
-#: src/frontends/qt4/ui/VSpaceUi.ui:51
-msgid "&Protect:"
-msgstr "מו&גן:"
-
 #: src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Insert the spacing even after a page break"
 msgstr "הכנס את המרווח גם אחרי שבירת עמוד"
-
-#: src/frontends/qt4/ui/VSpaceUi.ui:74
-msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "ערך מותאם אישית. דורש סוג מרווח \"מותאם אישית\""
-
-#: src/frontends/qt4/ui/VSpaceUi.ui:81
-msgid "Supported spacing types"
-msgstr "סוגי מרווחים נתמכים"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:85
 msgid "DefSkip"
@@ -3671,7 +3826,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:180
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "רגיל"
 
@@ -4060,7 +4215,7 @@ msgstr "ביבליוגרפיה"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:399
 #: lib/layouts/ijmpc.layout:323 lib/layouts/ijmpd.layout:334
 #: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
-#: src/rowpainter.cpp:450
+#: src/rowpainter.cpp:452
 msgid "Appendix"
 msgstr "נספח"
 
@@ -4234,7 +4389,7 @@ msgid "Acknowledgements."
 msgstr "הכרת תודות."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
-#: src/frontends/qt4/GuiPrefs.cpp:491
+#: src/frontends/qt4/GuiPrefs.cpp:520
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -4338,10 +4493,10 @@ msgstr ""
 msgid "[Acknowledgements]"
 msgstr ""
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1277
-#: src/frontends/qt4/GuiDocument.cpp:1287
-#: src/frontends/qt4/GuiDocument.cpp:1327
-#: src/frontends/qt4/GuiDocument.cpp:1346
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1331
+#: src/frontends/qt4/GuiDocument.cpp:1341
+#: src/frontends/qt4/GuiDocument.cpp:1381
+#: src/frontends/qt4/GuiDocument.cpp:1400
 msgid "and"
 msgstr ""
 
@@ -8791,33 +8946,34 @@ msgid "Subscript|u"
 msgstr "כתב תחתי"
 
 #: lib/ui/classic.ui:244
-msgid "Horizontal Fill|H"
-msgstr "מילוי אופקי"
-
-#: lib/ui/classic.ui:245
 msgid "Hyphenation Point|P"
 msgstr "נקודת מיקוף"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:356
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:356
 #, fuzzy
 msgid "Protected Hyphen|y"
 msgstr "רווח מוגן"
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:374
 msgid "Ligature Break|k"
 msgstr "שבירת צירוף אותיות"
 
-#: lib/ui/classic.ui:248
+#: lib/ui/classic.ui:247
 msgid "Protected Space|r"
 msgstr "רווח מוגן"
 
-#: lib/ui/classic.ui:249 lib/ui/stdmenus.inc:367
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:367
 msgid "Inter-word Space|w"
 msgstr "רווח בין מילים"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:368
+#: lib/ui/classic.ui:249 lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "רווח דק"
+
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:369
+#, fuzzy
+msgid "Horizontal Space...|o"
+msgstr "רווח אנכי..."
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
@@ -8860,7 +9016,7 @@ msgstr "מפריד תפריטים"
 msgid "Horizontal Line"
 msgstr "קו אופקי"
 
-#: lib/ui/classic.ui:261 src/insets/InsetNewpage.h:61
+#: lib/ui/classic.ui:261 src/insets/InsetNewpage.h:66
 msgid "Page Break"
 msgstr "עמוד חדש"
 
@@ -9224,22 +9380,23 @@ msgstr "סגור חלון"
 msgid "Redo|R"
 msgstr "בצע שוב"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:944
-#: src/mathed/InsetMathNest.cpp:470
+#: lib/ui/stdmenus.inc:88 lib/ui/stdmenus.inc:563 lib/ui/stdtoolbars.inc:66
+#: src/Text3.cpp:944 src/mathed/InsetMathNest.cpp:536
 msgid "Cut"
 msgstr "גזור"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:949
-#: src/mathed/InsetMathNest.cpp:478
+#: lib/ui/stdmenus.inc:89 lib/ui/stdmenus.inc:564 lib/ui/stdtoolbars.inc:67
+#: src/Text3.cpp:949 src/mathed/InsetMathNest.cpp:544
 msgid "Copy"
 msgstr "העתק"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:904
-#: src/mathed/InsetMathGrid.cpp:1247 src/mathed/InsetMathNest.cpp:450
+#: lib/ui/stdmenus.inc:90 lib/ui/stdmenus.inc:565 lib/ui/stdtoolbars.inc:68
+#: src/Text3.cpp:904 src/mathed/InsetMathGrid.cpp:1234
+#: src/mathed/InsetMathNest.cpp:516
 msgid "Paste"
 msgstr "הדבק"
 
-#: lib/ui/stdmenus.inc:91
+#: lib/ui/stdmenus.inc:91 lib/ui/stdmenus.inc:566
 msgid "Paste Recent|e"
 msgstr "הדבקות אחרונות"
 
@@ -9251,19 +9408,19 @@ msgstr "הדבקה מיוחדת"
 msgid "Select All"
 msgstr "בחר הכל"
 
-#: lib/ui/stdmenus.inc:98
+#: lib/ui/stdmenus.inc:98 lib/ui/stdmenus.inc:570
 msgid "Move Paragraph Up|o"
 msgstr "הזז פסקה למעלה"
 
-#: lib/ui/stdmenus.inc:99
+#: lib/ui/stdmenus.inc:99 lib/ui/stdmenus.inc:571
 msgid "Move Paragraph Down|v"
 msgstr "הזז פסקה למטה"
 
-#: lib/ui/stdmenus.inc:101
+#: lib/ui/stdmenus.inc:101 lib/ui/stdmenus.inc:574
 msgid "Text Style|S"
 msgstr "סגנון טקסט"
 
-#: lib/ui/stdmenus.inc:102
+#: lib/ui/stdmenus.inc:102 lib/ui/stdmenus.inc:575
 msgid "Paragraph Settings...|P"
 msgstr "הגדרות פסקה...|פ"
 
@@ -9388,17 +9545,9 @@ msgstr "קו ימיני"
 msgid "Copy Row|o"
 msgstr "העתק טור"
 
-#: lib/ui/stdmenus.inc:182
-msgid "Swap Rows|S"
-msgstr "החלף טורים"
-
 #: lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "העתק עמודה"
-
-#: lib/ui/stdmenus.inc:187
-msgid "Swap Columns|w"
-msgstr "החלף עמודות"
 
 #: lib/ui/stdmenus.inc:191
 #, fuzzy
@@ -9455,43 +9604,43 @@ msgstr "מחק קו משמאל"
 msgid "Delete Line to Right"
 msgstr "מחק קו מימין"
 
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:170
+#: lib/ui/stdmenus.inc:216 lib/ui/stdmenus.inc:581 lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Append Parameter"
 msgstr "פרמטרים נוספים"
 
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:169
+#: lib/ui/stdmenus.inc:217 lib/ui/stdmenus.inc:582 lib/ui/stdtoolbars.inc:169
 #, fuzzy
 msgid "Remove Last Parameter"
 msgstr "רישום קוד"
 
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:172
+#: lib/ui/stdmenus.inc:219 lib/ui/stdmenus.inc:584 lib/ui/stdtoolbars.inc:172
 msgid "Make First Non-Optional into Optional Parameter"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:173
+#: lib/ui/stdmenus.inc:220 lib/ui/stdmenus.inc:585 lib/ui/stdtoolbars.inc:173
 msgid "Make Last Optional into Non-Optional Parameter"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:176
+#: lib/ui/stdmenus.inc:221 lib/ui/stdmenus.inc:586 lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Insert Optional Parameter"
 msgstr "רישום קוד"
 
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:175
+#: lib/ui/stdmenus.inc:222 lib/ui/stdmenus.inc:587 lib/ui/stdtoolbars.inc:175
 #, fuzzy
 msgid "Remove Optional Parameter"
 msgstr "תוסף \"ארגומנט רשות\" פתוח"
 
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:179
+#: lib/ui/stdmenus.inc:224 lib/ui/stdmenus.inc:589 lib/ui/stdtoolbars.inc:179
 msgid "Append Parameter Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:180
+#: lib/ui/stdmenus.inc:225 lib/ui/stdmenus.inc:590 lib/ui/stdtoolbars.inc:180
 msgid "Append Optional Parameter Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:178
+#: lib/ui/stdmenus.inc:226 lib/ui/stdmenus.inc:591 lib/ui/stdtoolbars.inc:178
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
@@ -9679,10 +9828,6 @@ msgstr "סמלים פונטיים"
 #: lib/ui/stdmenus.inc:366
 msgid "Protected Space|P"
 msgstr "רווח מוגן"
-
-#: lib/ui/stdmenus.inc:369
-msgid "Horizontal Fill|F"
-msgstr "מילוי אופקי"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Horizontal Line|L"
@@ -9872,6 +10017,20 @@ msgstr "לך לתווית"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Go back to Reference|G"
+msgstr ""
+
+#: lib/ui/stdmenus.inc:568
+#, fuzzy
+msgid "Jump to Saved Bookmark|B"
+msgstr "שמור סמנייה 1|ש"
+
+#: lib/ui/stdmenus.inc:573
+#, fuzzy
+msgid "Apply Last Text Style|A"
+msgstr "סגנון טקסט"
+
+#: lib/ui/stdmenus.inc:577
+msgid "Fullscreen Mode"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:57
@@ -12513,7 +12672,7 @@ msgstr ""
 "התאריך של היום.\n"
 "קרא את 'info date' בשביל מידע נוסף.\n"
 
-#: src/BiblioInfo.cpp:122 src/frontends/qt4/GuiDocument.cpp:1276
+#: src/BiblioInfo.cpp:122 src/frontends/qt4/GuiDocument.cpp:1330
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s ו-  %2$s"
@@ -12536,57 +12695,57 @@ msgstr "הוסף את הביבליוגרפיה לתוכן העניינים"
 msgid "before"
 msgstr "לפני"
 
-#: src/Buffer.cpp:225
+#: src/Buffer.cpp:228
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:226
+#: src/Buffer.cpp:229
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "לא יכול להסיר את התיקייה הזמנית %1$s"
 
-#: src/Buffer.cpp:273
+#: src/Buffer.cpp:276
 msgid "Could not remove temporary directory"
 msgstr "לא יכול להסיר תיקייה זמנית"
 
-#: src/Buffer.cpp:274
+#: src/Buffer.cpp:277
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "לא יכול להסיר את התיקייה הזמנית %1$s"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:508
 msgid "Unknown document class"
 msgstr "מחלקת מסמך לא ידועה"
 
-#: src/Buffer.cpp:505
+#: src/Buffer.cpp:509
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "משתמש בברירת המחדל עבור מחלקת המסמך, מכיוון שהמחלקה %1$s לא ידועה."
 
-#: src/Buffer.cpp:509 src/Text.cpp:284
+#: src/Buffer.cpp:513 src/Text.cpp:262
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
 
-#: src/Buffer.cpp:513 src/Buffer.cpp:520 src/Buffer.cpp:542
+#: src/Buffer.cpp:517 src/Buffer.cpp:524 src/Buffer.cpp:546
 msgid "Document header error"
 msgstr ""
 
-#: src/Buffer.cpp:519
+#: src/Buffer.cpp:523
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:541
+#: src/Buffer.cpp:545
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:557 src/Buffer.cpp:563 src/BufferView.cpp:1086
+#: src/Buffer.cpp:561 src/Buffer.cpp:567 src/BufferView.cpp:1086
 #: src/BufferView.cpp:1092
 msgid "Changes not shown in LaTeX output"
 msgstr "השינויים לא יוצגו בפלט ה- LaTeX"
 
-#: src/Buffer.cpp:558 src/BufferView.cpp:1087
+#: src/Buffer.cpp:562 src/BufferView.cpp:1087
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12598,7 +12757,7 @@ msgstr ""
 "אנא התקן חבילות אלו או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת ה- "
 "LaTeX."
 
-#: src/Buffer.cpp:564 src/BufferView.cpp:1093
+#: src/Buffer.cpp:568 src/BufferView.cpp:1093
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12610,131 +12769,145 @@ msgstr ""
 "אנא התקן את שתי החבילות או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת "
 "ה- LaTeX."
 
-#: src/Buffer.cpp:719 src/Buffer.cpp:728
+#: src/Buffer.cpp:585
+#, fuzzy
+msgid "Failed to read embedded files"
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/Buffer.cpp:586
+msgid ""
+"Due to most likely a bug, LyX failed to locate all embedded file. If you "
+"unzip the LyX file, you should be able to see and open content.lyx which is "
+"your main text. You may also be able to recover some embedded files. Please "
+"report this bug to the lyx-devel mailing list."
+msgstr ""
+
+#: src/Buffer.cpp:735 src/Buffer.cpp:744
 msgid "Document could not be read"
 msgstr "מסמך לא יכול להקרא"
 
-#: src/Buffer.cpp:720 src/Buffer.cpp:729
+#: src/Buffer.cpp:736 src/Buffer.cpp:745
 #, c-format
 msgid "%1$s could not be read."
 msgstr "לא יכול לקרוא את הקובץ %1$s."
 
-#: src/Buffer.cpp:737 src/Buffer.cpp:820
+#: src/Buffer.cpp:753 src/Buffer.cpp:836
 msgid "Document format failure"
 msgstr "שגיאה בפורמט המסמך"
 
-#: src/Buffer.cpp:738
+#: src/Buffer.cpp:754
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s הוא לא מסמך LyX."
 
-#: src/Buffer.cpp:775
+#: src/Buffer.cpp:791
 msgid "Conversion failed"
 msgstr "המרה נכשלה"
 
-#: src/Buffer.cpp:776
+#: src/Buffer.cpp:792
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr "%1$s הוא מגרסה שונה של LyX, אך לא ניתן היה ליצור קובץ זמני לצורך המרה."
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:801
 msgid "Conversion script not found"
 msgstr "תסריט המרה לא נמצא"
 
-#: src/Buffer.cpp:786
+#: src/Buffer.cpp:802
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr "%1$s הוא מגרסה שונה של LyX, אבל תסריט ההמרה lyx2lyx לא נמצא."
 
-#: src/Buffer.cpp:805
+#: src/Buffer.cpp:821
 msgid "Conversion script failed"
 msgstr "תסריט ההמרה נכשל"
 
-#: src/Buffer.cpp:806
+#: src/Buffer.cpp:822
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr "%1$s הוא מגרסה שונה של LyX, אך התסריט lyx2lyx נכשל בהמרת הקובץ."
 
-#: src/Buffer.cpp:821
+#: src/Buffer.cpp:837
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s הסתיים באופן לא צפוי, דבר המצביע על כך שהוא פגום."
 
-#: src/Buffer.cpp:854
+#: src/Buffer.cpp:870
 msgid "Backup failure"
 msgstr "כשלון בגיבוי"
 
-#: src/Buffer.cpp:855
+#: src/Buffer.cpp:871
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:865
+#: src/Buffer.cpp:881
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr "המסמך %1$s שונה באופן חיצוני. האם אתה בטוח שאתה רוצה להחליף אותו?"
 
-#: src/Buffer.cpp:867
+#: src/Buffer.cpp:883
 msgid "Overwrite modified file?"
 msgstr "להחליף את הקובץ ששונה?"
 
-#: src/Buffer.cpp:868 src/EmbeddedFiles.cpp:173 src/EmbeddedFiles.cpp:235
-#: src/Exporter.cpp:49 src/LyXFunc.cpp:1014
-#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1326
-#: src/frontends/qt4/GuiView.cpp:1507
+#: src/Buffer.cpp:884 src/EmbeddedFiles.cpp:172 src/EmbeddedFiles.cpp:234
+#: src/EmbeddedFiles.cpp:293 src/Exporter.cpp:49 src/LyXFunc.cpp:1007
+#: src/frontends/qt4/GuiClipboard.cpp:277 src/frontends/qt4/GuiView.cpp:1363
+#: src/frontends/qt4/GuiView.cpp:1544
 msgid "&Overwrite"
 msgstr "החלף"
 
-#: src/Buffer.cpp:899
+#: src/Buffer.cpp:915
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "שומר מסמך %1$s..."
 
-#: src/Buffer.cpp:912
-#, fuzzy
-msgid " could not write file!."
-msgstr "לא יכול לקרוא את הקובץ"
-
-#: src/Buffer.cpp:919
-msgid " writing embedded files!."
-msgstr ""
-
-#: src/Buffer.cpp:923
-#, fuzzy
-msgid " could not write embedded files!."
-msgstr "לא יכול לקרוא את הקובץ"
-
 #: src/Buffer.cpp:928
+#, fuzzy
+msgid " could not write file!"
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/Buffer.cpp:935
+#, fuzzy
+msgid " writing embedded files."
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/Buffer.cpp:939
+#, fuzzy
+msgid " could not write embedded files!"
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/Buffer.cpp:944
 msgid " done."
 msgstr "בוצע."
 
-#: src/Buffer.cpp:1007
+#: src/Buffer.cpp:1023
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1007
+#: src/Buffer.cpp:1023
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1029
+#: src/Buffer.cpp:1045
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1032
+#: src/Buffer.cpp:1048
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -12743,85 +12916,85 @@ msgstr ""
 "כנראה לא ניתן להציג חלק מהתוים במסמף בקידוד הנבחר.\n"
 "שינוי הקידוד ל- utf8 עשוי לעזור."
 
-#: src/Buffer.cpp:1039
+#: src/Buffer.cpp:1055
 msgid "iconv conversion failed"
 msgstr "המרת iconv נכשלה"
 
-#: src/Buffer.cpp:1044
+#: src/Buffer.cpp:1060
 msgid "conversion failed"
 msgstr "המרה נכשלה"
 
-#: src/Buffer.cpp:1313
+#: src/Buffer.cpp:1329
 msgid "Running chktex..."
 msgstr "מריץ chktex..."
 
-#: src/Buffer.cpp:1326
+#: src/Buffer.cpp:1342
 msgid "chktex failure"
 msgstr "chktex נכשל"
 
-#: src/Buffer.cpp:1327
+#: src/Buffer.cpp:1343
 msgid "Could not run chktex successfully."
 msgstr "לא מצליח להריץ את chktex בהצלחה."
 
-#: src/Buffer.cpp:2139
+#: src/Buffer.cpp:2102
 msgid "Preview source code"
 msgstr "תצוגה מקדימה של קוד המקור"
 
-#: src/Buffer.cpp:2151
+#: src/Buffer.cpp:2114
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "תצוגה מקדימה של קוד המקור של פסקה %1$d"
 
-#: src/Buffer.cpp:2155
+#: src/Buffer.cpp:2118
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "תצוגה מקדימה של קוד המקור מפיסקה %1$s עד לפיסקה %2$s"
 
-#: src/Buffer.cpp:2254
+#: src/Buffer.cpp:2217
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "שומר אוטומטית %1$s"
 
-#: src/Buffer.cpp:2298
+#: src/Buffer.cpp:2261
 msgid "Autosave failed!"
 msgstr "שמירה אוטומטית נכשלה!"
 
-#: src/Buffer.cpp:2321
+#: src/Buffer.cpp:2284
 msgid "Autosaving current document..."
 msgstr "שומר אוטומטית את המסמך הנוכחי..."
 
-#: src/Buffer.cpp:2369
+#: src/Buffer.cpp:2332
 msgid "Couldn't export file"
 msgstr "לא יכול לייצא קובץ"
 
-#: src/Buffer.cpp:2370
+#: src/Buffer.cpp:2333
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/Buffer.cpp:2407
+#: src/Buffer.cpp:2370
 msgid "File name error"
 msgstr "שגיאה בשם הקובץ"
 
-#: src/Buffer.cpp:2408
+#: src/Buffer.cpp:2371
 msgid "The directory path to the document cannot contain spaces."
 msgstr "כתובת התיקייה של המסמך לא יכולה להכיל רווחים."
 
-#: src/Buffer.cpp:2449
+#: src/Buffer.cpp:2412
 msgid "Document export cancelled."
 msgstr "ייצוא מסמך בוטל."
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2418
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "המסמך יוצא כ- %1$s לקובץ `%2$s'"
 
-#: src/Buffer.cpp:2461
+#: src/Buffer.cpp:2424
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "המסמך יוצא כ- %1$s"
 
-#: src/Buffer.cpp:2531
+#: src/Buffer.cpp:2494
 #, c-format
 msgid ""
 "The specified document\n"
@@ -12832,11 +13005,11 @@ msgstr ""
 "%1$s\n"
 "לא ניתן לקריאה."
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2496
 msgid "Could not read document"
 msgstr "לא יכול לקרוא את המסמך"
 
-#: src/Buffer.cpp:2543
+#: src/Buffer.cpp:2506
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12847,19 +13020,19 @@ msgstr ""
 "\n"
 "האם לשחזר את שמירת החירום?"
 
-#: src/Buffer.cpp:2546
+#: src/Buffer.cpp:2509
 msgid "Load emergency save?"
 msgstr "האם לטעון את שמירת החירום?"
 
-#: src/Buffer.cpp:2547
+#: src/Buffer.cpp:2510
 msgid "&Recover"
 msgstr "&שחזר"
 
-#: src/Buffer.cpp:2547
+#: src/Buffer.cpp:2510
 msgid "&Load Original"
 msgstr "טען &מקור"
 
-#: src/Buffer.cpp:2567
+#: src/Buffer.cpp:2530
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12870,56 +13043,56 @@ msgstr ""
 "\n"
 "לטעון את הגיבוי במקום?"
 
-#: src/Buffer.cpp:2570
+#: src/Buffer.cpp:2533
 msgid "Load backup?"
 msgstr "לטעון גיבוי?"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2534
 msgid "&Load backup"
 msgstr "טען &גיבוי"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2534
 msgid "Load &original"
 msgstr "טען &מקור"
 
-#: src/Buffer.cpp:2604
+#: src/Buffer.cpp:2567
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "האם תרצה לאחזר את המסמך %1$s מבקרת הגרסה?"
 
-#: src/Buffer.cpp:2606
+#: src/Buffer.cpp:2569
 msgid "Retrieve from version control?"
 msgstr "האם לאחזר מבקרת הגרסה?"
 
-#: src/Buffer.cpp:2607
+#: src/Buffer.cpp:2570
 msgid "&Retrieve"
 msgstr "אחזר"
 
-#: src/BufferList.cpp:218
+#: src/BufferList.cpp:220
 #, fuzzy
 msgid "No file open!"
 msgstr "אף קובץ לא נמצא!"
 
-#: src/BufferList.cpp:228
+#: src/BufferList.cpp:230
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: מנסה לשמור מסמך %1$s"
 
-#: src/BufferList.cpp:238 src/BufferList.cpp:251 src/BufferList.cpp:265
+#: src/BufferList.cpp:240 src/BufferList.cpp:253 src/BufferList.cpp:267
 #, fuzzy
 msgid "  Save seems successful. Phew.\n"
 msgstr "השמירה ככל הנראה מוצלחת."
 
-#: src/BufferList.cpp:241 src/BufferList.cpp:255
+#: src/BufferList.cpp:243 src/BufferList.cpp:257
 #, fuzzy
 msgid "  Save failed! Trying...\n"
 msgstr "שמירה נכשלה. מנסה..."
 
-#: src/BufferList.cpp:269
+#: src/BufferList.cpp:271
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "שמירה נכשלה! המסמך אבוד."
 
-#: src/BufferParams.cpp:484
+#: src/BufferParams.cpp:497
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -12936,15 +13109,15 @@ msgstr ""
 "ראה את מסמך העזרה \"התאמה אישית\" בשביל\n"
 "מידע נוסף.\n"
 
-#: src/BufferParams.cpp:490
+#: src/BufferParams.cpp:503
 msgid "Document class not available"
 msgstr "מחלקת מסמך לא זמינה"
 
-#: src/BufferParams.cpp:491
+#: src/BufferParams.cpp:504
 msgid "LyX will not be able to produce output."
 msgstr "LyX לא יוכל לייצר פלט."
 
-#: src/BufferParams.cpp:1393
+#: src/BufferParams.cpp:1429
 #, fuzzy, c-format
 msgid "The document class %1$s could not be found."
 msgstr ""
@@ -12952,12 +13125,12 @@ msgstr ""
 "%1$s\n"
 "לא ניתן לקריאה."
 
-#: src/BufferParams.cpp:1395
+#: src/BufferParams.cpp:1431
 #, fuzzy
 msgid "Class not found"
 msgstr "קובץ לא נמצא"
 
-#: src/BufferParams.cpp:1405
+#: src/BufferParams.cpp:1441 src/LyXFunc.cpp:724
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -12965,12 +13138,12 @@ msgstr ""
 "%1$s\n"
 "לא ניתן לקריאה."
 
-#: src/BufferParams.cpp:1407 src/LyXFunc.cpp:723
+#: src/BufferParams.cpp:1443 src/LyXFunc.cpp:726
 #, fuzzy
 msgid "Could not load class"
 msgstr "אין אפשרות לשנות מחלקה"
 
-#: src/BufferParams.cpp:1443
+#: src/BufferParams.cpp:1479
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -12979,17 +13152,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1447
+#: src/BufferParams.cpp:1483
 #, fuzzy
 msgid "Module not available"
 msgstr "מחלקת מסמך לא זמינה"
 
-#: src/BufferParams.cpp:1448
+#: src/BufferParams.cpp:1484
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "מחלקת מסמך לא זמינה"
 
-#: src/BufferParams.cpp:1456
+#: src/BufferParams.cpp:1492
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -12997,17 +13170,17 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1459
+#: src/BufferParams.cpp:1495
 #, fuzzy
 msgid "Package not available"
 msgstr "מחלקת מסמך לא זמינה"
 
-#: src/BufferParams.cpp:1464
+#: src/BufferParams.cpp:1500
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1465
+#: src/BufferParams.cpp:1501
 #, fuzzy
 msgid "Read Error"
 msgstr "שגיאת חיפוש"
@@ -13533,7 +13706,7 @@ msgstr "הפלט ריק"
 msgid "An empty output file was generated."
 msgstr "קובץ פלט ריק נוצר."
 
-#: src/CutAndPaste.cpp:464
+#: src/CutAndPaste.cpp:503
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -13542,85 +13715,85 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:469
+#: src/CutAndPaste.cpp:508
 msgid "Changed Layout"
 msgstr ""
 
-#: src/CutAndPaste.cpp:489
+#: src/CutAndPaste.cpp:528
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:496
+#: src/CutAndPaste.cpp:535
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "תוסף טקסט פתוח"
 
-#: src/EmbeddedFiles.cpp:158
+#: src/EmbeddedFiles.cpp:157
 #, fuzzy
 msgid "Failed to extract file"
 msgstr "בחר קובץ חיצוני"
 
-#: src/EmbeddedFiles.cpp:159
+#: src/EmbeddedFiles.cpp:158
 #, c-format
 msgid ""
 "Cannot extract file '%1$s'.\n"
 "Source file %2$s does not exist"
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:171 src/frontends/qt4/GuiClipboard.cpp:275
+#: src/EmbeddedFiles.cpp:170 src/frontends/qt4/GuiClipboard.cpp:275
 #, fuzzy
 msgid "Overwrite external file?"
 msgstr "להחליף קובץ?"
 
-#: src/EmbeddedFiles.cpp:172
+#: src/EmbeddedFiles.cpp:171
 #, fuzzy, c-format
-msgid "External file %1$s already exists, do you want to overwrite it"
+msgid "External file %1$s already exists, do you want to overwrite it?"
 msgstr ""
 "המסמך %1$s כבר קיים.\n"
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/EmbeddedFiles.cpp:184 src/EmbeddedFiles.cpp:196
-#: src/EmbeddedFiles.cpp:249
+#: src/EmbeddedFiles.cpp:183 src/EmbeddedFiles.cpp:195
+#: src/EmbeddedFiles.cpp:248 src/EmbeddedFiles.cpp:307
 #, fuzzy
 msgid "Copy file failure"
 msgstr "לא ניתן לצפות בקובץ"
 
-#: src/EmbeddedFiles.cpp:185 src/EmbeddedFiles.cpp:349
+#: src/EmbeddedFiles.cpp:184 src/EmbeddedFiles.cpp:418
 #, c-format
 msgid ""
 "Cannot create file path '%1$s'.\n"
 "Please check whether the path is writeable."
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:197 src/EmbeddedFiles.cpp:250
-#: src/EmbeddedFiles.cpp:362
+#: src/EmbeddedFiles.cpp:196 src/EmbeddedFiles.cpp:249
+#: src/EmbeddedFiles.cpp:308 src/EmbeddedFiles.cpp:431
 #, c-format
 msgid ""
 "Cannot copy file %1$s to %2$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:220
+#: src/EmbeddedFiles.cpp:219
 #, fuzzy
 msgid "Failed to embed file"
 msgstr "לא יכול לקרוא את הקובץ"
 
-#: src/EmbeddedFiles.cpp:221
+#: src/EmbeddedFiles.cpp:220
 #, c-format
 msgid ""
 "Failed to embed file %1$s.\n"
 "Please check whether this file exists and is readable."
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:233
+#: src/EmbeddedFiles.cpp:232 src/EmbeddedFiles.cpp:291
 msgid "Update embedded file?"
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:234
+#: src/EmbeddedFiles.cpp:233 src/EmbeddedFiles.cpp:292
 #, fuzzy, c-format
 msgid "Embedded file %1$s already exists, do you want to overwrite it"
 msgstr ""
@@ -13628,69 +13801,87 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/EmbeddedFiles.cpp:348 src/EmbeddedFiles.cpp:361
+#: src/EmbeddedFiles.cpp:276
+#, fuzzy
+msgid "Failed to copy embedded file"
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/EmbeddedFiles.cpp:277
+#, c-format
+msgid ""
+"Failed to embed file %1$s.\n"
+"Please check whether the source file is available"
+msgstr ""
+
+#: src/EmbeddedFiles.cpp:400 src/EmbeddedFiles.cpp:553
+#, fuzzy
+msgid "Failed to open file"
+msgstr "לא יכול לקרוא את הקובץ"
+
+#: src/EmbeddedFiles.cpp:401 src/EmbeddedFiles.cpp:554
+#: src/EmbeddedFiles.cpp:599
+#, c-format
+msgid ""
+"Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"
+msgstr ""
+
+#: src/EmbeddedFiles.cpp:417 src/EmbeddedFiles.cpp:430
 #, fuzzy
 msgid "Sync file failure"
 msgstr "chktex נכשל"
 
-#: src/EmbeddedFiles.cpp:412
+#: src/EmbeddedFiles.cpp:480
 #, c-format
 msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embeddable files are embedded.\n"
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:414
+#: src/EmbeddedFiles.cpp:482
 #, fuzzy
 msgid "Packing all files"
 msgstr "הדפס את כל הדפים"
 
-#: src/EmbeddedFiles.cpp:416
+#: src/EmbeddedFiles.cpp:484
 #, c-format
 msgid ""
 "%1$d external files are ignored.\n"
 "%2$d embedded files are extracted.\n"
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:418
+#: src/EmbeddedFiles.cpp:486
 msgid "Unpacking all files"
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:434
+#: src/EmbeddedFiles.cpp:502
 msgid "Wrong embedding status."
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:435
+#: src/EmbeddedFiles.cpp:503
 #, c-format
 msgid ""
 "File %1$s is included in more than one insets, but with different embedding "
 "status. Assuming embedding status."
 msgstr ""
 
-#: src/EmbeddedFiles.cpp:477
+#: src/EmbeddedFiles.cpp:598
 #, fuzzy
 msgid "Failed to write file"
 msgstr "להחליף קובץ?"
 
-#: src/EmbeddedFiles.cpp:478
-#, c-format
-msgid ""
-"Embedded file %1$s does not exist. Did you tamper lyx temporary directory?"
-msgstr ""
-
-#: src/EmbeddedFiles.cpp:494
+#: src/EmbeddedFiles.cpp:615
 #, fuzzy
 msgid "Save failure"
 msgstr "כשלון בגיבוי"
 
-#: src/EmbeddedFiles.cpp:495
+#: src/EmbeddedFiles.cpp:616
 #, c-format
 msgid ""
 "Cannot create file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1010
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1003
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -13701,7 +13892,7 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1013
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1006
 msgid "Overwrite file?"
 msgstr "להחליף קובץ?"
 
@@ -13723,19 +13914,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "העתקת %1$s אל %2$s נכשלה."
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:109
-#: src/frontends/qt4/GuiDocument.cpp:2113
+#: src/frontends/qt4/GuiDocument.cpp:2181
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Roman"
 msgstr "רומי"
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:110
-#: src/frontends/qt4/GuiDocument.cpp:2113
+#: src/frontends/qt4/GuiDocument.cpp:2181
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Sans Serif"
 msgstr "נטול תגים"
 
 #: src/Font.cpp:48 src/frontends/qt4/GuiCharacter.cpp:111
-#: src/frontends/qt4/GuiDocument.cpp:2113
+#: src/frontends/qt4/GuiDocument.cpp:2181
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Typewriter"
 msgstr "מכונת כתיבה"
@@ -13898,7 +14089,7 @@ msgid ""
 "2$s'."
 msgstr ""
 
-#: src/KeySequence.cpp:169
+#: src/KeySequence.cpp:167
 msgid "   options: "
 msgstr "   אפשרויות: "
 
@@ -13971,11 +14162,11 @@ msgstr "הגדר מחדש"
 msgid "&Use Default"
 msgstr "השתמש בברירת מחדל"
 
-#: src/LyX.cpp:588 src/LyX.cpp:975
+#: src/LyX.cpp:588 src/LyX.cpp:980
 msgid "&Exit LyX"
 msgstr "צא מ- LyX"
 
-#: src/LyX.cpp:732 src/frontends/qt4/GuiView.cpp:510
+#: src/LyX.cpp:732 src/frontends/qt4/GuiView.cpp:523
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -13991,44 +14182,44 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:968
+#: src/LyX.cpp:973
 msgid "Missing user LyX directory"
 msgstr "תיקיית משתמש LyX חסרה"
 
-#: src/LyX.cpp:969
+#: src/LyX.cpp:974
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:974
+#: src/LyX.cpp:979
 msgid "&Create directory"
 msgstr "צור תיקייה"
 
-#: src/LyX.cpp:976
+#: src/LyX.cpp:981
 msgid "No user LyX directory. Exiting."
 msgstr "אין תיקיית משתמש LyX. יוצא."
 
-#: src/LyX.cpp:980
+#: src/LyX.cpp:985
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: יוצר תיקייה %1$s"
 
-#: src/LyX.cpp:985
+#: src/LyX.cpp:990
 msgid "Failed to create directory. Exiting."
 msgstr "נכשל ביצירת תיקייה. יוצא."
 
-#: src/LyX.cpp:1153
+#: src/LyX.cpp:1158
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1157
+#: src/LyX.cpp:1162
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "קובע רמת דיבאג ל- %1$s"
 
-#: src/LyX.cpp:1168
+#: src/LyX.cpp:1173
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14071,55 +14262,55 @@ msgstr ""
 "\t-version        summarize version and build info\n"
 "Check the LyX man page for more details."
 
-#: src/LyX.cpp:1208 src/support/Package.cpp:560
+#: src/LyX.cpp:1213 src/support/Package.cpp:560
 msgid "No system directory"
 msgstr "No system directory"
 
-#: src/LyX.cpp:1209
+#: src/LyX.cpp:1214
 msgid "Missing directory for -sysdir switch"
 msgstr "Missing directory for -sysdir switch"
 
-#: src/LyX.cpp:1220
+#: src/LyX.cpp:1225
 msgid "No user directory"
 msgstr "No user directory"
 
-#: src/LyX.cpp:1221
+#: src/LyX.cpp:1226
 msgid "Missing directory for -userdir switch"
 msgstr "Missing directory for -userdir switch"
 
-#: src/LyX.cpp:1232
+#: src/LyX.cpp:1237
 msgid "Incomplete command"
 msgstr "Incomplete command"
 
-#: src/LyX.cpp:1233
+#: src/LyX.cpp:1238
 msgid "Missing command string after --execute switch"
 msgstr "Missing command string after --execute switch"
 
-#: src/LyX.cpp:1244
+#: src/LyX.cpp:1249
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Missing file type [eg latex, ps...] after --export switch"
 
-#: src/LyX.cpp:1257
+#: src/LyX.cpp:1262
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Missing file type [eg latex, ps...] after --import switch"
 
-#: src/LyX.cpp:1262
+#: src/LyX.cpp:1267
 msgid "Missing filename for --import"
 msgstr "Missing filename for --import"
 
-#: src/LyXFunc.cpp:111
+#: src/LyXFunc.cpp:113
 msgid "Running configure..."
 msgstr "מריץ הגדרה מחדש..."
 
-#: src/LyXFunc.cpp:121
+#: src/LyXFunc.cpp:124
 msgid "Reloading configuration..."
 msgstr "טוען מחדש הגדרות..."
 
-#: src/LyXFunc.cpp:127
+#: src/LyXFunc.cpp:130
 msgid "System reconfiguration failed"
 msgstr "הגדרת המערכת מחדש נכשלה"
 
-#: src/LyXFunc.cpp:128
+#: src/LyXFunc.cpp:131
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -14129,11 +14320,11 @@ msgstr ""
 "ברירת המחדל למחלקת טקסט בשימוש, אך ייתכן ש- LyX לא יעבוד כראוי.\n"
 "אנא הגדר מחדש שוב פעם במידת הצורך."
 
-#: src/LyXFunc.cpp:134
+#: src/LyXFunc.cpp:137
 msgid "System reconfigured"
 msgstr "תצורת המערכת הוגדרה מחדש"
 
-#: src/LyXFunc.cpp:135
+#: src/LyXFunc.cpp:138
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -14143,35 +14334,35 @@ msgstr ""
 "עליך להפעיל מחדש את LyX על מנת\n"
 "להשתמש במחלקות המסמך המעודכנות."
 
-#: src/LyXFunc.cpp:358
+#: src/LyXFunc.cpp:362
 msgid "Unknown function."
 msgstr "פונקציה לא ידועה."
 
-#: src/LyXFunc.cpp:390
+#: src/LyXFunc.cpp:394
 msgid "Nothing to do"
 msgstr "אין מה לעשות"
 
-#: src/LyXFunc.cpp:409
+#: src/LyXFunc.cpp:413
 msgid "Unknown action"
 msgstr "פעולה לא ידועה"
 
-#: src/LyXFunc.cpp:415 src/LyXFunc.cpp:672
+#: src/LyXFunc.cpp:419 src/LyXFunc.cpp:675
 msgid "Command disabled"
 msgstr "פקודה לא פעילה"
 
-#: src/LyXFunc.cpp:422
+#: src/LyXFunc.cpp:426
 msgid "Command not allowed without any document open"
 msgstr "הפקודה איננה אפשרית ללא מסמך פתוח"
 
-#: src/LyXFunc.cpp:657
+#: src/LyXFunc.cpp:660
 msgid "Document is read-only"
 msgstr "המסמך הוא לקריאה בלבד"
 
-#: src/LyXFunc.cpp:666
+#: src/LyXFunc.cpp:669
 msgid "This portion of the document is deleted."
 msgstr "חלק זה של המסמך נמחק."
 
-#: src/LyXFunc.cpp:685
+#: src/LyXFunc.cpp:688
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14182,11 +14373,11 @@ msgstr ""
 "\n"
 "האם לשמור את המסמך?"
 
-#: src/LyXFunc.cpp:688 src/frontends/qt4/GuiView.cpp:1602
+#: src/LyXFunc.cpp:691 src/frontends/qt4/GuiView.cpp:1641
 msgid "Save changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
-#: src/LyXFunc.cpp:703
+#: src/LyXFunc.cpp:706
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -14195,110 +14386,102 @@ msgstr ""
 "לא יכול להדפיס את המסמך %1$s.\n"
 "בדוק שהמדפסת מוגדרת כראוי."
 
-#: src/LyXFunc.cpp:706
+#: src/LyXFunc.cpp:709
 msgid "Print document failed"
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/LyXFunc.cpp:721
-#, fuzzy, c-format
-msgid "The document class %1$s.could not be loaded."
-msgstr ""
-"הקובץ המצוין:\n"
-"%1$s\n"
-"לא ניתן לקריאה."
-
-#: src/LyXFunc.cpp:833
+#: src/LyXFunc.cpp:826
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "כל השינויים יאבדו. אתה בטוח שברצונך לחזור לגרסה השמורה של המסמך %1$s?"
 
-#: src/LyXFunc.cpp:835
+#: src/LyXFunc.cpp:828
 msgid "Revert to saved document?"
 msgstr "לחזור למסמך השמור?"
 
-#: src/LyXFunc.cpp:836 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:829 src/LyXVC.cpp:160
 msgid "&Revert"
 msgstr "חזור"
 
-#: src/LyXFunc.cpp:1051 src/Text3.cpp:1450
+#: src/LyXFunc.cpp:1043 src/Text3.cpp:1444
 msgid "Missing argument"
 msgstr "ארגומנט חסר"
 
-#: src/LyXFunc.cpp:1060
+#: src/LyXFunc.cpp:1052
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "פותח קובץ עזרה %1$s..."
 
-#: src/LyXFunc.cpp:1303
+#: src/LyXFunc.cpp:1300
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "פותח את מסמך הבת %1$s..."
 
-#: src/LyXFunc.cpp:1412
+#: src/LyXFunc.cpp:1409
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "תחביר: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1423
+#: src/LyXFunc.cpp:1420
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "Set-color \"%1$s\" נכשל - הצבע אינו מוגדר או שאי-אפשר להגדירו מחדש"
 
-#: src/LyXFunc.cpp:1517
+#: src/LyXFunc.cpp:1514
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "ברירות מחדל עבור מסמך נשמרו ב- %1$s"
 
-#: src/LyXFunc.cpp:1520
+#: src/LyXFunc.cpp:1517
 msgid "Unable to save document defaults"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/LyXFunc.cpp:1788
+#: src/LyXFunc.cpp:1793
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "המסמך %1$s פתוח."
 
-#: src/LyXFunc.cpp:1790
+#: src/LyXFunc.cpp:1795
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "לא יכול לקרוא את המסמך"
 
-#: src/LyXFunc.cpp:1827
+#: src/LyXFunc.cpp:1832
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
-#: src/LyXFunc.cpp:1848
+#: src/LyXFunc.cpp:1853
 msgid "Converting document to new document class..."
 msgstr "ממיר מסמך למחלקת מסמך חדשה..."
 
-#: src/LyXRC.cpp:2585
+#: src/LyXRC.cpp:2648
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2653
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "ציין שפה חלופית. ברירת המחדל היא להשתמש בשפת המסמך."
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2657
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr "ly"
 
-#: src/LyXRC.cpp:2602
+#: src/LyXRC.cpp:2665
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 "בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
 
-#: src/LyXRC.cpp:2606
+#: src/LyXRC.cpp:2669
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -14306,12 +14489,12 @@ msgstr ""
 "בטל את הבחירה אם אינך רוצה שאפשרויות המחלקה תחזורנה לברירת המחדש אחרי שינוי "
 "מחלקה."
 
-#: src/LyXRC.cpp:2610
+#: src/LyXRC.cpp:2673
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "מרווח הזמן בין שמירות אוטומטיות (בשניות) 0 משמעותו ללא שמירה אוטומטית."
 
-#: src/LyXRC.cpp:2617
+#: src/LyXRC.cpp:2680
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -14319,101 +14502,101 @@ msgstr ""
 "הכתובת לשמירת מסמכי גיבוי. אם היא מחרוזת ריקה, LYX ישמור את קבצי הגיבוי "
 "באותה תיקייה כמו המקור."
 
-#: src/LyXRC.cpp:2621
+#: src/LyXRC.cpp:2684
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2625
+#: src/LyXRC.cpp:2688
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2629
+#: src/LyXRC.cpp:2692
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2633
+#: src/LyXRC.cpp:2696
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2643
+#: src/LyXRC.cpp:2706
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2647
+#: src/LyXRC.cpp:2710
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2721
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2725
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2729
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/LyXRC.cpp:2670
+#: src/LyXRC.cpp:2733
 msgid "Specify the default paper size."
 msgstr "ציין את ברירת המחדל עבור גודל הדף."
 
-#: src/LyXRC.cpp:2674
+#: src/LyXRC.cpp:2737
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:2678
+#: src/LyXRC.cpp:2741
 msgid "Select how LyX will display any graphics."
 msgstr "בחר כיצד LyX יציג תמונות."
 
-#: src/LyXRC.cpp:2682
+#: src/LyXRC.cpp:2745
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2687
+#: src/LyXRC.cpp:2750
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:2691
+#: src/LyXRC.cpp:2754
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2695
+#: src/LyXRC.cpp:2758
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/LyXRC.cpp:2702
+#: src/LyXRC.cpp:2765
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2711
+#: src/LyXRC.cpp:2774
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -14421,191 +14604,197 @@ msgstr ""
 "השתמש בזה כדי לתקן את קובץ מיפוי המקלדת. תצטרך את זה אם למשל תרצה להדפיס "
 "מסמך בגרמנית על מקלדת אמריקנית."
 
-#: src/LyXRC.cpp:2715
+#: src/LyXRC.cpp:2778
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXRC.cpp:2719
+#: src/LyXRC.cpp:2782
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2723
+#: src/LyXRC.cpp:2786
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2727
+#: src/LyXRC.cpp:2790
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:2731
+#: src/LyXRC.cpp:2794
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "פקודת ה- LaTeX לשינוי חזרה של שפת המסמך."
 
-#: src/LyXRC.cpp:2735
+#: src/LyXRC.cpp:2798
 msgid "The LaTeX command for local changing of the language."
 msgstr "פקודת ה- LaTeX לשינוי מקומי של השפה."
 
-#: src/LyXRC.cpp:2739
+#: src/LyXRC.cpp:2802
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:2743
+#: src/LyXRC.cpp:2806
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2747
+#: src/LyXRC.cpp:2810
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:2751
+#: src/LyXRC.cpp:2814
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:2755
+#: src/LyXRC.cpp:2818
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:2759
+#: src/LyXRC.cpp:2822
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "בטל את הבחירה אם ברצונך ש- LyX לא יצור קבצי גיבוי."
 
-#: src/LyXRC.cpp:2763
+#: src/LyXRC.cpp:2826
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2767
+#: src/LyXRC.cpp:2830
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:2772
+#: src/LyXRC.cpp:2835
 msgid "The completion popup delay."
 msgstr ""
 
-#: src/LyXRC.cpp:2776
+#: src/LyXRC.cpp:2839
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2780
+#: src/LyXRC.cpp:2843
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2784
+#: src/LyXRC.cpp:2847
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:2788
+#: src/LyXRC.cpp:2851
+msgid ""
+"Show a small triangle on the cursor to indicate that a completion is "
+"available."
+msgstr ""
+
+#: src/LyXRC.cpp:2855
 msgid "The inline completion delay."
 msgstr ""
 
-#: src/LyXRC.cpp:2792
+#: src/LyXRC.cpp:2859
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2863
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2800
+#: src/LyXRC.cpp:2867
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:2804
+#: src/LyXRC.cpp:2871
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "מספר מקסימלי של מסמכים אחרונים. ניתן להציג עד %1$d בתפריט."
 
-#: src/LyXRC.cpp:2809
+#: src/LyXRC.cpp:2876
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2816
+#: src/LyXRC.cpp:2883
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2820
+#: src/LyXRC.cpp:2887
 msgid "Shows a typeset preview of things such as math"
 msgstr "מראה תצוגה מקדימה של דברים כמו מתמטיקה"
 
-#: src/LyXRC.cpp:2824
+#: src/LyXRC.cpp:2891
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "משוואות ממוספרות בתצוגה מקדימה יסומנו ב\"(#)\" במקום במספר"
 
-#: src/LyXRC.cpp:2828
+#: src/LyXRC.cpp:2895
 msgid "Scale the preview size to suit."
 msgstr "התאם את גודל התצוגה המקדימה."
 
-#: src/LyXRC.cpp:2832
+#: src/LyXRC.cpp:2899
 msgid "The option for specifying whether the copies should be collated."
 msgstr "האפשרות לקבוע שהעותקים יהיו אסופים."
 
-#: src/LyXRC.cpp:2836
+#: src/LyXRC.cpp:2903
 msgid "The option for specifying the number of copies to print."
 msgstr "האפשרות לקביעת מספר העותקים."
 
-#: src/LyXRC.cpp:2840
+#: src/LyXRC.cpp:2907
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr "מדפסת ברירת המחדל. אם לא מצויינת, LyX ישתמש במשתנה הסביבה PRINTER."
 
-#: src/LyXRC.cpp:2844
+#: src/LyXRC.cpp:2911
 msgid "The option to print only even pages."
 msgstr "האפשרות להדפיס עמודים זוגיים בלבד."
 
-#: src/LyXRC.cpp:2848
+#: src/LyXRC.cpp:2915
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 "אפשרות נוספות להעביר לתוכנת ההדפסה אחרי הכל, אבל לפני שם קובץ ה- DVI שיודפס."
 
-#: src/LyXRC.cpp:2852
+#: src/LyXRC.cpp:2919
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "סיומת הקובץ של הפלט של תוכנת ההדפסה. בד\"כ  \".ps\"."
 
-#: src/LyXRC.cpp:2856
+#: src/LyXRC.cpp:2923
 msgid "The option to print out in landscape."
 msgstr "האפשרות להדפיס לרוחב הדף."
 
-#: src/LyXRC.cpp:2860
+#: src/LyXRC.cpp:2927
 msgid "The option to print only odd pages."
 msgstr "האפשרות להדפיס עמודים אי-זוגיים בלבד."
 
-#: src/LyXRC.cpp:2864
+#: src/LyXRC.cpp:2931
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "אפשרות לציון רשימת עמודים מופרדים בנקודה-פסיק (;) אשר יודפסו."
 
-#: src/LyXRC.cpp:2868
+#: src/LyXRC.cpp:2935
 msgid "Option to specify the dimensions of the print paper."
 msgstr "אפשרות לציון גודל דף הנייר להדפסה."
 
-#: src/LyXRC.cpp:2872
+#: src/LyXRC.cpp:2939
 msgid "The option to specify paper type."
 msgstr "האפשרות הזו מציינת את סוג הנייר."
 
-#: src/LyXRC.cpp:2876
+#: src/LyXRC.cpp:2943
 msgid "The option to reverse the order of the pages printed."
 msgstr "האפשרות הזו הופכת את סדר הדפסת העמודים."
 
-#: src/LyXRC.cpp:2880
+#: src/LyXRC.cpp:2947
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -14614,57 +14803,57 @@ msgstr ""
 "כאשר בשימוש, אפשרות מקלדת זו מדפיסה בצורה אוטומטית לקובץ, ולאחר מכן קוראת "
 "ברקע לתוכנת הדפסה אחרת שתדפיס את הקובץ עם הארגומנטים הנתונים."
 
-#: src/LyXRC.cpp:2884
+#: src/LyXRC.cpp:2951
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2888
+#: src/LyXRC.cpp:2955
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/LyXRC.cpp:2892
+#: src/LyXRC.cpp:2959
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:2896
+#: src/LyXRC.cpp:2963
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2900
+#: src/LyXRC.cpp:2967
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2908
+#: src/LyXRC.cpp:2975
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2912
+#: src/LyXRC.cpp:2979
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2918
+#: src/LyXRC.cpp:2985
 msgid "The screen fonts used to display the text while editing."
 msgstr "גופני המסך שבהם משתמשים כדי להציג את הטקסט בזמן העריכה."
 
-#: src/LyXRC.cpp:2927
+#: src/LyXRC.cpp:2994
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2931
+#: src/LyXRC.cpp:2998
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2936
+#: src/LyXRC.cpp:3003
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -14673,59 +14862,59 @@ msgstr ""
 "אחוז ההגדלה עבור גופני מסך. הגדרה של 100% תגרום לגופני המסך להיות בערך באותו "
 "הגודל כמו הגופנים המודפסים."
 
-#: src/LyXRC.cpp:2940
+#: src/LyXRC.cpp:3007
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 
-#: src/LyXRC.cpp:2944
+#: src/LyXRC.cpp:3011
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2951
+#: src/LyXRC.cpp:3018
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:2955
+#: src/LyXRC.cpp:3022
 msgid "What command runs the spellchecker?"
 msgstr "איזו פקודה מפעילה את בודק האיות?"
 
-#: src/LyXRC.cpp:2959
+#: src/LyXRC.cpp:3026
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2963
+#: src/LyXRC.cpp:3030
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2973
+#: src/LyXRC.cpp:3040
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2986
+#: src/LyXRC.cpp:3053
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2990
+#: src/LyXRC.cpp:3057
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2994
+#: src/LyXRC.cpp:3061
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:3001
+#: src/LyXRC.cpp:3068
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -14769,15 +14958,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "לחזור לגרסה השמורה של המסמך?"
 
-#: src/Paragraph.cpp:1503 src/frontends/qt4/GuiParagraph.cpp:216
+#: src/Paragraph.cpp:1505 src/frontends/qt4/GuiParagraph.cpp:216
 msgid "Senseless with this layout!"
 msgstr "חסר משמעות עם התצורה הזו!"
 
-#: src/Paragraph.cpp:1569
+#: src/Paragraph.cpp:1571
 msgid "Alignment not permitted"
 msgstr "יישור לא אפשרי"
 
-#: src/Paragraph.cpp:1570
+#: src/Paragraph.cpp:1572
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -14785,12 +14974,12 @@ msgstr ""
 "תצורת המסמך החדשה לא מאפשרת את היישור בו השתמשת.\n"
 "קובע יישור לברירת מחדל."
 
-#: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2052 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "גרסת LyX"
 
-#: src/Paragraph.cpp:2030
+#: src/Paragraph.cpp:2053
 #, fuzzy
 msgid "uncodable character"
 msgstr "תו מיוחד"
@@ -14799,11 +14988,11 @@ msgstr "תו מיוחד"
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/Text.cpp:120
+#: src/Text.cpp:121
 msgid "Unknown layout"
 msgstr "תצורה לא ידועה"
 
-#: src/Text.cpp:121
+#: src/Text.cpp:122
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -14812,93 +15001,93 @@ msgstr ""
 "תצורה '%1$s' לא קיימת במחלקת מסמך '%2$s'\n"
 "מנסה להשתמש בברירת המחדל.\n"
 
-#: src/Text.cpp:150
+#: src/Text.cpp:151
 msgid "Unknown Inset"
 msgstr "תוסף טקסט לא מוכר"
 
-#: src/Text.cpp:262 src/Text.cpp:275
+#: src/Text.cpp:240 src/Text.cpp:253
 msgid "Change tracking error"
 msgstr "שגיאה במעקב אחר שינויים"
 
-#: src/Text.cpp:263
+#: src/Text.cpp:241
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:276
+#: src/Text.cpp:254
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:283
+#: src/Text.cpp:261
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:536
+#: src/Text.cpp:543
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "אינך יכול לכתוב רווח בתחילת פסקה. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:547
+#: src/Text.cpp:554
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "אינך יכול להקליד שני רווחים רצופים. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:1233
+#: src/Text.cpp:1240
 msgid "[Change Tracking] "
 msgstr "[מעקב אחר שינויים]"
 
-#: src/Text.cpp:1239
+#: src/Text.cpp:1246
 msgid "Change: "
 msgstr "שינוי: "
 
-#: src/Text.cpp:1243
+#: src/Text.cpp:1250
 msgid " at "
 msgstr "בתוך "
 
-#: src/Text.cpp:1253
+#: src/Text.cpp:1260
 #, c-format
 msgid "Font: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/Text.cpp:1258
+#: src/Text.cpp:1265
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", עומק: %1$d"
 
-#: src/Text.cpp:1264
+#: src/Text.cpp:1271
 msgid ", Spacing: "
 msgstr ", ריווח: "
 
-#: src/Text.cpp:1270 src/frontends/qt4/GuiDocument.cpp:578
+#: src/Text.cpp:1277 src/frontends/qt4/GuiDocument.cpp:578
 msgid "OneHalf"
 msgstr "אחד וחצי"
 
-#: src/Text.cpp:1276
+#: src/Text.cpp:1283
 msgid "Other ("
 msgstr "אחר ("
 
-#: src/Text.cpp:1285
+#: src/Text.cpp:1292
 msgid ", Inset: "
 msgstr ", תוסף טקסט: "
 
-#: src/Text.cpp:1286
+#: src/Text.cpp:1293
 msgid ", Paragraph: "
 msgstr ", פסקה: "
 
-#: src/Text.cpp:1287
+#: src/Text.cpp:1294
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1288
+#: src/Text.cpp:1295
 msgid ", Position: "
 msgstr ", מיקום:"
 
-#: src/Text.cpp:1294
+#: src/Text.cpp:1301
 msgid ", Char: 0x"
 msgstr ", תו: 0x"
 
-#: src/Text.cpp:1296
+#: src/Text.cpp:1303
 msgid ", Boundary: "
 msgstr ", גבול:"
 
@@ -14914,7 +15103,7 @@ msgstr "אין מה לשים באינדקס!"
 msgid "Cannot index more than one paragraph!"
 msgstr "לא יכול לשים באינדקס יותר מפסקה אחת!"
 
-#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1416
+#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1445
 msgid "Math editor mode"
 msgstr "מצב עורך מתמטיקה"
 
@@ -14930,11 +15119,11 @@ msgstr "פריסה"
 msgid " not known"
 msgstr "לא ידוע"
 
-#: src/Text3.cpp:1557 src/Text3.cpp:1569
+#: src/Text3.cpp:1551 src/Text3.cpp:1563
 msgid "Character set"
 msgstr "סט תווים"
 
-#: src/Text3.cpp:1710 src/Text3.cpp:1721
+#: src/Text3.cpp:1704 src/Text3.cpp:1715
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -14973,27 +15162,27 @@ msgid ""
 "%1$s."
 msgstr ""
 
-#: src/VSpace.cpp:469
+#: src/VSpace.cpp:472
 msgid "Default skip"
 msgstr "מרווח ברירת מחדל"
 
-#: src/VSpace.cpp:472
+#: src/VSpace.cpp:475
 msgid "Small skip"
 msgstr "מרווח קטן"
 
-#: src/VSpace.cpp:475
+#: src/VSpace.cpp:478
 msgid "Medium skip"
 msgstr "מרווח בינוני"
 
-#: src/VSpace.cpp:478
+#: src/VSpace.cpp:481
 msgid "Big skip"
 msgstr "מרווח גדול"
 
-#: src/VSpace.cpp:481
+#: src/VSpace.cpp:484
 msgid "Vertical fill"
 msgstr "מילוי אנכי"
 
-#: src/VSpace.cpp:488
+#: src/VSpace.cpp:491
 msgid "protected"
 msgstr "מרווח מוגן"
 
@@ -15145,9 +15334,10 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "לעבודה הרבה של אנשים אחרים למען פרוייקט LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:63
+#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
+"1995-2008 LyX Team"
 msgstr ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
@@ -15201,35 +15391,33 @@ msgstr "תיקיית משתמש: "
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:116
+#: src/frontends/qt4/GuiApplication.cpp:117
 msgid "About %1"
 msgstr "אודות %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:116
-#: src/frontends/qt4/GuiPrefs.cpp:2324
+#: src/frontends/qt4/GuiApplication.cpp:117
+#: src/frontends/qt4/GuiPrefs.cpp:2387
 msgid "Preferences"
 msgstr "העדפות"
 
-#: src/frontends/qt4/GuiApplication.cpp:117
+#: src/frontends/qt4/GuiApplication.cpp:118
 msgid "Reconfigure"
 msgstr "הגדר מחדש"
 
-#: src/frontends/qt4/GuiApplication.cpp:117
+#: src/frontends/qt4/GuiApplication.cpp:118
 msgid "Quit %1"
 msgstr "יציאה %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:265
+#: src/frontends/qt4/GuiApplication.cpp:300
 msgid "Exiting."
 msgstr "יוצא."
 
-#: src/frontends/qt4/GuiApplication.cpp:488
+#: src/frontends/qt4/GuiApplication.cpp:569
 #, fuzzy
-msgid ""
-"\n"
-"The current document was closed."
+msgid "The current document was closed."
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/frontends/qt4/GuiApplication.cpp:498
+#: src/frontends/qt4/GuiApplication.cpp:579
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -15241,12 +15429,12 @@ msgstr ""
 "\n"
 "חריגה: "
 
-#: src/frontends/qt4/GuiApplication.cpp:502
-#: src/frontends/qt4/GuiApplication.cpp:508
+#: src/frontends/qt4/GuiApplication.cpp:583
+#: src/frontends/qt4/GuiApplication.cpp:589
 msgid "Software exception Detected"
 msgstr "זוהתה חריגה בתוכנה"
 
-#: src/frontends/qt4/GuiApplication.cpp:506
+#: src/frontends/qt4/GuiApplication.cpp:587
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -15257,43 +15445,32 @@ msgstr "LyX נתקל בחריגה ממש מוזרה, הוא ינסה כעת לש
 msgid "Bibliography Entry Settings"
 msgstr "הגדרות ערך ביבליוגרפיה"
 
-#: src/frontends/qt4/GuiBibtex.cpp:46
+#: src/frontends/qt4/GuiBibtex.cpp:50
 msgid "BibTeX Bibliography"
 msgstr "ביבליוגרפית BibTeX"
 
-#: src/frontends/qt4/GuiBibtex.cpp:357 src/frontends/qt4/GuiBibtex.cpp:364
-#: src/frontends/qt4/GuiInclude.cpp:243
-#, fuzzy
-msgid "true"
-msgstr "רחוב"
-
-#: src/frontends/qt4/GuiBibtex.cpp:357 src/frontends/qt4/GuiBibtex.cpp:364
-#: src/frontends/qt4/GuiInclude.cpp:243 src/insets/InsetInclude.cpp:272
-#, fuzzy
-msgid "false"
-msgstr "תנאי"
-
-#: src/frontends/qt4/GuiBibtex.cpp:426 src/frontends/qt4/GuiBibtex.cpp:436
-#: src/frontends/qt4/GuiExternal.cpp:780 src/frontends/qt4/GuiGraphics.cpp:736
-#: src/frontends/qt4/GuiInclude.cpp:327 src/frontends/qt4/GuiView.cpp:1085
-#: src/frontends/qt4/GuiView.cpp:1144 src/frontends/qt4/GuiView.cpp:1276
-#: src/frontends/qt4/GuiView.cpp:1395 src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiBibtex.cpp:446 src/frontends/qt4/GuiBibtex.cpp:456
+#: src/frontends/qt4/GuiDocument.cpp:1430
+#: src/frontends/qt4/GuiExternal.cpp:797 src/frontends/qt4/GuiGraphics.cpp:752
+#: src/frontends/qt4/GuiInclude.cpp:343 src/frontends/qt4/GuiView.cpp:1121
+#: src/frontends/qt4/GuiView.cpp:1180 src/frontends/qt4/GuiView.cpp:1313
+#: src/frontends/qt4/GuiView.cpp:1432 src/frontends/qt4/GuiView.cpp:1512
 msgid "Documents|#o#O"
 msgstr "מסמכים"
 
-#: src/frontends/qt4/GuiBibtex.cpp:428
+#: src/frontends/qt4/GuiBibtex.cpp:448
 msgid "BibTeX Databases (*.bib)"
 msgstr ""
 
-#: src/frontends/qt4/GuiBibtex.cpp:430
+#: src/frontends/qt4/GuiBibtex.cpp:450
 msgid "Select a BibTeX database to add"
 msgstr ""
 
-#: src/frontends/qt4/GuiBibtex.cpp:438
+#: src/frontends/qt4/GuiBibtex.cpp:458
 msgid "BibTeX Styles (*.bst)"
 msgstr ""
 
-#: src/frontends/qt4/GuiBibtex.cpp:440
+#: src/frontends/qt4/GuiBibtex.cpp:460
 msgid "Select a BibTeX style"
 msgstr ""
 
@@ -15365,11 +15542,11 @@ msgid "Activated"
 msgstr "מופעל"
 
 #: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiBranches.cpp:145
-#: src/frontends/qt4/GuiDocument.cpp:1397
+#: src/frontends/qt4/GuiDocument.cpp:1461
 msgid "Yes"
 msgstr "כן"
 
-#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1396
+#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1460
 msgid "No"
 msgstr "לא"
 
@@ -15493,16 +15670,16 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "בחר שם למסמך כדי לשמור אותו"
 
-#: src/frontends/qt4/GuiClipboard.cpp:245 src/frontends/qt4/GuiView.cpp:1158
-#: src/frontends/qt4/GuiView.cpp:1296 src/frontends/qt4/GuiView.cpp:1312
-#: src/frontends/qt4/GuiView.cpp:1329 src/frontends/qt4/GuiView.cpp:1413
-#: src/frontends/qt4/GuiView.cpp:1451
+#: src/frontends/qt4/GuiClipboard.cpp:245 src/frontends/qt4/GuiView.cpp:1194
+#: src/frontends/qt4/GuiView.cpp:1333 src/frontends/qt4/GuiView.cpp:1349
+#: src/frontends/qt4/GuiView.cpp:1366 src/frontends/qt4/GuiView.cpp:1450
+#: src/frontends/qt4/GuiView.cpp:1488
 msgid "Canceled."
 msgstr "בוטל."
 
 #: src/frontends/qt4/GuiClipboard.cpp:276
 #, fuzzy, c-format
-msgid "File %1$s already exists, do you want to overwrite it"
+msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr ""
 "המסמך %1$s כבר קיים.\n"
 "\n"
@@ -15742,7 +15919,7 @@ msgstr "מחבר-שנה"
 msgid "Numerical"
 msgstr "מספרי"
 
-#: src/frontends/qt4/GuiDocument.cpp:901
+#: src/frontends/qt4/GuiDocument.cpp:903
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "לא זמין: %1$s"
@@ -15783,7 +15960,8 @@ msgstr "תבליטים"
 msgid "Branches"
 msgstr "ענפים"
 
-#: src/frontends/qt4/GuiDocument.cpp:985
+#: src/frontends/qt4/GuiDocument.cpp:985 src/frontends/qt4/GuiToc.cpp:234
+#: src/frontends/qt4/Menus.cpp:918
 #, fuzzy
 msgid "Embedded Files"
 msgstr "עצמים משובצים"
@@ -15792,11 +15970,34 @@ msgstr "עצמים משובצים"
 msgid "LaTeX Preamble"
 msgstr "הקדמת LaTeX"
 
-#: src/frontends/qt4/GuiDocument.cpp:1233
+#: src/frontends/qt4/GuiDocument.cpp:1227
+#, fuzzy
+msgid "Layouts|#o#O"
+msgstr "תצורה|צ"
+
+#: src/frontends/qt4/GuiDocument.cpp:1229
+#, fuzzy
+msgid "LyX Layout (*.layout)"
+msgstr "מסמכי LyX (*.lyx)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1231
+#: src/frontends/qt4/GuiDocument.cpp:1277
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1234
+#: src/frontends/qt4/GuiDocument.cpp:1249
+#: src/frontends/qt4/GuiDocument.cpp:1300
+#: src/frontends/qt4/GuiDocument.cpp:2148
+#, fuzzy
+msgid "Error"
+msgstr "חץ"
+
+#: src/frontends/qt4/GuiDocument.cpp:1250
+#, fuzzy
+msgid "Unable to read local layout file."
+msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
+
+#: src/frontends/qt4/GuiDocument.cpp:1278
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -15804,80 +16005,98 @@ msgid ""
 "keep the layout file in the same directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1238
+#: src/frontends/qt4/GuiDocument.cpp:1282
+#: src/frontends/qt4/GuiDocument.cpp:1293
 #, fuzzy
 msgid "&Set Layout"
 msgstr "הגדרות טקסט"
 
-#: src/frontends/qt4/GuiDocument.cpp:1246
-#: src/frontends/qt4/GuiDocument.cpp:2080
+#: src/frontends/qt4/GuiDocument.cpp:1289
 #, fuzzy
-msgid "Error"
-msgstr "חץ"
+msgid "Embedded layout"
+msgstr "עצמים משובצים"
 
-#: src/frontends/qt4/GuiDocument.cpp:1246
-#: src/frontends/qt4/GuiDocument.cpp:2080
+#: src/frontends/qt4/GuiDocument.cpp:1290
+msgid ""
+"The layout file you have selected is an embedded layout that\n"
+"is embedded to a buffer. You cannot make use of it unless\n"
+"it is already embedded to this buffer.\n"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:1300
+#: src/frontends/qt4/GuiDocument.cpp:2148
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/frontends/qt4/GuiDocument.cpp:1251
-#: src/frontends/qt4/GuiDocument.cpp:2069
+#: src/frontends/qt4/GuiDocument.cpp:1305
+#: src/frontends/qt4/GuiDocument.cpp:2137
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "עקוב אחר שינויים"
 
-#: src/frontends/qt4/GuiDocument.cpp:1252
-#: src/frontends/qt4/GuiDocument.cpp:2070
+#: src/frontends/qt4/GuiDocument.cpp:1306
+#: src/frontends/qt4/GuiDocument.cpp:2138
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1254
-#: src/frontends/qt4/GuiDocument.cpp:2072
+#: src/frontends/qt4/GuiDocument.cpp:1308
+#: src/frontends/qt4/GuiDocument.cpp:2140
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1281
+#: src/frontends/qt4/GuiDocument.cpp:1335
 #, fuzzy, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s ו-  %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1286
+#: src/frontends/qt4/GuiDocument.cpp:1340
 #, fuzzy, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s ו-  %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1331
+#: src/frontends/qt4/GuiDocument.cpp:1385
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1337
+#: src/frontends/qt4/GuiDocument.cpp:1391
 #, fuzzy
 msgid "or"
 msgstr "יותר"
 
-#: src/frontends/qt4/GuiDocument.cpp:1340
+#: src/frontends/qt4/GuiDocument.cpp:1394
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1349
+#: src/frontends/qt4/GuiDocument.cpp:1403
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1355
+#: src/frontends/qt4/GuiDocument.cpp:1409
 msgid "WARNING: Some packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2092
+#: src/frontends/qt4/GuiDocument.cpp:1432
+msgid ""
+"LyX Layout (*.layout);;LaTeX Classes (*.{cls,sty});;BibTeX Databases (*.{bib,"
+"bst})"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:1434
+#, fuzzy
+msgid "Extra embedded file"
+msgstr "עצמים משובצים"
+
+#: src/frontends/qt4/GuiDocument.cpp:2160
 msgid "Can't set layout!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2093
+#: src/frontends/qt4/GuiDocument.cpp:2161
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
@@ -15896,51 +16115,51 @@ msgstr "רישום קוד"
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s שגיאות (%2$s)"
 
-#: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:803
+#: src/frontends/qt4/GuiExternal.cpp:86 src/frontends/qt4/GuiGraphics.cpp:819
 msgid "Top left"
 msgstr "שמאל למעלה"
 
-#: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:803
+#: src/frontends/qt4/GuiExternal.cpp:86 src/frontends/qt4/GuiGraphics.cpp:819
 msgid "Bottom left"
 msgstr "שמאל למטה"
 
-#: src/frontends/qt4/GuiExternal.cpp:82 src/frontends/qt4/GuiGraphics.cpp:803
+#: src/frontends/qt4/GuiExternal.cpp:86 src/frontends/qt4/GuiGraphics.cpp:819
 msgid "Baseline left"
 msgstr "קו בסיס שמאלי"
 
-#: src/frontends/qt4/GuiExternal.cpp:83 src/frontends/qt4/GuiGraphics.cpp:804
+#: src/frontends/qt4/GuiExternal.cpp:87 src/frontends/qt4/GuiGraphics.cpp:820
 msgid "Top center"
 msgstr "למעלה במרכז"
 
-#: src/frontends/qt4/GuiExternal.cpp:83 src/frontends/qt4/GuiGraphics.cpp:804
+#: src/frontends/qt4/GuiExternal.cpp:87 src/frontends/qt4/GuiGraphics.cpp:820
 msgid "Bottom center"
 msgstr "למטה במרכז"
 
-#: src/frontends/qt4/GuiExternal.cpp:83 src/frontends/qt4/GuiGraphics.cpp:804
+#: src/frontends/qt4/GuiExternal.cpp:87 src/frontends/qt4/GuiGraphics.cpp:820
 msgid "Baseline center"
 msgstr "קו בסיס במרכז"
 
-#: src/frontends/qt4/GuiExternal.cpp:84 src/frontends/qt4/GuiGraphics.cpp:805
+#: src/frontends/qt4/GuiExternal.cpp:88 src/frontends/qt4/GuiGraphics.cpp:821
 msgid "Top right"
 msgstr "ימין למעלה"
 
-#: src/frontends/qt4/GuiExternal.cpp:84 src/frontends/qt4/GuiGraphics.cpp:805
+#: src/frontends/qt4/GuiExternal.cpp:88 src/frontends/qt4/GuiGraphics.cpp:821
 msgid "Bottom right"
 msgstr "ימין למטה"
 
-#: src/frontends/qt4/GuiExternal.cpp:84 src/frontends/qt4/GuiGraphics.cpp:805
+#: src/frontends/qt4/GuiExternal.cpp:88 src/frontends/qt4/GuiGraphics.cpp:821
 msgid "Baseline right"
 msgstr "קו בסיס ימני"
 
-#: src/frontends/qt4/GuiExternal.cpp:91
+#: src/frontends/qt4/GuiExternal.cpp:95
 msgid "External Material"
 msgstr "חומר חיצוני"
 
-#: src/frontends/qt4/GuiExternal.cpp:214
+#: src/frontends/qt4/GuiExternal.cpp:218
 msgid "Scale%"
 msgstr "קנה מידה (%)"
 
-#: src/frontends/qt4/GuiExternal.cpp:775
+#: src/frontends/qt4/GuiExternal.cpp:792
 msgid "Select external file"
 msgstr "בחר קובץ חיצוני"
 
@@ -15948,38 +16167,43 @@ msgstr "בחר קובץ חיצוני"
 msgid "Float Settings"
 msgstr "הגדרות אובייקטים צפים"
 
-#: src/frontends/qt4/GuiGraphics.cpp:115 src/frontends/qt4/GuiPrefs.cpp:831
+#: src/frontends/qt4/GuiGraphics.cpp:119 src/frontends/qt4/GuiPrefs.cpp:860
 msgid "Graphics"
 msgstr "תמונות"
 
-#: src/frontends/qt4/GuiGraphics.cpp:723
+#: src/frontends/qt4/GuiGraphics.cpp:739
 msgid "Select graphics file"
 msgstr "בחר קובץ תמונה"
 
-#: src/frontends/qt4/GuiGraphics.cpp:735
+#: src/frontends/qt4/GuiGraphics.cpp:751
 msgid "Clipart|#C#c"
 msgstr ""
+
+#: src/frontends/qt4/GuiHSpace.cpp:38
+#, fuzzy
+msgid "Horizontal Space Settings"
+msgstr "הגדרות מרווח אנכי"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
 msgstr ""
 
-#: src/frontends/qt4/GuiInclude.cpp:49
+#: src/frontends/qt4/GuiInclude.cpp:53
 msgid "Child Document"
 msgstr "מסמך בת"
 
-#: src/frontends/qt4/GuiInclude.cpp:121 src/frontends/qt4/GuiInclude.cpp:184
+#: src/frontends/qt4/GuiInclude.cpp:125 src/frontends/qt4/GuiInclude.cpp:188
 #: src/frontends/qt4/GuiListings.cpp:235 src/frontends/qt4/GuiListings.cpp:368
 #: src/frontends/qt4/GuiListings.cpp:443
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr "הכנס מימין פרמטרים לרישום. הכנס ? בשביל לקבל רשימה של כל הפרמטרים."
 
-#: src/frontends/qt4/GuiInclude.cpp:310
+#: src/frontends/qt4/GuiInclude.cpp:326
 msgid "Select document to include"
 msgstr "בחר מסמך כדי לכלול אותו"
 
-#: src/frontends/qt4/GuiInclude.cpp:317
+#: src/frontends/qt4/GuiInclude.cpp:333
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "מסמכי LaTeX/LyX (*.tex *.lyx)"
 
@@ -16082,163 +16306,168 @@ msgstr "תצורת תאריך"
 msgid "Keyboard/Mouse"
 msgstr "מקלדת"
 
-#: src/frontends/qt4/GuiPrefs.cpp:558
+#: src/frontends/qt4/GuiPrefs.cpp:458
+#, fuzzy
+msgid "Input Completion"
+msgstr "כותרת"
+
+#: src/frontends/qt4/GuiPrefs.cpp:587
 msgid "Screen fonts"
 msgstr "גופני מסך"
 
-#: src/frontends/qt4/GuiPrefs.cpp:732
+#: src/frontends/qt4/GuiPrefs.cpp:761
 msgid "Colors"
 msgstr "צבעים"
 
-#: src/frontends/qt4/GuiPrefs.cpp:902
+#: src/frontends/qt4/GuiPrefs.cpp:931
 msgid "Paths"
 msgstr "תיקיות"
 
-#: src/frontends/qt4/GuiPrefs.cpp:957
+#: src/frontends/qt4/GuiPrefs.cpp:986
 #, fuzzy
 msgid "Select directory for example files"
 msgstr "בחר קובץ תבנית"
 
-#: src/frontends/qt4/GuiPrefs.cpp:966
+#: src/frontends/qt4/GuiPrefs.cpp:995
 msgid "Select a document templates directory"
 msgstr "בחר תיקייה לתבניות"
 
-#: src/frontends/qt4/GuiPrefs.cpp:975
+#: src/frontends/qt4/GuiPrefs.cpp:1004
 msgid "Select a temporary directory"
 msgstr "בחר תיקייה לקבצים זמניים"
 
-#: src/frontends/qt4/GuiPrefs.cpp:984
+#: src/frontends/qt4/GuiPrefs.cpp:1013
 msgid "Select a backups directory"
 msgstr "בחר תיקייה לגיבויים"
 
-#: src/frontends/qt4/GuiPrefs.cpp:993
+#: src/frontends/qt4/GuiPrefs.cpp:1022
 msgid "Select a document directory"
 msgstr "בחר תיקייה למסמכים"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1002
+#: src/frontends/qt4/GuiPrefs.cpp:1031
 msgid "Give a filename for the LyX server pipe"
 msgstr "הענק שם קובץ לצינור שרת ה- LyX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1015
+#: src/frontends/qt4/GuiPrefs.cpp:1044
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
 msgid "Spellchecker"
 msgstr "בודק איות"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1037
+#: src/frontends/qt4/GuiPrefs.cpp:1066
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1038
+#: src/frontends/qt4/GuiPrefs.cpp:1067
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1039
+#: src/frontends/qt4/GuiPrefs.cpp:1068
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1041
+#: src/frontends/qt4/GuiPrefs.cpp:1070
 msgid "pspell (library)"
 msgstr "pspell (ספרייה)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1044
+#: src/frontends/qt4/GuiPrefs.cpp:1073
 msgid "aspell (library)"
 msgstr "aspell (ספרייה)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1124
+#: src/frontends/qt4/GuiPrefs.cpp:1153
 msgid "Converters"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1394
+#: src/frontends/qt4/GuiPrefs.cpp:1423
 msgid "File formats"
 msgstr "סוגי קבצים"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1572
+#: src/frontends/qt4/GuiPrefs.cpp:1601
 msgid "Format in use"
 msgstr "פורמט בשימוש"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1573
+#: src/frontends/qt4/GuiPrefs.cpp:1602
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1680
+#: src/frontends/qt4/GuiPrefs.cpp:1709
 msgid "Printer"
 msgstr "מדפסת"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1778 src/frontends/qt4/GuiPrefs.cpp:2361
+#: src/frontends/qt4/GuiPrefs.cpp:1807 src/frontends/qt4/GuiPrefs.cpp:2426
 msgid "User interface"
 msgstr "ממשק משתמש"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1898
+#: src/frontends/qt4/GuiPrefs.cpp:1961
 #, fuzzy
 msgid "Shortcuts"
 msgstr "&קיצור דרך:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1903
+#: src/frontends/qt4/GuiPrefs.cpp:1966
 #, fuzzy
 msgid "Function"
 msgstr "פונקציות"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2244 src/frontends/qt4/GuiPrefs.cpp:2251
-#: src/frontends/qt4/GuiPrefs.cpp:2258 src/frontends/qt4/GuiPrefs.cpp:2270
+#: src/frontends/qt4/GuiPrefs.cpp:2307 src/frontends/qt4/GuiPrefs.cpp:2314
+#: src/frontends/qt4/GuiPrefs.cpp:2321 src/frontends/qt4/GuiPrefs.cpp:2333
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "נכשל ביצירת תיקייה. יוצא."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2245
+#: src/frontends/qt4/GuiPrefs.cpp:2308
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "פונקציה לא ידועה."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2252
+#: src/frontends/qt4/GuiPrefs.cpp:2315
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2259
+#: src/frontends/qt4/GuiPrefs.cpp:2322
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2271
+#: src/frontends/qt4/GuiPrefs.cpp:2334
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "הוסף ענף חדש לרשימה"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2291
+#: src/frontends/qt4/GuiPrefs.cpp:2354
 msgid "Identity"
 msgstr "זהות המשתמש"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2481
+#: src/frontends/qt4/GuiPrefs.cpp:2546
 msgid "Choose bind file"
 msgstr "בחר קובץ קישור"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2482
+#: src/frontends/qt4/GuiPrefs.cpp:2547
 msgid "LyX bind files (*.bind)"
 msgstr "קבצי קישור של LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2488
+#: src/frontends/qt4/GuiPrefs.cpp:2553
 msgid "Choose UI file"
 msgstr "בחר קובץ ממשק משתמש"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2489
+#: src/frontends/qt4/GuiPrefs.cpp:2554
 msgid "LyX UI files (*.ui)"
 msgstr "קבצי ממשק משתמש של LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2495
+#: src/frontends/qt4/GuiPrefs.cpp:2560
 msgid "Choose keyboard map"
 msgstr "בחר פריסת מקלדת"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2496
+#: src/frontends/qt4/GuiPrefs.cpp:2561
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "פריסות המקלדת של LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2502
+#: src/frontends/qt4/GuiPrefs.cpp:2567
 msgid "Choose personal dictionary"
 msgstr "בחר מילון אישי"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2503
+#: src/frontends/qt4/GuiPrefs.cpp:2568
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2503
+#: src/frontends/qt4/GuiPrefs.cpp:2568
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -16735,55 +16964,69 @@ msgstr "הוסף טבלה"
 msgid "TeX Information"
 msgstr "מידע TeX"
 
-#: src/frontends/qt4/GuiToc.cpp:44
+#: src/frontends/qt4/GuiToc.cpp:47
 msgid "Outline"
 msgstr "ראשי פרקים"
 
-#: src/frontends/qt4/GuiToc.cpp:223 src/insets/InsetTOC.cpp:48
+#: src/frontends/qt4/GuiToc.cpp:230 src/insets/InsetTOC.cpp:48
 msgid "Table of Contents"
 msgstr "תוכן עניינים"
 
-#: src/frontends/qt4/GuiToc.cpp:225 src/frontends/qt4/Menus.cpp:1002
+#: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:915
+#, fuzzy
+msgid "Child Documents"
+msgstr "מסמך בת"
+
+#: src/frontends/qt4/GuiToc.cpp:236 src/frontends/qt4/Menus.cpp:920
+#, fuzzy
+msgid "List of Graphics"
+msgstr "רשימת טבלאות"
+
+#: src/frontends/qt4/GuiToc.cpp:238 src/frontends/qt4/Menus.cpp:922
 #, fuzzy
 msgid "List of Equations"
 msgstr "רשימה של רישומי קוד"
 
-#: src/frontends/qt4/GuiToc.cpp:227 src/frontends/qt4/Menus.cpp:1012
+#: src/frontends/qt4/GuiToc.cpp:240 src/frontends/qt4/Menus.cpp:932
 #, fuzzy
 msgid "List of Foot notes"
 msgstr "רשימת איורים"
 
-#: src/frontends/qt4/GuiToc.cpp:229 src/frontends/qt4/Menus.cpp:1006
+#: src/frontends/qt4/GuiToc.cpp:242 src/frontends/qt4/Menus.cpp:926
 #, fuzzy
 msgid "List of Listings"
 msgstr "רשימה של רישומי קוד"
 
-#: src/frontends/qt4/GuiToc.cpp:231 src/frontends/qt4/Menus.cpp:1004
+#: src/frontends/qt4/GuiToc.cpp:244 src/frontends/qt4/Menus.cpp:924
 #, fuzzy
 msgid "List of Indexes"
 msgstr "רשימת טבלאות"
 
-#: src/frontends/qt4/GuiToc.cpp:233 src/frontends/qt4/Menus.cpp:1008
+#: src/frontends/qt4/GuiToc.cpp:246 src/frontends/qt4/Menus.cpp:928
 #, fuzzy
 msgid "List of Marginal notes"
 msgstr "רשימת טבלאות"
 
-#: src/frontends/qt4/GuiToc.cpp:235 src/frontends/qt4/Menus.cpp:1010
+#: src/frontends/qt4/GuiToc.cpp:248 src/frontends/qt4/Menus.cpp:930
 #, fuzzy
 msgid "List of Notes"
 msgstr "רשימת טבלאות"
 
-#: src/frontends/qt4/GuiToc.cpp:237 src/frontends/qt4/Menus.cpp:1016
+#: src/frontends/qt4/GuiToc.cpp:250 src/frontends/qt4/Menus.cpp:936
 #, fuzzy
 msgid "List of Citations"
 msgstr "רשימה של רישומי קוד"
 
-#: src/frontends/qt4/GuiToc.cpp:239 src/frontends/qt4/Menus.cpp:1014
+#: src/frontends/qt4/GuiToc.cpp:252 src/frontends/qt4/Menus.cpp:934
 #, fuzzy
 msgid "Labels and References"
 msgstr "כל ההפניות אשר אינן מובאות בטקסט"
 
-#: src/frontends/qt4/GuiToolbar.cpp:492
+#: src/frontends/qt4/GuiToolbar.cpp:538
+msgid "Filtering layouts with \""
+msgstr ""
+
+#: src/frontends/qt4/GuiToolbar.cpp:541 src/frontends/qt4/GuiToolbar.cpp:590
 msgid "Enter characters to filter the layout list."
 msgstr ""
 
@@ -16807,67 +17050,67 @@ msgstr "סמלים רגילים"
 msgid "Big-sized icons"
 msgstr "סמלים גדולים"
 
-#: src/frontends/qt4/GuiView.cpp:590 src/frontends/qt4/GuiView.cpp:591
-#: src/mathed/MathMacroTemplate.cpp:536
+#: src/frontends/qt4/GuiView.cpp:619 src/frontends/qt4/GuiView.cpp:620
+#: src/mathed/MathMacroTemplate.cpp:535
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiView.cpp:1084
+#: src/frontends/qt4/GuiView.cpp:1120
 msgid "Select template file"
 msgstr "בחר קובץ תבנית"
 
-#: src/frontends/qt4/GuiView.cpp:1086 src/frontends/qt4/GuiView.cpp:1476
+#: src/frontends/qt4/GuiView.cpp:1122 src/frontends/qt4/GuiView.cpp:1513
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/frontends/qt4/GuiView.cpp:1090 src/frontends/qt4/GuiView.cpp:1149
-#: src/frontends/qt4/GuiView.cpp:1402 src/frontends/qt4/GuiView.cpp:1481
+#: src/frontends/qt4/GuiView.cpp:1126 src/frontends/qt4/GuiView.cpp:1185
+#: src/frontends/qt4/GuiView.cpp:1439 src/frontends/qt4/GuiView.cpp:1518
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1107
+#: src/frontends/qt4/GuiView.cpp:1143
 msgid "Document not loaded."
 msgstr "המסמך לא טעון."
 
-#: src/frontends/qt4/GuiView.cpp:1143
+#: src/frontends/qt4/GuiView.cpp:1179
 msgid "Select document to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: src/frontends/qt4/GuiView.cpp:1145 src/frontends/qt4/GuiView.cpp:1277
-#: src/frontends/qt4/GuiView.cpp:1396
+#: src/frontends/qt4/GuiView.cpp:1181 src/frontends/qt4/GuiView.cpp:1314
+#: src/frontends/qt4/GuiView.cpp:1433
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/frontends/qt4/GuiView.cpp:1181
+#: src/frontends/qt4/GuiView.cpp:1217
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1189
+#: src/frontends/qt4/GuiView.cpp:1226
 #, c-format
 msgid "Document %1$s opened."
 msgstr "המסמך %1$s פתוח."
 
-#: src/frontends/qt4/GuiView.cpp:1191
+#: src/frontends/qt4/GuiView.cpp:1228
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "לא יכול לפתוח את הקובץ %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1220
+#: src/frontends/qt4/GuiView.cpp:1257
 msgid "Couldn't import file"
 msgstr "לא יכול לייבא קובץ"
 
-#: src/frontends/qt4/GuiView.cpp:1221
+#: src/frontends/qt4/GuiView.cpp:1258
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "אין מידע ליבוא קובץ מפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1272
+#: src/frontends/qt4/GuiView.cpp:1309
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "בחר קובץ %1$s לייבוא"
 
-#: src/frontends/qt4/GuiView.cpp:1323 src/frontends/qt4/GuiView.cpp:1502
+#: src/frontends/qt4/GuiView.cpp:1360 src/frontends/qt4/GuiView.cpp:1539
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -16878,41 +17121,41 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/frontends/qt4/GuiView.cpp:1325 src/frontends/qt4/GuiView.cpp:1506
+#: src/frontends/qt4/GuiView.cpp:1362 src/frontends/qt4/GuiView.cpp:1543
 msgid "Overwrite document?"
 msgstr "להחליף את המסמך הקיים?"
 
-#: src/frontends/qt4/GuiView.cpp:1334
+#: src/frontends/qt4/GuiView.cpp:1371
 #, c-format
 msgid "Importing %1$s..."
 msgstr "מייבא %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1337
+#: src/frontends/qt4/GuiView.cpp:1374
 msgid "imported."
 msgstr "יובא."
 
-#: src/frontends/qt4/GuiView.cpp:1339
+#: src/frontends/qt4/GuiView.cpp:1376
 #, fuzzy
 msgid "file not imported!"
 msgstr "קובץ לא נמצא"
 
-#: src/frontends/qt4/GuiView.cpp:1394
+#: src/frontends/qt4/GuiView.cpp:1431
 msgid "Select LyX document to insert"
 msgstr "בחר מסמך LyX להוספה"
 
-#: src/frontends/qt4/GuiView.cpp:1436
+#: src/frontends/qt4/GuiView.cpp:1473
 msgid "Select file to insert"
 msgstr "בחר קובץ להוספה"
 
-#: src/frontends/qt4/GuiView.cpp:1473
+#: src/frontends/qt4/GuiView.cpp:1510
 msgid "Choose a filename to save document as"
 msgstr "בחר שם למסמך כדי לשמור אותו"
 
-#: src/frontends/qt4/GuiView.cpp:1507 src/frontends/qt4/GuiView.cpp:1552
+#: src/frontends/qt4/GuiView.cpp:1544 src/frontends/qt4/GuiView.cpp:1589
 msgid "&Rename"
 msgstr "שנה שם"
 
-#: src/frontends/qt4/GuiView.cpp:1548
+#: src/frontends/qt4/GuiView.cpp:1585
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -16923,16 +17166,16 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשנות את שמו ולנסות שוב?"
 
-#: src/frontends/qt4/GuiView.cpp:1551
+#: src/frontends/qt4/GuiView.cpp:1588
 msgid "Rename and save?"
 msgstr "לשנות שם ולשמור?"
 
-#: src/frontends/qt4/GuiView.cpp:1552
+#: src/frontends/qt4/GuiView.cpp:1589
 #, fuzzy
 msgid "&Retry"
 msgstr "שחזר"
 
-#: src/frontends/qt4/GuiView.cpp:1600
+#: src/frontends/qt4/GuiView.cpp:1639
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16943,37 +17186,37 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשמור את המסמך או להסיר את השינויים?"
 
-#: src/frontends/qt4/GuiView.cpp:1603
+#: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Discard"
 msgstr "הסר"
 
-#: src/frontends/qt4/GuiView.cpp:1699
+#: src/frontends/qt4/GuiView.cpp:1734
 msgid "Saving all documents..."
 msgstr "שומר את כל המסמכים..."
 
-#: src/frontends/qt4/GuiView.cpp:1709
+#: src/frontends/qt4/GuiView.cpp:1744
 msgid "All documents saved."
 msgstr "כל המסמכים נשמרו."
 
-#: src/frontends/qt4/GuiView.cpp:1728
+#: src/frontends/qt4/GuiView.cpp:1763
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "סרגל כלים לא מוכר \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1735
+#: src/frontends/qt4/GuiView.cpp:1770
 msgid "off"
 msgstr "כבוי"
 
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1772
 msgid "auto"
 msgstr "אוטומטי"
 
-#: src/frontends/qt4/GuiView.cpp:1739
+#: src/frontends/qt4/GuiView.cpp:1774
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "מצב סרגל הכלים \"%1$s\" נקבע ל%2$s"
 
-#: src/frontends/qt4/GuiView.cpp:1914
+#: src/frontends/qt4/GuiView.cpp:1949
 #, c-format
 msgid "LFUN_UI_TOGGLE %1$s unknown command!"
 msgstr ""
@@ -17000,15 +17243,20 @@ msgstr "(שונה)"
 msgid " (read only)"
 msgstr "(לקריאה בלבד)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1193
+#: src/frontends/qt4/GuiWorkArea.cpp:1194
 #, fuzzy
 msgid "Close File"
 msgstr "סגור"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1205
+#: src/frontends/qt4/GuiWorkArea.cpp:1390
 #, fuzzy
 msgid "Hide tab"
 msgstr "delta"
+
+#: src/frontends/qt4/GuiWorkArea.cpp:1392
+#, fuzzy
+msgid "Close tab"
+msgstr "סגור"
 
 #: src/frontends/qt4/GuiWrap.cpp:34
 #, fuzzy
@@ -17019,45 +17267,55 @@ msgstr "הגדרות אובייקטים צפים"
 msgid "Click to detach"
 msgstr "לחץ כדי לנתק"
 
-#: src/frontends/qt4/Menus.cpp:733
+#: src/frontends/qt4/Menus.cpp:652
 msgid "No Documents Open!"
 msgstr "אין מסמכים פתוחים!"
 
-#: src/frontends/qt4/Menus.cpp:759 src/frontends/qt4/Menus.cpp:836
-#: src/frontends/qt4/Menus.cpp:856 src/frontends/qt4/Menus.cpp:877
-#: src/frontends/qt4/Menus.cpp:959 src/frontends/qt4/Menus.cpp:1083
+#: src/frontends/qt4/Menus.cpp:678 src/frontends/qt4/Menus.cpp:755
+#: src/frontends/qt4/Menus.cpp:775 src/frontends/qt4/Menus.cpp:796
+#: src/frontends/qt4/Menus.cpp:878 src/frontends/qt4/Menus.cpp:1029
 msgid "No Document Open!"
 msgstr "אין מסמך פתוח!"
 
-#: src/frontends/qt4/Menus.cpp:800
+#: src/frontends/qt4/Menus.cpp:719
 msgid "Plain Text"
 msgstr "טקסט רגיל"
 
-#: src/frontends/qt4/Menus.cpp:802
+#: src/frontends/qt4/Menus.cpp:721
 msgid "Plain Text, Join Lines"
 msgstr "טקסט רגיל, איחוד שורות"
 
-#: src/frontends/qt4/Menus.cpp:974
+#: src/frontends/qt4/Menus.cpp:893
 msgid "Master Document"
 msgstr "מסמך ראשי"
 
-#: src/frontends/qt4/Menus.cpp:1020
-msgid "Other floats"
+#: src/frontends/qt4/Menus.cpp:939
+#, fuzzy
+msgid "Other floats: "
 msgstr "אובייקטים צפים אחרים"
 
-#: src/frontends/qt4/Menus.cpp:1030
+#: src/frontends/qt4/Menus.cpp:945
+msgid "Open Navigator..."
+msgstr ""
+
+#: src/frontends/qt4/Menus.cpp:966
+#, fuzzy
+msgid "Other Lists"
+msgstr "אובייקטים צפים אחרים"
+
+#: src/frontends/qt4/Menus.cpp:976
 msgid "No Table of contents"
 msgstr "אין תוכן עניינים"
 
-#: src/frontends/qt4/Menus.cpp:1072
+#: src/frontends/qt4/Menus.cpp:1018
 msgid " (auto)"
 msgstr "(אוטומטי)"
 
-#: src/frontends/qt4/Menus.cpp:1091
+#: src/frontends/qt4/Menus.cpp:1037
 msgid "No Branch in Document!"
 msgstr "אין ענף במסמך!"
 
-#: src/frontends/qt4/Menus.cpp:1493
+#: src/frontends/qt4/Menus.cpp:1535
 #, fuzzy
 msgid "No action defined!"
 msgstr "לא הוגדר שינוי גופן"
@@ -17067,8 +17325,8 @@ msgid "space"
 msgstr "רווח"
 
 #: src/frontends/qt4/Validator.cpp:175 src/insets/ExternalSupport.cpp:365
-#: src/insets/InsetBibtex.cpp:182 src/insets/InsetGraphics.cpp:599
-#: src/insets/InsetInclude.cpp:449
+#: src/insets/InsetBibtex.cpp:192 src/insets/InsetGraphics.cpp:610
+#: src/insets/InsetInclude.cpp:447
 msgid "Invalid filename"
 msgstr "שם קובץ לא תקין"
 
@@ -17087,45 +17345,45 @@ msgstr "לא יכל לעדכן מידע על TeX"
 msgid "The script `%s' failed."
 msgstr "התסריט `%s' נכשל."
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:183
-#: src/insets/InsetGraphics.cpp:600 src/insets/InsetInclude.cpp:450
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetGraphics.cpp:611 src/insets/InsetInclude.cpp:448
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
 "שם הקובץ הבא עלול לגרום לבעיות כאשר מריצים את הקובץ המיוצא באמצעות LaTeX: "
 
-#: src/insets/Inset.cpp:302
+#: src/insets/Inset.cpp:310
 msgid "Opened inset"
 msgstr "תוסף טקסט פתוח"
 
-#: src/insets/InsetBibitem.cpp:81
+#: src/insets/InsetBibitem.cpp:82
 msgid "Keys must be unique!"
 msgstr ""
 
-#: src/insets/InsetBibitem.cpp:82
+#: src/insets/InsetBibitem.cpp:83
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:113
+#: src/insets/InsetBibtex.cpp:123
 msgid "BibTeX Generated Bibliography"
 msgstr "בביליוגרפיה שנוצרה ע\"י BibTeX"
 
-#: src/insets/InsetBibtex.cpp:201 src/insets/InsetBibtex.cpp:252
+#: src/insets/InsetBibtex.cpp:211 src/insets/InsetBibtex.cpp:262
 msgid "Export Warning!"
 msgstr "אזהרת יצוא!"
 
-#: src/insets/InsetBibtex.cpp:202
+#: src/insets/InsetBibtex.cpp:212
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 "ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
 
-#: src/insets/InsetBibtex.cpp:253
+#: src/insets/InsetBibtex.cpp:263
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -17220,44 +17478,44 @@ msgstr ""
 msgid "LaTeX Command: "
 msgstr "פקודת LaTeX: "
 
-#: src/insets/InsetCommandParams.cpp:241
+#: src/insets/InsetCommandParams.cpp:255
 #, fuzzy
 msgid "InsetCommand Error: "
 msgstr "פקודת תוסף: "
 
-#: src/insets/InsetCommandParams.cpp:242 src/insets/InsetCommandParams.cpp:277
+#: src/insets/InsetCommandParams.cpp:256 src/insets/InsetCommandParams.cpp:291
 #, fuzzy
 msgid "Incompatible command name."
 msgstr "Incomplete command"
 
-#: src/insets/InsetCommandParams.cpp:258 src/insets/InsetCommandParams.cpp:276
+#: src/insets/InsetCommandParams.cpp:272 src/insets/InsetCommandParams.cpp:290
 #, fuzzy
 msgid "InsetCommandParams Error: "
 msgstr "פקודת תוסף: "
 
-#: src/insets/InsetCommandParams.cpp:259
+#: src/insets/InsetCommandParams.cpp:273
 msgid "Attempt to change type of parameters."
 msgstr ""
 
-#: src/insets/InsetCommandParams.cpp:268
+#: src/insets/InsetCommandParams.cpp:282
 #, fuzzy
 msgid "InsetCommandParams error:"
 msgstr "פקודת תוסף: "
 
-#: src/insets/InsetCommandParams.cpp:269
+#: src/insets/InsetCommandParams.cpp:283
 msgid "Can't find LatexCommand line."
 msgstr ""
 
-#: src/insets/InsetCommandParams.cpp:299
+#: src/insets/InsetCommandParams.cpp:313
 #, fuzzy
 msgid "InsetCommandParams: "
 msgstr "פקודת תוסף: "
 
-#: src/insets/InsetCommandParams.cpp:300
+#: src/insets/InsetCommandParams.cpp:314
 msgid "Unknown parameter name: "
 msgstr "שם פרמטר לא מוכר: "
 
-#: src/insets/InsetCommandParams.cpp:307 src/insets/InsetInfo.cpp:121
+#: src/insets/InsetCommandParams.cpp:321 src/insets/InsetInfo.cpp:121
 msgid "Missing \\end_inset at this point."
 msgstr "בנקודה זו חסר end_inset\\."
 
@@ -17269,7 +17527,7 @@ msgstr "התוסף 'ט\"אם' פתוח"
 msgid "Opened Environment Inset: "
 msgstr "התוסף \"סביבה\" פתוח"
 
-#: src/insets/InsetExternal.cpp:598
+#: src/insets/InsetExternal.cpp:606
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "התבתנית החיצונית %1$s לא מותקנת"
@@ -17318,7 +17576,7 @@ msgstr "התוסף \"הערת תחתית\" פתוח"
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/InsetGraphics.cpp:477 src/insets/InsetInclude.cpp:528
+#: src/insets/InsetGraphics.cpp:488 src/insets/InsetInclude.cpp:525
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -17329,42 +17587,39 @@ msgstr ""
 "%1$s\n"
 "לתיקייה הזמנית."
 
-#: src/insets/InsetGraphics.cpp:706
+#: src/insets/InsetGraphics.cpp:717
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "בסופו של דבר, אין צורך להמיר את %1$s"
 
-#: src/insets/InsetGraphics.cpp:800
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "קובץ תמונה: %1$s"
 
-#: src/insets/InsetHFill.cpp:65
-msgid "Horizontal Fill"
-msgstr "מילוי אופקי"
-
-#: src/insets/InsetInclude.cpp:321
-msgid "Verbatim Input"
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:324
-msgid "Verbatim Input*"
-msgstr ""
-
-#: src/insets/InsetInclude.cpp:344
+#: src/insets/InsetGraphics.cpp:936 src/insets/InsetInclude.cpp:342
+#: src/insets/InsetInclude.cpp:880 src/insets/InsetInclude.cpp:900
 msgid " (embedded)"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:423 src/insets/InsetInclude.cpp:616
+#: src/insets/InsetInclude.cpp:319
+msgid "Verbatim Input"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:322
+msgid "Verbatim Input*"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:421 src/insets/InsetInclude.cpp:613
 msgid "Recursive input"
 msgstr "קלט רקורסיבי"
 
-#: src/insets/InsetInclude.cpp:424 src/insets/InsetInclude.cpp:617
+#: src/insets/InsetInclude.cpp:422 src/insets/InsetInclude.cpp:614
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "ניסיון לכלול את הקובץ %1$s בתוך עצמו. מתעלם מכלילת הקובץ."
 
-#: src/insets/InsetInclude.cpp:472
+#: src/insets/InsetInclude.cpp:470
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -17375,11 +17630,11 @@ msgstr ""
 "הוא במחלקת טקסט `%2$s'\n"
 "בעוד שמסמך האב הוא במחלקת טקסט `%3$s'."
 
-#: src/insets/InsetInclude.cpp:478
+#: src/insets/InsetInclude.cpp:476
 msgid "Different textclasses"
 msgstr "מחלקת טקסט שונה"
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:491
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -17390,7 +17645,7 @@ msgstr ""
 "הוא במחלקת טקסט `%2$s'\n"
 "בעוד שמסמך האב הוא במחלקת טקסט `%3$s'."
 
-#: src/insets/InsetInclude.cpp:498
+#: src/insets/InsetInclude.cpp:495
 #, fuzzy
 msgid "Module not found"
 msgstr "קובץ לא נמצא"
@@ -17452,98 +17707,98 @@ msgstr ""
 msgid "Opened Listing Inset"
 msgstr "תוסף \"רישום קוד\" פתוח"
 
-#: src/insets/InsetListingsParams.cpp:116
+#: src/insets/InsetListingsParams.cpp:117
 msgid "A value is expected."
 msgstr "מצפה לערך."
 
-#: src/insets/InsetListingsParams.cpp:119
-#: src/insets/InsetListingsParams.cpp:132
-#: src/insets/InsetListingsParams.cpp:145
-#: src/insets/InsetListingsParams.cpp:158
-#: src/insets/InsetListingsParams.cpp:185
-#: src/insets/InsetListingsParams.cpp:218
+#: src/insets/InsetListingsParams.cpp:120
+#: src/insets/InsetListingsParams.cpp:133
+#: src/insets/InsetListingsParams.cpp:146
+#: src/insets/InsetListingsParams.cpp:159
+#: src/insets/InsetListingsParams.cpp:186
+#: src/insets/InsetListingsParams.cpp:219
 msgid "Unbalanced braces!"
 msgstr "סוגריים לא מאוזנים!"
 
-#: src/insets/InsetListingsParams.cpp:127
+#: src/insets/InsetListingsParams.cpp:128
 msgid "Please specify true or false."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:130
+#: src/insets/InsetListingsParams.cpp:131
 msgid "Only true or false is allowed."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:140
+#: src/insets/InsetListingsParams.cpp:141
 msgid "Please specify an integer value."
 msgstr "אנא ציין ערך שלם."
 
-#: src/insets/InsetListingsParams.cpp:143
+#: src/insets/InsetListingsParams.cpp:144
 msgid "An integer is expected."
 msgstr "מצפה למספר שלם."
 
-#: src/insets/InsetListingsParams.cpp:153
+#: src/insets/InsetListingsParams.cpp:154
 msgid "Please specify a LaTeX length expression."
 msgstr "אנא ציין ביטוי אורך של LaTeX."
 
-#: src/insets/InsetListingsParams.cpp:156
+#: src/insets/InsetListingsParams.cpp:157
 msgid "Invalid LaTeX length expression."
 msgstr "ביטוי אורך של LaTeX שגוי."
 
-#: src/insets/InsetListingsParams.cpp:166
+#: src/insets/InsetListingsParams.cpp:167
 #, c-format
 msgid "Please specify one of %1$s."
 msgstr "אנא ציין אחד מ- %1$s."
 
-#: src/insets/InsetListingsParams.cpp:200
+#: src/insets/InsetListingsParams.cpp:201
 #, c-format
 msgid "Try one of %1$s."
 msgstr "נסה אחד מ- %1$s."
 
-#: src/insets/InsetListingsParams.cpp:202
+#: src/insets/InsetListingsParams.cpp:203
 #, c-format
 msgid "I guess you mean %1$s."
 msgstr "אני מניח שהתכוונת ל- %1$s."
 
-#: src/insets/InsetListingsParams.cpp:210
+#: src/insets/InsetListingsParams.cpp:211
 #, c-format
 msgid "Please specify one or more of '%1$s'."
 msgstr "אנא ציין אחד או יותר מ- '%1$s'."
 
-#: src/insets/InsetListingsParams.cpp:215
+#: src/insets/InsetListingsParams.cpp:216
 #, c-format
 msgid "Should be composed of one or more of %1$s."
 msgstr "צריך להיות מורכב מאחד או יותר מ- %1$s."
 
-#: src/insets/InsetListingsParams.cpp:278
+#: src/insets/InsetListingsParams.cpp:279
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:280
+#: src/insets/InsetListingsParams.cpp:281
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
 "trblTRBL"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:282
+#: src/insets/InsetListingsParams.cpp:283
 msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:285
+#: src/insets/InsetListingsParams.cpp:286
 msgid "Enter something like \\color{white}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:313
+#: src/insets/InsetListingsParams.cpp:314
 msgid "Expect a number with an optional * before it"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:397
+#: src/insets/InsetListingsParams.cpp:398
 msgid "auto, last or a number"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:407
+#: src/insets/InsetListingsParams.cpp:408
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the child document dialog) or menu Insert->Caption (when "
@@ -17553,7 +17808,7 @@ msgstr ""
 "בתיבת הדו-שיח להכנסת מסמך בת) או בתפריט הוספה->כותרת (כאשר אתה מגדיר תוסף "
 "\"רישום קוד\")"
 
-#: src/insets/InsetListingsParams.cpp:413
+#: src/insets/InsetListingsParams.cpp:414
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
 "(when using the child document dialog) or menu Insert->Label (when defining "
@@ -17563,31 +17818,31 @@ msgstr ""
 "משתמש בתיבת הדו-שיח להכנסת מסמך בת) או בתפריט הוספה->תווית (כאשר אתה מגדיר "
 "תוסף \"רישום קוד\")"
 
-#: src/insets/InsetListingsParams.cpp:616
+#: src/insets/InsetListingsParams.cpp:617
 msgid "Invalid (empty) listing parameter name."
 msgstr "שם פרמטר רישום קוד לא תקין (ריק)."
 
-#: src/insets/InsetListingsParams.cpp:632
+#: src/insets/InsetListingsParams.cpp:633
 #, c-format
 msgid "Available listing parameters are %1$s"
 msgstr "פרמטרים של רישום קוד זמינים %1$s"
 
-#: src/insets/InsetListingsParams.cpp:635
+#: src/insets/InsetListingsParams.cpp:636
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr "הפרמטרים של רישום קוד זמינים המכילים את המחרוזת \"%1$s\" הם %2$s"
 
-#: src/insets/InsetListingsParams.cpp:646
+#: src/insets/InsetListingsParams.cpp:647
 #, c-format
 msgid "Parameter %1$s: "
 msgstr "פרמטר %1$s: "
 
-#: src/insets/InsetListingsParams.cpp:659
+#: src/insets/InsetListingsParams.cpp:660
 #, c-format
 msgid "Unknown listing parameter name: %1$s"
 msgstr "שם פרמטר רישום קוד לא מוכר: %1$s"
 
-#: src/insets/InsetListingsParams.cpp:662
+#: src/insets/InsetListingsParams.cpp:663
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr "פרמטרים המתחילים עם '%1$s': %2$s"
@@ -17596,21 +17851,21 @@ msgstr "פרמטרים המתחילים עם '%1$s': %2$s"
 msgid "Opened Marginal Note Inset"
 msgstr "תוסף הערת שוליים פתוח"
 
-#: src/insets/InsetNewline.h:64
+#: src/insets/InsetNewline.h:70
 #, fuzzy
 msgid "line break"
 msgstr "שורה חדשה"
 
-#: src/insets/InsetNewpage.h:46
+#: src/insets/InsetNewpage.h:49
 #, fuzzy
 msgid "New Page"
 msgstr "עמוד ריק"
 
-#: src/insets/InsetNewpage.h:76
+#: src/insets/InsetNewpage.h:83
 msgid "Clear Page"
 msgstr "עמוד ריק"
 
-#: src/insets/InsetNewpage.h:89
+#: src/insets/InsetNewpage.h:99
 msgid "Clear Double Page"
 msgstr "עמוד כפול ריק"
 
@@ -17634,71 +17889,134 @@ msgstr "תוסף טקסט \"הערה\" פתוח"
 msgid "Opened Optional Argument Inset"
 msgstr "תוסף \"ארגומנט רשות\" פתוח"
 
-#: src/insets/InsetRef.cpp:162
+#: src/insets/InsetRef.cpp:153
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:180 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
 msgid "Ref: "
 msgstr "הפנייה"
 
-#: src/insets/InsetRef.cpp:181 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
 msgid "Equation"
 msgstr "משוואה"
 
-#: src/insets/InsetRef.cpp:181 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
 msgid "EqRef: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:182 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
 msgid "Page Number"
 msgstr "מספר עמוד"
 
-#: src/insets/InsetRef.cpp:182 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
 msgid "Page: "
 msgstr "עמוד: "
 
-#: src/insets/InsetRef.cpp:183 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
 msgid "Textual Page Number"
 msgstr "מספר עמוד טקסטואלי"
 
-#: src/insets/InsetRef.cpp:183 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
 msgid "TextPage: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:184 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:184 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:185 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:185 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
 msgid "FormatRef: "
 msgstr ""
+
+#: src/insets/InsetSpace.cpp:73
+#, fuzzy
+msgid "Interword Space"
+msgstr "רווח בין מילים"
+
+#: src/insets/InsetSpace.cpp:76
+#, fuzzy
+msgid "Protected Space"
+msgstr "רווח מוגן"
+
+#: src/insets/InsetSpace.cpp:79
+#, fuzzy
+msgid "Thin Space"
+msgstr "רווח דק"
+
+#: src/insets/InsetSpace.cpp:82
+msgid "Quad Space"
+msgstr ""
+
+#: src/insets/InsetSpace.cpp:85
+msgid "QQuad Space"
+msgstr ""
+
+#: src/insets/InsetSpace.cpp:88
+#, fuzzy
+msgid "Enspace"
+msgstr "רווח"
+
+#: src/insets/InsetSpace.cpp:91
+#, fuzzy
+msgid "Enskip"
+msgstr "nsim"
+
+#: src/insets/InsetSpace.cpp:94
+#, fuzzy
+msgid "Negative Thin Space"
+msgstr "רווח שלילי\t\\!"
+
+#: src/insets/InsetSpace.cpp:100
+#, fuzzy
+msgid "Protected Horizontal Fill"
+msgstr "מילוי אופקי"
+
+#: src/insets/InsetSpace.cpp:103
+#, fuzzy
+msgid "Horizontal Fill (Dots)"
+msgstr "מילוי אופקי"
+
+#: src/insets/InsetSpace.cpp:106
+#, fuzzy
+msgid "Horizontal Fill (Rule)"
+msgstr "מילוי אופקי"
+
+#: src/insets/InsetSpace.cpp:109
+#, fuzzy, c-format
+msgid "Horizontal Space (%1$s)"
+msgstr "קו אופקי"
+
+#: src/insets/InsetSpace.cpp:113
+#, fuzzy, c-format
+msgid "Protected Horizontal Space (%1$s)"
+msgstr "רווח מוגן"
 
 #: src/insets/InsetTOC.cpp:49
 msgid "Unknown TOC type"
 msgstr "סוג תוכן עניינים לא ידוע"
 
-#: src/insets/InsetTabular.cpp:3138
+#: src/insets/InsetTabular.cpp:3127
 msgid "Opened table"
 msgstr "טבלה פתוחה"
 
-#: src/insets/InsetTabular.cpp:4300
+#: src/insets/InsetTabular.cpp:4312
 msgid "Error setting multicolumn"
 msgstr "שגיאה בקביעת תא המתפרש על פני מספר עמודות"
 
-#: src/insets/InsetTabular.cpp:4301
+#: src/insets/InsetTabular.cpp:4313
 msgid "You cannot set multicolumn vertically."
 msgstr "אי אפשר ליצור תא המתפרש על פני מספר עמודות באופן אנכי."
 
-#: src/insets/InsetText.cpp:235
+#: src/insets/InsetText.cpp:204
 msgid "Opened Text Inset"
 msgstr "תוסף טקסט פתוח"
 
@@ -17854,7 +18172,7 @@ msgstr "מחרוזת הוחלפה."
 msgid " strings have been replaced."
 msgstr "מחרוזות הוחלפו."
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1325
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1354
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -17865,55 +18183,55 @@ msgstr "לא יכול להוסיף קווי רשת אנכיים בתוך '%1$s'"
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "אין קווי רשת אנכיים בסביבה מוטלאת: תכונה %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1358
+#: src/mathed/InsetMathGrid.cpp:1345
 msgid "Only one row"
 msgstr "שורה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1364
+#: src/mathed/InsetMathGrid.cpp:1351
 msgid "Only one column"
 msgstr "עמודה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1372
+#: src/mathed/InsetMathGrid.cpp:1359
 msgid "No hline to delete"
 msgstr "אין קו אופקי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1381
+#: src/mathed/InsetMathGrid.cpp:1368
 msgid "No vline to delete"
 msgstr "אין קו אנכי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1399
+#: src/mathed/InsetMathGrid.cpp:1386
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1143 src/mathed/InsetMathHull.cpp:1151
+#: src/mathed/InsetMathHull.cpp:1152 src/mathed/InsetMathHull.cpp:1160
 msgid "No number"
 msgstr "אין מספר"
 
-#: src/mathed/InsetMathHull.cpp:1143 src/mathed/InsetMathHull.cpp:1151
+#: src/mathed/InsetMathHull.cpp:1152 src/mathed/InsetMathHull.cpp:1160
 msgid "Number"
 msgstr "מספר"
 
-#: src/mathed/InsetMathHull.cpp:1298
+#: src/mathed/InsetMathHull.cpp:1327
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "לא יכול לשנות את מספר הטורים ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1308
+#: src/mathed/InsetMathHull.cpp:1337
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "לא יכול לשנות את מספר  השורות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1318
+#: src/mathed/InsetMathHull.cpp:1347
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "לא יכול להוסיף קווי רשת אופקיים בתוך '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:878
+#: src/mathed/InsetMathNest.cpp:944
 msgid "create new math text environment ($...$)"
 msgstr "צור סביבת טקסט מתמטי חדשה ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:881
+#: src/mathed/InsetMathNest.cpp:947
 msgid "entered math text mode (textrm)"
 msgstr "נכנס למצב טקסט מתמטי (textrm)"
 
@@ -17926,12 +18244,12 @@ msgstr "רגיל"
 msgid "optional"
 msgstr "אופקי"
 
-#: src/mathed/MathMacroTemplate.cpp:531
+#: src/mathed/MathMacroTemplate.cpp:530
 #, fuzzy
 msgid "TeX"
 msgstr "LaTeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1174
+#: src/mathed/MathMacroTemplate.cpp:1204
 msgid "math macro"
 msgstr "מאקרו מתמטיקה"
 
@@ -18154,6 +18472,41 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
+
+#, fuzzy
+#~ msgid "Save this document in bundled format"
+#~ msgstr "שמור הגדרות כברירת מחדל"
+
+#, fuzzy
+#~ msgid "Links"
+#~ msgstr "רשימה"
+
+#~ msgid "Horizontal Fill|H"
+#~ msgstr "מילוי אופקי"
+
+#~ msgid "Swap Rows|S"
+#~ msgstr "החלף טורים"
+
+#~ msgid "Swap Columns|w"
+#~ msgstr "החלף עמודות"
+
+#~ msgid "Horizontal Fill|F"
+#~ msgstr "מילוי אופקי"
+
+#, fuzzy
+#~ msgid "The document class %1$s.could not be loaded."
+#~ msgstr ""
+#~ "הקובץ המצוין:\n"
+#~ "%1$s\n"
+#~ "לא ניתן לקריאה."
+
+#, fuzzy
+#~ msgid "true"
+#~ msgstr "רחוב"
+
+#, fuzzy
+#~ msgid "false"
+#~ msgstr "תנאי"
 
 #, fuzzy
 #~ msgid "&float"
