@@ -360,7 +360,8 @@ void LyXAction::init()
  * \li Action: Inserts one of horizontal space insets.
  * \li Syntax: space-insert <NAME> [<LEN>]
  * \li Params: <NAME>: normal, protected, thin, quad, qquad, enspace, enskip,
-                       negthinspace, hfill, dotfill, hrulefill, hspace, hspace* \n
+                       negthinspace, hfill, hfill*, dotfill, hrulefill, hspace,
+                       hspace* \n
                <LEN>: length for custom spaces (hspace, hspace* for protected)
  * \li Origin: JSpitzm, 20 May 2003, Mar 17 2008
  * \endvar
