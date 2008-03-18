@@ -311,8 +311,8 @@ Version 1.5.5
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 27.
- Februar 2008
+letzte Änderung: 18.
+ März 2008
 \end_layout
 
 \begin_layout Standard
@@ -19409,7 +19409,16 @@ fließen
 \emph default
  zu lassen, wobei der Text nur den Teil der Zeile benutzt, den die Abbildung
  übrig lässt.
- Er wird mit dem Befehl 
+ Er wird mit dem Befehl
+\family sans
+ Einfügen\SpecialChar \menuseparator
+Gleitobjekt\SpecialChar \menuseparator
+Umflossenes\InsetSpace \space{}
+Gleit\SpecialChar \-
+ob\SpecialChar \-
+jekt
+\family default
+  
 \begin_inset Wrap figure
 placement l
 width "40col%"
@@ -19451,16 +19460,7 @@ Dies ist eine umflossene Gleitobjekt-Abbildung
 
 \end_inset
 
- 
-\family sans
-Einfügen \SpecialChar \menuseparator
- Gleitobjekt \SpecialChar \menuseparator
- Umflossenes\InsetSpace \space{}
-Gleit\SpecialChar \-
-ob\SpecialChar \-
-jekt
-\family default
- eingefügt, wenn das LaTeX-Paket 
+eingefügt, wenn das LaTeX-Paket 
 \series bold
 wrapfig
 \series default
