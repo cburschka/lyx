@@ -50,7 +50,7 @@
       <item row="4" column="1" >
        <widget class="QPushButton" name="downPB" >
         <property name="text" >
-         <string>&amp;Down</string>
+         <string>Do&amp;wn</string>
         </property>
        </widget>
       </item>
@@ -64,7 +64,7 @@
       <item row="2" column="1" >
        <widget class="QPushButton" name="deletePB" >
         <property name="text" >
-         <string>&amp;Delete</string>
+         <string>De&amp;lete</string>
         </property>
        </widget>
       </item>
@@ -78,7 +78,7 @@
       <item row="1" column="1" >
        <widget class="QPushButton" name="addPB" >
         <property name="text" >
-         <string>&amp;Add</string>
+         <string>A&amp;dd</string>
         </property>
        </widget>
       </item>
@@ -129,7 +129,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2">
+   <item row="2" column="2" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -171,14 +171,6 @@
       <number>20</number>
      </property>
     </widget>
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
    </item>
    <item row="0" column="3" >
     <widget class="QPushButton" name="layoutPB" >

@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>392</width>
+    <width>257</width>
     <height>257</height>
    </rect>
   </property>
@@ -34,6 +34,16 @@
       <property name="spacing" >
        <number>6</number>
       </property>
+      <item row="0" column="0" colspan="2" >
+       <widget class="QRadioButton" name="defaultencodingRB" >
+        <property name="text" >
+         <string>Language &amp;Default</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="2" >
        <spacer>
         <property name="orientation" >
@@ -41,11 +51,18 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>40</width>
-          <height>20</height>
+          <width>81</width>
+          <height>22</height>
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QRadioButton" name="otherencodingRB" >
+        <property name="text" >
+         <string>&amp;Other:</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1" >
        <widget class="QComboBox" name="encodingCO" >
@@ -57,24 +74,53 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QRadioButton" name="otherencodingRB" >
-        <property name="text" >
-         <string>&amp;Other:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QRadioButton" name="defaultencodingRB" >
-        <property name="text" >
-         <string>Language &amp;Default</string>
-        </property>
-        <property name="checked" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
      </layout>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>71</width>
+       <height>23</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="languageL" >
+     <property name="text" >
+      <string>&amp;Language:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>languageCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="typeL" >
+     <property name="text" >
+      <string>&amp;Quote Style:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>quoteStyleCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QComboBox" name="quoteStyleCO" />
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="languageCO" >
+     <property name="maxVisibleItems" >
+      <number>20</number>
+     </property>
     </widget>
    </item>
    <item row="3" column="1" >
@@ -89,52 +135,6 @@
       <size>
        <width>71</width>
        <height>171</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QComboBox" name="languageCO" >
-     <property name="maxVisibleItems" >
-      <number>20</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QComboBox" name="quoteStyleCO" />
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="typeL" >
-     <property name="text" >
-      <string>&amp;Quote Style:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>quoteStyleCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="languageL" >
-     <property name="text" >
-      <string>&amp;Language:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>languageCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::MinimumExpanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>121</width>
-       <height>22</height>
       </size>
      </property>
     </spacer>
