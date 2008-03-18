@@ -265,6 +265,7 @@ UIFILES = \
 	PDFSupportUi.ui \
 	PreambleUi.ui \
 	PrefColorsUi.ui \
+	PrefCompletionUi.ui \
 	PrefConvertersUi.ui \
 	PrefDateUi.ui \
 	PrefDisplayUi.ui \

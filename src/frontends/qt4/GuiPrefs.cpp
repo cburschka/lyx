@@ -390,24 +390,6 @@ PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(secondKeymapED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(inlineDelaySB, SIGNAL(valueChanged(double)),
-		this, SIGNAL(changed()));
-	connect(inlineMathCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(inlineTextCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(inlineDotsCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(popupDelaySB, SIGNAL(valueChanged(double)),
-		this, SIGNAL(changed()));
-	connect(popupMathCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(popupTextCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(popupAfterCompleteCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(cursorTextCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
 	connect(mouseWheelSpeedSB, SIGNAL(valueChanged(double)),
 		this, SIGNAL(changed()));
 }
@@ -419,16 +401,6 @@ void PrefInput::apply(LyXRC & rc) const
 	rc.use_kbmap = keymapCB->isChecked();
 	rc.primary_kbmap = internal_path(fromqstr(firstKeymapED->text()));
 	rc.secondary_kbmap = internal_path(fromqstr(secondKeymapED->text()));
-	rc.completion_inline_delay = inlineDelaySB->value();
-	rc.completion_inline_math = inlineMathCB->isChecked();
-	rc.completion_inline_text = inlineTextCB->isChecked();
-	rc.completion_inline_dots = inlineDotsCB->isChecked() ? 13 : -1;
-	rc.completion_popup_delay = popupDelaySB->value();
-	rc.completion_popup_math = popupMathCB->isChecked();
-	rc.completion_popup_text = popupTextCB->isChecked();
-	rc.completion_cursor_text = cursorTextCB->isChecked();
-	rc.completion_popup_after_complete
-	= popupAfterCompleteCB->isChecked();
 	rc.mouse_wheel_speed = mouseWheelSpeedSB->value();
 }
 
@@ -439,15 +411,6 @@ void PrefInput::update(LyXRC const & rc)
 	keymapCB->setChecked(rc.use_kbmap);
 	firstKeymapED->setText(toqstr(external_path(rc.primary_kbmap)));
 	secondKeymapED->setText(toqstr(external_path(rc.secondary_kbmap)));
-	inlineDelaySB->setValue(rc.completion_inline_delay);
-	inlineMathCB->setChecked(rc.completion_inline_math);
-	inlineTextCB->setChecked(rc.completion_inline_text);
-	inlineDotsCB->setChecked(rc.completion_inline_dots != -1);
-	popupDelaySB->setValue(rc.completion_popup_delay);
-	popupMathCB->setChecked(rc.completion_popup_math);
-	popupTextCB->setChecked(rc.completion_popup_text);
-	cursorTextCB->setChecked(rc.completion_cursor_text);
-	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
 	mouseWheelSpeedSB->setValue(rc.mouse_wheel_speed);
 }
 
@@ -483,6 +446,68 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 	firstKeymapPB->setEnabled(keymap);
 	secondKeymapPB->setEnabled(keymap);
 }
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// PrefCompletion
+//
+/////////////////////////////////////////////////////////////////////
+
+PrefCompletion::PrefCompletion(GuiPreferences * form, QWidget * parent)
+	: PrefModule(qt_("Input Completion"), form, parent)
+{
+	setupUi(this);
+
+	connect(inlineDelaySB, SIGNAL(valueChanged(double)),
+		this, SIGNAL(changed()));
+	connect(inlineMathCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(inlineTextCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(inlineDotsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(popupDelaySB, SIGNAL(valueChanged(double)),
+		this, SIGNAL(changed()));
+	connect(popupMathCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(popupTextCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(popupAfterCompleteCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(cursorTextCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+}
+
+
+void PrefCompletion::apply(LyXRC & rc) const
+{
+	rc.completion_inline_delay = inlineDelaySB->value();
+	rc.completion_inline_math = inlineMathCB->isChecked();
+	rc.completion_inline_text = inlineTextCB->isChecked();
+	rc.completion_inline_dots = inlineDotsCB->isChecked() ? 13 : -1;
+	rc.completion_popup_delay = popupDelaySB->value();
+	rc.completion_popup_math = popupMathCB->isChecked();
+	rc.completion_popup_text = popupTextCB->isChecked();
+	rc.completion_cursor_text = cursorTextCB->isChecked();
+	rc.completion_popup_after_complete =
+		popupAfterCompleteCB->isChecked();
+}
+
+
+void PrefCompletion::update(LyXRC const & rc)
+{
+	inlineDelaySB->setValue(rc.completion_inline_delay);
+	inlineMathCB->setChecked(rc.completion_inline_math);
+	inlineTextCB->setChecked(rc.completion_inline_text);
+	inlineDotsCB->setChecked(rc.completion_inline_dots != -1);
+	popupDelaySB->setValue(rc.completion_popup_delay);
+	popupMathCB->setChecked(rc.completion_popup_math);
+	popupTextCB->setChecked(rc.completion_popup_text);
+	cursorTextCB->setChecked(rc.completion_cursor_text);
+	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
+}
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -2377,6 +2402,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	add(new PrefColors(this));
 	add(new PrefDisplay);
 	add(new PrefInput(this));
+	add(new PrefCompletion(this));
 
 	add(new PrefPaths(this));
 

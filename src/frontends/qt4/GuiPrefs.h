@@ -31,6 +31,7 @@
 #include "ui_PrefInputUi.h"
 #include "ui_PrefLatexUi.h"
 #include "ui_PrefScreenFontsUi.h"
+#include "ui_PrefCompletionUi.h"
 #include "ui_PrefColorsUi.h"
 #include "ui_PrefDisplayUi.h"
 #include "ui_PrefEditUi.h"
@@ -123,6 +124,17 @@ private Q_SLOTS:
 
 private:
 	QString testKeymap(QString keymap);
+};
+
+
+class PrefCompletion : public PrefModule, public Ui::PrefCompletionUi
+{
+	Q_OBJECT
+public:
+	PrefCompletion(GuiPreferences * form, QWidget * parent = 0);
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
 };
 
 

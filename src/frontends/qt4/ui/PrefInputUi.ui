@@ -6,13 +6,19 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>609</height>
+    <height>228</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item>
     <widget class="QGroupBox" name="keyboardGB" >
      <property name="title" >
@@ -25,6 +31,12 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item row="0" column="0" colspan="3" >
        <widget class="QCheckBox" name="keymapCB" >
         <property name="text" >
@@ -94,200 +106,11 @@
          <bool>false</bool>
         </property>
         <property name="text" >
-         <string>Bro&amp;wse...</string>
+         <string>B&amp;rowse...</string>
         </property>
         <property name="autoDefault" >
          <bool>false</bool>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Completion</string>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QVBoxLayout" >
-      <item>
-       <widget class="QGroupBox" name="groupBox_2" >
-        <property name="title" >
-         <string>In Text</string>
-        </property>
-        <property name="flat" >
-         <bool>false</bool>
-        </property>
-        <layout class="QVBoxLayout" >
-         <item>
-          <widget class="QCheckBox" name="inlineTextCB" >
-           <property name="toolTip" >
-            <string>Show the grey inline completion behind the cursor in text mode after the delay.</string>
-           </property>
-           <property name="text" >
-            <string>Automatic inline completion</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="popupTextCB" >
-           <property name="toolTip" >
-            <string>Show the popup after the set delay in text mode.</string>
-           </property>
-           <property name="text" >
-            <string>Automatic popup</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cursorTextCB" >
-           <property name="toolTip" >
-            <string>Show a small triangle on the cursor if a completion is available in text mode.</string>
-           </property>
-           <property name="text" >
-            <string>Cursor indicator</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox_3" >
-        <property name="title" >
-         <string>In Math</string>
-        </property>
-        <property name="flat" >
-         <bool>false</bool>
-        </property>
-        <layout class="QVBoxLayout" >
-         <item>
-          <widget class="QCheckBox" name="inlineMathCB" >
-           <property name="toolTip" >
-            <string>Show the grey inline completion behind the cursor in math mode after the delay.</string>
-           </property>
-           <property name="text" >
-            <string>Automatic inline completion</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="popupMathCB" >
-           <property name="toolTip" >
-            <string>Show the popup in math mode after the delay.</string>
-           </property>
-           <property name="text" >
-            <string>Automatic popup</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox_4" >
-        <property name="title" >
-         <string>General</string>
-        </property>
-        <layout class="QVBoxLayout" >
-         <item>
-          <layout class="QHBoxLayout" >
-           <item>
-            <widget class="QDoubleSpinBox" name="inlineDelaySB" >
-             <property name="toolTip" >
-              <string>After the cursor has not moved for this time, the inline completion is shown if it is available.</string>
-             </property>
-             <property name="maximum" >
-              <double>10.000000000000000</double>
-             </property>
-             <property name="singleStep" >
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_4" >
-             <property name="text" >
-              <string>s inline completion delay</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <item>
-            <widget class="QDoubleSpinBox" name="popupDelaySB" >
-             <property name="toolTip" >
-              <string>After the cursor has not moved for this time, the completion popup is shown if it is available.</string>
-             </property>
-             <property name="maximum" >
-              <double>10.000000000000000</double>
-             </property>
-             <property name="singleStep" >
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_3" >
-             <property name="text" >
-              <string>s popup delay</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="popupAfterCompleteCB" >
-           <property name="toolTip" >
-            <string>When the TAB completion is not unique, there won't be a delay of the popup. It will be shown right away.</string>
-           </property>
-           <property name="text" >
-            <string>Show popup without delay for non-unique completions</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="inlineDotsCB" >
-           <property name="toolTip" >
-            <string>Long completions are cut-off and shown with "...".</string>
-           </property>
-           <property name="text" >
-            <string>Use "..." to shorten long completions</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </widget>
       </item>
      </layout>
@@ -305,10 +128,16 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item row="0" column="0" >
        <widget class="QLabel" name="scrollingSpeedLA" >
         <property name="text" >
-         <string>Wheel scrolling speed:</string>
+         <string>&amp;Wheel scrolling speed:</string>
         </property>
         <property name="buddy" >
          <cstring>mouseWheelSpeedSB</cstring>
@@ -323,11 +152,11 @@
         <property name="decimals" >
          <number>1</number>
         </property>
-        <property name="minimum" >
-         <double>0.100000000000000</double>
-        </property>
         <property name="maximum" >
          <double>10.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>0.100000000000000</double>
         </property>
         <property name="singleStep" >
          <double>0.100000000000000</double>
