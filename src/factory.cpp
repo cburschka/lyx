@@ -348,6 +348,8 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				isp.kind = InsetSpaceParams::NEGTHIN;
 			else if (name == "hfill")
 				isp.kind = InsetSpaceParams::HFILL;
+			else if (name == "hfill*")
+				isp.kind = InsetSpaceParams::HFILL_PROTECTED;
 			else if (name == "dotfill")
 				isp.kind = InsetSpaceParams::DOTFILL;
 			else if (name == "hrulefill")

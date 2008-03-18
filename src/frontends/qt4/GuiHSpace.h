@@ -31,6 +31,8 @@ private Q_SLOTS:
 	void change_adaptor();
 	///
 	void enableWidgets(int);
+	///
+	void patternChanged();
 
 private:
 	/// Apply from dialog

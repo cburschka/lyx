@@ -96,6 +96,9 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	case InsetSpaceParams::HFILL:
 		message = _("Horizontal Fill");
 		break;
+	case InsetSpaceParams::HFILL_PROTECTED:
+		message = _("Protected Horizontal Fill");
+		break;
 	case InsetSpaceParams::DOTFILL:
 		message = _("Horizontal Fill (Dots)");
 		break;
@@ -141,9 +144,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (params_.kind == InsetSpaceParams::HFILL ||
-	    params_.kind == InsetSpaceParams::DOTFILL ||
-	    params_.kind == InsetSpaceParams::HRULEFILL) {
+	if (isStretchableSpace()) {
 		// The metrics for this kinds are calculated externally in
 		// \c TextMetrics::computeRowMetrics. Those are dummy value:
 		dim = Dimension(10, 10, 10);
@@ -178,6 +179,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = params_.length.inBP();
 			break;
 		case InsetSpaceParams::HFILL:
+		case InsetSpaceParams::HFILL_PROTECTED:
 		case InsetSpaceParams::DOTFILL:
 		case InsetSpaceParams::HRULEFILL:
 			// shut up compiler
@@ -192,9 +194,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	if (params_.kind == InsetSpaceParams::HFILL ||
-	    params_.kind == InsetSpaceParams::DOTFILL ||
-	    params_.kind == InsetSpaceParams::HRULEFILL) {
+	if (isStretchableSpace()) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
 		int const x0 = x + 1;
@@ -208,6 +208,11 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.line(x0, y2 , x1, y2, Color_added_space,
 				frontend::Painter::line_onoffdash);
 			pi.pain.line(x1, y1, x1, y0, Color_added_space);
+		} else if (params_.kind == InsetSpaceParams::HFILL_PROTECTED) {
+			pi.pain.line(x0, y1, x0, y0, Color_latex);
+			pi.pain.line(x0, y2 , x1, y2, Color_latex,
+				frontend::Painter::line_onoffdash);
+			pi.pain.line(x1, y1, x1, y0, Color_latex);
 		} else if (params_.kind == InsetSpaceParams::DOTFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_special);
 			pi.pain.line(x0, y, x1, y, Color_special,
@@ -279,6 +284,9 @@ void InsetSpaceParams::write(ostream & os) const
 	case InsetSpaceParams::HFILL:
 		os <<  "\\hfill{}";
 		break;
+	case InsetSpaceParams::HFILL_PROTECTED:
+		os <<  "\\hspace*{\\fill}";
+		break;
 	case InsetSpaceParams::DOTFILL:
 		os <<  "\\dotfill{}";
 		break;
@@ -321,6 +329,8 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::NEGTHIN;
 	else if (command == "\\hfill{}")
 		kind = InsetSpaceParams::HFILL;
+	else if (command == "\\hspace*{\\fill}")
+		kind = InsetSpaceParams::HFILL_PROTECTED;
 	else if (command == "\\dotfill{}")
 		kind = InsetSpaceParams::DOTFILL;
 	else if (command == "\\hrulefill{}")
@@ -393,6 +403,9 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 	case InsetSpaceParams::HFILL:
 		os << (runparams.free_spacing ? " " : "\\hfill{}");
 		break;
+	case InsetSpaceParams::HFILL_PROTECTED:
+		os << (runparams.free_spacing ? " " : "\\hspace*{\\fill}");
+		break;
 	case InsetSpaceParams::DOTFILL:
 		os << (runparams.free_spacing ? " " : "\\dotfill{}");
 		break;
@@ -420,6 +433,7 @@ int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::HFILL:
+	case InsetSpaceParams::HFILL_PROTECTED:
 		os << "     ";
 		return 5;
 	case InsetSpaceParams::DOTFILL:
@@ -451,6 +465,7 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 		os << "&nbsp;";
 		break;
 	case InsetSpaceParams::HFILL:
+	case InsetSpaceParams::HFILL_PROTECTED:
 		os << '\n';
 	case InsetSpaceParams::DOTFILL:
 		// FIXME
@@ -476,6 +491,7 @@ void InsetSpace::textString(odocstream & os) const
 bool InsetSpace::isStretchableSpace() const
 {
 	return (params_.kind == InsetSpaceParams::HFILL ||
+		params_.kind == InsetSpaceParams::HFILL_PROTECTED ||
 		params_.kind == InsetSpaceParams::DOTFILL ||
 		params_.kind == InsetSpaceParams::HRULEFILL);
 }

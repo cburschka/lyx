@@ -47,6 +47,8 @@ public:
 		NEGTHIN,
 		/// rubber length
 		HFILL,
+		/// \hspace*{\fill}
+		HFILL_PROTECTED,
 		/// rubber length, filled with dots
 		DOTFILL,
 		/// rubber length, filled with a rule

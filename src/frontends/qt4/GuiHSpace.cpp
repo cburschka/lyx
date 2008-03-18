@@ -54,7 +54,7 @@ GuiHSpace::GuiHSpace(GuiView & lv)
 	connect(unitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(fillPatternCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(patternChanged()));
 
 	valueLE->setValidator(unsignedLengthValidator(valueLE));
 
@@ -90,9 +90,18 @@ void GuiHSpace::enableWidgets(int selection)
 	valueLE->setEnabled(selection == 7);
 	unitCO->setEnabled(selection == 7);
 	fillPatternCO->setEnabled(selection == 6);
+	int pattern = fillPatternCO->currentIndex();
 	bool const enable_keep =
-		selection == 0 || selection == 3  || selection == 7;
+		selection == 0 || selection == 3  ||
+		(selection == 6 && pattern == 0) || selection == 7;
 	keepCB->setEnabled(enable_keep);
+	changed();
+}
+
+
+void GuiHSpace::patternChanged()
+{
+	enableWidgets(spacingCO->currentIndex());
 	changed();
 }
 
@@ -136,6 +145,10 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 			break;
 		case InsetSpaceParams::HFILL:
 			item = 6;
+			break;
+		case InsetSpaceParams::HFILL_PROTECTED:
+			item = 6;
+			protect = true;
 			break;
 		case InsetSpaceParams::DOTFILL:
 			item = 6;
@@ -200,6 +213,8 @@ static InsetSpaceParams setHSpaceFromWidgets(int spacing,
 				params.kind = InsetSpaceParams::DOTFILL;
 			else if (fill == 2)
 				params.kind = InsetSpaceParams::HRULEFILL;
+			else if (keep)
+				params.kind = InsetSpaceParams::HFILL_PROTECTED;
 			else
 				params.kind = InsetSpaceParams::HFILL;
 			break;

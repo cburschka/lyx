@@ -1458,6 +1458,24 @@ def revert_hspace(document):
         'hspace{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
 
 
+def revert_protected_hfill(document):
+    ' Revert \\begin_inset Space \\hspace*{\\fill} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Space \\hspace*{\\fill}', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Space \\hspace*{\\fill}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'hspace*{\n\\backslash\nfill}\n\\end_layout\n\n\\end_inset\n\n')
+
+
 ##
 # Conversion hub
 #
@@ -1505,10 +1523,12 @@ convert = [[277, [fix_wrong_tables]],
            [316, [convert_subfig]],
            [317, []],
            [318, []],
-           [319, [convert_spaceinset, convert_hfill]]
+           [319, [convert_spaceinset, convert_hfill]],
+           [320, []]
           ]
 
-revert =  [[318, [revert_spaceinset, revert_hfills, revert_hspace]],
+revert =  [[319, [revert_protected_hfill]],
+           [318, [revert_spaceinset, revert_hfills, revert_hspace]],
            [317, [remove_extra_embedded_files]],
            [316, [revert_wrapplacement]],
            [315, [revert_subfig]],
