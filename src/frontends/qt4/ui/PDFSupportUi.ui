@@ -366,9 +366,6 @@
              </property>
              <item row="1" column="0" colspan="3" >
               <widget class="QCheckBox" name="bookmarksopenGB" >
-               <property name="enabled" >
-                <bool>false</bool>
-               </property>
                <property name="text" >
                 <string>&amp;Open bookmarks</string>
                </property>
@@ -389,9 +386,6 @@
              </item>
              <item row="2" column="2" >
               <widget class="QSpinBox" name="bookmarksopenlevelSB" >
-               <property name="enabled" >
-                <bool>false</bool>
-               </property>
                <property name="toolTip" >
                 <string>Number of levels</string>
                </property>
@@ -443,38 +437,4 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>bookmarksopenGB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>59</x>
-     <y>242</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>86</x>
-     <y>267</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bookmarksopenGB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>bookmarksopenlevelSB</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>82</x>
-     <y>240</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>139</x>
-     <y>275</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
 </ui>
