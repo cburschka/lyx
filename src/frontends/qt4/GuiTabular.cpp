@@ -283,28 +283,28 @@ void GuiTabular::borderUnset_clicked()
 
 void GuiTabular::leftBorder_changed()
 {
-	toggleLeftLine();
+	set(Tabular::TOGGLE_LINE_LEFT);
 	changed();
 }
 
 
 void GuiTabular::rightBorder_changed()
 {
-	toggleRightLine();
+	set(Tabular::TOGGLE_LINE_RIGHT);
 	changed();
 }
 
 
 void GuiTabular::topBorder_changed()
 {
-	toggleTopLine();
+	set(Tabular::TOGGLE_LINE_TOP);
 	changed();
 }
 
 
 void GuiTabular::bottomBorder_changed()
 {
-	toggleBottomLine();
+	set(Tabular::TOGGLE_LINE_BOTTOM);
 	changed();
 }
 
@@ -554,39 +554,10 @@ void GuiTabular::ltLastFooterEmpty_clicked()
 void GuiTabular::update_borders()
 {
 	Tabular::idx_type const cell = getActiveCell();
-	bool const isMulticolumnCell = tabular_.isMultiColumn(cell);
-
-	if (!isMulticolumnCell) {
-		borders->setLeftEnabled(true);
-		borders->setRightEnabled(true);
-		borders->setTop(tabular_.topLine(cell, true));
-		borders->setBottom(tabular_.bottomLine(cell, true));
-		borders->setLeft(tabular_.leftLine(cell, true));
-		borders->setRight(tabular_.rightLine(cell, true));
-		// repaint the setborder widget
-		borders->update();
-		return;
-	}
-
 	borders->setTop(tabular_.topLine(cell));
 	borders->setBottom(tabular_.bottomLine(cell));
-	// pay attention to left/right lines: they are only allowed
-	// to set if we are in first/last cell of row or if the left/right
-	// cell is also a multicolumn.
-	if (tabular_.isFirstCellInRow(cell) || tabular_.isMultiColumn(cell - 1)) {
-		borders->setLeftEnabled(true);
-		borders->setLeft(tabular_.leftLine(cell));
-	} else {
-		borders->setLeft(false);
-		borders->setLeftEnabled(false);
-	}
-	if (tabular_.isLastCellInRow(cell) || tabular_.isMultiColumn(cell + 1)) {
-		borders->setRightEnabled(true);
-		borders->setRight(tabular_.rightLine(cell));
-	} else {
-		borders->setRight(false);
-		borders->setRightEnabled(false);
-	}
+	borders->setLeft(tabular_.leftLine(cell));
+	borders->setRight(tabular_.rightLine(cell));
 	// repaint the setborder widget
 	borders->update();
 }
@@ -985,42 +956,6 @@ void GuiTabular::set(Tabular::Feature f, string const & arg)
 bool GuiTabular::useMetricUnits() const
 {
 	return lyxrc.default_papersize > PAPER_USEXECUTIVE;
-}
-
-
-void GuiTabular::toggleTopLine()
-{
-	if (tabular_.isMultiColumn(getActiveCell()))
-		set(Tabular::M_TOGGLE_LINE_TOP);
-	else
-		set(Tabular::TOGGLE_LINE_TOP);
-}
-
-
-void GuiTabular::toggleBottomLine()
-{
-	if (tabular_.isMultiColumn(getActiveCell()))
-		set(Tabular::M_TOGGLE_LINE_BOTTOM);
-	else
-		set(Tabular::TOGGLE_LINE_BOTTOM);
-}
-
-
-void GuiTabular::toggleLeftLine()
-{
-	if (tabular_.isMultiColumn(getActiveCell()))
-		set(Tabular::M_TOGGLE_LINE_LEFT);
-	else
-		set(Tabular::TOGGLE_LINE_LEFT);
-}
-
-
-void GuiTabular::toggleRightLine()
-{
-	if (tabular_.isMultiColumn(getActiveCell()))
-		set(Tabular::M_TOGGLE_LINE_RIGHT);
-	else
-		set(Tabular::TOGGLE_LINE_RIGHT);
 }
 
 

@@ -47,6 +47,155 @@ def add_to_preamble(document, text):
 
 ####################################################################
 
+def get_option(document, m, option, default):
+    l = document.body[m].find(option)
+    val = default
+    if l != -1:
+        val = document.body[m][l:].split('"')[1]
+    return val
+
+def remove_option(document, m, option):
+    l = document.body[m].find(option)
+    if l != -1:
+        val = document.body[m][l:].split('"')[1]
+        document.body[m] = document.body[m][:l-1] + document.body[m][l+len(option + '="' + val + '"'):]
+    return l
+
+def set_option(document, m, option, value):
+    l = document.body[m].find(option)
+    if l != -1:
+        oldval = document.body[m][l:].split('"')[1]
+        l = l + len(option + '="')
+        document.body[m] = document.body[m][:l] + value + document.body[m][l+len(oldval):]
+    else:
+        document.body[m] = document.body[m][:-1] + ' ' + option + '="' + value + '">'
+    return l
+
+def convert_tablines(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+
+        m = i + 1
+        nrows = int(document.body[i+1].split('"')[3])
+        ncols = int(document.body[i+1].split('"')[5])
+
+        col_info = []
+        for k in range(ncols):
+            m = find_token(document.body, "<column", m)
+            left = get_option(document, m, 'leftline', 'false')
+            right = get_option(document, m, 'rightline', 'false')
+            col_info.append([left, right])
+            remove_option(document, m, 'leftline')
+            remove_option(document, m, 'rightline')
+            m = m + 1
+
+        row_info = []
+        for k in range(nrows):
+            m = find_token(document.body, "<row", m)
+            top = get_option(document, m, 'topline', 'false')
+            bottom = get_option(document, m, 'bottomline', 'false')
+            row_info.append([top, bottom])
+            remove_option(document, m, 'topline')
+            remove_option(document, m, 'bottomline')
+            m = m + 1
+
+        m = i + 1
+        mc_info = []
+        for k in range(nrows*ncols):
+            m = find_token(document.body, "<cell", m)
+            mc_info.append(get_option(document, m, 'multicolumn', '0'))
+            m = m + 1
+        m = i + 1
+        for l in range(nrows):
+            for k in range(ncols):
+                m = find_token(document.body, '<cell', m)
+                if mc_info[l*ncols + k] == '0':
+                    r = set_option(document, m, 'topline', row_info[l][0])
+                    r = set_option(document, m, 'bottomline', row_info[l][1])
+                    r = set_option(document, m, 'leftline', col_info[k][0])
+                    r = set_option(document, m, 'rightline', col_info[k][1])
+                elif mc_info[l*ncols + k] == '1':
+                    s = k + 1
+                    while s < ncols and mc_info[l*ncols + s] == '2':
+                        s = s + 1
+                    if s < ncols and mc_info[l*ncols + s] != '1':
+                        r = set_option(document, m, 'rightline', col_info[k][1])
+                    if k > 0 and mc_info[l*ncols + k - 1] == '0':
+                        r = set_option(document, m, 'leftline', col_info[k][0])
+                m = m + 1
+        i = j + 1
+
+
+def revert_tablines(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+
+        m = i + 1
+        nrows = int(document.body[i+1].split('"')[3])
+        ncols = int(document.body[i+1].split('"')[5])
+
+        lines = []
+        for k in range(nrows*ncols):
+            m = find_token(document.body, "<cell", m)
+            top = get_option(document, m, 'topline', 'false')
+            bottom = get_option(document, m, 'bottomline', 'false')
+            left = get_option(document, m, 'leftline', 'false')
+            right = get_option(document, m, 'rightline', 'false')
+            lines.append([top, bottom, left, right])
+            m = m + 1
+
+        m = i + 1
+        col_info = []
+        for k in range(ncols):
+            m = find_token(document.body, "<column", m)
+            left = 'true'
+            for l in range(nrows):
+                left = lines[k*ncols + k][2]
+                if left == 'false':
+                    break
+            set_option(document, m, 'leftline', left)
+            right = 'true'
+            for l in range(nrows):
+                right = lines[k*ncols + k][3]
+                if right == 'false':
+                    break
+            set_option(document, m, 'rightline', right)
+            m = m + 1
+
+        row_info = []
+        for k in range(nrows):
+            m = find_token(document.body, "<row", m)
+            top = 'true'
+            for l in range(ncols):
+                top = lines[k*ncols + l][0]
+                if top == 'false':
+                    break
+            set_option(document, m, 'topline', top)
+            bottom = 'true'
+            for l in range(ncols):
+                bottom = lines[k*ncols + l][1]
+                if bottom == 'false':
+                    break
+            set_option(document, m, 'bottomline', bottom)
+            m = m + 1
+
+        i = j + 1
+
+
 def fix_wrong_tables(document):
     i = 0
     while True:
@@ -1524,10 +1673,12 @@ convert = [[277, [fix_wrong_tables]],
            [317, []],
            [318, []],
            [319, [convert_spaceinset, convert_hfill]],
-           [320, []]
+           [320, []],
+           [321, [convert_tablines]]
           ]
 
-revert =  [[319, [revert_protected_hfill]],
+revert =  [[320, [revert_tablines]],
+           [319, [revert_protected_hfill]],
            [318, [revert_spaceinset, revert_hfills, revert_hspace]],
            [317, [remove_extra_embedded_files]],
            [316, [revert_wrapplacement]],

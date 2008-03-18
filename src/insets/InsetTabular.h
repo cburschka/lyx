@@ -107,14 +107,6 @@ public:
 		///
 		VALIGN_MIDDLE,
 		///
-		M_TOGGLE_LINE_TOP,
-		///
-		M_TOGGLE_LINE_BOTTOM,
-		///
-		M_TOGGLE_LINE_LEFT,
-		///
-		M_TOGGLE_LINE_RIGHT,
-		///
 		M_ALIGN_LEFT,
 		///
 		M_ALIGN_RIGHT,
@@ -245,13 +237,13 @@ public:
 	Tabular(Buffer const &, col_type columns_arg, row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
-	bool topLine(idx_type cell, bool wholerow = false) const;
+	bool topLine(idx_type cell) const;
 	/// Returns true if there is a topline, returns false if not
-	bool bottomLine(idx_type cell, bool wholerow = false) const;
+	bool bottomLine(idx_type cell) const;
 	/// Returns true if there is a topline, returns false if not
-	bool leftLine(idx_type cell, bool wholecolumn = false) const;
+	bool leftLine(idx_type cell) const;
 	/// Returns true if there is a topline, returns false if not
-	bool rightLine(idx_type cell, bool wholecolumn = false) const;
+	bool rightLine(idx_type cell) const;
 
 	///
 	bool topAlreadyDrawn(idx_type cell) const;
@@ -286,14 +278,22 @@ public:
 	///
 	void setAllLines(idx_type cell, bool line);
 	///
-	void setTopLine(idx_type cell, bool line, bool wholerow = false);
+	void setTopLine(idx_type cell, bool line);
 	///
-	void setBottomLine(idx_type cell, bool line, bool wholerow = false);
+	void setBottomLine(idx_type cell, bool line);
 	///
-	void setLeftLine(idx_type cell, bool line, bool wholecolumn = false);
+	void setLeftLine(idx_type cell, bool line);
 	///
-	void setRightLine(idx_type cell, bool line, bool wholecolumn = false);
+	void setRightLine(idx_type cell, bool line);
 	///
+	bool rowTopLine(row_type row) const;
+	///
+	bool rowBottomLine(row_type row) const;
+	///
+	bool columnLeftLine(col_type column) const;
+	///
+	bool columnRightLine(col_type column) const;
+
 	void setAlignment(idx_type cell, LyXAlignment align,
 			  bool onlycolumn = false);
 	///
@@ -611,7 +611,7 @@ public:
 	///
 	bool calculate_width_of_column_NMC(col_type column); // no multi cells
 	///
-	idx_type cells_in_multicolumn(idx_type cell) const;
+	idx_type columnSpan(idx_type cell) const;
 	///
 	BoxType useParbox(idx_type cell) const;
 	///
@@ -744,6 +744,10 @@ public:
 
 	/// lock cell with given index
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+	/// get table row from x coordinate
+	int rowFromY(Cursor & cur, int y) const;
+	/// get table column from y coordinate
+	int columnFromX(Cursor & cur, int x) const;
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?

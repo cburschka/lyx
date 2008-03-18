@@ -95,12 +95,6 @@ private:
 	/// set a parameter
 	void set(Tabular::Feature, std::string const & arg = std::string());
 
-	/// borders
-	void toggleTopLine();
-	void toggleBottomLine();
-	void toggleLeftLine();
-	void toggleRightLine();
-
 	void setSpecial(std::string const & special);
 
 	void setWidth(std::string const & width);

@@ -1,6 +1,10 @@
 LyX file-format changes
 -----------------------
 
+2008-03-15 Edwin Leuven <e.leuven@uva.nl>
+	* Format incremented to 321: drop row/col lines and ensure consistency 
+	  between cell and row/col lines
+
 2008-03-18 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 320: support for protected horizontal fill
 	  (\hspace*{\fill})
@@ -959,4 +963,6 @@ renamed as "size_kind" and "lyxsize_kind" respectively.
 	lyxwidth 4cm
 
  \end_inset
+
+
 
