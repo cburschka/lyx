@@ -47,7 +47,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="categoryCO" />
+      <widget class="QComboBox" name="categoryCO" >
+       <property name="maxVisibleItems" >
+        <number>20</number>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
