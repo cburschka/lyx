@@ -14,7 +14,7 @@ build_type=release
 AC_MSG_CHECKING([for build type])
 AC_ARG_ENABLE(build-type,
   AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=dev(elopment), rel(ease) or pre(release)]),
-  [case $enableval in 
+  [case $enableval in
     dev*) lyx_devel_version=yes
           build_type=development;;
     pre*) lyx_prerelease=yes
@@ -423,12 +423,13 @@ fi])
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
+	AC_MSG_CHECKING([whether to use boost included library])
 	AC_ARG_WITH(included-boost,
 	    [  --without-included-boost  do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found],
-	    [lyx_cv_with_included_boost=$withval
-		AC_MSG_RESULT([$with_included_boost])],
+	    [lyx_cv_with_included_boost=$withval],
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
+	AC_MSG_RESULT([$lyx_cv_with_included_boost])
 ])
 
 
@@ -603,7 +604,7 @@ case $lyx_use_packaging in
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   pkgdatadir='${datadir}'
-	   mandir='${datadir}/man' 
+	   mandir='${datadir}/man'
 	   lyx_install_macosx=true ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
 	   PACKAGE=LyX${version_suffix}
@@ -688,7 +689,7 @@ fi
 
 
 dnl Set VAR to the canonically resolved absolute equivalent of PATHNAME,
-dnl (which may be a relative path, and need not refer to any existing 
+dnl (which may be a relative path, and need not refer to any existing
 dnl entity).
 
 dnl On Win32-MSYS build hosts, the returned path is resolved to its true
