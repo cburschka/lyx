@@ -146,13 +146,6 @@ UnicodeBlocks unicode_blocks[] = {
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
 
-QLatin1String getCodePoint(char_type c)
-{
-	static char buf[10];
-	sprintf(buf, "0x%04x", c);
-	return QLatin1String(buf);
-}
-
 } // namespace anon
 
 
@@ -302,6 +295,10 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			}
 	}
 
+	static char codeName[10];
+	static QString const strCharacter = qt_("Character: ");
+	static QString const strCodePoint = qt_("Code Point: ");
+
 	SymbolsList::const_iterator const end = symbols_.end();
 	for (SymbolsList::const_iterator it = symbols_.begin(); it != end; ++it) {
 		char_type c = *it;
@@ -318,11 +315,10 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
 		if (show_all || c >= range_start && c <= range_end) {
+			sprintf(codeName, "0x%04x", c);
 			lwi->setTextAlignment(Qt::AlignCenter);
-			lwi->setToolTip(
-				qt_("Character: ") + toqstr(c) + '\n' +
-				qt_("Code Point: ") + getCodePoint(c)
-				);
+			lwi->setToolTip(strCharacter + toqstr(c) + '\n'
+				+ strCodePoint + QLatin1String(codeName));
 			symbolsLW->addItem(lwi);
 		}
 		if (update_combo) {
