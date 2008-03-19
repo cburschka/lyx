@@ -1,9 +1,11 @@
 LyX file-format changes
 -----------------------
 
-2008-03-15 Edwin Leuven <e.leuven@uva.nl>
-	* Format incremented to 321: drop row/col lines and ensure consistency 
-	  between cell and row/col lines
+2008-03-18 Edwin Leuven <e.leuven@uva.nl>
+	* Format incremented to 321: drop row/col lines and ensure
+	  consistency between cell and row/col lines.
+	  Make the separation between \begin_inset and Tabular a
+	  single space (it used to be a double space for lyx < 1.4)
 
 2008-03-18 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 320: support for protected horizontal fill
@@ -35,7 +37,7 @@ LyX file-format changes
 	  and wide sideways{figure,table}.
 
 2008-01-10 Richard Heck <rgheck@comcast.net>
-	* Format incremented to 311: dummy format to drive the AMS conversion 
+	* Format incremented to 311: dummy format to drive the AMS conversion
 
 2007-12-28 Bernhard Reiter <ockham@gmx.net>
 	* Format incremented to 310: support for \nocite{*}
@@ -137,7 +139,7 @@ LyX file-format changes
 
 2007-09-08 Martin Vermeer <martin.vermeer@tkk.fi>
 
-	* format incremented to 283: CharStyle insets are now 
+	* format incremented to 283: CharStyle insets are now
 	  called Flex.
 
 2007-08-31 Bo Peng <ben.bob@gmail.com>
@@ -178,7 +180,7 @@ LyX file-format changes
 
 2007-06-26 Uwe Stöhr <uwestoehr@web.de> and Dov Feldstern <dov@lyx.org>
 
-	* format incremented to 276: switching exsting language 'arabic' to 
+	* format incremented to 276: switching exsting language 'arabic' to
 		'arabic_arabtex'; this is to differentiate from the new arabic support
 		using the arabi package.
 
@@ -194,12 +196,12 @@ LyX file-format changes
 		determined on a per-paragraph basis.
 
 2007-06-13 Bo Peng <ben.bob@gmail.com>
-	* format incremented to 273: add --Separator-- environment to 
+	* format incremented to 273: add --Separator-- environment to
 		separate consecutive environments
 
 2007-06-13 Bo Peng <bpeng@lyx.org>
 	* format incremented to 272: convert listings to ERT because
-		earlier versions of lyx can not handle unrecognizable 
+		earlier versions of lyx can not handle unrecognizable
 		listings parameters.
 
 2007-05-15 José Matos <jamatos@lyx.org>
@@ -227,10 +229,10 @@ LyX file-format changes
 	  - encoding package:
 	    "inputenc" for those languages that use the inputenc-package and
 	    "CJK" for the CJK encodings
-	  - "fixed"/"variable" to divide between multi- or single-byte encoding 
+	  - "fixed"/"variable" to divide between multi- or single-byte encoding
 	- lib/languages allows now to set an empty language for babel
 	  in this case babel isn't called.
-	
+
 2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 267: add plain utf8 encoding (for XeTeX).
@@ -239,7 +241,7 @@ LyX file-format changes
 
 	* format incremented to 266:
 	Support for the Armenian language
-	
+
 2007-04-26  Uwe Stöhr  <uwestoehr@web.de>
 
 	* format incremented to 265: fix LyX's table border line handling
@@ -296,12 +298,12 @@ LyX file-format changes
 
 	* format incremented to 258: new \lyxline definition
 	Old:
-	        \\newcommand{\\lyxline}[1]{ 
- 	          {#1 \\vspace{1ex} \\hrule width \\columnwidth \\vspace{1ex}} 
- 	        } 
+	        \\newcommand{\\lyxline}[1]{
+ 	          {#1 \\vspace{1ex} \\hrule width \\columnwidth \\vspace{1ex}}
+ 	        }
 	New:
-		\\newcommand{\\lyxline}[1][1pt]{% 
- 	          \\par\\noindent% 
+		\\newcommand{\\lyxline}[1][1pt]{%
+ 	          \\par\\noindent%
  	          \\rule[.5ex]{\\linewidth}{#1}\\par}
         The new definition is more robust, see bug 1988 and now really takes care about
 	the fontsize: \lyxline{\Huge} produces now a thicker line than \lyxline{\normalfont}
@@ -380,8 +382,8 @@ LyX file-format changes
 	* Format incremented to 250: allow optional arg to environments
 
 	No material format change. Now optargs for environments are allowed
-	to be specified in layout files and will be handled properly. When 
-	converted back to older formats, they will be ignored in LaTeX 
+	to be specified in layout files and will be handled properly. When
+	converted back to older formats, they will be ignored in LaTeX
 	output.
 
 2006-08-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
@@ -433,10 +435,10 @@ LyX file-format changes
 			bookman		bookman		default		default
 			pslatex		times		(or \usepackage{pslatex})
 		New 246->247:
-			\font_roman: cmr (-> \renewcommand{\rmdefault}{cmr}), 
+			\font_roman: cmr (-> \renewcommand{\rmdefault}{cmr}),
 				     lmodern, charter, utopia, ccfonts, chancery, beraserif
 					(-> \usepackage{<name>})
-			\font_sans: cmss, lmss, cmbr 
+			\font_sans: cmss, lmss, cmbr
 					(-> \renewcommand{\sfdefault}{<name>})
 				    berasans (-> \usepackage{<name>})
 			\font_typewriter: cmtt, lmtt, cmtl,
@@ -456,7 +458,7 @@ LyX file-format changes
 
 2006-06-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* format incremented to 246. The framed.sty package is 
+	* format incremented to 246. The framed.sty package is
 	now supported with note types framed and shaded.
 
 2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
