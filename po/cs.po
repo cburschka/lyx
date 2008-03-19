@@ -1288,26 +1288,24 @@ msgid "&Draft mode"
 msgstr "&Mód konceptu"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
-#, fuzzy
 msgid "Insert the spacing even after a line break"
-msgstr "Vlo¾it mezeru i za zalomení stránky"
+msgstr "Vlo¾it mezeru i za zalomení øádku"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:38
-#, fuzzy
 msgid "&Fill Pattern:"
-msgstr "&Soubor:"
+msgstr "&Vzorek výplnì:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:48
 msgid "Select a fill pattern style for HFills"
-msgstr ""
+msgstr "Nastavte vzorek výplnì pro HFill"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:57
 msgid "..............."
-msgstr ""
+msgstr "..............."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:62
 msgid "________"
-msgstr ""
+msgstr "________"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:28
 msgid "&Spacing:"
@@ -1335,15 +1333,15 @@ msgstr "Záporná tenká mezera"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:219
 msgid "Enspace (0.5 em)"
-msgstr ""
+msgstr "En-mezera (0.5 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:224
 msgid "Quad (1 em)"
-msgstr ""
+msgstr "Quad (1 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:229
 msgid "QQuad (2 em)"
-msgstr ""
+msgstr "QQuad (2 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:234 src/insets/InsetSpace.cpp:97
 msgid "Horizontal Fill"
@@ -1499,7 +1497,6 @@ msgid "Modules"
 msgstr "Moduly"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:120
-#, fuzzy
 msgid "De&lete"
 msgstr "&Smazat"
 
@@ -1527,12 +1524,11 @@ msgstr "&Mo¾nosti:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:242
 msgid "Click to select a local document class definition file"
-msgstr ""
+msgstr "Nastavit lokální definièní soubor tøídy dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:245
-#, fuzzy
 msgid "&Select Local Layout..."
-msgstr "&Nastavit rozvr¾ení"
+msgstr "&Nastavit lokální rozvr¾ení..."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -1989,7 +1985,7 @@ msgstr "Dva"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:231
 msgid "I&mmediate Apply"
-msgstr ""
+msgstr "O&kam¾itì pou¾ít"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:41
 msgid "&Use hyperref support"
@@ -1997,16 +1993,15 @@ msgstr "Pou¾ít balíèek hyperref"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:62
 msgid "Additional o&ptions"
-msgstr "&Doplòkové parametry proo LaTeX:"
+msgstr "&Doplòkové parametry pro LaTeX:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:91
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr "napø.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:105
-#, fuzzy
 msgid "&General"
-msgstr "General"
+msgstr "&General"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:151
 msgid ""
@@ -2016,9 +2011,8 @@ msgstr ""
 "dokumnetu"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:154
-#, fuzzy
 msgid "Automatically fi&ll header"
-msgstr "Automaticky vyplnit informace do hlavièky"
+msgstr "&Automaticky vyplnit informace do hlavièky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:161
 msgid "Enable fullscreen PDF presentation"
@@ -2050,28 +2044,24 @@ msgstr "&Klíèová slova:"
 
 # TODO
 #: src/frontends/qt4/ui/PDFSupportUi.ui:241
-#, fuzzy
 msgid "H&yperlinks"
-msgstr "Odkaz (hyperlink)|l"
+msgstr "&Odkaz (hyperlink)|l"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:274
 msgid "Allows link text to break across lines."
 msgstr "Rozdìlit odkazy pøes více øádek"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:277
-#, fuzzy
 msgid "B&reak links over lines"
 msgstr "&Rozdìlit víceøádkové odkazy"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:284
-#, fuzzy
 msgid "No &frames around links"
-msgstr "Bez rámu kolem odkazù"
+msgstr "Bez rá&mu kolem odkazù"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:294
-#, fuzzy
 msgid "C&olor links"
-msgstr "Barevné odkazy"
+msgstr "&Barevné odkazy"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:301
 #: src/frontends/qt4/ui/PDFSupportUi.ui:311
@@ -2079,7 +2069,6 @@ msgid "Adds \"backlink\" text to the end of each item in the bibliography"
 msgstr "Pøidá \"backlink\" na konec ka¾dé polo¾ky bibliografie"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:304
-#, fuzzy
 msgid "B&ibliographical backreferences"
 msgstr "&Bibliografické zpìtné reference"
 
@@ -2088,28 +2077,24 @@ msgid "Backreference by pa&ge number"
 msgstr "Zpìtné reference dle èísla &stránky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:337
-#, fuzzy
 msgid "&Bookmarks"
-msgstr "Zálo¾ky|l"
+msgstr "&Zálo¾ky|l"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:349
-#, fuzzy
 msgid "G&enerate Bookmarks"
-msgstr "Vytvoøit zálo¾ky"
+msgstr "Vytvoøit zá&lo¾ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:370
-#, fuzzy
 msgid "&Open bookmarks"
-msgstr "Rozbalit zálo¾ky"
+msgstr "Rozbalit zálo¾&ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:390
 msgid "Number of levels"
 msgstr "Rozbalit do zadané úrovnì"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:410
-#, fuzzy
 msgid "&Numbered bookmarks"
-msgstr "Oèíslované zálo¾ky"
+msgstr "Oèí&slované zálo¾ky"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -2126,18 +2111,16 @@ msgid ""
 msgstr "Zobrazovat doplnìní za kurzorem na dané øádce po prodlevì"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
-#, fuzzy
 msgid "Automatic in&line completion"
-msgstr "Automatické doplòování v øádce"
+msgstr "Automatické &doplòování v øádce"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
 msgstr "Zobraz vyskakovací menu po prodlevì"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
-#, fuzzy
 msgid "Automatic p&opup"
-msgstr "Automatické menu"
+msgstr "Automatické &menu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:63
 msgid "In Text"
@@ -2150,28 +2133,27 @@ msgid ""
 msgstr "Zobrazovat doplnìní za kurzorem na dané øádce po prodlevì"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:81
-#, fuzzy
 msgid "Automatic &inline completion"
-msgstr "Automatické doplòování v øádce"
+msgstr "Automatické do&plòování v øádce"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
 msgstr "Zobraz vyskakovací menu po prodlevì"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
-#, fuzzy
 msgid "Automatic &popup"
-msgstr "Automatické menu"
+msgstr "Automatické m&enu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
 msgstr ""
+"Zobrazit v textovém módu malý trojúhelník za kurzorem pokud je doplnìní mo¾né."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:101
 msgid "Cursor i&ndicator"
-msgstr ""
+msgstr "I&ndikátor kurzoru"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:111
 #: lib/layouts/hollywood.layout:280
@@ -2187,9 +2169,8 @@ msgstr ""
 "dobu."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
-#, fuzzy
 msgid "s inline completion dela&y"
-msgstr "s - prodleva pro øádkové doplnìní"
+msgstr "s - prodle&va pro øádkové doplnìní"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:180
 msgid ""
@@ -2200,9 +2181,8 @@ msgstr ""
 "nepohne po tuto dobu."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:193
-#, fuzzy
 msgid "s popup d&elay"
-msgstr "s - prodleva pro doplnìní v menu"
+msgstr "&s - prodleva pro doplnìní v menu"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:218
 msgid ""
@@ -2213,18 +2193,16 @@ msgstr ""
 "okam¾itì."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
-#, fuzzy
 msgid "Sho&w popup without delay for non-unique completions"
-msgstr "Pøi nejednoznaènosti zobrazit vyskakovací menu bez prodlevy"
+msgstr "Pøi neje&dnoznaènosti zobrazit vyskakovací menu bez prodlevy"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Long completions are cut-off and shown with \"...\"."
 msgstr "Dlouhé doplòující slova budou zkráceny pomocí \"...\"."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:231
-#, fuzzy
 msgid "&Use \"...\" to shorten long completions"
-msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní"
+msgstr "&Pou¾ít \"...\" pro zkrácení dlouhých doplnìní"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
@@ -2299,9 +2277,8 @@ msgid "Instant &Preview:"
 msgstr "&Okam¾itý náhled (vzorce):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:1889
-#, fuzzy
 msgid "Editing"
-msgstr "Ukonèování."
+msgstr "Editace"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
 msgid "Cursor follows &scrollbar"
@@ -2430,9 +2407,8 @@ msgid "Mouse"
 msgstr "My¹ka ply¹ka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:140
-#, fuzzy
 msgid "&Wheel scrolling speed:"
-msgstr "Rychlost posouvání textu pomocí koleèka my¹i:"
+msgstr "Rychlost posouvání textu pomocí &koleèka my¹i:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid ""
@@ -2441,9 +2417,8 @@ msgid ""
 msgstr "1.0 je standardní rychlost. Vy¹¹í hodnoty zrychlí, ni¾¹í zpomalí."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:28
-#, fuzzy
 msgid "Right-to-left language support"
-msgstr "Podpora psaní zp&rava-doleva"
+msgstr "Podpora psaní zprava-doleva"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2971
 msgid ""
@@ -2454,48 +2429,43 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:49
 msgid "Enable &RTL support"
-msgstr ""
+msgstr "&Zapnout podporu psaní zprava-doleva"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:77
 msgid "Cursor movement:"
 msgstr "Pohyb kurzoru:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
-#, fuzzy
 msgid "&Logical"
-msgstr "Logický"
+msgstr "&Logický"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:97
-#, fuzzy
 msgid "&Visual"
-msgstr "Visuální"
+msgstr "&Visuální"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:109
 msgid "Check to highlight foreign languages visually in the work area"
-msgstr ""
+msgstr "Za¹krtnìte pro zvýraznìní cizího jazyka v dokumentu na plo¹e"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:112
 msgid "Mark &foreign languages"
 msgstr "Oznaèit cizí &jazyk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Select the default language of your documents"
-msgstr "Obnovit standardní nastavení tøídy dokumentu"
+msgstr "Nastavit standardní jazyk va¹ich dokumentù"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:145
-#, fuzzy
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
+msgstr "Pøíkaz LaTeX-u, který zaèíná pøepnutí zmìny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:152
 msgid "Enter the command to load the language package (default: babel)"
-msgstr ""
+msgstr "Zadejte pøíkaz pro naètení jazykového balíèku (standartnì babel)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:159
-#, fuzzy
 msgid "The LaTeX command that ends a switch to a foreign language"
-msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
+msgstr "Pøíkaz LaTeX-u, který ukonèuje pøepnutí zmìny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:179
 msgid "&Default language:"
@@ -2518,6 +2488,8 @@ msgid ""
 "Check to pass the language globally (to the document class), not locally (to "
 "the language package)"
 msgstr ""
+"Za¹krtnìte pro nastavení jazyka globálnì (tøídì dokumentu), nikoli lokálnì "
+"(jazykovému balíèku)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:222
 msgid "&Global"
@@ -2528,6 +2500,7 @@ msgid ""
 "If checked, the document language is not explicitely set by a language "
 "switch command"
 msgstr ""
+"Pøi za¹krtnutí není jazyk dokumentu explicitnì nastaven pøepínacím pøíkazem"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:232
 msgid "Auto &begin"
@@ -2537,7 +2510,7 @@ msgstr "Auto. &zaèátek"
 msgid ""
 "If checked, the document language is not explicitely closed by a language "
 "switch command"
-msgstr ""
+msgstr "Pøi za¹krtnutí není jazyk dokumentu explicitnì uzavøen pøepínacím pøíkazem"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:242
 msgid "Auto &end"
@@ -2912,11 +2885,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "Use Pixmap Cache to speed up font rendering"
-msgstr ""
+msgstr "Pou¾ít Vyrovnávací pamì» pro rychlej¹í vykreslování fontù"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
 msgid "Show key-bindings containing:"
-msgstr ""
+msgstr "Zobrazit zkratky obsahující:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
 msgid "&Bind file:"
@@ -2972,7 +2945,7 @@ msgstr "Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:54
 msgid "Allow saving/restoring of windows geometry"
-msgstr ""
+msgstr "Povolit ulo¾ení/naètení geometrie okna"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
 msgid "Restore cursor positions"
@@ -2999,14 +2972,12 @@ msgid "B&ackup documents, every"
 msgstr "Zá&lohovat dokumenty, ka¾dých "
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-#, fuzzy
 msgid "Open documents in &tabs"
-msgstr "Otevøít dokument"
+msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-#, fuzzy
 msgid "Use &bundled format for new documents"
-msgstr "Nelze pøeèíst dokument"
+msgstr "Pou¾ívat &sbalený formát pro nové dokumenty"
 
 #: src/frontends/qt4/ui/PrefUi.ui:200
 msgid "Automatic help"
@@ -3731,7 +3702,7 @@ msgstr "Vnitøní"
 
 #: src/frontends/qt4/ui/WrapUi.ui:222
 msgid "use overhang"
-msgstr ""
+msgstr "pou¾it pøesah"
 
 #: src/frontends/qt4/ui/WrapUi.ui:225
 msgid "Over&hang:"
@@ -7042,11 +7013,11 @@ msgstr "Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
-msgstr ""
+msgstr "Issue-day"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
-msgstr ""
+msgstr "Issue-months"
 
 #: lib/layouts/agu_stdsections.inc:79
 msgid "Subsubparagraph"
@@ -7234,7 +7205,7 @@ msgstr "Datasets:"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
@@ -7365,35 +7336,32 @@ msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
 #: lib/layouts/db_stdcharstyles.inc:22
-#, fuzzy
 msgid "Directory"
-msgstr "Adresáøe"
+msgstr "Directory"
 
 #: lib/layouts/db_stdcharstyles.inc:87
-#, fuzzy
 msgid "KeyCombo"
-msgstr "Klávesnice"
+msgstr "KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:101
-#, fuzzy
 msgid "KeyCap"
-msgstr "Cap"
+msgstr "KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
-msgstr ""
+msgstr "GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
-msgstr ""
+msgstr "GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
-msgstr ""
+msgstr "GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
-msgstr ""
+msgstr "MenuChoice"
 
 #: lib/layouts/db_stdstarsections.inc:24 lib/layouts/stdstarsections.inc:23
 msgid "Chapter*"
@@ -7534,7 +7502,7 @@ msgstr "Dictum"
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:134
 msgid "UNDEFINED"
-msgstr ""
+msgstr "NEDEFINOVÁNO"
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -8310,7 +8278,7 @@ msgstr "Ru¹tina"
 
 #: lib/languages:67
 msgid "North Sami"
-msgstr ""
+msgstr "Severní sám¹tina"
 
 #: lib/languages:68
 msgid "Scottish"
@@ -9381,19 +9349,19 @@ msgstr "Výbìr, spojit øádky|o"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Paste As LinkBack PDF"
-msgstr ""
+msgstr "Vlo¾it jako LinkBack PDF"
 
 #: lib/ui/stdmenus.inc:138
 msgid "Paste As PDF"
-msgstr ""
+msgstr "Vlo¾it jako PDF"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Paste As PNG"
-msgstr ""
+msgstr "Vlo¾it jako PNG"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Paste As JPEG"
-msgstr ""
+msgstr "Vlo¾it jako JPEG"
 
 #: lib/ui/stdmenus.inc:148
 #, fuzzy
@@ -9774,7 +9742,7 @@ msgstr "Matice"
 
 #: lib/ui/stdmenus.inc:404
 msgid "Macro|o"
-msgstr ""
+msgstr "Makro|M"
 
 #: lib/ui/stdmenus.inc:406 lib/ui/stdtoolbars.inc:165
 msgid "Toggle Math Panels"
@@ -10518,21 +10486,19 @@ msgstr "Jemný zlomek\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Unit (km)\t\\unit"
-msgstr ""
+msgstr "Jednotka (km)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Unit (864 m)\t\\unit"
-msgstr ""
+msgstr "Jednotka (864 m)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "Unit fraction (km/h)\t\\unitfrac"
-msgstr "Jemný zlomek\t\\nicefrac"
+msgstr "Jednotka zlomek (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:300
-#, fuzzy
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
-msgstr "Jemný zlomek\t\\nicefrac"
+msgstr "Jednotka zlomek (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "Text fraction (amsmath)\t\\tfrac"
@@ -13901,7 +13867,7 @@ msgstr "Nelze editovat soubor"
 
 #: src/Format.cpp:337
 msgid "LinkBack files can only be edited on Apple Mac OSX."
-msgstr ""
+msgstr "Soubory LinkBack-u mohou být editovány pouze na Apple Mac OSX."
 
 #: src/Format.cpp:350
 #, c-format
@@ -14779,7 +14745,7 @@ msgstr "Zvolte tiskový program, napø. \"dvips\", \"dvilj4\"."
 #: src/LyXRC.cpp:2975
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
-msgstr ""
+msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsmìrném módu (bidi)"
 
 #: src/LyXRC.cpp:2979
 msgid ""
@@ -14872,7 +14838,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3057
 msgid "Enable the automatic appearance of tool tips in the work area."
-msgstr ""
+msgstr "Zapíná automatické zobrazování bublinové nápovìdy na pracovní plo¹e."
 
 #: src/LyXRC.cpp:3061
 msgid ""
@@ -15644,7 +15610,7 @@ msgid "Canceled."
 msgstr "Zru¹eno."
 
 #: src/frontends/qt4/GuiClipboard.cpp:276
-#, fuzzy, c-format
+#, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr "Soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat?"
 
@@ -15904,7 +15870,7 @@ msgstr "Èíslování & Obsah"
 
 #: src/frontends/qt4/GuiDocument.cpp:980
 msgid "PDF Properties"
-msgstr "PDF vlasnosti"
+msgstr "PDF vlastnosti"
 
 #: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Math Options"
@@ -15981,12 +15947,13 @@ msgid ""
 "is embedded to a buffer. You cannot make use of it unless\n"
 "it is already embedded to this buffer.\n"
 msgstr ""
+"Soubor rozvr¾ení, který jste vybrali je pøibalený k nìjakému dokumentu."
+"Nemù¾ete ho pou¾ít pokud u¾ není pøibalený k tomuto dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:1300
 #: src/frontends/qt4/GuiDocument.cpp:2148
-#, fuzzy
 msgid "Unable to set document class."
-msgstr "Nelze ulo¾it standardní nastavení dokumentu"
+msgstr "Nelze nastavit tøídu dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1305
 #: src/frontends/qt4/GuiDocument.cpp:2137
@@ -15995,12 +15962,11 @@ msgstr "Neuplatnìné zmìny"
 
 #: src/frontends/qt4/GuiDocument.cpp:1306
 #: src/frontends/qt4/GuiDocument.cpp:2138
-#, fuzzy
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
-"Nìkteré zmìny v dialogovém oknì nebyly zatím uplatnìny. Pokud tak neuèiníte "
+"Nìkteré zmìny v dialogovém oknì nebyly zatím uplatnìny.\nPokud tak neuèiníte "
 "nyní, budou ztraceny po této akci."
 
 #: src/frontends/qt4/GuiDocument.cpp:1308
@@ -16009,25 +15975,24 @@ msgid "&Dismiss"
 msgstr "&Odmítnout"
 
 #: src/frontends/qt4/GuiDocument.cpp:1335
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s a %2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1340
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s, and %3$s"
-msgstr "%1$s a %2$s"
+msgstr "%1$s, %2$s a %3$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1385
 #, c-format
 msgid "Package(s) required: %1$s."
-msgstr ""
+msgstr "Vy¾adované balíèky: %1$s."
 
 # TODO
 #: src/frontends/qt4/GuiDocument.cpp:1391
-#, fuzzy
 msgid "or"
-msgstr "Form"
+msgstr "nebo"
 
 #: src/frontends/qt4/GuiDocument.cpp:1394
 #, c-format
@@ -16054,14 +16019,13 @@ msgid "Extra embedded file"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2160
-#, fuzzy
 msgid "Can't set layout!"
-msgstr "Zmìnìno rozvr¾ení"
+msgstr "Nelze nastavit rozvr¾ení!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2161
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr ""
+msgstr "Nelze nastavit rozvr¾ení pro ID: %1$s"
 
 #: src/frontends/qt4/GuiERT.cpp:28
 msgid "TeX Code Settings"
@@ -16142,13 +16106,12 @@ msgid "Clipart|#C#c"
 msgstr "Klipart|#K#k"
 
 #: src/frontends/qt4/GuiHSpace.cpp:38
-#, fuzzy
 msgid "Horizontal Space Settings"
-msgstr "Nastavení vertikální mezery"
+msgstr "Nastavení horizontální mezery"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
-msgstr ""
+msgstr "Odkaz (hyperlink)"
 
 #: src/frontends/qt4/GuiInclude.cpp:53
 msgid "Child Document"
@@ -16877,18 +16840,16 @@ msgid "Supplementary Private Use Area-B"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:162
-#, fuzzy
 msgid "Symbols"
-msgstr "Symbol"
+msgstr "Symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:325
-#, fuzzy
 msgid "Character: "
-msgstr "Znaková sada"
+msgstr "Znak: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:326
 msgid "Code Point: "
-msgstr ""
+msgstr "Kód: "
 
 #: src/frontends/qt4/GuiTabular.cpp:39
 msgid "Table Settings"
@@ -16911,19 +16872,16 @@ msgid "Table of Contents"
 msgstr "Obsah"
 
 #: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:915
-#, fuzzy
 msgid "Child Documents"
-msgstr "Dokument potomka"
+msgstr "Dokumenty potomkù"
 
 #: src/frontends/qt4/GuiToc.cpp:236 src/frontends/qt4/Menus.cpp:920
-#, fuzzy
 msgid "List of Graphics"
-msgstr "Seznam tabulek"
+msgstr "Seznam obrázkù"
 
 #: src/frontends/qt4/GuiToc.cpp:238 src/frontends/qt4/Menus.cpp:922
-#, fuzzy
 msgid "List of Equations"
-msgstr "Seznam výpisù"
+msgstr "Seznam rovnic"
 
 #: src/frontends/qt4/GuiToc.cpp:240 src/frontends/qt4/Menus.cpp:932
 #, fuzzy
@@ -16931,7 +16889,6 @@ msgid "List of Foot notes"
 msgstr "Seznam obrázkù"
 
 #: src/frontends/qt4/GuiToc.cpp:242 src/frontends/qt4/Menus.cpp:926
-#, fuzzy
 msgid "List of Listings"
 msgstr "Seznam výpisù"
 
@@ -16946,14 +16903,12 @@ msgid "List of Marginal notes"
 msgstr "Seznam tabulek"
 
 #: src/frontends/qt4/GuiToc.cpp:248 src/frontends/qt4/Menus.cpp:930
-#, fuzzy
 msgid "List of Notes"
-msgstr "Seznam tabulek"
+msgstr "Seznam poznámek"
 
 #: src/frontends/qt4/GuiToc.cpp:250 src/frontends/qt4/Menus.cpp:936
-#, fuzzy
 msgid "List of Citations"
-msgstr "Seznam výpisù"
+msgstr "Seznam citací"
 
 #: src/frontends/qt4/GuiToc.cpp:252 src/frontends/qt4/Menus.cpp:934
 #, fuzzy
@@ -17164,7 +17119,7 @@ msgstr "Zdrojový kód pro LaTeX"
 
 #: src/frontends/qt4/GuiViewSource.cpp:165
 msgid "DocBook Source"
-msgstr ""
+msgstr "Zdrojový soubor DocBook-u"
 
 #: src/frontends/qt4/GuiViewSource.cpp:167
 #, fuzzy
@@ -17300,6 +17255,9 @@ msgid ""
 "The key %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
+""
+"Klíè %1$s u¾ existuje,\n"
+"bude zmìnìn na %2$s."
 
 #: src/insets/InsetBibtex.cpp:123
 msgid "BibTeX Generated Bibliography"
@@ -17397,7 +17355,6 @@ msgid "Sub-%1$s"
 msgstr ""
 
 #: src/insets/InsetCitation.cpp:217
-#, fuzzy
 msgid "not cited"
 msgstr "necitováno"
 
@@ -17438,6 +17395,7 @@ msgstr "Pøíkaz pro vlo¾ku: "
 msgid "Can't find LatexCommand line."
 msgstr "Nelze nalézt øádku LatexCommand."
 
+#TODO ?preklad?
 #: src/insets/InsetCommandParams.cpp:313
 msgid "InsetCommandParams: "
 msgstr "InsetCommandParams: "
@@ -17531,7 +17489,7 @@ msgstr "Soubor s obrázkem: %1$s"
 #: src/insets/InsetGraphics.cpp:936 src/insets/InsetInclude.cpp:342
 #: src/insets/InsetInclude.cpp:880 src/insets/InsetInclude.cpp:900
 msgid " (embedded)"
-msgstr ""
+msgstr " (pøibaleno)"
 
 #: src/insets/InsetInclude.cpp:319
 msgid "Verbatim Input"
@@ -17824,7 +17782,7 @@ msgstr "Volitelný argument - otevøená vlo¾ka"
 
 #: src/insets/InsetRef.cpp:153
 msgid "BROKEN: "
-msgstr ""
+msgstr "NEPLATNÝ: "
 
 #: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
 msgid "Ref: "
