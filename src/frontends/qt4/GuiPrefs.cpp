@@ -210,6 +210,11 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 
 namespace frontend {
 
+string const catOutput = N_("Output");
+string const catLookAndFeel = N_("Look & Feel");
+string const catLanguage = N_("Language Settings");
+string const catFiles = N_("File Handling");
+
 static int findPos_helper(QStringList const & vec, QString const & val)
 {
 	for (int i = 0; i != vec.size(); ++i)
@@ -322,7 +327,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 /////////////////////////////////////////////////////////////////////
 
 PrefPlaintext::PrefPlaintext(QWidget * parent)
-	: PrefModule(qt_("Plain text"), 0, parent)
+	: PrefModule(qt_(catOutput), qt_("Plain text"), 0, parent)
 {
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
@@ -353,7 +358,7 @@ void PrefPlaintext::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefDate::PrefDate(QWidget * parent)
-	: PrefModule(qt_("Date format"), 0, parent)
+	: PrefModule(qt_(catOutput), qt_("Date format"), 0, parent)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(QString)),
@@ -380,7 +385,7 @@ void PrefDate::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Keyboard/Mouse"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Keyboard/Mouse"), form, parent)
 {
 	setupUi(this);
 
@@ -455,7 +460,7 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 /////////////////////////////////////////////////////////////////////
 
 PrefCompletion::PrefCompletion(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Input Completion"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Input Completion"), form, parent)
 {
 	setupUi(this);
 
@@ -517,7 +522,7 @@ void PrefCompletion::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefLatex::PrefLatex(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("LaTeX"), form, parent)
+	: PrefModule(qt_(catOutput), qt_("LaTeX"), form, parent)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(QString)),
@@ -584,7 +589,7 @@ void PrefLatex::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Screen fonts"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Screen fonts"), form, parent)
 {
 	setupUi(this);
 
@@ -758,7 +763,7 @@ struct ColorSorter
 } // namespace anon
 
 PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Colors"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Colors"), form, parent)
 {
 	setupUi(this);
 
@@ -857,7 +862,7 @@ void PrefColors::change_lyxObjects_selection()
 /////////////////////////////////////////////////////////////////////
 
 PrefDisplay::PrefDisplay(QWidget * parent)
-	: PrefModule(qt_("Graphics"), 0, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), 0, parent)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -928,7 +933,7 @@ void PrefDisplay::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Paths"), form, parent)
+	: PrefModule(QString(), qt_("Paths"), form, parent)
 {
 	setupUi(this);
 	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(select_exampledir()));
@@ -1041,7 +1046,7 @@ void PrefPaths::select_lyxpipe()
 /////////////////////////////////////////////////////////////////////
 
 PrefSpellchecker::PrefSpellchecker(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Spellchecker"), form, parent)
+	: PrefModule(qt_(catLanguage), qt_("Spellchecker"), form, parent)
 {
 	setupUi(this);
 
@@ -1150,7 +1155,7 @@ void PrefSpellchecker::select_dict()
 
 
 PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Converters"), form, parent)
+	: PrefModule(qt_(catFiles), qt_("Converters"), form, parent)
 {
 	setupUi(this);
 
@@ -1420,7 +1425,7 @@ string FormatPrettynameValidator::str(Formats::const_iterator it) const
 
 
 PrefFileformats::PrefFileformats(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("File formats"), form, parent)
+	: PrefModule(qt_(catFiles), qt_("File formats"), form, parent)
 {
 	setupUi(this);
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
@@ -1619,7 +1624,7 @@ void PrefFileformats::on_formatRemovePB_clicked()
 /////////////////////////////////////////////////////////////////////
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-	: PrefModule(qt_("Language"), 0, parent)
+	: PrefModule(qt_(catLanguage), qt_("Language"), 0, parent)
 {
 	setupUi(this);
 
@@ -1706,7 +1711,7 @@ void PrefLanguage::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPrinter::PrefPrinter(QWidget * parent)
-	: PrefModule(qt_("Printer"), 0, parent)
+	: PrefModule(qt_(catOutput), qt_("Printer"), 0, parent)
 {
 	setupUi(this);
 
@@ -1804,7 +1809,7 @@ void PrefPrinter::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("User interface"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("User interface"), form, parent)
 {
 	setupUi(this);
 
@@ -1886,7 +1891,7 @@ void PrefUserInterface::select_ui()
 /////////////////////////////////////////////////////////////////////
 
 PrefEdit::PrefEdit(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Editing"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Editing"), form, parent)
 {
 	setupUi(this);
 
@@ -1958,7 +1963,7 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_("Shortcuts"), form, parent)
+	: PrefModule(qt_(catLookAndFeel), qt_("Shortcuts"), form, parent)
 {
 	setupUi(this);
 
@@ -2351,7 +2356,7 @@ void PrefShortcuts::shortcut_clearPB_pressed()
 /////////////////////////////////////////////////////////////////////
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-	: PrefModule(qt_("Identity"), 0, parent)
+	: PrefModule(QString(), qt_("Identity"), 0, parent)
 {
 	setupUi(this);
 
@@ -2441,7 +2446,10 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 void GuiPreferences::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
-	prefsPS->addPanel(module, module->title());
+	if (module->category().isEmpty())
+		prefsPS->addPanel(module, module->title());
+	else
+		prefsPS->addPanel(module, module->title(), module->category());
 	connect(module, SIGNAL(changed()), this, SLOT(change_adaptor()));
 	modules_.push_back(module);
 }

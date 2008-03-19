@@ -38,8 +38,8 @@ PanelStack::PanelStack(QWidget * parent)
 	list_ = new QTreeWidget(this);
 	stack_ = new QStackedWidget(this);
 
-	list_->setColumnCount(1);
 	list_->setRootIsDecorated(false);
+	list_->setColumnCount(1);
 	// Hide the pointless list header
 	list_->header()->hide();
 //	QStringList HeaderLabels;
@@ -73,11 +73,13 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 		item = new QTreeWidgetItem(panel_map_.value(parent));
 		item->setText(0, name);
 		depth = 2;
+		list_->setRootIsDecorated(true);
 	}
 
 	panel_map_[name] = item;
 
 	QFontMetrics fm(list_->font());
+		
 	// calculate the real size the current item needs in the listview
 	int itemsize = fm.width(name) + 10
 		+ list_->indentation() * depth;
@@ -113,6 +115,12 @@ void PanelStack::setCurrentPanel(QString const & name)
 void PanelStack::switchPanel(QTreeWidgetItem * item,
 			     QTreeWidgetItem * /*previous*/)
 {
+	// if we have a category, expand the tree and go to the
+	// first item
+	if (item->childCount() > 0) {
+		item->setExpanded(true);
+		list_->setCurrentItem(item->child(0));
+	}
 	if (QWidget * w = widget_map_.value(item, 0))
 		stack_->setCurrentWidget(w);
 }
