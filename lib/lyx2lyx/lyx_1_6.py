@@ -76,7 +76,9 @@ def convert_tablines(document):
     while True:
         i = find_token(document.body, "\\begin_inset Tabular", i)
         if i == -1:
-            return
+            i = find_token(document.body, "\\begin_inset  Tabular", i)
+            if i == -1:
+                return
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
