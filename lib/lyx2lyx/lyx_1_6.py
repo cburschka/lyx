@@ -33,7 +33,7 @@ def find_end_of_inset(lines, i):
 
 def wrap_into_ert(string, src, dst):
     " Wrap a something into an ERT"
-    return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n' 
+    return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n'
       + dst + '\n\\end_layout\n\\end_inset\n')
 
 def add_to_preamble(document, text):
@@ -76,9 +76,13 @@ def convert_tablines(document):
     while True:
         i = find_token(document.body, "\\begin_inset Tabular", i)
         if i == -1:
+            # LyX 1.3 inserted an extra space between \begin_inset
+            # and Tabular so let us try if this is the case and fix it.
             i = find_token(document.body, "\\begin_inset  Tabular", i)
             if i == -1:
                 return
+            else:
+                document.body[i] = "\\begin_inset Tabular"
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
@@ -288,7 +292,7 @@ def axe_show_label(document):
                     document.warning("Malformed LyX document: show_label neither false nor true.")
         else:
             document.warning("Malformed LyX document: show_label missing in CharStyle.")
-            
+
         i += 1
 
 
@@ -418,8 +422,8 @@ def remove_inzip_options(document):
 def convert_inset_command(document):
     """
         Convert:
-            \begin_inset LatexCommand cmd 
-        to 
+            \begin_inset LatexCommand cmd
+        to
             \begin_inset CommandInset InsetType
             LatexCommand cmd
     """
@@ -457,8 +461,8 @@ def revert_inset_command(document):
         Convert:
             \begin_inset CommandInset InsetType
             LatexCommand cmd
-        to 
-            \begin_inset LatexCommand cmd 
+        to
+            \begin_inset LatexCommand cmd
         Some insets may end up being converted to insets earlier versions of LyX
         will not be able to recognize. Not sure what to do about that.
     """
@@ -516,7 +520,7 @@ def revert_wrapfig_options(document):
 
 def convert_latexcommand_index(document):
     "Convert from LatexCommand form to collapsable form."
-    i = 0 
+    i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index", i)
         if i == -1:
@@ -662,7 +666,7 @@ def revert_japanese_encoding(document):
         document.header[j] = "\\inputencoding JIS"
     k = 0
     k = find_token(document.header, "\\inputencoding SJIS-plain", 0)
-    if k != -1: # convert to UTF8 since there is currently no SJIS encoding 
+    if k != -1: # convert to UTF8 since there is currently no SJIS encoding
         document.header[k] = "\\inputencoding UTF8"
 
 
@@ -763,7 +767,7 @@ def convert_url(document):
         i = k
         continue
       newstuff = ["\\begin_inset Flex URL",
-        "status collapsed", "", 
+        "status collapsed", "",
         "\\begin_layout Standard",
         "",
         target,
@@ -840,7 +844,7 @@ def convert_include(document):
     cmd = m.group(1)
     fn  = m.group(2)
     opt = m.group(3)
-    insertion = ["\\begin_inset CommandInset include", 
+    insertion = ["\\begin_inset CommandInset include",
        "LatexCommand " + cmd, previewline,
        "filename \"" + fn + "\""]
     newlines = 2
