@@ -975,7 +975,7 @@ contributers = [
                  "Re: Python version of configure script (preview version)",
                  "m=112681895510418",
                  "15 September 2005",
-                 u"Conversion of all shell scripts to Python, session, view-source, auto-view features and scons build system."),
+                 u"Conversion of all shell scripts to Python, shortcuts dialog, session, view-source, auto-view, embedding features and scons build system."),
 
      contributer(u"Joacim Persson",
                  "sp2joap1 () ida ! his ! se",
