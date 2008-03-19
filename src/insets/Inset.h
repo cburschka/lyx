@@ -350,10 +350,10 @@ public:
 	virtual bool useEmptyLayout() const { return forceEmptyLayout(); }
 	/// if this inset has paragraphs should they be forced to use the
 	/// empty layout?
-	virtual bool forceEmptyLayout() const { return false; }
+	virtual bool forceEmptyLayout(idx_type = 0) const { return false; }
 	/// if this inset has paragraphs should the user be allowed to
 	/// customize alignment, etc?
-	virtual bool allowParagraphCustomization(idx_type) const { return true; }
+	virtual bool allowParagraphCustomization(idx_type = 0) const { return true; }
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 

@@ -738,7 +738,9 @@ public:
 	/// should all paragraphs be output with "Standard" layout?
 	virtual bool allowParagraphCustomization(idx_type cell = 0) const;
 	///
-	virtual bool forceEmptyLayout() { return true; }
+	virtual bool forceEmptyLayout(idx_type cell = 0) const;
+	///
+	virtual bool useEmptyLayout() { return true; }
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 

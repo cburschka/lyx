@@ -60,9 +60,9 @@ private:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	bool forceEmptyLayout() const { return true; }
+	virtual bool forceEmptyLayout(idx_type = 0) const { return true; }
 	///
-	bool allowParagraphCustomization(idx_type) const { return false; }
+	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///

@@ -71,9 +71,9 @@ private:
 	///
 	void addToToc(ParConstIterator const &) const;
 	/// 
-	bool forceEmptyLayout() const { return true; }
+	virtual bool forceEmptyLayout(idx_type = 0) const { return true; }
 	/// Captions don't accept alignment, spacing, etc.
-	bool allowParagraphCustomization(idx_type) const { return false; }
+	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	///
 	Inset * clone() const { return new InsetCaption(*this); }
 

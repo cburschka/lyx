@@ -4686,6 +4686,12 @@ bool InsetTabular::allowParagraphCustomization(idx_type cell) const
 }
 
 
+bool InsetTabular::forceEmptyLayout(idx_type cell) const
+{
+	return !tabular.getPWidth(cell).zero();
+}
+
+
 bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				     bool usePaste)
 {

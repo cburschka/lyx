@@ -94,10 +94,11 @@ private:
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	DisplayType display() const { return Inline; }
-	//FIXME Is this the one we want? or is it:
-	//allowParagraphCustomization(idx_type)?
 	///
-	bool forceEmptyLayout() const;
+	virtual bool allowParagraphCustomization(idx_type = 0)
+		{ return forceEmptyLayout(); }
+	///
+	virtual bool forceEmptyLayout(idx_type = 0) const;
 	///
 	bool neverIndent() const { return true; }
 	///

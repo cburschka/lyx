@@ -167,7 +167,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 }
 
 
-bool InsetBox::forceEmptyLayout() const
+bool InsetBox::forceEmptyLayout(idx_type) const
 {
 	return !params_.inner_box;
 }
