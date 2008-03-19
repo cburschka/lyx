@@ -1946,7 +1946,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 	}
 #endif
 	if (arg != "fullscreen") {
-		message(bformat(_("LFUN_UI_TOGGLE %1$s unknown command!"), from_utf8(arg)));
+		message(bformat("LFUN_UI_TOGGLE " + _("%1$s unknown command!"), from_utf8(arg)));
 		return;
 	}
 
