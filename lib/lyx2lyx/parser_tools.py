@@ -84,7 +84,7 @@ def find_tokens(lines, tokens, start, end = 0, exact = False):
                 if len(x) < len(y):
                     continue
                 if x[:len(y)] == y:
-                    return i            
+                    return i
             else:
                 if lines[i][:len(token)] == token:
                     return i
@@ -149,7 +149,7 @@ def get_value(lines, token, start, end = 0, default = ""):
 
     i = find_token_exact(lines, token, start, end)
     if i == -1:
-        return ""
+        return default
     if len(lines[i].split()) > 1:
         return lines[i].split()[1]
     else:

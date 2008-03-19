@@ -236,6 +236,12 @@ class LyX_Base:
 
             self.header.append(line)
 
+        i = find_token(self.header, '\\textclass', 0)
+        if i == -1:
+            self.warning("Malformed LyX file: Missing '\\textclass'.")
+            i = find_token(self.header, '\\lyxformat', 0) + 1
+            self.header[i:i] = ['\\textclass article']
+
         self.textclass = get_value(self.header, "\\textclass", 0)
         self.backend = get_backend(self.textclass)
         self.format  = self.read_format()
@@ -269,10 +275,7 @@ class LyX_Base:
         if self.preamble:
             i = find_token(self.header, '\\textclass', 0) + 1
             preamble = ['\\begin_preamble'] + self.preamble + ['\\end_preamble']
-            if i == 0:
-                self.error("Malformed LyX file: Missing '\\textclass'.")
-            else:
-                header = self.header[:i] + preamble + self.header[i:]
+            header = self.header[:i] + preamble + self.header[i:]
         else:
             header = self.header
 
@@ -294,7 +297,7 @@ class LyX_Base:
             try:
                 gzip.open(input).readline()
                 self.input = gzip.open(input)
-                self.output = gzip.GzipFile(mode="wb", fileobj=self.output) 
+                self.output = gzip.GzipFile(mode="wb", fileobj=self.output)
             except:
                 self.input = open(input)
         else:
