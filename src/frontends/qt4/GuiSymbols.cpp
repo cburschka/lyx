@@ -39,7 +39,7 @@ namespace {
 
 /// name of unicode block, start and end code point
 struct UnicodeBlocks {
-	char const * name;
+	QString name;
 	char_type start;
 	char_type end;
 };
@@ -146,9 +146,9 @@ UnicodeBlocks unicode_blocks[] = {
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
 
-QString getCodePoint(char_type c)
+QLatin1String getCodePoint(char_type c)
 {
-	char buf[10];
+	static char buf[10];
 	sprintf(buf, "0x%04x", c);
 	return QLatin1String(buf);
 }
@@ -295,7 +295,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
-			if (unicode_blocks[i].name == fromqstr(category)) {
+			if (unicode_blocks[i].name == category) {
 				range_start = unicode_blocks[i].start;
 				range_end = unicode_blocks[i].end;
 				break;
@@ -320,7 +320,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		if (show_all || c >= range_start && c <= range_end) {
 			lwi->setTextAlignment(Qt::AlignCenter);
 			lwi->setToolTip(
-				qt_("Character: ") + toqstr(c) + "\n" +
+				qt_("Character: ") + toqstr(c) + '\n' +
 				qt_("Code Point: ") + getCodePoint(c)
 				);
 			symbolsLW->addItem(lwi);
@@ -352,13 +352,13 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 }
 
 
-QString const GuiSymbols::getBlock(char_type c) const
+QString GuiSymbols::getBlock(char_type c) const
 {
 	int i = 0;
 	while (c > unicode_blocks[i].end && i < no_blocks)
 		++i;
-	if (unicode_blocks[i].name)
-		return toqstr(unicode_blocks[i].name);
+	if (!unicode_blocks[i].name.isEmpty())
+		return unicode_blocks[i].name;
 	return QString();
 }
 
