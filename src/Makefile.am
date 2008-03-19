@@ -8,7 +8,7 @@ MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
-SUBDIRS = support frontends .
+SUBDIRS = support frontends tex2lyx client .
 
 EXTRA_DIST = config.h.in \
 	Section.h \
@@ -209,6 +209,7 @@ HEADERFILESCORE = \
 	FontIterator.h \
 	FontList.h \
 	Format.h \
+	FuncCode.h \
 	FuncRequest.h \
 	FuncStatus.h \
 	Graph.h \
@@ -225,7 +226,6 @@ HEADERFILESCORE = \
 	LayoutFile.h \
 	Length.h \
 	Lexer.h \
-	lfuns.h \
 	LyXAction.h \
 	lyxfind.h \
 	LyXFunc.h \

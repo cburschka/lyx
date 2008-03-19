@@ -39,13 +39,13 @@ HEADERFILES = \
 
 if MONOLITHIC_CLIENT
 
-lyxclient.cpp:
+client.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
-BUILT_SOURCES = lyxclient.cpp
+BUILT_SOURCES = client.cpp
  
-lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
+lyxclient_SOURCES = client.cpp $(HEADERFILES)
 
 else
 
