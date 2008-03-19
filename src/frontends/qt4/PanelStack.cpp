@@ -48,6 +48,8 @@ PanelStack::PanelStack(QWidget * parent)
 
 	connect(list_, SIGNAL(currentItemChanged (QTreeWidgetItem*, QTreeWidgetItem*)),
 		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
+	connect(list_, SIGNAL(itemClicked (QTreeWidgetItem*, int)),
+		this, SLOT(itemSelected(QTreeWidgetItem *, int)));
 
 	QHBoxLayout * layout = new QHBoxLayout(this);
 	layout->addWidget(list_, 0);
@@ -113,16 +115,25 @@ void PanelStack::setCurrentPanel(QString const & name)
 
 
 void PanelStack::switchPanel(QTreeWidgetItem * item,
-			     QTreeWidgetItem * /*previous*/)
+			     QTreeWidgetItem * previous)
 {
 	// if we have a category, expand the tree and go to the
 	// first item
 	if (item->childCount() > 0) {
 		item->setExpanded(true);
-		list_->setCurrentItem(item->child(0));
+		if (previous != item->child(0))
+			list_->setCurrentItem(item->child(0));
 	}
 	if (QWidget * w = widget_map_.value(item, 0))
 		stack_->setCurrentWidget(w);
+}
+
+
+void PanelStack::itemSelected(QTreeWidgetItem * item, int)
+{
+	// de-select the category if a child is selected
+	if (item->childCount() > 0 && item->child(0)->isSelected())
+		item->setSelected(false);
 }
 
 

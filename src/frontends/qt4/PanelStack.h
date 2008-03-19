@@ -43,6 +43,8 @@ public:
 public Q_SLOTS:
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * it, QTreeWidgetItem * previous = 0);
+	/// click on the tree
+	void itemSelected(QTreeWidgetItem *, int);
 
 private:
 	///
