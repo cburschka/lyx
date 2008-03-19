@@ -38,6 +38,9 @@
     <layout class="QHBoxLayout" >
      <item>
       <widget class="QLabel" name="categoryLA" >
+       <property name="toolTip" >
+        <string>Available categories depend on the document encoding. Select UTF-8 for the full range.</string>
+       </property>
        <property name="text" >
         <string>Ca&amp;tegory:</string>
        </property>
