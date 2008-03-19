@@ -210,9 +210,10 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 
 namespace frontend {
 
-string const catOutput = N_("Output");
 string const catLookAndFeel = N_("Look & Feel");
+string const catEditing = N_("Editing");
 string const catLanguage = N_("Language Settings");
+string const catOutput = N_("Output");
 string const catFiles = N_("File Handling");
 
 static int findPos_helper(QStringList const & vec, QString const & val)
@@ -385,7 +386,7 @@ void PrefDate::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Keyboard/Mouse"), form, parent)
+	: PrefModule(qt_(catEditing), qt_("Keyboard/Mouse"), form, parent)
 {
 	setupUi(this);
 
@@ -460,7 +461,7 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 /////////////////////////////////////////////////////////////////////
 
 PrefCompletion::PrefCompletion(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Input Completion"), form, parent)
+	: PrefModule(qt_(catEditing), qt_("Input Completion"), form, parent)
 {
 	setupUi(this);
 
@@ -1891,7 +1892,7 @@ void PrefUserInterface::select_ui()
 /////////////////////////////////////////////////////////////////////
 
 PrefEdit::PrefEdit(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Editing"), form, parent)
+	: PrefModule(qt_(catEditing), qt_("Widgets"), form, parent)
 {
 	setupUi(this);
 
@@ -1963,7 +1964,7 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Shortcuts"), form, parent)
+	: PrefModule(qt_(catEditing), qt_("Shortcuts"), form, parent)
 {
 	setupUi(this);
 
