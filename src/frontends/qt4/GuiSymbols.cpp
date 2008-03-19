@@ -148,11 +148,9 @@ const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
 QString getCodePoint(char_type c)
 {
-	QString cp = QString::number(c, 16);
-	while (cp.size() < 4)
-		cp.prepend('0');
-	cp.prepend("0x");
-	return cp;
+	char buf[10];
+	sprintf(buf, "0x%04x", c);
+	return QLatin1String(buf);
 }
 
 } // namespace anon
