@@ -111,8 +111,8 @@ docstring const Messages::get(string const & m) const
 
 	// The string was not found, use gettext to generate it
 
-	string const oldLANGUAGE = getEnv("LANGUAGE");
-	string const oldLC_ALL = getEnv("LC_ALL");
+	static string const oldLANGUAGE = getEnv("LANGUAGE");
+	static string const oldLC_ALL = getEnv("LC_ALL");
 	if (!lang_.empty()) {
 		// This GNU extension overrides any language locale
 		// wrt gettext.
