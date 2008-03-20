@@ -157,6 +157,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_TOP_SPACE, "set-top-space" },
 	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space" },
 	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space" },
+	{ Tabular::SET_BORDER_LINES, "set-border-lines" },
 	{ Tabular::LAST_ACTION, "" }
 };
 
@@ -3607,6 +3608,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::SET_TOP_SPACE:
 		case Tabular::SET_BOTTOM_SPACE:
 		case Tabular::SET_INTERLINE_SPACE:
+		case Tabular::SET_BORDER_LINES:
 			status.clear();
 			return true;
 
@@ -4341,6 +4343,17 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setAllLines(
 					tabular.cellIndex(i,j), setLines);
+		break;
+
+	case Tabular::SET_BORDER_LINES:
+		for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+			tabular.setLeftLine(tabular.cellIndex(i, sel_col_start), true);
+			tabular.setRightLine(tabular.cellIndex(i, sel_col_end), true);
+		}
+		for (col_type j = sel_col_start; j <= sel_col_end; ++j) {
+			tabular.setTopLine(tabular.cellIndex(sel_row_start, j), true);
+			tabular.setBottomLine(tabular.cellIndex(sel_row_end, j), true);
+		}
 		break;
 
 	case Tabular::SET_LONGTABULAR:

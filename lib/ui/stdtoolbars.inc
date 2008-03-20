@@ -122,6 +122,7 @@ ToolbarSet
 		Item "Set bottom line" "tabular-feature toggle-line-bottom"
 		Item "Set left line" "tabular-feature toggle-line-left"
 		Item "Set right line" "tabular-feature toggle-line-right"
+		Item "Set border lines" "tabular-feature set-border-lines"
 		Item "Set all lines" "tabular-feature set-all-lines"
 		Item "Unset all lines" "tabular-feature unset-all-lines"
 		Separator

@@ -175,6 +175,8 @@ public:
 		///
 		SET_INTERLINE_SPACE,
 		///
+		SET_BORDER_LINES,
+		///
 		LAST_ACTION
 	};
 	///
