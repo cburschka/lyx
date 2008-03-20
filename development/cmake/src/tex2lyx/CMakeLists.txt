@@ -14,6 +14,7 @@ set(LINKED_sources
 	${TOP_SRC_DIR}/src/Layout.cpp
 	${TOP_SRC_DIR}/src/TextClass.cpp
 	${TOP_SRC_DIR}/src/Lexer.cpp
+	${TOP_SRC_DIR}/src/lengthcommon.cpp
 	${TOP_SRC_DIR}/src/Color.cpp)
 
 set(LINKED_headers
@@ -25,7 +26,6 @@ set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/Context.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/Font.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/gettext.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/Parser.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/preamble.cpp
