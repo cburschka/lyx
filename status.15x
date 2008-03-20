@@ -126,3 +126,5 @@ What's new
 
 * BUILD/INSTALLATION:
 
+- fix the 'make check' target in src/support; one of the checks still 
+  fails (bug 4638)

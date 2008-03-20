@@ -10,7 +10,7 @@ TESTS = \
 check_PROGRAMS = \
 	biblio
 
-AM_CPPFLAGS += $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) $(BOOST_INCLUDES)
 
 biblio_LDADD = $(BOOST_REGEX)
 biblio_SOURCES = \
