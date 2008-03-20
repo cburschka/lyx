@@ -30,8 +30,10 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\parser_tools.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
