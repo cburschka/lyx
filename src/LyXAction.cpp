@@ -1276,7 +1276,21 @@ void LyXAction::init()
 		{ LFUN_BUFFER_AUTO_SAVE, "buffer-auto-save", Noop, Buffer },
 		{ LFUN_BUFFER_CHILD_OPEN, "buffer-child-open", ReadOnly, Buffer },
 		{ LFUN_BUFFER_CHKTEX, "buffer-chktex", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_COMPRESSION
+ * \li Action: Toggles compression of the current document on/off.
+ * \li Syntax: buffer-toggle-compression
+ * \li Origin: bpeng, 27 Apr 2006
+ * \endvar
+ */
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_EMBEDDING
+ * \li Action: Toggles the embeddding feature on/off.
+ * \li Syntax: buffer-toggle-embedding
+ * \li Origin: bpeng, 21 Oct 2007
+ * \endvar
+ */
 		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_CLOSE
