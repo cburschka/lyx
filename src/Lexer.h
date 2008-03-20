@@ -39,12 +39,14 @@ struct keyword_item {
 
 	Example:
 
-	int readParam(LyxLex &lex) {
-		int param = 1; // default value
+	int readParam(LyxLex & lex)
+	{
+		int param = 1;    // default value
 		if (lex.isOK()) { // the lexer has data to read
-			int p;    // temporary variable
+			int p;          // temporary variable
 			lex >> p;
-			if (lex) param = p; // only use the input if reading was successful
+			if (lex)
+				param = p; // only use the input if reading was successful
 		}
 		return param;
 	}
