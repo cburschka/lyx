@@ -29,17 +29,17 @@ liblyxfrontends_la_SOURCES = \
 EXTRA_DIST = tests/test_biblio
 
 TESTS = \
-	test_biblio
+	tests/test_biblio
 
 check_PROGRAMS = \
 	biblio
 
-biblio_LDADD = $(BOOST_REGEX)
+biblio_LDADD = $(BOOST_LIBS) $(BOOST_REGEX)
 biblio_SOURCES = \
 	tests/biblio.cpp \
 	tests/boost.cpp
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \
-		./$$all > ${srcdir}/regfiles/$$all ; \
+		./$$all > ${srcdir}/tests/regfiles/$$all ; \
 	done

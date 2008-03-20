@@ -15,13 +15,16 @@
 #include <cstdlib>
 #include <exception>
 
+using namespace std;
 
 namespace boost {
 
+#ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(exception const & /*e*/)
 {
 	BOOST_ASSERT(false);
 }
+#endif
 
 
 void assertion_failed(char const * /*expr*/, char const * /*function*/,
@@ -30,4 +33,4 @@ void assertion_failed(char const * /*expr*/, char const * /*function*/,
 	::abort();
 }
 
-}
+} // namespace boost

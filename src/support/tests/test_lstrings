@@ -1,6 +1,6 @@
 #!/bin/sh
 
-regfile=`cat ${srcdir}/regfiles/lstrings`
+regfile=`cat ${srcdir}/tests/regfiles/lstrings`
 output=`./check_lstrings`
 
 test "$regfile" = "$output"

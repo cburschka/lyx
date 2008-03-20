@@ -1,6 +1,6 @@
 #!/bin/sh
 
-regfile=`cat ${srcdir}/regfiles/biblio`
+regfile=`cat ${srcdir}/tests/regfiles/biblio`
 output=`./biblio`
 
 test "$regfile" = "$output"

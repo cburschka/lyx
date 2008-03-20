@@ -1,6 +1,6 @@
 #!/bin/sh
 
-regfile=`cat ${srcdir}/regfiles/convert`
+regfile=`cat ${srcdir}/tests/regfiles/convert`
 output=`./check_convert`
 
 test "$regfile" = "$output"

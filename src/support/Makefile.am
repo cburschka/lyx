@@ -135,29 +135,28 @@ EXTRA_DIST += \
 
 
 TESTS = \
-	test_convert \
-	test_filetools \
-	test_lstrings
+	tests/test_convert \
+	tests/test_filetools \
+	tests/test_lstrings
 
 check_PROGRAMS = \
 	check_convert \
 	check_filetools \
 	check_lstrings
 
-check_convert_LDADD = ../debug.o convert.o docstring.o lstrings.o unicode.o \
+check_convert_LDADD = liblyxsupport.la  \
 	$(BOOST_LIBS) $(QT4_CORE_LIB)
 check_convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
 	tests/boost.cpp
 
-check_filetools_LDADD = ../debug.o libsupport.la $(BOOST_LIBS)
+check_filetools_LDADD = liblyxsupport.la $(BOOST_LIBS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
 	tests/boost.cpp
 
-check_lstrings_LDADD = ../debug.o lstrings.o convert.o docstring.o unicode.o \
-	$(QT4_CORE_LIB)
+check_lstrings_LDADD = liblyxsupport.la $(BOOST_LIBS) $(QT4_CORE_LIB)
 check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \
@@ -165,5 +164,5 @@ check_lstrings_SOURCES = \
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \
-		./$$all > ${srcdir}/regfiles/$$all ; \
+		./$$all > ${srcdir}/tests/regfiles/$$all ; \
 	done
