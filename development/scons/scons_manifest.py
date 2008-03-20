@@ -613,7 +613,6 @@ src_tex2lyx_files = Split('''
     Parser.cpp
     boost.cpp
     gettext.cpp
-    lengthcommon.cpp
     math.cpp
     preamble.cpp
     table.cpp
@@ -636,6 +635,7 @@ src_tex2lyx_copied_files = Split('''
     Lexer.cpp
     TextClass.cpp
     insets/InsetLayout.cpp
+    lengthcommon.cpp
 ''')
 
 
