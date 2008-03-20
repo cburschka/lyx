@@ -13,6 +13,7 @@
 #include "GuiDelimiter.h"
 
 #include "GuiApplication.h"
+#include "GuiFontLoader.h"
 #include "GuiView.h"
 
 #include "qt_helpers.h"
@@ -91,8 +92,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		lwi->setToolTip(toqstr(delim));
 		FontInfo lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
-		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
-		lwi->setFont(symbol_font);
+		lwi->setFont(frontend::getFont(lyxfont));
 		list_items[ms.unicode] = lwi;
 		leftLW->addItem(lwi);
 	}

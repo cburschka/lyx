@@ -1,5 +1,5 @@
 /**
- * \file GuiFontLoader.cpp
+ * \file FontLoader.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,6 +11,9 @@
 
 #include <config.h>
 
+#include "FontLoader.h"
+
+#include "FontInfo.h"
 #include "GuiFontLoader.h"
 #include "qt_helpers.h"
 
@@ -27,13 +30,14 @@
 #include <QFontInfo>
 #include <QFontDatabase>
 
+#include <boost/assert.hpp>
+
 using namespace std;
 using namespace lyx::support;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
 int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
-
 
 namespace lyx {
 
@@ -91,10 +95,31 @@ SymbolFont symbol_fonts[] = {
 		"-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
 };
 
-size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(SymbolFont);
+size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
+
+/// BUTT ugly !
+static GuiFontInfo * fontinfo_[NUM_FAMILIES][2][4][10];
 
 
-QString getRawName(QString const & family)
+/// Get font info (font + metrics) for the given LyX font.
+// if not cached, create it.
+GuiFontInfo & fontinfo(FontInfo const & f)
+{
+	BOOST_ASSERT(f.family() < NUM_FAMILIES);
+	BOOST_ASSERT(f.series() < 2);
+	BOOST_ASSERT(f.realShape() < 4);
+	BOOST_ASSERT(f.size() < 10);
+	// fi is a reference to the pointer type (GuiFontInfo *) in the
+	// fontinfo_ table.
+	GuiFontInfo * & fi =
+		fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
+	if (!fi)
+		fi = new GuiFontInfo(f);
+	return *fi;
+}
+
+
+QString rawName(QString const & family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i)
 		if (family == symbol_fonts[i].family)
@@ -105,7 +130,7 @@ QString getRawName(QString const & family)
 }
 
 
-QString const symbolFamily(FontFamily family)
+QString symbolFamily(FontFamily family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
 		if (family == symbol_fonts[i].lyx_family)
@@ -168,7 +193,7 @@ QFont symbolFont(QString const & family, bool * ok)
 
 	// A simple setFamily() fails on Qt 2
 
-	QString const rawName = getRawName(family);
+	QString const rawName = rawName(family);
 	LYXERR(Debug::FONT, "Trying " << fromqstr(rawName) << " ... ");
 	font.setRawName(rawName);
 
@@ -186,7 +211,7 @@ QFont symbolFont(QString const & family, bool * ok)
 } // namespace anon
 
 
-GuiFontLoader::GuiFontLoader()
+FontLoader::FontLoader()
 {
 	QString const fonts_dir =
 		toqstr(addPath(package().system_support().absFilename(), "fonts"));
@@ -208,7 +233,7 @@ GuiFontLoader::GuiFontLoader()
 }
 
 
-void GuiFontLoader::update()
+void FontLoader::update()
 {
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1) {
 		for (int i2 = 0; i2 < 2; ++i2)
@@ -221,7 +246,7 @@ void GuiFontLoader::update()
 }
 
 
-GuiFontLoader::~GuiFontLoader()
+FontLoader::~FontLoader()
 {
 	update();
 }
@@ -328,7 +353,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 }
 
 
-bool GuiFontLoader::available(FontInfo const & f)
+bool FontLoader::available(FontInfo const & f)
 {
 	static vector<int> cache_set(NUM_FAMILIES, false);
 	static vector<int> cache(NUM_FAMILIES, false);
@@ -350,6 +375,23 @@ bool GuiFontLoader::available(FontInfo const & f)
 
 	cache[family] = true;
 	return true;
+}
+
+FontMetrics const & FontLoader::metrics(FontInfo const & f)
+{
+	return fontinfo(f).metrics;
+}
+
+/// Get the QFont for this FontInfo
+QFont const & getFont(FontInfo const & f)
+{
+	return fontinfo(f).font;
+}
+
+/// Get the QFont for this FontInfo
+GuiFontInfo const & getFontInfo(FontInfo const & f)
+{
+	return fontinfo(f);
 }
 
 } // namespace frontend

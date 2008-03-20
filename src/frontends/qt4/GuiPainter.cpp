@@ -14,6 +14,7 @@
 #include "GuiPainter.h"
 
 #include "GuiApplication.h"
+#include "GuiFontLoader.h"
 #include "GuiFontMetrics.h"
 #include "GuiImage.h"
 #include "qt_helpers.h"
@@ -271,8 +272,8 @@ int GuiPainter::smallCapsText(int x, int y,
 	FontInfo smallfont(f);
 	smallfont.decSize().decSize().setShape(UP_SHAPE);
 
-	QFont const & qfont = guiApp->guiFontLoader().get(f);
-	QFont const & qsmallfont = guiApp->guiFontLoader().get(smallfont);
+	QFont const & qfont = getFont(f);
+	QFont const & qsmallfont = getFont(smallfont);
 
 	setQPainterPen(computeColor(f.realColor()));
 	int textwidth = 0;
@@ -318,7 +319,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	GuiFontInfo & fi = guiApp->guiFontLoader().fontinfo(f);
+	GuiFontInfo const & fi = getFontInfo(f);
 
 	int textwidth;
 

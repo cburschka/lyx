@@ -14,7 +14,7 @@
 #define GUIAPPLICATION_H
 
 #include "ColorCache.h"
-#include "GuiFontLoader.h"
+#include "FontLoader.h"
 #include "GuiClipboard.h"
 #include "GuiSelection.h"
 #include "Menus.h"
@@ -104,8 +104,6 @@ public:
 
 	///
 	ColorCache & colorCache() { return color_cache_; }
-	///
-	GuiFontLoader & guiFontLoader() { return font_loader_; }
 
 	/// return a suitable serif font name.
 	virtual QString const romanFontName();
@@ -142,7 +140,7 @@ private:
 	///
 	GuiSelection selection_;
 	///
-	GuiFontLoader font_loader_;
+	FontLoader font_loader_;
 	///
 	ColorCache color_cache_;
 	///
