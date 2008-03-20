@@ -15,7 +15,7 @@ lyxclient.1:
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
-	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS) 
+	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)
 
 # everything below the line containing the single backslashs
 # an ugly hack and needed because of the
@@ -30,22 +30,22 @@ SOURCEFILES = \
   client.cpp \
   debug.cpp \
   gettext.cpp \
-  Messages.cpp 
+  Messages.cpp
 
 HEADERFILES = \
   debug.h \
-  Messages.h 
+  Messages.h
 
 
 if MONOLITHIC_CLIENT
 
-client.cpp:
+lyxclient.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
-BUILT_SOURCES = client.cpp
- 
-lyxclient_SOURCES = client.cpp $(HEADERFILES)
+BUILT_SOURCES = lyxclient.cpp
+
+lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
 
 else
 
