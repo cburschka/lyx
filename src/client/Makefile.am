@@ -37,10 +37,10 @@ HEADERFILES = \
   Messages.h
 
 
-if MONOLITHIC_CLIENT
-
 lyxclient.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
+
+if MONOLITHIC_CLIENT
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
 BUILT_SOURCES = lyxclient.cpp
