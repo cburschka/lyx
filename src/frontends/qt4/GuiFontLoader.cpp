@@ -14,7 +14,7 @@
 #include "FontLoader.h"
 
 #include "FontInfo.h"
-#include "GuiFontLoader.h"
+#include "GuiFontMetrics.h"
 #include "qt_helpers.h"
 
 #include "LyXRC.h"
@@ -44,6 +44,21 @@ namespace lyx {
 extern docstring const stateText(FontInfo const & f);
 
 namespace frontend {
+
+/**
+ * Matches Fonts against
+ * actual QFont instances, and also caches metrics.
+ */
+class GuiFontInfo
+{
+public:
+	GuiFontInfo(FontInfo const & f);
+
+	/// The font instance
+	QFont font;
+	/// Metrics on the font
+	GuiFontMetrics metrics;
+};
 
 namespace {
 
@@ -193,9 +208,9 @@ QFont symbolFont(QString const & family, bool * ok)
 
 	// A simple setFamily() fails on Qt 2
 
-	QString const rawName = rawName(family);
-	LYXERR(Debug::FONT, "Trying " << fromqstr(rawName) << " ... ");
-	font.setRawName(rawName);
+	QString const raw = rawName(family);
+	LYXERR(Debug::FONT, "Trying " << fromqstr(raw) << " ... ");
+	font.setRawName(raw);
 
 	if (isChosenFont(font, family)) {
 		LYXERR(Debug::FONT, "raw version!");
@@ -377,21 +392,22 @@ bool FontLoader::available(FontInfo const & f)
 	return true;
 }
 
+
 FontMetrics const & FontLoader::metrics(FontInfo const & f)
 {
 	return fontinfo(f).metrics;
 }
 
-/// Get the QFont for this FontInfo
+
+GuiFontMetrics const & getFontMetrics(FontInfo const & f)
+{
+	return fontinfo(f).metrics;
+}
+
+
 QFont const & getFont(FontInfo const & f)
 {
 	return fontinfo(f).font;
-}
-
-/// Get the QFont for this FontInfo
-GuiFontInfo const & getFontInfo(FontInfo const & f)
-{
-	return fontinfo(f);
 }
 
 } // namespace frontend

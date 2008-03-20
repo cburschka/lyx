@@ -319,7 +319,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	GuiFontInfo const & fi = getFontInfo(f);
+	QFont const & ff = getFont(f); 
+	GuiFontMetrics const & fm = getFontMetrics(f); 
 
 	int textwidth;
 
@@ -333,7 +334,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
-	textwidth = fi.metrics.width(s);
+	textwidth = fm.width(s);
 	if (f.underbar() == FONT_ON)
 		underline(f, x, y, textwidth);
 
@@ -347,7 +348,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
 		setQPainterPen(computeColor(f.realColor()));
 		QTextLayout adsymbol(str);
-		adsymbol.setFont(fi.font);
+		adsymbol.setFont(ff);
 		adsymbol.beginLayout();
 		QTextLine line = adsymbol.createLine();
 		line.setNumColumns(1);
@@ -361,8 +362,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		// don't use the pixmap cache,
 		// draw directly onto the painting device
 		setQPainterPen(computeColor(f.realColor()));
-		if (font() != fi.font)
-			setFont(fi.font);
+		if (font() != ff)
+			setFont(ff);
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
@@ -379,22 +380,22 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Only the left bearing of the first character is important
 	// as we always write from left to right, even for
 	// right-to-left languages.
-	int const lb = min(fi.metrics.lbearing(s[0]), 0);
-	int const mA = fi.metrics.maxAscent();
+	int const lb = min(fm.lbearing(s[0]), 0);
+	int const mA = fm.maxAscent();
 	if (!QPixmapCache::find(key, pm)) {
 		// Only the right bearing of the last character is
 		// important as we always write from left to right,
 		// even for right-to-left languages.
-		int const rb = fi.metrics.rbearing(s[s.size()-1]);
+		int const rb = fm.rbearing(s[s.size()-1]);
 		int const w = textwidth + rb - lb;
-		int const mD = fi.metrics.maxDescent();
+		int const mD = fm.maxDescent();
 		int const h = mA + mD;
 		pm = QPixmap(w, h);
 		pm.fill(Qt::transparent);
 		GuiPainter p(&pm);
 		p.setQPainterPen(computeColor(f.realColor()));
-		if (p.font() != fi.font)
-			p.setFont(fi.font);
+		if (p.font() != ff)
+			p.setFont(ff);
 		// We need to draw the text as LTR as we use our own bidi code.
 		p.setLayoutDirection(Qt::LeftToRight);
 		p.drawText(-lb, mA, str);
