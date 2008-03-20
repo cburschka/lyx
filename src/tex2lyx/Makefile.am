@@ -39,6 +39,7 @@ LINKED_FILES = \
 	../TextClass.cpp \
 	../TextClass.h \
 	../Lexer.cpp \
+	../lengthcommon.cpp \
 	../Color.cpp \
 	../Color.h
 
@@ -53,7 +54,6 @@ tex2lyx_SOURCES = \
 	Font.cpp \
 	Font.h \
 	gettext.cpp \
-	lengthcommon.cpp \
 	Parser.cpp \
 	Parser.h \
 	tex2lyx.cpp \
