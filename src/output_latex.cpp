@@ -47,7 +47,7 @@ enum OpenEncoding {
 		none,
 		inputenc,
 		CJK
-	};
+};
 
 static int open_encoding_ = none;
 static bool cjk_inherited_ = false;
@@ -203,7 +203,6 @@ TeXEnvironment(Buffer const & buf,
 			  // Thinko!
 			  // How to handle this? (Lgb)
 			  //&& !suffixIs(os, "\n\n")
-				  //) {
 
 				// There should be at least one '\n' already
 				// but we need there to be two for Standard
@@ -250,7 +249,7 @@ TeXEnvironment(Buffer const & buf,
 	return par;
 }
 
-}
+} // namespace anon
 
 
 int latexOptArgInsets(Paragraph const & par, odocstream & os,
@@ -277,7 +276,7 @@ namespace {
 ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  Text const & text,
-	  ParagraphList::const_iterator pit,
+	  ParagraphList::const_iterator const pit,
 	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
@@ -286,6 +285,13 @@ TeXOnePar(Buffer const & buf,
 		<< everypar << "'");
 	BufferParams const & bparams = buf.params();
 	ParagraphList const & paragraphs = text.paragraphs();
+
+	ParagraphList::const_iterator priorpit = pit;
+	if (priorpit != paragraphs.begin())
+		--priorpit;
+	ParagraphList::const_iterator nextpit = pit;
+	if (nextpit != paragraphs.end())
+		++nextpit;
 
 	if (runparams_in.verbatim) {
 		int const dist = distance(paragraphs.begin(), pit);
@@ -299,8 +305,7 @@ TeXOnePar(Buffer const & buf,
 
 		/*bool need_par = */ pit->latex(bparams, outerfont,
 			os, texrow, runparams_in);
-
-		return ++pit;
+		return nextpit;
 	}
 
 	// FIXME This comment doesn't make sense. What's the
@@ -335,15 +340,15 @@ TeXOnePar(Buffer const & buf,
 	// if there is no previous paragraph
 	Language const * const prev_language =
 		(pit != paragraphs.begin()) ?
-			boost::prior(pit)->getParLanguage(bparams) : outer_language;
+			priorpit->getParLanguage(bparams) : outer_language;
 
 	if (par_language->babel() != prev_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style.isEnvironment()
 		 && (pit == paragraphs.begin() ||
-		     (boost::prior(pit)->layout() != pit->layout() &&
-		      boost::prior(pit)->getDepth() <= pit->getDepth())
-		     || boost::prior(pit)->getDepth() < pit->getDepth())))
+		     (priorpit->layout() != pit->layout() &&
+		      priorpit->getDepth() <= pit->getDepth())
+		     || priorpit->getDepth() < pit->getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
 		    prev_language->babel() != outer_language->babel() &&
@@ -486,7 +491,7 @@ TeXOnePar(Buffer const & buf,
 
 		if (!pit->params().spacing().isDefault()
 			&& (pit == paragraphs.begin()
-			    || !boost::prior(pit)->hasSameLayout(*pit)))
+			    || !priorpit->hasSameLayout(*pit)))
 		{
 			os << from_ascii(pit->params().spacing().writeEnvirBegin(useSetSpace))
 			    << '\n';
@@ -551,7 +556,7 @@ TeXOnePar(Buffer const & buf,
 	bool is_command = style.isCommand();
 
 	if (style.resfont.size() != font.fontInfo().size()
-	    && boost::next(pit) != paragraphs.end()
+	    && nextpit != paragraphs.end()
 	    && !is_command) {
 		if (!need_par)
 			os << '{';
@@ -565,14 +570,14 @@ TeXOnePar(Buffer const & buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (boost::next(pit) != paragraphs.end()
-		    && (pit->params().depth() < boost::next(pit)->params().depth()))
+		if (nextpit != paragraphs.end()
+		    && (pit->params().depth() < nextpit->params().depth()))
 			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		ParagraphList::const_iterator next = boost::next(pit);
+		ParagraphList::const_iterator next = nextpit;
 
 		if (next != paragraphs.end() && (next->layout() != pit->layout()
 			|| next->params().depth() != pit->params().depth()))
@@ -582,14 +587,13 @@ TeXOnePar(Buffer const & buf,
 		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		if (boost::next(pit) != paragraphs.end())
+		if (nextpit != paragraphs.end())
 			pending_newline = true;
 	}
 
 	if (pit->allowParagraphCustomization()) {
 		if (!pit->params().spacing().isDefault()
-			&& (boost::next(pit) == paragraphs.end()
-			    || !boost::next(pit)->hasSameLayout(*pit)))
+			&& (nextpit == paragraphs.end() || !nextpit->hasSameLayout(*pit)))
 		{
 			if (pending_newline) {
 				os << '\n';
@@ -611,13 +615,13 @@ TeXOnePar(Buffer const & buf,
 		runparams.local_font != 0 &&
 		runparams.local_font->isRightToLeft() != par_language->rightToLeft() &&
 		// are we about to close the language?
-		((boost::next(pit) != paragraphs.end() &&
+		((nextpit != paragraphs.end() &&
 		  par_language->babel() != 
-		  	(boost::next(pit)->getParLanguage(bparams))->babel()) ||
-		 (boost::next(pit) == paragraphs.end() &&
+		  	(nextpit->getParLanguage(bparams))->babel()) ||
+		 (nextpit == paragraphs.end() &&
 		  par_language->babel() != outer_language->babel()));
 
-	if (closing_rtl_ltr_environment || (boost::next(pit) == paragraphs.end()
+	if (closing_rtl_ltr_environment || (nextpit == paragraphs.end()
 	    && par_language->babel() != outer_language->babel())) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
@@ -656,9 +660,9 @@ TeXOnePar(Buffer const & buf,
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
-	if (boost::next(pit) != paragraphs.end() && open_encoding_ == CJK &&
-	    (boost::next(pit)->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
-	     boost::next(pit)->layout().isEnvironment() && boost::next(pit)->isMultiLingual(bparams))
+	if (nextpit != paragraphs.end() && open_encoding_ == CJK &&
+	    (nextpit->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
+	     nextpit->layout().isEnvironment() && nextpit->isMultiLingual(bparams))
 	     // in environments, CJK has to be closed later (nesting!)
 	     && !style.isEnvironment()) {
 		os << "\\end{CJK}\n";
@@ -667,7 +671,7 @@ TeXOnePar(Buffer const & buf,
 
 	// If this is the last paragraph, close the CJK environment
 	// if necessary. If it's an environment, we'll have to \end that first.
-	if (boost::next(pit) == paragraphs.end() && !style.isEnvironment()) {
+	if (nextpit == paragraphs.end() && !style.isEnvironment()) {
 		switch (open_encoding_) {
 			case CJK: {
 				// end of main text
@@ -701,7 +705,7 @@ TeXOnePar(Buffer const & buf,
 	// when this inset closes.
 	// This switch is only necessary if we're using "auto" or "default" 
 	// encoding. 
-	if (boost::next(pit) == paragraphs.end() && runparams_in.local_font != 0) {
+	if (nextpit == paragraphs.end() && runparams_in.local_font != 0) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		if (bparams.inputenc == "auto" || bparams.inputenc == "default")
 			os << setEncoding(runparams_in.encoding->iconvName());
@@ -715,15 +719,15 @@ TeXOnePar(Buffer const & buf,
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in
 	// TeXEnvironment, because it is needed in this case
-	if (boost::next(pit) != paragraphs.end()) {
+	if (nextpit != paragraphs.end()) {
 		os << '\n';
 		texrow.newline();
 	}
 
-	if (boost::next(pit) != paragraphs.end())
-		LYXERR(Debug::LATEX, "TeXOnePar...done " << &*boost::next(pit));
+	if (nextpit != paragraphs.end())
+		LYXERR(Debug::LATEX, "TeXOnePar...done " << &*nextpit);
 
-	return ++pit;
+	return nextpit;
 }
 
 } // anon namespace
