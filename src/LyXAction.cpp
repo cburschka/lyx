@@ -1078,7 +1078,7 @@ void LyXAction::init()
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop, Hidden },
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
-		{ LFUN_INSET_TOGGLE, "", ReadOnly, Hidden },
+		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 
 /*!
