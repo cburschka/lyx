@@ -810,7 +810,6 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 		break;
 	}
 	if (lyxCode() == FLEX_CODE)
-		// FIXME: Is this really necessary?
 		return InsetLayout::Conglomerate;
 	return InsetLayout::Classic;
 }
