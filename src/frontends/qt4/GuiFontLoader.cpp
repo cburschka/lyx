@@ -69,45 +69,16 @@ struct SymbolFont {
 };
 
 SymbolFont symbol_fonts[] = {
-	{ SYMBOL_FAMILY,
-		"symbol",
-		"-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific" },
-
-	{ CMR_FAMILY,
-		"cmr10",
-		"-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ CMSY_FAMILY,
-		"cmsy10",
-		"-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ CMM_FAMILY,
-		"cmmi10",
-		"-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ CMEX_FAMILY,
-		"cmex10",
-		"-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ MSA_FAMILY,
-		"msam10",
-		"-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ MSB_FAMILY,
-		"msbm10",
-		"-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ EUFRAK_FAMILY,
-		"eufm10",
-		"-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ WASY_FAMILY,
-		"wasy10",
-		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
-
-	{ ESINT_FAMILY,
-		"esint10",
-		"-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
+	{ SYMBOL_FAMILY,"symbol", "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific"},
+	{ CMR_FAMILY,   "cmr10",  "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMSY_FAMILY,  "cmsy10", "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMM_FAMILY,   "cmmi10", "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ CMEX_FAMILY,  "cmex10", "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ MSA_FAMILY,   "msam10", "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ MSB_FAMILY,   "msbm10", "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
+	{ EUFRAK_FAMILY,"eufm10", "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ WASY_FAMILY,  "wasy10", "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+	{ ESINT_FAMILY, "esint10","-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
 };
 
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
@@ -250,14 +221,13 @@ FontLoader::FontLoader()
 
 void FontLoader::update()
 {
-	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1) {
+	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4) {
 					delete fontinfo_[i1][i2][i3][i4];
 					fontinfo_[i1][i2][i3][i4] = 0;
 				}
-	}
 }
 
 
