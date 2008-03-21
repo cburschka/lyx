@@ -370,7 +370,7 @@ Menuset
 		Item "Horizontal Line|L" "line-insert"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Separator
-		Item "Hyphenation Point|H" "specialchar-insert hyphenation-point"
+		Item "Hyphenation Point|H" "specialchar-insert hyphenation"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
 		Item "New Line|e" "new-line"
 		Item "Line Break|B" "line-break"
