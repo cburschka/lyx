@@ -326,7 +326,7 @@ liblyxqt4_la_SOURCES = \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
 
-EXTRA_DIST = pch.h
+EXTRA_DIST = pch.h ui/compile_uic.sh $(UIFILES:%=ui/%)
 BUILT_SOURCES += $(PCH_FILE)
 AM_CPPFLAGS += $(PCH_FLAGS)
 
