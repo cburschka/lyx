@@ -18,8 +18,6 @@
 #include <map>
 #include <set>
 
-class QListWidgetItem;
-
 namespace lyx {
 namespace frontend {
 
@@ -43,8 +41,8 @@ public Q_SLOTS:
 	void on_applyPB_clicked();
 	void on_okPB_clicked();
 	void on_closePB_clicked();
-	void on_symbolsLW_itemActivated(QListWidgetItem *);
-	void on_symbolsLW_itemClicked(QListWidgetItem * item);
+	void on_symbolsLW_activated(QModelIndex const & index);
+	void on_symbolsLW_clicked(QModelIndex const & index);
 	void on_categoryCO_activated(QString const & text);
 	void on_categoryFilterCB_toggled(bool);
 	void on_chosenLE_returnPressed();
@@ -67,6 +65,10 @@ private:
 	typedef std::set<char_type> SymbolsList;
 	///
 	SymbolsList symbols_;
+	/// custom model for symbol list view
+	class Model;
+	friend class Model;
+	Model * model_;
 };
 
 } // namespace frontend

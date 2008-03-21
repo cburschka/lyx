@@ -160,8 +160,87 @@ QString getBlock(char_type c)
 } // namespace anon
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// GuiSymbols::Model
+//
+/////////////////////////////////////////////////////////////////////
+
+class GuiSymbols::Model : public QAbstractItemModel
+{
+public:
+	Model(GuiSymbols * parent)
+		: QAbstractItemModel(parent), parent_(parent)
+	{}
+
+	QModelIndex index(int row, int column, QModelIndex const &) const
+	{
+		return createIndex(row, column);
+	}
+
+	QModelIndex parent(QModelIndex const &) const
+	{
+		return QModelIndex();
+	}
+
+	int rowCount(QModelIndex const &) const
+	{
+		return symbols_.count();
+	}
+
+	int columnCount(QModelIndex const &) const
+	{
+		return 1;
+	}
+
+	QVariant data(QModelIndex const & index, int role) const
+	{
+		static QString const strCharacter = qt_("Character: ");
+		static QString const strCodePoint = qt_("Code Point: ");
+
+		static char codeName[10];
+
+		char_type c = symbols_.at(index.row()); 
+
+		if (role == Qt::TextAlignmentRole)
+			return QVariant(Qt::AlignCenter);
+
+		if (role == Qt::DisplayRole)
+			return toqstr(c);
+
+		if (role == Qt::ToolTipRole) {
+			sprintf(codeName, "0x%04x", c);
+			return strCharacter + toqstr(c) + '\n'
+				+ strCodePoint + QLatin1String(codeName);
+		}
+
+		//LYXERR0("role: " << role << " row: " << index.row());
+		return QVariant();
+	}
+
+	void reset(QList<char_type> const & symbols)
+	{
+		symbols_ = symbols;
+		QAbstractItemModel::reset();
+	}
+
+private:
+	friend class GuiSymbols;
+	GuiSymbols * parent_;
+	
+	QList<char_type> symbols_;
+};
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// GuiSymbols
+//
+/////////////////////////////////////////////////////////////////////
+
 GuiSymbols::GuiSymbols(GuiView & lv)
-	: DialogView(lv, "symbols", qt_("Symbols")), encoding_("ascii")
+	: DialogView(lv, "symbols", qt_("Symbols")), encoding_("ascii"),
+		model_(new Model(this))
 {
 	setupUi(this);
 
@@ -174,6 +253,7 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	int size = font.pointSize() + 3;
 	font.setPointSize(size);
 	symbolsLW->setFont(font);
+	symbolsLW->setModel(model_);
 }
 
 
@@ -193,7 +273,7 @@ void GuiSymbols::updateView()
 	bool const utf8 = toqstr(encoding_).startsWith("utf8");
 	if (utf8)
 		categoryFilterCB->setChecked(false);
-	categoryFilterCB->setEnabled(!utf8);
+	//categoryFilterCB->setEnabled(!utf8);
 	updateSymbolList();
 }
 
@@ -225,7 +305,7 @@ void GuiSymbols::on_closePB_clicked()
 }
 
 
-void GuiSymbols::on_symbolsLW_itemActivated(QListWidgetItem *)
+void GuiSymbols::on_symbolsLW_activated(QModelIndex const &)
 {
 	on_okPB_clicked();
 }
@@ -245,9 +325,9 @@ void GuiSymbols::on_chosenLE_returnPressed()
 }
 
 
-void GuiSymbols::on_symbolsLW_itemClicked(QListWidgetItem * item)
+void GuiSymbols::on_symbolsLW_clicked(QModelIndex const & index)
 {
-	QString const text = item->text();
+	QString const text = model_->data(index, Qt::DisplayRole).toString();
 	if (text.isEmpty())
 		return;
 	if (chosenLE->isEnabled())
@@ -291,7 +371,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	bool const nocategory = category.isEmpty();
 	char_type range_start = 0x0000;
 	char_type range_end = 0x110000;
-	symbolsLW->clear();
+	QList<char_type> s;
 	if (update_combo) {
 		used_blocks.clear();
 		categoryCO->clear();
@@ -310,10 +390,6 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			}
 	}
 
-	static char codeName[10];
-	static QString const strCharacter = qt_("Character: ");
-	static QString const strCodePoint = qt_("Code Point: ");
-
 	SymbolsList::const_iterator const end = symbols_.end();
 	int numItem = 0;
 	for (SymbolsList::const_iterator it = symbols_.begin(); it != end; ++it) {
@@ -329,15 +405,9 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
-		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
 		++numItem;
-		if (show_all || c >= range_start && c <= range_end) {
-			sprintf(codeName, "0x%04x", c);
-			lwi->setTextAlignment(Qt::AlignCenter);
-			lwi->setToolTip(strCharacter + toqstr(c) + '\n'
-				+ strCodePoint + QLatin1String(codeName));
-			symbolsLW->addItem(lwi);
-		}
+		if (show_all || c >= range_start && c <= range_end)
+			s.append(c);
 		if (update_combo) {
 			QString block = getBlock(c);
 			if (category.isEmpty())
@@ -346,6 +416,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 				used_blocks[block] = numItem;
 		}
 	}
+	model_->reset(s);
 
 	if (update_combo) {
 		// update category combo
