@@ -748,8 +748,9 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "open" || cmd.argument() == "close" ||
-		    cmd.argument() == "toggle")
+		if ((cmd.argument() == "open" && status_ == Open)
+			|| (cmd.argument() == "close" && status_ != Open)
+			|| cmd.argument() == "toggle")
 			flag.enabled(true);
 		else
 			flag.enabled(false);
@@ -882,11 +883,14 @@ bool InsetCollapsable::undefined() const
 docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
-	if (geometry() != NoButton) {
-		Dimension dim = dimensionCollapsed();
-		if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
-			return docstring();
-	}
+	if (geometry() == NoButton)
+		return from_ascii("context-collapsable");
+
+	Dimension dim = dimensionCollapsed();
+	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
+		//FIXME: We should offer the "context-collapsable" menu here too but
+		// this is not possible right now because the cursor must be set first.
+		return docstring();
 
 	return InsetText::contextMenu(bv, x, y);
 }

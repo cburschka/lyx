@@ -557,6 +557,14 @@ Menuset
 	End
 
 #
+# InsetCollapsable context menu
+#
+	Menu "context-collapsable"
+		Item "Open Inset|O" "inset-toggle open"
+		Item "Close Inset|C" "inset-toggle close"
+	End
+
+#
 # Edit context menu
 #
 	Menu "context-edit"
