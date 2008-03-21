@@ -482,7 +482,7 @@ Tabular::CellData::CellData(Buffer const & buf)
 	  right_line(false),
 	  usebox(BOX_NONE),
 	  rotate(false),
-	  inset(new InsetText(buf))
+	  inset(new InsetTableCell(buf))
 {
 	inset->setBuffer(const_cast<Buffer &>(buf));
 	inset->paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
@@ -503,7 +503,7 @@ Tabular::CellData::CellData(CellData const & cs)
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
 	  p_width(cs.p_width),
-	  inset(dynamic_cast<InsetText*>(cs.inset->clone()))
+	  inset(dynamic_cast<InsetTableCell*>(cs.inset->clone()))
 {}
 
 
@@ -1018,7 +1018,7 @@ namespace {
  * merge cell paragraphs and reset layout to standard for variable width
  * cells.
  */
-void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
+void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
 {
 	inset->setAutoBreakRows(fixedWidth);
 	if (fixedWidth)
@@ -2226,7 +2226,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		if (isPartOfMultiColumn(i, j))
 			continue;
 		ret += TeXCellPreamble(os, cell);
-		shared_ptr<InsetText> inset = getCellInset(cell);
+		shared_ptr<InsetTableCell> inset = getCellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
 		bool rtl = par.isRTL(buffer().params())
@@ -2743,13 +2743,13 @@ void Tabular::plaintext(odocstream & os,
 }
 
 
-shared_ptr<InsetText> Tabular::getCellInset(idx_type cell) const
+shared_ptr<InsetTableCell> Tabular::getCellInset(idx_type cell) const
 {
 	return cell_info[cellRow(cell)][cellColumn(cell)].inset;
 }
 
 
-shared_ptr<InsetText> Tabular::getCellInset(row_type row,
+shared_ptr<InsetTableCell> Tabular::getCellInset(row_type row,
 					       col_type column) const
 {
 	return cell_info[row][column].inset;
@@ -2757,7 +2757,7 @@ shared_ptr<InsetText> Tabular::getCellInset(row_type row,
 
 
 void Tabular::setCellInset(row_type row, col_type column,
-			      shared_ptr<InsetText> ins) const
+			      shared_ptr<InsetTableCell> ins) const
 {
 	cell_info[row][column].inset = ins;
 }
@@ -3222,7 +3222,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		    && tablemode(bvcur)) 
 			;
 		else
-			// Let InsetText do it
+			// Let InsetTableCell do it
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 	}
@@ -3871,13 +3871,13 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 }
 
 
-shared_ptr<InsetText const> InsetTabular::cell(idx_type idx) const
+shared_ptr<InsetTableCell const> InsetTabular::cell(idx_type idx) const
 {
 	return tabular.getCellInset(idx);
 }
 
 
-shared_ptr<InsetText> InsetTabular::cell(idx_type idx)
+shared_ptr<InsetTableCell> InsetTabular::cell(idx_type idx)
 {
 	return tabular.getCellInset(idx);
 }
@@ -4593,8 +4593,8 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 				--c1;
 				continue;
 			}
-			shared_ptr<InsetText> inset(
-				new InsetText(*paste_tabular->getCellInset(r1, c1)));
+			shared_ptr<InsetTableCell> inset(
+				new InsetTableCell(*paste_tabular->getCellInset(r1, c1)));
 			tabular.setCellInset(r2, c2, inset);
 			// FIXME: change tracking (MG)
 			inset->setChange(Change(cur.buffer().params().trackChanges ?
@@ -4616,7 +4616,7 @@ void InsetTabular::cutSelection(Cursor & cur)
 	getSelection(cur, rs, re, cs, ce);
 	for (row_type i = rs; i <= re; ++i) {
 		for (col_type j = cs; j <= ce; ++j) {
-			shared_ptr<InsetText> t
+			shared_ptr<InsetTableCell> t
 				= cell(tabular.cellIndex(i, j));
 			if (cur.buffer().params().trackChanges)
 				// FIXME: Change tracking (MG)
@@ -4765,7 +4765,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		case '\t':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+				shared_ptr<InsetTableCell> inset = loctab->getCellInset(cell);
 				Font const font = bv.textMetrics(&inset->text_).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
@@ -4777,7 +4777,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		case '\n':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
+				shared_ptr<InsetTableCell> inset = tabular.getCellInset(cell);
 				Font const font = bv.textMetrics(&inset->text_).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
@@ -4794,7 +4794,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	}
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
-		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+		shared_ptr<InsetTableCell> inset = loctab->getCellInset(cell);
 		Font const font = bv.textMetrics(&inset->text_).displayFont(0, 0);
 		inset->setText(buf.substr(op, len - op), font,
 			buffer().params().trackChanges);

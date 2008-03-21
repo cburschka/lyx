@@ -65,6 +65,8 @@ class InsetTabular;
 class Cursor;
 class OutputParams;
 
+typedef InsetText InsetTableCell;
+
 //
 // A helper struct for tables
 //
@@ -443,13 +445,13 @@ public:
 	///
 	// end longtable support
 	///
-	boost::shared_ptr<InsetText> getCellInset(idx_type cell) const;
+	boost::shared_ptr<InsetTableCell> getCellInset(idx_type cell) const;
 	///
-	boost::shared_ptr<InsetText> getCellInset(row_type row,
+	boost::shared_ptr<InsetTableCell> getCellInset(row_type row,
 						  col_type column) const;
 	///
 	void setCellInset(row_type row, col_type column,
-			  boost::shared_ptr<InsetText>) const;
+			  boost::shared_ptr<InsetTableCell>) const;
 	/// Search for \param inset in the tabular, with the
 	///
 	idx_type getCellFromInset(Inset const * inset) const;
@@ -499,7 +501,7 @@ public:
 		///
 		Length p_width; // this is only set for multicolumn!!!
 		///
-		boost::shared_ptr<InsetText> inset;
+		boost::shared_ptr<InsetTableCell> inset;
 	};
 	CellData & cellinfo_of_cell(idx_type cell) const;
 	///
@@ -722,9 +724,9 @@ public:
 	/// number of cells
 	size_t nargs() const { return tabular.cellCount(); }
 	///
-	boost::shared_ptr<InsetText const> cell(idx_type) const;
+	boost::shared_ptr<InsetTableCell const> cell(idx_type) const;
 	///
-	boost::shared_ptr<InsetText> cell(idx_type);
+	boost::shared_ptr<InsetTableCell> cell(idx_type);
 	///
 	Text * getText(int) const;
 
