@@ -263,23 +263,26 @@ void GuiSymbols::on_categoryCO_activated(QString const & text)
 {
 	if (!categoryFilterCB->isChecked())
 		updateSymbolList(false);
-	else if (used_blocks.find(text) != used_blocks.end())
-		symbolsLW->scrollToItem(used_blocks[text],
-			QAbstractItemView::PositionAtTop);
+	else
+		scrollToItem(text);
 }
 
 
 void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 {
 	updateSymbolList(on);
-	if (on) {
-		QString const category = categoryCO->currentText();
-		if (used_blocks.find(category) != used_blocks.end())
-			symbolsLW->scrollToItem(used_blocks[category],
-				QAbstractItemView::PositionAtTop);
-	}
+	if (on)
+		scrollToItem(categoryCO->currentText());	
 }
 
+
+void GuiSymbols::scrollToItem(QString const & category)
+{
+	if (used_blocks.find(category) != used_blocks.end()) {
+		symbolsLW->scrollToItem(used_blocks[category],
+			QAbstractItemView::PositionAtTop);
+	}
+}
 
 void GuiSymbols::updateSymbolList(bool update_combo)
 {

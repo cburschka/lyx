@@ -51,6 +51,7 @@ public Q_SLOTS:
 	void on_chosenLE_textChanged(QString const &);
 
 private:
+	void scrollToItem(QString const & category);
 	/** update the widgets (symbol browser, category combo)
 	 *  \p combo indicates if the combo box has to be refreshed
 	 *  as well (which is rather expensive)
