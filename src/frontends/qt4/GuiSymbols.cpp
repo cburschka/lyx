@@ -279,8 +279,9 @@ void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 void GuiSymbols::scrollToItem(QString const & category)
 {
 	if (used_blocks.find(category) != used_blocks.end()) {
-		symbolsLW->scrollToItem(used_blocks[category],
-			QAbstractItemView::PositionAtTop);
+		int row = used_blocks[category];
+		QModelIndex index = symbolsLW->model()->index(row, 0, QModelIndex());
+		symbolsLW->scrollTo(index, QAbstractItemView::PositionAtTop);
 	}
 }
 
@@ -314,6 +315,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	static QString const strCodePoint = qt_("Code Point: ");
 
 	SymbolsList::const_iterator const end = symbols_.end();
+	int numItem = 0;
 	for (SymbolsList::const_iterator it = symbols_.begin(); it != end; ++it) {
 		char_type c = *it;
 		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
@@ -328,6 +330,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
 		QListWidgetItem * lwi = new QListWidgetItem(toqstr(c));
+		++numItem;
 		if (show_all || c >= range_start && c <= range_end) {
 			sprintf(codeName, "0x%04x", c);
 			lwi->setTextAlignment(Qt::AlignCenter);
@@ -340,7 +343,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			if (category.isEmpty())
 				category = block;
 			if (used_blocks.find(block) == used_blocks.end())
-				used_blocks[block] = lwi;
+				used_blocks[block] = numItem;
 		}
 	}
 

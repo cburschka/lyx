@@ -60,7 +60,7 @@ private:
 	/// the encoding at cursor position
 	std::string encoding_;
 	/// which blocks do we actually include?
-	typedef std::map<QString, QListWidgetItem *> UsedBlocks;
+	typedef std::map<QString, int> UsedBlocks;
 	///
 	UsedBlocks used_blocks;
 	/// list of all symbols
