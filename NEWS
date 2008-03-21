@@ -1,3 +1,10 @@
+What's new in version 1.6.0alpha1?
+----------------------------
+
+The new features in LyX 1.6 are detailed in
+http://wiki.lyx.org/LyX/NewInLyX16
+
+
 What's new in version 1.5.1?
 ----------------------------
 
@@ -239,7 +246,7 @@ even after the selection has been cleared.
 
 Lyx can not create, but can open a .lyx file with .cls and .layout files
 stored in the same directory as the .lyx file. That is to say, if you send
-your co-author a .lyx file with associated class and layout files, s/he 
+your co-author a .lyx file with associated class and layout files, s/he
 can view and modify the .lyx file directly, without having to install the
 .cls and .layout files, reconfigure and restart lyx. Note that the .cls and
 .layout files have to be copied to every directory your .lyx files reside,
@@ -281,7 +288,7 @@ exception to this rule is the addition of Farsi as a supported language
 since the available patch was not integrated in the previous release.
 
 What's new in version 1.5.0 (beta 3)?
----------------------------- 
+----------------------------
 
 Compared with the previous beta release we have fixed several bugs
 and added some improvements:
@@ -298,7 +305,7 @@ this will allow an easier navigation of the source code thus simplifying
 bug fixing.
 
 What's new in version 1.5.0 (beta 2)?
----------------------------- 
+----------------------------
 
 Compared with the previous beta release we have fixed several bugs and
 added some graphical improvements:
@@ -309,12 +316,12 @@ added some graphical improvements:
 Apart from the described major changes, several minor improvements of
 the user interface have been made, such as:
 
- - Syntax highlighting for the user preamble and the LaTeX log file 
- - Better parsing of BibTeX databases (in the citation dialog) 
- - Support optional argument for environments 
+ - Syntax highlighting for the user preamble and the LaTeX log file
+ - Better parsing of BibTeX databases (in the citation dialog)
+ - Support optional argument for environments
 
 What's new in version 1.5.0 (beta 1)?
----------------------------- 
+----------------------------
 
 * Unicode
 
@@ -368,13 +375,13 @@ document.
 LyX's font selection abilities have been one of its weakest and most
 outdated components. A completely new interface was implemented that
 provides access to the power of LaTeX's font selection scheme.
- 
+
 * Tabular extensions
 
 LyX's table support is certainly less powerful than that of
 LaTeX. support for the booktabs package was implemented, which
 provides beautiful and elegant tabulars.
- 
+
 
 * Nomenclatures
 
@@ -443,7 +450,7 @@ of one file necessary to read and write lyx 1.5 files.
 
 
 What's new in version 1.4.5?
----------------------------- 
+----------------------------
 
 ** Updates:
 ***********
@@ -475,7 +482,7 @@ What's new in version 1.4.5?
 - Fix bug where moving the last section up in the toc dialog eats the
   last paragraph (bug 3303).
 
-- Fix crash when using "all-insets-toggle" lfun on a file with 
+- Fix crash when using "all-insets-toggle" lfun on a file with
   math insets (bug 3358).
 
 - Fix crash when undoing ctrl-<minus> in mathed (bug 3590).
@@ -545,7 +552,7 @@ What's new in version 1.4.5?
 
 
 What's new in version 1.4.4?
----------------------------- 
+----------------------------
 
 ** Updates:
 ***********
@@ -593,7 +600,7 @@ What's new in version 1.4.4?
 - A new manual named "Embedded Objects" is available in the Help menu
   in English and Spanish. It describes in detail tables, graphics,
   floats, notes, and boxes.
-  
+
 - Updated Intro and Extended manual.
 
 - New Galician localization; update Czech, French, German, Hungarian,
@@ -628,7 +635,7 @@ What's new in version 1.4.4?
 
 - Fixed undo-and-TOC-navigation bug.
 
-- Fixed layout2layout (spurious tabs), so layout files from 1.3 can be read 
+- Fixed layout2layout (spurious tabs), so layout files from 1.3 can be read
   again.
 
 - Revert fix from 1.4.3 for better display of script insets with a nucleus
@@ -784,7 +791,7 @@ What's new in version 1.4.4?
 
 
 What's new in version 1.4.3?
----------------------------- 
+----------------------------
 
 ** Updates:
 
@@ -847,7 +854,7 @@ What's new in version 1.4.3?
 - Fix a crash when using next-inset-toggle (Ctrl+I) inside mathed;
   inset locking in mathed generally work (bug 2756).
 
-- Fix a crash on save (including dataloss) when the backup directory 
+- Fix a crash on save (including dataloss) when the backup directory
   creation failed or the directory is not writeable(bug 2740).
 
 - Fix a crash when selecting several cells in a tabular (bug 2630).
@@ -961,7 +968,7 @@ What's new in version 1.4.3?
 
 
 What's new in version 1.4.2?
----------------------------- 
+----------------------------
 
 ** Updates
 
@@ -1003,7 +1010,7 @@ What's new in version 1.4.2?
 
 - Much better performance when using natbib/jurabib citations (bug 2460).
 
-- Much better performance of screen updating in LyX/Mac, and with an 
+- Much better performance of screen updating in LyX/Mac, and with an
   acceptable UI.
 
 - Don't jump back to the previous cursor position when trying to click on
@@ -1108,10 +1115,10 @@ What's new in version 1.4.2?
 - It is  longer necessary to run lib/configure.py in the main LyX
   support directory.
 
-- Reading of configuration now goes like this: LyX first reads the file 
+- Reading of configuration now goes like this: LyX first reads the file
   lyxrc.dist (if it exists). If lib/configure.py is newer than
   any of lyxrc.defaults, textclass.lst or packages.lst, it is re-run
-  before loading lyxrc.defaults and preferences. 
+  before loading lyxrc.defaults and preferences.
 
 - Automatically use fonts in the fonts/ subdirectory of the LyX support
   directory on Windows.
@@ -1134,7 +1141,7 @@ What's new in version 1.4.2?
 
 - Replace the \cygwin_path_fix_needed preference with the better named
   \tex_expects_windows_paths; this is auto-detected and matters only on
-  Windows. 
+  Windows.
 
 - Remove the --enable-compression-support option of configure. Compression
   support via zlib is now a requirement.
@@ -1157,7 +1164,7 @@ What's new in version 1.4.1?
 - Update Spanish translation of the tutorial; update German
   translation of the Tutorial and Introduction.
 
-- Document the packages fancybox, prettyref, preview and varioref in 
+- Document the packages fancybox, prettyref, preview and varioref in
   LaTeXConfig.lyx.
 
 
@@ -1298,7 +1305,7 @@ It's now possible to define multiple toolbars as seen in other
 editors. By default, the new LyX release has two toolbars displayed,
 the standard one (similar to the static toolbar in LyX 1.3), plus the
 extra toolbar. In addition, there are two pre-defined toolbars
-available: one for tables, and one for math. 
+available: one for tables, and one for math.
 
 Another new feature worth mentioning is popup toolbars: you can set a
 toolbar such that it only appears when editing math, or when editing a
@@ -1309,7 +1316,7 @@ table.
 This new feature, similar to that found in Microsoft Word and others,
 makes collaboration on a document a cinch. It provides a way to track
 changes made to a document, and later approve, reject, or modify such
-changes. 
+changes.
 
 ** Much better conversion from .tex to .lyx
 
@@ -1324,7 +1331,7 @@ For a system that purports to make it easy to write documents full of
 logical (as opposed to visual markup), LyX has always had one glaring
 omission: no character styles. LyX 1.4 goes some way towards
 addressing this defect, although there's no dialog to define your own
-styles. 
+styles.
 
 
 ** Branches
@@ -1452,7 +1459,7 @@ We would like to highlight three fixes in particular:
   * It is possible to use Ctrl-PageDown and Control-PageUp (<opt>-tab
     and <opt><shift>-tab with LyX/Mac) to switch between the open documents.
   * LaTeX-type accents, ligature breaks and hyphenation marks are now
-    considered as part of words 
+    considered as part of words
 
 
 
@@ -1496,10 +1503,10 @@ What's new in version 1.3.2?
 
 This is a maintenance release which improves upon 1.3.1 in
 three main areas:
-  * the spellchecker code has been overhauled and many bugs 
+  * the spellchecker code has been overhauled and many bugs
     have been squashed;
   * many small bugs in the Qt frontend have been fixed;
-  * several languages now benefit from an improved translation of 
+  * several languages now benefit from an improved translation of
     the user interface.
 
 What's new in version 1.3.1?
