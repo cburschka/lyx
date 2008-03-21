@@ -922,8 +922,13 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			label = qt_("List of Equations");
 		else if (cit->first == "index")
 			label = qt_("List of Indexes");
-		else if (cit->first == "listing")
-			label = qt_("List of Listings");
+		else if (cit->first == "listing") {
+			// FIXME: the listing navigate menu causes a crash for unknown
+			// reason. See http://bugzilla.lyx.org/show_bug.cgi?id=4613
+			// This is a temporary fix:
+			//label = qt_("List of Listings");
+			continue;
+		}
 		else if (cit->first == "marginalnote")
 			label = qt_("List of Marginal notes");
 		else if (cit->first == "note")
