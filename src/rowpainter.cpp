@@ -173,7 +173,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, FontInfo const & font)
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
 		c = par_.getChar(i);
-		if (!Encodings::isComposeChar_hebrew(c)) {
+		if (!Encodings::isHebrewComposeChar(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
 					text_metrics_.displayFont(pit_, i));
@@ -207,7 +207,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, FontInfo const & font)
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
 		c = par_.getChar(i);
-		if (!Encodings::isComposeChar_arabic(c)) {
+		if (!Encodings::isArabicComposeChar(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
 						text_metrics_.displayFont(pit_, i));
@@ -277,10 +277,10 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		 * of arabic and hebrew characters, then these breaks may have
 		 * to be re-applied.
 
-		if (arabic && Encodings::isComposeChar_arabic(c))
+		if (arabic && Encodings::isArabicComposeChar(c))
 			break;
 
-		if (hebrew && Encodings::isComposeChar_hebrew(c))
+		if (hebrew && Encodings::isHebrewComposeChar(c))
 			break;
 		*/
 
@@ -345,8 +345,8 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	// draw as many chars as we can
 	if ((!hebrew && !arabic)
-		|| (hebrew && !Encodings::isComposeChar_hebrew(c))
-		|| (arabic && !Encodings::isComposeChar_arabic(c))) {
+		|| (hebrew && !Encodings::isHebrewComposeChar(c))
+		|| (arabic && !Encodings::isArabicComposeChar(c))) {
 		paintChars(vpos, orig_font.fontInfo(), hebrew, arabic);
 	} else if (hebrew) {
 		paintHebrewComposeChar(vpos, orig_font.fontInfo());

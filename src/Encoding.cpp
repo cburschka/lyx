@@ -261,7 +261,7 @@ const char * EncodingException::what() const throw()
 
 Encoding::Encoding(string const & n, string const & l, string const & i,
 		   bool f, Encoding::Package p)
-	: Name_(n), LatexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
+	: name_(n), latexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
 {
 	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
@@ -372,7 +372,7 @@ void Encodings::validate(char_type c, LaTeXFeatures & features)
 }
 
 
-bool Encodings::isComposeChar_hebrew(char_type c)
+bool Encodings::isHebrewComposeChar(char_type c)
 {
 	return c <= 0x05c2 && c >= 0x05b0 && c != 0x05be && c != 0x05c0;
 }
@@ -382,7 +382,7 @@ bool Encodings::isComposeChar_hebrew(char_type c)
 // they are hamza, alef_madda, alef_hamza, waw_hamza, alef_hamza_under,
 // alef, tah_marbota, dal, thal, rah, zai, wow, alef_maksoura
 
-bool Encodings::is_arabic_special(char_type c)
+bool Encodings::isArabicSpecialChar(char_type c)
 {
 	return (c >= 0x0621 && c <= 0x0625) || (c >= 0x0630 && c <= 0x0632)
 		|| c == 0x0627 || c == 0x0629 || c == 0x062f || c == 0x0648
@@ -390,22 +390,22 @@ bool Encodings::is_arabic_special(char_type c)
 }
 
 
-bool Encodings::isComposeChar_arabic(char_type c)
+bool Encodings::isArabicComposeChar(char_type c)
 {
 	return c >= 0x064b && c <= 0x0652;
 }
 
 
-bool Encodings::is_arabic(char_type c)
+bool Encodings::isArabicChar(char_type c)
 {
 	return c >= arabic_start && c <= arabic_end
 		&& arabic_table[c-arabic_start][0];
 }
 
 
-char_type Encodings::transformChar(char_type c, Encodings::Letter_Form form)
+char_type Encodings::transformChar(char_type c, Encodings::LetterForm form)
 {
-	return is_arabic(c) ? arabic_table[c-arabic_start][form] : c;
+	return isArabicChar(c) ? arabic_table[c-arabic_start][form] : c;
 }
 
 
@@ -436,14 +436,14 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 }
 
 
-Encoding const * Encodings::getFromLyXName(string const & name) const
+Encoding const * Encodings::fromLyXName(string const & name) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
 	return it != encodinglist.end() ? &it->second : 0;
 }
 
 
-Encoding const * Encodings::getFromLaTeXName(string const & name) const
+Encoding const * Encodings::fromLaTeXName(string const & name) const
 {
 	// We don't use find_if because it makes copies of the pairs in
 	// the map.

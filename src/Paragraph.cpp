@@ -2406,7 +2406,7 @@ bool Paragraph::allowEmpty() const
 
 char_type Paragraph::transformChar(char_type c, pos_type pos) const
 {
-	if (!Encodings::is_arabic(c))
+	if (!Encodings::isArabicChar(c))
 		return c;
 
 	char_type prev_char = ' ';
@@ -2414,7 +2414,7 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
 		char_type const par_char = d->text_[i];
-		if (!Encodings::isComposeChar_arabic(par_char)) {
+		if (!Encodings::isArabicComposeChar(par_char)) {
 			prev_char = par_char;
 			break;
 		}
@@ -2422,21 +2422,21 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 
 	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
 		char_type const par_char = d->text_[i];
-		if (!Encodings::isComposeChar_arabic(par_char)) {
+		if (!Encodings::isArabicComposeChar(par_char)) {
 			next_char = par_char;
 			break;
 		}
 	}
 
-	if (Encodings::is_arabic(next_char)) {
-		if (Encodings::is_arabic(prev_char) &&
-			!Encodings::is_arabic_special(prev_char))
+	if (Encodings::isArabicChar(next_char)) {
+		if (Encodings::isArabicChar(prev_char) &&
+			!Encodings::isArabicSpecialChar(prev_char))
 			return Encodings::transformChar(c, Encodings::FORM_MEDIAL);
 		else
 			return Encodings::transformChar(c, Encodings::FORM_INITIAL);
 	} else {
-		if (Encodings::is_arabic(prev_char) &&
-			!Encodings::is_arabic_special(prev_char))
+		if (Encodings::isArabicChar(prev_char) &&
+			!Encodings::isArabicSpecialChar(prev_char))
 			return Encodings::transformChar(c, Encodings::FORM_FINAL);
 		else
 			return Encodings::transformChar(c, Encodings::FORM_ISOLATED);

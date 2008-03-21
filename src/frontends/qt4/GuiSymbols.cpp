@@ -243,7 +243,7 @@ public:
 		return QVariant();
 	}
 
-	void reset(QList<char_type> const & symbols)
+	void setSymbols(QList<char_type> const & symbols)
 	{
 		symbols_ = symbols;
 		QAbstractItemModel::reset();
@@ -404,7 +404,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	bool const show_all = categoryFilterCB->isChecked();
 
 	if (symbols_.empty() || update_combo)
-		symbols_ = encodings.getFromLyXName(encoding_)->symbolsList();
+		symbols_ = encodings.fromLyXName(encoding_)->symbolsList();
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
@@ -441,7 +441,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 				used_blocks[block] = numItem;
 		}
 	}
-	model_->reset(s);
+	model_->setSymbols(s);
 
 	if (update_combo) {
 		// update category combo

@@ -226,11 +226,11 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 		if (language->lang() == "arabic_arabtex" ||
 			language->lang() == "arabic_arabi" ||
 			language->lang() == "farsi") {
-				if (Encodings::isComposeChar_arabic(c))
+				if (Encodings::isArabicComposeChar(c))
 					return 0;
 				c = par_->transformChar(c, pos);
 		} else if (language->lang() == "hebrew" &&
-				Encodings::isComposeChar_hebrew(c)) {
+				Encodings::isHebrewComposeChar(c)) {
 			return 0;	
 		}
 	}

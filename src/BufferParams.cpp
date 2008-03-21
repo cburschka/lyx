@@ -1959,7 +1959,7 @@ string const BufferParams::loadFonts(string const & rm,
 	else if (tt == "courier" )
 		os << "\\usepackage{" << tt << "}\n";
 	// Computer Modern, Latin Modern, CM Bright
-	else if  (tt != "default")
+	else if (tt != "default")
 		os << "\\renewcommand{\\ttdefault}{" << tt << "}\n";
 
 	return os.str();
@@ -1969,14 +1969,13 @@ string const BufferParams::loadFonts(string const & rm,
 Encoding const & BufferParams::encoding() const
 {
 	if (inputenc == "auto" || inputenc == "default")
-		return *(language->encoding());
-	Encoding const * const enc =
-		encodings.getFromLaTeXName(inputenc);
+		return *language->encoding();
+	Encoding const * const enc = encodings.fromLaTeXName(inputenc);
 	if (enc)
 		return *enc;
-	lyxerr << "Unknown inputenc value `" << inputenc
-	       << "'. Using `auto' instead." << endl;
-	return *(language->encoding());
+	LYXERR0("Unknown inputenc value `" << inputenc
+	       << "'. Using `auto' instead.");
+	return *language->encoding();
 }
 
 

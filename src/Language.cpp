@@ -42,7 +42,7 @@ void Languages::read(FileName const & filename)
 {
 	// We need to set the encoding of latex_lang
 	latex_lang = Language("latex", "", "Latex", false, "iso8859-1",
-			      encodings.getFromLyXName("iso8859-1"),
+			      encodings.fromLyXName("iso8859-1"),
 			      "latex", "");
 
 	Lexer lex(0, 0);
@@ -75,9 +75,9 @@ void Languages::read(FileName const & filename)
 		if (lex.next())
 			latex_options = lex.getString();
 
-		Encoding const * encoding = encodings.getFromLyXName(encoding_str);
+		Encoding const * encoding = encodings.fromLyXName(encoding_str);
 		if (!encoding) {
-			encoding = encodings.getFromLyXName("iso8859-1");
+			encoding = encodings.fromLyXName("iso8859-1");
 			lyxerr << "Unknown encoding " << encoding_str << endl;
 		}
 

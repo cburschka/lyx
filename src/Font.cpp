@@ -620,7 +620,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 	if (open_encoding_) {
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
-		Encoding const * const ascii = encodings.getFromLyXName("ascii");
+		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		pair<bool, int> const c = switchEncoding(os, bparams,
 				runparams, *ascii);
 		BOOST_ASSERT(c.first);
