@@ -3,7 +3,6 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Jürgen Vigna
  * \author Lars Gullik Bjønnes
  * \author Matthias Ettrich
  * \author José Matos
@@ -470,7 +469,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::CellData::CellData(Buffer const & buf)
+Tabular::CellData::CellData(Buffer const & buf, Tabular const & table)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -482,7 +481,7 @@ Tabular::CellData::CellData(Buffer const & buf)
 	  right_line(false),
 	  usebox(BOX_NONE),
 	  rotate(false),
-	  inset(new InsetTableCell(buf))
+	  inset(new InsetTableCell(buf, this, &table))
 {
 	inset->setBuffer(const_cast<Buffer &>(buf));
 	inset->paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
@@ -503,8 +502,10 @@ Tabular::CellData::CellData(CellData const & cs)
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
 	  p_width(cs.p_width),
-	  inset(dynamic_cast<InsetTableCell*>(cs.inset->clone()))
-{}
+	  inset(dynamic_cast<InsetTableCell *>(cs.inset->clone()))
+{
+	inset->setCellData(this);
+}
 
 
 Tabular::CellData & Tabular::CellData::operator=(CellData cs)
@@ -581,7 +582,7 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 	buffer_ = &buf;
 	row_info = row_vector(rows_arg);
 	column_info = column_vector(columns_arg);
-	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, CellData(buf)));
+	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, CellData(buf, *this)));
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
@@ -628,7 +629,7 @@ void Tabular::appendRow(idx_type const cell)
 	for (row_type i = 0; i < nrows - 1; ++i)
 		swap(cell_info[i], old[i]);
 
-	cell_info = cell_vvector(nrows, cell_vector(ncols, CellData(buffer())));
+	cell_info = cell_vvector(nrows, cell_vector(ncols, CellData(buffer(), *this)));
 
 	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
@@ -678,7 +679,7 @@ void Tabular::appendColumn(idx_type const cell)
 	column_info[column + 1] = column_info[column];
 
 	for (row_type i = 0; i < rowCount(); ++i) {
-		cell_info[i].insert(cell_info[i].begin() + column + 1, CellData(buffer()));
+		cell_info[i].insert(cell_info[i].begin() + column + 1, CellData(buffer(), *this));
 		col_type c = column + 2;
 		while (c < ncols 
 			&& cell_info[i][c].multicolumn == CELL_PART_OF_MULTICOLUMN) {
@@ -760,8 +761,8 @@ void Tabular::updateIndexes()
 		do {
 			++column;
 		} while (column < columnCount() &&
-				 cell_info[row][column].multicolumn
-				 == Tabular::CELL_PART_OF_MULTICOLUMN);
+				cell_info[row][column].multicolumn
+						== Tabular::CELL_PART_OF_MULTICOLUMN);
 
 		if (column == columnCount()) {
 			column = 0;
@@ -2739,7 +2740,11 @@ shared_ptr<InsetTableCell> Tabular::getCellInset(row_type row,
 void Tabular::setCellInset(row_type row, col_type column,
 			      shared_ptr<InsetTableCell> ins) const
 {
-	cell_info[row][column].inset = ins;
+	CellData & cd = cell_info[row][column];
+	cd.inset = ins;
+	// reset the InsetTableCell's pointers
+	ins->setCellData(&cd);
+	ins->setTabular(this);
 }
 
 
@@ -2800,6 +2805,50 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 	return BOX_NONE;
 }
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetTableCell
+//
+/////////////////////////////////////////////////////////////////////
+
+InsetTableCell::InsetTableCell(Buffer const & buf,
+	Tabular::CellData const * cell, Tabular const * table)
+	: InsetText(buf), cell_data_(cell), table_(table)
+{}
+
+
+bool InsetTableCell::forceEmptyLayout(idx_type) const
+{
+	BOOST_ASSERT(table_);
+	BOOST_ASSERT(cell_data_);
+	return table_->getPWidth(cell_data_->cellno).zero();
+}
+
+bool InsetTableCell::allowParagraphCustomization(idx_type) const
+{
+	BOOST_ASSERT(table_);
+	BOOST_ASSERT(cell_data_);
+	return !table_->getPWidth(cell_data_->cellno).zero();
+}
+
+bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	bool enabled;
+	switch (cmd.action) {
+	case LFUN_LAYOUT:
+		enabled = !forceEmptyLayout();
+		break;
+	case LFUN_LAYOUT_PARAGRAPH:
+		enabled = allowParagraphCustomization();
+		break;
+	default:
+		return InsetText::getStatus(cur, cmd, status);
+	}
+	status.enabled(enabled);
+	return true;
+}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -4534,6 +4583,15 @@ bool InsetTabular::copySelection(Cursor & cur)
 	while (paste_tabular->columnCount() > columns)
 		paste_tabular->deleteColumn(columns);
 
+	// We clear all the InsetTableCell pointers, since they
+	// might now become invalid and there is no point in having
+	// them point to temporary things in paste_tabular.
+	for (row_type i = 0; i < paste_tabular->rowCount(); ++i)
+		for (col_type j = 0; j < paste_tabular->columnCount(); ++j) {
+			paste_tabular->getCellInset(i,j)->setCellData(0);
+			paste_tabular->getCellInset(i,j)->setTabular(0);
+		}
+
 	odocstringstream os;
 	OutputParams const runparams(0);
 	paste_tabular->plaintext(os, runparams, 0, true, '\t');
@@ -4575,6 +4633,8 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			}
 			shared_ptr<InsetTableCell> inset(
 				new InsetTableCell(*paste_tabular->getCellInset(r1, c1)));
+			// note that setCellInset will call InsetTableCell::setCellData()
+			// and InsetTableCell::setTabular()
 			tabular.setCellInset(r2, c2, inset);
 			// FIXME: change tracking (MG)
 			inset->setChange(Change(cur.buffer().params().trackChanges ?

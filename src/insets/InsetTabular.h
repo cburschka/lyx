@@ -4,7 +4,6 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Jürgen Vigna
  * \author Lars Gullik Bjønnes
  * \author Matthias Ettrich
  * \author André Pönitz
@@ -49,14 +48,15 @@
 
 namespace lyx {
 
-class FuncStatus;
-class Lexer;
-class BufferView;
 class Buffer;
 class BufferParams;
-class Paragraph;
+class BufferView;
 class CompletionList;
 class CursorSlice;
+class InsetTableCell;
+class FuncStatus;
+class Lexer;
+class Paragraph;
 
 namespace frontend { class Painter; }
 
@@ -64,8 +64,6 @@ namespace frontend { class Painter; }
 class InsetTabular;
 class Cursor;
 class OutputParams;
-
-typedef InsetText InsetTableCell;
 
 //
 // A helper struct for tables
@@ -463,7 +461,7 @@ public:
 	class CellData {
 	public:
 		///
-		CellData(Buffer const &);
+		CellData(Buffer const &, Tabular const &);
 		///
 		CellData(CellData const &);
 		///
@@ -658,8 +656,44 @@ private:
 
 	/// renumber cells after structural changes
 	void fixCellNums();
-};
+}; // Tabular
 
+
+///
+class InsetTableCell : public InsetText {
+public:
+	///
+	explicit InsetTableCell(Buffer const & buf,
+		Tabular::CellData const * cd, Tabular const * t);
+	///
+	virtual InsetCode lyxCode() const { return CELL_CODE; }
+	///
+	Inset * clone() { return new InsetTableCell(*this); }
+	///
+	virtual bool useEmptyLayout() const { return true; }
+	/// 
+	virtual bool forceEmptyLayout(idx_type = 0) const;
+	/// 
+	virtual bool allowParagraphCustomization(idx_type = 0) const;
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
+	///
+	virtual bool neverIndent() { return true; }
+	///
+	void setCellData(Tabular::CellData const * cd) { cell_data_ = cd; }
+	///
+	void setTabular(Tabular const * t) { table_ = t; }
+private:
+	/// 
+	Tabular::CellData const * cell_data_;
+	/// 
+	Tabular const * table_;
+	/// unimplemented
+	InsetTableCell();
+	/// unimplemented
+	void operator=(InsetTableCell const &);
+};
 
 
 class InsetTabular : public Inset {

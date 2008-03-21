@@ -105,6 +105,7 @@ static TranslatorMap const build_translator()
 		InsetName("info", INFO_CODE),
 		InsetName("collapsable", COLLAPSABLE_CODE),
 		InsetName("newpage", NEWPAGE_CODE),
+		InsetName("tablecell", CELL_CODE)
 	};
 
 	size_t const insetnames_size =

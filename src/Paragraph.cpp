@@ -48,8 +48,6 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
-// needed only for inTableCell()
-#include "insets/InsetText.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -1621,7 +1619,6 @@ bool Paragraph::forceEmptyLayout() const
 	Inset const * const inset = inInset();
 	if (!inset)
 		return true;
-	// FIXME At present, this is wrong for table cells
 	return inset->forceEmptyLayout();
 }
 
@@ -1631,36 +1628,16 @@ bool Paragraph::allowParagraphCustomization() const
 	Inset const * const inset = inInset();
 	if (!inset)
 		return true;
-	// FIXME At present, this is wrong for table cells
 	return inset->allowParagraphCustomization();
-}
-
-
-namespace {
-	// FIXME
-	// This is a hack based upon one in InsetText::neverIndent().
-	// When we have a real InsetTableCell, then we won't need this
-	// method, because InsetTableCell will return the right values,
-	// viz: InsetTableCell::useEmptyLayout() should return true, and
-	// InsetTableCell::forceEmptyLayout() should still return true
-	// unless the width has been set.
-	//
-	// The #include "insets/InsetText.h" can also be removed then.
-	bool inTableCell(Inset const * inset)
-	{
-		InsetText const * txt = inset->asInsetText();
-		if (!txt)
-			return false;
-		return txt->isTableCell();
-	}
 }
 
 
 bool Paragraph::useEmptyLayout() const
 {
 	Inset const * const inset = inInset();
-	return inset && 
-		(inTableCell(inset) || inset->useEmptyLayout());
+	if (!inset)
+		return false;
+	return inset->useEmptyLayout();
 }
 
 

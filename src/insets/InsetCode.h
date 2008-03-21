@@ -112,6 +112,8 @@ enum InsetCode {
 	INFO_CODE, // 45
 	///
 	COLLAPSABLE_CODE,
+	///
+	CELL_CODE,
 #if 0
 	///
 	THEOREM_CODE,

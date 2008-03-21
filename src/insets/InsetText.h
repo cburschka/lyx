@@ -130,10 +130,6 @@ public:
 	///
 	bool allowSpellCheck() const { return true; }
 	///
-	bool isTableCell() const;
-	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent() const;
-	///
 	virtual bool isMacroScope() const { return false; }
 	///
 	virtual bool allowMultiPar() const { return true; }
