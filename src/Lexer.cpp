@@ -24,12 +24,9 @@
 #include "support/lyxalgo.h"
 #include "support/types.h"
 
-#include <boost/noncopyable.hpp>
-
 #include <functional>
 #include <istream>
 #include <stack>
-#include <sstream>
 #include <vector>
 
 using namespace std;
@@ -45,7 +42,7 @@ namespace lyx {
 
 
 ///
-class Lexer::Pimpl : boost::noncopyable {
+class Lexer::Pimpl {
 public:
 	///
 	Pimpl(keyword_item * tab, int num);
@@ -106,6 +103,10 @@ public:
 	///
 	char commentChar;
 private:
+	/// non-copyable
+	Pimpl(Pimpl const &);
+	void operator=(Pimpl const &);
+
 	///
 	void verifyTable();
 	///
@@ -757,7 +758,8 @@ docstring const Lexer::getDocString() const
 // explicit tokens (JMarc)
 string const Lexer::getLongString(string const & endtoken)
 {
-	string str, prefix;
+	string str;
+	string prefix;
 	bool firstline = true;
 
 	while (pimpl_->is) { //< eatLine only reads from is, not from pushTok
@@ -775,7 +777,7 @@ string const Lexer::getLongString(string const & endtoken)
 
 		string tmpstr = getString();
 		if (firstline) {
-			string::size_type i(tmpstr.find_first_not_of(' '));
+			size_t i = tmpstr.find_first_not_of(' ');
 			if (i != string::npos)
 				prefix = tmpstr.substr(0, i);
 			firstline = false;
@@ -784,16 +786,14 @@ string const Lexer::getLongString(string const & endtoken)
 
 		// further lines in long strings may have the same
 		// whitespace prefix as the first line. Remove it.
-		if (prefix.length() && prefixIs(tmpstr, prefix)) {
+		if (prefix.length() && prefixIs(tmpstr, prefix))
 			tmpstr.erase(0, prefix.length() - 1);
-		}
 
 		str += ltrim(tmpstr, "\t") + '\n';
 	}
 
-	if (!pimpl_->is) {
+	if (!pimpl_->is)
 		printError("Long string not ended by `" + endtoken + '\'');
-	}
 
 	return str;
 }
@@ -926,12 +926,15 @@ Lexer & Lexer::operator>>(bool & s)
 }
 
 
-/// quotes a string, e.g. for use in preferences files or as an argument of the "log" dialog
+// quotes a string, e.g. for use in preferences files or as an argument
+// of the "log" dialog
 string const Lexer::quoteString(string const & arg)
 {
-	ostringstream os;
-	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';
-	return os.str();
+	string res;
+	res += '"';
+	res += subst(subst(arg, "\\", "\\\\"), "\"", "\\\"");
+	res += '"';
+	return res;
 }
 
 

@@ -323,7 +323,7 @@ void Encoding::init() const
 }
 
 
-docstring const Encoding::latexChar(char_type c) const
+docstring Encoding::latexChar(char_type c) const
 {
 	// assure the used encoding is properly initialized
 	init();
@@ -337,26 +337,25 @@ docstring const Encoding::latexChar(char_type c) const
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it == unicodesymbols.end())
 		throw EncodingException(c);
-	else
-		return it->second.command;
+	return it->second.command;
 }
 
 
-set<char_type> Encoding::getSymbolsList() const
+vector<char_type> Encoding::symbolsList() const
 {
 	// assure the used encoding is properly initialized
 	init();
 
 	// first all encodable characters
-	CharSet symbols = encodable_;
+	vector<char_type> symbols(encodable_.begin(), encodable_.end());
 	// add those below start_encodable_
 	for (char_type c = 0; c < start_encodable_; ++c)
-		symbols.insert(c);
+		symbols.push_back(c);
 	// now the ones from the unicodesymbols file
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
 	CharInfoMap::const_iterator it = unicodesymbols.begin();
 	for (; it != end; ++it)
-		symbols.insert(it->first);
+		symbols.push_back(it->first);
 	return symbols;
 }
 
@@ -404,13 +403,9 @@ bool Encodings::is_arabic(char_type c)
 }
 
 
-char_type Encodings::transformChar(char_type c,
-				      Encodings::Letter_Form form)
+char_type Encodings::transformChar(char_type c, Encodings::Letter_Form form)
 {
-	if (!is_arabic(c))
-		return c;
-
-	return arabic_table[c-arabic_start][form];
+	return is_arabic(c) ? arabic_table[c-arabic_start][form] : c;
 }
 
 
@@ -557,11 +552,10 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				fixedwidth = true;
 			else if (width == "variable")
 				fixedwidth = false;
-			else {
+			else
 				lex.printError("Encodings::read: "
 					       "Unknown width: `$$Token'");
-                        }
-                        
+
 			lex.next();
 			string const p = lex.getString();
 			Encoding::Package package = Encoding::none;
@@ -571,15 +565,14 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				package = Encoding::inputenc;
 			else if (p == "CJK")
 				package = Encoding::CJK;
-			else {
+			else
 				lex.printError("Encodings::read: "
 					       "Unknown package: `$$Token'");
-                        }
-                        
+
 			LYXERR(Debug::INFO, "Reading encoding " << name);
 			encodinglist[name] = Encoding(name, latexname,
-						      iconvname, fixedwidth,
-						      package);
+				iconvname, fixedwidth, package);
+
 			if (lex.lex() != et_end)
 				lex.printError("Encodings::read: "
 					       "missing end");

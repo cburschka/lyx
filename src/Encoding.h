@@ -18,6 +18,7 @@
 
 #include <map>
 #include <set>
+#include <vector>
 
 namespace lyx {
 
@@ -67,11 +68,11 @@ public:
 	 * LaTeX macro is known, a warning is given of lyxerr, and the
 	 * character is returned.
 	 */
-	docstring const latexChar(char_type c) const;
+	docstring latexChar(char_type c) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
-	std::set<char_type> getSymbolsList() const;
+	std::vector<char_type> symbolsList() const;
 private:
 	///
 	std::string Name_;
