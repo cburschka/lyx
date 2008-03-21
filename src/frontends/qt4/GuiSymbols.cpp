@@ -148,12 +148,21 @@ const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
 QString getBlock(char_type c)
 {
-	int i = 0;
-	while (c > unicode_blocks[i].end && i < no_blocks)
-		++i;
-	if (!unicode_blocks[i].name.isEmpty())
-		return unicode_blocks[i].name;
-	return QString();
+	// store an educated guess for the next search
+	static int lastBlock = 0;
+
+	if (c < unicode_blocks[lastBlock].start
+	 || c > unicode_blocks[lastBlock].end)
+	{
+		// guess was wrong. do a real search.
+		int i = 0;
+		while (c > unicode_blocks[i].end && i < no_blocks)
+			++i;
+		if (unicode_blocks[i].name.isEmpty())
+			return QString();
+		lastBlock = i;
+	}
+	return unicode_blocks[lastBlock].name;
 }
 
 
