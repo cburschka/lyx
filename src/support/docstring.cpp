@@ -18,6 +18,7 @@
 
 #include <locale>
 #include <iostream>
+#include <typeinfo>
 
 #include <QFile>
 

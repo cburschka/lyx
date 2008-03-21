@@ -26,6 +26,7 @@
 #include "support/os.h"
 #include "support/Package.h"
 
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -496,12 +497,12 @@ int main(int argc, char * argv[])
 		if (message.type_ == ErrorException)
 			exit(1);
 	}
-	
+
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
 	string infilename = internal_path(to_utf8(from_local8bit(argv[1])));
 	infilename = makeAbsPath(infilename).absFilename();
-	
+
 	string outfilename;
 	if (argc > 2) {
 		outfilename = internal_path(to_utf8(from_local8bit(argv[2])));

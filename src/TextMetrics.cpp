@@ -49,7 +49,7 @@
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
-
+#include <cstdlib>
 #include <boost/assert.hpp>
 
 using namespace std;
@@ -197,7 +197,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 	dim_.wid = min_width;
 	pit_type const npar = text_->paragraphs().size();
 	if (npar > 1)
-		// If there is more than one row, expand the text to 
+		// If there is more than one row, expand the text to
 		// the full allowable width.
 		dim_.wid = max_width_;
 
@@ -269,7 +269,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 
 		FontInfo const & lf = lab ? layout.labelfont : layout.font;
 		FontInfo rlf = lab ? layout.reslabelfont : layout.resfont;
-		
+
 		// In case the default family has been customized
 		if (lf.family() == INHERIT_FAMILY)
 			rlf.setFamily(params.getFont().fontInfo().family());
@@ -278,7 +278,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 	}
 
 	// The uncommon case need not be optimized as much
-	FontInfo const & layoutfont = pos < body_pos ? 
+	FontInfo const & layoutfont = pos < body_pos ?
 		layout.labelfont : layout.font;
 
 	Font font = par.getFontSettings(params, pos);
@@ -308,7 +308,7 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 	int correction = 0;
 	if (boundary && sl.pos() > 0)
 		correction = -1;
-		
+
 	return displayFont(sl.pit(), sl.pos() + correction).isVisibleRightToLeft();
 }
 
@@ -396,7 +396,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		BOOST_ASSERT(!parPos.empty());
 		parPos.pit() = pit;
 	}
-	
+
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in Inset.h.
@@ -407,9 +407,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		// position already initialized?
 		if (!parPos.empty()) {
 			parPos.pos() = ii->pos;
-		
-			// A macro template would normally not be visible 
-			// by itself. But the tex macro semantics allow 
+
+			// A macro template would normally not be visible
+			// by itself. But the tex macro semantics allow
 			// recursion, so we artifically take the context
 			// after the macro template to simulate this.
 			if (ii->inset->lyxCode() == MATHMACRO_CODE)
@@ -439,7 +439,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Dimension dim;
 		pos_type end = rowBreakPoint(width, pit, first);
 		if (row_index || end < par.size())
-			// If there is more than one row, expand the text to 
+			// If there is more than one row, expand the text to
 			// the full allowable width. This setting here is needed
 			// for the computeRowMetrics() below.
 			dim_.wid = max_width_;
@@ -635,7 +635,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 				max(hfill, 5.0) : row.label_hfill);
 		else
 			dim.wid = 5;
-		// Cache the inset dimension. 
+		// Cache the inset dimension.
 		bv_->coordCache().insets().add(ii->inset, dim);
 		pm.setInsetDimension(ii->inset, dim);
 	}
@@ -1483,7 +1483,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 	pos_type const row_pos  = row.pos();
 	pos_type const end      = row.endpos();
-	// Spaces at logical line breaks in bidi text must be skipped during 
+	// Spaces at logical line breaks in bidi text must be skipped during
 	// cursor positioning. However, they may appear visually in the middle
 	// of a row; they must be skipped, wherever they are...
 	// * logically "abc_[HEBREW_\nHEBREW]"
@@ -1528,7 +1528,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
 	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
 		skipped_sep_vpos = bidi.log2vis(end - 1);
-	
+
 	// Inline completion RTL special case row_pos == cursor_pos:
 	// "__|b" => cursor_pos is right of __
 	if (row_pos == inlineCompletionVPos && row_pos == cursor_vpos) {
@@ -1537,7 +1537,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		if (font.isRightToLeft() && completion.length() > 0)
 			x += theFontMetrics(font.fontInfo()).width(completion);
 	}
-	
+
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		// Skip the separator which is at the logical end of the row
 		if (vpos == skipped_sep_vpos)
@@ -1561,14 +1561,14 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 		// Inline completion RTL case:
 		// "a__|b", __ of b => non-boundary a-pos is right of __
-		if (vpos + 1 == inlineCompletionVPos 
+		if (vpos + 1 == inlineCompletionVPos
 		    && (vpos + 1 < cursor_vpos || !boundary_correction)) {
 			font = displayFont(pit, vpos + 1);
 			docstring const & completion = bv_->inlineCompletion();
 			if (font.isRightToLeft() && completion.length() > 0)
 				x += theFontMetrics(font.fontInfo()).width(completion);
 		}
-		
+
 		//  Inline completion LTR case:
 		// "b|__a", __ of b => non-boundary a-pos is in front of __
 		if (vpos == inlineCompletionVPos
@@ -1578,7 +1578,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 			if (!font.isRightToLeft() && completion.length() > 0)
 				x += theFontMetrics(font.fontInfo()).width(completion);
 		}
-		
+
 		if (par.isSeparator(pos) && pos >= body_pos)
 			x += row.separator;
 	}
@@ -1727,7 +1727,7 @@ int TextMetrics::leftMargin(int max_width,
 			if (pars[newpar].layout().isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
 			}
-			if (tclass.isDefaultLayout(par.layout()) 
+			if (tclass.isDefaultLayout(par.layout())
 			    || tclass.isEmptyLayout(par.layout())) {
 				if (pars[newpar].params().noindent())
 					parindent.erase();
@@ -1849,7 +1849,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-			&& ((tclass.isDefaultLayout(par.layout()) 
+			&& ((tclass.isDefaultLayout(par.layout())
 	         || tclass.isEmptyLayout(par.layout()))
 	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
 	    )
@@ -1911,7 +1911,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	bool selection = cur.selection()
 		// This is our text.
 		&& cur.text() == text_
-		// if the anchor is outside, this is not our selection 
+		// if the anchor is outside, this is not our selection
 		&& cur.anchor().text() == text_
 		&& pit >= sel_beg.pit() && pit <= sel_end.pit();
 
@@ -1947,7 +1947,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Row signature; has row changed since last paint?
 		row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed();
-		
+
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
 		if (!pi.full_repaint && !row_has_changed) {
@@ -2023,7 +2023,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	int x2 = cursorX(end.top(), end.boundary());
 	int y1 = bv_->getPos(cur, cur.boundary()).y_ - row.ascent();
 	int y2 = y1 + row.height();
-	
+
 	// draw the margins
 	if (drawOnBegMargin) {
 		if (text_->isRTL(buffer, beg.paragraph()))
@@ -2031,28 +2031,28 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		else
 			pi.pain.fillRectangle(x, y1, x1, y2 - y1, Color_selection);
 	}
-	
+
 	if (drawOnEndMargin) {
 		if (text_->isRTL(buffer, beg.paragraph()))
 			pi.pain.fillRectangle(x, y1, x2, y2 - y1, Color_selection);
 		else
 			pi.pain.fillRectangle(x + x2, y1, width() - x2, y2 - y1, Color_selection);
 	}
-	
+
 	// if we are on a boundary from the beginning, it's probably
 	// a RTL boundary and we jump to the other side directly as this
 	// segement is 0-size and confuses the logic below
 	if (cur.boundary())
 		cur.boundary(false);
-	
+
 	// go through row and draw from RTL boundary to RTL boundary
 	while (cur < end) {
 		bool drawNow = false;
-		
+
 		// simplified cursorForward code below which does not
 		// descend into insets and which does not go into the
 		// next line. Compare the logic with the original cursorForward
-		
+
 		// if left of boundary -> just jump to right side
 		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
 		if (cur.boundary()) {
@@ -2066,23 +2066,23 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		} else {
 			// move right
 			++cur.pos();
-			
+
 			// line end?
 			if (cur.pos() == row.endpos())
 				cur.boundary(true);
 		}
-			
+
 		if (x1 == -1) {
 			// the previous segment was just drawn, now the next starts
 			x1 = cursorX(cur.top(), cur.boundary());
 		}
-		
+
 		if (!(cur < end) || drawNow) {
 			x2 = cursorX(cur.top(), cur.boundary());
 			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
 				Color_selection);
-			
-			// reset x1, so it is set again next round (which will be on the 
+
+			// reset x1, so it is set again next round (which will be on the
 			// right side of a boundary or at the selection end)
 			x1 = -1;
 		}
@@ -2090,28 +2090,28 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 }
 
 
-void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Dimension & dim) const
 {
 	Cursor const & bvcur = cur.bv().cursor();
-	
+
 	// get word in front of cursor
 	docstring word = text_->previousWord(bvcur.top());
 	DocIterator wordStart = bvcur;
 	wordStart.pos() -= word.length();
-	
+
 	// get position on screen of the word start and end
 	Point lxy = cur.bv().getPos(wordStart, false);
 	Point rxy = cur.bv().getPos(bvcur, bvcur.boundary());
-	
+
 	// calculate dimensions of the word
 	dim = rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
 	dim.wid = abs(rxy.x_ - lxy.x_);
-	
+
 	// calculate position of word
 	y = lxy.y_;
 	x = min(rxy.x_, lxy.x_);
-	
+
 	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
 	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
 }
