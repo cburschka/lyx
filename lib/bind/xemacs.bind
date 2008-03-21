@@ -39,7 +39,7 @@
 # help in emacs
 \bind "C-h"                    "specialchar-insert hyphenation"
 \bind "C-M-minus"		"specialchar-insert nobreakdash"
-\bind "C-i"                    "hfill-insert"
+\bind "C-i"                    "space-insert hfill"
 #bind "C-j"                    "------"
 \bind "C-k"                    "line-delete-forward"
 \bind "C-l"                    "screen-recenter"
