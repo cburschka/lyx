@@ -121,7 +121,6 @@ public:
 	std::pair<KeySymbol, KeyModifier>
 	find1keybinding(FuncRequest const & func) const;
 
-
 	/**
 	 * Returns a string of the given keysym, with modifiers.
 	 * @param key the key as a keysym
@@ -130,10 +129,10 @@ public:
 	static std::string const printKeySym(KeySymbol const & key,
 					     KeyModifier mod);
 
+private:
+	///
 	typedef std::pair<KeyModifier, KeyModifier> ModifierPair;
 
-
-private:
 	///
 	struct Key {
 		/// Keysym
