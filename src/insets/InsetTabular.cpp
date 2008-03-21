@@ -1696,26 +1696,6 @@ Tabular::idx_type Tabular::getCellBelow(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::getLastCellAbove(idx_type cell) const
-{
-	if (cellRow(cell) == 0)
-		return cell;
-	if (!isMultiColumn(cell))
-		return getCellAbove(cell);
-	return cell_info[cellRow(cell) - 1][cellRightColumn(cell)].cellno;
-}
-
-
-Tabular::idx_type Tabular::getLastCellBelow(idx_type cell) const
-{
-	if (cellRow(cell) + 1 >= rowCount())
-		return cell;
-	if (!isMultiColumn(cell))
-		return getCellBelow(cell);
-	return cell_info[cellRow(cell) + 1][cellRightColumn(cell)].cellno;
-}
-
-
 Tabular::idx_type Tabular::cellIndex(row_type row,
 					       col_type column) const
 {

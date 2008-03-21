@@ -405,10 +405,6 @@ public:
 	///
 	idx_type getCellBelow(idx_type cell) const;
 	///
-	idx_type getLastCellAbove(idx_type cell) const;
-	///
-	idx_type getLastCellBelow(idx_type cell) const;
-	///
 	idx_type cellIndex(row_type row, col_type column) const;
 	///
 	void setUsebox(idx_type cell, BoxType);
