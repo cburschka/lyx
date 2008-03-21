@@ -392,7 +392,6 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
-	
 }
 
 
@@ -1143,7 +1142,7 @@ class NoTabFrameMacStyle : public QMacStyle {
 public:
 	///
 	QRect subElementRect(SubElement element, const QStyleOption * option,
-			     const QWidget * widget = 0 ) const 
+			     const QWidget * widget = 0) const
 	{
 		QRect rect = QMacStyle::subElementRect(element, option, widget);
 		bool noBar = static_cast<QTabWidget const *>(widget)->count() <= 1;
@@ -1319,7 +1318,7 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 	if (count()) {
 		// make sure the next work area is enabled.
 		currentWidget()->setUpdatesEnabled(true);
-		if ((currentWorkArea() && currentWorkArea()->isFullScreen()))
+		if (currentWorkArea() && currentWorkArea()->isFullScreen())
 			setFullScreen(true);
 		else
 			// Hide tabbar if there's only one tab.
