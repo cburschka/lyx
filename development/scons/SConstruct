@@ -1511,8 +1511,6 @@ support = frontend_env.StaticLibrary(
     CCFLAGS =  [
         '$CCFLAGS',
         '-DHAVE_CONFIG_H',
-        '-DQT_CLEAN_NAMESPACE',
-        '-DQT_GENUINE_STR',
         '-DQT_NO_STL',
         '-DQT_NO_KEYWORDS',
     ],
@@ -1592,8 +1590,6 @@ qt4 = frontend_env.StaticLibrary(
     CCFLAGS =  [
         '$CCFLAGS',
         '-DHAVE_CONFIG_H',
-        '-DQT_CLEAN_NAMESPACE',
-        '-DQT_GENUINE_STR',
         '-DQT_NO_STL',
         '-DQT_NO_KEYWORDS',
     ]
