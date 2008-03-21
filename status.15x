@@ -88,6 +88,8 @@ What's new
 
 - Fix loading of lyx documents generated with csv2lyx (bug 4639).
 
+- Move \label{} outside of listings option caption={} because the listings
+  package prefers a separate label={} option.
 
 * USER INTERFACE:
 

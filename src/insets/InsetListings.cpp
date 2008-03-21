@@ -23,6 +23,8 @@
 #include "Cursor.h"
 #include "support/lstrings.h"
 
+#include <boost/regex.hpp>
+
 #include <sstream>
 
 namespace lyx {
@@ -36,6 +38,8 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::string;
+
+using boost::regex;
 
 char const lstinline_delimiters[] = "!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
@@ -319,7 +323,22 @@ docstring InsetListings::getCaption(Buffer const & buf,
 					static_cast<InsetCaption *>(it->inset);
 				ins->getOptArg(buf, ods, runparams);
 				ins->getArgument(buf, ods, runparams);
-				return ods.str();
+				// the caption may contain \label{} but the listings
+				// package prefer caption={}, label={}
+				docstring cap = ods.str();
+				if (!contains(to_utf8(cap), "\\label{"))
+					return cap;
+				// convert from
+				//     blah1\label{blah2} blah3
+				// to
+				//     blah1 blah3},label={blah2
+				// to form options
+				//     caption={blah1 blah3},label={blah2}
+				//
+				// NOTE that } is not allowed in blah2.
+				regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
+				string const new_cap("\\1\\3},label={\\2");
+				return from_utf8(regex_replace(to_utf8(cap), reg, new_cap));
 			}
 		}
 	}
