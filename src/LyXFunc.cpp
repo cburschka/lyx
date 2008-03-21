@@ -1603,6 +1603,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			DocumentClass * oldClass = buffer->params().documentClassPtr();
 			LayoutFileIndex bc = buffer->params().baseClassID();
 			LayoutFileList::get().reset(bc);
+			buffer->params().setBaseClass(bc);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
