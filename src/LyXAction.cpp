@@ -368,6 +368,15 @@ void LyXAction::init()
  */
 		{ LFUN_SPACE_INSERT, "space-insert", Noop, Edit },
 		{ LFUN_HYPERLINK_INSERT, "href-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SPECIALCHAR_INSERT
+ * \li Action: Inserts various characters into the document.
+ * \li Syntax: specialchar-insert <CHAR>
+ * \li Params: <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots,
+                       end-of-sentence, menu-separator.
+ * \li Origin: JSpitzm, 6 Dec 2007
+ * \endvar
+ */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
 		{ LFUN_CLEARPAGE_INSERT, "clearpage-insert", Noop, Edit },
 		{ LFUN_CLEARDOUBLEPAGE_INSERT, "cleardoublepage-insert", Noop, Edit },
