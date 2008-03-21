@@ -56,8 +56,6 @@ private:
 	 *  as well (which is rather expensive)
 	**/
 	void updateSymbolList(bool update_combo = true);
-	/// get the unicode block associated with \p c
-	QString getBlock(char_type c) const;
 	/// the encoding at cursor position
 	std::string encoding_;
 	/// which blocks do we actually include?

@@ -146,6 +146,17 @@ UnicodeBlocks unicode_blocks[] = {
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 
 
+QString getBlock(char_type c)
+{
+	int i = 0;
+	while (c > unicode_blocks[i].end && i < no_blocks)
+		++i;
+	if (!unicode_blocks[i].name.isEmpty())
+		return unicode_blocks[i].name;
+	return QString();
+}
+
+
 } // namespace anon
 
 
@@ -345,17 +356,6 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	// on first cycle (at dialog initialization)
 	if (nocategory && !category.isEmpty())
 		updateSymbolList();
-}
-
-
-QString GuiSymbols::getBlock(char_type c) const
-{
-	int i = 0;
-	while (c > unicode_blocks[i].end && i < no_blocks)
-		++i;
-	if (!unicode_blocks[i].name.isEmpty())
-		return unicode_blocks[i].name;
-	return QString();
 }
 
 
