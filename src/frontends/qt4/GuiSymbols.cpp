@@ -22,6 +22,7 @@
 #include "Encoding.h"
 #include "FuncRequest.h"
 
+#include "support/debug.h"
 #include "support/gettext.h"
 
 #include <QChar>
@@ -139,8 +140,8 @@ UnicodeBlocks unicode_blocks[] = {
 	{ N_("CJK Compatibility Ideographs Supplement"), 0x2f800, 0x2fa1f },
 	{ N_("Tags"), 0xe0000, 0xe007f },
 	{ N_("Variation Selectors Supplement"), 0xe0100, 0xe01ef },
-	{ N_("Supplementary Private Use Area-A"), 0xf0000, 0xe01ef },
-	{ N_("Supplementary Private Use Area-B"), 0x100000, 0x10ffff }
+	{ N_("Supplementary Private Use Area-A"), 0xf0000, 0xffffd },
+	{ N_("Supplementary Private Use Area-B"), 0x100000, 0x10fffd }
 };
 
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
@@ -151,17 +152,32 @@ QString getBlock(char_type c)
 	// store an educated guess for the next search
 	static int lastBlock = 0;
 
-	if (c < unicode_blocks[lastBlock].start
-	 || c > unicode_blocks[lastBlock].end)
-	{
-		// guess was wrong. do a real search.
-		int i = 0;
-		while (c > unicode_blocks[i].end && i < no_blocks)
-			++i;
-		if (unicode_blocks[i].name.isEmpty())
-			return QString();
-		lastBlock = i;
-	}
+	// "clever reset"
+	if (c < 0x7f)
+		lastBlock = 0;
+
+	// off the end already
+	if (lastBlock == no_blocks)
+		return QString();
+
+	// c falls into a covered area, and we can guess which
+	if (c >= unicode_blocks[lastBlock].start
+	    && c <= unicode_blocks[lastBlock].end)
+		return unicode_blocks[lastBlock].name;
+
+	// c falls into an uncovered area, but we can guess which	
+	if (c > unicode_blocks[lastBlock].end
+	    && c < unicode_blocks[lastBlock + 1].start)
+		return QString();
+
+	// guessing was wrong so far. do a real search.
+	int i = 0;
+	while (c > unicode_blocks[i].end && i < no_blocks)
+		++i;
+	if (i == no_blocks)
+		return QString();
+	lastBlock = i;
+	//LYXERR0("fail: " << int(c) << ' ' << lastBlock);
 	return unicode_blocks[lastBlock].name;
 }
 
@@ -388,7 +404,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	bool const show_all = categoryFilterCB->isChecked();
 
 	if (symbols_.empty() || update_combo)
-		symbols_ = encodings.getFromLyXName(encoding_)->getSymbolsList();
+		symbols_ = encodings.getFromLyXName(encoding_)->symbolsList();
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)

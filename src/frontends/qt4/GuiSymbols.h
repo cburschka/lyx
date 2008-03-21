@@ -16,7 +16,7 @@
 #include "ui_SymbolsUi.h"
 
 #include <map>
-#include <set>
+#include <vector>
 
 namespace lyx {
 namespace frontend {
@@ -62,7 +62,7 @@ private:
 	///
 	UsedBlocks used_blocks;
 	/// list of all symbols
-	typedef std::set<char_type> SymbolsList;
+	typedef std::vector<char_type> SymbolsList;
 	///
 	SymbolsList symbols_;
 	/// custom model for symbol list view
