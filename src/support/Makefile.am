@@ -57,8 +57,10 @@ liblyxsupport_la_SOURCES = \
 	FileFilterList.h \
 	FileName.cpp \
 	FileName.h \
+	FileNameList.h \
 	filetools.cpp \
 	filetools.h \
+	FileZipListDir.h \
 	foreach.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
@@ -102,6 +104,7 @@ liblyxsupport_la_SOURCES = \
 	userinfo.h \
 	unicode.cpp \
 	unicode.h \
+	weighted_btree.h \
 	minizip/crypt.h \
 	minizip/ioapi.c \
 	minizip/ioapi.h \

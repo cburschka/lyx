@@ -13,6 +13,7 @@ liblyxfrontends_la_SOURCES = \
 	Application.h \
 	FontLoader.h \
 	FontMetrics.h \
+	Delegates.h \
 	KeyModifier.h \
 	KeySymbol.h \
 	LyXView.h \

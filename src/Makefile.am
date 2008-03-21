@@ -185,6 +185,7 @@ HEADERFILESCORE = \
 	CmdDef.h \
 	ColorCode.h \
 	Color.h \
+	CompletionList.h \
 	config.h.in \
 	ConverterCache.h \
 	Converter.h \
@@ -443,6 +444,7 @@ HEADERFILESMATHED = \
 	mathed/MathAtom.h \
 	mathed/MathAutoCorrect.h \
 	mathed/MathData.h \
+	mathed/MathCompletionList.h \
 	mathed/MathExtern.h \
 	mathed/MathFactory.h \
 	mathed/MathGridInfo.h \
