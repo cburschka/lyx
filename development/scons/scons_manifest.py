@@ -219,7 +219,6 @@ src_pre_files = Split('''
     Undo.cpp
     VCBackend.cpp
     VSpace.cpp
-    boost.cpp
     buffer_funcs.cpp
     factory.cpp
     lengthcommon.cpp
@@ -243,6 +242,7 @@ src_post_files = Split('''
     PrinterParams.cpp
     SpellBase.cpp
     Thesaurus.cpp
+    boost.cpp
 ''')
 
 

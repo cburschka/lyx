@@ -1675,9 +1675,8 @@ lyx = frontend_env.Program(
         frontend,
         'graphics',
         'support',
-        'lyxbase_post',
         ] +
-        boost_libraries +
+        boost_libraries + ['lyxbase_post'] +
         frontend_libs +
         intl_libs +
         socket_libs +
