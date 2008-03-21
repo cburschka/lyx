@@ -197,7 +197,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-18 21:31+0100\n"
-"PO-Revision-Date: 2008-03-17 08:55+0100\n"
+"PO-Revision-Date: 2008-03-20 19:15+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -1471,26 +1471,24 @@ msgid "&Draft mode"
 msgstr "Mode &brouillon"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
-#, fuzzy
 msgid "Insert the spacing even after a line break"
-msgstr "Conserve l'espacement même après un saut de page"
+msgstr "Insérer l'espacement même après un saut de page"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:38
-#, fuzzy
 msgid "&Fill Pattern:"
-msgstr "&Fichier :"
+msgstr "&Modèle de remplissage :"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:48
 msgid "Select a fill pattern style for HFills"
-msgstr ""
+msgstr "Sélectionner un modèle pour le remplissage horizontal"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:57
 msgid "..............."
-msgstr ""
+msgstr "..............."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:62
 msgid "________"
-msgstr ""
+msgstr "________"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:28
 msgid "&Spacing:"
@@ -1505,31 +1503,28 @@ msgid "Supported spacing types"
 msgstr "Types d'espacement supportés"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:204
-#, fuzzy
 msgid "Inter-word space"
-msgstr "Espace entre Mots|M"
+msgstr "Espace entre mots"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:209
-#, fuzzy
 msgid "Thin space"
-msgstr "Espace fine\t\\,"
+msgstr "Espace fine"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
-#, fuzzy
 msgid "Negative thin space"
-msgstr "Espace négative\t\\!"
+msgstr "Espace fine négative"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:219
 msgid "Enspace (0.5 em)"
-msgstr ""
+msgstr "Espace en (0.5 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:224
 msgid "Quad (1 em)"
-msgstr ""
+msgstr "Cadratin (1 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:229
 msgid "QQuad (2 em)"
-msgstr ""
+msgstr "Double cadratin (2 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:234 src/insets/InsetSpace.cpp:97
 msgid "Horizontal Fill"
@@ -1684,7 +1679,6 @@ msgid "Modules"
 msgstr "Modules"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:120
-#, fuzzy
 msgid "De&lete"
 msgstr "&Effacer"
 
@@ -1712,12 +1706,11 @@ msgstr "&Options :"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:242
 msgid "Click to select a local document class definition file"
-msgstr ""
+msgstr "Cliquer pour sélectionner un fichier local de définition de format"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:245
-#, fuzzy
 msgid "&Select Local Layout..."
-msgstr "Format du Texte"
+msgstr "&Sélectionner un format local..."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2191,9 +2184,8 @@ msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr "e.g. : pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:105
-#, fuzzy
 msgid "&General"
-msgstr "Général"
+msgstr "&Général"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:151
 msgid ""
@@ -2203,9 +2195,8 @@ msgstr ""
 "environnements appropriés"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:154
-#, fuzzy
 msgid "Automatically fi&ll header"
-msgstr "Compléter automatiquement l'en-tête"
+msgstr "Compléter automatiquement &l'en-tête"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:161
 msgid "Enable fullscreen PDF presentation"
@@ -2236,28 +2227,24 @@ msgid "&Keywords:"
 msgstr "Mot-&Clé :"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:241
-#, fuzzy
 msgid "H&yperlinks"
-msgstr "Hyperlien"
+msgstr "H&yperlien"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:274
 msgid "Allows link text to break across lines."
 msgstr "Permet la césure des liens"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:277
-#, fuzzy
 msgid "B&reak links over lines"
-msgstr "Césure les liens"
+msgstr "&Césure les liens"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:284
-#, fuzzy
 msgid "No &frames around links"
-msgstr "Pas de cadre autour des liens"
+msgstr "Pas de &cadre autour des liens"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:294
-#, fuzzy
 msgid "C&olor links"
-msgstr "Couleurs des liens"
+msgstr "C&ouleurs des liens"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:301
 #: src/frontends/qt4/ui/PDFSupportUi.ui:311
@@ -2266,7 +2253,6 @@ msgstr ""
 "Ajoute un texte de \"renvoi\" à la fin de chaque référence bibliographique"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:304
-#, fuzzy
 msgid "B&ibliographical backreferences"
 msgstr "&Renvois bibliographiques"
 
@@ -2275,28 +2261,24 @@ msgid "Backreference by pa&ge number"
 msgstr "Référence par numéro de pa&ge"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:337
-#, fuzzy
 msgid "&Bookmarks"
-msgstr "Signets|S"
+msgstr "&Signets"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:349
-#, fuzzy
 msgid "G&enerate Bookmarks"
-msgstr "Créer les signets"
+msgstr "Créer les sign&ets"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:370
-#, fuzzy
 msgid "&Open bookmarks"
-msgstr "Ouvrir le signet"
+msgstr "&Ouvrir le signet"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:390
 msgid "Number of levels"
 msgstr "Nombre de niveaux"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:410
-#, fuzzy
 msgid "&Numbered bookmarks"
-msgstr "Signets numérotés"
+msgstr "Signets &numérotés"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -2315,9 +2297,8 @@ msgstr ""
 "après la temporisation"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
-#, fuzzy
 msgid "Automatic in&line completion"
-msgstr "Complétion automatique en ligne"
+msgstr "Complétion automatique en &ligne"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
@@ -2325,9 +2306,8 @@ msgstr ""
 "Afficher la fenêtre auxiliaire en mode mathématique, après la temporisation."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
-#, fuzzy
 msgid "Automatic p&opup"
-msgstr "Fenêtre auxiliare automatique"
+msgstr "Fenêtre auxiliaire aut&omatique"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:63
 msgid "In Text"
@@ -2342,28 +2322,26 @@ msgstr ""
 "la temporisation"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:81
-#, fuzzy
 msgid "Automatic &inline completion"
-msgstr "Complétion automatique en ligne"
+msgstr "Complétion automatique en l&igne"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
 msgstr "Afficher la fenêtre auxiliaire en mode texte, après la temporisation."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
-#, fuzzy
 msgid "Automatic &popup"
-msgstr "Fenêtre auxiliare automatique"
+msgstr "Fenêtre auxiliaire &automatique"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
-msgstr ""
+msgstr "Afficher un petit triangle sur le curseur si la complétion est disponible en mode texte."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:101
 msgid "Cursor i&ndicator"
-msgstr ""
+msgstr "I&ndicateur curseur"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:111
 #: lib/layouts/hollywood.layout:280
@@ -2379,9 +2357,8 @@ msgstr ""
 "affichée si elle est disponible."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
-#, fuzzy
 msgid "s inline completion dela&y"
-msgstr "s temporisation de la complétion en ligne"
+msgstr "s temporisation de la complétion en li&gne"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:180
 msgid ""
@@ -2392,9 +2369,8 @@ msgstr ""
 "complétion est affichée si elle est disponible."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:193
-#, fuzzy
 msgid "s popup d&elay"
-msgstr "s temporisation fenêtre auxiliaire"
+msgstr "s temporisation f&enêtre auxiliaire"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:218
 msgid ""
@@ -2405,19 +2381,16 @@ msgstr ""
 "de la fenêtre auxiliaire, elle sera affichée immédiatement."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
-#, fuzzy
 msgid "Sho&w popup without delay for non-unique completions"
-msgstr ""
-"Afficher la fenêtre auxiliaire sans délai pour le complétions multiples"
+msgstr "A&fficher la fenêtre auxiliaire sans délai pour le complétions multiples"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Long completions are cut-off and shown with \"...\"."
 msgstr "Les complétions longues sont tronquées et affichées avec \"...\"."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:231
-#, fuzzy
 msgid "&Use \"...\" to shorten long completions"
-msgstr "Utiliser \"...\" pour tronquer les complétions longues"
+msgstr "&Utiliser \"...\" pour tronquer les complétions longues"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
@@ -2500,13 +2473,12 @@ msgid "Cursor follows &scrollbar"
 msgstr "Le curseur suit la barre de &défilement"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
-#, fuzzy
 msgid "Sort &environments alphabetically"
 msgstr "Trie les &environnements par ordre aphabétique"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 msgid "&Group environments by their category"
-msgstr ""
+msgstr "Re&grouper les environnements par catégorie"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:73
 msgid "Edit Math Macros inline with a box around"
@@ -2626,9 +2598,8 @@ msgid "Mouse"
 msgstr "Souris"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:140
-#, fuzzy
 msgid "&Wheel scrolling speed:"
-msgstr "Vitesse de défilement via la molette :"
+msgstr "Vitesse de défilement via la &molette :"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid ""
@@ -2639,9 +2610,8 @@ msgstr ""
 "valeurs supérieures l'accélèrent, les valeurs inférieures la ralentissent."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:28
-#, fuzzy
 msgid "Right-to-left language support"
-msgstr "&Support des langues écrites de droite à gauche"
+msgstr "Support des langues écrites de droite à gauche"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2971
 msgid ""
@@ -2652,48 +2622,43 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:49
 msgid "Enable &RTL support"
-msgstr ""
+msgstr "Activer le support &RTL (droite à gauche)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:77
 msgid "Cursor movement:"
 msgstr "Mouvement du curseur :"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
-#, fuzzy
 msgid "&Logical"
-msgstr "Logique"
+msgstr "&Logique"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:97
-#, fuzzy
 msgid "&Visual"
-msgstr "Visuel"
+msgstr "&Visuel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:109
 msgid "Check to highlight foreign languages visually in the work area"
-msgstr ""
+msgstr "Cocher pour mettre les langues étrangéres visuellement en évidence dans la zone de travail"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:112
 msgid "Mark &foreign languages"
 msgstr "&Marquer les langues étrangères"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Select the default language of your documents"
-msgstr "Remet les valeurs par défaut de la classe de document"
+msgstr "Sélectionne la langue implicite de vos documents"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:145
-#, fuzzy
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "La commande LaTeX pour un changement temporaire de langue."
+msgstr "La commande LaTeX pour débuter un changement temporaire de langue."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:152
 msgid "Enter the command to load the language package (default: babel)"
-msgstr ""
+msgstr "Saisir la commande chargeant le paquetage de langue (implicitement : babel)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:159
-#, fuzzy
 msgid "The LaTeX command that ends a switch to a foreign language"
-msgstr "La commande LaTeX pour un changement temporaire de langue."
+msgstr "La commande LaTeX pour terminer changement temporaire de langue."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:179
 msgid "&Default language:"
@@ -2716,6 +2681,8 @@ msgid ""
 "Check to pass the language globally (to the document class), not locally (to "
 "the language package)"
 msgstr ""
+"Cocher pour passer l'option de langue globalement (à la classe du document),\n"
+"et non pas localement (au paquetage de langue)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:222
 msgid "&Global"
@@ -2725,7 +2692,7 @@ msgstr "&Global"
 msgid ""
 "If checked, the document language is not explicitely set by a language "
 "switch command"
-msgstr ""
+msgstr "Si cette case est cochée, la langue du document n'est pas sélectionnée explicitement par une commutaion de langue"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:232
 msgid "Auto &begin"
@@ -2735,7 +2702,7 @@ msgstr "&Auto début"
 msgid ""
 "If checked, the document language is not explicitely closed by a language "
 "switch command"
-msgstr ""
+msgstr "Si cette case est cochée, la langue du document n'est pas désélectionnée explicitement par une commutaion de langue"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:242
 msgid "Auto &end"
@@ -2743,7 +2710,7 @@ msgstr "A&uto fin"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:249
 msgid "Use the babel package for multilingual support"
-msgstr ""
+msgstr "Utiliser la paquetage babel pour le support multilingue"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:252
 msgid "Use b&abel"
@@ -3213,14 +3180,12 @@ msgid "B&ackup documents, every"
 msgstr "&Sauvegarde automatique, toutes les"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-#, fuzzy
 msgid "Open documents in &tabs"
-msgstr "Ouvrir un document"
+msgstr "Ouvrir un document en on&glet"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-#, fuzzy
 msgid "Use &bundled format for new documents"
-msgstr "Impossible d'ouvrir le document"
+msgstr "Utiliser le format en lia&sse pour les nouveaux documents"
 
 #: src/frontends/qt4/ui/PrefUi.ui:200
 msgid "Automatic help"
@@ -3386,7 +3351,7 @@ msgstr "Sauter à l'étiquette"
 
 #: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:264
 msgid "&Go to Label"
-msgstr "A&ller à l'Étiquette"
+msgstr "A&ller à l'étiquette"
 
 #: src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
@@ -8115,7 +8080,7 @@ msgstr "nom propre"
 
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
-msgstr "emphase"
+msgstr "en évidence"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
@@ -9115,9 +9080,8 @@ msgid "Thin Space|T"
 msgstr "Espace Fine|F"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:369
-#, fuzzy
 msgid "Horizontal Space...|o"
-msgstr "Espacement Vertical...|V"
+msgstr "Espacement horizontal...|p"
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
@@ -10012,7 +9976,7 @@ msgstr "Environnement Aligné"
 
 #: lib/ui/stdmenus.inc:398
 msgid "AlignedAt Environment|v"
-msgstr "Environnement AlignéSur"
+msgstr "Environnement AlignéSur|S"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Gathered Environment|h"
@@ -10024,7 +9988,7 @@ msgstr "Délimiteurs Mathématiques|r"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Matrix|x"
-msgstr "Matrice Mathématique"
+msgstr "Matrice Mathématique|t"
 
 #: lib/ui/stdmenus.inc:404
 msgid "Macro|o"
@@ -10148,17 +10112,14 @@ msgid "Go back to Reference|G"
 msgstr "Retourner à la référence|u"
 
 #: lib/ui/stdmenus.inc:568
-#, fuzzy
 msgid "Jump to Saved Bookmark|B"
-msgstr "Enregistrer le signet 1|E"
+msgstr "Aller au signet enregistré|e"
 
 #: lib/ui/stdmenus.inc:573
-#, fuzzy
 msgid "Apply Last Text Style|A"
-msgstr "Style de Texte|S"
+msgstr "Appliquer le dernier style de texte|A"
 
 #: lib/ui/stdmenus.inc:577
-#, fuzzy
 msgid "Fullscreen Mode"
 msgstr "Plein écran"
 
@@ -12892,9 +12853,8 @@ msgstr ""
 "dans le préambule LaTeX."
 
 #: src/Buffer.cpp:585
-#, fuzzy
 msgid "Failed to read embedded files"
-msgstr "Échec de l'intégration du fichier dans le liasse"
+msgstr "Échec de lecture des fichiers en liasse"
 
 #: src/Buffer.cpp:586
 msgid ""
@@ -12902,7 +12862,7 @@ msgid ""
 "unzip the LyX file, you should be able to see and open content.lyx which is "
 "your main text. You may also be able to recover some embedded files. Please "
 "report this bug to the lyx-devel mailing list."
-msgstr ""
+msgstr "Du fait probablement d'un bug, LyX n'a pu localiser tous les fichiers de la liasse. Si vous dézippez le fichier LyX, vous devriez voir et pouvoir ouvrir content.lyx qui est votre texte principal. Vous devriez aussi pouvoir récupérer certains fichiers de la liasse. Merci de signaler le bug à la liste de messagerie lyx-devel."
 
 #: src/Buffer.cpp:735 src/Buffer.cpp:744
 msgid "Document could not be read"
@@ -13007,19 +12967,16 @@ msgid "Saving document %1$s..."
 msgstr "Enregistrement du document %1$s..."
 
 #: src/Buffer.cpp:928
-#, fuzzy
 msgid " could not write file!"
-msgstr " n'a pu écrire dans le fichier !"
+msgstr " n'a pu enregistrer le fichier !"
 
 #: src/Buffer.cpp:935
-#, fuzzy
 msgid " writing embedded files."
-msgstr " écriture dans les fichiers associés !"
+msgstr " écriture des fichiers associés !"
 
 #: src/Buffer.cpp:939
-#, fuzzy
 msgid " could not write embedded files!"
-msgstr " n'a pu écrire dans les fichiers associés !"
+msgstr " n'a pu enregistrer les fichiers associés !"
 
 #: src/Buffer.cpp:944
 msgid " done."
@@ -13869,7 +13826,7 @@ msgid "Overwrite external file?"
 msgstr "Écraser le fichier externe ?"
 
 #: src/EmbeddedFiles.cpp:171
-#, fuzzy, c-format
+#, c-format
 msgid "External file %1$s already exists, do you want to overwrite it?"
 msgstr "Le fichier externe %1$s existe déjà, voulez-vous écraser ce fichier ?"
 
@@ -13920,23 +13877,21 @@ msgid "Embedded file %1$s already exists, do you want to overwrite it"
 msgstr "La liasse %1$s existe déjà, voulez-vous l'écraser ?"
 
 #: src/EmbeddedFiles.cpp:276
-#, fuzzy
 msgid "Failed to copy embedded file"
-msgstr "Échec de l'intégration du fichier dans le liasse"
+msgstr "Échec de la copie de la liasse"
 
 #: src/EmbeddedFiles.cpp:277
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Failed to embed file %1$s.\n"
 "Please check whether the source file is available"
 msgstr ""
 "Impossible d'intégrer le fichier %1$s dans la liasse.\n"
-"Veuillez vérifier l'existence du fichier et ses droits de lecture."
+"Veuillez vérifier la disponibilité du fichier source"
 
 #: src/EmbeddedFiles.cpp:400 src/EmbeddedFiles.cpp:553
-#, fuzzy
 msgid "Failed to open file"
-msgstr "Échec de l'intégration du fichier dans le liasse"
+msgstr "Échec de l'ouverture du fichier"
 
 #: src/EmbeddedFiles.cpp:401 src/EmbeddedFiles.cpp:554
 #: src/EmbeddedFiles.cpp:599
@@ -14910,7 +14865,7 @@ msgstr ""
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
+msgstr "Afficher un petit triangle sur le curseur pour indiquer qu'une complétion est disponible."
 
 #: src/LyXRC.cpp:2855
 msgid "The inline completion delay."
@@ -15484,7 +15439,7 @@ msgstr "&Recharger"
 
 #: src/buffer_funcs.cpp:71
 msgid "&Keep Changes"
-msgstr "Garder Modif."
+msgstr "&Garder les modifs."
 
 #: src/buffer_funcs.cpp:82
 #, c-format
@@ -15607,13 +15562,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "la somme de travail de ceux qui ont travaillé sur le projet LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:63
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
 msgstr ""
 "LyX est Copyright (C) 1995 par Matthias Ettrich,\n"
-"Équipe LyX 1995-2006"
+"Équipe LyX 1995-2008"
 
 #: src/frontends/qt4/GuiAbout.cpp:69
 msgid ""
@@ -15686,11 +15640,8 @@ msgid "Exiting."
 msgstr "Quitte."
 
 #: src/frontends/qt4/GuiApplication.cpp:569
-#, fuzzy
 msgid "The current document was closed."
-msgstr ""
-"\n"
-"Le document courant était fermé."
+msgstr "Le document courant était fermé."
 
 #: src/frontends/qt4/GuiApplication.cpp:579
 msgid ""
@@ -15950,7 +15901,7 @@ msgid "Canceled."
 msgstr "Annulé."
 
 #: src/frontends/qt4/GuiClipboard.cpp:276
-#, fuzzy, c-format
+#, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr "Le fichier %1$s existe déjà, voulez-vous l'écraser ?"
 
@@ -16239,14 +16190,12 @@ msgid "LaTeX Preamble"
 msgstr "Préambule LaTeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1227
-#, fuzzy
 msgid "Layouts|#o#O"
-msgstr "Format|t"
+msgstr "Format|#t#T"
 
 #: src/frontends/qt4/GuiDocument.cpp:1229
-#, fuzzy
 msgid "LyX Layout (*.layout)"
-msgstr "Documents LyX (*.lyx)"
+msgstr "Formats LyX (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1231
 #: src/frontends/qt4/GuiDocument.cpp:1277
@@ -16261,9 +16210,8 @@ msgid "Error"
 msgstr "Erreur"
 
 #: src/frontends/qt4/GuiDocument.cpp:1250
-#, fuzzy
 msgid "Unable to read local layout file."
-msgstr "Fichier de format local"
+msgstr "Échec de la lecture d'un fichier de format local."
 
 #: src/frontends/qt4/GuiDocument.cpp:1278
 msgid ""
@@ -16281,12 +16229,11 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1282
 #: src/frontends/qt4/GuiDocument.cpp:1293
 msgid "&Set Layout"
-msgstr "Format du Texte"
+msgstr "&Sélectionner le format"
 
 #: src/frontends/qt4/GuiDocument.cpp:1289
-#, fuzzy
 msgid "Embedded layout"
-msgstr "Fichiers associés"
+msgstr "Fichiers de format associé"
 
 #: src/frontends/qt4/GuiDocument.cpp:1290
 msgid ""
@@ -16294,6 +16241,9 @@ msgid ""
 "is embedded to a buffer. You cannot make use of it unless\n"
 "it is already embedded to this buffer.\n"
 msgstr ""
+"Le fichier de format que vous avez sélectionné \n"
+"est un format associé inclus dans un tampon. \n"
+"Vous ne pouvez l'utiliser que s'il est déja inclus dans ce tampon.\n"
 
 #: src/frontends/qt4/GuiDocument.cpp:1300
 #: src/frontends/qt4/GuiDocument.cpp:2148
@@ -16357,11 +16307,12 @@ msgid ""
 "LyX Layout (*.layout);;LaTeX Classes (*.{cls,sty});;BibTeX Databases (*.{bib,"
 "bst})"
 msgstr ""
+"Format LyX (*.layout);;Clases LaTeX (*.{cls,sty});;Bases BibTeX (*.{bib,\"\n"
+"\"bst})"
 
 #: src/frontends/qt4/GuiDocument.cpp:1434
-#, fuzzy
 msgid "Extra embedded file"
-msgstr "Fichiers associés supplémentaires :"
+msgstr "Fichier associé supplémentaire"
 
 #: src/frontends/qt4/GuiDocument.cpp:2160
 msgid "Can't set layout!"
@@ -16450,9 +16401,8 @@ msgid "Clipart|#C#c"
 msgstr "Clipart|#C"
 
 #: src/frontends/qt4/GuiHSpace.cpp:38
-#, fuzzy
 msgid "Horizontal Space Settings"
-msgstr "Paramètres d'espacement vertical"
+msgstr "Paramètres d'espacement horizontal"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -16578,9 +16528,8 @@ msgid "Keyboard/Mouse"
 msgstr "Clavier/Souris"
 
 #: src/frontends/qt4/GuiPrefs.cpp:458
-#, fuzzy
 msgid "Input Completion"
-msgstr "Complétion"
+msgstr "Complétion de saisie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:587
 msgid "Screen fonts"
@@ -17209,14 +17158,12 @@ msgid "Table of Contents"
 msgstr "Table des Matières"
 
 #: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:915
-#, fuzzy
 msgid "Child Documents"
-msgstr "Sous-Document"
+msgstr "Sous-Documents"
 
 #: src/frontends/qt4/GuiToc.cpp:236 src/frontends/qt4/Menus.cpp:920
-#, fuzzy
 msgid "List of Graphics"
-msgstr "Liste des tableaux"
+msgstr "Liste des figures"
 
 #: src/frontends/qt4/GuiToc.cpp:238 src/frontends/qt4/Menus.cpp:922
 msgid "List of Equations"
@@ -17252,7 +17199,7 @@ msgstr "Étiquettes et références"
 
 #: src/frontends/qt4/GuiToolbar.cpp:538
 msgid "Filtering layouts with \""
-msgstr ""
+msgstr "Filtre les formats avec \""
 
 #: src/frontends/qt4/GuiToolbar.cpp:541 src/frontends/qt4/GuiToolbar.cpp:590
 msgid "Enter characters to filter the layout list."
@@ -17477,9 +17424,8 @@ msgid "Hide tab"
 msgstr "Cacher la tabulation"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1392
-#, fuzzy
 msgid "Close tab"
-msgstr "Fermer"
+msgstr "Fermer l'onglet"
 
 #: src/frontends/qt4/GuiWrap.cpp:34
 msgid "Wrap Float Settings"
@@ -17512,18 +17458,16 @@ msgid "Master Document"
 msgstr "Document Maître"
 
 #: src/frontends/qt4/Menus.cpp:939
-#, fuzzy
 msgid "Other floats: "
-msgstr "Autres flottants"
+msgstr "Autres flottants : "
 
 #: src/frontends/qt4/Menus.cpp:945
 msgid "Open Navigator..."
-msgstr ""
+msgstr "Ouvre le navigateur..."
 
 #: src/frontends/qt4/Menus.cpp:966
-#, fuzzy
 msgid "Other Lists"
-msgstr "Autres flottants"
+msgstr "Autres listes"
 
 #: src/frontends/qt4/Menus.cpp:976
 msgid "No Table of contents"
@@ -17644,7 +17588,7 @@ msgstr "ombre en relief"
 
 #: src/insets/InsetBox.cpp:66
 msgid "shaded background"
-msgstr "fond coloré"
+msgstr "fond ombré"
 
 #: src/insets/InsetBox.cpp:67
 msgid "double frame"
@@ -18160,69 +18104,58 @@ msgid "FormatRef: "
 msgstr "FormatRef : "
 
 #: src/insets/InsetSpace.cpp:73
-#, fuzzy
 msgid "Interword Space"
-msgstr "Espace entre Mots|M"
+msgstr "Espace entre mots"
 
 #: src/insets/InsetSpace.cpp:76
-#, fuzzy
 msgid "Protected Space"
-msgstr "Espace Insécable|E"
+msgstr "Espace insécable"
 
 #: src/insets/InsetSpace.cpp:79
-#, fuzzy
 msgid "Thin Space"
-msgstr "Espace Fine|F"
+msgstr "Espace fine"
 
 #: src/insets/InsetSpace.cpp:82
-#, fuzzy
 msgid "Quad Space"
-msgstr "Espace"
+msgstr "Cadratin"
 
 #: src/insets/InsetSpace.cpp:85
-#, fuzzy
 msgid "QQuad Space"
-msgstr "Espace"
+msgstr "Double cadratin"
 
 #: src/insets/InsetSpace.cpp:88
-#, fuzzy
 msgid "Enspace"
-msgstr "espace"
+msgstr "Espace de largeur en"
 
 #: src/insets/InsetSpace.cpp:91
-#, fuzzy
 msgid "Enskip"
-msgstr "nsim"
+msgstr "Saut de hauteur en"
 
 #: src/insets/InsetSpace.cpp:94
-#, fuzzy
 msgid "Negative Thin Space"
-msgstr "Espace négative\t\\!"
+msgstr "Espace fine négative"
 
 #: src/insets/InsetSpace.cpp:100
-#, fuzzy
 msgid "Protected Horizontal Fill"
-msgstr "Ressort Horizontal"
+msgstr "Remplissage horizontal insécable"
 
 #: src/insets/InsetSpace.cpp:103
-#, fuzzy
 msgid "Horizontal Fill (Dots)"
-msgstr "Ressort Horizontal"
+msgstr "Remplissage horizontal (points)"
 
 #: src/insets/InsetSpace.cpp:106
-#, fuzzy
 msgid "Horizontal Fill (Rule)"
-msgstr "Ressort Horizontal"
+msgstr "Remplissage horizontal (filet)"
 
 #: src/insets/InsetSpace.cpp:109
-#, fuzzy, c-format
+#, c-format
 msgid "Horizontal Space (%1$s)"
-msgstr "Ligne Horizontale"
+msgstr "Espace horizontale (%1$s)"
 
 #: src/insets/InsetSpace.cpp:113
-#, fuzzy, c-format
+#, c-format
 msgid "Protected Horizontal Space (%1$s)"
-msgstr "Espace Insécable|E"
+msgstr "Espace horizontal insécable (%1$s)"
 
 #: src/insets/InsetTOC.cpp:49
 msgid "Unknown TOC type"
@@ -19211,7 +19144,7 @@ msgstr "Utilisateur inconnu"
 
 #, fuzzy
 #~ msgid "No vertical grid lines in '%1$s'"
-#~ msgstr "Aucune ligne de grille verticale dans '%1$s'"
+#~ msgstr "Sélectionner un modèle de remplissage pour les remplissages horizontaux"
 
 #, fuzzy
 #~ msgid "Enable embedding"
