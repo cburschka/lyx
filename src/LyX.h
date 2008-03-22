@@ -18,24 +18,18 @@
 
 namespace lyx {
 
-namespace support {
-class FileName;
-}
-
-class Buffer;
 class BufferList;
+class CmdDef;
 class Converters;
 class ErrorItem;
-class Inset;
+class KeyMap;
 class LyXFunc;
-class Server;
-class ServerSocket;
 class Messages;
 class Mover;
 class Movers;
+class Server;
+class ServerSocket;
 class Session;
-class KeyMap;
-class CmdDef;
 
 extern bool use_gui;
 
@@ -84,10 +78,6 @@ public:
 	///
 	frontend::Application & application();
 	frontend::Application const & application() const;
-
-	///
-	KeyMap & topLevelKeymap();
-	KeyMap const & topLevelKeymap() const;
 
 	///
 	CmdDef & topLevelCmdDef();
@@ -173,6 +163,7 @@ private:
 	friend void setMover(std::string const & fmt, std::string const & command);
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
+	friend KeyMap & theTopLevelKeymap();
 };
 
 } // namespace lyx

@@ -304,12 +304,6 @@ frontend::Application const & LyX::application() const
 }
 
 
-KeyMap & LyX::topLevelKeymap()
-{
-	return pimpl_->toplevel_keymap_;
-}
-
-
 CmdDef & LyX::topLevelCmdDef()
 {
 	return pimpl_->toplevel_cmddef_;
@@ -325,12 +319,6 @@ Converters & LyX::converters()
 Converters & LyX::systemConverters()
 {
 	return pimpl_->system_converters_;
-}
-
-
-KeyMap const & LyX::topLevelKeymap() const
-{
-	return pimpl_->toplevel_keymap_;
 }
 
 
@@ -1353,7 +1341,7 @@ ServerSocket & theServerSocket()
 
 KeyMap & theTopLevelKeymap()
 {
-	return LyX::ref().topLevelKeymap();
+	return LyX::ref().pimpl_->toplevel_keymap_;
 }
 
 
