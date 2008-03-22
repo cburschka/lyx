@@ -1892,7 +1892,7 @@ void PrefUserInterface::select_ui()
 /////////////////////////////////////////////////////////////////////
 
 PrefEdit::PrefEdit(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catEditing), qt_("Widgets"), form, parent)
+	: PrefModule(qt_(catEditing), qt_("Control"), form, parent)
 {
 	setupUi(this);
 
