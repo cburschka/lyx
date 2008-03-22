@@ -40,7 +40,7 @@ namespace {
 
 /// name of unicode block, start and end code point
 struct UnicodeBlocks {
-	QString name;
+	char const * name;
 	char_type start;
 	char_type end;
 };
@@ -163,7 +163,7 @@ QString getBlock(char_type c)
 	// c falls into a covered area, and we can guess which
 	if (c >= unicode_blocks[lastBlock].start
 	    && c <= unicode_blocks[lastBlock].end)
-		return unicode_blocks[lastBlock].name;
+		return qt_(unicode_blocks[lastBlock].name);
 
 	// c falls into an uncovered area, but we can guess which	
 	if (c > unicode_blocks[lastBlock].end
@@ -178,7 +178,7 @@ QString getBlock(char_type c)
 		return QString();
 	lastBlock = i;
 	//LYXERR0("fail: " << int(c) << ' ' << lastBlock);
-	return unicode_blocks[lastBlock].name;
+	return qt_(unicode_blocks[lastBlock].name);
 }
 
 
@@ -408,7 +408,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
-			if (unicode_blocks[i].name == category) {
+			if (qt_(unicode_blocks[i].name) == category) {
 				range_start = unicode_blocks[i].start;
 				range_end = unicode_blocks[i].end;
 				break;
