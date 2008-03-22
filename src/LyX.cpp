@@ -904,32 +904,6 @@ void LyX::emergencyCleanup() const
 }
 
 
-void LyX::deadKeyBindings(KeyMap * kbmap)
-{
-	// bindKeyings for transparent handling of deadkeys
-	// The keysyms are gotten from XFree86 X11R6
-	kbmap->bind("~C-~S-~M-dead_acute", FuncRequest(LFUN_ACCENT_ACUTE));
-	kbmap->bind("~C-~S-~M-dead_breve", FuncRequest(LFUN_ACCENT_BREVE));
-	kbmap->bind("~C-~S-~M-dead_caron", FuncRequest(LFUN_ACCENT_CARON));
-	kbmap->bind("~C-~S-~M-dead_cedilla", FuncRequest(LFUN_ACCENT_CEDILLA));
-	kbmap->bind("~C-~S-~M-dead_abovering", FuncRequest(LFUN_ACCENT_CIRCLE));
-	kbmap->bind("~C-~S-~M-dead_circumflex", FuncRequest(LFUN_ACCENT_CIRCUMFLEX));
-	kbmap->bind("~C-~S-~M-dead_abovedot", FuncRequest(LFUN_ACCENT_DOT));
-	kbmap->bind("~C-~S-~M-dead_grave", FuncRequest(LFUN_ACCENT_GRAVE));
-	kbmap->bind("~C-~S-~M-dead_doubleacute", FuncRequest(LFUN_ACCENT_HUNGARIAN_UMLAUT));
-	kbmap->bind("~C-~S-~M-dead_macron", FuncRequest(LFUN_ACCENT_MACRON));
-	// nothing with this name
-	// kbmap->bind("~C-~S-~M-dead_special_caron", LFUN_ACCENT_SPECIAL_CARON);
-	kbmap->bind("~C-~S-~M-dead_tilde", FuncRequest(LFUN_ACCENT_TILDE));
-	kbmap->bind("~C-~S-~M-dead_diaeresis", FuncRequest(LFUN_ACCENT_UMLAUT));
-	// nothing with this name either...
-	//kbmap->bind("~C-~S-~M-dead_underbar", FuncRequest(LFUN_ACCENT_UNDERBAR));
-	kbmap->bind("~C-~S-~M-dead_belowdot", FuncRequest(LFUN_ACCENT_UNDERDOT));
-	kbmap->bind("~C-~S-~M-dead_tie", FuncRequest(LFUN_ACCENT_TIE));
-	kbmap->bind("~C-~S-~M-dead_ogonek",FuncRequest(LFUN_ACCENT_OGONEK));
-}
-
-
 // return true if file does not exist or is older than configure.py.
 static bool needsUpdate(string const & file)
 {

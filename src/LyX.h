@@ -137,8 +137,6 @@ private:
 
 	/// initial LyX set up
 	bool init();
-	/// set up the default dead key bindings if requested
-	void deadKeyBindings(KeyMap * kbmap);
 	/** Check for the existence of the user's support directory and,
 	 *  if not present, create it. Exits the program if the directory
 	 *  cannot be created.
