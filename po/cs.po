@@ -8816,9 +8816,8 @@ msgid "Hyphenation Point|P"
 msgstr "Znaèka dìlení slova|a"
 
 #: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:356
-#, fuzzy
 msgid "Protected Hyphen|y"
-msgstr "Chránìný spojovník/pomlèka|p"
+msgstr "Chránìný spojovník|p"
 
 #: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:374
 msgid "Ligature Break|k"
@@ -8837,9 +8836,8 @@ msgid "Thin Space|T"
 msgstr "Tenká mezera|T"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:369
-#, fuzzy
 msgid "Horizontal Space...|o"
-msgstr "Vertikální mezera...|V"
+msgstr "Horizontální mezera...|i"
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
@@ -9175,7 +9173,7 @@ msgstr "Roz¹íøené vlastnosti LyXu|R"
 
 #: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:523
 msgid "Embedded Objects|m"
-msgstr "Pøibalené objekty|V"
+msgstr "Vkládané objekty|V"
 
 #: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
@@ -9695,20 +9693,17 @@ msgstr "Vertikální mezera...|V"
 msgid "Hyphenation Point|H"
 msgstr "Znaèka dìlení slova|a"
 
-# TODO
 #: lib/ui/stdmenus.inc:375
 msgid "New Line|e"
 msgstr "Nový øádek"
 
-# TODO
 #: lib/ui/stdmenus.inc:376
 msgid "Line Break|B"
 msgstr "Zalomení øádku|k"
 
 #: lib/ui/stdmenus.inc:378
-#, fuzzy
 msgid "New Page|N"
-msgstr "Nový|N"
+msgstr "Nová stránka|N"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
@@ -9755,14 +9750,12 @@ msgid "Toggle Math Panels"
 msgstr "Pøepínat zobrazení matematického panelu"
 
 #: lib/ui/stdmenus.inc:412
-#, fuzzy
 msgid "Figure Wrap Float|F"
-msgstr "Plovoucí text (obtékání)|P"
+msgstr "Plovoucí obrázek (obtékání)|o"
 
 #: lib/ui/stdmenus.inc:413
-#, fuzzy
 msgid "Table Wrap Float|T"
-msgstr "Plovoucí text (obtékání)|P"
+msgstr "Plovoucí tabulka (obtékání)|t"
 
 #: lib/ui/stdmenus.inc:429
 msgid "External Material...|M"
@@ -9877,7 +9870,6 @@ msgid "Apply Last Text Style|A"
 msgstr "Pou¾ij poslední Styl textu|t"
 
 #: lib/ui/stdmenus.inc:577
-#, fuzzy
 msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
@@ -10070,9 +10062,8 @@ msgid "Set right line"
 msgstr "Nastavit linku napravo"
 
 #: lib/ui/stdtoolbars.inc:125
-#, fuzzy
 msgid "Set border lines"
-msgstr "Nastav Okraje"
+msgstr "Nastav linky okraje"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Set all lines"
@@ -10520,17 +10511,16 @@ msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "Celoøádkový zlomek (amsmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:304
-#, fuzzy
 msgid "Binomial\t\\binom"
-msgstr "Kombinaèní èíslo\t\\choose"
+msgstr "Kombinaèní èíslo\t\\binom"
 
 #: lib/ui/stdtoolbars.inc:305
 msgid "Text binomial\t\\tbinom"
-msgstr ""
+msgstr "Kombinaèní èíslo (text)\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:306
 msgid "Display binomial\t\\dbinom"
-msgstr ""
+msgstr "Kombinaèní èíslo (celoøádkový)\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "Roman\t\\mathrm"
@@ -12549,7 +12539,7 @@ msgid "Disk Error: "
 msgstr "Chyba Disku: "
 
 #: src/Buffer.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemohl vytvoøit pomocný adresáø '%1$s' (mo¾ná je zaplnìn disk?)"
@@ -12731,19 +12721,16 @@ msgid "Saving document %1$s..."
 msgstr "Ukládá se %1$s..."
 
 #: src/Buffer.cpp:928
-#, fuzzy
 msgid " could not write file!"
 msgstr " nepodaøilo se zapsat soubor!"
 
 #: src/Buffer.cpp:935
-#, fuzzy
 msgid " writing embedded files."
-msgstr " zapisování pøibalených souborù!."
+msgstr " zapisování pøibalených souborù."
 
 #: src/Buffer.cpp:939
-#, fuzzy
 msgid " could not write embedded files!"
-msgstr " nepodaøilo se zapsat pøibalené soubory!."
+msgstr " nepodaøilo se zapsat pøibalené soubory!"
 
 #: src/Buffer.cpp:944
 msgid " done."
@@ -13591,9 +13578,9 @@ msgid "Overwrite external file?"
 msgstr "Pøepsat externí soubor?"
 
 #: src/EmbeddedFiles.cpp:171
-#, fuzzy, c-format
+#, c-format
 msgid "External file %1$s already exists, do you want to overwrite it?"
-msgstr "Externí soubor %1$s ji¾ existuje, chcete tento soubor pøepsat"
+msgstr "Externí soubor %1$s ji¾ existuje, chcete tento soubor pøepsat?"
 
 #: src/EmbeddedFiles.cpp:183 src/EmbeddedFiles.cpp:195
 #: src/EmbeddedFiles.cpp:248 src/EmbeddedFiles.cpp:307
@@ -13642,18 +13629,17 @@ msgid "Embedded file %1$s already exists, do you want to overwrite it"
 msgstr "Pøibalený soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat"
 
 #: src/EmbeddedFiles.cpp:276
-#, fuzzy
 msgid "Failed to copy embedded file"
-msgstr "Nepodaøilo se pøeèíst pøibalené soubory"
+msgstr "Nepodaøilo se zkopírovat pøibalené soubory"
 
 #: src/EmbeddedFiles.cpp:277
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Failed to embed file %1$s.\n"
 "Please check whether the source file is available"
 msgstr ""
 "Nelze pøibalit soubor %1$s.\n"
-"Zkontrolujte, zda-li tento soubor existuje a lze èíst."
+"Zkontrolujte, zda-li tento soubor existuje."
 
 #: src/EmbeddedFiles.cpp:400 src/EmbeddedFiles.cpp:553
 msgid "Failed to open file"
@@ -15278,13 +15264,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "mno¾ství práce dal¹ích lidí na projektu LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:63
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
 msgstr ""
 "LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2006 LyX Team"
+"1995-2008 LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:69
 msgid ""
@@ -15356,9 +15341,8 @@ msgid "Exiting."
 msgstr "Ukonèování."
 
 #: src/frontends/qt4/GuiApplication.cpp:569
-#, fuzzy
 msgid "The current document was closed."
-msgstr "Tisk dokumentu selhal"
+msgstr "Aktuální dokukment byl uzavøen."
 
 #: src/frontends/qt4/GuiApplication.cpp:579
 msgid ""
@@ -15419,36 +15403,32 @@ msgid "Select a BibTeX style"
 msgstr "Vybrat styl BibTeX-u"
 
 #: src/frontends/qt4/GuiBox.cpp:53
-#, fuzzy
 msgid "No frame"
 msgstr "Bez nakresleného rámu"
 
 #: src/frontends/qt4/GuiBox.cpp:53
 msgid "Simple rectangular frame"
-msgstr ""
+msgstr "Jednoduchý pravoúhlý rám"
 
 #: src/frontends/qt4/GuiBox.cpp:54
-#, fuzzy
 msgid "Oval frame, thin"
 msgstr "Oválný tenký rám"
 
 #: src/frontends/qt4/GuiBox.cpp:54
-#, fuzzy
 msgid "Oval frame, thick"
 msgstr "Oválný tlustý rám"
 
 #: src/frontends/qt4/GuiBox.cpp:55
 msgid "Drop shadow"
-msgstr ""
+msgstr "Se stínem"
 
 #: src/frontends/qt4/GuiBox.cpp:55
-#, fuzzy
 msgid "Shaded background"
-msgstr "pozadí poznámky"
+msgstr "Pozadí s odstínem"
 
 #: src/frontends/qt4/GuiBox.cpp:56
 msgid "Double rectangular frame"
-msgstr ""
+msgstr "Dvojitý pravoúhlý rám"
 
 #: src/frontends/qt4/GuiBox.cpp:69 src/frontends/qt4/GuiBox.cpp:327
 #: src/frontends/qt4/GuiBox.cpp:362
@@ -16043,9 +16023,8 @@ msgid "TeX Code Settings"
 msgstr "Nastavení pro Kód TeX-u"
 
 #: src/frontends/qt4/GuiErrorList.cpp:38
-#, fuzzy
 msgid "Error List"
-msgstr "Výpis zdrojového kódu"
+msgstr "Výpis chyb"
 
 #: src/frontends/qt4/GuiErrorList.cpp:91
 #, c-format
@@ -16231,24 +16210,20 @@ msgid "User files|#U#u"
 msgstr "U¾ivatelské soubory|#U#u"
 
 #: src/frontends/qt4/GuiPrefs.cpp:213
-#, fuzzy
 msgid "Look & Feel"
 msgstr "Vzhled"
 
 #: src/frontends/qt4/GuiPrefs.cpp:215
-#, fuzzy
 msgid "Language Settings"
 msgstr "Jazyková nastavení"
 
 #: src/frontends/qt4/GuiPrefs.cpp:216
-#, fuzzy
 msgid "Output"
 msgstr "Výstup"
 
 #: src/frontends/qt4/GuiPrefs.cpp:217
-#, fuzzy
 msgid "File Handling"
-msgstr "Obsluha fontù"
+msgstr "Obsluha souborù"
 
 #: src/frontends/qt4/GuiPrefs.cpp:331
 msgid "Plain text"
@@ -16259,14 +16234,12 @@ msgid "Date format"
 msgstr "Formát datumu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:389
-#, fuzzy
 msgid "Keyboard/Mouse"
-msgstr "Klávesnice"
+msgstr "Klávesnice/my¹"
 
 #: src/frontends/qt4/GuiPrefs.cpp:464
-#, fuzzy
 msgid "Input Completion"
-msgstr "Automatické doplòování"
+msgstr "Doplòování"
 
 #: src/frontends/qt4/GuiPrefs.cpp:593
 msgid "Screen fonts"
@@ -16281,9 +16254,8 @@ msgid "Paths"
 msgstr "Cesty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:992
-#, fuzzy
 msgid "Select directory for example files"
-msgstr "Vybrat soubor se ¹ablonou"
+msgstr "Vybrat adresáø s pøíklady"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1001
 msgid "Select a document templates directory"
@@ -16355,9 +16327,8 @@ msgid "User interface"
 msgstr "U¾ivatelské rozhraní"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1895
-#, fuzzy
-msgid "Widgets"
-msgstr "©íøka"
+msgid "Control"
+msgstr "Ovládání"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1967
 msgid "Shortcuts"
@@ -16691,31 +16662,31 @@ msgstr "Katakana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "Bopomofo"
-msgstr ""
+msgstr "Bopomofo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:101
 msgid "Hangul Compatibility Jamo"
-msgstr ""
+msgstr "Hangul kompat."
 
 #: src/frontends/qt4/GuiSymbols.cpp:102
 msgid "Kanbun"
-msgstr ""
+msgstr "Kanbun"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Enclosed CJK Letters and Months"
-msgstr ""
+msgstr "Uzavøené znaky CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
 msgid "CJK Compatibility"
-msgstr ""
+msgstr "CJK kompat."
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "CJK Unified Ideographs"
-msgstr ""
+msgstr "CJK unifikované ideograf."
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "Hangul Syllables"
-msgstr ""
+msgstr "Hangul slabiky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "High Surrogates"
@@ -16735,15 +16706,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "CJK Compatibility Ideographs"
-msgstr ""
+msgstr "CJK kompat. ideograf."
 
 #: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "Alphabetic Presentation Forms"
-msgstr ""
+msgstr "Abecední present. formy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "Arabic Presentation Forms-A"
-msgstr ""
+msgstr "Arabské present formy-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "Combining Half Marks"
@@ -16751,24 +16722,23 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "CJK Compatibility Forms"
-msgstr ""
+msgstr "CJK kompat. formy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Small Form Variants"
-msgstr ""
+msgstr "Varianty malých forem"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Arabic Presentation Forms-B"
-msgstr ""
+msgstr "Arabské present. formy-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "Halfwidth and Fullwidth Forms"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
-#, fuzzy
 msgid "Specials"
-msgstr "Specialmail"
+msgstr "Specializované"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Linear B Syllabary"
@@ -16779,41 +16749,36 @@ msgid "Linear B Ideograms"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
-#, fuzzy
 msgid "Aegean Numbers"
-msgstr "Èíslo stránky"
+msgstr "Egejská èísla"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Ancient Greek Numbers"
-msgstr ""
+msgstr "Staroøecká èísla"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
-#, fuzzy
 msgid "Old Italic"
-msgstr "Kurzíva (italic)"
+msgstr "Stará kurzíva (italic)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
-#, fuzzy
 msgid "Gothic"
-msgstr "coth"
+msgstr "Gotické"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 msgid "Ugaritic"
-msgstr ""
+msgstr "Ugaritské"
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
 msgid "Old Persian"
-msgstr ""
+msgstr "Staroperské"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
-#, fuzzy
 msgid "Deseret"
-msgstr "Vynulovat"
+msgstr "Deseret"
 
 #: src/frontends/qt4/GuiSymbols.cpp:129
-#, fuzzy
 msgid "Shavian"
-msgstr "Loty¹tina"
+msgstr "Shawovské"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Osmanya"
@@ -16831,16 +16796,15 @@ msgstr "varnothing"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
 msgid "Byzantine Musical Symbols"
-msgstr ""
+msgstr "Byzantské hudební symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
-#, fuzzy
 msgid "Musical Symbols"
-msgstr "Fonetické symboly|F"
+msgstr "Hudební symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Ancient Greek Musical Notation"
-msgstr ""
+msgstr "Staroøecká hudební notace"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
 msgid "Tai Xuan Jing Symbols"
@@ -16848,15 +16812,15 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Mathematical Alphanumeric Symbols"
-msgstr ""
+msgstr "Matematické alfanumerické symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "CJK Unified Ideographs Extension B"
-msgstr ""
+msgstr "CJK unifikovaný ideograf. extenze B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr ""
+msgstr "CJK kompat. iedograf. pøídavné"
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 #, fuzzy
@@ -16920,23 +16884,20 @@ msgid "List of Equations"
 msgstr "Seznam rovnic"
 
 #: src/frontends/qt4/GuiToc.cpp:240 src/frontends/qt4/Menus.cpp:932
-#, fuzzy
 msgid "List of Foot notes"
-msgstr "Seznam obrázkù"
+msgstr "Poznámky pod èarou"
 
 #: src/frontends/qt4/GuiToc.cpp:242 src/frontends/qt4/Menus.cpp:926
 msgid "List of Listings"
 msgstr "Seznam výpisù"
 
 #: src/frontends/qt4/GuiToc.cpp:244 src/frontends/qt4/Menus.cpp:924
-#, fuzzy
 msgid "List of Indexes"
-msgstr "Seznam tabulek"
+msgstr "Hesla rejstøíku"
 
 #: src/frontends/qt4/GuiToc.cpp:246 src/frontends/qt4/Menus.cpp:928
-#, fuzzy
 msgid "List of Marginal notes"
-msgstr "Seznam tabulek"
+msgstr "Postraní poznámky"
 
 #: src/frontends/qt4/GuiToc.cpp:248 src/frontends/qt4/Menus.cpp:930
 msgid "List of Notes"
@@ -16947,13 +16908,12 @@ msgid "List of Citations"
 msgstr "Seznam citací"
 
 #: src/frontends/qt4/GuiToc.cpp:252 src/frontends/qt4/Menus.cpp:934
-#, fuzzy
 msgid "Labels and References"
-msgstr "v¹echny necitované reference"
+msgstr "Znaèky a odkazy"
 
 #: src/frontends/qt4/GuiToolbar.cpp:538
 msgid "Filtering layouts with \""
-msgstr ""
+msgstr "Filtrovat rozvr¾ení s \""
 
 #: src/frontends/qt4/GuiToolbar.cpp:541 src/frontends/qt4/GuiToolbar.cpp:590
 msgid "Enter characters to filter the layout list."
@@ -17479,9 +17439,8 @@ msgid " (sideways)"
 msgstr " (na bok)"
 
 #: src/insets/InsetFloat.cpp:425
-#, fuzzy
 msgid "subfloat: "
-msgstr "plovoucí objekt: "
+msgstr "pod-plovoucí objekt: "
 
 #: src/insets/InsetFloatList.cpp:76
 msgid "ERROR: Nonexistent float type!"
@@ -17774,14 +17733,12 @@ msgid "Opened Marginal Note Inset"
 msgstr "Poznámka na okraj - otevøená vlo¾ka"
 
 #: src/insets/InsetNewline.h:70
-#, fuzzy
 msgid "line break"
-msgstr "Konec øádku|K"
+msgstr "zalomení øádku"
 
 #: src/insets/InsetNewpage.h:49
-#, fuzzy
 msgid "New Page"
-msgstr "Uzavøít stránku (\\clearpage)"
+msgstr "Nová stránka"
 
 #: src/insets/InsetNewpage.h:83
 msgid "Clear Page"
@@ -17881,9 +17838,8 @@ msgid "QQuad Space"
 msgstr "QQuad mezera"
 
 #: src/insets/InsetSpace.cpp:88
-#, fuzzy
 msgid "Enspace"
-msgstr "mezera"
+msgstr "En-mezera"
 
 #: src/insets/InsetSpace.cpp:91
 #, fuzzy
@@ -17903,9 +17859,8 @@ msgid "Horizontal Fill (Dots)"
 msgstr "Horizontální výplò (teèky)"
 
 #: src/insets/InsetSpace.cpp:106
-#, fuzzy
 msgid "Horizontal Fill (Rule)"
-msgstr "Horizontální výplò"
+msgstr "Horizontální výplò (èára)"
 
 #: src/insets/InsetSpace.cpp:109
 #, c-format
