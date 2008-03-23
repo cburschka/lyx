@@ -131,6 +131,7 @@ Buffer & Inset::buffer()
 {
 	if (!buffer_) {
 		odocstringstream s;
+		lyxerr << "LyX Code: " << lyxCode() << " name: " << name() << std::endl;
 		s << "LyX Code: " << lyxCode() << " name: " << name();
 		BOOST_ASSERT(false);
 		throw ExceptionMessage(BufferException, 
