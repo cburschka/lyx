@@ -383,12 +383,13 @@ void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 
 void GuiSymbols::scrollToItem(QString const & category)
 {
-	if (used_blocks.find(category) != used_blocks.end()) {
-		int row = used_blocks[category];
-		QModelIndex index = symbolsLW->model()->index(row, 0, QModelIndex());
-		symbolsLW->scrollTo(index, QAbstractItemView::PositionAtTop);
-	}
+	if (used_blocks.find(category) == used_blocks.end())
+		return;
+	int row = used_blocks[category];
+	QModelIndex index = symbolsLW->model()->index(row, 0, QModelIndex());
+	symbolsLW->scrollTo(index, QAbstractItemView::PositionAtTop);
 }
+
 
 void GuiSymbols::updateSymbolList(bool update_combo)
 {
@@ -424,8 +425,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 #if QT_VERSION >= 0x040300
 		QChar::Category const cat = QChar::category(uint(c));
 #else
-		QChar const qc = uint(c);
-		QChar::Category const cat = qc.category();
+		QChar::Category const cat = QChar(uint(c)).category();
 #endif
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
