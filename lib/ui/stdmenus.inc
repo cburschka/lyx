@@ -546,6 +546,7 @@ Menuset
 	Menu "context-ref"
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go to Label|G" "label-goto"
+		Item "Edit...|E" "next-inset-toggle"
 	End
 
 #
@@ -554,6 +555,7 @@ Menuset
 	Menu "context-label"
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go back to Reference|G" "bookmark-goto 0"
+		Item "Edit...|E" "next-inset-toggle"
 	End
 
 #
