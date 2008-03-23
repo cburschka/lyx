@@ -142,6 +142,12 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
+void InsetSpace::edit(Cursor & cur, bool, EntryDirection)
+{
+	InsetSpaceMailer(*this).showDialog(&cur.bv());
+}
+
+
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (isStretchableSpace()) {
@@ -494,6 +500,12 @@ bool InsetSpace::isStretchableSpace() const
 		params_.kind == InsetSpaceParams::HFILL_PROTECTED ||
 		params_.kind == InsetSpaceParams::DOTFILL ||
 		params_.kind == InsetSpaceParams::HRULEFILL);
+}
+
+
+docstring InsetSpace::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-space");
 }
 
 

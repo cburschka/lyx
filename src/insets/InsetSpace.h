@@ -106,6 +106,11 @@ public:
 	/// the string that is passed to the TOC
 	void textString(odocstream &) const;
 	///
+	void edit(Cursor & cur, bool front,
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
+	///
+	EDITABLE editable() const { return IS_EDITABLE; }
+	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// is this an expandible space (rubber length)?
 	bool isStretchableSpace() const;
@@ -117,6 +122,8 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	bool isSpace() const { return true; }
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 private:
 	virtual Inset * clone() const { return new InsetSpace(*this); }
 	///
