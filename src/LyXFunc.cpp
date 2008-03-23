@@ -1449,7 +1449,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_GRAPHICS_EDIT: {
 			FuncRequest fr(action, argument);
-			InsetGraphics().dispatch(view()->cursor(), fr);
+			InsetGraphics ig;
+			ig.setBuffer(*lyx_view_->buffer());
+			ig.dispatch(view()->cursor(), fr);
 			break;
 		}
 
