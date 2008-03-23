@@ -654,8 +654,6 @@ public:
 private:
 	Buffer const * buffer_;
 
-	/// renumber cells after structural changes
-	void fixCellNums();
 }; // Tabular
 
 

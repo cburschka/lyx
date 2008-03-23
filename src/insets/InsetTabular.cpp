@@ -586,7 +586,7 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
-	fixCellNums();
+	updateIndexes();
 	is_long_tabular = false;
 	rotate = false;
 	use_booktabs = false;
@@ -598,17 +598,6 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 			cell_info[i][j].bottom_line = i == 0 || i == rowCount() - 1;
 			cell_info[i][j].right_line = j == columnCount() - 1;
 		}
-}
-
-
-void Tabular::fixCellNums()
-{
-	idx_type cellno = 0;
-	for (row_type i = 0; i < rowCount(); ++i)
-		for (col_type j = 0; j < columnCount(); ++j)
-			cell_info[i][j].cellno = cellno++;
-
-	updateIndexes();
 }
 
 
@@ -652,7 +641,7 @@ void Tabular::deleteRow(row_type const row)
 
 	row_info.erase(row_info.begin() + row);
 	cell_info.erase(cell_info.begin() + row);
-	fixCellNums();
+	updateIndexes();
 }
 
 
@@ -693,7 +682,7 @@ void Tabular::appendColumn(idx_type const cell)
 		if (buffer().params().trackChanges)
 			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
 	}
-	fixCellNums();
+	updateIndexes();
 }
 
 
@@ -713,7 +702,7 @@ void Tabular::deleteColumn(col_type const column)
 		}
 		cell_info[i].erase(cell_info[i].begin() + column);
 	}
-	fixCellNums();
+	updateIndexes();
 }
 
 
@@ -728,56 +717,33 @@ void Tabular::copyColumn(col_type const column)
 	if (bp.trackChanges)
 		for (row_type i = 0; i < rowCount(); ++i)
 			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
-	fixCellNums();
+	updateIndexes();
 }
 
 
 void Tabular::updateIndexes()
 {
+	col_type ncols = columnCount();
+	row_type nrows = rowCount();
 	numberofcells = 0;
-	// Count only non-multicol cells plus begin multicol
-	// cells, ignore non-begin multicol cells:
-	for (row_type row = 0; row < rowCount(); ++row) {
-		for (col_type column = 0; column < columnCount(); ++column) {
-			if (cell_info[row][column].multicolumn
-				!= CELL_PART_OF_MULTICOLUMN)
+	for (row_type row = 0; row < nrows; ++row)
+		for (col_type column = 0; column < ncols; ++column) {
+			if (!isPartOfMultiColumn(row, column))
 				++numberofcells;
-			BOOST_ASSERT(numberofcells != 0);
-			cell_info[row][column].cellno =
-				numberofcells - 1;
+			cell_info[row][column].cellno = numberofcells - 1;
 		}
-	}
 
 	rowofcell.resize(numberofcells);
 	columnofcell.resize(numberofcells);
-
-	row_type row = 0;
-	col_type column = 0;
-	for (idx_type c = 0;
-		 c < numberofcells && row < rowCount() && column < columnCount();) {
-		rowofcell[c] = row;
-		columnofcell[c] = column;
-		++c;
-		do {
-			++column;
-		} while (column < columnCount() &&
-				cell_info[row][column].multicolumn
-						== Tabular::CELL_PART_OF_MULTICOLUMN);
-
-		if (column == columnCount()) {
-			column = 0;
-			++row;
-		}
-	}
-
-	for (row_type row = 0; row < rowCount(); ++row) {
-		for (col_type column = 0; column < columnCount(); ++column) {
-			if (isPartOfMultiColumn(row,column))
+	idx_type i = 0;
+	for (row_type row = 0; row < nrows; ++row)
+		for (col_type column = 0; column < ncols; ++column) {
+			if (isPartOfMultiColumn(row, column))
 				continue;
-			cell_info[row][column].inset->setAutoBreakRows(
-				!getPWidth(cellIndex(row, column)).zero());
+			rowofcell[i] = row;
+			columnofcell[i] = column;
+			++i;
 		}
-	}
 }
 
 
