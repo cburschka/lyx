@@ -1171,6 +1171,14 @@ void LyXAction::init()
  */
 		{ LFUN_BOOKMARK_CLEAR, "bookmark-clear", NoBuffer, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_HELP_OPEN
+ * \li Action: Open the given help file according to the language setting.
+ * \li Syntax: help-open <FILE>[.lyx]
+ * \li Params: <FILE>: any document from (/usr/share/)doc directory.
+ * \li Author: Jug, 27 Jun 1999
+ * \endvar
+ */
 		{ LFUN_HELP_OPEN, "help-open", NoBuffer | Argument, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_LYX_QUIT
