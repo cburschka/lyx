@@ -1443,11 +1443,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_EXTERNAL_EDIT: {
 			BOOST_ASSERT(lyx_view_);
 			FuncRequest fr(action, argument);
-			InsetExternal().dispatch(view()->cursor(), fr);
+			InsetExternal ie;
+			ie.setBuffer(*lyx_view_->buffer());
+			ie.dispatch(view()->cursor(), fr);
 			break;
 		}
 
 		case LFUN_GRAPHICS_EDIT: {
+			BOOST_ASSERT(lyx_view_);
 			FuncRequest fr(action, argument);
 			InsetGraphics ig;
 			ig.setBuffer(*lyx_view_->buffer());
