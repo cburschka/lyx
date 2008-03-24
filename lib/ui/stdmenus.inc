@@ -601,4 +601,19 @@ Menuset
 		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
 	End
 
+	Menu "context-listings"
+		Item "Cut" "cut"
+		Item "Copy" "copy"
+		Item "Paste" "paste"
+		Submenu "Paste Recent|e" "edit_pasterecent"
+		Separator
+		Item "Settings...|S" "inset-settings listings"
+	End
+	
+	Menu "context-graphics"
+		Item "Edit...|E" "graphics-edit"
+		Separator
+		Item "Settings...|S" "next-inset-toggle"
+	End
+
 End

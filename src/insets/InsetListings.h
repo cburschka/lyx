@@ -56,6 +56,9 @@ public:
 	InsetListingsParams const & params() const { return params_; }
 	///
 	InsetListingsParams & params() { return params_; }
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+
 private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

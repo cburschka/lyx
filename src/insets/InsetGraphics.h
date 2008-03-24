@@ -84,6 +84,8 @@ public:
 	void updateEmbeddedFile(EmbeddedFile const &);
 	///
 	void addToToc(ParConstIterator const &) const;
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return true; }

@@ -55,6 +55,8 @@
 
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCommand.h" // ChangeRefs
+#include "insets/InsetExternal.h"
+#include "insets/InsetGraphics.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
@@ -846,6 +848,8 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
 	case LFUN_INFO_INSERT:
+	case LFUN_EXTERNAL_EDIT:
+	case LFUN_GRAPHICS_EDIT:
 	case LFUN_PARAGRAPH_GOTO:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
@@ -1028,6 +1032,25 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 		if (!label.empty())
 			gotoLabel(label);
+		break;
+	}
+	
+	case LFUN_EXTERNAL_EDIT: {
+		FuncRequest fr(cmd);
+		InsetExternal * inset = getInsetByCode<InsetExternal>(d->cursor_,
+			EXTERNAL_CODE);
+		if (inset)
+			inset->dispatch(d->cursor_, fr);
+		break;
+	}
+
+
+	case LFUN_GRAPHICS_EDIT: {
+		FuncRequest fr(cmd);
+		InsetGraphics * inset = getInsetByCode<InsetGraphics>(d->cursor_,
+			GRAPHICS_CODE);
+		if (inset)
+			inset->dispatch(d->cursor_, fr);
 		break;
 	}
 

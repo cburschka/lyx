@@ -175,8 +175,9 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_GRAPHICS_EDIT: {
-		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		InsetGraphicsParams p = params();
+		if (!cmd.argument().empty())
+			InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		editGraphics(p, buffer());
 		break;
 	}
@@ -936,6 +937,12 @@ void InsetGraphics::addToToc(ParConstIterator const & cpit) const
 		str += _(" (embedded)");
 	}
 	backend.toc("graphics").push_back(TocItem(cpit, 0, str));
+}
+
+
+docstring InsetGraphics::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-graphics");
 }
 
 

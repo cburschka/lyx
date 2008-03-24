@@ -197,6 +197,12 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
+docstring InsetListings::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-listings");
+}
+
+
 void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

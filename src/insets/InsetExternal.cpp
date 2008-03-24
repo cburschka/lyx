@@ -452,8 +452,9 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		InsetExternalParams p;
-		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		InsetExternalParams p =  params();
+		if (!cmd.argument().empty())
+			InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
 		external::editExternal(p, buffer());
 		break;
 	}

@@ -1440,23 +1440,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->message(from_utf8(argument));
 			break;
 
-		case LFUN_EXTERNAL_EDIT: {
-			BOOST_ASSERT(lyx_view_);
-			FuncRequest fr(action, argument);
-			InsetExternal ie;
-			ie.setBuffer(*lyx_view_->buffer());
-			ie.dispatch(view()->cursor(), fr);
-			break;
-		}
-
-		case LFUN_GRAPHICS_EDIT: {
-			BOOST_ASSERT(lyx_view_);
-			FuncRequest fr(action, argument);
-			InsetGraphics ig;
-			ig.setBuffer(*lyx_view_->buffer());
-			ig.dispatch(view()->cursor(), fr);
-			break;
-		}
 
 		case LFUN_ALL_INSETS_TOGGLE: {
 			BOOST_ASSERT(lyx_view_);
