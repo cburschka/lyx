@@ -1109,16 +1109,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
+		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
  * \li Action: Toggles (open/closes) all collapsable insets (of a given type) in the document.
  * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
- * \li Syntax: all-insets-togle <STATE> <INSET>
+ * \li Syntax: all-insets-toggle <STATE> <INSET>
  * \li Params: <STATE>: <toggle|open|close> default: toggle \n
  *             <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets \n
  * \endvar
  */
-		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 
 /*!
