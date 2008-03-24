@@ -14,8 +14,16 @@
 
 import os, re, string, sys
 
+# Incremented to format 4, 6 April 2007, lasgouttes
+# Introduction of generic "Provides" declaration
 
-# incremented 24 March 2008 by rgh
+# Incremented to format 5, 22 August 2007 by vermeer
+# InsetLayout material
+
+# Incremented to format 6, 7 January 2008 by spitz
+# Requires tag added to layout files
+
+# Incremented to format 7, 24 March 2008 by rgh
 # AddToPreamble tag added to layout files
 currentFormat = 7
 
