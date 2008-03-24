@@ -42,7 +42,7 @@ if(WIN32)
 		endif()
 	else()
 		if (GNUWIN32_FIND_REQUIRED)
-			message(SEND_ERROR "Could NOT find GNUWIN32")
+			message(SEND_ERROR "Could NOT find GNUWIN32, please set GNUWIN32_DIR")
 		endif()
 	endif()
 

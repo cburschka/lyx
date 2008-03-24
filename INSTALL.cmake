@@ -27,7 +27,8 @@ Windows only
      * as described in INSTALL.scons
      * install win32libs with the 'KDE on Windows' installer
        http://download.cegit.de/kde-windows/installer/
-       (there are also Qt packages for msvc and mingw)
+       - use the msvc packages
+       - a release version of Qt is also available by the installer
     
     If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
     -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
