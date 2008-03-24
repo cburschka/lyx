@@ -1631,6 +1631,21 @@ def revert_protected_hfill(document):
         'hspace*{\n\\backslash\nfill}\n\\end_layout\n\n\\end_inset\n\n')
 
 
+def revert_local_layout(document):
+    ' Revert local layout headers.'
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_local_layout", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+        if j == -1:
+            # this should not happen
+            break
+        document.header[i : j + 1] = []
+
+
+
 ##
 # Conversion hub
 #
@@ -1680,10 +1695,12 @@ convert = [[277, [fix_wrong_tables]],
            [318, []],
            [319, [convert_spaceinset, convert_hfill]],
            [320, []],
-           [321, [convert_tablines]]
+           [321, [convert_tablines]],
+           [322, []]
           ]
 
-revert =  [[320, [revert_tablines]],
+revert =  [[321, [revert_local_layout]],
+           [320, [revert_tablines]],
            [319, [revert_protected_hfill]],
            [318, [revert_spaceinset, revert_hfills, revert_hspace]],
            [317, [remove_extra_embedded_files]],

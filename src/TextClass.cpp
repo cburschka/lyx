@@ -36,6 +36,7 @@
 #include "support/os.h"
 
 #include <algorithm>
+#include <fstream>
 #include <sstream>
 
 #include "boost/assert.hpp"
@@ -101,6 +102,8 @@ std::string translateRT(TextClass::ReadType rt)
 		return "input file";
 	case TextClass::MODULE:
 		return "module file";
+	case TextClass::VALIDATION:
+		return "validation";
 	}
 	// shutup warning
 	return string();
@@ -180,14 +183,7 @@ enum TextClassTags {
 };
 
 
-// Reads a textclass structure from file.
-bool TextClass::read(FileName const & filename, ReadType rt)
-{
-	if (!filename.isReadableFile()) {
-		lyxerr << "Cannot read layout file `" << filename << "'."
-		       << endl;
-		return false;
-	}
+namespace {
 
 	keyword_item textClassTags[] = {
 		{ "classoptions",    TC_CLASSOPTIONS },
@@ -216,6 +212,28 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		{ "titlelatextype",  TC_TITLELATEXTYPE },
 		{ "tocdepth",        TC_TOCDEPTH }
 	};
+	
+} //namespace anon
+
+
+bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)
+{
+	LYXERR(Debug::TCLASS, "Converting layout file to " << FORMAT);
+		FileName const tempfile = FileName::tempName();
+		bool success = layout2layout(filename, tempfile);
+		if (success)
+			success = read(tempfile, rt);
+		tempfile.removeFile();
+		return success;
+}
+
+bool TextClass::read(FileName const & filename, ReadType rt)
+{
+	if (!filename.isReadableFile()) {
+		lyxerr << "Cannot read layout file `" << filename << "'."
+		       << endl;
+		return false;
+	}
 
 	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
 		to_utf8(makeDisplayPath(filename.absFilename())));
@@ -223,7 +241,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	// Define the `empty' layout used in table cells, ert, etc. Note that 
 	// we do this before loading any layout file, so that classes can 
 	// override features of this layout if they should choose to do so.
-	if (rt == BASECLASS) {
+	if (rt == BASECLASS && !hasLayout(emptylayout_)) {
 		static char const * s = "Margin Static\n"
 			"LatexType Paragraph\n"
 			"LatexName dummy\n"
@@ -243,11 +261,71 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		};
 		layoutlist_.push_back(lay);
 	}
-
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
 
 	lexrc.setFile(filename);
+	ReturnValues retval = read(lexrc, rt);
+	
+	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
+			to_utf8(makeDisplayPath(filename.absFilename())));
+	
+	if (retval != FORMAT_MISMATCH) 
+		return retval == OK;
+	
+	bool const worx = convertLayoutFormat(filename, rt);
+	if (!worx) {
+		lyxerr << "Unable to convert " << filename << 
+			" to format " << FORMAT << std::endl;
+		return false;
+	}
+	return true;
+}
+
+
+bool TextClass::validate(std::string const & str)
+{
+	TextClass tc;
+	return tc.read(str, VALIDATION);
+}
+
+
+bool TextClass::read(std::string const & str, ReadType rt) 
+{
+	Lexer lexrc(textClassTags,
+		sizeof(textClassTags) / sizeof(textClassTags[0]));
+	istringstream is(str);
+	lexrc.setStream(is);
+	ReturnValues retval = read(lexrc, rt);
+
+	if (retval != FORMAT_MISMATCH) 
+		return retval == OK;
+
+	// write the layout string to a temporary file
+	FileName const tempfile = FileName::tempName();
+	ofstream os(tempfile.toFilesystemEncoding().c_str());
+	if (!os) {
+		lyxerr << "Unable to create tempoary file in TextClass::read!!" 
+			<< std::endl;
+		return false;
+	}
+	os << str;
+	os.close();
+
+	// now try to convert it
+	bool const worx = convertLayoutFormat(tempfile, rt);
+	if (!worx) {
+		lyxerr << "Unable to convert internal layout information to format " 
+			<< FORMAT << std::endl;
+	}
+	tempfile.removeFile();
+	return worx;
+}
+
+
+// Reads a textclass structure from file.
+TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt) 
+{
 	bool error = !lexrc.isOK();
 
 	// Format of files before the 'Format' tag was introduced
@@ -316,9 +394,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						+ lexrc.getString() + " is probably not valid UTF-8!";
 					lexrc.printError(s.c_str());
 					Layout lay;
-					//FIXME If we're just dropping this layout, do we really
-					//care whether there's an error?? Or should we just set
-					//error to true, since we couldn't even read the name?
+					// Since we couldn't read the name, we just scan the rest
+					// of the style and discard it.
 					error = !readStyle(lexrc, lay);
 				} else if (hasLayout(name)) {
 					Layout & lay = operator[](name);
@@ -482,22 +559,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			break;
 	}
 
-	if (format != FORMAT) {
-		LYXERR(Debug::TCLASS, "Converting layout file from format "
-				      << format << " to " << FORMAT);
-		FileName const tempfile = FileName::tempName();
-		bool success = layout2layout(filename, tempfile);
-		if (success)
-			 read(tempfile, rt);
-		tempfile.removeFile();
-		return success;
-	}
-
-	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
-			to_utf8(makeDisplayPath(filename.absFilename())));
+	if (format != FORMAT)
+		return FORMAT_MISMATCH;
 
 	if (rt != BASECLASS) 
-		return !error;
+		return (error ? ERROR : OK);
 
 	if (defaultlayout_.empty()) {
 		lyxerr << "Error: Textclass '" << name_
@@ -547,7 +613,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
 		<< ", maximum is " << max_toclevel_);
 
-	return !error;
+	return (error ? ERROR : OK);
 }
 
 

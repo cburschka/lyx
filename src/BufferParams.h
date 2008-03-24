@@ -220,6 +220,8 @@ public:
 	///
 	std::string preamble;
 	///
+	std::string local_layout;
+	///
 	std::string options;
 	///
 	std::string float_placement;
@@ -315,6 +317,8 @@ public:
 private:
 	///
 	void readPreamble(Lexer &);
+	///
+	void readLocalLayout(Lexer &);
 	///
 	void readLanguage(Lexer &);
 	///

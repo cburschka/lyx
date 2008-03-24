@@ -127,11 +127,25 @@ public:
 	enum ReadType { 
 		BASECLASS, //>This is a base class, i.e., top-level layout file
 		MERGE, //>This is a file included in a layout file
-		MODULE //>This is a layout module
+		MODULE, //>This is a layout module
+		VALIDATION //>We're just validating
 	};
+	/// return values for read()
+	enum ReturnValues {
+		OK,
+		ERROR,
+		FORMAT_MISMATCH
+	};
+
 	/// Performs the read of the layout file.
 	/// \return true on success.
 	bool read(support::FileName const & filename, ReadType rt = BASECLASS);
+	///
+	bool read(std::string const & str, ReadType rt = BASECLASS);
+	///
+	ReturnValues read(Lexer & lex, ReadType rt = BASECLASS);
+	/// validates the layout information passed in str
+	static bool validate(std::string const & str);
 
 	///////////////////////////////////////////////////////////////////
 	// loading
@@ -242,6 +256,8 @@ private:
 	///////////////////////////////////////////////////////////////////
 	///
 	bool deleteLayout(docstring const &);
+	///
+	bool convertLayoutFormat(support::FileName const &, ReadType);
 	/// \return true for success.
 	bool readStyle(Lexer &, Layout &);
 	///

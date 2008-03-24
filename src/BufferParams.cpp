@@ -506,6 +506,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
+	} else if (token == "\\begin_local_layout") {
+		readLocalLayout(lex);
 	} else if (token == "\\begin_modules") {
 		readModules(lex);
 	} else if (token == "\\options") {
@@ -720,6 +722,15 @@ void BufferParams::writeFile(ostream & os) const
 		for (; it != layoutModules_.end(); it++)
 			os << *it << '\n';
 		os << "\\end_modules" << '\n';
+	}
+
+	// local layout information
+	if (!local_layout.empty()) {
+		// remove '\n' from the end 
+		string const tmplocal = rtrim(local_layout, "\n");
+		os << "\\begin_local_layout\n"
+		   << tmplocal
+		   << "\n\\end_local_layout\n";
 	}
 
 	// then the text parameters
@@ -1501,6 +1512,12 @@ void BufferParams::makeDocumentClass()
 			frontend::Alert::warning(_("Read Error"), msg);
 		}
 	}
+	if (!local_layout.empty()) {
+		if (!doc_class_->read(local_layout, TextClass::MODULE)) {
+			docstring const msg = _("Error reading internal layout information");
+			frontend::Alert::warning(_("Read Error"), msg);
+		}
+	}
 }
 
 
@@ -1552,6 +1569,16 @@ void BufferParams::readPreamble(Lexer & lex)
 			"consistency check failed." << endl;
 
 	preamble = lex.getLongString("\\end_preamble");
+}
+
+
+void BufferParams::readLocalLayout(Lexer & lex)
+{
+	if (lex.getString() != "\\begin_local_layout")
+		lyxerr << "Error (BufferParams::readLocalLayout):"
+			"consistency check failed." << endl;
+
+	local_layout = lex.getLongString("\\end_local_layout");
 }
 
 

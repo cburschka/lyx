@@ -1296,6 +1296,10 @@ void GuiDocument::classChanged()
 			return;
 		}
 	}
+	// FIXME Note that by doing things this way, we load the TextClass
+	// as soon as it is selected. So, if you use the scroll wheel when
+	// sitting on the combo box, we'll load a lot of TextClass objects
+	// very quickly. This could be changed.
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;

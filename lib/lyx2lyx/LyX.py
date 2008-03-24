@@ -80,7 +80,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 2)),
-                   ("1_6", range(277,322), minor_versions("1.6" , 0))]
+                   ("1_6", range(277,323), minor_versions("1.6" , 0))] # rgh: local layout
 
 
 def formats_list():
