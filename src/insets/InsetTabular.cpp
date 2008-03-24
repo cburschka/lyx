@@ -845,116 +845,78 @@ int Tabular::getAdditionalWidth(idx_type cell) const
 }
 
 
-// returns the maximum over all rows
 int Tabular::columnWidth(idx_type cell) const
 {
-	col_type const column1 = cellColumn(cell);
-	col_type const column2 = cellRightColumn(cell);
-	int result = 0;
-	for (col_type i = column1; i <= column2; ++i)
-		result += column_info[i].width;
-	return result;
+	int w = 0;
+	col_type const span = columnSpan(cell);
+	col_type const col = cellColumn(cell);
+	for(col_type c = col; c < col + span ; ++c)
+		w += column_info[c].width;
+	return w;
+}
+
+
+bool Tabular::updateColumnWidths()
+{
+	col_type const ncols = columnCount();
+	row_type const nrows = rowCount();
+	bool update = false;
+	// for each col get max of single col cells
+	for(col_type c = 0; c < ncols; ++c) {
+		int new_width = 0;
+		for(row_type r = 0; r < nrows; ++r) {
+			idx_type const i = cellIndex(r, c);
+			if (columnSpan(i) == 1)
+				new_width = max(new_width, cellinfo_of_cell(i).width);
+		}
+
+		if (column_info[c].width != new_width) {
+			column_info[c].width = new_width;
+			update = true;
+		}
+	}
+	// update col widths to fit merged cells
+	for(col_type c = 0; c < ncols; ++c)
+		for(row_type r = 0; r < nrows; ++r) {
+			idx_type const i = cellIndex(r, c);
+			int const span = columnSpan(i);
+			if (span == 1 || c > cellColumn(i))
+				continue;
+
+			int old_width = 0;
+			for(col_type j = c; j < c + span ; ++j)
+				old_width += column_info[j].width;
+
+			if (cellinfo_of_cell(i).width > old_width) {
+				column_info[c + span - 1].width += cellinfo_of_cell(i).width - old_width;
+				update = true;
+			}
+		}
+
+	return update;
 }
 
 
 int Tabular::width() const
 {
+	col_type const ncols = columnCount();
 	int width = 0;
-	for (col_type i = 0; i < columnCount(); ++i)
+	for (col_type i = 0; i < ncols; ++i)
 		width += column_info[i].width;
 	return width;
 }
 
 
-// returns true if a complete update is necessary, otherwise false
-bool Tabular::setWidthOfMulticolCell(idx_type cell, int new_width)
-{
-	if (!isMultiColumn(cell))
-		return false;
-
-	row_type const row = cellRow(cell);
-	col_type const column1 = cellColumn(cell);
-	col_type const column2 = cellRightColumn(cell);
-	int const old_val = cell_info[row][column2].width;
-
-	// first set columns to 0 so we can calculate the right width
-	for (col_type i = column1; i <= column2; ++i) {
-		cell_info[row][i].width = 0;
-	}
-	// set the width to MAX_WIDTH until width > 0
-	int width = new_width + 2 * WIDTH_OF_LINE;
-	col_type i = column1;
-	for (; i < column2 && width > column_info[i].width; ++i) {
-		cell_info[row][i].width = column_info[i].width;
-		width -= column_info[i].width;
-	}
-	if (width > 0) {
-		cell_info[row][i].width = width;
-	}
-	if (old_val != cell_info[row][column2].width) {
-		// in this case we have to recalculate all multicolumn cells which
-		// have this column as one of theirs but not as last one
-		calculate_width_of_column_NMC(i);
-		recalculateMulticolumnsOfColumn(i);
-		calculate_width_of_column(i);
-	}
-	return true;
-}
-
-
-void Tabular::recalculateMulticolumnsOfColumn(col_type column)
-{
-	// the last column does not have to be recalculated because all
-	// multicolumns will have here there last multicolumn cell which
-	// always will have the whole rest of the width of the cell.
-	if (columnCount() < 2 || column > (columnCount() - 2))
-		return;
-	for (row_type row = 0; row < rowCount(); ++row) {
-		int mc = cell_info[row][column].multicolumn;
-		int nmc = cell_info[row][column+1].multicolumn;
-		// we only have to update multicolumns which do not have this
-		// column as their last column!
-		if (mc == CELL_BEGIN_OF_MULTICOLUMN ||
-			  (mc == CELL_PART_OF_MULTICOLUMN &&
-			   nmc == CELL_PART_OF_MULTICOLUMN))
-		{
-			idx_type const cellno = cell_info[row][column].cellno;
-			setWidthOfMulticolCell(cellno,
-					       cellWidth(cellno) - 2 * WIDTH_OF_LINE);
-		}
-	}
-}
-
-
 void Tabular::setCellWidth(idx_type cell, int new_width)
 {
-	row_type const row = cellRow(cell);
 	col_type const col = cellColumn(cell);
-	bool tmp = false;
-	int width = 0;
 	int add_width = 0;
-
 	if (col < columnCount() - 1 && columnRightLine(col) &&
 		columnLeftLine(col + 1)) {
 		add_width = WIDTH_OF_LINE;
 	}
-
-	if (cellWidth(cell) == new_width + 2 * WIDTH_OF_LINE + add_width)
-		return;
-
-	if (isMultiColumnReal(cell)) {
-		tmp = setWidthOfMulticolCell(cell, new_width);
-	} else {
-		width = new_width + 2 * WIDTH_OF_LINE + add_width;
-		cell_info[row][col].width = width;
-		tmp = calculate_width_of_column_NMC(col);
-		if (tmp)
-			recalculateMulticolumnsOfColumn(col);
-	}
-	if (tmp) {
-		for (col_type i = 0; i < columnCount(); ++i)
-			calculate_width_of_column(i);
-	}
+	cellinfo_of_cell(cell).width = new_width + 2 * WIDTH_OF_LINE + add_width;
+	return;
 }
 
 
@@ -1185,13 +1147,7 @@ docstring const Tabular::getAlignSpecial(idx_type cell, int what) const
 
 int Tabular::cellWidth(idx_type cell) const
 {
-	row_type const row = cellRow(cell);
-	col_type const column1 = cellColumn(cell);
-	col_type const column2 = cellRightColumn(cell);
-	int result = 0;
-	for (col_type i = column1; i <= column2; ++i)
-		result += cell_info[row][i].width;
-	return result;
+	return cellinfo_of_cell(cell).width;
 }
 
 
@@ -1243,39 +1199,6 @@ Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
 	if (row > rowCount() - 1)
 		row = rowCount() - 1;
 	return cell_info[row][columnCount() - 1].cellno;
-}
-
-
-void Tabular::calculate_width_of_column(col_type column)
-{
-	int maximum = 0;
-	for (row_type i = 0; i < rowCount(); ++i)
-		maximum = max(cell_info[i][column].width, maximum);
-	column_info[column].width = maximum;
-}
-
-
-//
-// Calculate the columns regarding ONLY the normal cells and if this
-// column is inside a multicolumn cell then use it only if its the last
-// column of this multicolumn cell as this gives an added width to the
-// column, all the rest should be adapted!
-//
-bool Tabular::calculate_width_of_column_NMC(col_type column)
-{
-	int const old_column_width = column_info[column].width;
-	int max = 0;
-	for (row_type i = 0; i < rowCount(); ++i) {
-		idx_type cell = cellIndex(i, column);
-		bool ismulti = isMultiColumnReal(cell);
-		if ((!ismulti || column == cellRightColumn(cell)) &&
-			cell_info[i][column].width > max)
-		{
-			max = cell_info[i][column].width;
-		}
-	}
-	column_info[column].width = max;
-	return column_info[column].width != old_column_width;
 }
 
 
@@ -1543,12 +1466,10 @@ void Tabular::setMultiColumn(idx_type cell, idx_type number)
 Tabular::idx_type Tabular::columnSpan(idx_type cell) const
 {
 	row_type const row = cellRow(cell);
-	col_type column = cellColumn(cell);
+	col_type const ncols = columnCount();
 	idx_type result = 1;
-	++column;
-	while (column < columnCount() &&
-		   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
-	{
+	col_type column = cellColumn(cell) + 1;
+	while (column < ncols && isPartOfMultiColumn(row, column)) {
 		++result;
 		++column;
 	}
@@ -2959,7 +2880,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.row_info[i].bottom_space.inPixels(mi.base.textwidth);
 		tabular.setRowDescent(i, maxDesc + ADD_TO_HEIGHT + bottom_space);
 	}
-
+	tabular.updateColumnWidths();
 	dim.asc = tabular.rowAscent(0);
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;

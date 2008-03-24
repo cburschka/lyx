@@ -600,14 +600,8 @@ public:
 		  col_type columns_arg);
 	///
 	void updateIndexes();
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setWidthOfMulticolCell(idx_type cell, int new_width);
-	///
-	void recalculateMulticolumnsOfColumn(col_type column);
-	/// Returns true if change
-	void calculate_width_of_column(col_type column);
-	///
-	bool calculate_width_of_column_NMC(col_type column); // no multi cells
+	/// return true of update is needed
+	bool updateColumnWidths();
 	///
 	idx_type columnSpan(idx_type cell) const;
 	///
