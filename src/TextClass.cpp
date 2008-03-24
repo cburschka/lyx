@@ -112,7 +112,7 @@ std::string translateRT(TextClass::ReadType rt)
 } // namespace anon
 
 
-docstring const TextClass::emptylayout_ = from_ascii("PlainLayout");
+docstring const TextClass::emptylayout_ = from_ascii(N_("Plain Layout"));
 
 
 InsetLayout DocumentClass::empty_insetlayout_;
@@ -132,9 +132,6 @@ TextClass::TextClass()
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
-	// a hack to make this available for translation
-	// i'm sure there must be a better way (rgh)
-	_("PlainLayout");
 }
 
 
