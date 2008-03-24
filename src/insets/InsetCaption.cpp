@@ -194,6 +194,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
+	case LFUN_INSET_TOGGLE:
 		status.enabled(false);
 		return true;
 

@@ -877,14 +877,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			break;
 		}
 		// if it did not work, try the underlying inset.
-		inset = &cur.inset();
-		if (inset) {
-			inset->getStatus(cur, tmpcmd, flag);
-			return flag;
-			break;
-		}
-		// else disable
-		flag.enabled(false);
+		if (!inset || !cur.result().dispatched())
+			getStatus(tmpcmd);
+
+		if (!cur.result().dispatched())
+			// else disable
+			flag.enabled(false);
 		break;
 	}
 
@@ -900,14 +898,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			break;
 		}
 		// if it did not work, try the underlying inset.
-		inset = &cur.inset();
-		if (inset) {
-			inset->getStatus(cur, tmpcmd, flag);
-			return flag;
-			break;
-		}
-		// else disable
-		flag.enabled(false);
+		if (!inset || !cur.result().dispatched())
+			getStatus(tmpcmd);
+
+		if (!cur.result().dispatched())
+			// else disable
+			flag.enabled(false);
 		break;
 	}
 
@@ -1335,9 +1331,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			}
 		}
 		// if it did not work, try the underlying inset.
-		else if (&cur.inset())
-			cur.inset().dispatch(cur, tmpcmd);
-		else
+		if (!inset || !cur.result().dispatched())
+			cur.dispatch(tmpcmd);
+
+		if (!cur.result().dispatched())
 			// It did not work too; no action needed.
 			break;
 		cur.clearSelection();
@@ -1354,9 +1351,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		if (inset)
 			inset->dispatch(cur, tmpcmd);
 		// if it did not work, try the underlying inset.
-		else if (&cur.inset())
-			cur.inset().dispatch(cur, tmpcmd);
-		else
+		if (!inset || !cur.result().dispatched())
+			cur.dispatch(tmpcmd);
+
+		if (!cur.result().dispatched())
 			// It did not work too; no action needed.
 			break;
 		cur.clearSelection();
@@ -1572,7 +1570,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	// Now dispatch to the temporary cursor. If the real cursor should
 	// be modified, the inset's dispatch has to do so explicitly.
-	if (!cur.result().dispatched())
+	if (!inset || !cur.result().dispatched())
 		cur.dispatch(cmd);
 
 	// Notify left insets
