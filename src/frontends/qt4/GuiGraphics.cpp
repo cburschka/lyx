@@ -282,15 +282,8 @@ void GuiGraphics::on_getPB_clicked()
 }
 
 
-void GuiGraphics::on_editPB_clicked()
-{
-	editGraphics();
-}
-
-
 void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
-	editPB->setDisabled(filename.isEmpty());
 	EmbeddedFile file = EmbeddedFile(fromqstr(filename), fromqstr(bufferFilepath()));
 }
 
@@ -570,9 +563,6 @@ void GuiGraphics::updateContents()
 	else
 		origin->setCurrentIndex(0);
 
-	// disable edit button when no filename is present
-	editPB->setDisabled(filename->text().isEmpty());
-
 	//// latex section
 	latexoptions->setText(toqstr(igp.special));
 }
@@ -785,15 +775,6 @@ bool GuiGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
 	return makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
-}
-
-
-void GuiGraphics::editGraphics()
-{
-	applyView();
-	string const lfun =
-		InsetGraphicsMailer::params2string(params_, buffer());
-	dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));
 }
 
 

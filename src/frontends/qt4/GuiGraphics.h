@@ -45,7 +45,6 @@ private Q_SLOTS:
 	void change_bb();
 	void on_browsePB_clicked();
 	void on_getPB_clicked();
-	void on_editPB_clicked();
 	void on_filename_textChanged(const QString &);
 	void on_scaleCB_toggled(bool);
 	void on_WidthCB_toggled(bool);
@@ -81,8 +80,6 @@ private:
 	bool bbChanged;
 	/// test if file exist
 	bool isFilenameValid(std::string const & fname) const;
-	/// edit file
-	void editGraphics();
 
 private:
 	///
