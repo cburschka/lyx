@@ -1879,7 +1879,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = ERT_CODE;
 		break;
 	case LFUN_LISTING_INSERT:
-	    code = LISTINGS_CODE;
+		code = LISTINGS_CODE;
 		break;
 	case LFUN_FOOTNOTE_INSERT:
 		code = FOOT_CODE;
@@ -1910,6 +1910,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_NOTE_INSERT:
 		code = NOTE_CODE;
+		// in commands (sections etc., only Notes are allowed)
+		enable = (cmd.argument().empty() || cmd.getArg(0) == "Note" ||
+			  !cur.paragraph().layout().isCommand());
 		break;
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
