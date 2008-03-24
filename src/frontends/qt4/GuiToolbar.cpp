@@ -773,16 +773,16 @@ void GuiLayoutBox::updateContents(bool reset)
 	model_->clear();
 	DocumentClass::const_iterator lit = text_class_->begin();
 	DocumentClass::const_iterator len = text_class_->end();
+
 	for (; lit != len; ++lit) {
 		docstring const & name = lit->name();
+		bool const useEmpty = inset_->forceEmptyLayout() || inset_->useEmptyLayout();
 		// if this inset requires the empty layout, we skip the default
 		// layout
-		if (name == text_class_->defaultLayoutName() && inset &&
-		    (inset->forceEmptyLayout() || inset->useEmptyLayout()))
+		if (name == text_class_->defaultLayoutName() && inset_ && useEmpty)
 			continue;
 		// if it doesn't require the empty layout, we skip it
-		if (name == text_class_->emptyLayoutName() && inset &&
-		    !inset->forceEmptyLayout() && !inset->useEmptyLayout())
+		if (name == text_class_->emptyLayoutName() && inset_ && !useEmpty)
 			continue;
 		addItemSort(name, lit->category(), lyxrc.sort_layouts, lyxrc.group_layouts);
 	}
