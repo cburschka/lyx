@@ -1092,7 +1092,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_SETTINGS
  * \li Action: Open the inset's properties dialog.
  * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
- * \li Syntax: inset-settings
+ * \li Syntax: inset-settings <INSET>
+ * \li Params: <INSET>: <box|branch|ert|float|listings|note|tabular|wrap>
  * \endvar
  */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
