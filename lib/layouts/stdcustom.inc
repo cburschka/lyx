@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@tkk.fi>
 # Custom Inset layouts definition
 
-Format 6
+Format 7
 
 # Error fallback:
 InsetLayout Custom

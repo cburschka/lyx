@@ -47,7 +47,7 @@
 #                         be comma-separated.
 #End
 
-Format 6
+Format 7
 
 Provides stdinsets 1
 

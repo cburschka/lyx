@@ -62,7 +62,7 @@ private:
 };
 
 
-int const FORMAT = 6;
+int const FORMAT = 7;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -179,13 +179,15 @@ enum TextClassTags {
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
 	TC_TITLELATEXTYPE,
-	TC_FORMAT
+	TC_FORMAT,
+	TC_ADDTOPREAMBLE
 };
 
 
 namespace {
 
 	keyword_item textClassTags[] = {
+		{ "addtopreamble",   TC_ADDTOPREAMBLE },
 		{ "classoptions",    TC_CLASSOPTIONS },
 		{ "columns",         TC_COLUMNS },
 		{ "counter",         TC_COUNTER },
@@ -487,6 +489,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_PREAMBLE:
 			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
+			break;
+
+		case TC_ADDTOPREAMBLE:
+			preamble_ += from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
 		case TC_PROVIDES: {

@@ -15,7 +15,9 @@
 import os, re, string, sys
 
 
-currentFormat = 6
+# incremented 24 March 2008 by rgh
+# AddToPreamble tag added to layout files
+currentFormat = 7
 
 
 def usage(prog_name):
@@ -157,6 +159,10 @@ def convert(lines):
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 6:
+          i += 1
+          continue
 
         if format == 5:
           i += 1

@@ -4,9 +4,9 @@
 #DescriptionEnd
 # Author: Uwe Stöhr <uwestoehr@web.de>
 
-Format 6
+Format 7
 
-Preamble
+AddToPreamble
 	\usepackage{braille}
 	\newcommand{\braillenormal}[1]
 	 {\setlength{\brailleunit}{2.4mm}\braille{#1}}

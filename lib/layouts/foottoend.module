@@ -4,10 +4,10 @@
 #in ERT where you want the endnotes to appear.
 #DescriptionEnd
 
-Format 6
+Format 7
 
 Requires	endnotes
 
-Preamble
+AddToPreamble
   \let\footnote=\endnote
 EndPreamble
