@@ -17,8 +17,6 @@
 #include "Validator.h"
 #include "FuncRequest.h"
 
-#include "insets/InsetWrap.h"
-
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
