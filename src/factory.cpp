@@ -251,6 +251,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				InsetExternalParams iep;
 				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buf, iep);
 				auto_ptr<InsetExternal> inset(new InsetExternal);
+				inset->setBuffer(buf);
 				inset->setParams(iep);
 				return inset.release();
 			}
