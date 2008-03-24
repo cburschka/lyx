@@ -154,6 +154,8 @@ public:
 	void preview(bool p) { preview_ = p; }
 	/// Clear the values of all parameters
 	void clear();
+	///
+	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 
 private:
 	///
@@ -166,8 +168,6 @@ private:
 	/// acceptable to the inset.
 	static ParamInfo const & findInfo(InsetCode code,
 	                                    std::string const & cmdName);
-	///
-	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 	///
 	std::string getDefaultCmd(InsetCode);
 	///

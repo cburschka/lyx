@@ -18,6 +18,7 @@
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "support/gettext.h"
 #include "Lexer.h"
 #include "Text.h"
@@ -69,6 +70,31 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		Inset::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// we handle these
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "vspace") {
+			VSpace vspace;
+			InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+			status.setOnOff(vspace == space_);
+		} else
+			status.enabled(true);
+		return true;
+	default:
+		return Inset::getStatus(cur, cmd, status);
+	}
+}
+
+
+void InsetVSpace::edit(Cursor & cur, bool, EntryDirection)
+{
+	InsetVSpaceMailer(*this).showDialog(&cur.bv());
 }
 
 
@@ -206,6 +232,12 @@ int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 1;
+}
+
+
+docstring InsetVSpace::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-vspace");
 }
 
 

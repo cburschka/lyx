@@ -30,6 +30,15 @@ public:
 	~InsetVSpace();
 	/// How much?
 	VSpace const & space() const { return space_; }
+	///
+	InsetCode lyxCode() const { return VSPACE_CODE; }
+	///
+	void edit(Cursor & cur, bool front,
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
+	///
+	EDITABLE editable() const { return IS_EDITABLE; }
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 private:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -49,6 +58,8 @@ private:
 	DisplayType display() const { return AlignCenter; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	Inset * clone() const { return new InsetVSpace(*this); }
 	///

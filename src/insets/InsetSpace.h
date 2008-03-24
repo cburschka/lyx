@@ -128,6 +128,8 @@ private:
 	virtual Inset * clone() const { return new InsetSpace(*this); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	///
 	InsetSpaceParams params_;

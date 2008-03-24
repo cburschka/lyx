@@ -123,6 +123,8 @@ private:
 	Inset * clone() const { return new InsetBox(*this); }
 	/// used by the constructors
 	void init();
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 	///
 	InsetBoxParams params_;

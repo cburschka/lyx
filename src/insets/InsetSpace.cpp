@@ -18,6 +18,7 @@
 #include "Cursor.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "Length.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -138,6 +139,25 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	default:
 		Inset::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// we handle these
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "space") {
+			InsetSpaceParams params;
+			InsetSpaceMailer::string2params(to_utf8(cmd.argument()), params);
+			status.setOnOff(params_.kind == params.kind);
+		} else
+			status.enabled(true);
+		return true;
+	default:
+		return Inset::getStatus(cur, cmd, status);
 	}
 }
 

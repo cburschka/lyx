@@ -100,6 +100,11 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
+		if (cmd.getArg(0) == "changetype") {
+			p_.setCmdName(cmd.getArg(1));
+			initView();
+			break;
+		}
 		InsetCommandParams p(p_.code());
 		InsetCommandMailer::string2params(mailer_name_, to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
@@ -139,6 +144,13 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 	// we handle these
 	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype") {
+			string const newtype = cmd.getArg(1);
+			status.enabled(p_.isCompatibleCommand(p_.code(), newtype));
+			status.setOnOff(newtype == p_.getCmdName());
+		} else
+			status.enabled(true);
+		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.enabled(true);
 		return true;

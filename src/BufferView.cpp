@@ -866,6 +866,29 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.enabled(true);
 		break;
 
+	case LFUN_NEXT_INSET_MODIFY: {
+		// this is the real function we want to invoke
+		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_MODIFY, cmd.argument());
+		// if there is an inset at cursor, see whether it
+		// can be modified.
+		Inset * inset = cur.nextInset();
+		if (inset) {
+			inset->getStatus(cur, tmpcmd, flag);
+			return flag;
+			break;
+		}
+		// if it did not work, try the underlying inset.
+		inset = &cur.inset();
+		if (inset) {
+			inset->getStatus(cur, tmpcmd, flag);
+			return flag;
+			break;
+		}
+		// else disable
+		flag.enabled(false);
+		break;
+	}
+
 	case LFUN_LABEL_GOTO: {
 		flag.enabled(!cmd.argument().empty()
 		    || getInsetByCode<InsetRef>(cur, REF_CODE));
@@ -1309,6 +1332,25 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			break;
 		cur.clearSelection();
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		break;
+	}
+
+	case LFUN_NEXT_INSET_MODIFY: {
+		// this is the real function we want to invoke
+		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_MODIFY, cmd.argument());
+		// if there is an inset at cursor, see whether it
+		// can be modified.
+		Inset * inset = cur.nextInset();
+		if (inset)
+			inset->dispatch(cur, tmpcmd);
+		// if it did not work, try the underlying inset.
+		else if (&cur.inset())
+			cur.inset().dispatch(cur, tmpcmd);
+		else
+			// It did not work too; no action needed.
+			break;
+		cur.clearSelection();
+		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 	}
 

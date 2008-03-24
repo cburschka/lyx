@@ -197,6 +197,16 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
+		// disallow comment and greyed out in commands
+		flag.enabled(!cur.paragraph().layout().isCommand() ||
+				cmd.getArg(2) == "Note");
+		if (cmd.getArg(0) == "note") {
+			InsetNoteParams params;
+			InsetNoteMailer::string2params(to_utf8(cmd.argument()), params);
+			flag.setOnOff(params_.type == params.type);
+		}
+		return true;
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
 		return true;
@@ -205,6 +215,7 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
 }
+
 
 void InsetNote::updateLabels(ParIterator const & it)
 {
@@ -330,6 +341,11 @@ void InsetNote::validate(LaTeXFeatures & features) const
 }
 
 
+docstring InsetNote::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-note");
+}
+
 
 string const InsetNoteMailer::name_("note");
 
@@ -375,7 +391,7 @@ void InsetNoteMailer::string2params(string const & in,
 	string id;
 	lex >> id;
 	if (!lex || id != "Note")
-		return print_mailer_error("InsetBoxMailer", in, 2, "Note");
+		return print_mailer_error("InsetNoteMailer", in, 2, "Note");
 
 	params.read(lex);
 }

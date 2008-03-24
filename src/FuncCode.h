@@ -416,6 +416,7 @@ enum FuncCode
 	// 320
 	LFUN_COMPLETION_INLINE,
 	LFUN_COMPLETION_COMPLETE,
+	LFUN_NEXT_INSET_MODIFY,		// JSpitzm 20080323
 	LFUN_LASTACTION                  // end of the table
 };
 

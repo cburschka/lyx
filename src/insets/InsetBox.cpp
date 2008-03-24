@@ -186,7 +186,10 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
-		InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
+		if (cmd.getArg(0) == "changetype")
+			params_.type = cmd.getArg(1);
+		else
+			InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
 		setLayout(cur.buffer().params());
 		break;
 	}
@@ -216,6 +219,11 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype")
+			flag.setOnOff(cmd.getArg(1) == params_.type);
+		else
+			flag.enabled(true);
+		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
 		return true;
@@ -487,6 +495,12 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		break;
 	}
 	InsetText::validate(features);
+}
+
+
+docstring InsetBox::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-box");
 }
 
 

@@ -1068,13 +1068,25 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
  * \li Action: Modify existing inset.
  * \li Notion: Used for label, floats, listings, box, branch, external, wrap
-               bibtex, ert, command, grahocs, note, vspace, tabular, bibitem,
-	       inlude, ref insets.
+               bibtex, ert, command, graphics, note, space, vspace, tabular,
+               bibitem, inlude, ref insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Params: See #LFUN_INSET_INSERT for further details.
  * \endvar
  */
 		{ LFUN_INSET_MODIFY, "", Noop, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NEXT_INSET_MODIFY
+ * \li Action: Modify the inset at cursor position, if there is one.
+ * \li Notion: Used for label, floats, listings, box, branch, external, wrap
+               bibtex, ert, command, graphics, note, space, vspace, tabular,
+               bibitem, inlude, ref insets.
+ * \li Syntax: next-inset-modify <INSET> <ARGS> or next-inset-modify changetype <TYPE>
+ * \li Params: See #LFUN_INSET_INSERT for further details.
+ * \li Origin: JSpitzm, 23 Mar 2008
+ * \endvar
+ */
+		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", ReadOnly, Edit },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop, Hidden },
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },

@@ -89,6 +89,8 @@ private:
 	/// used by the constructors
 	void init();
 	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
 	friend class InsetNoteParams;
 
 	///
