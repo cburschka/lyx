@@ -748,9 +748,9 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
-		if ((cmd.argument() == "open" && status_ == Open)
-			|| (cmd.argument() == "close" && status_ != Open)
-			|| cmd.argument() == "toggle")
+		if ((cmd.argument() == "open" && status_ != Open)
+			|| (cmd.argument() == "close" && status_ == Open)
+			|| cmd.argument() == "toggle" || cmd.argument().empty())
 			flag.enabled(true);
 		else
 			flag.enabled(false);
@@ -887,9 +887,7 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 
 	Dimension dim = dimensionCollapsed();
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
-		//FIXME: We should offer the "context-collapsable" menu here too but
-		// this is not possible right now because the cursor must be set first.
-		return docstring();
+		return from_ascii("context-collapsable");
 
 	return InsetText::contextMenu(bv, x, y);
 }

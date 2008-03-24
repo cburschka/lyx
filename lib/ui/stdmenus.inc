@@ -572,8 +572,10 @@ Menuset
 # InsetCollapsable context menu
 #
 	Menu "context-collapsable"
-		Item "Open Inset|O" "inset-toggle open"
-		Item "Close Inset|C" "inset-toggle close"
+		Item "Open Inset|O" "next-inset-toggle open"
+		Item "Close Inset|C" "next-inset-toggle close"
+		Separator
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 #
