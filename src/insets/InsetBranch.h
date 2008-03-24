@@ -81,6 +81,8 @@ public:
 	bool isMacroScope() const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
+	virtual bool useEmptyLayout() const { return false; }
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
