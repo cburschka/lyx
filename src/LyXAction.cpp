@@ -1088,7 +1088,25 @@ void LyXAction::init()
  */
 		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", ReadOnly, Edit },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_SETTINGS
+ * \li Action: Open the inset's properties dialog.
+ * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
+ * \li Syntax: inset-settings
+ * \endvar
+ */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NEXT_INSET_TOGGLE
+ * \li Action: Toggles the inset at cursor position. For collapsables, this means it will
+               be (un-)collapsed, in case of other insets, the editing widget (dialog) will
+               be entered. Also cf. #LFUN_INSET_SETTINGS.
+ * \li Notion: Used for label, floats, listings, box, branch, external, wrap
+               bibtex, ert, command, graphics, note, space, vspace, tabular,
+               bibitem, inlude, ref insets.
+ * \li Syntax: next-inset-toggle
+ * \endvar
+ */
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
 		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
@@ -1299,7 +1317,7 @@ void LyXAction::init()
  * \li Action: Saves the current buffer to a temporary file.
  * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
                is called automatically by LyX, to "autosave" the current buffer.
-	* \li Syntax: buffer-auto-save
+ * \li Syntax: buffer-auto-save
  * \endvar
  */
 		{ LFUN_BUFFER_AUTO_SAVE, "buffer-auto-save", Noop, Buffer },

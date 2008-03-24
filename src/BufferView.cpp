@@ -948,6 +948,8 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_INSET_SETTINGS: {
 		InsetCode code = cur.inset().lyxCode();
+		if (cur.nextInset())
+			code = cur.nextInset()->lyxCode();
 		bool enable = false;
 		switch (code) {
 			case TABULAR_CODE:

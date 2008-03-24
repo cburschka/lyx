@@ -847,9 +847,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate |= dissolveInset(cur);
 		break;
 
-	case LFUN_INSET_SETTINGS:
+	case LFUN_INSET_SETTINGS: {
+		// if there is an inset at cursor, access this
+		Inset * inset = cur.nextInset();
+		if (inset) {
+			inset->showInsetDialog(bv);
+			break;
+		}
+		// if not work, access the underlying inset.
 		cur.inset().showInsetDialog(bv);
 		break;
+	}
 
 	case LFUN_SPACE_INSERT:
 		if (cur.paragraph().layout().free_spacing)
