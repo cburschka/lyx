@@ -864,6 +864,10 @@ private:
 	mutable idx_type first_visible_cell;
 	///
 	mutable int scx_;
+	/// true when selecting rows with the mouse
+	bool rowselect_;
+	/// true when selecting columns with the mouse
+	bool colselect_;
 };
 
 

@@ -2753,7 +2753,8 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
-	: tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0)
+	: tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0), 
+	rowselect_(false), colselect_(false)
 {
 	setBuffer(const_cast<Buffer &>(buf)); // FIXME: remove later
 }
@@ -3111,7 +3112,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_PRESS: {
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
-
 		// select row
 		if (cmd.x < xo(cur.bv()) + ADD_TO_TABULAR_WIDTH
 			|| cmd.x > xo(cur.bv()) + tabular.width()) {
@@ -3123,6 +3123,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.pos() = cur.lastpos();
 			cur.selection() = true;
 			bvcur = cur; 
+			rowselect_ = true;
 			break;
 		}
 		// select column
@@ -3137,6 +3138,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.pos() = cur.lastpos();
 			cur.selection() = true;
 			bvcur = cur; 
+			colselect_ = true;
 			break;
 		}
 		// do not reset cursor/selection if we have selected
@@ -3159,8 +3161,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				break;
 			}
 			// select (additional) row
-			if (cmd.x < xo(cur.bv()) + ADD_TO_TABULAR_WIDTH
-				|| cmd.x > xo(cur.bv()) + tabular.width()) {
+			if (rowselect_) {
 				row_type r = rowFromY(cur, cmd.y);
 				cur.idx() = tabular.getLastCellInRow(r);
 				bvcur.setCursor(cur);
@@ -3168,9 +3169,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				break;
 			}
 			// select (additional) column
-			int const y0 = yo(cur.bv()) - tabular.rowAscent(0);
-			if (cmd.y < y0 + ADD_TO_TABULAR_WIDTH 
-				|| cmd.y > y0 + tabular.height()) {
+			if (colselect_) {
 				col_type c = columnFromX(cur, cmd.x);
 				cur.idx() = tabular.cellIndex(tabular.rowCount() - 1, c);
 				bvcur.setCursor(cur);
@@ -3185,6 +3184,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			bvcur.setCursor(cur);
 			bvcur.selection() = true;
 		}
+		break;
+
+	case LFUN_MOUSE_RELEASE:
+		rowselect_ = false;
+		colselect_ = false;
 		break;
 
 	case LFUN_CELL_BACKWARD:
