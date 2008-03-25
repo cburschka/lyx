@@ -399,9 +399,9 @@ public:
 	///
 	bool isLastCell(idx_type cell) const;
 	///
-	idx_type getCellAbove(idx_type cell) const;
+	idx_type cellAbove(idx_type cell) const;
 	///
-	idx_type getCellBelow(idx_type cell) const;
+	idx_type cellBelow(idx_type cell) const;
 	///
 	idx_type cellIndex(row_type row, col_type column) const;
 	///
@@ -439,16 +439,16 @@ public:
 	///
 	// end longtable support
 	///
-	boost::shared_ptr<InsetTableCell> getCellInset(idx_type cell) const;
+	boost::shared_ptr<InsetTableCell> cellInset(idx_type cell) const;
 	///
-	boost::shared_ptr<InsetTableCell> getCellInset(row_type row,
+	boost::shared_ptr<InsetTableCell> cellInset(row_type row,
 						  col_type column) const;
 	///
 	void setCellInset(row_type row, col_type column,
 			  boost::shared_ptr<InsetTableCell>) const;
 	/// Search for \param inset in the tabular, with the
 	///
-	idx_type getCellFromInset(Inset const * inset) const;
+	idx_type cellFromInset(Inset const * inset) const;
 	///
 	row_type rowCount() const { return row_info.size(); }
 	///
@@ -497,7 +497,7 @@ public:
 		///
 		boost::shared_ptr<InsetTableCell> inset;
 	};
-	CellData & cellinfo_of_cell(idx_type cell) const;
+	CellData & cellInfo(idx_type cell) const;
 	///
 	typedef std::vector<CellData> cell_vector;
 	///
@@ -830,7 +830,7 @@ private:
 	///
 	void movePrevCell(Cursor & cur);
 	///
-	int getCellXPos(idx_type cell) const;
+	int cellXPos(idx_type cell) const;
 	///
 	void resetPos(Cursor & cur) const;
 	///
