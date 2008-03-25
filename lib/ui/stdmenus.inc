@@ -580,6 +580,7 @@ Menuset
 
 	Menu "context-conglomerate"
 		Item "Toggle Label|L" "next-inset-toggle"
+		Item "Dissolve Inset|D" "inset-dissolve charstyle"
 		Separator
 		OptItem "Settings...|S" "inset-settings"
 	End
