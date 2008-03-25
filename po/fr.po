@@ -197,7 +197,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-21 11:07+0000\n"
-"PO-Revision-Date: 2008-03-20 19:15+0100\n"
+"PO-Revision-Date: 2008-03-25 17:12+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -3476,7 +3476,7 @@ msgstr "Remplace par le mot sélectionné"
 msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
-msgstr ""
+msgstr "Les catégories disponibles dépendent de l'encodage du document. Sélectionner UTF-8 pour accéder à toutes."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:45
 msgid "Ca&tegory:"
@@ -10327,9 +10327,8 @@ msgid "Set right line"
 msgstr "Mettre la bordure de droite"
 
 #: lib/ui/stdtoolbars.inc:125
-#, fuzzy
 msgid "Set border lines"
-msgstr "Régler les Bordures"
+msgstr "Mettre les bordures"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Set all lines"
@@ -16544,24 +16543,20 @@ msgstr "Fichiers utilisateur|#U#u"
 
 # ou ergonomie ?
 #: src/frontends/qt4/GuiPrefs.cpp:213
-#, fuzzy
 msgid "Look & Feel"
 msgstr "Apparence"
 
 #: src/frontends/qt4/GuiPrefs.cpp:215
-#, fuzzy
 msgid "Language Settings"
 msgstr "Paramètres de Langue"
 
 #: src/frontends/qt4/GuiPrefs.cpp:216
-#, fuzzy
 msgid "Output"
-msgstr "Sorties"
+msgstr "Sortie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:217
-#, fuzzy
 msgid "File Handling"
-msgstr "Gestion des polices"
+msgstr "Gestion du fichier"
 
 #: src/frontends/qt4/GuiPrefs.cpp:331
 msgid "Plain text"
@@ -16667,9 +16662,8 @@ msgid "User interface"
 msgstr "Interface utilisateur"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1895
-#, fuzzy
 msgid "Widgets"
-msgstr "Largeur"
+msgstr "Widgets"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1967
 msgid "Shortcuts"
@@ -17443,9 +17437,9 @@ msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "L'état de la barre d'outils \"%1$s\" fixé à %2$s"
 
 #: src/frontends/qt4/GuiView.cpp:1950
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s unknown command!"
-msgstr "LFUN_UI_TOGGLE %1$s : commande inconnue !"
+msgstr "%1$s : commande inconnue !"
 
 #: src/frontends/qt4/GuiViewSource.cpp:91
 #: src/frontends/qt4/GuiViewSource.cpp:163
@@ -17713,9 +17707,8 @@ msgid "Attempt to change type of parameters."
 msgstr "Tentative de modification des paramètres."
 
 #: src/insets/InsetCommandParams.cpp:282
-#, fuzzy
 msgid "InsetCommandParams error: "
-msgstr "Erreur de paramètres de commande d'insert :"
+msgstr "Erreur de paramètres de commande d'insert : "
 
 #: src/insets/InsetCommandParams.cpp:283
 msgid "Can't find LatexCommand line."
