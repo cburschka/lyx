@@ -40,6 +40,7 @@
 #include "insets/InsetLabel.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetMarginal.h"
+#include "insets/InsetNewpage.h"
 #include "insets/InsetNote.h"
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
@@ -85,17 +86,19 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_LINE_INSERT:
 			return new InsetLine;
 
-		case LFUN_NEWPAGE_INSERT:
-			return new InsetNewpage;
-
-		case LFUN_PAGEBREAK_INSERT:
-			return new InsetPagebreak;
-
-		case LFUN_CLEARPAGE_INSERT:
-			return new InsetClearPage;
-
-		case LFUN_CLEARDOUBLEPAGE_INSERT:
-			return new InsetClearDoublePage;
+		case LFUN_NEWPAGE_INSERT: {
+			string const name = cmd.getArg(0);
+			InsetNewpageParams inp;
+			if (name.empty() || name == "newpage")
+				inp.kind = InsetNewpageParams::NEWPAGE;
+			else if (name == "pagebreak")
+				inp.kind = InsetNewpageParams::PAGEBREAK;
+			else if (name == "clearpage")
+				inp.kind = InsetNewpageParams::CLEARPAGE;
+			else if (name == "cleardoublepage")
+				inp.kind = InsetNewpageParams::CLEARDOUBLEPAGE;
+			return new InsetNewpage(inp);
+		}
 
 		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
@@ -536,6 +539,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetFoot(buf));
 		} else if (tmptok == "Marginal") {
 			inset.reset(new InsetMarginal(buf));
+		} else if (tmptok == "Newpage") {
+			inset.reset(new InsetNewpage);
 		} else if (tmptok == "OptArg") {
 			inset.reset(new InsetOptArg(buf));
 		} else if (tmptok == "Float") {

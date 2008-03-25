@@ -680,8 +680,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BRANCH_INSERT:
 	case LFUN_NEW_LINE:
 	case LFUN_CAPTION_INSERT:
-	case LFUN_CLEARPAGE_INSERT:
-	case LFUN_CLEARDOUBLEPAGE_INSERT:
 	case LFUN_DEPTH_DECREMENT:
 	case LFUN_DEPTH_INCREMENT:
 	case LFUN_ENVIRONMENT_INSERT:
@@ -714,7 +712,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
-	case LFUN_PAGEBREAK_INSERT:
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_LAYOUT_TABULAR:

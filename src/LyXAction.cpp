@@ -292,19 +292,12 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWPAGE_INSERT
  * \li Action: Inserts a new page.
- * \li Syntax: newpage-insert
+ * \li Syntax: newpage-insert<ARG>
+ * \li Params: <ARG>: <newpage|pagebreak|clearpage|cleardoublepage> default: newpage
  * \li Origin: uwestoehr, 24 Nov 2007
  * \endvar
  */
 		{ LFUN_NEWPAGE_INSERT, "newpage-insert", Noop, Edit },
-/*!
- * \var lyx::FuncCode lyx::LFUN_PAGEBREAK_INSERT
- * \li Action: Inserts a pagebreak.
- * \li Syntax: pagebreak-insert
- * \li Origin: poenitz,  Oct 27 2003
- * \endvar
- */
-		{ LFUN_PAGEBREAK_INSERT, "pagebreak-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MARGINALNOTE_INSERT
  * \li Action: Inserts a marginal note.
@@ -378,8 +371,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
-		{ LFUN_CLEARPAGE_INSERT, "clearpage-insert", Noop, Edit },
-		{ LFUN_CLEARDOUBLEPAGE_INSERT, "cleardoublepage-insert", Noop, Edit },
 		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
 		{ LFUN_APPENDIX, "appendix", Noop, Edit },
 

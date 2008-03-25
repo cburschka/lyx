@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,7 +13,10 @@
 
 #include "InsetNewpage.h"
 
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "Text.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TextMetrics.h"
@@ -30,15 +34,71 @@ using namespace std;
 
 namespace lyx {
 
-void InsetNewpage::read( Lexer &)
+InsetNewpage::InsetNewpage()
+{}
+
+
+InsetNewpage::InsetNewpage(InsetNewpageParams par)
 {
-	/* Nothing to read */
+	params_.kind = par.kind;
+}
+
+void InsetNewpageParams::write(ostream & os) const
+{
+	string command;
+	switch (kind) {
+	case InsetNewpageParams::NEWPAGE:
+		os << "newpage";
+		break;
+	case InsetNewpageParams::PAGEBREAK:
+		os <<  "pagebreak";
+		break;
+	case InsetNewpageParams::CLEARPAGE:
+		os <<  "clearpage";
+		break;
+	case InsetNewpageParams::CLEARDOUBLEPAGE:
+		os <<  "cleardoublepage";
+		break;
+	}
+}
+
+
+void InsetNewpageParams::read(Lexer & lex)
+{
+	lex.next();
+	string const command = lex.getString();
+
+	if (command == "newpage")
+		kind = InsetNewpageParams::NEWPAGE;
+	else if (command == "pagebreak")
+		kind = InsetNewpageParams::PAGEBREAK;
+	else if (command == "clearpage")
+		kind = InsetNewpageParams::CLEARPAGE;
+	else if (command == "cleardoublepage")
+		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
+	else
+		lex.printError("InsetNewpage: Unknown kind: `$$Token'");
+
+	string token;
+	lex >> token;
+	if (!lex)
+		return;
+	if (token != "\\end_inset")
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
 }
 
 
 void InsetNewpage::write(ostream & os) const
 {
-	os << "\n" << getCmdName() << '\n';
+	os << "Newpage ";
+	params_.write(os);
+}
+
+
+void InsetNewpage::read(Lexer & lex)
+{
+	params_.read(lex);
 }
 
 
@@ -80,9 +140,106 @@ void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetNewpage::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetNewpageParams params;
+		InsetNewpageMailer::string2params(to_utf8(cmd.argument()), params);
+		params_.kind = params.kind;
+		break;
+	}
+
+	default:
+		Inset::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetNewpage::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// we handle these
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "newpage") {
+			InsetNewpageParams params;
+			InsetNewpageMailer::string2params(to_utf8(cmd.argument()), params);
+			status.setOnOff(params_.kind == params.kind);
+		} else
+			status.enabled(true);
+		return true;
+	default:
+		return Inset::getStatus(cur, cmd, status);
+	}
+}
+
+
+docstring InsetNewpage::insetLabel() const
+{
+	switch (params_.kind) {
+		case InsetNewpageParams::NEWPAGE:
+			return _("New Page");
+			break;
+		case InsetNewpageParams::PAGEBREAK:
+			return _("Page Break");
+			break;
+		case InsetNewpageParams::CLEARPAGE:
+			return _("Clear Page");
+			break;
+		case InsetNewpageParams::CLEARDOUBLEPAGE:
+			return _("Clear Double Page");
+			break;
+		default:
+			return _("New Page");
+			break;
+	}
+}
+
+
+ColorCode InsetNewpage::ColorName() const
+{
+	switch (params_.kind) {
+		case InsetNewpageParams::NEWPAGE:
+			return Color_newpage;
+			break;
+		case InsetNewpageParams::PAGEBREAK:
+			return Color_pagebreak;
+			break;
+		case InsetNewpageParams::CLEARPAGE:
+			return Color_newpage;
+			break;
+		case InsetNewpageParams::CLEARDOUBLEPAGE:
+			return Color_newpage;
+			break;
+		default:
+			return Color_newpage;
+			break;
+	}
+}
+
+
 int InsetNewpage::latex(odocstream & os, OutputParams const &) const
 {
-	os << from_ascii(getCmdName()) << "{}";
+	switch (params_.kind) {
+		case InsetNewpageParams::NEWPAGE:
+			os << "\\newpage{}";
+			break;
+		case InsetNewpageParams::PAGEBREAK:
+			os << "\\pagebreak{}";
+			break;
+		case InsetNewpageParams::CLEARPAGE:
+			os << "\\clearpage{}";
+			break;
+		case InsetNewpageParams::CLEARDOUBLEPAGE:
+			os << "\\cleardoublepage{}";
+			break;
+		default:
+			os << "\\newpage{}";
+			break;
+	}
 	return 0;
 }
 
@@ -98,6 +255,54 @@ int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 {
 	os << '\n';
 	return 0;
+}
+
+
+docstring InsetNewpage::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-newpage");
+}
+
+
+string const InsetNewpageMailer::name_ = "newpage";
+
+
+InsetNewpageMailer::InsetNewpageMailer(InsetNewpage & inset)
+	: inset_(inset)
+{}
+
+
+string const InsetNewpageMailer::inset2string(Buffer const &) const
+{
+	return params2string(inset_.params());
+}
+
+
+void InsetNewpageMailer::string2params(string const & in, InsetNewpageParams & params)
+{
+	params = InsetNewpageParams();
+	if (in.empty())
+		return;
+
+	istringstream data(in);
+	Lexer lex(0,0);
+	lex.setStream(data);
+
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetNewpageMailer", in, 1, name_);
+
+	params.read(lex);
+}
+
+
+string const InsetNewpageMailer::params2string(InsetNewpageParams const & params)
+{
+	ostringstream data;
+	data << name_ << ' ';
+	params.write(data);
+	return data.str();
 }
 
 

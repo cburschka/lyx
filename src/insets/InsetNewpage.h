@@ -13,6 +13,7 @@
 #define INSET_NEWPAGE_H
 
 #include "Inset.h"
+#include "MailInset.h"
 
 #include "support/docstring.h"
 #include "support/gettext.h"
@@ -20,11 +21,41 @@
 
 namespace lyx {
 
+class InsetNewpageParams {
+public:
+	/// The different kinds of spaces we support
+	enum Kind {
+		///
+		NEWPAGE,
+		///
+		PAGEBREAK,
+		///
+		CLEARPAGE,
+		///
+		CLEARDOUBLEPAGE
+	};
+	///
+	InsetNewpageParams() : kind(NEWPAGE) {}
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(Lexer & lex);
+	///
+	Kind kind;
+};
+
+
 class InsetNewpage : public Inset
 {
 public:
 	///
-	InsetNewpage() {}
+	InsetNewpage();
+
+	///
+	explicit
+	InsetNewpage(InsetNewpageParams par);
+	///
+	InsetNewpageParams params() const { return params_; }
 	///
 	InsetCode lyxCode() const { return NEWPAGE_CODE; }
 	///
@@ -38,71 +69,48 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	void read(Lexer & lex); 
+	void read(Lexer & lex);
 	///
 	void write(std::ostream & os) const;
-	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	docstring insetLabel() const { return _("New Page"); }
+	docstring insetLabel() const;
 	///
-	std::string getCmdName() const { return "\\newpage"; }
+	ColorCode ColorName() const;
 	///
-	ColorCode ColorName() const { return Color_newpage; }
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 private:
 	///
 	Inset * clone() const { return new InsetNewpage(*this); }
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	InsetNewpageParams params_;
 };
 
 
-class InsetPagebreak : public InsetNewpage
-{
+class InsetNewpageMailer : public MailInset {
 public:
 	///
-	InsetPagebreak() {}
+	InsetNewpageMailer(InsetNewpage & inset);
 	///
-	docstring insetLabel() const { return _("Page Break"); }
+	virtual Inset & inset() const { return inset_; }
 	///
-	std::string getCmdName() const { return "\\pagebreak"; }
+	virtual std::string const & name() const { return name_; }
 	///
-	ColorCode ColorName() const { return Color_pagebreak; }
+	virtual std::string const inset2string(Buffer const &) const;
+	///
+	static void string2params(std::string const &, InsetNewpageParams &);
+	///
+	static std::string const params2string(InsetNewpageParams const &);
 private:
 	///
-	Inset * clone() const { return new InsetPagebreak(*this); }
-};
-
-
-class InsetClearPage : public InsetNewpage
-{
-public:
+	static std::string const name_;
 	///
-	InsetClearPage() {}
-	///
-	docstring insetLabel() const { return _("Clear Page"); }
-	///
-	std::string getCmdName() const { return "\\clearpage"; }
-
-private:
-	///
-	Inset * clone() const { return new InsetClearPage(*this); }
-};
-
-
-class InsetClearDoublePage : public InsetNewpage
-{
-public:
-	///
-	InsetClearDoublePage() {}
-	///
-	docstring insetLabel() const { return _("Clear Double Page"); }
-	///
-	std::string getCmdName() const { return "\\cleardoublepage"; }
-
-private:
-	///
-	Inset * clone() const { return new InsetClearDoublePage(*this); }
+	InsetNewpage & inset_;
 };
 
 } // namespace lyx

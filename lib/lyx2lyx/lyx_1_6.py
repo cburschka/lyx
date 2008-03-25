@@ -1645,6 +1645,32 @@ def revert_local_layout(document):
         document.header[i : j + 1] = []
 
 
+def convert_pagebreaks(document):
+    ' Convert inline Newpage insets to new format '
+    for i in range(len(document.body)):
+        document.body[i] = document.body[i].replace('\\newpage', '\\begin_inset Newpage newpage\n\\end_inset')
+        document.body[i] = document.body[i].replace('\\pagebreak', '\\begin_inset Newpage pagebreak\n\\end_inset')
+        document.body[i] = document.body[i].replace('\\clearpage', '\\begin_inset Newpage clearpage\n\\end_inset')
+        document.body[i] = document.body[i].replace('\\cleardoublepage', '\\begin_inset Newpage cleardoublepage\n\\end_inset')
+
+
+def revert_pagebreaks(document):
+    ' Revert \\begin_inset Newpage to previous inline format '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Newpage', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Newpage inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Newpage newpage', '\\newpage')
+        document.body[i] = document.body[i].replace('\\begin_inset Newpage pagebreak', '\\pagebreak')
+        document.body[i] = document.body[i].replace('\\begin_inset Newpage clearpage', '\\clearpage')
+        document.body[i] = document.body[i].replace('\\begin_inset Newpage cleardoublepage', '\\cleardoublepage')
+
 
 ##
 # Conversion hub
@@ -1696,10 +1722,12 @@ convert = [[277, [fix_wrong_tables]],
            [319, [convert_spaceinset, convert_hfill]],
            [320, []],
            [321, [convert_tablines]],
-           [322, []]
+           [322, []],
+           [323, [convert_pagebreaks]]
           ]
 
-revert =  [[321, [revert_local_layout]],
+revert =  [[322, [revert_pagebreaks]],
+           [321, [revert_local_layout]],
            [320, [revert_tablines]],
            [319, [revert_protected_hfill]],
            [318, [revert_spaceinset, revert_hfills, revert_hspace]],

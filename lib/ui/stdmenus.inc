@@ -375,10 +375,10 @@ Menuset
 		Item "New Line|e" "new-line"
 		Item "Line Break|B" "line-break"
 		Separator
-		Item "New Page|N" "newpage-insert"
-		Item "Page Break|a" "pagebreak-insert"
-		Item "Clear Page|C" "clearpage-insert"
-		Item "Clear Double Page|D" "cleardoublepage-insert"
+		Item "New Page|N" "newpage-insert newpage"
+		Item "Page Break|a" "newpage-insert pagebreak"
+		Item "Clear Page|C" "newpage-insert clearpage"
+		Item "Clear Double Page|D" "newpage-insert cleardoublepage"
 	End
 
 	Menu "insert_math"
@@ -656,6 +656,16 @@ Menuset
 		Item "BigSkip|B" "next-inset-modify vspace bigskip"
 		Item "VFill|F" "next-inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; next-inset-toggle"
+	End
+
+#
+# InsetNewpage context menu
+#
+	Menu "context-newpage"
+		Item "New Page|N" "next-inset-modify newpage newpage"
+		Item "Page Break|a" "next-inset-modify newpage pagebreak"
+		Item "Clear Page|C" "next-inset-modify newpage clearpage"
+		Item "Clear Double Page|D" "next-inset-modify newpage cleardoublepage"
 	End
 
 #

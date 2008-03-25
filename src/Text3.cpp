@@ -1418,9 +1418,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_TOC_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
-	case LFUN_PAGEBREAK_INSERT:
-	case LFUN_CLEARPAGE_INSERT:
-	case LFUN_CLEARDOUBLEPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
 		cur.posForward();
@@ -2156,9 +2153,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
-	case LFUN_PAGEBREAK_INSERT:
-	case LFUN_CLEARPAGE_INSERT:
-	case LFUN_CLEARDOUBLEPAGE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
