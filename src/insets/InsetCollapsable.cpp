@@ -45,6 +45,8 @@ namespace lyx {
 
 InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 {
+	if (decoration() == InsetLayout::Conglomerate)
+		return status_;
 	return autoOpen_ ? Open : status_;
 }
 
@@ -749,9 +751,9 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_TOGGLE:
 		if ((cmd.argument() == "open" && status_ != Open)
-			|| (cmd.argument() == "close" && status_ == Open)
-			|| cmd.argument() == "toggle" || cmd.argument().empty())
-			flag.enabled(true);
+		      || (cmd.argument() == "close" && status_ == Open)
+		      || cmd.argument() == "toggle" || cmd.argument().empty())
+				flag.enabled(true);
 		else
 			flag.enabled(false);
 		return true;
@@ -882,6 +884,9 @@ bool InsetCollapsable::undefined() const
 docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
+	if (decoration() == InsetLayout::Conglomerate)
+		return from_ascii("context-conglomerate");
+
 	if (geometry() == NoButton)
 		return from_ascii("context-collapsable");
 

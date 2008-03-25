@@ -578,6 +578,12 @@ Menuset
 		OptItem "Settings...|S" "inset-settings"
 	End
 
+	Menu "context-conglomerate"
+		Item "Toggle Label|L" "next-inset-toggle"
+		Separator
+		OptItem "Settings...|S" "inset-settings"
+	End
+
 #
 # InsetBox context menu
 #
