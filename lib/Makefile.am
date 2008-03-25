@@ -1129,6 +1129,7 @@ uidir = $(pkgdatadir)/ui
 dist_ui_DATA = \
 	ui/classic.ui \
 	ui/default.ui \
+	ui/stdcontext.inc \
 	ui/stdmenus.inc \
 	ui/stdtoolbars.inc
 

@@ -1323,6 +1323,7 @@ lib_templates_files = Split('''
 lib_ui_files = Split('''
     classic.ui
     default.ui
+    stdcontext.inc
     stdmenus.inc
     stdtoolbars.inc
 ''')
