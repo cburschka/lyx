@@ -604,15 +604,11 @@ Menuset
 #
 
 	Menu "context-note"
-		Submenu "Change Type|y" "edit_notetype"
-		Item "Settings...|S" "inset-settings note"
-	End
-
-	Menu "edit_notetype"
 		Item "LyX Note|N" "next-inset-modify note Note Note"
 		Item "Comment|C" "next-inset-modify note Note Comment"
 		Item "Greyed Out|G" "next-inset-modify note Note Greyedout"
 	End
+
 
 #
 # InsetSpace context menu
