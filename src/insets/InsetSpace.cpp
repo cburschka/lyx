@@ -132,7 +132,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection())
+		if (!cur.selection() && cmd.button() == mouse_button::button1)
 			InsetSpaceMailer(*this).showDialog(&cur.bv());
 		break;
 

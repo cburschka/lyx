@@ -130,14 +130,6 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetBranchMailer(*this).updateDialog(&cur.bv());
 		break;
 
-	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd))
-			InsetBranchMailer(*this).showDialog(&cur.bv());
-		else
-			InsetCollapsable::doDispatch(cur, cmd);
-		break;
-
-
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign") {
 			// The branch inset uses "assign".

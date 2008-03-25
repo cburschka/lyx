@@ -3179,12 +3179,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_MOUSE_RELEASE:
-		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
-		if (cmd.button() == mouse_button::button3)
-			InsetTabularMailer(*this).showDialog(&cur.bv());
-		break;
-
 	case LFUN_CELL_BACKWARD:
 		movePrevCell(cur);
 		cur.selection() = false;

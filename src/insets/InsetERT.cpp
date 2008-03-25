@@ -107,16 +107,6 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	Layout const layout = bp.documentClass().emptyLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
-
-	case LFUN_MOUSE_PRESS:
-		if (cmd.button() != mouse_button::button3)
-			InsetCollapsable::doDispatch(cur, cmd);
-		else
-			// This makes the cursor leave the
-			// inset when it collapses on mouse-3
-			cur.undispatched();
-		break;
-
 	case LFUN_QUOTE_INSERT: {
 		// We need to bypass the fancy quotes in Text
 		FuncRequest f(LFUN_SELF_INSERT, "\"");

@@ -1134,51 +1134,63 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	// Single-click on work area
-	case LFUN_MOUSE_PRESS: {
-		// Right click on a footnote flag opens float menu
-		// FIXME: Why should we clear the selection in this case?
-		if (cmd.button() == mouse_button::button3)
-			cur.clearSelection();
+	case LFUN_MOUSE_PRESS:
+		// We are not marking a selection with the keyboard in any case.
+		cur.bv().cursor().mark() = false;
+		switch (cmd.button()) {
+		case mouse_button::button1:
+			// Set the cursor
+			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
+				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+			break;			
 
-		bool do_selection = cmd.button() == mouse_button::button1
-			&& cmd.argument() == "region-select";
-		// Set the cursor
-		bool update = bv->mouseSetCursor(cur, do_selection);
-
-		// Insert primary selection with middle mouse
-		// if there is a local selection in the current buffer,
-		// insert this
-		if (cmd.button() == mouse_button::button2) {
-			if (cap::selection()) {
-				// Copy the selection buffer to the clipboard
-				// stack, because we want it to appear in the
-				// "Edit->Paste recent" menu.
-				cap::copySelectionToStack();
-
-				cap::pasteSelection(bv->cursor(), 
-						    bv->buffer().errorList("Paste"));
-				bv->buffer().errors("Paste");
-				bv->buffer().markDirty();
-				bv->cursor().finishUndo();
-			} else {
-				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
+		case mouse_button::button2:
+			// Middle mouse pasting.
+			if (!cap::selection()) {			
+				// There is no local selection in the current buffer, so try to
+				// paste primary selection instead.
+				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
+					"paragraph"));
+				// Nothing else to do.
+				cur.noUpdate();
+				return;
 			}
-		}
+			// Copy the selection buffer to the clipboard stack, because we want it
+			// to appear in the "Edit->Paste recent" menu.
+			cap::copySelectionToStack();
+			cap::pasteSelection(bv->cursor(), bv->buffer().errorList("Paste"));
+			cur.updateFlags(Update::Force | Update::FitCursor);
+			bv->buffer().errors("Paste");
+			bv->buffer().markDirty();
+			bv->cursor().finishUndo();
+			break;
 
-		// we have to update after dEPM triggered
-		if (!update && cmd.button() == mouse_button::button1) {
-			needsUpdate = false;
-			cur.noUpdate();
+		case mouse_button::button3:
+			if (cur.selection()) {
+				DocIterator const selbeg = cur.selectionBegin();
+				DocIterator const selend = cur.selectionEnd();
+				Cursor tmpcur = cur;
+				tm.setCursorFromCoordinates(tmpcur, cmd.x, cmd.y);
+				// Don't do anything if we right-click a selection, a selection
+				// context menu should popup instead.
+				if (tmpcur < selbeg || tmpcur >= selend) {
+					cur.noUpdate();
+					return;
+				}
+			}
+			if (!bv->mouseSetCursor(cur, false)) {
+				cur.noUpdate();
+				return;
+			}
+			return;
 		}
-
-		break;
-	}
 
 	case LFUN_MOUSE_MOTION: {
-		// Only use motion with button 1
-		//if (cmd.button() != mouse_button::button1)
-		//	return false;
-
+		// Mouse motion with right or middle mouse do nothing for now.
+		if (cmd.button() != mouse_button::button1) {
+			cur.noUpdate();
+			return;
+		}
 		// ignore motions deeper nested than the real anchor
 		Cursor & bvcur = cur.bv().cursor();
 		if (!bvcur.anchor_.hasPart(cur)) {
@@ -1203,42 +1215,52 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else if (cmd.y < 0)
 				lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
 		}
-
-		if (cur.top() == old)
-			cur.noUpdate();
-		else {
-			// FIXME: This is brute force! But without it the selected
-			// area is not corrected updated while moving the mouse.
-			cur.updateFlags(Update::Force | Update::FitCursor);
-			// don't set anchor_
-			bvcur.setCursor(cur);
-			bvcur.selection() = true;
-			//lyxerr << "MOTION: " << bv->cursor() << endl;
+		// We continue with our existing selection or start a new one, so don't
+		// reset the anchor.
+		bvcur.setCursor(cur);
+		bvcur.selection() = true;
+		if (cur.top() == old) {
+			// We didn't move one iota, so no need to update the screen.
+			cur.updateFlags(Update::SinglePar | Update::FitCursor);
+			//cur.noUpdate();
+			return;
 		}
 		break;
 	}
 
-	case LFUN_MOUSE_RELEASE: {
-		if (cmd.button() == mouse_button::button2)
-			break;
-
-		if (cmd.button() == mouse_button::button1) {
-			// if there is new selection, update persistent
-			// selection, otherwise, single click does not
-			// clear persistent selection buffer
+	case LFUN_MOUSE_RELEASE:
+		switch (cmd.button()) {
+		case mouse_button::button1:
+			// Cursor was set at LFUN_MOUSE_PRESS or LFUN_MOUSE_MOTION time.
+			// If there is a new selection, update persistent selection;
+			// otherwise, single click does not clear persistent selection
+			// buffer.
 			if (cur.selection()) {
-				// finish selection
-				// if double click, cur is moved to the end of word by selectWord
-				// but bvcur is current mouse position
-				Cursor & bvcur = cur.bv().cursor();
-				bvcur.selection() = true;
+				// Finish selection.
+				// If double click, cur is moved to the end of word by selectWord
+				// but bvcur is current mouse position.
+				cur.bv().cursor().selection() = true;
 			}
-			needsUpdate = false;
+			// FIXME: We could try to handle drag and drop of selection here.
 			cur.noUpdate();
-		}
+			return;
+
+		case mouse_button::button2:
+			// Middle mouse pasting is handled at mouse press time,
+			// see LFUN_MOUSE_PRESS.
+			cur.noUpdate();
+			return;
+
+		case mouse_button::button3:
+			// Cursor was set at LFUN_MOUSE_PRESS time.
+			// FIXME: If there is a selection we could try to handle a special
+			// drag & drop context menu.
+			cur.noUpdate();
+			return;
+
+		} // switch (cmd.button())
 
 		break;
-	}
 
 	case LFUN_SELF_INSERT: {
 		if (cmd.argument().empty())

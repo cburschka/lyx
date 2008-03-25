@@ -497,21 +497,25 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		if (cmd.button() == mouse_button::button1 
-		 && hitButton(cmd) 
-		 && geometry() != NoButton) {
-			// reset selection if necessary (see bug 3060)
-			if (cur.selection())
-				cur.bv().cursor().clearSelection();
-			else
-				cur.noUpdate();
-			cur.dispatched();
-			break;
+		if (hitButton(cmd) && geometry() != NoButton) {
+			switch (cmd.button()) {
+			case mouse_button::button1:
+				// reset selection if necessary (see bug 3060)
+				if (cur.selection())
+					cur.bv().cursor().clearSelection();
+				else
+					cur.noUpdate();
+				cur.dispatched();
+				return;
+			case mouse_button::button2:
+			case mouse_button::button3:
+				// Nothing to do.
+				cur.undispatched();
+				return;
+			}
 		}
-		if (geometry() == NoButton)
-			InsetText::doDispatch(cur, cmd);
-		else if (geometry() != ButtonOnly 
-		     && !hitButton(cmd))
+		if (geometry() == NoButton 
+			|| (geometry() != ButtonOnly && !hitButton(cmd)))
 			InsetText::doDispatch(cur, cmd);
 		else
 			cur.undispatched();
@@ -530,26 +534,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3) {
-			// There is no button to right click:
-			if (decoration() == InsetLayout::Minimalistic ||
-			    geometry() == Corners ||
-			    geometry() == SubLabel ||
-			    geometry() == NoButton
-			   )  {
-				if (status_ == Open)
-					setStatus(cur, Collapsed);
-				else
-					setStatus(cur, Open);
-				break;
-			} else {
-				// Open the Inset 
-				// configuration dialog
-				showInsetDialog(&cur.bv());
-				break;
-			}
-		}
-
 		if (geometry() == NoButton) {
 			// The mouse click has to be within the inset!
 			InsetText::doDispatch(cur, cmd);

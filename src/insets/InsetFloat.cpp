@@ -146,17 +146,6 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_RELEASE: {
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			if (params_.subfloat)
-				break;
-			InsetFloatMailer(*this).showDialog(&cur.bv());
-			break;
-		}
-		InsetCollapsable::doDispatch(cur, cmd);
-		break;
-	}
-
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;

@@ -214,14 +214,6 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetListingsMailer(*this).updateDialog(&cur.bv());
 		break;
-	case LFUN_MOUSE_RELEASE: {
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetListingsMailer(*this).showDialog(&cur.bv());
-			break;
-		}
-		InsetCollapsable::doDispatch(cur, cmd);
-		break;
-	}
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;

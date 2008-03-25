@@ -471,7 +471,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection())
+		if (!cur.selection() && cmd.button() == mouse_button::button1)
 			InsetExternalMailer(*this).showDialog(&cur.bv());
 		break;
 

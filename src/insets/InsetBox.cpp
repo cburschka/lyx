@@ -198,14 +198,6 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetBoxMailer(*this).updateDialog(&cur.bv());
 		break;
 
-	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetBoxMailer(*this).showDialog(&cur.bv());
-			break;
-		}
-		InsetCollapsable::doDispatch(cur, cmd);
-		break;
-
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
