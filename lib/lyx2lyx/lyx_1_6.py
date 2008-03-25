@@ -1647,11 +1647,34 @@ def revert_local_layout(document):
 
 def convert_pagebreaks(document):
     ' Convert inline Newpage insets to new format '
-    for i in range(len(document.body)):
-        document.body[i] = document.body[i].replace('\\newpage', '\\begin_inset Newpage newpage\n\\end_inset')
-        document.body[i] = document.body[i].replace('\\pagebreak', '\\begin_inset Newpage pagebreak\n\\end_inset')
-        document.body[i] = document.body[i].replace('\\clearpage', '\\begin_inset Newpage clearpage\n\\end_inset')
-        document.body[i] = document.body[i].replace('\\cleardoublepage', '\\begin_inset Newpage cleardoublepage\n\\end_inset')
+    i = 0
+    while True:
+        i = find_token(document.body, '\\newpage', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newpage newpage',
+                             '\\end_inset']
+    i = 0
+    while True:
+        i = find_token(document.body, '\\pagebreak', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newpage pagebreak',
+                             '\\end_inset']
+    i = 0
+    while True:
+        i = find_token(document.body, '\\clearpage', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newpage clearpage',
+                             '\\end_inset']
+    i = 0
+    while True:
+        i = find_token(document.body, '\\cleardoublepage', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newpage cleardoublepage',
+                             '\\end_inset']
 
 
 def revert_pagebreaks(document):
