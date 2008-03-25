@@ -1179,11 +1179,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 			if (!bv->mouseSetCursor(cur, false)) {
-				cur.noUpdate();
-				return;
+				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+				break;			
 			}
-			return;
-		}
+		} // switch (cmd.button())
+		break;
 
 	case LFUN_MOUSE_MOTION: {
 		// Mouse motion with right or middle mouse do nothing for now.

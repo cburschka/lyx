@@ -534,36 +534,30 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (geometry() == NoButton) {
+		if (geometry() == NoButton || !hitButton(cmd)) {
 			// The mouse click has to be within the inset!
 			InsetText::doDispatch(cur, cmd);
 			break;
 		}
-
-		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
-			// if we are selecting, we do not want to
-			// toggle the inset.
-			if (cur.selection())
-				break;
-			// Left button is clicked, the user asks to
-			// toggle the inset visual state.
+		if (cmd.button() != mouse_button::button1) {
 			cur.dispatched();
-			cur.updateFlags(Update::Force | Update::FitCursor);
-			if (geometry() == ButtonOnly) {
-				setStatus(cur, Open);
-				edit(cur, true);
-			}
-			else {
-				setStatus(cur, Collapsed);
-			}
-			cur.bv().cursor() = cur;
 			break;
 		}
-
-		// The mouse click is within the opened inset.
-		if (geometry() == TopButton
-		 || geometry() == LeftButton)
-			InsetText::doDispatch(cur, cmd);
+		// if we are selecting, we do not want to
+		// toggle the inset.
+		if (cur.selection())
+			break;
+		// Left button is clicked, the user asks to
+		// toggle the inset visual state.
+		cur.dispatched();
+		cur.updateFlags(Update::Force | Update::FitCursor);
+		if (geometry() == ButtonOnly) {
+			setStatus(cur, Open);
+			edit(cur, true);
+		}
+		else
+			setStatus(cur, Collapsed);
+		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_INSET_TOGGLE:
