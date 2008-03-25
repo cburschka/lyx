@@ -1863,9 +1863,10 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 	Tabular::VAlignment valign =  getVAlignment(cell, !isMultiColumn(cell));
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	col_type c = cellColumn(cell);
-	if (isMultiColumn(cell)
-		|| (leftLine(cell) && !columnLeftLine(c))
-		|| (rightLine(cell) && !columnRightLine(c))) {
+	bool needmulticol = (leftLine(cell) && !columnLeftLine(c))
+		|| (rightLine(cell) && !columnRightLine(c))
+		|| (!rightLine(cell) && c < columnCount() -1 && columnLeftLine(c + 1));
+	if (isMultiColumn(cell) || needmulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
 		if (leftLine(cell))
 			os << '|';
@@ -1901,7 +1902,8 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 				}
 			} // end if else !getPWidth
 		} // end if else !cellinfo_of_cell
-		if (rightLine(cell))
+		if (rightLine(cell) || (!rightLine(cell) 
+			&& c < columnCount() -1 && columnLeftLine(c + 1)))
 			os << '|';
 		os << "}{";
 		}
@@ -1953,9 +1955,10 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell) const
 		ret += 2;
 	}
 	col_type c = cellColumn(cell);
-	if (isMultiColumn(cell)
-		|| (leftLine(cell) && !columnLeftLine(c))
-		|| (rightLine(cell) && !columnRightLine(c))) {
+	bool needmulticol = (leftLine(cell) && !columnLeftLine(c))
+		|| (rightLine(cell) && !columnRightLine(c))
+		|| (!rightLine(cell) && c < columnCount() -1 && columnLeftLine(c + 1));
+	if (isMultiColumn(cell) || needmulticol) {
 		os << '}';
 	}
 	if (getRotateCell(cell)) {
