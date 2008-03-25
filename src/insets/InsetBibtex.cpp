@@ -107,6 +107,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//
 		createBibFiles(p["bibfiles"], p["embed"]);
 		updateParam();
+		setParam("options", p["options"]);
 		buffer().updateBibfilesCache();
 		break;
 	}
@@ -782,8 +783,10 @@ void InsetBibtex::updateParam()
 	docstring embed;
 
 	bool first = true;
-	for (EmbeddedFileList::iterator it = bibfiles_.begin();
-		it != bibfiles_.end(); ++it) {
+
+	EmbeddedFileList::iterator it = bibfiles_.begin();
+	EmbeddedFileList::iterator en = bibfiles_.end();
+	for (; it != en; ++it) {
 		if (!first) {
 			bibfiles += ',';
 			embed += ',';
