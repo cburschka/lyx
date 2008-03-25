@@ -253,7 +253,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
 				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buf, iep);
-				auto_ptr<InsetExternal> inset(new InsetExternal);
+				auto_ptr<InsetExternal> inset(new InsetExternal(buf));
 				inset->setBuffer(buf);
 				inset->setParams(iep);
 				return inset.release();
@@ -262,7 +262,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams igp;
 				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buf, igp);
-				auto_ptr<InsetGraphics> inset(new InsetGraphics);
+				auto_ptr<InsetGraphics> inset(new InsetGraphics(buf));
 				inset->setParams(igp);
 				return inset.release();
 			}
@@ -501,13 +501,13 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		if (tmptok == "Quotes") {
 			inset.reset(new InsetQuotes);
 		} else if (tmptok == "External") {
-			inset.reset(new InsetExternal);
+			inset.reset(new InsetExternal(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "FormulaMacro") {
 			inset.reset(new MathMacroTemplate);
 		} else if (tmptok == "Formula") {
 			inset.reset(new InsetMathHull);
 		} else if (tmptok == "Graphics") {
-			inset.reset(new InsetGraphics);
+			inset.reset(new InsetGraphics(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "Note") {
 			inset.reset(new InsetNote(buf, tmptok));
 		} else if (tmptok == "Box") {

@@ -405,9 +405,11 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 }
 
 
-InsetExternal::InsetExternal()
+InsetExternal::InsetExternal(Buffer & buf)
 	: renderer_(new RenderButton)
-{}
+{
+	Inset::setBuffer(buf);
+}
 
 
 InsetExternal::InsetExternal(InsetExternal const & other)

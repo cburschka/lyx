@@ -859,7 +859,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 		return;
 
 	// create inset for graphic
-	InsetGraphics * inset = new InsetGraphics;
+	InsetGraphics * inset = new InsetGraphics(cur.buffer());
 	InsetGraphicsParams params;
 	params.filename = EmbeddedFile(filename.absFilename(), cur.buffer().filePath());
 	inset->setParams(params);

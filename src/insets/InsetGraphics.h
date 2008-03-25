@@ -30,7 +30,7 @@ class LaTeXFeatures;
 class InsetGraphics : public Inset, public boost::signals::trackable {
 public:
 	///
-	InsetGraphics();
+	InsetGraphics(Buffer & buf);
 	///
 	~InsetGraphics();
 	///
@@ -97,9 +97,6 @@ private:
 	friend class InsetGraphicsMailer;
 
 	virtual Inset * clone() const;
-
-	/// Read the inset native format
-	void readInsetGraphics(Lexer & lex, std::string const & bufpath);
 
 	/// Get the status message, depends on the image loading status.
 	std::string const statusMessage() const;

@@ -108,7 +108,7 @@ class RenderBase;
 class InsetExternal : public Inset, public boost::signals::trackable
 {
 public:
-	InsetExternal();
+	InsetExternal(Buffer &);
 	///
 	~InsetExternal();
 	///

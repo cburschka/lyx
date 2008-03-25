@@ -123,13 +123,40 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	return format;
 }
 
+
+void readInsetGraphics(Lexer & lex, string const & bufpath,
+	InsetGraphicsParams & params)
+{
+	bool finished = false;
+
+	while (lex.isOK() && !finished) {
+		lex.next();
+
+		string const token = lex.getString();
+		LYXERR(Debug::GRAPHICS, "Token: '" << token << '\'');
+
+		if (token.empty())
+			continue;
+
+		if (token == "\\end_inset") {
+			finished = true;
+		} else {
+			if (!params.Read(lex, token, bufpath))
+				lyxerr << "Unknown token, " << token << ", skipping."
+					<< endl;
+		}
+	}
+}
+
 } // namespace anon
 
 
-InsetGraphics::InsetGraphics()
+InsetGraphics::InsetGraphics(Buffer & buf)
 	: graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(this))
-{}
+{
+	Inset::setBuffer(buf);
+}
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
@@ -273,36 +300,12 @@ void InsetGraphics::read(Lexer & lex)
 	string const token = lex.getString();
 
 	if (token == "Graphics")
-		readInsetGraphics(lex, buffer().filePath());
+		readInsetGraphics(lex, buffer().filePath(), params_);
 	else
 		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
 	params_.filename.enable(buffer().embedded(), &buffer(), false);
 	graphic_->update(params().as_grfxParams());
-}
-
-
-void InsetGraphics::readInsetGraphics(Lexer & lex, string const & bufpath)
-{
-	bool finished = false;
-
-	while (lex.isOK() && !finished) {
-		lex.next();
-
-		string const token = lex.getString();
-		LYXERR(Debug::GRAPHICS, "Token: '" << token << '\'');
-
-		if (token.empty())
-			continue;
-
-		if (token == "\\end_inset") {
-			finished = true;
-		} else {
-			if (!params_.Read(lex, token, bufpath))
-				lyxerr << "Unknown token, " << token << ", skipping."
-					<< endl;
-		}
-	}
 }
 
 
@@ -963,7 +966,6 @@ void InsetGraphicsMailer::string2params(string const & in,
 					Buffer const & buffer,
 					InsetGraphicsParams & params)
 {
-	params = InsetGraphicsParams();
 	if (in.empty())
 		return;
 
@@ -976,9 +978,8 @@ void InsetGraphicsMailer::string2params(string const & in,
 	if (!lex || name != name_)
 		return print_mailer_error("InsetGraphicsMailer", in, 1, name_);
 
-	InsetGraphics inset;
-	inset.readInsetGraphics(lex, buffer.filePath());
-	params = inset.params();
+	params = InsetGraphicsParams();
+	readInsetGraphics(lex, buffer.filePath(), params);
 }
 
 
