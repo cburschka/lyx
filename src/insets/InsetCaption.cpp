@@ -194,13 +194,17 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
-	case LFUN_INSET_TOGGLE:
 		status.enabled(false);
 		return true;
 
 	case LFUN_OPTIONAL_INSERT:
 		status.enabled(cur.paragraph().insetList().find(OPTARG_CODE) == -1);
 		return true;
+
+	case LFUN_INSET_TOGGLE:
+		// pass back to owner
+		cur.undispatched();
+		return false;
 
 	default:
 		return InsetText::getStatus(cur, cmd, status);
