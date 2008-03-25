@@ -28,7 +28,16 @@ Some of the LyX functions have changed names:
   "new-line".
 
 - The function LFUN_PAGEBREAK_INSERT, "pagebreak-insert" has been renamed to
-  LFUN_NEWPAGE_INSERT, "newpage-insert".
+  LFUN_NEWPAGE_INSERT, "newpage-insert". It obsololetes the following functions:
+
+  * LFUN_PAGEBREAK_INSERT: removed. "pagebreak-insert" has been replaced by
+    "newpage-insert pagebreak"
+
+  * LFUN_CLEARPAGE_INSERT: removed. "clearpage-insert" has been replaced by
+    "newpage-insert clearpage"
+
+  * LFUN_CLEARDOUBLEPAGE_INSERT: removed. "clearpage-insert" has been replaced
+    by "newpage-insert cleardoublepage"
 
 - The function LFUN_WORDS_COUNT, "words-count", has been replaced by
   LFUN_STATISTICS, "statistics", which counts more than words.
@@ -59,8 +68,6 @@ The following new LyX functions have been introduced:
 - LFUN_SPECIALCHAR_INSERT, "specialchar-insert" (see above).
 
 - LFUN_LINE_BREAK, "line-break".
-
-- LFUN_PAGEBREAK_INSERT, "pagebreak-insert".
 
 - LFUN_COMPLETION_INLINE, "completion-inline".
 
@@ -143,6 +150,11 @@ The following new LyX functions have been removed:
 
 - LFUN_HFILL_INSERT. HFills are now part of InsetSpace and have to be inserted
   via "space-insert hfill".
+
+- LFUN_CLEARPAGE_INSERT. Now part of LFUN_NEWPAGE_INSERT (see above).
+
+- LFUN_CLEARDOUBLEPAGE_INSERT. Now part of LFUN_NEWPAGE_INSERT (see above).
+
 
 For the detailed description of LyX functions look into doxygen documentation.
 
