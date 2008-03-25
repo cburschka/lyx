@@ -808,7 +808,7 @@ bool Tabular::leftAlreadyDrawn(idx_type cell) const
 	if (col == 0)
 		return false;
 	idx_type i = cellIndex(cellRow(cell), col - 1);
-	return !columnRightLine(col - 1) && rightLine(i);
+	return rightLine(i) && !leftLine(cell);
 }
 
 
@@ -834,12 +834,9 @@ int Tabular::getAdditionalHeight(row_type row) const
 
 int Tabular::getAdditionalWidth(idx_type cell) const
 {
-	// internally already set in setCellWidth
-	// used to get it back in text.cpp
-	col_type c = cellColumn(cell);
-	if (c < columnCount() - 1 
-		&& columnRightLine(c) && columnLeftLine(c + 1)
-		&& cellInfo(cell).multicolumn == CELL_NORMAL)
+	col_type const nextcol = cellColumn(cell) + columnSpan(cell);
+	if (rightLine(cell) 
+		&& nextcol < columnCount() && leftLine(cellIndex(cellRow(cell), nextcol)))
 		return WIDTH_OF_LINE;
 	return 0;
 }
@@ -909,14 +906,8 @@ int Tabular::width() const
 
 void Tabular::setCellWidth(idx_type cell, int new_width)
 {
-	col_type const col = cellColumn(cell);
-	int add_width = 0;
-	if (col < columnCount() - 1 && columnRightLine(col) &&
-		columnLeftLine(col + 1)) {
-		add_width = WIDTH_OF_LINE;
-	}
-	cellInfo(cell).width = new_width + 2 * WIDTH_OF_LINE + add_width;
-	return;
+	cellInfo(cell).width = new_width + 2 * WIDTH_OF_LINE 
+		+ getAdditionalWidth(cell);
 }
 
 
@@ -1075,10 +1066,10 @@ bool Tabular::rowBottomLine(row_type r) const
 bool Tabular::columnLeftLine(col_type c) const
 {
 	bool all_cols_set = true;
-	row_type nrows = rowCount();
+	row_type const nrows = rowCount();
 	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
-		if (columnSpan(i) == 1)
+		if (c == cellColumn(i))
 			all_cols_set = cellInfo(i).left_line;
 	}
 	return all_cols_set;
@@ -1088,7 +1079,7 @@ bool Tabular::columnLeftLine(col_type c) const
 bool Tabular::columnRightLine(col_type c) const
 {
 	bool all_cols_set = true;
-	row_type nrows = rowCount();
+	row_type const nrows = rowCount();
 	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i) + columnSpan(i) - 1)
@@ -1852,7 +1843,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 }
 
 
-int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
+int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) const
 {
 	int ret = 0;
 
@@ -1862,13 +1853,29 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 	}
 	Tabular::VAlignment valign =  getVAlignment(cell, !isMultiColumn(cell));
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
-	col_type c = cellColumn(cell);
-	bool needmulticol = (leftLine(cell) && !columnLeftLine(c))
+	// figure out how to set the lines
+	// we always set double lines to the right of the cell
+	col_type const c = cellColumn(cell);
+	col_type const nextcol = c + columnSpan(cell);
+	row_type const r = cellRow(cell);
+	idx_type const prevcell = cellIndex(r, c - 1);
+	idx_type const nextcell = cellIndex(r, nextcol);
+	bool prevmulticol = ismulticol;
+	bool prevcellright = c > 0 && rightLine(prevcell);
+	bool nextcellleft = nextcol < columnCount() && leftLine(nextcell);
+	bool nextcolleft = nextcol < columnCount() && columnLeftLine(nextcol);
+	bool coldouble = columnRightLine(c) && nextcolleft;
+	bool celldouble = rightLine(cell) && nextcellleft;
+	bool forceleft = prevmulticol && !prevcellright && leftLine(cell);
+	bool doubleright = celldouble && (isMultiColumn(cell) || !coldouble);
+	ismulticol = isMultiColumn(cell) 
+		|| (leftLine(cell) && !columnLeftLine(c))
 		|| (rightLine(cell) && !columnRightLine(c))
-		|| (!rightLine(cell) && c < columnCount() -1 && columnLeftLine(c + 1));
-	if (isMultiColumn(cell) || needmulticol) {
+		|| (!celldouble && coldouble)
+		|| doubleright || forceleft;
+	if (ismulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
-		if (leftLine(cell))
+		if (leftLine(cell) || forceleft)
 			os << '|';
 		if (!cellInfo(cell).align_special.empty()) {
 			os << cellInfo(cell).align_special;
@@ -1902,8 +1909,10 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 				}
 			} // end if else !getPWidth
 		} // end if else !cellinfo_of_cell
-		if (rightLine(cell) || (!rightLine(cell) 
-			&& c < columnCount() -1 && columnLeftLine(c + 1)))
+		if (rightLine(cell))
+			os << '|';
+		if (doubleright)
+			// add extra vertical line if we want a double one
 			os << '|';
 		os << "}{";
 		}
@@ -1943,7 +1952,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 }
 
 
-int Tabular::TeXCellPostamble(odocstream & os, idx_type cell) const
+int Tabular::TeXCellPostamble(odocstream & os, idx_type cell, bool ismulticol) const
 {
 	int ret = 0;
 
@@ -1954,11 +1963,7 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell) const
 		os << "%\n\\end{minipage}";
 		ret += 2;
 	}
-	col_type c = cellColumn(cell);
-	bool needmulticol = (leftLine(cell) && !columnLeftLine(c))
-		|| (rightLine(cell) && !columnRightLine(c))
-		|| (!rightLine(cell) && c < columnCount() -1 && columnLeftLine(c + 1));
-	if (isMultiColumn(cell) || needmulticol) {
+	if (ismulticol) {
 		os << '}';
 	}
 	if (getRotateCell(cell)) {
@@ -2092,11 +2097,11 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		}
 		++ret;
 	}
-
+	bool ismulticol = false;
 	for (col_type j = 0; j < columnCount(); ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
-		ret += TeXCellPreamble(os, cell);
+		ret += TeXCellPreamble(os, cell, ismulticol);
 		shared_ptr<InsetTableCell> inset = cellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
@@ -2118,7 +2123,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		if (rtl)
 			os << '}';
 
-		ret += TeXCellPostamble(os, cell);
+		ret += TeXCellPostamble(os, cell, ismulticol);
 		if (!isLastCellInRow(cell)) { // not last cell in row
 			os << " & ";
 		}

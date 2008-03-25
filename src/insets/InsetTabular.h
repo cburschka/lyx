@@ -613,9 +613,9 @@ public:
 	///
 	int TeXBottomHLine(odocstream &, row_type row) const;
 	///
-	int TeXCellPreamble(odocstream &, idx_type cell) const;
+	int TeXCellPreamble(odocstream &, idx_type cell, bool & ismulticol) const;
 	///
-	int TeXCellPostamble(odocstream &, idx_type cell) const;
+	int TeXCellPostamble(odocstream &, idx_type cell, bool ismulticol) const;
 	///
 	int TeXLongtableHeaderFooter(odocstream &, OutputParams const &) const;
 	///
