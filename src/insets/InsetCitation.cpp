@@ -508,15 +508,12 @@ void InsetCitation::textString(odocstream & os) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(odocstream & os, OutputParams const & op) const
+int InsetCitation::latex(odocstream & os, OutputParams const &) const
 {
 	biblio::CiteEngine cite_engine = buffer().params().citeEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));
-
-	if (op.moving_arg)
-		os << "\\protect";
 
 	os << "\\" << cite_str;
 
