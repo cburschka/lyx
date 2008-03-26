@@ -193,7 +193,6 @@ extern char const * const unit_name_gui[];
 Length::UNIT unitFromString(std::string const & data);
 
 
-
 } // namespace lyx
 
 #endif // LENGTH_H
