@@ -1855,14 +1855,13 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	// figure out how to set the lines
 	// we always set double lines to the right of the cell
+	row_type const r = cellRow(cell);
 	col_type const c = cellColumn(cell);
 	col_type const nextcol = c + columnSpan(cell);
-	row_type const r = cellRow(cell);
-	idx_type const prevcell = cellIndex(r, c - 1);
-	idx_type const nextcell = cellIndex(r, nextcol);
 	bool prevmulticol = ismulticol;
-	bool prevcellright = c > 0 && rightLine(prevcell);
-	bool nextcellleft = nextcol < columnCount() && leftLine(nextcell);
+	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
+	bool nextcellleft = nextcol < columnCount() 
+		&& leftLine(cellIndex(r, nextcol));
 	bool nextcolleft = nextcol < columnCount() && columnLeftLine(nextcol);
 	bool coldouble = columnRightLine(c) && nextcolleft;
 	bool celldouble = rightLine(cell) && nextcellleft;
