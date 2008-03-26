@@ -1,4 +1,4 @@
-#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -182,8 +182,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- Februar 2008
+letzte Änderung: 24.
+ März 2008
 \end_layout
 
 \begin_layout Standard
@@ -4382,7 +4382,10 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 begin{
 \family default
 \emph on
-environment
+en\SpecialChar \-
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment
 \family typewriter
 \emph default
 } ...
@@ -28876,16 +28879,29 @@ Wenn Sie
 \family typewriter
 aspell
 \family default
- benutzen wollen, sollten Sie 
-\family typewriter
-aspell (Bibliothek)
+ verwenden, sollten Sie als 
+\family sans
+Sprache
 \family default
- wählen.
- Der normale 
+ 
+\family sans
+Deutsch
+\family default
+ und nicht 
+\family sans
+Deutsch\InsetSpace \space{}
+(neue\InsetSpace \space{}
+Rechtschreibung)
+\family default
+ benutzen, weil 
 \family typewriter
 aspell
 \family default
--Modus funktioniert nicht richtig.
+ mit 
+\family sans
+Deutsch
+\family default
+ die neue Rechtschreibung versteht.
 \end_layout
 
 \begin_layout Standard
