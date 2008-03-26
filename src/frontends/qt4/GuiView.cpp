@@ -1736,10 +1736,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			// We cannot use a for loop as the buffer list cycles.
 			Buffer * b = first;
 			do {
-				if (b->isClean())
-					continue;
-				saveBuffer(*b);
-				LYXERR(Debug::ACTION, "Saved " << b->absFileName());
+				if (!b->isClean()) {
+					saveBuffer(*b);
+					LYXERR(Debug::ACTION, "Saved " << b->absFileName());
+				}
 				b = theBufferList().next(b);
 			} while (b != first); 
 			message(_("All documents saved."));
