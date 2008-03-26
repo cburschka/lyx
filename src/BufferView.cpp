@@ -263,6 +263,9 @@ struct BufferView::Private
 	/** Not owned, so don't delete.
 	  */
 	frontend::GuiBufferViewDelegate * gui_;
+
+	/// Cache for Find Next
+	FuncRequest search_request_cache_;
 };
 
 
@@ -1182,12 +1185,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::REJECT);
 		break;
 
-	case LFUN_WORD_FIND:
-		if (find(this, cmd))
+	case LFUN_WORD_FIND: {
+		FuncRequest req = cmd;
+		if (cmd.argument().empty() && !d->search_request_cache_.argument().empty())
+			req = d->search_request_cache_;
+		if (find(this, req))
 			showCursor();
 		else
 			message(_("String not found!"));
+		d->search_request_cache_ = req;
 		break;
+	}
 
 	case LFUN_WORD_REPLACE: {
 		bool has_deleted = false;
