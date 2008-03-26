@@ -43,6 +43,7 @@ class LaTeXFeatures;
 class Language;
 class MacroData;
 class MacroNameSet;
+class MacroSet;
 class OutputParams;
 class Paragraph;
 class ParConstIterator;
@@ -368,12 +369,10 @@ public:
 	/// Iterate through the whole buffer and try to resolve macros
 	void updateMacroInstances() const;
 
-	/// List macro names of this buffer. the parent and the children
+	/// List macro names of this buffer, the parent and the children
 	void listMacroNames(MacroNameSet & macros) const;
-	/// Write out all macros somewhere defined in the parent,
-	/// its parents and its children, which are visible at the beginning 
-	/// of this buffer
-	void writeParentMacros(odocstream & os) const;
+	/// Collect macros of the parent and its children in front of this buffer.
+	void listParentMacros(MacroSet & macros, LaTeXFeatures & features) const;
 
 	/// Return macro defined before pos (or in the master buffer)
 	MacroData const * getMacro(docstring const & name, DocIterator const & pos, bool global = true) const;

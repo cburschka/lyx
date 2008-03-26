@@ -517,6 +517,12 @@ void MathMacro::validate(LaTeXFeatures & features) const
 
 	if (name() == "binom" || name() == "mathcircumflex")
 		features.require(to_utf8(name()));
+	
+	// validate the cells and the definition
+	if (displayMode() == DISPLAY_NORMAL) {
+		definition_.validate(features);
+		InsetMathNest::validate(features);
+	}
 }
 
 

@@ -1103,6 +1103,16 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		d->texrow.newline();
 	}
 	LYXERR(Debug::INFO, "lyx document header finished");
+
+	// Don't move this behind the parent_buffer=0 code below,
+	// because then the macros will not get the right "redefinition"
+	// flag as they don't see the parent macros which are output before.
+	updateMacros();
+	
+	// fold macros if possible, still with parent buffer as the
+	// macros will be put in the prefix anyway.
+	updateMacroInstances();
+	
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
 	// special input@path to allow the including of figures
@@ -1133,6 +1143,11 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			d->texrow.newline();
 		}
 
+		// get parent macros (if this buffer has a parent) which will be
+		// written at the document begin further down.
+		MacroSet parentMacros;
+		listParentMacros(parentMacros, features);
+
 		// Write the preamble
 		runparams.use_babel = params().writeLaTeX(os, features, d->texrow);
 
@@ -1142,29 +1157,23 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		// make the body.
 		os << "\\begin{document}\n";
 		d->texrow.newline();
+		
+		// output the parent macros
+		MacroSet::iterator it = parentMacros.begin();
+		MacroSet::iterator end = parentMacros.end();
+		for (; it != end; ++it)
+			(*it)->write(os, true);	
 	} // output_preamble
 
 	d->texrow.start(paragraphs().begin()->id(), 0);
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
-	// Don't move this behind the parent_buffer=0 code below,
-	// because then the macros will not get the right "redefinition"
-	// flag as they don't see the parent macros which are output before.
-	updateMacros();
-
-	// fold macros if possible, still with parent buffer as the
-	// macros will be put in the prefix anyway.
-	updateMacroInstances();
-
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	// This happens for example if only a child document is printed.
 	Buffer const * save_parent = 0;
 	if (output_preamble) {
-		// output the macros visible for this buffer
-		writeParentMacros(os);
-
 		save_parent = d->parent_buffer;
 		d->parent_buffer = 0;
 	}
@@ -1173,14 +1182,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	latexParagraphs(*this, text(), os, d->texrow, runparams);
 
 	// Restore the parenthood if needed
-	if (output_preamble) {
+	if (output_preamble)
 		d->parent_buffer = save_parent;
-
-		// restore macros with correct parent buffer (especially
-		// important for the redefinition flag which depends on the 
-		// parent)
-		updateMacros();
-	}
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1991,24 +1994,30 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 }
 
 
-void Buffer::writeParentMacros(odocstream & os) const
+void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 {
 	if (!d->parent_buffer)
 		return;
-
-	// collect macro names
+	
 	MacroNameSet names;
 	d->parent_buffer->listMacroNames(names);
-
-	// resolve and output them
+	
+	// resolve macros
 	MacroNameSet::iterator it = names.begin();
 	MacroNameSet::iterator end = names.end();
 	for (; it != end; ++it) {
 		// defined?
 		MacroData const * data = 
 		d->parent_buffer->getMacro(*it, *this, false);
-		if (data)
-			data->write(os, true);	
+		if (data) {
+			macros.insert(data);
+			
+			// we cannot access the original MathMacroTemplate anymore
+			// here to calls validate method. So we do its work here manually.
+			// FIXME: somehow make the template accessible here.
+			if (data->optionals() > 0)
+				features.require("xargs");
+		}
 	}
 }
 

@@ -34,9 +34,6 @@ enum MacroType {
 	MacroTypeNewcommandx,
 	MacroTypeDef
 };
-
-///
-class MacroNameSet : public std::set<docstring> {};
 	
 ///
 class MacroData {
@@ -137,6 +134,12 @@ private:
 	///
 	mutable MacroType type_;
 };
+
+
+///
+class MacroNameSet : public std::set<docstring> {};
+///
+class MacroSet : public std::set<MacroData const *> {};
 
 	
 /// A lookup table of macro definitions.

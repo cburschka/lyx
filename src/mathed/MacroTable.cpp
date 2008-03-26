@@ -60,7 +60,7 @@ MacroData::MacroData(MathMacroTemplate const & macro)
 	  redefinition_(false), type_(MacroTypeNewcommand)
 {
 	queryData(macro);
-}	
+}
 
 
 void MacroData::expand(vector<MathData> const & args, MathData & to) const
@@ -123,7 +123,8 @@ void MacroData::queryData(MathMacroTemplate const & macro) const
 	redefinition_ = macro.redefinition();
 	type_ = macro.type();
 	optionals_ = macro.numOptionals();
-	macro.getDefaults(defaults_);	
+	
+	macro.getDefaults(defaults_);
 }
 
 
