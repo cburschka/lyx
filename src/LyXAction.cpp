@@ -502,8 +502,34 @@ void LyXAction::init()
 		{ LFUN_WORD_CAPITALIZE, "word-capitalize", Noop, Edit },
 		{ LFUN_WORD_DELETE_BACKWARD, "word-delete-backward", Noop, Edit },
 		{ LFUN_WORD_DELETE_FORWARD, "word-delete-forward", Noop, Edit },
-		{ LFUN_WORD_FIND_BACKWARD, "word-find-backward", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FIND_FORWARD
+ * \li Action: Search for a given string in forward direction.
+ * \li Notion: Case sensitive, match words. If no argument given, last search repeated.
+ * \li Syntax: word-find-forward [<STRING>]
+ * \li Origin: Etienne, 16 Feb 1998
+ * \endvar
+ */
 		{ LFUN_WORD_FIND_FORWARD, "word-find-forward", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FIND_BACKWARD
+ * \li Action: Search for a given string in backward direction.
+ * \li Notion: Case sensitive, match words. If no argument given, last search repeated.
+ * \li Syntax: word-find-backward [<STRING>]
+ * \li Origin: Etienne, 20 Feb 1998
+ * \endvar
+ */
+		{ LFUN_WORD_FIND_BACKWARD, "word-find-backward", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FIND
+ * \li Action: Search for next occurence of a string.
+ * \li Syntax: word-find <DATA>
+ * \li Params: <DATA>: data encoded from Find dialog (see #lyx::find2string()).
+ * \li Origin: poenitz, Jan 7 2004
+ * \endvar
+ */
+		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
+		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 		{ LFUN_WORD_FORWARD, "word-forward", ReadOnly | NoUpdate, Edit },
 		{ LFUN_WORD_FORWARD_SELECT, "word-forward-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_LEFT, "word-left", ReadOnly | NoUpdate, Edit },
@@ -513,8 +539,6 @@ void LyXAction::init()
 		{ LFUN_WORD_RIGHT_SELECT, "word-right-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
 		{ LFUN_WORD_UPCASE, "word-upcase", Noop, Edit },
-		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
-		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
