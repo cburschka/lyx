@@ -238,7 +238,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false),
 	  embedded_files(), timestamp_(0), checksum_(0), wa_(0), 
-	  undo_(parent)
+	  undo_(parent), inset(parent)
 {
 	temppath = createBufferTmpDir();
 	lyxvc.setBuffer(&parent);
