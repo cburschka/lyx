@@ -247,7 +247,7 @@ void GuiListings::change_adaptor()
 
 string GuiListings::construct_params()
 {
-	string language = languages[languageCO->currentIndex()];
+	string language = languages[qMax(0, languageCO->currentIndex())];
 	string dialect;
 	string const dialect_gui = fromqstr(dialectCO->currentText());
 	if (dialectCO->currentIndex() > 0) {
@@ -267,7 +267,7 @@ string GuiListings::construct_params()
 		placement = fromqstr(placementLE->text());
 
 	string numberSide;
-	switch (numberSideCO->currentIndex()) {
+	switch (qMax(0, numberSideCO->currentIndex())) {
 	case 0:
 		numberSide = "none";
 		break;
@@ -282,12 +282,12 @@ string GuiListings::construct_params()
 		break;
 	}
 	string stepnumber = fromqstr(numberStepLE->text());
-	string numberfontsize = font_sizes[numberFontSizeCO->currentIndex()];
+	string numberfontsize = font_sizes[qMax(0, numberFontSizeCO->currentIndex())];
 	string firstline = fromqstr(firstlineLE->text());
 	string lastline = fromqstr(lastlineLE->text());
 
-	string fontsize = font_sizes[fontsizeCO->currentIndex()];
-	string fontstyle = font_styles[fontstyleCO->currentIndex()];
+	string fontsize = font_sizes[qMax(0, fontsizeCO->currentIndex())];
+	string fontstyle = font_styles[qMax(0, fontstyleCO->currentIndex())];
 	string basicstyle;
 	if (fontsize != "default")
 		basicstyle = "\\" + fontsize;
