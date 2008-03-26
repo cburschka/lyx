@@ -13,6 +13,7 @@
 #define INSET_NEWLINE_H
 
 #include "Inset.h"
+#include "MailInset.h"
 
 #include "support/docstring.h"
 #include "support/gettext.h"
@@ -20,11 +21,35 @@
 
 namespace lyx {
 
+class InsetNewlineParams {
+public:
+	/// The different kinds of spaces we support
+	enum Kind {
+		///
+		NEWLINE,
+		///
+		LINEBREAK
+	};
+	///
+	InsetNewlineParams() : kind(NEWLINE) {}
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(Lexer & lex);
+	///
+	Kind kind;
+};
+
+
 class InsetNewline : public Inset
 {
 public:
 	///
-	InsetNewline() {}
+	InsetNewline();
+	///
+	InsetNewline(InsetNewlineParams par) { params_.kind = par.kind; }
+	///
+	InsetNewlineParams params() const { return params_; }
 	///
 	InsetCode lyxCode() const { return NEWLINE_CODE; }
 	///
@@ -41,43 +66,45 @@ public:
 	void read(Lexer & lex);
 	///
 	void write(std::ostream & os) const;
-	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const { return true; }
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
-	bool isSpace() const;
+	bool isSpace() const { return true; }
 	///
-	docstring insetLabel() const { return docstring(); }
+	ColorCode ColorName() const;
 	///
-	std::string getLyXName() const { return "\\newline"; }
-	///
-	std::string getCmdName() const { return "\\\\"; }
-	///
-	ColorCode ColorName() const { return Color_eolmarker; }
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 private:
 	///
 	Inset * clone() const { return new InsetNewline(*this); }
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	InsetNewlineParams params_;
 };
 
 
-class InsetLinebreak : public InsetNewline
-{
+class InsetNewlineMailer : public MailInset {
 public:
 	///
-	InsetLinebreak() {}
+	InsetNewlineMailer(InsetNewline & inset);
 	///
-	docstring insetLabel() const { return _("line break"); }
+	virtual Inset & inset() const { return inset_; }
 	///
-	std::string getLyXName() const { return "\\linebreak"; }
+	virtual std::string const & name() const { return name_; }
 	///
-	std::string getCmdName() const { return "\\linebreak{}"; }
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	ColorCode ColorName() const { return Color_pagebreak; }
-
+	static void string2params(std::string const &, InsetNewlineParams &);
+	///
+	static std::string const params2string(InsetNewlineParams const &);
 private:
 	///
-	Inset * clone() const { return new InsetLinebreak(*this); }
+	static std::string const name_;
+	///
+	InsetNewline & inset_;
 };
 
 

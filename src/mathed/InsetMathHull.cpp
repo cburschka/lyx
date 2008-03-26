@@ -1126,7 +1126,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// just swallow this
 		break;
 
-	case LFUN_NEW_LINE:
+	case LFUN_NEWLINE_INSERT:
 		// some magic for the common case
 		if (type_ == hullSimple || type_ == hullEquation) {
 			cur.recordUndoInset();
@@ -1285,7 +1285,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FINISHED_LEFT:
 	case LFUN_UP:
 	case LFUN_DOWN:
-	case LFUN_NEW_LINE:
+	case LFUN_NEWLINE_INSERT:
 	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:

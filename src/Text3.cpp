@@ -658,36 +658,24 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_NEW_LINE: {
-		// Not allowed by LaTeX (labels or empty par)
-		if (cur.pos() > cur.paragraph().beginOfBody()) {
-			// this avoids a double undo
-			// FIXME: should not be needed, ideally
-			if (!cur.selection())
-				cur.recordUndo();
-			cap::replaceSelection(cur);
-			cur.insert(new InsetNewline);
-			cur.posForward();
-			moveCursor(cur, false);
-		}
+	case LFUN_NEWLINE_INSERT: {
+		InsetNewlineParams inp;
+		docstring arg = cmd.argument();
+		// this avoids a double undo
+		// FIXME: should not be needed, ideally
+		if (!cur.selection())
+			cur.recordUndo();
+		cap::replaceSelection(cur);
+		if (arg == "linebreak")
+			inp.kind = InsetNewlineParams::LINEBREAK;
+		else
+			inp.kind = InsetNewlineParams::NEWLINE;
+		cur.insert(new InsetNewline(inp));
+		cur.posForward();
+		moveCursor(cur, false);
 		break;
 	}
 	
-	case LFUN_LINE_BREAK: {
-		// Not allowed by LaTeX (labels or empty par)
-		if (cur.pos() > cur.paragraph().beginOfBody()) {
-			// this avoids a double undo
-			// FIXME: should not be needed, ideally
-			if (!cur.selection())
-				cur.recordUndo();
-			cap::replaceSelection(cur);
-			cur.insert(new InsetLinebreak);
-			cur.posForward();
-			moveCursor(cur, false);
-		}
-		break;
-	}
-
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
 			if (cur.pos() == cur.paragraph().size())
@@ -2120,6 +2108,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = (cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC);
 		break;
 
+	case LFUN_NEWLINE_INSERT:
+		// LaTeX restrictions (labels or empty par)
+		enable = (cur.pos() > cur.paragraph().beginOfBody());
+		break;
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -2151,9 +2144,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_LINE_BEGIN:
-	case LFUN_LINE_BREAK:
 	case LFUN_LINE_END:
-	case LFUN_NEW_LINE:
 	case LFUN_CHAR_DELETE_FORWARD:
 	case LFUN_DELETE_FORWARD_SKIP:
 	case LFUN_CHAR_DELETE_BACKWARD:

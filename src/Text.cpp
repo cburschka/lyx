@@ -206,14 +206,6 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 					font, change);
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
-	} else if (token == "\\linebreak") {
-		auto_ptr<Inset> inset(new InsetLinebreak);
-		inset->read(lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\newline") {
-		auto_ptr<Inset> inset(new InsetNewline);
-		inset->read(lex);
-		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\LyXTable") {
 		auto_ptr<Inset> inset(new InsetTabular(buf));
 		inset->read(lex);

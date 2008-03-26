@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,7 +13,10 @@
 
 #include "InsetNewline.h"
 
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "Dimension.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
@@ -27,16 +31,55 @@ using namespace std;
 
 namespace lyx {
 
+InsetNewline::InsetNewline()
+{}
 
-void InsetNewline::read(Lexer &)
+void InsetNewlineParams::write(ostream & os) const
 {
-	/* Nothing to read */
+	string command;
+	switch (kind) {
+	case InsetNewlineParams::NEWLINE:
+		os << "newline";
+		break;
+	case InsetNewlineParams::LINEBREAK:
+		os <<  "linebreak";
+		break;
+	}
+}
+
+
+void InsetNewlineParams::read(Lexer & lex)
+{
+	lex.next();
+	string const command = lex.getString();
+
+	if (command == "newline")
+		kind = InsetNewlineParams::NEWLINE;
+	else if (command == "linebreak")
+		kind = InsetNewlineParams::LINEBREAK;
+	else
+		lex.printError("InsetNewline: Unknown kind: `$$Token'");
+
+	string token;
+	lex >> token;
+	if (!lex)
+		return;
+	if (token != "\\end_inset")
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
 }
 
 
 void InsetNewline::write(ostream & os) const
 {
-	os << "\n" << getLyXName() << '\n';
+	os << "Newline ";
+	params_.write(os);
+}
+
+
+void InsetNewline::read(Lexer & lex)
+{
+	params_.read(lex);
 }
 
 
@@ -49,9 +92,72 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+void InsetNewline::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetNewlineParams params;
+		InsetNewlineMailer::string2params(to_utf8(cmd.argument()), params);
+		params_.kind = params.kind;
+		break;
+	}
+
+	default:
+		Inset::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetNewline::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// we handle these
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "newline") {
+			InsetNewlineParams params;
+			InsetNewlineMailer::string2params(to_utf8(cmd.argument()), params);
+			status.setOnOff(params_.kind == params.kind);
+		} else
+			status.enabled(true);
+		return true;
+	default:
+		return Inset::getStatus(cur, cmd, status);
+	}
+}
+
+
+ColorCode InsetNewline::ColorName() const
+{
+	switch (params_.kind) {
+		case InsetNewlineParams::NEWLINE:
+			return Color_eolmarker;
+			break;
+		case InsetNewlineParams::LINEBREAK:
+			return Color_pagebreak;
+			break;
+		default:
+			return Color_eolmarker;
+			break;
+	}
+}
+
+
 int InsetNewline::latex(odocstream & os, OutputParams const &) const
 {
-	os << from_ascii(getCmdName()) << '\n';
+	switch (params_.kind) {
+		case InsetNewlineParams::NEWLINE:
+			os << "\\\\\n";
+			break;
+		case InsetNewlineParams::LINEBREAK:
+			os << "\\linebreak{}\n";
+			break;
+		default:
+			os << "\\\\\n";
+			break;
+	}
 	return 0;
 }
 
@@ -114,22 +220,84 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 
 	pi.pain.lines(xp, yp, 3, ColorName());
 
-	// add label text behind the newline marker to divide from \newline
-	int w = 0;
-	int a = 0;
-	int d = 0;
-	theFontMetrics(font).rectText(insetLabel(), w, a, d);
+	if (params_.kind == InsetNewlineParams::LINEBREAK) {
+
+		yp[2] = int(y - 0.500 * asc * 0.75);
+
+		if (pi.ltr_pos) {
+			xp[0] = int(x + 1.3 * wid);
+			xp[1] = int(x + 2 * wid);
+			xp[2] = int(x + 2 * wid);
+		} else {
+			xp[0] = int(x - 0.3 * wid);
+			xp[1] = int(x - wid);
+			xp[2] = int(x - wid);
+		}
+		pi.pain.lines(xp, yp, 3, ColorName());
+
+		yp[0] = int(y - 0.875 * asc * 0.75);
+		yp[1] = int(y - 0.500 * asc * 0.75);
+		yp[2] = int(y - 0.125 * asc * 0.75);
 	
-	int const text_start = int(x + 2 * wid);
-			
-	pi.pain.rectText(text_start, yp[0] + d, insetLabel(), font,
-		Color_none, Color_none);
+		if (pi.ltr_pos) {
+			xp[0] = int(x + 2 * wid * 0.813);
+			xp[1] = int(x + 2 * wid);
+			xp[2] = int(x + 2 * wid * 0.813);
+		} else {
+			xp[0] = int(x - wid * 0.625);
+			xp[1] = int(x - wid);
+			xp[2] = int(x - wid * 0.625);
+		}
+		pi.pain.lines(xp, yp, 3, ColorName());
+	}
 }
 
 
-bool InsetNewline::isSpace() const
+docstring InsetNewline::contextMenu(BufferView const &, int, int) const
 {
-	return true;
+	return from_ascii("context-newline");
+}
+
+
+string const InsetNewlineMailer::name_ = "newline";
+
+
+InsetNewlineMailer::InsetNewlineMailer(InsetNewline & inset)
+	: inset_(inset)
+{}
+
+
+string const InsetNewlineMailer::inset2string(Buffer const &) const
+{
+	return params2string(inset_.params());
+}
+
+
+void InsetNewlineMailer::string2params(string const & in, InsetNewlineParams & params)
+{
+	params = InsetNewlineParams();
+	if (in.empty())
+		return;
+
+	istringstream data(in);
+	Lexer lex(0,0);
+	lex.setStream(data);
+
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetNewlineMailer", in, 1, name_);
+
+	params.read(lex);
+}
+
+
+string const InsetNewlineMailer::params2string(InsetNewlineParams const & params)
+{
+	ostringstream data;
+	data << name_ << ' ';
+	params.write(data);
+	return data.str();
 }
 
 

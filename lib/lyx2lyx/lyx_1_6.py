@@ -1695,6 +1695,41 @@ def revert_pagebreaks(document):
         document.body[i] = document.body[i].replace('\\begin_inset Newpage cleardoublepage', '\\cleardoublepage')
 
 
+def convert_linebreaks(document):
+    ' Convert inline Newline insets to new format '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\newline', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newline newline',
+                             '\\end_inset']
+    i = 0
+    while True:
+        i = find_token(document.body, '\\linebreak', i)
+        if i == -1:
+            break
+        document.body[i:i+1] = ['\\begin_inset Newline linebreak',
+                             '\\end_inset']
+
+
+
+def revert_linebreaks(document):
+    ' Revert \\begin_inset Newline to previous inline format '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Newline', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of Newline inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Newline newline', '\\newline')
+        document.body[i] = document.body[i].replace('\\begin_inset Newline linebreak', '\\linebreak')
+
+
 ##
 # Conversion hub
 #
@@ -1746,10 +1781,12 @@ convert = [[277, [fix_wrong_tables]],
            [320, []],
            [321, [convert_tablines]],
            [322, []],
-           [323, [convert_pagebreaks]]
+           [323, [convert_pagebreaks]],
+           [324, [convert_linebreaks]]
           ]
 
-revert =  [[322, [revert_pagebreaks]],
+revert =  [[323, [revert_linebreaks]],
+           [322, [revert_pagebreaks]],
            [321, [revert_local_layout]],
            [320, [revert_tablines]],
            [319, [revert_protected_hfill]],

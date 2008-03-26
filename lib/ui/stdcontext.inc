@@ -148,6 +148,14 @@ Menuset
 	End
 
 #
+# InsetNewline context menu
+#
+	Menu "context-newline"
+		Item "Ragged Line Break|R" "next-inset-modify newline newline"
+		Item "Justified Line Break|J" "next-inset-modify newline linebreak"
+	End
+
+#
 # Edit context menu
 #
 	Menu "context-edit"

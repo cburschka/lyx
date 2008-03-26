@@ -554,11 +554,18 @@ void LyXAction::init()
 
 		{ LFUN_LINE_BEGIN, "line-begin", ReadOnly | NoUpdate, Edit },
 		{ LFUN_LINE_BEGIN_SELECT, "line-begin-select", ReadOnly | SingleParUpdate, Edit },
-		{ LFUN_LINE_BREAK, "line-break", Noop, Edit },
 		{ LFUN_LINE_DELETE, "line-delete-forward", Noop, Edit }, // there is no line-delete-backward
 		{ LFUN_LINE_END, "line-end", ReadOnly | NoUpdate, Edit },
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
-		{ LFUN_NEW_LINE, "new-line", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
+ * \li Action: Inserts a line break or new line.
+ * \li Syntax: newline-insert<ARG>
+ * \li Params: <ARG>: <newline|linebreak> default: newline
+ * \li Origin: JSpitzm, 25 Mar 2008
+ * \endvar
+ */
+		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY

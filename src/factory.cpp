@@ -40,6 +40,7 @@
 #include "insets/InsetLabel.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetMarginal.h"
+#include "insets/InsetNewline.h"
 #include "insets/InsetNewpage.h"
 #include "insets/InsetNote.h"
 #include "insets/InsetBox.h"
@@ -541,6 +542,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetMarginal(buf));
 		} else if (tmptok == "Newpage") {
 			inset.reset(new InsetNewpage);
+		} else if (tmptok == "Newline") {
+			inset.reset(new InsetNewline);
 		} else if (tmptok == "OptArg") {
 			inset.reset(new InsetOptArg(buf));
 		} else if (tmptok == "Float") {

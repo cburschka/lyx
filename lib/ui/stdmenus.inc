@@ -372,8 +372,8 @@ Menuset
 		Separator
 		Item "Hyphenation Point|H" "specialchar-insert hyphenation"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
-		Item "New Line|e" "new-line"
-		Item "Line Break|B" "line-break"
+		Item "Ragged Line Break|R" "newline-insert newline"
+		Item "Justified Line Break|J" "newline-insert linebreak"
 		Separator
 		Item "New Page|N" "newpage-insert newpage"
 		Item "Page Break|a" "newpage-insert pagebreak"
