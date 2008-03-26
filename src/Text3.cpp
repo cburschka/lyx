@@ -1671,8 +1671,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				breakParagraph(cur);
 			}
 
-			//FIXME Check if this should be emptyLayout()
-			setLayout(cur, tclass.defaultLayoutName());
+			docstring const laystr = cur.inset().useEmptyLayout() ?
+				tclass.emptyLayoutName() :
+				tclass.defaultLayoutName();
+			setLayout(cur, laystr);
 			ParagraphParameters p;
 			setParagraphs(cur, p);
 			// FIXME This should be simplified when InsetFloatList takes a 
