@@ -560,7 +560,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
  * \li Action: Inserts a line break or new line.
- * \li Syntax: newline-insert<ARG>
+ * \li Syntax: newline-insert <ARG>
  * \li Params: <ARG>: <newline|linebreak> default: newline
  * \li Origin: JSpitzm, 25 Mar 2008
  * \endvar
@@ -1527,6 +1527,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_WRITE_ALL
+ * \li Action: Save all changed documents.
+ * \li Syntax: buffer-write-all
+ * \li Origin: rgh, gpothier 6 Aug 2007
+ * \endvar
+ */
 		{ LFUN_BUFFER_WRITE_ALL, "buffer-write-all", ReadOnly, Buffer },
 		{ LFUN_BUFFER_NEXT, "buffer-next", ReadOnly, Buffer },
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
