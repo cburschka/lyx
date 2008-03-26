@@ -389,6 +389,7 @@ void ButtonPolicy::initNoRepeatedApplyReadOnly()
 	state_machine_[VALID][SMI_READ_ONLY] = RO_VALID;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
+	state_machine_[INVALID][SMI_OKAY] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
 	state_machine_[INVALID][SMI_RESTORE] = INITIAL;

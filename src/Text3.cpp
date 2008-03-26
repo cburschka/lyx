@@ -1675,7 +1675,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			setLayout(cur, tclass.defaultLayoutName());
 			ParagraphParameters p;
 			setParagraphs(cur, p);
-			insertInset(cur, new InsetFloatList(to_utf8(cmd.argument())));
+			// FIXME This should be simplified when InsetFloatList takes a 
+			// Buffer in its constructor.
+			InsetFloatList * ifl = new InsetFloatList(to_utf8(cmd.argument()));
+			ifl->setBuffer(bv->buffer());
+			insertInset(cur, ifl);
 			cur.posForward();
 		} else {
 			lyxerr << "Non-existent float type: "
