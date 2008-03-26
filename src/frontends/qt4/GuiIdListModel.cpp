@@ -26,7 +26,7 @@ QVariant GuiIdListModel::data(QModelIndex const & index, int role) const
 	int const row = index.row();
 	if (!rowIsValid(row))
 		return QVariant();
-	if (role == Qt::DisplayRole || role == Qt::EditRole)
+	if (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole)
 		return userData_[row].uiString;
 	if (role == Qt::UserRole)
 		return userData_[row].idString;
