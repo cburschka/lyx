@@ -1170,6 +1170,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cur.updateFlags(Update::SinglePar | Update::FitCursor);
 				break;			
 			}
+		default:
+			break;
 		} // switch (cmd.button())
 		break;
 
