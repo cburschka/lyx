@@ -948,7 +948,7 @@ void InsetInclude::registerEmbeddedFiles(EmbeddedFileList & files) const
 void InsetInclude::updateEmbeddedFile(EmbeddedFile const & file)
 {
 	InsetCommandParams p = params();
-	p["filename"] = from_utf8(file.outputFilename());
+	p["filename"] = from_utf8(file.outputFilename(buffer().filePath()));
 	p["embed"] = file.embedded() ? from_utf8(file.inzipName()) : docstring();
 	setParams(p);
 }
