@@ -36,7 +36,7 @@ Menuset
 		Item "<reference> on page <page>|f" "next-inset-modify changetype vref"
 		Item "Formatted reference|t" "next-inset-modify changetype prettyref"
 		Separator
-		Item "Properties...|P" "next-inset-toggle"
+		Item "Settings...|S" "next-inset-toggle"
 	End
 
 	Menu "edit_reftype"
@@ -50,7 +50,7 @@ Menuset
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go back to Reference|G" "bookmark-goto 0"
 		Separator
-		Item "Properties...|P" "next-inset-toggle"
+		Item "Settings...|S" "next-inset-toggle"
 	End
 
 #
@@ -60,14 +60,14 @@ Menuset
 		OptItem "Open Inset|O" "next-inset-toggle open"
 		OptItem "Close Inset|C" "next-inset-toggle close"
 		Separator
-		OptItem "Properties...|P" "inset-settings"
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 	Menu "context-conglomerate"
 		Item "Toggle Label|L" "next-inset-toggle"
 		Item "Dissolve Inset|D" "inset-dissolve charstyle"
 		Separator
-		OptItem "Properties...|P" "inset-settings"
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 #
@@ -84,7 +84,7 @@ Menuset
 		Item "Shaded background|b" "next-inset-modify changetype Shaded"
 		Item "Double frame|D" "next-inset-modify changetype Doublebox"
 		Separator
-		Item "Properties...|P" "inset-settings box"
+		Item "Settings...|S" "inset-settings box"
 	End
 
 #
@@ -116,7 +116,7 @@ Menuset
 		Item "Horizontal Fill (Rule)|R" "next-inset-modify space \hrulefill{}"
 		Item "Custom Length|C" "command-sequence next-inset-modify space \hspace{} \length 1in; next-inset-toggle"
 		Separator
-		Item "Properties...|P" "next-inset-toggle"
+		Item "Settings...|S" "next-inset-toggle"
 	End
 
 #
@@ -130,7 +130,7 @@ Menuset
 		Item "VFill|F" "next-inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; next-inset-toggle"
 		Separator
-		Item "Properties...|P" "next-inset-toggle"
+		Item "Settings...|S" "next-inset-toggle"
 	End
 
 	Menu "edit_vspacetype"
@@ -204,7 +204,7 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
-		Item "Properties...|P" "inset-settings listings"
+		Item "Settings...|S" "inset-settings listings"
 	End
 
 #
@@ -212,7 +212,7 @@ Menuset
 #
 
 	Menu "context-graphics"
-		Item "Properties...|P" "next-inset-toggle"
+		Item "Settings...|S" "next-inset-toggle"
 		Separator
 		Item "Edit externally...|x" "graphics-edit"
 	End
