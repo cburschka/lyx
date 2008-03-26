@@ -14,7 +14,6 @@
 #define INSETERT_H
 
 #include "InsetCollapsable.h"
-#include "MailInset.h"
 
 
 namespace lyx {
@@ -36,6 +35,10 @@ public:
 	InsetERT(Buffer const &, CollapseStatus status = Open);
 	///
 	~InsetERT();
+	///
+	static void string2params(std::string const &, CollapseStatus &);
+	///
+	static std::string params2string(CollapseStatus);
 private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }
@@ -75,29 +78,6 @@ private:
 	void setButtonLabel();
 	///
 	bool allowSpellCheck() const { return false; }
-};
-
-
-class InsetERTMailer : public MailInset {
-public:
-	///
-	InsetERTMailer(InsetERT & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &,
-		InsetCollapsable::CollapseStatus &);
-	///
-	static std::string const params2string(InsetCollapsable::CollapseStatus);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetERT & inset_;
 };
 
 

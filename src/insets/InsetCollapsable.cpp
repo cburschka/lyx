@@ -721,8 +721,8 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (layout_->isPassThru()) {
 			flag.enabled(false);
 			return true;
-		} else
-			return InsetText::getStatus(cur, cmd, flag);
+		}
+		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
 		if ((cmd.argument() == "open" && status_ != Open)

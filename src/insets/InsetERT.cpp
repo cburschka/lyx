@@ -30,6 +30,7 @@
 #include "Paragraph.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -42,7 +43,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-
 InsetERT::InsetERT(Buffer const & buf, CollapseStatus status)
 	: InsetCollapsable(buf, status)
 {}
@@ -50,7 +50,8 @@ InsetERT::InsetERT(Buffer const & buf, CollapseStatus status)
 
 InsetERT::~InsetERT()
 {
-	InsetERTMailer(*this).hideDialog();
+	if (theApp())
+		theApp()->hideDialogs("ert", this);
 }
 
 
@@ -115,7 +116,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 	case LFUN_INSET_MODIFY: {
 		InsetCollapsable::CollapseStatus st;
-		InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
+		InsetERT::string2params(to_utf8(cmd.argument()), st);
 		setStatus(cur, st);
 		break;
 	}
@@ -186,26 +187,13 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
-	InsetERTMailer(const_cast<InsetERT &>(*this)).showDialog(bv);
+	bv->showDialog("ert", params2string(status()), 
+		const_cast<InsetERT *>(this));
 	return true;
 }
 
 
-string const InsetERTMailer::name_("ert");
-
-InsetERTMailer::InsetERTMailer(InsetERT & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetERTMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.status());
-}
-
-
-void InsetERTMailer::string2params(string const & in,
-				   InsetCollapsable::CollapseStatus & status)
+void InsetERT::string2params(string const & in, CollapseStatus & status)
 {
 	status = InsetCollapsable::Collapsed;
 	if (in.empty())
@@ -217,8 +205,11 @@ void InsetERTMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (name != name_)
-		return print_mailer_error("InsetERTMailer", in, 1, name_);
+	if (name != "ert") {
+		LYXERR0("InsetERT::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"ert\"\n");
+		return;
+	}
 
 	int s;
 	lex >> s;
@@ -227,11 +218,10 @@ void InsetERTMailer::string2params(string const & in,
 }
 
 
-string const
-InsetERTMailer::params2string(InsetCollapsable::CollapseStatus status)
+string InsetERT::params2string(CollapseStatus status)
 {
 	ostringstream data;
-	data << name_ << ' ' << status;
+	data << "ert" << ' ' << status;
 	return data.str();
 }
 

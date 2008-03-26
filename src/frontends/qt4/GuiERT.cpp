@@ -13,8 +13,9 @@
 #include <config.h>
 
 #include "GuiERT.h"
-#include "support/gettext.h"
 #include "FuncRequest.h"
+
+#include "support/gettext.h"
 
 #include <QRadioButton>
 #include <QPushButton>
@@ -66,7 +67,7 @@ void GuiERT::updateContents()
 
 bool GuiERT::initialiseParams(string const & data)
 {
-	InsetERTMailer::string2params(data, status_);
+	InsetERT::string2params(data, status_);
 	return true;
 }
 
@@ -79,7 +80,7 @@ void GuiERT::clearParams()
 
 void GuiERT::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetERTMailer::params2string(status_)));
+	dispatch(FuncRequest(getLfun(), InsetERT::params2string(status_)));
 }
 
 

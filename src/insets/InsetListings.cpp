@@ -21,13 +21,14 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "MetricsInfo.h"
 #include "TextClass.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <boost/regex.hpp>
@@ -224,6 +225,7 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
+	LYXERR0("CURSOR SIZE: " << cur.depth());
 	switch (cmd.action) {
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.enabled(true);
