@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-26 00:29+0100\n"
+"POT-Creation-Date: 2008-03-26 22:02+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -49,7 +49,7 @@ msgstr "Droetes"
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:97
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
-#: src/frontends/qt4/ui/SymbolsUi.ui:178 src/frontends/qt4/ui/TexinfoUi.ui:58
+#: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141 src/frontends/qt4/ui/VSpaceUi.ui:59
 #: src/frontends/qt4/ui/WrapUi.ui:173
 #, fuzzy
@@ -79,7 +79,7 @@ msgstr ""
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/RefUi.ui:77 src/frontends/qt4/ui/SendtoUi.ui:72
-#: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:149
+#: src/frontends/qt4/ui/ShortcutUi.ui:99 src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 #, fuzzy
@@ -90,7 +90,7 @@ msgstr "I va"
 #: src/frontends/qt4/ui/CitationUi.ui:425
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:884
-#: src/Buffer.cpp:2511 src/Buffer.cpp:2535 src/Buffer.cpp:2570
+#: src/Buffer.cpp:2520 src/Buffer.cpp:2544 src/Buffer.cpp:2579
 #: src/EmbeddedFiles.cpp:172 src/EmbeddedFiles.cpp:234
 #: src/EmbeddedFiles.cpp:293 src/LyXFunc.cpp:693 src/LyXFunc.cpp:829
 #: src/LyXFunc.cpp:1007 src/LyXVC.cpp:160
@@ -286,7 +286,7 @@ msgid "Move the selected database upwards in the list"
 msgstr "Sititchî on s' apinse"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:39
-#: src/frontends/qt4/ui/LaTeXUi.ui:113
+#: src/frontends/qt4/ui/LaTeXUi.ui:73
 #, fuzzy
 msgid "&Up"
 msgstr "Metaedje a djoû|#û#U"
@@ -296,7 +296,7 @@ msgstr "Metaedje a djoû|#û#U"
 msgid "Move the selected database downwards in the list"
 msgstr "Sititchî on s' apinse"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:275 src/frontends/qt4/ui/LaTeXUi.ui:106
+#: src/frontends/qt4/ui/BibtexUi.ui:275 src/frontends/qt4/ui/LaTeXUi.ui:66
 #, fuzzy
 msgid "Do&wn"
 msgstr "Deus|#D#w"
@@ -410,7 +410,7 @@ msgstr "Comincî pal difén|#R"
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
-#: src/frontends/qt4/ui/SymbolsUi.ui:165 src/frontends/qt4/ui/VSpaceUi.ui:49
+#: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1312
 #: src/frontends/qt4/GuiDocument.cpp:2144
 #, fuzzy
@@ -898,8 +898,7 @@ msgstr ""
 msgid "A&pply"
 msgstr "Mete èn oûve"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:89
-#: src/frontends/qt4/ui/SymbolsUi.ui:162
+#: src/frontends/qt4/ui/DelimiterUi.ui:89 src/frontends/qt4/ui/SymbolsUi.ui:56
 #, fuzzy
 msgid "Insert the delimiters"
 msgstr "Sititchî ene rawete di costé"
@@ -1689,55 +1688,55 @@ msgstr "Djîveye des tåvleas"
 msgid "&Edit"
 msgstr "Candjî"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:46
-#, fuzzy
-msgid "Document &class:"
-msgstr "Documint rlomé ("
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:78
+#: src/frontends/qt4/ui/LaTeXUi.ui:38
 #, fuzzy
 msgid "Modules"
 msgstr "Mitan|#t"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:120
+#: src/frontends/qt4/ui/LaTeXUi.ui:80
 #, fuzzy
 msgid "De&lete"
 msgstr "Waester foû di|#W"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:134
+#: src/frontends/qt4/ui/LaTeXUi.ui:94
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 #, fuzzy
 msgid "A&dd"
 msgstr "Radjouter a|#R#t"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:148
+#: src/frontends/qt4/ui/LaTeXUi.ui:108
 #, fuzzy
 msgid "S&elected:"
 msgstr "Waester foû di|#W"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:158
+#: src/frontends/qt4/ui/LaTeXUi.ui:118
 #, fuzzy
 msgid "A&vailable:"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:179
+#: src/frontends/qt4/ui/LaTeXUi.ui:151
 msgid "&Postscript driver:"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:219
+#: src/frontends/qt4/ui/LaTeXUi.ui:164
 #, fuzzy
 msgid "&Options:"
 msgstr "Tchûzes"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:242
+#: src/frontends/qt4/ui/LaTeXUi.ui:182
 msgid "Click to select a local document class definition file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:245
+#: src/frontends/qt4/ui/LaTeXUi.ui:185
 #, fuzzy
-msgid "&Select Local Layout..."
+msgid "&Local Layout..."
 msgstr "Adjinçmint "
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:192
+#, fuzzy
+msgid "Document &class:"
+msgstr "Documint rlomé ("
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 #, fuzzy
@@ -2252,7 +2251,7 @@ msgstr "Droete|#R"
 msgid "Line &spacing"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1266
+#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1258
 #: src/frontends/qt4/GuiDocument.cpp:576
 #, fuzzy
 msgid "Single"
@@ -2262,7 +2261,7 @@ msgstr "Simpe|#S"
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1272
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1264
 #: src/frontends/qt4/GuiDocument.cpp:580
 #, fuzzy
 msgid "Double"
@@ -3697,22 +3696,22 @@ msgstr "nén cnoxhu"
 msgid "Replace with selected word"
 msgstr "Fåt-i mete ci documint ci el plaece ?"
 
-#: src/frontends/qt4/ui/SymbolsUi.ui:42
+#: src/frontends/qt4/ui/SymbolsUi.ui:83
 msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
 msgstr ""
 
-#: src/frontends/qt4/ui/SymbolsUi.ui:45
+#: src/frontends/qt4/ui/SymbolsUi.ui:86
 #, fuzzy
 msgid "Ca&tegory:"
 msgstr "Tite|#k"
 
-#: src/frontends/qt4/ui/SymbolsUi.ui:77
+#: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
 msgstr ""
 
-#: src/frontends/qt4/ui/SymbolsUi.ui:80
+#: src/frontends/qt4/ui/SymbolsUi.ui:119
 #, fuzzy
 msgid "&Display all"
 msgstr "Sititchî ene etikete"
@@ -10509,11 +10508,11 @@ msgstr "Sititchî on rahuca"
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdcontext.inc:53 lib/ui/stdcontext.inc:63
 #: lib/ui/stdcontext.inc:70 lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:119
-#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:199
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:215 lib/ui/stdmenus.inc:460
 #, fuzzy
-msgid "Properties...|P"
-msgstr "Sititchî on rahuca"
+msgid "Settings...|S"
+msgstr "Gåliotaedje"
 
 #: lib/ui/stdcontext.inc:51
 msgid "Go back to Reference|G"
@@ -10695,113 +10694,123 @@ msgstr "Dizo|#o#B"
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:194 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:952
+#: lib/ui/stdcontext.inc:154 lib/ui/stdmenus.inc:375
+#, fuzzy
+msgid "Ragged Line Break|R"
+msgstr "Roye d' après|#y#N"
+
+#: lib/ui/stdcontext.inc:155 lib/ui/stdmenus.inc:376
+#, fuzzy
+msgid "Justified Line Break|J"
+msgstr "Roye d' après|#y#N"
+
+#: lib/ui/stdcontext.inc:162 lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:88
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
 #: src/mathed/InsetMathNest.cpp:536
 msgid "Cut"
 msgstr "Côper"
 
-#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:195 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:957
+#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:203 lib/ui/stdmenus.inc:89
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:945
 #: src/mathed/InsetMathNest.cpp:544
 msgid "Copy"
 msgstr "Copyî"
 
-#: lib/ui/stdcontext.inc:156 lib/ui/stdcontext.inc:196 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:912
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:204 lib/ui/stdmenus.inc:90
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:900
 #: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:516
 msgid "Paste"
 msgstr "Aclaper"
 
-#: lib/ui/stdcontext.inc:157 lib/ui/stdcontext.inc:197 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:205 lib/ui/stdmenus.inc:91
 #, fuzzy
 msgid "Paste Recent|e"
 msgstr "Aroymint"
 
-#: lib/ui/stdcontext.inc:159
+#: lib/ui/stdcontext.inc:167
 #, fuzzy
 msgid "Jump to Saved Bookmark|B"
 msgstr "Dizo|#o#B"
 
-#: lib/ui/stdcontext.inc:161 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:169 lib/ui/stdmenus.inc:98
 #, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: lib/ui/stdcontext.inc:162 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:170 lib/ui/stdmenus.inc:99
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: lib/ui/stdcontext.inc:164
+#: lib/ui/stdcontext.inc:172
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "Documint"
 
-#: lib/ui/stdcontext.inc:165 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:101
 #, fuzzy
 msgid "Text Style|S"
 msgstr "Documint"
 
-#: lib/ui/stdcontext.inc:166 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:102
 #, fuzzy
 msgid "Paragraph Settings...|P"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: lib/ui/stdcontext.inc:168
+#: lib/ui/stdcontext.inc:176
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Append Parameter"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:177 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Remove Last Parameter"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:179 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Parameter"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:180 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:188 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Parameter"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:181 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:189 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 #, fuzzy
 msgid "Insert Optional Parameter"
 msgstr "I manke èn årgumint"
 
-#: lib/ui/stdcontext.inc:182 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:190 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Remove Optional Parameter"
 msgstr "inset drovu"
 
-#: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:192 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Parameter Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:193 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Optional Parameter Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:186 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:194 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "Sititchî BibTeX"
@@ -11294,16 +11303,6 @@ msgstr "Espaçmints d' astampé"
 msgid "Hyphenation Point|H"
 msgstr "Plaece di côpaedje di mot"
 
-#: lib/ui/stdmenus.inc:375
-#, fuzzy
-msgid "New Line|e"
-msgstr "Li tåvlea est stitchî"
-
-#: lib/ui/stdmenus.inc:376
-#, fuzzy
-msgid "Line Break|B"
-msgstr "Roye d' après|#y#N"
-
 #: lib/ui/stdmenus.inc:387
 #, fuzzy
 msgid "Numbered Formula|N"
@@ -11379,11 +11378,6 @@ msgstr ""
 #: lib/ui/stdmenus.inc:459
 msgid "Compressed|m"
 msgstr ""
-
-#: lib/ui/stdmenus.inc:460
-#, fuzzy
-msgid "Settings...|S"
-msgstr "Gåliotaedje"
 
 #: lib/ui/stdmenus.inc:466
 #, fuzzy
@@ -11464,11 +11458,11 @@ msgstr "Abaguer on documint"
 msgid "Check spelling"
 msgstr "Waitî TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1025
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1028
 msgid "Undo"
 msgstr "Disfé"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1034
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1037
 msgid "Redo"
 msgstr "Rifé"
 
@@ -14402,7 +14396,7 @@ msgstr "dins li classe ki vos avîz tchwezi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:513 src/Text.cpp:254
+#: src/Buffer.cpp:513 src/Text.cpp:246
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
@@ -14420,12 +14414,12 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:561 src/Buffer.cpp:567 src/BufferView.cpp:1142
-#: src/BufferView.cpp:1148
+#: src/Buffer.cpp:561 src/Buffer.cpp:567 src/BufferView.cpp:1145
+#: src/BufferView.cpp:1151
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:562 src/BufferView.cpp:1143
+#: src/Buffer.cpp:562 src/BufferView.cpp:1146
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -14433,7 +14427,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:568 src/BufferView.cpp:1149
+#: src/Buffer.cpp:568 src/BufferView.cpp:1152
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -14605,83 +14599,83 @@ msgstr "Dj' a aroké come dji ratoûrneve!"
 msgid "conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:1329
+#: src/Buffer.cpp:1332
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/Buffer.cpp:1342
+#: src/Buffer.cpp:1345
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1343
+#: src/Buffer.cpp:1346
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
 
-#: src/Buffer.cpp:2102
+#: src/Buffer.cpp:2111
 #, fuzzy
 msgid "Preview source code"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2114
+#: src/Buffer.cpp:2123
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2118
+#: src/Buffer.cpp:2127
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:2217
+#: src/Buffer.cpp:2226
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Schaper tot seu"
 
-#: src/Buffer.cpp:2261
+#: src/Buffer.cpp:2270
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/Buffer.cpp:2284
+#: src/Buffer.cpp:2293
 msgid "Autosaving current document..."
 msgstr "Dji schape tot seu li documint drovu..."
 
-#: src/Buffer.cpp:2332
+#: src/Buffer.cpp:2341
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/Buffer.cpp:2333
+#: src/Buffer.cpp:2342
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:2370
+#: src/Buffer.cpp:2379
 #, fuzzy
 msgid "File name error"
 msgstr "No do fitchî:|#F"
 
-#: src/Buffer.cpp:2371
+#: src/Buffer.cpp:2380
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2412
+#: src/Buffer.cpp:2421
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2418
+#: src/Buffer.cpp:2427
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2424
+#: src/Buffer.cpp:2433
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2494
+#: src/Buffer.cpp:2503
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -14689,12 +14683,12 @@ msgid ""
 "could not be read."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/Buffer.cpp:2496
+#: src/Buffer.cpp:2505
 #, fuzzy
 msgid "Could not read document"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:2506
+#: src/Buffer.cpp:2515
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14702,20 +14696,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "I gn a ene copeye di schapeye po ci documint ci."
 
-#: src/Buffer.cpp:2509
+#: src/Buffer.cpp:2518
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2510
+#: src/Buffer.cpp:2519
 #, fuzzy
 msgid "&Recover"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2510
+#: src/Buffer.cpp:2519
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2530
+#: src/Buffer.cpp:2539
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14723,31 +14717,31 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2542
 #, fuzzy
 msgid "Load backup?"
 msgstr "Noer"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2543
 #, fuzzy
 msgid "&Load backup"
 msgstr "Noer"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2543
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2567
+#: src/Buffer.cpp:2576
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Voloz-ve drovi li documint?"
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2578
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Voloz-ve drovi li documint?"
 
-#: src/Buffer.cpp:2570
+#: src/Buffer.cpp:2579
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Comincî pal difén|#R"
@@ -14868,99 +14862,99 @@ msgstr "Nole informåcion po disfé"
 msgid "No more insets"
 msgstr "Pont d' ôte rawete"
 
-#: src/BufferView.cpp:665
+#: src/BufferView.cpp:668
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Dizo|#o#B"
 
-#: src/BufferView.cpp:1028
+#: src/BufferView.cpp:1031
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nole informåcion po disfé"
 
-#: src/BufferView.cpp:1037
+#: src/BufferView.cpp:1040
 msgid "No further redo information"
 msgstr " Nole informåcion po Rifé"
 
-#: src/BufferView.cpp:1189 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1195 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 #, fuzzy
 msgid "String not found!"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/BufferView.cpp:1211
+#: src/BufferView.cpp:1219
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/BufferView.cpp:1218
+#: src/BufferView.cpp:1226
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/BufferView.cpp:1225
+#: src/BufferView.cpp:1233
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/BufferView.cpp:1228
+#: src/BufferView.cpp:1236
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/BufferView.cpp:1275
+#: src/BufferView.cpp:1283
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1277
+#: src/BufferView.cpp:1285
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/BufferView.cpp:1280
+#: src/BufferView.cpp:1288
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:1282
+#: src/BufferView.cpp:1290
 #, fuzzy
 msgid "One word"
 msgstr "Mots clés:|#C#K"
 
-#: src/BufferView.cpp:1285
+#: src/BufferView.cpp:1293
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1288
+#: src/BufferView.cpp:1296
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1291
+#: src/BufferView.cpp:1299
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1294
+#: src/BufferView.cpp:1302
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1304
 #, fuzzy
 msgid "Statistics"
 msgstr "Schaper"
 
-#: src/BufferView.cpp:1978
+#: src/BufferView.cpp:1986
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:1989
+#: src/BufferView.cpp:1997
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:1991
+#: src/BufferView.cpp:1999
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
 
-#: src/BufferView.cpp:2217
+#: src/BufferView.cpp:2225
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14968,28 +14962,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.cpp:2219
+#: src/BufferView.cpp:2227
 #, fuzzy
 msgid "Could not read file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/BufferView.cpp:2226
+#: src/BufferView.cpp:2234
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr " hagnons n' ont nén stî ratoûrnés"
 
-#: src/BufferView.cpp:2227 src/output.cpp:39
+#: src/BufferView.cpp:2235 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/BufferView.cpp:2234
+#: src/BufferView.cpp:2242
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2235
+#: src/BufferView.cpp:2243
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16130,7 +16124,7 @@ msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 msgid "&Revert"
 msgstr "Schaper"
 
-#: src/LyXFunc.cpp:1043 src/Text3.cpp:1471
+#: src/LyXFunc.cpp:1043 src/Text3.cpp:1461
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
@@ -16718,100 +16712,100 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Text.cpp:232 src/Text.cpp:245
+#: src/Text.cpp:224 src/Text.cpp:237
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Lingaedje"
 
-#: src/Text.cpp:233
+#: src/Text.cpp:225
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:246
+#: src/Text.cpp:238
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:253
+#: src/Text.cpp:245
 #, fuzzy
 msgid "Unknown token"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Text.cpp:535
+#: src/Text.cpp:527
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/Text.cpp:546
+#: src/Text.cpp:538
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1232
+#: src/Text.cpp:1224
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Lingaedje"
 
-#: src/Text.cpp:1238
+#: src/Text.cpp:1230
 #, fuzzy
 msgid "Change: "
 msgstr "Pådje: "
 
-#: src/Text.cpp:1242
+#: src/Text.cpp:1234
 #, fuzzy
 msgid " at "
 msgstr " di "
 
-#: src/Text.cpp:1252
+#: src/Text.cpp:1244
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Fonte: "
 
-#: src/Text.cpp:1257
+#: src/Text.cpp:1249
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1263
+#: src/Text.cpp:1255
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espåçmint"
 
-#: src/Text.cpp:1269 src/frontends/qt4/GuiDocument.cpp:578
+#: src/Text.cpp:1261 src/frontends/qt4/GuiDocument.cpp:578
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1275
+#: src/Text.cpp:1267
 #, fuzzy
 msgid "Other ("
 msgstr "Ôte...|#Ô#O"
 
-#: src/Text.cpp:1284
+#: src/Text.cpp:1276
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1285
+#: src/Text.cpp:1277
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: src/Text.cpp:1286
+#: src/Text.cpp:1278
 #, fuzzy
 msgid ", Id: "
 msgstr ", Parfondeu: "
 
-#: src/Text.cpp:1287
+#: src/Text.cpp:1279
 #, fuzzy
 msgid ", Position: "
 msgstr "   tchûzes: "
 
-#: src/Text.cpp:1293
+#: src/Text.cpp:1285
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1295
+#: src/Text.cpp:1287
 msgid ", Boundary: "
 msgstr ""
 
@@ -16834,25 +16828,25 @@ msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
 msgid "Math editor mode"
 msgstr "Môde aspougneu matematike"
 
-#: src/Text3.cpp:804
+#: src/Text3.cpp:792
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "I manke èn årgumint"
 
-#: src/Text3.cpp:1026
+#: src/Text3.cpp:1014
 msgid "Layout "
 msgstr "Adjinçmint "
 
-#: src/Text3.cpp:1027
+#: src/Text3.cpp:1015
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/Text3.cpp:1578 src/Text3.cpp:1590
+#: src/Text3.cpp:1568 src/Text3.cpp:1580
 #, fuzzy
 msgid "Character set"
 msgstr "Tåve di caracteres:|#å#a"
 
-#: src/Text3.cpp:1731 src/Text3.cpp:1742
+#: src/Text3.cpp:1727 src/Text3.cpp:1738
 msgid "Paragraph layout set"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
@@ -19767,11 +19761,6 @@ msgstr ""
 msgid "Opened Marginal Note Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetNewline.h:70
-#, fuzzy
-msgid "line break"
-msgstr "Roye d' après|#y#N"
-
 #: src/insets/InsetNewpage.cpp:184 src/insets/InsetNewpage.cpp:196
 #, fuzzy
 msgid "New Page"
@@ -19938,17 +19927,17 @@ msgstr "Sititchî on vûde waranti"
 msgid "Unknown TOC type"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/insets/InsetTabular.cpp:3047
+#: src/insets/InsetTabular.cpp:3046
 #, fuzzy
 msgid "Opened table"
 msgstr "Drovi li fitchî d' aidance"
 
-#: src/insets/InsetTabular.cpp:4230
+#: src/insets/InsetTabular.cpp:4229
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Multicolones|#M"
 
-#: src/insets/InsetTabular.cpp:4231
+#: src/insets/InsetTabular.cpp:4230
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -20446,6 +20435,22 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Properties...|P"
+#~ msgstr "Sititchî on rahuca"
+
+#, fuzzy
+#~ msgid "New Line|e"
+#~ msgstr "Li tåvlea est stitchî"
+
+#, fuzzy
+#~ msgid "Line Break|B"
+#~ msgstr "Roye d' après|#y#N"
+
+#, fuzzy
+#~ msgid "line break"
+#~ msgstr "Roye d' après|#y#N"
 
 #, fuzzy
 #~ msgid "Save this document in bundled format"
