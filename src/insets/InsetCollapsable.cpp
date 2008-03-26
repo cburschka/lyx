@@ -512,10 +512,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 				// Nothing to do.
 				cur.undispatched();
 				return;
-			case mouse_button::none:
-			case mouse_button::button4:
-			case mouse_button::button5:
-				break;
 			}
 		}
 		if (geometry() == NoButton 

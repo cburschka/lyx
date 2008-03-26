@@ -70,7 +70,6 @@ using graphics::PreviewLoader;
 InsetText::InsetText(Buffer const & buf)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
-	Inset::setBuffer(const_cast<Buffer &>(buf));
 	initParagraphs(buf);
 }
 
@@ -84,6 +83,10 @@ InsetText::InsetText(InsetText const & in)
 	text_.paragraphs() = in.text_.paragraphs();
 	setParagraphOwner();
 }
+
+
+InsetText::InsetText()
+{}
 
 
 void InsetText::initParagraphs(Buffer const & buf)
