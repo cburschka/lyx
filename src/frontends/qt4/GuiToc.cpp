@@ -137,22 +137,23 @@ TocList const & GuiToc::tocs() const
 bool GuiToc::initialiseParams(string const & data)
 {
 	LYXERR(Debug::GUI, data);
-	QString str = QString::fromUtf8(data.c_str());
+	QString str = toqstr(data);
 	QString new_type;
-	if (str.contains("tableofcontents"))
+	if (str.contains("tableofcontents")) {
 		new_type = "tableofcontents";
-	else if (str.contains("floatlist")) {
+	} else if (str.contains("floatlist")) {
 		if (str.contains("\"figure"))
 			new_type = "figure";
 		else if (str.contains("\"table"))
 			new_type = "table";
 		else if (str.contains("\"algorithm"))
 			new_type = "algorithm";
-	} else if (!data.empty())
-		new_type = toqstr(data);
-	else
+	} else if (!str.isEmpty()) {
+		new_type = str;
+	} else {
 		// Default to Outliner.
 		new_type = "tableofcontents";
+	}
 
 	types_.clear();
 	type_names_.clear();
@@ -166,14 +167,7 @@ bool GuiToc::initialiseParams(string const & data)
 		toc_models_.push_back(new TocModel(it->second));
 	}
 
-	int selected_type = -1;
-	for (int i = 0; i != types_.size(); ++i) {
-		if (new_type == types_[i]) {
-			selected_type = i;
-			break;
-		}
-	}
-	widget_->updateGui(selected_type);
+	widget_->updateGui(types_.indexOf(new_type));
 
 	return true;
 }

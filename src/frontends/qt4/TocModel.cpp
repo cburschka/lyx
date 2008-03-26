@@ -23,21 +23,10 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-
-TocModel::TocModel(Toc const & toc)
-{
-	populate(toc);
-}
+typedef std::pair<QModelIndex, TocIterator> TocPair;
 
 
-TocModel const & TocModel::operator=(Toc const & toc)
-{
-	populate(toc);
-	return *this;
-}
-
-
-TocIterator const TocModel::tocIterator(QModelIndex const & index) const
+TocIterator TocModel::tocIterator(QModelIndex const & index) const
 {
 	TocMap::const_iterator map_it = toc_map_.find(index);
 	BOOST_ASSERT(map_it != toc_map_.end());
@@ -45,7 +34,7 @@ TocIterator const TocModel::tocIterator(QModelIndex const & index) const
 }
 
 
-QModelIndex const TocModel::modelIndex(TocIterator const & it) const
+QModelIndex TocModel::modelIndex(TocIterator const & it) const
 {
 	ModelMap::const_iterator map_it = model_map_.find(it);
 	//BOOST_ASSERT(it != model_map_.end());

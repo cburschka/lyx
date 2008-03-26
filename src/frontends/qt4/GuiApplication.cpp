@@ -573,7 +573,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		case WarningException:
 			Alert::warning(e.title_, e.details_);
 			return false;
-		};
+		}
 	}
 	catch (exception const & e) {
 		docstring s = _("LyX has caught an exception, it will now "

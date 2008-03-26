@@ -31,19 +31,15 @@ public:
 	///
 	TocModel() {}
 	///
-	TocModel(Toc const & toc);
-	///
-	~TocModel() {}
-	///
-	TocModel const & operator=(Toc const & toc);
+	TocModel(Toc const & toc) { populate(toc); }
 	///
 	void clear();
 	///
 	void populate(Toc const & toc);
 	///
-	TocIterator const tocIterator(QModelIndex const & index) const;
+	TocIterator tocIterator(QModelIndex const & index) const;
 	///
-	QModelIndex const modelIndex(TocIterator const & it) const;
+	QModelIndex modelIndex(TocIterator const & it) const;
 	///
 	int modelDepth() const;
 
@@ -53,8 +49,6 @@ private:
 		QModelIndex const & parent);
 	///
 	typedef std::map<QModelIndex, TocIterator> TocMap;
-	///
-	typedef std::pair<QModelIndex, TocIterator> TocPair;
 	///
 	typedef std::map<TocIterator, QModelIndex> ModelMap;
 	///
