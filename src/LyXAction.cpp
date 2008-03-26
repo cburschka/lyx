@@ -523,8 +523,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FIND
  * \li Action: Search for next occurence of a string.
- * \li Syntax: word-find <DATA>
+ * \li Syntax: word-find [<DATA>]
  * \li Params: <DATA>: data encoded from Find dialog (see #lyx::find2string()).
+                       If no parameter is given, search with last find-dialog
+		       data is used for search (i.e. find-next).
  * \li Origin: poenitz, Jan 7 2004
  * \endvar
  */
