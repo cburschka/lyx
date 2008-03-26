@@ -24,8 +24,9 @@ Some of the LyX functions have changed names:
   * LFUN_MENU_SEPARATOR_INSERT: removed. "menu-separator-insert" 
     has been replaced by "specialchar-insert menu-separator"
 
-- The function LFUN_BREAK_LINE, "break-line" has been renamed to LFUN_NEW_LINE,
-  "new-line".
+- The function LFUN_BREAK_LINE, "break-line" has been renamed to LFUN_NEWLINE_INSERT,
+  "newline-insert", and it now allows two options: "newline-insert newline" inserts
+  a \newline, "newline-insert linebreak" inserts a \linebreak.
 
 - The function LFUN_PAGEBREAK_INSERT, "pagebreak-insert" has been renamed to
   LFUN_NEWPAGE_INSERT, "newpage-insert". It obsololetes the following functions:
@@ -66,8 +67,6 @@ Some of the LyX functions have changed names:
 The following new LyX functions have been introduced:
 
 - LFUN_SPECIALCHAR_INSERT, "specialchar-insert" (see above).
-
-- LFUN_LINE_BREAK, "line-break".
 
 - LFUN_COMPLETION_INLINE, "completion-inline".
 
