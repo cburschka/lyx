@@ -86,7 +86,6 @@ public:
 private:
 	///
 	friend class InsetBoxParams;
-	friend class InsetBoxMailer;
 	///
 	docstring editMessage() const;
 	///

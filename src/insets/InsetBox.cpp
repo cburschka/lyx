@@ -232,7 +232,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BREAK_PARAGRAPH:
-		if (params_.inner_box) {
+		if (params_.inner_box)
 			return InsetCollapsable::getStatus(cur, cmd, flag);
 		flag.enabled(false);
 		return true;
