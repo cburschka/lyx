@@ -1248,7 +1248,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} 
 			case WRAP_CODE: {
 				InsetWrapParams p;
-				data = InsetWrapMailer::params2string(p);
+				data = InsetWrap::params2string(p);
 				break;
 			}
 			default:

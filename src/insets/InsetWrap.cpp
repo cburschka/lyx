@@ -34,6 +34,8 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
+#include "frontends/Application.h"
+
 using namespace std;
 
 namespace lyx {
@@ -53,7 +55,7 @@ InsetWrap::InsetWrap(Buffer const & buf, string const & type)
 
 InsetWrap::~InsetWrap()
 {
-	InsetWrapMailer(*this).hideDialog();
+	hideDialogs("ert", this);
 }
 
 
@@ -62,7 +64,7 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
-		InsetWrapMailer::string2params(to_utf8(cmd.argument()), params);
+		InsetWrap::string2params(to_utf8(cmd.argument()), params);
 		params_.lines = params.lines;
 		params_.placement = params.placement;
 		params_.overhang = params.overhang;
@@ -71,7 +73,7 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetWrapMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("wrap", params2string(params()));
 		break;
 
 	default:
@@ -252,25 +254,13 @@ bool InsetWrap::insetAllowed(InsetCode code) const
 bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
 	if (!InsetText::showInsetDialog(bv))
-		InsetWrapMailer(const_cast<InsetWrap &>(*this)).showDialog(bv);
+		bv->showDialog("wrap", params2string(params()),
+			const_cast<InsetWrap *>(this));
 	return true;
 }
 
 
-string const InsetWrapMailer::name_("wrap");
-
-InsetWrapMailer::InsetWrapMailer(InsetWrap & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetWrapMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
+void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 {
 	params = InsetWrapParams();
 	if (in.empty())
@@ -282,15 +272,21 @@ void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetWrapMailer", in, 1, name_);
+	if (!lex || name != "wrap") {
+		LYXERR0("InsetWrap::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"wrap\"\n");
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "Wrap")
-		return print_mailer_error("InsetBoxMailer", in, 2, "Wrap");
+	if (!lex || id != "Wrap") {
+		LYXERR0("InsetWrap::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"Wrap\"\n");
+		return;
+	}
 
 	// We have to read the type here!
 	lex >> params.type;
@@ -298,10 +294,10 @@ void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
 }
 
 
-string const InsetWrapMailer::params2string(InsetWrapParams const & params)
+string InsetWrap::params2string(InsetWrapParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "wrap" << ' ';
 	params.write(data);
 	return data.str();
 }

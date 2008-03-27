@@ -50,8 +50,7 @@ InsetERT::InsetERT(Buffer const & buf, CollapseStatus status)
 
 InsetERT::~InsetERT()
 {
-	if (theApp())
-		theApp()->hideDialogs("ert", this);
+	hideDialogs("ert", this);
 }
 
 

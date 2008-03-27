@@ -756,8 +756,11 @@ void GuiApplication::onLastWindowClosed()
 		global_menubar_->grabKeyboard();
 }
 
+
 ////////////////////////////////////////////////////////////////////////
+//
 // X11 specific stuff goes here...
+
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {
@@ -794,6 +797,13 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 } // namespace frontend
 
 
+void hideDialogs(std::string const & name, Inset * inset)
+{
+	if (theApp())
+		theApp()->hideDialogs(name, inset);
+}
+
+
 ////////////////////////////////////////////////////////////////////
 //
 // Font stuff
@@ -819,6 +829,12 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 	return frontend::guiApp->fontLoader().metrics(f);
 }
 
+
+////////////////////////////////////////////////////////////////////
+//
+// Misc stuff
+//
+////////////////////////////////////////////////////////////////////
 
 frontend::Clipboard & theClipboard()
 {

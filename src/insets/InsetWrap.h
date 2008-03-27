@@ -14,7 +14,6 @@
 
 #include "InsetCollapsable.h"
 #include "Length.h"
-#include "MailInset.h"
 
 
 namespace lyx {
@@ -50,6 +49,10 @@ public:
 	~InsetWrap();
 	///
 	InsetWrapParams const & params() const { return params_; }
+	///
+	static void string2params(std::string const &, InsetWrapParams &);
+	///
+	static std::string params2string(InsetWrapParams const &);
 private:
 	///
 	void write(std::ostream & os) const;
@@ -87,29 +90,6 @@ private:
 	///
 	docstring name_;
 };
-
-
-class InsetWrapMailer : public MailInset {
-public:
-	///
-	InsetWrapMailer(InsetWrap & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetWrapParams &);
-	///
-	static std::string const params2string(InsetWrapParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetWrap & inset_;
-};
-
 
 } // namespace lyx
 

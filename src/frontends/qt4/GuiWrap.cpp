@@ -189,7 +189,7 @@ void GuiWrap::updateContents()
 
 bool GuiWrap::initialiseParams(string const & data)
 {
-	InsetWrapMailer::string2params(data, params_);
+	InsetWrap::string2params(data, params_);
 	return true;
 }
 
@@ -202,7 +202,7 @@ void GuiWrap::clearParams()
 
 void GuiWrap::dispatchParams()
 {
-	string const lfun = InsetWrapMailer::params2string(params_);
+	string const lfun = InsetWrap::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 
