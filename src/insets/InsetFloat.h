@@ -10,15 +10,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSETFLOAT_H
-#define INSETFLOAT_H
+#ifndef INSET_FLOAT_H
+#define INSET_FLOAT_H
 
 #include "InsetCollapsable.h"
-#include "MailInset.h"
 
 
 namespace lyx {
-
 
 class InsetFloatParams {
 public:
@@ -41,15 +39,35 @@ public:
 };
 
 
-/** The float inset
 
-*/
-class InsetFloat : public InsetCollapsable {
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetFloat
+//
+/////////////////////////////////////////////////////////////////////////
+
+/// Used for "floating" objects like tables, figures etc.
+class InsetFloat : public InsetCollapsable
+{
 public:
 	///
 	InsetFloat(Buffer const &, std::string const &);
 	///
 	~InsetFloat();
+
+	///
+	static void string2params(std::string const &, InsetFloatParams &);
+	///
+	static std::string params2string(InsetFloatParams const &);
+	///
+	void setWide(bool w, BufferParams const &);
+	///
+	void setSideways(bool s, BufferParams const &);
+	///
+	void setSubfloat(bool s, BufferParams const &);
+	///
+	InsetFloatParams const & params() const { return params_; }
+private:
 	///
 	docstring name() const { return name_; }
 	///
@@ -75,16 +93,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	void wide(bool w, BufferParams const &);
-	///
-	void sideways(bool s, BufferParams const &);
-	///
-	void subfloat(bool s, BufferParams const &);
-	///
 	bool showInsetDialog(BufferView *) const;
-	///
-	InsetFloatParams const & params() const { return params_; }
-private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
@@ -102,28 +111,6 @@ private:
 };
 
 
-class InsetFloatMailer : public MailInset {
-public:
-	///
-	InsetFloatMailer(InsetFloat & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetFloatParams &);
-	///
-	static std::string const params2string(InsetFloatParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetFloat & inset_;
-};
-
-
 } // namespace lyx
 
-#endif
+#endif // INSET_FLOAT_H

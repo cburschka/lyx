@@ -15,10 +15,8 @@
 #ifndef INSET_SPACE_H
 #define INSET_SPACE_H
 
-
 #include "Inset.h"
 #include "Length.h"
-#include "MailInset.h"
 
 
 namespace lyx {
@@ -70,23 +68,30 @@ public:
 	Length length;
 };
 
+
 ///  Used to insert different kinds of spaces
-class InsetSpace : public Inset {
+class InsetSpace : public Inset
+{
 public:
 	///
-	InsetSpace();
+	InsetSpace() {}
 	///
-	~InsetSpace();
-
-	///
-	explicit
-	InsetSpace(InsetSpaceParams par);
+	explicit InsetSpace(InsetSpaceParams const & par);
 	///
 	InsetSpaceParams params() const { return params_; }
 	///
 	InsetSpaceParams::Kind kind() const;
 	///
+	~InsetSpace();
+
+	///
+	static void string2params(std::string const &, InsetSpaceParams &);
+	///
+	static std::string params2string(InsetSpaceParams const &);
+	///
 	Length length() const;
+
+private:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
@@ -123,9 +128,9 @@ public:
 	// a line separator)?
 	bool isSpace() const { return true; }
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
-private:
-	virtual Inset * clone() const { return new InsetSpace(*this); }
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	Inset * clone() const { return new InsetSpace(*this); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
@@ -133,28 +138,6 @@ private:
 
 	///
 	InsetSpaceParams params_;
-};
-
-
-class InsetSpaceMailer : public MailInset {
-public:
-	///
-	InsetSpaceMailer(InsetSpace & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetSpaceParams &);
-	///
-	static std::string const params2string(InsetSpaceParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetSpace & inset_;
 };
 
 

@@ -13,12 +13,12 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "BiblioInfo.h"
 #include "InsetCommand.h"
+
+#include "BiblioInfo.h"
+#include "Counters.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
-#include "MailInset.h"
-#include "Counters.h"
 #include "EmbeddedFiles.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -93,7 +93,7 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "include"; };
+	static std::string defaultCommand() { return "include"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
 protected:
@@ -130,4 +130,4 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);
 
 } // namespace lyx
 
-#endif // INSETINCLUDE_H
+#endif // INSET_INCLUDE_H

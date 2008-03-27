@@ -10,9 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSET_CITE_H
-#define INSET_CITE_H
-
+#ifndef INSET_CITATION_H
+#define INSET_CITATION_H
 
 #include "InsetCommand.h"
 #include "InsetCode.h"
@@ -22,13 +21,18 @@
 
 namespace lyx {
 
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetCitation
+//
+/////////////////////////////////////////////////////////////////////////
 
-/** Used to insert citations
- */
-class InsetCitation : public InsetCommand {
+/// Used to insert citations
+class InsetCitation : public InsetCommand
+{
 public:
 	///
-	InsetCitation(InsetCommandParams const &);
+	explicit InsetCitation(InsetCommandParams const &);
 	///
 	bool isLabeled() const { return true; }
 	///
@@ -54,12 +58,11 @@ public:
 
 	///
 	static ParamInfo const & findInfo(std::string const &);
-	//FIXME This is the locus of the design problem we have.
-	//It really ought to do what default_cite_command() does,
-	//but to do that it needs to know what CiteEngine we are
-	//using.
-	///
-	static std::string defaultCommand() { return "cite"; };
+	// FIXME This is the locus of the design problem we have.
+	// It really ought to do what default_cite_command() does,
+	// but to do that it needs to know what CiteEngine we are
+	// using.
+	static std::string defaultCommand() { return "cite"; }
 	///
 	static bool isCompatibleCommand(std::string const & cmd);
 private:
@@ -89,7 +92,6 @@ private:
 	mutable Cache cache;
 };
 
-
 } // namespace lyx
 
-#endif // INSET_CITE_H
+#endif // INSET_CITATION_H

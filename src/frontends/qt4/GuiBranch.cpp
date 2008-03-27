@@ -84,7 +84,7 @@ void GuiBranch::applyView()
 
 bool GuiBranch::initialiseParams(string const & data)
 {
-	InsetBranchMailer::string2params(data, params_);
+	InsetBranch::string2params(data, params_);
 	return true;
 }
 
@@ -97,7 +97,7 @@ void GuiBranch::clearParams()
 
 void GuiBranch::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetBranchMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetBranch::params2string(params_)));
 }
 
 

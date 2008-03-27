@@ -13,13 +13,13 @@
 #define INSETBRANCH_H
 
 #include "InsetCollapsable.h"
-#include "MailInset.h"
 
 
 namespace lyx {
 
 class InsetBranchParams {
 public:
+	///
 	explicit InsetBranchParams(docstring const & b = docstring())
 		: branch(b) {}
 	///
@@ -31,15 +31,28 @@ public:
 };
 
 
-/** The Branch inset for alternative, conditional output.
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetBranch
+//
+/////////////////////////////////////////////////////////////////////////
 
-*/
-class InsetBranch : public InsetCollapsable {
+/// The Branch inset for alternative, conditional output.
+
+class InsetBranch : public InsetCollapsable
+{
 public:
 	///
 	InsetBranch(Buffer const &, InsetBranchParams const &);
 	///
 	~InsetBranch();
+
+	///
+	static std::string params2string(InsetBranchParams const &);
+	///
+	static void string2params(std::string const &, InsetBranchParams &);
+
+private:
 	///
 	docstring editMessage() const;
 	///
@@ -51,7 +64,7 @@ public:
 	///
 	void setButtonLabel();
 	///
-	virtual ColorCode backgroundColor() const;
+	ColorCode backgroundColor() const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -76,48 +89,24 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	virtual void updateLabels(ParIterator const &);
+	void updateLabels(ParIterator const &);
 	///
 	bool isMacroScope() const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	virtual bool useEmptyLayout() const { return false; }
-protected:
+	bool useEmptyLayout() const { return false; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	docstring name() const { return from_ascii("Branch"); }
-private:
+	///
+	Inset * clone() const { return new InsetBranch(*this); }
+
 	///
 	friend class InsetBranchParams;
 	///
-	Inset * clone() const { return new InsetBranch(*this); }
-	///
 	InsetBranchParams params_;
-};
-
-
-class InsetBranchMailer : public MailInset {
-public:
-	///
-	InsetBranchMailer(InsetBranch & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static std::string const params2string(InsetBranchParams const &);
-	///
-	static void string2params(std::string const &, InsetBranchParams &);
-
-private:
-	///
-	static std::string const name_;
-	///
-	InsetBranch & inset_;
 };
 
 } // namespace lyx

@@ -702,7 +702,7 @@ void GuiExternal::getBB()
 
 bool GuiExternal::initialiseParams(string const & data)
 {
-	InsetExternalMailer::string2params(data, buffer(), params_);
+	InsetExternal::string2params(data, buffer(), params_);
 	return true;
 }
 
@@ -715,7 +715,7 @@ void GuiExternal::clearParams()
 
 void GuiExternal::dispatchParams()
 {
-	string const lfun = InsetExternalMailer::params2string(params_, buffer());
+	string const lfun = InsetExternal::params2string(params_, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 
@@ -723,7 +723,7 @@ void GuiExternal::dispatchParams()
 void GuiExternal::editExternal()
 {
 	applyView();
-	string const lfun = InsetExternalMailer::params2string(params_, buffer());
+	string const lfun = InsetExternal::params2string(params_, buffer());
 	dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
 }
 

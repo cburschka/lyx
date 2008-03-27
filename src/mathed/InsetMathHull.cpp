@@ -1173,7 +1173,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		InsetCommandParams p(LABEL_CODE);
 		p["name"] = cmd.argument().empty() ? old_label : cmd.argument();
-		string const data = InsetCommandMailer::params2string("label", p);
+		string const data = InsetCommand::params2string("label", p);
 
 		if (cmd.argument().empty())
 			cur.bv().showDialog("label", data);
@@ -1210,7 +1210,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p(LABEL_CODE);
-			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
+			InsetCommand::string2params(name, to_utf8(cmd.argument()), p);
 			docstring str = p["name"];
 			cur.recordUndoInset();
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();

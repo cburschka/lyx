@@ -12,15 +12,16 @@
 #include <config.h>
 
 #include "InsetListings.h"
-#include "InsetCaption.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetCaption.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "MetricsInfo.h"
@@ -30,6 +31,8 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/Application.h"
 
 #include <boost/regex.hpp>
 
@@ -52,7 +55,7 @@ InsetListings::InsetListings(Buffer const & buf, InsetListingsParams const & par
 
 InsetListings::~InsetListings()
 {
-	InsetListingsMailer(*this).hideDialog();
+	hideDialogs("listings", this);
 }
 
 
@@ -154,7 +157,7 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 		}
 	}
 	if (isInline) {
-                char const * delimiter = lstinline_delimiters;
+		char const * delimiter = lstinline_delimiters;
 		for (; delimiter != '\0'; ++delimiter)
 			if (!contains(code, *delimiter))
 				break;
@@ -209,11 +212,11 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetListingsMailer::string2params(to_utf8(cmd.argument()), params());
+		InsetListings::string2params(to_utf8(cmd.argument()), params());
 		break;
 	}
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetListingsMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("listings", params2string(params()));
 		break;
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
@@ -258,7 +261,8 @@ void InsetListings::validate(LaTeXFeatures & features) const
 
 bool InsetListings::showInsetDialog(BufferView * bv) const
 {
-	InsetListingsMailer(const_cast<InsetListings &>(*this)).showDialog(bv);
+	bv->showDialog("listings", params2string(params()),
+		const_cast<InsetListings *>(this));
 	return true;
 }
 
@@ -302,20 +306,7 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 }
 
 
-string const InsetListingsMailer::name_("listings");
-
-InsetListingsMailer::InsetListingsMailer(InsetListings & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetListingsMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetListingsMailer::string2params(string const & in,
+void InsetListings::string2params(string const & in,
 				   InsetListingsParams & params)
 {
 	params = InsetListingsParams();
@@ -330,11 +321,10 @@ void InsetListingsMailer::string2params(string const & in,
 }
 
 
-string const
-InsetListingsMailer::params2string(InsetListingsParams const & params)
+string InsetListings::params2string(InsetListingsParams const & params)
 {
 	ostringstream data;
-	data << name_ << " ";
+	data << "listings" << ' ';
 	params.write(data);
 	return data.str();
 }

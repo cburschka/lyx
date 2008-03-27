@@ -926,7 +926,7 @@ bool GuiTabular::initialiseParams(string const & data)
 	}
 
 	InsetTabular tmp(buffer());
-	InsetTabularMailer::string2params(data, tmp);
+	InsetTabular::string2params(data, tmp);
 	tabular_ = Tabular(tmp.tabular);
 	return true;
 }

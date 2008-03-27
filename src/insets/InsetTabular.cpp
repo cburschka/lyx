@@ -44,11 +44,11 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 
+#include "frontends/Application.h"
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
-
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -69,6 +69,7 @@ using namespace lyx::support;
 
 using boost::shared_ptr;
 using boost::dynamic_pointer_cast;
+
 
 namespace lyx {
 
@@ -2768,7 +2769,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab)
 
 InsetTabular::~InsetTabular()
 {
-	InsetTabularMailer(*this).hideDialog();
+	hideDialogs("tabular", this);
 }
 
 
@@ -3325,11 +3326,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //	}
 
 	case LFUN_LAYOUT_TABULAR:
-		InsetTabularMailer(*this).showDialog(&cur.bv());
+		cur.bv().showDialog("tabular", params2string(*this), this);
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetTabularMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("tabular", params2string(*this));
 		break;
 
 	case LFUN_TABULAR_FEATURE:
@@ -4433,14 +4434,16 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
-	InsetTabularMailer(*this).showDialog(bv);
+	bv->showDialog("tabular", params2string(*this),
+		const_cast<InsetTabular *>(this));
 	return true;
 }
 
 
 void InsetTabular::openLayoutDialog(BufferView * bv) const
 {
-	InsetTabularMailer(*this).showDialog(bv);
+	bv->showDialog("tabular", params2string(*this),
+		const_cast<InsetTabular *>(this));
 }
 
 
@@ -4810,20 +4813,7 @@ void InsetTabular::completionPosAndDim(Cursor const & cur, int & x, int & y,
 }
 
 
-string const InsetTabularMailer::name_("tabular");
-
-InsetTabularMailer::InsetTabularMailer(InsetTabular const & inset)
-	: inset_(const_cast<InsetTabular &>(inset))
-{}
-
-
-string const InsetTabularMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_);
-}
-
-
-void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
+void InsetTabular::string2params(string const & in, InsetTabular & inset)
 {
 	istringstream data(in);
 	Lexer lex(0,0);
@@ -4834,24 +4824,27 @@ void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 
 	string token;
 	lex >> token;
-	if (!lex || token != name_)
-		return print_mailer_error("InsetTabularMailer", in, 1,
-					  name_);
+	if (!lex || token != "tabular") {
+		LYXERR0("Expected arg 1 to be \"tabular\" in " << in);
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
 	lex >> token;
-	if (!lex || token != "Tabular")
-		return print_mailer_error("InsetTabularMailer", in, 2, "Tabular");
+	if (!lex || token != "Tabular") {
+		LYXERR0("Expected arg 2 to be \"Tabular\" in " << in);
+		return;
+	}
 
 	inset.read(lex);
 }
 
 
-string const InsetTabularMailer::params2string(InsetTabular const & inset)
+string InsetTabular::params2string(InsetTabular const & inset)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "tabular" << ' ';
 	inset.write(data);
 	data << "\\end_inset\n";
 	return data.str();

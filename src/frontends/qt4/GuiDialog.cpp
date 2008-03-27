@@ -132,7 +132,7 @@ bool GuiCommand::initialiseParams(string const & data)
 {
 	// The name passed with LFUN_INSET_APPLY is also the name
 	// used to identify the mailer.
-	InsetCommandMailer::string2params(lfun_name_, data, params_);
+	InsetCommand::string2params(lfun_name_, data, params_);
 	return true;
 }
 
@@ -142,8 +142,7 @@ void GuiCommand::dispatchParams()
 	if (lfun_name_.empty())
 		return;
 
-	string const lfun = 
-		InsetCommandMailer::params2string(lfun_name_, params_);
+	string const lfun = InsetCommand::params2string(lfun_name_, params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

@@ -75,7 +75,7 @@ void GuiNote::applyView()
 
 bool GuiNote::initialiseParams(string const & data)
 {
-	InsetNoteMailer::string2params(data, params_);
+	InsetNote::string2params(data, params_);
 	return true;
 }
 
@@ -88,7 +88,7 @@ void GuiNote::clearParams()
 
 void GuiNote::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetNoteMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetNote::params2string(params_)));
 }
 
 

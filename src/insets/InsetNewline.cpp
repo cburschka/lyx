@@ -13,19 +13,20 @@
 
 #include "InsetNewline.h"
 
+#include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Dimension.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
-#include "support/docstring.h"
 #include "support/docstream.h"
+#include "support/docstring.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ namespace lyx {
 
 InsetNewline::InsetNewline()
 {}
+
 
 void InsetNewlineParams::write(ostream & os) const
 {
@@ -98,7 +100,7 @@ void InsetNewline::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewlineParams params;
-		InsetNewlineMailer::string2params(to_utf8(cmd.argument()), params);
+		string2params(to_utf8(cmd.argument()), params);
 		params_.kind = params.kind;
 		break;
 	}
@@ -118,10 +120,11 @@ bool InsetNewline::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "newline") {
 			InsetNewlineParams params;
-			InsetNewlineMailer::string2params(to_utf8(cmd.argument()), params);
+			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-		} else
+		} else {
 			status.enabled(true);
+		}
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);
@@ -259,21 +262,7 @@ docstring InsetNewline::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetNewlineMailer::name_ = "newline";
-
-
-InsetNewlineMailer::InsetNewlineMailer(InsetNewline & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetNewlineMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetNewlineMailer::string2params(string const & in, InsetNewlineParams & params)
+void InsetNewline::string2params(string const & in, InsetNewlineParams & params)
 {
 	params = InsetNewlineParams();
 	if (in.empty())
@@ -285,17 +274,19 @@ void InsetNewlineMailer::string2params(string const & in, InsetNewlineParams & p
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetNewlineMailer", in, 1, name_);
+	if (!lex || name != "newline") {
+		LYXERR0("Expected arg 1 to be \"newlien\" in " << in);
+		return;
+	}
 
 	params.read(lex);
 }
 
 
-string const InsetNewlineMailer::params2string(InsetNewlineParams const & params)
+string InsetNewline::params2string(InsetNewlineParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "newline" << ' ';
 	params.write(data);
 	return data.str();
 }

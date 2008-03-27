@@ -12,26 +12,37 @@
 #ifndef INSET_BIBITEM_H
 #define INSET_BIBITEM_H
 
-
 #include "InsetCommand.h"
 #include "BiblioInfo.h"
 
 
 namespace lyx {
 
-/** Used to insert bibitem's information (key and label)
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetBibItem
+//
+/////////////////////////////////////////////////////////////////////////
 
-  Must be automatically inserted as the first object in a
-  bibliography paragraph.
-  */
-class InsetBibitem : public InsetCommand {
+/// Used to insert bibitem's information (key and label)
+
+//  Must be automatically inserted as the first object in a
+//  bibliography paragraph.
+class InsetBibitem : public InsetCommand
+{
 public:
 	///
 	InsetBibitem(InsetCommandParams const &);
+	///
+	static ParamInfo const & findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "bibitem"; }
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "bibitem"; }
+private:
 	/// verify label and update references.
-	/**
-	  * Overloaded from Inset::initView.
-	  **/
+	/// Overloaded from Inset::initView.
 	void initView();
 	///
 	bool isLabeled() const { return true; }
@@ -52,20 +63,13 @@ public:
 	/// Update the counter of this inset
 	virtual void updateLabels(ParIterator const &);
 	///
-	static ParamInfo const & findInfo(std::string const &);
-	///
-	static std::string defaultCommand() { return "bibitem"; };
-	///
-	static bool isCompatibleCommand(std::string const & s) 
-		{ return s == "bibitem"; }
-	///
 	void updateCommand(docstring const & new_key, bool dummy = false);
-protected:
 	///
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	virtual Inset * clone() const { return new InsetBibitem(*this); }
+	Inset * clone() const { return new InsetBibitem(*this); }
+
+	friend docstring bibitemWidest(Buffer const & buffer);
 	/// The label that is set by updateLabels
 	docstring autolabel_;
 	///
@@ -74,8 +78,7 @@ private:
 
 
 /// Return the widest label in the Bibliography.
-docstring const bibitemWidest(Buffer const &);
-
+docstring bibitemWidest(Buffer const &);
 
 } // namespace lyx
 

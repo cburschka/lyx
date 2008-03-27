@@ -158,7 +158,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			string const argument = to_utf8(cmd.argument());
 			if (params.documentClass().floats().typeExist(argument)) {
 				auto_ptr<InsetFloat> p(new InsetFloat(buf, argument));
-				p->wide(true, params);
+				p->setWide(true, params);
 				return p.release();
 			}
 			lyxerr << "Non-existent float type: " << argument << endl;
@@ -223,19 +223,19 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case BIBITEM_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetBibitem(icp);
 			}
 			
 			case BIBTEX_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetBibtex(icp);
 			}
 			
 			case CITE_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetCitation(icp);
 			}
 			
@@ -247,13 +247,13 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				
 			case LISTINGS_CODE: {
 				InsetListingsParams par;
-				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
+				InsetListings::string2params(to_utf8(cmd.argument()), par);
 				return new InsetListings(buf, par);
 			}
 			
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
-				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buf, iep);
+				InsetExternal::string2params(to_utf8(cmd.argument()), buf, iep);
 				auto_ptr<InsetExternal> inset(new InsetExternal(buf));
 				inset->setBuffer(buf);
 				inset->setParams(iep);
@@ -262,7 +262,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams igp;
-				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buf, igp);
+				InsetGraphics::string2params(to_utf8(cmd.argument()), buf, igp);
 				auto_ptr<InsetGraphics> inset(new InsetGraphics(buf));
 				inset->setParams(igp);
 				return inset.release();
@@ -270,13 +270,13 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case HYPERLINK_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetHyperlink(icp);
 			}
 			
 			case INCLUDE_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetInclude(icp);
 			}
 			
@@ -285,31 +285,31 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, lyx::to_utf8(cmd.argument()), icp);
 				return new InsetNomencl(icp);
 			}
 			
 			case LABEL_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetLabel(icp);
 			}
 			
 			case REF_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetRef(buf, icp);
 			}
 
 			case SPACE_CODE: {
 				InsetSpaceParams isp;
-				InsetSpaceMailer::string2params(to_utf8(cmd.argument()), isp);
+				InsetSpace::string2params(to_utf8(cmd.argument()), isp);
 				return new InsetSpace(isp);
 			}
 			
 			case TOC_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetTOC(icp);
 			}
 			

@@ -9,16 +9,16 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSETNOTE_H
-#define INSETNOTE_H
+#ifndef INSET_NOTE_H
+#define INSET_NOTE_H
 
 #include "InsetCollapsable.h"
-#include "MailInset.h"
 
 
 namespace lyx {
 
-class InsetNoteParams {
+class InsetNoteParams
+{
 public:
 	enum Type {
 		Note,
@@ -36,15 +36,24 @@ public:
 };
 
 
-/** The PostIt note inset, and other annotations
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetNote
+//
+/////////////////////////////////////////////////////////////////////////
 
-*/
-class InsetNote : public InsetCollapsable {
+/// The PostIt note inset, and other annotations
+class InsetNote : public InsetCollapsable
+{
 public:
 	///
 	InsetNote(Buffer const &, std::string const &);
 	///
 	~InsetNote();
+	///
+	static std::string params2string(InsetNoteParams const &);
+	///
+	static void string2params(std::string const &, InsetNoteParams &);
 	///
 	InsetNoteParams const & params() const { return params_; }
 private:
@@ -55,7 +64,7 @@ private:
 	///
 	docstring name() const;
 	///
-	virtual DisplayType display() const;
+	DisplayType display() const;
 	///
 	bool noFontChange() const { return params_.type != InsetNoteParams::Note; }
 	///
@@ -89,7 +98,7 @@ private:
 	/// used by the constructors
 	void init();
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	friend class InsetNoteParams;
 
@@ -98,29 +107,6 @@ private:
 };
 
 
-class InsetNoteMailer : public MailInset {
-public:
-	///
-	InsetNoteMailer(InsetNote & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static std::string const params2string(InsetNoteParams const &);
-	///
-	static void string2params(std::string const &, InsetNoteParams &);
-
-private:
-	///
-	static std::string const name_;
-	///
-	InsetNote & inset_;
-};
-
-
 } // namespace lyx
 
-#endif
+#endif // INSET_NOTE_H

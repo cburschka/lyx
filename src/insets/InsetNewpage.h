@@ -13,15 +13,12 @@
 #define INSET_NEWPAGE_H
 
 #include "Inset.h"
-#include "MailInset.h"
-
-#include "support/docstring.h"
-#include "support/gettext.h"
 
 
 namespace lyx {
 
-class InsetNewpageParams {
+class InsetNewpageParams
+{
 public:
 	/// The different kinds of spaces we support
 	enum Kind {
@@ -50,10 +47,13 @@ class InsetNewpage : public Inset
 public:
 	///
 	InsetNewpage();
-
 	///
-	explicit
-	InsetNewpage(InsetNewpageParams par);
+	explicit InsetNewpage(InsetNewpageParams const & par);
+	///
+	static void string2params(std::string const &, InsetNewpageParams &);
+	///
+	static std::string params2string(InsetNewpageParams const &);
+private:
 	///
 	InsetNewpageParams params() const { return params_; }
 	///
@@ -79,38 +79,16 @@ public:
 	///
 	ColorCode ColorName() const;
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
-private:
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	Inset * clone() const { return new InsetNewpage(*this); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+
 	///
 	InsetNewpageParams params_;
-};
-
-
-class InsetNewpageMailer : public MailInset {
-public:
-	///
-	InsetNewpageMailer(InsetNewpage & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetNewpageParams &);
-	///
-	static std::string const params2string(InsetNewpageParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetNewpage & inset_;
 };
 
 } // namespace lyx

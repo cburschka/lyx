@@ -605,7 +605,7 @@ bool GuiListings::isValid()
 
 bool GuiListings::initialiseParams(string const & data)
 {
-	InsetListingsMailer::string2params(data, params_);
+	InsetListings::string2params(data, params_);
 	return true;
 }
 
@@ -618,7 +618,7 @@ void GuiListings::clearParams()
 
 void GuiListings::dispatchParams()
 {
-	string const lfun = InsetListingsMailer::params2string(params_);
+	string const lfun = InsetListings::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

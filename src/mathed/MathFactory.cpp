@@ -414,7 +414,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 
 	InsetCommandParams icp(REF_CODE);
 	// FIXME UNICODE
-	InsetCommandMailer::string2params("ref", to_utf8(str), icp);
+	InsetCommand::string2params("ref", to_utf8(str), icp);
 	mathed_parse_cell(ar, icp.getCommand());
 	if (ar.size() != 1)
 		return false;

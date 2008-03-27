@@ -177,7 +177,7 @@ string const InsetMathRef::createDialogStr(string const & name) const
 	icp["reference"] = asString(cell(0));
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));
-	return InsetCommandMailer::params2string(name, icp);
+	return InsetCommand::params2string(name, icp);
 }
 
 

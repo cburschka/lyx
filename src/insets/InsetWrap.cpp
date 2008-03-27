@@ -273,8 +273,7 @@ void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 	string name;
 	lex >> name;
 	if (!lex || name != "wrap") {
-		LYXERR0("InsetWrap::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"wrap\"\n");
+		LYXERR0("Expected arg 1 to be \"wrap\" in " << in);
 		return;
 	}
 
@@ -283,8 +282,7 @@ void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 	string id;
 	lex >> id;
 	if (!lex || id != "Wrap") {
-		LYXERR0("InsetWrap::string2params(" << in << ")\n"
-					  "Expected arg 2 to be \"Wrap\"\n");
+		LYXERR0("Expected arg 2 to be \"Wrap\" in " << in);
 		return;
 	}
 

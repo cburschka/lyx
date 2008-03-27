@@ -32,16 +32,18 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/docstream.h"
-#include "support/convert.h"
+
+#include "frontends/Application.h"
 
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 // With this inset it will be possible to support the latex package
 // float.sty, and I am sure that with this and some additional support
@@ -121,7 +123,7 @@ InsetFloat::InsetFloat(Buffer const & buf, string const & type)
 
 InsetFloat::~InsetFloat()
 {
-	InsetFloatMailer(*this).hideDialog();
+	hideDialogs("float", this);
 }
 
 
@@ -131,18 +133,18 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
-		InsetFloatMailer::string2params(to_utf8(cmd.argument()), params);
+		string2params(to_utf8(cmd.argument()), params);
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 		params_.sideways  = params.sideways;
 		params_.subfloat  = params.subfloat;
-		wide(params_.wide, cur.buffer().params());
-		sideways(params_.sideways, cur.buffer().params());
+		setWide(params_.wide, cur.buffer().params());
+		setSideways(params_.sideways, cur.buffer().params());
 		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetFloatMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("float", params2string(params()));
 		break;
 	}
 
@@ -179,7 +181,7 @@ void InsetFloat::updateLabels(ParIterator const & it)
 	// floats can only embed subfloats of their own kind
 	if (subflt)
 		params_.type = saveflt;
-	subfloat(subflt, buffer().params());
+	setSubfloat(subflt, buffer().params());
 
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
@@ -253,9 +255,9 @@ void InsetFloat::write(ostream & os) const
 void InsetFloat::read(Lexer & lex)
 {
 	params_.read(lex);
-	wide(params_.wide, buffer().params());
-	sideways(params_.sideways, buffer().params());
-	subfloat(params_.subfloat, buffer().params());
+	setWide(params_.wide, buffer().params());
+	setSideways(params_.sideways, buffer().params());
+	setSubfloat(params_.subfloat, buffer().params());
 	InsetCollapsable::read(lex);
 }
 
@@ -381,12 +383,13 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
 	if (!InsetText::showInsetDialog(bv))
-		InsetFloatMailer(const_cast<InsetFloat &>(*this)).showDialog(bv);
+		bv->showDialog("float", params2string(params()),
+			const_cast<InsetFloat *>(this));
 	return true;
 }
 
 
-void InsetFloat::wide(bool w, BufferParams const & bp)
+void InsetFloat::setWide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
 	docstring lab = _("float: ") + floatName(params_.type, bp);
@@ -396,7 +399,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 }
 
 
-void InsetFloat::sideways(bool s, BufferParams const & bp)
+void InsetFloat::setSideways(bool s, BufferParams const & bp)
 {
 	params_.sideways = s;
 	docstring lab = _("float: ") + floatName(params_.type, bp);
@@ -406,7 +409,7 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 }
 
 
-void InsetFloat::subfloat(bool s, BufferParams const & bp)
+void InsetFloat::setSubfloat(bool s, BufferParams const & bp)
 {
 	params_.subfloat = s;
 	docstring lab = _("float: ") + floatName(params_.type, bp);
@@ -442,21 +445,7 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 }
 
 
-string const InsetFloatMailer::name_("float");
-
-InsetFloatMailer::InsetFloatMailer(InsetFloat & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetFloatMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetFloatMailer::string2params(string const & in,
-				     InsetFloatParams & params)
+void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 {
 	params = InsetFloatParams();
 	if (in.empty())
@@ -468,15 +457,19 @@ void InsetFloatMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetFloatMailer", in, 1, name_);
+	if (!lex || name != "float") {
+		LYXERR0("InsetFloat::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"float\"\n");
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "Float")
-		return print_mailer_error("InsetBoxMailer", in, 2, "Float");
+	if (!lex || id != "Float") {
+		LYXERR0("InsetFloat::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"Float\"\n");
+	}
 
 	// We have to read the type here!
 	lex >> params.type;
@@ -484,10 +477,10 @@ void InsetFloatMailer::string2params(string const & in,
 }
 
 
-string const InsetFloatMailer::params2string(InsetFloatParams const & params)
+string InsetFloat::params2string(InsetFloatParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "float" << ' ';
 	params.write(data);
 	return data.str();
 }

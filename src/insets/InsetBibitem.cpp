@@ -106,7 +106,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(BIBITEM_CODE);
-		InsetCommandMailer::string2params("bibitem", to_utf8(cmd.argument()), p);
+		InsetCommand::string2params("bibitem", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noUpdate();
 			break;
@@ -164,7 +164,7 @@ int InsetBibitem::plaintext(odocstream & os, OutputParams const &) const
 
 
 // ale070405
-docstring const bibitemWidest(Buffer const & buffer)
+docstring bibitemWidest(Buffer const & buffer)
 {
 	int w = 0;
 

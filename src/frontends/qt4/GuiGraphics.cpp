@@ -704,7 +704,7 @@ bool GuiGraphics::isValid()
 
 bool GuiGraphics::initialiseParams(string const & data)
 {
-	InsetGraphicsMailer::string2params(data, buffer(), params_);
+	InsetGraphics::string2params(data, buffer(), params_);
 	return true;
 }
 
@@ -718,8 +718,7 @@ void GuiGraphics::clearParams()
 void GuiGraphics::dispatchParams()
 {
 	InsetGraphicsParams tmp_params(params_);
-	string const lfun =
-		InsetGraphicsMailer::params2string(tmp_params, buffer());
+	string const lfun = InsetGraphics::params2string(tmp_params, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

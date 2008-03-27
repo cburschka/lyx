@@ -589,7 +589,7 @@ void GuiCitation::setCitedKeys()
 
 bool GuiCitation::initialiseParams(string const & data)
 {
-	InsetCommandMailer::string2params(lfun_name_, data, params_);
+	InsetCommand::string2params(lfun_name_, data, params_);
 	biblio::CiteEngine const engine = buffer().params().citeEngine();
 	bibkeysInfo_.fillWithBibKeys(&buffer());
 	citeStyles_ = biblio::getCiteStyles(engine);

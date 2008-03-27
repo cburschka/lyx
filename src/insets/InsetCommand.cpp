@@ -18,16 +18,20 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+
+#include "support/debug.h"
+#include "support/gettext.h"
+
+#include "frontends/Application.h"
 
 #include <sstream>
 
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 // FIXME Would it now be possible to use the InsetCode in 
 // place of the mailer name and recover that information?
@@ -42,7 +46,7 @@ InsetCommand::InsetCommand(InsetCommandParams const & p,
 InsetCommand::~InsetCommand()
 {
 	if (!mailer_name_.empty())
-		InsetCommandMailer(mailer_name_, *this).hideDialog();
+		hideDialogs(mailer_name_, this);
 }
 
 
@@ -64,6 +68,18 @@ void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 {
 	button_.setRenderState(mouse_hover_);
 	button_.draw(pi, x, y);
+}
+
+
+void InsetCommand::setParam(std::string const & name, docstring const & value)
+{
+	p_[name] = value;
+}
+
+
+docstring const & InsetCommand::getParam(std::string const & name) const
+{
+	return p_[name];
 }
 
 
@@ -106,7 +122,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		InsetCommandParams p(p_.code());
-		InsetCommandMailer::string2params(mailer_name_, to_utf8(cmd.argument()), p);
+		InsetCommand::string2params(mailer_name_, to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noUpdate();
 		else
@@ -116,7 +132,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		string const name = to_utf8(cmd.argument());
-		InsetCommandMailer(name, *this).updateDialog(&cur.bv());
+		cur.bv().updateDialog(name, params2string(name, params()));
 		break;
 	}
 
@@ -169,25 +185,13 @@ docstring InsetCommand::contextMenu(BufferView const &, int, int) const
 void InsetCommand::edit(Cursor & cur, bool, EntryDirection)
 {
 	if (!mailer_name_.empty())
-		InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
+		cur.bv().showDialog(mailer_name_, params2string(mailer_name_, p_), this);
 }
 
 
-InsetCommandMailer::InsetCommandMailer(
-	string const & name, InsetCommand & inset)
-	: name_(name), inset_(inset)
-{}
-
-
-string const InsetCommandMailer::inset2string(Buffer const &) const
-{
-	return params2string(name(), inset_.params());
-}
-
-
-//FIXME This could take an InsetCode instead of a string
-bool InsetCommandMailer::string2params(
-	string const & name, string const & in, InsetCommandParams & params)
+// FIXME This could take an InsetCode instead of a string
+bool InsetCommand::string2params(string const & name, string const & in,
+	InsetCommandParams & params)
 {
 	params.clear();
 	if (in.empty())
@@ -200,7 +204,8 @@ bool InsetCommandMailer::string2params(
 	string n;
 	lex >> n;
 	if (!lex || n != name) {
-		print_mailer_error("InsetCommandMailer", in, 1, name);
+		LYXERR0("InsetCommand::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"" << name << "\"\n");
 		return false;
 	}
 
@@ -209,7 +214,8 @@ bool InsetCommandMailer::string2params(
 	string id;
 	lex >> id;
 	if (!lex || id != "CommandInset") {
-		print_mailer_error("InsetCommandMailer", in, 2, "LatexCommand");
+		LYXERR0("InsetCommand::string2params(" << in << ")\n"
+					  "Expected arg 2 to be \"CommandInset\"\n");
 		return false;
 	}
 
@@ -218,9 +224,8 @@ bool InsetCommandMailer::string2params(
 }
 
 
-//FIXME This could take an InsetCode instead of a string
-string const
-InsetCommandMailer::params2string(string const & name,
+// FIXME This could take an InsetCode instead of a string
+string InsetCommand::params2string(string const & name,
 				  InsetCommandParams const & params)
 {
 	ostringstream data;

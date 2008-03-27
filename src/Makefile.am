@@ -478,7 +478,6 @@ endif
 noinst_LTLIBRARIES += liblyxinsets.la
 
 SOURCEFILESINSETS = \
-	insets/MailInset.cpp \
 	insets/ExternalSupport.cpp \
 	insets/ExternalTemplate.cpp \
 	insets/ExternalTransforms.cpp \
@@ -531,7 +530,6 @@ SOURCEFILESINSETS = \
 	insets/InsetWrap.cpp
 
 HEADERFILESINSETS = \
-	insets/MailInset.h \
 	insets/ExternalSupport.h \
 	insets/ExternalTemplate.h \
 	insets/ExternalTransforms.h \

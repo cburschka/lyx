@@ -37,6 +37,8 @@
 #include "support/docstream.h"
 #include "support/Translator.h"
 
+#include "frontends/Application.h"
+
 #include <algorithm>
 #include <sstream>
 
@@ -121,7 +123,7 @@ InsetNote::InsetNote(Buffer const & buf, string const & label)
 
 InsetNote::~InsetNote()
 {
-	InsetNoteMailer(*this).hideDialog();
+	hideDialogs("note", this);
 }
 
 
@@ -166,7 +168,8 @@ void InsetNote::setButtonLabel()
 
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
-	InsetNoteMailer(const_cast<InsetNote &>(*this)).showDialog(bv);
+	bv->showDialog("note", params2string(params()),
+		const_cast<InsetNote *>(this));
 	return true;
 }
 
@@ -176,14 +179,15 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
-		InsetNoteMailer::string2params(to_utf8(cmd.argument()), params_);
+		string2params(to_utf8(cmd.argument()), params_);
 		// get a bp from cur:
 		setLayout(cur.buffer().params());
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetNoteMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("note", params2string(params()));
 		break;
+
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -202,7 +206,7 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 				cmd.getArg(2) == "Note");
 		if (cmd.getArg(0) == "note") {
 			InsetNoteParams params;
-			InsetNoteMailer::string2params(to_utf8(cmd.argument()), params);
+			string2params(to_utf8(cmd.argument()), params);
 			flag.setOnOff(params_.type == params.type);
 		}
 		return true;
@@ -347,30 +351,16 @@ docstring InsetNote::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetNoteMailer::name_("note");
-
-InsetNoteMailer::InsetNoteMailer(InsetNote & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetNoteMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-string const InsetNoteMailer::params2string(InsetNoteParams const & params)
+string InsetNote::params2string(InsetNoteParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "note" << ' ';
 	params.write(data);
 	return data.str();
 }
 
 
-void InsetNoteMailer::string2params(string const & in,
-				    InsetNoteParams & params)
+void InsetNote::string2params(string const & in, InsetNoteParams & params)
 {
 	params = InsetNoteParams();
 
@@ -383,15 +373,19 @@ void InsetNoteMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetNoteMailer", in, 1, name_);
+	if (!lex || name != "note") {
+		LYXERR0("Expected arg 1 to be \"note\" in " << in);
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "Note")
-		return print_mailer_error("InsetNoteMailer", in, 2, "Note");
+	if (!lex || id != "Note") {
+		LYXERR0("Expected arg 1 to be \"Note\" in " << in);
+		return;
+	}
 
 	params.read(lex);
 }

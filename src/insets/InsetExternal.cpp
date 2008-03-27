@@ -18,6 +18,7 @@
 #include "insets/RenderPreview.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -31,6 +32,7 @@
 #include "OutputParams.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 
 #include "graphics/PreviewLoader.h"
 
@@ -422,7 +424,7 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 
 InsetExternal::~InsetExternal()
 {
-	InsetExternalMailer(*this).hideDialog();
+	hideDialogs("external", this);
 }
 
 
@@ -456,25 +458,28 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_EXTERNAL_EDIT: {
 		InsetExternalParams p =  params();
 		if (!cmd.argument().empty())
-			InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+			string2params(to_utf8(cmd.argument()), buffer(), p);
 		external::editExternal(p, buffer());
 		break;
 	}
 
 	case LFUN_INSET_MODIFY: {
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		string2params(to_utf8(cmd.argument()), buffer(), p);
 		setParams(p);
 		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetExternalMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("external",
+			params2string(params(), cur.bv().buffer()));
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			InsetExternalMailer(*this).showDialog(&cur.bv());
+			cur.bv().showDialog("external",
+				params2string(params(), cur.bv().buffer()),
+				this);
 		break;
 
 	default:
@@ -514,7 +519,9 @@ void InsetExternal::updateEmbeddedFile(EmbeddedFile const & file)
 
 void InsetExternal::edit(Cursor & cur, bool, EntryDirection)
 {
-	InsetExternalMailer(*this).showDialog(&cur.bv());
+	cur.bv().showDialog("external",
+		params2string(params(), cur.bv().buffer()),
+		this);
 }
 
 
@@ -854,10 +861,6 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 }
 
 
-//
-// preview stuff
-//
-
 void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 {
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
@@ -872,24 +875,8 @@ void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-/// Mailer stuff
-
-string const InsetExternalMailer::name_("external");
-
-InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetExternalMailer::inset2string(Buffer const & buffer) const
-{
-	return params2string(inset_.params(), buffer);
-}
-
-
-void InsetExternalMailer::string2params(string const & in,
-					Buffer const & buffer,
-					InsetExternalParams & params)
+void InsetExternal::string2params(string const & in, Buffer const & buffer,
+	InsetExternalParams & params)
 {
 	params = InsetExternalParams();
 	if (in.empty())
@@ -901,26 +888,31 @@ void InsetExternalMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetExternalMailer", in, 1, name_);
+	if (!lex || name != "external") {
+		LYXERR0("InsetExternal::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"external\"\n");
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "External")
-		return print_mailer_error("InsetBoxMailer", in, 2, "External");
+	if (!lex || id != "External") {
+		LYXERR0("InsetExternal::string2params(" << in << ")\n"
+					  "Expected arg 2 to be \"External\"\n");
+		return;
+	}
 
 	params.read(buffer, lex);
 }
 
 
-string const
-InsetExternalMailer::params2string(InsetExternalParams const & params,
-				   Buffer const & buffer)
+string InsetExternal::params2string(InsetExternalParams const & params,
+	Buffer const & buffer)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "external" << ' ';
 	params.write(buffer, data);
 	data << "\\end_inset\n";
 	return data.str();

@@ -1287,7 +1287,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		p["target"] = (cmd.argument().empty()) ?
 			content : cmd.argument();
-		string const data = InsetCommandMailer::params2string("href", p);
+		string const data = InsetCommand::params2string("href", p);
 		if (p["target"].empty()) {
 			bv->showDialog("href", data);
 		} else {
@@ -1303,7 +1303,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		p["name"] = (cmd.argument().empty()) ?
 			cur.getPossibleLabel() :
 			cmd.argument();
-		string const data = InsetCommandMailer::params2string("label", p);
+		string const data = InsetCommand::params2string("label", p);
 
 		if (cmd.argument().empty()) {
 			bv->showDialog("label", data);

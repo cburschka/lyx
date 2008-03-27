@@ -32,14 +32,13 @@
 
 // Lgb
 
-#ifndef INSETTABULAR_H
-#define INSETTABULAR_H
+#ifndef INSET_TABULAR_H
+#define INSET_TABULAR_H
 
 #include "Inset.h"
 #include "InsetText.h"
 #include "Layout.h"
 #include "Length.h"
-#include "MailInset.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -652,13 +651,14 @@ private:
 
 
 ///
-class InsetTableCell : public InsetText {
+class InsetTableCell : public InsetText
+{
 public:
 	///
-	explicit InsetTableCell(Buffer const & buf,
+	InsetTableCell(Buffer const & buf,
 		Tabular::CellData const * cd, Tabular const * t);
 	///
-	virtual InsetCode lyxCode() const { return CELL_CODE; }
+	InsetCode lyxCode() const { return CELL_CODE; }
 	///
 	Inset * clone() { return new InsetTableCell(*this); }
 	///
@@ -677,24 +677,30 @@ public:
 	///
 	void setTabular(Tabular const * t) { table_ = t; }
 private:
-	/// 
-	Tabular::CellData const * cell_data_;
-	/// 
-	Tabular const * table_;
 	/// unimplemented
 	InsetTableCell();
 	/// unimplemented
 	void operator=(InsetTableCell const &);
+
+	/// 
+	Tabular::CellData const * cell_data_;
+	/// 
+	Tabular const * table_;
 };
 
 
-class InsetTabular : public Inset {
+class InsetTabular : public Inset
+{
 public:
 	///
 	InsetTabular(Buffer const &, row_type rows = 1,
 		     col_type columns = 1);
 	///
 	~InsetTabular();
+	///
+	static void string2params(std::string const &, InsetTabular &);
+	///
+	static std::string params2string(InsetTabular const &);
 	///
 	void read(Lexer &);
 	///
@@ -870,30 +876,8 @@ private:
 	bool colselect_;
 };
 
-
-class InsetTabularMailer : public MailInset {
-public:
-	///
-	InsetTabularMailer(InsetTabular const & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetTabular &);
-	///
-	static std::string const params2string(InsetTabular const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetTabular & inset_;
-};
-
 std::string const featureAsString(Tabular::Feature feature);
 
 } // namespace lyx
 
-#endif
+#endif // INSET_TABULAR_H

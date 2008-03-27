@@ -14,6 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "BranchList.h"
 #include "Color.h"
 #include "Counters.h"
@@ -21,17 +22,21 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "TextClass.h"
+
+#include "support/debug.h"
+#include "support/gettext.h"
+
+#include "frontends/Application.h"
 
 #include <sstream>
 
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 InsetBranch::InsetBranch(Buffer const & buf, InsetBranchParams const & params)
 	: InsetCollapsable(buf), params_(params)
@@ -40,7 +45,7 @@ InsetBranch::InsetBranch(Buffer const & buf, InsetBranchParams const & params)
 
 InsetBranch::~InsetBranch()
 {
-	InsetBranchMailer(*this).hideDialog();
+	hideDialogs("branch", this);
 }
 
 
@@ -103,7 +108,8 @@ ColorCode InsetBranch::backgroundColor() const
 
 bool InsetBranch::showInsetDialog(BufferView * bv) const
 {
-	InsetBranchMailer(const_cast<InsetBranch &>(*this)).showDialog(bv);
+	bv->showDialog("branch", params2string(params()),
+			const_cast<InsetBranch *>(this));
 	return true;
 }
 
@@ -113,7 +119,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
-		InsetBranchMailer::string2params(to_utf8(cmd.argument()), params);
+		InsetBranch::string2params(to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
 		setLayout(cur.buffer().params());
 		break;
@@ -127,7 +133,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetBranchMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("branch", params2string(params()));
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -259,30 +265,16 @@ bool InsetBranch::isMacroScope() const
 }
 
 
-string const InsetBranchMailer::name_("branch");
-
-InsetBranchMailer::InsetBranchMailer(InsetBranch & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetBranchMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-string const InsetBranchMailer::params2string(InsetBranchParams const & params)
+string InsetBranch::params2string(InsetBranchParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "branch" << ' ';
 	params.write(data);
 	return data.str();
 }
 
 
-void InsetBranchMailer::string2params(string const & in,
-				      InsetBranchParams & params)
+void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 {
 	params = InsetBranchParams();
 	if (in.empty())
@@ -294,15 +286,21 @@ void InsetBranchMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (name != name_)
-		return print_mailer_error("InsetBranchMailer", in, 1, name_);
+	if (name != "branch") {
+		LYXERR0("InsetBranch::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"branch\"\n");
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "Branch")
-		return print_mailer_error("InsetBranchMailer", in, 2, "Branch");
+	if (!lex || id != "Branch") {
+		LYXERR0("InsetBranch::string2params(" << in << ")\n"
+					  "Expected arg 2 to be \"Branch\"\n");
+		return;
+	}
 
 	params.read(lex);
 }

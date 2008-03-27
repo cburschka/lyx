@@ -19,6 +19,7 @@
 #include "LyXRC.h"
 #include "Spacing.h"
 #include "FuncRequest.h"
+
 #include "insets/InsetSpace.h"
 
 #include "support/gettext.h"
@@ -248,9 +249,8 @@ void GuiHSpace::updateContents()
 
 bool GuiHSpace::initialiseParams(string const & data)
 {
-	InsetSpaceMailer::string2params(data, params_);
+	InsetSpace::string2params(data, params_);
 	setButtonsValid(true);
-
 	return true;
 }
 
@@ -263,13 +263,13 @@ void GuiHSpace::clearParams()
 
 void GuiHSpace::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetSpaceMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetSpace::params2string(params_)));
 }
 
 
 bool GuiHSpace::isValid()
 {
-	return (spacingCO->currentIndex() != 7 || !valueLE->text().isEmpty());
+	return spacingCO->currentIndex() != 7 || !valueLE->text().isEmpty();
 }
 
 

@@ -1176,7 +1176,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case TOC_CODE:
 			case HYPERLINK_CODE: {
 				InsetCommandParams p(code);
-				data = InsetCommandMailer::params2string(name, p);
+				data = InsetCommand::params2string(name, p);
 				break;
 			} 
 			case INCLUDE_CODE: {
@@ -1186,7 +1186,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					// default type is requested
 					data = "include";
 				InsetCommandParams p(INCLUDE_CODE, data);
-				data = InsetCommandMailer::params2string("include", p);
+				data = InsetCommand::params2string("include", p);
 				break;
 			} 
 			case BOX_CODE: {
@@ -1197,12 +1197,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} 
 			case BRANCH_CODE: {
 				InsetBranchParams p;
-				data = InsetBranchMailer::params2string(p);
+				data = InsetBranch::params2string(p);
 				break;
 			} 
 			case CITE_CODE: {
 				InsetCommandParams p(CITE_CODE);
-				data = InsetCommandMailer::params2string(name, p);
+				data = InsetCommand::params2string(name, p);
 				break;
 			} 
 			case ERT_CODE: {
@@ -1212,33 +1212,33 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case EXTERNAL_CODE: {
 				InsetExternalParams p;
 				Buffer const & buffer = *lyx_view_->buffer();
-				data = InsetExternalMailer::params2string(p, buffer);
+				data = InsetExternal::params2string(p, buffer);
 				break;
 			} 
 			case FLOAT_CODE:  {
 				InsetFloatParams p;
-				data = InsetFloatMailer::params2string(p);
+				data = InsetFloat::params2string(p);
 				break;
 			} 
 			case LISTINGS_CODE: {
 				InsetListingsParams p;
-				data = InsetListingsMailer::params2string(p);
+				data = InsetListings::params2string(p);
 				break;
 			} 
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams p;
 				Buffer const & buffer = *lyx_view_->buffer();
-				data = InsetGraphicsMailer::params2string(p, buffer);
+				data = InsetGraphics::params2string(p, buffer);
 				break;
 			} 
 			case NOTE_CODE: {
 				InsetNoteParams p;
-				data = InsetNoteMailer::params2string(p);
+				data = InsetNote::params2string(p);
 				break;
 			} 
 			case SPACE_CODE: {
 				InsetSpaceParams p;
-				data = InsetSpaceMailer::params2string(p);
+				data = InsetSpace::params2string(p);
 				break;
 			} 
 			case VSPACE_CODE: {
@@ -1279,7 +1279,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				icp["key"] = from_utf8(arg);
 				if (!opt1.empty())
 					icp["before"] = from_utf8(opt1);
-				string icstr = InsetCommandMailer::params2string("citation", icp);
+				string icstr = InsetCommand::params2string("citation", icp);
 				FuncRequest fr(LFUN_INSET_INSERT, icstr);
 				dispatch(fr);
 			} else

@@ -70,6 +70,7 @@ TODO
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -177,7 +178,7 @@ Inset * InsetGraphics::clone() const
 
 InsetGraphics::~InsetGraphics()
 {
-	InsetGraphicsMailer(*this).hideDialog();
+	hideDialogs("graphics", this);
 }
 
 
@@ -204,14 +205,14 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_GRAPHICS_EDIT: {
 		InsetGraphicsParams p = params();
 		if (!cmd.argument().empty())
-			InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+			string2params(to_utf8(cmd.argument()), buffer(), p);
 		editGraphics(p, buffer());
 		break;
 	}
 
 	case LFUN_INSET_MODIFY: {
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer(), p);
+		string2params(to_utf8(cmd.argument()), buffer(), p);
 		if (!p.filename.empty())
 			setParams(p);
 		else
@@ -220,12 +221,14 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetGraphicsMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("graphics", params2string(params(),
+cur.bv().buffer()));
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			InsetGraphicsMailer(*this).showDialog(&cur.bv());
+			cur.bv().showDialog("graphics", params2string(params(),
+cur.bv().buffer()), this);
 		break;
 
 	default:
@@ -266,7 +269,8 @@ void InsetGraphics::updateEmbeddedFile(EmbeddedFile const & file)
 
 void InsetGraphics::edit(Cursor & cur, bool, EntryDirection)
 {
-	InsetGraphicsMailer(*this).showDialog(&cur.bv());
+	cur.bv().showDialog("graphics", params2string(params(),
+cur.bv().buffer()), this);
 }
 
 
@@ -309,7 +313,7 @@ void InsetGraphics::read(Lexer & lex)
 }
 
 
-string const InsetGraphics::createLatexOptions() const
+string InsetGraphics::createLatexOptions() const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we might have a trailing comma that we would like to remove
@@ -368,7 +372,7 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
-docstring const InsetGraphics::toDocbookLength(Length const & len) const
+docstring InsetGraphics::toDocbookLength(Length const & len) const
 {
 	odocstringstream result;
 	switch (len.unit()) {
@@ -425,7 +429,8 @@ docstring const InsetGraphics::toDocbookLength(Length const & len) const
 	return result.str();
 }
 
-docstring const InsetGraphics::createDocBookAttributes() const
+
+docstring InsetGraphics::createDocBookAttributes() const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we copied the code from createLatexParams() ;-)
@@ -949,22 +954,8 @@ docstring InsetGraphics::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetGraphicsMailer::name_("graphics");
-
-InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetGraphicsMailer::inset2string(Buffer const & buffer) const
-{
-	return params2string(inset_.params(), buffer);
-}
-
-
-void InsetGraphicsMailer::string2params(string const & in,
-					Buffer const & buffer,
-					InsetGraphicsParams & params)
+void InsetGraphics::string2params(string const & in, Buffer const & buffer,
+	InsetGraphicsParams & params)
 {
 	if (in.empty())
 		return;
@@ -975,20 +966,22 @@ void InsetGraphicsMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetGraphicsMailer", in, 1, name_);
+	if (!lex || name != "graphics") {
+		LYXERR0("InsetGraphics::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"graphics\"\n");
+		return;
+	}
 
 	params = InsetGraphicsParams();
 	readInsetGraphics(lex, buffer.filePath(), params);
 }
 
 
-string const
-InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
-				   Buffer const & buffer)
+string InsetGraphics::params2string(InsetGraphicsParams const & params,
+	Buffer const & buffer)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "graphics" << ' ';
 	params.Write(data, buffer);
 	data << "\\end_inset\n";
 	return data.str();

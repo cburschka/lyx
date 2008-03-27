@@ -38,10 +38,10 @@ InsetNewpage::InsetNewpage()
 {}
 
 
-InsetNewpage::InsetNewpage(InsetNewpageParams par)
-{
-	params_.kind = par.kind;
-}
+InsetNewpage::InsetNewpage(InsetNewpageParams const & params)
+	: params_(params)
+{}
+
 
 void InsetNewpageParams::write(ostream & os) const
 {
@@ -146,7 +146,7 @@ void InsetNewpage::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetNewpageParams params;
-		InsetNewpageMailer::string2params(to_utf8(cmd.argument()), params);
+		string2params(to_utf8(cmd.argument()), params);
 		params_.kind = params.kind;
 		break;
 	}
@@ -166,10 +166,11 @@ bool InsetNewpage::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "newpage") {
 			InsetNewpageParams params;
-			InsetNewpageMailer::string2params(to_utf8(cmd.argument()), params);
+			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-		} else
+		} else {
 			status.enabled(true);
+		}
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);
@@ -264,21 +265,7 @@ docstring InsetNewpage::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetNewpageMailer::name_ = "newpage";
-
-
-InsetNewpageMailer::InsetNewpageMailer(InsetNewpage & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetNewpageMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetNewpageMailer::string2params(string const & in, InsetNewpageParams & params)
+void InsetNewpage::string2params(string const & in, InsetNewpageParams & params)
 {
 	params = InsetNewpageParams();
 	if (in.empty())
@@ -290,17 +277,19 @@ void InsetNewpageMailer::string2params(string const & in, InsetNewpageParams & p
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetNewpageMailer", in, 1, name_);
+	if (!lex || name != "newpage") {
+		LYXERR0("Expected arg 2 to be \"wrap\" in " << in);
+		return;
+	}
 
 	params.read(lex);
 }
 
 
-string const InsetNewpageMailer::params2string(InsetNewpageParams const & params)
+string InsetNewpage::params2string(InsetNewpageParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "newpage" << ' ';
 	params.write(data);
 	return data.str();
 }

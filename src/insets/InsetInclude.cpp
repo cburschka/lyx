@@ -263,7 +263,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(INCLUDE_CODE);
-		InsetCommandMailer::string2params("include", to_utf8(cmd.argument()), p);
+		InsetCommand::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));

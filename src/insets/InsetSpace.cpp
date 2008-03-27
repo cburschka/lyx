@@ -15,6 +15,7 @@
 
 #include "InsetSpace.h"
 
+#include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
@@ -24,28 +25,23 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
-#include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
-
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/Application.h"
+#include "frontends/FontMetrics.h"
+#include "frontends/Painter.h"
 
 using namespace std;
 
 namespace lyx {
 
 
-InsetSpace::InsetSpace()
+InsetSpace::InsetSpace(InsetSpaceParams const & params)
+	: params_(params)
 {}
-
-
-InsetSpace::InsetSpace(InsetSpaceParams par)
-{
-	params_.kind = par.kind;
-	params_.length = par.length;
-}
 
 
 InsetSpaceParams::Kind InsetSpace::kind() const
@@ -62,7 +58,7 @@ Length InsetSpace::length() const
 
 InsetSpace::~InsetSpace()
 {
-	InsetSpaceMailer(*this).hideDialog();
+	hideDialogs("space", this);
 }
 
 
@@ -125,7 +121,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetSpaceParams params;
-		InsetSpaceMailer::string2params(to_utf8(cmd.argument()), params);
+		string2params(to_utf8(cmd.argument()), params);
 		params_.kind = params.kind;
 		params_.length = params.length;
 		break;
@@ -133,7 +129,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			InsetSpaceMailer(*this).showDialog(&cur.bv());
+			cur.bv().showDialog("wrap", params2string(params()), this);
 		break;
 
 	default:
@@ -151,7 +147,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "space") {
 			InsetSpaceParams params;
-			InsetSpaceMailer::string2params(to_utf8(cmd.argument()), params);
+			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
 		} else
 			status.enabled(true);
@@ -164,7 +160,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetSpace::edit(Cursor & cur, bool, EntryDirection)
 {
-	InsetSpaceMailer(*this).showDialog(&cur.bv());
+	cur.bv().showDialog("wrap", params2string(params()), this);
 }
 
 
@@ -529,21 +525,7 @@ docstring InsetSpace::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetSpaceMailer::name_ = "space";
-
-
-InsetSpaceMailer::InsetSpaceMailer(InsetSpace & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetSpaceMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-void InsetSpaceMailer::string2params(string const & in, InsetSpaceParams & params)
+void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 {
 	params = InsetSpaceParams();
 	if (in.empty())
@@ -555,17 +537,19 @@ void InsetSpaceMailer::string2params(string const & in, InsetSpaceParams & param
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetSpaceMailer", in, 1, name_);
+	if (!lex || name != "space") {
+		LYXERR0("Expected arg 1 to be \"space\" in " << in);
+		return;
+	}
 
 	params.read(lex);
 }
 
 
-string const InsetSpaceMailer::params2string(InsetSpaceParams const & params)
+string InsetSpace::params2string(InsetSpaceParams const & params)
 {
 	ostringstream data;
-	data << name_ << ' ';
+	data << "space" << ' ';
 	params.write(data);
 	return data.str();
 }

@@ -22,8 +22,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-#include "MailInset.h"
-
 
 /** No two InsetExternalParams variables can have the same temporary file.
  *  This class has copy-semantics but the copy constructor
@@ -112,12 +110,27 @@ public:
 	///
 	~InsetExternal();
 	///
+	static void string2params(std::string const &, Buffer const &,
+				  InsetExternalParams &);
+	///
+	static std::string params2string(InsetExternalParams const &,
+					       Buffer const &);
+	///
+	InsetExternalParams const & params() const;
+	///
+	void setParams(InsetExternalParams const &);
+	///
 	void setBuffer(Buffer & buffer);
+	/// \returns the number of rows (\n's) of generated code.
+	int latex(odocstream &, OutputParams const &) const;
+
+private:
+	///
+	InsetExternal(InsetExternal const &);
 	///
 	InsetCode lyxCode() const { return EXTERNAL_CODE; }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -126,21 +139,12 @@ public:
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
-
-	/// \returns the number of rows (\n's) of generated code.
-	int latex(odocstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-
 	/// Update needed features for this inset.
-	virtual void validate(LaTeXFeatures & features) const;
-
-	///
-	InsetExternalParams const & params() const;
-	///
-	void setParams(InsetExternalParams const &);
+	void validate(LaTeXFeatures & features) const;
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
@@ -151,20 +155,14 @@ public:
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(EmbeddedFile const &);
-
-protected:
-	InsetExternal(InsetExternal const &);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-private:
 	///
 	Inset * clone() const { return new InsetExternal(*this); }
-
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.
 	 */
 	void statusChanged() const;
-
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */
@@ -176,30 +174,6 @@ private:
 	boost::scoped_ptr<RenderBase> renderer_;
 };
 
-
-class InsetExternalMailer : public MailInset {
-public:
-	///
-	InsetExternalMailer(InsetExternal & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, Buffer const &,
-				  InsetExternalParams &);
-	///
-	static std::string const params2string(InsetExternalParams const &,
-					       Buffer const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetExternal & inset_;
-};
-
 } // namespace lyx
 
-#endif
+#endif // INSET_EXTERNAL_H

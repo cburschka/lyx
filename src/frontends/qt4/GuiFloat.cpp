@@ -72,7 +72,7 @@ void GuiFloat::applyView()
 
 bool GuiFloat::initialiseParams(string const & data)
 {
-	InsetFloatMailer::string2params(data, params_);
+	InsetFloat::string2params(data, params_);
 	return true;
 }
 
@@ -85,7 +85,7 @@ void GuiFloat::clearParams()
 
 void GuiFloat::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetFloatMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetFloat::params2string(params_)));
 }
 
 

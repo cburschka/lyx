@@ -13,15 +13,12 @@
 #define INSET_NEWLINE_H
 
 #include "Inset.h"
-#include "MailInset.h"
-
-#include "support/docstring.h"
-#include "support/gettext.h"
 
 
 namespace lyx {
 
-class InsetNewlineParams {
+class InsetNewlineParams
+{
 public:
 	/// The different kinds of spaces we support
 	enum Kind {
@@ -49,6 +46,11 @@ public:
 	///
 	InsetNewline(InsetNewlineParams par) { params_.kind = par.kind; }
 	///
+	static void string2params(std::string const &, InsetNewlineParams &);
+	///
+	static std::string params2string(InsetNewlineParams const &);
+private:
+	///
 	InsetNewlineParams params() const { return params_; }
 	///
 	InsetCode lyxCode() const { return NEWLINE_CODE; }
@@ -72,39 +74,16 @@ public:
 	///
 	ColorCode ColorName() const;
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
-
-private:
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	Inset * clone() const { return new InsetNewline(*this); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+
 	///
 	InsetNewlineParams params_;
-};
-
-
-class InsetNewlineMailer : public MailInset {
-public:
-	///
-	InsetNewlineMailer(InsetNewline & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetNewlineParams &);
-	///
-	static std::string const params2string(InsetNewlineParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetNewline & inset_;
 };
 
 
