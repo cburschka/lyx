@@ -17,8 +17,6 @@
 #include "ui_BoxUi.h"
 #include "insets/InsetBox.h"
 
-#include <vector>
-
 
 namespace lyx {
 namespace frontend {

@@ -1192,7 +1192,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case BOX_CODE: {
 				// \c data == "Boxed" || "Frameless" etc
 				InsetBoxParams p(data);
-				data = InsetBoxMailer::params2string(p);
+				data = InsetBox::params2string(p);
 				break;
 			} 
 			case BRANCH_CODE: {

@@ -30,6 +30,8 @@
 #include "support/debug.h"
 #include "support/Translator.h"
 
+#include "frontends/Application.h"
+
 #include <sstream>
 
 using namespace std;
@@ -41,7 +43,7 @@ namespace {
 typedef Translator<string, InsetBox::BoxType> BoxTranslator;
 typedef Translator<docstring, InsetBox::BoxType> BoxTranslatorLoc;
 
-BoxTranslator const init_boxtranslator()
+BoxTranslator initBoxtranslator()
 {
 	BoxTranslator translator("Boxed", InsetBox::Boxed);
 	translator.addPair("Frameless", InsetBox::Frameless);
@@ -55,7 +57,7 @@ BoxTranslator const init_boxtranslator()
 }
 
 
-BoxTranslatorLoc const init_boxtranslator_loc()
+BoxTranslatorLoc initBoxtranslatorLoc()
 {
 	BoxTranslatorLoc translator(_("simple frame"), InsetBox::Boxed);
 	translator.addPair(_("frameless"), InsetBox::Frameless);
@@ -71,19 +73,25 @@ BoxTranslatorLoc const init_boxtranslator_loc()
 
 BoxTranslator const & boxtranslator()
 {
-	static BoxTranslator translator = init_boxtranslator();
+	static BoxTranslator translator = initBoxtranslator();
 	return translator;
 }
 
 
 BoxTranslatorLoc const & boxtranslator_loc()
 {
-	static BoxTranslatorLoc translator = init_boxtranslator_loc();
+	static BoxTranslatorLoc translator = initBoxtranslatorLoc();
 	return translator;
 }
 
-} // anon
+} // namespace anon
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetBox
+//
+/////////////////////////////////////////////////////////////////////////
 
 InsetBox::InsetBox(Buffer const & buffer, string const & label)
 	: InsetCollapsable(buffer), params_(label)
@@ -95,7 +103,7 @@ InsetBox::InsetBox(Buffer const & buffer, string const & label)
 
 InsetBox::~InsetBox()
 {
-	InsetBoxMailer(*this).hideDialog();
+	hideDialogs("box", this);
 }
 
 
@@ -110,7 +118,7 @@ docstring InsetBox::name() const
 	// FIXME: UNICODE
 	string name = "Box";
 	if (boxtranslator().find(params_.type) == Shaded)
-		name += string(":Shaded");
+		name += ":Shaded";
 	return from_ascii(name);
 }
 
@@ -141,8 +149,9 @@ void InsetBox::setButtonLabel()
 			label += _("Parbox");
 		else
 			label += _("Minipage");
-	} else
+	} else {
 		label += boxtranslator_loc().find(btype);
+	}
 	label += ")";
 
 	setLabel(label);
@@ -175,7 +184,8 @@ bool InsetBox::forceEmptyLayout(idx_type) const
 
 bool InsetBox::showInsetDialog(BufferView * bv) const
 {
-	InsetBoxMailer(const_cast<InsetBox &>(*this)).showDialog(bv);
+	bv->showDialog("box", params2string(params_), 
+		const_cast<InsetBox *>(this));
 	return true;
 }
 
@@ -189,13 +199,13 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.getArg(0) == "changetype")
 			params_.type = cmd.getArg(1);
 		else
-			InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
+			string2params(to_utf8(cmd.argument()), params_);
 		setLayout(cur.buffer().params());
 		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetBoxMailer(*this).updateDialog(&cur.bv());
+		cur.bv().updateDialog("box", params2string(params_));
 		break;
 
 	default:
@@ -216,16 +226,16 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		else
 			flag.enabled(true);
 		return true;
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
 		return true;
+
 	case LFUN_BREAK_PARAGRAPH:
 		if (params_.inner_box) {
 			return InsetCollapsable::getStatus(cur, cmd, flag);
-		} else {
-			flag.enabled(false);
-			return true;
-		}
+		flag.enabled(false);
+		return true;
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
@@ -349,11 +359,12 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 		if (params_.use_parbox)
 			os << "{";
 		os << "%\n";
-		i += 1;
+		++i;
 	}
-	if (btype == Shaded)
+	if (btype == Shaded) {
 		os << "\\begin{shaded}%\n";
-		i += 1;
+		++i;
+	}
 
 	i += InsetText::latex(os, runparams);
 
@@ -496,21 +507,7 @@ docstring InsetBox::contextMenu(BufferView const &, int, int) const
 }
 
 
-InsetBoxMailer::InsetBoxMailer(InsetBox & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetBoxMailer::name_ = "box";
-
-
-string const InsetBoxMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.params());
-}
-
-
-string const InsetBoxMailer::params2string(InsetBoxParams const & params)
+string InsetBox::params2string(InsetBoxParams const & params)
 {
 	ostringstream data;
 	data << "box" << ' ';
@@ -519,8 +516,7 @@ string const InsetBoxMailer::params2string(InsetBoxParams const & params)
 }
 
 
-void InsetBoxMailer::string2params(string const & in,
-				   InsetBoxParams & params)
+void InsetBox::string2params(string const & in, InsetBoxParams & params)
 {
 	params = InsetBoxParams(string());
 	if (in.empty())
@@ -532,19 +528,30 @@ void InsetBoxMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetBoxMailer", in, 1, name_);
+	if (!lex || name != "box") {
+		LYXERR0("InsetBox::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"box\"\n");
+		return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "Box")
-		return print_mailer_error("InsetBoxMailer", in, 2, "Box");
+	if (!lex || id != "Box") {
+		LYXERR0("InsetBox::string2params(" << in << ")\n"
+					  "Expected arg 2 to be \"Box\"\n");
+	}
 
 	params.read(lex);
 }
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// InsetBoxParams
+//
+/////////////////////////////////////////////////////////////////////////
 
 InsetBoxParams::InsetBoxParams(string const & label)
 	: type(label),

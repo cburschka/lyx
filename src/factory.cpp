@@ -400,9 +400,9 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		}
 	}
 
-
 	return 0;
 }
+
 
 Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 {
@@ -412,13 +412,12 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 	return inset;
 }
 
+
 Inset * readInset(Lexer & lex, Buffer const & buf)
 {
 	// consistency check
-	if (lex.getString() != "\\begin_inset") {
-		lyxerr << "Buffer::readInset: Consistency check failed."
-		       << endl;
-	}
+	if (lex.getString() != "\\begin_inset")
+		LYXERR0("Buffer::readInset: Consistency check failed.");
 
 	auto_ptr<Inset> inset;
 
@@ -427,13 +426,13 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 	// test the different insets
 	
-	//FIXME It would be better if we did not have this branch and could
-	//just do one massive switch for all insets. But at present, it's easier 
-	//to do it this way, and we can't do the massive switch until the conversion 
-	//mentioned below. 
-	//Note that if we do want to do a single switch, we need to remove
-	//this "CommandInset" line---or replace it with a single "InsetType" line
-	//that would be used in all insets.
+	// FIXME It would be better if we did not have this branch and could
+	// just do one massive switch for all insets. But at present, it's
+	// easier to do it this way, and we can't do the massive switch until
+	// the conversion mentioned below.  Note that if we do want to do a
+	// single switch, we need to remove this "CommandInset" line---or
+	// replace it with a single "InsetType" line that would be used in all
+	// insets.
 	if (tmptok == "CommandInset") {
 		lex.next();
 		string const insetType = lex.getString();

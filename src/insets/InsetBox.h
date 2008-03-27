@@ -15,12 +15,12 @@
 
 #include "InsetCollapsable.h"
 #include "Length.h"
-#include "MailInset.h"
 
 
 namespace lyx {
 
-class InsetBoxParams {
+class InsetBoxParams
+{
 public:
 	///
 	InsetBoxParams(std::string const &);
@@ -28,6 +28,7 @@ public:
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
+
 	///
 	std::string type;
 	/// Use a parbox (true) or minipage (false)
@@ -52,10 +53,16 @@ public:
 };
 
 
-/** The fbox/fancybox inset
 
-*/
-class InsetBox : public InsetCollapsable {
+///////////////////////////////////////////////////////////////////////
+//
+// The fbox/fancybox inset
+//
+///////////////////////////////////////////////////////////////////////
+
+
+class InsetBox : public InsetCollapsable
+{
 public:
 	///
 	enum BoxType {
@@ -72,6 +79,10 @@ public:
 	InsetBox(Buffer const &, std::string const &);
 	///
 	~InsetBox();
+	///
+	static std::string params2string(InsetBoxParams const &);
+	///
+	static void string2params(std::string const &, InsetBoxParams &);
 private:
 	///
 	friend class InsetBoxParams;
@@ -95,10 +106,9 @@ private:
 	///
 	DisplayType display() const { return Inline; }
 	///
-	virtual bool allowParagraphCustomization(idx_type = 0)
-		{ return forceEmptyLayout(); }
+	bool allowParagraphCustomization(idx_type = 0) { return forceEmptyLayout(); }
 	///
-	virtual bool forceEmptyLayout(idx_type = 0) const;
+	bool forceEmptyLayout(idx_type = 0) const;
 	///
 	bool neverIndent() const { return true; }
 	///
@@ -124,36 +134,12 @@ private:
 	/// used by the constructors
 	void init();
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 	///
 	InsetBoxParams params_;
 };
 
-
-class InsetBoxMailer : public MailInset {
-public:
-	///
-	InsetBoxMailer(InsetBox & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static std::string const params2string(InsetBoxParams const &);
-	///
-	static void string2params(std::string const &, InsetBoxParams &);
-
-private:
-	///
-	static std::string const name_;
-	///
-	InsetBox & inset_;
-};
-
-
 } // namespace lyx
 
-#endif // INSET_BOX_H
+#endif // INSETBOX_H

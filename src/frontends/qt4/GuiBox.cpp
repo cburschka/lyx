@@ -15,18 +15,17 @@
 #include "GuiBox.h"
 
 #include "FuncRequest.h"
-#include "support/gettext.h"
-
 #include "LengthCombo.h"
 #include "Length.h"
-#include "qt_helpers.h"
 #include "LyXRC.h" // to set the default length values
+#include "qt_helpers.h"
 #include "Validator.h"
 
 #include "insets/InsetBox.h"
 
-#include "support/lstrings.h"
+#include "support/gettext.h"
 #include "support/foreach.h"
+#include "support/lstrings.h"
 
 #include <QPushButton>
 #include <QLineEdit>
@@ -450,7 +449,7 @@ void GuiBox::setInnerType(bool frameless, int i)
 
 bool GuiBox::initialiseParams(string const & data)
 {
-	InsetBoxMailer::string2params(data, params_);
+	InsetBox::string2params(data, params_);
 	return true;
 
 }
@@ -464,7 +463,7 @@ void GuiBox::clearParams()
 
 void GuiBox::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetBoxMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetBox::params2string(params_)));
 }
 
 
