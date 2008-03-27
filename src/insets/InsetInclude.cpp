@@ -229,7 +229,7 @@ void InsetInclude::setBuffer(Buffer & buffer)
 		}
 
 	}
-	buffer_ = &buffer;
+	Inset::setBuffer(buffer);
 	if (label_)
 		label_->setBuffer(buffer);
 }
