@@ -418,15 +418,12 @@ void InsetCitation::textString(Buffer const & buf, odocstream & os) const
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
 int InsetCitation::latex(Buffer const & buffer, odocstream & os,
-			 OutputParams const & op) const
+			 OutputParams const &) const
 {
 	biblio::CiteEngine cite_engine = buffer.params().getEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		biblio::asValidLatexCommand(getCmdName(), cite_engine));
-
-	if (op.moving_arg)
-		os << "\\protect";
 
 	os << "\\" << cite_str;
 

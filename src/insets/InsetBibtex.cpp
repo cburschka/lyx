@@ -313,8 +313,11 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 }
 
 
-vector<FileName> const InsetBibtex::getFiles(Buffer const &) const
+vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 {
+	FileName path(buffer.filePath());
+	support::Path p(path);
+
 	vector<FileName> vec;
 
 	string tmp;
