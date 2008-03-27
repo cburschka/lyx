@@ -232,7 +232,6 @@ void InsetInclude::setBuffer(Buffer & buffer)
 	buffer_ = &buffer;
 	if (label_)
 		label_->setBuffer(buffer);
-
 }
 
 
@@ -947,10 +946,8 @@ void InsetInclude::registerEmbeddedFiles(EmbeddedFileList & files) const
 
 void InsetInclude::updateEmbeddedFile(EmbeddedFile const & file)
 {
-	InsetCommandParams p = params();
-	p["filename"] = from_utf8(file.outputFilename(buffer().filePath()));
-	p["embed"] = file.embedded() ? from_utf8(file.inzipName()) : docstring();
-	setParams(p);
+	setParam("filename", from_utf8(file.outputFilename(buffer().filePath())));
+	setParam("embed", file.embedded() ? from_utf8(file.inzipName()) : docstring());
 }
 
 
