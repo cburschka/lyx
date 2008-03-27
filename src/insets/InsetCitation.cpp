@@ -142,20 +142,20 @@ docstring complexLabel(Buffer const & buffer,
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
-	static map<FileName, time_t> bibfileStatus;
+	static map<EmbeddedFile, time_t> bibfileStatus;
 
 	BiblioInfo biblist;
 
 	EmbeddedFileList const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	for (EmbeddedFileList::const_iterator it = bibfilesCache.begin();
-			it != bibfilesCache.end(); ++ it) {
-		FileName const f = *it;
-		time_t lastw = f.lastModified();
-		if (lastw != bibfileStatus[f]) {
+	EmbeddedFileList::const_iterator ei = bibfilesCache.begin();
+	EmbeddedFileList::const_iterator en = bibfilesCache.end();
+	for (; ei != en; ++ ei) {
+		time_t lastw = ei->lastModified();
+		if (lastw != bibfileStatus[*ei]) {
 			changed = true;
-			bibfileStatus[f] = lastw;
+			bibfileStatus[*ei] = lastw;
 		}
 	}
 
