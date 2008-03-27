@@ -1021,7 +1021,6 @@ src_insets_header_files = Split('''
     InsetText.h
     InsetVSpace.h
     InsetWrap.h
-    MailInset.h
     RenderBase.h
     RenderButton.h
     RenderGraphic.h
@@ -1077,7 +1076,6 @@ src_insets_files = Split('''
     InsetText.cpp
     InsetVSpace.cpp
     InsetWrap.cpp
-    MailInset.cpp
     RenderButton.cpp
     RenderGraphic.cpp
     RenderPreview.cpp
