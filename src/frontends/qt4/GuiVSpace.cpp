@@ -24,6 +24,7 @@
 #include "LyXRC.h" // to set the default length values
 #include "Spacing.h"
 #include "FuncRequest.h"
+
 #include "insets/InsetVSpace.h"
 
 #include "support/gettext.h"
@@ -168,9 +169,8 @@ void GuiVSpace::updateContents()
 
 bool GuiVSpace::initialiseParams(string const & data)
 {
-	InsetVSpaceMailer::string2params(data, params_);
+	InsetVSpace::string2params(data, params_);
 	setButtonsValid(true);
-
 	return true;
 }
 
@@ -183,7 +183,7 @@ void GuiVSpace::clearParams()
 
 void GuiVSpace::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetVSpaceMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetVSpace::params2string(params_)));
 }
 
 

@@ -12,15 +12,14 @@
 #ifndef INSET_VSPACE_H
 #define INSET_VSPACE_H
 
-
 #include "Inset.h"
 #include "VSpace.h"
-#include "MailInset.h"
 
 
 namespace lyx {
 
-class InsetVSpace : public Inset {
+class InsetVSpace : public Inset
+{
 public:
 	///
 	InsetVSpace() {}
@@ -38,7 +37,11 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	static void string2params(std::string const &, VSpace &);
+	///
+	static std::string params2string(VSpace const &);
 private:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -67,28 +70,6 @@ private:
 
 	///
 	VSpace space_;
-};
-
-
-class InsetVSpaceMailer : public MailInset {
-public:
-	///
-	InsetVSpaceMailer(InsetVSpace & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, VSpace &);
-	///
-	static std::string const params2string(VSpace const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetVSpace & inset_;
 };
 
 

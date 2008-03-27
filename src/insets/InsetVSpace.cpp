@@ -14,17 +14,21 @@
 #include "InsetVSpace.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Lexer.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
+
+#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -48,7 +52,7 @@ InsetVSpace::InsetVSpace(VSpace const & space)
 
 InsetVSpace::~InsetVSpace()
 {
-	InsetVSpaceMailer(*this).hideDialog();
+	hideDialogs("vspace", this);
 }
 
 
@@ -57,13 +61,14 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), space_);
+		InsetVSpace::string2params(to_utf8(cmd.argument()), space_);
 		break;
 	}
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			InsetVSpaceMailer(*this).showDialog(&cur.bv());
+			cur.bv().showDialog("vspace", params2string(space()), 
+				const_cast<InsetVSpace *>(this));
 		break;
 
 	default:
@@ -81,10 +86,11 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "vspace") {
 			VSpace vspace;
-			InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+			InsetVSpace::string2params(to_utf8(cmd.argument()), vspace);
 			status.setOnOff(vspace == space_);
-		} else
+		} else {
 			status.enabled(true);
+		}
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);
@@ -94,7 +100,8 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetVSpace::edit(Cursor & cur, bool, EntryDirection)
 {
-	InsetVSpaceMailer(*this).showDialog(&cur.bv());
+	cur.bv().showDialog("vspace", params2string(space()), 
+		const_cast<InsetVSpace *>(this));
 }
 
 
@@ -241,21 +248,7 @@ docstring InsetVSpace::contextMenu(BufferView const &, int, int) const
 }
 
 
-string const InsetVSpaceMailer::name_ = "vspace";
-
-
-InsetVSpaceMailer::InsetVSpaceMailer(InsetVSpace & inset)
-	: inset_(inset)
-{}
-
-
-string const InsetVSpaceMailer::inset2string(Buffer const &) const
-{
-	return params2string(inset_.space());
-}
-
-
-void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
+void InsetVSpace::string2params(string const & in, VSpace & vspace)
 {
 	vspace = VSpace();
 	if (in.empty())
@@ -267,8 +260,11 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_)
-		return print_mailer_error("InsetVSpaceMailer", in, 1, name_);
+	if (!lex || name != "ert") {
+		LYXERR0("InsetVSPace::string2params(" << in << ")\n"
+					  "Expected arg 1 to be \"vspace\"\n");
+		return;
+	}
 
 	string vsp;
 	lex >> vsp;
@@ -277,10 +273,10 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 }
 
 
-string const InsetVSpaceMailer::params2string(VSpace const & vspace)
+string InsetVSpace::params2string(VSpace const & vspace)
 {
 	ostringstream data;
-	data << name_ << ' ' << vspace.asLyXCommand();
+	data << "vspace" << ' ' << vspace.asLyXCommand();
 	return data.str();
 }
 

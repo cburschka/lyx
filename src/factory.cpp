@@ -315,7 +315,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case VSPACE_CODE: {
 				VSpace vspace;
-				InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+				InsetVSpace::string2params(to_utf8(cmd.argument()), vspace);
 				return new InsetVSpace(vspace);
 			}
 			

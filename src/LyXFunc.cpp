@@ -1243,7 +1243,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} 
 			case VSPACE_CODE: {
 				VSpace space;
-				data = InsetVSpaceMailer::params2string(space);
+				data = InsetVSpace::params2string(space);
 				break;
 			} 
 			case WRAP_CODE: {
