@@ -67,7 +67,7 @@ void GuiERT::updateContents()
 
 bool GuiERT::initialiseParams(string const & data)
 {
-	InsetERT::string2params(data, status_);
+	status_ = InsetERT::string2params(data);
 	return true;
 }
 

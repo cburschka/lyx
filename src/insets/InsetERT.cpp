@@ -114,9 +114,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_INSET_MODIFY: {
-		InsetCollapsable::CollapseStatus st;
-		InsetERT::string2params(to_utf8(cmd.argument()), st);
-		setStatus(cur, st);
+		setStatus(cur, string2params(to_utf8(cmd.argument())));
 		break;
 	}
 	default:
@@ -192,11 +190,11 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetERT::string2params(string const & in, CollapseStatus & status)
+InsetCollapsable::CollapseStatus InsetERT::string2params(string const & in)
 {
-	status = InsetCollapsable::Collapsed;
+	CollapseStatus status = Collapsed;
 	if (in.empty())
-		return;
+		return status;
 
 	istringstream data(in);
 	Lexer lex(0,0);
@@ -205,15 +203,15 @@ void InsetERT::string2params(string const & in, CollapseStatus & status)
 	string name;
 	lex >> name;
 	if (name != "ert") {
-		LYXERR0("InsetERT::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"ert\"\n");
-		return;
+		LYXERR0("Expected arg 1 to be \"ert\" in " << in);
+		return status;
 	}
 
 	int s;
 	lex >> s;
 	if (lex)
-		status = static_cast<InsetCollapsable::CollapseStatus>(s);
+		status = static_cast<CollapseStatus>(s);
+	return status;
 }
 
 

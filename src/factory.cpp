@@ -240,9 +240,8 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			}
 			
 			case ERT_CODE: {
-				InsetCollapsable::CollapseStatus st;
-				InsetERT::string2params(to_utf8(cmd.argument()), st);
-				return new InsetERT(buf, st);
+				return new InsetERT(buf,
+					InsetERT::string2params(to_utf8(cmd.argument())));
 			}
 				
 			case LISTINGS_CODE: {

@@ -36,7 +36,7 @@ public:
 	///
 	~InsetERT();
 	///
-	static void string2params(std::string const &, CollapseStatus &);
+	static CollapseStatus string2params(std::string const &);
 	///
 	static std::string params2string(CollapseStatus);
 private:
