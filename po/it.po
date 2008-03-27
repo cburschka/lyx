@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-26 22:02+0100\n"
-"PO-Revision-Date: 2008-03-27 01:11+0100\n"
+"PO-Revision-Date: 2008-03-27 18:48+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1627,7 +1627,7 @@ msgstr "A&ggiungi"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:108
 msgid "S&elected:"
-msgstr "S&elezione:"
+msgstr "S&elezionati:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:118
 msgid "A&vailable:"
@@ -2232,7 +2232,9 @@ msgstr "Modo matematico"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid "Show the grey inline completion behind the cursor in math mode after the delay."
-msgstr "Visualizza il suggerimento in grigio dietro al cursore nel modo matematico dopo il ritardo."
+msgstr ""
+"Visualizza il suggerimento in grigio a seguito del cursore\n"
+"nel modo matematico dopo il ritardo specificato."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
@@ -2240,7 +2242,9 @@ msgstr "Suggerimenti in &linea automatici"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
-msgstr "Visualizza il menu a comparsa nel modo matematico dopo il ritardo."
+msgstr ""
+"Visualizza il menu a comparsa nel modo matematico\n"
+"dopo il ritardo specificato."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
@@ -2252,7 +2256,9 @@ msgstr "Modo testo"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:78
 msgid "Show the grey inline completion behind the cursor in text mode after the delay."
-msgstr "Visualizza il suggerimento in grigio dietro al cursore nel modo testo dopo il ritardo."
+msgstr ""
+"Visualizza il suggerimento in grigio a seguito del cursore\n"
+"nel modo testo dopo il ritardo specificato."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:81
 msgid "Automatic &inline completion"
@@ -2260,7 +2266,9 @@ msgstr "Suggerimenti &in linea automatici"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr "Visualizza il menu a comparsa dopo il ritardo selezionato nel modo testo."
+msgstr ""
+"Visualizza il menu a comparsa nel modo testo\n"
+"dopo il ritardo specificato."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2268,7 +2276,9 @@ msgstr "Menu a com&parsa automatico"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid "Show a small triangle on the cursor if a completion is available in text mode."
-msgstr "Visualizza un piccolo triangolo sul cursore se è disponibile un suggerimento nel modo testo."
+msgstr ""
+"Visualizza un piccolo triangolo sul cursore se è\n"
+"disponibile un suggerimento nel modo testo."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:101
 msgid "Cursor i&ndicator"
@@ -2297,7 +2307,9 @@ msgstr "s&econdi di ritardo per il menu a comparsa"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:218
 msgid "When the TAB completion is not unique, there won't be a delay of the popup. It will be shown right away."
-msgstr "Quando il suggerimento su richiesta (TAB) non è unico, il menu a comparsa verrà visualizzato senza ritardo."
+msgstr ""
+"Quando il suggerimento su richiesta (TAB) non è univoco,\n"
+"il menu a comparsa viene visualizzato senza ritardo."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2305,7 +2317,7 @@ msgstr "&Visualizza il menu a comparsa senza ritardo per suggerimenti non univoc
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Long completions are cut-off and shown with \"...\"."
-msgstr "I suggerimenti lunghi sono troncati e visualizzati con \"...\"."
+msgstr "I suggerimenti lunghi vengono troncati e visualizzati con \"...\"."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:231
 msgid "&Use \"...\" to shorten long completions"
@@ -2480,11 +2492,11 @@ msgstr "&E-mail:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:43
 msgid "Your name"
-msgstr "Il tuo nome"
+msgstr "Nome utente"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:60
 msgid "Your E-mail address"
-msgstr "Il tuo indirizzo e-mail"
+msgstr "Iindirizzo e-mail"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:25
 msgid "Keyboard"
@@ -2669,7 +2681,7 @@ msgstr "Comando &BibTeX:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:117
 msgid "&DVI viewer paper size options:"
-msgstr "Opzioni della dimensione della carta del visualizzatore &DVI:"
+msgstr "Opzioni per la pagina del visualizzatore &DVI:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
 msgid "Chec&kTeX command:"
@@ -2677,15 +2689,17 @@ msgstr "Comando Chec&kTeX:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:137
 msgid "BibTeX command and options"
-msgstr "Comandi ed opzioni BibTeX"
+msgstr "Comando ed opzioni per BibTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:144
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Attributo opzionale della dimensione della carta (-paper) per alcuni visualizzatori DVI"
+msgstr ""
+"Parametro opzionale per specificare il tipo di pagina\n"
+"da usare (-paper) per alcuni visualizzatori DVI"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:151
 msgid "Index command and options (makeindex, xindy)"
-msgstr "Comando di indice ed opzioni (makeindex, xindy)"
+msgstr "Comando ed opzioni per l'indice (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:183
 #: src/frontends/qt4/GuiDocument.cpp:684
@@ -2762,7 +2776,10 @@ msgstr "&Prefisso del percorso:"
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57
 #: src/LyXRC.cpp:2661
 msgid "The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line."
-msgstr "Larghezza massima della riga per file esportati come testo/LaTeX/SGML.Se impostata a 0, ogni paragrafo è esportato su una singola riga, altrimenti i paragrafi vengono separati da una riga vuota."
+msgstr ""
+"Larghezza massima della riga per file esportati come testo/LaTeX/SGML.\n"
+"Se impostata a 0, ogni paragrafo è esportato su una singola riga, altrimenti\n"
+"i paragrafi vengono separati da una riga vuota."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:67
 msgid "Output &line length:"
@@ -2774,7 +2791,9 @@ msgstr "comando &roff:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:87
 msgid "External app for formating tables in plain text output"
-msgstr "Applicazione esterna per formattare tabelle in formato testo semplice"
+msgstr ""
+"Applicazione esterna per formattare\n"
+"tabelle in formato testo semplice"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
@@ -2966,7 +2985,9 @@ msgstr "Grande:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid "Checking this improves performance, but might decrease the on-screen quality of fonts"
-msgstr "Abilitando la cache si ottengono prestazioni migliori ma a scapito della qualità dei caratteri su schermo"
+msgstr ""
+"Abilitando la cache si ottengono prestazioni migliori\n"
+"ma a scapito della qualità dei caratteri su schermo"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "Use Pixmap Cache to speed up font rendering"
@@ -2990,7 +3011,9 @@ msgstr "Lingua al&ternativa:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "Specify a personal dictionary file other than the default"
-msgstr "Specifica un dizionario personale alternativo diverso da quello prestabilito"
+msgstr ""
+"Specifica un dizionario personale alternativo\n"
+"diverso da quello prestabilito"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:87
 msgid "Personal &dictionary:"
@@ -3006,7 +3029,7 @@ msgstr "Eseguibile del &correttore ortografico:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
-msgstr "Non considerare la lingua usata per il correttore ortografico"
+msgstr "Esplicita la lingua che il correttore ortografico deve usare"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:124
 msgid "Use input encod&ing"
@@ -3070,11 +3093,13 @@ msgstr "Aiuto automatico"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "Checking this allow the automatic display of helpful comments for insets in the main work area of an edited document"
-msgstr "Selezionando questo, viene consentita la visualizzazione automatica di commenti utili per gli inserti nell'area principale del documento editato"
+msgstr ""
+"Consente la visualizzazione automatica di commenti utili relativi\n"
+"agli inserti nell'area principale del documento editato"
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
 msgid "Enable &tool tips in main work area"
-msgstr "Abili&ta suggerimenti nell'area di lavoro principale"
+msgstr "Abili&ta commenti nell'area di lavoro principale"
 
 #: src/frontends/qt4/ui/PrefUi.ui:231
 msgid "Bro&wse..."
@@ -15600,11 +15625,11 @@ msgstr "Usa \"...\" per abbreviare i suggerimenti lunghi."
 #: src/LyXRC.cpp:2871
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "Massimo numero degli ultimi file aperti. Ne possono apparire nel menù al massimo %1$d."
+msgstr "Massimo numero di ultimi file aperti. Nel menù ne possono apparire al massimo %1$d."
 
 #: src/LyXRC.cpp:2876
 msgid "Specify those directories which should be prepended to the PATH environment variable. Use the OS native format."
-msgstr "Specifica quali cartelle dovrebbero essere preposte alla variabile d'ambiente PATH. Usa il formato nativo del sistema operativo."
+msgstr "Specifica quali cartelle devono essere preposte alla variabile d'ambiente PATH. Usate il formato nativo del sistema operativo."
 
 #: src/LyXRC.cpp:2883
 msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
@@ -15612,11 +15637,11 @@ msgstr "Specifica un dizionario personale alternativo. Per esempio:\".ispell_eng
 
 #: src/LyXRC.cpp:2887
 msgid "Shows a typeset preview of things such as math"
-msgstr "Mostra un'anteprima di stampa delle formule matematiche"
+msgstr "Mostra un'anteprima di stampa di elementi tipo le formule matematiche"
 
 #: src/LyXRC.cpp:2891
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr "Le equazioni in anteprima avranno etichette \"(#)\" piuttosto che altre numerate."
+msgstr "Le equazioni in anteprima avranno etichette simboliche \"(#)\" invece che numerate."
 
 #: src/LyXRC.cpp:2895
 msgid "Scale the preview size to suit."
@@ -15636,11 +15661,11 @@ msgstr "Stampante predefinita. LyX userà la variabile d'ambiente PRINTER se non 
 
 #: src/LyXRC.cpp:2911
 msgid "The option to print only even pages."
-msgstr "Opzione per stampare solo pagine pari."
+msgstr "Opzione per stampare solo le pagine pari."
 
 #: src/LyXRC.cpp:2915
 msgid "Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed."
-msgstr "Opzioni aggiuntive da passare al programma di stampa dopo ogni altra cosa ma prima del nome del file DVI da stampare."
+msgstr "Opzioni supplementari da passare al programma di stampa dopo ogni altra cosa ma prima del nome del file DVI da stampare."
 
 #: src/LyXRC.cpp:2919
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -15652,11 +15677,11 @@ msgstr "Opzione per stampare in orizzontale."
 
 #: src/LyXRC.cpp:2927
 msgid "The option to print only odd pages."
-msgstr "Opzione per stampare solo pagine dispari."
+msgstr "Opzione per stampare solo le pagine dispari."
 
 #: src/LyXRC.cpp:2931
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Opzione per specificare un elenco di pagine da stampare, separate da virgole"
+msgstr "Opzione per specificare un elenco di pagine da stampare, separate da virgole."
 
 #: src/LyXRC.cpp:2935
 msgid "Option to specify the dimensions of the print paper."
@@ -15676,7 +15701,7 @@ msgstr "La stampa su file viene forzata automaticamente quando è impostata quest
 
 #: src/LyXRC.cpp:2951
 msgid "If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command."
-msgstr "Il seguente argomento è considerato assieme al suo nome, dopo il comando di spool, se specifichi il nome di una stampante nel dialogo di stampa."
+msgstr "Il seguente argomento viene inserito dopo il comando di spool e viene preposto al nome della stampante, se tale nome è specificato nel dialogo di stampa."
 
 #: src/LyXRC.cpp:2955
 msgid "Option to pass to the print program to print to a file."
@@ -15688,7 +15713,7 @@ msgstr "Opzione per stampare con una specifica stampante."
 
 #: src/LyXRC.cpp:2963
 msgid "Select for LyX to pass the name of the destination printer to your print command."
-msgstr "Da selezionare affinché LyX trasferisca il nome della stampante di destinazione al tuo comando di stampa."
+msgstr "Da selezionare affinché LyX trasferisca il nome della stampante di destinazione al comando di stampa."
 
 #: src/LyXRC.cpp:2967
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -15700,7 +15725,7 @@ msgstr "Selezionare per muovere visualmente il cursore nel modo bidirezionale, a
 
 #: src/LyXRC.cpp:2979
 msgid "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
-msgstr "Il numero di DPI (punti per pollice) del tuo monitor è rilevato automaticamente da LyX. Sovrascrivi qui le impostazioni se qualcosa va storto."
+msgstr "Il numero di DPI (punti per pollice) del monitor è rilevato automaticamente da LyX.Se qualcosa va storto, l'impostazione può essere sovrascritta qui."
 
 #: src/LyXRC.cpp:2985
 msgid "The screen fonts used to display the text while editing."
@@ -15708,16 +15733,16 @@ msgstr "Caratteri usati per mostrare il testo sullo schermo durante l'editing."
 
 #: src/LyXRC.cpp:2994
 msgid "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling."
-msgstr "Abilita i caratteri bitmap ad essere ridimensionati. Se stai usando un carattere bitmap, selezionando questa opzione puoi far sembrare in LyX alcuni caratteri come bloccati. Deselezionando questa opzione fai si che LyX usi la prima dimensione disponibile del carattere bitmap, invece di riscalare."
+msgstr "Abilita il ridimensionamento dei caratteri bitmap. Se si usa un carattere bitmap, selezionando questa opzione alcuni caratteri potrebbero apparire grossolani in LyX. Deselezionando questa opzione fa si che LyX usi la più vicina dimensione disponibile del carattere bitmap, invece di riscalarlo."
 
 #: src/LyXRC.cpp:2998
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "Sono le dimensioni dei caratteri usate per calcolare la dimensione dei caratteri sullo schermo."
+msgstr "Sono le dimensioni usate per calcolare la scalatura dei caratteri su schermo."
 
 #: src/LyXRC.cpp:3003
 #, no-c-format
 msgid "The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper."
-msgstr "E' la percentuale di zoom per i caratteri dello schermo. Una scelta del 100% renderà i caratteri esattamente della stessa dimensione di quelli sulla carta."
+msgstr "Percentuale di zoom per i caratteri su schermo. Una scelta del 100% renderà i caratteri approssimativamente della stessa dimensione di quelli su carta."
 
 #: src/LyXRC.cpp:3007
 msgid "Allow session manager to save and restore windows geometry."
@@ -15729,7 +15754,7 @@ msgstr "Questo avvia il lyxserver. Le pipe richiedono un estensione addizionale 
 
 #: src/LyXRC.cpp:3018
 msgid "De-select if you don't want the startup banner."
-msgstr "Deseleziona se non vuoi vedere l'immagine d'avvio."
+msgstr "Deselezionare se non si vuole l'immagine d'avvio."
 
 #: src/LyXRC.cpp:3022
 msgid "What command runs the spellchecker?"
@@ -15737,7 +15762,7 @@ msgstr "Quale comando avvia il correttore ortografico?"
 
 #: src/LyXRC.cpp:3026
 msgid "LyX will place its temporary directories in this path. They will be deleted when you quit LyX."
-msgstr "LyX creerà le sue cartelle temporanee in questo percorso. Saranno tutte eliminate quando chiuderete LyX."
+msgstr "LyX creerà le sue cartelle temporanee in questa locazione. Saranno tutte eliminate alla chiusura di LyX."
 
 #: src/LyXRC.cpp:3030
 msgid "The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from."
@@ -15749,7 +15774,7 @@ msgstr "È il file UI (Interfaccia Utente). È possibile specificare un percorso a
 
 #: src/LyXRC.cpp:3053
 msgid "Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries."
-msgstr "Specifica quando passare l'opzione di codifica -T ad ispell. Abilita questa opzione se non puoi controllare parole contenenti lettere accentate. Può non funzionare con tutti i dizionari."
+msgstr "Specifica quando passare l'opzione di codifica -T ad ispell. Abilitate questa opzione se non si riescono a verficare parole contenenti lettere accentate. Può non funzionare con tutti i dizionari."
 
 #: src/LyXRC.cpp:3057
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -15921,19 +15946,19 @@ msgstr ", Paragrafo: "
 
 #: src/Text.cpp:1278
 msgid ", Id: "
-msgstr ", ID:"
+msgstr ", ID: "
 
 #: src/Text.cpp:1279
 msgid ", Position: "
-msgstr ", Posizione:"
+msgstr ", Posizione: "
 
 #: src/Text.cpp:1285
 msgid ", Char: 0x"
-msgstr ", Char: 0x"
+msgstr ", Car: 0x"
 
 #: src/Text.cpp:1287
 msgid ", Boundary: "
-msgstr ", Confine:"
+msgstr ", Confine: "
 
 #: src/Text2.cpp:391
 msgid "No font change defined."
@@ -15958,7 +15983,7 @@ msgstr "L'argomento di spaziatura è sconosciuto: "
 
 #: src/Text3.cpp:1014
 msgid "Layout "
-msgstr "Layout"
+msgstr "Layout "
 
 #: src/Text3.cpp:1015
 msgid " not known"
@@ -17141,7 +17166,7 @@ msgstr "Aspetto grafico"
 
 #: src/frontends/qt4/GuiPrefs.cpp:215
 msgid "Language Settings"
-msgstr "Impostazioni linguistiche"
+msgstr "Impostazioni di lingua"
 
 #: src/frontends/qt4/GuiPrefs.cpp:216
 msgid "Output"
@@ -17385,8 +17410,8 @@ msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
-"Il correttore ortografico è terminato per qualche motivo.\n"
-"Forse è stato chiuso."
+"Il correttore ortografico si è interrotto per qualche motivo.\n"
+"Forse è stato terminato."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:399
 msgid "The spellchecker has failed.\n"
