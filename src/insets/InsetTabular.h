@@ -737,6 +737,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return TABULAR_CODE; }
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

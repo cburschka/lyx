@@ -217,4 +217,37 @@ Menuset
 		Item "Edit externally...|x" "graphics-edit"
 	End
 
+#
+# InsetTabular context menu
+#
+
+	Menu "context-tabular"
+		Item "Multicolumn|M" "tabular-feature multicolumn"
+		Separator
+		Item "Top Line|T" "tabular-feature toggle-line-top"
+		Item "Bottom Line|B" "tabular-feature toggle-line-bottom"
+		Item "Left Line|L" "tabular-feature toggle-line-left"
+		Item "Right Line|R" "tabular-feature toggle-line-right"
+		Separator
+		Item "Left|L" "tabular-feature align-left"
+		Item "Center|C" "tabular-feature align-center"
+		Item "Right|R" "tabular-feature align-right"
+		Separator
+		Item "Top|T" "tabular-feature valign-top"
+		Item "Middle|M" "tabular-feature valign-middle"
+		Item "Bottom|B" "tabular-feature valign-bottom"
+		Separator
+		Item "Add Row|A" "tabular-feature append-row"
+		Item "Delete Row|D" "tabular-feature delete-row"
+		Item "Copy Row|o" "tabular-feature copy-row"
+		# Item "Swap Rows|S" "tabular-feature swap-row" # currently broken
+		Separator
+		Item "Add Column|u" "tabular-feature append-column"
+		Item "Delete Column|e" "tabular-feature delete-column"
+		Item "Copy Column|p" "tabular-feature copy-column"
+		# Item "Swap Columns|w" "tabular-feature swap-column" # currently broken
+		Separator
+		Item "Settings...|S" "inset-settings listings"
+	End
+
 End

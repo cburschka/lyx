@@ -2806,6 +2806,13 @@ void InsetTabular::write(ostream & os) const
 }
 
 
+docstring InsetTabular::contextMenu(BufferView const &, int, int) const
+{
+	// FIXME: depending on the selection state, we could offer a different menu.
+	return from_ascii("context-tabular");
+}
+
+
 void InsetTabular::read(Lexer & lex)
 {
 	bool const old_format = (lex.getString() == "\\LyXTable");
