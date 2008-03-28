@@ -129,7 +129,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			cur.bv().showDialog("wrap", params2string(params()), this);
+			cur.bv().showDialog("space", params2string(params()), this);
 		break;
 
 	default:
@@ -160,7 +160,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetSpace::edit(Cursor & cur, bool, EntryDirection)
 {
-	cur.bv().showDialog("wrap", params2string(params()), this);
+	cur.bv().showDialog("space", params2string(params()), this);
 }
 
 
