@@ -247,7 +247,7 @@ Menuset
 		Item "Copy Column|p" "tabular-feature copy-column"
 		# Item "Swap Columns|w" "tabular-feature swap-column" # currently broken
 		Separator
-		Item "Settings...|S" "inset-settings listings"
+		Item "Settings...|S" "inset-settings tabular"
 	End
 
 End
