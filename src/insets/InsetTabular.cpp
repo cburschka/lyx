@@ -626,11 +626,23 @@ void Tabular::appendRow(idx_type const cell)
 	for (row_type i = row + 2; i < nrows; ++i)
 		swap(cell_info[i], old[i - 1]);
 
-	if (bp.trackChanges)
-		for (col_type j = 0; j < ncols; ++j)
-			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
-
 	updateIndexes();
+	for (col_type c = 0; c < ncols; ++c) {
+		// inherit line settings
+		idx_type const i = cellIndex(row + 1, c);
+		idx_type const j = cellIndex(row, c);
+		setLeftLine(i, isPartOfMultiColumn(row, c) ? false : leftLine(j));
+		if (cell_info[row][c].multicolumn == CELL_NORMAL || c == ncols - 1
+			|| (c + 1 < ncols 
+			&& cell_info[row][c].multicolumn != CELL_NORMAL
+			&& cell_info[row][c + 1].multicolumn == CELL_NORMAL))
+			setRightLine(i, rightLine(j));
+		else
+			setRightLine(i, false);
+		// mark track changes
+		if (bp.trackChanges)
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+	}
 }
 
 
@@ -664,26 +676,33 @@ void Tabular::appendColumn(idx_type const cell)
 	col_type const column = cellColumn(cell);
 	column_vector::iterator cit = column_info.begin() + column + 1;
 	column_info.insert(cit, ColumnData());
+	row_type const nrows = rowCount();
 	col_type const ncols = columnCount();
 	// set the column values of the column before
 	column_info[column + 1] = column_info[column];
 
-	for (row_type i = 0; i < rowCount(); ++i) {
-		cell_info[i].insert(cell_info[i].begin() + column + 1, CellData(buffer(), *this));
+	for (row_type r = 0; r < nrows; ++r) {
+		cell_info[r].insert(cell_info[r].begin() + column + 1, 
+			CellData(buffer(), *this));
 		col_type c = column + 2;
 		while (c < ncols 
-			&& cell_info[i][c].multicolumn == CELL_PART_OF_MULTICOLUMN) {
-			cell_info[i][c].multicolumn = CELL_NORMAL;
+			&& cell_info[r][c].multicolumn == CELL_PART_OF_MULTICOLUMN) {
+			cell_info[r][c].multicolumn = CELL_NORMAL;
 			++c;
 		}
 	}
-	//++column;
-	for (row_type i = 0; i < rowCount(); ++i) {
-		cell_info[i][column + 1].inset->clear();
-		if (buffer().params().trackChanges)
-			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
-	}
 	updateIndexes();
+	for (row_type r = 0; r < nrows; ++r) {
+		// inherit line settings
+		idx_type const i = cellIndex(r, column + 1);
+		idx_type const j = cellIndex(r, column);
+		setBottomLine(i, bottomLine(j));
+		setTopLine(i, topLine(j));
+		//
+		cellInfo(i).inset->clear();
+		if (buffer().params().trackChanges)
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+	}
 }
 
 
@@ -1444,13 +1463,13 @@ void Tabular::setMultiColumn(idx_type cell, idx_type number)
 	CellData & cs = cellInfo(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 	cs.alignment = column_info[cellColumn(cell)].alignment;
+	setRightLine(cell, rightLine(cell + number - 1));
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cs.inset->appendParagraphs(cs1.inset->paragraphs());
 		cs1.inset->clear();
 	}
-	setRightLine(cell, rightLine(cell + number - 1));
 	updateIndexes();
 }
 
@@ -1859,20 +1878,18 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	row_type const r = cellRow(cell);
 	col_type const c = cellColumn(cell);
 	col_type const nextcol = c + columnSpan(cell);
-	bool prevmulticol = ismulticol;
 	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
-	bool nextcellleft = nextcol < columnCount() 
-		&& leftLine(cellIndex(r, nextcol));
+	bool forceleft = ismulticol && !prevcellright && leftLine(cell);
 	bool nextcolleft = nextcol < columnCount() && columnLeftLine(nextcol);
 	bool coldouble = columnRightLine(c) && nextcolleft;
+	bool nextcellleft = nextcol < columnCount() 
+		&& leftLine(cellIndex(r, nextcol));
 	bool celldouble = rightLine(cell) && nextcellleft;
-	bool forceleft = prevmulticol && !prevcellright && leftLine(cell);
 	bool doubleright = celldouble && (isMultiColumn(cell) || !coldouble);
 	ismulticol = isMultiColumn(cell) 
 		|| (leftLine(cell) && !columnLeftLine(c))
 		|| (rightLine(cell) && !columnRightLine(c))
-		|| (!celldouble && coldouble)
-		|| doubleright || forceleft;
+		|| (!celldouble && coldouble) || doubleright || forceleft;
 	if (ismulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
 		if (leftLine(cell) || forceleft)
