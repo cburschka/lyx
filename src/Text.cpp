@@ -34,7 +34,6 @@
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "factory.h"
-#include "FontIterator.h"
 #include "Language.h"
 #include "Length.h"
 #include "Lexer.h"

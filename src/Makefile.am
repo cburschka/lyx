@@ -107,7 +107,6 @@ SOURCEFILESCORE = \
 	Floating.cpp \
 	FloatList.cpp \
 	FontInfo.cpp \
-	FontIterator.cpp \
 	FontList.cpp \
 	Font.cpp \
 	Format.cpp \
@@ -207,7 +206,6 @@ HEADERFILESCORE = \
 	Font.h \
 	FontEnums.h \
 	FontInfo.h \
-	FontIterator.h \
 	FontList.h \
 	Format.h \
 	FuncCode.h \

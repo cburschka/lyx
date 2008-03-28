@@ -27,7 +27,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "FontIterator.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
 #include "Layout.h"
@@ -694,6 +693,63 @@ int TextMetrics::labelEnd(pit_type const pit) const
 	return leftMargin(max_width_, pit);
 }
 
+namespace {
+
+/**
+ * Calling Text::getFont is slow. While rebreaking we scan a
+ * paragraph from left to right calling getFont for every char.  This
+ * simple class address this problem by hidding an optimization trick
+ * (not mine btw -AB): the font is reused in the whole font span.  The
+ * class handles transparently the "hidden" (not part of the fontlist)
+ * label font (as getFont does).
+ **/
+class FontIterator
+{
+public:
+	///
+	FontIterator(TextMetrics const & tm,
+		Paragraph const & par, pit_type pit, pos_type pos)
+		: tm_(tm), par_(par), pit_(pit), pos_(pos),
+		font_(tm.displayFont(pit, pos)),
+		endspan_(par.fontSpan(pos).last),
+		bodypos_(par.beginOfBody())
+	{}
+
+	///
+	Font const & operator*() const { return font_; }
+
+	///
+	FontIterator & operator++()
+	{
+		++pos_;
+		if (pos_ > endspan_ || pos_ == bodypos_) {
+			font_ = tm_.displayFont(pit_, pos_);
+			endspan_ = par_.fontSpan(pos_).last;
+		}
+		return *this;
+	}
+
+	///
+	Font * operator->() { return &font_; }
+
+private:
+	///
+	TextMetrics const & tm_;
+	///
+	Paragraph const & par_;
+	///
+	pit_type pit_;
+	///
+	pos_type pos_;
+	///
+	Font font_;
+	///
+	pos_type endspan_;
+	///
+	pos_type bodypos_;
+};
+
+} // anon namespace
 
 pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		pit_type pos) const
