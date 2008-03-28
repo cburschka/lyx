@@ -55,7 +55,7 @@ InsetWrap::InsetWrap(Buffer const & buf, string const & type)
 
 InsetWrap::~InsetWrap()
 {
-	hideDialogs("ert", this);
+	hideDialogs("wrap", this);
 }
 
 

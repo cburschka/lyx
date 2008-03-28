@@ -260,9 +260,8 @@ void InsetVSpace::string2params(string const & in, VSpace & vspace)
 
 	string name;
 	lex >> name;
-	if (!lex || name != "ert") {
-		LYXERR0("InsetVSPace::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"vspace\"\n");
+	if (!lex || name != "vspace") {
+		LYXERR0("Expected arg 1 to be \"vspace\" in " << in);
 		return;
 	}
 
