@@ -50,7 +50,7 @@ Menuset
 		Separator
 		Submenu "Insert|n" "insert_math_context"
 		Separator
-		OptItem "Add Line Above|A" "tabular-feature add-hline-above"
+		OptItem "Add Line Above|o" "tabular-feature add-hline-above"
 		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
 		OptItem "Delete Line Above|D" "tabular-feature delete-hline-above"
 		OptItem "Delete Line Below|e" "tabular-feature delete-hline-below"
