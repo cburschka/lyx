@@ -120,10 +120,7 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetSpaceParams params;
-		string2params(to_utf8(cmd.argument()), params);
-		params_.kind = params.kind;
-		params_.length = params.length;
+		string2params(to_utf8(cmd.argument()), params_);
 		break;
 	}
 
@@ -149,8 +146,9 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetSpaceParams params;
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-		} else
+		} else {
 			status.enabled(true);
+		}
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);
