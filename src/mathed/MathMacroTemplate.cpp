@@ -656,7 +656,7 @@ void MathMacroTemplate::shiftArguments(size_t from, int by) {
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
 			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
-		if (arg->number() >= from + 1)
+		if (arg->number() >= int(from) + 1)
 			arg->setNumber(arg->number() + by);
 	}
 
