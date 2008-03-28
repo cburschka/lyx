@@ -16,9 +16,53 @@ Menuset
 #
 # InsetMath context menu
 #
+	Menu "insert_math_context"
+		Item "Array Environment|y" "math-matrix 2 2"
+		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
+		Item "Aligned Environment|l" "command-sequence math-mode on; math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-mode on; math-insert \alignedat; tabular-feature append-column"
+		Item "Gathered Environment|h" "command-sequence math-mode on; math-insert \gathered"
+		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; tabular-feature append-column"
+		Separator
+		Item "Delimiters|r" "dialog-show mathdelimiter"
+		Item "Matrix|x" "dialog-show mathmatrix"
+		Item "Macro|o" "math-macro newmacroname newcommand"
+	End
+
+	Menu "ams_environment"
+		Item "AMS align Environment|a" "math-mutate align"
+		Item "AMS alignat Environment|t" "math-mutate alignat"
+		Item "AMS flalign Environment|f" "math-mutate flalign"
+		Item "AMS gather Environment|g" "math-mutate gather"
+		Item "AMS multline Environment|m" "math-mutate multline"
+	End
+	
 	Menu "context-math"
-		Item "Equation Label|L" "label-insert"
-		Item "Toggle Labeling/Numbering|T" "math-number-toggle"
+		Item "Inline Formula|I" "math-mutate simple"
+		Item "Displayed Formula|D" "math-mutate equation"
+		Item "Eqnarray Environment|E" "math-mutate eqnarray"
+		SubMenu "AMS Environment|A" "ams_environment"
+		Separator		
+		OptItem "Equation Label|L" "label-insert"
+		OptItem "Toggle Labeling/Numbering|T" "math-number-toggle"
+		Separator
+		Item "Split Cell|C" "cell-split"
+		Separator
+		Submenu "Insert|n" "insert_math_context"
+		Separator
+		OptItem "Add Line Above|A" "tabular-feature add-hline-above"
+		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
+		OptItem "Delete Line Above|D" "tabular-feature delete-hline-above"
+		OptItem "Delete Line Below|e" "tabular-feature delete-hline-below"
+		Separator
+		OptItem "Add Line to Left" "tabular-feature add-vline-left"
+		OptItem "Add Line to Right" "tabular-feature add-vline-right"
+		OptItem "Delete Line to Left" "tabular-feature delete-vline-left"
+		OptItem "Delete Line to Right" "tabular-feature delete-vline-right"
+		Separator
+		Item "Toggle Math Toolbar" "toolbar-toggle math toggle"
+		Item "Toggle Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
+		Item "Toggle Table Toolbar" "toolbar-toggle table toggle"
 	End
 
 
