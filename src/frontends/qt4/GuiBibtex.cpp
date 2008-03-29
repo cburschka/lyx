@@ -27,6 +27,8 @@
 
 #include "frontends/alert.h"
 
+#include "insets/InsetBibtex.h"
+
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
@@ -367,20 +369,14 @@ void GuiBibtex::applyView()
 			dbs += ',';
 			emb += ',';
 		}
-		QString filename = databaseLW->item(i)->text();
-		dbs += qstring_to_ucs4(filename);
-		try {
-			EmbeddedFile file(fromqstr(changeExtension(filename, "bib")),
-				buf.filePath());
-			file.setEmbed(databaseLW->item(i)->checkState() == Qt::Checked);
-			// move file around if needed, an exception may be raised.
-			file.enable(buf.embedded(), &buf, true);
-			// if things are OK..., 
-			if (file.embedded())
-				emb += from_utf8(file.inzipName());
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-			// failed to embed
+		QString item = databaseLW->item(i)->text();
+		docstring bibfile = qstring_to_ucs4(item);
+		dbs += bibfile;
+		if (databaseLW->item(i)->checkState() == Qt::Checked) {
+			FileName bibfilepath = InsetBibtex::getBibTeXPath(bibfile, buf);
+			string inzipName = 
+				EmbeddedFile::calcInzipName(bibfilepath.absFilename(), buf.filePath());
+			emb += from_utf8(inzipName);
 		}
 	}
 
