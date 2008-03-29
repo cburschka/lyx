@@ -172,13 +172,10 @@ public:
 	/// Calculate checksum of availableFile
 	unsigned long checksum() const;
 
-	/// calculate inzip_name_ from filename
-	static std::string 
-		calcInzipName(std::string const & file, std::string const & path);
-	/// calculate inzip_name_ from filename
+	// calculate inzip_name_ from filename
 	std::string calcInzipName(std::string const & buffer_path);
-	/// move an embedded disk file with an existing inzip_name_ to 
-	/// a calculated inzip_name_, if they differ.
+	// move an embedded disk file with an existing inzip_name_ to 
+	// a calculated inzip_name_, if they differ.
 	void syncInzipFile(std::string const & buffer_path);
 private:
 	/// filename in zip file

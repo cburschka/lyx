@@ -368,13 +368,11 @@ const std::string absDirName = "LyX.Embed.Dir.Abs";
 const std::string driveName = "LyX.Embed.Drive";
 const std::string spaceName = "LyX.Embed.Space";
 
-// static
-std::string EmbeddedFile::calcInzipName(
-	std::string const & file, std::string const & buffer_path)
+std::string EmbeddedFile::calcInzipName(std::string const & buffer_path)
 {
-	string inzipName = to_utf8(makeRelPath(from_utf8(file),
+	string inzipName = to_utf8(makeRelPath(from_utf8(absFilename()),
 			from_utf8(buffer_path)));
-
+	
 	if (FileName(inzipName).isAbsolute())
 		inzipName = absDirName + '/' + inzipName;
 
@@ -391,12 +389,6 @@ std::string EmbeddedFile::calcInzipName(
 	return inzipName;
 }
 
-
-std::string EmbeddedFile::calcInzipName(std::string const & buffer_path)
-{
-	return calcInzipName(absFilename(), buffer_path);
-}
- 
 
 void EmbeddedFile::syncInzipFile(std::string const & buffer_path)
 {

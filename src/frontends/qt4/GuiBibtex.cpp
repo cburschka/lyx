@@ -372,12 +372,8 @@ void GuiBibtex::applyView()
 		QString item = databaseLW->item(i)->text();
 		docstring bibfile = qstring_to_ucs4(item);
 		dbs += bibfile;
-		if (databaseLW->item(i)->checkState() == Qt::Checked) {
-			FileName bibfilepath = InsetBibtex::getBibTeXPath(bibfile, buf);
-			string inzipName = 
-				EmbeddedFile::calcInzipName(bibfilepath.absFilename(), buf.filePath());
-			emb += from_utf8(inzipName);
-		}
+		if (databaseLW->item(i)->checkState() == Qt::Checked)
+			emb += "embedded";
 	}
 
 	params_["bibfiles"] = dbs;

@@ -775,20 +775,21 @@ void InsetBibtex::createBibFiles() const
 		FileName bib = getBibTeXPath(bibfile, buffer());
 		EmbeddedFileList::iterator efp = oldlist.findFile(bib.absFilename());
 		if (efp != oldlist.end()) {
-			// already have this one
-			efp->setInzipName(to_utf8(embfile));
-			efp->setEmbed(!embfile.empty());
+			// already have this one, but embedding status may have been changed
+			bool old_status = efp->embedded();
+			bool new_status = !embfile.empty();
+			efp->setEmbed(new_status);
 			try {
-				efp->enable(buffer().embedded(), &buffer(), false);
+				// copy file if embedding status changed.
+				efp->enable(buffer().embedded(), &buffer(), old_status != new_status);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
-				// failed to embed
-				efp->setEmbed(false);
+				// failed to change embeddeing status
+				efp->setEmbed(old_status);
 			}
 			bibfiles_.push_back(*efp);
 		} else {
 			EmbeddedFile file(bib.absFilename(), buffer().filePath());
-			file.setInzipName(to_utf8(embfile));
 			file.setEmbed(!embfile.empty());
 			try {
 				file.enable(buffer().embedded(), &buffer(), true);
