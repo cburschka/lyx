@@ -54,6 +54,7 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 
 void InsetBibtex::setBuffer(Buffer & buffer)
 {
+	// FIXME We ought to have a buffer.
 	if (buffer_) {
 		EmbeddedFileList::iterator it = bibfiles_.begin();
 		EmbeddedFileList::iterator it_end = bibfiles_.end();
@@ -67,7 +68,7 @@ void InsetBibtex::setBuffer(Buffer & buffer)
 			}		
 		}
 	}
-	Inset::setBuffer(buffer);
+	InsetCommand::setBuffer(buffer);
 }
 
 
@@ -305,7 +306,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
-EmbeddedFileList InsetBibtex::embeddedFiles() const
+EmbeddedFileList const & InsetBibtex::getBibFiles() const
 {
 	return bibfiles_;
 }
@@ -552,28 +553,28 @@ namespace {
 void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 	InsetIterator const & /*di*/) const
 {
-	EmbeddedFileList const files = embeddedFiles();
-	for (vector<EmbeddedFile>::const_iterator it = files.begin();
-	     it != files.end(); ++ it) {
-		// This bibtex parser is a first step to parse bibtex files
-		// more precisely.
-		//
-		// - it reads the whole bibtex entry and does a syntax check
-		//   (matching delimiters, missing commas,...
-		// - it recovers from errors starting with the next @-character
-		// - it reads @string definitions and replaces them in the
-		//   field values.
-		// - it accepts more characters in keys or value names than
-		//   bibtex does.
-		//
-		// Officially bibtex does only support ASCII, but in practice
-		// you can use the encoding of the main document as long as
-		// some elements like keys and names are pure ASCII. Therefore
-		// we convert the file from the buffer encoding.
-		// We don't restrict keys to ASCII in LyX, since our own
-		// InsetBibitem can generate non-ASCII keys, and nonstandard
-		// 8bit clean bibtex forks exist.
-		
+	// This bibtex parser is a first step to parse bibtex files
+	// more precisely.
+	//
+	// - it reads the whole bibtex entry and does a syntax check
+	//   (matching delimiters, missing commas,...
+	// - it recovers from errors starting with the next @-character
+	// - it reads @string definitions and replaces them in the
+	//   field values.
+	// - it accepts more characters in keys or value names than
+	//   bibtex does.
+	//
+	// Officially bibtex does only support ASCII, but in practice
+	// you can use the encoding of the main document as long as
+	// some elements like keys and names are pure ASCII. Therefore
+	// we convert the file from the buffer encoding.
+	// We don't restrict keys to ASCII in LyX, since our own
+	// InsetBibitem can generate non-ASCII keys, and nonstandard
+	// 8bit clean bibtex forks exist.
+	EmbeddedFileList const & files = getBibFiles();
+	EmbeddedFileList::const_iterator it = files.begin();
+	EmbeddedFileList::const_iterator en = files.end();
+	for (; it != en; ++ it) {
 		idocfstream ifs(it->availableFile().toFilesystemEncoding().c_str(),
 			ios_base::in, buffer().params().encoding().iconvName());
 

@@ -12,10 +12,11 @@
 #ifndef INSET_BIBTEX_H
 #define INSET_BIBTEX_H
 
-#include <map>
-#include "InsetCommand.h"
 #include "BiblioInfo.h"
 #include "EmbeddedFiles.h"
+#include "InsetCommand.h"
+
+#include <map>
 
 namespace lyx {
 
@@ -27,7 +28,7 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	void setBuffer(Buffer & buffer);
+	virtual void setBuffer(Buffer & buffer);
 	///
 	docstring screenLabel() const;
 	///
@@ -41,7 +42,7 @@ public:
 	///
 	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
-	EmbeddedFileList embeddedFiles() const;
+	EmbeddedFileList const & getBibFiles() const;
 	///
 	bool addDatabase(std::string const &);
 	///
@@ -68,12 +69,12 @@ private:
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
 	void updateEmbeddedFile(EmbeddedFile const & file);
-	/// embedded bib files
-	mutable EmbeddedFileList bibfiles_;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetBibtex(*this); }
+	/// embedded bib files
+	mutable EmbeddedFileList bibfiles_;
 };
 
 
