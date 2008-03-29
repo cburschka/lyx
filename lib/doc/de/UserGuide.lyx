@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 27.
+letzte Änderung: 29.
  März 2008
 \end_layout
 
@@ -3940,6 +3940,12 @@ name "Dokument-Einstellungen"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "Eine-Klasse-auswählen"
+
+\end_inset
+
 Ja, wir wissen, dass wir Ihnen noch nicht gesagt haben, was die meisten
  dieser 
 \emph on
@@ -3961,16 +3967,26 @@ Einstellungen
 
 \begin_layout Description
 Dokumentklasse außer der Dokumentklasse gibt es noch:
-\begin_inset CommandInset label
-LatexCommand label
-name "Eine-Klasse-auswählen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
+\begin_layout Description
+Dokumentklasse hier wählen Sie die von Ihnen gewünschte Dokumentklasse aus,
+\end_layout
+
+\begin_layout Standard
+oder
+\end_layout
+
+\begin_layout Description
+Benutzer-Layout benutzen eine auf Ihrem Rechner vorhandene Layout-Datei
+ (
+\family typewriter
+*.layout
+\family default
+).
+\end_layout
+
 \begin_layout Description
 Optionen: etwas für LaTeX-Freaks.
  Das LaTeX-Kommando 
@@ -7010,7 +7026,7 @@ Dokument-Einstellungen
 \family default
  unter 
 \family sans
-Aufzählungszeichen
+Auflistungszeichen
 \family default
  die 
 \family sans
@@ -20390,7 +20406,7 @@ drehen
  Werfen Sie einen Blick auf Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zellen-um-90°-drehen"
+reference "tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -20399,12 +20415,6 @@ reference "Zellen-um-90°-drehen"
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Float table
@@ -20418,7 +20428,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Zellen-um-90°-drehen"
+name "tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -21235,11 +21245,6 @@ Gesamt
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 
 \emph on
@@ -21270,7 +21275,7 @@ Strg+T
 Wie Sie an Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zellen-um-90°-drehen"
+reference "tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -25599,7 +25604,7 @@ Dokument-Einstellungen
 \family sans
 Mathe-Optionen
 \family default
- zwei Optionen 
+ die Optionen 
 \family sans
 AMS-Mathe-Paket
 \begin_inset Space \space{}
@@ -25627,8 +25632,8 @@ Das
 \family typewriter
 esint
 \family default
--Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
- alternative Integral-Symbole, näheres finden Sie auf 
+-Paket, das Sie ebenfalls [automatisch] benutzen können, erlaubt für Computer-Mo
+dern-Fonts alternative Integral-Symbole, näheres finden Sie auf 
 \begin_inset Newline newline
 \end_inset
 
@@ -39468,15 +39473,6 @@ Erlaube
 \end_inset
 
 Speichern/Wiederherstellen
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Fensterposition
-\begin_inset Space ~
-\end_inset
-
-speichern/wiederherstellen
 \begin_inset Space ~
 \end_inset
 
@@ -39612,7 +39608,6 @@ Dokumente
 benutzen ???
 \end_layout
 
-\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Subsection
@@ -40465,11 +40460,10 @@ Kategorien
 gruppieren wie der Name sagt
 \end_layout
 
-\begin_layout Description
-Auswahlfenster:
+\begin_layout Standard
+im Auswahlfenster:
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Mathe-Makros
 \begin_inset Space ~
@@ -40562,7 +40556,6 @@ Parameterliste
 LyX<1.6)
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Description
 Vollbild
@@ -41524,8 +41517,10 @@ Konverter
 \begin_layout Standard
 Im Unterfenster 
 \family sans
+\series bold
 Konverter-Definitionen
 \family default
+\series default
  finden Sie eine Liste der Konvertierungsmöglichkeiten, die LyX bietet.
  Wenn Sie ein Element anklicken, können Sie rechts die folgenden Einträge
  vornehmen:
@@ -41887,6 +41882,10 @@ reference "Dokument-Standard"
 
 \end_layout
 
+\begin_layout Standard
+Die untersten vier Schalter sind wie üblich zu verwenden.
+\end_layout
+
 \begin_layout Section
 Dokumentklasse
 \end_layout
@@ -41900,6 +41899,52 @@ reference "Eine-Klasse-auswählen"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+Module
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Verfügbar Hier finden Sie eine Liste mit Modulen, die Sie zusätzlich benutzen
+ können.
+\end_layout
+
+\begin_layout Description
+Ausgewählt Hier erscheinen die von Ihnen hinzugefügten Module.
+\end_layout
+
+\begin_layout Description
+Hinzufügen und 
+\family sans
+\series bold
+Löschen
+\family default
+\series default
+ sind selbsterklärend.
+\end_layout
+
+\begin_layout Standard
+Mit 
+\family sans
+\series bold
+Rauf
+\family default
+\series default
+ und 
+\family sans
+\series bold
+Runter
+\family default
+\series default
+ können Sie die Reihenfolge der hinzugefügten Module ändern.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Außerdem erhalten Sie im darunterliegenden Fenster weitere Hinweise, wenn
+ Sie ein Modul anklicken.
 \end_layout
 
 \begin_layout Section
@@ -41932,7 +41977,6 @@ Bildschirmschriften
 Standard-Familie
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Basisgröße ist die Fontgröße in Punkten, die das Dokument verwendet.
 \end_layout
@@ -42034,7 +42078,6 @@ reference "Mediävalziffern-verwenden"
 .
 \end_layout
 
-\end_deeper
 \begin_layout Section
 Textformat
 \end_layout
@@ -42044,13 +42087,6 @@ Siehe auch
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Globale-Absatztrennung"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Globale-Optionen"
 
 \end_inset
 
@@ -42064,6 +42100,43 @@ reference "Absatz-einrücken"
 .
 \end_layout
 
+\begin_layout Description
+Abstand
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Zeilenabstand: hier können Sie einen auswählen oder selber definieren.
+\end_layout
+
+\begin_layout Description
+Zweispaltiges
+\begin_inset Space ~
+\end_inset
+
+Dokument ist selbsterklärend
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Listing-Einstellungen Wenn Sie im linken Feld ein ? eingeben, werden rechts
+ alle infrage kommenden Parameter aufgelistet.
+ Wenn Sie dann links einen dieser Parameter eingeben, wird rechts angezeigt,
+ was Sie noch tun müssen.
+ Diese Option ist mehr etwas für LaTeX-Experten.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Überprüfung
+\begin_inset Space ~
+\end_inset
+
+umgehen kreuzen Sie an, wenn Sie einen Parameter eingeben wollen, den LyX
+ nicht erkennt.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Seitenformat
 \end_layout
@@ -42118,7 +42191,6 @@ Innen,
 Außen ist selbsterklärend
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Abstand
 \begin_inset Space ~
@@ -42190,7 +42262,10 @@ footskip
 .
 \end_layout
 
-\end_deeper
+\begin_layout Description
+Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
+\end_layout
+
 \begin_layout Standard
 Einzelheiten zu diesen vier Gruppen finden Sie in 
 \begin_inset CommandInset ref
@@ -42217,9 +42292,8 @@ reference "Rechtschreibprogramm"
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Description
-Standardkodierung
+Stil
 \begin_inset Space ~
 \end_inset
 
@@ -42227,11 +42301,42 @@ der
 \begin_inset Space ~
 \end_inset
 
-Sprache
+Anführungszeichen siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Anführungszeichen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Kodierung siehe auch 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Zeichentabellen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Voreinstellungung
 \begin_inset Space ~
 \end_inset
 
-verwenden siehe Abschnitt
+der
+\begin_inset Space ~
+\end_inset
+
+gewählten
+\begin_inset Space ~
+\end_inset
+
+Sprache siehe Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
@@ -42253,37 +42358,11 @@ reference "ISO8859-15-Zeichensatz"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
-Kodierung siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Zeichentabellen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Stil
-\begin_inset Space ~
-\end_inset
-
-der
-\begin_inset Space ~
-\end_inset
-
-Anführungszeichen siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Anführungszeichen"
-
-\end_inset
-
-
+Andere liefert eine Auswahl an Kodierungsmöglichkeiten.
 \end_layout
 
 \end_deeper
@@ -42341,10 +42420,9 @@ Natbib
 \family sans
 Jurabib
 \family default
- nichts sagen
+ nichts sagen.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Abschnittsspezifisches
 \begin_inset Space ~
@@ -42353,6 +42431,185 @@ Abschnittsspezifisches
 Literaturverzeichnis ???
 \end_layout
 
+\begin_layout Section
+PDF-Eigenschaften
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+PDF!-Eigenschaften
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "PDF-Eigenschaften"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+hyperref-Unterstützung
+\begin_inset Space ~
+\end_inset
+
+benutzen kreuzen Sie an, wenn Sie das wollen.
+ Sie können dann auf den drei Karteikarten weitere Parameter festlegen.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Allgemein
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Dokument-Informationen
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Titel,
+\begin_inset Space ~
+\end_inset
+
+Autor,
+\begin_inset Space ~
+\end_inset
+
+Betreff,
+\begin_inset Space ~
+\end_inset
+
+Schlagworte sind selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Informationen
+\begin_inset Space ~
+\end_inset
+
+automatisch
+\begin_inset Space ~
+\end_inset
+
+eintragen ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Im
+\begin_inset Space ~
+\end_inset
+
+Vollbildmodus
+\begin_inset Space ~
+\end_inset
+
+öffnen ist selbsterklärend.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Hyperlinks
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Links
+\begin_inset Space ~
+\end_inset
+
+am
+\begin_inset Space ~
+\end_inset
+
+Zeilenende
+\begin_inset Space ~
+\end_inset
+
+umbrechen ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Kein
+\begin_inset Space ~
+\end_inset
+
+Rahmen
+\begin_inset Space ~
+\end_inset
+
+um
+\begin_inset Space ~
+\end_inset
+
+Links ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Bibliographische
+\begin_inset Space ~
+\end_inset
+
+Rückverweise ???
+\end_layout
+
+\begin_layout Description
+Rückverweis
+\begin_inset Space ~
+\end_inset
+
+auf
+\begin_inset Space ~
+\end_inset
+
+Seitennummer ???
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Lesezeichen
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Lesezeichen
+\begin_inset Space ~
+\end_inset
+
+erzeugen
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Nummerierte
+\begin_inset Space ~
+\end_inset
+
+Lesezeichen ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Lesezeichen
+\begin_inset Space ~
+\end_inset
+
+öffnen ???
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Ebene ???
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
 \end_deeper
 \begin_layout Section
 Mathe-Optionen
@@ -42427,7 +42684,6 @@ Zweige
  eingetragen werden.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Verfügbare
 \begin_inset Space ~
@@ -42437,7 +42693,41 @@ Zweige listet alle verfügbaren Zweige auf und zeigt an, welcher aktiviert
  ist und mit welcher Farbe er markiert wird.
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Entfernen,
+\begin_inset Space ~
+\end_inset
+
+(De)aktivieren,
+\begin_inset Space ~
+\end_inset
+
+Farbe
+\begin_inset Space ~
+\end_inset
+
+ändern\SpecialChar \ldots{}
+ ist selbsterklärend.
+\end_layout
+
 \end_deeper
+\begin_layout Section
+Eingebettete Dateien
+\end_layout
+
+\begin_layout Description
+Weitere
+\begin_inset Space ~
+\end_inset
+
+eingebettete
+\begin_inset Space ~
+\end_inset
+
+Dateien werden hier aufgelistet und können hinzugefügt und entfernt werden.
+\end_layout
+
 \begin_layout Section
 LaTeX-Vorspann
 \end_layout
