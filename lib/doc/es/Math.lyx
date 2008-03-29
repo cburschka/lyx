@@ -22,24 +22,6 @@
 \IfFileExists{lmodern.sty}
  {\usepackage{lmodern}}{}
 
-% link all cross references and URLs
-% in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=1,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={LyX's Math Manual},
-  pdfsubject={LyX-documentation about math},
-  pdfkeywords={LyX, Mathed}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in DVI output
- \usepackage[ps2pdf, colorlinks=true,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
-
 \fi % end if pdflatex is used
 
 % Folgendes Problem lösen:
@@ -179,7 +161,22 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Manual detallado de Matemáticas en LyX"
+\pdf_author "LyX Team, Uwe Stöhr, translation: Ignacio Garcia"
+\pdf_subject "LyX-documentation about math"
+\pdf_keywords "LyX, Mathed"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -225,26 +222,10 @@ Si tienes comentarios o correcciones de errores envíalos, por favor, a la
  lista de correo de documentación de LyX
 \family typewriter
 : 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{mailto:lyx-docs@lists.lyx.org?subject=LyX's Math manual}{
-\end_layout
-
-\end_inset
-
-lyx-docs@lists.lyx.org
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-docs@lists.lyx.org"
+target "lyx-docs@lists.lyx.org?subject=LyX's Math manual"
 
 \end_inset
 
@@ -258,7 +239,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-autor: Uwe Stöhr
+autor: Uwe Stöhr, translation: Ignacio Garcia
 \end_layout
 
 \end_inset
@@ -438,37 +419,21 @@ status collapsed
 
 \begin_layout Plain Layout
 En el archivo 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://ctan.tug.org/tex-archive/macros/amstex/doc/amsguide.ps}{
-\end_layout
-
-\end_inset
-
-
 \family sans
-amsguide.ps
-\family default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "amsguide.ps"
+target "ftp://ctan.tug.org/tex-archive/macros/amstex/doc/amsguide.ps"
 
 \end_inset
 
+
+\family default
 , que forma parte de todas las distribuciones estándar de LaTeX, hay una
  lista con todos los comandos de ecuaciones 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7710,26 +7675,11 @@ La primera fila de la ecuación es igual que la segunda fila del ejemplo
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1505}{
-\end_layout
-
-\end_inset
-
-LyX-bug #1505
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1505"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
 
 \end_inset
 
@@ -11790,7 +11740,7 @@ texorpdfstring{
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para espacio vertical en ecuaciones véase 
@@ -12102,33 +12052,25 @@ reference "sec:Estilos-de-ecuación"
 \end_layout
 
 \begin_layout Standard
-Los comandos 
-\series bold
 
-\backslash
-hspace
-\series default
- y 
-\series bold
+\lang english
+For text, variable space can be inserted via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Horizontal
+\begin_inset Space ~
+\end_inset
 
-\backslash
-hfill
-\series default
- también se pueden insertar en modo TeX para texto:
+Space
+\family default
+, what is not possible in formulas:
 \end_layout
 
 \begin_layout Standard
 En esta línea hay un espacio
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{2cm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 2cm
 \end_inset
 
 de 2
@@ -12144,82 +12086,6 @@ En esta línea hay un
 \end_inset
 
 espacio máximo.
-\end_layout
-
-\begin_layout Standard
-En el último ejemplo 
-\series bold
-
-\backslash
-hfill
-\series default
- se ha insertado con el menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-Formato\SpecialChar \menuseparator
-Relleno
-\begin_inset Space ~
-\end_inset
-
-horizontal
-\family default
-, que no es posible en ecuaciones.
- Esto tiene la ventaja de que se puede ver directamente en LyX que es un
- espacio flexible.
-\end_layout
-
-\begin_layout Standard
-Si los comandos están al principio de una línea de texto pero no al principio
- de un párrafo, serán ignorados por LaTeX.
- Para evitar esto se usa el comando 
-\series bold
-
-\backslash
-hspace*
-\series default
- en vez de 
-\series bold
-
-\backslash
-hspace
-\series default
-.
- Para conseguir lo mismo con 
-\series bold
-
-\backslash
-hfill
-\series default
- hay que insertar un salto de línea y un espacio fantasma
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-véase 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Espaciadores-fantasma"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- vacío, con el comando 
-\series bold
-
-\backslash
-vphantom{}
-\series default
- en modo TeX antes de 
-\series bold
-
-\backslash
-hfill
-\series default
-.
 \end_layout
 
 \begin_layout Subsection
@@ -12513,29 +12379,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Debido a un fallo de LyX, 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1435}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1435"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-LyX-bug #1435
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\lang spanish
 , no es posible crear una nueva ecuación con 
 \family sans
 Ctrl-m
@@ -12714,29 +12567,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Debido a un fallo de LyX, 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1435}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1435"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-LyX-bug #1435
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\lang spanish
 , no es posible crear una nueva ecuación con 
 \family sans
 Ctrl-m
@@ -13072,7 +12912,7 @@ distancia
  cuadro.
  Un ejemplo de esto es la siguiente ecuación enmarcada:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -13457,30 +13297,15 @@ sqrt{B}$}$
 La última ecuación sólo se puede componer, de momento, usando el modo TeX
  porque LyX inserta un cuadro en lugar de la ecuación extra que hace falta.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1435}{
-\end_layout
-
-\end_inset
-
-LyX-bug #1435
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1435"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
@@ -13672,29 +13497,16 @@ fcolorbox
 \series default
 .
  Por eso ten en cuenta 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1435}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1435"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-LyX-bug #1435
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\lang spanish
 .
 \end_layout
 
@@ -14594,26 +14406,11 @@ linewidth
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=4483}{
-\end_layout
-
-\end_inset
-
-LyX-bug #4483
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #4483"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=4483"
 
 \end_inset
 
@@ -14671,7 +14468,7 @@ Detrás de la ecuación se cierran ambos cuadros con
  en modo TeX.
  Aquí hay un ejemplo:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18602,27 +18399,11 @@ textrm
 status collapsed
 
 \begin_layout Plain Layout
- 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=4091}{
-\end_layout
-
-\end_inset
-
-LyX-bug #4091
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #4091"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=4091"
 
 \end_inset
 
@@ -19077,16 +18858,8 @@ A
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1cm}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 1cm
 \end_inset
 
 Alt-m
@@ -25725,16 +25498,8 @@ Comando
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{1cm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 1cm
 \end_inset
 
 Resultado
@@ -26444,16 +26209,8 @@ L
 
 \begin_layout Plain Layout
 !
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0mm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0mm
 \end_inset
 
 `
@@ -26493,16 +26250,8 @@ spce
 
 \begin_layout Plain Layout
 ?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0mm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0mm
 \end_inset
 
 `
@@ -26596,16 +26345,8 @@ Los caracteres
 Los comandos 
 \series bold
 !
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0mm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0mm
 \end_inset
 
 `
@@ -26613,16 +26354,8 @@ hspace{0mm}
  y 
 \series bold
 ?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0mm}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0mm
 \end_inset
 
 `
@@ -27867,7 +27600,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}$
+\begin_inset Formula $\_{} $
 \end_inset
 
 
@@ -28424,26 +28157,11 @@ status collapsed
 
 \begin_layout Plain Layout
 véase 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1505}{
-\end_layout
-
-\end_inset
-
-LyX-bug #1505
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1505"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
 
 \end_inset
 
@@ -28616,7 +28334,7 @@ usepackage{calc}
 \begin_layout Standard
 Se obtiene:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -28988,26 +28706,11 @@ Debido a un fallo en LyX el cursor no se puede poner con el ratón en la
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=1429}{
-\end_layout
-
-\end_inset
-
-LyX-bug #1429
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #1429"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=1429"
 
 \end_inset
 
@@ -31923,26 +31626,9 @@ Como ves, las ecuaciones se numeran consecutivamente independientemente
 
  al cambiar el estilo, hay que definir nuevos contadores de ecuación.
  Una descripción sobre esto se encuentra en el archivo 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{Formula-numbering.lyx}{
-\end_layout
-
-\end_inset
-
-Formula-numbering.lyx
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "Formula-numbering.lyx"
 
 \end_inset
 
@@ -34132,6 +33818,12 @@ status collapsed
 \series bold
 
 \backslash
+hspace
+\series default
+ y 
+\series bold
+
+\backslash
 raisebox
 \series default
  se usa sólo como espaciador
@@ -36308,26 +36000,12 @@ key "Mathmode"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\lang english
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf}{
-\end_layout
-
-\end_inset
-
-Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 
 \end_inset
 
@@ -36341,27 +36019,13 @@ key "Voss"
 
 \end_inset
 
+
+\lang english
 LaTeX tips and tricks-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://tug.org/TeXnik/}{
-\end_layout
-
-\end_inset
-
-page
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "page"
+target "http://tug.org/TeXnik/"
 
 \end_inset
 
@@ -36376,26 +36040,12 @@ key "AMS"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\lang english
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf}{
-\end_layout
-
-\end_inset
-
-Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf"
 
 \end_inset
 
@@ -36423,26 +36073,12 @@ key "Symbole"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\lang english
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf}{
-\end_layout
-
-\end_inset
-
-List
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "List"
+target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
 
 \end_inset
 
@@ -36457,30 +36093,18 @@ key "hyperref"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\lang english
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
 
 \end_inset
 
-Documentation
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- of the LaTeX-package 
+ of the LaTeX-package
+\lang spanish
+ 
 \series bold
 hyperref
 \series default
@@ -36505,30 +36129,18 @@ key "Mathclap"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\lang english
 
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf"
 
 \end_inset
 
-Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- of the command 
+ of the command
+\lang spanish
+ 
 \series bold
 
 \backslash
@@ -36580,26 +36192,10 @@ key "spanish"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.texytipografia.com/archive/spanish.pdf}{
-\end_layout
-
-\end_inset
-
-Documentación
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación"
+target "http://www.texytipografia.com/archive/spanish.pdf"
 
 \end_inset
 
@@ -36623,26 +36219,10 @@ key "Bezos"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.texytipografia.com/archive/ortomatem.pdf}{
-\end_layout
-
-\end_inset
-
-Documento
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Documento"
+target "http://www.texytipografia.com/archive/ortomatem.pdf"
 
 \end_inset
 

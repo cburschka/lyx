@@ -1,5 +1,5 @@
 #LyX 1.6.0alpha1 created this file. For more info see http://www.lyx.org/
-\lyxformat 323
+\lyxformat 324
 \begin_document
 \begin_header
 \textclass scrbook
@@ -107,7 +107,9 @@
 
 \begin_layout Title
 Das LyX-Benutzerhandbuch
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \size large
 Version 1.6svn
@@ -3033,13 +3035,17 @@ article
 (AMS) Artikel im Stil und Format der AMS (American Mathematical Society).
  Es gibt drei amsart-Layouts.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Das Standardlayout benutzt das normale Nummerierungsschema für Sätze usw.,
  das die Abschnittsnummer voranstellt.
  Alle Behauptungen (Sätze, Korollare usw.) werden gemeinsam nummeriert, aber
  Definitionen, Beispiele und Ähnliches haben ihre eigene Nummerierungsfolge.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \series bold
 sequential numbering
@@ -3047,7 +3053,9 @@ sequential numbering
  stellt keine Abschnittsnummer voran, sondern nummeriert alles fortlaufend.
  Jeder Typ (Sätze, Definitionen usw.) erhält eine eigene Nummerierungsreihenfolge.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \series bold
 unnumbered
@@ -5039,7 +5047,8 @@ key "latex-einführung"
 
 101.
  LaTeX hat offensichtlich Probleme, den Schreibmaschinenfont richtig umzubrechen.
-\newline
+\begin_inset Newline newline
+\end_inset
 
 Man kann das mit der Trennhilfe 
 \begin_inset Quotes gld
@@ -5081,7 +5090,9 @@ reference "URLs"
 \end_inset
 
 ).
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Manchmal hilft 
 \family typewriter
 sloppypar
@@ -6678,12 +6689,17 @@ Wilhelm Busch
 
 \begin_layout Verse
 Wenn einer, der mit Mühe kaum
-\newline
+\begin_inset Newline newline
+\end_inset
+
 gekrochen ist auf einen Baum,
-\newline
-schon meint, dass
- er ein Vöglein wär'
-\newline
+\begin_inset Newline newline
+\end_inset
+
+schon meint, dass er ein Vöglein wär'
+\begin_inset Newline newline
+\end_inset
+
 so irrt sich der.
 \end_layout
 
@@ -6697,9 +6713,13 @@ Es folgt ein viel schlechteres Beispiel.
 
 \begin_layout Verse
 Um eine Zeile umzubrechen
-\newline
+\begin_inset Newline newline
+\end_inset
+
 und es gut aussehen zu lassen
-\newline
+\begin_inset Newline newline
+\end_inset
+
 benutze man 
 \family sans
 Strg+Eingabe
@@ -7677,7 +7697,9 @@ Einstellungen
 \end_inset
 
 ).
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Der Text im Feld 
 \family sans
 Längste
@@ -8061,13 +8083,21 @@ rechts
 
 \begin_layout Right Address
 Absender
-\newline
-Straße
-\newline
-PLZ Ort
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\newline
+Straße
+\begin_inset Newline newline
+\end_inset
+
+PLZ Ort
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 Ort, Datum
 \end_layout
 
@@ -8100,9 +8130,13 @@ Adresse
 
 \begin_layout Address
 Empfänger
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Straße
-\newline
+\begin_inset Newline newline
+\end_inset
+
 PLZ Ort
 \end_layout
 
@@ -10816,9 +10850,13 @@ Eingabe, Aufzählung
 \begin_deeper
 \begin_layout Verse
 Jetzt dichten wir.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Es wird noch schlechter.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (
 \family sans
 Eingabe,
@@ -10842,9 +10880,13 @@ Eingabe,
 
 \begin_layout Verse
 Wir wollen ein Bier.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Das wäre gerechter!
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (
 \family sans
 Alt+Eingabe
@@ -11035,9 +11077,13 @@ rechts
 \begin_layout Right Address
 Nirgendwostr.
  1234
-\newline
+\begin_inset Newline newline
+\end_inset
+
 54321 Irgendwo
-\newline
+\begin_inset Newline newline
+\end_inset
+
 18.
  Feb.
  1999
@@ -11095,7 +11141,9 @@ Wir danken Ihnen nochmals für Ihre Geduld.
 
 \begin_layout Address
 Hochachtungsvoll,
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Franz Meier
 \end_layout
 
@@ -11459,9 +11507,13 @@ Manchmal benötigen Sie einen Abstand, der genauso lang ist wie ein Begriff.
 
 \begin_layout Standard
 Was ist richtiges Deutsch?
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Herr Meier würde springt
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
@@ -11476,7 +11528,9 @@ phantom{Herr Meier }
 \end_inset
 
 hat gespringt
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
@@ -12260,7 +12314,9 @@ nicht
 
 \begin_layout Quote
 Eine gute Dokumentation sollte nicht mehr wiegen als 1
-\newline
+\begin_inset Newline newline
+\end_inset
+
 kg.
 \end_layout
 
@@ -12977,7 +13033,9 @@ hen Funktionen erstellt.
  Die Vektorfonts sind für jede Zeichengröße bestens geeignet.
  Nur bei sehr kleinen Zeichengrößen kann es schwer sein, die Pixel richtig
  zu berechnen, damit das Zeichen noch gut aussieht.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Die Fonttypen 
 \family typewriter
 TrueType
@@ -13019,7 +13077,9 @@ Font!Bitmap-
  Vergrößerungen sehen deshalb nicht besonders gut aus.
  Der Vorteil von Bitmap-Fonts ist, dass keine aufwendigen Berechnungen durchgefü
 hrt werden müssen.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 In Postscript®- und PDF-Dokumenten sind 
 \family typewriter
 Type
@@ -13358,9 +13418,11 @@ Helvetica
 Courier
 \family default
  als Schreibmaschinenfont.
-\newline
-Die Unterschiede zwischen Roman, serifenfrei und
- Schreibmaschine werden in Abschnitt
+\begin_inset Newline newline
+\end_inset
+
+Die Unterschiede zwischen Roman, serifenfrei und Schreibmaschine werden
+ in Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
@@ -13372,7 +13434,9 @@ reference "Textstil-Menü"
 \end_inset
 
  beschrieben.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Der Font Times Roman wurde ursprünglich für Zeitungen entwickelt.
  Das bedeutet, dass seine Zeichen kleiner als die von anderen Fonts sind,
  damit sie in die schmalen Zeitungsspalten passen.
@@ -14781,7 +14845,9 @@ Hervorgehoben
 Dies ist hervorgehobener Text
 \emph default
 .
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Dies mag wie 
 \shape italic
 kursiv
@@ -14806,7 +14872,9 @@ Unterstrichen
 Dies ist unterstrichener Text.
 \bar default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (Tastenkürzel = 
 \family sans
 Alt+Z
@@ -14833,7 +14901,9 @@ Kapitälchen/Eigenname
 Dies ist Text mit Kapitälchen.
 \noun default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Dies ist ebenso wie 
 \family sans
 Hervorgehoben
@@ -16226,7 +16296,9 @@ Strg+
 -), und zwar an jeder infrage kommenden Stelle, weil Sie ja nicht wissen
  können, wo genau das zusammengesetzte Wort im Laufe der Bearbeitung landen
  wird: 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -16278,7 +16350,9 @@ reference "ERT-Kästchen"
 
  wird in der Druckansicht durch den Bindestrich ersetzt, und LaTeX wendet
  seine Silbentrennregeln auf beide Teile an:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -16914,7 +16988,9 @@ Ligaturen
  Da sich LaTeX mit Ligaturen auskennt, werden Ihre mit LyX geschriebenen
  Dokumente sie auch haben.
  Hier sind die möglichen Ligaturen:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 ff
 \begin_inset Space \hfill{}
 \end_inset
@@ -22138,7 +22214,9 @@ Dies ist ein
 mehrzeiliger
 \emph default
  Tabelleneintrag.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Jetzt ist er länger.
 \end_layout
 
@@ -25584,7 +25662,9 @@ esint
 \family default
 -Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
  alternative Integral-Symbole, näheres finden Sie auf 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -28655,7 +28735,9 @@ esint
 \family default
 -Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
  alternative Integral-Symbole, näheres finden Sie auf 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -28701,7 +28783,9 @@ Wer aber viele Formeln zu schreiben hat, wird feststellen, dass man mit
 
 \begin_layout Standard
 Die Dokumentation ist hier zu finden:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -30623,9 +30707,11 @@ Schlagwort
  Für Soße also Sose@Soße.
  Damit werden Umlaute und ß richtig einsortiert, und in der Ausgabe so geschrieb
 en, wie es hinter @ steht.
-\newline
-Das bedeutet natürlich auch, dass Sie durch das
- Wort vor @ eine beliebige Sortierreihenfolge erzwingen können.
+\begin_inset Newline newline
+\end_inset
+
+Das bedeutet natürlich auch, dass Sie durch das Wort vor @ eine beliebige
+ Sortierreihenfolge erzwingen können.
 \end_layout
 
 \begin_layout Enumerate
@@ -30646,7 +30732,9 @@ Schlagwort
 \family default
 ) stehen muss.
  Diese Datei könnte so aussehen:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 quote '='
@@ -32096,7 +32184,9 @@ Damit Vorschauen möglich sind, müssen Sie zusätzliche Pakete installieren.
 preview.sty
 \family default
 , das Sie hier finden:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -32193,7 +32283,9 @@ status collapsed
 
 \begin_layout Plain Layout
 Die neueste Version können Sie im Internet unter
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -37064,9 +37156,11 @@ s erscheint.
  Ein weiterer Klick auf den Knopf läßt die Gliederung wieder verschwinden.
  Die Gliederung zeigt zunächst das Inhaltsverzeichnis, aber Sie können auch
  andere auswählen.
-\newline
-Am unteren Rand gibt es einen Schieberegler, mit dem Sie
- die Anzeigetiefe ändern können.
+\begin_inset Newline newline
+\end_inset
+
+Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
+ ändern können.
  Außerdem sind dort fünf Knöpfe mit folgender Bedeutung:
 \end_layout
 
@@ -37577,7 +37671,9 @@ name "LaTeX-Code-einfügen"
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -40262,7 +40358,9 @@ status collapsed
 
 X-Server-Weiterleitung Hier wird der Name einer Unix-Pipe angegeben.
  Über diese werden Daten aus externen Programmen an LyX gesendet.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \series bold
 Beispiel
@@ -40304,13 +40402,16 @@ status collapsed
 X-Pipe
 \family default
  der gleiche Eintrag wie hier einzutragen.
-\newline
-Wollen Sie sich jetzt auf einen
- Eintrag aus der DB beziehen, wählen Sie den in JabRef aus und klicken auf
- das LyX-Symbol.
+\begin_inset Newline newline
+\end_inset
+
+Wollen Sie sich jetzt auf einen Eintrag aus der DB beziehen, wählen Sie
+ den in JabRef aus und klicken auf das LyX-Symbol.
  Es wird in aktuellen LyX-Dokument an der Cursor-Position der Literaturverweis
  eingefügt.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 JabRef und LyX müssen natürlich beide laufen.
  Unter Linux funktioniert das so, beim Mac sicher auch, bei Windows gibt
  es den Pipe-Mechanismus nicht.
@@ -40409,7 +40510,9 @@ reference "ERT"
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 babel
@@ -42458,7 +42561,9 @@ target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS"
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42566,7 +42671,9 @@ key "TeXCatalogue"
 \end_inset
 
 Der TeX Katalog:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42589,7 +42696,9 @@ key "LaTeXFAQ"
 \end_inset
 
 The LaTeX FAQ:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42624,7 +42733,9 @@ target "http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi"
 makeindex
 \family default
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42669,7 +42780,9 @@ LaTeX!-Paket ! caption
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42714,7 +42827,9 @@ LaTeX!-Paket ! fancyhdr
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42759,7 +42874,9 @@ LaTeX!-Paket! nomencl
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42804,7 +42921,9 @@ LaTeX!-Paket ! tipa
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42849,7 +42968,9 @@ LaTeX!-Paket ! wrapfig
 \end_inset
 
 :
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42880,7 +43001,9 @@ target "http://wiki.lyx.org/LyX/XeTeX"
 \end_inset
 
  wie man LyX mit XeTeX benutzt:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42911,7 +43034,9 @@ target "http://wiki.lyx.org/Windows/Arabic"
 \end_inset
 
  wie man LyX für Arabisch konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42942,7 +43067,9 @@ target "http://wiki.lyx.org/Windows/Armenian"
 \end_inset
 
  wie man LyX für Armenisch konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -42973,7 +43100,9 @@ target "http://wiki.lyx.org/Windows/Farsi"
 \end_inset
 
  wie man LyX für Farsi konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -43004,7 +43133,9 @@ target "http://wiki.lyx.org/Windows/Hebrew"
 \end_inset
 
  wie man LyX für Hebräisch konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -43035,7 +43166,9 @@ target "http://wiki.lyx.org/Windows/Japanese"
 \end_inset
 
  wie man LyX für Japanisch konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -43066,7 +43199,9 @@ target "http://wiki.lyx.org/Windows/Vietnamese"
 \end_inset
 
  wie man LyX für Vietnamesisch konfiguriert:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
@@ -43097,7 +43232,9 @@ target "http://wiki.lyx.org/LyX/LyxFunctionList"
 \end_inset
 
  mit einer Liste aller LyX-Funktionen:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
