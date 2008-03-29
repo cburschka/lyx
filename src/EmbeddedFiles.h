@@ -209,13 +209,14 @@ public:
 	 */
 	void registerFile(EmbeddedFile const & file, Inset const * inset,
 		Buffer const & buffer);
-
+	/// returns a pointer to the Embedded file representing this object,
+	/// or null if not found. The filename should be absolute.
+	EmbeddedFile const * findFile(std::string const & filename) const;
+	EmbeddedFile * findFile(std::string const & filename);
 	/// validate embedded fies after a file is read.
 	void validate(Buffer const & buffer);
-
 	/// scan the buffer and get a list of EmbeddedFile
 	void update(Buffer const & buffer);
-
 	/// write a zip file
 	bool writeFile(support::DocFileName const & filename, Buffer const & buffer);
 };
