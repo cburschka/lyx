@@ -26929,7 +26929,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}$
+\begin_inset Formula $\_{} {}{}{}$
 \end_inset
 
 
@@ -27032,181 +27032,6 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-The tilde
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tilde
-\end_layout
-
-\end_inset
-
- is designed as accent, thus is looks alone a bit misplaced: ~
-\begin_inset Newline newline
-\end_inset
-
-But for web addresses (URLs) sometimes a single tilde is needed.
- In this case the relation sign 
-\series bold
-
-\backslash
-sim
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Relations"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\series default
- is used in a formula.
- As a formula cannot be created in an URL-box (menu 
-\family sans
-Insert\SpecialChar \menuseparator
-URL
-\family default
-), the URL is inserted as normal text with the font style '
-\family typewriter
-typewriter
-\family default
-'.
- Should the URL be a hyperlink in the DVI- or PDF-output, the command 
-\series bold
-
-\backslash
-href
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-href
-\series default
- can only be used together with the LaTeX-package 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Packages ! hyperref
-\end_layout
-
-\end_inset
-
-.
- More about 
-\series bold
-
-\backslash
-href
-\series default
- is written in the section 
-\family typewriter
-URL
-\family default
- in the 
-\family typewriter
-Embedded
-\begin_inset Space ~
-\end_inset
-
-Objects
-\family default
- manual.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! H ! 
-\backslash
-href
-\end_layout
-
-\end_inset
-
- is used.
-\end_layout
-
-\begin_layout Standard
-As example an URL with a tilde:
-\end_layout
-
-\begin_layout Standard
-as text: 
-\family typewriter
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\end_layout
-
-\begin_layout Standard
-with 
-\series bold
-
-\backslash
-href
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.lyx.org/~mustermann}{
-\end_layout
-
-\end_inset
-
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -28761,41 +28586,6 @@ reference "sec:Formula-Styles"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
- This is also the case when there is a formula number displayed after every
- line in LyX.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This is 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=518}{
-\end_layout
-
-\end_inset
-
-LyX-bug #518
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -33369,7 +33159,7 @@ When formulas are used in section headings, the following has to be taken
 status open
 
 \begin_layout Plain Layout
-When the LaTeX-package 
+When 
 \series bold
 hyperref
 \series default
@@ -33383,8 +33173,15 @@ Packages ! hyperref
 
 \end_inset
 
- is used, PDF-bookmarks are automatically created for every section heading
- in the table of contents.
+ support is enabled in the document settings dialog under 
+\family sans
+PDF
+\begin_inset Space ~
+\end_inset
+
+Properties
+\family default
+, PDF-bookmarks are created for every section heading in the table of contents.
  If a section heading contains formulas, they are incorrectly displayed
  in the bookmark text, because formulas in bookmarks infringe the PDF convention
 s.

@@ -27063,7 +27063,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} $
+\begin_inset Formula $\_{} {}{}$
 \end_inset
 
 
@@ -27166,183 +27166,6 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Die Tilde
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tilde
-\end_layout
-
-\end_inset
-
- ist nur für Akzente gedacht, weswegen sie alleine deplatziert wirkt: ~
-\begin_inset Newline newline
-\end_inset
-
-Aber für Webadressen (URLs) wird manchmal eine einzelne Tilde benötigt.
- Man verwendet in diesem Fall das Relationszeichen 
-\series bold
-
-\backslash
-sim
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Relationen"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\series default
- in einer Formel.
- Da in einer URL-Box (Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-URL
-\family default
-) keine Formel erstellt werden kann, gibt man die URL als normalen Text
- in der Stilart '
-\family typewriter
-Schreibmaschine
-\family default
-' ein.
- Soll die URL in der DVI- oder PDF-Ausgabe einen Link produzieren, verwendet
- man den Befehl 
-\series bold
-
-\backslash
-href
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-href
-\series default
- kann nur zusammen mit dem LaTeX-Paket 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Pakete ! hyperref
-\end_layout
-
-\end_inset
-
- verwendet werden.
- Mehr zu 
-\series bold
-
-\backslash
-href
-\series default
- steht im Kapitel 
-\family typewriter
-URL
-\family default
- im Handbuch 
-\family typewriter
-Eingebettete
-\begin_inset Space ~
-\end_inset
-
-Objekte
-\family default
-.
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! H ! 
-\backslash
-href
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Als Beispiel eine URL mit einer Tilde:
-\end_layout
-
-\begin_layout Standard
-als Text: 
-\family typewriter
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\end_layout
-
-\begin_layout Standard
-mit 
-\series bold
-
-\backslash
-href
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.lyx.org/~mustermann}{
-\end_layout
-
-\end_inset
-
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -28909,41 +28732,6 @@ reference "sec:Formelstile"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
- Dies gilt auch wenn in LyX hinter jeder Zeile eine Formelnummer angezeigt
- wird.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Dies ist 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=518}{
-\end_layout
-
-\end_inset
-
-LyX-Fehler #518
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -33650,7 +33438,7 @@ Benutzt man Formeln in Überschriften, ist auf Folgendes zu achten:
 status open
 
 \begin_layout Plain Layout
-Verwendet man das LaTeX-Paket 
+Verwendet man 
 \series bold
 hyperref
 \series default
@@ -33664,8 +33452,12 @@ Pakete ! hyperref
 
 \end_inset
 
-, werden automatisch PDF-Lesezeichen für jede Überschrift aus dem Inhaltsverzeic
-hnis erzeugt.
+ Unterstützung im den Dokumenteinstellungen unter 
+\family sans
+PDF-Eigenschaften
+\family default
+, werden PDF-Lesezeichen für jede Überschrift aus dem Inhaltsverzeichnis
+ erzeugt.
  Enthält eine Überschrift Formeln, werden diese im Lesezeichentext falsch
  dargestellt.
  Denn Formeln in Lesezeichen verstoßen gegen die PDF-Konventionen.

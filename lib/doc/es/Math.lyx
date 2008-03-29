@@ -7675,7 +7675,6 @@ La primera fila de la ecuación es igual que la segunda fila del ejemplo
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
@@ -12379,7 +12378,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Debido a un fallo de LyX, 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -12387,8 +12385,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang spanish
 , no es posible crear una nueva ecuación con 
 \family sans
 Ctrl-m
@@ -12567,7 +12563,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Debido a un fallo de LyX, 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -12575,8 +12570,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang spanish
 , no es posible crear una nueva ecuación con 
 \family sans
 Ctrl-m
@@ -13301,7 +13294,6 @@ status collapsed
 
 \begin_layout Plain Layout
 véase 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -13497,7 +13489,6 @@ fcolorbox
 \series default
 .
  Por eso ten en cuenta 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -13505,8 +13496,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang spanish
 .
 \end_layout
 
@@ -14406,7 +14395,6 @@ linewidth
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #4483"
@@ -18399,7 +18387,6 @@ textrm
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #4091"
@@ -27600,7 +27587,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} $
+\begin_inset Formula $\_{} {}{}$
 \end_inset
 
 
@@ -27703,178 +27690,6 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La tilde
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tilde
-\end_layout
-
-\end_inset
-
- está diseñada como acento, así que sola se ve un poco fuera de sitio: ~
-\begin_inset Newline newline
-\end_inset
-
-Pero a veces hace falta una tilde para direcciones web.
- En ese caso, en una ecuación se usa el signo de relación 
-\series bold
-
-\backslash
-sim
-\series default
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-véase 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Relaciones"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Como en un cuadro URL (menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-URL
-\family default
-) no se puede escribir una ecuación, se inserta la URL como texto normal
- en estilo '
-\family typewriter
-typewriter
-\family default
-'.
- Si la URL ha de ser un hiperenlace en la salida DVI o PDF, se usa el comando
- 
-\series bold
-
-\backslash
-href
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! H ! 
-\backslash
-href
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-href
-\series default
- sólo puede usarse junto con el paquete LaTeX 
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetes ! hyperref
-\end_layout
-
-\end_inset
-
-.
- Más sobre 
-\series bold
-
-\backslash
-href
-\series default
- en la sección 
-\emph on
-URL
-\emph default
- del manual 
-\emph on
-Objetos incrustados
-\emph default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ejemplo de una URL con una tilde:
-\end_layout
-
-\begin_layout Standard
-como texto: 
-\family typewriter
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\end_layout
-
-\begin_layout Standard
-con 
-\series bold
-
-\backslash
-href
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.lyx.org/~mustermann}{
-\end_layout
-
-\end_inset
-
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -28157,7 +27972,6 @@ status collapsed
 
 \begin_layout Plain Layout
 véase 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
@@ -28706,7 +28520,6 @@ Debido a un fallo en LyX el cursor no se puede poner con el ratón en la
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1429"
@@ -29341,41 +29154,6 @@ reference "sec:Estilos-de-ecuación"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
- Este también es el caso si hay número de ecuación detrás de cada línea
- en LyX.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Es el 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=518}{
-\end_layout
-
-\end_inset
-
-LyX-bug #518
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -34058,8 +33836,11 @@ Si se quiere poner una ecuación en un encabezado de sección hay que tener
 status open
 
 \begin_layout Plain Layout
-Cuando se usa el paquete LaTeX 
+
+\lang english
+When 
 \series bold
+\lang spanish
 hyperref
 \series default
 
@@ -34072,8 +33853,21 @@ Paquetes ! hyperref
 
 \end_inset
 
-, los marcadores PDF se generan automáticamente para cada encabezado de
- sección en el índice.
+
+\series bold
+\lang english
+ 
+\series default
+support is enabled in the document settings dialog under 
+\family sans
+PDF
+\begin_inset Space ~
+\end_inset
+
+Properties
+\family default
+\lang spanish
+, los marcadores PDF se generan para cada encabezado de sección en el índice.
  Si el encabezado contiene ecuaciones, se muestran incorrectamente en el
  texto del marcador, porque se infringen las convenciones PDF.
 \end_layout

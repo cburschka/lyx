@@ -7445,7 +7445,6 @@ La première ligne de la formule est la même que la deuxième ligne de l'exempl
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
@@ -12028,7 +12027,6 @@ status collapsed
 Ctrl-m
 \family default
 , voir 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -12036,8 +12034,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -12218,7 +12214,6 @@ status collapsed
 Ctrl-m
 \family default
 , voir 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -12226,8 +12221,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -12944,7 +12937,6 @@ status collapsed
 
 \begin_layout Plain Layout
 voir 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -13140,7 +13132,6 @@ fcolorbox
 \series default
 .
  D'où la note 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1435"
@@ -13148,8 +13139,6 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -14034,7 +14023,6 @@ linewidth
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #4483"
@@ -18073,7 +18061,6 @@ textrm
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #4091"
@@ -26901,7 +26888,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} $
+\begin_inset Formula $\_{} {}{}$
 \end_inset
 
 
@@ -27004,184 +26991,6 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Le tilde
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tilde
-\end_layout
-
-\end_inset
-
- est conçu pour être un accent, il semble un peu déplacé quand il est seul:
- ~
-\begin_inset Newline newline
-\end_inset
-
-Mais pour les adresses internet (les URLs), on a parfois besoin d'un tilde
- tout seul.
- Dans ce cas on peut utiliser l'opérateur de relation 
-\series bold
-
-\backslash
-sim
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-voir 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Relations"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\series default
- dans une formule.
- Comme on ne peut pas insérer une formule dans une boîte d'URL (menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-URL
-\family default
-), l'URL est insérée comme du texte normal en police '
-\family typewriter
-machine à écrire
-\family default
-'.
- Si l'URL doit être un hyperlien dans la sortie DVI ou PDF, il faut utiliser
- la commande 
-\series bold
-
-\backslash
-href
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-href
-\series default
- peut être utilisé uniquement avec le paquetage LaTeX 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages ! hyperref
-\end_layout
-
-\end_inset
-
-.
- Plus d'information sur 
-\series bold
-
-\backslash
-href
-\series default
- est donné dans la section 
-\family typewriter
-URL
-\family default
- du manuel 
-\family typewriter
-Objets
-\begin_inset Space ~
-\end_inset
-
-insérés
-\family default
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! H ! 
-\backslash
-href
-\end_layout
-
-\end_inset
-
- .
-\end_layout
-
-\begin_layout Standard
-Un exemple d'URL avec un tilde:
-\end_layout
-
-\begin_layout Standard
-en tant que texte: 
-\family typewriter
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\end_layout
-
-\begin_layout Standard
-avec 
-\series bold
-
-\backslash
-href
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.lyx.org/~mustermann}{
-\end_layout
-
-\end_inset
-
-http://www.lyx.org/
-\begin_inset Formula $\sim$
-\end_inset
-
-mustermann
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -27495,7 +27304,6 @@ status collapsed
 
 \begin_layout Plain Layout
 voir 
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
@@ -28030,7 +27838,6 @@ La formule n'utilise pas la totalité de la largeur de la page.
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1429"
@@ -28671,7 +28478,7 @@ reference "eq:lefteqn"
 \begin_layout Standard
 Dans la sortie finale, seule la dernière ligne d'un environnement multline
  apparaît numérotée si le document est numéroté à droite, la première s'il
- est numéroté à gauche
+ est numéroté à gauche.
 \begin_inset Foot
 status collapsed
 
@@ -28688,43 +28495,7 @@ reference "sec:Styles-de-formules"
 
 \end_inset
 
-.
- C'est aussi le cas dans LyX quand il y a un numéro de formule affiché après
- chaque ligne
-\begin_inset Foot
-status collapsed
 
-\begin_layout Plain Layout
-C'est 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://bugzilla.lyx.org/show_bug.cgi?id=518}{
-\end_layout
-
-\end_inset
-
-LyX-bug #518
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -33193,8 +32964,11 @@ Quand des formules sont utilisées dans des entêtes de section, on doit prendre
 status open
 
 \begin_layout Plain Layout
-Quand on utilise le paquetage LaTeX 
+
+\lang english
+When 
 \series bold
+\lang french
 hyperref
 \series default
 
@@ -33207,8 +32981,19 @@ Paquetages ! hyperref
 
 \end_inset
 
-, les signets PDF sont automatiquement créés dans la table des matières
- pour chaque entête de section.
+
+\lang english
+ support is enabled in the document settings dialog under 
+\family sans
+PDF
+\begin_inset Space ~
+\end_inset
+
+Properties
+\family default
+\lang french
+, les signets PDF sont créés dans la table des matières pour chaque entête
+ de section.
  Si l'entête de section contient une formule, elle est affichée de façon
  incorrecte dans le texte du signet parce que les formules dans les signets
  ne respectent pas certaines conventions du PDF.
