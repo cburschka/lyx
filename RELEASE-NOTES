@@ -158,32 +158,18 @@ The following new LyX functions have been removed:
 For the detailed description of LyX functions look into doxygen documentation.
 
 
-Known issues in version 1.5.2
+Known issues in version 1.6.0
 ------------------------------------
 
-- Cursor restoration problems with Multiple-View:
-  When using multiple Windows to edit different parts of the
-  same document, the cursor position is sometimes not correctly restored
-  when you switch from one view to the other.
-
-- RTL and keymaps:
-  Currently there is a bug where you can't use two non-RTL language keymaps if
-  the RTL preference is set (which is now the default). If you need to use two
-  non-RTL keymaps, for now you should just turn off the RTL preference (Tools -> 
-  Preferences... -> Language settings -> Language, uncheck "Right-to-left
-  language support").
-  We hope to offer more comprehensive support for multiple keymaps in the future,
-  which will solve this bug, as well as allow more than just two keymaps. If you 
-  have any input on this issue, please chime in on the developers mailing list,
-  or add your comments to http://bugzilla.lyx.org/show_bug.cgi?id=4051.
+- ...
 
 
-Caveats when upgrading from earlier versions to 1.5.x
+Caveats when upgrading from earlier versions to 1.6.x
 -------------------------------------------------------
 
-Due to the change to Unicode, there are some general things you'll have to take care
-about when upgrading from an older version to LyX 1.5.0 or newer. Please refer to the
-file UPGRADING for details.
+The support for Japanese has been improved in LyX 1.6.x. Due to encoding
+reasons, Japanese documents that were edited with LyX 1.6.x cannot correctly
+be converted to the format of LyX 1.5.x and thus not edited with LyX 1.5.x.
 
 
 Note: There may later be an updated list of known issues online at

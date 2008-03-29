@@ -173,15 +173,12 @@ End
 
 # Traditional Japanese TeX programs require neither CJK nor inputenc
 # package.
-Encoding euc-jp-plain EUC-JP-plain EUC-JP variable none
+Encoding euc-jp-plain EUC-JP-pLaTeX EUC-JP variable none
 End
-Encoding jis-plain JIS-plain JIS variable none
+Encoding jis-plain JIS-pLaTeX ISO-2022-JP variable none
 End
-# The SJIS encoding can't be taken as is, therefore it is disabled here
-# as long as someone build in the needed conversion, described here:
-# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129935.html
-#Encoding shift-jis-plain SJIS-plain SJIS variable none
-#End
+Encoding shift-jis-plain SJIS-pLaTeX CP932 variable none
+End
 
 # This one needs hardcoded support, since the inputenc package does not know
 # tis620-0, and thailatex sets up babel directly to use tis620-0, so the

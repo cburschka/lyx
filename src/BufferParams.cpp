@@ -1035,8 +1035,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 		size_t viet = language_options.str().find("vietnam");
 		// viet = string::npos when not found
+		// when Japanese is used, babel must directly be loaded with the
+		// language options, not in the class options, see
+		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
+		size_t japan = language_options.str().find("japanese");
+		// japan = string::npos when not found
 		if (lyxrc.language_global_options && !language_options.str().empty()
-			&& viet == string::npos)
+			&& viet == string::npos && japan == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1280,18 +1285,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelOptions());
-	}
-
-	// When the language "japanese-plain" is used, the package "japanese" must
-	// be loaded behind babel (it provides babel support for Japanese) but before
-	// hyperref, see
-	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-	if (language->lang() == "japanese-plain" &&
-		!documentClass().provides("japanese")) {
-		//load babel in case it was not loaded due to an empty language list
-		if (language_options.str().empty())
-			lyxpreamble += "\\usepackage{babel}\n";
-		lyxpreamble += "\\usepackage{japanese}\n";
 	}
 
 	// PDF support.
@@ -1782,7 +1775,12 @@ string BufferParams::babelCall(string const & lang_opts) const
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 	size_t viet = lang_opts.find("vietnam");
 	// viet = string::npos when not found
-	if (!lyxrc.language_global_options || viet != string::npos)
+	// when Japanese is used, babel must directly be loaded with the
+	// language options, see
+	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
+	size_t japan = lang_opts.find("japanese");
+	// japan = string::npos when not found
+	if (!lyxrc.language_global_options || viet != string::npos || japan != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }

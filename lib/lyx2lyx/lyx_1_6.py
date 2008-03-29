@@ -1713,7 +1713,6 @@ def convert_linebreaks(document):
                              '\\end_inset']
 
 
-
 def revert_linebreaks(document):
     ' Revert \\begin_inset Newline to previous inline format '
     i = 0
@@ -1728,6 +1727,23 @@ def revert_linebreaks(document):
         del document.body[j]
         document.body[i] = document.body[i].replace('\\begin_inset Newline newline', '\\newline')
         document.body[i] = document.body[i].replace('\\begin_inset Newline linebreak', '\\linebreak')
+
+
+def convert_japanese_plain(document):
+    "Set language japanese-plain to japanese"
+    i = 0
+    if document.language == "japanese-plain":
+        document.language = "japanese"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language japanese"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang japanese-plain", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang japanese-plain", "\\lang japanese")
+        j = j + 1
 
 
 ##
@@ -1782,10 +1798,12 @@ convert = [[277, [fix_wrong_tables]],
            [321, [convert_tablines]],
            [322, []],
            [323, [convert_pagebreaks]],
-           [324, [convert_linebreaks]]
+           [324, [convert_linebreaks]],
+           [325, [convert_japanese_plain]],
           ]
 
-revert =  [[323, [revert_linebreaks]],
+revert =  [[324, []],
+           [323, [revert_linebreaks]],
            [322, [revert_pagebreaks]],
            [321, [revert_local_layout]],
            [320, [revert_tablines]],
