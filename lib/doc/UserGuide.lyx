@@ -9422,7 +9422,18 @@ really
 \begin_layout Standard
 There are two types of pagebreaks: One that ends the page without any special
  action.
- This can be inserted above or below a paragraph by the menu 
+ This can be inserted above or below a paragraph via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+New
+\begin_inset Space ~
+\end_inset
+
+Break
+\family default
+.
+ The second type, that is inserted via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
@@ -9432,60 +9443,10 @@ Page
 
 Break
 \family default
-.
- The second type ends a page, but stretches the content of the page, so
- that it fills out the complete page.
+, ends a page but stretches the content of the page, so that it fills out
+ the complete page.
  This type is useful to avoid whitespace when a pagebreak produces a page
  on which only the last few lines are absent.
- This type is not yet supported by LyX, so that you have to use the LaTeX
- command 
-\series bold
-
-\backslash
-pagebreak[number]
-\series default
- in ERT
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For more about ERT see section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ERT"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
- The number can vary between 0 and 4.
- If 4 or no number is used, it will always be created a pagebreak
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-normally one uses simply 
-\series bold
-
-\backslash
-pagebreak
-\series default
- without a number
-\end_layout
-
-\end_inset
-
-.
- The numbers 0 to 3 stand for the increasing priority level -- LaTeX decides,
- concerning the priority, if a pagebreak is created or not.
 \end_layout
 
 \begin_layout Standard
@@ -9596,6 +9557,10 @@ Similar to pagebreaks there are two types of linebreaks: One that simply
 \family sans
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
+Ragged
+\begin_inset Space ~
+\end_inset
+
 Line
 \begin_inset Space ~
 \end_inset
@@ -9607,8 +9572,22 @@ Break
 C-Return
 \family default
 .
- The other type breaks the line and stretches it so that it fills out the
- whole space between the page margins.
+ Another type that is inserted via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Justified
+\begin_inset Space ~
+\end_inset
+
+Line
+\begin_inset Space ~
+\end_inset
+
+Break
+\family default
+ breaks the line and stretches it so that it fills out the whole space between
+ the page margins.
  This is necessary to avoid 
 \begin_inset Quotes eld
 \end_inset
@@ -9617,26 +9596,7 @@ fringes
 \begin_inset Quotes erd
 \end_inset
 
- in justifies paragraphs due to whitespace introduced by linebreaks.
- This type is not yet supported by LyX, so that you have to use the LaTeX-comman
-d 
-\series bold
-
-\backslash
-linebreak[number]
-\series default
- in 
-\family sans
-ERT
-\family default
-.
- The syntax is similar tho the command 
-\series bold
-
-\backslash
-pagebreak
-\series default
-, described in the previous section.
+ in justified paragraphs due to whitespace introduced by linebreaks.
 \end_layout
 
 \begin_layout Standard

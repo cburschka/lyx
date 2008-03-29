@@ -523,16 +523,7 @@ Strg-M
 Bearbeiten\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
 Formelart ändern
@@ -4188,19 +4179,10 @@ underline
 
 \begin_layout Standard
 Will man Ergebnisse doppelt unterstreichen, verwendet man zweimal hintereinander
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -10659,19 +10641,10 @@ A=B
 
 Mit diesen Befehlen können beliebig viele Zeichen akzentuiert werden.
  Die Akzente
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -12892,19 +12865,10 @@ makebox
 \end_inset
 
  und
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -18495,19 +18459,10 @@ small
 footnotesize
 \series default
 ,
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -23777,19 +23732,10 @@ lhd
 rhd
 \series default
  sind größer als die gleich aussehenden Operatoren
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -27063,7 +27009,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}$
+\begin_inset Formula $\_{} {}{}{}$
 \end_inset
 
 
@@ -30607,19 +30553,10 @@ renewcommand
 theequation
 \series default
  den Befehl
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- 
+
 \series bold
 
 \backslash
@@ -31421,16 +31358,7 @@ cb
 white
 \series default
  verwendet.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
-\end_layout
-
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -33150,16 +33078,7 @@ usepackage[samesize]{cancel}
 
 \begin_layout Standard
 geladen werden.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
-\end_layout
-
+\begin_inset Newpage pagebreak
 \end_inset
 
 

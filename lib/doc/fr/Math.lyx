@@ -4730,16 +4730,7 @@ lccr
 c
 \series default
 .
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
-\end_layout
-
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -23922,16 +23913,7 @@ sin(x)+B
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
-\end_layout
-
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -26888,7 +26870,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}$
+\begin_inset Formula $\_{} {}{}{}$
 \end_inset
 
 
@@ -29436,17 +29418,8 @@ begin
 \backslash
 end
 \series default
- est sous-numérotée avec a, b, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+ est sous-numérotée avec a, b,
+\begin_inset Newline linebreak
 \end_inset
 
 c, \SpecialChar \ldots{}
