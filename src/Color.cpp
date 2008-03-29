@@ -102,6 +102,8 @@ ColorSet::ColorSet()
 	{ Color_background, N_("background"), "background", "linen", "background" },
 	{ Color_foreground, N_("text"), "foreground", "black", "foreground" },
 	{ Color_selection, N_("selection"), "selection", "LightBlue", "selection" },
+	{ Color_selectiontext, N_("selected text"),
+		"selectiontext", "black", "selectiontext" },
 	{ Color_latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
 	{ Color_inlinecompletion, N_("inline completion"),
 		"inlinecompletion", "grey60", "inlinecompletion" },

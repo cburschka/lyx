@@ -244,10 +244,20 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		str[0] = par_.transformChar(c, pos);
 	}
 
+	// selected text?
+	pit_type const p0 = pi_.base.bv->cursor().selBegin().pit();
+	bool selection = row_.sel_beg > -1 && row_.sel_beg != row_.sel_end 
+		&& ((pit_ == p0 &&  (pos >= row_.sel_beg && pos < row_.sel_end))
+			|| (pit_ > p0 &&  pos < row_.sel_end));
+
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
 		if (pos < font_span.first || pos > font_span.last)
+			break;
+
+		if (row_.sel_beg > -1 && row_.sel_beg != row_.sel_end && 
+			((pit_ == p0 && pos == row_.sel_beg) || pos == row_.sel_end))
 			break;
 
 		if (prev_change != par_.lookupChange(pos).type)
@@ -299,9 +309,11 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	docstring s(&str[0], str.size());
 
-	if (prev_change != Change::UNCHANGED) {
+	if (selection || prev_change != Change::UNCHANGED) {
 		FontInfo copy = font;
-		if (prev_change == Change::DELETED) {
+		if (selection) {
+			copy.setColor(Color_selectiontext);
+		} else if (prev_change == Change::DELETED) {
 			copy.setColor(Color_deletedtext);
 		} else if (prev_change == Change::INSERTED) {
 			copy.setColor(Color_addedtext);

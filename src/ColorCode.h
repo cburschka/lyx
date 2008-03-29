@@ -44,6 +44,8 @@ enum ColorCode
 	Color_foreground,
 	/// Background color of selected text
 	Color_selection,
+	/// Foreground color of selected text
+	Color_selectiontext,
 	/// Text color in LaTeX mode
 	Color_latex,
 	/// The color used for previews
