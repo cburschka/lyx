@@ -112,7 +112,7 @@ Das LyX-Benutzerhandbuch
 
 
 \size large
-Version 1.6svn
+Version 1.6.x
 \end_layout
 
 \begin_layout Author
@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 18.
+letzte Änderung: 27.
  März 2008
 \end_layout
 
@@ -207,9 +207,9 @@ Vorbemerkung
 \noun on
 HHa
 \noun default
-: Ich habe ab dieser Version alle Unterstreichnungen von Menü-Befehlen weggelass
-en, weil es zu mühsam ist, die Änderungen während der Weiterentwicklung
- immer wieder nachzuvollziehen.
+: Ich habe ab Version 1.5 alle Unterstreichungen von Menü-Befehlen weggelassen,
+ weil es zu mühsam ist, die Änderungen während der Weiterentwicklung immer
+ wieder nachzuvollziehen.
  Ein Befehl sieht jetzt so aus: 
 \family sans
 Ansicht
@@ -484,7 +484,7 @@ WYSIWYG
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -13141,29 +13141,7 @@ Dokument!-font
 status collapsed
 
 \begin_layout Plain Layout
-Font!-gr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-o
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-se
+Font!-größe
 \end_layout
 
 \end_inset
@@ -14240,29 +14218,7 @@ name "Fontgröße"
 status collapsed
 
 \begin_layout Plain Layout
-Font!-gr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-o
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-se
+Font!-größe
 \end_layout
 
 \end_inset
@@ -20445,6 +20401,12 @@ reference "Zellen-um-90°-drehen"
 \begin_layout Standard
 \noindent
 \align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Float table
 wide false
 sideways false
@@ -21262,6 +21224,11 @@ Gesamt
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -28333,29 +28300,7 @@ Fontgrößen
 status collapsed
 
 \begin_layout Plain Layout
-Font!-gr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-o
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-se
+Font!-größe
 \end_layout
 
 \end_inset
@@ -37695,6 +37640,23 @@ Handbuchergänzungen.
 
 \begin_layout Enumerate
 \begin_inset Graphics
+	filename ../../images/math-macro_newmacroname_newcommand.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Makro
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
 	embed ""
 	scale 70
@@ -37748,19 +37710,6 @@ reference "Unterdokument"
 \end_inset
 
 : Absatz-Einstellungen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	embed ""
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-: Inhaltsverzeichnis anzeigen
 \end_layout
 
 \begin_layout Subsection
@@ -39483,80 +39432,61 @@ Durchsuchen\SpecialChar \ldots{}
 
 \begin_deeper
 \begin_layout Description
-Tastaturkürzel-Datei Der Standard-Einstellung ist 
-\family sans
-cua
-\family default
-, aber wenn Sie auf 
-\family sans
-Durch\SpecialChar \-
-suchen...
+Automatische
+\begin_inset Space ~
+\end_inset
 
-\family default
- klicken, werden Ihnen weitere Dateien angeboten.
+Hilfe
 \end_layout
 
 \begin_deeper
+\begin_layout Description
+Tooltips
+\begin_inset Space ~
+\end_inset
+
+im
+\begin_inset Space ~
+\end_inset
+
+Hauptarbeitsbereich
+\begin_inset Space ~
+\end_inset
+
+anschalten gibt Hinweise bei Einfügungen
+\end_layout
+
+\end_deeper
 \begin_layout Description
 Sitzung 
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Fenstergröße
+Erlaube
 \begin_inset Space ~
 \end_inset
 
-speichern/wieder
-\begin_inset Space \space{}
-\end_inset
-
-herstellen
-\begin_inset Space \space{}
-\end_inset
-
-oder
-\begin_inset Space \space{}
-\end_inset
-
-feste
-\begin_inset Space \space{}
-\end_inset
-
-Größe 
-\family sans
-\series bold
-ver\SpecialChar \-
-wen\SpecialChar \-
-den
-\family default
-\series default
- Wenn dieser Parameter nicht an\SpecialChar \-
-ge\SpecialChar \-
-kreuzt ist, können Sie die LyX-Fenstergröße
- über 
-\family sans
-Breite
-\family default
- und 
-\family sans
-Höhe
-\family default
- festlegen.
+Speichern/Wiederherstellen
 \end_layout
 
+\begin_deeper
 \begin_layout Description
 Fensterposition
 \begin_inset Space ~
 \end_inset
 
-speichern/wieder
+speichern/wiederherstellen
 \begin_inset Space ~
 \end_inset
 
-herstellen Wenn dieser Parameter ange\SpecialChar \-
-kreuzt ist, wird das LyX-Fenster dort
- geöffnet, wo es beim letzten Mal war.
+der
+\begin_inset Space ~
+\end_inset
+
+Fensterabmessungen Wenn dieser Parameter ange\SpecialChar \-
+kreuzt ist, wird das LyX-Fenster
+ dort geöffnet, wo es beim letzten Mal war.
 \end_layout
 
 \begin_layout Description
@@ -39614,7 +39544,12 @@ der
 \begin_inset Space ~
 \end_inset
 
-Dokumente Hier können Sie die automatische Datensicherung während einer
+Dokumente,
+\begin_inset Space ~
+\end_inset
+
+alle\SpecialChar \ldots{}
+Minuten Hier können Sie die automatische Datensicherung während einer
  Sitzung (de)aktivieren und das Zeitintervall, in dem das passieren soll.
 \end_layout
 
@@ -39635,55 +39570,46 @@ Dateien Außerdem können Sie angeben, wie viele Dateien LyX maximal anzeigen
  soll.
 \end_layout
 
-\end_deeper
 \begin_layout Description
-Bilddurchlauf
+Dokument
+\begin_inset Space ~
+\end_inset
+
+als
+\begin_inset Space ~
+\end_inset
+
+Tab
+\begin_inset Space ~
+\end_inset
+
+öffnen Wenn dieser Parameter angekreuzt ist, wird das neue Dokument im selben
+ Fenster mit einem neuen Tab geöffnet, sonst in einem neuen Fenster (wie
+ zum Beispiel bei OpenOffice).
 \end_layout
 
-\begin_deeper
 \begin_layout Description
-Cursor
+Gebündeltes
 \begin_inset Space ~
 \end_inset
 
-folgt
+Format
 \begin_inset Space ~
 \end_inset
 
-Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
- nachgeführt.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Pixmap
+für
 \begin_inset Space ~
 \end_inset
 
-Cache
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Pixmap
+neue
 \begin_inset Space ~
 \end_inset
 
-Cache Wenn die Option 
-\family sans
-Enable Pixmap Cache
-\family default
- verwendet wird, muss LyX die Bildschirmansicht nicht so häufig neu aufbauen.
- Dies führt zu einer besseren Performance, besonders bei langsameren Systemen.
- Auf der anderen Seite können dadurch die Bildschirmschriften etwas pixelig
- aussehen.
- Die Verwendung dieser Option hängt also davon ab, ob Sie Geschwindigkeit
- oder gute Ansicht bevorzugen.
- Beachten Sie dass der Pixmap Cache nur unter Mac
+Dokumente
 \begin_inset Space ~
 \end_inset
 
-OS und Windows verfügbar und nützlich ist.
+benutzen ???
 \end_layout
 
 \end_deeper
@@ -39716,12 +39642,10 @@ Roman Auswahl einer Schrift mit Serifen.
  Dann sind die Größenverhältnisse untereinander gewahrt.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Serifenfrei Auswahl einer serifenfreien Schrift.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Schreibmaschine Auswahl einer Schrift mit festen Abständen.
 \end_layout
@@ -39745,13 +39669,70 @@ DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
 
 \begin_layout Description
 Schriftgrößen Hier können Sie die Größenverhältnisse der zehn verschiedenen,
- von LaTeX her bekannten, Schriftgrößen untereinander festlegen.
+ von LaTeX her bekannten, Schriftgrößen untereinander festlegen, siehe auch
+ Seite
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "Fontgröße"
+
+\end_inset
+
+.
  Vielleicht macht es bei manchen Monitoren Sinn, die Größenverhältnisse
  zu ändern.
 \end_layout
 
-\end_deeper
-\end_deeper
+\begin_layout Description
+Pixmap
+\begin_inset Space ~
+\end_inset
+
+Cache
+\begin_inset Space ~
+\end_inset
+
+benutzen
+\begin_inset Space ~
+\end_inset
+
+um
+\begin_inset Space ~
+\end_inset
+
+Darstellung
+\begin_inset Space ~
+\end_inset
+
+von
+\begin_inset Space ~
+\end_inset
+
+Zeichen
+\begin_inset Space ~
+\end_inset
+
+zu
+\begin_inset Space ~
+\end_inset
+
+beschleunigen Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige
+ nicht so häufig neu aufbauen.
+ Dies führt zu einer besseren Performance, besonders bei langsameren Systemen.
+ Auf der anderen Seite können dadurch die Bildschirmschriften etwas pixelig
+ aussehen.
+ Die Verwendung dieser Option hängt also davon ab, ob Sie Geschwindigkeit
+ oder gute Ansicht bevorzugen.
+ Beachten Sie, dass der Pixmap-Cache nur unter Mac
+\begin_inset Space ~
+\end_inset
+
+OS und Windows verfügbar und nützlich ist.
+\end_layout
+
 \begin_layout Subsection
 Farben 
 \end_layout
@@ -39789,7 +39770,6 @@ reference "HFill"
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Anhangskennzeichnung ist die Farbe für die Trennlinie zwischen Dokument
  und Anhang, siehe 
@@ -39802,7 +39782,6 @@ reference "Danksagung"
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Auswahl ist die Hintergrundfarbe für markierten Text.
 \end_layout
@@ -39919,6 +39898,14 @@ Fußnote
 \end_layout
 
 \begin_layout Description
+Fußnoten
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe der Fußnotenmarke.
+\end_layout
+
+\begin_layout Description
 Gelöschter
 \begin_inset Space ~
 \end_inset
@@ -39945,8 +39932,8 @@ Grafik
 \begin_inset Space ~
 \end_inset
 
-(Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von Schaltköpf
-en in LyX dargestellt wird.
+(Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von Schaltknöp
+fen in LyX dargestellt wird.
 \end_layout
 
 \begin_layout Description
@@ -39967,6 +39954,14 @@ Grauschrift-Einfügung
 Grauschrift
 \emph default
  bei einer Grauschrift-Notiz hinterlegt wird.
+\end_layout
+
+\begin_layout Description
+Grauschrift-Einfügung
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe der Grauschrift-Marke.
 \end_layout
 
 \begin_layout Description
@@ -40030,14 +40025,6 @@ Knopf
 \end_layout
 
 \begin_layout Description
-Kommentar ist die Farbe, mit der das Wort 
-\emph on
-Kommentar
-\emph default
- bei einer Kommentar-Notiz geschrieben wird.
-\end_layout
-
-\begin_layout Description
 Kommentar
 \begin_inset Space ~
 \end_inset
@@ -40047,6 +40034,18 @@ Kommentar
 Kommentar
 \emph default
  bei einer Kommentar-Notiz hinterlegt wird.
+\end_layout
+
+\begin_layout Description
+Kommentar
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe, mit der das Wort 
+\emph on
+Kommentar
+\emph default
+ bei einer Kommentar-Notiz geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -40109,7 +40108,7 @@ eingerahmt
 nicht im Ausdruck
 \emph default
  steht.
- Wenn Sie mathematische Ausdrück in LyX leichter erkennen wollen, sollten
+ Wenn Sie mathematische Ausdrücke in LyX leichter erkennen wollen, sollten
  Sie diese Farbe ändern.
 \end_layout
 
@@ -40161,11 +40160,71 @@ Mathe-Makro
 \end_layout
 
 \begin_layout Description
-Notiz ist die Farbe, mit der das Wort 
-\emph on
-Notiz
-\emph default
- bei einer LyX-Notiz geschrieben wird.
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+(schwebender
+\begin_inset Space ~
+\end_inset
+
+Hintergrund) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+Marke ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+Rahmen ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+alter
+\begin_inset Space ~
+\end_inset
+
+Parameter ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+ausgeblendet ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset Space ~
+\end_inset
+
+neuer
+\begin_inset Space ~
+\end_inset
+
+Parameter ???
+\end_layout
+
+\begin_layout Description
+Neue
+\begin_inset Space ~
+\end_inset
+
+Seite ist die Farbe, mit der die Linie für eine neue Seite gezeichnet wird.
 \end_layout
 
 \begin_layout Description
@@ -40174,6 +40233,18 @@ Notiz
 \end_inset
 
 (Hintergrund) ist die Hintergrundfarbe für die LyX-Notiz.
+\end_layout
+
+\begin_layout Description
+Notiz
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe, mit der das Wort 
+\emph on
+Notiz
+\emph default
+ bei einer LyX-Notiz geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -40193,6 +40264,14 @@ reference "Horizontale-Linien"
 \end_inset
 
  dargestellt wird
+\end_layout
+
+\begin_layout Description
+Randnotiz
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe, mit der die Marke der Randnotiz beschriftet ist.
 \end_layout
 
 \begin_layout Description
@@ -40217,6 +40296,10 @@ Sonderzeichen\SpecialChar \menuseparator
 \begin_layout Description
 Sprache ist die Farbe, mit der Textteile unterstrichen werden, der Sie eine
  andere Sprache zugewiesen haben.
+\end_layout
+
+\begin_layout Description
+Stichwortmarke ist die Farbe, mit der die Stichwortmarke beschriftet ist.
 \end_layout
 
 \begin_layout Description
@@ -40246,6 +40329,22 @@ Text ist die Farbe, mit der normaler Text geschrieben wird.
 \end_layout
 
 \begin_layout Description
+URL
+\begin_inset Space ~
+\end_inset
+
+Marke ist die Farbe, mit der die URL-Marke beschriftet wird.
+\end_layout
+
+\begin_layout Description
+URL
+\begin_inset Space ~
+\end_inset
+
+Text ist die Farbe, in der die URL geschrieben wird.
+\end_layout
+
+\begin_layout Description
 Unterer
 \begin_inset Space ~
 \end_inset
@@ -40258,12 +40357,36 @@ Vorschau-Schnipsel ???
 \end_layout
 
 \begin_layout Description
+Wortvervollständigung
+\begin_inset Space ~
+\end_inset
+
+(eindeutig) ist die Farbe, mit der die Vervollständigung angezeigt wird,
+ wenn sie eindeutig ist.
+\end_layout
+
+\begin_layout Description
+Wortvervollständigung
+\begin_inset Space ~
+\end_inset
+
+mehrdeutig) ist die Farbe, mit der die Vervollständigungen angezeigt werden,
+ wenn sie mehrdeutig sind.
+\end_layout
+
+\begin_layout Description
 Zeilenende-Markierung ist die Farbe, mit der ein manueller Zeilenumbruch
  dargestellt wird.
 \end_layout
 
-\end_deeper
-\end_deeper
+\begin_layout Description
+Zweig
+\begin_inset Space ~
+\end_inset
+
+Marke ???
+\end_layout
+
 \end_deeper
 \begin_layout Subsection
 Grafik
@@ -40278,7 +40401,6 @@ anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden sollen.
  Ist Ihr PC langsam, können Sie auch auf eine Darstellung verzichten.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Sofortige
 \begin_inset Space ~
@@ -40288,8 +40410,252 @@ Vorschau Hier legen Sie fest, wie schnell Grafiken in LyX dargestellt werden
  sollen.
 \end_layout
 
+\begin_layout Section
+Bearbeiten
+\end_layout
+
+\begin_layout Subsection
+Kontrolle
+\end_layout
+
+\begin_layout Description
+Bearbeiten
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Cursor
+\begin_inset Space ~
+\end_inset
+
+folgt
+\begin_inset Space ~
+\end_inset
+
+Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
+ nachgeführt.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Umgebungen
+\begin_inset Space ~
+\end_inset
+
+alphabetisch
+\begin_inset Space ~
+\end_inset
+
+sortieren wie der Name sagt 
+\end_layout
+
+\begin_layout Description
+Umgebungen
+\begin_inset Space ~
+\end_inset
+
+nach
+\begin_inset Space ~
+\end_inset
+
+Kategorien
+\begin_inset Space ~
+\end_inset
+
+gruppieren wie der Name sagt
+\end_layout
+
+\begin_layout Description
+Auswahlfenster:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Mathe-Makros
+\begin_inset Space ~
+\end_inset
+
+inline
+\begin_inset Space ~
+\end_inset
+
+bearbeiten
+\begin_inset Space ~
+\end_inset
+
+in
+\begin_inset Space ~
+\end_inset
+
+einer
+\begin_inset Space ~
+\end_inset
+
+Box
+\end_layout
+
+\begin_layout Description
+Mathe-Makros
+\begin_inset Space ~
+\end_inset
+
+inline
+\begin_inset Space ~
+\end_inset
+
+bearbeiten
+\begin_inset Space ~
+\end_inset
+
+mit
+\begin_inset Space ~
+\end_inset
+
+dem
+\begin_inset Space ~
+\end_inset
+
+Namen
+\begin_inset Space ~
+\end_inset
+
+in
+\begin_inset Space ~
+\end_inset
+
+der
+\begin_inset Space ~
+\end_inset
+
+Statuszeile
+\end_layout
+
+\begin_layout Description
+Mathe-Makros
+\begin_inset Space ~
+\end_inset
+
+inline
+\begin_inset Space ~
+\end_inset
+
+bearbeiten
+\begin_inset Space ~
+\end_inset
+
+mit
+\begin_inset Space ~
+\end_inset
+
+einer
+\begin_inset Space ~
+\end_inset
+
+Parameterliste
+\begin_inset Space ~
+\end_inset
+
+(wie
+\begin_inset Space ~
+\end_inset
+
+LyX<1.6)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Vollbild
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Werkzeugleisten
+\begin_inset Space ~
+\end_inset
+
+weglassen
+\end_layout
+
+\begin_layout Description
+Scrollleisten
+\begin_inset Space ~
+\end_inset
+
+weglassen
+\end_layout
+
+\begin_layout Description
+Tableiste
+\begin_inset Space ~
+\end_inset
+
+weglassen
+\end_layout
+
+\begin_layout Standard
+Wenn eine dieser Optionen angekreuzt ist, wird die entsprechende Leiste
+ nicht gezeigt.
+\end_layout
+
+\begin_layout Description
+Begrenze
+\begin_inset Space ~
+\end_inset
+
+Textbreite
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Benutzter
+\begin_inset Space ~
+\end_inset
+
+Bildschirmbereich
+\begin_inset Space ~
+\end_inset
+
+(Pixel) begrenzt die Breite der Darstellung auf die festgelegte Pixelzahl.
+\end_layout
+
+\end_deeper
+\end_deeper
 \end_deeper
 \begin_layout Subsection
+Tastenkürzel
+\end_layout
+
+\begin_layout Description
+Tastaturkürzel-Datei: ???
+\end_layout
+
+\begin_layout Description
+Zeige
+\begin_inset Space ~
+\end_inset
+
+Tastaturkürzel,
+\begin_inset Space ~
+\end_inset
+
+die
+\begin_inset Space ~
+\end_inset
+
+Folgendes
+\begin_inset Space ~
+\end_inset
+
+enthalten: der hier eingegebene Text wird in Tabelle darunter angezeigt,
+ wenn er dort zu finden ist.
+\end_layout
+
+\begin_layout Subsection
+Tastatur/Maus
+\end_layout
+
+\begin_layout Description
 Tastatur
 \end_layout
 
@@ -40304,6 +40670,175 @@ reference "Zeichentabellen"
 
 \end_layout
 
+\begin_layout Description
+Maus
+\end_layout
+
+\begin_layout Description
+Mausrad-Scrollgeschwindigkeit: hiermit können Sie die Mausrad-Scrollgeschwindigk
+eit in 0,1-Schritten verändern.
+\end_layout
+
+\begin_layout Subsection
+Eingabevervollständigung
+\end_layout
+
+\begin_layout Description
+Im
+\begin_inset Space ~
+\end_inset
+
+Text
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Automatische
+\begin_inset Space ~
+\end_inset
+
+Inline-Vervollständigung hiermit versucht LyX, Worte zu vervollständigen.
+ Die Vervollständigung wird grau angezeigt und kann mit der Tab-Taste übernommen
+ werden.
+ 
+\end_layout
+
+\begin_layout Description
+Automatisches
+\begin_inset Space ~
+\end_inset
+
+Popup hier werden die möglichen Vervollständigungen in einem Fenster angezeigt.
+ Mit den Pfeiltasten kann die gewünschte Vervollständigung ausgewählt werden.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+In
+\begin_inset Space ~
+\end_inset
+
+Mathe
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Automatische
+\begin_inset Space ~
+\end_inset
+
+Inline-Vervollständigung
+\end_layout
+
+\begin_layout Description
+Automatisches
+\begin_inset Space ~
+\end_inset
+
+Popup 
+\end_layout
+
+\begin_layout Standard
+siehe 
+\begin_inset Quotes gld
+\end_inset
+
+Im Text
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Allgemein
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+s:
+\begin_inset Space ~
+\end_inset
+
+Inline-Vervollständigungsverzögerung
+\end_layout
+
+\begin_layout Description
+s:
+\begin_inset Space ~
+\end_inset
+
+Popup-Verzögerung
+\end_layout
+
+\begin_layout Standard
+Verzögerungszeit in s, nach der die möglichen Vervollständigungen oder das
+ Popup-Fenster erscheinen.
+\end_layout
+
+\begin_layout Description
+Zeige
+\begin_inset Space ~
+\end_inset
+
+Popup
+\begin_inset Space ~
+\end_inset
+
+ohne
+\begin_inset Space ~
+\end_inset
+
+Verzögerung
+\begin_inset Space ~
+\end_inset
+
+für
+\begin_inset Space ~
+\end_inset
+
+mehrdeutige
+\begin_inset Space ~
+\end_inset
+
+Vervollständigungen
+\end_layout
+
+\begin_layout Description
+Benutze
+\begin_inset Space ~
+\end_inset
+
+\SpecialChar \ldots{}
+,
+\begin_inset Space ~
+\end_inset
+
+um
+\begin_inset Space ~
+\end_inset
+
+lange
+\begin_inset Space ~
+\end_inset
+
+Vervollständigungen
+\begin_inset Space ~
+\end_inset
+
+zu
+\begin_inset Space ~
+\end_inset
+
+kürzen
+\end_layout
+
+\begin_layout Standard
+Beides ist selbsterklärend.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Pfade
 \end_layout
@@ -40318,10 +40853,9 @@ Datei\SpecialChar \menuseparator
 \family sans
 Dokumente
 \family default
- klicken
+ klicken.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Dokumentvorlagen Dieses Verzeichnis öffnet LyX, wenn Sie 
 \family sans
@@ -40338,6 +40872,19 @@ Vorlage\SpecialChar \ldots{}
 
 \family default
  wählen.
+\end_layout
+
+\begin_layout Description
+Beispiel-Dateien Dieses Verzeichnis öffnet LyX, wenn Sie im Menü 
+\family sans
+Datei\SpecialChar \menuseparator
+Öffnen
+\family default
+ auf 
+\family sans
+Beispiele
+\family default
+ klicken.
 \end_layout
 
 \begin_layout Description
@@ -40439,7 +40986,6 @@ PATH-Präfix Diese Feld enthält eine Liste mit Pfaden zu externen Programmen.
  Programme benutzt werden sollen, die nicht in $PATH stehen.
 \end_layout
 
-\end_deeper
 \begin_layout Section
 Identität
 \end_layout
@@ -40474,7 +41020,6 @@ Standard-Sprache Hier wählen Sie die Standard-Sprache für alle Dokumente
  aus.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Sprach-Paket ist ein LaTeX-Befehl zum Laden eines LaTeX-Paketes, das Sprachbeson
 derheiten handhabt.
@@ -40529,7 +41074,6 @@ Table
  am Beginn jeder Tabellenbeschriftung.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Befehl
 \begin_inset Space ~
@@ -40688,7 +41232,27 @@ Rechts-nach-links-Sprachunterstützung für die entsprechenden Sprachen wie
  Arabisch, Hebräisch, Persisch.
 \end_layout
 
-\end_deeper
+\begin_layout Description
+%RTL-Unterstützung
+\begin_inset Space ~
+\end_inset
+
+aktivieren 
+\end_layout
+
+\begin_layout Description
+Cursorbewegung
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Logisch
+\end_layout
+
+\begin_layout Description
+Sichtbar
+\end_layout
+
 \end_deeper
 \begin_layout Subsection
 Rechtschreibprüfung
@@ -40718,7 +41282,30 @@ Standard-Drucker Hier können Sie den Namen Ihres Standard-Druckers eintragen.
  Der Name wird dann beim Druckbefehl übernommen.
 \end_layout
 
-\begin_deeper
+\begin_layout Description
+Druckbefehl ist der Befehl, den LyX/LaTeX zum Drucken benutzt.
+\end_layout
+
+\begin_layout Description
+Optionen
+\begin_inset Space ~
+\end_inset
+
+für
+\begin_inset Space ~
+\end_inset
+
+Druckbefehl Die Erklärungen für die Optionen finden Sie in den 
+\family typewriter
+man
+\family default
+-Seiten des 
+\family sans
+Druckbefehl
+\family default
+s.
+\end_layout
+
 \begin_layout Description
 Ausgabe
 \begin_inset Space ~
@@ -40748,33 +41335,6 @@ dvips
  Sie aktiviert eine Konfigurationsdatei für dvips.
 \end_layout
 
-\begin_deeper
-\begin_layout Description
-Druckbefehl ist der Befehl, den LyX/LaTeX zum Drucken benutzt.
-\end_layout
-
-\begin_layout Description
-Optionen
-\begin_inset Space ~
-\end_inset
-
-für
-\begin_inset Space ~
-\end_inset
-
-Druckbefehl Die Erklärungen für die Optionen finden Sie in den 
-\family typewriter
-man
-\family default
--Seiten des 
-\family sans
-Druckbefehl
-\family default
-s.
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Subsection
 Datumsformat
 \begin_inset Index
@@ -40837,7 +41397,6 @@ Ausgabe
 Zeilenlänge ist selbsterklärend.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 roff-Befehl Der roff-Befehl ist eine Möglichkeit, mit den Befehlen 
 \family typewriter
@@ -40855,7 +41414,6 @@ nroff
  Ist das Feld leer, benutzt LyX den internen Formatierer.
 \end_layout
 
-\end_deeper
 \begin_layout Subsection
 LaTeX
 \end_layout
@@ -40876,12 +41434,60 @@ X-Kodierung Lassen Sie am besten die Voreinstellung, wenn Sie sich nicht
  mit LaTeX auskennen.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Standard-Papiergröße ist selbsterklärend.
 \end_layout
 
-\begin_deeper
+\begin_layout Description
+CheckTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Befehl ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+BibTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Befehl ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Befehl
+\begin_inset Space ~
+\end_inset
+
+für
+\begin_inset Space ~
+\end_inset
+
+Stichwortverzeichnis ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+DVI-Betrachter
+\begin_inset Space ~
+\end_inset
+
+Papiergrößen-Optionen bezieht sich auf xdvi.
+\end_layout
+
 \begin_layout Description
 Klassenoptionen
 \begin_inset Space ~
@@ -40907,73 +41513,11 @@ zurücksetzen entfernt beim Wechsel der Dokumentklasse alle von Hand gesetzten
  Dokumentklassen-Optionen.
 \end_layout
 
-\begin_layout Description
-Externe
-\begin_inset Space ~
-\end_inset
-
-Anwendungen Hier können Sie für die aufgelisteten Anwendungen Befehle mit
- Parametern Ihrer Wahl angeben.
- Bei Fehlern werden zur Zeit noch keine Meldungen ausgegeben, es sei denn,
- Sie starten LyX von der Kommandozeile.
- Zur Zeit gibt es folgende Möglichkeiten:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-CheckTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Befehl
-\end_layout
-
-\begin_layout Description
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Befehl
-\end_layout
-
-\begin_layout Description
-Befehl
-\begin_inset Space ~
-\end_inset
-
-für
-\begin_inset Space ~
-\end_inset
-
-Stichwortverzeichnis
-\end_layout
-
-\begin_layout Description
-DVI-Betrachter
-\begin_inset Space ~
-\end_inset
-
-Papiergrößen-Optionen bezieht sich auf xdvi.
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
 \begin_layout Section
+Datei-Handhabung
+\end_layout
+
+\begin_layout Subsection
 Konverter
 \end_layout
 
@@ -40996,7 +41540,6 @@ Von
  können Sie dieses hiermit zur Liste hinzufügen.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Ändern siehe 
 \begin_inset CommandInset ref
@@ -41015,8 +41558,10 @@ Entfernen Hiermit entfernen Sie das Element aus der Liste.
 \begin_layout Standard
 Wenn Sie eine 
 \family sans
+\series bold
 Konverter-Definition
 \family default
+\series default
  anklicken, sehen in 
 \family sans
 \series bold
@@ -41099,7 +41644,7 @@ Alter
 \begin_inset Space ~
 \end_inset
 
-Tagen) Aufbewahreungszeit
+Tagen): Aufbewahreungszeit
 \end_layout
 
 \end_deeper
@@ -41111,8 +41656,7 @@ ndern
  klicken, sonst wird die Änderung nicht gespeichert.
 \end_layout
 
-\end_deeper
-\begin_layout Section
+\begin_layout Subsection
 Dateiformate
 \end_layout
 
@@ -41141,7 +41685,6 @@ GUI-Name
  zur Liste hinzufügen.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 
 \family sans
@@ -41170,7 +41713,7 @@ Dokumentenformat Wenn dies angekreuzt ist, kann der Typ Dokumente enthalten.
 \end_layout
 
 \begin_layout Description
-Vektorgrafik-Format Wenn dies angekreuzt ist, kann dieer Typ Vektorgrafiken
+Vektorgrafik-Format Wenn dies angekreuzt ist, kann der Typ Vektorgrafiken
  enthalten.
 \end_layout
 
@@ -41185,6 +41728,18 @@ Dateiendung
 \series default
 \emph default
 identisch.
+\end_layout
+
+\begin_layout Description
+Einsortieren
+\begin_inset Space ~
+\end_inset
+
+als ???
+\end_layout
+
+\begin_layout Description
+Dateiendung ist selbsterklärend
 \end_layout
 
 \begin_layout Description
@@ -41218,22 +41773,11 @@ H
 \end_layout
 
 \begin_layout Description
-Dateiendung wie üblich das, was nach dem Komma steht (zm Beispiel Datei.
+Dateiendung wie üblich das, was nach dem Komma steht (zum Beispiel Datei.
 \family typewriter
 lyx
 \family default
 ).
-\end_layout
-
-\begin_layout Description
-Betrachter siehe auch 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tipp-für-xdvi"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -41248,6 +41792,21 @@ Betrachter
 .
 \end_layout
 
+\begin_layout Description
+Betrachter siehe auch 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tipp-für-xdvi"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Kopierer Hier legen Sie den Programmaufruf mitsamt Parametern fest.
+\end_layout
+
 \begin_layout Standard
 Damit eine Änderung wirksam wird, müssen Sie auf 
 \family sans
@@ -41256,79 +41815,6 @@ Damit eine Änderung wirksam wird, müssen Sie auf
  klicken, sonst wird die Änderung nicht gespeichert.
 \end_layout
 
-\end_deeper
-\begin_layout Section
-Kopierer
-\end_layout
-
-\begin_layout Standard
-Im Unterfenster 
-\family sans
-\series bold
-Kopierer
-\family default
-\series default
- finden Sie eine Liste der definierten Kopierer.
- Da alle Konvertierungen von einem Format in ein anderes im temporären Verzeichn
-is von LyX stattfinden, ist es manchmal notwendig, eine Datei zu modifizieren,
- bevor sie ins temporäre Verzeichnis kopiert wird, damit die Konvertierung
- stattfinden kann.
- Das macht ein Kopierer.
-\end_layout
-
-\begin_layout Standard
-Im Abschnitt Kopierer im 
-\emph on
-Anpassung
-\emph default
--Handbuch finden Sie weitere Informationen über Konverter.
-\end_layout
-
-\begin_layout Description
-Hinzufügen Wenn Sie in 
-\family sans
-Format
-\family default
- ein Element auswählen, das bis jetzt in der Liste noch nicht vorkommt,
- können Sie dieses hiermit zur Liste hinzufügen.
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Ändern siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Dateiformat-Ändern"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Entfernen Hiermit entfernen Sie das Element aus der Liste
-\end_layout
-
-\begin_layout Description
-Format enthält eine Liste von Dateiformaten, für die ein 
-\family sans
-\series bold
-Kopierer
-\family default
-\series default
- definiert werden kann.
- Siehe auch 
-\emph on
-Anpassung
-\emph default
--Handbuch.
-\end_layout
-
-\begin_layout Description
-Kopierer Hier legen Sie den Programmaufruf mitsamt Parametern fest.
-\end_layout
-
-\end_deeper
 \begin_layout Chapter
 Dokument-Einstellungen
 \begin_inset CommandInset label
