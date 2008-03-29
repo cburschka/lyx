@@ -24724,12 +24724,22 @@ TOC
 \end_layout
 
 \begin_layout Section
-URLs (Uniform Resource Locators)
+URLs and Hyperlinks
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 URLs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Hyperlinks
 \end_layout
 
 \end_inset
@@ -24744,42 +24754,23 @@ name "sec:URL"
 
 \end_layout
 
+\begin_layout Subsection
+URLs
+\end_layout
+
 \begin_layout Standard
-It is often desirable to include long 
-\begin_inset Quotes eld
-\end_inset
-
-verbatim
-\begin_inset Quotes erd
-\end_inset
-
- items in a document such as Web site URLs, e-mail addresses, etc.
- These things typically do not contain any spaces and are thus difficult
- to typeset properly.
- Such items will often fall on a line boundary if they cannot be split,
- resulting in an overfull line.
- To avoid this, use the menu 
+Links to web pages or email addresses can be inserted via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 URL
 \family default
- to enter a long URL and have it split gracefully, if necessary.
+.
 \end_layout
 
 \begin_layout Standard
-The URL dialog has two fields; the URL field and the 
-\family sans
-Name
-\family default
- field for the URL description, which will be typeset as plain text immediately
- before the URL.
- Here an example:
-\end_layout
-
-\begin_layout Standard
-LyX-Homepage 
+Here is an example URL: LyX's homepage: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24788,38 +24779,152 @@ http://www.lyx.org
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+You cannot change the style of the link text, the URL text will always be
+ in the style 
+\family typewriter
+Typewriter
+\family default
+.
+ To be able to format the URL text, use hyperlinks as explained in the next
+ subsection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ URLs must not end with a backslash, otherwise you get LaTeX errors.
+\end_layout
+
 \end_inset
 
 
-\series bold
-Important notes
-\series default
-:
 \end_layout
 
-\begin_layout Itemize
-When you use the following characters: "%", "#", "^", you have to write
- them with a backslash before, e.g.
- 
+\begin_layout Subsection
+Hyperlinks
+\end_layout
+
+\begin_layout Standard
+Hyperlinks can be inserted with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Hyperlink
+\family default
+ or with the toolbar button 
+\begin_inset Graphics
+	filename ../images/href-insert.png
+	embed ""
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+.
+ The appearing dialog has two fields: 
+\family sans
+Target
+\family default
+ and 
+\family sans
+Name
+\family default
+.
+ The name is the printed text for the hyperlink.
+ The hyperlink type can be a weblink like this: 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.lyx.org"
+target "LyX's homepage"
+
+\end_inset
+
+, an Email address like this: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-docs mailing list"
+target "lyx-docs@lists.lyx.org?subject=LyX's documentation"
+type "mailto:"
+
+\end_inset
+
+, or a link to a file.
+\end_layout
+
+\begin_layout Standard
+You can start applications via a hyperlink when you insert a weblink, but
+ add the prefix 
 \begin_inset Quotes eld
 \end_inset
 
 
-\backslash
-#
+\family sans
+run:
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-.
+ to the link target.
 \end_layout
 
-\begin_layout Itemize
-URLs must not end with a backslash!
+\begin_layout Standard
+Hyperlinks will automatically be hyphenated if necessary and become clickable
+ in the DVI and PDF-output.
+ To set the format of the link text, highlight the hyperlink inset and use
+ the text style dialog.
+ This is for example a hyperlink with bold sans serif text: 
+\family sans
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.lyx.org"
+target "LyX's homepage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The link text color can be changed, when the option 
+\family sans
+Color links
+\family default
+ is set in the PDF Properties dialog (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+PDF Properties
+\family default
+).
+ The link text is for example set in this document to blue by adding the
+ option
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+urlcolor=blue
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+to the field 
+\family sans
+Additional options
+\family default
+ in the PDF Properties dialog.
 \end_layout
 
 \begin_layout Section
