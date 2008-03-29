@@ -227,7 +227,6 @@ void InsetInclude::setBuffer(Buffer & buffer)
 			// failed to embed
 			setParam("embed", docstring());
 		}
-
 	}
 	InsetCommand::setBuffer(buffer);
 	if (label_)
@@ -279,7 +278,6 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				}
 			}
 			setParams(p);
-			buffer().updateBibfilesCache();
 		} else
 			cur.noUpdate();
 		break;
@@ -303,6 +301,8 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 
 	if (type(params()) == INPUT)
 		add_preview(*preview_, *this, buffer());
+
+	buffer().updateBibfilesCache();
 }
 
 
@@ -727,7 +727,7 @@ void InsetInclude::updateBibfilesCache()
 
 
 EmbeddedFileList const &
-InsetInclude::getBibfilesCache(Buffer const & buffer) const
+	InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
 	Buffer * const tmp = getChildBuffer(buffer, params());
 	if (tmp) {
