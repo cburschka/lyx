@@ -211,8 +211,8 @@ public:
 		Buffer const & buffer);
 	/// returns a pointer to the Embedded file representing this object,
 	/// or null if not found. The filename should be absolute.
-	EmbeddedFile const * findFile(std::string const & filename) const;
-	EmbeddedFile * findFile(std::string const & filename);
+	const_iterator findFile(std::string const & filename) const;
+	iterator findFile(std::string const & filename);
 	/// validate embedded fies after a file is read.
 	void validate(Buffer const & buffer);
 	/// scan the buffer and get a list of EmbeddedFile

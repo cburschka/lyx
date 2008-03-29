@@ -494,8 +494,8 @@ void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 	BOOST_ASSERT(!buffer.embedded() || file.enabled());
 
 	string newfile = file.absFilename();
-	EmbeddedFile * efp = findFile(newfile);
-	if (efp) {
+	iterator efp = findFile(newfile);
+	if (efp != end()) {
 		if (efp->embedded() != file.embedded()) {
 			Alert::error(_("Wrong embedding status."),
 				bformat(_("File %1$s is included in more than one insets, "
@@ -514,27 +514,29 @@ void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 }
 
 
-EmbeddedFile const * EmbeddedFileList::findFile(std::string const & filename) const
+EmbeddedFileList::const_iterator 
+	EmbeddedFileList::findFile(std::string const & filename) const
 {
 	// try to find this file from the list
 	std::vector<EmbeddedFile>::const_iterator it = begin();
 	std::vector<EmbeddedFile>::const_iterator it_end = end();
 	for (; it != it_end; ++it)
 		if (it->absFilename() == filename)
-			return &*it;
-	return 0;
+			return it;
+	return end();
 }
 
 
-EmbeddedFile * EmbeddedFileList::findFile(std::string const & filename)
+EmbeddedFileList::iterator 
+	EmbeddedFileList::findFile(std::string const & filename)
 {
 	// try to find this file from the list
 	std::vector<EmbeddedFile>::iterator it = begin();
 	std::vector<EmbeddedFile>::iterator it_end = end();
 	for (; it != it_end; ++it)
 		if (it->absFilename() == filename)
-			return &*it;
-	return 0;
+			return it;
+	return end();
 }
 
 
