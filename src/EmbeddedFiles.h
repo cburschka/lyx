@@ -94,6 +94,7 @@ class ErrorList;
 class EmbeddedFile : public support::DocFileName
 {
 public:
+	///
 	EmbeddedFile(std::string const & file = std::string(),
 		std::string const & buffer_path = std::string());
 	
@@ -179,7 +180,6 @@ public:
 	/// move an embedded disk file with an existing inzip_name_ to 
 	/// a calculated inzip_name_, if they differ.
 	void syncInzipFile(std::string const & buffer_path);
-	
 private:
 	/// filename in zip file
 	std::string inzip_name_;
@@ -207,8 +207,8 @@ public:
 	void enable(bool flag, Buffer & buffer, bool updateFile);
 
 	/// add a file item.
-	/* \param file Embedded file to add
-	 * \param inset Inset pointer
+	/** \param file Embedded file to add
+	 *  \param inset Inset pointer
 	 */
 	void registerFile(EmbeddedFile const & file, Inset const * inset,
 		Buffer const & buffer);
@@ -216,6 +216,7 @@ public:
 	/// or null if not found. The filename should be absolute.
 	const_iterator findFile(std::string const & filename) const;
 	iterator findFile(std::string const & filename);
+
 	/// validate embedded fies after a file is read.
 	void validate(Buffer const & buffer);
 	/// scan the buffer and get a list of EmbeddedFile
