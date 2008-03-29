@@ -48,6 +48,7 @@ int accept(int)
 
 #include <cerrno>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
