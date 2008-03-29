@@ -63,7 +63,7 @@ public:
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
 private:
 	/// 
-	void createBibFiles() const;
+	void updateBibFiles() const;
 	///
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///

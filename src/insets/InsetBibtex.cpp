@@ -106,7 +106,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		//
-		createBibFiles();
+		updateBibFiles();
 		updateParam();
 		setParam("options", p["options"]);
 		buffer().updateBibfilesCache();
@@ -755,7 +755,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetBibtex::createBibFiles() const
+void InsetBibtex::updateBibFiles() const
 {
 	// need to do this to keep old info while also not
 	// copying over any files that have been deleted.
@@ -834,7 +834,7 @@ void InsetBibtex::updateParam()
 void InsetBibtex::registerEmbeddedFiles(EmbeddedFileList & files) const
 {
 	if (bibfiles_.empty())
-		createBibFiles();
+		updateBibFiles();
 
 	EmbeddedFileList::const_iterator it = bibfiles_.begin();
 	EmbeddedFileList::const_iterator en = bibfiles_.end();
