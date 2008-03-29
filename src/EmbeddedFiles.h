@@ -143,7 +143,7 @@ public:
 	/// set embedding status. 
 	void setEmbed(bool embed);
 
-	/// whether or not embedding is enabled in the current buffer
+	/// whether or not embedding is enabled for the current file
 	/**
 	 * An embedded file needs to know the temp path of a buffer to know
 	 * where its embedded copy is. This has to be stored within EmbeddedFile
@@ -151,9 +151,9 @@ public:
 	 * when an embedded file is copied to another buffer, temp_path_ has
 	 * to be updated and file copying may be needed.
 	 */
-	bool enabled() const { return !temp_path_.empty(); }
+	bool isEnabled() const { return !temp_path_.empty(); }
 	/// enable embedding of this file
-	void enable(bool flag, Buffer const * buf, bool updateFile);
+	void enable(bool enabled, Buffer const * buf, bool updateFile);
 
 	/// extract file, does not change embedding status
 	bool extract() const;
@@ -201,7 +201,7 @@ class EmbeddedFileList : public std::vector<EmbeddedFile> {
 public:
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.
-	void enable(bool flag, Buffer & buffer, bool updateFile);
+	void enable(bool enabled, Buffer & buffer, bool updateFile);
 
 	/// add a file item.
 	/** \param file Embedded file to add

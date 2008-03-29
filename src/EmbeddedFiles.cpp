@@ -71,7 +71,7 @@ void EmbeddedFile::setInzipName(std::string const & name)
 		return;
 
 	// an enabled EmbeededFile should have this problem handled
-	BOOST_ASSERT(!enabled());
+	BOOST_ASSERT(!isEnabled());
 	// file will be synced when it is enabled
 	inzip_name_ = name;
 }
@@ -79,14 +79,14 @@ void EmbeddedFile::setInzipName(std::string const & name)
 
 string EmbeddedFile::embeddedFile() const
 {
-	BOOST_ASSERT(enabled());
+	BOOST_ASSERT(isEnabled());
 	return temp_path_ + inzip_name_;
 }
 
 
 FileName EmbeddedFile::availableFile() const
 {
-	if (enabled() && embedded())
+	if (isEnabled() && embedded())
 		return FileName(embeddedFile());
 	else
 		return *this;
@@ -95,7 +95,7 @@ FileName EmbeddedFile::availableFile() const
 
 string EmbeddedFile::latexFilename(std::string const & buffer_path) const
 {
-	return (enabled() && embedded()) ? inzip_name_ : relFilename(buffer_path);
+	return (isEnabled() && embedded()) ? inzip_name_ : relFilename(buffer_path);
 }
 
 
@@ -112,7 +112,7 @@ void EmbeddedFile::setEmbed(bool embed)
 }
 
 
-void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
+void EmbeddedFile::enable(bool enabled, Buffer const * buf, bool updateFile)
 {
 	// This function will be called when
 	// 1. through EmbeddedFiles::enable() when a file is read. Files
@@ -121,11 +121,11 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 	// 2. through menu item enable/disable. updateFile should be true.
 	// 3. A single embedded file is added or modified. updateFile
 	//    can be true or false.
-	LYXERR(Debug::FILES, (flag ? "Enable" : "Disable") 
+	LYXERR(Debug::FILES, (enabled ? "Enable" : "Disable") 
 		<< " " << absFilename() 
 		<< (updateFile ? " (update file)." : " (no update)."));
 
-	if (flag) {
+	if (enabled) {
 		temp_path_ = buf->temppath();
 		if (!suffixIs(temp_path_, '/'))
 			temp_path_ += '/';
@@ -134,7 +134,7 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 	} else {
 		// when a new embeddeed file is created, it is not enabled, and 
 		// there is no need to extract.
-		if (enabled() && embedded() && updateFile)
+		if (isEnabled() && embedded() && updateFile)
 			extract();
 		temp_path_ = "";
 	}
@@ -143,7 +143,7 @@ void EmbeddedFile::enable(bool flag, Buffer const * buf, bool updateFile)
 
 bool EmbeddedFile::extract() const
 {
-	BOOST_ASSERT(enabled());
+	BOOST_ASSERT(isEnabled());
 
 	string ext_file = absFilename();
 	string emb_file = embeddedFile();
@@ -202,7 +202,7 @@ bool EmbeddedFile::extract() const
 
 bool EmbeddedFile::updateFromExternalFile() const
 {
-	BOOST_ASSERT(enabled());
+	BOOST_ASSERT(isEnabled());
 
 	string ext_file = absFilename();
 	string emb_file = embeddedFile();
@@ -392,7 +392,7 @@ std::string EmbeddedFile::calcInzipName(std::string const & buffer_path)
 
 void EmbeddedFile::syncInzipFile(std::string const & buffer_path)
 {
-	BOOST_ASSERT(enabled());
+	BOOST_ASSERT(isEnabled());
 	string old_emb_file = temp_path_ + '/' + inzip_name_;
 	FileName old_emb(old_emb_file);
 
@@ -448,7 +448,7 @@ bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs)
 }
 
 
-void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
+void EmbeddedFileList::enable(bool enabled, Buffer & buffer, bool updateFile)
 {
 	// update embedded file list
 	update(buffer);
@@ -459,14 +459,14 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 	iterator it_end = end();
 	// an exception may be thrown
 	for (; it != it_end; ++it) {
-		it->enable(flag, &buffer, updateFile);
+		it->enable(enabled, &buffer, updateFile);
 		if (it->embedded())
 			++count_embedded;
 		else
 			++count_external;
 	}
 	// if operation is successful (no exception is thrown)
-	buffer.params().embedded = flag;
+	buffer.params().embedded = enabled;
 
 	// if the operation is successful, update insets
 	for (it = begin(); it != it_end; ++it)
@@ -476,7 +476,7 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 		return;
 
 	// show result
-	if (flag) {
+	if (enabled) {
 		docstring const msg = bformat(_("%1$d external files are ignored.\n"
 			"%2$d embeddable files are embedded.\n"), count_external, count_embedded);
 		Alert::information(_("Packing all files"), msg);
@@ -491,7 +491,7 @@ void EmbeddedFileList::enable(bool flag, Buffer & buffer, bool updateFile)
 void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 	Inset const * inset, Buffer const & buffer)
 {
-	BOOST_ASSERT(!buffer.embedded() || file.enabled());
+	BOOST_ASSERT(!buffer.embedded() || file.isEnabled());
 
 	string newfile = file.absFilename();
 	iterator efp = findFile(newfile);
