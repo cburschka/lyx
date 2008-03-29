@@ -106,9 +106,9 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		//
+		setParams(p);
 		updateBibFiles();
 		updateParam();
-		setParam("options", p["options"]);
 		buffer().updateBibfilesCache();
 		break;
 	}
