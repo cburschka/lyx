@@ -578,7 +578,7 @@ void GuiGraphics::applyView()
 		EmbeddedFile file(fromqstr(filename->text()), buf.filePath());
 		file.setEmbed(embedCB->checkState() == Qt::Checked);
 		// move file around if needed, an exception may be raised.
-		file.enable(buf.embedded(), &buf, true);
+		file.enable(buf.embedded(), buf, true);
 		// if things are OK..., embed igp.filename
 		igp.filename.setEmbed(file.embedded());
 	} catch (ExceptionMessage const & message) {

@@ -60,7 +60,7 @@ void InsetBibtex::setBuffer(Buffer & buffer)
 		EmbeddedFileList::iterator en = bibfiles_.end();
 		for (; it != en; ++it) {
 			try {
-				*it = it->copyTo(&buffer);
+				*it = it->copyTo(buffer);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// failed to embed
@@ -781,7 +781,7 @@ void InsetBibtex::updateBibFiles() const
 			efp->setEmbed(new_status);
 			try {
 				// copy file if embedding status changed.
-				efp->enable(buffer().embedded(), &buffer(), old_status != new_status);
+				efp->enable(buffer().embedded(), buffer(), old_status != new_status);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// failed to change embeddeing status
@@ -792,7 +792,7 @@ void InsetBibtex::updateBibFiles() const
 			EmbeddedFile file(bib.absFilename(), buffer().filePath());
 			file.setEmbed(!embfile.empty());
 			try {
-				file.enable(buffer().embedded(), &buffer(), true);
+				file.enable(buffer().embedded(), buffer(), true);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// failed to embed

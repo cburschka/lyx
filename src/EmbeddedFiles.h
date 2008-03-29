@@ -153,14 +153,14 @@ public:
 	 */
 	bool isEnabled() const { return !temp_path_.empty(); }
 	/// enable embedding of this file
-	void enable(bool enabled, Buffer const * buf, bool updateFile);
+	void enable(bool enabled, Buffer const & buf, bool updateFile);
 
 	/// extract file, does not change embedding status
 	bool extract() const;
 	/// update embedded file from external file, does not change embedding status
 	bool updateFromExternalFile() const;
 	/// copy an embedded file to another buffer
-	EmbeddedFile copyTo(Buffer const * buf);
+	EmbeddedFile copyTo(Buffer const & buf);
 	///
 	/// After the embedding status is changed, update all insets related
 	/// to this file item. For example, a graphic inset may need to monitor

@@ -112,7 +112,7 @@ void EmbeddedFile::setEmbed(bool embed)
 }
 
 
-void EmbeddedFile::enable(bool enabled, Buffer const * buf, bool updateFile)
+void EmbeddedFile::enable(bool enabled, Buffer const & buf, bool updateFile)
 {
 	// This function will be called when
 	// 1. through EmbeddedFiles::enable() when a file is read. Files
@@ -126,7 +126,7 @@ void EmbeddedFile::enable(bool enabled, Buffer const * buf, bool updateFile)
 		<< (updateFile ? " (update file)." : " (no update)."));
 
 	if (enabled) {
-		temp_path_ = buf->temppath();
+		temp_path_ = buf.temppath();
 		if (!suffixIs(temp_path_, '/'))
 			temp_path_ += '/';
 		if (embedded() && updateFile)
@@ -254,11 +254,11 @@ bool EmbeddedFile::updateFromExternalFile() const
 }
 
 
-EmbeddedFile EmbeddedFile::copyTo(Buffer const * buf)
+EmbeddedFile EmbeddedFile::copyTo(Buffer const & buf)
 {
-	EmbeddedFile file = EmbeddedFile(absFilename(), buf->filePath());
+	EmbeddedFile file = EmbeddedFile(absFilename(), buf.filePath());
 	file.setEmbed(embedded());
-	file.enable(buf->embedded(), buf, false);
+	file.enable(buf.embedded(), buf, false);
 	
 	// use external file.
 	if (!embedded())
@@ -459,7 +459,7 @@ void EmbeddedFileList::enable(bool enabled, Buffer & buffer, bool updateFile)
 	iterator it_end = end();
 	// an exception may be thrown
 	for (; it != it_end; ++it) {
-		it->enable(enabled, &buffer, updateFile);
+		it->enable(enabled, buffer, updateFile);
 		if (it->embedded())
 			++count_embedded;
 		else
@@ -570,7 +570,7 @@ void EmbeddedFileList::validate(Buffer const & buffer)
 	for (; e_it != e_end; ++e_it) {
 		EmbeddedFile file = EmbeddedFile(*e_it, buffer.filePath());
 		// do not update from external file
-		file.enable(true, &buffer, false);
+		file.enable(true, buffer, false);
 		// but we do need to check file existence.
 		if (!FileName(file.embeddedFile()).exists())
 			throw ExceptionMessage(ErrorException, _("Failed to open file"),
@@ -594,7 +594,7 @@ void EmbeddedFileList::update(Buffer const & buffer)
 	for (; it != it_end; ++it) {
 		EmbeddedFile file = EmbeddedFile(*it, buffer.filePath());
 		file.setEmbed(true);
-		file.enable(buffer.embedded(), &buffer, false);
+		file.enable(buffer.embedded(), buffer, false);
 		insert(end(), file);
 	}
 }

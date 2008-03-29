@@ -434,7 +434,7 @@ void InsetExternal::setBuffer(Buffer & buffer)
 		try {
 			// a file may not be copied successfully when, e.g. buffer_
 			// has already been closed.
-			params_.filename = params_.filename.copyTo(&buffer);
+			params_.filename = params_.filename.copyTo(buffer);
 		} catch (ExceptionMessage const & message) {
 			Alert::error(message.title_, message.details_);
 			// failed to embed
@@ -742,7 +742,7 @@ void InsetExternal::read(Lexer & lex)
 	InsetExternalParams params;
 	if (params.read(buffer(), lex)) {
 		// exception handling is not needed as long as embedded files are in place.
-		params.filename.enable(buffer().embedded(), &buffer(), false);
+		params.filename.enable(buffer().embedded(), buffer(), false);
 		setParams(params);
 	}
 }

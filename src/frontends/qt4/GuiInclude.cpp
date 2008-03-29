@@ -250,7 +250,7 @@ void GuiInclude::applyView()
 		EmbeddedFile file(to_utf8(params_["filename"]), buf.filePath());
 		file.setEmbed(embedCB->checkState() == Qt::Checked);
 		// move file around if needed, an exception may be raised.
-		file.enable(buf.embedded(), &buf, true);
+		file.enable(buf.embedded(), buf, true);
 		// if things are OK..., set params_["embed"]
 		params_["embed"] = file.embedded() ? from_utf8(file.inzipName()) : docstring();
 	} catch (ExceptionMessage const & message) {

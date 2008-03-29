@@ -146,7 +146,7 @@ EmbeddedFile const includedFilename(Buffer const & buffer,
 	       onlyPath(parentFilename(buffer)));
 	file.setEmbed(!params["embed"].empty());
 	file.setInzipName(to_utf8(params["embed"]));
-	file.enable(buffer.embedded(), &buffer, false);
+	file.enable(buffer.embedded(), buffer, false);
 	return file;
 }
 
@@ -219,7 +219,7 @@ void InsetInclude::setBuffer(Buffer & buffer)
 	if (buffer_) {
 		try {
 			EmbeddedFile file_from = includedFilename(*buffer_, params());
-			EmbeddedFile file_to = file_from.copyTo(&buffer);
+			EmbeddedFile file_to = file_from.copyTo(buffer);
 			if (file_to.embedded())
 				setParam("embed", from_utf8(file_to.inzipName()));
 		} catch (ExceptionMessage const & message) {

@@ -188,7 +188,7 @@ void InsetGraphics::setBuffer(Buffer & buffer)
 		try {
 			// a file may not be copied successfully when, e.g. buffer_
 			// has already been closed.
-			params_.filename = params_.filename.copyTo(&buffer);
+			params_.filename = params_.filename.copyTo(buffer);
 		} catch (ExceptionMessage const & message) {
 			Alert::error(message.title_, message.details_);
 			// failed to embed
@@ -308,7 +308,7 @@ void InsetGraphics::read(Lexer & lex)
 	else
 		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
-	params_.filename.enable(buffer().embedded(), &buffer(), false);
+	params_.filename.enable(buffer().embedded(), buffer(), false);
 	graphic_->update(params().as_grfxParams());
 }
 

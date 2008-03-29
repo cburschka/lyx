@@ -643,7 +643,7 @@ void GuiExternal::applyView()
 		EmbeddedFile file(fromqstr(fileED->text()), buf.filePath());
 		file.setEmbed(embedCB->checkState() == Qt::Checked);
 		// move file around if needed, an exception may be raised.
-		file.enable(buf.embedded(), &buf, true);
+		file.enable(buf.embedded(), buf, true);
 		// if things are OK..., embed params_.filename
 		params_.filename.setEmbed(file.embedded());
 	} catch (ExceptionMessage const & message) {
