@@ -56,15 +56,14 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
-	/// create bibfiles_ from params bibfiles and embed
-	/**
-		\param bibfiles comma separated bib files
-		\param embed comma separated embed status
-	*/
-	void createBibFiles(docstring const & bibfiles, docstring const & embed) const;
 	/// update bibfiles and embed from bibfiles_
 	void updateParam();
+	/// look up the path to the file using TeX
+	static support::FileName 
+		getBibTeXPath(docstring const & filename, Buffer const & buf);
 private:
+	/// 
+	void createBibFiles() const;
 	///
 	void registerEmbeddedFiles(EmbeddedFileList &) const;
 	///
