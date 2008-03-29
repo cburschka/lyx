@@ -57,15 +57,15 @@ void InsetBibtex::setBuffer(Buffer & buffer)
 	// FIXME We ought to have a buffer.
 	if (buffer_) {
 		EmbeddedFileList::iterator it = bibfiles_.begin();
-		EmbeddedFileList::iterator it_end = bibfiles_.end();
-		for (; it != it_end; ++it) {
+		EmbeddedFileList::iterator en = bibfiles_.end();
+		for (; it != en; ++it) {
 			try {
 				*it = it->copyTo(&buffer);
 			} catch (ExceptionMessage const & message) {
 				Alert::error(message.title_, message.details_);
 				// failed to embed
 				it->setEmbed(false);
-			}		
+			}
 		}
 	}
 	InsetCommand::setBuffer(buffer);
@@ -836,8 +836,8 @@ void InsetBibtex::registerEmbeddedFiles(EmbeddedFileList & files) const
 		createBibFiles();
 
 	EmbeddedFileList::const_iterator it = bibfiles_.begin();
-	EmbeddedFileList::const_iterator it_end = bibfiles_.end();
-	for (; it != it_end; ++it)
+	EmbeddedFileList::const_iterator en = bibfiles_.end();
+	for (; it != en; ++it)
 		files.registerFile(*it, this, buffer());
 }
 
@@ -845,11 +845,11 @@ void InsetBibtex::registerEmbeddedFiles(EmbeddedFileList & files) const
 void InsetBibtex::updateEmbeddedFile(EmbeddedFile const & file)
 {
 	// look for the item and update status
-	for (EmbeddedFileList::iterator it = bibfiles_.begin();
-		it != bibfiles_.end(); ++it)
-		if (it->absFilename() == file.absFilename())
-			*it = file;
-	
+	string const filename = file.absFilename();
+	EmbeddedFileList::iterator it = bibfiles_.findFile(filename);
+	if (it == bibfiles_.end())
+		return;
+	*it = file;
 	updateParam();
 }
 
