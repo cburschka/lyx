@@ -1248,7 +1248,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
 		if (inset) {
-			if (inset->addDatabase(to_utf8(cmd.argument())))
+			if (inset->addDatabase(cmd.argument()))
 				buffer_.updateBibfilesCache();
 		}
 		break;
@@ -1260,7 +1260,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
 		if (inset) {
-			if (inset->delDatabase(to_utf8(cmd.argument())))
+			if (inset->delDatabase(cmd.argument()))
 				buffer_.updateBibfilesCache();
 		}
 		break;

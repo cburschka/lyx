@@ -706,8 +706,9 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 
 
 
-bool InsetBibtex::addDatabase(string const & db)
+bool InsetBibtex::addDatabase(docstring const & database)
 {
+	string db = to_utf8(database);
 	EmbeddedFile file(changeExtension(db, "bib"), buffer().filePath());
 	
 	// only compare filename
@@ -723,8 +724,9 @@ bool InsetBibtex::addDatabase(string const & db)
 }
 
 
-bool InsetBibtex::delDatabase(string const & db)
+bool InsetBibtex::delDatabase(docstring const & database)
 {
+	string db = to_utf8(database);
 	EmbeddedFile file(changeExtension(db, "bib"), buffer().filePath());
 	
 	// only compare filename

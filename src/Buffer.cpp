@@ -1405,7 +1405,7 @@ void Buffer::updateBibfilesCache() const
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
-			EmbeddedFileList const bibfiles = inset.embeddedFiles();
+			EmbeddedFileList const bibfiles = inset.getBibFiles();
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());

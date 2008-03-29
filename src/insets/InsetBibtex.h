@@ -44,9 +44,9 @@ public:
 	///
 	EmbeddedFileList const & getBibFiles() const;
 	///
-	bool addDatabase(std::string const &);
+	bool addDatabase(docstring const &);
 	///
-	bool delDatabase(std::string const &);
+	bool delDatabase(docstring const &);
 	///
 	void validate(LaTeXFeatures &) const;
 	///
