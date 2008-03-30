@@ -4,8 +4,40 @@ Settings for LyX installer
 
 */
 
+SetCompressor /SOLID lzma
+
 #--------------------------------
-#File locations
+# Location of LyX files and dependencies
+
+!ifdef FilesLyX
+  !define FILES_LYX "${FilesLyX}"
+!else
+  !define FILES_LYX "..\..\..\..\build-msvc"
+!endif
+
+!ifdef FilesDeps
+  !define FILES_DEPS "${FilesDeps}"
+!else
+  !define FILES_DEPS "..\..\..\..\lyx-windows-deps-msvc2008"
+!endif
+
+!ifdef FilesBundle
+  !define FILES_BUNDLE "${FilesBundle}"
+!else
+  !define FILES_BUNDLE "..\..\..\..\lyx-windows-bundle-deps"
+!endif
+
+#--------------------------------
+# Location of Python 2.5
+
+!ifdef FilesPython
+  !define FILES_PYTHON "${FilesPython}"
+!else
+  !define FILES_PYTHON "C:\Python25"
+!endif
+
+#--------------------------------
+# File locations
 
 !define FILES_LICENSE "license.rtf"
 
@@ -17,18 +49,15 @@ Settings for LyX installer
 !define FILES_NETPBM "${FILES_DEPS}\netpbm"
 !define FILES_DTL "${FILES_DEPS}\dtl"
 !define FILES_AIKSAURUS "${FILES_DEPS}\aiksaurus\"
-!define FILES_DVIPOST "${FILES_DEPS}\dvipost"
-!define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
 !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
 
 !define FILES_QT "${FILES_DEPS}\qt-4"
-!define FILES_DVIPOSTDATA "${FILES_DEPS}\dvipost"
 !define FILES_ASPELLDATA "${FILES_DEPS}\aspell"
 
 !define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
 
 #--------------------------------
-#Locations of components to download
+# Locations of components to download
 
 !define MIRROR_SF1 "http://superb-west.dl.sourceforge.net/sourceforge"
 !define MIRROR_SF2 "http://mesh.dl.sourceforge.net/sourceforge"
@@ -42,38 +71,31 @@ Settings for LyX installer
 !insertmacro SourceForgeMirror IMAGEMAGICK "imagemagick/ImageMagick-6.3.7-8-Q16-windows-dll.exe"
 !insertmacro SourceForgeMirror GHOSTSCRIPT "ghostscript/gs861w32.exe"
 
-!define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv49w32.exe"
-!define DOWNLOADALT_VIEWER "http://ctan.basemirror.de/nonfree/support/ghostscript/ghostgum/gsv49w32.exe"
-
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
 !define DOWNLOADALT_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
 
 #--------------------------------
-#Download size (in KB)
+# Download size (in KB)
 
 !define SIZE_DOWNLOAD_LATEX 78493
 !define SIZE_DOWNLOAD_IMAGEMAGICK 7330
 !define SIZE_DOWNLOAD_GHOSTSCRIPT 12469
-!define SIZE_DOWNLOAD_VIEWER 1467
 
 #--------------------------------
-#Approximations of space required for components (in KB)
+# Approximations of space required for components (in KB)
 
 !define SIZE_LATEX 225000
 !define SIZE_IMAGEMAGICK 18700
 !define SIZE_GHOSTSCRIPT 31500
-!define SIZE_VIEWER 4000
-
 #--------------------------------
-#Locations of setup files for components (for bundled setup)
+# Locations of setup files for components (for bundled setup)
 
 !define INSTALL_LATEX "basic-miktex-2.7.2904.exe"
 !define INSTALL_IMAGEMAGICK "ImageMagick-6.3.7-8-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs861w32.exe"
-!define INSTALL_VIEWER "gsv49w32.exe"
 
 #--------------------------------
-#Names and version
+# Names and version
 
 !define APP_NAME "LyX"
 !define /date APP_VERSION "1.6svn %Y%m%d"
@@ -96,12 +118,22 @@ Settings for LyX installer
 !define APP_MIME_TYPE "application/lyx"
 
 #--------------------------------
-#Setup settings
+# Setup settings
+
+# Output file name can be configured using command line paramater
+# /DExeFile=/path/to/installer or /DBundleExeFile=/path/to/installer if 
+# SETUPTYPE_BUNDLE is defined.
 
 !ifndef SETUPTYPE_BUNDLE
-  !define /date SETUP_EXE "lyx-16svn-%Y%m%d.exe"
+  !ifndef ExeFile
+    !define /date ExeFile "LyX-16svn-%Y%m%d-Installer.exe"
+  !endif
+  !define SETUP_EXE "${ExeFile}"
 !else
-  !define /date SETUP_EXE "lyx-16svn-%Y%m%d-bundle.exe"
+  !ifndef SETUPTYPE_BUNDLE
+    !define /date BundleExeFile "LyX-16svn-%Y%m%d-Installer-Bundle.exe"
+  !endif
+  !define SETUP_EXE "${BundleExeFile}"  
 !endif
 
 !define SETUP_DEFAULT_DIRECTORY "$PROGRAMFILES\${APP_NAME}${APP_SERIES_KEY}"
@@ -112,13 +144,13 @@ Settings for LyX installer
 !define SETUP_UNINSTALLER_KEY "${APP_NAME}"
 
 #--------------------------------
-#Names of binaries to identify compontents
+# Names of binaries to identify compontents
 
 !define BIN_LATEX "tex.exe"
 !define BIN_IMAGEMAGICK "convert.exe"
 !define BIN_GHOSTSCRIPT "gswin32c.exe"
 
 #--------------------------------
-#Custom NSIS plug-ins
+# Custom NSIS plug-ins
 
 !addplugindir "${FILES_NSISPLUGINS}"

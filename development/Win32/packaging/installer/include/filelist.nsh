@@ -1,5 +1,7 @@
 /*
 
+filelist.nsh
+
 Lists of files to include in the installer
 
 */
@@ -66,12 +68,6 @@ Lists of files to include in the installer
 
   ${FILE}dt2dv.exe"
   ${FILE}dv2dt.exe"
-  
-!macroend
-
-!macro FileListDvipostBin COMMAND DIRECTORY
-
-  ${FILE}pplatex.exe"
   
 !macroend
 
