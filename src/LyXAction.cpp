@@ -1537,7 +1537,21 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_WRITE_ALL, "buffer-write-all", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_NEXT
+ * \li Action: Switch to the next opened document.
+ * \li Notion: Note that this does not necessarily mean next in tabbar
+               (for full list see View menu).
+ * \li Syntax: buffer-next
+ * \endvar
+ */
 		{ LFUN_BUFFER_NEXT, "buffer-next", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_PREVIOUS
+ * \li Action: Switch to the previous opened document.
+ * \li Syntax: buffer-previous
+ * \endvar
+ */
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
 		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly, Buffer },
 		{ LFUN_MASTER_BUFFER_VIEW, "master-buffer-view", ReadOnly, Buffer },
