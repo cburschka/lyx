@@ -3,7 +3,7 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6svn-r240xx"
+!define PRODUCT_VERSION "1.6svn-r24064"
 !define PRODUCT_VERSION_SHORT "16svn2"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -39,7 +39,7 @@ BrandingText "LyXWinInstaller v4.02 - ${INSTALLER_VERSION}"
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX153"
- !define PRODUCT_VERSION_OLD "LyX 1.6svn-r240xx"
+ !define PRODUCT_VERSION_OLD "LyX 1.6svn-r24064"
  !define PRODUCT_VERSION_SHORT_OLD "16svn2"
  !define JabRefVersion "2.3.1" # could be an older version
  !define ImageMagickVersion_Old "6.4.0" # could be an older version
