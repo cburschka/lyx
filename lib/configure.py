@@ -558,6 +558,8 @@ def checkOtherEntries():
             r'\plaintext_roff_command ""' ])
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
+    checkProg('BibTeX', ['jbibtex', 'bibtex'],
+        rc_entry = [ r'\bibtex_command "%%"' ])
     checkProg('a spellchecker', ['ispell'],
         rc_entry = [ r'\spell_command "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
