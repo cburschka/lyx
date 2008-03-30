@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-26 22:02+0100\n"
-"PO-Revision-Date: 2008-03-28 02:54+0100\n"
+"PO-Revision-Date: 2008-03-30 01:58+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -252,7 +252,7 @@ msgstr "tutti i riferimenti"
 #: src/frontends/qt4/ui/BibtexUi.ui:103
 #: src/frontends/qt4/ui/BibtexUi.ui:116
 msgid "Choose a style file"
-msgstr "Scegli un file di stile"
+msgstr "Scegliere un file di stile"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148
 msgid "Remove the selected database"
@@ -1002,7 +1002,7 @@ msgstr "&Modifica file..."
 #: src/frontends/qt4/ui/ExternalUi.ui:87
 #: src/frontends/qt4/ui/IncludeUi.ui:333
 msgid "Select a file"
-msgstr "Seleziona un file"
+msgstr "Selezionare un file"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:97
 #: src/frontends/qt4/ui/ExternalUi.ui:110
@@ -1259,7 +1259,7 @@ msgstr "          S&cala (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "&Sans Serif:"
-msgstr "&Senza Grazie:"
+msgstr "&Senza grazie:"
 
 #: src/frontends/qt4/ui/FontUi.ui:146
 msgid "Use &Old Style Figures"
@@ -1283,7 +1283,7 @@ msgstr "&Immagine"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:62
 msgid "Select an image file"
-msgstr "Seleziona file immagine"
+msgstr "Selezionare un file immagine"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:72
 msgid "Output Size"
@@ -1336,7 +1336,7 @@ msgstr "A&ngolo (gradi):"
 #: src/frontends/qt4/ui/GraphicsUi.ui:270
 #: src/frontends/qt4/ui/GraphicsUi.ui:283
 msgid "File name of image"
-msgstr "Nome file immagine"
+msgstr "Nome del file immagine"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:291
 msgid "&Clipping"
@@ -1539,7 +1539,7 @@ msgstr "Parametri per listati"
 #: src/frontends/qt4/ui/ListingsUi.ui:519
 #: src/frontends/qt4/ui/TextLayoutUi.ui:127
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "Da segnare per inserire parametri non riconoscibili da LyX"
+msgstr "Selezionare per inserire parametri non riconosciuti da LyX"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69
 #: src/frontends/qt4/ui/ListingsUi.ui:522
@@ -1947,7 +1947,7 @@ msgstr "&Usa automaticamente il pacchetto matematico AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:35
 msgid "Use AMS &math package"
-msgstr "Usa pacchetto &matematico AMS"
+msgstr "Usa il pacchetto &matematico AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:42
 msgid "Use esint package &automatically"
@@ -2016,7 +2016,9 @@ msgstr "Formato carta"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Scegliere un tipo di carta particolare o impostarne uno proprio con \"Personalizzato\""
+msgstr ""
+"Scegliere un tipo di carta particolare o\n"
+"impostarne uno proprio con \"Personalizzato\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
@@ -3331,15 +3333,15 @@ msgstr "Suggerimenti:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
-msgstr "Sostituire il termine con la scelta attuale?"
+msgstr "Sostituisce il termine con la scelta attuale"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:55
 msgid "Add the word to your personal dictionary"
-msgstr "Aggiungi il termine al tuo dizionario personale"
+msgstr "Aggiunge il termine al proprio dizionario personale"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:65
 msgid "Ignore this word"
-msgstr "Ignora questa parola"
+msgstr "Ignora questo termine"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:68
 msgid "&Ignore"
@@ -3347,7 +3349,7 @@ msgstr "&Ignora"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:75
 msgid "Ignore this word throughout this session"
-msgstr "Ignora termine per questa sessione"
+msgstr "Ignora tale termine per questa sessione"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:78
 msgid "I&gnore All"
@@ -3497,7 +3499,7 @@ msgstr "Imposta bordi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:657
 msgid "Set borders of the current (selected) cell(s)"
-msgstr "Importa i bordi della cella corrente (o per quelle selezionate)"
+msgstr "Importa i bordi della cella corrente (o di quelle selezionate)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:670
 msgid "Additional Space"
@@ -3600,7 +3602,7 @@ msgstr "doppio"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1004
 msgid "Don't output the last footer"
-msgstr "Non produrre l'ultima nota a piè pagina"
+msgstr "Non produrre l'ultimo piè pagina"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1007
 #: src/frontends/qt4/ui/TabularUi.ui:1017
@@ -3633,11 +3635,11 @@ msgstr "Posizione colonna corrente"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
-msgstr "Chiudi questo dialogo"
+msgstr "Chiudi questa finestra di dialogo"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:91
 msgid "Rebuild the file lists"
-msgstr "Ricostruisci gli elenchi dei file"
+msgstr "Ricostruisce gli elenchi dei file"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
@@ -3645,7 +3647,9 @@ msgstr "&Riesamina"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid "Show contents of marked file. Only possible when files are shown with path"
-msgstr "Mostra i contenuti del file selezionato. Possibile solo quando i file sono mostrati con il loro percorso."
+msgstr ""
+"Mostra i contenuti del file selezionato. Possibile solo\n"
+"quando i file sono mostrati con il loro percorso."
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
@@ -3653,7 +3657,7 @@ msgstr "&Vista"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
-msgstr "Classi o stili selezionati"
+msgstr "Classi o stili disponibili"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
@@ -3669,7 +3673,7 @@ msgstr "Stili BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
-msgstr "Abilita/Disabilita vista elenco file"
+msgstr "Visualizza la lista dei file con il loro percorso assoluto"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "Show &path"
@@ -4494,7 +4498,7 @@ msgstr "Nota a piè pagina"
 
 #: lib/layouts/IEEEtran.layout:465
 msgid "MarkBoth"
-msgstr "Segna entrambi"
+msgstr "Intestazioni"
 
 #: lib/layouts/aa.layout:46
 #: lib/layouts/aapaper.layout:48
@@ -4675,7 +4679,7 @@ msgstr "Indirizzo"
 #: lib/layouts/aapaper.layout:88
 #: lib/layouts/aapaper.inc:63
 msgid "Offprint"
-msgstr "Offprint"
+msgstr "Estratto"
 
 #: lib/layouts/aa.layout:74
 #: lib/layouts/aa.layout:167
@@ -4728,7 +4732,7 @@ msgstr "Riconoscimento"
 #: lib/layouts/aa.layout:153
 #: lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
-msgstr "Richieste offprint a:"
+msgstr "Richieste estratti a:"
 
 #: lib/layouts/aa.layout:175
 msgid "Correspondence to:"
@@ -4948,7 +4952,7 @@ msgstr "\\arabic{section}"
 
 #: lib/layouts/amsbook.layout:103
 msgid "Chapter Exercises"
-msgstr "Capitolo Esercizi"
+msgstr "Capitolo esercizi"
 
 #: lib/layouts/apa.layout:50
 msgid "RightHeader"
@@ -5528,7 +5532,7 @@ msgstr "[scacchiera]"
 
 #: lib/layouts/chess.layout:139
 msgid "BoardCentered"
-msgstr "Casella centrata"
+msgstr "Tavola centrata"
 
 #: lib/layouts/chess.layout:144
 msgid "[centered board]"
@@ -5704,7 +5708,7 @@ msgstr "Citazione"
 #: lib/layouts/powerdot.layout:332
 #: lib/layouts/stdlayouts.inc:30
 msgid "Quote"
-msgstr "Virgolette"
+msgstr "Detto"
 
 #: lib/layouts/egs.layout:141
 #: lib/layouts/stdlists.inc:86
@@ -5751,7 +5755,7 @@ msgstr "Primo autore"
 
 #: lib/layouts/egs.layout:391
 msgid "1st_author_surname:"
-msgstr "soprannome_primo_autore:"
+msgstr "cognome_primo_autore:"
 
 #: lib/layouts/egs.layout:400
 #: lib/layouts/agu_stdtitle.inc:198
@@ -5783,7 +5787,7 @@ msgstr "Offset"
 
 #: lib/layouts/egs.layout:457
 msgid "reprint_reqs_to:"
-msgstr "ristampa_richieste_a:"
+msgstr "richieste_ristampa_a:"
 
 #: lib/layouts/egs.layout:495
 #: lib/layouts/kluwer.layout:263
@@ -7031,11 +7035,11 @@ msgstr "Numero di Classificazione Soggetto Matematica:"
 
 #: lib/layouts/iopart.layout:225
 msgid "submitto"
-msgstr "submitto"
+msgstr "sottoposto"
 
 #: lib/layouts/iopart.layout:228
 msgid "submit to paper:"
-msgstr "submit to paper:"
+msgstr "sottoposto a:"
 
 #: lib/layouts/iopart.layout:253
 msgid "Bibliography (plain)"
@@ -7063,11 +7067,11 @@ msgstr "RICONOSCIMENTI"
 
 #: lib/layouts/kluwer.layout:190
 msgid "AddressForOffprints"
-msgstr "Indirizzo per fuori stampa"
+msgstr "Indirizzo per estratti"
 
 #: lib/layouts/kluwer.layout:198
 msgid "Address for Offprints:"
-msgstr "Indirizzo per fuori stampa:"
+msgstr "Indirizzo per estratti:"
 
 #: lib/layouts/kluwer.layout:208
 msgid "RunningTitle"
@@ -7126,11 +7130,11 @@ msgstr "Autore Corrente:"
 
 #: lib/layouts/llncs.layout:203
 msgid "TOC Author"
-msgstr "Autore Indice generale"
+msgstr "Autore indice generale"
 
 #: lib/layouts/llncs.layout:207
 msgid "TOC Author:"
-msgstr "Autore Indice generale:"
+msgstr "Autore indice generale:"
 
 #: lib/layouts/llncs.layout:295
 msgid "Case #."
@@ -7242,11 +7246,11 @@ msgstr "Elenco puntato:"
 
 #: lib/layouts/moderncv.layout:102
 msgid "DoubleItem"
-msgstr "Dato doppio"
+msgstr "Voce doppia"
 
 #: lib/layouts/moderncv.layout:105
 msgid "Double Item:"
-msgstr "Dato doppio:"
+msgstr "Voce doppia:"
 
 #: lib/layouts/moderncv.layout:108
 msgid "Space"
@@ -7684,7 +7688,7 @@ msgstr "Testo invisibile"
 
 #: lib/layouts/slides.layout:214
 msgid "<Invisible Text Follows>"
-msgstr "<Segue del testo invisibile>"
+msgstr "<Segue testo invisibile>"
 
 #: lib/layouts/slides.layout:231
 msgid "VisibleText"
@@ -7692,7 +7696,7 @@ msgstr "Testo visibile"
 
 #: lib/layouts/slides.layout:238
 msgid "<Visible Text Follows>"
-msgstr "<Segue del testo visibile>"
+msgstr "<Segue testo visibile>"
 
 #: lib/layouts/spie.layout:53
 msgid "Authorinfo"
@@ -7871,7 +7875,7 @@ msgstr "Nota supplementare"
 
 #: lib/layouts/agu_stdtitle.inc:153
 msgid "Sup-mat-note:"
-msgstr "Nota supplementaria matematica:"
+msgstr "Nota supplementare matematica:"
 
 #: lib/layouts/agu_stdtitle.inc:158
 msgid "Cite-other"
@@ -7901,15 +7905,15 @@ msgstr "Indenta (linea):"
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
-msgstr "Runhead"
+msgstr "Testata"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr "Runhead:"
+msgstr "Testata:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr "Pubblicato on line:"
+msgstr "Pubblicato in linea:"
 
 #: lib/layouts/agu_stdtitle.inc:263
 #: src/frontends/qt4/GuiCitation.cpp:79
@@ -7922,11 +7926,11 @@ msgstr "Citazione:"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
-msgstr "Ordine posizionamento"
+msgstr "Ordine registrazione"
 
 #: lib/layouts/agu_stdtitle.inc:274
 msgid "Posting-order:"
-msgstr "Ordine posizionamento:"
+msgstr "Ordine registrazione:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
@@ -8078,7 +8082,7 @@ msgstr "Parole e frasi chiavi:"
 
 #: lib/layouts/amsdefs.inc:180
 msgid "Dedicatory"
-msgstr "Dedicatamente"
+msgstr "Dedicatorio"
 
 #: lib/layouts/amsdefs.inc:183
 #: lib/layouts/svjour.inc:125
@@ -8354,11 +8358,11 @@ msgstr "Autore corr.:"
 
 #: lib/layouts/svjour.inc:241
 msgid "Offprints"
-msgstr "Ristampe"
+msgstr "Estratti"
 
 #: lib/layouts/svjour.inc:245
 msgid "Offprints:"
-msgstr "Ristampe:"
+msgstr "Estratti:"
 
 #: lib/layouts/theorems.inc:62
 #: lib/layouts/theorems-ams.inc:63
@@ -10176,11 +10180,11 @@ msgstr "Cornice semplice, interruzioni di pagina|p"
 
 #: lib/ui/stdcontext.inc:81
 msgid "Oval, thin|O"
-msgstr "Ovale, sottile|O"
+msgstr "Cornice ovale, sottile|o"
 
 #: lib/ui/stdcontext.inc:82
 msgid "Oval, thick|v"
-msgstr "Ovale, spessa|v"
+msgstr "Cornice ovale, spessa|v"
 
 #: lib/ui/stdcontext.inc:83
 msgid "Drop Shadow|w"
@@ -13996,11 +14000,11 @@ msgstr "Apri &originale"
 #: src/Buffer.cpp:2576
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Vuoi recuperare il documento %1$s dal controllo di versione?"
+msgstr "Volete recuperare il documento %1$s dal controllo di versione?"
 
 #: src/Buffer.cpp:2578
 msgid "Retrieve from version control?"
-msgstr "Vuoi recuperare il documento mediante il controllo di versione?"
+msgstr "Recupero il documento dal controllo di versione?"
 
 #: src/Buffer.cpp:2579
 msgid "&Retrieve"
@@ -14362,7 +14366,7 @@ msgstr "Nota sbiadita (etichetta)"
 
 #: src/Color.cpp:116
 msgid "greyedout inset background"
-msgstr "Nota sbiadita ed incorniciata (sfondo)"
+msgstr "Nota sbiadita (sfondo)"
 
 #: src/Color.cpp:117
 msgid "shaded box"
@@ -14832,7 +14836,7 @@ msgid ""
 msgstr ""
 "Il file %1$s esiste già.\n"
 "\n"
-"Vuoi davvero sovrascriverlo?"
+"Volete davvero sovrascriverlo?"
 
 #: src/Exporter.cpp:47
 #: src/LyXFunc.cpp:1006
@@ -15167,7 +15171,7 @@ msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
-"Avete specificato una cartella utente di LyX non esistente, %1$s.\n"
+"È stata specificata una cartella utente di LyX non esistente, %1$s.\n"
 "Questa è necessaria per mantenere la propria configurazione personale."
 
 #: src/LyX.cpp:941
@@ -15538,7 +15542,7 @@ msgstr "Definire le opzioni di makeindex (vedere man makeindex) oppure seleziona
 
 #: src/LyXRC.cpp:2774
 msgid "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
-msgstr "Serve per impostare la mappa di tastiera corretta. Torna utile se, per esempio, si scrivono documenti in tedesco su una tastiera americana."
+msgstr "Serve ad impostare la mappa di tastiera corretta. Torna utile se, per esempio, si scrivono documenti in tedesco su una tastiera americana."
 
 #: src/LyXRC.cpp:2778
 msgid "Maximum number of words in the initialization string for a new label"
@@ -15643,7 +15647,7 @@ msgstr "Specifica quali cartelle devono essere preposte alla variabile d'ambient
 
 #: src/LyXRC.cpp:2883
 msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english\"."
+msgstr "Specifica un dizionario personale alternativo. Per esempio: \".ispell_english\"."
 
 #: src/LyXRC.cpp:2887
 msgid "Shows a typeset preview of things such as math"
@@ -17109,7 +17113,7 @@ msgstr "Registro di LaTeX"
 
 #: src/frontends/qt4/GuiLog.cpp:177
 msgid "Literate Programming Build Log"
-msgstr "Registro compilato di programmazione esperta"
+msgstr "Registro di compilazione per programmazione esperta"
 
 #: src/frontends/qt4/GuiLog.cpp:179
 msgid "lyx2lyx Error Log"
