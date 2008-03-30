@@ -1960,7 +1960,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 #if QT_VERSION >= 0x040300
 		setContentsMargins(0, 0, 0, 0);
 #endif
-		showNormal();
+		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		menuBar()->show();
 		statusBar()->show();
 	} else {
@@ -1969,7 +1969,7 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 #if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
 #endif
-		showFullScreen();
+		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		statusBar()->hide();
 		menuBar()->hide();
 	}
