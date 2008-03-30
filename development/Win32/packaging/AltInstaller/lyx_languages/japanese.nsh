@@ -94,7 +94,7 @@ LangString AspellNone "${LYX_LANG}" 'ƒXƒyƒ‹ƒ`ƒFƒbƒJ["Aspell"—p‚Ì«‘‚ªƒCƒ“ƒXƒg
 				     ${AspellLocation}$\r$\n\
 				     ‚©‚çƒ_ƒEƒ“ƒ[ƒh‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
 				     «‘‚ğ‚¢‚Üƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·‚©H'
-LangString AspellPartStart "${LYX_LANG}" "ƒXƒyƒ‹ƒ`ƒFƒbƒJ["Aspell"—p‚Ì""
+LangString AspellPartStart "${LYX_LANG}" 'ƒXƒyƒ‹ƒ`ƒFƒbƒJ["Aspell"—p‚Ì"'
 LangString AspellPart1 "${LYX_LANG}" "‰pŒê«‘"
 LangString AspellPart2 "${LYX_LANG}" "Œ¾Œêu$LangNamev‚Ì«‘"
 LangString AspellPart3 "${LYX_LANG}" "$\r$\n\
@@ -131,7 +131,7 @@ LangString UnNotInRegistryLabel "${LYX_LANG}" "ƒŒƒWƒXƒgƒŠ‚ÉLyX‚ªŒ©“–‚½‚è‚Ü‚¹‚ñB
 LangString UnInstallRunning "${LYX_LANG}" "‚Ü‚¸LyX‚ğ•Â‚¶‚Ä‚­‚¾‚³‚¢I"
 LangString UnNotAdminLabel "${LYX_LANG}" "LyX‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAŠÇ—ÒŒ ŒÀ‚ğ‚Á‚Ä‚¢‚È‚­‚Ä‚Í‚È‚è‚Ü‚¹‚ñI"
 LangString UnReallyRemoveLabel "${LYX_LANG}" "–{“–‚ÉALyX‚Æ‚·‚×‚Ä‚Ì•‘®ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚µ‚Ä‚µ‚Ü‚¤Ï‚à‚è‚Å‚·‚©H"
-LangString UnLyXPreferencesTitle "${LYX_LANG}" 'LyX$\‚Ìƒ†[ƒU[İ’è'
+LangString UnLyXPreferencesTitle "${LYX_LANG}" 'LyX‚Ìƒ†[ƒU[İ’è'
 LangString UnGSview "${LYX_LANG}" 'PostscriptEPDFƒrƒ…[ƒA"GSview"‚ğ’E‘•‚·‚é‚É‚ÍA$\r$\n\
 				   Ÿ‚ÌƒEƒBƒ“ƒhƒE‚Å"Uninstall"ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B'
 LangString UnRemoveSuccessLabel "${LYX_LANG}" "LyX‚Í‚¨g‚¢‚ÌƒRƒ“ƒsƒ…[ƒ^[‚©‚çæ‚èœ‚©‚ê‚Ü‚µ‚½B"
