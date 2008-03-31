@@ -33,6 +33,7 @@
 #include "support/textutils.h"
 
 #include <boost/tokenizer.hpp>
+#include <limits>
 
 
 namespace lyx {
