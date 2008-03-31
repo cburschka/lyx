@@ -133,3 +133,6 @@ What's new
 
 - fix the 'make check' target in src/support; one of the checks still 
   fails (bug 4638)
+
+- fix the problems with compilation on gcc 4.3.0 with disabled internal 
+  boost library and pch headers.
