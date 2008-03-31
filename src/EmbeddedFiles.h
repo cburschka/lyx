@@ -197,8 +197,35 @@ bool operator==(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 bool operator!=(EmbeddedFile const & lhs, EmbeddedFile const & rhs);
 
 
-class EmbeddedFileList : public std::vector<EmbeddedFile> {
+class EmbeddedFileList {
 public:
+	///
+	typedef std::vector<EmbeddedFile>::iterator iterator;
+	///
+	typedef std::vector<EmbeddedFile>::const_iterator const_iterator;
+	///
+	iterator begin() { return eflist_.begin(); }
+	iterator end() { return eflist_.end(); }
+	const_iterator begin() const { return eflist_.begin(); }
+	const_iterator end() const { return eflist_.end(); }
+	///
+	void push_back(EmbeddedFile const & ef) { eflist_.push_back(ef); }
+	///
+	EmbeddedFile const & back() const { return eflist_.back(); }
+	EmbeddedFile & back() { return eflist_.back(); }
+	///
+	void clear() { eflist_.clear(); }
+	///
+	bool empty() const { return eflist_.empty(); }
+	///
+	void insert(iterator position, const_iterator itbeg, const_iterator itend) 
+		{ eflist_.insert(position, itbeg, itend); }
+	void insert(iterator position, EmbeddedFile const & ef)
+		{ eflist_.insert(position, ef); }
+	///
+	iterator erase(iterator position) { return eflist_.erase(position); }
+	
+	
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.
 	void enable(bool enabled, Buffer & buffer, bool updateFile);
@@ -209,8 +236,8 @@ public:
 	 */
 	void registerFile(EmbeddedFile const & file, Inset const * inset,
 		Buffer const & buffer);
-	/// returns a pointer to the Embedded file representing this object,
-	/// or null if not found. The filename should be absolute.
+	/// returns an iterator pointing to the Embedded file representing 
+	/// the file with the absolute filename <filename>.
 	const_iterator findFile(std::string const & filename) const;
 	iterator findFile(std::string const & filename);
 
@@ -220,6 +247,9 @@ public:
 	void update(Buffer const & buffer);
 	/// write a zip file
 	bool writeFile(support::DocFileName const & filename, Buffer const & buffer);
+private:
+	///
+	std::vector<EmbeddedFile> eflist_;
 };
 
 } // namespace lyx
