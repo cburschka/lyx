@@ -472,8 +472,8 @@ void InsetMathTFrac::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathBinom::InsetMathBinom(bool choose)
-	: choose_(choose)
+InsetMathBinom::InsetMathBinom(Kind kind)
+	: kind_(kind)
 {}
 
 
@@ -512,35 +512,58 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	docstring const bra = kind_ == BRACE ? from_ascii("{") :
+			      kind_ == BRACK ? from_ascii("[") : from_ascii("(");
+	docstring const ket = kind_ == BRACE ? from_ascii("}") :
+			      kind_ == BRACK ? from_ascii("]") : from_ascii(")");
 	int m = x + dim.width() / 2;
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.des - 3 - 5);
 	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 3 - 5);
-	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
+	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), bra);
 	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()), y - dim.ascent(),
-		dw(dim.height()), dim.height(), from_ascii(")"));
+		dw(dim.height()), dim.height(), ket);
 	drawMarkers2(pi, x, y);
 }
 
 
 bool InsetMathBinom::extraBraces() const
 {
-	return choose_;
+	return kind_ == CHOOSE || kind_ == BRACE || kind_ == BRACK;
 }
 
 
 void InsetMathBinom::write(WriteStream & os) const
 {
-	if (choose_)
-		os << '{' << cell(0) << " \\choose " << cell(1) << '}';
-	else
+	switch (kind_) {
+	case BINOM:
 		os << "\\binom{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case CHOOSE:
+		os << '{' << cell(0) << " \\choose " << cell(1) << '}';
+		break;
+	case BRACE:
+		os << '{' << cell(0) << " \\brace " << cell(1) << '}';
+		break;
+	case BRACK:
+		os << '{' << cell(0) << " \\brack " << cell(1) << '}';
+		break;
+	}
 }
 
 
 void InsetMathBinom::normalize(NormalStream & os) const
 {
 	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
+}
+
+
+void InsetMathBinom::validate(LaTeXFeatures & features) const
+{
+	if (kind_ == BINOM) {
+		features.require("binom");
+		InsetMathNest::validate(features);
+	}
 }
 
 

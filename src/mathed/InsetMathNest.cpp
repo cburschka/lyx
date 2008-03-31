@@ -1836,7 +1836,8 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\stackrel"));
 	globals.push_back(from_ascii("\\binom"));
 	globals.push_back(from_ascii("\\choose"));
-	globals.push_back(from_ascii("\\choose"));
+	globals.push_back(from_ascii("\\brace"));
+	globals.push_back(from_ascii("\\brack"));
 	globals.push_back(from_ascii("\\frac"));
 	globals.push_back(from_ascii("\\over"));
 	globals.push_back(from_ascii("\\nicefrac"));

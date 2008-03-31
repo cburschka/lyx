@@ -132,7 +132,15 @@ private:
 class InsetMathBinom : public InsetMathFracBase {
 public:
 	///
-	explicit InsetMathBinom(bool choose = false);
+	enum Kind {
+		BINOM,
+		CHOOSE,
+		BRACE,
+		BRACK
+	};
+
+	///
+	explicit InsetMathBinom(Kind kind = BINOM);
 	///
 	void write(WriteStream & os) const;
 	///
@@ -146,12 +154,14 @@ public:
 	{ drawMarkers2(pi, x, y); }
 	///
 	bool extraBraces() const;
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	Inset * clone() const;
 	///
 	int dw(int height) const;
 	///
-	bool choose_;
+	Kind kind_;
 };
 
 
