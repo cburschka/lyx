@@ -1867,10 +1867,6 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 {
 	int ret = 0;
 
-	if (getRotateCell(cell)) {
-		os << "\\begin{sideways}\n";
-		++ret;
-	}
 	Tabular::VAlignment valign =  getVAlignment(cell, !isMultiColumn(cell));
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	// figure out how to set the lines
@@ -1933,6 +1929,10 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 			os << '|';
 		os << "}{";
 		}
+	if (getRotateCell(cell)) {
+		os << "\\begin{sideways}\n";
+		++ret;
+	}
 	if (getUsebox(cell) == BOX_PARBOX) {
 		os << "\\parbox[";
 		switch (valign) {
@@ -1980,12 +1980,12 @@ int Tabular::TeXCellPostamble(odocstream & os, idx_type cell, bool ismulticol) c
 		os << "%\n\\end{minipage}";
 		ret += 2;
 	}
-	if (ismulticol) {
-		os << '}';
-	}
 	if (getRotateCell(cell)) {
 		os << "%\n\\end{sideways}";
 		++ret;
+	}
+	if (ismulticol) {
+		os << '}';
 	}
 	return ret;
 }
