@@ -191,13 +191,15 @@
 # bidi -> bidimensionnel
 # greyedout insert -> insert grisé
 # unicode traduit à partir de <http://hapax.qc.ca/Blocks-5.0.0.fr.txt>
-#
+# # retour sur quelques traductions
+# Custom->Réglable (pas partout: quand il s'agit d'un seul élement, e.g. dimension); ailleurs Personalisation (-sé, -sable)
+# Verbes d'action systématiques (Ouvrir au lieu de Ouvre e.g.)
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-26 22:02+0100\n"
-"PO-Revision-Date: 2008-03-25 17:12+0100\n"
+"PO-Revision-Date: 2008-03-31 19:17+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -303,7 +305,7 @@ msgstr "&Clé :"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:25
 msgid "Citation Style"
-msgstr "Style de Citation"
+msgstr "Style de citation"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:37
 msgid "Use the jurabib styles for law and humanities"
@@ -339,11 +341,11 @@ msgstr "Pour diviser votre bibliographie en sections"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:124
 msgid "S&ectioned bibliography"
-msgstr "Bibliographie en &Sections"
+msgstr "Bibliographie en &sections"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
-msgstr "LyX : Ajoute une Base de Données BibTeX"
+msgstr "LyX : Ajoute une base de données BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50 src/frontends/qt4/ui/CitationUi.ui:98
@@ -1518,7 +1520,7 @@ msgstr "Ressort Horizontal"
 #: src/frontends/qt4/ui/TabularUi.ui:776 src/frontends/qt4/ui/VSpaceUi.ui:156
 #: src/frontends/qt4/GuiDocument.cpp:582 src/frontends/qt4/GuiDocument.cpp:683
 msgid "Custom"
-msgstr "Personnalisé"
+msgstr "Réglable"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:107 src/frontends/qt4/ui/VSpaceUi.ui:117
 msgid "&Value:"
@@ -1526,7 +1528,7 @@ msgstr "&Valeur :"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:120 src/frontends/qt4/ui/VSpaceUi.ui:110
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Valeur personnalisée. Nécessite un espacement de type «Personnalisé»."
+msgstr "Valeur réglable. Nécessite un espacement de type « réglable »."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:130
 msgid "&Fill Pattern:"
@@ -1703,9 +1705,8 @@ msgid "Click to select a local document class definition file"
 msgstr "Cliquer pour sélectionner un fichier local de définition de format"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:185
-#, fuzzy
 msgid "&Local Layout..."
-msgstr "&Sélectionner un format local..."
+msgstr "&Format local..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:192
 msgid "Document &class:"
@@ -2071,7 +2072,7 @@ msgstr "Format papier"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Choisir une taille de papier, ou régler la vôtre avec «Personnalisé»"
+msgstr "Choisir une taille de papier, ou régler la vôtre avec « réglable »"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
@@ -8346,9 +8347,8 @@ msgid "Armenian"
 msgstr "Arménien"
 
 #: lib/languages:9
-#, fuzzy
 msgid "Austrian (old spelling)"
-msgstr "Autrichien (nouvelle orthographe)"
+msgstr "Autrichien (ancienne orthographe)"
 
 #: lib/languages:10
 msgid "Austrian"
@@ -8451,9 +8451,8 @@ msgid "Galician"
 msgstr "Galicien"
 
 #: lib/languages:38
-#, fuzzy
 msgid "German (old spelling)"
-msgstr "Allemand (nouvelle orthographe)"
+msgstr "Allemand (ancienne orthographe)"
 
 #: lib/languages:39
 msgid "German"
@@ -8712,7 +8711,7 @@ msgstr "Afficher l'Historique|H"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:77
 msgid "Custom...|C"
-msgstr "Personnalisé...|e"
+msgstr "Réglable...|e"
 
 #: lib/ui/classic.ui:90 lib/ui/stdmenus.inc:85
 msgid "Undo|U"
@@ -9489,34 +9488,28 @@ msgid "Go to Label|G"
 msgstr "Aller à l'étiquette|A"
 
 #: lib/ui/stdcontext.inc:32
-#, fuzzy
 msgid "<reference>|r"
-msgstr "<référence>"
+msgstr "<référence>|r"
 
 #: lib/ui/stdcontext.inc:33
-#, fuzzy
 msgid "(<reference>)|e"
-msgstr "(<référence>)"
+msgstr "(<référence>)|e"
 
 #: lib/ui/stdcontext.inc:34
-#, fuzzy
 msgid "<page>|p"
-msgstr "<page>"
+msgstr "<page>|p"
 
 #: lib/ui/stdcontext.inc:35
-#, fuzzy
 msgid "on page <page>|o"
-msgstr "page <page>"
+msgstr "page <page>|g"
 
 #: lib/ui/stdcontext.inc:36
-#, fuzzy
 msgid "<reference> on page <page>|f"
-msgstr "<référence> page <page>"
+msgstr "<référence> page <page>|f"
 
 #: lib/ui/stdcontext.inc:37
-#, fuzzy
 msgid "Formatted reference|t"
-msgstr "référence mise en forme"
+msgstr "référence mise en forme|o"
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdcontext.inc:53 lib/ui/stdcontext.inc:63
 #: lib/ui/stdcontext.inc:70 lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:119
@@ -9530,66 +9523,54 @@ msgid "Go back to Reference|G"
 msgstr "Retourner à la référence|u"
 
 #: lib/ui/stdcontext.inc:60
-#, fuzzy
 msgid "Open Inset|O"
-msgstr "Ouvre Tous les Inserts|O"
+msgstr "Ouvrir l'insert|O"
 
 # ajouter raccourci
 #: lib/ui/stdcontext.inc:61
-#, fuzzy
 msgid "Close Inset|C"
-msgstr "Ferme Tous Les Inserts|I"
+msgstr "Fermer l'insert|i"
 
 #: lib/ui/stdcontext.inc:67
-#, fuzzy
 msgid "Toggle Label|L"
-msgstr "&Basculer tout"
+msgstr "Basculer l'étiquette|B"
 
 # menu Editer quand on est dans un insert
 #: lib/ui/stdcontext.inc:68
-#, fuzzy
 msgid "Dissolve Inset|D"
-msgstr "Supprimer insert|u"
+msgstr "Supprimer l'insert|u"
 
 #: lib/ui/stdcontext.inc:78
-#, fuzzy
 msgid "Frameless|l"
-msgstr "sans cadre"
+msgstr "Sans cadre|S"
 
 #: lib/ui/stdcontext.inc:79
-#, fuzzy
 msgid "Simple frame|f"
-msgstr "cadre simple"
+msgstr "Cadre simple|p"
 
 #: lib/ui/stdcontext.inc:80
-#, fuzzy
 msgid "Simple frame, page breaks|p"
-msgstr "cadre simple, sauts de page"
+msgstr "Cadre simple, sauts de page|u"
 
 #: lib/ui/stdcontext.inc:81
-#, fuzzy
 msgid "Oval, thin|O"
-msgstr "oval, fin"
+msgstr "Ovale, fin|O"
 
 #: lib/ui/stdcontext.inc:82
-#, fuzzy
 msgid "Oval, thick|v"
-msgstr "oval, épais"
+msgstr "Ovale, épais|v"
 
 #: lib/ui/stdcontext.inc:83
-#, fuzzy
 msgid "Drop Shadow|w"
-msgstr "Ombre en relief"
+msgstr "Ombre en relief|f"
 
 #: lib/ui/stdcontext.inc:84
-#, fuzzy
 msgid "Shaded background|b"
-msgstr "Fond ombré"
+msgstr "Fond ombré|b"
 
 #: lib/ui/stdcontext.inc:85
-#, fuzzy
 msgid "Double frame|D"
-msgstr "double cadre"
+msgstr "Double cadre|D"
 
 #: lib/ui/stdcontext.inc:95 lib/ui/stdmenus.inc:434
 msgid "LyX Note|N"
@@ -9604,93 +9585,76 @@ msgid "Greyed Out|G"
 msgstr "Grisé|G"
 
 #: lib/ui/stdcontext.inc:105
-#, fuzzy
 msgid "Interword Space|w"
-msgstr "Espace entre Mots|M"
+msgstr "Espace entre mots|M"
 
 #: lib/ui/stdcontext.inc:106
-#, fuzzy
 msgid "Protected Space|o"
-msgstr "Espace Insécable|E"
+msgstr "Espace insécable|E"
 
 #: lib/ui/stdcontext.inc:108
-#, fuzzy
 msgid "Quad Space|Q"
-msgstr "Cadratin"
+msgstr "Cadratin|C"
 
 #: lib/ui/stdcontext.inc:109
-#, fuzzy
 msgid "QQuad Space|u"
-msgstr "Double cadratin"
+msgstr "Double cadratin|D"
 
 #: lib/ui/stdcontext.inc:110
-#, fuzzy
 msgid "Enspace|E"
-msgstr "Espace de largeur en"
+msgstr "Espace de largeur en|E"
 
 #: lib/ui/stdcontext.inc:111
-#, fuzzy
 msgid "Enskip|k"
-msgstr "Saut de hauteur en"
+msgstr "Saut de hauteur en|h"
 
 #: lib/ui/stdcontext.inc:112
-#, fuzzy
 msgid "Negative Thin Space|N"
-msgstr "Espace fine négative"
+msgstr "Espace fine négative|n"
 
 #: lib/ui/stdcontext.inc:113
 msgid "Horizontal Fill|F"
 msgstr "Ressort Horizontal|H"
 
 #: lib/ui/stdcontext.inc:114
-#, fuzzy
 msgid "Protected Horizontal Fill|i"
-msgstr "Remplissage horizontal insécable"
+msgstr "Remplissage horizontal insécable|i"
 
 #: lib/ui/stdcontext.inc:115
-#, fuzzy
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Remplissage horizontal (points)"
+msgstr "Remplissage horizontal (points)|z"
 
 #: lib/ui/stdcontext.inc:116
-#, fuzzy
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Remplissage horizontal (filet)"
+msgstr "Remplissage horizontal (filet)|r"
 
 #: lib/ui/stdcontext.inc:117
-#, fuzzy
 msgid "Custom Length|C"
-msgstr "Commentaire|C"
+msgstr "Dimension réglable|m"
 
 #: lib/ui/stdcontext.inc:126
-#, fuzzy
 msgid "DefSkip|D"
-msgstr "par Défaut"
+msgstr "Par défaut|d"
 
 #: lib/ui/stdcontext.inc:127
-#, fuzzy
 msgid "SmallSkip|S"
-msgstr "Petit"
+msgstr "Petit|P"
 
 #: lib/ui/stdcontext.inc:128
-#, fuzzy
 msgid "MedSkip|M"
-msgstr "Moyen"
+msgstr "Moyen|y"
 
 #: lib/ui/stdcontext.inc:129
-#, fuzzy
 msgid "BigSkip|B"
-msgstr "Grand"
+msgstr "Grand|G"
 
 #: lib/ui/stdcontext.inc:130
-#, fuzzy
 msgid "VFill|F"
-msgstr "Ressort Vertical"
+msgstr "Ressort vertical|v"
 
 #: lib/ui/stdcontext.inc:131
-#, fuzzy
 msgid "Custom|C"
-msgstr "Personnalisé"
+msgstr "Réglable|g"
 
 #: lib/ui/stdcontext.inc:144 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
@@ -9709,14 +9673,12 @@ msgid "Clear Double Page|D"
 msgstr "Saut page impaire|u"
 
 #: lib/ui/stdcontext.inc:154 lib/ui/stdmenus.inc:375
-#, fuzzy
 msgid "Ragged Line Break|R"
-msgstr "Passage à la Ligne|L"
+msgstr "Passage à la ligne (brisé)|l"
 
 #: lib/ui/stdcontext.inc:155 lib/ui/stdmenus.inc:376
-#, fuzzy
 msgid "Justified Line Break|J"
-msgstr "Passage à la Ligne|L"
+msgstr "Passage à la ligne (justifié)|j"
 
 #: lib/ui/stdcontext.inc:162 lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
@@ -9815,9 +9777,8 @@ msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr "Enlever le dernier paramètre en éjectant par la droite"
 
 #: lib/ui/stdcontext.inc:217
-#, fuzzy
 msgid "Edit externally...|x"
-msgstr "Édite le fichier ailleurs"
+msgstr "Éditer le fichier ailleurs|l"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
@@ -9850,7 +9811,7 @@ msgstr "Nouvelle Fenêtre|u"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Close Window|d"
-msgstr "Ferme Fenêtre|t"
+msgstr "Fermer la fenêtre|t"
 
 #: lib/ui/stdmenus.inc:86
 msgid "Redo|R"
@@ -9862,7 +9823,7 @@ msgstr "Collage Spécial"
 
 #: lib/ui/stdmenus.inc:94
 msgid "Select All"
-msgstr "Sélectionne Tout"
+msgstr "Sélectionne tout"
 
 #: lib/ui/stdmenus.inc:105
 msgid "Table|T"
@@ -9878,7 +9839,7 @@ msgstr "Augmenter la profondeur de liste|f"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Decrease List Depth|D"
-msgstr "Réduire la Profondeur de Liste|u"
+msgstr "Réduire la profondeur de liste|u"
 
 # menu Editer quand on est dans un insert
 #: lib/ui/stdmenus.inc:116
@@ -9891,27 +9852,27 @@ msgstr "Paramètres de code TeX|X"
 
 #: lib/ui/stdmenus.inc:119
 msgid "Float Settings...|a"
-msgstr "Paramètres de Flottant...|F"
+msgstr "Paramètres de flottant...|f"
 
 #: lib/ui/stdmenus.inc:120
 msgid "Text Wrap Settings...|W"
-msgstr "Paramètres d'Enrobage...|E"
+msgstr "Paramètres d'enrobage...|e"
 
 #: lib/ui/stdmenus.inc:121
 msgid "Note Settings...|N"
-msgstr "Paramètres de Note...|N"
+msgstr "Paramètres de note...|n"
 
 #: lib/ui/stdmenus.inc:122
 msgid "Branch Settings...|B"
-msgstr "Paramètres de Branche...|B"
+msgstr "Paramètres de branche...|b"
 
 #: lib/ui/stdmenus.inc:123
 msgid "Box Settings...|x"
-msgstr "Paramètres de Boîte...|o"
+msgstr "Paramètres de boîte...|o"
 
 #: lib/ui/stdmenus.inc:127
 msgid "Table Settings...|a"
-msgstr "Paramètres de Tableau...|u"
+msgstr "Paramètres de tableau...|u"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Plain Text|T"
@@ -9919,7 +9880,7 @@ msgstr "Texte brut|T"
 
 #: lib/ui/stdmenus.inc:132
 msgid "Plain Text, Join Lines|J"
-msgstr "Texte brut par Lignes|b"
+msgstr "Texte brut par lignes|b"
 
 #: lib/ui/stdmenus.inc:134
 msgid "Selection|S"
@@ -9927,11 +9888,11 @@ msgstr "Sélection|S"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Selection, Join Lines|i"
-msgstr "Sélection par Lignes|L"
+msgstr "Sélection par lignes|l"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Paste As LinkBack PDF"
-msgstr "Copier en PDF rétrolié"
+msgstr "Copier en PDF LinkBack"
 
 #: lib/ui/stdmenus.inc:138
 msgid "Paste As PDF"
@@ -9972,23 +9933,23 @@ msgstr "Ligne du Haut|H"
 
 #: lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
-msgstr "Ligne du Bas|B"
+msgstr "Ligne du bas|b"
 
 #: lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
-msgstr "Ligne de Gauche|G"
+msgstr "Ligne de gauche|g"
 
 #: lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
-msgstr "Ligne de Droite|D"
+msgstr "Ligne de droite|d"
 
 #: lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
-msgstr "Copier Ligne|n"
+msgstr "Copier ligne|n"
 
 #: lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
-msgstr "Copier Colonne|e"
+msgstr "Copier colonne|e"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Number whole Formula|N"
@@ -10004,7 +9965,7 @@ msgstr "Définition de macro"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Text Style|T"
-msgstr "Style de Texte|T"
+msgstr "Style de texte|t"
 
 # menu éditer math
 #: lib/ui/stdmenus.inc:202
@@ -10101,12 +10062,12 @@ msgstr "Maple, evalf|v"
 
 #: lib/ui/stdmenus.inc:287
 msgid "Open All Insets|O"
-msgstr "Ouvre Tous les Inserts|O"
+msgstr "Ouvrir tous les inserts|O"
 
 # ajouter raccourci
 #: lib/ui/stdmenus.inc:288
 msgid "Close All Insets|C"
-msgstr "Ferme Tous Les Inserts|I"
+msgstr "Fermer tous les inserts|i"
 
 #: lib/ui/stdmenus.inc:290
 msgid "Unfold Math Macro"
@@ -10162,7 +10123,7 @@ msgstr "Branche|e"
 
 #: lib/ui/stdmenus.inc:327
 msgid "Custom insets"
-msgstr "Inserts Personnalisés"
+msgstr "Inserts personnalisables"
 
 #: lib/ui/stdmenus.inc:328
 msgid "File|e"
@@ -13503,9 +13464,8 @@ msgid "Read Error"
 msgstr "Erreur de lecture"
 
 #: src/BufferParams.cpp:1517
-#, fuzzy
 msgid "Error reading internal layout information"
-msgstr "Information générale"
+msgstr "Erreur de lecture du format interne"
 
 #: src/BufferView.cpp:177
 msgid "No more insets"
@@ -13549,7 +13509,7 @@ msgstr "Statistiques pour la sélection :"
 
 #: src/BufferView.cpp:1285
 msgid "Statistics for the document:"
-msgstr "Statitiques pour le document :"
+msgstr "Statistiques pour le document :"
 
 #: src/BufferView.cpp:1288
 #, c-format
@@ -15597,7 +15557,6 @@ msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 
 #: src/TextClass.cpp:115
-#, fuzzy
 msgid "Plain Layout"
 msgstr "Format ordinaire"
 
@@ -16875,9 +16834,8 @@ msgid "User interface"
 msgstr "Interface utilisateur"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1895
-#, fuzzy
 msgid "Control"
-msgstr "Pays"
+msgstr "Contrôle"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1967
 msgid "Shortcuts"
