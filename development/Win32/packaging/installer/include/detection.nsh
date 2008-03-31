@@ -15,7 +15,7 @@ FunctionEnd
 #--------------------------------
 # MiKTeX
 
-Var ProcessReturn
+Var ReportReturn
 Var CommandLineOutput
 Var LastChar
 Var PathLength
@@ -26,10 +26,11 @@ Var PathLength
   # Works for version 2.5 and later
   
   nsExec::ExecToStack "initexmf.exe --report"
-  Pop $ProcessReturn
+  Pop $ReportReturn
   Pop $CommandLineOutput
-  
+
   ${WordFind2X} $CommandLineOutput "BinDir: " "$\r" "+1" $PathLaTeX
+  ${WordFind2X} $CommandLineOutput "CommonData: " "$\r" "+1" $PathLaTeXLocal # Local root  
 
 !macroend
 
@@ -38,16 +39,22 @@ Var PathLength
   ReadRegStr $PathLaTeX ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
   
   ${If} $PathLaTeX != ""
-    StrCpy $LastChar $PathLaTeX 1 -1  
+    StrCpy $LastChar $PathLaTeX 1 -1
+    
     ${If} $LastChar == "\"
       # Trim backslash
       StrLen $PathLength $PathLaTeX
       IntOp $PathLength $PathLength - 1
       StrCpy $PathLaTeX $PathLaTeX $PathLength
     ${EndIf}
+    
     StrCpy $PathLaTeX "$PathLaTeX\miktex\bin"
+     
+    #Local root
+    ReadRegStr $PathLaTeXLocal ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
+    
   ${EndIf}
-  
+   
 !macroend
 
 Function SearchLaTeX
@@ -65,7 +72,7 @@ Function SearchLaTeX
   ${EndIf}
 
   ${IfNot} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
-    StrCpy $PathLatex ""
+    StrCpy $PathLateX ""
   ${EndIf}
 
 FunctionEnd

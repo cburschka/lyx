@@ -71,6 +71,12 @@ Lists of files to include in the installer
   
 !macroend
 
+!macro FileListDvipostBin COMMAND DIRECTORY
+
+  ${FILE}pplatex.exe"
+  
+!macroend
+
 !macro FileListPDFToolsBin COMMAND DIRECTORY
 
   ${FILE}pdfopen.exe"

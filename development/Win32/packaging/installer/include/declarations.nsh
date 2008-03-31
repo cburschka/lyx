@@ -49,6 +49,7 @@ Standard header files, shared variables
 # Variables
 
 Var PathLaTeX
+Var PathLaTeXLocal
 Var PathImageMagick
 Var PathGhostscript
 

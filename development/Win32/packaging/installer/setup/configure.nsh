@@ -116,6 +116,29 @@ Section -Configure
 SectionEnd
 
 #--------------------------------
+# dvipost package
+
+Var UpdateFNDBReturn
+
+Section -dvipost
+
+  # Install package in local root
+
+  ${if} $PathLaTeXLocal != ""
+    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
+    File "${FILES_DVIPOST_PKG}\dvipost.sty"
+  ${endif}
+
+  # Update file name database
+
+  ${if} $PathLaTeX != ""
+    nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
+    Pop $UpdateFNDBReturn # Return value
+  ${endif}
+
+SectionEnd
+
+#--------------------------------
 # Desktop shortcut
 
 Function CheckDesktopShortcut

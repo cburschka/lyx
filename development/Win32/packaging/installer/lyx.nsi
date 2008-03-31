@@ -55,9 +55,9 @@ Licence details for all installer scripts can be found in the file COPYING
 #--------------------------------
 # Setup
 
-!include setup\configure.nsh
 !include setup\install.nsh
 !include setup\uninstall.nsh
+!include setup\configure.nsh
 
 #--------------------------------
 # User interface (wizard pages)

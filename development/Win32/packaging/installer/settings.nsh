@@ -49,6 +49,8 @@ SetCompressor /SOLID lzma
 !define FILES_NETPBM "${FILES_DEPS}\netpbm"
 !define FILES_DTL "${FILES_DEPS}\dtl"
 !define FILES_AIKSAURUS "${FILES_DEPS}\aiksaurus\"
+!define FILES_DVIPOST "${FILES_DEPS}\dvipost"
+!define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
 !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
 
 !define FILES_QT "${FILES_DEPS}\qt-4"

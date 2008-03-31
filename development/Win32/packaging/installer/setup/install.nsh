@@ -35,6 +35,7 @@ Section -ProgramFiles SecProgramFiles
 
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
+  !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
 
