@@ -57,6 +57,7 @@ Var AdminOrPowerUser
 Var CurrentUserInstall
 
 Var PathLaTeX
+Var PathLaTeXLocal
 Var PathImageMagick
 Var PathGhostscript
 Var PathViewer

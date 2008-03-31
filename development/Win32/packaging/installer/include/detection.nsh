@@ -9,7 +9,8 @@ Detection functions for all components
 
 !macro SearchMiKTeX25
 
-  #Detect location of MiKTeX installation using initexmf
+  #Search location of MiKTeX installation using initexmf
+  #Works for version 2.5 and later
   
   Push $R0
   
@@ -18,6 +19,7 @@ Detection functions for all components
   Pop $R0 ;Output
   
   ${WordFind2X} $R0 "BinDir: " "$\r" "+1" $PathLaTeX
+  ${WordFind2X} $R0 "CommonData: " "$\r" "+1" $PathLaTeXLocal # Local root    
   
   Pop $R0
 
@@ -30,42 +32,9 @@ Detection functions for all components
   ${if} $PathLaTeX != ""
     !insertmacro callfunc TrimBackslash $PathLaTeX $PathLaTeX ;Just in case it's installed in a root directory
     StrCpy $PathLaTeX "$PathLaTeX\miktex\bin"
+    #Local root
+    ReadRegStr $PathLaTeXLocal ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
   ${endif}
-  
-!macroend
-
-!macro IfKeyExists ROOT MAIN_KEY KEY
-
-  Push $R0
-  Push $R1
- 
-  !define Index 'Line${__LINE__}'
- 
-  StrCpy $R1 0
- 
-  "${Index}-Loop:"
-  #Check for key
-  EnumRegKey $R0 ${ROOT} "${MAIN_KEY}" "$R1"
-  StrCmp $R0 "" "${Index}-False"
-  IntOp $R1 $R1 + 1
-  StrCmp $R0 "${KEY}" "${Index}-True" "${Index}-Loop"
- 
-  "${Index}-True:"
-  #Found
-  Push ${TRUE}
-  Goto "${Index}-End"
- 
-  "${Index}-False:"
-  #Not found
-  Push ${FALSE}
-  goto "${Index}-End"
- 
-  "${Index}-End:"
-  !undef Index
-  
-  Exch 2
-  Pop $R0
-  Pop $R1
 
 !macroend
 
@@ -189,41 +158,6 @@ Function SearchLaTeX
   ${unless} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
     StrCpy $PathLatex ""
   ${endif}
-
-FunctionEnd
-
-Function SearchLaTeXLocalRoot
-
-  #Search for the MikTeX local root
-  #Returns value on stack
-
-  Push $R0
-  
-  #MikTeX 2.5
-  
-  !insertmacro IfKeyExists HKCU "Software\MiKTeX.org\MiKTeX" "2.5"
-  Pop $R0
-  
-  ${if} $R0 == ${FALSE}
-    !insertmacro IfKeyExists HKLM "Software\MiKTeX.org\MiKTeX" "2.5"
-    Pop $R0
-  ${endif}
-  
-  ${if} $R0 == ${TRUE}
-    StrCpy $R0 "$APPDATA\MiKTeX\2.5"
-  ${else}
-  
-    #MiKTeX 2.4
-    
-    ReadRegStr $R0 HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
-    
-    ${unless} ${FileExists} $R0
-      ReadRegStr $R0 HKLM "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
-    ${endif}
-    
-  ${endif}
-  
-  Exch $R0
 
 FunctionEnd
 

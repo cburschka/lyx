@@ -64,33 +64,12 @@ Section -InstallData
   
 SectionEnd
 
-Section -LaTeX
-
-  #Let MiKTeX ask the user again to download packages if needed
+Section -dvipost
   
-  #MiKTeX 2.5
+  #Install dvipost package
   
-  ReadRegStr $R0 HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall"  
-  
-  ${if} $R0 == 0
-    WriteRegStr HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" 2
-  ${endif}
-  
-  #MiKTeX 2.4
-  
-  ReadRegStr $R0 HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly"
-  
-  ${if} $R0 == 0
-    WriteRegStr HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly" 2
-  ${endif}
-  
-  #dvipost package
-
-  Call SearchLaTeXLocalRoot
-  Pop $R0
-
-  ${if} $R0 != ""
-    SetOutPath "$R0\tex\latex\dvipost"
+  ${if} $PathLaTeXLocal != ""
+    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
     File "${FILES_DVIPOST_PKG}\dvipost.sty"
   ${endif}
   
@@ -98,7 +77,7 @@ Section -LaTeX
   
   ${if} $PathLaTeX != ""
     nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
-    Pop $R0 ;Return value
+    Pop $R0 #Return value
   ${endif}
 
 SectionEnd
