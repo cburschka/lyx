@@ -684,16 +684,12 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	// If this is the last paragraph, and a local_font was set upon entering
-	// the inset, the encoding should be set back to that local_font's 
-	// encoding. We don't use switchEncoding(), because no explicit encoding
-	// switch command is needed, since latex will automatically revert to it
-	// when this inset closes.
-	// This switch is only necessary if we're using "auto" or "default" 
-	// encoding. 
-	if (boost::next(pit) == paragraphs.end() && runparams_in.local_font != 0) {
+	// the inset, and we're using "auto" or "default" encoding, the encoding
+	// should be set back to that local_font's encoding.
+	if (boost::next(pit) == paragraphs.end() && runparams_in.local_font != 0
+	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
-		if (bparams.inputenc == "auto" || bparams.inputenc == "default")
-			os << setEncoding(runparams_in.encoding->iconvName());
+		os << setEncoding(runparams_in.encoding->iconvName());
 
 	}
 	// Otherwise, the current encoding should be set for the next paragraph.

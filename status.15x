@@ -93,6 +93,9 @@ What's new
 - Move \label{} outside of listings option caption={} because the listings
   package prefers a separate label={} option.
 
+- After an inset, don't always revert to the language's default encoding for
+  latex output, but honor that specified in the document settings (bug 4665).
+
 
 * USER INTERFACE:
 
