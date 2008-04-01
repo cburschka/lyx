@@ -295,12 +295,7 @@ void LyXRC::setDefaults() {
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
-#ifdef __APPLE_CC__
-	open_buffers_in_tabs = false;
-#else
 	open_buffers_in_tabs = true;
-#endif
-	use_bundled_format = false;
 
 	// Fullscreen settings
 	full_screen_limit = false;
