@@ -507,8 +507,11 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cur.noUpdate();
 				cur.dispatched();
 				return;
+			case mouse_button::none:
 			case mouse_button::button2:
 			case mouse_button::button3:
+			case mouse_button::button4:
+			case mouse_button::button5:
 				// Nothing to do.
 				cur.undispatched();
 				return;
