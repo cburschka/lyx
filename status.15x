@@ -28,7 +28,7 @@ What's new
 
 - French translation of the documentation file "Formula-numbering.lyx".
 
-- Updated Romanian translation of the user interface.
+- Updated Italian and Romanian translation of the user interface.
 
 - Updated German User's Guide and Extended manual.
 
@@ -36,6 +36,8 @@ What's new
 
 
 * USER INTERFACE
+
+- Add support for the bm package.
 
 
 * DOCUMENT INPUT/OUTPUT
@@ -82,9 +84,9 @@ What's new
 - Fix LaTeX error "unknown color 'ignore'" when setting text style
   attributes in mathed (bug 4091).
 
-- Use package bm for bold math symbols obtained through the \boldsymbol
+- Use package amsbsy for bold math symbols obtained through the \boldsymbol
   macro, such that bold super and subscripts have the correct size even
-  when not using amsmath.
+  when not using the complete amsmath package.
 
 - Fix loading of lyx documents generated with csv2lyx (bug 4639).
 

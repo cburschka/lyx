@@ -436,7 +436,8 @@ char const * simplefeatures[] = {
 	"txfonts",
 	"mathrsfs",
 	"ascii",
-	"url"
+	"url",
+	"bm"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -470,6 +471,9 @@ string const LaTeXFeatures::getPackages() const
 	    (mustProvide("esintoramsmath") &&
 	     params_.use_esint == BufferParams::package_off)) {
 		packages << "\\usepackage{amsmath}\n";
+	} else if (mustProvide("amsbsy")) {
+		// amsbsy is already provided by amsmath
+		packages << "\\usepackage{amsbsy}\n";
 	}
 
 	// wasysym is a simple feature, but it must be after amsmath if both
@@ -612,9 +616,6 @@ string const LaTeXFeatures::getPackages() const
 
 	if (mustProvide("listings"))
 		packages << "\\usepackage{listings}\n";
-
-	if (mustProvide("bm"))
-		packages << "\\usepackage{bm}\n";
 
 	return packages.str();
 }
