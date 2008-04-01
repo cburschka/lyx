@@ -22,11 +22,12 @@ namespace lyx {
 class InsetMathBoldSymbol : public InsetMathNest {
 public:
 	enum Kind {
-		BOLD,
-		HEAVY
+		AMS_BOLD,
+		BM_BOLD,
+		BM_HEAVY
 	};
 	///
-	InsetMathBoldSymbol(Kind kind = BOLD);
+	InsetMathBoldSymbol(Kind kind = AMS_BOLD);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

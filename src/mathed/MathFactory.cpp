@@ -381,10 +381,12 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::ATOP));
 	if (s == "lefteqn")
 		return MathAtom(new InsetMathLefteqn);
-	if (s == "boldsymbol" || s == "bm")
-		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BOLD));
+	if (s == "boldsymbol")
+		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::AMS_BOLD));
+	if (s == "bm")
+		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BM_BOLD));
 	if (s == "heavysymbol" || s == "hm")
-		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::HEAVY));
+		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BM_HEAVY));
 	if (s == "color" || s == "normalcolor")
 		return MathAtom(new InsetMathColor(true));
 	if (s == "textcolor")

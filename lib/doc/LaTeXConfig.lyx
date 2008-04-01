@@ -3293,13 +3293,7 @@ bm
 \backslash
 bm
 \family default
- (aliased to 
-\family typewriter
-
-\backslash
-boldsymbol
-\family default
-) which makes its argument bold.
+ which makes its argument bold.
  The argument may be any math object from a single symbol to an expression.
  If available, ultra bold fonts can be accesed through the 
 \family typewriter
@@ -3318,17 +3312,31 @@ heavysymbol
 \family typewriter
 
 \backslash
-boldsymbol
+bm
 \family default
  command is similar to the 
 \family sans
-amsmath
+amsmath 
+\family typewriter
+
+\backslash
+boldsymbol
 \family default
- command with same name, but the 
+ command, but the 
 \family sans
 bm
 \family default
  version is rather more careful in the way it does things.
+ Be aware that this package allocates symbol fonts for bold fonts into the
+ normal math version, such that, when using other packages that allocate
+ many symbol fonts, they can be exhausted.
+ In this case, one can make do with the 
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+ command.
 \end_layout
 
 \begin_layout Subsection

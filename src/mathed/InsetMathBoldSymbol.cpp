@@ -67,18 +67,24 @@ void InsetMathBoldSymbol::drawT(TextPainter & pain, int x, int y) const
 void InsetMathBoldSymbol::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
-	features.require("bm");
+	if (kind_ == AMS_BOLD)
+		features.require("amsbsy");
+	else
+		features.require("bm");
 }
 
 
 void InsetMathBoldSymbol::write(WriteStream & os) const
 {
 	switch (kind_) {
-	case BOLD:
+	case AMS_BOLD:
 		os << "\\boldsymbol{" << cell(0) << "}";
 		break;
-	case HEAVY:
-		os << "\\heavysymbol{" << cell(0) << "}";
+	case BM_BOLD:
+		os << "\\bm{" << cell(0) << "}";
+		break;
+	case BM_HEAVY:
+		os << "\\hm{" << cell(0) << "}";
 		break;
 	}
 }
@@ -87,11 +93,14 @@ void InsetMathBoldSymbol::write(WriteStream & os) const
 void InsetMathBoldSymbol::infoize(odocstream & os) const
 {
 	switch (kind_) {
-	case BOLD:
+	case AMS_BOLD:
 		os << "Boldsymbol ";
 		break;
-	case HEAVY:
-		os << "Heavysymbol ";
+	case BM_BOLD:
+		os << "Boldsymbol (bm)";
+		break;
+	case BM_HEAVY:
+		os << "Heavysymbol (bm)";
 		break;
 	}
 }
