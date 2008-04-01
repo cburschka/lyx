@@ -1556,6 +1556,15 @@ void LyXAction::init()
 		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly, Buffer },
 		{ LFUN_MASTER_BUFFER_VIEW, "master-buffer-view", ReadOnly, Buffer },
 		{ LFUN_BUFFER_LANGUAGE, "buffer-language", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_SAVE_AS_DEFAULT
+ * \li Action: Save the current document settings as default.
+ * \li Notion: The file will will be saved into ~/.lyx/templates/defaults.lyx .
+ * \li Syntax: buffer-save-as-default [<ARGS>]
+ * \li Params: <ARGS>: contains the particular settings to be saved. They obey the syntax
+                       you can find in document header of usual .lyx file.
+ * \endvar
+ */
 		{ LFUN_BUFFER_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop, Buffer },
 		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
 
