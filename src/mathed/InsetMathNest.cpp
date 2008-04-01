@@ -413,66 +413,78 @@ void InsetMathNest::handleFont
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 
-	if (cur.inset().asInsetMath()->name() == font) {
-		recordUndoInset(cur, Undo::ATOMIC);
+	recordUndoSelection(cur);
+
+	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(to_utf8(font));
-	} else {
-		CursorSlice i1 = cur.selBegin();
-		CursorSlice i2 = cur.selEnd();
-		if (!i1.inset().asInsetMath())
-			return;
-		if (i1.idx() == i2.idx()) {
-			// the easy case where only one cell is selected
-			recordUndo(cur, Undo::ATOMIC);
-			cur.handleNest(createInsetMath(font));
+	else
+		handleNest(cur, createInsetMath(font), arg);
+}
+
+
+void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest)
+{
+	handleNest(cur, nest, docstring());
+}
+
+
+void InsetMathNest::handleNest(Cursor & cur, MathAtom const & nest,
+	docstring const & arg)
+{
+	CursorSlice i1 = cur.selBegin();
+	CursorSlice i2 = cur.selEnd();
+	if (!i1.inset().asInsetMath())
+		return;
+	if (i1.idx() == i2.idx()) {
+		// the easy case where only one cell is selected
+		cur.handleNest(nest);
+		cur.insert(arg);
+		return;
+	}
+
+	// multiple selected cells in a simple non-grid inset
+	if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
+		for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
+			// select cell
+			cur.idx() = i;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.pos() = cur.lastpos();
+			cur.setSelection();
+			
+			// change font of cell
+			cur.handleNest(nest);
 			cur.insert(arg);
-			return;
+			
+			// cur is in the font inset now. If the loop continues,
+			// we need to get outside again for the next cell
+			if (i + 1 <= i2.idx())
+				cur.pop_back();
 		}
-		// multiple selected cells in a simple non-grid inset
-		if (i1.asInsetMath()->nrows() == 0 || i1.asInsetMath()->ncols() == 0) {
-			recordUndoInset(cur);
-			for (idx_type i = i1.idx(); i <= i2.idx(); ++i) {
-				// select cell
-				cur.idx() = i;
-				cur.pos() = 0;
-				cur.resetAnchor();
-				cur.pos() = cur.lastpos();
-				cur.setSelection();
-				
-				// change font of cell
-				cur.handleNest(createInsetMath(font));
-				cur.insert(arg);
-				
-				// cur is in the font inset now. If the loop continues,
-				// we need to get outside again for the next cell
-				if (i + 1 <= i2.idx())
-					cur.pop_back();
-			}
-			return;
-		}
-		// the complicated case with multiple selected cells in a grid
-		recordUndoInset(cur);
-		Inset::row_type r1, r2;
-		Inset::col_type c1, c2;
-		cap::region(i1, i2, r1, r2, c1, c2);
-		for (Inset::row_type row = r1; row <= r2; ++row) {
-			for (Inset::col_type col = c1; col <= c2; ++col) {
-				// select cell
-				cur.idx() = i1.asInsetMath()->index(row, col);
-				cur.pos() = 0;
-				cur.resetAnchor();
-				cur.pos() = cur.lastpos();
-				cur.setSelection();
+		return;
+	}
 
-				// change font of cell
-				cur.handleNest(createInsetMath(font));
-				cur.insert(arg);
+	// the complicated case with multiple selected cells in a grid
+	Inset::row_type r1, r2;
+	Inset::col_type c1, c2;
+	cap::region(i1, i2, r1, r2, c1, c2);
+	for (Inset::row_type row = r1; row <= r2; ++row) {
+		for (Inset::col_type col = c1; col <= c2; ++col) {
+			// select cell
+			cur.idx() = i1.asInsetMath()->index(row, col);
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.pos() = cur.lastpos();
+			cur.setSelection();
 
-				// cur is in the font inset now. If the loop continues,
-				// we need to get outside again for the next cell
-				if (col + 1 <= c2 || row + 1 <= r2)
-					cur.pop_back();
-			}
+			// change font of cell
+			cur.handleNest(nest);
+			cur.insert(arg);
+
+			// cur is in the font inset now. If the loop continues,
+			// we need to get outside again for the next cell
+			if (col + 1 <= c2 || row + 1 <= r2)
+				cur.pop_back();
 		}
 	}
 }
@@ -480,14 +492,12 @@ void InsetMathNest::handleFont
 
 void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 {
-	recordUndo(cur, Undo::ATOMIC);
+	recordUndoSelection(cur);
 	Font font;
 	bool b;
 	bv_funcs::string2font(to_utf8(arg), font, b);
-	if (font.color() != Color::inherit && font.color() != Color::ignore) {
-		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
-		cur.handleNest(at, 0);
-	}
+	if (font.color() != Color::inherit && font.color() != Color::ignore)
+		handleNest(cur, MathAtom(new InsetMathColor(true, font.color())));
 }
 
 
@@ -1029,11 +1039,17 @@ goto_char_backwards:
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
-		recordUndo(cur, Undo::ATOMIC);
-		if (cmd.argument() == "^" || cmd.argument() == "_") {
+		recordUndoSelection(cur);
+		if (cmd.argument() == "^" || cmd.argument() == "_")
 			interpretChar(cur, cmd.argument()[0]);
-		} else
-			cur.niceInsert(cmd.argument());
+		else {
+			MathData ar;
+			asArray(cmd.argument(), ar);
+			if (ar.size() == 1 && ar[0]->asNestInset())
+				handleNest(cur, ar[0]);
+			else
+				cur.niceInsert(cmd.argument());
+		}
 		break;
 		}
 

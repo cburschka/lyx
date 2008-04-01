@@ -128,6 +128,11 @@ protected:
 		docstring const & arg, char const * const font);
 	///
 	void handleFont2(Cursor & cur, docstring const & arg);
+	/// Grab and erase selection and insert the InsetMathNest atom in every
+	/// previously selected cell, insert the grabbed former data and \c arg
+	/// in the first cell of the inserted atom.
+	void handleNest(Cursor & cur, MathAtom const & nest);
+	void handleNest(Cursor & cur, MathAtom const & nest, docstring const & arg);
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.

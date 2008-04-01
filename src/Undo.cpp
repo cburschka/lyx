@@ -19,6 +19,7 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "Text.h"
@@ -282,7 +283,14 @@ void recordUndoInset(Cursor & cur, Undo::undo_kind kind)
 
 void recordUndoSelection(Cursor & cur, Undo::undo_kind kind)
 {
-	recordUndo(kind, cur, cur.selBegin().pit(), cur.selEnd().pit());
+	if (cur.inMathed()) {
+		if (cap::multipleCellsSelected(cur))
+			recordUndoInset(cur, kind);
+		else
+			recordUndo(cur, kind);
+	} else
+		recordUndo(kind, cur, cur.selBegin().pit(),
+			cur.selEnd().pit());
 }
 
 

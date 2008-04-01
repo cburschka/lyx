@@ -106,6 +106,8 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 void region(CursorSlice const & i1, CursorSlice const & i2,
 	Inset::row_type & r1, Inset::row_type & r2,
 	Inset::col_type & c1, Inset::col_type & c2);
+/// Returns true if multiple cells are selected in mathed.
+bool multipleCellsSelected(Cursor const & cur);
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.
 docstring grabSelection(Cursor const & cur);
