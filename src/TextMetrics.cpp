@@ -2025,8 +2025,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
-			bool const beg_margin = beg.pit() < pit && i == 0;
-			bool const end_margin = end.pit() > pit && i == nrows - 1;
+			// FIXME (not here): pit is not updated when extending
+			// a selection to a new row with cursor right/left
+			bool const beg_margin = beg.pit() < pit;
+			bool const end_margin = end.pit() > pit;
 			beg.pit() = pit;
 			beg.pos() = row.sel_beg;
 			end.pit() = pit;
@@ -2082,17 +2084,23 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 
 	// draw the margins
 	if (drawOnBegMargin) {
-		if (text_->isRTL(buffer, beg.paragraph()))
-			pi.pain.fillRectangle(x + x1, y1, width() - x1, y2 - y1, Color_selection);
-		else
-			pi.pain.fillRectangle(x, y1, x1, y2 - y1, Color_selection);
+		if (text_->isRTL(buffer, beg.paragraph())) {
+			int lm = bv_->leftMargin();
+			pi.pain.fillRectangle(x + x1, y1, width() - lm - x1, y2 - y1, Color_selection);
+		} else {
+			int rm = bv_->rightMargin();
+			pi.pain.fillRectangle(rm, y1, x1 - rm, y2 - y1, Color_selection);
+		}
 	}
 
 	if (drawOnEndMargin) {
-		if (text_->isRTL(buffer, beg.paragraph()))
-			pi.pain.fillRectangle(x, y1, x2, y2 - y1, Color_selection);
-		else
-			pi.pain.fillRectangle(x + x2, y1, width() - x2, y2 - y1, Color_selection);
+		if (text_->isRTL(buffer, beg.paragraph())) {
+			int rm = bv_->rightMargin();
+			pi.pain.fillRectangle(x + rm, y1, x2 - rm, y2 - y1, Color_selection);
+		} else {
+			int lm = bv_->leftMargin();
+			pi.pain.fillRectangle(x + x2, y1, width() - lm - x2, y2 - y1, Color_selection);
+		}
 	}
 
 	// if we are on a boundary from the beginning, it's probably
