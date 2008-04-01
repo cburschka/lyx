@@ -96,6 +96,12 @@ void GuiHSpace::enableWidgets(int selection)
 		selection == 0 || selection == 3  ||
 		(selection == 6 && pattern == 0) || selection == 7;
 	keepCB->setEnabled(enable_keep);
+	if (selection == 3)
+		keepCB->setToolTip(qt_("Insert the spacing even after a line break.\n"
+				       "Note that a protected Half Quad will be turned into\n"
+				       "a vertical space if used at the beginning of a paragraph!"));
+	else
+		keepCB->setToolTip(qt_("Insert the spacing even after a line break"));
 	changed();
 }
 
