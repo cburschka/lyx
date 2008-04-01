@@ -130,6 +130,7 @@ Lists of files to include in the installer
   ${FILE}copy_reg.py"
   ${FILE}fnmatch.py"
   ${FILE}getopt.py"
+  ${FILE}gettext.py"
   ${FILE}glob.py"
   ${FILE}gzip.py"
   ${FILE}linecache.py"
