@@ -49,6 +49,12 @@ private:
 ToolbarBackend toolbarbackend;
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// ToolbarItem
+//
+/////////////////////////////////////////////////////////////////////////
+
 ToolbarItem::ToolbarItem(Type type, FuncRequest const & func, docstring const & label)
 	: type_(type), func_(func), label_(label)
 {
@@ -74,7 +80,7 @@ void ToolbarInfo::add(ToolbarItem const & item)
 
 ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 {
-	enum tooltags {
+	enum {
 		TO_COMMAND = 1,
 		TO_ENDTOOLBAR,
 		TO_SEPARATOR,
@@ -83,10 +89,9 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_TABLEINSERT,
 		TO_POPUPMENU,
 		TO_ICONPALETTE,
-		TO_LAST
 	};
 
-	struct keyword_item toolTags[TO_LAST - 1] = {
+	struct LexerKeyword toolTags[] = {
 		{ "end", TO_ENDTOOLBAR },
 		{ "iconpalette", TO_ICONPALETTE },
 		{ "item", TO_COMMAND },
@@ -118,7 +123,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 	bool quit = false;
 
-	lex.pushTable(toolTags, TO_LAST - 1);
+	lex.pushTable(toolTags);
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
@@ -197,6 +202,12 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// ToolbarBackend
+//
+/////////////////////////////////////////////////////////////////////////
+
 
 ToolbarBackend::ToolbarBackend()
 {
@@ -206,13 +217,12 @@ ToolbarBackend::ToolbarBackend()
 
 void ToolbarBackend::readToolbars(Lexer & lex)
 {
-	enum tooltags {
+	enum {
 		TO_TOOLBAR = 1,
 		TO_ENDTOOLBARSET,
-		TO_LAST
 	};
 
-	struct keyword_item toolTags[TO_LAST - 1] = {
+	struct LexerKeyword toolTags[] = {
 		{ "end", TO_ENDTOOLBARSET },
 		{ "toolbar", TO_TOOLBAR }
 	};
@@ -223,7 +233,7 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 		       << lex.getString() << '\'');
 	}
 
-	lex.pushTable(toolTags, TO_LAST - 1);
+	lex.pushTable(toolTags);
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);

@@ -45,7 +45,7 @@ namespace lyx {
 class Lexer::Pimpl {
 public:
 	///
-	Pimpl(keyword_item * tab, int num);
+	Pimpl(LexerKeyword * tab, int num);
 	///
 	string const getString() const;
 	///
@@ -55,7 +55,7 @@ public:
 	///
 	void printTable(ostream & os);
 	///
-	void pushTable(keyword_item * tab, int num);
+	void pushTable(LexerKeyword * tab, int num);
 	///
 	void popTable();
 	///
@@ -89,7 +89,7 @@ public:
 	///
 	string name;
 	///
-	keyword_item * table;
+	LexerKeyword * table;
 	///
 	int no_items;
 	///
@@ -116,10 +116,10 @@ private:
 		PushedTable()
 			: table_elem(0), table_siz(0) {}
 		///
-		PushedTable(keyword_item * ki, int siz)
+		PushedTable(LexerKeyword * ki, int siz)
 			: table_elem(ki), table_siz(siz) {}
 		///
-		keyword_item * table_elem;
+		LexerKeyword * table_elem;
 		///
 		int table_siz;
 	};
@@ -132,10 +132,10 @@ private:
 namespace {
 
 class CompareTags
-	: public binary_function<keyword_item, keyword_item, bool> {
+	: public binary_function<LexerKeyword, LexerKeyword, bool> {
 public:
 	// used by lower_bound, sort and sorted
-	bool operator()(keyword_item const & a, keyword_item const & b) const
+	bool operator()(LexerKeyword const & a, LexerKeyword const & b) const
 	{
 		// we use the ascii version, because in turkish, 'i'
 		// is not the lowercase version of 'I', and thus
@@ -147,7 +147,7 @@ public:
 } // end of anon namespace
 
 
-Lexer::Pimpl::Pimpl(keyword_item * tab, int num)
+Lexer::Pimpl::Pimpl(LexerKeyword * tab, int num)
 	: is(&fb_), table(tab), no_items(num),
 	  status(0), lineno(0), commentChar('#')
 {
@@ -204,7 +204,7 @@ void Lexer::Pimpl::verifyTable()
 }
 
 
-void Lexer::Pimpl::pushTable(keyword_item * tab, int num)
+void Lexer::Pimpl::pushTable(LexerKeyword * tab, int num)
 {
 	PushedTable tmppu(table, no_items);
 	pushed.push(tmppu);
@@ -482,8 +482,8 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 
 int Lexer::Pimpl::search_kw(char const * const tag) const
 {
-	keyword_item search_tag = { tag, 0 };
-	keyword_item * res =
+	LexerKeyword search_tag = { tag, 0 };
+	LexerKeyword * res =
 		lower_bound(table, table + no_items,
 			    search_tag, CompareTags());
 	// use the compare_ascii_no_case instead of compare_no_case,
@@ -611,9 +611,15 @@ void Lexer::Pimpl::pushToken(string const & pt)
 //
 //////////////////////////////////////////////////////////////////////
 
-Lexer::Lexer(keyword_item * tab, int num)
-	: pimpl_(new Pimpl(tab, num))
+Lexer::Lexer()
+	: pimpl_(new Pimpl(0, 0))
 {}
+
+
+void Lexer::init(LexerKeyword * tab, int num)
+{
+	 pimpl_ = new Pimpl(tab, num);
+}
 
 
 Lexer::~Lexer()
@@ -628,13 +634,13 @@ bool Lexer::isOK() const
 }
 
 
-void Lexer::setLineNo(int l)
+void Lexer::setLineNumber(int l)
 {
 	pimpl_->lineno = l;
 }
 
 
-int Lexer::getLineNo() const
+int Lexer::lineNumber() const
 {
 	return pimpl_->lineno;
 }
@@ -646,7 +652,7 @@ istream & Lexer::getStream()
 }
 
 
-void Lexer::pushTable(keyword_item * tab, int num)
+void Lexer::pushTable(LexerKeyword * tab, int num)
 {
 	pimpl_->pushTable(tab, num);
 }

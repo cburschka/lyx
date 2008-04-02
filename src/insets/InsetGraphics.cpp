@@ -961,7 +961,7 @@ void InsetGraphics::string2params(string const & in, Buffer const & buffer,
 		return;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

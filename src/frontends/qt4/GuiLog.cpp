@@ -133,7 +133,7 @@ void GuiLog::updateContents()
 bool GuiLog::initialiseParams(string const & data)
 {
 	istringstream is(data);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(is);
 
 	string logtype, logfile;

@@ -172,7 +172,7 @@ void ParagraphParameters::leftIndent(Length const & li)
 void ParagraphParameters::read(string str, bool merge)
 {
 	istringstream is(str);
-	Lexer lex(0, 0);
+	Lexer lex;
 	lex.setStream(is);
 	read(lex, merge);
 }

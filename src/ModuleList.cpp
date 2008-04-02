@@ -90,7 +90,7 @@ bool ModuleList::load()
 		return false;
 	}
 
-	Lexer lex(0, 0);
+	Lexer lex;
 	if (!lex.setFile(real_file)) {
 		lyxerr << "ModuleList::load():"
 				"lyxlex was not able to set file: "

@@ -281,7 +281,7 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

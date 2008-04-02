@@ -1487,7 +1487,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer defaults(fname);
 
 			istringstream ss(argument);
-			Lexer lex(0,0);
+			Lexer lex;
 			lex.setStream(ss);
 			int const unknown_tokens = defaults.readHeader(lex);
 
@@ -1515,7 +1515,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			cur.recordUndoFullDocument();
 			
 			istringstream ss(argument);
-			Lexer lex(0,0);
+			Lexer lex;
 			lex.setStream(ss);
 			int const unknown_tokens = buffer->readHeader(lex);
 
