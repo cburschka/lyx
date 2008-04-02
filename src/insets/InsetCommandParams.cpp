@@ -43,6 +43,45 @@ using namespace lyx::support;
 
 namespace lyx {
 
+/// Get information for \p code and command \p cmdName.
+/// Returns 0 if the combination is not known.  [FIXME: 0?]
+/// Don't call this without first making sure the command name is
+/// acceptable to the inset.
+static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
+{
+	switch (code) {
+	case BIBITEM_CODE:
+		return InsetBibitem::findInfo(cmdName);
+	case BIBTEX_CODE:
+		return InsetBibtex::findInfo(cmdName);
+	case CITE_CODE:
+		return InsetCitation::findInfo(cmdName);	
+	case FLOAT_LIST_CODE:
+		return InsetFloatList::findInfo(cmdName);
+	case HYPERLINK_CODE:
+		return InsetHyperlink::findInfo(cmdName);
+	case INCLUDE_CODE:
+		return InsetInclude::findInfo(cmdName);
+	case INDEX_PRINT_CODE:
+		return InsetPrintIndex::findInfo(cmdName);
+	case LABEL_CODE:
+		return InsetLabel::findInfo(cmdName);	
+	case NOMENCL_CODE:
+		return InsetNomencl::findInfo(cmdName);
+	case NOMENCL_PRINT_CODE:
+		return InsetPrintNomencl::findInfo(cmdName);
+	case REF_CODE:
+		return InsetRef::findInfo(cmdName);
+	case TOC_CODE:
+		return InsetTOC::findInfo(cmdName);
+	default:
+		BOOST_ASSERT(false);
+	}
+	static const ParamInfo pi;
+	return pi; // to silence the warning
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // ParamInfo::ParamData
@@ -56,15 +95,7 @@ ParamInfo::ParamData::ParamData(std::string const & s, ParamType t)
 
 bool ParamInfo::ParamData::isOptional() const
 {
-	return type_ == ParamInfo::LATEX_OPTIONAL
-	    || type_ == ParamInfo::LATEX_KV_OPTIONAL;
-}
-
-
-bool ParamInfo::ParamData::isKeyValArg() const
-{
-	return type_ == ParamInfo::LATEX_KV_REQUIRED 
-	    || type_ == ParamInfo::LATEX_KV_OPTIONAL;
+	return type_ == ParamInfo::LATEX_OPTIONAL;
 }
 
 
@@ -80,7 +111,7 @@ bool ParamInfo::hasParam(std::string const & name) const
 	const_iterator last = end();
 	for (; it != last; ++it) {
 		if (it->name() == name)
-			return !it->isKeyValArg();
+			return true;
 	}
 	return false;
 }
@@ -137,49 +168,14 @@ InsetCommandParams::InsetCommandParams(InsetCode code,
 }
 
 
-ParamInfo const & InsetCommandParams::findInfo(
-	InsetCode code, string const & cmdName)
-{
-	switch (code) {
-	case BIBITEM_CODE:
-		return InsetBibitem::findInfo(cmdName);
-	case BIBTEX_CODE:
-		return InsetBibtex::findInfo(cmdName);
-	case CITE_CODE:
-		return InsetCitation::findInfo(cmdName);	
-	case FLOAT_LIST_CODE:
-		return InsetFloatList::findInfo(cmdName);
-	case HYPERLINK_CODE:
-		return InsetHyperlink::findInfo(cmdName);
-	case INCLUDE_CODE:
-		return InsetInclude::findInfo(cmdName);
-	case INDEX_PRINT_CODE:
-		return InsetPrintIndex::findInfo(cmdName);
-	case LABEL_CODE:
-		return InsetLabel::findInfo(cmdName);	
-	case NOMENCL_CODE:
-		return InsetNomencl::findInfo(cmdName);
-	case NOMENCL_PRINT_CODE:
-		return InsetPrintNomencl::findInfo(cmdName);
-	case REF_CODE:
-		return InsetRef::findInfo(cmdName);
-	case TOC_CODE:
-		return InsetTOC::findInfo(cmdName);
-	default:
-		BOOST_ASSERT(false);
-	}
-	static const ParamInfo pi;
-	return pi; // to silence the warning
-}
-
-
 std::string InsetCommandParams::insetType() const
 {
 	return insetName(insetCode_);
 }
 
 
-string InsetCommandParams::getDefaultCmd(InsetCode code) {
+string InsetCommandParams::getDefaultCmd(InsetCode code)
+{
 	switch (code) {
 		case BIBITEM_CODE: 
 			return InsetBibitem::defaultCommand();
@@ -212,8 +208,7 @@ string InsetCommandParams::getDefaultCmd(InsetCode code) {
 }
 
 
-bool InsetCommandParams::isCompatibleCommand(
-		InsetCode code, string const & s)
+bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 {
 	switch (code) {
 		case BIBITEM_CODE: 
@@ -249,7 +244,7 @@ bool InsetCommandParams::isCompatibleCommand(
 
 void InsetCommandParams::setCmdName(string const & name)
 {
-	if (!isCompatibleCommand(insetCode_, cmdName_)){
+	if (!isCompatibleCommand(insetCode_, cmdName_)) {
 		LYXERR0("InsetCommand: Incompatible command name " << 
 				name << ".");
 		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
@@ -345,29 +340,6 @@ void InsetCommandParams::write(ostream & os) const
 }
 
 
-docstring InsetCommandParams::makeKeyValArgument() const
-{
-	odocstringstream os;
-	bool didone = false;
-	ParamInfo::const_iterator it  = info_.begin();
-	ParamInfo::const_iterator end = info_.end();
-	for (; it != end; ++it) {
-		if (!it->isKey())
-			continue;
-		string const & name = it->name();
-		docstring const & data = (*this)[name];
-		if (data.empty())
-			continue;
-		if (didone)
-			os << ",";
-		else 
-			didone = true;
-		os << from_utf8(name) << "=" << data;
-	}
-	return os.str();
-}
-
-
 bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 {
 	if (!ci->isOptional())
@@ -376,12 +348,10 @@ bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 	ParamInfo::const_iterator end = info_.end();
 	for (; ci != end; ++ci) {
 		switch (ci->type()) {
-		case ParamInfo::LATEX_KEY:
 		case ParamInfo::LYX_INTERNAL:
 			break;
 
 		case ParamInfo::LATEX_REQUIRED:
-		case ParamInfo::LATEX_KV_REQUIRED:
 			return false;
 
 		case ParamInfo::LATEX_OPTIONAL: {
@@ -392,19 +362,13 @@ bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 			break;
 		}
 
-		case ParamInfo::LATEX_KV_OPTIONAL: {
-			docstring data = makeKeyValArgument();
-			if (!data.empty())
-				return true;
-			break;
-		}
 		} //end switch
 	}
 	return false;
 }
 
 
-docstring const InsetCommandParams::getCommand() const
+docstring InsetCommandParams::getCommand() const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
 	bool noparam = true;
@@ -413,18 +377,12 @@ docstring const InsetCommandParams::getCommand() const
 	for (; it != end; ++it) {
 		std::string const & name = it->name();
 		switch (it->type()) {
-		case ParamInfo::LATEX_KEY:
 		case ParamInfo::LYX_INTERNAL:
 			break;
 
 		case ParamInfo::LATEX_REQUIRED: {
 			docstring const & data = (*this)[name];
 			s += '{' + data + '}';
-			noparam = false;
-			break;
-		}
-		case ParamInfo::LATEX_KV_REQUIRED: {
-			s += "{" + makeKeyValArgument() + "}";
 			noparam = false;
 			break;
 		}
@@ -439,17 +397,6 @@ docstring const InsetCommandParams::getCommand() const
 			}
 			break;
 		} 
-		case ParamInfo::LATEX_KV_OPTIONAL: {
-			docstring data = makeKeyValArgument();
-			if (!data.empty()) {
-				s += '[' + data + ']';
-				noparam = false;
-			} else if (writeEmptyOptional(it)) {
-					s += "[]";
-					noparam = false;
-				}
-			break;
-		}
 		} //end switch
 	}
 	if (noparam)
@@ -460,7 +407,7 @@ docstring const InsetCommandParams::getCommand() const
 }
 
 
-docstring const InsetCommandParams::getFirstNonOptParam() const
+docstring InsetCommandParams::getFirstNonOptParam() const
 {
 	ParamInfo::const_iterator it = 
 		find_if(info_.begin(), info_.end(), 
@@ -495,19 +442,17 @@ void InsetCommandParams::clear()
 }
 
 
-bool operator==(InsetCommandParams const & o1,
-		InsetCommandParams const & o2)
+bool operator==(InsetCommandParams const & o1, InsetCommandParams const & o2)
 {
-	return o1.insetCode_ == o2.insetCode_ &&
-	       o1.cmdName_ == o2.cmdName_ &&
-	       o1.info_ == o2.info_ &&
-	       o1.params_ == o2.params_ &&
-	       o1.preview_ == o2.preview_;
+	return o1.insetCode_ == o2.insetCode_
+		&& o1.cmdName_ == o2.cmdName_
+		&& o1.info_ == o2.info_
+		&& o1.params_ == o2.params_
+		&& o1.preview_ == o2.preview_;
 }
 
 
-bool operator!=(InsetCommandParams const & o1,
-		InsetCommandParams const & o2)
+bool operator!=(InsetCommandParams const & o1, InsetCommandParams const & o2)
 {
 	return !(o1 == o2);
 }
