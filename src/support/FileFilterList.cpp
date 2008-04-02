@@ -99,7 +99,12 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 	// FIXME UNICODE
 	string const filter = to_utf8(qt_style_filter)
 		+ (qt_style_filter.empty() ? string() : ";;")
-		+ to_utf8(_("All files (*)"));
+		+ to_utf8(_("All Files "))
+#if defined(_WIN32)		
+		+ ("(*.*)");
+#else
+		+ ("(*)");
+#endif
 
 	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
 	// into individual filters.
