@@ -805,7 +805,7 @@ def convert_ams_classes(document):
       return
     m = r.match(document.body[i])
     if m == None:
-      document.warning("Weirdly formed \\begin_layout at line " + i + " of body!")
+      document.warning("Weirdly formed \\begin_layout at line %d of body!" % i)
       i += 1
       continue
     m = m.group(1)
