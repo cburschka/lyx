@@ -107,7 +107,7 @@ void ConverterCache::Impl::readIndex()
 	time_t const now = current_time();
 	FileName const index(addName(cache_dir.absFilename(), "index"));
 	ifstream is(index.toFilesystemEncoding().c_str());
-	Lexer lex(0, 0);
+	Lexer lex;
 	lex.setStream(is);
 	while (lex.isOK()) {
 		if (!lex.next(true))

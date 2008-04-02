@@ -183,7 +183,7 @@ enum TextClassTags {
 
 namespace {
 
-	keyword_item textClassTags[] = {
+	LexerKeyword textClassTags[] = {
 		{ "addtopreamble",   TC_ADDTOPREAMBLE },
 		{ "classoptions",    TC_CLASSOPTIONS },
 		{ "columns",         TC_COLUMNS },
@@ -249,7 +249,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			"LabelType No_Label\n"
 			"End";
 		istringstream ss(s);
-		Lexer lex(textClassTags, sizeof(textClassTags) / sizeof(textClassTags[0]));
+		Lexer lex(textClassTags);
 		lex.setStream(ss);
 		Layout lay;
 		lay.setName(emptylayout_);
@@ -260,9 +260,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		};
 		layoutlist_.push_back(lay);
 	}
-	Lexer lexrc(textClassTags,
-		sizeof(textClassTags) / sizeof(textClassTags[0]));
 
+	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
 	ReturnValues retval = read(lexrc, rt);
 	
@@ -291,8 +290,7 @@ bool TextClass::validate(std::string const & str)
 
 bool TextClass::read(std::string const & str, ReadType rt) 
 {
-	Lexer lexrc(textClassTags,
-		sizeof(textClassTags) / sizeof(textClassTags[0]));
+	Lexer lexrc(textClassTags);
 	istringstream is(str);
 	lexrc.setStream(is);
 	ReturnValues retval = read(lexrc, rt);
@@ -622,7 +620,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 void TextClass::readTitleType(Lexer & lexrc)
 {
-	keyword_item titleTypeTags[] = {
+	LexerKeyword titleTypeTags[] = {
 		{ "commandafter", TITLE_COMMAND_AFTER },
 		{ "environment", TITLE_ENVIRONMENT }
 	};
@@ -649,7 +647,7 @@ void TextClass::readTitleType(Lexer & lexrc)
 
 void TextClass::readOutputType(Lexer & lexrc)
 {
-	keyword_item outputTypeTags[] = {
+	LexerKeyword outputTypeTags[] = {
 		{ "docbook", DOCBOOK },
 		{ "latex", LATEX },
 		{ "literate", LITERATE }
@@ -687,7 +685,7 @@ enum ClassOptionsTags {
 
 void TextClass::readClassOptions(Lexer & lexrc)
 {
-	keyword_item classOptionsTags[] = {
+	LexerKeyword classOptionsTags[] = {
 		{"end", CO_END },
 		{"fontsize", CO_FONTSIZE },
 		{"header", CO_HEADER },
@@ -695,7 +693,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		{"pagestyle", CO_PAGESTYLE }
 	};
 
-	lexrc.pushTable(classOptionsTags, CO_END);
+	lexrc.pushTable(classOptionsTags);
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
@@ -746,7 +744,7 @@ enum FloatTags {
 
 void TextClass::readFloat(Lexer & lexrc)
 {
-	keyword_item floatTags[] = {
+	LexerKeyword floatTags[] = {
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
@@ -758,7 +756,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "type", FT_TYPE }
 	};
 
-	lexrc.pushTable(floatTags, FT_END);
+	lexrc.pushTable(floatTags);
 
 	string type;
 	string placement;
@@ -858,7 +856,7 @@ enum CounterTags {
 
 void TextClass::readCounter(Lexer & lexrc)
 {
-	keyword_item counterTags[] = {
+	LexerKeyword counterTags[] = {
 		{ "end", CT_END },
 		{ "labelstring", CT_LABELSTRING },
 		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
@@ -866,7 +864,7 @@ void TextClass::readCounter(Lexer & lexrc)
 		{ "within", CT_WITHIN }
 	};
 
-	lexrc.pushTable(counterTags, CT_END);
+	lexrc.pushTable(counterTags);
 
 	docstring name;
 	docstring within;

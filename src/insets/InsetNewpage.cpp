@@ -272,7 +272,7 @@ void InsetNewpage::string2params(string const & in, InsetNewpageParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

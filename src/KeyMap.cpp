@@ -125,7 +125,7 @@ enum BindTags {
 	BN_UNBIND,
 };
 
-keyword_item bindTags[] = {
+LexerKeyword bindTags[] = {
 	{ "\\bind", BN_BIND },
 	{ "\\bind_file", BN_BINDFILE },
 	{ "\\unbind", BN_UNBIND },
@@ -136,9 +136,7 @@ keyword_item bindTags[] = {
 
 bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 {
-	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
-
-	Lexer lexrc(bindTags, bindCount);
+	Lexer lexrc(bindTags);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 

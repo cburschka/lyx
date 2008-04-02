@@ -197,7 +197,7 @@ InsetCollapsable::CollapseStatus InsetERT::string2params(string const & in)
 		return status;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

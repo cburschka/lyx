@@ -24,13 +24,20 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-///
-struct keyword_item {
-	///
+class PushPopHelper;
+
+/** A helper structure to describe a keyword for the Lexer.
+	Usually used bundled in C style arrays and passed to the 
+	Lexer using a LexerKeywordTable object.
+*/
+struct LexerKeyword
+{
+	/// the string to be recognized
 	char const * tag;
-	///
+	/// a corresponding numerical id
 	int code;
 };
+
 
 /** Generalized simple lexical analizer.
 	Use the method isOK() to check if there is still data available
@@ -53,10 +60,15 @@ struct keyword_item {
 
     @see LyXRC.cpp for an example of usage.
   */
-class Lexer {
+class Lexer
+{
 public:
-	///
-	Lexer(keyword_item *, int);
+	/// initialize Lexer with no special keywords.
+	Lexer(); 
+	/// initialize Lexer with a bunch of keywords
+	template<int N> Lexer(LexerKeyword (&table)[N])
+		: pimpl_(0) { init(table, N); }
+
 	///
 	~Lexer();
 
@@ -73,7 +85,7 @@ public:
 	};
 
 	/// stream is open and end of stream is not reached
-	/// FIXME: test also if pushTok is not empty
+	/// FIXME: test also if pushToken is not empty
 	/// FIXME: the method should be renamed to something like
 	///        dataAvailable(), in order to reflect the real behavior
 	bool isOK() const;
@@ -91,7 +103,7 @@ public:
 	///
 	std::istream & getStream();
 	/// Danger! Don't use it unless you know what you are doing.
-	void setLineNo(int l);
+	void setLineNumber(int l);
 	/// Change the character that begins a comment. Default is '#'
 	void setCommentChar(char c);
 
@@ -111,8 +123,8 @@ public:
 	/// Push a token, that next token got from lyxlex.
 	void pushToken(std::string const &);
 
-	///
-	int getLineNo() const;
+	/// return the current line number
+	int lineNumber() const;
 
 	///
 	int getInteger() const;
@@ -139,7 +151,8 @@ public:
 	bool eatLine();
 
 	/// Pushes a token list on a stack and replaces it with a new one.
-	void pushTable(keyword_item *, int);
+	template<int N> void pushTable(LexerKeyword (&table)[N])
+		{ pushTable(table, N); }
 
 	/** Pops a token list into void and replaces it with the one now
 	    on top of the stack.
@@ -173,9 +186,16 @@ public:
 	static std::string const quoteString(std::string const &);
 
 private:
-	/// noncopiable
+	/// noncopyable
 	Lexer(Lexer const &);
 	void operator=(Lexer const &);
+
+	///
+	friend class PushPopHelper;
+
+	///
+	void init(LexerKeyword *, int);
+	void pushTable(LexerKeyword *, int);
 
 	///
 	class Pimpl;
@@ -192,14 +212,18 @@ private:
     exceptions.
     @author Lgb
 */
-class PushPopHelper {
+class PushPopHelper
+{
 public:
 	///
-	PushPopHelper(Lexer & lexrc, keyword_item * i, int s) : lex(lexrc) {
+	PushPopHelper(Lexer & lexrc, LexerKeyword * i, int s)
+		: lex(lexrc)
+	{
 		lex.pushTable(i, s);
 	}
 	///
-	~PushPopHelper() {
+	~PushPopHelper()
+	{
 		lex.popTable();
 	}
 	///

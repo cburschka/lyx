@@ -255,7 +255,7 @@ void InsetVSpace::string2params(string const & in, VSpace & vspace)
 		return;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

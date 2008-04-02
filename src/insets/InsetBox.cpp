@@ -523,7 +523,7 @@ void InsetBox::string2params(string const & in, InsetBoxParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	string name;

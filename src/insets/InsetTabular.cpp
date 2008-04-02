@@ -4840,7 +4840,7 @@ void InsetTabular::completionPosAndDim(Cursor const & cur, int & x, int & y,
 void InsetTabular::string2params(string const & in, InsetTabular & inset)
 {
 	istringstream data(in);
-	Lexer lex(0,0);
+	Lexer lex;
 	lex.setStream(data);
 
 	if (in.empty())
