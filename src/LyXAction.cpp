@@ -1566,6 +1566,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_PARAMS_APPLY
+ * \li Action: Apply the given settings to the current document.
+ * \li Syntax: buffer-params-apply [<ARGS>]
+ * \li Params: <ARGS>: contains the particular settings to be saved. They obey the syntax
+                       you can find in document header of usual .lyx file.
+ * \endvar
+ */
 		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
 
 /*!
