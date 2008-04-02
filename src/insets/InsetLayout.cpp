@@ -39,7 +39,7 @@ InsetLayout::InsetLayout() :
 
 
 enum InsetLayoutTags {
-	IL_FONT,
+	IL_FONT = 1,
 	IL_BGCOLOR,
 	IL_DECORATION,
 	IL_FREESPACING,
@@ -78,7 +78,7 @@ bool InsetLayout::read(Lexer & lexrc)
 {
 	name_ = support::subst(lexrc.getDocString(), '_', ' ');
 
-	LexerKeyword elementTags[] = {
+	keyword_item elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
@@ -99,7 +99,7 @@ bool InsetLayout::read(Lexer & lexrc)
 		{ "requires", IL_REQUIRES }
 	};
 
-	lexrc.pushTable(elementTags);
+	lexrc.pushTable(elementTags, IL_END);
 
 	FontInfo font = inherit_font;
 	labelfont_ = inherit_font;

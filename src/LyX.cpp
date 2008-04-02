@@ -979,7 +979,7 @@ bool LyX::readRcFile(string const & name)
 // Read the ui file `name'
 bool LyX::readUIFile(string const & name, bool include)
 {
-	enum {
+	enum Uitags {
 		ui_menuset = 1,
 		ui_toolbars,
 		ui_toolbarset,
@@ -987,7 +987,7 @@ bool LyX::readUIFile(string const & name, bool include)
 		ui_last
 	};
 
-	struct LexerKeyword uitags[] = {
+	struct keyword_item uitags[ui_last - 1] = {
 		{ "include", ui_include },
 		{ "menuset", ui_menuset },
 		{ "toolbars", ui_toolbars },
@@ -1027,7 +1027,7 @@ bool LyX::readUIFile(string const & name, bool include)
 	uifiles.push_back(name);
 
 	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
-	Lexer lex(uitags);
+	Lexer lex(uitags, ui_last - 1);
 	lex.setFile(ui_path);
 	if (!lex.isOK()) {
 		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path

@@ -664,7 +664,7 @@ string Font::toString(bool const toggle) const
 bool Font::fromString(string const & data, bool & toggle)
 {
 	istringstream is(data);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(is);
 
 	int nset = 0;

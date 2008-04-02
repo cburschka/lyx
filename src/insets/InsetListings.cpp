@@ -313,7 +313,7 @@ void InsetListings::string2params(string const & in,
 	if (in.empty())
 		return;
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0, 0);
 	lex.setStream(data);
 	// discard "listings", which is only used to determine inset
 	lex.next();

@@ -35,7 +35,7 @@ enum CmdDefTags {
 	BN_DEFINE
 };
 
-LexerKeyword cmdDefTags[] = {
+keyword_item cmdDefTags[] = {
 	{ "\\def_file", BN_DEFFILE },
 	{ "\\define", BN_DEFINE }
 };
@@ -45,7 +45,9 @@ LexerKeyword cmdDefTags[] = {
 
 bool CmdDef::read(string const & def_file)
 {
-	Lexer lexrc(cmdDefTags);
+	const int cmdDefCount = sizeof(cmdDefTags) / sizeof(keyword_item);
+
+	Lexer lexrc(cmdDefTags, cmdDefCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 

@@ -368,7 +368,7 @@ void InsetNote::string2params(string const & in, InsetNoteParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

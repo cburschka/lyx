@@ -269,7 +269,7 @@ void InsetNewline::string2params(string const & in, InsetNewlineParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

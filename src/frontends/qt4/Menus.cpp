@@ -379,10 +379,11 @@ void MenuDefinition::read(Lexer & lex)
 		md_floatlistinsert,
 		md_floatinsert,
 		md_pasterecent,
-		md_toolbars
+		md_toolbars,
+		md_last
 	};
 
-	struct LexerKeyword menutags[] = {
+	struct keyword_item menutags[md_last - 1] = {
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
@@ -407,7 +408,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "viewformats", md_viewformats }
 	};
 
-	lex.pushTable(menutags);
+	lex.pushTable(menutags, md_last - 1);
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
@@ -1273,8 +1274,8 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 }
 
 
-void Menus::Impl::expand(MenuDefinition const & frommenu,
-	MenuDefinition & tomenu, Buffer const * buf) const
+void Menus::Impl::expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
+			 Buffer const * buf) const
 {
 	if (!tomenu.empty())
 		tomenu.clear();
@@ -1392,25 +1393,23 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 	return (*it);
 }
 
-
 /////////////////////////////////////////////////////////////////////
-//
-// Menus 
-//
+// Menus implementation
 /////////////////////////////////////////////////////////////////////
 
-Menus::Menus() : d(new Impl) {}
+Menus::Menus(): d(new Impl) {}
 
 
 void Menus::read(Lexer & lex)
 {
 	enum Menutags {
-		md_menu,
+		md_menu = 1,
 		md_menubar,
 		md_endmenuset,
+		md_last
 	};
 
-	struct LexerKeyword menutags[] = {
+	struct keyword_item menutags[md_last - 1] = {
 		{ "end", md_endmenuset },
 		{ "menu", md_menu },
 		{ "menubar", md_menubar }
@@ -1422,7 +1421,7 @@ void Menus::read(Lexer & lex)
 		       << lex.getString() << '\'' << endl;
 	}
 
-	lex.pushTable(menutags);
+	lex.pushTable(menutags, md_last - 1);
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 

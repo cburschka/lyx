@@ -467,7 +467,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 {
 	// We must read the symbolsfile first, because the Encoding
 	// constructor depends on it.
-	Lexer symbolslex;
+	Lexer symbolslex(0, 0);
 	symbolslex.setFile(symbolsfile);
 	while (symbolslex.isOK()) {
 		char_type symbol;
@@ -525,14 +525,15 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 	enum Encodingtags {
 		et_encoding = 1,
 		et_end,
+		et_last
 	};
 
-	struct LexerKeyword encodingtags[] = {
+	struct keyword_item encodingtags[et_last - 1] = {
 		{ "encoding", et_encoding },
 		{ "end", et_end }
 	};
 
-	Lexer lex(encodingtags);
+	Lexer lex(encodingtags, et_last - 1);
 	lex.setFile(encfile);
 	while (lex.isOK()) {
 		switch (lex.lex()) {

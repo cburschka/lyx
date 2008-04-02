@@ -264,7 +264,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		EX_END
 	};
 
-	LexerKeyword external_tags[] = {
+	keyword_item external_tags[] = {
 		{ "\\end_inset",     EX_END },
 		{ "boundingBox",     EX_BOUNDINGBOX },
 		{ "clip",            EX_CLIP },
@@ -883,7 +883,7 @@ void InsetExternal::string2params(string const & in, Buffer const & buffer,
 		return;
 
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

@@ -50,7 +50,7 @@ namespace os = support::os;
 namespace {
 
 // when adding something to this array keep it sorted!
-LexerKeyword lyxrcTags[] = {
+keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
 	{ "\\allow_geometry_session", LyXRC::RC_GEOMETRY_SESSION },
 	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
@@ -184,7 +184,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\visual_cursor" ,LyXRC::RC_VISUAL_CURSOR}
 };
 
-const int lyxrcCount = sizeof(lyxrcTags) / sizeof(lyxrcTags[0]);
+const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
 
 } // namespace anon
 
@@ -334,7 +334,7 @@ void oldFontFormat(string & family, string & foundry)
 
 int LyXRC::read(FileName const & filename)
 {
-	Lexer lexrc(lyxrcTags);
+	Lexer lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
@@ -349,12 +349,13 @@ int LyXRC::read(FileName const & filename)
 
 int LyXRC::read(istream & is)
 {
-	Lexer lexrc(lyxrcTags);
+	Lexer lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
 	lexrc.setStream(is);
-	if (!lexrc.isOK()) return -2;
+	if (!lexrc.isOK())
+		return -2;
 
 	LYXERR(Debug::LYXRC, "Reading istream...");
 

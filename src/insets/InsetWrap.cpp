@@ -267,7 +267,7 @@ void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

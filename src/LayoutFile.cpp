@@ -84,7 +84,7 @@ LayoutFile &
 // Reads LyX textclass definitions according to textclass config file
 bool LayoutFileList::read()
 {
-	Lexer lex;
+	Lexer lex(0, 0);
 	FileName const real_file = libFileSearch("", "textclass.lst");
 	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
 

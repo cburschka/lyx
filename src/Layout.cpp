@@ -134,7 +134,7 @@ Layout::Layout()
 bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
-	LexerKeyword layoutTags[] = {
+	keyword_item layoutTags[] = {
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
 		{ "bottomsep",      LT_BOTTOMSEP },
@@ -191,7 +191,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 	bool error = false;
 	bool finished = false;
-	lexrc.pushTable(layoutTags);
+	lexrc.pushTable(layoutTags, LT_INTITLE);
 	// parse style section
 	while (!finished && lexrc.isOK() && !error) {
 		int le = lexrc.lex();
@@ -515,7 +515,7 @@ enum AlignTags {
 
 void Layout::readAlign(Lexer & lexrc)
 {
-	LexerKeyword alignTags[] = {
+	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
 		{ "center", AT_CENTER },
 		{ "layout", AT_LAYOUT },
@@ -553,7 +553,7 @@ void Layout::readAlign(Lexer & lexrc)
 
 void Layout::readAlignPossible(Lexer & lexrc)
 {
-	LexerKeyword alignTags[] = {
+	keyword_item alignTags[] = {
 		{ "block",  AT_BLOCK },
 		{ "center", AT_CENTER },
 		{ "layout", AT_LAYOUT },
@@ -561,9 +561,9 @@ void Layout::readAlignPossible(Lexer & lexrc)
 		{ "right",  AT_RIGHT }
 	};
 
-	lexrc.pushTable(alignTags);
+	lexrc.pushTable(alignTags, AT_LAYOUT);
 	alignpossible = LYX_ALIGN_NONE | LYX_ALIGN_LAYOUT;
-	int lineno = lexrc.lineNumber();
+	int lineno = lexrc.getLineNo();
 	do {
 		int le = lexrc.lex();
 		switch (le) {
@@ -589,7 +589,7 @@ void Layout::readAlignPossible(Lexer & lexrc)
 			alignpossible |= LYX_ALIGN_LAYOUT;
 			break;
 		}
-	} while (lineno == lexrc.lineNumber());
+	} while (lineno == lexrc.getLineNo());
 	lexrc.popTable();
 }
 
@@ -610,7 +610,7 @@ enum LabelTypeTags {
 
 void Layout::readLabelType(Lexer & lexrc)
 {
-	LexerKeyword labelTypeTags[] = {
+	keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
 	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
 	{ "counter",                  LA_COUNTER },
@@ -666,7 +666,7 @@ void Layout::readLabelType(Lexer & lexrc)
 }
 
 
-static LexerKeyword endlabelTypeTags[] =
+static keyword_item endlabelTypeTags[] =
 {
 	{ "box",	END_LABEL_BOX },
 	{ "filled_box",	END_LABEL_FILLED_BOX },
@@ -700,7 +700,7 @@ void Layout::readEndLabelType(Lexer & lexrc)
 
 void Layout::readMargin(Lexer & lexrc)
 {
-	LexerKeyword marginTags[] = {
+	keyword_item marginTags[] = {
 		{ "dynamic",           MARGIN_DYNAMIC },
 		{ "first_dynamic",     MARGIN_FIRST_DYNAMIC },
 		{ "manual",            MARGIN_MANUAL },
@@ -732,7 +732,7 @@ void Layout::readMargin(Lexer & lexrc)
 
 void Layout::readLatexType(Lexer & lexrc)
 {
-	LexerKeyword latexTypeTags[] = {
+	keyword_item latexTypeTags[] = {
 		{ "bib_environment",  LATEX_BIB_ENVIRONMENT },
 		{ "command",          LATEX_COMMAND },
 		{ "environment",      LATEX_ENVIRONMENT },
@@ -773,7 +773,7 @@ enum SpacingTags {
 
 void Layout::readSpacing(Lexer & lexrc)
 {
-	LexerKeyword spacingTags[] = {
+	keyword_item spacingTags[] = {
 		{"double",  ST_SPACING_DOUBLE },
 		{"onehalf", ST_SPACING_ONEHALF },
 		{"other",   ST_OTHER },

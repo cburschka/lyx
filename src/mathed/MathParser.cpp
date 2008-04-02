@@ -378,7 +378,7 @@ private:
 
 
 Parser::Parser(Lexer & lexer)
-	: lineno_(lexer.lineNumber()), pos_(0)
+	: lineno_(lexer.getLineNo()), pos_(0)
 {
 	tokenize(lexer.getStream());
 	lexer.eatLine();

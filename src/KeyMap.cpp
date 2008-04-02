@@ -125,7 +125,7 @@ enum BindTags {
 	BN_UNBIND,
 };
 
-LexerKeyword bindTags[] = {
+keyword_item bindTags[] = {
 	{ "\\bind", BN_BIND },
 	{ "\\bind_file", BN_BINDFILE },
 	{ "\\unbind", BN_UNBIND },
@@ -136,7 +136,9 @@ LexerKeyword bindTags[] = {
 
 bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 {
-	Lexer lexrc(bindTags);
+	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
+
+	Lexer lexrc(bindTags, bindCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
@@ -181,8 +183,7 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 
 			FuncRequest func = lyxaction.lookupFunc(cmd);
 			if (func. action == LFUN_UNKNOWN_ACTION) {
-				lexrc.printError("BN_BIND: Unknown LyX"
-						 " function `$$Token'");
+				lexrc.printError("BN_BIND: Unknown LyX function `$$Token'");
 				error = true;
 				break;
 			}

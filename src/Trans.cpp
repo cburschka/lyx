@@ -169,11 +169,20 @@ bool Trans::isDefined() const
 }
 
 
-enum {
+enum kmaptags_ {
 	KCOMB = 1,
 	KMOD,
 	KMAP,
 	KXMOD,
+	K_LAST
+};
+
+
+struct keyword_item kmapTags[K_LAST - 1] = {
+	{"\\kcomb", KCOMB },
+	{ "\\kmap", KMAP },
+	{ "\\kmod", KMOD },
+	{ "\\kxmod", KXMOD }
 };
 
 
@@ -378,19 +387,12 @@ docstring const Trans::process(char_type c, TransManager & k)
 
 int Trans::load(string const & language)
 {
-	struct LexerKeyword kmapTags[] = {
-		{"\\kcomb", KCOMB },
-		{ "\\kmap", KMAP },
-		{ "\\kmod", KMOD },
-		{ "\\kxmod", KXMOD }
-	};
-
 	FileName const filename = libFileSearch("kbd", language, "kmap");
 	if (filename.empty())
 		return -1;
 
 	freeKeymap();
-	Lexer lex(kmapTags);
+	Lexer lex(kmapTags, K_LAST - 1);
 	lex.setFile(filename);
 
 	int const res = load(lex);

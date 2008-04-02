@@ -154,7 +154,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		{
 			InsetMathHull * formula = new InsetMathHull;
 			istringstream is(to_utf8(sel));
-			Lexer lex;
+			Lexer lex(0, 0);
 			lex.setStream(is);
 			formula->read(lex);
 			if (formula->getType() == hullNone)

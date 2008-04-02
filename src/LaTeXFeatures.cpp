@@ -237,7 +237,7 @@ void LaTeXFeatures::require(set<string> const & names)
 
 void LaTeXFeatures::getAvailable()
 {
-	Lexer lex;
+	Lexer lex(0, 0);
 	support::FileName const real_file = libFileSearch("", "packages.lst");
 
 	if (real_file.empty())

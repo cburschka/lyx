@@ -530,7 +530,7 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 		return;
 
 	istringstream data(in);
-	Lexer lex;
+	Lexer lex(0,0);
 	lex.setStream(data);
 
 	string name;

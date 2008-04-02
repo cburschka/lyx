@@ -135,10 +135,10 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.params().read(lex);
 
 	} else if (token == "\\end_layout") {
-		LYXERR0("Solitary \\end_layout in line " << lex.lineNumber() << "\n"
+		LYXERR0("Solitary \\end_layout in line " << lex.getLineNo() << "\n"
 		       << "Missing \\begin_layout ?");
 	} else if (token == "\\end_inset") {
-		LYXERR0("Solitary \\end_inset in line " << lex.lineNumber() << "\n"
+		LYXERR0("Solitary \\end_inset in line " << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset ?");
 	} else if (token == "\\begin_inset") {
 		Inset * inset = readInset(lex, buf);
@@ -277,7 +277,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 		    || token == "\\end_deeper") {
 			lex.pushToken(token);
 			lyxerr << "Paragraph ended in line "
-			       << lex.lineNumber() << "\n"
+			       << lex.getLineNo() << "\n"
 			       << "Missing \\end_layout.\n";
 			break;
 		}

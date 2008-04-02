@@ -236,21 +236,21 @@ void TemplateManager::readTemplates(FileName const & path)
 {
 	PathChanger p(path);
 
-	enum {
+	enum TemplateTags {
 		TM_PREAMBLEDEF = 1,
 		TM_PREAMBLEDEF_END,
 		TM_TEMPLATE,
 		TM_TEMPLATE_END
 	};
 
-	LexerKeyword templatetags[] = {
+	keyword_item templatetags[] = {
 		{ "preambledef", TM_PREAMBLEDEF },
 		{ "preambledefend", TM_PREAMBLEDEF_END },
 		{ "template", TM_TEMPLATE },
 		{ "templateend", TM_TEMPLATE_END }
 	};
 
-	Lexer lex(templatetags);
+	Lexer lex(templatetags, TM_TEMPLATE_END);
 
 	FileName const filename = libFileSearch("", "external_templates");
 	if (filename.empty() || !lex.setFile(filename)) {
@@ -311,7 +311,7 @@ void add(vector<TransformID> & ids, string const & name)
 
 void Template::readTemplate(Lexer & lex)
 {
-	enum {
+	enum TemplateOptionTags {
 		TO_GUINAME = 1,
 		TO_HELPTEXT,
 		TO_INPUTFORMAT,
@@ -322,7 +322,7 @@ void Template::readTemplate(Lexer & lex)
 		TO_END
 	};
 
-	LexerKeyword templateoptiontags[] = {
+	keyword_item templateoptiontags[] = {
 		{ "automaticproduction", TO_AUTOMATIC },
 		{ "filefilter", TO_FILTER },
 		{ "format", TO_FORMAT },
@@ -480,7 +480,7 @@ void Template::Format::readFormat(Lexer & lex)
 		FO_END
 	};
 
-	LexerKeyword formattags[] = {
+	keyword_item formattags[] = {
 		{ "formatend", FO_END },
 		{ "option", FO_OPTION },
 		{ "preamble", FO_PREAMBLE },

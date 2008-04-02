@@ -657,7 +657,7 @@ bool Buffer::readString(string const & s)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	Lexer lex;
+	Lexer lex(0, 0);
 	istringstream is(s);
 	lex.setStream(is);
 	FileName const name = FileName::tempName();
@@ -705,7 +705,7 @@ bool Buffer::readFile(FileName const & filename)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	Lexer lex;
+	Lexer lex(0, 0);
 	lex.setFile(fname);
 	if (readFile(lex, fname) != success)
 		return false;

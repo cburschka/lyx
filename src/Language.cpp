@@ -45,7 +45,7 @@ void Languages::read(FileName const & filename)
 			      encodings.fromLyXName("iso8859-1"),
 			      "latex", "");
 
-	Lexer lex;
+	Lexer lex(0, 0);
 	lex.setFile(filename);
 	while (lex.isOK()) {
 		string lang;
