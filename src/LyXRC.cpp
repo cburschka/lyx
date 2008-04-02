@@ -296,6 +296,7 @@ void LyXRC::setDefaults() {
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
+	use_bundled_format = false;
 
 	// Fullscreen settings
 	full_screen_limit = false;
