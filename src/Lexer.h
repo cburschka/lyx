@@ -167,6 +167,8 @@ public:
 
 	/// Prints the current token table on the supplied ostream.
 	void printTable(std::ostream &);
+	/// Used to dispaly context information in case of errors.
+	void setContext(std::string const & functionName);
 
 	/// extract string
 	Lexer & operator>>(std::string &);
@@ -181,9 +183,12 @@ public:
 	/// extract bool
 	Lexer & operator>>(bool &);
 
+	/// read and check a required token
+	Lexer & operator>>(char const * required);
+
 	/// Quotes a string so that reading it again with Lexer::next(true)
 	/// gets the original string
-	static std::string const quoteString(std::string const &);
+	static std::string quoteString(std::string const &);
 
 private:
 	/// noncopyable
@@ -204,6 +209,16 @@ private:
 	///
 	mutable bool lastReadOk_;
 };
+
+
+/// extract something constructable from a string, i.e. a LaTeX length
+template <class T>
+Lexer & operator>>(Lexer & lex, T & t)
+{
+	if (lex.next())
+		t = T(lex.getString());
+	return lex;
+}
 
 
 /** Use to enable multiple exit points.

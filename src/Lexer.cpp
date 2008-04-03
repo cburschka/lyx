@@ -102,6 +102,8 @@ public:
 	string pushTok;
 	///
 	char commentChar;
+	/// used for error messages
+	string context;
 private:
 	/// non-copyable
 	Pimpl(Pimpl const &);
@@ -878,13 +880,31 @@ Lexer & Lexer::operator>>(bool & s)
 
 // quotes a string, e.g. for use in preferences files or as an argument
 // of the "log" dialog
-string const Lexer::quoteString(string const & arg)
+string Lexer::quoteString(string const & arg)
 {
 	string res;
 	res += '"';
 	res += subst(subst(arg, "\\", "\\\\"), "\"", "\\\"");
 	res += '"';
 	return res;
+}
+
+
+Lexer & Lexer::operator>>(char const * required)
+{
+	string token;
+	*this >> token;
+	if (token != required) {
+		LYXERR0("Missing '" << required << "'-tag in " << pimpl_->context);
+		pushToken(token);
+	}
+	return *this;
+}
+
+
+void Lexer::setContext(std::string const & str)
+{
+	pimpl_->context = str;
 }
 
 
