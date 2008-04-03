@@ -300,121 +300,40 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 		status = LEX_TOKEN;
 		return true;
 	}
-	if (!esc) {
-		unsigned char c = 0; // getc() returns an int
-		char cc = 0;
-		status = 0;
-		while (is && !status) {
-			is.get(cc);
-			c = cc;
-			if (c == commentChar) {
-				// Read rest of line (fast :-)
+
+
+	unsigned char c = 0; // getc() returns an int
+	char cc = 0;
+	status = 0;
+	while (is && !status) {
+		is.get(cc);
+		c = cc;
+
+		// skip ','s
+		if (esc && c == ',')
+			continue;
+
+		
+		if (c == commentChar) {
+			// Read rest of line (fast :-)
 #if 1
-				// That is not fast... (Lgb)
-				string dummy;
-				getline(is, dummy);
+			// That is not fast... (Lgb)
+			string dummy;
+			getline(is, dummy);
 
-				LYXERR(Debug::LYXLEX, "Comment read: `" << c << dummy << '\'');
+			LYXERR(Debug::LYXLEX, "Comment read: `" << c << dummy << '\'');
 #else
-				// unfortunately ignore is buggy (Lgb)
-				is.ignore(100, '\n');
+			// unfortunately ignore is buggy (Lgb)
+			is.ignore(100, '\n');
 #endif
-				++lineno;
-				continue;
-			}
-
-			if (c == '\"') {
-				buff.clear();
-
-				do {
-					is.get(cc);
-					c = cc;
-					if (c != '\r')
-						buff.push_back(c);
-				} while (c != '\"' && c != '\n' && is);
-
-				if (c != '\"') {
-					printError("Missing quote");
-					if (c == '\n')
-						++lineno;
-				}
-
-				buff.resize(buff.size()-1);
-				status = LEX_DATA;
-				break;
-			}
-
-			if (c == ',')
-				continue;              /* Skip ','s */
-
-				// using relational operators with chars other
-				// than == and != is not safe. And if it is done
-				// the type _have_ to be unsigned. It usually a
-				// lot better to use the functions from cctype
-			if (c > ' ' && is)  {
-				buff.clear();
-
-				do {
-					buff.push_back(c);
-					is.get(cc);
-					c = cc;
-				} while (c > ' ' && c != ',' && is);
-
-				status = LEX_TOKEN;
-			}
-
-			if (c == '\r' && is) {
-				// The Windows support has lead to the
-				// possibility of "\r\n" at the end of
-				// a line.  This will stop LyX choking
-				// when it expected to find a '\n'
-				is.get(cc);
-				c = cc;
-			}
-
-			if (c == '\n')
-				++lineno;
-
+			++lineno;
+			continue;
 		}
-		if (status)
-			return true;
 
-		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
-		buff.clear();
-		return false;
-	} else {
-		unsigned char c = 0; // getc() returns an int
-		char cc = 0;
+		if (c == '\"') {
+			buff.clear();
 
-		status = 0;
-		while (is && !status) {
-			is.get(cc);
-			c = cc;
-
-			// skip ','s
-			if (c == ',')
-				continue;
-
-			if (c == commentChar) {
-				// Read rest of line (fast :-)
-#if 1
-				// That is still not fast... (Lgb)
-				string dummy;
-				getline(is, dummy);
-
-				LYXERR(Debug::LYXLEX, "Comment read: `" << c << dummy << '\'');
-#else
-				// but ignore is also still buggy (Lgb)
-				// This is fast (Lgb)
-				is.ignore(100, '\n');
-#endif
-				++lineno;
-				continue;
-			}
-
-			// string
-			if (c == '\"') {
-				buff.clear();
+			if (esc) {
 
 				bool escaped = false;
 				do {
@@ -437,46 +356,71 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 						break;
 				} while (c != '\n' && is);
 
-				if (c != '\"') {
-					printError("Missing quote");
-					if (c == '\n')
-						++lineno;
-				}
-
-				buff.resize(buff.size() -1);
-				status = LEX_DATA;
-				break;
-			}
-
-			if (c > ' ' && is) {
-				buff.clear();
+			} else {
 
 				do {
-					if (c == '\\') {
-						// escape the next char
-						is.get(cc);
-						c = cc;
-						//escaped = true;
-					}
-					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c > ' ' && c != ',' && is);
+					if (c != '\r')
+						buff.push_back(c);
+				} while (c != '\"' && c != '\n' && is);
 
-				status = LEX_TOKEN;
 			}
-			// new line
-			if (c == '\n')
-				++lineno;
+
+			if (c != '\"') {
+				printError("Missing quote");
+				if (c == '\n')
+					++lineno;
+			}
+
+			buff.resize(buff.size() - 1);
+			status = LEX_DATA;
+			break;
 		}
 
-		if (status)
-			return true;
+		if (!esc && c == ',')
+			continue;              /* Skip ','s */
 
-		status = is.eof() ? LEX_FEOF : LEX_UNDEF;
-		buff.clear();
-		return false;
+			// using relational operators with chars other
+			// than == and != is not safe. And if it is done
+			// the type _have_ to be unsigned. It usually a
+			// lot better to use the functions from cctype
+		if (c > ' ' && is)  {
+			buff.clear();
+
+			do {
+				if (esc && c == '\\') {
+					// escape the next char
+					is.get(cc);
+					c = cc;
+					//escaped = true;
+				}
+				buff.push_back(c);
+				is.get(cc);
+				c = cc;
+			} while (c > ' ' && c != ',' && is);
+			status = LEX_TOKEN;
+		}
+
+		if (!esc && c == '\r' && is) {
+			// The Windows support has lead to the
+			// possibility of "\r\n" at the end of
+			// a line.  This will stop LyX choking
+			// when it expected to find a '\n'
+			is.get(cc);
+			c = cc;
+		}
+
+		if (c == '\n')
+			++lineno;
+
 	}
+	if (status)
+		return true;
+
+	status = is.eof() ? LEX_FEOF: LEX_UNDEF;
+	buff.clear();
+	return false;
 }
 
 
