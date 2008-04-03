@@ -73,16 +73,16 @@ class DumpPreambleDef {
 public:
 	typedef TemplateManager::PreambleDefs::value_type value_type;
 
-	DumpPreambleDef(ostream & o) : ost(o) {}
+	DumpPreambleDef(ostream & os) : os_(os) {}
 
 	void operator()(value_type const & vt) {
-		ost << "PreambleDef " << vt.first << '\n'
+		os_ << "PreambleDef " << vt.first << '\n'
 		    << vt.second
 		    << "PreambleDefEnd" << endl;
 	}
 
 private:
-	ostream & ost;
+	ostream & os_;
 };
 
 
@@ -90,12 +90,12 @@ class DumpTemplate {
 public:
 	typedef TemplateManager::Templates::value_type value_type;
 
-	DumpTemplate(ostream & o) : ost(o) {}
+	DumpTemplate(ostream & os) : os_(os) {}
 
 	void operator()(value_type const & vt) {
 		Template const & et = vt.second;
 
-		ost << "Template " << et.lyxName << '\n'
+		os_ << "Template " << et.lyxName << '\n'
 		    << "\tGuiName " << et.guiName << '\n'
 		    << "\tHelpText\n"
 		    << et.helpText
@@ -108,28 +108,28 @@ public:
 		IDs::const_iterator it  = et.transformIds.begin();
 		IDs::const_iterator end = et.transformIds.end();
 		for (; it != end; ++it) {
-			ost << "\tTransform "
+			os_ << "\tTransform "
 			    << transformIDTranslator().find(*it) << '\n';
 		}
 
-		et.dumpFormats(ost);
-		ost << "TemplateEnd" << endl;
+		et.dumpFormats(os_);
+		os_ << "TemplateEnd" << endl;
 
 	}
 
 private:
-	ostream & ost;
+	ostream & os_;
 };
 
 class DumpFormat {
 public:
 	typedef Template::Formats::value_type value_type;
 
-	DumpFormat(ostream & o) : ost(o) {}
+	DumpFormat(ostream & o) : os_(o) {}
 
 	void operator()(value_type const & vt) const {
 		Template::Format const & ft = vt.second;
-		ost << "\tFormat " << vt.first << '\n'
+		os_ << "\tFormat " << vt.first << '\n'
 		    << "\t\tProduct " << ft.product << '\n'
 		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
 		    << "\t\tUpdateResult " << ft.updateResult << '\n';
@@ -138,14 +138,14 @@ public:
 		vector<string>::const_iterator qend = ft.requirements.end();
 		for (; qit != qend; ++qit) {
 			lyxerr << "req:" << *qit << endl;
-			ost << "\t\tRequirement " << *qit << '\n';
+			os_ << "\t\tRequirement " << *qit << '\n';
 		}
 
 		typedef vector<Template::Option> Options;
 		Options::const_iterator oit  = ft.options.begin();
 		Options::const_iterator oend = ft.options.end();
 		for (; oit != oend; ++oit) {
-			ost << "\t\tOption "
+			os_ << "\t\tOption "
 			    << oit->name
 			    << ": "
 			    << oit->option
@@ -155,7 +155,7 @@ public:
 		vector<string>::const_iterator pit  = ft.preambleNames.begin();
 		vector<string>::const_iterator pend = ft.preambleNames.end();
 		for (; pit != pend; ++pit) {
-			ost << "\t\tPreamble " << *pit << '\n';
+			os_ << "\t\tPreamble " << *pit << '\n';
 		}
 
 		typedef Template::Format::FileMap FileMap;
@@ -165,15 +165,15 @@ public:
 			vector<string>::const_iterator fit  = rit->second.begin();
 			vector<string>::const_iterator fend = rit->second.end();
 			for (; fit != fend; ++fit) {
-				ost << "\t\tReferencedFile " << rit->first
+				os_ << "\t\tReferencedFile " << rit->first
 				    << " \"" << *fit << "\"\n";
 			}
 		}
 
-		ost << "\tFormatEnd\n";
+		os_ << "\tFormatEnd\n";
 	}
 private:
-	ostream & ost;
+	ostream & os_;
 };
 
 
@@ -333,7 +333,7 @@ void Template::readTemplate(Lexer & lex)
 		{ "transform", TO_TRANSFORM }
 	};
 
-	PushPopHelper pph(lex, templateoptiontags, TO_END);
+	PushPopHelper pph(lex, templateoptiontags);
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
@@ -467,7 +467,7 @@ void setOptionFactory(Template::Format & format, string const & transform,
 
 void Template::Format::readFormat(Lexer & lex)
 {
-	enum FormatTags {
+	enum {
 		FO_PRODUCT = 1,
 		FO_UPDATEFORMAT,
 		FO_UPDATERESULT,
@@ -493,7 +493,7 @@ void Template::Format::readFormat(Lexer & lex)
 		{ "updateresult", FO_UPDATERESULT }
 	};
 
-	PushPopHelper pph(lex, formattags, FO_END);
+	PushPopHelper pph(lex, formattags);
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
@@ -564,6 +564,3 @@ void Template::Format::readFormat(Lexer & lex)
 
 } // namespace external
 } // namespace lyx
-
-
-

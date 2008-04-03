@@ -245,7 +245,7 @@ void InsetExternalParams::write(Buffer const & buf, ostream & os) const
 
 bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 {
-	enum ExternalTags {
+	enum {
 		EX_TEMPLATE = 1,
 		EX_FILENAME,
 		EX_EMBED,
@@ -283,7 +283,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		{ "width",           EX_WIDTH }
 	};
 
-	PushPopHelper pph(lex, external_tags, EX_END);
+	PushPopHelper pph(lex, external_tags);
 
 	bool found_end  = false;
 	bool read_error = false;

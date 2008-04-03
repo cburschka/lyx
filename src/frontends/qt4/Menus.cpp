@@ -357,7 +357,7 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 
 void MenuDefinition::read(Lexer & lex)
 {
-	enum Menutags {
+	enum {
 		md_item = 1,
 		md_branches,
 		md_documents,
@@ -382,7 +382,7 @@ void MenuDefinition::read(Lexer & lex)
 		md_toolbars
 	};
 
-	struct LexerKeyword menutags[] = {
+	LexerKeyword menutags[] = {
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
@@ -1404,13 +1404,13 @@ Menus::Menus() : d(new Impl) {}
 
 void Menus::read(Lexer & lex)
 {
-	enum Menutags {
+	enum {
 		md_menu,
 		md_menubar,
 		md_endmenuset,
 	};
 
-	struct LexerKeyword menutags[] = {
+	LexerKeyword menutags[] = {
 		{ "end", md_endmenuset },
 		{ "menu", md_menu },
 		{ "menubar", md_menubar }

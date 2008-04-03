@@ -38,45 +38,47 @@ InsetLayout::InsetLayout() :
 }
 
 
-enum InsetLayoutTags {
-	IL_FONT,
-	IL_BGCOLOR,
-	IL_DECORATION,
-	IL_FREESPACING,
-	IL_FORCELTR,
-	IL_LABELFONT,
-	IL_LABELSTRING,
-	IL_LATEXNAME,
-	IL_LATEXPARAM,
-	IL_LATEXTYPE,
-	IL_LYXTYPE,
-	IL_KEEPEMPTY,
-	IL_MULTIPAR,
-	IL_NEEDPROTECT,
-	IL_PASSTHRU,
-	IL_PREAMBLE,
-	IL_REQUIRES,
-	IL_END
-};
-
-
 namespace {
-	InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
-	{
-		if (str == "classic")
-			return InsetLayout::Classic;
-		if (str == "minimalistic")
-			return InsetLayout::Minimalistic;
-		if (str == "conglomerate")
-			return InsetLayout::Conglomerate;
-		return InsetLayout::Default;
-	}
+
+InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
+{
+	if (str == "classic")
+		return InsetLayout::Classic;
+	if (str == "minimalistic")
+		return InsetLayout::Minimalistic;
+	if (str == "conglomerate")
+		return InsetLayout::Conglomerate;
+	return InsetLayout::Default;
+}
+
 }
 
 
 bool InsetLayout::read(Lexer & lexrc)
 {
 	name_ = support::subst(lexrc.getDocString(), '_', ' ');
+
+	enum {
+		IL_FONT,
+		IL_BGCOLOR,
+		IL_DECORATION,
+		IL_FREESPACING,
+		IL_FORCELTR,
+		IL_LABELFONT,
+		IL_LABELSTRING,
+		IL_LATEXNAME,
+		IL_LATEXPARAM,
+		IL_LATEXTYPE,
+		IL_LYXTYPE,
+		IL_KEEPEMPTY,
+		IL_MULTIPAR,
+		IL_NEEDPROTECT,
+		IL_PASSTHRU,
+		IL_PREAMBLE,
+		IL_REQUIRES,
+		IL_END
+	};
+
 
 	LexerKeyword elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
@@ -114,7 +116,7 @@ bool InsetLayout::read(Lexer & lexrc)
 			continue;
 		default: break;
 		}
-		switch (static_cast<InsetLayoutTags>(le)) {
+		switch (le) {
 		case IL_LYXTYPE:
 			lexrc.next();
 			lyxtype_ = lexrc.getString();

@@ -522,12 +522,12 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 	}
 
 	// Now read the encodings
-	enum Encodingtags {
+	enum {
 		et_encoding = 1,
 		et_end,
 	};
 
-	struct LexerKeyword encodingtags[] = {
+	LexerKeyword encodingtags[] = {
 		{ "encoding", et_encoding },
 		{ "end", et_end }
 	};

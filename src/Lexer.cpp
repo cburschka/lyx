@@ -67,7 +67,7 @@ public:
 	///
 	bool next(bool esc = false);
 	///
-	int search_kw(char const * const tag) const;
+	int searchKeyword(char const * const tag) const;
 	///
 	int lex();
 	///
@@ -424,7 +424,7 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 }
 
 
-int Lexer::Pimpl::search_kw(char const * const tag) const
+int Lexer::Pimpl::searchKeyword(char const * const tag) const
 {
 	LexerKeyword search_tag = { tag, 0 };
 	LexerKeyword * res =
@@ -444,7 +444,7 @@ int Lexer::Pimpl::lex()
 {
 	//NOTE: possible bug.
 	if (next() && status == LEX_TOKEN)
-		return search_kw(getString().c_str());
+		return searchKeyword(getString().c_str());
 	return status;
 }
 
@@ -721,7 +721,7 @@ string const Lexer::getLongString(string const & endtoken)
 
 		LYXERR(Debug::PARSER, "LongString: `" << getString() << '\'');
 
-		// We do a case independent comparison, like search_kw does.
+		// We do a case independent comparison, like searchKeyword does.
 		if (compare_ascii_no_case(token, endtoken) == 0)
 			break;
 

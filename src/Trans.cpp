@@ -378,7 +378,7 @@ docstring const Trans::process(char_type c, TransManager & k)
 
 int Trans::load(string const & language)
 {
-	struct LexerKeyword kmapTags[] = {
+	LexerKeyword kmapTags[] = {
 		{"\\kcomb", KCOMB },
 		{ "\\kmap", KMAP },
 		{ "\\kmod", KMOD },

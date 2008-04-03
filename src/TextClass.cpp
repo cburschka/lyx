@@ -622,10 +622,10 @@ void TextClass::readTitleType(Lexer & lexrc)
 {
 	LexerKeyword titleTypeTags[] = {
 		{ "commandafter", TITLE_COMMAND_AFTER },
-		{ "environment", TITLE_ENVIRONMENT }
+		{ "environment",  TITLE_ENVIRONMENT }
 	};
 
-	PushPopHelper pph(lexrc, titleTypeTags, TITLE_ENVIRONMENT);
+	PushPopHelper pph(lexrc, titleTypeTags);
 
 	int le = lexrc.lex();
 	switch (le) {
@@ -648,12 +648,12 @@ void TextClass::readTitleType(Lexer & lexrc)
 void TextClass::readOutputType(Lexer & lexrc)
 {
 	LexerKeyword outputTypeTags[] = {
-		{ "docbook", DOCBOOK },
-		{ "latex", LATEX },
+		{ "docbook",  DOCBOOK },
+		{ "latex",    LATEX },
 		{ "literate", LITERATE }
 	};
 
-	PushPopHelper pph(lexrc, outputTypeTags, LITERATE);
+	PushPopHelper pph(lexrc, outputTypeTags);
 
 	int le = lexrc.lex();
 	switch (le) {
@@ -674,22 +674,21 @@ void TextClass::readOutputType(Lexer & lexrc)
 }
 
 
-enum ClassOptionsTags {
-	CO_FONTSIZE = 1,
-	CO_PAGESTYLE,
-	CO_OTHER,
-	CO_HEADER,
-	CO_END
-};
-
-
 void TextClass::readClassOptions(Lexer & lexrc)
 {
+	enum {
+		CO_FONTSIZE = 1,
+		CO_PAGESTYLE,
+		CO_OTHER,
+		CO_HEADER,
+		CO_END
+	};
+
 	LexerKeyword classOptionsTags[] = {
-		{"end", CO_END },
-		{"fontsize", CO_FONTSIZE },
-		{"header", CO_HEADER },
-		{"other", CO_OTHER },
+		{"end",       CO_END },
+		{"fontsize",  CO_FONTSIZE },
+		{"header",    CO_HEADER },
+		{"other",     CO_OTHER },
 		{"pagestyle", CO_PAGESTYLE }
 	};
 
@@ -703,7 +702,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 			continue;
 		default: break;
 		}
-		switch (static_cast<ClassOptionsTags>(le)) {
+		switch (le) {
 		case CO_FONTSIZE:
 			lexrc.next();
 			opt_fontsize_ = rtrim(lexrc.getString());
@@ -729,21 +728,20 @@ void TextClass::readClassOptions(Lexer & lexrc)
 }
 
 
-enum FloatTags {
-	FT_TYPE = 1,
-	FT_NAME,
-	FT_PLACEMENT,
-	FT_EXT,
-	FT_WITHIN,
-	FT_STYLE,
-	FT_LISTNAME,
-	FT_BUILTIN,
-	FT_END
-};
-
-
 void TextClass::readFloat(Lexer & lexrc)
 {
+	enum {
+		FT_TYPE = 1,
+		FT_NAME,
+		FT_PLACEMENT,
+		FT_EXT,
+		FT_WITHIN,
+		FT_STYLE,
+		FT_LISTNAME,
+		FT_BUILTIN,
+		FT_END
+	};
+
 	LexerKeyword floatTags[] = {
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
@@ -776,7 +774,7 @@ void TextClass::readFloat(Lexer & lexrc)
 			continue;
 		default: break;
 		}
-		switch (static_cast<FloatTags>(le)) {
+		switch (le) {
 		case FT_TYPE:
 			lexrc.next();
 			type = lexrc.getString();
@@ -845,17 +843,16 @@ void TextClass::readFloat(Lexer & lexrc)
 }
 
 
-enum CounterTags {
-	CT_NAME = 1,
-	CT_WITHIN,
-	CT_LABELSTRING,
-	CT_LABELSTRING_APPENDIX,
-	CT_END
-};
-
-
 void TextClass::readCounter(Lexer & lexrc)
 {
+	enum {
+		CT_NAME = 1,
+		CT_WITHIN,
+		CT_LABELSTRING,
+		CT_LABELSTRING_APPENDIX,
+		CT_END
+	};
+
 	LexerKeyword counterTags[] = {
 		{ "end", CT_END },
 		{ "labelstring", CT_LABELSTRING },
@@ -880,7 +877,7 @@ void TextClass::readCounter(Lexer & lexrc)
 			continue;
 		default: break;
 		}
-		switch (static_cast<CounterTags>(le)) {
+		switch (le) {
 		case CT_NAME:
 			lexrc.next();
 			name = lexrc.getDocString();

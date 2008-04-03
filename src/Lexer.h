@@ -216,10 +216,11 @@ class PushPopHelper
 {
 public:
 	///
-	PushPopHelper(Lexer & lexrc, LexerKeyword * i, int s)
-		: lex(lexrc)
+	template<int N>
+	PushPopHelper(Lexer & l, LexerKeyword (&table)[N])
+		: lex(l)
 	{
-		lex.pushTable(i, s);
+		lex.pushTable(table, N);
 	}
 	///
 	~PushPopHelper()

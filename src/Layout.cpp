@@ -504,14 +504,13 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 }
 
 
-enum AlignTags {
+enum {
 	AT_BLOCK = 1,
 	AT_LEFT,
 	AT_RIGHT,
 	AT_CENTER,
 	AT_LAYOUT
 };
-
 
 void Layout::readAlign(Lexer & lexrc)
 {
@@ -523,7 +522,7 @@ void Layout::readAlign(Lexer & lexrc)
 		{ "right",  AT_RIGHT }
 	};
 
-	PushPopHelper pph(lexrc, alignTags, AT_LAYOUT);
+	PushPopHelper pph(lexrc, alignTags);
 	int le = lexrc.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
@@ -531,7 +530,7 @@ void Layout::readAlign(Lexer & lexrc)
 		return;
 	default: break;
 	};
-	switch (static_cast<AlignTags>(le)) {
+	switch (le) {
 	case AT_BLOCK:
 		align = LYX_ALIGN_BLOCK;
 		break;
@@ -572,7 +571,7 @@ void Layout::readAlignPossible(Lexer & lexrc)
 			continue;
 		default: break;
 		};
-		switch (static_cast<AlignTags>(le)) {
+		switch (le) {
 		case AT_BLOCK:
 			alignpossible |= LYX_ALIGN_BLOCK;
 			break;
@@ -594,36 +593,36 @@ void Layout::readAlignPossible(Lexer & lexrc)
 }
 
 
-enum LabelTypeTags {
-	LA_NO_LABEL = 1,
-	LA_MANUAL,
-	LA_TOP_ENVIRONMENT,
-	LA_CENTERED_TOP_ENVIRONMENT,
-	LA_STATIC,
-	LA_SENSITIVE,
-	LA_COUNTER,
-	LA_ENUMERATE,
-	LA_ITEMIZE,
-	LA_BIBLIO
-};
-
-
 void Layout::readLabelType(Lexer & lexrc)
 {
-	LexerKeyword labelTypeTags[] = {
-	{ "bibliography",             LA_BIBLIO },
-	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
-	{ "counter",                  LA_COUNTER },
-	{ "enumerate",                LA_ENUMERATE },
-	{ "itemize",                  LA_ITEMIZE },
-	{ "manual",                   LA_MANUAL },
-	{ "no_label",                 LA_NO_LABEL },
-	{ "sensitive",                LA_SENSITIVE },
-	{ "static",                   LA_STATIC },
-	{ "top_environment",          LA_TOP_ENVIRONMENT }
+	enum {
+		LA_NO_LABEL = 1,
+		LA_MANUAL,
+		LA_TOP_ENVIRONMENT,
+		LA_CENTERED_TOP_ENVIRONMENT,
+		LA_STATIC,
+		LA_SENSITIVE,
+		LA_COUNTER,
+		LA_ENUMERATE,
+		LA_ITEMIZE,
+		LA_BIBLIO
 	};
 
-	PushPopHelper pph(lexrc, labelTypeTags, LA_BIBLIO);
+
+	LexerKeyword labelTypeTags[] = {
+		{ "bibliography",             LA_BIBLIO },
+		{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
+		{ "counter",                  LA_COUNTER },
+		{ "enumerate",                LA_ENUMERATE },
+		{ "itemize",                  LA_ITEMIZE },
+		{ "manual",                   LA_MANUAL },
+		{ "no_label",                 LA_NO_LABEL },
+		{ "sensitive",                LA_SENSITIVE },
+		{ "static",                   LA_STATIC },
+		{ "top_environment",          LA_TOP_ENVIRONMENT }
+	};
+
+	PushPopHelper pph(lexrc, labelTypeTags);
 	int le = lexrc.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
@@ -631,7 +630,7 @@ void Layout::readLabelType(Lexer & lexrc)
 		return;
 	default: break;
 	}
-	switch (static_cast<LabelTypeTags>(le)) {
+	switch (le) {
 	case LA_NO_LABEL:
 		labeltype = LABEL_NO_LABEL;
 		break;
@@ -666,19 +665,16 @@ void Layout::readLabelType(Lexer & lexrc)
 }
 
 
-static LexerKeyword endlabelTypeTags[] =
-{
-	{ "box",	END_LABEL_BOX },
-	{ "filled_box",	END_LABEL_FILLED_BOX },
-	{ "no_label",	END_LABEL_NO_LABEL },
-	{ "static",     END_LABEL_STATIC }
-};
-
-
 void Layout::readEndLabelType(Lexer & lexrc)
 {
-	PushPopHelper pph(lexrc, endlabelTypeTags,
-			  END_LABEL_ENUM_LAST-END_LABEL_ENUM_FIRST+1);
+	static LexerKeyword endlabelTypeTags[] = {
+		{ "box",	      END_LABEL_BOX },
+		{ "filled_box",	END_LABEL_FILLED_BOX },
+		{ "no_label",	  END_LABEL_NO_LABEL },
+		{ "static",     END_LABEL_STATIC }
+	};
+
+	PushPopHelper pph(lexrc, endlabelTypeTags);
 	int le = lexrc.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
@@ -708,7 +704,7 @@ void Layout::readMargin(Lexer & lexrc)
 		{ "static",            MARGIN_STATIC }
 	};
 
-	PushPopHelper pph(lexrc, marginTags, MARGIN_RIGHT_ADDRESS_BOX);
+	PushPopHelper pph(lexrc, marginTags);
 
 	int le = lexrc.lex();
 	switch (le) {
@@ -741,7 +737,7 @@ void Layout::readLatexType(Lexer & lexrc)
 		{ "paragraph",        LATEX_PARAGRAPH }
 	};
 
-	PushPopHelper pph(lexrc, latexTypeTags, LATEX_LIST_ENVIRONMENT);
+	PushPopHelper pph(lexrc, latexTypeTags);
 	int le = lexrc.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
@@ -763,16 +759,15 @@ void Layout::readLatexType(Lexer & lexrc)
 }
 
 
-enum SpacingTags {
-	ST_SPACING_SINGLE = 1,
-	ST_SPACING_ONEHALF,
-	ST_SPACING_DOUBLE,
-	ST_OTHER
-};
-
-
 void Layout::readSpacing(Lexer & lexrc)
 {
+	enum {
+		ST_SPACING_SINGLE = 1,
+		ST_SPACING_ONEHALF,
+		ST_SPACING_DOUBLE,
+		ST_OTHER
+	};
+
 	LexerKeyword spacingTags[] = {
 		{"double",  ST_SPACING_DOUBLE },
 		{"onehalf", ST_SPACING_ONEHALF },
@@ -780,7 +775,7 @@ void Layout::readSpacing(Lexer & lexrc)
 		{"single",  ST_SPACING_SINGLE }
 	};
 
-	PushPopHelper pph(lexrc, spacingTags, ST_OTHER);
+	PushPopHelper pph(lexrc, spacingTags);
 	int le = lexrc.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
@@ -788,7 +783,7 @@ void Layout::readSpacing(Lexer & lexrc)
 		return;
 	default: break;
 	}
-	switch (static_cast<SpacingTags>(le)) {
+	switch (le) {
 	case ST_SPACING_SINGLE:
 		spacing.set(Spacing::Single);
 		break;

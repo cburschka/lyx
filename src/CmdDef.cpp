@@ -28,23 +28,18 @@ using namespace lyx::support;
 
 namespace lyx {
 
-namespace {
-
-enum CmdDefTags {
-	BN_DEFFILE,
-	BN_DEFINE
-};
-
-LexerKeyword cmdDefTags[] = {
-	{ "\\def_file", BN_DEFFILE },
-	{ "\\define", BN_DEFINE }
-};
-
-}
-
-
 bool CmdDef::read(string const & def_file)
 {
+	enum {
+		BN_DEFFILE,
+		BN_DEFINE
+	};
+
+	LexerKeyword cmdDefTags[] = {
+		{ "\\def_file", BN_DEFFILE },
+		{ "\\define", BN_DEFINE }
+	};
+
 	Lexer lexrc(cmdDefTags);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
@@ -108,7 +103,7 @@ bool CmdDef::read(string const & def_file)
 		}
 		case BN_DEFFILE:
 			if (lexrc.next()) {
-				string const tmp(lexrc.getString());
+				string const tmp = lexrc.getString();
 				error |= !read(tmp);
 			} else {
 				lexrc.printError("BN_DEFFILE: Missing file name");
@@ -157,9 +152,9 @@ bool CmdDef::lock(string const & name, FuncRequest & func)
 void CmdDef::release(string const & name)
 {
 	string const name2 = trim(name);
-
 	lockSet.erase(name2);
 }
+
 
 CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name, 
 										  string const & def)
@@ -173,8 +168,8 @@ CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name,
 		return CmdDefExists;
 
 	FuncRequest	func = lyxaction.lookupFunc(def);
-	if (func.action == LFUN_NOACTION ||
-		func.action == LFUN_UNKNOWN_ACTION) {
+	if (func.action == LFUN_NOACTION
+		|| func.action == LFUN_UNKNOWN_ACTION) {
 			return CmdDefInvalid;
 	}
 

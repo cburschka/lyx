@@ -987,7 +987,7 @@ bool LyX::readUIFile(string const & name, bool include)
 		ui_last
 	};
 
-	struct LexerKeyword uitags[] = {
+	LexerKeyword uitags[] = {
 		{ "include", ui_include },
 		{ "menuset", ui_menuset },
 		{ "toolbars", ui_toolbars },

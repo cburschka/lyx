@@ -117,25 +117,20 @@ void KeyMap::clear()
 }
 
 
-namespace {
-
-enum BindTags {
-	BN_BIND,
-	BN_BINDFILE,
-	BN_UNBIND,
-};
-
-LexerKeyword bindTags[] = {
-	{ "\\bind", BN_BIND },
-	{ "\\bind_file", BN_BINDFILE },
-	{ "\\unbind", BN_UNBIND },
-};
-
-}
-
-
 bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 {
+	enum {
+		BN_BIND,
+		BN_BINDFILE,
+		BN_UNBIND,
+	};
+
+	LexerKeyword bindTags[] = {
+		{ "\\bind", BN_BIND },
+		{ "\\bind_file", BN_BINDFILE },
+		{ "\\unbind", BN_UNBIND },
+	};
+
 	Lexer lexrc(bindTags);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);

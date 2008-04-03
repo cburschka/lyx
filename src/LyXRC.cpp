@@ -195,7 +195,8 @@ LyXRC::LyXRC()
 }
 
 
-void LyXRC::setDefaults() {
+void LyXRC::setDefaults()
+{
 	bind_file = "cua";
 	def_file = "default";
 	ui_file = "default";
