@@ -1555,6 +1555,14 @@ void LyXAction::init()
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
 		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly, Buffer },
 		{ LFUN_MASTER_BUFFER_VIEW, "master-buffer-view", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_LANGUAGE
+ * \li Action: Set language of the current document.
+ * \li Syntax: buffer-language <LANG>
+ * \li Params: <LANG>: language name. See lib/languages for list.
+ * \li Author: leeming, 30 Mar 2004
+ * \endvar
+ */
 		{ LFUN_BUFFER_LANGUAGE, "buffer-language", Noop, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_SAVE_AS_DEFAULT
@@ -1563,6 +1571,7 @@ void LyXAction::init()
  * \li Syntax: buffer-save-as-default [<ARGS>]
  * \li Params: <ARGS>: contains the particular settings to be saved. They obey the syntax
                        you can find in document header of usual .lyx file.
+ * \li Author: leeming, 30 Mar 2004
  * \endvar
  */
 		{ LFUN_BUFFER_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop, Buffer },
@@ -1572,6 +1581,7 @@ void LyXAction::init()
  * \li Syntax: buffer-params-apply [<ARGS>]
  * \li Params: <ARGS>: contains the particular settings to be saved. They obey the syntax
                        you can find in document header of usual .lyx file.
+ * \li Author: leeming, 30 Mar 2004
  * \endvar
  */
 		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
