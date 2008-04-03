@@ -69,8 +69,8 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 {
 	FileName const script = libFileSearch("scripts", "layout2layout.py");
 	if (script.empty()) {
-		lyxerr << "Could not find layout conversion "
-			  "script layout2layout.py." << endl;
+		LYXERR0("Could not find layout conversion "
+			  "script layout2layout.py.");
 		return false;
 	}
 
@@ -82,11 +82,9 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 
 	LYXERR(Debug::TCLASS, "Running `" << command_str << '\'');
 
-	cmd_ret const ret =
-		runCommand(command_str);
+	cmd_ret const ret = runCommand(command_str);
 	if (ret.first != 0) {
-		lyxerr << "Could not run layout conversion "
-			  "script layout2layout.py." << endl;
+		LYXERR0("Could not run layout conversion script layout2layout.py.");
 		return false;
 	}
 	return true;
@@ -139,7 +137,7 @@ bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
 	if (!lay.read(lexrc, *this)) {
-		lyxerr << "Error parsing style `" << to_utf8(lay.name()) << '\'' << endl;
+		LYXERR0("Error parsing style `" << to_utf8(lay.name()) << '\'');
 		return false;
 	}
 	// Resolve fonts
@@ -302,8 +300,7 @@ bool TextClass::read(std::string const & str, ReadType rt)
 	FileName const tempfile = FileName::tempName();
 	ofstream os(tempfile.toFilesystemEncoding().c_str());
 	if (!os) {
-		lyxerr << "Unable to create tempoary file in TextClass::read!!" 
-			<< std::endl;
+		LYXERR0("Unable to create tempoary file");
 		return false;
 	}
 	os << str;
@@ -312,8 +309,8 @@ bool TextClass::read(std::string const & str, ReadType rt)
 	// now try to convert it
 	bool const worx = convertLayoutFormat(tempfile, rt);
 	if (!worx) {
-		lyxerr << "Unable to convert internal layout information to format " 
-			<< FORMAT << std::endl;
+		LYXERR0("Unable to convert internal layout information to format " 
+			<< FORMAT);
 	}
 	tempfile.removeFile();
 	return worx;
@@ -398,13 +395,13 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					Layout & lay = operator[](name);
 					error = !readStyle(lexrc, lay);
 				} else {
-					Layout lay;
-					lay.setName(name);
+					Layout layout;
+					layout.setName(name);
 					if (le == TC_ENVIRONMENT)
-						lay.is_environment = true;
-					error = !readStyle(lexrc, lay);
+						layout.is_environment = true;
+					error = !readStyle(lexrc, layout);
 					if (!error)
-						layoutlist_.push_back(lay);
+						layoutlist_.push_back(layout);
 
 					if (defaultlayout_.empty()) {
 						// We do not have a default layout yet, so we choose
@@ -415,8 +412,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			else {
 				//FIXME Should we also eat the style here? viz:
-				//Layout lay;
-				//readStyle(lexrc, lay);
+				//Layout layout;
+				//readStyle(lexrc, layout);
 				//as above...
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
@@ -522,9 +519,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_INSETLAYOUT:
 			if (lexrc.next()) {
 				InsetLayout il;
-				if (il.read(lexrc)) {
+				if (il.read(lexrc))
 					insetlayoutlist_[il.name()] = il;
-				}
 				// else there was an error, so forget it
 			}
 			break;
@@ -567,21 +563,21 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		return (error ? ERROR : OK);
 
 	if (defaultlayout_.empty()) {
-		lyxerr << "Error: Textclass '" << name_
-						<< "' is missing a defaultstyle." << endl;
+		LYXERR0("Error: Textclass '" << name_
+						<< "' is missing a defaultstyle.");
 		error = true;
 	}
 		
-	//Try to erase "stdinsets" from the provides_ set. 
-	//The
-	//  Provides stdinsets 1
-	//declaration simply tells us that the standard insets have been
-	//defined. (It's found in stdinsets.inc but could also be used in
-	//user-defined files.) There isn't really any such package. So we
-	//might as well go ahead and erase it.
-	//If we do not succeed, then it was not there, which means that
-	//the textclass did not provide the definitions of the standard
-	//insets. So we need to try to load them.
+	// Try to erase "stdinsets" from the provides_ set. 
+	// The
+	//   Provides stdinsets 1
+	// declaration simply tells us that the standard insets have been
+	// defined. (It's found in stdinsets.inc but could also be used in
+	// user-defined files.) There isn't really any such package. So we
+	// might as well go ahead and erase it.
+	// If we do not succeed, then it was not there, which means that
+	// the textclass did not provide the definitions of the standard
+	// insets. So we need to try to load them.
 	int erased = provides_.erase("stdinsets");
 	if (!erased) {
 		FileName tmp = libFileSearch("layouts", "stdinsets.inc");
@@ -631,15 +627,13 @@ void TextClass::readTitleType(Lexer & lexrc)
 	switch (le) {
 	case Lexer::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
-		return;
+		break;
 	case TITLE_COMMAND_AFTER:
 	case TITLE_ENVIRONMENT:
 		titletype_ = static_cast<TitleLatexType>(le);
 		break;
 	default:
-		lyxerr << "Unhandled value " << le
-		       << " in TextClass::readTitleType." << endl;
-
+		LYXERR0("Unhandled value " << le << " in TextClass::readTitleType.");
 		break;
 	}
 }
@@ -666,9 +660,7 @@ void TextClass::readOutputType(Lexer & lexrc)
 		outputType_ = static_cast<OutputType>(le);
 		break;
 	default:
-		lyxerr << "Unhandled value " << le
-		       << " in TextClass::readOutputType." << endl;
-
+		LYXERR0("Unhandled value " << le);
 		break;
 	}
 }
@@ -956,11 +948,10 @@ Layout & TextClass::operator[](docstring const & name)
 	iterator it = find_if(begin(), end(), LayoutNamesEqual(name));
 
 	if (it == end()) {
-		lyxerr << "We failed to find the layout '" << to_utf8(name)
-		       << "' in the layout list. You MUST investigate!"
-		       << endl;
+		LYXERR0("We failed to find the layout '" << to_utf8(name)
+		       << "' in the layout list. You MUST investigate!");
 		for (const_iterator cit = begin(); cit != end(); ++cit)
-			lyxerr  << " " << to_utf8(cit->name()) << endl;
+			LYXERR0(" " << to_utf8(cit->name()));
 
 		// we require the name to exist
 		BOOST_ASSERT(false);
