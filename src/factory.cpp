@@ -475,8 +475,9 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 				inset.reset(new InsetPrintNomencl(inscmd));
 				break;
 			case REF_CODE:
-				if (!inscmd["name"].empty() || !inscmd["reference"].empty())
-					inset.reset(new InsetRef(buf, inscmd));
+				if (inscmd["name"].empty() && inscmd["reference"].empty())
+					return 0;
+				inset.reset(new InsetRef(buf, inscmd));
 				break;
 			case TOC_CODE:
 				inset.reset(new InsetTOC(inscmd));
