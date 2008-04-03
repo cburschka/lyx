@@ -81,14 +81,12 @@ private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring name() const { return name_; }
+	docstring name() const;
 	///
 	Inset * clone() const { return new InsetWrap(*this); }
 
 	///
 	InsetWrapParams params_;
-	///
-	docstring name_;
 };
 
 } // namespace lyx

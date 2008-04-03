@@ -25,7 +25,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "OutputParams.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 
@@ -38,11 +37,11 @@
 
 using namespace std;
 
+
 namespace lyx {
 
-
 InsetWrap::InsetWrap(Buffer const & buf, string const & type)
-	: InsetCollapsable(buf), name_(from_utf8(type))
+	: InsetCollapsable(buf)
 {
 	setLabel(_("wrap: ") + floatName(type, buf.params()));
 	params_.type = type;
@@ -56,6 +55,12 @@ InsetWrap::InsetWrap(Buffer const & buf, string const & type)
 InsetWrap::~InsetWrap()
 {
 	hideDialogs("wrap", this);
+}
+
+
+docstring InsetWrap::name() const
+{
+	return from_utf8(params_.type);
 }
 
 
@@ -117,58 +122,20 @@ void InsetWrap::updateLabels(ParIterator const & it)
 void InsetWrapParams::write(ostream & os) const
 {
 	os << "Wrap " << type << '\n';
-	os << "lines " << lines << "\n";
-	os << "placement " << placement << "\n";
-	os << "overhang " << overhang.asString() << "\n";
+	os << "lines " << lines << '\n';
+	os << "placement " << placement << '\n';
+	os << "overhang " << overhang.asString() << '\n';
 	os << "width \"" << width.asString() << "\"\n";
 }
 
 
 void InsetWrapParams::read(Lexer & lex)
 {
-	string token;
-
-	lex >> token;
-	if (token == "lines")
-		lex >> lines;
-	else {
-		lyxerr << "InsetWrap::Read:: Missing 'lines'-tag!"
-			<< endl;
-		// take countermeasures
-		lex.pushToken(token);
-	}
-	if (!lex)
-		return;
-	lex >> token;
-	if (token == "placement")
-		lex >> placement;
-	else {
-		lyxerr << "InsetWrap::Read:: Missing 'placement'-tag!"
-			<< endl;
-		lex.pushToken(token);
-	}
-	if (!lex)
-		return;
-	lex >> token;
-	if (token == "overhang") {
-		lex.next();
-		overhang = Length(lex.getString());
-	} else {
-		lyxerr << "InsetWrap::Read:: Missing 'overhang'-tag!"
-			<< endl;
-		lex.pushToken(token);
-	}
-	if (!lex)
-		return;
-	lex >> token;
-	if (token == "width") {
-		lex.next();
-		width = Length(lex.getString());
-	} else {
-		lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
-			<< endl;
-		lex.pushToken(token);
-	}
+	lex.setContext("InsetWrapParams::read");
+	lex >> "lines" >> lines;
+	lex >> "placement" >> placement;
+	lex >> "overhang" >> overhang;
+	lex >> "width" >> width;
 }
 
 
@@ -263,31 +230,13 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 {
 	params = InsetWrapParams();
-	if (in.empty())
-		return;
-
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "wrap") {
-		LYXERR0("Expected arg 1 to be \"wrap\" in " << in);
-		return;
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Text::readInset
-	string id;
-	lex >> id;
-	if (!lex || id != "Wrap") {
-		LYXERR0("Expected arg 2 to be \"Wrap\" in " << in);
-		return;
-	}
-
-	// We have to read the type here!
-	lex >> params.type;
+	lex.setContext("InsetWrap::string2params");
+	lex >> "wrap";
+	lex >> "Wrap";  // Part of the inset proper, swallowed by Text::readInset
+	lex >> params.type; // We have to read the type here!
 	params.read(lex);
 }
 
