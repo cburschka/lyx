@@ -180,7 +180,7 @@ $output=$output."<p>
      If your name doesn't appear here although you've done
      something for LyX, or your entry is wrong or incomplete,
      just drop an e-mail to the
-     <a href=\\"mailto:lyx-devel@lists.lyx.org\\">lyx-devel</a>
+     [[mailto:lyx-devel@lists.lyx.org | lyx-devel]]
      mailing list. Thanks.
 </p>
 
@@ -225,7 +225,7 @@ $output=$output. "
 
 if (isset($msg_ref) && $msg_ref != "") {
         $msg_ref = htmlspecialchars("$msg_ref");
-        $output=$output. "<a href=\\"http://marc.info/?l=lyx-devel&amp;${msg_ref}\\">${msg_title}</a>";
+        $output=$output. "[[http://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
 } else {
         $output=$output. "${msg_title}";
 }
@@ -242,8 +242,8 @@ function blanket_output() {
 $output=$output."<p>
      The following people hereby grant permission to license their
      contributions to LyX under the
-     <a href=\\"http://www.opensource.org/licenses/gpl-license.php\\">
-     Gnu General Public License</a>, version 2 or later.
+     [[http://www.opensource.org/licenses/gpl-license.php |
+     Gnu General Public License]], version 2 or later.
 </p>
 
 <dl>";
@@ -260,8 +260,8 @@ $output=$output."
 <p>
      The following people hereby grant permission to license their
      contributions to LyX under the
-     <a href=\\"http://www.opensource.org/licenses/artistic-license.php\\">
-     Artistic License</a>.
+     [[http://www.opensource.org/licenses/artistic-license.php |
+     Artistic License]].
 </p>
 
 <dl>";
