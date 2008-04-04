@@ -1,6 +1,6 @@
 # Czech translation of LyX
 # Copyright (C) 2006 LyX Developers
-# Pavel Sanda <ps@ucw.cz>, 2008.
+# Pavel Sanda <sanda@lyx.org>, 2008.
 #
 msgid ""
 msgstr ""
@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-03-26 22:02+0100\n"
 "PO-Revision-Date: 2008-03-15 22:01-0500\n"
-"Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
+"Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -1521,9 +1521,8 @@ msgid "Click to select a local document class definition file"
 msgstr "Nastavit lokální definièní soubor tøídy dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:185
-#, fuzzy
 msgid "&Local Layout..."
-msgstr "&Nastavit lokální rozvr¾ení..."
+msgstr "&Lokální rozvr¾ení..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:192
 msgid "Document &class:"
@@ -8087,9 +8086,8 @@ msgid "Armenian"
 msgstr "Armén¹tina"
 
 #: lib/languages:9
-#, fuzzy
 msgid "Austrian (old spelling)"
-msgstr "Rakousky (nový pravopis)"
+msgstr "Rakousky (starý pravopis)"
 
 #: lib/languages:10
 msgid "Austrian"
@@ -8192,9 +8190,8 @@ msgid "Galician"
 msgstr "Gal¹tina"
 
 #: lib/languages:38
-#, fuzzy
 msgid "German (old spelling)"
-msgstr "Nìmèina (nový pravopis)"
+msgstr "Nìmèina (starý pravopis)"
 
 #: lib/languages:39
 msgid "German"
@@ -9227,34 +9224,28 @@ msgid "Go to Label|G"
 msgstr "Jdi na znaèku|J"
 
 #: lib/ui/stdcontext.inc:32
-#, fuzzy
 msgid "<reference>|r"
-msgstr "<reference>"
+msgstr "<reference>|r"
 
 #: lib/ui/stdcontext.inc:33
-#, fuzzy
 msgid "(<reference>)|e"
-msgstr "(<reference>)"
+msgstr "(<reference>)|e"
 
 #: lib/ui/stdcontext.inc:34
-#, fuzzy
 msgid "<page>|p"
-msgstr "<strana>"
+msgstr "<strana>|s"
 
 #: lib/ui/stdcontext.inc:35
-#, fuzzy
 msgid "on page <page>|o"
-msgstr "na stranì <strana>"
+msgstr "na stranì <strana>|a"
 
 #: lib/ui/stdcontext.inc:36
-#, fuzzy
 msgid "<reference> on page <page>|f"
-msgstr "<reference> na stranì <strana>"
+msgstr "<reference> na stranì <strana>|t"
 
 #: lib/ui/stdcontext.inc:37
-#, fuzzy
 msgid "Formatted reference|t"
-msgstr "Formátovaná reference"
+msgstr "Formátovaná reference|F"
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdcontext.inc:53 lib/ui/stdcontext.inc:63
 #: lib/ui/stdcontext.inc:70 lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:119
@@ -9268,63 +9259,52 @@ msgid "Go back to Reference|G"
 msgstr "Jdi zpìt na referenci|r"
 
 #: lib/ui/stdcontext.inc:60
-#, fuzzy
 msgid "Open Inset|O"
-msgstr "Otevøi v¹echny vlo¾ky|O"
+msgstr "Otevøi vlo¾ku|O"
 
 #: lib/ui/stdcontext.inc:61
-#, fuzzy
 msgid "Close Inset|C"
-msgstr "Zavøi v¹echny vlo¾ky|Z"
+msgstr "Zavøi vlo¾ku|Z"
 
 #: lib/ui/stdcontext.inc:67
-#, fuzzy
 msgid "Toggle Label|L"
-msgstr "&Pøepnout v¹e"
+msgstr "Pøepnout znaèku|u"
 
 #: lib/ui/stdcontext.inc:68
-#, fuzzy
 msgid "Dissolve Inset|D"
-msgstr "Rozpustit vlo¾ku do textu|R"
+msgstr "Rozpustit vlo¾ku do textu|u"
 
 #: lib/ui/stdcontext.inc:78
-#, fuzzy
 msgid "Frameless|l"
-msgstr "Bez rámù"
+msgstr "Bez rámù|B"
 
 #: lib/ui/stdcontext.inc:79
-#, fuzzy
 msgid "Simple frame|f"
-msgstr "vlo¾ka - rám"
+msgstr "Jednoduchý rám|J"
 
 #: lib/ui/stdcontext.inc:80
 msgid "Simple frame, page breaks|p"
-msgstr ""
+msgstr "Jednoduchý rám, více stran|v"
 
 #: lib/ui/stdcontext.inc:81
-#, fuzzy
 msgid "Oval, thin|O"
-msgstr "Oválný tenký rám"
+msgstr "Oválný tenký rám|O"
 
 #: lib/ui/stdcontext.inc:82
-#, fuzzy
 msgid "Oval, thick|v"
-msgstr "Oválný tlustý rám"
+msgstr "Oválný tlustý rám|t"
 
 #: lib/ui/stdcontext.inc:83
-#, fuzzy
 msgid "Drop Shadow|w"
-msgstr "Se stínem"
+msgstr "Se stínem|S"
 
 #: lib/ui/stdcontext.inc:84
-#, fuzzy
 msgid "Shaded background|b"
-msgstr "Pozadí s odstínem"
+msgstr "Pozadí s odstínem|P"
 
 #: lib/ui/stdcontext.inc:85
-#, fuzzy
 msgid "Double frame|D"
-msgstr "dvojitá"
+msgstr "Dvojitý rám"
 
 #: lib/ui/stdcontext.inc:95 lib/ui/stdmenus.inc:434
 msgid "LyX Note|N"
@@ -9444,14 +9424,12 @@ msgid "Clear Double Page|D"
 msgstr "Uzavøít stránku v oboustraném dok. (\\cleardoublepage)|z"
 
 #: lib/ui/stdcontext.inc:154 lib/ui/stdmenus.inc:375
-#, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Konec øádku|K"
 
 #: lib/ui/stdcontext.inc:155 lib/ui/stdmenus.inc:376
-#, fuzzy
 msgid "Justified Line Break|J"
-msgstr "Konec øádku|K"
+msgstr "Konec øádku se zarovnáním"
 
 #: lib/ui/stdcontext.inc:162 lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
@@ -9549,9 +9527,8 @@ msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr "Odstranit vyplivnutí posledního parametru doprava"
 
 #: lib/ui/stdcontext.inc:217
-#, fuzzy
 msgid "Edit externally...|x"
-msgstr "Edituj soubor externì"
+msgstr "Edituj externì...|x"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
@@ -13227,9 +13204,8 @@ msgid "Read Error"
 msgstr "Chyba ètení"
 
 #: src/BufferParams.cpp:1517
-#, fuzzy
 msgid "Error reading internal layout information"
-msgstr "Obecné informace"
+msgstr "Chyba pøi ètení informací o rozvr¾ení"
 
 #: src/BufferView.cpp:177
 msgid "No more insets"
@@ -15268,9 +15244,8 @@ msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
 #: src/TextClass.cpp:115
-#, fuzzy
 msgid "Plain Layout"
-msgstr "Rozvr¾ení Stránky"
+msgstr "Jednoduché"
 
 #: src/TextClass.cpp:592
 msgid "Missing File"
@@ -17486,42 +17461,36 @@ msgstr ""
 "BibTeX nebude schopen tyto soubory najít."
 
 #: src/insets/InsetBox.cpp:60
-#, fuzzy
 msgid "simple frame"
-msgstr "vlo¾ka - rám"
+msgstr "jednoduchý rám"
 
 #: src/insets/InsetBox.cpp:61
-#, fuzzy
 msgid "frameless"
-msgstr "Bez rámù"
+msgstr "bez rámù"
 
 #: src/insets/InsetBox.cpp:62
 msgid "simple frame, page breaks"
-msgstr ""
+msgstr "jednoduchý, více stran"
 
 #: src/insets/InsetBox.cpp:63
-#, fuzzy
 msgid "oval, thin"
-msgstr "Oválný tenký rám"
+msgstr "oválný tenký"
 
 #: src/insets/InsetBox.cpp:64
-#, fuzzy
 msgid "oval, thick"
-msgstr "Oválný tlustý rám"
+msgstr "oválný tlustý"
 
 #: src/insets/InsetBox.cpp:65
 msgid "drop shadow"
-msgstr ""
+msgstr "se stínem"
 
 #: src/insets/InsetBox.cpp:66
-#, fuzzy
 msgid "shaded background"
-msgstr "Rámeèek se stínovaným pozadím"
+msgstr "se stínovaným pozadím"
 
 #: src/insets/InsetBox.cpp:67
-#, fuzzy
 msgid "double frame"
-msgstr "dvojitá"
+msgstr "dvojitý rám"
 
 #: src/insets/InsetBox.cpp:104
 msgid "Opened Box Inset"
