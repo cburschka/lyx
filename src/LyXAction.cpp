@@ -1067,6 +1067,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_INSET_APPLY, "inset-apply", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_DISSOLVE
+ * \li Action: Dissolve the current inset into text.
+ * \li Syntax: inset-dissolve [<INSET>]
+ * \li Author: JSpitz, 7 Aug 2006
+ * \endvar
+ */
 		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
