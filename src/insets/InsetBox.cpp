@@ -178,7 +178,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 
 bool InsetBox::forceEmptyLayout(idx_type) const
 {
-	return !params_.inner_box;
+	return !params_.inner_box && params_.type != "Framed";
 }
 
 
@@ -232,7 +232,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_BREAK_PARAGRAPH:
-		if (params_.inner_box)
+		if (params_.inner_box || params_.type == "Framed")
 			return InsetCollapsable::getStatus(cur, cmd, flag);
 		flag.enabled(false);
 		return true;
