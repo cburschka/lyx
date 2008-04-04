@@ -184,7 +184,7 @@ bool InsetBox::forceEmptyLayout(idx_type) const
 
 bool InsetBox::showInsetDialog(BufferView * bv) const
 {
-	bv->showDialog("box", params2string(params_), 
+	bv->showDialog("box", params2string(params_),
 		const_cast<InsetBox *>(this));
 	return true;
 }
@@ -627,6 +627,8 @@ void InsetBoxParams::read(Lexer & lex)
 	if (token == "has_inner_box") {
 		lex.next();
 		inner_box = lex.getInteger();
+		if (type == "Framed")
+			inner_box = false;
 	} else {
 		lyxerr << "InsetBox::Read: Missing 'has_inner_box'-tag!" << endl;
 		lex.pushToken(token);

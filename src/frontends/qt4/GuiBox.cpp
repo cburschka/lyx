@@ -157,6 +157,7 @@ void GuiBox::innerBoxChanged(QString const & str)
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
+	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
 	if (heightCB->checkState() == Qt::Checked && ibox) {
 		heightED->setEnabled(true);
 		heightUnitsLC->setEnabled(true);
@@ -179,8 +180,8 @@ void GuiBox::typeChanged(int index)
 	}
 	if (index != 1)
 		pagebreakCB->setChecked(false);
-	pagebreakCB->setEnabled(index == 1);
 	int itype = innerBoxCO->currentIndex();
+	pagebreakCB->setEnabled(index == 1 && itype == 0);
 	setInnerType(frameless, itype);
 }
 
@@ -228,7 +229,7 @@ void GuiBox::updateContents()
 		pagebreakCB->setChecked(false);
 	}
 
-	pagebreakCB->setEnabled(type == "Boxed");
+	pagebreakCB->setEnabled(type == "Boxed" && !params_.inner_box);
 
 	for (int i = 0; i != gui_names_.size(); ++i) {
 		if (type == ids_[i])
@@ -306,7 +307,7 @@ void GuiBox::updateContents()
 
 void GuiBox::applyView()
 {
-	bool pagebreak = pagebreakCB->isChecked();
+	bool pagebreak = pagebreakCB->isEnabled() && pagebreakCB->isChecked();
 	if (pagebreak)
 		params_.type = "Framed";
 	else
