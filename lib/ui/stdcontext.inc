@@ -104,6 +104,7 @@ Menuset
 		OptItem "Open Inset|O" "next-inset-toggle open"
 		OptItem "Close Inset|C" "next-inset-toggle close"
 		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
 		OptItem "Settings...|S" "inset-settings"
 	End
 
@@ -128,6 +129,7 @@ Menuset
 		Item "Shaded background|b" "next-inset-modify changetype Shaded"
 		Item "Double frame|D" "next-inset-modify changetype Doublebox"
 		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
 		Item "Settings...|S" "inset-settings box"
 	End
 
@@ -139,6 +141,8 @@ Menuset
 		Item "LyX Note|N" "next-inset-modify note Note Note"
 		Item "Comment|C" "next-inset-modify note Note Comment"
 		Item "Greyed Out|G" "next-inset-modify note Note Greyedout"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
 	End
 
 
