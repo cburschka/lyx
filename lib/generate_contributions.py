@@ -55,10 +55,7 @@ class contributer:
                if self.contact.find("http") != -1:
                     result.append('@i%s\n' % self.contact)
                else:
-                    ename, address = self.contact.split(" () ", 1)
-                    address = address.replace(" ! ", ".")
-                    contact = "%s@%s" % (ename, address)
-                    result.append('@iE-mail: %s\n' % contact)
+                    result.append('@iE-mail: %s\n' % self.contact)
           result.append('   %s\n' % self.credit.replace('\n', '\n   '))
           return "".join(result)
 
@@ -154,14 +151,10 @@ def as_php_credits(contributers, file):
 
 function credits_contrib($name, $email, $msg) {
 
-$output=$output. "
-
- <dt>
-  <b>${name}</b>
-";
-
 if (isset($email) && $email != "")
-        $output=$output. "  <i>&lt;${email}&gt;</i>";
+        $output=$output. "<dt><b>[[mailto:${email} | ${name}]]</b>";
+else
+        $output=$output. "<dt><b>${name}</b>";
 
 $msg = ereg_replace("\\n *", "\\n  ", ltrim($msg));
 
@@ -216,8 +209,7 @@ function blanket_contrib($name, $email, $msg_title, $msg_ref, $date) {
 $output=$output. "
 
  <dt>
-  <b>${name}</b>
-  <i>&lt;${email}&gt;</i>
+  <b>[[mailto:${email} | ${name}]]</b>
  </dt>
  <dd>
   See the lyx-devel mailing list message
@@ -307,7 +299,7 @@ def main(argv, contributers):
 contributers = [
 
      contributer(u"Maarten Afman",
-                 "info () afman ! net",
+                 "info@afman.net",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110958096916679",
@@ -315,7 +307,7 @@ contributers = [
                  u"Dutch translation team member"),
 
      contributer(u"Asger Alstrup",
-                 "aalstrup () laerdal ! dk",
+                 "aalstrup@laerdal.dk",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899716913300",
@@ -323,7 +315,7 @@ contributers = [
                  u"General hacking of user interface stuff and those other bits and pieces"),
 
      contributer(u"Pascal André",
-                 "andre () via ! ecp ! fr",
+                 "andre@via.ecp.fr",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111263406200012",
@@ -331,7 +323,7 @@ contributers = [
                  u"External style definition files, linuxdoc sgml support and more ftp-site ftp.lyx.org"),
 
      contributer(u"João Luis Meloni Assirati",
-                 "assirati () nonada ! if ! usp ! br",
+                 "assirati@nonada.if.usp.br",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110918749022256",
@@ -339,7 +331,7 @@ contributers = [
                  u"Added support for unix sockets and thence the 'inverse DVI' feature"),
 
      contributer(u"Özgür Uğraş Baran",
-                 "ugras.baran () gmail ! com",
+                 "ugras.baran@gmail.com",
                  "GPL",
                  "Re: [patch] new InsetCommandParams",
                  "m=116124030512963",
@@ -347,7 +339,7 @@ contributers = [
                  u"New commandparams structure, Nomenclature inset"),
 
     contributer(u"Susana Barbosa",
-                 "susana.barbosa () fc ! up ! pt",
+                 "susana.barbosa@fc.up.pt",
                  "GPL",
                  "License",
                  "m=118707828425316",
@@ -355,7 +347,7 @@ contributers = [
                  u"Portuguese translation"),
 
      contributer(u"Yves Bastide",
-                 "yves.bastide () irisa ! fr",
+                 "yves.bastide@irisa.fr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110959913631678",
@@ -363,7 +355,7 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Heinrich Bauer",
-                 "heinrich.bauer () t-mobile ! de",
+                 "heinrich.bauer@t-mobile.de",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110910430117798",
@@ -371,7 +363,7 @@ contributers = [
                  u"Fixes for dvi output original version of page selection for printing"),
 
      contributer(u"Georg Baum",
-                 "georg.baum () post ! rwth-aachen ! de",
+                 "georg.baum@post.rwth-aachen.de",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899912526043",
@@ -379,7 +371,7 @@ contributers = [
                  u"tex2lyx improvements, bug fixes, unicode work"),
 
      contributer(u"Hans Bausewein",
-                 "hans () comerwell ! xs4all ! nl",
+                 "hans@comerwell.xs4all.nl",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111262999400394",
@@ -387,7 +379,7 @@ contributers = [
                  '"case insensitive" and "complete word" search'),
 
      contributer(u"Graham Biswell",
-                 "graham () gbiswell ! com",
+                 "graham@gbiswell.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111269177728853",
@@ -395,7 +387,7 @@ contributers = [
                  u"Small bugfixes that were very hard to find"),
 
      contributer(u"Lars Gullik Bjønnes",
-                 "larsbj () gullik ! net",
+                 "larsbj@gullik.net",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110907078027047",
@@ -403,7 +395,7 @@ contributers = [
                  u"Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer"),
 
      contributer(u"Alfredo Braunstein",
-                 "abraunst () lyx ! org",
+                 "abraunst@lyx.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110927069513172",
@@ -411,7 +403,7 @@ contributers = [
                  u"A (pseudo) threaded graphics loader queue, lots of fixes, etc."),
 
      contributer(u"Christian Buescher",
-                 "christian.buescher () uni-bielefeld ! de",
+                 "christian.buescher@uni-bielefeld.de",
                  "",
                  "",
                  "",
@@ -419,7 +411,7 @@ contributers = [
                  u"User-definable keys, lyxserver and more"),
 
      contributer(u"Johnathan Burchill",
-                 "jkerrb () users ! sourceforge ! net",
+                 "jkerrb@users.sourceforge.net",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908472818670",
@@ -427,7 +419,7 @@ contributers = [
                  u"Ported John Levon's original 'change tracking' code to later versions of LyX. Numerous bug fixes thereof."),
 
      contributer(u"Francesc Burrull i Mestres",
-                 "fburrull () mat ! upc ! es",
+                 "fburrull@mat.upc.es",
                  "",
                  "",
                  "",
@@ -435,7 +427,7 @@ contributers = [
                  u"Catalan translation"),
 
      contributer(u"Humberto Nicolás Castejón",
-                 "beconico () gmail ! com",
+                 "beconico@gmail.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111833854105023",
@@ -443,7 +435,7 @@ contributers = [
                  u"Spanish translation of the Windows installer"),
 
      contributer(u"Matěj Cepl",
-                 "matej () ceplovi ! cz",
+                 "matej@ceplovi.cz",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110913090232039",
@@ -451,7 +443,7 @@ contributers = [
                  u"Improvements to the czech keymaps"),
 
      contributer(u"Albert Chin",
-                 "lyx-devel () mlists ! thewrittenword ! com",
+                 "lyx-devel@mlists.thewrittenword.com",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111220294831831",
@@ -459,7 +451,7 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Jean-Pierre Chrétien",
-                 "chretien () cert ! fr",
+                 "chretien@cert.fr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111842518713710",
@@ -467,7 +459,7 @@ contributers = [
                  u"French translation of the Windows installer"),
 
      contributer(u"Claudio Coco",
-                 "lacocio () libero ! it",
+                 "lacocio@libero.it",
                  "GPL",
                  "Agreement to GNU General Public licence",
                  "m=113749629514591",
@@ -475,7 +467,7 @@ contributers = [
                  u"Italian translation"),
 
      contributer(u"Matthias Kalle Dalheimer",
-                 "kalle () kdab ! net",
+                 "kalle@kdab.net",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908857130107",
@@ -483,7 +475,7 @@ contributers = [
                  u"Qt2 port"),
 
      contributer(u"Anders Ekberg",
-                 "anek () chalmers ! se",
+                 "anek@chalmers.se",
                  "GPL",
                  "License agreement",
                  "m=113725822602516",
@@ -491,7 +483,7 @@ contributers = [
                  u"Improvements to the Swedish translation of the Windows Installer"),
 
      contributer(u"Matthias Ettrich",
-                 "ettrich () trolltech ! com",
+                 "ettrich@trolltech.com",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110959638810040",
@@ -499,7 +491,7 @@ contributers = [
                  u"Started the project, implemented the early versions, various improvements including undo/redo, tables, and much, much more"),
 
      contributer(u"Baruch Even",
-                 "baruch () ev-en ! org",
+                 "baruch@ev-en.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110936007609786",
@@ -507,7 +499,7 @@ contributers = [
                  u"New graphics handling scheme and more"),
 
      contributer(u"Dov Feldstern",
-                 "dfeldstern () fastimap ! com",
+                 "dfeldstern@fastimap.com",
                  "GPL",
                  "Re: Farsi support re-submission plus a little more",
                  "m=118064913824836",
@@ -515,7 +507,7 @@ contributers = [
                  u"RTL/BiDi-related fixes"),
 
      contributer(u"Ronald Florence",
-                 "ron () 18james ! com",
+                 "ron@18james.com",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111262821108510",
@@ -523,7 +515,7 @@ contributers = [
                  u"Maintainer of the OS X port(s)"),
 
      contributer(u"José Ramom Flores d'as Seixas",
-                 "fa2ramon () usc ! es",
+                 "fa2ramon@usc.es",
                  "GPL",
                  "Re: Galician translation",
                  "m=116136920230072",
@@ -531,7 +523,7 @@ contributers = [
                  u"Galician documentation and localization"),
 
      contributer(u"John Michael Floyd",
-                 "jmf () pwd ! nsw ! gov ! au",
+                 "jmf@pwd.nsw.gov.au",
                  "",
                  "",
                  "",
@@ -539,7 +531,7 @@ contributers = [
                  u"Bug fix to the spellchecker"),
 
      contributer(u"Enrico Forestieri",
-                 "forenr () tlc ! unipr ! it",
+                 "forenr@tlc.unipr.it",
                  "GPL",
                  "Re: lyxpreview2ppm.py",
                  "m=111894292115287",
@@ -547,7 +539,7 @@ contributers = [
                  u"Italian translation of the Windows installer"),
 
      contributer(u"Eitan Frachtenberg",
-                 "sky8an () gmail ! com",
+                 "sky8an@gmail.com",
                  "GPL",
                  "Re: [PATCH] BibTeX annotation support",
                  "m=111130799028250",
@@ -555,7 +547,7 @@ contributers = [
                  u"BibTeX annotation support"),
 
      contributer(u"Darren Freeman",
-                 "dfreeman () ieee ! org",
+                 "dfreeman@ieee.org",
                  "GPL",
                  "Licence",
                  "m=118612951707590",
@@ -563,7 +555,7 @@ contributers = [
                  u"Improvements to mouse wheel scrolling; many bug reports"),
 
      contributer(u"Edscott Wilson Garcia",
-                 "edscott () xfce ! org",
+                 "edscott@xfce.org",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111219295119021",
@@ -571,7 +563,7 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Ignacio García",
-                 "ignacio.garcia () tele2 ! es",
+                 "ignacio.garcia@tele2.es",
                  "GPL",
                  "Re: es_EmbeddedObjects",
                  "m=117079592919653",
@@ -579,7 +571,7 @@ contributers = [
                  u"Spanish translation of documentations"),
 
      contributer(u"Michael Gerz",
-                 "michael.gerz () teststep ! org",
+                 "michael.gerz@teststep.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909251110103",
@@ -587,7 +579,7 @@ contributers = [
                  u"Change tracking, German localization, bug fixes"),
 
      contributer(u"Stefano Ghirlanda",
-                 "stefano.ghirlanda () unibo ! it",
+                 "stefano.ghirlanda@unibo.it",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110959835300777",
@@ -595,7 +587,7 @@ contributers = [
                  u"Improvements to lyxserver"),
 
      contributer(u"Hartmut Goebel",
-                 "h.goebel () crazy-compilers ! com",
+                 "h.goebel@crazy-compilers.com",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111225910223564",
@@ -603,7 +595,7 @@ contributers = [
                  u"Improvements to Koma-Script classes"),
 
      contributer(u"Hartmut Haase",
-                 "hha4491 () web ! de",
+                 "hha4491@web.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110915427710167",
@@ -611,7 +603,7 @@ contributers = [
                  u"German translation of the documentation"),
 
      contributer(u"Helge Hafting",
-                 "helgehaf () aitel ! hist ! no",
+                 "helgehaf@aitel.hist.no",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110916171925288",
@@ -619,7 +611,7 @@ contributers = [
                  u"Norwegian documentation and localization"),
 		 
      contributer(u"Richard Heck",
-                 "rgheck () brown ! edu",
+                 "rgheck@brown.edu",
                  "GPL",
                  "GPL Statement",
                  "m=117501689204059",
@@ -627,7 +619,7 @@ contributers = [
                  u"Bug fixes, layout modules, BibTeX code"),
 
      contributer(u"Bennett Helm",
-                 "bennett.helm () fandm ! edu",
+                 "bennett.helm@fandm.edu",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907988312372",
@@ -635,7 +627,7 @@ contributers = [
                  u"Maintainer of the OSX ports, taking over from Ronald Florence"),
 
      contributer(u"Claus Hentschel",
-                 "claus.hentschel () mbau ! fh-hannover ! de",
+                 "claus.hentschel@mbau.fh-hannover.de",
                  "",
                  "",
                  "",
@@ -643,7 +635,7 @@ contributers = [
                  u"Win32 port of LyX 1.1.x"),
 
      contributer(u"Claus Hindsgaul",
-                 "claus_h () image ! dk",
+                 "claus_h@image.dk",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908607416324",
@@ -651,7 +643,7 @@ contributers = [
                  u"Danish translation"),
 
      contributer(u"Bernard Hurley",
-                 "bernard () fong-hurley ! org ! uk",
+                 "bernard@fong-hurley.org.uk",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111218682804142",
@@ -659,7 +651,7 @@ contributers = [
                  u"Fixes to literate programming support"),
 
      contributer(u"Marius Ionescu",
-                 "felijohn () gmail ! com",
+                 "felijohn@gmail.com",
                  "GPL",
                  "permission to licence",
                  "m=115935958330941",
@@ -667,7 +659,7 @@ contributers = [
                  u"Romanian localization"),
 
      contributer(u"Bernhard Iselborn",
-                 "bernhard.iselborn () sap ! com",
+                 "bernhard.iselborn@sap.com",
                  "GPL",
                  "RE: The LyX licence",
                  "m=111268306522212",
@@ -675,7 +667,7 @@ contributers = [
                  u"Some minor bug-fixes, FAQ, linuxdoc sgml support"),
 
      contributer(u"Masanori Iwami",
-                 "masa.iwm () gmail ! com",
+                 "masa.iwm@gmail.com",
                  "GPL",
                  "Re: [patch] Addition of input method support",
                  "m=117541512517453",
@@ -683,7 +675,7 @@ contributers = [
                  u"Development of CJK language support"),
 
      contributer(u"Michal Jaegermann",
-                 "michal () ellpspace ! math ! ualberta ! ca",
+                 "michal@ellpspace.math.ualberta.ca",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909853626643",
@@ -691,7 +683,7 @@ contributers = [
                  u"Fix to a very hard-to-find egcs bug that crashed LyX on alpha architecture"),
 
      contributer(u"Harshula Jayasuriya",
-                 "harshula () gmail ! com",
+                 "harshula@gmail.com",
                  "GPL",
                  "Re: Bug in export to DocBook",
                  "m=116884249725701",
@@ -699,7 +691,7 @@ contributers = [
                  u"Fix docbook generation of nested lists"),
 
      contributer(u"David L. Johnson",
-                 "david.johnson () lehigh ! edu",
+                 "david.johnson@lehigh.edu",
                  "GPL",
                  "GPL",
                  "m=110908492016593",
@@ -707,7 +699,7 @@ contributers = [
                  u"Public relations, feedback, documentation and support"),
 
      contributer(u"Robert van der Kamp",
-                 "robnet () wxs ! nl",
+                 "robnet@wxs.nl",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111268623330209",
@@ -715,7 +707,7 @@ contributers = [
                  u"Various small things and code simplifying"),
 
      contributer(u"Amir Karger",
-                 "amirkarger () gmail ! com",
+                 "amirkarger@gmail.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110912688520245",
@@ -739,7 +731,7 @@ contributers = [
                  u"Authors of several of the icons LyX uses"),
 
      contributer(u"Andreas Klostermann",
-                 "andreas_klostermann () web ! de",
+                 "andreas_klostermann@web.de",
                  "GPL",
                  "blanket-permission",
                  "m=111054675600338",
@@ -747,7 +739,7 @@ contributers = [
                  u"Gtk reference insertion dialog"),
 
      contributer(u"Kostantino",
-                 "ciclope10 () alice ! it",
+                 "ciclope10@alice.it",
                  "GPL",
                  "Permission granted",
                  "m=115513400621782",
@@ -755,7 +747,7 @@ contributers = [
                  u"Italian localization of the interface"),
 
      contributer(u"Michael Koziarski",
-                 "koziarski () gmail ! com",
+                 "koziarski@gmail.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909592017966",
@@ -763,7 +755,7 @@ contributers = [
                  u"Gnome port"),
 
      contributer(u"Peter Kremer",
-                 "kremer () bme-tel ! ttt ! bme ! hu",
+                 "kremer@bme-tel.ttt.bme.hu",
                  "",
                  "",
                  "",
@@ -771,7 +763,7 @@ contributers = [
                  u"Hungarian translation and bind file for menu shortcuts"),
 
      contributer(u"Peter Kümmel",
-                 "syntheticpp () gmx ! net",
+                 "syntheticpp@gmx.net",
                  "GPL",
                  "License",
                  "m=114968828021007",
@@ -779,7 +771,7 @@ contributers = [
                  u"Qt4 coding, CMake build system, bug fixing, testing, clean ups, and profiling"),
 
      contributer(u"Bernd Kümmerlen",
-                 "bkuemmer () gmx ! net",
+                 "bkuemmer@gmx.net",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110934318821667",
@@ -787,7 +779,7 @@ contributers = [
                  u"Initial version of the koma-script textclasses"),
 
      contributer(u"Felix Kurth",
-                 "felix () fkurth ! de",
+                 "felix@fkurth.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908918916109",
@@ -795,7 +787,7 @@ contributers = [
                  u"Support for textclass g-brief2"),
 
      contributer(u"Rob Lahaye",
-                 "lahaye () snu ! ac ! kr",
+                 "lahaye@snu.ac.kr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908714131711",
@@ -803,7 +795,7 @@ contributers = [
                  u"Xforms dialogs and GUI related code"),
 
      contributer(u"Jean-Marc Lasgouttes",
-                 "lasgouttes () lyx ! org",
+                 "lasgouttes@lyx.org",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899928510452",
@@ -811,7 +803,7 @@ contributers = [
                  u"configure and Makefile-stuff and more"),
 
      contributer(u"Victor Lavrenko",
-                 "lyx () lavrenko ! pp ! ru",
+                 "lyx@lavrenko.pp.ru",
                  "",
                  "",
                  "",
@@ -819,7 +811,7 @@ contributers = [
                  u"Russian translation"),
 
      contributer(u"Angus Leeming",
-                 "leeming () lyx ! org",
+                 "leeming@lyx.org",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899671520339",
@@ -827,7 +819,7 @@ contributers = [
                  u"GUI-I-fication of insets and more"),
 
      contributer(u"Edwin Leuven",
-                 "e.leuven () uva ! nl",
+                 "e.leuven@uva.nl",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899657530749",
@@ -835,7 +827,7 @@ contributers = [
                  u"Qt2 frontend GUI-I-fication of several popups.\nDutch translation of the Windows installer"),
 
      contributer(u"John Levon",
-                 "levon () movementarian ! org",
+                 "levon@movementarian.org",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899535600562",
@@ -843,7 +835,7 @@ contributers = [
                  u"Qt2 frontend, GUII work, bugfixes"),
 
      contributer(u"Ling Li",
-                 "ling () caltech ! edu",
+                 "ling@caltech.edu",
                  "GPL",
                  "Re: LyX 1.4cvs crash on Fedora Core 3",
                  "m=111204368700246",
@@ -851,7 +843,7 @@ contributers = [
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
      contributer(u"Tomasz Łuczak",
-                 "tlu () technodat ! com ! pl",
+                 "tlu@technodat.com.pl",
                  "GPL",
                  "Re: [Cvslog] lyx-devel po/: ChangeLog pl.po lib/: CREDITS",
                  "m=113580483406067",
@@ -859,7 +851,7 @@ contributers = [
                  u"Polish translation and mw* layouts files"),
 
      contributer(u"Hangzai Luo",
-                 "memcache () gmail ! com",
+                 "memcache@gmail.com",
                  "GPL",
                  "Re: [patch] tex2lyx crash when full path is given from commandline on Win32",
                  "m=118326161706627",
@@ -867,7 +859,7 @@ contributers = [
                  u"Bugfixes"),
 
      contributer(u"José Matos",
-                 "jamatos () fc ! up ! pt",
+                 "jamatos@fc.up.pt",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907762926766",
@@ -875,7 +867,7 @@ contributers = [
                  u"linuxdoc sgml support"),
 
      contributer(u"Roman Maurer",
-                 "roman.maurer () amis ! net",
+                 "roman.maurer@amis.net",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110952616722307",
@@ -883,7 +875,7 @@ contributers = [
                  u"Slovenian translation coordinator"),
 
      contributer(u"Tino Meinen",
-                 "a.t.meinen () chello ! nl",
+                 "a.t.meinen@chello.nl",
                  "GPL",
                  "Re: Licensing your contributions to LyX",
                  "m=113078277722316",
@@ -891,7 +883,7 @@ contributers = [
                  u"Dutch translation coordinator"),
 
      contributer(u"Siegfried Meunier-Guttin-Cluzel",
-                 "meunier () coria ! fr",
+                 "meunier@coria.fr",
                  "GPL",
                  "French translations",
                  "m=119485816312776",
@@ -899,7 +891,7 @@ contributers = [
                  u"French translations of the documentation"),
 
      contributer(u"Joan Montané",
-                 "jmontane () gmail ! com",
+                 "jmontane@gmail.com",
                  "GPL",
                  "Re: LyX translation updates needed",
                  "m=118765575314017",
@@ -907,7 +899,7 @@ contributers = [
                  u"Catalan translations of menus"),
 
      contributer(u"Iñaki Larrañaga Murgoitio",
-                 "dooteo () euskalgnu ! org",
+                 "dooteo@euskalgnu.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908606525783",
@@ -915,7 +907,7 @@ contributers = [
                  u"Basque documentation and localization"),
 
      contributer(u"Daniel Naber",
-                 "daniel.naber () t-online ! de",
+                 "daniel.naber@t-online.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110911176213928",
@@ -923,7 +915,7 @@ contributers = [
                  u"Improvements to the find&replace dialog"),
 
      contributer(u"Pablo De Napoli",
-                 "pdenapo () mate ! dm ! uba ! ar",
+                 "pdenapo@mate.dm.uba.ar",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908904400120",
@@ -931,7 +923,7 @@ contributers = [
                  u"Math panel dialogs"),
 
      contributer(u"Dirk Niggemann",
-                 "dabn100 () cam ! ac ! uk",
+                 "dabn100@cam.ac.uk",
                  "",
                  "",
                  "",
@@ -939,7 +931,7 @@ contributers = [
                  u"config. handling enhancements, bugfixes, printer enhancements path mingling"),
 
      contributer(u"Carl Ollivier-Gooch",
-                 "cfog () mech ! ubc ! ca",
+                 "cfog@mech.ubc.ca",
                  "GPL",
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111220662413921",
@@ -947,7 +939,7 @@ contributers = [
                  u"Support for two-column figure (figure*) and table (table*) environments.  Fixed minibuffer entry of floats."),
 
      contributer(u'Panayotis "PAP" Papasotiriou',
-                 "papasot () upatras ! gr",
+                 "papasot@upatras.gr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110933552929119",
@@ -955,7 +947,7 @@ contributers = [
                  u"Support for kluwer and ijmpd document classes"),
 
      contributer(u'Andrey V. Panov',
-                 "panov () canopus ! iacp ! dvo ! ru",
+                 "panov@canopus.iacp.dvo.ru",
                  "GPL",
                  "Re: Russian translation for LyX",
                  "m=119853644302866",
@@ -963,7 +955,7 @@ contributers = [
                  u"Russian translation of the user interface"),
 
      contributer(u'Sanda Pavel',
-                 "ps () ucw ! cz",
+                 "ps@ucw.cz",
                  "GPL",
                  "Re: czech translation",
                  "m=115522417204086",
@@ -971,7 +963,7 @@ contributers = [
                  u"Czech translation, support for the LaTeX package hyperref"),
 
      contributer(u'Bo Peng',
-                 "ben.bob () gmail ! com",
+                 "ben.bob@gmail.com",
                  "GPL",
                  "Re: Python version of configure script (preview version)",
                  "m=112681895510418",
@@ -979,7 +971,7 @@ contributers = [
                  u"Conversion of all shell scripts to Python, shortcuts dialog, session, view-source, auto-view, embedding features and scons build system."),
 
      contributer(u"Joacim Persson",
-                 "sp2joap1 () ida ! his ! se",
+                 "sp2joap1@ida.his.se",
                  "",
                  "",
                  "",
@@ -987,7 +979,7 @@ contributers = [
                  u"po-file for Swedish, a tool for picking shortcuts, bug reports and hacking atrandom"),
 
      contributer(u"Zvezdan Petkovic",
-                 "zpetkovic () acm ! org",
+                 "zpetkovic@acm.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111276877900892",
@@ -995,7 +987,7 @@ contributers = [
                  u"Better support for serbian and serbocroatian"),
 
      contributer(u"Geoffroy Piroux",
-                 "piroux () fyma ! ucl ! ac ! be",
+                 "piroux@fyma.ucl.ac.be",
                  "",
                  "",
                  "",
@@ -1003,7 +995,7 @@ contributers = [
                  u"Mathematica backend for mathed"),
 
      contributer(u"Neoklis Polyzotis",
-                 "alkis () soe ! ucsc ! edu",
+                 "alkis@soe.ucsc.edu",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=111039215519777",
@@ -1011,7 +1003,7 @@ contributers = [
                  u"Keymap work"),
 
      contributer(u"André Pönitz",
-                 "andre.poenitz () mathematik ! tu-chemnitz ! de",
+                 "andre.poenitz@mathematik.tu-chemnitz.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111143534724146",
@@ -1019,7 +1011,7 @@ contributers = [
                  u"mathed rewrite to use STL file io with streams --export and --import command line options"),
 
      contributer(u"Kornelia Pönitz",
-                 "kornelia.poenitz () mathematik ! tu-chemnitz ! de",
+                 "kornelia.poenitz@mathematik.tu-chemnitz.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111121553103800",
@@ -1035,7 +1027,7 @@ contributers = [
                  u"Designer of the LyX-Banner"),
 
      contributer(u"Thomas Pundt",
-                 "thomas () pundt ! de",
+                 "thomas@pundt.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111277917703326",
@@ -1043,7 +1035,7 @@ contributers = [
                  u"initial configure script"),
 
      contributer(u"Allan Rae",
-                 "rae () itee ! uq ! edu ! au",
+                 "rae@itee.uq.edu.au",
                  "GPL",
                  "lyx-1.3.6cvs configure.in patch",
                  "m=110905169512662",
@@ -1051,7 +1043,7 @@ contributers = [
                  u"GUI-I architect, LyX PR head, LDN, bug reports/fixes, Itemize Bullet Selection, xforms-0.81 + gcc-2.6.3 compatibility"),
 
      contributer(u"Adrien Rebollo",
-                 "adrien.rebollo () gmx ! fr",
+                 "adrien.rebollo@gmx.fr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110918633227093",
@@ -1059,7 +1051,7 @@ contributers = [
                  u"French translation of the docs; latin 3, 4 and 9 support"),
 
      contributer(u"Garst R. Reese",
-                 "garstr () isn ! net",
+                 "garstr@isn.net",
                  "GPL",
                  "blanket-permission.txt:",
                  "m=110911480107491",
@@ -1067,7 +1059,7 @@ contributers = [
                  u"provided hollywood and broadway classes for writing screen scripts and plays"),
 
      contributer(u"Bernhard Reiter",
-                 "ockham () gmx ! net",
+                 "ockham@gmx.net",
                  "GPL",
                  "Re: RFC: GThesaurus.C et al.",
                  "m=112912017013984",
@@ -1075,7 +1067,7 @@ contributers = [
                  u"Gtk frontend"),
 
      contributer(u"Ruurd Reitsma",
-                 "rareitsma () yahoo ! com",
+                 "rareitsma@yahoo.com",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110959179412819",
@@ -1083,7 +1075,7 @@ contributers = [
                  u"Creator of the native port of LyX to Windows"),
 
      contributer(u"Bernd Rellermeyer",
-                 "bernd.rellermeyer () arcor ! de",
+                 "bernd.rellermeyer@arcor.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111317142419908",
@@ -1091,7 +1083,7 @@ contributers = [
                  u"Support for Koma-Script family of classes"),
 
      contributer(u"Michael Ressler",
-                 "mike.ressler () alum ! mit ! edu",
+                 "mike.ressler@alum.mit.edu",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110926603925431",
@@ -1099,7 +1091,7 @@ contributers = [
                  u"documentation maintainer, AASTeX support"),
 
      contributer(u"Christian Ridderström",
-                 "christian.ridderstrom () home ! se",
+                 "christian.ridderstrom@home.se",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110910933124056",
@@ -1107,7 +1099,7 @@ contributers = [
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
      contributer(u"Bernhard Roider",
-                 "bernhard.roider () sonnenkinder ! org",
+                 "bernhard.roider@sonnenkinder.org",
                  "GPL",
                  "Re: [PATCH] immediatly display saved filename in tab",
                  "m=117009852211669",
@@ -1115,7 +1107,7 @@ contributers = [
                  u"Various bug fixes"),
 
      contributer(u"Paul A. Rubin",
-                 "rubin () msu ! edu",
+                 "rubin@msu.edu",
                  "GPL",
                  "Re: [patch] reworked AMS classes (bugs 4087, 4223)",
                  "m=119072721929143",
@@ -1123,7 +1115,7 @@ contributers = [
                  u"Major rework of the AMS classes"),
 
      contributer(u"Ran Rutenberg",
-                 "ran.rutenberg () gmail ! com",
+                 "ran.rutenberg@gmail.com",
                  "GPL",
                  "The New Hebrew Translation of the Introduction",
                  "m=116172457024967",
@@ -1131,7 +1123,7 @@ contributers = [
                  u"Hebrew translation"),
 
      contributer(u"Szõke Sándor",
-                 "alex () lyx ! hu",
+                 "alex@lyx.hu",
                  "GPL",
                  "Contribution to LyX",
                  "m=113449408830523",
@@ -1139,7 +1131,7 @@ contributers = [
                  u"Hungarian translation"),
 
      contributer(u"Janus Sandsgaard",
-                 "janus () janus ! dk",
+                 "janus@janus.dk",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111839355328045",
@@ -1147,7 +1139,7 @@ contributers = [
                  u"Danish translation of the Windows installer"),
 
      contributer(u"Stefan Schimanski",
-                 "sts () 1stein ! org",
+                 "sts@1stein.org",
                  "GPL",
                  "GPL statement",
                  "m=117541472517274",
@@ -1155,7 +1147,7 @@ contributers = [
                  u"font improvements, bug fixes"),
 
      contributer(u"Hubert Schreier",
-                 "schreier () sc ! edu",
+                 "schreier@sc.edu",
                  "",
                  "",
                  "",
@@ -1163,7 +1155,7 @@ contributers = [
                  u"spellchecker (ispell frontend); beautiful document-manager based on the simple table of contents (removed)"),
 
      contributer(u"Ivan Schreter",
-                 "schreter () kdk ! sk",
+                 "schreter@kdk.sk",
                  "",
                  "",
                  "",
@@ -1171,7 +1163,7 @@ contributers = [
                  u"international support and kbmaps for slovak, czech, german, ... wysiwyg figure"),
 
      contributer(u"Eulogio Serradilla Rodríguez",
-                 "eulogio.sr () terra ! es",
+                 "eulogio.sr@terra.es",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110915313018478",
@@ -1179,7 +1171,7 @@ contributers = [
                  u"contribution to the spanish internationalization"),
 
      contributer(u"Miyata Shigeru",
-                 "miyata () kusm ! kyoto-u ! ac ! jp",
+                 "miyata@kusm.kyoto-u.ac.jp",
                  "",
                  "",
                  "",
@@ -1187,7 +1179,7 @@ contributers = [
                  u"OS/2 port"),
 
      contributer(u"Alejandro Aguilar Sierra",
-                 "asierra () servidor ! unam ! mx",
+                 "asierra@servidor.unam.mx",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110918647812358",
@@ -1195,7 +1187,7 @@ contributers = [
                  u"Fast parsing with lyxlex, pseudoactions, mathpanel, Math Editor, combox and more"),
 
      contributer(u"Lior Silberman",
-                 "lior () princeton ! edu",
+                 "lior@princeton.edu",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110910432427450",
@@ -1203,7 +1195,7 @@ contributers = [
                  u"Tweaks to various XForms dialogs. Implemented the --userdir command line option, enabling LyX to run with multiple configurations for different users. Implemented the original code to make colours for diferent inset properties configurable."),
 
      contributer(u"Andre Spiegel",
-                 "spiegel () gnu ! org",
+                 "spiegel@gnu.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908534728505",
@@ -1211,7 +1203,7 @@ contributers = [
                  u"vertical spaces"),
 
      contributer(u"Jürgen Spitzmüller",
-                 "juergen.sp () t-online ! de",
+                 "juergen.sp@t-online.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907530127164",
@@ -1219,7 +1211,7 @@ contributers = [
                  u"Qt frontend, bugfixes"),
 
      contributer(u"John Spray",
-                 "jcs116 () york ! ac ! uk",
+                 "jcs116@york.ac.uk",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909415400170",
@@ -1227,7 +1219,7 @@ contributers = [
                  u"Gtk frontend"),
 
      contributer(u"Ben Stanley",
-                 "ben.stanley () exemail ! com ! au",
+                 "ben.stanley@exemail.com.au",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110923981012056",
@@ -1235,7 +1227,7 @@ contributers = [
                  u"fix bugs with error insets placement"),
 
      contributer(u"Uwe Stöhr",
-                 "uwestoehr () web ! de",
+                 "uwestoehr@web.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111833345825278",
@@ -1243,7 +1235,7 @@ contributers = [
                  u"documentation updates, Windows installer, small fixes"),
 
      contributer(u"David Suárez de Lis",
-                 "excalibor () iname ! com",
+                 "excalibor@iname.com",
                  "",
                  "",
                  "",
@@ -1251,7 +1243,7 @@ contributers = [
                  u"maintaining es.po since v1.0.0 and other small i18n issues small fixes"),
 
      contributer(u"Peter Sütterlin",
-                 "p.suetterlin () astro ! uu ! nl",
+                 "p.suetterlin@astro.uu.nl",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110915086404972",
@@ -1259,7 +1251,7 @@ contributers = [
                  u"aapaper support, german documentation translation, bug reports"),
 
      contributer(u"Kayvan Aghaiepour Sylvan",
-                 "kayvan () sylvan ! com",
+                 "kayvan@sylvan.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110908748407087",
@@ -1267,7 +1259,7 @@ contributers = [
                  u"noweb2lyx and reLyX integration of noweb files. added Import->Noweb and key bindings to menus"),
 
      contributer(u"Reuben Thomas",
-                 "rrt () sc3d ! org",
+                 "rrt@sc3d.org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110911018202083",
@@ -1275,7 +1267,7 @@ contributers = [
                  u"encts document class lots of useful bug reports"),
 
      contributer(u"Dekel Tsur",
-                 "dtsur () cs ! ucsd ! edu",
+                 "dtsur@cs.ucsd.edu",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110910437519054",
@@ -1283,7 +1275,7 @@ contributers = [
                  u"Hebrew support, general file converter, many many bug fixes"),
 
      contributer(u"Matthias Urlichs",
-                 "smurf () smurf ! noris ! de",
+                 "smurf@smurf.noris.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110912859312991",
@@ -1291,7 +1283,7 @@ contributers = [
                  u"bug reports and small fixes"),
 
      contributer(u"H. Turgut Uyar",
-                 "uyar () ce ! itu ! edu ! tr",
+                 "uyar@ce.itu.edu.tr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110917146423892",
@@ -1299,7 +1291,7 @@ contributers = [
                  u"turkish kbmaps"),
 
      contributer(u"Mostafa Vahedi",
-                 "vahedi58 () yahoo ! com",
+                 "vahedi58@yahoo.com",
                  "GPL",
                  "Re: improving Arabic-like language support",
                  "m=117769964731842",
@@ -1307,7 +1299,7 @@ contributers = [
                  u"Farsi support and translations"),
 
      contributer(u"Marko Vendelin",
-                 "markov () ioc ! ee",
+                 "markov@ioc.ee",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909439912594",
@@ -1315,7 +1307,7 @@ contributers = [
                  u"Gnome frontend"),
 
      contributer(u"Joost Verburg",
-                 "joostverburg () users ! sourceforge ! net",
+                 "joostverburg@users.sourceforge.net",
                  "GPL",
                  "Re: New Windows Installer",
                  "m=114957884100403",
@@ -1323,7 +1315,7 @@ contributers = [
                  u"A new and improved Windows installer"),
 
      contributer(u"Martin Vermeer",
-                 "martin.vermeer () hut ! fi",
+                 "martin.vermeer@hut.fi",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907543900367",
@@ -1331,7 +1323,7 @@ contributers = [
                  u"support for optional argument in sections/captions svjour/svjog, egs and llncs document classes. Lot of bug hunting (and fixing!)"),
 
      contributer(u"Jürgen Vigna",
-                 "jug () lyx ! org",
+                 "jug@lyx.org",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899839906262",
@@ -1339,7 +1331,7 @@ contributers = [
                  u"complete rewrite of the tabular, text inset; fax and plain text export support; iletter and dinbrief support"),
 
      contributer(u"Pauli Virtanen",
-                 "pauli.virtanen () hut ! fi",
+                 "pauli.virtanen@hut.fi",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110918662408397",
@@ -1347,7 +1339,7 @@ contributers = [
                  u"Finnish localization of the interface"),
 
      contributer(u"Herbert Voß",
-                 "herbert.voss () alumni ! tu-berlin ! de",
+                 "herbert.voss@alumni.tu-berlin.de",
                  "GPL",
                  "Fwd: Re: The LyX licence",
                  "m=110910439013234",
@@ -1355,7 +1347,7 @@ contributers = [
                  u"The one who answers all questions on lyx-users mailing list and maintains www.lyx.org/help/ Big insetgraphics and bibliography cleanups"),
 
      contributer(u"Andreas Vox",
-                 "avox () arcor ! de",
+                 "avox@arcor.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110907443424620",
@@ -1363,7 +1355,7 @@ contributers = [
                  u"Bug fixes, feedback on LyX behaviour on the Mac, and improvements to DocBook export"),
 
      contributer(u"John P. Weiss",
-                 "jpweiss () frontiernet ! net",
+                 "jpweiss@frontiernet.net",
                  "Artistic",
                  "Re: The LyX licence",
                  "m=110913490414280",
@@ -1371,7 +1363,7 @@ contributers = [
                  u"Bugreports and suggestions, slides class support, editor of the documentationproject, 6/96-9/97. Tutorial chapter 1"),
 
      contributer(u"Edmar Wienskoski",
-                 "edmar () freescale ! com",
+                 "edmar@freescale.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111280236425781",
@@ -1379,7 +1371,7 @@ contributers = [
                  u"literate programming support; various bug fixes"),
 
      contributer(u"Mate Wierdl",
-                 "mw () wierdlmpc ! msci ! memphis ! edu",
+                 "mw@wierdlmpc.msci.memphis.edu",
                  "",
                  "",
                  "",
@@ -1387,7 +1379,7 @@ contributers = [
                  u"Maintainer of the @lists.lyx.org mailing-lists"),
 
      contributer(u"Serge Winitzki",
-                 "winitzki () erebus ! phys ! cwru ! edu",
+                 "winitzki@erebus.phys.cwru.edu",
                  "",
                  "",
                  "",
@@ -1395,7 +1387,7 @@ contributers = [
                  u"updates to the Scientific Word bindings"),
 
      contributer(u"Stephan Witt",
-                 "stephan.witt () beusen ! de",
+                 "stephan.witt@beusen.de",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909031824764",
@@ -1403,7 +1395,7 @@ contributers = [
                  u"support for page selection for printing support for number of copies"),
 
      contributer(u"Huang Ying",
-                 "huangy () sh ! necas ! nec ! com ! cn",
+                 "huangy@sh.necas.nec.com.cn",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110956742604611",
@@ -1411,7 +1403,7 @@ contributers = [
                  u"Gtk frontend"),
 
      contributer(u"Koji Yokota",
-                 "yokota () res ! otaru-uc ! ac ! jp",
+                 "yokota@res.otaru-uc.ac.jp",
                  "GPL",
                  "Re: [PATCH] po/ja.po: Japanese message file for 1.5.0 (merged from",
                  "m=118033214223720",
@@ -1419,7 +1411,7 @@ contributers = [
                  u"Japanese translation"),
 
      contributer(u"Abdelrazak Younes",
-                 "younes.a () free ! fr",
+                 "younes.a@free.fr",
                  "GPL",
                  "Re: [Patch] RFQ: ParagraphList Rewrite",
                  "m=113993670602439",
@@ -1427,7 +1419,7 @@ contributers = [
                  u"Qt4 frontend, editing optimisations"),
 
      contributer(u"Henner Zeller",
-                 "henner.zeller () freiheit ! com",
+                 "henner.zeller@freiheit.com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110911591218107",
@@ -1435,7 +1427,7 @@ contributers = [
                  u"rotation of wysiwyg figures"),
 
      contributer(u"Horst Schirmeier",
-                 "horst () schirmeier ! com",
+                 "horst@schirmeier.com",
                  "GPL",
                  "Re: [patch] reordering capabilities for GuiBibtex",
                  "m=120009631506298",
@@ -1443,7 +1435,7 @@ contributers = [
                  u"small fixes"),
 
      contributer(u"Xiaokun Zhu",
-                 "xiaokun () aero ! gla ! ac ! uk",
+                 "xiaokun@aero.gla.ac.uk",
                  "",
                  "",
                  "",
@@ -1452,3 +1444,4 @@ contributers = [
 
 if __name__ == "__main__":
      main(sys.argv, contributers)
+
