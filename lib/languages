@@ -1,4 +1,8 @@
 # name      babel name	GUI name	RTL?   encoding	  code	latex options
+# LyX internal languages
+ignore      ignore      "Ignore"  false  ""      ignore   ""  
+latex       ""          "Latex"   false  iso8859-1   latex    "" 
+# Real languages now
 afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
 albanian    albanian	"Albanian"	false  iso8859-2  sq_AL	 ""
 american    american	"American"	false  iso8859-15 en_US	 ""
