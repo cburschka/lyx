@@ -2047,23 +2047,23 @@ void PrefShortcuts::updateShortcutsTW()
 	shortcutsTW->clear();
 
 	editItem_ = new QTreeWidgetItem(shortcutsTW);
-	editItem_->setText(0, toqstr("Cursor, Mouse and Editing functions"));
+	editItem_->setText(0, qt_("Cursor, Mouse and Editing functions"));
 	editItem_->setFlags(editItem_->flags() & ~Qt::ItemIsSelectable);
 
 	mathItem_ = new QTreeWidgetItem(shortcutsTW);
-	mathItem_->setText(0, toqstr("Mathematical Symbols"));
+	mathItem_->setText(0, qt_("Mathematical Symbols"));
 	mathItem_->setFlags(mathItem_->flags() & ~Qt::ItemIsSelectable);
 	
 	bufferItem_ = new QTreeWidgetItem(shortcutsTW);
-	bufferItem_->setText(0, toqstr("Buffer and Window"));
+	bufferItem_->setText(0, qt_("Buffer and Window"));
 	bufferItem_->setFlags(bufferItem_->flags() & ~Qt::ItemIsSelectable);
 	
 	layoutItem_ = new QTreeWidgetItem(shortcutsTW);
-	layoutItem_->setText(0, toqstr("Font, Layouts and Textclasses"));
+	layoutItem_->setText(0, qt_("Font, Layouts and Textclasses"));
 	layoutItem_->setFlags(layoutItem_->flags() & ~Qt::ItemIsSelectable);
 
 	systemItem_ = new QTreeWidgetItem(shortcutsTW);
-	systemItem_->setText(0, toqstr("System and Miscellaneous"));
+	systemItem_->setText(0, qt_("System and Miscellaneous"));
 	systemItem_->setFlags(systemItem_->flags() & ~Qt::ItemIsSelectable);
 
 	// listBindings(unbound=true) lists all bound and unbound lfuns
@@ -2185,9 +2185,9 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	
 	item_type tag = static_cast<item_type>(items[0]->data(0, Qt::UserRole).toInt());
 	if (tag == UserUnbind)
-		removePB->setText(toqstr("Restore"));
+		removePB->setText(qt_("Restore"));
 	else
-		removePB->setText(toqstr("Remove"));
+		removePB->setText(qt_("Remove"));
 }
 
 
@@ -2242,7 +2242,7 @@ void PrefShortcuts::on_removePB_pressed()
 			// but add an user unbind item
 			user_unbind_.bind(shortcut, func);
 			setItemType(items[i], UserUnbind);
-			removePB->setText(toqstr("Restore"));
+			removePB->setText(qt_("Restore"));
 			break;
 		}
 		case UserBind: {
@@ -2262,7 +2262,7 @@ void PrefShortcuts::on_removePB_pressed()
 			// become System again.
 			user_unbind_.unbind(shortcut, func);
 			setItemType(items[i], System);
-			removePB->setText(toqstr("Remove"));
+			removePB->setText(qt_("Remove"));
 			break;
 		}
 		case UserExtraUnbind: {
