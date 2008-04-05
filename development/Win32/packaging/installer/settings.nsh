@@ -52,6 +52,8 @@ SetCompressor /SOLID lzma
 !define FILES_DVIPOST "${FILES_DEPS}\dvipost"
 !define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
 !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
+!define FILES_METAFILE2EPS "${FILES_DEPS}\metafile2eps"
+!define FILES_PSPRINTER "${FILES_DEPS}\metafile2eps\PSPrinter"
 
 !define FILES_QT "${FILES_DEPS}\qt-4"
 !define FILES_ASPELLDATA "${FILES_DEPS}\aspell"

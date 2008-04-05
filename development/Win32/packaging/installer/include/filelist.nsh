@@ -297,3 +297,17 @@ Lists of files to include in the installer
   ${FILE}Console.dll"
 
 !macroend
+
+!macro FileListMetaFile2EPS COMMAND DIRECTORY
+
+  ${FILE}metafile2eps.exe"
+
+!macroend
+
+!macro FileListPSPrinter COMMAND DIRECTORY
+
+  ${FILE}metafile2eps.inf"
+  ${FILE}metafile2eps.ppd"
+  ${FILE}metafile2eps.dat"
+
+!macroend

@@ -63,6 +63,8 @@ Var SizeGhostscript
 
 Var LangName
 Var LangISOCode
+
+Var PrinterConf
   
 #--------------------------------
 # Include standard functions

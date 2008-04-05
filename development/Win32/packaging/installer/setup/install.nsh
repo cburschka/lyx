@@ -87,6 +87,14 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
   !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
   
+  # Metafile to EPS Converter
+  SetOutPath "$INSTDIR\bin"
+  !insertmacro FileListMetaFile2EPS File "${FILES_METAFILE2EPS}\"
+  
+  # Postscript printer for metafile to EPS converter
+  SetOutPath "$INSTDIR\PSPrinter"
+  !insertmacro FileListPSPrinter File "${FILES_PSPRINTER}\"
+  
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 

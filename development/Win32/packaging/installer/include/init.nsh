@@ -9,6 +9,16 @@ Initialization function
 #--------------------------------
 # Installer initialization
 
+!macro PRINTER_INIT
+
+  ${If} ${AtLeastWinVista}
+    StrCpy $PrinterConf "printui.exe"
+  ${Else}
+    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
+  ${EndIf}
+
+!macroend
+
 Function .onInit
 
   ${IfNot} ${IsNT}
@@ -17,6 +27,7 @@ Function .onInit
     Quit
   ${EndIf}
 
+  !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_INIT
   
   ${unless} ${silent}
@@ -34,6 +45,7 @@ FunctionEnd
 
 Function un.onInit
 
+  !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_UNINIT
 
 FunctionEnd

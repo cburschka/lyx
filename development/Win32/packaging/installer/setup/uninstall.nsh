@@ -46,7 +46,13 @@ Section "un.Program Files" un.SecProgramFiles
   # Helper DLLs for NSIS-based tools
 
   !insertmacro FileListNSISPluginsStandard Delete "$INSTDIR\bin\"
-  !insertmacro FileListNSISPlugins Delete "$INSTDIR\bin\"   
+  !insertmacro FileListNSISPlugins Delete "$INSTDIR\bin\"
+  
+  # Metafile to EPS Converter
+  !insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
+  
+  # Postscript printer for metafile to EPS converter
+  !insertmacro FileListPSPrinter Delete "$INSTDIR\PSPrinter\"  
   
   # Shortcuts
   
@@ -78,6 +84,17 @@ Section "un.Program Files" un.SecProgramFiles
      DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_EXT}"
   ${EndIf}
   
+  ${If} $MultiUser.Privileges != "Admin"
+    ${OrIf} $MultiUser.Privileges != "Power"  
+  
+    # Delete Postscript printer for metafile o EPS conversion
+    ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
+    
+    # Also delete printer driver
+    ExecWait '$PrinterConf /q /dd /m "Metafile to EPS Converter"'
+    
+  ${EndIf}
+
 SectionEnd
 
 Section "un.User Preferences and Custom Files" un.SecUserFiles

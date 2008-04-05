@@ -138,6 +138,31 @@ Section -dvipost
 
 SectionEnd
 
+
+#--------------------------------
+# Postscript printer for metafile to EPS converter
+
+Section -PSPrinter
+
+  ${If} $MultiUser.Privileges != "Admin"
+    ${OrIf} $MultiUser.Privileges != "Power"
+
+    # Delete printer
+    ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
+
+    # Delete printer driver
+    ExecWait '$PrinterConf /q /dd /m "Metafile to EPS Converter"'
+
+    # Install printer and driver
+    ExecWait '$PrinterConf /q /if /f "$INSTDIR\PSPrinter\metafile2eps.inf" /r "FILE:" /m "Metafile to EPS Converter"'
+
+    # Restore DEVMODE with proper settings
+    ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\PSPrinter\metafile2eps.dat" g'
+
+  ${EndIf}
+
+SectionEnd
+
 #--------------------------------
 # Desktop shortcut
 
