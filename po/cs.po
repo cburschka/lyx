@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-03-26 22:02+0100\n"
-"PO-Revision-Date: 2008-03-15 22:01-0500\n"
+"POT-Creation-Date: 2008-04-05 22:02+0100\n"
+"PO-Revision-Date: 2008-04-05 22:01-0500\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -10863,7 +10863,7 @@ msgstr "underset"
 
 #: lib/ui/stdtoolbars.inc:356 src/frontends/qt4/GuiSymbols.cpp:86
 msgid "Arrows"
-msgstr "©ipeèky"
+msgstr "©ipky"
 
 #: lib/ui/stdtoolbars.inc:357
 msgid "leftarrow"
@@ -11879,7 +11879,7 @@ msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:627
 msgid "AMS Arrows"
-msgstr "AMS ¹ipeèky"
+msgstr "AMS ¹ipky"
 
 #: lib/ui/stdtoolbars.inc:628
 msgid "dashleftarrow"
@@ -16768,7 +16768,7 @@ msgstr "Interpunkce"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Superscripts and Subscripts"
-msgstr ""
+msgstr "Horní a dolní indexy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "Currency Symbols"
@@ -16872,19 +16872,19 @@ msgstr "Hangul slabiky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "High Surrogates"
-msgstr ""
+msgstr "Surogáty horní"
 
 #: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "Private Use High Surrogates"
-msgstr ""
+msgstr "Surogáty horní (priv.)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:110
 msgid "Low Surrogates"
-msgstr ""
+msgstr "Surogáty dolní"
 
 #: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "Private Use Area"
-msgstr ""
+msgstr "CJK (Private Use Area)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "CJK Compatibility Ideographs"
@@ -16892,7 +16892,7 @@ msgstr "CJK kompat. ideograf."
 
 #: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "Alphabetic Presentation Forms"
-msgstr "Abecední present. formy"
+msgstr "Ligatury"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "Arabic Presentation Forms-A"
@@ -16900,7 +16900,7 @@ msgstr "Arabské present formy-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "Combining Half Marks"
-msgstr ""
+msgstr "Poloviny diakritických znamének"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "CJK Compatibility Forms"
@@ -16916,7 +16916,7 @@ msgstr "Arabské present. formy-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "Halfwidth and Fullwidth Forms"
-msgstr ""
+msgstr "Latin + CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Specials"
@@ -16924,11 +16924,11 @@ msgstr "Specializované"
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Linear B Syllabary"
-msgstr ""
+msgstr "Stará krét¹tina, slabiky (Linear B)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Linear B Ideograms"
-msgstr ""
+msgstr "Stará krét¹tina, ideogram (Linear B)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Aegean Numbers"
@@ -16962,19 +16962,19 @@ msgstr "Deseret"
 msgid "Shavian"
 msgstr "Shawovské"
 
+#TODO
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Osmanya"
-msgstr ""
+msgstr "Osmanya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:132
-#, fuzzy
 msgid "Cypriot Syllabary"
-msgstr "Corollary"
+msgstr "Kyperské"
 
+#TODO
 #: src/frontends/qt4/GuiSymbols.cpp:133
-#, fuzzy
 msgid "Kharoshthi"
-msgstr "varnothing"
+msgstr "Kharoshthi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Byzantine Musical Symbols"
@@ -16990,7 +16990,7 @@ msgstr "Staroøecká hudební notace"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Tai Xuan Jing Symbols"
-msgstr ""
+msgstr "Tai Xuan Jing symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Mathematical Alphanumeric Symbols"
@@ -17005,21 +17005,21 @@ msgid "CJK Compatibility Ideographs Supplement"
 msgstr "CJK kompat. iedograf. pøídavné"
 
 #: src/frontends/qt4/GuiSymbols.cpp:141
-#, fuzzy
 msgid "Tags"
-msgstr "Stránky"
+msgstr "Pøívì¹ky"
 
+#TODO
 #: src/frontends/qt4/GuiSymbols.cpp:142
 msgid "Variation Selectors Supplement"
-msgstr ""
+msgstr "Variation Selectors Supplement"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "Supplementary Private Use Area-A"
-msgstr ""
+msgstr "Dodatek, priv. oblast A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Supplementary Private Use Area-B"
-msgstr ""
+msgstr "Dodatek, priv. oblast B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:223
 msgid "Character: "
