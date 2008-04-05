@@ -73,6 +73,7 @@
 #   special              -> Sonder... / besondere / spezielle
 #   specify              -> angeben
 #   switch               -> Option / wechseln
+#   tab                  -> Unterfenster
 #   template             -> Vorlage
 #   toggle               -> umschalten / an/aus
 #   tooltip              -> Kurzinfo
@@ -1380,7 +1381,7 @@ msgstr "Unterstützte Abstandsarten"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:64
 msgid "Inter-word space"
-msgstr "Zwischenwort Abstand"
+msgstr "Normales Leerzeichen"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:69
 msgid "Thin space"
@@ -3080,7 +3081,7 @@ msgstr "&Sicherung der Dokumente, alle"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
 msgid "Open documents in &tabs"
-msgstr "Dokument in &Taben öffnen"
+msgstr "Dokument in &Unterfenstern öffnen"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
 msgid "Use &bundled format for new documents"
@@ -8952,7 +8953,7 @@ msgstr "Normales Leerzeichen|N"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:155 lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
-msgstr "Kleiner Abstand|K"
+msgstr "Dünner Abstand|K"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:369
 msgid "Horizontal Space...|o"
@@ -9620,7 +9621,7 @@ msgstr "Normaler Zeilenumbruch|Z"
 
 #: lib/ui/stdcontext.inc:203 lib/ui/stdmenus.inc:376
 msgid "Justified Line Break|J"
-msgstr "Blocksatz Zeilenumbruch|c"
+msgstr "Rechts ausgerichteter Zeilenumbruch|R"
 
 #: lib/ui/stdcontext.inc:210 lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
@@ -9995,7 +9996,7 @@ msgstr "Geteilte Ansicht vertikal|k"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Close Tab Group|G"
-msgstr "Tabengruppe schließen|ß"
+msgstr "Unterfenster-Gruppe schließen|ß"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Fullscreen|l"
@@ -10730,11 +10731,11 @@ msgstr "Großer Abstand\t\\;"
 
 #: lib/ui/stdtoolbars.inc:274
 msgid "Quadratin space\t\\quad"
-msgstr "'Quadratin'-Abstand\t\\quad"
+msgstr "Cicero-Abstand\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:275
 msgid "Double quadratin space\t\\qquad"
-msgstr "Doppelter 'quadratin'-Abstand\t\\qquad"
+msgstr "Doppelcicero-Abstand\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "Negative space\t\\!"
@@ -16533,6 +16534,9 @@ msgid ""
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
+"Den Abstand auch nach einem Zeilenumbruch einfügen.\n"
+"Beachten Sie, dass ein geschützter Halbcicero-Abstand am Anfang\n"
+"eines Absatzes in einen vertikalan Abstand umgewandelt wird!"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -16803,7 +16807,7 @@ msgstr "System und Verschiedenes"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2202 src/frontends/qt4/GuiPrefs.cpp:2259
 msgid "Res&tore"
-msgstr "&Zurücksetzen"
+msgstr "Zurüc&ksetzen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2327 src/frontends/qt4/GuiPrefs.cpp:2334
 #: src/frontends/qt4/GuiPrefs.cpp:2341 src/frontends/qt4/GuiPrefs.cpp:2353
@@ -17590,11 +17594,11 @@ msgstr "Datei schließen"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1389
 msgid "Hide tab"
-msgstr "Tabe verstecken"
+msgstr "Unterfenster verstecken"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1391
 msgid "Close tab"
-msgstr "Tabe schließen"
+msgstr "Unterfenster schließen"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -18269,7 +18273,7 @@ msgstr "Formatiert: "
 
 #: src/insets/InsetSpace.cpp:70
 msgid "Interword Space"
-msgstr "Zwischenwort Abstand"
+msgstr "Normales Leerzeichen"
 
 #: src/insets/InsetSpace.cpp:73
 msgid "Protected Space"
@@ -18281,19 +18285,19 @@ msgstr "Dünner Abstand"
 
 #: src/insets/InsetSpace.cpp:79
 msgid "Quad Space"
-msgstr "Quad Abstand"
+msgstr "Cicero-Abstand"
 
 #: src/insets/InsetSpace.cpp:82
 msgid "QQuad Space"
-msgstr "QQuad Abstand"
+msgstr "Doppelcicero-Abstand"
 
 #: src/insets/InsetSpace.cpp:85
 msgid "Enspace"
-msgstr "Enspace"
+msgstr "Geschützter Halbcicero-Abstand (Enspace)"
 
 #: src/insets/InsetSpace.cpp:88
 msgid "Enskip"
-msgstr "Enskip"
+msgstr "Halbcicero-Abstand (Enskip)"
 
 #: src/insets/InsetSpace.cpp:91
 msgid "Negative Thin Space"
