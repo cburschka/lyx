@@ -753,16 +753,18 @@ string const Lexer::getLongString(string const & endtoken)
 
 bool Lexer::getBool() const
 {
-	if (pimpl_->getString() == "true") {
+	string const s = pimpl_->getString();	
+	if (s == "false" || s == "0") {
+		lastReadOk_ = true;
+		return false;
+	}
+	if (s == "true" || s == "1") {
 		lastReadOk_ = true;
 		return true;
-	} else if (pimpl_->getString() != "false") {
-		pimpl_->printError("Bad boolean `$$Token'. "
-				   "Use \"false\" or \"true\"");
-		lastReadOk_ = false;
 	}
-	lastReadOk_ = true;
-	return false;
+	pimpl_->printError("Bad boolean `$$Token'. "
+				 "Use \"false\" or \"true\"");
+	lastReadOk_ = false;
 }
 
 
@@ -878,6 +880,16 @@ Lexer & Lexer::operator>>(bool & s)
 }
 
 
+Lexer & Lexer::operator>>(char & c)
+{
+	string s;
+	operator>>(s);
+	if (!s.empty())
+		c = s[0];
+	return *this;
+}
+
+
 // quotes a string, e.g. for use in preferences files or as an argument
 // of the "log" dialog
 string Lexer::quoteString(string const & arg)
@@ -895,10 +907,22 @@ Lexer & Lexer::operator>>(char const * required)
 	string token;
 	*this >> token;
 	if (token != required) {
-		LYXERR0("Missing '" << required << "'-tag in " << pimpl_->context);
+		LYXERR0("Missing '" << required << "'-tag in " << pimpl_->context 
+			<< ". Got " << token << " instead. Line: " << lineNumber());
 		pushToken(token);
 	}
 	return *this;
+}
+
+
+bool Lexer::checkFor(char const * required)
+{
+	string token;
+	*this >> token;
+	if (token == required)
+		return true;
+	pushToken(token);
+	return false;
 }
 
 

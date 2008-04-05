@@ -100,7 +100,7 @@ void InsetListings::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.next();
-		string const token = lex.getString();
+		string token = lex.getString();
 		if (token == "lstparams") {
 			lex.next();
 			string const value = lex.getString();

@@ -216,32 +216,11 @@ void InsetFloatParams::write(ostream & os) const
 
 void InsetFloatParams::read(Lexer & lex)
 {
-	string token;
-	lex >> token;
-	if (token == "placement") {
+	lex.setContext("InsetFloatParams::read");
+	if (lex.checkFor("placement"))
 		lex >> placement;
-	} else {
-		// take countermeasures
-		lex.pushToken(token);
-	}
-	lex >> token;
-	if (token == "wide") {
-		lex >> wide;
-	} else {
-		lyxerr << "InsetFloat::Read:: Missing wide!"
-		<< endl;
-		// take countermeasures
-		lex.pushToken(token);
-	}
-	lex >> token;
-	if (token == "sideways") {
-		lex >> sideways;
-	} else {
-		lyxerr << "InsetFloat::Read:: Missing sideways!"
-		<< endl;
-		// take countermeasures
-		lex.pushToken(token);
-	}
+	lex >> "wide" >> wide;
+	lex >> "sideways" >> sideways;
 }
 
 
@@ -454,25 +433,9 @@ void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "float") {
-		LYXERR0("InsetFloat::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"float\"\n");
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Text::readInset
-	string id;
-	lex >> id;
-	if (!lex || id != "Float") {
-		LYXERR0("InsetFloat::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"Float\"\n");
-	}
-
-	// We have to read the type here!
-	lex >> params.type;
+	lex.setContext("InsetFloat::string2params");
+	lex >> "float" >> "Float";
+	lex >> params.type; // We have to read the type here!
 	params.read(lex);
 }
 

@@ -257,18 +257,8 @@ void InsetVSpace::string2params(string const & in, VSpace & vspace)
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "vspace") {
-		LYXERR0("Expected arg 1 to be \"vspace\" in " << in);
-		return;
-	}
-
-	string vsp;
-	lex >> vsp;
-	if (lex)
-		vspace = VSpace(vsp);
+	lex.setContext("InsetVSpace::string2params");
+	lex >> "vspace" >> vspace;
 }
 
 

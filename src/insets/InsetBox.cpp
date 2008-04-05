@@ -584,128 +584,19 @@ void InsetBoxParams::write(ostream & os) const
 
 void InsetBoxParams::read(Lexer & lex)
 {
-	if (!lex.isOK())
-		return;
-
-	lex.next();
-	type = lex.getString();
-
-	if (!lex)
-		return;
-
-	lex.next();
-	string token;
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "position") {
-		lex.next();
-		// The [0] is needed. We need the first and only char in
-		// this string -- MV
-		pos = lex.getString()[0];
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'position'-tag!" << token << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "hor_pos") {
-		lex.next();
-		hor_pos = lex.getString()[0];
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'hor_pos'-tag!" << token << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "has_inner_box") {
-		lex.next();
-		inner_box = lex.getInteger();
-		if (type == "Framed")
-			inner_box = false;
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'has_inner_box'-tag!" << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "inner_pos") {
-		lex.next();
-		inner_pos = lex.getString()[0];
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'inner_pos'-tag!"
-			<< token << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "use_parbox") {
-		lex.next();
-		use_parbox = lex.getInteger();
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'use_parbox'-tag!" << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "width") {
-		lex.next();
-		width = Length(lex.getString());
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'width'-tag!" << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "special") {
-		lex.next();
-		special = lex.getString();
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'special'-tag!" << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "height") {
-		lex.next();
-		height = Length(lex.getString());
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'height'-tag!" << endl;
-		lex.pushToken(token);
-	}
-
-	lex.next();
-	token = lex.getString();
-	if (!lex)
-		return;
-	if (token == "height_special") {
-		lex.next();
-		height_special = lex.getString();
-	} else {
-		lyxerr << "InsetBox::Read: Missing 'height_special'-tag!" << endl;
-		lex.pushToken(token);
-	}
+	lex.setContext("InsetBoxParams::read");
+	lex >> type;
+	lex >> "position" >> pos;
+	lex >> "hor_pos" >> hor_pos;
+	lex >> "has_inner_box" >> inner_box;
+	if (type == "Framed")
+		inner_box = false;
+	lex >> "inner_pos" >> inner_pos;
+	lex >> "use_parbox" >> use_parbox;
+	lex >> "width" >> width;
+	lex >> "special" >> special;
+	lex >> "height" >> height;
+	lex >> "height_special" >> height_special;
 }
 
 

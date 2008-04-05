@@ -276,12 +276,10 @@ void InsetQuotes::write(ostream & os) const
 
 void InsetQuotes::read(Lexer & lex)
 {
+	lex.setContext("InsetQuotes::read");
 	lex.next();
 	parseString(lex.getString());
-	lex.next();
-	if (lex.getString() != "\\end_inset") {
-		lex.printError("Missing \\end_inset at this point");
-	}
+	lex >> "\\end_inset";
 }
 
 

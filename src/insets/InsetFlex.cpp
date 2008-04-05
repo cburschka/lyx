@@ -71,17 +71,14 @@ void InsetFlex::write(ostream & os) const
 
 void InsetFlex::read(Lexer & lex)
 {
+	string token;
 	while (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-
+		lex >> token;
 		if (token == "Flex") {
 			lex.next();
 			name_ = lex.getString();
-		}
-
-		// This is handled in Collapsable
-		else if (token == "status") {
+		} else if (token == "status") {
+			// This is handled in Collapsable
 			lex.pushToken(token);
 			break;
 		}

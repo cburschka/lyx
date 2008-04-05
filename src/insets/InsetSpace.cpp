@@ -510,10 +510,10 @@ void InsetSpace::textString(odocstream & os) const
 
 bool InsetSpace::isStretchableSpace() const
 {
-	return (params_.kind == InsetSpaceParams::HFILL ||
-		params_.kind == InsetSpaceParams::HFILL_PROTECTED ||
-		params_.kind == InsetSpaceParams::DOTFILL ||
-		params_.kind == InsetSpaceParams::HRULEFILL);
+	return params_.kind == InsetSpaceParams::HFILL
+		|| params_.kind == InsetSpaceParams::HFILL_PROTECTED
+		|| params_.kind == InsetSpaceParams::DOTFILL
+		|| params_.kind == InsetSpaceParams::HRULEFILL;
 }
 
 
@@ -532,13 +532,8 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "space") {
-		LYXERR0("Expected arg 1 to be \"space\" in " << in);
-		return;
-	}
+	lex.setContext("InsetSpace::string2params");
+	lex >> "space";
 
 	params.read(lex);
 }

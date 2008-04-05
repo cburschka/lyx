@@ -283,25 +283,8 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (name != "branch") {
-		LYXERR0("InsetBranch::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"branch\"\n");
-		return;
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Text::readInset
-	string id;
-	lex >> id;
-	if (!lex || id != "Branch") {
-		LYXERR0("InsetBranch::string2params(" << in << ")\n"
-					  "Expected arg 2 to be \"Branch\"\n");
-		return;
-	}
-
+	lex.setContext("InsetBranch::string2params");
+	lex >> "branch" >> "Branch";
 	params.read(lex);
 }
 

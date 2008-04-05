@@ -65,27 +65,22 @@ void InsetNewpageParams::write(ostream & os) const
 
 void InsetNewpageParams::read(Lexer & lex)
 {
-	lex.next();
-	string const command = lex.getString();
-
-	if (command == "newpage")
-		kind = InsetNewpageParams::NEWPAGE;
-	else if (command == "pagebreak")
-		kind = InsetNewpageParams::PAGEBREAK;
-	else if (command == "clearpage")
-		kind = InsetNewpageParams::CLEARPAGE;
-	else if (command == "cleardoublepage")
-		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
-	else
-		lex.printError("InsetNewpage: Unknown kind: `$$Token'");
-
+	lex.setContext("InsetNewpageParams::read");
 	string token;
 	lex >> token;
-	if (!lex)
-		return;
-	if (token != "\\end_inset")
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+
+	if (token == "newpage")
+		kind = InsetNewpageParams::NEWPAGE;
+	else if (token == "pagebreak")
+		kind = InsetNewpageParams::PAGEBREAK;
+	else if (token == "clearpage")
+		kind = InsetNewpageParams::CLEARPAGE;
+	else if (token == "cleardoublepage")
+		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
+	else
+		lex.printError("Unknown kind: `$$Token'");
+
+	lex >> "\\end_inset";
 }
 
 

@@ -340,7 +340,8 @@ int LyXRC::read(FileName const & filename)
 		lexrc.printTable(lyxerr);
 
 	lexrc.setFile(filename);
-	if (!lexrc.isOK()) return -2;
+	if (!lexrc.isOK())
+		return -2;
 
 	LYXERR(Debug::LYXRC, "Reading '" << filename << "'...");
 
@@ -416,33 +417,24 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_AUTORESET_OPTIONS:
-			if (lexrc.next()) {
-				auto_reset_options = lexrc.getBool();
-			}
+			lexrc >> auto_reset_options;
 			break;
 
 		case RC_DISPLAY_GRAPHICS:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				display_graphics = graphics::displayTranslator().find(lexrc.getString());
-			}
 			break;
 
 		case RC_TEX_EXPECTS_WINDOWS_PATHS:
-			if (lexrc.next()) {
-				windows_style_tex_paths = lexrc.getBool();
-			}
+			lexrc >> windows_style_tex_paths;
 			break;
 
 		case RC_TEX_ALLOWS_SPACES:
-			if (lexrc.next()) {
-				tex_allows_spaces = lexrc.getBool();
-			}
+			lexrc >> tex_allows_spaces;
 			break;
 
 		case RC_KBMAP:
-			if (lexrc.next()) {
-				use_kbmap = lexrc.getBool();
-			}
+			lexrc >> use_kbmap;
 			break;
 
 		case RC_KBMAP_PRIMARY:
@@ -474,129 +466,87 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_FONT_ENCODING:
-			if (lexrc.next()) {
-				fontenc = lexrc.getString();
-			}
+			lexrc >> fontenc;
 			break;
 
 		case RC_PRINTER:
-			if (lexrc.next()) {
-				printer = lexrc.getString();
-			}
+			lexrc >> printer;
 			break;
 
 		case RC_PRINT_COMMAND:
-			if (lexrc.next()) {
-				print_command = lexrc.getString();
-			}
+			lexrc >> print_command;
 			break;
 
 		case RC_PRINTEVENPAGEFLAG:
-			if (lexrc.next()) {
-				print_evenpage_flag = lexrc.getString();
-			}
+			lexrc >> print_evenpage_flag;
 			break;
 
 		case RC_PRINTODDPAGEFLAG:
-			if (lexrc.next()) {
-				print_oddpage_flag = lexrc.getString();
-			}
+			lexrc >> print_oddpage_flag;
 			break;
 
 		case RC_PRINTPAGERANGEFLAG:
-			if (lexrc.next()) {
-				print_pagerange_flag = lexrc.getString();
-			}
+			lexrc >> print_pagerange_flag;
 			break;
 
 		case RC_PRINTCOPIESFLAG:
-			if (lexrc.next()) {
-				print_copies_flag = lexrc.getString();
-			}
+			lexrc >> print_copies_flag;
 			break;
 
 		case RC_PRINTCOLLCOPIESFLAG:
-			if (lexrc.next()) {
-				print_collcopies_flag = lexrc.getString();
-			}
+			lexrc >> print_collcopies_flag;
 			break;
 
 		case RC_PRINTREVERSEFLAG:
-			if (lexrc.next()) {
-				print_reverse_flag = lexrc.getString();
-			}
+			lexrc >> print_reverse_flag;
 			break;
 
 		case RC_PRINTLANDSCAPEFLAG:
-			if (lexrc.next()) {
-				print_landscape_flag = lexrc.getString();
-			}
+			lexrc >> print_landscape_flag;
 			break;
 
 		case RC_PRINTTOPRINTER:
-			if (lexrc.next()) {
-				print_to_printer = lexrc.getString();
-			}
+			lexrc >> print_to_printer;
 			break;
 
 		case RC_PRINT_ADAPTOUTPUT:
-			if (lexrc.next()) {
-				print_adapt_output = lexrc.getBool();
-			}
+			lexrc >> print_adapt_output;
 			break;
 
 		case RC_PRINTTOFILE:
-			if (lexrc.next()) {
-				print_to_file = os::internal_path(lexrc.getString());
-			}
+			print_to_file = os::internal_path(lexrc.getString());
 			break;
 
 		case RC_PRINTFILEEXTENSION:
-			if (lexrc.next()) {
-				print_file_extension = lexrc.getString();
-			}
+			lexrc >> print_file_extension;
 			break;
 
 		case RC_PRINTEXSTRAOPTIONS:
-			if (lexrc.next()) {
-				print_extra_options = lexrc.getString();
-			}
+			lexrc >> print_extra_options;
 			break;
 
 		case RC_PRINTSPOOL_COMMAND:
-			if (lexrc.next()) {
-				print_spool_command = lexrc.getString();
-			}
+			lexrc >> print_spool_command;
 			break;
 
 		case RC_PRINTSPOOL_PRINTERPREFIX:
-			if (lexrc.next()) {
-				print_spool_printerprefix = lexrc.getString();
-			}
+			lexrc >> print_spool_printerprefix;
 			break;
 
 		case RC_PRINTPAPERDIMENSIONFLAG:
-			if (lexrc.next()) {
-				print_paper_dimension_flag = lexrc.getString();
-			}
+			lexrc >> print_paper_dimension_flag;
 			break;
 
 		case RC_PRINTPAPERFLAG:
-			if (lexrc.next()) {
-				print_paper_flag = lexrc.getString();
-			}
+			lexrc >> print_paper_flag;
 			break;
 
 		case RC_CUSTOM_EXPORT_COMMAND:
-			if (lexrc.next()) {
-				custom_export_command = lexrc.getString();
-			}
+			lexrc >> custom_export_command;
 			break;
 
 		case RC_CUSTOM_EXPORT_FORMAT:
-			if (lexrc.next()) {
-				custom_export_format = lexrc.getString();
-			}
+			lexrc >> custom_export_format;
 			break;
 
 		case RC_DEFAULT_PAPERSIZE:
@@ -639,94 +589,48 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_CHKTEX_COMMAND:
-			if (lexrc.next()) {
-				chktex_command = lexrc.getString();
-			}
+			lexrc >> chktex_command;
 			break;
 
 		case RC_BIBTEX_COMMAND:
-			if (lexrc.next()) {
-				bibtex_command = lexrc.getString();
-			}
+			lexrc >> bibtex_command;
 			break;
 
 		case RC_INDEX_COMMAND:
-			if (lexrc.next()) {
-				index_command = lexrc.getString();
-			}
+			lexrc >> index_command;
 			break;
 
 		case RC_SCREEN_DPI:
-			if (lexrc.next()) {
-				dpi = lexrc.getInteger();
-			}
+			lexrc >> dpi;
 			break;
 
 		case RC_SCREEN_ZOOM:
-			if (lexrc.next()) {
-				zoom = lexrc.getInteger();
-			}
+			lexrc >> zoom;
 			break;
 
 		case RC_GEOMETRY_SESSION:
-			if (lexrc.next()) {
-				allow_geometry_session = lexrc.getBool();
-			}
+			lexrc >> allow_geometry_session;
 			break;
 
 		case RC_SCREEN_FONT_SIZES:
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_TINY] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_SCRIPT] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_FOOTNOTE] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_SMALL] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_NORMAL] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_LARGE] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_LARGER] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_LARGEST] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_HUGE] =
-					lexrc.getString();
-			}
-			if (lexrc.next()) {
-				font_sizes[FONT_SIZE_HUGER] =
-					lexrc.getString();
-			}
+			lexrc >> font_sizes[FONT_SIZE_TINY];
+			lexrc >> font_sizes[FONT_SIZE_SCRIPT];
+			lexrc >> font_sizes[FONT_SIZE_FOOTNOTE];
+			lexrc >> font_sizes[FONT_SIZE_SMALL];
+			lexrc >> font_sizes[FONT_SIZE_NORMAL];
+			lexrc >> font_sizes[FONT_SIZE_LARGE];
+			lexrc >> font_sizes[FONT_SIZE_LARGER];
+			lexrc >> font_sizes[FONT_SIZE_LARGEST];
+			lexrc >> font_sizes[FONT_SIZE_HUGE];
+			lexrc >> font_sizes[FONT_SIZE_HUGER];
 			break;
 
 		case RC_SCREEN_FONT_SCALABLE:
-			if (lexrc.next()) {
-				use_scalable_fonts = lexrc.getBool();
-			}
+			lexrc >> use_scalable_fonts;
 			break;
 
 		case RC_AUTOSAVE:
-			if (lexrc.next()) {
-				autosave = lexrc.getInteger();
-			}
+			lexrc >> autosave;
 			break;
 
 		case RC_DOCUMENTPATH:
@@ -764,87 +668,59 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_USELASTFILEPOS:
-			if (lexrc.next()) {
-				use_lastfilepos = lexrc.getBool();
-			}
+			lexrc >> use_lastfilepos;
 			break;
 
 		case RC_LOADSESSION:
-			if (lexrc.next()) {
-				load_session = lexrc.getBool();
-			}
+			lexrc >> load_session;
 			break;
 
 		case RC_MOUSE_WHEEL_SPEED:
-			if (lexrc.next()) {
-				mouse_wheel_speed = lexrc.getFloat();
-			}
+			lexrc >> mouse_wheel_speed;
 			break;
 
 		case RC_COMPLETION_INLINE_DELAY:
-			if (lexrc.next()) {
-				completion_inline_delay = lexrc.getFloat();
-			}
+			lexrc >> completion_inline_delay;
 			break;
 
 		case RC_COMPLETION_INLINE_MATH:
-			if (lexrc.next()) {
-				completion_inline_math = lexrc.getBool();
-			}
+			lexrc >> completion_inline_math;
 			break;
 
 		case RC_COMPLETION_INLINE_TEXT:
-			if (lexrc.next()) {
-				completion_inline_text = lexrc.getBool();
-			}
+			lexrc >> completion_inline_text;
 			break;
 
 		case RC_COMPLETION_INLINE_DOTS:
-			if (lexrc.next()) {
-				completion_inline_dots = lexrc.getInteger();
-			}
+			lexrc >> completion_inline_dots;
 			break;
 
 		case RC_COMPLETION_POPUP_DELAY:
-			if (lexrc.next()) {
-				completion_popup_delay = lexrc.getFloat();
-			}
+			lexrc >> completion_popup_delay;
 			break;
 
 		case RC_COMPLETION_POPUP_MATH:
-			if (lexrc.next()) {
-				completion_popup_math = lexrc.getBool();
-			}
+			lexrc >> completion_popup_math;
 			break;
 
 		case RC_COMPLETION_POPUP_TEXT:
-			if (lexrc.next()) {
-				completion_popup_text = lexrc.getBool();
-			}
+			lexrc >> completion_popup_text;
 			break;
 
 		case RC_COMPLETION_CURSOR_TEXT:
-			if (lexrc.next()) {
-				completion_cursor_text = lexrc.getBool();
-			}
+			lexrc >> completion_cursor_text;
 			break;
 
 		case RC_COMPLETION_POPUP_AFTER_COMPLETE:
-			if (lexrc.next()) {
-				completion_popup_after_complete = lexrc.getBool();
-			}
+			lexrc >> completion_popup_after_complete;
 			break;
 
 		case RC_NUMLASTFILES:
-			if (lexrc.next()) {
-				num_lastfiles = lexrc.getInteger();
-			}
+			lexrc >> num_lastfiles;
 			break;
 
 		case RC_CHECKLASTFILES:
-			if (lexrc.next()) {
-				check_lastfiles = lexrc.getBool();
-			}
+			lexrc >> check_lastfiles;
 			break;
 
 		case RC_SCREEN_FONT_ROMAN:
@@ -1106,68 +982,32 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_COPIER: {
 			string fmt, command;
-			if (lexrc.next()) {
-				fmt = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				command = lexrc.getString();
-			}
+			lexrc >> fmt >> command;
 			setMover(fmt, command);
 			break;
 		}
 
 		case RC_CONVERTER: {
 			string from, to, command, flags;
-			if (lexrc.next()) {
-				from = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				to = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				command = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				flags = lexrc.getString();
-			}
-			if (command.empty()) {
+			lexrc >> from >> to >> command >> flags;
+			if (command.empty())
 				theConverters().erase(from, to);
-			} else {
+			else
 				theConverters().add(from, to, command, flags);
-			}
 			break;
 		}
 		// compatibility with versions older than 1.4.0 only
 		case RC_VIEWER: {
 			string format, command;
-			if (lexrc.next()) {
-				format = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				command = lexrc.getString();
-			}
+			lexrc >> format >> command;
 			formats.setViewer(format, command);
 			break;
 		}
 		case RC_FORMAT: {
 			string format, extension, prettyname, shortcut;
-			if (lexrc.next()) {
-				format = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				extension = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				prettyname = lexrc.getString();
-			}
-			if (lexrc.next()) {
-				shortcut = lexrc.getString();
-			}
+			lexrc >> format >> extension >> prettyname >> shortcut;
 			string viewer, editor;
-			if (lexrc.next())
-				viewer = lexrc.getString();
-			if (lexrc.next())
-				editor = lexrc.getString();
+			lexrc >> viewer >> editor;
 			string flags;
 			// Hack to ensure compatibility with versions older
 			// than 1.5.0
@@ -1313,7 +1153,7 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_OPEN_BUFFERS_IN_TABS:
 			if (lexrc.next())
 				open_buffers_in_tabs = lexrc.getBool();
-				break;
+			break;
 		case RC_USE_BUNDLED_FORMAT:
 			if (lexrc.next())
 				use_bundled_format = lexrc.getBool();

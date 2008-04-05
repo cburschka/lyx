@@ -2815,12 +2815,12 @@ docstring InsetTabular::contextMenu(BufferView const &, int, int) const
 
 void InsetTabular::read(Lexer & lex)
 {
-	bool const old_format = (lex.getString() == "\\LyXTable");
+	//bool const old_format = (lex.getString() == "\\LyXTable");
 
 	tabular.read(lex);
 
-	if (old_format)
-		return;
+	//if (old_format)
+//		return;
 
 	lex.next();
 	string token = lex.getString();

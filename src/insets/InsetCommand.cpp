@@ -194,31 +194,12 @@ bool InsetCommand::string2params(string const & name, string const & in,
 	InsetCommandParams & params)
 {
 	params.clear();
-	if (in.empty())
-		return false;
-
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string n;
-	lex >> n;
-	if (!lex || n != name) {
-		LYXERR0("InsetCommand::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"" << name << "\"\n");
-		return false;
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Text::readInset
-	string id;
-	lex >> id;
-	if (!lex || id != "CommandInset") {
-		LYXERR0("InsetCommand::string2params(" << in << ")\n"
-					  "Expected arg 2 to be \"CommandInset\"\n");
-		return false;
-	}
-
+	lex.setContext("InsetCommand::string2params");
+	lex >> name.c_str(); // check for name
+	lex >> "CommandInset";
 	params.read(lex);
 	return true;
 }

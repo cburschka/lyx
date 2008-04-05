@@ -70,11 +70,8 @@ void InsetCaption::read(Lexer & lex)
 #if 0
 	// We will enably this check again when the compability
 	// code is removed from Buffer::Read (Lgb)
-	string const token = lex.GetString();
-	if (token != "Caption") {
-		lyxerr << "InsetCaption::Read: consistency check failed."
-		       << endl;
-	}
+	lex.setContext("InsetCaption::Read: consistency check");
+	lex >> "Caption";
 #endif
 	InsetText::read(lex);
 }

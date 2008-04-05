@@ -158,39 +158,18 @@ void InsetCollapsable::write(ostream & os) const
 
 void InsetCollapsable::read(Lexer & lex)
 {
-	bool token_found = false;
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token == "status") {
-			lex.next();
-			string const tmp_token = lex.getString();
+	lex.setContext("InsetCollapsable::read");
+	string tmp_token;
+	status_ = Collapsed;
+	lex >> "status";
+	lex >> tmp_token;
+	if (tmp_token == "open")
+		status_ = Open;
 
-			if (tmp_token == "collapsed") {
-				status_ = Collapsed;
-				token_found = true;
-			} else if (tmp_token == "open") {
-				status_ = Open;
-				token_found = true;
-			} else {
-				lyxerr << "InsetCollapsable::read: Missing status!"
-				       << endl;
-				// Take countermeasures
-				lex.pushToken(token);
-			}
-		} else {
-			LYXERR0("InsetCollapsable::read: Missing 'status'-tag!");
-			// take countermeasures
-			lex.pushToken(token);
-		}
-	}
 	// this must be set before we enter InsetText::read()
 	setLayout(buffer().params());
 
 	InsetText::read(lex);
-
-	if (!token_found)
-		status_ = isOpen() ? Open : Collapsed;
 
 	// Force default font, if so requested
 	// This avoids paragraphs in buffer language that would have a

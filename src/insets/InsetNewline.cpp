@@ -52,23 +52,16 @@ void InsetNewlineParams::write(ostream & os) const
 
 void InsetNewlineParams::read(Lexer & lex)
 {
-	lex.next();
-	string const command = lex.getString();
-
-	if (command == "newline")
+	string token;
+	lex.setContext("InsetNewlineParams::read");
+	lex >> token;	
+	if (token == "newline")
 		kind = InsetNewlineParams::NEWLINE;
-	else if (command == "linebreak")
+	else if (token == "linebreak")
 		kind = InsetNewlineParams::LINEBREAK;
 	else
-		lex.printError("InsetNewline: Unknown kind: `$$Token'");
-
-	string token;
-	lex >> token;
-	if (!lex)
-		return;
-	if (token != "\\end_inset")
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+		lex.printError("Unknown kind: `$$Token'");
+	lex >> "\\end_inset";
 }
 
 
@@ -267,18 +260,11 @@ void InsetNewline::string2params(string const & in, InsetNewlineParams & params)
 	params = InsetNewlineParams();
 	if (in.empty())
 		return;
-
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "newline") {
-		LYXERR0("Expected arg 1 to be \"newlien\" in " << in);
-		return;
-	}
-
+	lex.setContext("InsetNewline::string2params");
+	lex >> "newline";
 	params.read(lex);
 }
 

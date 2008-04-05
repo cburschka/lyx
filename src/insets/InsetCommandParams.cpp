@@ -258,30 +258,12 @@ void InsetCommandParams::setCmdName(string const & name)
 
 void InsetCommandParams::read(Lexer & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		string const insetType = lex.getString();
-		InsetCode const code = insetCode(insetType);
-		if (code != insetCode_) {
-			lex.printError("InsetCommandParams: Attempt to change type of inset.");
-			throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
-		                         _("Attempt to change type of parameters."));
-		}
-	}
-
-	if (lex.isOK()) {
-		lex.next();
-		string const test = lex.getString();
-		if (test != "LatexCommand") {
-			lex.printError("InsetCommandParams: No LatexCommand line found.");
-			throw ExceptionMessage(WarningException, _("InsetCommandParams error: "),
-			                       _("Can't find LatexCommand line."));
-		}
-	}
-	lex.next();
-	cmdName_ = lex.getString();
-	if (!isCompatibleCommand(insetCode_, cmdName_)){
-		lex.printError("InsetCommandParams: Incompatible command name " + cmdName_ + ".");
+	lex.setContext("InsetCommandParams::read");
+	lex >> insetName(insetCode_).c_str();
+	lex >> "LatexCommand";
+	lex >> cmdName_;
+	if (!isCompatibleCommand(insetCode_, cmdName_)) {
+		lex.printError("Incompatible command name " + cmdName_ + ".");
 		throw ExceptionMessage(WarningException, _("InsetCommandParams Error: "),
 		                       _("Incompatible command name."));
 	}

@@ -370,22 +370,8 @@ void InsetNote::string2params(string const & in, InsetNoteParams & params)
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "note") {
-		LYXERR0("Expected arg 1 to be \"note\" in " << in);
-		return;
-	}
-
-	// This is part of the inset proper that is usually swallowed
-	// by Text::readInset
-	string id;
-	lex >> id;
-	if (!lex || id != "Note") {
-		LYXERR0("Expected arg 1 to be \"Note\" in " << in);
-		return;
-	}
+	lex.setContext("InsetNote::string2params");
+	lex >> "note" >> "Note";
 
 	params.read(lex);
 }

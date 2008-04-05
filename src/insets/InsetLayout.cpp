@@ -54,9 +54,9 @@ InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 }
 
 
-bool InsetLayout::read(Lexer & lexrc)
+bool InsetLayout::read(Lexer & lex)
 {
-	name_ = support::subst(lexrc.getDocString(), '_', ' ');
+	name_ = support::subst(lex.getDocString(), '_', ' ');
 
 	enum {
 		IL_FONT,
@@ -101,93 +101,82 @@ bool InsetLayout::read(Lexer & lexrc)
 		{ "requires", IL_REQUIRES }
 	};
 
-	lexrc.pushTable(elementTags);
+	lex.pushTable(elementTags);
 
 	FontInfo font = inherit_font;
 	labelfont_ = inherit_font;
 	bgcolor_ = Color_background;
 	bool getout = false;
-	
-	while (!getout && lexrc.isOK()) {
-		int le = lexrc.lex();
+
+	string tmp;	
+	while (!getout && lex.isOK()) {
+		int le = lex.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown InsetLayout tag `$$Token'");
+			lex.printError("Unknown InsetLayout tag `$$Token'");
 			continue;
 		default: break;
 		}
 		switch (le) {
 		case IL_LYXTYPE:
-			lexrc.next();
-			lyxtype_ = lexrc.getString();
+			lex >> lyxtype_;
 			break;
 		case IL_LATEXTYPE:
-			lexrc.next();
-			latextype_ = lexrc.getString();
+			lex >> latextype_;
 			break;
 		case IL_LABELSTRING:
-			lexrc.next();
-			labelstring_ = lexrc.getDocString();
+			lex >> labelstring_;
 			break;
 		case IL_DECORATION:
-			lexrc.next();
-			decoration_ = translateDecoration(lexrc.getString());
+			lex >> tmp;
+			decoration_ = translateDecoration(tmp);
 			break;
 		case IL_LATEXNAME:
-			lexrc.next();
-			latexname_ = lexrc.getString();
+			lex >> latexname_;
 			break;
 		case IL_LATEXPARAM:
-			lexrc.next();
-			latexparam_ = support::subst(lexrc.getString(), "&quot;", "\"");
+			lex >> tmp;
+			latexparam_ = support::subst(tmp, "&quot;", "\"");
 			break;
 		case IL_LABELFONT:
-			labelfont_ = lyxRead(lexrc, inherit_font);
+			labelfont_ = lyxRead(lex, inherit_font);
 			break;
 		case IL_FORCELTR:
-			lexrc.next();
-			forceltr_ = lexrc.getBool();
+			lex >> forceltr_;
 			break;
 		case IL_MULTIPAR:
-			lexrc.next();
-			multipar_ = lexrc.getBool();
+			lex >> multipar_;
 			break;
 		case IL_PASSTHRU:
-			lexrc.next();
-			passthru_ = lexrc.getBool();
+			lex >> passthru_;
 			break;
 		case IL_KEEPEMPTY:
-			lexrc.next();
-			keepempty_ = lexrc.getBool();
+			lex >> keepempty_;
 			break;
 		case IL_FREESPACING:
-			lexrc.next();
-			freespacing_ = lexrc.getBool();
+			lex >> freespacing_;
 			break;
 		case IL_NEEDPROTECT:
-			lexrc.next();
-			needprotect_ = lexrc.getBool();
+			lex >> needprotect_;
 			break;
 		case IL_FONT: {
-			font_ = lyxRead(lexrc, inherit_font);
+			font_ = lyxRead(lex, inherit_font);
 			// If you want to define labelfont, you need to do so after
 			// font is defined.
 			labelfont_ = font_;
 			break;
 		}
-		case IL_BGCOLOR: {
-			lexrc.next();
-			string const token = lexrc.getString();
-			bgcolor_ = lcolor.getFromLyXName(token);
+		case IL_BGCOLOR:
+			lex >> tmp;
+			bgcolor_ = lcolor.getFromLyXName(tmp);
 			break;
-		}
 		case IL_PREAMBLE:
-			preamble_ = lexrc.getLongString("EndPreamble");
+			preamble_ = lex.getLongString("EndPreamble");
 			break;
 		case IL_REQUIRES: {
-			lexrc.eatLine();
+			lex.eatLine();
 			vector<string> const req 
-				= support::getVectorFromString(lexrc.getString());
+				= support::getVectorFromString(lex.getString());
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
@@ -205,7 +194,7 @@ bool InsetLayout::read(Lexer & lexrc)
 	// any realization against a given context.
 	labelfont_.realize(sane_font);
 
-	lexrc.popTable();
+	lex.popTable();
 	return true;
 }
 

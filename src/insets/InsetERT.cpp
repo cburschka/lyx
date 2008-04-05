@@ -192,26 +192,16 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 
 InsetCollapsable::CollapseStatus InsetERT::string2params(string const & in)
 {
-	CollapseStatus status = Collapsed;
 	if (in.empty())
-		return status;
-
+		return Collapsed;
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (name != "ert") {
-		LYXERR0("Expected arg 1 to be \"ert\" in " << in);
-		return status;
-	}
-
+	lex.setContext("InsetERT::string2params");
+	lex >> "ert";
 	int s;
 	lex >> s;
-	if (lex)
-		status = static_cast<CollapseStatus>(s);
-	return status;
+	return static_cast<CollapseStatus>(s);
 }
 
 

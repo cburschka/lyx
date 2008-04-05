@@ -182,9 +182,13 @@ public:
 	Lexer & operator>>(unsigned int &);
 	/// extract bool
 	Lexer & operator>>(bool &);
+	/// extract first char of the string
+	Lexer & operator>>(char &);
 
 	/// read and check a required token
 	Lexer & operator>>(char const * required);
+	/// check for an optional token and swallow it if present.
+	bool checkFor(char const * required);
 
 	/// Quotes a string so that reading it again with Lexer::next(true)
 	/// gets the original string

@@ -301,13 +301,9 @@ void InsetGraphics::write(ostream & os) const
 
 void InsetGraphics::read(Lexer & lex)
 {
-	string const token = lex.getString();
-
-	if (token == "Graphics")
-		readInsetGraphics(lex, buffer().filePath(), params_);
-	else
-		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
-
+	lex.setContext("InsetGraphics::read");
+	//lex >> "Graphics";
+	readInsetGraphics(lex, buffer().filePath(), params_);
 	params_.filename.enable(buffer().embedded(), buffer(), false);
 	graphic_->update(params().as_grfxParams());
 }
@@ -963,15 +959,8 @@ void InsetGraphics::string2params(string const & in, Buffer const & buffer,
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
-
-	string name;
-	lex >> name;
-	if (!lex || name != "graphics") {
-		LYXERR0("InsetGraphics::string2params(" << in << ")\n"
-					  "Expected arg 1 to be \"graphics\"\n");
-		return;
-	}
-
+	lex.setContext("InsetGraphics::string2params");
+	lex >> "graphics";
 	params = InsetGraphicsParams();
 	readInsetGraphics(lex, buffer.filePath(), params);
 }
