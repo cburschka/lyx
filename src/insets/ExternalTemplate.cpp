@@ -202,8 +202,7 @@ TemplateManager & TemplateManager::get()
 }
 
 
-TemplateManager::Templates const &
-TemplateManager::getTemplates() const
+TemplateManager::Templates const & TemplateManager::getTemplates() const
 {
 	return templates;
 }
@@ -346,14 +345,15 @@ void Template::readTemplate(Lexer & lex)
 			automaticProduction = lex.getBool();
 			break;
 
-		case TO_TRANSFORM:
+		case TO_TRANSFORM: {
 			lex >> token;
 			TransformID id = transformIDTranslator().find(token);
 			if (int(id) == -1)
 				LYXERR0("Transform " << token << " is not recognized");
 			else
-				ids.push_back(id);
+				transformIds.push_back(id);
 			break;
+		}
 
 		case TO_FORMAT:
 			lex.next(true);
