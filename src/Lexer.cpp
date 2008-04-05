@@ -311,11 +311,6 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 		is.get(cc);
 		c = cc;
 
-		// skip ','s
-		if (esc && c == ',')
-			continue;
-
-		
 		if (c == commentChar) {
 			// Read rest of line (fast :-)
 #if 1
@@ -380,13 +375,13 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 			break;
 		}
 
-		if (!esc && c == ',')
+		if (c == ',')
 			continue;              /* Skip ','s */
 
-			// using relational operators with chars other
-			// than == and != is not safe. And if it is done
-			// the type _have_ to be unsigned. It usually a
-			// lot better to use the functions from cctype
+		// using relational operators with chars other
+		// than == and != is not safe. And if it is done
+		// the type _have_ to be unsigned. It usually a
+		// lot better to use the functions from cctype
 		if (c > ' ' && is)  {
 			buff.clear();
 
@@ -404,7 +399,7 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 			status = LEX_TOKEN;
 		}
 
-		if (!esc && c == '\r' && is) {
+		if (c == '\r' && is) {
 			// The Windows support has lead to the
 			// possibility of "\r\n" at the end of
 			// a line.  This will stop LyX choking

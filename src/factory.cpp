@@ -420,8 +420,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 	auto_ptr<Inset> inset;
 
-	lex.next();
-	string tmptok = lex.getString();
+	string tmptok;
+	lex >> tmptok;
 
 	// test the different insets
 	
