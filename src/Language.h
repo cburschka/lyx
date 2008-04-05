@@ -24,19 +24,13 @@ namespace lyx {
 namespace support { class FileName; }
 
 class Encoding;
+class Lexer;
 
 ///
 class Language {
 public:
 	///
 	Language() : rightToLeft_(false) {}
-	///
-	Language(std::string const & l, std::string const & b, std::string const & d,
-		 bool rtl, std::string const & es, Encoding const * e, std::string const & c,
-		 std::string const & o)
-		: lang_(l), babel_(b), display_(d), rightToLeft_(rtl),
-		  encodingStr_(es), encoding_(e), code_(c), latex_options_(o)
-		{}
 	///
 	std::string const & lang() const { return lang_; }
 	///
@@ -53,6 +47,8 @@ public:
 	std::string const & code() const { return code_; }
 	///
 	std::string const & latex_options() const { return latex_options_; }
+	///
+	bool read(Lexer & lex);
 private:
 	///
 	std::string lang_;

@@ -483,8 +483,8 @@ int Buffer::readHeader(Lexer & lex)
 	ErrorList & errorList = d->errorLists["Parse"];
 
 	while (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
+		string token;
+		lex >> token;
 
 		if (token.empty())
 			continue;
@@ -539,9 +539,7 @@ bool Buffer::readDocument(Lexer & lex)
 	ErrorList & errorList = d->errorLists["Parse"];
 	errorList.clear();
 
-	lex.next();
-	string const token = lex.getString();
-	if (token != "\\begin_document") {
+	if (!lex.checkFor("\\begin_document")) {
 		docstring const s = _("\\begin_document is missing");
 		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
@@ -731,36 +729,19 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 {
 	BOOST_ASSERT(!filename.empty());
 
-	if (!lex.isOK()) {
-		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
-		return failure;
-	}
-
-	lex.next();
-	string const token = lex.getString();
-
-	if (!lex) {
-		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
-		return failure;
-	}
-
-	// the first token _must_ be...
-	if (token != "\\lyxformat") {
-		lyxerr << "Token: " << token << endl;
-
+	// the first (non-comment) token _must_ be...
+	if (!lex.checkFor("\\lyxformat")) {
 		Alert::error(_("Document format failure"),
-			     bformat(_("%1$s is not a LyX document."),
+			     bformat(_("%1$s is not a readable LyX document."),
 				       from_utf8(filename.absFilename())));
 		return failure;
 	}
 
-	lex.next();
-	string tmp_format = lex.getString();
+	string tmp_format;
+	lex >> tmp_format;
 	//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
 	// if present remove ".," from string.
-	string::size_type dot = tmp_format.find_first_of(".,");
+	size_t dot = tmp_format.find_first_of(".,");
 	//lyxerr << "           dot found at " << dot << endl;
 	if (dot != string::npos)
 			tmp_format.erase(dot, 1);
