@@ -551,41 +551,31 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_DEFAULT_PAPERSIZE:
 			if (lexrc.next()) {
-				string const size =
-					ascii_lowercase(lexrc.getString());
+				string const size = ascii_lowercase(lexrc.getString());
 				if (size == "usletter")
-					default_papersize =
-						PAPER_USLETTER;
+					default_papersize = PAPER_USLETTER;
 				else if (size == "legal")
-					default_papersize =
-						PAPER_USLEGAL;
+					default_papersize = PAPER_USLEGAL;
 				else if (size == "executive")
-					default_papersize =
-						PAPER_USEXECUTIVE;
+					default_papersize = PAPER_USEXECUTIVE;
 				else if (size == "a3")
-					default_papersize =
-						PAPER_A3;
+					default_papersize = PAPER_A3;
 				else if (size == "a4")
-					default_papersize =
-						PAPER_A4;
+					default_papersize = PAPER_A4;
 				else if (size == "a5")
-					default_papersize =
-						PAPER_A5;
+					default_papersize = PAPER_A5;
 				else if (size == "b5")
-					default_papersize =
-						PAPER_B5;
+					default_papersize = PAPER_B5;
 				else if (size == "default")
-					default_papersize =
-						PAPER_DEFAULT;
+					default_papersize = PAPER_DEFAULT;
 			}
 			break;
 
 		case RC_VIEWDVI_PAPEROPTION:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				view_dvi_paper_option = lexrc.getString();
-			} else {
+			else
 				view_dvi_paper_option.erase();
-			}
 			break;
 
 		case RC_CHKTEX_COMMAND:
@@ -662,9 +652,8 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_USETEMPDIR:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				lyxerr << "Ignoring obsolete use_tempdir flag." << endl;
-			}
 			break;
 
 		case RC_USELASTFILEPOS:
@@ -747,21 +736,15 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_SCREEN_FONT_ROMAN_FOUNDRY:
-			if (lexrc.next()) {
-				roman_font_foundry = lexrc.getString();
-			}
+			lexrc >> roman_font_foundry;
 			break;
 
 		case RC_SCREEN_FONT_SANS_FOUNDRY:
-			if (lexrc.next()) {
-				sans_font_foundry = lexrc.getString();
-			}
+			lexrc >> sans_font_foundry;
 			break;
 
 		case RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
-			if (lexrc.next()) {
-				typewriter_font_foundry = lexrc.getString();
-			}
+			lexrc >> typewriter_font_foundry;
 			break;
 
 		case RC_SET_COLOR:
@@ -798,9 +781,7 @@ int LyXRC::read(Lexer & lexrc)
 		}
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
-			if (lexrc.next()) {
-				auto_region_delete = lexrc.getBool();
-			}
+			lexrc >> auto_region_delete;
 			break;
 
 		case RC_SERVERPIPE:
@@ -811,9 +792,7 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
-			if (lexrc.next()) {
-				cursor_follows_scrollbar = lexrc.getBool();
-			}
+			lexrc >> cursor_follows_scrollbar;
 			break;
 
 		case RC_MACRO_EDIT_STYLE:
@@ -827,86 +806,55 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_DIALOGS_ICONIFY_WITH_MAIN:
-			if (lexrc.next()) {
-				dialogs_iconify_with_main = lexrc.getBool();
-			}
+			lexrc >> dialogs_iconify_with_main;
 			break;
 
 		case RC_PLAINTEXT_ROFF_COMMAND:
-			if (lexrc.next()) {
-				plaintext_roff_command = lexrc.getString();
-			}
+			lexrc >> plaintext_roff_command;
 			break;
 		case RC_PLAINTEXT_LINELEN:
-			if (lexrc.next()) {
-				plaintext_linelen = lexrc.getInteger();
-			}
+			lexrc >> plaintext_linelen;
 			break;
 			// Spellchecker settings:
 		case RC_USE_SPELL_LIB:
-			if (lexrc.next()) {
-				use_spell_lib = lexrc.getBool();
-			}
+			lexrc >> use_spell_lib;
 			break;
 		case RC_SPELL_COMMAND:
-			if (lexrc.next()) {
-				isp_command = lexrc.getString();
-			}
+			lexrc >> isp_command;
 			break;
 		case RC_ACCEPT_COMPOUND:
-			if (lexrc.next()) {
-				isp_accept_compound = lexrc.getBool();
-			}
+			lexrc >> isp_accept_compound;
 			break;
 		case RC_USE_INP_ENC:
-			if (lexrc.next()) {
-				isp_use_input_encoding = lexrc.getBool();
-			}
+			lexrc >> isp_use_input_encoding;
 			break;
 		case RC_USE_ALT_LANG:
-			if (lexrc.next()) {
-				isp_use_alt_lang = lexrc.getBool();
-			}
+			lexrc >> isp_use_alt_lang;
 			break;
 		case RC_USE_PERS_DICT:
-			if (lexrc.next()) {
-				isp_use_pers_dict = lexrc.getBool();
-			}
+			lexrc >> isp_use_pers_dict;
 			break;
 		case RC_USE_TOOLTIP:
-			if (lexrc.next()) {
-				use_tooltip = lexrc.getBool();
-			}
+			lexrc >> use_tooltip;
 			break;
 		case RC_USE_PIXMAP_CACHE:
-			if (lexrc.next()) {
-				use_pixmap_cache = lexrc.getBool();
-			}
+			lexrc >> use_pixmap_cache;
 			break;
 		case RC_USE_ESC_CHARS:
-			if (lexrc.next()) {
-				isp_use_esc_chars = lexrc.getBool();
-			}
+			lexrc >> isp_use_esc_chars;
 			break;
 		case RC_ALT_LANG:
-			if (lexrc.next()) {
-				isp_alt_lang = lexrc.getString();
-			}
+			lexrc >> isp_alt_lang;
 			break;
 		case RC_PERS_DICT:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				isp_pers_dict = os::internal_path(lexrc.getString());
-			}
 			break;
 		case RC_ESC_CHARS:
-			if (lexrc.next()) {
-				isp_esc_chars = lexrc.getString();
-			}
+			lexrc >> isp_esc_chars;
 			break;
 		case RC_MAKE_BACKUP:
-			if (lexrc.next()) {
-				make_backup = lexrc.getBool();
-			}
+			lexrc >> make_backup;
 			break;
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next()) {
@@ -915,69 +863,43 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 		case RC_DATE_INSERT_FORMAT:
-			if (lexrc.next()) {
-				date_insert_format = lexrc.getString();
-			}
+			lexrc >> date_insert_format;
 			break;
 		case RC_LANGUAGE_PACKAGE:
-			if (lexrc.next()) {
-				language_package = lexrc.getString();
-			}
+			lexrc >> language_package;
 			break;
 		case RC_LANGUAGE_AUTO_BEGIN:
-			if (lexrc.next()) {
-				language_auto_begin = lexrc.getBool();
-			}
+			lexrc >> language_auto_begin;
 			break;
 		case RC_LANGUAGE_AUTO_END:
-			if (lexrc.next()) {
-				language_auto_end = lexrc.getBool();
-			}
+			lexrc >> language_auto_end;
 			break;
 		case RC_LANGUAGE_GLOBAL_OPTIONS:
-			if (lexrc.next()) {
-				language_global_options = lexrc.getBool();
-			}
+			lexrc >> language_global_options;
 			break;
 		case RC_LANGUAGE_USE_BABEL:
-			if (lexrc.next()) {
-				language_use_babel = lexrc.getBool();
-			}
+			lexrc >> language_use_babel;
 			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
-			if (lexrc.next()) {
-				language_command_begin = lexrc.getString();
-			}
+			lexrc >> language_command_begin;
 			break;
 		case RC_LANGUAGE_COMMAND_END:
-			if (lexrc.next()) {
-				language_command_end = lexrc.getString();
-			}
+			lexrc >> language_command_end;
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
-			if (lexrc.next()) {
-				language_command_local = lexrc.getString();
-			}
+			lexrc >> language_command_local;
 			break;
 		case RC_RTL_SUPPORT:
-			if (lexrc.next()) {
-				rtl_support = lexrc.getBool();
-			}
+			lexrc >> rtl_support;
 			break;
 		case RC_VISUAL_CURSOR:
-			if (lexrc.next()) {
-				visual_cursor = lexrc.getBool();
-			}
+			lexrc >> visual_cursor;
 			break;
 		case RC_AUTO_NUMBER:
-			if (lexrc.next()) {
-				auto_number = lexrc.getBool();
-			}
+			lexrc >> auto_number;
 			break;
 		case RC_MARK_FOREIGN_LANGUAGE:
-			if (lexrc.next()) {
-				mark_foreign_language = lexrc.getBool();
-			}
+			lexrc >> mark_foreign_language;
 			break;
 
 		case RC_COPIER: {
@@ -1037,12 +959,10 @@ int LyXRC::read(Lexer & lexrc)
 					       << format << "'." << endl;
 			}
 			if (prettyname.empty()) {
-				if (theConverters().formatIsUsed(format)) {
-					lyxerr << "Can't delete format "
-					       << format << endl;
-				} else {
+				if (theConverters().formatIsUsed(format))
+					LYXERR0( "Can't delete format " << format);
+				else
 					formats.erase(format);
-				}
 			} else {
 				formats.add(format, extension, prettyname,
 					    shortcut, viewer, editor, flgs);
@@ -1050,21 +970,15 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
-			if (lexrc.next()) {
-				default_language = lexrc.getString();
-			}
+			lexrc >> default_language;
 			break;
 
 		case RC_LABEL_INIT_LENGTH:
-			if (lexrc.next()) {
-				label_init_length = lexrc.getInteger();
-			}
+			lexrc >> label_init_length;
 			break;
 
 		case RC_SHOW_BANNER:
-			if (lexrc.next()) {
-				show_banner = lexrc.getBool();
-			}
+			lexrc >> show_banner;
 			break;
 
 		case RC_PREVIEW:
@@ -1085,81 +999,61 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PREVIEW_HASHED_LABELS:
-			if (lexrc.next()) {
-				preview_hashed_labels = lexrc.getBool();
-			}
+			lexrc >> preview_hashed_labels;
 			break;
 
 		case RC_PREVIEW_SCALE_FACTOR:
-			if (lexrc.next()) {
-				preview_scale_factor = lexrc.getString();
-			}
+			lexrc >> preview_scale_factor;
 			break;
 
 		case RC_USER_NAME:
-			if (lexrc.next())
-				user_name = lexrc.getString();
+			lexrc >> user_name;
 			break;
-
 		case RC_USER_EMAIL:
-			if (lexrc.next())
-				user_email = lexrc.getString();
+			lexrc >> user_email;
 			break;
 
 		case RC_PATH_PREFIX:
-			if (lexrc.next())
-				path_prefix = lexrc.getString();
+			lexrc >> path_prefix;
 			break;
 
 		case RC_USE_CONVERTER_CACHE:
-			if (lexrc.next())
-				use_converter_cache = lexrc.getBool();
+			lexrc >> use_converter_cache;
 			break;
-
 		case RC_CONVERTER_CACHE_MAXAGE:
-			if (lexrc.next())
-				converter_cache_maxage =
-					convert<unsigned int>(lexrc.getString());
+			lexrc >> converter_cache_maxage;
 			break;
 
 		case RC_SORT_LAYOUTS:
-			if (lexrc.next())
-				sort_layouts = lexrc.getBool();
+			lexrc >> sort_layouts;
 			break;
 		case RC_GROUP_LAYOUTS:
-			if (lexrc.next())
-				group_layouts = lexrc.getBool();
+			lexrc >> group_layouts;
 			break;
 		case RC_FULL_SCREEN_LIMIT:
-			if (lexrc.next())
-				full_screen_limit = lexrc.getBool();
+			lexrc >> full_screen_limit;
 			break;
 		case RC_FULL_SCREEN_TOOLBARS:
-			if (lexrc.next())
-				full_screen_toolbars = lexrc.getBool();
+			lexrc >> full_screen_toolbars;
 			break;
 		case RC_FULL_SCREEN_SCROLLBAR:
-			if (lexrc.next())
-				full_screen_scrollbar = lexrc.getBool();
+			lexrc >> full_screen_scrollbar;
 			break;
 		case RC_FULL_SCREEN_TABBAR:
-			if (lexrc.next())
-				full_screen_tabbar = lexrc.getBool();
+			lexrc >> full_screen_tabbar;
 			break;
 		case RC_FULL_SCREEN_WIDTH:
-			if (lexrc.next())
-				full_screen_width = lexrc.getInteger();
+			lexrc >> full_screen_width;
 			break;
 		case RC_OPEN_BUFFERS_IN_TABS:
-			if (lexrc.next())
-				open_buffers_in_tabs = lexrc.getBool();
+			lexrc >> open_buffers_in_tabs;
 			break;
 		case RC_USE_BUNDLED_FORMAT:
-			if (lexrc.next())
-				use_bundled_format = lexrc.getBool();
-				break;
+			lexrc >> use_bundled_format;
+			break;
 
-		case RC_LAST: break; // this is just a dummy
+		case RC_LAST:
+			break; // this is just a dummy
 		}
 	}
 
