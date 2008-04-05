@@ -1560,7 +1560,25 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
+ * \li Action: When run from a child document, this updates (exports) document built
+                from the master buffer. If a master is not found, it updates the
+                current buffer.
+ * \li Syntax: master-buffer-update
+ * \li Author: Tommaso, 20 Sep 2007
+ * \endvar
+ */
 		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_VIEW
+ * \li Action: When run from a child document, this command shows a preview built
+               from the master buffer. If a master is not found, it previews the
+	       current buffer.
+ * \li Syntax: master-buffer-view
+ * \li Author: Tommaso, 20 Sep 2007
+ * \endvar
+ */
 		{ LFUN_MASTER_BUFFER_VIEW, "master-buffer-view", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_LANGUAGE
