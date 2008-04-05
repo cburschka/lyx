@@ -40,10 +40,6 @@ using namespace lyx::support::os;
 
 namespace lyx {
 
-// Hacks to allow the thing to link in the lyxlayout stuff
-LayoutPtr captionlayout;
-
-
 string const trim(string const & a, char const * p)
 {
 	// BOOST_ASSERT(p);
@@ -400,7 +396,6 @@ void tex2lyx(istream & is, ostream & os)
 	stringstream ss;
 	TeX2LyXDocClass textclass;
 	parse_preamble(p, ss, documentclass, textclass);
-	captionlayout = LayoutPtr(Layout::forCaption());
 
 	active_environments.push_back("document");
 	Context context(true, textclass);

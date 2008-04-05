@@ -24,7 +24,7 @@ namespace lyx {
 
 namespace {
 
-void begin_layout(ostream & os, LayoutPtr const & layout, TeXFont const & font,
+void begin_layout(ostream & os, Layout const * const & layout, TeXFont const & font,
 		  TeXFont const & normalfont)
 {
 	os << "\n\\begin_layout " << to_utf8(layout->name()) << "\n";
@@ -84,7 +84,7 @@ bool Context::empty = true;
 
 Context::Context(bool need_layout_,
 		 TeX2LyXDocClass const & textclass_,
-		 LayoutPtr layout_, LayoutPtr parent_layout_,
+		 Layout const * layout_, Layout const * parent_layout_,
 		 TeXFont font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),

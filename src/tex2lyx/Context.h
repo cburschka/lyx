@@ -78,8 +78,8 @@ class Context {
 public:
 	Context(bool need_layout_,
 		TeX2LyXDocClass const & textclass_,
-		LayoutPtr layout_ = LayoutPtr(),
-		LayoutPtr parent_layout_= LayoutPtr(),
+		Layout const * layout_ = 0,
+		Layout const * parent_layout_= 0,
 		TeXFont font_ = TeXFont());
 	~Context();
 
@@ -142,9 +142,9 @@ public:
 	/// The textclass of the document. Could actually be a global variable
 	TeX2LyXDocClass const & textclass;
 	/// The layout of the current paragraph
-	LayoutPtr layout;
+	Layout const * layout;
 	/// The layout of the outer paragraph (for environment layouts)
-	LayoutPtr parent_layout;
+	Layout const * parent_layout;
 	/// font attributes of this context
 	TeXFont font;
 	/// font attributes of normal text

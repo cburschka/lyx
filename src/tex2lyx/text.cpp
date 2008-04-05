@@ -424,23 +424,37 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-LayoutPtr findLayout(TextClass const & textclass, string const & name)
+Layout const * findLayout(TextClass const & textclass, string const & name)
 {
 	DocumentClass::const_iterator lit = textclass.begin();
 	DocumentClass::const_iterator len = textclass.end();
 	for (; lit != len; ++lit)
 		if (lit->latexname() == name)
 			return &*lit;
-	return LayoutPtr();
+	return 0;
 }
 
 
 void eat_whitespace(Parser &, ostream &, Context &, bool);
 
 
+Layout * captionlayout()
+{
+	static Layout * lay = 0;
+	if (!lay) {
+		lay = new Layout;
+		lay->name_ = from_ascii("Caption");
+		lay->latexname_ = "caption";
+		lay->latextype = LATEX_COMMAND;
+		lay->optionalargs = 1;
+	}
+	return lay;
+}
+
+
 void output_command_layout(ostream & os, Parser & p, bool outer,
 			   Context & parent_context,
-			   LayoutPtr newlayout)
+			   Layout const * newlayout)
 {
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
@@ -696,7 +710,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
 {
-	LayoutPtr newlayout;
+	Layout const * newlayout;
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
@@ -1105,7 +1119,7 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
-	LayoutPtr newlayout;
+	Layout const * newlayout = 0;
 	// store the current selectlanguage to be used after \foreignlanguage
 	string selectlang;
 	// Store the latest bibliographystyle (needed for bibtex inset)
@@ -1539,9 +1553,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// Special handling for \caption
 		// FIXME: remove this when InsetCaption is supported.
 		else if (context.new_layout_allowed &&
-			 t.cs() == captionlayout->latexname()) {
+			 t.cs() == captionlayout()->latexname()) {
 			output_command_layout(os, p, outer, context, 
-					      captionlayout);
+					      captionlayout());
 			p.skip_spaces();
 		}
 

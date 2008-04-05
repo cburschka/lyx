@@ -234,10 +234,12 @@ public:
 	/// until it has proper support for the caption inset (JMarc)
 	static Layout * forCaption();
 
-private:
 	/// Name of the layout/paragraph environment
 	docstring name_;
+	/// LaTeX name for environment
+	std::string latexname_;
 
+private:
 	/** Name of an layout that has replaced this layout.
 	    This is used to rename a layout, while keeping backward
 	    compatibility
@@ -250,8 +252,6 @@ private:
 	 */
 	docstring depends_on_;
 
-	/// LaTeX name for environment
-	std::string latexname_;
 	/// Label string. "Abstract", "Reference", "Caption"...
 	docstring labelstring_;
 	///

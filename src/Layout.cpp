@@ -131,7 +131,7 @@ Layout::Layout()
 }
 
 
-bool Layout::read(Lexer & lexrc, TextClass const & tclass)
+bool Layout::read(Lexer & lex, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	LexerKeyword layoutTags[] = {
@@ -191,17 +191,17 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 	bool error = false;
 	bool finished = false;
-	lexrc.pushTable(layoutTags);
+	lex.pushTable(layoutTags);
 	// parse style section
-	while (!finished && lexrc.isOK() && !error) {
-		int le = lexrc.lex();
+	while (!finished && lex.isOK() && !error) {
+		int le = lex.lex();
 		// See comment in LyXRC.cpp.
 		switch (le) {
 		case Lexer::LEX_FEOF:
 			continue;
 
 		case Lexer::LEX_UNDEF:		// parse error
-			lexrc.printError("Unknown layout tag `$$Token'");
+			lex.printError("Unknown layout tag `$$Token'");
 			error = true;
 			continue;
 		default: break;
@@ -212,293 +212,264 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 			break;
 
 		case LT_CATEGORY:
-			if (lexrc.next())
-				category_ = lexrc.getDocString();
+			lex >> category_;
 			break;
 
-		case LT_COPYSTYLE:     // initialize with a known style
-			if (lexrc.next()) {
-				docstring const style = subst(lexrc.getDocString(),
-								'_', ' ');
+		case LT_COPYSTYLE: {     // initialize with a known style
+			docstring style;
+			lex >> style;
+			style = subst(style, '_', ' ');
 
-				if (tclass.hasLayout(style)) {
-					docstring const tmpname = name_;
-					this->operator=(tclass[style]);
-					name_ = tmpname;
-				} else {
-					lyxerr << "Cannot copy unknown style `"
-					       << to_utf8(style) << "'\n"
-					       << "All layouts so far:"
-					       << endl;
-					DocumentClass::const_iterator lit = tclass.begin();
-					DocumentClass::const_iterator len = tclass.end();
-					for (; lit != len; ++lit)
-						lyxerr << to_utf8(lit->name()) << endl;
+			if (tclass.hasLayout(style)) {
+				docstring const tmpname = name_;
+				this->operator=(tclass[style]);
+				name_ = tmpname;
+			} else {
+				lyxerr << "Cannot copy unknown style `"
+							 << to_utf8(style) << "'\n"
+							 << "All layouts so far:"
+							 << endl;
+				DocumentClass::const_iterator lit = tclass.begin();
+				DocumentClass::const_iterator len = tclass.end();
+				for (; lit != len; ++lit)
+					lyxerr << to_utf8(lit->name()) << endl;
 
-					//lexrc.printError("Cannot copy known "
-					//		 "style `$$Token'");
-				}
+				//lex.printError("Cannot copy known "
+				//		 "style `$$Token'");
 			}
 			break;
+			}
 
-		case LT_OBSOLETEDBY:     // replace with a known style
-			if (lexrc.next()) {
-				docstring const style = 
-					subst(lexrc.getDocString(), '_', ' ');
+		case LT_OBSOLETEDBY: {   // replace with a known style
+			docstring style;
+			lex >> style;
+			style = subst(style, '_', ' ');
 
-				if (tclass.hasLayout(style)) {
-					docstring const tmpname = name_;
-					this->operator=(tclass[style]);
-					name_ = tmpname;
-					if (obsoleted_by().empty())
-						obsoleted_by_ = style;
-				} else {
-					lyxerr << "Cannot replace with unknown style `" 
-						<< to_utf8(style) << '\'' << endl;
+			if (tclass.hasLayout(style)) {
+				docstring const tmpname = name_;
+				this->operator=(tclass[style]);
+				name_ = tmpname;
+				if (obsoleted_by().empty())
+					obsoleted_by_ = style;
+			} else {
+				lyxerr << "Cannot replace with unknown style `" 
+					<< to_utf8(style) << '\'' << endl;
 
-					//lexrc.printError("Cannot replace with"
-					//		 " unknown style "
-					//		 "`$$Token'");
-				}
+				//lex.printError("Cannot replace with"
+				//		 " unknown style "
+				//		 "`$$Token'");
 			}
 			break;
+		}
 
 		case LT_DEPENDSON:
-			if (lexrc.next())
-			depends_on_ = subst(lexrc.getDocString(), '_', ' ');
+			lex >> depends_on_;
+			depends_on_ = subst(depends_on_, '_', ' ');
 			break;
 
 		case LT_MARGIN:		// margin style definition.
-			readMargin(lexrc);
+			readMargin(lex);
 			break;
 
 		case LT_LATEXTYPE:	// LaTeX style definition.
-			readLatexType(lexrc);
+			readLatexType(lex);
 			break;
 
 		case LT_LATEXHEADER:	// header for environments
-			lexrc.next();
-			latexheader = lexrc.getString();
+			lex >> latexheader;
 			break;
 
 		case LT_LATEXFOOTER:	// footer for environments
-			lexrc.next();
-			latexfooter = lexrc.getString();
+			lex >> latexfooter;
 			break;
 
 		case LT_LATEXPARAGRAPH:
-			lexrc.next();
-			latexparagraph = lexrc.getString();
+			lex >> latexparagraph;
 			break;
 
 		case LT_INTITLE:
-			intitle = lexrc.next() && lexrc.getInteger();
+			lex >> intitle;
 			break;
 
 		case LT_TOCLEVEL:
-			lexrc.next();
-			toclevel = lexrc.getInteger();
+			lex >> toclevel;
 			break;
 
 		case LT_OPTARGS:
-			if (lexrc.next())
-				optionalargs = lexrc.getInteger();
+			lex >> optionalargs ;
 			break;
 
 		case LT_NEED_PROTECT:
-			needprotect = lexrc.next() && lexrc.getInteger();
+			lex >> needprotect;
 			break;
 
 		case LT_KEEPEMPTY:
-			keepempty = lexrc.next() && lexrc.getInteger();
+			lex >> keepempty;
 			break;
 
 		case LT_FONT:
-			font = lyxRead(lexrc, font);
+			font = lyxRead(lex, font);
 			labelfont = font;
 			break;
 
 		case LT_TEXTFONT:
-			font = lyxRead(lexrc, font);
+			font = lyxRead(lex, font);
 			break;
 
 		case LT_LABELFONT:
-			labelfont = lyxRead(lexrc, labelfont);
+			labelfont = lyxRead(lex, labelfont);
 			break;
 
 		case LT_NEXTNOINDENT:	// Indent next paragraph?
-			if (lexrc.next() && lexrc.getInteger())
-				nextnoindent = true;
-			else
-				nextnoindent = false;
+			lex >> nextnoindent;
 			break;
 
 		case LT_COMMANDDEPTH:
-			lexrc.next();
-			commanddepth = lexrc.getInteger();
+			lex >> commanddepth;
 			break;
 
 		case LT_LATEXNAME:
-			if (lexrc.next())
-				latexname_ = lexrc.getString();
+			lex >> latexname_;
 			break;
 
 		case LT_LATEXPARAM:
-			if (lexrc.next())
-				latexparam_ = subst(lexrc.getString(), "&quot;", "\"");
+			lex >> latexparam_;
+			latexparam_ = subst(latexparam_, "&quot;", "\"");
 			break;
 
 		case LT_INNERTAG:
-			if (lexrc.next())
-				innertag_ = lexrc.getString();
+			lex >> innertag_;
 			break;
 
 		case LT_LABELTAG:
-			if (lexrc.next())
-				labeltag_ = lexrc.getString();
+			lex >> labeltag_;
 			break;
 
 		case LT_ITEMTAG:
-			if (lexrc.next())
-				itemtag_ = lexrc.getString();
+			lex >> itemtag_;
 			break;
 
 		case LT_PREAMBLE:
-			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
+			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
 			break;
 
 		case LT_LABELTYPE:
-			readLabelType(lexrc);
+			readLabelType(lex);
 			break;
 
 		case LT_ENDLABELTYPE:
-			readEndLabelType(lexrc);
+			readEndLabelType(lex);
 			break;
 
 		case LT_LEFTMARGIN:	// left margin type
-			if (lexrc.next())
-				leftmargin = lexrc.getDocString();
+			lex >> leftmargin;
 			break;
 
 		case LT_RIGHTMARGIN:	// right margin type
-			if (lexrc.next())
-				rightmargin = lexrc.getDocString();
+			lex >> rightmargin;
 			break;
 
 		case LT_LABELINDENT:	// label indenting flag
-			if (lexrc.next())
-				labelindent = lexrc.getDocString();
+			lex >> labelindent;
 			break;
 
 		case LT_PARINDENT:	// paragraph indent. flag
-			if (lexrc.next())
-				parindent = lexrc.getDocString();
+			lex >> parindent;
 			break;
 
 		case LT_PARSKIP:	// paragraph skip size
-			if (lexrc.next())
-				parskip = lexrc.getFloat();
+			lex >> parskip;
 			break;
 
 		case LT_ITEMSEP:	// item separation size
-			if (lexrc.next())
-				itemsep = lexrc.getFloat();
+			lex >> itemsep;
 			break;
 
 		case LT_TOPSEP:		// top separation size
-			if (lexrc.next())
-				topsep = lexrc.getFloat();
+			lex >> topsep;
 			break;
 
 		case LT_BOTTOMSEP:	// bottom separation size
-			if (lexrc.next())
-				bottomsep = lexrc.getFloat();
+			lex >> bottomsep;
 			break;
 
 		case LT_LABEL_BOTTOMSEP: // label bottom separation size
-			if (lexrc.next())
-				labelbottomsep = lexrc.getFloat();
+			lex >> labelbottomsep;
 			break;
 
 		case LT_LABELSEP:	// label separator
-			if (lexrc.next()) {
-				labelsep = from_utf8(subst(lexrc.getString(), 'x', ' '));
-			}
+			lex >> labelsep;
+			labelsep = subst(labelsep, 'x', ' ');
 			break;
 
 		case LT_PARSEP:		// par. separation size
-			if (lexrc.next())
-				parsep = lexrc.getFloat();
+			lex >> parsep;
 			break;
 
 		case LT_FILL_TOP:	// fill top flag
-			if (lexrc.next())
-				fill_top = lexrc.getInteger();
+			lex >> fill_top;
 			break;
 
 		case LT_FILL_BOTTOM:	// fill bottom flag
-			if (lexrc.next())
-				fill_bottom = lexrc.getInteger();
+			lex >> fill_bottom;
 			break;
 
 		case LT_NEWLINE:	// newlines allowed?
-			if (lexrc.next())
-				newline_allowed = lexrc.getInteger();
+			lex >> newline_allowed;
 			break;
 
 		case LT_ALIGN:		// paragraph align
-			readAlign(lexrc);
+			readAlign(lex);
 			break;
 		case LT_ALIGNPOSSIBLE:	// paragraph allowed align
-			readAlignPossible(lexrc);
+			readAlignPossible(lex);
 			break;
 
 		case LT_LABELSTRING:	// label string definition
-			if (lexrc.next()) {
-				labelstring_ = trim(lexrc.getDocString());
-				labelstring_appendix_ = labelstring_;
-			}
+			// FIXME: this means LT_ENDLABELSTRING may only
+			// occur after LT_LABELSTRING
+			lex >> labelstring_;	
+			labelstring_ = trim(labelstring_);
+			labelstring_appendix_ = labelstring_;
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
-			if (lexrc.next())
-				endlabelstring_ = trim(lexrc.getDocString());
+			lex >> endlabelstring_;	
+			endlabelstring_ = trim(endlabelstring_);
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
-			if (lexrc.next())
-				labelstring_appendix_ = trim(lexrc.getDocString());
+			lex >> labelstring_appendix_;	
+			labelstring_appendix_ = trim(labelstring_appendix_);
 			break;
 
 		case LT_LABELCOUNTER: // name of counter to use
-			if (lexrc.next())
-				counter = lyx::from_ascii(trim(lexrc.getString()));
+			lex >> counter;	
+			counter = trim(counter);
 			break;
 
 		case LT_FREE_SPACING:	// Allow for free spacing.
-			if (lexrc.next())
-				free_spacing = lexrc.getInteger();
+			lex >> free_spacing;
 			break;
 
 		case LT_PASS_THRU:	// Allow for pass thru.
-			if (lexrc.next())
-				pass_thru = lexrc.getInteger();
+			lex >> pass_thru;
 			break;
 
 		case LT_SPACING: // setspace.sty
-			readSpacing(lexrc);
+			readSpacing(lex);
 			break;
 
 		case LT_REQUIRES:
-			lexrc.eatLine();
+			lex.eatLine();
 			vector<string> const req = 
-				getVectorFromString(lexrc.getString());
+				getVectorFromString(lex.getString());
 			requires_.insert(req.begin(), req.end());
 			break;
 
 		}
 	}
-	lexrc.popTable();
+	lex.popTable();
 
 	return !error;
 }
@@ -512,21 +483,23 @@ enum {
 	AT_LAYOUT
 };
 
-void Layout::readAlign(Lexer & lexrc)
-{
-	LexerKeyword alignTags[] = {
-		{ "block",  AT_BLOCK },
-		{ "center", AT_CENTER },
-		{ "layout", AT_LAYOUT },
-		{ "left",   AT_LEFT },
-		{ "right",  AT_RIGHT }
-	};
 
-	PushPopHelper pph(lexrc, alignTags);
-	int le = lexrc.lex();
+LexerKeyword alignTags[] = {
+	{ "block",  AT_BLOCK },
+	{ "center", AT_CENTER },
+	{ "layout", AT_LAYOUT },
+	{ "left",   AT_LEFT },
+	{ "right",  AT_RIGHT }
+};
+
+
+void Layout::readAlign(Lexer & lex)
+{
+	PushPopHelper pph(lex, alignTags);
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown alignment `$$Token'");
+		lex.printError("Unknown alignment `$$Token'");
 		return;
 	default: break;
 	};
@@ -550,24 +523,16 @@ void Layout::readAlign(Lexer & lexrc)
 }
 
 
-void Layout::readAlignPossible(Lexer & lexrc)
+void Layout::readAlignPossible(Lexer & lex)
 {
-	LexerKeyword alignTags[] = {
-		{ "block",  AT_BLOCK },
-		{ "center", AT_CENTER },
-		{ "layout", AT_LAYOUT },
-		{ "left",   AT_LEFT },
-		{ "right",  AT_RIGHT }
-	};
-
-	lexrc.pushTable(alignTags);
+	lex.pushTable(alignTags);
 	alignpossible = LYX_ALIGN_NONE | LYX_ALIGN_LAYOUT;
-	int lineno = lexrc.lineNumber();
+	int lineno = lex.lineNumber();
 	do {
-		int le = lexrc.lex();
+		int le = lex.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown alignment `$$Token'");
+			lex.printError("Unknown alignment `$$Token'");
 			continue;
 		default: break;
 		};
@@ -588,12 +553,12 @@ void Layout::readAlignPossible(Lexer & lexrc)
 			alignpossible |= LYX_ALIGN_LAYOUT;
 			break;
 		}
-	} while (lineno == lexrc.lineNumber());
-	lexrc.popTable();
+	} while (lineno == lex.lineNumber());
+	lex.popTable();
 }
 
 
-void Layout::readLabelType(Lexer & lexrc)
+void Layout::readLabelType(Lexer & lex)
 {
 	enum {
 		LA_NO_LABEL = 1,
@@ -622,11 +587,11 @@ void Layout::readLabelType(Lexer & lexrc)
 		{ "top_environment",          LA_TOP_ENVIRONMENT }
 	};
 
-	PushPopHelper pph(lexrc, labelTypeTags);
-	int le = lexrc.lex();
+	PushPopHelper pph(lex, labelTypeTags);
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown labeltype tag `$$Token'");
+		lex.printError("Unknown labeltype tag `$$Token'");
 		return;
 	default: break;
 	}
@@ -665,7 +630,7 @@ void Layout::readLabelType(Lexer & lexrc)
 }
 
 
-void Layout::readEndLabelType(Lexer & lexrc)
+void Layout::readEndLabelType(Lexer & lex)
 {
 	static LexerKeyword endlabelTypeTags[] = {
 		{ "box",	      END_LABEL_BOX },
@@ -674,11 +639,11 @@ void Layout::readEndLabelType(Lexer & lexrc)
 		{ "static",     END_LABEL_STATIC }
 	};
 
-	PushPopHelper pph(lexrc, endlabelTypeTags);
-	int le = lexrc.lex();
+	PushPopHelper pph(lex, endlabelTypeTags);
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown labeltype tag `$$Token'");
+		lex.printError("Unknown labeltype tag `$$Token'");
 		break;
 	case END_LABEL_STATIC:
 	case END_LABEL_BOX:
@@ -687,14 +652,14 @@ void Layout::readEndLabelType(Lexer & lexrc)
 		endlabeltype = static_cast<EndLabelType>(le);
 		break;
 	default:
-		lyxerr << "Unhandled value " << le
-		       << " in Layout::readEndLabelType." << endl;
+		LYXERR0("Unhandled value " << le
+		       << " in Layout::readEndLabelType.");
 		break;
 	}
 }
 
 
-void Layout::readMargin(Lexer & lexrc)
+void Layout::readMargin(Lexer & lex)
 {
 	LexerKeyword marginTags[] = {
 		{ "dynamic",           MARGIN_DYNAMIC },
@@ -704,12 +669,12 @@ void Layout::readMargin(Lexer & lexrc)
 		{ "static",            MARGIN_STATIC }
 	};
 
-	PushPopHelper pph(lexrc, marginTags);
+	PushPopHelper pph(lex, marginTags);
 
-	int le = lexrc.lex();
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown margin type tag `$$Token'");
+		lex.printError("Unknown margin type tag `$$Token'");
 		return;
 	case MARGIN_STATIC:
 	case MARGIN_MANUAL:
@@ -726,7 +691,7 @@ void Layout::readMargin(Lexer & lexrc)
 }
 
 
-void Layout::readLatexType(Lexer & lexrc)
+void Layout::readLatexType(Lexer & lex)
 {
 	LexerKeyword latexTypeTags[] = {
 		{ "bib_environment",  LATEX_BIB_ENVIRONMENT },
@@ -737,11 +702,11 @@ void Layout::readLatexType(Lexer & lexrc)
 		{ "paragraph",        LATEX_PARAGRAPH }
 	};
 
-	PushPopHelper pph(lexrc, latexTypeTags);
-	int le = lexrc.lex();
+	PushPopHelper pph(lex, latexTypeTags);
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown latextype tag `$$Token'");
+		lex.printError("Unknown latextype tag `$$Token'");
 		return;
 	case LATEX_PARAGRAPH:
 	case LATEX_COMMAND:
@@ -759,7 +724,7 @@ void Layout::readLatexType(Lexer & lexrc)
 }
 
 
-void Layout::readSpacing(Lexer & lexrc)
+void Layout::readSpacing(Lexer & lex)
 {
 	enum {
 		ST_SPACING_SINGLE = 1,
@@ -775,11 +740,11 @@ void Layout::readSpacing(Lexer & lexrc)
 		{"single",  ST_SPACING_SINGLE }
 	};
 
-	PushPopHelper pph(lexrc, spacingTags);
-	int le = lexrc.lex();
+	PushPopHelper pph(lex, spacingTags);
+	int le = lex.lex();
 	switch (le) {
 	case Lexer::LEX_UNDEF:
-		lexrc.printError("Unknown spacing token `$$Token'");
+		lex.printError("Unknown spacing token `$$Token'");
 		return;
 	default: break;
 	}
@@ -794,8 +759,8 @@ void Layout::readSpacing(Lexer & lexrc)
 		spacing.set(Spacing::Double);
 		break;
 	case ST_OTHER:
-		lexrc.next();
-		spacing.set(Spacing::Other, lexrc.getString());
+		lex.next();
+		spacing.set(Spacing::Other, lex.getString());
 		break;
 	}
 }
@@ -834,15 +799,5 @@ bool Layout::operator==(Layout const & rhs) const
 		&& latextype == rhs.latextype;
 }
 
-
-Layout * Layout::forCaption()
-{
-	Layout * lay = new Layout();
-	lay->name_ = from_ascii("Caption");
-	lay->latexname_ = "caption";
-	lay->latextype = LATEX_COMMAND;
-	lay->optionalargs = 1;
-	return lay;
-}
 
 } // namespace lyx

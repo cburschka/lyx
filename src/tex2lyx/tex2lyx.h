@@ -26,8 +26,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-typedef Layout const * LayoutPtr;
-
 class Context;
 
 /// A trivial subclass, just to give us a public default constructor
@@ -40,7 +38,6 @@ void parse_preamble(Parser & p, std::ostream & os,
 
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;
-extern LayoutPtr captionlayout;
 
 /// in text.cpp
 std::string translate_len(std::string const &);
