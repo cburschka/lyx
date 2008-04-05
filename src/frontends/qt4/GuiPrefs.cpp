@@ -2185,9 +2185,9 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	
 	item_type tag = static_cast<item_type>(items[0]->data(0, Qt::UserRole).toInt());
 	if (tag == UserUnbind)
-		removePB->setText(qt_("Restore"));
+		removePB->setText(qt_("Res&tore"));
 	else
-		removePB->setText(qt_("Remove"));
+		removePB->setText(qt_("Remo&ve"));
 }
 
 
@@ -2242,7 +2242,7 @@ void PrefShortcuts::on_removePB_pressed()
 			// but add an user unbind item
 			user_unbind_.bind(shortcut, func);
 			setItemType(items[i], UserUnbind);
-			removePB->setText(qt_("Restore"));
+			removePB->setText(qt_("Res&tore"));
 			break;
 		}
 		case UserBind: {
@@ -2262,7 +2262,7 @@ void PrefShortcuts::on_removePB_pressed()
 			// become System again.
 			user_unbind_.unbind(shortcut, func);
 			setItemType(items[i], System);
-			removePB->setText(qt_("Remove"));
+			removePB->setText(qt_("Remo&ve"));
 			break;
 		}
 		case UserExtraUnbind: {

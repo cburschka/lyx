@@ -38,7 +38,7 @@
      <item>
       <widget class="QLabel" name="shortcutsLBL" >
        <property name="text" >
-        <string>Show key-bindings containing:</string>
+        <string>Show ke&amp;y-bindings containing:</string>
        </property>
        <property name="buddy" >
         <cstring>searchLE</cstring>
@@ -63,7 +63,7 @@
    <item row="0" column="2" >
     <widget class="QPushButton" name="bindFilePB" >
      <property name="text" >
-      <string>B&amp;rowse...</string>
+      <string>Br&amp;owse...</string>
      </property>
     </widget>
    </item>
@@ -97,14 +97,14 @@
      <item>
       <widget class="QPushButton" name="removePB" >
        <property name="text" >
-        <string>&amp;Remove</string>
+        <string>Remo&amp;ve</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="newPB" >
        <property name="text" >
-        <string>New</string>
+        <string>Ne&amp;w</string>
        </property>
       </widget>
      </item>
