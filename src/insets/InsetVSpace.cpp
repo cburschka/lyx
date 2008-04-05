@@ -112,12 +112,7 @@ void InsetVSpace::read(Lexer & lex)
 	lex >> vsp;
 	if (lex)
 		space_ = VSpace(vsp);
-
-	string end_token;
-	lex >> end_token;
-	if (end_token != "\\end_inset")
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+	lex >> "\\end_inset";
 }
 
 

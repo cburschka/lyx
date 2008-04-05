@@ -1625,7 +1625,8 @@ void BufferParams::readGraphicsDriver(Lexer & lex)
 		if (test == tmptok) {
 			graphicsDriver = tmptok;
 			break;
-		} else if (test == "") {
+		}
+		if (test.empty()) {
 			lex.printError(
 				"Warning: graphics driver `$$Token' not recognized!\n"
 				"         Setting graphics driver to `default'.\n");

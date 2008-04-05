@@ -292,23 +292,6 @@ void TemplateManager::readTemplates(FileName const & path)
 }
 
 
-namespace {
-
-void add(vector<TransformID> & ids, string const & name)
-{
-	TransformID id = transformIDTranslator().find(name);
-	if (int(id) == -1) {
-		lyxerr << "external::Template::readTemplate\n"
-		       << "Transform " << name << " is not recognized"
-		       << endl;
-	} else {
-		ids.push_back(id);
-	}
-}
-
-} // namespace anon
-
-
 void Template::readTemplate(Lexer & lex)
 {
 	enum {
@@ -334,7 +317,9 @@ void Template::readTemplate(Lexer & lex)
 	};
 
 	PushPopHelper pph(lex, templateoptiontags);
+	lex.setContext("Template::readTemplate");
 
+	string token;
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case TO_GUINAME:
@@ -362,8 +347,12 @@ void Template::readTemplate(Lexer & lex)
 			break;
 
 		case TO_TRANSFORM:
-			lex.next(true);
-			add(transformIds, lex.getString());
+			lex >> token;
+			TransformID id = transformIDTranslator().find(token);
+			if (int(id) == -1)
+				LYXERR0("Transform " << token << " is not recognized");
+			else
+				ids.push_back(id);
 			break;
 
 		case TO_FORMAT:

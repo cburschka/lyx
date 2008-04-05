@@ -78,7 +78,7 @@ void InsetNewpageParams::read(Lexer & lex)
 	else if (token == "cleardoublepage")
 		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
 	else
-		lex.printError("Unknown kind: `$$Token'");
+		lex.printError("Unknown kind");
 
 	lex >> "\\end_inset";
 }

@@ -113,9 +113,10 @@ bool InsetLayout::read(Lexer & lex)
 		int le = lex.lex();
 		switch (le) {
 		case Lexer::LEX_UNDEF:
-			lex.printError("Unknown InsetLayout tag `$$Token'");
+			lex.printError("Unknown InsetLayout tag");
 			continue;
-		default: break;
+		default:
+			break;
 		}
 		switch (le) {
 		case IL_LYXTYPE:

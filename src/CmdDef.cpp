@@ -40,23 +40,20 @@ bool CmdDef::read(string const & def_file)
 		{ "\\define", BN_DEFINE }
 	};
 
-	Lexer lexrc(cmdDefTags);
-	if (lyxerr.debugging(Debug::PARSER))
-		lexrc.printTable(lyxerr);
-
+	Lexer lex(cmdDefTags);
 	FileName const tmp(i18nLibFileSearch("commands", def_file, "def"));
-	lexrc.setFile(tmp);
-	if (!lexrc.isOK()) {
-		lyxerr << "CmdDef::read: cannot open def file:"
-		       << tmp << endl;
+	lex.setContext("CmdDef::read");
+	lex.setFile(tmp);
+	if (!lex.isOK()) {
+		LYXERR0( "CmdDef::read: cannot open def file:" << tmp);
 		return false;
 	}
 
 	bool error = false;
-	while (lexrc.isOK()) {
-		switch (lexrc.lex()) {
+	while (lex.isOK()) {
+		switch (lex.lex()) {
 		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown tag `$$Token'");
+			lex.printError("Unknown tag");
 			error = true;
 			continue;
 		case Lexer::LEX_FEOF:
@@ -65,18 +62,18 @@ bool CmdDef::read(string const & def_file)
 		{
 			string name, def;
 
-			if (lexrc.next()) {
-				name = lexrc.getString();
+			if (lex.next()) {
+				name = lex.getString();
 			} else {
-				lexrc.printError("BN_DEFINE: Missing command name");
+				lex.printError("BN_DEFINE: Missing command name");
 				error = true;
 				break;
 			}
 
-			if (lexrc.next(true)) {
-				def = lexrc.getString();
+			if (lex.next(true)) {
+				def = lex.getString();
 			} else {
-				lexrc.printError("BN_DEFINE: missing command definition");
+				lex.printError("BN_DEFINE: missing command definition");
 				error = true;
 				break;
 			}
@@ -84,15 +81,15 @@ bool CmdDef::read(string const & def_file)
 			newCmdDefResult e = newCmdDef(name, def);
 			switch (e) {
 			case CmdDefNameEmpty:
-				lexrc.printError("BN_DEFINE: Command name is empty");
+				lex.printError("BN_DEFINE: Command name is empty");
 				error = true;
 				break;
 			case CmdDefExists:
-				lexrc.printError("BN_DEFINE: Command `" + name + "' already defined");
+				lex.printError("BN_DEFINE: Command `" + name + "' already defined");
 				error = true;
 				break;
 			case CmdDefInvalid:
-				lexrc.printError("BN_DEFINE: Command definition for `" + name + "' is not valid");
+				lex.printError("BN_DEFINE: Command definition for `" + name + "' is not valid");
 				error = true;
 				break;
 			case CmdDefOk:
@@ -102,11 +99,11 @@ bool CmdDef::read(string const & def_file)
 			break;
 		}
 		case BN_DEFFILE:
-			if (lexrc.next()) {
-				string const tmp = lexrc.getString();
+			if (lex.next()) {
+				string const tmp = lex.getString();
 				error |= !read(tmp);
 			} else {
-				lexrc.printError("BN_DEFFILE: Missing file name");
+				lex.printError("BN_DEFFILE: Missing file name");
 				error = true;
 				break;
 
@@ -116,8 +113,7 @@ bool CmdDef::read(string const & def_file)
 	}
 
 	if (error)
-		lyxerr << "CmdDef::read: error while reading def file:"
-		       << tmp << endl;
+		LYXERR0("CmdDef::read: error while reading def file:" << tmp);
 	return !error;
 }
 

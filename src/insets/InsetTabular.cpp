@@ -2820,7 +2820,7 @@ void InsetTabular::read(Lexer & lex)
 	tabular.read(lex);
 
 	//if (old_format)
-//		return;
+	//	return;
 
 	lex.next();
 	string token = lex.getString();
@@ -2828,10 +2828,8 @@ void InsetTabular::read(Lexer & lex)
 		lex.next();
 		token = lex.getString();
 	}
-	if (!lex) {
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
-	}
+	if (!lex)
+		lex.printError("Missing \\end_inset at this point. ");
 }
 
 
@@ -2841,7 +2839,7 @@ int InsetTabular::rowFromY(Cursor & cur, int y) const
 	int h = yo(cur.bv()) - tabular.rowAscent(0);
 	size_t nrows = tabular.rowCount();
 	row_type r = 0;
-	for (;r < nrows && y > h; ++r) {
+	for (; r < nrows && y > h; ++r) {
 		h += tabular.rowAscent(r);
 		h += tabular.rowDescent(r);
 		h += tabular.getAdditionalHeight(r);
@@ -2856,9 +2854,8 @@ int InsetTabular::columnFromX(Cursor & cur, int x) const
 	int w = xo(cur.bv()) + ADD_TO_TABULAR_WIDTH;
 	size_t ncols = tabular.columnCount();
 	col_type c = 0;
-	for (;c < ncols && x > w; ++c) {
+	for (; c < ncols && x > w; ++c)
 		w += tabular.columnWidth(c);
-	}
 	return c - 1;
 }
 
@@ -2868,7 +2865,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
 	//	mi.base.textwidth << "\n";
 	if (!mi.base.bv) {
-		lyxerr << "InsetTabular::metrics: need bv" << endl;
+		LYXERR0("need bv");
 		BOOST_ASSERT(false);
 	}
 

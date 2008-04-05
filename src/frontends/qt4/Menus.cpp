@@ -408,8 +408,7 @@ void MenuDefinition::read(Lexer & lex)
 	};
 
 	lex.pushTable(menutags);
-	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable(lyxerr);
+	lex.setContext("MenuDefinition::read: ");
 
 	bool quit = false;
 	bool optional = false;
@@ -517,8 +516,7 @@ void MenuDefinition::read(Lexer & lex)
 			break;
 
 		default:
-			lex.printError("MenuDefinition::read: "
-				       "Unknown menu tag: `$$Token'");
+			lex.printError("Unknown menu tag");
 			break;
 		}
 	}
@@ -1416,15 +1414,12 @@ void Menus::read(Lexer & lex)
 		{ "menubar", md_menubar }
 	};
 
-	//consistency check
-	if (compare_ascii_no_case(lex.getString(), "menuset")) {
-		lyxerr << "Menubackend::read: ERROR wrong token:`"
-		       << lex.getString() << '\'' << endl;
-	}
+	// consistency check
+	if (compare_ascii_no_case(lex.getString(), "menuset"))
+		LYXERR0("Menus::read: ERROR wrong token: `" << lex.getString() << '\'');
 
 	lex.pushTable(menutags);
-	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable(lyxerr);
+	lex.setContext("Menus::read");
 
 	bool quit = false;
 
@@ -1449,8 +1444,7 @@ void Menus::read(Lexer & lex)
 			quit = true;
 			break;
 		default:
-			lex.printError("menubackend::read: "
-				       "Unknown menu tag: `$$Token'");
+			lex.printError("Unknown menu tag");
 			break;
 		}
 	}

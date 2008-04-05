@@ -147,12 +147,11 @@ void InsetText::read(Lexer & lex)
 	Paragraph oldpar = *paragraphs().begin();
 	paragraphs().clear();
 	ErrorList errorList;
+	lex.setContext("InsetText::read");
 	bool res = text_.read(buffer(), lex, errorList, this);
 
-	if (!res) {
-		lex.printError("Missing \\end_inset at this point. "
-					   "Read: `$$Token'");
-	}
+	if (!res)
+		lex.printError("Missing \\end_inset at this point. ");
 
 	// sanity check
 	// ensure we have at least one paragraph.

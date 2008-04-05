@@ -328,8 +328,9 @@ void InsetSpaceParams::write(ostream & os) const
 
 void InsetSpaceParams::read(Lexer & lex)
 {
-	lex.next();
-	string const command = lex.getString();
+	lex.setContext("InsetSpaceParams::read");
+	string command;
+	lex >> command;
 
 	if (command == "\\space{}")
 		kind = InsetSpaceParams::NORMAL;
@@ -362,21 +363,9 @@ void InsetSpaceParams::read(Lexer & lex)
 	else
 		lex.printError("InsetSpace: Unknown kind: `$$Token'");
 
-
-	string token;
-	lex >> token;
-	if (token == "\\length") {
-		lex.next();
-		string const len = lex.getString();
-		length = Length(len);
-		lex.next();
-		token = lex.getString();
-	}
-	if (!lex)
-		return;
-	if (token != "\\end_inset")
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+	if (lex.checkFor("\\length"))
+		lex >> length;
+	lex >> "\\end_inset";
 }
 
 

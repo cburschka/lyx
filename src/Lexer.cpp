@@ -173,7 +173,9 @@ void Lexer::Pimpl::printError(string const & message) const
 {
 	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
-		<< " of file " << to_utf8(makeDisplayPath(name)) << ']' << endl;
+		<< " of file " << to_utf8(makeDisplayPath(name))
+		<< " current token: '" << getString() << "'"
+		<< " context: '" << context << "']" << endl;
 }
 
 
@@ -760,6 +762,7 @@ bool Lexer::getBool() const
 	pimpl_->printError("Bad boolean `$$Token'. "
 				 "Use \"false\" or \"true\"");
 	lastReadOk_ = false;
+	return false;
 }
 
 

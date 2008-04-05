@@ -534,6 +534,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 
 	Lexer lex(encodingtags);
 	lex.setFile(encfile);
+	lex.setContext("Encodings::read");
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case et_encoding:
@@ -552,39 +553,35 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			else if (width == "variable")
 				fixedwidth = false;
 			else
-				lex.printError("Encodings::read: "
-					       "Unknown width: `$$Token'");
+				lex.printError("Unknown width");
 
 			lex.next();
 			string const p = lex.getString();
 			Encoding::Package package = Encoding::none;
 			if (p == "none")
-                                package = Encoding::none;
+				package = Encoding::none;
 			else if (p == "inputenc")
 				package = Encoding::inputenc;
 			else if (p == "CJK")
 				package = Encoding::CJK;
 			else
-				lex.printError("Encodings::read: "
-					       "Unknown package: `$$Token'");
+				lex.printError("Unknown package");
 
 			LYXERR(Debug::INFO, "Reading encoding " << name);
 			encodinglist[name] = Encoding(name, latexname,
 				iconvname, fixedwidth, package);
 
 			if (lex.lex() != et_end)
-				lex.printError("Encodings::read: "
-					       "missing end");
+				lex.printError("Missing end");
 			break;
 		}
 		case et_end:
-			lex.printError("Encodings::read: Misplaced end");
+			lex.printError("Misplaced end");
 			break;
 		case Lexer::LEX_FEOF:
 			break;
 		default:
-			lex.printError("Encodings::read: "
-				       "Unknown tag: `$$Token'");
+			lex.printError("Unknown tag");
 			break;
 		}
 	}

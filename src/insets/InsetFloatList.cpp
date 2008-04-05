@@ -85,6 +85,7 @@ void InsetFloatList::write(ostream & os) const
 
 void InsetFloatList::read(Lexer & lex)
 {
+	lex.setContext("InsetFloatList::read");
 	FloatList const & floats = buffer().params().documentClass().floats();
 	string token;
 
@@ -93,9 +94,9 @@ void InsetFloatList::read(Lexer & lex)
 		LYXERR(Debug::INSETS, "FloatList::float_type: "
 				      << to_ascii(getParam("type")));
 		if (!floats.typeExist(to_ascii(getParam("type"))))
-			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
+			lex.printError("Unknown float type");
 	} else {
-		lex.printError("InsetFloatList: Parse error: `$$Token'");
+		lex.printError("Parse error");
 	}
 
 	while (lex.isOK()) {
@@ -105,8 +106,7 @@ void InsetFloatList::read(Lexer & lex)
 			break;
 	}
 	if (token != "\\end_inset") {
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+		lex.printError("Missing \\end_inset at this point.");
 	}
 }
 

@@ -337,14 +337,14 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 			} else if (ttok == "noun") {
 				f.setNoun(FONT_ON);
 			} else {
-				lex.printError("Illegal misc type `$$Token'");
+				lex.printError("Illegal misc type");
 			}
 		} else if (tok == "color") {
 			lex.next();
 			string const ttok = lex.getString();
 			setLyXColor(ttok, f);
 		} else {
-			lex.printError("Unknown tag `$$Token'");
+			lex.printError("Unknown tag");
 			error = true;
 		}
 	}
