@@ -33,8 +33,7 @@ namespace frontend { class Painter; }
 class InsetCollapsable : public InsetText {
 public:
 	///
-	InsetCollapsable(Buffer const &,
-		CollapseStatus status = Inset::Open, DocumentClass * tc = 0);
+	InsetCollapsable(Buffer const &, CollapseStatus status = Inset::Open);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///

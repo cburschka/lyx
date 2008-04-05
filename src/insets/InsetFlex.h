@@ -23,8 +23,7 @@ namespace lyx {
 class InsetFlex : public InsetCollapsable {
 public:
 	///
-	InsetFlex(Buffer const &, DocumentClass * dc, 
-			std::string const & layoutName);
+	InsetFlex(Buffer const &, std::string const & layoutName);
 	///
 	docstring name() const { return from_utf8(name_); }
 

@@ -103,7 +103,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
-			return new InsetFlex(buf, buf.params().documentClassPtr(), s);
+			return new InsetFlex(buf, s);
 		}
 
 		case LFUN_NOTE_INSERT: {
@@ -515,11 +515,9 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Flex") {
 			lex.next();
 			string s = lex.getString();
-			inset.reset(new InsetFlex(buf, 
-				buf.params().documentClassPtr(), s));
+			inset.reset(new InsetFlex(buf, s));
 		} else if (tmptok == "Branch") {
-			inset.reset(new InsetBranch(buf,
-						    InsetBranchParams()));
+			inset.reset(new InsetBranch(buf, InsetBranchParams()));
 		} else if (tmptok == "Environment") {
 			lex.next();
 			inset.reset(new InsetEnvironment(buf, lex.getDocString()));

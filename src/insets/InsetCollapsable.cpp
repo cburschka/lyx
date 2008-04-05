@@ -76,15 +76,16 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 
 InsetCollapsable::InsetCollapsable(Buffer const & buf,
-		CollapseStatus status, DocumentClass * dc)
+		CollapseStatus status)
 	: InsetText(buf), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
-	setLayout(dc);
+	DocumentClass const & dc = buf.params().documentClass();
+	setLayout(&dc);
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
+	paragraphs().back().setLayout(dc.emptyLayout());
 }
 
 
@@ -161,8 +162,7 @@ void InsetCollapsable::read(Lexer & lex)
 	lex.setContext("InsetCollapsable::read");
 	string tmp_token;
 	status_ = Collapsed;
-	lex >> "status";
-	lex >> tmp_token;
+	lex >> "status" >> tmp_token;
 	if (tmp_token == "open")
 		status_ = Open;
 

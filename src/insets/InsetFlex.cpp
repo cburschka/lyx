@@ -39,12 +39,11 @@ using namespace std;
 namespace lyx {
 
 
-InsetFlex::InsetFlex(Buffer const & buf,
-	DocumentClass * dc, string const & layoutName)
-	: InsetCollapsable(buf, Collapsed, dc),
-	name_(layoutName)
+InsetFlex::InsetFlex(Buffer const & buf, string const & layoutName)
+	: InsetCollapsable(buf, Collapsed), name_(layoutName)
 {
-	setLayout(dc); // again, because now the name is initialized
+	// again, because now the name is initialized
+	setLayout(buf.params().documentClassPtr());
 	packages_ = getLayout().requires();
 	preamble_ = getLayout().preamble();
 }
