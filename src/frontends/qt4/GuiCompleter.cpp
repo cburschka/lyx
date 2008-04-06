@@ -525,7 +525,7 @@ void GuiCompleter::showPopup(Cursor & cur)
 }
 
 
-void GuiCompleter::hidePopup(Cursor & cur)
+void GuiCompleter::hidePopup(Cursor &)
 {
 	popupVisible_ = false;
 
@@ -786,7 +786,7 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			i = n;
 		else
 			i = l;
-		BOOST_ASSERT(0 <= i && i <= n);
+		BOOST_ASSERT(i <= n);
 	}
 
 	// select the first if none was found

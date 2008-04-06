@@ -148,6 +148,8 @@ private Q_SLOTS:
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	void close();
+	/// Slot to restore proper scrollbar behaviour.
+	void fixVerticalScrollBar();
 
 private:
 	friend class GuiCompleter;

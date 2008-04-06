@@ -30,6 +30,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "qt_helpers.h"
+#include "Text.h"
 #include "version.h"
 
 #include "graphics/GraphicsImage.h"
@@ -239,13 +240,25 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	if (time > 0) {
 		cursor_timeout_.setInterval(time);
 		cursor_timeout_.start();
-	} else
+	} else {
 		// let's initialize this just to be safe
 		cursor_timeout_.setInterval(500);
+	}
 
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
+
+	// HACK: Prevents an additional redraw when the scrollbar pops up
+	// which regularily happens on documents with more than one page.
+	// The policy  should be set to "Qt::ScrollBarAsNeeded" soon.
+	// Since we have no geometry information yet, we assume that
+	// a document needs a scrollbar if there is more then four
+	// paragraph in the outermost text.
+	if (buffer.text().paragraphs().size() > 4)
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
+
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -289,6 +302,13 @@ GuiWorkArea::~GuiWorkArea()
 	buffer_view_->buffer().workAreaManager().remove(this);
 	delete buffer_view_;
 	delete cursor_;
+}
+
+
+void GuiWorkArea::fixVerticalScrollBar()
+{
+	if (!buffer_view_->fullScreen())
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 }
 
 
