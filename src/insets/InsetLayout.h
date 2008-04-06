@@ -78,7 +78,11 @@ public:
 private:
 	///
 	docstring name_;
-	///
+	/**
+		* This is only used (at present) to decide where to put them on the menus.
+		* Values are 'charstyle', 'custom' (things that by default look like a
+		* footnote), 'element' (docbook), 'standard'.
+		*/
 	std::string lyxtype_;
 	///
 	docstring labelstring_;

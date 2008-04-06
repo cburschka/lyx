@@ -1075,6 +1075,7 @@ void LyXAction::init()
                         is dissolved. For example "dissolve" entry in the charstyles
                         sub-menu should only dissolve the charstyle inset, even if the
                         cursor is inside several nested insets of different type.
+			For values see #lyx::InsetLayout::lyxtype_ .
  * \li Author: JSpitz, 7 Aug 2006
  * \endvar
  */
