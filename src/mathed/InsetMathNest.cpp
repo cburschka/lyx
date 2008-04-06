@@ -1757,7 +1757,7 @@ bool InsetMathNest::cursorMathForward(Cursor & cur)
 		cur.inset().idxFirst(cur);
 		return true;
 	} 
-	if (cur.posForward() || idxForward(cur) || cur.selection())
+	if (cur.posForward() || idxForward(cur))
 		return true;
 	// try to pop forwards --- but don't pop out of math! leave that to
 	// the FINISH lfuns
@@ -1776,7 +1776,7 @@ bool InsetMathNest::cursorMathBackward(Cursor & cur)
 		cur.inset().idxLast(cur);
 		return true;
 	} 
-	if (cur.posBackward() || idxBackward(cur) || cur.selection())
+	if (cur.posBackward() || idxBackward(cur))
 		return true;
 	// try to pop backwards --- but don't pop out of math! leave that to 
 	// the FINISH lfuns
