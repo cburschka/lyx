@@ -1071,6 +1071,10 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_DISSOLVE
  * \li Action: Dissolve the current inset into text.
  * \li Syntax: inset-dissolve [<INSET>]
+ * \li Params: <INSET>: this can be used to make sure the right kind of inset
+                        is dissolved. For example "dissolve" entry in the charstyles
+                        sub-menu should only dissolve the charstyle inset, even if the
+                        cursor is inside several nested insets of different type.
  * \li Author: JSpitz, 7 Aug 2006
  * \endvar
  */
