@@ -1074,7 +1074,7 @@ void LyXAction::init()
  * \li Params: <INSET>: this can be used to make sure the right kind of inset
                         is dissolved. For example "dissolve" entry in the charstyles
                         sub-menu should only dissolve the charstyle inset, even if the
-                        cursor is inside several nested insets of different type.
+                        cursor is inside several nested insets of different type.\n
 			For values see #lyx::InsetLayout::lyxtype_ .
  * \li Author: JSpitz, 7 Aug 2006
  * \endvar
@@ -1367,7 +1367,23 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BUFFER_AUTO_SAVE, "buffer-auto-save", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_CHILD_OPEN
+ * \li Action: Loads the given child document.
+ * \li Notion: The current document is treated as a parent.
+ * \li Syntax: buffer-child-open <FILE>
+ * \li Params: <FILE>: Filename of the child. The directory of the parent is assumed by default.
+ * \li Origin: Ale, 28 May 1997
+ * \endvar
+ */
 		{ LFUN_BUFFER_CHILD_OPEN, "buffer-child-open", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_CHKTEX
+ * \li Action: Runs chktex for the current document.
+ * \li Syntax: buffer-chktex
+ * \li Origin: Asger, 30 Oct 1997
+ * \endvar
+ */
 		{ LFUN_BUFFER_CHKTEX, "buffer-chktex", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_COMPRESSION
