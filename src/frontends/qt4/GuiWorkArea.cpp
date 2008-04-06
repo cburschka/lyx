@@ -307,7 +307,7 @@ GuiWorkArea::~GuiWorkArea()
 
 void GuiWorkArea::fixVerticalScrollBar()
 {
-	if (!buffer_view_->fullScreen())
+	if (!isFullScreen())
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 }
 
