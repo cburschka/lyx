@@ -13,13 +13,16 @@ http://magic.aladdin.cs.cmu.edu/2005/07/15/pdfopen-and-pdfclose/
 
 */
 
-!include "LogicLib.nsh"
-!include "FileFunc.nsh"
+!include LogicLib.nsh
+!include FileFunc.nsh
+
+# Functions from FileFunc.nsh
 !insertmacro GetParameters
 !insertmacro GetFileName
+!insertmacro GetParent
 
 #--------------------------------
-#Settings
+# Settings
 
 Caption "PDF Viewer"
 OutFile pdfview.exe
@@ -27,33 +30,47 @@ Icon "..\packaging\icons\lyx_32x32.ico"
 SilentInstall silent
 
 #--------------------------------
-#Windows Vista settings
+# Windows Vista settings
 
 RequestExecutionLevel user
 
 #--------------------------------
-#Constants
+# Constants
 
 !define FALSE 0
 !define TRUE 1
 
-#--------------------------------
-#Variables
+!define FILE_NOTIFY_CHANGE_LAST_WRITE 0x00000010
+!define WAIT_TIMEOUT 0x00000102
 
-Var Dummy
+#--------------------------------
+# Variables
+
+Var Character
+Var RunAppReturn
+
 Var OriginalFile
 Var OriginalFileName
+Var OriginalDir
+
 Var PDFFile
 Var Viewer
+
+Var ChangeNotification
+Var WaitReturn
+Var LockedFile
+
 Var OriginalTimeHigh
 Var OriginalTimeLow
 Var CurrentTimeHigh
 Var CurrentTimeLow
 
 #--------------------------------
-#Macros
+# Macros
 
 !macro SystemCall STACK
+
+  # Call a Windows API function
 
   Push `${STACK}`
   CallInstDLL "$EXEDIR\System.dll" Call
@@ -62,118 +79,128 @@ Var CurrentTimeLow
 
 !macro HideConsole COMMAND_LINE
 
+  # Run an application and hide console output
+
   Push `${COMMAND_LINE}`
   CallInstDLL "$EXEDIR\Console.dll" Exec
-  Pop $Dummy
+  Pop $RunAppReturn
   
-  ${if} $Dummy == "error"
-    MessageBox MB_OK|MB_ICONSTOP "Error opening PDF file $R0."
-  ${endif}
+  ${If} $RunAppReturn == "error"
+    MessageBox MB_OK|MB_ICONSTOP "Error opening PDF file $PDFFile."
+  ${EndIf}
 
 !macroend
 
 #--------------------------------
-#PDF vieweing
+# PDF vieweing
 
 Section "View PDF file"
 
-  InitPluginsDir #Temporary directory for PDF file
+  InitPluginsDir # Temporary directory for PDF file
 
-  #Command line parameters
-  Call GetParameters
-  Pop $OriginalFile
+  # Command line parameters
+  ${GetParameters} $OriginalFile
 
-  #Trim quotes
-  StrCpy $Dummy $OriginalFile 1
-  ${if} $Dummy == '"'
+  # Trim quotes
+  StrCpy $Character $OriginalFile 1
+  ${If} $Character == '"'
     StrCpy $OriginalFile $OriginalFile "" 1
-  ${endif}
-  StrCpy $Dummy $OriginalFile 1 -1
-  ${if} $Dummy == '"'
+  ${EndIf}
+  StrCpy $Character $OriginalFile 1 -1
+  ${If} $Character == '"'
     StrCpy $OriginalFile $OriginalFile -1
-  ${endif}
+  ${EndIf}
 
   GetFullPathName $OriginalFile $OriginalFile
-  Push $OriginalFile
-  Call GetFileName
-  Pop $OriginalFileName
+  ${GetFileName} $OriginalFile $OriginalFileName
+  ${GetParent} $OriginalFile $OriginalDir
 
-  SetOutPath $TEMP #The LyX tmpbuf should not be locked
+  SetOutPath $TEMP # The LyX tmpbuf should not be locked
 
   StrCpy $PDFFile $PLUGINSDIR\$OriginalFileName
 
-  #Check whether the file will be opened with Adobe Reader or Adobe Acrobat
-  Push $OriginalFile
-  !insertmacro SystemCall "shell32::FindExecutable(t s, t '', t .s)"
+  # Check whether the file will be opened with Adobe Reader or Adobe Acrobat
+  !insertmacro SystemCall "shell32::FindExecutable(t '$OriginalFile', t '', t .s)"
   Call GetFileName
   Pop $Viewer
 
-  ${if} $Viewer == ""
+  ${If} $Viewer == ""
     MessageBox MB_OK|MB_ICONEXCLAMATION "No PDF viewer is installed. \
         Please install a PDF viewer such as Adobe Reader."
     Quit        
-  ${endif}
+  ${EndIf}
 
-  ${if} $Viewer == "AcroRd32.exe"
-    ${orif} $Viewer == "Acrobat.exe"
+  ${If} $Viewer == "AcroRd32.exe"
+    ${OrIf} $Viewer == "Acrobat.exe"
     
-    #Using Adobe viewer
+    # Using Adobe viewer
     
-    #Close existing view
-    ${if} ${fileexists} $PDFFile
+    # Close existing view
+    ${If} ${FileExists} $PDFFile
       !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
-    ${endif}
+    ${EndIf}
     
-    #Copy PDF to temporary file to allow LyX to overwrite the original
+    # Copy PDF to temporary file to allow LyX to overwrite the original
     CopyFiles /SILENT $OriginalFile $PDFFile
     
-    #Open a new view
+    # Open a new view
     !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
     
-    #Monitor for updates of the original file
-    
+    # Monitor for updates of the original file
     GetFileTime $OriginalFile $OriginalTimeHigh $OriginalTimeLow
+    !insertmacro SystemCall "kernel32::FindFirstChangeNotification(t '$OriginalDir', \
+      i 0, i ${FILE_NOTIFY_CHANGE_LAST_WRITE}) i.s"
+    Pop $ChangeNotification
     
-    ${do}
+    ${Do}
     
-      Sleep 500
+      !insertmacro SystemCall "kernel32::WaitForSingleObject(i $ChangeNotification, i 10000) i.s"
+      Pop $WaitReturn    
+         
+      # Check whether a lock is still active.
+      # If not, Adode Reader is closed and we can close this application as well
       
-      FileOpen $Dummy $PDFFile a
+      FileOpen $LockedFile $PDFFile a
       
-      ${if} $Dummy != ""
-        #File no longer locked, reader closed
-        FileClose $Dummy
+      ${If} $LockedFile != ""
+        # Quit this application
+        FileClose $LockedFile
         Delete $PDFFile
+        !insertmacro SystemCall "kernel32::FindCloseChangeNotification(i $ChangeNotification)"
         Quit
-      ${endif}
+      ${EndIf}
       
-      ${if} ${fileexists} $OriginalFile
-        
+      ${IfNot} $WaitReturn = ${WAIT_TIMEOUT}
+        # The LyX tmpbuf has been updated
+        # Check whether it's the PDF file that has been updated
+          
         GetFileTime $OriginalFile $CurrentTimeHigh $CurrentTimeLow
         
         ${if} $OriginalTimeHigh != $CurrentTimeHigh
           ${orif} $OriginalTimeLow != $CurrentTimeLow
-          
-          #Original has been modified, update!
-          
-          StrCpy $OriginalTimeHigh $CurrentTimeHigh
-          StrCpy $OriginalTimeLow  $CurrentTimeLow
+          # PDF has been modified, update view
           !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
           CopyFiles /SILENT $OriginalFile $PDFFile
           !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
           
-        ${endif}
+          # Time of new file
+          StrCpy $OriginalTimeHigh $CurrentTimeHigh
+          StrCpy $OriginalTimeLow  $CurrentTimeLow
+        ${EndIf}
         
-      ${endif}
+        #Monitor again
+        !insertmacro SystemCall "kernel32::FindNextChangeNotification(i $ChangeNotification)"
+        
+      ${EndIf}
     
-    ${loop}
+    ${Loop}
     
-  ${else}
+  ${Else}
   
-    #Another PDF viewer like GSView is used
-    #No need for special actions, just forward to ShellExecute
+    # Another PDF viewer like GSView is used
+    # No need for special actions, just forward to ShellExecute
     ExecShell open $OriginalFile
     
-  ${endif}
+  ${EndIf}
     
 SectionEnd
