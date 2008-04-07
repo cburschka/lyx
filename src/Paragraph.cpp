@@ -1162,8 +1162,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 			if (c != '\0')
 				os << to_utf8(docstring(1, c));
 			else
-				lyxerr << "ERROR (Paragraph::writeFile):"
-					" NULL char in structure." << endl;
+				LYXERR0("NUL char in structure.");
 			++column;
 			break;
 		}
@@ -1273,7 +1272,7 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
 	if (pos > size()) {
-		lyxerr << " pos: " << pos << " size: " << size() << endl;
+		LYXERR0("pos: " << pos << " size: " << size());
 		BOOST_ASSERT(pos <= size());
 	}
 
@@ -1309,8 +1308,7 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	}
 
 	// This should not happen, but if so, we take no chances.
-	//lyxerr << "Paragraph::getEndPosOfFontSpan: This should not happen!"
-	//      << endl;
+	// LYXERR0("Paragraph::getEndPosOfFontSpan: This should not happen!");
 	return FontSpan(pos, pos);
 }
 
@@ -1378,8 +1376,7 @@ FontSize Paragraph::highestFontInRange
 }
 
 
-char_type
-Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
+char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	char_type c = d->text_[pos];
 	if (!lyxrc.rtl_support)
@@ -1414,8 +1411,7 @@ Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 	}
 	if (uc != c && getFontSettings(bparams, pos).isRightToLeft())
 		return uc;
-	else
-		return c;
+	return c;
 }
 
 

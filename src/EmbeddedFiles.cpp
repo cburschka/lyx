@@ -88,8 +88,7 @@ FileName EmbeddedFile::availableFile() const
 {
 	if (isEnabled() && embedded())
 		return FileName(embeddedFile());
-	else
-		return *this;
+	return *this;
 }
 
 
@@ -101,7 +100,7 @@ string EmbeddedFile::latexFilename(std::string const & buffer_path) const
 
 void EmbeddedFile::addInset(Inset const * inset)
 {
-	if (inset != NULL)
+	if (inset)
 		inset_list_.push_back(inset);
 }
 

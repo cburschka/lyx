@@ -680,7 +680,7 @@ bool ParValidator::onoff(string const & name) const
 } // namespace anon.
 
 // define a global ParValidator
-ParValidator * par_validator = NULL;
+ParValidator * par_validator = 0;
 
 InsetListingsParams::InsetListingsParams()
 	: inline_(false), params_(), status_(InsetCollapsable::Open)

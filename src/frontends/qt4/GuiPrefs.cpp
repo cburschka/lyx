@@ -2120,11 +2120,11 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	FuncCode action = lfun.action;
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name) 
-			+ " " + lfun.argument());
+			+ ' ' + lfun.argument());
 	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
 	item_type item_tag = tag;
 
-	QTreeWidgetItem * newItem = NULL;
+	QTreeWidgetItem * newItem = 0;
 	// for unbind items, try to find an existing item in the system bind list
 	if (tag == UserUnbind) {
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name, 
@@ -2139,13 +2139,13 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		// unmatched removed?).
 		if (!newItem) {
 			item_tag = UserExtraUnbind;
-			return NULL;
+			return 0;
 		}
 	}
 	if (!newItem) {
 		switch(lyxaction.getActionType(action)) {
 		case LyXAction::Hidden:
-			return NULL;
+			return 0;
 		case LyXAction::Edit:
 			newItem = new QTreeWidgetItem(editItem_);
 			break;

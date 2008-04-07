@@ -63,7 +63,7 @@ public:
 	 * @param bind_file bind file
 	 * @param unbind_map pointer to a KeyMap that holds \unbind bindings
 	 */
-	bool read(std::string const & bind_file, KeyMap * unbind_map = NULL);
+	bool read(std::string const & bind_file, KeyMap * unbind_map = 0);
 
 	/** write to a bind file.
 	 * @param append append to the bind_file instead of overwrite it

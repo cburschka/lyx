@@ -1383,7 +1383,7 @@ void InsetMathHull::mutateToText()
 #if 0
 	// translate to latex
 	ostringstream os;
-	latex(NULL, os, false, false);
+	latex(os, false, false);
 	string str = os.str();
 
 	// insert this text
@@ -1458,7 +1458,7 @@ void InsetMathHull::revealCodes(Cursor & cur) const
 	// translate to latex
 	cur.markInsert(bv);
 	ostringstream os;
-	write(NULL, os);
+	write(os);
 	string str = os.str();
 	cur.markErase(bv);
 	string::size_type pos = 0;
