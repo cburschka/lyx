@@ -1293,7 +1293,23 @@ void LyXAction::init()
  */
 		{ LFUN_UI_TOGGLE, "ui-toggle", NoBuffer, Buffer },
 
+/*!
+ * \var lyx::FuncCode lyx::WINDOW_NEW
+ * \li Action: Creates new empty LyX window.
+ * \li Notion: Already opened documents from the previous window can be found under View menu.
+ * \li Syntax: window-new [<GEOMETRY>]
+ * \li Params: <GEOMETRY>: pass the geometry of the window. Currently works only under Windows.
+ * \li Origin: Abdel, 21 Oct 2006
+ * \endvar
+ */
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WINDOW_CLOSE
+ * \li Action: Closes the current LyX window.
+ * \li Syntax: window-close
+ * \li Origin: Abdel, 23 Oct 2006
+ * \endvar
+ */
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
 
 /*!
