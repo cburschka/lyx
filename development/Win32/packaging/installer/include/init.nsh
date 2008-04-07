@@ -30,14 +30,14 @@ Function .onInit
   !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_INIT
   
-  ${unless} ${silent}
+  ${IfNot} ${Silent}
     Banner::show /NOUNLOAD "Checking system"
   ${EndIf}
   
   Call SearchExternal
   Call InitExternal
 
-  ${unless} ${silent}
+  ${IfNot} ${Silent}
     Banner::destroy
   ${EndIf}
 

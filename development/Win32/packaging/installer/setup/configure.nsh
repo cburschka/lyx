@@ -132,12 +132,12 @@ Section -dvipost
   # Update file name database
 
   ${if} $PathLaTeX != ""
-    nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
+    DetailPrint $(TEXT_CONFIGURE_MIKTEXFNDB)
+    nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" --update-fndb'
     Pop $UpdateFNDBReturn # Return value
   ${endif}
 
 SectionEnd
-
 
 #--------------------------------
 # Postscript printer for metafile to EPS converter
@@ -160,6 +160,19 @@ Section -PSPrinter
     ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\PSPrinter\metafile2eps.dat" g'
 
   ${EndIf}
+
+SectionEnd
+
+#--------------------------------
+# Run the LyX configure.py script, so MiKTeX can download its packages
+
+Var PythonReturn
+
+Section -ConfigureScript
+
+  DetailPrint $(TEXT_CONFIGURE_LYX)
+  nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\Resources\configure.py"'
+  Pop $PythonReturn # Return value
 
 SectionEnd
 

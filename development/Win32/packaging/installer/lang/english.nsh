@@ -83,6 +83,9 @@ ${LangFileString} TEXT_NOTINSTALLED_GHOSTSCRIPT "The Ghostscript setup wizard wa
 ${LangFileString} TEXT_NOTINSTALLED_VIEWER "You did not associate GSView with the PDF/Postscript file types. Do you want to run GSView setup again?"
 ${LangFileString} TEXT_NOTINSTALLED_DICT "The setup wizard of the $DictionaryLangName spell checker dictionary was not completed. Do you want to run the setup again?"
 
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 

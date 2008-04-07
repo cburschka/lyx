@@ -100,6 +100,9 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
+#--------------------------------
+# Interface initialization
+
 Function InitInterface
 
   # Warn the user when no Administrator or Power user privileges are available
