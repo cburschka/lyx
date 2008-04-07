@@ -26,7 +26,7 @@ http://magic.aladdin.cs.cmu.edu/2005/07/15/pdfopen-and-pdfclose/
 
 Caption "PDF Viewer"
 OutFile pdfview.exe
-Icon "..\packaging\icons\lyx_32x32.ico"
+Icon "..\packaging\icons\lyx.ico"
 SilentInstall silent
 
 #--------------------------------
