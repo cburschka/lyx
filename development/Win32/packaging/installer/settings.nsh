@@ -141,7 +141,7 @@ SetCompressor /SOLID lzma
 !endif
 
 !define SETUP_DEFAULT_DIRECTORY "$PROGRAMFILES\${APP_NAME}${APP_SERIES_KEY}"
-!define SETUP_ICON "${FILES_ICONS}\lyx_32x32.ico"
+!define SETUP_ICON "${FILES_ICONS}\lyx.ico"
 !define SETUP_HEADERIMAGE "graphics\header.bmp"
 !define SETUP_WIZARDIMAGE "graphics\wizard.bmp"
 !define SETUP_UNINSTALLER "Uninstall-${APP_NAME}.exe"

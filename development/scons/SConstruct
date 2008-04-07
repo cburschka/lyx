@@ -1606,7 +1606,7 @@ if env['HAVE_FCNTL']:
         LIBS = ['support'] + intl_libs + system_libs +
             socket_libs + boost_libraries + qtcore_lib,
         source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
-            utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/client.rc')
+            utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/client.rc')
     )
     Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
         client, [Copy('$TARGET', '$SOURCE')]))
@@ -1626,7 +1626,7 @@ tex2lyx = frontend_env.Program(
     target = '$BUILDDIR/src/tex2lyx/tex2lyx',
     LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
     source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
-        utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc'),
+        utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/tex2lyx.rc'),
     CPPPATH = ['$BUILDDIR/src/tex2lyx', '$BUILDDIR/src', '$CPPPATH'],
     LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
     CCFLAGS = ['$CCFLAGS', '-DTEX2LYX'],
@@ -1666,7 +1666,7 @@ Alias('lyxbase', lyxbase_post)
 lyx = frontend_env.Program(
     target = '$BUILDDIR/lyx',
     source = ['$BUILDDIR/src/main.cpp'] + \
-        utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
+        utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/lyx.rc'),
     LIBS = [
         'lyxbase_pre',
         'mathed',

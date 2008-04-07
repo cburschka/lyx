@@ -38,12 +38,7 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
-
-  # Icons
   
-  SetOutPath "$INSTDIR\bin"
-  !insertmacro FileListLyXIcons File "${FILES_ICONS}\"
-
   # Resources
   
   SetOutPath "$INSTDIR"

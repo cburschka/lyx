@@ -46,7 +46,7 @@ Var ResultSubText
 #--------------------------------
 #User interface for debug output
 
-!define MUI_ICON "..\packaging\icons\lyx_32x32.ico"
+!define MUI_ICON "..\packaging\icons\lyx.ico"
 !define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
 
 !define MUI_INSTFILESPAGE_FINISHHEADER_TEXT $ResultText

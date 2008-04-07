@@ -26,10 +26,6 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
   !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
   
-  # Icons
-  
-  !insertmacro FileListLyXIcons Delete "$INSTDIR\bin\"  
-  
   # Resources
   
   RMDir /r "$INSTDIR\Resources"

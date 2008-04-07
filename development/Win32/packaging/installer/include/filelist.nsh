@@ -14,13 +14,6 @@ Lists of files to include in the installer
 
 !macroend
 
-!macro FileListLyXIcons COMMAND DIRECTORY
-
-  ${FILE}lyx_32x32.ico"
-  ${FILE}lyx_doc_32x32.ico"
-
-!macroend
-
 !macro FileListLyXScriptsCleanDVI COMMAND DIRECTORY
 
   ${FILE}clean_dvi.py"
