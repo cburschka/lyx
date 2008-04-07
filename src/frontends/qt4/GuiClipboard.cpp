@@ -71,40 +71,37 @@ namespace frontend {
 
 #ifdef Q_WS_WIN
 
-static FORMATETC setCf(int cf)
+static FORMATETC cfFromMime(QString const & mimetype)
 {
 	FORMATETC formatetc;
-	formatetc.cfFormat = cf;
+	if (mimetype == emf_mime_type) {
+		formatetc.cfFormat = CF_ENHMETAFILE;
+		formatetc.tymed = TYMED_ENHMF;
+	}
+	else if (mimetype == wmf_mime_type) {
+		formatetc.cfFormat = CF_METAFILEPICT;
+		formatetc.tymed = TYMED_MFPICT;
+	}
+	else return formatetc;
 	formatetc.ptd = NULL;
 	formatetc.dwAspect = DVASPECT_CONTENT;
 	formatetc.lindex = -1;
-	if (cf == CF_ENHMETAFILE)
-		formatetc.tymed = TYMED_ENHMF;
-	if (cf == CF_METAFILEPICT)
-		formatetc.tymed = TYMED_MFPICT;    
 	return formatetc;
-}
-
-
-static bool canGetData(int cf, IDataObject * pDataObj)
-{
-	FORMATETC formatetc = setCf(cf);
-	return pDataObj->QueryGetData(&formatetc) == S_OK;
 }
 
 
 class QWindowsMimeMetafile : public QWindowsMime {
 public:
-	bool canConvertFromMime(FORMATETC const & formatetc, QMimeData const * mimeData) const;
-	bool canConvertToMime(QString const & mimeType, IDataObject * pDataObj) const;
-	bool convertFromMime(FORMATETC const & formatetc, const QMimeData * mimeData, STGMEDIUM * pmedium) const;
-	QVariant convertToMime(QString const & mimeType, IDataObject * pDataObj, QVariant::Type preferredType) const;
+	bool canConvertFromMime(FORMATETC const & formatetc, QMimeData const * mimedata) const;
+	bool canConvertToMime(QString const & mimetype, IDataObject * pDataObj) const;
+	bool convertFromMime(FORMATETC const & formatetc, const QMimeData * mimedata, STGMEDIUM * pmedium) const;
+	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj, QVariant::Type preferredType) const;
 	QVector<FORMATETC> formatsForMime(QString const & mimeType, QMimeData const * mimeData) const;
 	QString mimeForFormat(FORMATETC const &) const;
 };
 
 
-QString QWindowsMimeMetafile::mimeForFormat(const FORMATETC & formatetc) const
+QString QWindowsMimeMetafile::mimeForFormat(FORMATETC const & formatetc) const
 {
 	QString f;
 	if (formatetc.cfFormat == CF_ENHMETAFILE)
@@ -116,71 +113,62 @@ QString QWindowsMimeMetafile::mimeForFormat(const FORMATETC & formatetc) const
 
 
 bool QWindowsMimeMetafile::canConvertFromMime(
-	const FORMATETC & formatetc, const QMimeData * mimeData) const
+	FORMATETC const & formatetc, QMimeData const * mimedata) const
 {
 	return false;
 }
 
 
 bool QWindowsMimeMetafile::canConvertToMime(
-	const QString & mimeType, IDataObject * pDataObj) const
+	QString const & mimetype, IDataObject * pDataObj) const
 {
-	return (mimeType == "image/x-emf" && canGetData(CF_ENHMETAFILE, pDataObj))
-		|| (mimeType == "image/x-wmf" && canGetData(CF_METAFILEPICT, pDataObj));
+	FORMATETC formatetc = cfFromMime(mimetype);
+	return pDataObj->QueryGetData(&formatetc) == S_OK;
 }
 
 
 bool QWindowsMimeMetafile::convertFromMime(
-	const FORMATETC & formatetc, const QMimeData * mimeData, 
+	FORMATETC const & formatetc, QMimeData const * mimedata, 
 	STGMEDIUM * pmedium) const
 {
 	return false;
 }
 
 
-QVariant QWindowsMimeMetafile::convertToMime(
-	const QString & mimeType, IDataObject * pDataObj, 
-	QVariant::Type preferredType) const
+QVariant QWindowsMimeMetafile::convertToMime(QString const & mimetype,
+	IDataObject * pDataObj, QVariant::Type preferredType) const
 {
-	QVariant ret;
-	
-	if (canConvertToMime(mimeType, pDataObj)) {
-		FORMATETC formatetc;
-		if (mimeType == "image/x-emf")
-			formatetc = setCf(CF_ENHMETAFILE);
-		if (mimeType == "image/x-wmf")
-			formatetc = setCf(CF_METAFILEPICT);
-		STGMEDIUM s;
-		QByteArray data;
-		int dataSize;
-		
-		if (pDataObj->GetData(&formatetc, &s) == S_OK) {
-			if (s.tymed == TYMED_ENHMF) {
-				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, NULL);
-				data.resize(dataSize);
-				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
-			} else if (s.tymed == TYMED_MFPICT) {
-				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, NULL);
-				data.resize(dataSize);
-				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
-			}
-			data.detach();
-			ReleaseStgMedium(&s);
-		}
-		ret = data;
+	QByteArray data;
+	if (!canConvertToMime(mimetype, pDataObj))
+		return data;
+
+	FORMATETC formatetc = cfFromMime(mimetype);
+	STGMEDIUM s;
+	if (pDataObj->GetData(&formatetc, &s) != S_OK)
+		return data;
+
+	int dataSize;
+	if (s.tymed == TYMED_ENHMF) {
+		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, NULL);
+		data.resize(dataSize);
+		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
+	} else if (s.tymed == TYMED_MFPICT) {
+		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, NULL);
+		data.resize(dataSize);
+		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
 	}
-	return ret;
+	data.detach();
+	ReleaseStgMedium(&s);
+
+	return data;
 }
 
 
 QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
-	const QString & mimeType, const QMimeData * mimeData) const
+	QString const & mimetype, QMimeData const * mimedata) const
 {
 	QVector<FORMATETC> formats;
-	if (mimeType == "image/x-emf")
-		formats += setCf(CF_ENHMETAFILE);
-	if (mimeType == "image/x-wmf")
-		formats += setCf(CF_METAFILEPICT);
+	formats += cfFromMime(mimetype);
 	return formats;
 }
 
