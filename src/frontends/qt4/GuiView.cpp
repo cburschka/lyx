@@ -113,7 +113,8 @@ public:
 	{
 		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
 		/// The text to be written on top of the pixmap
-		QString const text = "version " + (lyx_version ? lyx_version : qt_("unknown version"));
+		QString const text = lyx_version ?
+			qt_("version ") + lyx_version : qt_("unknown version");
 		splash_ = QPixmap(":/images/banner.png");
 
 		QPainter pain(&splash_);
@@ -300,7 +301,7 @@ GuiView::GuiView(int id)
 	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_DeleteOnClose, true);
 
-#ifndef Q_WS_WIN | Q_WS_MACX
+#if (!defined(Q_WS_WIN) && !defined(Q_WS_MACX))
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
 	// since the icon is provided in the application bundle.
 	setWindowIcon(QPixmap(":/images/lyx.png"));
