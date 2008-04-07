@@ -77,13 +77,11 @@ static FORMATETC cfFromMime(QString const & mimetype)
 	if (mimetype == emf_mime_type) {
 		formatetc.cfFormat = CF_ENHMETAFILE;
 		formatetc.tymed = TYMED_ENHMF;
-	}
-	else if (mimetype == wmf_mime_type) {
+	} else if (mimetype == wmf_mime_type) {
 		formatetc.cfFormat = CF_METAFILEPICT;
 		formatetc.tymed = TYMED_MFPICT;
 	}
-	else return formatetc;
-	formatetc.ptd = NULL;
+	formatetc.ptd = 0;
 	formatetc.dwAspect = DVASPECT_CONTENT;
 	formatetc.lindex = -1;
 	return formatetc;
@@ -112,24 +110,25 @@ QString QWindowsMimeMetafile::mimeForFormat(FORMATETC const & formatetc) const
 }
 
 
-bool QWindowsMimeMetafile::canConvertFromMime(
-	FORMATETC const & formatetc, QMimeData const * mimedata) const
+bool QWindowsMimeMetafile::canConvertFromMime(FORMATETC const & formatetc, 
+	QMimeData const * mimedata) const
 {
 	return false;
 }
 
 
-bool QWindowsMimeMetafile::canConvertToMime(
-	QString const & mimetype, IDataObject * pDataObj) const
+bool QWindowsMimeMetafile::canConvertToMime(QString const & mimetype,
+	IDataObject * pDataObj) const
 {
+	if (mimetype != emf_mime_type && mimetype != wmf_mime_type)
+		return false;
 	FORMATETC formatetc = cfFromMime(mimetype);
 	return pDataObj->QueryGetData(&formatetc) == S_OK;
 }
 
 
-bool QWindowsMimeMetafile::convertFromMime(
-	FORMATETC const & formatetc, QMimeData const * mimedata, 
-	STGMEDIUM * pmedium) const
+bool QWindowsMimeMetafile::convertFromMime(FORMATETC const & formatetc,
+	QMimeData const * mimedata, STGMEDIUM * pmedium) const
 {
 	return false;
 }
@@ -149,11 +148,11 @@ QVariant QWindowsMimeMetafile::convertToMime(QString const & mimetype,
 
 	int dataSize;
 	if (s.tymed == TYMED_ENHMF) {
-		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, NULL);
+		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, 0);
 		data.resize(dataSize);
 		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
 	} else if (s.tymed == TYMED_MFPICT) {
-		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, NULL);
+		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, 0);
 		data.resize(dataSize);
 		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
 	}
@@ -183,13 +182,12 @@ public:
 	QMacPasteboardMimeGraphics()
 		: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL)
 	{}
-	~QMacPasteboardMimeGraphics() {}
 	QString convertorName();
-	QString flavorFor(const QString & mime);
+	QString flavorFor(QString const & mime);
 	QString mimeFor(QString flav);
-	bool canConvert(const QString & mime, QString flav);
-	QVariant convertToMime(const QString & mime, QList<QByteArray> data, QString flav);
-	QList<QByteArray> convertFromMime(const QString &mime, QVariant data, QString flav);
+	bool canConvert(QString const & mime, QString flav);
+	QVariant convertToMime(QString const & mime, QList<QByteArray> data, QString flav);
+	QList<QByteArray> convertFromMime(QString const & mime, QVariant data, QString flav);
 };
 
 
@@ -199,7 +197,7 @@ QString QMacPasteboardMimeGraphics::convertorName()
 }
 
 
-QString QMacPasteboardMimeGraphics::flavorFor(const QString & mime)
+QString QMacPasteboardMimeGraphics::flavorFor(QString const & mime)
 {
 	LYXERR(Debug::ACTION, "flavorFor " << fromqstr(mime));
 	if (mime == QLatin1String(pdf_mime_type))
@@ -217,13 +215,13 @@ QString QMacPasteboardMimeGraphics::mimeFor(QString flav)
 }
 
 
-bool QMacPasteboardMimeGraphics::canConvert(const QString & mime, QString flav)
+bool QMacPasteboardMimeGraphics::canConvert(QString const & mime, QString flav)
 {
 	return mimeFor(flav) == mime;
 }
 
 
-QVariant QMacPasteboardMimeGraphics::convertToMime(const QString & mime, QList<QByteArray> data, QString)
+QVariant QMacPasteboardMimeGraphics::convertToMime(QString const & mime, QList<QByteArray> data, QString)
 {
 	if(data.count() > 1)
 		qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
@@ -231,7 +229,7 @@ QVariant QMacPasteboardMimeGraphics::convertToMime(const QString & mime, QList<Q
 }
 
 
-QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(const QString &mime, QVariant data, QString)
+QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(QString const & mime, QVariant data, QString)
 {
 	QList<QByteArray> ret;
 	ret.append(data.toByteArray());
