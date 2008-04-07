@@ -156,11 +156,11 @@ QVariant QWindowsMimeMetafile::convertToMime(
 		
 		if (pDataObj->GetData(&formatetc, &s) == S_OK) {
 			if (s.tymed == TYMED_ENHMF) {
-				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, 0);
+				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, NULL);
 				data.resize(dataSize);
 				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
 			} else if (s.tymed == TYMED_MFPICT) {
-				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, 0);
+				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, NULL);
 				data.resize(dataSize);
 				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
 			}
