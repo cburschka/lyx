@@ -41,6 +41,11 @@
 #include <QString>
 #include <QStringList>
 
+#ifdef Q_WS_WIN
+#include <QWindowsMime>
+#include <objidl.h>
+#endif // Q_WS_WIN
+
 #include "boost/assert.hpp"
 
 #include <map>
@@ -54,10 +59,131 @@ using namespace lyx::support;
 
 static char const * const lyx_mime_type = "application/x-lyx";
 static char const * const pdf_mime_type = "application/pdf";
+static char const * const emf_mime_type = "image/x-emf";
+static char const * const wmf_mime_type = "image/x-wmf";
 
 namespace lyx {
 
 namespace frontend {
+
+#ifdef Q_WS_WIN
+
+static FORMATETC setCf(int cf)
+{
+	FORMATETC formatetc;
+	formatetc.cfFormat = cf;
+	formatetc.ptd = NULL;
+	formatetc.dwAspect = DVASPECT_CONTENT;
+	formatetc.lindex = -1;
+	if (cf == CF_ENHMETAFILE)
+		formatetc.tymed = TYMED_ENHMF;
+	if (cf == CF_METAFILEPICT)
+		formatetc.tymed = TYMED_MFPICT;    
+	return formatetc;
+}
+
+
+static bool canGetData(int cf, IDataObject * pDataObj)
+{
+	FORMATETC formatetc = setCf(cf);
+	return pDataObj->QueryGetData(&formatetc) == S_OK;
+}
+
+
+class QWindowsMimeMetafile : public QWindowsMime {
+public:
+	bool canConvertFromMime(FORMATETC const & formatetc, QMimeData const * mimeData) const;
+	bool canConvertToMime(QString const & mimeType, IDataObject * pDataObj) const;
+	bool convertFromMime(FORMATETC const & formatetc, const QMimeData * mimeData, STGMEDIUM * pmedium) const;
+	QVariant convertToMime(QString const & mimeType, IDataObject * pDataObj, QVariant::Type preferredType) const;
+	QVector<FORMATETC> formatsForMime(QString const & mimeType, QMimeData const * mimeData) const;
+	QString mimeForFormat(FORMATETC const &) const;
+};
+
+
+QString QWindowsMimeMetafile::mimeForFormat(const FORMATETC & formatetc) const
+{
+	QString f;
+	if (formatetc.cfFormat == CF_ENHMETAFILE)
+		f = emf_mime_type; 
+	else if (formatetc.cfFormat == CF_METAFILEPICT)
+		f = wmf_mime_type;
+	return f;
+}
+
+
+bool QWindowsMimeMetafile::canConvertFromMime(
+	const FORMATETC & formatetc, const QMimeData * mimeData) const
+{
+	return false;
+}
+
+
+bool QWindowsMimeMetafile::canConvertToMime(
+	const QString & mimeType, IDataObject * pDataObj) const
+{
+	return (mimeType == "image/x-emf" && canGetData(CF_ENHMETAFILE, pDataObj))
+		|| (mimeType == "image/x-wmf" && canGetData(CF_METAFILEPICT, pDataObj));
+}
+
+
+bool QWindowsMimeMetafile::convertFromMime(
+	const FORMATETC & formatetc, const QMimeData * mimeData, 
+	STGMEDIUM * pmedium) const
+{
+	return false;
+}
+
+
+QVariant QWindowsMimeMetafile::convertToMime(
+	const QString & mimeType, IDataObject * pDataObj, 
+	QVariant::Type preferredType) const
+{
+	QVariant ret;
+	
+	if (canConvertToMime(mimeType, pDataObj)) {
+		FORMATETC formatetc;
+		if (mimeType == "image/x-emf")
+			formatetc = setCf(CF_ENHMETAFILE);
+		if (mimeType == "image/x-wmf")
+			formatetc = setCf(CF_METAFILEPICT);
+		STGMEDIUM s;
+		QByteArray data;
+		int dataSize;
+		
+		if (pDataObj->GetData(&formatetc, &s) == S_OK) {
+			if (s.tymed == TYMED_ENHMF) {
+				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, NULL, NULL);
+				data.resize(dataSize);
+				dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
+			} else if (s.tymed == TYMED_MFPICT) {
+				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, NULL, NULL);
+				data.resize(dataSize);
+				dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
+			}
+			data.detach();
+			ReleaseStgMedium(&s);
+		}
+		ret = data;
+	}
+	return ret;
+}
+
+
+QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
+	const QString & mimeType, const QMimeData * mimeData) const
+{
+	QVector<FORMATETC> formats;
+	if (mimeType == "image/x-emf")
+		formats += setCf(CF_ENHMETAFILE);
+	if (mimeType == "image/x-wmf")
+		formats += setCf(CF_METAFILEPICT);
+	return formats;
+}
+
+static QWindowsMimeMetafile * metafileWindowsMime;
+
+#endif // Q_WS_WIN
 
 #ifdef Q_WS_MACX
 
@@ -137,6 +263,11 @@ GuiClipboard::GuiClipboard()
 	if (!graphicsPasteboardMime)
 		graphicsPasteboardMime = new QMacPasteboardMimeGraphics();
 #endif // Q_WS_MACX
+
+#ifdef Q_WS_WIN
+	if (!metafileWindowsMime)
+		metafileWindowsMime = new QWindowsMimeMetafile();
+#endif // Q_WS_WIN
 }
 
 
@@ -177,6 +308,10 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 {
 	// create file dialog filter according to the existing types in the clipboard
 	vector<Clipboard::GraphicsType> types;
+	if (hasGraphicsContents(Clipboard::EmfGraphicsType))
+		types.push_back(Clipboard::EmfGraphicsType);
+	if (hasGraphicsContents(Clipboard::WmfGraphicsType))
+		types.push_back(Clipboard::WmfGraphicsType);
 	if (hasGraphicsContents(Clipboard::LinkBackGraphicsType))
 		types.push_back(Clipboard::LinkBackGraphicsType);
 	if (hasGraphicsContents(Clipboard::PdfGraphicsType))
@@ -196,11 +331,15 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	map<Clipboard::GraphicsType, string> extensions;
 	map<Clipboard::GraphicsType, docstring> typeNames;
 	
+	extensions[Clipboard::EmfGraphicsType] = "emf";
+	extensions[Clipboard::WmfGraphicsType] = "wmf";
 	extensions[Clipboard::LinkBackGraphicsType] = "linkback";
 	extensions[Clipboard::PdfGraphicsType] = "pdf";
 	extensions[Clipboard::PngGraphicsType] = "png";
 	extensions[Clipboard::JpegGraphicsType] = "jpeg";
 	
+	typeNames[Clipboard::EmfGraphicsType] = _("Enhanced Metafile");
+	typeNames[Clipboard::WmfGraphicsType] = _("Windows Metafile");
 	typeNames[Clipboard::LinkBackGraphicsType] = _("LinkBack PDF");
 	typeNames[Clipboard::PdfGraphicsType] = _("PDF");
 	typeNames[Clipboard::PngGraphicsType] = _("PNG");
@@ -329,6 +468,8 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	switch (type) {
 	case PdfGraphicsType: mime = pdf_mime_type; break;
 	case LinkBackGraphicsType: mime = pdf_mime_type; break;
+	case EmfGraphicsType: mime = emf_mime_type; break;
+	case WmfGraphicsType: mime = wmf_mime_type; break;
 	default: BOOST_ASSERT(false);
 	}
 	
@@ -415,12 +556,14 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 		return hasGraphicsContents(PdfGraphicsType)
 			|| hasGraphicsContents(PngGraphicsType)
 			|| hasGraphicsContents(JpegGraphicsType)
+			|| hasGraphicsContents(EmfGraphicsType)
+			|| hasGraphicsContents(WmfGraphicsType)
 			|| hasGraphicsContents(LinkBackGraphicsType);
 	}
 
 	QMimeData const * const source =
 	qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	
+
 	// handle image cases first
 	if (type == PngGraphicsType || type == JpegGraphicsType)
 		return source->hasImage();
@@ -444,6 +587,8 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	// compute mime for type
 	QString mime;
 	switch (type) {
+	case EmfGraphicsType: mime = emf_mime_type; break;
+	case WmfGraphicsType: mime = wmf_mime_type; break;
 	case PdfGraphicsType: mime = pdf_mime_type; break;
 	default: BOOST_ASSERT(false);
 	}

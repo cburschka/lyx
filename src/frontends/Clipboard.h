@@ -37,6 +37,8 @@ public:
 		PngGraphicsType,
 		JpegGraphicsType,
 		LinkBackGraphicsType,
+		EmfGraphicsType,
+		WmfGraphicsType,
 		AnyGraphicsType,
 	};
 
