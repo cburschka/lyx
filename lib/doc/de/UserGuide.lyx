@@ -165,8 +165,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 31.
- März 2008
+letzte Änderung: 6.
+ April 2008
 \end_layout
 
 \begin_layout Standard
@@ -196,65 +196,6 @@ LatexCommand tableofcontents
 
 \begin_layout Chapter
 Einleitung
-\end_layout
-
-\begin_layout Section*
-Vorbemerkung
-\end_layout
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: Ich habe ab Version 1.5 alle Unterstreichungen von Menü-Befehlen weggelassen,
- weil es zu mühsam ist, die Änderungen während der Weiterentwicklung immer
- wieder nachzuvollziehen.
- Ein Befehl sieht jetzt so aus: 
-\family sans
-Ansicht
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Werkzeugleisten
-\family default
- an Stelle von 
-\family sans
-Ans
-\bar under
-i
-\bar default
-cht
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-W
-\bar default
-erkzeugleisten
-\family default
-.
- Wenn Sie mit Tastenkürzeln arbeiten wollen, können Sie sich die unterstrichenen
- Buchstaben merken, wenn Sie einen Menü-Befehl aufrufen.
-\end_layout
-
-\begin_layout Standard
-Außerdem hat 
-\noun on
-Uwe Stöhr
-\noun default
- in den LaTeX-Vorspann (siehe 
-\family sans
-Hilfe\SpecialChar \menuseparator
-Handbuchergän\SpecialChar \-
-zun\SpecialChar \-
-gen
-\family default
-) Elemente eingefügt, die bewirken, dass in der druckbaren Version Einträge
- in den Verzeichnissen und Querverweise blau unterstrichen werden und wie
- eine URL angeklickt werden können.
 \end_layout
 
 \begin_layout Section
@@ -375,16 +316,8 @@ Windows XP
 \begin_layout Standard
 In diesem Fall gehen Sie wie gewohnt vor: Rechtsklick auf den Desktop-Hintergrun
 d\SpecialChar \menuseparator
-
-\family sans
-Einstellungen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Darstellung
-\family default
-.
+Einstellungen\SpecialChar \menuseparator
+Darstellung.
  
 \begin_inset VSpace bigskip
 \end_inset
@@ -398,11 +331,7 @@ Unter der Menüleiste befinden sich die Werkzeugleisten mit einer Listenauswahl
  und diversen Schaltknöpfen.
  Einige Werkzeugleisten können Sie über 
 \family sans
-Ansicht
-\family default
-\SpecialChar \menuseparator
-
-\family sans
+Ansicht\SpecialChar \menuseparator
 Werk\SpecialChar \-
 zeug\SpecialChar \-
 leis\SpecialChar \-
@@ -11784,82 +11713,6 @@ Absatz!-formatierung
 \end_layout
 
 \begin_layout Subsubsection
-Absatzausrichtung
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Absatz!-ausrichtung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mit 
-\family sans
-Ausrichtung
-\family default
- ändern Sie einen oder mehrere Absätze.
- Normalerweise ist 
-\family sans
-Standard
-\family default
- angekreuzt, was 
-\family sans
-Blocksatz
-\family default
- bedeutet, bei dem der Leerraum zwischen den Worten variabel ist und jede
- Zeile des Absatzes den Platz zwischen den beiden Rändern ausfüllt.
- Wenn Sie das Kreuz entfernen, haben Sie drei weitere Möglichkeiten:
-\family sans
- Links, Rechts
-\family default
- und 
-\family sans
-Zentriert.
-
-\family default
- Diese Ausrichtungen sind selbsterklärend und sehen wie folgt aus:
-\end_layout
-
-\begin_layout Standard
-\align left
-Dieser Absatz ist linksbündig,
-\end_layout
-
-\begin_layout Standard
-\align center
-dieser ist zentriert,
-\end_layout
-
-\begin_layout Standard
-\align right
-und dieser ist rechtsbündig.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Anmerkung
-\emph default
-: Bei diesen drei Absatzausrichtungen wird ober- und unterhalb ein zusätzlicher
- vertikaler Abstand eingefügt.
- Will man zum Beispiel mehrere kurze Zeilen zentriert setzen, sollte man
- nach jeder Zeile 
-\family sans
-Strg+Eingabe
-\family default
- statt 
-\family sans
-Eingabe
-\family default
- benutzen.
-\end_layout
-
-\begin_layout Subsubsection
 Zeilenabstand
 \begin_inset Index
 status collapsed
@@ -11917,6 +11770,25 @@ Benutzerdefiniert
 \end_layout
 
 \begin_layout Subsubsection
+Markenbreite
+\end_layout
+
+\begin_layout Standard
+Siehe
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "LyX-Liste-und-Liste"
+
+\end_inset
+
+, Standardbreite.
+\end_layout
+
+\begin_layout Subsubsection
 Absatz einrücken
 \begin_inset CommandInset label
 LatexCommand label
@@ -11946,7 +11818,7 @@ trennen
 
 durch
 \family default
- angekreuzt ist, ist auch 
+ aktiviert ist, ist auch 
 \family sans
 Absatz
 \begin_inset Space \space{}
@@ -11956,6 +11828,107 @@ einrücken
 \family default
  angekreuzt oder nicht.
  Diese Voreinstellung können Sie ändern.
+\end_layout
+
+\begin_layout Subsubsection
+Absatzausrichtung
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Absatz!-ausrichtung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit 
+\family sans
+Ausrichtung
+\family default
+ ändern Sie einen oder mehrere Absätze.
+ Normalerweise ist 
+\family sans
+Voreinstellung
+\begin_inset Space \space{}
+\end_inset
+
+des
+\begin_inset Space \space{}
+\end_inset
+
+Absatztyps
+\begin_inset Space \space{}
+\end_inset
+
+(xyz)
+\family default
+ aktiviert, meistens ist xyz Blocksatz, was bedeutet, dass der Leerraum
+ zwischen den Worten variabel ist und jede Zeile des Absatzes den Platz
+ zwischen den beiden Rändern ausfüllt.
+ Wenn Sie eine der vier Möglichkeiten
+\family sans
+ Blocksatz, Links, Zentriert
+\family default
+ und 
+\family sans
+Rechts
+\family default
+ aktivieren, wird die Voreistellung deaktiviert.
+ Diese Ausrichtungen sind selbsterklärend und sehen wie folgt aus:
+\end_layout
+
+\begin_layout Standard
+\align left
+Dieser Absatz ist linksbündig,
+\end_layout
+
+\begin_layout Standard
+\align center
+dieser ist zentriert,
+\end_layout
+
+\begin_layout Standard
+\align right
+und dieser ist rechtsbündig.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Anmerkung
+\emph default
+: Bei diesen drei Absatzausrichtungen wird ober- und unterhalb ein zusätzlicher
+ vertikaler Abstand eingefügt.
+ Will man zum Beispiel mehrere kurze Zeilen zentriert setzen, sollte man
+ nach jeder Zeile 
+\family sans
+Strg+Eingabe
+\family default
+ statt 
+\family sans
+Eingabe
+\family default
+ benutzen.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie 
+\family sans
+Sofort
+\begin_inset Space \space{}
+\end_inset
+
+anzeigen
+\family default
+ ankreuzen, wird die Änderung auch ohne 
+\family sans
+Übernehmen
+\family default
+ durchgeführt.
 \end_layout
 
 \begin_layout Subsection
@@ -28054,24 +28027,7 @@ serifenfrei
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $serifenfrei$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dokument kann nicht kompiliert werden,
-\end_layout
-
-\begin_layout Plain Layout
-wenn 
-\backslash
-mathsf verwendet wird.
- Warum.
-\end_layout
-
+\begin_inset Formula $\mathsf{serifenfrei}$
 \end_inset
 
 
@@ -37900,6 +37856,8 @@ reference "Mathe-Kontrollflächen"
 Mathe-
 \family sans
 Werkzeugleiste
+\family default
+Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
@@ -37915,6 +37873,127 @@ reference "Mathe-Kontrollflächen"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Mathe-Makros-Werkzeugleiste
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: den letzten Parameter entfernen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-add-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: einen Parameter hinzufügen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-make-optional.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Den ersten nicht-optionale Parameter in einen optionalen ändern
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-make-nonoptional.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Den letzten optionalen Parameter in einen nicht-optionalen ändern
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-optional-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: optionalen Parameter entfernen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-add-optional-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: optionalen Parameter einfügen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-greedy-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: letzten Parameter rechts entfernen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-append-greedy-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: Parameter von rechts hinzufügen
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/math-macro-add-greedy-optional-param.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+: optionalen Parameter von rechts hinzufügen
 \end_layout
 
 \begin_layout Subsection
