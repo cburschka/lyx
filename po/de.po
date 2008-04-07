@@ -350,7 +350,7 @@ msgstr "Run&ter"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr "Dies anwählen, wenn die Box am Seitenende umbrochen werden soll"
+msgstr "Auswählen, wenn die Box am Seitenende umbrochen werden soll"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
 msgid "Allow &page breaks"
@@ -3825,7 +3825,7 @@ msgstr "benötigte Z&eilen:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
-msgstr "Außen (standard)"
+msgstr "Außen (Standard)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:204
 msgid "Inner"
@@ -4770,7 +4770,7 @@ msgstr "BeginneSchlichtenRahmen"
 
 #: lib/layouts/beamer.layout:282
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Rahmen (keine Kopf/Fuß/Seitenlinien)"
+msgstr "Rahmen (keine Kopf-/Fuß-/Seitenleisten)"
 
 #: lib/layouts/beamer.layout:305
 msgid "AgainFrame"
@@ -7905,7 +7905,7 @@ msgstr ""
 
 #: lib/layouts/linguistics.module:12
 msgid "Numbered Example (multiline)"
-msgstr "Nummeriertes Beispiel (Mehrere Zeilen)"
+msgstr "Nummeriertes Beispiel (mehrere Zeilen)"
 
 #: lib/layouts/linguistics.module:26
 msgid "Example:"
@@ -8143,7 +8143,7 @@ msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Order By Chapter)"
-msgstr "Theoreme (Sortiert nach Kapitel)"
+msgstr "Theoreme (sortiert nach Kapiteln)"
 
 #: lib/layouts/theorems-chap.module:6
 msgid ""
@@ -8418,7 +8418,7 @@ msgstr "Serbisch"
 
 #: lib/languages:69
 msgid "Serbian (Latin)"
-msgstr "Serbisch (Latein. Schrift)"
+msgstr "Serbisch (latein. Schrift)"
 
 #: lib/languages:70
 msgid "Slovak"
@@ -12854,7 +12854,7 @@ msgstr "Festplatten-Fehler: "
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
-"LyX konnte kein temporäres Verzeichnis '%1$s'  erstellen (Festplatte ist "
+"LyX konnte kein temporäres Verzeichnis '%1$s' erstellen (Festplatte ist "
 "vielleicht voll?)"
 
 #: src/Buffer.cpp:276
@@ -13072,7 +13072,7 @@ msgstr ""
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
-"Kann keinen LaTeX-Befehl für das Zeichen '%1$s' (code point %2$s) finden"
+"Kann keinen LaTeX-Befehl für das Zeichen '%1$s' (Code-Punkt %2$s) finden"
 
 #: src/Buffer.cpp:1048
 msgid ""
@@ -14723,7 +14723,7 @@ msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
-"Definieren Sie die Optionen von BibTeX (vgl. man bibtex) oder wählen Sie "
+"Definieren Sie die Optionen von BibTeX (vgl. die Manpage von bibtex) oder wählen Sie "
 "ein alternatives Programm (z. B. mlbibtex oder bibulus)."
 
 #: src/LyXRC.cpp:2542
@@ -14798,7 +14798,7 @@ msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
-"Dialoge werden minimiert, wenn das Hauptfenster minimiert wird. (Betrifft "
+"Dialoge werden minimiert, wenn das Hauptfenster minimiert wird (betrifft "
 "nur Dialoge, die nach dem Aktivieren dieser Option geöffnet werden)."
 
 #: src/LyXRC.cpp:2595
@@ -15134,7 +15134,7 @@ msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
-"Der DPI-Wert (Dots Per inch -- Punkte je Zoll) Ihres Monitors wird von LyX "
+"Der DPI-Wert (dots per inch -- Punkte je Zoll) Ihres Monitors wird von LyX "
 "selbsttätig ermittelt. Scheitert dies, können Sie hier den korrekten Wert "
 "vorgeben."
 
@@ -15245,7 +15245,7 @@ msgstr ""
 #: src/LyXRC.cpp:2926
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Geben Sie die Papiergrößen-Option für den DVI-Betrachter an (Verwenden Sie "
+"Geben Sie die Papiergrößen-Option für den DVI-Betrachter an (verwenden Sie "
 "\"-paper\" oder lassen Sie den Eintrag leer)."
 
 #: src/LyXVC.cpp:91
@@ -18133,8 +18133,8 @@ msgid ""
 "defining a listing inset)"
 msgstr ""
 "Dieser Parameter sollte hier nicht eingegeben werden. Bitte erwenden Sie die "
-"Legenden-Editierbox (wenn Sie den Unterdokument-Dialog nutzen) oder das Menü "
-"Einfügen->Legende (wenn Sie eine Listing-Einfügung definieren)"
+"Legenden-Editierbox (falls Sie den Unterdokument-Dialog nutzen) oder das Menü "
+"Einfügen->Legende (falls Sie eine Listing-Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:414
 msgid ""
@@ -18143,8 +18143,8 @@ msgid ""
 "a listing inset)"
 msgstr ""
 "Dieser Parameter sollte hier nicht eingegeben werden. Bitte verwenden Sie "
-"die Marken-Editierbox (wenn Sie den Unterdokument-Dialog nutzen) oder das "
-"Menü Einfügen->Marke (wenn Sie eine Listing-Einfügung definieren)"
+"die Marken-Editierbox (falls Sie den Unterdokument-Dialog nutzen) oder das "
+"Menü Einfügen->Marke (falls Sie eine Listing-Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:617
 msgid "Invalid (empty) listing parameter name."
