@@ -4209,7 +4209,7 @@ dotfill
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -8413,7 +8413,7 @@ texorpdfstring{
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Para acentos en texto, véase 
@@ -9241,7 +9241,6 @@ status collapsed
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 raisebox
@@ -11253,7 +11252,7 @@ hfill
 \series default
  hay que insertar un salto de línea y un espacio fantasma
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase 
@@ -12050,7 +12049,7 @@ distancia
  cuadro.
  Un ejemplo de esto es la siguiente ecuación enmarcada:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12412,7 +12411,7 @@ sqrt{B}$}$
 La última ecuación sólo se puede componer, de momento, usando el modo TeX
  porque LyX inserta un cuadro en lugar de la ecuación extra que hace falta.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase 
@@ -12536,7 +12535,7 @@ color
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Para evitar que el paquete sea cargado dos veces se ha insertado una macro
@@ -13194,7 +13193,7 @@ name "Texto ! coloreado"
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13535,7 +13534,7 @@ Detrás de la ecuación se cierran ambos cuadros con
  en modo TeX.
  Aquí hay un ejemplo:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -14519,7 +14518,7 @@ r
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase estilos de letras en 
@@ -22995,12 +22994,10 @@ sen(x)+B
 \begin_layout Standard
 \align center
 
-\newpage
-
 \end_layout
 
 \begin_layout Standard
-Las funciones siguientes están predefinidas
+Las funciones siguientes están predefinidas:
 \begin_inset Foot
 status collapsed
 
@@ -23051,7 +23048,7 @@ del t.
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -26852,7 +26849,7 @@ usepackage{calc}
 \begin_layout Standard
 Se obtiene:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -28656,7 +28653,7 @@ Sangrado
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase estilos de ecuación en 
@@ -28962,7 +28959,7 @@ remreset.sty
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -30827,7 +30824,7 @@ r
 \family default
  se cambia en redonda.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase estilos de fuentes en 
@@ -31705,7 +31702,7 @@ hspace
 \backslash
 raisebox
 \series default
- se usa sólo como espaciador
+ se usan sólo como espaciadores
 \end_layout
 
 \end_inset
@@ -32875,7 +32872,7 @@ name "Tipografía, notas"
 \begin_layout Standard
 Esta sección es un resumen de las normas tipográficas ISO más importantes.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Este compendio se ha tomado parcialmente del diccionario semioficial alemán
@@ -32922,7 +32919,7 @@ siempre
 \emph default
 en redonda
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 véase estilos de fuentes en 
@@ -32952,21 +32949,8 @@ reference "sub:Espacio-predefinido"
 Los signos por ciento y por mil se escriben como las unidades físicas:
 \newline
 1,2\InsetSpace \thinspace{}
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textperthousand 
-\end_layout
-
-\end_inset
-
- \InsetSpace ~
-de alcohol en sangre.
+‰
+ de alcohol en sangre.
 \end_layout
 
 \begin_layout Itemize
@@ -33735,8 +33719,6 @@ key "Mathmode"
 \end_inset
 
 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -33749,7 +33731,7 @@ href{ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf}{
 
 \end_inset
 
-Description
+Descripción
 \begin_inset ERT
 status collapsed
 
@@ -33760,7 +33742,7 @@ status collapsed
 
 \end_inset
 
- of LaTeX's math abilities
+ de habilidades matemáticas de LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -33770,8 +33752,6 @@ key "Voss"
 \end_inset
 
 
-\lang english
-LaTeX tips and tricks-
 \begin_inset ERT
 status collapsed
 
@@ -33784,7 +33764,7 @@ href{http://tug.org/TeXnik/}{
 
 \end_inset
 
-page
+Página web
 \begin_inset ERT
 status collapsed
 
@@ -33795,7 +33775,7 @@ status collapsed
 
 \end_inset
 
-
+ sugerencias y consejos de LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -33804,8 +33784,6 @@ key "AMS"
 
 \end_inset
 
-
-\lang english
 
 \begin_inset ERT
 status collapsed
@@ -33819,7 +33797,7 @@ href{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf}{
 
 \end_inset
 
-Description
+Descripción
 \begin_inset ERT
 status collapsed
 
@@ -33830,7 +33808,7 @@ status collapsed
 
 \end_inset
 
- of 
+ de 
 \begin_inset ERT
 status collapsed
 
@@ -33853,8 +33831,6 @@ key "Symbole"
 \end_inset
 
 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -33867,7 +33843,7 @@ href{ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf}{
 
 \end_inset
 
-List
+Lista
 \begin_inset ERT
 status collapsed
 
@@ -33878,7 +33854,7 @@ status collapsed
 
 \end_inset
 
- of all symbols available with LaTeX-packages
+ de todos los símbolos disponibles con paquetes LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -33887,8 +33863,6 @@ key "hyperref"
 
 \end_inset
 
-
-\lang english
 
 \begin_inset ERT
 status collapsed
@@ -33902,7 +33876,7 @@ href{http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf}{
 
 \end_inset
 
-Documentation
+Documentación
 \begin_inset ERT
 status collapsed
 
@@ -33913,9 +33887,7 @@ status collapsed
 
 \end_inset
 
- of the LaTeX-package
-\lang spanish
- 
+ del paquete LaTeX 
 \series bold
 hyperref
 \series default
@@ -33935,8 +33907,6 @@ key "Mathclap"
 \end_inset
 
 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -33949,7 +33919,7 @@ href{http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf}{
 
 \end_inset
 
-Description
+Descripción
 \begin_inset ERT
 status collapsed
 
@@ -33960,9 +33930,7 @@ status collapsed
 
 \end_inset
 
- of the command
-\lang spanish
- 
+ del comando 
 \series bold
 
 \backslash
