@@ -12,21 +12,18 @@
 #ifndef INSET_HYPERLINK_H
 #define INSET_HYPERLINK_H
 
-
 #include "InsetCommand.h"
 
 
 namespace lyx {
 
-class LaTeXFeatures;
-
 /** The hyperlink inset
  */
-class InsetHyperlink : public InsetCommand {
+class InsetHyperlink : public InsetCommand
+{
 public:
 	///
-	explicit
-	InsetHyperlink(InsetCommandParams const &);
+	explicit InsetHyperlink(InsetCommandParams const &);
 	///
 	InsetCode lyxCode() const { return HYPERLINK_CODE; }
 	///
@@ -55,7 +52,7 @@ public:
 	/// Force inset into LTR environment if surroundings are RTL?
 	bool forceLTR() const { return true; }
 private:
-	Inset * clone() const { return new InsetHyperlink(params()); }
+	Inset * clone() const { return new InsetHyperlink(*this); }
 };
 
 

@@ -60,8 +60,8 @@ RenderPreview::RenderPreview(RenderPreview const & other,
 
 RenderPreview::~RenderPreview()
 {
-       if (ploader_connection_.connected())
-               ploader_connection_.disconnect();
+	if (ploader_connection_.connected())
+		ploader_connection_.disconnect();
 }
 
 
