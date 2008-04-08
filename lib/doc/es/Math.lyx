@@ -1,5 +1,5 @@
-#LyX 1.6.0alpha1 created this file. For more info see http://www.lyx.org/
-\lyxformat 324
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -27587,7 +27587,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}$
+\begin_inset Formula $\_{} {}{}{}{}$
 \end_inset
 
 
@@ -34978,24 +34978,7 @@ Los signos por ciento y por mil se escriben como las unidades físicas:
 \begin_inset Space \thinspace{}
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textperthousand 
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Space ~
-\end_inset
-
-de alcohol en sangre.
+‰ de alcohol en sangre.
 \end_layout
 
 \begin_layout Itemize
@@ -35794,16 +35777,14 @@ key "Mathmode"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Description"
+name "Descripción"
 target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 
 \end_inset
 
- of LaTeX's math abilities
+ de habilidades matemáticas de LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -35814,16 +35795,14 @@ key "Voss"
 \end_inset
 
 
-\lang english
-LaTeX tips and tricks-
 \begin_inset CommandInset href
 LatexCommand href
-name "page"
+name "Página web"
 target "http://tug.org/TeXnik/"
 
 \end_inset
 
-
+ sugerencias y consejos de LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -35834,16 +35813,14 @@ key "AMS"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Description"
+name "Descripción"
 target "ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf"
 
 \end_inset
 
- of 
+ de 
 \begin_inset ERT
 status collapsed
 
@@ -35867,16 +35844,14 @@ key "Symbole"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "List"
+name "Lista"
 target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
 
 \end_inset
 
- of all symbols available with LaTeX-packages
+ de todos los símbolos disponibles con paquetes LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -35887,18 +35862,14 @@ key "hyperref"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Documentación"
 target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
 
 \end_inset
 
- of the LaTeX-package
-\lang spanish
- 
+ del paquete LaTeX 
 \series bold
 hyperref
 \series default
@@ -35923,18 +35894,14 @@ key "Mathclap"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Description"
+name "Descripciónn"
 target "http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf"
 
 \end_inset
 
- of the command
-\lang spanish
- 
+ del comando 
 \series bold
 
 \backslash
