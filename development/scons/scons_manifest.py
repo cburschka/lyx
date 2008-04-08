@@ -1496,7 +1496,6 @@ lib_images_math_files = Split('''
     Re.png
     Rrightarrow.png
     Rsh.png
-    Vert.png
     Vvdash.png
     acute.png
     aleph.png
@@ -1970,6 +1969,7 @@ lib_images_math_files = Split('''
     vee.png
     veebar.png
     vert.png
+    vert2.png
     vphantom.png
     wedge.png
     widehat.png

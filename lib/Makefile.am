@@ -870,8 +870,8 @@ dist_imagesmath_DATA = \
 	images/math/vec.png \
 	images/math/vee.png \
 	images/math/veebar.png \
-	images/math/Vert.png \
 	images/math/vert.png \
+	images/math/vert2.png \
 	images/math/vphantom.png \
 	images/math/wedge.png \
 	images/math/widehat.png \
