@@ -19627,17 +19627,6 @@ name "sec:Wrap-Floats"
 \end_layout
 
 \begin_layout Standard
-This float type is used if you want to 
-\begin_inset Quotes eld
-\end_inset
-
-wrap
-\begin_inset Quotes erd
-\end_inset
-
- text around a figure so that it only occupies some fraction of the column
- width.
- It can be inserted using the menu 
 \begin_inset Wrap figure
 lines 0
 placement l
@@ -19668,8 +19657,7 @@ name "cap:Wrapped-figure"
 
 \end_inset
 
-This is a wrapped figure, and this is the brilliant caption that describes
- it
+This is a wrapped figure.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -19683,7 +19671,17 @@ This is a wrapped figure, and this is the brilliant caption that describes
 
 \end_inset
 
- 
+This float type is used if you want to 
+\begin_inset Quotes eld
+\end_inset
+
+wrap
+\begin_inset Quotes erd
+\end_inset
+
+ text around a figure so that it only occupies some fraction of the column
+ width.
+ It can be inserted using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
@@ -24790,8 +24788,8 @@ Name
  The hyperlink type can be a weblink like this: 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.lyx.org"
-target "LyX's homepage"
+name "LyX's homepage"
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -24835,8 +24833,8 @@ Hyperlinks will automatically be hyphenated if necessary and become clickable
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.lyx.org"
-target "LyX's homepage"
+name "LyX's homepage"
+target "http://www.lyx.org"
 
 \end_inset
 

@@ -1,5 +1,5 @@
-#LyX 1.6.0alpha1 created this file. For more info see http://www.lyx.org/
-\lyxformat 324
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass scrbook
@@ -8829,11 +8829,730 @@ ListePuces
 Espaces, pagination et sauts de lignes
 \end_layout
 
+\begin_layout Standard
+Un blanc est-il un blanc? Pas si on fait de la bonne typographie.
+ Alors que vous êtes peut-être habitués à appuyer sur la barre d'espace
+ à chaque fois que vous voulez séparer deux mots dans un traitement de texte
+ ordinaire, LyX vous offre toute une variété d'espaces : des espaces de
+ largeur différentes, sécables ou insécables à la fin des lignes.
+ Les sections qui suivent vont vous montrer où ces espaces peuvent être
+ utiles.
+\end_layout
+
 \begin_layout Subsection
-Les Ressorts Horizontaux
+L'espace Insécable
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Ressorts-Horizontaux"
+name "sub:Espace-Insécable"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Espace ! Insécable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'espace insécable est utilisé pour indiquer à LyX (et donc à LaTeX) de
+ ne pas insérer un saut de ligne à cet endroit.
+ Il peut être utilisé pour éviter les sauts de ligne malencontreux, comme
+ celui-ci:
+\end_layout
+
+\begin_layout Quote
+Pour plus de documentation voir dans la section
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bibliographie"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il semble évident qu'il serait judicieux de mettre une espace insécable
+ entre 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ et 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bibliographie"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ On crée une espace insécable grâce au menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Formats\SpecialChar \menuseparator
+Espace
+\bar under
+
+\begin_inset Space ~
+\end_inset
+
+
+\bar default
+Insécable
+\family default
+ (raccourci 
+\family sans
+C-Espace
+\family default
+).
+\end_layout
+
+\begin_layout Subsection
+Espace Horizontaux
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Espace-Horizontaux"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Espace ! Horizontal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tous les espace horizontaux peuvent être insérés grâce au menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
+Espacement horizontaux
+\family default
+.
+ Les unités de longueur utilisées sont listées dans l'Appendice
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Unités-de-longueur"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+L' Espace inter-mots
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Espace-inter-mots"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Espace ! Inter-mots
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Certaines langues comme l'anglais suivent la convention typographique d'ajouter
+ un espace supplémentaire après la marque de ponctuation de fin de phrase
+ et LyX respecte cette règle ( voir la section
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Abbreviations"
+
+\end_inset
+
+).
+ Pourtant, parfois, nous voulons quand même un espace normal.
+ Dans ce cas, on en insère un avec le menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
+Espace
+\begin_inset Space ~
+\end_inset
+
+entre
+\begin_inset Space ~
+\end_inset
+
+Mots
+\family default
+ (raccourci 
+\family sans
+C-M-Espace
+\family default
+).
+\end_layout
+
+\begin_layout Subsubsection
+L'espace Fine
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Espace-Fine"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Espace ! Fine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Une 
+\begin_inset Quotes eld
+\end_inset
+
+espace fine
+\begin_inset Quotes erd
+\end_inset
+
+ est un blanc qui fait la moitié de la taille d'une espace normale (en plus,
+ elle est aussi insécable).
+ Les conventions typographiques proposent dans de nombreux langues d'utiliser
+ des espaces fines quand une espace normale serait trop grande, comme par
+ exemple dans des abréviations :
+\end_layout
+
+\begin_layout Quote
+D.
+\begin_inset Space \thinspace{}
+\end_inset
+
+E.
+ Knuth a développé notre programme de typographie bien aimé, c.
+\begin_inset Space \thinspace{}
+\end_inset
+
+à
+\begin_inset Space \thinspace{}
+\end_inset
+
+d.
+ TeX
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+En principe on écrit c.-à-d., sans espace, mais bon ...
+ (NdT)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On l'utilise aussi entre une valeur numérique et son unité.
+ Comparez ces deux exemple :
+\begin_inset Newline newline
+\end_inset
+
+10
+\begin_inset Space \thinspace{}
+\end_inset
+
+kg (espace fine)
+\begin_inset Newline newline
+\end_inset
+
+10 kg (espace normale)
+\end_layout
+
+\begin_layout Standard
+L'espace fine s'insère en passant par le menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie
+\begin_inset Space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
+Espace
+\bar under
+
+\begin_inset Space ~
+\end_inset
+
+
+\bar default
+Fine
+\family default
+ (raccourci 
+\family sans
+C-S-Espace
+\family default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Encore plus d'espaces
+\end_layout
+
+\begin_layout Standard
+Vous pouvez aussi insérer les types d'espaces suivants:
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset Space ~
+\end_inset
+
+fine
+\begin_inset Space ~
+\end_inset
+
+négative Une ligne avec 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Space \negthinspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ une espace fine négative entre les flèches.
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset Space ~
+\end_inset
+
+En
+\begin_inset Space ~
+\end_inset
+
+(0.5
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) Une ligne avec une 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Space \enskip{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ espace En (0,5
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) entre les flèches.
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset Space ~
+\end_inset
+
+cadratin
+\begin_inset Space ~
+\end_inset
+
+(1
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) Une ligne avec une 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Space \quad{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ espace cadratin (1
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) entre les flèches.
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset Space ~
+\end_inset
+
+double
+\begin_inset Space ~
+\end_inset
+
+cadratin
+\begin_inset Space ~
+\end_inset
+
+(2
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) Une ligne avec une 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Space \qquad{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ espace double cadratin (2
+\begin_inset Space \thinspace{}
+\end_inset
+
+em) entre les flèches.
+\end_layout
+
+\begin_layout Description
+Espace
+\begin_inset Space ~
+\end_inset
+
+personnalisé Une ligne avec une 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Space \hspace{}
+\length 2cm
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ espace de 2
+\begin_inset Space \thinspace{}
+\end_inset
+
+cm entre les flèches.
+\end_layout
+
+\begin_layout Standard
+Le tableau
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Largeur-des-différents"
+
+\end_inset
+
+ liste les tailles des différents espacements horizontaux.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Largeur-des-différents"
+
+\end_inset
+
+Largeur des différents espacements horizontaux.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+commande
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+largeur
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/3
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Insécable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/3
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/6
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Espace en
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cadratin (1
+\begin_inset Space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Double cadratin (2
+\begin_inset Space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Négative fine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1/6
+\begin_inset Space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -8842,6 +9561,16 @@ name "sub:Ressorts-Horizontaux"
 
 \begin_layout Subsubsection
 Les Ressorts Horizontaux
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Espacements ! Ressorts Horizontaux
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8855,18 +9584,7 @@ Les Ressorts Horizontaux sont des éléments spéciaux de LyX qui permettent
 \end_layout
 
 \begin_layout Standard
-Les ressorts peuvent être insérés grâce au menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
-Ressort
-\begin_inset Space ~
-\end_inset
-
-Horizontal
-\family default
-.
- Voici quelques exemple de ce que l'on peut faire avec ces ressorts :
+Voici quelques exemple de ce que l'on peut faire avec ces ressorts :
 \end_layout
 
 \begin_layout Quote
@@ -9006,26 +9724,11 @@ pas
  Cela évite que des ressorts se retrouvent reportés accidentellement à la
  ligne suivante.
  Si vous avez vraiment besoin d'espace dans ce cas, vous devez utiliser
- la commande LaTeX 
-\series bold
-
-\backslash
-hspace*{
-\backslash
-fill}
-\series default
- dans un ERT ( les ERT sont détaillés section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ERT"
-
-\end_inset
-
-.)
+ l'option 
+\family sans
+Protégé
+\family default
+ dans la fenêtre de dialogue des espacements horizontaux.
 \end_layout
 
 \end_inset
@@ -9034,82 +9737,6 @@ reference "sec:ERT"
 \end_layout
 
 \begin_layout Subsubsection
-Autres types d'espaces
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Autres-types-d'espaces"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Les deux autres sortes d'espaces décrits dans ce qui suit ne sont pas encore
- gérés par LyX, vous devez donc utiliser des ERT, voir à ce sujet la section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ERT"
-
-\end_inset
-
-.
- Le fait qu'ils ne soient pas gérés est un indice du fait que vous en aurez
- très rarement besoin dans LyX.
- Utilisez-les donc seulement en cas de nécessité ( rappelez vous du concept
- WYSIWYM)
-\end_layout
-
-\begin_layout Paragraph
-L'espace Défini
-\end_layout
-
-\begin_layout Standard
-On a parfois besoin d'un espace de longueur donnée, par exemple pour des
- fiches ou des questionnaires.
-\end_layout
-
-\begin_layout Standard
-Ceci est une ligne avec 
-\begin_inset Formula $\to$
-\end_inset
-
-
-\begin_inset Space \hspace{}
-\length 2cm
-\end_inset
-
-
-\begin_inset Formula $\gets$
-\end_inset
-
-un espace de 2
-\begin_inset Space \thinspace{}
-\end_inset
-
-cm entre les deux flèches.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez utiliser toutes les unités de longueur listées dans l'Appendice
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Unités-de-longueur"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Paragraph
 L'espace fantôme
 \end_layout
 
@@ -9123,9 +9750,9 @@ Parfois, vous avez besoin d'insérer un espace qui a exactement la même longueu
 \begin_inset VSpace medskip
 \end_inset
 
-
+Quelle est la tournure anglaise correcte?:
 \lang english
-What is correct English?:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -9286,7 +9913,7 @@ Pour ajouter un espace supplémentaire au-dessus ou au-dessous d'un paragraphe,
  utilisez la fenêtre de dialogue 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
 Espacement
 \begin_inset Space ~
 \end_inset
@@ -9358,6 +9985,16 @@ Ressort
 \end_inset
 
 Vertical
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Espacement ! Ressort vertical
+\end_layout
+
+\end_inset
+
+
 \family default
  est un espace de taille variable qui s'ajuste pour prendre le plus d'espace
  possible sur la page.
@@ -9588,7 +10225,22 @@ Il y a deux sortes de sauts de page : Un qui termine la page sans entreprendre
  Il peut être inséré avant ou après un paragraphe avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie
+\begin_inset Space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
+Nouvelle
+\begin_inset Space ~
+\end_inset
+
+Page
+\family default
+.
+ Le second type, qui est inséré avec 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
 Saut
 \begin_inset Space ~
 \end_inset
@@ -9597,64 +10249,13 @@ de
 \begin_inset Space ~
 \end_inset
 
-Page
+page
 \family default
-.
- Le second type termine la page, mais il étend le contenu de la page pour
- qu'il remplisse la totalité de la page.
+, termine la page, mais il étend le contenu de la page pour qu'il remplisse
+ la totalité de la page.
  Ce type est utile pour éviter d'avoir un espace vide quand un saut de page
  produit une page où il ne manque que quelques lignes.
- Ce dernier type n'est pas géré par LyX, vous devez donc utiliser la commande
- LaTeX 
-\series bold
-
-\backslash
-pagebreak[number]
-\series default
- dans un ERT
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Plus d'information sur les ERT section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ERT"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
- Le nombre peut varier entre 0 et 4.
- Si on utilise 4 ou pas de nombre, la commande va créer un saut de page
- dans tous les cas
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Normalement on utilise simplement 
-\series bold
-
-\backslash
-pagebreak
-\series default
- sans nombre.
-\end_layout
-
-\end_inset
-
-.
- Les nombres de 0 à 3 indiquent un niveau de priorité croissant -- LaTeX
- décide, en fonction de cette priorité, si un saut de page doit être inséré
- ou non.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -9780,12 +10381,16 @@ name "sub:Saut-de-ligne"
 \end_layout
 
 \begin_layout Standard
-Comme pour les sauts de page, il y a deux types de sauts de ligne.
- Le premier saute simplement à la ligne, on l'insère dans un paragraphe
- grâce au menu 
+Comme pour les sauts de page, il y a deux types de sauts de ligne: Le premier
+ saute simplement à la ligne, on l'insère dans un paragraphe grâce au menu
+ 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie
+\begin_inset Space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
 Passage
 \begin_inset Space ~
 \end_inset
@@ -9799,35 +10404,55 @@ la
 \end_inset
 
 Ligne
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+ragged line break pas encore traduit ?
+\end_layout
+
+\end_inset
+
+
 \family default
  ou avec le raccourci 
 \family sans
 C-Entrée
 \family default
 .
- Le deuxième type de saut de ligne va allonger la ligne d'origine pour qu'elle
- prenne toute la largeur entre les deux marges.
+ Le deuxième type de saut de ligne, qui est inséré avec 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie
+\begin_inset Space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
+Passage
+\begin_inset Space ~
+\end_inset
+
+à
+\begin_inset Space ~
+\end_inset
+
+la
+\begin_inset Space ~
+\end_inset
+
+ligne
+\begin_inset Space ~
+\end_inset
+
+justifié
+\family default
+ va allonger la ligne d'origine pour qu'elle prenne toute la largeur entre
+ les deux marges.
  Ce type de saut est nécessaire pour éviter des créneaux dans les paragraphes
  justifiés à cause des blancs insérés à l'occasion des sauts de lignes.
- Ce type n'est pas encore géré par LyX, vous devez donc utiliser la commande
- LaTeX 
-\series bold
-
-\backslash
-linebreak[nombre] 
-\series default
-dans un 
-\family sans
-ERT
-\family default
-.
- La syntaxe est semblable à celle de la commande 
-\series bold
-
-\backslash
-pagebreak 
-\series default
-décrite dans la section précédente.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -9861,684 +10486,6 @@ reference "sub:Emploi-adresse"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Subsection
-Blancs et Espaces
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Espaces
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Un blanc est-il un blanc? Pas si on fait de la bonne typographie.
- Alors que vous êtes peut-être habitués à appuyer sur la barre d'espace
- à chaque fois que vous voulez séparer deux mots dans un traitement de texte
- ordinaire, LyX vous offre toute une variété d'espaces : des espaces de
- largeur différentes, sécables ou insécables à la fin des lignes.
- Les sections qui suivent vont vous montrer où ces espaces peuvent être
- utiles.
-\end_layout
-
-\begin_layout Subsubsection
-L' Espace inter-mots
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Espace-inter-mots"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Espace ! Inter-mots
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Certaines langues comme l'anglais suivent la convention typographique d'ajouter
- un espace supplémentaire après la marque de ponctuation de fin de phrase
- et LyX respecte cette règle ( voir la section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Abbreviations"
-
-\end_inset
-
-).
- Pourtant, parfois, nous voulons quand même un espace normal.
- Dans ce cas, on en insère un avec le menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
-Espace
-\begin_inset Space ~
-\end_inset
-
-entre
-\begin_inset Space ~
-\end_inset
-
-Mots
-\family default
- (raccourci 
-\family sans
-C-M-Espace
-\family default
-).
-\end_layout
-
-\begin_layout Subsubsection
-L'espace Insécable
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Espace-Insécable"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Espace ! Insécable
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-L'espace insécable est utilisé pour indiquer à LyX (et donc à LaTeX) de
- ne pas insérer un saut de ligne à cet endroit.
- Il peut être utilisé pour éviter les sauts de ligne malencontreux, comme
- celui-ci:
-\end_layout
-
-\begin_layout Quote
-Pour plus de documentation voir dans la section
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Bibliographie"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Il semble évident qu'il serait judicieux de mettre une espace insécable
- entre 
-\begin_inset Quotes eld
-\end_inset
-
-section
-\begin_inset Quotes erd
-\end_inset
-
- et 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Bibliographie"
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- On crée une espace insécable grâce au menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
-Espace
-\bar under
-
-\begin_inset Space ~
-\end_inset
-
-
-\bar default
-Insécable
-\family default
- (raccourci 
-\family sans
-C-Espace
-\family default
-).
-\end_layout
-
-\begin_layout Subsubsection
-L'espace Fine
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Espace-Fine"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Espace ! Fine
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Une 
-\begin_inset Quotes eld
-\end_inset
-
-espace fine
-\begin_inset Quotes erd
-\end_inset
-
- est un blanc qui fait la moitié de la taille d'une espace normale ( en
- plus, elle est aussi insécable ).
- Les conventions typographiques proposent dans de nombreux langues d'utiliser
- des espaces fines quand une espace normale serait trop grande, comme par
- exemple dans des abréviations :
-\end_layout
-
-\begin_layout Quote
-D.
-\begin_inset Space \thinspace{}
-\end_inset
-
-E.
- Knuth a développé notre programme de typographie bien aimé, c.
-\begin_inset Space \thinspace{}
-\end_inset
-
-à
-\begin_inset Space \thinspace{}
-\end_inset
-
-d.
- TeX
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-En principe on écrit c.-à-d., sans espace, mais bon ...
- (NdT)
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-On l'utilise aussi entre une valeur numérique et son unité.
- Comparez ces deux exemple :
-\begin_inset Newline newline
-\end_inset
-
-10
-\begin_inset Space \thinspace{}
-\end_inset
-
-kg (espace fine)
-\begin_inset Newline newline
-\end_inset
-
-10 kg (espace normale)
-\end_layout
-
-\begin_layout Standard
-L'espace fine s'insère en passant par le menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
-Espace
-\bar under
-
-\begin_inset Space ~
-\end_inset
-
-
-\bar default
-Fine
-\family default
- (raccourci 
-\family sans
-C-S-Espace
-\family default
-).
-\end_layout
-
-\begin_layout Subsubsection
-Encore plus d'espaces
-\end_layout
-
-\begin_layout Standard
-En plus de tous ceux qui viennent d'être décrits, LyX propose encore d'autres
- types d'espaces.
- Bien que LyX les gère de façon native, il ne peuvent être insérés qu'en
- utilisant une commande comme c'est décrit dans la section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Changer-l'espacement"
-
-\end_inset
-
- ou en utilisant le tampon de commande.
- Cette dernière méthode consiste à taper 
-\begin_inset Newline newline
-\end_inset
-
- 
-\series bold
-space-insert <commande>
-\family typewriter
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
- dans la zone de commande, avec 
-\series bold
-<commande>
-\series default
- qui peut être l'une des possibilités suivantes:
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-L'unité 
-\begin_inset Quotes eld
-\end_inset
-
-em
-\begin_inset Quotes erd
-\end_inset
-
- est décrite dans l'Appendice
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Unités-de-longueur"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-commande
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-largeur
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-insécable?
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-normal
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/3
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-non
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-protected
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/3
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-oui
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-thin
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/6
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-oui
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-enspace
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-oui
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-enskip
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-non
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-quad
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-non
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-qquad
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-non
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-negthinspace
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--1/6
-\begin_inset Space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-oui
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -20652,7 +20599,7 @@ wrapfig
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Paquetages LaTeX! wrapfig
@@ -20662,7 +20609,7 @@ Paquetages LaTeX! wrapfig
 
  soit installé.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Voyez dans la manuel 
@@ -20697,7 +20644,7 @@ reference "cap:Figure-enrobée"
 
 col%.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Les unités disponibles sont expliquées dans
@@ -20718,27 +20665,6 @@ reference "cha:Unités-de-longueur"
 
  Un peu d'espace a été ajouté sous la légende pour mieux la séparer du texte
  qui l'entoure.
-\end_layout
-
-\begin_layout Standard
-Le paquetage LaTeX 
-\series bold
-wrapfig
-\series default
- accepte aussi des flottants de tableau d'enrobage, mais ils ne sont pas
- encore gérés par LyX.
- Si vous en avez besoin, voyez la documentation de  
-\series bold
-wrapfig
-\series default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "wrapfig"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -25943,12 +25869,22 @@ TdM
 \end_layout
 
 \begin_layout Section
-URLs (Uniform Resource Locators)
+URLs et hyperliens
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 URLs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Hyperliens
 \end_layout
 
 \end_inset
@@ -25963,55 +25899,28 @@ name "sec:URL"
 
 \end_layout
 
+\begin_layout Subsection
+URLs (Universal Resource Locators)
+\end_layout
+
 \begin_layout Standard
-Il est souvent souhaitable d'inclure de longs éléments tels quels dans un
- document, comme des adresses de sites Internet, des adresses e-mail, etc.
- ; ces choses ne contiennent en général pas d'espace et sont donc difficiles
- à typographier correctement.
- De tels éléments vont souvent buter contre le bord d'une ligne s'ils ne
- peuvent pas être interrompus, aboutissant à une ligne trop remplie ou pas
- assez, selon les circonstances.
- Vous pouvez faire 
+On peut insérer des liens vers des pages web ou des adresses mail grâce
+ au menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 URL
 \family default
- pour entrer une longue URL et la découper joliment (si nécessaire) selon
- des règles de césure déterminées automatiquement.
+.
 \end_layout
 
 \begin_layout Standard
-La fenêtre de dialogue 
-\family sans
-URL
-\family default
- possède deux champs
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Et la case créer un lien hypertexte ? (NdT)
-\end_layout
-
-\end_inset
-
- : le champ 
-\family sans
-URL
-\family default
- dans lequel on met l'URL et le champ 
-\family sans
-Nom
-\family default
- dans lequel on met une description qui sera imprimée comme du texte simple
- immédiatement avant l'URL.
- Voici un exemple:
+Voici un exemple:
 \end_layout
 
 \begin_layout Standard
-LyX-Homepage 
+La page d'accueil de LyX: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -26024,31 +25933,170 @@ http://www.lyx.org
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+Vous ne pouvez pas changer le style du texte de l'URL, il sera toujours
+ en style Machine
+\begin_inset Space ~
+\end_inset
+
+à
+\begin_inset Space ~
+\end_inset
+
+écrire.
+ Pour pouvoir formater le texte du lien, il faut utiliser des hyperliens
+ comme c'est expliqué dans la section qui suit.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Les URLs ne doivent pas se terminer par une barre de fraction inverse,
+ sinon vous aurez des erreurs LaTeX.
+\end_layout
+
 \end_inset
 
 
-\series bold
-Remarques Importantes:
 \end_layout
 
-\begin_layout Itemize
-Quand vous utilisez un des caractères suivants: "%", "#", "^", vous devez
- le faire précéder par un barre de fraction inverse, par exemple 
+\begin_layout Subsection
+Hyperliens
+\end_layout
+
+\begin_layout Standard
+On insère des hyperliens avec le menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Hyperlien 
+\family default
+ou avec le bouton 
+\lang english
+
+\begin_inset Graphics
+	filename ../../images/href-insert.png
+	embed ""
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\lang french
+ de la barre d'outils.
+ La fenêtre de dialogue qui apparaît possède deux champs: 
+\family sans
+Cible
+\family default
+ et 
+\family sans
+Nom.
+ 
+\family default
+Le nom est le texte qui est imprimé pour représenter le lien.
+ L'hyperlien peut être un lien vers une page web comme ceci: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Page d'accueil de LyX"
+target "http://www.lyx.org"
+
+\end_inset
+
+, ou une adresse mail comme celle-ci:
+\begin_inset CommandInset href
+LatexCommand href
+name "liste de diffusion lyx-docs"
+target "lyx-docs@lists.lyx.org?subject=LyX's documentation"
+type "mailto:"
+
+\end_inset
+
+, ou encore un lien vers un fichier.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez aussi lancer des applications via un hyperlien en insérant un
+ lien et en ajoutant le préfixe 
 \begin_inset Quotes eld
 \end_inset
 
 
-\backslash
-#
+\family sans
+run:
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-.
+ à la cible du lien.
 \end_layout
 
-\begin_layout Itemize
-Les URLs ne doivent pas se terminer par une barre de fraction inverse!
+\begin_layout Standard
+Les hyperliens seront coupés automatiquement en fin de ligne et deviendront
+ cliquables dans une sortie DVI ou PDF.
+ Pour modifier le format du texte du lien, sélectionnez l'insert de l'hyperlien
+ et utilisez la fenêtre de dialogue style de texte.
+ Ceci est par exemple un hyperlien avec un texte en caractères gras sans
+ sérif: 
+\family sans
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Page d'accueil de LyX"
+target "http://www.lyx.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On peut modifier la couleur des liens en activant l'option 
+\family sans
+Couleur
+\begin_inset Space ~
+\end_inset
+
+des
+\begin_inset Space ~
+\end_inset
+
+liens
+\family default
+ dans la fenêtre de dialogue sur les paramètres PDF (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètress\SpecialChar \menuseparator
+Propriétés du PDF
+\family default
+).
+ Par exemple, dans ce document, le texte des liens est mis en bleu en ajoutant
+ l'option
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+urlcolor=blue
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+dans le champ 
+\family sans
+Autres
+\begin_inset Space ~
+\end_inset
+
+option
+\family default
+ dans la fenêtre de dialogue de propriétés du PDF.
 \end_layout
 
 \begin_layout Section
@@ -26636,8 +26684,7 @@ name "sec:Index"
 \end_layout
 
 \begin_layout Standard
-Une entrée d'index est créée en plaçant le curseur derrière le mot ou la
- phrase qui devra apparaître dans l'index, et en utilisant le menu 
+Une entrée d'index est créée en utilisant le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Entrée
@@ -26654,7 +26701,7 @@ d'Index
 
 \end_inset
 
- de la palette.
+ de la barre d'outils.
  Une boîte grise marquée 
 \begin_inset Quotes eld
 \end_inset
@@ -26667,64 +26714,16 @@ Idx
 \begin_inset Quotes erd
 \end_inset
 
- est insérée et une fenêtre s'ouvre pour modifier l'entrée d'index.
- LyX propose comme texte par défaut, le mot qui précède le curseur.
+ est insérée contenant le texte qui apparaîtra dans l'index.
+ Le mot dans lequel le curseur se trouve ou la portion de texte qui est
+ actuellement sélectionnée est proposé comme entrée d'index par LyX.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Le champ d'entrée d'index est différent des autres champs d'entrée de texte
- : le texte que vous y tapez doit être du code LaTeX valide.
-\end_layout
-
-\end_inset
-
- De ce fait, vous ne pourrez pas entrer dans le champ d'entrée d'index:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Recherche & Remplace
-\end_layout
-
-\begin_layout Standard
-à cause du caractère 
-\begin_inset Quotes eld
-\end_inset
-
-&
-\begin_inset Quotes erd
-\end_inset
-
- qui est utilisé par LaTeX pour séparer les colonnes des tableaux, ce qui
- dans le contexte de l'entrée d'index va provoquer des erreurs LaTeX.
- Le texte correct est:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Recherche 
-\backslash
-& Remplace
-\end_layout
-
-\begin_layout Standard
-Ce comportement est le prix à payer pour avoir une très grande souplesse
- dans la création des entrées d'index, ce qui passe par l'utilisation de
- commandes LaTeX spéciales.
- Nous allons donner un bref aperçu des commandes d'index dans les sous-sections
- qui suivent.
- Pour une description détaillée du mécanisme d'indexation de LaTeX, voyez
- un des manuels LaTeX 
+Nous donnons une courte description des commandes d'indexation dans les
+ sections qui suivent.
+ Pour avoir une description détaillée des mécanismes d'indexation de LaTeX,
+ jetez un coup d'œil dans un des livres traitant de LaTeX 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
@@ -26732,16 +26731,15 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
-Vous pouvez modifier une entrée d'index existante en cliquant sur la boîte
- grise.
+Vous pouvez changer une entré d'index en cliquant sur la boîte d'index.
 \end_layout
 
 \begin_layout Standard
-Pour que l'index soit incorporé à votre document, vous devez indiquer l'endroit
- où il doit être créé avec le menu 
+L'index lui même est inséré dans le document avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Listes
@@ -26752,38 +26750,23 @@ Listes
 \begin_inset Space ~
 \end_inset
 
-TdM\SpecialChar \menuseparator
-Index
+TdM
 \family default
 .
- Une boîte bleue marquée 
+ Une boîte bleu clair étiquetée 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family sans
 Index
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- est affichée à l'endroit où l'index sera imprimé dans la sortie finale.
- La boîte de l'index n'est pas cliquable contrairement à la plupart des
- boîtes de LyX.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez placer la même entrée d'index en plusieurs endroits de votre
- document.
- Elles apparaissent alors dans l'index imprimé sous la même entrée qui est
- suivie des numéros des sections du document où vous avez placé les entrées
- d'index, les numéros étant séparés par des virgules.
- Un exemple, dans l'index de ce manuel est l'entrée 
-\begin_inset Quotes eld
-\end_inset
-
-Document ! Paramètres
-\begin_inset Quotes erd
-\end_inset
-
-
+ apparaîtra à l'endroit où l'index sera imprimé dans la sortie finale.
+ La boîte de l'index n'est pas cliquable comme les autre boîtes de LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -26987,7 +26970,19 @@ Les commandes
 \end_inset
 
  respectivement ouvrent et ferment la plage de pages indexées.
- 
+ Vous pouvez aussi ajouter la même entrée d'index à plusieurs endroits de
+ votre document.
+ Elles apparaîtront toutes dans une seule entrée dans la liste d'index,
+ avec une liste de numéros de pages séparés par des virgules.
+ Un exemple est l'entrée d'index 
+\begin_inset Quotes eld
+\end_inset
+
+Document ! Paramètres
+\begin_inset Quotes erd
+\end_inset
+
+ dans ce manuel.
 \end_layout
 
 \begin_layout Subsection
@@ -27229,113 +27224,53 @@ Index ! Format des entrées
 \end_layout
 
 \begin_layout Standard
-Vous pouvez insérer le texte de vos entrées d'index avec des commandes LaTeX
- pour la mise en forme.
- Si vous voulez une entrée d'index imprimée en italique, vous pouvez écrire
+Vous pouvez changer l'apparence de vos entrées d'index grâce à la fenêtre
+ de dialogue de style du texte.
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Entrées bidons ! Ceci@
+\shape slanted
+Ceci est une entrée en italique à la bonne position
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\series bold
 
-\backslash
-textit{Une entrée en italique}
-\end_layout
+\shape slanted
 
-\begin_layout Standard
-la commande 
-\series bold
-
-\backslash
-textit
-\series default
- met le texte en italique.
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Entrées bidon ! This@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+Entrées bidons !
+\shape slanted
+ Ceci est une entrée en italique à la mauvaise position 
 \end_layout
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Une entrée en italique
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Nous vous renvoyons aux livres sur LaTeX (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-) pour un aperçu des commandes de mise en forme.
- Le problème avec les commandes de mise en forme, c'est qu'elle détruisent
- l'ordre de tri.
- Pour éviter que notre entrée apparaisse en premier, nous allons plutôt
- utiliser la commande suivante:
+ 
+\shape default
+LyX va ensuite ajouter, en interne, des commandes
+\shape slanted
+ 
+\shape default
+qui risquent de fausser l'ordre de tri des entrées.
+ Pour éviter que notre entrée d'index apparaisse en promier, nous utilisons
+ la commande suivante à la place:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tutu@
-\backslash
-textit{Une entrée en italique}
+Ceci@
+\shape slanted
+Ceci est une entrée en italique
+\series default
+\shape default
+ 
 \end_layout
 
 \begin_layout Standard
@@ -27361,7 +27296,7 @@ numéro de page à l'ancienne:|oldstylenums
 \begin_layout Standard
 pour formatter le numéro de page en utilisant une mise en forme ancienne.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Entrées bidons ! numéro de page à l'ancienne :|oldstylenums
