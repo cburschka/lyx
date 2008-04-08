@@ -54,8 +54,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 private:
 	///
-	virtual Inset * clone() const
-		{ return new InsetFloatList(to_ascii(getParam("type"))); }
+	Inset * clone() const { return new InsetFloatList(*this); }
 	///
 	static ParamInfo param_info_;
 };
