@@ -108,6 +108,8 @@ private:
 };
 
 
+// this must be sorted alphabetically
+// Upper case comes before lower case
 PngMap sorted_png_map[] = {
 	{ "Bumpeq", "bumpeq2" },
 	{ "Cap", "cap2" },
@@ -134,6 +136,7 @@ PngMap sorted_png_map[] = {
 	{ "Updownarrow", "updownarrow2" },
 	{ "Upsilon", "upsilon2" },
 	{ "Vdash", "vdash3" },
+	{ "Vert", "vert2" },
 	{ "Xi", "xi2" },
 	{ "nLeftarrow", "nleftarrow2" },
 	{ "nLeftrightarrow", "nleftrightarrow2" },
@@ -142,8 +145,7 @@ PngMap sorted_png_map[] = {
 	{ "nvDash", "nvdash2" },
 	{ "textrm \\AA", "textrm_AA"},
 	{ "textrm \\O", "textrm_O"},
-	{ "vDash", "vdash2" },
-	{ "Vert", "vert2" }
+	{ "vDash", "vdash2" }
 };
 
 size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
