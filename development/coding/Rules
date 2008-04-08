@@ -210,10 +210,21 @@ Formatting
 	int a, b; // wrong
   This is especially important when initialization is done at the same
   time:
-	string a("Lars");
-	string b("Gullik");
+	string a = "Lars";
+	string b = "Gullik";
 	-NOT-
-	string a("Lars"), b("Gullik"); // wrong
+	string a = "Lars", b = "Gullik"; // wrong
+
+	[Note that 'string a = "Lars"' is formally calling a copy constructor 
+	on a temporary constructed from a string literal and therefore has the
+	potential of being more expensive then direct construction by
+	'string a("Lars")'. However the compiler is allowed to elide the copy
+	(even if it had side effects), and modern compilers typically do so.
+	Given these equal costs, LyX code favours the '=' idiom as it is in
+	line with the traditional C-style initialization, _and_ cannot be
+	mistaken as function declaration, _and_ reduces the level of nested
+	parantheses in more initializations.]
+	
 
 * Pointers and references
 	char * p = "flop";
@@ -259,10 +270,7 @@ Formatting
 
 * Naming rules for classes
 
-  - Use descriptive but simple and short names. For stuff specific to LyX
-    use LyX as prefix. Some modules, like mathed or spellchecker, could have
-    other prefixes.
-    [I am not so sure about the LyX prefix]
+  - Use descriptive but simple and short names. Do not abbreviate.
 
   - Class names are usually capitalized, and function names lowercased.
     Enums are named like Classes, values are usually in lower-case.
@@ -281,14 +289,14 @@ Formatting
 * Use existing structures
 
   - Use string wherever possible. LyX will someday move to Unicode, and
-    that will be easy if everybody uses string now.
+    that will be easy if everybody uses string now. Unicode strings 
+    should prefer using docstring instead of UTF-8 encoded std::string.
 
   - Check out the filename and path tools in filetools.h
 
-  - Check out the string tools in lstring.h, and the SubString class
-    and the regex class.
+  - Check out the string tools in lstring.h.
 
-  - Use the DebugStream class to report errors and messages using
+  - Use the LyXErr class to report errors and messages using
     the lyxerr instantiation.
 
   [add description of other existing structures]
