@@ -438,6 +438,8 @@ private:
 };
 
 
+// this must be sorted alphabetically
+// Upper case comes before lower case
 XPMmap sorted_xpm_map[] = {
 	{ "Bumpeq", "bumpeq2" },
 	{ "Cap", "cap2" },
@@ -464,6 +466,7 @@ XPMmap sorted_xpm_map[] = {
 	{ "Updownarrow", "updownarrow2" },
 	{ "Upsilon", "upsilon2" },
 	{ "Vdash", "vdash3" },
+	{ "Vert", "vert2" },
 	{ "Xi", "xi2" },
 	{ "nLeftarrow", "nleftarrow2" },
 	{ "nLeftrightarrow", "nleftrightarrow2" },

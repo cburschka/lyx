@@ -1683,7 +1683,6 @@ lib_images_math_files = Split('''
     Re.xpm
     Rrightarrow.xpm
     Rsh.xpm
-    Vert.xpm
     Vvdash.xpm
     acute.xpm
     aleph.xpm
@@ -2157,6 +2156,7 @@ lib_images_math_files = Split('''
     vee.xpm
     veebar.xpm
     vert.xpm
+    vert2.xpm
     vphantom.xpm
     wedge.xpm
     widehat.xpm

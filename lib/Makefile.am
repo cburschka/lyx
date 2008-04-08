@@ -388,7 +388,6 @@ dist_imagesmath_DATA = \
 	images/math/Lsh.xpm \
 	images/math/Re.xpm \
 	images/math/Rsh.xpm \
-	images/math/Vert.xpm \
 	images/math/Vvdash.xpm \
 	images/math/acute.xpm \
 	images/math/aleph.xpm \
@@ -852,6 +851,7 @@ dist_imagesmath_DATA = \
 	images/math/vee.xpm \
 	images/math/veebar.xpm \
 	images/math/vert.xpm \
+	images/math/vert2.xpm \
 	images/math/vphantom.xpm \
 	images/math/wedge.xpm \
 	images/math/widehat.xpm \
