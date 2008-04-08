@@ -1,28 +1,19 @@
-Public release of LyX version 1.5.0
-===================================
+Public release of LyX version 1.6.0 (alpha 2)
+=============================================
 
-We are pleased to announce the release of LyX 1.5.0.
+We are pleased to announce the second alpha release of LyX 1.6.0 (the
+first to be publicly announced).
 
-Since the announcement of release candidate 2, we have fixed bugs and
-we have updated the documentation.
-
-Following the ad hoc tradition of 1.5.0 pre-releases, called
-respectively Ruby (alpha), Towny (beta) and Quinta ("farm" in
-Portuguese for the release candidates) this release starts the Vintage
-selection that is (will be) the 1.5 series.
-
-LyX 1.5.0 is the culmination of 15 months of hard work since the
-release of the LyX 1.4 series. We sincerely hope you will enjoy the
-result.  The changes are too numerous to summarize in a few words, but
-initial unicode support is the flagship among the new features. See
-the end of this announcement for further details.
+LyX 1.6.0 will be the culmination of 9 months of hard work since the
+release of the LyX 1.5 series. We sincerely hope you will enjoy the
+result.
 
 As usual with a major release, a lot of work that is not directly
 visible has taken place. The core of LyX has seen more cleanups and
 some of the new features are the direct results of this work.
 
 The file RELEASE-NOTES lists some known issues with this release
-compared to the current stable release (LyX 1.4.5). An updated list of
+compared to the current stable release (LyX 1.5.4). An updated list of
 issues might later be found at http://wiki.lyx.org/LyX/ReleaseNotes
 
 
@@ -50,42 +41,20 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.5.0 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.0alpha2 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.bz2
-
-and it should propagate shortly to the following mirrors (which will
-also host the .bz2 versions):
-
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.0.tar.gz
-	http://lyx.cybermirror.org/stable/lyx-1.5.0.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.0.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.0.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.0.tar.gz
-        http://lyx.mirror.fr/stable/lyx-1.5.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0alpha2.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0alpha2.tar.bz2
 
 Note that due to the amount of change, no patch is provided to upgrade
-from version 1.4.5.
+from version 1.5.4.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.devel.lyx.org/pub/bin/1.5.0/
+	ftp://ftp.devel.lyx.org/pub/bin/1.6.0alpha2/
 
-As confusing as it is, two sets of installers are available to windows
-users:
- * LyX-1.5.0-Installer.exe and LyX-1.5.0-Installer-bundle.exe;
- * LyX-1.5.0-AltInstaller.exe and LyX-1.5.0-AltInstaller-Complete.exe.
-The former is our official installer and the latter was previously known
-as LyXWinInstaller. Please feel free to try either of them. Feedback
-and bug reports on both installers are welcome because they will help
-the merge of the two installers, which is expected to happen during the
-1.5.x series of LyX development.
-
-If you find what you think is a bug in LyX 1.5.0, you may either
+If you find what you think is a bug in LyX 1.6.0alpha2, you may either
 e-mail the LyX developers' mailing list (lyx-devel at lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -98,190 +67,8 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.5.0 ?
+What's new in version 1.6.0alpha2?
 ----------------------------
 
-* Unicode
-
-LyX 1.5's big goal was to use unicode internally and so resolve a slew
-of existing problems with special characters and non-alphabetic
-languages. LyX 1.5 is able to output unicode (in addition to
-encodings currently available), so that you can use LaTeX's new utf8
-encoding or a brand new typesetting system such as XeTeX.
-Since the change to unicode touched much of the code base and some
-areas still need a cleanup it, is very likely that some bugs related to
-the unicode transition still exist. Please have a look at the Known
-bugs on the LyX 1.5 page if you encounter a bug that seems to be related
-to unicode. If it's not there, then please report it to the lyx-devel
-mailing list.
-
-* Integrated CJK support
-
-The very first result of the Unicode transition is that we have finally
-merged in the externally maintained CJK-LyX branch.
-The languages Chinese, Japanese, and Korean are now supported in
-the user interface.
-Note that setting the encoding for these languages in LyX 1.5 by
-using ERT or the document preamble will lead to LaTeX-errors!
-Also note that you may need to run qtconfig and set appropriate default
-or substitution fonts to display CJK characters under some circumstances.
-
-* Language support
-
-In addition to the CJK languages, the languages Armenian and Farsi also
-have full user interface support.
-
-* Multiple views of the same buffer
-
-LyX can now display multiple views of the same buffer. I.e., you can
-now open a single document in multiple windows and work on different
-parts of it synchronously.
-
-* Outliner and embedded TOC
-
-LyX has another long-awaited feature: a basic outliner mode, in which
-you can move chapters and sections around in the Table of Contents
-dialog. (The outliner has been backported and was released with LyX
-1.4.4.) The TOC dialog is now a dock widget, embedded in the main window.
-
-* Session management
-
-LyX is now able to remember window size and position and it will
-reopen the documents you worked on last time around. If you've
-selected the feature in the Preferences dialog, it'll even move the
-cursor to the place you were working on last!  Furthermore, toolbars
-can (finally!) be switched on/off in View->Toolbars and moved about in
-the LyX window. The session management will remember their state.
-
-* Source code Viewer
-
-As a kind of "anti-preview-latex", a dialog was implemented that lets
-you view the source code of a given paragraph/selection or the whole
-document.
-
-* New Font Selection Interface
-
-LyX's font selection abilities have been one of its weakest and most
-outdated components. A completely new interface was implemented that
-provides access to the power of LaTeX's font selection scheme.
-
-* Tabular extensions
-
-LyX's table support is certainly less powerful than that of
-LaTeX. Support for the booktabs package has been implemented,
-providing beautiful and elegant tabulars.
-
-* Nomenclatures
-
-LyX now has native support for the nomencl package. With this,
-you can treat your document with all sorts of nomenclatures,
-glossaries and fancy notations.
-
-* Tabbed Widget
-
-LyX now uses tabbed widgets to display multiple documents.
-
-* Enhanced Math Toolbars
-
-The math toolbar was enhanced significantly. Drop down menus were
-added, allowing the integration of all of the math panel's content
-to the math toolbars.
-Since this input method is much easier than the clumsy panel, the math
-panel itself has been removed and superceded by the toolbars.
-
-* Frontend News
-
-LyX 1.5 uses the Qt4 toolkit. This is especially good news for
-Windows users, because there's an official, GPL version of Qt4. They no
-longer have to rely on an unofficial port of the Unix Qt3 library to
-Windows.  The good old XForms frontend went the way of the dodo. It
-was both hated and loved, and certainly shaped the unique look of LyX
-in the past. It was finally killed off, however, by the switch to
-unicode.  The Qt3 frontend was also removed.  The work on the GTK
-frontend has been transferred to a branch because its development has
-essentially stalled.
-
-* Change tracking enhancements
-
-Major parts of the change tracking code have been rewritten, addressing
-several problems that existed in the previous implementation.
-
-* Converter file cache
-
-A cache for converted files, such as included figures, has been
-implemented. This can speed up LyX's performance considerably when
-displaying documents with many included figures that need conversion
-to a format that can be rendered on screen.  The converter file cache
-is enabled by default.
-
-The default maximum age of a cached file is 6 months. You can change
-that with the line
-
- \converter_cache_maxage xxx
-
-where xxx is the maximum age in seconds, in your preferences file.
-
-* Unified Windows installer
-
-The two windows installers are being merged and bug reports regarding
-both installers are welcome.
-
-* Program listings
-
-The traditional way to insert program listings in LyX involves the use
-of the LyX-Code style. This option works quite well for short snippets but
-does not support in-line code segments or the inclusion of external files.
-
-Using the listings latex package as the backend a new inset was added that
-supports all these three ways of listing computer programs.
-
-* LaTeX-package support
-
-LyX provides the following new document classes:
- - article(IOP) - for scientific papers published by the IOP group
- - presentation(powerdot) - for presentations using the powerdot package
- - curriculum vitae(Europe) - for CVs following the guidelines of the EU
- - curriculum vitae(modern) - for CVs using the moderncv package
- - curriculum vitae(simple) - for simple CVs
-
-* Minor user interface improvements
-
-Several minor improvements of the user interface have been made, such as:
-
- - Syntax highlighting of the user preamble and the LaTeX log file.
- - Better parsing of BibTeX databases (in the citation dialog).
- - Support for optional arguments for environments.
-
-* Enhanced clipboard/selection handling
-
-The clipboard has been tuned to work better with other applications.
-Parallel to clipboard usages, the *nix way of using middle-button
-to paste selected text is enhanced, and is also available under windows
-(but within lyx only). Selection of lyx text is now persistent in that
-you can paste the selected text using the middle button multiple times,
-even after the selection has been cleared.
-
-* Limited support for local class and layout files
-
-Lyx can not create, but can open a .lyx file with .cls and .layout files
-stored in the same directory as the .lyx file. That is to say, if you send
-your co-author a .lyx file with associated class and layout files, s/he 
-can view and modify the .lyx file directly, without having to install the
-.cls and .layout files, reconfigure and restart lyx. Note that the .cls and
-.layout files have to be copied to every directory your .lyx files reside,
-should you use different directories for master and child documents.
-
-* Under the hood
-
-As usual, one big task has been the ongoing code cleanup of the LyX
-core. Performing this cleanup makes the code more understandable and
-easier to maintain. It also leads inevitably to a more robust
-application. Nonetheless, it's an unfortunate fact of life that ugly
-code is sometimes faster than pretty code. We're well aware that LyX
-1.4 is slower than LyX 1.3. One important goal of this 1.5 development
-series has been to bring this speed back.
-
-** Bug fixes
-
-Lots of long-lasting bugs have been fixed, as documented in LyX
-bugzilla. Probably some new ones have been introduced instead ;-)
+The new features in LyX 1.6 are detailed in
+http://wiki.lyx.org/LyX/NewInLyX16
