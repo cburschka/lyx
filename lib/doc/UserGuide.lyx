@@ -1,5 +1,5 @@
-#LyX 1.6.0alpha1 created this file. For more info see http://www.lyx.org/
-\lyxformat 324
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass scrbook
@@ -19606,7 +19606,7 @@ algorithm
 \end_layout
 
 \begin_layout Subsubsection
-Text Wrap Floats
+Wrap Floats
 \begin_inset Index
 status collapsed
 
@@ -19619,7 +19619,7 @@ Floats ! Text Wrap Floats
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:floatflt"
+name "sec:Wrap-Floats"
 
 \end_inset
 
@@ -19641,7 +19641,7 @@ wrap
 \begin_inset Wrap figure
 lines 0
 placement l
-overhang 0col%
+overhang 0in
 width "40col%"
 status open
 
@@ -19687,10 +19687,6 @@ This is a wrapped figure, and this is the brilliant caption that describes
 \family sans
 Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
-Text
-\begin_inset Space ~
-\end_inset
-
 Wrap
 \begin_inset Space ~
 \end_inset
@@ -19742,12 +19738,8 @@ reference "cap:Wrapped-figure"
 
 \end_inset
 
- is an example Text
-\begin_inset Space ~
-\end_inset
-
-wrap float with a width of 40
-\begin_inset Formula $\,$
+ is for example a figure wrap float with a width of 40
+\begin_inset Space \thinspace{}
 \end_inset
 
 col%.
@@ -19784,11 +19776,7 @@ status open
 \series bold
 Note:
 \series default
- Text
-\begin_inset Space ~
-\end_inset
-
-wrap float floats might be fragile! E.g.
+ Wrap floats might be fragile! E.g.
  having a figure too close to the bottom of the page can mess things up
  in the way that the float doesn't appear in the output or that it is placed
  over some other text.
