@@ -11685,19 +11685,18 @@ reference "sec:Styles-de-formules"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For text, variable space can be inserted via the menu 
+Pour le texte, on peut insérer une espace de longueur variable avec le menu
+ 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Horizontal
+Insérer\SpecialChar \menuseparator
+Typographie
 \begin_inset Space ~
 \end_inset
 
-Space
+spéciale\SpecialChar \menuseparator
+Espacement horizontal, 
 \family default
-, what is not possible in formulas:
+ce qui n'est pas possible avec les formules:
 \end_layout
 
 \begin_layout Standard
@@ -26870,7 +26869,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}$
 \end_inset
 
 
@@ -32937,11 +32936,8 @@ Quand des formules sont utilisées dans des entêtes de section, on doit prendre
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-When 
+Quand la gestion de 
 \series bold
-\lang french
 hyperref
 \series default
 
@@ -32954,17 +32950,10 @@ Paquetages ! hyperref
 
 \end_inset
 
-
-\lang english
- support is enabled in the document settings dialog under 
+ est activée dans le dialogue paramètres du document dans la rubrique 
 \family sans
-PDF
-\begin_inset Space ~
-\end_inset
-
-Properties
+Propriétés du PDF
 \family default
-\lang french
 , les signets PDF sont créés dans la table des matières pour chaque entête
  de section.
  Si l'entête de section contient une formule, elle est affichée de façon
