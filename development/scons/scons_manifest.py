@@ -1969,6 +1969,7 @@ lib_images_math_files = Split('''
     vec.png
     vee.png
     veebar.png
+    vert.png
     vphantom.png
     wedge.png
     widehat.png
