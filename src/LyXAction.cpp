@@ -1141,10 +1141,23 @@ void LyXAction::init()
  * \li Notion: Used for label, floats, listings, box, branch, external, wrap
                bibtex, ert, command, graphics, note, space, vspace, tabular,
                bibitem, inlude, ref insets.
- * \li Syntax: next-inset-toggle
+ * \li Syntax: next-inset-toggle <ARG>
+ * \li Params: <ARG>: these are passed as arguments to #LFUN_INSET_TOGGLE .
+ * \li Origin: leeming, 30 Mar 2004
  * \endvar
  */
 		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
+ * \li Action: Toggles the collapsable inset we are currently in.
+ * \li Syntax: inset-toggle [<ARG>]
+ * \li Params: <ARG>: <open|close|toggle|assign>. \n
+               open/close/toggle are for collapsable insets. close can be currently used
+               by #LFUN_NEXT_INSET_TOGGLE. toggle is used when no argument is given.\n
+               assign is for branch inset.
+ * \li Origin: lasgouttes, 19 Jul 2001
+ * \endvar
+ */
 		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
@@ -1152,7 +1165,8 @@ void LyXAction::init()
  * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
  * \li Syntax: all-insets-toggle <STATE> <INSET>
  * \li Params: <STATE>: <toggle|open|close> default: toggle \n
- *             <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets \n
+               <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets \n
+ * \li Origin: leeming, 30 Mar 2004
  * \endvar
  */
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
