@@ -1008,7 +1008,7 @@ string const unzippedFileName(string const & zipped_file)
 	string const ext = getExtension(zipped_file);
 	if (ext == "gz" || ext == "z" || ext == "Z")
 		return changeExtension(zipped_file, string());
-	return "unzipped_" + zipped_file;
+	return onlyPath(zipped_file) + "unzipped_" + onlyFilename(zipped_file);
 }
 
 

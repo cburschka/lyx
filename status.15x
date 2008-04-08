@@ -99,6 +99,9 @@ What's new
 
 * USER INTERFACE:
 
+- Fix an assertion with compressed image files that do not have a
+  zip-extension.
+
 - Correctly apply font changes when several math matrix cells are selected
   (bug 4566).
 
