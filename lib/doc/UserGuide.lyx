@@ -17878,17 +17878,6 @@ name "sec:floatflt"
 \end_layout
 
 \begin_layout Standard
-This float type is used if you want to 
-\begin_inset Quotes eld
-\end_inset
-
-wrap
-\begin_inset Quotes erd
-\end_inset
-
- text around a figure so that it only occupies some fraction of the column
- width.
- It can be inserted using the menu 
 \begin_inset Wrap figure
 placement l
 width "40col%"
@@ -17930,11 +17919,20 @@ This is a wrapped figure, and this is the brilliant caption that describes
 
 \end_inset
 
- 
+ This float type is used if you want to 
+\begin_inset Quotes eld
+\end_inset
+
+wrap
+\begin_inset Quotes erd
+\end_inset
+
+ text around a figure so that it only occupies some fraction of the column
+ width.
+ It can be inserted using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
-Text\InsetSpace ~
 Wrap\InsetSpace ~
 Float
 \family default
@@ -17973,10 +17971,7 @@ reference "cap:Wrapped-figure"
 \end_inset
 
  is an example Text\InsetSpace ~
-wrap float with a width of 40
-\begin_inset Formula $\,$
-\end_inset
-
+wrap float with a width of 40\InsetSpace \thinspace{}
 col%.
 \begin_inset Foot
 status collapsed
@@ -18026,8 +18021,7 @@ status open
 \series bold
 Note:
 \series default
- Text\InsetSpace ~
-wrap float floats might be fragile! E.g.
+ Wrap floats might be fragile! E.g.
  having a figure too close to the bottom of the page can mess things up
  in the way that the float doesn't appear in the output or that it is placed
  over some other text.
