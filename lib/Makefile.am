@@ -851,6 +851,7 @@ dist_imagesmath_DATA = \
 	images/math/vec.xpm \
 	images/math/vee.xpm \
 	images/math/veebar.xpm \
+	images/math/vert.xpm \
 	images/math/vphantom.xpm \
 	images/math/wedge.xpm \
 	images/math/widehat.xpm \

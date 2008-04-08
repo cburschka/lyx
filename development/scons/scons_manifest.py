@@ -2156,6 +2156,7 @@ lib_images_math_files = Split('''
     vec.xpm
     vee.xpm
     veebar.xpm
+    vert.xpm
     vphantom.xpm
     wedge.xpm
     widehat.xpm
