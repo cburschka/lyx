@@ -16,11 +16,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "BufferView.h"
-#include "DispatchResult.h"
-#include "FuncRequest.h"
-#include "FuncStatus.h"
-#include "Cursor.h"
 #include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -30,9 +25,7 @@
 #include "paragraph_funcs.h"
 #include "sgml.h"
 
-#include "support/convert.h"
-
-#include <sstream>
+#include <ostream>
 
 using namespace std;
 
