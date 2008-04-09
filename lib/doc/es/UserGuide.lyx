@@ -1,5 +1,5 @@
-#LyX 1.6.0alpha1 created this file. For more info see http://www.lyx.org/
-\lyxformat 324
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass scrbook
@@ -26,7 +26,7 @@
 
  % the pages of the TOC are numbered roman
  % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
+ \pagenumbering{Roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
    \pdfbookmark[1]{Índice general}{}
@@ -160,9 +160,6 @@ del t
 \end_inset
 
 Versión 1.6svn
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1696,7 +1693,7 @@ Fundamentos de LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Fundamentos
+Lyx@LyX ! Fundamentos
 \end_layout
 
 \end_inset
@@ -2743,7 +2740,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! fancyhdr
+Latex@LaTeX-paquetes ! fancyhdr
 \end_layout
 
 \end_inset
@@ -3319,7 +3316,7 @@ setspace
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! setspace
+Latex@LaTeX-paquetes ! setspace
 \end_layout
 
 \end_inset
@@ -10812,7 +10809,7 @@ aeguill
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! aeguill
+Latex@LaTeX-paquetes ! aeguill
 \end_layout
 
 \end_inset
@@ -12945,7 +12942,7 @@ Concluiremos reiterando la misma advertencia: No abuses de los estilos de
 \end_layout
 
 \begin_layout Section
-Vista preliminar e impresión 
+Vista preliminar e impresión
 \end_layout
 
 \begin_layout Subsection
@@ -13273,7 +13270,7 @@ pstricks
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! pstricks
+Latex@LaTeX-paquetes ! pstricks
 \end_layout
 
 \end_inset
@@ -14061,7 +14058,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! babel
+Latex@LaTeX-paquetes ! babel
 \end_layout
 
 \end_inset
@@ -14956,7 +14953,7 @@ Nombres propios en LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Nombres propios
+Lyx@LyX ! Nombres propios
 \end_layout
 
 \end_inset
@@ -20578,9 +20575,6 @@ name "sec:floatflt"
 \end_layout
 
 \begin_layout Standard
-Este tipo de flotante sirve para incluir una figura junto a un texto de
- modo que ambos ocupen sólo una parte del ancho de columna.
- Puede insertarse con el menú 
 \begin_inset Wrap figure
 lines 0
 placement l
@@ -20625,7 +20619,9 @@ Una figura ajustada al texto con su brillante título.
 
 \end_inset
 
- 
+Este tipo de flotante sirve para incluir una figura junto a un texto de
+ modo que ambos ocupen sólo una parte del ancho de columna.
+ Puede insertarse con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
@@ -20656,7 +20652,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! wrapfig
+Latex@LaTeX-paquetes ! wrapfig
 \end_layout
 
 \end_inset
@@ -25730,7 +25726,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! prettyref
+Latex@LaTeX-paquetes ! prettyref
 \end_layout
 
 \end_inset
@@ -27599,7 +27595,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! nomencl
+Latex@LaTeX-paquetes ! nomencl
 \end_layout
 
 \end_inset
@@ -28821,7 +28817,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! caption
+Latex@LaTeX-paquetes ! caption
 \end_layout
 
 \end_inset
@@ -28995,7 +28991,7 @@ preview-latex
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! preview-latex
+Latex@LaTeX-paquetes ! preview-latex
 \end_layout
 
 \end_inset
@@ -30119,7 +30115,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! dvipost
+Latex@LaTeX-paquetes ! dvipost
 \end_layout
 
 \end_inset
@@ -36121,7 +36117,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! tipa
+Latex@LaTeX-paquetes ! tipa
 \end_layout
 
 \end_inset
@@ -37488,7 +37484,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! inputenc
+Latex@LaTeX-paquetes ! inputenc
 \end_layout
 
 \end_inset
@@ -37619,7 +37615,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! inputenc
+Latex@LaTeX-paquetes ! inputenc
 \end_layout
 
 \end_inset
@@ -37645,7 +37641,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! CJK
+Latex@LaTeX-paquetes ! CJK
 \end_layout
 
 \end_inset
@@ -37716,7 +37712,7 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! natbib
+Latex@LaTeX-paquetes ! natbib
 \end_layout
 
 \end_inset
@@ -37732,7 +37728,7 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! jurabib
+Latex@LaTeX-paquetes ! jurabib
 \end_layout
 
 \end_inset
@@ -37767,7 +37763,7 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! amsmath
+Latex@LaTeX-paquetes ! amsmath
 \end_layout
 
 \end_inset
@@ -37781,7 +37777,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! esint
+Latex@LaTeX-paquetes ! esint
 \end_layout
 
 \end_inset
@@ -38078,7 +38074,7 @@ Reconfiguración de LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Reconfigurar|see
+Lyx@LyX ! Reconfigurar|see
 \begin_inset ERT
 status collapsed
 
@@ -41912,7 +41908,7 @@ name "sub:LaTeX-Configuración"
 status collapsed
 
 \begin_layout Plain Layout
-Configuración ! LaTeX
+Configuración ! Latex@LaTeX
 \end_layout
 
 \end_inset
@@ -43332,7 +43328,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! caption
+Latex@LaTeX-paquetes ! caption
 \end_layout
 
 \end_inset
@@ -43383,7 +43379,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! fancyhdr
+Latex@LaTeX-paquetes ! fancyhdr
 \end_layout
 
 \end_inset
@@ -43434,7 +43430,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! nomencl
+Latex@LaTeX-paquetes ! nomencl
 \end_layout
 
 \end_inset
@@ -43481,7 +43477,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! tipa
+Latex@LaTeX-paquetes ! tipa
 \end_layout
 
 \end_inset
@@ -43528,7 +43524,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-paquetes ! wrapfig
+Latex@LaTeX-paquetes ! wrapfig
 \end_layout
 
 \end_inset

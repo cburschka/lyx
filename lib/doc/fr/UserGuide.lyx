@@ -1892,7 +1892,7 @@ Les bases de LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Les bases
+Lyx@LyX ! Les bases
 \end_layout
 
 \end_inset
@@ -5259,9 +5259,13 @@ Notez qu'après la première ligne, LyX indente les lignes suivantes en les
 \end_layout
 
 \begin_layout Subsubsection
-La Liste LyX
+La Liste LyX (environnement 
+\family sans
+Liste
+\family default
+)
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Listes ! Liste LyX
@@ -5269,11 +5273,7 @@ Listes ! Liste LyX
 
 \end_inset
 
- (environnement 
-\family sans
-Liste
-\family default
-)
+
 \end_layout
 
 \begin_layout Standard
@@ -12942,7 +12942,7 @@ Ensuite, LaTeX interprète les commandes dans le fichier
  pour produire une sortie imprimable.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Formats des fichiers de sortie
 \begin_inset CommandInset label
 LatexCommand label
@@ -13038,7 +13038,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-Formats de Fichiers ! LaTeX
+Formats de Fichiers ! Latex@LaTeX
 \end_layout
 
 \end_inset
@@ -14969,7 +14969,7 @@ name "sub:Noms-Propres"
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Noms propres
+Lyx@LyX ! Noms propres
 \end_layout
 
 \end_inset
@@ -20533,22 +20533,6 @@ name "sub:Flottant-enrobage"
 \end_layout
 
 \begin_layout Standard
-Ce type de flottant est utilisé quand on veut que le texte habille la figure
- de sorte qu'elle n'occupe plus qu'une partie de la largeur de la colonne.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez en insérer un en utilisant le menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Flottant\SpecialChar \menuseparator
-Flottant
-\begin_inset Space ~
-\end_inset
-
-d'enrobage
-\family default
- 
 \begin_inset Wrap figure
 lines 0
 placement l
@@ -20593,7 +20577,22 @@ Ceci est une figure habillée et vous lisez la superbe légende qui la décrit.
 
 \end_inset
 
-à la condition que le paquetage LaTeX 
+Ce type de flottant est utilisé quand on veut que le texte habille la figure
+ de sorte qu'elle n'occupe plus qu'une partie de la largeur de la colonne.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez en insérer un en utilisant le menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Flottant\SpecialChar \menuseparator
+Flottant
+\begin_inset Space ~
+\end_inset
+
+d'enrobage
+\family default
+ à la condition que le paquetage LaTeX 
 \series bold
 wrapfig
 \series default
@@ -36628,7 +36627,7 @@ Reconfiguration de LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Reconfigurer|see
+Lyx@LyX ! Reconfigurer|see
 \begin_inset ERT
 status collapsed
 

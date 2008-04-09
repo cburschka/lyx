@@ -136,9 +136,6 @@ lyx-docs@lists.lyx.org
 \end_inset
 
 Version 1.6svn
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1756,7 +1753,7 @@ LyX Basics
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Basics
+Lyx@LyX ! Basics
 \end_layout
 
 \end_inset
@@ -2750,7 +2747,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! fancyhdr
+Latex@LaTeX-packages ! fancyhdr
 \end_layout
 
 \end_inset
@@ -3256,7 +3253,7 @@ setspace
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! setspace
+Latex@LaTeX-packages ! setspace
 \end_layout
 
 \end_inset
@@ -5065,7 +5062,7 @@ List
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! LyX list
+Lists ! Lyx@LyX list
 \end_layout
 
 \end_inset
@@ -10020,17 +10017,17 @@ status collapsed
 Loading the LaTeX-package 
 \series bold
 aeguill
+\series default
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! aeguill
+Latex@LaTeX-packages ! aeguill
 \end_layout
 
 \end_inset
 
-
-\series default
  with the document preamble line
 \end_layout
 
@@ -12315,7 +12312,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! LaTeX
+File formats ! Latex@LaTeX
 \end_layout
 
 \end_inset
@@ -12498,7 +12495,7 @@ pstricks
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! pstricks
+Latex@LaTeX-packages ! pstricks
 \end_layout
 
 \end_inset
@@ -13252,7 +13249,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! babel
+Latex@LaTeX-packages ! babel
 \end_layout
 
 \end_inset
@@ -14116,7 +14113,7 @@ LyX's Proper Names
 status collapsed
 
 \begin_layout Plain Layout
-LyX ! Proper names
+Lyx@LyX ! Proper names
 \end_layout
 
 \end_inset
@@ -19700,7 +19697,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! wrapfig
+Latex@LaTeX-packages ! wrapfig
 \end_layout
 
 \end_inset
@@ -24398,7 +24395,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! prettyref
+Latex@LaTeX-packages ! prettyref
 \end_layout
 
 \end_inset
@@ -26205,7 +26202,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! nomencl
+Latex@LaTeX-packages ! nomencl
 \end_layout
 
 \end_inset
@@ -27427,7 +27424,7 @@ The LaTeX Syntax
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX Syntax
+Latex@LaTeX Syntax
 \end_layout
 
 \end_inset
@@ -27490,7 +27487,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! caption
+Latex@LaTeX-packages ! caption
 \end_layout
 
 \end_inset
@@ -27675,7 +27672,7 @@ preview-latex
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! preview-latex
+Latex@LaTeX-packages ! preview-latex
 \end_layout
 
 \end_inset
@@ -28727,7 +28724,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! dvipost
+Latex@LaTeX-packages ! dvipost
 \end_layout
 
 \end_inset
@@ -34702,7 +34699,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! tipa
+Latex@LaTeX-packages ! tipa
 \end_layout
 
 \end_inset
@@ -35781,7 +35778,7 @@ reference "sec:Document-Classes"
 \family sans
 Default
 \family default
-, the default driver for the LaTeX-packages are used.
+, the default driver for the Latex@LaTeX-packages are used.
  It is recommended to use the default unless your know what you are doing.
 \end_layout
 
@@ -35990,7 +35987,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! inputenc
+Latex@LaTeX-packages ! inputenc
 \end_layout
 
 \end_inset
@@ -36113,7 +36110,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! inputenc
+Latex@LaTeX-packages ! inputenc
 \end_layout
 
 \end_inset
@@ -36139,7 +36136,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! CJK
+Latex@LaTeX-packages ! CJK
 \end_layout
 
 \end_inset
@@ -36201,14 +36198,14 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-You can specify here a citation style using the LaTeX-packages 
+You can specify here a citation style using the Latex@LaTeX-packages 
 \series bold
 natbib
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! natbib
+Latex@LaTeX-packages ! natbib
 \end_layout
 
 \end_inset
@@ -36224,7 +36221,7 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! jurabib
+Latex@LaTeX-packages ! jurabib
 \end_layout
 
 \end_inset
@@ -36249,14 +36246,14 @@ Math Options
 \end_layout
 
 \begin_layout Standard
-These options will force LyX to use the LaTeX-packages 
+These options will force LyX to use the Latex@LaTeX-packages 
 \series bold
 amsmath
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! amsmath
+Latex@LaTeX-packages ! amsmath
 \end_layout
 
 \end_inset
@@ -36270,7 +36267,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! esint
+Latex@LaTeX-packages ! esint
 \end_layout
 
 \end_inset
@@ -36371,8 +36368,8 @@ eX Preamble
 \end_layout
 
 \begin_layout Standard
-In this text field are entered commands to load special LaTeX-packages or
- to define LaTeX-commands.
+In this text field are entered commands to load special Latex@LaTeX-packages
+ or to define LaTeX-commands.
  The preamble is a thing for LaTeX-experts.
  You shouldn't enter commands here until you don't exactly know what you
  do.
@@ -36520,17 +36517,7 @@ Reconfigure
 status collapsed
 
 \begin_layout Plain Layout
-Reconfiguration of LyX
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LyX ! Reconfigure|see
+Lyx@LyX ! Reconfigure|see
 \begin_inset ERT
 status collapsed
 
@@ -36558,11 +36545,22 @@ status collapsed
 \end_inset
 
 
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Reconfiguration of LyX
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 This menu reconfigures LyX.
- That means LyX looks for LaTeX-packages and needed programs, see also section
+ That means LyX looks for Latex@LaTeX-packages and needed programs, see
+ also section
 \begin_inset Space ~
 \end_inset
 
@@ -36623,8 +36621,8 @@ LaTeX
 
 Configuration
 \family default
- shows a LyX-document with informations about the LaTeX-packages and classes
- found by LyX (see also section
+ shows a LyX-document with informations about the Latex@LaTeX-packages and
+ classes found by LyX (see also section
 \begin_inset Space ~
 \end_inset
 
@@ -36671,7 +36669,6 @@ It is also possible to define custom toolbars.
 Extended Features
 \emph default
  manual.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -39739,7 +39736,7 @@ babel
 \begin_layout Description
 Global When this option is set, the languages used in the document will
  be added as options to the document class options, so that they can be
- used by all LaTeX-packages.
+ used by all Latex@LaTeX-packages.
  Otherwise they will only be used as options for the 
 \series bold
 babel
@@ -40114,7 +40111,7 @@ name "sub:LaTeX-settings"
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! LaTeX
+Settings ! Latex@LaTeX
 \end_layout
 
 \end_inset
@@ -41479,7 +41476,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! caption
+Latex@LaTeX-packages ! caption
 \end_layout
 
 \end_inset
@@ -41526,7 +41523,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! fancyhdr
+Latex@LaTeX-packages ! fancyhdr
 \end_layout
 
 \end_inset
@@ -41573,7 +41570,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! nomencl
+Latex@LaTeX-packages ! nomencl
 \end_layout
 
 \end_inset
@@ -41620,7 +41617,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! tipa
+Latex@LaTeX-packages ! tipa
 \end_layout
 
 \end_inset
@@ -41667,7 +41664,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! wrapfig
+Latex@LaTeX-packages ! wrapfig
 \end_layout
 
 \end_inset
