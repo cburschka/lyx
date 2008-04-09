@@ -1312,7 +1312,8 @@ void LyXAction::init()
  * \li Action: Creates new empty LyX window.
  * \li Notion: Already opened documents from the previous window can be found under View menu.
  * \li Syntax: window-new [<GEOMETRY>]
- * \li Params: <GEOMETRY>: pass the geometry of the window. Currently works only under Windows.
+ * \li Params: <GEOMETRY>: pass the geometry of the window. This parameter is currently 
+                           accepted only on Windows platform.
  * \li Origin: Abdel, 21 Oct 2006
  * \endvar
  */
