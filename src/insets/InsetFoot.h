@@ -44,7 +44,11 @@ private:
 	///
 	void addToToc(ParConstIterator const &) const;
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	Inset * clone() const { return new InsetFoot(*this); }
+	///
+	docstring custom_label_;
 };
 
 

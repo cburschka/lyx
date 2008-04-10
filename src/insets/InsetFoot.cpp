@@ -26,6 +26,7 @@
 #include "TocBackend.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 #include <ostream>
@@ -55,9 +56,10 @@ void InsetFoot::updateLabels(ParIterator const & it)
 	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
 		// FIXME: the counter should format itself.
-		setLabel(support::bformat(from_ascii("%1$s %2$s"), 
-					  getLayout(buffer().params()).labelstring(), 
-					  cnts.theCounter(foot)));
+		custom_label_= support::bformat(from_ascii("%1$s %2$s"),
+					  getLayout(buffer().params()).labelstring(),
+					  cnts.theCounter(foot));
+		setLabel(custom_label_);
 	
 	}
 	InsetCollapsable::updateLabels(it);
@@ -72,8 +74,24 @@ void InsetFoot::addToToc(ParConstIterator const & cpit) const
 	Toc & toc = buffer().tocBackend().toc("footnote");
 	// FIXME: we probably want the footnote number too.
 	docstring str;
-	str = getNewLabel(str);
+	str = custom_label_ + ": " + getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
+}
+
+
+docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
+{
+	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
+	OutputParams rp(&buffer().params().encoding());
+	odocstringstream ods;
+	InsetText::plaintext(ods, rp);
+	docstring foot_tip = custom_label_ + ": " + ods.str();
+	// shorten it if necessary
+	if (foot_tip.size() > 200)
+		foot_tip = foot_tip.substr(0, 200) + "...";
+	if (!isOpen() && !foot_tip.empty())
+		return foot_tip + '\n' + default_tip;
+	return default_tip;
 }
 
 

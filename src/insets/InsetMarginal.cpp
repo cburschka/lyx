@@ -14,9 +14,11 @@
 #include "InsetMarginal.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "OutputParams.h"
 #include "TocBackend.h"
 
+#include "support/docstream.h"
 #include "support/gettext.h"
 
 #include <ostream>
@@ -33,6 +35,22 @@ InsetMarginal::InsetMarginal(Buffer const & buf)
 docstring InsetMarginal::editMessage() const
 {
 	return _("Opened Marginal Note Inset");
+}
+
+
+docstring InsetMarginal::toolTip(BufferView const & bv, int x, int y) const
+{
+	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
+	OutputParams rp(&buffer().params().encoding());
+	odocstringstream ods;
+	InsetText::plaintext(ods, rp);
+	docstring margin_tip = ods.str();
+	// shorten it if necessary
+	if (margin_tip.size() > 200)
+		margin_tip = margin_tip.substr(0, 200) + "...";
+	if (!isOpen() && !margin_tip.empty())
+		return margin_tip + '\n' + default_tip;
+	return default_tip;
 }
 
 
