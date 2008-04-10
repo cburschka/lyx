@@ -3146,6 +3146,18 @@ Mehrfache Literaturverzeichnisse
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Mehrfache Literaturverzeichnisse, zum Beispiel ein Literaturverzeichnis
  für jeden Teil oder jedes Kapitel des Dokumentes, werden von BibTeX nicht
  unterstützt.
@@ -3164,8 +3176,8 @@ reference "sub:Sectionated-Bibliographies"
 
 \end_inset
 
-) benutzen kann, ermöglicht auch dies, wenn Sie bereit sind, ein wenig 
- LaTeX-Code (ERT, siehe Abschnitt
+) benutzen kann, ermöglicht LyX auch dies, wenn Sie bereit sind, ein wenig
+  LaTeX-Code (ERT, siehe Abschnitt
 \begin_inset Space ~
 \end_inset
 
@@ -3198,18 +3210,6 @@ bibunits
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Zunächst kreuzen Sie in
 \family sans
  Dokument\SpecialChar \menuseparator
@@ -3217,11 +3217,7 @@ Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
- (bei der xforms-Oberfläche unter 
-\family sans
-Extras
-\family default
-) 
+ 
 \family sans
 Abschnittsspezifisches
 \begin_inset Space \space{}
@@ -3278,7 +3274,7 @@ btUnit
 \family default
  zitiert werden, enthalten.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
