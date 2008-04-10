@@ -1290,6 +1290,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MENU_OPEN
+ * \li Action: Opens the menu given by its name.
+ * \li Syntax: menu-open <NAME>
+ * \li Params: <NAME>: menu name. See various .inc files in lib/ui for candidates.
+ * \endvar
+ */
 		{ LFUN_MENU_OPEN, "menu-open", NoBuffer, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_UI_TOGGLE
