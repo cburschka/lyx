@@ -1256,7 +1256,7 @@ GuiWorkArea * TabWorkArea::currentWorkArea()
 		return 0;
 
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(currentWidget()); 
-	BOOST_ASSERT(wa);
+	LASSERT(wa, /**/);
 	return wa;
 }
 
@@ -1265,7 +1265,7 @@ GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
 {
 	for (int i = 0; i != count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
-		BOOST_ASSERT(wa);
+		LASSERT(wa, /**/);
 		if (&wa->bufferView().buffer() == &buffer)
 			return wa;
 	}
@@ -1277,7 +1277,7 @@ void TabWorkArea::closeAll()
 {
 	while (count()) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(0));
-		BOOST_ASSERT(wa);
+		LASSERT(wa, /**/);
 		removeTab(0);
 		delete wa;
 	}
@@ -1286,7 +1286,7 @@ void TabWorkArea::closeAll()
 
 bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 {
-	BOOST_ASSERT(work_area);
+	LASSERT(work_area, /**/);
 	int index = indexOf(work_area);
 	if (index == -1)
 		return false;
@@ -1326,7 +1326,7 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 
 bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 {
-	BOOST_ASSERT(work_area);
+	LASSERT(work_area, /**/);
 	int index = indexOf(work_area);
 	if (index == -1)
 		return false;
@@ -1353,7 +1353,7 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 void TabWorkArea::on_currentTabChanged(int i)
 {
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
-	BOOST_ASSERT(wa);
+	LASSERT(wa, /**/);
 	BufferView & bv = wa->bufferView();
 	bv.cursor().fixIfBroken();
 	bv.updateMetrics();
@@ -1383,7 +1383,7 @@ void TabWorkArea::closeCurrentTab()
 		removeWorkArea(currentWorkArea());
 	else {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_)); 
-		BOOST_ASSERT(wa);
+		LASSERT(wa, /**/);
 		removeWorkArea(wa);
 	}
 }

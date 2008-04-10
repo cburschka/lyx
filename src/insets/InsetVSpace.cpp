@@ -25,6 +25,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 
@@ -107,7 +108,7 @@ void InsetVSpace::edit(Cursor & cur, bool, EntryDirection)
 
 void InsetVSpace::read(Lexer & lex)
 {
-	BOOST_ASSERT(lex.isOK());
+	LASSERT(lex.isOK(), /**/);
 	string vsp;
 	lex >> vsp;
 	if (lex)

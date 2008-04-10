@@ -32,6 +32,7 @@
 
 #include "frontends/Painter.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 
 #include <ostream>
@@ -194,7 +195,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		   && editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
-		BOOST_ASSERT(macro_ != 0);
+		LASSERT(macro_ != 0, /**/);
 		Dimension fontDim;
 		FontInfo labelFont = sane_font;
 		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
@@ -231,7 +232,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2;
 		metricsMarkers2(dim);
 	} else {
-		BOOST_ASSERT(macro_ != 0);
+		LASSERT(macro_ != 0, /**/);
 
 		// metrics are computed here for the cells,
 		// in the proxy we will then use the dim from the cache
@@ -546,7 +547,7 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 
 void MathMacro::removeArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		BOOST_ASSERT(size_t(pos) < cells_.size());
+		LASSERT(size_t(pos) < cells_.size(), /**/);
 		cells_.erase(cells_.begin() + pos);
 		if (size_t(pos) < attachedArgsNum_)
 			--attachedArgsNum_;
@@ -561,7 +562,7 @@ void MathMacro::removeArgument(Inset::pos_type pos) {
 
 void MathMacro::insertArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		BOOST_ASSERT(size_t(pos) <= cells_.size());
+		LASSERT(size_t(pos) <= cells_.size(), /**/);
 		cells_.insert(cells_.begin() + pos, MathData());
 		if (size_t(pos) < attachedArgsNum_)
 			++attachedArgsNum_;
@@ -575,7 +576,7 @@ void MathMacro::insertArgument(Inset::pos_type pos) {
 
 void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 {
-	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);	
+	LASSERT(displayMode_ == DISPLAY_NORMAL, /**/);	
 	args = cells_;
 
 	// strip off empty cells, but not more than arity-attachedArgsNum_
@@ -596,7 +597,7 @@ void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 
 void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
 {
-	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);
+	LASSERT(displayMode_ == DISPLAY_NORMAL, /**/);
 	cells_ = args;
 	attachedArgsNum_ = args.size();
 	cells_.resize(arity);
@@ -662,7 +663,7 @@ void MathMacro::write(WriteStream & os) const
 	}
 
 	// normal mode
-	BOOST_ASSERT(macro_);
+	LASSERT(macro_, /**/);
 
 	// optional arguments make macros fragile
 	if (optionals_ > 0 && os.fragile())

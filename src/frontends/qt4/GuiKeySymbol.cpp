@@ -14,6 +14,7 @@
 
 #include "qt_helpers.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 
 #include "Encoding.h"
@@ -23,8 +24,6 @@
 #include <QKeySequence>
 #include <QEvent>
 #include <QTextCodec>
-
-#include "boost/assert.hpp"
 
 #include <map>
 #include <string>
@@ -669,7 +668,7 @@ char_type KeySymbol::getUCSEncoded() const
 		return 0;
 
 	// UTF16 has a maximum of two characters.
-	BOOST_ASSERT(text_.size() <= 2);
+	LASSERT(text_.size() <= 2, /**/);
 
 	if (lyxerr.debugging() && text_.size() > 1) {
 		// We don't know yet how well support the full ucs4 range.

@@ -20,7 +20,7 @@
 
 #include "support/docstring.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 

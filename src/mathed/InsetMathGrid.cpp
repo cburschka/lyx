@@ -32,7 +32,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 
@@ -1208,7 +1208,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring & special = colinfo_[cur.col()].special_;
 			if (!special.empty()) {
 				docstring::size_type i = special.rfind('|');
-				BOOST_ASSERT(i != docstring::npos);
+				LASSERT(i != docstring::npos, /**/);
 				special.erase(i, 1);
 			}
 		}
@@ -1217,7 +1217,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring & special = colinfo_[cur.col()+1].special_;
 			if (!special.empty()) {
 				docstring::size_type i = special.find('|');
-				BOOST_ASSERT(i != docstring::npos);
+				LASSERT(i != docstring::npos, /**/);
 				special.erase(i, 1);
 			}
 		}

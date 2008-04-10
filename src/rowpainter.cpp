@@ -43,7 +43,7 @@
 #include "support/debug.h"
 #include "support/textutils.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/crc.hpp>
 
 #include <ostream>
@@ -71,8 +71,8 @@ RowPainter::RowPainter(PainterInfo & pi,
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
 
-	BOOST_ASSERT(pit >= 0);
-	BOOST_ASSERT(pit < int(text.paragraphs().size()));
+	LASSERT(pit >= 0, /**/);
+	LASSERT(pit < int(text.paragraphs().size()), /**/);
 }
 
 
@@ -97,7 +97,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
 	Font const font = text_metrics_.displayFont(pit_, pos);
 
-	BOOST_ASSERT(inset);
+	LASSERT(inset, /**/);
 	// Backup full_repaint status because some insets (InsetTabular)
 	// requires a full repaint
 	bool pi_full_repaint = pi_.full_repaint;
@@ -126,7 +126,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 #ifdef DEBUG_METRICS
 	int const x1 = int(x_ - dim.width());
 	Dimension dim2;
-	BOOST_ASSERT(max_witdh_ > 0);
+	LASSERT(max_witdh_ > 0, /**/);
 	int right_margin = text_metrics_.rightMargin(pm_);
 	int const w = max_witdh_ - leftMargin() - right_margin;
 	MetricsInfo mi(pi_.base.bv, font.fontInfo(), w);
@@ -143,9 +143,9 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw ascent " << dim.descent()
 		       << "> metrics descent " << dim2.des << "." << endl;
-	BOOST_ASSERT(dim2.wid == dim.wid);
-	BOOST_ASSERT(dim2.asc == dim.asc);
-	BOOST_ASSERT(dim2.des == dim.des);
+	LASSERT(dim2.wid == dim.wid, /**/);
+	LASSERT(dim2.asc == dim.asc, /**/);
+	LASSERT(dim2.des == dim.des, /**/);
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;

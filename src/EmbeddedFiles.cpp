@@ -34,7 +34,7 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileZipListDir.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 #include <fstream>
@@ -71,7 +71,7 @@ void EmbeddedFile::setInzipName(std::string const & name)
 		return;
 
 	// an enabled EmbeededFile should have this problem handled
-	BOOST_ASSERT(!isEnabled());
+	LASSERT(!isEnabled(), /**/);
 	// file will be synced when it is enabled
 	inzip_name_ = name;
 }
@@ -79,7 +79,7 @@ void EmbeddedFile::setInzipName(std::string const & name)
 
 string EmbeddedFile::embeddedFile() const
 {
-	BOOST_ASSERT(isEnabled());
+	LASSERT(isEnabled(), /**/);
 	return temp_path_ + inzip_name_;
 }
 
@@ -142,7 +142,7 @@ void EmbeddedFile::enable(bool enabled, Buffer const & buf, bool updateFile)
 
 bool EmbeddedFile::extract() const
 {
-	BOOST_ASSERT(isEnabled());
+	LASSERT(isEnabled(), /**/);
 
 	string ext_file = absFilename();
 	string emb_file = embeddedFile();
@@ -201,7 +201,7 @@ bool EmbeddedFile::extract() const
 
 bool EmbeddedFile::updateFromExternalFile() const
 {
-	BOOST_ASSERT(isEnabled());
+	LASSERT(isEnabled(), /**/);
 
 	string ext_file = absFilename();
 	string emb_file = embeddedFile();
@@ -391,7 +391,7 @@ std::string EmbeddedFile::calcInzipName(std::string const & buffer_path)
 
 void EmbeddedFile::syncInzipFile(std::string const & buffer_path)
 {
-	BOOST_ASSERT(isEnabled());
+	LASSERT(isEnabled(), /**/);
 	string old_emb_file = temp_path_ + '/' + inzip_name_;
 	FileName old_emb(old_emb_file);
 
@@ -490,7 +490,7 @@ void EmbeddedFileList::enable(bool enabled, Buffer & buffer, bool updateFile)
 void EmbeddedFileList::registerFile(EmbeddedFile const & file,
 	Inset const * inset, Buffer const & buffer)
 {
-	BOOST_ASSERT(!buffer.embedded() || file.isEnabled());
+	LASSERT(!buffer.embedded() || file.isEnabled(), /**/);
 
 	string newfile = file.absFilename();
 	iterator efp = findFile(newfile);

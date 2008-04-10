@@ -25,7 +25,7 @@
 #include "mathed/InsetMath.h"
 #include "mathed/MathData.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <ostream>
 
@@ -42,7 +42,7 @@ CursorSlice::CursorSlice()
 CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
-	BOOST_ASSERT(inset_);
+	LASSERT(inset_, /**/);
 }
 
 
@@ -60,7 +60,7 @@ Paragraph & CursorSlice::paragraph() const
 
 pos_type CursorSlice::lastpos() const
 {
-	BOOST_ASSERT(inset_);
+	LASSERT(inset_, /**/);
 	return inset_->asInsetMath() ? cell().size() 
 		: (text()->empty() ? 0 : paragraph().size());
 }
@@ -76,14 +76,14 @@ pit_type CursorSlice::lastpit() const
 
 CursorSlice::row_type CursorSlice::row() const
 {
-	BOOST_ASSERT(asInsetMath());
+	LASSERT(asInsetMath(), /**/);
 	return asInsetMath()->row(idx_);
 }
 
 
 CursorSlice::col_type CursorSlice::col() const
 {
-	BOOST_ASSERT(asInsetMath());
+	LASSERT(asInsetMath(), /**/);
 	return asInsetMath()->col(idx_);
 }
 
@@ -108,7 +108,7 @@ void CursorSlice::forwardPos()
 	// otherwise move on one cell
 	//lyxerr << "... next idx" << endl;
 
-	BOOST_ASSERT(idx_ < nargs());
+	LASSERT(idx_ < nargs(), /**/);
 
 	++idx_;
 	pit_ = 0;
@@ -118,7 +118,7 @@ void CursorSlice::forwardPos()
 
 void CursorSlice::forwardIdx()
 {
-	BOOST_ASSERT(idx_ < nargs());
+	LASSERT(idx_ < nargs(), /**/);
 
 	++idx_;
 	pit_ = 0;
@@ -146,7 +146,7 @@ void CursorSlice::backwardPos()
 		return;
 	}
 
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 }
 
 
@@ -185,7 +185,7 @@ bool operator<(CursorSlice const & p, CursorSlice const & q)
 	if (p.inset_ != q.inset_) {
 		LYXERR0("can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q);
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 	if (p.idx_ != q.idx_)
 		return p.idx_ < q.idx_;

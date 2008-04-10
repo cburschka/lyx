@@ -19,7 +19,7 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 
@@ -104,14 +104,14 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 	AspellSpeller * m = it->second.speller;
 
 	int const word_ok = aspell_speller_check(m, to_utf8(word.word()).c_str(), -1);
-	BOOST_ASSERT(word_ok != -1);
+	LASSERT(word_ok != -1, /**/);
 
 	if (word_ok)
 		return OK;
 
 	AspellWordList const * sugs =
 		aspell_speller_suggest(m, to_utf8(word.word()).c_str(), -1);
-	BOOST_ASSERT(sugs != 0);
+	LASSERT(sugs != 0, /**/);
 	els = aspell_word_list_elements(sugs);
 	if (aspell_word_list_empty(sugs))
 		res = UNKNOWN_WORD;

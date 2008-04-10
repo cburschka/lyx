@@ -88,7 +88,7 @@
 #include <QUrl>
 #include <QScrollBar>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/bind.hpp>
 
 #ifdef HAVE_SYS_TIME_H
@@ -764,7 +764,7 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
-	BOOST_ASSERT(wa);
+	LASSERT(wa, /**/);
 
 	// Changing work area can result from opening a file so
 	// update the toc in any case.
@@ -780,7 +780,7 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 
 void GuiView::removeWorkArea(GuiWorkArea * wa)
 {
-	BOOST_ASSERT(wa);
+	LASSERT(wa, /**/);
 	if (wa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
@@ -869,7 +869,7 @@ Buffer const * GuiView::buffer() const
 
 void GuiView::setBuffer(Buffer * newBuffer)
 {
-	BOOST_ASSERT(newBuffer);
+	LASSERT(newBuffer, /**/);
 	setBusy(true);
 
 	GuiWorkArea * wa = workArea(*newBuffer);
@@ -1074,7 +1074,7 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 			FuncStatus fs;
 			if (!inset->getStatus(view()->cursor(), fr, fs)) {
 				// Every inset is supposed to handle this
-				BOOST_ASSERT(false);
+				LASSERT(false, /**/);
 			}
 			flag |= fs;
 		} else {
@@ -2255,7 +2255,7 @@ Dialog * createGuiWrap(GuiView & lv);
 
 Dialog * GuiView::build(string const & name)
 {
-	BOOST_ASSERT(isValidName(name));
+	LASSERT(isValidName(name), /**/);
 
 	if (name == "aboutlyx")
 		return createGuiAbout(*this);

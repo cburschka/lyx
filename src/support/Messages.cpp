@@ -17,7 +17,7 @@
 #include "support/Package.h"
 #include "support/unicode.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <cerrno>
 
@@ -158,7 +158,7 @@ docstring const Messages::get(string const & m) const
 	pair<TranslationCache::iterator, bool> result =
 		cache_.insert(make_pair(m, trans));
 
-	BOOST_ASSERT(result.second);
+	LASSERT(result.second, /**/);
 
 	return result.first->second;
 }

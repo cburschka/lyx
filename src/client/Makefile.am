@@ -28,12 +28,10 @@ lyxclient_LDADD = \
 SOURCEFILES = \
   boost.cpp \
   client.cpp \
-  debug.cpp \
   gettext.cpp \
   Messages.cpp
 
 HEADERFILES = \
-  debug.h \
   Messages.h
 
 

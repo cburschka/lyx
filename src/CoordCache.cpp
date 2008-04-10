@@ -18,7 +18,7 @@
 
 #include "insets/Inset.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 
 namespace lyx {
@@ -26,10 +26,10 @@ namespace lyx {
 Point::Point(int x, int y)
 	: x_(x), y_(y)
 {
-	BOOST_ASSERT(x > -1000000);
-	BOOST_ASSERT(x <  1000000);
-	BOOST_ASSERT(y > -1000000);
-	BOOST_ASSERT(y <  1000000);
+	LASSERT(x > -1000000, /**/);
+	LASSERT(x <  1000000, /**/);
+	LASSERT(y > -1000000, /**/);
+	LASSERT(y <  1000000, /**/);
 }
 
 // just a helper to be able to set a breakpoint
@@ -37,7 +37,7 @@ void lyxbreaker(void const * data, const char * hint, int size)
 {
 	LYXERR0("break on pointer: " << data << " hint: " << hint
 		<< " size: " << size);
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 }
 
 

@@ -77,6 +77,7 @@
 
 #include "graphics/Previews.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
@@ -214,6 +215,7 @@ public:
 	InsetText inset;
 };
 
+
 /// Creates the per buffer temporary directory
 static FileName createBufferTmpDir()
 {
@@ -294,7 +296,7 @@ void Buffer::changed() const
 
 frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
-	BOOST_ASSERT(d->wa_);
+	LASSERT(d->wa_, /**/);
 	return *d->wa_;
 }
 
@@ -546,7 +548,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 
 	// we are reading in a brand new document
-	BOOST_ASSERT(paragraphs().empty());
+	LASSERT(paragraphs().empty(), /**/);
 
 	readHeader(lex);
 
@@ -727,7 +729,7 @@ void Buffer::setFullyLoaded(bool value)
 Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		bool fromstring)
 {
-	BOOST_ASSERT(!filename.empty());
+	LASSERT(!filename.empty(), /**/);
 
 	// the first (non-comment) token _must_ be...
 	if (!lex.checkFor("\\lyxformat")) {
@@ -1460,8 +1462,8 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
-	BOOST_ASSERT(from);
-	BOOST_ASSERT(to);
+	LASSERT(from, /**/);
+	LASSERT(to, /**/);
 
 	for_each(par_iterator_begin(),
 		 par_iterator_end(),
@@ -1552,7 +1554,7 @@ bool Buffer::isBakClean() const
 
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
-	BOOST_ASSERT(d->filename.exists());
+	LASSERT(d->filename.exists(), /**/);
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method 
 		|| d->timestamp_ != d->filename.lastModified())
@@ -2049,7 +2051,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	InsetCode code)
 {
 	//FIXME: This does not work for child documents yet.
-	BOOST_ASSERT(code == CITE_CODE);
+	LASSERT(code == CITE_CODE, /**/);
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
 	string paramName;

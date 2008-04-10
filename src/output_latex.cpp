@@ -30,6 +30,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetOptArg.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
 
@@ -38,10 +39,10 @@
 using namespace std;
 using namespace lyx::support;
 
+
 namespace lyx {
 
 namespace {
-
 
 enum OpenEncoding {
 		none,
@@ -745,7 +746,7 @@ void latexParagraphs(Buffer const & buf,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator endpar = paragraphs.end();
 
-	BOOST_ASSERT(runparams.par_begin <= runparams.par_end);
+	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 	// if only part of the paragraphs will be outputed
 	if (runparams.par_begin !=  runparams.par_end) {
 		par = boost::next(paragraphs.begin(), runparams.par_begin);

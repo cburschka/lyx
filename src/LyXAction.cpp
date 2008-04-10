@@ -20,7 +20,7 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -1897,7 +1897,7 @@ bool LyXAction::funcHasFlag(FuncCode action,
 
 	if (ici == lyx_info_map.end()) {
 		LYXERR0("action: " << action << " is not known.");
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	return ici->second.attrib & flag;

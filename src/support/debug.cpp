@@ -17,6 +17,8 @@
 #include "support/lstrings.h"
 #include "support/FileName.h"
 
+#include <boost/assert.hpp>
+
 #include <iostream>
 #include <iomanip>
 
@@ -185,5 +187,11 @@ LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
 // The global instance
 LyXErr lyxerr;
 
+void doAssert(char const * expr,  char const * file, long line)
+{
+	LYXERR0("ASSERTION " << expr << " VIOLATED in " << file << ":" << line);
+	// comment this out if not needed
+	BOOST_ASSERT(false);
+}
 
 } // namespace lyx

@@ -594,7 +594,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 		gparams.display = graphics::NoDisplay;
 		break;
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 	if (gparams.display == graphics::DefaultDisplay)
 		gparams.display = graphics::DisplayType(lyxrc.display_graphics);
@@ -724,7 +724,7 @@ void InsetExternal::fileChanged() const
 		return;
 
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
-	BOOST_ASSERT(ptr);
+	LASSERT(ptr, /**/);
 
 	ptr->removePreview(*buffer);
 	add_preview_and_start_loading(*ptr, *this, *buffer);

@@ -23,6 +23,7 @@
 #include "Paragraph.h"
 #include "TexRow.h"
 
+#include "support/assert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 
@@ -166,7 +167,7 @@ QString GuiViewSource::title() const
 		case LITERATE:
 			return qt_("Literate Source");
 	}
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 	return QString();
 }
 

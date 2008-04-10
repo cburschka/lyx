@@ -28,7 +28,7 @@
 #include <QList>
 #include <QTime>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/scoped_array.hpp>
 
 #include <map>
@@ -523,14 +523,14 @@ static int mymkdir(char const * pathname, unsigned long int mode)
 
 bool FileName::createDirectory(int permission) const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	return mymkdir(toFilesystemEncoding().c_str(), permission) == 0;
 }
 
 
 bool FileName::createPath() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	if (isDirectory())
 		return true;
 

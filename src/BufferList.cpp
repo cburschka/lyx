@@ -29,7 +29,7 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/bind.hpp>
 
 #include <algorithm>
@@ -81,12 +81,12 @@ BufferList::const_iterator BufferList::end() const
 
 void BufferList::release(Buffer * buf)
 {
-	BOOST_ASSERT(buf);
+	LASSERT(buf, /**/);
 	BufferStorage::iterator const it =
 		find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
 		Buffer * tmp = (*it);
-		BOOST_ASSERT(tmp);
+		LASSERT(tmp, /**/);
 		bstore.erase(it);
 		delete tmp;
 	}
@@ -157,13 +157,13 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 
 Buffer * BufferList::next(Buffer const * buf) const
 {
-	BOOST_ASSERT(buf);
+	LASSERT(buf, /**/);
 
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = find(bstore.begin(),
 						bstore.end(), buf);
-	BOOST_ASSERT(it != bstore.end());
+	LASSERT(it != bstore.end(), /**/);
 	++it;
 	if (it == bstore.end())
 		return bstore.front();
@@ -174,13 +174,13 @@ Buffer * BufferList::next(Buffer const * buf) const
 
 Buffer * BufferList::previous(Buffer const * buf) const
 {
-	BOOST_ASSERT(buf);
+	LASSERT(buf, /**/);
 
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = find(bstore.begin(),
 						bstore.end(), buf);
-	BOOST_ASSERT(it != bstore.end());
+	LASSERT(it != bstore.end(), /**/);
 	if (it == bstore.begin())
 		return bstore.back();
 	else
@@ -285,7 +285,7 @@ bool BufferList::exists(string const & s) const
 
 bool BufferList::isLoaded(Buffer const * b) const
 {
-	BOOST_ASSERT(b);
+	LASSERT(b, /**/);
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);
 	return cit != bstore.end();

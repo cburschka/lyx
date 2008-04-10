@@ -26,6 +26,7 @@
 #include "sgml.h"
 #include "TextClass.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
@@ -302,7 +303,7 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
-	BOOST_ASSERT(runparams.par_begin <= runparams.par_end);
+	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 	// if only part of the paragraphs will be outputed
 	if (runparams.par_begin !=  runparams.par_end) {
 		par = boost::next(paragraphs.begin(), runparams.par_begin);

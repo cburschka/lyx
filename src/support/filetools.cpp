@@ -36,7 +36,7 @@
 
 #include <QDir>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/regex.hpp>
 
 #include <fcntl.h>

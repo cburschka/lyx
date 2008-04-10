@@ -363,9 +363,9 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
 	int start, int end, DocumentClass const * const dc, CutStack & cutstack)
 {
-	BOOST_ASSERT(0 <= start && start <= pars[startpit].size());
-	BOOST_ASSERT(0 <= end && end <= pars[endpit].size());
-	BOOST_ASSERT(startpit != endpit || start <= end);
+	LASSERT(0 <= start && start <= pars[startpit].size(), /**/);
+	LASSERT(0 <= end && end <= pars[endpit].size(), /**/);
+	LASSERT(startpit != endpit || start <= end, /**/);
 
 	// Clone the paragraphs within the selection.
 	ParagraphList copy_pars(boost::next(pars.begin(), startpit),
@@ -478,7 +478,7 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 {
 	errorlist.clear();
 
-	BOOST_ASSERT(!in.paragraphs().empty());
+	LASSERT(!in.paragraphs().empty(), /**/);
 	if (oldone == newone)
 		return;
 	
@@ -584,7 +584,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		BOOST_ASSERT(text);
+		LASSERT(text, /**/);
 
 		saveSelection(cur);
 
@@ -670,7 +670,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		BOOST_ASSERT(text);
+		LASSERT(text, /**/);
 		// ok we have a selection. This is always between cur.selBegin()
 		// and sel_end cursor
 
@@ -780,7 +780,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		BOOST_ASSERT(text);
+		LASSERT(text, /**/);
 
 		pit_type endpit;
 		PitPosPair ppp;
@@ -793,7 +793,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid
-	BOOST_ASSERT(!cur.inMathed());
+	LASSERT(!cur.inMathed(), /**/);
 }
 
 
@@ -851,7 +851,7 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 			    Clipboard::GraphicsType preferedType)
 {
-	BOOST_ASSERT(theClipboard().hasGraphicsContents(preferedType));
+	LASSERT(theClipboard().hasGraphicsContents(preferedType), /**/);
 
 	// get picture from clipboard
 	FileName filename = theClipboard().getAsGraphics(cur, preferedType);

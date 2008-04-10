@@ -25,7 +25,7 @@
 #include <QSettings>
 #include <QString>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <string>
 
@@ -117,14 +117,14 @@ BufferView const * Dialog::bufferview() const
 
 Buffer & Dialog::buffer()
 {
-	BOOST_ASSERT(lyxview_->buffer());
+	LASSERT(lyxview_->buffer(), /**/);
 	return *lyxview_->buffer();
 }
 
 
 Buffer const & Dialog::buffer() const
 {
-	BOOST_ASSERT(lyxview_->buffer());
+	LASSERT(lyxview_->buffer(), /**/);
 	return *lyxview_->buffer();
 }
 

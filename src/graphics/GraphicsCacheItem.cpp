@@ -324,7 +324,7 @@ static string const findTargetFormat(string const & from)
 	FormatList const formats = lyx::graphics::Image::loadableFormats();
 
 	 // There must be a format to load from.
-	BOOST_ASSERT(!formats.empty());
+	LASSERT(!formats.empty(), /**/);
 
 	// Use the standard converter if we don't know the format to load
 	// from.

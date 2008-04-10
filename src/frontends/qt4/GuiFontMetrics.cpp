@@ -20,7 +20,7 @@
 
 #include "insets/Inset.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 
@@ -36,7 +36,7 @@ namespace frontend {
  */
 static inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
-	BOOST_ASSERT(is_utf16(ucs4));
+	LASSERT(is_utf16(ucs4), /**/);
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 

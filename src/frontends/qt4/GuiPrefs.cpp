@@ -2446,7 +2446,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 
 void GuiPreferences::add(PrefModule * module)
 {
-	BOOST_ASSERT(module);
+	LASSERT(module, /**/);
 	if (module->category().isEmpty())
 		prefsPS->addPanel(module, module->title());
 	else

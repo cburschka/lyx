@@ -50,6 +50,7 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -1329,14 +1330,14 @@ void Tabular::read(Lexer & lex)
 
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ") && !prefixIs(line, "<Tabular ")) {
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 		return;
 	}
 
 	int version;
 	if (!getTokenValue(line, "version", version))
 		return;
-	BOOST_ASSERT(version >= 2);
+	LASSERT(version >= 2, /**/);
 
 	int rows_arg;
 	if (!getTokenValue(line, "rows", rows_arg))
@@ -1766,7 +1767,7 @@ int Tabular::rowAscent(row_type row) const
 
 int Tabular::rowDescent(row_type row) const
 {
-	BOOST_ASSERT(row < rowCount());
+	LASSERT(row < rowCount(), /**/);
 	return row_info[row].descent;
 }
 
@@ -1783,8 +1784,8 @@ int Tabular::height() const
 
 bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 {
-	BOOST_ASSERT(row < rowCount());
-	BOOST_ASSERT(column < columnCount());
+	LASSERT(row < rowCount(), /**/);
+	LASSERT(column < columnCount(), /**/);
 	return cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN;
 }
 
@@ -1792,8 +1793,8 @@ bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 {
 	// FIXME: assert or return 0 as in TeXBottomHLine()?
-	BOOST_ASSERT(row != npos);
-	BOOST_ASSERT(row < rowCount());
+	LASSERT(row != npos, /**/);
+	LASSERT(row < rowCount(), /**/);
 
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -2666,7 +2667,7 @@ Tabular::cellFromInset(Inset const * inset) const
 	// is this inset part of the tabular?
 	if (!inset) {
 		lyxerr << "Error: this is not a cell of the tabular!" << endl;
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	for (idx_type cell = 0, n = cellCount(); cell < n; ++cell)
@@ -2679,7 +2680,7 @@ Tabular::cellFromInset(Inset const * inset) const
 	// We should have found a cell at this point
 	lyxerr << "Tabular::cellFromInset: Cell of inset "
 		<< inset << " not found!" << endl;
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 	// shut up compiler
 	return 0;
 }
@@ -2732,15 +2733,15 @@ InsetTableCell::InsetTableCell(Buffer const & buf,
 
 bool InsetTableCell::forceEmptyLayout(idx_type) const
 {
-	BOOST_ASSERT(table_);
-	BOOST_ASSERT(cell_data_);
+	LASSERT(table_, /**/);
+	LASSERT(cell_data_, /**/);
 	return table_->getPWidth(cell_data_->cellno).zero();
 }
 
 bool InsetTableCell::allowParagraphCustomization(idx_type) const
 {
-	BOOST_ASSERT(table_);
-	BOOST_ASSERT(cell_data_);
+	LASSERT(table_, /**/);
+	LASSERT(cell_data_, /**/);
 	return !table_->getPWidth(cell_data_->cellno).zero();
 }
 
@@ -2866,7 +2867,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	//	mi.base.textwidth << "\n";
 	if (!mi.base.bv) {
 		LYXERR0("need bv");
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	row_type i = 0;
@@ -4587,7 +4588,7 @@ void InsetTabular::cutSelection(Cursor & cur)
 
 bool InsetTabular::isRightToLeft(Cursor & cur) const
 {
-	BOOST_ASSERT(cur.depth() > 1);
+	LASSERT(cur.depth() > 1, /**/);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
 	pos_type const parentpos = cur[cur.depth() - 2].pos();
 	return parentpar.getFontSettings(cur.bv().buffer().params(),

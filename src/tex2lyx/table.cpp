@@ -16,10 +16,9 @@
 
 #include "tex2lyx.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
-
-#include <boost/assert.hpp>
 
 #include <iostream>
 #include <sstream>
@@ -465,7 +464,7 @@ void fix_colalign(vector<ColInfo> & colinfo)
 bool parse_hlines(Parser & p, Token const & t, string & hlines,
 		  bool is_long_tabular)
 {
-	BOOST_ASSERT(t.cat() == catEscape);
+	LASSERT(t.cat() == catEscape, return false);
 
 	if (t.cs() == "hline")
 		hlines += "\\hline";

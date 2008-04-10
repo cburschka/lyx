@@ -25,7 +25,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <ostream>
 
@@ -69,7 +69,7 @@ LyXErr & operator<<(LyXErr & os, DocIterator const & it)
 
 Inset * DocIterator::nextInset() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	if (pos() == lastpos())
 		return 0;
 	if (pos() > lastpos()) {
@@ -84,7 +84,7 @@ Inset * DocIterator::nextInset() const
 
 Inset * DocIterator::prevInset() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	if (pos() == 0)
 		return 0;
 	if (inMathed()) {
@@ -102,7 +102,7 @@ Inset * DocIterator::prevInset() const
 
 Inset * DocIterator::realInset() const
 {
-	BOOST_ASSERT(inTexted());
+	LASSERT(inTexted(), /**/);
 	// if we are in a tabular, we need the cell
 	if (inset().lyxCode() == TABULAR_CODE) {
 		InsetTabular & tabular = static_cast<InsetTabular&>(inset());
@@ -114,24 +114,24 @@ Inset * DocIterator::realInset() const
 
 MathAtom & DocIterator::prevAtom() const
 {
-	BOOST_ASSERT(!empty());
-	BOOST_ASSERT(pos() > 0);
+	LASSERT(!empty(), /**/);
+	LASSERT(pos() > 0, /**/);
 	return cell()[pos() - 1];
 }
 
 
 MathAtom & DocIterator::nextAtom() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	//lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
-	BOOST_ASSERT(pos() < lastpos());
+	LASSERT(pos() < lastpos(), /**/);
 	return cell()[pos()];
 }
 
 
 Text * DocIterator::text() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	return top().text();
 }
 
@@ -140,21 +140,21 @@ Paragraph & DocIterator::paragraph() const
 {
 	if (!inTexted())
 		LYXERR0(*this);
-	BOOST_ASSERT(inTexted());
+	LASSERT(inTexted(), /**/);
 	return top().paragraph();
 }
 
 
 Paragraph & DocIterator::innerParagraph() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	return innerTextSlice().paragraph();
 }
 
 
 CursorSlice const & DocIterator::innerTextSlice() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
@@ -163,7 +163,7 @@ CursorSlice const & DocIterator::innerTextSlice() const
 
 	// This case is in principe not possible. We _must_
 	// be inside a Text.
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 	static CursorSlice dummy;
 	return dummy;
 }
@@ -222,14 +222,14 @@ DocIterator::col_type DocIterator::col() const
 
 MathData & DocIterator::cell() const
 {
-//	BOOST_ASSERT(inMathed());
+//	LASSERT(inMathed(), /**/);
 	return top().cell();
 }
 
 
 Text * DocIterator::innerText() const
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
@@ -416,7 +416,7 @@ void DocIterator::updateInsets(Inset * inset)
 	size_t const n = slices_.size();
 	slices_.resize(0);
 	for (size_t i = 0 ; i < n; ++i) {
-		BOOST_ASSERT(inset);
+		LASSERT(inset, /**/);
 		push_back(dit[i]);
 		top().inset_ = inset;
 		if (i + 1 != n)

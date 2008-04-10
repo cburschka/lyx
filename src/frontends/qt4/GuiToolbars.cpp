@@ -31,7 +31,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 
 using namespace std;
@@ -298,7 +298,7 @@ void GuiToolbars::saveToolbarInfo()
 	for (ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 		cit != toolbarbackend.end(); ++cit) {
 		ToolbarsMap::iterator it = toolbars_.find(cit->name);
-		BOOST_ASSERT(it != toolbars_.end());
+		LASSERT(it != toolbars_.end(), /**/);
 		// get toolbar info from session.
 		ToolbarSection::ToolbarInfo & info = tb.load(cit->name);
 		if (cit->flags & ToolbarInfo::ON)
@@ -340,7 +340,7 @@ void GuiToolbars::displayToolbar(ToolbarInfo const & tbinfo,
 			      bool show_it)
 {
 	ToolbarsMap::iterator it = toolbars_.find(tbinfo.name);
-	BOOST_ASSERT(it != toolbars_.end());
+	LASSERT(it != toolbars_.end(), /**/);
 
 	if (show_it) {
 		if (it->second->isVisible())

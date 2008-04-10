@@ -22,7 +22,7 @@ extern "C" {
 #include "PSpell.h"
 #include "WordLangTuple.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -98,14 +98,14 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 	PspellManager * m = it->second.manager;
 
 	int word_ok = pspell_manager_check(m, to_utf8(word.word()).c_str());
-	BOOST_ASSERT(word_ok != -1);
+	LASSERT(word_ok != -1, /**/);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		PspellWordList const * sugs =
 			pspell_manager_suggest(m, to_utf8(word.word()).c_str());
-		BOOST_ASSERT(sugs != 0);
+		LASSERT(sugs != 0, /**/);
 		els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs))
 			res = UNKNOWN_WORD;

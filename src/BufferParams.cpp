@@ -302,7 +302,7 @@ BufferParams::Impl::Impl()
 BufferParams::Impl *
 BufferParams::MemoryTraits::clone(BufferParams::Impl const * ptr)
 {
-	BOOST_ASSERT(ptr);
+	LASSERT(ptr, /**/);
 
 	return new BufferParams::Impl(*ptr);
 }
@@ -361,7 +361,7 @@ BufferParams::BufferParams()
 
 docstring BufferParams::B_(string const & l10n) const
 {
-	BOOST_ASSERT(language);
+	LASSERT(language, /**/);
 	return getMessages(language->code()).get(l10n);
 }
 
@@ -404,28 +404,28 @@ BranchList const & BufferParams::branchlist() const
 
 Bullet & BufferParams::temp_bullet(lyx::size_type const index)
 {
-	BOOST_ASSERT(index < 4);
+	LASSERT(index < 4, /**/);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet const & BufferParams::temp_bullet(lyx::size_type const index) const
 {
-	BOOST_ASSERT(index < 4);
+	LASSERT(index < 4, /**/);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet & BufferParams::user_defined_bullet(lyx::size_type const index)
 {
-	BOOST_ASSERT(index < 4);
+	LASSERT(index < 4, /**/);
 	return pimpl_->user_defined_bullets[index];
 }
 
 
 Bullet const & BufferParams::user_defined_bullet(lyx::size_type const index) const
 {
-	BOOST_ASSERT(index < 4);
+	LASSERT(index < 4, /**/);
 	return pimpl_->user_defined_bullets[index];
 }
 

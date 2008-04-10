@@ -17,7 +17,7 @@
 #include "support/docstring.h"
 #include "support/weighted_btree.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 namespace lyx {
 
@@ -62,7 +62,7 @@ WordList::~WordList()
 docstring const & WordList::word(size_t idx) const
 {
 	Impl::Words::const_iterator it = d->words_.find_summed_weight(idx);
-	BOOST_ASSERT(it != d->words_.end());
+	LASSERT(it != d->words_.end(), /**/);
 	
 	// We use the key() method here, and not something like it->first
 	// because the btree only returns (iterator-) temporary value pairs.

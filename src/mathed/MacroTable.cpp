@@ -25,7 +25,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 
@@ -107,7 +107,7 @@ vector<docstring> const &  MacroData::defaults() const
 void MacroData::unlock() const
 {
 	--lockCount_;
-	BOOST_ASSERT(lockCount_ >= 0);
+	LASSERT(lockCount_ >= 0, /**/);
 }
 
 
@@ -133,7 +133,7 @@ void MacroData::updateData() const
 	if (queried_)
 		return;
 
-	BOOST_ASSERT(buffer_ != 0);
+	LASSERT(buffer_ != 0, /**/);
 	
 	// Try to fix position DocIterator. Should not do anything in theory.
 	pos_.fixIfBroken();

@@ -27,6 +27,7 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
+#include "support/assert.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 
@@ -82,7 +83,7 @@ graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
 
 docstring const statusMessage(BufferView const * bv, string const & snippet)
 {
-	BOOST_ASSERT(bv);
+	LASSERT(bv, /**/);
 
 	Buffer const & buffer = bv->buffer();
 	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
@@ -118,7 +119,7 @@ RenderPreview::getPreviewImage(Buffer const & buffer) const
 
 void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(mi.base.bv);
+	LASSERT(mi.base.bv, /**/);
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(mi.base.bv->buffer());
@@ -142,7 +143,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
+	LASSERT(pi.base.bv, /**/);
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(pi.base.bv->buffer());

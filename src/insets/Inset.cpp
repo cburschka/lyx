@@ -33,6 +33,7 @@
 #include "frontends/Painter.h"
 #include "frontends/Application.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -133,7 +134,7 @@ Buffer & Inset::buffer()
 		odocstringstream s;
 		lyxerr << "LyX Code: " << lyxCode() << " name: " << name() << std::endl;
 		s << "LyX Code: " << lyxCode() << " name: " << name();
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 		throw ExceptionMessage(BufferException, 
 			from_ascii("Inset::buffer_ member not initialized!"), s.str());
 	}

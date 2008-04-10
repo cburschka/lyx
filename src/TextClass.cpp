@@ -27,6 +27,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
@@ -38,8 +39,6 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-
-#include "boost/assert.hpp"
 
 using namespace std;
 using namespace lyx::support;
@@ -254,7 +253,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		if (!readStyle(lex, lay)) {
 			// The only way this happens is because the hardcoded layout above
 			// is wrong.
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 		};
 		layoutlist_.push_back(lay);
 	}
@@ -921,7 +920,7 @@ bool TextClass::hasLayout(docstring const & n) const
 
 Layout const & TextClass::operator[](docstring const & name) const
 {
-	BOOST_ASSERT(!name.empty());
+	LASSERT(!name.empty(), /**/);
 
 	const_iterator it = 
 		find_if(begin(), end(), LayoutNamesEqual(name));
@@ -934,7 +933,7 @@ Layout const & TextClass::operator[](docstring const & name) const
 			lyxerr  << " " << to_utf8(cit->name()) << endl;
 
 		// we require the name to exist
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	return *it;
@@ -943,7 +942,7 @@ Layout const & TextClass::operator[](docstring const & name) const
 
 Layout & TextClass::operator[](docstring const & name)
 {
-	BOOST_ASSERT(!name.empty());
+	LASSERT(!name.empty(), /**/);
 
 	iterator it = find_if(begin(), end(), LayoutNamesEqual(name));
 
@@ -954,7 +953,7 @@ Layout & TextClass::operator[](docstring const & name)
 			LYXERR0(" " << to_utf8(cit->name()));
 
 		// we require the name to exist
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	return *it;

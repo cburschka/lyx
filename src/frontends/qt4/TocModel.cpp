@@ -15,7 +15,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <climits>
 
 using namespace std;
@@ -29,7 +29,7 @@ typedef std::pair<QModelIndex, TocIterator> TocPair;
 TocIterator TocModel::tocIterator(QModelIndex const & index) const
 {
 	TocMap::const_iterator map_it = toc_map_.find(index);
-	BOOST_ASSERT(map_it != toc_map_.end());
+	LASSERT(map_it != toc_map_.end(), /**/);
 	return map_it->second;
 }
 
@@ -37,7 +37,7 @@ TocIterator TocModel::tocIterator(QModelIndex const & index) const
 QModelIndex TocModel::modelIndex(TocIterator const & it) const
 {
 	ModelMap::const_iterator map_it = model_map_.find(it);
-	//BOOST_ASSERT(it != model_map_.end());
+	//LASSERT(it != model_map_.end(), /**/);
 
 	if (map_it == model_map_.end())
 		return QModelIndex();

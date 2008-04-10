@@ -24,6 +24,7 @@
 #include "Paragraph.h"
 #include "version.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 
 #include <QApplication>
@@ -41,10 +42,12 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-class RtlItemDelegate : public QItemDelegate {
+class RtlItemDelegate : public QItemDelegate
+{
 public:
-	explicit RtlItemDelegate(QObject * parent = 0)
-		: QItemDelegate(parent), enabled_(false) {}
+	explicit RtlItemDelegate(QObject * parent)
+		: QItemDelegate(parent), enabled_(false)
+	{}
 
 	void setEnabled(bool enabled = true)
 	{
@@ -52,7 +55,7 @@ public:
 	}
 	
 protected:
-	virtual void drawDisplay(QPainter * painter,
+	void drawDisplay(QPainter * painter,
 		QStyleOptionViewItem const & option,
 		QRect const & rect, QString const & text) const
 	{
@@ -72,10 +75,12 @@ private:
 };
 
 
-class PixmapItemDelegate : public QItemDelegate {
+class PixmapItemDelegate : public QItemDelegate
+{
 public:
-	explicit PixmapItemDelegate(QObject *parent = 0)
-		: QItemDelegate(parent) {}
+	explicit PixmapItemDelegate(QObject * parent)
+		: QItemDelegate(parent)
+	{}
 
 protected:
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
@@ -100,21 +105,21 @@ protected:
 };
 
 
-class GuiCompletionModel : public QAbstractListModel {
+class GuiCompletionModel : public QAbstractListModel
+{
 public:
 	///
 	GuiCompletionModel(QObject * parent, CompletionList const * l)
-		: QAbstractListModel(parent), list_(l) {}
+		: QAbstractListModel(parent), list_(l)
+	{}
 	///
-	~GuiCompletionModel()
-		{ delete list_; }
+	~GuiCompletionModel() { delete list_; }
 	///
 	bool sorted() const
 	{
 		if (list_)
 			return list_->sorted();
-		else
-			return false;
+		return false;
 	}
 	///
 	int columnCount(const QModelIndex & /*parent*/ = QModelIndex()) const
@@ -144,7 +149,8 @@ public:
 		    
 		if (index.column() == 0)
 			return toqstr(list_->data(index.row()));
-		else if (index.column() == 1) {
+
+		if (index.column() == 1) {
 			// get icon from cache
 			QPixmap scaled;
 			QString const name = ":" + toqstr(list_->icon(index.row()));
@@ -786,7 +792,7 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			i = n;
 		else
 			i = l;
-		BOOST_ASSERT(i <= n);
+		LASSERT(i <= n, /**/);
 	}
 
 	// select the first if none was found

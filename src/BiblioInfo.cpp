@@ -24,6 +24,7 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetInclude.h"
 
+#include "support/assert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -423,7 +424,7 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
 	Buffer const * const tmp = buf->masterBuffer();
-	BOOST_ASSERT(tmp);
+	LASSERT(tmp, /**/);
 	if (tmp != buf) {
 		this->fillWithBibKeys(tmp);
 		return;

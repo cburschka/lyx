@@ -30,7 +30,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 
@@ -89,7 +89,7 @@ Toc const & TocBackend::toc(string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
-	BOOST_ASSERT(it != tocs_.end());
+	LASSERT(it != tocs_.end(), /**/);
 
 	return it->second;
 }
@@ -202,7 +202,7 @@ TocIterator TocBackend::item(string const & type,
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
-	BOOST_ASSERT(toclist_it != tocs_.end());
+	LASSERT(toclist_it != tocs_.end(), /**/);
 
 	Toc const & toc_vector = toclist_it->second;
 	TocIterator last = toc_vector.begin();

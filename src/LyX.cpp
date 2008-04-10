@@ -45,6 +45,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/ExceptionMessage.h"
@@ -204,14 +205,14 @@ void LyX::exit(int exit_code) const
 
 LyX & LyX::ref()
 {
-	BOOST_ASSERT(singleton_);
+	LASSERT(singleton_, /**/);
 	return *singleton_;
 }
 
 
 LyX const & LyX::cref()
 {
-	BOOST_ASSERT(singleton_);
+	LASSERT(singleton_, /**/);
 	return *singleton_;
 }
 
@@ -238,14 +239,14 @@ BufferList const & LyX::bufferList() const
 
 Session & LyX::session()
 {
-	BOOST_ASSERT(pimpl_->session_.get());
+	LASSERT(pimpl_->session_.get(), /**/);
 	return *pimpl_->session_.get();
 }
 
 
 Session const & LyX::session() const
 {
-	BOOST_ASSERT(pimpl_->session_.get());
+	LASSERT(pimpl_->session_.get(), /**/);
 	return *pimpl_->session_.get();
 }
 
@@ -264,42 +265,42 @@ LyXFunc const & LyX::lyxFunc() const
 
 Server & LyX::server()
 {
-	BOOST_ASSERT(pimpl_->lyx_server_.get());
+	LASSERT(pimpl_->lyx_server_.get(), /**/);
 	return *pimpl_->lyx_server_.get();
 }
 
 
 Server const & LyX::server() const
 {
-	BOOST_ASSERT(pimpl_->lyx_server_.get());
+	LASSERT(pimpl_->lyx_server_.get(), /**/);
 	return *pimpl_->lyx_server_.get();
 }
 
 
 ServerSocket & LyX::socket()
 {
-	BOOST_ASSERT(pimpl_->lyx_socket_.get());
+	LASSERT(pimpl_->lyx_socket_.get(), /**/);
 	return *pimpl_->lyx_socket_.get();
 }
 
 
 ServerSocket const & LyX::socket() const
 {
-	BOOST_ASSERT(pimpl_->lyx_socket_.get());
+	LASSERT(pimpl_->lyx_socket_.get(), /**/);
 	return *pimpl_->lyx_socket_.get();
 }
 
 
 frontend::Application & LyX::application()
 {
-	BOOST_ASSERT(pimpl_->application_.get());
+	LASSERT(pimpl_->application_.get(), /**/);
 	return *pimpl_->application_.get();
 }
 
 
 frontend::Application const & LyX::application() const
 {
-	BOOST_ASSERT(pimpl_->application_.get());
+	LASSERT(pimpl_->application_.get(), /**/);
 	return *pimpl_->application_.get();
 }
 
@@ -332,7 +333,7 @@ Messages & LyX::getMessages(string const & language)
 	pair<map<string, Messages>::iterator, bool> result =
 			pimpl_->messages_.insert(make_pair(language, Messages(language)));
 
-	BOOST_ASSERT(result.second);
+	LASSERT(result.second, /**/);
 	return result.first->second;
 }
 
@@ -478,7 +479,7 @@ void LyX::prepareExit()
 
 void LyX::earlyExit(int status)
 {
-	BOOST_ASSERT(pimpl_->application_.get());
+	LASSERT(pimpl_->application_.get(), /**/);
 	// LyX::pimpl_::application_ is not initialised at this
 	// point so it's safe to just exit after some cleanup.
 	prepareExit();
@@ -1326,7 +1327,7 @@ LyXFunc & theLyXFunc()
 Server & theServer()
 {
 	// FIXME: this should not be use_gui dependent
-	BOOST_ASSERT(use_gui);
+	LASSERT(use_gui, /**/);
 	return LyX::ref().server();
 }
 
@@ -1334,7 +1335,7 @@ Server & theServer()
 ServerSocket & theServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
-	BOOST_ASSERT(use_gui);
+	LASSERT(use_gui, /**/);
 	return LyX::ref().socket();
 }
 

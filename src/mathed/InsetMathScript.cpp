@@ -23,7 +23,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <ostream>
 
@@ -45,7 +45,7 @@ InsetMathScript::InsetMathScript(bool up)
 InsetMathScript::InsetMathScript(MathAtom const & at, bool up)
 	: InsetMathNest(2), cell_1_is_up_(up), limits_(0)
 {
-	BOOST_ASSERT(nargs() >= 1);
+	LASSERT(nargs() >= 1, /**/);
 	cell(0).push_back(at);
 }
 
@@ -88,7 +88,7 @@ MathData const & InsetMathScript::down() const
 {
 	if (nargs() == 3)
 		return cell(2);
-	BOOST_ASSERT(nargs() > 1);
+	LASSERT(nargs() > 1, /**/);
 	return cell(1);
 }
 
@@ -97,21 +97,21 @@ MathData & InsetMathScript::down()
 {
 	if (nargs() == 3)
 		return cell(2);
-	BOOST_ASSERT(nargs() > 1);
+	LASSERT(nargs() > 1, /**/);
 	return cell(1);
 }
 
 
 MathData const & InsetMathScript::up() const
 {
-	BOOST_ASSERT(nargs() > 1);
+	LASSERT(nargs() > 1, /**/);
 	return cell(1);
 }
 
 
 MathData & InsetMathScript::up()
 {
-	BOOST_ASSERT(nargs() > 1);
+	LASSERT(nargs() > 1, /**/);
 	return cell(1);
 }
 
@@ -245,7 +245,7 @@ int InsetMathScript::dy1(BufferView const & bv) const
 
 int InsetMathScript::dx0(BufferView const & bv) const
 {
-	BOOST_ASSERT(hasDown());
+	LASSERT(hasDown(), /**/);
 	Dimension const dim = dimension(bv);
 	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2 : nwid(bv);
 }
@@ -253,7 +253,7 @@ int InsetMathScript::dx0(BufferView const & bv) const
 
 int InsetMathScript::dx1(BufferView const & bv) const
 {
-	BOOST_ASSERT(hasUp());
+	LASSERT(hasUp(), /**/);
 	Dimension const dim = dimension(bv);
 	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker(&bv);
 }
@@ -462,7 +462,7 @@ Inset::idx_type InsetMathScript::idxOfScript(bool up) const
 		return (cell_1_is_up_ == up) ? 1 : 0;
 	if (nargs() == 3)
 		return up ? 1 : 2;
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 	// Silence compiler
 	return 0;
 }
@@ -694,7 +694,7 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		// should be on top of the cursor old.
 		Cursor insetCur = old;
 		int scriptSlice	= insetCur.find(this);
-		BOOST_ASSERT(scriptSlice != -1);
+		LASSERT(scriptSlice != -1, /**/);
 		insetCur.cutOff(scriptSlice);
 		insetCur.recordUndoInset();
 

@@ -64,7 +64,7 @@
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 

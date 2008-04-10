@@ -22,7 +22,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <map>
 #include <cmath>
@@ -77,7 +77,7 @@ string const X11hexname(RGBColor const & col)
 RGBColor rgbFromHexName(string const & x11hexname)
 {
 	RGBColor c;
-	BOOST_ASSERT(x11hexname.size() == 7 && x11hexname[0] == '#');
+	LASSERT(x11hexname.size() == 7 && x11hexname[0] == '#', /**/);
 	c.r = hexstrToInt(x11hexname.substr(1,2));
 	c.g = hexstrToInt(x11hexname.substr(3,2));
 	c.b = hexstrToInt(x11hexname.substr(5,2));

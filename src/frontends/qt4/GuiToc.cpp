@@ -34,7 +34,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <algorithm>
 
@@ -89,7 +89,7 @@ QStandardItemModel * GuiToc::tocModel(int type)
 	LYXERR(Debug::GUI, "GuiToc: type " << type
 		<< "  toc_models_.size() " << toc_models_.size());
 
-	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
+	LASSERT(type >= 0 && type < int(toc_models_.size()), /**/);
 	return toc_models_[type];
 }
 
@@ -111,7 +111,7 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 		return;
 	}
 
-	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
+	LASSERT(type >= 0 && type < int(toc_models_.size()), /**/);
 
 	TocIterator const it = toc_models_[type]->tocIterator(index);
 
@@ -212,7 +212,7 @@ void GuiToc::updateBackend()
 
 TocIterator GuiToc::currentTocItem(int type) const
 {
-	BOOST_ASSERT(bufferview());
+	LASSERT(bufferview(), /**/);
 	ParConstIterator it(bufferview()->cursor());
 	return buffer().masterBuffer()->tocBackend().item(fromqstr(types_[type]), it);
 }

@@ -36,7 +36,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/next_prior.hpp>
 
 #include <cstdlib>
@@ -53,14 +53,14 @@ MathData::MathData(const_iterator from, const_iterator to)
 
 MathAtom & MathData::operator[](pos_type pos)
 {
-	BOOST_ASSERT(pos < size());
+	LASSERT(pos < size(), /**/);
 	return base_type::operator[](pos);
 }
 
 
 MathAtom const & MathData::operator[](pos_type pos) const
 {
-	BOOST_ASSERT(pos < size());
+	LASSERT(pos < size(), /**/);
 	return base_type::operator[](pos);
 }
 
@@ -73,7 +73,7 @@ void MathData::insert(size_type pos, MathAtom const & t)
 
 void MathData::insert(size_type pos, MathData const & ar)
 {
-	BOOST_ASSERT(pos <= size());
+	LASSERT(pos <= size(), /**/);
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 
@@ -459,7 +459,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		InsetMath * inset = operator[](i).nucleus();
 		if (inset->asScriptInset())
 			inset = inset->asScriptInset()->nuc()[0].nucleus();
-		BOOST_ASSERT(inset->asMacro());
+		LASSERT(inset->asMacro(), /**/);
 		inset->asMacro()->updateRepresentation();
 	}
 }

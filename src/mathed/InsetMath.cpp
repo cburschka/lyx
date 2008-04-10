@@ -21,7 +21,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 
@@ -80,7 +80,7 @@ void InsetMath::write(WriteStream & os) const
 int InsetMath::plaintext(odocstream &, OutputParams const &) const
 {
 	// all math plain text output shall take place in InsetMathHull
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 	return 0;
 }
 

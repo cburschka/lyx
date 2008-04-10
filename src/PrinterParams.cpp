@@ -14,7 +14,7 @@
 
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 
 using namespace std;
@@ -71,13 +71,13 @@ void PrinterParams::testInvariant() const
 #ifdef ENABLE_ASSERTIONS
 	switch (target) {
 	case PRINTER:
-		//BOOST_ASSERT(!printer_name.empty());
+		//LASSERT(!printer_name.empty(), /**/);
 		break;
 	case FILE:
-		BOOST_ASSERT(!file_name.empty());
+		LASSERT(!file_name.empty(), /**/);
 		break;
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 		break;
 	}
 #endif

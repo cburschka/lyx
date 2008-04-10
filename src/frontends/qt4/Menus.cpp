@@ -45,6 +45,7 @@
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
@@ -139,7 +140,7 @@ public:
 		 bool optional = false)
 		: kind_(kind), label_(label), submenuname_(submenu), optional_(optional)
 	{
-		BOOST_ASSERT(kind == Submenu);
+		LASSERT(kind == Submenu, /**/);
 	}
 
 	MenuItem(Kind kind,
@@ -725,7 +726,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 				continue;
 			break;
 		default:
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 			break;
 		}
 		// FIXME: if we had proper support for translating the
@@ -1375,7 +1376,7 @@ MenuDefinition const & Menus::Impl::getMenu(QString const & name) const
 		MenuNamesEqual(name));
 	if (cit == menulist_.end())
 		lyxerr << "No submenu named " << fromqstr(name) << endl;
-	BOOST_ASSERT(cit != menulist_.end());
+	LASSERT(cit != menulist_.end(), /**/);
 	return (*cit);
 }
 
@@ -1386,7 +1387,7 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 		MenuNamesEqual(name));
 	if (it == menulist_.end())
 		lyxerr << "No submenu named " << fromqstr(name) << endl;
-	BOOST_ASSERT(it != menulist_.end());
+	LASSERT(it != menulist_.end(), /**/);
 	return (*it);
 }
 
@@ -1480,10 +1481,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 			<< fromqstr(d->menubar_.name()));
 		return;
 	}
-	else {
-		LYXERR(Debug::GUI, "menu bar entries "
-			<< d->menubar_.size());
-	}
+	LYXERR(Debug::GUI, "menu bar entries " << d->menubar_.size());
 
 	MenuDefinition menu;
 	Buffer * buf = 0;

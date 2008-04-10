@@ -15,6 +15,7 @@
 #include "Converter.h"
 #include "Format.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -257,7 +258,7 @@ static void build_script(FileName const & from_file,
 		  string const & to_format,
 		  ostream & script)
 {
-	BOOST_ASSERT(from_format != to_format);
+	LASSERT(from_format != to_format, /**/);
 	LYXERR(Debug::GRAPHICS, "build_script ... ");
 	typedef Converters::EdgePath EdgePath;
 

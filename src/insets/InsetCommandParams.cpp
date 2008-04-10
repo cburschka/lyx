@@ -35,7 +35,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -75,7 +75,7 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 	case TOC_CODE:
 		return InsetTOC::findInfo(cmdName);
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 	static const ParamInfo pi;
 	return pi; // to silence the warning
@@ -134,7 +134,7 @@ bool ParamInfo::operator==(ParamInfo const & rhs) const
 ParamInfo::ParamData const & 
 	ParamInfo::operator[](std::string const & name) const
 {
-	BOOST_ASSERT(hasParam(name));
+	LASSERT(hasParam(name), /**/);
 	const_iterator it = begin();
 	const_iterator last = end();
 	for (; it != last; ++it) {
@@ -202,7 +202,7 @@ string InsetCommandParams::getDefaultCmd(InsetCode code)
 		case TOC_CODE:
 			return InsetTOC::defaultCommand();
 		default:
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 	}
 	return string(); // silence the warning
 }
@@ -236,7 +236,7 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 		case TOC_CODE:
 			return InsetTOC::isCompatibleCommand(s);
 		default:
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 	}
 	return false; // silence the warning
 }
@@ -325,7 +325,7 @@ void InsetCommandParams::write(ostream & os) const
 bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 {
 	if (!ci->isOptional())
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	++ci; // we want to start with the next one
 	ParamInfo::const_iterator end = info_.end();
 	for (; ci != end; ++ci) {
@@ -395,7 +395,7 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 		find_if(info_.begin(), info_.end(), 
 			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
 	if (it == info_.end())
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	return (*this)[it->name()];
 }
 
@@ -403,7 +403,7 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
 	static const docstring dummy; //so we don't return a ref to temporary
-	BOOST_ASSERT(info_.hasParam(name));
+	LASSERT(info_.hasParam(name), /**/);
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
 		return dummy;
@@ -413,7 +413,7 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 
 docstring & InsetCommandParams::operator[](string const & name)
 {
-	BOOST_ASSERT(info_.hasParam(name));
+	LASSERT(info_.hasParam(name), /**/);
 	return params_[name];
 }
 

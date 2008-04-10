@@ -787,7 +787,7 @@ void BufferView::showCursor(DocIterator const & dit)
 
 	if (tm.contains(bot_pit)) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-		BOOST_ASSERT(!pm.rows().empty());
+		LASSERT(!pm.rows().empty(), /**/);
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
 		int offset = coordOffset(dit, dit.boundary()).y_;
@@ -1774,7 +1774,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 {
-	BOOST_ASSERT(&cur.bv() == this);
+	LASSERT(&cur.bv() == this, /**/);
 
 	if (!select)
 		// this event will clear selection so we save selection for
@@ -1975,7 +1975,7 @@ void BufferView::updateMetrics()
 
 void BufferView::insertLyXFile(FileName const & fname)
 {
-	BOOST_ASSERT(d->cursor_.inTexted());
+	LASSERT(d->cursor_.inTexted(), /**/);
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
@@ -2060,7 +2060,7 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 	CursorSlice const & sl = dit[0];
 	TextMetrics const & tm = textMetrics(sl.text());
 	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
-	BOOST_ASSERT(!pm.rows().empty());
+	LASSERT(!pm.rows().empty(), /**/);
 	y -= pm.rows()[0].ascent();
 #if 1
 	// FIXME: document this mess

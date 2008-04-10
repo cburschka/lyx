@@ -14,7 +14,7 @@
 
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <istream>
 
@@ -71,7 +71,7 @@ int AuthorList::record(Author const & a)
 
 void AuthorList::record(int id, Author const & a)
 {
-	BOOST_ASSERT(unsigned(id) < authors_.size());
+	LASSERT(unsigned(id) < authors_.size(), /**/);
 
 	authors_[id] = a;
 }
@@ -80,7 +80,7 @@ void AuthorList::record(int id, Author const & a)
 Author const & AuthorList::get(int id) const
 {
 	Authors::const_iterator it(authors_.find(id));
-	BOOST_ASSERT(it != authors_.end());
+	LASSERT(it != authors_.end(), /**/);
 	return it->second;
 }
 

@@ -22,7 +22,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <iostream>
 
@@ -104,7 +104,7 @@ void PanelStack::addPanel(QWidget * panel, QString const & name, QString const &
 void PanelStack::setCurrentPanel(QString const & name)
 {
 	QTreeWidgetItem * item = panel_map_.value(name, 0);
-	BOOST_ASSERT(item);
+	LASSERT(item, /**/);
 
 	// force on first set
 	if (list_->currentItem() == item)

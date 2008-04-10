@@ -26,6 +26,7 @@
 #include "output_latex.h"
 #include "OutputParams.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -623,7 +624,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		pair<bool, int> const c = switchEncoding(os, bparams,
 				runparams, *ascii);
-		BOOST_ASSERT(c.first);
+		LASSERT(c.first, /**/);
 		count += c.second;
 		runparams.encoding = ascii;
 		open_encoding_ = false;

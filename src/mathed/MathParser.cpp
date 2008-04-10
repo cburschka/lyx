@@ -817,7 +817,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (flags & FLAG_BRACE_LAST)
 				return;
 			error("found '}' unexpectedly");
-			//BOOST_ASSERT(false);
+			//LASSERT(false, /**/);
 			//add(cell, '}', LM_TC_TEX);
 		}
 

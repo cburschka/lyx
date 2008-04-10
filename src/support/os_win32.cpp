@@ -24,7 +24,7 @@
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <cstdlib>
 #include <vector>
@@ -211,7 +211,7 @@ static string const get_long_path(string const & short_path)
 		long_path.resize(result);
 		result = GetLongPathName(short_path.c_str(),
 					 &long_path[0], long_path.size());
-		BOOST_ASSERT(result <= long_path.size());
+		LASSERT(result <= long_path.size(), /**/);
 	}
 
 	return (result == 0) ? short_path : to_utf8(from_filesystem8bit(&long_path[0]));
@@ -329,7 +329,7 @@ string const GetFolderPath::operator()(folder_id _id) const
 		id = CSIDL_APPDATA;
 		break;
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 	HRESULT const result = (folder_path_func_)(0, id, 0,
 						   SHGFP_TYPE_CURRENT,

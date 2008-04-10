@@ -19,7 +19,7 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 
@@ -183,7 +183,7 @@ void Counters::reset()
 
 void Counters::reset(docstring const & match)
 {
-	BOOST_ASSERT(!match.empty());
+	LASSERT(!match.empty(), /**/);
 
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator end = counterList.end();

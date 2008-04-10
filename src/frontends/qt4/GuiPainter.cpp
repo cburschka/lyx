@@ -22,6 +22,7 @@
 #include "Language.h"
 #include "LyXRC.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 
 #include <QPixmapCache>
@@ -150,7 +151,7 @@ void GuiPainter::enterMonochromeMode(ColorCode const & min, ColorCode const & ma
 
 void GuiPainter::leaveMonochromeMode()
 {
-	BOOST_ASSERT(!monochrome_min_.empty());
+	LASSERT(!monochrome_min_.empty(), /**/);
 	monochrome_min_.pop();
 	monochrome_max_.pop();
 }

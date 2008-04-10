@@ -34,14 +34,15 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 {
@@ -184,7 +185,7 @@ void InsetCollapsable::read(Lexer & lex)
 
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
-	BOOST_ASSERT(layout_);
+	LASSERT(layout_, /**/);
 	Dimension dim;
 	theFontMetrics(layout_->labelfont()).buttonText(
 		labelstring_, dim.wid, dim.asc, dim.des);
@@ -194,7 +195,7 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(layout_);
+	LASSERT(layout_, /**/);
 
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 
@@ -259,7 +260,7 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(layout_);
+	LASSERT(layout_, /**/);
 
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
 	ColorCode const old_color = pi.background_color;
@@ -384,7 +385,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 {
 	if (geometry() == ButtonOnly)
 		status_ = Open;
-	BOOST_ASSERT(geometry() != ButtonOnly);
+	LASSERT(geometry() != ButtonOnly, /**/);
 
 	InsetText::cursorPos(bv, sl, boundary, x, y);
 	Dimension const textdim = InsetText::dimension(bv);
@@ -448,8 +449,7 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 }
 
 
-void InsetCollapsable::edit(
-		Cursor & cur, bool front, EntryDirection entry_from)
+void InsetCollapsable::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(*this);

@@ -50,6 +50,7 @@
 
 #include "mathed/InsetMathHull.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/textutils.h"
@@ -158,7 +159,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 		pos_type pos, Font const & font, bool toggleall)
 {
 	Inset * const inset = pars_[pit].getInset(pos);
-	BOOST_ASSERT(inset && inset->noFontChange());
+	LASSERT(inset && inset->noFontChange(), /**/);
 
 	CursorSlice::idx_type endidx = inset->nargs();
 	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
@@ -196,7 +197,7 @@ pit_type Text::undoSpan(pit_type pit)
 void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 		docstring const & layout)
 {
-	BOOST_ASSERT(start != end);
+	LASSERT(start != end, /**/);
 
 	BufferParams const & bufparams = buffer.params();
 	Layout const & lyxlayout = bufparams.documentClass()[layout];
@@ -214,7 +215,7 @@ void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 // set layout over selection and make a total rebreak of those paragraphs
 void Text::setLayout(Cursor & cur, docstring const & layout)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
 	BufferParams const & params = bv.buffer().params();
@@ -257,7 +258,7 @@ static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 
 bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	// this happens when selecting several cells in tabular (bug 2630)
 	if (cur.selBegin().idx() != cur.selEnd().idx())
 		return false;
@@ -277,7 +278,7 @@ bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 
 void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	pit_type const beg = cur.selBegin().pit();
 	pit_type const end = cur.selEnd().pit() + 1;
 	cur.recordUndoSelection();
@@ -302,7 +303,7 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 
 void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	// Set the current_font
 	// Determine basis font
 	FontInfo layoutfont;
@@ -369,21 +370,21 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 
 bool Text::cursorTop(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	return setCursor(cur, 0, 0);
 }
 
 
 bool Text::cursorBottom(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
 }
 
 
 void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	// If the mask is completely neutral, tell user
 	if (font.fontInfo() == ignore_font && 
 		(font.language() == 0 || font.language() == ignore_language)) {
@@ -416,7 +417,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 
 docstring Text::getStringToIndex(Cursor const & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	if (cur.selection())
 		return cur.selectionAsString(false);
@@ -440,7 +441,7 @@ docstring Text::getStringToIndex(Cursor const & cur)
 
 void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
-	BOOST_ASSERT(cur.text());
+	LASSERT(cur.text(), /**/);
 	// make sure that the depth behind the selection are restored, too
 	pit_type undopit = undoSpan(cur.selEnd().pit());
 	recUndo(cur, cur.selBegin().pit(), undopit - 1);
@@ -462,7 +463,7 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 //quite so much.
 void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p) 
 {
-	BOOST_ASSERT(cur.text());
+	LASSERT(cur.text(), /**/);
 	// make sure that the depth behind the selection are restored, too
 	pit_type undopit = undoSpan(cur.selEnd().pit());
 	recUndo(cur, cur.selBegin().pit(), undopit - 1);
@@ -478,8 +479,8 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 // this really should just insert the inset and not move the cursor.
 void Text::insertInset(Cursor & cur, Inset * inset)
 {
-	BOOST_ASSERT(this == cur.text());
-	BOOST_ASSERT(inset);
+	LASSERT(this == cur.text(), /**/);
+	LASSERT(inset, /**/);
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
 		Change(cur.buffer().params().trackChanges
 		? Change::INSERTED : Change::UNCHANGED));
@@ -534,7 +535,7 @@ bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 
 void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 {
-	BOOST_ASSERT(par != int(paragraphs().size()));
+	LASSERT(par != int(paragraphs().size()), /**/);
 	cur.pit() = par;
 	cur.pos() = pos;
 
@@ -544,14 +545,14 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
 		lyxerr << "dont like -1" << endl;
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 
 	if (pos > para.size()) {
 		lyxerr << "dont like 1, pos: " << pos
 		       << " size: " << para.size()
 		       << " par: " << par << endl;
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 	}
 }
 
@@ -559,7 +560,7 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 void Text::setCursorIntern(Cursor & cur,
 			      pit_type par, pos_type pos, bool setfont, bool boundary)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
 	if (setfont)
@@ -1040,7 +1041,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
-	BOOST_ASSERT(first >= 0 && first <= last && last < (int) pars_.size());
+	LASSERT(first >= 0 && first <= last && last < (int) pars_.size(), /**/);
 
 	for (pit_type pit = first; pit <= last; ++pit) {
 		Paragraph & par = pars_[pit];

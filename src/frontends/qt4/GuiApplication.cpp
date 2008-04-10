@@ -36,6 +36,7 @@
 #include "Session.h"
 #include "version.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
@@ -666,8 +667,8 @@ void GuiApplication::addMenuTranslator()
 bool GuiApplication::unregisterView(int id)
 {
 	updateIds(views_, view_ids_);
-	BOOST_ASSERT(views_.find(id) != views_.end());
-	BOOST_ASSERT(views_[id]);
+	LASSERT(views_.find(id) != views_.end(), /**/);
+	LASSERT(views_[id], /**/);
 
 	map<int, GuiView *>::iterator it;
 	for (it = views_.begin(); it != views_.end(); ++it) {
@@ -702,7 +703,7 @@ bool GuiApplication::closeAllViews()
 
 GuiView & GuiApplication::view(int id) const
 {
-	BOOST_ASSERT(views_.find(id) != views_.end());
+	LASSERT(views_.find(id) != views_.end(), /**/);
 	return *views_.find(id)->second;
 }
 
@@ -812,7 +813,7 @@ void hideDialogs(std::string const & name, Inset * inset)
 
 frontend::FontLoader & theFontLoader()
 {
-	BOOST_ASSERT(frontend::guiApp);
+	LASSERT(frontend::guiApp, /**/);
 	return frontend::guiApp->fontLoader();
 }
 
@@ -825,7 +826,7 @@ frontend::FontMetrics const & theFontMetrics(Font const & f)
 
 frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 {
-	BOOST_ASSERT(frontend::guiApp);
+	LASSERT(frontend::guiApp, /**/);
 	return frontend::guiApp->fontLoader().metrics(f);
 }
 
@@ -838,14 +839,14 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 
 frontend::Clipboard & theClipboard()
 {
-	BOOST_ASSERT(frontend::guiApp);
+	LASSERT(frontend::guiApp, /**/);
 	return frontend::guiApp->clipboard();
 }
 
 
 frontend::Selection & theSelection()
 {
-	BOOST_ASSERT(frontend::guiApp);
+	LASSERT(frontend::guiApp, /**/);
 	return frontend::guiApp->selection();
 }
 

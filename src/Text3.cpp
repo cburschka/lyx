@@ -131,7 +131,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		const int old_pos = cur.pos();
 #endif
 		cur.insert(new InsetMathHull(hullSimple));
-		BOOST_ASSERT(old_pos == cur.pos());
+		LASSERT(old_pos == cur.pos(), /**/);
 		cur.nextInset()->edit(cur, true);
 		// don't do that also for LFUN_MATH_MODE
 		// unless you want end up with always changing
@@ -390,7 +390,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// at the end?
 	cur.noUpdate();
 
-	BOOST_ASSERT(cur.text() == this);
+	LASSERT(cur.text() == this, /**/);
 	CursorSlice oldTopSlice = cur.top();
 	bool oldBoundary = cur.boundary();
 	bool sel = cur.selection();
@@ -924,7 +924,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else if (arg == "linkback")
 				type = Clipboard::LinkBackGraphicsType;
 			else
-				BOOST_ASSERT(false);
+				LASSERT(false, /**/);
 
 			pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"), type);
 		}
@@ -1487,7 +1487,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		cur.insert(new InsetMathHull(hullSimple));
 		checkAndActivateInset(cur, true);
-		BOOST_ASSERT(cur.inMathed());
+		LASSERT(cur.inMathed(), /**/);
 		cur.dispatch(cmd);
 		break;
 	}
@@ -1827,7 +1827,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
-	BOOST_ASSERT(cur.text() == this);
+	LASSERT(cur.text() == this, /**/);
 
 	Font const & font = cur.real_current_font;
 	FontInfo const & fontinfo = font.fontInfo();

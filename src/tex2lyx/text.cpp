@@ -21,12 +21,11 @@
 #include "Layout.h"
 #include "Length.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-
-#include <boost/assert.hpp>
 
 #include <algorithm>
 #include <iostream>
@@ -919,7 +918,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 /// parses a comment and outputs it to \p os.
 void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 {
-	BOOST_ASSERT(t.cat() == catComment);
+	LASSERT(t.cat() == catComment, return);
 	if (!t.cs().empty()) {
 		context.check_layout(os);
 		handle_comment(os, '%' + t.cs(), context);

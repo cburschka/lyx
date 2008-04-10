@@ -14,7 +14,7 @@
 #include "support/environment.h"
 #include "support/docstring.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #if defined (_WIN32)
 # include "support/gettext.h"
@@ -46,7 +46,7 @@ docstring const user_name()
 	return from_local8bit(name);
 #else
 	struct passwd * pw = getpwuid(geteuid());
-	BOOST_ASSERT(pw);
+	LASSERT(pw, /**/);
 
 	string name = pw->pw_gecos;
 	if (name.empty())

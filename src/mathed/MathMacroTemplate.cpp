@@ -36,6 +36,7 @@
 
 #include "frontends/Painter.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -618,7 +619,7 @@ bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	// find this in cursor old
 	Cursor insetCur = old;
 	int scriptSlice	= insetCur.find(this);
-	BOOST_ASSERT(scriptSlice != -1);
+	LASSERT(scriptSlice != -1, /**/);
 	insetCur.cutOff(scriptSlice);
 	
 	commitEditChanges(insetCur);

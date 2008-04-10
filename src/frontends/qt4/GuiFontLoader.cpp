@@ -30,7 +30,7 @@
 #include <QFontInfo>
 #include <QFontDatabase>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -91,10 +91,10 @@ static GuiFontInfo * fontinfo_[NUM_FAMILIES][2][4][10];
 // if not cached, create it.
 GuiFontInfo & fontinfo(FontInfo const & f)
 {
-	BOOST_ASSERT(f.family() < NUM_FAMILIES);
-	BOOST_ASSERT(f.series() < 2);
-	BOOST_ASSERT(f.realShape() < 4);
-	BOOST_ASSERT(f.size() < 10);
+	LASSERT(f.family() < NUM_FAMILIES, /**/);
+	LASSERT(f.series() < 2, /**/);
+	LASSERT(f.realShape() < 4, /**/);
+	LASSERT(f.size() < 10, /**/);
 	// fi is a reference to the pointer type (GuiFontInfo *) in the
 	// fontinfo_ table.
 	GuiFontInfo * & fi =

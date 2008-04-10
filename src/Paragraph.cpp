@@ -49,6 +49,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -248,8 +249,8 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 
 bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
-	BOOST_ASSERT(start >= 0 && start <= size());
-	BOOST_ASSERT(end > start && end <= size() + 1);
+	LASSERT(start >= 0 && start <= size(), /**/);
+	LASSERT(end > start && end <= size() + 1, /**/);
 
 	return d->changes_.isChanged(start, end);
 }
@@ -294,7 +295,7 @@ void Paragraph::setChange(Change const & change)
 
 void Paragraph::setChange(pos_type pos, Change const & change)
 {
-	BOOST_ASSERT(pos >= 0 && pos <= size());
+	LASSERT(pos >= 0 && pos <= size(), /**/);
 	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
@@ -306,7 +307,7 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 
 Change const & Paragraph::lookupChange(pos_type pos) const
 {
-	BOOST_ASSERT(pos >= 0 && pos <= size());
+	LASSERT(pos >= 0 && pos <= size(), /**/);
 	return d->changes_.lookup(pos);
 }
 
@@ -314,8 +315,8 @@ Change const & Paragraph::lookupChange(pos_type pos) const
 void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start,
 		pos_type end)
 {
-	BOOST_ASSERT(start >= 0 && start <= size());
-	BOOST_ASSERT(end > start && end <= size() + 1);
+	LASSERT(start >= 0 && start <= size(), /**/);
+	LASSERT(end > start && end <= size() + 1, /**/);
 
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
@@ -350,8 +351,8 @@ void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start,
 void Paragraph::rejectChanges(BufferParams const & bparams,
 		pos_type start, pos_type end)
 {
-	BOOST_ASSERT(start >= 0 && start <= size());
-	BOOST_ASSERT(end > start && end <= size() + 1);
+	LASSERT(start >= 0 && start <= size(), /**/);
+	LASSERT(end > start && end <= size() + 1, /**/);
 
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
@@ -386,7 +387,7 @@ void Paragraph::rejectChanges(BufferParams const & bparams,
 void Paragraph::Private::insertChar(pos_type pos, char_type c,
 		Change const & change)
 {
-	BOOST_ASSERT(pos >= 0 && pos <= int(text_.size()));
+	LASSERT(pos >= 0 && pos <= int(text_.size()), /**/);
 
 	// track change
 	changes_.insert(change, pos);
@@ -412,11 +413,11 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 void Paragraph::insertInset(pos_type pos, Inset * inset,
 				   Change const & change)
 {
-	BOOST_ASSERT(inset);
-	BOOST_ASSERT(pos >= 0 && pos <= size());
+	LASSERT(inset, /**/);
+	LASSERT(pos >= 0 && pos <= size(), /**/);
 
 	d->insertChar(pos, META_INSET, change);
-	BOOST_ASSERT(d->text_[pos] == META_INSET);
+	LASSERT(d->text_[pos] == META_INSET, /**/);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
@@ -425,7 +426,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 
 bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 {
-	BOOST_ASSERT(pos >= 0 && pos <= size());
+	LASSERT(pos >= 0 && pos <= size(), /**/);
 
 	// keep the logic here in sync with the logic of isMergedOnEndOfParDeletion()
 
@@ -474,8 +475,8 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 
 int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
-	BOOST_ASSERT(start >= 0 && start <= size());
-	BOOST_ASSERT(end >= start && end <= size() + 1);
+	LASSERT(start >= 0 && start <= size(), /**/);
+	LASSERT(end >= start && end <= size() + 1, /**/);
 
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
@@ -647,7 +648,7 @@ void Paragraph::Private::latexInset(
 					     unsigned int & column)
 {
 	Inset * inset = owner_->getInset(i);
-	BOOST_ASSERT(inset);
+	LASSERT(inset, /**/);
 
 	if (style.pass_thru) {
 		inset->plaintext(os, runparams);
@@ -1273,7 +1274,7 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 {
 	if (pos > size()) {
 		LYXERR0("pos: " << pos << " size: " << size());
-		BOOST_ASSERT(pos <= size());
+		LASSERT(pos <= size(), /**/);
 	}
 
 	FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
@@ -1289,7 +1290,7 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
-	BOOST_ASSERT(pos <= size());
+	LASSERT(pos <= size(), /**/);
 	pos_type start = 0;
 
 	FontList::const_iterator cit = d->fontlist_.begin();
@@ -1331,7 +1332,7 @@ Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 				 Font const & outerfont) const
 {
-	BOOST_ASSERT(pos >= 0);
+	LASSERT(pos >= 0, /**/);
 
 	Font font = getFontSettings(bparams, pos);
 
@@ -1417,7 +1418,7 @@ char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 
 void Paragraph::setFont(pos_type pos, Font const & font)
 {
-	BOOST_ASSERT(pos <= size());
+	LASSERT(pos <= size(), /**/);
 
 	// First, reduce font against layout/label font
 	// Update: The setCharFont() routine in text2.cpp already
@@ -2748,7 +2749,7 @@ void Paragraph::registerWords()
 
 void Paragraph::updateWords(CursorSlice const & sl)
 {
-	BOOST_ASSERT(&sl.paragraph() == this);
+	LASSERT(&sl.paragraph() == this, /**/);
 	deregisterWords();
 	collectWords(sl);
 	registerWords();

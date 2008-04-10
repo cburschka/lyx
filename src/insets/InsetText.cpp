@@ -52,7 +52,7 @@
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -91,7 +91,7 @@ InsetText::InsetText()
 
 void InsetText::initParagraphs(Buffer const & buf)
 {
-	BOOST_ASSERT(paragraphs().empty());
+	LASSERT(paragraphs().empty(), /**/);
 	buffer_ = const_cast<Buffer *>(&buf);
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
@@ -109,7 +109,7 @@ void InsetText::setParagraphOwner()
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
-	BOOST_ASSERT(!pars.empty());
+	LASSERT(!pars.empty(), /**/);
 
 	// This is a gross hack...
 	Layout const & old_layout = pars.begin()->layout();
@@ -432,7 +432,7 @@ void InsetText::updateLabels(ParIterator const & it)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
-	BOOST_ASSERT(&it2.inset() == this && it2.pit() == 0);
+	LASSERT(&it2.inset() == this && it2.pit() == 0, /**/);
 	lyx::updateLabels(buffer(), it2);
 }
 
@@ -445,9 +445,9 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	// find text inset in old cursor
 	Cursor insetCur = old;
 	int scriptSlice	= insetCur.find(this);
-	BOOST_ASSERT(scriptSlice != -1);
+	LASSERT(scriptSlice != -1, /**/);
 	insetCur.cutOff(scriptSlice);
-	BOOST_ASSERT(&insetCur.inset() == this);
+	LASSERT(&insetCur.inset() == this, /**/);
 	
 	// update the old paragraph's words
 	insetCur.paragraph().updateWords(insetCur.top());

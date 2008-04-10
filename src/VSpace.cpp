@@ -23,7 +23,7 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <cstring>
 
@@ -458,7 +458,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 			: "\\vspace{" + len_.asLatexString() + '}';
 
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 		return string();
 	}
 }
@@ -522,7 +522,7 @@ int VSpace::inPixels(BufferView const & bv) const
 		return len_.len().inPixels(bv.workWidth());
 
 	default:
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 		return 0;
 	}
 }

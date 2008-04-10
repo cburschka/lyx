@@ -73,7 +73,7 @@ Package const & package()
 	// Commented out because package().locale_dir() can be called
 	// from the message translation code in Messages.cpp before
 	// init_package() is called. Lars is on the case...
-	// BOOST_ASSERT(initialised_);
+	// LASSERT(initialised_, /**/);
 	return package_;
 }
 

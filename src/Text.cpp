@@ -59,6 +59,7 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -340,7 +341,7 @@ double Text::spacing(Buffer const & buffer, Paragraph const & par) const
 
 void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
@@ -417,7 +418,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 // same Paragraph one to the right and make a rebreak
 void Text::insertChar(Cursor & cur, char_type c)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	cur.recordUndo(INSERT_UNDO);
 
@@ -529,7 +530,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 			}
 			return;
 		}
-		BOOST_ASSERT(cur.pos() > 0);
+		LASSERT(cur.pos() > 0, /**/);
 		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
 		    && !par.isDeleted(cur.pos() - 1)) {
 			static bool sent_space_message = false;
@@ -570,7 +571,7 @@ void Text::charInserted(Cursor & cur)
 	    && par.isLetter(cur.pos() - 2)
 	    && !par.isLetter(cur.pos() - 1)) {
 		// get the word in front of cursor
-		BOOST_ASSERT(this == cur.text());
+		LASSERT(this == cur.text(), /**/);
 		cur.paragraph().updateWords(cur.top());
 	}
 }
@@ -581,7 +582,7 @@ void Text::charInserted(Cursor & cur)
 
 bool Text::cursorForwardOneWord(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	Cursor old = cur;
 
@@ -602,7 +603,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 
 bool Text::cursorBackwardOneWord(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	Cursor old = cur;
 
@@ -623,7 +624,7 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 
 void Text::selectWord(Cursor & cur, word_location loc)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	CursorSlice from = cur.top();
 	CursorSlice to = cur.top();
 	getWord(from, to, loc);
@@ -641,7 +642,7 @@ void Text::selectWord(Cursor & cur, word_location loc)
 // selection is currently set
 bool Text::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	if (cur.selection())
 		return false;
 	selectWord(cur, loc);
@@ -651,7 +652,7 @@ bool Text::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
 
 void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	if (!cur.selection())
 		return;
@@ -797,7 +798,7 @@ void Text::rejectChanges(BufferParams const & bparams)
 
 void Text::deleteWordForward(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	if (cur.lastpos() == 0)
 		cursorForward(cur);
 	else {
@@ -813,7 +814,7 @@ void Text::deleteWordForward(Cursor & cur)
 
 void Text::deleteWordBackward(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	if (cur.lastpos() == 0)
 		cursorBackward(cur);
 	else {
@@ -830,7 +831,7 @@ void Text::deleteWordBackward(Cursor & cur)
 // Kill to end of line.
 void Text::changeCase(Cursor & cur, TextCase action)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	CursorSlice from;
 	CursorSlice to;
 
@@ -912,7 +913,7 @@ bool Text::handleBibitems(Cursor & cur)
 
 bool Text::erase(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	bool needsUpdate = false;
 	Paragraph & par = cur.paragraph();
 
@@ -959,7 +960,7 @@ bool Text::erase(Cursor & cur)
 
 bool Text::backspacePos0(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	if (cur.pit() == 0)
 		return false;
 
@@ -1012,7 +1013,7 @@ bool Text::backspacePos0(Cursor & cur)
 
 bool Text::backspace(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	bool needsUpdate = false;
 	if (cur.pos() == 0) {
 		if (cur.pit() == 0)
@@ -1061,7 +1062,7 @@ bool Text::backspace(Cursor & cur)
 
 
 bool Text::dissolveInset(Cursor & cur) {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	if (isMainText(cur.bv().buffer()) || cur.inset().nargs() != 1)
 		return false;
@@ -1214,7 +1215,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 // Returns the current font and depth as a message.
 docstring Text::currentState(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 	Buffer & buf = cur.buffer();
 	Paragraph const & par = cur.paragraph();
 	odocstringstream os;
@@ -1370,7 +1371,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 
 void Text::charsTranspose(Cursor & cur)
 {
-	BOOST_ASSERT(this == cur.text());
+	LASSERT(this == cur.text(), /**/);
 
 	pos_type pos = cur.pos();
 
@@ -1469,7 +1470,7 @@ CompletionList const * Text::createCompletionList(Cursor const & cur) const
 
 bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
 {	
-	BOOST_ASSERT(cur.bv().cursor() == cur);
+	LASSERT(cur.bv().cursor() == cur, /**/);
 	cur.insert(s);
 	cur.bv().cursor() = cur;
 	if (!(cur.disp_.update() & Update::Force))

@@ -23,7 +23,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/next_prior.hpp>
 
 using namespace std;
@@ -164,7 +164,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 
 	tmp.makeSameLayout(par);
 
-	BOOST_ASSERT(pos <= par.size());
+	LASSERT(pos <= par.size(), /**/);
 
 	if (pos < par.size()) {
 		// move everything behind the break position to the new paragraph

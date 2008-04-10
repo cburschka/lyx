@@ -45,6 +45,7 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/RenderPreview.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/ExceptionMessage.h"
@@ -257,7 +258,7 @@ bool InsetInclude::isCompatibleCommand(string const & s)
 
 void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	BOOST_ASSERT(&cur.buffer() == &buffer());
+	LASSERT(&cur.buffer() == &buffer(), /**/);
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -327,7 +328,7 @@ docstring InsetInclude::screenLabel() const
 			temp = listings_label_;
 			break;
 		case NONE:
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 	}
 
 	temp += ": ";
@@ -656,7 +657,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string incfile = to_utf8(params()["filename"]);
 	string writefile;
 
-	BOOST_ASSERT(&buffer() == &features.buffer());
+	LASSERT(&buffer() == &features.buffer(), /**/);
 
 	string const included_file =
 		includedFilename(buffer(), params()).availableFile().absFilename();
@@ -743,7 +744,7 @@ EmbeddedFileList const &
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(mi.base.bv);
+	LASSERT(mi.base.bv, /**/);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
@@ -769,7 +770,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
+	LASSERT(pi.base.bv, /**/);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {

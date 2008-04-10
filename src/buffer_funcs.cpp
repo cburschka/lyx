@@ -41,6 +41,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetInclude.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
@@ -274,7 +275,7 @@ depth_type getItemDepth(ParIterator const & it)
 bool needEnumCounterReset(ParIterator const & it)
 {
 	Paragraph const & par = *it;
-	BOOST_ASSERT(par.layout().labeltype == LABEL_ENUMERATE);
+	LASSERT(par.layout().labeltype == LABEL_ENUMERATE, /**/);
 	depth_type const cur_depth = par.getDepth();
 	ParIterator prev_it = it;
 	while (prev_it.pit()) {
@@ -443,7 +444,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 void updateLabels(Buffer const & buf, ParIterator & parit)
 {
-	BOOST_ASSERT(parit.pit() == 0);
+	LASSERT(parit.pit() == 0, /**/);
 
 	// set the position of the text in the buffer to be able
 	// to resolve macros in it. This has nothing to do with

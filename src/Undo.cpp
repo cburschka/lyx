@@ -33,7 +33,7 @@
 #include "support/debug.h"
 #include "support/limited_stack.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <algorithm>
 #include <ostream>
@@ -222,7 +222,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		// main Text _is_ the whole document.
 		// record the relevant paragraphs
 		Text const * text = cell.text();
-		BOOST_ASSERT(text);
+		LASSERT(text, /**/);
 		ParagraphList const & plist = text->paragraphs();
 		ParagraphList::const_iterator first = plist.begin();
 		advance(first, first_pit);
@@ -243,8 +243,8 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
 	pit_type first_pit, pit_type last_pit)
 {
-	BOOST_ASSERT(first_pit <= cur.lastpit());
-	BOOST_ASSERT(last_pit <= cur.lastpit());
+	LASSERT(first_pit <= cur.lastpit(), /**/);
+	LASSERT(last_pit <= cur.lastpit(), /**/);
 
 	doRecordUndo(kind, cur, first_pit, last_pit, cur,
 		false, true);
@@ -287,7 +287,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	bool labelsUpdateNeeded = false;
 	DocIterator dit = undo.cell.asDocIterator(&buffer_.inset());
 	if (undo.isFullBuffer) {
-		BOOST_ASSERT(undo.pars);
+		LASSERT(undo.pars, /**/);
 		// This is a full document
 		otherstack.top().bparams = buffer_.params();
 		buffer_.params() = undo.bparams;
@@ -299,15 +299,15 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
 		//LYXERR0("undo.array: " << *undo.array);
-		BOOST_ASSERT(undo.array);
+		LASSERT(undo.array, /**/);
 		dit.cell().swap(*undo.array);
 		delete undo.array;
 		undo.array = 0;
 	} else {
 		// Some finer machinery is needed here.
 		Text * text = dit.text();
-		BOOST_ASSERT(text);
-		BOOST_ASSERT(undo.pars);
+		LASSERT(text, /**/);
+		LASSERT(undo.pars, /**/);
 		ParagraphList & plist = text->paragraphs();
 
 		// remove new stuff between first and last
@@ -332,8 +332,8 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		undo.pars = 0;
 		labelsUpdateNeeded = true;
 	}
-	BOOST_ASSERT(undo.pars == 0);
-	BOOST_ASSERT(undo.array == 0);
+	LASSERT(undo.pars == 0, /**/);
+	LASSERT(undo.array == 0, /**/);
 
 	cur = undo.cursor.asDocIterator(&buffer_.inset());
 	

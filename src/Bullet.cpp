@@ -18,7 +18,7 @@
 
 #include "Bullet.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 using namespace std;
 
@@ -348,25 +348,25 @@ docstring const Bullet::bulletEntry(int f, int c)
 void Bullet::testInvariant() const
 {
 #ifdef ENABLE_ASSERTIONS
-	BOOST_ASSERT(font >= MIN);
-	BOOST_ASSERT(font < FONTMAX);
-	BOOST_ASSERT(character >= MIN);
-	BOOST_ASSERT(character < CHARMAX);
-	BOOST_ASSERT(size >= MIN);
-	BOOST_ASSERT(size < SIZEMAX);
-	BOOST_ASSERT(user_text >= -1);
-	BOOST_ASSERT(user_text <= 1);
+	LASSERT(font >= MIN, /**/);
+	LASSERT(font < FONTMAX, /**/);
+	LASSERT(character >= MIN, /**/);
+	LASSERT(character < CHARMAX, /**/);
+	LASSERT(size >= MIN, /**/);
+	LASSERT(size < SIZEMAX, /**/);
+	LASSERT(user_text >= -1, /**/);
+	LASSERT(user_text <= 1, /**/);
 	// now some relational/operational tests
 	if (user_text == 1) {
-		BOOST_ASSERT(font == -1 && (character == -1 && size == -1));
-		//        BOOST_ASSERT(!text.empty()); // this isn't necessarily an error
+		LASSERT(font == -1 && (character == -1 && size == -1), /**/);
+		//        LASSERT(!text.empty(), /**/); // this isn't necessarily an error
 	}
 	//      else if (user_text == -1) {
-	//        BOOST_ASSERT(!text.empty()); // this also isn't necessarily an error
+	//        LASSERT(!text.empty(), /**/); // this also isn't necessarily an error
 	//      }
 	//      else {
 	//        // user_text == 0
-	//        BOOST_ASSERT(text.empty()); // not usually true
+	//        LASSERT(text.empty(), /**/); // not usually true
 	//      }
 #endif
 }

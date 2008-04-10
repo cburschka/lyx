@@ -36,6 +36,7 @@
 #include "TextMetrics.h"
 #include "TocBackend.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 
@@ -49,7 +50,6 @@
 #include "mathed/MathData.h"
 #include "mathed/MathMacro.h"
 
-#include <boost/assert.hpp>
 #include <boost/bind.hpp>
 
 #include <sstream>
@@ -134,7 +134,7 @@ DocIterator bruteFind2(Cursor const & c, int x, int y)
 bool bruteFind(Cursor & cursor,
 	int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	BOOST_ASSERT(!cursor.empty());
+	LASSERT(!cursor.empty(), return false);
 	Inset & inset = cursor[0].inset();
 	BufferView & bv = cursor.bv();
 
@@ -304,9 +304,9 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	for (; depth(); pop(), boundary(false)) {
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this);
-		BOOST_ASSERT(pos() <= lastpos());
-		BOOST_ASSERT(idx() <= lastidx());
-		BOOST_ASSERT(pit() <= lastpit());
+		LASSERT(pos() <= lastpos(), /**/);
+		LASSERT(idx() <= lastidx(), /**/);
+		LASSERT(pit() <= lastpit(), /**/);
 
 		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
@@ -341,21 +341,21 @@ DispatchResult Cursor::result() const
 
 BufferView & Cursor::bv() const
 {
-	BOOST_ASSERT(bv_);
+	LASSERT(bv_, /**/);
 	return *bv_;
 }
 
 
 Buffer & Cursor::buffer() const
 {
-	BOOST_ASSERT(bv_);
+	LASSERT(bv_, /**/);
 	return bv_->buffer();
 }
 
 
 void Cursor::pop()
 {
-	BOOST_ASSERT(depth() >= 1);
+	LASSERT(depth() >= 1, /**/);
 	pop_back();
 }
 
@@ -369,7 +369,7 @@ void Cursor::push(Inset & p)
 
 void Cursor::pushBackward(Inset & p)
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	//lyxerr << "Entering inset " << t << " front" << endl;
 	push(p);
 	p.idxFirst(*this);
@@ -378,7 +378,7 @@ void Cursor::pushBackward(Inset & p)
 
 bool Cursor::popBackward()
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -388,7 +388,7 @@ bool Cursor::popBackward()
 
 bool Cursor::popForward()
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	//lyxerr << "Leaving inset from in back" << endl;
 	const pos_type lp = (depth() > 1) ? (*this)[depth() - 2].lastpos() : 0;
 	if (depth() == 1)
@@ -401,7 +401,7 @@ bool Cursor::popForward()
 
 int Cursor::currentMode()
 {
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	for (int i = depth() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
 		if (res != Inset::UNDECIDED_MODE)
@@ -423,7 +423,7 @@ Row const & Cursor::textRow() const
 {
 	CursorSlice const & cs = innerTextSlice();
 	ParagraphMetrics const & pm = bv().parMetrics(cs.text(), cs.pit());
-	BOOST_ASSERT(!pm.rows().empty());
+	LASSERT(!pm.rows().empty(), /**/);
 	return pm.getRow(pos(), boundary());
 }
 
@@ -724,7 +724,7 @@ void Cursor::posVisToRowExtremity(bool left)
 
 CursorSlice Cursor::anchor() const
 {
-	BOOST_ASSERT(anchor_.depth() >= depth());
+	LASSERT(anchor_.depth() >= depth(), /**/);
 	CursorSlice normal = anchor_[depth() - 1];
 	if (depth() < anchor_.depth() && top() <= normal) {
 		// anchor is behind cursor -> move anchor behind the inset
@@ -1003,7 +1003,7 @@ void Cursor::insert(docstring const & str)
 void Cursor::insert(char_type c)
 {
 	//lyxerr << "Cursor::insert char '" << c << "'" << endl;
-	BOOST_ASSERT(!empty());
+	LASSERT(!empty(), /**/);
 	if (inMathed()) {
 		cap::selClearOrDel(*this);
 		insert(new InsetMathChar(c));
@@ -1024,7 +1024,7 @@ void Cursor::insert(MathAtom const & t)
 
 void Cursor::insert(Inset * inset0)
 {
-	BOOST_ASSERT(inset0);
+	LASSERT(inset0, /**/);
 	if (inMathed())
 		insert(MathAtom(inset0));
 	else {
@@ -1495,7 +1495,7 @@ bool Cursor::upDownInMath(bool up)
 
 bool Cursor::upDownInText(bool up, bool & updateNeeded)
 {
-	BOOST_ASSERT(text());
+	LASSERT(text(), /**/);
 
 	// where are we?
 	int xo = 0;

@@ -14,7 +14,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <exception>
 #include <iomanip>
@@ -30,7 +30,7 @@ namespace boost {
 void throw_exception(exception const & e)
 {
 	lyxerr << "Exception caught:\n" << e.what() << endl;
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 }
 #endif
 

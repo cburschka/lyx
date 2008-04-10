@@ -134,7 +134,7 @@ Timeout & Timeout::setType(Type t)
 Timeout & Timeout::setTimeout(unsigned int msec)
 {
 	// Can't have a timeout of zero!
-	BOOST_ASSERT(msec);
+	LASSERT(msec, /**/);
 
 	timeout_ms = msec;
 	return *this;

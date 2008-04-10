@@ -17,18 +17,22 @@
 #include "GuiClipboard.h"
 #include "qt_helpers.h"
 
-#include "frontends/alert.h"
-
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/FileFilterList.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#ifdef Q_WS_MACX
+#include "support/linkback/LinkBackProxy.h"
+#endif // Q_WS_MACX
+
+#include "frontends/alert.h"
 
 #include <QApplication>
 #include <QBuffer>
@@ -49,13 +53,7 @@
 #include <objidl.h>
 #endif // Q_WS_WIN
 
-#include "boost/assert.hpp"
-
 #include <map>
-
-#ifdef Q_WS_MACX
-#include "support/linkback/LinkBackProxy.h"
-#endif // Q_WS_MACX
 
 using namespace std;
 using namespace lyx::support;
@@ -310,7 +308,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	if (hasGraphicsContents(Clipboard::JpegGraphicsType))
 		types.push_back(Clipboard::JpegGraphicsType);
 	
-	BOOST_ASSERT(!types.empty());
+	LASSERT(!types.empty(), /**/);
 	
 	// select prefered type if AnyGraphicsType was passed
 	if (type == Clipboard::AnyGraphicsType)
@@ -439,7 +437,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		else if (type == JpegGraphicsType)
 			image.save(toqstr(filename.absFilename()), "JPEG");
 		else
-			BOOST_ASSERT(false);
+			LASSERT(false, /**/);
 		
 		return filename;
 	}
@@ -459,7 +457,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	case LinkBackGraphicsType: mime = pdf_mime_type; break;
 	case EmfGraphicsType: mime = emf_mime_type; break;
 	case WmfGraphicsType: mime = wmf_mime_type; break;
-	default: BOOST_ASSERT(false);
+	default: LASSERT(false, /**/);
 	}
 	
 	// get data
@@ -490,7 +488,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		ds << pdfLen; // big endian by default
 #else
 		// only non-Mac this should never happen
-		BOOST_ASSERT(false);
+		LASSERT(false, /**/);
 #endif // Q_WS_MACX
 	}
 
@@ -579,7 +577,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	case EmfGraphicsType: mime = emf_mime_type; break;
 	case WmfGraphicsType: mime = wmf_mime_type; break;
 	case PdfGraphicsType: mime = pdf_mime_type; break;
-	default: BOOST_ASSERT(false);
+	default: LASSERT(false, /**/);
 	}
 	
 	return source && source->hasFormat(mime);

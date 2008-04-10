@@ -13,11 +13,12 @@
 #include <config.h>
 
 #include "tex2lyx.h"
-#include "Context.h"
 
+#include "Context.h"
 #include "TextClass.h"
 #include "Layout.h"
 
+#include "support/assert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
@@ -42,7 +43,7 @@ namespace lyx {
 
 string const trim(string const & a, char const * p)
 {
-	// BOOST_ASSERT(p);
+	// LASSERT(p, /**/);
 
 	if (a.empty() || !*p)
 		return a;

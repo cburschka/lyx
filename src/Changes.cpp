@@ -20,7 +20,7 @@
 
 #include "support/debug.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <ostream>
 

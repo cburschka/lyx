@@ -18,6 +18,7 @@
 #include "Lexer.h"
 #include "TextClass.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
@@ -68,7 +69,7 @@ bool LayoutFileList::haveClass(string const & classname) const
 
 LayoutFile const & LayoutFileList::operator[](string const & classname) const
 {
-	BOOST_ASSERT(haveClass(classname));
+	LASSERT(haveClass(classname), /**/);
 	return *classmap_[classname];
 }
 
@@ -76,7 +77,7 @@ LayoutFile const & LayoutFileList::operator[](string const & classname) const
 LayoutFile & 
 	LayoutFileList::operator[](string const & classname)
 {
-	BOOST_ASSERT(haveClass(classname));
+	LASSERT(haveClass(classname), /**/);
 	return *classmap_[classname];
 }
 
@@ -175,7 +176,7 @@ std::vector<LayoutFileIndex> LayoutFileList::classList() const
 
 
 void LayoutFileList::reset(LayoutFileIndex const & classname) {
-	BOOST_ASSERT(haveClass(classname));
+	LASSERT(haveClass(classname), /**/);
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
 		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
@@ -227,7 +228,7 @@ LayoutFileIndex
 			smatch sub;
 			if (regex_match(line, sub, reg)) {
 				// returns: whole string, classtype (not used here), class name, description
-				BOOST_ASSERT(sub.size() == 4);
+				LASSERT(sub.size() == 4, /**/);
 				// now, create a TextClass with description containing path information
 				string className(sub.str(2) == "" ? textclass : sub.str(2));
 				LayoutFile * tmpl = 

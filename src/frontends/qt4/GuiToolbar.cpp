@@ -64,7 +64,7 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <map>
 #include <vector>
@@ -155,7 +155,7 @@ QString findPng(QString const & name)
 {
 	PngMap const * const begin = sorted_png_map;
 	PngMap const * const end = begin + nr_sorted_png_map;
-	BOOST_ASSERT(sorted(begin, end));
+	LASSERT(sorted(begin, end), /**/);
 
 	PngMap const * const it = find_if(begin, end, CompareKey(name));
 
@@ -434,7 +434,7 @@ private:
 		p->filter();
 		for (int i = 0; i < f.length(); ++i) {
 			int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
-			BOOST_ASSERT(p != -1);
+			LASSERT(p != -1, /**/);
 			if (lastp == p - 1 && lastp != -1) {
 				// remove ")" and append "x)"
 				r = r.left(r.length() - 4) + s[p] + "</u>";
@@ -529,7 +529,7 @@ void GuiLayoutBox::setFilter(QString const & s)
 		// We do not call our implementation of showPopup because that
 		// would reset the filter again. This is only needed if the user clicks
 		// on the QComboBox.
-		BOOST_ASSERT(!inShowPopup_);
+		LASSERT(!inShowPopup_, /**/);
 		inShowPopup_ = true;
 		QComboBox::showPopup();
 		inShowPopup_ = false;
@@ -599,7 +599,7 @@ void GuiLayoutBox::showPopup()
 
 	// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
 	// the hack in the item delegate to make space for the headers.
-	BOOST_ASSERT(!inShowPopup_);
+	LASSERT(!inShowPopup_, /**/);
 	inShowPopup_ = true;
 	QComboBox::showPopup();
 	inShowPopup_ = false;

@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <cstdlib>
 #include <exception>
@@ -22,7 +22,7 @@ namespace boost {
 #ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(exception const & /*e*/)
 {
-	BOOST_ASSERT(false);
+	LASSERT(false, /**/);
 }
 #endif
 

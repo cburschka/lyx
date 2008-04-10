@@ -12,7 +12,7 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <vector>
 #include <utility>
@@ -63,7 +63,7 @@ public:
 	/// Find the mapping for the first argument
 	T2 const & find(T1 const & first) const
 	{
-		BOOST_ASSERT(!map.empty());
+		LASSERT(!map.empty(), /**/);
 		const_iterator it = map.begin();
 		const_iterator end = map.end();
 		for (; it != end; ++it)
@@ -75,7 +75,7 @@ public:
 	/// Find the mapping for the second argument
 	T1 const & find(T2 const & second) const
 	{
-		BOOST_ASSERT(!map.empty());
+		LASSERT(!map.empty(), /**/);
 		const_iterator it = map.begin();
 		const_iterator end = map.end();
 		for (; it != end; ++it)

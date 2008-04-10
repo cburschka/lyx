@@ -21,7 +21,7 @@
 #include "support/textutils.h"
 #include "support/convert.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 
 #include <sstream>
 

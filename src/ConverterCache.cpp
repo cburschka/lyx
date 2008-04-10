@@ -25,7 +25,7 @@
 #include "support/lyxtime.h"
 #include "support/Package.h"
 
-#include <boost/assert.hpp>
+#include "support/assert.h"
 #include <boost/crc.hpp>
 
 #include <algorithm>
@@ -409,7 +409,7 @@ FileName const & ConverterCache::cacheName(FileName const & orig_from,
 	LYXERR(Debug::FILES, orig_from << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
-	BOOST_ASSERT(item);
+	LASSERT(item, /**/);
 	return item->cache_name;
 }
 
@@ -433,7 +433,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	}
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
-	BOOST_ASSERT(item);
+	LASSERT(item, /**/);
 	Mover const & mover = getMover(to_format);
 	return mover.copy(item->cache_name, dest,
 	                  onlyFilename(dest.absFilename()));

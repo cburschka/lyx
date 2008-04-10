@@ -51,6 +51,7 @@
 
 #include "frontends/Painter.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -144,8 +145,8 @@ docstring hullName(HullType type)
 static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull()
-	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false), label_(1, dummy_pointer),
-	  preview_(new RenderPreview(this))
+	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false),
+	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -157,8 +158,8 @@ InsetMathHull::InsetMathHull()
 
 
 InsetMathHull::InsetMathHull(HullType type)
-	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false), label_(1, dummy_pointer),
-	  preview_(new RenderPreview(this))
+	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false),
+	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
 	initMath();
 	setDefaults();
@@ -478,7 +479,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
 
 docstring InsetMathHull::label(row_type row) const
 {
-	BOOST_ASSERT(row < nrows());
+	LASSERT(row < nrows(), /**/);
 	if (InsetLabel * il = label_[row])
 		return il->screenLabel();
 	return docstring();
@@ -769,7 +770,7 @@ void InsetMathHull::glueall()
 
 void InsetMathHull::splitTo2Cols()
 {
-	BOOST_ASSERT(ncols() == 1);
+	LASSERT(ncols() == 1, /**/);
 	InsetMathGrid::addCol(1);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 2 * row;
@@ -782,7 +783,7 @@ void InsetMathHull::splitTo2Cols()
 
 void InsetMathHull::splitTo3Cols()
 {
-	BOOST_ASSERT(ncols() < 3);
+	LASSERT(ncols() < 3, /**/);
 	if (ncols() < 2)
 		splitTo2Cols();
 	InsetMathGrid::addCol(2);
@@ -1027,8 +1028,8 @@ void InsetMathHull::infoize(odocstream & os) const
 
 void InsetMathHull::check() const
 {
-	BOOST_ASSERT(nonum_.size() == nrows());
-	BOOST_ASSERT(label_.size() == nrows());
+	LASSERT(nonum_.size() == nrows(), /**/);
+	LASSERT(label_.size() == nrows(), /**/);
 }
 
 
