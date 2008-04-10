@@ -71,6 +71,8 @@ private:
 	///
 	docstring name() const { return name_; }
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
@@ -104,6 +106,8 @@ private:
 	Inset * clone() const { return new InsetFloat(*this); }
 	///
 	docstring getCaption(OutputParams const &) const;
+	///
+	docstring getCaptionText(OutputParams const &) const;
 	///
 	InsetFloatParams params_;
 	///

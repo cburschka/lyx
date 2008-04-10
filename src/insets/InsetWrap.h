@@ -63,6 +63,8 @@ private:
 	///
 	InsetCode lyxCode() const { return WRAP_CODE; }
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
@@ -80,6 +82,8 @@ private:
 	void updateLabels(ParIterator const &);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	docstring getCaptionText(OutputParams const &) const;
 	///
 	docstring name() const;
 	///

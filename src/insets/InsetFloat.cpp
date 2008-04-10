@@ -127,6 +127,17 @@ InsetFloat::~InsetFloat()
 }
 
 
+docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
+{
+	OutputParams rp(&buffer().params().encoding());
+	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
+	docstring caption_tip = getCaptionText(rp);
+	if (!isOpen() && !caption_tip.empty())
+		return caption_tip + '\n' + default_tip;
+	return default_tip;
+}
+
+
 void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -416,6 +427,29 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 				ods << '[';
 				ins->getArgument(ods, runparams);
 				ods << ']';
+				return ods.str();
+			}
+		}
+	}
+	return docstring();
+}
+
+
+docstring InsetFloat::getCaptionText(OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == CAPTION_CODE) {
+				odocstringstream ods;
+				InsetCaption * ins =
+					static_cast<InsetCaption *>(it->inset);
+				ins->getCaptionText(ods, runparams);
 				return ods.str();
 			}
 		}

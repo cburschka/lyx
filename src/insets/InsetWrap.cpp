@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "InsetWrap.h"
+#include "InsetCaption.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -23,6 +24,7 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "TextClass.h"
@@ -61,6 +63,17 @@ InsetWrap::~InsetWrap()
 docstring InsetWrap::name() const
 {
 	return from_utf8(params_.type);
+}
+
+
+docstring InsetWrap::toolTip(BufferView const & bv, int x, int y) const
+{
+	OutputParams rp(&buffer().params().encoding());
+	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
+	docstring caption_tip = getCaptionText(rp);
+	if (!isOpen() && !caption_tip.empty())
+		return caption_tip + '\n' + default_tip;
+	return default_tip;
 }
 
 
@@ -224,6 +237,29 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 		bv->showDialog("wrap", params2string(params()),
 			const_cast<InsetWrap *>(this));
 	return true;
+}
+
+
+docstring InsetWrap::getCaptionText(OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == CAPTION_CODE) {
+				odocstringstream ods;
+				InsetCaption * ins =
+					static_cast<InsetCaption *>(it->inset);
+				ins->getCaptionText(ods, runparams);
+				return ods.str();
+			}
+		}
+	}
+	return docstring();
 }
 
 

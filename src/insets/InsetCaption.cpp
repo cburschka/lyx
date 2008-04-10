@@ -270,6 +270,14 @@ int InsetCaption::getOptArg(odocstream & os,
 }
 
 
+int InsetCaption::getCaptionText(odocstream & os,
+			OutputParams const & runparams) const
+{
+	os << full_label_ << ' ';
+	return InsetText::plaintext(os, runparams);
+}
+
+
 void InsetCaption::updateLabels(ParIterator const & it)
 {
 	DocumentClass const & tclass = buffer().params().documentClass();
