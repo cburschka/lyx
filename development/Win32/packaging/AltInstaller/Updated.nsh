@@ -10,6 +10,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
