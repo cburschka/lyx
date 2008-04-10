@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 313
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass book
@@ -77,6 +77,7 @@ theorems-ams-extended
 \output_changes false
 \author "" 
 \author "" 
+\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -90,7 +91,7 @@ by the LyX Team
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 Principal maintainer of this file is
 \noun on
@@ -289,7 +290,10 @@ There are several commands that automatically invoke LaTeX.
 V
 \bar default
 iew\SpecialChar \menuseparator
-View\InsetSpace ~
+View
+\begin_inset Space ~
+\end_inset
+
 
 \emph on
 Format
@@ -379,7 +383,10 @@ If there are any errors, insert error boxes in the document to mark where
 \begin_layout Standard
 If you've run LaTeX using 
 \family sans
-View\InsetSpace ~
+View
+\begin_inset Space ~
+\end_inset
+
 DVI
 \family default
 , LyX then executes 
@@ -389,7 +396,10 @@ xdvi
  on the DVI-file.
  If you've used 
 \family sans
-View\InsetSpace ~
+View
+\begin_inset Space ~
+\end_inset
+
 PostScript
 \family default
  or 
@@ -414,7 +424,10 @@ dvips
 \begin_layout Itemize
 For 
 \family sans
-View\InsetSpace ~
+View
+\begin_inset Space ~
+\end_inset
+
 PostScript
 \family default
 , the output file has the extension 
@@ -430,7 +443,10 @@ P
 \bar default
 rint
 \family default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 , the output file has the extension 
 \family typewriter
 .ps
@@ -566,7 +582,10 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-If you just want to put a piece of LaTeX code into a LyX file, see Section\InsetSpace ~
+If you just want to put a piece of LaTeX code into a LyX file, see Section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -630,7 +649,7 @@ inlined
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 % like this
 \end_layout
@@ -655,52 +674,80 @@ Here's an example of inserting LaTeX commands in a LyX document.
 
 \backslash
 begin{tabular}{ll}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 begin{minipage}{5cm}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 This is an example for a minipage environment.
  You 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 can put nearly everything in it, even (non-floating) 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 figures and tables.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 end{minipage}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 &
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 begin{minipage}{5cm}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 begin{verbatim}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 begin{minipage}{5cm}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 This ...
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 end{minipage}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 end{verbatim}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 end{minipage}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 end{tabular}
@@ -721,88 +768,88 @@ The ERT box containing this text is directly after this paragraph.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{tabular}{ll}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 This is an example for a minipage environment.
  You can put nearly everything in it, even (non-floating) figures and tables.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{minipage}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 &
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{verbatim}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 This ...
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{minipage}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{verbatim}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{minipage}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -827,7 +874,10 @@ Chil
 \bar under
 d
 \bar default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 Document
 \family default
  to include your file (you should select the type 
@@ -894,7 +944,7 @@ User's Guide
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note from 
 \noun on
 John Weiss
@@ -1059,7 +1109,10 @@ Select
 \bar under
 L
 \bar default
-aTeX\InsetSpace ~
+aTeX
+\begin_inset Space ~
+\end_inset
+
 
 \bar under
 P
@@ -1187,9 +1240,18 @@ hoffset
 \backslash
 voffset
 \family default
- are both 0 pt.,\InsetSpace ~
-i.\InsetSpace ~
-e.\InsetSpace ~
+ are both 0 pt.,
+\begin_inset Space ~
+\end_inset
+
+i.
+\begin_inset Space ~
+\end_inset
+
+e.
+\begin_inset Space ~
+\end_inset
+
 the page isn't shifted.
 \end_layout
 
@@ -1349,7 +1411,7 @@ every
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note from 
 \noun on
 John Weiss
@@ -1422,7 +1484,10 @@ dirty tricks
 \begin_inset Quotes erd
 \end_inset
 
- given in Chapter\InsetSpace ~
+ given in Chapter
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1459,7 +1524,7 @@ Error
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX will occasionally misguess where the error was.
  This will typically happen with tables, figures, math, and the preamble.
 \end_layout
@@ -1509,8 +1574,14 @@ ocument\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aTeX\InsetSpace ~
-Log\InsetSpace ~
+aTeX
+\begin_inset Space ~
+\end_inset
+
+Log
+\begin_inset Space ~
+\end_inset
+
 File
 \family default
 .
@@ -1870,7 +1941,10 @@ misuse
 \emph default
  any of them, like trying to manually insert lots of 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset Space ~
+\end_inset
+
 Blank
 \family default
 s, 
@@ -1983,10 +2057,16 @@ Jürgen Spitzmüller
 STOP! If you don't know what BibTeX is, or have a reasonably good idea of
  how to use it (
 \emph on
-e.\InsetSpace \thinspace{}
+e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g.
 \emph default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 setting up your own bibliographic databases), 
 \emph on
 run
@@ -2130,8 +2210,14 @@ Alternative Citation Styles
 \end_layout
 
 \begin_layout Standard
-Standard BibTeX uses numbers (e.\InsetSpace \thinspace{}
-g.\InsetSpace \space{}
+Standard BibTeX uses numbers (e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space \space{}
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -2142,8 +2228,14 @@ g.\InsetSpace \space{}
 
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
- The most common one is the author-year style (e.\InsetSpace \thinspace{}
-g.\InsetSpace \space{}
+ The most common one is the author-year style (e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space \space{}
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -2250,12 +2342,12 @@ Knuth, 1984
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 See 
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 \end_layout
@@ -2312,12 +2404,12 @@ bibtopic
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Available from 
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
 \end_layout
@@ -2353,8 +2445,14 @@ Scientific works
 \begin_inset Quotes erd
 \end_inset
 
-, you first need to create two bibliographic databases, e.\InsetSpace \thinspace{}
-g.\InsetSpace \space{}
+, you first need to create two bibliographic databases, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space \space{}
+\end_inset
+
 
 \family typewriter
 sources.bib
@@ -2391,11 +2489,17 @@ Extras
  tab).
  Check 
 \family sans
-Sectionated\InsetSpace ~
+Sectionated
+\begin_inset Space ~
+\end_inset
+
 bibliography
 \family default
 .
- Now you can insert multiple BibTeX references (as described in section\InsetSpace ~
+ Now you can insert multiple BibTeX references (as described in section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2480,17 +2584,29 @@ Multiple Bibliographies
 \end_layout
 
 \begin_layout Standard
-Multiple bibliographies, e.\InsetSpace \thinspace{}
-g.\InsetSpace \space{}
-a bibliography for each section or chapter of
- the document, are not supported by BibTeX itself.
+Multiple bibliographies, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space \space{}
+\end_inset
+
+a bibliography for each section or chapter of the document, are not supported
+ by BibTeX itself.
  But the 
 \family typewriter
 bibtopic
 \family default
  package, which is used for the creation of sectionated bibliographies in
- LyX (cf.\InsetSpace ~
-section\InsetSpace ~
+ LyX (cf.
+\begin_inset Space ~
+\end_inset
+
+section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2499,8 +2615,14 @@ reference "sub:Sectionated-Bibliographies"
 \end_inset
 
 ), provides an easy way to solve this task, if you are willing to use some
- LaTeX-Code (ERT, cf.\InsetSpace ~
-section\InsetSpace ~
+ LaTeX-Code (ERT, cf.
+\begin_inset Space ~
+\end_inset
+
+section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2512,7 +2634,7 @@ reference "sec:Inserting-LaTeX-Code"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 An alternative approach is to use the 
 \family typewriter
 chapterbib
@@ -2553,7 +2675,10 @@ Extras
  tab).
  Check 
 \family sans
-Sectionated\InsetSpace ~
+Sectionated
+\begin_inset Space ~
+\end_inset
+
 bibliography
 \family default
 .
@@ -2574,7 +2699,10 @@ end{btUnit}
  (those commands have to be inserted as ERT).
  The bibliography will contain all references which have been cited in the
  current btUnit.
- N.\InsetSpace \thinspace{}
+ N.
+\begin_inset Space \thinspace{}
+\end_inset
+
 B.: If you are using this approach, then 
 \emph on
 every
@@ -2651,7 +2779,10 @@ ChiI
 \bar under
 d
 \bar default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 Document
 \family default
 .
@@ -2734,7 +2865,10 @@ g, while the included files are converted to LaTeX files which do not have
 \family sans
 Don't
 \family default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 
 \family sans
 typeset
@@ -2752,9 +2886,11 @@ verbatim
 \end_inset
 
  included file allows you to include a file typeset exactly as it appears
- in the file, i.e.\InsetSpace ~
-verbatim mode, with the characters set in a fixed-width
- typewriter font.
+ in the file, i.e.
+\begin_inset Space ~
+\end_inset
+
+verbatim mode, with the characters set in a fixed-width typewriter font.
  Normally, spaces in this file are invisible, though two consecutive spaces
  are conserved, unlike LyX's normal treatment of spaces.
  However, setting the 
@@ -2762,9 +2898,18 @@ verbatim mode, with the characters set in a fixed-width
 \bar under
 M
 \bar default
-ark\InsetSpace ~
-spaces\InsetSpace ~
-in\InsetSpace ~
+ark
+\begin_inset Space ~
+\end_inset
+
+spaces
+\begin_inset Space ~
+\end_inset
+
+in
+\begin_inset Space ~
+\end_inset
+
 output
 \family default
  checkbox typesets a mark to unambiguously define the presence of a space.
@@ -2810,7 +2955,10 @@ fancy
 
 , as mentioned in the 
 \family sans
-User\InsetSpace ~
+User
+\begin_inset Space ~
+\end_inset
+
 Guide
 \family default
 .
@@ -2888,7 +3036,10 @@ lhead{John Q.
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
  the page number appears in the central footer, simply include a command
- with a blank argument, e.\InsetSpace \thinspace{}
+ with a blank argument, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g.
 \end_layout
 
@@ -2909,12 +3060,24 @@ Section
 \begin_inset Quotes erd
 \end_inset
 
- (e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-Section 3) in the upper left, the page number (e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-Page 4) in the upper
- right, your name in the lower left, and the date in the lower right.
+ (e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+Section 3) in the upper left, the page number (e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+Page 4) in the upper right, your name in the lower left, and the date in
+ the lower right.
  The following commands should now appear in the preamble:
 \end_layout
 
@@ -3002,7 +3165,10 @@ The thicknesses of the horizontal rules drawn beneath the header and above
  the footer can also be modified.
  If you don't want one of the headers, set its thickness to 0.
  The header rule has a default thickness of 0.4pt, the footer rule is 0pt.
- Use the commands, e.\InsetSpace \thinspace{}
+ Use the commands, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g.
  
 \family typewriter
@@ -3125,7 +3291,7 @@ LyX provides 216 bullet shapes that can be accessed from a simple dialog.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Well, actually you can but you'll have to do it by hand.
 \end_layout
 
@@ -3183,13 +3349,13 @@ The six panels are divided up by the packages they require.
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3204,10 +3370,10 @@ Button
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3223,11 +3389,11 @@ Packages Required
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3245,7 +3411,7 @@ Standard
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series medium
 \shape up
@@ -3260,11 +3426,11 @@ base LaTeX
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3282,7 +3448,7 @@ Maths
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 \series medium
@@ -3298,11 +3464,11 @@ amssymb.sty
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3320,7 +3486,7 @@ Ding1
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 \series medium
@@ -3336,11 +3502,11 @@ pifont.sty
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3358,7 +3524,7 @@ Ding2
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 \series medium
@@ -3374,11 +3540,11 @@ pifont.sty
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3396,7 +3562,7 @@ Ding3
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 \series medium
@@ -3412,11 +3578,11 @@ pifont.sty
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \series medium
@@ -3431,10 +3597,10 @@ Ding4
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 \series medium
@@ -3497,7 +3663,7 @@ really
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3517,7 +3683,7 @@ labelitemi
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3551,7 +3717,9 @@ renewcommand{}{}
  again afterwards.
  In this itemized list the following LaTeX code was used to change the bullet
  used for the first depth.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 
@@ -3565,7 +3733,9 @@ labelitemi
  
 \family typewriter
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 renewcommand
@@ -3579,7 +3749,9 @@ small
 sharp
 \backslash
 )}
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Note that the itemize depth is specified in Roman numerals as part of the
@@ -3596,7 +3768,7 @@ labelitem
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 [
 \backslash
@@ -3628,7 +3800,7 @@ star
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3648,7 +3820,9 @@ savelabelitemi}
 You'll also need to revert the labelitem back to its previous setting for
  the global bullet shape settings to remain in effect.
  The way used here was:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 
@@ -3699,7 +3873,7 @@ The AMS LaTeX layouts are set up to conform to suggested styles for mathematical
 \begin_inset Flex URL
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ams.org
 \end_layout
@@ -3710,7 +3884,7 @@ http://www.ams.org
 \begin_inset Flex URL
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ftp.ams.org/pub/tex/amslatex/
 \end_layout
@@ -3744,7 +3918,7 @@ These layouts themselves contain only the minimum necessary to use the AMS
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (AMS)
 \end_layout
 
@@ -3756,7 +3930,7 @@ Theorems (AMS)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (AMS-Extended)
 \end_layout
 
@@ -3772,7 +3946,7 @@ By default, theorems and the like are numbered consecutively throughout
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (Order by Section)
 \end_layout
 
@@ -3782,7 +3956,7 @@ Theorems (Order by Section)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book (AMS)
 \end_layout
 
@@ -3792,7 +3966,7 @@ book (AMS)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (Order by Chapter)
 \end_layout
 
@@ -3815,7 +3989,7 @@ only
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (Starred)
 \end_layout
 
@@ -3834,7 +4008,7 @@ have
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (AMS)
 \end_layout
 
@@ -3844,7 +4018,7 @@ Theorems (AMS)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \end_layout
 
@@ -3854,7 +4028,7 @@ article
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \end_layout
 
@@ -3864,7 +4038,7 @@ report
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book (KOMA-script)
 \end_layout
 
@@ -3891,7 +4065,7 @@ The following environments---as well as the standard environments, such
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 section
 \end_layout
 
@@ -3901,7 +4075,7 @@ section
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 bibliography
 \end_layout
 
@@ -3911,7 +4085,7 @@ bibliography
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 title
 \end_layout
 
@@ -3921,7 +4095,7 @@ title
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 author
 \end_layout
 
@@ -3931,7 +4105,7 @@ author
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 date
 \end_layout
 
@@ -3941,7 +4115,7 @@ date
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -3951,7 +4125,7 @@ article (AMS)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book (AMS)
 \end_layout
 
@@ -3965,9 +4139,12 @@ Address This should be the author's permanent address.
 \end_layout
 
 \begin_layout Description
-Current\InsetSpace ~
-Address This should be the author's temporary address at the time
- of submission, if different from the Address.
+Current
+\begin_inset Space ~
+\end_inset
+
+Address This should be the author's temporary address at the time of submission,
+ if different from the Address.
 \end_layout
 
 \begin_layout Description
@@ -4010,7 +4187,7 @@ The following environments are provided by both the
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems
 \end_layout
 
@@ -4020,7 +4197,7 @@ Theorems
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (AMS)
 \end_layout
 
@@ -4033,7 +4210,7 @@ Theorems (AMS)
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (Starred)
 \end_layout
 
@@ -4132,7 +4309,7 @@ And these are provided by
 \begin_inset Flex CharStyle:Code
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Theorems (AMS-Extended)
 \end_layout
 
@@ -4247,7 +4424,7 @@ Astronomy and Astrophysics
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.edpsciences.fr/aa/
 \end_layout
@@ -4274,7 +4451,7 @@ aa.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ftp.edpsciences.org/pub/aa/readme.html
 \end_layout
@@ -4349,7 +4526,10 @@ ettings
 \begin_layout Itemize
 Don't change the option 
 \family sans
-Page\InsetSpace ~
+Page
+\begin_inset Space ~
+\end_inset
+
 style
 \family default
 : Leave it set to 
@@ -4443,18 +4623,12 @@ maketitle
 \end_layout
 
 \begin_layout Standard
-If you want to place footnotes in the header block, e.\InsetSpace \thinspace{}
+If you want to place footnotes in the header block, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 to state your present address, just use the standard footnote via 
@@ -4729,7 +4903,10 @@ table*
 , therefore we won't tell much about it here.
  Refer to the 
 \emph on
-User's\InsetSpace ~
+User's
+\begin_inset Space ~
+\end_inset
+
 Guide
 \emph default
 .
@@ -4744,7 +4921,10 @@ dit\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-aragraph\InsetSpace ~
+aragraph
+\begin_inset Space ~
+\end_inset
+
 Settings.
 \end_layout
 
@@ -4772,7 +4952,10 @@ Figure
 \bar under
 S
 \bar default
-pan\InsetSpace ~
+pan
+\begin_inset Space ~
+\end_inset
+
 columns
 \family default
 .
@@ -4805,13 +4988,19 @@ nsert\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-pecial\InsetSpace ~
+pecial
+\begin_inset Space ~
+\end_inset
+
 Character
 \bar under
 \SpecialChar \menuseparator
 H
 \bar default
-orizontal\InsetSpace ~
+orizontal
+\begin_inset Space ~
+\end_inset
+
 Fill
 \family default
 .
@@ -4820,7 +5009,10 @@ Fill
 \begin_layout Enumerate
 Switch to LaTeX mode: 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset Space ~
+\end_inset
+
 t
 \family default
 .
@@ -4843,7 +5035,10 @@ Do not close the brace!
 Position the cursor behind the caption text, switch to LaTeX mode and insert
  the closing brace: 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset Space ~
+\end_inset
+
 t
 \family default
  
@@ -4946,7 +5141,7 @@ AASTeX is a set of macros produced by the American Astronomical Society
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.journals.uchicago.edu/AAS/AASTeX
 \end_layout
@@ -5176,7 +5371,7 @@ Things that work as expected
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5388,7 +5583,7 @@ Document
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5634,7 +5829,7 @@ Things not implemented, use ERT
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5776,7 +5971,7 @@ twocolumn
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5808,7 +6003,10 @@ Chil
 \bar under
 d
 \bar default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 Document
 \family default
  to include it in your LyX document.
@@ -5918,7 +6116,10 @@ dit\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-aragraph\InsetSpace ~
+aragraph
+\begin_inset Space ~
+\end_inset
+
 Settings
 \family default
 , then set the 
@@ -5957,8 +6158,14 @@ no
  space between the last author and the parenthesis setting off the year;
  
 \emph on
-e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
+e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
 
 \emph default
 type 
@@ -6002,9 +6209,12 @@ plotone
 \backslash
 plotone
 \family default
-, etc.\InsetSpace ~
-commands as ERT into a Figure Float box if you desire, but I never
- have much luck getting the layout right.
+, etc.
+\begin_inset Space ~
+\end_inset
+
+commands as ERT into a Figure Float box if you desire, but I never have
+ much luck getting the layout right.
  With the standard graphics, LyX will insert a 
 \family typewriter
 
@@ -6104,7 +6314,7 @@ ws-ijmpd.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \end_layout
@@ -6115,7 +6325,7 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
@@ -6374,12 +6584,18 @@ Both packages use basic citations; the natbib package should not be used.
 \family typewriter
 refcite
 \family default
- command, e.\InsetSpace \thinspace{}
+ command, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g., 
 \begin_inset Quotes eld
 \end_inset
 
-See Ref.\InsetSpace ~
+See Ref.
+\begin_inset Space ~
+\end_inset
+
 
 \family typewriter
 
@@ -6520,7 +6736,10 @@ Chil
 \bar under
 d
 \bar default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 Document
 \family default
 ).
@@ -6566,7 +6785,7 @@ eX
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Actually you have the choice between LaTeX (plain) and pdflatex.
  If you intend to use pdflatex to prepare the paper, you should use the
  pdflatex option so that included graphics are converted to PDF format,
@@ -6672,7 +6891,7 @@ The iopart package provides a document class to create electronic manuscript
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
@@ -6855,7 +7074,7 @@ Solar Physics
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \end_layout
@@ -6867,7 +7086,7 @@ http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
@@ -6889,7 +7108,10 @@ peculiar
 \begin_inset Quotes erd
 \end_inset
 
- commands of the package (see\InsetSpace ~
+ commands of the package (see
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7035,7 +7257,10 @@ View the resulting
 \family typewriter
 .dvi
 \family default
- document using, e.\InsetSpace \thinspace{}
+ document using, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g., 
 \family sans
 xdvi
@@ -7078,7 +7303,7 @@ It is possible to write multiple articles in the same LaTeX file
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 I can't imagine any good reason to do this.
 \end_layout
 
@@ -7135,9 +7360,11 @@ opening
 \end_inset
 
 .
- This is not implemented in LyX, so you must enter title, subtitle etc.\InsetSpace ~
-between
- two ERT lines (
+ This is not implemented in LyX, so you must enter title, subtitle etc.
+\begin_inset Space ~
+\end_inset
+
+between two ERT lines (
 \family typewriter
 
 \backslash
@@ -7260,7 +7487,10 @@ scrbook.cls
 \family typewriter
 scrlettr.cls
 \family default
-, resp.\InsetSpace ~
+, resp.
+\begin_inset Space ~
+\end_inset
+
 of the Koma-Script family.
  They are replacements for the standard document classes 
 \family typewriter
@@ -7312,7 +7542,7 @@ letter (koma-script)
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 There is a big difference between the bold sans serif old cm fonts and new
  ec fonts, especially in the appearance of headings.
  In comparison, the ec bold sans serif fonts look a bit thin.
@@ -7355,7 +7585,10 @@ E
 \bar under
 x
 \bar default
-tra\InsetSpace ~
+tra
+\begin_inset Space ~
+\end_inset
+
 Options
 \family default
  of the dialog 
@@ -7441,7 +7674,7 @@ scrguide
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 There is an English translation 
 \emph on
 screnggu
@@ -7590,7 +7823,7 @@ article (koma-script)
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 There is also an 
 \family typewriter
 
@@ -7664,29 +7897,11 @@ captionbelow
 Dictum
 \family default
 : can be used to set a bonmot, e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset Space \thinspace{}
 \end_inset
 
 g.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 at the beginning of a chapter.
@@ -7696,7 +7911,10 @@ at the beginning of a chapter.
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Short\InsetSpace ~
+Short
+\begin_inset Space ~
+\end_inset
+
 Title
 \family default
 ), you can insert the dictum's author there.
@@ -7739,7 +7957,7 @@ ordinary
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The corresponding LaTeX commands must appear before the 
 \family typewriter
 
@@ -7962,7 +8180,7 @@ letter (koma-script)
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -8032,7 +8250,7 @@ Verse
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -8050,7 +8268,7 @@ The appearance of the letter produced by this document class can be controlled
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 For example, the standard appearance of the letter`s heading, consisting
  of name and address, is quite self-willed.
  An 
@@ -8148,7 +8366,10 @@ L
 \shape italic
 O
 \shape default
-, resp.\InsetSpace ~
+, resp.
+\begin_inset Space ~
+\end_inset
+
 in the left margin.
  It is possible to write any number of letters in one file.
  An 
@@ -8276,7 +8497,7 @@ Subject
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 It could be seen as a matter of inconsequence, that the types 
 \family sans
 Letter
@@ -8334,8 +8555,14 @@ Telephone
 
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
- This makes sense e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
+ This makes sense e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
 for the 
 \family sans
 Signature
@@ -8715,29 +8942,11 @@ Closing
 NextAddress
 \family default
  will start a new letter (i.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset Space \thinspace{}
 \end_inset
 
 e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 you can write several letters per document).
@@ -8788,7 +8997,7 @@ The biggest improvement is, though, that the letter's layout is configurable
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The KOMA package comes with some default 
 \family typewriter
 *.lco
@@ -8892,8 +9101,14 @@ ocument\SpecialChar \menuseparator
 \bar under
 T
 \bar default
-able\InsetSpace ~
-of\InsetSpace ~
+able
+\begin_inset Space ~
+\end_inset
+
+of
+\begin_inset Space ~
+\end_inset
+
 Contents
 \family default
 ).
@@ -8963,7 +9178,7 @@ These are the layout files for some of the journal formats used by Springer
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.springer.de/author/tex/help-journals.html
 \end_layout
@@ -8977,7 +9192,10 @@ http://www.springer.de/author/tex/help-journals.html
 \family typewriter
 svjour.inc
 \family default
-, which journal-specific layout files (such as, e.\InsetSpace \thinspace{}
+, which journal-specific layout files (such as, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g., 
 \family typewriter
 svjog.layout
@@ -9116,9 +9334,11 @@ ejour2
 \end_layout
 
 \begin_layout Standard
-Limitations e.\InsetSpace \thinspace{}
-g.: does not display the number for theorem-like layouts, just
- #.
+Limitations e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.: does not display the number for theorem-like layouts, just #.
 \end_layout
 
 \begin_layout Section
@@ -9147,7 +9367,7 @@ These are the layout files for some of the journals of the American Geophysical
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 ftp://ftp.agu.org/journals/latex/journals
 \end_layout
@@ -9365,7 +9585,7 @@ egs.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 www.copernicus.org
 \end_layout
@@ -9489,7 +9709,10 @@ slides (FoilTeX)
 \begin_inset Quotes erd
 \end_inset
 
-, check out section\InsetSpace ~
+, check out section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9522,7 +9745,7 @@ slides
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 or so I've been told repeatedly by its advocates.
  Having never used it, I have no idea if this claim is true or not.
@@ -9626,7 +9849,10 @@ The option
 \bar under
 P
 \bar default
-age\InsetSpace ~
+age
+\begin_inset Space ~
+\end_inset
+
 style
 \family default
  behaves a bit differently for this class.
@@ -9696,7 +9922,10 @@ Using this options allows you to add time markers to
 Note
 \family default
 s.
- See section\InsetSpace ~
+ See section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9731,8 +9960,14 @@ slides
 F
 \bar default
 ile\SpecialChar \menuseparator
-New\InsetSpace ~
-from\InsetSpace ~
+New
+\begin_inset Space ~
+\end_inset
+
+from
+\begin_inset Space ~
+\end_inset
+
 
 \bar under
 T
@@ -9772,7 +10007,10 @@ Largest
 
  in the 
 \family sans
-Sans\InsetSpace ~
+Sans
+\begin_inset Space ~
+\end_inset
+
 Serif
 \family default
  font.
@@ -10208,7 +10446,10 @@ Choosing the
 \family sans
 Slide
 \family default
- environment [in the manner described in section\InsetSpace ~
+ environment [in the manner described in section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -10422,7 +10663,7 @@ Slide
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Presumably, mutliple 
 \family sans
 Overlay
@@ -10463,7 +10704,10 @@ s would have
 \begin_inset Quotes erd
 \end_inset
 
-, etc.\InsetSpace ~
+, etc.
+\begin_inset Space ~
+\end_inset
+
 appended to the page number of the parent 
 \family sans
 Slide
@@ -10555,7 +10799,10 @@ VisibleText
 \family default
  are two command-like paragraph environments that make all subsequent text
  invisible and visible, respectively.
- Note from section\InsetSpace ~
+ Note from section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -10751,7 +10998,7 @@ slides
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The commands of interest are: 
 \end_layout
 
@@ -10773,7 +11020,7 @@ visible \SpecialChar \ldots{}
  }
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 and need to be marked as TeX.
  The text whose 
@@ -10999,7 +11246,10 @@ clock
 \begin_inset Quotes erd
 \end_inset
 
- [see section\InsetSpace ~
+ [see section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11298,8 +11548,14 @@ slides
 F
 \bar default
 ile\SpecialChar \menuseparator
-New\InsetSpace ~
-from\InsetSpace ~
+New
+\begin_inset Space ~
+\end_inset
+
+from
+\begin_inset Space ~
+\end_inset
+
 
 \bar under
 T
@@ -11354,7 +11610,9 @@ VisibleText
 onlyslides{
 \backslash
 slides}
-\newline
+\begin_inset Newline newline
+\end_inset
+
  
 \end_layout
 
@@ -11396,7 +11654,10 @@ TeX emulation
 \family sans
 Foils
 \family default
- class [see section\InsetSpace ~
+ class [see section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11421,7 +11682,7 @@ seminar
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Perhaps you can take on the task\SpecialChar \ldots{}
 
 \end_layout
@@ -11524,7 +11785,10 @@ slides (default)
 \begin_inset Quotes erd
 \end_inset
 
-, check out section\InsetSpace ~
+, check out section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11596,13 +11860,19 @@ lass
 \family default
  entry in the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset Space ~
+\end_inset
+
 Layout
 \family default
  dialog.
  There are some settings in the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset Space ~
+\end_inset
+
 Layout
 \family default
  dialog that you should know about that are specific to this class:
@@ -11619,7 +11889,10 @@ Columns
 \family default
  on the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset Space ~
+\end_inset
+
 Layout
 \family default
  dialog.
@@ -11681,7 +11954,10 @@ Foil
 \family default
 TeX provides extensive footer and header capabilities including a user-defined
  logo.
- See section\InsetSpace ~
+ See section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11894,7 +12170,7 @@ TeX as well as a couple added by LyX.
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12018,7 +12294,7 @@ Comment
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12085,7 +12361,7 @@ TeX also provides a comprehensive box of goodies for presenting them:
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12167,7 +12443,7 @@ Definition*
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12224,7 +12500,7 @@ Martin Vermeer
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12239,7 +12515,10 @@ begin{multicols}{2}
 \begin_layout Itemize
 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset Space ~
+\end_inset
+
 Logo
 \end_layout
 
@@ -12252,27 +12531,38 @@ Restriction
 \begin_layout Itemize
 
 \family sans
-Right\InsetSpace ~
+Right
+\begin_inset Space ~
+\end_inset
+
 Footer
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Right\InsetSpace ~
+Right
+\begin_inset Space ~
+\end_inset
+
 Header
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Left\InsetSpace ~
+Left
+\begin_inset Space ~
+\end_inset
+
 Header
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-\InsetSpace ~
+\begin_inset Space ~
+\end_inset
+
 
 \end_layout
 
@@ -12281,7 +12571,7 @@ Header
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -12299,7 +12589,10 @@ There are also a few commands provided by
 Foil
 \family default
 TeX that aren't directly supported by LyX but I'll tell you what they do
- and how to use them in section\InsetSpace ~
+ and how to use them in section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -12477,11 +12770,20 @@ User's Guide.
  If you intend to use itemized lists you might also want to read about the
  
 \family sans
-Itemize\InsetSpace ~
-Bullet\InsetSpace ~
+Itemize
+\begin_inset Space ~
+\end_inset
+
+Bullet
+\begin_inset Space ~
+\end_inset
+
 Selection
 \family default
- dialog described above in section\InsetSpace ~
+ dialog described above in section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -12545,7 +12847,10 @@ name "sec:foilfoot"
 \begin_layout Standard
 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset Space ~
+\end_inset
+
 Logo
 \family default
  and 
@@ -12570,10 +12875,16 @@ TeX-
  While the second is meant to provide a classification for the audience,
  
 \emph on
-e.\InsetSpace \thinspace{}
+e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g.
 \emph default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 Confidential.
  It is empty by default.
 \end_layout
@@ -12581,17 +12892,26 @@ Confidential.
 \begin_layout Standard
 The remaining page corners can be filled by 
 \family sans
-Right\InsetSpace ~
+Right
+\begin_inset Space ~
+\end_inset
+
 Footer
 \family default
  (which defaults to page numbers), 
 \family sans
-Right\InsetSpace ~
+Right
+\begin_inset Space ~
+\end_inset
+
 Header
 \family default
  (top right) and 
 \family sans
-Left\InsetSpace ~
+Left
+\begin_inset Space ~
+\end_inset
+
 Header
 \family default
  (top left).
@@ -12919,7 +13239,10 @@ fancy
 \family default
  page style setting in the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset Space ~
+\end_inset
+
 Layout
 \family default
  dialog you should probably add 
@@ -13131,7 +13454,9 @@ The following environments are available.
 
 \family sans
 Standard
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Used where nothing else works.
@@ -13144,13 +13469,17 @@ Used where nothing else works.
 FADE_IN
 \family default
 :
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 
 \family sans
 M-z S-I
 \family default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Usually followed by something like 
 \begin_inset Quotes eld
 \end_inset
@@ -13166,9 +13495,13 @@ on Sally waking up.
 
 \family sans
 INT:
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z i
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Introduces a new INTERIOR camera set-up.
@@ -13181,9 +13514,13 @@ Introduces a new INTERIOR camera set-up.
 
 \family sans
 EXT:
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z e
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Introduces a new EXTERIOR camera set-up.
@@ -13194,9 +13531,13 @@ Introduces a new EXTERIOR camera set-up.
 
 \family sans
 Speaker
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z s
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 The character speaking.
@@ -13206,9 +13547,13 @@ The character speaking.
 
 \family sans
 Parenthetical
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z p
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Instructions to the speaker.
@@ -13220,9 +13565,13 @@ Instructions to the speaker.
 
 \family sans
 Dialogue
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z d
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 What the 
@@ -13236,14 +13585,24 @@ Speaker
 
 \family sans
 Transition
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z t
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Camera movement instruction.
- e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
+ e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
 CUT TO:
 \end_layout
 
@@ -13251,7 +13610,9 @@ CUT TO:
 
 \family sans
 FADE OUT:
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-I
 \end_layout
 
@@ -13259,7 +13620,9 @@ M-z S-I
 
 \family sans
 Author
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-A
 \end_layout
 
@@ -13267,7 +13630,9 @@ M-z S-A
 
 \family sans
 Title
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-T
 \end_layout
 
@@ -13275,7 +13640,9 @@ M-z S-T
 
 \family sans
 Right_Address
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z r
 \end_layout
 
@@ -13371,7 +13738,9 @@ The following environments are available.
 
 \family sans
 Standard
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 You should not have to use this, but it is here for anything that does not
@@ -13382,9 +13751,13 @@ You should not have to use this, but it is here for anything that does not
 
 \family sans
 Narrative
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z n
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Used to describe stage setting and the action.
@@ -13395,9 +13768,13 @@ Used to describe stage setting and the action.
 
 \family sans
 ACT
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z a
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Automatically numbered.
@@ -13408,9 +13785,13 @@ Automatically numbered.
 
 \family sans
 ACT*
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S at
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Subtitle for 
@@ -13425,9 +13806,13 @@ ACT.
 
 \family sans
 SCENE
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-S
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Not automatically numbered.
@@ -13439,9 +13824,13 @@ Not automatically numbered.
 
 \family sans
 AT_RISE:
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-R
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 A special case of Narrative to describe the setting and action as the curtain
@@ -13452,9 +13841,13 @@ A special case of Narrative to describe the setting and action as the curtain
 
 \family sans
 Speaker
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z s
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 The speaker's (actor's) title, centered in all CAPS.
@@ -13464,9 +13857,13 @@ The speaker's (actor's) title, centered in all CAPS.
 
 \family sans
 Parenthetical
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z p
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 Instructions to the speaker.
@@ -13483,9 +13880,13 @@ Dialogue
 
 \family sans
 Dialogue
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z d
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 What the Speaker says.
@@ -13495,9 +13896,13 @@ What the Speaker says.
 
 \family sans
 CURTAIN
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-C
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family default
 The curtain comes down.
@@ -13507,7 +13912,9 @@ The curtain comes down.
 
 \family sans
 Title
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-T
 \end_layout
 
@@ -13515,7 +13922,9 @@ M-z S-T
 
 \family sans
 Author
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z S-A
 \end_layout
 
@@ -13523,7 +13932,9 @@ M-z S-A
 
 \family sans
 Right_Address
-\hfill
+\begin_inset Space \hfill{}
+\end_inset
+
 M-z r
 \end_layout
 
@@ -13552,7 +13963,10 @@ Amir Karger
 \noindent
 The 
 \family sans
-Revtex\InsetSpace ~
+Revtex
+\begin_inset Space ~
+\end_inset
+
 4
 \family default
  textclass works with the American Physical Sociey's RevTeX 4.0 (the 
@@ -13574,7 +13988,10 @@ Revtex
  Since RevTeX 4.0 has been designed to work much more cleanly with LaTeX2e,
  LyX with the 
 \family sans
-RevTeX\InsetSpace ~
+RevTeX
+\begin_inset Space ~
+\end_inset
+
 4
 \family default
  textclass should also be pretty easy to use.
@@ -13600,7 +14017,7 @@ All you need to do is install RevTeX 4, as described in the package's README
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://publish.aps.org/revtex4/
 \end_layout
@@ -13623,7 +14040,10 @@ tex2lyx
 \family default
 , or to use the 
 \family sans
-Revtex\InsetSpace ~
+Revtex
+\begin_inset Space ~
+\end_inset
+
 4
 \family default
  template, found in the templates directory.
@@ -13662,12 +14082,18 @@ E
 \bar under
 x
 \bar default
-tra\InsetSpace ~
+tra
+\begin_inset Space ~
+\end_inset
+
 Options
 \family default
  field in the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset Space ~
+\end_inset
+
 Layout
 \family default
  dialog, as usual.
@@ -13681,14 +14107,20 @@ Other preamble matter, like
 \backslash
 draft
 \family default
- etc.\InsetSpace ~
+ etc.
+\begin_inset Space ~
+\end_inset
+
 goes in the 
 \family sans
 La
 \family default
 T
 \family sans
-eX\InsetSpace ~
+eX
+\begin_inset Space ~
+\end_inset
+
 Preamble
 \family default
  dialog, also as usual.
@@ -13719,7 +14151,7 @@ Affiliation
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In case you're curious, both were included so that 
 \family typewriter
 tex2lyx
@@ -13787,12 +14219,18 @@ Author
 \begin_layout Standard
 Also, the 
 \family sans
-Author\InsetSpace ~
+Author
+\begin_inset Space ~
+\end_inset
+
 Email
 \family default
 , 
 \family sans
-Author\InsetSpace ~
+Author
+\begin_inset Space ~
+\end_inset
+
 URL
 \family default
 , and 
@@ -13838,7 +14276,10 @@ The main problem with this layout is that you can't use the optional arguments
  to the Section layouts either.) This means that after you export that file
  to LaTeX (which you'll need to do eventually to send it in to APS), you'll
  need to edit the LaTeX file with a text editor to add the optional arguments
- to set, e.\InsetSpace \thinspace{}
+ to set, e.
+\begin_inset Space \thinspace{}
+\end_inset
+
 g., the running title for the page headers.
  Lacking these layouts makes the 
 \family typewriter
@@ -13857,7 +14298,7 @@ altaddress
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Note from JMarc:
@@ -13876,7 +14317,7 @@ Article (mwart), book (mwbk) and report (mwrep)
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The 
 \family typewriter
 mw
@@ -14035,7 +14476,7 @@ elsart.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://authors.elsevier.com/
 \end_layout
@@ -14084,22 +14525,9 @@ clean
 \begin_inset Quotes erd
 \end_inset
 
- a 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-LaTeX
-\end_layout
-
-\end_inset
-
- file as possible, as their intention is to take the supplied file and replace
- the class file with one for the particular journal to which the paper has
- been submitted.
+ a LaTeX file as possible, as their intention is to take the supplied file
+ and replace the class file with one for the particular journal to which
+ the paper has been submitted.
  This also means that not too much time should be spent on the formating
  of the document.
  When it comes to be published, this will change anyway.
@@ -14142,12 +14570,12 @@ Peter Wilson, the developer of Memoir, is known as the author of lots of
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You are invited to send suggestions to 
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 lyx-devel@lists.lyx.org
 \end_layout
@@ -14165,12 +14593,12 @@ lyx-devel@lists.lyx.org
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Cf.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -14179,7 +14607,10 @@ status collapsed
 
 \end_inset
 
-section\InsetSpace ~
+section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -14200,12 +14631,12 @@ reference "sec:Inserting-LaTeX-Code"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Cf.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -14218,7 +14649,7 @@ status collapsed
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 CTAN:/macros/latex/memoir/memman.pdf
 \end_layout
@@ -14245,21 +14676,29 @@ Memoir supports basically all features of the standard book classes.
 \end_layout
 
 \begin_layout Description
-Font\InsetSpace ~
-sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14,
- 17
+Font
+\begin_inset Space ~
+\end_inset
+
+sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
 \end_layout
 
 \begin_layout Description
-Page\InsetSpace ~
-style: The fancy page style is not supported, due to a command clash
- between Memoir and the fancyhdr package (they are both defining a command
- with the same name, which confuses LaTeX).
+Page
+\begin_inset Space ~
+\end_inset
+
+style: The fancy page style is not supported, due to a command clash between
+ Memoir and the fancyhdr package (they are both defining a command with
+ the same name, which confuses LaTeX).
  Instead, Memoir comes with a bunch of own page styles (see 
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Page\InsetSpace ~
+Page
+\begin_inset Space ~
+\end_inset
+
 Style
 \family default
 ).
@@ -14271,29 +14710,11 @@ Style
 chapterstyle
 \family default
  in the main text or in preamble (e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset Space \thinspace{}
 \end_inset
 
 g.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 
@@ -14313,7 +14734,10 @@ Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
  In LyX, you can do this via 
 \family sans
 Insert\SpecialChar \menuseparator
-Short\InsetSpace ~
+Short
+\begin_inset Space ~
+\end_inset
+
 Title
 \family default
  at the beginning of a chapter/section.
@@ -14344,30 +14768,12 @@ empty
 \begin_inset Quotes erd
 \end_inset
 
-, i.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+, i
+\begin_inset Space \thinspace{}
 \end_inset
 
 e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 without pagina).
@@ -14389,7 +14795,10 @@ article
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Extra\InsetSpace ~
+Extra
+\begin_inset Space ~
+\end_inset
+
 Options
 \family default
 ), you can emulate article style.
@@ -14410,29 +14819,11 @@ real
 \begin_layout Description
 Oldfontcommands: By default, Memoir does not allow the use of the deprecated
  font commands, which have been used in the old LaTeX version 2.09 (e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset Space \thinspace{}
 \end_inset
 
 g.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 
@@ -14470,12 +14861,12 @@ We will only describe the features supported by LyX (which is not much currently
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Cf.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -14488,7 +14879,7 @@ status collapsed
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 CTAN:/macros/latex/memoir/memman.pdf
 \end_layout
@@ -14515,29 +14906,11 @@ Abstract: You may wonder why an abstract is an extra feature.
 Chapterprecis: You may know this from belletristic: The contents of a chapter
  is shortly described below the title and also in the table of contents
  (e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset Space \thinspace{}
 \end_inset
 
 g.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset Space ~
 \end_inset
 
 
@@ -14588,754 +14961,6 @@ Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 \end_layout
 
 \begin_layout Chapter
-Importing and Exporting Alternate File Formats
-\begin_inset OptArg
-status collapsed
-
-\begin_layout Standard
-Importing and Exporting
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Considerations
-\end_layout
-
-\begin_layout Standard
-Importing and exporting LyX documents from/to other formats has been touched
- on briefly in the 
-\emph on
-User Guide
-\emph default
-.
- Here we describe more of the gory details needed to understand just what
- is going on when you click on the 
-\family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport
-\family default
- and 
-\family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-E
-\bar under
-x
-\bar default
-port
-\family default
- menu items.
- 
-\end_layout
-
-\begin_layout Section
-Importing Other Formats
-\end_layout
-
-\begin_layout Subsection
-LaTeX
-\end_layout
-
-\begin_layout Standard
-Translating from LaTeX into LyX is performed by a converter program called
- 
-\family typewriter
-tex2lyx
-\family default
-.
- Although it is a standalone program which can be called from the command
- line, LyX will call it automatically when a LaTeX document is imported.
- See section\InsetSpace ~
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Translating-LaTeX-files"
-
-\end_inset
-
- for a complete description.
-\end_layout
-
-\begin_layout Subsection
-ASCII Text
-\end_layout
-
-\begin_layout Standard
-When importing plain ASCII text, there are two methods of reading the file.
- Importing 
-\begin_inset Quotes eld
-\end_inset
-
-as lines
-\begin_inset Quotes erd
-\end_inset
-
- preserves all the linebreaks in the ASCII; to LyX, then, each line looks
- like a paragraph.
- Importing 
-\begin_inset Quotes eld
-\end_inset
-
-as paragraphs
-\begin_inset Quotes erd
-\end_inset
-
- assumes that consecutive lines separated by only a single linebreak form
- a single paragraph.
- Successive linebreaks with no intervening text are thus assumed to be paragraph
- delimiters.
-\end_layout
-
-\begin_layout Subsection
-Noweb
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-[Editor's note: Needs to be written, obviously - any volunteers? --- mer]
-\end_layout
-
-\begin_layout Section
-Exporting Other Formats
-\end_layout
-
-\begin_layout Standard
-The output formats listed here in the following are also explained concerning
- possible graphics formats in the 
-\emph on
-Embedded Objects
-\emph default
- manual.
-\end_layout
-
-\begin_layout Subsection
-LaTeX
-\end_layout
-
-\begin_layout Standard
-LyX generates two types of LaTeX files: stripped down versions for the normal
- processing (
-\family sans
-View DVI
-\family default
-, etc.) which one normally never sees
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-The resulting file is a perfectly valid LaTeX file, though the preamble
- might look a bit strange since it includes some definitions used by LyX
- which wouldn't show up in most human-written files.
-\end_layout
-
-\end_inset
-
-, and human readable forms which are suitable for exchanging with your colleague
-s.
- The only settable option for the translation is the line length of the
- output file.
- The default is 65 characters, but it can be set in 
-\family sans
-\bar under
-T
-\bar default
-ools
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-P
-\bar default
-references
-\family default
- using the 
-\family sans
-\bar under
-A
-\bar default
-scii\InsetSpace ~
-line\InsetSpace ~
-length
-\family default
- field.
- 
-\end_layout
-
-\begin_layout Subsection
-Device Independent Files
-\end_layout
-
-\begin_layout Standard
-Device Independent files (DVI files) are produced by running LaTeX on your
- document.
- There are no user settable options.
-\end_layout
-
-\begin_layout Subsection
-PostScript
-\end_layout
-
-\begin_layout Standard
-The next step in the conversion chain is converting a DVI file into Postscript.
- You can either use 
-\family sans
-\bar under
-F
-\bar default
-ile
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-E
-\bar default
-xport
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Pos
-\bar under
-t
-\bar default
-script
-\family default
- or, if you need more control on the result, 
-\family sans
-\bar under
-F
-\bar default
-ile
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-P
-\bar default
-rint
-\family default
-.
- If you use the later, note that it is possible to configure, in 
-\family sans
-\bar under
-T
-\bar default
-ools
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-P
-\bar default
-references
-\family default
-, the options passed to the dvips program to achieve different effects.
-\end_layout
-
-\begin_layout Subsection
-ASCII text
-\end_layout
-
-\begin_layout Standard
-Exporting as ASCII attempts to preserve the 
-\begin_inset Quotes eld
-\end_inset
-
-shape
-\begin_inset Quotes erd
-\end_inset
-
- of the document as well as possible, but things like centering and indentation
- are thrown out; paragraphs are separated by blank lines.
- Section numbering and cross-references are done correctly, so the resulting
- text files is remarkably readable.
- The only changeable option is the length of lines, as for LaTeX output.
-\end_layout
-
-\begin_layout Subsection
-HTML
-\end_layout
-
-\begin_layout Standard
-LyX documents can be converted to hypertext markup, usually by converting
- to LaTeX first, then converting that to HTML\SpecialChar \@.
- Four LaTeX
-\begin_inset Formula $\rightarrow$
-\end_inset
-
-HTML converters are currently known to LyX: 
-\family typewriter
-tth
-\family default
-, 
-\family typewriter
-latex2html
-\family default
-, 
-\family typewriter
-hevea
-\family default
- and 
-\family typewriter
-htlatex
-\family default
-.
- Though they are autodetected, you can overide the selection in preferences.
- You can also include further command line options in this dialog.
- 
-\end_layout
-
-\begin_layout Subsection
-PDF
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Dekel Tsur
-\noun default
- (mostly)
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The fastest way to generate a basic PDF file (no tags, links, etc.) with
- any version of LyX is to save the document as a Postscript file, then run
- the 
-\family typewriter
-ps2pdf
-\family default
- command on it.
- Starting with version 1.1.6, the menu item 
-\family sans
-File->Export->PDF
-\family default
- will do all this for you.
- There are some issues with fonts that you need to pay attention to: see
- Section\InsetSpace ~
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:badfonts"
-
-\end_inset
-
-.
- Also, as of version 1.1.6, there is a better method that will generate much
- more sophisticated files.
-\end_layout
-
-\begin_layout Subsubsection
-Use pdfLaTeX
-\end_layout
-
-\begin_layout Standard
-With pdfLaTeX you cannot use pstricks.
- On the other hand, with pdfLaTeX it is possible to insert directly images
- in JPEG, PDF or PNG format, use TrueType fonts, and more.
-\end_layout
-
-\begin_layout Subsubsection
-Why does the text look so bad when viewed with Acrobat Reader?
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:badfonts"
-
-\end_inset
-
-
-\begin_inset OptArg
-status collapsed
-
-\begin_layout Standard
-Bad Fonts in Acrobat Reader
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The problem is that bitmap fonts are displayed poorly by Acrobat Reader.
- When creating a PDF from the LyX file, you need to use outline font instead
- of the default bitmap fonts (in fact, you should also use outline fonts
- for Postscript files).
- Recent LaTeX distributions come with Postscript Type 1 version of the standard
- (Computer Modern) fonts.
- pdfLaTeX uses these font by default.
- Dvips doesn't use these fonts by default, so to make it use them, add the
- following to lines to your 
-\family typewriter
-~/.dvipsrc
-\family default
- file
-\end_layout
-
-\begin_layout LyX-Code
-p+ psfonts.cmz
-\end_layout
-
-\begin_layout LyX-Code
-p+ psfonts.amz
-\end_layout
-
-\begin_layout Standard
-If the default LaTeX font encoding (OT1) is used, nothing else need to be
- done.
- However, if the T1 font encoding is used, then LaTeX uses the newer EC
- fonts, for which there are no Type1 version.
- The solution is to use the ae package which emulates T1 coded fonts using
- the standard CM fonts.
- This is done by adding 
-\family typewriter
-
-\backslash
-usepackage{ae,aecompl}
-\family default
- to the preamble of the LyX file.
- However, some glyphs are missing from the CM fonts (e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-eth, thorn), and
- they are taken from the EC fonts.
- Therefore you get these glyphs as bitmaps.
-\end_layout
-
-\begin_layout Standard
-Note: LyX uses by default the T1 font encoding.
- If you wish to use the default font encoding (this is not recommended,
- unless you only write English documents), clear the field 
-\family sans
-\bar under
-T
-\bar default
-eX\InsetSpace ~
-encoding
-\family default
- in preferences (tabs 
-\family sans
-Outputs
-\family default
-, 
-\family sans
-Misc
-\family default
-).
- 
-\end_layout
-
-\begin_layout Standard
-An alternate option is to use the standard Postscript fonts instead of the
- Computer Modern fonts.
- To do that, you need to select 
-\family sans
-pslatex
-\family default
- as the global font in the document layout dialog.
- When using the Postscript fonts, the result PDF file is smaller as the
- fonts are not saved into the file.
- Furthermore, the Postscript fonts include all T1 glyphs.
- On the other hand, the Postscript fonts have no bold symbol font, so poor
- man's bold must be used (see Section\InsetSpace ~
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:pdfbold"
-
-\end_inset
-
-).
- The Postscript fonts also look different from the Computer Modern fonts.
-\end_layout
-
-\begin_layout Standard
-To sum up, both the Computer Modern and the Postscript fonts gives good
- results (with few exceptions).
- The decision of which one to use is a matter of taste.
-\end_layout
-
-\begin_layout Subsubsection
-Why doesn't the 
-\backslash
-boldsymbol{} command work when I use pslatex?
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:pdfbold"
-
-\end_inset
-
-
-\begin_inset OptArg
-status collapsed
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-boldsymbol{}
-\family default
- and 
-\family typewriter
-pslatex
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The Postscript fonts do not have a bold symbol font.
- The solution is to use the 
-\family typewriter
-
-\backslash
-pmb{}
-\family default
- (poor man's bold) command.
-\end_layout
-
-\begin_layout Standard
-It is possible to redefine the 
-\family typewriter
-
-\backslash
-boldsymbol
-\family default
- command to use 
-\family typewriter
-
-\backslash
-pmb
-\family default
- by putting
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-boldsymbol}[1]{
-\backslash
-pmb{#1}}
-\end_layout
-
-\begin_layout Standard
-in the preamble.
-\end_layout
-
-\begin_layout Subsubsection
-Is it possible to do write LaTeX-code which is processed only when running
- pdfLaTeX?
-\begin_inset OptArg
-status collapsed
-
-\begin_layout Standard
-Conditionals with pdfLaTeX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Yes you can do this with the 
-\family typewriter
-ifpdf.sty
-\family default
- package.
- Here is an example:
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-usepackage{ifpdf}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-ifpdf
-\end_layout
-
-\begin_layout LyX-Code
-   
-\backslash
-pdfinfo { /Author (your name and e-mail address)
-\end_layout
-
-\begin_layout LyX-Code
-      /Title (official title -- i.e., title element)
-\end_layout
-
-\begin_layout LyX-Code
-      /Subject (one line description of the document)
-\end_layout
-
-\begin_layout LyX-Code
-   }
-\end_layout
-
-\begin_layout LyX-Code
-   
-\backslash
-pdfcatalog { /PageMode (/UseNone)
-\end_layout
-
-\begin_layout LyX-Code
-   % /OpenAction (fitbh)
-\end_layout
-
-\begin_layout LyX-Code
-   }
-\end_layout
-
-\begin_layout LyX-Code
-   
-\backslash
-usepackage[pdftex]{hyperref}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-else
-\end_layout
-
-\begin_layout LyX-Code
-   
-\backslash
-usepackage[ps2pdf]{hyperref}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-fi
-\end_layout
-
-\begin_layout Subsubsection
-How can I make URLs clickable?
-\end_layout
-
-\begin_layout Standard
-See the references here:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/pmwiki.php/FAQ/PDF
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Custom
-\end_layout
-
-\begin_layout Standard
-Custom exports are possible if you have some particularly weird format you
- wish to convert to, assuming you have the relevant converter, of course.
- The format of the 
-\emph on
-input
-\emph default
- file can be chosen in the 
-\family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ustom
-\family default
- dialog; LyX will automatically convert the file to this point, then feed
- it to your custom converter.
- The possible values are all formats that LyX can produce from its own documents.
- 
-\end_layout
-
-\begin_layout Standard
-The converter command is also specified in the dialog.
- It should be a completely qualified command line which uses the variable
- 
-\family typewriter
-$$FName
-\family default
- to specify the name of the file.
- If this variable is not given, then the file will be sent to the standard
- input of your command.
- You may have to apply a bit of ingenuity to escape this sequence correctly
- so that it is compatible with your shell.
- 
-\end_layout
-
-\begin_layout Standard
-While it is not possible to save this command using the 
-\family sans
-Preferences
-\family default
- dialog, you can manually edit your 
-\family typewriter
-.lyx/preferences
-\family default
- to add a line like
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-custom_export_command "mycommand $$FName"
-\end_layout
-
-\begin_layout Chapter
 LyX Features needing Extra Software
 \end_layout
 
@@ -15366,7 +14991,10 @@ ools
 \bar under
 C
 \bar default
-heck\InsetSpace ~
+heck
+\begin_inset Space ~
+\end_inset
+
 TeX
 \family default
  command.
@@ -15379,7 +15007,7 @@ chktex
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ifi.uio.no/~jensthi/chktex/
 \end_layout
@@ -15442,20 +15070,26 @@ ChkTeX
 
 \begin_layout Itemize
 Ellipsis detection:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Use \SpecialChar \ldots{}
  instead of ...
 \end_layout
 
 \begin_layout Itemize
 No space in front of/after parenthesis:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 ( wrong spacing )
 \end_layout
 
 \begin_layout Itemize
 Enforcement of normal space after common abbreviations:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 e.
  g.
  is too wide spacing.
@@ -15464,16 +15098,20 @@ e.
 \begin_layout Itemize
 Enforcement of end-of-sentence space when the last sentence ends with a
  capital letter:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 This is a TEST.
  And this is wrong spacing.
 \end_layout
 
 \begin_layout Itemize
 Space in front of labels and similar commands:
-\newline
-The label should stick right
- up to the text to avoid falling to a wrong page.
+\begin_inset Newline newline
+\end_inset
+
+The label should stick right up to the text to avoid falling to a wrong
+ page.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -15485,7 +15123,7 @@ name "sec:chktex"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This footnote is in danger of falling off to a wrong page
 \end_layout
 
@@ -15496,10 +15134,11 @@ This footnote is in danger of falling off to a wrong page
 
 \begin_layout Itemize
 Space in front of references, instead of hard spaces:
-\newline
-In you are in bad luck,
- the text will break right between the referenced text and reference number,
- and that's a pity.
+\begin_inset Newline newline
+\end_inset
+
+In you are in bad luck, the text will break right between the referenced
+ text and reference number, and that's a pity.
  See section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -15524,7 +15163,9 @@ x
 \end_inset
 
  between numbers:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 2x2 looks cheap compared to 
 \begin_inset Formula $2\times2$
 \end_inset
@@ -15561,7 +15202,10 @@ ools\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-heck\InsetSpace ~
+heck
+\begin_inset Space ~
+\end_inset
+
 TeX
 \family default
 .
@@ -15667,9 +15311,18 @@ iew\SpecialChar \menuseparator
 \bar under
 R
 \bar default
-emove\InsetSpace ~
-All\InsetSpace ~
-Error\InsetSpace ~
+emove
+\begin_inset Space ~
+\end_inset
+
+All
+\begin_inset Space ~
+\end_inset
+
+Error
+\begin_inset Space ~
+\end_inset
+
 Boxes
 \family default
 , which will get rid of all warnings instantly.
@@ -15699,7 +15352,7 @@ ChkTeX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You can inspect the specific output from 
 \family sans
 chktex
@@ -15707,8 +15360,14 @@ chktex
  by using 
 \family sans
 Edit\SpecialChar \menuseparator
-View\InsetSpace ~
-LaTeX\InsetSpace ~
+View
+\begin_inset Space ~
+\end_inset
+
+LaTeX
+\begin_inset Space ~
+\end_inset
+
 Log
 \family default
  right after a 
@@ -16508,7 +16167,10 @@ ile\SpecialChar \menuseparator
 \bar under
 V
 \bar default
-ersion\InsetSpace ~
+ersion
+\begin_inset Space ~
+\end_inset
+
 Control
 \family default
  submenu.
@@ -16540,9 +16202,18 @@ This command registers your document with RCS\SpecialChar \@.
  to supply an initial description of the document.
  The document is now set in Read-Only mode and you have to 
 \family sans
-Check\InsetSpace ~
-Out\InsetSpace ~
-For\InsetSpace ~
+Check
+\begin_inset Space ~
+\end_inset
+
+Out
+\begin_inset Space ~
+\end_inset
+
+For
+\begin_inset Space ~
+\end_inset
+
 Edit
 \family default
 , before making any changes to it.
@@ -16797,7 +16468,7 @@ Literate Programming FAQ
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://shelob.ce.ttu.edu/daves/lpfaq/faq.html
 \end_layout
@@ -16853,7 +16524,7 @@ Noweb home page
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.cs.virginia.edu/~nr/noweb/
 \end_layout
@@ -16934,7 +16605,7 @@ Note that literate documents are not limited to these three classes.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 It is very simple, it involves the creation of a file with four lines, and
  re-running of the auto configuration.
 \end_layout
@@ -16958,7 +16629,7 @@ Scrap
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The equivalent Noweb term is 
 \begin_inset Quotes eld
 \end_inset
@@ -17026,7 +16697,7 @@ The down side of the Scrap paragraph layout is that consecutive paragraphs
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you have a printed version of this document you will not see any difference
  between the previous example and this one.
 \end_layout
@@ -17038,13 +16709,21 @@ If you have a printed version of this document you will not see any difference
 
 \begin_layout LyX-Code
 <<My scrap>>=
-\newline
+\begin_inset Newline newline
+\end_inset
+
   code
-\newline
+\begin_inset Newline newline
+\end_inset
+
   more code
-\newline
+\begin_inset Newline newline
+\end_inset
+
   even more code
-\newline
+\begin_inset Newline newline
+\end_inset
+
   @
 \end_layout
 
@@ -17055,7 +16734,7 @@ This layout works fine.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 It is in my list of 
 \begin_inset Quotes eld
 \end_inset
@@ -17087,12 +16766,17 @@ rence:
 
 \begin_layout LyX-Code
 <<My scrap>>=
-\newline
+\begin_inset Newline newline
+\end_inset
+
   def some_function(args):
-\newline
-    "This is the doc string for this
- function."
-\newline
+\begin_inset Newline newline
+\end_inset
+
+    "This is the doc string for this function."
+\begin_inset Newline newline
+\end_inset
+
     print "My args: ", args
 \end_layout
 
@@ -17187,7 +16871,7 @@ If the document is of any literate class LyX will then use the internal
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The converters are defined in the 
 \family sans
 \bar under
@@ -17416,7 +17100,7 @@ Noweb->Program
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 See section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -17521,26 +17205,43 @@ Typically, such a scrap would look something like this:
 
 \begin_layout LyX-Code
 <<build-script>>=
-\newline
-#!/bin/sh
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\newline
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 if [ -z "${NOWEB_SOURCE}" ]
-\newline
+\begin_inset Newline newline
+\end_inset
+
 then
-\newline
+\begin_inset Newline newline
+\end_inset
+
   NOWEB_SOURCE=myfile.nw
-\newline
+\begin_inset Newline newline
+\end_inset
 
 fi
-\newline
+\begin_inset Newline newline
+\end_inset
+
 [...
  code to extract files ...]
-\newline
+\begin_inset Newline newline
+\end_inset
+
 [...
  code to compile files ...]
-\newline
+\begin_inset Newline newline
+\end_inset
+
 @
 \end_layout
 
@@ -17602,7 +17303,10 @@ Conversion
 \end_layout
 
 \begin_layout Description
-the\InsetSpace ~
+the
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -17611,7 +17315,10 @@ literate
 \begin_inset Quotes erd
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 format Set up via the Formats tab, this is where the Noweb-specific pieces
  are set up.
  The 
@@ -17635,12 +17342,18 @@ NoWeb
 \end_layout
 
 \begin_layout Description
-the\InsetSpace ~
+the
+\begin_inset Space ~
+\end_inset
+
 
 \family sans
 Program
 \family default
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 format This is an empty format whose sole purpose is to be the endpoint
  of a conversion (which then allows us to set up a converter for it).
 \end_layout
@@ -18072,7 +17785,7 @@ The aim for this chapter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Editor's note: Lars' original chapter was a masterful description of how
  to use the 
 \family typewriter
@@ -18154,7 +17867,7 @@ end{multicols}
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18174,7 +17887,9 @@ begin{multicols}{2}
 The Adventure of the Empty House
 \series default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 by 
 \noun on
 Sir Arthur Conan Doyle
@@ -18210,7 +17925,7 @@ ty which utterly submerged my mind.
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18234,7 +17949,7 @@ The same pattern is used when you want more than two columns:
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18274,7 +17989,7 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18303,7 +18018,7 @@ You can even have columns inside columns:
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18329,7 +18044,7 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18360,7 +18075,7 @@ The youth moved in the best society--had, so far as was known, no enemies
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18403,7 +18118,7 @@ The evidence of those who had played with him-- Mr.
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18433,7 +18148,7 @@ Enumerate
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Numbering in Enumerate
 \end_layout
 
@@ -18534,7 +18249,10 @@ I.
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes erd
 \end_inset
@@ -18543,7 +18261,10 @@ A.
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes erd
 \end_inset
@@ -18552,7 +18273,10 @@ A.
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -18693,7 +18417,10 @@ produces the somewhat out of hand numbering scheme: <
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes erd
 \end_inset
@@ -18702,7 +18429,10 @@ A.1
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes erd
 \end_inset
@@ -18711,7 +18441,10 @@ a+
 \begin_inset Quotes erd
 \end_inset
 
-,\InsetSpace ~
+,
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -18750,7 +18483,7 @@ Mike Ressler
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18773,7 +18506,7 @@ vspace*{-8.4ex}
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18803,7 +18536,7 @@ dropped capitals
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18930,9 +18663,9 @@ Mike Ressler
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18948,7 +18681,7 @@ begin{sloppypar}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18957,7 +18690,7 @@ newdimen
 varunit 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18976,7 +18709,7 @@ varunit}{4.5in}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -18987,7 +18720,7 @@ varunit 0.332
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.40
 \backslash
@@ -18996,7 +18729,7 @@ varunit 0.300
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.35
 \backslash
@@ -19005,7 +18738,7 @@ varunit 0.293
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.30
 \backslash
@@ -19014,7 +18747,7 @@ varunit 0.300
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.25
 \backslash
@@ -19023,7 +18756,7 @@ varunit 0.317
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.20
 \backslash
@@ -19032,7 +18765,7 @@ varunit 0.342
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.15
 \backslash
@@ -19041,7 +18774,7 @@ varunit 0.373
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.10
 \backslash
@@ -19050,7 +18783,7 @@ varunit 0.410
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.05
 \backslash
@@ -19059,7 +18792,7 @@ varunit 0.453
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.00
 \backslash
@@ -19068,7 +18801,7 @@ varunit 0.500
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.05
 \backslash
@@ -19077,7 +18810,7 @@ varunit 0.453
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.10
 \backslash
@@ -19086,7 +18819,7 @@ varunit 0.410
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.15
 \backslash
@@ -19095,7 +18828,7 @@ varunit 0.373
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.20
 \backslash
@@ -19104,7 +18837,7 @@ varunit 0.342
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.25
 \backslash
@@ -19113,7 +18846,7 @@ varunit 0.317
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.30
 \backslash
@@ -19122,7 +18855,7 @@ varunit 0.300
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.35
 \backslash
@@ -19131,7 +18864,7 @@ varunit 0.293
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.40
 \backslash
@@ -19140,7 +18873,7 @@ varunit 0.300
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 0.45
 \backslash
@@ -19149,7 +18882,7 @@ varunit 0.332
 varunit
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -19210,9 +18943,9 @@ numlines
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
