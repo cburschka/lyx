@@ -199,7 +199,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-04-09 03:27+0200\n"
-"PO-Revision-Date: 2008-03-31 19:17+0200\n"
+"PO-Revision-Date: 2008-04-10 17:50+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -1499,16 +1499,14 @@ msgid "Negative thin space"
 msgstr "Espace fine négative"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:79
-#, fuzzy
 msgid "Half Quad (0.5 em)"
-msgstr "Cadratin (1 em)"
+msgstr "Demi-cadratin (0.5 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:84
 msgid "Quad (1 em)"
 msgstr "Cadratin (1 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:89
-#, fuzzy
 msgid "Double Quad (2 em)"
 msgstr "Double cadratin (2 em)"
 
@@ -3107,18 +3105,16 @@ msgid "Use Pixmap Cache to speed up font rendering"
 msgstr "Utiliser le cache Pixmap pour accélérer le rendu des polices"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
-#, fuzzy
 msgid "Show ke&y-bindings containing:"
-msgstr "Afficher les raccourcis claviers contenant :"
+msgstr "Afficher les raccourcis cla&viers contenant :"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
 msgid "&Bind file:"
 msgstr "Fichier de &raccourcis :"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
-#, fuzzy
 msgid "Ne&w"
-msgstr "Nouvelle"
+msgstr "No&uvelle"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -7996,7 +7992,6 @@ msgid "Endnote"
 msgstr "Notes en fin de document"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote command, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
@@ -8014,14 +8009,10 @@ msgid "Foot to End"
 msgstr "Note de bas de page en fin de document"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in ERT "
 "where you want the endnotes to appear."
-msgstr ""
-"Positionne toutes les notes de bas de pages en notes regroupées (endnotes). "
-"Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez "
-"voir apparaître les notes regroupées."
+msgstr "Positionne toutes les notes de bas de pages en notes regroupées (endnotes). Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez voir apparaître les notes regroupées."
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:15
 msgid "Hanging"
@@ -8335,9 +8326,8 @@ msgid "Ignore"
 msgstr "Ignorer"
 
 #: lib/languages:4
-#, fuzzy
 msgid "Latex"
-msgstr "Date"
+msgstr "Latex"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -8824,35 +8814,35 @@ msgstr "Alignement|i"
 
 #: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
-msgstr "Ajouter Ligne|j"
+msgstr "Ajouter une ligne|j"
 
 #: lib/ui/classic.ui:130
 msgid "Delete Row|w"
-msgstr "Supprimer Ligne|u"
+msgstr "Supprimer la ligne|u"
 
 #: lib/ui/classic.ui:131 lib/ui/classic.ui:172
 msgid "Copy Row"
-msgstr "Copier Ligne"
+msgstr "Copier la ligne"
 
 #: lib/ui/classic.ui:132 lib/ui/classic.ui:173
 msgid "Swap Rows"
-msgstr "Échanger Lignes"
+msgstr "Échanger les lignes"
 
 #: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
-msgstr "Ajouter Colonne|o"
+msgstr "Ajouter une colonne|o"
 
 #: lib/ui/classic.ui:135
 msgid "Delete Column|D"
-msgstr "Supprimer Colonne|p"
+msgstr "Supprimer la colonne|p"
 
 #: lib/ui/classic.ui:136 lib/ui/classic.ui:177
 msgid "Copy Column"
-msgstr "Copier Colonne"
+msgstr "Copier la colonne"
 
 #: lib/ui/classic.ui:137 lib/ui/classic.ui:178
 msgid "Swap Columns"
-msgstr "Échanger Colonnes"
+msgstr "Échanger les colonnes"
 
 #: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:171
 msgid "Left|L"
@@ -8904,19 +8894,19 @@ msgstr "Alignement|A"
 
 #: lib/ui/classic.ui:170
 msgid "Add Row|R"
-msgstr "Ajouter Ligne|j"
+msgstr "Ajouter une ligne|j"
 
 #: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
-msgstr "Supprimer Ligne|u"
+msgstr "Supprimer la ligne|u"
 
 #: lib/ui/classic.ui:175
 msgid "Add Column|C"
-msgstr "Ajouter Colonne|o"
+msgstr "Ajouter une colonne|o"
 
 #: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
-msgstr "Supprimer Colonne|p"
+msgstr "Supprimer la colonne|p"
 
 #: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:230
 msgid "Default|t"
@@ -8924,11 +8914,11 @@ msgstr "Défaut|D"
 
 #: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:231
 msgid "Display|D"
-msgstr "Hors Ligne|H"
+msgstr "Hors ligne|H"
 
 #: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:232
 msgid "Inline|I"
-msgstr "En Ligne|L"
+msgstr "En ligne|l"
 
 #: lib/ui/classic.ui:188
 msgid "Octave"
@@ -9211,67 +9201,67 @@ msgstr "Changement de police|o"
 
 #: lib/ui/classic.ui:284
 msgid "Math Normal Font"
-msgstr "Math Police Normale"
+msgstr "Math police normale"
 
 #: lib/ui/classic.ui:286
 msgid "Math Calligraphic Family"
-msgstr "Math Famille Calligraphique"
+msgstr "Math famille calligraphique"
 
 #: lib/ui/classic.ui:287
 msgid "Math Fraktur Family"
-msgstr "Math Famille Fraktur"
+msgstr "Math famille Fraktur"
 
 #: lib/ui/classic.ui:288
 msgid "Math Roman Family"
-msgstr "Math Famille Roman"
+msgstr "Math famille romaine"
 
 #: lib/ui/classic.ui:289
 msgid "Math Sans Serif Family"
-msgstr "Math Famille Sans Empattement"
+msgstr "Math famille sans empattement"
 
 #: lib/ui/classic.ui:291
 msgid "Math Bold Series"
-msgstr "Math Série Grasse"
+msgstr "Math série grasse"
 
 #: lib/ui/classic.ui:293
 msgid "Text Normal Font"
-msgstr "Texte Police Normale"
+msgstr "Texte police normale"
 
 #: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:247
 msgid "Text Roman Family"
-msgstr "Texte Famille Roman"
+msgstr "Texte famille romaine"
 
 #: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:248
 msgid "Text Sans Serif Family"
-msgstr "Texte Famille Sans Empattement"
+msgstr "Texte famille sans empattement"
 
 #: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:249
 msgid "Text Typewriter Family"
-msgstr "Texte Famille Chasse Fixe"
+msgstr "Texte famille chasse fixe"
 
 #: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:251
 msgid "Text Bold Series"
-msgstr "Texte Série Grasse"
+msgstr "Texte série grasse"
 
 #: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:252
 msgid "Text Medium Series"
-msgstr "Texte Série Moyenne"
+msgstr "Texte série moyenne"
 
 #: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:254
 msgid "Text Italic Shape"
-msgstr "Texte Forme Italique"
+msgstr "Texte forme italique"
 
 #: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:255
 msgid "Text Small Caps Shape"
-msgstr "Texte Forme Petites Capitales"
+msgstr "Texte forme petites capitales"
 
 #: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:256
 msgid "Text Slanted Shape"
-msgstr "Texte Forme Inclinée"
+msgstr "Texte forme inclinée"
 
 #: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:257
 msgid "Text Upright Shape"
-msgstr "Texte Forme Droite"
+msgstr "Texte forme droite"
 
 #: lib/ui/classic.ui:310
 msgid "Floatflt Figure"
@@ -9279,7 +9269,7 @@ msgstr "Figure Floatflt"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:417
 msgid "Table of Contents|C"
-msgstr "Table des Matières|e"
+msgstr "Table des matières|e"
 
 #: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:419
 msgid "Index List|I"
@@ -9528,18 +9518,16 @@ msgid "Split Cell|C"
 msgstr "Fractionner Cellule|C"
 
 #: lib/ui/stdcontext.inc:51
-#, fuzzy
 msgid "Insert|n"
 msgstr "Insérer|I"
 
 #: lib/ui/stdcontext.inc:53
-#, fuzzy
 msgid "Add Line Above|o"
-msgstr "Ajouter Ligne Dessus|A"
+msgstr "Ajouter ligne au-dessus|A"
 
 #: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:205
 msgid "Add Line Below|B"
-msgstr "Ajouter Ligne Dessous|o"
+msgstr "Ajouter ligne au-dessous|o"
 
 #: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:206
 msgid "Delete Line Above|D"
@@ -9567,16 +9555,15 @@ msgstr "Supprimer Ligne à Droite"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdtoolbars.inc:80
 msgid "Toggle Math Toolbar"
-msgstr "Activer/désactiver la Palette Mathématique"
+msgstr "Activer/désactiver la barre d'outils mathématiques"
 
 #: lib/ui/stdcontext.inc:64
-#, fuzzy
 msgid "Toggle Math-Panels Toolbar"
-msgstr "Activer/désactiver la Palette Mathématique"
+msgstr "Activer/désactiver la barre d'outils palette mathématique"
 
 #: lib/ui/stdcontext.inc:65 lib/ui/stdtoolbars.inc:81
 msgid "Toggle Table Toolbar"
-msgstr "Activer/désactiver la Palette Tableaux"
+msgstr "Activer/désactiver la barre d'outils tableaux"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdcontext.inc:94
 msgid "Next Cross-Reference|N"
@@ -9699,21 +9686,19 @@ msgstr "Espace fine négative|n"
 
 #: lib/ui/stdcontext.inc:157
 msgid "Half Quad Space (Enskip)|k"
-msgstr ""
+msgstr "Saut demi-cadratin (saut de dimension n)|S"
 
 #: lib/ui/stdcontext.inc:158
-#, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Espace horizontal insécable (%1$s)"
+msgstr "Espace insécable demi-cadratin (espace-n)|m"
 
 #: lib/ui/stdcontext.inc:159
 msgid "Quad Space|Q"
-msgstr "Cadratin|C"
+msgstr "Espace cadratin|c"
 
 #: lib/ui/stdcontext.inc:160
-#, fuzzy
 msgid "Double Quad Space|u"
-msgstr "Double cadratin|D"
+msgstr "Espace double cadratin|d"
 
 #: lib/ui/stdcontext.inc:161
 msgid "Horizontal Fill|F"
@@ -9901,11 +9886,11 @@ msgstr "Ligne de droite|d"
 
 #: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
-msgstr "Copier ligne|n"
+msgstr "Copier la ligne|n"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
-msgstr "Copier colonne|e"
+msgstr "Copier la colonne|e"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
@@ -9971,7 +9956,7 @@ msgstr "Réduire la profondeur de liste|u"
 # menu Editer quand on est dans un insert
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
-msgstr "Supprimer insert|u"
+msgstr "Supprimer l'insert|u"
 
 #: lib/ui/stdmenus.inc:117
 msgid "TeX Code Settings...|C"
@@ -10072,35 +10057,35 @@ msgstr "Style de texte|t"
 
 #: lib/ui/stdmenus.inc:204
 msgid "Add Line Above|A"
-msgstr "Ajouter Ligne Dessus|A"
+msgstr "Ajouter ligne au-dessus|A"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
-msgstr "Math Police Normale|N"
+msgstr "Math police normale|n"
 
 #: lib/ui/stdmenus.inc:238
 msgid "Math Calligraphic Family|C"
-msgstr "Math Famille Calligraphique|C"
+msgstr "Math famille calligraphique|c"
 
 #: lib/ui/stdmenus.inc:239
 msgid "Math Fraktur Family|F"
-msgstr "Math Famille Fraktur|F"
+msgstr "Math famille Fraktur|F"
 
 #: lib/ui/stdmenus.inc:240
 msgid "Math Roman Family|R"
-msgstr "Math Famille Roman|R"
+msgstr "Math famille romaine|r"
 
 #: lib/ui/stdmenus.inc:241
 msgid "Math Sans Serif Family|S"
-msgstr "Math Famille Sans Empattement|S"
+msgstr "Math famille sans empattement|e"
 
 #: lib/ui/stdmenus.inc:243
 msgid "Math Bold Series|B"
-msgstr "Math Série Grasse|G"
+msgstr "Math série grasse|g"
 
 #: lib/ui/stdmenus.inc:245
 msgid "Text Normal Font|T"
-msgstr "Texte Police Normale|T"
+msgstr "Texte police normale|T"
 
 #: lib/ui/stdmenus.inc:261
 msgid "Octave|O"
@@ -10310,11 +10295,11 @@ msgstr "Comprimé|C"
 
 #: lib/ui/stdmenus.inc:466
 msgid "Accept Change|A"
-msgstr "Accepter modification|A"
+msgstr "Accepter la modification|A"
 
 #: lib/ui/stdmenus.inc:467
 msgid "Reject Change|R"
-msgstr "Rejeter modification|R"
+msgstr "Rejeter la modification|R"
 
 #: lib/ui/stdmenus.inc:468
 msgid "Accept All Changes|c"
@@ -10498,7 +10483,7 @@ msgstr "Style de texte"
 
 #: lib/ui/stdtoolbars.inc:111
 msgid "Paragraph settings"
-msgstr "Paramètres de Paragraphe"
+msgstr "Paramètres de paragraphe"
 
 #: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:161
 msgid "Add row"
@@ -10506,15 +10491,15 @@ msgstr "Ajouter une ligne"
 
 #: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:162
 msgid "Add column"
-msgstr "Ajouter colonne"
+msgstr "Ajouter une colonne"
 
 #: lib/ui/stdtoolbars.inc:118 lib/ui/stdtoolbars.inc:163
 msgid "Delete row"
-msgstr "Supprimer ligne"
+msgstr "Supprimer la ligne"
 
 #: lib/ui/stdtoolbars.inc:119 lib/ui/stdtoolbars.inc:164
 msgid "Delete column"
-msgstr "Supprimer colonne"
+msgstr "Supprimer la colonne"
 
 #: lib/ui/stdtoolbars.inc:121
 msgid "Set top line"
@@ -10987,11 +10972,11 @@ msgstr "Binomial\t\\binom"
 
 #: lib/ui/stdtoolbars.inc:305
 msgid "Text binomial\t\\tbinom"
-msgstr "Texte binomial\t\\tbinom"
+msgstr "Binomial en ligne\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:306
 msgid "Display binomial\t\\dbinom"
-msgstr "Afficher binomial\t\\dbinom"
+msgstr "Binomial hors ligne\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:310
 msgid "Roman\t\\mathrm"
@@ -13099,9 +13084,9 @@ msgid "Document format failure"
 msgstr "Problème de format de document"
 
 #: src/Buffer.cpp:735
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s is not a readable LyX document."
-msgstr "%1$s n'est pas un document LyX."
+msgstr "%1$s n'est pas un document LyX consultable."
 
 #: src/Buffer.cpp:772
 msgid "Conversion failed"
@@ -13694,9 +13679,8 @@ msgid "selection"
 msgstr "sélection"
 
 #: src/Color.cpp:105
-#, fuzzy
 msgid "selected text"
-msgstr "texte effacé"
+msgstr "texte sélectionné"
 
 #: src/Color.cpp:107
 msgid "LaTeX text"
@@ -16092,12 +16076,11 @@ msgstr "Clés"
 
 #: src/frontends/qt4/GuiClipboard.cpp:330
 msgid "Enhanced Metafile"
-msgstr ""
+msgstr "Métafichier amélioré"
 
 #: src/frontends/qt4/GuiClipboard.cpp:331
-#, fuzzy
 msgid "Windows Metafile"
-msgstr "Lien vers un fichier"
+msgstr "Métafichier Windows"
 
 #: src/frontends/qt4/GuiClipboard.cpp:332
 msgid "LinkBack PDF"
@@ -16646,6 +16629,8 @@ msgid ""
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
+"Insérer l'espace même parés un saut de ligne.\n"
+"Notez qu'un espace insécable demi-cadratin apparaîtra comme un espacement vertical s''il est utilisé au début d'un paragraphe !"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -16892,28 +16877,25 @@ msgstr "Fonction"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2050
 msgid "Cursor, Mouse and Editing functions"
-msgstr ""
+msgstr "Contrôle du curseur, de la souris et de l'édition"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2054
-#, fuzzy
 msgid "Mathematical Symbols"
-msgstr "Symboles mathématiques alphanumériques"
+msgstr "Symboles mathématiques"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2058
 msgid "Buffer and Window"
-msgstr ""
+msgstr "Tampon et fenêtre"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2062
 msgid "Font, Layouts and Textclasses"
-msgstr ""
+msgstr "Polices, formats et classes"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2066
-#, fuzzy
 msgid "System and Miscellaneous"
-msgstr "Divers AMS"
+msgstr "Système et divers"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2188 src/frontends/qt4/GuiPrefs.cpp:2245
-#, fuzzy
 msgid "Res&tore"
 msgstr "&Restaurer"
 
@@ -17501,9 +17483,8 @@ msgid "Vertical Space Settings"
 msgstr "Paramètres d'espacement vertical"
 
 #: src/frontends/qt4/GuiView.cpp:117
-#, fuzzy
 msgid "version "
-msgstr "Version"
+msgstr "version"
 
 #: src/frontends/qt4/GuiView.cpp:117
 msgid "unknown version"
@@ -18393,11 +18374,11 @@ msgstr "Espace fine"
 
 #: src/insets/InsetSpace.cpp:79
 msgid "Quad Space"
-msgstr "Cadratin"
+msgstr "Espace cadratin"
 
 #: src/insets/InsetSpace.cpp:82
 msgid "QQuad Space"
-msgstr "Double cadratin"
+msgstr "Espace double cadratin"
 
 #: src/insets/InsetSpace.cpp:85
 msgid "Enspace"
@@ -18705,9 +18686,8 @@ msgid "References: "
 msgstr " Références : "
 
 #: src/support/FileFilterList.cpp:102
-#, fuzzy
 msgid "All Files "
-msgstr "Tous les champs"
+msgstr "Tous les fichiers "
 
 #: src/support/Package.cpp:441
 msgid "LyX binary not found"
