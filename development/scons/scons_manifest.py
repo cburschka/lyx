@@ -297,6 +297,7 @@ src_support_header_files = Split('''
     Systemcall.h
     Timeout.h
     Translator.h
+    assert.h
     convert.h
     copied_ptr.h
     debug.h
