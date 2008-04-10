@@ -194,6 +194,8 @@ bool InsetCommand::string2params(string const & name, string const & in,
 	InsetCommandParams & params)
 {
 	params.clear();
+	if (in.empty())
+		return false;
 	istringstream data(in);
 	Lexer lex;
 	lex.setStream(data);
