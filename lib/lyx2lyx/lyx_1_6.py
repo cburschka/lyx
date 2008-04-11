@@ -1419,6 +1419,24 @@ def revert_widesideways(document):
         i = i + 1
 
 
+def revert_external_embedding(document):
+    ' Remove embed tag from external inset '
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset External", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        k = find_token(document.body, "\tembed", i, j)
+        if k != -1:
+            del document.body[k]
+        i = i + 1
+
+
 def convert_subfig(document):
     " Convert subfigures to subfloats. "
     i = 0
@@ -1911,7 +1929,7 @@ revert =  [[325, [revert_pdfpages]],
            [313, []],
            [312, [revert_module_names]],
            [311, [revert_rotfloat, revert_widesideways]],
-           [310, []],
+           [310, [revert_external_embedding]],
            [309, [revert_btprintall]],
            [308, [revert_nocite]],
            [307, [revert_serbianlatin]],
