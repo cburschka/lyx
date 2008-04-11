@@ -1,0 +1,1 @@
+#define LASSERT(a,b)
