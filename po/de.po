@@ -4600,9 +4600,8 @@ msgstr "Datensatz:"
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
 #: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
-#, fuzzy
 msgid "MainText"
-msgstr "Einfacher Text"
+msgstr "Haupttext"
 
 #: lib/layouts/amsbook.layout:90 lib/layouts/amsbook.layout:91
 #: lib/layouts/powerdot.layout:229 lib/layouts/numarticle.inc:10
@@ -7717,13 +7716,12 @@ msgstr "Anhang \\thechapter"
 #: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
 #: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
 #: lib/layouts/stdstarsections.inc:80
-#, fuzzy
 msgid "Unnumbered"
-msgstr "Nummeriert"
+msgstr "Nicht-Nummeriert"
 
 #: lib/layouts/stdstruct.inc:43
 msgid "BackMatter"
-msgstr ""
+msgstr "Nachspann"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
@@ -16959,19 +16957,19 @@ msgstr "Die Rechtschreibprüfung ist abgeschlossen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:51
 msgid "Basic Latin"
-msgstr "Grundlegendes Latein"
+msgstr "Basis-Lateinisch"
 
 #: src/frontends/qt4/GuiSymbols.cpp:52
 msgid "Latin-1 Supplement"
-msgstr "Latein-1 Ergänzung"
+msgstr "Lateinisch-1, Ergänzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:53
 msgid "Latin Extended-A"
-msgstr "Latein erweitert-A"
+msgstr "Lateinisch, erweitert-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Latin Extended-B"
-msgstr "Latein erweitert-B"
+msgstr "Lateinisch, erweitert-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "IPA Extensions"
@@ -16979,7 +16977,7 @@ msgstr "IPA-Erweiterungen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Spacing Modifier Letters"
-msgstr "Zwischenraum-Modifikator"
+msgstr "Zwischenraum-Modifikatoren"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "Combining Diacritical Marks"
@@ -17015,7 +17013,7 @@ msgstr "Oriya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Tamil"
-msgstr "Tamil"
+msgstr "Tamilisch"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
 msgid "Telugu"
@@ -17027,7 +17025,7 @@ msgstr "Kannada"
 
 #: src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Malayalam"
-msgstr "Malaiisch"
+msgstr "Malayalam"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Lao"
@@ -17043,7 +17041,7 @@ msgstr "Georgisch"
 
 #: src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Hangul Jamo"
-msgstr "Hangul Jamo"
+msgstr "Hangeul-Jamo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Phonetic Extensions"
@@ -17051,23 +17049,23 @@ msgstr "Phonetische Erweiterungen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Latin Extended Additional"
-msgstr "Latein erweitert Zusätzlich"
+msgstr "Lateinisch, weiterer Zusatz"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Greek Extended"
-msgstr "Griechisch erweitert"
+msgstr "Griechisch, Zusatz"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "General Punctuation"
-msgstr "Allgemeine Interpunktion"
+msgstr "Interpunktion, allgemein"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Superscripts and Subscripts"
-msgstr "Hoch- und Tiefstellungen"
+msgstr "Hoch- und tiefgestellte Zeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "Currency Symbols"
-msgstr "Währungssymbole"
+msgstr "Währungszeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
 msgid "Combining Diacritical Marks for Symbols"
@@ -17079,7 +17077,7 @@ msgstr "Buchstabenähnliche Symbole"
 
 #: src/frontends/qt4/GuiSymbols.cpp:85
 msgid "Number Forms"
-msgstr "Zahlenformen"
+msgstr "Zahlzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Mathematical Operators"
@@ -17087,11 +17085,11 @@ msgstr "Mathematische Operatoren"
 
 #: src/frontends/qt4/GuiSymbols.cpp:88
 msgid "Miscellaneous Technical"
-msgstr "Verschiedenes Technisches"
+msgstr "Verschiedene technische Zeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:89
 msgid "Control Pictures"
-msgstr "Kontrollbilder"
+msgstr "Symbole für Steuerzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Optical Character Recognition"
@@ -17099,11 +17097,11 @@ msgstr "Optische Zeichenerkennung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
 msgid "Enclosed Alphanumerics"
-msgstr "Eingeschlossene alphanumerische Zeichen"
+msgstr "Umschlossene alphanumerische Zeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
 msgid "Box Drawing"
-msgstr "Rahmenelemente"
+msgstr "Rahmenzeichnung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Block Elements"
@@ -17111,7 +17109,7 @@ msgstr "Blockelemente"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
 msgid "Geometric Shapes"
-msgstr "Geometrische Gebilde"
+msgstr "Geometrische Formen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
 msgid "Miscellaneous Symbols"
@@ -17143,7 +17141,7 @@ msgstr "Bopomofo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:102
 msgid "Hangul Compatibility Jamo"
-msgstr "Hangul Kompatibilität Jamo"
+msgstr "Hangeul-Jamo, Kompatibilität"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Kanbun"
@@ -17151,19 +17149,19 @@ msgstr "Kanbun"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
 msgid "Enclosed CJK Letters and Months"
-msgstr "Beigefügte CJK-Buchstaben und -Monate"
+msgstr "Umschlossene CJK-Zeichen und -Monate"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "CJK Compatibility"
-msgstr "CJK Kompatibilität"
+msgstr "CJK-Kompatibilität"
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "CJK Unified Ideographs"
-msgstr "CJK vereinheitlichte Ideogramme"
+msgstr "Vereinheitlichte CJK-Ideogramme"
 
 #: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "Hangul Syllables"
-msgstr "Hangul-Silben"
+msgstr "Hangeul-Silbenzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "High Surrogates"
@@ -17179,11 +17177,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "Private Use Area"
-msgstr "Bereich für privaten Gebrauch"
+msgstr "Bereich für private Nutzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "CJK Compatibility Ideographs"
-msgstr "CJK Kompatibilität Ideogramme"
+msgstr "CJK-Ideogramme, Kompatibilität"
 
 #: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "Alphabetic Presentation Forms"
@@ -17195,11 +17193,11 @@ msgstr "Arabische Präsentationsformen-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "Combining Half Marks"
-msgstr ""
+msgstr "Kombinierende halbe diakritische Zeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "CJK Compatibility Forms"
-msgstr "CJK Kompatibilität Formen"
+msgstr "CJK-Kompatibilitätsformen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Small Form Variants"
@@ -17211,7 +17209,7 @@ msgstr "Arabische Präsentationsformen-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "Halfwidth and Fullwidth Forms"
-msgstr ""
+msgstr "Halbbreite und vollbreite Formen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Specials"
@@ -17219,23 +17217,23 @@ msgstr "Spezielles"
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Linear B Syllabary"
-msgstr "Linear-B Silben"
+msgstr "Linear-B-Silbenzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Linear B Ideograms"
-msgstr "Linear-B Ideogramme"
+msgstr "Linear-B-Ideogramme"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Aegean Numbers"
-msgstr "Ägäische Zahlen"
+msgstr "Ägäische Zahlzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Ancient Greek Numbers"
-msgstr "Altgriechische Nummern"
+msgstr "Altgriechische Zahlzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Old Italic"
-msgstr "Altitalienisch"
+msgstr "Altitalisch"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 msgid "Gothic"
@@ -17251,11 +17249,11 @@ msgstr "Altpersisch"
 
 #: src/frontends/qt4/GuiSymbols.cpp:129
 msgid "Deseret"
-msgstr "Deseret"
+msgstr "Mormonen-Alphabet"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Shavian"
-msgstr "Shavianisch"
+msgstr "Shaw-Alphabet"
 
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Osmanya"
@@ -17263,7 +17261,7 @@ msgstr "Osmanya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:132
 msgid "Cypriot Syllabary"
-msgstr "Zyprische Silben"
+msgstr "Kyprische Schrift"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
 msgid "Kharoshthi"
@@ -17271,19 +17269,19 @@ msgstr "Kharoshthi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Byzantine Musical Symbols"
-msgstr "Byzantinische Musiksymbole"
+msgstr "Byzantinische Notenschriftzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Musical Symbols"
-msgstr "Musikalische Symbole"
+msgstr "Notenschriftzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
 msgid "Ancient Greek Musical Notation"
-msgstr "Altgriechische musikalische Notationen"
+msgstr "Altgriechische Notenschriftzeichen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Tai Xuan Jing Symbols"
-msgstr "Tai Xuan Jing Symbole"
+msgstr "Tai-Xuan-Jing-Symbole"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Mathematical Alphanumeric Symbols"
@@ -17291,27 +17289,27 @@ msgstr "Mathematische alphanumerische Symbole"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "CJK Unified Ideographs Extension B"
-msgstr "CJK Vereinheitlichte Ideogramme Erweiterung B"
+msgstr "Vereinheitlichte CJK-Ideogramme, Erweiterung B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr "CJK Kompatibilität Ideogramme Ergänzung"
+msgstr "CJK-Ideogramme, Kompatibilität, Ergänzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:141
 msgid "Tags"
-msgstr "Etiketten"
+msgstr "Tags"
 
 #: src/frontends/qt4/GuiSymbols.cpp:142
 msgid "Variation Selectors Supplement"
-msgstr ""
+msgstr "Variantenselektoren, Ergänzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "Supplementary Private Use Area-A"
-msgstr "Zusätzlicher Bereich für private Nutzung-A"
+msgstr "Ergänzender Bereich A für private Nutzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Supplementary Private Use Area-B"
-msgstr "Zusätzlicher Bereich für private Nutzung-B"
+msgstr "Ergänzender Bereich B für private Nutzung"
 
 #: src/frontends/qt4/GuiSymbols.cpp:223
 msgid "Character: "
