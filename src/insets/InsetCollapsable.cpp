@@ -108,7 +108,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 {
 	Dimension dim = dimensionCollapsed();
 	if (geometry() == NoButton)
-		return layout_->labelstring();
+		return translateIfPossible(layout_->labelstring());
 	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
 		return docstring();
 
@@ -132,7 +132,7 @@ void InsetCollapsable::setLayout(DocumentClass const * const dc)
 {
 	if (dc) {
 		layout_ = &(dc->insetLayout(name()));
-		labelstring_ = layout_->labelstring();
+		labelstring_ = translateIfPossible(layout_->labelstring());
 	} else {
 		layout_ = &DocumentClass::emptyInsetLayout();
 		labelstring_ = _("UNDEFINED");

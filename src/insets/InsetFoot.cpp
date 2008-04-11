@@ -56,8 +56,8 @@ void InsetFoot::updateLabels(ParIterator const & it)
 	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
 		// FIXME: the counter should format itself.
-		custom_label_= support::bformat(from_ascii("%1$s %2$s"),
-					  getLayout(buffer().params()).labelstring(),
+		custom_label_= support::bformat(from_utf8("%1$s %2$s"),
+					  translateIfPossible(getLayout(buffer().params()).labelstring()),
 					  cnts.theCounter(foot));
 		setLabel(custom_label_);
 	
