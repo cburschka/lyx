@@ -8,7 +8,7 @@ Author: Joost Verburg
 
 !insertmacro LANGFILE_EXT "English"
 
-${LangFileString} TEXT_NO_PRIVILEDGES "You do not have Administrator or Power User privileges.$\r$\n$\r$\nAlthough you can install ${APP_NAME} and the typesetting system, the utilities for image conversion and previewing cannot be installed without these priviledges."
+${LangFileString} TEXT_NO_PRIVILEDGES "You don't have Administrator or Power User privileges.$\r$\nThe utilities for image conversion cannot be installed without these priviledges."
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 

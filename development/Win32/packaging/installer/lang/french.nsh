@@ -8,7 +8,7 @@ Author: Jean-Pierre Chrétien
 
 !insertmacro LANGFILE_EXT "French"
 
-${LangFileString} TEXT_NO_PRIVILEDGES "Vous n'avez pas les privilèges d'administrateur.$\r$\n$\r$\nBien que vous puissiez installer ${APP_NAME} et le système typographique, les utilitaires de conversion de format graphique et de prévisualisation ne peuvent être installés sans ces privilèges."
+${LangFileString} TEXT_NO_PRIVILEDGES "Vous n'avez pas les privilèges d'administrateur.$\r$\nLes utilitaires de conversion de format graphique ne peuvent être installés sans ces privilèges."
 
 ${LangFileString} TEXT_WELCOME_DOWNLOAD "Cet assistant va vous guider tout au long de l'installation de $(^NameDA), le constructeur de documents qui encourage une saisie fondée sur la structure du document plutôt que sur son apparence.$\r$\n$\r$\nCet assistant d'installation va paramétrer un environnement complet d'utilisation de ${APP_NAME} et peut télécharger automatiquement les composants manquants.$\r$\n$\r$\n$(^ClickNext)"
 ${LangFileString} TEXT_WELCOME_INSTALL "Cet assistant va vous guider tout au long de l'installation de $(^NameDA), le constructeur de documents qui encourage une saisie fondée sur la structure du document plutôt que sur son apparence.$\r$\n$\r$\nCet assistant d'installation va paramétrer un environnement complet d'utilisation de ${APP_NAME} et peut installer automatiquement les composants manquants.$\r$\n$\r$\n$(^ClickNext)"

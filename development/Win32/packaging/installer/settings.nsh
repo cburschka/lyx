@@ -106,7 +106,8 @@ SetCompressor /SOLID lzma
 !define APP_VERSION_NUMBER "1.6.0.0"
 !define APP_SERIES_NAME "1.6"
 !define APP_SERIES_KEY "16"
-!define APP_DIR_USERDATA "LyX16"
+!define APP_DIR "${APP_NAME}${APP_SERIES_KEY}"
+!define APP_DIR_USERDATA "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2008 LyX Team"
 
@@ -140,7 +141,6 @@ SetCompressor /SOLID lzma
   !define SETUP_EXE "${BundleExeFile}"  
 !endif
 
-!define SETUP_DEFAULT_DIRECTORY "$PROGRAMFILES\${APP_NAME}${APP_SERIES_KEY}"
 !define SETUP_ICON "${FILES_ICONS}\lyx.ico"
 !define SETUP_HEADERIMAGE "graphics\header.bmp"
 !define SETUP_WIZARDIMAGE "graphics\wizard.bmp"

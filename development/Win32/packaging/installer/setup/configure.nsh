@@ -144,8 +144,8 @@ SectionEnd
 
 Section -PSPrinter
 
-  ${If} $MultiUser.Privileges != "Admin"
-    ${OrIf} $MultiUser.Privileges != "Power"
+  ${If} $MultiUser.Privileges == "Admin"
+    ${OrIf} $MultiUser.Privileges == "Power"
 
     # Delete printer
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'

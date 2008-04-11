@@ -62,17 +62,17 @@ Var ComponentSize
   Pop $ExternalPage.Existing
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.Existing $ExternalPage.RadioButton.Click
   
-  ${NSD_CreateText} 10u 75u 255u 12u $Path${COMPONENT}
+  ${NSD_CreateText} 10u 80u 255u 12u $Path${COMPONENT}
   Pop $ExternalPage.Folder
  
-  ${NSD_CreateBrowseButton} 270u 75u 20u 12u ...
+  ${NSD_CreateBrowseButton} 270u 80u 20u 12u ...
   Pop $ExternalPage.FolderBrowse
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.FolderBrowse $ExternalPage.FolderBrowse.Click
   
-  ${NSD_CreateLabel} 5u 95u 295u 10u $(TEXT_EXTERNAL_${COMPONENT}_FOLDER_INFO)
+  ${NSD_CreateLabel} 10u 100u 290u 10u $(TEXT_EXTERNAL_${COMPONENT}_FOLDER_INFO)
   Pop $ExternalPage.FolderInfo
   
-  ${NSD_CreateRadioButton} 0u 115u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_NONE)
+  ${NSD_CreateRadioButton} 0u 120u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_NONE)
   Pop $ExternalPage.NoInstall
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.NoInstall $ExternalPage.RadioButton.Click
   
@@ -90,6 +90,7 @@ Var ComponentSize
       ${NSD_SetState} $ExternalPage.Setup ${BST_CHECKED}
     ${Else}
       ${NSD_SetState} $ExternalPage.Existing ${BST_CHECKED}
+      EnableWindow $ExternalPage.Setup 0
     ${EndIf}
   ${Else} 
     ${NSD_SetState} $ExternalPage.Setup $${COMPONENT}Setup.State

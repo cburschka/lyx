@@ -12,9 +12,6 @@ Installer user interface settings
 Name "${APP_NAME} ${APP_VERSION}"
 BrandingText " "
 
-# Default installation folder
-InstallDir "${SETUP_DEFAULT_DIRECTORY}"
-
 #--------------------------------
 # Interface settings
 
@@ -26,7 +23,6 @@ InstallDir "${SETUP_DEFAULT_DIRECTORY}"
 !define MUI_HEADERIMAGE_RIGHT
 !define MUI_WELCOMEFINISHPAGE_BITMAP "${SETUP_WIZARDIMAGE}"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "${SETUP_WIZARDIMAGE}"
-!define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
 !define MUI_COMPONENTSPAGE_NODESC
 
 #--------------------------------
@@ -99,18 +95,3 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
-
-#--------------------------------
-# Interface initialization
-
-Function InitInterface
-
-  # Warn the user when no Administrator or Power user privileges are available
-  # These privileges are required to install ImageMagick or Ghostscript
-
-  ${If} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-    MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_NO_PRIVILEDGES)
-  ${EndIf}
-
-FunctionEnd

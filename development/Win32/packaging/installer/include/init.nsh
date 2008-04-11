@@ -29,11 +29,19 @@ Function .onInit
 
   !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_INIT
-  
+ 
   ${IfNot} ${Silent}
+    # Warn the user when no Administrator or Power user privileges are available
+    # These privileges are required to install ImageMagick or Ghostscript
+    ${If} $MultiUser.Privileges != "Admin"
+    ${andif} $MultiUser.Privileges != "Power"
+      MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_NO_PRIVILEDGES)
+    ${EndIf}
+    
+    # Show banner while installer is intializating 
     Banner::show /NOUNLOAD "Checking system"
   ${EndIf}
-  
+ 
   Call SearchExternal
   Call InitExternal
 
@@ -54,7 +62,6 @@ FunctionEnd
 # User initialization
 
 Var ComponentPath
-Var LyXPath
 Var LyXLangName
 
 # COMPONENT can be LaTeX ImageMagick and Ghostscript
@@ -75,13 +82,7 @@ Var LyXLangName
 Function InitUser
 
   # Get directories of components from registry
-
-  ReadRegStr $LyXPath SHELL_CONTEXT "${APP_REGKEY}" ""
   
-  ${If} $LyXPath != ""
-    StrCpy $INSTDIR $LyXPath
-  ${EndIf}
-
   !insertmacro EXTERNAL_INIT LaTeX
   !insertmacro EXTERNAL_INIT ImageMagick
   !insertmacro EXTERNAL_INIT Ghostscript
