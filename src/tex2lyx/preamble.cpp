@@ -313,7 +313,12 @@ void handle_package(string const & name, string const & opts)
 		// therefore check for the "," character
 		// also only set when there is not more then one babel language option
 		if (opts.find(",") == string::npos && one_language == true)
-			h_inputencoding = opts;
+			if (opts == "ascii")
+				//change ascii to auto to be in the unicode range, see
+				//http://bugzilla.lyx.org/show_bug.cgi?id=4719
+				h_inputencoding = "auto";
+			else
+				h_inputencoding = opts;
 		options.clear();
 	} else if (name == "makeidx")
 		; // ignore this

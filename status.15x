@@ -96,6 +96,9 @@ What's new
 - After an inset, don't always revert to the language's default encoding for
   latex output, but honor that specified in the document settings (bug 4665).
 
+- Set the correct encoding when an ASCII encoded TeX file is imported
+  (bug 4719).
+
 
 * USER INTERFACE:
 
