@@ -678,7 +678,7 @@ bool Text::cursorVisLeft(Cursor & cur, bool skip_inset)
 	}
 
 	// Are we already at leftmost pos in row?
-	if (left_pos == -1) {
+	if (cur.text()->empty() || left_pos == -1) {
 		
 		Cursor new_cur = cur;
 		if (!new_cur.posVisToNewRow(true)) {
@@ -768,7 +768,7 @@ bool Text::cursorVisRight(Cursor & cur, bool skip_inset)
 	}
 
 	// Are we already at rightmost pos in row?
-	if (right_pos == -1) {
+	if (cur.text()->empty() || right_pos == -1) {
 		
 		Cursor new_cur = cur;
 		if (!new_cur.posVisToNewRow(false)) {

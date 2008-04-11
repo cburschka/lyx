@@ -3218,53 +3218,67 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_FORWARD:
-		cell(cur.idx())->dispatch(cur, cmd);
-		if (!cur.result().dispatched()) {
-			moveNextCell(cur);
-			if (sl == cur.top())
-				cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-			else
-				cur.dispatched();
-		}
-		break;
-
 	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
+	case LFUN_CHAR_RIGHT_SELECT:
+	case LFUN_CHAR_RIGHT:
+	case LFUN_CHAR_LEFT_SELECT:
+	case LFUN_CHAR_LEFT: {
+
+		// determine whether we move to next or previous cell, where to enter 
+		// the new cell from, and which command to "finish" (i.e., exit the
+		// inset) with:
+		bool next_cell;
+		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE;
+		FuncCode finish_lfun;
+
+		if (cmd.action == LFUN_CHAR_FORWARD 
+				|| cmd.action == LFUN_CHAR_FORWARD_SELECT) {
+			next_cell = true;
+			finish_lfun = LFUN_FINISHED_FORWARD;
+		}
+		else if (cmd.action == LFUN_CHAR_BACKWARD
+				|| cmd.action == LFUN_CHAR_BACKWARD_SELECT) {
+			next_cell = false;
+			finish_lfun = LFUN_FINISHED_BACKWARD;
+		}
+		// LEFT or RIGHT commands --- the interpretation will depend on the 
+		// table's direction.
+		else {
+			bool right = (cmd.action == LFUN_CHAR_RIGHT
+							|| cmd.action == LFUN_CHAR_RIGHT_SELECT);
+			next_cell = (isRightToLeft(cur) != right);
+			
+			if (lyxrc.visual_cursor) {
+				entry_from = right ? ENTRY_DIRECTION_LEFT:ENTRY_DIRECTION_RIGHT;
+			}
+
+			if (right)
+				finish_lfun = LFUN_FINISHED_RIGHT;
+			else
+				finish_lfun = LFUN_FINISHED_LEFT;
+		}
+		
+
+		// finally, now that we know what we want to do, do it!
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
-			movePrevCell(cur);
+			// move to next/prev cell, as appropriate
+			LYXERR(Debug::RTL, "entering " << (next_cell ? "next" : "previous")
+				<< " cell from: " << int(entry_from));
+			if (next_cell)
+				moveNextCell(cur, entry_from);
+			else
+				movePrevCell(cur, entry_from);
+			// if we're exiting the table, call the appropriate FINISHED lfun
 			if (sl == cur.top())
-				cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
+				cmd = FuncRequest(finish_lfun);
 			else
 				cur.dispatched();
 		}
 		break;
 
-	case LFUN_CHAR_RIGHT_SELECT:
-	case LFUN_CHAR_RIGHT:
-		//FIXME: for visual cursor, really move right
-		if (isRightToLeft(cur))
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ?
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
-		else
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ?
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
-		break;
-
-	case LFUN_CHAR_LEFT_SELECT:
-	case LFUN_CHAR_LEFT:
-		//FIXME: for visual cursor, really move left
-		if (isRightToLeft(cur))
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ?
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
-		else
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ?
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
-		break;
+	}
 
 	case LFUN_DOWN_SELECT:
 	case LFUN_DOWN:
@@ -3958,7 +3972,7 @@ void InsetTabular::resetPos(Cursor & cur) const
 }
 
 
-void InsetTabular::moveNextCell(Cursor & cur)
+void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isFirstCellInRow(cur.idx())) {
@@ -3978,11 +3992,29 @@ void InsetTabular::moveNextCell(Cursor & cur)
 	}
 	cur.pit() = 0;
 	cur.pos() = 0;
+	cur.boundary(false);
+
+	// in visual mode, place cursor at extreme left or right
+	
+	switch(entry_from) {
+
+	case ENTRY_DIRECTION_RIGHT:
+		cur.posVisToRowExtremity(false /* !left */);
+		break;
+	case ENTRY_DIRECTION_LEFT:
+		cur.posVisToRowExtremity(true /* left */);
+		break;
+	case ENTRY_DIRECTION_IGNORE:
+		// nothing to do in this case
+		break;
+
+	}
+
 	resetPos(cur);
 }
 
 
-void InsetTabular::movePrevCell(Cursor & cur)
+void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isLastCellInRow(cur.idx())) {
@@ -4003,6 +4035,22 @@ void InsetTabular::movePrevCell(Cursor & cur)
 	}
 	cur.pit() = cur.lastpit();
 	cur.pos() = cur.lastpos();
+
+	// in visual mode, place cursor at extreme left or right
+	
+	switch(entry_from) {
+
+	case ENTRY_DIRECTION_RIGHT:
+		cur.posVisToRowExtremity(false /* !left */);
+		break;
+	case ENTRY_DIRECTION_LEFT:
+		cur.posVisToRowExtremity(true /* left */);
+		break;
+	case ENTRY_DIRECTION_IGNORE:
+		// nothing to do in this case
+		break;
+
+	}
 
 	// FIXME: this accesses the position cache before it is initialized
 	//resetPos(cur);

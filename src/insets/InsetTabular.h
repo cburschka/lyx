@@ -810,6 +810,13 @@ public:
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 
+	///
+	virtual InsetTabular * asInsetTabular() { return this; }
+	///
+	virtual InsetTabular const * asInsetTabular() const { return this; }
+	///
+	bool isRightToLeft(Cursor & cur) const;
+
 	//
 	// Public structures and variables
 	///
@@ -834,9 +841,11 @@ private:
 	void setCursorFromCoordinates(Cursor & cur, int x, int y) const;
 
 	///
-	void moveNextCell(Cursor & cur);
+	void moveNextCell(Cursor & cur, 
+				EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
-	void movePrevCell(Cursor & cur);
+	void movePrevCell(Cursor & cur,
+				EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	int cellXPos(idx_type cell) const;
 	///
@@ -849,8 +858,6 @@ private:
 	bool pasteClipboard(Cursor & cur);
 	///
 	void cutSelection(Cursor & cur);
-	///
-	bool isRightToLeft(Cursor & cur) const;
 	///
 	void getSelection(Cursor & cur, row_type & rs, row_type & re,
 			  col_type & cs, col_type & ce) const;

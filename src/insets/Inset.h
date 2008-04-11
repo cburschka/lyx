@@ -41,6 +41,7 @@ class InsetIterator;
 class InsetLayout;
 class InsetList;
 class InsetMath;
+class InsetTabular;
 class InsetText;
 class LaTeXFeatures;
 class Lexer;
@@ -129,6 +130,10 @@ public:
 	virtual InsetCollapsable * asInsetCollapsable() { return 0; }
 	/// is this inset based on the InsetCollapsable class?
 	virtual InsetCollapsable const * asInsetCollapsable() const { return 0; }
+	/// is this inset based on the InsetTabular class?
+	virtual InsetTabular * asInsetTabular() { return 0; }
+	/// is this inset based on the InsetTabular class?
+	virtual InsetTabular const * asInsetTabular() const { return 0; }
 
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);
