@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+\lyxformat 326
 \begin_document
 \begin_header
 \textclass scrbook
@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 9.
+letzte Änderung: 11.
  April 2008
 \end_layout
 
@@ -592,17 +592,7 @@ Eingabe
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-Ubernehmen
+Ubernehmen@Übernehmen
 \end_layout
 
 \end_inset
@@ -636,18 +626,7 @@ Schließen
 status collapsed
 
 \begin_layout Plain Layout
-Schlie
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-sen
+Schliesen@Schließen
 \end_layout
 
 \end_inset
@@ -669,18 +648,7 @@ Zurücksetzen
 status collapsed
 
 \begin_layout Plain Layout
-Zur
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ucksetzen
+Zurucksetzen@Zurücksetzen
 \end_layout
 
 \end_inset
@@ -1421,18 +1389,7 @@ Einfügen
 status collapsed
 
 \begin_layout Plain Layout
-Einf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ugen
+Einfugen@Einfügen
 \end_layout
 
 \end_inset
@@ -1807,29 +1764,7 @@ R
 status collapsed
 
 \begin_layout Plain Layout
-R
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-uckg
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-angig
+Ruckgangig@Rückgängig
 \end_layout
 
 \end_inset
@@ -2727,18 +2662,7 @@ Einfügen
 status collapsed
 
 \begin_layout Plain Layout
-Einf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ugen
+Einfugen@Einfügen
 \end_layout
 
 \end_inset
@@ -5339,18 +5263,7 @@ Aufzählung
 status collapsed
 
 \begin_layout Plain Layout
-Aufz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ahlung
+Aufzahlung@Aufzählung
 \end_layout
 
 \end_inset
@@ -5674,17 +5587,7 @@ Danksagungen
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-Uberschriften
+Uberschriften@Überschriften
 \end_layout
 
 \end_inset
@@ -7528,18 +7431,7 @@ Ränder
 status collapsed
 
 \begin_layout Plain Layout
-R
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ander
+Rander@Ränder
 \end_layout
 
 \end_inset
@@ -8549,7 +8441,7 @@ L
 \family default
 yX-Code
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lyx@LyX-Code
@@ -9170,18 +9062,7 @@ schachtelbar
 status collapsed
 
 \begin_layout Plain Layout
-schachtelbar!vollst
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-andig
+schachtelbar!vollstandig@vollständig
 \end_layout
 
 \end_inset
@@ -12264,18 +12145,7 @@ name "Geschütztes-Leerzeichen"
 status collapsed
 
 \begin_layout Plain Layout
-Leerzeichen!gesch
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-utzte
+Leerzeichen!geschutztes@geschütztes
 \end_layout
 
 \end_inset
@@ -12304,7 +12174,7 @@ kg.
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -13541,11 +13411,16 @@ Wie wir bereits gesehen haben, ändert LyX automatisch den
 Buchstabenstil
 \color inherit
  für gewisse Absatzumgebungen.
- Wir haben bereits zwei Buchstabenstile erwähnt: 
+ Wir haben bereits den Buchstabenstil 
 \family sans
 Hervorhebung
 \family default
- und 
+ erwähnt.
+ Es gibt auch 
+\family sans
+Eigenname
+\family default
+ (meistens ist das 
 \family sans
 Kapitälchen
 \family default
@@ -13585,7 +13460,7 @@ K.
 \begin_layout Standard
 Diese Befehle sind Umschalter: ist 
 \family sans
-Kapitälchen
+Eigenname/Kapitälchen
 \family default
  aktiviert, so wird es durch den Befehl deaktiviert und umgekehrt.
 \end_layout
@@ -13593,7 +13468,7 @@ Kapitälchen
 \begin_layout Standard
 Eine typische Anwendung für 
 \family sans
-Kapitälchen
+Eigenname/Kapitälchen
 \family default
 -Stil sind Namen, zum Beispiel 
 \noun on
@@ -13909,12 +13784,12 @@ Alt+Z C
 \labelwidthstring 00.00.0000
 
 \family sans
-Serie
+Strichstärke
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!-serie
+Strichstärke
 \end_layout
 
 \end_inset
@@ -13926,18 +13801,7 @@ Font!-serie
 status collapsed
 
 \begin_layout Plain Layout
-Druckst
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-arke
+Druckstärke
 \end_layout
 
 \end_inset
@@ -13987,12 +13851,12 @@ Strg+B
 \labelwidthstring 00.00.0000
 
 \family sans
-Form
+Schnitt
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!-form
+Schnitt
 \end_layout
 
 \end_inset
@@ -14831,7 +14695,7 @@ Strg+U
 \labelwidthstring 00.00.0000
 
 \family sans
-Kapitälchen/Eigenname
+Eigenname/Kapitälchen
 \family default
  
 \noun on
@@ -16454,18 +16318,7 @@ Abkürzungen
 status collapsed
 
 \begin_layout Plain Layout
-Abk
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-urzungen
+Abkurzungen@Abkürzungen
 \end_layout
 
 \end_inset
@@ -16651,18 +16504,7 @@ Anführungszeichen
 status collapsed
 
 \begin_layout Plain Layout
-Anf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-uhrungszeichen
+Anfuhrungszeichen@Anführungszeichen
 \end_layout
 
 \end_inset
@@ -17397,18 +17239,7 @@ Fußnoten
 status collapsed
 
 \begin_layout Plain Layout
-Fu
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-snoten
+Fusnoten@Fußnoten
 \end_layout
 
 \end_inset
@@ -17450,18 +17281,12 @@ Fußnote
 
 \end_inset
 
- eine neue Fußnote anlegen, erscheint ein Kästchen wie dieses: 
-\begin_inset Graphics
-	filename clipart/FussnoteQt4.png
-	embed ""
-	display none
-	scale 50
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 116bp 39bp
-
-\end_inset
-
-.
+ eine neue Fußnote anlegen, erscheint ein mit dem Wort 
+\emph on
+Fußnote
+\emph default
+ und einer Zahl (standardmäßig hellblau) beschriftetetes Kästchen und rechts
+ davon ein roter Rahmen.
 \end_layout
 
 \begin_layout Standard
@@ -17475,17 +17300,13 @@ Fußnote
 \emph on
 Fußnote
 \emph default
-.
- Wenn Sie zu einem späteren Zeitpunkt den Fußnotentext wieder ansehen oder
- verändern wollen, genügt ein Klick auf die Schaltfläche, und der Rahmen
- öffnet sich wieder.
+ und der Zalhl Wenn Sie zu einem späteren Zeitpunkt den Fußnotentext wieder
+ ansehen oder verändern wollen, genügt ein Klick auf die Schaltfläche, und
+ der Rahmen öffnet sich wieder.
 \end_layout
 
 \begin_layout Standard
-Auch werden Sie feststellen, dass die Fußnoten in LyX nicht nummeriert sind.
- Darum brauchen Sie sich aber sowieso nicht zu kümmern, denn für die fortlaufend
-e Nummerierung der Fußnoten sorgt LyX ebenso automatisch wie dafür, dass
- die Fußnote im Text auch auf der richtigen Seite erscheint.
+Die Fußnoten werden kapitelweise nummeriert.
  Wenn Sie übrigens eine bereits geschriebene Textpassage nachträglich in
  eine Fußnote umwandeln wollen, markieren Sie sie einfach und benutzen 
 \family sans
@@ -17594,15 +17415,14 @@ Randnotiz
 
 \end_inset
 
- eine Randnotiz einfügen, erscheint ein rot umrandetes Feld mit der Bezeichnung
- 
+ eine Randnotiz einfügen, erscheint ein mit dem Wort 
 \emph on
 Rand
 \emph default
- in Ihrem Text.
- 
+ (standardmäßig purpurrot) beschriftetetes Kästchen und rechts davon ein
+ roter Rahmen.
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dies ist eine solche Randnotiz.
@@ -17610,7 +17430,7 @@ Dies ist eine solche Randnotiz.
 
 \end_inset
 
-In diesem Feld können Sie den Text für die Randnotiz eingeben.
+ In diesem Rahmen können Sie den Text für die Randnotiz eingeben.
  Wenn Sie auf die rote Rand-Marke klicken, wird die Randnotiz geschlossen.
  Sie können die Randnotiz zu jedem Zeitpunkt wieder öffnen, indem Sie erneut
  auf die Schaltfläche 
@@ -21299,18 +21119,7 @@ Tabellen!ausschneiden
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen!einf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ugen
+Tabellen!einfugen@einfügen
 \end_layout
 
 \end_inset
@@ -22326,18 +22135,7 @@ Fußzeile
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen!Fu
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-szeile
+Tabellen!Fuszeile@Fußzeile
 \end_layout
 
 \end_inset
@@ -22366,21 +22164,10 @@ Fußzeile
 \family default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabellen!letzte Fu
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-szeile
+Tabellen!letzte Fußzeile
 \end_layout
 
 \end_inset
@@ -24372,18 +24159,7 @@ Brüche
 status collapsed
 
 \begin_layout Plain Layout
-Br
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-uche
+Bruche@Brüche
 \end_layout
 
 \end_inset
@@ -30215,7 +29991,7 @@ oder
 .
 
 \family default
- Eine Schaltfläche mit der Aufschrift 
+ Eine Schaltfläche mit der (standardmäßig grünen) Aufschrift 
 \family sans
 Stichwort
 \family default
@@ -30839,10 +30615,10 @@ reference "Mediävalziffern-verwenden"
 
 ) ausgibt.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dummy  ! Medialziffern|oldstylenums
+Mediävalziffern|oldstylenums
 \end_layout
 
 \end_inset
@@ -32595,18 +32371,7 @@ Rechtschreibprüfung
 status collapsed
 
 \begin_layout Plain Layout
-Rechtschreibpr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ufung
+Rechtschreibprufung@Rechtschreibprüfung
 \end_layout
 
 \end_inset
@@ -32861,21 +32626,10 @@ Außerdem gibt es eine Anzeige für den Fortschritt der Rechtschreibprüfung.
 \begin_layout Subsection
 Optionen für die Rechtschreibprüfung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Rechtschreibpr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ufung
+Rechtschreibprufung@Rechtschreibprüfung
 \end_layout
 
 \end_inset
@@ -32949,7 +32703,7 @@ Rechtschreibprogramm
 status collapsed
 
 \begin_layout Plain Layout
-Wörterbuch
+Worterbuch@Wörterbuch
 \end_layout
 
 \end_inset
@@ -33194,32 +32948,10 @@ Persönliches
 
 Wörterbuch
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-W
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-orterbuch!pers
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-onliches
+Worterbuch@Wörterbuch!personliches@persönliches
 \end_layout
 
 \end_inset
@@ -37399,7 +37131,7 @@ Strg+F
 
 : 
 \family sans
-Hervorhebung
+Hervorheben
 \family default
  (
 \family sans
@@ -37422,9 +37154,9 @@ Strg+E
 
 \end_inset
 
-: 
+: Formatierung für Eigennamen (meistens 
 \family sans
-Kapitälchen
+Kapitälchen)
 \family default
  (
 \family sans
