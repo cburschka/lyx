@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 318
+\lyxformat 325
 \begin_document
 \begin_header
 \textclass article
@@ -94,7 +94,7 @@ Found
 \begin_inset Foot
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 The participating hosts in the Comprehensive TeX Archive Network are:
 \end_layout
 
@@ -110,7 +110,7 @@ ftp://ctan.tug.org/tex-archive
 ftp://ftp.tex.ac.uk/tex-archive
 \end_layout
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 There are also a zillion mirror sites which are listed at the three primary
  sites.
 \end_layout
@@ -178,7 +178,7 @@ econfigure
 \begin_inset Foot
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 or, if you want to change the system-wide settings, issue the command 
 \family typewriter
 ./configure
@@ -245,7 +245,7 @@ arg   "chk_fmtversion"
 \begin_inset Foot
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 In case it is not clear to you, this number is the date at which the version
  has been released.
 \end_layout
@@ -1004,7 +1004,10 @@ slides
 \family sans
 foils
 \family default
- instead if it is available (see\InsetSpace ~
+ instead if it is available (see
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1287,7 +1290,7 @@ FTP:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
 \end_layout
@@ -1356,7 +1359,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.sgmltools.org
 \end_layout
@@ -1423,7 +1426,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.dante.de
 \end_layout
@@ -1514,7 +1517,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://math.tulane.edu/~entcs/
 \end_layout
@@ -1845,7 +1848,7 @@ IEEEtran
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.ieee.org
 \end_layout
@@ -1906,7 +1909,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \end_layout
@@ -1949,7 +1952,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
@@ -1992,7 +1995,7 @@ WWW: available from the site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
@@ -2193,7 +2196,7 @@ WWW: available from the Kluwer Academic Publishers site
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
@@ -2217,7 +2220,7 @@ Astrophysics and Space Science, Solar Physics
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \end_layout
@@ -2462,12 +2465,14 @@ Lecture Notes in Computer Science
 .
  LaTeX documents are available from Springer's ftp site on the following
  URL:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e
 \end_layout
@@ -2665,7 +2670,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://public.lanl.gov/kmh/spie/
 \end_layout
@@ -2686,7 +2691,7 @@ spie.cls
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
 \end_layout
@@ -2768,7 +2773,7 @@ Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://publish.aps.org/revtex4/
 \end_layout
@@ -2879,7 +2884,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.springeronline.com
 \end_layout
@@ -2954,7 +2959,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.springeronline.com
 \end_layout
@@ -3007,7 +3012,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.springeronline.com
 \end_layout
@@ -3075,7 +3080,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.tug.org
 \end_layout
@@ -3116,7 +3121,7 @@ WWW:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 \end_layout
@@ -3460,7 +3465,7 @@ arg   "graphicsdriver"
 \begin_inset Foot
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 Here, a value of 
 \begin_inset Quotes eld
 \end_inset
@@ -4111,7 +4116,7 @@ jurabib
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 http://www.jurabib.org
 \end_layout
@@ -4254,6 +4259,40 @@ Notes: The package
 nomencl
 \family default
  is needed by LyX to produce a nomenclature.
+\end_layout
+
+\begin_layout Subsection
+pdfpages
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "pdfpages"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/pdfpages
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family typewriter
+pdfpages
+\family default
+ is used by LyX to include multi-page PDF files via 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+External Material
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -4410,7 +4449,10 @@ Notes: The package
 \family sans
 subfig
 \family default
- is used by LyX to produce subfloats (i.\InsetSpace \thinspace{}
+ is used by LyX to produce subfloats (i.
+\begin_inset Space \thinspace{}
+\end_inset
+
 e., subfigures, subtables, etc.).
  Subfloats are floats that are embedded inside other floats and that can
  have individual subcaptions.

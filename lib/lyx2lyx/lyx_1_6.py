@@ -45,6 +45,29 @@ def add_to_preamble(document, text):
 
     document.preamble.extend(text)
 
+# Convert a LyX length into a LaTeX length
+def convert_len(len):
+    units = {"text%":"\\backslash\ntextwidth", "col%":"\\backslash\ncolumnwidth",
+             "page%":"\\backslash\npagewidth", "line%":"\\backslash\nlinewidth",
+             "theight%":"\\backslash\ntextheight", "pheight%":"\\backslash\npageheight"}
+
+    # Convert LyX units to LaTeX units
+    for unit in units.keys():
+        if len.find(unit) != -1:
+            len = '%f' % (len2value(len) / 100)
+            len = len.strip('0') + units[unit]
+            break
+
+    return len
+
+# Return the value of len without the unit in numerical form.
+def len2value(len):
+    result = re.search('([+-]?[0-9.]+)', len)
+    if result:
+        return float(result.group(1))
+    # No number means 1.0
+    return 1.0
+
 ####################################################################
 
 def get_option(document, m, option, default):
@@ -1730,7 +1753,7 @@ def revert_linebreaks(document):
 
 
 def convert_japanese_plain(document):
-    "Set language japanese-plain to japanese"
+    ' Set language japanese-plain to japanese '
     i = 0
     if document.language == "japanese-plain":
         document.language = "japanese"
@@ -1744,6 +1767,76 @@ def convert_japanese_plain(document):
             return
         document.body[j] = document.body[j].replace("\\lang japanese-plain", "\\lang japanese")
         j = j + 1
+
+
+def revert_pdfpages(document):
+    ' Revert pdfpages external inset to ERT '
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset External", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        if get_value(document.body, 'template', i, j) == "PDFPages":
+            filename = get_value(document.body, 'filename', i, j)
+            extra = ''
+            r = re.compile(r'\textra PDFLaTeX \"(.*)\"$')
+            for k in range(i, j):
+                m = r.match(document.body[k])
+                if m:
+                    extra = m.group(1)
+            angle = get_value(document.body, 'rotateAngle', i, j)
+            width = get_value(document.body, 'width', i, j)
+            height = get_value(document.body, 'height', i, j)
+            scale = get_value(document.body, 'scale', i, j)
+            keepAspectRatio = find_token(document.body, "\tkeepAspectRatio", i, j)
+            options = extra
+            if angle != '':
+                 if options != '':
+                     options += ",angle=" + angle
+                 else:
+                     options += "angle=" + angle
+            if width != '':
+                 if options != '':
+                     options += ",width=" + convert_len(width)
+                 else:
+                     options += "width=" + convert_len(width)
+            if height != '':
+                 if options != '':
+                     options += ",height=" + convert_len(height)
+                 else:
+                     options += "height=" + convert_len(height)
+            if scale != '':
+                 if options != '':
+                     options += ",scale=" + scale
+                 else:
+                     options += "scale=" + scale
+            if keepAspectRatio != '':
+                 if options != '':
+                     options += ",keepaspectratio"
+                 else:
+                     options += "keepaspectratio"
+            if options != '':
+                     options = '[' + options + ']'
+            del document.body[i+1:j+1]
+            document.body[i:i+1] = ['\\begin_inset ERT',
+                                'status collapsed',
+                                '',
+                                '\\begin_layout Standard',
+                                '',
+                                '\\backslash',
+                                'includepdf' + options + '{' + filename + '}',
+                                '\\end_layout',
+                                '',
+                                '\\end_inset']
+            add_to_preamble(document, ['\\usepackage{pdfpages}\n'])
+            i = i + 1
+            continue
+        i = i + 1
 
 
 ##
@@ -1800,9 +1893,11 @@ convert = [[277, [fix_wrong_tables]],
            [323, [convert_pagebreaks]],
            [324, [convert_linebreaks]],
            [325, [convert_japanese_plain]],
+           [326, []]
           ]
 
-revert =  [[324, []],
+revert =  [[325, [revert_pdfpages]],
+           [324, []],
            [323, [revert_linebreaks]],
            [322, [revert_pagebreaks]],
            [321, [revert_local_layout]],

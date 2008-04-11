@@ -450,7 +450,8 @@ char const * simplefeatures[] = {
 	"ifthen",
 	"amsthm",
 	"listings",
-	"bm"
+	"bm",
+	"pdfpages"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

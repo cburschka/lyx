@@ -409,7 +409,7 @@ def checkConverterEntries():
     checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
         rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
     #
-    checkProg('a PDF to EPS converter', ['pdftops -eps $$i $$o'],
+    checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf         eps        "%%"	""' ])
     #
     checkProg('a DVI to TXT converter', ['catdvi $$i > $$o'],
