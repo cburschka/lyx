@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "support/assert.h"
 #include "support/Timeout.h"
 #include "support/debug.h"
 
@@ -29,7 +30,7 @@ public:
 	///
 	Impl(Timeout & owner) : owner_(owner), timeout_id(-1) {}
 	///
-	bool running() const { return timeout_id != -1; } 
+	bool running() const { return timeout_id != -1; }
 	/// start the timer
 	void start();
 	/// stop the timer
@@ -40,7 +41,7 @@ public:
 	unsigned int timeout_ms() const { return owner_.timeout_ms; }
 
 protected:
-	/// 
+	///
 	void timerEvent(QTimerEvent *) { owner_.emit(); }
 
 private:
