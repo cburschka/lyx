@@ -2345,6 +2345,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "parbox")
 			parse_box(p, os, FLAG_ITEM, outer, context, true);
+		
+		//\makebox() is part of the picture environment and different from \makebox{}
+		//\makebox{} will be parsed by parse_box when bug 2956 is fixed
+		else if (t.cs() == "makebox") {
+			string arg = "\\makebox";
+			if (p.next_token().character() == '(')
+				//the syntax is: \makebox(x,y)[position]{content}
+				arg += p.getFullParentheseOpt();
+			else
+				//the syntax is: \makebox[width][position]{content}
+				arg += p.getFullOpt();
+			handle_ert(os, arg + p.getFullOpt(), context);
+		}
 
 		else if (t.cs() == "smallskip" ||
 			 t.cs() == "medskip" ||

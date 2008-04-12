@@ -158,6 +158,8 @@ public:
 	 * <tt>\begin{name}</tt> must be parsed already, <tt>\end{name}</tt>
 	 * is parsed but not returned.
 	 */
+	std::string getFullParentheseOpt();
+	/// \returns getArg('(', ')') including the parentheses
 	std::string const verbatimEnvironment(std::string const & name);
 	/// Returns the character of the current token and increments the token position.
 	char getChar();

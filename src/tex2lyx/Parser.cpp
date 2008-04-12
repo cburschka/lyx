@@ -317,6 +317,13 @@ string Parser::getOpt()
 	return res.empty() ? string() : '[' + res + ']';
 }
 
+string Parser::getFullParentheseOpt()
+{
+	Arg arg = getFullArg('(', ')');
+	if (arg.first)
+		return '(' + arg.second + ')';
+	return arg.second;
+}
 
 string const Parser::verbatimEnvironment(string const & name)
 {
