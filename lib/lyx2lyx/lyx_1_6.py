@@ -22,7 +22,7 @@ import re
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens, get_value
+from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
 
 ####################################################################
 # Private helper functions
@@ -368,58 +368,157 @@ def revert_flex(document):
 #  Discard PDF options for hyperref
 def revert_pdf_options(document):
         "Revert PDF options for hyperref."
+        # store the PDF options and delete the entries from the Lyx file	
         i = 0
-        i = find_token(document.header, "\\use_hyperref", i)
+        hyperref = False
+        title = ""
+        author = ""
+        subject = ""
+        keywords = ""
+        bookmarks = ""
+        bookmarksnumbered = ""
+        bookmarksopen = ""
+        bookmarksopenlevel = ""
+        breaklinks = ""
+        pdfborder = ""
+        colorlinks = ""
+        backref = ""
+        pagebackref = ""
+        pagemode = ""
+        otheroptions = ""
+        i = find_token(document.header, "\\use_hyperref true", i)
         if i != -1:
             del document.header[i]
+            hyperref = True
         i = find_token(document.header, "\\pdf_store_options", i)
         if i != -1:
             del document.header[i]
         i = find_token(document.header, "\\pdf_title", 0)
         if i != -1:
+            title = get_value_string(document.header, '\\pdf_title', 0, 0, True)
+            title = ' pdftitle={' + title + '}'
             del document.header[i]
         i = find_token(document.header, "\\pdf_author", 0)
         if i != -1:
+            author = get_value_string(document.header, '\\pdf_author', 0, 0, True)
+            if title == "":
+                author = ' pdfauthor={' + author + '}'
+            else:
+                author = ',\n pdfauthor={' + author + '}'
             del document.header[i]
         i = find_token(document.header, "\\pdf_subject", 0)
         if i != -1:
+            subject = get_value_string(document.header, '\\pdf_subject', 0, 0, True)
+            if title == "" and author == "":
+                subject = ' pdfsubject={' + subject + '}'
+            else:
+                subject = ',\n pdfsubject={' + subject + '}'
             del document.header[i]
         i = find_token(document.header, "\\pdf_keywords", 0)
         if i != -1:
+            keywords = get_value_string(document.header, '\\pdf_keywords', 0, 0, True)
+            if title == "" and author == "" and subject == "":
+                keywords = ' pdfkeywords={' + keywords + '}'
+            else:
+                keywords = ',\n pdfkeywords={' + keywords + '}'
             del document.header[i]
         i = find_token(document.header, "\\pdf_bookmarks", 0)
         if i != -1:
+            bookmarks = get_value_string(document.header, '\\pdf_bookmarks', 0)
+            bookmarks = ',\n bookmarks=' + bookmarks
             del document.header[i]
         i = find_token(document.header, "\\pdf_bookmarksnumbered", i)
         if i != -1:
+            bookmarksnumbered = get_value_string(document.header, '\\pdf_bookmarksnumbered', 0)
+            bookmarksnumbered = ',\n bookmarksnumbered=' + bookmarksnumbered
             del document.header[i]
         i = find_token(document.header, "\\pdf_bookmarksopen", i)
         if i != -1:
+            bookmarksopen = get_value_string(document.header, '\\pdf_bookmarksopen', 0)
+            bookmarksopen = ',\n bookmarksopen=' + bookmarksopen
             del document.header[i]
         i = find_token(document.header, "\\pdf_bookmarksopenlevel", i)
         if i != -1:
+            bookmarksopenlevel = get_value_string(document.header, '\\pdf_bookmarksopenlevel', 0, 0, True)
+            bookmarksopenlevel = ',\n bookmarksopenlevel=' + bookmarksopenlevel
             del document.header[i]
         i = find_token(document.header, "\\pdf_breaklinks", i)
         if i != -1:
+            breaklinks = get_value_string(document.header, '\\pdf_breaklinks', 0)
+            breaklinks = ',\n breaklinks=' + breaklinks
             del document.header[i]
         i = find_token(document.header, "\\pdf_pdfborder", i)
         if i != -1:
+            pdfborder = get_value_string(document.header, '\\pdf_pdfborder', 0)
+            if pdfborder == 'true':
+                pdfborder = ',\n pdfborder={0 0 0}'
+            else:
+                pdfborder = ',\n pdfborder={0 0 1}'
             del document.header[i]
         i = find_token(document.header, "\\pdf_colorlinks", i)
         if i != -1:
+            colorlinks = get_value_string(document.header, '\\pdf_colorlinks', 0)
+            colorlinks = ',\n colorlinks=' + colorlinks
             del document.header[i]
         i = find_token(document.header, "\\pdf_backref", i)
         if i != -1:
+            backref = get_value_string(document.header, '\\pdf_backref', 0)
+            backref = ',\n backref=' + backref
             del document.header[i]
         i = find_token(document.header, "\\pdf_pagebackref", i)
         if i != -1:
+            pagebackref = get_value_string(document.header, '\\pdf_pagebackref', 0)
+            pagebackref = ',\n pagebackref=' + pagebackref
             del document.header[i]
         i = find_token(document.header, "\\pdf_pagemode", 0)
         if i != -1:
+            pagemode = get_value_string(document.header, '\\pdf_pagemode', 0)
+            pagemode = ',\n pdfpagemode=' + pagemode
             del document.header[i]
         i = find_token(document.header, "\\pdf_quoted_options", 0)
         if i != -1:
+            otheroptions = get_value_string(document.header, '\\pdf_quoted_options', 0, 0, True)
+            if title == "" and author == "" and subject == "" and keywords == "":
+                otheroptions = ' ' + otheroptions
+            else:
+                otheroptions = ',\n ' + otheroptions
             del document.header[i]
+
+        # write to the preamble when hyperref was used
+        if hyperref == True:
+            #preamble write preparation
+            if bookmarksopen == ',\n bookmarksopen=true':
+                bookmarksopen = bookmarksopen + bookmarksopenlevel
+            if bookmarks == ',\n bookmarks=true':
+                bookmarks = bookmarks + bookmarksnumbered + bookmarksopen
+            else:
+                bookmarks = bookmarks
+            setupstart = '\\hypersetup{%\n'
+            setupend = ' }\n'
+            if otheroptions == "" and title == "" and  author == ""\
+               and  subject == "" and keywords == "":
+                setupstart = ""
+                setupend = ""
+            #write the preamble
+            add_to_preamble(document,
+                                ['% Commands inserted by lyx2lyx for PDF properties',
+                                 '\\usepackage[unicode=true'
+                                 + bookmarks
+                                 + breaklinks
+                                 + pdfborder
+                                 + backref
+                                 + pagebackref
+                                 + colorlinks
+                                 + pagemode
+                                 + ']\n'
+                                 ' {hyperref}\n'
+                                 + setupstart
+                                 + title
+                                 + author
+                                 + subject
+                                 + keywords
+                                 + otheroptions
+                                 + setupend])
 
 
 def remove_inzip_options(document):
