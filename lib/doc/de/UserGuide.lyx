@@ -182,8 +182,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
- März 2008
+letzte Änderung: 12.
+ April 2008
 \end_layout
 
 \begin_layout Standard
@@ -356,14 +356,10 @@ sen.
  Es hängt davon ab, wie LyX kompiliert wurde.
 \end_layout
 
-\begin_layout Subsubsection
-Linux
-\end_layout
-
-\begin_layout Standard
-Weil jeder seinen bevorzugten X-Window-Manager benutzt (KDE, Gnome, xfce\SpecialChar \ldots{}
-),
- müssen Sie das Paket 
+\begin_layout Description
+Linux Weil jeder seinen bevorzugten X-Window-Manager benutzt (KDE, Gnome,
+ xfce\SpecialChar \ldots{}
+), müssen Sie das Paket 
 \family typewriter
 qt4-qtconfig
 \family default
@@ -383,13 +379,10 @@ Fonts
  Aber unter KDE sollte es kaum passieren, und Gnome baut nicht auf Qt auf.
 \end_layout
 
-\begin_layout Subsubsection
-Windows XP
-\end_layout
-
-\begin_layout Standard
-In diesem Fall gehen Sie wie gewohnt vor: Rechtsklick auf den Desktop-Hintergrun
-d\SpecialChar \menuseparator
+\begin_layout Description
+Windows\InsetSpace ~
+XP In diesem Fall gehen Sie wie gewohnt vor: Rechtsklick auf den
+ Desktop-Hintergrund\SpecialChar \menuseparator
 
 \family sans
 Einstellungen
@@ -401,10 +394,6 @@ Darstellung
 \family default
 .
  
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -669,7 +658,7 @@ Eingabe
 \family sans
 Übernehmen
 \begin_inset LatexCommand index
-name "\"Ubernehmen"
+name "Ubernehmen@Übernehmen"
 
 \end_inset
 
@@ -698,7 +687,7 @@ reference "Grundlegende-Tastaturfunktionen"
 \family sans
 Schließen
 \begin_inset LatexCommand index
-name "Schlie\"sen"
+name "Schliesen@Schließen"
 
 \end_inset
 
@@ -716,7 +705,7 @@ Taste gelegt.
 \family sans
 Zurücksetzen
 \begin_inset LatexCommand index
-name "Zur\"ucksetzen"
+name "Zurucksetzen@Zurücksetzen"
 
 \end_inset
 
@@ -1360,7 +1349,7 @@ name "Kopieren"
 \family sans
 Einfügen
 \begin_inset LatexCommand index
-name "Einf\"ugen"
+name "Einfugen@Einfügen"
 
 \end_inset
 
@@ -1656,7 +1645,7 @@ R
 \family default
 
 \begin_inset LatexCommand index
-name "R\"uckg\"angig"
+name "Ruckgangig@Rückgängig"
 
 \end_inset
 
@@ -2438,7 +2427,7 @@ Strg+C
 \family sans
 Einfügen
 \begin_inset LatexCommand index
-name "Einf\"ugen"
+name "Einfugen@Einfügen"
 
 \end_inset
 
@@ -4722,7 +4711,7 @@ name "Itemize"
 \family sans
 Aufzählung
 \begin_inset LatexCommand index
-name "Aufz\"ahlung"
+name "Aufzahlung@Aufzählung"
 
 \end_inset
 
@@ -4989,7 +4978,7 @@ Danksagungen
 \begin_layout Subsection
 Überschriften
 \begin_inset LatexCommand index
-name "\"Uberschriften"
+name "Uberschriften@Überschriften"
 
 \end_inset
 
@@ -6133,7 +6122,7 @@ ff ausführlich beschreiben.
 \family sans
 Aufzählung
 \begin_inset LatexCommand index
-name "Liste ! Aufz\"ahlung"
+name "Liste ! Aufzahlung@Aufzählung"
 
 \end_inset
 
@@ -6586,7 +6575,7 @@ reference "Beschreibung"
 \labelwidthstring 00.00.0000
 Ränder
 \begin_inset LatexCommand index
-name "R\"ander"
+name "Rander@Ränder"
 
 \end_inset
 
@@ -10737,7 +10726,7 @@ name "Geschütztes-Leerzeichen"
 
 
 \begin_inset LatexCommand index
-name "Leerzeichen!gesch\"utzte"
+name "Leerzeichen!geschutzte@geschützte"
 
 \end_inset
 
@@ -11477,7 +11466,7 @@ name "Dokument!-font"
 
  und Fontgröße
 \begin_inset LatexCommand index
-name "Font!-gr\"o\"se"
+name "Font!-grose@-größe"
 
 \end_inset
 
@@ -12209,7 +12198,7 @@ name "Font!-serie"
 \family default
  Dies ist die Druckstärke
 \begin_inset LatexCommand index
-name "Druckst\"arke"
+name "Druckstarke@Druckstärke"
 
 \end_inset
 
@@ -12449,7 +12438,7 @@ name "Fontgröße"
 \family default
  Ändert die Fontgröße
 \begin_inset LatexCommand index
-name "Font!-gr\"o\"se"
+name "Font!-grose@-größe"
 
 \end_inset
 
@@ -14465,7 +14454,7 @@ name "Satzzeichen"
 \begin_layout Subsubsection
 Abkürzungen
 \begin_inset LatexCommand index
-name "Abk\"urzungen"
+name "Abkurzungen@Abkürzungen"
 
 \end_inset
 
@@ -14629,7 +14618,7 @@ Anmerkung
 \begin_layout Subsubsection
 Anführungszeichen
 \begin_inset LatexCommand index
-name "Anf\"uhrungszeichen"
+name "Anfuhrungszeichen@Anführungszeichen"
 
 \end_inset
 
@@ -15269,7 +15258,7 @@ Eingebettete Objekte
 \begin_layout Section
 Fußnoten
 \begin_inset LatexCommand index
-name "Fu\"snoten"
+name "Fusnoten@Fußnoten"
 
 \end_inset
 
@@ -18815,7 +18804,7 @@ name "Tabellen!ausschneiden"
 
  und Einfügen
 \begin_inset LatexCommand index
-name "Tabellen!einf\"ugen"
+name "Tabellen!einfugen@einfügen"
 
 \end_inset
 
@@ -19789,7 +19778,7 @@ Fußzeile
 \family default
 
 \begin_inset LatexCommand index
-name "Tabellen!Fu\"szeile"
+name "Tabellen!Fuszeile@Fußzeile"
 
 \end_inset
 
@@ -19811,7 +19800,7 @@ Fußzeile
 \family default
 
 \begin_inset LatexCommand index
-name "Tabellen!letzte Fu\"szeile"
+name "Tabellen!letzte Fuszeile@letzte Fußzeile"
 
 \end_inset
 
@@ -21598,7 +21587,7 @@ Leertaste
 \begin_layout Subsection
 Brüche
 \begin_inset LatexCommand index
-name "Br\"uche"
+name "Bruche@Brüche"
 
 \end_inset
 
@@ -25176,7 +25165,7 @@ x & \textrm{wenn ich es sage}\\
 \begin_layout Subsection
 Fontgrößen
 \begin_inset LatexCommand index
-name "Font!-gr\"o\"se"
+name "Font!-grose@-größe"
 
 \end_inset
 
@@ -27163,106 +27152,47 @@ name "Stichwort ! Reihenfolge"
 \end_layout
 
 \begin_layout Standard
-Damit Umlaute und ß richtig sortiert werden, gibt es zwei Möglichkeiten:
-\end_layout
-
-\begin_layout Enumerate
-Um zum Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-mähen
-\begin_inset Quotes grd
-\end_inset
-
- ins Stichwortverzeichnis aufzunehmen, schreiben Sie ins Feld 
+Worte mit Umlauten und ß werden nicht richtig sortiert.
+ So wird 
+\emph on
+Bäume
+\emph default
+ im Stichwortverzeichnis vor 
+\emph on
+Baum
+\emph default
+ erscheinen.
+ Um das zu verhindern, schreiben Sie ins Feld 
 \family sans
 Schlagwort
 \family default
- folgendes: mahen@mähen, usw.
- Für Soße also Sose@Soße.
+ folgendes: 
+\emph on
+Baume@Bäume
+\emph default
+.
+ Für Soße also 
+\emph on
+Sose@Soße
+\emph default
+.
  Damit werden Umlaute und ß richtig einsortiert, und in der Ausgabe so geschrieb
 en, wie es hinter @ steht.
-\newline
-Das bedeutet natürlich auch, dass Sie durch das
- Wort vor @ eine beliebige Sortierreihenfolge erzwingen können.
-\end_layout
-
-\begin_layout Enumerate
-Sie schreiben im Feld 
-\family sans
-Schlagwort
-\family default
- folgendes: "a für ä, \SpecialChar \ldots{}
- , "U für Ü und "s für ß.
- Dann benötigen Sie aber noch die Datei 
-\family typewriter
-[n]german.ist
-\family default
-, die an der richtigen Stelle (\SpecialChar \ldots{}
-
-\family typewriter
-/texmf/makeindex/
-\family default
-) stehen muss.
- Diese Datei könnte so aussehen:
-\newline
-
-\family typewriter
-quote '='
+ Das bedeutet natürlich auch, dass Sie durch das Wort vor @ eine beliebige
+ Sortierreihenfolge erzwingen können.
 \end_layout
 
 \begin_layout Standard
-Die erste Möglichkeit ist wahrscheinlich die einfachere, weil Sie sonst
- nichts weiter beachten müssen.
- In einem Dokument sollten Sie  nicht beide Möglichkeiten mischen.
+Geübte LaTeXniker haben natürlich auch noch die Möglichkeit, den Parameter
  
-\end_layout
-
-\begin_layout Standard
-Um auch noch das komplette Ordnungsschema nach DIN 5007 anwenden zu können,
- müssen Sie in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Ausgabe\SpecialChar \menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+\family typewriter
+-g
 \family default
- ins Feld 
-\family sans
-Befehl\InsetSpace ~
-für\InsetSpace \space{}
-Stichwortverzeichnis
-\family default
- folgendes eintragen:
-\end_layout
-
-\begin_layout LyX-Code
+ von 
+\family typewriter
 makeindex
-\family typewriter
- -c -q -g -s [n]
 \family default
-german
-\family typewriter
-.ist
-\family default
-.
-\end_layout
-
-\begin_layout Standard
--g ohne die Datei geht nicht!
+ zu benutzen.
 \end_layout
 
 \begin_layout Subsection
@@ -27350,7 +27280,7 @@ reference "Mediävalziffern-verwenden"
 
 ) ausgibt.
 \begin_inset LatexCommand index
-name "Dummy  ! Medialziffern|oldstylenums"
+name "Mediävalziffern|oldstylenums"
 
 \end_inset
 
@@ -28497,7 +28427,7 @@ netpbm
 \begin_layout Section
 Rechtschreibprüfung
 \begin_inset LatexCommand index
-name "Rechtschreibpr\"ufung"
+name "Rechtschreibprufung@Rechtschreibprüfung"
 
 \end_inset
 
@@ -28796,7 +28726,7 @@ name "Rechtschreibprogramm"
 
 /Wörterbuch
 \begin_inset LatexCommand index
-name "Wörterbuch"
+name "Worterbuch@Wörterbuch"
 
 \end_inset
 
@@ -29037,7 +28967,7 @@ end{sloppypar}
 Persönliches\InsetSpace ~
 Wörterbuch
 \begin_inset LatexCommand index
-name "W\"orterbuch!pers\"onliches"
+name "Worterbuch@Wörterbuch!personliches@persönliches"
 
 \end_inset
 
@@ -29504,7 +29434,7 @@ key "TeXCatalogue"
 \begin_layout Section
 Internationale Unterstützung
 \begin_inset LatexCommand index
-name "Internationale Unterst\"utzung"
+name "Internationale Unterstutzung@Internationale Unterstützung"
 
 \end_inset
 
@@ -37185,7 +37115,7 @@ footskip
 \begin_layout Standard
 Einzelheiten zu diesen vier Gruppen finden Sie in 
 \begin_inset LatexCommand vref
-reference "sub:Feineinstellung-der-Standardwerte"
+reference "Seitenränder"
 
 \end_inset
 
