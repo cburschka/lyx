@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 12.
  April 2008
 \end_layout
 
@@ -30354,110 +30354,47 @@ Stichwort ! Reihenfolge
 \end_layout
 
 \begin_layout Standard
-Damit Umlaute und ß richtig sortiert werden, gibt es zwei Möglichkeiten:
-\end_layout
-
-\begin_layout Enumerate
-Um zum Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-mähen
-\begin_inset Quotes grd
-\end_inset
-
- ins Stichwortverzeichnis aufzunehmen, schreiben Sie ins Feld 
+Worte mit Umlauten und ß werden nicht richtig sortiert.
+ So wird 
+\emph on
+Bäume
+\emph default
+ im Stichwortverzeichnis vor 
+\emph on
+Baum
+\emph default
+ erscheinen.
+ Um das zu verhindern, schreiben Sie ins Feld 
 \family sans
 Schlagwort
 \family default
- folgendes: mahen@mähen, usw.
- Für Soße also Sose@Soße.
+ folgendes: 
+\emph on
+Baume@Bäume
+\emph default
+.
+ Für Soße also 
+\emph on
+Sose@Soße
+\emph default
+.
  Damit werden Umlaute und ß richtig einsortiert, und in der Ausgabe so geschrieb
 en, wie es hinter @ steht.
-\begin_inset Newline newline
-\end_inset
-
-Das bedeutet natürlich auch, dass Sie durch das Wort vor @ eine beliebige
+ Das bedeutet natürlich auch, dass Sie durch das Wort vor @ eine beliebige
  Sortierreihenfolge erzwingen können.
 \end_layout
 
-\begin_layout Enumerate
-Sie schreiben im Feld 
-\family sans
-Schlagwort
-\family default
- folgendes: "a für ä, \SpecialChar \ldots{}
- , "U für Ü und "s für ß.
- Dann benötigen Sie aber noch die Datei 
-\family typewriter
-[n]german.ist
-\family default
-, die an der richtigen Stelle (\SpecialChar \ldots{}
-
-\family typewriter
-/texmf/makeindex/
-\family default
-) stehen muss.
- Diese Datei könnte so aussehen:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-quote '='
-\end_layout
-
 \begin_layout Standard
-Die erste Möglichkeit ist wahrscheinlich die einfachere, weil Sie sonst
- nichts weiter beachten müssen.
- In einem Dokument sollten Sie  nicht beide Möglichkeiten mischen.
+Geübte LaTeXniker haben natürlich auch noch die Möglichkeit, den Parameter
  
-\end_layout
-
-\begin_layout Standard
-Um auch noch das komplette Ordnungsschema nach DIN 5007 anwenden zu können,
- müssen Sie in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Ausgaben\SpecialChar \menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\family default
- ins Feld 
-\family sans
-Befehl
-\begin_inset Space \space{}
-\end_inset
-
-für
-\begin_inset Space \space{}
-\end_inset
-
-das
-\begin_inset Space \space{}
-\end_inset
-
-Stichwortverzeichnis
-\family default
- folgendes eintragen:
-\end_layout
-
-\begin_layout LyX-Code
-makeindex
 \family typewriter
- -c -q -g
+-g
+\family default
+ von 
+\family typewriter
+makeindex
+\family default
+ zu benutzen.
 \end_layout
 
 \begin_layout Subsection
@@ -42554,7 +42491,7 @@ Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
 Einzelheiten zu diesen vier Gruppen finden Sie in 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sub:Feineinstellung-der-Standardwerte"
+reference "Seitenränder"
 
 \end_inset
 
