@@ -486,20 +486,22 @@ def revert_pdf_options(document):
 
         # write to the preamble when hyperref was used
         if hyperref == True:
-            #preamble write preparation
+            # preamble write preparations
+            # bookmark numbers are only output when they are turned on
             if bookmarksopen == ',\n bookmarksopen=true':
                 bookmarksopen = bookmarksopen + bookmarksopenlevel
             if bookmarks == ',\n bookmarks=true':
                 bookmarks = bookmarks + bookmarksnumbered + bookmarksopen
             else:
                 bookmarks = bookmarks
+            # hypersetup is only output when there are things to be set up
             setupstart = '\\hypersetup{%\n'
             setupend = ' }\n'
             if otheroptions == "" and title == "" and  author == ""\
                and  subject == "" and keywords == "":
                 setupstart = ""
                 setupend = ""
-            #write the preamble
+            # write the preamble
             add_to_preamble(document,
                                 ['% Commands inserted by lyx2lyx for PDF properties',
                                  '\\usepackage[unicode=true'

@@ -160,7 +160,8 @@ def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
     """ get_value_string(lines, token, start[[, end], trim, default]) -> string
 
     Return tokens after token as string, in lines, where
-    token is the first element."""
+    token is the first element. When trim is used, the first and last character
+    of the string is trimmed."""
 
     i = find_token_exact(lines, token, start, end)
     if i == -1:
