@@ -56,6 +56,9 @@ sets system directory. Normally not needed.
 sets user directory. Needed if you want to use LyX with different lyxrc
 settings.
 .TP
+.BI \-geometry " WxH+X+Y"
+set geometry of the main window.
+.TP
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
 Use "\fBlyx \-dbg\fR" to see the list of available debug features.
@@ -140,4 +143,4 @@ are having problems with!
 files. Consult the \fBtex2lyx\fR documentation.
 
 .SH AUTHORS
-LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2006 LyX Team
+LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2008 LyX Team
