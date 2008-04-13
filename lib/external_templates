@@ -250,7 +250,7 @@ Template PDFPages
 		Includes PDF documents, using the 'pdfpages' package.
 		
 		To include multiple pages, use the "pages"-option,
-		which must be inserted to "Options" (Format "PDFLaTeX").
+		which must be inserted to "Options".
 		Examples:
 		    * pages={x-y} (for a range of pages)
 		    * pages={x,y,z} (for specific pages)
@@ -265,17 +265,6 @@ Template PDFPages
 	Transform Resize
 	Transform Extra
 	Format LaTeX
-		TransformOption Rotate RotationLatexOption
-		TransformOption Resize ResizeLatexOption
-		TransformOption Extra  ExtraOption
-		Option Arg "[$$Extra,$$Rotate,$$Resize]"
-		Product "\\includepdf$$Arg{$$AbsOrRelPathMaster$$Basename}"
-		UpdateFormat pdf
-		UpdateResult "$$AbsPath$$Basename.pdf"
-		Requirement "pdfpages"
-		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
-	FormatEnd
-	Format PDFLaTeX
 		TransformOption Rotate RotationLatexOption
 		TransformOption Resize ResizeLatexOption
 		TransformOption Extra  ExtraOption

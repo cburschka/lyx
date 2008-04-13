@@ -838,8 +838,17 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	}
 	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);
-	if (cit == et.formats.end())
-		return;
+
+	if (cit == et.formats.end()) {
+		// If the template has not specified a PDFLaTeX output,
+		// we try the LaTeX format.
+		if (format == "PDFLaTeX") {
+			cit = et.formats.find("LaTeX");
+			if (cit == et.formats.end())
+				return;
+		} else
+			return;
+	}
 
 	// FIXME: We don't need that always
 	features.require("lyxdot");
