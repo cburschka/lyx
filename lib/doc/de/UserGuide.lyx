@@ -182,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 12.
+letzte Änderung: 13.
  April 2008
 \end_layout
 
@@ -3879,7 +3879,7 @@ reference "Eine-Datei-drucken"
 \begin_layout Description
 Seitenränder
 \begin_inset LatexCommand label
-name "Seitenränder"
+name "Seitenränderbeschreibung"
 
 \end_inset
 
@@ -4049,12 +4049,6 @@ reference "Seitenformat"
 Seitenränder
 \begin_inset LatexCommand index
 name "Dokument!Seitenränder"
-
-\end_inset
-
-
-\begin_inset LatexCommand label
-name "Seitenränder"
 
 \end_inset
 
@@ -34530,52 +34524,33 @@ name "Text!-datei"
 
 \end_inset
 
- als Zeilen/Absätze
+[ als Zeilen/Absätze]
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Funktioniert genauso wie 
 \family sans
-Datei\SpecialChar \menuseparator
-Importieren\SpecialChar \menuseparator
-ASCII\InsetSpace ~
-Text\InsetSpace ~
-als\InsetSpace ~
-Zeilen/Absätze
+Datei
 \family default
- (siehe Abschnitt 
-\begin_inset LatexCommand vref
-reference "sub:ASCII-Dateien-importieren"
+->
+\family sans
+Importieren
+\family default
+->
+\family sans
+Einfacher
+\family default
+\InsetSpace \space{}
 
-\end_inset
-
+\family sans
+Text[, als Zeilen/Absätze]e
+\family default
+ (siehe 
+\emph on
+Handbuchergänzungen
+\emph default
 ).
  Die Texte werden direkt eingefügt.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -34599,7 +34574,7 @@ Datum fügt das heutige Datum ein.
 \end_layout
 
 \begin_layout Description
-LilyPond 
+LilyPond ???
 \end_layout
 
 \begin_layout Description
@@ -37115,7 +37090,7 @@ footskip
 \begin_layout Standard
 Einzelheiten zu diesen vier Gruppen finden Sie in 
 \begin_inset LatexCommand vref
-reference "Seitenränder"
+reference "Seitenränderbeschreibung"
 
 \end_inset
 
