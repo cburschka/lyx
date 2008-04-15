@@ -930,10 +930,41 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop, Edit },
 
-		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UP
+ * \li Action: Move the cursor to the next paragraph (or begining of the current one)
+               in upward direction.
+ * \li Syntax: paragraph-up
+ * \li Origin: Asger, 1 Oct 1996
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_UP, "paragraph-up", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UP_SELECT
+ * \li Action: Move the cursor and select the text to the next paragraph (or
+               begining of the current one) in upward direction.
+ * \li Syntax: paragraph-up-select
+ * \li Origin: Asger, 1 Oct 1996
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_UP_SELECT, "paragraph-up-select", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_DOWN
+ * \li Action: Move the cursor to the next paragraph (or begining of the current one)
+               in downward direction.
+ * \li Syntax: paragraph-down
+ * \li Origin: Asger, 1 Oct 1996
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_DOWN, "paragraph-down", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_DOWN_SELECT
+ * \li Action: Move the cursor and select the text to the next paragraph (or
+               begining of the current one) in downward direction.
+ * \li Syntax: paragraph-down-select
+ * \li Origin: Asger, 1 Oct 1996
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_DOWN_SELECT, "paragraph-down-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_GOTO
@@ -951,6 +982,7 @@ void LyXAction::init()
  * \li Syntax: break-paragraph
  * \endvar
  */
+		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH_SKIP
