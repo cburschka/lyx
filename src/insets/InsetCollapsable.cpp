@@ -707,11 +707,14 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
-		if ((cmd.argument() == "open" && status_ != Open)
-		      || (cmd.argument() == "close" && status_ == Open)
-		      || cmd.argument() == "toggle" || cmd.argument().empty())
-				flag.enabled(true);
-		else
+		if (cmd.argument() == "open")
+			flag.enabled(status_ != Open);
+		else if (cmd.argument() == "close")
+			flag.enabled(status_ == Open);
+		else if (cmd.argument() == "toggle" || cmd.argument().empty()) {
+			flag.enabled(true);
+			flag.setOnOff(status_ == Open);
+		} else
 			flag.enabled(false);
 		return true;
 
