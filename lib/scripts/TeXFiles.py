@@ -55,7 +55,7 @@ if len(sys.argv) > 1:
         print '''Usage: TeXFiles.py [-version | cls | sty | bst | bib ]
             Default is without any Parameters,
             so that all files will be created'''
-        sye.exit(0)
+        sys.exit(0)
     else:
         types = sys.argv[1:]
         for type in types:
