@@ -34574,7 +34574,10 @@ Datum fügt das heutige Datum ein.
 \end_layout
 
 \begin_layout Description
-LilyPond ???
+LilyPond erstellt Notenblätter, konvertiert sie nach .pdf oder .eps, um sie
+ einzufügen.
+ Zur Benutzung von .eps benötigt man mindestens lilypond 2.6, zur Benutzung
+ von .pdf benötigt mindestens lilypond 2.9.
 \end_layout
 
 \begin_layout Description
@@ -34622,7 +34625,7 @@ xbm
 \end_layout
 
 \begin_layout Description
-Xfig fügt ein Xfig-Bild ein
+Xfig fügt ein Xfig-Bild ein.
 \end_layout
 
 \begin_layout Standard
