@@ -1278,7 +1278,9 @@ def revert_framed_notes(document):
         status = document.body[k]
         l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
         if l == -1:
-            document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Box inset.")
+            l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+        if l == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout' in Box inset.")
             return
         m = find_token(document.body, "\\end_layout", i + 1, j)
         if m == -1:
@@ -1460,7 +1462,9 @@ def revert_rotfloat(document):
         if get_value(document.body, 'sideways', i, j) != "false":
             l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
             if l == -1:
-                document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
+                l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+            if l == -1:
+                document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                 return
             document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
             '\\begin_layout Standard\n\n\n\\backslash\n' \
@@ -1506,7 +1510,9 @@ def revert_widesideways(document):
             if get_value(document.body, 'wide', i, j) != "false":
                 l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
                 if l == -1:
-                    document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Float inset.")
+                    l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+                if l == -1:
+                    document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                     return
                 document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
                 '\\begin_layout Standard\n\n\n\\backslash\n' \
