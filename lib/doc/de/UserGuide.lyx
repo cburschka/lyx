@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 12.
+letzte Änderung: 13.
  April 2008
 \end_layout
 
@@ -4288,7 +4288,7 @@ reference "Eine-Datei-drucken"
 Seitenränder
 \begin_inset CommandInset label
 LatexCommand label
-name "Seitenränder"
+name "Seitenränderbeschreibung"
 
 \end_inset
 
@@ -4497,13 +4497,6 @@ status collapsed
 \begin_layout Plain Layout
 Dokument!Seitenränder
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Seitenränder"
 
 \end_inset
 
@@ -6704,7 +6697,7 @@ listung
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Auflistung"
+name "Auflistung"
 
 \end_inset
 
@@ -7341,7 +7334,7 @@ Liste
  Wenn Sie direkt hierher gelangt sind, ohne die Abschnitte 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sub:Auflistung"
+reference "Auflistung"
 
 \end_inset
 
@@ -20191,7 +20184,7 @@ drehen
  Werfen Sie einen Blick auf Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "tab:Zellen-um-90°-drehen"
+reference "Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -20213,7 +20206,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Zellen-um-90°-drehen"
+name "Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -21060,7 +21053,7 @@ Strg+T
 Wie Sie an Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "tab:Zellen-um-90°-drehen"
+reference "Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -27296,7 +27289,7 @@ I
  Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "tab:Mathematik-Schriftstile"
+reference "Mathematik-Schriftstile"
 
 \end_inset
 
@@ -27318,7 +27311,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Mathematik-Schriftstile"
+name "Mathematik-Schriftstile"
 
 \end_inset
 
@@ -30141,7 +30134,7 @@ Liste
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sub:Auflistung"
+reference "Auflistung"
 
 \end_inset
 
@@ -30233,8 +30226,8 @@ Absatz ! -umgebungen|(
 
 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LyX-Code"
+LatexCommand vref
+reference "LyX-Code"
 
 \end_inset
 
@@ -38901,12 +38894,12 @@ Text!-datei
 
 \end_inset
 
- als Zeilen/Absätze
+[, als Zeilen/Absätze]
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -38921,27 +38914,22 @@ Funktioniert genauso wie
 \family sans
 Datei\SpecialChar \menuseparator
 Importieren\SpecialChar \menuseparator
-ASCII
-\begin_inset Space ~
+Einfacher Text
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Text!-datei
+\end_layout
+
 \end_inset
 
-Text
-\begin_inset Space ~
-\end_inset
-
-als
-\begin_inset Space ~
-\end_inset
-
-Zeilen/Absätze
+[, als Zeilen/Absätze]e
 \family default
- (siehe Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:ASCII-Dateien-importieren"
-
-\end_inset
-
+ (siehe 
+\emph on
+Handbuchergänzungen
+\emph default
 ).
  Die Texte werden direkt eingefügt.
 \begin_inset ERT
@@ -41259,7 +41247,7 @@ Eine Einführung in die LaTeX-Syntax finden Sie in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ERT"
+reference "ERT-Kästchen"
 
 \end_inset
 
@@ -42491,7 +42479,7 @@ Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
 Einzelheiten zu diesen vier Gruppen finden Sie in 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Seitenränder"
+reference "Seitenränderbeschreibung"
 
 \end_inset
 
