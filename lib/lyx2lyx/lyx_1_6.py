@@ -714,6 +714,8 @@ def revert_latexcommand_index(document):
             line = line[20:]
           if line.startswith("\\begin_layout Standard"):
             line = line[22:]
+          if line.startswith("\\begin_layout Plain"):
+            line = line[22:]
           if line.startswith("\\end_layout"):
             line = line[11:]
           if line.startswith("\\end_inset"):
