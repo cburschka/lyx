@@ -1265,7 +1265,7 @@ GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
 {
 	for (int i = 0; i != count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
-		LASSERT(wa, /**/);
+		LASSERT(wa, return 0);
 		if (&wa->bufferView().buffer() == &buffer)
 			return wa;
 	}
@@ -1326,7 +1326,7 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 
 bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 {
-	LASSERT(work_area, /**/);
+	LASSERT(work_area, return false);
 	int index = indexOf(work_area);
 	if (index == -1)
 		return false;
@@ -1343,8 +1343,9 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 		else
 			// Hide tabbar if there's only one tab.
 			showBar(count() > 1);
-	} else
+	} else {
 		lastWorkAreaRemoved();
+	}
 
 	return true;
 }
@@ -1356,7 +1357,7 @@ void TabWorkArea::on_currentTabChanged(int i)
 	if (i == -1)
 		return;
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
-	LASSERT(wa, /**/);
+	LASSERT(wa, return);
 	BufferView & bv = wa->bufferView();
 	bv.cursor().fixIfBroken();
 	bv.updateMetrics();
