@@ -39,7 +39,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\parser_tools.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\TeXFiles.py"
- SetOutPath "$INSTDIR\Resources\man"
+ SetOutPath "$INSTDIR\Resources\man\man1"
  File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
