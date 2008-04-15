@@ -109,7 +109,8 @@ std::string translateRT(TextClass::ReadType rt)
 } // namespace anon
 
 
-// This string cannot be translated, because it is a layout identifier.
+// This string should not be translated here, 
+// because it is a layout identifier.
 docstring const TextClass::emptylayout_ = from_ascii("Plain Layout");
 
 
