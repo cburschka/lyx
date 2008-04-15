@@ -1568,8 +1568,8 @@ def convert_subfig(document):
         del document.body[l]
         del document.body[k]
         document.body[i] = '\\begin_inset Float figure\nwide false\nsideways false\n' \
-        'status open\n\n\\begin_layout PlainLayout\n\\begin_inset Caption\n\n\\begin_layout PlainLayout\n' \
-        + caption + '\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout PlainLayout\n' + savestr
+        'status open\n\n\\begin_layout Plain Layout\n\\begin_inset Caption\n\n\\begin_layout Plain Layout\n' \
+        + caption + '\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout Plain Layout\n' + savestr
         savestr = document.body[j]
         document.body[j] = '\n\\end_layout\n\n\\end_inset\n' + savestr
 
@@ -1596,7 +1596,7 @@ def revert_subfig(document):
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
                 i = i + 1
                 continue
-            m = find_token(document.body, "\\begin_layout PlainLayout", k + 1, l)
+            m = find_token(document.body, "\\begin_layout Plain Layout", k + 1, l)
             # caption?
             cap = find_token(document.body, '\\begin_inset Caption', k + 1, l)
             caption = ''
@@ -1629,9 +1629,9 @@ def revert_subfig(document):
                     if optend == -1:
                         document.warning("Malformed lyx document: Missing '\\end_inset' (OptArg).")
                         return
-                    optc = find_token(document.body, "\\begin_layout PlainLayout", opt, optend)
+                    optc = find_token(document.body, "\\begin_layout Plain Layout", opt, optend)
                     if optc == -1:
-                        document.warning("Malformed LyX document: Missing `\\begin_layout PlainLayout' in Float inset.")
+                        document.warning("Malformed LyX document: Missing `\\begin_layout Plain Layout' in Float inset.")
                         return
                     optcend = find_end_of(document.body, optc, "\\begin_layout", "\\end_layout")
                     for line in document.body[optc:optcend]:
@@ -1649,12 +1649,12 @@ def revert_subfig(document):
                         caption += line.strip()
                 if len(label) > 0:
                     caption += "\\backslash\nlabel{" + label + "}"
-            document.body[l] = '\\begin_layout PlainLayout\n\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout PlainLayout\n\n}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout PlainLayout\n'
+            document.body[l] = '\\begin_layout Plain Layout\n\\begin_inset ERT\nstatus collapsed\n\n' \
+            '\\begin_layout Plain Layout\n\n}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout Plain Layout\n'
             del document.body[cap:capend+1]
             del document.body[k+1:m-1]
             insertion = '\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout PlainLayout\n\n\\backslash\n' \
+            '\\begin_layout Plain Layout\n\n\\backslash\n' \
             'subfloat'
             if len(shortcap) > 0:
                 insertion = insertion + "[" + shortcap + "]"
