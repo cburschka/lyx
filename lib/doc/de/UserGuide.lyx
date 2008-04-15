@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
+letzte Änderung: 15.
  April 2008
 \end_layout
 
@@ -1236,7 +1236,7 @@ ellungen aktiviert, die Sie sonst von Hand verändern müssten.
  sie bieten sich aber vor allem für Briefe an (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Dokumentklassen"
+reference "Tab:Dokumentklassen"
 
 \end_inset
 
@@ -3214,7 +3214,7 @@ Jede Dokumentklasse hat Standardwerte, Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Dokumentklassen"
+reference "Tab:Dokumentklassen"
 
 \end_inset
 
@@ -3235,7 +3235,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Dokumentklassen"
+name "Tab:Dokumentklassen"
 
 \end_inset
 
@@ -12348,7 +12348,7 @@ Befehl
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zwischenräume"
+reference "Tab:Zwischenräume"
 
 \end_inset
 
@@ -12412,7 +12412,7 @@ Zwischenräume
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Zwischenräume"
+name "Tab:Zwischenräume"
 
 \end_inset
 
@@ -17618,7 +17618,7 @@ Datei
 In Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Maßeinheiten-zur-Bildskalierung"
+reference "Tab:Maßeinheiten-zur-Bildskalierung"
 
 \end_inset
 
@@ -17649,7 +17649,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Maßeinheiten-zur-Bildskalierung"
+name "Tab:Maßeinheiten-zur-Bildskalierung"
 
 \end_inset
 
@@ -18659,7 +18659,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Escher-Knoten"
+name "Abb:Escher-Knoten"
 
 \end_inset
 
@@ -18717,7 +18717,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Platypus"
+name "Abb:Platypus"
 
 \end_inset
 
@@ -18749,7 +18749,7 @@ Nr:
  einfügen, wie bei Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Platypus"
+reference "Abb:Platypus"
 
 \end_inset
 
@@ -18766,7 +18766,7 @@ Nr:
  einfügen, wie bei Abbildung 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Escher-Knoten"
+reference "Abb:Escher-Knoten"
 
 \end_inset
 
@@ -19408,14 +19408,19 @@ und auf die rechte Maustaste klicken.
  
 \family default
 der der Cursor steht, erkennen Sie am grauen Hintergrund des Icons.
- Sie können aber auch
+ Wenn Sie
 \family sans
  
 \family default
-mit der rechten Maustaste in die Tabelle klicken.
- Es öffnet sich dann ein Dialogfenster, in dem Sie Eigenschaften der Tabelle
- ändern können, unter anderem die folgenden -- die Symbole in Klammern sind
- die entsprechenden aus der Tabellen-Werkzeugleiste:
+mit der rechten Maustaste in die Tabelle klicken, finden Sie am Ende den
+ Punkt 
+\family sans
+Einstellungen
+\family default
+.
+ Ein Klick darauf öffnet ein Dialogfenster, in dem Sie Eigenschaften der
+ Tabelle ändern können, unter anderem die folgenden -- die Symbole in Klammern
+ sind die entsprechenden aus der Tabellen-Werkzeugleiste:
 \end_layout
 
 \begin_layout Itemize
@@ -19579,7 +19584,35 @@ Mehrfachspalte
 \end_layout
 
 \begin_layout Itemize
-Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad
+Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/tabular-feature_set-rotate-tabular.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family default
+, 
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/tabular-feature_set-rotate-cell.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\family default
+)
 \end_layout
 
 \begin_layout Itemize
@@ -19609,7 +19642,7 @@ X-Argument
 \begin_layout Itemize
 Karteikarte 
 \family sans
-Rahmen
+Rahmenlinien
 \end_layout
 
 \begin_deeper
@@ -19711,11 +19744,10 @@ und
 
 \begin_deeper
 \begin_layout Standard
-Wenn der Cursor in einer Zelle steht und Sie die rechte Maustaste klicken,
- sehen Sie unter 
+Wenn der Cursor in einer Zelle steht, sehen Sie unter 
 \family sans
-Rahmen
-\begin_inset Space ~
+Rahmenlinien
+\begin_inset Space \space{}
 \end_inset
 
 ein
@@ -19729,7 +19761,7 @@ Alle
 \begin_inset Space ~
 \end_inset
 
-Rahmen
+Rahmenlinien
 \family default
  können Sie alle Rahmen einer Zelle und der mit ihr verbundenen Zeilen und
  Spalten 
@@ -19741,6 +19773,38 @@ Festlegen
 Löschen
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Die Einstellungen 
+\family sans
+Stil
+\family default
+ und 
+\family sans
+Zusätzlicher
+\family default
+
+\begin_inset Space \space{}
+\end_inset
+
+
+\family sans
+Abstand
+\family default
+ sind in 
+\emph on
+Eingebettete
+\emph default
+
+\begin_inset Space \space{}
+\end_inset
+
+
+\emph on
+Objekte
+\emph default
+ beschrieben.
 \end_layout
 
 \end_deeper
@@ -19811,6 +19875,31 @@ de\SpecialChar \menuseparator
 TableExamples.lyx
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Seitenumbruch
+\begin_inset Space \space{}
+\end_inset
+
+nach
+\begin_inset Space \space{}
+\end_inset
+
+der
+\begin_inset Space \space{}
+\end_inset
+
+aktuellen
+\begin_inset Space \space{}
+\end_inset
+
+Zeile
+\family default
+ ist hilfreich, wenn LaTeX die Tabelle innerhalb von zusammengehörigen Zeilen
+ umbricht.
 \end_layout
 
 \end_deeper
@@ -20184,7 +20273,7 @@ drehen
  Werfen Sie einen Blick auf Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zellen-um-90°-drehen"
+reference "Tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -20206,7 +20295,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Zellen-um-90°-drehen"
+name "Tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -21053,7 +21142,7 @@ Strg+T
 Wie Sie an Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zellen-um-90°-drehen"
+reference "Tab:Zellen-um-90°-drehen"
 
 \end_inset
 
@@ -21794,7 +21883,7 @@ newline
 Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Mehrzeilige-Tabelle"
+reference "Tab:Mehrzeilige-Tabelle"
 
 \end_inset
 
@@ -21816,7 +21905,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Mehrzeilige-Tabelle"
+name "Tab:Mehrzeilige-Tabelle"
 
 \end_inset
 
@@ -22852,7 +22941,7 @@ reference "Platzierung-von-Gleitobjekt-Umgebungen"
  Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Gleitende-Tabelle"
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
@@ -22871,7 +22960,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Gleitende-Tabelle"
+name "Tab:Gleitende-Tabelle"
 
 \end_inset
 
@@ -23059,14 +23148,14 @@ Nr:
 , so erscheint die Tabelle über dem Text (wie in Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Gleitende-Tabelle-mit-Titel-darunter"
+reference "Tab:Gleitende-Tabelle-mit-Titel-darunter"
 
 \end_inset
 
 ), befindet er sich darunter, wird sie unter den Text gesetzt (Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Gleitende-Tabelle"
+reference "Tab:Gleitende-Tabelle"
 
 \end_inset
 
@@ -23190,7 +23279,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Gleitende-Tabelle-mit-Titel-darunter"
+name "Tab:Gleitende-Tabelle-mit-Titel-darunter"
 
 \end_inset
 
@@ -23257,7 +23346,7 @@ Nr:
  Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Tabelle-ohne-Titel"
+reference "Tab:Tabelle-ohne-Titel"
 
 \end_inset
 
@@ -23373,7 +23462,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Tabelle-ohne-Titel"
+name "Tab:Tabelle-ohne-Titel"
 
 \end_inset
 
@@ -25560,7 +25649,7 @@ hat{a
  Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Akzente"
+reference "Tab:Akzente"
 
 \end_inset
 
@@ -25580,7 +25669,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Akzente"
+name "Tab:Akzente"
 
 \end_inset
 
@@ -27289,7 +27378,7 @@ I
  Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Mathematik-Schriftstile"
+reference "Tab:Mathematik-Schriftstile"
 
 \end_inset
 
@@ -27311,7 +27400,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Mathematik-Schriftstile"
+name "Tab:Mathematik-Schriftstile"
 
 \end_inset
 
@@ -28998,8 +29087,16 @@ Sie können das Inhaltsverzeichnis auch als Gliederung verwenden.
 
 \end_inset
 
- oder wählen Sie Dokument\SpecialChar \menuseparator
-Gliederung.
+ oder wählen Sie 
+\family sans
+Dokument
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Gliederung
+\family default
+.
  Näheres finden Sie unter Nr.
 \begin_inset Space \thinspace{}
 \end_inset
@@ -33770,7 +33867,7 @@ name "Zeichentabellen"
 Tabelle 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ISO8859-15-Zeichensatz"
+reference "Tab:ISO8859-15-Zeichensatz"
 
 \end_inset
 
@@ -33856,7 +33953,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "ISO8859-15-Zeichensatz"
+name "Tab:ISO8859-15-Zeichensatz"
 
 \end_inset
 
@@ -37195,17 +37292,63 @@ Gliederung
  Hiermit schalten Sie die Gliederung an, die dann im linken Teil des LyX-Fenster
 s erscheint.
  Ein weiterer Klick auf den Knopf läßt die Gliederung wieder verschwinden.
- Die Gliederung zeigt zunächst das Inhaltsverzeichnis, aber Sie können auch
- andere auswählen.
-\begin_inset Newline newline
-\end_inset
+ Die Gliederung zeigt zunächst das Inhaltsverzeichnis, aber Sie können durch
+ einen Klick auf 
+\family sans
+Inhaltsverzeichnis
+\family default
+ auch andere auswählen:
+\end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Abbildungsverzeichnis enthält die Abbildungen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+Fußnotenverzeichnis enthält die Fußnoten des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+Gleichungsverzeichnis enthält die Gleichungen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+Grafikenverzeichnis enthält die im Dokument verwendeten Systemgrafiken
+\end_layout
+
+\begin_layout Enumerate
+Marken und Verweise enthält die Marken und Querverweise des Dokuments.
+\end_layout
+
+\begin_layout Enumerate
+Notizverzeichnis enthält die Notizen des Dokuments.
+\end_layout
+
+\begin_layout Enumerate
+Randnotizverzeichnis enthält die Randnotizen des Dokuments.
+\end_layout
+
+\begin_layout Enumerate
+Stichwortverzeichnis enthält die Stichworte des Dokuments.
+\end_layout
+
+\begin_layout Enumerate
+Tabellenverzeichnis enthält die Tabellen des Dokuments.
+\end_layout
+
+\begin_layout Standard
+Deren Elemente erscheinen in der Reihenfolge, in der sie im Dokument definiert
+ werden.
+ Es hängt vom Dokument ab, welche Listen vorhanden sind.
+\end_layout
+
+\begin_layout Standard
 Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  ändern können.
  Außerdem sind dort fünf Knöpfe mit folgender Bedeutung:
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/reload.png
@@ -37229,15 +37372,8 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (z,
-\begin_inset Space \thinspace{}
-\end_inset
-
-B.
-\begin_inset Space \space{}
-\end_inset
-
-von 1.2.3 nach 1.3.
+: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (zum
+ Beispiel von 1.2.3 nach 1.3).
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
 
@@ -37251,15 +37387,8 @@ von 1.2.3 nach 1.3.
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten (z,
-\begin_inset Space \thinspace{}
-\end_inset
-
-B.
-\begin_inset Space \space{}
-\end_inset
-
-von 1.2 nach 1.2.1.
+: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten (zum
+ Beispiel von 1.2 nach 1.2.1).
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
 
@@ -38898,18 +39027,6 @@ Text!-datei
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Funktioniert genauso wie 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -38932,19 +39049,6 @@ Handbuchergänzungen
 \emph default
 ).
  Die Texte werden direkt eingefügt.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -38968,7 +39072,7 @@ Datum fügt das heutige Datum ein.
 \end_layout
 
 \begin_layout Description
-LilyPond 
+LilyPond ???
 \end_layout
 
 \begin_layout Description
@@ -42563,7 +42667,7 @@ reference "Zeichentabellen"
  
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ISO8859-15-Zeichensatz"
+reference "Tab:ISO8859-15-Zeichensatz"
 
 \end_inset
 
@@ -42988,7 +43092,7 @@ Um die in diesem Handbuch verwendeten Maßeinheiten zu verstehen, erläutert
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Maßeinheiten"
+reference "Tab:Maßeinheiten"
 
 \end_inset
 
@@ -43008,7 +43112,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "Maßeinheiten"
+name "Tab:Maßeinheiten"
 
 \end_inset
 
