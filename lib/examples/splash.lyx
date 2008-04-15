@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 326
 \begin_document
 \begin_header
 \textclass article
@@ -16,6 +16,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,57 +34,38 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
+\extra_embedded_files ""
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Welcome to LyX!
 \end_layout
 
 \begin_layout Section*
-
-Top N Things to know when using LyX
+Top N things to know when using LyX
 \end_layout
 
 \begin_layout Enumerate
-
-LyX comes with excellent documentation---please use it! Start with the
-\family default
+LyX comes with excellent documentation --- please use it! Start with the
  
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduction
+Help\SpecialChar \menuseparator
+Introduction
 \family default
 , which will give you a very brief introduction to the documentation.
- Then learn about using LyX with
-\family default
- 
+ Then learn about using LyX with 
 \family sans
-
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-utorial
+Help\SpecialChar \menuseparator
+Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-
 LyX is what we call a 
 \begin_inset Quotes eld
 \end_inset
@@ -92,15 +74,14 @@ document processor.
 \begin_inset Quotes erd
 \end_inset
 
- By design, it is different from regular word processors---in a way that
+ By design, it is different from regular word processors --- in a way that
  makes writing documents easier.
  But only a little different, so don't be scared.
  The documentation will make it all clear
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Have we mentioned yet that you ought to read the documentation?
 \end_layout
 
@@ -110,31 +91,18 @@ Have we mentioned yet that you ought to read the documentation?
 \end_layout
 
 \begin_layout Enumerate
-
-The output from LyX looks great! Select
-\family default
- 
+The output from LyX looks great! Select 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar \menuseparator
+DVI
 \family default
  now to see for yourself.
 \end_layout
 
 \begin_layout Enumerate
-
 Yes, LyX can mimic (almost) all LaTeX functionality.
  And yes, LyX can import LaTeX files.
- Experienced LaTeX users should skim the rest of the
-\emph default
- 
+ Experienced LaTeX users should skim the rest of the 
 \emph on
 Tutorial
 \emph default
@@ -151,37 +119,30 @@ LyX for LaTeX Users
 \end_layout
 
 \begin_layout Enumerate
-
 LyX has lots of features for people who read or write a language other than
  English.
- In addition, the keybindings, toolbars, and many other characteristics
+ In addition, the key bindings, toolbars, and many other characteristics
  are highly configurable.
- See
-\family default
- 
+ See 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ustomization
+Help\SpecialChar \menuseparator
+Customization
 \family default
  for details.
 \end_layout
 
 \begin_layout Enumerate
-
-The LyX home page is at
-\family default
- 
+The LyX home page is at 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 

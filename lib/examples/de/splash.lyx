@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 326
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -16,6 +16,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -35,21 +36,24 @@
 \output_changes false
 \author "" 
 \author "" 
+\extra_embedded_files ""
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Willkommen bei LyX!
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \size large
-(Version 1.5.x)
+(Version 1.6.x)
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 18.
- August 2007
+letzte Änderung: 14.
+ April 2008
 \end_layout
 
 \begin_layout Section*
@@ -60,28 +64,14 @@ Die wichtigsten Dinge, wenn Sie LyX verwenden
 LyX besitzt eine exzellente Dokumentation --- bitte machen Sie regen Gebrauch
  davon! Lesen Sie zunächst 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-inführung
+Hilfe\SpecialChar \menuseparator
+Einführung
 \family default
 , dies gibt Ihnen einen kurzen Überblick über die vorhandene Dokumentation.
  Wie Sie mit LyX arbeiten, erläutert Ihnen 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-utorium
+Hilfe\SpecialChar \menuseparator
+Tutorium
 \family default
 .
 \end_layout
@@ -106,16 +96,8 @@ ion erläutert.
 Mit LyX erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI,
+Ansicht\SpecialChar \menuseparator
+DVI,
 \family default
  
 \family sans
@@ -124,6 +106,7 @@ Strg+D,
  oder klicken Sie auf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
+	embed ""
 	scale 85
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -131,16 +114,8 @@ Strg+D,
 
 , wenn Sie die Werkzeugleiste 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-W
-\bar default
-erkzeugleisten
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten
 \family default
 \SpecialChar \menuseparator
 
@@ -166,8 +141,8 @@ LyX für LaTeX-Benutzer
 \end_inset
 
  lesen.
- Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen kein LaTeX
- lernen, um mit LyX zu arbeiten.
+ Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen (fast kein)
+ kein LaTeX lernen, um mit LyX zu arbeiten.
 \end_layout
 
 \begin_layout Enumerate
@@ -176,39 +151,30 @@ LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
  Darüberhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
  weitere Charakteristiken frei konfigurierbar (das meiste durch 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-E
-\bar under
-i
-\bar default
-nstellungen\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
 
 \family default
 ).
  Näheres erläutert 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-npassung
+Hilfe\SpecialChar \menuseparator
+Anpassung
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Die Internet-Seite von LyX ist auf 
+Die Internet-Seite von LyX ist 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
 
 \end_inset
 
