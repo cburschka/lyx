@@ -1352,6 +1352,9 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 
 void TabWorkArea::on_currentTabChanged(int i)
 {
+	// returns e.g. on application destruction
+	if (i == -1)
+		return;
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
 	LASSERT(wa, /**/);
 	BufferView & bv = wa->bufferView();
