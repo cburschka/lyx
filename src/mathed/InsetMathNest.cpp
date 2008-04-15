@@ -1076,7 +1076,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			MathData ar;
 			asArray(cmd.argument(), ar);
 			if (ar.size() == 1 && ar[0]->asNestInset()
-					&& ar[0]->asNestInset()->nargs())
+					&& ar[0]->asNestInset()->nargs() > 1)
 				handleNest(cur, ar[0]);
 			else
 				cur.niceInsert(cmd.argument());
