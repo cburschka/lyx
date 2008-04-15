@@ -190,7 +190,8 @@ def languages_l10n(input_files, output, base):
         else:
             print "Error: Unable to handle line:"
             print line
-            sys.exit(1)
+            # No need to abort if the parsing fails (e.g. "ignore" language has no encoding)
+            # sys.exit(1)
     input.close()
     output.close()
 
