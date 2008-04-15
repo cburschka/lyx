@@ -131,7 +131,9 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		const int old_pos = cur.pos();
 #endif
 		cur.insert(new InsetMathHull(hullSimple));
+#ifdef ENABLE_ASSERTIONS
 		LASSERT(old_pos == cur.pos(), /**/);
+#endif
 		cur.nextInset()->edit(cur, true);
 		// don't do that also for LFUN_MATH_MODE
 		// unless you want end up with always changing
