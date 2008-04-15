@@ -386,10 +386,10 @@ def revert_pdf_options(document):
         pagebackref = ""
         pagemode = ""
         otheroptions = ""
-        i = find_token(document.header, "\\use_hyperref true", i)
+        i = find_token(document.header, "\\use_hyperref", i)
         if i != -1:
+            hyperref = get_value(document.header, "\\use_hyperref", i) == 'true'
             del document.header[i]
-            hyperref = True
         i = find_token(document.header, "\\pdf_store_options", i)
         if i != -1:
             del document.header[i]
