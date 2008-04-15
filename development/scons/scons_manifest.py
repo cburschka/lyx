@@ -270,7 +270,6 @@ src_client_files = Split('''
     Messages.cpp
     boost.cpp
     client.cpp
-    debug.cpp
     gettext.cpp
 ''')
 
