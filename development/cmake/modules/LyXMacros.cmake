@@ -225,5 +225,5 @@ macro(lyx_qt_resources_file _qrc_name _to_dir _list)
       file(APPEND  ${_qrc_name} "</qresource>\n")
       file(APPEND  ${_qrc_name} "</RCC>\n")
    endif()
-endmacro(lyx_const_touched_files)
+endmacro(lyx_qt_resources_file)
 

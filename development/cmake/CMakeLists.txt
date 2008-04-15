@@ -4,8 +4,7 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-#not really needed
-#CMAKE_MINIMUM_REQUIRED(VERSION 2.4.4 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.4)
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
