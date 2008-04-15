@@ -68,6 +68,16 @@ def len2value(len):
     # No number means 1.0
     return 1.0
 
+# Unfortunately, this doesn't really work, since Standard isn't always default.
+# But it's as good as we can do right now.
+def find_default_layout(doc, start, end):
+    l = find_token(document.body, "\\begin_layout Standard", start, end)
+    if l == -1:
+        l = find_token(document.body, "\\begin_layout PlainLayout", start, end)
+    if l == -1:
+        l = find_token(document.body, "\\begin_layout Plain Layout", start, end)
+    return l
+
 ####################################################################
 
 def get_option(document, m, option, default):
@@ -1276,9 +1286,7 @@ def revert_framed_notes(document):
             document.warning("Malformed LyX document: Missing `status' tag in Box inset.")
             return
         status = document.body[k]
-        l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
-        if l == -1:
-            l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+        l = find_default_layout(document, i + 1, j)
         if l == -1:
             document.warning("Malformed LyX document: Missing `\\begin_layout' in Box inset.")
             return
@@ -1460,9 +1468,7 @@ def revert_rotfloat(document):
             i = i + 1
             continue
         if get_value(document.body, 'sideways', i, j) != "false":
-            l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
-            if l == -1:
-                l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+            l = find_default_layout(doc, i + 1, j)
             if l == -1:
                 document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                 return
@@ -1508,9 +1514,7 @@ def revert_widesideways(document):
             continue
         if get_value(document.body, 'sideways', i, j) != "false":
             if get_value(document.body, 'wide', i, j) != "false":
-                l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
-                if l == -1:
-                    l = find_token(document.body, "\\begin_layout Plain", i + 1, j)
+                l = find_default_layout(document, i + 1, j)
                 if l == -1:
                     document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                     return
@@ -1596,7 +1600,7 @@ def revert_subfig(document):
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
                 i = i + 1
                 continue
-            m = find_token(document.body, "\\begin_layout Plain Layout", k + 1, l)
+            m = find_default_layout(document.body, k + 1, l)
             # caption?
             cap = find_token(document.body, '\\begin_inset Caption', k + 1, l)
             caption = ''
@@ -1629,9 +1633,9 @@ def revert_subfig(document):
                     if optend == -1:
                         document.warning("Malformed lyx document: Missing '\\end_inset' (OptArg).")
                         return
-                    optc = find_token(document.body, "\\begin_layout Plain Layout", opt, optend)
+                    optc = find_default_layout(document.body, opt, optend)
                     if optc == -1:
-                        document.warning("Malformed LyX document: Missing `\\begin_layout Plain Layout' in Float inset.")
+                        document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                         return
                     optcend = find_end_of(document.body, optc, "\\begin_layout", "\\end_layout")
                     for line in document.body[optc:optcend]:
