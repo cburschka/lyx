@@ -99,6 +99,8 @@ What's new
 - Set the correct encoding when an ASCII encoded TeX file is imported
   (bug 4719).
 
+- Parse the command \makebox correctly when importing TeX files (bug 2504).
+
 
 * USER INTERFACE:
 
