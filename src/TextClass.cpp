@@ -109,7 +109,8 @@ std::string translateRT(TextClass::ReadType rt)
 } // namespace anon
 
 
-docstring const TextClass::emptylayout_ = from_ascii(N_("Plain Layout"));
+// This string cannot be translated, because it is a layout identifier.
+docstring const TextClass::emptylayout_ = from_ascii("Plain Layout");
 
 
 InsetLayout DocumentClass::empty_insetlayout_;
@@ -129,6 +130,7 @@ TextClass::TextClass()
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
+	_("Plain Layout"); // a hack to make this translatable
 }
 
 
