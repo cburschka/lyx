@@ -55,6 +55,11 @@
 
 #include <sstream>
 
+#ifdef IN
+#undef IN
+#endif
+
+
 using namespace std;
 using namespace lyx::support;
 
