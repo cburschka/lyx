@@ -62,6 +62,7 @@ set(intl_sources
       printf.c
       osdep.c
       intl-compat.c
+      langprefs.c
 )
 
 lyx_add_path(intl_sources ${TOP_SRC_DIR}/intl)

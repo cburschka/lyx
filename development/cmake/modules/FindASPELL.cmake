@@ -52,7 +52,7 @@ FIND_PATH(ASPELL_INCLUDE_DIR aspell.h
 	${_program_FILES_DIR}/gnuwin32/include
 )
 
-FIND_LIBRARY(ASPELL_LIBRARY_RELEASE NAMES aspell aspell-15 libaspell
+FIND_LIBRARY(ASPELL_LIBRARY_RELEASE NAMES aspell aspell-15 libaspell libaspell-15
 	PATHS
 	/usr/lib
 	/usr/local/lib
@@ -60,7 +60,7 @@ FIND_LIBRARY(ASPELL_LIBRARY_RELEASE NAMES aspell aspell-15 libaspell
 
 # msvc makes a difference between debug and release
 if(MSVC)
-	find_library(ASPELL_LIBRARY_DEBUG NAMES aspelld libaspelld
+	find_library(ASPELL_LIBRARY_DEBUG NAMES aspelld libaspelld libaspell-15
 		 PATHS 
 		 ${_program_FILES_DIR}/kdewin32/lib)
 		 		
