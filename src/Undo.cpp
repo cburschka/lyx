@@ -91,7 +91,7 @@ struct UndoElement
 
 struct Undo::Private
 {
-	Private(Buffer & buffer) : buffer_(buffer) {}
+	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true) {}
 	
 	// Returns false if no undo possible.
 	bool textUndoOrRedo(DocIterator & cur, bool isUndoOperation);
@@ -113,12 +113,12 @@ struct Undo::Private
 	///
 	Buffer & buffer_;
 	/// Undo stack.
-	limited_stack<UndoElement> undostack;
+	limited_stack<UndoElement> undostack_;
 	/// Redo stack.
-	limited_stack<UndoElement> redostack;
+	limited_stack<UndoElement> redostack_;
 
 	/// The flag used by Undo::finishUndo().
-	bool undo_finished;
+	bool undo_finished_;
 };
 
 
@@ -142,13 +142,13 @@ Undo::~Undo()
 
 bool Undo::hasUndoStack() const
 {
-	return !d->undostack.empty();
+	return !d->undostack_.empty();
 }
 
 
 bool Undo::hasRedoStack() const
 {
-	return !d->redostack.empty();
+	return !d->redostack_.empty();
 }
 
 
@@ -199,12 +199,12 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	undo.end = cell.lastpit() - last_pit;
 
 	limited_stack<UndoElement> & stack = isUndoOperation ?
-		undostack : redostack;
+		undostack_ : redostack_;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
 	// we want combine 'similar' non-ATOMIC undo recordings to one.
-	if (!undo_finished
+	if (!undo_finished_
 	    && kind != ATOMIC_UNDO
 	    && !stack.empty()
 	    && samePar(stack.top().cell, undo.cell)
@@ -236,7 +236,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	//lyxerr << "undo record: " << stack.top() << endl;
 
 	// next time we'll try again to combine entries if possible
-	undo_finished = false;
+	undo_finished_ = false;
 }
 
 
@@ -249,8 +249,8 @@ void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
 	doRecordUndo(kind, cur, first_pit, last_pit, cur,
 		false, true);
 
-	undo_finished = false;
-	redostack.clear();
+	undo_finished_ = false;
+	redostack_.clear();
 	//lyxerr << "undostack:\n";
 	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
 	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << endl;
@@ -259,17 +259,17 @@ void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
 
 bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 {
-	undo_finished = true;
+	undo_finished_ = true;
 
 	limited_stack<UndoElement> & stack = isUndoOperation ?
-		undostack : redostack;
+		undostack_ : redostack_;
 
 	if (stack.empty())
 		// Nothing to do.
 		return false;
 
 	limited_stack<UndoElement> & otherstack = isUndoOperation ?
-		redostack : undostack;
+		redostack_ : undostack_;
 
 	// Adjust undo stack and get hold of current undo data.
 	UndoElement undo = stack.top();
@@ -339,7 +339,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	
 	if (labelsUpdateNeeded)
 		updateLabels(buffer_);
-	undo_finished = true;
+	undo_finished_ = true;
 	return true;
 }
 
@@ -347,7 +347,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 void Undo::finishUndo()
 {
 	// Make sure the next operation will be stored.
-	d->undo_finished = true;
+	d->undo_finished_ = true;
 }
 
 
