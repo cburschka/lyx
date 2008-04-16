@@ -214,7 +214,8 @@ struct BufferView::Private
 {
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
-		last_inset_(0), gui_(0)
+		inlineCompletionUniqueChars(0)
+		last_inset_(0), gui_(0),
 	{}
 
 	///
@@ -242,11 +243,11 @@ struct BufferView::Private
 	vector<int> par_height_;
 
 	///
-	DocIterator inlineCompletionPos;
+	DocIterator inlineCompletionPos_;
 	///
-	docstring inlineCompletion;
+	docstring inlineCompletion_;
 	///
-	size_t inlineCompletionUniqueChars;
+	size_t inlineCompletionUniqueChars_;
 
 	/// keyboard mapping object.
 	Intl intl_;
@@ -803,8 +804,8 @@ void BufferView::showCursor(DocIterator const & dit)
 	}
 
 	// fix inline completion position
-	if (d->inlineCompletionPos.fixIfBroken())
-		d->inlineCompletionPos = DocIterator();
+	if (d->inlineCompletionPos_.fixIfBroken())
+		d->inlineCompletionPos_ = DocIterator();
 
 	tm.redoParagraph(bot_pit);
 	ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
@@ -1861,8 +1862,8 @@ bool BufferView::singleParUpdate()
 	int old_height = tm.parMetrics(bottom_pit).height();
 
 	// make sure inline completion pointer is ok
-	if (d->inlineCompletionPos.fixIfBroken())
-		d->inlineCompletionPos = DocIterator();
+	if (d->inlineCompletionPos_.fixIfBroken())
+		d->inlineCompletionPos_ = DocIterator();
 
 	// In Single Paragraph mode, rebreak only
 	// the (main text, not inset!) paragraph containing the cursor.
@@ -1901,8 +1902,8 @@ void BufferView::updateMetrics()
 	TextMetrics & tm = textMetrics(&buftext);
 
 	// make sure inline completion pointer is ok
-	if (d->inlineCompletionPos.fixIfBroken())
-		d->inlineCompletionPos = DocIterator();
+	if (d->inlineCompletionPos_.fixIfBroken())
+		d->inlineCompletionPos_ = DocIterator();
 	
 	if (d->anchor_pit_ >= npit)
 		// The anchor pit must have been deleted...
@@ -2274,19 +2275,19 @@ void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 
 docstring const & BufferView::inlineCompletion() const
 {
-	return d->inlineCompletion;
+	return d->inlineCompletion_;
 }
 
 
 size_t const & BufferView::inlineCompletionUniqueChars() const
 {
-	return d->inlineCompletionUniqueChars;
+	return d->inlineCompletionUniqueChars_;
 }
 
 
 DocIterator const & BufferView::inlineCompletionPos() const
 {
-	return d->inlineCompletionPos;
+	return d->inlineCompletionPos_;
 }
 
 
@@ -2304,16 +2305,16 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 	docstring const & completion, size_t uniqueChars)
 {
 	uniqueChars = min(completion.size(), uniqueChars);
-	bool changed = d->inlineCompletion != completion
-		|| d->inlineCompletionUniqueChars != uniqueChars;
+	bool changed = d->inlineCompletion_ != completion
+		|| d->inlineCompletionUniqueChars_ != uniqueChars;
 	bool singlePar = true;
-	d->inlineCompletion = completion;
-	d->inlineCompletionUniqueChars = min(completion.size(), uniqueChars);
+	d->inlineCompletion_ = completion;
+	d->inlineCompletionUniqueChars_ = min(completion.size(), uniqueChars);
 	
 	//lyxerr << "setInlineCompletion pos=" << pos << " completion=" << completion << " uniqueChars=" << uniqueChars << std::endl;
 	
 	// at new position?
-	DocIterator const & old = d->inlineCompletionPos;
+	DocIterator const & old = d->inlineCompletionPos_;
 	if (old != pos) {
 		//lyxerr << "inlineCompletionPos changed" << std::endl;
 		// old or pos are in another paragraph?
@@ -2322,7 +2323,7 @@ void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos,
 			singlePar = false;
 			//lyxerr << "different paragraph" << std::endl;
 		}
-		d->inlineCompletionPos = pos;
+		d->inlineCompletionPos_ = pos;
 	}
 	
 	// set update flags
