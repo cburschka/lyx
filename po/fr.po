@@ -198,8 +198,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-04-15 15:41+0100\n"
-"PO-Revision-Date: 2008-04-10 17:50+0200\n"
+"POT-Creation-Date: 2008-04-16 08:24+0200\n"
+"PO-Revision-Date: 2008-04-16 08:28+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -3870,11 +3870,9 @@ msgstr "Remonte l'élément sélectionné d'une place"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
 msgid ""
-"Switch between table of contents, list of figures or list of tables, if "
-"available"
-msgstr ""
-"Permute entre la table des matières, la liste des figures ou la liste des "
-"tableaux, si disponibles"
+"Switch between available lists (table of contents, list of figures, list of "
+"tables, and others)"
+msgstr "Permute entre la table des matières, la liste des figures, la liste des tableaux,et autress"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -8608,31 +8606,35 @@ msgid "Spanish"
 msgstr "Espagnol"
 
 #: lib/languages:77
+msgid "Spanish (Mexico)"
+msgstr "Espagnol (Mexique)"
+
+#: lib/languages:78
 msgid "Swedish"
 msgstr "Suédois"
 
-#: lib/languages:78 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:79 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Thai"
 msgstr "Thaï"
 
-#: lib/languages:79
+#: lib/languages:80
 msgid "Turkish"
 msgstr "Turc"
 
-#: lib/languages:80
+#: lib/languages:81
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
 # C'est un dialecte allemand
-#: lib/languages:81
+#: lib/languages:82
 msgid "Upper Sorbian"
 msgstr "Haut Sorabe"
 
-#: lib/languages:82
+#: lib/languages:83
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: lib/languages:83
+#: lib/languages:84
 msgid "Welsh"
 msgstr "Gallois"
 
@@ -9801,19 +9803,19 @@ msgid "Justified Line Break|J"
 msgstr "Passage à la ligne (justifié)|j"
 
 #: lib/ui/stdcontext.inc:210 lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:942
 #: src/mathed/InsetMathNest.cpp:537
 msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:211 lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:945
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:947
 #: src/mathed/InsetMathNest.cpp:545
 msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdcontext.inc:212 lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:900
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:902
 #: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:517
 msgid "Paste"
 msgstr "Coller"
@@ -12989,14 +12991,12 @@ msgstr ""
 "Utiliser .pdf nécessite au moins lilypond 2.9\n"
 
 #: lib/external_templates:247
-#, fuzzy
 msgid "PDFPages"
-msgstr "Pages"
+msgstr "PDFPages"
 
 #: lib/external_templates:248 lib/external_templates:261
-#, fuzzy
 msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
-msgstr "Échiquier : $$AbsOrRelPathParent$$Basename"
+msgstr "PDF pages : $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:250
 msgid ""
@@ -13010,6 +13010,15 @@ msgid ""
 "Read the documentation of the pdfpages package\n"
 "for further options and details.\n"
 msgstr ""
+"Inclusion des documents PDF, via le paquetage 'pdfpages'.\n"
+"Pour inclure plusieurs pages, utiliser l'option 'pages', \n"
+"qui doit être insérée dans les Options.\n"
+"Exemples:\n"
+"* pages={x-y} (pages contiguës)\n"
+"* pages={x,y,z} (pages spécifiques)\n"
+"* pages=- (toutes les pages)\n"
+"Consulter la documentation du paquetage pdfpages\n"
+"pour les autres options et les détails.\n"
 
 #: lib/external_templates:290
 msgid ""
@@ -14780,7 +14789,7 @@ msgstr "Revenir à la sauvegarde ?"
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
-#: src/LyXFunc.cpp:1043 src/Text3.cpp:1461
+#: src/LyXFunc.cpp:1043 src/Text3.cpp:1463
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
@@ -15600,48 +15609,48 @@ msgstr "Rien à faire !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Impossible d'indexer plus d'un paragraphe !"
 
-#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1446
+#: src/Text3.cpp:171 src/mathed/InsetMathHull.cpp:1446
 msgid "Math editor mode"
 msgstr "Mode éditeur mathématique"
 
-#: src/Text3.cpp:792
+#: src/Text3.cpp:794
 msgid "Unknown spacing argument: "
 msgstr "Paramètre d'espacement inconnu : "
 
-#: src/Text3.cpp:1014
+#: src/Text3.cpp:1016
 msgid "Layout "
 msgstr "Environnement "
 
-#: src/Text3.cpp:1015
+#: src/Text3.cpp:1017
 msgid " not known"
 msgstr " inconnu"
 
-#: src/Text3.cpp:1568 src/Text3.cpp:1580
+#: src/Text3.cpp:1570 src/Text3.cpp:1582
 msgid "Character set"
 msgstr "Encodage"
 
-#: src/Text3.cpp:1727 src/Text3.cpp:1738
+#: src/Text3.cpp:1729 src/Text3.cpp:1740
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 
-#: src/TextClass.cpp:112
+#: src/TextClass.cpp:134
 msgid "Plain Layout"
 msgstr "Format ordinaire"
 
-#: src/TextClass.cpp:585
+#: src/TextClass.cpp:588
 msgid "Missing File"
 msgstr "Fichier manquant"
 
-#: src/TextClass.cpp:586
+#: src/TextClass.cpp:589
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Fichier stdinsets.inc introuvable. Ceci peut provoquer une perte de données !"
 
-#: src/TextClass.cpp:589
+#: src/TextClass.cpp:592
 msgid "Corrupt File"
 msgstr "Fichier corrompu"
 
-#: src/TextClass.cpp:590
+#: src/TextClass.cpp:593
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Fichier stdinsets.inc illisible ! Ceci peut provoquer une perte de données !"
@@ -17752,11 +17761,11 @@ msgstr " (en lecture seule)"
 msgid "Close File"
 msgstr "Fermer le fichier"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1409
+#: src/frontends/qt4/GuiWorkArea.cpp:1413
 msgid "Hide tab"
 msgstr "Cacher la tabulation"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1411
+#: src/frontends/qt4/GuiWorkArea.cpp:1415
 msgid "Close tab"
 msgstr "Fermer l'onglet"
 
