@@ -117,6 +117,12 @@ docstring const TextClass::emptylayout_ = from_ascii("Plain Layout");
 InsetLayout DocumentClass::empty_insetlayout_;
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// TextClass
+//
+/////////////////////////////////////////////////////////////////////////
+
 TextClass::TextClass()
 {
 	outputType_ = LATEX;
@@ -1035,23 +1041,36 @@ Layout const & TextClass::defaultLayout() const
 }
 
 
-bool TextClass::isDefaultLayout(Layout const & lay) const 
+bool TextClass::isDefaultLayout(Layout const & layout) const 
 {
-	return lay.name() == defaultLayoutName();
+	return layout.name() == defaultLayoutName();
 }
 
 
-bool TextClass::isEmptyLayout(Layout const & lay) const 
+bool TextClass::isEmptyLayout(Layout const & layout) const 
 {
-	return lay.name() == emptyLayoutName();
+	return layout.name() == emptyLayoutName();
 }
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// DocumentClassBundle
+//
+/////////////////////////////////////////////////////////////////////////
+
+DocumentClassBundle::~DocumentClassBundle()
+{
+	for (size_t i = 0; i != documentClasses_.size(); ++i)
+		delete documentClasses_[i];
+	documentClasses_.clear();
+}
 
 DocumentClass & DocumentClassBundle::newClass(LayoutFile const & baseClass)
 {
 	DocumentClass * dc = new DocumentClass(baseClass);
-	tc_list_.push_back(dc);
-	return *tc_list_.back();
+	documentClasses_.push_back(dc);
+	return *documentClasses_.back();
 }
 
 
@@ -1061,6 +1080,12 @@ DocumentClassBundle & DocumentClassBundle::get()
 	return singleton; 
 }
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// DocumentClass
+//
+/////////////////////////////////////////////////////////////////////////
 
 DocumentClass::DocumentClass(LayoutFile const & tc)
 	: TextClass(tc)
@@ -1089,6 +1114,12 @@ bool DocumentClass::hasTocLevels() const
 	return min_toclevel_ != Layout::NOT_IN_TOC;
 }
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// PageSides
+//
+/////////////////////////////////////////////////////////////////////////
 
 ostream & operator<<(ostream & os, PageSides p)
 {

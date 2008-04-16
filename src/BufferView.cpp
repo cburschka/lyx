@@ -214,8 +214,8 @@ struct BufferView::Private
 {
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
-		inlineCompletionUniqueChars(0)
-		last_inset_(0), gui_(0),
+		inlineCompletionUniqueChars_(0),
+		last_inset_(0), gui_(0)
 	{}
 
 	///

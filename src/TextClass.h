@@ -24,7 +24,6 @@
 
 #include <boost/noncopyable.hpp>
 
-#include <list>
 #include <map>
 #include <set>
 #include <vector>
@@ -364,7 +363,7 @@ protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);
 	/// Needed in tex2lyx
-	DocumentClass() {};
+	DocumentClass() {}
 private:
 	/// The only class that can create a DocumentClass is
 	/// DocumentClassBundle, which calls the protected constructor.
@@ -393,8 +392,10 @@ public:
 private:
 	/// control instantiation
 	DocumentClassBundle() {}
+	/// clean up
+	~DocumentClassBundle();
 	///
-	std::list<DocumentClass *> tc_list_;
+	std::vector<DocumentClass *> documentClasses_;
 };
 
 
