@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-04-15 15:41+0100\n"
+"POT-Creation-Date: 2008-04-16 22:44+0200\n"
 "PO-Revision-Date: 2008-02-16 21:50+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -87,8 +87,8 @@ msgstr "&OK"
 #: src/EmbeddedFiles.cpp:292 src/LyXFunc.cpp:693 src/LyXFunc.cpp:829
 #: src/LyXFunc.cpp:1007 src/LyXVC.cpp:160
 #: src/frontends/qt4/GuiClipboard.cpp:403
-#: src/frontends/qt4/GuiDocument.cpp:1282
-#: src/frontends/qt4/GuiDocument.cpp:1293 src/frontends/qt4/GuiView.cpp:1365
+#: src/frontends/qt4/GuiDocument.cpp:1287
+#: src/frontends/qt4/GuiDocument.cpp:1298 src/frontends/qt4/GuiView.cpp:1365
 #: src/frontends/qt4/GuiView.cpp:1546 src/frontends/qt4/GuiView.cpp:1591
 #: src/frontends/qt4/GuiView.cpp:1644
 msgid "&Cancel"
@@ -359,8 +359,8 @@ msgstr "&Visszaállítás"
 #: src/frontends/qt4/ui/ParagraphUi.ui:238 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1312
-#: src/frontends/qt4/GuiDocument.cpp:2144
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1317
+#: src/frontends/qt4/GuiDocument.cpp:2149
 msgid "&Apply"
 msgstr "&Alkalmaz"
 
@@ -400,7 +400,7 @@ msgstr "Inner box -- needed for fixed width & line breaks"
 #: src/frontends/qt4/ui/TabularUi.ui:699 src/frontends/qt4/ui/TabularUi.ui:718
 #: src/frontends/qt4/ui/TabularUi.ui:766 src/frontends/qt4/GuiBox.cpp:68
 #: src/frontends/qt4/GuiBox.cpp:155 src/frontends/qt4/GuiBox.cpp:316
-#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiDocument.cpp:74
+#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiDocument.cpp:79
 msgid "None"
 msgstr "Nincs"
 
@@ -479,13 +479,13 @@ msgstr "&Méret:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:178
 #: src/frontends/qt4/ui/TabularUi.ui:704 src/frontends/qt4/ui/TabularUi.ui:723
 #: src/frontends/qt4/ui/TabularUi.ui:771 lib/ui/stdtoolbars.inc:85
-#: src/Font.cpp:180 src/frontends/qt4/GuiDocument.cpp:73
-#: src/frontends/qt4/GuiDocument.cpp:88 src/frontends/qt4/GuiDocument.cpp:104
-#: src/frontends/qt4/GuiDocument.cpp:117 src/frontends/qt4/GuiDocument.cpp:633
-#: src/frontends/qt4/GuiDocument.cpp:670 src/frontends/qt4/GuiDocument.cpp:682
-#: src/frontends/qt4/GuiDocument.cpp:1154
-#: src/frontends/qt4/GuiDocument.cpp:1199
-#: src/frontends/qt4/GuiDocument.cpp:2185 src/frontends/qt4/GuiExternal.cpp:85
+#: src/Font.cpp:180 src/frontends/qt4/GuiDocument.cpp:78
+#: src/frontends/qt4/GuiDocument.cpp:93 src/frontends/qt4/GuiDocument.cpp:109
+#: src/frontends/qt4/GuiDocument.cpp:122 src/frontends/qt4/GuiDocument.cpp:638
+#: src/frontends/qt4/GuiDocument.cpp:675 src/frontends/qt4/GuiDocument.cpp:687
+#: src/frontends/qt4/GuiDocument.cpp:1159
+#: src/frontends/qt4/GuiDocument.cpp:1204
+#: src/frontends/qt4/GuiDocument.cpp:2190 src/frontends/qt4/GuiExternal.cpp:85
 #: src/frontends/qt4/GuiGraphics.cpp:798 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Default"
@@ -604,7 +604,7 @@ msgstr "Betûtestesség"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:977
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:982
 #: src/frontends/qt4/GuiPrefs.cpp:1628
 msgid "Language"
 msgstr "Nyelv"
@@ -1337,7 +1337,7 @@ msgstr "Vízszintes kitöltés"
 #: src/frontends/qt4/ui/HSpaceUi.ui:99 src/frontends/qt4/ui/ParagraphUi.ui:186
 #: src/frontends/qt4/ui/TabularUi.ui:709 src/frontends/qt4/ui/TabularUi.ui:728
 #: src/frontends/qt4/ui/TabularUi.ui:776 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:582 src/frontends/qt4/GuiDocument.cpp:683
+#: src/frontends/qt4/GuiDocument.cpp:587 src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "Egyéb"
 
@@ -1895,6 +1895,122 @@ msgstr "Mutassa a &tartalomjegyzékben"
 msgid "&Numbering"
 msgstr "&Számozás"
 
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:980
+msgid "Page Layout"
+msgstr "Oldal formátum"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "Dátumforma"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "Ol&dalstílus:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "&Fekvõ"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "Á&lló"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "Formá&tum:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "Elrendezés"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "&Kétoldalas dokumentum"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:28
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "&Bekezdés behúzása"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:38
+msgid "Label Width"
+msgstr "Címke szélesség"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:53
+#: src/frontends/qt4/ui/ParagraphUi.ui:60
+msgid "This text defines the width of the paragraph label"
+msgstr "Ez a szöveg adja meg a bekezdés címke szélességét"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:63
+msgid "Lo&ngest label"
+msgstr "Leghosszabb cí&mke"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:102
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:105
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "&Használja a bekezdés igazításának alapértékét"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:112
+msgid "&Justified"
+msgstr "&Sorkizárt"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:119
+msgid "&Left"
+msgstr "Bal&ra"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+msgid "&Center"
+msgstr "&Középre"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
+msgid "Ri&ght"
+msgstr "&Jobbra"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:143
+#, fuzzy
+msgid "Line &spacing"
+msgstr "Sor&köz:"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1258
+#: src/frontends/qt4/GuiDocument.cpp:581
+msgid "Single"
+msgstr "Egyszeres"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:176
+msgid "1.5"
+msgstr "Másfélszeres"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1264
+#: src/frontends/qt4/GuiDocument.cpp:585
+msgid "Double"
+msgstr "Kétszeres"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:231
+msgid "I&mmediate Apply"
+msgstr ""
+
 #: src/frontends/qt4/ui/PDFSupportUi.ui:41
 msgid "&Use hyperref support"
 msgstr ""
@@ -2018,122 +2134,6 @@ msgstr "Nyomtatandó példányszám"
 #, fuzzy
 msgid "&Numbered bookmarks"
 msgstr "Számozott képlet|p"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:975
-msgid "Page Layout"
-msgstr "Oldal formátum"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "Dátumforma"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "Ol&dalstílus:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "&Fekvõ"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "Á&lló"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "Formá&tum:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "Elrendezés"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "&Kétoldalas dokumentum"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:28
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "&Bekezdés behúzása"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:38
-msgid "Label Width"
-msgstr "Címke szélesség"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:53
-#: src/frontends/qt4/ui/ParagraphUi.ui:60
-msgid "This text defines the width of the paragraph label"
-msgstr "Ez a szöveg adja meg a bekezdés címke szélességét"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:63
-msgid "Lo&ngest label"
-msgstr "Leghosszabb cí&mke"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:102
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:105
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "&Használja a bekezdés igazításának alapértékét"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:112
-msgid "&Justified"
-msgstr "&Sorkizárt"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:119
-msgid "&Left"
-msgstr "Bal&ra"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:126
-msgid "&Center"
-msgstr "&Középre"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:133
-msgid "Ri&ght"
-msgstr "&Jobbra"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:143
-#, fuzzy
-msgid "Line &spacing"
-msgstr "Sor&köz:"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:171 src/Text.cpp:1258
-#: src/frontends/qt4/GuiDocument.cpp:576
-msgid "Single"
-msgstr "Egyszeres"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:176
-msgid "1.5"
-msgstr "Másfélszeres"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:181 src/Text.cpp:1264
-#: src/frontends/qt4/GuiDocument.cpp:580
-msgid "Double"
-msgstr "Kétszeres"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:231
-msgid "I&mmediate Apply"
-msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -2642,37 +2642,37 @@ msgid "Index command and options (makeindex, xindy)"
 msgstr "Tárgymutató parancs és kapcsolók (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:183
-#: src/frontends/qt4/GuiDocument.cpp:684
+#: src/frontends/qt4/GuiDocument.cpp:689
 msgid "US letter"
 msgstr "US letter"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:188
-#: src/frontends/qt4/GuiDocument.cpp:685
+#: src/frontends/qt4/GuiDocument.cpp:690
 msgid "US legal"
 msgstr "US legal"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:193
-#: src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:691
 msgid "US executive"
 msgstr "US executive"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:198
-#: src/frontends/qt4/GuiDocument.cpp:687
+#: src/frontends/qt4/GuiDocument.cpp:692
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:203
-#: src/frontends/qt4/GuiDocument.cpp:688
+#: src/frontends/qt4/GuiDocument.cpp:693
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:208
-#: src/frontends/qt4/GuiDocument.cpp:689
+#: src/frontends/qt4/GuiDocument.cpp:694
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:213
-#: src/frontends/qt4/GuiDocument.cpp:692
+#: src/frontends/qt4/GuiDocument.cpp:697
 msgid "B5"
 msgstr "B5"
 
@@ -3717,9 +3717,10 @@ msgid "Move selected item up by one"
 msgstr "A kiválasztott elem felfelé mozgatása"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
+#, fuzzy
 msgid ""
-"Switch between table of contents, list of figures or list of tables, if "
-"available"
+"Switch between available lists (table of contents, list of figures, list of "
+"tables, and others)"
 msgstr ""
 "Váltás tartalomjegyzék, ábrák listája és táblázatok listája között "
 "amennyiben elérhetõek"
@@ -3736,15 +3737,15 @@ msgstr "Kihagyás beszúrása még laptörés után is"
 msgid "DefSkip"
 msgstr "Alap kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:136 src/frontends/qt4/GuiDocument.cpp:569
+#: src/frontends/qt4/ui/VSpaceUi.ui:136 src/frontends/qt4/GuiDocument.cpp:574
 msgid "SmallSkip"
 msgstr "Kis kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:141 src/frontends/qt4/GuiDocument.cpp:570
+#: src/frontends/qt4/ui/VSpaceUi.ui:141 src/frontends/qt4/GuiDocument.cpp:575
 msgid "MedSkip"
 msgstr "Közepes kihagyás"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:146 src/frontends/qt4/GuiDocument.cpp:571
+#: src/frontends/qt4/ui/VSpaceUi.ui:146 src/frontends/qt4/GuiDocument.cpp:576
 msgid "BigSkip"
 msgstr "Nagy kihagyás"
 
@@ -3861,12 +3862,12 @@ msgstr "Bizonyítás:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Tétel"
@@ -3879,9 +3880,9 @@ msgstr "Tétel #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:14 lib/layouts/theorems.inc:69
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:14
 msgid "Lemma"
 msgstr "Segédtétel"
 
@@ -3894,8 +3895,9 @@ msgstr "Segédtétel #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:10 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:10
 msgid "Corollary"
 msgstr "Következmény"
 
@@ -3907,8 +3909,9 @@ msgstr "Következmény #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:18 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:18
 msgid "Proposition"
 msgstr "Javaslat"
 
@@ -3919,8 +3922,9 @@ msgstr "Javaslat #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:22 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:22
 msgid "Conjecture"
 msgstr "Feltevés"
 
@@ -3938,7 +3942,7 @@ msgid "Criterion #:"
 msgstr "Kritérium #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:943
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "Tény"
 
@@ -3959,9 +3963,9 @@ msgstr "Axióma #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:26
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Definíció"
 
@@ -3972,10 +3976,10 @@ msgstr "Definíció #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:925
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:30
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:821
+#: src/frontends/qt4/GuiDocument.cpp:826
 msgid "Example"
 msgstr "Példa"
 
@@ -3994,9 +3998,9 @@ msgstr "Feltétel #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:34
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Probléma"
 
@@ -4005,10 +4009,9 @@ msgid "Problem #:"
 msgstr "Probléma #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:38
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Feladat"
 
@@ -4019,9 +4022,9 @@ msgstr "Feladat #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:42
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Észrevétel"
 
@@ -4032,10 +4035,9 @@ msgstr "Észrevétel #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:46
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Követelés"
 
@@ -4065,13 +4067,13 @@ msgid "Notation #:"
 msgstr "Jelölés #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "Eset"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #:"
 msgstr "Eset #:"
 
@@ -4216,7 +4218,7 @@ msgstr "Tárgyszavak---"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:979
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:984
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
@@ -4504,10 +4506,10 @@ msgstr "Tárgy címsor:"
 msgid "[Acknowledgements]"
 msgstr "[Köszönetnyilvánítások]"
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1335
-#: src/frontends/qt4/GuiDocument.cpp:1345
-#: src/frontends/qt4/GuiDocument.cpp:1385
-#: src/frontends/qt4/GuiDocument.cpp:1404
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1340
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:1390
+#: src/frontends/qt4/GuiDocument.cpp:1409
 msgid "and"
 msgstr "és"
 
@@ -4707,6 +4709,11 @@ msgstr "Rész"
 msgid "Part*"
 msgstr "Rész*"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:223
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "Fólia kezdés"
+
 #: lib/layouts/beamer.layout:103 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
 msgid "MM"
@@ -4728,10 +4735,6 @@ msgstr "\\arabic{section}.\\arabic{subsection} alszakasz"
 #: lib/layouts/beamer.layout:209
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
-
-#: lib/layouts/beamer.layout:223
-msgid "BeginFrame"
-msgstr "Fólia kezdés"
 
 #: lib/layouts/beamer.layout:240
 msgid "Frame"
@@ -6347,7 +6350,7 @@ msgid "Notation \\thenotation."
 msgstr "\\arabic{notation}. jelölés"
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "\\arabic{theorem}. tétel"
@@ -7748,56 +7751,56 @@ msgstr "Offprints"
 msgid "Offprints:"
 msgstr "Offprints:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "\\arabic{theorem}. következmény"
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "\\arabic{theorem}. segédtétel"
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "\\arabic{theorem}. javaslat"
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "\\arabic{theorem}. feltevés"
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "\\arabic{theorem}. definíció"
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "\\arabic{theorem}. példa"
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "\\arabic{theorem}. probléma"
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "@Section@.\\arabic{theorem}. észrevétel"
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "\\arabic{theorem}. észrevétel"
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "\\arabic{theorem}. követelés"
@@ -8503,31 +8506,36 @@ msgid "Spanish"
 msgstr "Spanyol"
 
 #: lib/languages:77
+#, fuzzy
+msgid "Spanish (Mexico)"
+msgstr "Spanyol"
+
+#: lib/languages:78
 msgid "Swedish"
 msgstr "Svéd"
 
-#: lib/languages:78 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:79 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Thai"
 msgstr "Thaiföldi"
 
-#: lib/languages:79
+#: lib/languages:80
 msgid "Turkish"
 msgstr "Török"
 
-#: lib/languages:80
+#: lib/languages:81
 msgid "Ukrainian"
 msgstr "Ukrán"
 
-#: lib/languages:81
+#: lib/languages:82
 msgid "Upper Sorbian"
 msgstr "Felsõ-szerb"
 
-#: lib/languages:82
+#: lib/languages:83
 #, fuzzy
 msgid "Vietnamese"
 msgstr "Fájlnév"
 
-#: lib/languages:83
+#: lib/languages:84
 msgid "Welsh"
 msgstr "Walesi"
 
@@ -9739,19 +9747,19 @@ msgid "Justified Line Break|J"
 msgstr "Sortörés|r"
 
 #: lib/ui/stdcontext.inc:210 lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:940
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:942
 #: src/mathed/InsetMathNest.cpp:537
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdcontext.inc:211 lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:945
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:947
 #: src/mathed/InsetMathNest.cpp:545
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdcontext.inc:212 lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:900
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:902
 #: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:517
 msgid "Paste"
 msgstr "Beillesztés"
@@ -10337,11 +10345,11 @@ msgstr "Dokumentum nyomtatása"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenõrzés"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1028
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1029
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1037
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1038
 msgid "Redo"
 msgstr "Mégis"
 
@@ -10706,7 +10714,7 @@ msgid "Fractions"
 msgstr "Törtek"
 
 #: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
-#: src/frontends/qt4/GuiDocument.cpp:973
+#: src/frontends/qt4/GuiDocument.cpp:978
 msgid "Fonts"
 msgstr "Betûkészletek"
 
@@ -12978,7 +12986,7 @@ msgstr ""
 "A mai dátum.\n"
 "További információért olvassa az 'info date'-et.\n"
 
-#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1334
+#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1339
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s és %2$s"
@@ -13048,12 +13056,12 @@ msgstr "\\begin_header hiányzik"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document hiányzik"
 
-#: src/Buffer.cpp:561 src/Buffer.cpp:567 src/BufferView.cpp:1145
-#: src/BufferView.cpp:1151
+#: src/Buffer.cpp:561 src/Buffer.cpp:567 src/BufferView.cpp:1146
+#: src/BufferView.cpp:1152
 msgid "Changes not shown in LaTeX output"
 msgstr "A változások nincsenek megjelenítve a LaTeX kimenetben"
 
-#: src/Buffer.cpp:562 src/BufferView.cpp:1146
+#: src/Buffer.cpp:562 src/BufferView.cpp:1147
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -13065,7 +13073,7 @@ msgstr ""
 "Kérem telepítse fel ezeket a csomagokat vagy a LaTeX preambulumban definálja "
 "újra a \\lyxadded és \\lyxdeleted -ket."
 
-#: src/Buffer.cpp:568 src/BufferView.cpp:1152
+#: src/Buffer.cpp:568 src/BufferView.cpp:1153
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -13504,93 +13512,93 @@ msgstr "Általános információ"
 msgid "No more insets"
 msgstr "Nincs több betét"
 
-#: src/BufferView.cpp:668
+#: src/BufferView.cpp:669
 msgid "Save bookmark"
 msgstr "Könyvjelzõ mentése"
 
-#: src/BufferView.cpp:1031
+#: src/BufferView.cpp:1032
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.cpp:1040
+#: src/BufferView.cpp:1041
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.cpp:1195 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1196 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Nem találtam meg a szöveget!"
 
-#: src/BufferView.cpp:1219
+#: src/BufferView.cpp:1220
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.cpp:1226
+#: src/BufferView.cpp:1227
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.cpp:1233
+#: src/BufferView.cpp:1234
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.cpp:1236
+#: src/BufferView.cpp:1237
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.cpp:1283
+#: src/BufferView.cpp:1284
 msgid "Statistics for the selection:"
 msgstr "Statisztika a kijelölésre:"
 
-#: src/BufferView.cpp:1285
+#: src/BufferView.cpp:1286
 msgid "Statistics for the document:"
 msgstr "A dokumentum statisztikája: "
 
-#: src/BufferView.cpp:1288
+#: src/BufferView.cpp:1289
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d szó"
 
-#: src/BufferView.cpp:1290
+#: src/BufferView.cpp:1291
 msgid "One word"
 msgstr "Egy szó"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1294
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1297
 msgid "One character (including blanks)"
 msgstr "Egy karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1299
+#: src/BufferView.cpp:1300
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1302
+#: src/BufferView.cpp:1303
 msgid "One character (excluding blanks)"
 msgstr "Egy karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1304
+#: src/BufferView.cpp:1305
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/BufferView.cpp:1986
+#: src/BufferView.cpp:1987
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:1997
+#: src/BufferView.cpp:1998
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:1999
+#: src/BufferView.cpp:2000
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/BufferView.cpp:2225
+#: src/BufferView.cpp:2226
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13601,26 +13609,26 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/BufferView.cpp:2227
+#: src/BufferView.cpp:2228
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/BufferView.cpp:2234
+#: src/BufferView.cpp:2235
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s nem olvasható."
 
-#: src/BufferView.cpp:2235 src/output.cpp:39
+#: src/BufferView.cpp:2236 src/output.cpp:39
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/BufferView.cpp:2242
+#: src/BufferView.cpp:2243
 msgid "Reading not UTF-8 encoded file"
 msgstr "Nem UTF-8 kódolású fájl olvasása"
 
-#: src/BufferView.cpp:2243
+#: src/BufferView.cpp:2244
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -14249,19 +14257,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s másolása ide: %2$s sikertelen."
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:109
-#: src/frontends/qt4/GuiDocument.cpp:2185
+#: src/frontends/qt4/GuiDocument.cpp:2190
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:110
-#: src/frontends/qt4/GuiDocument.cpp:2185
+#: src/frontends/qt4/GuiDocument.cpp:2190
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:111
-#: src/frontends/qt4/GuiDocument.cpp:2185
+#: src/frontends/qt4/GuiDocument.cpp:2190
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Typewriter"
 msgstr "Írógép"
@@ -14610,7 +14618,7 @@ msgstr ""
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
 "Olvassa el a LyX kézikönyvet a további részletekért!"
 
-#: src/LyX.cpp:1176
+#: src/LyX.cpp:1176 src/support/Package.cpp:560
 msgid "No system directory"
 msgstr "Nincs rendszer könyvtár"
 
@@ -14756,7 +14764,7 @@ msgstr "Mentett dokumentum visszaállítása?"
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/LyXFunc.cpp:1043 src/Text3.cpp:1461
+#: src/LyXFunc.cpp:1043 src/Text3.cpp:1463
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -15498,7 +15506,7 @@ msgstr ", Mélység: %1$d"
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/Text.cpp:1261 src/frontends/qt4/GuiDocument.cpp:578
+#: src/Text.cpp:1261 src/frontends/qt4/GuiDocument.cpp:583
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -15542,50 +15550,50 @@ msgstr "Nincs mit a szójegyzékbe rakni!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
-#: src/Text3.cpp:169 src/mathed/InsetMathHull.cpp:1446
+#: src/Text3.cpp:171 src/mathed/InsetMathHull.cpp:1446
 msgid "Math editor mode"
 msgstr "Képletszerkesztõ mód"
 
-#: src/Text3.cpp:792
+#: src/Text3.cpp:794
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
-#: src/Text3.cpp:1014
+#: src/Text3.cpp:1016
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/Text3.cpp:1015
+#: src/Text3.cpp:1017
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1568 src/Text3.cpp:1580
+#: src/Text3.cpp:1570 src/Text3.cpp:1582
 msgid "Character set"
 msgstr "Betûkészlet"
 
-#: src/Text3.cpp:1727 src/Text3.cpp:1738
+#: src/Text3.cpp:1729 src/Text3.cpp:1740
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
-#: src/TextClass.cpp:112
+#: src/TextClass.cpp:134
 #, fuzzy
 msgid "Plain Layout"
 msgstr "Oldal formátum"
 
-#: src/TextClass.cpp:585
+#: src/TextClass.cpp:588
 #, fuzzy
 msgid "Missing File"
 msgstr "Hiányzó paraméter"
 
-#: src/TextClass.cpp:586
+#: src/TextClass.cpp:589
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
-#: src/TextClass.cpp:589
+#: src/TextClass.cpp:592
 #, fuzzy
 msgid "Corrupt File"
 msgstr "Rövid cím"
 
-#: src/TextClass.cpp:590
+#: src/TextClass.cpp:593
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
@@ -15712,27 +15720,6 @@ msgstr "\\Alph{enumiv}."
 #: src/buffer_funcs.cpp:412 src/insets/InsetCaption.cpp:290
 msgid "Senseless!!! "
 msgstr "Értelmetlen!"
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:40
-msgid "No debugging message"
-msgstr "Nincs nyomkövetési üzenet"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:41
-msgid "General information"
-msgstr "Általános információ"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:69
-msgid "Developers' general debug messages"
-msgstr "Developers' general debug messages"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:70
-msgid "All debugging messages"
-msgstr "Minden nyomkövetési üzenet"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:115
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Nyomkövetés `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -15893,7 +15880,7 @@ msgid "BibTeX Bibliography"
 msgstr "BibTeX irodalomjegyzék"
 
 #: src/frontends/qt4/GuiBibtex.cpp:442 src/frontends/qt4/GuiBibtex.cpp:452
-#: src/frontends/qt4/GuiDocument.cpp:1434
+#: src/frontends/qt4/GuiDocument.cpp:1439
 #: src/frontends/qt4/GuiExternal.cpp:797 src/frontends/qt4/GuiGraphics.cpp:741
 #: src/frontends/qt4/GuiInclude.cpp:343 src/frontends/qt4/GuiView.cpp:1123
 #: src/frontends/qt4/GuiView.cpp:1182 src/frontends/qt4/GuiView.cpp:1315
@@ -15987,11 +15974,11 @@ msgid "Activated"
 msgstr "Aktivált"
 
 #: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiBranches.cpp:145
-#: src/frontends/qt4/GuiDocument.cpp:1465
+#: src/frontends/qt4/GuiDocument.cpp:1470
 msgid "Yes"
 msgstr "Igen"
 
-#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1464
+#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1469
 msgid "No"
 msgstr "Nem"
 
@@ -16172,288 +16159,289 @@ msgstr "(Nincs)"
 msgid "Variable"
 msgstr "Változó méret"
 
-#: src/frontends/qt4/GuiDocument.cpp:88
+#: src/frontends/qt4/GuiDocument.cpp:93
 msgid "Computer Modern Roman"
 msgstr "Computer Modern Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:88
+#: src/frontends/qt4/GuiDocument.cpp:93
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiDocument.cpp:94
 msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
 
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiDocument.cpp:94
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiDocument.cpp:94
 msgid "Palatino"
 msgstr "Palatino"
 
-#: src/frontends/qt4/GuiDocument.cpp:90
+#: src/frontends/qt4/GuiDocument.cpp:95
 msgid "Bitstream Charter"
 msgstr "Bitstream Charter"
 
-#: src/frontends/qt4/GuiDocument.cpp:90
+#: src/frontends/qt4/GuiDocument.cpp:95
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: src/frontends/qt4/GuiDocument.cpp:90
+#: src/frontends/qt4/GuiDocument.cpp:95
 msgid "Bookman"
 msgstr "Bookman"
 
-#: src/frontends/qt4/GuiDocument.cpp:91
+#: src/frontends/qt4/GuiDocument.cpp:96
 msgid "Utopia"
 msgstr "Utopia"
 
-#: src/frontends/qt4/GuiDocument.cpp:91
+#: src/frontends/qt4/GuiDocument.cpp:96
 msgid "Bera Serif"
 msgstr "Bera Serif"
 
-#: src/frontends/qt4/GuiDocument.cpp:91
+#: src/frontends/qt4/GuiDocument.cpp:96
 msgid "Concrete Roman"
 msgstr "Concrete Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:91
+#: src/frontends/qt4/GuiDocument.cpp:96
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: src/frontends/qt4/GuiDocument.cpp:104
+#: src/frontends/qt4/GuiDocument.cpp:109
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:104
+#: src/frontends/qt4/GuiDocument.cpp:109
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:105
+#: src/frontends/qt4/GuiDocument.cpp:110
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: src/frontends/qt4/GuiDocument.cpp:105
+#: src/frontends/qt4/GuiDocument.cpp:110
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: src/frontends/qt4/GuiDocument.cpp:105
+#: src/frontends/qt4/GuiDocument.cpp:110
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: src/frontends/qt4/GuiDocument.cpp:105
+#: src/frontends/qt4/GuiDocument.cpp:110
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: src/frontends/qt4/GuiDocument.cpp:117
+#: src/frontends/qt4/GuiDocument.cpp:122
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: src/frontends/qt4/GuiDocument.cpp:118
+#: src/frontends/qt4/GuiDocument.cpp:123
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: src/frontends/qt4/GuiDocument.cpp:118
+#: src/frontends/qt4/GuiDocument.cpp:123
 msgid "Courier"
 msgstr "Courier"
 
-#: src/frontends/qt4/GuiDocument.cpp:118
+#: src/frontends/qt4/GuiDocument.cpp:123
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: src/frontends/qt4/GuiDocument.cpp:119
+#: src/frontends/qt4/GuiDocument.cpp:124
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: src/frontends/qt4/GuiDocument.cpp:119
+#: src/frontends/qt4/GuiDocument.cpp:124
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/frontends/qt4/GuiDocument.cpp:189
+#: src/frontends/qt4/GuiDocument.cpp:194
 #, fuzzy
 msgid "Module not found!"
 msgstr "Nincs meg a fájl"
 
-#: src/frontends/qt4/GuiDocument.cpp:505
+#: src/frontends/qt4/GuiDocument.cpp:510
 msgid "Document Settings"
 msgstr "Dokumentumbeállítások"
 
-#: src/frontends/qt4/GuiDocument.cpp:563
-#: src/frontends/qt4/GuiDocument.cpp:1049
+#: src/frontends/qt4/GuiDocument.cpp:568
+#: src/frontends/qt4/GuiDocument.cpp:1054
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Adja meg a listák paramétereit a jobb oldalon. Üsse le a '?'-et a "
 "paraméterek listájához."
 
-#: src/frontends/qt4/GuiDocument.cpp:572
+#: src/frontends/qt4/GuiDocument.cpp:577
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/GuiDocument.cpp:617 src/frontends/qt4/GuiDocument.cpp:623
-#: src/frontends/qt4/GuiDocument.cpp:629
+#: src/frontends/qt4/GuiDocument.cpp:622 src/frontends/qt4/GuiDocument.cpp:628
+#: src/frontends/qt4/GuiDocument.cpp:634
 msgid " (not installed)"
 msgstr " (nincs telepítve)"
 
-#: src/frontends/qt4/GuiDocument.cpp:634
+#: src/frontends/qt4/GuiDocument.cpp:639
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:635
+#: src/frontends/qt4/GuiDocument.cpp:640
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:636
+#: src/frontends/qt4/GuiDocument.cpp:641
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:671
+#: src/frontends/qt4/GuiDocument.cpp:676
 msgid "empty"
 msgstr "Üres"
 
-#: src/frontends/qt4/GuiDocument.cpp:672
+#: src/frontends/qt4/GuiDocument.cpp:677
 msgid "plain"
 msgstr "sima"
 
-#: src/frontends/qt4/GuiDocument.cpp:673
+#: src/frontends/qt4/GuiDocument.cpp:678
 msgid "headings"
 msgstr "címek"
 
-#: src/frontends/qt4/GuiDocument.cpp:674
+#: src/frontends/qt4/GuiDocument.cpp:679
 msgid "fancy"
 msgstr "egyéb (fancy)"
 
-#: src/frontends/qt4/GuiDocument.cpp:690
+#: src/frontends/qt4/GuiDocument.cpp:695
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:691
+#: src/frontends/qt4/GuiDocument.cpp:696
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:796
+#: src/frontends/qt4/GuiDocument.cpp:801
 msgid "LaTeX default"
 msgstr "LaTeX alapértékek"
 
-#: src/frontends/qt4/GuiDocument.cpp:802
+#: src/frontends/qt4/GuiDocument.cpp:807
 msgid "``text''"
 msgstr "``szöveg''"
 
-#: src/frontends/qt4/GuiDocument.cpp:803
+#: src/frontends/qt4/GuiDocument.cpp:808
 msgid "''text''"
 msgstr "''szöveg''"
 
-#: src/frontends/qt4/GuiDocument.cpp:804
+#: src/frontends/qt4/GuiDocument.cpp:809
 msgid ",,text``"
 msgstr ",,szöveg``"
 
-#: src/frontends/qt4/GuiDocument.cpp:805
+#: src/frontends/qt4/GuiDocument.cpp:810
 msgid ",,text''"
 msgstr ",,szöveg''"
 
-#: src/frontends/qt4/GuiDocument.cpp:806
+#: src/frontends/qt4/GuiDocument.cpp:811
 msgid "<<text>>"
 msgstr "<<szöveg>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:807
+#: src/frontends/qt4/GuiDocument.cpp:812
 msgid ">>text<<"
 msgstr ">>szöveg<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:822
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Numbered"
 msgstr "Számozás"
 
-#: src/frontends/qt4/GuiDocument.cpp:823
+#: src/frontends/qt4/GuiDocument.cpp:828
 msgid "Appears in TOC"
 msgstr "Megjelenik"
 
-#: src/frontends/qt4/GuiDocument.cpp:843
+#: src/frontends/qt4/GuiDocument.cpp:848
 msgid "Author-year"
 msgstr "Szerzõ-Év"
 
-#: src/frontends/qt4/GuiDocument.cpp:844
+#: src/frontends/qt4/GuiDocument.cpp:849
 msgid "Numerical"
 msgstr "Numerikus"
 
-#: src/frontends/qt4/GuiDocument.cpp:903
+#: src/frontends/qt4/GuiDocument.cpp:908
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Elérhetetlen: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:972 src/frontends/qt4/GuiDocument.cpp:987
+#: src/frontends/qt4/GuiDocument.cpp:977 src/frontends/qt4/GuiDocument.cpp:992
 msgid "Document Class"
 msgstr "Dokumentumosztály"
 
-#: src/frontends/qt4/GuiDocument.cpp:974
+#: src/frontends/qt4/GuiDocument.cpp:979
 msgid "Text Layout"
 msgstr "Szöveg formátum"
 
-#: src/frontends/qt4/GuiDocument.cpp:976
+#: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Page Margins"
 msgstr "Oldal margók"
 
-#: src/frontends/qt4/GuiDocument.cpp:978
+#: src/frontends/qt4/GuiDocument.cpp:983
 msgid "Numbering & TOC"
 msgstr "Számozás és tartalomjegyzék"
 
-#: src/frontends/qt4/GuiDocument.cpp:980
+#: src/frontends/qt4/GuiDocument.cpp:985
 #, fuzzy
 msgid "PDF Properties"
 msgstr "Tulajdonság"
 
-#: src/frontends/qt4/GuiDocument.cpp:981
+#: src/frontends/qt4/GuiDocument.cpp:986
 msgid "Math Options"
 msgstr "Képlet beállítások"
 
-#: src/frontends/qt4/GuiDocument.cpp:982
+#: src/frontends/qt4/GuiDocument.cpp:987
 msgid "Float Placement"
 msgstr "Úsztatás elhelyezés"
 
-#: src/frontends/qt4/GuiDocument.cpp:983
+#: src/frontends/qt4/GuiDocument.cpp:988
 msgid "Bullets"
 msgstr "Felsorolásjelek"
 
-#: src/frontends/qt4/GuiDocument.cpp:984
+#: src/frontends/qt4/GuiDocument.cpp:989
 msgid "Branches"
 msgstr "Változatok"
 
-#: src/frontends/qt4/GuiDocument.cpp:985 src/frontends/qt4/GuiToc.cpp:228
-#: src/frontends/qt4/Menus.cpp:916
+#: src/frontends/qt4/GuiDocument.cpp:990 src/frontends/qt4/GuiToc.cpp:228
+#: src/frontends/qt4/Menus.cpp:918
 #, fuzzy
 msgid "Embedded Files"
 msgstr "Beágyazott objektumok|m"
 
-#: src/frontends/qt4/GuiDocument.cpp:986 src/frontends/qt4/GuiDocument.cpp:998
+#: src/frontends/qt4/GuiDocument.cpp:991
+#: src/frontends/qt4/GuiDocument.cpp:1003
 msgid "LaTeX Preamble"
 msgstr "LaTeX preambulum"
 
-#: src/frontends/qt4/GuiDocument.cpp:1227
+#: src/frontends/qt4/GuiDocument.cpp:1232
 #, fuzzy
 msgid "Layouts|#o#O"
 msgstr "Formátum|r"
 
-#: src/frontends/qt4/GuiDocument.cpp:1229
+#: src/frontends/qt4/GuiDocument.cpp:1234
 #, fuzzy
 msgid "LyX Layout (*.layout)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1231
-#: src/frontends/qt4/GuiDocument.cpp:1277
+#: src/frontends/qt4/GuiDocument.cpp:1236
+#: src/frontends/qt4/GuiDocument.cpp:1282
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1249
-#: src/frontends/qt4/GuiDocument.cpp:1304
-#: src/frontends/qt4/GuiDocument.cpp:2152
+#: src/frontends/qt4/GuiDocument.cpp:1254
+#: src/frontends/qt4/GuiDocument.cpp:1309
+#: src/frontends/qt4/GuiDocument.cpp:2157
 #, fuzzy
 msgid "Error"
 msgstr "Nyíl"
 
-#: src/frontends/qt4/GuiDocument.cpp:1250
+#: src/frontends/qt4/GuiDocument.cpp:1255
 #, fuzzy
 msgid "Unable to read local layout file."
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/frontends/qt4/GuiDocument.cpp:1278
+#: src/frontends/qt4/GuiDocument.cpp:1283
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -16461,37 +16449,37 @@ msgid ""
 "keep the layout file in the same directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1282
-#: src/frontends/qt4/GuiDocument.cpp:1293
+#: src/frontends/qt4/GuiDocument.cpp:1287
+#: src/frontends/qt4/GuiDocument.cpp:1298
 #, fuzzy
 msgid "&Set Layout"
 msgstr "Szöveg formátum"
 
-#: src/frontends/qt4/GuiDocument.cpp:1289
+#: src/frontends/qt4/GuiDocument.cpp:1294
 #, fuzzy
 msgid "Embedded layout"
 msgstr "Beágyazott objektumok|m"
 
-#: src/frontends/qt4/GuiDocument.cpp:1290
+#: src/frontends/qt4/GuiDocument.cpp:1295
 msgid ""
 "The layout file you have selected is an embedded layout that\n"
 "is embedded to a buffer. You cannot make use of it unless\n"
 "it is already embedded to this buffer.\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1304
-#: src/frontends/qt4/GuiDocument.cpp:2152
+#: src/frontends/qt4/GuiDocument.cpp:1309
+#: src/frontends/qt4/GuiDocument.cpp:2157
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/frontends/qt4/GuiDocument.cpp:1309
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:1314
+#: src/frontends/qt4/GuiDocument.cpp:2146
 msgid "Unapplied changes"
 msgstr "Fennmaradó változások"
 
-#: src/frontends/qt4/GuiDocument.cpp:1310
-#: src/frontends/qt4/GuiDocument.cpp:2142
+#: src/frontends/qt4/GuiDocument.cpp:1315
+#: src/frontends/qt4/GuiDocument.cpp:2147
 #, fuzzy
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
@@ -16500,62 +16488,62 @@ msgstr ""
 "Némely változások a dialógus-ablakban, nem kerültek alkalmazásra. Ha nem "
 "alkalmazza õket most, el fognak veszni."
 
-#: src/frontends/qt4/GuiDocument.cpp:1312
-#: src/frontends/qt4/GuiDocument.cpp:2144
+#: src/frontends/qt4/GuiDocument.cpp:1317
+#: src/frontends/qt4/GuiDocument.cpp:2149
 msgid "&Dismiss"
 msgstr "&Mégse"
 
-#: src/frontends/qt4/GuiDocument.cpp:1339
+#: src/frontends/qt4/GuiDocument.cpp:1344
 #, fuzzy, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s és %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1344
+#: src/frontends/qt4/GuiDocument.cpp:1349
 #, fuzzy, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s és %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1389
+#: src/frontends/qt4/GuiDocument.cpp:1394
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1400
 #, fuzzy
 msgid "or"
 msgstr "Form"
 
-#: src/frontends/qt4/GuiDocument.cpp:1398
+#: src/frontends/qt4/GuiDocument.cpp:1403
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1407
+#: src/frontends/qt4/GuiDocument.cpp:1412
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1413
+#: src/frontends/qt4/GuiDocument.cpp:1418
 msgid "WARNING: Some packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1436
+#: src/frontends/qt4/GuiDocument.cpp:1441
 msgid ""
 "LyX Layout (*.layout);;LaTeX Classes (*.{cls,sty});;BibTeX Databases (*.{bib,"
 "bst})"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1438
+#: src/frontends/qt4/GuiDocument.cpp:1443
 #, fuzzy
 msgid "Extra embedded file"
 msgstr "Beágyazott objektumok|m"
 
-#: src/frontends/qt4/GuiDocument.cpp:2164
+#: src/frontends/qt4/GuiDocument.cpp:2169
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Kinézet megváltozott"
 
-#: src/frontends/qt4/GuiDocument.cpp:2165
+#: src/frontends/qt4/GuiDocument.cpp:2170
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
@@ -17502,22 +17490,22 @@ msgstr "Vázlat"
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: src/frontends/qt4/GuiToc.cpp:226 src/frontends/qt4/Menus.cpp:913
+#: src/frontends/qt4/GuiToc.cpp:226 src/frontends/qt4/Menus.cpp:915
 #, fuzzy
 msgid "Child Documents"
 msgstr "Aldokumentum"
 
-#: src/frontends/qt4/GuiToc.cpp:230 src/frontends/qt4/Menus.cpp:918
+#: src/frontends/qt4/GuiToc.cpp:230 src/frontends/qt4/Menus.cpp:920
 #, fuzzy
 msgid "List of Graphics"
 msgstr "Táblázatok listája"
 
-#: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:920
+#: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:922
 #, fuzzy
 msgid "List of Equations"
 msgstr "Listák listája"
 
-#: src/frontends/qt4/GuiToc.cpp:234 src/frontends/qt4/Menus.cpp:935
+#: src/frontends/qt4/GuiToc.cpp:234 src/frontends/qt4/Menus.cpp:937
 #, fuzzy
 msgid "List of Foot notes"
 msgstr "Ábrák listája"
@@ -17527,27 +17515,27 @@ msgstr "Ábrák listája"
 msgid "List of Listings"
 msgstr "Listák listája"
 
-#: src/frontends/qt4/GuiToc.cpp:238 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/GuiToc.cpp:238 src/frontends/qt4/Menus.cpp:924
 #, fuzzy
 msgid "List of Indexes"
 msgstr "Táblázatok listája"
 
-#: src/frontends/qt4/GuiToc.cpp:240 src/frontends/qt4/Menus.cpp:931
+#: src/frontends/qt4/GuiToc.cpp:240 src/frontends/qt4/Menus.cpp:933
 #, fuzzy
 msgid "List of Marginal notes"
 msgstr "Táblázatok listája"
 
-#: src/frontends/qt4/GuiToc.cpp:242 src/frontends/qt4/Menus.cpp:933
+#: src/frontends/qt4/GuiToc.cpp:242 src/frontends/qt4/Menus.cpp:935
 #, fuzzy
 msgid "List of Notes"
 msgstr "Táblázatok listája"
 
-#: src/frontends/qt4/GuiToc.cpp:244 src/frontends/qt4/Menus.cpp:939
+#: src/frontends/qt4/GuiToc.cpp:244 src/frontends/qt4/Menus.cpp:941
 #, fuzzy
 msgid "List of Citations"
 msgstr "Listák listája"
 
-#: src/frontends/qt4/GuiToc.cpp:246 src/frontends/qt4/Menus.cpp:937
+#: src/frontends/qt4/GuiToc.cpp:246 src/frontends/qt4/Menus.cpp:939
 #, fuzzy
 msgid "Labels and References"
 msgstr "a használatlan hivatkozások"
@@ -17783,12 +17771,12 @@ msgstr " (csak olvasható)"
 msgid "Close File"
 msgstr "Bezár"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1409
+#: src/frontends/qt4/GuiWorkArea.cpp:1413
 #, fuzzy
 msgid "Hide tab"
 msgstr "delta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1411
+#: src/frontends/qt4/GuiWorkArea.cpp:1415
 #, fuzzy
 msgid "Close tab"
 msgstr "Bezár"
@@ -17801,55 +17789,55 @@ msgstr "Körbeúsztatási beállítások"
 msgid "Click to detach"
 msgstr "Kattintson ide a leválasztáshoz"
 
-#: src/frontends/qt4/Menus.cpp:650
+#: src/frontends/qt4/Menus.cpp:652
 msgid "No Documents Open!"
 msgstr "Nincs nyitott dokumentum!"
 
-#: src/frontends/qt4/Menus.cpp:676 src/frontends/qt4/Menus.cpp:753
-#: src/frontends/qt4/Menus.cpp:773 src/frontends/qt4/Menus.cpp:794
-#: src/frontends/qt4/Menus.cpp:876 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:678 src/frontends/qt4/Menus.cpp:755
+#: src/frontends/qt4/Menus.cpp:775 src/frontends/qt4/Menus.cpp:796
+#: src/frontends/qt4/Menus.cpp:878 src/frontends/qt4/Menus.cpp:1034
 msgid "No Document Open!"
 msgstr "Nincs nyitott dokumentum!"
 
-#: src/frontends/qt4/Menus.cpp:717
+#: src/frontends/qt4/Menus.cpp:719
 msgid "Plain Text"
 msgstr "Sima szöveg"
 
-#: src/frontends/qt4/Menus.cpp:719
+#: src/frontends/qt4/Menus.cpp:721
 msgid "Plain Text, Join Lines"
 msgstr "Sima szöveg, sorok befûzése"
 
-#: src/frontends/qt4/Menus.cpp:891
+#: src/frontends/qt4/Menus.cpp:893
 msgid "Master Document"
 msgstr "Fõdokumentum"
 
-#: src/frontends/qt4/Menus.cpp:942
+#: src/frontends/qt4/Menus.cpp:944
 #, fuzzy
 msgid "Other floats: "
 msgstr "Egyéb lebegõk"
 
-#: src/frontends/qt4/Menus.cpp:948
+#: src/frontends/qt4/Menus.cpp:950
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:969
+#: src/frontends/qt4/Menus.cpp:971
 #, fuzzy
 msgid "Other Lists"
 msgstr "Egyéb lebegõk"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:981
 msgid "No Table of contents"
 msgstr "Nincs tartalomjegyzék"
 
-#: src/frontends/qt4/Menus.cpp:1021
+#: src/frontends/qt4/Menus.cpp:1023
 msgid " (auto)"
 msgstr " (automatikus)"
 
-#: src/frontends/qt4/Menus.cpp:1040
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "A dokumentumban nincs változat megadva!"
 
-#: src/frontends/qt4/Menus.cpp:1533
+#: src/frontends/qt4/Menus.cpp:1539
 #, fuzzy
 msgid "No action defined!"
 msgstr "Nincs betûkészlet váltás megadva."
@@ -18699,11 +18687,6 @@ msgstr "Szöveget kicseréltem."
 msgid " strings have been replaced."
 msgstr " szöveget cseréltem ki."
 
-#: src/mathed/InsetFormulaMacro.cpp:118
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makró: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1355
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -18806,6 +18789,74 @@ msgstr "Hivatkozások: "
 #, fuzzy
 msgid "All Files "
 msgstr "Minden fájl (*)"
+
+#: src/support/Package.cpp:441
+msgid "LyX binary not found"
+msgstr "Nem találom a LyX futattható-állományát"
+
+#: src/support/Package.cpp:442
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
+"parancssorból: %1$s"
+
+#: src/support/Package.cpp:561
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1$s-ban\n"
+"Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
+"változót LYX_DIR_15x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
+"ltx' fájl van."
+
+#: src/support/Package.cpp:642 src/support/Package.cpp:669
+msgid "File not found"
+msgstr "Nincs meg a fájl"
+
+#: src/support/Package.cpp:643
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Érvénytelen %1$s kapcsoló.\n"
+"A %2$s nem tartalmazza %3$s-at."
+
+#: src/support/Package.cpp:670
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s könyvtár nem tartalmazza %3$s-at."
+
+#: src/support/Package.cpp:694
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s nem könyvtár."
+
+#: src/support/Package.cpp:696
+msgid "Directory not found"
+msgstr "Nincs meg a könyvtár"
+
+#: src/support/debug.cpp:40
+msgid "No debugging message"
+msgstr "Nincs nyomkövetési üzenet"
+
+#: src/support/debug.cpp:41
+msgid "General information"
+msgstr "Általános információ"
 
 #: src/support/debug.cpp:42
 msgid "Program initialisation"
@@ -18916,6 +18967,19 @@ msgstr "képlet makró"
 msgid "RTL/Bidi"
 msgstr ""
 
+#: src/support/debug.cpp:69
+msgid "Developers' general debug messages"
+msgstr "Developers' general debug messages"
+
+#: src/support/debug.cpp:70
+msgid "All debugging messages"
+msgstr "Minden nyomkövetési üzenet"
+
+#: src/support/debug.cpp:115
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Nyomkövetés `%1$s' (%2$s)"
+
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"
 msgstr "hu"
@@ -18948,53 +19012,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
 
-#~ msgid "LyX binary not found"
-#~ msgstr "Nem találom a LyX futattható-állományát"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
-#~ "parancssorból: %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-#~ msgstr ""
-#~ "Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1$s-ban\n"
-#~ "Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
-#~ "változót LYX_DIR_15x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
-#~ "ltx' fájl van."
-
-#~ msgid "File not found"
-#~ msgstr "Nincs meg a fájl"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Érvénytelen %1$s kapcsoló.\n"
-#~ "A %2$s nem tartalmazza %3$s-at."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Érvénytelen %1$s környezeti változó.\n"
-#~ "%2$s könyvtár nem tartalmazza %3$s-at."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Érvénytelen %1$s környezeti változó.\n"
-#~ "%2$s nem könyvtár."
-
-#~ msgid "Directory not found"
-#~ msgstr "Nincs meg a könyvtár"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makró: %1$s: "
 
 #, fuzzy
 #~ msgid "Japanese (non-CJK)"
