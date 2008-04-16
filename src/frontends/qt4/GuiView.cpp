@@ -53,6 +53,7 @@
 #include "ToolbarBackend.h"
 #include "version.h"
 
+#include "support/assert.h"
 #include "support/debug.h"
 #include "support/FileFilterList.h"
 #include "support/FileName.h"
@@ -88,7 +89,6 @@
 #include <QUrl>
 #include <QScrollBar>
 
-#include "support/assert.h"
 #include <boost/bind.hpp>
 
 #ifdef HAVE_SYS_TIME_H

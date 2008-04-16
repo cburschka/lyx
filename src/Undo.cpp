@@ -30,12 +30,11 @@
 
 #include "insets/Inset.h"
 
-#include "support/debug.h"
-#include "support/limited_stack.h"
-
 #include "support/assert.h"
+#include "support/debug.h"
 
 #include <algorithm>
+#include <deque>
 #include <ostream>
 
 using namespace std;
@@ -89,6 +88,48 @@ struct UndoElement
 };
 
 
+class UndoElementStack 
+{
+public:
+	/// limit is the maximum size of the stack
+	UndoElementStack(size_t limit = 100) { limit_ = limit; }
+	/// limit is the maximum size of the stack
+	~UndoElementStack() { clear(); }
+
+	/// Return the top element.
+	UndoElement & top() { return c_.front(); }
+
+	/// Pop and throw away the top element.
+	void pop() { c_.pop_front(); }
+
+	/// Return true if the stack is empty.
+	bool empty() const { return c_.empty(); }
+
+	/// Clear all elements, deleting them.
+	void clear() {
+		for (size_t i = 0; i != c_.size(); ++i) {
+			delete c_[i].array;
+			delete c_[i].pars;
+		}
+		c_.clear();
+	}
+
+	/// Push an item on to the stack, deleting the
+	/// bottom item on overflow.
+	void push(UndoElement const & v) {
+		c_.push_front(v);
+		if (c_.size() > limit_)
+			c_.pop_back();
+	}
+
+private:
+	/// Internal contents.
+	std::deque<UndoElement> c_;
+	/// The maximum number elements stored.
+	size_t limit_;
+};
+
+
 struct Undo::Private
 {
 	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true) {}
@@ -113,9 +154,9 @@ struct Undo::Private
 	///
 	Buffer & buffer_;
 	/// Undo stack.
-	limited_stack<UndoElement> undostack_;
+	UndoElementStack undostack_;
 	/// Redo stack.
-	limited_stack<UndoElement> redostack_;
+	UndoElementStack redostack_;
 
 	/// The flag used by Undo::finishUndo().
 	bool undo_finished_;
@@ -152,12 +193,14 @@ bool Undo::hasRedoStack() const
 }
 
 
+#if 0
 static ostream & operator<<(ostream & os, UndoElement const & undo)
 {
 	return os << " from: " << undo.from << " end: " << undo.end
 		<< " cell:\n" << undo.cell
 		<< " cursor:\n" << undo.cursor;
 }
+#endif
 
 
 static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
@@ -198,8 +241,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	undo.from = first_pit;
 	undo.end = cell.lastpit() - last_pit;
 
-	limited_stack<UndoElement> & stack = isUndoOperation ?
-		undostack_ : redostack_;
+	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
@@ -261,15 +303,13 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 {
 	undo_finished_ = true;
 
-	limited_stack<UndoElement> & stack = isUndoOperation ?
-		undostack_ : redostack_;
+	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
 
 	if (stack.empty())
 		// Nothing to do.
 		return false;
 
-	limited_stack<UndoElement> & otherstack = isUndoOperation ?
-		redostack_ : undostack_;
+	UndoElementStack & otherstack = isUndoOperation ?  redostack_ : undostack_;
 
 	// Adjust undo stack and get hold of current undo data.
 	UndoElement undo = stack.top();
