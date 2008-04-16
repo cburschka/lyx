@@ -1602,8 +1602,8 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 {
 	string const scroll_type = cmd.getArg(0);
 	int const scroll_step = 
-		(scroll_type == "line")? d->scrollbarParameters_.single_step
-		: (scroll_type == "page")? d->scrollbarParameters_.page_step : 0;
+		(scroll_type == "line") ? d->scrollbarParameters_.single_step
+		: (scroll_type == "page") ? d->scrollbarParameters_.page_step : 0;
 	if (scroll_step == 0)
 		return;
 	string const scroll_quantity = cmd.getArg(1);

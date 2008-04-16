@@ -51,6 +51,9 @@ enum CursorStatus {
 /// Scrollbar Parameters.
 struct ScrollbarParameters
 {
+	ScrollbarParameters()
+		: min(0), max(1), position(0), single_step(1), page_step(1)
+	{}
 	/// Minimum scrollbar position in pixels.
 	int min;
 	/// Maximum scrollbar position in pixels.
