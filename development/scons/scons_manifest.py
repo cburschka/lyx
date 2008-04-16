@@ -2700,6 +2700,7 @@ lib_layouts_files = Split('''
     arab-article.layout
     armenian-article.layout
     article.layout
+    article-beamer.layout
     beamer.layout
     book.layout
     broadway.layout
@@ -2751,6 +2752,7 @@ lib_layouts_files = Split('''
     revtex.layout
     revtex4.layout
     scrartcl.layout
+    scrarticle-beamer.layout
     scrbook.layout
     scrlettr.layout
     scrlttr2.layout

@@ -924,6 +924,7 @@ dist_layouts_DATA =\
 	layouts/arab-article.layout \
 	layouts/armenian-article.layout \
 	layouts/article.layout \
+	layouts/article-beamer.layout \
 	layouts/beamer.layout \
 	layouts/book.layout \
 	layouts/broadway.layout \
@@ -985,6 +986,7 @@ dist_layouts_DATA =\
 	layouts/revtex.layout \
 	layouts/revtex4.layout \
 	layouts/scrartcl.layout \
+	layouts/scrarticle-beamer.layout \
 	layouts/scrbook.layout \
 	layouts/scrclass.inc \
 	layouts/scrlettr.layout \
