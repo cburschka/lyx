@@ -59,6 +59,7 @@ class Menus
 {
 public:
 	Menus();
+	~Menus();
 	
 	///
 	bool searchMenu(FuncRequest const & func,

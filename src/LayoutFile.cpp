@@ -47,6 +47,14 @@ LayoutFile::LayoutFile(string const & fn, string const & cln,
 	texClassAvail_ = texClassAvail;
 }
 
+LayoutFileList::~LayoutFileList()
+{
+	ClassMap::const_iterator it = classmap_.begin();
+	ClassMap::const_iterator en = classmap_.end();
+	for (; it != en; ++it) {
+		delete it->second;
+	}
+}
 
 LayoutFileList & LayoutFileList::get() 
 {

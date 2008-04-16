@@ -58,6 +58,8 @@
 #include <QMenuBar>
 #include <QString>
 
+#include <boost/shared_ptr.hpp>
+
 #include <algorithm>
 #include <ostream>
 #include <vector>
@@ -1187,7 +1189,7 @@ struct Menus::Impl {
 	///
 	MenuDefinition menubar_;
 
-	typedef QMap<GuiView *, QHash<QString, Menu *> > NameMap;
+	typedef QMap<GuiView *, QHash<QString, boost::shared_ptr<Menu> > > NameMap;
 
 	/// name to menu for \c menu() method.
 	NameMap name_map_;
@@ -1400,6 +1402,10 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 
 Menus::Menus() : d(new Impl) {}
 
+Menus::~Menus()
+{
+  delete d;
+}
 
 void Menus::read(Lexer & lex)
 {
@@ -1513,7 +1519,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		menu->setTitle(label(*m));
 		qmb->addMenu(menu);
 
-		d->name_map_[view][name] = menu;
+		d->name_map_[view][name] = boost::shared_ptr<Menu>(menu);
 	}
 }
 
@@ -1548,14 +1554,14 @@ void Menus::updateMenu(Menu * qmenu)
 Menu * Menus::menu(QString const & name, GuiView & view)
 {
 	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
-	Menu * menu = d->name_map_[&view].value(name, 0);
+	Menu * menu = d->name_map_[&view].value(name, boost::shared_ptr<Menu>()).get();
 	if (!menu && !name.startsWith("context-")) {
 		LYXERR0("requested context menu not found: " << fromqstr(name));
 		return 0;
 	}
 
 	menu = new Menu(&view, name, true);
-	d->name_map_[&view][name] = menu;
+	d->name_map_[&view][name] = boost::shared_ptr<Menu>(menu);
 	return menu;
 }
 

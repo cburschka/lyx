@@ -72,6 +72,7 @@ class LayoutFileList {
 public:
 	///
 	LayoutFileList() {}
+	~LayoutFileList();
 	/// \return The sole instance of this class.
 	static LayoutFileList & get();
 	///
