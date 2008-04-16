@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 326
+\lyxformat 327
 \begin_document
 \begin_header
 \textclass scrbook
@@ -165,7 +165,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 15.
+letzte Änderung: 16.
  April 2008
 \end_layout
 
@@ -4849,10 +4849,7 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 begin{
 \family default
 \emph on
-en\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment
+environment
 \family typewriter
 \emph default
 } ...
@@ -5024,9 +5021,44 @@ pull-down
 \begin_inset Quotes grd
 \end_inset
 
--Menü am Anfang der Werkzeugleiste.
- Für einige gibt es am Anfang der zweiten Werkzeugleiste eigene Schalter
- (
+-Menü am Anfang der Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Werkzeugleiste.
+ Was für Einträge Sie dort finden, hängt von der gewählten Dokumentklasse
+ ab.
+ Außerdem können Sie das Aussehen der Liste gestalten, wie in Abschnitt
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Kontrolle-der-Oberfläche"
+
+\end_inset
+
+ beschrieben.
+ Für einige gibt es am Anfang der Extra
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Werkzeugleiste eigene Schalter (
 \family sans
 Standard
 \family default
@@ -30881,6 +30913,13 @@ eintragen.
 
 \begin_layout Section
 Nomenklatur
+\begin_inset CommandInset label
+LatexCommand label
+name "Nomenklatur/Glossar"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -37306,35 +37345,43 @@ Abbildungsverzeichnis enthält die Abbildungen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Fußnotenverzeichnis enthält die Fußnoten des Dokuments
+Fußnoten enthält die Fußnoten des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Gleichungsverzeichnis enthält die Gleichungen des Dokuments
+Gleichung enthält die Gleichungen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Grafikenverzeichnis enthält die im Dokument verwendeten Systemgrafiken
+Listings enthält die eingebundenen Programmlistings des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Marken und Verweise enthält die Marken und Querverweise des Dokuments.
+LyX-Grafiken enthält die im Dokument verwendeten Systemgrafiken
 \end_layout
 
 \begin_layout Enumerate
-Notizverzeichnis enthält die Notizen des Dokuments.
+Marken und Querverweise enthält die Marken und Querverweise des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Randnotizverzeichnis enthält die Randnotizen des Dokuments.
+Notizen enthält die Notizen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Stichwortverzeichnis enthält die Stichworte des Dokuments.
+Randnotizen enthält die Randnotizen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Tabellenverzeichnis enthält die Tabellen des Dokuments.
+Stichwörter enthält die Stichwörter des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+Tabellenverzeichnis enthält die Tabellen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+Unterdokumente enthält die eingebundenen Unterdokumente des Dokuments
 \end_layout
 
 \begin_layout Standard
@@ -37685,16 +37732,38 @@ Zitat
 Einfügen\SpecialChar \menuseparator
 Stichwort
 \family default
+: siehe 
+\emph on
+Handbuchergänzungen
+\end_layout
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Stichwort"
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/nomencl-insert.png
+	embed ""
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
-: Siehe 
-\emph on
-Handbuchergänzungen.
+: 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Nomenklatureintrag
+\family default
+: siehe Abschnitt
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Nomenklatur/Glossar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -38412,7 +38481,7 @@ Neues Fenster
 \end_layout
 
 \begin_layout Standard
-Dieser Befehl öffnet ein neues LyX-Fenster mit allen bis jetzt geöffneten
+Dieser Befehl öffnet ein neues leeres LyX-Fenster mit allen bis jetzt geöffneten
  Dokumenten.
  Sie können die Dokumente in beiden Fenstern bearbeiten, und die Änderungen
  werden ins jeweils andere Fenster übernommen.
@@ -39195,7 +39264,7 @@ Box
 \begin_layout Standard
 Siehe 
 \emph on
-Handbuchergänzungen.
+Eingebettete Objekte.
  
 \end_layout
 
@@ -40724,6 +40793,13 @@ Bearbeiten
 
 \begin_layout Subsection
 Kontrolle
+\begin_inset CommandInset label
+LatexCommand label
+name "Kontrolle-der-Oberfläche"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -40774,7 +40850,19 @@ gruppieren wie der Name sagt
 \end_layout
 
 \begin_layout Standard
-im Auswahlfenster:
+Wenn keine der beiden Optionen angekreuzt ist, erscheinen die Umgebungsnamen
+ in der Reihenfolge, in der sie in der Dokumentklasse definiert sind.
+ Wenn beide Optionen angekreuzt sind, werden die Umgebungsnamen innerhalb
+ der Kategorien alphabetisch sortiert.
+ In allen Fällen ist 
+\family sans
+Standard
+\family default
+ der erste Eintrag.
+\end_layout
+
+\begin_layout Standard
+Im Auswahlfenster:
 \end_layout
 
 \begin_layout Description
@@ -40798,7 +40886,7 @@ einer
 \begin_inset Space ~
 \end_inset
 
-Box
+Box ???
 \end_layout
 
 \begin_layout Description
@@ -40834,7 +40922,7 @@ der
 \begin_inset Space ~
 \end_inset
 
-Statuszeile
+Statuszeile ???
 \end_layout
 
 \begin_layout Description
@@ -40866,7 +40954,7 @@ Parameterliste
 \begin_inset Space ~
 \end_inset
 
-LyX<1.6)
+LyX<1.6) ???
 \end_layout
 
 \end_deeper
