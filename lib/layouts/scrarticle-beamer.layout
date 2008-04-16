@@ -1,0 +1,35 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrartcl]{article (koma + beamer)}
+# Author : Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+
+Format 7
+
+# Includes
+Input beamer.layout
+
+Preamble
+	\usepackage{beamerarticle,pgf}
+	% this default might be overridden by plain title style
+	\newcommand\makebeamertitle{\frame{\maketitle}}%
+	\AtBeginDocument{
+		\let\origtableofcontents=\tableofcontents
+		\def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+		\def\gobbletableofcontents#1{\origtableofcontents}
+	}
+EndPreamble
+
+# Frame control definition
+Style BeginFrame
+# This redefinition is needed to make beamerarticle work
+  Preamble
+    \makeatletter
+    \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
+    \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
+    \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
+    \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
+    \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
+    \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
+      \frame<#1>[#3]{\frametitle{#4}#5}}
+    \makeatother
+  EndPreamble
+End
