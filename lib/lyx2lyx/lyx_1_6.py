@@ -1970,6 +1970,23 @@ def revert_pdfpages(document):
         i = i + 1
 
 
+def revert_mexican(document):
+    "Set language Spanish(Mexico) to Spanish"
+    i = 0
+    if document.language == "spanish-mexico":
+        document.language = "spanish"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language spanish"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang spanish-mexico", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang spanish-mexico", "\\lang spanish")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -2024,10 +2041,12 @@ convert = [[277, [fix_wrong_tables]],
            [323, [convert_pagebreaks]],
            [324, [convert_linebreaks]],
            [325, [convert_japanese_plain]],
-           [326, []]
+           [326, []],
+           [327, []]
           ]
 
-revert =  [[325, [revert_pdfpages]],
+revert =  [[326, [revert_mexican]],
+           [325, [revert_pdfpages]],
            [324, []],
            [323, [revert_linebreaks]],
            [322, [revert_pagebreaks]],
