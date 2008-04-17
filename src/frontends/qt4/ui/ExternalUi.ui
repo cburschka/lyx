@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ExternalUi</class>
  <widget class="QDialog" name="ExternalUi" >
   <property name="geometry" >
@@ -61,13 +58,6 @@
         <widget class="QCheckBox" name="draftCB" >
          <property name="text" >
           <string>&amp;Draft</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2" >
-        <widget class="QCheckBox" name="embedCB" >
-         <property name="text" >
-          <string>E&amp;mbed</string>
          </property>
         </widget>
        </item>
@@ -425,7 +415,7 @@
         <number>6</number>
        </property>
        <item row="1" column="2" >
-        <widget class="LengthCombo" name="heightUnitCO" />
+        <widget class="LengthCombo" native="1" name="heightUnitCO" />
        </item>
        <item row="0" column="2" >
         <widget class="QComboBox" name="widthUnitCO" />
@@ -705,24 +695,17 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
    <extends>QWidget</extends>
    <header>LengthCombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>tab</tabstop>
   <tabstop>fileED</tabstop>
   <tabstop>browsePB</tabstop>
-  <tabstop>embedCB</tabstop>
   <tabstop>editPB</tabstop>
   <tabstop>externalCO</tabstop>
   <tabstop>externalTB</tabstop>
@@ -748,6 +731,9 @@
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
