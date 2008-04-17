@@ -2349,10 +2349,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//\makebox() is part of the picture environment and different from \makebox{}
 		//\makebox{} will be parsed by parse_box when bug 2956 is fixed
 		else if (t.cs() == "makebox") {
-			string arg = "\\makebox";
+			string arg = t.asInput();
 			if (p.next_token().character() == '(')
 				//the syntax is: \makebox(x,y)[position]{content}
-				arg += p.getFullParentheseOpt();
+				arg += p.getFullParentheseArg();
 			else
 				//the syntax is: \makebox[width][position]{content}
 				arg += p.getFullOpt();

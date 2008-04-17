@@ -317,7 +317,7 @@ string Parser::getOpt()
 	return res.empty() ? string() : '[' + res + ']';
 }
 
-string Parser::getFullParentheseOpt()
+string Parser::getFullParentheseArg()
 {
 	Arg arg = getFullArg('(', ')');
 	if (arg.first)
