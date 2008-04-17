@@ -16,7 +16,6 @@
 
 #include "GuiGraphics.h"
 
-#include "Buffer.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "LyXRC.h"
@@ -29,13 +28,10 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "frontends/alert.h"
-
 #include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -128,8 +124,6 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
-		this, SLOT(change_adaptor()));
-	connect(embedCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(WidthCB, SIGNAL( clicked()),
 		this, SLOT(change_adaptor()));
@@ -434,7 +428,6 @@ void GuiGraphics::updateContents()
 	string const name =
 		igp.filename.outputFilename(fromqstr(bufferFilepath()));
 	filename->setText(toqstr(name));
-	embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
@@ -573,19 +566,6 @@ void GuiGraphics::applyView()
 	InsetGraphicsParams & igp = params_;
 
 	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilepath()));
-	try {
-		Buffer & buf = buffer();
-		EmbeddedFile file(fromqstr(filename->text()), buf.filePath());
-		file.setEmbed(embedCB->checkState() == Qt::Checked);
-		// move file around if needed, an exception may be raised.
-		file.enable(buf.embedded(), buf, true);
-		// if things are OK..., embed igp.filename
-		igp.filename.setEmbed(file.embedded());
-	} catch (ExceptionMessage const & message) {
-		Alert::error(message.title_, message.details_);
-		// failed to embed
-		igp.filename.setEmbed(false);
-	}
 
 	// the bb section
 	igp.bb.erase();

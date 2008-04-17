@@ -14,7 +14,6 @@
 
 #include "GuiExternal.h"
 
-#include "Buffer.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
 #include "Length.h"
@@ -28,10 +27,7 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "frontends/alert.h"
-
 #include "support/convert.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -112,8 +108,6 @@ GuiExternal::GuiExternal(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(browsePB, SIGNAL(clicked()),
 		this, SLOT(browseClicked()));
-	connect(embedCB, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(editClicked()));
 	connect(externalCO, SIGNAL(activated(QString)),
@@ -554,7 +548,6 @@ void GuiExternal::updateContents()
 	string const name =
 		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
-	embedCB->setCheckState(params_.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	externalCO->setCurrentIndex(getTemplateNumber(params_.templatename()));
 	updateTemplate();
@@ -638,20 +631,6 @@ void GuiExternal::applyView()
 {
 	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilepath()));
 
-	try {
-		Buffer & buf = buffer();
-		EmbeddedFile file(fromqstr(fileED->text()), buf.filePath());
-		file.setEmbed(embedCB->checkState() == Qt::Checked);
-		// move file around if needed, an exception may be raised.
-		file.enable(buf.embedded(), buf, true);
-		// if things are OK..., embed params_.filename
-		params_.filename.setEmbed(file.embedded());
-	} catch (ExceptionMessage const & message) {
-		Alert::error(message.title_, message.details_);
-		// failed to embed
-		params_.filename.setEmbed(false);
-	}
-	
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
 	params_.draft = draftCB->isChecked();
