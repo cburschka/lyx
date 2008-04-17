@@ -224,8 +224,9 @@ protected:
 	BufferId id() const;
 	///
 	struct modInfoStruct {
-		std::string name;
+		QString name;
 		std::string id;
+		QString description;
 	};
 	/// List of available modules
 	std::vector<modInfoStruct> const & getModuleInfo();

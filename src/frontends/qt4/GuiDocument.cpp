@@ -2093,11 +2093,12 @@ void GuiDocument::saveDocDefault()
 void GuiDocument::updateAvailableModules() 
 {
 	modules_av_model_.clear();
-	vector<modInfoStruct> const modInfoList = getModuleInfo();
+	vector<modInfoStruct> const & modInfoList = getModuleInfo();
 	int const mSize = modInfoList.size();
 	for (int i = 0; i != mSize; ++i) {
 		modInfoStruct const & modInfo = modInfoList[i];
-		modules_av_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
+		modules_av_model_.insertRow(i, modInfo.name, modInfo.id, 
+				modInfo.description);
 	}
 }
 
@@ -2110,7 +2111,8 @@ void GuiDocument::updateSelectedModules()
 	int const sSize = selModList.size();
 	for (int i = 0; i != sSize; ++i) {
 		modInfoStruct const & modInfo = selModList[i];
-		modules_sel_model_.insertRow(i, qt_(modInfo.name), modInfo.id);
+		modules_sel_model_.insertRow(i, modInfo.name, modInfo.id,
+				modInfo.description);
 	}
 }
 
@@ -2228,9 +2230,9 @@ vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 		m.id = *it;
 		LyXModule * mod = moduleList[*it];
 		if (mod)
-			m.name = mod->getName();
+			m.name = qt_(mod->getName());
 		else 
-			m.name = *it + " (Not Found)";
+			m.name = toqstr(*it) + toqstr(" (") + qt_("Not Found") + toqstr(")");
 		mInfo.push_back(m);
 	}
 	return mInfo;
@@ -2361,7 +2363,13 @@ void GuiDocument::loadModuleInfo()
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = it->getID();
-		m.name = it->getName();
+		m.name = qt_(it->getName());
+		// this is supposed to give us the first sentence of the description
+		QString desc = qt_(it->getDescription());
+		int const pos = desc.indexOf(".");
+		if (pos > 0)
+			desc.truncate(pos + 1);
+		m.description = desc;
 		moduleNames_.push_back(m);
 	}
 }
