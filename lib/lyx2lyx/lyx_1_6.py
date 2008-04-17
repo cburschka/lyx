@@ -203,13 +203,13 @@ def revert_tablines(document):
             m = find_token(document.body, "<column", m)
             left = 'true'
             for l in range(nrows):
-                left = lines[k*ncols + k][2]
+                left = lines[l*ncols + k][2]
                 if left == 'false':
                     break
             set_option(document, m, 'leftline', left)
             right = 'true'
             for l in range(nrows):
-                right = lines[k*ncols + k][3]
+                right = lines[l*ncols + k][3]
                 if right == 'false':
                     break
             set_option(document, m, 'rightline', right)
