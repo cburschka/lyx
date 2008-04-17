@@ -16,6 +16,8 @@
 
 #include "GuiIdListModel.h"
 
+#include "support/assert.h"
+
 using std::vector;
 
 namespace lyx {
@@ -61,7 +63,10 @@ bool GuiIdListModel::setData (QModelIndex const & index,
 		dataChanged(index, index);
 		return true;
 	}
-	return false;
+	// If we assert here, it's because we're trying to set an
+	// unrecognized role.
+	LASSERT(false, return false);
+	return false; // silence the warning
 }
 
 
