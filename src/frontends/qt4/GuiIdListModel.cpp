@@ -21,13 +21,19 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
+
+// Note: Any role that is added here must also be added to setData().
 QVariant GuiIdListModel::data(QModelIndex const & index, int role) const
 {
 	int const row = index.row();
 	if (!rowIsValid(row))
 		return QVariant();
-	if (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole)
+	if (role == Qt::DisplayRole || role == Qt::EditRole)
 		return userData_[row].uiString;
+	if (role == Qt::ToolTipRole) {
+		QString const ttstr = userData_[row].ttString.toString();
+		return !ttstr.isEmpty() ? ttstr : userData_[row].uiString;
+	}
 	if (role == Qt::UserRole)
 		return userData_[row].idString;
 	return QVariant();
@@ -47,6 +53,11 @@ bool GuiIdListModel::setData (QModelIndex const & index,
 	}
 	if (role == Qt::UserRole) {
 		userData_[row].idString = value;
+		dataChanged(index, index);
+		return true;
+	}
+	if (role == Qt::ToolTipRole) {
+		userData_[row].ttString = value;
 		dataChanged(index, index);
 		return true;
 	}
@@ -87,9 +98,17 @@ bool GuiIdListModel::removeRows(int row, int count,
 void GuiIdListModel::insertRow(int const i, QString const & uiString, 
 		std::string const & idString)
 {
+	insertRow(i, uiString, idString, uiString);
+}
+
+
+void GuiIdListModel::insertRow(int const i, QString const & uiString, 
+	std::string const & idString, QString const & ttString)
+{
 	insertRows(i, 1);
 	setUIString(i, uiString);
 	setIDString(i, idString);
+	setTTString(i, ttString);
 }
 
 
@@ -116,9 +135,8 @@ int GuiIdListModel::findIDString(std::string const & idString)
 
 
 #if 0
-// The following functions are currently unused but are retained here in
-//   case they should at some point be useful.
-   
+// The following function is currently unused but is retained here in
+//   case it should at some point be useful.
 QStringList GuiIdListModel::getIDStringList() const
 {
 	QStringList qsl;
@@ -128,18 +146,7 @@ QStringList GuiIdListModel::getIDStringList() const
 		qsl.append(it->idString.toString());
 	return qsl;
 }
-
-
-void GuiIdListModel::insertRow(int const i, QString const & uiString, 
-		QString const & idString)
-{
-	insertRows(i, 1);
-	setUIString(i, uiString);
-	setIDString(i, idString);
-}
-
 #endif
-
 } // namespace frontend
 } // namespace lyx
 

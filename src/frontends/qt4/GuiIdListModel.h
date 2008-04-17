@@ -65,57 +65,51 @@ public:
 	// New methods
 	//////////////////////////////////////////////////////////////////////
 	///
-	void setUIString(QModelIndex const & index, QString const & value)
-			{ setData(index, value); }
-	///
-	void setUIString(int const i, QString const & value)
-			{ setUIString(index(i), value); }
-	///
-	void setIDString(QModelIndex const & index, QString const & value)
-			{ setData(index, value, Qt::UserRole); }
-	///
-	void setIDString(int const i, std::string const & value)
-			{ setIDString(index(i), toqstr(value)); }
-	///
-	virtual QString getIDString(QModelIndex const & index) const
-			{ return data(index, Qt::UserRole).toString(); }
-	///
-	virtual std::string getIDString(int const i) const
-			{ return fromqstr(getIDString(index(i))); }
-	///
+	void insertRow(int const i, QString const & uiString, 
+			std::string const & idString, QString const & ttString);
+	/// A convenience method, setting ttString to the same as uiString
 	void insertRow(int const i, QString const & uiString, 
 			std::string const & idString);
 	/// \return the index of the (first) item with idString
 	/// \return -1 if not found
 	int findIDString(std::string const & idString);
+	///
+	virtual QString getIDString(QModelIndex const & index) const
+		{ return data(index, Qt::UserRole).toString(); }
+	///
+	virtual std::string getIDString(int const i) const
+		{ return fromqstr(getIDString(index(i))); }
 
-#if 0
-	//The following functions are currently unused but are retained here in
-	//case they should at some point be useful.
-	///
-	void setUIString(int const i, std::string const & value)
-			{ setUIString(index(i), value); }
-	///
-	void setIDString(int const i, QString const & value)
-			{ setIDString(index(i), value); }
-	///
-	QStringList getIDStringList() const;
-	///
-	void insertRow(int const i, QString const & uiString, 
-			QString const & idString);
-	///
-	void insertRow(int const i, std::string const & uiString, 
-			std::string const & idString);
-#endif
 private:
 	/// noncopyable
 	GuiIdListModel(GuiIdListModel const &);
 	///
 	void operator=(GuiIdListModel const &);
 	///
+	void setUIString(QModelIndex const & index, QString const & value)
+		{ setData(index, value); }
+	///
+	void setUIString(int const i, QString const & value)
+		{ setUIString(index(i), value); }
+	///
+	void setIDString(QModelIndex const & index, QString const & value)
+		{ setData(index, value, Qt::UserRole); }
+	///
+	void setIDString(int const i, std::string const & value)
+		{ setIDString(index(i), toqstr(value)); }
+	///
+	void setTTString(QModelIndex const & index, QString const & value)
+		{ setData(index, value, Qt::ToolTipRole); }
+	///
+	void setTTString(int const i, QString const & value)
+		{ setTTString(index(i), value); }
 	struct OurData {
+		/// Qt::DisplayRole and Qt::EditRole
 		QVariant uiString;
+		/// Qt::UserRole
 		QVariant idString;
+		/// Qt::ToolTipRole
+		QVariant ttString;
 	};
 	///
 	std::vector<OurData> userData_;
