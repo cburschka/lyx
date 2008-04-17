@@ -819,7 +819,7 @@ bool Tabular::topAlreadyDrawn(idx_type cell) const
 	if (row == 0)
 		return false;
 	idx_type i = cellIndex(row - 1, cellColumn(cell));
-	return !rowBottomLine(row - 1) && bottomLine(i);
+	return !rowTopLine(row) && bottomLine(i);
 }
 
 
