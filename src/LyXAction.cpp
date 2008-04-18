@@ -325,6 +325,20 @@ void LyXAction::init()
  */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
 		{ LFUN_QUOTE_INSERT, "quote-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INFO_INSERT
+ * \li Action: Displays shortcuts, lyxrc, package and textclass availability and menu
+               information in a non-editable boxed InsetText.
+ * \li Notion: 1. input the type and argument of this inset, e.g. "menu paste", in
+               the work area.\n
+	       2. select the text and run "info-insert".\n
+	       An InsetInfo can have type "shortcut", "lyxrc", "package", "textclass",
+	       "menu", or "buffer". Arguments and outputs vary by type. For detailed
+	       description see file InsetInfo.h.
+ * \li Syntax: info-insert
+ * \li Origin: bpeng, 7 Oct 2007
+ * \endvar
+ */
 		{ LFUN_INFO_INSERT, "info-insert", Noop, Edit },
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
 		{ LFUN_BOX_INSERT, "box-insert", Noop, Edit },
