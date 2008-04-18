@@ -24,14 +24,6 @@
 #include <QHash>
 
 namespace lyx {
-
-namespace external {
-
-class Template;
-class RotationDataType;
-
-} // namespace external
-
 namespace frontend {
 
 class GuiExternal : public GuiDialog, public Ui::ExternalUi
@@ -53,11 +45,10 @@ private Q_SLOTS:
 	void templateChanged();
 	void widthUnitChanged();
 
-public:
+private:
 	///
 	typedef QHash<QString, QString> MapType;
 
-private:
 	///
 	bool activateAspectratio() const;
 	/// Apply changes

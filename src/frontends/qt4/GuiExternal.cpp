@@ -537,17 +537,6 @@ static void getCrop(external::ClipData & data,
 }
 
 
-static void getExtra(external::ExtraData & data,
-	      GuiExternal::MapType const & extra)
-{
-	typedef GuiExternal::MapType MapType;
-	MapType::const_iterator it = extra.begin();
-	MapType::const_iterator const end = extra.end();
-	for (; it != end; ++it)
-		data.set(fromqstr(it.key()), fromqstr(it.value().trimmed()));
-}
-
-
 void GuiExternal::updateContents()
 {
 	tab->setCurrentIndex(0);
@@ -652,8 +641,7 @@ void GuiExternal::applyView()
 	params_.draft = draftCB->isChecked();
 
 	getDisplay(params_.display, params_.lyxscale,
-		   *displayCB, *showCO,
-		   *displayscaleED);
+		*displayCB, *showCO, *displayscaleED);
 
 	if (tab->isTabEnabled(tab->indexOf(rotatetab)))
 		getRotation(params_.rotationdata, *angleED, *originCO);
@@ -666,8 +654,12 @@ void GuiExternal::applyView()
 		getCrop(params_.clipdata, *clipCB, *xlED, *ybED,
 			*xrED, *ytED, bbChanged_);
 
-	if (tab->isTabEnabled(tab->indexOf(optionstab)))
-		getExtra(params_.extradata, extra_);
+	if (tab->isTabEnabled(tab->indexOf(optionstab))) {
+		MapType::const_iterator it = extra_.begin();
+		MapType::const_iterator const end = extra_.end();
+		for (; it != end; ++it)
+			params_.extradata.set(fromqstr(it.key()), fromqstr(it.value().trimmed()));
+	}
 }
 
 
