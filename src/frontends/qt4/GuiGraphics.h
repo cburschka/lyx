@@ -75,20 +75,16 @@ private:
 	/// Browse for a file
 	QString browse(QString const &) const;
 	/// Read the Bounding Box from a eps or ps-file
-	std::string const readBB(std::string const & file);
+	std::string readBoundingBox(std::string const & file);
 	/// Control the bb
 	bool bbChanged;
 	/// test if file exist
-	bool isFilenameValid(std::string const & fname) const;
+	bool isFileNameValid(std::string const & fname) const;
 
 private:
 	///
 	InsetGraphicsParams params_;
 };
-
-
-/// get the units for the bounding box
-std::vector<std::string> const getBBUnits();
 
 } // namespace frontend
 } // namespace lyx

@@ -52,6 +52,31 @@
 using namespace std;
 using namespace lyx::support;
 
+namespace {
+
+// These are the strings that are stored in the LyX file and which
+// correspond to the LaTeX identifiers shown in the comments at the
+// end of each line.
+char const * const rorigin_lyx_strs[] = {
+	// the LaTeX default is leftBaseline
+	"",
+	"leftTop",  "leftBottom", "leftBaseline", // lt lb lB
+	"center", "centerTop", "centerBottom", "centerBaseline", // c ct cb cB
+	"rightTop", "rightBottom", "rightBaseline" }; // rt rb rB
+
+// These are the strings, corresponding to the above, that the GUI should
+// use. Note that they can/should be translated.
+char const * const rorigin_gui_strs[] = {
+	N_("Default"),
+	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
+	N_("Top right"), N_("Bottom right"), N_("Baseline right") };
+
+size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
+
+} // namespace anon
+
+
 namespace lyx {
 namespace frontend {
 
@@ -108,7 +133,22 @@ vector<typename Pair::second_type> getSecond(vector<Pair> const & pr)
 /// The (tranlated) GUI string and it's LaTeX equivalent.
 typedef pair<docstring, string> RotationOriginPair;
 ///
-vector<RotationOriginPair> getRotationOriginData();
+vector<RotationOriginPair> getRotationOriginData()
+{
+	static vector<RotationOriginPair> data;
+	if (!data.empty())
+		return data;
+
+	data.resize(rorigin_size);
+	for (size_type i = 0; i < rorigin_size; ++i) {
+		data[i] = make_pair(_(rorigin_gui_strs[i]),
+				    rorigin_lyx_strs[i]);
+	}
+
+	return data;
+}
+
+
 
 
 GuiGraphics::GuiGraphics(GuiView & lv)
@@ -387,7 +427,7 @@ void GuiGraphics::on_angle_textChanged(const QString & filename)
 }
 
 // returns the number of the string s in the vector v
-static int getItemNo(const vector<string> & v, string const & s)
+static int itemNumber(const vector<string> & v, string const & s)
 {
 	vector<string>::const_iterator cit =
 		    find(v.begin(), v.end(), s);
@@ -397,14 +437,16 @@ static int getItemNo(const vector<string> & v, string const & s)
 
 void GuiGraphics::updateContents()
 {
-	// clear and fill in the comboboxes
-	vector<string> const bb_units = frontend::getBBUnits();
+	static char const * const bb_units[] = { "bp", "cm", "mm", "in" };
+	size_t const bb_size = sizeof(bb_units) / sizeof(bb_units[0]);
+
+	vector<string> const units = vector<string>(bb_units, bb_units + bb_size);
 	lbXunit->clear();
 	lbYunit->clear();
 	rtXunit->clear();
 	rtYunit->clear();
-	for (vector<string>::const_iterator it = bb_units.begin();
-	    it != bb_units.end(); ++it) {
+	for (vector<string>::const_iterator it = units.begin();
+	    it != units.end(); ++it) {
 		lbXunit->addItem(toqstr(*it));
 		lbYunit->addItem(toqstr(*it));
 		rtXunit->addItem(toqstr(*it));
@@ -431,7 +473,7 @@ void GuiGraphics::updateContents()
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
-		string const bb = readBB(igp.filename.absFilename());
+		string const bb = readBoundingBox(igp.filename.absFilename());
 		// the values from the file always have the bigpoint-unit bp
 		lbX->setText(toqstr(token(bb, ' ', 0)));
 		lbY->setText(toqstr(token(bb, ' ', 1)));
@@ -451,29 +493,29 @@ void GuiGraphics::updateContents()
 		string const yr = token(igp.bb, ' ', 3);
 		if (isValidLength(xl, &anyLength)) {
 			lbX->setText(toqstr(convert<string>(anyLength.value())));
-			string const unit(unit_name[anyLength.unit()]);
-			lbXunit->setCurrentIndex(getItemNo(bb_units, unit));
+			string const unit = unit_name[anyLength.unit()];
+			lbXunit->setCurrentIndex(itemNumber(units, unit));
 		} else {
 			lbX->setText(toqstr(xl));
 		}
 		if (isValidLength(yl, &anyLength)) {
 			lbY->setText(toqstr(convert<string>(anyLength.value())));
-			string const unit(unit_name[anyLength.unit()]);
-			lbYunit->setCurrentIndex(getItemNo(bb_units, unit));
+			string const unit = unit_name[anyLength.unit()];
+			lbYunit->setCurrentIndex(itemNumber(units, unit));
 		} else {
 			lbY->setText(toqstr(xl));
 		}
 		if (isValidLength(xr, &anyLength)) {
 			rtX->setText(toqstr(convert<string>(anyLength.value())));
-			string const unit(unit_name[anyLength.unit()]);
-			rtXunit->setCurrentIndex(getItemNo(bb_units, unit));
+			string const unit = unit_name[anyLength.unit()];
+			rtXunit->setCurrentIndex(itemNumber(units, unit));
 		} else {
 			rtX->setText(toqstr(xl));
 		}
 		if (isValidLength(yr, &anyLength)) {
 			rtY->setText(toqstr(convert<string>(anyLength.value())));
-			string const unit(unit_name[anyLength.unit()]);
-			rtYunit->setCurrentIndex(getItemNo(bb_units, unit));
+			string const unit = unit_name[anyLength.unit()];
+			rtYunit->setCurrentIndex(itemNumber(units, unit));
 		} else {
 			rtY->setText(toqstr(xl));
 		}
@@ -551,8 +593,7 @@ void GuiGraphics::updateContents()
 		origin->addItem(toqstr(*it));
 
 	if (!igp.rotateOrigin.empty())
-		origin->setCurrentIndex(
-			getItemNo(origin_ltx, igp.rotateOrigin));
+		origin->setCurrentIndex(itemNumber(origin_ltx, igp.rotateOrigin));
 	else
 		origin->setCurrentIndex(0);
 
@@ -659,7 +700,7 @@ void GuiGraphics::getBB()
 	string const fn = fromqstr(filename->text());
 	if (fn.empty())
 		return;
-	string const bb = readBB(fn);
+	string const bb = readBoundingBox(fn);
 	bbChanged = false;
 	if (bb.empty())
 		return;
@@ -722,7 +763,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 }
 
 
-string const GuiGraphics::readBB(string const & file)
+string GuiGraphics::readBoundingBox(string const & file)
 {
 	FileName const abs_file = makeAbsPath(file, fromqstr(bufferFilepath()));
 
@@ -750,60 +791,10 @@ string const GuiGraphics::readBB(string const & file)
 }
 
 
-bool GuiGraphics::isFilenameValid(string const & fname) const
+bool GuiGraphics::isFileNameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
 	return makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
-}
-
-
-namespace {
-
-char const * const bb_units[] = { "bp", "cm", "mm", "in" };
-size_t const bb_size = sizeof(bb_units) / sizeof(bb_units[0]);
-
-// These are the strings that are stored in the LyX file and which
-// correspond to the LaTeX identifiers shown in the comments at the
-// end of each line.
-char const * const rorigin_lyx_strs[] = {
-	// the LaTeX default is leftBaseline
-	"",
-	"leftTop",  "leftBottom", "leftBaseline", // lt lb lB
-	"center", "centerTop", "centerBottom", "centerBaseline", // c ct cb cB
-	"rightTop", "rightBottom", "rightBaseline" }; // rt rb rB
-
-// These are the strings, corresponding to the above, that the GUI should
-// use. Note that they can/should be translated.
-char const * const rorigin_gui_strs[] = {
-	N_("Default"),
-	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
-	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
-	N_("Top right"), N_("Bottom right"), N_("Baseline right") };
-
-size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
-
-} // namespace anon
-
-
-vector<string> const getBBUnits()
-{
-	return vector<string>(bb_units, bb_units + bb_size);
-}
-
-
-vector<RotationOriginPair> getRotationOriginData()
-{
-	static vector<RotationOriginPair> data;
-	if (!data.empty())
-		return data;
-
-	data.resize(rorigin_size);
-	for (size_type i = 0; i < rorigin_size; ++i) {
-		data[i] = make_pair(_(rorigin_gui_strs[i]),
-				    rorigin_lyx_strs[i]);
-	}
-
-	return data;
 }
 
 

@@ -630,7 +630,6 @@ void GuiExternal::updateTemplate()
 void GuiExternal::applyView()
 {
 	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilepath()));
-
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
 	params_.draft = draftCB->isChecked();
