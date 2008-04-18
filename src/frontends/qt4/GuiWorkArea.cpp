@@ -558,11 +558,11 @@ void GuiWorkArea::updateScrollbar()
 {
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 
+	// Block the scrollbar signal to prevent recursive signal/slot calling.
+	verticalScrollBar()->blockSignals(true);
 	verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	verticalScrollBar()->setPageStep(scroll_.page_step);
 	verticalScrollBar()->setSingleStep(scroll_.single_step);
-	// Block the scrollbar signal to prevent recursive signal/slot calling.
-	verticalScrollBar()->blockSignals(true);
 	verticalScrollBar()->setValue(scroll_.position);
 	verticalScrollBar()->setSliderPosition(scroll_.position);
 	verticalScrollBar()->blockSignals(false);
