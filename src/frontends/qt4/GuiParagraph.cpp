@@ -71,7 +71,7 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	on_synchronizedViewCB_toggled();
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
-	labelWidth->setWhatsThis( qt_(
+	labelWidth->setWhatsThis(qt_(
 		"As described in the User Guide, the width of"
 		" this text determines the width of the label part"
 		" of each item in environments like List and"
@@ -82,18 +82,13 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 		" items is used."
 	));
 
-	radioMap[LYX_ALIGN_LAYOUT] = alignDefaultRB;
-	radioMap[LYX_ALIGN_BLOCK]  = alignJustRB;
-	radioMap[LYX_ALIGN_LEFT]   = alignLeftRB;
-	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
-	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
+	radioMap_[LYX_ALIGN_LAYOUT] = alignDefaultRB;
+	radioMap_[LYX_ALIGN_BLOCK]  = alignJustRB;
+	radioMap_[LYX_ALIGN_LEFT]   = alignLeftRB;
+	radioMap_[LYX_ALIGN_RIGHT]  = alignRightRB;
+	radioMap_[LYX_ALIGN_CENTER] = alignCenterRB;
 
-	labelMap[LYX_ALIGN_BLOCK]  = _("Justified");
-	labelMap[LYX_ALIGN_LEFT]   = _("Left");
-	labelMap[LYX_ALIGN_RIGHT]  = _("Right");
-	labelMap[LYX_ALIGN_CENTER] = _("Center");
-
-	const_cast<QString &>(alignDefaultLabel) = alignDefaultRB->text();
+	alignDefaultLabel_ = alignDefaultRB->text();
 }
 
 
@@ -105,23 +100,31 @@ void GuiParagraph::on_linespacing_activated(int index)
 
 void GuiParagraph::checkAlignmentRadioButtons()
 {
-	RadioMap::iterator it = radioMap.begin();
-	for (; it != radioMap.end(); ++it) {
+	static std::map<LyXAlignment, QString> labelMap_;
+	if (labelMap_.empty()) {
+		labelMap_[LYX_ALIGN_BLOCK]  = qt_("Justified");
+		labelMap_[LYX_ALIGN_LEFT]   = qt_("Left");
+		labelMap_[LYX_ALIGN_RIGHT]  = qt_("Right");
+		labelMap_[LYX_ALIGN_CENTER] = qt_("Center");
+	}
+
+	RadioMap::iterator it = radioMap_.begin();
+	for (; it != radioMap_.end(); ++it) {
 		LyXAlignment const align = it->first;
 		it->second->setEnabled(align & alignPossible());
 	}
 	if (haveMultiParSelection())
-		alignDefaultRB->setText(alignDefaultLabel);
+		alignDefaultRB->setText(alignDefaultLabel_);
 	else
-		alignDefaultRB->setText(alignDefaultLabel + " ("
-			+ toqstr(labelMap[alignDefault()]) + ")");
+		alignDefaultRB->setText(alignDefaultLabel_ + " ("
+			+ labelMap_[alignDefault()] + ")");
 }
 
 
 void GuiParagraph::alignmentToRadioButtons(LyXAlignment align)
 {
-	RadioMap::const_iterator it = radioMap.begin();
-	for (;it != radioMap.end(); ++it) {
+	RadioMap::const_iterator it = radioMap_.begin();
+	for (;it != radioMap_.end(); ++it) {
 		it->second->blockSignals(true);
 		it->second->setChecked(align == it->first);
 		it->second->blockSignals(false);
@@ -132,8 +135,8 @@ void GuiParagraph::alignmentToRadioButtons(LyXAlignment align)
 LyXAlignment GuiParagraph::getAlignmentFromDialog()
 {
 	LyXAlignment alignment = LYX_ALIGN_NONE;
-	RadioMap::const_iterator it = radioMap.begin();
-	for (; it != radioMap.end(); ++it) {
+	RadioMap::const_iterator it = radioMap_.begin();
+	for (; it != radioMap_.end(); ++it) {
 		if (it->second->isChecked()) {
 			alignment = it->first;
 			break;
@@ -271,8 +274,8 @@ void GuiParagraph::enableView(bool enable)
 	restorePB->setEnabled(enable);
 	if (!enable)
 		synchronizedViewCB->setChecked(true);
-	RadioMap::const_iterator it = radioMap.begin();
-	for (; it != radioMap.end(); ++it)
+	RadioMap::const_iterator it = radioMap_.begin();
+	for (; it != radioMap_.end(); ++it)
 		it->second->setEnabled(enable);
 }
 

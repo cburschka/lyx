@@ -22,15 +22,12 @@
 #include "Layout.h"
 #include "ParagraphParameters.h"
 
-#include "support/debug.h"
-
 #include <QDialog>
 #include <QSettings>
 #include <QShowEvent>
 #include <QGridLayout>
 
 #include <map>
-#include <string>
 
 namespace lyx {
 namespace frontend {
@@ -87,13 +84,10 @@ private:
 	///
 	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	///
-	RadioMap radioMap;
+	RadioMap radioMap_;
+
 	///
-	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
-	///
-	AlignmentLabels labelMap;
-	///
-	QString const alignDefaultLabel;
+	QString alignDefaultLabel_;
 	///
 	ParagraphParameters multiparsel_;
 };

@@ -57,8 +57,6 @@ private:
 	void updateTemplate();
 
 	///
-	MapType extra_;
-	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	void clearParams();
@@ -72,7 +70,9 @@ private:
 	///
 	QString browse(QString const & input_file,
 				 QString const & template_name) const;
-private:
+
+	///
+	MapType extra_;
 	///
 	InsetExternalParams params_;
 	///
