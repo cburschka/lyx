@@ -137,10 +137,8 @@ bool operator!=(InsetGraphicsParams const & left,
 void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 {
 	// Do not write the default values
-	if (!filename.empty()) {
+	if (!filename.empty())
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
-		os << "\tembed " << (filename.embedded() ? filename.inzipName() : "\"\"") << '\n';
-	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != graphics::DefaultDisplay)

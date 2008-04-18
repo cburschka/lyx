@@ -117,7 +117,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 327; // Uwe: support for Spanish(Mexico)
+int const LYX_FORMAT = 328;
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

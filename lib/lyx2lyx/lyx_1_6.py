@@ -1532,11 +1532,11 @@ def revert_widesideways(document):
         i = i + 1
 
 
-def revert_external_embedding(document):
-    ' Remove embed tag from external inset '
+def revert_inset_embedding(document, type):
+    ' Remove embed tag from certain type of insets'
     i = 0
     while 1:
-        i = find_token(document.body, "\\begin_inset External", i)
+        i = find_token(document.body, "\\begin_inset %s" % type, i)
         if i == -1:
             return
         j = find_end_of_inset(document.body, i)
@@ -1545,9 +1545,16 @@ def revert_external_embedding(document):
             i = i + 1
             continue
         k = find_token(document.body, "\tembed", i, j)
+        if k == -1:
+            k = find_token(document.body, "embed", i, j)
         if k != -1:
             del document.body[k]
         i = i + 1
+
+
+def revert_external_embedding(document):
+    ' Remove embed tag from external inset '
+    revert_inset_embedding(document, 'External')
 
 
 def convert_subfig(document):
@@ -1987,6 +1994,14 @@ def revert_mexican(document):
         j = j + 1
 
 
+def remove_embedding(document):
+    ' Remove embed tag from all insets'
+    revert_inset_embedding(document, 'Graphics')
+    revert_inset_embedding(document, 'External')
+    revert_inset_embedding(document, 'CommandInset include')
+    revert_inset_embedding(document, 'CommandInset bibtex')
+
+
 ##
 # Conversion hub
 #
@@ -2042,10 +2057,12 @@ convert = [[277, [fix_wrong_tables]],
            [324, [convert_linebreaks]],
            [325, [convert_japanese_plain]],
            [326, []],
-           [327, []]
+           [327, []],
+           [328, [remove_embedding, remove_extra_embedded_files, remove_inzip_options]],
           ]
 
-revert =  [[326, [revert_mexican]],
+revert =  [[327, []],
+           [326, [revert_mexican]],
            [325, [revert_pdfpages]],
            [324, []],
            [323, [revert_linebreaks]],

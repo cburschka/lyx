@@ -845,19 +845,6 @@ void BufferParams::writeFile(ostream & os) const
 		else
 			os << "\\author " << Author() << "\n";
 	}
-
-	vector<string>::const_iterator e_it = extraEmbeddedFiles().begin();
-	vector<string>::const_iterator e_end = extraEmbeddedFiles().end();
-	os << "\\extra_embedded_files \"";
-	bool first = true;
-	for (; e_it != e_end; ++e_it) {
-		if (!first)
-			os << ",";
-		else
-			first = false;
-		os << *e_it;
-	}
-	os << "\"\n";
 }
 
 

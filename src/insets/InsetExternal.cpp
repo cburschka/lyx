@@ -188,10 +188,8 @@ void InsetExternalParams::write(Buffer const & buf, ostream & os) const
 	os << "External\n"
 	   << "\ttemplate " << templatename() << '\n';
 
-	if (!filename.empty()) {
+	if (!filename.empty())
 		os << "\tfilename " << filename.outputFilename(buf.filePath()) << '\n';
-		os << "\tembed " << (filename.embedded() ? filename.inzipName() : "\"\"") << '\n';
-	}
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
 		   << external::displayTranslator().find(display)

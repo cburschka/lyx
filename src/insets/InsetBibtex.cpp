@@ -78,7 +78,6 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 	if (param_info_.empty()) {
 		param_info_.add("btprint", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("bibfiles", ParamInfo::LATEX_REQUIRED);
-		param_info_.add("embed", ParamInfo::LYX_INTERNAL);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
@@ -827,7 +826,6 @@ void InsetBibtex::updateParam()
 			embed += from_utf8(it->inzipName());
 	}
 	setParam("bibfiles", bibfiles);
-	setParam("embed", embed);
 }
 
 
