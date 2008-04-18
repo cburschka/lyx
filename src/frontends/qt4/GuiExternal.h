@@ -23,9 +23,6 @@
 
 #include <QHash>
 
-#include <string>
-#include <vector>
-
 namespace lyx {
 
 namespace external {
@@ -49,8 +46,8 @@ private Q_SLOTS:
 	void browseClicked();
 	void change_adaptor();
 	void editClicked();
-	void extraChanged(const QString&);
-	void formatChanged(const QString&);
+	void extraChanged(const QString &);
+	void formatChanged(const QString &);
 	void getbbClicked();
 	void sizeChanged();
 	void templateChanged();
@@ -86,14 +83,6 @@ private:
 	///
 	void editExternal();
 	///
-	std::vector<std::string> templates() const;
-	///
-	int templateNumber(std::string const &) const;
-	///
-	external::Template getTemplate(int) const;
-	///
-	std::string templateFilters(std::string const & template_name) const;
-	///
 	QString browse(QString const & input_file,
 				 QString const & template_name) const;
 
@@ -103,6 +92,7 @@ private:
 private:
 	///
 	InsetExternalParams params_;
+	///
 	bool bbChanged_;
 };
 

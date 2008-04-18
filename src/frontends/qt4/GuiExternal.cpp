@@ -84,6 +84,16 @@ char const * const origin_gui_strs[] = {
 	N_("Top right"), N_("Bottom right"), N_("Baseline right")
 };
 
+external::Template getTemplate(int i)
+{
+	external::TemplateManager::Templates::const_iterator i1
+		= external::TemplateManager::get().getTemplates().begin();
+	advance(i1, i);
+	return i1->second;
+}
+
+
+
 } // namespace anon
 
 
@@ -197,12 +207,11 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addCheckedLineEdit(ytED, rtLA);
 	bc().addCheckedLineEdit(fileED, fileLA);
 
-	vector<string> t = templates();
-
-	for (vector<string>::const_iterator cit = t.begin();
-		cit != t.end(); ++cit) {
-		externalCO->addItem(qt_(*cit));
-	}
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
+	for (; i1 != i2; ++i1)
+		externalCO->addItem(qt_(i1->second.lyxName));
 
 	// Fill the origins combo
 	for (size_t i = 0; i != all_origins.size(); ++i)
@@ -547,7 +556,18 @@ void GuiExternal::updateContents()
 		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
 
-	externalCO->setCurrentIndex(templateNumber(params_.templatename()));
+	int index = -1;
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
+	for (int i = 0; i1 != i2; ++i1, ++i) {
+		if (i1->second.lyxName == params_.templatename()) {
+			index = i;
+			break;
+		}
+	}
+
+	externalCO->setCurrentIndex(index);
 	updateTemplate();
 
 	draftCB->setChecked(params_.draft);
@@ -703,60 +723,14 @@ void GuiExternal::editExternal()
 }
 
 
-vector<string> GuiExternal::templates() const
-{
-	vector<string> result;
-
-	external::TemplateManager::Templates::const_iterator i1, i2;
-	i1 = external::TemplateManager::get().getTemplates().begin();
-	i2 = external::TemplateManager::get().getTemplates().end();
-
-	for (; i1 != i2; ++i1)
-		result.push_back(i1->second.lyxName);
-
-	return result;
-}
-
-
-int GuiExternal::templateNumber(string const & name) const
-{
-	external::TemplateManager::Templates::const_iterator i1, i2;
-	i1 = external::TemplateManager::get().getTemplates().begin();
-	i2 = external::TemplateManager::get().getTemplates().end();
-	for (int i = 0; i1 != i2; ++i1, ++i) {
-		if (i1->second.lyxName == name)
-			return i;
-	}
-
-	// we can get here if a LyX document has a template not installed
-	// on this machine.
-	return -1;
-}
-
-
-external::Template GuiExternal::getTemplate(int i) const
-{
-	external::TemplateManager::Templates::const_iterator i1
-		= external::TemplateManager::get().getTemplates().begin();
-
-	advance(i1, i);
-
-	return i1->second;
-}
-
-
-string GuiExternal::templateFilters(string const & template_name) const
+static string templateFilters(string const & template_name)
 {
 	/// Determine the template file extension
 	external::TemplateManager const & etm =
 		external::TemplateManager::get();
 	external::Template const * const et_ptr =
 		etm.getTemplateByName(template_name);
-
-	if (et_ptr)
-		return et_ptr->fileRegExp;
-
-	return string();
+	return et_ptr ? et_ptr->fileRegExp : string();
 }
 
 
