@@ -17,8 +17,6 @@
 #include "GuiDialog.h"
 #include "ui_ExternalUi.h"
 
-#include "support/types.h"
-
 #include "insets/InsetExternal.h"
 
 #include <QHash>
@@ -57,8 +55,6 @@ private:
 	void updateContents();
 	/// Helper function called when the template is changed.
 	void updateTemplate();
-	/// get bounding box from file
-	void getBB();
 
 	///
 	MapType extra_;
@@ -76,10 +72,6 @@ private:
 	///
 	QString browse(QString const & input_file,
 				 QString const & template_name) const;
-
-	/// Read the Bounding Box from a eps or ps-file
-	std::string const readBB(std::string const & file);
-	///
 private:
 	///
 	InsetExternalParams params_;

@@ -54,7 +54,7 @@ using namespace external;
 
 namespace {
 
-RotationDataType origins_array[] = {
+RotationDataType origins[] = {
 	RotationData::DEFAULT,
 	RotationData::TOPLEFT,
 	RotationData::BOTTOMLEFT,
@@ -68,12 +68,6 @@ RotationDataType origins_array[] = {
 	RotationData::BASELINERIGHT
 };
 
-
-size_type const origins_array_size =
-sizeof(origins_array) / sizeof(origins_array[0]);
-
-vector<external::RotationDataType> const
-all_origins(origins_array, origins_array + origins_array_size);
 
 // These are the strings, corresponding to the above, that the GUI should
 // use. Note that they can/should be translated.
@@ -91,8 +85,6 @@ external::Template getTemplate(int i)
 	advance(i1, i);
 	return i1->second;
 }
-
-
 
 } // namespace anon
 
@@ -214,7 +206,7 @@ GuiExternal::GuiExternal(GuiView & lv)
 		externalCO->addItem(qt_(i1->second.lyxName));
 
 	// Fill the origins combo
-	for (size_t i = 0; i != all_origins.size(); ++i)
+	for (size_t i = 0; i != sizeof(origins) / sizeof(origins[0]); ++i)
 		originCO->addItem(qt_(origin_gui_strs[i]));
 
 	// Fill the width combo
@@ -298,7 +290,42 @@ void GuiExternal::formatChanged(const QString & format)
 
 void GuiExternal::getbbClicked()
 {
-	getBB();
+	xlED->setText("0");
+	ybED->setText("0");
+	xrED->setText("0");
+	ytED->setText("0");
+
+	string const filename = fromqstr(fileED->text());
+	if (filename.empty())
+		return;
+
+	FileName const abs_file(makeAbsPath(filename, fromqstr(bufferFilepath())));
+
+	// try to get it from the file, if possible
+	string bb = readBB_from_PSFile(abs_file);
+	if (bb.empty()) {
+		// we don't, so ask the Graphics Cache if it has loaded the file
+		int width = 0;
+		int height = 0;
+
+		graphics::Cache & gc = graphics::Cache::get();
+		if (gc.inCache(abs_file)) {
+			graphics::Image const * image = gc.item(abs_file)->image();
+
+			if (image) {
+				width  = image->width();
+				height = image->height();
+			}
+		}
+		bb = "0 0 " + convert<string>(width) + ' ' + convert<string>(height);
+	}
+
+	xlED->setText(toqstr(token(bb, ' ', 0)));
+	ybED->setText(toqstr(token(bb, ' ', 1)));
+	xrED->setText(toqstr(token(bb, ' ', 2)));
+	ytED->setText(toqstr(token(bb, ' ', 3)));
+
+	bbChanged_ = false;
 }
 
 
@@ -382,34 +409,24 @@ static void setDisplay(
 }
 
 
-static void getDisplay(external::DisplayType & display,
-		unsigned int & scale,
-		QCheckBox const & displayCB,
-		QComboBox const & showCO,
-		QLineEdit const & scaleED)
+static external::DisplayType display(QCheckBox const & displayCB,
+	QComboBox const & showCO)
 {
-	switch (showCO.currentIndex()) {
-	case 0:
-		display = external::DefaultDisplay;
-		break;
-	case 1:
-		display = external::MonochromeDisplay;
-		break;
-	case 2:
-		display = external::GrayscaleDisplay;
-		break;
-	case 3:
-		display = external::ColorDisplay;
-		break;
-	case 4:
-		display = external::PreviewDisplay;
-		break;
-	}
-
 	if (!displayCB.isChecked())
-		display = external::NoDisplay;
-
-	scale = scaleED.text().toInt();
+		return external::NoDisplay;
+	switch (showCO.currentIndex()) {
+	default:
+	case 0:
+		return external::DefaultDisplay;
+	case 1:
+		return external::MonochromeDisplay;
+	case 2:
+		return external::GrayscaleDisplay;
+	case 3:
+		return external::ColorDisplay;
+	case 4:
+		return external::PreviewDisplay;
+	}
 }
 
 
@@ -639,9 +656,8 @@ void GuiExternal::applyView()
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
 	params_.draft = draftCB->isChecked();
-
-	getDisplay(params_.display, params_.lyxscale,
-		*displayCB, *showCO, *displayscaleED);
+	params_.lyxscale = displayscaleED->text().toInt();
+	params_.display = display(*displayCB, *showCO);
 
 	if (tab->isTabEnabled(tab->indexOf(rotatetab)))
 		getRotation(params_.rotationdata, *angleED, *originCO);
@@ -660,30 +676,6 @@ void GuiExternal::applyView()
 		for (; it != end; ++it)
 			params_.extradata.set(fromqstr(it.key()), fromqstr(it.value().trimmed()));
 	}
-}
-
-
-void GuiExternal::getBB()
-{
-	xlED->setText("0");
-	ybED->setText("0");
-	xrED->setText("0");
-	ytED->setText("0");
-
-	string const filename = fromqstr(fileED->text());
-	if (filename.empty())
-		return;
-
-	string const bb = readBB(filename);
-	if (bb.empty())
-		return;
-
-	xlED->setText(toqstr(token(bb, ' ', 0)));
-	ybED->setText(toqstr(token(bb, ' ', 1)));
-	xrED->setText(toqstr(token(bb, ' ', 2)));
-	ytED->setText(toqstr(token(bb, ' ', 3)));
-
-	bbChanged_ = false;
 }
 
 
@@ -738,34 +730,6 @@ QString GuiExternal::browse(QString const & input,
 	QString const dir1 = toqstr(lyxrc.document_path);
 
 	return browseRelFile(input, bufpath, title, filter, false, label1, dir1);
-}
-
-
-string const GuiExternal::readBB(string const & file)
-{
-	FileName const abs_file(makeAbsPath(file, fromqstr(bufferFilepath())));
-
-	// try to get it from the file, if possible. Zipped files are
-	// unzipped in the readBB_from_PSFile-Function
-	string const bb = readBB_from_PSFile(abs_file);
-	if (!bb.empty())
-		return bb;
-
-	// we don't, so ask the Graphics Cache if it has loaded the file
-	int width = 0;
-	int height = 0;
-
-	graphics::Cache & gc = graphics::Cache::get();
-	if (gc.inCache(abs_file)) {
-		graphics::Image const * image = gc.item(abs_file)->image();
-
-		if (image) {
-			width  = image->width();
-			height = image->height();
-		}
-	}
-
-	return ("0 0 " + convert<string>(width) + ' ' + convert<string>(height));
 }
 
 
