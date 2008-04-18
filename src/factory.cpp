@@ -210,8 +210,11 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_ENVIRONMENT_INSERT:
 			return new InsetEnvironment(buf, cmd.argument());
 
-		case LFUN_INFO_INSERT:
-			return new InsetInfo(buf, to_utf8(cmd.argument()));
+		case LFUN_INFO_INSERT: {
+			InsetInfo * inset = new InsetInfo(buf, to_utf8(cmd.argument()));
+			inset->updateInfo();
+			return inset;
+		}
 
 		case LFUN_INSET_INSERT: {
 			string const name = cmd.getArg(0);
