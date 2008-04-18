@@ -21,9 +21,10 @@
 
 #include "insets/InsetExternal.h"
 
+#include <QHash>
+
 #include <string>
 #include <vector>
-#include <map>
 
 namespace lyx {
 
@@ -57,7 +58,7 @@ private Q_SLOTS:
 
 public:
 	///
-	typedef std::map<std::string, QString> MapType;
+	typedef QHash<QString, QString> MapType;
 
 private:
 	///
@@ -85,14 +86,13 @@ private:
 	///
 	void editExternal();
 	///
-	std::vector<std::string> const getTemplates() const;
+	std::vector<std::string> templates() const;
 	///
-	int getTemplateNumber(std::string const &) const;
+	int templateNumber(std::string const &) const;
 	///
 	external::Template getTemplate(int) const;
 	///
-	std::string const
-	getTemplateFilters(std::string const & template_name) const;
+	std::string templateFilters(std::string const & template_name) const;
 	///
 	QString browse(QString const & input_file,
 				 QString const & template_name) const;

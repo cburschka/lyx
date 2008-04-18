@@ -197,10 +197,10 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addCheckedLineEdit(ytED, rtLA);
 	bc().addCheckedLineEdit(fileED, fileLA);
 
-	vector<string> templates = getTemplates();
+	vector<string> t = templates();
 
-	for (vector<string>::const_iterator cit = templates.begin();
-		cit != templates.end(); ++cit) {
+	for (vector<string>::const_iterator cit = t.begin();
+		cit != t.end(); ++cit) {
 		externalCO->addItem(qt_(*cit));
 	}
 
@@ -274,18 +274,16 @@ void GuiExternal::editClicked()
 }
 
 
-
-void GuiExternal::extraChanged(const QString& text)
+void GuiExternal::extraChanged(const QString & text)
 {
-	string const format = fromqstr(extraFormatCO->currentText());
-	extra_[format] = text;
+	extra_[extraFormatCO->currentText()] = text;
 	changed();
 }
 
 
-void GuiExternal::formatChanged(const QString& format)
+void GuiExternal::formatChanged(const QString & format)
 {
-	extraED->setText(extra_[fromqstr(format)]);
+	extraED->setText(extra_[format]);
 }
 
 
@@ -537,7 +535,7 @@ static void getExtra(external::ExtraData & data,
 	MapType::const_iterator it = extra.begin();
 	MapType::const_iterator const end = extra.end();
 	for (; it != end; ++it)
-		data.set(it->first, trim(fromqstr(it->second)));
+		data.set(fromqstr(it.key()), fromqstr(it.value().trimmed()));
 }
 
 
@@ -549,7 +547,7 @@ void GuiExternal::updateContents()
 		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
 
-	externalCO->setCurrentIndex(getTemplateNumber(params_.templatename()));
+	externalCO->setCurrentIndex(templateNumber(params_.templatename()));
 	updateTemplate();
 
 	draftCB->setChecked(params_.draft);
@@ -610,19 +608,18 @@ void GuiExternal::updateTemplate()
 		string const format = it->first;
 		string const opt = params_.extradata.get(format);
 		extraFormatCO->addItem(toqstr(format));
-		extra_[format] = toqstr(opt);
+		extra_[toqstr(format)] = toqstr(opt);
 	}
 
 	bool const enabled = extraFormatCO->count()  > 0;
 
-	tab->setTabEnabled(
-		tab->indexOf(optionstab), enabled);
+	tab->setTabEnabled(tab->indexOf(optionstab), enabled);
 	extraED->setEnabled(enabled && !isBufferReadonly());
 	extraFormatCO->setEnabled(enabled);
 
 	if (enabled) {
 		extraFormatCO->setCurrentIndex(0);
-		extraED->setText(extra_[fromqstr(extraFormatCO->currentText())]);
+		extraED->setText(extra_[extraFormatCO->currentText()]);
 	}
 }
 
@@ -706,7 +703,7 @@ void GuiExternal::editExternal()
 }
 
 
-vector<string> const GuiExternal::getTemplates() const
+vector<string> GuiExternal::templates() const
 {
 	vector<string> result;
 
@@ -714,14 +711,14 @@ vector<string> const GuiExternal::getTemplates() const
 	i1 = external::TemplateManager::get().getTemplates().begin();
 	i2 = external::TemplateManager::get().getTemplates().end();
 
-	for (; i1 != i2; ++i1) {
+	for (; i1 != i2; ++i1)
 		result.push_back(i1->second.lyxName);
-	}
+
 	return result;
 }
 
 
-int GuiExternal::getTemplateNumber(string const & name) const
+int GuiExternal::templateNumber(string const & name) const
 {
 	external::TemplateManager::Templates::const_iterator i1, i2;
 	i1 = external::TemplateManager::get().getTemplates().begin();
@@ -748,8 +745,7 @@ external::Template GuiExternal::getTemplate(int i) const
 }
 
 
-string const
-GuiExternal::getTemplateFilters(string const & template_name) const
+string GuiExternal::templateFilters(string const & template_name) const
 {
 	/// Determine the template file extension
 	external::TemplateManager const & etm =
@@ -770,7 +766,7 @@ QString GuiExternal::browse(QString const & input,
 	QString const title = qt_("Select external file");
 	QString const bufpath = bufferFilepath();
 	FileFilterList const filter =
-		FileFilterList(from_utf8(getTemplateFilters(fromqstr(template_name))));
+		FileFilterList(from_utf8(templateFilters(fromqstr(template_name))));
 
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);

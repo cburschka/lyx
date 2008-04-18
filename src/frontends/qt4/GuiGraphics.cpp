@@ -150,7 +150,6 @@ vector<RotationOriginPair> getRotationOriginData()
 
 
 
-
 GuiGraphics::GuiGraphics(GuiView & lv)
 	: GuiDialog(lv, "graphics", qt_("Graphics"))
 {
@@ -753,7 +752,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 	FileName clip(clipdir);
 
 	// bail out to system clipart directory
-	if (!(clip.exists() && clip.isDirectory()))
+	if (!clip.isDirectory())
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 
 	return browseRelFile(in_name, bufferFilepath(),
