@@ -31,6 +31,10 @@ class InsetLabel;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
 
+namespace support {
+	class FileNameList;
+}
+
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {
 public:
@@ -86,10 +90,6 @@ public:
 	void addToToc(ParConstIterator const &) const;
 	///
 	void updateLabels(ParIterator const &);
-	/// child document can be embedded
-	void registerEmbeddedFiles(EmbeddedFileList &) const;
-	///
-	void updateEmbeddedFile(EmbeddedFile const & file);
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

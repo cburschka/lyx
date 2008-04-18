@@ -5,7 +5,6 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Richard Heck (conversion to InsetCommand)
- * \author Bo Peng (embedding stuff)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -48,7 +47,6 @@
 #include "support/assert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -138,17 +136,11 @@ string const parentFilename(Buffer const & buffer)
 }
 
 
-EmbeddedFile const includedFilename(Buffer const & buffer,
+FileName const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
-	// it is not a good idea to create this EmbeddedFile object
-	// each time, but there seems to be no easy way around.
-	EmbeddedFile file(to_utf8(params["filename"]),
-	       onlyPath(parentFilename(buffer)));
-	file.setEmbed(!params["embed"].empty());
-	file.setInzipName(to_utf8(params["embed"]));
-	file.enable(buffer.embedded(), buffer, false);
-	return file;
+	return makeAbsPath(to_utf8(params["filename"]),
+			   onlyPath(parentFilename(buffer)));
 }
 
 InsetLabel * createLabel(docstring const & label_str)
@@ -217,18 +209,6 @@ InsetInclude::~InsetInclude()
 
 void InsetInclude::setBuffer(Buffer & buffer)
 {
-	if (buffer_) {
-		try {
-			EmbeddedFile file_from = includedFilename(*buffer_, params());
-			EmbeddedFile file_to = file_from.copyTo(buffer);
-			if (file_to.embedded())
-				setParam("embed", from_utf8(file_to.inzipName()));
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-			// failed to embed
-			setParam("embed", docstring());
-		}
-	}
 	InsetCommand::setBuffer(buffer);
 	if (label_)
 		label_->setBuffer(buffer);
@@ -244,7 +224,6 @@ ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 	if (param_info_.empty()) {
 		param_info_.add("filename", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("lstparams", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("embed", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -338,8 +317,6 @@ docstring InsetInclude::screenLabel() const
 	else
 		temp += from_utf8(onlyFilename(to_utf8(params()["filename"])));
 
-	if (!params()["embed"].empty())
-		temp += _(" (embedded)");
 	return temp;
 }
 
@@ -409,7 +386,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		return 0;
 
 	FileName const included_file =
-		includedFilename(buffer(), params()).availableFile();
+		includedFilename(buffer(), params());
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
@@ -660,7 +637,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	LASSERT(&buffer() == &features.buffer(), /**/);
 
 	string const included_file =
-		includedFilename(buffer(), params()).availableFile().absFilename();
+		includedFilename(buffer(), params()).absFilename();
 
 	if (isLyXFilename(included_file))
 		writefile = changeExtension(included_file, ".sgml");
@@ -861,7 +838,6 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 
 void InsetInclude::addToToc(ParConstIterator const & cpit) const
 {
-	bool const embedded_status = !params()["embed"].empty();
 	TocBackend & backend = buffer().tocBackend();
 
 	if (isListings(params())) {
@@ -875,30 +851,17 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 		Toc & toc = backend.toc("listing");
 		docstring str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
-		if (embedded_status) {
-			backend.toc("embedded").push_back(TocItem(cpit, 0, str));
-			str += _(" (embedded)");
-		}
 		ParConstIterator pit = cpit;
 		pit.push_back(*this);
 		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}
 	Buffer const * const childbuffer = getChildBuffer(buffer(), params());
-	if (!childbuffer) {
-		if (embedded_status) 
-			// Add it to the embedded list nonetheless.
-			backend.toc("embedded").push_back(TocItem(cpit, 0,
-				params()["filename"]));
+	if (!childbuffer)
 		return;
-	}
 
 	Toc & toc = backend.toc("child");
 	docstring str = childbuffer->fileName().displayName();
-	if (embedded_status) {
-		backend.toc("embedded").push_back(TocItem(cpit, 0, str));
-		str += _(" (embedded)");
-	}
 	toc.push_back(TocItem(cpit, 0, str));
 
 	TocList & toclist = backend.tocs();
@@ -936,19 +899,6 @@ void InsetInclude::updateLabels(ParIterator const & it)
 		counters.step(cnt);
 		listings_label_ += " " + convert<docstring>(counters.value(cnt));
 	}
-}
-
-
-void InsetInclude::registerEmbeddedFiles(EmbeddedFileList & files) const
-{
-	files.registerFile(includedFilename(buffer(), params()), this, buffer());
-}
-
-
-void InsetInclude::updateEmbeddedFile(EmbeddedFile const & file)
-{
-	setParam("filename", from_utf8(file.outputFilename(buffer().filePath())));
-	setParam("embed", file.embedded() ? from_utf8(file.inzipName()) : docstring());
 }
 
 
