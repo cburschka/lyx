@@ -202,7 +202,7 @@ public:
 	/// set the description of the  submenu
 	void submenuname(QString const & name) { submenuname_ = name; }
 	///
-	bool hasSubmenu() const { return submenu_.isEmpty(); }
+	bool hasSubmenu() const { return !submenu_.isEmpty(); }
 	///
 	MenuDefinition const & submenu() const { return submenu_.at(0); }
 	MenuDefinition & submenu() { return submenu_[0]; }

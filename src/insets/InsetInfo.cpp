@@ -208,12 +208,13 @@ void InsetInfo::updateInfo()
 		vector<docstring> names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action == LFUN_UNKNOWN_ACTION) {
-			setText(_("No menu entry for "), bp.getFont(), false);
+			setText(bformat(_("Unknown action %1$s"), from_utf8(name_)), bp.getFont(), false);
 			break;
 		}
 		// iterate through the menubackend to find it
 		if (!theApp()->searchMenu(func, names)) {
-			setText(_("No menu entry for "), bp.getFont(), false);
+			setText(bformat(_("No menu entry for action %1$s"), from_utf8(name_)),
+				bp.getFont(), false);
 			break;
 		}
 		// if find, return its path.
