@@ -243,12 +243,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 
 void WorkArea::resizeBufferView()
 {
-	lyx_view_.busy(true);
-	lyx_view_.message(_("Formatting document..."));
 	buffer_view_->workAreaResize(width(), height());
-	lyx_view_.updateLayoutChoice();
-	lyx_view_.clearMessage();
-	lyx_view_.busy(false);
 }
 
 
