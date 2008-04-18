@@ -307,7 +307,7 @@ string Parser::getFullOpt()
 	Arg arg = getFullArg('[', ']');
 	if (arg.first)
 		return '[' + arg.second + ']';
-	return arg.second;
+	return string();
 }
 
 
@@ -317,13 +317,15 @@ string Parser::getOpt()
 	return res.empty() ? string() : '[' + res + ']';
 }
 
+
 string Parser::getFullParentheseArg()
 {
 	Arg arg = getFullArg('(', ')');
 	if (arg.first)
 		return '(' + arg.second + ')';
-	return arg.second;
+	return string();
 }
+
 
 string const Parser::verbatimEnvironment(string const & name)
 {
