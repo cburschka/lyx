@@ -289,11 +289,11 @@ if(MSVC)
 endif()
 
 # compiler tests, config.h generation
-if(UNIX OR CONFIGURECHECKS)
+if(MSVC AND NOT CONFIGURECHECKS)
+	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
+else()
 	include(ConfigureChecks.cmake)
 	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
-else()
-	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
 endif()
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
