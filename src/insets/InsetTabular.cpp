@@ -677,7 +677,6 @@ void Tabular::appendColumn(idx_type const cell)
 	column_vector::iterator cit = column_info.begin() + c + 1;
 	column_info.insert(cit, ColumnData());
 	row_type const nrows = rowCount();
-	//col_type const ncols = columnCount();
 	// set the column values of the column before
 	column_info[c + 1] = column_info[c];
 
