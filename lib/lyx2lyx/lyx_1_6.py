@@ -378,7 +378,7 @@ def revert_flex(document):
 #  Discard PDF options for hyperref
 def revert_pdf_options(document):
         "Revert PDF options for hyperref."
-        # store the PDF options and delete the entries from the Lyx file	
+        # store the PDF options and delete the entries from the Lyx file
         i = 0
         hyperref = False
         title = ""
@@ -1468,7 +1468,7 @@ def revert_rotfloat(document):
             i = i + 1
             continue
         if get_value(document.body, 'sideways', i, j) != "false":
-            l = find_default_layout(doc, i + 1, j)
+            l = find_default_layout(document, i + 1, j)
             if l == -1:
                 document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                 return
@@ -1607,7 +1607,7 @@ def revert_subfig(document):
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
                 i = i + 1
                 continue
-            m = find_default_layout(document.body, k + 1, l)
+            m = find_default_layout(document, k + 1, l)
             # caption?
             cap = find_token(document.body, '\\begin_inset Caption', k + 1, l)
             caption = ''
@@ -1640,7 +1640,7 @@ def revert_subfig(document):
                     if optend == -1:
                         document.warning("Malformed lyx document: Missing '\\end_inset' (OptArg).")
                         return
-                    optc = find_default_layout(document.body, opt, optend)
+                    optc = find_default_layout(document, opt, optend)
                     if optc == -1:
                         document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
                         return
