@@ -199,7 +199,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-04-16 22:44+0200\n"
-"PO-Revision-Date: 2008-04-16 08:28+0200\n"
+"PO-Revision-Date: 2008-04-18 08:49+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -4706,9 +4706,8 @@ msgstr "Ensemble de Données :"
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
 #: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
-#, fuzzy
 msgid "MainText"
-msgstr "Texte brut"
+msgstr "Corps"
 
 #: lib/layouts/amsbook.layout:90 lib/layouts/amsbook.layout:91
 #: lib/layouts/powerdot.layout:229 lib/layouts/numarticle.inc:10
@@ -5604,7 +5603,7 @@ msgstr "Cas \\arabic{case}"
 #: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:15
 #: lib/layouts/stdtitle.inc:34 lib/layouts/stdtitle.inc:53
 msgid "FrontMatter"
-msgstr "SujetPrincipal"
+msgstr "Préliminaires"
 
 #: lib/layouts/entcs.layout:99 lib/layouts/agu_stdtitle.inc:405
 msgid "Keyword"
@@ -7850,13 +7849,12 @@ msgstr "Appendice \\thechapter"
 #: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
 #: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
 #: lib/layouts/stdstarsections.inc:80
-#, fuzzy
 msgid "Unnumbered"
-msgstr "Numéroté"
+msgstr "NonNuméroté"
 
 #: lib/layouts/stdstruct.inc:43
 msgid "BackMatter"
-msgstr ""
+msgstr "Compléments"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
