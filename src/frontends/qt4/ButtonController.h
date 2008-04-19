@@ -14,26 +14,12 @@
 
 #include "ButtonPolicy.h"
 
-#include <list>
-
 class QWidget;
 class QPushButton;
 class QLineEdit;
 
 namespace lyx {
 namespace frontend {
-
-class CheckedLineEdit
-{
-public:
-	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
-	bool check() const;
-
-private:
-	// non-owned
-	QLineEdit * input_;
-	QWidget * label_;
-};
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.
@@ -55,14 +41,15 @@ class ButtonController
 {
 public:
 	ButtonController();
+	~ButtonController();
 
 	//@{
 	/** Methods to set and get the ButtonPolicy.
 	 *  \param ptr is owned by the ButtonController.
 	 */
 	void setPolicy(ButtonPolicy::Policy policy);
-	ButtonPolicy const & policy() const { return policy_; }
-	ButtonPolicy & policy() { return policy_; }
+	ButtonPolicy const & policy() const;
+	ButtonPolicy & policy();
 	//@}
 
 	///
@@ -92,12 +79,12 @@ public:
 	/** Passthrough function -- returns its input value
 	 *  Tell the BC about the read-only status of the underlying buffer.
 	 */
-	bool setReadOnly(bool = true);
+	bool setReadOnly(bool);
 
 	/** \param validity Tell the BC that the data is, or is not, valid.
 	 *  Sets the activation state of the buttons immediately.
 	 */
-	void setValid(bool = true);
+	void setValid(bool);
 
 	//
 	// View
@@ -106,45 +93,31 @@ public:
 	//@{
 	/** Store pointers to these widgets.
 	 */
-	void setOK(QPushButton * obj) { okay_ = obj; }
-	void setApply(QPushButton * obj) { apply_ = obj; }
-	void setCancel(QPushButton * obj) { cancel_ = obj; }
-	void setRestore(QPushButton * obj) { restore_ = obj; }
+	void setOK(QPushButton * obj);
+	void setApply(QPushButton * obj);
+	void setCancel(QPushButton * obj);
+	void setRestore(QPushButton * obj);
 	//@}
 
 	/** Add a pointer to the list of widgets whose activation
 	 *  state is dependent upon the read-only status of the
 	 *  underlying buffer.
 	 */
-	void addReadOnly(QWidget * obj) { read_only_.push_back(obj); }
+	void addReadOnly(QWidget * obj);
 
 	/** Add a widget to the list of all widgets whose validity should
 	 *  be checked explicitly when the buttons are refreshed.
 	 */
 	void addCheckedLineEdit(QLineEdit * input, QWidget * label = 0);
 
-protected:
-	/// \return true if all CheckedWidgets are in a valid state.
-	bool checkWidgets() const;
-
 private:
-	typedef std::list<CheckedLineEdit> CheckedWidgetList;
-	CheckedWidgetList checked_widgets;
-
-private:
-	/// Updates the widget sensitivity (enabled/disabled)
-	void setWidgetEnabled(QWidget *, bool enabled) const;
-
-	QPushButton * okay_;
-	QPushButton * apply_;
-	QPushButton * cancel_;
-	QPushButton * restore_;
-
-	typedef std::list<QWidget *> Widgets;
-	Widgets read_only_;
-
-private:
-	ButtonPolicy policy_;
+	/// noncopyable
+	ButtonController(ButtonController const &);
+	void operator=(ButtonController const &);
+	
+	/// pimpl
+	class Private;
+	Private * d;
 };
 
 } // namespace frontend

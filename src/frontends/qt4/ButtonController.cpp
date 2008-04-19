@@ -15,24 +15,132 @@
 #include "qt_helpers.h"
 
 #include "support/debug.h"
+#include "support/foreach.h"
 
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QList>
 #include <QValidator>
+
 
 namespace lyx {
 namespace frontend {
 
-ButtonController::ButtonController()
-	: okay_(0), apply_(0), cancel_(0), restore_(0),
-		policy_(ButtonPolicy::IgnorantPolicy)
+static void setWidgetEnabled(QWidget * obj, bool enabled)
+{
+	if (QLineEdit * le = qobject_cast<QLineEdit*>(obj))
+		le->setReadOnly(!enabled);
+	else
+		obj->setEnabled(enabled);
+
+	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+//
+// CheckedLineEdit
+//
+/////////////////////////////////////////////////////////////////////////
+
+class CheckedLineEdit
+{
+public:
+	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
+	bool check() const;
+
+private:
+	// non-owned
+	QLineEdit * input_;
+	QWidget * label_;
+};
+
+
+CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
+	: input_(input), label_(label)
 {}
+
+
+bool CheckedLineEdit::check() const
+{
+	QValidator const * validator = input_->validator();
+	if (!validator)
+		return true;
+
+	QString t = input_->text();
+	int p = 0;
+	bool const valid = validator->validate(t, p) == QValidator::Acceptable;
+
+	// Visual feedback.
+	setValid(input_, valid);
+	if (label_)
+		setValid(label_, valid);
+
+	return valid;
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+//
+// ButtonController::Private
+//
+/////////////////////////////////////////////////////////////////////////
+
+class ButtonController::Private
+{
+public:
+	typedef QList<CheckedLineEdit> CheckedWidgetList;
+
+	Private()
+		: okay_(0), apply_(0), cancel_(0), restore_(0),
+			policy_(ButtonPolicy::IgnorantPolicy)
+	{}
+
+	/// \return true if all CheckedWidgets are in a valid state.
+	bool checkWidgets() const
+	{
+		bool valid = true;
+		foreach (const CheckedLineEdit & w, checked_widgets_) 
+			valid &= w.check();
+		return valid;
+	}
+
+public:
+	CheckedWidgetList checked_widgets_;
+
+	QPushButton * okay_;
+	QPushButton * apply_;
+	QPushButton * cancel_;
+	QPushButton * restore_;
+
+	typedef QList<QWidget *> Widgets;
+	Widgets read_only_;
+
+	ButtonPolicy policy_;
+};
+
+
+/////////////////////////////////////////////////////////////////////////
+//
+// ButtonController
+//
+/////////////////////////////////////////////////////////////////////////
+
+ButtonController::ButtonController()
+	: d(new Private)
+{}
+
+
+ButtonController::~ButtonController()
+{
+	delete d;
+}
 
 
 void ButtonController::setPolicy(ButtonPolicy::Policy policy)
 {
-	policy_.setPolicy(policy);
+	d->policy_.setPolicy(policy);
 }
 
 
@@ -46,7 +154,7 @@ void ButtonController::input(ButtonPolicy::SMInput in)
 {
 	if (ButtonPolicy::SMI_NOOP == in)
 		return;
-	policy_.input(in);
+	d->policy_.input(in);
 	refresh();
 }
 
@@ -85,7 +193,7 @@ bool ButtonController::setReadOnly(bool ro)
 {
 	LYXERR(Debug::GUI, "Setting controller ro: " << ro);
 
-	policy_.input(ro ?
+	d->policy_.input(ro ?
 		ButtonPolicy::SMI_READ_ONLY : ButtonPolicy::SMI_READ_WRITE);
 	// refreshReadOnly(); This will enable all widgets in dialogs, no matter if
 	//                    they allowed to be enabled, so when you plan to
@@ -100,106 +208,89 @@ void ButtonController::refresh() const
 {
 	LYXERR(Debug::GUI, "Calling BC refresh()");
 
-	bool const all_valid = checkWidgets();
+	bool const all_valid = d->checkWidgets();
 
-	if (okay_) {
+	if (d->okay_) {
 		bool const enabled =
 			all_valid && policy().buttonStatus(ButtonPolicy::OKAY);
-		okay_->setEnabled(enabled);
+		d->okay_->setEnabled(enabled);
 	}
-	if (apply_) {
+	if (d->apply_) {
 		bool const enabled =
 			all_valid && policy().buttonStatus(ButtonPolicy::APPLY);
-		apply_->setEnabled(enabled);
+		d->apply_->setEnabled(enabled);
 	}
-	if (restore_) {
+	if (d->restore_) {
 		bool const enabled =
 			all_valid && policy().buttonStatus(ButtonPolicy::RESTORE);
-		restore_->setEnabled(enabled);
+		d->restore_->setEnabled(enabled);
 	}
-	if (cancel_) {
+	if (d->cancel_) {
 		bool const enabled = policy().buttonStatus(ButtonPolicy::CANCEL);
 		if (enabled)
-			cancel_->setText(qt_("Cancel"));
+			d->cancel_->setText(qt_("Cancel"));
 		else
-			cancel_->setText(qt_("Close"));
+			d->cancel_->setText(qt_("Close"));
 	}
 }
 
 
 void ButtonController::refreshReadOnly() const
 {
-	if (read_only_.empty())
+	if (d->read_only_.empty())
 		return;
 
 	bool const enable = !policy().isReadOnly();
-
-	Widgets::const_iterator end = read_only_.end();
-	Widgets::const_iterator iter = read_only_.begin();
-	for (; iter != end; ++iter)
-		setWidgetEnabled(*iter, enable);
-}
-
-
-void ButtonController::setWidgetEnabled(QWidget * obj, bool enabled) const
-{
-	if (QLineEdit * le = qobject_cast<QLineEdit*>(obj))
-		le->setReadOnly(!enabled);
-	else
-		obj->setEnabled(enabled);
-
-	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
+	
+	foreach (QWidget * w, d->read_only_)
+		setWidgetEnabled(w, enable);
 }
 
 
 void ButtonController::addCheckedLineEdit(QLineEdit * input, QWidget * label)
 {
-	checked_widgets.push_back(CheckedLineEdit(input, label));
+	d->checked_widgets_.append(CheckedLineEdit(input, label));
 }
 
 
-bool ButtonController::checkWidgets() const
+void ButtonController::setOK(QPushButton * obj)
 {
-	bool valid = true;
-
-	CheckedWidgetList::const_iterator it  = checked_widgets.begin();
-	CheckedWidgetList::const_iterator end = checked_widgets.end();
-
-	for (; it != end; ++it)
-		valid &= it->check();
-
-	// return valid status after checking ALL widgets
-	return valid;
+	d->okay_ = obj;
 }
 
 
-//////////////////////////////////////////////////////////////
-//
-// CheckedLineEdit
-//
-//////////////////////////////////////////////////////////////
-
-CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
-	: input_(input), label_(label)
-{}
-
-
-bool CheckedLineEdit::check() const
+void ButtonController::setApply(QPushButton * obj)
 {
-	QValidator const * validator = input_->validator();
-	if (!validator)
-		return true;
+	d->apply_ = obj;
+}
 
-	QString t = input_->text();
-	int p = 0;
-	bool const valid = validator->validate(t, p) == QValidator::Acceptable;
 
-	// Visual feedback.
-	setValid(input_, valid);
-	if (label_)
-		setValid(label_, valid);
+void ButtonController::setCancel(QPushButton * obj)
+{
+	d->cancel_ = obj;
+}
 
-	return valid;
+
+void ButtonController::setRestore(QPushButton * obj)
+{
+	d->restore_ = obj;
+}
+
+
+void ButtonController::addReadOnly(QWidget * obj)
+{
+	d->read_only_.push_back(obj);
+}
+
+ButtonPolicy const & ButtonController::policy() const
+{
+	return d->policy_;
+}
+
+
+ButtonPolicy & ButtonController::policy()
+{
+	return d->policy_;
 }
 
 } // namespace frontend
