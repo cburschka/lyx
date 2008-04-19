@@ -12,7 +12,7 @@
 #ifndef PRINTERPARAMS_H
 #define PRINTERPARAMS_H
 
-#include "LyXRC.h"
+#include <string>
 
 
 namespace lyx {
@@ -25,8 +25,12 @@ namespace lyx {
   document with different orientation, papersize or single/duplex state
   than the document's settings. ARRae 20000423
 */
-class PrinterParams {
+class PrinterParams
+{
 public:
+	///
+	PrinterParams();
+
 	///
 	enum Target {
 		///
@@ -34,6 +38,14 @@ public:
 		///
 		FILE
 	};
+
+	/** Test that all the fields contain valid entries.  It's unlikely
+	    that the internal code will get this wrong however new ports
+	    and external scripts might drive the wrong values in.
+	 */
+	void testInvariant() const;
+
+public:
 	///
 	Target target;
 	///
@@ -72,25 +84,6 @@ public:
 	// Override document settings for duplex.
 	// bool duplex;
 
-	/** Test that all the fields contain valid entries.  It's unlikely
-	    that the internal code will get this wrong however new ports
-	    and external scripts might drive the wrong values in.
-	 */
-	void testInvariant() const;
-	///
-	PrinterParams(Target t = PRINTER,
-		      std::string const & pname = lyxrc.printer,
-		      std::string const & fname = std::string(),
-		      bool all = true,
-		      unsigned int from = 1,
-		      unsigned int to = 0,
-		      bool odd = true,
-		      bool even = true,
-		      unsigned int copies = 1,
-		      bool sorted = false,
-		      bool reverse = false);
-	///
-	PrinterParams(PrinterParams const & pp);
 };
 
 

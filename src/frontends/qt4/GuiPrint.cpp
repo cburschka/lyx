@@ -20,11 +20,12 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
+#include "LyXRC.h"
 
 #include "support/convert.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/os.h"
 
 #include <QLineEdit>
@@ -157,22 +158,18 @@ void GuiPrint::updateContents()
 
 void GuiPrint::applyView()
 {
-	PrinterParams::Target t = PrinterParams::PRINTER;
-	if (fileRB->isChecked())
-		t = PrinterParams::FILE;
-
-	params_ = PrinterParams(t,
-		fromqstr(printerED->text()),
-		os::internal_path(fromqstr(fileED->text())),
-		allRB->isChecked(),
-		fromED->text().toUInt(),
-		toED->text().toUInt(),
-		oddCB->isChecked(),
-		evenCB->isChecked(),
-		copiesSB->text().toUInt(),
-		collateCB->isChecked(),
-		reverseCB->isChecked()
-	);
+	params_.target        = fileRB->isChecked()
+		?  PrinterParams::FILE : PrinterParams::PRINTER;
+	params_.printer_name  = fromqstr(printerED->text());
+	params_.file_name     = os::internal_path(fromqstr(fileED->text()));
+	params_.all_pages     = allRB->isChecked();
+	params_.from_page     = fromED->text().toUInt();
+	params_.to_page       = toED->text().toUInt();
+	params_.odd_pages     = oddCB->isChecked();
+	params_.even_pages    = evenCB->isChecked();
+	params_.count_copies  = copiesSB->text().toUInt();
+	params_.sorted_copies = collateCB->isChecked();
+	params_.reverse_order = reverseCB->isChecked();
 }
 
 
@@ -181,7 +178,8 @@ bool GuiPrint::initialiseParams(string const &)
 	/// get global printer parameters
 	string const name = support::changeExtension(buffer().absFileName(),
 					lyxrc.print_file_extension);
-	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
+	params_ = PrinterParams();
+	params_.file_name = name;
 
 	setButtonsValid(true); // so that the user can press Ok
 	return true;
