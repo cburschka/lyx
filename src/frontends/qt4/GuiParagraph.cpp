@@ -64,6 +64,7 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	// foreground and are hidden when the main window is not focused.
 	setWindowFlags(Qt::Tool);
 	synchronizedViewCB->setChecked(true);
+	closePB->setText(qt_("&Cancel"));
 #else
 	synchronizedViewCB->setChecked(false);
 #endif
@@ -151,6 +152,11 @@ void GuiParagraph::on_synchronizedViewCB_toggled()
 	bool in_sync = synchronizedViewCB->isChecked();
 	restorePB->setEnabled(!in_sync);
 	applyPB->setEnabled(!in_sync);
+	okPB->setEnabled(!in_sync);
+	if (!in_sync)
+		closePB->setText(qt_("&Cancel"));
+	else
+		closePB->setText(qt_("&Close"));
 }
 
 
@@ -162,6 +168,31 @@ void GuiParagraph::changed()
 
 
 void GuiParagraph::on_applyPB_clicked()
+{
+	applyView();
+}
+
+
+void GuiParagraph::on_okPB_clicked()
+{
+	applyView();
+	hide();
+}
+
+
+void GuiParagraph::on_closePB_clicked()
+{
+	hide();
+}
+
+
+void GuiParagraph::on_restorePB_clicked()
+{
+	updateView();
+}
+
+
+void GuiParagraph::applyView()
 {
 	ParagraphParameters & pp = params();
 
@@ -198,12 +229,6 @@ void GuiParagraph::on_applyPB_clicked()
 	pp.noindent(!indentCB->isChecked());
 
 	dispatchParams();
-}
-
-
-void GuiParagraph::on_restorePB_clicked()
-{
-	updateView();
 }
 
 

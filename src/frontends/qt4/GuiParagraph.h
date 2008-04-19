@@ -41,6 +41,7 @@ public:
 
 	/// Dialog inherited methods
 	//@{
+	void applyView();
 	void updateView();
 	void dispatchParams();
 	void enableView(bool enable);
@@ -79,6 +80,10 @@ private Q_SLOTS:
 	void on_linespacing_activated(int);
 	/// Apply changes
 	void on_applyPB_clicked();
+	/// Apply changes and close
+	void on_okPB_clicked();
+	/// Close/Cancel dialog
+	void on_closePB_clicked();
 
 private:
 	///
