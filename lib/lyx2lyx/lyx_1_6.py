@@ -70,7 +70,7 @@ def len2value(len):
 
 # Unfortunately, this doesn't really work, since Standard isn't always default.
 # But it's as good as we can do right now.
-def find_default_layout(doc, start, end):
+def find_default_layout(document, start, end):
     l = find_token(document.body, "\\begin_layout Standard", start, end)
     if l == -1:
         l = find_token(document.body, "\\begin_layout PlainLayout", start, end)
