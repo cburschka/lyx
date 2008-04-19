@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-02-24 11:51+0100\n"
+"POT-Creation-Date: 2008-04-19 16:25+0200\n"
 "PO-Revision-Date: 2007-12-17 22:55+1000\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -85,7 +85,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:823
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:770
-#: src/LyXFunc.cpp:967 src/LyXFunc.cpp:1148 src/LyXFunc.cpp:2163
+#: src/LyXFunc.cpp:967 src/LyXFunc.cpp:1148 src/LyXFunc.cpp:2165
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:103 src/buffer_funcs.cpp:129
 #: src/buffer_funcs.cpp:170 src/callback.cpp:116 src/callback.cpp:187
 msgid "&Cancel"
@@ -1366,7 +1366,7 @@ msgstr "&Кодировка"
 msgid "&Quote Style:"
 msgstr "Вид кавычек:"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:255
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:259
 msgid "Listing"
 msgstr "Листинг"
 
@@ -3301,7 +3301,7 @@ msgstr "Теорема #:"
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:217
 #: lib/layouts/amsmaths-plain.inc:50 lib/layouts/amsmaths-seq.inc:171
-#: lib/layouts/amsmaths.inc:112 lib/layouts/svjour.inc:415
+#: lib/layouts/amsmaths.inc:115 lib/layouts/svjour.inc:415
 msgid "Lemma"
 msgstr "Лемма"
 
@@ -3314,7 +3314,7 @@ msgstr "Лемма #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
 #: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:44
-#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:89
+#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:91
 #: lib/layouts/svjour.inc:376
 msgid "Corollary"
 msgstr "Вывод"
@@ -3328,7 +3328,7 @@ msgstr "Вывод"
 #: lib/layouts/foils.layout:263 lib/layouts/ijmpc.layout:267
 #: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:56
-#: lib/layouts/amsmaths-seq.inc:182 lib/layouts/amsmaths.inc:135
+#: lib/layouts/amsmaths-seq.inc:182 lib/layouts/amsmaths.inc:139
 #: lib/layouts/svjour.inc:450
 msgid "Proposition"
 msgstr "Утверждение"
@@ -3340,7 +3340,7 @@ msgstr "Утверждение #:"
 #: lib/layouts/IEEEtran.layout:112 lib/layouts/elsart.layout:367
 #: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:62
-#: lib/layouts/amsmaths-seq.inc:193 lib/layouts/amsmaths.inc:158
+#: lib/layouts/amsmaths-seq.inc:193 lib/layouts/amsmaths.inc:163
 #: lib/layouts/svjour.inc:369
 msgid "Conjecture"
 msgstr "Предположение"
@@ -3352,7 +3352,7 @@ msgstr "Предположение"
 
 #: lib/layouts/IEEEtran.layout:122 lib/layouts/elsart.layout:339
 #: lib/layouts/amsmaths-plain.inc:68 lib/layouts/amsmaths-seq.inc:204
-#: lib/layouts/amsmaths.inc:181
+#: lib/layouts/amsmaths.inc:188
 msgid "Criterion"
 msgstr "Критерий"
 
@@ -3363,7 +3363,7 @@ msgstr "Критерий"
 
 #: lib/layouts/IEEEtran.layout:132 lib/layouts/beamer.layout:959
 #: lib/layouts/amsmaths-plain.inc:80 lib/layouts/amsmaths-seq.inc:226
-#: lib/layouts/amsmaths.inc:226
+#: lib/layouts/amsmaths.inc:235
 msgid "Fact"
 msgstr "Факт"
 
@@ -3373,7 +3373,7 @@ msgid "Fact #:"
 msgstr "Факт"
 
 #: lib/layouts/IEEEtran.layout:142 lib/layouts/amsmaths-plain.inc:86
-#: lib/layouts/amsmaths-seq.inc:237 lib/layouts/amsmaths.inc:249
+#: lib/layouts/amsmaths-seq.inc:237 lib/layouts/amsmaths.inc:259
 msgid "Axiom"
 msgstr "Аксиома"
 
@@ -3387,7 +3387,7 @@ msgstr "Аксиома"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
 #: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:92
-#: lib/layouts/amsmaths-seq.inc:248 lib/layouts/amsmaths.inc:272
+#: lib/layouts/amsmaths-seq.inc:248 lib/layouts/amsmaths.inc:283
 #: lib/layouts/svjour.inc:390
 msgid "Definition"
 msgstr "Определение"
@@ -3401,7 +3401,7 @@ msgstr "Определение"
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:98 lib/layouts/amsmaths-seq.inc:259
-#: lib/layouts/amsmaths.inc:303 lib/layouts/svjour.inc:397
+#: lib/layouts/amsmaths.inc:315 lib/layouts/svjour.inc:397
 #: src/frontends/qt4/QDocument.cpp:491
 msgid "Example"
 msgstr "Пример"
@@ -3412,7 +3412,7 @@ msgid "Example #:"
 msgstr "Пример"
 
 #: lib/layouts/IEEEtran.layout:172 lib/layouts/amsmaths-plain.inc:104
-#: lib/layouts/amsmaths-seq.inc:270 lib/layouts/amsmaths.inc:325
+#: lib/layouts/amsmaths-seq.inc:270 lib/layouts/amsmaths.inc:339
 msgid "Condition"
 msgstr "Условие"
 
@@ -3423,7 +3423,7 @@ msgstr "Условие"
 
 #: lib/layouts/IEEEtran.layout:182 lib/layouts/elsart.layout:381
 #: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:110
-#: lib/layouts/amsmaths-seq.inc:281 lib/layouts/amsmaths.inc:347
+#: lib/layouts/amsmaths-seq.inc:281 lib/layouts/amsmaths.inc:363
 #: lib/layouts/svjour.inc:429
 msgid "Problem"
 msgstr "Проблема"
@@ -3435,7 +3435,7 @@ msgstr "Проблема"
 
 #: lib/layouts/IEEEtran.layout:192 lib/layouts/llncs.layout:347
 #: lib/layouts/amsmaths-plain.inc:116 lib/layouts/amsmaths-seq.inc:292
-#: lib/layouts/amsmaths.inc:369 lib/layouts/svjour.inc:404
+#: lib/layouts/amsmaths.inc:387 lib/layouts/svjour.inc:404
 msgid "Exercise"
 msgstr "Упражнение"
 
@@ -3447,7 +3447,7 @@ msgstr "Упражнение"
 #: lib/layouts/IEEEtran.layout:202 lib/layouts/elsart.layout:388
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
 #: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:122
-#: lib/layouts/amsmaths-seq.inc:303 lib/layouts/amsmaths.inc:391
+#: lib/layouts/amsmaths-seq.inc:303 lib/layouts/amsmaths.inc:411
 #: lib/layouts/svjour.inc:464
 msgid "Remark"
 msgstr "Пометка"
@@ -3461,7 +3461,7 @@ msgstr "Пометка"
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
 #: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
 #: lib/layouts/amsmaths-plain.inc:128 lib/layouts/amsmaths-seq.inc:314
-#: lib/layouts/amsmaths.inc:423 lib/layouts/svjour.inc:348
+#: lib/layouts/amsmaths.inc:444 lib/layouts/svjour.inc:348
 msgid "Claim"
 msgstr "Утверждение"
 
@@ -3474,7 +3474,7 @@ msgstr "Утверждение"
 #: lib/layouts/elsart.layout:395 lib/layouts/iopart.layout:91
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:198
 #: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:134
-#: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:445
+#: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:468
 #: lib/layouts/svjour.inc:422
 msgid "Note"
 msgstr "Заметка"
@@ -3486,7 +3486,7 @@ msgstr "Заметка"
 
 #: lib/layouts/IEEEtran.layout:232 lib/layouts/ijmpc.layout:195
 #: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:140
-#: lib/layouts/amsmaths-seq.inc:336 lib/layouts/amsmaths.inc:467
+#: lib/layouts/amsmaths-seq.inc:336 lib/layouts/amsmaths.inc:492
 msgid "Notation"
 msgstr "Нотация"
 
@@ -3496,11 +3496,11 @@ msgid "Notation #:"
 msgstr "Нотация"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/elsart.layout:417
-#: lib/layouts/llncs.layout:284 lib/layouts/amsmaths.inc:579
+#: lib/layouts/llncs.layout:284 lib/layouts/amsmaths.inc:613
 msgid "Case"
 msgstr "Вариант"
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:584
+#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
 msgid "Case #:"
 msgstr "Вариант #:"
 
@@ -3815,7 +3815,7 @@ msgstr "Дата"
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:538
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
 #: lib/layouts/amsmaths-plain.inc:152 lib/layouts/amsmaths-seq.inc:358
-#: lib/layouts/amsmaths.inc:511 lib/layouts/svjour.inc:319
+#: lib/layouts/amsmaths.inc:540 lib/layouts/svjour.inc:319
 msgid "Acknowledgement"
 msgstr "Благодарность"
 
@@ -4152,6 +4152,11 @@ msgstr "Часть"
 msgid "Part*"
 msgstr "Часть*"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr ""
+
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
@@ -4173,10 +4178,6 @@ msgstr "Подраздел \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:213
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr ""
-
-#: lib/layouts/beamer.layout:227
-msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:245
@@ -4320,13 +4321,13 @@ msgstr "Изображение"
 
 #: lib/layouts/beamer.layout:912 lib/layouts/foils.layout:315
 #: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:46
-#: lib/layouts/amsmaths.inc:104
+#: lib/layouts/amsmaths.inc:107
 msgid "Corollary."
 msgstr "Вывод."
 
 #: lib/layouts/beamer.layout:932 lib/layouts/foils.layout:329
 #: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:94
-#: lib/layouts/amsmaths.inc:295
+#: lib/layouts/amsmaths.inc:307
 msgid "Definition."
 msgstr "Определение."
 
@@ -4339,7 +4340,7 @@ msgid "Definitions."
 msgstr "Определения."
 
 #: lib/layouts/beamer.layout:944 lib/layouts/amsmaths-plain.inc:100
-#: lib/layouts/amsmaths.inc:317
+#: lib/layouts/amsmaths.inc:331
 msgid "Example."
 msgstr "Пример."
 
@@ -4352,7 +4353,7 @@ msgid "Examples."
 msgstr "Примеры."
 
 #: lib/layouts/beamer.layout:962 lib/layouts/amsmaths-plain.inc:82
-#: lib/layouts/amsmaths.inc:241
+#: lib/layouts/amsmaths.inc:251
 msgid "Fact."
 msgstr "Факт."
 
@@ -4365,7 +4366,7 @@ msgstr "Доказательство."
 
 #: lib/layouts/beamer.layout:974 lib/layouts/foils.layout:301
 #: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:40
-#: lib/layouts/amsmaths.inc:81
+#: lib/layouts/amsmaths.inc:83
 msgid "Theorem."
 msgstr "Теорема."
 
@@ -4795,7 +4796,7 @@ msgid "Abstract."
 msgstr "Аннотация."
 
 #: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:154
-#: lib/layouts/amsmaths.inc:525 lib/layouts/svjour.inc:322
+#: lib/layouts/amsmaths.inc:556 lib/layouts/svjour.inc:322
 #, fuzzy
 msgid "Acknowledgement."
 msgstr "Благодарность"
@@ -4859,7 +4860,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:398
 #: lib/layouts/amsmaths-plain.inc:74 lib/layouts/amsmaths-seq.inc:215
-#: lib/layouts/amsmaths.inc:203 lib/layouts/stdfloats.inc:34
+#: lib/layouts/amsmaths.inc:211 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "Алгоритм"
 
@@ -4896,7 +4897,7 @@ msgid "Claim \\arabic{theorem}"
 msgstr ""
 
 #: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:146
-#: lib/layouts/amsmaths-seq.inc:347 lib/layouts/amsmaths.inc:489
+#: lib/layouts/amsmaths-seq.inc:347 lib/layouts/amsmaths.inc:516
 msgid "Summary"
 msgstr "Сводка"
 
@@ -5119,37 +5120,37 @@ msgid "Definition #."
 msgstr "Определение #."
 
 #: lib/layouts/foils.layout:298 lib/layouts/siamltex.layout:267
-#: lib/layouts/amsmaths.inc:77
+#: lib/layouts/amsmaths.inc:78
 msgid "Theorem*"
 msgstr "Теорема*"
 
 #: lib/layouts/foils.layout:305 lib/layouts/siamltex.layout:274
-#: lib/layouts/amsmaths.inc:124
+#: lib/layouts/amsmaths.inc:127
 msgid "Lemma*"
 msgstr "Лемма*"
 
 #: lib/layouts/foils.layout:308 lib/layouts/siamltex.layout:277
-#: lib/layouts/amsmaths-plain.inc:52 lib/layouts/amsmaths.inc:127
+#: lib/layouts/amsmaths-plain.inc:52 lib/layouts/amsmaths.inc:131
 msgid "Lemma."
 msgstr "Лемма."
 
 #: lib/layouts/foils.layout:312 lib/layouts/siamltex.layout:281
-#: lib/layouts/amsmaths.inc:101
+#: lib/layouts/amsmaths.inc:103
 msgid "Corollary*"
 msgstr "Вывод*"
 
 #: lib/layouts/foils.layout:319 lib/layouts/siamltex.layout:288
-#: lib/layouts/amsmaths.inc:147
+#: lib/layouts/amsmaths.inc:151
 msgid "Proposition*"
 msgstr "Утверждение*"
 
 #: lib/layouts/foils.layout:322 lib/layouts/siamltex.layout:291
-#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths.inc:150
+#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths.inc:155
 msgid "Proposition."
 msgstr "Утверждение."
 
 #: lib/layouts/foils.layout:326 lib/layouts/siamltex.layout:294
-#: lib/layouts/amsmaths.inc:291
+#: lib/layouts/amsmaths.inc:302
 msgid "Definition*"
 msgstr "Определение*"
 
@@ -6204,7 +6205,7 @@ msgid "Case #."
 msgstr "Вариант"
 
 #: lib/layouts/llncs.layout:308 lib/layouts/amsmaths-plain.inc:130
-#: lib/layouts/amsmaths.inc:437 lib/layouts/svjour.inc:362
+#: lib/layouts/amsmaths.inc:460 lib/layouts/svjour.inc:362
 #, fuzzy
 msgid "Claim."
 msgstr "Утверждение"
@@ -7113,66 +7114,66 @@ msgstr "Subjectclass"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "обновлённых спецификаций классов документов."
 
-#: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:173
+#: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:180
 msgid "Conjecture."
 msgstr "Предположение."
 
-#: lib/layouts/amsmaths-plain.inc:70 lib/layouts/amsmaths.inc:195
+#: lib/layouts/amsmaths-plain.inc:70 lib/layouts/amsmaths.inc:203
 msgid "Criterion."
 msgstr "Критерий."
 
-#: lib/layouts/amsmaths-plain.inc:76 lib/layouts/amsmaths.inc:218
+#: lib/layouts/amsmaths-plain.inc:76 lib/layouts/amsmaths.inc:227
 msgid "Algorithm."
 msgstr "Алгоритм."
 
-#: lib/layouts/amsmaths-plain.inc:88 lib/layouts/amsmaths.inc:264
+#: lib/layouts/amsmaths-plain.inc:88 lib/layouts/amsmaths.inc:275
 msgid "Axiom."
 msgstr "Аксиома."
 
-#: lib/layouts/amsmaths-plain.inc:106 lib/layouts/amsmaths.inc:339
+#: lib/layouts/amsmaths-plain.inc:106 lib/layouts/amsmaths.inc:355
 msgid "Condition."
 msgstr "Условие."
 
-#: lib/layouts/amsmaths-plain.inc:112 lib/layouts/amsmaths.inc:361
+#: lib/layouts/amsmaths-plain.inc:112 lib/layouts/amsmaths.inc:379
 msgid "Problem."
 msgstr "Задача."
 
-#: lib/layouts/amsmaths-plain.inc:118 lib/layouts/amsmaths.inc:383
+#: lib/layouts/amsmaths-plain.inc:118 lib/layouts/amsmaths.inc:403
 msgid "Exercise."
 msgstr "Упражнение."
 
-#: lib/layouts/amsmaths-plain.inc:124 lib/layouts/amsmaths.inc:415
+#: lib/layouts/amsmaths-plain.inc:124 lib/layouts/amsmaths.inc:436
 msgid "Remark."
 msgstr "Пометка."
 
-#: lib/layouts/amsmaths-plain.inc:136 lib/layouts/amsmaths.inc:459
+#: lib/layouts/amsmaths-plain.inc:136 lib/layouts/amsmaths.inc:484
 msgid "Note."
 msgstr "Заметка."
 
-#: lib/layouts/amsmaths-plain.inc:142 lib/layouts/amsmaths.inc:481
+#: lib/layouts/amsmaths-plain.inc:142 lib/layouts/amsmaths.inc:508
 msgid "Notation."
 msgstr "Примечание."
 
-#: lib/layouts/amsmaths-plain.inc:148 lib/layouts/amsmaths.inc:503
+#: lib/layouts/amsmaths-plain.inc:148 lib/layouts/amsmaths.inc:532
 msgid "Summary."
 msgstr "Резюме."
 
 #: lib/layouts/amsmaths-plain.inc:158 lib/layouts/amsmaths-seq.inc:369
-#: lib/layouts/amsmaths.inc:533
+#: lib/layouts/amsmaths.inc:564
 msgid "Conclusion"
 msgstr "Заключение"
 
-#: lib/layouts/amsmaths-plain.inc:160 lib/layouts/amsmaths.inc:547
+#: lib/layouts/amsmaths-plain.inc:160 lib/layouts/amsmaths.inc:580
 msgid "Conclusion."
 msgstr "Заключение."
 
 #: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:380
-#: lib/layouts/amsmaths.inc:555
+#: lib/layouts/amsmaths.inc:588
 #, fuzzy
 msgid "Assumption"
 msgstr "Допущение."
 
-#: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:570
+#: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:604
 msgid "Assumption."
 msgstr "Допущение."
 
@@ -7228,176 +7229,176 @@ msgstr ""
 msgid "Assumption \\arabic{assumption}."
 msgstr "Допущение \\thetheorem."
 
-#: lib/layouts/amsmaths.inc:93
+#: lib/layouts/amsmaths.inc:95
 #, fuzzy
 msgid "Corollary @Section@.\\arabic{theorem}."
 msgstr "Вывод"
 
-#: lib/layouts/amsmaths.inc:116
+#: lib/layouts/amsmaths.inc:119
 #, fuzzy
 msgid "Lemma @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:139
+#: lib/layouts/amsmaths.inc:143
 #, fuzzy
 msgid "Proposition @Section@.\\arabic{theorem}."
 msgstr "Утверждение"
 
-#: lib/layouts/amsmaths.inc:162
+#: lib/layouts/amsmaths.inc:168
 #, fuzzy
 msgid "Conjecture @Section@.\\arabic{theorem}."
 msgstr "Предположение"
 
-#: lib/layouts/amsmaths.inc:170
+#: lib/layouts/amsmaths.inc:176
 msgid "Conjecture*"
 msgstr "Предположение*"
 
-#: lib/layouts/amsmaths.inc:185
+#: lib/layouts/amsmaths.inc:192
 #, fuzzy
 msgid "Criterion @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:192
+#: lib/layouts/amsmaths.inc:199
 msgid "Criterion*"
 msgstr "Критерий*"
 
-#: lib/layouts/amsmaths.inc:207
+#: lib/layouts/amsmaths.inc:215
 #, fuzzy
 msgid "Algorithm @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:215
+#: lib/layouts/amsmaths.inc:223
 msgid "Algorithm*"
 msgstr "Алгоритм*"
 
-#: lib/layouts/amsmaths.inc:230
+#: lib/layouts/amsmaths.inc:239
 #, fuzzy
 msgid "Fact @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:238
+#: lib/layouts/amsmaths.inc:247
 msgid "Fact*"
 msgstr "Факт*"
 
-#: lib/layouts/amsmaths.inc:253
+#: lib/layouts/amsmaths.inc:263
 #, fuzzy
 msgid "Axiom @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:261
+#: lib/layouts/amsmaths.inc:271
 msgid "Axiom*"
 msgstr "Аксиома*"
 
-#: lib/layouts/amsmaths.inc:276
+#: lib/layouts/amsmaths.inc:287
 #, fuzzy
 msgid "Definition @Section@.\\arabic{theorem}."
 msgstr "Определение"
 
-#: lib/layouts/amsmaths.inc:306
+#: lib/layouts/amsmaths.inc:319
 #, fuzzy
 msgid "Example @Section@.\\arabic{theorem}."
 msgstr "Пример"
 
-#: lib/layouts/amsmaths.inc:314
+#: lib/layouts/amsmaths.inc:327
 msgid "Example*"
 msgstr "Пример*"
 
-#: lib/layouts/amsmaths.inc:328
+#: lib/layouts/amsmaths.inc:343
 #, fuzzy
 msgid "Condition @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:336
+#: lib/layouts/amsmaths.inc:351
 msgid "Condition*"
 msgstr "Условие*"
 
-#: lib/layouts/amsmaths.inc:350
+#: lib/layouts/amsmaths.inc:367
 #, fuzzy
 msgid "Problem @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:358
+#: lib/layouts/amsmaths.inc:375
 msgid "Problem*"
 msgstr "задача*"
 
-#: lib/layouts/amsmaths.inc:372
+#: lib/layouts/amsmaths.inc:391
 #, fuzzy
 msgid "Exercise @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:380
+#: lib/layouts/amsmaths.inc:399
 msgid "Exercise*"
 msgstr "Упражнение*"
 
-#: lib/layouts/amsmaths.inc:395
+#: lib/layouts/amsmaths.inc:415
 #, fuzzy
 msgid "Remark @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:411
+#: lib/layouts/amsmaths.inc:431
 msgid "Remark*"
 msgstr "Пометка*"
 
-#: lib/layouts/amsmaths.inc:426
+#: lib/layouts/amsmaths.inc:448
 #, fuzzy
 msgid "Claim @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:434
+#: lib/layouts/amsmaths.inc:456
 msgid "Claim*"
 msgstr "Утверждение*"
 
-#: lib/layouts/amsmaths.inc:448
+#: lib/layouts/amsmaths.inc:472
 #, fuzzy
 msgid "Note @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:456
+#: lib/layouts/amsmaths.inc:480
 msgid "Note*"
 msgstr "Заметка*"
 
-#: lib/layouts/amsmaths.inc:470
+#: lib/layouts/amsmaths.inc:496
 #, fuzzy
 msgid "Notation @Section@.\\arabic{theorem}."
 msgstr "Раздел \\arabic{section}"
 
-#: lib/layouts/amsmaths.inc:478
+#: lib/layouts/amsmaths.inc:504
 msgid "Notation*"
 msgstr "Примечание*"
 
-#: lib/layouts/amsmaths.inc:492
+#: lib/layouts/amsmaths.inc:520
 #, fuzzy
 msgid "Summary @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:500
+#: lib/layouts/amsmaths.inc:528
 msgid "Summary*"
 msgstr "Резюме*"
 
-#: lib/layouts/amsmaths.inc:514
+#: lib/layouts/amsmaths.inc:544
 #, fuzzy
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:522
+#: lib/layouts/amsmaths.inc:552
 msgid "Acknowledgement*"
 msgstr "Благодарность*"
 
-#: lib/layouts/amsmaths.inc:536
+#: lib/layouts/amsmaths.inc:568
 #, fuzzy
 msgid "Conclusion @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:544
+#: lib/layouts/amsmaths.inc:576
 msgid "Conclusion*"
 msgstr "Заключение*"
 
-#: lib/layouts/amsmaths.inc:559
+#: lib/layouts/amsmaths.inc:592
 #, fuzzy
 msgid "Assumption @Section@.\\arabic{theorem}."
 msgstr "Теорема \\arabic{theorem}."
 
-#: lib/layouts/amsmaths.inc:567
+#: lib/layouts/amsmaths.inc:600
 msgid "Assumption*"
 msgstr "Допущение*"
 
@@ -8749,18 +8750,18 @@ msgstr "Закрыть окно|ы"
 msgid "Redo|R"
 msgstr "Повторить|П"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:860
-#: src/mathed/InsetMathNest.cpp:469
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: src/mathed/InsetMathNest.cpp:533
 msgid "Cut"
 msgstr "Вырезать"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:865
-#: src/mathed/InsetMathNest.cpp:477
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: src/mathed/InsetMathNest.cpp:541
 msgid "Copy"
 msgstr "Запомнить"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:842
-#: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:513
 msgid "Paste"
 msgstr "Вставить"
 
@@ -8893,17 +8894,9 @@ msgstr "Линия справа|п"
 msgid "Copy Row|o"
 msgstr "Скопировать строку"
 
-#: lib/ui/stdmenus.inc:175
-msgid "Swap Rows|S"
-msgstr "Поменять местами строки"
-
 #: lib/ui/stdmenus.inc:179
 msgid "Copy Column|p"
 msgstr "Скопировать столбец"
-
-#: lib/ui/stdmenus.inc:180
-msgid "Swap Columns|w"
-msgstr "Поменять местами столбцы"
 
 #: lib/ui/stdmenus.inc:184
 #, fuzzy
@@ -12126,7 +12119,7 @@ msgid "Overwrite modified file?"
 msgstr "Перезаписать изменённый файл?"
 
 #: src/Buffer.cpp:823 src/Exporter.cpp:88 src/LyXFunc.cpp:1148
-#: src/LyXFunc.cpp:2163 src/callback.cpp:187
+#: src/LyXFunc.cpp:2165 src/callback.cpp:187
 msgid "&Overwrite"
 msgstr "&Перезаписать"
 
@@ -12320,7 +12313,7 @@ msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
 #: src/BufferView.cpp:1604 src/LyXFunc.cpp:1998 src/LyXFunc.cpp:2037
-#: src/LyXFunc.cpp:2114 src/callback.cpp:149
+#: src/LyXFunc.cpp:2116 src/callback.cpp:149
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12329,7 +12322,7 @@ msgstr "Выберите документ LyX для вставки"
 msgid "Documents|#o#O"
 msgstr "Документы|#o#O"
 
-#: src/BufferView.cpp:1605 src/LyXFunc.cpp:2038 src/LyXFunc.cpp:2115
+#: src/BufferView.cpp:1605 src/LyXFunc.cpp:2038 src/LyXFunc.cpp:2117
 msgid "Examples|#E#e"
 msgstr "Примеры|#E#e"
 
@@ -12338,8 +12331,8 @@ msgstr "Примеры|#E#e"
 msgid "LyX Documents (*.lyx)"
 msgstr "Документы LyX (*.lyx)"
 
-#: src/BufferView.cpp:1623 src/LyXFunc.cpp:2052 src/LyXFunc.cpp:2136
-#: src/LyXFunc.cpp:2150 src/LyXFunc.cpp:2166
+#: src/BufferView.cpp:1623 src/LyXFunc.cpp:2052 src/LyXFunc.cpp:2138
+#: src/LyXFunc.cpp:2152 src/LyXFunc.cpp:2168
 msgid "Canceled."
 msgstr "Отменено."
 
@@ -12676,7 +12669,7 @@ msgstr "Вывод пуст"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:430
+#: src/CutAndPaste.cpp:449
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12689,12 +12682,12 @@ msgstr ""
 "из-за преобразования класса из\n"
 "%3$s в %4$s"
 
-#: src/CutAndPaste.cpp:435
+#: src/CutAndPaste.cpp:454
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Стиль символов"
 
-#: src/CutAndPaste.cpp:454
+#: src/CutAndPaste.cpp:473
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -12705,7 +12698,7 @@ msgstr ""
 "из-за преобразования класса из\n"
 "%3$s в %4$s"
 
-#: src/CutAndPaste.cpp:461
+#: src/CutAndPaste.cpp:480
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Расширенная таблица символов"
@@ -13281,7 +13274,7 @@ msgstr "Вернуться к сохранённому"
 msgid "Exiting."
 msgstr "Выхожу."
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1363
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1372
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
@@ -13344,27 +13337,27 @@ msgstr "Шаблоны"
 msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
-#: src/LyXFunc.cpp:2078
+#: src/LyXFunc.cpp:2080
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Открывается документ %1$s..."
 
-#: src/LyXFunc.cpp:2082
+#: src/LyXFunc.cpp:2084
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Документ %1$s открыт."
 
-#: src/LyXFunc.cpp:2084
+#: src/LyXFunc.cpp:2086
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Невозможно открыть документ %1$s"
 
-#: src/LyXFunc.cpp:2109
+#: src/LyXFunc.cpp:2111
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Выбрать %1$s файл для импорта"
 
-#: src/LyXFunc.cpp:2160 src/callback.cpp:182
+#: src/LyXFunc.cpp:2162 src/callback.cpp:182
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13375,11 +13368,11 @@ msgstr ""
 "\n"
 "Хотите перезаписать его?"
 
-#: src/LyXFunc.cpp:2162 src/callback.cpp:186
+#: src/LyXFunc.cpp:2164 src/callback.cpp:186
 msgid "Overwrite document?"
 msgstr "Перезаписать документ?"
 
-#: src/LyXFunc.cpp:2225
+#: src/LyXFunc.cpp:2227
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
@@ -14103,27 +14096,27 @@ msgstr "Нечего индексировать!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Нельзя индексировать более чем один абзац!"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1350
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1373
 msgid "Math editor mode"
 msgstr "Математический режим"
 
-#: src/Text3.cpp:745
+#: src/Text3.cpp:754
 msgid "Unknown spacing argument: "
 msgstr "Неизвестный межстрочный промежуток: "
 
-#: src/Text3.cpp:919
+#: src/Text3.cpp:928
 msgid "Layout "
 msgstr "Формат "
 
-#: src/Text3.cpp:920
+#: src/Text3.cpp:929
 msgid " not known"
 msgstr " неизвестен"
 
-#: src/Text3.cpp:1470 src/Text3.cpp:1482
+#: src/Text3.cpp:1479 src/Text3.cpp:1491
 msgid "Character set"
 msgstr "Кодировка символов"
 
-#: src/Text3.cpp:1599 src/Text3.cpp:1610
+#: src/Text3.cpp:1608 src/Text3.cpp:1619
 msgid "Paragraph layout set"
 msgstr "Установлено размещение абзаца"
 
@@ -14547,11 +14540,6 @@ msgstr " (Изменено)"
 #: src/frontends/LyXView.cpp:502
 msgid " (read only)"
 msgstr " (только для чтения)"
-
-#: src/frontends/WorkArea.cpp:247
-#, fuzzy
-msgid "Formatting document..."
-msgstr "Сохраняется документ %1$s..."
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:58
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -15678,7 +15666,7 @@ msgid "space"
 msgstr "пробел"
 
 #: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
-#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:612
+#: src/insets/InsetBibtex.cpp:195 src/insets/InsetGraphics.cpp:612
 #: src/insets/InsetInclude.cpp:475
 msgid "Invalid filename"
 msgstr "Неправильное название файла"
@@ -15698,7 +15686,7 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
+#: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:196
 #: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:476
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -15709,21 +15697,21 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Открытая вкладка"
 
-#: src/insets/InsetBibtex.cpp:110
+#: src/insets/InsetBibtex.cpp:111
 msgid "BibTeX Generated Bibliography"
 msgstr "Сгенерированная библиография BibTeX"
 
-#: src/insets/InsetBibtex.cpp:213 src/insets/InsetBibtex.cpp:266
+#: src/insets/InsetBibtex.cpp:214 src/insets/InsetBibtex.cpp:267
 msgid "Export Warning!"
 msgstr "Замечание экспорта!"
 
-#: src/insets/InsetBibtex.cpp:214
+#: src/insets/InsetBibtex.cpp:215
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:267
+#: src/insets/InsetBibtex.cpp:268
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -15940,7 +15928,7 @@ msgstr "Ключевое слово"
 msgid "Index"
 msgstr "Предметный указатель"
 
-#: src/insets/InsetListings.cpp:127
+#: src/insets/InsetListings.cpp:131
 #, fuzzy
 msgid "Opened Listing Inset"
 msgstr "Открытая вкладка подписи"
@@ -16183,29 +16171,21 @@ msgstr "Ф&ормат:"
 msgid "Unknown TOC type"
 msgstr "Неизвестный тип содержания"
 
-#: src/insets/InsetTabular.cpp:3171
+#: src/insets/InsetTabular.cpp:3173
 msgid "Opened table"
 msgstr "Открытая таблица"
 
-#: src/insets/InsetTabular.cpp:4304
+#: src/insets/InsetTabular.cpp:4306
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4305
+#: src/insets/InsetTabular.cpp:4307
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
 msgstr "Открытая текстовая вкладка"
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "теорема"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "Открытая вкладка теоремы"
 
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
@@ -16371,12 +16351,7 @@ msgstr "Строка была заменена."
 msgid " strings have been replaced."
 msgstr " строк было заменено."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Макрокоманда: %1$s: "
-
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1261
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1284
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16408,41 +16383,46 @@ msgstr "Нет верт. линии для удаления"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Неизвестное свойство окружения tabular '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1090 src/mathed/InsetMathHull.cpp:1098
 msgid "No number"
 msgstr "Нет числа"
 
-#: src/mathed/InsetMathHull.cpp:1087 src/mathed/InsetMathHull.cpp:1095
+#: src/mathed/InsetMathHull.cpp:1090 src/mathed/InsetMathHull.cpp:1098
 #, fuzzy
 msgid "Number"
 msgstr "Нумерация"
 
-#: src/mathed/InsetMathHull.cpp:1234
+#: src/mathed/InsetMathHull.cpp:1257
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Невозможно изменить число строк в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1244
+#: src/mathed/InsetMathHull.cpp:1267
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Невозможно изменить число колонок в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1254
+#: src/mathed/InsetMathHull.cpp:1277
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Невозможно добавить горизонтальные линии в '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:867
+#: src/mathed/InsetMathNest.cpp:931
 msgid "create new math text environment ($...$)"
 msgstr "создать новую внутритекстовую формулу ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:870
+#: src/mathed/InsetMathNest.cpp:934
 msgid "entered math text mode (textrm)"
 msgstr "текстовый режим внутри формулы (textrm)"
 
 #: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Макрокоманда: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
@@ -16466,8 +16446,9 @@ msgid "References: "
 msgstr "Ссылки: "
 
 #: src/support/FileFilterList.cpp:109
-msgid "All files (*)"
-msgstr "Все файлы (*)"
+#, fuzzy
+msgid "All Files "
+msgstr "Все поля"
 
 #: src/support/Package.cpp.in:448
 #, fuzzy
@@ -16550,6 +16531,25 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
 
+#~ msgid "Swap Rows|S"
+#~ msgstr "Поменять местами строки"
+
+#~ msgid "Swap Columns|w"
+#~ msgstr "Поменять местами столбцы"
+
+#, fuzzy
+#~ msgid "Formatting document..."
+#~ msgstr "Сохраняется документ %1$s..."
+
+#~ msgid "theorem"
+#~ msgstr "теорема"
+
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Открытая вкладка теоремы"
+
+#~ msgid "All files (*)"
+#~ msgstr "Все файлы (*)"
+
 #, fuzzy
 #~ msgid "CharStyle: "
 #~ msgstr "Стр. от:"
@@ -16587,9 +16587,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Search Field:"
 #~ msgstr "Поиск"
-
-#~ msgid "All Fields"
-#~ msgstr "Все поля"
 
 #, fuzzy
 #~ msgid "Entry Types:"
