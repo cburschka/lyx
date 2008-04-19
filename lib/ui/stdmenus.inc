@@ -402,8 +402,6 @@ Menuset
 		Item "Delimiters|r" "dialog-show mathdelimiter"
 		Item "Matrix|x" "dialog-show mathmatrix"
 		Item "Macro|o" "math-macro newmacroname newcommand"
-		Separator
-		Item "Toggle Math Panels" "toolbar-toggle math_panels"
 	End
 
 	Menu "insert_float"
