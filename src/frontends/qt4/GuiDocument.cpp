@@ -924,13 +924,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
-	// embedded files
-	embeddedFilesModule = new UiWidget<Ui::EmbeddedFilesUi>;
-	connect(embeddedFilesModule->addPB, SIGNAL(clicked()),
-		this, SLOT(addExtraEmbeddedFile()));
-	connect(embeddedFilesModule->removePB, SIGNAL(clicked()),
-		this, SLOT(removeExtraEmbeddedFile()));
-
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
 
@@ -987,7 +980,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(floatModule, qt_("Float Placement"));
 	docPS->addPanel(bulletsModule, qt_("Bullets"));
 	docPS->addPanel(branchesModule, qt_("Branches"));
-	docPS->addPanel(embeddedFilesModule, qt_("Embedded Files"));
 	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
 	docPS->setCurrentPanel(qt_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
@@ -1422,41 +1414,6 @@ void GuiDocument::updateModuleInfo()
 }
 
 
-void GuiDocument::setExtraEmbeddedFileList()
-{
-	embeddedFilesModule->extraLW->clear();
-	// add current embedded files
-	vector<string> const & files = buffer().params().extraEmbeddedFiles();
-	vector<string>::const_iterator fit = files.begin();
-	vector<string>::const_iterator fit_end = files.end();
-	for (; fit != fit_end; ++fit)
-		embeddedFilesModule->extraLW->addItem(toqstr(*fit));
-}
-
-
-void GuiDocument::addExtraEmbeddedFile()
-{
-	QString const label1 = qt_("Documents|#o#O");
-	QString const dir1 = toqstr(lyxrc.document_path);
-	FileFilterList const filter(_("LyX Layout (*.layout);;LaTeX Classes (*.{cls,sty});;BibTeX Databases (*.{bib,bst})"));
-	QString file = browseRelFile(QString(), bufferFilepath(),
-		qt_("Extra embedded file"), filter, true, label1, dir1);
-
-	if (file.isEmpty())
-		return;
-
-	if (embeddedFilesModule->extraLW->findItems(file, Qt::MatchExactly).empty())
-		embeddedFilesModule->extraLW->addItem(file);
-}
-
-
-void GuiDocument::removeExtraEmbeddedFile()
-{
-	int index = embeddedFilesModule->extraLW->currentRow();
-	delete embeddedFilesModule->extraLW->takeItem(index);
-}
-
-
 void GuiDocument::updateNumbering()
 {
 	DocumentClass const & tclass = bp_.documentClass();
@@ -1759,14 +1716,6 @@ void GuiDocument::apply(BufferParams & params)
 		pdf.pagemode.clear();
 	pdf.quoted_options = pdf.quoted_options_check(
 				fromqstr(pdfSupportModule->optionsLE->text()));
-
-	// Embedded files
-	vector<string> & files = params.extraEmbeddedFiles();
-	files.clear();
-	for (int i = 0; i < embeddedFilesModule->extraLW->count(); ++i) {
-		QListWidgetItem * item = embeddedFilesModule->extraLW->item(i);
-		files.push_back(fromqstr(item->text()));
-	}
 }
 
 
@@ -2071,8 +2020,6 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	pdfSupportModule->optionsLE->setText(
 		toqstr(pdf.quoted_options));
-	
-	setExtraEmbeddedFileList();
 }
 
 

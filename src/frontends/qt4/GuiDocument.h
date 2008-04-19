@@ -22,7 +22,6 @@
 #include "GuiSelectionManager.h"
 
 #include "ui_DocumentUi.h"
-#include "ui_EmbeddedFilesUi.h"
 #include "ui_FontUi.h"
 #include "ui_TextLayoutUi.h"
 #include "ui_MathsUi.h"
@@ -138,9 +137,6 @@ private Q_SLOTS:
 	void browseLayout();
 	void classChanged();
 	void updateModuleInfo();
-	void setExtraEmbeddedFileList();
-	void addExtraEmbeddedFile();
-	void removeExtraEmbeddedFile();
 
 private:
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
@@ -153,7 +149,6 @@ private:
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
 	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
-	UiWidget<Ui::EmbeddedFilesUi> *embeddedFilesModule;
 	PreambleModule *preambleModule;
 	
 	GuiBranches *branchesModule;

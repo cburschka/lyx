@@ -241,7 +241,6 @@ UIFILES = \
 	ErrorListUi.ui \
 	ERTUi.ui \
 	ExternalUi.ui \
-	EmbeddedFilesUi.ui \
 	FloatPlacementUi.ui \
 	FloatUi.ui \
 	FontUi.ui \
