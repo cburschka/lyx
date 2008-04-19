@@ -63,7 +63,7 @@ target_link_libraries(tex2lyx
 	${ICONV_LIBRARY})
 	
 if(WIN32)
-	target_link_libraries(tex2lyx shlwapi)
+	target_link_libraries(tex2lyx shlwapi ole32)
 endif()
 
 if(APPLE)

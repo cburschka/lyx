@@ -158,6 +158,13 @@ if(WIN32)
 	else()
 		message("----- Console enabled, disable it with -Dnoconsole=1")
 	endif()
+	if(MSVC)
+		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
+		# disable checked iterators for msvc release builds to get maximum speed
+		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
+	else()
+		add_definitions(-DWINVER=0x0500)
+	endif()
 endif()
 
 set(PROGRAM_SUFFIX "\"\"")
@@ -172,11 +179,6 @@ message("----- LYX_ABS_INSTALLED_DATADIR   : ${LYX_ABS_INSTALLED_DATADIR}")
 message("----- LYX_ABS_INSTALLED_LOCALEDIR : ${LYX_ABS_INSTALLED_LOCALEDIR}")
 message("")
 
-if(MSVC)
-	add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
- 	# disable checked iterators for msvc release builds to get maximum speed
-	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
-endif()
 
 add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	

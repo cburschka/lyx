@@ -78,6 +78,10 @@ if(APPLE)
   target_link_libraries(lyx "-framework Carbon" ) 
 endif()
 
+if(MINGW)
+  target_link_libraries(lyx ole32)
+endif()
+
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 install(TARGETS lyx DESTINATION bin)
