@@ -632,14 +632,13 @@ void Tabular::appendRow(idx_type const cell)
 		// inherit line settings
 		idx_type const i = cellIndex(row + 1, c);
 		idx_type const j = cellIndex(row, c);
-		setLeftLine(i, isPartOfMultiColumn(row, c) ? false : leftLine(j));
-		if (cell_info[row][c].multicolumn == CELL_NORMAL || c == ncols - 1
-			|| (c + 1 < ncols 
-			&& cell_info[row][c].multicolumn != CELL_NORMAL
-			&& cell_info[row][c + 1].multicolumn == CELL_NORMAL))
-			setRightLine(i, rightLine(j));
-		else
-			setRightLine(i, false);
+		setLeftLine(i, leftLine(j));
+		setRightLine(i, rightLine(j));
+		setTopLine(i, topLine(j));
+		if (topLine(j) && bottomLine(j)) {
+			setBottomLine(i, true);
+			setBottomLine(j, false);
+		}
 		// mark track changes
 		if (bp.trackChanges)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
@@ -674,31 +673,34 @@ void Tabular::copyRow(row_type const row)
 
 void Tabular::appendColumn(idx_type const cell)
 {
-	col_type const column = cellColumn(cell);
-	column_vector::iterator cit = column_info.begin() + column + 1;
+	col_type const c = cellColumn(cell);
+	column_vector::iterator cit = column_info.begin() + c + 1;
 	column_info.insert(cit, ColumnData());
 	row_type const nrows = rowCount();
-	col_type const ncols = columnCount();
+	//col_type const ncols = columnCount();
 	// set the column values of the column before
-	column_info[column + 1] = column_info[column];
+	column_info[c + 1] = column_info[c];
 
 	for (row_type r = 0; r < nrows; ++r) {
-		cell_info[r].insert(cell_info[r].begin() + column + 1, 
+		cell_info[r].insert(cell_info[r].begin() + c + 1, 
 			CellData(buffer(), *this));
-		col_type c = column + 2;
-		while (c < ncols 
-			&& cell_info[r][c].multicolumn == CELL_PART_OF_MULTICOLUMN) {
-			cell_info[r][c].multicolumn = CELL_NORMAL;
-			++c;
-		}
+		if (cell_info[r][c].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
+			cell_info[r][c + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
+		else
+			cell_info[r][c + 1].multicolumn = cell_info[r][c].multicolumn;
 	}
 	updateIndexes();
 	for (row_type r = 0; r < nrows; ++r) {
 		// inherit line settings
-		idx_type const i = cellIndex(r, column + 1);
-		idx_type const j = cellIndex(r, column);
+		idx_type const i = cellIndex(r, c + 1);
+		idx_type const j = cellIndex(r, c);
 		setBottomLine(i, bottomLine(j));
 		setTopLine(i, topLine(j));
+		setLeftLine(i, leftLine(j));
+		if (rightLine(j) && rightLine(j)) {
+			setRightLine(i, true);
+			setRightLine(j, false);
+		}
 		//
 		cellInfo(i).inset->clear();
 		if (buffer().params().trackChanges)
@@ -3565,6 +3567,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::MULTICOLUMN:
+			status.enabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
@@ -4294,13 +4297,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::MULTICOLUMN: {
-		if (sel_row_start != sel_row_end) {
-			// FIXME: Need I say it ? This is horrible.
-			// FIXME UNICODE
-			Alert::error(_("Error setting multicolumn"),
-				     _("You cannot set multicolumn vertically."));
-			return;
-		}
 		if (!cur.selection()) {
 			// just multicol for one single cell
 			// check whether we are completely in a multicol
