@@ -37,7 +37,7 @@
 
  % the pages of the TOC are numbered roman
  % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
+ \pagenumbering{Roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
    \pdfbookmark[1]{Índice general}{}
