@@ -14,8 +14,9 @@
 
 #include "FuncCode.h"
 
+#include "support/strfwd.h"
+
 #include <QString>
-#include <string>
 
 class QWidget;
 
