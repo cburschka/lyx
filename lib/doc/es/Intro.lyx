@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -38,7 +38,7 @@
 
  % the pages of the TOC are numbered roman
  % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
+ \pagenumbering{Roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
    \pdfbookmark[1]{Índice}{}
