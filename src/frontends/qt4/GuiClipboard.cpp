@@ -53,8 +53,7 @@
 #include <objidl.h>
 #endif // Q_WS_WIN
 
-#include <boost/shared_ptr.hpp>
-
+#include <memory>
 #include <map>
 
 using namespace std;
@@ -171,7 +170,7 @@ QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
 	return formats;
 }
 
-static boost::shared_ptr<QWindowsMimeMetafile> metafileWindowsMime;
+static std::auto_ptr<QWindowsMimeMetafile> metafileWindowsMime;
 
 #endif // Q_WS_WIN
 
@@ -236,7 +235,7 @@ QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(QString const & mi
 	return ret;
 }
 
-static boost::shared_ptr<QMacPasteboardMimeGraphics> graphicsPasteboardMime;
+static std::auto_ptr<QMacPasteboardMimeGraphics> graphicsPasteboardMime;
 
 #endif // Q_WS_MACX
 
@@ -249,17 +248,13 @@ GuiClipboard::GuiClipboard()
 	on_dataChanged();
 	
 #ifdef Q_WS_MACX
-	if (!graphicsPasteboardMime)
-		graphicsPasteboardMime = 
-			boost::shared_ptr<QMacPasteboardMimeGraphics>
-				(new QMacPasteboardMimeGraphics());
+	if (!graphicsPasteboardMime.get())
+		graphicsPasteboardMime.reset(new QMacPasteboardMimeGraphics());
 #endif // Q_WS_MACX
 
 #ifdef Q_WS_WIN
-	if (!metafileWindowsMime)
-		metafileWindowsMime = 
-			boost::shared_ptr<QWindowsMimeMetafile>
-				(new QWindowsMimeMetafile());
+	if (!metafileWindowsMime.get())
+		metafileWindowsMime.reset(new QWindowsMimeMetafile());
 #endif // Q_WS_WIN
 }
 
