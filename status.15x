@@ -149,8 +149,14 @@ What's new
 
 - Fix typo in the script TeXFiles.py that scans for TeX files.
 
+- Remove the menu entry Insert -> Math -> Toggle math panels
+  since it is basically the same as the menu View - > Toolbars -> Math Panels
+  and has nothing to do with insertions (bug 4765).
+
 
 * DOCUMENTATION
+
+- Make the Spanish Tutorial, UserGuide, and Intro manual compilable again.
 
 - Math manual:
   - correct shortcuts for math fonts in section 11.1
