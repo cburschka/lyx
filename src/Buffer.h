@@ -61,6 +61,7 @@ class WorkAreaManager;
 
 namespace support {
 class FileName;
+class FileNameList;
 }
 
 /** The buffer object.
@@ -307,7 +308,7 @@ public:
 	void updateBibfilesCache() const;
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	EmbeddedFileList const & getBibfilesCache() const;
+	support::FileNameList const & getBibfilesCache() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 

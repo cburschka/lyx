@@ -19,7 +19,8 @@
 #include "Counters.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
-#include "EmbeddedFiles.h"
+
+#include "support/FileNameList.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -30,10 +31,6 @@ class Dimension;
 class InsetLabel;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
-
-namespace support {
-	class FileNameList;
-}
 
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {
@@ -72,7 +69,7 @@ public:
 	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	EmbeddedFileList const &
+	support::FileNameList const &
 		getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

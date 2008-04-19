@@ -17,7 +17,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
-#include "EmbeddedFiles.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "ParIterator.h"
@@ -25,6 +24,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileNameList.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -142,15 +142,15 @@ docstring complexLabel(Buffer const & buffer,
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
-	static map<EmbeddedFile, time_t> bibfileStatus;
+	static map<FileName, time_t> bibfileStatus;
 
 	BiblioInfo biblist;
 
-	EmbeddedFileList const & bibfilesCache = buffer.getBibfilesCache();
+	support::FileNameList const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	EmbeddedFileList::const_iterator ei = bibfilesCache.begin();
-	EmbeddedFileList::const_iterator en = bibfilesCache.end();
+	support::FileNameList::const_iterator ei = bibfilesCache.begin();
+	support::FileNameList::const_iterator en = bibfilesCache.end();
 	for (; ei != en; ++ ei) {
 		time_t lastw = ei->lastModified();
 		if (lastw != bibfileStatus[*ei]) {

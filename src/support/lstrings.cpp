@@ -592,6 +592,24 @@ int tokenPos(string const & a, char delim, string const & tok)
 }
 
 
+// this could probably be faster and/or cleaner, but it seems to work (JMarc)
+// rewritten to use new string (Lgb)
+int tokenPos(docstring const & a, char_type delim, docstring const & tok)
+{
+	int i = 0;
+	docstring str = a;
+	docstring tmptok;
+
+	while (!str.empty()) {
+		str = split(str, tmptok, delim);
+		if (tok == tmptok)
+			return i;
+		++i;
+	}
+	return -1;
+}
+
+
 namespace {
 
 /// Substitute all \a oldchar with \a newchar

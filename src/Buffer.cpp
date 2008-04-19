@@ -207,7 +207,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable EmbeddedFileList bibfilesCache_;
+	mutable support::FileNameList bibfilesCache_;
 
 	mutable RefCache ref_cache_;
 
@@ -1388,7 +1388,7 @@ void Buffer::updateBibfilesCache() const
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
-			EmbeddedFileList const bibfiles = inset.getBibFiles();
+			support::FileNameList const bibfiles = inset.getBibFiles();
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -1396,7 +1396,7 @@ void Buffer::updateBibfilesCache() const
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache();
-			EmbeddedFileList const & bibfiles =
+			support::FileNameList const & bibfiles =
 					inset.getBibfilesCache(*this);
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
@@ -1406,7 +1406,7 @@ void Buffer::updateBibfilesCache() const
 }
 
 
-EmbeddedFileList const & Buffer::getBibfilesCache() const
+support::FileNameList const & Buffer::getBibfilesCache() const
 {
 	// If this is a child document, use the parent's cache instead.
 	if (d->parent_buffer)

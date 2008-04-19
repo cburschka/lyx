@@ -16,7 +16,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "DispatchResult.h"
-#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
@@ -48,28 +47,8 @@ namespace os = support::os;
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p)
-	: InsetCommand(p, "bibtex"), bibfiles_()
+	: InsetCommand(p, "bibtex")
 {}
-
-
-void InsetBibtex::setBuffer(Buffer & buffer)
-{
-	// FIXME We ought to have a buffer.
-	if (buffer_) {
-		EmbeddedFileList::iterator it = bibfiles_.begin();
-		EmbeddedFileList::iterator en = bibfiles_.end();
-		for (; it != en; ++it) {
-			try {
-				*it = it->copyTo(buffer);
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// failed to embed
-				it->setEmbed(false);
-			}
-		}
-	}
-	InsetCommand::setBuffer(buffer);
-}
 
 
 ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
@@ -106,8 +85,6 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		//
 		setParams(p);
-		updateBibFiles();
-		updateParam();
 		buffer().updateBibfilesCache();
 		break;
 	}
@@ -162,11 +139,14 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 	// use such filenames.)
 	// Otherwise, store the (maybe absolute) path to the original,
 	// unmangled database name.
-	EmbeddedFileList::const_iterator it = bibfiles_.begin();
-	EmbeddedFileList::const_iterator it_end = bibfiles_.end();
+	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
+	vector<docstring>::const_iterator it = bibfilelist.begin();
+	vector<docstring>::const_iterator en = bibfilelist.end();
 	odocstringstream dbs;
-	for (; it != it_end; ++it) {
-		string utf8input = removeExtension(it->availableFile().absFilename());
+	bool didone = false;
+
+	for (; it != en; ++it) {
+		string utf8input = to_utf8(*it);
 		string database =
 			normalizeName(buffer(), runparams, utf8input, ".bib");
 		FileName const try_in_file =
@@ -196,8 +176,10 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 							    from_utf8(database));
 		}
 
-		if (it != bibfiles_.begin())
+		if (didone)
 			dbs << ',';
+		else 
+			didone =- true;
 		// FIXME UNICODE
 		dbs << from_utf8(latex_path(database));
 	}
@@ -305,9 +287,27 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
-EmbeddedFileList const & InsetBibtex::getBibFiles() const
+support::FileNameList InsetBibtex::getBibFiles() const
 {
-	return bibfiles_;
+	FileName path(buffer().filePath());
+	support::PathChanger p(path);
+	
+	FileNameList vec;
+	
+	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
+	vector<docstring>::const_iterator it = bibfilelist.begin();
+	vector<docstring>::const_iterator en = bibfilelist.end();
+	for (; it != en; ++it) {
+		FileName const file = 
+			findtexfile(changeExtension(to_utf8(*it), "bib"), "bib");
+		
+		// If we didn't find a matching file name just fail silently
+		if (!file.empty())
+			vec.push_back(file);
+	}
+	
+	return vec;
+
 }
 
 namespace {
@@ -570,11 +570,11 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 	// We don't restrict keys to ASCII in LyX, since our own
 	// InsetBibitem can generate non-ASCII keys, and nonstandard
 	// 8bit clean bibtex forks exist.
-	EmbeddedFileList const & files = getBibFiles();
-	EmbeddedFileList::const_iterator it = files.begin();
-	EmbeddedFileList::const_iterator en = files.end();
+	support::FileNameList const & files = getBibFiles();
+	support::FileNameList::const_iterator it = files.begin();
+	support::FileNameList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
-		idocfstream ifs(it->availableFile().toFilesystemEncoding().c_str(),
+		idocfstream ifs(it->toFilesystemEncoding().c_str(),
 			ios_base::in, buffer().params().encoding().iconvName());
 
 		char_type ch;
@@ -718,31 +718,33 @@ FileName InsetBibtex::getBibTeXPath(docstring const & filename, Buffer const & b
 
 bool InsetBibtex::addDatabase(docstring const & db)
 {
-	FileName const texPath = getBibTeXPath(db, buffer());
-	EmbeddedFileList::const_iterator efp = 
-		bibfiles_.findFile(texPath.absFilename());
-	if (efp != bibfiles_.end())
-		//already have it
-		return false;
-
-	EmbeddedFile file(texPath.absFilename(), buffer().filePath());
-	bibfiles_.push_back(file);
-	updateParam();
-	return true;
+	docstring bibfiles = getParam("bibfiles");
+	if (tokenPos(bibfiles, ',', db) == -1) {
+		if (!bibfiles.empty())
+		bibfiles += ',';
+		setParam("bibfiles", bibfiles + db);
+		return true;
+	}
+	return false;
 }
 
 
 bool InsetBibtex::delDatabase(docstring const & db)
 {
-	FileName const texPath = getBibTeXPath(db, buffer());
-	EmbeddedFileList::iterator efp = 
-		bibfiles_.findFile(texPath.absFilename());
-	if (efp == bibfiles_.end())
-		// don't have it
-		return false;
-	
-	bibfiles_.erase(efp);
-	updateParam();
+	docstring bibfiles = getParam("bibfiles");
+	if (contains(bibfiles, db)) {
+		int const n = tokenPos(bibfiles, ',', db);
+		docstring bd = db;
+		if (n > 0) {
+			// this is not the first database
+			docstring tmp = ',' + bd;
+			setParam("bibfiles", subst(bibfiles, tmp, docstring()));
+		} else if (n == 0)
+			// this is the first (or only) database
+			setParam("bibfiles", split(bibfiles, bd, ','));
+		else
+			return false;
+	}
 	return true;
 }
 
@@ -751,105 +753,6 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
-}
-
-
-void InsetBibtex::updateBibFiles() const
-{
-	// need to do this to keep old info while also not
-	// copying over any files that have been deleted.
-	EmbeddedFileList oldlist = bibfiles_;
-	bibfiles_.clear();
-	
-	docstring bibfile;
-	docstring embfile;
-	
-	docstring bibfiles = getParam("bibfiles");
-	docstring embfiles = getParam("embed");
-	
-	bibfiles = split(bibfiles, bibfile, ',');
-	embfiles = split(embfiles, embfile, ',');
-	
-	while (!bibfile.empty()) {
-		FileName bib = getBibTeXPath(bibfile, buffer());
-		EmbeddedFileList::iterator efp = oldlist.findFile(bib.absFilename());
-		if (efp != oldlist.end()) {
-			// already have this one, but embedding status may have been changed
-			bool old_status = efp->embedded();
-			bool new_status = !embfile.empty();
-			efp->setEmbed(new_status);
-			try {
-				// copy file if embedding status changed.
-				efp->enable(buffer().embedded(), buffer(), old_status != new_status);
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// failed to change embeddeing status
-				efp->setEmbed(old_status);
-			}
-			bibfiles_.push_back(*efp);
-		} else {
-			EmbeddedFile file(bib.absFilename(), buffer().filePath());
-			file.setEmbed(!embfile.empty());
-			try {
-				file.enable(buffer().embedded(), buffer(), true);
-			} catch (ExceptionMessage const & message) {
-				Alert::error(message.title_, message.details_);
-				// failed to embed
-				file.setEmbed(false);
-			}
-			bibfiles_.push_back(file);
-		}
-		// Get next file name
-		bibfiles = split(bibfiles, bibfile, ',');
-		embfiles = split(embfiles, embfile, ',');
-	}
-}
-
-
-void InsetBibtex::updateParam()
-{
-	docstring bibfiles;
-	docstring embed;
-
-	bool first = true;
-
-	EmbeddedFileList::iterator it = bibfiles_.begin();
-	EmbeddedFileList::iterator en = bibfiles_.end();
-	for (; it != en; ++it) {
-		if (!first) {
-			bibfiles += ',';
-			embed += ',';
-		} else
-			first = false;
-		bibfiles += from_utf8(it->outputFilename(buffer().filePath()));
-		if (it->embedded())
-			embed += from_utf8(it->inzipName());
-	}
-	setParam("bibfiles", bibfiles);
-}
-
-
-void InsetBibtex::registerEmbeddedFiles(EmbeddedFileList & files) const
-{
-	if (bibfiles_.empty())
-		updateBibFiles();
-
-	EmbeddedFileList::const_iterator it = bibfiles_.begin();
-	EmbeddedFileList::const_iterator en = bibfiles_.end();
-	for (; it != en; ++it)
-		files.registerFile(*it, this, buffer());
-}
-
-
-void InsetBibtex::updateEmbeddedFile(EmbeddedFile const & file)
-{
-	// look for the item and update status
-	string const filename = file.absFilename();
-	EmbeddedFileList::iterator it = bibfiles_.findFile(filename);
-	if (it == bibfiles_.end())
-		return;
-	*it = file;
-	updateParam();
 }
 
 

@@ -152,6 +152,7 @@ docstring const token(docstring const & a, char_type delim, int n);
     \endcode
 */
 int tokenPos(std::string const & a, char delim, std::string const & tok);
+int tokenPos(docstring const & a, char_type delim, docstring const & tok);
 
 
 /// Substitute all \a oldchar with \a newchar

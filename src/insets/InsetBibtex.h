@@ -16,6 +16,8 @@
 #include "EmbeddedFiles.h"
 #include "InsetCommand.h"
 
+#include "support/FileNameList.h"
+
 #include <map>
 
 namespace lyx {
@@ -27,8 +29,6 @@ class InsetBibtex : public InsetCommand {
 public:
 	///
 	InsetBibtex(InsetCommandParams const &);
-	///
-	virtual void setBuffer(Buffer & buffer);
 	///
 	docstring screenLabel() const;
 	///
@@ -42,7 +42,7 @@ public:
 	///
 	void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	///
-	EmbeddedFileList const & getBibFiles() const;
+	support::FileNameList getBibFiles() const;
 	///
 	bool addDatabase(docstring const &);
 	///
@@ -56,24 +56,14 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }
-	/// update bibfiles and embed from bibfiles_
-	void updateParam();
 	/// look up the path to the file using TeX
 	static support::FileName 
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
 private:
-	/// 
-	void updateBibFiles() const;
-	///
-	void registerEmbeddedFiles(EmbeddedFileList &) const;
-	///
-	void updateEmbeddedFile(EmbeddedFile const & file);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetBibtex(*this); }
-	/// embedded bib files
-	mutable EmbeddedFileList bibfiles_;
 };
 
 

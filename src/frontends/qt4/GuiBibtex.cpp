@@ -208,9 +208,7 @@ void GuiBibtex::addDatabase()
 			if (matches.empty()) {
 				QString label = item->text();
 				QListWidgetItem * db = new QListWidgetItem(label);
-				db->setFlags(db->flags() | Qt::ItemIsSelectable
-					| Qt::ItemIsUserCheckable);
-				db->setCheckState(Qt::Checked);
+				db->setFlags(db->flags() | Qt::ItemIsSelectable);
 				databaseLW->addItem(db);
 			}
 		}
@@ -223,9 +221,7 @@ void GuiBibtex::addDatabase()
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty()) {
 			QListWidgetItem * db = new QListWidgetItem(f);
-			db->setFlags(db->flags() | Qt::ItemIsSelectable
-				| Qt::ItemIsUserCheckable);
-			db->setCheckState(Qt::Checked);
+			db->setFlags(db->flags() | Qt::ItemIsSelectable);
 			databaseLW->addItem(db);
 		}
 	}
@@ -290,19 +286,14 @@ void GuiBibtex::updateContents()
 	databaseLW->clear();
 
 	docstring bibs = params_["bibfiles"];
-	docstring embs = params_["embed"];
 	docstring bib;
-	docstring emb;
 
 	while (!bibs.empty()) {
 		bibs = split(bibs, bib, ',');
-		embs = split(embs, emb, ',');
 		bib = trim(bib);
 		if (!bib.empty()) {
 			QListWidgetItem * db = new QListWidgetItem(toqstr(bib));
-			db->setFlags(db->flags() | Qt::ItemIsSelectable
-				| Qt::ItemIsUserCheckable);
-			db->setCheckState(emb.empty() ? Qt::Unchecked : Qt::Checked);
+			db->setFlags(db->flags() | Qt::ItemIsSelectable);
 			databaseLW->addItem(db);
 		}
 	}
@@ -360,28 +351,17 @@ void GuiBibtex::updateContents()
 void GuiBibtex::applyView()
 {
 	docstring dbs;
-	docstring emb;
 
 	unsigned int maxCount = databaseLW->count();
-	Buffer & buf = buffer();
 	for (unsigned int i = 0; i < maxCount; i++) {
-		if (i != 0) {
+		if (i != 0)
 			dbs += ',';
-			emb += ',';
-		}
 		QString item = databaseLW->item(i)->text();
 		docstring bibfile = qstring_to_ucs4(item);
 		dbs += bibfile;
-		if (databaseLW->item(i)->checkState() == Qt::Checked) {
-			FileName bibfilepath = InsetBibtex::getBibTeXPath(bibfile, buf);
-			string inzipName = EmbeddedFile(bibfilepath.absFilename(),
-				buf.filePath()).inzipName();
-			emb += from_utf8(inzipName);
-		}
 	}
 
 	params_["bibfiles"] = dbs;
-	params_["embed"] = emb;
 
 	docstring const bibstyle = qstring_to_ucs4(styleCB->currentText());
 	bool const bibtotoc = bibtocCB->isChecked();
