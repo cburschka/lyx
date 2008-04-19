@@ -47,7 +47,7 @@
 
 #ifdef Q_WS_WIN
 #include <QWindowsMime>
-#ifdef Q_CYGWIN_WIN
+#if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
 #include <wtypes.h>
 #endif
 #include <objidl.h>
