@@ -116,11 +116,19 @@ find_package(ZLIB REQUIRED)
 
 if(all OR aspell)
 	set(aspell TRUE CACHE TYPE STRING)
-	find_package(ASPELL REQUIRED)
+	find_package(ASPELL REQUIRED)	
 else()
 	find_package(ASPELL)
 endif()
 set(aspell)
+
+if(WIN32)
+	set(use_external_libintl TRUE)
+endif()
+
+if(use_external_libintl)
+	find_package(Libintl REQUIRED)
+endif()
 
 message("")
 if(nls OR all)
@@ -304,7 +312,9 @@ include_directories(
 	${TOP_SRC_DIR}/boost)
 
 add_subdirectory(boost)
-add_subdirectory(intl)
+if(NOT use_external_libintl)
+	add_subdirectory(intl)
+endif()
 add_subdirectory(src)
 
 include(../Install)

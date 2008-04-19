@@ -59,7 +59,8 @@ target_link_libraries(tex2lyx
 	support
 	boost_regex
 	${QT_QTCORE_LIBRARY} 
-	intl)
+	${LIBINTL_LIBRARIES}
+	${ICONV_LIBRARY})
 	
 if(WIN32)
 	target_link_libraries(tex2lyx shlwapi)

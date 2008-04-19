@@ -64,7 +64,8 @@ target_link_libraries(lyx
 	frontend_qt4
 	graphics
 	support
-	intl
+	${LIBINTL_LIBRARIES}
+	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
