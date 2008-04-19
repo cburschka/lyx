@@ -32,7 +32,7 @@ ButtonController::ButtonController()
 
 void ButtonController::setPolicy(ButtonPolicy::Policy policy)
 {
-	policy_ = ButtonPolicy(policy);
+	policy_.setPolicy(policy);
 }
 
 

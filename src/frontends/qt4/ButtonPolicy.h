@@ -15,9 +15,6 @@
 #ifndef BUTTONPOLICY_H
 #define BUTTONPOLICY_H
 
-#include <vector>
-#include <iosfwd>
-
 namespace lyx {
 namespace frontend {
 
@@ -63,7 +60,8 @@ namespace frontend {
     The IgnorantPolicy is a special case that allows anything.
  */
 
-class ButtonPolicy {
+class ButtonPolicy
+{
 public:
 
 	// The various poicies
@@ -159,6 +157,10 @@ public:
 
 	/// Constructor
 	explicit ButtonPolicy(Policy policy);
+	/// Destructor
+	~ButtonPolicy();
+	///
+	void setPolicy(Policy policy);
 
 	/** The various possible state names.
 	    Not all state-machines have this many states.  However, we need
@@ -249,39 +251,15 @@ public:
 	bool isReadOnly() const;
 
 private:
-	///
-	Policy policy_;
-
-	/// Transition map of the state machine.
-	typedef std::vector<State> StateArray;
-	///
-	typedef std::vector<StateArray> StateMachine;
-	/// The state outputs are the status of the buttons.
-	typedef std::vector<int> StateOutputs;
-
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-
-private:
-	// Helpers
-	void nextState(SMInput input);
-
-	void initOkCancel();
-	void initOkCancelReadOnly();
-	void initNoRepeatedApplyReadOnly();
-	void initOkApplyCancelReadOnly();
-	void initOkApplyCancel();
-	void initNoRepeatedApply();
-	void initPreferences();
+	/// noncopyable
+	ButtonPolicy(ButtonPolicy const &);
+	void operator=(ButtonPolicy const &);
+	
+	/// pimpl
+	class Private;
+	Private * d;
 };
 
-
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st);
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi);
 
 } // namespace frontend
 } // namespace lyx
