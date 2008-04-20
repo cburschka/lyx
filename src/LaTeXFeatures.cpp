@@ -577,7 +577,7 @@ string const LaTeXFeatures::getPackages() const
 	// natbib.sty
 	if (mustProvide("natbib")) {
 		packages << "\\usepackage[";
-		if (params_.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL)
+		if (params_.citeEngine() == ENGINE_NATBIB_NUMERICAL)
 			packages << "numbers";
 		else
 			packages << "authoryear";
@@ -779,7 +779,8 @@ docstring const LaTeXFeatures::getIncludedFiles(string const & fname) const
 }
 
 
-void LaTeXFeatures::showStruct() const {
+void LaTeXFeatures::showStruct() const
+{
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
 	       << "\n***** Macros:" << getMacros()

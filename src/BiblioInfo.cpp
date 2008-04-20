@@ -34,8 +34,8 @@
 using namespace std;
 using namespace lyx::support;
 
-namespace lyx {
 
+namespace lyx {
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -287,9 +287,8 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 vector<docstring> const BiblioInfo::getCiteStrings(
 	docstring const & key, Buffer const & buf) const
 {
-	biblio::CiteEngine const engine = buf.params().citeEngine();
-	if (engine == biblio::ENGINE_BASIC || 
-	    engine == biblio::ENGINE_NATBIB_NUMERICAL)
+	CiteEngine const engine = buf.params().citeEngine();
+	if (engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL)
 		return getNumericalStrings(key, buf);
 	else
 		return getAuthorYearStrings(key, buf);
@@ -307,44 +306,43 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
-	vector<biblio::CiteStyle> const & styles = 
-		biblio::getCiteStyles(buf.params().citeEngine());
+	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
 	
 	vector<docstring> vec(styles.size());
-	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {
+	for (size_t i = 0; i != vec.size(); ++i) {
 		docstring str;
 
 		switch (styles[i]) {
-			case biblio::CITE:
-			case biblio::CITEP:
+			case CITE:
+			case CITEP:
 				str = from_ascii("[#ID]");
 				break;
 
-			case biblio::NOCITE:
+			case NOCITE:
 				str = _("Add to bibliography only.");
 				break;
 
-			case biblio::CITET:
+			case CITET:
 				str = author + " [#ID]";
 				break;
 
-			case biblio::CITEALT:
+			case CITEALT:
 				str = author + " #ID";
 				break;
 
-			case biblio::CITEALP:
+			case CITEALP:
 				str = from_ascii("#ID");
 				break;
 
-			case biblio::CITEAUTHOR:
+			case CITEAUTHOR:
 				str = author;
 				break;
 
-			case biblio::CITEYEAR:
+			case CITEYEAR:
 				str = year;
 				break;
 
-			case biblio::CITEYEARPAR:
+			case CITEYEARPAR:
 				str = '(' + year + ')';
 				break;
 		}
@@ -367,49 +365,48 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
-	vector<biblio::CiteStyle> const & styles = 
-		getCiteStyles(buf.params().citeEngine());
+	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
 	
 	vector<docstring> vec(styles.size());
-	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {
+	for (size_t i = 0; i != vec.size(); ++i) {
 		docstring str;
 
 		switch (styles[i]) {
-			case biblio::CITE:
+			case CITE:
 		// jurabib only: Author/Annotator
 		// (i.e. the "before" field, 2nd opt arg)
 				str = author + "/<" + _("before") + '>';
 				break;
 
-			case biblio::NOCITE:
+			case NOCITE:
 				str = _("Add to bibliography only.");
 				break;
 
-			case biblio::CITET:
+			case CITET:
 				str = author + " (" + year + ')';
 				break;
 
-			case biblio::CITEP:
+			case CITEP:
 				str = '(' + author + ", " + year + ')';
 				break;
 
-			case biblio::CITEALT:
+			case CITEALT:
 				str = author + ' ' + year ;
 				break;
 
-			case biblio::CITEALP:
+			case CITEALP:
 				str = author + ", " + year ;
 				break;
 
-			case biblio::CITEAUTHOR:
+			case CITEAUTHOR:
 				str = author;
 				break;
 
-			case biblio::CITEYEAR:
+			case CITEYEAR:
 				str = year;
 				break;
 
-			case biblio::CITEYEARPAR:
+			case CITEYEARPAR:
 				str = '(' + year + ')';
 				break;
 		}
@@ -424,7 +421,7 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
 	Buffer const * const tmp = buf->masterBuffer();
-	LASSERT(tmp, /**/);
+	LASSERT(tmp, return);
 	if (tmp != buf) {
 		this->fillWithBibKeys(tmp);
 		return;
@@ -434,8 +431,6 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 		it->fillWithBibKeys(*this, it);
 }
 
-
-namespace biblio {
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -453,12 +448,12 @@ char const * const citeCommands[] = {
 unsigned int const nCiteCommands =
 		sizeof(citeCommands) / sizeof(char *);
 
-CiteStyle const citeStyles[] = {
+CiteStyle const citeStylesArray[] = {
 	CITE, NOCITE, CITET, CITEP, CITEALT,
 CITEALP, CITEAUTHOR, CITEYEAR, CITEYEARPAR };
 
 unsigned int const nCiteStyles =
-		sizeof(citeStyles) / sizeof(CiteStyle);
+		sizeof(citeStylesArray) / sizeof(CiteStyle);
 
 CiteStyle const citeStylesFull[] = {
 	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
@@ -475,21 +470,21 @@ unsigned int const nCiteStylesUCase =
 } // namespace anon
 
 
-CitationStyle::CitationStyle(string const & command)
-	: style(CITE), full(false), forceUCase(false)
+CitationStyle citationStyleFromString(string const & command)
 {
+	CitationStyle s;
 	if (command.empty())
-		return;
+		return s;
 
 	string cmd = command;
 	if (cmd[0] == 'C') {
-		forceUCase = true;
+		s.forceUpperCase = true;
 		cmd[0] = 'c';
 	}
 
-	string::size_type const n = cmd.size() - 1;
+	size_t const n = cmd.size() - 1;
 	if (cmd != "cite" && cmd[n] == '*') {
-		full = true;
+		s.full = true;
 		cmd = cmd.substr(0,n);
 	}
 
@@ -498,31 +493,31 @@ CitationStyle::CitationStyle(string const & command)
 
 	if (ptr != last) {
 		size_t idx = ptr - citeCommands;
-		style = citeStyles[idx];
+		s.style = citeStylesArray[idx];
 	}
+	return s;
 }
 
 
-string const CitationStyle::asLatexStr() const
+string citationStyleToString(const CitationStyle & s)
 {
-	string cite = citeCommands[style];
-	if (full) {
+	string cite = citeCommands[s.style];
+	if (s.full) {
 		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
-		if (find(citeStylesFull, last, style) != last)
+		if (find(citeStylesFull, last, s.style) != last)
 			cite += '*';
 	}
 
-	if (forceUCase) {
+	if (s.forceUpperCase) {
 		CiteStyle const * last = citeStylesUCase + nCiteStylesUCase;
-		if (find(citeStylesUCase, last, style) != last)
+		if (find(citeStylesUCase, last, s.style) != last)
 			cite[0] = 'C';
 	}
 
 	return cite;
 }
 
-
-vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
+vector<CiteStyle> citeStyles(CiteEngine engine)
 {
 	unsigned int nStyles = 0;
 	unsigned int start = 0;
@@ -543,17 +538,14 @@ vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
 			break;
 	}
 
-	typedef vector<CiteStyle> cite_vec;
-
-	cite_vec styles(nStyles);
+	vector<CiteStyle> styles(nStyles);
 	size_t i = 0;
 	int j = start;
 	for (; i != styles.size(); ++i, ++j)
-		styles[i] = citeStyles[j];
+		styles[i] = citeStylesArray[j];
 
 	return styles;
 }
 
-} // namespace biblio
 } // namespace lyx
 

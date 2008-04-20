@@ -78,9 +78,9 @@ private:
 	class Cache {
 	public:
 		///
-		Cache() : engine(biblio::ENGINE_BASIC), params(CITE_CODE) {}
+		Cache() : engine(ENGINE_BASIC), params(CITE_CODE) {}
 		///
-		biblio::CiteEngine engine;
+		CiteEngine engine;
 		///
 		InsetCommandParams params;
 		///

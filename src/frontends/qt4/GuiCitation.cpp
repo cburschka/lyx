@@ -47,7 +47,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-static vector<biblio::CiteStyle> citeStyles_;
+static vector<CiteStyle> citeStyles_;
 
 
 template<typename String>
@@ -213,18 +213,18 @@ void GuiCitation::updateDialog()
 }
 
 
-void GuiCitation::updateFormatting(biblio::CiteStyle currentStyle)
+void GuiCitation::updateFormatting(CiteStyle currentStyle)
 {
-	biblio::CiteEngine const engine = citeEngine();
+	CiteEngine const engine = citeEngine();
 	bool const natbib_engine =
-		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
-		engine == biblio::ENGINE_NATBIB_NUMERICAL;
-	bool const basic_engine = engine == biblio::ENGINE_BASIC;
+		engine == ENGINE_NATBIB_AUTHORYEAR ||
+		engine == ENGINE_NATBIB_NUMERICAL;
+	bool const basic_engine = engine == ENGINE_BASIC;
 
 	bool const haveSelection = 
 		selectedLV->model()->rowCount() > 0;
 
-	bool const isNocite = currentStyle == biblio::NOCITE;
+	bool const isNocite = currentStyle == NOCITE;
 
 	fulllistCB->setEnabled(natbib_engine && haveSelection && !isNocite);
 	forceuppercaseCB->setEnabled(natbib_engine && haveSelection && !isNocite);
@@ -242,10 +242,10 @@ void GuiCitation::updateStyle()
 	string const & command = params_.getCmdName();
 
 	// Find the style of the citekeys
-	vector<biblio::CiteStyle> const & styles = citeStyles_;
-	biblio::CitationStyle const cs(command);
+	vector<CiteStyle> const & styles = citeStyles_;
+	CitationStyle const cs = citationStyleFromString(command);
 
-	vector<biblio::CiteStyle>::const_iterator cit =
+	vector<CiteStyle>::const_iterator cit =
 		std::find(styles.begin(), styles.end(), cs.style);
 
 	// restore the latest natbib style
@@ -258,7 +258,7 @@ void GuiCitation::updateStyle()
 		int const i = int(cit - styles.begin());
 		citationStyleCO->setCurrentIndex(i);
 		fulllistCB->setChecked(cs.full);
-		forceuppercaseCB->setChecked(cs.forceUCase);
+		forceuppercaseCB->setChecked(cs.forceUpperCase);
 	} else {
 		fulllistCB->setChecked(false);
 		forceuppercaseCB->setChecked(false);
@@ -266,9 +266,9 @@ void GuiCitation::updateStyle()
 	updateFormatting(cs.style);
 }
 
-//This one needs to be called whenever citationStyleCO needs
-//to be updated---and this would be on anything that changes the
-//selection in selectedLV, or on a general update.
+// This one needs to be called whenever citationStyleCO needs
+// to be updated---and this would be on anything that changes the
+// selection in selectedLV, or on a general update.
 void GuiCitation::fillStyles()
 {
 	int const oldIndex = citationStyleCO->currentIndex();
@@ -412,7 +412,7 @@ void GuiCitation::on_entriesCO_currentIndexChanged(int /*index*/)
 void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 {
 	if (index >= 0 && index < citationStyleCO->count()) {
-		vector<biblio::CiteStyle> const & styles = citeStyles_;
+		vector<CiteStyle> const & styles = citeStyles_;
 		updateFormatting(styles[index]);
 	}
 }
@@ -451,17 +451,19 @@ void GuiCitation::apply(int const choice, bool full, bool force,
 	if (cited_keys_.isEmpty())
 		return;
 
-	vector<biblio::CiteStyle> const & styles = citeStyles_;
-	if (styles[choice] == biblio::NOCITE) {
+	vector<CiteStyle> const & styles = citeStyles_;
+	if (styles[choice] == NOCITE) {
 		full = false;
 		force = false;
 		before.clear();
 		after.clear();
 	}
 	
-	string const command =
-		biblio::CitationStyle(styles[choice], full, force)
-		.asLatexStr();
+	CitationStyle s;
+	s.style = styles[choice];
+	s.full = full;
+	s.forceUpperCase = force;
+	string const command = citationStyleToString(s);
 
 	params_.setCmdName(command);
 	params_["key"] = qstring_to_ucs4(cited_keys_.join(","));
@@ -592,9 +594,9 @@ void GuiCitation::setCitedKeys()
 bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommand::string2params("citation", data, params_);
-	biblio::CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngine const engine = buffer().params().citeEngine();
 	bibkeysInfo_.fillWithBibKeys(&buffer());
-	citeStyles_ = biblio::getCiteStyles(engine);
+	citeStyles_ = citeStyles(engine);
 	return true;
 }
 
@@ -646,7 +648,7 @@ void GuiCitation::filterByEntryType(
 }
 
 
-biblio::CiteEngine GuiCitation::citeEngine() const
+CiteEngine GuiCitation::citeEngine() const
 {
 	return buffer().params().citeEngine();
 }

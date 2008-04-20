@@ -1440,18 +1440,18 @@ void GuiDocument::apply(BufferParams & params)
 	preambleModule->apply(params);
 
 	// biblio
-	params.setCiteEngine(biblio::ENGINE_BASIC);
+	params.setCiteEngine(ENGINE_BASIC);
 
 	if (biblioModule->citeNatbibRB->isChecked()) {
 		bool const use_numerical_citations =
 			biblioModule->citeStyleCO->currentIndex();
 		if (use_numerical_citations)
-			params.setCiteEngine(biblio::ENGINE_NATBIB_NUMERICAL);
+			params.setCiteEngine(ENGINE_NATBIB_NUMERICAL);
 		else
-			params.setCiteEngine(biblio::ENGINE_NATBIB_AUTHORYEAR);
+			params.setCiteEngine(ENGINE_NATBIB_AUTHORYEAR);
 
 	} else if (biblioModule->citeJurabibRB->isChecked())
-		params.setCiteEngine(biblio::ENGINE_JURABIB);
+		params.setCiteEngine(ENGINE_JURABIB);
 
 	params.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
@@ -1754,17 +1754,17 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
-		params.citeEngine() == biblio::ENGINE_BASIC);
+		params.citeEngine() == ENGINE_BASIC);
 
 	biblioModule->citeNatbibRB->setChecked(
-		params.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL ||
-		params.citeEngine() == biblio::ENGINE_NATBIB_AUTHORYEAR);
+		params.citeEngine() == ENGINE_NATBIB_NUMERICAL ||
+		params.citeEngine() == ENGINE_NATBIB_AUTHORYEAR);
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		params.citeEngine() == biblio::ENGINE_NATBIB_NUMERICAL);
+		params.citeEngine() == ENGINE_NATBIB_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
-		params.citeEngine() == biblio::ENGINE_JURABIB);
+		params.citeEngine() == ENGINE_JURABIB);
 
 	biblioModule->bibtopicCB->setChecked(
 		params.use_bibtopic);

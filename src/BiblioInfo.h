@@ -11,10 +11,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef BIBLIO_H
-#define BIBLIO_H
+#ifndef BIBLIOINFO_H
+#define BIBLIOINFO_H
 
 #include "support/docstring.h"
+
+#include "Citation.h"
 
 #include <vector>
 #include <map>
@@ -25,49 +27,14 @@ namespace lyx {
 	
 class Buffer;
 
-namespace biblio {
-
-enum CiteEngine {
-	ENGINE_BASIC,
-	ENGINE_NATBIB_AUTHORYEAR,
-	ENGINE_NATBIB_NUMERICAL,
-	ENGINE_JURABIB
-};
-
-enum CiteStyle {
-	CITE,
-	NOCITE,
-	CITET,
-	CITEP,
-	CITEALT,
-	CITEALP,
-	CITEAUTHOR,
-	CITEYEAR,
-	CITEYEARPAR
-};
-
-
-class CitationStyle {
-public:
-	///
-	CitationStyle(CiteStyle s = CITE, bool f = false, bool force = false)
-		: style(s), full(f), forceUCase(force) {}
-	/// \param latex_str a LaTeX command, "cite", "Citep*", etc
-	CitationStyle(std::string const & latex_str);
-	///
-	std::string const asLatexStr() const;
-	///
-	CiteStyle style;
-	///
-	bool full;
-	///
-	bool forceUCase;
-};
-
+/// FIXME: To Citation.cpp?
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> const getCiteStyles(CiteEngine const );
+std::vector<CiteStyle> citeStyles(CiteEngine);
+/// \param latex_str a LaTeX command, "cite", "Citep*", etc
+CitationStyle citationStyleFromString(std::string const & latex_str);
+/// the other way rounf
+std::string citationStyleToString(CitationStyle const &);
 
-} // namespace biblio
 
 /// Class to represent information about a BibTeX or
 /// bibliography entry.
@@ -207,4 +174,5 @@ private:
 };
 
 } // namespace lyx
-#endif
+
+#endif // BIBLIOINFO_H

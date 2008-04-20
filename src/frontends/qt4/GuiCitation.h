@@ -18,7 +18,9 @@
 #include "GuiDialog.h"
 #include "GuiSelectionManager.h"
 #include "ui_CitationUi.h"
+
 #include "BiblioInfo.h"
+#include "Citation.h"
 
 #include "insets/InsetCommandParams.h"
 
@@ -86,7 +88,7 @@ private:
 	/// set the styles combo
 	void updateStyle();
 	/// set the formatting widgets
-	void updateFormatting(biblio::CiteStyle currentStyle);
+	void updateFormatting(CiteStyle currentStyle);
 	/// last used citation style
 	int style_;
 	
@@ -164,7 +166,7 @@ private:
 	void filterByEntryType(
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
-	biblio::CiteEngine citeEngine() const;
+	CiteEngine citeEngine() const;
 
 	/// \return information for this key.
 	docstring getInfo(docstring const & key) const;

@@ -178,6 +178,7 @@ HEADERFILESCORE = \
 	BufferParams.h \
 	BufferView.h \
 	Bullet.h \
+	Citation.h \
 	Changes.h \
 	Chktex.h \
 	CmdDef.h \

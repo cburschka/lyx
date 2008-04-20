@@ -16,7 +16,7 @@
 #define BUFFERPARAMS_H
 
 #include "Font.h"
-#include "BiblioInfo.h"
+#include "Citation.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -300,9 +300,9 @@ public:
 				     int const & sfscale, int const & ttscale) const;
 
 	/// get the appropriate cite engine (natbib handling)
-	biblio::CiteEngine citeEngine() const;
+	CiteEngine citeEngine() const;
 	///
-	void setCiteEngine(biblio::CiteEngine const);
+	void setCiteEngine(CiteEngine const);
 
 	/// options for pdf output
 	PDFOptions & pdfoptions();
@@ -325,7 +325,7 @@ private:
 	void readModules(Lexer &);
 
 	/// for use with natbib
-	biblio::CiteEngine cite_engine_;
+	CiteEngine cite_engine_;
 	///
 	DocumentClass * doc_class_;
 	///

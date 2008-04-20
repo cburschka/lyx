@@ -494,19 +494,19 @@ QString GuiBibtex::styleFile() const
 {
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
-	biblio::CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngine const engine = buffer().params().citeEngine();
 	QString defaultstyle;
 	switch (engine) {
-	case biblio::ENGINE_BASIC:
+	case ENGINE_BASIC:
 		defaultstyle = "plain";
 		break;
-	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+	case ENGINE_NATBIB_AUTHORYEAR:
 		defaultstyle = "plainnat";
 		break;
-	case biblio::ENGINE_NATBIB_NUMERICAL:
+	case ENGINE_NATBIB_NUMERICAL:
 		defaultstyle = "plainnat";
 		break;
-	case biblio::ENGINE_JURABIB:
+	case ENGINE_JURABIB:
 		defaultstyle = "jurabib";
 		break;
 	}

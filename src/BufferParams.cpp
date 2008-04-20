@@ -225,15 +225,15 @@ PackageTranslator const & packagetranslator()
 
 
 // Cite engine
-typedef Translator<string, biblio::CiteEngine> CiteEngineTranslator;
+typedef Translator<string, CiteEngine> CiteEngineTranslator;
 
 
 CiteEngineTranslator const init_citeenginetranslator()
 {
-	CiteEngineTranslator translator("basic", biblio::ENGINE_BASIC);
-	translator.addPair("natbib_numerical", biblio::ENGINE_NATBIB_NUMERICAL);
-	translator.addPair("natbib_authoryear", biblio::ENGINE_NATBIB_AUTHORYEAR);
-	translator.addPair("jurabib", biblio::ENGINE_JURABIB);
+	CiteEngineTranslator translator("basic", ENGINE_BASIC);
+	translator.addPair("natbib_numerical", ENGINE_NATBIB_NUMERICAL);
+	translator.addPair("natbib_authoryear", ENGINE_NATBIB_AUTHORYEAR);
+	translator.addPair("jurabib", ENGINE_JURABIB);
 	return translator;
 }
 
@@ -328,7 +328,7 @@ BufferParams::BufferParams()
 	use_geometry = false;
 	use_amsmath = package_auto;
 	use_esint = package_auto;
-	cite_engine_ = biblio::ENGINE_BASIC;
+	cite_engine_ = ENGINE_BASIC;
 	use_bibtopic = false;
 	trackChanges = false;
 	outputChanges = false;
@@ -1465,9 +1465,8 @@ void BufferParams::makeDocumentClass()
 					"probably need to reconfigure LyX.\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Module not available"),
 					msg + _("Some layouts may not be available."));
-			lyxerr << "BufferParams::makeDocumentClass(): Module " <<
-					modName << " requested but not found in module list." <<
-					endl;
+			LYXERR0("BufferParams::makeDocumentClass(): Module " <<
+					modName << " requested but not found in module list.");
 			continue;
 		}
 		if (!lm->isAvailable()) {
@@ -1504,12 +1503,9 @@ bool BufferParams::addLayoutModule(string const & modName)
 {
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();
-	for (; it != end; it++) {
+	for (; it != end; it++)
 		if (*it == modName) 
-			break;
-	}
-	if (it != layoutModules_.end())
-		return false;
+			return false;
 	layoutModules_.push_back(modName);
 	return true;
 }
@@ -1984,18 +1980,18 @@ Encoding const & BufferParams::encoding() const
 }
 
 
-biblio::CiteEngine BufferParams::citeEngine() const
+CiteEngine BufferParams::citeEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
 	if (documentClass().provides("natbib")
-	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
-		return biblio::ENGINE_NATBIB_AUTHORYEAR;
+	    && cite_engine_ != ENGINE_NATBIB_NUMERICAL)
+		return ENGINE_NATBIB_AUTHORYEAR;
 	return cite_engine_;
 }
 
 
-void BufferParams::setCiteEngine(biblio::CiteEngine cite_engine)
+void BufferParams::setCiteEngine(CiteEngine cite_engine)
 {
 	cite_engine_ = cite_engine;
 }

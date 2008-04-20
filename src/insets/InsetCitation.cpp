@@ -64,20 +64,20 @@ vector<string> const & possibleCiteCommands()
 
 
 // FIXME See the header for the issue.
-string defaultCiteCommand(biblio::CiteEngine engine)
+string defaultCiteCommand(CiteEngine engine)
 {
 	string str;
 	switch (engine) {
-		case biblio::ENGINE_BASIC:
+		case ENGINE_BASIC:
 			str = "cite";
 			break;
-		case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		case ENGINE_NATBIB_AUTHORYEAR:
 			str = "citet";
 			break;
-		case biblio::ENGINE_NATBIB_NUMERICAL:
+		case ENGINE_NATBIB_NUMERICAL:
 			str = "citep";
 			break;
-		case biblio::ENGINE_JURABIB:
+		case ENGINE_JURABIB:
 			str = "cite";
 			break;
 	}
@@ -85,7 +85,7 @@ string defaultCiteCommand(biblio::CiteEngine engine)
 }
 
 		
-string asValidLatexCommand(string const & input, biblio::CiteEngine const engine)
+string asValidLatexCommand(string const & input, CiteEngine const engine)
 {
 	string const default_str = defaultCiteCommand(engine);
 	if (!InsetCitation::isCompatibleCommand(input))
@@ -93,12 +93,12 @@ string asValidLatexCommand(string const & input, biblio::CiteEngine const engine
 
 	string output;
 	switch (engine) {
-		case biblio::ENGINE_BASIC:
+		case ENGINE_BASIC:
 			output = input;
 			break;
 
-		case biblio::ENGINE_NATBIB_AUTHORYEAR:
-		case biblio::ENGINE_NATBIB_NUMERICAL:
+		case ENGINE_NATBIB_AUTHORYEAR:
+		case ENGINE_NATBIB_NUMERICAL:
 			if (input == "cite" || input == "citefield" ||
 							input == "citetitle" || input == "cite*")
 				output = default_str;
@@ -108,7 +108,7 @@ string asValidLatexCommand(string const & input, biblio::CiteEngine const engine
 				output = input;
 			break;
 
-		case biblio::ENGINE_JURABIB: {
+		case ENGINE_JURABIB: {
 			// Jurabib does not support the 'uppercase' natbib style.
 			if (input[0] == 'C')
 				output = string(1, 'c') + input.substr(1);
@@ -131,7 +131,7 @@ string asValidLatexCommand(string const & input, biblio::CiteEngine const engine
 docstring complexLabel(Buffer const & buffer,
 			    string const & citeType, docstring const & keyList,
 			    docstring const & before, docstring const & after,
-			    biblio::CiteEngine engine)
+			    CiteEngine engine)
 {
 	// Only start the process off after the buffer is loaded from file.
 	if (!buffer.isFullyLoaded())
@@ -222,7 +222,7 @@ docstring complexLabel(Buffer const & buffer,
 	// One day, these might be tunable (as they are in BibTeX).
 	char op, cp;	// opening and closing parenthesis.
 	char * sep;	// punctuation mark separating citation entries.
-	if (engine == biblio::ENGINE_BASIC) {
+	if (engine == ENGINE_BASIC) {
 		op  = '[';
 		cp  = ']';
 		sep = ",";
@@ -252,9 +252,9 @@ docstring complexLabel(Buffer const & buffer,
 		// authors1/<before>;  ... ;
 		//  authors_last, <after>
 		if (cite_type == "cite") {
-			if (engine == biblio::ENGINE_BASIC) {
+			if (engine == ENGINE_BASIC) {
 				label += *it + sep_str;
-			} else if (engine == biblio::ENGINE_JURABIB) {
+			} else if (engine == ENGINE_JURABIB) {
 				if (it == keys.begin())
 					label += author + before_str + sep_str;
 				else
@@ -269,25 +269,25 @@ docstring complexLabel(Buffer const & buffer,
 		//  authors_last (<before> year, <after>)
 		} else if (cite_type == "citet") {
 			switch (engine) {
-			case biblio::ENGINE_NATBIB_AUTHORYEAR:
+			case ENGINE_NATBIB_AUTHORYEAR:
 				label += author + op_str + before_str +
 					year + cp + sep_str;
 				break;
-			case biblio::ENGINE_NATBIB_NUMERICAL:
+			case ENGINE_NATBIB_NUMERICAL:
 				label += author + op_str + before_str + '#' + *it + cp + sep_str;
 				break;
-			case biblio::ENGINE_JURABIB:
+			case ENGINE_JURABIB:
 				label += before_str + author + op_str +
 					year + cp + sep_str;
 				break;
-			case biblio::ENGINE_BASIC:
+			case ENGINE_BASIC:
 				break;
 			}
 
 		// author, year; author, year; ...
 		} else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
-			if (engine == biblio::ENGINE_NATBIB_NUMERICAL) {
+			if (engine == ENGINE_NATBIB_NUMERICAL) {
 				label += *it + sep_str;
 			} else {
 				label += author + ", " + year + sep_str;
@@ -297,18 +297,18 @@ docstring complexLabel(Buffer const & buffer,
 		//  authors_last <before> year, <after>)
 		} else if (cite_type == "citealt") {
 			switch (engine) {
-			case biblio::ENGINE_NATBIB_AUTHORYEAR:
+			case ENGINE_NATBIB_AUTHORYEAR:
 				label += author + ' ' + before_str +
 					year + sep_str;
 				break;
-			case biblio::ENGINE_NATBIB_NUMERICAL:
+			case ENGINE_NATBIB_NUMERICAL:
 				label += author + ' ' + before_str + '#' + *it + sep_str;
 				break;
-			case biblio::ENGINE_JURABIB:
+			case ENGINE_JURABIB:
 				label += before_str + author + ' ' +
 					year + sep_str;
 				break;
-			case biblio::ENGINE_BASIC:
+			case ENGINE_BASIC:
 				break;
 			}
 
@@ -330,7 +330,7 @@ docstring complexLabel(Buffer const & buffer,
 			label.insert(label.size() - 1, after_str);
 		} else {
 			bool const add =
-				!(engine == biblio::ENGINE_NATBIB_NUMERICAL &&
+				!(engine == ENGINE_NATBIB_NUMERICAL &&
 				  (cite_type == "citeauthor" ||
 				   cite_type == "citeyear"));
 			if (add)
@@ -345,7 +345,7 @@ docstring complexLabel(Buffer const & buffer,
 	}
 
 	if (cite_type == "citep" || cite_type == "citeyearpar" || 
-	    (cite_type == "cite" && engine == biblio::ENGINE_BASIC) )
+	    (cite_type == "cite" && engine == ENGINE_BASIC) )
 		label = op + label + cp;
 
 	return label;
@@ -415,7 +415,7 @@ docstring InsetCitation::generateLabel() const
 	docstring const after  = getParam("after");
 
 	docstring label;
-	biblio::CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngine const engine = buffer().params().citeEngine();
 	label = complexLabel(buffer(), getCmdName(), getParam("key"),
 			       before, after, engine);
 
@@ -435,7 +435,7 @@ docstring InsetCitation::screenLabel() const
 
 void InsetCitation::updateLabels(ParIterator const &)
 {
-	biblio::CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngine const engine = buffer().params().citeEngine();
 	if (cache.params == params() && cache.engine == engine)
 		return;
 
@@ -510,7 +510,7 @@ void InsetCitation::textString(odocstream & os) const
 // should revert to \cite[]{}
 int InsetCitation::latex(odocstream & os, OutputParams const &) const
 {
-	biblio::CiteEngine cite_engine = buffer().params().citeEngine();
+	CiteEngine cite_engine = buffer().params().citeEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));
@@ -519,7 +519,7 @@ int InsetCitation::latex(odocstream & os, OutputParams const &) const
 
 	docstring const & before = getParam("before");
 	docstring const & after  = getParam("after");
-	if (!before.empty() && cite_engine != biblio::ENGINE_BASIC)
+	if (!before.empty() && cite_engine != ENGINE_BASIC)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';
@@ -533,13 +533,13 @@ int InsetCitation::latex(odocstream & os, OutputParams const &) const
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
 	switch (features.bufferParams().citeEngine()) {
-	case biblio::ENGINE_BASIC:
+	case ENGINE_BASIC:
 		break;
-	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-	case biblio::ENGINE_NATBIB_NUMERICAL:
+	case ENGINE_NATBIB_AUTHORYEAR:
+	case ENGINE_NATBIB_NUMERICAL:
 		features.require("natbib");
 		break;
-	case biblio::ENGINE_JURABIB:
+	case ENGINE_JURABIB:
 		features.require("jurabib");
 		break;
 	}
