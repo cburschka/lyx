@@ -411,7 +411,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 				break;
 			}
 		}
-		if (b && !closeBuffer(*b)) {
+		if (b && !closeBuffer(*b, true)) {
 			close_event->ignore();
 			return;
 		}
@@ -1605,7 +1605,7 @@ bool GuiView::closeBuffer()
 }
 
 
-bool GuiView::closeBuffer(Buffer & buf)
+bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
@@ -1613,7 +1613,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
 	if (buf.isClean() || buf.paragraphs().empty()) {
-		if (buf.masterBuffer() == &buf)
+		if (buf.masterBuffer() == &buf && tolastopened)
 			LyX::ref().session().lastOpened().add(buf.fileName());
 		theBufferList().release(&buf);
 		return true;
@@ -1655,7 +1655,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	// save file names to .lyx/session
 	// if master/slave are both open, do not save slave since it
 	// will be automatically loaded when the master is loaded
-	if (buf.masterBuffer() == &buf)
+	if (buf.masterBuffer() == &buf && tolastopened)
 		LyX::ref().session().lastOpened().add(buf.fileName());
 
 	theBufferList().release(&buf);

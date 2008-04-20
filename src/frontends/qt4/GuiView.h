@@ -276,7 +276,7 @@ private:
 	///
 	bool saveBuffer(Buffer & b);
 	///
-	bool closeBuffer(Buffer & buf);
+	bool closeBuffer(Buffer & buf, bool tolastopened = false);
 
 	///
 	Inset * getOpenInset(std::string const & name) const;
