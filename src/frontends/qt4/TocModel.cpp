@@ -88,7 +88,7 @@ void TocModel::populate(Toc const & toc)
 		model_map_[iter] = top_level_item;
 
 		LYXERR(Debug::GUI, "Toc: at depth " << iter->depth()
-			<< ", added item " << to_utf8(iter->str()));
+			<< ", added item " << toqstr(iter->str()));
 
 		populate(iter, end, top_level_item);
 
@@ -110,10 +110,9 @@ void TocModel::populate(TocIterator & iter, TocIterator const & end,
 
 	int current_row;
 	QModelIndex child_item;
-
 	insertColumns(0, 1, parent);
-	while (iter != end) {
 
+	while (iter != end) {
 		++iter;
 
 		if (iter == end)

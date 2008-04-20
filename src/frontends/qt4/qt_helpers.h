@@ -15,8 +15,9 @@
 
 #include "Length.h"
 #include "support/qstring_helpers.h"
-#include "support/strfwd.h"
 #include "qt_i18n.h"
+
+#include <QString>
 
 class QComboBox;
 class QLineEdit;
@@ -30,6 +31,10 @@ class LengthCombo;
 namespace lyx {
 
 namespace support { class FileName; }
+
+class LyXErr;
+
+LyXErr & operator<<(LyXErr &, QString const &);
 
 namespace frontend {
 
@@ -63,7 +68,7 @@ void setValid(QWidget * widget, bool valid);
 QString const qt_(std::string const & str);
 
 ///
-typedef std::pair<QString, QString> LanguagePair;
+struct LanguagePair { QString first; QString second; };
 
 /** If the caller is the character dialog, add "No change" and "Reset"
 *  to the vector.

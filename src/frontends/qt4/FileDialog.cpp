@@ -80,9 +80,10 @@ void FileDialog::setButton2(QString const & label, QString const & dir)
 FileDialog::Result FileDialog::save(QString const & path,
 	QStringList const & filters, QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
-			   << "\", mask \"" << fromqstr(filters.join(";;"))
-			   << "\", suggested \"" << fromqstr(suggested) << '"');
+	LYXERR(Debug::GUI, "Select with path \"" << path
+			   << "\", mask \"" << filters.join(";;")
+			   << "\", suggested \"" << suggested << '"');
+
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
@@ -117,9 +118,9 @@ FileDialog::Result FileDialog::save(QString const & path,
 FileDialog::Result FileDialog::open(QString const & path,
 	QStringList const & filters, QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
-			   << "\", mask \"" << fromqstr(filters.join(";;"))
-			   << "\", suggested \"" << fromqstr(suggested) << '"');
+	LYXERR(Debug::GUI, "Select with path \"" << path
+			   << "\", mask \"" << filters.join(";;")
+			   << "\", suggested \"" << suggested << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
@@ -148,8 +149,8 @@ FileDialog::Result FileDialog::open(QString const & path,
 FileDialog::Result FileDialog::opendir(QString const & path,
 	QString const & suggested)
 {
-	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
-			   << "\", suggested \"" << fromqstr(suggested) << '"');
+	LYXERR(Debug::GUI, "Select with path \"" << path
+			   << "\", suggested \"" << suggested << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 

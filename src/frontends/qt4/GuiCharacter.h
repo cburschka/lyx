@@ -19,6 +19,8 @@
 #include "qt_helpers.h" // for LanguagePair
 #include "Font.h"
 
+#include <utility>
+
 
 namespace lyx {
 namespace frontend {

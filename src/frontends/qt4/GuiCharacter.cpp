@@ -223,8 +223,8 @@ void GuiCharacter::change_adaptor()
 }
 
 
-template<class B>
-static int findPos2nd(QList<pair<QString, B> > const & vec, B const & val)
+template<class P, class B>
+static int findPos2nd(QList<P> const & vec, B const & val)
 {
 	for (int i = 0; i != vec.size(); ++i)
 		if (vec[i].second == val)
