@@ -163,7 +163,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
-	{ "\\use_bundled_format", LyXRC::RC_USE_BUNDLED_FORMAT },
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
@@ -297,7 +296,6 @@ void LyXRC::setDefaults()
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
-	use_bundled_format = false;
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1048,9 +1046,6 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_OPEN_BUFFERS_IN_TABS:
 			lexrc >> open_buffers_in_tabs;
 			break;
-		case RC_USE_BUNDLED_FORMAT:
-			lexrc >> use_bundled_format;
-			break;
 
 		case RC_LAST:
 			break; // this is just a dummy
@@ -1639,19 +1634,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_USE_BUNDLED_FORMAT:
-		if (ignore_system_lyxrc ||
-		    use_bundled_format != system_lyxrc.use_bundled_format) {
-			os << "\\use_bundled_format "
-			   << convert<string>(use_bundled_format)
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 
-		os << "\n#\n"
-		   << "# COLOR SECTION ###################################\n"
-		   << "#\n\n";
+	os << "\n#\n"
+			<< "# COLOR SECTION ###################################\n"
+			<< "#\n\n";
 
 	case RC_SET_COLOR:
 		for (int i = 0; i < Color_ignore; ++i) {

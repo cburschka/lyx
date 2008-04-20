@@ -195,8 +195,6 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 
 
 string const LayoutFileList::localPrefix = "LOCAL:";
-string const LayoutFileList::embeddedPrefix = "EMBED:";
-
 
 LayoutFileIndex 
 	LayoutFileList::addLayoutFile(string const & textclass, string const & path,
@@ -212,8 +210,6 @@ LayoutFileIndex
 	
 	if (type == Local)
 		localIndex = localPrefix + fullName;
-	else if (type == Embedded)
-		localIndex = embeddedPrefix + textclass;
 	
 	// if the local file has already been loaded, return it
 	if (haveClass(localIndex))

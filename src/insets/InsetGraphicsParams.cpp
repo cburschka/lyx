@@ -182,11 +182,6 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	if (token == "filename") {
 		lex.eatLine();
 		filename.set(lex.getString(), bufpath);
-	} else if (token == "embed") {
-		lex.next();
-		string const name = lex.getString();
-		filename.setInzipName(name);
-		filename.setEmbed(!name.empty());
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
@@ -251,8 +246,7 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
 	graphics::Params pars;
-	pars.filename = filename.availableFile();
-	pars.icon = filename.embedded() ? "pin.png" : "";
+	pars.filename = filename;
 	pars.scale = lyxscale;
 	pars.angle = convert<double>(rotateAngle);
 

@@ -57,8 +57,6 @@ private:
 	InsetGraphics(InsetGraphics const &);
 
 	///
-	void setBuffer(Buffer & buffer);
-	///
 	bool isLabeled() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -92,10 +90,6 @@ private:
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	/// all graphics can be embedded
-	void registerEmbeddedFiles(EmbeddedFileList &) const;
-	///
-	void updateEmbeddedFile(EmbeddedFile const &);
 	///
 	void addToToc(ParConstIterator const &) const;
 	///

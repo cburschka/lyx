@@ -45,7 +45,6 @@ private:
 
 	/// The stored data.
 	graphics::Loader loader_;
-	graphics::Loader icon_;
 	graphics::Params params_;
 };
 

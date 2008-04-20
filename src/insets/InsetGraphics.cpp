@@ -54,7 +54,6 @@ TODO
 #include "Converter.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
-#include "EmbeddedFiles.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -182,23 +181,6 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-void InsetGraphics::setBuffer(Buffer & buffer)
-{
-	if (buffer_) {
-		try {
-			// a file may not be copied successfully when, e.g. buffer_
-			// has already been closed.
-			params_.filename = params_.filename.copyTo(buffer);
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-			// failed to embed
-			params_.filename.setEmbed(false);
-		}
-	}
-	Inset::setBuffer(buffer);
-}
-
-
 void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -254,23 +236,10 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetGraphics::registerEmbeddedFiles(EmbeddedFileList & files) const
-{
-	files.registerFile(params().filename, this, buffer());
-}
-
-
-void InsetGraphics::updateEmbeddedFile(EmbeddedFile const & file)
-{
-	// only properties of an embedded file can be changed here.
-	params_.filename = file;
-}
-
-
 void InsetGraphics::edit(Cursor & cur, bool, EntryDirection)
 {
 	cur.bv().showDialog("graphics", params2string(params(),
-cur.bv().buffer()), this);
+		cur.bv().buffer()), this);
 }
 
 
@@ -304,7 +273,6 @@ void InsetGraphics::read(Lexer & lex)
 	lex.setContext("InsetGraphics::read");
 	//lex >> "Graphics";
 	readInsetGraphics(lex, buffer().filePath(), params_);
-	params_.filename.enable(buffer().embedded(), buffer(), false);
 	graphic_->update(params().as_grfxParams());
 }
 
@@ -569,7 +537,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	if (params().filename.empty())
 		return string();
 
-	string const orig_file = params().filename.availableFile().absFilename();
+	string const orig_file = params().filename.absFilename();
 	// this is for dryrun and display purposes, do not use latexFilename
 	string const rel_file = params().filename.relFilename(buffer().filePath());
 
@@ -579,7 +547,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
-	FileName temp_file = params().filename.availableFile();
+	FileName temp_file = params().filename;
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
@@ -599,7 +567,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	GraphicsCopyStatus status;
 	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(params().filename.availableFile(), temp_path);
+			copyToDirIfNeeded(params().filename, temp_path);
 
 	if (status == FAILURE)
 		return orig_file;
@@ -935,11 +903,7 @@ void InsetGraphics::addToToc(ParConstIterator const & cpit) const
 {
 	TocBackend & backend = buffer().tocBackend();
 
-	docstring str = params_.filename.displayName();
-	if (params_.filename.embedded()) {
-		backend.toc("embedded").push_back(TocItem(cpit, 0, str));
-		str += _(" (embedded)");
-	}
+	docstring const str = params_.filename.displayName();
 	backend.toc("graphics").push_back(TocItem(cpit, 0, str));
 }
 

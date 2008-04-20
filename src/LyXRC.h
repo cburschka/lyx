@@ -152,7 +152,6 @@ public:
 		RC_USER_NAME,
 		RC_USETEMPDIR,
 		RC_USE_ALT_LANG,
-		RC_USE_BUNDLED_FORMAT,
 		RC_USE_CONVERTER_CACHE,
 		RC_USE_ESC_CHARS,
 		RC_USE_INP_ENC,
@@ -443,8 +442,6 @@ public:
 	bool completion_popup_after_complete;
 	///
 	bool open_buffers_in_tabs;
-	///
-	bool use_bundled_format;
 };
 
 

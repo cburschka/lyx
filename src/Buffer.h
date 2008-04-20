@@ -14,6 +14,7 @@
 
 #include "insets/InsetCode.h"
 
+#include "support/FileNameList.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/SignalSlot.h"
@@ -25,7 +26,6 @@
 namespace lyx {
 
 class BufferParams;
-class EmbeddedFileList;
 class DocIterator;
 class ErrorItem;
 class ErrorList;
@@ -404,15 +404,10 @@ public:
 	/// method is const because modifying this backend does not touch
 	/// the document contents.
 	TocBackend & tocBackend() const;
-	
-	//@{
-	EmbeddedFileList & embeddedFiles();
-	EmbeddedFileList const & embeddedFiles() const;
-	bool embedded() const;
-	//@}
 
+	///
 	Undo & undo();
-       
+
 	/// This function is called when the buffer is changed.
 	void changed() const;
 	/// This function is called when the buffer structure is changed.

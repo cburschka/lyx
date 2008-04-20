@@ -949,12 +949,6 @@ void GuiView::updateToc()
 }
 
 
-void GuiView::updateEmbeddedFiles()
-{
-	updateDialog("embedding", "");
-}
-
-
 void GuiView::autoSave()
 {
 	LYXERR(Debug::INFO, "Running autoSave()");
@@ -2018,7 +2012,7 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "embedding", "errorlist", "ert", "external", "file",
+"citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
 "mathdelimiter", "mathmatrix", "note", "paragraph", "prefs", "print", 
 "ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",

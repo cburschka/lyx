@@ -17,7 +17,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "EmbeddedFiles.h"
 #include "ui_BibtexAddUi.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -32,6 +31,7 @@
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
+#include "support/FileName.h"
 #include "support/filetools.h" // changeExtension
 #include "support/gettext.h"
 #include "support/lstrings.h"

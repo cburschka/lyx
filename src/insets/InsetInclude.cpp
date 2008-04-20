@@ -140,8 +140,9 @@ FileName const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
 	return makeAbsPath(to_utf8(params["filename"]),
-			   onlyPath(parentFilename(buffer)));
+			onlyPath(parentFilename(buffer)));
 }
+
 
 InsetLabel * createLabel(docstring const & label_str)
 {
@@ -385,8 +386,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	if (incfile.empty())
 		return 0;
 
-	FileName const included_file =
-		includedFilename(buffer(), params());
+	FileName const included_file = includedFilename(buffer(), params());
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE

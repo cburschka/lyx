@@ -277,7 +277,6 @@ public:
 
 	AuthorList authorlist;
 	BranchList branchlist;
-	vector<string> extraEmbeddedFiles;
 	Bullet temp_bullets[4];
 	Bullet user_defined_bullets[4];
 	Spacing spacing;
@@ -351,7 +350,6 @@ BufferParams::BufferParams()
 	listings_params = string();
 	pagestyle = "default";
 	compressed = false;
-	embedded = lyxrc.use_bundled_format;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 		temp_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -375,18 +373,6 @@ AuthorList & BufferParams::authors()
 AuthorList const & BufferParams::authors() const
 {
 	return pimpl_->authorlist;
-}
-
-
-vector<string> & BufferParams::extraEmbeddedFiles()
-{
-	return pimpl_->extraEmbeddedFiles;
-}
-
-
-vector<string> const & BufferParams::extraEmbeddedFiles() const
-{
-	return pimpl_->extraEmbeddedFiles;
 }
 
 
@@ -467,7 +453,7 @@ void BufferParams::setDefSkip(VSpace const & vs)
 
 
 string BufferParams::readToken(Lexer & lex, string const & token,
-	FileName const & filepath, FileName const & temppath)
+	FileName const & filepath)
 {
 	if (token == "\\textclass") {
 		lex.next();
@@ -476,8 +462,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
-		if (!temppath.empty())
-			tcp = bcl.addLayoutFile(classname, temppath.absFilename(), LayoutFileList::Embedded);
 		if (tcp.empty() && !filepath.empty())
 			tcp = bcl.addLayoutFile(classname, filepath.absFilename(), LayoutFileList::Local);
 		if (!tcp.empty())
@@ -672,16 +656,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			lyxerr << "PDFOptions::readToken(): Unknown token: " <<
 				toktmp << endl;
 			return toktmp;
-		}
-	} else if (token == "\\extra_embedded_files") {
-		extraEmbeddedFiles().clear();
-		string par;
-		lex >> par;
-		string tmp;
-		par = split(par, tmp, ',');
-		while (!tmp.empty()) {
-			extraEmbeddedFiles().push_back(tmp);
-			par = split(par, tmp, ',');
 		}
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 

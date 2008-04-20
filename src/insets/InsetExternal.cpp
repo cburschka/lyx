@@ -190,6 +190,7 @@ void InsetExternalParams::write(Buffer const & buf, ostream & os) const
 
 	if (!filename.empty())
 		os << "\tfilename " << filename.outputFilename(buf.filePath()) << '\n';
+
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
 		   << external::displayTranslator().find(display)
@@ -246,7 +247,6 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 	enum {
 		EX_TEMPLATE = 1,
 		EX_FILENAME,
-		EX_EMBED,
 		EX_DISPLAY,
 		EX_LYXSCALE,
 		EX_DRAFT,
@@ -268,7 +268,6 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		{ "clip",            EX_CLIP },
 		{ "display",         EX_DISPLAY},
 		{ "draft",           EX_DRAFT},
-		{ "embed",           EX_EMBED},
 		{ "extra",           EX_EXTRA },
 		{ "filename",        EX_FILENAME},
 		{ "height",          EX_HEIGHT },
@@ -300,14 +299,6 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 			break;
 		}
 		
-		case EX_EMBED: {
-			lex.next();
-			string const name = lex.getString();
-			filename.setInzipName(name);
-			filename.setEmbed(!name.empty());
-			break;
-		}
-
 		case EX_DISPLAY: {
 			lex.next();
 			string const name = lex.getString();
@@ -426,23 +417,6 @@ InsetExternal::~InsetExternal()
 }
 
 
-void InsetExternal::setBuffer(Buffer & buffer)
-{
-	if (buffer_) {
-		try {
-			// a file may not be copied successfully when, e.g. buffer_
-			// has already been closed.
-			params_.filename = params_.filename.copyTo(buffer);
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-			// failed to embed
-			params_.filename.setEmbed(false);
-		}
-	}
-	Inset::setBuffer(buffer);
-}
-
-
 void InsetExternal::statusChanged() const
 {
 	updateFrontend();
@@ -503,18 +477,6 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetExternal::registerEmbeddedFiles(EmbeddedFileList & files) const
-{
-	files.registerFile(params_.filename, this, buffer());
-}
-
-
-void InsetExternal::updateEmbeddedFile(EmbeddedFile const & file)
-{
-	params_.filename = file;
-}
-
-
 void InsetExternal::edit(Cursor & cur, bool, EntryDirection)
 {
 	cur.bv().showDialog("external",
@@ -568,8 +530,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 {
 	graphics::Params gparams;
 
-	gparams.filename = eparams.filename.availableFile();
-	gparams.icon = eparams.filename.embedded() ? "pin.png" : "";
+	gparams.filename = eparams.filename;
 	gparams.scale = eparams.lyxscale;
 	if (eparams.clipdata.clip)
 		gparams.bb = eparams.clipdata.bbox;
@@ -738,11 +699,8 @@ void InsetExternal::write(ostream & os) const
 void InsetExternal::read(Lexer & lex)
 {
 	InsetExternalParams params;
-	if (params.read(buffer(), lex)) {
-		// exception handling is not needed as long as embedded files are in place.
-		params.filename.enable(buffer().embedded(), buffer(), false);
+	if (params.read(buffer(), lex))
 		setParams(params);
-	}
 }
 
 

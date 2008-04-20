@@ -861,7 +861,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 	// create inset for graphic
 	InsetGraphics * inset = new InsetGraphics(cur.buffer());
 	InsetGraphicsParams params;
-	params.filename = EmbeddedFile(filename.absFilename(), cur.buffer().filePath());
+	params.filename = support::DocFileName(filename.absFilename());
 	inset->setParams(params);
 	cur.recordUndo();
 	cur.insert(inset);

@@ -38,16 +38,13 @@ namespace lyx {
 RenderGraphic::RenderGraphic(Inset const * inset)
 {
 	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
-	icon_.connect(boost::bind(&Inset::updateFrontend, inset));
 }
 
 
 RenderGraphic::RenderGraphic(RenderGraphic const & other, Inset const * inset)
-	: RenderBase(other), loader_(other.loader_), icon_(other.icon_),
-		params_(other.params_)
+	: RenderBase(other), loader_(other.loader_), params_(other.params_)
 {
 	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
-	icon_.connect(boost::bind(&Inset::updateFrontend, inset));
 }
 
 
@@ -63,15 +60,6 @@ void RenderGraphic::update(graphics::Params const & params)
 
 	if (!params_.filename.empty())
 		loader_.reset(params_.filename, params_);
-	// If icon is set to empty, icon_ will not be reset to empty
-	// but will not be displayed. This is to avoid repeated loading
-	// of the same icon when figure status changes.
-	if (!params_.icon.empty()) {
-		support::FileName const icon = support::libFileSearch("images/",
-			params_.icon, "png");
-		if (!icon.empty()) // using an empty bounding box
-			icon_.reset(icon, graphics::Params());
-	}
 }
 
 
@@ -186,10 +174,6 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 			loader_.startLoading();
 		if (!loader_.monitoring())
 			loader_.startMonitoring();
-		if (icon_.status() == graphics::WaitingToLoad)
-			icon_.startLoading();
-		if (!icon_.monitoring())
-			icon_.startMonitoring();
 	}
 
 	// This will draw the graphics. If the graphics has not been
@@ -229,9 +213,6 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 				     y - 4, msg, msgFont);
 		}
 	}
-	if (!params_.icon.empty() && readyToDisplay(icon_))
-		pi.pain.image(x + Inset::TEXT_TO_INSET_OFFSET, y - dim_.asc, 
-			10, 10, *icon_.image());
 }
 
 

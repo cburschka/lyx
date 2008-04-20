@@ -13,7 +13,6 @@
 #define INSET_BIBTEX_H
 
 #include "BiblioInfo.h"
-#include "EmbeddedFiles.h"
 #include "InsetCommand.h"
 
 #include "support/FileNameList.h"
@@ -21,7 +20,6 @@
 #include <map>
 
 namespace lyx {
-
 
 /** Used to insert BibTeX's information
   */

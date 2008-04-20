@@ -50,8 +50,8 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	formats.edit(buffer, params.filename.availableFile(),
-		     formats.getFormatFromFile(params.filename));
+	formats.edit(buffer, params.filename, 
+		formats.getFormatFromFile(params.filename));
 }
 
 
@@ -254,7 +254,7 @@ void updateExternal(InsetExternalParams const & params,
 
 		if (from_checksum != temp_checksum) {
 			Mover const & mover = getMover(from_format);
-			if (!mover.copy(params.filename.availableFile(), temp_file)) {
+			if (!mover.copy(params.filename, temp_file)) {
 				LYXERR(Debug::EXTERNAL, "external::updateExternal. "
 					<< "Unable to copy " << params.filename << " to " << temp_file);
 				return; // FAILURE
@@ -310,7 +310,7 @@ void updateExternal(InsetExternalParams const & params,
 	ErrorList el;
 	bool const success =
 		theConverters().convert(&buffer, temp_file, abs_to_file,
-				   params.filename.availableFile(), from_format, to_format, el,
+				   params.filename, from_format, to_format, el,
 				   Converters::try_default | Converters::try_cache);
 
 	if (!success) {

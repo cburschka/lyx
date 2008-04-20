@@ -26,6 +26,7 @@
 #include "support/os.h"
 #include "support/lstrings.h"
 #include "support/FileFilterList.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 
 #include "insets/InsetListingsParams.h"

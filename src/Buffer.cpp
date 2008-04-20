@@ -25,7 +25,6 @@
 #include "Converter.h"
 #include "Counters.h"
 #include "DocIterator.h"
-#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
@@ -191,9 +190,6 @@ public:
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
 
-	/// all embedded files of this buffer
-	EmbeddedFileList embedded_files;
-
 	/// timestamp and checksum used to test if the file has been externally
 	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
 	time_t timestamp_;
@@ -239,8 +235,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false),
-	  embedded_files(), timestamp_(0), checksum_(0), wa_(0), 
-	  undo_(parent)
+	  timestamp_(0), checksum_(0), wa_(0), undo_(parent)
 {
 	temppath = createBufferTmpDir();
 	lyxvc.setBuffer(&parent);
@@ -367,24 +362,6 @@ TocBackend & Buffer::tocBackend() const
 }
 
 
-EmbeddedFileList & Buffer::embeddedFiles()
-{
-	return d->embedded_files;
-}
-
-
-EmbeddedFileList const & Buffer::embeddedFiles() const
-{
-	return d->embedded_files;
-}
-
-
-bool Buffer::embedded() const
-{
-	return params().embedded;
-}
-
-
 Undo & Buffer::undo()
 {
 	return d->undo_;
@@ -503,8 +480,7 @@ int Buffer::readHeader(Lexer & lex)
 		LYXERR(Debug::PARSER, "Handling document header token: `"
 				      << token << '\'');
 
-		string unknown = params().readToken(lex, token, d->filename.onlyPath(),
-			d->temppath);
+		string unknown = params().readToken(lex, token, d->filename.onlyPath());
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\' && token == "\\textclass") {
 				Alert::warning(_("Unknown document class"),
@@ -574,22 +550,6 @@ bool Buffer::readDocument(Lexer & lex)
 
 	// read main text
 	bool const res = text().read(*this, lex, errorList, &(d->inset));
-
-	// Enable embeded files, which will set temp path and move
-	// inconsistent inzip files if needed.
-	try {
-		embeddedFiles().validate(*this);
-		embeddedFiles().enable(params().embedded, *this, false);
-	} catch (ExceptionMessage const & message) {
-		Alert::error(message.title_, message.details_);
-		Alert::warning(_("Failed to read embedded files"),
-		       _("Due to most likely a bug, LyX failed to locate all embedded "
-				 "file. If you unzip the LyX file, you should be able to see and "
-				 "open content.lyx which is your main text. You may also be able "
-				 "to recover some embedded files. Please report this bug to the "
-				 "lyx-devel mailing list."));
-		return false;
-	}
 
 	updateMacros();
 	updateMacroInstances();
@@ -688,20 +648,7 @@ bool Buffer::readFile(FileName const & filename)
 		// decompress to a temp directory
 		LYXERR(Debug::FILES, filename << " is in zip format. Unzip to " << temppath());
 		::unzipToDir(filename.toFilesystemEncoding(), temppath());
-		//
-		FileName lyxfile(addName(temppath(), "content.lyx"));
-		// if both manifest.txt and file.lyx exist, this is am embedded file
-		if (lyxfile.exists()) {
-			// if in bundled format, save checksum of the compressed file, not content.lyx
-			saveCheckSum(filename);
-			params().embedded = true;
-			fname = lyxfile;
-		}
 	}
-	// The embedded lyx file can also be compressed, for backward compatibility
-	format = fname.guessFormatFromContents();
-	if (format == "gzip" || format == "zip" || format == "compress")
-		params().compressed = true;
 
 	// remove dummy empty par
 	paragraphs().clear();
@@ -888,22 +835,15 @@ bool Buffer::writeFile(FileName const & fname) const
 
 	bool retval = false;
 
-	FileName content;
-	if (params().embedded)
-		// first write the .lyx file to the temporary directory
-		content = FileName(addName(temppath(), "content.lyx"));
-	else
-		content = fname;
-
 	docstring const str = bformat(_("Saving document %1$s..."),
-		makeDisplayPath(content.absFilename()));
+		makeDisplayPath(fname.absFilename()));
 	message(str);
 
 	if (params().compressed) {
-		gz::ogzstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		gz::ogzstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	} else {
-		ofstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	}
 
@@ -914,15 +854,6 @@ bool Buffer::writeFile(FileName const & fname) const
 
 	removeAutosaveFile(d->filename.absFilename());
 
-	if (params().embedded) {
-		message(str + _(" writing embedded files."));
-		// if embedding is enabled, write file.lyx and all the embedded files
-		// to the zip file fname.
-		if (!d->embedded_files.writeFile(fname, *this)) {
-			message(str + _(" could not write embedded files!"));
-			return false;
-		}
-	}
 	saveCheckSum(d->filename);
 	message(str + _(" done."));
 
@@ -2596,5 +2527,6 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 			cit->error_text, id_start, pos_start, pos_end));
 	}
 }
+
 
 } // namespace lyx

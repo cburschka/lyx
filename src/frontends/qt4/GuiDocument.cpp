@@ -1282,16 +1282,6 @@ void GuiDocument::classChanged()
 			setLayoutComboByIDString(bp_.baseClassID());
 			return;
 		}
-	} else if (prefixIs(classname, LayoutFileList::embeddedPrefix)) {
-		int const ret = Alert::prompt(_("Embedded layout"),
-				_("The layout file you have selected is an embedded layout that\n"
-				  "is embedded to a buffer. You cannot make use of it unless\n"
-				  "it is already embedded to this buffer.\n"),
-				  1, 1, _("&Set Layout"), _("&Cancel"));
-		if (ret == 1) {
-			setLayoutComboByIDString(bp_.baseClassID());
-			return;
-		}
 	}
 	// FIXME Note that by doing things this way, we load the TextClass
 	// as soon as it is selected. So, if you use the scroll wheel when

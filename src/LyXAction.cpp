@@ -1479,14 +1479,6 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop, Buffer },
 /*!
- * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_EMBEDDING
- * \li Action: Toggles the embeddding feature on/off.
- * \li Syntax: buffer-toggle-embedding
- * \li Origin: bpeng, 21 Oct 2007
- * \endvar
- */
-		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
-/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_CLOSE
  * \li Action: Closes the current buffer.
  * \li Notion: Closes the current buffer, asking whether to save it, etc,

@@ -90,8 +90,7 @@ public:
 
 	enum Layout_Type {
 		System,
-		Local,
-		Embedded
+		Local
 	};
 	
 	/// add a textclass from user local directory.
@@ -104,7 +103,6 @@ public:
 	std::vector<LayoutFileIndex> classList() const;
 	/// 
 	static std::string const localPrefix;
-	static std::string const embeddedPrefix;
 private:
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;

@@ -16,7 +16,10 @@
 
 #include "graphics/GraphicsTypes.h"
 #include "Length.h"
-#include "EmbeddedFiles.h"
+
+#include "support/FileName.h"
+
+#include <string>
 
 namespace lyx {
 
@@ -31,7 +34,7 @@ class InsetGraphicsParams
 {
 public:
 	/// Image filename.
-	EmbeddedFile filename;
+	support::DocFileName filename;
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
 	/// How to display the image inside LyX

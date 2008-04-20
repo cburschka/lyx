@@ -67,8 +67,7 @@ public:
 	/// read a header token, if unrecognised, return it or an unknown class name
 	std::string readToken(Lexer & lex,
 		std::string const & token, ///< token to read.
-		support::FileName const & filepath,
-		support::FileName const & temppath); ///< where to look for local layout file.
+		support::FileName const & filepath);
 
 	///
 	void writeFile(std::ostream &) const;
@@ -266,11 +265,6 @@ public:
 	bool outputChanges;
 	///
 	bool compressed;
-	///
-	bool embedded;
-	///
-	std::vector<std::string> & extraEmbeddedFiles();
-	std::vector<std::string> const & extraEmbeddedFiles() const;
 
 	/// the author list for the document
 	AuthorList & authors();

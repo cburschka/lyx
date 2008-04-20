@@ -24,7 +24,6 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
-#include "EmbeddedFiles.h"
 #include "ErrorList.h"
 #include "factory.h"
 #include "FloatList.h"
@@ -943,11 +942,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 	}
 	
-	case LFUN_BUFFER_TOGGLE_EMBEDDING: {
-		flag.setOnOff(buffer_.params().embedded);
-		break;
-	}
-
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
 	case LFUN_SCROLL:
@@ -1311,16 +1305,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
 	
-	case LFUN_BUFFER_TOGGLE_EMBEDDING: {
-		// turn embedding on/off
-		try {
-			buffer_.embeddedFiles().enable(!buffer_.params().embedded, buffer_, true);
-		} catch (ExceptionMessage const & message) {
-			Alert::error(message.title_, message.details_);
-		}
-		break;
-	}
-
 	case LFUN_NEXT_INSET_TOGGLE: {
 		// this is the real function we want to invoke
 		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_TOGGLE, cmd.origin);

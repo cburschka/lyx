@@ -72,12 +72,6 @@ public:
 	 */
 	/// Rotation angle.
 	double angle;
-
-	/** The icon to be displayed to the top-left corner of an image.
-	 *  It is mutable because an icon reflects a temporary state of
-	 *  the image, and is variable.
-	 */
-	mutable std::string icon;
 };
 
 bool operator==(Params const &, Params const &);

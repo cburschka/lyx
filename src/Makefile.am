@@ -99,7 +99,6 @@ SOURCEFILESCORE = \
 	CutAndPaste.cpp \
 	DepTable.cpp \
 	DocIterator.cpp \
-	EmbeddedFiles.cpp \
 	Encoding.cpp \
 	ErrorList.cpp \
 	Exporter.cpp \
@@ -196,7 +195,6 @@ HEADERFILESCORE = \
 	DepTable.h \
 	DispatchResult.h \
 	DocIterator.h \
-	EmbeddedFiles.h \
 	Encoding.h \
 	ErrorList.h \
 	Exporter.h \

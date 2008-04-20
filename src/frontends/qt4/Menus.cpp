@@ -914,9 +914,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		else if (cit->first == "child") {
 			label = qt_("Child Documents");
 			in_other_list = false;
-		} else if (cit->first == "embedded")
-			label = qt_("Embedded Files");
-		else if (cit->first == "graphics")
+		} else if (cit->first == "graphics")
 			label = qt_("List of Graphics");
 		else if (cit->first == "equation")
 			label = qt_("List of Equations");

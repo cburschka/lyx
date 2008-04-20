@@ -315,12 +315,6 @@ void GuiGraphics::on_getPB_clicked()
 }
 
 
-void GuiGraphics::on_filename_textChanged(const QString & filename)
-{
-	EmbeddedFile file = EmbeddedFile(fromqstr(filename), fromqstr(bufferFilepath()));
-}
-
-
 void GuiGraphics::setAutoText()
 {
 	if (scaleCB->isChecked())
@@ -596,7 +590,7 @@ void GuiGraphics::updateContents()
 	else
 		origin->setCurrentIndex(0);
 
-	//// latex section
+	// latex section
 	latexoptions->setText(toqstr(igp.special));
 }
 

@@ -14,7 +14,6 @@
 
 #include "Inset.h"
 #include "ExternalTransforms.h"
-#include "EmbeddedFiles.h"
 
 #include "support/FileName.h"
 #include "support/Translator.h"
@@ -78,7 +77,7 @@ public:
 	std::string const & templatename() const { return templatename_; }
 
 	/// The external file.
-	EmbeddedFile filename;
+	support::DocFileName filename;
 	/// How the inset is to be displayed by LyX.
 	external::DisplayType display;
 	/// The scale of the displayed graphic (if shown).
@@ -119,8 +118,6 @@ public:
 	InsetExternalParams const & params() const;
 	///
 	void setParams(InsetExternalParams const &);
-	///
-	void setBuffer(Buffer & buffer);
 	/// \returns the number of rows (\n's) of generated code.
 	int latex(odocstream &, OutputParams const &) const;
 
@@ -151,10 +148,6 @@ private:
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	/// external file can be embedded
-	void registerEmbeddedFiles(EmbeddedFileList &) const;
-	///
-	void updateEmbeddedFile(EmbeddedFile const &);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

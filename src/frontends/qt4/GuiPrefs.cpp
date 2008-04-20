@@ -1838,8 +1838,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(useBundledCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 }
 
@@ -1855,7 +1853,6 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
-	rc.use_bundled_format = useBundledCB->isChecked();
 }
 
 
@@ -1874,7 +1871,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
-	useBundledCB->setChecked(rc.use_bundled_format);
 }
 
 

@@ -45,7 +45,6 @@ private Q_SLOTS:
 	void change_bb();
 	void on_browsePB_clicked();
 	void on_getPB_clicked();
-	void on_filename_textChanged(const QString &);
 	void on_scaleCB_toggled(bool);
 	void on_WidthCB_toggled(bool);
 	void on_HeightCB_toggled(bool);

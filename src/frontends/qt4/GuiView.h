@@ -109,8 +109,6 @@ public:
 	
 	/// called on timeout
 	void autoSave();
-	///
-	void updateEmbeddedFiles();
 
 	/// \return the current buffer view.
 	BufferView * view();

@@ -292,7 +292,7 @@ support::FileNameList InsetBibtex::getBibFiles() const
 	FileName path(buffer().filePath());
 	support::PathChanger p(path);
 	
-	FileNameList vec;
+	support::FileNameList vec;
 	
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 	vector<docstring>::const_iterator it = bibfilelist.begin();

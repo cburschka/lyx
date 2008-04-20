@@ -496,8 +496,8 @@ bool Converters::move(string const & fmt,
 	string const to_base = removeExtension(to.absFilename());
 	string const to_extension = getExtension(to.absFilename());
 
-	FileNameList const files = FileName(path).dirList(getExtension(from.absFilename()));
-	for (FileNameList::const_iterator it = files.begin();
+	support::FileNameList const files = FileName(path).dirList(getExtension(from.absFilename()));
+	for (support::FileNameList::const_iterator it = files.begin();
 	     it != files.end(); ++it) {
 		string const from2 = it->absFilename();
 		string const file2 = onlyFilename(from2);
