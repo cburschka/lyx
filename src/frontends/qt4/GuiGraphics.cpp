@@ -460,6 +460,7 @@ void GuiGraphics::updateContents()
 			break;
 	}
 
+	lyxerr << fromqstr(bufferFilepath());
 	string const name =
 		igp.filename.outputFilename(fromqstr(bufferFilepath()));
 	filename->setText(toqstr(name));
