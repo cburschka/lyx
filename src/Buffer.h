@@ -14,7 +14,6 @@
 
 #include "insets/InsetCode.h"
 
-#include "support/FileNameList.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/SignalSlot.h"

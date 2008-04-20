@@ -24,7 +24,6 @@
 
 #include "support/convert.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/os.h"
 
 #include <QLineEdit>
@@ -57,13 +56,13 @@ GuiPrint::GuiPrint(GuiView & lv)
 	connect(allRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(reverseCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(collateCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(fromED, SIGNAL(textChanged(const QString&)),
+	connect(fromED, SIGNAL(textChanged(QString)),
 		this, SLOT(pagerangeChanged()));
-	connect(fromED, SIGNAL(textChanged(const QString&)),
+	connect(fromED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(toED, SIGNAL(textChanged(const QString&)),
+	connect(toED, SIGNAL(textChanged(QString)),
 		this, SLOT(pagerangeChanged()));
-	connect(toED, SIGNAL(textChanged(const QString&)),
+	connect(toED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(fileRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(printerRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -175,10 +174,9 @@ void GuiPrint::applyView()
 bool GuiPrint::initialiseParams(string const &)
 {
 	/// get global printer parameters
-	string const name = support::changeExtension(buffer().absFileName(),
-					lyxrc.print_file_extension);
 	params_ = PrinterParams();
-	params_.file_name = name;
+	params_.file_name = changeExtension(buffer().absFileName(),
+					lyxrc.print_file_extension);
 
 	setButtonsValid(true); // so that the user can press Ok
 	return true;
