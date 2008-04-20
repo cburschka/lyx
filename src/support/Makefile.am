@@ -85,6 +85,7 @@ liblyxsupport_la_SOURCES = \
 	Path.h \
 	Package.cpp \
 	Package.h \
+	qstring_helpers.cpp \
 	qstring_helpers.h \
 	socktools.cpp \
 	socktools.h \
