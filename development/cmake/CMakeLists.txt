@@ -134,6 +134,7 @@ endif()
 
 if(use_external_libintl)
 	find_package(Libintl REQUIRED)
+	add_definitions(-DHAVE_GETTEXT)
 endif()
 
 message("")
