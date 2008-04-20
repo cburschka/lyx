@@ -1905,7 +1905,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-			&& ((tclass.isDefaultLayout(par.layout())
+			&& (!(tclass.isDefaultLayout(par.layout())
 	         || tclass.isEmptyLayout(par.layout()))
 	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
 	    )
