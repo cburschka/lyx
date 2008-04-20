@@ -12,8 +12,10 @@
 #ifndef GUIREF_H
 #define GUIREF_H
 
-#include "GuiCommand.h"
+#include "GuiDialog.h"
 #include "ui_RefUi.h"
+
+#include "insets/InsetCommandParams.h"
 
 #include <vector>
 
@@ -22,7 +24,7 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiRef : public GuiCommand, public Ui::RefUi
+class GuiRef : public GuiDialog, public Ui::RefUi
 {
 	Q_OBJECT
 
@@ -72,6 +74,16 @@ private:
 	void redoRefs();
 	/// update references
 	void updateRefs();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+
+private:
+	///
+	InsetCommandParams params_;
 
 	/// sort or not persistent state
 	bool sort_;

@@ -15,10 +15,12 @@
 #ifndef GUICITATION_H
 #define GUICITATION_H
 
-#include "GuiCommand.h"
+#include "GuiDialog.h"
 #include "GuiSelectionManager.h"
 #include "ui_CitationUi.h"
 #include "BiblioInfo.h"
+
+#include "insets/InsetCommandParams.h"
 
 #include <QStringList>
 #include <QStringListModel>
@@ -26,7 +28,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiCitation : public GuiCommand, public Ui::CitationUi
+class GuiCitation : public GuiDialog, public Ui::CitationUi
 {
 	Q_OBJECT
 
@@ -126,6 +128,14 @@ private:
 	/// Set the Params variable for the Controller.
 	void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
 
 private:
 	/// available keys.
@@ -136,12 +146,8 @@ private:
 	QStringList all_keys_;
 	/// Cited keys.
 	QStringList cited_keys_;
-
 	///
-	bool initialiseParams(std::string const & data);
-
-	/// clean-up on hide.
-	void clearParams();
+	InsetCommandParams params_;
 
 	/** Disconnect from the inset when the Apply button is pressed.
 	 *  Allows easy insertion of multiple citations.

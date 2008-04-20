@@ -15,14 +15,15 @@
 #define GUIINCLUDE_H
 
 #include "GuiDialog.h"
-#include "GuiCommand.h"
 #include "ui_IncludeUi.h"
+
+#include "insets/InsetCommandParams.h"
 
 
 namespace lyx {
 namespace frontend {
 
-class GuiInclude : public GuiCommand, public Ui::IncludeUi
+class GuiInclude : public GuiDialog, public Ui::IncludeUi
 {
 	Q_OBJECT
 
@@ -46,6 +47,15 @@ private Q_SLOTS:
 
 private:
 	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+	///
 	enum Type {
 		///
 		INPUT,
@@ -68,10 +78,12 @@ private:
 	void applyView();
 	/// update
 	void updateContents();
-	///
-	bool isBufferDependent() const { return true; }
 	/// Browse for a file
 	QString browse(QString const &, Type) const;
+
+private:
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend

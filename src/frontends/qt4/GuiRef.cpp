@@ -22,7 +22,7 @@
 #include "insets/InsetRef.h"
 
 #include "support/FileName.h"
-#include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
+#include "support/filetools.h" // makeAbsPath, makeDisplayPath
 
 #include <QLineEdit>
 #include <QCheckBox>
@@ -39,7 +39,8 @@ namespace lyx {
 namespace frontend {
 
 GuiRef::GuiRef(GuiView & lv)
-	: GuiCommand(lv, "ref", qt_("Cross-reference"))
+	: GuiDialog(lv, "ref", qt_("Cross-reference")),
+	  params_(insetCode("ref"))
 {
 	setupUi(this);
 
@@ -209,7 +210,7 @@ void GuiRef::updateContents()
 	vector<string> buffers = theBufferList().getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
-		bufferCO->addItem(toqstr(lyx::to_utf8(makeDisplayPath(*it))));
+		bufferCO->addItem(toqstr(makeDisplayPath(*it)));
 	}
 
 	// restore the buffer combo setting for new insets
@@ -365,6 +366,21 @@ void GuiRef::gotoBookmark()
 {
 	dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 }
+
+
+bool GuiRef::initialiseParams(std::string const & data)
+{
+	InsetCommand::string2params("ref", data, params_);
+	return true;
+}
+
+
+void GuiRef::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("ref", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
 
 
 Dialog * createGuiRef(GuiView & lv) { return new GuiRef(lv); }

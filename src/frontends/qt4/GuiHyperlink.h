@@ -13,13 +13,15 @@
 #ifndef GUIHYPERLINK_H
 #define GUIHYPERLINK_H
 
-#include "GuiCommand.h"
+#include "GuiDialog.h"
 #include "ui_HyperlinkUi.h"
+
+#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiHyperlink : public GuiCommand, public Ui::HyperlinkUi
+class GuiHyperlink : public GuiDialog, public Ui::HyperlinkUi
 {
 	Q_OBJECT
 
@@ -37,6 +39,18 @@ private:
 	void applyView();
 	/// update dialog
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+private:
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend

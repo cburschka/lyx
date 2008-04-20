@@ -26,7 +26,8 @@ namespace lyx {
 namespace frontend {
 
 GuiHyperlink::GuiHyperlink(GuiView & lv)
-	: GuiCommand(lv, "href",qt_("Hyperlink"))
+	: GuiDialog(lv, "href", qt_("Hyperlink")),
+    params_(insetCode(fromqstr("href")))
 {
 	setupUi(this);
 
@@ -91,10 +92,23 @@ void GuiHyperlink::applyView()
 
 bool GuiHyperlink::isValid()
 {
-	QString const u = targetED->text();
-	QString const n = nameED->text();
+	return !targetED->text().isEmpty() || !nameED->text().isEmpty();
+}
 
-	return !u.isEmpty() || !n.isEmpty();
+
+bool GuiHyperlink::initialiseParams(std::string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommand::string2params("href", data, params_);
+	return true;
+}
+
+
+void GuiHyperlink::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("href", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

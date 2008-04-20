@@ -13,10 +13,12 @@
 #ifndef GUIBIBTEX_H
 #define GUIBIBTEX_H
 
-#include "GuiCommand.h"
+#include "GuiDialog.h"
 #include "ButtonController.h"
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
+
+#include "insets/InsetCommandParams.h"
 
 
 namespace lyx {
@@ -33,7 +35,7 @@ public:
 };
 
 
-class GuiBibtex : public GuiCommand, public Ui::BibtexUi
+class GuiBibtex : public GuiDialog, public Ui::BibtexUi
 {
 	Q_OBJECT
 
@@ -79,6 +81,18 @@ private:
 	/// which stylefile do we use?
 	QString styleFile() const;
 
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+private:
+	///
+	InsetCommandParams params_;
 	///
 	GuiBibtexAddDialog * add_;
 	///

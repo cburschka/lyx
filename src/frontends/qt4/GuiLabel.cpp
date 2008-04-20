@@ -12,9 +12,11 @@
 
 #include "GuiLabel.h"
 
+#include "FuncRequest.h"
 #include "qt_helpers.h"
 
 #include "support/debug.h"
+#include "insets/InsetCommand.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -27,12 +29,13 @@ namespace frontend {
 
 /////////////////////////////////////////////////////////////////
 //
-// Base implementation
+// GuiLabel
 //
 /////////////////////////////////////////////////////////////////
 
 GuiLabel::GuiLabel(GuiView & lv)
-	: GuiCommand(lv, "label", qt_("Label"))
+	: GuiDialog(lv, "label", qt_("Label")),
+	  params_(insetCode("label"))
 {
 	setupUi(this);
 
@@ -79,6 +82,20 @@ void GuiLabel::applyView()
 bool GuiLabel::isValid()
 {
 	return !keywordED->text().isEmpty();
+}
+
+
+bool GuiLabel::initialiseParams(std::string const & data)
+{
+	InsetCommand::string2params("label", data, params_);
+	return true;
+}
+
+
+void GuiLabel::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("label", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

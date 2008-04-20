@@ -14,14 +14,14 @@
 #include "GuiNomencl.h"
 
 #include "qt_helpers.h"
+#include "FuncRequest.h"
+
+#include "insets/InsetCommand.h"
 
 #include "support/debug.h"
 
 #include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
-#include <QTextEdit>
-#include <QWhatsThis>
 
 using namespace std;
 
@@ -29,7 +29,8 @@ namespace lyx {
 namespace frontend {
 
 GuiNomenclature::GuiNomenclature(GuiView & lv)
-	: GuiCommand(lv, "nomenclature", qt_("Nomenclature"))
+	: GuiDialog(lv, "nomenclature", qt_("Nomenclature")),
+	  params_(insetCode("nomenclature"))
 {
 	setupUi(this);
 
@@ -90,6 +91,21 @@ bool GuiNomenclature::isValid()
 	QString const description = descriptionTE->toPlainText();
 	return !symbolED->text().isEmpty() && !description.isEmpty();
 }
+
+
+bool GuiNomenclature::initialiseParams(std::string const & data)
+{
+	InsetCommand::string2params("nomenclature", data, params_);
+	return true;
+}
+
+
+void GuiNomenclature::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("nomenclature", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
 
 
 Dialog * createGuiNomenclature(GuiView & lv)

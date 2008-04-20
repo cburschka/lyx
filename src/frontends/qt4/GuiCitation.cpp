@@ -18,6 +18,7 @@
 #include "qt_helpers.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "FuncRequest.h"
 
 #include "insets/InsetCommand.h"
 
@@ -76,7 +77,8 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 
 GuiCitation::GuiCitation(GuiView & lv)
-	: GuiCommand(lv, "citation", qt_("Citation"))
+	: GuiDialog(lv, "citation", qt_("Citation")),
+	  params_(insetCode("citation"))
 {
 	setupUi(this);
 
@@ -589,7 +591,7 @@ void GuiCitation::setCitedKeys()
 
 bool GuiCitation::initialiseParams(string const & data)
 {
-	InsetCommand::string2params(lfun_name_, data, params_);
+	InsetCommand::string2params("citation", data, params_);
 	biblio::CiteEngine const engine = buffer().params().citeEngine();
 	bibkeysInfo_.fillWithBibKeys(&buffer());
 	citeStyles_ = biblio::getCiteStyles(engine);
@@ -738,6 +740,13 @@ vector<docstring> GuiCitation::searchKeys(
 		}
 	}
 	return foundKeys;
+}
+
+
+void GuiCitation::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("citation", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

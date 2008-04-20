@@ -11,13 +11,10 @@
 #include <config.h>
 
 #include "GuiDialog.h"
-#include "GuiCommand.h"
 
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "FuncRequest.h"
-
-#include "insets/InsetCommand.h"
 
 #include "support/debug.h"
 
@@ -29,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
-	:  QDialog(&lv), Dialog(lv, name, "LyX: " + title), is_closing_(false)
+	: QDialog(&lv), Dialog(lv, name, "LyX: " + title), is_closing_(false)
 {}
 
 
@@ -109,40 +106,6 @@ void GuiDialog::updateView()
 	bc().refresh();
 
 	setUpdatesEnabled(true);
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// Command based dialogs
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiCommand::GuiCommand(GuiView & lv, QString const & name,
-	QString const & title)
-	: GuiDialog(lv, name, title), params_(insetCode(fromqstr(name))),
-		lfun_name_(fromqstr(name))
-{
-}
-
-
-bool GuiCommand::initialiseParams(string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommand::string2params(lfun_name_, data, params_);
-	return true;
-}
-
-
-void GuiCommand::dispatchParams()
-{
-	if (lfun_name_.empty())
-		return;
-
-	string const lfun = InsetCommand::params2string(lfun_name_, params_);
-	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

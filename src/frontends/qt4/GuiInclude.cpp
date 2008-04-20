@@ -47,7 +47,8 @@ namespace frontend {
 
 
 GuiInclude::GuiInclude(GuiView & lv)
-	: GuiCommand(lv, "include", qt_("Child Document"))
+	: GuiDialog(lv, "include", qt_("Child Document")),
+	  params_(insetCode("include"))
 {
 	setupUi(this);
 
@@ -336,6 +337,20 @@ void GuiInclude::edit(string const & file)
 		formats.edit(buffer(), 
 			makeAbsPath(file, support::onlyPath(buffer().absFileName())),
 			"text");
+}
+
+
+bool GuiInclude::initialiseParams(std::string const & data)
+{
+	InsetCommand::string2params("include", data, params_);
+	return true;
+}
+
+
+void GuiInclude::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("include", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

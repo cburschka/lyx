@@ -17,10 +17,12 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "ui_BibtexAddUi.h"
+#include "FuncRequest.h"
+#include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
-#include "LyXRC.h"
+
+#include "ui_BibtexAddUi.h"
 
 #include "ButtonPolicy.h"
 
@@ -49,7 +51,8 @@ namespace frontend {
 
 
 GuiBibtex::GuiBibtex(GuiView & lv)
-	: GuiCommand(lv, "bibtex", qt_("BibTeX Bibliography"))
+	: GuiDialog(lv, "bibtex", qt_("BibTeX Bibliography")),
+	  params_(insetCode("bibtex"))
 {
 	setupUi(this);
 
@@ -530,6 +533,21 @@ QString GuiBibtex::styleFile() const
 
 	return bst;
 }
+
+
+bool GuiBibtex::initialiseParams(std::string const & data)
+{
+	InsetCommand::string2params("bibtex", data, params_);
+	return true;
+}
+
+
+void GuiBibtex::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("bibtex", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
 
 
 Dialog * createGuiBibtex(GuiView & lv) { return new GuiBibtex(lv); }

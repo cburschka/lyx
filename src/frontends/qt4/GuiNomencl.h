@@ -14,13 +14,15 @@
 #ifndef GUINOMENCLATURE_H
 #define GUINOMENCLATURE_H
 
-#include "GuiCommand.h"
+#include "GuiDialog.h"
 #include "ui_NomenclUi.h"
+
+#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiNomenclature : public GuiCommand, public Ui::NomenclUi
+class GuiNomenclature : public GuiDialog, public Ui::NomenclUi
 {
 	Q_OBJECT
 
@@ -38,6 +40,18 @@ private:
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+private:
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend
