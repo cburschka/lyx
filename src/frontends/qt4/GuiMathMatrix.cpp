@@ -14,9 +14,6 @@
 
 #include "EmptyTable.h"
 #include "qt_helpers.h"
-#include "support/gettext.h"
-
-#include <sstream>
 
 #include <QLineEdit>
 #include <QPushButton>
@@ -52,9 +49,9 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 		this, SLOT(rowsChanged(int)));
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)) );
-	connect(valignCO, SIGNAL(highlighted(const QString&)),
+	connect(valignCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
-	connect(halignED, SIGNAL(textChanged(const QString&)),
+	connect(halignED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
@@ -88,15 +85,11 @@ void GuiMathMatrix::slotOK()
 {
 	char v_align_c[] = "tcb";
 	char const c = v_align_c[valignCO->currentIndex()];
-	string const sh = fromqstr(halignED->text());
-	int const nx = int(columnsSB->value());
-	int const ny = int(rowsSB->value());
-
-	ostringstream os;
-	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	dispatchMatrix(os.str().c_str());
-
-	// close the dialog
+	QString const sh = halignED->text();
+	int const nx = columnsSB->value();
+	int const ny = rowsSB->value();
+	dispatchMatrix(fromqstr(
+		QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh)));
 	close();
 }
 

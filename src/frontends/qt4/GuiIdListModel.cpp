@@ -138,20 +138,6 @@ int GuiIdListModel::findIDString(std::string const & idString)
 	return -1;
 }
 
-
-#if 0
-// The following function is currently unused but is retained here in
-//   case it should at some point be useful.
-QStringList GuiIdListModel::getIDStringList() const
-{
-	QStringList qsl;
-	vector<OurData>::const_iterator it  = userData_.begin();
-	vector<OurData>::const_iterator end = userData_.end();
-	for (; it != end; ++it)
-		qsl.append(it->idString.toString());
-	return qsl;
-}
-#endif
 } // namespace frontend
 } // namespace lyx
 

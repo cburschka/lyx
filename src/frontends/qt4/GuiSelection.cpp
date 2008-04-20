@@ -71,7 +71,7 @@ docstring const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection)
 				.normalized(QString::NormalizationForm_C);
-	LYXERR(Debug::ACTION, "GuiSelection::get: " << fromqstr(str));
+	LYXERR(Debug::ACTION, "GuiSelection::get: " << str);
 	if (str.isNull())
 		return docstring();
 

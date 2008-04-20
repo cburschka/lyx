@@ -53,7 +53,7 @@ Image::FormatList GuiImage::loadableFormats()
 
 	//LYXERR(Debug::GRAPHICS,
 	//	"D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
-	//	<< fromqstr(Pic.pictureFormat("D:/msys/.../banner.png")))
+	//	<< Pic.pictureFormat("D:/msys/.../banner.png"))
 	//if (Pic.pictureFormat("D:/msys/.../banner.png"))
 	//	LYXERR(Debug::GRAPHICS, "pictureFormat not returned NULL\n"
 	//		<< "Supported formats are: " << Pic.inputFormats());

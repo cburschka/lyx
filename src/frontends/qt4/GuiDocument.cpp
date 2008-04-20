@@ -1227,7 +1227,7 @@ void GuiDocument::browseLayout()
 		qt_("Local layout file"), filter, false,
 		label1, dir1);
 
-	if (!suffixIs(fromqstr(file), ".layout"))
+	if (!file.endsWith(".layout"))
 		return;
 
 	FileName layoutFile = makeAbsPath(fromqstr(file),

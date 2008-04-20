@@ -153,8 +153,7 @@ static bool isChosenFont(QFont & font, QString const & family)
 
 QFont symbolFont(QString const & family, bool * ok)
 {
-	LYXERR(Debug::FONT, "Looking for font family "
-		<< fromqstr(family) << " ... ");
+	LYXERR(Debug::FONT, "Looking for font family " << family << " ... ");
 	QString upper = family;
 	upper[0] = family[0].toUpper();
 
@@ -168,7 +167,7 @@ QFont symbolFont(QString const & family, bool * ok)
 		return font;
 	}
 
-	LYXERR(Debug::FONT, "Trying " << fromqstr(upper) << " ... ");
+	LYXERR(Debug::FONT, "Trying " << upper << " ... ");
 	font.setFamily(upper);
 
 	if (isChosenFont(font, upper)) {
@@ -180,7 +179,7 @@ QFont symbolFont(QString const & family, bool * ok)
 	// A simple setFamily() fails on Qt 2
 
 	QString const raw = rawName(family);
-	LYXERR(Debug::FONT, "Trying " << fromqstr(raw) << " ... ");
+	LYXERR(Debug::FONT, "Trying " << raw << " ... ");
 	font.setRawName(raw);
 
 	if (isChosenFont(font, family)) {
@@ -206,9 +205,8 @@ FontLoader::FontLoader()
 		QString const font_file = fonts_dir + '/' + math_fonts[i] + ".ttf";
 		int fontID = QFontDatabase::addApplicationFont(font_file);
 
-		LYXERR(Debug::FONT, "Adding font " << fromqstr(font_file)
-				    << static_cast<const char *>
-					(fontID < 0 ? " FAIL" : " OK"));
+		LYXERR(Debug::FONT, "Adding font " << font_file
+				    << (fontID < 0 ? " FAIL" : " OK"));
 	}
 
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
@@ -306,8 +304,8 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 			break;
 	}
 
-	LYXERR(Debug::FONT, "Font '" << to_utf8(stateText(f))
-		<< "' matched by\n" << fromqstr(font.family()));
+	LYXERR(Debug::FONT, "Font '" << stateText(f)
+		<< "' matched by\n" << font.family());
 
 	// Is this an exact match?
 	if (font.exactMatch())

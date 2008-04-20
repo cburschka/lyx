@@ -181,8 +181,8 @@ QString findPng(QString const & name)
 		png_name.replace('!', "negthinspace");
 	}
 
-	LYXERR(Debug::GUI, "findPng(" << fromqstr(name) << ")\n"
-		<< "Looking for math PNG called \"" << fromqstr(png_name) << '"');
+	LYXERR(Debug::GUI, "findPng(" << name << ")\n"
+		<< "Looking for math PNG called \"" << png_name << '"');
 	return png_name;
 }
 
@@ -683,8 +683,7 @@ void GuiLayoutBox::set(docstring const & layout)
 
 	QList<QStandardItem *> r = model_->findItems(name, Qt::MatchExactly, 1);
 	if (r.empty()) {
-		lyxerr << "Trying to select non existent layout type "
-			<< fromqstr(name) << endl;
+		LYXERR0("Trying to select non existent layout type " << name);
 		return;
 	}
 

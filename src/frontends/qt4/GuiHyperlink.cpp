@@ -27,7 +27,7 @@ namespace frontend {
 
 GuiHyperlink::GuiHyperlink(GuiView & lv)
 	: GuiDialog(lv, "href", qt_("Hyperlink")),
-    params_(insetCode(fromqstr("href")))
+    params_(insetCode("href"))
 {
 	setupUi(this);
 

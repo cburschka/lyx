@@ -197,7 +197,7 @@ QString QMacPasteboardMimeGraphics::convertorName()
 
 QString QMacPasteboardMimeGraphics::flavorFor(QString const & mime)
 {
-	LYXERR(Debug::ACTION, "flavorFor " << fromqstr(mime));
+	LYXERR(Debug::ACTION, "flavorFor " << mime);
 	if (mime == QLatin1String(pdf_mime_type))
 		return QLatin1String("com.adobe.pdf");
 	return QString();
@@ -206,7 +206,7 @@ QString QMacPasteboardMimeGraphics::flavorFor(QString const & mime)
 
 QString QMacPasteboardMimeGraphics::mimeFor(QString flav)
 {
-	LYXERR(Debug::ACTION, "mimeFor " << fromqstr(flav));
+	LYXERR(Debug::ACTION, "mimeFor " << flav);
 	if (flav == QLatin1String("com.adobe.pdf"))
 		return QLatin1String(pdf_mime_type);
 	return QString();
@@ -502,7 +502,7 @@ docstring const GuiClipboard::getAsText() const
 	// text data from other applications
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard)
 				.normalized(QString::NormalizationForm_C);
-	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(): `" << fromqstr(str) << "'");
+	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(): `" << str << "'");
 	if (str.isNull())
 		return docstring();
 
@@ -568,7 +568,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	QStringList const & formats = source->formats();
 	LYXERR(Debug::ACTION, "We found " << formats.size() << " formats");
 	for (int i = 0; i < formats.size(); ++i) {
-		LYXERR(Debug::ACTION, "Found format " << fromqstr(formats[i]));
+		LYXERR(Debug::ACTION, "Found format " << formats[i]);
 	}
 
 	// compute mime for type
@@ -613,9 +613,8 @@ void GuiClipboard::on_dataChanged()
 	qApp->clipboard()->mimeData(QClipboard::Clipboard);
 	QStringList l = source->formats();
 	LYXERR(Debug::ACTION, "Qt Clipboard changed. We found the following mime types:");
-	for (int i = 0; i < l.count(); i++) {
-		LYXERR(Debug::ACTION, fromqstr(l.value(i)));
-	}
+	for (int i = 0; i < l.count(); i++)
+		LYXERR(Debug::ACTION, l.value(i));
 	
 	text_clipboard_empty_ = qApp->clipboard()->
 		text(QClipboard::Clipboard).isEmpty();

@@ -595,7 +595,7 @@ static char encode(string const & encoding, QString const & str)
 		return 0;
 	}
 
-	LYXERR(Debug::KEY, "Using codec " << fromqstr(codec->name()));
+	LYXERR(Debug::KEY, "Using codec " << codec->name());
 
 	if (!codec->canEncode(str)) {
 		LYXERR(Debug::KEY, "Oof. Can't encode the text !");
@@ -616,7 +616,7 @@ void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
 		return;
 	}
 	LYXERR(Debug::KEY, "Getting key " << ev->key() << ", with text '"
-		<< fromqstr(ev->text()) << "'");
+		<< ev->text() << "'");
 	// This is unsafe because ev->text() is the unicode representation of the
 	// key, not the name of the key. For example, Ctrl-x and Alt-x produce 
 	// different texts.

@@ -180,6 +180,7 @@ QString browseDir(QString const & pathname,
 
 } // namespace frontend
 
+
 QString browseRelFile(QString const & filename, QString const & refpath,
 	QString const & title, QStringList const & filters, bool save,
 	QString const & label1, QString const & dir1,
@@ -187,6 +188,7 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 {
 	QString const fname = toqstr(makeAbsPath(
 		fromqstr(filename), fromqstr(refpath)).absFilename());
+
 
 	QString const outname =
 		frontend::browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
@@ -199,6 +201,7 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 	else
 		return reloutname;
 }
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -296,18 +299,18 @@ static void setComboxFont(QComboBox * cb, string const & family,
 		font.setStyleHint(QFont::TypeWriter);
 		font.setFamily(font_family);
 	} else {
-		lyxerr << "FAILED to find the default font: '"
-		       << foundry << "', '" << family << '\''<< endl;
+		LYXERR0("FAILED to find the default font: '"
+		       << foundry << "', '" << family << '\'');
 		return;
 	}
 
 	QFontInfo info(font);
 	string default_font_name, dummyfoundry;
 	parseFontName(info.family(), default_font_name, dummyfoundry);
-	lyxerr << "Apparent font is " << default_font_name << endl;
+	LYXERR0("Apparent font is " << default_font_name);
 
 	for (int i = 0; i < cb->count(); ++i) {
-		lyxerr << "Looking at " << fromqstr(cb->itemText(i)) << endl;
+		LYXERR0("Looking at " << cb->itemText(i));
 		if (compare_ascii_no_case(fromqstr(cb->itemText(i)),
 				    default_font_name) == 0) {
 			cb->setCurrentIndex(i);
@@ -315,9 +318,10 @@ static void setComboxFont(QComboBox * cb, string const & family,
 		}
 	}
 
-	lyxerr << "FAILED to find the font: '"
-	       << foundry << "', '" << family << '\'' <<endl;
+	LYXERR0("FAILED to find the font: '"
+	       << foundry << "', '" << family << '\'');
 }
+
 
 
 /////////////////////////////////////////////////////////////////////

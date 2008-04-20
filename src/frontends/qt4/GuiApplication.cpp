@@ -197,10 +197,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		// even if the language calls for RtL, don't do that
 		setLayoutDirection(Qt::LeftToRight);
 		LYXERR(Debug::GUI, "Successfully installed Qt translations for locale "
-			<< fromqstr(language_name));
+			<< language_name);
 	} else
 		LYXERR(Debug::GUI, "Could not find  Qt translations for locale "
-			<< fromqstr(language_name));
+			<< language_name);
 
 #ifdef Q_WS_MACX
 	// This allows to translate the strings that appear in the LyX menu.

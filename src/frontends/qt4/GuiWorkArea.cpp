@@ -852,8 +852,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	}
 #endif
 
-	LYXERR(Debug::KEY, " count: " << ev->count()
-		<< " text: " << fromqstr(ev->text())
+	LYXERR(Debug::KEY, " count: " << ev->count() << " text: " << ev->text()
 		<< " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key());
 
 	KeySymbol sym;
@@ -959,8 +958,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	if (!commit_string.isEmpty()) {
 
-		LYXERR(Debug::KEY, "preeditString: " << fromqstr(e->preeditString())
-			<< " commitString: " << fromqstr(e->commitString()));
+		LYXERR(Debug::KEY, "preeditString: " << e->preeditString()
+			<< " commitString: " << e->commitString());
 
 		int key = 0;
 
