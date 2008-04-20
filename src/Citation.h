@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file BiblioCode.h
+ * \file Citation.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef BIBLIOCODE_H
-#define BIBLIOCODE_H
+#ifndef CITATION_H
+#define CITATION_H
 
 namespace lyx {
 	
