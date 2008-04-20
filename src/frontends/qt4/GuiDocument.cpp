@@ -43,7 +43,6 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
-#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -1223,7 +1222,7 @@ void GuiDocument::browseLayout()
 {
 	QString const label1 = qt_("Layouts|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
-	FileFilterList const filter(_("LyX Layout (*.layout)"));
+	QStringList const filter(qt_("LyX Layout (*.layout)"));
 	QString file = browseRelFile(QString(), bufferFilepath(),
 		qt_("Local layout file"), filter, false,
 		label1, dir1);

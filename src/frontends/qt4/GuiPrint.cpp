@@ -23,7 +23,6 @@
 #include "LyXRC.h"
 
 #include "support/convert.h"
-#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/os.h"
@@ -87,7 +86,7 @@ void GuiPrint::browseClicked()
 {
 	QString file =
 		browseRelFile(QString(), bufferFilepath(), qt_("Print to file"),
-			     FileFilterList(_("PostScript files (*.ps)")), true);
+			     QStringList(qt_("PostScript files (*.ps)")), true);
 	if (!file.isEmpty()) {
 		fileED->setText(file);
 		changed();

@@ -32,7 +32,6 @@
 
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // changeExtension
 #include "support/gettext.h"
@@ -424,7 +423,7 @@ QString GuiBibtex::browseBib(QString const & in_name) const
 {
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
-	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
+	QStringList const filter(qt_("BibTeX Databases (*.bib)"));
 	return browseRelFile(in_name, bufferFilepath(),
 		qt_("Select a BibTeX database to add"), filter, false, label1, dir1);
 }
@@ -434,7 +433,7 @@ QString GuiBibtex::browseBst(QString const & in_name) const
 {
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
-	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
+	QStringList const filter(qt_("BibTeX Styles (*.bst)"));
 	return browseRelFile(in_name, bufferFilepath(),
 		qt_("Select a BibTeX style"), filter, false, label1, dir1);
 }

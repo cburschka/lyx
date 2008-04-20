@@ -17,7 +17,6 @@
 #include "qt_helpers.h"
 
 #include "support/debug.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/os.h"
@@ -39,14 +38,10 @@
 
 #ifdef USE_NATIVE_FILEDIALOG
 #include <QApplication>
-#include "support/filetools.h"
-
-using lyx::support::makeAbsPath;
 #endif
 
 namespace lyx {
 
-using support::FileFilterList;
 using support::os::internal_path;
 
 
@@ -83,25 +78,19 @@ void FileDialog::setButton2(QString const & label, QString const & dir)
 
 
 FileDialog::Result FileDialog::save(QString const & path,
-					  FileFilterList const & filters,
-					  QString const & suggested)
+	QStringList const & filters, QString const & suggested)
 {
 	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
-			   << "\", mask \"" << to_utf8(filters.as_string())
+			   << "\", mask \"" << fromqstr(filters.join(";;"))
 			   << "\", suggested \"" << fromqstr(suggested) << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	QString const startsWith = toqstr(
-		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
+	QString const startsWith = makeAbsPath(suggested, path);
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
-					     title_, 
-					     startsWith, 
-					     toqstr(filters.as_string()),
-					     0, 
-					     QFileDialog::DontConfirmOverwrite);
+	     title_, startsWith, filters, 0, QFileDialog::DontConfirmOverwrite);
 	result.second = toqstr(internal_path(fromqstr(name)));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
@@ -126,21 +115,19 @@ FileDialog::Result FileDialog::save(QString const & path,
 
 
 FileDialog::Result FileDialog::open(QString const & path,
-					  FileFilterList const & filters,
-					  QString const & suggested)
+	QStringList const & filters, QString const & suggested)
 {
 	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
-			   << "\", mask \"" << filters.as_string()
+			   << "\", mask \"" << fromqstr(filters.join(";;"))
 			   << "\", suggested \"" << fromqstr(suggested) << '"');
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	QString const startsWith = toqstr(
-		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
+	QString const startsWith = makeAbsPath(suggested, path);
 	result.second = internalPath(
 		QFileDialog::getOpenFileName(qApp->focusWidget(),
-		title_, startsWith, toqstr(filters.as_string()) ));
+		title_, startsWith, filters));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -159,7 +146,7 @@ FileDialog::Result FileDialog::open(QString const & path,
 
 
 FileDialog::Result FileDialog::opendir(QString const & path,
-					    QString const & suggested)
+	QString const & suggested)
 {
 	LYXERR(Debug::GUI, "Select with path \"" << fromqstr(path)
 			   << "\", suggested \"" << fromqstr(suggested) << '"');
@@ -167,15 +154,13 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	QString const startsWith = toqstr(
-		makeAbsPath(fromqstr(suggested), fromqstr(path)).absFilename());
+	QString const startsWith = makeAbsPath(suggested, path);
 	result.second = toqstr(internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		title_, startsWith))));
 #else
-	FileFilterList const filter(_("Directories"));
-
-	LyXFileDialog dlg(title_, path, filter, private_->b1, private_->b2);
+	LyXFileDialog dlg(title_, path, QStringList(qt_("Directories")),
+		private_->b1, private_->b2);
 
 	dlg.setFileMode(QFileDialog::DirectoryOnly);
 

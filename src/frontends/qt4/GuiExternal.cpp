@@ -28,7 +28,6 @@
 #include "graphics/GraphicsImage.h"
 
 #include "support/convert.h"
-#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -707,14 +706,15 @@ void GuiExternal::editExternal()
 }
 
 
-static string templateFilters(string const & template_name)
+static QStringList templateFilters(QString const & template_name)
 {
 	/// Determine the template file extension
 	external::TemplateManager const & etm =
 		external::TemplateManager::get();
 	external::Template const * const et_ptr =
-		etm.getTemplateByName(template_name);
-	return et_ptr ? et_ptr->fileRegExp : string();
+		etm.getTemplateByName(fromqstr(template_name));
+
+	return fileFilters(et_ptr ? toqstr(et_ptr->fileRegExp) : QString());
 }
 
 
@@ -723,8 +723,7 @@ QString GuiExternal::browse(QString const & input,
 {
 	QString const title = qt_("Select external file");
 	QString const bufpath = bufferFilepath();
-	FileFilterList const filter =
-		FileFilterList(from_utf8(templateFilters(fromqstr(template_name))));
+	QStringList const filter = templateFilters(template_name);
 
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);

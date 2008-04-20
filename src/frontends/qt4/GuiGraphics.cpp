@@ -32,7 +32,6 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -751,7 +750,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 
 	return browseRelFile(in_name, bufferFilepath(),
-		title, FileFilterList(), false, 
+		title, fileFilters(QString()), false, 
 		qt_("Clipart|#C#c"), toqstr(clipdir),
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 }

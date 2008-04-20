@@ -490,9 +490,6 @@ public:
 	/// general browse
 	QString browse(QString const & file, QString const & title) const;
 
-	/// browse directory
-	QString browsedir(QString const & path, QString const & title) const;
-
 	/// set a color
 	void setColor(ColorCode col, std::string const & hex);
 

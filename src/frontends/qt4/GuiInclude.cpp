@@ -17,15 +17,14 @@
 #include "Buffer.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "LyXRC.h"
 
 #include "qt_helpers.h"
 #include "LyXRC.h"
 
-#include "support/os.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/FileFilterList.h"
+#include "support/os.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 
@@ -309,11 +308,11 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 	QString const title = qt_("Select document to include");
 
 	// input TeX, verbatim, or LyX file ?
-	FileFilterList filters;
+	QStringList filters;
 	switch (in_type) {
 	case INCLUDE:
 	case INPUT:
-		filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
+		filters = fileFilters(qt_("LaTeX/LyX Documents (*.tex *.lyx)"));
 		break;
 	case VERBATIM:
 	case LISTINGS:

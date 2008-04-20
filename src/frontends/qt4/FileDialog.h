@@ -21,9 +21,6 @@
 
 namespace lyx {
 
-namespace support { class FileFilterList; }
-
-
 /**
  * \class FileDialog
  * \brief GUI-I definition of file dialog interface
@@ -62,8 +59,7 @@ public:
 	void setButton2(QString const & label, QString const & dir);
 
 	/// Choose a file for opening, starting in directory \c path.
-	Result open(QString const & path,
-			  support::FileFilterList const & filters,
+	Result open(QString const & path, QStringList const & filters,
 			  QString const & suggested = QString());
 
 	/// Choose a directory, starting in directory \c path.
@@ -71,8 +67,7 @@ public:
 			     QString const & suggested = QString());
 
 	/// Choose a file for saving, starting in directory \c  path.
-	Result save(QString const & path,
-			  support::FileFilterList const & filters,
+	Result save(QString const & path, QStringList const & filters,
 			  QString const & suggested = QString());
 
 private:

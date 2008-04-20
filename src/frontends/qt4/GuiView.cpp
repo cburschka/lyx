@@ -55,7 +55,6 @@
 
 #include "support/assert.h"
 #include "support/debug.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -1117,9 +1116,8 @@ static FileName selectTemplateFile()
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 	dlg.setButton1(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
-	FileDialog::Result result =
-		dlg.open(toqstr(lyxrc.template_path),
-			     FileFilterList(_("LyX Documents (*.lyx)")));
+	FileDialog::Result result = dlg.open(toqstr(lyxrc.template_path),
+			     QStringList(qt_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return FileName();
@@ -1178,7 +1176,7 @@ void GuiView::openDocument(string const & fname)
 				toqstr(addPath(package().system_support().absFilename(), "examples")));
 
 		FileDialog::Result result =
-			dlg.open(toqstr(initpath), FileFilterList(_("LyX Documents (*.lyx)")));
+			dlg.open(toqstr(initpath), QStringList(qt_("LyX Documents (*.lyx)")));
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1317,7 +1315,7 @@ void GuiView::importDocument(string const & argument)
 		filter += ')';
 
 		FileDialog::Result result =
-			dlg.open(toqstr(initpath), FileFilterList(filter));
+			dlg.open(toqstr(initpath), fileFilters(toqstr(filter)));
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1430,9 +1428,8 @@ void GuiView::insertLyXFile(docstring const & fname)
 		toqstr(addPath(package().system_support().absFilename(),
 		"examples")));
 
-	FileDialog::Result result =
-		dlg.open(toqstr(initpath),
-			     FileFilterList(_("LyX Documents (*.lyx)")));
+	FileDialog::Result result = dlg.open(toqstr(initpath),
+			     QStringList(qt_("LyX Documents (*.lyx)")));
 
 	if (result.first == FileDialog::Later)
 		return;
@@ -1470,7 +1467,7 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 		LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
 
 	FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
-		FileFilterList());
+		QStringList());
 
 	if (result.first == FileDialog::Later)
 		return;
@@ -1511,11 +1508,9 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		if (!isLyXFilename(fname.absFilename()))
 			fname.changeExtension(".lyx");
 
-		FileFilterList const filter(_("LyX Documents (*.lyx)"));
-
 		FileDialog::Result result =
 			dlg.save(toqstr(fname.onlyPath().absFilename()),
-				     filter,
+			       QStringList(qt_("LyX Documents (*.lyx)")),
 				     toqstr(fname.onlyFileName()));
 
 		if (result.first == FileDialog::Later)

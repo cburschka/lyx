@@ -43,6 +43,12 @@
 #include <fstream>
 #include <locale>
 
+// for FileFilter.
+// FIXME: Remove
+#include <boost/regex.hpp>
+#include <boost/tokenizer.hpp>
+
+
 using namespace std;
 using namespace lyx::support;
 
@@ -301,6 +307,230 @@ QString addExtension(QString const & name, QString const & ext)
 QString getExtension(QString const & name)
 {
 	return toqstr(support::getExtension(fromqstr(name)));
+}
+
+
+/** Convert relative path into absolute path based on a basepath.
+  If relpath is absolute, just use that.
+  If basepath doesn't exist use CWD.
+  */
+QString makeAbsPath(QString const & relpath, QString const & base)
+{
+	return toqstr(support::makeAbsPath(fromqstr(relpath),
+		fromqstr(base)).absFilename());
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+//
+// FileFilterList
+//
+/////////////////////////////////////////////////////////////////////////
+
+/** Given a string such as
+ *      "<glob> <glob> ... *.{abc,def} <glob>",
+ *  convert the csh-style brace expresions:
+ *      "<glob> <glob> ... *.abc *.def <glob>".
+ *  Requires no system support, so should work equally on Unix, Mac, Win32.
+ */
+static string const convert_brace_glob(string const & glob)
+{
+	// Matches " *.{abc,def,ghi}", storing "*." as group 1 and
+	// "abc,def,ghi" as group 2.
+	static boost::regex const glob_re(" *([^ {]*)\\{([^ }]+)\\}");
+	// Matches "abc" and "abc,", storing "abc" as group 1.
+	static boost::regex const block_re("([^,}]+),?");
+
+	string pattern;
+
+	string::const_iterator it = glob.begin();
+	string::const_iterator const end = glob.end();
+	while (true) {
+		boost::match_results<string::const_iterator> what;
+		if (!boost::regex_search(it, end, what, glob_re)) {
+			// Ensure that no information is lost.
+			pattern += string(it, end);
+			break;
+		}
+
+		// Everything from the start of the input to
+		// the start of the match.
+		pattern += string(what[-1].first, what[-1].second);
+
+		// Given " *.{abc,def}", head == "*." and tail == "abc,def".
+		string const head = string(what[1].first, what[1].second);
+		string const tail = string(what[2].first, what[2].second);
+
+		// Split the ','-separated chunks of tail so that
+		// $head{$chunk1,$chunk2} becomes "$head$chunk1 $head$chunk2".
+		string const fmt = " " + head + "$1";
+		pattern += boost::regex_merge(tail, block_re, fmt);
+
+		// Increment the iterator to the end of the match.
+		it += distance(it, what[0].second);
+	}
+
+	return pattern;
+}
+
+
+struct Filter
+{
+	/* \param description text describing the filters.
+	 * \param one or more wildcard patterns, separated by
+	 * whitespace.
+	 */
+	Filter(docstring const & description, std::string const & globs);
+
+	docstring const & description() const { return desc_; }
+
+	QString toString() const;
+
+	docstring desc_;
+	std::vector<std::string> globs_;
+};
+
+
+Filter::Filter(docstring const & description, string const & globs)
+	: desc_(description)
+{
+	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
+	boost::char_separator<char> const separator(" ");
+
+	// Given "<glob> <glob> ... *.{abc,def} <glob>", expand to
+	//       "<glob> <glob> ... *.abc *.def <glob>"
+	string const expanded_globs = convert_brace_glob(globs);
+
+	// Split into individual globs.
+	vector<string> matches;
+	Tokenizer const tokens(expanded_globs, separator);
+	globs_ = vector<string>(tokens.begin(), tokens.end());
+}
+
+
+QString Filter::toString() const
+{
+	QString s;
+
+	bool const has_description = desc_.empty();
+
+	if (has_description) {
+		s += toqstr(desc_);
+		s += " (";
+	}
+
+	for (size_t i = 0; i != globs_.size(); ++i) {
+		if (i > 0)
+			s += ' ';
+		s += toqstr(globs_[i]);
+	}
+
+	if (has_description)
+		s += ')';
+	return s;
+}
+
+
+/** \c FileFilterList parses a Qt-style list of available file filters
+ *  to generate the corresponding vector.
+ *  For example "TeX documents (*.tex);;LyX Documents (*.lyx)"
+ *  will be parsed to fill a vector of size 2, whilst "*.{p[bgp]m} *.pdf"
+ *  will result in a vector of size 1 in which the description field is empty.
+ */
+struct FileFilterList
+{
+	// FIXME UNICODE: globs_ should be unicode...
+	/** \param qt_style_filter a list of available file filters.
+	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)".
+	 *  The "All files (*)" filter is always added to the list.
+	 */
+	explicit FileFilterList(docstring const & qt_style_filter =
+				docstring());
+
+	typedef std::vector<Filter>::size_type size_type;
+
+	bool empty() const { return filters_.empty(); }
+	size_type size() const { return filters_.size(); }
+	Filter & operator[](size_type i) { return filters_[i]; }
+	Filter const & operator[](size_type i) const { return filters_[i]; }
+
+	void parse_filter(std::string const & filter);
+	std::vector<Filter> filters_;
+};
+
+
+FileFilterList::FileFilterList(docstring const & qt_style_filter)
+{
+	// FIXME UNICODE
+	string const filter = to_utf8(qt_style_filter)
+		+ (qt_style_filter.empty() ? string() : ";;")
+		+ to_utf8(_("All Files "))
+#if defined(_WIN32)		
+		+ ("(*.*)");
+#else
+		+ ("(*)");
+#endif
+
+	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
+	// into individual filters.
+	static boost::regex const separator_re(";;");
+
+	string::const_iterator it = filter.begin();
+	string::const_iterator const end = filter.end();
+	while (true) {
+		boost::match_results<string::const_iterator> what;
+
+		if (!boost::regex_search(it, end, what, separator_re)) {
+			parse_filter(string(it, end));
+			break;
+		}
+
+		// Everything from the start of the input to
+		// the start of the match.
+		parse_filter(string(what[-1].first, what[-1].second));
+
+		// Increment the iterator to the end of the match.
+		it += distance(it, what[0].second);
+	}
+}
+
+
+void FileFilterList::parse_filter(string const & filter)
+{
+	// Matches "TeX documents (*.tex)",
+	// storing "TeX documents " as group 1 and "*.tex" as group 2.
+	static boost::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
+
+	boost::match_results<string::const_iterator> what;
+	if (!boost::regex_search(filter, what, filter_re)) {
+		// Just a glob, no description.
+		filters_.push_back(Filter(docstring(), trim(filter)));
+	} else {
+		// FIXME UNICODE
+		docstring const desc = from_utf8(string(what[1].first, what[1].second));
+		string const globs = string(what[2].first, what[2].second);
+		filters_.push_back(Filter(trim(desc), trim(globs)));
+	}
+}
+
+
+/** \returns the equivalent of the string passed in
+ *  although any brace expressions are expanded.
+ *  (E.g. "*.{png,jpg}" -> "*.png *.jpg")
+ */
+QStringList fileFilters(QString const & desc)
+{
+	// we have: "*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}"
+	// but need:  "*.cpp;*.cc;*.C;*.cxx;*.c++"
+	FileFilterList filters(qstring_to_ucs4(desc));
+	LYXERR0("DESC: " << fromqstr(desc));
+	QStringList list;
+	for (size_t i = 0; i != filters.filters_.size(); ++i) {
+		QString f = filters.filters_[i].toString();
+		LYXERR0("FILTER: " << fromqstr(f));
+		list.append(f);
+	}
+	return list;
 }
 
 } // namespace lyx

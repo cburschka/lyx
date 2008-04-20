@@ -55,8 +55,6 @@ liblyxsupport_la_SOURCES = \
 	environment.h \
 	environment.cpp \
 	ExceptionMessage.h \
-	FileFilterList.cpp \
-	FileFilterList.h \
 	FileName.cpp \
 	FileName.h \
 	FileNameList.h \

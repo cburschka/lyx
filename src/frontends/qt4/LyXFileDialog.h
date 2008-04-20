@@ -20,8 +20,6 @@ class QToolButton;
 
 namespace lyx {
 
-namespace support { class FileFilterList; }
-
 class LyXFileDialog : public QFileDialog
 {
 	Q_OBJECT
@@ -29,7 +27,7 @@ class LyXFileDialog : public QFileDialog
 public:
 	LyXFileDialog(QString const & title,
 		      QString const & path,
-		      support::FileFilterList const & filters,
+		      QStringList const & filters,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
 

@@ -29,7 +29,6 @@ class LengthCombo;
 
 namespace lyx {
 
-namespace support { class FileFilterList; }
 namespace support { class FileName; }
 
 namespace frontend {
@@ -83,7 +82,7 @@ support::FileName libFileSearch(QString const & dir, QString const & name,
 QString browseRelFile(QString const & filename,
 	QString const & refpath,
 	QString const & title,
-	support::FileFilterList const & filters,
+	QStringList const & filters,
 	bool save = false,
 	QString const & label1 = QString(),
 	QString const & dir1 = QString(),
@@ -105,6 +104,7 @@ QStringList texFileList(QString const & filename);
 QString internalPath(QString const &);
 QString onlyFilename(QString const & str);
 QString onlyPath(QString const & str);
+QStringList fileFilters(QString const & description);
 
 QString changeExtension(QString const & oldname, QString const & extension);
 

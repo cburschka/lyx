@@ -32,7 +32,6 @@
 #include "Session.h"
 
 #include "support/debug.h"
-#include "support/FileFilterList.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/foreach.h"
@@ -86,7 +85,7 @@ namespace frontend {
 */
 QString browseFile(QString const & filename,
 	QString const & title,
-	support::FileFilterList const & filters,
+	QStringList const & filters,
 	bool save = false,
 	QString const & label1 = QString(),
 	QString const & dir1 = QString(),
@@ -121,7 +120,7 @@ QString browseLibFile(QString const & dir,
 	QString const & name,
 	QString const & ext,
 	QString const & title,
-	support::FileFilterList const & filters)
+	QStringList const & filters)
 {
 	// FIXME UNICODE
 	QString const label1 = qt_("System files|#S#s");
@@ -182,7 +181,7 @@ QString browseDir(QString const & pathname,
 } // namespace frontend
 
 QString browseRelFile(QString const & filename, QString const & refpath,
-	QString const & title, FileFilterList const & filters, bool save,
+	QString const & title, QStringList const & filters, bool save,
 	QString const & label1, QString const & dir1,
 	QString const & label2, QString const & dir2)
 {
@@ -988,7 +987,7 @@ void PrefPaths::update(LyXRC const & rc)
 
 void PrefPaths::select_exampledir()
 {
-	QString file = form_->browsedir(internalPath(exampleDirED->text()),
+	QString file = browseDir(internalPath(exampleDirED->text()),
 		qt_("Select directory for example files"));
 	if (!file.isEmpty())
 		exampleDirED->setText(file);
@@ -997,7 +996,7 @@ void PrefPaths::select_exampledir()
 
 void PrefPaths::select_templatedir()
 {
-	QString file = form_->browsedir(internalPath(templateDirED->text()),
+	QString file = browseDir(internalPath(templateDirED->text()),
 		qt_("Select a document templates directory"));
 	if (!file.isEmpty())
 		templateDirED->setText(file);
@@ -1006,7 +1005,7 @@ void PrefPaths::select_templatedir()
 
 void PrefPaths::select_tempdir()
 {
-	QString file = form_->browsedir(internalPath(tempDirED->text()),
+	QString file = browseDir(internalPath(tempDirED->text()),
 		qt_("Select a temporary directory"));
 	if (!file.isEmpty())
 		tempDirED->setText(file);
@@ -1015,7 +1014,7 @@ void PrefPaths::select_tempdir()
 
 void PrefPaths::select_backupdir()
 {
-	QString file = form_->browsedir(internalPath(backupDirED->text()),
+	QString file = browseDir(internalPath(backupDirED->text()),
 		qt_("Select a backups directory"));
 	if (!file.isEmpty())
 		backupDirED->setText(file);
@@ -1024,7 +1023,7 @@ void PrefPaths::select_backupdir()
 
 void PrefPaths::select_workingdir()
 {
-	QString file = form_->browsedir(internalPath(workingDirED->text()),
+	QString file = browseDir(internalPath(workingDirED->text()),
 		qt_("Select a document directory"));
 	if (!file.isEmpty())
 		workingDirED->setText(file);
@@ -2549,42 +2548,35 @@ void GuiPreferences::updateScreenFonts()
 QString GuiPreferences::browsebind(QString const & file) const
 {
 	return browseLibFile("bind", file, "bind", qt_("Choose bind file"),
-			     FileFilterList(_("LyX bind files (*.bind)")));
+			     QStringList(qt_("LyX bind files (*.bind)")));
 }
 
 
 QString GuiPreferences::browseUI(QString const & file) const
 {
 	return browseLibFile("ui", file, "ui", qt_("Choose UI file"),
-			     FileFilterList(_("LyX UI files (*.ui)")));
+			     QStringList(qt_("LyX UI files (*.ui)")));
 }
 
 
 QString GuiPreferences::browsekbmap(QString const & file) const
 {
 	return browseLibFile("kbd", file, "kmap", qt_("Choose keyboard map"),
-			     FileFilterList(_("LyX keyboard maps (*.kmap)")));
+			     QStringList(qt_("LyX keyboard maps (*.kmap)")));
 }
 
 
 QString GuiPreferences::browsedict(QString const & file) const
 {
 	return browseFile(file, qt_("Choose personal dictionary"),
-		FileFilterList(lyxrc.use_spell_lib ? _("*.pws") : _("*.ispell")));
+		QStringList(lyxrc.use_spell_lib ? qt_("*.pws") : qt_("*.ispell")));
 }
 
 
 QString GuiPreferences::browse(QString const & file,
 				  QString const & title) const
 {
-	return browseFile(file, title, FileFilterList(), true);
-}
-
-
-QString GuiPreferences::browsedir(QString const & path,
-				     QString const & title) const
-{
-	return browseDir(path, title);
+	return browseFile(file, title, QStringList(), true);
 }
 
 

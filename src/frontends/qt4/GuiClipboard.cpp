@@ -25,7 +25,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
-#include "support/FileFilterList.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #ifdef Q_WS_MACX
@@ -347,16 +346,16 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	
 	while (true) {
 		// create file type filter, putting the prefered on to the front
-		docstring filterSpec;
+		QStringList filter;
 		for (size_t i = 0; i != types.size(); ++i) {
 			docstring s = bformat(_("%1$s Files"), typeNames[types[i]])
 				+ " (*." + from_ascii(extensions[types[i]]) + ")";
 			if (types[i] == type)
-				filterSpec = s + filterSpec;
+				filter.prepend(toqstr(s));
 			else
-				filterSpec += ";;" + s;
+				filter.append(toqstr(s));
 		}
-		FileFilterList const filter(filterSpec);
+		filter = fileFilters(filter.join(";;"));
 		
 		// show save dialog for the graphic
 		FileDialog dlg(qt_("Choose a filename to save the pasted graphic as"));

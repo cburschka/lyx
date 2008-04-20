@@ -14,7 +14,6 @@
 
 #include "qt_helpers.h"
 
-#include "support/FileFilterList.h"
 #include "support/lstrings.h"
 
 #include <QApplication>
@@ -44,12 +43,13 @@ static QString getLabel(QString const & qstr)
 
 LyXFileDialog::LyXFileDialog(QString const & title,
 			     QString const & path,
-			     support::FileFilterList const & filters,
+			     QStringList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
 				 // FIXME replace that with guiApp->currentView()
-	: QFileDialog(qApp->focusWidget(), title, path, toqstr(filters.as_string()))
+	: QFileDialog(qApp->focusWidget(), title, path)
 {
+	setFilters(filters);
 	QDir dir(path);
 	// FIXME: workaround for a bug in qt which makes LyX crash
 	// with hidden paths (bug 4513). Recheck with recent Qt versions.
