@@ -282,7 +282,6 @@ src_client_extra_files = Split('''
 
 src_support_header_files = Split('''
     ExceptionMessage.h
-    FileFilterList.h
     FileMonitor.h
     FileName.h
     ForkedCalls.h
@@ -323,7 +322,6 @@ src_support_header_files = Split('''
 
 
 src_support_files = Split('''
-    FileFilterList.cpp
     FileMonitor.cpp
     FileName.cpp
     ForkedCalls.cpp
@@ -348,6 +346,7 @@ src_support_files = Split('''
     lyxsum.cpp
     lyxtime.cpp
     os.cpp
+    qstring_helpers.cpp
     socktools.cpp
     unicode.cpp
     userinfo.cpp
