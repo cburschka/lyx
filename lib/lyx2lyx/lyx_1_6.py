@@ -1700,7 +1700,6 @@ def remove_extra_embedded_files(document):
     " Remove \extra_embedded_files from buffer params "
     i = find_token(document.header, '\\extra_embedded_files', 0)
     if i == -1:
-        document.warning("Malformed lyx document: Missing '\\extra_embedded_files'.")
         return
     document.header.pop(i)
 
