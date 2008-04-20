@@ -75,11 +75,14 @@ endif()
 
 if(release)
 	set(CMAKE_BUILD_TYPE Release CACHE TYPE STRING FORCE)
+	set(release TRUE CACHE TYPE STRING FORCE)
 	set(release)
 endif()
 
 if(debug)
 	set(CMAKE_BUILD_TYPE Debug CACHE TYPE STRING FORCE)
+	set(debug TRUE CACHE TYPE STRING FORCE)
+	set(debug)
 endif()
 
 if(shared)
