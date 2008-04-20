@@ -1448,6 +1448,20 @@ void LyXAction::init()
 		{ LFUN_SERVER_NOTIFY, "server-notify", ReadOnly, System },
 		{ LFUN_SERVER_SET_XY, "server-set-xy", ReadOnly, System },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUILD_PROGRAM
+ * \li Action: Generates the code (literate programming).
+ * \li Notion: Latex file with extension \literate_extension is generated.
+               Then LyX invokes \build_command (with a default of``make'') to generate the code and
+	       \build_error_filter to process the compilation error messages. \n
+	       In case you want to process your literate file with a script, or some other program,
+	       just insert in your lyxrc file an entry with:\n
+	       \build_command "my_script my_arguments" \n
+	       The \build_error_filter differs from the \literate_error_filter only in that the
+	       former will identify error messages from your compiler.
+ * \li Syntax: build-program
+ * \endvar
+ */
 		{ LFUN_BUILD_PROGRAM, "build-program", ReadOnly, Buffer },
 
 /*!
