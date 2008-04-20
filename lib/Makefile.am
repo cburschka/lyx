@@ -346,7 +346,6 @@ dist_images_DATA = \
 	images/note-insert.png \
 	images/note-next.png \
 	images/paste.png \
-	images/pin.png \
 	images/promote.png \
 	images/psnfss1.png \
 	images/psnfss2.png \
