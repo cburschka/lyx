@@ -37,6 +37,7 @@ EndFont
 
 # Standard style definition
 Style Standard
+  Category         MainText
   Margin           Static
   LatexType        Paragraph
   LatexName        dummy
@@ -50,6 +51,7 @@ End
 # List section
 # Itemize style definition
 Style Itemize
+  Category         List
   Margin           Static
   LatexType        Item_Environment
   LatexName        itemize
@@ -68,6 +70,7 @@ End
 
 # Enumerate style definition
 Style Enumerate
+  Category         List
   Margin           Static
   LatexType        Item_Environment
   LatexName        enumerate
@@ -86,6 +89,7 @@ End
 
 # Description style definition
 Style Description
+  Category         List
   Margin           First_Dynamic
   LatexType        Item_environment
   LatexName        description
@@ -111,6 +115,7 @@ End
 # Sectioning section
 # Part style definition
 Style Part
+  Category         Section
   Margin           Dynamic
   LatexType        Command
   LatexName        part
@@ -140,6 +145,7 @@ End
 
 # Section style definition
 Style Section
+  Category         Section
   Margin           First_Dynamic
   LatexType        Command
   LatexName        lyxframeend{}\section
@@ -172,6 +178,7 @@ End
 # Section* style definition
 Style Section*
   CopyStyle        Section
+  Category         Unnumbered
   Margin           Static
   LatexName        lyxframeend{}\section*
   LabelType        No_Label
@@ -180,6 +187,7 @@ End
 
 # Subsection style definition
 Style Subsection
+  Category         Section
   Margin           First_Dynamic
   LatexType        Command
   LatexName        lyxframeend{}\subsection
@@ -213,6 +221,7 @@ End
 # Subsection* style definition
 Style Subsection*
   CopyStyle        Subsection
+  Category         Unnumbered
   Margin           Static
   LatexName        lyxframeend{}\subsection*
   LabelType        No_Label
@@ -221,6 +230,7 @@ End
 
 # Frame control definition
 Style BeginFrame
+  Category         Frames
   TocLevel         4
   KeepEmpty        1
   LatexType        Command
@@ -264,6 +274,7 @@ Style BeginFrame
 End
 
 Style BeginPlainFrame
+  Category          Frames
   TocLevel          4
   KeepEmpty         1
   LatexType         Command
@@ -303,6 +314,7 @@ Style BeginPlainFrame
 End
 
 Style AgainFrame
+  Category          Frames
   KeepEmpty         0
   LatexType         Command
   LatexName         lyxframeend{}\lyxagainframe
@@ -343,6 +355,7 @@ Style AgainFrame
 End
 
 Style EndFrame
+  Category          Frames
   KeepEmpty         1
   LatexType         Command
   LatexName         lyxframeend
@@ -371,6 +384,7 @@ End
 
 # Frame decoration section
 Style FrameSubtitle
+  Category         Frames
   Margin           Static
   LatexType        Command
   LatexName        framesubtitle
@@ -393,6 +407,7 @@ End
 
 
 Style Column
+  Category         Columns
   Margin           Static
   LatexType        Command
   LatexName        column
@@ -417,6 +432,7 @@ End
 
 
 Style Columns
+  Category         Columns
   KeepEmpty        1
   Margin           Static
   LatexType        Environment
@@ -445,6 +461,7 @@ Style Columns
 End
 
 Style ColumnsCenterAligned
+  Category         Columns
   KeepEmpty        1
   Margin           Static
   LatexType        Environment
@@ -475,6 +492,7 @@ Style ColumnsCenterAligned
 End
 
 Style ColumnsTopAligned
+  Category         Columns
   KeepEmpty        1
   Margin           Static
   LatexType        Environment
@@ -506,6 +524,7 @@ End
 
 # Frame progression section
 Style Pause
+  Category          Overlays
   KeepEmpty         1
   LatexType         Command
   LatexName         pause
@@ -531,6 +550,7 @@ Style Pause
 End
 
 Style Overprint
+  Category         Overlays
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -557,6 +577,7 @@ Style Overprint
 End
 
 Style OverlayArea
+  Category         Overlays
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -582,6 +603,7 @@ Style OverlayArea
 End
 
 Style Uncover
+  Category         Overlays
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -607,6 +629,7 @@ Style Uncover
 End
 
 Style Only
+  Category         Overlays
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -633,6 +656,7 @@ End
 
 # Blocks section
 Style Block
+  Category         Blocks
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -658,6 +682,7 @@ Style Block
 End
 
 Style ExampleBlock
+  Category         Blocks
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -687,6 +712,7 @@ Style ExampleBlock
 End
 
 Style AlertBlock
+  Category         Blocks
   Margin           First_Dynamic
   LatexType        Environment
   NextNoIndent     0
@@ -718,6 +744,7 @@ End
 # Title slide data section
 # Title style definition
 Style Title
+  Category         Titling
   Margin           Static
   LatexType        Command
   InTitle          1
@@ -749,6 +776,7 @@ Style Title_(Plain_Frame)
 End
 
 Style Subtitle
+  Category         Titling
   Margin           Static
   LatexType        Command
   InTitle          1
@@ -773,6 +801,7 @@ End
 
 # Author style definition
 Style Author
+  Category         Titling
   Margin           Static
   LatexType        Command
   InTitle          1
@@ -794,6 +823,7 @@ Style Author
 End
 
 Style Institute
+  Category         Titling
   Margin           Dynamic
   LatexType        Command
   InTitle          1
@@ -815,6 +845,7 @@ End
 
 # Date style definition
 Style Date
+  Category         Titling
   Margin           Dynamic
   LatexType        Command
   InTitle          1
@@ -837,6 +868,7 @@ End
 # Titles & bibliography section
 # Bibliography style definition
 Style Bibliography
+  Category         BackMatter
   Margin           First_Dynamic
   LatexType        Bib_Environment
   LatexName        thebibliography
@@ -860,6 +892,7 @@ Style Bibliography
 End
 
 Style TitleGraphic
+  Category         Titling
   Margin           Static
   LatexType        Command
   InTitle          1
@@ -884,6 +917,7 @@ End
 
 # Theorems and such section
 Style Corollary
+   Category        Theorems
    Margin          First_Dynamic
    LatexType       Environment
    NextNoIndent    0
@@ -961,6 +995,7 @@ End
 # Misc. section
 # Separator style definition
 Style Separator
+  Category         MainText
   LatexType        Paragraph
   LatexName        dummy
   ParIndent        MM
@@ -984,6 +1019,7 @@ Style Separator
 End
  
 Style LyX-Code
+  Category              MainText
   Margin           Static
   LatexType        Environment
   LatexName        lyxcode
@@ -1021,6 +1057,7 @@ Style LyX-Code
 End
  
 Style NoteItem
+  Category         MainText
   Margin           Static
   LatexType        Command
   LatexName        note[item]
