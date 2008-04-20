@@ -229,7 +229,7 @@ docstring GuiToc::guiName(string const & type) const
 	if (type == "equation")
 		return _("List of Equations");
 	if (type == "footnote")
-		return _("List of Foot notes");
+		return _("List of Footnotes");
 	if (type == "listing")
 		return _("List of Listings");
 	if (type == "index")

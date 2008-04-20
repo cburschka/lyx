@@ -932,7 +932,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		else if (cit->first == "note")
 			label = qt_("List of Notes");
 		else if (cit->first == "footnote")
-			label = qt_("List of Foot notes");
+			label = qt_("List of Footnotes");
 		else if (cit->first == "label")
 			label = qt_("Labels and References");
 		else if (cit->first == "citation")
