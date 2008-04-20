@@ -16,6 +16,7 @@
 #include "Length.h"
 #include "support/qstring_helpers.h"
 #include "support/strfwd.h"
+#include "qt_i18n.h"
 
 class QComboBox;
 class QLineEdit;
@@ -53,14 +54,6 @@ Length const & len, Length::UNIT defaultUnit);
 void setValid(QWidget * widget, bool valid);
 
 } // namespace frontend
-
-
-/**
-* qt_ - i18nize string and convert to QString
- *
- * Use this in qt4/ instead of _()
- */
-QString const qt_(char const * str, const char * comment = 0);
 
 
 /**

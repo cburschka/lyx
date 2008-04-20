@@ -16,6 +16,7 @@
 #include "ui_SymbolsUi.h"
 
 #include <map>
+#include <string>
 #include <vector>
 
 namespace lyx {
@@ -34,7 +35,7 @@ public:
 	void dispatchParams();
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
-	virtual FuncCode getLfun() const { return LFUN_SELF_INSERT; }
+	FuncCode getLfun() const { return LFUN_SELF_INSERT; }
 	//@}
 
 public Q_SLOTS:

@@ -18,10 +18,9 @@
 #include "Format.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
-#include "qt_helpers.h"
 
+#include "support/qstring_helpers.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include <QListWidget>
 #include <QPushButton>
@@ -87,7 +86,7 @@ void GuiSendTo::updateContents()
 		formatLW->addItem(toqstr(*it));
 	}
 
-	commandCO->addItem(toqstr(command_));
+	commandCO->addItem(command_);
 }
 
 
@@ -95,11 +94,11 @@ void GuiSendTo::applyView()
 {
 	int const line = formatLW->currentRow();
 
-	if (line < 0 || line > int(formatLW->count()))
+	if (line < 0 || line > formatLW->count())
 		return;
 
 	format_ = all_formats_[line];
-	command_ = trim(fromqstr(commandCO->currentText()));
+	command_ = commandCO->currentText().trimmed();
 }
 
 
@@ -118,17 +117,17 @@ bool GuiSendTo::isValid()
 bool GuiSendTo::initialiseParams(string const &)
 {
 	format_ = 0;
-	command_ = lyxrc.custom_export_command;
+	command_ = toqstr(lyxrc.custom_export_command);
 	return true;
 }
 
 
 void GuiSendTo::dispatchParams()
 {
-	if (command_.empty() || !format_ || format_->name().empty())
+	if (command_.isEmpty() || !format_ || format_->name().empty())
 		return;
 
-	string const data = format_->name() + " " + command_;
+	string const data = format_->name() + " " + fromqstr(command_);
 	dispatch(FuncRequest(getLfun(), data));
 }
 

@@ -66,7 +66,7 @@ private:
 	///
 	Format const * format_;
 	///
-	std::string command_;
+	QString command_;
 };
 
 } // namespace frontend
