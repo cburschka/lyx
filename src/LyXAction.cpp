@@ -389,6 +389,25 @@ void LyXAction::init()
 		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
 		{ LFUN_APPENDIX, "appendix", Noop, Edit },
 
+		{ LFUN_INDEX_INSERT, "index-insert", Noop, Edit },
+		{ LFUN_INDEX_PRINT, "index-print", Noop, Edit },
+
+		{ LFUN_NOMENCL_INSERT, "nomencl-insert", Noop, Edit },
+		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop, Edit },
+
+		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
+		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
+ * \li Action: Inserts a line break or new line.
+ * \li Syntax: newline-insert <ARG>
+ * \li Params: <ARG>: <newline|linebreak> default: newline
+ * \li Origin: JSpitzm, 25 Mar 2008
+ * \endvar
+ */
+		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
+
+
 #if 0
 		{ LFUN_LIST_INSERT, "list-insert", Noop, Edit },
 #endif
@@ -575,16 +594,6 @@ void LyXAction::init()
 		{ LFUN_LINE_END, "line-end", ReadOnly | NoUpdate, Edit },
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
- * \li Action: Inserts a line break or new line.
- * \li Syntax: newline-insert <ARG>
- * \li Params: <ARG>: <newline|linebreak> default: newline
- * \li Origin: JSpitzm, 25 Mar 2008
- * \endvar
- */
-		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
-
-/*!
  * \var lyx::FuncCode lyx::LFUN_COPY
  * \li Action: Copies to the clipboard the last edit.
  * \li Syntax: copy
@@ -627,6 +636,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_REDO, "redo", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_REPEAT
+ * \li Action: Repeat the given command.
+ * \li Syntax: repeat <COUNT> <LFUN-COMMAND>
+ * \li Author: poenitz, 27 Oct 2003
+ * \endvar
+ */
 		{ LFUN_REPEAT, "repeat", NoBuffer, Edit },
 		{ LFUN_CHARS_TRANSPOSE, "chars-transpose", Noop, Edit },
 
@@ -649,15 +665,6 @@ void LyXAction::init()
 		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
-
-		{ LFUN_INDEX_INSERT, "index-insert", Noop, Edit },
-		{ LFUN_INDEX_PRINT, "index-print", Noop, Edit },
-
-		{ LFUN_NOMENCL_INSERT, "nomencl-insert", Noop, Edit },
-		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop, Edit },
-
-		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
-		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 
 		{ LFUN_BIBITEM_INSERT, "bibitem-insert", Noop, Edit },
 		{ LFUN_CITATION_INSERT, "citation-insert", Noop, Edit },
