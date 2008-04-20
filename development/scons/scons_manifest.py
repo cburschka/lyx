@@ -56,7 +56,6 @@ src_header_files = Split('''
     Dimension.h
     DispatchResult.h
     DocIterator.h
-    EmbeddedFiles.h
     Encoding.h
     ErrorList.h
     Exporter.h
@@ -162,7 +161,6 @@ src_pre_files = Split('''
     CutAndPaste.cpp
     DepTable.cpp
     DocIterator.cpp
-    EmbeddedFiles.cpp
     Encoding.cpp
     ErrorList.cpp
     Exporter.cpp
