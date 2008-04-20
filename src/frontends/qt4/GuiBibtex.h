@@ -13,7 +13,7 @@
 #ifndef GUIBIBTEX_H
 #define GUIBIBTEX_H
 
-#include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "ButtonController.h"
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"

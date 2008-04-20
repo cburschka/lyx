@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiNomencl.h
+ * \file GuiNomenclature.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,10 +11,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUINOMENCL_H
-#define GUINOMENCL_H
+#ifndef GUINOMENCLATURE_H
+#define GUINOMENCLATURE_H
 
-#include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "ui_NomenclUi.h"
 
 namespace lyx {
@@ -43,4 +43,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUINOMENCL_H
+#endif // GUINOMENCLATURE_H

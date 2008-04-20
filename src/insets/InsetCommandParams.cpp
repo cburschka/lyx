@@ -395,7 +395,7 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 		find_if(info_.begin(), info_.end(), 
 			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
 	if (it == info_.end())
-		LASSERT(false, /**/);
+		LASSERT(false, return docstring());
 	return (*this)[it->name()];
 }
 
@@ -403,7 +403,7 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
 	static const docstring dummy; //so we don't return a ref to temporary
-	LASSERT(info_.hasParam(name), /**/);
+	LASSERT(info_.hasParam(name), return dummy);
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
 		return dummy;

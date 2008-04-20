@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiDialog.h"
+#include "GuiCommand.h"
+
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "FuncRequest.h"
@@ -20,9 +22,6 @@
 #include "support/debug.h"
 
 #include <QCloseEvent>
-#include <QMainWindow>
-#include <QSettings>
-#include <QShowEvent>
 
 using namespace std;
 

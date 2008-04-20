@@ -14,6 +14,8 @@
 #include "qt_helpers.h"
 #include "FuncRequest.h"
 
+#include "insets/InsetCommand.h"
+
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -23,7 +25,8 @@ namespace frontend {
 
 
 GuiBibitem::GuiBibitem(GuiView & lv)
-	: GuiCommand(lv, "bibitem", qt_("Bibliography Entry Settings"))
+	: GuiDialog(lv, "bibitem", qt_("Bibliography Entry Settings")),
+	  params_(insetCode("bibitem"))
 {
 	setupUi(this);
 
@@ -66,6 +69,22 @@ void GuiBibitem::applyView()
 bool GuiBibitem::isValid()
 {
 	return !keyED->text().isEmpty();
+}
+
+
+bool GuiBibitem::initialiseParams(std::string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommand::string2params("bibitem", data, params_);
+	return true;
+}
+
+
+void GuiBibitem::dispatchParams()
+{
+	std::string const lfun = InsetCommand::params2string("bibitem", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

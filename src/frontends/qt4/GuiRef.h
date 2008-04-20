@@ -12,10 +12,8 @@
 #ifndef GUIREF_H
 #define GUIREF_H
 
-#include "GuiDialog.h"
-#include "Dialog.h"
+#include "GuiCommand.h"
 #include "ui_RefUi.h"
-#include "insets/InsetCommandParams.h"
 
 #include <vector>
 

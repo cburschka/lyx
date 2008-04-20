@@ -17,6 +17,7 @@
 #include "FontEnums.h"
 
 #include <map>
+#include <string>
 
 
 namespace lyx {

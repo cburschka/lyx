@@ -1,44 +1,31 @@
 // -*- C++ -*-
 /**
- * \file GuiBibitem.h
+ * \file GuiCommand.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIBIBITEM_H
-#define GUIBIBITEM_H
+#ifndef GUICOMMAND_H
+#define GUICOMMAND_H
 
 #include "GuiDialog.h"
-#include "ui_BibitemUi.h"
 
 #include "insets/InsetCommandParams.h"
+
 
 namespace lyx {
 namespace frontend {
 
-class GuiBibitem : public GuiDialog, public Ui::BibitemUi
+class GuiCommand : public GuiDialog
 {
-	Q_OBJECT
-
 public:
-	/// Constructor
-	GuiBibitem(GuiView & lv);
-
-private Q_SLOTS:
-	void change_adaptor();
-
-private:
-	///
-	bool isValid();
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
+	/// We need to know with what sort of inset we're associated.
+	// FIXME This should probably be an InsetCode
+	GuiCommand(GuiView &, QString const & name, QString const & title);
 	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
@@ -48,12 +35,17 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 
-private:
+protected:
 	///
 	InsetCommandParams params_;
+	//FIXME It should be possible to eliminate lfun_name_
+	//now and recover that information from params().insetType().
+	//But let's not do that quite yet.
+	/// Flags what action is taken by Kernel::dispatch()
+	std::string const lfun_name_;
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIBIBITEM_H
+#endif // GUIDIALOG_H

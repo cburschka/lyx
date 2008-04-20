@@ -140,6 +140,7 @@ NOMOCHEADER = \
 	DialogView.h \
 	DockView.h \
 	FileDialog.h \
+	GuiCommand.h \
 	GuiFontExample.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \

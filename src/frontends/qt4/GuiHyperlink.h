@@ -13,9 +13,8 @@
 #ifndef GUIHYPERLINK_H
 #define GUIHYPERLINK_H
 
-#include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "ui_HyperlinkUi.h"
-#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
@@ -25,6 +24,7 @@ class GuiHyperlink : public GuiCommand, public Ui::HyperlinkUi
 	Q_OBJECT
 
 public:
+	/// Constructor
 	GuiHyperlink(GuiView & lv);
 
 public Q_SLOTS:

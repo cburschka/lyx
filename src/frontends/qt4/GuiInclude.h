@@ -15,11 +15,8 @@
 #define GUIINCLUDE_H
 
 #include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "ui_IncludeUi.h"
-
-#include "insets/InsetCommandParams.h"
-
-#include "support/docstring.h"
 
 
 namespace lyx {

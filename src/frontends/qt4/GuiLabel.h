@@ -13,7 +13,7 @@
 #ifndef GUILABEL_H
 #define GUILABEL_H
 
-#include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "ui_LabelUi.h"
 
 namespace lyx {
@@ -39,8 +39,7 @@ private:
 	void updateContents();
 };
 
-
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIINDEX_H
+#endif // GUILABEL_H

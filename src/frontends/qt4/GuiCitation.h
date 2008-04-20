@@ -15,13 +15,11 @@
 #ifndef GUICITATION_H
 #define GUICITATION_H
 
-#include "GuiDialog.h"
+#include "GuiCommand.h"
 #include "GuiSelectionManager.h"
 #include "ui_CitationUi.h"
-#include "support/docstring.h"
 #include "BiblioInfo.h"
 
-#include <QKeyEvent>
 #include <QStringList>
 #include <QStringListModel>
 
