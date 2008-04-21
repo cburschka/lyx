@@ -2052,7 +2052,7 @@ void PrefShortcuts::updateShortcutsTW()
 	mathItem_->setFlags(mathItem_->flags() & ~Qt::ItemIsSelectable);
 	
 	bufferItem_ = new QTreeWidgetItem(shortcutsTW);
-	bufferItem_->setText(0, qt_("Buffer and Window"));
+	bufferItem_->setText(0, qt_("Document and Window"));
 	bufferItem_->setFlags(bufferItem_->flags() & ~Qt::ItemIsSelectable);
 	
 	layoutItem_ = new QTreeWidgetItem(shortcutsTW);
