@@ -1289,7 +1289,9 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
-		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
+		else if (t.cs() == "choose" || t.cs() == "over"
+				|| t.cs() == "atop" || t.cs() == "brace"
+				|| t.cs() == "brack") {
 			MathAtom at = createInsetMath(t.cs());
 			at.nucleus()->cell(0) = *cell;
 			cell->clear();

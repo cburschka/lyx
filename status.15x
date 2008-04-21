@@ -44,6 +44,10 @@ What's new
 - New layout files "article (beamer)" and "article (koma + beamer)"
   that support beamer's article mode.
 
+- Allow using the \binom command without the amsmath package.
+
+- Add support for \brace and \brack commands in mathed.
+
 
 * DOCUMENT INPUT/OUTPUT
 
