@@ -18,8 +18,11 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/os.h"
+
+#include <string>
 
 /** when this is defined, the code will use
  * QFileDialog::getOpenFileName and friends to create filedialogs.
@@ -42,7 +45,7 @@
 
 namespace lyx {
 
-using support::os::internal_path;
+using namespace support;
 
 
 class FileDialog::Private {
@@ -91,8 +94,9 @@ FileDialog::Result FileDialog::save(QString const & path,
 	QString const startsWith = makeAbsPath(suggested, path);
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
-	     title_, startsWith, filters, 0, QFileDialog::DontConfirmOverwrite);
-	result.second = toqstr(internal_path(fromqstr(name)));
+	     title_, startsWith, filters.join(";;"),
+			 0, QFileDialog::DontConfirmOverwrite);
+	result.second = toqstr(os::internal_path(fromqstr(name)));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 #if QT_VERSION != 0x040203
@@ -126,9 +130,9 @@ FileDialog::Result FileDialog::open(QString const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	QString const startsWith = makeAbsPath(suggested, path);
-	result.second = internalPath(
-		QFileDialog::getOpenFileName(qApp->focusWidget(),
-		title_, startsWith, filters));
+	QString const file = QFileDialog::getOpenFileName(qApp->focusWidget(),
+		title_, startsWith, filters.join(";;"));
+	result.second = internalPath(file);
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -155,8 +159,9 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	QString const startsWith = makeAbsPath(suggested, path);
-	result.second = toqstr(internal_path(fromqstr(
+	QString const startsWith = toqstr(makeAbsPath(fromqstr(suggested),
+		fromqstr(path)).absFilename());
+	result.second = toqstr(os::internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		title_, startsWith))));
 #else

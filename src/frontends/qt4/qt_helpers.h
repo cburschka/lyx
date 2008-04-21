@@ -125,6 +125,7 @@ QString addExtension(QString const & name, QString const & extension);
 
 /// Return the extension of the file (not including the .)
 QString getExtension(QString const & name);
+QString makeAbsPath(QString const & relpath, QString const & base);
 
 } // namespace lyx
 
