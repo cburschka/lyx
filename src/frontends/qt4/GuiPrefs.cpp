@@ -1972,7 +1972,6 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 	shortcutsTW->setSortingEnabled(true);
 	// Multi-selection can be annoying.
 	// shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
-	shortcutsTW->header()->resizeSection(0, 200);
 
 	connect(bindFilePB, SIGNAL(clicked()),
 		this, SLOT(select_bind()));
@@ -2085,6 +2084,9 @@ void PrefShortcuts::updateShortcutsTW()
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
 	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
+	modifyPB->setEnabled(!items.isEmpty());
+
+	shortcutsTW->resizeColumnToContents(0);
 }
 
 
@@ -2178,6 +2180,7 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 {
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
 	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
+	modifyPB->setEnabled(!items.isEmpty());
 	if (items.isEmpty())
 		return;
 	
@@ -2191,12 +2194,16 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 
 void PrefShortcuts::on_shortcutsTW_itemDoubleClicked()
 {
+	modifyShortcut();
+}
+
+
+void PrefShortcuts::modifyShortcut()
+{
 	QTreeWidgetItem * item = shortcutsTW->currentItem();
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
-		// clear the shortcut because I assume that a user will enter
-		// a new shortcut.
-		shortcut_->shortcutLE->reset();
+		shortcut_->shortcutLE->setText(item->text(1));
 		shortcut_->shortcutLE->setFocus();
 		shortcut_->exec();
 	}
@@ -2212,6 +2219,12 @@ void PrefShortcuts::select_bind()
 		system_bind_.read(fromqstr(file));
 		updateShortcutsTW();
 	}
+}
+
+
+void PrefShortcuts::on_modifyPB_pressed()
+{
+	modifyShortcut();
 }
 
 

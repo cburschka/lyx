@@ -399,6 +399,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 	void updateShortcutsTW();
+	void modifyShortcut();
 	///
 	void setItemType(QTreeWidgetItem * item, item_type tag);
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
@@ -406,6 +407,7 @@ public:
 
 public Q_SLOTS:
 	void select_bind();
+	void on_modifyPB_pressed();
 	void on_newPB_pressed();
 	void on_removePB_pressed();
 	void on_searchLE_textEdited();
