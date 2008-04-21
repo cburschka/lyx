@@ -50,6 +50,9 @@ What's new
 - Add support for the HTML-to-LaTeX converters gnuhtml2latex and
   htmltolatex (bug 4615).
 
+- The \makeatletter and \makeatother commands are now added to the LaTeX
+  preamble only when actually needed.
+
 
 * BUILD/INSTALLATION:
 

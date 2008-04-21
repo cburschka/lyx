@@ -1093,13 +1093,17 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// The optional packages;
 	docstring lyxpreamble(from_ascii(features.getPackages()));
 
-	// this might be useful...
-	lyxpreamble += "\n\\makeatletter\n";
+	// only add \makeatletter and \makeatother when actually needed
+	bool makeatletter = false;
 
 	// Some macros LyX will need
 	docstring tmppreamble(from_ascii(features.getMacros()));
 
 	if (!tmppreamble.empty()) {
+		if (!makeatletter) {
+			lyxpreamble += "\n\\makeatletter\n";
+			makeatletter = true;
+		}
 		lyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"LyX specific LaTeX commands.\n"
 			+ tmppreamble + '\n';
@@ -1108,6 +1112,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// the text class specific preamble
 	tmppreamble = features.getTClassPreamble();
 	if (!tmppreamble.empty()) {
+		if (!makeatletter) {
+			lyxpreamble += "\n\\makeatletter\n";
+			makeatletter = true;
+		}
 		lyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"Textclass specific LaTeX commands.\n"
 			+ tmppreamble + '\n';
@@ -1115,6 +1123,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	/* the user-defined preamble */
 	if (!preamble.empty()) {
+		if (!makeatletter) {
+			lyxpreamble += "\n\\makeatletter\n";
+			makeatletter = true;
+		}
 		// FIXME UNICODE
 		lyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"User specified LaTeX commands.\n"
@@ -1153,8 +1165,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		}
 	}
 
-	if (!bullets_def.empty())
+	if (!bullets_def.empty()) {
+		if (!makeatletter) {
+			lyxpreamble += "\n\\makeatletter\n";
+			makeatletter = true;
+		}
 		lyxpreamble += bullets_def + "}\n\n";
+	}
+
+	if (makeatletter)
+		lyxpreamble += "\\makeatother\n\n";
 
 	// We try to load babel late, in case it interferes
 	// with other packages.
@@ -1162,10 +1182,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (use_babel && !features.isRequired("jurabib")) {
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelOptions());
+		lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
 	}
-
-	lyxpreamble += "\\makeatother\n\n";
 
 	int const nlines =
 		int(lyx::count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
