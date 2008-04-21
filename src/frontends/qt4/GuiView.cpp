@@ -1331,7 +1331,7 @@ void GuiView::importDocument(string const & argument)
 		return;
 
 	// get absolute path of file
-	FileName const fullname(makeAbsPath(filename));
+	FileName const fullname(support::makeAbsPath(filename));
 
 	FileName const lyxfile(support::changeExtension(fullname.absFilename(), ".lyx"));
 
@@ -1493,7 +1493,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 	if (!newname.empty()) {
 		// FIXME UNICODE
-		fname = makeAbsPath(to_utf8(newname), oldname.onlyPath().absFilename());
+		fname = support::makeAbsPath(to_utf8(newname), oldname.onlyPath().absFilename());
 	} else {
 		// Switch to this Buffer.
 		setBuffer(&b);

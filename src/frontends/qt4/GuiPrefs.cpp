@@ -186,8 +186,7 @@ QString browseRelFile(QString const & filename, QString const & refpath,
 	QString const & label1, QString const & dir1,
 	QString const & label2, QString const & dir2)
 {
-	QString const fname = toqstr(makeAbsPath(
-		fromqstr(filename), fromqstr(refpath)).absFilename());
+	QString const fname = makeAbsPath(filename, refpath);
 
 
 	QString const outname =

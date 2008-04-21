@@ -175,7 +175,7 @@ bool GuiPrint::initialiseParams(string const &)
 {
 	/// get global printer parameters
 	params_ = PrinterParams();
-	params_.file_name = changeExtension(buffer().absFileName(),
+	params_.file_name = support::changeExtension(buffer().absFileName(),
 					lyxrc.print_file_extension);
 
 	setButtonsValid(true); // so that the user can press Ok
