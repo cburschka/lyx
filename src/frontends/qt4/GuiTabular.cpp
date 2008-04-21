@@ -14,14 +14,16 @@
 
 #include "GuiTabular.h"
 
+#include "GuiSetBorder.h"
+#include "GuiView.h"
+#include "LengthCombo.h"
+#include "qt_helpers.h"
+#include "Validator.h"
+
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
-#include "GuiSetBorder.h"
-#include "LengthCombo.h"
 #include "LyXRC.h"
-#include "qt_helpers.h"
-#include "Validator.h"
 
 #include "insets/InsetTabular.h"
 
@@ -36,7 +38,9 @@ namespace lyx {
 namespace frontend {
 
 GuiTabular::GuiTabular(GuiView & lv)
-	: GuiDialog(lv, "tabular", qt_("Table Settings"))
+	: GuiDialog(lv, "tabular", qt_("Table Settings")),
+	// tabular_ is initialised at dialog construction in initialiseParams()
+	tabular_(*lv.buffer(), 0, 0)
 {
 	active_cell_ = Tabular::npos;
 
@@ -580,9 +584,9 @@ void GuiTabular::updateContents()
 	multicolumnCB->setChecked(multicol);
 
 	rotateCellCB->setChecked(tabular_.getRotateCell(cell));
-	rotateTabularCB->setChecked(tabular_.getRotateTabular());
+	rotateTabularCB->setChecked(tabular_.rotate);
 
-	longTabularCB->setChecked(tabular_.isLongTabular());
+	longTabularCB->setChecked(tabular_.is_long_tabular);
 
 	update_borders();
 
@@ -605,8 +609,8 @@ void GuiTabular::updateContents()
 	Length::UNIT default_unit =
 		useMetricUnits() ? Length::CM : Length::IN;
 
-	borderDefaultRB->setChecked(!tabular_.useBookTabs());
-	booktabsRB->setChecked(tabular_.useBookTabs());
+	borderDefaultRB->setChecked(!tabular_.use_booktabs);
+	booktabsRB->setChecked(tabular_.use_booktabs);
 
 	if (tabular_.row_info[row].top_space.empty()
 	    && !tabular_.row_info[row].top_space_default) {
@@ -723,7 +727,7 @@ void GuiTabular::updateContents()
 	hAlignCB->setEnabled(true);
 	vAlignCB->setEnabled(!pwidth.zero());
 
-	if (!tabular_.isLongTabular()) {
+	if (!tabular_.is_long_tabular) {
 		headerStatusCB->setChecked(false);
 		headerBorderAboveCB->setChecked(false);
 		headerBorderBelowCB->setChecked(false);

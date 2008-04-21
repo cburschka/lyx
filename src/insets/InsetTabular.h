@@ -233,8 +233,6 @@ public:
 	static const idx_type npos = static_cast<idx_type>(-1);
 
 	/// constructor
-	Tabular();
-	/// constructor
 	Tabular(Buffer const &, col_type columns_arg, row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
@@ -346,8 +344,6 @@ public:
 	///
 	idx_type getLastCellInRow(row_type row) const;
 	///
-	idx_type cellCount() const;
-	///
 	idx_type numberOfCellsInRow(idx_type cell) const;
 	///
 	void write(std::ostream &) const;
@@ -377,18 +373,6 @@ public:
 	col_type cellColumn(idx_type cell) const;
 	///
 	col_type cellRightColumn(idx_type cell) const;
-	///
-	void setBookTabs(bool);
-	///
-	bool useBookTabs() const;
-	///
-	void setLongTabular(bool);
-	///
-	bool isLongTabular() const;
-	///
-	void setRotateTabular(bool);
-	///
-	bool getRotateTabular() const;
 	///
 	void setRotateCell(idx_type cell, bool);
 	///
@@ -448,10 +432,6 @@ public:
 	/// Search for \param inset in the tabular, with the
 	///
 	idx_type cellFromInset(Inset const * inset) const;
-	///
-	row_type rowCount() const { return row_info.size(); }
-	///
-	col_type columnCount() const { return column_info.size();}
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -726,7 +706,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	DisplayType display() const { return tabular.isLongTabular() ? AlignCenter : Inline; }
+	DisplayType display() const { return tabular.is_long_tabular ? AlignCenter : Inline; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -752,7 +732,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	/// number of cells
-	size_t nargs() const { return tabular.cellCount(); }
+	size_t nargs() const { return tabular.numberofcells; }
 	///
 	boost::shared_ptr<InsetTableCell const> cell(idx_type) const;
 	///

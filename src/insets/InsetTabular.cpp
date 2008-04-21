@@ -565,12 +565,6 @@ Tabular::ltType::ltType()
 {}
 
 
-Tabular::Tabular()
-{
-	// unusable now!
-}
-
-
 Tabular::Tabular(Buffer const & buffer, row_type rows_arg, col_type columns_arg)
 {
 	init(buffer, rows_arg, columns_arg);
@@ -592,13 +586,15 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 	is_long_tabular = false;
 	rotate = false;
 	use_booktabs = false;
+	size_t row_count = row_info.size();
+	size_t column_count = column_info.size();
 	// set silly default lines
-	for (row_type i = 0; i < rowCount(); ++i)
-		for (col_type j = 0; j < columnCount(); ++j) {
+	for (row_type i = 0; i < row_count; ++i)
+		for (col_type j = 0; j < column_count; ++j) {
 			cell_info[i][j].top_line = true;
 			cell_info[i][j].left_line = true;
-			cell_info[i][j].bottom_line = i == 0 || i == rowCount() - 1;
-			cell_info[i][j].right_line = j == columnCount() - 1;
+			cell_info[i][j].bottom_line = i == 0 || i == row_count - 1;
+			cell_info[i][j].right_line = j == column_count - 1;
 		}
 }
 
@@ -613,8 +609,8 @@ void Tabular::appendRow(idx_type const cell)
 	// now set the values of the row before
 	row_info[row] = row_info[row + 1];
 
-	row_type const nrows = rowCount();
-	col_type const ncols = columnCount();
+	row_type const nrows = row_info.size();
+	col_type const ncols = column_info.size();
 
 	cell_vvector old(nrows - 1);
 	for (row_type i = 0; i < nrows - 1; ++i)
@@ -649,7 +645,7 @@ void Tabular::appendRow(idx_type const cell)
 void Tabular::deleteRow(row_type const row)
 {
 	// Not allowed to delete last row
-	if (rowCount() == 1)
+	if (row_info.size() == 1)
 		return;
 
 	row_info.erase(row_info.begin() + row);
@@ -664,7 +660,7 @@ void Tabular::copyRow(row_type const row)
 	cell_info.insert(cell_info.begin() + row, cell_info[row]);
 
 	if (buffer().params().trackChanges)
-		for (col_type j = 0; j < columnCount(); ++j)
+		for (col_type j = 0; j < column_info.size(); ++j)
 			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
 	updateIndexes();
@@ -676,7 +672,7 @@ void Tabular::appendColumn(idx_type const cell)
 	col_type const c = cellColumn(cell);
 	column_vector::iterator cit = column_info.begin() + c + 1;
 	column_info.insert(cit, ColumnData());
-	row_type const nrows = rowCount();
+	row_type const nrows = row_info.size();
 	// set the column values of the column before
 	column_info[c + 1] = column_info[c];
 
@@ -711,13 +707,14 @@ void Tabular::appendColumn(idx_type const cell)
 void Tabular::deleteColumn(col_type const column)
 {
 	// Not allowed to delete last column
-	if (columnCount() == 1)
+	if (column_info.size() == 1)
 		return;
 
 	column_info.erase(column_info.begin() + column);
-	for (row_type i = 0; i < rowCount(); ++i) {
+	size_t row_count = row_info.size();
+	for (row_type i = 0; i < row_count; ++i) {
 		// Care about multicolumn cells
-		if (column + 1 < columnCount() &&
+		if (column + 1 < column_info.size() &&
 		    cell_info[i][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
 		    cell_info[i][column + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
 			cell_info[i][column + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
@@ -733,11 +730,12 @@ void Tabular::copyColumn(col_type const column)
 	BufferParams const & bp = buffer().params();
 	column_info.insert(column_info.begin() + column, column_info[column]);
 
-	for (row_type i = 0; i < rowCount(); ++i)
+	size_t row_count = row_info.size();
+	for (row_type i = 0; i < row_count; ++i)
 		cell_info[i].insert(cell_info[i].begin() + column, cell_info[i][column]);
 
 	if (bp.trackChanges)
-		for (row_type i = 0; i < rowCount(); ++i)
+		for (row_type i = 0; i < row_count; ++i)
 			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
 	updateIndexes();
 }
@@ -745,8 +743,8 @@ void Tabular::copyColumn(col_type const column)
 
 void Tabular::updateIndexes()
 {
-	col_type ncols = columnCount();
-	row_type nrows = rowCount();
+	col_type ncols = column_info.size();
+	row_type nrows = row_info.size();
 	numberofcells = 0;
 	for (row_type row = 0; row < nrows; ++row)
 		for (col_type column = 0; column < ncols; ++column) {
@@ -769,17 +767,11 @@ void Tabular::updateIndexes()
 }
 
 
-Tabular::idx_type Tabular::cellCount() const
-{
-	return numberofcells;
-}
-
-
 Tabular::idx_type Tabular::numberOfCellsInRow(idx_type const cell) const
 {
 	row_type const row = cellRow(cell);
 	idx_type result = 0;
-	for (col_type i = 0; i < columnCount(); ++i)
+	for (col_type i = 0; i < column_info.size(); ++i)
 		if (cell_info[row][i].multicolumn != Tabular::CELL_PART_OF_MULTICOLUMN)
 			++result;
 	return result;
@@ -836,13 +828,13 @@ bool Tabular::leftAlreadyDrawn(idx_type cell) const
 
 bool Tabular::isLastRow(idx_type cell) const
 {
-	return cellRow(cell) == rowCount() - 1;
+	return cellRow(cell) == row_info.size() - 1;
 }
 
 
 int Tabular::getAdditionalHeight(row_type row) const
 {
-	if (!row || row >= rowCount())
+	if (!row || row >= row_info.size())
 		return 0;
 
 	int const interline_space = row_info[row - 1].interline_space_default ?
@@ -858,7 +850,7 @@ int Tabular::getAdditionalWidth(idx_type cell) const
 {
 	col_type const nextcol = cellColumn(cell) + columnSpan(cell);
 	if (rightLine(cell) 
-		&& nextcol < columnCount() && leftLine(cellIndex(cellRow(cell), nextcol)))
+		&& nextcol < column_info.size() && leftLine(cellIndex(cellRow(cell), nextcol)))
 		return WIDTH_OF_LINE;
 	return 0;
 }
@@ -877,8 +869,8 @@ int Tabular::columnWidth(idx_type cell) const
 
 bool Tabular::updateColumnWidths()
 {
-	col_type const ncols = columnCount();
-	row_type const nrows = rowCount();
+	col_type const ncols = column_info.size();
+	row_type const nrows = row_info.size();
 	bool update = false;
 	// for each col get max of single col cells
 	for(col_type c = 0; c < ncols; ++c) {
@@ -918,7 +910,7 @@ bool Tabular::updateColumnWidths()
 
 int Tabular::width() const
 {
-	col_type const ncols = columnCount();
+	col_type const ncols = column_info.size();
 	int width = 0;
 	for (col_type i = 0; i < ncols; ++i)
 		width += column_info[i].width;
@@ -988,7 +980,7 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 	col_type const j = cellColumn(cell);
 
 	column_info[j].p_width = width;
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		idx_type const cell = cellIndex(i, j);
 		// because of multicolumns
 		toggleFixedWidth(cur, cellInset(cell).get(),
@@ -1088,7 +1080,7 @@ bool Tabular::rowBottomLine(row_type r) const
 bool Tabular::columnLeftLine(col_type c) const
 {
 	bool all_cols_set = true;
-	row_type const nrows = rowCount();
+	row_type const nrows = row_info.size();
 	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i))
@@ -1101,7 +1093,7 @@ bool Tabular::columnLeftLine(col_type c) const
 bool Tabular::columnRightLine(col_type c) const
 {
 	bool all_cols_set = true;
-	row_type const nrows = rowCount();
+	row_type const nrows = row_info.size();
 	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i) + columnSpan(i) - 1)
@@ -1195,30 +1187,30 @@ bool Tabular::isFirstCellInRow(idx_type cell) const
 
 Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 {
-	if (row > rowCount() - 1)
-		row = rowCount() - 1;
+	if (row > row_info.size() - 1)
+		row = row_info.size() - 1;
 	return cell_info[row][0].cellno;
 }
 
 
 bool Tabular::isLastCellInRow(idx_type cell) const
 {
-	return cellRightColumn(cell) == columnCount() - 1;
+	return cellRightColumn(cell) == column_info.size() - 1;
 }
 
 
 Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
 {
-	if (row > rowCount() - 1)
-		row = rowCount() - 1;
-	return cell_info[row][columnCount() - 1].cellno;
+	if (row > row_info.size() - 1)
+		row = row_info.size() - 1;
+	return cell_info[row][column_info.size() - 1].cellno;
 }
 
 
 Tabular::row_type Tabular::cellRow(idx_type cell) const
 {
-	if (cell >= cellCount())
-		return rowCount() - 1;
+	if (cell >= numberofcells)
+		return row_info.size() - 1;
 	if (cell == npos)
 		return 0;
 	return rowofcell[cell];
@@ -1227,8 +1219,8 @@ Tabular::row_type Tabular::cellRow(idx_type cell) const
 
 Tabular::col_type Tabular::cellColumn(idx_type cell) const
 {
-	if (cell >= cellCount())
-		return columnCount() - 1;
+	if (cell >= numberofcells)
+		return column_info.size() - 1;
 	if (cell == npos)
 		return 0;
 	return columnofcell[cell];
@@ -1239,7 +1231,7 @@ Tabular::col_type Tabular::cellRightColumn(idx_type cell) const
 {
 	row_type const row = cellRow(cell);
 	col_type column = cellColumn(cell);
-	while (column < columnCount() - 1 &&
+	while (column < column_info.size() - 1 &&
 		   cell_info[row][column + 1].multicolumn == CELL_PART_OF_MULTICOLUMN)
 		++column;
 	return column;
@@ -1251,8 +1243,8 @@ void Tabular::write(ostream & os) const
 	// header line
 	os << "<lyxtabular"
 	   << write_attribute("version", 3)
-	   << write_attribute("rows", rowCount())
-	   << write_attribute("columns", columnCount())
+	   << write_attribute("rows", row_info.size())
+	   << write_attribute("columns", column_info.size())
 	   << ">\n";
 	// global longtable options
 	os << "<features"
@@ -1270,7 +1262,7 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 	   << write_attribute("lastFootEmpty", endlastfoot.empty)
 	   << ">\n";
-	for (col_type j = 0; j < columnCount(); ++j) {
+	for (col_type j = 0; j < column_info.size(); ++j) {
 		os << "<column"
 		   << write_attribute("alignment", column_info[j].alignment)
 		   << write_attribute("valignment", column_info[j].valignment)
@@ -1278,7 +1270,7 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("special", column_info[j].align_special)
 		   << ">\n";
 	}
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		static const string def("default");
 		os << "<row";
 		if (row_info[i].top_space_default)
@@ -1299,7 +1291,7 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("endlastfoot", row_info[i].endlastfoot)
 		   << write_attribute("newpage", row_info[i].newpage)
 		   << ">\n";
-		for (col_type j = 0; j < columnCount(); ++j) {
+		for (col_type j = 0; j < column_info.size(); ++j) {
 			os << "<cell"
 			   << write_attribute("multicolumn", cell_info[i][j].multicolumn)
 			   << write_attribute("alignment", cell_info[i][j].alignment)
@@ -1367,7 +1359,7 @@ void Tabular::read(Lexer & lex)
 	getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
 	getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
 
-	for (col_type j = 0; j < columnCount(); ++j) {
+	for (col_type j = 0; j < column_info.size(); ++j) {
 		l_getline(is,line);
 		if (!prefixIs(line,"<column")) {
 			lyxerr << "Wrong tabular format (expected <column ...> got"
@@ -1380,7 +1372,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "special", column_info[j].align_special);
 	}
 
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		l_getline(is, line);
 		if (!prefixIs(line, "<row")) {
 			lyxerr << "Wrong tabular format (expected <row ...> got"
@@ -1398,7 +1390,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "endfoot", row_info[i].endfoot);
 		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
-		for (col_type j = 0; j < columnCount(); ++j) {
+		for (col_type j = 0; j < column_info.size(); ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
 				lyxerr << "Wrong tabular format (expected <cell ...> got"
@@ -1479,7 +1471,7 @@ void Tabular::setMultiColumn(idx_type cell, idx_type number)
 Tabular::idx_type Tabular::columnSpan(idx_type cell) const
 {
 	row_type const row = cellRow(cell);
-	col_type const ncols = columnCount();
+	col_type const ncols = column_info.size();
 	idx_type result = 1;
 	col_type column = cellColumn(cell) + 1;
 	while (column < ncols && isPartOfMultiColumn(row, column)) {
@@ -1500,7 +1492,7 @@ Tabular::idx_type Tabular::unsetMultiColumn(idx_type cell)
 	if (cell_info[row][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN) {
 		cell_info[row][column].multicolumn = CELL_NORMAL;
 		++column;
-		while (column < columnCount() &&
+		while (column < column_info.size() &&
 			   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
 		{
 			cell_info[row][column].multicolumn = CELL_NORMAL;
@@ -1510,42 +1502,6 @@ Tabular::idx_type Tabular::unsetMultiColumn(idx_type cell)
 	}
 	updateIndexes();
 	return result;
-}
-
-
-void Tabular::setBookTabs(bool what)
-{
-	use_booktabs = what;
-}
-
-
-bool Tabular::useBookTabs() const
-{
-	return use_booktabs;
-}
-
-
-void Tabular::setLongTabular(bool what)
-{
-	is_long_tabular = what;
-}
-
-
-bool Tabular::isLongTabular() const
-{
-	return is_long_tabular;
-}
-
-
-void Tabular::setRotateTabular(bool flag)
-{
-	rotate = flag;
-}
-
-
-bool Tabular::getRotateTabular() const
-{
-	return rotate;
 }
 
 
@@ -1565,8 +1521,8 @@ bool Tabular::needRotating() const
 {
 	if (rotate)
 		return true;
-	for (row_type i = 0; i < rowCount(); ++i)
-		for (col_type j = 0; j < columnCount(); ++j)
+	for (row_type i = 0; i < row_info.size(); ++i)
+		for (col_type j = 0; j < column_info.size(); ++j)
 			if (cell_info[i][j].rotate)
 				return true;
 	return false;
@@ -1575,7 +1531,7 @@ bool Tabular::needRotating() const
 
 bool Tabular::isLastCell(idx_type cell) const
 {
-	if (cell + 1 < cellCount())
+	if (cell + 1 < numberofcells)
 		return false;
 	return true;
 }
@@ -1591,7 +1547,7 @@ Tabular::idx_type Tabular::cellAbove(idx_type cell) const
 
 Tabular::idx_type Tabular::cellBelow(idx_type cell) const
 {
-	if (cellRow(cell) + 1 < rowCount())
+	if (cellRow(cell) + 1 < row_info.size())
 		return cell_info[cellRow(cell)+1][cellColumn(cell)].cellno;
 	return cell;
 }
@@ -1600,8 +1556,8 @@ Tabular::idx_type Tabular::cellBelow(idx_type cell) const
 Tabular::idx_type Tabular::cellIndex(row_type row,
 					       col_type column) const
 {
-	BOOST_ASSERT(column != npos && column < columnCount() &&
-		     row    != npos && row    < rowCount());
+	BOOST_ASSERT(column != npos && column < column_info.size()
+		&& row != npos && row < row_info.size());
 	return cell_info[row][column].cellno;
 }
 
@@ -1702,7 +1658,7 @@ bool Tabular::getLTNewPage(row_type row) const
 
 bool Tabular::haveLTHead() const
 {
-	for (row_type i = 0; i < rowCount(); ++i)
+	for (row_type i = 0; i < row_info.size(); ++i)
 		if (row_info[i].endhead)
 			return true;
 	return false;
@@ -1713,7 +1669,7 @@ bool Tabular::haveLTFirstHead() const
 {
 	if (endfirsthead.empty)
 		return false;
-	for (row_type i = 0; i < rowCount(); ++i)
+	for (row_type i = 0; i < row_info.size(); ++i)
 		if (row_info[i].endfirsthead)
 			return true;
 	return false;
@@ -1722,7 +1678,7 @@ bool Tabular::haveLTFirstHead() const
 
 bool Tabular::haveLTFoot() const
 {
-	for (row_type i = 0; i < rowCount(); ++i)
+	for (row_type i = 0; i < row_info.size(); ++i)
 		if (row_info[i].endfoot)
 			return true;
 	return false;
@@ -1733,7 +1689,7 @@ bool Tabular::haveLTLastFoot() const
 {
 	if (endlastfoot.empty)
 		return false;
-	for (row_type i = 0; i < rowCount(); ++i)
+	for (row_type i = 0; i < row_info.size(); ++i)
 		if (row_info[i].endlastfoot)
 			return true;
 	return false;
@@ -1744,7 +1700,7 @@ bool Tabular::haveLTLastFoot() const
 
 void Tabular::setRowAscent(row_type row, int height)
 {
-	if (row >= rowCount() || row_info[row].ascent == height)
+	if (row >= row_info.size() || row_info[row].ascent == height)
 		return;
 	row_info[row].ascent = height;
 }
@@ -1752,7 +1708,7 @@ void Tabular::setRowAscent(row_type row, int height)
 
 void Tabular::setRowDescent(row_type row, int height)
 {
-	if (row >= rowCount() || row_info[row].descent == height)
+	if (row >= row_info.size() || row_info[row].descent == height)
 		return;
 	row_info[row].descent = height;
 }
@@ -1760,7 +1716,7 @@ void Tabular::setRowDescent(row_type row, int height)
 
 int Tabular::rowAscent(row_type row) const
 {
-	if (row >= rowCount())
+	if (row >= row_info.size())
 		return 0;
 	return row_info[row].ascent;
 }
@@ -1768,7 +1724,7 @@ int Tabular::rowAscent(row_type row) const
 
 int Tabular::rowDescent(row_type row) const
 {
-	LASSERT(row < rowCount(), /**/);
+	LASSERT(row < row_info.size(), /**/);
 	return row_info[row].descent;
 }
 
@@ -1776,7 +1732,7 @@ int Tabular::rowDescent(row_type row) const
 int Tabular::height() const
 {
 	int height = 0;
-	for (row_type row = 0; row < rowCount(); ++row)
+	for (row_type row = 0; row < row_info.size(); ++row)
 		height += rowAscent(row) + rowDescent(row) +
 			getAdditionalHeight(row);
 	return height;
@@ -1785,8 +1741,8 @@ int Tabular::height() const
 
 bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 {
-	LASSERT(row < rowCount(), /**/);
-	LASSERT(column < columnCount(), /**/);
+	LASSERT(row < row_info.size(), /**/);
+	LASSERT(column < column_info.size(), /**/);
 	return cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN;
 }
 
@@ -1795,7 +1751,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 {
 	// FIXME: assert or return 0 as in TeXBottomHLine()?
 	LASSERT(row != npos, /**/);
-	LASSERT(row < rowCount(), /**/);
+	LASSERT(row < row_info.size(), /**/);
 
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -1831,7 +1787,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 {
 	// FIXME: return 0 or assert as in TeXTopHLine()?
-	if (row == npos || row >= rowCount())
+	if (row == npos || row >= row_info.size())
 		return 0;
 
 	idx_type const fcell = getFirstCellInRow(row);
@@ -1842,7 +1798,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 		if (bottomLine(i))
 			++tmp;
 	}
-	if (use_booktabs && row == rowCount() - 1) {
+	if (use_booktabs && row == row_info.size() - 1) {
 		if (bottomLine(fcell))
 			os << "\\bottomrule";
 	} else if (tmp == n - fcell) {
@@ -1878,9 +1834,9 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	col_type const nextcol = c + columnSpan(cell);
 	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
 	bool forceleft = ismulticol && !prevcellright && leftLine(cell);
-	bool nextcolleft = nextcol < columnCount() && columnLeftLine(nextcol);
+	bool nextcolleft = nextcol < column_info.size() && columnLeftLine(nextcol);
 	bool coldouble = columnRightLine(c) && nextcolleft;
-	bool nextcellleft = nextcol < columnCount() 
+	bool nextcellleft = nextcol < column_info.size() 
 		&& leftLine(cellIndex(r, nextcol));
 	bool celldouble = rightLine(cell) && nextcellleft;
 	bool doubleright = celldouble && (isMultiColumn(cell) || !coldouble);
@@ -2006,7 +1962,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endhead) {
 				ret += TeXRow(os, i, runparams);
 			}
@@ -2028,7 +1984,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endfirsthead) {
 				ret += TeXRow(os, i, runparams);
 			}
@@ -2046,7 +2002,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endfoot) {
 				ret += TeXRow(os, i, runparams);
 			}
@@ -2068,7 +2024,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endlastfoot) {
 				ret += TeXRow(os, i, runparams);
 			}
@@ -2117,7 +2073,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		++ret;
 	}
 	bool ismulticol = false;
-	for (col_type j = 0; j < columnCount(); ++j) {
+	for (col_type j = 0; j < column_info.size(); ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
 		ret += TeXCellPreamble(os, cell, ismulticol);
@@ -2202,7 +2158,7 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 	else
 		os << "\\begin{tabular}{";
 
-	for (col_type i = 0; i < columnCount(); ++i) {
+	for (col_type i = 0; i < column_info.size(); ++i) {
 		if (!use_booktabs && columnLeftLine(i))
 			os << '|';
 		if (!column_info[i].align_special.empty()) {
@@ -2266,7 +2222,7 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
 
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		if (isValidRow(i)) {
 			ret += TeXRow(os, i, runparams);
 			if (is_long_tabular && row_info[i].newpage) {
@@ -2300,7 +2256,7 @@ int Tabular::docbookRow(odocstream & os, row_type row,
 	idx_type cell = getFirstCellInRow(row);
 
 	os << "<row>\n";
-	for (col_type j = 0; j < columnCount(); ++j) {
+	for (col_type j = 0; j < column_info.size(); ++j) {
 		if (isPartOfMultiColumn(row, j))
 			continue;
 
@@ -2353,10 +2309,10 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	//+                      first the opening preamble                    +
 	//+---------------------------------------------------------------------
 
-	os << "<tgroup cols=\"" << columnCount()
+	os << "<tgroup cols=\"" << column_info.size()
 	   << "\" colsep=\"1\" rowsep=\"1\">\n";
 
-	for (col_type i = 0; i < columnCount(); ++i) {
+	for (col_type i = 0; i < column_info.size(); ++i) {
 		os << "<colspec colname=\"col" << i << "\" align=\"";
 		switch (column_info[i].alignment) {
 		case LYX_ALIGN_LEFT:
@@ -2384,7 +2340,7 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	if (haveLTHead() || haveLTFirstHead()) {
 		os << "<thead>\n";
 		++ret;
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endhead || row_info[i].endfirsthead) {
 				ret += docbookRow(os, i, runparams);
 			}
@@ -2396,7 +2352,7 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	if (haveLTFoot() || haveLTLastFoot()) {
 		os << "<tfoot>\n";
 		++ret;
-		for (row_type i = 0; i < rowCount(); ++i) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].endfoot || row_info[i].endlastfoot) {
 				ret += docbookRow(os, i, runparams);
 			}
@@ -2411,7 +2367,7 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 
 	os << "<tbody>\n";
 	++ret;
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		if (isValidRow(i)) {
 			ret += docbookRow(os, i, runparams);
 		}
@@ -2459,7 +2415,7 @@ bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
 		}
 		col_type column = cellColumn(i);
 		int len = clen[column];
-		while (column < columnCount() - 1
+		while (column < column_info.size() - 1
 		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		os << docstring(len, ch);
@@ -2507,7 +2463,7 @@ bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
 		}
 		col_type column = cellColumn(i);
 		int len = clen[column];
-		while (column < columnCount() -1
+		while (column < column_info.size() -1
 		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		os << docstring(len, ch);
@@ -2546,7 +2502,7 @@ void Tabular::plaintextPrintCell(odocstream & os,
 
 	unsigned int len1 = sstr.str().length();
 	unsigned int len2 = clen[column];
-	while (column < columnCount() -1
+	while (column < column_info.size() -1
 	       && isPartOfMultiColumn(row, ++column))
 		len2 += clen[column] + 4;
 	len2 -= len1;
@@ -2581,13 +2537,13 @@ void Tabular::plaintext(odocstream & os,
 			   bool onlydata, char_type delim) const
 {
 	// first calculate the width of the single columns
-	vector<unsigned int> clen(columnCount());
+	vector<unsigned int> clen(column_info.size());
 
 	if (!onlydata) {
 		// first all non (real) multicolumn cells!
-		for (col_type j = 0; j < columnCount(); ++j) {
+		for (col_type j = 0; j < column_info.size(); ++j) {
 			clen[j] = 0;
-			for (row_type i = 0; i < rowCount(); ++i) {
+			for (row_type i = 0; i < row_info.size(); ++i) {
 				idx_type cell = cellIndex(i, j);
 				if (isMultiColumnReal(cell))
 					continue;
@@ -2598,8 +2554,8 @@ void Tabular::plaintext(odocstream & os,
 			}
 		}
 		// then all (real) multicolumn cells!
-		for (col_type j = 0; j < columnCount(); ++j) {
-			for (row_type i = 0; i < rowCount(); ++i) {
+		for (col_type j = 0; j < column_info.size(); ++j) {
+			for (row_type i = 0; i < row_info.size(); ++i) {
 				idx_type cell = cellIndex(i, j);
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
@@ -2615,10 +2571,10 @@ void Tabular::plaintext(odocstream & os,
 		}
 	}
 	idx_type cell = 0;
-	for (row_type i = 0; i < rowCount(); ++i) {
+	for (row_type i = 0; i < row_info.size(); ++i) {
 		if (!onlydata && plaintextTopHLine(os, i, clen))
 			os << docstring(depth * 2, ' ');
-		for (col_type j = 0; j < columnCount(); ++j) {
+		for (col_type j = 0; j < column_info.size(); ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			if (onlydata && j > 0)
@@ -2662,8 +2618,7 @@ void Tabular::setCellInset(row_type row, col_type column,
 }
 
 
-Tabular::idx_type
-Tabular::cellFromInset(Inset const * inset) const
+Tabular::idx_type Tabular::cellFromInset(Inset const * inset) const
 {
 	// is this inset part of the tabular?
 	if (!inset) {
@@ -2671,7 +2626,7 @@ Tabular::cellFromInset(Inset const * inset) const
 		LASSERT(false, /**/);
 	}
 
-	for (idx_type cell = 0, n = cellCount(); cell < n; ++cell)
+	for (idx_type cell = 0, n = numberofcells; cell < n; ++cell)
 		if (cellInset(cell).get() == inset) {
 			LYXERR(Debug::INSETTEXT, "Tabular::cellFromInset: "
 				<< "cell=" << cell);
@@ -2690,13 +2645,13 @@ Tabular::cellFromInset(Inset const * inset) const
 void Tabular::validate(LaTeXFeatures & features) const
 {
 	features.require("NeedTabularnewline");
-	if (useBookTabs())
+	if (use_booktabs)
 		features.require("booktabs");
-	if (isLongTabular())
+	if (is_long_tabular)
 		features.require("longtable");
 	if (needRotating())
 		features.require("rotating");
-	for (idx_type cell = 0; cell < cellCount(); ++cell) {
+	for (idx_type cell = 0; cell < numberofcells; ++cell) {
 		if (getVAlignment(cell) != LYX_VALIGN_TOP ||
 		     (!getPWidth(cell).zero() && !isMultiColumn(cell)))
 			features.require("array");
@@ -2839,7 +2794,7 @@ int InsetTabular::rowFromY(Cursor & cur, int y) const
 {
 	// top y coordinate of tabular
 	int h = yo(cur.bv()) - tabular.rowAscent(0);
-	size_t nrows = tabular.rowCount();
+	size_t nrows = tabular.row_info.size();
 	row_type r = 0;
 	for (; r < nrows && y > h; ++r) {
 		h += tabular.rowAscent(r);
@@ -2854,7 +2809,7 @@ int InsetTabular::columnFromX(Cursor & cur, int x) const
 {
 	// left x coordinate of tabular
 	int w = xo(cur.bv()) + ADD_TO_TABULAR_WIDTH;
-	size_t ncols = tabular.columnCount();
+	size_t ncols = tabular.column_info.size();
 	col_type c = 0;
 	for (; c < ncols && x > w; ++c)
 		w += tabular.columnWidth(c);
@@ -2872,10 +2827,10 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	row_type i = 0;
-	for (idx_type cell = 0; i < tabular.rowCount(); ++i) {
+	for (idx_type cell = 0; i < tabular.row_info.size(); ++i) {
 		int maxAsc = 0;
 		int maxDesc = 0;
-		for (col_type j = 0; j < tabular.columnCount(); ++j) {
+		for (col_type j = 0; j < tabular.column_info.size(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
 				// Multicolumn cell, but not first one
 				continue;
@@ -2931,12 +2886,12 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 	idx_type idx = 0;
 	first_visible_cell = Tabular::npos;
-	for (row_type i = 0; i < tabular.rowCount(); ++i) {
+	for (row_type i = 0; i < tabular.row_info.size(); ++i) {
 		int nx = x;
 		int const a = tabular.rowAscent(i);
 		int const d = tabular.rowDescent(i);
 		idx = tabular.cellIndex(i, 0);
-		for (col_type j = 0; j < tabular.columnCount(); ++j) {
+		for (col_type j = 0; j < tabular.column_info.size(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
 			if (first_visible_cell == Tabular::npos)
@@ -2961,7 +2916,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			++idx;
 		}
 
-		if (i + 1 < tabular.rowCount())
+		if (i + 1 < tabular.row_info.size())
 			y += d + tabular.rowAscent(i + 1) +
 				tabular.getAdditionalHeight(i + 1);
 	}
@@ -2996,12 +2951,12 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 		col_type cs, ce;
 		getSelection(cur, rs, re, cs, ce);
 		y -= tabular.rowAscent(0);
-		for (row_type j = 0; j < tabular.rowCount(); ++j) {
+		for (row_type j = 0; j < tabular.row_info.size(); ++j) {
 			int const a = tabular.rowAscent(j);
 			int const h = a + tabular.rowDescent(j);
 			int xx = x;
 			y += tabular.getAdditionalHeight(j);
-			for (col_type i = 0; i < tabular.columnCount(); ++i) {
+			for (col_type i = 0; i < tabular.column_info.size(); ++i) {
 				if (tabular.isPartOfMultiColumn(j, i))
 					continue;
 				idx_type const cell =
@@ -3086,9 +3041,9 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 		cur.pos() = 0;
 	} else {
 		if (isRightToLeft(cur))
-			cur.idx() = tabular.getFirstCellInRow(tabular.rowCount() - 1);
+			cur.idx() = tabular.getFirstCellInRow(tabular.row_info.size() - 1);
 		else
-			cur.idx() = tabular.cellCount() - 1;
+			cur.idx() = tabular.numberofcells - 1;
 		cur.pit() = 0;
 		cur.pos() = cur.lastpos(); // FIXME crude guess
 	}
@@ -3103,7 +3058,7 @@ void InsetTabular::updateLabels(ParIterator const & it)
 	// In a longtable, tell captions what the current float is
 	Counters & cnts = buffer().params().documentClass().counters();
 	string const saveflt = cnts.current_float();
-	if (tabular.isLongTabular())
+	if (tabular.is_long_tabular)
 		cnts.current_float("table");
 
 	ParIterator it2 = it;
@@ -3113,7 +3068,7 @@ void InsetTabular::updateLabels(ParIterator const & it)
 		lyx::updateLabels(buffer(), it2);
 
 	//reset afterwards
-	if (tabular.isLongTabular())
+	if (tabular.is_long_tabular)
 		cnts.current_float(saveflt);
 }
 
@@ -3151,7 +3106,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = tabular.cellIndex(0, c);
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.idx() = tabular.cellIndex(tabular.rowCount() - 1, c);
+			cur.idx() = tabular.cellIndex(tabular.row_info.size() - 1, c);
 			cur.pos() = cur.lastpos();
 			cur.selection() = true;
 			bvcur = cur; 
@@ -3188,7 +3143,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// select (additional) column
 			if (colselect_) {
 				col_type c = columnFromX(cur, cmd.x);
-				cur.idx() = tabular.cellIndex(tabular.rowCount() - 1, c);
+				cur.idx() = tabular.cellIndex(tabular.row_info.size() - 1, c);
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
 				break;
@@ -3289,7 +3244,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell below
 			// setting also the right targetX.
-			if (tabular.cellRow(cur.idx()) != tabular.rowCount() - 1) {
+			if (tabular.cellRow(cur.idx()) != tabular.row_info.size() - 1) {
 				cur.idx() = tabular.cellBelow(cur.idx());
 				cur.pit() = 0;
 				TextMetrics const & tm =
@@ -3631,20 +3586,20 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LONGTABULAR:
-			status.setOnOff(tabular.isLongTabular());
+			status.setOnOff(tabular.is_long_tabular);
 			break;
 
 		case Tabular::UNSET_LONGTABULAR:
-			status.setOnOff(!tabular.isLongTabular());
+			status.setOnOff(!tabular.is_long_tabular);
 			break;
 
 		case Tabular::TOGGLE_ROTATE_TABULAR:
 		case Tabular::SET_ROTATE_TABULAR:
-			status.setOnOff(tabular.getRotateTabular());
+			status.setOnOff(tabular.rotate);
 			break;
 
 		case Tabular::UNSET_ROTATE_TABULAR:
-			status.setOnOff(!tabular.getRotateTabular());
+			status.setOnOff(!tabular.rotate);
 			break;
 
 		case Tabular::TOGGLE_ROTATE_CELL:
@@ -3699,11 +3654,11 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_BOOKTABS:
-			status.setOnOff(tabular.useBookTabs());
+			status.setOnOff(tabular.use_booktabs);
 			break;
 
 		case Tabular::UNSET_BOOKTABS:
-			status.setOnOff(!tabular.useBookTabs());
+			status.setOnOff(!tabular.use_booktabs);
 			break;
 
 		default:
@@ -3979,7 +3934,7 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 	if (isRightToLeft(cur)) {
 		if (tabular.isFirstCellInRow(cur.idx())) {
 			row_type const row = tabular.cellRow(cur.idx());
-			if (row == tabular.rowCount() - 1)
+			if (row == tabular.row_info.size() - 1)
 				return;
 			cur.idx() = tabular.cellBelow(tabular.getLastCellInRow(row));
 		} else {
@@ -4210,7 +4165,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::DELETE_ROW:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			tabular.deleteRow(sel_row_start);
-		if (sel_row_start >= tabular.rowCount())
+		if (sel_row_start >= tabular.row_info.size())
 			--sel_row_start;
 		cur.idx() = tabular.cellIndex(sel_row_start, column);
 		cur.pit() = 0;
@@ -4221,7 +4176,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::DELETE_COLUMN:
 		for (col_type i = sel_col_start; i <= sel_col_end; ++i)
 			tabular.deleteColumn(sel_col_start);
-		if (sel_col_start >= tabular.columnCount())
+		if (sel_col_start >= tabular.column_info.size())
 			--sel_col_start;
 		cur.idx() = tabular.cellIndex(row, sel_col_start);
 		cur.pit() = 0;
@@ -4338,23 +4293,23 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::SET_LONGTABULAR:
-		tabular.setLongTabular(true);
+		tabular.is_long_tabular = true;
 		break;
 
 	case Tabular::UNSET_LONGTABULAR:
-		tabular.setLongTabular(false);
+		tabular.is_long_tabular = false;
 		break;
 
 	case Tabular::SET_ROTATE_TABULAR:
-		tabular.setRotateTabular(true);
+		tabular.rotate = true;
 		break;
 
 	case Tabular::UNSET_ROTATE_TABULAR:
-		tabular.setRotateTabular(false);
+		tabular.rotate = false;
 		break;
 
 	case Tabular::TOGGLE_ROTATE_TABULAR:
-		tabular.setRotateTabular(!tabular.getRotateTabular());
+		tabular.rotate = !tabular.rotate;
 		break;
 
 	case Tabular::SET_ROTATE_CELL:
@@ -4429,11 +4384,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::SET_BOOKTABS:
-		tabular.setBookTabs(true);
+		tabular.use_booktabs = true;
 		break;
 
 	case Tabular::UNSET_BOOKTABS:
-		tabular.setBookTabs(false);
+		tabular.use_booktabs = false;
 		break;
 
 	case Tabular::SET_TOP_SPACE: {
@@ -4527,21 +4482,21 @@ bool InsetTabular::copySelection(Cursor & cur)
 		paste_tabular->deleteRow(0);
 
 	row_type const rows = re - rs + 1;
-	while (paste_tabular->rowCount() > rows)
+	while (paste_tabular->row_info.size() > rows)
 		paste_tabular->deleteRow(rows);
 
 	for (col_type i = 0; i < cs; ++i)
 		paste_tabular->deleteColumn(0);
 
 	col_type const columns = ce - cs + 1;
-	while (paste_tabular->columnCount() > columns)
+	while (paste_tabular->column_info.size() > columns)
 		paste_tabular->deleteColumn(columns);
 
 	// We clear all the InsetTableCell pointers, since they
 	// might now become invalid and there is no point in having
 	// them point to temporary things in paste_tabular.
-	for (row_type i = 0; i < paste_tabular->rowCount(); ++i)
-		for (col_type j = 0; j < paste_tabular->columnCount(); ++j) {
+	for (row_type i = 0; i < paste_tabular->row_info.size(); ++i)
+		for (col_type j = 0; j < paste_tabular->column_info.size(); ++j) {
 			paste_tabular->cellInset(i,j)->setCellData(0);
 			paste_tabular->cellInset(i,j)->setTabular(0);
 		}
@@ -4569,10 +4524,10 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 	col_type const actcol = tabular.cellColumn(cur.idx());
 	row_type const actrow = tabular.cellRow(cur.idx());
 	for (row_type r1 = 0, r2 = actrow;
-	     r1 < paste_tabular->rowCount() && r2 < tabular.rowCount();
+	     r1 < paste_tabular->row_info.size() && r2 < tabular.row_info.size();
 	     ++r1, ++r2) {
 		for (col_type c1 = 0, c2 = actcol;
-		    c1 < paste_tabular->columnCount() && c2 < tabular.columnCount();
+		    c1 < paste_tabular->column_info.size() && c2 < tabular.column_info.size();
 		    ++c1, ++c2) {
 			if (paste_tabular->isPartOfMultiColumn(r1, c1) &&
 			    tabular.isPartOfMultiColumn(r2, c2))
@@ -4744,11 +4699,11 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	}
 
 	size_t op = 0;
-	idx_type const cells = loctab->cellCount();
+	idx_type const cells = loctab->numberofcells;
 	p = 0;
 	cols = ocol;
-	rows = loctab->rowCount();
-	col_type const columns = loctab->columnCount();
+	rows = loctab->row_info.size();
+	col_type const columns = loctab->column_info.size();
 
 	while (cell < cells && p < len && row < rows &&
 	       (p = buf.find_first_of(from_ascii("\t\n"), p)) != docstring::npos)
@@ -4799,8 +4754,8 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 
 void InsetTabular::addPreview(PreviewLoader & loader) const
 {
-	row_type const rows = tabular.rowCount();
-	col_type const columns = tabular.columnCount();
+	row_type const rows = tabular.row_info.size();
+	col_type const columns = tabular.column_info.size();
 	for (row_type i = 0; i < rows; ++i) {
 		for (col_type j = 0; j < columns; ++j)
 			tabular.cellInset(i, j)->addPreview(loader);
