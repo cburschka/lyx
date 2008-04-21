@@ -302,7 +302,6 @@ void handle_package(string const & name, string const & opts)
 			h_quotes_language = h_language;
 		}
 	}
-
 	else if (name == "fontenc")
 		; // ignore this
 
@@ -318,8 +317,8 @@ void handle_package(string const & name, string const & opts)
 			else
 				h_inputencoding = opts;
 		options.clear();
-
-	} else if (name == "makeidx")
+	}
+	else if (name == "makeidx")
 		; // ignore this
 
 	else if (name == "verbatim")
@@ -332,8 +331,10 @@ void handle_package(string const & name, string const & opts)
 
 	else if (name == "graphicx")
 		; // ignore this
+
 	else if (name == "setspace")
 		; // ignore this
+
 	else if (is_known(name, known_languages)) {
 		if (is_known(name, known_french_languages))
 			h_language = "french";
@@ -348,8 +349,8 @@ void handle_package(string const & name, string const & opts)
 		else
 			h_language = name;
 		h_quotes_language = h_language;
-
-	} else if (name == "natbib") {
+	}
+	else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
 		vector<string>::iterator it =
 			find(options.begin(), options.end(), "authoryear");
@@ -362,16 +363,16 @@ void handle_package(string const & name, string const & opts)
 				options.erase(it);
 			}
 		}
-	} else if (name == "jurabib") {
+	}
+	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
 
-	} else if (options.empty())
+	else if (options.empty())
 		h_preamble << "\\usepackage{" << name << "}\n";
 	else {
 		h_preamble << "\\usepackage[" << opts << "]{" << name << "}\n";
 		options.clear();
 	}
-
 	// We need to do something with the options...
 	if (!options.empty())
 		cerr << "Ignoring options '" << join(options, ",")
