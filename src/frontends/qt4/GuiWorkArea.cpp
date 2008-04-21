@@ -21,6 +21,7 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "GuiApplication.h"
+#include "GuiCompleter.h"
 #include "GuiKeySymbol.h"
 #include "GuiPainter.h"
 #include "GuiView.h"
@@ -229,7 +230,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(this)
+	preedit_lines_(1), completer_(new GuiCompleter(this))
 {
 	buffer.workAreaManager().add(this);
 	// Setup the signals
@@ -450,7 +451,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
-		completer_.updateVisibility(false, false);
+		completer_->updateVisibility(false, false);
 		lyx_view_->updateLayoutList();
 		lyx_view_->updateToolbars();
 	}
@@ -525,9 +526,9 @@ void GuiWorkArea::showCursor()
 
 	// show cursor on screen
 	bool completable = cur.inset().showCompletionCursor()
-		&& completer_.completionAvailable()
-		&& !completer_.popupVisible()
-		&& !completer_.inlineVisible();
+		&& completer_->completionAvailable()
+		&& !completer_->popupVisible()
+		&& !completer_->inlineVisible();
 	if (cursorInView) {
 		cursor_visible_ = true;
 		showCursor(x, y, h, l_shape, isrtl, completable);
@@ -811,11 +812,11 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
 	// intercept some keys if completion popup is visible
-	if (completer_.popupVisible()) {
+	if (completer_->popupVisible()) {
 		switch (ev->key()) {
 		case Qt::Key_Enter:
 		case Qt::Key_Return:
-			completer_.activate();
+			completer_->activate();
 			ev->accept();
 			return;
 		}
@@ -823,19 +824,19 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	
 	// intercept keys for the completion
 	if (ev->key() == Qt::Key_Tab) {
-		completer_.tab();
+		completer_->tab();
 		ev->accept();
 		return;
 	} 
 
-	if (completer_.popupVisible() && ev->key() == Qt::Key_Escape) {
-		completer_.hidePopup();
+	if (completer_->popupVisible() && ev->key() == Qt::Key_Escape) {
+		completer_->hidePopup();
 		ev->accept();
 		return;
 	}
 
-	if (completer_.inlineVisible() && ev->key() == Qt::Key_Escape) {
-		completer_.hideInline();
+	if (completer_->inlineVisible() && ev->key() == Qt::Key_Escape) {
+		completer_->hideInline();
 		ev->accept();
 		return;
 	}

@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "GuiWorkArea.h"
+#include "GuiCompleter.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -18,6 +18,7 @@
 #include "Cursor.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
+#include "GuiWorkArea.h"
 #include "GuiView.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"

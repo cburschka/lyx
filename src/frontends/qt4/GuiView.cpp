@@ -18,6 +18,7 @@
 #include "Dialog.h"
 #include "FileDialog.h"
 #include "GuiApplication.h"
+#include "GuiCompleter.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
 #include "GuiToolbar.h"

@@ -14,7 +14,6 @@
 #define WORKAREA_H
 
 #include "frontends/WorkArea.h"
-#include "frontends/qt4/GuiCompleter.h"
 
 #include "DocIterator.h"
 #include "FuncRequest.h"
@@ -48,6 +47,7 @@ class Buffer;
 
 namespace frontend {
 
+class GuiCompleter;
 class GuiView;
 class GuiWorkArea;
 
@@ -128,7 +128,7 @@ public:
 	void resizeBufferView();
 
 	///
-	GuiCompleter & completer() { return completer_; }
+	GuiCompleter & completer() { return *completer_; }
 	
 Q_SIGNALS:
 	///
@@ -237,7 +237,7 @@ private:
 	int preedit_lines_;
 
 	///
-	GuiCompleter completer_;
+	GuiCompleter * completer_;
 }; // GuiWorkArea
 
 
