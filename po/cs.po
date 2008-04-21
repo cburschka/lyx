@@ -1,4 +1,4 @@
-# Czech translation of LyX
+#Kurzor, my¹, editaèní funkce Czech translation of LyX
 # Copyright (C) 2006 LyX Developers
 # Pavel Sanda <sanda@lyx.org>, 2008.
 #
@@ -1294,18 +1294,16 @@ msgid "Negative thin space"
 msgstr "Záporná tenká mezera"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:79
-#, fuzzy
 msgid "Half Quad (0.5 em)"
-msgstr "Quad (1 em)"
+msgstr "0.5 em"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:84
 msgid "Quad (1 em)"
-msgstr "Quad (1 em)"
+msgstr "1 em"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:89
-#, fuzzy
 msgid "Double Quad (2 em)"
-msgstr "QQuad (2 em)"
+msgstr "2 em"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:94 src/insets/InsetSpace.cpp:94
 msgid "Horizontal Fill"
@@ -1914,7 +1912,7 @@ msgstr "&Klíèová slova:"
 # TODO
 #: src/frontends/qt4/ui/PDFSupportUi.ui:241
 msgid "H&yperlinks"
-msgstr "&Odkaz (hyperlink)|l"
+msgstr "&Odkaz (hyperlink)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:274
 msgid "Allows link text to break across lines."
@@ -1947,7 +1945,7 @@ msgstr "Zpìtné reference dle èísla &stránky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:337
 msgid "&Bookmarks"
-msgstr "&Zálo¾ky|l"
+msgstr "&Zálo¾ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:349
 msgid "G&enerate Bookmarks"
@@ -2386,7 +2384,7 @@ msgstr "P&rocházet..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:122
 msgid "Mouse"
-msgstr "My¹ka ply¹ka"
+msgstr "My¹ka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:140
 msgid "&Wheel scrolling speed:"
@@ -2501,7 +2499,7 @@ msgstr "Auto. &konec"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:249
 msgid "Use the babel package for multilingual support"
-msgstr "Pou¾ij balíèek babel pro vícejazyènou podporu"
+msgstr "Pou¾ít balíèek babel pro vícejazyènou podporu"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:252
 msgid "Use b&abel"
@@ -2871,18 +2869,16 @@ msgid "Use Pixmap Cache to speed up font rendering"
 msgstr "Pou¾ít Vyrovnávací pamì» pro rychlej¹í vykreslování fontù"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
-#, fuzzy
 msgid "Show ke&y-bindings containing:"
-msgstr "Zobrazit zkratky obsahující:"
+msgstr "&Zobrazit zkratky obsahující:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
 msgid "&Bind file:"
 msgstr "&Soubor klávesových zkratek:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
-#, fuzzy
 msgid "Ne&w"
-msgstr "Nový"
+msgstr "&Nová"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -3234,6 +3230,7 @@ msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
 msgstr ""
+"Dostupné kategorie závisí na zvoleném kódování dokumentu. Vyberte UTF-8 pro plný rozsah."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
@@ -3620,13 +3617,11 @@ msgid "Move selected item up by one"
 msgstr "Pøesun oznaèené citace nahoru"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
-#, fuzzy
 msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Pøepínání mezi obsahem, seznamem obrázkù a seznamem tabulek(pokud jsou "
-"dostupné)"
+"Pøepínání mezi dostupnými seznamy (obsahem, seznamem obrázkù a seznamem tabulek)"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -3638,7 +3633,7 @@ msgstr "Vlo¾it mezeru i za zalomení stránky"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:131
 msgid "DefSkip"
-msgstr "Vlastní mezera (DefSkip)"
+msgstr "Definovaná mezera (DefSkip)"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:136 src/frontends/qt4/GuiDocument.cpp:573
 msgid "SmallSkip"
@@ -4634,9 +4629,8 @@ msgstr "\\Alph{section}"
 #: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
 #: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
 #: lib/layouts/stdstarsections.inc:80
-#, fuzzy
 msgid "Unnumbered"
-msgstr "Èíslováno"
+msgstr "Unnumbered"
 
 #: lib/layouts/beamer.layout:204
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -4649,9 +4643,8 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 #: lib/layouts/beamer.layout:233 lib/layouts/beamer.layout:277
 #: lib/layouts/beamer.layout:317 lib/layouts/beamer.layout:358
 #: lib/layouts/beamer.layout:387
-#, fuzzy
 msgid "Frames"
-msgstr "Frame"
+msgstr "Frames"
 
 #: lib/layouts/beamer.layout:250
 msgid "Frame"
@@ -4722,9 +4715,8 @@ msgstr "Pause"
 #: lib/layouts/beamer.layout:527 lib/layouts/beamer.layout:553
 #: lib/layouts/beamer.layout:580 lib/layouts/beamer.layout:606
 #: lib/layouts/beamer.layout:632
-#, fuzzy
 msgid "Overlays"
-msgstr "Overlay"
+msgstr "Overlays"
 
 #: lib/layouts/beamer.layout:542
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -4764,9 +4756,8 @@ msgstr "Blok"
 
 #: lib/layouts/beamer.layout:659 lib/layouts/beamer.layout:685
 #: lib/layouts/beamer.layout:715
-#, fuzzy
 msgid "Blocks"
-msgstr "Blok"
+msgstr "Blocks"
 
 #: lib/layouts/beamer.layout:669
 msgid "Block ( ERT[{title}] body ):"
@@ -4791,9 +4782,8 @@ msgstr "Block ( ERT[{title}] alert text ):"
 #: lib/layouts/beamer.layout:747 lib/layouts/beamer.layout:779
 #: lib/layouts/beamer.layout:804 lib/layouts/beamer.layout:826
 #: lib/layouts/beamer.layout:848 lib/layouts/beamer.layout:895
-#, fuzzy
 msgid "Titling"
-msgstr "Výpis"
+msgstr "Titling"
 
 #: lib/layouts/beamer.layout:770
 msgid "Title (Plain Frame)"
@@ -4806,7 +4796,7 @@ msgstr "Institute"
 
 #: lib/layouts/beamer.layout:871 lib/layouts/stdstruct.inc:43
 msgid "BackMatter"
-msgstr ""
+msgstr "BackMatter"
 
 #: lib/layouts/beamer.layout:894
 msgid "TitleGraphic"
@@ -8114,9 +8104,8 @@ msgid "Ignore"
 msgstr "Ignorovat"
 
 #: lib/languages:4
-#, fuzzy
 msgid "Latex"
-msgstr "Datum"
+msgstr "Latex"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -8364,9 +8353,8 @@ msgid "Spanish"
 msgstr "©panìl¹tina"
 
 #: lib/languages:77
-#, fuzzy
 msgid "Spanish (Mexico)"
-msgstr "©panìl¹tina"
+msgstr "©panìl¹tina (Mexiko)"
 
 #: lib/languages:78
 msgid "Swedish"
@@ -8887,7 +8875,7 @@ msgstr "Chránìná mezera|r"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:367
 msgid "Inter-word Space|w"
-msgstr "Mezera uvnitø slova|M"
+msgstr "Mezislovní mezera|M"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:155 lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
@@ -9308,12 +9296,10 @@ msgid "Split Cell|C"
 msgstr "Rozdìlit buòku|R"
 
 #: lib/ui/stdcontext.inc:51
-#, fuzzy
 msgid "Insert|n"
 msgstr "Vlo¾it|V"
 
 #: lib/ui/stdcontext.inc:53
-#, fuzzy
 msgid "Add Line Above|o"
 msgstr "Pøidat linku nad|t"
 
@@ -9350,7 +9336,6 @@ msgid "Toggle Math Toolbar"
 msgstr "Pøepnout matematický panel nástrojù"
 
 #: lib/ui/stdcontext.inc:64
-#, fuzzy
 msgid "Toggle Math-Panels Toolbar"
 msgstr "Pøepnout matematický panel nástrojù"
 
@@ -9464,92 +9449,76 @@ msgid "Greyed Out|G"
 msgstr "Za¹edlé|Z"
 
 #: lib/ui/stdcontext.inc:153
-#, fuzzy
 msgid "Interword Space|w"
-msgstr "Mezera uvnitø slova|M"
+msgstr "Mezislovní mezera|M"
 
 #: lib/ui/stdcontext.inc:154
-#, fuzzy
 msgid "Protected Space|o"
-msgstr "Chránìná mezera|r"
+msgstr "Chránìná mezera|h"
 
 #: lib/ui/stdcontext.inc:156
-#, fuzzy
 msgid "Negative Thin Space|N"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná tenká mezera|z"
 
 #: lib/ui/stdcontext.inc:157
 msgid "Half Quad Space (Enskip)|k"
-msgstr ""
+msgstr "Polovina em mezety (Enskip)|e"
 
 #: lib/ui/stdcontext.inc:158
-#, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránìná horizontální mezera (%1$s)"
+msgstr "Chránìná Polovina em mezery (Enspace)|n"
 
 #: lib/ui/stdcontext.inc:159
-#, fuzzy
 msgid "Quad Space|Q"
-msgstr "Quad mezera"
+msgstr "Em mezera|r"
 
 #: lib/ui/stdcontext.inc:160
-#, fuzzy
 msgid "Double Quad Space|u"
-msgstr "QQuad mezera"
+msgstr "Polovièní em mezera|l"
 
 #: lib/ui/stdcontext.inc:161
 msgid "Horizontal Fill|F"
 msgstr "Horizontální výplò|n"
 
 #: lib/ui/stdcontext.inc:162
-#, fuzzy
 msgid "Protected Horizontal Fill|i"
-msgstr "Chránìná horizontální výplò"
+msgstr "Chránìná horizontální výplò|i"
 
 #: lib/ui/stdcontext.inc:163
-#, fuzzy
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Horizontální výplò (teèky)"
+msgstr "Horizontální výplò (teèky)|y"
 
 #: lib/ui/stdcontext.inc:164
-#, fuzzy
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Horizontální výplò (èára)"
+msgstr "Horizontální výplò (èára)|t"
 
 #: lib/ui/stdcontext.inc:165
-#, fuzzy
 msgid "Custom Length|C"
-msgstr "Komentáø|K"
+msgstr "Vlastní délka|V"
 
 #: lib/ui/stdcontext.inc:174
-#, fuzzy
 msgid "DefSkip|D"
-msgstr "Vlastní mezera (DefSkip)"
+msgstr "Definovaná mezera|D"
 
 #: lib/ui/stdcontext.inc:175
-#, fuzzy
 msgid "SmallSkip|S"
-msgstr "Malá mezera (SmallSkip)"
+msgstr "Malá mezera (SmallSkip)|M"
 
 #: lib/ui/stdcontext.inc:176
-#, fuzzy
 msgid "MedSkip|M"
-msgstr "Støední mezera (MedSkip)"
+msgstr "Støední mezera (MedSkip)|S"
 
 #: lib/ui/stdcontext.inc:177
-#, fuzzy
 msgid "BigSkip|B"
-msgstr "Velká mezera (BigSkip)"
+msgstr "Velká mezera (BigSkip)|V"
 
 #: lib/ui/stdcontext.inc:178
-#, fuzzy
 msgid "VFill|F"
-msgstr "Výplò (VFill)"
+msgstr "Výplò (VFill)|p"
 
 #: lib/ui/stdcontext.inc:179
-#, fuzzy
 msgid "Custom|C"
-msgstr "Vlastní"
+msgstr "Vlastní|l"
 
 #: lib/ui/stdcontext.inc:192 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
@@ -9611,7 +9580,7 @@ msgstr "Pøesunout odstavec dolù|d"
 
 #: lib/ui/stdcontext.inc:220
 msgid "Apply Last Text Style|A"
-msgstr "Pou¾ij poslední Styl textu|t"
+msgstr "Pou¾ít poslední Styl textu|y"
 
 #: lib/ui/stdcontext.inc:221 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
@@ -9823,9 +9792,8 @@ msgid "Paste As JPEG"
 msgstr "Vlo¾it jako JPEG"
 
 #: lib/ui/stdmenus.inc:148
-#, fuzzy
 msgid "Dissolve CharStyle"
-msgstr "Rozpustit vlo¾ku do textu|R"
+msgstr "Rozpustit styl znaku do textu|R"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Customized...|C"
@@ -12764,14 +12732,12 @@ msgstr ""
 "Pou¾ití .pdf vy¾aduje alespoò lilypond 2.9\n"
 
 #: lib/external_templates:247
-#, fuzzy
 msgid "PDFPages"
-msgstr "Stránky"
+msgstr "Stránky PDF"
 
 #: lib/external_templates:248 lib/external_templates:261
-#, fuzzy
 msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
-msgstr "Diagram: $$AbsOrRelPathParent$$Basename"
+msgstr "PDF stránky: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:250
 msgid ""
@@ -12785,6 +12751,15 @@ msgid ""
 "Read the documentation of the pdfpages package\n"
 "for further options and details.\n"
 msgstr ""
+"Vkládá PDF dokumenty, pomocí balíèku 'pdfpages'.\n"
+"Pro vlo¾ení vícera stránek pou¾ijte volbu 'pages',\n"
+"která musí být pøidána v Mo¾nostech.\n"
+"Pøíklady:\n"
+"* pages={x-y} (pro rozsah stránek)\n"
+"* pages={x,y,z} (pro konkrétní stránky)\n"
+"* pages=- (pro v¹echny stránky)\n"
+"Pøeètìte si dokumentaci balíèku pdfpages\n"
+"pro dal¹í nastavení a detaily.\n"
 
 #: lib/external_templates:290
 msgid ""
@@ -12895,9 +12870,9 @@ msgid "Document format failure"
 msgstr "Chyba formátování dokumentu"
 
 #: src/Buffer.cpp:684
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s is not a readable LyX document."
-msgstr "%1$s není dokumentem LyX-u."
+msgstr "%1$s není èitelný dokument LyX-u."
 
 #: src/Buffer.cpp:721
 msgid "Conversion failed"
@@ -13474,9 +13449,8 @@ msgid "selection"
 msgstr "výbìr"
 
 #: src/Color.cpp:105
-#, fuzzy
 msgid "selected text"
-msgstr "Smazaný text"
+msgstr "oznaèený text"
 
 #: src/Color.cpp:107
 msgid "LaTeX text"
@@ -15663,12 +15637,11 @@ msgstr "Klíèe"
 
 #: src/frontends/qt4/GuiClipboard.cpp:328
 msgid "Enhanced Metafile"
-msgstr ""
+msgstr "Roz¹íøený WMF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:329
-#, fuzzy
 msgid "Windows Metafile"
-msgstr "Odkaz na soubor"
+msgstr "WMF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:330
 msgid "LinkBack PDF"
@@ -16079,16 +16052,16 @@ msgstr "nebo"
 #: src/frontends/qt4/GuiDocument.cpp:1384
 #, c-format
 msgid "Module required: %1$s."
-msgstr ""
+msgstr "Vy¾adované moduly: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1393
 #, c-format
 msgid "Modules excluded: %1$s."
-msgstr ""
+msgstr "Vylouèené moduly: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1399
 msgid "WARNING: Some packages are unavailable!"
-msgstr ""
+msgstr "Upozornìní: Nìkteré balíèky jsou nedostupné!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2107
 msgid "Can't set layout!"
@@ -16100,9 +16073,8 @@ msgid "Unable to set layout for ID: %1$s"
 msgstr "Nelze nastavit rozvr¾ení pro ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:2171
-#, fuzzy
 msgid "Not Found"
-msgstr "Nezobrazeno."
+msgstr "Nenalezeno"
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
@@ -16433,28 +16405,25 @@ msgstr "Funkce"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2048
 msgid "Cursor, Mouse and Editing functions"
-msgstr ""
+msgstr "Kurzor, my¹, editaèní funkce"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2052
-#, fuzzy
 msgid "Mathematical Symbols"
-msgstr "Matematické alfanumerické symboly"
+msgstr "Matematické symboly"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2056
-msgid "Buffer and Window"
-msgstr ""
+msgid "Document and Window"
+msgstr "Dokument a okno"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2060
 msgid "Font, Layouts and Textclasses"
-msgstr ""
+msgstr "Font, Rozvr¾ení, "
 
 #: src/frontends/qt4/GuiPrefs.cpp:2064
-#, fuzzy
 msgid "System and Miscellaneous"
-msgstr "AMS Rùzné"
+msgstr "Systém, Rùzné"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2186 src/frontends/qt4/GuiPrefs.cpp:2243
-#, fuzzy
 msgid "Res&tore"
 msgstr "&Obnovit"
 
@@ -17004,7 +16973,6 @@ msgid "List of Equations"
 msgstr "Seznam rovnic"
 
 #: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:935
-#, fuzzy
 msgid "List of Footnotes"
 msgstr "Poznámky pod èarou"
 
@@ -17038,16 +17006,15 @@ msgstr "Filtrovat rozvr¾ení s \""
 
 #: src/frontends/qt4/GuiToolbar.cpp:544 src/frontends/qt4/GuiToolbar.cpp:593
 msgid "Enter characters to filter the layout list."
-msgstr ""
+msgstr "Zadejte znaky pro zmen¹ení seznamu."
 
 #: src/frontends/qt4/GuiVSpace.cpp:44
 msgid "Vertical Space Settings"
 msgstr "Nastavení vertikální mezery"
 
 #: src/frontends/qt4/GuiView.cpp:116
-#, fuzzy
 msgid "version "
-msgstr "Verze"
+msgstr "verze "
 
 #: src/frontends/qt4/GuiView.cpp:116
 msgid "unknown version"
@@ -17232,7 +17199,7 @@ msgstr "Stav panelu nástrojù \"%1$s\" nastaven na %2$s"
 #: src/frontends/qt4/GuiView.cpp:1940
 #, c-format
 msgid "%1$s unknown command!"
-msgstr ""
+msgstr "%1$s neznámý pøíkaz!"
 
 #: src/frontends/qt4/GuiViewSource.cpp:92
 #: src/frontends/qt4/GuiViewSource.cpp:164
@@ -17244,9 +17211,8 @@ msgid "DocBook Source"
 msgstr "Zdrojový soubor DocBook-u"
 
 #: src/frontends/qt4/GuiViewSource.cpp:168
-#, fuzzy
 msgid "Literate Source"
-msgstr "Zdrojový kód pro LaTeX"
+msgstr "Zdrojový kód (literate programming)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1121
 msgid " (changed)"
@@ -17355,9 +17321,8 @@ msgid "The script `%s' failed."
 msgstr "Skript `%s' selhal."
 
 #: src/frontends/qt4/qt_helpers.cpp:474
-#, fuzzy
 msgid "All Files "
-msgstr "V¹echna políèka"
+msgstr "V¹echny soubory "
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:174
 #: src/insets/InsetGraphics.cpp:584 src/insets/InsetInclude.cpp:425
@@ -17472,7 +17437,7 @@ msgstr "Popisek - otevøená vlo¾ka"
 #: src/insets/InsetCaption.cpp:302
 #, c-format
 msgid "Sub-%1$s"
-msgstr ""
+msgstr "Sub-%1$s"
 
 #: src/insets/InsetCitation.cpp:217
 msgid "not cited"
@@ -17618,12 +17583,12 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 "Zahrnutý soubor `%1$s'\n"
-"je textové tøídy `%2$s'\n"
+"je tøídy (textclass) `%2$s'\n"
 "zatímco rodièovský soubor má tøídu `%3$s'."
 
 #: src/insets/InsetInclude.cpp:453
 msgid "Different textclasses"
-msgstr "Rozdílné textové tøídy"
+msgstr "Rozdílné tøídy (textclass)"
 
 #: src/insets/InsetInclude.cpp:468
 #, c-format
@@ -17928,7 +17893,7 @@ msgstr "FormatRef: "
 
 #: src/insets/InsetSpace.cpp:70
 msgid "Interword Space"
-msgstr "Mezera uvnitø slova"
+msgstr "Mezislovní mezera"
 
 #: src/insets/InsetSpace.cpp:73
 msgid "Protected Space"
@@ -17948,12 +17913,11 @@ msgstr "QQuad mezera"
 
 #: src/insets/InsetSpace.cpp:85
 msgid "Enspace"
-msgstr "En-mezera"
+msgstr "En-mezera (Enspace)"
 
 #: src/insets/InsetSpace.cpp:88
-#, fuzzy
 msgid "Enskip"
-msgstr "nsim"
+msgstr "En-mezera (Enskip)"
 
 #: src/insets/InsetSpace.cpp:91
 msgid "Negative Thin Space"
@@ -18284,7 +18248,7 @@ msgstr "Obsluha fontù"
 
 #: src/support/debug.cpp:49
 msgid "Textclass files reading"
-msgstr "Naètení souborù pro tøídy textù"
+msgstr "Naètení souborù pro tøídy (textclass)"
 
 #: src/support/debug.cpp:50
 msgid "Version control"
