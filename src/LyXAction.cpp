@@ -1436,7 +1436,6 @@ void LyXAction::init()
 		{ LFUN_SERVER_GET_FONT, "server-get-font", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
 		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly, System },
-		{ LFUN_SERVER_GET_XY, "server-get-xy", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_GOTO_FILE_ROW
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
@@ -1446,7 +1445,21 @@ void LyXAction::init()
  */
 		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly, System },
 		{ LFUN_SERVER_NOTIFY, "server-notify", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SERVER_SET_XY
+ * \li Action: Sets the cursor position based on the editing area coordinates
+               (similar as clicking on that point with left mouse button).
+ * \li Syntax: server-set-xy <X> <Y>
+ * \endvar
+ */
 		{ LFUN_SERVER_SET_XY, "server-set-xy", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SERVER_GET_XY
+ * \li Action: Returns the coordinates of cursor position in the editing area.
+ * \li Syntax: server-get-xy
+ * \endvar
+ */
+		{ LFUN_SERVER_GET_XY, "server-get-xy", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUILD_PROGRAM
