@@ -1436,11 +1436,11 @@ msgstr "&Internet"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:53
 msgid "Link to an email address"
-msgstr "Link zu einer Emailadresse"
+msgstr "Link zu einer E-Mail-Adresse"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:56
 msgid "&Email"
-msgstr "&EMail"
+msgstr "&E-Mail"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:63
 msgid "Link to a file"
@@ -2115,9 +2115,8 @@ msgid "Ri&ght"
 msgstr "Re&chts"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:140
-#, fuzzy
 msgid "C&enter"
-msgstr "Zentriert"
+msgstr "&Zentriert"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 msgid "&Left"
@@ -4765,7 +4764,6 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 #: lib/layouts/beamer.layout:233 lib/layouts/beamer.layout:277
 #: lib/layouts/beamer.layout:317 lib/layouts/beamer.layout:358
 #: lib/layouts/beamer.layout:387
-#, fuzzy
 msgid "Frames"
 msgstr "Rahmen"
 
@@ -4838,9 +4836,8 @@ msgstr "Pause"
 #: lib/layouts/beamer.layout:527 lib/layouts/beamer.layout:553
 #: lib/layouts/beamer.layout:580 lib/layouts/beamer.layout:606
 #: lib/layouts/beamer.layout:632
-#, fuzzy
 msgid "Overlays"
-msgstr "Overlay"
+msgstr "Overlays"
 
 #: lib/layouts/beamer.layout:542
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -4880,9 +4877,8 @@ msgstr "Block"
 
 #: lib/layouts/beamer.layout:659 lib/layouts/beamer.layout:685
 #: lib/layouts/beamer.layout:715
-#, fuzzy
 msgid "Blocks"
-msgstr "Block"
+msgstr "Blöcke"
 
 #: lib/layouts/beamer.layout:669
 msgid "Block ( ERT[{title}] body ):"
@@ -4907,9 +4903,8 @@ msgstr "Block ( ERT[{Titel}] Warnungstext ):"
 #: lib/layouts/beamer.layout:747 lib/layouts/beamer.layout:779
 #: lib/layouts/beamer.layout:804 lib/layouts/beamer.layout:826
 #: lib/layouts/beamer.layout:848 lib/layouts/beamer.layout:895
-#, fuzzy
 msgid "Titling"
-msgstr "Listing"
+msgstr "Titelei"
 
 #: lib/layouts/beamer.layout:770
 msgid "Title (Plain Frame)"
@@ -6559,7 +6554,7 @@ msgstr "Kolumne Autor:"
 
 #: lib/layouts/latex8.layout:70
 msgid "E-mail:"
-msgstr "EMail:"
+msgstr "E-Mail:"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:51
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
@@ -16285,9 +16280,8 @@ msgid "Unable to set layout for ID: %1$s"
 msgstr "Kann Format für ID: %1$s nicht verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:2171
-#, fuzzy
 msgid "Not Found"
-msgstr "Nicht angezeigt."
+msgstr "nicht gefunden"
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
@@ -17191,7 +17185,6 @@ msgid "List of Equations"
 msgstr "Gleichungen"
 
 #: src/frontends/qt4/GuiToc.cpp:232 src/frontends/qt4/Menus.cpp:935
-#, fuzzy
 msgid "List of Footnotes"
 msgstr "Fußnoten"
 
@@ -17843,14 +17836,14 @@ msgid "no"
 msgstr "nein"
 
 #: src/insets/InsetInfo.cpp:211
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown action %1$s"
-msgstr "Unbekannte Aktion"
+msgstr "Aktion '%1$s' unbekannt"
 
 #: src/insets/InsetInfo.cpp:216
-#, fuzzy, c-format
+#, c-format
 msgid "No menu entry for action %1$s"
-msgstr "Kein Menü-Eintrag für"
+msgstr "Kein Menü-Eintrag für Aktion '%1$s'"
 
 #: src/insets/InsetInfo.cpp:244
 msgid "Unknown buffer info"
