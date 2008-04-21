@@ -314,12 +314,6 @@ public:
 	///
 	Length const getPWidth(idx_type cell) const;
 	///
-	Length const getColumnPWidth(idx_type cell) const;
-	///
-	Length const getMColumnPWidth(idx_type cell) const;
-	///
-	docstring const getAlignSpecial(idx_type cell, int what) const;
-	///
 	int cellWidth(idx_type cell) const;
 	///
 	int getBeginningOfTextInCell(idx_type cell) const;

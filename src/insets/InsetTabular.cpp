@@ -1128,28 +1128,6 @@ Length const Tabular::getPWidth(idx_type cell) const
 }
 
 
-Length const Tabular::getColumnPWidth(idx_type cell) const
-{
-	return column_info[cellColumn(cell)].p_width;
-}
-
-
-Length const Tabular::getMColumnPWidth(idx_type cell) const
-{
-	if (isMultiColumn(cell))
-		return cellInfo(cell).p_width;
-	return Length();
-}
-
-
-docstring const Tabular::getAlignSpecial(idx_type cell, int what) const
-{
-	if (what == SET_SPECIAL_MULTI)
-		return cellInfo(cell).align_special;
-	return column_info[cellColumn(cell)].align_special;
-}
-
-
 int Tabular::cellWidth(idx_type cell) const
 {
 	return cellInfo(cell).width;

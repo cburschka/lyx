@@ -290,7 +290,7 @@ class DragTabBar : public QTabBar
 	Q_OBJECT
 public:
 	///
-	DragTabBar(QWidget * parent=0);
+	DragTabBar(QWidget * parent = 0);
 
 #if QT_VERSION < 0x040300
 	///

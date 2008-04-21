@@ -567,11 +567,38 @@ void GuiTabular::update_borders()
 }
 
 
+namespace {
+
+Length getColumnPWidth(Tabular const & t, size_t cell)
+{
+	return t.column_info[t.cellColumn(cell)].p_width;
+}
+
+
+Length getMColumnPWidth(Tabular const & t, size_t cell)
+{
+	if (t.isMultiColumn(cell))
+		return t.cellInfo(cell).p_width;
+	return Length();
+}
+
+
+docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
+{
+	if (what == Tabular::SET_SPECIAL_MULTI)
+		return t.cellInfo(cell).align_special;
+	return t.column_info[t.cellColumn(cell)].align_special;
+}
+
+}
+
+
+
 void GuiTabular::updateContents()
 {
 	initialiseParams(string());
 
-	Tabular::idx_type const cell = getActiveCell();
+	size_t const cell = getActiveCell();
 
 	Tabular::row_type const row = tabular_.cellRow(cell);
 	Tabular::col_type const col = tabular_.cellColumn(cell);
@@ -594,11 +621,11 @@ void GuiTabular::updateContents()
 	docstring special;
 
 	if (multicol) {
-		special = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
-		pwidth = tabular_.getMColumnPWidth(cell);
+		special = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_MULTI);
+		pwidth = getMColumnPWidth(tabular_, cell);
 	} else {
-		special = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
-		pwidth = tabular_.getColumnPWidth(cell);
+		special = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_COLUMN);
+		pwidth = getColumnPWidth(tabular_, cell);
 	}
 
 	specialAlignmentED->setText(toqstr(special));
@@ -828,13 +855,13 @@ void GuiTabular::closeGUI()
 	// since the changes update the actual tabular_
 	//
 	// apply the fixed width values
-	Tabular::idx_type const cell = getActiveCell();
+	size_t const cell = getActiveCell();
 	bool const multicol = tabular_.isMultiColumn(cell);
 	string width = widgetsToLength(widthED, widthUnit);
 	string width2;
 
-	Length llen = tabular_.getColumnPWidth(cell);
-	Length llenMulti = tabular_.getMColumnPWidth(cell);
+	Length llen = getColumnPWidth(tabular_, cell);
+	Length llenMulti = getMColumnPWidth(tabular_, cell);
 
 	if (multicol && !llenMulti.zero())
 		width2 = llenMulti.asString();
@@ -846,9 +873,9 @@ void GuiTabular::closeGUI()
 	docstring sa2;
 
 	if (multicol)
-		sa2 = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
+		sa2 = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_MULTI);
 	else
-		sa2 = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
+		sa2 = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
 		if (multicol)
