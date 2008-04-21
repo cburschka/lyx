@@ -2397,7 +2397,7 @@ name "Commands ! B ! \\textbackslash binom"
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="5" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
@@ -2502,6 +2502,106 @@ dbinom{A
 
 \begin_layout Standard
 \begin_inset Formula $\raisebox{5mm}{}\dbinom{A}{B}\raisebox{-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+brack
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\series bold
+
+\begin_inset LatexCommand index
+name "Commands ! B ! \\textbackslash brack"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\raisebox{5mm}{}{A \brack B}\raisebox{-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+brace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\series bold
+
+\begin_inset LatexCommand index
+name "Commands ! B ! \\textbackslash brace"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\raisebox{5mm}{}{A \brace B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
