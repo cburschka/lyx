@@ -286,6 +286,9 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	switch (mode) {
 		case OutlineUp: {
+			if (start == pars.begin())
+				// Nothing to move.
+				return;
 			ParagraphList::iterator dest = start;
 			// Move out (up) from this header
 			if (dest == bgn)
@@ -311,10 +314,22 @@ static void outline(OutlineOp mode, Cursor & cur)
 			return;
 		}
 		case OutlineDown: {
-			ParagraphList::iterator dest = finish;
+			if (finish == end)
+				// Nothing to move.
+				return;
+			// Go one down from *this* header:
+			ParagraphList::iterator dest = boost::next(finish, 1);
+			// Go further down to find header to insert in front of:
+			for (; dest != end; ++dest) {
+				toclevel = dest->layout().toclevel;
+				if (toclevel != Layout::NOT_IN_TOC
+				    && toclevel <= thistoclevel) {
+					break;
+				}
+			}
 			// One such was found:
-			pit_type newpit = distance(bgn, dest);
-			pit_type const len = distance(start, finish);
+			pit_type newpit = std::distance(bgn, dest);
+			pit_type const len = std::distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(bgn, pit);
