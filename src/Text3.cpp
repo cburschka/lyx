@@ -328,8 +328,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 				}
 			}
 			// One such was found:
-			pit_type newpit = std::distance(bgn, dest);
-			pit_type const len = std::distance(start, finish);
+			pit_type newpit = distance(bgn, dest);
+			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(bgn, pit);
