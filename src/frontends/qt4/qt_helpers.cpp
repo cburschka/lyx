@@ -231,7 +231,7 @@ void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
 	PathChanger p(package().user_support());
-	FileName const command = libFileSearch("scripts", "TeXFiles.py");
+	FileName const command = support::libFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
 	int const status = one.startscript(Systemcall::Wait,
 			os::python() + ' ' +
