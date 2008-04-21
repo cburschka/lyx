@@ -246,6 +246,7 @@ void handle_package(string const & name, string const & opts)
 	// roman fonts
 	if (is_known(name, known_roman_fonts))
 		h_font_roman = name;
+
 	if (name == "fourier") {
 		h_font_roman = "utopia";
 		// when font uses real small capitals
@@ -254,8 +255,10 @@ void handle_package(string const & name, string const & opts)
 	}
 	if (name == "mathpazo")
 		h_font_roman = "palatino";
+
 	if (name == "mathptmx")
 		h_font_roman = "times";
+
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans = name;
@@ -278,6 +281,7 @@ void handle_package(string const & name, string const & opts)
 
 	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "1";
+
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
 		// in case inputenc is parsed before babel, set the encoding to auto
@@ -308,6 +312,7 @@ void handle_package(string const & name, string const & opts)
 	}
 	else if (name == "fontenc")
 		; // ignore this
+
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc option
 		// therefore check for the "," character
@@ -320,12 +325,21 @@ void handle_package(string const & name, string const & opts)
 			else
 				h_inputencoding = opts;
 		options.clear();
-	} else if (name == "makeidx")
+	}
+	else if (name == "makeidx")
 		; // ignore this
+
 	else if (name == "verbatim")
 		; // ignore this
+
+	else if (name == "color")
+		// with the following command this package is only loaded when needed for
+		// undefined colors, since we only support the predefined colors
+		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
+
 	else if (name == "graphicx")
 		; // ignore this
+
 	else if (is_known(name, known_languages)) {
 		if (is_known(name, known_french_languages))
 			h_language = "french";
@@ -340,8 +354,8 @@ void handle_package(string const & name, string const & opts)
 		else
 			h_language = name;
 		h_quotes_language = h_language;
-
-	} else if (name == "natbib") {
+	}
+	else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
 		vector<string>::iterator it =
 			find(options.begin(), options.end(), "authoryear");
@@ -354,15 +368,16 @@ void handle_package(string const & name, string const & opts)
 				options.erase(it);
 			}
 		}
-	} else if (name == "jurabib") {
+	}
+	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
-	} else if (options.empty())
+
+	else if (options.empty())
 		h_preamble << "\\usepackage{" << name << "}\n";
 	else {
 		h_preamble << "\\usepackage[" << opts << "]{" << name << "}\n";
 		options.clear();
 	}
-
 	// We need to do something with the options...
 	if (!options.empty())
 		cerr << "Ignoring options '" << join(options, ",")

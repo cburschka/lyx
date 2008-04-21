@@ -54,8 +54,11 @@ What's new
 - Add support for the HTML-to-LaTeX converters gnuhtml2latex and
   htmltolatex (bug 4615).
 
-- The \makeatletter and \makeatother commands are now added to the LaTeX
-  preamble only when actually needed.
+- The commands \makeatletter and \makeatother are now only added to the
+  preamble when actually needed.
+
+- The command \textcolor is now converted when importing LaTeX files
+  (bug 2457).
 
 
 * BUILD/INSTALLATION:

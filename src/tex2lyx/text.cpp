@@ -1857,6 +1857,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				eat_whitespace(p, os, context, false);
 		}
 
+		else if (t.cs() == "textcolor") {
+			// scheme is \textcolor{color name}{text}
+			string const color = p.verbatim_item();
+			// we only support the predefined colors of the color package
+			if (color == "black" || color == "blue" || color == "cyan"
+				|| color == "green" || color == "magenta" || color == "red"
+				|| color == "white" || color == "yellow") {
+					context.check_layout(os);
+					os << "\n\\color " << color << "\n";
+					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+					context.check_layout(os);
+					os << "\n\\color inherit\n";
+			} else
+				// for custom defined colors
+				handle_ert(os, t.asInput() + "{" + color + "}", context);
+		}
+
 		else if (t.cs() == "underbar") {
 			// Do NOT handle \underline.
 			// \underbar cuts through y, g, q, p etc.,
