@@ -298,7 +298,7 @@ void GuiExternal::getbbClicked()
 	if (filename.empty())
 		return;
 
-	FileName const abs_file(makeAbsPath(filename, fromqstr(bufferFilepath())));
+	FileName const abs_file(support::makeAbsPath(filename, fromqstr(bufferFilepath())));
 
 	// try to get it from the file, if possible
 	string bb = readBB_from_PSFile(abs_file);

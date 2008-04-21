@@ -334,7 +334,7 @@ void GuiInclude::edit(string const & file)
 	else
 		// tex file or other text file in verbatim mode
 		formats.edit(buffer(), 
-			makeAbsPath(file, support::onlyPath(buffer().absFileName())),
+			support::makeAbsPath(file, support::onlyPath(buffer().absFileName())),
 			"text");
 }
 

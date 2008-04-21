@@ -1230,7 +1230,7 @@ void GuiDocument::browseLayout()
 	if (!file.endsWith(".layout"))
 		return;
 
-	FileName layoutFile = makeAbsPath(fromqstr(file),
+	FileName layoutFile = support::makeAbsPath(fromqstr(file),
 		fromqstr(bufferFilepath()));
 	
 	// load the layout file

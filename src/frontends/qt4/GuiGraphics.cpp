@@ -758,7 +758,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 
 string GuiGraphics::readBoundingBox(string const & file)
 {
-	FileName const abs_file = makeAbsPath(file, fromqstr(bufferFilepath()));
+	FileName const abs_file = support::makeAbsPath(file, fromqstr(bufferFilepath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -787,7 +787,7 @@ string GuiGraphics::readBoundingBox(string const & file)
 bool GuiGraphics::isFileNameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	return makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
+	return support::makeAbsPath(fname, fromqstr(bufferFilepath())).isReadableFile();
 }
 
 
