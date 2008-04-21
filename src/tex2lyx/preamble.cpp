@@ -340,6 +340,9 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "graphicx")
 		; // ignore this
 
+	else if (name == "setspace")
+		; // ignore this
+
 	else if (is_known(name, known_languages)) {
 		if (is_known(name, known_french_languages))
 			h_language = "french";
@@ -647,14 +650,31 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 		else if (t.cs() == "setlength") {
 			string const name = p.verbatim_item();
 			string const content = p.verbatim_item();
-			// Is this correct?
-			if (name == "parskip")
-				h_paragraph_separation = "skip";
-			else if (name == "parindent")
-				h_paragraph_separation = "skip";
-			else
+			// the paragraphs are only not indented when \parindent is set to zero
+			if (name == "\\parindent" && content != "") {
+				if (content[0] == '0')
+					h_paragraph_separation = "skip";
+			} else if (name == "\\parskip") {
+				if (content == "\\smallskipamount")
+					h_defskip = "smallskip";
+				else if (content == "\\medskipamount")
+					h_defskip = "medskip";
+				else if (content == "\\bigskipamount")
+					h_defskip = "bigskip";
+				else
+					h_defskip = content;
+			} else
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}
+
+		else if (t.cs() =="onehalfspacing")
+			h_spacing = "onehalf";
+
+		else if (t.cs() =="doublespacing")
+			h_spacing = "double";
+
+		else if (t.cs() =="setstretch")
+			h_spacing = "other " + p.verbatim_item();
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');

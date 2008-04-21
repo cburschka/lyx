@@ -60,6 +60,8 @@ What's new
 - The command \textcolor is now converted when importing LaTeX files
   (bug 2457).
 
+- Line spacing settings are now imported when importing LaTeX files.
+
 
 * BUILD/INSTALLATION:
 
@@ -111,10 +113,13 @@ What's new
 - After an inset, don't always revert to the language's default encoding for
   latex output, but honor that specified in the document settings (bug 4665).
 
-- Set the correct encoding when an ASCII encoded TeX file is imported
+- Set the correct encoding when an ASCII encoded LaTeX file is imported
   (bug 4719).
 
-- Parse the command \makebox correctly when importing TeX files (bug 2504).
+- Parse the command \makebox correctly when importing LaTeX files (bug 2504).
+
+- Import global paragraph settings correctly when importing LaTeX files
+  (bug 4773).
 
 
 * USER INTERFACE:
