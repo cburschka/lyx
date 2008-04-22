@@ -179,7 +179,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		if (didone)
 			dbs << ',';
 		else 
-			didone =- true;
+			didone = true;
 		// FIXME UNICODE
 		dbs << from_utf8(latex_path(database));
 	}
