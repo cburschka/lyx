@@ -26,7 +26,7 @@ LangString SecDesktopTitle "${LYX_LANG}" "Icône du bureau"
 
 LangString SecCoreDescription "${LYX_LANG}" "Les fichiers LyX"
 LangString SecInstGSviewDescription "${LYX_LANG}" "Application permettant d'afficher les documents PostScript - et PDF."
-LangString SecInstJabRefDescription "${LYX_LANG}" "Bibliography reference manager and editor for BibTeX files."
+LangString SecInstJabRefDescription "${LYX_LANG}" "Gestionnaire de références bibliographiques et éditeur de ficjiers BibTeX."
 LangString SecAllUsersDescription "${LYX_LANG}" "Installer LyX pour tous les utilisateurs, ou seulement pour l'utilisateur courant ?."
 LangString SecFileAssocDescription "${LYX_LANG}" "Les fichiers de suffixe .lyx seront automatiquement ouverts dans LyX."
 LangString SecDesktopDescription "${LYX_LANG}" "Une icône LyX sur le bureau."
@@ -34,7 +34,7 @@ LangString SecDesktopDescription "${LYX_LANG}" "Une icône LyX sur le bureau."
 LangString LangSelectHeader "${LYX_LANG}" "Sélection de la langue pour les menus de LyX"
 LangString AvailableLang "${LYX_LANG}" " Langues disponibles"
 
-LangString MissProgHeader "${LYX_LANG}" "Vérification des applications requises."
+LangString MissProgHeader "${LYX_LANG}" "Vérification de la présence des applications requises."
 LangString MissProgCap "${LYX_LANG}" "Le(s) application(s) requise(s) suivante(s) seront également installées."
 LangString MissProgLatex "${LYX_LANG}" "MiKTeX, une distribution LaTeX"
 LangString MissProgGhostscript "${LYX_LANG}" "Ghostscript, un interpréteur pour PostScript and PDF"
@@ -57,7 +57,7 @@ LangString EnterLaTeXFolderNone "${LYX_LANG}" 'Fixez ci-dessous le chemin d$\'ac
 					       L$\'assistant d$\'installation n$\'a pas pu trouver de distribution LaTeX sur votre système.'
 LangString PathName "${LYX_LANG}" 'Chemin vers le fichier "latex.exe"'
 LangString DontUseLaTeX "${LYX_LANG}" "N'utilisez pas LaTeX"
-LangString InvalidLaTeXFolder "${LYX_LANG}" '"latex.exe" introuvable.'
+LangString InvalidLaTeXFolder "${LYX_LANG}" '"latex.exe" introuvable dans le chemin d'accès spécifié.'
 
 LangString LatexInfo "${LYX_LANG}" 'Lancement de l$\'installation de la distribution LaTeX "MiKTeX".$\r$\n\
 			            Pour installer l$\'application, appuyer sur le bouton "Next" de la fenêtre d$\'installation jusqu$\'à ce que celle-ci commence.$\r$\n\
@@ -113,7 +113,7 @@ LangString MiKTeXInfo "${LYX_LANG}" 'La distribution LaTeX "MiKTeX" sera utilisé
 				     avant d$\'utiliser LyX pour la première fois.$\r$\n\
 				     Voulez-vous vérifier maintenant les mises à jour de MiKTeX ?'
 
-LangString UpdateNotAllowed "${LYX_LANG}" "This update package can only update ${PRODUCT_VERSION_OLD}!"
+LangString UpdateNotAllowed "${LYX_LANG}" "Ce paquetage ne peut mettre à jour que ${PRODUCT_VERSION_OLD}!"
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_prefix' lors de la configuration."
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Création de lyx.bat impossible."
 LangString RunConfigureFailed "${LYX_LANG}" "Échec de la tentative de configuration initiale de LyX."

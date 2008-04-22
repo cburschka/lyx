@@ -18,7 +18,7 @@ Author: Jean-Pierre Chrétien
 !insertmacro LanguageString TEXT_USER_ALL "Installer pour tous les utilisateurs."
 
 !insertmacro LanguageString TEXT_REINSTALL_TITLE "Réinstallation"
-!insertmacro LanguageString TEXT_REINSTALL_SUBTITLE "Réinstallation éventuelle des fichiers programmes de $(^NameDA)."
+!insertmacro LanguageString TEXT_REINSTALL_SUBTITLE "Réinstallation éventuelle des fichiers programmes de $(^NameDA) ?"
 !insertmacro LanguageString TEXT_REINSTALL_INFO "$(^NameDA) est déjà installé. Cet assistant vous permettra de modifier le langage de l'interface ou l'emplacement des applications externes, ou de télécharger de nouveaux dictionnaires. Si vous souhaitez réinstaller aussi les fichiers programmes, cochez la case ci-dessous. $(^ClickNext)"
 !insertmacro LanguageString TEXT_REINSTALL_ENABLE "Réinstaller les fichiers programmes $(^NameDA)"
 
@@ -65,7 +65,7 @@ Author: Jean-Pierre Chrétien
 !insertmacro LanguageString TEXT_VIEWER_INSTALL "Installer GSView"
 
 !insertmacro LanguageString TEXT_DICT_TITLE "Dictionnaires orthographiques"
-!insertmacro LanguageString TEXT_DICT_SUBTITLE "Sélection des langues pour lesquelles vous désirez un dictionnaire orthographique."
+!insertmacro LanguageString TEXT_DICT_SUBTITLE "Sélectionner les langues pour lesquelles vous désirez un dictionnaire orthographique."
 !insertmacro LanguageString TEXT_DICT_TOP "Pour vérifier l'orthographe des documents dans un langage donné, un dictionnaire contenant les mots admis dot être téléchargé. Sélectionner les dictionnaires à télécharger. $_CLICK"
 !insertmacro LanguageString TEXT_DICT_LIST "Sélectionner les dictionnaires à télécharger :"
 
