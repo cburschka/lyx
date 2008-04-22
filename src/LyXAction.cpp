@@ -1440,7 +1440,6 @@ void LyXAction::init()
 		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
 
 		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
-		{ LFUN_SERVER_GET_FONT, "server-get-font", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
 		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly, System },
 /*!

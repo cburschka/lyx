@@ -981,15 +981,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_SERVER_GET_FONT:
-		if (cur.current_font.fontInfo().shape() == ITALIC_SHAPE)
-			cur.message(from_ascii("E"));
-		else if (cur.current_font.fontInfo().shape() == SMALLCAPS_SHAPE)
-			cur.message(from_ascii("N"));
-		else
-			cur.message(from_ascii("0"));
-		break;
-
 	case LFUN_SERVER_GET_LAYOUT:
 		cur.message(cur.paragraph().layout().name());
 		break;
@@ -2184,7 +2175,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_CHARS_TRANSPOSE:
 	case LFUN_SERVER_GET_XY:
 	case LFUN_SERVER_SET_XY:
-	case LFUN_SERVER_GET_FONT:
 	case LFUN_SERVER_GET_LAYOUT:
 	case LFUN_LAYOUT:
 	case LFUN_DATE_INSERT:
