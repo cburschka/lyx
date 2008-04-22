@@ -820,7 +820,6 @@ void latexParagraphs(Buffer const & buf,
 			} else {
 				par = TeXOnePar(buf, text, par, os, texrow,
 						runparams, everypar);
-			}
 		}
 		if (distance(lastpar, par) >= distance(lastpar, endpar))
 			break;
