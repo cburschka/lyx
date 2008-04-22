@@ -76,27 +76,44 @@ Var ComponentSize
   Pop $ExternalPage.NoInstall
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.NoInstall $ExternalPage.RadioButton.Click
   
+  !if ${COMPONENT} != LaTeX
+  # ImageMagick and Ghostscript require Administrator or
+  # power user privileges for installation
+  ${If} $MultiUser.Privileges != "Admin"
+  ${AndIf} $MultiUser.Privileges != "Power"
+    EnableWindow $ExternalPage.Setup 0
+  ${EndIf}
+  !endif
+  
   # Set the state of the controls to the previous user selection (or the default)
 
   ${If} $${COMPONENT}State == ""
     # Page is displayed for the first time, set the default
     ${If} $Path${COMPONENT} == ""
-    !if ${COMPONENT} != LaTeX
-    # ImageMagick and Ghostscript require Administrator or
-    # power user privileges for installation
-    ${andif} $MultiUser.Privileges != "User"
-    ${andif} $MultiUser.Privileges != "Guest"
-    !endif    
+      !if ${COMPONENT} != LaTeX
+      # ImageMagick and Ghostscript require Administrator or
+      # power user privileges for installation
+      # Setup won't be checked because it's disabled
+      ${If} $MultiUser.Privileges != "User"
+      ${AndIf} $MultiUser.Privileges != "Guest"
+      !endif 
+      
       ${NSD_SetState} $ExternalPage.Setup ${BST_CHECKED}
+      
+      !if ${COMPONENT} != LaTeX
+      ${Else}
+        ${NSD_SetState} $ExternalPage.NoInstall ${BST_CHECKED}
+      ${EndIf}
+      !endif
     ${Else}
       ${NSD_SetState} $ExternalPage.Existing ${BST_CHECKED}
-      EnableWindow $ExternalPage.Setup 0
     ${EndIf}
   ${Else} 
     ${NSD_SetState} $ExternalPage.Setup $${COMPONENT}Setup.State
     ${NSD_SetState} $ExternalPage.Existing $${COMPONENT}Existing.State
     ${NSD_SetState} $ExternalPage.NoInstall $${COMPONENT}NoInstall.State
   ${EndIf}
+  
   
   Call ExternalRadioButtonClick
   
