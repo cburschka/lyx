@@ -719,13 +719,12 @@ FileName InsetBibtex::getBibTeXPath(docstring const & filename, Buffer const & b
 bool InsetBibtex::addDatabase(docstring const & db)
 {
 	docstring bibfiles = getParam("bibfiles");
-	if (tokenPos(bibfiles, ',', db) == -1) {
-		if (!bibfiles.empty())
+	if (tokenPos(bibfiles, ',', db) =! -1)
+		return false;
+	if (!bibfiles.empty())
 		bibfiles += ',';
-		setParam("bibfiles", bibfiles + db);
-		return true;
-	}
-	return false;
+	setParam("bibfiles", bibfiles + db);
+	return true;
 }
 
 
