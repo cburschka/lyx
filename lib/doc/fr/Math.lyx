@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+\lyxformat 328
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -189,7 +189,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -472,7 +471,6 @@ Ctrl-m
  ou sur le bouton 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -613,7 +611,6 @@ Mode TeX
  est activé en appuyant sur le bouton 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1446,7 +1443,6 @@ _
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math-subscript.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1463,7 +1459,6 @@ de la barre d'outils mathématique, les exposants avec un accent circonflexe
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math-superscript.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1654,7 +1649,6 @@ frac
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	embed ""
 	scale 50
 
 \end_inset
@@ -1665,7 +1659,6 @@ frac
  Avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2202,7 +2195,6 @@ sqrt
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2229,7 +2221,6 @@ root
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/root.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2538,7 +2529,6 @@ binom
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2593,12 +2583,53 @@ tbinom
 \end_inset
 
 .
+ 
+\lang english
+For other brackets around binomial coeficients there are the
+\lang french
+ commandes 
+\series bold
+
+\backslash
+brace
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! B ! 
+\backslash
+brace
+\end_layout
+
+\end_inset
+
+ et 
+\series bold
+
+\backslash
+brack
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! B ! 
+\backslash
+brack
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2754,6 +2785,90 @@ B
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox {5mm}{}\tbinom{A}{B}\raisebox {-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+brack
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox {5mm}{}{A \brack B}\raisebox {-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+brace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox {5mm}{}{A \brace B}\raisebox {-2.5mm}{}$
 \end_inset
 
 
@@ -2922,7 +3037,6 @@ cases
  ou avoir utilisé le bouton 
 \begin_inset Graphics
 	filename ../../images/math/cases.png
-	embed ""
 	lyxscale 50
 	scale 50
 
@@ -2936,7 +3050,6 @@ Ctrl-Entrée
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3340,7 +3453,6 @@ phantom
 
 \begin_inset Graphics
 	filename ../../images/math/phantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3648,7 +3760,6 @@ vphantom
 
 \begin_inset Graphics
 	filename ../../images/math/vphantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3678,7 +3789,6 @@ hphantom
 
 \begin_inset Graphics
 	filename ../../images/math/hphantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4037,7 +4147,6 @@ status collapsed
 Dans la barre d'outils mathématique dans le sous-menu du bouton 
 \begin_inset Graphics
 	filename ../../images/math/ldots.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4646,7 +4755,6 @@ Matrices
 On peut insérer des matrices avec le bouton 
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathmatrix.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4782,7 +4890,6 @@ Pour ajouter ou supprimer des lignes ou des colonnes après coup, on peut
  utiliser les boutons 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4790,7 +4897,6 @@ Pour ajouter ou supprimer des lignes ou des colonnes après coup, on peut
 , 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -6585,7 +6691,6 @@ right
 
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathdelimiter.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -7520,7 +7625,6 @@ Flèches
 On peut insérer des flèches avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -8895,7 +8999,6 @@ On peut ajouter des accents avec le bouton
 
 \begin_inset Graphics
 	filename ../../images/math/hat.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -10622,7 +10725,6 @@ Espace
  On peut aussi insérer ces espaces en utilisant le bouton 
 \begin_inset Graphics
 	filename ../../images/math/space.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -13371,7 +13473,6 @@ texte
  Cette fenêtre de dialogue peut être appelée avec le bouton 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -13817,7 +13918,6 @@ Boîte
  ou le bouton 
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -15029,7 +15129,6 @@ Tous les grands opérateurs peuvent aussi être insérés en utilisant le bouton
  
 \begin_inset Graphics
 	filename ../../images/math/intop.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -17058,7 +17157,6 @@ triangleright
 Tous les opérateurs binaires peuvent être insérés avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/pm.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -18084,7 +18182,6 @@ Texte
  ou le bouton 
 \begin_inset Graphics
 	filename ../../images/math/font.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -18608,7 +18705,6 @@ Lettres grecques
 On peut insérer toutes les lettres grecques avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/alpha.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -20155,7 +20251,6 @@ Plusieurs symboles listés dans cette section peuvent aussi être insérés
  grâce aux boutons 
 \begin_inset Graphics
 	filename ../../images/math/nabla.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -20163,7 +20258,6 @@ Plusieurs symboles listés dans cette section peuvent aussi être insérés
  et 
 \begin_inset Graphics
 	filename ../../images/math/digamma.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -22257,7 +22351,6 @@ Tous les opérateurs de relation peuvent aussi être insérés en passant par
  le bouton 
 \begin_inset Graphics
 	filename ../../images/math/leq.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24355,7 +24448,6 @@ gcd
 Elles peuvent aussi être insérées en utilisant le bouton 
 \begin_inset Graphics
 	filename ../../images/math/functions.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -25602,7 +25694,6 @@ Les caractères
  peuvent aussi être insérés avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math/digamma.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -26869,7 +26960,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -27215,7 +27306,6 @@ Ctrl-Entrée
  boutons 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -27223,7 +27313,6 @@ Ctrl-Entrée
  ou 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -28108,7 +28197,6 @@ Pour ajouter ou supprimer des colonnes, on peut utiliser soit les boutons
  
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -28116,7 +28204,6 @@ Pour ajouter ou supprimer des colonnes, on peut utiliser soit les boutons
  ou 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -29087,7 +29174,6 @@ Insérer\SpecialChar \menuseparator
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -29139,7 +29225,6 @@ croisée
  ou avec le bouton 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	embed ""
 	scale 85
 
 \end_inset

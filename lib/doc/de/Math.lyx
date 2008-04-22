@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+\lyxformat 328
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -207,7 +207,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -486,7 +485,6 @@ Strg-m
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -673,7 +671,6 @@ TeX-Modus
  gelangt man über den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1586,7 +1583,6 @@ Indizes werden mit dem Unterstrich _ oder mit dem Mathe-Werkzeugleistenknopf
  
 \begin_inset Graphics
 	filename ../../images/math-subscript.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1595,7 +1591,6 @@ Indizes werden mit dem Unterstrich _ oder mit dem Mathe-Werkzeugleistenknopf
  
 \begin_inset Graphics
 	filename ../../images/math-superscript.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -1795,7 +1790,6 @@ frac
  oder mit dem Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	embed ""
 	scale 50
 
 \end_inset
@@ -1806,7 +1800,6 @@ frac
  Mit dem Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2356,7 +2349,6 @@ sqrt
  oder dem Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2382,7 +2374,6 @@ root
  oder dem Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/root.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2695,7 +2686,6 @@ binom
  oder über das Untermenü des Mathe-Werkzeugleistenknopfs 
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -2750,17 +2740,54 @@ tbinom
 \end_inset
 
 .
+ Für andere Klammern um Binomialkoeffizienten gibt es die Befehle 
+\series bold
+
+\backslash
+brace
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! B ! 
+\backslash
+brace
+\end_layout
+
+\end_inset
+
+ und 
+\series bold
+
+\backslash
+brack
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! B ! 
+\backslash
+brack
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2769,7 +2796,7 @@ Befehl
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2796,7 +2823,7 @@ raisebox
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2824,7 +2851,7 @@ B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2838,7 +2865,7 @@ B
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2866,7 +2893,7 @@ B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2913,6 +2940,90 @@ B
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox {5mm}{}\tbinom{A}{B}\raisebox {-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+brack
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox {5mm}{}{A \brack B}\raisebox {-2.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+brace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+A
+\begin_inset Formula $\downarrow$
+\end_inset
+
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox {5mm}{}{A \brace B}\raisebox {-2.5mm}{}$
 \end_inset
 
 
@@ -3081,7 +3192,6 @@ cases
  oder der Benutzung des Mathe-Werkzeugleistenknopfs 
 \begin_inset Graphics
 	filename ../../images/math/cases.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3093,7 +3203,6 @@ Strg-Enter
  oder dem Tabellen-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3505,7 +3614,6 @@ status collapsed
 zu finden im Untermenü des Mathe-Werkzeugleistenknopfs 
 \begin_inset Graphics
 	filename ../../images/math/space.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3518,7 +3626,6 @@ zu finden im Untermenü des Mathe-Werkzeugleistenknopfs
  
 \begin_inset Graphics
 	filename ../../images/math/phantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3820,7 +3927,6 @@ vphantom
 
 \begin_inset Graphics
 	filename ../../images/math/vphantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -3850,7 +3956,6 @@ hphantom
 
 \begin_inset Graphics
 	filename ../../images/math/hphantom.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4218,7 +4323,6 @@ status collapsed
 In der Mathe-Werkzeugleiste zu finden im Untermenü des Knopfs 
 \begin_inset Graphics
 	filename ../../images/math/ldots.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4833,7 +4937,6 @@ Matrizen können über den Mathe-Werkzeugleistenknopf
 
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathmatrix.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4966,7 +5069,6 @@ Um nachträglich Zeilen und Spalten hinzuzufügen oder zu entfernen, kann
  man die Mathe-Werkzeugleistenknöpfe 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -4974,7 +5076,6 @@ Um nachträglich Zeilen und Spalten hinzuzufügen oder zu entfernen, kann
 , 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -6783,7 +6884,6 @@ right
 
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathdelimiter.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -7735,7 +7835,6 @@ Pfeile
 Pfeile können über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -9105,7 +9204,6 @@ Akzente
 Akzente können über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/hat.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -10813,7 +10911,6 @@ leer
  Man kann die Leerräume auch über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/space.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -13541,7 +13638,6 @@ Textstil
  Der Dialog kann mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -14018,7 +14114,6 @@ Box
  oder dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -15230,7 +15325,6 @@ biguplus
 Alle großen Operatoren können auch über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/intop.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -17225,7 +17319,6 @@ Alle binären Operatoren können auch über den Mathe-Werkzeugleistenknopf
  
 \begin_inset Graphics
 	filename ../../images/math/pm.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -18242,7 +18335,6 @@ Text-Stil
  oder den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/font.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -18754,7 +18846,6 @@ Alle griechischen Buchstaben können auch über den Mathe-Werkzeugleistenknopf
  
 \begin_inset Graphics
 	filename ../../images/math/alpha.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -20298,7 +20389,6 @@ Viele der im Folgenden aufgelisteten Symbole können auch über die Mathe-Werkze
 leistenknöpfe 
 \begin_inset Graphics
 	filename ../../images/math/nabla.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -20306,7 +20396,6 @@ leistenknöpfe
  und 
 \begin_inset Graphics
 	filename ../../images/math/digamma.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -22403,7 +22492,6 @@ Alle griechischen Buchstaben können auch über den Mathe-Werkzeugleistenknopf
  
 \begin_inset Graphics
 	filename ../../images/math/leq.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24502,7 +24590,6 @@ gcd
 Sie können auch über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/functions.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -25752,7 +25839,6 @@ Die Zeichen
  können auch über den Mathe-Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math/digamma.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -27009,7 +27095,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -27340,7 +27426,6 @@ Strg-Enter
 fe 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -27352,7 +27437,6 @@ fe
 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -28321,7 +28405,6 @@ Um Spalten hinzuzufügen oder zu entfernen, können die Mathe-Werkzeugleistenkn�
 e 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -28333,7 +28416,6 @@ e
 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -29274,7 +29356,6 @@ Marke
  oder dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -29318,7 +29399,6 @@ Querverweis
  oder dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	embed ""
 	scale 85
 
 \end_inset
