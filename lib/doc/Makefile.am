@@ -171,6 +171,11 @@ dist_itdoc_DATA = \
 	it/Tutorial.lyx \
 	it/UserGuide.lyx
 
+itclipartdocdir = $(pkgdatadir)/doc/it/clipart
+dist_itclipartdoc_DATA = \
+	it/clipart/it_footnoteQt4.png \
+	it/clipart/it_referenceQt4.png
+
 jadocdir = $(pkgdatadir)/doc/ja
 dist_jadoc_DATA = \
 	ja/Intro.lyx
