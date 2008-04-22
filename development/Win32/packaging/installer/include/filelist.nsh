@@ -1,5 +1,7 @@
 /*
 
+filelist.nsh
+
 Lists of files to include in the installer
 
 */
@@ -9,13 +11,6 @@ Lists of files to include in the installer
 !macro FileListLyXBin COMMAND DIRECTORY
 
   ${FILE}tex2lyx.exe"
-
-!macroend
-
-!macro FileListLyXIcons COMMAND DIRECTORY
-
-  ${FILE}lyx_32x32.ico"
-  ${FILE}lyx_doc_32x32.ico"
 
 !macroend
 
@@ -128,12 +123,14 @@ Lists of files to include in the installer
   ${FILE}copy_reg.py"
   ${FILE}fnmatch.py"
   ${FILE}getopt.py"
+  ${FILE}gettext.py"
   ${FILE}glob.py"
   ${FILE}gzip.py"
   ${FILE}linecache.py"
   ${FILE}locale.py"
   ${FILE}ntpath.py"
   ${FILE}os.py"
+  ${FILE}optparse.py"
   ${FILE}pipes.py"
   ${FILE}posixpath.py"
   ${FILE}random.py"
@@ -149,6 +146,7 @@ Lists of files to include in the installer
   ${FILE}struct.py"  
   ${FILE}tempfile.py"
   ${FILE}tempfile.py"
+  ${FILE}textwrap.py"
   ${FILE}types.py"
   ${FILE}warnings.py"
 
@@ -290,5 +288,19 @@ Lists of files to include in the installer
 !macro FileListNSISPlugins COMMAND DIRECTORY
 
   ${FILE}Console.dll"
+
+!macroend
+
+!macro FileListMetaFile2EPS COMMAND DIRECTORY
+
+  ${FILE}metafile2eps.exe"
+
+!macroend
+
+!macro FileListPSPrinter COMMAND DIRECTORY
+
+  ${FILE}metafile2eps.inf"
+  ${FILE}metafile2eps.ppd"
+  ${FILE}metafile2eps.dat"
 
 !macroend

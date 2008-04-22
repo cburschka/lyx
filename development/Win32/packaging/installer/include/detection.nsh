@@ -1,248 +1,161 @@
 /*
 
-Detection functions for all components
+detection.nsh
+
+Detection of external component locations
 
 */
 
-#--------------------------------
-#Macros
-
-!macro SearchMiKTeX25
-
-  #Search location of MiKTeX installation using initexmf
-  #Works for version 2.5 and later
-  
-  Push $R0
-  
-  nsExec::ExecToStack "initexmf.exe --report"
-  Pop $R0 ;Return value
-  Pop $R0 ;Output
-  
-  ${WordFind2X} $R0 "BinDir: " "$\r" "+1" $PathLaTeX
-  ${WordFind2X} $R0 "CommonData: " "$\r" "+1" $PathLaTeXLocal # Local root    
-  
-  Pop $R0
-
-!macroend
-
-!macro SearchMiKTeX24 ROOTKEY
-
-  ReadRegStr $PathLaTeX ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
-  
-  ${if} $PathLaTeX != ""
-    !insertmacro callfunc TrimBackslash $PathLaTeX $PathLaTeX ;Just in case it's installed in a root directory
-    StrCpy $PathLaTeX "$PathLaTeX\miktex\bin"
-    #Local root
-    ReadRegStr $PathLaTeXLocal ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
-  ${endif}
-
-!macroend
-
-#--------------------------------
-#Functions
-
-Function SearchAll
-
+Function SearchExternal
   Call SearchLaTeX
   Call SearchGhostscript
   Call SearchImageMagick
-  
-  IfSilent +2
-    Call SearchViewer
-
 FunctionEnd
 
-Function TrimBackslash
+#--------------------------------
+# MiKTeX
 
-  #Trim a trailing backslash of a directory
+Var ReportReturn
+Var CommandLineOutput
+Var LastChar
+Var PathLength
 
-  Exch $R0
-  Push $R1
-  
-  StrCpy $R1 $R0 1 -1
-  
-  ${if} $R1 == "\"
-    StrLen $R1 $R0
-    IntOp $R1 $R1 - 1
-    StrCpy $R0 $R0 $R1
-  ${endif}
-  
-  Pop $R1
-  Exch $R0
-  
-FunctionEnd
+!macro SEARCH_MIKTEX25
 
-Function GetPathPrefix
+  # Search location of MiKTeX installation using initexmf
+  # Works for version 2.5 and later
+  
+  nsExec::ExecToStack "initexmf.exe --report"
+  Pop $ReportReturn
+  Pop $CommandLineOutput
 
-  Push $R0
+  ${WordFind2X} $CommandLineOutput "BinDir: " "$\r" "+1" $PathLaTeX
+  ${WordFind2X} $CommandLineOutput "CommonData: " "$\r" "+1" $PathLaTeXLocal # Local root  
 
-  StrCpy $R0 "$INSTDIR\bin;$INSTDIR\python"
-  
-  ${if} $PathLaTeX != ""
-    StrCpy $R0 "$R0;$PathLaTeX"
-  ${endif}
-  
-  ${if} $PathGhostscript != ""
-    StrCpy $R0 "$R0;$PathGhostscript"
-  ${endif}
-  
-  ${if} $PathImageMagick != ""
-    StrCpy $R0 "$R0;$PathImageMagick"
-  ${endif}
-  
-  Exch $R0
-  
-FunctionEnd
+!macroend
 
-Function SearchViewer
+!macro SEARCH_MIKTEX24 ROOTKEY
 
-  Push $R0
-  Push $R1
-
-  !insertmacro CallFunc DetectViewerByExtension "pdf" $R0
-  !insertmacro CallFunc DetectViewerByExtension "ps" $R1
-
-  StrCpy $PathViewer ""
+  ReadRegStr $PathLaTeX ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
   
-  ${if} $R0 != ""
-    ${if} $R1 != ""
-      StrCpy $PathViewer "associated"
-    ${endif}      
-  ${endif}
-  
-  Pop $R1
-  Pop $R0
-  
-FunctionEnd  
-
-Function DetectViewerByExtension
-
-  #Input on stack: file extension without dot
-
-  Exch $R0
-  Push $R1
-  Push $R2
-  
-  InitPluginsDir
-  
-  StrCpy $R1 "$PLUGINSDIR\ViewerDetect.$R0"
-  FileOpen $R2 $R1 w
-  FileClose $R2
-  
-  StrCpy $R0 ""
-
-  System::Call "shell32::FindExecutableA(t R1, n, t .R0)"
-  
-  Delete $R1
-  
-  Pop $R2
-  Pop $R1
-  Exch $R0
-  
-FunctionEnd
+  ${If} $PathLaTeX != ""
+    StrCpy $LastChar $PathLaTeX 1 -1
+    
+    ${If} $LastChar == "\"
+      # Trim backslash
+      StrLen $PathLength $PathLaTeX
+      IntOp $PathLength $PathLength - 1
+      StrCpy $PathLaTeX $PathLaTeX $PathLength
+    ${EndIf}
+    
+    StrCpy $PathLaTeX "$PathLaTeX\miktex\bin"
+     
+    #Local root
+    ReadRegStr $PathLaTeXLocal ${ROOTKEY} "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
+    
+  ${EndIf}
+   
+!macroend
 
 Function SearchLaTeX
 
-  #Search where MikTeX is installed
+  # Search where MikTeX is installed
   
-  !insertmacro SearchMiKTeX25
+  !insertmacro SEARCH_MIKTEX25
   
-  ${unless} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
-    !insertmacro SearchMiKTeX24 HKCU
-  ${endif}
+  ${IfNot} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
+    !insertmacro SEARCH_MIKTEX24 HKCU
+  ${EndIf}
 
-  ${unless} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
-    !insertmacro SearchMiKTeX24 HKLM
-  ${endif}
+  ${IfNot} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
+    !insertmacro SEARCH_MIKTEX24 HKLM
+  ${EndIf}
 
-  ${unless} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
-    StrCpy $PathLatex ""
-  ${endif}
+  ${IfNot} ${FileExists} "$PathLaTeX\${BIN_LATEX}"
+    StrCpy $PathLateX ""
+  ${EndIf}
 
 FunctionEnd
+
+#--------------------------------
+# Ghostscript
+
+Var Counter
+Var EnumReturn
+Var CompareReturn
+Var AFPLVersion
+Var GPLVersion
 
 Function SearchGhostscript
 
-  #Search where Ghostscript is installed
+  # Search where Ghostscript is installed
   
-  Push $R0 ;Temp
-  Push $R1 ;Counter
-  Push $R2 ;Enum return
-  Push $R3 ;AFPL version
-  Push $R4 ;GPL version
-
-  StrCpy $R3 ""
-  StrCpy $R4 ""
-
-  #Check the latest version of AFPL Ghostscript installed
+  # Find the latest version of AFPL Ghostscript installed
   
-  StrCpy $R1 0
-  
+  StrCpy $Counter 0
+    
   ${do}
   
-    EnumRegKey $R2 HKLM "Software\AFPL Ghostscript" $R1
+    EnumRegKey $EnumReturn HKLM "Software\AFPL Ghostscript" $Counter
     
-    ${if} $R2 != ""
-      ${VersionCompare} $R2 $R3 $R0
-      ${if} $R0 == "1"
-        StrCpy $R3 $R2
-      ${endif}
-      IntOp $R1 $R1 + 1
-    ${endif}
+    ${If} $EnumReturn != ""
+      ${VersionCompare} $EnumReturn $AFPLVersion $CompareReturn
+      ${If} $CompareReturn == "1"
+        StrCpy $AFPLVersion $EnumReturn
+      ${EndIf}
+      IntOp $Counter $Counter + 1
+    ${EndIf}
     
-  ${loopuntil} $R2 == ""
+  ${loopuntil} $EnumReturn == ""
     
-  #The same for GPL Ghostscript
+  # The same for GPL Ghostscript
     
-  StrCpy $R1 0
+  StrCpy $Counter 0
   
   ${do}
 
-    EnumRegKey $R2 HKLM "Software\GPL Ghostscript" $R1
+    EnumRegKey $EnumReturn HKLM "Software\GPL Ghostscript" $Counter
     
-    ${if} $R2 != ""
-      ${VersionCompare} $R2 $R4 $R0
-      ${if} $R0 == "1"
-        StrCpy $R4 $R2
-      ${endif}
-      IntOp $R1 $R1 + 1
-    ${endif}    
+    ${If} $EnumReturn != ""
+      ${VersionCompare} $EnumReturn $GPLVersion $CompareReturn
+      ${If} $CompareReturn == "1"
+        StrCpy $GPLVersion $EnumReturn
+      ${EndIf}
+      IntOp $Counter $Counter + 1
+    ${EndIf}
   
-  ${loopuntil} $R2 == ""  
+  ${loopuntil} $EnumReturn == ""  
   
-  #Take the latest one
-  ${VersionCompare} $R3 $R4 $R0
+  # Take the latest one
+  ${VersionCompare} $AFPLVersion $GPLVersion $CompareReturn
 
-  ${if} $R0 == "1"
-    #AFPL is newer
+  ${If} $CompareReturn = 1
+    # AFPL is newer
     ReadRegStr $PathGhostscript HKLM "Software\AFPL Ghostscript\$R3" "GS_DLL"
-  ${else}
-    #GPL is newer or equal
+  ${Else}
+    # GPL is newer or equal
     ReadRegStr $PathGhostscript HKLM "Software\GPL Ghostscript\$R4" "GS_DLL"
-  ${endif}
+  ${EndIf}
   
-  #Trim the DLL filename to get the path
+  # Trim the DLL filename to get the path
   ${GetParent} $PathGhostscript $PathGhostscript
   
-  ${unless} ${FileExists} "$PathGhostscript\${BIN_GHOSTSCRIPT}"
+  ${IfNot} ${FileExists} "$PathGhostscript\${BIN_GHOSTSCRIPT}"
     StrCpy $PathGhostscript ""  
-  ${endif}
-    
-  Pop $R4
-  Pop $R3
-  Pop $R2
-  Pop $R1
-  Pop $R0
+  ${EndIf}
   
 FunctionEnd
 
+#--------------------------------
+# ImageMagick
+
 Function SearchImageMagick
 
-  #Search where ImageMagick is installed
+  # Search where ImageMagick is installed
   ReadRegStr $PathImageMagick HKLM "Software\ImageMagick\Current" "BinPath"
   
-  ${unless} ${FileExists} "$PathImageMagick\${BIN_IMAGEMAGICK}"
+  ${IfNot} ${FileExists} "$PathImageMagick\${BIN_IMAGEMAGICK}"
     StrCpy $PathImageMagick ""  
-  ${endif}
+  ${EndIf}
 
 FunctionEnd
