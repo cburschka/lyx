@@ -114,10 +114,10 @@ public:
 	/// ways that make removal hard.
 	docstring getFirstNonOptParam() const;
 	/// get parameter \p name
-	/// LyX will assert if you attempt to do so.
+	/// LyX will assert if name is not a valid parameter.
 	docstring const & operator[](std::string const & name) const;
 	/// set parameter \p name
-	/// LyX will assert if you attempt to do so.
+	/// LyX will assert if name is not a valid parameter.
 	docstring & operator[](std::string const & name);
 	///
 	bool preview() const { return preview_; }
