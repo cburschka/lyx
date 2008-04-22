@@ -91,6 +91,7 @@ SetCompressor /SOLID lzma
 !define SIZE_LATEX 225000
 !define SIZE_IMAGEMAGICK 18700
 !define SIZE_GHOSTSCRIPT 31500
+
 #--------------------------------
 # Locations of setup files for components (for bundled setup)
 
@@ -135,7 +136,7 @@ SetCompressor /SOLID lzma
   !endif
   !define SETUP_EXE "${ExeFile}"
 !else
-  !ifndef SETUPTYPE_BUNDLE
+  !ifndef BundleExeFile
     !define /date BundleExeFile "LyX-16svn-%Y%m%d-Installer-Bundle.exe"
   !endif
   !define SETUP_EXE "${BundleExeFile}"  
