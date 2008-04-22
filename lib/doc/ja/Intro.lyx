@@ -1,0 +1,3996 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 327
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={Introduction to LyX},pdfsubject={LyX-documentation Intro},
+  pdfkeywords={LyX, documentation}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\end_preamble
+\language japanese
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\extra_embedded_files ""
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXはじめの一歩
+\end_layout
+
+\begin_layout Author
+LyXプロジェクトチーム
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+コメントや間違いの修正がある場合には、LyX文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい。この文書の翻訳は、当初人見光太
+郎氏が行った貢献に基づいています。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+LyXの哲学
+\end_layout
+
+\begin_layout Subsection
+LyXとは
+\end_layout
+
+\begin_layout Standard
+LyXは文書作成システムであり、特に、数学や相互参照・参考文献・索引などを含む、複雑な技術文書や科学論文を作成するのに適しています。自動化された節分けやページ分
+け、スペルチェックなど、よく行われる処理能力を要求する文書の作成は、どのような長さのものであれ、たいへん得意とします。あなたのお母さんに手紙を書くのにも使うこと
+ができることは確かですが、そのような目的には、おそらくもっと単純なプログラムを使うこともできるでしょう。LyXは、横断幕やチラシ・広告などを作成する目的には、あ
+きらかに最適なツールではありませんが（理由は後で説明します）、これらのものも、少し工夫すれば作ることはできます。LyXを使うに適した例を挙げると、メモ・書簡・博
+士論文・講義ノート・セミナーノート・学会会誌・ソフトウエアの説明書・書籍・査読つき科学雑誌の論文・演劇や映画の台本・企画書・プレゼンテーションなどがあります。
+\end_layout
+
+\begin_layout Standard
+LyXは、コンピュータで文書を書くにあたって、古色蒼然たる「タイプライタ方式」の伝統を打ち破った、マークアップ言語パラダイムに基づいた近代的アプローチを採用した
+プログラムです。LyXは、組版に長ける必要なしに、最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています。組版作業のほとんどは、著者では
+なくコンピュータによって行われるので、LyXを使えば著者は執筆に専念できるのです。
+\end_layout
+
+\begin_layout Standard
+LyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を使う上での最初の戸惑いは、おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます。かつて、文書を作成するのに使うことのできるものはタイプラ
+イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは---これは単に「＿」を文字の上に
+打ち直すことに他ならなかったわけですが---文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設
+定することを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予
+測することが要求されたものでした。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+言い換えれば、われわれはみな、どの文字がどこに配置されるかを気にするように訓練されていました。そのため、ほとんどすべてのワードプロセッサは、この発想を引き継いで
+います。これらは、依然として空白を追加するのにタブストップを使いますし、ある要素がページ内のどこに現れるか、依然として厳密に考慮する必要があります。文章を強調し
+ようと思えば、タイプライター時代にホイールを変えていたように、フォントを変えねばなりません。これが
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+WYSIWYG
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+、すなわち「
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+What You See Is What You Get」
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+なワードプロセッサの根底に流れる哲学です。不幸にして、このパラダイムは、しばしば、「
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+What You See Is All You Get
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+（画面で見た以上のものは手に入らない）」という結果に終わります。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ここが
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、LyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が通常のワードプロセッサと異なる点です。あなたはどの文字がどこに配置されるかを気にする必要はありません。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+あなたがLyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+に
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+何をしたいか
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を知らせさえすれば
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、後はLyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+スタイル
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+公正を期するために付け加えれば、もっとも人気のあるオフィススイートの最新版では、同様のマークアップ法を使った、ある種のスタイルシートを使うことができます。しかし
+ながら、われわれの経験によれば、現実にはほとんど使われていません。
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+と呼ばれるルールに基づいて処理してくれます。簡単な例で見てみましょう。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+あなたはレポートを書いているものとしましょう。レポートを開始するにあたって、「はじめに」という節が欲しいですね。ですから、お使いのワープロでフォント寸法を変更す
+るためのメニューを探し出して、新しいフォント寸法を決めます。それから、ボールド体（太字）を有効にします。それからようやく「1.
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset Space ~
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+はじめに」と入力します。当然ながら、あとになってこの節を文書中の他の箇所に持っていくことに決めたり、前に新しい節を挿入したりすると、この節とあとに続くすべての節
+の節番号を直さなくてはならなくなりますし、さらに目次中の節番号も修正しなくてはならなくなります。
+\end_layout
+
+\begin_layout Standard
+一方、LyXでは、ボタンバーの一番左のプルダウンメニューから
+\family sans
+節
+\family default
+を選んで、「はじめに」と入力するだけです。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に---すべての箇所で---振り直されます。さらに、この節に対する参照が正しく（内部参
+照タグを挿入することによって）入れられていれば
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、ファイル内すべての参照は、LyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が自動更新してくれるので、あなたは決して節番号に触れる必要がありません。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+次に、一貫性の問題を見てみましょう。5日後、あなたはレポートをもういちど開いて、第4節を書きはじめます。しかしながら、あなたは18ポイントのボールド体を使うべき
+ことを忘れてしまって16ポイントを使ってしまったので、第4節の節見出しは、第1節で使ったのとは違うフォントで組版されることになってしまいます。このような問題は、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LyX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+では起こりようもありません。何がどのフォント寸法で組まれるべきかというような退屈なことの記録係は、すべてコンピューターがになうのであって、あなたではありません。
+なにしろ、これこそがコンピュータの得意な仕事なのですから。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+もうひとつの例として、箇条書きを作りたいものとしましょう。他のワープロでは、箇条書きを作るには、タブストップと改行を多用しなくてはなりません。各項目のラベルをど
+こに配置するか予測しなくてはなりませんし、そのラベルにはどのラベルを採用するか、各項目間には空行をいくつ入れるか等々といったことも計算する必要があります。LyX
+においては、考慮すべきことは2つしかありません。この箇条書きがどのような種類のものなのかということと、箇条書きに何を入れたいのかということ、それだけなのです。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+つまり、LyXの根底に流れる基本的な考え方は、「
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+何をしたいか
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を指定するのであって、それを
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+どのように実現するか
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ではない」ということです。「
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+What You See Is What You Get (WYSIWYG)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」の代わりに、LyXのモデルは、「
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+What You See Is What You
+\color none
+ 
+\emph on
+\color inherit
+Mean
+\emph default
+\color none
+ 
+\color inherit
+(WYSIWYM)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」を採用しています。これは、文書を執筆する手順を、大幅に簡素化する強力なアイデアです。またこれが、LyXがポスターや広告を作成するのに向いた道具ではない理由でも
+あります。この場合には、段落や節といった機能単位が存在しないがゆえに、各要素をどこに配置するかを、むしろ
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+正確に指定したい
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+からです。これは、LyXがなにか洗練された機能を備えていないということを意味するものではありません。これは単に、LyXはそのような仕事を行うのにはふさわしいツー
+ルではないというだけです。------ 釘を打つのにネジ回しは使わないではありませんか。
+\end_layout
+
+\begin_layout Subsection
+LyX
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\noun off
+\color none
+と他のワープロとの違い
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+以下は、LyXにないものの一覧です。
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+文書ルーラー
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+タブストップ
+\end_layout
+
+\begin_layout Itemize
+（
+\family sans
+Enter
+\family default
+や
+\family sans
+スペース
+\family default
+を2回以上押すことによる）余分な空白
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+各要素のページ上の位置を示すルーラーやタブストップは、LyXでは無用の長物です。各要素がページ上のどこへ行くかはプログラムが気にすることであって、あなたではあり
+ません。余分な空白についても同様です。LyXが、文脈に応じて必要ならば空白を追加します。空白行を2つ続けて入れられないということは、最初は当惑するでしょうが、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+WYSIWYM
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+式の思考法に慣れるにしたがって、当然のこととなってくるでありましょう。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+以下は、LyXに存在するものの、あなたの予想どおりとは限らない使われ方をするものです。
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+字下げ制御
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+改頁
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+行間（つまりシングルスペースやダブルスペース等）
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+垂直方向や水平方向の空白
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+フォントとフォント寸法
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+タイプフェイス （ボールド・イタリック・下線等）
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+これらはLyXに存在はしますが、必要とされることは一般的にほとんどないでしょう。これらは、LyXがあなたが何をしているかに応じて調整するからです。文書の各部分は
+、自動的にそれぞれのタイプフェイスとフォント寸法に設定されます。段落の字下げは文脈に依存します。すなわち、別種の段落はそれぞれ異なった字下げ法がなされます。改頁
+もやはり自動的に行われます。一般的に、行間・単語間・段落間の距離は可変的であり、LyXによって調整されます
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+これらを、文書全体や文書中の特定の部分について調節する方法があります（いくつかについてだけは
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の知識が必要ですが）。詳しくは
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+や取扱説明書
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+拡張機能篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を参照してください。
+\end_layout
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+最後にLyX（および
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX）
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が、他のワープロをしのぐと思われる分野が幾つかあります。
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ハイフネーション
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+すべての型の箇条書き
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+数式
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+表
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+内部参照
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+たしかに、今日の多くのワープロは、数学記号・表・ハイフネーションを扱えますし、スタイル定義や
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+WYSIWYM
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の概念の方向に接近してきてはいます。しかしながら、他のワープロでは、最近になってこれらの機能が可能となったばかりです。これに対して、LyXは
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+システムの上に建てられていて、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+そのLaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、20年以上前から
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+いまに至るまでずっと機能しているのです
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+。
+\end_layout
+
+\begin_layout Subsection
+LaTeX
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\noun off
+\color none
+とは何か
+\end_layout
+
+\begin_layout Standard
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、1985年に
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Leslie Lamport
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が設計した文書作成システムであり
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+本節の内容の出典は
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、
+\emph on
+ユーザーの手引き
+\emph default
+の参考文献に挙げてあるHelmut KapKa
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+・
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Patrick Daly
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+著『
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+A Guide to LaTeX2e
+\emph default
+』
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+です。
+\end_layout
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、Donald Knuth
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が1984年に作成した
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+TeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+と呼ばれる組版用言語の上に作られています。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+TeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、ASCII
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ファイル上にスクリプトとして書かれた組版コマンド群を読み込み
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+実行します。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+印刷業界の多くの「小技」は、Knuthによってコンピュータアルゴリズムにモデル化され、TeXの中に組み込まれたために、すばらしい印刷品質を誇るのです。TeXから
+直接得ることができるのは、ポータブル・ドキュメント・フォーマットこと
+\emph on
+pdf
+\emph default
+や、いわゆる「デバイス・インディペンダント」形式ファイルすなわち
+\emph on
+dvi
+\emph default
+があります。dvi形式は、プレビューのために頻繁に用いられ、あとでPostScriptなどの他の形式に変換することができるようになっています。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+TeXは、組版のエンジンであるばかりでなく、ユーザーがマクロを定義することをも容認します。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+TeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を使う人々のほとんどは、実は
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、Knuth
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が組版の細部の大半を隠すために作った、マクロパッケージを使っているのです。ここで
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Leslie Lamport
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が登場します。彼は、節・表・数式などを統一的かつ整合的な方法で組版できるコマンド群を持つ、写植工向けよりはユーザーにこそやさしいマクロパッケージを作ろうとしまし
+た。こうして
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+が生まれたのです。
+\end_layout
+
+\begin_layout Standard
+このとき、LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の成長と発展に平行して、他の人々もスライドや数学学術誌向けの論文などを作るために独自の
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+TeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+マクロパッケージを創り出していきました。ある人たちは
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、そのために生のTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+をそのまま使いましたし、一方で
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を修正し始めた人たちもいました。この混乱した状況をまとめるために
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、LaTeX-nician
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+のチームが、1980年代の後半に、現
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+バージョンのLaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+である
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX2e
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を開発しはじめました。この
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の新バージョンは、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+TeXのマクロ作成
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+コマンドへのより使いやすいインターフェイスを提供するコマンドや、新しいフォントを使うのを助けるコマンドを備えています。実は、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+はそれ自身が、きわめて拡張性の高い言語なのです！これまで、世界中のユーザーが
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+標準のアドオンに飽き足らずに、独自のアドオンを開発してきています。
+\end_layout
+
+\begin_layout Standard
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を拡張するには2つの方法があります。ひとつはクラスであり、もうひとつはスタイルです。
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+クラス
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、本や論文などの新たな文書の型を定義する
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+La
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+T
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+eX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+マクロ群です。スライドのためのクラスもありますし、物理や数学の学術誌のためのクラスもあります。さらに、多くの大学が、自校の博士論文様式のためのクラスまで用意して
+いるのです！
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+スタイル
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+はクラスと違って新たな文書の型を定義しませんが、どの文書からでも使えるような
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+新たな
+\emph on
+振る舞い
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の型を定義します。例えば、LyXではページ余白や行間の距離を変えるのに、それぞれ別の
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+スタイルファイルを使っています。実に様々な種類のスタイルファイルがあります。ラベルや封書印刷用のもの、字下げの振る舞いを変えるもの、画像を操作するもの、装飾ペー
+ジヘッダをデザインするもの、参考文献の体裁を変えるもの、脚注の場所や体裁を変えるもの、表や図や箇条書きの振る舞いを変えるもの、等々。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+今までのことをまとめてみましょう:
+\end_layout
+
+\begin_layout Description
+TeX: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+マクロ機能を備えた組版言語
+\end_layout
+
+\begin_layout Description
+LaTeX: TeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+上に作られたマクロパッケージ
+\end_layout
+
+\begin_layout Description
+クラス:
+\size normal
+\noun off
+\color none
+ 
+\size default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を使った、文書型の定義
+\end_layout
+
+\begin_layout Description
+スタイル:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の既定の振る舞いを何らかの形で変更するもの
+\end_layout
+
+\begin_layout Description
+LyX:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 組版に
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を用いた
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ビジュアルな
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+WYSIWYM
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ワードプロセッサ
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+本節では、LyXと他のワードプロセッサの違いの説明を試みました。簡単にいえば、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+がこの違いの源になっています。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LaTeXをバックエンドとして用いることによって、
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyXは、あなたが
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+（内容として）
+\emph on
+何を
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+書くかに専念できるように手助けします。そして、コンピュータにそれが
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+どのような
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+見栄えになるかを処理させるのです。
+\end_layout
+
+\begin_layout Section
+各取扱説明書の案内
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ユーザーの抱きうる質問を網羅し、すべてのLyXの機能を説明するために、取扱説明書はいくつかの独立したファイルに分けられています。各ファイルは以下に述べるように、
+それぞれの目的を持っています。しかしながら、本章にはいつかあなたを助けることになる、役に立つ情報とコメントが書いてありますので、これらのファイルのいずれかを読み
+始める前に、まずこの章を通してお読み下さい。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyXの開発は、望むらくは留まることがないと思われるので、我々の更新の努力にも関わらず、取扱説明書のうちの一部は不完全であったり、内容が若干古くなっていたりする
+かもしれません。LyXの他の部分と同様に、この取扱説明書も、他に「本当の仕事」や、家族や、洗わなければならない皿、手のかかる猫なんかを持つボランティアのグループ
+によって作られているのです。もし手を差し伸べていただけるならば、この文書の残りと、第
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:貢献"
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+節をぜひ読んで下さい。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+それともうひとつお願いがあります ------ もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私
+たちにお知らせ下さい。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+現在の文書管理者には、
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+宛てにメールを送ることで連絡をとることができます。また、もし取扱説明書にははっきりと答えられていない疑問があり、すぐに助けが必要な場合には、活発なユーザー向けメ
+ーリングリスト
+\family typewriter
+lyx-users@lists.lyx.org
+\family default
+があります。
+\end_layout
+
+\begin_layout Subsection
+取扱説明書の書式
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+これを読まれている方の中には、取扱説明書を印刷した方もいらっしゃるでしょうし、LyXの中で読んでいる方もいらっしゃるかもしれません。LyXファイルと印刷されたも
+のの間にはいくらか違いがあります。まずタイトルは、画面では単に文書の先頭に表示されるだけなのに対し、印刷版では場合によっては独立したページに表示されます。また、
+画面では脚注や目次も完全には表示されません。脚注を開くには
+\begin_inset Graphics
+	filename clipart/footnoteQt4.png
+	embed ""
+	scale 75
+
+\end_inset
+
+と表示されている部分をマウスの左ボタンでクリックして下さい。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+目次を開くには灰色の箱をクリックするか、
+\family sans
+移動
+\family default
+メニューをクリックすると、中身が自動的に表示されます。
+\end_layout
+
+\begin_layout Standard
+印刷された取扱説明書では、章番号・節番号・小節番号などのすべての相互参照は、実際の番号として表示されます。しかしながら画面上で見ている場合には、すべての相互参照
+は、次のような明るい灰色の箱で表されます
+\begin_inset Graphics
+	filename clipart/referenceQt4.png
+	embed ""
+	scale 75
+
+\end_inset
+
+。この箱を左のマウスボタンでクリックすると、文書内すべての相互参照の一覧があるダイアログウインドウがあらわれます。この
+\emph on
+LyXはじめの一歩
+\emph default
+には、二つだけ相互参照が含まれていて、そのうち最初のものには「sec:貢献」という名前が付いています。その箱を右クリックするか、開いたダイアログの中の
+\family sans
+ラベルに移動
+\family default
+いうボタンをクリックすると、参照されている節に飛ぶことができます。移動する前の場所に戻るのも、同じように簡単です。
+\family sans
+戻る
+\family default
+ボタンをクリックすれば、元の場所に戻ることができます。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+さて、このファイルの印刷版とオンライン版との差異を明らかにしましたので、この文書の書式の説明に移ることができます。以後、ときどき以下のような異なったフォントを見
+かけることになるでしょう。
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+強調体（emphasis）
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、一般的な強調・一般的な論点・本の題名・他の取扱説明書の節見出し・著者からの注意に使われます。
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+タイプライタ体（Typewriter）
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、プログラム名・ファイル名・LyXのコード・関数名に使われます。
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+サンセリフ体（Sans Serif）
+\family default
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、メニュー名・ボタン名・ダイアログボックス名・キーボードのキーの名称に使われます。
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+名詞体（Noun Style）
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、人名に使われます。
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ボールド体（Bold）
+\series default
+は、LaTeXコードを表すのに使われます。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+メニュー・ショートカットキーとキー割付けに関しては
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+、
+\emph default
+『
+\emph on
+取扱説明書拡張機能篇
+\emph default
+』（
+\family typewriter
+Extended.lyx
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ファイル）の
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+Key Bindings
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の節に詳しい説明があります。キーを参照する場合には次のように短縮して表示します。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+C-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+コントロール-
+\family default
+キーを表します。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+S-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+シフト-
+\family default
+キーを表します。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+M-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Meta-
+\family default
+キーを表します。これはいくつかのキーボードでは
+\family sans
+Alt-
+\family default
+キーです
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+F1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」‥‥
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「
+\family sans
+F12
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」はファンクションキーです。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+Esc
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」はエスケープキーです。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+←
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+↑
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+→
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」・
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「
+\family sans
+↓
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は自明でしょう。
+\end_layout
+
+\begin_layout Itemize
+「
+\family sans
+Insert
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+Delete
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+Home
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+End
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+PageUp
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+PageDown
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は、大多数の
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+PC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+キーボードの場合、矢印キーの上にある6つのキーです。キーボードによっては
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、「
+\family sans
+PageUp
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+PageDown
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」は、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「
+\family sans
+Prior
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+・「
+\family sans
+Next
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」と呼ばれていることもあります。
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+リターン
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+と
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+エンター
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は同じキーを指します。
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+リターン
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+キーを
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「Return
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」と表示しているキーボードもあれば、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「Enter
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」と表示しているものもあり、はたまた両方のキーを持つキーボードもあります。LyXはそれらをすべて同じキーとして扱うので、われわれも
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+リターン
+\family default
+と
+\family sans
+エンター
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を区別せずに使います。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+また、時折
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「（
+\emph on
+拡張機能篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を参照）」のような表示に出会うと思いますが、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+『
+\emph on
+取扱説明書拡張機能篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+』内に関数の既定のキー割付けを列挙しておきましたので、こちらもご参照ください。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LyXコミュニティでよく使われているキー割当てには、2つのものがあります。ひとつは「CUA」スタイルで、これは既定のキー割当てになっていて、PCの世界から来た人
+にとって使いやすいものです。もうひとつは「emacs」スタイルで、これはUnixシステムで「育ち」、Emacsエディタを使っている人たちの間で人気があります。特
+に断らない限り、取扱説明書の中でのキー割当ては、既定のCUAマップを用いることにします。Emacsが好きな人であれば、自分で文書を読んでキー割当てを見つけること
+くらいはお茶の子さいさいでしょう。
+\end_layout
+
+\begin_layout Subsection
+取扱説明書で使われる単位
+\end_layout
+
+\begin_layout Standard
+この文書で用いられる単位の理解のために、表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cap:画像用単位"
+
+\end_inset
+
+に、LyXで使うことのできる単位をまとめておきます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "cap:画像用単位"
+
+\end_inset
+
+単位
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+単位
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+名称／摘要
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ミリメートル
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+センチメートル
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+インチ
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ポイント (72.27
+\begin_inset Formula $\,$
+\end_inset
+
+pt = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+パイカ (1
+\begin_inset Formula $\,$
+\end_inset
+
+pc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+スケールポイント (65536
+\begin_inset Formula $\,$
+\end_inset
+
+sp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ビッグポイント (72
+\begin_inset Formula $\,$
+\end_inset
+
+bp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ディドー (72
+\begin_inset Formula $\,$
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+シセロ (1
+\begin_inset Formula $\,$
+\end_inset
+
+cc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+元の画像幅の%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+テキスト幅の%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+組段幅の%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+用紙幅の%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+行幅の%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+テキスト高さの%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+用紙高さの%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+現在のフォントの文字「x」の高さ
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+現在のフォントの文字「M」の幅
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+数式単位 (1
+\begin_inset Formula $\,$
+\end_inset
+
+mu = 1/18
+\begin_inset Formula $\,$
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+取扱説明書
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+以下は、取扱説明書の各ファイルの内容の一覧です。
+\end_layout
+
+\begin_layout Description
+はじめの一歩 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+このファイルです。
+\end_layout
+
+\begin_layout Description
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ もしあなたがLyXを使うのが初めてで、LaTeXを使ったことがないのであれば、これから始めてください。LaTeXを使ったことのある方は、
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の「LaTeXユーザーのためのLyX」の節から読み始めてください（他の節も読んだっていいんですよ）。
+\end_layout
+
+\begin_layout Description
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 中心となる取扱説明書です。この文書でLyXの機能と基本的な操作の
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+ほとんど
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を説明しています。この取扱説明書は、
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+をすでに読んでいることを前提にして書かれています。
+\end_layout
+
+\begin_layout Description
+埋込オブジェクト篇 
+\emph on
+ユーザーの手引き
+\emph default
+の拡張です。表・図・フロート・ 注釈・ボックスなどの使い方を詳細に述べています。これには、LaTeX熟練者向けのテクニックもたくさん含まれています。
+\end_layout
+
+\begin_layout Description
+拡張機能篇 
+\emph on
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の拡張です。生のLaTeXコマンド・追加的なレイアウト・特殊な編集機能などの使い方を述べています。
+\end_layout
+
+\begin_layout Description
+カスタマイズ篇 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、キー割付け・国際化・設定ファイルの説明などを含みます。
+\end_layout
+
+\begin_layout Description
+LaTeXの設定 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyXは、導入時にお使いのシステムを精査します。このファイルには、その際LyXが取得した情報が記録してあります。もしお使いになりたい機能が使用できない場合には、
+このファイルの内容を調べてみて下さい。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+これらのファイルは、必要な時には他のファイルを参照しています。例えば、
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、LyXの導入とカスタマイズについて
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+一定の
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+情報を含んではいますが、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+さらに詳しい情報については
+\emph on
+カスタマイズ篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を参照するように読者に指示しています。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+重要な点をもう一度言わせてください。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+今まで
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+L
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+yX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を使ったことがないなら、ただちに
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を読んで下さい。
+\family default
+\series default
+\shape default
+\emph default
+\bar default
+\noun default
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+さもないと、あなたは不必要な苛立ちを抱え込むことになるでしょう。LyXは、ワードプロセッサとして必要なことは全てできますが、他のワードプロセッサとは違ったアプロ
+ーチを採用しているからです。
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:貢献"
+
+\end_inset
+
+LyXプロジェクトへの貢献
+\end_layout
+
+\begin_layout Subsection
+LyXプロジェクトへの貢献
+\end_layout
+
+\begin_layout Standard
+LyXは、ほとんどがC++で書かれています（LaTeXインポート部には、Pythonを使っています）。LyXは大きなプロジェクトですから、バグからは逃れることは
+できませんし、ソースコードも改良していく必要があります。
+\end_layout
+
+\begin_layout Subsubsection
+バグの報告
+\end_layout
+
+\begin_layout Standard
+LyXを使っていると、バグだと思われる振る舞いを見つけることがあるかもしれません。ほとんどないことですが、クラッシュを経験するかもしれません。また、ユーザーイン
+ターフェイスに問題がある場合も、LyXチームは大きなバグだと考えています。特に、混乱しやすかったりわかりにくいLyXのインターフェイスを指摘していただけると助か
+ります。
+\end_layout
+
+\begin_layout Standard
+LyXにはバグ追跡システムがあり、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
+
+\end_inset
+
+でアクセスすることができます。バグを報告する前にはつねに、このバグ追跡システムを利用して、報告済みのバグでないかどうかを確かめてください。報告済みのバグにコメン
+トを加えたり、新しいバグを報告するには、バグ追跡システムを使うか、あるいは開発者用のメーリングリスト
+\family typewriter
+lyx-devel@lists.lyx.org
+\family default
+にメールを送ってください。このメーリングリストのアーカイブには、LyXのメインウェブサイト
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+からリンクが張られています。
+\end_layout
+
+\begin_layout Standard
+バグ報告を役立つものにするには、少なくとも問題のあったLyXのバージョンが明記されていなくてはなりません。また、正確で詳しい説明があることが望まれます。開発者が
+、どこにバグがあるのかを特定するのに時間を取られれば取られるほど、他に改良を加える時間がなくなります。LyXを走らせているシステムと、システムのバージョンを明記
+してください。システムに導入されているライブラリのバージョンと、関係がある場合には、LyXが使用している外部プログラムのバージョンも書いてください。バグが、コン
+パイルやその前のコンフィギュレーションの問題ならば、
+\family typewriter
+config.log
+\family default
+ファイルを添付して、どのコンパイラを使ったかも言及してください。
+\end_layout
+
+\begin_layout Subsubsection
+バグを直す、新しい機能を導入する
+\end_layout
+
+\begin_layout Standard
+LyXを改良するためにLyXのソースに手を加えた場合には、変更したところを（unifiedフォーマットの）diffファイルとして、上でした開発者用のメーリングリ
+ストに送ってください。そのときには、チェンジログとあなたのパッチの説明もいっしょに送ってください。
+\end_layout
+
+\begin_layout Subsection
+文書化に貢献する
+\end_layout
+
+\begin_layout Standard
+LyXの取扱説明書は広範にわたっています。しかし、LyXはつねに開発が続けられていて、新しいリリースごとに新しい機能が増えています。改善を必要とする取扱説明書を
+見つけることもあるでしょう。本節では、取扱説明書に間違いを見つけた場合や、取扱説明書を改善する提案がある場合にはどうしたらいいのかを説明します。
+\end_layout
+
+\begin_layout Subsubsection
+取扱説明書の誤りを報告するには
+\end_layout
+
+\begin_layout Standard
+取扱説明書に問題を見つけたら、メーリングリスト
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+にメールを送ってください。文書化チームが必要な修正を施すでしょう。
+\end_layout
+
+\begin_layout Subsubsection
+文書化チームへの参加
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyX文書化プロジェクトは、他のLyXプロジェクトと同様に常に手助けを必要としています。もし文書化プロジェクトへの貢献に興味があるなら、次のことを行って下さい。
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+最新のLyXのソースコードを
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Newline newline
+\end_inset
+
+から入手して下さい。そのディレクトリの中に
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+DocStyle.lyx
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+というファイルがあります。これを読んで下さい。これは文書化のためのスタイルファイルです。
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+次に
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+と
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を読んで下さい。
+\begin_inset Newline newline
+\end_inset
+
+これをしていただくのは、全体像を掴んでもらうためです。
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+と
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+ユーザーの手引き
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+は、通常、全ての取扱説明書の中で一番最新のものになっています。これを見ると、我々が取扱説明書をどのように読めるように、またどのように見えるようにしたいかをおわか
+りいただけるでしょう。
+\end_layout
+
+\begin_layout Enumerate
+変更を加えたい点について議論したり、フィードバックを受けたりするには、
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+lyx-docs@lists.lyx.org
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+でチームに接触してください。
+\end_layout
+
+\begin_layout Standard
+あなたが提案したいと思う変更点は、文書の明瞭さの改善から、取扱説明書の大規模な再構成までありうるでしょう。どのような改善も歓迎です。
+\end_layout
+
+\end_body
+\end_document
