@@ -2417,6 +2417,12 @@ lib_doc_it_files = Split('''
 ''')
 
 
+lib_doc_it_clipart_files = Split('''
+    it_footnoteQt4.png
+    it_referenceQt4.png
+''')
+
+
 lib_doc_nb_files = Split('''
     Intro.lyx
 ''')
