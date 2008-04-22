@@ -778,52 +778,53 @@ void latexParagraphs(Buffer const & buf,
 	// if only_body
 	while (par != endpar) {
 		lastpar = par;
-			Layout const & layout = par->forceEmptyLayout() ?
-					tclass.emptyLayout() :
-					par->layout();
+		Layout const & layout = par->forceEmptyLayout() ?
+				tclass.emptyLayout() :
+				par->layout();
 
-			if (layout.intitle) {
-				if (already_title) {
-					lyxerr << "Error in latexParagraphs: You"
-						" should not mix title layouts"
-						" with normal ones." << endl;
-				} else if (!was_title) {
-					was_title = true;
-					if (tclass.titletype() == TITLE_ENVIRONMENT) {
-						os << "\\begin{"
-						    << from_ascii(tclass.titlename())
-						    << "}\n";
-						texrow.newline();
-					}
-				}
-			} else if (was_title && !already_title) {
+		if (layout.intitle) {
+			if (already_title) {
+				lyxerr << "Error in latexParagraphs: You"
+					" should not mix title layouts"
+					" with normal ones." << endl;
+			} else if (!was_title) {
+				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
-					os << "\\end{" << from_ascii(tclass.titlename())
-					    << "}\n";
+					os << "\\begin{"
+							<< from_ascii(tclass.titlename())
+							<< "}\n";
+					texrow.newline();
 				}
-				else {
-					os << "\\" << from_ascii(tclass.titlename())
-					    << "\n";
-				}
-				texrow.newline();
-				already_title = true;
-				was_title = false;
 			}
+		} else if (was_title && !already_title) {
+			if (tclass.titletype() == TITLE_ENVIRONMENT) {
+				os << "\\end{" << from_ascii(tclass.titlename())
+						<< "}\n";
+			}
+			else {
+				os << "\\" << from_ascii(tclass.titlename())
+						<< "\n";
+			}
+			texrow.newline();
+			already_title = true;
+			was_title = false;
+		}
 
-			if (layout.is_environment) {
-				par = TeXOnePar(buf, text, par, os, texrow,
-						runparams, everypar);
-			} else if (layout.isEnvironment() ||
-				   !par->params().leftIndent().zero()) {
-				par = TeXEnvironment(buf, text, par, os,
-						     texrow, runparams);
-			} else {
-				par = TeXOnePar(buf, text, par, os, texrow,
-						runparams, everypar);
+		if (layout.is_environment) {
+			par = TeXOnePar(buf, text, par, os, texrow,
+					runparams, everypar);
+		} else if (layout.isEnvironment() ||
+					!par->params().leftIndent().zero()) {
+			par = TeXEnvironment(buf, text, par, os,
+								texrow, runparams);
+		} else {
+			par = TeXOnePar(buf, text, par, os, texrow,
+					runparams, everypar);
 		}
 		if (distance(lastpar, par) >= distance(lastpar, endpar))
 			break;
 	}
+
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
@@ -836,6 +837,7 @@ void latexParagraphs(Buffer const & buf,
 				}
 		texrow.newline();
 	}
+
 	// if "auto end" is switched off, explicitely close the language at the end
 	// but only if the last par is in a babel language
 	if (maintext && !lyxrc.language_auto_end && !bparams.language->babel().empty() &&
@@ -846,6 +848,7 @@ void latexParagraphs(Buffer const & buf,
 			<< '\n';
 		texrow.newline();
 	}
+
 	// If the last paragraph is an environment, we'll have to close
 	// CJK at the very end to do proper nesting.
 	if (maintext && open_encoding_ == CJK) {
@@ -853,6 +856,7 @@ void latexParagraphs(Buffer const & buf,
 		texrow.newline();
 		open_encoding_ = none;
 	}
+
 	// reset inherited encoding
 	if (cjk_inherited_) {
 		open_encoding_ = CJK;
