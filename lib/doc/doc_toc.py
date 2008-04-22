@@ -47,6 +47,7 @@ info = { 'cs' : ('czech', 'german', u"Obsah dokumentace LyXu"),
          'de' : ('german', 'german', u"Inhaltsverzeichnis LyX Dokumentation"),
          'es' : ('spanish', 'spanish', u"Índice general LyX documentation"),
          'fr' : ('french', 'french', u"Plan de la documentation LyX"),
+	 'ja' : ('japanese', 'japanese', u"LyX取扱説明書目次"),
          'ru' : ('russian', 'english', u"LyX Documentation Table of Contents"),
          'sl' : ('slovene', 'german', u"Kazalo dokumentacije LyXa"),
          'en' : ('english', 'english', u"LyX Documentation Table of Contents")}
