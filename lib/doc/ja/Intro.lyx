@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 327
+\lyxformat 328
 \begin_document
 \begin_header
 \textclass article
@@ -84,7 +84,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -2038,7 +2037,6 @@ lyx-users@lists.lyx.org
 画面では脚注や目次も完全には表示されません。脚注を開くには
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
-	embed ""
 	scale 75
 
 \end_inset
@@ -2064,7 +2062,6 @@ lyx-users@lists.lyx.org
 は、次のような明るい灰色の箱で表されます
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
-	embed ""
 	scale 75
 
 \end_inset
