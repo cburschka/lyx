@@ -45,6 +45,7 @@
 #include <QStringList>
 
 #ifdef Q_WS_WIN
+#include <QVector>
 #include <QWindowsMime>
 #if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
 #include <wtypes.h>
