@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-04-21 09:09+0200\n"
+"POT-Creation-Date: 2008-04-22 13:35+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "&Dami"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:99
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:102
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -85,12 +85,12 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:814
 #: src/Buffer.cpp:2434 src/Buffer.cpp:2458 src/Buffer.cpp:2493
 #: src/LyXFunc.cpp:693 src/LyXFunc.cpp:829 src/LyXFunc.cpp:1007
-#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:403
+#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:404
 #: src/frontends/qt4/GuiDocument.cpp:1278
 #: src/frontends/qt4/GuiParagraph.cpp:67
-#: src/frontends/qt4/GuiParagraph.cpp:157 src/frontends/qt4/GuiView.cpp:1357
-#: src/frontends/qt4/GuiView.cpp:1535 src/frontends/qt4/GuiView.cpp:1580
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiParagraph.cpp:157 src/frontends/qt4/GuiView.cpp:1358
+#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1581
+#: src/frontends/qt4/GuiView.cpp:1634
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -163,13 +163,12 @@ msgstr "&Ekle"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:112 src/LyXFunc.cpp:799
+#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:799
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Vazgeç"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:119
-#: src/frontends/qt4/ui/ShortcutUi.ui:34 src/frontends/qt4/ui/ShortcutUi.ui:44
 msgid "Enter BibTeX database name"
 msgstr "BibTeX veritabaný adý girin"
 
@@ -284,19 +283,19 @@ msgstr "Ýçeriðin kutudaki yatay hizalamasý"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:275
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:107 src/frontends/qt4/GuiTabular.cpp:675
+#: src/frontends/qt4/GuiParagraph.cpp:107 src/frontends/qt4/GuiTabular.cpp:706
 msgid "Left"
 msgstr "Sola dayalý"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:676
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:707
 msgid "Center"
 msgstr "Ortalý"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:280
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:677
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:708
 msgid "Right"
 msgstr "Saða dayalý"
 
@@ -2285,12 +2284,13 @@ msgid "&To format:"
 msgstr "Tarih &biçimi:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 msgid "&Modify"
 msgstr "&Güncelle"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:100
-#: src/frontends/qt4/GuiPrefs.cpp:2188 src/frontends/qt4/GuiPrefs.cpp:2263
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
+#: src/frontends/qt4/GuiPrefs.cpp:2191 src/frontends/qt4/GuiPrefs.cpp:2276
 #, fuzzy
 msgid "Remo&ve"
 msgstr "&Sil"
@@ -2470,7 +2470,7 @@ msgid "&First:"
 msgstr "&Ýlk:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:76
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:66
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:57
 msgid "Br&owse..."
 msgstr "&Göz at..."
@@ -2974,18 +2974,18 @@ msgstr ""
 msgid "Use Pixmap Cache to speed up font rendering"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:41
-msgid "Show ke&y-bindings containing:"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:56
-msgid "&Bind file:"
-msgstr ""
-
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:107
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 #, fuzzy
 msgid "Ne&w"
 msgstr "&Yeni:"
+
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
+msgid "&Bind file:"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:108
+msgid "Show ke&y-bindings containing:"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -3090,7 +3090,7 @@ msgid "&User interface file:"
 msgstr "Arabirim dosyasý:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:692
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiView.cpp:1634
 msgid "&Save"
 msgstr "&Kaydet"
 
@@ -3278,24 +3278,31 @@ msgstr "&Aktarma biçimleri:"
 msgid "&Command:"
 msgstr "&Komut:"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:16
+#: src/frontends/qt4/ui/ShortcutUi.ui:13
 #, fuzzy
 msgid "Edit shortcut"
 msgstr "&Kýsayol:"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:54
-#, fuzzy
-msgid "Clear"
+#: src/frontends/qt4/ui/ShortcutUi.ui:31
+msgid "Type shortcut while the cursor is in this field"
+msgstr ""
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:41
+msgid "Enter LyX function or command sequence"
+msgstr ""
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
+msgid "C&lear"
 msgstr "S&il"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:61
+#: src/frontends/qt4/ui/ShortcutUi.ui:58
 #, fuzzy
-msgid "Function:"
+msgid "&Function:"
 msgstr "&Fonksiyonlar"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:68 src/frontends/qt4/GuiPrefs.cpp:1971
+#: src/frontends/qt4/ui/ShortcutUi.ui:68
 #, fuzzy
-msgid "Shortcut"
+msgid "&Shortcut:"
 msgstr "&Kýsayol:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
@@ -3391,7 +3398,7 @@ msgid "Horizontal alignment in column"
 msgstr "Sütunda yatay hizalama"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:106 src/frontends/qt4/GuiTabular.cpp:679
+#: src/frontends/qt4/GuiParagraph.cpp:106 src/frontends/qt4/GuiTabular.cpp:710
 msgid "Justified"
 msgstr "Yaslanmýþ"
 
@@ -3446,10 +3453,6 @@ msgstr "&Seç"
 #: src/frontends/qt4/ui/TabularUi.ui:269
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Seçili hücrelerin tüm kenarlarýný sýfýrla"
-
-#: src/frontends/qt4/ui/TabularUi.ui:272
-msgid "C&lear"
-msgstr "S&il"
 
 #: src/frontends/qt4/ui/TabularUi.ui:310
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
@@ -3546,7 +3549,7 @@ msgstr "Bu satýrý ilki dýþýnda tüm sayfalarda yinele"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905 src/frontends/qt4/ui/TabularUi.ui:918
 #: src/frontends/qt4/ui/TabularUi.ui:928 src/frontends/qt4/ui/TabularUi.ui:938
-#: src/frontends/qt4/GuiView.cpp:1759
+#: src/frontends/qt4/GuiView.cpp:1760
 msgid "on"
 msgstr "açýk"
 
@@ -5057,23 +5060,33 @@ msgstr "Blok"
 msgid "Structure"
 msgstr ""
 
-#: lib/layouts/beamer.layout:1111 lib/layouts/powerdot.layout:377
+#: lib/layouts/beamer.layout:1114
+#, fuzzy
+msgid "Article"
+msgstr "Dikey"
+
+#: lib/layouts/beamer.layout:1124
+#, fuzzy
+msgid "Presentation"
+msgstr "Yönlenim"
+
+#: lib/layouts/beamer.layout:1131 lib/layouts/powerdot.layout:377
 #: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:229
 #: lib/ui/stdtoolbars.inc:115
 msgid "Table"
 msgstr "Tablo"
 
-#: lib/layouts/beamer.layout:1116 lib/layouts/powerdot.layout:381
+#: lib/layouts/beamer.layout:1136 lib/layouts/powerdot.layout:381
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "Tablo Listesi"
 
-#: lib/layouts/beamer.layout:1122 lib/layouts/powerdot.layout:387
+#: lib/layouts/beamer.layout:1143 lib/layouts/powerdot.layout:387
 #: lib/layouts/stdfloats.inc:22 lib/layouts/stdinsets.inc:220
 msgid "Figure"
 msgstr "Figur"
 
-#: lib/layouts/beamer.layout:1127 lib/layouts/powerdot.layout:391
+#: lib/layouts/beamer.layout:1148 lib/layouts/powerdot.layout:391
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "Figür Listesi"
@@ -10044,19 +10057,19 @@ msgid "Justified Line Break|J"
 msgstr "Satýr Sonu|n"
 
 #: lib/ui/stdcontext.inc:210 lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:942
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:957
 #: src/mathed/InsetMathNest.cpp:537
 msgid "Cut"
 msgstr "Kes"
 
 #: lib/ui/stdcontext.inc:211 lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:947
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:962
 #: src/mathed/InsetMathNest.cpp:545
 msgid "Copy"
 msgstr "Kopyala"
 
 #: lib/ui/stdcontext.inc:212 lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:902
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:917
 #: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:517
 msgid "Paste"
 msgstr "Yapýþtýr"
@@ -13677,8 +13690,8 @@ msgid "Overwrite modified file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
 #: src/Buffer.cpp:814 src/Exporter.cpp:49 src/LyXFunc.cpp:1007
-#: src/frontends/qt4/GuiClipboard.cpp:403 src/frontends/qt4/GuiView.cpp:1357
-#: src/frontends/qt4/GuiView.cpp:1535
+#: src/frontends/qt4/GuiClipboard.cpp:404 src/frontends/qt4/GuiView.cpp:1358
+#: src/frontends/qt4/GuiView.cpp:1536
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Üzerine Yaz"
@@ -14837,7 +14850,7 @@ msgstr "Öntanýmlý"
 msgid "&Exit LyX"
 msgstr "&LyX'ten çýk"
 
-#: src/LyX.cpp:721 src/frontends/qt4/GuiView.cpp:524
+#: src/LyX.cpp:721 src/frontends/qt4/GuiView.cpp:525
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -15046,7 +15059,7 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/LyXFunc.cpp:691 src/frontends/qt4/GuiView.cpp:1632
+#: src/LyXFunc.cpp:691 src/frontends/qt4/GuiView.cpp:1633
 msgid "Save changed document?"
 msgstr "Deðiþmiþ belgeyi kaydedeyim mi?"
 
@@ -15076,7 +15089,7 @@ msgstr "Kayýtlý belgeye geri dön?"
 msgid "&Revert"
 msgstr "&Geri dön"
 
-#: src/LyXFunc.cpp:1043 src/Text3.cpp:1463
+#: src/LyXFunc.cpp:1043 src/Text3.cpp:1478
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
@@ -15778,25 +15791,25 @@ msgstr "Birden fazla paragraf indekslenemez!"
 msgid "Math editor mode"
 msgstr "Matematik Ayraç"
 
-#: src/Text3.cpp:794
+#: src/Text3.cpp:809
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/Text3.cpp:1016
+#: src/Text3.cpp:1031
 #, fuzzy
 msgid "Layout "
 msgstr "Yerleþim|Y"
 
-#: src/Text3.cpp:1017
+#: src/Text3.cpp:1032
 msgid " not known"
 msgstr " bilinmiyor"
 
-#: src/Text3.cpp:1570 src/Text3.cpp:1582
+#: src/Text3.cpp:1585 src/Text3.cpp:1597
 msgid "Character set"
 msgstr "Karakter seti"
 
-#: src/Text3.cpp:1729 src/Text3.cpp:1740
+#: src/Text3.cpp:1744 src/Text3.cpp:1755
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf ayarlarý"
@@ -16062,7 +16075,7 @@ msgid "About %1"
 msgstr "LyX Hakkýnda"
 
 #: src/frontends/qt4/GuiApplication.cpp:118
-#: src/frontends/qt4/GuiPrefs.cpp:2391
+#: src/frontends/qt4/GuiPrefs.cpp:2404
 msgid "Preferences"
 msgstr "Ayarlar"
 
@@ -16115,9 +16128,9 @@ msgstr "BibTeX Kaynakça"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiExternal.cpp:728 src/frontends/qt4/GuiGraphics.cpp:755
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1116
-#: src/frontends/qt4/GuiView.cpp:1174 src/frontends/qt4/GuiView.cpp:1307
-#: src/frontends/qt4/GuiView.cpp:1426 src/frontends/qt4/GuiView.cpp:1505
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1117
+#: src/frontends/qt4/GuiView.cpp:1175 src/frontends/qt4/GuiView.cpp:1308
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1506
 msgid "Documents|#o#O"
 msgstr "Belgeler|#b#B"
 
@@ -16303,59 +16316,59 @@ msgstr "Metin Stili"
 msgid "Keys"
 msgstr "&Anahtar:"
 
-#: src/frontends/qt4/GuiClipboard.cpp:328
+#: src/frontends/qt4/GuiClipboard.cpp:329
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:329
+#: src/frontends/qt4/GuiClipboard.cpp:330
 #, fuzzy
 msgid "Windows Metafile"
 msgstr "Dosyaya yazdýr"
 
-#: src/frontends/qt4/GuiClipboard.cpp:330
+#: src/frontends/qt4/GuiClipboard.cpp:331
 msgid "LinkBack PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:331
+#: src/frontends/qt4/GuiClipboard.cpp:332
 msgid "PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:332
+#: src/frontends/qt4/GuiClipboard.cpp:333
 msgid "PNG"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:333
+#: src/frontends/qt4/GuiClipboard.cpp:334
 msgid "JPEG"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:342
+#: src/frontends/qt4/GuiClipboard.cpp:343
 #, fuzzy
 msgid "pasted"
 msgstr "Yapýþtýr"
 
-#: src/frontends/qt4/GuiClipboard.cpp:351
+#: src/frontends/qt4/GuiClipboard.cpp:352
 #, c-format
 msgid "%1$s Files"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:361
+#: src/frontends/qt4/GuiClipboard.cpp:362
 #, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Belge öntanýmlarý kaydedilemedi"
 
-#: src/frontends/qt4/GuiClipboard.cpp:371 src/frontends/qt4/GuiView.cpp:1188
-#: src/frontends/qt4/GuiView.cpp:1327 src/frontends/qt4/GuiView.cpp:1343
-#: src/frontends/qt4/GuiView.cpp:1360 src/frontends/qt4/GuiView.cpp:1443
-#: src/frontends/qt4/GuiView.cpp:1481
+#: src/frontends/qt4/GuiClipboard.cpp:372 src/frontends/qt4/GuiView.cpp:1189
+#: src/frontends/qt4/GuiView.cpp:1328 src/frontends/qt4/GuiView.cpp:1344
+#: src/frontends/qt4/GuiView.cpp:1361 src/frontends/qt4/GuiView.cpp:1444
+#: src/frontends/qt4/GuiView.cpp:1482
 msgid "Canceled."
 msgstr "Vazgeçildi."
 
-#: src/frontends/qt4/GuiClipboard.cpp:401
+#: src/frontends/qt4/GuiClipboard.cpp:402
 #, fuzzy
 msgid "Overwrite external file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/frontends/qt4/GuiClipboard.cpp:402
+#: src/frontends/qt4/GuiClipboard.cpp:403
 #, fuzzy, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr ""
@@ -17096,7 +17109,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Yazýcý"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1815 src/frontends/qt4/GuiPrefs.cpp:2430
+#: src/frontends/qt4/GuiPrefs.cpp:1815 src/frontends/qt4/GuiPrefs.cpp:2443
 msgid "User interface"
 msgstr "Arayüz"
 
@@ -17115,94 +17128,100 @@ msgstr "&Kýsayol:"
 msgid "Function"
 msgstr "&Fonksiyonlar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2048
+#: src/frontends/qt4/GuiPrefs.cpp:1971
+#, fuzzy
+msgid "Shortcut"
+msgstr "&Kýsayol:"
+
+#: src/frontends/qt4/GuiPrefs.cpp:2047
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2052
+#: src/frontends/qt4/GuiPrefs.cpp:2051
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Fonetik Semboller|F"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2056
-msgid "Buffer and Window"
-msgstr ""
+#: src/frontends/qt4/GuiPrefs.cpp:2055
+#, fuzzy
+msgid "Document and Window"
+msgstr "Belge baþlýk hatasý"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2060
+#: src/frontends/qt4/GuiPrefs.cpp:2059
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2064
+#: src/frontends/qt4/GuiPrefs.cpp:2063
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS çeþitli"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2186 src/frontends/qt4/GuiPrefs.cpp:2243
+#: src/frontends/qt4/GuiPrefs.cpp:2189 src/frontends/qt4/GuiPrefs.cpp:2256
 #, fuzzy
 msgid "Res&tore"
 msgstr "&Geri al"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2311 src/frontends/qt4/GuiPrefs.cpp:2318
-#: src/frontends/qt4/GuiPrefs.cpp:2325 src/frontends/qt4/GuiPrefs.cpp:2337
+#: src/frontends/qt4/GuiPrefs.cpp:2324 src/frontends/qt4/GuiPrefs.cpp:2331
+#: src/frontends/qt4/GuiPrefs.cpp:2338 src/frontends/qt4/GuiPrefs.cpp:2350
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "Dizin oluþturulamadý. Çýkýyorum."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2312
+#: src/frontends/qt4/GuiPrefs.cpp:2325
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2319
+#: src/frontends/qt4/GuiPrefs.cpp:2332
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2326
+#: src/frontends/qt4/GuiPrefs.cpp:2339
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2338
+#: src/frontends/qt4/GuiPrefs.cpp:2351
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Listeye yeni bir dal ekle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2358
+#: src/frontends/qt4/GuiPrefs.cpp:2371
 msgid "Identity"
 msgstr "Kimlik"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2553
+#: src/frontends/qt4/GuiPrefs.cpp:2566
 msgid "Choose bind file"
 msgstr "Baðlama dosyasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2554
+#: src/frontends/qt4/GuiPrefs.cpp:2567
 msgid "LyX bind files (*.bind)"
 msgstr "LyX baðlama dosyasý (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2560
+#: src/frontends/qt4/GuiPrefs.cpp:2573
 msgid "Choose UI file"
 msgstr "Arabirim dosyasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2561
+#: src/frontends/qt4/GuiPrefs.cpp:2574
 msgid "LyX UI files (*.ui)"
 msgstr "LyX arabirim dosyalarý (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2567
+#: src/frontends/qt4/GuiPrefs.cpp:2580
 msgid "Choose keyboard map"
 msgstr "Klavye haritasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2568
+#: src/frontends/qt4/GuiPrefs.cpp:2581
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX klavye haritasý (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2574
+#: src/frontends/qt4/GuiPrefs.cpp:2587
 msgid "Choose personal dictionary"
 msgstr "Kiþisel sözlüðü deðiþtir"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2575
+#: src/frontends/qt4/GuiPrefs.cpp:2588
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2575
+#: src/frontends/qt4/GuiPrefs.cpp:2588
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -17687,7 +17706,7 @@ msgstr ""
 msgid "Symbols"
 msgstr "Sembol"
 
-#: src/frontends/qt4/GuiTabular.cpp:39
+#: src/frontends/qt4/GuiTabular.cpp:41
 msgid "Table Settings"
 msgstr "Tablo Ayarlarý"
 
@@ -17770,90 +17789,90 @@ msgstr ""
 msgid "Vertical Space Settings"
 msgstr "Düþey Boþluk Ayarlarý"
 
-#: src/frontends/qt4/GuiView.cpp:116
+#: src/frontends/qt4/GuiView.cpp:117
 #, fuzzy
 msgid "version "
 msgstr "Sürüm"
 
-#: src/frontends/qt4/GuiView.cpp:116
+#: src/frontends/qt4/GuiView.cpp:117
 #, fuzzy
 msgid "unknown version"
 msgstr "Bilinmeyen kullanýcý"
 
-#: src/frontends/qt4/GuiView.cpp:181
+#: src/frontends/qt4/GuiView.cpp:182
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:188
+#: src/frontends/qt4/GuiView.cpp:189
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:195
+#: src/frontends/qt4/GuiView.cpp:196
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:620 src/frontends/qt4/GuiView.cpp:621
+#: src/frontends/qt4/GuiView.cpp:621 src/frontends/qt4/GuiView.cpp:622
 #: src/mathed/MathMacroTemplate.cpp:536
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiView.cpp:1115
+#: src/frontends/qt4/GuiView.cpp:1116
 msgid "Select template file"
 msgstr "Þablon dosyasý seçin"
 
-#: src/frontends/qt4/GuiView.cpp:1117 src/frontends/qt4/GuiView.cpp:1506
+#: src/frontends/qt4/GuiView.cpp:1118 src/frontends/qt4/GuiView.cpp:1507
 msgid "Templates|#T#t"
 msgstr "Þablonlar|#Þ#þ"
 
-#: src/frontends/qt4/GuiView.cpp:1120 src/frontends/qt4/GuiView.cpp:1179
-#: src/frontends/qt4/GuiView.cpp:1432 src/frontends/qt4/GuiView.cpp:1513
+#: src/frontends/qt4/GuiView.cpp:1121 src/frontends/qt4/GuiView.cpp:1180
+#: src/frontends/qt4/GuiView.cpp:1433 src/frontends/qt4/GuiView.cpp:1514
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1137
+#: src/frontends/qt4/GuiView.cpp:1138
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Belge kaydedilemedi"
 
-#: src/frontends/qt4/GuiView.cpp:1173
+#: src/frontends/qt4/GuiView.cpp:1174
 msgid "Select document to open"
 msgstr "Açýlacak belgeyi seçin"
 
-#: src/frontends/qt4/GuiView.cpp:1175 src/frontends/qt4/GuiView.cpp:1308
-#: src/frontends/qt4/GuiView.cpp:1427
+#: src/frontends/qt4/GuiView.cpp:1176 src/frontends/qt4/GuiView.cpp:1309
+#: src/frontends/qt4/GuiView.cpp:1428
 msgid "Examples|#E#e"
 msgstr "Örnekler|#ö#Ö"
 
-#: src/frontends/qt4/GuiView.cpp:1211
+#: src/frontends/qt4/GuiView.cpp:1212
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Belge %1$s açýlýyor..."
 
-#: src/frontends/qt4/GuiView.cpp:1220
+#: src/frontends/qt4/GuiView.cpp:1221
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Belge %1$s açýldý."
 
-#: src/frontends/qt4/GuiView.cpp:1222
+#: src/frontends/qt4/GuiView.cpp:1223
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Belge %1$s açýlamadý"
 
-#: src/frontends/qt4/GuiView.cpp:1251
+#: src/frontends/qt4/GuiView.cpp:1252
 msgid "Couldn't import file"
 msgstr "Dosya içeri aktarýlamadý"
 
-#: src/frontends/qt4/GuiView.cpp:1252
+#: src/frontends/qt4/GuiView.cpp:1253
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1303
+#: src/frontends/qt4/GuiView.cpp:1304
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Eklenecek dosyayý seçin"
 
-#: src/frontends/qt4/GuiView.cpp:1354 src/frontends/qt4/GuiView.cpp:1530
+#: src/frontends/qt4/GuiView.cpp:1355 src/frontends/qt4/GuiView.cpp:1531
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -17864,43 +17883,43 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/frontends/qt4/GuiView.cpp:1356 src/frontends/qt4/GuiView.cpp:1534
+#: src/frontends/qt4/GuiView.cpp:1357 src/frontends/qt4/GuiView.cpp:1535
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Belgenin üzerine yazayým mý?"
 
-#: src/frontends/qt4/GuiView.cpp:1365
+#: src/frontends/qt4/GuiView.cpp:1366
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/frontends/qt4/GuiView.cpp:1368
+#: src/frontends/qt4/GuiView.cpp:1369
 msgid "imported."
 msgstr "aktarýldý."
 
-#: src/frontends/qt4/GuiView.cpp:1370
+#: src/frontends/qt4/GuiView.cpp:1371
 #, fuzzy
 msgid "file not imported!"
 msgstr "Dizge bulunamadý!"
 
-#: src/frontends/qt4/GuiView.cpp:1425
+#: src/frontends/qt4/GuiView.cpp:1426
 msgid "Select LyX document to insert"
 msgstr "Eklenecek LyX belgesini seçin"
 
-#: src/frontends/qt4/GuiView.cpp:1466
+#: src/frontends/qt4/GuiView.cpp:1467
 msgid "Select file to insert"
 msgstr "Eklenecek dosyayý seçin"
 
-#: src/frontends/qt4/GuiView.cpp:1503
+#: src/frontends/qt4/GuiView.cpp:1504
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Belge öntanýmlarý kaydedilemedi"
 
-#: src/frontends/qt4/GuiView.cpp:1535 src/frontends/qt4/GuiView.cpp:1580
+#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1581
 msgid "&Rename"
 msgstr "&Yeniden adlandýr"
 
-#: src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1577
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -17911,16 +17930,16 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/frontends/qt4/GuiView.cpp:1579
+#: src/frontends/qt4/GuiView.cpp:1580
 msgid "Rename and save?"
 msgstr "Yeni adla kaydet?"
 
-#: src/frontends/qt4/GuiView.cpp:1580
+#: src/frontends/qt4/GuiView.cpp:1581
 #, fuzzy
 msgid "&Retry"
 msgstr "&Geri al"
 
-#: src/frontends/qt4/GuiView.cpp:1630
+#: src/frontends/qt4/GuiView.cpp:1631
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -17931,41 +17950,41 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiView.cpp:1634
 msgid "&Discard"
 msgstr "&Unut"
 
-#: src/frontends/qt4/GuiView.cpp:1725
+#: src/frontends/qt4/GuiView.cpp:1726
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Belge %1$s kaydediliyor..."
 
-#: src/frontends/qt4/GuiView.cpp:1735
+#: src/frontends/qt4/GuiView.cpp:1736
 #, fuzzy
 msgid "All documents saved."
 msgstr "Belge kaydedilemedi"
 
-#: src/frontends/qt4/GuiView.cpp:1754
+#: src/frontends/qt4/GuiView.cpp:1755
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Tablo Özellikleri"
 
-#: src/frontends/qt4/GuiView.cpp:1761
+#: src/frontends/qt4/GuiView.cpp:1762
 #, fuzzy
 msgid "off"
 msgstr "Kapalý"
 
-#: src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1764
 #, fuzzy
 msgid "auto"
 msgstr "Tarih"
 
-#: src/frontends/qt4/GuiView.cpp:1765
+#: src/frontends/qt4/GuiView.cpp:1766
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1940
+#: src/frontends/qt4/GuiView.cpp:1941
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -17985,25 +18004,25 @@ msgstr ""
 msgid "Literate Source"
 msgstr "LaTeX hatasý"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1121
+#: src/frontends/qt4/GuiWorkArea.cpp:1122
 msgid " (changed)"
 msgstr " (deðiþti)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1125
+#: src/frontends/qt4/GuiWorkArea.cpp:1126
 msgid " (read only)"
 msgstr " (yalnýzca okunabilir)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1212
+#: src/frontends/qt4/GuiWorkArea.cpp:1213
 #, fuzzy
 msgid "Close File"
 msgstr "Kapat"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1412
+#: src/frontends/qt4/GuiWorkArea.cpp:1413
 #, fuzzy
 msgid "Hide tab"
 msgstr "öntanýmlý"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1414
+#: src/frontends/qt4/GuiWorkArea.cpp:1415
 #, fuzzy
 msgid "Close tab"
 msgstr "Kapat"
@@ -18763,7 +18782,7 @@ msgstr "Korumalý Boþluk|o"
 msgid "Unknown TOC type"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/insets/InsetTabular.cpp:3070
+#: src/insets/InsetTabular.cpp:3003
 msgid "Opened table"
 msgstr "Açýk tablo"
 
@@ -19185,6 +19204,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanýcý"
+
+#, fuzzy
+#~ msgid "Clear"
+#~ msgstr "S&il"
 
 #, fuzzy
 #~ msgid "Add"
