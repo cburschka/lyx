@@ -66,6 +66,9 @@ What's new
 
 * BUILD/INSTALLATION:
 
+- Windows installer includes a metafile (EMF/WMF) to EPS conversion tool.
+  This tool uses a virtual printer called "Metafile to EPS Converter".
+
 - New configure option --enable-build-type allows to set all
   compilation options for release, prerelease or development builds.
   Please see the INSTALL file for more details.
