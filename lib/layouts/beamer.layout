@@ -1085,8 +1085,8 @@ End
 # Charstyles:
 
 InsetLayout CharStyle:Alert
-	LyXType charstyle
-	LabelString Alert
+  LyXType charstyle
+  LabelString Alert
   LatexType        Command
   LatexName        alert
   Font
@@ -1096,13 +1096,33 @@ End
 
 
 InsetLayout CharStyle:Structure
-	LyXType charstyle
-	LabelString Structure
+  LyXType charstyle
+  LabelString Structure
   LatexType        Command
   LatexName        structure
   Font
     Color          blue
   EndFont
+End
+
+
+InsetLayout Custom:ArticleMode
+   LyXType	custom
+   LatexName	mode<article>
+   LatexType	command
+   Decoration   classic
+   LabelString	Article
+   MultiPar     true
+End
+
+
+InsetLayout Custom:PresentationMode
+   LyXType	custom
+   LatexName	mode<presentation>
+   LatexType	command
+   Decoration   classic
+   LabelString	Presentation
+   MultiPar     true
 End
 
 
@@ -1116,7 +1136,8 @@ Float
   ListName         "List of Tables"
   LaTeXBuiltin     true
 End
-  
+
+
 Float
   Type             figure
   GuiName          Figure
@@ -1127,6 +1148,7 @@ Float
   ListName         "List of Figures"
   LaTeXBuiltin     true
 End
+
 
 # to give users the choice of a title frame with and without
 # head-/footline, we define our own maketitle command
