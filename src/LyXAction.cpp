@@ -341,6 +341,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_INFO_INSERT, "info-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_INSERT
+ * \li Action: Inserts branch inset.
+ * \li Syntax: branch-insert <BRANCH-NAME>
+ * \li Origin: vermeer, Aug 17 Aug 2003
+ * \endvar
+ */
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
 		{ LFUN_BOX_INSERT, "box-insert", Noop, Edit },
 /*!
