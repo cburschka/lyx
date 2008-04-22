@@ -309,11 +309,6 @@ TeXOnePar(Buffer const & buf,
 		return nextpit;
 	}
 
-	// FIXME This comment doesn't make sense. What's the
-	// length got to do with forceEmptyLayout()? I.e., what
-	// was forceDefaultParagraphs()?
-	// In an inset with unlimited length (all in one row),
-	// force layout to default
 	Layout const style = pit->forceEmptyLayout() ?
 		bparams.documentClass().emptyLayout() : pit->layout();
 
@@ -783,12 +778,6 @@ void latexParagraphs(Buffer const & buf,
 	// if only_body
 	while (par != endpar) {
 		lastpar = par;
-		// well we have to check if we are in an inset with unlimited
-		// length (all in one row) if that is true then we don't allow
-		// any special options in the paragraph and also we don't allow
-		// any environment other than the default layout of the
-		// text class to be valid!
-		if (par->allowParagraphCustomization()) {
 			Layout const & layout = par->forceEmptyLayout() ?
 					tclass.emptyLayout() :
 					par->layout();
@@ -832,9 +821,6 @@ void latexParagraphs(Buffer const & buf,
 				par = TeXOnePar(buf, text, par, os, texrow,
 						runparams, everypar);
 			}
-		} else {
-			par = TeXOnePar(buf, text, par, os, texrow,
-					runparams, everypar);
 		}
 		if (distance(lastpar, par) >= distance(lastpar, endpar))
 			break;
