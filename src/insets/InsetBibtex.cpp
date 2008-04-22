@@ -570,7 +570,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 	// We don't restrict keys to ASCII in LyX, since our own
 	// InsetBibitem can generate non-ASCII keys, and nonstandard
 	// 8bit clean bibtex forks exist.
-	support::FileNameList const & files = getBibFiles();
+	support::FileNameList const files = getBibFiles();
 	support::FileNameList::const_iterator it = files.begin();
 	support::FileNameList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
