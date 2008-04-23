@@ -136,10 +136,13 @@ Section "un.LyX" un.SecUnProgramFiles
   ${endif}
 
   # remove file extension .lyx
-  ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
-  ${if} $R0 == "${PRODUCT_REGNAME}"
-   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
-   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+  ReadRegStr $0 SHCTX "${PRODUCT_DIR_REGKEY}" "OnlyWithLyX" # special entry to test if they were registered by this LyX version
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
+   ${if} $R0 == "${PRODUCT_REGNAME}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+   ${endif}
   ${endif}
 
   # the following can only be done with admin permissions

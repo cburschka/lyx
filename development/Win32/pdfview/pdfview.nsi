@@ -92,7 +92,7 @@ Var CurrentTimeLow
 !macroend
 
 #--------------------------------
-# PDF vieweing
+# PDF viewing
 
 Section "View PDF file"
 

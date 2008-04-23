@@ -1,5 +1,19 @@
-﻿Version 4.02
-- LyX 1.6svn-r24064
+﻿Version 4.03
+- LyX 1.6alpha2
+  (list of current regressions: http://tinyurl.com/yu4the )
+
+- added some missing Python files to be able to open old LyX documents with
+  LyX 1.6svn
+- new method to view PDF files that should also work under Windows Vista
+  (thanks to Joost Verburg)
+- The .lyx file extension is no longer removed when it was not created by
+  the LyX version that is uninstalled (necessary to be able to play with
+  LyX 1.6svn without touching existing LyX installations)
+
+
+Version 4.02
+- LyX 1.6svn-r24066
+  (list of current regressions: http://tinyurl.com/yu4the )
 
 - Japanese translation of the installer (thanks to Koji Yokata)
 - added a DLL that is needed on some Windows systems to be able to start LyX

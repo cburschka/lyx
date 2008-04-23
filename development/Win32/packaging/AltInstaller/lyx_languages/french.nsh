@@ -57,7 +57,7 @@ LangString EnterLaTeXFolderNone "${LYX_LANG}" 'Fixez ci-dessous le chemin d$\'ac
 					       L$\'assistant d$\'installation n$\'a pas pu trouver de distribution LaTeX sur votre système.'
 LangString PathName "${LYX_LANG}" 'Chemin vers le fichier "latex.exe"'
 LangString DontUseLaTeX "${LYX_LANG}" "N'utilisez pas LaTeX"
-LangString InvalidLaTeXFolder "${LYX_LANG}" '"latex.exe" introuvable dans le chemin d'accès spécifié.'
+LangString InvalidLaTeXFolder "${LYX_LANG}" '"latex.exe" introuvable dans le chemin d$\'accès spécifié.'
 
 LangString LatexInfo "${LYX_LANG}" 'Lancement de l$\'installation de la distribution LaTeX "MiKTeX".$\r$\n\
 			            Pour installer l$\'application, appuyer sur le bouton "Next" de la fenêtre d$\'installation jusqu$\'à ce que celle-ci commence.$\r$\n\
