@@ -512,7 +512,9 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PRINTTOFILE:
-			print_to_file = os::internal_path(lexrc.getString());
+			if (lexrc.next()) {
+				print_to_file = os::internal_path(lexrc.getString());
+			}
 			break;
 
 		case RC_PRINTFILEEXTENSION:
