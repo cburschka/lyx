@@ -221,15 +221,6 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::updateLabels(ParIterator const & it)
-{
-	DocumentClass const & tclass = buffer().params().documentClass();
-	Counters savecnt = tclass.counters();
-	InsetCollapsable::updateLabels(it);
-	tclass.counters() = savecnt;
-}
-
-
 void InsetNote::addToToc(ParConstIterator const & cpit) const
 {
 	ParConstIterator pit = cpit;

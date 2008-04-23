@@ -86,10 +86,15 @@ private:
 	    \c buffer. This handles the case of child documents.
 	 */
 	bool isBranchSelected() const;
+	/*!
+	 * Is the content of this inset part of the output document?
+	 *
+	 * Note that Branch insets are only considered part of the
+	 * document when they are selected.
+	 */
+	bool producesOutput() const { return isBranchSelected(); }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	///
-	void updateLabels(ParIterator const &);
 	///
 	bool isMacroScope() const;
 	///

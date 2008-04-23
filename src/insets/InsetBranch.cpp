@@ -205,19 +205,6 @@ bool InsetBranch::isBranchSelected() const
 }
 
 
-void InsetBranch::updateLabels(ParIterator const & it)
-{
-	if (isBranchSelected())
-		InsetCollapsable::updateLabels(it);
-	else {
-		DocumentClass const & tclass = buffer().params().documentClass();
-		Counters savecnt = tclass.counters();
-		InsetCollapsable::updateLabels(it);
-		tclass.counters() = savecnt;
-	}
-}
-
-
 int InsetBranch::latex(odocstream & os, OutputParams const & runparams) const
 {
 	return isBranchSelected() ?  InsetText::latex(os, runparams) : 0;

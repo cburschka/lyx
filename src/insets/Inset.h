@@ -361,6 +361,9 @@ public:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 
+	/// Is the content of this inset part of the output document?
+	virtual bool producesOutput() const { return true; }
+
 	/// \return Tool tip for this inset.
 	/// This default implementation returns an empty string.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
