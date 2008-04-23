@@ -92,7 +92,7 @@ Var CurrentTimeLow
 !macroend
 
 #--------------------------------
-# PDF vieweing
+# PDF viewing
 
 Section "View PDF file"
 
@@ -155,10 +155,17 @@ Section "View PDF file"
     ${Do}
     
       !insertmacro SystemCall "kernel32::WaitForSingleObject(i $ChangeNotification, i 10000) i.s"
-      Pop $WaitReturn    
-         
-      # Check whether a lock is still active.
-      # If not, Adode Reader is closed and we can close this application as well
+      Pop $WaitReturn
+      
+      # Check whether the PDF still exists (if not, LyX is being closed)
+      
+      ${IfNot} ${FileExists} $LockedFile
+        # Quit this application
+        !insertmacro SystemCall "kernel32::FindCloseChangeNotification(i $ChangeNotification)"
+        Quit
+      ${EndIf}
+      
+      # Check whether the lock is still active (if not, Adobe Reader being closed)
       
       FileOpen $LockedFile $PDFFile a
       
