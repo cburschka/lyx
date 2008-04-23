@@ -119,7 +119,8 @@ int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 {
 	os << "<glossary>\n";
 	int newlines = 2;
-	for (InsetIterator it = inset_iterator_begin(buffer().inset()); it;) {
+	InsetIterator it = inset_iterator_begin(buffer().inset());
+	while (it) {
 		if (it->lyxCode() == NOMENCL_CODE) {
 			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
 			++it;
