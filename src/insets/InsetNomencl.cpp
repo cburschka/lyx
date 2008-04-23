@@ -123,9 +123,8 @@ int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 		if (it->lyxCode() == NOMENCL_CODE) {
 			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
 			++it;
-		} else if(it->lyxCode() == NOTE_CODE &&
-			  static_cast<InsetNote const &>(*it).params().type == InsetNoteParams::Note) {
-			// Don't output anything nested in note insets
+		} else if (!it->producesOutput()) {
+			// Ignore contents of insets that are not in output
 			size_t const depth = it.depth();
 			++it;
 			while (it.depth() > depth)
