@@ -113,7 +113,8 @@ Section "View PDF file"
 
   GetFullPathName $OriginalFile $OriginalFile
   ${GetFileName} $OriginalFile $OriginalFileName
-  ${GetParent} $OriginalFile $OriginalDir
+  ${GetParent} $OriginalFile $OriginalDir # tmpbuf
+  ${GetParent} $OriginalDir $OriginalDir # tmpdir
 
   SetOutPath $TEMP # The LyX tmpbuf should not be locked
 
@@ -149,23 +150,15 @@ Section "View PDF file"
     # Monitor for updates of the original file
     GetFileTime $OriginalFile $OriginalTimeHigh $OriginalTimeLow
     !insertmacro SystemCall "kernel32::FindFirstChangeNotification(t '$OriginalDir', \
-      i 0, i ${FILE_NOTIFY_CHANGE_LAST_WRITE}) i.s"
+      i 1, i ${FILE_NOTIFY_CHANGE_LAST_WRITE}) i.s"
     Pop $ChangeNotification
     
     ${Do}
     
       !insertmacro SystemCall "kernel32::WaitForSingleObject(i $ChangeNotification, i 10000) i.s"
       Pop $WaitReturn
-      
-      # Check whether the PDF still exists (if not, LyX is being closed)
-      
-      ${IfNot} ${FileExists} $LockedFile
-        # Quit this application
-        !insertmacro SystemCall "kernel32::FindCloseChangeNotification(i $ChangeNotification)"
-        Quit
-      ${EndIf}
-      
-      # Check whether the lock is still active (if not, Adobe Reader being closed)
+           
+      # Check whether the lock is still active (if not, Adobe Reader is closed)
       
       FileOpen $LockedFile $PDFFile a
       
@@ -178,13 +171,14 @@ Section "View PDF file"
       ${EndIf}
       
       ${IfNot} $WaitReturn = ${WAIT_TIMEOUT}
-        # The LyX tmpbuf has been updated
+        
+        # The LyX temporary directory has been updated
         # Check whether it's the PDF file that has been updated
           
         GetFileTime $OriginalFile $CurrentTimeHigh $CurrentTimeLow
         
-        ${if} $OriginalTimeHigh != $CurrentTimeHigh
-          ${orif} $OriginalTimeLow != $CurrentTimeLow
+        ${If} $OriginalTimeHigh != $CurrentTimeHigh
+          ${OrIf} $OriginalTimeLow != $CurrentTimeLow
           # PDF has been modified, update view
           !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
           CopyFiles /SILENT $OriginalFile $PDFFile
