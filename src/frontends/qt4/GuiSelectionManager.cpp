@@ -320,13 +320,13 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 			return true;
 		}
 	} else if (obj == selectedLV) {
-		// Delete or backspace key will delete current item
-		// ...with control modifier will clear the list
 		if (event->type() != QEvent::KeyPress)
 			return QObject::eventFilter(obj, event);
 		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
 		int const keyPressed = keyEvent->key();
 		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+		// Delete or backspace key will delete current item
+		// ...with control modifier will clear the list
 		if (keyPressed == Qt::Key_Delete || keyPressed == Qt::Key_Backspace) {
 			if (keyModifiers == Qt::NoModifier && deletePB->isEnabled()) {
 				deletePB_clicked();
@@ -336,14 +336,18 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				updateHook();
 			} else
 				return QObject::eventFilter(obj, event);
-		} else if (keyPressed == Qt::Key_Up) {
+		} 
+		// Ctrl-Up activates upPB
+		else if (keyPressed == Qt::Key_Up) {
 			if (keyModifiers == Qt::ControlModifier) {
 				if (upPB->isEnabled())
 					upPB_clicked();
 				event->accept();
 				return true;
 			}
-		} else if (keyPressed == Qt::Key_Down) {
+		} 
+		// Ctrl-Down activates downPB
+		else if (keyPressed == Qt::Key_Down) {
 			if (keyModifiers == Qt::ControlModifier) {
 				if (downPB->isEnabled())
 					downPB_clicked();
