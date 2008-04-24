@@ -1079,27 +1079,39 @@ bool Tabular::rowBottomLine(row_type r) const
 
 bool Tabular::columnLeftLine(col_type c) const
 {
-	bool all_cols_set = true;
+	int nrows_left = 0;
+	int total = 0;
 	row_type const nrows = row_info.size();
-	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
+	for (row_type r = 0; r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
-		if (c == cellColumn(i))
-			all_cols_set = cellInfo(i).left_line;
+		if (c == cellColumn(i)) {
+			++total;
+			bool right = c - 1 > 0 && cellInfo(cellIndex(r, c - 1)).right_line;
+			if (cellInfo(i).left_line || right)
+				++nrows_left;
+		}
 	}
-	return all_cols_set;
+	return nrows_left > total / 2;
 }
 
 
 bool Tabular::columnRightLine(col_type c) const
 {
-	bool all_cols_set = true;
+	int nrows_right = 0;
+	int total = 0;
 	row_type const nrows = row_info.size();
-	for (row_type r = 0; all_cols_set && r < nrows; ++r) {
+	for (row_type r = 0; r < nrows; ++r) {
 		idx_type i = cellIndex(r, c);
-		if (c == cellColumn(i) + columnSpan(i) - 1)
-			all_cols_set = cellInfo(i).right_line;
+		if (c == cellColumn(i) + columnSpan(i) - 1) {
+			++total;
+			bool left = c + 1 < column_info.size() 
+				&& cellInfo(cellIndex(r, c + 1)).left_line
+				|| c + 1 == column_info.size();
+			if (cellInfo(i).right_line && left)
+				++nrows_right;
+		}
 	}
-	return all_cols_set;
+	return nrows_right > total / 2;
 }
 
 
@@ -1810,18 +1822,18 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	row_type const r = cellRow(cell);
 	col_type const c = cellColumn(cell);
 	col_type const nextcol = c + columnSpan(cell);
+	bool colright = columnRightLine(c);
+	bool colleft = columnLeftLine(c);
 	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
 	bool forceleft = ismulticol && !prevcellright && leftLine(cell);
-	bool nextcolleft = nextcol < column_info.size() && columnLeftLine(nextcol);
-	bool coldouble = columnRightLine(c) && nextcolleft;
-	bool nextcellleft = nextcol < column_info.size() 
+	bool nextcolleft = nextcol < column_info.size() && colleft;
+	bool coldouble = colright && nextcolleft;
+	bool celldouble = rightLine(cell) && nextcol < column_info.size() 
 		&& leftLine(cellIndex(r, nextcol));
-	bool celldouble = rightLine(cell) && nextcellleft;
-	bool doubleright = celldouble && (isMultiColumn(cell) || !coldouble);
 	ismulticol = isMultiColumn(cell) 
-		|| (leftLine(cell) && !columnLeftLine(c))
-		|| (rightLine(cell) && !columnRightLine(c))
-		|| (!celldouble && coldouble) || doubleright || forceleft;
+		|| (leftLine(cell) && !colleft)
+		|| (rightLine(cell) && !(colright || nextcolleft))
+		|| (coldouble != celldouble) || forceleft;
 	if (ismulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
 		if (leftLine(cell) || forceleft)
@@ -1860,7 +1872,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 		} // end if else !cellinfo_of_cell
 		if (rightLine(cell))
 			os << '|';
-		if (doubleright)
+		if (celldouble)
 			// add extra vertical line if we want a double one
 			os << '|';
 		os << "}{";
