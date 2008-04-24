@@ -33,13 +33,16 @@
         </sizepolicy>
        </property>
        <property name="toolTip" >
-        <string>Move the selected citation up</string>
+        <string>Move the selected citation up (try Ctrl-Up)</string>
        </property>
        <property name="text" >
         <string>&amp;Up</string>
        </property>
        <property name="icon" >
         <iconset/>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -52,13 +55,16 @@
         </sizepolicy>
        </property>
        <property name="toolTip" >
-        <string>Move the selected citation down</string>
+        <string>Move the selected citation down (try Ctrl-Down)</string>
        </property>
        <property name="text" >
         <string>&amp;Down</string>
        </property>
        <property name="icon" >
         <iconset/>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -77,8 +83,14 @@
      </item>
      <item row="2" column="1" >
       <widget class="QPushButton" name="deletePB" >
+       <property name="toolTip" >
+        <string>The delete key works, too</string>
+       </property>
        <property name="text" >
         <string>D&amp;elete</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -92,13 +104,13 @@
      <item row="1" column="1" >
       <widget class="QPushButton" name="addPB" >
        <property name="toolTip" >
-        <string/>
+        <string>The Enter key works, too</string>
        </property>
        <property name="text" >
         <string>&amp;Add</string>
        </property>
        <property name="autoDefault" >
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -162,18 +174,27 @@
       </item>
       <item row="0" column="1" colspan="3" >
        <widget class="QLineEdit" name="findLE" >
+        <property name="toolTip" >
+         <string>Hit Enter to search, or click Go!</string>
+        </property>
         <property name="text" >
          <string/>
         </property>
        </widget>
       </item>
       <item row="0" column="4" >
-       <widget class="QPushButton" name="clearPB" >
+       <widget class="QPushButton" name="searchPB" >
         <property name="enabled" >
          <bool>false</bool>
         </property>
+        <property name="toolTip" >
+         <string>You can also hit Enter in the search box</string>
+        </property>
         <property name="text" >
-         <string>&lt;- C&amp;lear</string>
+         <string>&amp;Go!</string>
+        </property>
+        <property name="autoDefault" >
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -384,6 +405,9 @@
        <property name="text" >
         <string>&amp;Restore</string>
        </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -405,10 +429,10 @@
         <string>&amp;OK</string>
        </property>
        <property name="autoDefault" >
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="default" >
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -416,6 +440,9 @@
       <widget class="QPushButton" name="applyPB" >
        <property name="text" >
         <string>A&amp;pply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -441,7 +468,7 @@
   <tabstop>upPB</tabstop>
   <tabstop>downPB</tabstop>
   <tabstop>findLE</tabstop>
-  <tabstop>clearPB</tabstop>
+  <tabstop>searchPB</tabstop>
   <tabstop>caseCB</tabstop>
   <tabstop>regexCB</tabstop>
   <tabstop>citationStyleCO</tabstop>

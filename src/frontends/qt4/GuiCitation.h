@@ -64,6 +64,7 @@ private Q_SLOTS:
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
 	void on_applyPB_clicked();
+	void on_searchPB_clicked();
 	void on_findLE_textChanged(const QString & text);
 	void on_fieldsCO_currentIndexChanged(int index);
 	void on_entriesCO_currentIndexChanged(int index);

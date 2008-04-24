@@ -92,8 +92,12 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(changed()));
 	connect(textAfterED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
-	connect(clearPB, SIGNAL(clicked()),
-		findLE, SLOT(clear()));
+	connect(findLE, SIGNAL(returnPressed()), 
+		this, SLOT(on_searchPB_clicked()));
+	connect(textBeforeED, SIGNAL(returnPressed()),
+		this, SLOT(on_okPB_clicked()));
+	connect(textAfterED, SIGNAL(returnPressed()),
+		this, SLOT(on_okPB_clicked()));
 	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
 
 	selectionManager = new GuiSelectionManager(availableLV, selectedLV, 
@@ -420,10 +424,16 @@ void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 
 void GuiCitation::on_findLE_textChanged(const QString & text)
 {
-	clearPB->setDisabled(text.isEmpty());
-	if (text.isEmpty())
-		findLE->setFocus();
-	findText(text);
+	searchPB->setDisabled(text.isEmpty());
+	if (!text.isEmpty())
+		return;
+	findText(findLE->text());
+	findLE->setFocus();
+}
+
+void GuiCitation::on_searchPB_clicked()
+{
+	findText(findLE->text());
 }
 
 
@@ -527,7 +537,7 @@ void GuiCitation::findKey(QString const & str, bool only_keys,
 	last_case_sensitive = case_sensitive;
 	last_reg_exp = reg_exp;
 
-	Qt::CaseSensitivity qtcase = case_sensitive?
+	Qt::CaseSensitivity qtcase = case_sensitive ?
 			Qt::CaseSensitive: Qt::CaseInsensitive;
 	QStringList keys;
 	// If new string (str) contains the last searched one...
