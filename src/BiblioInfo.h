@@ -99,8 +99,6 @@ private:
 class BiblioInfo {
 public:
 	///
-	BiblioInfo() {}
-	///
 	typedef std::map<docstring, BibTeXInfo>::const_iterator const_iterator;
 	/// Returns a sorted vector of bibliography keys
 	std::vector<docstring> const getKeys() const;
