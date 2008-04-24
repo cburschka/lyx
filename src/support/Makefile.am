@@ -31,11 +31,7 @@ liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)
 ##################################################################
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) -I$(srcdir)/minizip
-
-# force the use of C++ compiler for minizip/*.c files, because
-# gcc can not go through the included boost files.
-liblyxsupport_la_CFLAGS = -x c++
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) 
 
 liblyxsupport_la_SOURCES = \
 	FileMonitor.h \
@@ -60,7 +56,6 @@ liblyxsupport_la_SOURCES = \
 	FileNameList.h \
 	filetools.cpp \
 	filetools.h \
-	FileZipListDir.h \
 	foreach.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
@@ -105,17 +100,7 @@ liblyxsupport_la_SOURCES = \
 	userinfo.h \
 	unicode.cpp \
 	unicode.h \
-	weighted_btree.h \
-	minizip/crypt.h \
-	minizip/ioapi.c \
-	minizip/ioapi.h \
-	minizip/iowin32.c \
-	minizip/iowin32.h \
-	minizip/unzip.c \
-	minizip/unzip.h \
-	minizip/zip.c \
-	minizip/zip.h \
-	minizip/zipunzip.cpp
+	weighted_btree.h
 
 if INSTALL_MACOSX
 liblyxsupport_la_SOURCES += \

@@ -1506,15 +1506,14 @@ support_moced_files = [frontend_env.Moc4('$BUILDDIR/src/support/%s' % x)
     for x in src_support_header_files ]
 support = frontend_env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
-    source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + \
-        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files],
+    source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files],
     CCFLAGS =  [
         '$CCFLAGS',
         '-DHAVE_CONFIG_H',
         '-DQT_NO_STL',
         '-DQT_NO_KEYWORDS',
     ],
-    CPPPATH = ['$CPPPATH', '$BUILDDIR/src/support', '$TOP_SRCDIR/src/support/minizip']
+    CPPPATH = ['$CPPPATH', '$BUILDDIR/src/support']
 )
 Alias('support', support)
 

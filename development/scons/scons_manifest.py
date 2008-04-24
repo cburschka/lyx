@@ -393,24 +393,6 @@ src_support_tests_regfiles_extra_files = Split('''
 ''')
 
 
-src_support_minizip_header_files = Split('''
-    crypt.h
-    ioapi.h 
-    iowin32.h
-    unzip.h
-    zip.h
-''')
-
-
-src_support_minizip_files = Split('''
-    ioapi.c
-    iowin32.c
-    zip.c
-    zipunzip.cpp
-    unzip.c
-''')
-
-
 src_graphics_header_files = Split('''
     GraphicsCache.h
     GraphicsCacheItem.h

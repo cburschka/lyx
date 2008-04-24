@@ -93,7 +93,6 @@
 #include "support/Path.h"
 #include "support/textutils.h"
 #include "support/types.h"
-#include "support/FileZipListDir.h"
 
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
@@ -642,13 +641,6 @@ bool Buffer::readString(string const & s)
 bool Buffer::readFile(FileName const & filename)
 {
 	FileName fname(filename);
-	// Check if the file is compressed.
-	string format = filename.guessFormatFromContents();
-	if (format == "zip") {
-		// decompress to a temp directory
-		LYXERR(Debug::FILES, filename << " is in zip format. Unzip to " << temppath());
-		::unzipToDir(filename.toFilesystemEncoding(), temppath());
-	}
 
 	// remove dummy empty par
 	paragraphs().clear();

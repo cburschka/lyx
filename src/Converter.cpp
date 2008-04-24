@@ -27,7 +27,6 @@
 #include "support/debug.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
-#include "support/FileZipListDir.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
