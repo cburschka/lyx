@@ -245,7 +245,6 @@ dist_doc_DATA = \
 	LaTeXConfig.lyx \
 	Math.lyx \
 	Reference.lyx \
-	Shortcuts.lyx \
 	Tutorial.lyx \
 	UserGuide.lyx
 
