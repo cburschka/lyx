@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 326
+#LyX 1.6.0alpha2 created this file. For more info see http://www.lyx.org/
+\lyxformat 328
 \begin_document
 \begin_header
 \textclass scrbook
@@ -101,7 +101,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -123,7 +122,7 @@ Handbuchergänzungen
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -143,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 25.
  April 2008
 \end_layout
 
@@ -297,7 +296,7 @@ Lyx@LyX und LaTeX
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:lyxandlatex"
+name "Wie-LyX-LaTeX-benutzt"
 
 \end_inset
 
@@ -315,7 +314,7 @@ Einst nannten wir LyX eine
 
 WYSIWYM
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -338,7 +337,6 @@ Sprache
  oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -377,7 +375,7 @@ lässt
  zu benutzen.
  LyX hat auch einige Erweiterung zu LaTeX hinzugefügt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Das LyX-Team hat das wegen Parsing/Kodierung gemacht.
@@ -425,7 +423,7 @@ anzeigen
  Sie werden eine Vielzahl neuer Makros bemerken, die speziell durch LyX
  definiert wurden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ein wenig Geschichte: früher waren all diese Makros in einer 
@@ -459,7 +457,6 @@ DVI (Strg+D
  oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -497,7 +494,6 @@ PDF
  oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -524,7 +520,6 @@ Postscript (Strg+T
 oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -556,7 +551,6 @@ Drucken\SpecialChar \ldots{}
 oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -621,7 +615,6 @@ DVI (Strg+D
  oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -648,7 +641,6 @@ Postscript (Strg+T
 oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -677,7 +669,6 @@ Drucken
 oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -712,7 +703,6 @@ Postscript (Strg+T
 oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -754,7 +744,6 @@ Drucken\SpecialChar \ldots{}
 oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -833,7 +822,7 @@ Hilfe! LyX hat eine unleserliche
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Help!-LyX-generated"
+name "Hilfe!LyX-hat-eine-unleserliche"
 
 \end_inset
 
@@ -841,7 +830,7 @@ Eingeschworene LaTeX-Benutzer werden schreien und dies in die Nacht hinausheulen
  und dann LyX als nutzlos erklären, nur weil sie die Handbücher nicht gelesen
  haben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Anmerkung von 
@@ -894,7 +883,7 @@ X.
 \family default
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
@@ -949,7 +938,7 @@ X.
 LaTeX-Dateien nach LyX konvertieren
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:LaTeX-Dateien-nach-LyX"
+name "LaTeX-Dateien-nach-LyX"
 
 \end_inset
 
@@ -999,7 +988,7 @@ tex2lyx
 \family default
  auf der Kommandozeile aufzurufen,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn LyX installiert wird, wird ein Programm namens 
@@ -1057,7 +1046,7 @@ tex2lyx
  einsetzen wollen, lesen Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:latexcodes"
+reference "LaTeX-Code"
 
 \end_inset
 
@@ -1065,11 +1054,7 @@ reference "sec:latexcodes"
 \end_layout
 
 \begin_layout Section
-LaTeX-Code 
-\family sans
-(ERT
-\family default
-) in LyX-Dokumente einsetzen
+LaTeX-Code in LyX-Dokumente einsetzen
 \begin_inset Index
 status collapsed
 
@@ -1081,10 +1066,33 @@ Latex@LaTeX-Code
 
 
 \begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Te
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-ERT
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Fix this Index entry when bug 4600 is fixed!
 \end_layout
 
 \end_inset
@@ -1095,7 +1103,7 @@ ERT
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:latexcodes"
+name "LaTeX-Code"
 
 \end_inset
 
@@ -1104,17 +1112,7 @@ ent einsetzen.
  LyX kann einfach nicht jede mögliche LaTeX-Konstruktion darstellen und
  wird es wohl auch nie können.
  Wenn Sie jemals LaTeX-Befehle in Ihr LyX-Dokument einsetzen müssen, können
- Sie den ERT
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Evil Red Text
-\end_layout
-
-\end_inset
-
--Einsatz benutzen, den Sie mit 
+ Sie ein TeX-Code-Kästchen benutzen, das Sie mit 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Te
@@ -1134,47 +1132,23 @@ X-Code
 \family sans
 Strg+L
 \family default
- oder 
+ oder Klicken auf 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
  erhalten.
-\end_layout
-
-\begin_layout Standard
-Der ERT-Einsatz hat drei Formen: geschlossen, geöffnet und eingebettet.
- Die ersten beiden Formen werden wie alle zusammenklappbaren Schaltflächen
- benutzt (zum Beispiel Fußnoten) und sind für die meisten LaTeX-Befehle
- nützlich.
- Ein 
-\emph on
-eingebetteter
-\emph default
- ERT-Einsatz stellt seinen Inhalt als Teil der Schaltfläche dar und ist
- für sehr kurze LaTeX-Befehle nützlich.
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% wie hier
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Sie können zwischen den drei Formen hin- und herschalten, indem Sie mit
- der rechten Maustaste auf die ERT-Schaltfläche oder bei eingebettet auf
- das rote Rechteck klicken.
+Das TeX-Code-Kästchen hat zwei Formen: geschlossen und geöffnet.
+ Sie können zwischen den beiden Formen hin- und herschalten, indem Sie mit
+ der rechten Maustaste in das rote Rechteck klicken oder mit der linken
+ Maustaste auf die graue Fläche.
 \end_layout
 
 \begin_layout Standard
@@ -1268,9 +1242,9 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-Der ERT-Einsatz mit diesem Text folgt direkt auf diesen Absatz.
- Wenn Sie das Handbuch in LyX lesen und den ERT-Einsatz geöffnet haben,
- sehen Sie die obigen Zeilen in rot und rot umrandet.
+Das TeX-Code-Kästchen mit diesem Text folgt direkt auf diesen Absatz.
+ Wenn Sie dieses Handbuch in LyX lesen und das TeX-Code-Kästchen geöffnet
+ haben, sehen Sie die obigen Zeilen in rot und rot umrandet.
  Wenn Sie das gedruckte Handbuch lesen, sehen Sie das Ergebnis:
 \begin_inset VSpace defskip
 \end_inset
@@ -1280,7 +1254,7 @@ Der ERT-Einsatz mit diesem Text folgt direkt auf diesen Absatz.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1439,7 +1413,7 @@ Schließlich sind noch ein paar Dinge hervorzuheben:
 \end_layout
 
 \begin_layout Itemize
-Innerhalb von LyX erscheinen ERTs in 
+Innerhalb von LyX erscheinen TeX-Code-Kästchen in 
 \emph on
 rot.
 \end_layout
@@ -1449,7 +1423,7 @@ LyX
 \emph on
 prüft NICHT
 \emph default
- , ob Ihre ERTs richtig sind.
+, ob Ihre TeX-Code-Kästchen syntaktisch  richtig sind.
 \end_layout
 
 \begin_layout Itemize
@@ -1461,12 +1435,12 @@ Die letzte Bemerkung bezieht sich auf zwei Dinge.
  Als erstes hat LyX eine ganze Menge eingebaute Funktionen, und weitere
  werden folgen.
  Vergewissern Sie sich in den Handbüchern, dass LyX die Funktion xyz nicht
- hat, bevor Sie sich fröhlich daranmachen, ERTs zu schreiben.
+ hat, bevor Sie sich fröhlich daranmachen, TeX-Code zu schreiben.
  Zweitens gibt es zahlreiche LaTeX-Pakete, die alle möglichen Dinge tun,
  von Marken über Umschläge bis zu hübschen mehrseitigen Tabellen.
  Suchen Sie auf einem CTAN-Archiv nach Einzelheiten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1511,7 +1485,7 @@ LyX und der LaTeX-Vorspann
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:preamble"
+name "LaTeX-Vorspann"
 
 \end_inset
 
@@ -1876,8 +1850,8 @@ BottomBorder=x6mm
 
 \begin_layout Standard
 Die Werte für x1 -- x6 hängen von Ihren Adressaufklebern ab.
- Sie können jetzt Adressaufkleber drucken, aber Sie müssen ERTs einfügen,
- wobei die Befehle 
+ Sie können jetzt Adressaufkleber drucken, aber Sie müssen TeX-Code-Kästchen
+ einfügen, wobei die Befehle 
 \family typewriter
 
 \backslash
@@ -2045,7 +2019,7 @@ X-Vorspann
  Außerdem gibt es in diesem Handbuch in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cha:Geheimnisse-der-LaTeX-Meister"
+reference "Geheimnisse-der-LaTeX-Meister"
 
 \end_inset
 
@@ -2077,7 +2051,7 @@ Wenn LyX LaTeX aufruft, sagt es ihm, ungeniert alle Fehler zu ignorieren
  Wie wir bereits in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:Help!-LyX-generated"
+reference "Hilfe!LyX-hat-eine-unleserliche"
 
 \end_inset
 
@@ -2415,8 +2389,8 @@ Undefined control sequence
 
 \begin_deeper
 \begin_layout Standard
-Wenn Sie ERTs in Ihr Dokument eingefügt und sich dabei verschrieben haben,
- werden Sie solch eine Meldung bekommen.
+Wenn Sie TeX-Code in Ihr Dokument eingefügt und sich dabei verschrieben
+ haben, werden Sie solch eine Meldung bekommen.
  Vielleicht haben Sie vergessen, ein Paket zu laden.
  Auf jeden Fall bedeutet diese Fehlermeldung, dass Sie einen nicht definierten
  Befehl benutzt haben.
@@ -2476,7 +2450,7 @@ Gut, Sie haben keine der Feineinstellungen benutzt, Sie haben die Regeln
 \begin_layout Enumerate
 \begin_inset CommandInset label
 LatexCommand label
-name "enu:sloppypar"
+name "Sloppypar"
 
 \end_inset
 
@@ -2554,7 +2528,7 @@ Literaturverzeichnis
 
  mit BibTeX
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 BibT
@@ -2576,13 +2550,13 @@ eX
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Literaturverzeichnisse-mit-BibTeX"
+name "Literaturverzeichnisse-mit-BibTeX"
 
 \end_inset
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2619,7 +2593,7 @@ LaTeX: A Document Preparation System
 \emph default
  besorgen, in dessen Anhang B BibTeX eingehend beschrieben ist.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 oder Helmut Kopka: 
@@ -2656,13 +2630,13 @@ TEXINPUTS
 
 \begin_layout Standard
 Für diejenigen, die BibTeX nicht kennen: es ist ein System zum Erstellen
- einer Datenbank mit Ihren am häufigsten benutzen Literaturzitaten.
+ einer Datenbank mit Ihren am häufigsten benutzen Literaturverweisen.
  Bei allen zukünftigen Artikeln, die Sie schreiben, müssen Sie nur noch
- diese Datenbank einbinden und für ein Zitat den einer Referenz zugeordneten
- Schlüssel angeben.
- Auch wenn Sie nur gelegentlich Veröffentlichungen mit nur ein paar Zitaten
- schreiben, sollten Sie sich BibTeX einmal ansehen und entscheiden, ob es
- den Lernaufwand wert ist.
+ diese Datenbank einbinden und für einen Literaturverweise den einer Referenz
+ zugeordneten Schlüssel angeben.
+ Auch wenn Sie nur gelegentlich Veröffentlichungen mit nur ein paar Literaturver
+weisen schreiben, sollten Sie sich BibTeX einmal ansehen und entscheiden,
+ ob es den Lernaufwand wert ist.
 \end_layout
 
 \begin_layout Standard
@@ -2743,7 +2717,8 @@ plain
 \end_layout
 
 \begin_layout Standard
-Wenn Sie nun ein Zitat einfügen wollen, dessen Referenz in der 
+Wenn Sie nun einen Literaturverweis einfügen wollen, dessen Referenz in
+ der 
 \family typewriter
 .bib
 \family default
@@ -2751,7 +2726,7 @@ Wenn Sie nun ein Zitat einfügen wollen, dessen Referenz in der
  Stelle im Text positionieren, den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Zitat\SpecialChar \ldots{}
+Literaturverweis\SpecialChar \ldots{}
 
 \family default
  wählen und den entsprechenden Schlüssel eintragen.
@@ -2764,7 +2739,6 @@ DVI
  oder 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -2775,7 +2749,7 @@ DVI
 \end_layout
 
 \begin_layout Subsection
-Alternative Zitatstile
+Alternative Zitierstile
 \end_layout
 
 \begin_layout Standard
@@ -2788,7 +2762,7 @@ BibTeX benutzt standardmäßig Zahlen (zum Beispiel
 \end_inset
 
 ), um auf ein zitiertes Werk zu verweisen.
- Aber in vielen wissenschaftlichen Disziplinen werden andere Zitatstile
+ Aber in vielen wissenschaftlichen Disziplinen werden andere Verweisstile
  benutzt.
  Der gebräuchlichste ist der Autor-Jahr-Stil (zum Beispiel 
 \begin_inset Quotes gld
@@ -2846,12 +2820,12 @@ Literaturverzeichnis
 \family default
  wählen Sie zunächst den 
 \family sans
-Zitat-Stil
+Zitierstil
 \family default
  aus.
  Bei beiden Paketen enthält der 
 \family sans
-Zitat
+Literaturverweis
 \family default
 -Dialog weitere Funktionen, und Sie zum Beispiel wie folgt zitieren: 
 \begin_inset Quotes gld
@@ -2905,7 +2879,7 @@ natbib
 \family default
  viele andere und sogar interaktive Stildatei-Ersteller
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Siehe 
@@ -2931,7 +2905,7 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 Abschnittsweise Literaturverzeichnisse
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Sectionated-Bibliographies"
+name "Literaturverzeichnisse-abschnitssweise"
 
 \end_inset
 
@@ -2962,7 +2936,7 @@ bibtopic
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Zu finden auf 
@@ -3048,7 +3022,7 @@ Literaturverzeichnis
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:Literaturverzeichnisse-mit-BibTeX"
+reference "Literaturverzeichnisse-mit-BibTeX"
 
 \end_inset
 
@@ -3062,7 +3036,11 @@ Quellen.bib
 Wissenschaft.bib
 \family default
  hinzu.
- Sie können denselben oder einen unterschiedlichen Zitat-Stil benutzen.
+ Sie können denselben oder einen unterschiedlichen 
+\family sans
+Zitiers
+\family default
+til benutzen.
  Zusätzlich können Sie festlegen, ob der Abschnitt des Literaturverzeichnisse
  
 \begin_inset Quotes gld
@@ -3164,25 +3142,25 @@ bibtopic
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sub:Sectionated-Bibliographies"
+reference "Literaturverzeichnisse-abschnitssweise"
 
 \end_inset
 
 ) benutzen kann, ermöglicht LyX auch dies, wenn Sie bereit sind, ein wenig
-  LaTeX-Code (ERT, siehe Abschnitt
+  LaTeX-Code (TeX-Code, siehe Abschnitt
 \begin_inset Space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:latexcodes"
+reference "LaTeX-Code"
 
 \end_inset
 
 ) zu benutzen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Alternativen bieten die Pakete 
@@ -3230,7 +3208,7 @@ begin{btUnit}
 end{btUnit}
 \family default
  einschließen.
- Diese Befehle müssen als ERT eingefügt werden (
+ Diese Befehle müssen als TeX-Code eingefügt werden (
 \family sans
 Einfügen\SpecialChar \menuseparator
 Te
@@ -3253,7 +3231,6 @@ Strg+L
  oder 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -3827,7 +3804,7 @@ fancyhdr
 \family default
  verwiesen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie teTeX installiert haben, finden Sie diese typischerweise als 
@@ -4669,7 +4646,7 @@ Listenmarkierer
  auswählen
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:bullet"
+name "Listenmarkierer"
 
 \end_inset
 
@@ -4695,7 +4672,7 @@ r erreichen.
  also nicht in verschiedenen Teilen des Textes unterschiedliche Zeichen
  verwenden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Genaugenommen geht es schon, Sie müssen dann aber die Einstellungen von
@@ -4964,7 +4941,7 @@ wirklich
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5063,7 +5040,7 @@ label-item
 
 \begin_layout Itemize
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5095,7 +5072,7 @@ star
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5251,7 +5228,7 @@ tex2lyx
  Weitere Einzelheiten finden Sie in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:LaTeX-Dateien-nach-LyX"
+reference "LaTeX-Dateien-nach-LyX"
 
 \end_inset
 
@@ -6078,13 +6055,13 @@ kleben
  
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:chktex"
+name "Chktex"
 
 \end_inset
 
  
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diese Fußnote könnte auf der falschen Seite landen.
@@ -6105,7 +6082,7 @@ Wenn Sie Pech haben, wird die Zeile zwischen dem Text und dem Querverweis
  Siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:chktex"
+reference "Chktex"
 
 \end_inset
 
@@ -8132,7 +8109,7 @@ chend angepasst werden.
  und ich werde versuchen, einen entsprechenden Eintrag zu bewirken oder
  Ihnen dabei helfen, das selber zu machen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es ist ziemlich einfach, Sie müssen lediglich eine vierzeilige Datei anlegen
@@ -8154,7 +8131,7 @@ In LyX verwenden Sie zur Eingabe von Programmcode den Umgebungstyp
 \family sans
 Scrap.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Der entsprechende Terminus in NoWeb ist 
@@ -8246,7 +8223,7 @@ Eingabe
  abschließen.
  Das obige Beispiel sähe also so aus:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie die gedruckte Version dieses Textes lesen, werden Sie keinen Unterschie
@@ -8285,7 +8262,7 @@ Strg+Eingabe
 \family default
  verwenden zu müssen, funktioniert dieses Format einwandfrei.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es steht aber auf der Wunschliste des Autors, dies zu verbessern.
@@ -8459,7 +8436,7 @@ status collapsed
 \family default
 X, um die LaTeX-Datei zu erzeugen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Konverter finden Sie unter 
@@ -9208,7 +9185,7 @@ ben
 Geheimnisse der LaTeX-Meister
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Geheimnisse-der-LaTeX-Meister"
+name "Geheimnisse-der-LaTeX-Meister"
 
 \end_inset
 
@@ -9315,7 +9292,7 @@ Absicht
 \begin_layout Standard
 Das Ziel dieses Abschnittes ist es,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -10642,7 +10619,7 @@ dropcaps
  Da dieses Paket aber nicht zum Standardumfang von teTeX gehört, können
  wir das hier nicht vorführen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Der LaTeX-Befehl wäre 
@@ -10796,7 +10773,7 @@ b
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -10819,7 +10796,7 @@ vspace*{-8.4ex}
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -10841,7 +10818,7 @@ Mike Ressler
  Mit etwas Kenntnis von LaTeX ist dies durchaus möglich -- allerdings etwas
  aufwendig, wie das Beispiel am Anfang dieses Absatzes zeigt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Für diejenigen, die den Text nur in gedruckter Form vorliegen haben: Die
@@ -11191,7 +11168,7 @@ Wie Sie sehen umfassen die Beispiele dieses Kapitels Nützliches und Seltsames.
  Während ich nicht erwarte, dass jemand jemals die Absatzform aus dem letzten
  Abschnitt benötigen wird,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -11884,7 +11861,7 @@ article
 \begin_layout Section
 A&A Paper
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumentenklasse!A&A Paper
@@ -12039,7 +12016,7 @@ ge\SpecialChar \ldots{}
 
 (Strg+Umschalt+N)
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Verwendung von Vorlagen ist äußerst empfehlenswert.
@@ -12090,7 +12067,7 @@ Das erste, was Sie eingeben müssen, sind die Informationen für den Titel.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12183,7 +12160,7 @@ ed
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12282,7 +12259,7 @@ email{Adresse}
 
 \begin_layout Standard
 In allen Fällen müssen Sie die entsprechenden Befehle selber eingeben und
- als ERT markieren.
+ als TeX-Code markieren.
  Beachten Sie auch das Beispiel.
 \end_layout
 
@@ -12302,7 +12279,7 @@ Die Zusammenfassung sollte direkt auf den Titelblock folgen.
 \backslash
 keywords{}
 \family default
- von Hand eingeben und als ERT kennzeichnen.
+ von Hand eingeben und als TeX-Code kennzeichnen.
  Siehe dazu auch das Beispiel.
 \end_layout
 
@@ -12320,7 +12297,7 @@ paper (A&A)
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12419,7 +12396,7 @@ TeX
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12449,7 +12426,7 @@ paper (A&A)
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12586,7 +12563,6 @@ Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen (
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -12778,7 +12754,7 @@ lyx
 \begin_layout Section
 AASTeX
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumentenklasse!AAST
@@ -12799,7 +12775,7 @@ eX
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12911,9 +12887,10 @@ altaffiltext
 \family default
 .
  Diese fallen Ihnen in der Vorlage sicherlich sofort auf: Derartige Befehle
- müssen direkt eingetippt und als ERT markiert werden.
- Ich habe versucht, den Umfang solcher ERTs so gering wie möglich zu halten,
- aber es sind immer noch ein paar mehr, als den meisten lieb ist.
+ müssen direkt eingetippt und als TeX-Code markiert werden.
+ Ich habe versucht, den Umfang solcher TeX-Code-Kästchen so gering wie möglich
+ zu halten, aber es sind immer noch ein paar mehr, als den meisten lieb
+ ist.
 \end_layout
 
 \begin_layout Subsection
@@ -13299,7 +13276,7 @@ end{sloppypar}
 \begin_layout Subsubsection
 Dinge, die funktionieren, jedoch zusätzlicher Hinweise bedürfen
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dinge, die funktionieren
@@ -13387,7 +13364,7 @@ email
 \family default
  (2.3) -- Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
  werden.
- Verwenden Sie ERTs, um ihn einzufügen.
+ Verwenden Sie TeX-Code, um ihn einzufügen.
 \end_layout
 
 \begin_layout Itemize
@@ -13413,7 +13390,7 @@ notetoeditor
 \family default
  (2.6) -- Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
  werden.
- Verwenden Sie ERTs, um ihn einzufügen.
+ Verwenden Sie TeX-Code, um ihn einzufügen.
 \end_layout
 
 \begin_layout Itemize
@@ -13533,7 +13510,7 @@ figcaption
 \end_layout
 
 \begin_layout Subsubsection
-Nicht implementierte Dinge (ERT verwenden)
+Nicht implementierte Dinge (TeX-Code verwenden)
 \end_layout
 
 \begin_layout Standard
@@ -13880,7 +13857,7 @@ Blocksatz
 Literaturverzeichnisse
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Literaturverzeichnisse"
+name "Literaturverzeichnisse"
 
 \end_inset
 
@@ -13950,8 +13927,8 @@ plotone
 \begin_inset Space ~
 \end_inset
 
-Befehle als ERTs in einer Gleitumgebung einsetzen, mir ist es aber nie gelungen,
- auf diese Weise ein korrektes Aussehen zu erhalten.
+Befehle als TeX-Code in einer Gleitumgebung einsetzen, mir ist es aber nie
+ gelungen, auf diese Weise ein korrektes Aussehen zu erhalten.
  Mit 
 \family typewriter
 graphicx
@@ -14018,7 +13995,7 @@ ijmpc
 status collapsed
 
 \begin_layout Plain Layout
-qijmpc
+ijmpc
 \end_layout
 
 \end_inset
@@ -14497,10 +14474,10 @@ tbl
  command to implement table captions.
  As a result, a table created by LyX is printed correctly, but its caption
  is ignored.
- However, you can use some ERT to overpass this problem, so that captions
+ However, you can use some TeX-Code to overpass this problem, so that captions
  are printed as expected.
  To do so, create a float table as usual, remove the caption, and replace
- it with the ERT 
+ it with the TeX-Code 
 \family typewriter
 
 \backslash
@@ -14510,7 +14487,7 @@ your table caption
 \emph default
 }{
 \family default
- (sic); you must also the ERT 
+ (sic); you must also the TeX-Code 
 \family typewriter
 }
 \family default
@@ -14697,7 +14674,7 @@ X
 \family default
 )
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Actually you have the choice between LaTeX (plain) and pdflatex.
@@ -14756,12 +14733,12 @@ Die geänderte
 \end_layout
 
 \begin_layout Subsection
-Use of ERT
+Use of TeX-Code
 \end_layout
 
 \begin_layout Standard
-The use of ERT is reduced to two commands, which must be placed at the top
- of the document.
+The use of TeX-Code is reduced to two commands, which must be placed at
+ the top of the document.
  If you started writing your paper by using the 
 \family typewriter
 ijmpc.lyx
@@ -14770,12 +14747,12 @@ ijmpc.lyx
 \family typewriter
 ijmpd.lyx
 \family default
- template, the ERT needed is already in its place; you usually don't need
- to delete it.
- You may only modify the first ERT to specify the information printed to
- the top of odd and even pages (authors' names and short paper's title,
+ template, the TeX-Code needed is already in its place; you usually don't
+ need to delete it.
+ You may only modify the first TeX-Code to specify the information printed
+ to the top of odd and even pages (authors' names and short paper's title,
  respectively).
- This ERT must have the form 
+ This TeX-Code must have the form 
 \family typewriter
 
 \backslash
@@ -14858,7 +14835,7 @@ seltsame
  Paketbefehle (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "subsec:kluwer_peculiarities"
+reference "Kluwer-Paket-Besonderheiten"
 
 \end_inset
 
@@ -14998,7 +14975,7 @@ status collapsed
 
 Vorspann
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 siehe 
@@ -15046,7 +15023,7 @@ xdvi
 Besonderheiten des Kluwer-Paketes
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:kluwer_peculiarities"
+name "Kluwer-Paket-Besonderheiten"
 
 \end_inset
 
@@ -15060,7 +15037,7 @@ Das Kluwer-Paket hat folgende Besonderheiten:
 \begin_layout Enumerate
 Es ist möglich, mehrere Artikel in dieselbe LaTeX-Datei zu schreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ich wüsste aber nicht, warum.
@@ -15090,7 +15067,7 @@ end{article}
  auf.
  Obwohl man das in LyX implementieren kann, habe ich es nicht getan, weil
  es hässlich aussieht und den Neuling verwirrt.
- Deshalb müssen Sie sie als ERTs eingeben.
+ Deshalb müssen Sie sie als TeX-Code eingeben.
 \end_layout
 
 \begin_layout Enumerate
@@ -15114,7 +15091,7 @@ begin{opening}
 \backslash
 end{opening}
 \family default
- als ERTs eingeben.
+ als TeX-Code eingeben.
 \end_layout
 
 \begin_layout Enumerate
@@ -15303,7 +15280,7 @@ letter (koma-script)
 \family default
  sind in einer fetten, serifenlosen Schrift gesetzt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es gibt einen großen Unterschied zwischen den fetten, serifenlosen alten
@@ -15466,7 +15443,7 @@ status collapsed
 
 ) zu finden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es gibt eine englische Übersetzung 
@@ -15663,7 +15640,7 @@ article (koma-script)
 \family default
  enthalten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es gibt in 
@@ -15810,7 +15787,7 @@ normalen
 \emph default
  Absatz eingegeben werden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die entsprechenden LaTeX-Befehle müssen vor dem 
@@ -16851,7 +16828,7 @@ Letter-Class-Options
 \emph default
 -Datei mit Endung *.lco) tun, welche dann als Klassenoption eingebunden wird.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Das KOMA-Paket stellt selbst einige dieser Stildateien zur Verfügung.
@@ -16947,7 +16924,6 @@ Absatz-Einstellungen
 (
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	embed ""
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -17524,7 +17500,7 @@ std*.inc
 Folien mit slides (default)
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:slitex"
+name "Folien-mit-slides"
 
 \end_inset
 
@@ -17627,7 +17603,7 @@ slides
 Zu Beginn
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Slidestart"
+name "Folien-Start"
 
 \end_inset
 
@@ -17777,7 +17753,7 @@ Dokumentklasse
  Näheres dazu in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:SlideNote"
+reference "Folien-mit-Notizen"
 
 \end_inset
 
@@ -17869,7 +17845,7 @@ slides
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -17962,7 +17938,7 @@ Kommentar
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -17991,7 +17967,7 @@ Dafür gibt es folgende neue Umgebungstypen:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18037,7 +18013,7 @@ SichtbarerText
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18070,7 +18046,7 @@ LaTeX-Magie
 Kniffe mit den neuen Absatzumgebungen
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Slide-Kniffe"
+name "Folien-Kniffe"
 
 \end_inset
 
@@ -18222,7 +18198,7 @@ das
 Wenn Sie (wie in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:Slide-Kniffe"
+reference "Folien-Kniffe"
 
 \end_inset
 
@@ -18379,7 +18355,7 @@ Overlay
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mehrere 
@@ -18474,7 +18450,7 @@ Wie die Namen andeuten, handelt es sich um zwei befehlsähnliche Absatzumgebunge
  Denken Sie aber wie in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:Slide-Kniffe"
+reference "Folien-Kniffe"
 
 \end_inset
 
@@ -18661,7 +18637,7 @@ Slides
  Das ist zwar prinzipiell möglich, dazu benötigen Sie aber einige Befehle
  im LaTeX-Modus.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diese Befehle sind
@@ -18691,10 +18667,10 @@ visible \SpecialChar \ldots{}
 \begin_inset Space ~
 \end_inset
 
-und müssen als ERTs markiert werden.
+und müssen als TeX-Code markiert werden.
  Der Text, der unsichtbar oder sichtbar gemacht werden soll, muss innerhalb
  der Klammern anstelle der Punkte eingefügt werden.
- Weitere Informationen zum Einfügen von ERTs finden Sie im 
+ Weitere Informationen zum Einfügen von TeX-Code finden Sie im 
 \emph on
 Benutzerhandbuch
 \emph default
@@ -18712,7 +18688,7 @@ Die Notiz- mit der Folie-Umgebung benutzen
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:SlideNote"
+name "Folien-mit-Notizen"
 
 \end_inset
 
@@ -18805,7 +18781,7 @@ clock
  angeben (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Slidestart"
+reference "Folien-Start"
 
 \end_inset
 
@@ -19051,7 +19027,7 @@ Foils
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:foiltex"
+reference "Folien-mit-foiltex"
 
 \end_inset
 
@@ -19062,7 +19038,7 @@ seminar
 , das in manchen TeX-Distributionen mitgeliefert wird.
  Das letztere wird allerdings von LyX noch nicht unterstützt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Vielleicht wollen Sie diese Aufgabe übernehmen\SpecialChar \ldots{}
@@ -19086,13 +19062,13 @@ TeX
 ]
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:foiltex"
+name "Folien-mit-foiltex"
 
 \end_inset
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumentenklasse!Folie!FoilT
@@ -19113,7 +19089,7 @@ eX
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19174,7 +19150,7 @@ slides (default)
  suchen, lesen Sie bitte Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:slitex"
+reference "Folien-mit-slides"
 
 \end_inset
 
@@ -19395,7 +19371,7 @@ X
  Näheres dazu im Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:foilfoot"
+reference "Foiltex-Kopf-und-fußzeilen"
 
 \end_inset
 
@@ -19625,7 +19601,7 @@ X
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19836,7 +19812,7 @@ X
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19885,7 +19861,7 @@ Außerdem bietet LyX leicht abgeänderte Versionen dieser Umgebungen:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19959,7 +19935,7 @@ X
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20070,7 +20046,7 @@ Die Umgebungen mit einem Stern am Ende des Namens sind nicht nummeriert.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20153,7 +20129,7 @@ Martin Vermeer
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20264,7 +20240,7 @@ X
  Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:unsuppfoils"
+reference "Folitex:-nicht-unterstützt"
 
 \end_inset
 
@@ -20427,7 +20403,7 @@ Benutzerhandbuch
  Sie auch einen Blick in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:bullet"
+reference "Listenmarkierer"
 
 \end_inset
 
@@ -20498,7 +20474,7 @@ Einstellungen\SpecialChar \ldots{}
 Kopf- und Fußzeilen der Seite
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:foilfoot"
+name "Foiltex-Kopf-und-fußzeilen"
 
 \end_inset
 
@@ -20597,7 +20573,7 @@ Foil
 TeX
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:unsuppfoils"
+name "Folitex:-nicht-unterstützt"
 
 \end_inset
 
@@ -20605,7 +20581,7 @@ name "sec:unsuppfoils"
 \end_layout
 
 \begin_layout Standard
-Alle unten erwähnten Befehle müssen als ERTs eingegeben werden.
+Alle unten erwähnten Befehle müssen als TeX-Code eingegeben werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -20932,7 +20908,7 @@ foils
 \begin_layout Section
 Latex8 (IEEE-Konferenzpapiere)
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumentenklasse!Latex8
@@ -20995,7 +20971,7 @@ Unterstützte Umgebungstypen
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -21067,7 +21043,7 @@ Beschriftung
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -21829,7 +21805,7 @@ R
 \begin_layout Section
 article (REVTeX 4)
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumentenklasse!article!RevT
@@ -21850,7 +21826,7 @@ eX 4
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -21922,7 +21898,7 @@ X)
 \begin_inset Space ~
 \end_inset
 
-3.1-Befehle als ERTs eingegeben werden müssen.
+3.1-Befehle als TeX-Code eingegeben werden müssen.
  Da RevTeX
 \begin_inset Space ~
 \end_inset
@@ -22103,7 +22079,7 @@ Affiliation
 \family default
  identisch sind, Deshalb müssen Sie auch nicht beide verwenden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Falls Sie neugierig sind: beide wurden eingebaut, so dass 
@@ -22516,9 +22492,19 @@ elsart.cls
 elsart.layout
 \family default
 .
- Da die Elsevier-Klassen\SpecialChar \-
-datei weitgehend auf der Standard-article-Klasse
- basiert, hat man das meiste der normalen Funktionalität.
+ Da die Elsevier
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Klassendatei weitgehend auf der Standard-article-Klasse basiert, hat man
+ das meiste der normalen Funktionalität.
  Die Elsevier-Klasse enthält viele mathematischen Umgebungen, die den AMS-Um\SpecialChar \-
 ge\SpecialChar \-
 bu
@@ -22614,7 +22600,7 @@ lyx-devel@lists.lyx.org
 
 , lots will probably never, due to the limitations of LyX's framework.
  Of course you can still use all features with the help of some native LaTeX
- commands (ERT
+ commands (TeX-Code
 \begin_inset Foot
 status collapsed
 
@@ -22639,7 +22625,7 @@ section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Inserting-LaTeX-Code"
+reference "LaTeX-Code"
 
 \end_inset
 
@@ -22976,9 +22962,9 @@ Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
  One is poemtitle, which is a centered title for poems, which will also
  be added to the table of contents (verse is the standard environment for
  poems.
- Memoir has some enhanced versions of verse, but you need to use ERT, because
- they have to be nested inside regular verse environments, which is not
- possible with LyX).
+ Memoir has some enhanced versions of verse, but you need to use TeX-Code,
+ because they have to be nested inside regular verse environments, which
+ is not possible with LyX).
 \end_layout
 
 \begin_layout Description

@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0alpha2 created this file. For more info see http://www.lyx.org/
 \lyxformat 328
 \begin_document
 \begin_header
@@ -119,7 +119,7 @@ vom LyX-Team
 \size normal
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -141,7 +141,7 @@ Uwe Stöhr
 \size default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -164,7 +164,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
+letzte Änderung: 24.
  April 2008
 \end_layout
 
@@ -946,7 +946,7 @@ Anpassung
 \begin_layout Section
 LaTeX-Einstellung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaT
@@ -967,7 +967,7 @@ eX-Einstellungen
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1265,7 +1265,7 @@ herstellen
  in den Originalzustand bringen, außerdem ist er hilfreich, wenn mehrere
  Personen an einem Text arbeiten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie das vorhaben, sollten Sie sich die Unterstützung für Versionskontrolle
@@ -2890,7 +2890,7 @@ unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2903,7 +2903,7 @@ begin{sloppypar}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3073,7 +3073,7 @@ status collapsed
 
 Dokumentklasse
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 siehe 
@@ -3210,7 +3210,7 @@ reference "Tab:Dokumentklassen"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -4183,7 +4183,7 @@ end{sloppypar}
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
@@ -5004,7 +5004,7 @@ pull-down
 
 -Menü am Anfang der Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5028,9 +5028,23 @@ reference "Kontrolle-der-Oberfläche"
 \end_inset
 
  beschrieben.
- Für einige gibt es am Anfang der Extra
+ Wenn das Menü geöffnet ist, können Sie die Einträge einschränken, wenn
+ Sie Buchstaben eingeben, die in dem von Ihnen gesuchten Eintrag vorkommen.
+ Geben Sie zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+abs
+\begin_inset Quotes grd
+\end_inset
+
+ ein, werden alle Einträge angezeigt, die mit Abschnitten zu tun haben.
+\end_layout
+
+\begin_layout Standard
+Für einige gibt es am Anfang der Extra
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7227,7 +7241,7 @@ Leerzeichen
 .) Lesen Sie auch Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "HFill"
+reference "Variabler-horiz-Abstand"
 
 \end_inset
 
@@ -7639,14 +7653,14 @@ Liste
 -Umgebung, von der wir Ihnen erzählen müssen.
  Wie Sie in den Beispielen sehen können, richtet LyX die Marken standardmäßig
  linksbündig aus.
- In Wirklichkeit ist ein 
+ In Wirklichkeit ist ein variabler horizontaler Abstand
 \family sans
-HFill
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-HFill
+Abstand ! variabler horizontaler
 \end_layout
 
 \end_inset
@@ -7654,19 +7668,12 @@ HFill
 
 \family default
  am Ende der Marke eingebaut.
- Man kann zusätzliche 
-\family sans
-HFill
-\family default
-s benutzen, damit LyX die Marken anders ausrichtet.
- Wir werden 
-\family sans
-HFill
-\family default
-s später in Abschnitt 
+ Man kann zusätzliche variable horizontale Abstände benutzen, damit LyX
+ die Marken anders ausrichtet.
+ Wir werden variable horizontale Abstände später in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "HFill"
+reference "Variabler-horiz-Abstand"
 
 \end_inset
 
@@ -7684,11 +7691,8 @@ L Die Standardausrichtung.
 \begin_inset Space \hfill{}
 \end_inset
 
-R Ein 
-\family sans
-HFill
-\family default
- am Anfang der Marke richtet sie nach rechts aus.
+R Ein variabler horizontaler Abstand am Anfang der Marke richtet sie nach
+ rechts aus.
 \end_layout
 
 \begin_layout Labeling
@@ -7700,19 +7704,13 @@ Z
 \begin_inset Space \hfill{}
 \end_inset
 
- Je ein 
-\family sans
-HFill
-\family default
- am Anfang und am Ende zentriert die Marke.
+ Je ein variabler horizontaler Abstand am Anfang und am Ende zentriert die
+ Marke.
 \end_layout
 
 \begin_layout Standard
-Machen Sie sich nichts daraus, wenn Sie noch nicht wissen, was 
-\family sans
-HFill
-\family default
-s sind.
+Machen Sie sich nichts daraus, wenn Sie noch nicht wissen, was variabler
+ horizontaler Abstand ist.
  Merken Sie sich nur, dass Sie sie zum Anpassen der 
 \family sans
 Liste
@@ -8441,7 +8439,7 @@ L
 \family default
 yX-Code
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Lyx@LyX-Code
@@ -11003,69 +11001,45 @@ Leerraum!waagerechter
 
 \end_layout
 
-\begin_layout Subsubsection
-HFill
-\begin_inset CommandInset label
-LatexCommand label
-name "HFill"
+\begin_layout Standard
+Diesen können Sie über 
+\family sans
+Einfügen
+\family default
+\SpecialChar \menuseparator
 
+\family sans
+Formatierung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Horizontaler
+\family default
+
+\begin_inset Space \space{}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Variabler horizontaler Leerraum (LaTeX 
 \family sans
-HFill
+Abstand
 \family default
-) ist eine besondere LyX-Funktion, um zusätzlichen Leerraum gleichmäßig
- einzufügen.
- Ein 
+ auswählen.
+ Im Dialogfenster bekommen Sie unter 
 \family sans
-HFill
+Abstand
 \family default
- ist ein Leerraum mit variabler Länge, der dem verbleibenden zwischen dem
- linken und dem rechten Rand entspricht.
- Gibt es in einer Zeile mehrere 
+ eine Auswahl von Abständen.
+ Nur bei 
 \family sans
-HFill
+Benutzerdefiniert
 \family default
-s, teilen sie sich den freien Leerraum gleichmäßig.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Bemerkung
-\emph default
-: wenn Sie einen 
+ können Sie einen 
 \family sans
-HFill
+Wert
 \family default
- am Anfang einer Zeile, die 
-\emph on
-nicht
-\emph default
- die erste Zeile eines Absatzes ist, einfügen, ignoriert LyX das.
- Damit wird verhindert, dass 
+ angeben, und nur bei 
 \family sans
-HFill
-\family default
-s zufällig auf eine neue Zeile gelangen.
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-HFill
-\family roman
-s
-\family default
- kann man mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Formatierung\SpecialChar \menuseparator
 Variabler
 \begin_inset Space \space{}
 \end_inset
@@ -11076,7 +11050,70 @@ horiz.
 
 Abstand
 \family default
- einsetzen.
+ ein 
+\family sans
+Füllmuster
+\family default
+ wählen und 
+\family sans
+Schützen
+\family default
+ ankreuzen.
+\end_layout
+
+\begin_layout Subsubsection
+Variabler horizontaler Abstand
+\begin_inset CommandInset label
+LatexCommand label
+name "Variabler-horiz-Abstand"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein variabler horizontaler Abstand (LaTeX 
+\family sans
+HFill
+\family default
+) ist eine besondere Funktion, um zusätzlichen Leerraum gleichmäßig einzufügen.
+ Er ist ein Leerraum mit variabler Länge, der dem verbleibenden zwischen
+ dem linken und dem rechten Rand entspricht.
+ Gibt es in einer Zeile mehrere variable horizontale Abstände, teilen sie
+ sich den freien Leerraum gleichmäßig.
+ 
+\family sans
+Variable
+\begin_inset Space \space{}
+\end_inset
+
+horiz.
+\begin_inset Space \space{}
+\end_inset
+
+Abstände
+\family default
+ können mit einem 
+\family sans
+Füllmuster
+\family default
+ versehen werden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bemerkung
+\series default
+: wenn Sie einen variablen horizontalen Abstand am Anfang einer Zeile, die
+ 
+\emph on
+nicht
+\emph default
+ die erste Zeile eines Absatzes ist, einfügen, ignoriert LyX das.
+ Damit wird verhindert, dass variable horizontale Abstände zufällig auf
+ eine neue Zeile gelangen.
  Hier sind ein paar Beispiele:
 \end_layout
 
@@ -11130,33 +11167,18 @@ Zitat
 \family default
 -Umgebung.
  Hier :
-\begin_inset Space \hfill{}
+\begin_inset Space \dotfill{}
 \end_inset
 
-: ist ein 
-\family sans
-HFill
-\family default
- in einem Standardabsatz.
- Im gedruckten Text ist er vielleicht nicht zu erkennen, aber er ist zwischen
- den 
-\begin_inset Quotes pld
-\end_inset
-
-::
-\begin_inset Quotes eld
-\end_inset
-
-.
+: ist ein variabler horizontaler Abstand in einem Standardabsatz.
+ Damit er im gedruckten Text besser zu erkennen ist, wurde er mit einem
+ Füllmuster versehen.
 \end_layout
 
 \begin_layout Standard
-Erinnern Sie sich, dass ein 
-\family sans
-HFill
-\family default
- immer den restlichen Leerraum zwischen den Rändern füllt? Es kann mehrere
- Ränder in einer Zeile geben.
+Erinnern Sie sich, dass ein variabler horizontaler Abstand immer den restlichen
+ Leerraum zwischen den Rändern füllt? Es kann mehrere Ränder in einer Zeile
+ geben.
  Hier ist ein Beispiel mit der 
 \family sans
 Liste
@@ -11200,17 +11222,9 @@ Liste
 \emph on
 verborgenen
 \emph default
- 
-\family sans
-HFill
-\family default
-; er wird automatisch am Ende der Marke eingefügt.) Die zweite Zeile ist
- ein ganz normales Listenelement zum Vergleich.
- 
-\family sans
-HFill
-\family default
-s wirken in anderen Situationen mit 
+ variablen horizontalen Abstand; er wird automatisch am Ende der Marke eingefügt.
+) Die zweite Zeile ist ein ganz normales Listenelement zum Vergleich.
+ Variable horizontale Abstände wirken in anderen Situationen mit 
 \emph on
 Mehrfach
 \emph default
@@ -11222,68 +11236,19 @@ Weitere Zwischenräume
 \end_layout
 
 \begin_layout Standard
-Die folgenden beiden Zwischenraumarten werden nicht von LyX unterstützt,
- weil sie nicht oft benutzt werden, so dass Sie ERT (siehe Abschnitt
+Der folgende Zwischenraum wird nicht von LyX unterstützt, weil er nicht
+ oft benutzt wird, so dass Sie TeX-Code (siehe Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ERT-Kästchen"
+reference "TeX-Code-Kästchen"
 
 \end_inset
 
 ) benutzen müssen.
-\end_layout
-
-\begin_layout Paragraph
-Definierter Abstand
-\end_layout
-
-\begin_layout Standard
-Manchmal benötigt man Abstände mit einer definierten Länge, z.
-\begin_inset Space \thinspace{}
-\end_inset
-
-B.
-\begin_inset Space \space{}
-\end_inset
-
-für Vorlagen oder Fragebögen.
-\end_layout
-
-\begin_layout Standard
-Dies ist eine Zeile mit 
-\begin_inset Formula $\to$
-\end_inset
-
-
-\begin_inset Space \hspace{}
-\length 2cm
-\end_inset
-
-
-\begin_inset Formula $\gets$
-\end_inset
-
- 2
-\begin_inset Space \thinspace{}
-\end_inset
-
-cm Abstand zwischen den beiden Pfeilen.
- Sie können alle in Anhang
-\begin_inset Space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "LyX-Maßeinheiten"
-
-\end_inset
-
- aufgelisteten Maßeinheiten benutzen.
 \end_layout
 
 \begin_layout Paragraph
@@ -11346,7 +11311,7 @@ springt
 \end_layout
 
 \begin_layout Standard
-Die Auswahl-Möglichkeiten sind also rechts vom Begriff 
+Die Auswahlmöglichkeiten sind also rechts vom Begriff 
 \begin_inset Quotes gld
 \end_inset
 
@@ -11365,14 +11330,14 @@ Herr Meier
 \backslash
 phantom
 \family default
- als ERT, in unserem Fall 
+ als TeX-Code, in unserem Fall 
 \family typewriter
 
 \backslash
 phantom{Herr Meier }
 \family default
 .
- Ob das Leerzeichen im ERT oder danach steht, spielt keine Rolle.
+ Ob das Leerzeichen im TeX-Code oder danach steht, spielt keine Rolle.
 \begin_inset Foot
 status collapsed
 
@@ -11484,11 +11449,8 @@ Variabel
 VFill
 \family default
 ) zeigen, weil es Papierverschwendung ist.
- Er arbeitet so wie die anderen Fülltypen, einschließlich 
-\family sans
-HFill
-\family default
-: er füllt den restlichen senkrechten Raum einer Seite mit Leerraum.
+ Er arbeitet so wie die anderen Fülltypen, einschließlich variabler horizontaler
+ Abstand: er füllt den restlichen senkrechten Raum einer Seite mit Leerraum.
  Gibt es mehrere 
 \family sans
 VFill
@@ -12092,7 +12054,7 @@ Bei langen Inernetadressen wie ftp://dante.ctan.org/tex-archive/help/Catalogue/e
 ries/esint.html kann es vorkommen, dass sie über dem rechten Rand hinausragen.
  Das kann man verhindern, indem man einen Schrägstrich
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Schrägstrich ! umbruchfähig
@@ -12221,7 +12183,7 @@ kg.
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12297,7 +12259,7 @@ end{sloppypar}
 \begin_layout Subsubsection
 Halbes Leerzeichen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Leerzeichen!halbes
@@ -12454,7 +12416,7 @@ Befehl
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -15768,7 +15730,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Der ERT-Befehl 
+Der TeX-Code 
 \backslash
 / verhindert, dass die Striche als ein Gedankenstrich gedruckt werden.
 \end_layout
@@ -16008,7 +15970,7 @@ Manchmal will man verhindern, dass etwas getrennt wird.
 \backslash
 mbox
 \family default
- als ERT, zum Beispiel 
+ als TeX-Code, zum Beispiel 
 \begin_inset Graphics
 	filename ../clipart/mbox.png
 	scale 70
@@ -16070,7 +16032,7 @@ Strg+
 \begin_inset Quotes grd
 \end_inset
 
- als ERT benutzen, weil LyX mit 
+ als TeX-Code benutzen, weil LyX mit 
 \family sans
 Strg+
 \family default
@@ -16165,14 +16127,14 @@ Sie benutzen statt des Bindestrichs
 \begin_inset Quotes grd
 \end_inset
 
- als ERT (siehe Abschnitt
+ als TeX-Code (siehe Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ERT-Kästchen"
+reference "TeX-Code-Kästchen"
 
 \end_inset
 
@@ -16297,7 +16259,7 @@ kann es wie hier vorkommen, dass die Zeile nach dem
 -Zeichen umgebrochen wird, was natürlich Unsinn ist.
  Dann verwendet man am besten den geschützten Trennstrich
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Trennstrich ! geschützter
@@ -17109,7 +17071,7 @@ LyX-Notiz:
 \family default
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LyX-Notiz
@@ -17137,7 +17099,7 @@ Kommentar:
 \family default
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Kommentar
@@ -17161,7 +17123,7 @@ Grauschrift:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 grauer
@@ -17212,7 +17174,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 eingerahmter
@@ -17249,7 +17211,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Text mit farbigem Hintergrund
@@ -17689,7 +17651,7 @@ r auch, wenn Sie mit der linken Maustaste in die Abbildung klicken.
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -18698,7 +18660,7 @@ reference "Abbildungen"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -18739,7 +18701,7 @@ M.C.
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -20306,7 +20268,7 @@ reference "Tab:Zellen-um-90°-drehen"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21913,7 +21875,7 @@ reference "Tab:Mehrzeilige-Tabelle"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -22264,7 +22226,7 @@ Fußzeile
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tabellen!letzte Fußzeile
@@ -22968,7 +22930,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23181,7 +23143,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -23370,7 +23332,7 @@ reference "Tab:Tabelle-ohne-Titel"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -25631,7 +25593,7 @@ reference "Tab:Akzente"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -27359,7 +27321,7 @@ reference "Tab:Mathematik-Schriftstile"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -28266,7 +28228,7 @@ Dies gilt auch für Mathematikfonts in Titeln usw.
 \begin_layout Section
 AMS-LaTeX
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 AMS-T
@@ -28287,7 +28249,7 @@ eX
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -28462,7 +28424,7 @@ esint
 
 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -29173,7 +29135,18 @@ Objekte
 \end_layout
 
 \begin_layout Section
+URLs und Hyperlinks
+\end_layout
+
+\begin_layout Subsection
 URLs (Uniform Resource Locators)
+\begin_inset CommandInset label
+LatexCommand label
+name "URLs"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -29184,73 +29157,15 @@ URL
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "URLs"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Es ist oft wünschenswert, lange Ausdrücke 
-\emph on
-wörtlich
-\emph default
- im Text einzufügen, etwa Adressen von Seiten im WWW, Email-Adressen usw.
- Diese Dinge enthalten normalerweise keine Leerzeichen und es ist deshalb
- schwer, sie korrekt zu setzen.
- Sie geraten dann oft an das Ende einer Zeile und erzeugen je nach den äußeren
- Umständen zu volle oder zu leere Zeilen.
- Sie könne in diesen Fällen den Menüpunkt 
+Links zu Internetseiten oder Email-Adressen können Sie mit 
 \family sans
 Einfügen\SpecialChar \menuseparator
 URL
 \family default
-\SpecialChar \ldots{}
-
-\begin_inset Space \space{}
-\end_inset
-
-oder 
-\begin_inset Graphics
-	filename ../../images/url-insert.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- verwenden, um eine lange URL einzugeben, die dann bei Bedarf an (automatisch
- bestimmten) Trennstellen umgebrochen wird.
-\end_layout
-
-\begin_layout Standard
-Wählen Sie an der gewünschten Einfügestelle einfach 
-\family sans
-Einfügen\SpecialChar \menuseparator
-URL
-\family default
-\SpecialChar \ldots{}
- oder 
-\begin_inset Graphics
-	filename ../../images/url-insert.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-.
- Es öffnet sich ein Dialogfenster, in dem Sie (im Feld 
-\family sans
-URL
-\family default
-) die volle Adresse eingeben können.
- Im einfachsten Fall ist das bereits alles.
- Klicken Sie einfach mal auf das folgende graue Feld um zu sehen, wie die
- Adresse der LyX-Homepage eingegeben wurde: 
+ einfügen, wie zum Beispiel die Adresse der LyX-Homepage: 
 \begin_inset Flex URL
 status collapsed
 
@@ -29306,6 +29221,8 @@ Wichtiger Hinweis
 \end_inset
 
 .
+
+\emph on
  URLs dürfen nicht mit einem Backslash enden!
 \end_layout
 
@@ -29315,38 +29232,176 @@ Wichtiger Hinweis
 \end_layout
 
 \begin_layout Standard
-Wenn Sie die Adresse darüberhinaus mit einem aussagefähigen Begriff versehen
- wollen, könne Sie diesen im Feld 
-\family sans
-Name
-\family default
- des Dialoges eingeben; er wird als normaler Text direkt vor dem URL gedruckt,
- zum Beispiel finden Sie alle mit LaTeX zusammenhängenden Dinge auf CTAN:
- 
-\begin_inset Flex URL
+Der Text eines URLs wird immer im Schreibmaschinenstil gedruckt.
+ Um den Text zu formatieren, müssen Sie einen Hyperlink benutzen.
+\end_layout
+
+\begin_layout Subsection
+Hyperlink
+\begin_inset CommandInset label
+LatexCommand label
+name "Hyperlink"
+
+\end_inset
+
+
+\begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-
-http://ctan.tug.org
+Hyperlink
 \end_layout
 
 \end_inset
 
-.
- In der gedruckten Version endet der letzte Satz mit 
-\begin_inset Quotes gld
-\end_inset
 
-\SpecialChar \ldots{}
- auf CTAN: 
-\family typewriter
-http://ctan.tug.org
+\end_layout
+
+\begin_layout Standard
+Hyperlinks werden mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Hyperlink
 \family default
+ oder einen Klick auf 
+\begin_inset Graphics
+	filename ../../images/url-insert.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
 
-\begin_inset Quotes grd
 \end_inset
 
+ eingefügt.
+ Das Hyperlink-Dialogfenster hat zwei Eingabefelder: 
+\family sans
+Ziel
+\family default
+ und 
+\family sans
+Name
+\family default
+.
+ In 
+\family sans
+Ziel
+\family default
+ tragen Sie die Adresse wie bei einem URL ein.
+ In 
+\family sans
+Name
+\family default
+ tragen Sie den Text ein, der im gedruckten Dokument erscheinen soll.
+ Wenn Sie diese Feld leer lassen, wird der Text in 
+\family sans
+Ziel
+\family default
+ gedruckt.
+ Mit 
+\family sans
+Linktyp
+\family default
+ legen Sie fest, ob es sich um eine Internet-Adresse wie 
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Homepage"
+target "http://www.lyx.org"
+
+\end_inset
+
+, eine Email-Adresse wie 
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Dokumentation"
+target "lyx-docs@lists.lyx.org?subject=LyX-Dokumentation"
+type "mailto:"
+
+\end_inset
+
+ oder ein Link zu einer Datei sein.
+\end_layout
+
+\begin_layout Standard
+Beim Anklicken eines Hyperlinks in der Druckvorschau startet bei Internet-Adress
+en Ihr Stabdard-Browser, bei Email-Adressen Ihr Stabdard-Email-Programm
+ und bei Dateien Ihr Standard-Dateibetrachter.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie vor einer Internet-Adresse 
+\family sans
+run:
+\family default
+ einfügen, wird eine Anwendung gestartet: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Firefox für Linux starten"
+target "run:/usr/bin/firefox"
+
+\end_inset
+
+ oder 
+\begin_inset CommandInset href
+LatexCommand href
+name "Firefox für Windows starten"
+target "run:firefox.exe"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Um einen Hyperlink zu formatieren, markieren Sie ihn und formatieren wie
+ gewohnt: 
+\family sans
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Homepage"
+target "http://www.lyx.org"
+
+\end_inset
+
+
+\family default
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Die Textfarbe kann über 
+\family sans
+Dokument
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+PDF-Eigenschaften
+\family default
+ im Feld 
+\family sans
+Zusätzliche
+\begin_inset Space \space{}
+\end_inset
+
+Optionen
+\family default
+ mit dem Parameter 
+\family typewriter
+urlcolor=
+\family default
+ geändert werden.
+ Voreingestellt ist 
+\family sans
+blue
+\family default
 .
 \end_layout
 
@@ -29440,7 +29495,7 @@ Es gibt zwei Möglichkeiten, in einem LyX-Dokument ein Literaturverzeichnis
 \begin_layout Enumerate
 Sie können eine Literaturverzeichnis-Datenbank einfügen 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bekannt als 
@@ -29641,7 +29696,7 @@ Literaturverzeichnis ! Datenbanken
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Literaturverzeichnis ! BibT
@@ -29662,7 +29717,7 @@ eX
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 BibT
@@ -29690,7 +29745,7 @@ name "Literaturverzeichnis-Datenbanken-(BibTeX)"
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -29887,10 +29942,10 @@ Literaturverzeichnis ! Gestaltung
 \end_layout
 
 \begin_layout Standard
-Im Zitatdialog (
+Im Literaturverweisdialog (
 \family sans
 Einfügen\SpecialChar \menuseparator
-Zitat\SpecialChar \ldots{}
+Literaturverweis\SpecialChar \ldots{}
 
 \family default
  oder 
@@ -30600,7 +30655,7 @@ reference "Mediävalziffern-verwenden"
 
 ) ausgibt.
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mediävalziffern|oldstylenums
@@ -31307,7 +31362,7 @@ Glossar
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dies wird für einige Sprachen automatisch übersetzt.
@@ -31450,7 +31505,7 @@ Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
 
 \begin_layout Standard
 \begin_inset Branch Frage
-status open
+status collapsed
 
 \begin_layout Standard
 Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
@@ -31487,7 +31542,7 @@ Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können
  werden.
  Man kann zum Beispiel für den Frage-Zweig definieren:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Eine Einführung in die LaTeX-Syntax ist in Abschnitt
@@ -31549,13 +31604,13 @@ Antwort}[1]{#1}
 
 \lang english
 \begin_inset Branch Frage
-status open
+status collapsed
 
 \begin_layout Standard
 
 \lang english
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31595,7 +31650,7 @@ status collapsed
 
 \lang english
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31673,16 +31728,16 @@ reference "Makro-erzeugen"
 \end_layout
 
 \begin_layout Section
-LaTeX-Syntax und ERT
+LaTeX-Syntax und TeX-Code
 \begin_inset CommandInset label
 LatexCommand label
-name "LaTeX-Syntax-und-ERT"
+name "LaTeX-Syntax-und-TeX-Code"
 
 \end_inset
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaT
@@ -31706,7 +31761,18 @@ eX ! -Syntax
 status collapsed
 
 \begin_layout Plain Layout
-ERT
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
 \end_layout
 
 \end_inset
@@ -32024,10 +32090,10 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Subsection
-ERT-Kästchen
+TeX-Code-Kästchen
 \begin_inset CommandInset label
 LatexCommand label
-name "ERT-Kästchen"
+name "TeX-Code-Kästchen"
 
 \end_inset
 
@@ -32036,7 +32102,30 @@ name "ERT-Kästchen"
 status collapsed
 
 \begin_layout Plain Layout
-ERT
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Fix this Index entry when bug 4600 is fixed!
 \end_layout
 
 \end_inset
@@ -32046,32 +32135,8 @@ ERT
 
 \begin_layout Standard
 Wenn Sie gezwungen sind oder es wollen, LaTeX-Befehle in LyX zu benutzen,
- gben Sie diese in ERT-Kästchen ein.
- ERT heißt 
-\begin_inset Quotes gld
-\end_inset
-
-
-\series bold
-E
-\series default
-vil 
-\series bold
-R
-\series default
-ed 
-\series bold
-T
-\series default
-ext
-\begin_inset Quotes grd
-\end_inset
-
-; evil deshalb, weil LyX eigentlich LaTeX-Befehle vermeidet.
-\end_layout
-
-\begin_layout Standard
-Ein ERT-Kästchen erhalten Sie mit 
+ geben Sie diese in TeX-Code-Kästchen ein.
+ Ein TeX-Code-Kästchen erhalten Sie mit 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Te
@@ -32096,7 +32161,12 @@ X-Code
 \end_inset
 
 -Knopf.
- Das Kästchen selber kann auf zwei Arten angezeigt werden: 
+ Es erscheint ein rotes Rechteck, in das Sie Ihren LaTeX-Text schreiben.
+ LyX wird alles, was im TeX-Code-Kästchen steht, unverändert an LaTeX übergeben.
+\end_layout
+
+\begin_layout Standard
+Das Kästchen selber kann auf zwei Arten angezeigt werden: 
 \family sans
 Geschlossen
 \family default
@@ -32105,17 +32175,18 @@ Geschlossen
 Geöffnet
 \family default
 .
+ Im geschlossenen Zustand wird ein Teil des Textes auf grauem Hintergrund
+ dargestellt.
  Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
  und wählen in dem Dialogfenster aus, was Sie wollen.
- Außerdem können Sie im geöffneten Zusatand die Einfügung auflösen, das
- heisst, der enthaltenen Text wird normal dargestellt.
- Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es und umgekehrt.
- 
+ Außerdem können Sie im geöffneten Zustand die Einfügung auflösen, das heisst,
+ der enthaltenen Text wird normal dargestellt.
+ Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es.
 \end_layout
 
 \begin_layout Standard
-In das ERT-Kästchen können Sie vollständige oder unvollständige LaTeX-Befehle
- schreiben.
+In das TeX-Code-Kästchen können Sie vollständige oder unvollständige LaTeX-Befeh
+le schreiben.
  Ein vollständiger LaTeX-Befehl ist zum Beispiel die Verwendung von 
 \family typewriter
 slop\SpecialChar \-
@@ -32134,7 +32205,7 @@ reference "Sloppypar"
 \end_inset
 
 .
- Unvollständig bedeutet, dass Sie in ein ERT-Kästchen 
+ Unvollständig bedeutet, dass Sie in ein TeX-Code-Kästchen 
 \family typewriter
 
 \backslash
@@ -32145,7 +32216,18 @@ Befehlsname[Optionen]{
 \family typewriter
 }
 \family default
- in ein zweites ERT
+ in ein zweites TeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Code
 \begin_inset ERT
 status collapsed
 
@@ -32258,7 +32340,7 @@ status collapsed
 Bemerkung:
 \series default
  Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
- damit LaTeX weiß, dass der Befehl zu ende ist.
+ damit LaTeX weiß, dass der Befehl zu Ende ist.
 \end_layout
 
 \begin_layout Section
@@ -32622,7 +32704,7 @@ Außerdem gibt es eine Anzeige für den Fortschritt der Rechtschreibprüfung.
 \begin_layout Subsection
 Optionen für die Rechtschreibprüfung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Rechtschreibprufung@Rechtschreibprüfung
@@ -32944,7 +33026,7 @@ Persönliches
 
 Wörterbuch
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Worterbuch@Wörterbuch!personliches@persönliches
@@ -33903,7 +33985,7 @@ T1
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -38581,7 +38663,7 @@ Im Browser muss der Knopf für neu laden angeklickt werden, damit die Änderung
 \family sans
 OpenDocument
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38650,7 +38732,7 @@ Konverter
 \family sans
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38697,7 +38779,7 @@ OpenDocument
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38727,7 +38809,7 @@ Konverter
 \family sans
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38768,7 +38850,7 @@ OpenDocument
 \family default
  festgelegt ist.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38870,7 +38952,7 @@ Mathe\SpecialChar \menuseparator
 Cases/AMS align, alignat, flalign, gather und multline-Um\SpecialChar \-
 gebung
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -38886,7 +38968,7 @@ Mathe
 \begin_layout Standard
 Diese Menüpunkte sind noch nirgends näher beschrieben außer in 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39309,7 +39391,7 @@ X
 \family sans
 -Code
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 T
@@ -39332,7 +39414,7 @@ eX
 \family default
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39379,7 +39461,7 @@ font dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in
 \begin_layout Standard
 \begin_inset listings
 inline false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -40080,18 +40162,15 @@ Farben In diesem Unterfenster werden die von LyX verwendeten Farben für
 
 \begin_deeper
 \begin_layout Description
-Abstandsmarkierungen ist die Farbe, in der zum Beispiel ein 
-\family sans
-HFill
-\family default
- dargestellt wird, siehe Abschnitt
+Abstandsmarkierungen ist die Farbe, in der zum Beispiel ein variabler horizontal
+er Abstand dargestellt wird, siehe Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "HFill"
+reference "Variabler-horiz-Abstand"
 
 \end_inset
 
@@ -40403,20 +40482,8 @@ status collapsed
 
 \end_inset
 
-X-Text ist die Farbe, mit der das Wort 
-\emph on
-ERT
-\emph default
- geschrieben wird, wenn Sie auf 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- klicken.
+X-Text ist die Farbe, mit der der Text eines TeX-Code-Kästchens geschrieben
+ wird.
 \end_layout
 
 \begin_layout Description
@@ -41411,7 +41478,7 @@ Eine Einführung in die LaTeX-Syntax finden Sie in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "ERT-Kästchen"
+reference "TeX-Code-Kästchen"
 
 \end_inset
 
@@ -43164,7 +43231,7 @@ reference "Tab:Maßeinheiten"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
