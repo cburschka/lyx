@@ -106,7 +106,7 @@ Function ConfigureLyX
 
   # register the extension .lyx
   ${if} $CreateFileAssociations == "true"
-   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to test if they were registered by this LyX version
+   WriteRegStr SHCTX "${PRODUCT_DIR_REGKEY}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to test if they were registered by this LyX version
    # write informations about file type
    WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}" "" "${PRODUCT_NAME} Document"
    WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}\DefaultIcon" "" "${PRODUCT_EXE}"

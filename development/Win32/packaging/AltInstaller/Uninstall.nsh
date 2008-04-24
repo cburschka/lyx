@@ -115,13 +115,7 @@ Section "un.LyX" un.SecUnProgramFiles
   RMDir /r "$0"
   # delete desktop icon
   Delete "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk"
-  # delete registry entries
-  DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
-  DeleteRegKey HKCR "Applications\lyx.exe"
-  DeleteRegKey HKCR "Applications\lyx.bat"
-
+  
   # Aiksaurus
   !insertmacro FileCheck $5 "meanings.dat" "${AiksaurusDir}" # macro from LyXUtils.nsh
   ${if} $5 == "True"
@@ -144,6 +138,14 @@ Section "un.LyX" un.SecUnProgramFiles
     DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
    ${endif}
   ${endif}
+  
+  # delete registry entries
+  DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY_2}"
+  DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegKey HKCR "Applications\lyx.bat"
 
   # the following can only be done with admin permissions
   ${if} $Answer == "yes" # if admin
