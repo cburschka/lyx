@@ -2,7 +2,10 @@ Function UpdateModifiedFiles
 
  # list with modified files for LyX 1.5.5
  SetOutPath "$INSTDIR\bin" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\Console.dll"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\pdfview.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\System.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources"
