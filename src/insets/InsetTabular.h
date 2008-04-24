@@ -485,10 +485,6 @@ public:
 		int ascent;
 		///
 		int descent;
-		///
-		bool top_line;
-		///
-		bool bottom_line;
 		/// Extra space between the top line and this row
 		Length top_space;
 		/// Ignore top_space if true and use the default top space
@@ -525,10 +521,6 @@ public:
 		LyXAlignment alignment;
 		///
 		VAlignment valignment;
-		///
-		bool left_line;
-		///
-		bool right_line;
 		///
 		int width;
 		///
