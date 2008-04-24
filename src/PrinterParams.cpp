@@ -42,7 +42,9 @@ void PrinterParams::testInvariant() const
 {
 	switch (target) {
 	case PRINTER:
-		LASSERT(!printer_name.empty(), /**/);
+		// We can't do this test, because no default printer
+		// may have been set.
+		// LASSERT(!printer_name.empty(), /**/);
 		break;
 	case FILE:
 		LASSERT(!file_name.empty(), /**/);
