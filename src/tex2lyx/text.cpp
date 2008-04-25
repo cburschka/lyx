@@ -765,6 +765,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
+		skip_braces(p); // eat {} that might by set by LyX behind comments
 	}
 
 	else if (name == "lyxgreyedout") {
