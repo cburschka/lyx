@@ -1086,7 +1086,7 @@ bool Tabular::columnLeftLine(col_type c) const
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i)) {
 			++total;
-			bool right = c - 1 > 0 && cellInfo(cellIndex(r, c - 1)).right_line;
+			bool right = c > 0 && cellInfo(cellIndex(r, c - 1)).right_line;
 			if (cellInfo(i).left_line || right)
 				++nrows_left;
 		}
