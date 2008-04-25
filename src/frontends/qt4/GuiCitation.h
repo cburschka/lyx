@@ -71,6 +71,7 @@ private Q_SLOTS:
 	void on_citationStyleCO_currentIndexChanged(int index);
 	void on_caseCB_stateChanged(int);
 	void on_regexCB_stateChanged(int);
+	void on_asTypeCB_stateChanged(int);
 	void changed();
 	///
 	void setCitedKeys();

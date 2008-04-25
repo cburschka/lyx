@@ -98,6 +98,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(on_okPB_clicked()));
 	connect(textAfterED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
+		
 	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
 
 	selectionManager = new GuiSelectionManager(availableLV, selectedLV, 
@@ -424,16 +425,20 @@ void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 
 void GuiCitation::on_findLE_textChanged(const QString & text)
 {
-	searchPB->setDisabled(text.isEmpty());
-	if (!text.isEmpty())
+	bool const searchAsWeGo = (asTypeCB->checkState() == Qt::Checked);
+	searchPB->setDisabled(text.isEmpty() || searchAsWeGo);
+	if (!text.isEmpty()) {
+		if (searchAsWeGo)
+			findText(findLE->text());
 		return;
+	}
 	findText(findLE->text());
 	findLE->setFocus();
 }
 
 void GuiCitation::on_searchPB_clicked()
 {
-	findText(findLE->text());
+	findText(findLE->text(), true);
 }
 
 
@@ -446,6 +451,15 @@ void GuiCitation::on_caseCB_stateChanged(int)
 void GuiCitation::on_regexCB_stateChanged(int)
 {
 	findText(findLE->text());
+}
+
+
+void GuiCitation::on_asTypeCB_stateChanged(int)
+{
+	bool const searchAsWeGo = (asTypeCB->checkState() == Qt::Checked);
+	searchPB->setDisabled(findLE->text().isEmpty() || searchAsWeGo);
+	if (searchAsWeGo)
+		findText(findLE->text(), true);
 }
 
 

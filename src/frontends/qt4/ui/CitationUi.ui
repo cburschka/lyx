@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>617</height>
+    <width>467</width>
+    <height>692</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -288,6 +288,26 @@
        <widget class="QCheckBox" name="caseCB" >
         <property name="text" >
          <string>Case Se&amp;nsitive</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>271</width>
+          <height>25</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="3" colspan="2" >
+       <widget class="QCheckBox" name="asTypeCB" >
+        <property name="text" >
+         <string>Search As You Type</string>
         </property>
        </widget>
       </item>
