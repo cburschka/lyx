@@ -141,7 +141,6 @@ src_header_files = Split('''
 
 src_pre_files = Split('''
     Author.cpp
-    BiblioInfo.cpp
     Bidi.cpp
     BranchList.cpp
     Buffer.cpp
@@ -233,6 +232,7 @@ src_pre_files = Split('''
 
 
 src_post_files = Split('''
+    BiblioInfo.cpp
     Box.cpp
     Dimension.cpp
     ModuleList.cpp
