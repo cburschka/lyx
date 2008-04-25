@@ -133,6 +133,9 @@ What's new
 - Fix an assertion with compressed image files that do not have a
   zip-extension.
 
+- Fix an assertion with incorrect argument for '-sysdir' command-line switch
+  (bug 4791).
+
 - Correctly apply font changes when several math matrix cells are selected
   (bug 4566).
 

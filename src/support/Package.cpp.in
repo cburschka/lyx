@@ -643,7 +643,7 @@ FileName const get_default_user_support_dir(FileName const & home_dir)
 
 
 // Check that directory @c dir contains @c file.
-// Else emit a warning about an invalid @c command_line_switch.
+// Else throw an error about an invalid @c command_line_switch.
 bool check_command_line_dir(string const & dir,
 			    string const & file,
 			    string const & command_line_switch)
@@ -651,7 +651,7 @@ bool check_command_line_dir(string const & dir,
 	FileName const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
-		throw ExceptionMessage(WarningException, _("File not found"), bformat(
+		throw ExceptionMessage(ErrorException, _("File not found"), bformat(
 			_("Invalid %1$s switch.\nDirectory %2$s does not contain %3$s."),
 			from_utf8(command_line_switch), from_utf8(dir),
 			from_utf8(file)));
