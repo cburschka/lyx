@@ -61,6 +61,8 @@ endif
 lyx_SOURCES = \
 	main.cpp \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
+	BiblioInfo.h \
+	BiblioInfo.cpp \
 	Box.cpp \
 	Box.h \
 	Dimension.cpp \
@@ -76,7 +78,6 @@ endif
 
 SOURCEFILESCORE = \
 	Author.cpp \
-	BiblioInfo.cpp \
 	Bidi.cpp \
 	boost.cpp \
 	BranchList.cpp \
@@ -169,7 +170,6 @@ SOURCEFILESCORE = \
 
 HEADERFILESCORE = \
 	Author.h \
-	BiblioInfo.h \
 	Bidi.h \
 	BranchList.h \
 	buffer_funcs.h \

@@ -43,16 +43,11 @@ namespace lyx {
 //
 //////////////////////////////////////////////////////////////////////
 
-BibTeXInfo::BibTeXInfo(bool ib)
-	: is_bibtex_(ib)
-{}
-
-	
 BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 	: is_bibtex_(true), bib_key_(key), entry_type_(type)
 {}
 
-	
+
 bool BibTeXInfo::hasField(docstring const & field) const
 {
 	return count(field) == 1;
@@ -75,7 +70,7 @@ docstring const & BibTeXInfo::getValueForField(string const & field) const
 }
 
 
-static docstring familyName(docstring const & name)
+docstring familyName(docstring const & name)
 {
 	if (name.empty())
 		return docstring();
@@ -416,19 +411,9 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 }
 
 
-void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
-{	
-	/// if this is a child document and the parent is already loaded
-	/// use the parent's list instead  [ale990412]
-	Buffer const * const tmp = buf->masterBuffer();
-	LASSERT(tmp, return);
-	if (tmp != buf) {
-		this->fillWithBibKeys(tmp);
-		return;
-	}
-
-	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
-		it->fillWithBibKeys(*this, it);
+void BiblioInfo::mergeBiblioInfo(BiblioInfo const & info)
+{
+	bimap_.insert(info.begin(), info.end());
 }
 
 

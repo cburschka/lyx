@@ -137,37 +137,7 @@ docstring complexLabel(Buffer const & buffer,
 	if (!buffer.isFullyLoaded())
 		return docstring();
 
-	// Cache the labels
-	typedef map<Buffer const *, BiblioInfo> CachedMap;
-	static CachedMap cached_keys;
-
-	// and cache the timestamp of the bibliography files.
-	static map<FileName, time_t> bibfileStatus;
-
-	BiblioInfo biblist;
-
-	support::FileNameList const & bibfilesCache = buffer.getBibfilesCache();
-	// compare the cached timestamps with the actual ones.
-	bool changed = false;
-	support::FileNameList::const_iterator ei = bibfilesCache.begin();
-	support::FileNameList::const_iterator en = bibfilesCache.end();
-	for (; ei != en; ++ ei) {
-		time_t lastw = ei->lastModified();
-		if (lastw != bibfileStatus[*ei]) {
-			changed = true;
-			bibfileStatus[*ei] = lastw;
-		}
-	}
-
-	// build the list only if the bibfiles have been changed
-	if (cached_keys[&buffer].empty() || bibfileStatus.empty() || changed) {
-		biblist.fillWithBibKeys(&buffer);
-		cached_keys[&buffer] = biblist;
-	} else {
-		// use the cached keys
-		biblist = cached_keys[&buffer];
-	}
-
+	BiblioInfo const & biblist = buffer.masterBibInfo();
 	if (biblist.empty())
 		return docstring();
 

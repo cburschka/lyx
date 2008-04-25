@@ -599,7 +599,7 @@ QStringList GuiCitation::getEntriesAsQStringList()
 QStringList GuiCitation::citationStyles(int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
-	return to_qstring_list(bibkeysInfo_.getCiteStrings(key, buffer()));
+	return to_qstring_list(bibInfo().getCiteStrings(key, buffer()));
 }
 
 
@@ -619,7 +619,6 @@ bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommand::string2params("citation", data, params_);
 	CiteEngine const engine = buffer().params().citeEngine();
-	bibkeysInfo_.fillWithBibKeys(&buffer());
 	citeStyles_ = citeStyles(engine);
 	return true;
 }
@@ -628,25 +627,24 @@ bool GuiCitation::initialiseParams(string const & data)
 void GuiCitation::clearParams()
 {
 	params_.clear();
-	bibkeysInfo_.clear();
 }
 
 
 vector<docstring> GuiCitation::availableKeys() const
 {
-	return bibkeysInfo_.getKeys();
+	return bibInfo().getKeys();
 }
 
 
 vector<docstring> GuiCitation::availableFields() const
 {
-	return bibkeysInfo_.getFields();
+	return bibInfo().getFields();
 }
 
 
 vector<docstring> GuiCitation::availableEntries() const
 {
-	return bibkeysInfo_.getEntries();
+	return bibInfo().getEntries();
 }
 
 
@@ -662,8 +660,8 @@ void GuiCitation::filterByEntryType(
 	vector<docstring> result;
 	for (; it != end; ++it) {
 		docstring const key = *it;
-		BiblioInfo::const_iterator cit = bibkeysInfo_.find(key);
-		if (cit == bibkeysInfo_.end())
+		BiblioInfo::const_iterator cit = bibInfo().find(key);
+		if (cit == bibInfo().end())
 			continue;
 		if (cit->second.entryType() == entry_type)
 			result.push_back(key);
@@ -680,10 +678,10 @@ CiteEngine GuiCitation::citeEngine() const
 
 docstring GuiCitation::getInfo(docstring const & key) const
 {
-	if (bibkeysInfo_.empty())
+	if (bibInfo().empty())
 		return docstring();
 
-	return bibkeysInfo_.getInfo(key);
+	return bibInfo().getInfo(key);
 }
 
 
@@ -740,8 +738,8 @@ vector<docstring> GuiCitation::searchKeys(
 	vector<docstring>::const_iterator it = keys_to_search.begin();
 	vector<docstring>::const_iterator end = keys_to_search.end();
 	for (; it != end; ++it ) {
-		BiblioInfo::const_iterator info = bibkeysInfo_.find(*it);
-		if (info == bibkeysInfo_.end())
+		BiblioInfo::const_iterator info = bibInfo().find(*it);
+		if (info == bibInfo().end())
 			continue;
 		
 		BibTeXInfo const & kvm = info->second;
@@ -773,6 +771,12 @@ void GuiCitation::dispatchParams()
 {
 	std::string const lfun = InsetCommand::params2string("citation", params_);
 	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+BiblioInfo const & GuiCitation::bibInfo() const
+{
+	return buffer().masterBibInfo();
 }
 
 

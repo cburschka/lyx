@@ -24,6 +24,7 @@
 
 namespace lyx {
 
+class BiblioInfo;
 class BufferParams;
 class DocIterator;
 class ErrorItem;
@@ -308,6 +309,11 @@ public:
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	support::FileNameList const & getBibfilesCache() const;
+	/// \return the bibliography information for this buffer's master,
+	/// or just for it, if it isn't a child.
+	BiblioInfo const & masterBibInfo() const;
+	/// \return the bibliography information for this buffer ONLY.
+	BiblioInfo const & localBibInfo() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 

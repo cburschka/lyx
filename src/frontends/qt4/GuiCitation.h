@@ -186,7 +186,7 @@ private:
 
 private:
 	/// The BibTeX information available to the dialog
-	BiblioInfo bibkeysInfo_;
+	BiblioInfo const & bibInfo() const;
 };
 
 } // namespace frontend

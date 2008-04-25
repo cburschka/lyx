@@ -204,6 +204,9 @@ public:
 	/// documents), needed for appropriate update of natbib labels.
 	mutable support::FileNameList bibfilesCache_;
 
+	/// A cache for bibliography info
+	mutable BiblioInfo bibinfo_;
+
 	mutable RefCache ref_cache_;
 
 	/// our Text that should be wrapped in an InsetText
@@ -233,8 +236,8 @@ static FileName createBufferTmpDir()
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
-	  toc_backend(&parent), macro_lock(false),
-	  timestamp_(0), checksum_(0), wa_(0), undo_(parent)
+	  toc_backend(&parent), macro_lock(false), timestamp_(0), 
+	  checksum_(0), wa_(0), undo_(parent)
 {
 	temppath = createBufferTmpDir();
 	lyxvc.setBuffer(&parent);
@@ -1343,6 +1346,45 @@ support::FileNameList const & Buffer::getBibfilesCache() const
 }
 
 
+BiblioInfo const & Buffer::masterBibInfo() const
+{	
+	// if this is a child document and the parent is already loaded
+	// use the parent's list instead  [ale990412]
+	Buffer const * const tmp = masterBuffer();
+	LASSERT(tmp, /**/);
+	if (tmp != this)
+		return tmp->masterBibInfo();
+	return localBibInfo();
+}
+
+
+BiblioInfo const & Buffer::localBibInfo() const
+{	
+	// cache the timestamp of the bibliography files.
+	static map<FileName, time_t> bibfileStatus;
+
+	support::FileNameList const & bibfilesCache = getBibfilesCache();
+	// compare the cached timestamps with the actual ones.
+	bool changed = false;
+	support::FileNameList::const_iterator ei = bibfilesCache.begin();
+	support::FileNameList::const_iterator en = bibfilesCache.end();
+	for (; ei != en; ++ ei) {
+		time_t lastw = ei->lastModified();
+		if (lastw != bibfileStatus[*ei]) {
+			changed = true;
+			bibfileStatus[*ei] = lastw;
+			break;
+		}
+	}
+
+	if (changed) {
+		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
+			it->fillWithBibKeys(d->bibinfo_, it);
+	}
+	return d->bibinfo_;
+}
+
+
 bool Buffer::isDepClean(string const & name) const
 {
 	DepClean::const_iterator const it = d->dep_clean.find(name);
@@ -1978,8 +2020,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
 	string paramName;
-	BiblioInfo keys;
-	keys.fillWithBibKeys(this);
+	BiblioInfo const & keys = masterBibInfo();
 	BiblioInfo::const_iterator bit  = keys.begin();
 	BiblioInfo::const_iterator bend = keys.end();
 

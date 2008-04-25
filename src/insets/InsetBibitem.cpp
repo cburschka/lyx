@@ -66,9 +66,7 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 	docstring const old_key = getParam("key");
 	docstring key = new_key;
 
-	BiblioInfo keys;
-	keys.fillWithBibKeys(&buffer());
-	vector<docstring> bibkeys = keys.getKeys();
+	vector<docstring> bibkeys = buffer().masterBibInfo().getKeys();
 
 	int i = 1;
 

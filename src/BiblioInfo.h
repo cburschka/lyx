@@ -44,9 +44,11 @@ class BibTeXInfo {
 public:
 	///
 	typedef std::map<docstring, docstring>::const_iterator const_iterator;
+	///
+	BibTeXInfo() : is_bibtex_(true) {}
 	/// argument sets isBibTeX_, so should be false only if it's coming
 	/// from a bibliography environment
-	BibTeXInfo(bool ib = true);
+	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// Search for the given field and return the associated info.
@@ -106,9 +108,6 @@ public:
 	std::vector<docstring> const getFields() const;
 	/// Returns a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
-	/// Fills keys with BibTeX information derived from the various insets
-	/// in a given buffer, in its master document.
-	void fillWithBibKeys(Buffer const * const buf);
 	/// return the short form of an authorlist
 	docstring const getAbbreviatedAuthor(docstring const & key) const;
 	/// return the year from the bibtex data record
@@ -156,6 +155,8 @@ public:
 	const_iterator end() const { return bimap_.end(); }
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
+	///
+	void mergeBiblioInfo(BiblioInfo const & info);
 	///
 	BibTeXInfo & operator[](docstring const & f) { return bimap_[f]; }
 	///
