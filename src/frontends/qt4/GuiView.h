@@ -207,8 +207,7 @@ public:
 
 	/// Hide all visible dialogs
 	void hideAll() const;
-	/// Hide any dialogs that require a buffer for them to operate
-	void hideBufferDependent() const;
+
 	/** Update visible, buffer-dependent dialogs
 	    If the bool is true then a buffer change has occurred
 	    else it is still the same buffer.

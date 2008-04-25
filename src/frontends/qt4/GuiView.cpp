@@ -784,7 +784,6 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 	if (wa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
-		hideBufferDependent();
 		d.current_work_area_ = 0;
 	}
 
@@ -2145,19 +2144,6 @@ void GuiView::hideAll() const
 
 	for(; it != end; ++it)
 		it->second->hideView();
-}
-
-
-void GuiView::hideBufferDependent() const
-{
-	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
-
-	for(; it != end; ++it) {
-		Dialog * dialog = it->second.get();
-		if (dialog->isBufferDependent())
-			dialog->hideView();
-	}
 }
 
 
