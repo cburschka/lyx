@@ -1,4 +1,4 @@
-#LyX 1.6.0alpha2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 328
 \begin_document
 \begin_header
@@ -164,7 +164,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
+letzte Änderung: 26.
  April 2008
 \end_layout
 
@@ -361,7 +361,7 @@ Ansicht
 \SpecialChar \menuseparator
 
 \family sans
-Werkzeug-leisten
+Werkzeugleisten
 \family default
  auswählen.
  In ihn können Sie LaTeX-Befehle schreiben, wie zum Beispiel eine Makro-Definiti
@@ -378,6 +378,7 @@ reference "Makro-erzeugen"
 \begin_layout Standard
 Wenn Sie mehrere Dokumente öffnen, erscheinen oben unter den Werkzeugleisten
  Karteikarten, mit denen Sie zwischen den Dokumenten wechseln können.
+ Mit gedrückter linker Maustaste können Sie die Karteikarten verschieben.
 \end_layout
 
 \begin_layout Standard
@@ -949,7 +950,7 @@ LaTeX-Einstellung
 status collapsed
 
 \begin_layout Plain Layout
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -960,7 +961,7 @@ status collapsed
 
 \end_inset
 
-eX-Einstellungen
+X!-Einstellungen
 \end_layout
 
 \end_inset
@@ -1614,7 +1615,12 @@ suchen
 \family default
  ist aktiviert.
  Wurde der Suchbegriff gefunden, wird er markiert.
- Wenn Sie dann 
+ Wenn Sie das Fenster schließen, können Sie mit der F3-Taste weitersuchen,
+ aber nur vorwärts und ohne Unterscheidung zwischen groß und klein.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie dann 
 \family sans
 Ersetzen
 \family default
@@ -2014,24 +2020,90 @@ linken
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Tabellen
+\begin_layout Subsection
+Kontextabhängige Mausfunktionen
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
 Ein einfaches Klicken mit der 
 \emph on
 rechten
 \emph default
- Maustaste öffnet ein Dialogfenster, mit dem Sie die Tabelle verändern können.
+ Maustaste öffnet ein kontextabhängiges Dialogfenster, das
 \end_layout
 
-\end_deeper
+\begin_layout Enumerate
+im Textbereich die meisten Befehle des 
+\family sans
+Bearbeiten
+\family default
+-Menüs und ein paar andere enthält.
+\end_layout
+
+\begin_layout Enumerate
+in Tabellen Befehle, mit dem Sie die Tabelle verändern können, enthält.
+ Der Befehl 
+\family sans
+Einstellungen
+\family default
+ öffnet das Dialogfenster 
+\family sans
+Tabellen-Einstellungen
+\family default
+, siehe auch Abschnitt
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tabellen-Einstellungen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+auf Querverweisen Befehle zur Formatierung enthält.
+ Der Befehl 
+\family sans
+Einstellungen
+\family default
+ öffnet das Dialogfenster 
+\family sans
+Querverweis
+\family default
+, siehe auch Abschnitt
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tabellen-Einstellungen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+auf Marken Befehle zur Navigation enthält.
+\end_layout
+
+\begin_layout Enumerate
+auf Notizen Befehle zur Formatierung enthält.
+\end_layout
+
+\begin_layout Enumerate
+auf mathematischen Formeln und Makros Befehle zur Bearbeitung enthält.
+\end_layout
+
 \begin_layout Section
 Grundlegende Tastaturfunktionen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tastatur!-funktionen
@@ -5028,6 +5100,12 @@ reference "Kontrolle-der-Oberfläche"
 \end_inset
 
  beschrieben.
+ Das Menü öffnen Sie durch einen Klick auf den beschrifteten Balken oder
+ das kleine Dreieck oder mit 
+\family sans
+Alt+A+Leertaste
+\family default
+.
  Wenn das Menü geöffnet ist, können Sie die Einträge einschränken, wenn
  Sie Buchstaben eingeben, die in dem von Ihnen gesuchten Eintrag vorkommen.
  Geben Sie zum Beispiel 
@@ -7319,17 +7397,28 @@ Liste
 \family default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Lyx@LyX-Liste
+Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Liste
 \end_layout
 
 \end_inset
 
  und Liste
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Liste
@@ -8439,10 +8528,21 @@ L
 \family default
 yX-Code
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Lyx@LyX-Code
+Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Code
 \end_layout
 
 \end_inset
@@ -12067,7 +12167,11 @@ Schrägstrich ! umbruchfähig
 Einfügen
 \family default
 \SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
+
+\family sans
+Sonderzeichen
+\family default
+ \SpecialChar \menuseparator
 
 \family sans
 Umbruchfähiger
@@ -12080,7 +12184,8 @@ Umbruchfähiger
 \family sans
 Schrägstrich
 \family default
-): ftp://dante.ctan.org/tex-archive/help\SpecialChar \slash{}
+): ftp://dante.ctan.org/tex-archive\SpecialChar \slash{}
+help\SpecialChar \slash{}
 Catalogue/entries/esint.html.
 \end_layout
 
@@ -15886,7 +15991,7 @@ Wenn Sie dies in LyX lesen, sehen Sie keine Unterschiede, aber in der gedruckten
 \begin_layout Subsection
 Silbentrennung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Silbentrennung
@@ -15909,7 +16014,18 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! babel
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! babel
 \end_layout
 
 \end_inset
@@ -18319,6 +18435,39 @@ Zusatz-Optionen
 \end_layout
 
 \begin_layout Subsection
+Abbildungen aus der Zwischenablage
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Zwischenablage!Abbildung einfügen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An der Cursorposition können Sie mit 
+\family sans
+Strg+V
+\family default
+ oder 
+\family sans
+Bearbeiten
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einfügen
+\family default
+ eine Abbildung einfügen.
+ In einem Dialogfenster werden Sie vorher gebeten, einen Speicherort und
+ das Grafikformat JP[E]G oder PNG für die Abbildung festzulegen.
+\end_layout
+
+\begin_layout Subsection
 Grafikformate
 \begin_inset Index
 status collapsed
@@ -18426,9 +18575,9 @@ GIF
 \end_layout
 
 \begin_layout Itemize
-JPEG
+JP[E]G
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 JPEG
@@ -18472,10 +18621,10 @@ PSD
 \begin_layout Itemize
 TIF[F]
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
+TIFF
 \end_layout
 
 \end_inset
@@ -23536,7 +23685,7 @@ name "Minipage"
 status collapsed
 
 \begin_layout Plain Layout
-
+Minipage
 \end_layout
 
 \end_inset
@@ -24263,7 +24412,7 @@ Mathe-Werkzeugleiste
  am unteren Rand können Sie über 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	scale 70
+	scale 50
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
@@ -30999,7 +31148,7 @@ Symbol
 \begin_layout Subsection
 Nomenklatur-Einträge sortieren
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Glossar!sortieren
@@ -31740,7 +31889,7 @@ name "LaTeX-Syntax-und-TeX-Code"
 status collapsed
 
 \begin_layout Plain Layout
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -31751,7 +31900,7 @@ status collapsed
 
 \end_inset
 
-eX ! -Syntax
+X!-Syntax
 \end_layout
 
 \end_inset
@@ -31779,7 +31928,7 @@ X-Code
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31945,7 +32094,18 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! caption
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! caption
 \end_layout
 
 \end_inset
@@ -32114,18 +32274,6 @@ status collapsed
 \end_inset
 
 X-Code
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
 \end_layout
 
 \end_inset
@@ -33560,7 +33708,18 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket!dvipost
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket!dvipost
 \end_layout
 
 \end_inset
@@ -33792,7 +33951,18 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! inputenc
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! inputenc
 \end_layout
 
 \end_inset
@@ -33839,10 +34009,10 @@ OK
 \begin_layout Subsection
 Tastaturtabellen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tastaturtabellen
+Tastatur!-tabellen
 \end_layout
 
 \end_inset
@@ -38663,11 +38833,9 @@ Im Browser muss der Knopf für neu laden angeklickt werden, damit die Änderung
 \family sans
 OpenDocument
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\family sans
 OpenDocument
 \end_layout
 
@@ -39390,11 +39558,13 @@ status collapsed
 X
 \family sans
 -Code
+\family default
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-T
+Te
 \begin_inset ERT
 status collapsed
 
@@ -39405,13 +39575,11 @@ status collapsed
 
 \end_inset
 
-eX
+X-Code
 \end_layout
 
 \end_inset
 
-
-\family default
 
 \begin_inset Note Note
 status collapsed
@@ -43990,7 +44158,18 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! caption
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! caption
 \end_layout
 
 \end_inset
@@ -44034,10 +44213,21 @@ fancyhdr
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! fancyhdr
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! fancyhdr
 \end_layout
 
 \end_inset
@@ -44081,10 +44271,21 @@ nomencl
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket! nomencl
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket! nomencl
 \end_layout
 
 \end_inset
@@ -44128,10 +44329,21 @@ tipa
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! tipa
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! tipa
 \end_layout
 
 \end_inset
@@ -44175,10 +44387,21 @@ wrapfig
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Paket ! wrapfig
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Paket ! wrapfig
 \end_layout
 
 \end_inset

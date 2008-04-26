@@ -1,4 +1,4 @@
-#LyX 1.6.0alpha2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 328
 \begin_document
 \begin_header
@@ -285,7 +285,29 @@ Wie LyX LaTeX benutzt
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX und LaTeX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X und LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \end_inset
@@ -1059,14 +1081,25 @@ LaTeX-Code in LyX-Dokumente einsetzen
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-Code
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Code
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Te
@@ -1081,18 +1114,6 @@ status collapsed
 \end_inset
 
 X-Code
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
 \end_layout
 
 \end_inset
@@ -2036,7 +2057,18 @@ LyX und LaTeX-Fehler
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!-Fehler
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Fehler
 \end_layout
 
 \end_inset
@@ -2531,7 +2563,7 @@ Literaturverzeichnis
 status collapsed
 
 \begin_layout Plain Layout
-BibT
+BibTe
 \begin_inset ERT
 status collapsed
 
@@ -2542,7 +2574,7 @@ status collapsed
 
 \end_inset
 
-eX
+X
 \end_layout
 
 \end_inset
@@ -5115,7 +5147,7 @@ Import und Export anderer Dateiformate
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import
+Datei!Import
 \end_layout
 
 \end_inset
@@ -5125,7 +5157,7 @@ Dateiformat!Import
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export
+Datei!Export
 \end_layout
 
 \end_inset
@@ -5207,7 +5239,18 @@ LaTeX (plain)
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!LaTeX
+Datei!Import!LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \end_inset
@@ -5241,7 +5284,7 @@ MS Word
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!MS Word
+Datei!Import!MS Word
 \end_layout
 
 \end_inset
@@ -5312,7 +5355,7 @@ NoWeb
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!NoWeb
+Datei!Import!NoWeb
 \end_layout
 
 \end_inset
@@ -5333,7 +5376,7 @@ Einfacher Text
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!Einfacher Text
+Datei!Import!Einfacher Text
 \end_layout
 
 \end_inset
@@ -5416,7 +5459,7 @@ DVI
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!DVI
+Datei!Export!DVI
 \end_layout
 
 \end_inset
@@ -5439,7 +5482,7 @@ HTML
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!HTML
+Datei!Export!HTML
 \end_layout
 
 \end_inset
@@ -5616,7 +5659,7 @@ HTML (MS Word)
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!MS Word (HTML)
+Datei!Import!MS Word (HTML)
 \end_layout
 
 \end_inset
@@ -5640,7 +5683,18 @@ LaTeX (pdflatex und plain)
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!LaTeX
+Datei!Export!LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \end_inset
@@ -5688,22 +5742,65 @@ X
 \end_layout
 
 \begin_layout Subsection
-LyX 1.3.x
+LyX 1.3.x,
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!LyX 1.3.x
+Datei!Export!Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
 \end_layout
 
 \end_inset
 
- und 1.4.x
+X 1.3.x
+\end_layout
+
+\end_inset
+
+ 1.4.x
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!LyX 1.4.x
+Datei!Export!Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X 1.4.x
+\end_layout
+
+\end_inset
+
+ und 1.5.x
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Datei!Export!Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X 1.5.x
 \end_layout
 
 \end_inset
@@ -5728,7 +5825,7 @@ OpenDocumentOpen Document
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Import!MS Word (HTML)
+Datei!Import!MS Word (HTML)
 \end_layout
 
 \end_inset
@@ -5747,7 +5844,7 @@ Einfacher Text
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!einfacher Text
+Datei!Export!einfacher Text
 \end_layout
 
 \end_inset
@@ -5779,7 +5876,7 @@ PostScript
 status collapsed
 
 \begin_layout Plain Layout
-Dateiformat!Export!PostScript
+Datei!Export!PostScript
 \end_layout
 
 \end_inset
@@ -9194,7 +9291,18 @@ name "Geheimnisse-der-LaTeX-Meister"
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX!Geheimnisse
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X!-Geheimnisse
 \end_layout
 
 \end_inset
