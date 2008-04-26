@@ -27,7 +27,7 @@ public:
 	InsetIndex(Buffer const &);
 private:
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return INDEX_CODE; }
 	///
