@@ -40,6 +40,21 @@ InsetIndex::InsetIndex(Buffer const & buf)
 {}
 
 
+int InsetIndex::latex(odocstream & os,
+			  OutputParams const & runparams) const
+{
+	os << "\\index";
+	os << '{';
+	if (hasFontChanges()) {
+		InsetText::plaintext(os, runparams);
+		os << '@';
+	}
+	int i = InsetText::latex(os, runparams);
+	os << '}';
+	return i;
+}
+
+
 int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	os << "<indexterm><primary>";
@@ -65,6 +80,16 @@ void InsetIndex::addToToc(ParConstIterator const & cpit) const
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
+}
+
+
+bool InsetIndex::hasFontChanges() const
+{
+	// we only have one par
+	Paragraph par = paragraphs().back();
+	FontSpan const font_span = par.fontSpan(0);
+	Font firstfont = par.getFirstFontSettings(buffer().params());
+	return (firstfont.fontInfo() != inherit_font || par.size() > font_span.last + 1);
 }
 
 

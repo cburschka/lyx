@@ -36,12 +36,16 @@ private:
 	void write(std::ostream & os) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	int latex(odocstream &, OutputParams const &) const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
 	void addToToc(ParConstIterator const &) const;
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
+	///
+	bool hasFontChanges() const;
 };
 
 
