@@ -6,11 +6,13 @@
     <x>0</x>
     <y>0</y>
     <width>467</width>
-    <height>692</height>
+    <height>572</height>
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>1</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -22,131 +24,24 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <layout class="QGridLayout" >
-     <item row="4" column="1" >
-      <widget class="QPushButton" name="upPB" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Move the selected citation up (try Ctrl-Up)</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Up</string>
-       </property>
-       <property name="icon" >
-        <iconset/>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1" >
-      <widget class="QPushButton" name="downPB" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Move the selected citation down (try Ctrl-Down)</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Down</string>
-       </property>
-       <property name="icon" >
-        <iconset/>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1" >
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>77</width>
-         <height>16</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="1" >
-      <widget class="QPushButton" name="deletePB" >
-       <property name="toolTip" >
-        <string>The delete key works, too</string>
-       </property>
-       <property name="text" >
-        <string>D&amp;elete</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item rowspan="5" row="1" column="0" >
-      <widget class="QListView" name="availableLV" >
-       <property name="editTriggers" >
-        <set>QAbstractItemView::NoEditTriggers</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" >
-      <widget class="QPushButton" name="addPB" >
-       <property name="toolTip" >
-        <string>The Enter key works, too</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Add</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2" >
-      <widget class="QLabel" name="selectedKeysLA" >
-       <property name="text" >
-        <string>&amp;Selected Citations:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>selectedLV</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" >
-      <widget class="QLabel" name="availableKeysLA" >
-       <property name="text" >
-        <string>A&amp;vailable Citations:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>availableLV</cstring>
-       </property>
-      </widget>
-     </item>
-     <item rowspan="5" row="1" column="2" >
-      <widget class="QListView" name="selectedLV" >
-       <property name="editTriggers" >
-        <set>QAbstractItemView::NoEditTriggers</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item row="1" column="0" >
-    <widget class="QTextBrowser" name="infoML" >
-     <property name="focusPolicy" >
-      <enum>Qt::NoFocus</enum>
+    <widget class="QTextEdit" name="infoML" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>4</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -159,6 +54,12 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
       <item row="0" column="0" >
        <widget class="QLabel" name="findKeysLA" >
         <property name="text" >
@@ -307,7 +208,7 @@
       <item row="3" column="3" colspan="2" >
        <widget class="QCheckBox" name="asTypeCB" >
         <property name="text" >
-         <string>Search As You Type</string>
+         <string>Search As You &amp;Type</string>
         </property>
        </widget>
       </item>
@@ -323,100 +224,188 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <item row="0" column="1" colspan="2" >
-       <widget class="QComboBox" name="citationStyleCO" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-        <property name="toolTip" >
-         <string>Natbib citation style to use</string>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QCheckBox" name="fulllistCB" >
+          <property name="toolTip" >
+           <string>List all authors</string>
+          </property>
+          <property name="text" >
+           <string>Full aut&amp;hor list</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="forceuppercaseCB" >
+          <property name="toolTip" >
+           <string>Force upper case in citation</string>
+          </property>
+          <property name="text" >
+           <string>Force u&amp;pper case</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>21</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="citationStyleLA" >
-        <property name="text" >
-         <string>Citation st&amp;yle:</string>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-        <property name="buddy" >
-         <cstring>citationStyleCO</cstring>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2" >
-       <widget class="QCheckBox" name="fulllistCB" >
-        <property name="toolTip" >
-         <string>List all authors</string>
-        </property>
-        <property name="text" >
-         <string>Full aut&amp;hor list</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2" >
-       <widget class="QCheckBox" name="forceuppercaseCB" >
-        <property name="toolTip" >
-         <string>Force upper case in citation</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Force upper case</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="textAfterLA" >
-        <property name="text" >
-         <string>&amp;Text after:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>textAfterED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" colspan="2" >
-       <widget class="QLineEdit" name="textAfterED" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip" >
-         <string>Text to place after citation</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textBeforeLA" >
-        <property name="text" >
-         <string>Text &amp;before:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>textAfterED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="2" >
-       <widget class="QLineEdit" name="textBeforeED" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip" >
-         <string>Text to place before citation</string>
-        </property>
-       </widget>
+        <item>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="citationStyleLA" >
+            <property name="text" >
+             <string>Citation st&amp;yle:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>citationStyleCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="textBeforeLA" >
+            <property name="text" >
+             <string>Text &amp;before:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>textBeforeED</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QComboBox" name="citationStyleCO" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip" >
+               <string>Natbib citation style to use</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="textBeforeED" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip" >
+               <string>Text to place before citation</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="textAfterLA" >
+              <property name="text" >
+               <string>Text a&amp;fter:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>textAfterED</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="textAfterED" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip" >
+               <string>Text to place after citation</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
    </item>
    <item row="4" column="0" >
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
       <number>6</number>
      </property>
@@ -459,7 +448,7 @@
      <item>
       <widget class="QPushButton" name="applyPB" >
        <property name="text" >
-        <string>A&amp;pply</string>
+        <string>App&amp;ly</string>
        </property>
        <property name="autoDefault" >
         <bool>false</bool>
@@ -475,6 +464,180 @@
         <bool>false</bool>
        </property>
       </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="0" >
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="availableKeysLA" >
+         <property name="text" >
+          <string>A&amp;vailable Citations:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>availableLV</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>71</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="selectedKeysLA" >
+         <property name="text" >
+          <string>&amp;Selected Citations:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>selectedLV</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0" >
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QListView" name="availableLV" >
+         <property name="editTriggers" >
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="addPB" >
+           <property name="toolTip" >
+            <string>The Enter key works, too</string>
+           </property>
+           <property name="text" >
+            <string>&amp;Add</string>
+           </property>
+           <property name="autoDefault" >
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deletePB" >
+           <property name="toolTip" >
+            <string>The delete key works, too</string>
+           </property>
+           <property name="text" >
+            <string>D&amp;elete</string>
+           </property>
+           <property name="autoDefault" >
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>77</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="upPB" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>1</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip" >
+            <string>Move the selected citation up (try Ctrl-Up)</string>
+           </property>
+           <property name="text" >
+            <string>&amp;Up</string>
+           </property>
+           <property name="icon" >
+            <iconset/>
+           </property>
+           <property name="autoDefault" >
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="downPB" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>1</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip" >
+            <string>Move the selected citation down (try Ctrl-Down)</string>
+           </property>
+           <property name="text" >
+            <string>&amp;Down</string>
+           </property>
+           <property name="icon" >
+            <iconset/>
+           </property>
+           <property name="autoDefault" >
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QListView" name="selectedLV" >
+         <property name="editTriggers" >
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

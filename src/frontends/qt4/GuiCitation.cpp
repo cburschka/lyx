@@ -111,6 +111,8 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(on_okPB_clicked()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	// FIXME: the sizeHint() for this is _way_ too high
+	infoML->setFixedHeight(60);
 }
 
 
@@ -132,7 +134,7 @@ void GuiCitation::closeEvent(QCloseEvent * e)
 
 void GuiCitation::applyView()
 {
-	int  const choice = max(0, citationStyleCO->currentIndex());
+	int const choice = max(0, citationStyleCO->currentIndex());
 	style_ = choice;
 	bool const full  = fulllistCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();
