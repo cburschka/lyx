@@ -810,7 +810,7 @@ void InsetListingsParams::addParams(string const & par)
 		} else if (par[i] == '=' && braces == 0) {
 			isValue = true;
 			continue;
-		} else if (par[i] == '{' && par[i - 1] == '=')
+		} else if (par[i] == '{' && i > 0 && par[i - 1] == '=')
 			braces ++;
 		else if (par[i] == '}'
 			&& (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
