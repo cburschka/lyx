@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+\lyxformat 328
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,7 +103,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -2072,6 +2071,54 @@ Document ! Settings
  dialog.
  Select the class you want to use, and make any fine tunings of the options
  you may need.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Modules"
+
+\end_inset
+
+Modules
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Layout Modules
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since LyX 1.6, layout modules can be used to add additional features to a
+ document without the user's having to include those features in a new layout
+ file.
+ The available modules are listed in the Available Modules pane of the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Settings
+\end_layout
+
+\end_inset
+
+
+\family default
+ dialog.
+ Highlighting one of them will bring up a description of the module.
+ Please note that some modules require LaTeX packages that are not always
+ installed by default.
+ LyX will warn you if you do not have the needed package.
+ Note also that some modules require other modules, and some pairs of modules
+ are incompatible.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5709,7 +5756,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Abstract.pdf
-	embed ""
 	lyxscale 25
 
 \end_inset
@@ -6224,14 +6270,12 @@ Edit
  Instead of the menu, you can also use the toolbar buttons 
 \begin_inset Graphics
 	filename ../images/depth-increment.png
-	embed ""
 
 \end_inset
 
  and 
 \begin_inset Graphics
 	filename ../images/depth-decrement.png
-	embed ""
 
 \end_inset
 
@@ -10366,7 +10410,6 @@ Noun
 click on the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-noun.png
-	embed ""
 
 \end_inset
 
@@ -10430,7 +10473,6 @@ Emphasized
 clicking on the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-emph.png
-	embed ""
 
 \end_inset
 
@@ -11960,7 +12002,6 @@ Style
  You can activate them using the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-free-apply.png
-	embed ""
 
 \end_inset
 
@@ -12774,7 +12815,6 @@ DVI
  you can use the toolbar button 
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
-	embed ""
 
 \end_inset
 
@@ -12794,7 +12834,6 @@ PDF
  you can use the toolbar button 
 \begin_inset Graphics
 	filename ../images/buffer-export_pdf2.png
-	embed ""
 
 \end_inset
 
@@ -12839,7 +12878,6 @@ Print
  or click on the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	embed ""
 
 \end_inset
 
@@ -13365,7 +13403,6 @@ mbox
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/mbox.png
-	embed ""
 
 \end_inset
 
@@ -14317,7 +14354,6 @@ If you don't want to use proper names, e.g.
  This will look in LyX like: 
 \begin_inset Graphics
 	filename clipart/LaTeX.png
-	embed ""
 
 \end_inset
 
@@ -14742,7 +14778,6 @@ In contrary to colored boxes, the note uses always the whole text width
 Notes are inserted with the toolbar button 
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	embed ""
 	scale 85
 	scaleBeforeRotation
 
@@ -14788,7 +14823,6 @@ Footnote
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/footnote-insert.png
-	embed ""
 
 \end_inset
 
@@ -14803,7 +14837,6 @@ you'll see
  the following box: 
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
-	embed ""
 	scale 80
 
 \end_inset
@@ -14948,7 +14981,6 @@ Note
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.png
-	embed ""
 
 \end_inset
 
@@ -15044,7 +15076,6 @@ To insert an image in your document, place the cursor at the text position
  you want and click on the toolbar icon 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.png
-	embed ""
 
 \end_inset
 
@@ -15174,7 +15205,6 @@ The graphics dialog can be called at any time by right-clicking on an image.
 \align center
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	embed ""
 	display color
 	scale 70
 	rotateOrigin center
@@ -15631,7 +15661,6 @@ name "sec:Tables"
 You can insert a table using either the toolbar button 
 \begin_inset Graphics
 	filename ../images/tabular-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -18842,7 +18871,6 @@ Floats ! Captions
  A closed float box looks like this: 
 \begin_inset Graphics
 	filename clipart/floatQt4.png
-	embed ""
 	scale 80
 
 \end_inset
@@ -18944,7 +18972,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	embed ""
 	display color
 	width 50col%
 	rotateOrigin center
@@ -19006,7 +19033,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
-	embed ""
 	display color
 	scale 80
 	rotateOrigin center
@@ -19130,7 +19156,6 @@ Undefinable
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
-	embed ""
 	width 45col%
 
 \end_inset
@@ -19165,7 +19190,6 @@ Platypus
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	embed ""
 	lyxscale 60
 	width 45col%
 
@@ -19634,7 +19658,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	embed ""
 	display color
 	width 40col%
 	rotateOrigin center
@@ -20515,7 +20538,6 @@ Math ! Basics
 To create a math formula, you can just click on the toolbar icon 
 \begin_inset Graphics
 	filename ../images/math-mode.png
-	embed ""
 
 \end_inset
 
@@ -20968,7 +20990,6 @@ frac
  or using the icon 
 \begin_inset Graphics
 	filename ../images/math/frac.png
-	embed ""
 	scale 60
 
 \end_inset
@@ -21031,7 +21052,6 @@ Panel
  button
 \begin_inset Graphics
 	filename ../images/math/sqrt.png
-	embed ""
 
 \end_inset
 
@@ -21319,7 +21339,6 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/space.png
-	embed ""
 
 \end_inset
 
@@ -21336,7 +21355,6 @@ a C-Space b
  (appears in LyX as 
 \begin_inset Graphics
 	filename clipart/SpaceMarker.png
-	embed ""
 
 \end_inset
 
@@ -21414,7 +21432,6 @@ Panel
  contains under the button 
 \begin_inset Graphics
 	filename ../images/math/functions.png
-	embed ""
 
 \end_inset
 
@@ -22162,7 +22179,6 @@ decorations
  symbol set button 
 \begin_inset Graphics
 	filename ../images/math/hat.png
-	embed ""
 
 \end_inset
 
@@ -22220,7 +22236,6 @@ Panel
 's delimiter icon 
 \begin_inset Graphics
 	filename ../images/math/delim.png
-	embed ""
 
 \end_inset
 
@@ -22399,7 +22414,6 @@ Panel
  matrix button 
 \begin_inset Graphics
 	filename ../images/math/matrix.png
-	embed ""
 
 \end_inset
 
@@ -23057,7 +23071,6 @@ spce
 This results in the following macro definition box: 
 \begin_inset Graphics
 	filename clipart/macrobox.png
-	embed ""
 
 \end_inset
 
@@ -23162,7 +23175,6 @@ qE
 \align center
 \begin_inset Graphics
 	filename clipart/macrouse.png
-	embed ""
 
 \end_inset
 
@@ -23300,7 +23312,6 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/font.png
-	embed ""
 
 \end_inset
 
@@ -23780,7 +23791,6 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/font.png
-	embed ""
 
 \end_inset
 
@@ -23859,7 +23869,6 @@ displaystyle
  These choices can be overridden by using the math panel button 
 \begin_inset Graphics
 	filename ../images/math/style.png
-	embed ""
 
 \end_inset
 
@@ -23937,6 +23946,34 @@ largest
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Theorem Modules
+\end_layout
+
+\begin_layout Standard
+As of LyX 1.6, support for theorem-like environments has been moved out of
+ the document classes and into layout modules.
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Layout Modules
+\end_layout
+
+\end_inset
+
+ As a result, theorem-like environments can now easily be used with classes
+ other than the AMS classes.
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Modules"
+
+\end_inset
+
+ for more on layout modules.
 \end_layout
 
 \begin_layout Section
@@ -24126,7 +24163,6 @@ Label
  or the by pressing the toolbar button 
 \begin_inset Graphics
 	filename ../images/label-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24135,7 +24171,6 @@ Label
  A grey label box like this: 
 \begin_inset Graphics
 	filename clipart/labelQt4.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24201,7 +24236,6 @@ Cross-Reference
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24210,7 +24244,6 @@ Cross-Reference
  A grey cross-reference box like this: 
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -24766,7 +24799,6 @@ Hyperlink
  or with the toolbar button 
 \begin_inset Graphics
 	filename ../images/href-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -25046,7 +25078,6 @@ Citation
  or the toobar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -25452,7 +25483,6 @@ Entry
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -26238,7 +26268,6 @@ Entry
  or the toobar button 
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -27292,7 +27321,6 @@ TeX
  or by the toolbar button 
 \begin_inset Graphics
 	filename ../images/ert-insert.png
-	embed ""
 
 \end_inset
 
@@ -27350,7 +27378,6 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ERT.png
-	embed ""
 	scale 89
 
 \end_inset
@@ -28088,7 +28115,6 @@ Thesaurus
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28259,7 +28285,6 @@ Toolbar ! Review
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ChangesToolbar.png
-	embed ""
 
 \end_inset
 
@@ -28298,7 +28323,6 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-track.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28338,7 +28362,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-output.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28386,7 +28409,6 @@ Output
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-next.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28414,7 +28436,6 @@ Jumps to the next change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-accept.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28454,7 +28475,6 @@ Change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/change-reject.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28494,7 +28514,6 @@ Change
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/changes-merge.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28534,7 +28553,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/all-changes-accept.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28578,7 +28596,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/all-changes-reject.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28622,7 +28639,6 @@ Changes
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -28658,7 +28674,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-next.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36688,7 +36703,6 @@ Toolbar ! Standard
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/StandardToolbar.png
-	embed ""
 	width 100col%
 
 \end_inset
@@ -36758,7 +36772,6 @@ Embedded Objects
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/ToolbarEnvBox.png
-	embed ""
 	clip
 
 \end_inset
@@ -36808,7 +36821,6 @@ pull-down menu for the paragraph environments
 \family sans
 \begin_inset Graphics
 	filename ../images/buffer-new.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36838,7 +36850,6 @@ New
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/file-open.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36868,7 +36879,6 @@ Open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-write.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36898,7 +36908,6 @@ Save
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	embed ""
 	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
@@ -36928,7 +36937,6 @@ Print
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_spellchecker.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36958,7 +36966,6 @@ Spellchecker
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/undo.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36988,7 +36995,6 @@ Undo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/redo.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37018,7 +37024,6 @@ Redo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/cut.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37048,7 +37053,6 @@ Cut
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/copy.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37078,7 +37082,6 @@ Copy
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/paste.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37108,7 +37111,6 @@ Paste
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_findreplace.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37147,7 +37149,6 @@ Replace
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/font-emph.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37183,7 +37184,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/font-noun.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37219,7 +37219,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/font-free-apply.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37255,7 +37254,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/math-mode.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37290,7 +37288,6 @@ Formula
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37321,7 +37318,6 @@ Graphics
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/tabular-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37352,7 +37348,6 @@ Table
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-toggle_toc.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37383,7 +37378,6 @@ Outline
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_math.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37411,7 +37405,6 @@ Toggle math toolbar on/off
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_table.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37456,7 +37449,6 @@ Toolbar ! Extra
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ExtraToolbar.png
-	embed ""
 	width 100col%
 
 \end_inset
@@ -37496,7 +37488,6 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37524,7 +37515,6 @@ Default
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Enumerate.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37552,7 +37542,6 @@ Numbered list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Itemize.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37580,7 +37569,6 @@ Itemized list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_List.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37608,7 +37596,6 @@ List
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout_Description.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37636,7 +37623,6 @@ Description list
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/depth-increment.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37675,7 +37661,6 @@ Depth
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/depth-decrement.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37714,7 +37699,6 @@ Depth
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/float-insert_figure.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37745,7 +37729,6 @@ Figure
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/float-insert_table.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37776,7 +37759,6 @@ Table
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/label-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37806,7 +37788,6 @@ Label
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37836,7 +37817,6 @@ Cross-Reference
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37866,7 +37846,6 @@ Citation
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37900,7 +37879,6 @@ Entry
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37934,7 +37912,6 @@ Entry
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/footnote-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -37964,7 +37941,6 @@ Footnote
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -37999,7 +37975,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38034,7 +38009,6 @@ Note
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/box-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38064,7 +38038,6 @@ Box
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/url-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38094,7 +38067,6 @@ URL
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/ert-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38139,7 +38111,6 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_include.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38174,7 +38145,6 @@ Document
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/dialog-show_character.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38209,7 +38179,6 @@ Style
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/layout-paragraph.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38244,7 +38213,6 @@ Settings
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38292,7 +38260,6 @@ Toolbar ! View / Update
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ViewToolbar.png
-	embed ""
 
 \end_inset
 
@@ -38331,7 +38298,6 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38362,7 +38328,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_dvi.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38394,7 +38359,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_pdf2.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38425,7 +38389,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_pdf2.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38474,7 +38437,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-view_ps.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38505,7 +38467,6 @@ Postscript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../images/buffer-update_ps.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
