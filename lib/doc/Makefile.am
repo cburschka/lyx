@@ -62,6 +62,7 @@ dist_dedoc_DATA = \
 	de/Formelnummerierung.lyx \
 	de/Intro.lyx \
 	de/Math.lyx \
+	de/Shortcuts.lyx \
 	de/Tutorial.lyx \
 	de/UserGuide.lyx
 
