@@ -44,8 +44,6 @@ private:
 	void addToToc(ParConstIterator const &) const;
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
-	///
-	bool hasFontChanges() const;
 };
 
 

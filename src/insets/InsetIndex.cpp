@@ -20,11 +20,14 @@
 #include "sgml.h"
 #include "TocBackend.h"
 
+#include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -45,9 +48,16 @@ int InsetIndex::latex(odocstream & os,
 {
 	os << "\\index";
 	os << '{';
-	if (hasFontChanges()) {
-		InsetText::plaintext(os, runparams);
-		os << '@';
+	odocstringstream ods;
+	InsetText::latex(ods, runparams);
+	// correctly sort macros and formatted strings
+	// if we do find a command, prepend a plain text
+	// version of the content to get sorting right,
+	// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
+	// Don't do that if the user entered '@' himself, though.
+	if (contains(ods.str(), '\\') && !contains(ods.str(), '@')) {
+		if (InsetText::plaintext(os, runparams) > 0)
+			os << '@';
 	}
 	int i = InsetText::latex(os, runparams);
 	os << '}';
@@ -80,16 +90,6 @@ void InsetIndex::addToToc(ParConstIterator const & cpit) const
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
-}
-
-
-bool InsetIndex::hasFontChanges() const
-{
-	// we only have one par
-	Paragraph par = paragraphs().back();
-	FontSpan const font_span = par.fontSpan(0);
-	Font firstfont = par.getFirstFontSettings(buffer().params());
-	return (firstfont.fontInfo() != inherit_font || par.size() > font_span.last + 1);
 }
 
 
