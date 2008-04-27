@@ -96,8 +96,7 @@ def layouts_l10n(input_files, output, base):
                 if res != None:
                     readingDescription = False
                     desc = " ".join(descLines)
-                    print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                        (relativePath(src, base), lineno + 1, desc)
+                    writeString(out, src, base, lineno + 1, desc)
                     continue
                 descLines.append(line[1:].strip())
                 continue
