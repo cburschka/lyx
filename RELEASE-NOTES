@@ -138,6 +138,8 @@ The following new LyX functions have been introduced:
 
 - LFUN_NEXT_INSET_MODIFY, "next-inset-modify"
 
+- LFUN_INSET_EDIT, "inset-edit"
+
 
 The following new LyX functions have been removed:
 
@@ -155,6 +157,10 @@ The following new LyX functions have been removed:
 - LFUN_CLEARDOUBLEPAGE_INSERT. Now part of LFUN_NEWPAGE_INSERT (see above).
 
 - LFUN_SERVER_GET_FONT.
+
+- LFUN_EXTERNAL_EDIT. Superseded by the more general LFUN_INSET_EDIT.
+
+- LFUN_GRAPHICS_EDIT. Superseded by the more general LFUN_INSET_EDIT.
 
 For the detailed description of LyX functions look into doxygen documentation.
 
