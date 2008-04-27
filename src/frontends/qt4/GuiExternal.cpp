@@ -702,7 +702,7 @@ void GuiExternal::editExternal()
 {
 	applyView();
 	string const lfun = InsetExternal::params2string(params_, buffer());
-	dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
+	dispatch(FuncRequest(LFUN_INSET_EDIT, lfun));
 }
 
 

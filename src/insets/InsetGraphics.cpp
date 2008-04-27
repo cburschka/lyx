@@ -184,7 +184,7 @@ InsetGraphics::~InsetGraphics()
 void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
-	case LFUN_GRAPHICS_EDIT: {
+	case LFUN_INSET_EDIT: {
 		InsetGraphicsParams p = params();
 		if (!cmd.argument().empty())
 			string2params(to_utf8(cmd.argument()), buffer(), p);
@@ -224,7 +224,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	case LFUN_GRAPHICS_EDIT:
+	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);

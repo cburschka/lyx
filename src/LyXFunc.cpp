@@ -622,8 +622,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
-	case LFUN_EXTERNAL_EDIT:
-	case LFUN_GRAPHICS_EDIT:
+	case LFUN_INSET_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:

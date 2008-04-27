@@ -427,7 +427,7 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
-	case LFUN_EXTERNAL_EDIT: {
+	case LFUN_INSET_EDIT: {
 		InsetExternalParams p =  params();
 		if (!cmd.argument().empty())
 			string2params(to_utf8(cmd.argument()), buffer(), p);
@@ -465,7 +465,7 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 
-	case LFUN_EXTERNAL_EDIT:
+	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);

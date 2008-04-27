@@ -1092,9 +1092,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_OUTLINE_OUT, "outline-out", Noop, Edit },
-
-		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop, Edit },
-		{ LFUN_GRAPHICS_EDIT, "graphics-edit", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_EDIT
+ * \li Action: Edit the inset at cursor with an external application,
+ *             if one is attributed.
+ * \li Syntax: inset-edit
+ * \li Origin: JSpitzm, 27 Apr 2006
+ * \endvar
+ */
+		{ LFUN_INSET_EDIT, "inset-edit", Noop, Edit },
 
 		{ LFUN_CELL_BACKWARD, "cell-backward", Noop, Edit },
 		{ LFUN_CELL_FORWARD, "cell-forward", Noop, Edit },

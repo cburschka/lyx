@@ -851,8 +851,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
 	case LFUN_INFO_INSERT:
-	case LFUN_EXTERNAL_EDIT:
-	case LFUN_GRAPHICS_EDIT:
+	case LFUN_INSET_EDIT:
 	case LFUN_PARAGRAPH_GOTO:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
@@ -1063,23 +1062,20 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 	
-	case LFUN_EXTERNAL_EDIT: {
+	case LFUN_INSET_EDIT: {
 		FuncRequest fr(cmd);
-		InsetExternal * inset = getInsetByCode<InsetExternal>(d->cursor_,
-			EXTERNAL_CODE);
+		// if there is an inset at cursor, see whether it
+		// can be modified.
+		Inset * inset = cur.nextInset();
 		if (inset)
-			inset->dispatch(d->cursor_, fr);
-		break;
-	}
+			inset->dispatch(cur, fr);
+		// if it did not work, try the underlying inset.
+		if (!inset || !cur.result().dispatched())
+			cur.dispatch(cmd);
 
-
-	case LFUN_GRAPHICS_EDIT: {
-		FuncRequest fr(cmd);
-		InsetGraphics * inset = getInsetByCode<InsetGraphics>(d->cursor_,
-			GRAPHICS_CODE);
-		if (inset)
-			inset->dispatch(d->cursor_, fr);
-		break;
+		if (!cur.result().dispatched())
+			// It did not work too; no action needed.
+			break;
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
