@@ -61,7 +61,9 @@ What's new
 - The command \textcolor is now converted when importing LaTeX files
   (bug 2457).
 
-- Line spacing settings are now imported when importing LaTeX files.
+- Global line spacing settings are now imported when importing LaTeX files.
+
+- The command \lyxline is now converted when importing LaTeX files (bug 4795).
 
 
 * BUILD/INSTALLATION:
@@ -124,6 +126,8 @@ What's new
 
 - Import global paragraph settings correctly when importing LaTeX files
   (bug 4773).
+
+- Fix the font size handling when importing LaTeX files (bug 4803).
 
 
 * USER INTERFACE:
