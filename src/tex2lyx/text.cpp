@@ -135,7 +135,7 @@ char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 
 /// the same as known_sizes with .lyx names
 char const * const known_coded_sizes[] = { "default", "tiny", "scriptsize", "footnotesize",
-"small", "normal", "large", "larger", "largest",  "huge", "giant", 0};
+"small", "normal", "large", "larger", "largest", "huge", "giant", 0};
 
 /// LaTeX 2.09 names for font families
 char const * const known_old_font_families[] = { "rm", "sf", "tt", 0};
@@ -1884,6 +1884,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " default\n";
 		}
 
+		else if (t.cs() == "lyxline") {
+			context.check_layout(os);
+			os << "\\lyxline";
+		}
+
 		else if (use_natbib &&
 			 is_known(t.cs(), known_natbib_commands) &&
 			 ((t.cs() != "citefullauthor" &&
@@ -2002,7 +2007,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
-			context.font.size = known_coded_sizes[where - known_sizes];
+			// the font size index differs by 1, because the known_coded_sizes
+			// has additionally a "default" entry
+			context.font.size = known_coded_sizes[where - known_sizes + 1];
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
