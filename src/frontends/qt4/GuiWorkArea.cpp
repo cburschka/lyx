@@ -1141,7 +1141,7 @@ void GuiWorkArea::setReadOnly(bool)
 {
 	updateWindowTitle();
 	if (this == lyx_view_->currentWorkArea())
-		lyx_view_->updateBufferDependent(false);
+		lyx_view_->updateDialogs();
 }
 
 

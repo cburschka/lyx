@@ -137,6 +137,13 @@ TocList const & GuiToc::tocs() const
 bool GuiToc::initialiseParams(string const & data)
 {
 	LYXERR(Debug::GUI, data);
+	types_.clear();
+	type_names_.clear();
+	clearTocModels();
+	if (!bufferview())
+		// Nothing to show here.
+		return true;
+
 	QString str = toqstr(data);
 	QString new_type;
 	if (str.contains("tableofcontents")) {
@@ -155,9 +162,6 @@ bool GuiToc::initialiseParams(string const & data)
 		new_type = "tableofcontents";
 	}
 
-	types_.clear();
-	type_names_.clear();
-	clearTocModels();
 	TocList const & tocs = buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator end = tocs.end();

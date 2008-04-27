@@ -29,6 +29,7 @@ class TocWidget : public QWidget, public Ui::TocUi
 public:
 	TocWidget(GuiToc & form, QWidget * parent = 0);
 
+public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
 	void updateView();
 

@@ -538,14 +538,13 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 		this, SLOT(updateWindowTitle(GuiWorkArea *)));
 	updateWindowTitle(wa);
 
-	updateToc();
-	// Buffer-dependent dialogs should be updated or
-	// hidden. This should go here because some dialogs (eg ToC)
-	// require bv_->text.
-	updateBufferDependent(true);
-	updateToolbars();
-	updateLayoutList();
-	updateStatusBar();
+	// Navigator needs more than a simple update in this case. It needs to be
+	// rebuilt.
+	structureChanged();
+
+	// Buffer-dependent dialogs must be updated. This is done here because
+	// some dialogs require buffer()->text.
+	updateDialogs();
 }
 
 
@@ -561,6 +560,9 @@ void GuiView::on_lastWorkAreaRemoved()
 			QTimer::singleShot(0, this, SLOT(close()));
 		}
 	}
+#else
+	structureChanged();
+	updateDialogs();
 #endif
 }
 
@@ -613,10 +615,8 @@ bool GuiView::event(QEvent * e)
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
 			// changed in another view.
-			updateBufferDependent(true);
-			updateToolbars();
-			updateLayoutList();
-			updateStatusBar();
+			structureChanged();
+			updateDialogs();
 		} else {
 			setWindowTitle(qt_("LyX"));
 			setWindowIconText(qt_("LyX"));
@@ -765,11 +765,6 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
 	LASSERT(wa, /**/);
-
-	// Changing work area can result from opening a file so
-	// update the toc in any case.
-	updateToc();
-
 	d.current_work_area_ = wa;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
@@ -939,12 +934,6 @@ void GuiView::updateDialog(string const & name, string const & data)
 BufferView * GuiView::view()
 {
 	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
-}
-
-
-void GuiView::updateToc()
-{
-	updateDialog("toc", "");
 }
 
 
@@ -2147,7 +2136,7 @@ void GuiView::hideAll() const
 }
 
 
-void GuiView::updateBufferDependent(bool switched) const
+void GuiView::updateDialogs()
 {
 	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
 	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
@@ -2156,11 +2145,11 @@ void GuiView::updateBufferDependent(bool switched) const
 		Dialog * dialog = it->second.get();
 		if (!dialog->isVisibleView())
 			continue;
-		if (switched && dialog->isBufferDependent()) {
-			if (dialog->initialiseParams(""))
+		if (dialog->isBufferDependent()) {
+			if (buffer())
 				dialog->updateView();
 			else
-				dialog->hideView();
+				dialog->enableView(false);
 		} else {
 			// A bit clunky, but the dialog will request
 			// that the kernel provides it with the necessary
@@ -2168,6 +2157,9 @@ void GuiView::updateBufferDependent(bool switched) const
 			dialog->updateDialog();
 		}
 	}
+	updateToolbars();
+	updateLayoutList();
+	updateStatusBar();
 }
 
 

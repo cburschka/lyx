@@ -207,6 +207,7 @@ void TocWidget::enableControls(bool enable)
 void TocWidget::updateView()
 {
 	LYXERR(Debug::GUI, "In TocWidget::updateView()");
+	setTreeDepth();
 	select(form_.currentIndex(typeCO->currentIndex()));
 }
 
@@ -241,7 +242,7 @@ void TocWidget::updateGui(int selected_type)
 
 	// setTocModel produce QTreeView reset and setting depth again
 	// is needed. That must be done after all Qt updates are processed.
-	QTimer::singleShot(0, this, SLOT(setTreeDepth()));
+	QTimer::singleShot(0, this, SLOT(updateView()));
 }
 
 

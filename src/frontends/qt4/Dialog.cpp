@@ -165,16 +165,16 @@ void Dialog::apply()
 
 void Dialog::updateData(string const & data)
 {
-	if (isBufferDependent() && !isBufferAvailable())
-		return;
-
 	if (!initialiseParams(data)) {
 		LYXERR0("Dialog \"" << fromqstr(name())
 		       << "\" could not be initialized");
 		return;
 	}
 
-	updateView();
+	if (lyxview_->buffer())
+		updateView();
+	else
+		enableView(false);
 }
 
 

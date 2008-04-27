@@ -104,7 +104,7 @@ public:
 	///@{
 	void resetAutosaveTimers();
 	void errors(std::string const &);
-	void structureChanged() { updateToc(); }
+	void structureChanged() { updateDialog("toc", ""); }
 	///@}
 	
 	/// called on timeout
@@ -170,8 +170,6 @@ private:
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
 	///
-	void updateToc();
-	///
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
 	void dropEvent(QDropEvent * ev);
@@ -208,11 +206,8 @@ public:
 	/// Hide all visible dialogs
 	void hideAll() const;
 
-	/** Update visible, buffer-dependent dialogs
-	    If the bool is true then a buffer change has occurred
-	    else it is still the same buffer.
-	 */
-	void updateBufferDependent(bool) const;
+	// Update all visible dialogs.
+	void updateDialogs();
 
 	/** \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
