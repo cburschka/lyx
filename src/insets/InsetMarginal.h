@@ -40,8 +40,6 @@ public:
 	docstring editMessage() const;
 	///
 	void addToToc(ParConstIterator const &) const;
-	///
-	docstring toolTip(BufferView const & bv, int x, int y) const;
 private:
 	///
 	Inset * clone() const { return new InsetMarginal(*this); }

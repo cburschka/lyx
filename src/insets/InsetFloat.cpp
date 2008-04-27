@@ -129,8 +129,15 @@ InsetFloat::~InsetFloat()
 
 docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 {
+	if (InsetCollapsable::toolTip(bv, x, y).empty())
+		return docstring();
+
+	docstring default_tip;
+	if (isOpen())
+		default_tip = _("Left-click to collapse the inset");
+	else
+		default_tip = _("Left-click to open the inset");
 	OutputParams rp(&buffer().params().encoding());
-	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
 	docstring caption_tip = getCaptionText(rp);
 	if (!isOpen() && !caption_tip.empty())
 		return caption_tip + '\n' + default_tip;

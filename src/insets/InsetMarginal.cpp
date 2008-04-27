@@ -38,22 +38,6 @@ docstring InsetMarginal::editMessage() const
 }
 
 
-docstring InsetMarginal::toolTip(BufferView const & bv, int x, int y) const
-{
-	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
-	OutputParams rp(&buffer().params().encoding());
-	odocstringstream ods;
-	InsetText::plaintext(ods, rp);
-	docstring margin_tip = ods.str();
-	// shorten it if necessary
-	if (margin_tip.size() > 200)
-		margin_tip = margin_tip.substr(0, 200) + "...";
-	if (!isOpen() && !margin_tip.empty())
-		return margin_tip + '\n' + default_tip;
-	return default_tip;
-}
-
-
 int InsetMarginal::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "%\n\\marginpar{";
