@@ -181,8 +181,17 @@ Menuset
 		Item "Settings...|S" "next-inset-toggle"
 	End
 
-	Menu "edit_vspacetype"
-		
+#
+# InsetInclude context menu
+#
+	Menu "context-include"
+		Item "Include|c" "next-inset-modify changetype include"
+		Item "Input|p" "next-inset-modify changetype input"
+		Item "Verbatim|V" "next-inset-modify changetype verbatiminput"
+		Item "Verbatim (marked blanks)|b" "next-inset-modify changetype verbatiminput*"
+		Item "Listing|L" "next-inset-modify changetype lstinputlisting"
+		Separator
+		Item "Settings...|S" "next-inset-toggle"
 	End
 
 #

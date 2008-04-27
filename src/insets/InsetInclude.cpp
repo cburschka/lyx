@@ -243,7 +243,11 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(INCLUDE_CODE);
-		InsetCommand::string2params("include", to_utf8(cmd.argument()), p);
+		if (cmd.getArg(0) == "changetype") {
+			InsetCommand::doDispatch(cur, cmd);
+			p = params();
+		} else
+			InsetCommand::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
@@ -758,6 +762,12 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		preview_->draw(pi, x, y);
 	else
 		button_.draw(pi, x, y);
+}
+
+
+docstring InsetInclude::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-include");
 }
 
 

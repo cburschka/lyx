@@ -93,6 +93,8 @@ public:
 	static std::string defaultCommand() { return "include"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///
