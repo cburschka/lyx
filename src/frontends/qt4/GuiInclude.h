@@ -71,8 +71,6 @@ private:
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
 	///
-	void edit(std::string const & file);
-	///
 	bool isValid();
 	/// Apply changes
 	void applyView();

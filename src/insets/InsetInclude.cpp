@@ -23,10 +23,12 @@
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "Exporter.h"
+#include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
+#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -241,6 +243,11 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 	LASSERT(&cur.buffer() == &buffer(), /**/);
 	switch (cmd.action) {
 
+	case LFUN_INSET_EDIT: {
+		editIncluded(to_utf8(params()["filename"]));
+		break;
+	}
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(INCLUDE_CODE);
 		if (cmd.getArg(0) == "changetype") {
@@ -272,6 +279,35 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 	default:
 		InsetCommand::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+void InsetInclude::editIncluded(string const & file)
+{
+	string const ext = support::getExtension(file);
+	if (ext == "lyx") {
+		FuncRequest fr(LFUN_BUFFER_CHILD_OPEN, file);
+		lyx::dispatch(fr);
+	} else
+		// tex file or other text file in verbatim mode
+		formats.edit(buffer(),
+			support::makeAbsPath(file, support::onlyPath(buffer().absFileName())),
+			"text");
+}
+
+
+bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_EDIT:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetCommand::getStatus(cur, cmd, flag);
 	}
 }
 

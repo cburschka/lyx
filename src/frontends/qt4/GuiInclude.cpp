@@ -15,7 +15,6 @@
 #include "GuiInclude.h"
 
 #include "Buffer.h"
-#include "Format.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
@@ -289,11 +288,12 @@ void GuiInclude::browse()
 
 void GuiInclude::edit()
 {
-	if (isValid()) {
-		string const file = fromqstr(filenameED->text());
-		slotOK();
-		edit(file);
-	}
+	if (!isValid())
+		return;
+	string const file = fromqstr(filenameED->text());
+	slotOK();
+	applyView();
+	dispatch(FuncRequest(LFUN_INSET_EDIT));
 }
 
 
@@ -323,19 +323,6 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 
 	return browseRelFile(in_name, docpath, title, filters, false, 
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-}
-
-
-void GuiInclude::edit(string const & file)
-{
-	string const ext = support::getExtension(file);
-	if (ext == "lyx")
-		dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
-	else
-		// tex file or other text file in verbatim mode
-		formats.edit(buffer(), 
-			support::makeAbsPath(file, support::onlyPath(buffer().absFileName())),
-			"text");
 }
 
 

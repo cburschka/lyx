@@ -192,6 +192,8 @@ Menuset
 		Item "Listing|L" "next-inset-modify changetype lstinputlisting"
 		Separator
 		Item "Settings...|S" "next-inset-toggle"
+		Separator
+		Item "Edit included file...|E" "inset-edit"
 	End
 
 #
@@ -271,7 +273,7 @@ Menuset
 	Menu "context-graphics"
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
-		Item "Edit externally...|x" "graphics-edit"
+		Item "Edit externally...|x" "inset-edit"
 	End
 
 #

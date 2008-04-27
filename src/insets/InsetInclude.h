@@ -99,6 +99,8 @@ protected:
 	InsetInclude(InsetInclude const &);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
 	Inset * clone() const { return new InsetInclude(*this); }
 
@@ -107,6 +109,8 @@ private:
 	 */
 	void fileChanged() const;
 
+	/// launch external application
+	void editIncluded(std::string const & file);
 	/// set the parameters
 	void setParams(InsetCommandParams const & params);
 	/// get the text displayed on the button

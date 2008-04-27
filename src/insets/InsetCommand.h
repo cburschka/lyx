@@ -66,6 +66,8 @@ protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
 	docstring const getCommand() const { return p_.getCommand(); }
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
@@ -105,8 +107,6 @@ private:
 	static bool isCompatibleCommand(std::string const & cmd);
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
-	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	/// This should provide the text for the button
 	virtual docstring screenLabel() const = 0;
 
