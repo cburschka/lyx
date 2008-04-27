@@ -1091,7 +1091,7 @@ bool Tabular::columnLeftLine(col_type c) const
 				++nrows_left;
 		}
 	}
-	return nrows_left > total / 2;
+	return nrows_left >= total / 2;
 }
 
 
@@ -1111,7 +1111,7 @@ bool Tabular::columnRightLine(col_type c) const
 				++nrows_right;
 		}
 	}
-	return nrows_right > total / 2;
+	return nrows_right >= total / 2;
 }
 
 
@@ -1824,19 +1824,21 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	col_type const nextcol = c + columnSpan(cell);
 	bool colright = columnRightLine(c);
 	bool colleft = columnLeftLine(c);
-	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
-	bool forceleft = ismulticol && !prevcellright && leftLine(cell);
 	bool nextcolleft = nextcol < column_info.size() && colleft;
-	bool coldouble = colright && nextcolleft;
-	bool celldouble = rightLine(cell) && nextcol < column_info.size() 
+	bool nextcellleft = nextcol < column_info.size() 
 		&& leftLine(cellIndex(r, nextcol));
+	bool coldouble = colright && nextcolleft;
+	bool celldouble = rightLine(cell) && nextcellleft;
+	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
 	ismulticol = isMultiColumn(cell) 
-		|| (leftLine(cell) && !colleft)
-		|| (rightLine(cell) && !(colright || nextcolleft))
-		|| (coldouble != celldouble) || forceleft;
+		|| (c == 0 && colleft != leftLine(cell))
+		|| (c > 0 && !(colleft || prevcellright) && leftLine(cell))
+		|| ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
+		|| (!colright && !nextcolleft && (rightLine(cell) || nextcellleft))
+		|| (coldouble != celldouble);
 	if (ismulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
-		if (leftLine(cell) || forceleft)
+		if (leftLine(cell) || prevcellright)
 			os << '|';
 		if (!cellInfo(cell).align_special.empty()) {
 			os << cellInfo(cell).align_special;
@@ -1870,7 +1872,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 				}
 			} // end if else !getPWidth
 		} // end if else !cellinfo_of_cell
-		if (rightLine(cell))
+		if (rightLine(cell) || nextcellleft)
 			os << '|';
 		if (celldouble)
 			// add extra vertical line if we want a double one
