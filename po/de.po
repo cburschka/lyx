@@ -829,9 +829,8 @@ msgid "Force upper case in citation"
 msgstr "Großschreibung zu Beginn des Verweises erzwingen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
-#, fuzzy
 msgid "Force u&pper case"
-msgstr "Großschreibung &erzwingen"
+msgstr "Anfangsgroßschreibung &erzwingen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:295
 msgid "Citation st&yle:"
@@ -850,7 +849,6 @@ msgid "Text to place before citation"
 msgstr "Vor dem Verweis einzufügender Text"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
-#, fuzzy
 msgid "Text a&fter:"
 msgstr "&Text danach:"
 
@@ -859,7 +857,6 @@ msgid "Text to place after citation"
 msgstr "Nach dem Verweis einzufügender Text"
 
 #: src/frontends/qt4/ui/CitationUi.ui:451
-#, fuzzy
 msgid "App&ly"
 msgstr "&Übernehmen"
 
@@ -884,12 +881,10 @@ msgid "D&elete"
 msgstr "&Löschen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:594
-#, fuzzy
 msgid "Move the selected citation up (try Ctrl-Up)"
 msgstr "Ausgewählten Verweis nach vorne verschieben"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
-#, fuzzy
 msgid "Move the selected citation down (try Ctrl-Down)"
 msgstr "Ausgewählten Verweis nach hinten verschieben"
 
@@ -1401,15 +1396,15 @@ msgstr "Negatives halbes Leerzeichen"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:79
 msgid "Half Quad (0.5 em)"
-msgstr "Halbcicero (0,5 em)"
+msgstr "Halbgeviert (0,5 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:84
 msgid "Quad (1 em)"
-msgstr "Cicero (1 em)"
+msgstr "Geviert (1 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:89
 msgid "Double Quad (2 em)"
-msgstr "Doppelcicero (2 em)"
+msgstr "Doppelgeviert (2 em)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:94 src/insets/InsetSpace.cpp:94
 msgid "Horizontal Fill"
@@ -3325,12 +3320,10 @@ msgid "C&lear"
 msgstr "&Löschen"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:58
-#, fuzzy
 msgid "&Function:"
-msgstr "Funktion:"
+msgstr "&Funktion:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:68
-#, fuzzy
 msgid "&Shortcut:"
 msgstr "&Tastenkürzel:"
 
@@ -5035,14 +5028,12 @@ msgid "Structure"
 msgstr "Struktur"
 
 #: lib/layouts/beamer.layout:1114
-#, fuzzy
 msgid "Article"
-msgstr "Vertikal"
+msgstr "Artikel"
 
 #: lib/layouts/beamer.layout:1124
-#, fuzzy
 msgid "Presentation"
-msgstr "&Orientierung:"
+msgstr "Präsentation"
 
 #: lib/layouts/beamer.layout:1131 lib/layouts/powerdot.layout:377
 #: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:229
@@ -9630,19 +9621,19 @@ msgstr "Negatives Halbes Leerzeichen|N"
 
 #: lib/ui/stdcontext.inc:157
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Halbcicero-Abstand (Enskip)|k"
+msgstr "Halbgeviert-Abstand (Enskip)|k"
 
 #: lib/ui/stdcontext.inc:158
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Geschützter Halbcicero-Abstand (Enpace)|E"
+msgstr "Geschützter Halbgeviert-Abstand (Enpace)|E"
 
 #: lib/ui/stdcontext.inc:159
 msgid "Quad Space|Q"
-msgstr "Cicero-Abstand|C"
+msgstr "Geviert-Abstand|G"
 
 #: lib/ui/stdcontext.inc:160
 msgid "Double Quad Space|u"
-msgstr "Doppelcicero-Abstand|D"
+msgstr "Doppelgeviert-Abstand|D"
 
 #: lib/ui/stdcontext.inc:161
 msgid "Horizontal Fill|F"
@@ -10820,11 +10811,11 @@ msgstr "Großer Abstand\t\\;"
 
 #: lib/ui/stdtoolbars.inc:274
 msgid "Quadratin space\t\\quad"
-msgstr "Cicero-Abstand\t\\quad"
+msgstr "Geviert-Abstand\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:275
 msgid "Double quadratin space\t\\qquad"
-msgstr "Doppelcicero-Abstand\t\\qquad"
+msgstr "Doppelgeviert-Abstand\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "Negative space\t\\!"
@@ -16292,7 +16283,7 @@ msgstr "%1$s, %2$s und %3$s"
 #: src/frontends/qt4/GuiDocument.cpp:1375
 #, c-format
 msgid "Package(s) required: %1$s."
-msgstr "Paket(e) benötigt: %1$s."
+msgstr "Benötigte Pakete: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1381
 msgid "or"
@@ -16301,12 +16292,12 @@ msgstr "oder"
 #: src/frontends/qt4/GuiDocument.cpp:1384
 #, c-format
 msgid "Module required: %1$s."
-msgstr "Module benötigt: %1$s."
+msgstr "Benötigte Module: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1393
 #, c-format
 msgid "Modules excluded: %1$s."
-msgstr "Module herausnehmen: %1$s."
+msgstr "Ausgeschlossene Module: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1399
 msgid "WARNING: Some packages are unavailable!"
@@ -16319,7 +16310,7 @@ msgstr "Kann Format nicht verwenden!"
 #: src/frontends/qt4/GuiDocument.cpp:2108
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr "Kann Format für ID: %1$s nicht verwenden"
+msgstr "Kann Format für ID '%1$s' nicht verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:2171
 msgid "Not Found"
@@ -16413,8 +16404,8 @@ msgid ""
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Den Abstand auch nach einem Zeilenumbruch einfügen.\n"
-"Beachten Sie, dass ein geschützter Halbcicero-Abstand am Anfang\n"
-"eines Absatzes in einen vertikalan Abstand umgewandelt wird!"
+"Beachten Sie, dass ein geschützter Halbgeviert-Abstand am Anfang\n"
+"eines Absatzes in einen vertikalen Abstand umgewandelt wird!"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -16673,9 +16664,8 @@ msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2055
-#, fuzzy
 msgid "Document and Window"
-msgstr "Arbeitsbereich und Fenster"
+msgstr "Dokument und Arbeitsbereich"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2059
 msgid "Font, Layouts and Textclasses"
@@ -18163,19 +18153,19 @@ msgstr "Halbes Leerzeichen"
 
 #: src/insets/InsetSpace.cpp:79
 msgid "Quad Space"
-msgstr "Cicero-Abstand"
+msgstr "Geviert-Abstand"
 
 #: src/insets/InsetSpace.cpp:82
 msgid "QQuad Space"
-msgstr "Doppelcicero-Abstand"
+msgstr "Doppelgeviert-Abstand"
 
 #: src/insets/InsetSpace.cpp:85
 msgid "Enspace"
-msgstr "Geschützter Halbcicero-Abstand (Enspace)"
+msgstr "Geschützter Halbgeviert-Abstand (Enspace)"
 
 #: src/insets/InsetSpace.cpp:88
 msgid "Enskip"
-msgstr "Halbcicero-Abstand (Enskip)"
+msgstr "Halbgeviert-Abstand (Enskip)"
 
 #: src/insets/InsetSpace.cpp:91
 msgid "Negative Thin Space"
