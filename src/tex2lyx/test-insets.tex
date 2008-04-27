@@ -1,11 +1,32 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\setlength{\parindent}{3mm}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath}
+
+\usepackage{verbatim}
+
+\usepackage{varioref}
+\usepackage{prettyref}
+
+\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+
+\newcommand{\lyxarrow}{\leavevmode\,$\triangleright$\,\allowbreak}
 
 \begin{document}
 
-This document contains all sorts of insets we are supposed to
-support.
+\tableofcontents
 
-\section{Things that work}
+\section{References}
 
 Let's start with simple things: a label~\label{lab:test} and a
 reference~\ref{lab:test}; note that I have tested ``unbreakable
@@ -18,54 +39,69 @@ reference~\eqref{lab:test} (from amsmath package), or varioref's
 equivalents~\vref{lab:test} and~\vpageref{lab:test}, without
 forgetting pretty references like~\prettyref{lab:test}.
 
-We can input files too, like this \input{foo}, or with the include
-variant \include{foo}
+\section{Input files}
+
+We can input files too, like this \input{DummyDocument}, or with the include
+variant \include{DummyDocument}
 
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
 
-If you like tables of contents, you will be happy to learn that
-the following ones are supported:
-\tableofcontents
+\section{Lists}
+
 \listoffigures
 \listoftables
+
+\section{Graphics}
 
 There is also some basic support for graphics, in the form
 \includegraphics{foo.eps}, or the slightly more elaborate
 \includegraphics[height=1cm, width=1cm]{foo.eps}.
 
-Lines can have an \hfill in the middle, or be broken by a newline\\
-there are even newlines with weird arguments, but these are not
+\section{Special formattings}
+
+\subsection{LyX line}
+
+test
+
+{\tiny \lyxline{\tiny}}{\tiny \par}
+
+test {\Huge Test} {\tiny test} test
+
+\lyxline{\normalsize}
+
+test
+
+{\Huge \lyxline{\Huge}}{\Huge \par}
+
+test
+
+\subsection{Line breaks}
+
+They can also or be broken by a newline\\
+or a newline command \newline
+or by a line break \linebreak
+or by a defined line break \linebreak[4]
+
+There are even newlines with weird arguments, but these are not
 handled by LyX\\*[1cm]
 so we try to use ERT in this case.
+
+\subsection{Page breaks}
+
+They can also or be broken by a newpage \newpage
+or by a page break \pagebreak
+or by a defined page break \pagebreak[4]
+
+\section{Special characters}
 
 Then one has those macros with a long name for a short meaning, like
 \textasciitilde, \textasciicircum{} or \textbackslash{}, and the characters
 that LaTeX wants to espace because they are active, like \_\&\#\$\{\}\%.
 
 And what about special characters like hyphe\-nation mark,
-ellipsis\ldots, and end-of-sentence\@. LyX also sports a menu
-separator\lyxarrow and a spif\textcompwordmark fy ligature break.
-
-What else? Maybe minipages, like this:
-\begin{minipage}{10cm}
-Hi there, I am a minipage!
-\end{minipage}
-
-There is also an option to align vertically the minipage:
-\begin{minipage}[t]{0.3\columnwidth}
-Actually, it is also possible to set the height and the inner position
-of the minipage, but the LyX GUI does not use or allow to modify this
-information. Nevertheless, tex2lyx converts it as faithfully as possible.
-\end{minipage}
-
-
-\section{Things that do not work (yet)}
-
-\vspace*{1cm}
-LyX can do vertical spacing, even with the nifty 'keep' option
-\bigskip
-
+ellipsis\ldots, and end-of-sentence\@. LyX also supports a menu
+separator\lyxarrow{}and a spif\textcompwordmark{}fy ligature break.
 
 
 \end{document}

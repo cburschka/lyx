@@ -806,9 +806,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	// FIXME (bug xxxx): These settings can span multiple paragraphs and
 	//					 therefore are totally broken!
 	// Note that \centering, raggedright, and raggedleft cannot be handled, as
-	// they are commands not environments. They furthermore are switches that
-	// can be ended by another switch, but also by commands like \footnote or
-	// \parbox. So lbetter leave them untouched.
+	// they are commands not environments. They are furthermore switches that
+	// can be ended by another switches, but also by commands like \footnote or
+	// \parbox. So the only safe way is to leave them untouched.
 	else if (name == "center" || name == "flushleft" || name == "flushright") {
 		eat_whitespace(p, os, parent_context, false);
 		// We must begin a new paragraph if not already done

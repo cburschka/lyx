@@ -1,0 +1,262 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{color}
+
+\setlength{\parskip}{3mm}
+\setlength{\parindent}{0sp}
+\usepackage{setspace}
+\setstretch{1.2}
+
+\setlength{\fboxsep}{3mm}
+
+\definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={tex2lyx testcase},pdfsubject={tex2lyx},
+  pdfkeywords={LyX, tex2lyx}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+
+\begin{document}
+
+\tableofcontents
+
+\section{Boxes}
+
+\subsection{Frameless Boxes}
+
+blabla \mbox{mbox} blabla
+
+blabla \makebox{makebox 1} blabla
+
+blabla \makebox[3cm]{makebox 2} blabla
+
+blabla \makebox[3cm][l]{makebox 3} blabla
+
+\begin{figure}[ht]
+  \centering
+  \setlength{\unitlength}{.2in}
+
+\begin{picture}(8,6)
+\put(0,0){\makebox(0,0)[tr]{AAA}}
+\put(8,0){\makebox(0,0){BBB}}
+\put(1,0){\line(1,0){6}}   
+\end{picture}
+
+\end{figure}
+
+\raisebox {8.5mm}{test}\raisebox {-6.5mm}{tset}
+
+\subsection{Framed Boxes}
+
+blabla \fbox{fbox} blabla
+
+blabla \framebox{framebox 1} blabla
+
+blabla \framebox[3cm]{framebox 2} blabla
+
+blabla \framebox[3cm][l]{framebox 3} blabla
+
+Dies ist ein Beispieltext. %
+\framebox{%
+\begin{minipage}[c][1\totalheight][s]{0.2\columnwidth}%
+ \begin{center}
+  Der Boxinhalt
+ \par\end{center}
+
+ \begin{center}
+  ist über die
+ \par\end{center}
+
+ \begin{center}
+  Boxhöhe
+ \par\end{center}
+
+ \begin{center}
+  gleichmäßig verteilt.
+ \par\end{center}%
+\end{minipage}}
+Dies ist ein Beispieltext.
+
+$\boxed{\int A=B}$
+
+\section{Colors}
+
+\subsection{Predefined Colors}
+
+test \textcolor{blue}{blue} test \textcolor{red}{red red red} test \textcolor{green}{bla}\textcolor{magenta}{blub}
+test
+\textcolor{green}{c}%
+\textcolor{red}{o}%
+\textcolor{blue}{l}%
+\textcolor{green}{o}%
+\textcolor{red}{r}
+
+\subsection{Custom Colors}
+
+test \textcolor{darkgreen}{dark green} test
+
+\definecolor{violet}{rgb}{0.5, 0, 1}
+
+test \textcolor{violet}{violet} test
+
+\section{Font sizes}
+
+\Huge Huge text
+
+\huge huge text
+
+\LARGE LARGE text
+
+\Large Large text
+
+\large large text
+
+\normalsize normalsize text
+
+\small small text
+
+\footnotesize footnotesize text
+
+\scriptsize scriptsize text
+
+\tiny tiny text
+
+\Huge Huge text \huge huge text \LARGE LARGE text \Large Large text
+\large large text \normalsize normalsize text \small small text
+\footnotesize footnotesize text \scriptsize scriptsize text \tiny tiny text
+\normalsize
+
+\section{Paragraph spacing}
+
+bla
+
+\begin{singlespace}
+singlespace single singlespace single singlespace single singlespace single
+singlespace single singlespace single singlespace single singlespace single
+\end{singlespace}
+
+\begin{onehalfspace}
+onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1
+onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1
+
+onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2
+onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2
+\end{onehalfspace}
+
+blub
+
+\begin{onehalfspace}
+onehalfspace single onehalfspace single onehalfspace single onehalfspace single
+onehalfspace single onehalfspace single onehalfspace single onehalfspace single
+\end{onehalfspace}
+
+blablub
+
+\begin{doublespace}
+doublespace single doublespace single doublespace single doublespace single
+doublespace single doublespace single doublespace single doublespace single
+\end{doublespace}
+
+\begin{spacing}{1.2}
+1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single
+1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single
+\end{spacing}
+
+\section{Paragraph alignment}
+
+bla
+
+\begin{center}
+center single center single center single center single center single
+center single center single center single center single center single
+\end{center}
+
+blabla
+
+\begin{flushleft}
+flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
+flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
+
+flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2
+flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2
+\end{flushleft}
+
+blub
+
+\begin{flushleft}
+flushleft single flushleft single flushleft single flushleft single
+flushleft single flushleft single flushleft single flushleft single
+\end{flushleft}
+
+blablub
+
+\begin{flushright}
+flushright single flushright single flushright single flushright single
+flushright single flushright single flushright single flushright single
+\end{flushright}
+
+bla
+
+\centering
+centering single centering single centering single centering single
+centering single centering single centering single centering single
+
+blabla
+
+\raggedright
+raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
+raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
+
+raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
+raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
+
+\raggedleft
+raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
+raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
+
+raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
+raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
+
+\subsection{Horizontal spaces}
+
+Lines can have an hfill \hfill in the middle.
+Lines can have a protected hfill \hspace*{\fill} in the middle.
+Lines can have space \hspace{2cm} in the middle.
+Lines can have protected \hspace*{2cm} in the middle.
+
+\subsection{Vertical spaces}
+
+Lines can have an hfill \vfill in the middle.
+Lines can have a protected hfill \vspace*{\fill} in the middle.
+Lines can have space \vspace{2cm} in the middle.
+Lines can have protected \vspace*{2cm} in the middle.
+
+We also handle skips:
+\bigskip
+\medskip
+\smallskip
+
+\end{document}
