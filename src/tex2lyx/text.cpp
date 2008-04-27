@@ -802,23 +802,28 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
 					  parent_context);
 
-	// Alignment settings
-	else if (name == "center" || name == "flushleft" || name == "flushright" ||
-		 name == "centering" || name == "raggedright" || name == "raggedleft") {
+	// Alignment and spacing settings
+	// FIXME (bug xxxx): These settings can span multiple paragraphs and
+	//					 therefore are totally broken!
+	// Note that \centering, raggedright, and raggedleft cannot be handled, as
+	// they are commands not environments. They furthermore are switches that
+	// can be ended by another switch, but also by commands like \footnote or
+	// \parbox. So lbetter leave them untouched.
+	else if (name == "center" || name == "flushleft" || name == "flushright") {
 		eat_whitespace(p, os, parent_context, false);
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
 			parent_context.check_end_layout(os);
 			parent_context.new_paragraph(os);
 		}
-		if (name == "flushleft" || name == "raggedright")
+		if (name == "flushleft")
 			parent_context.add_extra_stuff("\\align left\n");
-		else if (name == "flushright" || name == "raggedleft")
+		else if (name == "flushright")
 			parent_context.add_extra_stuff("\\align right\n");
-		else
+		else if (name == "center")
 			parent_context.add_extra_stuff("\\align center\n");
 		parse_text(p, os, FLAG_END, outer, parent_context);
-		// Just in case the environment is empty ..
+		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
 		// We must begin a new paragraph to reset the alignment
 		parent_context.new_paragraph(os);
