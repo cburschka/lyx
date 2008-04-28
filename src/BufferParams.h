@@ -223,6 +223,8 @@ public:
 	///
 	std::string options;
 	///
+	std::string master;
+	///
 	std::string float_placement;
 	///
 	unsigned int columns;

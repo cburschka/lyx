@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>381</width>
-    <height>375</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,20 +19,55 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="4" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="3" column="0" colspan="4" >
+    <widget class="QGroupBox" name="childDocGB" >
+     <property name="toolTip" >
+      <string>Select if the current document is included to a master file</string>
+     </property>
+     <property name="statusTip" >
+      <string/>
+     </property>
+     <property name="title" >
+      <string>Select de&amp;fault master document</string>
+     </property>
+     <property name="checkable" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="childDocLA" >
+        <property name="text" >
+         <string>&amp;Master:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>childDocLE</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QPushButton" name="childDocPB" >
+        <property name="text" >
+         <string>&amp;Browse...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="childDocLE" >
+        <property name="toolTip" >
+         <string>Enter the name of the default master document</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="4" >
     <widget class="QGroupBox" name="modulesGB" >
      <property name="title" >
       <string>Modules</string>
@@ -202,6 +237,19 @@
       <number>20</number>
      </property>
     </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

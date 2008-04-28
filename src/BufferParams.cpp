@@ -497,6 +497,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
+	} else if (token == "\\master") {
+		lex.eatLine();
+		master = lex.getString();
 	} else if (token == "\\language") {
 		readLanguage(lex);
 	} else if (token == "\\inputencoding") {
@@ -687,6 +690,11 @@ void BufferParams::writeFile(ostream & os) const
 	// the options
 	if (!options.empty()) {
 		os << "\\options " << options << '\n';
+	}
+
+	// the master document
+	if (!master.empty()) {
+		os << "\\master " << master << '\n';
 	}
 	
 	//the modules

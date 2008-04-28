@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 328;
+int const LYX_FORMAT = 329;
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -441,6 +441,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().branchlist().clear();
 	params().preamble.erase();
 	params().options.erase();
+	params().master.erase();
 	params().float_placement.erase();
 	params().paperwidth.erase();
 	params().paperheight.erase();
@@ -547,6 +548,15 @@ bool Buffer::readDocument(Lexer & lex)
 					 "when using pdflatex, because xcolor and soul are not installed.\n"
 					 "Please install both packages or redefine "
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+		}
+	}
+
+	if (!params().master.empty()) {
+		FileName const master_file = makeAbsPath(params().master,
+			   onlyPath(absFileName()));
+		if (isLyXFilename(master_file.absFilename())) {
+			Buffer * master = checkAndLoadLyXFile(master_file);
+			d->parent_buffer = master;
 		}
 	}
 

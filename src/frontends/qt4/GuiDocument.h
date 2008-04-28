@@ -135,6 +135,7 @@ private Q_SLOTS:
 	void enableSkip(bool);
 	void portraitChanged();
 	void browseLayout();
+	void browseMaster();
 	void classChanged();
 	void updateModuleInfo();
 

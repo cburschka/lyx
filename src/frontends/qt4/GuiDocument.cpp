@@ -876,6 +876,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->layoutPB, SIGNAL(clicked()),
 		this, SLOT(browseLayout()));
+	connect(latexModule->childDocGB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(latexModule->childDocLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(latexModule->childDocPB, SIGNAL(clicked()),
+		this, SLOT(browseMaster()));
 	
 	selectionManager = 
 		new ModuleSelMan(latexModule->availableLV, latexModule->selectedLV, 
@@ -1262,6 +1268,20 @@ void GuiDocument::browseLayout()
 }
 
 
+void GuiDocument::browseMaster()
+{
+	QString const title = qt_("Select master document");
+	QString const dir1 = toqstr(lyxrc.document_path);
+	QString const old = latexModule->childDocLE->text();
+	QString const docpath = toqstr(support::onlyPath(buffer().absFileName()));
+	QStringList const filter(qt_("LyX Files (*.lyx)"));
+	QString file = browseRelFile(old, docpath, title, filter, false,
+		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+
+	latexModule->childDocLE->setText(file);
+}
+
+
 void GuiDocument::classChanged()
 {
 	int idx = latexModule->classCO->currentIndex();
@@ -1610,6 +1630,12 @@ void GuiDocument::apply(BufferParams & params)
 	params.options =
 		fromqstr(latexModule->optionsLE->text());
 
+	if (latexModule->childDocGB->isChecked())
+		params.master =
+			fromqstr(latexModule->childDocLE->text());
+	else
+		params.master = string();
+
 	params.float_placement = floatModule->get();
 
 	// fonts
@@ -1899,6 +1925,15 @@ void GuiDocument::updateParams(BufferParams const & params)
 			toqstr(params.options));
 	} else {
 		latexModule->optionsLE->setText(QString());
+	}
+
+	if (!params.master.empty()) {
+		latexModule->childDocGB->setChecked(true);
+		latexModule->childDocLE->setText(
+			toqstr(params.master));
+	} else {
+		latexModule->childDocLE->setText(QString());
+		latexModule->childDocGB->setChecked(false);
 	}
 
 	floatModule->set(params.float_placement);
@@ -2200,6 +2235,15 @@ void GuiDocument::dispatchParams()
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
 	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
+
+	if (!params().master.empty()) {
+		FileName const master_file = support::makeAbsPath(params().master,
+			   support::onlyPath(buffer().absFileName()));
+		if (isLyXFilename(master_file.absFilename())) {
+			Buffer * master = checkAndLoadLyXFile(master_file);
+			buffer().setParent(master);
+		}
+	}
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();

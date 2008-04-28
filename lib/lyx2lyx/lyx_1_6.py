@@ -1977,7 +1977,7 @@ def revert_pdfpages(document):
 
 
 def revert_mexican(document):
-    "Set language Spanish(Mexico) to Spanish"
+    ' Set language Spanish(Mexico) to Spanish '
     i = 0
     if document.language == "spanish-mexico":
         document.language = "spanish"
@@ -1994,11 +1994,18 @@ def revert_mexican(document):
 
 
 def remove_embedding(document):
-    ' Remove embed tag from all insets'
+    ' Remove embed tag from all insets '
     revert_inset_embedding(document, 'Graphics')
     revert_inset_embedding(document, 'External')
     revert_inset_embedding(document, 'CommandInset include')
     revert_inset_embedding(document, 'CommandInset bibtex')
+
+
+def revert_master(document):
+    ' Remove master param '
+    i = find_token(document.header, "\\master", 0)
+    if i != -1:
+        del document.header[i]
 
 
 ##
@@ -2058,9 +2065,11 @@ convert = [[277, [fix_wrong_tables]],
            [326, []],
            [327, []],
            [328, [remove_embedding, remove_extra_embedded_files, remove_inzip_options]],
+           [329, []],
           ]
 
-revert =  [[327, []],
+revert =  [[328, [revert_master]],
+           [327, []],
            [326, [revert_mexican]],
            [325, [revert_pdfpages]],
            [324, []],
