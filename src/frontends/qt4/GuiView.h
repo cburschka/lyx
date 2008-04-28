@@ -104,7 +104,7 @@ public:
 	///@{
 	void resetAutosaveTimers();
 	void errors(std::string const &);
-	void structureChanged() { updateDialog("toc", ""); }
+	void structureChanged();
 	///@}
 	
 	/// called on timeout

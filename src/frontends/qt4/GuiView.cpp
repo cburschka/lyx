@@ -916,6 +916,12 @@ void GuiView::errors(string const & error_type)
 }
 
 
+void GuiView::structureChanged()
+{
+	updateDialog("toc", "");
+}
+
+
 void GuiView::updateDialog(string const & name, string const & data)
 {
 	if (!isDialogVisible(name))
