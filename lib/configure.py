@@ -277,7 +277,8 @@ def checkFormatEntries(dtl_tools):
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
  #
-    checkViewer('a BibTeX editor', ['sensible-editor', 'pybliographic', 'bibdesk', 'gbib', 'kbib', \
+    checkViewer('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
+        'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
