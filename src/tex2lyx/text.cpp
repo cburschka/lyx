@@ -2610,7 +2610,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					}
 				}
 			}
-
 			if (known_unit || known_vspace) {
 				// Literal length or known variable
 				context.check_layout(os);
@@ -2623,6 +2622,79 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				end_inset(os);
 			} else {
 				// LyX can't handle other length variables in Inset VSpace
+				string name = t.asInput();
+				if (starred)
+					name += '*';
+				if (valid) {
+					if (value == 1.0)
+						handle_ert(os, name + '{' + unit + '}', context);
+					else if (value == -1.0)
+						handle_ert(os, name + "{-" + unit + '}', context);
+					else
+						handle_ert(os, name + '{' + valstring + unit + '}', context);
+				} else
+					handle_ert(os, name + '{' + length + '}', context);
+			}
+		}
+
+		else if (t.cs() == "hspace") {
+			bool starred = false;
+			if (p.next_token().asInput() == "*") {
+				p.get_token();
+				starred = true;
+			}
+			string const length = p.verbatim_item();
+			string unit;
+			string valstring;
+			bool valid = splitLatexLength(length, valstring, unit);
+			bool known_unit = false;
+			bool fill = false;
+			double value;
+			if (valid) {
+				istringstream iss(valstring);
+				iss >> value;
+				if (value == 1.0)
+					if (unit == "\\fill") {
+						known_unit = true;
+						fill = true;
+					}
+				switch (unitFromString(unit)) {
+				case Length::SP:
+				case Length::PT:
+				case Length::BP:
+				case Length::DD:
+				case Length::MM:
+				case Length::PC:
+				case Length::CC:
+				case Length::CM:
+				case Length::IN:
+				case Length::EX:
+				case Length::EM:
+				case Length::MU:
+					known_unit = true;
+					break;
+				default:
+					break;
+				}
+			}
+			if (known_unit) {
+				// Literal length or known variable
+				context.check_layout(os);
+				begin_inset(os, "Space ");
+				if (known_unit) {
+					os << "\\hspace";
+					if (starred)
+						os << '*';
+					if (fill)
+						os << "{" + unit + "}";
+					else {
+						os << "{}\n";
+						os << "\\length " << value << unit;
+					}
+				}				
+				end_inset(os);
+			} else {
+				// LyX can't handle other length variables in Inset HSpace
 				string name = t.asInput();
 				if (starred)
 					name += '*';
