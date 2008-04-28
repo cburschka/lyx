@@ -245,18 +245,35 @@ raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
 Lines can have an hfill \hfill in the middle.
 Lines can have a protected hfill \hspace*{\fill} in the middle.
 Lines can have space \hspace{2cm} in the middle.
-Lines can have protected \hspace*{2cm} in the middle.
+Lines can have protected space \hspace*{2cm} in the middle.
+
+We also handle defined spaces:
+
+Interword\ a
+
+Thin\,a
+
+NegThin\negthinspace{}a
+
+enskip\enskip{}a
+
+quad\quad{}a
+
+qquad\qquad{}a
 
 \subsection{Vertical spaces}
 
-Lines can have an hfill \vfill in the middle.
-Lines can have a protected hfill \vspace*{\fill} in the middle.
-Lines can have space \vspace{2cm} in the middle.
-Lines can have protected \vspace*{2cm} in the middle.
+Lines can have an vfill \vfill in the middle.
+Lines can have a protected vfill \vspace*{\fill} in the middle.
+Lines can have vertical space \vspace{2cm} in the middle.
+Lines can have protected vertical space \vspace*{2cm} in the middle.
 
 We also handle skips:
 \bigskip
+\vspace{\bigskipamount}
 \medskip
+\vspace{\medskipamount}
 \smallskip
+\vspace{\smallskipamount}
 
 \end{document}
