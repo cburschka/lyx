@@ -38,6 +38,7 @@
 #include "Validator.h"
 
 #include <QCheckBox>
+#include <QGroupBox>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTabWidget>
@@ -97,9 +98,9 @@ GuiExternal::GuiExternal(GuiView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(displayCB, SIGNAL(toggled(bool)),
+	connect(displayGB, SIGNAL(toggled(bool)),
 		showCO, SLOT(setEnabled(bool)));
-	connect(displayCB, SIGNAL(toggled(bool)),
+	connect(displayGB, SIGNAL(toggled(bool)),
 		displayscaleED, SLOT(setEnabled(bool)));
 	connect(showCO, SIGNAL(activated(QString)),
 		this, SLOT(change_adaptor()));
@@ -119,7 +120,7 @@ GuiExternal::GuiExternal(GuiView & lv)
 		this, SLOT(widthUnitChanged()));
 	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
-	connect(displayCB, SIGNAL(stateChanged(int)),
+	connect(displayGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(displayscaleED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
@@ -168,7 +169,7 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addReadOnly(draftCB);
 	bc().addReadOnly(displayscaleED);
 	bc().addReadOnly(showCO);
-	bc().addReadOnly(displayCB);
+	bc().addReadOnly(displayGB);
 	bc().addReadOnly(angleED);
 	bc().addReadOnly(originCO);
 	bc().addReadOnly(heightUnitCO);
@@ -365,7 +366,7 @@ static Length::UNIT defaultUnit()
 
 
 static void setDisplay(
-	QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
+	QGroupBox & displayGB, QComboBox & showCO, QLineEdit & scaleED,
 	external::DisplayType display, unsigned int scale, bool read_only)
 {
 	int item = 0;
@@ -393,16 +394,16 @@ static void setDisplay(
 	showCO.setCurrentIndex(item);
 	bool const no_display = display == external::NoDisplay;
 	showCO.setEnabled(!no_display && !read_only);
-	displayCB.setChecked(!no_display);
+	displayGB.setChecked(!no_display);
 	scaleED.setEnabled(!no_display && !read_only);
 	scaleED.setText(QString::number(scale));
 }
 
 
-static external::DisplayType display(QCheckBox const & displayCB,
+static external::DisplayType display(QGroupBox const & displayGB,
 	QComboBox const & showCO)
 {
-	if (!displayCB.isChecked())
+	if (!displayGB.isChecked())
 		return external::NoDisplay;
 	switch (showCO.currentIndex()) {
 	default:
@@ -568,7 +569,7 @@ void GuiExternal::updateContents()
 
 	draftCB->setChecked(params_.draft);
 
-	setDisplay(*displayCB, *showCO, *displayscaleED,
+	setDisplay(*displayGB, *showCO, *displayscaleED,
 		   params_.display, params_.lyxscale, isBufferReadonly());
 
 	setRotation(*angleED, *originCO, params_.rotationdata);
@@ -589,22 +590,28 @@ void GuiExternal::updateTemplate()
 	externalTB->setPlainText(qt_(templ.helpText));
 
 	// Ascertain which (if any) transformations the template supports
-	// and disable tabs hosting unsupported transforms.
+	// and disable tabs and Group Boxes hosting unsupported transforms.
 	typedef vector<external::TransformID> TransformIDs;
 	TransformIDs const transformIds = templ.transformIds;
 	TransformIDs::const_iterator tr_begin = transformIds.begin();
 	TransformIDs::const_iterator const tr_end = transformIds.end();
 
 	bool found = std::find(tr_begin, tr_end, external::Rotate) != tr_end;
-	tab->setTabEnabled(tab->indexOf(rotatetab), found);
+	rotationGB->setEnabled(found);
+
 	found = std::find(tr_begin, tr_end, external::Resize) != tr_end;
-	tab->setTabEnabled(tab->indexOf(scaletab), found);
+	scaleGB->setEnabled(found);
 
 	found = std::find(tr_begin, tr_end, external::Clip) != tr_end;
-	tab->setTabEnabled(tab->indexOf(croptab), found);
+	cropGB->setEnabled(found);
+
+	tab->setTabEnabled(tab->indexOf(sizetab),
+		rotationGB->isEnabled()
+		|| scaleGB->isEnabled()
+		|| cropGB->isEnabled());
 
 	found = std::find(tr_begin, tr_end, external::Extra) != tr_end;
-	tab->setTabEnabled(tab->indexOf(optionstab), found);
+	optionsGB->setEnabled(found);
 
 	if (!found)
 		return;
@@ -629,7 +636,7 @@ void GuiExternal::updateTemplate()
 
 	bool const enabled = extraFormatCO->count()  > 0;
 
-	tab->setTabEnabled(tab->indexOf(optionstab), enabled);
+	optionsGB->setEnabled(enabled);
 	extraED->setEnabled(enabled && !isBufferReadonly());
 	extraFormatCO->setEnabled(enabled);
 
@@ -647,20 +654,20 @@ void GuiExternal::applyView()
 
 	params_.draft = draftCB->isChecked();
 	params_.lyxscale = displayscaleED->text().toInt();
-	params_.display = display(*displayCB, *showCO);
+	params_.display = display(*displayGB, *showCO);
 
-	if (tab->isTabEnabled(tab->indexOf(rotatetab)))
+	if (rotationGB->isEnabled())
 		getRotation(params_.rotationdata, *angleED, *originCO);
 
-	if (tab->isTabEnabled(tab->indexOf(scaletab)))
+	if (scaleGB->isEnabled())
 		getSize(params_.resizedata, *widthED, *widthUnitCO,
 			*heightED, *heightUnitCO, *aspectratioCB);
 
-	if (tab->isTabEnabled(tab->indexOf(croptab)))
+	if (cropGB->isEnabled())
 		getCrop(params_.clipdata, *clipCB, *xlED, *ybED,
 			*xrED, *ytED, bbChanged_);
 
-	if (tab->isTabEnabled(tab->indexOf(optionstab))) {
+	if (optionsGB->isEnabled()) {
 		MapType::const_iterator it = extra_.begin();
 		MapType::const_iterator const end = extra_.end();
 		for (; it != end; ++it)
