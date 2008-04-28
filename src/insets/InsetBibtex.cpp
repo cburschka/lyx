@@ -102,6 +102,43 @@ docstring InsetBibtex::screenLabel() const
 }
 
 
+docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
+{
+	docstring item = from_ascii("* ");
+	docstring tip = _("Databases:\n");
+	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
+
+	if (bibfilelist.empty()) {
+		tip += item;
+		tip += _("none");
+	} else {
+		vector<docstring>::const_iterator it = bibfilelist.begin();
+		vector<docstring>::const_iterator en = bibfilelist.end();
+		for (; it != en; ++it) {
+			tip += item;
+			tip += *it + "\n";
+		}
+	}
+
+	// Style-Options
+	docstring style = getParam("options"); // maybe empty! and with bibtotoc
+	docstring bibtotoc = from_ascii("bibtotoc");
+	if (prefixIs(style, bibtotoc)) {
+		if (contains(style, char_type(',')))
+			style = split(style, bibtotoc, char_type(','));
+	}
+
+	tip += _("Style File:\n");
+	tip += item;
+	if (!style.empty())
+		tip += style;
+	else
+		tip += _("none");
+
+	return tip;
+}
+
+
 static string normalizeName(Buffer const & buffer,
 	OutputParams const & runparams, string const & name, string const & ext)
 {
@@ -195,7 +232,6 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 			       _("There are spaces in the paths to your BibTeX databases.\n"
 					      "BibTeX will be unable to find them."));
 	}
-
 	// Style-Options
 	string style = to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
@@ -204,6 +240,7 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		if (contains(style, ','))
 			style = split(style, bibtotoc, ',');
 	}
+
 
 	// line count
 	int nlines = 0;

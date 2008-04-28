@@ -30,6 +30,8 @@ public:
 	///
 	docstring screenLabel() const;
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return BIBTEX_CODE; }
