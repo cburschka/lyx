@@ -118,8 +118,8 @@ public:
 	/// (status_), autoOpen_ and openinlined_, and of
 	/// course decoration().
 	Geometry geometry() const;
-	///
-	bool allowSpellCheck() const { return true; }
+	/// Allow spellchecking, except for insets with latex_language
+	bool allowSpellCheck() const { return !forceLTR(); }
 	///
 	bool allowMultiPar() const;
 	///
