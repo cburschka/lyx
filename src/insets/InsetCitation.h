@@ -65,6 +65,8 @@ public:
 	static std::string defaultCommand() { return "cite"; }
 	///
 	static bool isCompatibleCommand(std::string const & cmd);
+	///
+	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 private:
 	///
 	Inset * clone() const { return new InsetCitation(*this); }

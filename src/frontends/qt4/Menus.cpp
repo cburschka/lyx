@@ -23,10 +23,12 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
+#include "BiblioInfo.h"
 #include "BranchList.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "Converter.h"
 #include "CutAndPaste.h"
 #include "Floating.h"
@@ -44,6 +46,9 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
+
+#include "insets/Inset.h"
+#include "insets/InsetCitation.h"
 
 #include "support/assert.h"
 #include "support/convert.h"
@@ -131,7 +136,9 @@ public:
 		/** toolbars */
 		Toolbars,
 		/** Available branches in document */
-		Branches
+		Branches,
+		/** Available citation styles for a given citation */
+		CiteStyles
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -283,6 +290,7 @@ public:
 	void expandPasteRecent();
 	void expandToolbars();
 	void expandBranches(Buffer const * buf);
+	void expandCiteStyles(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -363,6 +371,7 @@ void MenuDefinition::read(Lexer & lex)
 	enum {
 		md_item = 1,
 		md_branches,
+		md_citestyles,
 		md_documents,
 		md_bookmarks,
 		md_charstyles,
@@ -389,6 +398,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
+		{ "citestyles", md_citestyles },
 		{ "custom", md_custom },
 		{ "documents", md_documents },
 		{ "elements", md_elements },
@@ -498,6 +508,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_branches:
 			add(MenuItem(MenuItem::Branches));
+			break;
+
+		case md_citestyles:
+			add(MenuItem(MenuItem::CiteStyles));
 			break;
 
 		case md_optsubmenu:
@@ -1055,6 +1069,47 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	}
 }
 
+
+void MenuDefinition::expandCiteStyles(BufferView const * bv)
+{
+	if (!bv) {
+		add(MenuItem(MenuItem::Command,
+				    qt_("No Document Open!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
+
+	Inset const * inset = bv->cursor().nextInset();
+	if (!inset || inset->lyxCode() != CITE_CODE) {
+		add(MenuItem(MenuItem::Command,
+				    qt_("No Citation in Scope!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
+	InsetCommand const * citinset =
+				static_cast<InsetCommand const *>(inset);
+	
+	Buffer const * buf = &bv->buffer();
+	docstring key = citinset->getParam("key");
+
+	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine());
+	vector<docstring> citeStrings =
+		buf->masterBibInfo().getCiteStrings(key, bv->buffer());
+
+	vector<docstring>::const_iterator cit = citeStrings.begin();
+	vector<docstring>::const_iterator end = citeStrings.end();
+
+	for (int ii = 1; cit != end; ++cit, ++ii) {
+		docstring label = *cit;
+		CitationStyle cs;
+		CiteStyle cst = citeStyleList[ii - 1];
+		cs.style = cst;
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+				    FuncRequest(LFUN_NEXT_INSET_MODIFY,
+						"changetype " + from_utf8(citationStyleToString(cs)))));
+	}
+}
+
 } // namespace anon
 
 
@@ -1170,7 +1225,7 @@ struct Menus::Impl {
 	    ViewFormats, ExportFormats, UpdateFormats, Branches
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
-		Buffer const *) const;
+		BufferView const *) const;
 
 	/// Initialize specific MACOS X menubar
 	void macxMenuBarInit(GuiView * view, QMenuBar * qmb);
@@ -1273,13 +1328,14 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 
 
 void Menus::Impl::expand(MenuDefinition const & frommenu,
-	MenuDefinition & tomenu, Buffer const * buf) const
+	MenuDefinition & tomenu, BufferView const * bv) const
 {
 	if (!tomenu.empty())
 		tomenu.clear();
 
 	for (MenuDefinition::const_iterator cit = frommenu.begin();
 	     cit != frommenu.end() ; ++cit) {
+		Buffer const * buf = bv ? &bv->buffer() : 0;
 		switch (cit->kind()) {
 		case MenuItem::Lastfiles:
 			tomenu.expandLastfiles();
@@ -1332,6 +1388,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			tomenu.expandBranches(buf);
 			break;
 
+		case MenuItem::CiteStyles:
+			tomenu.expandCiteStyles(bv);
+			break;
+
 		case MenuItem::Toc:
 			tomenu.expandToc(buf);
 			break;
@@ -1339,7 +1399,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 		case MenuItem::Submenu: {
 			MenuItem item(*cit);
 			item.setSubmenu(MenuDefinition(cit->submenuname()));
-			expand(getMenu(cit->submenuname()), item.submenu(), buf);
+			expand(getMenu(cit->submenuname()), item.submenu(), bv);
 			tomenu.addWithStatusCheck(item);
 		}
 		break;
@@ -1488,10 +1548,10 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 	LYXERR(Debug::GUI, "menu bar entries " << d->menubar_.size());
 
 	MenuDefinition menu;
-	Buffer * buf = 0;
+	BufferView * bv = 0;
 	if (view)
-		buf = view->buffer();
-	d->expand(d->menubar_, menu, buf);
+		bv = view->view();
+	d->expand(d->menubar_, menu, bv);
 
 	MenuDefinition::const_iterator m = menu.begin();
 	MenuDefinition::const_iterator end = menu.end();
@@ -1541,10 +1601,10 @@ void Menus::updateMenu(Menu * qmenu)
 	}
 
 	MenuDefinition const & fromLyxMenu = d->getMenu(qmenu->d->name);
-	Buffer * buf = 0;
+	BufferView * bv = 0;
 	if (qmenu->d->view)
-		buf = qmenu->d->view->buffer();
-	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, buf);
+		bv = qmenu->d->view->view();
+	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, bv);
 	qmenu->d->populate(*qmenu, *qmenu->d->top_level_menu);
 }
 

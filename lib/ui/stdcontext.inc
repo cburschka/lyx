@@ -95,6 +95,16 @@ Menuset
 
 
 #
+# InsetCitation context menu
+#
+	Menu "context-citation"
+		CiteStyles
+		Separator
+		Item "Settings...|S" "next-inset-toggle"
+	End
+
+
+#
 # InsetBibtex context menu
 #
 	Menu "context-bibtex"

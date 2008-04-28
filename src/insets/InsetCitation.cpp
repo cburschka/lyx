@@ -84,7 +84,7 @@ string defaultCiteCommand(CiteEngine engine)
 	return str;
 }
 
-		
+	
 string asValidLatexCommand(string const & input, CiteEngine const engine)
 {
 	string const default_str = defaultCiteCommand(engine);
@@ -513,6 +513,12 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 		features.require("jurabib");
 		break;
 	}
+}
+
+
+docstring InsetCitation::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-citation");
 }
 
 
