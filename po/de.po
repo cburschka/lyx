@@ -955,9 +955,8 @@ msgid "O&pen"
 msgstr "Ge&öffnet"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:32
-#, fuzzy
 msgid "F&ile"
-msgstr "Datei"
+msgstr "Date&i"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:44 src/frontends/qt4/ui/ExternalUi.ui:51
 #: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
@@ -979,9 +978,8 @@ msgid "&Draft"
 msgstr "&Entwurf"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:81
-#, fuzzy
 msgid "&Template"
-msgstr "Vorlage"
+msgstr "&Vorlage"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:120
 msgid "Available templates"
@@ -993,9 +991,8 @@ msgid "LaTe&X and LyX options"
 msgstr "LaTe&X- und LyX-Optionen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:143
-#, fuzzy
 msgid "LaTeX Options"
-msgstr "LaTeX-O&ptionen:"
+msgstr "LaTeX-Optionen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:161
 msgid "O&ption:"
@@ -1064,9 +1061,8 @@ msgid "Sca&le:"
 msgstr "&Größe:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:340
-#, fuzzy
 msgid "Si&ze and Rotation"
-msgstr "Verweis suchen"
+msgstr "Gr&öße und Drehung"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:352
 msgid "Rotate"
@@ -1087,7 +1083,6 @@ msgid "The origin of the rotation"
 msgstr "Der Ausgangspunkt für die Drehung"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:412
-#, fuzzy
 msgid "Ori&gin:"
 msgstr "&Drehpunkt:"
 
@@ -1567,22 +1562,19 @@ msgstr "&Bearbeiten"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Select if the current document is included to a master file"
-msgstr ""
+msgstr "Wählen Sie dies, wenn dieses Dokument in ein Hauptdokument eingebettet ist"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:31
-#, fuzzy
 msgid "Select de&fault master document"
-msgstr "Wählen Sie die Standardsprache Ihres Dokuments"
+msgstr "Standard-Hauptdokument &wählen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:46
-#, fuzzy
 msgid "&Master:"
-msgstr "&Andere:"
+msgstr "&Hauptdokument:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
-#, fuzzy
 msgid "Enter the name of the default master document"
-msgstr "Name des Standarddruckers"
+msgstr "Geben Sie den Namen des Hauptdokuments an"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid "Modules"
@@ -9566,9 +9558,8 @@ msgid "Go back to Reference|G"
 msgstr "Gehe zurück zum Verweis|h"
 
 #: lib/ui/stdcontext.inc:113
-#, fuzzy
 msgid "Edit Database(s) externally...|x"
-msgstr "Datei extern bearbeiten|x"
+msgstr "Datenbanken extern bearbeiten...|x"
 
 #: lib/ui/stdcontext.inc:121
 msgid "Open Inset|O"
@@ -9704,33 +9695,28 @@ msgid "Custom|C"
 msgstr "Benutzerdefiniert|t"
 
 #: lib/ui/stdcontext.inc:205
-#, fuzzy
 msgid "Include|c"
-msgstr "Include"
+msgstr "Include|c"
 
 #: lib/ui/stdcontext.inc:206
-#, fuzzy
 msgid "Input|p"
-msgstr "Input"
+msgstr "Input|p"
 
 #: lib/ui/stdcontext.inc:207
-#, fuzzy
 msgid "Verbatim|V"
-msgstr "Unformatiert"
+msgstr "Unformatiert|U"
 
 #: lib/ui/stdcontext.inc:208
 msgid "Verbatim (marked blanks)|b"
-msgstr ""
+msgstr "Unformatiert (Leerzeichen markiert)|m"
 
 #: lib/ui/stdcontext.inc:209
-#, fuzzy
 msgid "Listing|L"
-msgstr "Listing"
+msgstr "Programmlisting|l"
 
 #: lib/ui/stdcontext.inc:213
-#, fuzzy
 msgid "Edit included file...|E"
-msgstr "Datei einbinden...|b"
+msgstr "Eingebettete Datei bearbeiten...|b"
 
 #: lib/ui/stdcontext.inc:220 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
@@ -16283,12 +16269,10 @@ msgid "Unable to read local layout file."
 msgstr "Lokale Formatdatei kann nicht gelesen werden."
 
 #: src/frontends/qt4/GuiDocument.cpp:1273
-#, fuzzy
 msgid "Select master document"
-msgstr "Hauptdokument"
+msgstr "Hauptdokument wählen"
 
 #: src/frontends/qt4/GuiDocument.cpp:1277
-#, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
@@ -17605,9 +17589,8 @@ msgid "No Branch in Document!"
 msgstr "Kein Zweig im Dokument!"
 
 #: src/frontends/qt4/Menus.cpp:1085
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "Keine Aktion definiert!"
+msgstr "Keine Literaturverweis in Reichweite!"
 
 #: src/frontends/qt4/Menus.cpp:1600
 msgid "No action defined!"
@@ -17678,38 +17661,34 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetBibtex.cpp:132
-#, fuzzy
 msgid "Open Databases?"
-msgstr "&Datenbanken"
+msgstr "Datenbanken öffnen?"
 
 #: src/insets/InsetBibtex.cpp:133
 msgid "&Proceed"
-msgstr ""
+msgstr "&Fortfahren"
 
 #: src/insets/InsetBibtex.cpp:151
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-erzeugtes Literaturverzeichnis"
 
 #: src/insets/InsetBibtex.cpp:158
-#, fuzzy
 msgid "Databases:\n"
-msgstr "&Datenbanken"
+msgstr "Datenbanken:\n"
 
 #: src/insets/InsetBibtex.cpp:183
-#, fuzzy
 msgid "Style File:\n"
-msgstr "Datei schließen"
+msgstr "Stildatei:\n"
 
 #: src/insets/InsetBibtex.cpp:190
-#, fuzzy
 msgid ""
 "\n"
 "Lists: "
-msgstr "Liste"
+msgstr "\nEnthält: "
 
 #: src/insets/InsetBibtex.cpp:201
 msgid "included in TOC"
-msgstr ""
+msgstr "im Inhaltverzeichnis aufgeführt"
 
 #: src/insets/InsetBibtex.cpp:297 src/insets/InsetBibtex.cpp:348
 msgid "Export Warning!"
