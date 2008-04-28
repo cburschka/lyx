@@ -121,9 +121,11 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 	}
 
 	// Style-Options
+	bool toc = false;
 	docstring style = getParam("options"); // maybe empty! and with bibtotoc
 	docstring bibtotoc = from_ascii("bibtotoc");
 	if (prefixIs(style, bibtotoc)) {
+		toc = true;
 		if (contains(style, char_type(',')))
 			style = split(style, bibtotoc, char_type(','));
 	}
@@ -134,6 +136,20 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 		tip += style;
 	else
 		tip += _("none");
+
+	tip += _("\nLists: ");
+	docstring btprint = getParam("btprint");
+		if (btprint == "btPrintAll")
+			tip += _("all references");
+		else if (btprint == "btPrintNotCited")
+			tip += _("all uncited references");
+		else
+			tip += _("all cited references");
+	
+	if (toc) {
+		tip += ", ";
+		tip += _("included in TOC");
+	}
 
 	return tip;
 }
