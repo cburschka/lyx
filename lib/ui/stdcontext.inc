@@ -277,6 +277,16 @@ Menuset
 	End
 
 #
+# InsetExternal context menu
+#
+
+	Menu "context-external"
+		Item "Settings...|S" "next-inset-toggle"
+		Separator
+		Item "Edit externally...|x" "inset-edit"
+	End
+
+#
 # InsetTabular context menu
 #
 

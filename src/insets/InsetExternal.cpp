@@ -840,6 +840,12 @@ void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
+docstring InsetExternal::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-external");
+}
+
+
 void InsetExternal::string2params(string const & in, Buffer const & buffer,
 	InsetExternalParams & params)
 {

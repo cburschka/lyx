@@ -120,6 +120,8 @@ public:
 	void setParams(InsetExternalParams const &);
 	/// \returns the number of rows (\n's) of generated code.
 	int latex(odocstream &, OutputParams const &) const;
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
 
 private:
 	///

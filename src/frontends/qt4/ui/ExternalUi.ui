@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>390</width>
-    <height>367</height>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,25 +23,68 @@
     <number>6</number>
    </property>
    <item row="1" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
+     <property name="spacing" >
+      <number>6</number>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="0" colspan="4" >
+   <item row="0" column="0" >
     <widget class="QTabWidget" name="tab" >
      <property name="currentIndex" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="filetab" >
       <attribute name="title" >
@@ -54,54 +97,7 @@
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="3" column="0" colspan="3" >
-        <widget class="QCheckBox" name="draftCB" >
-         <property name="text" >
-          <string>&amp;Draft</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2" >
-        <widget class="QPushButton" name="editPB" >
-         <property name="toolTip" >
-          <string>Edit the file externally</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Edit File...</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" >
-        <widget class="QPushButton" name="browsePB" >
-         <property name="toolTip" >
-          <string>Select a file</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Browse...</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="fileLA" >
-         <property name="toolTip" >
-          <string>Filename</string>
-         </property>
-         <property name="text" >
-          <string>&amp;File:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>fileED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="fileED" >
-         <property name="toolTip" >
-          <string>Filename</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="3" >
+       <item row="1" column="0" colspan="3" >
         <widget class="QGroupBox" name="GroupBox3" >
          <property name="title" >
           <string>Template</string>
@@ -148,6 +144,43 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QLineEdit" name="fileED" >
+         <property name="toolTip" >
+          <string>Filename</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="fileLA" >
+         <property name="toolTip" >
+          <string>Filename</string>
+         </property>
+         <property name="text" >
+          <string>&amp;File:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>fileED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="QPushButton" name="browsePB" >
+         <property name="toolTip" >
+          <string>Select a file</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Browse...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="3" >
+        <widget class="QCheckBox" name="draftCB" >
+         <property name="text" >
+          <string>&amp;Draft</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -660,39 +693,6 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="applyPB" >
-     <property name="text" >
-      <string>&amp;Apply</string>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>&amp;Close</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -706,7 +706,6 @@
   <tabstop>tab</tabstop>
   <tabstop>fileED</tabstop>
   <tabstop>browsePB</tabstop>
-  <tabstop>editPB</tabstop>
   <tabstop>externalCO</tabstop>
   <tabstop>externalTB</tabstop>
   <tabstop>draftCB</tabstop>

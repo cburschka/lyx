@@ -109,8 +109,6 @@ GuiExternal::GuiExternal(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(browsePB, SIGNAL(clicked()),
 		this, SLOT(browseClicked()));
-	connect(editPB, SIGNAL(clicked()),
-		this, SLOT(editClicked()));
 	connect(externalCO, SIGNAL(activated(QString)),
 		this, SLOT(templateChanged()));
 	connect(extraED, SIGNAL(textChanged(QString)),
@@ -166,7 +164,6 @@ GuiExternal::GuiExternal(GuiView & lv)
 
 	bc().addReadOnly(fileED);
 	bc().addReadOnly(browsePB);
-	bc().addReadOnly(editPB);
 	bc().addReadOnly(externalCO);
 	bc().addReadOnly(draftCB);
 	bc().addReadOnly(displayscaleED);
@@ -265,12 +262,6 @@ void GuiExternal::browseClicked()
 void GuiExternal::change_adaptor()
 {
 	changed();
-}
-
-
-void GuiExternal::editClicked()
-{
-	editExternal();
 }
 
 
@@ -695,14 +686,6 @@ void GuiExternal::dispatchParams()
 {
 	string const lfun = InsetExternal::params2string(params_, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
-}
-
-
-void GuiExternal::editExternal()
-{
-	applyView();
-	string const lfun = InsetExternal::params2string(params_, buffer());
-	dispatch(FuncRequest(LFUN_INSET_EDIT, lfun));
 }
 
 

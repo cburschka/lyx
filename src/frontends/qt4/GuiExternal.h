@@ -35,7 +35,6 @@ private Q_SLOTS:
 	void bbChanged();
 	void browseClicked();
 	void change_adaptor();
-	void editClicked();
 	void extraChanged(const QString &);
 	void formatChanged(const QString &);
 	void getbbClicked();
@@ -65,8 +64,6 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 
-	///
-	void editExternal();
 	///
 	QString browse(QString const & input_file,
 				 QString const & template_name) const;
