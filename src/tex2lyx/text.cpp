@@ -2403,7 +2403,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_spaces)) {
 			char const * const * where = is_known(t.cs(), known_spaces);
 			context.check_layout(os);
-			begin_inset(os, "InsetSpace ");
+			os << "\\InsetSpace ";
 			os << '\\' << known_coded_spaces[where - known_spaces]
 			   << '\n';
 			// LaTeX swallows whitespace after all spaces except
