@@ -1091,6 +1091,9 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	
 	Buffer const * buf = &bv->buffer();
 	docstring key = citinset->getParam("key");
+	// we can only handle one key currently
+	if (contains(key, ','))
+		key = qstring_to_ucs4(toqstr(key).split(',')[0]);
 
 	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine());
 	vector<docstring> citeStrings =
