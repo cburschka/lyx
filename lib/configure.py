@@ -276,6 +276,13 @@ def checkFormatEntries(dtl_tools):
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
+ #
+    checkViewer('a BibTeX editor', ['sensible-editor', 'pybliographic', 'bibdesk', 'gbib', 'kbib', \
+        'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
+        'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+        'nedit', 'gedit', 'notepad'],
+        rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
+\Format bibtex bib    "BibTeX"         "" ""	"%%"	""''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])

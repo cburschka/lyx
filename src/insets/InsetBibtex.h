@@ -59,9 +59,16 @@ public:
 	/// look up the path to the file using TeX
 	static support::FileName 
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
 private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
+	///
+	void editDatabases() const;
 	///
 	Inset * clone() const { return new InsetBibtex(*this); }
 };

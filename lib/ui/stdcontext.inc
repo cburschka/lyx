@@ -83,10 +83,6 @@ Menuset
 		Item "Settings...|S" "next-inset-toggle"
 	End
 
-	Menu "edit_reftype"
-		
-	End
-
 #
 # InsetLabel context menu
 #
@@ -96,6 +92,17 @@ Menuset
 		Separator
 		Item "Settings...|S" "next-inset-toggle"
 	End
+
+
+#
+# InsetBibtex context menu
+#
+	Menu "context-bibtex"
+		Item "Settings...|S" "next-inset-toggle"
+		Separator
+		Item "Edit Database(s) externally...|x" "inset-edit"
+	End
+
 
 #
 # InsetCollapsable context menu

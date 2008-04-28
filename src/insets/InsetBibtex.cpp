@@ -17,7 +17,9 @@
 #include "BufferParams.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
+#include "Format.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -25,6 +27,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/ExceptionMessage.h"
@@ -67,6 +70,10 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
+	case LFUN_INSET_EDIT:
+		editDatabases();
+		break;
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(BIBTEX_CODE);
 		try {
@@ -92,6 +99,49 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	default:
 		InsetCommand::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetBibtex::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_INSET_EDIT:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetCommand::getStatus(cur, cmd, flag);
+	}
+}
+
+
+void InsetBibtex::editDatabases() const
+{
+	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
+
+	if (bibfilelist.empty())
+		return;
+
+	int nr_databases = bibfilelist.size();
+	if (nr_databases > 1) {
+			docstring message = bformat(_("The BibTeX inset includes %1$s databases.\n"
+						       "If you proceed, all of them will be opened."),
+							convert<docstring>(nr_databases));
+			int const ret = Alert::prompt(_("Open Databases?"),
+				message, 0, 1, _("&Cancel"), _("&Proceed"));
+
+			if (ret == 0)
+				return;
+	}
+
+	vector<docstring>::const_iterator it = bibfilelist.begin();
+	vector<docstring>::const_iterator en = bibfilelist.end();
+	for (; it != en; ++it) {
+		FileName bibfile = getBibTeXPath(*it, buffer());
+		formats.edit(buffer(), bibfile,
+		     formats.getFormatFromFile(bibfile));
 	}
 }
 
@@ -805,6 +855,12 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
+}
+
+
+docstring InsetBibtex::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-bibtex");
 }
 
 
