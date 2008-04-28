@@ -518,7 +518,7 @@ QString GuiBibtex::styleFile() const
 			// FIXME: check
 			// docstring bibtotoc = from_ascii("bibtotoc");
 			// bst = split(bst, bibtotoc, ',');
-			bst = bst.mid(pos);	
+			bst = bst.mid(pos + 1);
 		} else {
 			bst.clear();
 		}
