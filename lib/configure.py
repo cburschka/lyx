@@ -281,8 +281,7 @@ def checkFormatEntries(dtl_tools):
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
-        rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
-\Format bibtex bib    "BibTeX"         "" ""	"%%"	""''' ])
+        rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
