@@ -1539,23 +1539,45 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, true);
 		}
 
+		// Starred section headings
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
 			 context.new_layout_allowed &&
-			 // The single '=' is meant here.
 			 (newlayout = findLayout(context.textclass,
 						 t.cs() + '*')).get() &&
 			 newlayout->isCommand()) {
+			TeXFont const oldFont = context.font;
+			// save the current font size
+			string const size = oldFont.size;
+			// reset the font size to default, because the font size switches don't
+			// affect section headings and the like
+			context.font.size = known_coded_sizes[0];
+			output_font_change(os, oldFont, context.font);
+			// write the layout
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
+			// set the font size to the original value
+			context.font.size = size;
+			output_font_change(os, oldFont, context.font);
 			p.skip_spaces();
 		}
 
-		// The single '=' is meant here.
+		// Section headings and the like
 		else if (context.new_layout_allowed &&
 			 (newlayout = findLayout(context.textclass, t.cs())).get() &&
 			 newlayout->isCommand()) {
+			TeXFont const oldFont = context.font;
+			// save the current font size
+			string const size = oldFont.size;
+			// reset the font size to default, because the font size switches don't
+			// affect section headings and the like
+			context.font.size = known_coded_sizes[0];
+			output_font_change(os, oldFont, context.font);
+			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
+			// set the font size to the original value
+			context.font.size = size;
+			output_font_change(os, oldFont, context.font);
 			p.skip_spaces();
 		}
 
