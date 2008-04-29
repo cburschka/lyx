@@ -1541,7 +1541,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if ((p.next_token().asInput() == "*") &&
 			 context.new_layout_allowed &&
 			 (newlayout = findLayout(context.textclass, t.cs() + '*')) &&
-			  newlayout->isCommand()) {
+			 newlayout->isCommand()) {
 			TeXFont const oldFont = context.font;
 			// save the current font size
 			string const size = oldFont.size;
