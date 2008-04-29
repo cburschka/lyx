@@ -13,6 +13,7 @@
 #ifndef LASSERT_H
 #define LASSERT_H
 
+#ifdef __cplusplus
 namespace lyx {
 
 void doAssert(char const * expr, char const * file, long line);
@@ -21,6 +22,6 @@ void doAssert(char const * expr, char const * file, long line);
 
 #define LASSERT(expr, escape) \
 	if (expr) {} else { lyx::doAssert(#expr, __FILE__, __LINE__); escape; }
-
+#endif
 
 #endif // LASSERT
