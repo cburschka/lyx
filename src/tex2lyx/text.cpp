@@ -89,7 +89,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 }
 
 
-char const * const known_latex_commands[] = { "ref", "cite", "nocite", "label",
+char const * const known_latex_commands[] = { "ref", "cite", "label",
  "index", "printindex", "pageref", "url", "vref", "vpageref", "prettyref",
  "eqref", 0 };
 
@@ -1458,12 +1458,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\\bibitem ";
 			os << p.getOpt();
 			os << '{' << p.verbatim_item() << '}' << "\n";
-		} 
-		
-		else if(t.cs() == "global") {
-			// skip global which can appear in front of e.g. "def"
 		}
-		
+
 		else if (t.cs() == "def") {
 			context.check_layout(os);
 			eat_whitespace(p, os, context, false);
@@ -2300,32 +2296,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p); // eat {}
 		}
 
-		else if (t.cs() == "href") {
-			context.check_layout(os);
-			begin_inset(os, "CommandInset ");
-			os << t.cs() << "\n";
-			os << "LatexCommand " << t.cs() << "\n";
-			bool erase = false;
-			size_t pos;
-			// the first argument is "type:target", "type:" is optional
-			// the second argument the name
-			string href_target = subst(p.verbatim_item(), "\n", " ");
-			string href_name = subst(p.verbatim_item(), "\n", " ");
-			string href_type;
-			// serach for the ":" to divide type from target
-			if ((pos = href_target.find(":", 0)) != string::npos){
-				href_type = href_target;
-				href_type.erase(pos + 1, href_type.length());
-				href_target.erase(0, pos + 1);
-			    erase = true;											
-			}
-			os << "name " << '"' << href_name << '"' << "\n";
-			os << "target " << '"' << href_target << '"' << "\n";
-			if(erase)
-				os << "type " << '"' << href_type << '"' << "\n";
-			end_inset(os);
-		}
-
 		else if (t.cs() == "input" || t.cs() == "include"
 			 || t.cs() == "verbatiminput") {
 			string name = '\\' + t.cs();
@@ -2452,8 +2422,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "newcommand" ||
 			 t.cs() == "providecommand" ||
-			 t.cs() == "renewcommand" ||
-			 t.cs() == "newlyxcommand") {
+			 t.cs() == "renewcommand") {
 			// these could be handled by parse_command(), but
 			// we need to call add_known_command() here.
 			string name = t.asInput();
@@ -2464,18 +2433,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			string const command = p.verbatim_item();
 			string const opt1 = p.getOpt();
-			string optionals;
-			unsigned optionalsNum = 0;
-			while (true) {
-				string const opt = p.getFullOpt();
-				if (opt.empty())
-					break;
-				optionalsNum++;
-				optionals += opt;
-			}
-			add_known_command(command, opt1, optionalsNum);
-			string const ert = name + '{' + command + '}' + opt1
-				+ optionals + '{' + p.verbatim_item() + '}';
+			string const opt2 = p.getFullOpt();
+			add_known_command(command, opt1, !opt2.empty());
+			string const ert = name + '{' + command + '}' +
+					   opt1 + opt2 +
+					   '{' + p.verbatim_item() + '}';
 
 			context.check_layout(os);
 			begin_inset(os, "FormulaMacro");
@@ -2483,103 +2445,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 		
-		else if (t.cs() == "newcommandx" ||
-			 t.cs() == "renewcommandx") {
-			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
-
-			// get command name
-			string command;
-			if (p.next_token().cat() == catBegin)
-				command = p.verbatim_item();
-			else 
-				command = "\\" + p.get_token().cs();
-			
-			// get arity, we do not check that it fits to the given
-			// optional parameters here.
-			string const opt1 = p.getOpt();
-			
-			// get options and default values for optional parameters
-			std::vector<string> optionalValues;
-			int optionalsNum = 0;
-			if (p.next_token().character() == '[') {
-				// skip '['
-				p.get_token();
-				
-				// handle 'opt=value' options, separated by ','.
-				eat_whitespace(p, os, context, false);
-				while (p.next_token().character() != ']' && p.good()) {
-					char_type nextc = p.next_token().character();
-					if (nextc >= '1' && nextc <= '9') {
-						// optional value -> get parameter number
-						int n = p.getChar() - '0';
-
-						// skip '='
-						if (p.next_token().character() != '=') {
-							cerr << "'=' expected after numeral option of \\newcommandx" << std::endl;
-							// try to find ] or ,
-							while (p.next_token().character() != ','
-							       && p.next_token().character() != ']')
-								p.get_token();
-							continue;
-						} else
-							p.get_token();
-						
-						// get value
-						optionalValues.resize(max(size_t(n), optionalValues.size()));
-						optionalValues[n - 1].clear();
-						while (p.next_token().character() != ']'
-						       && p.next_token().character() != ',')
-							optionalValues[n - 1] += p.verbatim_item();
-						optionalsNum = max(n, optionalsNum);
-					} else if (p.next_token().cat() == catLetter) {
-						// we in fact ignore every non-optional
-						// parameters
-						
-						// get option name
-						docstring opt;
-						while (p.next_token().cat() == catLetter)
-							opt += p.getChar();
-						
-						// value?
-						eat_whitespace(p, os, context, false);
-						if (p.next_token().character() == '=') {
-							p.get_token();
-							while (p.next_token().character() != ']'
-							       && p.next_token().character() != ',')
-								p.verbatim_item();
-						}
-					} else
-						return;
-					
-					// skip komma
-					eat_whitespace(p, os, context, false);
-					if (p.next_token().character() == ',') {
-						p.getChar();
-						eat_whitespace(p, os, context, false);
-					} else if (p.next_token().character() != ']')
-						continue;
-				}
-				
-				// skip ']'
-				p.get_token();
-			}
-			
-			// concat the default values to the optionals string
-			string optionals;
-			for (unsigned i = 0; i < optionalValues.size(); ++i)
-				optionals += "[" + optionalValues[i] + "]";
-			
-			// register and output command
-			add_known_command(command, opt1, optionalsNum);
-			string const ert = "\\newcommand{" + command + '}' + opt1
-			+ optionals + '{' + p.verbatim_item() + '}';
-			
-			context.check_layout(os);
-			begin_inset(os, "FormulaMacro");
-			os << "\n" << ert;
-			end_inset(os);
-		}
-
 		else if (t.cs() == "vspace") {
 			bool starred = false;
 			if (p.next_token().asInput() == "*") {
@@ -2632,6 +2497,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					}
 				}
 			}
+
 			if (known_unit || known_vspace) {
 				// Literal length or known variable
 				context.check_layout(os);
@@ -2644,79 +2510,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				end_inset(os);
 			} else {
 				// LyX can't handle other length variables in Inset VSpace
-				string name = t.asInput();
-				if (starred)
-					name += '*';
-				if (valid) {
-					if (value == 1.0)
-						handle_ert(os, name + '{' + unit + '}', context);
-					else if (value == -1.0)
-						handle_ert(os, name + "{-" + unit + '}', context);
-					else
-						handle_ert(os, name + '{' + valstring + unit + '}', context);
-				} else
-					handle_ert(os, name + '{' + length + '}', context);
-			}
-		}
-
-		else if (t.cs() == "hspace") {
-			bool starred = false;
-			if (p.next_token().asInput() == "*") {
-				p.get_token();
-				starred = true;
-			}
-			string const length = p.verbatim_item();
-			string unit;
-			string valstring;
-			bool valid = splitLatexLength(length, valstring, unit);
-			bool known_unit = false;
-			bool fill = false;
-			double value;
-			if (valid) {
-				istringstream iss(valstring);
-				iss >> value;
-				if (value == 1.0)
-					if (unit == "\\fill") {
-						known_unit = true;
-						fill = true;
-					}
-				switch (unitFromString(unit)) {
-				case Length::SP:
-				case Length::PT:
-				case Length::BP:
-				case Length::DD:
-				case Length::MM:
-				case Length::PC:
-				case Length::CC:
-				case Length::CM:
-				case Length::IN:
-				case Length::EX:
-				case Length::EM:
-				case Length::MU:
-					known_unit = true;
-					break;
-				default:
-					break;
-				}
-			}
-			if (known_unit) {
-				// Literal length or known variable
-				context.check_layout(os);
-				begin_inset(os, "Space ");
-				if (known_unit) {
-					os << "\\hspace";
-					if (starred)
-						os << '*';
-					if (fill)
-						os << "{" + unit + "}";
-					else {
-						os << "{}\n";
-						os << "\\length " << value << unit;
-					}
-				}				
-				end_inset(os);
-			} else {
-				// LyX can't handle other length variables in Inset HSpace
 				string name = t.asInput();
 				if (starred)
 					name += '*';

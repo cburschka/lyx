@@ -486,10 +486,8 @@ void parse_preamble(Parser & p, ostream & os,
 			p.setCatCode('@', catOther);
 		}
 
-		else if (t.cs() == "newcommand" 
-			 || t.cs() == "renewcommand"
-			 || t.cs() == "providecommand"
-			 || t.cs() == "newlyxcommand") {
+		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
+			    || t.cs() == "providecommand") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();

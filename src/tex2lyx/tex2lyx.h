@@ -79,11 +79,11 @@ char const * const * is_known(std::string const &, char const * const *);
 /*!
  * Adds the command \p command to the list of known commands.
  * \param o1 first optional parameter to the latex command \newcommand
- * (with brackets), or the empty string if there were no optional argument.
- * \param optionalsNum is the number of optional parameters
+ * (with brackets), or the empty string if there were no optional arguments.
+ * \param o2 wether \newcommand had a second optional parameter
  */
 void add_known_command(std::string const & command, std::string const & o1,
-	unsigned optionalsNum);
+		       bool o2);
 
 // Access to environment stack
 extern std::vector<std::string> active_environments;

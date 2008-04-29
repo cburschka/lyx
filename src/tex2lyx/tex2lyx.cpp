@@ -108,7 +108,7 @@ CommandMap known_math_environments;
 
 
 void add_known_command(string const & command, string const & o1,
-	unsigned optionalsNum)
+		       bool o2)
 {
 	// We have to handle the following cases:
 	// definition                      o1    o2    invocation result
@@ -117,14 +117,14 @@ void add_known_command(string const & command, string const & o1,
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo       bar
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo[x]    bar x
 	// \newcommand{\foo}[1][x]{bar #1} "[1]" true  \foo[x]    bar x
-	// and the same with \newlyxcommand
 	unsigned int nargs = 0;
 	vector<ArgumentType> arguments;
 	string const opt1 = rtrim(ltrim(o1, "["), "]");
 	if (isStrUnsignedInt(opt1)) {
 		// The command has arguments
 		nargs = convert<unsigned int>(opt1);
-		for (unsigned int i = 0; i < optionalsNum; ++i) {
+		if (nargs > 0 && o2) {
+			// The first argument is optional
 			arguments.push_back(optional);
 			--nargs;
 		}
