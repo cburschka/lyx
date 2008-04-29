@@ -116,6 +116,12 @@ GuiCitation::GuiCitation(GuiView & lv)
 }
 
 
+GuiCitation::~GuiCitation()
+{
+	delete selectionManager;
+}
+
+
 void GuiCitation::cleanUp() 
 {
 	clearSelection();

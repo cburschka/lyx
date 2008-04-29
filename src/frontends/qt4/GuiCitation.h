@@ -37,7 +37,8 @@ class GuiCitation : public GuiDialog, public Ui::CitationUi
 public:
 	///
 	GuiCitation(GuiView & lv);
-
+	///
+	~GuiCitation();
 	///
 	void applyView();
 
