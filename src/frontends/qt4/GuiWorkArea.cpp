@@ -1220,6 +1220,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QTabBar* tb = new DragTabBar;
 	connect(tb, SIGNAL(tabMoveRequested(int, int)),
 		this, SLOT(moveTab(int, int)));
+	tb->setElideMode(Qt::ElideNone);
 	setTabBar(tb);
 
 	// make us responsible for the context menu of the tabbar
@@ -1445,17 +1446,14 @@ public:
 		}
 	}
 	///
-	QString forecastDisplayString() const
+	QString forecastPathString() const
 	{
 		if (postfix_.count() == 0)
 			return displayString();
 		
-		bool postfixLeft = postfix_.count() > 1;
 		return prefix_
 			+ (dottedPrefix_ ? ".../" : "")
-			+ postfix_.front() + "/"
-			+ (postfixLeft ? ".../" : "")
-			+ filename_;
+			+ postfix_.front() + "/";
 	}
 	///
 	bool final() const
@@ -1559,25 +1557,25 @@ void TabWorkArea::updateTabTexts()
 			// that it makes the path more unique.
 			somethingChanged = true;
 			It sit = segStart;
-			QString dspString = sit->forecastDisplayString();
+			QString dspString = sit->forecastPathString();
 			LYXERR(Debug::GUI, "first forecast found for "
 			       << fromqstr(sit->abs())
 			       << " => " << fromqstr(dspString));
 			++sit;
 			bool moreUnique = false;
 			for (; sit != next; ++sit) {
-				if (sit->forecastDisplayString() != dspString) {
+				if (sit->forecastPathString() != dspString) {
 					LYXERR(Debug::GUI, "different forecast found for "
 					       << fromqstr(sit->abs())
 					       << " => "
-					       << fromqstr(sit->forecastDisplayString()));
+					       << fromqstr(sit->forecastPathString()));
 					moreUnique = true;
 					break;
 				} else {
 					LYXERR(Debug::GUI, "same forecast found for "
 					       << fromqstr(sit->abs())
 					       << " => "
-					       << fromqstr(sit->forecastDisplayString()));
+					       << fromqstr(dspString));
 				}
 			}
 			
