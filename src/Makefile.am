@@ -8,7 +8,11 @@ MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
-SUBDIRS = support frontends tex2lyx client .
+if BUILD_CLIENT_SUBDIR
+CLIENT = client
+endif
+
+SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
 EXTRA_DIST = config.h.in \
 	Section.h \
