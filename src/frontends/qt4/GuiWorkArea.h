@@ -270,7 +270,7 @@ public Q_SLOTS:
 	/// close current tab, or the one given by \c clicked_tab_
 	void closeCurrentTab();
 	///
-	void updateTabText(GuiWorkArea *);
+	void updateTabTexts();
 	
 private Q_SLOTS:
 	///

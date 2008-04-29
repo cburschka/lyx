@@ -265,6 +265,12 @@ string FileName::onlyFileName() const
 }
 
 
+string FileName::onlyFileNameWithoutExt() const
+{
+       return fromqstr(d->fi.baseName());
+}
+
+
 FileName FileName::onlyPath() const
 {
 	FileName path;

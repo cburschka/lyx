@@ -1313,13 +1313,15 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 		showBar(count() > 0);
 	addTab(wa, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
-		this, SLOT(updateTabText(GuiWorkArea *)));
+		this, SLOT(updateTabTexts()));
 	if (currentWorkArea() && currentWorkArea()->isFullScreen())
 		setFullScreen(true);
 	else
 		// Hide tabbar if there's only one tab.
 		showBar(count() > 1);
 
+	updateTabTexts();
+	
 	return wa;
 }
 
@@ -1346,6 +1348,8 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 	} else {
 		lastWorkAreaRemoved();
 	}
+
+	updateTabTexts();
 
 	return true;
 }
@@ -1392,13 +1396,216 @@ void TabWorkArea::closeCurrentTab()
 	}
 }
 
+///
+class DisplayPath {
+public:
+	/// make vector happy
+	DisplayPath() {}
+	///
+	DisplayPath(int tab, FileName const & filename)
+		: tab_(tab)
+	{
+		filename_ = toqstr(filename.onlyFileNameWithoutExt());
+		postfix_ = toqstr(filename.absoluteFilePath()).split("/", QString::SkipEmptyParts);
+		postfix_.pop_back();
+		abs_ = toqstr(filename.absoluteFilePath());
+		dottedPrefix_ = false;
+	}
+	
+	/// Absolute path for debugging.
+	QString abs() const
+	{
+		return abs_;
+	}
+	/// Add the first segment from the postfix or three dots to the prefix.
+	/// Merge multiple dot tripples. In fact dots are added lazily, i.e. only
+	/// when really needed.
+	void shiftPathSegment(bool dotted)
+	{
+		if (postfix_.count() > 0) {
+			if (!dotted) {
+				if (dottedPrefix_ && !prefix_.isEmpty())
+					prefix_ += ".../";
+				prefix_ += postfix_.front() + "/";
+			}
+			dottedPrefix_ = dotted && !prefix_.isEmpty();
+			postfix_.pop_front();
+		}
+	}
+	///
+	QString displayString() const
+	{
+		if (prefix_.isEmpty())
+			return filename_;
+		else {
+			bool dots = dottedPrefix_ || !postfix_.isEmpty();
+			return prefix_
+				+ (dots ? ".../" : "")
+				+ filename_;
+		}
+	}
+	///
+	QString forecastDisplayString() const
+	{
+		if (postfix_.count() == 0)
+			return displayString();
+		
+		bool postfixLeft = postfix_.count() > 1;
+		return prefix_
+			+ (dottedPrefix_ ? ".../" : "")
+			+ postfix_.front() + "/"
+			+ (postfixLeft ? ".../" : "")
+			+ filename_;
+	}
+	///
+	bool final() const
+	{
+		return postfix_.empty();
+	}
+	///
+	int tab() const
+	{
+		return tab_;
+	}
+	
+private:
+	///
+	QString prefix_;
+	///
+	QStringList postfix_;
+	///
+	QString filename_;
+	///
+	QString abs_;
+	///
+	int tab_;
+	///
+	bool dottedPrefix_;
+};
 
-void TabWorkArea::updateTabText(GuiWorkArea * wa)
+
+///
+bool operator<(DisplayPath const & a, DisplayPath const & b)
 {
-	int const i = indexOf(wa);
-	if (i < 0)
+	return a.displayString() < b.displayString();
+}
+
+///
+bool operator==(DisplayPath const & a, DisplayPath const & b)
+{
+	return a.displayString() == b.displayString();
+}
+
+
+void TabWorkArea::updateTabTexts()
+{
+	size_t n = count();
+	if (n == 0)
 		return;
-	setTabText(i, wa->windowTitle());
+	std::list<DisplayPath> paths;
+	typedef std::list<DisplayPath>::iterator It;
+	
+	// collect full names first: path into postfix, empty prefix and 
+	// filename without extension
+	for (size_t i = 0; i < n; ++i) {
+		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(i)); 
+		FileName const fn = i_wa->bufferView().buffer().fileName();
+		paths.push_back(DisplayPath(i, fn));
+	}
+	
+	// go through path segments and see if it helps to make the path more unique
+	bool somethingChanged = true;
+	bool allFinal = false;
+	while (somethingChanged && !allFinal) {
+		// adding path segments changes order
+		paths.sort();
+		
+		LYXERR(Debug::GUI, "updateTabTexts() iteration start");
+		somethingChanged = false;
+		allFinal = true;
+		
+		// find segments which are not unique (i.e. non-atomic)
+		It it = paths.begin();
+		It segStart = it;
+		QString segString = it->displayString();
+		for (; it != paths.end(); ++it) {
+			// look to the next item
+			It next = it;
+			++next;
+			
+			// final?
+			allFinal = allFinal && it->final();
+			
+			LYXERR(Debug::GUI, "it = " << fromqstr(it->abs())
+			       << " => " << fromqstr(it->displayString()));
+			
+			// still the same segment?
+			QString nextString;
+			if ((next != paths.end()
+			     && (nextString = next->displayString()) == segString))
+				continue;
+			LYXERR(Debug::GUI, "segment ended");
+			
+			// only a trivial one with one element?
+			if (it == segStart) {
+				// start new segment
+				segStart = next;
+				segString = nextString;
+				continue;
+			}
+			
+			// we found a non-atomic segment segStart <= sit <= it < next.
+			// Shift path segments and hope for the best
+			// that it makes the path more unique.
+			somethingChanged = true;
+			It sit = segStart;
+			QString dspString = sit->forecastDisplayString();
+			LYXERR(Debug::GUI, "first forecast found for "
+			       << fromqstr(sit->abs())
+			       << " => " << fromqstr(dspString));
+			++sit;
+			bool moreUnique = false;
+			for (; sit != next; ++sit) {
+				if (sit->forecastDisplayString() != dspString) {
+					LYXERR(Debug::GUI, "different forecast found for "
+					       << fromqstr(sit->abs())
+					       << " => "
+					       << fromqstr(sit->forecastDisplayString()));
+					moreUnique = true;
+					break;
+				} else {
+					LYXERR(Debug::GUI, "same forecast found for "
+					       << fromqstr(sit->abs())
+					       << " => "
+					       << fromqstr(sit->forecastDisplayString()));
+				}
+			}
+			
+			// if the path segment helped, add it. Otherwise add dots
+			bool dots = !moreUnique;
+			LYXERR(Debug::GUI, "using dots = " << dots);
+			for (sit = segStart; sit != next; ++sit) {
+				sit->shiftPathSegment(dots);
+				LYXERR(Debug::GUI, "shifting " << fromqstr(sit->abs())
+				       << " => "
+				       << fromqstr(sit->displayString()));
+			}
+
+			// start new segment
+			segStart = next;
+			segString = nextString;
+		}
+	}
+	
+	// set new tab titles
+	for (It it = paths.begin(); it != paths.end(); ++it) {
+		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(it->tab())); 
+		Buffer & buf = i_wa->bufferView().buffer();
+		if (!buf.fileName().empty() && !buf.isClean())
+			setTabText(it->tab(), it->displayString() + "*");
+		else
+			setTabText(it->tab(), it->displayString());
+	}
 }
 
 
