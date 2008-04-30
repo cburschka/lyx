@@ -2138,11 +2138,11 @@ convert = [[277, [fix_wrong_tables]],
            [327, []],
            [328, [remove_embedding, remove_extra_embedded_files, remove_inzip_options]],
            [329, []],
-	   [330, []],
+           [330, []],
           ]
 
 revert =  [[329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
-	   [328, [revert_master]],
+           [328, [revert_master]],
            [327, []],
            [326, [revert_mexican]],
            [325, [revert_pdfpages]],
