@@ -28,7 +28,7 @@
 #include <QList>
 #include <QTime>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <boost/scoped_array.hpp>
 
 #include <map>

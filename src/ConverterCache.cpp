@@ -25,7 +25,7 @@
 #include "support/lyxtime.h"
 #include "support/Package.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <boost/crc.hpp>
 
 #include <algorithm>

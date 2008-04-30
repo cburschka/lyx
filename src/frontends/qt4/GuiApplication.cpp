@@ -36,7 +36,7 @@
 #include "Session.h"
 #include "version.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"

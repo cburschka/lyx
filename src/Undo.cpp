@@ -30,7 +30,7 @@
 
 #include "insets/Inset.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 
 #include <algorithm>

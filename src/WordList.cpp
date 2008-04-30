@@ -17,7 +17,7 @@
 #include "support/docstring.h"
 #include "support/weighted_btree.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 namespace lyx {
 

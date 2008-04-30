@@ -32,7 +32,7 @@
 
 #include "frontends/Painter.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 
 #include <ostream>

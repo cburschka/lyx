@@ -15,7 +15,7 @@
 
 #include "support/debug.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <climits>
 
 using namespace std;

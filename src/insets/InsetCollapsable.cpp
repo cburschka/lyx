@@ -34,7 +34,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"

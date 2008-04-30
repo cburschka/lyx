@@ -30,7 +30,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetOptArg.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
 

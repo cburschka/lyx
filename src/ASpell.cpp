@@ -19,7 +19,7 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 

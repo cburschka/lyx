@@ -30,7 +30,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 

@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/Timeout.h"
 #include "support/debug.h"
 

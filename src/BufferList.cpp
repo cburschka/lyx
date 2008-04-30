@@ -29,7 +29,7 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <boost/bind.hpp>
 
 #include <algorithm>

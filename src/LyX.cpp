@@ -45,7 +45,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/ExceptionMessage.h"

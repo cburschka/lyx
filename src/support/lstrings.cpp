@@ -19,7 +19,7 @@
 #include "support/textutils.h"
 
 #include <boost/tokenizer.hpp>
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <QString>
 #include <QVector>

@@ -36,7 +36,7 @@
 
 #include "frontends/Painter.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"

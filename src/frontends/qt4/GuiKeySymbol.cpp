@@ -14,7 +14,7 @@
 
 #include "qt_helpers.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 
 #include "Encoding.h"

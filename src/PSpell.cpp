@@ -22,7 +22,7 @@ extern "C" {
 #include "PSpell.h"
 #include "WordLangTuple.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 using namespace lyx::support;

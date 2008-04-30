@@ -23,7 +23,7 @@
 #include "Paragraph.h"
 #include "TexRow.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 

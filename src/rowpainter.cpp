@@ -43,7 +43,7 @@
 #include "support/debug.h"
 #include "support/textutils.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <boost/crc.hpp>
 
 #include <ostream>

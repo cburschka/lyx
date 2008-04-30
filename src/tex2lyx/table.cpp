@@ -16,7 +16,7 @@
 
 #include "tex2lyx.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
 

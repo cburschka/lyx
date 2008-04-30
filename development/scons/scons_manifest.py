@@ -294,7 +294,6 @@ src_support_header_files = Split('''
     Systemcall.h
     Timeout.h
     Translator.h
-    assert.h
     convert.h
     copied_ptr.h
     debug.h
@@ -305,6 +304,7 @@ src_support_header_files = Split('''
     foreach.h
     gettext.h
     gzstream.h
+    lassert.h
     limited_stack.h
     lstrings.h
     lyxalgo.h

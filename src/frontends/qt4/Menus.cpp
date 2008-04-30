@@ -50,7 +50,7 @@
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"

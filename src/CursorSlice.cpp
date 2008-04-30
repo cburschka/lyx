@@ -25,7 +25,7 @@
 #include "mathed/InsetMath.h"
 #include "mathed/MathData.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <ostream>
 

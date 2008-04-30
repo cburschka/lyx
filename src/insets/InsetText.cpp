@@ -52,7 +52,7 @@
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 using namespace lyx::support;

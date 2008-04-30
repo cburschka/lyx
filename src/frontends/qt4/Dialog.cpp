@@ -25,7 +25,7 @@
 #include <QSettings>
 #include <QString>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <string>
 

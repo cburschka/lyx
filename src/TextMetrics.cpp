@@ -49,7 +49,7 @@
 
 #include "support/debug.h"
 #include <cstdlib>
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 

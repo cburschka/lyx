@@ -22,7 +22,7 @@
 
 #include <QFile>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 

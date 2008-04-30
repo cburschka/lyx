@@ -14,7 +14,7 @@
 
 #include "LyXRC.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 

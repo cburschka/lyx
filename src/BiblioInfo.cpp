@@ -24,7 +24,7 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetInclude.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"

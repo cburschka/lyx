@@ -22,7 +22,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <iostream>
 

@@ -21,7 +21,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using namespace std;
 

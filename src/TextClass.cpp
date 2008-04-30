@@ -27,7 +27,7 @@
 
 #include "frontends/alert.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"

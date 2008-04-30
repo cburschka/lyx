@@ -14,7 +14,7 @@
 #include "support/environment.h"
 #include "support/docstring.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #if defined (_WIN32)
 # include "support/gettext.h"

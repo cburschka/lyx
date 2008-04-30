@@ -16,7 +16,7 @@
 
 #include "GuiIdListModel.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 using std::vector;
 

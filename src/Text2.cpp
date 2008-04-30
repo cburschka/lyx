@@ -50,7 +50,7 @@
 
 #include "mathed/InsetMathHull.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/textutils.h"

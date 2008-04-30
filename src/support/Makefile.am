@@ -37,8 +37,6 @@ liblyxsupport_la_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
-	assert.h \
-	assert.cpp \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \
@@ -64,6 +62,8 @@ liblyxsupport_la_SOURCES = \
 	gzstream.cpp \
 	gzstream.h \
 	kill.cpp \
+	lassert.h \
+	lassert.cpp \
 	limited_stack.h \
 	lstrings.cpp \
 	lstrings.h \

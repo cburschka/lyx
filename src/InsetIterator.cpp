@@ -13,7 +13,7 @@
 
 #include "InsetIterator.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 
 namespace lyx {

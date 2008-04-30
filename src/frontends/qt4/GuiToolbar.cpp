@@ -64,7 +64,7 @@
 #include <QToolButton>
 #include <QVariant>
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <map>
 #include <vector>

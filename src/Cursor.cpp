@@ -36,7 +36,7 @@
 #include "TextMetrics.h"
 #include "TocBackend.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 

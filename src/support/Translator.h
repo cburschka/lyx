@@ -12,7 +12,7 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <vector>
 #include <utility>

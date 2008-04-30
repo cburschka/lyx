@@ -31,7 +31,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 
 using namespace std;

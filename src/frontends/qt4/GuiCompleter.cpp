@@ -25,7 +25,7 @@
 #include "Paragraph.h"
 #include "version.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 
 #include <QApplication>

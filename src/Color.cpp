@@ -22,7 +22,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <map>
 #include <cmath>

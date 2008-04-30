@@ -36,7 +36,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include <boost/next_prior.hpp>
 
 #include <cstdlib>

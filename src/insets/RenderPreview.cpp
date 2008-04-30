@@ -27,7 +27,7 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 

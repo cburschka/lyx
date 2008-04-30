@@ -25,7 +25,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 

@@ -17,7 +17,7 @@
 #include "support/Package.h"
 #include "support/unicode.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <cerrno>
 

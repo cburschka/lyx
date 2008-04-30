@@ -46,7 +46,7 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/RenderPreview.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileNameList.h"

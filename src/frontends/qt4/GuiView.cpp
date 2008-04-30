@@ -54,7 +54,7 @@
 #include "ToolbarBackend.h"
 #include "version.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"

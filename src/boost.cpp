@@ -14,7 +14,7 @@
 
 #include "support/debug.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <exception>
 #include <iomanip>

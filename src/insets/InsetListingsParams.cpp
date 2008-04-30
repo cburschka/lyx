@@ -21,7 +21,7 @@
 #include "support/textutils.h"
 #include "support/convert.h"
 
-#include "support/assert.h"
+#include "support/lassert.h"
 
 #include <sstream>
 
