@@ -686,10 +686,8 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 		while (ifs) {
 
 			ifs.get(ch);
-			if (!ifs) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+			if (!ifs)
 				break;
-			}
 
 			if (ch != '@')
 				continue;
