@@ -555,7 +555,7 @@ namespace {
 				// set end delimiter
 				char_type delim = ch == '"' ? '"': '}';
 
-				//Skip whitespace
+				// Skip whitespace
 				do {
 					ifs.get(ch);
 				} while (ifs && isSpace(ch));
@@ -563,8 +563,8 @@ namespace {
 				if (!ifs)
 					return false;
 				
-				//We now have the first non-whitespace character
-				//We'll collapse adjacent whitespace.
+				// We now have the first non-whitespace character
+				// We'll collapse adjacent whitespace.
 				bool lastWasWhiteSpace = false;
 				
  				// inside this delimited text braces must match.
@@ -578,9 +578,9 @@ namespace {
 						ifs.get(ch);
 						continue;
 					}
-					//We output the space only after we stop getting 
-					//whitespace so as not to output any whitespace
-					//at the end of the value.
+					// We output the space only after we stop getting 
+					// whitespace so as not to output any whitespace
+					// at the end of the value.
 					if (lastWasWhiteSpace) {
 						lastWasWhiteSpace = false;
 						val += ' ';
@@ -686,30 +686,39 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 		while (ifs) {
 
 			ifs.get(ch);
-			if (!ifs)
+			if (!ifs) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 				break;
+			}
 
 			if (ch != '@')
 				continue;
 
 			docstring entryType;
 
-			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), 
-			                   docstring(), makeLowerCase) || !ifs)
+			if (!ifs) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 				continue;
+			}
+
+			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), docstring(), makeLowerCase)) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Error reading entry type." << std::endl;
+				continue;
+			}
 
 			if (entryType == from_ascii("comment")) {
-
 				ifs.ignore(numeric_limits<int>::max(), '\n');
 				continue;
 			}
 
 			ifs.get(ch);
-			if (!ifs)
+			if (!ifs) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 				break;
+			}
 
 			if ((ch != '(') && (ch != '{')) {
-				// invalid entry delimiter
+				lyxerr << "InsetBibtex::fillWithBibKeys: Invalid entry delimiter." << std::endl;
 				ifs.putback(ch);
 				continue;
 			}
@@ -722,17 +731,29 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				docstring name;
 				docstring value;
 
-				if (!readTypeOrKey(name, ifs, from_ascii("="), 
-				                   from_ascii("#{}(),"), makeLowerCase) || !ifs)
+				if (!ifs) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 					continue;
+				}
+
+				if (!readTypeOrKey(name, ifs, from_ascii("="), from_ascii("#{}(),"), makeLowerCase)) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Error reading string name." << std::endl;
+					continue;
+				}
 
 				// next char must be an equal sign
 				ifs.get(ch);
-				if (!ifs || ch != '=')
+				if (!ifs || ch != '=') {
+					lyxerr << "InsetBibtex::fillWithBibKeys: No `=' after string name: " << 
+							name << "." << std::endl;
 					continue;
+				}
 
-				if (!readValue(value, ifs, strings))
+				if (!readValue(value, ifs, strings)) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read value for string: " << 
+							name << "." << std::endl;
 					continue;
+				}
 
 				strings[name] = value;
 
@@ -742,17 +763,26 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				// can they be of any use in lyx?
 				docstring value;
 
-				if (!readValue(value, ifs, strings))
+				if (!readValue(value, ifs, strings)) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read preamble value." << std::endl;
 					continue;
+				}
 
 			} else {
 
 				// Citation entry. Try to read the key.
 				docstring key;
 
-				if (!readTypeOrKey(key, ifs, from_ascii(","), 
-				                   from_ascii("}"), keepCase) || !ifs)
+				if (!ifs) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 					continue;
+				}
+
+				if (!readTypeOrKey(key, ifs, from_ascii(","), from_ascii("}"), keepCase)) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read key for entry type:" << 
+							entryType << "." << std::endl;
+					continue;
+				}
 
 				/////////////////////////////////////////////
 				// now we have a key, so we will add an entry 
@@ -780,16 +810,23 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 
 					// next char must be an equal sign
 					ifs.get(ch);
-					if (!ifs)
+					if (!ifs) {
+						lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 						break;
+					}
 					if (ch != '=') {
+						lyxerr << "InsetBibtex::fillWithBibKeys: Missing `=' after field name: " <<
+								name << ", for key: " << key << "." << std::endl;
 						ifs.putback(ch);
 						break;
 					}
 
 					// read field value
-					if (!readValue(value, ifs, strings))
+					if (!readValue(value, ifs, strings)) {
+						lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read value for field: " <<
+								name << ", for key: " << key << "." << std::endl;
 						break;
+					}
 
 					keyvalmap[name] = value;
 					data += "\n\n" + value;
@@ -801,7 +838,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				keylist.addEntryType(entryType);
 				keyvalmap.setAllData(data);
 				keylist[key] = keyvalmap;
-			}
+			} //< else (citation entry)
 		} //< searching '@'
 	} //< for loop over files
 }
