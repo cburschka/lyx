@@ -170,7 +170,7 @@ QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
 	return formats;
 }
 
-static std::auto_ptr<QWindowsMimeMetafile> metafileWindowsMime;
+static QWindowsMimeMetafile * metafileWindowsMime;
 
 #endif // Q_WS_WIN
 
@@ -235,7 +235,7 @@ QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(QString const & mi
 	return ret;
 }
 
-static std::auto_ptr<QMacPasteboardMimeGraphics> graphicsPasteboardMime;
+static QMacPasteboardMimeGraphics * graphicsPasteboardMime;
 
 #endif // Q_WS_MACX
 
@@ -248,21 +248,31 @@ GuiClipboard::GuiClipboard()
 	on_dataChanged();
 	
 #ifdef Q_WS_MACX
-	if (!graphicsPasteboardMime.get())
-		graphicsPasteboardMime.reset(new QMacPasteboardMimeGraphics());
+	if (!graphicsPasteboardMime)
+		graphicsPasteboardMime = new QMacPasteboardMimeGraphics();
 #endif // Q_WS_MACX
 
 #ifdef Q_WS_WIN
-	if (!metafileWindowsMime.get())
-		metafileWindowsMime.reset(new QWindowsMimeMetafile());
+	if (!metafileWindowsMime)
+		metafileWindowsMime = new QWindowsMimeMetafile();
 #endif // Q_WS_WIN
 }
 
 
 GuiClipboard::~GuiClipboard()
 {
+#ifdef Q_WS_WIN
+	if (metafileWindowsMime) {
+		delete metafileWindowsMime;
+		metafileWindowsMime = 0;
+	}
+#endif // Q_WS_WIN
 #ifdef Q_WS_MACX
 	closeAllLinkBackLinks();
+	if (graphicsPasteboardMime) {
+		delete graphicsPasteboardMime;
+		graphicsPasteboardMime = 0;
+	}
 #endif // Q_WS_MACX
 }
 
