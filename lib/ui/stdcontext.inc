@@ -179,6 +179,10 @@ Menuset
 		Item "Protected Horizontal Fill|i" "next-inset-modify space \hspace*{\fill}"
 		Item "Horizontal Fill (Dots)|D" "next-inset-modify space \dotfill{}"
 		Item "Horizontal Fill (Rule)|R" "next-inset-modify space \hrulefill{}"
+		Item "Horizontal Fill (Left Arrow)|L" "next-inset-modify space \leftarrowfill{}"
+		Item "Horizontal Fill (Right Arrow)|g" "next-inset-modify space \rightarrowfill{}"
+		Item "Horizontal Fill (Up Brace)|p" "next-inset-modify space \upbracefill{}"
+		Item "Horizontal Fill (Down Brace)|B" "next-inset-modify space \downbracefill{}"
 		Item "Custom Length|C" "command-sequence next-inset-modify space \hspace{} \length 1in; next-inset-toggle"
 		Separator
 		Item "Settings...|S" "next-inset-toggle"

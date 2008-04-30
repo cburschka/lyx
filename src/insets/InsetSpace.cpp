@@ -102,6 +102,18 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	case InsetSpaceParams::HRULEFILL:
 		message = _("Horizontal Fill (Rule)");
 		break;
+	case InsetSpaceParams::LEFTARROWFILL:
+		message = _("Horizontal Fill (Left Arrow)");
+		break;
+	case InsetSpaceParams::RIGHTARROWFILL:
+		message = _("Horizontal Fill (Right Arrow)");
+		break;
+	case InsetSpaceParams::UPBRACEFILL:
+		message = _("Horizontal Fill (Up Brace)");
+		break;
+	case InsetSpaceParams::DOWNBRACEFILL:
+		message = _("Horizontal Fill (Down Brace)");
+		break;
 	case InsetSpaceParams::CUSTOM:
 		message = support::bformat(_("Horizontal Space (%1$s)"),
 				params_.length.asDocstring());
@@ -202,6 +214,10 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 		case InsetSpaceParams::HFILL_PROTECTED:
 		case InsetSpaceParams::DOTFILL:
 		case InsetSpaceParams::HRULEFILL:
+		case InsetSpaceParams::LEFTARROWFILL:
+		case InsetSpaceParams::RIGHTARROWFILL:
+		case InsetSpaceParams::UPBRACEFILL:
+		case InsetSpaceParams::DOWNBRACEFILL:
 			// shut up compiler
 			break;
 	}
@@ -222,6 +238,9 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 		int const y0 = y + desc;
 		int const y1 = y - asc;
 		int const y2 = y - asc / 2;
+		int const xoffset = (y0 - y1) / 2;
+		int const x2 = x0 + xoffset;
+		int const x3 = x1 - xoffset;
 
 		if (params_.kind == InsetSpaceParams::HFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_added_space);
@@ -238,10 +257,26 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.line(x0, y, x1, y, Color_special,
 				frontend::Painter::line_onoffdash);
 			pi.pain.line(x1, y1, x1, y0, Color_special);
-		} if (params_.kind == InsetSpaceParams::HRULEFILL) {
+		} else if (params_.kind == InsetSpaceParams::HRULEFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_special);
 			pi.pain.line(x0, y, x1, y, Color_special);
 			pi.pain.line(x1, y1, x1, y0, Color_special);
+		} else if (params_.kind == InsetSpaceParams::LEFTARROWFILL) {
+			pi.pain.line(x2, y1 , x0, y2, Color_special);
+			pi.pain.line(x0, y2 , x2, y0, Color_special);
+			pi.pain.line(x0, y2 , x1, y2, Color_special);
+		} else if (params_.kind == InsetSpaceParams::RIGHTARROWFILL) {
+			pi.pain.line(x3, y1 , x1, y2, Color_special);
+			pi.pain.line(x1, y2 , x3, y0, Color_special);
+			pi.pain.line(x0, y2 , x1, y2, Color_special);
+		} else if (params_.kind == InsetSpaceParams::UPBRACEFILL) {
+			pi.pain.line(x0, y1 , x2, y2, Color_special);
+			pi.pain.line(x3, y2 , x1, y1, Color_special);
+			pi.pain.line(x2, y2 , x3, y2, Color_special);
+		} else if (params_.kind == InsetSpaceParams::DOWNBRACEFILL) {
+			pi.pain.line(x0, y0 , x2, y2, Color_special);
+			pi.pain.line(x3, y2 , x1, y0, Color_special);
+			pi.pain.line(x2, y2 , x3, y2, Color_special);
 		}
 		return;
 	}
@@ -313,6 +348,18 @@ void InsetSpaceParams::write(ostream & os) const
 	case InsetSpaceParams::HRULEFILL:
 		os <<  "\\hrulefill{}";
 		break;
+	case InsetSpaceParams::LEFTARROWFILL:
+		os <<  "\\leftarrowfill{}";
+		break;
+	case InsetSpaceParams::RIGHTARROWFILL:
+		os <<  "\\rightarrowfill{}";
+		break;
+	case InsetSpaceParams::UPBRACEFILL:
+		os <<  "\\upbracefill{}";
+		break;
+	case InsetSpaceParams::DOWNBRACEFILL:
+		os <<  "\\downbracefill{}";
+		break;
 	case InsetSpaceParams::CUSTOM:
 		os <<  "\\hspace{}";
 		break;
@@ -358,6 +405,14 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::HRULEFILL;
 	else if (command == "\\hspace{}")
 		kind = InsetSpaceParams::CUSTOM;
+	else if (command == "\\leftarrowfill{}")
+		kind = InsetSpaceParams::LEFTARROWFILL;
+	else if (command == "\\rightarrowfill{}")
+		kind = InsetSpaceParams::RIGHTARROWFILL;
+	else if (command == "\\upbracefill{}")
+		kind = InsetSpaceParams::UPBRACEFILL;
+	else if (command == "\\downbracefill{}")
+		kind = InsetSpaceParams::DOWNBRACEFILL;
 	else if (command == "\\hspace*{}")
 		kind = InsetSpaceParams::CUSTOM_PROTECTED;
 	else
@@ -421,6 +476,18 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 	case InsetSpaceParams::HRULEFILL:
 		os << (runparams.free_spacing ? " " : "\\hrulefill{}");
 		break;
+	case InsetSpaceParams::LEFTARROWFILL:
+		os << (runparams.free_spacing ? " " : "\\leftarrowfill{}");
+		break;
+	case InsetSpaceParams::RIGHTARROWFILL:
+		os << (runparams.free_spacing ? " " : "\\rightarrowfill{}");
+		break;
+	case InsetSpaceParams::UPBRACEFILL:
+		os << (runparams.free_spacing ? " " : "\\upbracefill{}");
+		break;
+	case InsetSpaceParams::DOWNBRACEFILL:
+		os << (runparams.free_spacing ? " " : "\\downbracefill{}");
+		break;
 	case InsetSpaceParams::CUSTOM:
 		if (runparams.free_spacing)
 			os << " ";
@@ -450,6 +517,18 @@ int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
 		return 5;
 	case InsetSpaceParams::HRULEFILL:
 		os << "_____";
+		return 5;
+	case InsetSpaceParams::LEFTARROWFILL:
+		os << "<----";
+		return 5;
+	case InsetSpaceParams::RIGHTARROWFILL:
+		os << "---->";
+		return 5;
+	case InsetSpaceParams::UPBRACEFILL:
+		os << "\\-v-/";
+		return 5;
+	case InsetSpaceParams::DOWNBRACEFILL:
+		os << "/-^-\\";
 		return 5;
 	default:
 		os << ' ';
@@ -482,6 +561,10 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::HRULEFILL:
 		// FIXME
 		os << '\n';
+	case InsetSpaceParams::LEFTARROWFILL:
+	case InsetSpaceParams::RIGHTARROWFILL:
+	case InsetSpaceParams::UPBRACEFILL:
+	case InsetSpaceParams::DOWNBRACEFILL:
 	case InsetSpaceParams::CUSTOM:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME
@@ -502,7 +585,11 @@ bool InsetSpace::isStretchableSpace() const
 	return params_.kind == InsetSpaceParams::HFILL
 		|| params_.kind == InsetSpaceParams::HFILL_PROTECTED
 		|| params_.kind == InsetSpaceParams::DOTFILL
-		|| params_.kind == InsetSpaceParams::HRULEFILL;
+		|| params_.kind == InsetSpaceParams::HRULEFILL
+		|| params_.kind == InsetSpaceParams::LEFTARROWFILL
+		|| params_.kind == InsetSpaceParams::RIGHTARROWFILL
+		|| params_.kind == InsetSpaceParams::UPBRACEFILL
+		|| params_.kind == InsetSpaceParams::DOWNBRACEFILL;
 }
 
 

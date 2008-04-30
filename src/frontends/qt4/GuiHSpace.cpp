@@ -165,6 +165,22 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 			item = 6;
 			pattern = 2;
 			break;
+		case InsetSpaceParams::LEFTARROWFILL:
+			item = 6;
+			pattern = 3;
+			break;
+		case InsetSpaceParams::RIGHTARROWFILL:
+			item = 6;
+			pattern = 4;
+			break;
+		case InsetSpaceParams::UPBRACEFILL:
+			item = 6;
+			pattern = 5;
+			break;
+		case InsetSpaceParams::DOWNBRACEFILL:
+			item = 6;
+			pattern = 6;
+			break;
 		case InsetSpaceParams::CUSTOM:
 			item = 7;
 			break;
@@ -220,6 +236,14 @@ static InsetSpaceParams setHSpaceFromWidgets(int spacing,
 				params.kind = InsetSpaceParams::DOTFILL;
 			else if (fill == 2)
 				params.kind = InsetSpaceParams::HRULEFILL;
+			else if (fill == 3)
+				params.kind = InsetSpaceParams::LEFTARROWFILL;
+			else if (fill == 4)
+				params.kind = InsetSpaceParams::RIGHTARROWFILL;
+			else if (fill == 5)
+				params.kind = InsetSpaceParams::UPBRACEFILL;
+			else if (fill == 6)
+				params.kind = InsetSpaceParams::DOWNBRACEFILL;
 			else if (keep)
 				params.kind = InsetSpaceParams::HFILL_PROTECTED;
 			else

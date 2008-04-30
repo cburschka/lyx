@@ -51,6 +51,14 @@ public:
 		DOTFILL,
 		/// rubber length, filled with a rule
 		HRULEFILL,
+		/// rubber length, filled with a left arrow
+		LEFTARROWFILL,
+		/// rubber length, filled with a right arrow
+		RIGHTARROWFILL,
+		// rubber length, filled with an up brace
+		UPBRACEFILL,
+		// rubber length, filled with a down brace
+		DOWNBRACEFILL,
 		/// \hspace{length}
 		CUSTOM,
 		/// \hspace*{length}

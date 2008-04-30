@@ -1791,6 +1791,78 @@ def revert_protected_hfill(document):
         'hspace*{\n\\backslash\nfill}\n\\end_layout\n\n\\end_inset\n\n')
 
 
+def revert_leftarrowfill(document):
+    ' Revert \\begin_inset Space \\leftarrowfill{} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Space \\leftarrowfill{}', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Space \\leftarrowfill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'leftarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+
+
+def revert_rightarrowfill(document):
+    ' Revert \\begin_inset Space \\rightarrowfill{} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Space \\rightarrowfill{}', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Space \\rightarrowfill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'rightarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+
+
+def revert_upbracefill(document):
+    ' Revert \\begin_inset Space \\upbracefill{} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Space \\upbracefill{}', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Space \\upbracefill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'upbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+
+
+def revert_downbracefill(document):
+    ' Revert \\begin_inset Space \\downbracefill{} to ERT '
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Space \\downbracefill{}', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of space inset.")
+            continue
+        del document.body[j]
+        document.body[i] = document.body[i].replace('\\begin_inset Space \\downbracefill{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'downbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+
+
 def revert_local_layout(document):
     ' Revert local layout headers.'
     i = 0
@@ -2066,9 +2138,11 @@ convert = [[277, [fix_wrong_tables]],
            [327, []],
            [328, [remove_embedding, remove_extra_embedded_files, remove_inzip_options]],
            [329, []],
+	   [330, []],
           ]
 
-revert =  [[328, [revert_master]],
+revert =  [[329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
+	   [328, [revert_master]],
            [327, []],
            [326, [revert_mexican]],
            [325, [revert_pdfpages]],
