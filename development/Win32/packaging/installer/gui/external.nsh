@@ -13,7 +13,8 @@ Var ExternalPage.Info
 Var ExternalPage.Setup
 Var ExternalPage.Existing
 Var ExternalPage.Folder
-Var ExternalPage.Folder_Text
+Var ExternalPage.Folder.Text
+Var ExternalPage.Folder.Return
 Var ExternalPage.FolderBrowse
 Var ExternalPage.FolderInfo
 Var ExternalPage.NoInstall
@@ -159,16 +160,16 @@ Var ComponentSize
   
     # Update location of component
     
-    ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder_Text
+    ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder.Text
     
     # Verify whether the path exists
     
-    ${IfNot} ${FileExists} "$ExternalPage.Folder_Text\${BIN_${COMPONENT}}"
+    ${IfNot} ${FileExists} "$ExternalPage.Folder.Text\${BIN_${COMPONENT}}"
       MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_EXTERNAL_${COMPONENT}_NOTFOUND)
       Abort # Return to allow the user to correct the location
     ${EndIf}
     
-    StrCpy $Path${COMPONENT} $ExternalPage.Folder_Text
+    StrCpy $Path${COMPONENT} $ExternalPage.Folder.Text
   
   ${EndIf}
   
@@ -198,12 +199,17 @@ Function ExternalFolderBrowseClick
   # Browse button clicked
   
   # Get current folder to set as default
-  ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder_Text
+  ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder.Text
   
   # Browse for new folder
-  nsDialogs::SelectFolderDialog /NOUNLOAD "" $ExternalPage.Folder_Text
-  Pop $ExternalPage.Folder_Text
-  ${NSD_SetText} $ExternalPage.Folder $ExternalPage.Folder_Text
+  nsDialogs::SelectFolderDialog /NOUNLOAD "" $ExternalPage.Folder.Text
+  Pop $ExternalPage.Folder.Return
+  
+  ${If} $ExternalPage.Folder.Return != error
+    StrCpy $ExternalPage.Folder.Text $ExternalPage.Folder.Return
+  ${EndIf}
+  
+  ${NSD_SetText} $ExternalPage.Folder $ExternalPage.Folder.Text
 
 FunctionEnd
 
