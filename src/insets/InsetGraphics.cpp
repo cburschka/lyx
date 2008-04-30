@@ -142,8 +142,10 @@ void readInsetGraphics(Lexer & lex, string const & bufpath,
 			finished = true;
 		} else {
 			if (!params.Read(lex, token, bufpath))
-				lyxerr << "Unknown token, " << token << ", skipping."
-					<< endl;
+				lyxerr << "Unknown token, "
+				       << token
+				       << ", skipping."
+				       << endl;
 		}
 	}
 }
@@ -204,13 +206,13 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("graphics", params2string(params(),
-cur.bv().buffer()));
+				      cur.bv().buffer()));
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
 			cur.bv().showDialog("graphics", params2string(params(),
-cur.bv().buffer()), this);
+					    cur.bv().buffer()), this);
 		break;
 
 	default:
@@ -601,7 +603,8 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 			// noUnzip parameter meaningless.
 			LYXERR(Debug::GRAPHICS, "\tpass zipped file to LaTeX.");
 
-			FileName const bb_orig_file = FileName(changeExtension(orig_file, "bb"));
+			FileName const bb_orig_file =
+				FileName(changeExtension(orig_file, "bb"));
 			if (runparams.nice) {
 				runparams.exportdata->addExternalFile(tex_format,
 						bb_orig_file,
@@ -609,7 +612,8 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 			} else {
 				// LaTeX needs the bounding box file in the
 				// tmp dir
-				FileName bb_file = FileName(changeExtension(temp_file.absFilename(), "bb"));
+				FileName bb_file =
+					FileName(changeExtension(temp_file.absFilename(), "bb"));
 				boost::tie(status, bb_file) =
 					copyFileIfNeeded(bb_orig_file, bb_file);
 				if (status == FAILURE)
@@ -661,11 +665,13 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
 			// change it.
-			FileName const new_file = FileName(changeExtension(temp_file.absFilename(), ext));
+			FileName const new_file = 
+				FileName(changeExtension(temp_file.absFilename(), ext));
 			if (temp_file.moveTo(new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
-				source_file = FileName(changeExtension(source_file.absFilename(), ext));
+				source_file = 
+					FileName(changeExtension(source_file.absFilename(), ext));
 			} else {
 				LYXERR(Debug::GRAPHICS, "Could not rename file `"
 					<< temp_file << "' to `" << new_file << "'.");
@@ -861,7 +867,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 	if (features.runparams().nice) {
 		Buffer const * masterBuffer = features.buffer().masterBuffer();
-		string const rel_file = removeExtension(params().filename.relFilename(masterBuffer->filePath()));
+		string const rel_file = removeExtension(
+			params().filename.relFilename(masterBuffer->filePath()));
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}
