@@ -867,45 +867,18 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.enabled(true);
 		break;
 
-	case LFUN_NEXT_INSET_TOGGLE: {
-		// this is the real function we want to invoke
-		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_TOGGLE, cmd.argument());
-		// if there is an inset at cursor, see whether it
-		// can be modified.
-		Inset * inset = cur.nextInset();
-		if (inset) {
-			inset->getStatus(cur, tmpcmd, flag);
-			return flag;
-			break;
-		}
-		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched())
-			getStatus(tmpcmd);
-
-		if (!cur.result().dispatched())
-			// else disable
-			flag.enabled(false);
-		break;
-	}
-
+	case LFUN_NEXT_INSET_TOGGLE: 
 	case LFUN_NEXT_INSET_MODIFY: {
 		// this is the real function we want to invoke
-		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_MODIFY, cmd.argument());
+		FuncCode const code = 
+			(cmd.action == LFUN_NEXT_INSET_TOGGLE) 
+			? LFUN_INSET_TOGGLE : LFUN_INSET_MODIFY;
+		FuncRequest const tmpcmd = FuncRequest(code, cmd.argument());
 		// if there is an inset at cursor, see whether it
-		// can be modified.
+		// handles the lfun, other start from scratch
 		Inset * inset = cur.nextInset();
-		if (inset) {
-			inset->getStatus(cur, tmpcmd, flag);
-			return flag;
-			break;
-		}
-		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched())
-			getStatus(tmpcmd);
-
-		if (!cur.result().dispatched())
-			// else disable
-			flag.enabled(false);
+		if (!inset || !inset->getStatus(cur, tmpcmd, flag))
+			flag = lyx::getStatus(tmpcmd);
 		break;
 	}
 
