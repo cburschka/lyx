@@ -694,13 +694,13 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 
 			docstring entryType;
 
-			if (!ifs) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), docstring(), makeLowerCase)) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Error reading entry type." << std::endl;
 				continue;
 			}
 
-			if (!readTypeOrKey(entryType, ifs, from_ascii("{("), docstring(), makeLowerCase)) {
-				lyxerr << "InsetBibtex::fillWithBibKeys: Error reading entry type." << std::endl;
+			if (!ifs) {
+				lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 				continue;
 			}
 
@@ -729,13 +729,13 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				docstring name;
 				docstring value;
 
-				if (!ifs) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
+				if (!readTypeOrKey(name, ifs, from_ascii("="), from_ascii("#{}(),"), makeLowerCase)) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Error reading string name." << std::endl;
 					continue;
 				}
 
-				if (!readTypeOrKey(name, ifs, from_ascii("="), from_ascii("#{}(),"), makeLowerCase)) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Error reading string name." << std::endl;
+				if (!ifs) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 					continue;
 				}
 
@@ -771,14 +771,14 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 				// Citation entry. Try to read the key.
 				docstring key;
 
-				if (!ifs) {
-					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
-					continue;
-				}
-
 				if (!readTypeOrKey(key, ifs, from_ascii(","), from_ascii("}"), keepCase)) {
 					lyxerr << "InsetBibtex::fillWithBibKeys: Unable to read key for entry type:" << 
 							entryType << "." << std::endl;
+					continue;
+				}
+
+				if (!ifs) {
+					lyxerr << "InsetBibtex::fillWithBibKeys: Unexpected end of file." << std::endl;
 					continue;
 				}
 
