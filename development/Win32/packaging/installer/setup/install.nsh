@@ -9,52 +9,97 @@ Installation of program files, dictionaries and external components
 #--------------------------------
 # Program files
 
+Var PythonCompileFile
+Var PythonCompileReturn
+
 Section -ProgramFiles SecProgramFiles
 
   # Install and register the core LyX files
+  
+  # The macros are defined in filelists.nsh
+  # the parameters are COMMAND DIRECTORY that form command '${COMMAND} "${DIRECTORY}files"  
+  
   # Initializes the plug-ins dir ($PLUGINSDIR) if not already initialized.
   # $PLUGINSDIR is automatically deleted when the installer exits.
   InitPluginsDir
   
+  # Delete stuff from previous version
+  Delete "$INSTDIR\bin\lyxc.exe"
+  
   # Binaries
-  
   SetOutPath "$INSTDIR\bin"
-
-  # launcher becomes lyx.exe while the real lyx.exe is renamed to lyxc.exe
-  File "${FILES_LAUNCHER}\lyx.exe"
-  File /oname=lyxc.exe "${FILES_LYX}\bin\lyx.exe"
-  
-  # The macros are defined in filelists.nsh
-  # the parameters are COMMAND DIRECTORY that form command '${COMMAND} "${DIRECTORY}files"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
+  !insertmacro FileListLyXLauncher File "${FILES_LAUNCHER}\"  
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
-  
-  !insertmacro FileListDllMSVCBin File "${FILES_DEPS}\bin\"
+  !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"    
-
+  !insertmacro FileListMSVCManifest File "..\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
+  !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
+  !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
+  !insertmacro FileListMetaFile2EPS File "${FILES_METAFILE2EPS}\"
   
   # Resources
-  
   SetOutPath "$INSTDIR"
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
   
   # Components of Python
-  
   SetOutPath "$INSTDIR\python"
   !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
-  !insertmacro FileListPythonDll File "$%SystemRoot%\System32\"
-  !insertmacro FileListUnicodeDll File "${FILES_PYTHON}\DLLs\"
+  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
+  !insertmacro FileListMSVCManifest File "..\"  
   SetOutPath "$INSTDIR\python\Lib"
   !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
   SetOutPath "$INSTDIR\python\Lib\encodings"
   !insertmacro FileListPythonLibEncodings File "${FILES_PYTHON}\Lib\encodings\"
+  
+  # Compile all Pyton files to byte-code
+  # The user using the scripts may not have write access
+  FileOpen $PythonCompileFile "$INSTDIR\compilepy.py" w
+  FileWrite $PythonCompileFile "import compileall$\r$\n"
+  FileWrite $PythonCompileFile "compileall.compile_dir('$INSTDIR\python\Lib')$\r$\n"
+  FileWrite $PythonCompileFile "compileall.compile_dir('$INSTDIR\Resources')$\r$\n"
+  FileClose $PythonCompileFile
+  DetailPrint $(TEXT_CONFIGURE_PYTHON)
+  nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\compilepy.py"'
+  Pop $PythonCompileReturn # Return value
+  Delete "$INSTDIR\compilepy.py"
+  
+  !ifdef BUNDLE_IMAGEMAGICK
+  # Components of ImageMagick
+  SetOutPath "$INSTDIR\imagemagick"
+  !insertmacro FileListImageMagick File "${FILES_IMAGEMAGICK}\"
+  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
+  !insertmacro FileListMSVCManifest File "..\"
+  !endif  
+  
+  !ifdef BUNDLE_GHOSTSCRIPT
+  # Components of Ghostscript
+  SetOutPath "$INSTDIR\ghostscript"
+  SetOutPath "$INSTDIR\ghostscript\bin"
+  !insertmacro FileListGhostscriptBin File "${FILES_GHOSTSCRIPT}\bin\"
+  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
+  !insertmacro FileListMSVCManifest File "..\"  
+  SetOutPath "$INSTDIR\ghostscript\lib"
+  !insertmacro FileListGhostscriptLib File "${FILES_GHOSTSCRIPT}\lib\"
+  SetOutPath "$INSTDIR\ghostscript\fonts"
+  !insertmacro FileListGhostscriptFonts File "${FILES_GHOSTSCRIPT}\fonts\"
+  SetOutPath "$INSTDIR\ghostscript\Resource"
+  SetOutPath "$INSTDIR\ghostscript\Resource\CMap"
+  !insertmacro FileListGhostscriptResourceCMap File "${FILES_GHOSTSCRIPT}\Resource\CMap\"
+  SetOutPath "$INSTDIR\ghostscript\Resource\ColorSpace"
+  !insertmacro FileListGhostscriptResourceColorSpace File "${FILES_GHOSTSCRIPT}\Resource\ColorSpace\"
+  SetOutPath "$INSTDIR\ghostscript\Resource\Decoding"
+  !insertmacro FileListGhostscriptResourceDecoding File "${FILES_GHOSTSCRIPT}\Resource\Decoding\"
+  SetOutPath "$INSTDIR\ghostscript\Resource\Encoding"
+  !insertmacro FileListGhostscriptResourceEncoding File "${FILES_GHOSTSCRIPT}\Resource\Encoding\"
+  
+  !endif  
   
   # Aspell
 
@@ -72,19 +117,8 @@ Section -ProgramFiles SecProgramFiles
   Delete "$PLUGINSDIR\AspellData.exe"
 
   # Aiksarus data
-  
   SetOutPath "$INSTDIR\aiksaurus"
   !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
-  
-  # Helper DLLs for NSIS-based tools
-  
-  SetOutPath "$INSTDIR\bin"
-  !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
-  !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
-  
-  # Metafile to EPS Converter
-  SetOutPath "$INSTDIR\bin"
-  !insertmacro FileListMetaFile2EPS File "${FILES_METAFILE2EPS}\"
   
   # Postscript printer for metafile to EPS converter
   SetOutPath "$INSTDIR\PSPrinter"
@@ -212,14 +246,14 @@ Var PathCurrentUser
 
   # Download/Install the component
   
-  ${If} $Setup${component} == ${TRUE}
+  ${If} $Setup${COMPONENT} == ${TRUE}
   
-    StrCpy $Path${component} "" ;A new one will be installed
+    StrCpy $Path${COMPONENT} "" ;A new one will be installed
   
-    !ifndef SETUPTYPE_BUNDLE
-      !insertmacro EXTERNAL_DOWNLOAD ${component}
+    !ifndef BUNDLESETUP_${COMPONENT}
+      !insertmacro EXTERNAL_DOWNLOAD ${COMPONENT}
     !else
-      !insertmacro EXTERNAL_INSTALL ${component}
+      !insertmacro EXTERNAL_INSTALL ${COMPONENT}
     !endif
     
   ${EndIf}
@@ -249,38 +283,33 @@ Var PathCurrentUser
      
 !macroend
 
-!ifndef SETUPTYPE_BUNDLE
+!macro EXTERNAL_DOWNLOAD COMPONENT
 
-  !macro EXTERNAL_DOWNLOAD COMPONENT
+  download_${COMPONENT}:
 
-    download_${COMPONENT}:
-
-      !insertmacro DOWNLOAD_FILE $DownloadResult "${COMPONENT}" "${COMPONENT}Setup.exe" ""
+    !insertmacro DOWNLOAD_FILE $DownloadResult "${COMPONENT}" "${COMPONENT}Setup.exe" ""
  
-      ${If} $DownloadResult != "OK"
-        # Download failed
-        MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($DownloadResult)" IDYES download_${COMPONENT}
-        Goto noinstall_${COMPONENT}
-      ${EndIf}
+    ${If} $DownloadResult != "OK"
+      # Download failed
+      MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($DownloadResult)" IDYES download_${COMPONENT}
+      Goto noinstall_${COMPONENT}
+    ${EndIf}
       
-      !insertmacro EXTERNAL_RUNINSTALLER ${COMPONENT}
-      
-    noinstall_${COMPONENT}:
-
-  !macroend
-
-!else
-
-  !macro EXTERNAL_INSTALL COMPONENT
-
-    # Extract
-    File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${FILES_BUNDLE}\${INSTALL_${COMPONENT}}
-    
     !insertmacro EXTERNAL_RUNINSTALLER ${COMPONENT}
-    
-  !macroend
+      
+  noinstall_${COMPONENT}:
 
-!endif
+!macroend
+
+!macro EXTERNAL_INSTALL COMPONENT
+
+  # Extract
+  File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${FILES_BUNDLE}\${INSTALL_${COMPONENT}}
+    
+  !insertmacro EXTERNAL_RUNINSTALLER ${COMPONENT}
+    
+!macroend
+
 
 # Sections for external components
 
@@ -288,27 +317,44 @@ Section -LaTeX ExternalLaTeX
   !insertmacro EXTERNAL LaTeX
 SectionEnd
 
+!ifndef BUNDLE_IMAGEMAGICK
+
 Section -ImageMagick ExternalImageMagick
   !insertmacro EXTERNAL ImageMagick
 SectionEnd
 
+!endif
+
+!ifndef BUNDLE_GHOSTSCRIPT
+
 Section -Ghostscript ExternalGhostscript
   !insertmacro EXTERNAL Ghostscript
 SectionEnd
+
+!endif
 
 Function InitExternal
 
   # Get sizes of external component installers
   
   SectionGetSize ${ExternalLaTeX} $SizeLaTeX
-  SectionGetSize ${ExternalImageMagick} $SizeImageMagick
-  SectionGetSize ${ExternalGhostscript} $SizeGhostscript
-  
-  !ifndef SETUPTYPE_BUNDLE
-    # Add download size
-    IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
-    IntOp $SizeImagemagick $SizeImagemagick + ${SIZE_DOWNLOAD_IMAGEMAGICK}
-    IntOp $SizeGhostscript $SizeGhostscript + ${SIZE_DOWNLOAD_GHOSTSCRIPT}
+  !ifndef BUNDLE_IMAGEMAGICK
+    SectionGetSize ${ExternalImageMagick} $SizeImageMagick
+  !endif
+  !ifndef BUNDLE_GHOSTSCRIPT
+    SectionGetSize ${ExternalGhostscript} $SizeGhostscript
   !endif
   
+  # Add download size
+  
+  !ifndef BUNDLESETUP_MIKTEX
+    IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
+  !endif
+  !ifndef BUNDLE_IMAGEMAGICK & BUNDLESETUP_IMAGEMAGICK
+    IntOp $SizeImagemagick $SizeImagemagick + ${SIZE_DOWNLOAD_IMAGEMAGICK}
+  !endif
+  !ifndef BUNDLE_GHOSTSCRIPT & BUNDLESETUP_GHOSTSCRIPT
+    IntOp $SizeGhostscript $SizeGhostscript + ${SIZE_DOWNLOAD_GHOSTSCRIPT}
+  !endif
+
 FunctionEnd

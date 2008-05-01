@@ -10,8 +10,7 @@ Author: Andreas Deininger
 
 ${LangFileString} TEXT_NO_PRIVILEDGES "Sie gehören weder der Gruppe der Administratoren noch der Gruppe der Hauptbenutzer an.$\r$\nDie Werkzeuge zur Grafikkonvertierung können ohne diese Rechte nicht installiert werden."
 
-${LangFileString} TEXT_WELCOME_DOWNLOAD "Dieses Installationsprogramm wird Sie durch die Installation von $(^NameDA) leiten, des Dokumentenverarbeitungsprogramms welches das Verfassen von Texten basierend auf ihrer Struktur unterstützt, nicht das Verfassen von Texten ausgerichtet auf ihr Erscheinungsbild.$\r$\n$\r$\nDieses Installationsprogramm wird ein Komplettsystem zur Nutzung von ${APP_NAME} auf Ihrem Rechner erzeugen, dabei können fehlende Komponenten automatisch heruntergeladen werden.$\r$\n$\r$\n$(^ClickNext)"
-${LangFileString} TEXT_WELCOME_INSTALL "Dieses Installationsprogramm wird Sie durch die Installation von $(^NameDA) leiten, des Dokumentenverarbeitungsprogramms welches das Verfassen von Texten basierend auf ihrer Struktur unterstützt, nicht das Verfassen von Texten ausgerichtet auf ihr Erscheinungsbild.$\r$\n$\r$\nDieses Installationsprogramm wird ein Komplettsystem zur Nutzung von ${APP_NAME} auf Ihrem Rechner erzeugen, dabei können fehlende Komponenten automatisch heruntergeladen werden.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "Dieses Installationsprogramm wird Sie durch die Installation von $(^NameDA) leiten, des Dokumentenverarbeitungsprogramms welches das Verfassen von Texten basierend auf ihrer Struktur unterstützt, nicht das Verfassen von Texten ausgerichtet auf ihr Erscheinungsbild.$\r$\n$\r$\nDieses Installationsprogramm wird ein Komplettsystem zur Nutzung von ${APP_NAME} auf Ihrem Rechner erzeugen.$\r$\n$\r$\n$(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Erneute Installation"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Wählen Sie aus, ob Sie die $(^NameDA) Programmdateien erneut installieren möchten."

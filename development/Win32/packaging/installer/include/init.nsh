@@ -31,12 +31,15 @@ Function .onInit
   !insertmacro MULTIUSER_INIT
  
   ${IfNot} ${Silent}
+  
+    !ifndef BUNDLE_IMAGEMAGICK & BUNDLE_GHOSTSCRIPT
     # Warn the user when no Administrator or Power user privileges are available
     # These privileges are required to install ImageMagick or Ghostscript
     ${If} $MultiUser.Privileges != "Admin"
-    ${andif} $MultiUser.Privileges != "Power"
+    ${AndIf} $MultiUser.Privileges != "Power"
       MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_NO_PRIVILEDGES)
     ${EndIf}
+    !endif
     
     # Show banner while installer is intializating 
     Banner::show /NOUNLOAD "Checking system"

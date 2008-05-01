@@ -27,15 +27,23 @@ Var LaTeXSetup.State
 Var LaTeXExisting.State
 Var LaTeXNoInstall.State
 
+!ifndef BUNDLE_IMAGEMAGICK
+
 Var ImageMagickState
 Var ImageMagickSetup.State
 Var ImageMagickExisting.State
 Var ImageMagickNoInstall.State
 
+!endif
+
+!ifndef BUNDLE_GHOSTSCRIPT
+
 Var GhostscriptState
 Var GhostscriptSetup.State
 Var GhostscriptExisting.State
 Var GhostscriptNoInstall.State
+
+!endif
 
 Var ControlState
 Var ComponentSize
@@ -52,10 +60,18 @@ Var ComponentSize
   nsDialogs::Create /NOUNLOAD 1018
   Pop $ExternalPage
 
-  ${NSD_CreateLabel} 0u 0u 300u 20u $(TEXT_EXTERNAL_${COMPONENT}_INFO_${SETUPTYPE_NAME})
+  !ifdef BUNDLESETUP_${COMPONENT}
+    ${NSD_CreateLabel} 0u 0u 300u 20u $(TEXT_EXTERNAL_${COMPONENT}_INFO_INSTALL)
+  !else
+    ${NSD_CreateLabel} 0u 0u 300u 20u $(TEXT_EXTERNAL_${COMPONENT}_INFO_DOWNLOAD)
+  !endif
   Pop $ExternalPage.Info
 
-  ${NSD_CreateRadioButton} 0u 40u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_${SETUPTYPE_NAME})
+  !ifdef BUNDLESETUP_${COMPONENT}
+    ${NSD_CreateRadioButton} 0u 40u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_INSTALL)
+  !else
+    ${NSD_CreateRadioButton} 0u 40u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_DOWNLOAD)
+  !endif
   Pop $ExternalPage.Setup
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.Setup $ExternalPage.RadioButton.Click
   
@@ -114,7 +130,6 @@ Var ComponentSize
     ${NSD_SetState} $ExternalPage.Existing $${COMPONENT}Existing.State
     ${NSD_SetState} $ExternalPage.NoInstall $${COMPONENT}NoInstall.State
   ${EndIf}
-  
   
   Call ExternalRadioButtonClick
   
@@ -223,6 +238,8 @@ Function PageExternalLaTeXValidate
   !insertmacro EXTERNAL_VALIDATEDIALOG LaTeX
 FunctionEnd
 
+!ifndef BUNDLE_IMAGEMAGICK
+
 Function PageExternalImageMagick
   !insertmacro EXTERNAL_SHOWDIALOG ImageMagick
 FunctionEnd
@@ -231,6 +248,10 @@ Function PageExternalImageMagickValidate
   !insertmacro EXTERNAL_VALIDATEDIALOG ImageMagick
 FunctionEnd
 
+!endif
+
+!ifndef BUNDLE_GHOSTSCRIPT
+
 Function PageExternalGhostscript
   !insertmacro EXTERNAL_SHOWDIALOG Ghostscript
 FunctionEnd
@@ -238,3 +259,5 @@ FunctionEnd
 Function PageExternalGhostscriptValidate
   !insertmacro EXTERNAL_VALIDATEDIALOG Ghostscript
 FunctionEnd
+
+!endif

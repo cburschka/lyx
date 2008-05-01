@@ -22,7 +22,7 @@ Section -FileAssociations
   !define REG_FILETYPE 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}'
   
   ${REG_FILETYPE}" "" "${APP_NAME} Document"
-  ${REG_FILETYPE}\DefaultIcon" "" "$INSTDIR\bin\lyx.exe,0"
+  ${REG_FILETYPE}\DefaultIcon" "" "$INSTDIR\bin\LyXLauncher.exe,0"
   ${REG_FILETYPE}\Shell\open\command" "" '"$INSTDIR\${APP_RUN}" "%1"'
   
   !define REG_FILEEXT 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_EXT}"'
@@ -64,7 +64,7 @@ Section -InstallData
   
   ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
-  ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\lyx.exe,0"
+  ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\LyXLauncher,0"
   ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"
   ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/about/"
   ${REG_UNINSTALL} "Publisher" "LyX Team"
@@ -85,6 +85,13 @@ Section -Configure
   # Path prefix
 
   StrCpy $PathPrefix "$INSTDIR\bin;$INSTDIR\python"
+  
+  !ifdef BUNDLE_IMAGEMAGICK
+    StrCpy $PathImageMagick "$INSTDIR\imagemagick"
+  !endif
+  !ifdef BUNDLE_GHOSTSCRIPT
+    StrCpy $PathGhostscript "$INSTDIR\ghostscript\bin"
+  !endif  
   
   ${If} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
@@ -166,13 +173,13 @@ SectionEnd
 #--------------------------------
 # Run the LyX configure.py script, so MiKTeX can download its packages
 
-Var PythonReturn
+Var ConfigureReturn
 
 Section -ConfigureScript
 
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\Resources\configure.py"'
-  Pop $PythonReturn # Return value
+  Pop $ConfigureReturn # Return value
 
 SectionEnd
 
