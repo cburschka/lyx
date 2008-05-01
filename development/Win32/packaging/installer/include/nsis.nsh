@@ -36,14 +36,9 @@ Configuration of standard NSIS header files
 !include nsDialogs.nsh
 
 #--------------------------------
-# Windows constants
-
-!define SHCNE_ASSOCCHANGED 0x08000000
-!define SHCNF_IDLIST 0x0000
-  
-#--------------------------------
 # Include standard functions
 
 !insertmacro GetParent
+!insertmacro RefreshShellIcons
 !insertmacro VersionCompare
 !insertmacro WordFind2X
