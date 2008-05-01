@@ -196,15 +196,17 @@
 # bidi -> bidimensionnel
 # greyedout insert -> insert grisé
 # unicode traduit à partir de <http://hapax.qc.ca/Blocks-5.0.0.fr.txt>
-# # retour sur quelques traductions
+# -----------------------------------------------------------------
+# ### retour sur quelques traductions
 # Custom->Réglable (pas partout: quand il s'agit d'un seul élement, e.g. dimension); ailleurs Personalisation (-sé, -sable)
 # Verbes d'action systématiques (Ouvrir au lieu de Ouvre e.g.)
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-04-28 18:40+0200\n"
-"PO-Revision-Date: 2008-04-22 00:12+0200\n"
+"PO-Revision-Date: 2008-04-30 12:04+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -351,7 +353,7 @@ msgstr "Bibliographie en &sections"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
-msgstr "LyX : Ajoute une base de données BibTeX"
+msgstr "LyX : Ajouter une base de données BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
@@ -417,7 +419,7 @@ msgstr "Enlève la base de données sélectionnée"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:151
 msgid "&Delete"
-msgstr "&Effacer"
+msgstr "Suppri&mer"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:158
 msgid "Add a BibTeX database file"
@@ -885,15 +887,15 @@ msgstr "Rec&hercher :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:79
 msgid "Hit Enter to search, or click Go!"
-msgstr ""
+msgstr "Sélectionner « Entrée » pour activer la recherche, ou cliquer sur « Go » !"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "You can also hit Enter in the search box"
-msgstr ""
+msgstr "Vous pouvez également sélectionner « Entrée » dans le boîte de recherche"
 
 #: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Go!"
-msgstr ""
+msgstr "&Go!"
 
 #: src/frontends/qt4/ui/CitationUi.ui:105
 msgid "Search Field:"
@@ -923,7 +925,7 @@ msgstr "Selon la &Casse"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
-msgstr ""
+msgstr "Chercher à la &volée"
 
 #: src/frontends/qt4/ui/CitationUi.ui:221
 msgid "Formatting"
@@ -942,7 +944,6 @@ msgid "Force upper case in citation"
 msgstr "Force les majuscules dans la citation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
-#, fuzzy
 msgid "Force u&pper case"
 msgstr "Forcer les &majuscules"
 
@@ -963,7 +964,6 @@ msgid "Text to place before citation"
 msgstr "Texte à ajouter avant la citation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
-#, fuzzy
 msgid "Text a&fter:"
 msgstr "Texte a&près :"
 
@@ -972,7 +972,6 @@ msgid "Text to place after citation"
 msgstr "Texte à ajouter après la citation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:451
-#, fuzzy
 msgid "App&ly"
 msgstr "&Appliquer"
 
@@ -986,25 +985,23 @@ msgstr "Citations &Sélectionnées :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
-msgstr ""
+msgstr "La touche « Entrée » fonctionne également"
 
 #: src/frontends/qt4/ui/CitationUi.ui:560
 msgid "The delete key works, too"
-msgstr ""
+msgstr "La touche « Suppr. » fonctionne également"
 
 #: src/frontends/qt4/ui/CitationUi.ui:563
 msgid "D&elete"
 msgstr "&Effacer"
 
 #: src/frontends/qt4/ui/CitationUi.ui:594
-#, fuzzy
 msgid "Move the selected citation up (try Ctrl-Up)"
-msgstr "Remonter la citation"
+msgstr "Faire monter la citation (essayer Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
-#, fuzzy
 msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr "Descendre la citation"
+msgstr "Faire descendre la citation (essayer Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:621
 msgid "&Down"
@@ -1072,9 +1069,8 @@ msgid "O&pen"
 msgstr "&Ouvert"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:32
-#, fuzzy
 msgid "F&ile"
-msgstr "Fichier"
+msgstr "F&ichier"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:44 src/frontends/qt4/ui/ExternalUi.ui:51
 #: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
@@ -1096,9 +1092,8 @@ msgid "&Draft"
 msgstr "&Brouillon"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:81
-#, fuzzy
 msgid "&Template"
-msgstr "Modèle"
+msgstr "&Modèle"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:120
 msgid "Available templates"
@@ -1110,9 +1105,8 @@ msgid "LaTe&X and LyX options"
 msgstr "Options LaTe&X et LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:143
-#, fuzzy
 msgid "LaTeX Options"
-msgstr "Options LaTe&X :"
+msgstr "Options LaTeX :"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:161
 msgid "O&ption:"
@@ -1181,9 +1175,8 @@ msgid "Sca&le:"
 msgstr "Éch&elle :"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:340
-#, fuzzy
 msgid "Si&ze and Rotation"
-msgstr "Recherche Citation"
+msgstr "Taille et &rotation"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:352
 msgid "Rotate"
@@ -1194,17 +1187,16 @@ msgstr "Rotation"
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
-msgstr "L'angle de la rotation à appliquer à l'image"
+msgstr "Angle de rotation à appliquer à l'image"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:409
 #: src/frontends/qt4/ui/ExternalUi.ui:422
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
-msgstr "L'origine de la rotation"
+msgstr "Origine de la rotation"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:412
-#, fuzzy
 msgid "Ori&gin:"
 msgstr "&Origine :"
 
@@ -1678,22 +1670,19 @@ msgstr "É&diter"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Select if the current document is included to a master file"
-msgstr ""
+msgstr "Sélectionner si le document courant est inclus dans un document maître"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:31
-#, fuzzy
 msgid "Select de&fault master document"
-msgstr "Sélectionne la langue implicite de vos documents"
+msgstr "Sélectionner le document maître implicite"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:46
-#, fuzzy
 msgid "&Master:"
-msgstr "&Autre :"
+msgstr "&Maître :"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
-#, fuzzy
 msgid "Enter the name of the default master document"
-msgstr "Nom de l'imprimante par défaut"
+msgstr "Saisir le nom du document maître implicite"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid "Modules"
@@ -3442,23 +3431,21 @@ msgstr "Modifier raccourci"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:31
 msgid "Type shortcut while the cursor is in this field"
-msgstr ""
+msgstr "Saisir le raccourci quand le curseur est dans le champ"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:41
 msgid "Enter LyX function or command sequence"
-msgstr ""
+msgstr "Saisir la fonction LyX ou la séquence de commandes"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "&Enlever"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:58
-#, fuzzy
 msgid "&Function:"
-msgstr "Fonction :"
+msgstr "&Fonction :"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:68
-#, fuzzy
 msgid "&Shortcut:"
 msgstr "&Raccourci :"
 
@@ -5182,14 +5169,12 @@ msgid "Structure"
 msgstr "Structure"
 
 #: lib/layouts/beamer.layout:1114
-#, fuzzy
 msgid "Article"
-msgstr "Vertical"
+msgstr "Article"
 
 #: lib/layouts/beamer.layout:1124
-#, fuzzy
 msgid "Presentation"
-msgstr "&Orientation :"
+msgstr "Presentation"
 
 #: lib/layouts/beamer.layout:1131 lib/layouts/powerdot.layout:377
 #: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:229
@@ -8094,14 +8079,10 @@ msgid "Endnote"
 msgstr "Notes en fin de document"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote command, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
-msgstr ""
-"Ajoute une commande de groupement de notes endnote, en plus des notes de bas "
-"de page. Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous "
-"souhaitez voir apparaître les notes regroupées."
+msgstr "Ajoute une commande de groupement de notes (« endnote »), en plus des notes de bas de page. Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez voir apparaître les notes regroupées."
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
@@ -8112,14 +8093,10 @@ msgid "Foot to End"
 msgstr "Note de bas de page en fin de document"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in ERT "
 "where you want the endnotes to appear."
-msgstr ""
-"Positionne toutes les notes de bas de pages en notes regroupées (endnotes). "
-"Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez "
-"voir apparaître les notes regroupées."
+msgstr "Positionne toutes les notes de bas de pages en notes regroupées (« endnotes »). Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez voir apparaître les notes regroupées."
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:15
 msgid "Hanging"
@@ -9719,9 +9696,8 @@ msgid "Go back to Reference|G"
 msgstr "Retourner à la référence|u"
 
 #: lib/ui/stdcontext.inc:113
-#, fuzzy
 msgid "Edit Database(s) externally...|x"
-msgstr "Éditer le fichier ailleurs|l"
+msgstr "Éditer la(les) base(s) de données ailleurs...|l"
 
 #: lib/ui/stdcontext.inc:121
 msgid "Open Inset|O"
@@ -9859,33 +9835,28 @@ msgid "Custom|C"
 msgstr "Réglable|g"
 
 #: lib/ui/stdcontext.inc:205
-#, fuzzy
 msgid "Include|c"
-msgstr "Inclus (include)"
+msgstr "Inclus (include)|c"
 
 #: lib/ui/stdcontext.inc:206
-#, fuzzy
 msgid "Input|p"
-msgstr "Incorporé (input)"
+msgstr "Incorporé (input)|p"
 
 #: lib/ui/stdcontext.inc:207
-#, fuzzy
 msgid "Verbatim|V"
-msgstr "Verbatim"
+msgstr "Verbatim|V"
 
 #: lib/ui/stdcontext.inc:208
 msgid "Verbatim (marked blanks)|b"
-msgstr ""
+msgstr "Verbatim (espaces marqués)|b"
 
 #: lib/ui/stdcontext.inc:209
-#, fuzzy
 msgid "Listing|L"
-msgstr "Listing"
+msgstr "Listing|L"
 
 #: lib/ui/stdcontext.inc:213
-#, fuzzy
 msgid "Edit included file...|E"
-msgstr "Fichier Sous-Document...|S"
+msgstr "Modifier le fichier inclus...|s"
 
 #: lib/ui/stdcontext.inc:220 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
@@ -10273,6 +10244,7 @@ msgstr "Déplier la macro mathématique"
 
 #: lib/ui/stdmenus.inc:291
 msgid "Fold Math Macro"
+
 msgstr "Replier la macro mathématique"
 
 #: lib/ui/stdmenus.inc:293
@@ -14012,7 +13984,7 @@ msgstr "barre de changement"
 
 #: src/Color.cpp:155
 msgid "Deleted text"
-msgstr "texte effacé"
+msgstr "texte supprimé"
 
 #: src/Color.cpp:156
 msgid "Added text"
@@ -14671,7 +14643,7 @@ msgstr "Document en lecture seule"
 
 #: src/LyXFunc.cpp:668
 msgid "This portion of the document is deleted."
-msgstr "Cette portion du document est effacée."
+msgstr "Cette portion du document est supprimée."
 
 #: src/LyXFunc.cpp:687
 #, c-format
@@ -15299,9 +15271,7 @@ msgstr "La commande qui lance le correcteur orthographique."
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr ""
-"LyX y mettra ses répertoires temporaires. Ils seront effacés quand vous "
-"quitterez LyX."
+msgstr "LyX y mettra ses répertoires temporaires. Ils seront supprimés quand vous quitterez LyX."
 
 #: src/LyXRC.cpp:2750
 msgid ""
@@ -16426,12 +16396,10 @@ msgid "Unable to read local layout file."
 msgstr "Échec de la lecture d'un fichier de format local."
 
 #: src/frontends/qt4/GuiDocument.cpp:1273
-#, fuzzy
 msgid "Select master document"
-msgstr "Document Maître"
+msgstr "Sélectionner le document maître"
 
 #: src/frontends/qt4/GuiDocument.cpp:1277
-#, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "Documents LyX (*.lyx)"
 
@@ -16869,9 +16837,8 @@ msgid "Mathematical Symbols"
 msgstr "Symboles mathématiques"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2055
-#, fuzzy
 msgid "Document and Window"
-msgstr "Tampon et fenêtre"
+msgstr "Document et fenêtre"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2059
 msgid "Font, Layouts and Textclasses"
@@ -17746,9 +17713,8 @@ msgid "No Branch in Document!"
 msgstr "Pas de Branche dans le  Document"
 
 #: src/frontends/qt4/Menus.cpp:1085
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "Aucune action définie !"
+msgstr "Aucune citation accessible !"
 
 #: src/frontends/qt4/Menus.cpp:1600
 msgid "No action defined!"
@@ -17817,40 +17783,38 @@ msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
+"L'insert BibTeX inclut %1$s bases de données.\n"
+"Si vous poursuivez, elles seront toutes ouvertes."
 
 #: src/insets/InsetBibtex.cpp:132
-#, fuzzy
 msgid "Open Databases?"
-msgstr "&Bases de Données"
+msgstr "Ouvrir les bases de données ?"
 
 #: src/insets/InsetBibtex.cpp:133
 msgid "&Proceed"
-msgstr ""
+msgstr "&Poursuivre"
 
 #: src/insets/InsetBibtex.cpp:151
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliographie BibTeX"
 
 #: src/insets/InsetBibtex.cpp:158
-#, fuzzy
 msgid "Databases:\n"
-msgstr "&Bases de Données"
+msgstr "Bases de données :\n"
 
 #: src/insets/InsetBibtex.cpp:183
-#, fuzzy
 msgid "Style File:\n"
-msgstr "Fermer le fichier"
+msgstr "Fichier de style :\n"
 
 #: src/insets/InsetBibtex.cpp:190
-#, fuzzy
 msgid ""
 "\n"
 "Lists: "
-msgstr "Liste"
+msgstr "\nListes : "
 
 #: src/insets/InsetBibtex.cpp:201
 msgid "included in TOC"
-msgstr ""
+msgstr "inclus dans la TDM"
 
 #: src/insets/InsetBibtex.cpp:297 src/insets/InsetBibtex.cpp:348
 msgid "Export Warning!"
@@ -18641,11 +18605,11 @@ msgstr "Une seule colonne"
 
 #: src/mathed/InsetMathGrid.cpp:1359
 msgid "No hline to delete"
-msgstr "Pas de ligne horizontale à effacer"
+msgstr "Pas de ligne horizontale à supprimer"
 
 #: src/mathed/InsetMathGrid.cpp:1368
 msgid "No vline to delete"
-msgstr "Pas de ligne verticale à effacer"
+msgstr "Pas de ligne verticale à supprimer"
 
 #: src/mathed/InsetMathGrid.cpp:1386
 #, c-format
