@@ -31,7 +31,7 @@ Section -FileAssociations
   ${REG_FILEEXT} "Content Type" "${APP_MIME_TYPE}"  
   
   # Refresh shell
-  System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
+  ${RefreshShellIcons}
 
 SectionEnd
 
