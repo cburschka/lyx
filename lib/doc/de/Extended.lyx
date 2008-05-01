@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 329
 \begin_document
 \begin_header
 \textclass scrbook
@@ -142,7 +142,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
+letzte Änderung: 28.
  April 2008
 \end_layout
 
@@ -5188,6 +5188,8 @@ Datei\SpecialChar \menuseparator
 Exportieren
 \family default
  auswählen.
+ In den Menüs werden nur die Möglichkeiten angezeigt, für die entsprechende
+ Programme installiert wurden.
 \end_layout
 
 \begin_layout Section
@@ -5221,16 +5223,31 @@ Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
 \begin_layout Subsection
 HTML\SpecialChar \ldots{}
 
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Datei!Import!HTML
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Um diesen Menüpunkt sehen zu können, müssen Sie das Linux-Paket 
+Damit können Sie html-Dateien importieren.
+ Allerdings werden bei Tabellen nur deren Inhalte importiert.
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
 \family typewriter
 [gnu]html2latex
-\family default
- installieren.
- Dann können Sie html-Dateien importieren.
- Allerdings werden bei Tabellen nur deren Inhalte importiert.
 \end_layout
 
 \begin_layout Subsection
@@ -5278,6 +5295,16 @@ reference "LaTeX-Dateien-nach-LyX"
 .
 \end_layout
 
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+tex2lyx
+\end_layout
+
 \begin_layout Subsection
 MS Word
 \begin_inset Index
@@ -5293,12 +5320,7 @@ Datei!Import!MS Word
 \end_layout
 
 \begin_layout Standard
-Um diesen Menüpunkt sehen zu können, müssen Sie das Linux-Paket 
-\family typewriter
-mv
-\family default
- installieren.
- Hiermit können Word-Dokumente (.
+Hiermit können Word-Dokumente (.
 \family typewriter
 doc
 \family default
@@ -5349,6 +5371,16 @@ Anführungszeichen
  anpassen.
 \end_layout
 
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+wv
+\end_layout
+
 \begin_layout Subsection
 NoWeb
 \begin_inset Index
@@ -5368,6 +5400,55 @@ Datei!Import!NoWeb
 \emph on
 [Notiz des Herausgebers: dieser Abschnitt muss noch geschrieben werden --
  Freiwillige vor! --- mer]
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+tex2lyx
+\end_layout
+
+\begin_layout Subsection
+OpenDocument
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Datei!Import!OpenDocument
+\end_layout
+
+\end_inset
+
+ und OpenOffice.Org (sxw)
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Datei!Import!OpenOffice.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie können OpenOffice- und OpenDocument-Textdateien importieren aber zum
+ Beispiel keine Tabellen.
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+Writer2LaTeX
 \end_layout
 
 \begin_layout Subsection
@@ -5653,13 +5734,27 @@ latex2html -no_subdir -no_navigation -split 0 -show_section_numbers $$i
  benutzen.
 \end_layout
 
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+tex4ht
+\family default
+, 
+\family typewriter
+latex2html
+\end_layout
+
 \begin_layout Subsection
 HTML (MS Word)
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Datei!Import!MS Word (HTML)
+Datei!Export!HTML (MS Word)
 \end_layout
 
 \end_inset
@@ -5672,9 +5767,21 @@ Hiermit wird auch eine HTML-Datei erstellt, die von Word und OpenOffice
  gelesen/im\SpecialChar \-
 por\SpecialChar \-
 tiert werden kann.
- Der Vorteil für deutsche Dokumente ist, daß Umlaute und ß nicht direkt
+ Der Vorteil für deutsche Dokumente ist, dass Umlaute und ß nicht direkt
  ausgegeben werden, sondern in ihrer Unicode-Kodierung (ü wird zum Beispiel
  zu &#x00FC;).
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+htlatex
+\family default
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5820,12 +5927,12 @@ nen 1.3.x bearbeiten können.
 \end_layout
 
 \begin_layout Subsection
-OpenDocumentOpen Document
+OpenDocument
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Datei!Import!MS Word (HTML)
+Datei!Export!OpenDocument
 \end_layout
 
 \end_inset
@@ -5836,6 +5943,16 @@ Datei!Import!MS Word (HTML)
 \begin_layout Standard
 Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
  OpenOffice gelesen werden kann.
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+tex4ht
 \end_layout
 
 \begin_layout Subsection
@@ -5915,6 +6032,35 @@ dvips
 \end_layout
 
 \begin_layout Subsection
+Rich Text Format
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Datei!Export!Rich Text Format
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit können Sie LyX-Documente in das bekannte Rich Text Format (RTF) exportiere
+n.
+\end_layout
+
+\begin_layout Description
+Benötigtes
+\begin_inset Space ~
+\end_inset
+
+Programm: 
+\family typewriter
+latex2rtf
+\end_layout
+
+\begin_layout Subsection
 Benutzerdefiniert\SpecialChar \ldots{}
 
 \end_layout
@@ -5935,20 +6081,26 @@ Exportieren
 Benutzerdefiniert\SpecialChar \ldots{}
 
 \family default
-) sind möglich, wenn Sie ein besonders seltsames Format haben, in das Sie
- konvertieren wollen, aber natürlich nur, wenn Sie den entsprechenden Konverter
- haben.
- Das Format der 
-\emph on
-Eingabedatei
-\emph default
- wird im 
+) sind möglich, wenn Sie einen Befehl verwenden wollen, der von dem in 
 \family sans
-Export-Formate:
+Werkzeuge
 \family default
- festgelegt.
- LyX wird bis zu dem Befehl normal konvertieren und dann an den Konverter
- übergeben.
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Datei-Handhabung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Konverter
+\family default
+ festgelegten abweichen soll.
 \end_layout
 
 \begin_layout Standard
@@ -5968,21 +6120,27 @@ $$FNAME
 \end_layout
 
 \begin_layout Standard
-Obwohl Sie diesen Befehl nicht in den 
+Wenn Sie diesen Befehl dauerhaft verwenden wollen, können Sie ihn auch in
+ 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
 \family sans
 Einstellungen
 \family default
- speichern können, können Sie aber Ihre 
-\family typewriter
-.lyx/preferences
+\SpecialChar \menuseparator
+
+\family sans
+Datei-Handhabung
 \family default
--Datei editieren und folgende Zeile hinzufügen:
-\end_layout
+\SpecialChar \menuseparator
 
-\begin_layout LyX-Code
-
-\backslash
-custom_export_command "mycommand $$FName"
+\family sans
+Konverter
+\family default
+ eintragen.
 \end_layout
 
 \begin_layout Chapter
