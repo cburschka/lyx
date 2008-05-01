@@ -332,7 +332,6 @@ src_support_files = Split('''
     SignalSlotPrivate.cpp
     Systemcall.cpp
     Timeout.cpp
-    assert.cpp
     convert.cpp
     debug.cpp
     docstream.cpp
@@ -342,6 +341,7 @@ src_support_files = Split('''
     gzstream.cpp
     gettext.cpp
     kill.cpp
+    lassert.cpp
     lstrings.cpp
     lyxsum.cpp
     lyxtime.cpp
