@@ -12,39 +12,51 @@ also included.
 
 */
 
-!include "MUI.nsh"
-!include "LogicLib.nsh"
-!include "FileFunc.nsh"
-!include "StrFunc.nsh"
+!include MUI.nsh
+!include LogicLib.nsh
+!include FileFunc.nsh
+!include StrFunc.nsh
 !insertmacro GetParameters
+!insertmacro GetParent
 ${StrStr}
 
-!include "..\packaging\installer\settings.nsh" #Version info from installer
+# Configuration from installer
+!include "..\packaging\installer\settings.nsh"
+!include "..\packaging\installer\include\declarations.nsh"
 
 #--------------------------------
-#Settings
+# Settings
 
 Caption "${APP_NAME} ${APP_VERSION}"
-OutFile lyx.exe
+OutFile LyXLauncher.exe
 BrandingText " "
 
 #--------------------------------
-#Windows Vista settings
+# Windows Vista settings
 
 RequestExecutionLevel user
 
 #--------------------------------
-#Variables
+# Variables
 
 Var Parameters
 Var Debug
 Var LyXLanguage
 Var ReturnValue
+
 Var ResultText
 Var ResultSubText
 
+Var LyXFolder
+
+Var LyXSetting
+Var LyXSettingValue
+
+Var EnvironmentVariable
+Var EnvironmentVariableValue
+
 #--------------------------------
-#User interface for debug output
+# User interface for debug output
 
 !define MUI_ICON "..\packaging\icons\lyx.ico"
 !define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
@@ -58,7 +70,7 @@ Var ResultSubText
 ShowInstDetails show
 
 #--------------------------------
-#Windows API constants
+# Windows API constants
 
 !define SWP_NOSIZE 0x1
 !define MONITOR_DEFAULTTONEAREST 0x2
@@ -68,7 +80,7 @@ ShowInstDetails show
 !define SM_CYSIZEFRAME 33
 
 #--------------------------------
-#Version information
+# Version information
 
 VIProductVersion "${APP_VERSION_NUMBER}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
@@ -77,7 +89,7 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
 #--------------------------------
-#Macros
+# Macros
 
 !macro SystemCall STACK
 
@@ -95,54 +107,76 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 !macroend
 
 #--------------------------------
-#Main application
+# Main application
 
 Section -Prepare
 
-  ${if} $Debug == ${FALSE}
+  ${If} $Debug == ${FALSE}
     HideWindow
-  ${endif}
+  ${EndIf}
   
-  #Hide controls we don't need
+  # Hide controls we don't need
   FindWindow $R0 "#32770" "" $HWNDPARENT
   GetDlgItem $R0 $R0 1004
-  ShowWindow $R0 ${SW_HIDE}  
+  ShowWindow $R0 ${SW_HIDE}
   
-  #Debug info
+  # Get LyX folder
+  ${GetParent} $EXEDIR $LyXFolder  
+  
+  # Debug info
   !insertmacro MUI_HEADER_TEXT "Debugging LyX" "The events you have chosen \
       are being logged."
   SetDetailsPrint textonly
   DetailPrint "Debug log:"
   SetDetailsPrint listonly
   
-  #LyX Language
+  # LyX Language
   !insertmacro GetLyXSetting "Language" $LyXLanguage
   
-  #Set language for gettext
+  # Set language for gettext
   ${if} $LyXLanguage != ""
     Push LC_ALL
     Push $LyXLanguage
     Call SetEnvironmentVariable
   ${endif}
   
-  #Apparently the output charset needs to be set to some value,
-  #otherwise no non-ASCII characters will be displayed
+  # Apparently the output charset needs to be set to some value,
+  # otherwise no non-ASCII characters will be displayed
   Push OUTPUT_CHARSET
   Push -
   Call SetEnvironmentVariable
   
-  #Point to the Aiksaurus data in the LyX folder
+  # Location of Aiksaurus data
   Push AIK_DATA_DIR
-  Push "$EXEDIR\..\aiksaurus"
+  Push "$LyXFolder\aiksaurus"
+  Call SetEnvironmentVariable
+
+  # Location of Ghostscript
+  Push LYX_GHOSTSCRIPT_EXE
+  Push "$LyXFolder\ghostscript\bin\gswin32c.exe"
+  Call SetEnvironmentVariable
+  Push LYX_GHOSTSCRIPT_DLL
+  Push "$LyXFolder\ghostscript\bin\gsdll32.dll"
+  Call SetEnvironmentVariable
+  Push LYX_GHOSTSCRIPT_FONTS
+  Push "$LyXFolder\ghostscript\fonts"
+  Call SetEnvironmentVariable
+  
+  # Ghostscript resources
+  Push GS_DLL
+  Push "$LyXFolder\ghostscript\bin\gsdll32.dll"
+  Call SetEnvironmentVariable  
+  Push GS_LIB
+  Push "$LyXFolder\ghostscript\lib;$LyXFolder\ghostscript\fonts;$LyXFolder\ghostscript\Resource"
   Call SetEnvironmentVariable
 
 SectionEnd
 
 Section -Launch
   
-  #Start LyX and capture the command line output
+  # Start LyX and capture the command line output
   
-  Push '"$EXEDIR\lyxc.exe" $Parameters'
+  Push '"$EXEDIR\lyx.exe" $Parameters'
   CallInstDLL "$EXEDIR\Console.dll" ExecToLog
   Pop $ReturnValue #Return value
   
@@ -150,18 +184,18 @@ SectionEnd
 
 Section -Debug
   
-  ${if} $Debug == ${FALSE}
+  ${If} $Debug == ${FALSE}
   
-    #Check whether something went wrong
+    # Check whether something went wrong
     
-    ${if} $ReturnValue == "error"
+    ${If} $ReturnValue == "error"
   
-      #Probably the file does not exist
+      # Probably the file does not exist
       MessageBox MB_OK|MB_ICONSTOP "Failed to start LyX."
     
-    ${elseif} $ReturnValue != 0
+    ${ElseIf} $ReturnValue != 0
     
-      #LyX has crashed
+      # LyX has crashed
       MessageBox MB_YESNO|MB_ICONSTOP \
           "LyX has been closed because of an unexpected situation.$\n\
           This is most likely caused by a flaw in the software.$\n$\n\
@@ -170,7 +204,7 @@ Section -Debug
           Would you like to view detailed information about this error?" \
           IDYES debug IDNO no_debug
   
-    ${endif}
+    ${EndIf}
     
     no_debug:
     
@@ -180,29 +214,29 @@ Section -Debug
     
       ShowWindow $R0 ${SW_HIDE}
     
-  ${endif}
+  ${EndIf}
   
-  ${if} $ReturnValue != 0
+  ${If} $ReturnValue != 0
   
     StrCpy $ResultText "Error Information"
     StrCpy $ResultSubText "See Chapter 3 of the LyX Introduction \
         (Help > Introduction) for information about reporting this issue."
    
-   ${else}
+   ${Else}
    
     StrCpy $ResultText "Debugging Completed"
     StrCpy $ResultSubText "The events you have chosen are logged below."
    
-   ${endif}
+   ${EndIf}
   
-  ${if} $Debug == ${FALSE}
+  ${If} $Debug == ${FALSE}
 
-    #Put the log window on the screen again
+    # Put the log window on the screen again
     Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i 133, i 100, i 0, i 0, i ${SWP_NOSIZE})"
     CallInstDLL "$EXEDIR\System.dll" Call
     BringToFront
 
-  ${endif}
+  ${EndIf}
 
 SectionEnd
 
@@ -219,55 +253,48 @@ Function InitInterface
   #Check for debug mode
   ${StrStr} $R0 $Parameters "-dbg"
   
-  ${if} $R0 == ""
+  ${If} $R0 == ""
     StrCpy $Debug ${FALSE}
-  ${else}
+  ${Else}
     StrCpy $Debug ${TRUE}
-  ${endif}
+  ${Endif}
   
-  ${if} $Debug == ${FALSE}
+  ${If} $Debug == ${FALSE}
 
-    #Keep the log window outside the screen to ensure that there will be no flickering
+    # Keep the log window outside the screen to ensure that there will be no flickering
     Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i -32000, i -32000, i 0, i 0, i ${SWP_NOSIZE})"
     CallInstDLL "$EXEDIR\System.dll" Call
   
-  ${endif}
+  ${EndIf}
 
 FunctionEnd
 
 Function GetLyXSetting
 
-  #Get a LyX setting from the registry
-  #First try a current user setting, then a system setting
+  Pop $LyxSetting
 
-  Exch $R0
-  Push $R1
+  # Get a LyX setting from the registry
+  # First try a current user setting, then a system setting
 
-  ReadRegStr $R1 HKCU ${APP_REGKEY_SETTINGS} $R0
+  ReadRegStr $LyXSettingValue HKCU ${APP_REGKEY_SETTINGS} $LyXSetting
   
-  ${if} $R1 == ""
-    ReadRegStr $R1 HKLM ${APP_REGKEY_SETTINGS} $R0
-  ${endif}
+  ${If} $LyXSettingValue == ""
+    ReadRegStr $LyXSettingValue HKLM ${APP_REGKEY_SETTINGS} $LyXSetting
+  ${EndIf}
   
-  Exch $R1
-  Exch 1
-  Pop $R0
+  Push $LyXSettingValue
 
 FunctionEnd
 
 Function SetEnvironmentVariable
 
-  #Sets the value of an environment variable
-  #Input on stack: name of variable, value
+  # Sets the value of an environment variable
+  # Input on stack: name of variable, value
 
-  Exch $R0
-  Exch 1
-  Exch $R1
+  Pop $EnvironmentVariableValue
+  Pop $EnvironmentVariable  
   
-  Push 'kernel32::SetEnvironmentVariable(t, t) i("$R1", "$R0")'
+  Push 'kernel32::SetEnvironmentVariable(t, t) i("$EnvironmentVariable", "$EnvironmentVariableValue")'
   CallInstDLL "$EXEDIR\System.dll" Call
-  
-  Pop $R1
-  Pop $R0
 
 FunctionEnd

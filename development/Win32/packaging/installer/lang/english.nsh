@@ -12,8 +12,7 @@ ${LangFileString} TEXT_NO_PRIVILEDGES "You don't have Administrator or Power Use
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
-${LangFileString} TEXT_WELCOME_DOWNLOAD "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\nThis installer will setup a complete environment to use ${APP_NAME} and can download missing components automatically.$\r$\n$\r$\n$(^ClickNext)"
-${LangFileString} TEXT_WELCOME_INSTALL "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\nThis installer will setup a complete environment to use ${APP_NAME} and can install missing components automatically.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\nThis installer will setup a complete environment to use ${APP_NAME}.$\r$\n$\r$\n$(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Reinstall"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Choose whether you want to reinstall the $(^NameDA) program files."
@@ -85,6 +84,7 @@ ${LangFileString} TEXT_NOTINSTALLED_DICT "The setup wizard of the $DictionaryLan
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"

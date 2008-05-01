@@ -21,36 +21,19 @@ Licence details for all installer scripts can be found in the file COPYING
 !system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
 
 #--------------------------------
-# Output file can be specified using command line option
-# /DExeFile=/path/to/installer or /DBundleExeFile=/path/to/installer if 
-# SETUPTYPE_BUNDLE is defined.
-
-!ifdef SETUPTYPE_BUNDLE
-  # Bundle installer
-  !ifdef BundleExeFile
-    OutFile "${BundleExeFile}"
-  !else
-    Outfile "${SETUP_EXE}"
- !endif 
-!else
-  # Regular installer
-  !ifdef ExeFile
-    OutFile "${ExeFile}"
-  !else
-    Outfile "${SETUP_EXE}"
-  !endif
-!endif
-
-#--------------------------------
 # Header files  
 
 !include include\declarations.nsh
-!include include\detection.nsh
+!include include\variables.nsh
+!include include\nsis.nsh
+
 !include include\dictlist.nsh
 !include include\filelist.nsh
+!include include\langlist.nsh
+
+!include include\detection.nsh
 !include include\gui.nsh
 !include include\init.nsh
-!include include\langlist.nsh
 
 #--------------------------------
 # Setup
@@ -65,3 +48,8 @@ Licence details for all installer scripts can be found in the file COPYING
 !include gui\external.nsh
 !include gui\langselect.nsh
 !include gui\reinstall.nsh
+
+#--------------------------------
+# Output file
+
+Outfile "${SETUP_EXE}"

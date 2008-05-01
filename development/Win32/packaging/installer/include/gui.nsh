@@ -31,15 +31,19 @@ BrandingText " "
 # Installer
 
 !define MUI_WELCOMEPAGE_TITLE_3LINES
-!define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME_${SETUPTYPE_NAME})
+!define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME)
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
 Page custom PageReinstall PageReinstallValidate
 Page custom PageExternalLaTeX PageExternalLaTeXValidate
+!ifndef BUNDLE_IMAGEMAGICK
 Page custom PageExternalImageMagick PageExternalImageMagickValidate
+!endif
+!ifndef BUNDLE_GHOSTSCRIPT
 Page custom PageExternalGhostscript PageExternalGhostscriptValidate
+!endif
 Page custom PageLanguage PageLanguageValidate
 
 !define MUI_PAGE_HEADER_TEXT $(TEXT_DICT_TITLE)

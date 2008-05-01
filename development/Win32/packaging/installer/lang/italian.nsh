@@ -10,8 +10,7 @@ Author: Enrico Forestieri
 
 ${LangFileString} TEXT_NO_PRIVILEDGES "Non si hanno privilegi da amministratore o utente avanzato.$\r$\nLe utilità per la conversione delle immagini non possono essere installate senza tali privilegi."
 
-${LangFileString} TEXT_WELCOME_DOWNLOAD "Verrete guidati nell'installazione di $(^NameDA), il compilatore di documenti che incoraggia un approccio alla scrittura basato sulla struttura dei vostri testi, non sulla loro apparenza.$\r$\n$\r$\nQuesto installer preparerà un ambiente completo per usare ${APP_NAME} ed è in grado di scaricare automaticamente dalla rete i componenti mancanti.$\r$\n$\r$\n$(^ClickNext)"
-${LangFileString} TEXT_WELCOME_INSTALL "Verrete guidati nell'installazione di $(^NameDA), il compilatore di documenti che incoraggia un approccio alla scrittura basato sulla struttura dei vostri testi, non sulla loro apparenza.$\r$\n$\r$\nQuesto installer preparerà un ambiente completo per usare ${APP_NAME} ed è in grado di installare automaticamente i componenti mancanti.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA), il compilatore di documenti che incoraggia un approccio alla scrittura basato sulla struttura dei vostri testi, non sulla loro apparenza.$\r$\n$\r$\nQuesto installer preparerà un ambiente completo per usare ${APP_NAME}.$\r$\n$\r$\n$(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Reinstallazione"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Scegliete se volete reinstallare i file di $(^NameDA)."

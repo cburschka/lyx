@@ -125,7 +125,7 @@ def env_nsis(source, target, env, for_signature):
             ret += ' '
     # bundled?
     if '-bundle.exe' in str(target[0]):
-        ret += '/DSETUPTYPE_BUNDLE=1 '
+        ret += '/DSETUPTYPE=BUNDLE '
     for s in source:
         ret += quoteIfSpaced(str(s))
     return ret
