@@ -530,11 +530,11 @@ QStringList fileFilters(QString const & desc)
 	// we have: "*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}"
 	// but need:  "*.cpp;*.cc;*.C;*.cxx;*.c++"
 	FileFilterList filters(qstring_to_ucs4(desc));
-	LYXERR0("DESC: " << fromqstr(desc));
+	LYXERR0("DESC: " << desc);
 	QStringList list;
 	for (size_t i = 0; i != filters.filters_.size(); ++i) {
 		QString f = filters.filters_[i].toString();
-		LYXERR0("FILTER: " << fromqstr(f));
+		LYXERR0("FILTER: " << f);
 		list.append(f);
 	}
 	return list;

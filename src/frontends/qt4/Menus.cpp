@@ -565,17 +565,17 @@ void MenuDefinition::checkShortcuts() const
 		if (shortcut.isEmpty())
 			continue;
 		if (!it1->label().contains(shortcut))
-			lyxerr << "Menu warning: menu entry \""
-			       << fromqstr(it1->label())
+			LYXERR0("Menu warning: menu entry \""
+			       << it1->label()
 			       << "\" does not contain shortcut `"
-			       << fromqstr(shortcut) << "'." << endl;
+			       << shortcut << "'." << endl);
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
 			if (!it2->shortcut().compare(shortcut, Qt::CaseInsensitive)) {
-				lyxerr << "Menu warning: menu entries "
-				       << '"' << fromqstr(it1->fulllabel())
-				       << "\" and \"" << fromqstr(it2->fulllabel())
+				LYXERR0("Menu warning: menu entries "
+				       << '"' << it1->fulllabel()
+				       << "\" and \"" << it2->fulllabel()
 				       << "\" share the same shortcut."
-				       << endl;
+				       << endl);
 			}
 		}
 	}
@@ -595,8 +595,7 @@ bool MenuDefinition::searchMenu(FuncRequest const & func, vector<docstring> & na
 			names.push_back(qstring_to_ucs4(m->label()));
 			if (!m->hasSubmenu()) {
 				LYXERR(Debug::GUI, "Warning: non existing sub menu label="
-					<< fromqstr(m->label())
-					<< " name=" << fromqstr(m->submenuname()));
+					<< m->label() << " name=" << m->submenuname());
 				names.pop_back();
 				continue;
 			}
@@ -1159,9 +1158,9 @@ static QString label(MenuItem const & mi)
 
 void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 {
-	LYXERR(Debug::GUI, "populating menu " << fromqstr(menu.name()));
+	LYXERR(Debug::GUI, "populating menu " << menu.name());
 	if (menu.size() == 0) {
-		LYXERR(Debug::GUI, "\tERROR: empty menu " << fromqstr(menu.name()));
+		LYXERR(Debug::GUI, "\tERROR: empty menu " << menu.name());
 		return;
 	}
 	LYXERR(Debug::GUI, " *****  menu entries " << menu.size());
@@ -1438,7 +1437,7 @@ MenuDefinition const & Menus::Impl::getMenu(QString const & name) const
 	const_iterator cit = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
 	if (cit == menulist_.end())
-		lyxerr << "No submenu named " << fromqstr(name) << endl;
+		lyxerr << "No submenu named " << name << endl;
 	LASSERT(cit != menulist_.end(), /**/);
 	return (*cit);
 }
@@ -1449,7 +1448,7 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 	iterator it = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
 	if (it == menulist_.end())
-		lyxerr << "No submenu named " << fromqstr(name) << endl;
+		lyxerr << "No submenu named " << name << endl;
 	LASSERT(it != menulist_.end(), /**/);
 	return (*it);
 }
@@ -1541,11 +1540,11 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		qmb->clear();
 	}
 
-	LYXERR(Debug::GUI, "populating menu bar" << fromqstr(d->menubar_.name()));
+	LYXERR(Debug::GUI, "populating menu bar" << d->menubar_.name());
 
 	if (d->menubar_.size() == 0) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
-			<< fromqstr(d->menubar_.name()));
+			<< d->menubar_.name());
 		return;
 	}
 	LYXERR(Debug::GUI, "menu bar entries " << d->menubar_.size());
@@ -1562,16 +1561,16 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 	for (; m != end; ++m) {
 
 		if (m->kind() != MenuItem::Submenu) {
-			LYXERR(Debug::GUI, "\tERROR: not a submenu " << fromqstr(m->label()));
+			LYXERR(Debug::GUI, "\tERROR: not a submenu " << m->label());
 			continue;
 		}
 
-		LYXERR(Debug::GUI, "menu bar item " << fromqstr(m->label())
-			<< " is a submenu named " << fromqstr(m->submenuname()));
+		LYXERR(Debug::GUI, "menu bar item " << m->label()
+			<< " is a submenu named " << m->submenuname());
 
 		QString name = m->submenuname();
 		if (!d->hasMenu(name)) {
-			LYXERR(Debug::GUI, "\tERROR: " << fromqstr(name)
+			LYXERR(Debug::GUI, "\tERROR: " << name
 				<< " submenu has no menu!");
 			continue;
 		}
@@ -1587,7 +1586,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 
 void Menus::updateMenu(Menu * qmenu)
 {
-	LYXERR(Debug::GUI, "Triggered menu: " << fromqstr(qmenu->d->name));
+	LYXERR(Debug::GUI, "Triggered menu: " << qmenu->d->name);
 	qmenu->clear();
 
 	if (qmenu->d->name.isEmpty())
@@ -1599,7 +1598,7 @@ void Menus::updateMenu(Menu * qmenu)
 	if (!d->hasMenu(qmenu->d->name)) {
 		qmenu->addAction(qt_("No action defined!"));
 		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
-			<< fromqstr(qmenu->d->name));
+			<< qmenu->d->name);
 		return;
 	}
 
@@ -1614,10 +1613,10 @@ void Menus::updateMenu(Menu * qmenu)
 
 Menu * Menus::menu(QString const & name, GuiView & view)
 {
-	LYXERR(Debug::GUI, "Context menu requested: " << fromqstr(name));
+	LYXERR(Debug::GUI, "Context menu requested: " << name);
 	Menu * menu = d->name_map_[&view].value(name, 0);
 	if (!menu && !name.startsWith("context-")) {
-		LYXERR0("requested context menu not found: " << fromqstr(name));
+		LYXERR0("requested context menu not found: " << name);
 		return 0;
 	}
 

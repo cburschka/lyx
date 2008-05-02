@@ -1526,8 +1526,8 @@ void TabWorkArea::updateTabTexts()
 			// final?
 			allFinal = allFinal && it->final();
 			
-			LYXERR(Debug::GUI, "it = " << fromqstr(it->abs())
-			       << " => " << fromqstr(it->displayString()));
+			LYXERR(Debug::GUI, "it = " << it->abs()
+			       << " => " << it->displayString());
 			
 			// still the same segment?
 			QString nextString;
@@ -1551,23 +1551,18 @@ void TabWorkArea::updateTabTexts()
 			It sit = segStart;
 			QString dspString = sit->forecastPathString();
 			LYXERR(Debug::GUI, "first forecast found for "
-			       << fromqstr(sit->abs())
-			       << " => " << fromqstr(dspString));
+			       << sit->abs() << " => " << dspString);
 			++sit;
 			bool moreUnique = false;
 			for (; sit != next; ++sit) {
 				if (sit->forecastPathString() != dspString) {
 					LYXERR(Debug::GUI, "different forecast found for "
-					       << fromqstr(sit->abs())
-					       << " => "
-					       << fromqstr(sit->forecastPathString()));
+						<< sit->abs() << " => " << sit->forecastPathString());
 					moreUnique = true;
 					break;
 				}
 				LYXERR(Debug::GUI, "same forecast found for "
-					<< fromqstr(sit->abs())
-					<< " => "
-					<< fromqstr(dspString));
+					<< sit->abs() << " => " << dspString);
 			}
 			
 			// if the path segment helped, add it. Otherwise add dots
@@ -1575,9 +1570,8 @@ void TabWorkArea::updateTabTexts()
 			LYXERR(Debug::GUI, "using dots = " << dots);
 			for (sit = segStart; sit != next; ++sit) {
 				sit->shiftPathSegment(dots);
-				LYXERR(Debug::GUI, "shifting " << fromqstr(sit->abs())
-				       << " => "
-				       << fromqstr(sit->displayString()));
+				LYXERR(Debug::GUI, "shifting "
+					<< sit->abs() << " => " << sit->displayString());
 			}
 
 			// start new segment

@@ -140,7 +140,7 @@ static bool isChosenFont(QFont & font, QString const & family)
 	// positions.
 	QFontInfo fi(font);
 
-	LYXERR(Debug::FONT, "got: " << fromqstr(fi.family()));
+	LYXERR(Debug::FONT, "got: " << fi.family());
 
 	if (fi.family().contains(family)) {
 		LYXERR(Debug::FONT, " got it ");
@@ -313,7 +313,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 	else
 		LYXERR(Debug::FONT, "This font is NOT an exact match");
 
-	LYXERR(Debug::FONT, "XFLD: " << fromqstr(font.rawName()));
+	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
 
 	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
 			       * lyxrc.zoom / 100.0);

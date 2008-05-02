@@ -135,7 +135,7 @@ void Dialog::showData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << fromqstr(name())
+		LYXERR0("Dialog \"" << name()
 			<< "\" failed to translate the data string passed to show()");
 		return;
 	}
