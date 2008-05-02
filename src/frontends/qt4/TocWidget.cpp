@@ -13,8 +13,11 @@
 
 #include "TocWidget.h"
 
-#include "GuiToc.h"
+#include "TocModel.h"
 #include "qt_helpers.h"
+
+#include "FuncRequest.h"
+#include "LyXFunc.h"
 
 #include "support/debug.h"
 
@@ -28,8 +31,8 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-TocWidget::TocWidget(GuiToc & form, QWidget * parent)
-	: QWidget(parent), depth_(0), form_(form)
+TocWidget::TocWidget(TocModels & models, QWidget * parent)
+	: QWidget(parent), depth_(0), models_(models)
 {
 	setupUi(this);
 
@@ -61,7 +64,7 @@ void TocWidget::selectionChanged(const QModelIndex & current,
 	LYXERR(Debug::GUI, "selectionChanged index " << current.row()
 		<< ", " << current.column());
 
-	form_.goTo(typeCO->currentIndex(), current);
+	models_.goTo(typeCO->currentIndex(), current);
 }
 
 
@@ -70,7 +73,7 @@ void TocWidget::on_updateTB_clicked()
 	// The backend update can take some time so we disable
 	// the controls while waiting.
 	enableControls(false);
-	form_.updateBackend();
+	models_.updateBackend();
 }
 
 /* FIXME (Ugras 17/11/06):
@@ -129,8 +132,8 @@ void TocWidget::on_moveUpTB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableControls(false);
-		form_.goTo(typeCO->currentIndex(), list[0]);
-		form_.outlineUp();
+		models_.goTo(typeCO->currentIndex(), list[0]);
+		dispatch(FuncRequest(LFUN_OUTLINE_UP));
 		enableControls(true);
 	}
 }
@@ -142,8 +145,8 @@ void TocWidget::on_moveDownTB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableControls(false);
-		form_.goTo(typeCO->currentIndex(), list[0]);
-		form_.outlineDown();
+		models_.goTo(typeCO->currentIndex(), list[0]);
+		dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
 		enableControls(true);
 	}
 }
@@ -155,8 +158,8 @@ void TocWidget::on_moveInTB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableControls(false);
-		form_.goTo(typeCO->currentIndex(), list[0]);
-		form_.outlineIn();
+		models_.goTo(typeCO->currentIndex(), list[0]);
+		dispatch(FuncRequest(LFUN_OUTLINE_IN));
 		enableControls(true);
 	}
 }
@@ -167,8 +170,8 @@ void TocWidget::on_moveOutTB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableControls(false);
-		form_.goTo(typeCO->currentIndex(), list[0]);
-		form_.outlineOut();
+		models_.goTo(typeCO->currentIndex(), list[0]);
+		dispatch(FuncRequest(LFUN_OUTLINE_OUT));
 		enableControls(true);
 	}
 }
@@ -192,7 +195,7 @@ void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
 
-	if (!form_.canOutline(typeCO->currentIndex()))
+	if (!models_.canOutline(typeCO->currentIndex()))
 		enable = false;
 
 	moveUpTB->setEnabled(enable);
@@ -208,13 +211,13 @@ void TocWidget::updateView()
 {
 	LYXERR(Debug::GUI, "In TocWidget::updateView()");
 	setTreeDepth();
-	select(form_.currentIndex(typeCO->currentIndex()));
+	select(models_.currentIndex(typeCO->currentIndex()));
 }
 
 
-void TocWidget::updateGui(int selected_type)
+void TocWidget::init(QString const & str)
 {
-	QStringList const & type_names = form_.typeNames();
+	QStringList const & type_names = models_.typeNames();
 	if (type_names.isEmpty()) {
 		enableControls(false);
 		typeCO->clear();
@@ -223,17 +226,21 @@ void TocWidget::updateGui(int selected_type)
 		return;
 	}
 
+	int selected_type = models_.decodeType(str);
+
 	QString const current_text = typeCO->currentText();
 	typeCO->blockSignals(true);
 	typeCO->clear();
 	for (int i = 0; i != type_names.size(); ++i)
 		typeCO->addItem(type_names[i]);
-	if (selected_type != -1)
+	if (!str.isEmpty())
 		typeCO->setCurrentIndex(selected_type);
 	else {
 		int const new_index = typeCO->findText(current_text);
 		if (new_index != -1)
 			typeCO->setCurrentIndex(new_index);
+		else
+			typeCO->setCurrentIndex(selected_type);
 	}
 
 	typeCO->blockSignals(false);
@@ -249,7 +256,7 @@ void TocWidget::updateGui(int selected_type)
 void TocWidget::setTocModel(size_t type)
 {
 	bool controls_enabled = false;
-	QStandardItemModel * toc_model = form_.tocModel(type);
+	QStandardItemModel * toc_model = models_.model(type);
 	if (toc_model) {
 		controls_enabled = toc_model->rowCount() > 0;
 		tocTV->setModel(toc_model);
@@ -261,13 +268,13 @@ void TocWidget::setTocModel(size_t type)
 	reconnectSelectionModel();
 
 	if (controls_enabled) {
-		depthSL->setMaximum(form_.getTocDepth(type));
+		depthSL->setMaximum(models_.depth(type));
 		depthSL->setValue(depth_);
 	}
 
 	LYXERR(Debug::GUI, "In TocWidget::updateGui()");
 
-	select(form_.currentIndex(typeCO->currentIndex()));
+	select(models_.currentIndex(typeCO->currentIndex()));
 
 	if (toc_model) {
 		LYXERR(Debug::GUI, "tocModel()->rowCount "
@@ -280,13 +287,11 @@ void TocWidget::setTocModel(size_t type)
 
 void TocWidget::reconnectSelectionModel()
 {
-	connect(tocTV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &,
-		       const QModelIndex &)),
-		this,
-		SLOT(selectionChanged(const QModelIndex &,
-		     const QModelIndex &)));
+	connect(tocTV->selectionModel(), SIGNAL(
+		currentChanged(const QModelIndex &, const QModelIndex &)),
+		this, SLOT(selectionChanged(const QModelIndex &, const QModelIndex &)));
 }
+
 
 void TocWidget::disconnectSelectionModel()
 {

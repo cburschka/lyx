@@ -41,6 +41,7 @@ class GuiLayoutBox;
 class GuiToolbar;
 class GuiWorkArea;
 class TabWorkArea;
+class TocModels;
 
 /**
  * GuiView - Qt4 implementation of LyXView
@@ -106,6 +107,9 @@ public:
 	void errors(std::string const &);
 	void structureChanged();
 	///@}
+
+	///
+	TocModels & tocModels();
 	
 	/// called on timeout
 	void autoSave();

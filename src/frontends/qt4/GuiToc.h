@@ -46,57 +46,10 @@ public:
 
 	///
 	bool initialiseParams(std::string const & data);
-	///
 	void updateView();
-	/// Test if outlining operation is possible
-	bool canOutline(int type) const;
-
-	QStandardItemModel * tocModel(int type);
-	///
-	QModelIndex currentIndex(int type) const;
-	///
-	void goTo(int type, QModelIndex const & index);
-	///
-	int getType();
-	///
-	int getTocDepth(int type);
-
-Q_SIGNALS:
-	/// Signal that the internal toc_models_ has been reset.
-	void modelReset();
-
-private:
-	///
-	TocWidget * widget_;
-	///
-	std::vector<TocModel *> toc_models_;
-	///		
-	void clearTocModels();
+	void enableView(bool enable);
 
 public:
-	///
-	TocList const & tocs() const;
-
-	/// Return the list of types available
-	QStringList const & typeNames() const { return type_names_; }
-
-	/// Return the first TocItem before the cursor
-	TocIterator currentTocItem(int type) const;
-
-	/// Apply the selected outlining operation
-	void outlineUp();
-	///
-	void outlineDown();
-	///
-	void outlineIn();
-	///
-	void outlineOut();
-	///
-	void updateBackend();
-
-	/// Return the guiname from a given cmdName of the TOC param
-	docstring guiName(std::string const & type) const;
-
 	/// clean-up on hide.
 	void clearParams() {}
 	///
@@ -104,10 +57,9 @@ public:
 	///
 	bool isBufferDependent() const { return true; }
 
+private:
 	///
-	QStringList types_;
-	///
-	QStringList type_names_;
+	TocWidget * widget_;
 };
 
 } // namespace frontend

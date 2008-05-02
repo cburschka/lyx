@@ -24,6 +24,7 @@
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
 #include "Menus.h"
+#include "TocModel.h"
 
 #include "qt_helpers.h"
 
@@ -270,6 +271,9 @@ public:
 	Timeout autosave_timeout_;
 	/// flag against a race condition due to multiclicks, see bug #1119
 	bool in_show_;
+
+	///
+	TocModels toc_models_;
 };
 
 
@@ -343,6 +347,12 @@ GuiView::~GuiView()
 	theLyXFunc().setLyXView(0);
 	
 	delete &d;
+}
+
+
+TocModels & GuiView::tocModels()
+{
+	return d.toc_models_;
 }
 
 
@@ -918,6 +928,7 @@ void GuiView::errors(string const & error_type)
 
 void GuiView::structureChanged()
 {
+	d.toc_models_.reset(view());
 	updateDialog("toc", "");
 }
 

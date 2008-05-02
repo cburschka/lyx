@@ -17,24 +17,25 @@
 #include "GuiToc.h"
 #include "ui_TocUi.h"
 
+class QString;
 
 namespace lyx {
 namespace frontend {
 
-class GuiToc;
+class TocModels;
 
 class TocWidget : public QWidget, public Ui::TocUi
 {
 	Q_OBJECT
 public:
-	TocWidget(GuiToc & form, QWidget * parent = 0);
+	TocWidget(TocModels & models, QWidget * parent = 0);
+
+	/// Initialise GUI.
+	void init(QString const & str);
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
 	void updateView();
-
-	/// Update Gui of the display.
-	void updateGui(int selected_type);
 
 protected Q_SLOTS:
 	///
@@ -54,15 +55,13 @@ protected Q_SLOTS:
 	void on_moveOutTB_clicked();
 	void setTreeDepth() { setTreeDepth(depth_); }
 
-protected:
+private:
 	///
 	void enableControls(bool enable = true);
 	///
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
 	///
 	void setTreeDepth(int depth);
-
-private:
 	/// Reconnects the selection model change signal when TOC changed.
 	void reconnectSelectionModel();
 	/// Disconnects the selection model.
@@ -72,7 +71,7 @@ private:
 	/// depth of list shown
 	int depth_;
 	///
-	GuiToc & form_;
+	TocModels & models_;
 };
 
 } // namespace frontend
