@@ -1407,7 +1407,8 @@ public:
 		: tab_(tab)
 	{
 		filename_ = toqstr(filename.onlyFileNameWithoutExt());
-		postfix_ = toqstr(filename.absoluteFilePath()).split("/", QString::SkipEmptyParts);
+		postfix_ = toqstr(filename.absoluteFilePath()).
+			split("/", QString::SkipEmptyParts);
 		postfix_.pop_back();
 		abs_ = toqstr(filename.absoluteFilePath());
 		dottedPrefix_ = false;
@@ -1423,27 +1424,25 @@ public:
 	/// when really needed.
 	void shiftPathSegment(bool dotted)
 	{
-		if (postfix_.count() > 0) {
-			if (!dotted) {
-				if (dottedPrefix_ && !prefix_.isEmpty())
-					prefix_ += ".../";
-				prefix_ += postfix_.front() + "/";
-			}
-			dottedPrefix_ = dotted && !prefix_.isEmpty();
-			postfix_.pop_front();
+		if (postfix_.count() <= 0)
+			return;
+
+		if (!dotted) {
+			if (dottedPrefix_ && !prefix_.isEmpty())
+				prefix_ += ".../";
+			prefix_ += postfix_.front() + "/";
 		}
+		dottedPrefix_ = dotted && !prefix_.isEmpty();
+		postfix_.pop_front();
 	}
 	///
 	QString displayString() const
 	{
 		if (prefix_.isEmpty())
 			return filename_;
-		else {
-			bool dots = dottedPrefix_ || !postfix_.isEmpty();
-			return prefix_
-				+ (dots ? ".../" : "")
-				+ filename_;
-		}
+
+		bool dots = dottedPrefix_ || !postfix_.isEmpty();
+		return prefix_ + (dots ? ".../" : "") + filename_;
 	}
 	///
 	QString forecastPathString() const
@@ -1456,15 +1455,9 @@ public:
 			+ postfix_.front() + "/";
 	}
 	///
-	bool final() const
-	{
-		return postfix_.empty();
-	}
+	bool final() const { return postfix_.empty(); }
 	///
-	int tab() const
-	{
-		return tab_;
-	}
+	int tab() const { return tab_; }
 	
 private:
 	///
@@ -1571,12 +1564,11 @@ void TabWorkArea::updateTabTexts()
 					       << fromqstr(sit->forecastPathString()));
 					moreUnique = true;
 					break;
-				} else {
-					LYXERR(Debug::GUI, "same forecast found for "
-					       << fromqstr(sit->abs())
-					       << " => "
-					       << fromqstr(dspString));
 				}
+				LYXERR(Debug::GUI, "same forecast found for "
+					<< fromqstr(sit->abs())
+					<< " => "
+					<< fromqstr(dspString));
 			}
 			
 			// if the path segment helped, add it. Otherwise add dots
@@ -1611,17 +1603,18 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 {
 	// which tab?
 	clicked_tab_ = static_cast<DragTabBar *>(tabBar())->tabAt(pos);
-	if (clicked_tab_ != -1) {
-		// show tab popup
-		QMenu popup;
-		popup.addAction(QIcon(":/images/hidetab.png"),
-			 qt_("Hide tab"), this, SLOT(closeCurrentTab()));
-		popup.addAction(QIcon(":/images/closetab.png"),
-			 qt_("Close tab"), this, SLOT(closeCurrentBuffer()));
-		popup.exec(tabBar()->mapToGlobal(pos));
-		
-		clicked_tab_ = -1;
-	}
+	if (clicked_tab_ == -1)
+		return;
+	
+	// show tab popup
+	QMenu popup;
+	popup.addAction(QIcon(":/images/hidetab.png"),
+		qt_("Hide tab"), this, SLOT(closeCurrentTab()));
+	popup.addAction(QIcon(":/images/closetab.png"),
+		qt_("Close tab"), this, SLOT(closeCurrentBuffer()));
+	popup.exec(tabBar()->mapToGlobal(pos));
+
+	clicked_tab_ = -1;
 }
 
 
