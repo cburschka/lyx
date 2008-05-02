@@ -10,7 +10,6 @@ List of langauges supported by the LyX
 
   # List of LyX translations with ISO code and language identifier
 
-  ${COMMAND} "Bokmål" nb_NO 1044
   ${COMMAND} "Català" ca_ES 1027
   ${COMMAND} "Ceština" cs_CZ 1029
   ${COMMAND} "Chinese (Simplified)" zh_CN 2052
@@ -28,7 +27,8 @@ List of langauges supported by the LyX
   # ${COMMAND} "Korean" ko 1042
   ${COMMAND} "Magyar" hu_HU 1038
   # ${COMMAND} "Nederlands" nl_NL 1043
-  ${COMMAND} "Nynorsk" nn_NO 2068
+  ${COMMAND} "Norsk (Bokmål)" nb_NO 1044
+  ${COMMAND} "Norsk (Nynorsk)" nn_NO 2068
   ${COMMAND} "Português" pt_PT 1046
   ${COMMAND} "Polski"  pl_PL 1045
   ${COMMAND} "Româna" ro_RO 1048
