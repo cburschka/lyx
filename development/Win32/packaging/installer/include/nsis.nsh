@@ -38,7 +38,5 @@ Configuration of standard NSIS header files
 #--------------------------------
 # Include standard functions
 
-!insertmacro GetParent
 !insertmacro RefreshShellIcons
-!insertmacro VersionCompare
 !insertmacro WordFind2X

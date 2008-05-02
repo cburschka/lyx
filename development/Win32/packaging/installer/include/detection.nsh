@@ -8,8 +8,13 @@ Detection of external component locations
 
 Function SearchExternal
   Call SearchLaTeX
-  Call SearchGhostscript
-  Call SearchImageMagick
+  Call SearchBibTeXEditor
+  !ifndef BUNDLE_IMAGEMAGICK
+    Call SearchImageMagick
+  !endif
+  !ifndef BUNDLE_GHOSTSCRIPT
+    Call SearchGhostscript
+  !endif
 FunctionEnd
 
 #--------------------------------
@@ -80,6 +85,11 @@ FunctionEnd
 #--------------------------------
 # Ghostscript
 
+!ifndef BUNDLE_GHOSTSCRIPT
+
+!insertmacro GetParent
+!insertmacro VersionCompare
+
 Var Counter
 Var EnumReturn
 Var CompareReturn
@@ -146,8 +156,12 @@ Function SearchGhostscript
   
 FunctionEnd
 
+!endif
+
 #--------------------------------
 # ImageMagick
+
+!ifndef BUNDLE_IMAGEMAGICK
 
 Function SearchImageMagick
 
@@ -156,6 +170,26 @@ Function SearchImageMagick
   
   ${IfNot} ${FileExists} "$PathImageMagick\${BIN_IMAGEMAGICK}"
     StrCpy $PathImageMagick ""  
+  ${EndIf}
+
+FunctionEnd
+
+!endif
+
+#--------------------------------
+# JabRef
+
+Function SearchBibTeXEditor
+
+  # Search where JabRef is installed
+  ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
+
+  ${IfNot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
+    ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
+  ${EndIf}
+
+  ${IfNot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
+    StrCpy $PathBibTeXEditor ""  
   ${EndIf}
 
 FunctionEnd

@@ -146,6 +146,7 @@ SetCompressor /SOLID lzma
 !define BIN_LATEX "tex.exe"
 !define BIN_IMAGEMAGICK "convert.exe"
 !define BIN_GHOSTSCRIPT "gswin32c.exe"
+!define BIN_BIBTEXEDITOR "JabRef.exe"
 
 #--------------------------------
 # Custom NSIS plug-ins

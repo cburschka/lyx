@@ -10,6 +10,7 @@ Var PathLaTeX
 Var PathLaTeXLocal
 Var PathImageMagick
 Var PathGhostscript
+Var PathBibTeXEditor
 
 Var SetupLaTeX
 Var SizeLaTeX
