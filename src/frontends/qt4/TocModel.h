@@ -69,7 +69,7 @@ public:
 	///
 	TocModels(): bv_(0) {}
 	///
-	TocModels::~TocModels() { clear(); }
+	~TocModels() { clear(); }
 	///
 	void reset(BufferView const * bv);
 	///
@@ -77,11 +77,11 @@ public:
 	///
 	QStandardItemModel * model(int type);
 	///
-	QModelIndex TocModels::currentIndex(int type) const;
+	QModelIndex currentIndex(int type) const;
 	///
 	void goTo(int type, QModelIndex const & index) const;
 	///
-	void TocModels::init(Buffer const & buffer);
+	void init(Buffer const & buffer);
 	/// Test if outlining operation is possible
 	bool canOutline(int type) const;
 	/// Return the list of types available
