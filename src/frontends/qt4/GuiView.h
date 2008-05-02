@@ -198,19 +198,18 @@ public:
 	///
 	void resetDialogs();
 
-	/** Check the status of all visible dialogs and disable or reenable
+	/// Hide all visible dialogs
+	void hideAll() const;
+
+	/// Update all visible dialogs.
+	/** 
+	 *  Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.
 	 *
 	 *  Disabling is needed for example when a dialog is open and the
 	 *  cursor moves to a position where the corresponding inset is not
 	 *  allowed.
 	 */
-	void checkStatus();
-
-	/// Hide all visible dialogs
-	void hideAll() const;
-
-	// Update all visible dialogs.
 	void updateDialogs();
 
 	/** \param name == "bibtex", "citation" etc; an identifier used to

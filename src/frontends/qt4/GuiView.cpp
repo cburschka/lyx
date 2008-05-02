@@ -433,7 +433,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// Save toolbars configuration
 	if (isFullScreen()) {
 		d.toolbars_->toggleFullScreen(!isFullScreen());
-		updateToolbars();
+		updateDialogs();
 	}
 
 	// Make sure the timer time out will not trigger a statusbar update.
@@ -849,9 +849,6 @@ void GuiView::updateToolbars()
 		d.toolbars_->update(math, table, review, mathmacrotemplate);
 	} else
 		d.toolbars_->update(false, false, false, false);
-
-	// update read-only status of open dialogs.
-	checkStatus();
 }
 
 
@@ -1993,9 +1990,7 @@ void GuiView::restartCursor()
 		d.current_work_area_->startBlinkingCursor();
 
 	// Take this occasion to update the other GUI elements.
-	updateLayoutList();
-	updateToolbars();
-	updateStatusBar();
+	updateDialogs();
 }
 
 
@@ -2160,38 +2155,13 @@ void GuiView::updateDialogs()
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
-		if (!dialog->isVisibleView())
-			continue;
-		if (dialog->isBufferDependent()) {
-			if (buffer())
-				dialog->updateView();
-			else
-				dialog->enableView(false);
-		} else {
-			// A bit clunky, but the dialog will request
-			// that the kernel provides it with the necessary
-			// data.
-			dialog->updateDialog();
-		}
+		if (dialog && dialog->isVisibleView())
+			dialog->checkStatus();
 	}
 	updateToolbars();
 	updateLayoutList();
 	updateStatusBar();
 }
-
-
-void GuiView::checkStatus()
-{
-	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
-
-	for(; it != end; ++it) {
-		Dialog * const dialog = it->second.get();
-		if (dialog && dialog->isVisibleView())
-			dialog->checkStatus();
-	}
-}
-
 
 
 // will be replaced by a proper factory...

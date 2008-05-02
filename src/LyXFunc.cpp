@@ -377,9 +377,6 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		if (!lyx_view_)
 			return;
 	}
-
-	if (lyx_view_)
-		lyx_view_->restartCursor();
 }
 
 
