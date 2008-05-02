@@ -102,6 +102,9 @@ Section -Configure
   ${If} $PathImageMagick != ""
     StrCpy $PathPrefix "$PathPrefix;$PathImageMagick"
   ${EndIf}
+  ${If} $PathBibTeXEditor != ""
+    StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
+  ${EndIf}  
 
   FileWrite $DistFile '\path_prefix "$PathPrefix"$\r$\n'
 
