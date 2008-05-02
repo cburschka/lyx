@@ -941,7 +941,7 @@ void GuiView::updateDialog(string const & name, string const & data)
 
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
-		dialog->updateData(data);
+		dialog->initialiseParams(data);
 }
 
 

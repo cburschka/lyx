@@ -87,7 +87,6 @@ public:
 	/// \param data is a string encoding of the data to be displayed.
 	/// It is passed to the Controller to be translated into a useable form.
 	virtual void showData(std::string const & data);
-	virtual void updateData(std::string const & data);
 	//@}
 
 	/** Check whether we may apply our data.

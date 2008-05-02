@@ -163,21 +163,6 @@ void Dialog::apply()
 }
 
 
-void Dialog::updateData(string const & data)
-{
-	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << fromqstr(name())
-		       << "\" could not be initialized");
-		return;
-	}
-
-	if (lyxview_->buffer())
-		updateView();
-	else
-		enableView(false);
-}
-
-
 void Dialog::showView()
 {
 	// Make sure the dialog controls are correctly enabled/disabled with

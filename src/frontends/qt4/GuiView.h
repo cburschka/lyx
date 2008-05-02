@@ -229,7 +229,7 @@ public:
 		std::string const & data, Inset * inset = 0);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
-	    to update the contents of a particular dialog with \param data.
+	    to reset the contents of a particular dialog with \param data.
 	    See the comments to 'show', above.
 	*/
 	void updateDialog(std::string const & name, std::string const & data);

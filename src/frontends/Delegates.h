@@ -45,9 +45,9 @@ public:
 	virtual void showDialog(std::string const & name,
 		std::string const & data, Inset * inset = 0) = 0;
 
-	/// This function is called when some dialogs needs to be updated.
+	/// This function is called when some dialogs needs to be reset.
 	/** \param name == "citation", "bibtex" etc; an identifier used
-	    to update the contents of a particular dialog with \param data.
+	    to reset the contents of a particular dialog with \param data.
 	    See the comments to 'show', above.
 	*/
 	virtual void updateDialog(std::string const & name,
