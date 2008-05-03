@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 330
 \begin_document
 \begin_header
 \textclass scrbook
@@ -24852,8 +24852,8 @@ run:
 \end_layout
 
 \begin_layout Standard
-Hyperlinks will automatically be hyphenated if necessary and become clickable
- in the DVI and PDF-output.
+Hyperlinks will automatically be hyphenated if necessary in the PDF output,
+ and become clickable in the DVI and PDF-output.
  To set the format of the link text, highlight the hyperlink inset and use
  the text style dialog.
  This is for example a hyperlink with bold sans serif text: 
@@ -25152,18 +25152,7 @@ Bibliography ! Databases
 status open
 
 \begin_layout Plain Layout
-Bibliography ! BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Bibliography ! BibTeX
 \end_layout
 
 \end_inset
@@ -25172,16 +25161,6 @@ eX
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Bibliography-databases"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fix this Index entry when bug 4600 is fixed!
-\end_layout
 
 \end_inset
 
@@ -36477,44 +36456,12 @@ Counts the number of words in the actual document or the highlighted document
 \end_layout
 
 \begin_layout Subsection
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Information
+TeX Information
 \begin_inset Index
-status open
-
-\begin_layout Plain Layout
-T
-\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Information
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fix this Index entry when bug 4600 is fixed!
+TeX Information
 \end_layout
 
 \end_inset

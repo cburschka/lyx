@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 329
+\lyxformat 330
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2563,18 +2563,7 @@ Literaturverzeichnis
 status collapsed
 
 \begin_layout Plain Layout
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+BibTeX
 \end_layout
 
 \end_inset
@@ -2583,18 +2572,6 @@ X
 \begin_inset CommandInset label
 LatexCommand label
 name "Literaturverzeichnisse-mit-BibTeX"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
-\end_layout
 
 \end_inset
 
@@ -13023,30 +13000,7 @@ AASTeX
 status collapsed
 
 \begin_layout Plain Layout
-Dokumentenklasse!AAST
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+Dokumentenklasse!AASTeX
 \end_layout
 
 \end_inset
@@ -19337,30 +19291,7 @@ name "Folien-mit-foiltex"
 status collapsed
 
 \begin_layout Plain Layout
-Dokumentenklasse!Folie!FoilT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+Dokumentenklasse!Folie!FoilTeX
 \end_layout
 
 \end_inset
@@ -22074,30 +22005,7 @@ article (REVTeX 4)
 status collapsed
 
 \begin_layout Plain Layout
-Dokumentenklasse!article!RevT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX 4
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+Dokumentenklasse!article!RevTeX 4
 \end_layout
 
 \end_inset

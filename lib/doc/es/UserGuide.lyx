@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+\lyxformat 330
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,7 +103,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -6185,7 +6184,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Resumen.pdf
-	embed ""
 	lyxscale 25
 	clip
 
@@ -6700,14 +6698,12 @@ Editar
  En vez del menú, puedes usar los botones de la barra de herramientas 
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
-	embed ""
 
 \end_inset
 
  y 
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
-	embed ""
 
 \end_inset
 
@@ -11173,7 +11169,6 @@ Versalitas
 clic en el botón de la barra de herramientas 
 \begin_inset Graphics
 	filename ../../images/font-noun.png
-	embed ""
 
 \end_inset
 
@@ -11233,7 +11228,6 @@ Un estilo empleado más frecuentemente es el estilo
 clic en el botón 
 \begin_inset Graphics
 	filename ../../images/font-emph.png
-	embed ""
 
 \end_inset
 
@@ -12728,7 +12722,6 @@ Estilo del texto
  Para activarlas, usa el botón 
 \begin_inset Graphics
 	filename ../../images/font-free-apply.png
-	embed ""
 
 \end_inset
 
@@ -13556,7 +13549,6 @@ DVI
  puedes usar el botón 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
 
 \end_inset
 
@@ -13576,7 +13568,6 @@ PDF
  puedes usar el botón 
 \begin_inset Graphics
 	filename ../../images/buffer-export_pdf2.png
-	embed ""
 
 \end_inset
 
@@ -13638,7 +13629,6 @@ Imprimir
  o clic en el botón 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	embed ""
 
 \end_inset
 
@@ -14182,7 +14172,6 @@ mbox
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/mbox.png
-	embed ""
 
 \end_inset
 
@@ -15156,7 +15145,6 @@ e.
  En LyX lo verás como: 
 \begin_inset Graphics
 	filename ../clipart/LaTeX.png
-	embed ""
 
 \end_inset
 
@@ -15617,7 +15605,6 @@ A diferencia de los cuadros coloreados, la nota sombreada ocupa siempre
 Las notas se insertan con el botón 
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	embed ""
 	scale 85
 	scaleBeforeRotation
 
@@ -15672,7 +15659,6 @@ pie
  o el botón 
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
-	embed ""
 
 \end_inset
 
@@ -15687,7 +15673,6 @@ verás un cuadro como este
 : 
 \begin_inset Graphics
 	filename clipart/notapieQt4.png
-	embed ""
 
 \end_inset
 
@@ -15793,7 +15778,6 @@ margen
  o el botón 
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	embed ""
 
 \end_inset
 
@@ -15872,7 +15856,6 @@ Para insertar una imagen en el documento, sitúa el cursor en la posición
  que quieras y clic sobre el botón 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	embed ""
 
 \end_inset
 
@@ -16027,7 +16010,6 @@ Gráficos
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	embed ""
 	display color
 	scale 70
 	rotateOrigin center
@@ -16514,7 +16496,6 @@ name "sec:Tablas"
 Puede insertarse una tabla mediante el botón 
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -19784,7 +19765,6 @@ Flotantes ! Títulos
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
-	embed ""
 	scale 70
 
 \end_inset
@@ -19902,7 +19882,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	embed ""
 	display color
 	width 50col%
 	rotateOrigin center
@@ -19964,7 +19943,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	embed ""
 	display color
 	scale 80
 	rotateOrigin center
@@ -20081,7 +20059,6 @@ Estructura indefinible
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	embed ""
 	width 45col%
 
 \end_inset
@@ -20116,7 +20093,6 @@ Platypus
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	embed ""
 	lyxscale 60
 	width 45col%
 
@@ -20585,7 +20561,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	embed ""
 	display color
 	width 40col%
 	rotateOrigin center
@@ -21535,7 +21510,6 @@ Matemáticas ! Edición de ecuaciones
 Para crear una ecuación matemática, pulsa el botón 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	embed ""
 
 \end_inset
 
@@ -22105,7 +22079,6 @@ frac
  o con el icono 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	embed ""
 	scale 60
 
 \end_inset
@@ -22163,7 +22136,6 @@ Matemáticas ! Raíces
 Las raíces se generan con el botón 
 \begin_inset Graphics
 	filename ../../images/math/sqrt.png
-	embed ""
 
 \end_inset
 
@@ -22461,7 +22433,6 @@ C-Espacio
  o elige desde el botón 
 \begin_inset Graphics
 	filename ../../images/math/space.png
-	embed ""
 
 \end_inset
 
@@ -22490,7 +22461,6 @@ a C-Espacio b
  (en LyX se ve 
 \begin_inset Graphics
 	filename ../clipart/SpaceMarker.png
-	embed ""
 
 \end_inset
 
@@ -22571,7 +22541,6 @@ funciones
 , accesible con el botón 
 \begin_inset Graphics
 	filename ../../images/math/functions.png
-	embed ""
 
 \end_inset
 
@@ -23337,7 +23306,6 @@ Decoraciones
 , botón 
 \begin_inset Graphics
 	filename ../../images/math/hat.png
-	embed ""
 
 \end_inset
 
@@ -23401,7 +23369,6 @@ Hay varios tipos de delimitadores disponibles en LyX.
  surge al pulsar el botón 
 \begin_inset Graphics
 	filename ../../images/math/delim.png
-	embed ""
 
 \end_inset
 
@@ -23586,7 +23553,6 @@ Matemáticas ! Ecuaciones multilíneas
 Las matrices se introducen con el botón 
 \begin_inset Graphics
 	filename ../../images/math/matrix.png
-	embed ""
 
 \end_inset
 
@@ -24278,7 +24244,6 @@ spce
 Esto da como resultado el cuadro de definición de macro: 
 \begin_inset Graphics
 	filename ../clipart/macrobox.png
-	embed ""
 
 \end_inset
 
@@ -24380,7 +24345,6 @@ qE
 \align center
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
-	embed ""
 
 \end_inset
 
@@ -24519,7 +24483,6 @@ La fuente estándar para el texto es cursiva, y para números es romana.
  Para determinar una fuente en una ecuación usa el botón 
 \begin_inset Graphics
 	filename ../../images/math/font.png
-	embed ""
 
 \end_inset
 
@@ -25009,7 +24972,6 @@ normal
  en la lista desplegable que surge al pulsar el icono 
 \begin_inset Graphics
 	filename ../../images/math/font.png
-	embed ""
 
 \end_inset
 
@@ -25129,7 +25091,6 @@ presentación.
  La elección de LaTeX puede ser cambiada con el botón 
 \begin_inset Graphics
 	filename ../../images/math/style.png
-	embed ""
 
 \end_inset
 
@@ -25414,7 +25375,6 @@ Etiqueta
  o con el botón 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -25461,7 +25421,6 @@ Aceptar
  se inserta un cuadro gris parecido a este: 
 \begin_inset Graphics
 	filename clipart/etiquetaQt4.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -25502,7 +25461,6 @@ cruzada
  o el botón 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -25530,7 +25488,6 @@ Aceptar
  se inserta un cuadro gris parecido a este: 
 \begin_inset Graphics
 	filename clipart/referenciaQt4.png
-	embed ""
 	scale 85
 
 \end_inset
@@ -26280,7 +26237,6 @@ Cita
 o con el botón 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -26364,21 +26320,10 @@ Bibliografía ! Bases de datos
 
 
 \begin_inset Index
-status open
-
-\begin_layout Plain Layout
-Bibliografía ! BibT
-\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Bibliografía ! BibTeX
 \end_layout
 
 \end_inset
@@ -26387,18 +26332,6 @@ eX
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Bases-datos-bibliográficos"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
-\end_layout
 
 \end_inset
 
@@ -26713,7 +26646,6 @@ de
 o el botón 
 \begin_inset Graphics
 	filename ../../images/index-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -27631,7 +27563,6 @@ nomenclatura
  o el botón 
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -28622,7 +28553,6 @@ TeX
  o con el botón 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 
 \end_inset
 
@@ -28683,7 +28613,6 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/es_ERT.png
-	embed ""
 	scale 90
 
 \end_inset
@@ -29466,7 +29395,6 @@ Thesaurus
  o el botón 
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29613,7 +29541,6 @@ Barras de herramientas ! Revisión
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/ChangesToolbar.png
-	embed ""
 
 \end_inset
 
@@ -29651,7 +29578,6 @@ Los botones de la barra de revisión mostrada tienen las siguientes funciones:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-track.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29695,7 +29621,6 @@ cambios
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-output.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29751,7 +29676,6 @@ salida
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-next.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29779,7 +29703,6 @@ Ir al siguiente cambio
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-accept.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29823,7 +29746,6 @@ cambio
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/change-reject.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29867,7 +29789,6 @@ cambio
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29911,7 +29832,6 @@ cambios
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -29963,7 +29883,6 @@ cambios
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -30015,7 +29934,6 @@ cambios
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -30051,7 +29969,6 @@ LyX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-next.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38007,46 +37924,12 @@ Cuento el número de palabras en el documento o en la parte resaltada.
 \end_layout
 
 \begin_layout Subsection
-Información T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX 
+Información TeX 
 \begin_inset Index
-status open
-
-\begin_layout Plain Layout
-Información T
-\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+Información TeX
 \end_layout
 
 \end_inset
@@ -38252,7 +38135,6 @@ Barras de herramientas ! Normal
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/StandardToolbar.png
-	embed ""
 	width 100col%
 
 \end_inset
@@ -38322,7 +38204,6 @@ Embedded Objects
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/ToolbarEnvBox.png
-	embed ""
 	clip
 
 \end_inset
@@ -38372,7 +38253,6 @@ Menú desplegable con los entornos de párrafo
 \family sans
 \begin_inset Graphics
 	filename ../../images/buffer-new.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38402,7 +38282,6 @@ Nuevo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/file-open.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38432,7 +38311,6 @@ Abrir
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-write.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38462,7 +38340,6 @@ Guardar
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
-	embed ""
 	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
@@ -38492,7 +38369,6 @@ Imprimir
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38522,7 +38398,6 @@ Corrector ortográfico
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/undo.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38552,7 +38427,6 @@ Deshacer
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/redo.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38582,7 +38456,6 @@ Rehacer
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/cut.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38612,7 +38485,6 @@ Cortar
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/copy.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38642,7 +38514,6 @@ Copiar
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/paste.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38672,7 +38543,6 @@ Pegar
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38703,7 +38573,6 @@ Encontrar y reemplazar
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-emph.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38741,7 +38610,6 @@ texto
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-noun.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38779,7 +38647,6 @@ texto
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/font-free-apply.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38817,7 +38684,6 @@ texto
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -38852,7 +38718,6 @@ línea
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38883,7 +38748,6 @@ Imagen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38914,7 +38778,6 @@ Tabla
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38945,7 +38808,6 @@ Outline
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -38973,7 +38835,6 @@ Muestra/oculta la barra de herramientas matemáticas
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_table.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39018,7 +38879,6 @@ Barras de herramientas ! Extra
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/ExtraToolbar.png
-	embed ""
 	width 100col%
 
 \end_inset
@@ -39057,7 +38917,6 @@ Los botones de la barra extra son, de izquierda a derecha:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39085,7 +38944,6 @@ Predeterminado
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Enumerate.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39113,7 +38971,6 @@ Lista enumerada
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Itemize.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39141,7 +38998,6 @@ Lista no numerada
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_List.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39169,7 +39025,6 @@ Lista
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout_Description.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39197,7 +39052,6 @@ Lista descripción
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39240,7 +39094,6 @@ lista
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/depth-decrement.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39283,7 +39136,6 @@ lista
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39314,7 +39166,6 @@ Figura
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39345,7 +39196,6 @@ Tabla
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39375,7 +39225,6 @@ Etiqueta
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39409,7 +39258,6 @@ cruzada
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_citation.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39439,7 +39287,6 @@ Cita
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/index-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39477,7 +39324,6 @@ de
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39515,7 +39361,6 @@ nomenclatura
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39553,7 +39398,6 @@ pie
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39592,7 +39436,6 @@ margen
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39627,7 +39470,6 @@ LyX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39657,7 +39499,6 @@ Box
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/url-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39687,7 +39528,6 @@ URL
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39736,7 +39576,6 @@ eX
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_include.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -39771,7 +39610,6 @@ hijo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39810,7 +39648,6 @@ texto
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39849,7 +39686,6 @@ párrafo
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/thesaurus-entry.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39905,7 +39741,6 @@ Barras de herramientas ! Ver/Actualizar
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/ViewToolbar.png
-	embed ""
 
 \end_inset
 
@@ -39951,7 +39786,6 @@ actualizar son, de izquierda a derecha:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -39982,7 +39816,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_dvi.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -40014,7 +39847,6 @@ DVI
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -40045,7 +39877,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -40098,7 +39929,6 @@ PDF
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -40129,7 +39959,6 @@ Postscript
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/buffer-update_ps.png
-	embed ""
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 

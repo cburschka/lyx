@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 330
 \begin_document
 \begin_header
 \textclass scrbook
@@ -55,7 +55,7 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_title "Das LyX-Benutzerhandbuch"
@@ -950,30 +950,7 @@ LaTeX-Einstellung
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Einstellungen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+LaTeX!-Einstellungen
 \end_layout
 
 \end_inset
@@ -28380,30 +28357,7 @@ AMS-LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-AMS-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+AMS-TeX
 \end_layout
 
 \end_inset
@@ -29848,18 +29802,7 @@ Literaturverzeichnis ! Datenbanken
 status collapsed
 
 \begin_layout Plain Layout
-Literaturverzeichnis ! BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Literaturverzeichnis ! BibTeX
 \end_layout
 
 \end_inset
@@ -29869,18 +29812,7 @@ eX
 status collapsed
 
 \begin_layout Plain Layout
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+BibTeX
 \end_layout
 
 \end_inset
@@ -29889,18 +29821,6 @@ eX
 \begin_inset CommandInset label
 LatexCommand label
 name "Literaturverzeichnis-Datenbanken-(BibTeX)"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix these Index entries when bug 4600 is fixed!
-\end_layout
 
 \end_inset
 
@@ -31654,7 +31574,7 @@ Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
 
 \begin_layout Standard
 \begin_inset Branch Frage
-status collapsed
+status open
 
 \begin_layout Standard
 Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
@@ -31753,7 +31673,7 @@ Antwort}[1]{#1}
 
 \lang english
 \begin_inset Branch Frage
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -31889,18 +31809,7 @@ name "LaTeX-Syntax-und-TeX-Code"
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Syntax
+LaTeX!-Syntax
 \end_layout
 
 \end_inset
@@ -31910,30 +31819,7 @@ X!-Syntax
 status collapsed
 
 \begin_layout Plain Layout
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+TeX-Code
 \end_layout
 
 \end_inset
@@ -32259,21 +32145,10 @@ name "TeX-Code-Kästchen"
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+TeX-Code
 \end_layout
 
 \end_inset
@@ -39544,17 +39419,6 @@ Handbuchergänzungen.
 \family sans
 Te
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
 X
 \family sans
 -Code
@@ -39564,30 +39428,7 @@ X
 status collapsed
 
 \begin_layout Plain Layout
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Fix this Index entry when bug 4600 is fixed!
+TeX-Code
 \end_layout
 
 \end_inset
