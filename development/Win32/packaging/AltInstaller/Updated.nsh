@@ -11,6 +11,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\generate_contributions.py"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"

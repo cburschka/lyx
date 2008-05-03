@@ -537,6 +537,14 @@ contributers = [
                  "",
                  u"Bug fix to the spellchecker"),
 
+     contributer(u"Nicola Focci",
+                 "nicola.focci () gmail ! com",
+                 "GPL",
+                 "Permission",
+                 "m=120946605432341",
+                 "29 April 2008",
+                 u"Italian translation of documentations"),
+
      contributer(u"Enrico Forestieri",
                  "forenr () tlc ! unipr ! it",
                  "GPL",
