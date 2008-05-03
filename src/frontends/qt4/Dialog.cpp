@@ -209,8 +209,10 @@ void Dialog::checkStatus()
 {
 	// buffer independant dialogs are always active.
 	// This check allows us leave canApply unimplemented for some dialogs.
-	if (!isBufferDependent())
+	if (!isBufferDependent()) {
+		updateView();
 		return;
+	}
 
 	// deactivate the dialog if we have no buffer
 	if (!isBufferAvailable()) {
