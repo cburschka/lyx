@@ -548,8 +548,6 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 		this, SLOT(updateWindowTitle(GuiWorkArea *)));
 	updateWindowTitle(wa);
 
-	// Navigator needs more than a simple update in this case. It needs to be
-	// rebuilt.
 	structureChanged();
 
 	// Buffer-dependent dialogs must be updated. This is done here because
@@ -926,7 +924,11 @@ void GuiView::errors(string const & error_type)
 void GuiView::structureChanged()
 {
 	d.toc_models_.reset(view());
+	// Navigator needs more than a simple update in this case. It needs to be
+	// rebuilt.
 	updateDialog("toc", "");
+	// Same for the document settings dialog.
+	updateDialog("document", "");
 }
 
 
