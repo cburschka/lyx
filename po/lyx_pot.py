@@ -161,7 +161,8 @@ def qt4_l10n(input_files, output, base):
             # get lines that match <string>...</string>
             if pat.match(line):
                 (string,) = pat.match(line).groups()
-                string = string.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>').replace('"', r'\"')
+                string = string.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+                string = string.replace('\\', '\\\\').replace('"', r'\"')
                 print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
                     (relativePath(src, base), lineno+1, string) 
         input.close()
