@@ -78,8 +78,6 @@ def find_default_layout(document, start, end):
         l = find_token(document.body, "\\begin_layout Plain Layout", start, end)
     return l
 
-####################################################################
-
 def get_option(document, m, option, default):
     l = document.body[m].find(option)
     val = default
@@ -103,6 +101,91 @@ def set_option(document, m, option, value):
     else:
         document.body[m] = document.body[m][:-1] + ' ' + option + '="' + value + '">'
     return l
+
+
+####################################################################
+
+def convert_ltcaption(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+
+        nrows = int(document.body[i+1].split('"')[3])
+        ncols = int(document.body[i+1].split('"')[5])
+
+        m = i + 1
+        for k in range(nrows):
+            m = find_token(document.body, "<row", m)
+            r = m
+            caption = 'false'
+            for k in range(ncols):
+                m = find_token(document.body, "<cell", m)
+                if (k == 0):
+                    mend = find_token(document.body, "</cell>", m + 1)
+                    # first look for caption insets
+                    mcap = find_token(document.body, "\\begin_inset Caption", m + 1, mend)
+                    # then look for ERT captions
+                    if mcap == -1:
+                        mcap = find_token(document.body, "caption", m + 1, mend)
+                        if mcap > -1:
+                            mcap = find_token(document.body, "\\backslash", mcap - 1, mcap)
+                    if mcap > -1:
+                        caption = 'true'
+                if caption == 'true':
+                    if (k == 0):
+                        set_option(document, r, 'caption', 'true')
+                        set_option(document, m, 'multicolumn', '1')
+                        set_option(document, m, 'bottomline', 'false')
+                        set_option(document, m, 'topline', 'false')
+                        set_option(document, m, 'rightline', 'false')
+                        set_option(document, m, 'leftline', 'false')
+                        #j = find_end_of_inset(document.body, j + 1)
+                    else:
+                        set_option(document, m, 'multicolumn', '2')
+                m = m + 1
+            m = m + 1
+
+        i = j + 1
+
+def revert_ltcaption(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of tabular.")
+            continue
+
+        m = i + 1
+        nrows = int(document.body[i+1].split('"')[3])
+        ncols = int(document.body[i+1].split('"')[5])
+
+        for k in range(nrows):
+            m = find_token(document.body, "<row", m)
+            caption = get_option(document, m, 'caption', 'false')
+            if caption == 'true':
+                remove_option(document, m, 'caption')
+                for k in range(ncols):
+                    m = find_token(document.body, "<cell", m)
+                    remove_option(document, m, 'multicolumn')
+                    if k == 0:
+                        m = find_token(document.body, "\\begin_inset Caption", m)
+                        if m == -1:
+                            return
+                        m = find_end_of_inset(document.body, m + 1)
+                        document.body[m] += wrap_into_ert("","","\\backslash\n\\backslash\n%")
+                    m = m + 1
+            m = m + 1
+        i = j + 1
+
 
 def convert_tablines(document):
     i = 0
@@ -197,6 +280,15 @@ def revert_tablines(document):
             lines.append([top, bottom, left, right])
             m = m + 1
 
+        # we will want to ignore longtable captions
+        m = i + 1
+        caption_info = []
+        for k in range(nrows):
+            m = find_token(document.body, "<row", m)
+            caption = get_option(document, m, 'caption', 'false')
+            caption_info.append([caption])
+            m = m + 1
+
         m = i + 1
         col_info = []
         for k in range(ncols):
@@ -204,13 +296,13 @@ def revert_tablines(document):
             left = 'true'
             for l in range(nrows):
                 left = lines[l*ncols + k][2]
-                if left == 'false':
+                if left == 'false' and caption_info[l] == 'false':
                     break
             set_option(document, m, 'leftline', left)
             right = 'true'
             for l in range(nrows):
                 right = lines[l*ncols + k][3]
-                if right == 'false':
+                if right == 'false' and caption_info[l] == 'false':
                     break
             set_option(document, m, 'rightline', right)
             m = m + 1
@@ -223,12 +315,16 @@ def revert_tablines(document):
                 top = lines[k*ncols + l][0]
                 if top == 'false':
                     break
+            if caption_info[k] == 'false':
+                top = 'false'
             set_option(document, m, 'topline', top)
             bottom = 'true'
             for l in range(ncols):
                 bottom = lines[k*ncols + l][1]
                 if bottom == 'false':
                     break
+            if caption_info[k] == 'false':
+                bottom = 'false'
             set_option(document, m, 'bottomline', bottom)
             m = m + 1
 
@@ -2139,9 +2235,11 @@ convert = [[277, [fix_wrong_tables]],
            [328, [remove_embedding, remove_extra_embedded_files, remove_inzip_options]],
            [329, []],
            [330, []],
+           [331, [convert_ltcaption]],
           ]
 
-revert =  [[329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
+revert =  [[330, [revert_ltcaption]],
+           [329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
            [328, [revert_master]],
            [327, []],
            [326, [revert_mexican]],

@@ -67,6 +67,7 @@ private Q_SLOTS:
 	void ltLastFooterBorderAbove_clicked();
 	void ltLastFooterBorderBelow_clicked();
 	void ltLastFooterEmpty_clicked();
+	void on_captionStatusCB_toggled();
 
 private:
 	///

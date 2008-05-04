@@ -393,6 +393,13 @@ void GuiTabular::ltNewpage_clicked()
 }
 
 
+void GuiTabular::on_captionStatusCB_toggled()
+{
+	set(Tabular::TOGGLE_LTCAPTION);
+	changed();
+}
+
+
 void GuiTabular::ltHeaderStatus_clicked()
 {
 	bool enable = headerStatusCB->isChecked();
@@ -771,8 +778,14 @@ void GuiTabular::updateContents()
 		lastfooterNoContentsCB->setChecked(false);
 		newpageCB->setChecked(false);
 		newpageCB->setEnabled(false);
+		captionStatusCB->blockSignals(true);
+		captionStatusCB->setChecked(false);
+		captionStatusCB->blockSignals(false);
 		return;
 	}
+	captionStatusCB->blockSignals(true);
+	captionStatusCB->setChecked(tabular_.ltCaption(row));
+	captionStatusCB->blockSignals(false);
 
 	Tabular::ltType ltt;
 	bool use_empty;

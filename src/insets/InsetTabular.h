@@ -160,6 +160,8 @@ public:
 		///
 		SET_LTNEWPAGE,
 		///
+		TOGGLE_LTCAPTION,
+		///
 		SET_SPECIAL_COLUMN,
 		///
 		SET_SPECIAL_MULTI,
@@ -406,6 +408,10 @@ public:
 	///
 	bool getLTNewPage(row_type row) const;
 	///
+	idx_type setLTCaption(row_type row, bool what);
+	///
+	bool ltCaption(row_type row) const;
+	///
 	bool haveLTHead() const;
 	///
 	bool haveLTFirstHead() const;
@@ -508,6 +514,8 @@ public:
 		bool endlastfoot;
 		/// row for a newpage
 		bool newpage;
+		/// caption
+		bool caption;
 	};
 	///
 	typedef std::vector<RowData> row_vector;

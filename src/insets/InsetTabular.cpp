@@ -151,6 +151,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_LTLASTFOOT, "set-ltlastfoot" },
 	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot" },
 	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage" },
+	{ Tabular::TOGGLE_LTCAPTION, "toggle-ltcaption" },
 	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column" },
 	{ Tabular::SET_SPECIAL_MULTI, "set-special-multi" },
 	{ Tabular::SET_BOOKTABS, "set-booktabs" },
@@ -546,7 +547,8 @@ Tabular::RowData::RowData()
 	  endfirsthead(false),
 	  endfoot(false),
 	  endlastfoot(false),
-	  newpage(false)
+	  newpage(false),
+	  caption(false)
 {}
 
 
@@ -1280,6 +1282,7 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("endfoot", row_info[i].endfoot)
 		   << write_attribute("endlastfoot", row_info[i].endlastfoot)
 		   << write_attribute("newpage", row_info[i].newpage)
+		   << write_attribute("caption", row_info[i].caption)
 		   << ">\n";
 		for (col_type j = 0; j < column_info.size(); ++j) {
 			os << "<cell"
@@ -1380,6 +1383,7 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "endfoot", row_info[i].endfoot);
 		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
+		getTokenValue(line, "caption", row_info[i].caption);
 		for (col_type j = 0; j < column_info.size(); ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
@@ -1686,6 +1690,28 @@ bool Tabular::haveLTLastFoot() const
 }
 
 
+Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
+{
+	idx_type i = getFirstCellInRow(row);
+	if (what) {
+		setMultiColumn(i, column_info.size());
+		setTopLine(i, false);
+		setBottomLine(i, false);
+		setLeftLine(i, false);
+		setRightLine(i, false);
+	} else
+		unsetMultiColumn(i);
+	row_info[row].caption = what;
+	return i;
+}
+
+
+bool Tabular::ltCaption(row_type row) const
+{
+	return row_info[row].caption;
+}
+
+
 // end longtable support functions
 
 void Tabular::setRowAscent(row_type row, int height)
@@ -1814,12 +1840,14 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) const
 {
 	int ret = 0;
+	row_type const r = cellRow(cell);
+	if (is_long_tabular && row_info[r].caption)
+		return ret;
 
 	Tabular::VAlignment valign =  getVAlignment(cell, !isMultiColumn(cell));
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	// figure out how to set the lines
 	// we always set double lines to the right of the cell
-	row_type const r = cellRow(cell);
 	col_type const c = cellColumn(cell);
 	col_type const nextcol = c + columnSpan(cell);
 	bool colright = columnRightLine(c);
@@ -1832,7 +1860,6 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
 	ismulticol = isMultiColumn(cell) 
 		|| (c == 0 && colleft != leftLine(cell))
-		|| (c > 0 && !(colleft || prevcellright) && leftLine(cell))
 		|| ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
 		|| (!colright && !nextcolleft && (rightLine(cell) || nextcellleft))
 		|| (coldouble != celldouble);
@@ -1922,6 +1949,9 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 int Tabular::TeXCellPostamble(odocstream & os, idx_type cell, bool ismulticol) const
 {
 	int ret = 0;
+	row_type const r = cellRow(cell);
+	if (is_long_tabular && row_info[r].caption)
+		return ret;
 
 	// usual cells
 	if (getUsebox(cell) == BOX_PARBOX)
@@ -3503,12 +3533,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::DELETE_COLUMN:
 		case Tabular::COPY_ROW:
 		case Tabular::COPY_COLUMN:
-		case Tabular::SET_ALL_LINES:
-		case Tabular::UNSET_ALL_LINES:
 		case Tabular::SET_TOP_SPACE:
 		case Tabular::SET_BOTTOM_SPACE:
 		case Tabular::SET_INTERLINE_SPACE:
-		case Tabular::SET_BORDER_LINES:
 			status.clear();
 			return true;
 
@@ -3517,19 +3544,29 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
+		case Tabular::SET_ALL_LINES:
+		case Tabular::UNSET_ALL_LINES:
+		case Tabular::SET_BORDER_LINES:
+			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
 		case Tabular::TOGGLE_LINE_TOP:
+			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.topLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_BOTTOM:
+			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.bottomLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_LEFT:
+			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.leftLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_RIGHT:
+			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.rightLine(cur.idx()));
 			break;
 
@@ -3643,6 +3680,11 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::SET_LTNEWPAGE:
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
+			break;
+
+		case Tabular::TOGGLE_LTCAPTION:
+			status.enabled(sel_row_start == sel_row_end);
+			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 
 		case Tabular::SET_BOOKTABS:
@@ -4373,6 +4415,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_LTNEWPAGE:
 		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
+		break;
+
+	case Tabular::TOGGLE_LTCAPTION:
+		cur.idx() = tabular.setLTCaption(row, !tabular.ltCaption(row));
+		cur.pit() = 0;
+		cur.pos() = 0;
+		cur.selection() = false;
 		break;
 
 	case Tabular::SET_BOOKTABS:
