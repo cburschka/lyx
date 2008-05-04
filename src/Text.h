@@ -193,6 +193,10 @@ public:
 	bool cursorBackwardOneWord(Cursor & cur);
 	///
 	bool cursorForwardOneWord(Cursor & cur);
+	///
+	bool cursorVisLeftOneWord(Cursor & cur);
+	///
+	bool cursorVisRightOneWord(Cursor & cur);
 	/// Delete from cursor up to the end of the current or next word.
 	void deleteWordForward(Cursor & cur);
 	/// Delete from cursor to start of current or prior word.

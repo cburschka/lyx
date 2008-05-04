@@ -633,16 +633,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_RIGHT:
 	case LFUN_WORD_RIGHT_SELECT:
-		//FIXME: for visual cursor mode, really move right
-		if (reverseDirectionNeeded(cur)) {
-			cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
-					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+		if (lyxrc.visual_cursor) {
+			needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_RIGHT_SELECT);
+			needsUpdate |= cursorVisRightOneWord(cur);
+			if (!needsUpdate && oldTopSlice == cur.top()
+					&& cur.boundary() == oldBoundary) {
+				cur.undispatched();
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			}
 		} else {
-			cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
-					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+			if (reverseDirectionNeeded(cur)) {
+				cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
+						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+			} else {
+				cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
+						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+			}
+			dispatch(cur, cmd);
+			return;
 		}
-		dispatch(cur, cmd);
-		return;
+		break;
 
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
@@ -652,16 +662,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_LEFT:
 	case LFUN_WORD_LEFT_SELECT:
-		//FIXME: for visual cursor mode, really move left
-		if (reverseDirectionNeeded(cur)) {
-			cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
-					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+		if (lyxrc.visual_cursor) {
+			needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_LEFT_SELECT);
+			needsUpdate |= cursorVisLeftOneWord(cur);
+			if (!needsUpdate && oldTopSlice == cur.top()
+					&& cur.boundary() == oldBoundary) {
+				cur.undispatched();
+				cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			}
 		} else {
-			cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
-					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+			if (reverseDirectionNeeded(cur)) {
+				cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
+						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
+			} else {
+				cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
+						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
+			}
+			dispatch(cur, cmd);
+			return;
 		}
-		dispatch(cur, cmd);
-		return;
+		break;
 
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:

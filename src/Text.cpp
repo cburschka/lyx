@@ -622,6 +622,84 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 }
 
 
+bool Text::cursorVisLeftOneWord(Cursor & cur)
+{
+	LASSERT(this == cur.text(), /**/);
+
+	pos_type left_pos, right_pos;
+	bool left_is_letter, right_is_letter;
+
+	Cursor temp_cur = cur;
+
+	// always try to move at least once...
+	while (temp_cur.posVisLeft(true /* skip_inset */)) {
+
+		// collect some information about current cursor position
+		temp_cur.getSurroundingPos(left_pos, right_pos);
+		left_is_letter = 
+			(left_pos > -1 ? temp_cur.paragraph().isLetter(left_pos) : false);
+		right_is_letter = 
+			(right_pos > -1 ? temp_cur.paragraph().isLetter(right_pos) : false);
+
+		// if we're not at a letter/non-letter boundary, continue moving
+		if (left_is_letter == right_is_letter)
+			continue;
+
+		// we should stop when we have an LTR word on our right or an RTL word
+		// on our left
+		if ((left_is_letter && temp_cur.paragraph().getFontSettings(
+				temp_cur.bv().buffer().params(), 
+				left_pos).isRightToLeft())
+			|| (right_is_letter && !temp_cur.paragraph().getFontSettings(
+				temp_cur.bv().buffer().params(), 
+				right_pos).isRightToLeft()))
+			break;
+	}
+
+	return setCursor(cur, temp_cur.pit(), temp_cur.pos(), 
+					 true, temp_cur.boundary());
+}
+
+
+bool Text::cursorVisRightOneWord(Cursor & cur)
+{
+	LASSERT(this == cur.text(), /**/);
+
+	pos_type left_pos, right_pos;
+	bool left_is_letter, right_is_letter;
+
+	Cursor temp_cur = cur;
+
+	// always try to move at least once...
+	while (temp_cur.posVisRight(true /* skip_inset */)) {
+
+		// collect some information about current cursor position
+		temp_cur.getSurroundingPos(left_pos, right_pos);
+		left_is_letter = 
+			(left_pos > -1 ? temp_cur.paragraph().isLetter(left_pos) : false);
+		right_is_letter = 
+			(right_pos > -1 ? temp_cur.paragraph().isLetter(right_pos) : false);
+
+		// if we're not at a letter/non-letter boundary, continue moving
+		if (left_is_letter == right_is_letter)
+			continue;
+
+		// we should stop when we have an LTR word on our right or an RTL word
+		// on our left
+		if ((left_is_letter && temp_cur.paragraph().getFontSettings(
+				temp_cur.bv().buffer().params(), 
+				left_pos).isRightToLeft())
+			|| (right_is_letter && !temp_cur.paragraph().getFontSettings(
+				temp_cur.bv().buffer().params(), 
+				right_pos).isRightToLeft()))
+			break;
+	}
+
+	return setCursor(cur, temp_cur.pit(), temp_cur.pos(), 
+					 true, temp_cur.boundary());
+}
+
+
 void Text::selectWord(Cursor & cur, word_location loc)
 {
 	LASSERT(this == cur.text(), /**/);
