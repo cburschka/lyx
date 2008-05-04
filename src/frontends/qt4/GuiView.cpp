@@ -550,6 +550,9 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 
 	structureChanged();
 
+	// The document settings needs to be reinitialised.
+	updateDialog("document", "");
+
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
 	updateDialogs();
@@ -570,6 +573,8 @@ void GuiView::on_lastWorkAreaRemoved()
 	}
 #else
 	structureChanged();
+	// The document settings needs to be reinitialised.
+	updateDialog("document", "");
 	updateDialogs();
 #endif
 }
@@ -624,6 +629,8 @@ bool GuiView::event(QEvent * e)
 			// The document structure, name and dialogs might have
 			// changed in another view.
 			structureChanged();
+			// The document settings needs to be reinitialised.
+			updateDialog("document", "");
 			updateDialogs();
 		} else {
 			setWindowTitle(qt_("LyX"));
@@ -927,8 +934,6 @@ void GuiView::structureChanged()
 	// Navigator needs more than a simple update in this case. It needs to be
 	// rebuilt.
 	updateDialog("toc", "");
-	// Same for the document settings dialog.
-	updateDialog("document", "");
 }
 
 

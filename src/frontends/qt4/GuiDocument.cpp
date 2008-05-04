@@ -2167,6 +2167,8 @@ char const * GuiDocument::fontfamilies_gui[5] = {
 bool GuiDocument::initialiseParams(string const &)
 {
 	bp_ = buffer().params();
+	// Force update on next updateContent() round.
+	current_id_ = 0;
 	loadModuleInfo();
 	return true;
 }
