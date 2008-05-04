@@ -80,7 +80,6 @@ Win32/packaging/AltInstaller/specials/preferences \
 Win32/packaging/AltInstaller/specials/session \
 Win32/packaging/AltInstaller/specials/AspellRepositories.txt \
 Win32/packaging/AltInstaller/specials/AspellDictionaryNames.txt \
-Win32/packaging/AltInstaller/specials/stdtoolbars.inc \
 Win32/packaging/AltInstaller/informations/WinLangCode.htm \
 Win32/packaging/AltInstaller/informations/WindowsCodePages.txt \
 Win32/packaging/AltInstaller/informations/iso639.htm \
