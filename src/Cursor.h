@@ -122,6 +122,22 @@ public:
 	bool posBackward();
 	/// move one step forward
 	bool posForward();
+	/// move visually one step to the right
+	/**
+	 * @note: This method may move into an inset unless skip_inset == true.
+	 * @note: This method may move into a new paragraph.
+	 * @note: This method may move out of the current slice.
+	 * @return: true if moved, false if not moved
+	 */
+	bool posVisRight(bool skip_inset = false);
+	/// move visually one step to the left
+	/**
+	 * @note: This method may move into an inset unless skip_inset == true.
+	 * @note: This method may move into a new paragraph.
+	 * @note: This method may move out of the current slice.
+	 * @return: true if moved, false if not moved
+	 */
+	bool posVisLeft(bool skip_inset = false);
 	/// move visually to next/previous row
 	/**
 	 * Assuming we were to keep moving left (right) from the current cursor
