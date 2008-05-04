@@ -302,11 +302,10 @@ UIFILES = \
 	WrapUi.ui
 
 
-if MONOLITHIC_FRONTEND_QT4
-
-
 liblyxqt4.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
+
+if MONOLITHIC_FRONTEND_QT4
 
 liblyxqt4_la_SOURCES = \
 	liblyxqt4.cpp \
@@ -317,9 +316,6 @@ BUILT_SOURCES += liblyxqt4.cpp
 CLEANFILES += liblyxqt4.cpp
 
 else
-
-liblyxqt4.cpp:
-	touch $@
 
 liblyxqt4_la_SOURCES = \
 	$(SOURCEFILES) \
