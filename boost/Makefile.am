@@ -7,6 +7,8 @@ noinst_LTLIBRARIES = liblyxboost.la
 #BUILT_SOURCES = $(PCH_FILE)
 #AM_CPPFLAGS += $(PCH_FLAGS)
 
+EXTRA_DIST = boost
+
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
 
