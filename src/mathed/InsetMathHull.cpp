@@ -633,7 +633,16 @@ void InsetMathHull::addRow(row_type row)
 {
 	if (!rowChangeOK())
 		return;
-	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
+
+	bool numbered = numberedType();
+	if (type_ == hullMultline) {
+		if (row + 1 == nrows())
+			nonum_[row] = true;
+		else
+			numbered = false;
+	}
+
+	nonum_.insert(nonum_.begin() + row + 1, !numbered);
 	label_.insert(label_.begin() + row + 1, docstring());
 	InsetMathGrid::addRow(row);
 }
