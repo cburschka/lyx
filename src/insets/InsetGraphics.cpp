@@ -910,7 +910,8 @@ void InsetGraphics::addToToc(ParConstIterator const & cpit) const
 {
 	TocBackend & backend = buffer().tocBackend();
 
-	docstring const str = params_.filename.displayName();
+	//FIXME UNICODE
+	docstring const str = from_utf8(params_.filename.onlyFileName());
 	backend.toc("graphics").push_back(TocItem(cpit, 0, str));
 }
 
