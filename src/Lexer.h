@@ -101,7 +101,7 @@ public:
 	int lex();
 
 	/** Just read the next word. If esc is true remember that
-	    some chars might be escaped: "\ atleast
+	    some chars might be escaped: "\ at least
 	*/
 	bool next(bool esc = false);
 

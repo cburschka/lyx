@@ -51,6 +51,7 @@ using support::expandPath;
 using support::FileName;
 using support::getEnv;
 using support::libFileSearch;
+using support::subst;
 using support::token;
 
 using std::cout;
@@ -449,7 +450,7 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PRINT_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				print_command = lexrc.getString();
 			}
 			break;
@@ -527,7 +528,7 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PRINTSPOOL_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				print_spool_command = lexrc.getString();
 			}
 			break;
@@ -602,19 +603,19 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_CHKTEX_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				chktex_command = lexrc.getString();
 			}
 			break;
 
 		case RC_BIBTEX_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				bibtex_command = lexrc.getString();
 			}
 			break;
 
 		case RC_INDEX_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				index_command = lexrc.getString();
 			}
 			break;
@@ -855,7 +856,7 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PLAINTEXT_ROFF_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				plaintext_roff_command = lexrc.getString();
 			}
 			break;
@@ -871,7 +872,7 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 		case RC_SPELL_COMMAND:
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				isp_command = lexrc.getString();
 			}
 			break;
@@ -997,7 +998,7 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next()) {
 				fmt = lexrc.getString();
 			}
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				command = lexrc.getString();
 			}
 			setMover(fmt, command);
@@ -1012,7 +1013,7 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next()) {
 				to = lexrc.getString();
 			}
-			if (lexrc.next()) {
+			if (lexrc.next(true)) {
 				command = lexrc.getString();
 			}
 			if (lexrc.next()) {
@@ -1052,9 +1053,9 @@ int LyXRC::read(Lexer & lexrc)
 				shortcut = lexrc.getString();
 			}
 			string viewer, editor;
-			if (lexrc.next())
+			if (lexrc.next(true))
 				viewer = lexrc.getString();
-			if (lexrc.next())
+			if (lexrc.next(true))
 				editor = lexrc.getString();
 			string flags;
 			// Hack to ensure compatibility with versions older
@@ -1217,23 +1218,25 @@ private:
 };
 
 
+namespace {
+
+	// Escape \ and " so that LyXLex can read the string later
+	string escapeCommand(string const & str) {
+		return subst(subst(str , "\\", "\\\\"), 
+			     "\"", "\\\"");
+	}
+
+}
+
+
 void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 {
-	os << "### This file is part of\n"
-	   << "### ========================================================\n"
-	   << "###          LyX, The Document Processor\n"
-	   << "###\n"
-	   << "###          Copyright 1995 Matthias Ettrich\n"
-	   << "###          Copyright 1995-2001 The LyX Team.\n"
-	   << "###\n"
-	   << "### ========================================================\n"
-	   << "\n"
-	   << "# This file is written by LyX, if you want to make your own\n"
+	os << "# This file is written by LyX, if you want to make your own\n"
 	   << "# modifications you should do them from inside LyX and save\n"
 	   << "\n";
 
 	// Why the switch you might ask. It is a trick to ensure that all
-	// the elements in the LyXRCTags enum is handled. As you can see
+	// the elements in the LyXRCTags enum are handled. As you can see
 	// there are no breaks at all. So it is just a huge fall-through.
 	// The nice thing is that we will get a warning from the compiler
 	// if we forget an element.
@@ -1342,17 +1345,17 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_CHKTEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    chktex_command != system_lyxrc.chktex_command) {
-			os << "\\chktex_command \"" << chktex_command << "\"\n";
+			os << "\\chktex_command \"" << escapeCommand(chktex_command) << "\"\n";
 		}
 	case RC_BIBTEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    bibtex_command != system_lyxrc.bibtex_command) {
-			os << "\\bibtex_command \"" << bibtex_command << "\"\n";
+			os << "\\bibtex_command \"" << escapeCommand(bibtex_command) << "\"\n";
 		}
 	case RC_INDEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    index_command != system_lyxrc.index_command) {
-			os << "\\index_command \"" << index_command << "\"\n";
+			os << "\\index_command \"" << escapeCommand(index_command) << "\"\n";
 		}
 	case RC_TEX_EXPECTS_WINDOWS_PATHS:
 		if (ignore_system_lyxrc ||
@@ -1624,7 +1627,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_PRINT_COMMAND:
 		if (ignore_system_lyxrc ||
 		    print_command != system_lyxrc.print_command) {
-			os << "\\print_command \"" << print_command << "\"\n";
+			os << "\\print_command \"" << escapeCommand(print_command) << "\"\n";
 		}
 	case RC_PRINTEXSTRAOPTIONS:
 		if (ignore_system_lyxrc ||
@@ -1635,7 +1638,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_PRINTSPOOL_COMMAND:
 		if (ignore_system_lyxrc ||
 		    print_spool_command != system_lyxrc.print_spool_command) {
-			os << "\\print_spool_command \"" << print_spool_command
+			os << "\\print_spool_command \"" << escapeCommand(print_spool_command)
 			   << "\"\n";
 		}
 	case RC_PRINTSPOOL_PRINTERPREFIX:
@@ -1823,7 +1826,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_PLAINTEXT_ROFF_COMMAND:
 		if (ignore_system_lyxrc ||
 		    plaintext_roff_command != system_lyxrc.plaintext_roff_command) {
-			os << "\\plaintext_roff_command \"" << plaintext_roff_command
+			os << "\\plaintext_roff_command \"" << escapeCommand(plaintext_roff_command)
 			   << "\"\n";
 		}
 
@@ -1838,7 +1841,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_SPELL_COMMAND:
 		if (ignore_system_lyxrc ||
 		    isp_command != system_lyxrc.isp_command) {
-			os << "\\spell_command \"" << isp_command << "\"\n";
+			os << "\\spell_command \"" << escapeCommand(isp_command) << "\"\n";
 		}
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
@@ -2007,8 +2010,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
 				   << cit->shortcut() << "\" \""
-				   << cit->viewer() << "\" \""
-				   << cit->editor() << "\" \"";
+				   << escapeCommand(cit->viewer()) << "\" \""
+				   << escapeCommand(cit->editor()) << "\" \"";
 				std::vector<string> flags;
 				if (cit->documentFormat())
 					flags.push_back("document");
@@ -2044,7 +2047,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			    converter->flags != cit->flags)
 				os << "\\converter \"" << cit->from << "\" \""
 				   << cit->to << "\" \""
-				   << cit->command << "\" \""
+				   << escapeCommand(cit->command) << "\" \""
 				   << cit->flags << "\"\n";
 		}
 
@@ -2075,7 +2078,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 					it->second.command();
 
 				os << "\\copier " << fmt
-				   << " \"" << command << "\"\n";
+				   << " \"" << escapeCommand(command) << "\"\n";
 			}
 		}
 
