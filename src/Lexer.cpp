@@ -636,6 +636,7 @@ void Lexer::setCommentChar(char c)
 	pimpl_->setCommentChar(c);
 }
 
+
 int Lexer::lex()
 {
 	return pimpl_->lex();
