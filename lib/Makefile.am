@@ -1076,6 +1076,7 @@ scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_PYTHON = \
 	scripts/TeXFiles.py \
 	scripts/clean_dvi.py \
+	scripts/csv2lyx.py \
 	scripts/convertDefault.py \
 	scripts/date.py \
 	scripts/ext_copy.py \

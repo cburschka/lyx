@@ -313,6 +313,7 @@ def checkFormatEntries(dtl_tools):
     #
     # entried that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
+\Format csv        csv    "Comma-separated values"  "" ""	""	"document"
 \Format fax        ""      Fax                    "" ""	""	"document"
 \Format lyx        lyx     LyX                    "" ""	""	""
 \Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	"document"
@@ -503,6 +504,7 @@ def checkConverterEntries():
     #
     # Entries that do not need checkProg
     addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
+\converter csv        lyx        "python -tt $$s/scripts/csv2lyx.py $$i $$o"	""
 \converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
