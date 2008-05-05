@@ -386,7 +386,7 @@ void GuiCompleter::updateInline(Cursor & cur, QString const & completion)
 	
 	// compute postfix
 	docstring prefix = cur.inset().completionPrefix(cur);
-	docstring postfix = from_utf8(fromqstr(completion.mid(prefix.length())));
+	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
 	
 	// shorten it if necessary
 	if (lyxrc.completion_inline_dots != -1
@@ -687,7 +687,7 @@ void GuiCompleter::tab()
 	
 	// If completion is active, at least complete by one character
 	docstring prefix = cur.inset().completionPrefix(cur);
-	docstring completion = from_utf8(fromqstr(currentCompletion()));
+	docstring completion = qstring_to_ucs4(currentCompletion());
 	if (completion.size() <= prefix.size()) {
 		// finalize completion
 		cur.inset().insertCompletion(cur, docstring(), true);
@@ -867,7 +867,7 @@ docstring GuiCompleter::longestUniqueCompletion() const
 		}
 	}
 
-	return from_utf8(fromqstr(s));
+	return qstring_to_ucs4(s);
 }
 
 
@@ -877,7 +877,7 @@ void GuiCompleter::popupActivated(const QString & completion)
 	cur.updateFlags(Update::None);
 	
 	docstring prefix = cur.inset().completionPrefix(cur);
-	docstring postfix = from_utf8(fromqstr(completion.mid(prefix.length())));
+	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
 	cur.inset().insertCompletion(cur, postfix, true);
 	hidePopup(cur);
 	hideInline(cur);
