@@ -249,8 +249,8 @@ Menuset
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
-		OptItem "Promote Section|r" "outline-in"
-		OptItem "Demote Section|m" "outline-out"
+		OptItem "Promote Section|r" "outline-out"
+		OptItem "Demote Section|m" "outline-in"
 		OptItem "Move Section down|d" "outline-down"
 		OptItem "Move Section up|u" "outline-up"
 		Separator
