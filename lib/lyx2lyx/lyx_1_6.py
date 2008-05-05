@@ -1548,12 +1548,17 @@ def revert_rotfloat(document):
     " Revert sideways custom floats. "
     i = 0
     while 1:
-        i = find_token(document.body, "\\begin_inset Float", i)
+        # whitespace intended (exclude \\begin_inset FloatList)
+        i = find_token(document.body, "\\begin_inset Float ", i)
         if i == -1:
             return
         line = document.body[i]
         r = re.compile(r'\\begin_inset Float (.*)$')
         m = r.match(line)
+        if m == None:
+            document.warning("Unable to match line " + str(i) + " of body!")
+            i += 1
+            continue
         floattype = m.group(1)
         if floattype == "figure" or floattype == "table":
             i = i + 1
@@ -1593,12 +1598,17 @@ def revert_widesideways(document):
     " Revert wide sideways floats. "
     i = 0
     while 1:
-        i = find_token(document.body, '\\begin_inset Float', i)
+        # whitespace intended (exclude \\begin_inset FloatList)
+        i = find_token(document.body, '\\begin_inset Float ', i)
         if i == -1:
             return
         line = document.body[i]
         r = re.compile(r'\\begin_inset Float (.*)$')
         m = r.match(line)
+        if m == None:
+            document.warning("Unable to match line " + str(i) + " of body!")
+            i += 1
+            continue
         floattype = m.group(1)
         if floattype != "figure" and floattype != "table":
             i = i + 1
@@ -1685,7 +1695,8 @@ def revert_subfig(document):
     " Revert subfloats. "
     i = 0
     while 1:
-        i = find_token(document.body, '\\begin_inset Float', i)
+        # whitespace intended (exclude \\begin_inset FloatList)
+        i = find_token(document.body, '\\begin_inset Float ', i)
         if i == -1:
             return
         while 1:
@@ -1695,7 +1706,8 @@ def revert_subfig(document):
                 i = i + 1
                 continue
             # look for embedded float (= subfloat)
-            k = find_token(document.body, '\\begin_inset Float', i + 1, j)
+            # whitespace intended (exclude \\begin_inset FloatList)
+            k = find_token(document.body, '\\begin_inset Float ', i + 1, j)
             if k == -1:
                 break
             l = find_end_of_inset(document.body, k)
