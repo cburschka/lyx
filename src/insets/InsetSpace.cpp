@@ -233,14 +233,19 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	if (isStretchableSpace()) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
+		//Pixel height divisible by 2 for prettier fill graphics:
+		int const oddheight = (asc ^ desc) & 1;
 		int const x0 = x + 1;
 		int const x1 = x + dim.wid - 2;
-		int const y0 = y + desc;
-		int const y1 = y - asc;
-		int const y2 = y - asc / 2;
+		int const y0 = y + desc - 1;
+		int const y1 = y - asc + oddheight - 1;
+		int const y2 = (y0 + y1) / 2;
 		int const xoffset = (y0 - y1) / 2;
 		int const x2 = x0 + xoffset;
 		int const x3 = x1 - xoffset;
+		int const xm = (x0 + x1) / 2;
+		int const xml = xm - xoffset;
+		int const xmr = xm + xoffset;
 
 		if (params_.kind == InsetSpaceParams::HFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_added_space);
@@ -254,29 +259,35 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.line(x1, y1, x1, y0, Color_latex);
 		} else if (params_.kind == InsetSpaceParams::DOTFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_special);
-			pi.pain.line(x0, y, x1, y, Color_special,
+			pi.pain.line(x0, y0, x1, y0, Color_special,
 				frontend::Painter::line_onoffdash);
 			pi.pain.line(x1, y1, x1, y0, Color_special);
 		} else if (params_.kind == InsetSpaceParams::HRULEFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_special);
-			pi.pain.line(x0, y, x1, y, Color_special);
+			pi.pain.line(x0, y0, x1, y0, Color_special);
 			pi.pain.line(x1, y1, x1, y0, Color_special);
 		} else if (params_.kind == InsetSpaceParams::LEFTARROWFILL) {
-			pi.pain.line(x2, y1 , x0, y2, Color_special);
-			pi.pain.line(x0, y2 , x2, y0, Color_special);
+			pi.pain.line(x2, y1 + 1 , x0 + 1, y2, Color_special);
+			pi.pain.line(x0 + 1, y2 + 1 , x2, y0, Color_special);
 			pi.pain.line(x0, y2 , x1, y2, Color_special);
 		} else if (params_.kind == InsetSpaceParams::RIGHTARROWFILL) {
-			pi.pain.line(x3, y1 , x1, y2, Color_special);
-			pi.pain.line(x1, y2 , x3, y0, Color_special);
+			pi.pain.line(x3 + 1, y1 + 1 , x1, y2, Color_special);
+			pi.pain.line(x1, y2 + 1 , x3 + 1, y0, Color_special);
 			pi.pain.line(x0, y2 , x1, y2, Color_special);
 		} else if (params_.kind == InsetSpaceParams::UPBRACEFILL) {
-			pi.pain.line(x0, y1 , x2, y2, Color_special);
-			pi.pain.line(x3, y2 , x1, y1, Color_special);
-			pi.pain.line(x2, y2 , x3, y2, Color_special);
+			pi.pain.line(x0 + 1, y1 + 1 , x2, y2, Color_special);
+			pi.pain.line(x2, y2 , xml, y2, Color_special);
+			pi.pain.line(xml + 1, y2 + 1 , xm, y0, Color_special);
+			pi.pain.line(xm + 1, y0 , xmr, y2 + 1, Color_special);
+			pi.pain.line(xmr, y2 , x3, y2, Color_special);
+			pi.pain.line(x3 + 1, y2 , x1, y1 + 1, Color_special);
 		} else if (params_.kind == InsetSpaceParams::DOWNBRACEFILL) {
-			pi.pain.line(x0, y0 , x2, y2, Color_special);
-			pi.pain.line(x3, y2 , x1, y0, Color_special);
-			pi.pain.line(x2, y2 , x3, y2, Color_special);
+			pi.pain.line(x0 + 1, y0 , x2, y2 + 1, Color_special);
+			pi.pain.line(x2, y2 , xml, y2, Color_special);
+			pi.pain.line(xml + 1, y2 , xm, y1 + 1, Color_special);
+			pi.pain.line(xm + 1, y1 + 1 , xmr, y2, Color_special);
+			pi.pain.line(xmr, y2 , x3, y2, Color_special);
+			pi.pain.line(x3 + 1, y2 + 1 , x1, y0, Color_special);
 		}
 		return;
 	}
