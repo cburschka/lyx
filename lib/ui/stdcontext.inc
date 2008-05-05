@@ -249,6 +249,11 @@ Menuset
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
+		OptItem "Promote Section|r" "outline-in"
+		OptItem "Demote Section|m" "outline-out"
+		OptItem "Move Section down|d" "outline-down"
+		OptItem "Move Section up|u" "outline-up"
+		Separator
 		Item "Apply Last Text Style|A" "font-free-apply"
 		Submenu "Text Style|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
