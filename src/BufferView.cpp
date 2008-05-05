@@ -936,10 +936,14 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_INSET_SETTINGS: {
 		InsetCode code = cur.inset().lyxCode();
-		if (cur.nextInset())
-			code = cur.nextInset()->lyxCode();
+		if (cmd.getArg(0) == insetName(code)) {
+			flag.enabled(true);
+			break;
+		}
 		bool enable = false;
-		switch (code) {
+		InsetCode next_code = cur.nextInset()
+			? cur.nextInset()->lyxCode() : NO_CODE;
+		switch (next_code) {
 			case TABULAR_CODE:
 			case ERT_CODE:
 			case FLOAT_CODE:
@@ -949,7 +953,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			case BOX_CODE:
 			case LISTINGS_CODE:
 				enable = (cmd.argument().empty() ||
-					  cmd.getArg(0) == insetName(code));
+					  cmd.getArg(0) == insetName(next_code));
 				break;
 			default:
 				break;

@@ -873,14 +873,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_SETTINGS: {
-		// if there is an inset at cursor, access this
-		Inset * inset = cur.nextInset();
-		if (inset) {
-			inset->showInsetDialog(bv);
+		Inset & inset = cur.inset();
+		if (cmd.getArg(0) == insetName(inset.lyxCode())) {
+			// This inset dialog has been explicitely requested.
+			inset.showInsetDialog(bv);
 			break;
 		}
-		// if not work, access the underlying inset.
-		cur.inset().showInsetDialog(bv);
+		// else, if there is an inset at the cursor, access this
+		Inset * next_inset = cur.nextInset();
+		if (next_inset) {
+			next_inset->showInsetDialog(bv);
+			break;
+		}
+		// if not then access the underlying inset.
+		inset.showInsetDialog(bv);
 		break;
 	}
 
