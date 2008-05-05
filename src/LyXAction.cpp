@@ -1096,7 +1096,9 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_EDIT
  * \li Action: Edit the inset at cursor with an external application,
  *             if one is attributed.
- * \li Syntax: inset-edit
+ * \li Syntax: inset-edit [<INSET_PARAMS>]
+ * \li Params: <INSET_PARAMS>: Parameters for the inset.
+                               Currently only the filename will be considered.
  * \li Origin: JSpitzm, 27 Apr 2006
  * \endvar
  */
