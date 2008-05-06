@@ -20,6 +20,8 @@
 #include "OutputParams.h"
 #include "TocBackend.h"
 
+#include <ostream>
+
 using namespace std;
 
 namespace lyx {
