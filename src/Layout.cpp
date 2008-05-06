@@ -223,17 +223,13 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 				this->operator=(tclass[style]);
 				name_ = tmpname;
 			} else {
-				lyxerr << "Cannot copy unknown style `"
-							 << to_utf8(style) << "'\n"
-							 << "All layouts so far:"
-							 << endl;
+				LYXERR0("Cannot copy unknown style `"
+					<< style << "'\n"
+					<< "All layouts so far:");
 				DocumentClass::const_iterator lit = tclass.begin();
 				DocumentClass::const_iterator len = tclass.end();
 				for (; lit != len; ++lit)
-					lyxerr << to_utf8(lit->name()) << endl;
-
-				//lex.printError("Cannot copy known "
-				//		 "style `$$Token'");
+					LYXERR0(lit->name());
 			}
 			break;
 			}
@@ -250,8 +246,8 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 				if (obsoleted_by().empty())
 					obsoleted_by_ = style;
 			} else {
-				lyxerr << "Cannot replace with unknown style `" 
-					<< to_utf8(style) << '\'' << endl;
+				LYXERR0("Cannot replace with unknown style `" 
+					<< style << '\'');
 
 				//lex.printError("Cannot replace with"
 				//		 " unknown style "
@@ -650,8 +646,7 @@ void Layout::readEndLabelType(Lexer & lex)
 		endlabeltype = static_cast<EndLabelType>(le);
 		break;
 	default:
-		LYXERR0("Unhandled value " << le
-		       << " in Layout::readEndLabelType.");
+		LYXERR0("Unhandled value " << le);
 		break;
 	}
 }
@@ -682,8 +677,7 @@ void Layout::readMargin(Lexer & lex)
 		margintype = static_cast<MarginType>(le);
 		break;
 	default:
-		lyxerr << "Unhandled value " << le
-		       << " in Layout::readMargin." << endl;
+		LYXERR0("Unhandled value " << le);
 		break;
 	}
 }
@@ -715,8 +709,7 @@ void Layout::readLatexType(Lexer & lex)
 		latextype = static_cast<LatexType>(le);
 		break;
 	default:
-		lyxerr << "Unhandled value " << le
-		       << " in Layout::readLatexType." << endl;
+		LYXERR0("Unhandled value " << le);
 		break;
 	}
 }
