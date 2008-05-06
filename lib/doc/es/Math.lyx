@@ -117,8 +117,6 @@
 % declare operators (see sec. 10.4 and sec. 15.2)
 \DeclareMathOperator*{\Lozenge}{\blacklozenge}
 \DeclareMathOperator{\sgn}{sgn}
-% declare operator example in Spanish (see sec.15.2)
-\DeclareMathOperator{\mcd}{mcd}
 
 \newcommand{\spce}{\textvisiblespace}
 
@@ -451,7 +449,7 @@ status collapsed
 , que forma parte de todas las distribuciones estándar de LaTeX, hay una
  lista con todos los comandos de ecuaciones 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -2392,10 +2390,10 @@ de la barra de herramientas de ecuaciones.
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
+<lyxtabular version="3" rows="3" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
 <row topline="true" bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2482,7 +2480,7 @@ B
 
 \backslash
 dbinom{A
-\begin_inset Formula $\to$
+\begin_inset Formula $\rightarrow$
 \end_inset
 
 
@@ -2492,111 +2490,11 @@ dbinom{A
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 \begin_inset Formula $\raisebox{5mm}{}\dbinom{A}{B}\raisebox{-2.5mm}{}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\backslash
-brack
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-A
-\begin_inset Formula $\downarrow$
-\end_inset
-
-B
-\series bold
-
-\begin_inset LatexCommand index
-name "Comandos ! B ! \\textbackslash brack"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $\raisebox{5mm}{}{A \brack B}\raisebox{-2.5mm}{}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\backslash
-brace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-A
-\begin_inset Formula $\downarrow$
-\end_inset
-
-B
-\series bold
-
-\begin_inset LatexCommand index
-name "Comandos ! B ! \\textbackslash brace"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $\raisebox{5mm}{}{A \brace B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -3129,7 +3027,7 @@ raisebox
 \end_layout
 
 \begin_layout Standard
-Por defecto, el índice más corto se coloca sobre o bajo el primer carácter
+Por omisión, el índice más corto se coloca sobre o bajo el primer carácter
  del índice más largo.
  Para evitarlo está el comando 
 \series bold
@@ -3530,7 +3428,7 @@ int
 \series default
  genera espacio de la altura del signo de la integral
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 El comando 
@@ -4454,7 +4352,7 @@ lccr
 \series default
  en la alineación horizontal.
  Normalmente todas las columnas de una matriz están centradas, por tanto
- el valor por defecto es 
+ el valor por omisión es 
 \series bold
 c
 \series default
@@ -9227,7 +9125,8 @@ i
 
 i
 \series default
-, p.e., el comando 
+, p.\InsetSpace \thinspace{}
+e., el comando 
 \series bold
 
 \backslash
@@ -10229,7 +10128,7 @@ Ctrl-Espacio
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -10984,7 +10883,7 @@ texorpdfstring{
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Para espacio vertical en ecuaciones véase 
@@ -11751,7 +11650,7 @@ fbox
 \noindent
 \align center
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 La tabla se ha puesto en una minipágina para que aparezca la nota al pie.
@@ -11771,7 +11670,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -15073,7 +14972,7 @@ l
 \end_layout
 
 \begin_layout Standard
-Los límites por defecto son:
+Los límites por omisión son:
 \begin_inset Formula \[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}\]
 
@@ -15109,7 +15008,7 @@ intop
 \backslash
 ointop
 \series default
-, los límites se colocan por defecto junto al operador.
+, los límites se colocan por omisión junto al operador.
  Pero en integrales múltiples los límites se ponen con frecuencia bajo el
  operador.
  Por tanto, en el siguiente ejemplo se ha elegido el tipo 
@@ -17928,7 +17827,7 @@ A
 
 \begin_layout Standard
 Si un símbolo no se puede mostrar en distintos tamaños se usará siempre
- el tamaño por defecto.
+ el tamaño por omisión.
 \end_layout
 
 \begin_layout Section
@@ -23869,42 +23768,8 @@ name "Funciones ! personalizadas"
 \end_layout
 
 \begin_layout Standard
-Para usar una función no predefinida, como por ejemplo la función máximo
- común divisor, mcd
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Se ha sustituido el ejemplo del original en inglés, 
-\backslash
-
-\series bold
-sgn
-\series default
-, por la función máximo común divisor, 
-\series bold
-
-\backslash
-mcd
-\series default
-, equivalente a la predefinida en inglés 
-\series bold
-
-\backslash
-gcd
-\series default
-.
- (
-\emph on
-N.\InsetSpace \thinspace{}
-del t.
-\emph default
-)
-\end_layout
-
-\end_inset
-
-, hay dos posibilidades:
+Para usar una función no predefinida, como por ejemplo la función signo,
+ sgn(x), hay dos posibilidades:
 \end_layout
 
 \begin_layout Itemize
@@ -23944,7 +23809,7 @@ reference "sub:Operadores-de-usuario"
 \backslash
 DeclareMathOperator{
 \backslash
-mcd}{mcd}
+sgn}{sgn}
 \series default
 
 \begin_inset LatexCommand index
@@ -23964,7 +23829,7 @@ Ahora la función recién definida se puede obtener con el comando
 \series bold
 
 \backslash
-mcd
+sgn
 \series default
 .
 \end_layout
@@ -23973,7 +23838,7 @@ mcd
 Escribe la ecuación de la forma habitual, marca el nombre de la ecuación,
  en nuestro ejemplo las letras 
 \emph on
-mcd
+sgn
 \emph default
 , y cámbialo a texto matemático.
  Entre el factor precedente y la función se inserta un espacio.
@@ -24028,7 +23893,7 @@ Resultado
 \begin_layout Standard
 A
 \backslash
-mcd(x)+B
+sgn(x)+B
 \end_layout
 
 \end_inset
@@ -24037,7 +23902,7 @@ mcd(x)+B
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $A\mcd(x)+B$
+\begin_inset Formula $A\sgn(x)+B$
 \end_inset
 
 
@@ -24054,7 +23919,7 @@ mcd(x)+B
 A
 \backslash
 ,
-\begin_inset Formula $\underbrace{\textrm{mcd}}_{\textrm{Alt-m}\,\textrm{m}}$
+\begin_inset Formula $\underbrace{\textrm{sgn}}_{\textrm{Alt-m}\,\textrm{m}}$
 \end_inset
 
 (x)+B
@@ -24066,7 +23931,7 @@ A
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $A\,\mbox{mcd}(x)+B$
+\begin_inset Formula $A\,\mbox{sgn}(x)+B$
 \end_inset
 
 
@@ -27915,7 +27780,7 @@ name "Comandos ! M ! \\textbackslash multlinegap"
  especifica la distancia de la primera línea desde el margen izquierdo de
  la página.
  Esta longitud es 0\InsetSpace \thinspace{}
-pt por defecto.
+pt por omisión.
 \end_layout
 
 \begin_layout Standard
@@ -27997,31 +27862,8 @@ name "Ecuación ! multilínea ! partes de"
 \end_layout
 
 \begin_layout Standard
-Para mostrar sólo partes de una ecuación multilínea se
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\backslash
-left.
-\backslash
-right
-\backslash
-}
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
- usa uno de los siguientes métodos: 
+Para mostrar sólo partes de una ecuación multilínea se usa uno de los siguientes
+ métodos: 
 \series bold
 aligned
 \series default
@@ -29653,7 +29495,7 @@ D=\textrm{latinas en mayúscula}\label{eq:Lat}\end{equation}
 \end_layout
 
 \begin_layout Standard
-Para volver a la numeración por defecto se inserta el comando:
+Para volver a la numeración por omisión se inserta el comando:
 \end_layout
 
 \begin_layout Standard
@@ -30598,7 +30440,7 @@ Todas las flechas pueden etiquetarse como sigue:
 
 \begin_layout Itemize
 Si se inserta texto entre la primera y segunda <\InsetSpace ~
- o >, respectivamente, se
+o >, respectivamente, se
  muestra sobre la flecha.
  Si se inserta entre la segunda y la tercera, bajo la flecha.
 \end_layout
@@ -30620,6 +30462,22 @@ D@((j\,(E@)k))F@=C\end{CD}\]
 \end_inset
 
 El comando para este diagrama es:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+véase 
+\begin_inset LatexCommand vref
+reference "fn:sinónimos"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \newline
 
 \series bold
@@ -30854,10 +30712,6 @@ Un ejemplo de texto de química:
 
 \begin_layout Quote
 El ión 
-\begin_inset Formula $ $
-\end_inset
-
-
 \begin_inset Formula $\mathrm{SO_{4}^{2-}}$
 \end_inset
 
@@ -33816,7 +33670,7 @@ key "Voss"
 
 \end_inset
 
-
+Página web 
 \begin_inset ERT
 status collapsed
 
@@ -33829,7 +33683,7 @@ href{http://tug.org/TeXnik/}{
 
 \end_inset
 
-Página web
+ Sugerencias y consejos de LaTeX
 \begin_inset ERT
 status collapsed
 
@@ -33840,7 +33694,7 @@ status collapsed
 
 \end_inset
 
- sugerencias y consejos de LaTeX
+
 \end_layout
 
 \begin_layout Bibliography

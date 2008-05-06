@@ -124,7 +124,7 @@
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
+\pagenumbering{Roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Índice general}{}
@@ -1301,7 +1301,7 @@ Tabla
  y columnas.
  
 \newline
-Por defecto, la tabla tiene líneas que enmarcan cada celda y la primera
+Por omisión, la tabla tiene líneas que enmarcan cada celda y la primera
  fila aparece separada por una línea doble: la línea inferior de la primera
  fila y la línea superior de la segunda fila.
  Ejemplo de tabla:
@@ -4660,7 +4660,7 @@ name "Tablas largas ! Alineación"
 \end_layout
 
 \begin_layout Standard
-Las tablas largas se centran por defecto.
+Las tablas largas se centran por omisión.
  Al contrario de la alineación de filas y columnas, la alineación de una
  tabla no se puede cambiar por ahora en el diálogo de tablas.
  Para cambiar la alineación de tablas largas debes cambiar el valor de las
@@ -5915,7 +5915,7 @@ La anchura máxima se define por la longitud
 LTcapwidth
 \series default
 .
- Por defecto es 4\InsetSpace \thinspace{}
+ Por omisión es 4\InsetSpace \thinspace{}
 in (4\InsetSpace ~
 pulgadas).
  Para cambiarla añade el siguiente comando al preámbulo o como ERT en el
@@ -6667,7 +6667,7 @@ name "LaTeX-paquetes ! caption"
 \end_inset
 
 , como en este documento, se usa la anchura de toda la página para el pie
- si utilizas el valor por defecto de 4\InsetSpace \thinspace{}
+ si utilizas el valor por omisión de 4\InsetSpace \thinspace{}
 in para 
 \series bold
 
@@ -8755,7 +8755,7 @@ name "Tablas largas ! Saltos de página forzados"
 \end_layout
 
 \begin_layout Standard
-Por defecto, las tablas sólo se cortan entre filas.
+Por omisión, las tablas sólo se cortan entre filas.
  Si tienes una celda con líneas múltiples y necesitas un salto de página
  dentro de la celda, inserta el comando de nueva línea 
 \begin_inset Quotes eld
@@ -11678,7 +11678,7 @@ cm.
 \backslash
 multirow
 \series default
- alinea su contenido a la izquierda por defecto.
+ alinea su contenido a la izquierda por omisión.
  Para cambiarlo renombra el comando 
 \series bold
 
@@ -12357,7 +12357,7 @@ l{2pt}
 \emph default
  significa que la línea se recorta 2\InsetSpace \thinspace{}
 pt por su izquierda.
- Si no se especifica el tamaño  las líneas se recortan por defecto en 0.5\InsetSpace \thinspace{}
+ Si no se especifica el tamaño  las líneas se recortan por omisión en 0.5\InsetSpace \thinspace{}
 em.
 
 \series bold
@@ -15270,7 +15270,7 @@ reference "sec:Tablas-Formales"
 \end_inset
 
  LyX insertará 0.5\InsetSpace \thinspace{}
-em por defecto.
+em por omisión.
  Si la tabla es de estilo normal el espacio adicional destruirá las líneas
  verticales, como se ve en la tabla siguiente:
 \begin_inset VSpace medskip
@@ -15366,7 +15366,7 @@ Inferior\InsetSpace ~
 de\InsetSpace ~
 la\InsetSpace ~
 fila añade espacio bajo los caracteres de la fila.
- Si la tabla es formal LyX inserta por defecto 0.5\InsetSpace \thinspace{}
+ Si la tabla es formal LyX inserta por omisión 0.5\InsetSpace \thinspace{}
 em; si la tabla es normal
  inserta 2\InsetSpace \thinspace{}
 pt.
@@ -15378,7 +15378,7 @@ Entre\InsetSpace ~
 las\InsetSpace ~
 filas añade espacio entre la fila actual y la siguiente.
  Si la tabla es formal LyX inserta 0.5\InsetSpace \thinspace{}
-em por defecto.
+em por omisión.
  En tablas normales, el espacio adicional destruirá las líneas verticales
  de la tabla, como se ve en la siguiente:
 \begin_inset VSpace medskip
@@ -18419,7 +18419,7 @@ Usado al final de este documento
 \end_layout
 
 \begin_layout Standard
-Los algoritmos flotantes no se numeran por defecto según el esquema 
+Los algoritmos flotantes no se numeran por omisión según el esquema 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20272,7 +20272,7 @@ Figura #
 \end_inset
 
  es el número real de referencia.
- Por defecto la etiqueta y el número usan la misma fuente que el texto de
+ Por omisión la etiqueta y el número usan la misma fuente que el texto de
  la leyenda y el signo dos puntos sigue al número para separar la etiqueta
  del texto.
  El formato de la leyenda no es apropiado para todos los formatos de documento.
@@ -22421,7 +22421,7 @@ FrameRule
 \InsetSpace \thinspace{}
 
 \series default
-pt por defecto; se puede cambiar con 
+pt por omisión; se puede cambiar con 
 \series bold
 
 \backslash
@@ -22507,7 +22507,7 @@ Para las notas
 Sombreadas
 \family default
  el espacio entre el contenido y el borde es 3\InsetSpace \thinspace{}
-pt por defecto; se puede cambiar
+pt por omisión; se puede cambiar
  con 
 \series bold
 
@@ -25671,7 +25671,7 @@ fboxrule}{0.4pt}
 \end_inset
 
 El espacio entre el marco y el contenido del cuadro es 3\InsetSpace \thinspace{}
-pt por defecto para
+pt por omisión para
  todos los estilos.
  Se puede cambiar mediante la longitud 
 \series bold
@@ -25809,7 +25809,7 @@ mínimo
 (ancho y alto del cuadro)
 \family default
 .
- Por defecto es 
+ Por omisión es 
 \series bold
 
 \backslash
@@ -29927,7 +29927,7 @@ Al hacer clic-derecho sobre un recuadro de listado surge un cuadro de diálogo
 \end_layout
 
 \begin_layout Standard
-Por defecto, al insertar un listado de programa se inicia un párrafo nuevo.
+Por omisión, al insertar un listado de programa se inicia un párrafo nuevo.
  La opción de ubicación 
 \family sans
 Listado\InsetSpace ~
@@ -31481,7 +31481,7 @@ donde
 tabcolsep
 \series default
  es la longitud LaTeX entre el texto y el borde de la celda, 6\InsetSpace \thinspace{}
-pt por defecto.
+pt por omisión.
  
 \series bold
 
@@ -31489,7 +31489,7 @@ pt por defecto.
 arrayrulewidth
 \series default
  es el grosor de línea del borde, 0.4\InsetSpace \thinspace{}
-pt por defecto.
+pt por omisión.
 \end_layout
 
 \begin_layout Standard
