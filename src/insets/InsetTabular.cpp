@@ -1852,7 +1852,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 	col_type const nextcol = c + columnSpan(cell);
 	bool colright = columnRightLine(c);
 	bool colleft = columnLeftLine(c);
-	bool nextcolleft = nextcol < column_info.size() && colleft;
+	bool nextcolleft = nextcol < column_info.size() && columnLeftLine(nextcol);
 	bool nextcellleft = nextcol < column_info.size() 
 		&& leftLine(cellIndex(r, nextcol));
 	bool coldouble = colright && nextcolleft;
