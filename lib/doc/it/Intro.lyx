@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 331
 \begin_document
 \begin_header
 \textclass article
@@ -19,22 +19,7 @@
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=2,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team, Italian translation: Nicola Focci}, pdftex,
-  pdftitle={Introduction to LyX},pdfsubject={LyX-documentation Intro},
-  pdfkeywords={LyX, documentation}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
-
-\fi % end if pdflatex is used
+ \fi % end if pdflatex is used
 
  % the pages of the TOC are numbered roman
  % and a pdf-bookmark for the TOC is added
@@ -64,7 +49,22 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Introduzione a LyX"
+\pdf_author "LyX Team, traduzione in italiano di Nicola Focci"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
@@ -100,17 +100,22 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 Se avete commenti o correzioni, inviateli cortesemente alla mailing list
- della documentazione di LyX:: 
-\family typewriter
-lyx-docs@lists.lyx.org
-\end_layout
+ della documentazione di LyX: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Author
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 Traduzione in italiano di Nicola Focci
 \end_layout
 
@@ -811,16 +816,24 @@ ta\SpecialChar \-
 zio\SpecialChar \-
 ne,
  all'indirizzo 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Se avete domande alle quali la documentazione non è riuscita a dare risposte
  chiare, e avete bisogno di un aiuto rapido, esiste una mailing list attiva
  che potete raggiungere all'indirizzo 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -2141,9 +2154,13 @@ bug
 \end_inset
 
  esistente -- potete scrivere alla mailing list degli sviluppatori, 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Gli archivi di questa lista sono raggiungibili dal link indicato sul sito
  principale di LyX, 
@@ -2241,9 +2258,13 @@ Comunicare errori nei Manuali
 \begin_layout Standard
 Se trovate problemi con la documentazione, mandate un messaggio alla mailing
  list 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Il team che mantiene la documentazione implementerà i necessari aggiustamenti.
 \end_layout
@@ -2320,8 +2341,16 @@ Quindi, contattate il team all'indirizzo
 \end_inset
 
 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family typewriter
-lyx-docs@lists.lyx.org
+
 \begin_inset Newline newline
 \end_inset
 

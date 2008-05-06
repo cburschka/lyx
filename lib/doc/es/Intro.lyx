@@ -1,5 +1,5 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 331
 \begin_document
 \begin_header
 \textclass article
@@ -18,21 +18,6 @@
 
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=2,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={Introducción a LyX},pdfsubject={LyX-documentación Introducción},
-  pdfkeywords={LyX, Documentación}]{hyperref}
-
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
 
 \fi % end if pdflatex is used
 
@@ -64,6 +49,22 @@
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref true
+\pdf_title "Introducción a LyX"
+\pdf_author "LyX Team, Spanish translation: Ignacio Garcia"
+\pdf_subject "LyX-documentación Introducción"
+\pdf_keywords "LyX, Documentación"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
@@ -94,14 +95,20 @@ Introducción a LyX
 \begin_layout Author
 por el Equipo LyX
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 Si tienes comentarios o correcciones de errores envíalos, por favor, ala
- lista de correo de Documentación de LyX : 
-\family typewriter
-lyx-docs@lists.lyx.org
+ lista de correo de Documentación de LyX: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -110,7 +117,8 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -246,7 +254,7 @@ estilo
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Para ser sinceros, las versiones recientes de los procesadores de texto
  más conocidos incorporan una especie de hojas de estilo que siguen un método
  de diseño similar.
@@ -277,8 +285,14 @@ Introducción
 \begin_inset Quotes eld
 \end_inset
 
-1.\InsetSpace ~
-\InsetSpace ~
+1.
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset Space ~
+\end_inset
+
 Introducción
 \begin_inset Quotes erd
 \end_inset
@@ -389,9 +403,9 @@ sí
 \begin_layout Subsection
 Diferencias entre LyX y otros procesadores de texto
 \begin_inset OptArg
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX y otros procesadores de texto
 \end_layout
 
@@ -480,7 +494,7 @@ Aunque existen en LyX, normalmente no se necesitan.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Se pueden ajustar todas estas características (sólo el ajuste de unas pocas
  requiere conocimientos de LaTeX), tanto para todo el documento como para
  una parte concreta.
@@ -548,7 +562,7 @@ LaTeX es un sistema de preparación de documentos diseñado por Leslie Lamport
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 La fuente de información de esta sección es 
 \begin_inset Quotes eld
 \end_inset
@@ -749,9 +763,13 @@ trabajo de verdad
 \end_inset
 
 , familia, platos que fregar, cestos del gato que limpiar, etc.
- (Si quieres ayudar, asegúrate de leer la sección\InsetSpace ~
+ (Si quieres ayudar, asegúrate de leer la sección
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Contrib"
 
 \end_inset
@@ -765,16 +783,24 @@ También puedes hacernos un favor: si cualquier cosa de estos manuales te
  parece confusa, poco clara o errónea, ¡no dudes en hacérnoslo saber! Puedes
  ponerte en contacto con los actuales encargados de la documentación escribiendo
  a 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Si tienes preguntas cuya respuesta no es evidente en la documentación,
  y necesitas ayuda rápidamente, hay una activa lista de correo de usuarios
  con la que puedes ponerte en contacto: 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -834,9 +860,18 @@ sec:Contrib
 \begin_inset Quotes eld
 \end_inset
 
-Ir\InsetSpace ~
-a\InsetSpace ~
-la\InsetSpace ~
+Ir
+\begin_inset Space ~
+\end_inset
+
+a
+\begin_inset Space ~
+\end_inset
+
+la
+\begin_inset Space ~
+\end_inset
+
 etiqueta
 \family default
 
@@ -1297,9 +1332,13 @@ Unidades empleadas en los manuales
 \end_layout
 
 \begin_layout Standard
-Para entender las unidades empleadas en esta documentación, la tabla\InsetSpace ~
+Para entender las unidades empleadas en esta documentación, la tabla
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "cap:Unidades"
 
 \end_inset
@@ -1314,11 +1353,12 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout Standard
-\begin_inset LatexCommand label
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
 name "cap:Unidades"
 
 \end_inset
@@ -1331,45 +1371,45 @@ Unidades
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 unidad
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 nombre/descripción
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mm
 \end_layout
 
@@ -1378,18 +1418,18 @@ mm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 milímetro
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cm
 \end_layout
 
@@ -1398,18 +1438,18 @@ cm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 centímetro
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in
 \end_layout
 
@@ -1418,18 +1458,18 @@ in
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pulgada
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pt
 \end_layout
 
@@ -1438,7 +1478,7 @@ pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 punto (72.27
 \begin_inset Formula $\,$
 \end_inset
@@ -1453,11 +1493,11 @@ in)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pc
 \end_layout
 
@@ -1466,7 +1506,7 @@ pc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pica (1
 \begin_inset Formula $\,$
 \end_inset
@@ -1481,11 +1521,11 @@ pt)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 sp
 \end_layout
 
@@ -1494,7 +1534,7 @@ sp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 punto escalado (65536
 \begin_inset Formula $\,$
 \end_inset
@@ -1509,11 +1549,11 @@ pt)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 bp
 \end_layout
 
@@ -1522,7 +1562,7 @@ bp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 punto grande (72
 \begin_inset Formula $\,$
 \end_inset
@@ -1537,11 +1577,11 @@ in)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dd
 \end_layout
 
@@ -1550,7 +1590,7 @@ dd
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 didot (72
 \begin_inset Formula $\,$
 \end_inset
@@ -1569,11 +1609,11 @@ mm)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cc
 \end_layout
 
@@ -1582,7 +1622,7 @@ cc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cicero (1
 \begin_inset Formula $\,$
 \end_inset
@@ -1597,11 +1637,11 @@ dd)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Scale%
 \end_layout
 
@@ -1610,19 +1650,21 @@ Scale%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de anchura de la imagen original
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 text%
 \end_layout
 
@@ -1631,19 +1673,21 @@ text%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de anchura del texto
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 col%
 \end_layout
 
@@ -1652,19 +1696,21 @@ col%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de anchura de columna
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 page%
 \end_layout
 
@@ -1673,19 +1719,22 @@ page%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
- \InsetSpace \thinspace{}
+\begin_layout Plain Layout
+ 
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de anchura del papel 
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 line%
 \end_layout
 
@@ -1694,19 +1743,22 @@ line%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
- \InsetSpace \thinspace{}
+\begin_layout Plain Layout
+ 
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de anchura de línea 
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 theight%
 \end_layout
 
@@ -1715,19 +1767,21 @@ theight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de altura del texto 
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pheight%
 \end_layout
 
@@ -1736,19 +1790,22 @@ pheight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
- \InsetSpace \thinspace{}
+\begin_layout Plain Layout
+ 
+\begin_inset Space \thinspace{}
+\end_inset
+
 % de altura del papel 
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ex
 \end_layout
 
@@ -1757,7 +1814,7 @@ ex
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 altura de la letra 
 \emph on
 x
@@ -1768,11 +1825,11 @@ x
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 em
 \end_layout
 
@@ -1781,7 +1838,7 @@ em
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 anchura de la letra 
 \emph on
 M
@@ -1792,20 +1849,20 @@ M
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mu
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 unidad matemática (1
 \begin_inset Formula $\,$
 \end_inset
@@ -1867,12 +1924,18 @@ LyX para usuarios de LaTeX
 \begin_layout Description
 Guía
 \emph on
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 
 \emph default
 del
 \emph on
-\InsetSpace ~
+
+\begin_inset Space ~
+\end_inset
+
 
 \emph default
 usuario La documentación principal.
@@ -1886,7 +1949,10 @@ Tutorial
 \end_layout
 
 \begin_layout Description
-Embedded\InsetSpace ~
+Embedded
+\begin_inset Space ~
+\end_inset
+
 Objects Ampliación de la 
 \emph on
 Guía del usuario
@@ -1897,7 +1963,10 @@ Guía del usuario
 \end_layout
 
 \begin_layout Description
-Características\InsetSpace ~
+Características
+\begin_inset Space ~
+\end_inset
+
 extendidas Ampliación de la 
 \emph on
 Guía del usuario
@@ -1914,8 +1983,14 @@ s de teclas, internacionalización y ficheros de configuración.
 \end_layout
 
 \begin_layout Description
-Configuración\InsetSpace ~
-de\InsetSpace ~
+Configuración
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 LaTeX LyX explora tu sistema durante la instalación.
  Este fichero contiene la información que LyX ha extraído de tu instalación.
  Examínalo para ver si echas en falta algo que deberías tener.
@@ -1975,7 +2050,8 @@ Si no, podrías quedar frustrado sin necesidad.
 
 \begin_layout Section
 Contribuir al proyecto LyX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Contrib"
 
 \end_inset
@@ -2008,11 +2084,20 @@ Al usar LyX puede que observes comportamientos que puedes considerar como
 \end_layout
 
 \begin_layout Standard
-LyX tiene un sistema de seguimiento de errores alojado en 
+LyX tiene un sistema de seguimiento de errores alojado en
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://bugzilla.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2024,16 +2109,25 @@ target "http://bugzilla.lyx.org/"
  Si tienes algún comentario sobre un error conocido o quieres informar de
  uno nuevo, puedes usar el rastreador de errores o enviar un mensaje a la
  lista de correo de desarrollo, 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  A los archivos de esta lista se accede desde su enlace en el sitio principal
  de LyX, 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2096,36 +2190,13 @@ Informar de errores en los manuales
 \begin_layout Standard
 Si encuentras un problema en la documentación, envía un mensaje a la lista
  de correo 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{mailto:lyx-docs@lists.lyx.org}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
-lyx-docs@lists.lyx.org
-\emph on
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-\emph default
 .
  El equipo de documentación hará los arreglos pertinentes.
 \end_layout
@@ -2142,15 +2213,24 @@ El Proyecto de Documentación de LyX, como todo lo demás en el proyecto LyX,
 
 \begin_layout Enumerate
 Obtén el último código fuente de LyX en
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
 
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 En ese directorio hay un archivo llamado 
 \family typewriter
 DocStyle.lyx
@@ -2169,7 +2249,9 @@ Tutorial
 Guía del usuario
 \emph default
 .
-\newline
+\begin_inset Newline newline
+\end_inset
+
 El quid de esta cuestión es darte ideas.
  El 
 \emph on
@@ -2186,13 +2268,21 @@ Guía del usuario
 
 \begin_layout Enumerate
 Ponte en contacto con el equipo en:
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
 
-\newline
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 para discutir y remodelar tus propuestas.
 \end_layout
 

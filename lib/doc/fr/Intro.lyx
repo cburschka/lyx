@@ -1,5 +1,5 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 331
 \begin_document
 \begin_header
 \textclass article
@@ -18,21 +18,6 @@
 
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=2,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={Introduction à LyX},pdfsubject={Documentation Introduction},
-  pdfkeywords={LyX, documentation}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
 
 \fi % end if pdflatex is used
 
@@ -64,6 +49,22 @@
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref true
+\pdf_title "Introduction à LyX"
+\pdf_author "L'équipe LyX, Traduction: Adrien Rebollo et Siegfried Meunier-Guttin-Cluzel"
+\pdf_subject "Documentation Introduction"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 1
@@ -92,15 +93,15 @@ Introduction à LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Traduction : Mise à jour, Date : 10/12/2007
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Original : Révision: 1.29, Date : 16/03/2003
 \end_layout
 
@@ -114,18 +115,28 @@ par l'Équipe LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
  de la documentation de LyX, 
-\family typewriter
-<lyx-docs@lists.lyx.org>
-\family default
-ou à la liste de diffusion de LyX en français 
-\family typewriter
-<lyx-fr@lists.lyx.org>
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+ ou à la liste de diffusion de LyX en français 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-fr@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Traduction en français par : P.-H.
  
 \noun on
@@ -162,12 +173,15 @@ Valdenaire
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -240,14 +254,14 @@ _
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : Pour conserver une bonne lisibilité dans la fenêtre LyX, l'o e dans
  l'o a volontairement été évité.
  Il faut savoir qu'il s'écrit 
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -265,7 +279,10 @@ LyX et la typographie française
 \emph default
  du 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
 .
@@ -298,7 +315,7 @@ What You See Is What You Get
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -325,7 +342,7 @@ What You See Is All You Get
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -357,7 +374,7 @@ style
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pour être honnête, la plupart des versions récentes des suites bureautiques
  les plus populaires ont aujourd'hui des sortes de feuilles de style qui
  présentent une approche semblable.
@@ -388,8 +405,14 @@ Introduction
 \begin_inset Quotes fld
 \end_inset
 
-1.\InsetSpace ~
-\InsetSpace ~
+1.
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset Space ~
+\end_inset
+
 Introduction
 \begin_inset Quotes frd
 \end_inset
@@ -430,12 +453,20 @@ Eh oui, c'est tout.
 
 \begin_layout Standard
 Vient ensuite le problème de la cohérence.
- Cinq jours plus tard, vous ouvrez votre rapport et commencez la Section\InsetSpace ~
+ Cinq jours plus tard, vous ouvrez votre rapport et commencez la Section
+\begin_inset Space ~
+\end_inset
+
 4.
  Malheureusement, vous avez oublié que vous utilisiez du 18pt gras à la
- place de 16pt, et vous tapez l'en-tête de la Section\InsetSpace ~
-4 avec une police différent
-e de celle de la Section\InsetSpace ~
+ place de 16pt, et vous tapez l'en-tête de la Section
+\begin_inset Space ~
+\end_inset
+
+4 avec une police différente de celle de la Section
+\begin_inset Space ~
+\end_inset
+
 1.
  Ce problème n'existe pas avec LyX.
  L'ordinateur prend soin de toute cette comptabilité stupide.
@@ -466,7 +497,7 @@ What You See Is What You Get
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : Vous voyez ce que vous obtenez.
 \end_layout
 
@@ -486,7 +517,7 @@ Mean
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : Vous voyez ce que vous 
 \emph on
 voulez dire.
@@ -530,7 +561,7 @@ Différences entre LyX et les autres traitements de texte
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX et les autres traitements de texte
 \end_layout
 
@@ -540,7 +571,7 @@ LyX et les autres traitements de texte
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Non, nous ne cherchons pas ici à déclarer (ou à gagner) la guerre sainte
  des traitements de texte.
  Mais nous pensons vraiment qu'il est important de décrire les possibilités
@@ -634,19 +665,28 @@ Même si elles existent dans LyX, vous n'en aurez généralement pas besoin.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Il y a des façons d'ajuster manuellement toutes ces propriétés (et seules
  quelques-unes nécessitent des connaissances en LaTeX), que ce soit pour
  l'ensemble du document ou seulement pour une partie.
  Référez-vous au 
 \emph on
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \emph default
  et/ou aux 
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset Space ~
+\end_inset
+
 Avancées
 \emph default
  pour avoir des détails.
@@ -703,7 +743,7 @@ LaTeX est un système de préparation de document conçu par Leslie Lamport
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 La source des informations de cette section est 
 \begin_inset Quotes fld
 \end_inset
@@ -719,8 +759,14 @@ A Guide to LaTeX2e
 , par Helmut Kopka et Patrick Daly, ouvrage inclus dans la bibliographie
  du 
 \emph on
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \emph default
 \SpecialChar \@.
@@ -765,7 +811,7 @@ device independent
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -912,7 +958,7 @@ LaTeX rend LyX diffèrent des autres traitements de texte.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Graphical User Interface
@@ -972,9 +1018,13 @@ vrai
  travail, une famille, la vaisselle à laver, la litière du chat à changer,
  et ainsi de suite.
  Si vous êtes volontaire pour nous rejoindre, jetez un oeil attentif sur
- la section\InsetSpace ~
+ la section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Contrib"
 
 \end_inset
@@ -987,21 +1037,33 @@ D'autre part, faites-nous une faveur -- s'il arrivait que dans cette documentati
 on quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
  faites-le nous savoir ! Vous pouvez contacter les préposés à la mise à
  jour de la documentation à l'adresse email 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Si vous avez des questions à laquelle la documentation ne répond pas de
  manière évidente, et que vous avez besoin d'une aide urgente, vous pouvez
  joindre la liste de diffusion des utilisateurs à l'adresse 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Pour les questions spécifiquement francophones, contactez la liste 
-\family typewriter
-lyx-fr@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-fr@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -1021,11 +1083,11 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Veuillez agréer nos hommages les plus respectueux ! 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pour refermer cette note, cliquez sur la boîte grise en haut à gauche, celle
  qui contient le mot 
 \begin_inset Quotes fld
@@ -1055,7 +1117,8 @@ Sur la version papier, les références croisées sont affichées avec les bons
  numéros de page, de section ou de sous-section.
  En ligne, à l'inverse, elles apparaissent comme des boîtes grises ainsi:
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Contrib"
 
 \end_inset
@@ -1076,8 +1139,14 @@ sec:Contrib
  Vous pouvez vous rendre à la section mentionnée en cliquant sur le bouton
  
 \family sans
-Aller\InsetSpace ~
-à\InsetSpace ~
+Aller
+\begin_inset Space ~
+\end_inset
+
+à
+\begin_inset Space ~
+\end_inset
+
 l'étiquette
 \family default
 .
@@ -1156,7 +1225,10 @@ Raccourcis Clavier
 \emph default
  du manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset Space ~
+\end_inset
+
 Avancées
 \emph default
  (le fichier 
@@ -1577,7 +1649,10 @@ Vous pourrez rencontrer des phrases du genre
 
 (Voir le manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset Space ~
+\end_inset
+
 Avancées
 \emph default
 )
@@ -1587,7 +1662,10 @@ Avancées
 .
  Dans le manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset Space ~
+\end_inset
+
 Avancée
 \emph default
 s, nous décrivons en effet le rôle de chaque fonction en faisant la liste
@@ -1624,9 +1702,13 @@ Unités utilisées dans les manuels
 \end_layout
 
 \begin_layout Standard
-Le tableau\InsetSpace ~
+Le tableau
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "cap:Units-for-image"
 
 \end_inset
@@ -1641,13 +1723,14 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "cap:Units-for-image"
 
 \end_inset
@@ -1660,45 +1743,45 @@ Unités
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 unité
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 nom/description
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mm
 \end_layout
 
@@ -1707,18 +1790,18 @@ mm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 millimètre
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cm
 \end_layout
 
@@ -1727,18 +1810,18 @@ cm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 centimètre
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in
 \end_layout
 
@@ -1747,18 +1830,18 @@ in
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 inch/pouce
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pt
 \end_layout
 
@@ -1767,7 +1850,7 @@ pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 point (72.27
 \begin_inset Formula $\,$
 \end_inset
@@ -1782,11 +1865,11 @@ in)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pc
 \end_layout
 
@@ -1795,7 +1878,7 @@ pc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pica (1
 \begin_inset Formula $\,$
 \end_inset
@@ -1810,11 +1893,11 @@ pt)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 sp
 \end_layout
 
@@ -1823,7 +1906,7 @@ sp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 scaled point/point divisé (65536
 \begin_inset Formula $\,$
 \end_inset
@@ -1838,11 +1921,11 @@ pt)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 bp
 \end_layout
 
@@ -1851,7 +1934,7 @@ bp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 big point/point arrondi (72
 \begin_inset Formula $\,$
 \end_inset
@@ -1866,11 +1949,11 @@ in)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dd
 \end_layout
 
@@ -1879,7 +1962,7 @@ dd
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 didot (72
 \begin_inset Formula $\,$
 \end_inset
@@ -1898,11 +1981,11 @@ mm)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cc
 \end_layout
 
@@ -1911,7 +1994,7 @@ cc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cicero (1
 \begin_inset Formula $\,$
 \end_inset
@@ -1926,11 +2009,11 @@ dd)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Scale%
 \end_layout
 
@@ -1939,18 +2022,18 @@ Scale%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % largeur originale
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 text%
 \end_layout
 
@@ -1959,18 +2042,18 @@ text%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % largeur du texte
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 col%
 \end_layout
 
@@ -1979,18 +2062,18 @@ col%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % largeur de la colonne
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 page%
 \end_layout
 
@@ -1999,18 +2082,18 @@ page%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % largeur du papier
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 line%
 \end_layout
 
@@ -2019,18 +2102,18 @@ line%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % de la ligne
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 theight%
 \end_layout
 
@@ -2039,18 +2122,18 @@ theight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % hauteur du texte
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pheight%
 \end_layout
 
@@ -2059,18 +2142,18 @@ pheight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % hauteur du papier
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ex
 \end_layout
 
@@ -2079,7 +2162,7 @@ ex
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 hauteur de la lettre 
 \emph on
 x
@@ -2090,11 +2173,11 @@ x
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 em
 \end_layout
 
@@ -2103,7 +2186,7 @@ em
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 largeur de la lettre 
 \emph on
 M
@@ -2114,20 +2197,20 @@ M
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mu
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 unité mathématique (1
 \begin_inset Formula $\,$
 \end_inset
@@ -2178,7 +2261,10 @@ Ce fichier.
 
 \end_deeper
 \begin_layout Description
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \end_layout
 
@@ -2187,10 +2273,16 @@ d'Apprentissage
 Si vous commencez avec LyX, et n'avez jamais touché à LaTeX, vous devriez
  commencer par là.
  Si vous pensez que le LaTeX est ce qui sert à faire les préservatifs, c'est
- qu'il vous faut relire le Chapitre\InsetSpace ~
+ qu'il vous faut relire le Chapitre
+\begin_inset Space ~
+\end_inset
+
 1, puis lire le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
 .
@@ -2219,7 +2311,10 @@ LyX pour les connaisseurs de LaTeX
 Et lorsque vous vous sentez un peu perdu avec LyX, essayez de lire attentivement
  le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
  avant de consulter les autres manuels.
@@ -2228,11 +2323,17 @@ d'Apprentissage
 
 \end_deeper
 \begin_layout Description
-Guide\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
 
 \shape italic
 \emph on
-de\InsetSpace ~
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \end_layout
 
@@ -2246,17 +2347,26 @@ majeure partie
  des opérations et fonctions de base disponibles avec LyX.
  Pour bien en tirer profit, il faut avoir lu le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage\SpecialChar \@.
 .
 \end_layout
 
 \end_deeper
 \begin_layout Description
-Objets\InsetSpace ~
+Objets
+\begin_inset Space ~
+\end_inset
+
 Insérés Extension du 
 \emph on
-Guide\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
 de L'Utilisateur
 \emph default
 , il explique en détail comment utiliser les tableaux, les graphiques, les
@@ -2265,7 +2375,10 @@ de L'Utilisateur
 \end_layout
 
 \begin_layout Description
-Options\InsetSpace ~
+Options
+\begin_inset Space ~
+\end_inset
+
 Avancées
 \end_layout
 
@@ -2273,8 +2386,14 @@ Avancées
 \begin_layout Standard
 Extension du 
 \emph on
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \emph default
 , il décrit comment utiliser des commandes LaTeX brutes, des formats supplémenta
@@ -2294,7 +2413,10 @@ C'est une description de certaines fonctions avancées de LyX, notamment
 , et les fichiers de configuration.
  Inutile de le consulter avant d'avoir lu le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
 .
@@ -2302,7 +2424,10 @@ d'Apprentissage
 
 \end_deeper
 \begin_layout Description
-Configuration\InsetSpace ~
+Configuration
+\begin_inset Space ~
+\end_inset
+
 LaTeX
 \end_layout
 
@@ -2319,8 +2444,14 @@ Pendant son installation, LyX analyse votre système.
 Tous ces fichiers se référencent les uns les autres quand c'est nécessaire.
  Le 
 \emph on
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \emph default
  contient par exemple 
@@ -2350,7 +2481,10 @@ Répétons un point important :
 \align center
 Si vous commencez avec LyX, lisez le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
  dès maintenant\SpecialChar \@.
@@ -2371,7 +2505,8 @@ Sinon, vous vous poserez des problèmes inutilement.
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Contrib"
 
 \end_inset
@@ -2404,10 +2539,15 @@ Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
 \end_layout
 
 \begin_layout Standard
-LyX a un système de recensement de bogues, que vous trouverez sur le 
-\begin_inset LatexCommand htmlurl
-name "traceur de bogues de LyX"
-target "http://bugzilla.lyx.org/"
+LyX a un système de recensement de bogues, que vous trouverez sur le traceur
+ de bogues de LyX 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2418,15 +2558,23 @@ target "http://bugzilla.lyx.org/"
  vous voulez en signaler un nouveau, vous pouvez soit utiliser le traceur
  de bogues, soit envoyer un e-mail à la liste de diffusion des développeurs,
  
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  L'adresse des archives de cette liste est indiquée sur le site principal
- de LyX, 
-\begin_inset LatexCommand htmlurl
-name "le site web de LyX"
-target "http://www.lyx.org/"
+ de LyX, le site web de LyX 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2494,9 +2642,13 @@ Rapporter les erreurs dans les manuels
 \begin_layout Standard
 Si vous trouvez un problème dans la documentation, envoyez un message à
  la liste de diffusion 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  L'équipe de documentation apportera tous les changements nécessaires.
 \end_layout
@@ -2516,19 +2668,28 @@ avant tout
 
 \begin_layout Enumerate
 Récupérez le code source de LyX le plus récent
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \lang english
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
 
 \end_inset
 
 
 \lang french
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Dans ce répertoire il existe un fichier appelé 
 \family typewriter
 DocStyle.lyx
@@ -2540,13 +2701,22 @@ DocStyle.lyx
 \begin_layout Enumerate
 Ensuite, lisez le 
 \shape italic
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \shape default
  et le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
 .
@@ -2558,13 +2728,22 @@ d'Apprentissage
 Le but de cet exercice est de vous donner des idées.
  Le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset Space ~
+\end_inset
+
 d'Apprentissage
 \emph default
  et le 
 \shape italic
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset Space ~
+\end_inset
+
+de
+\begin_inset Space ~
+\end_inset
+
 l'Utilisateur
 \shape default
  sont toujours les documents les plus à jour de la collection.
@@ -2580,9 +2759,14 @@ Contactez l'équipe de documentation à l'adresse suivante :
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2605,8 +2789,13 @@ Pour participer à la traduction, le principe est le même que pour modifier
  la version originale anglophone.
  Il existe une liste de diffusion pour les traducteurs et les utilisateurs
  francophones, à l'adresse 
-\begin_inset LatexCommand url
-target "lyx-fr@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-fr@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2614,8 +2803,13 @@ target "lyx-fr@lists.lyx.org"
  Avant d'apporter une modification substantielle à un document, il faut
  envoyer un message à cette adresse.
  Pour s'inscrire sur cette liste, il faut envoyer un message vide à 
-\begin_inset LatexCommand url
-target "lyx-fr-subscribe@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-fr-subscribe@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2628,8 +2822,13 @@ D'autre part il faut prendre garde à ne modifier que la dernière version
  C'est toujours celle qui est sur le serveur SVN 
 \lang english
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc/fr"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc/fr
+\end_layout
 
 \end_inset
 
@@ -2637,10 +2836,14 @@ target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc/fr"
 \lang french
 .
  On peut y accéder également en suivant les indications qui se trouvent
- sur 
-\begin_inset LatexCommand url
-name "le site des développeurs de LyX"
-target "http://www.devel.lyx.org/"
+ sur le site des développeurs de LyX 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.devel.lyx.org/
+\end_layout
 
 \end_inset
 
