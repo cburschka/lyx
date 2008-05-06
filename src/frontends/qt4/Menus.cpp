@@ -49,6 +49,7 @@
 
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
+#include "insets/InsetGraphics.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -137,7 +138,9 @@ public:
 		/** Available branches in document */
 		Branches,
 		/** Available citation styles for a given citation */
-		CiteStyles
+		CiteStyles,
+		/** Available graphics groups */
+		GraphicsGroups
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -290,6 +293,7 @@ public:
 	void expandToolbars();
 	void expandBranches(Buffer const * buf);
 	void expandCiteStyles(BufferView const *);
+	void expandGraphicsGroups(Buffer const * buf);
 	///
 	ItemList items_;
 	///
@@ -390,7 +394,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_floatlistinsert,
 		md_floatinsert,
 		md_pasterecent,
-		md_toolbars
+		md_toolbars,
+		md_graphicsgroups
 	};
 
 	LexerKeyword menutags[] = {
@@ -405,6 +410,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
 		{ "floatlistinsert", md_floatlistinsert },
+		{ "graphicsgroups", md_graphicsgroups },
 		{ "importformats", md_importformats },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
@@ -511,6 +517,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_citestyles:
 			add(MenuItem(MenuItem::CiteStyles));
+			break;
+
+		case md_graphicsgroups:
+			add(MenuItem(MenuItem::GraphicsGroups));
 			break;
 
 		case md_optsubmenu:
@@ -622,6 +632,21 @@ QString limitStringLength(docstring const & str)
 	return toqstr(str);
 }
 
+
+void MenuDefinition::expandGraphicsGroups(Buffer const * buf)
+{
+	set<string> grp;
+	InsetGraphics::getGraphicsGroups(*buf, grp);
+	set<string>::const_iterator it = grp.begin();
+	set<string>::const_iterator end = grp.end();
+	if (grp.empty()) return;
+
+	add(MenuItem(MenuItem::Separator));
+	add(MenuItem(MenuItem::Command, qt_("Clear group"), FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
+	for (; it != end; it++) {
+		add(MenuItem(MenuItem::Command, toqstr(*it), FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
+	}
+}
 
 void MenuDefinition::expandLastfiles()
 {
@@ -1394,6 +1419,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::Toc:
 			tomenu.expandToc(buf);
+			break;
+
+		case MenuItem::GraphicsGroups:
+			tomenu.expandGraphicsGroups(buf);
 			break;
 
 		case MenuItem::Submenu: {

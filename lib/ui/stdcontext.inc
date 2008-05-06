@@ -300,6 +300,7 @@ Menuset
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
 		Item "Edit externally...|x" "inset-edit"
+		GraphicsGroups
 	End
 
 #

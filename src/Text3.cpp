@@ -57,6 +57,8 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetText.h"
 #include "insets/InsetInfo.h"
+#include "insets/InsetGraphics.h"
+#include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -888,6 +890,30 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// if not then access the underlying inset.
 		inset.showInsetDialog(bv);
 		break;
+	}
+
+	case LFUN_SET_GRAPHICS_GROUP: {
+		Inset * instmp = &cur.inset();
+		if (instmp->lyxCode() != GRAPHICS_CODE) instmp = cur.nextInset();
+		if (!instmp || instmp->lyxCode() != GRAPHICS_CODE) break;
+
+		cur.recordUndoFullDocument();
+		Inset & inset = *instmp;
+		InsetGraphics & ins = static_cast<InsetGraphics &>(inset);
+
+		string id = to_utf8(cmd.argument());
+		string grp = InsetGraphics::getGroupParams(bv->buffer(), id);
+		InsetGraphicsParams tmp, inspar = ins.getParams();
+
+		if (id.empty())
+			inspar.groupId = to_utf8(cmd.argument());
+		else {
+			InsetGraphics::string2params(grp, bv->buffer(), tmp);
+			tmp.filename = inspar.filename;
+			inspar = tmp;
+		}
+
+		ins.setParams(inspar);
 	}
 
 	case LFUN_SPACE_INSERT:
@@ -2251,6 +2277,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BUFFER_BEGIN_SELECT:
 	case LFUN_BUFFER_END_SELECT:
 	case LFUN_UNICODE_INSERT:
+	case LFUN_SET_GRAPHICS_GROUP:
 		// these are handled in our dispatch()
 		enable = true;
 		break;

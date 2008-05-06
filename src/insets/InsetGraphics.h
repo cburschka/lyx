@@ -13,6 +13,7 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
+#include <set>
 #include "Inset.h"
 #include "InsetGraphicsParams.h"
 
@@ -47,10 +48,22 @@ public:
 	///
 	static std::string params2string(InsetGraphicsParams const &,
 					  Buffer const &);
+	/// Saves the list of currently used groups in the document.
+	static void getGraphicsGroups(Buffer const &, std::set<std::string> &);
+	/// Returns parameters of a given graphics group (except filename).
+	static std::string getGroupParams(Buffer const &,
+						std::string const &);
+	/** Synchronize all Graphics insets of the group.
+	    Both groupId and params are taken from argument.
+	*/
+	static void unifyGraphicsGroups(Buffer const &,	std::string const &);
+
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
 	*/
 	bool setParams(InsetGraphicsParams const & params);
+
+	InsetGraphicsParams getParams() const { return params_;}
 
 private:
 	///

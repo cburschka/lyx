@@ -79,6 +79,7 @@ void InsetGraphicsParams::init()
 	rotateAngle = "0";		// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
 	special.erase();		// additional userdefined stuff
+	groupId.clear();
 }
 
 
@@ -101,6 +102,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	rotateAngle = igp.rotateAngle;
 	rotateOrigin = igp.rotateOrigin;
 	special = igp.special;
+	groupId = igp.groupId;
 }
 
 
@@ -123,7 +125,8 @@ bool operator==(InsetGraphicsParams const & left,
 
 	    left.rotateAngle == right.rotateAngle &&
 	    left.rotateOrigin == right.rotateOrigin &&
-	    left.special == right.special;
+	    left.special == right.special &&
+	    left.groupId == right.groupId;
 }
 
 
@@ -174,6 +177,8 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 		os << "\trotateOrigin " << rotateOrigin << '\n';
 	if (!special.empty())
 		os << "\tspecial " << special << '\n';
+	if (!groupId.empty())
+		os << "\tgroupId "<< groupId << '\n';
 }
 
 
@@ -227,6 +232,9 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	} else if (token == "special") {
 		lex.eatLine();
 		special = lex.getString();
+	} else if (token == "groupId") {
+		lex.eatLine();
+		groupId = lex.getString();
 
 	// catch and ignore following two old-format tokens and their arguments.
 	// e.g. "size_kind scale" clashes with the setting of the

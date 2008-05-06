@@ -1844,6 +1844,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_INSET_APPLY: {
+			view()->cursor().recordUndoFullDocument();
 			string const name = cmd.getArg(0);
 			Inset * inset = getOpenInset(name);
 			if (inset) {

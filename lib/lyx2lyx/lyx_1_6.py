@@ -2188,6 +2188,26 @@ def revert_master(document):
         del document.header[i]
 
 
+def revert_graphics_group(document):
+    ' Revert group information from graphics insets '
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        k = find_token(document.body, "	groupId", i, j)
+        if k == -1:
+            i = i + 1
+            continue
+        del document.body[k]
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -2248,9 +2268,11 @@ convert = [[277, [fix_wrong_tables]],
            [329, []],
            [330, []],
            [331, [convert_ltcaption]],
+           [332, []],
           ]
 
-revert =  [[330, [revert_ltcaption]],
+revert =  [[331, [revert_graphics_group]],
+           [330, [revert_ltcaption]],
            [329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
            [328, [revert_master]],
            [327, []],

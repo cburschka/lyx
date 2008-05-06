@@ -67,6 +67,7 @@ TODO
 #include "OutputParams.h"
 #include "sgml.h"
 #include "TocBackend.h"
+#include "InsetIterator.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -946,6 +947,63 @@ string InsetGraphics::params2string(InsetGraphicsParams const & params,
 	params.Write(data, buffer);
 	data << "\\end_inset\n";
 	return data.str();
+}
+
+
+void InsetGraphics::getGraphicsGroups(Buffer const & b, std::set<string> & ids)
+{
+	Inset & inset = b.inset();
+	InsetIterator it  = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+	for (; it != end; ++it)
+		if (it->lyxCode() == GRAPHICS_CODE) {
+			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
+			InsetGraphicsParams inspar = ins.getParams();
+			if (!inspar.groupId.empty()) {
+				ids.insert(inspar.groupId);
+			}
+		}
+}
+
+
+string InsetGraphics::getGroupParams(Buffer const & b, std::string const & groupId)
+{
+	if (groupId.empty()) return string();
+	Inset & inset = b.inset();
+	InsetIterator it  = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+	for (; it != end; ++it)
+		if (it->lyxCode() == GRAPHICS_CODE) {
+			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
+			InsetGraphicsParams inspar = ins.getParams();
+			if (inspar.groupId == groupId) {
+				InsetGraphicsParams tmp = inspar;
+				tmp.filename.erase();
+				return params2string(tmp, b);
+			}
+		}
+	return string();
+}
+
+void InsetGraphics::unifyGraphicsGroups(Buffer const & b, std::string const & argument)
+{
+			InsetGraphicsParams params;
+			InsetGraphics::string2params(argument, b, params);
+
+			Inset & inset = b.inset();
+			InsetIterator it  = inset_iterator_begin(inset);
+			InsetIterator const end = inset_iterator_end(inset);
+			for (; it != end; ++it) {
+				if (it->lyxCode() == GRAPHICS_CODE) {
+					InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
+					InsetGraphicsParams inspar = ins.getParams();
+					if (params.groupId == inspar.groupId) {
+						params.filename = inspar.filename;
+						ins.setParams(params);
+					}
+				}
+			}
+
 }
 
 

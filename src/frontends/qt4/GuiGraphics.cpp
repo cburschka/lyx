@@ -539,6 +539,8 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	scaleCB->blockSignals(false);
 	Scale->setEnabled(scaleChecked);
 
+	groupId->setText(toqstr(igp.groupId));
+
 	lengthAutoToWidgets(Width, widthUnit, igp.width,
 		unitDefault);
 	bool const widthChecked = !Width->text().isEmpty() &&
@@ -682,6 +684,8 @@ void GuiGraphics::applyView()
 
 	// more latex options
 	igp.special = fromqstr(latexoptions->text());
+
+	igp.groupId = fromqstr(groupId->text());
 }
 
 
@@ -732,6 +736,9 @@ void GuiGraphics::dispatchParams()
 	InsetGraphicsParams tmp_params(params_);
 	string const lfun = InsetGraphics::params2string(tmp_params, buffer());
 	dispatch(FuncRequest(getLfun(), lfun));
+	if (!params_.groupId.empty())
+		dispatch(FuncRequest(LFUN_GRAPHICS_GROUPS_UNIFY,
+				InsetGraphics::params2string(params_, buffer())));
 }
 
 

@@ -621,6 +621,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_MESSAGE:
 	case LFUN_INSET_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
+	case LFUN_GRAPHICS_GROUPS_UNIFY:
 	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
@@ -1458,6 +1459,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					it->dispatch(tmpcur, fr);
 				}
 			}
+			updateFlags = Update::Force | Update::FitCursor;
+			break;
+		}
+
+		case LFUN_GRAPHICS_GROUPS_UNIFY: {
+			LASSERT(lyx_view_, /**/);
+			if (argument.empty() || !lyx_view_->buffer()) break;
+			//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
+			InsetGraphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
+			lyx_view_->buffer()->markDirty();
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}

@@ -1239,6 +1239,27 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_GRAPHICS_GROUPS_UNIFY
+ * \li Action: Unify all graphics insets with the one given as an parameter.
+ * \li Notion: This is internally used for synchronize certain group of graphics insets.
+ * \li Syntax: graphics-groups-unigfy <GRAPHICS_PARAMS>
+ * \li Params: <GRAPHICS_PARAMS>: Parameters for graphics inset
+                                  (syntax can be seen in .lyx files).
+ * \li Origin: sanda, 6 May 2008
+ * \endvar
+ */
+		{ LFUN_GRAPHICS_GROUPS_UNIFY, "graphics-groups-unify", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SET_GRAPHICS_GROUP
+ * \li Action: Set the group for the graphics inset on the cursor position.
+ * \li Syntax: set-graphics-group [<GROUP>]
+ * \li Params: <GROUP>: Id for an existing group. In case tthe Id is an empty string,
+                        the graphics inset is removed from the current group.
+ * \li Origin: sanda, 6 May 2008
+ * \endvar
+ */
+		{ LFUN_SET_GRAPHICS_GROUP, "set-graphics-group", ReadOnly, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FINISHED_FORWARD
