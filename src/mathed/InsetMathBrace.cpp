@@ -20,8 +20,6 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include <ostream>
-
 using namespace std;
 
 namespace lyx {

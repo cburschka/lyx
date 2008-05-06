@@ -19,8 +19,6 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
-#include <ostream>
-
 
 namespace lyx {
 

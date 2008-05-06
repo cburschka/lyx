@@ -21,8 +21,6 @@
 
 #include "frontends/Painter.h"
 
-#include <ostream>
-
 
 namespace lyx {
 

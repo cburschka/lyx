@@ -24,8 +24,6 @@
 
 #include "support/lstrings.h"
 
-#include <ostream>
-
 
 namespace lyx {
 
