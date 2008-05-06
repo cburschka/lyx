@@ -43,7 +43,7 @@ TearOff::TearOff(QWidget * parent)
 }
 
 
-void TearOff::mouseReleaseEvent(QMouseEvent * event)
+void TearOff::mouseReleaseEvent(QMouseEvent * /*event*/)
 {
 	// signal
 	tearOff();
@@ -66,7 +66,7 @@ void TearOff::leaveEvent(QEvent * event)
 }
 
 
-void TearOff::paintEvent(QPaintEvent * event)
+void TearOff::paintEvent(QPaintEvent * /*event*/)
 {
 	QPainter p(this);
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
@@ -149,7 +149,7 @@ void IconPalette::clicked(QAction * action)
 }
 
 
-void IconPalette::showEvent(QShowEvent * event)
+void IconPalette::showEvent(QShowEvent * /*event*/)
 {
 	resize(sizeHint());
 	setMaximumSize(sizeHint());
@@ -227,7 +227,7 @@ void IconPalette::updateParent()
 }
 
 
-void IconPalette::paintEvent(QPaintEvent * event)
+void IconPalette::paintEvent(QPaintEvent * /*event*/)
 {
 	// draw border
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);

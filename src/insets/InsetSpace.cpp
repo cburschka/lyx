@@ -72,7 +72,7 @@ bool InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case ENSPACE:
 		case ENSKIP:
-			dim.wid = 0.5 * fm.width(char_type('M'));
+			dim.wid = fm.width(char_type('M')) / 2;
 			break;
 	}
 	bool const changed = dim_ != dim;

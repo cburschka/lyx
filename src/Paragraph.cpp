@@ -636,7 +636,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 
 
 int Paragraph::Pimpl::writeScriptChars(odocstream & os,
-				       value_type c,
+				       value_type /*c*/,
 				       docstring const & ltx,
 				       Change & runningChange,
 				       Encoding const & encoding,

@@ -87,7 +87,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), text_(), fixed_width_(fixed_width_)
+	: Inset(in), fixed_width_(fixed_width_), text_()
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;

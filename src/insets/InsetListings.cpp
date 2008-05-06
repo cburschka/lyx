@@ -165,7 +165,8 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 			++lines;
 		}
 	}
-	char const * delimiter;
+	// FIXME: use C++ code instead of this thing.
+	char const * delimiter = 0;
 	if (lstinline) {
 		for (delimiter = lstinline_delimiters; delimiter != '\0'; ++delimiter)
 			if (!contains(code, *delimiter))

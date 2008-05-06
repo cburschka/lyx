@@ -93,13 +93,16 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 }
 
 
+namespace {
+
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	Length const & len, Length::UNIT defaultUnit)
+		     Length const & len)
 {
 	combo->setCurrentItem(Length(len).unit());
 	input->setText(toqstr(convert<string>(Length(len).value())));
 }
 
+}
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	string const & len, Length::UNIT defaultUnit)
@@ -113,7 +116,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		combo->setCurrentItem(defaultUnit);
 		input->setText(toqstr(len));
 	} else {
-		lengthToWidgets(input, combo, Length(len), defaultUnit);
+		lengthToWidgets(input, combo, Length(len));
 	}
 }
 
@@ -124,7 +127,7 @@ void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 	if (len.value() == 0)
 		lengthToWidgets(input, combo, "auto", defaultUnit);
 	else
-		lengthToWidgets(input, combo, len, defaultUnit);
+		lengthToWidgets(input, combo, len);
 }
 
 

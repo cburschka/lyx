@@ -336,17 +336,18 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		// The test on par.size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
 		//inset = par.size() ? par.getInset(row.pos()) : 0;
-		if (row.pos() < par.size()
-		    && par.isInset(row.pos()))
-		{
-		    switch(par.getInset(row.pos())->display()) {
+		if (row.pos() < par.size() && par.isInset(row.pos())) {
+			switch(par.getInset(row.pos())->display()) {
 			case Inset::AlignLeft:
 				align = LYX_ALIGN_BLOCK;
 				break;
 			case Inset::AlignCenter:
 				align = LYX_ALIGN_CENTER;
 				break;
-			// other types unchanged (use align)
+			case Inset::Inline:
+			case Inset::AlignRight:
+				// unchanged (use align)
+				break;
 			}
 		}
 
