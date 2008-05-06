@@ -30,7 +30,6 @@
 #include <boost/bind.hpp>
 
 #include <cerrno>
-#include <ostream>
 
 #if defined (_WIN32)
 # include <io.h>

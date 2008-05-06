@@ -28,7 +28,6 @@
 #include "support/textutils.h"
 
 #include <map>
-#include <ostream>
 
 using namespace std;
 using namespace lyx::support;

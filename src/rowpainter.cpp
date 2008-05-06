@@ -46,8 +46,6 @@
 #include "support/lassert.h"
 #include <boost/crc.hpp>
 
-#include <ostream>
-
 using namespace std;
 
 namespace lyx {

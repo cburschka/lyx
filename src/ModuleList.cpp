@@ -22,7 +22,6 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
-#include <ostream>
 	
 using namespace std;
 using namespace lyx::support;

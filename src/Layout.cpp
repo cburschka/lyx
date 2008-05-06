@@ -20,8 +20,6 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
-#include <ostream>
-
 using namespace std;
 using namespace lyx::support;
 

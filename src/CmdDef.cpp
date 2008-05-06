@@ -20,7 +20,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <ostream>
 #include <string>
 
 using namespace std;

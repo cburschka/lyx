@@ -35,8 +35,6 @@
 #include "support/gettext.h"
 #include "support/convert.h"
 
-#include <ostream>
-
 using namespace std;
 using namespace lyx::support;
 

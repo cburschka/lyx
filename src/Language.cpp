@@ -21,8 +21,6 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 
-#include <ostream>
-
 using namespace std;
 using namespace lyx::support;
 

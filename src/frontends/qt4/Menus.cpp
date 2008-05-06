@@ -66,7 +66,6 @@
 #include <boost/shared_ptr.hpp>
 
 #include <algorithm>
-#include <ostream>
 #include <vector>
 
 using namespace std;

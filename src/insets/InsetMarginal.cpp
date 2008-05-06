@@ -21,9 +21,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 
-#include <ostream>
-
-
 namespace lyx {
 
 

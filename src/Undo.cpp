@@ -35,7 +35,6 @@
 
 #include <algorithm>
 #include <deque>
-#include <ostream>
 
 using namespace std;
 using namespace lyx::support;
@@ -191,16 +190,6 @@ bool Undo::hasRedoStack() const
 {
 	return !d->redostack_.empty();
 }
-
-
-#if 0
-static ostream & operator<<(ostream & os, UndoElement const & undo)
-{
-	return os << " from: " << undo.from << " end: " << undo.end
-		<< " cell:\n" << undo.cell
-		<< " cursor:\n" << undo.cursor;
-}
-#endif
 
 
 static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)

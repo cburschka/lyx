@@ -29,8 +29,6 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
-#include <ostream>
-
 using namespace std;
 
 namespace lyx {

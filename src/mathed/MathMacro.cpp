@@ -35,7 +35,6 @@
 #include "support/lassert.h"
 #include "support/debug.h"
 
-#include <ostream>
 #include <vector>
 
 using namespace std;
