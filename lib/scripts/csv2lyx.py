@@ -108,12 +108,12 @@ fout.write("""#csv2lyx created this file
 \\end_header
 
 \\begin_body
-\\begin_layout Standard
-\\align left 
 
+\\begin_layout Standard
+\\align left
 \\begin_inset Tabular
-\n""")
-fout.write('<lyxtabular version="3" rows=' + str(num_rows) + ' columns=' + str(num_cols) + ' >\n')
+""")
+fout.write('<lyxtabular version="3" rows=\"' + str(num_rows) + '\" columns=\"' + str(num_cols) + '\">\n')
 fout.write('<features>\n')
 #####################
 # write table
@@ -135,9 +135,10 @@ while j < num_rows:
 	while i < num_cols:
 		fout.write("""<cell alignment="left" valignment="top" usebox="none">
 \\begin_inset Text
+
 \\begin_layout Standard\n""")
-		fout.write(row[i])
-		fout.write('\\end_layout\n\\end_inset\n</cell>\n')
+		fout.write(row[i].strip('\n'))
+		fout.write('\n\\end_layout\n\n\\end_inset\n</cell>\n')
 		i += 1
 	fout.write('</row>\n')
 	j += 1
@@ -145,8 +146,12 @@ while j < num_rows:
 # write last part
 ####################
 fout.write("""</lyxtabular>
+
 \\end_inset
+
+
 \\end_layout
+
 \\end_body
 \\end_document\n""")
 fout.close()
