@@ -29,6 +29,8 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 
+#include <ostream>
+
 using namespace std;
 
 namespace lyx {

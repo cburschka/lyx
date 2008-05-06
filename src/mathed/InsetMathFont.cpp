@@ -18,6 +18,8 @@
 #include "MathParser.h"
 #include "MetricsInfo.h"
 
+#include <ostream>
+
 
 namespace lyx {
 

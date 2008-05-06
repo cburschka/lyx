@@ -15,6 +15,7 @@
 #include "MathData.h"
 #include "MathStream.h"
 
+#include <ostream>
 
 namespace lyx {
 

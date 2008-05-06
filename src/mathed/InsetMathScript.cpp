@@ -25,6 +25,8 @@
 
 #include "support/lassert.h"
 
+#include <ostream>
+
 using namespace std;
 
 namespace lyx {

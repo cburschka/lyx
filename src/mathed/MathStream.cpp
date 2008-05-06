@@ -21,6 +21,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <ostream>
 
 using namespace std;
 

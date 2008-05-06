@@ -15,6 +15,8 @@
 #include "LaTeXFeatures.h"
 #include "MathStream.h"
 
+#include <ostream>
+
 namespace lyx {
 
 

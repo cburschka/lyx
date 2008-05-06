@@ -18,6 +18,8 @@
 
 #include "support/lstrings.h"
 
+#include <ostream>
+
 namespace lyx {
 
 InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n)

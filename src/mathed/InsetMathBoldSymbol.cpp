@@ -16,6 +16,9 @@
 #include "MathData.h"
 #include "LaTeXFeatures.h"
 
+#include <ostream>
+
+
 namespace lyx {
 
 InsetMathBoldSymbol::InsetMathBoldSymbol(Kind kind)

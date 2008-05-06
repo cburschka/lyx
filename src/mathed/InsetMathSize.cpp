@@ -18,6 +18,8 @@
 
 #include "support/convert.h"
 
+#include <ostream>
+
 
 namespace lyx {
 

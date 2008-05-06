@@ -23,6 +23,8 @@
 
 #include "support/lstrings.h"
 
+#include <ostream>
+
 using namespace std;
 
 namespace lyx {
