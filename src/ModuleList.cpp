@@ -82,27 +82,23 @@ bool ModuleList::load()
 	LYXERR(Debug::TCLASS, "Reading modules from `" << real_file << '\'');
 
 	if (real_file.empty()) {
-		lyxerr << "ModuleList::load(): unable to find "
-				"modules file  `"
-				<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
-				<< "'.\nNo modules will be available." << endl;
+		LYXERR0("unable to find modules file  `"
+			<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
+			<< "'.\nNo modules will be available.");
 		return false;
 	}
 
 	Lexer lex;
 	if (!lex.setFile(real_file)) {
-		lyxerr << "ModuleList::load():"
-				"lyxlex was not able to set file: "
-				<< real_file << ".\nNo modules will be available." << endl;
+		LYXERR0("lyxlex was not able to set file: "
+			<< real_file << ".\nNo modules will be available.");
 		return false;
 	}
 
 	if (!lex.isOK()) {
-		lyxerr << "ModuleList::load():" <<
-				"unable to open modules file  `"
-				<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
-				<< "'\nNo modules will be available."
-				<< endl;
+		LYXERR0("unable to open modules file  `"
+			<< to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
+			<< "'\nNo modules will be available.");
 		return false;
 	}
 

@@ -79,16 +79,16 @@ FontInfo & FontInfo::decSize()
 	case FONT_SIZE_SCRIPT:       size_ = FONT_SIZE_TINY;     break;
 	case FONT_SIZE_TINY:         break;
 	case FONT_SIZE_INCREASE:
-		lyxerr << "Can't FontInfo::decSize on FONT_SIZE_INCREASE" << endl;
+		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_INCREASE");
 		break;
 	case FONT_SIZE_DECREASE:
-		lyxerr <<"Can't FontInfo::decSize on FONT_SIZE_DECREASE" << endl;
+		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_DECREASE");
 		break;
 	case FONT_SIZE_INHERIT:
-		lyxerr <<"Can't FontInfo::decSize on FONT_SIZE_INHERIT" << endl;
+		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_INHERIT");
 		break;
 	case FONT_SIZE_IGNORE:
-		lyxerr <<"Can't FontInfo::decSize on FONT_SIZE_IGNORE" << endl;
+		LYXERR0("Can't FontInfo::decSize on FONT_SIZE_IGNORE");
 		break;
 	}
 	return *this;
@@ -110,16 +110,16 @@ FontInfo & FontInfo::incSize()
 	case FONT_SIZE_SCRIPT:       size_ = FONT_SIZE_FOOTNOTE; break;
 	case FONT_SIZE_TINY:         size_ = FONT_SIZE_SCRIPT;   break;
 	case FONT_SIZE_INCREASE:
-		lyxerr <<"Can't FontInfo::incSize on FONT_SIZE_INCREASE" << endl;
+		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_INCREASE");
 		break;
 	case FONT_SIZE_DECREASE:
-		lyxerr <<"Can't FontInfo::incSize on FONT_SIZE_DECREASE" << endl;
+		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_DECREASE");
 		break;
 	case FONT_SIZE_INHERIT:
-		lyxerr <<"Can't FontInfo::incSize on FONT_SIZE_INHERIT" << endl;
+		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_INHERIT");
 		break;
 	case FONT_SIZE_IGNORE:
-		lyxerr <<"Can't FontInfo::incSize on FONT_SIZE_IGNORE" << endl;
+		LYXERR0("Can't FontInfo::incSize on FONT_SIZE_IGNORE");
 		break;
 	}
 	return *this;

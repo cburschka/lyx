@@ -567,14 +567,13 @@ void MenuDefinition::checkShortcuts() const
 			LYXERR0("Menu warning: menu entry \""
 			       << it1->label()
 			       << "\" does not contain shortcut `"
-			       << shortcut << "'." << endl);
+			       << shortcut << "'.");
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
 			if (!it2->shortcut().compare(shortcut, Qt::CaseInsensitive)) {
 				LYXERR0("Menu warning: menu entries "
 				       << '"' << it1->fulllabel()
 				       << "\" and \"" << it2->fulllabel()
-				       << "\" share the same shortcut."
-				       << endl);
+				       << "\" share the same shortcut.");
 			}
 		}
 	}
@@ -1436,7 +1435,7 @@ MenuDefinition const & Menus::Impl::getMenu(QString const & name) const
 	const_iterator cit = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
 	if (cit == menulist_.end())
-		lyxerr << "No submenu named " << name << endl;
+		LYXERR0("No submenu named " << name);
 	LASSERT(cit != menulist_.end(), /**/);
 	return (*cit);
 }
@@ -1447,7 +1446,7 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 	iterator it = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
 	if (it == menulist_.end())
-		lyxerr << "No submenu named " << name << endl;
+		LYXERR0("No submenu named " << name);
 	LASSERT(it != menulist_.end(), /**/);
 	return (*it);
 }

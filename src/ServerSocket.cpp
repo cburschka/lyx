@@ -30,6 +30,7 @@
 #include <boost/bind.hpp>
 
 #include <cerrno>
+#include <ostream>
 
 #if defined (_WIN32)
 # include <io.h>
@@ -79,7 +80,8 @@ ServerSocket::~ServerSocket()
 		theApp()->unregisterSocketCallback(fd_);
 		if (::close(fd_) != 0)
 			lyxerr << "lyx: Server socket " << fd_
-			       << " IO error on closing: " << strerror(errno);
+			       << " IO error on closing: " << strerror(errno)
+			       << endl;
 	}
 	address_.removeFile();
 	LYXERR(Debug::LYXSERVER, "lyx: Server socket quitting");
