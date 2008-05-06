@@ -28,7 +28,7 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "insets/InsetGraphicsParams.h"
+#include "insets/InsetGraphics.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -82,8 +82,7 @@ namespace frontend {
 //FIXME setAutoTextCB should really take an argument, as indicated, that
 //determines what text is to be written for "auto". But making
 //that work involves more extensive revisions than we now want
-//to make, since "auto" also appears in updateContents() (see
-//GuiGraphics.cpp).
+//to make, since "auto" also appears in paramsToDialog().
 //The right way to do this, I think, would be to define a class
 //checkedLengthSet (and a partnering labeledLengthSete) that encapsulated
 //the checkbox, line edit, and length combo together, and then made e.g.
@@ -427,7 +426,7 @@ static int itemNumber(const vector<string> & v, string const & s)
 }
 
 
-void GuiGraphics::updateContents()
+void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 {
 	static char const * const bb_units[] = { "bp", "cm", "mm", "in" };
 	size_t const bb_size = sizeof(bb_units) / sizeof(bb_units[0]);
@@ -444,8 +443,6 @@ void GuiGraphics::updateContents()
 		rtXunit->addItem(toqstr(*it));
 		rtYunit->addItem(toqstr(*it));
 	}
-
-	InsetGraphicsParams & igp = params_;
 
 	// set the right default unit
 	Length::UNIT unitDefault = Length::CM;
@@ -719,6 +716,7 @@ bool GuiGraphics::isValid()
 bool GuiGraphics::initialiseParams(string const & data)
 {
 	InsetGraphics::string2params(data, buffer(), params_);
+	paramsToDialog(params_);
 	return true;
 }
 

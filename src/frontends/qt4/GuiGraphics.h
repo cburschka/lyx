@@ -18,17 +18,15 @@
 #include "GuiDialog.h"
 #include "ui_GraphicsUi.h"
 
+#include "insets/InsetGraphicsParams.h"
+
 #include "support/docstring.h"
-#include "insets/InsetGraphics.h"
 
 #include <vector>
 
 class QString;
 
 namespace lyx {
-
-class InsetGraphics;
-class InsetGraphicsParams;
 
 namespace frontend {
 
@@ -53,34 +51,32 @@ private Q_SLOTS:
 private:
 	///
 	bool isValid();
-	/// Apply changes
+	/// Dialog inherited methods
+	//@{
 	void applyView();
-	/// update
-	void updateContents();
+	void updateContents() {}
+	bool initialiseParams(std::string const & data);
+	void clearParams();
+	void dispatchParams();
+	bool isBufferDependent() const { return true; }
+	//@}
+
+	///
+	void paramsToDialog(InsetGraphicsParams const & params);
+
 	/// get bounding box from file
 	void getBB();
-
-	/// Store the LaTeX names for the rotation origins.
-	std::vector<std::string> origin_ltx;
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
 	/// Browse for a file
 	QString browse(QString const &) const;
 	/// Read the Bounding Box from a eps or ps-file
 	std::string readBoundingBox(std::string const & file);
-	/// Control the bb
-	bool bbChanged;
 	/// test if file exist
 	bool isFileNameValid(std::string const & fname) const;
 
-private:
+	/// Control the bb
+	bool bbChanged;
+	/// Store the LaTeX names for the rotation origins.
+	std::vector<std::string> origin_ltx;
 	///
 	InsetGraphicsParams params_;
 };
