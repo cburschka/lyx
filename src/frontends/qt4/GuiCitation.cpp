@@ -105,7 +105,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
 
 	selectionManager = new GuiSelectionManager(availableLV, selectedLV, 
-			addPB, deletePB, upPB, downPB, available(), selected());
+			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
 	connect(selectionManager, SIGNAL(updateHook()),
@@ -210,8 +210,8 @@ void GuiCitation::updateControls()
 	}
 	setButtons();
 
-	textBeforeED->setText(textBefore());
-	textAfterED->setText(textAfter());
+	textBeforeED->setText(toqstr(params_["before"]));
+	textAfterED->setText(toqstr(params_["after"]));
 	fillStyles();
 	updateStyle();
 }
@@ -279,7 +279,7 @@ void GuiCitation::fillStyles()
 
 	citationStyleCO->clear();
 
-	QStringList selected_keys = selected()->stringList();
+	QStringList selected_keys = selected_model_.stringList();
 	if (selected_keys.empty()) {
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
@@ -313,7 +313,7 @@ void GuiCitation::fillFields()
 	fieldsCO->blockSignals(true);
 	int const oldIndex = fieldsCO->currentIndex();
 	fieldsCO->clear();
-	QStringList const & fields = getFieldsAsQStringList();
+	QStringList const fields = to_qstring_list(bibInfo().getFields());
 	fieldsCO->insertItem(0, qt_("All Fields"));
 	fieldsCO->insertItem(1, qt_("Keys"));
 	fieldsCO->insertItems(2, fields);
@@ -328,7 +328,7 @@ void GuiCitation::fillEntries()
 	entriesCO->blockSignals(true);
 	int const oldIndex = entriesCO->currentIndex();
 	entriesCO->clear();
-	QStringList const & entries = getEntriesAsQStringList();
+	QStringList const entries = to_qstring_list(bibInfo().getEntries());
 	entriesCO->insertItem(0, qt_("All Entry Types"));
 	entriesCO->insertItems(1, entries);
 	if (oldIndex != -1 && oldIndex < entriesCO->count())
@@ -340,7 +340,7 @@ void GuiCitation::fillEntries()
 bool GuiCitation::isSelected(const QModelIndex & idx)
 {
 	QString const str = idx.data().toString();
-	return selected()->stringList().contains(str);
+	return selected_model_.stringList().contains(str);
 }
 
 
@@ -355,11 +355,14 @@ void GuiCitation::setButtons()
 
 void GuiCitation::updateInfo(QModelIndex const & idx)
 {
-	if (idx.isValid()) {
-		QString const keytxt = getKeyInfo(idx.data().toString());
-		infoML->document()->setPlainText(keytxt);
-	} else
+	if (!idx.isValid() || bibInfo().empty()) {
 		infoML->document()->clear();
+		return;
+	}
+
+	QString const keytxt = toqstr(
+		bibInfo().getInfo(qstring_to_ucs4(idx.data().toString())));
+	infoML->document()->setPlainText(keytxt);
 }
 
 
@@ -367,7 +370,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 {
 	//"All Fields" and "Keys" are the first two
 	int index = fieldsCO->currentIndex() - 2; 
-	vector<docstring> const & fields = availableFields();
+	vector<docstring> const & fields = bibInfo().getFields();
 	docstring field;
 	
 	if (index <= -1 || index >= int(fields.size()))
@@ -381,7 +384,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 	
 	//"All Entry Types" is first.
 	index = entriesCO->currentIndex() - 1; 
-	vector<docstring> const & entries = availableEntries();
+	vector<docstring> const & entries = bibInfo().getEntries();
 	docstring entry_type;
 	if (index < 0 || index >= int(entries.size()))
 		entry_type = from_ascii("");
@@ -503,22 +506,10 @@ void GuiCitation::clearSelection()
 }
 
 
-QString GuiCitation::textBefore()
-{
-	return toqstr(params_["before"]);
-}
-
-
-QString GuiCitation::textAfter()
-{
-	return toqstr(params_["after"]);
-}
-
-
 void GuiCitation::init()
 {
 	// Make the list of all available bibliography keys
-	all_keys_ = to_qstring_list(availableKeys());
+	all_keys_ = to_qstring_list(bibInfo().getKeys());
 	available_model_.setStringList(all_keys_);
 
 	// Ditto for the keys cited in this inset
@@ -587,28 +578,10 @@ void GuiCitation::findKey(QString const & str, bool only_keys,
 }
 
 
-QStringList GuiCitation::getFieldsAsQStringList()
-{
-	return to_qstring_list(availableFields());
-}
-
-
-QStringList GuiCitation::getEntriesAsQStringList()
-{
-	return to_qstring_list(availableEntries());
-}
-
-
 QStringList GuiCitation::citationStyles(int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
 	return to_qstring_list(bibInfo().getCiteStrings(key, buffer()));
-}
-
-
-QString GuiCitation::getKeyInfo(QString const & sel)
-{
-	return toqstr(getInfo(qstring_to_ucs4(sel)));
 }
 
 
@@ -631,24 +604,6 @@ bool GuiCitation::initialiseParams(string const & data)
 void GuiCitation::clearParams()
 {
 	params_.clear();
-}
-
-
-vector<docstring> GuiCitation::availableKeys() const
-{
-	return bibInfo().getKeys();
-}
-
-
-vector<docstring> GuiCitation::availableFields() const
-{
-	return bibInfo().getFields();
-}
-
-
-vector<docstring> GuiCitation::availableEntries() const
-{
-	return bibInfo().getEntries();
 }
 
 
@@ -677,15 +632,6 @@ void GuiCitation::filterByEntryType(
 CiteEngine GuiCitation::citeEngine() const
 {
 	return buffer().params().citeEngine();
-}
-
-
-docstring GuiCitation::getInfo(docstring const & key) const
-{
-	if (bibInfo().empty())
-		return docstring();
-
-	return bibInfo().getInfo(key);
 }
 
 

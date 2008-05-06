@@ -42,23 +42,6 @@ public:
 	GuiCitation(GuiView & lv);
 	///
 	~GuiCitation();
-	///
-	void applyView();
-
-	void updateView() {}
-
-private:
-	///
-	void showEvent(QShowEvent * e);
-	///
-	void closeEvent(QCloseEvent * e);
-	/// prepares a call to GuiCitation::searchKeys when we
-	/// are ready to search the BibTeX entries
-	void findText(QString const & text, bool reset = false);
-	/// check whether key is already selected
-	bool isSelected(const QModelIndex &);
-	/// update the display of BibTeX information
-	void updateInfo(QModelIndex const &);
 
 private Q_SLOTS:
 	void cleanUp();
@@ -80,7 +63,33 @@ private Q_SLOTS:
 	/// performs a limited update, suitable for internal call
 	void updateControls();
 	
+
 private:
+	/// Dialog inherited methods
+	//@{
+	void applyView();
+	void updateView() {}
+	bool initialiseParams(std::string const & data);
+	void clearParams();
+	void dispatchParams();
+	bool isBufferDependent() const { return true; }
+	/** Disconnect from the inset when the Apply button is pressed.
+	 *  Allows easy insertion of multiple citations.
+	 */
+	bool disconnectOnApply() const { return true; }
+	//@}
+
+	///
+	void showEvent(QShowEvent * e);
+	///
+	void closeEvent(QCloseEvent * e);
+	/// prepares a call to GuiCitation::searchKeys when we
+	/// are ready to search the BibTeX entries
+	void findText(QString const & text, bool reset = false);
+	/// check whether key is already selected
+	bool isSelected(const QModelIndex &);
+	/// update the display of BibTeX information
+	void updateInfo(QModelIndex const &);
 	/// enable/disable buttons
 	void setButtons();
 	/// fill the styles combo
@@ -93,29 +102,10 @@ private:
 	void updateStyle();
 	/// set the formatting widgets
 	void updateFormatting(CiteStyle currentStyle);
-	/// last used citation style
-	int style_;
-	
-	GuiSelectionManager * selectionManager;
-
 	///
 	void init();
-	/// Available keys
-	QStringListModel * available() { return &available_model_; }
-	/// Selected keys
-	QStringListModel * selected() { return &selected_model_; }
-	/// Text before cite
-	QString textBefore();
-	/// Text after cite
-	QString textAfter();
-	/// Get key description
-	QString getKeyInfo(QString const &);
 	/// Clear selected keys
 	void clearSelection();
-	/// Return a list of available fields 
-	QStringList getFieldsAsQStringList();
-	/// Return a list of available fields 
-	QStringList getEntriesAsQStringList();
 	
 	/// Find keys containing a string.
 	void findKey(
@@ -134,46 +124,12 @@ private:
 	/// Set the Params variable for the Controller.
 	void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
 
-private:
-	/// available keys.
-	QStringListModel available_model_;
-	/// selected keys.
-	QStringListModel selected_model_;
-	/// All keys.
-	QStringList all_keys_;
-	/// Cited keys.
-	QStringList cited_keys_;
-	///
-	InsetCommandParams params_;
-
-	/** Disconnect from the inset when the Apply button is pressed.
-	 *  Allows easy insertion of multiple citations.
-	 */
-	bool disconnectOnApply() const { return true; }
-
-	/// \return the list of all available bibliography keys.
-	std::vector<docstring> availableKeys() const;
-	/// \return the list of all used BibTeX fields
-	std::vector<docstring> availableFields() const;
-	/// \return the list of all used BibTeX entry types
-	std::vector<docstring> availableEntries() const;
 	///
 	void filterByEntryType(
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
 	CiteEngine citeEngine() const;
-
-	/// \return information for this key.
-	docstring getInfo(docstring const & key) const;
 
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.
@@ -186,9 +142,23 @@ private:
 		bool regex = false //< \set to true if \c search_expression is a regex
 		); //
 
-private:
 	/// The BibTeX information available to the dialog
 	BiblioInfo const & bibInfo() const;
+
+	/// last used citation style
+	int style_;
+	///
+	GuiSelectionManager * selectionManager;
+	/// available keys.
+	QStringListModel available_model_;
+	/// selected keys.
+	QStringListModel selected_model_;
+	/// All keys.
+	QStringList all_keys_;
+	/// Cited keys.
+	QStringList cited_keys_;
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend
