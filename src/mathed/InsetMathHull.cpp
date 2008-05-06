@@ -166,7 +166,7 @@ InsetMathHull::InsetMathHull(HullType type)
 }
 
 
-InsetMathHull::InsetMathHull(InsetMathHull const & other)
+InsetMathHull::InsetMathHull(InsetMathHull const & other) : InsetMathGrid()
 {
 	operator=(other);
 }
