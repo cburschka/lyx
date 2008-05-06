@@ -684,15 +684,19 @@ void InsetMathHull::addRow(row_type row)
 		return;
 
 	bool numbered = numberedType();
+	docstring lab;
 	if (type_ == hullMultline) {
-		if (row + 1 == nrows())
+		if (row + 1 == nrows())  {
 			nonum_[row] = true;
-		else
+			lab = label(row);
+		} else
 			numbered = false;
 	}
 
 	nonum_.insert(nonum_.begin() + row + 1, !numbered);
 	label_.insert(label_.begin() + row + 1, dummy_pointer);
+	if (!lab.empty())
+		label(row + 1, lab);
 	InsetMathGrid::addRow(row);
 }
 
@@ -720,6 +724,14 @@ void InsetMathHull::delRow(row_type row)
 {
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
+	if (row + 1 == nrows() && type_ == hullMultline) {
+		bool const b = nonum_[row - 1];
+		nonum_[row - 1] = nonum_[row];
+		nonum_[row] = b;
+		swap(label_[row - 1], label_[row]);
+		InsetMathGrid::delRow(row);
+		return;
+	}
 	InsetMathGrid::delRow(row);
 	// The last dummy row has no number info nor a label.
 	// Test nrows() + 1 because we have already erased the row.
@@ -1302,8 +1314,10 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_NUMBER_LINE_TOGGLE: {
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
-		status.enabled(display());
+		bool const enable = (type_ == hullMultline) ?
+			(nrows() - 1 == cur.row()) : display();
 		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		status.enabled(enable);
 		status.setOnOff(numbered(r));
 		return true;
 	}
