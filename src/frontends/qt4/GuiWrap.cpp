@@ -149,15 +149,15 @@ void GuiWrap::applyView()
 }
 
 
-void GuiWrap::updateContents()
+void GuiWrap::paramsToDialog(InsetWrapParams const & params)
 {
 	// 0pt is a legal width now, it yields a
 	// wrapfloat just wide enough for the contents.
-	Length len_w = params_.width;
+	Length len_w = params.width;
 	widthED->setText(QString::number(len_w.value()));
 	widthUnitLC->setCurrentItem(len_w.unit());
 
-	Length len_o(params_.overhang);
+	Length len_o(params.overhang);
 	overhangED->setText(QString::number(len_o.value()));
 	overhangUnitLC->setCurrentItem(len_o.unit());
 	if (len_o.value() == 0)
@@ -165,24 +165,24 @@ void GuiWrap::updateContents()
 	else
 		overhangCB->setCheckState(Qt::Checked);
 
-	linesSB->setValue(params_.lines);
-	if (params_.lines == 0)
+	linesSB->setValue(params.lines);
+	if (params.lines == 0)
 		linesCB->setCheckState(Qt::Unchecked);
 	else
 		linesCB->setCheckState(Qt::Checked);
 
 	int item = 0;
-	if (params_.placement == "i" || params_.placement == "I")
+	if (params.placement == "i" || params.placement == "I")
 		item = 1;
-	else if (params_.placement == "l" || params_.placement == "L")
+	else if (params.placement == "l" || params.placement == "L")
 		item = 2;
-	else if (params_.placement == "r" || params_.placement == "R")
+	else if (params.placement == "r" || params.placement == "R")
 		item = 3;
 
 	valignCO->setCurrentIndex(item);
 
-	if (params_.placement == "O" || params_.placement == "I"
-		|| params_.placement == "L" || params_.placement == "R")
+	if (params.placement == "O" || params.placement == "I"
+		|| params.placement == "L" || params.placement == "R")
 		floatCB->setCheckState(Qt::Checked);
 }
 
@@ -190,6 +190,7 @@ void GuiWrap::updateContents()
 bool GuiWrap::initialiseParams(string const & data)
 {
 	InsetWrap::string2params(data, params_);
+	paramsToDialog(params_);
 	return true;
 }
 

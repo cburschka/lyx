@@ -14,6 +14,7 @@
 
 #include "GuiDialog.h"
 #include "ui_WrapUi.h"
+
 #include "insets/InsetWrap.h"
 
 namespace lyx {
@@ -30,18 +31,18 @@ private Q_SLOTS:
 	void change_adaptor();
 
 private:
-	/// Apply changes
+	/// Dialog inherited methods
+	//@{
 	void applyView();
-	/// update
-	void updateContents();
-	///
+	void updateContents() {}
 	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
 	void clearParams();
-	/// clean-up on hide.
 	void dispatchParams();
-	///
 	bool isBufferDependent() const { return true; }
+	//@}
+
+	///
+	void paramsToDialog(InsetWrapParams const & params);
 
 	///
 	InsetWrapParams params_;
