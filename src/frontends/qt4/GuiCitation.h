@@ -15,22 +15,25 @@
 #ifndef GUICITATION_H
 #define GUICITATION_H
 
-#include "GuiDialog.h"
-#include "GuiSelectionManager.h"
+#include "DialogView.h"
 #include "ui_CitationUi.h"
 
-#include "BiblioInfo.h"
-#include "Citation.h"
-
 #include "insets/InsetCommandParams.h"
+
+#include "Citation.h"
 
 #include <QStringList>
 #include <QStringListModel>
 
 namespace lyx {
+
+class BiblioInfo;
+
 namespace frontend {
 
-class GuiCitation : public GuiDialog, public Ui::CitationUi
+class GuiSelectionManager;
+
+class GuiCitation : public DialogView, public Ui::CitationUi
 {
 	Q_OBJECT
 
@@ -42,9 +45,7 @@ public:
 	///
 	void applyView();
 
-public Q_SLOTS:
-	/// Update the display of the dialog whilst it is still visible.
-	void updateView();
+	void updateView() {}
 
 private:
 	///
@@ -77,7 +78,7 @@ private Q_SLOTS:
 	///
 	void setCitedKeys();
 	/// performs a limited update, suitable for internal call
-	void updateDialog();
+	void updateControls();
 	
 private:
 	/// enable/disable buttons

@@ -15,8 +15,11 @@
 
 #include "GuiCitation.h"
 
+#include "GuiSelectionManager.h"
 #include "qt_helpers.h"
+
 #include "Buffer.h"
+#include "BiblioInfo.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
 
@@ -77,7 +80,7 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 
 GuiCitation::GuiCitation(GuiView & lv)
-	: GuiDialog(lv, "citation", qt_("Citation")),
+	: DialogView(lv, "citation", qt_("Citation")),
 	  params_(insetCode("citation"))
 {
 	setupUi(this);
@@ -106,11 +109,10 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
 	connect(selectionManager, SIGNAL(updateHook()),
-		this, SLOT(updateDialog()));
+		this, SLOT(updateControls()));
 	connect(selectionManager, SIGNAL(okHook()),
 		this, SLOT(on_okPB_clicked()));
 
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	// FIXME: the sizeHint() for this is _way_ too high
 	infoML->setFixedHeight(60);
 }
@@ -154,10 +156,9 @@ void GuiCitation::applyView()
 
 void GuiCitation::showEvent(QShowEvent * e)
 {
-	init();
 	findLE->clear();
 	availableLV->setFocus();
-	GuiDialog::showEvent(e);
+	DialogView::showEvent(e);
 }
 
 
@@ -185,16 +186,6 @@ void GuiCitation::on_applyPB_clicked()
 void GuiCitation::on_restorePB_clicked()
 {
 	init();
-	updateView();
-}
-
-
-void GuiCitation::updateView()
-{
-	init();
-	fillFields();
-	fillEntries();
-	updateDialog();
 }
 
 
@@ -204,7 +195,7 @@ void GuiCitation::updateView()
 // will not have changed. At the moment, however, the division between
 // fillStyles() and updateStyle() doesn't lend itself to dividing the
 // two methods, though they should be divisible.
-void GuiCitation::updateDialog()
+void GuiCitation::updateControls()
 {
 	if (selectionManager->selectedFocused()) { 
 		if (selectedLV->selectionModel()->selectedIndexes().isEmpty())
@@ -406,7 +397,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 	//availableLV. Currently, we get an automatic reset, since the
 	//model is reset.
 	
-	updateDialog();
+	updateControls();
 }
 
 
@@ -537,6 +528,10 @@ void GuiCitation::init()
 	else
 		cited_keys_ = str.split(",");
 	selected_model_.setStringList(cited_keys_);
+
+	fillFields();
+	fillEntries();
+	updateControls();
 }
 
 
@@ -628,6 +623,7 @@ bool GuiCitation::initialiseParams(string const & data)
 	InsetCommand::string2params("citation", data, params_);
 	CiteEngine const engine = buffer().params().citeEngine();
 	citeStyles_ = citeStyles(engine);
+	init();
 	return true;
 }
 
