@@ -30,7 +30,6 @@ namespace lyx {
 Languages languages;
 Language ignore_lang;
 Language latex_lang;
-Language const * english_language;
 Language const * default_language;
 Language const * ignore_language = &ignore_lang;
 Language const * latex_language = &latex_lang;
@@ -86,9 +85,6 @@ void Languages::read(FileName const & filename)
 			default_language = &(*languagelist.begin()).second;
 		LYXERR0("Using \"" << default_language->lang() << "\" instead!");
 	}
-	english_language = getLanguage("english");
-	if (!english_language)
-		english_language = default_language;
 }
 
 
