@@ -1081,6 +1081,9 @@ bool Tabular::rowBottomLine(row_type r) const
 
 bool Tabular::columnLeftLine(col_type c) const
 {
+	if (use_booktabs)
+		return false;
+
 	int nrows_left = 0;
 	int total = 0;
 	row_type const nrows = row_info.size();
@@ -1099,6 +1102,9 @@ bool Tabular::columnLeftLine(col_type c) const
 
 bool Tabular::columnRightLine(col_type c) const
 {
+	if (use_booktabs)
+		return false;
+
 	int nrows_right = 0;
 	int total = 0;
 	row_type const nrows = row_info.size();
@@ -2181,7 +2187,7 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 		os << "\\begin{tabular}{";
 
 	for (col_type i = 0; i < column_info.size(); ++i) {
-		if (!use_booktabs && columnLeftLine(i))
+		if (columnLeftLine(i))
 			os << '|';
 		if (!column_info[i].align_special.empty()) {
 			os << column_info[i].align_special;
@@ -2232,7 +2238,7 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 				}
 			} // end if else !column_info[i].p_width
 		} // end if else !column_info[i].align_special
-		if (!use_booktabs && columnRightLine(i))
+		if (columnRightLine(i))
 			os << '|';
 	}
 	os << "}\n";
