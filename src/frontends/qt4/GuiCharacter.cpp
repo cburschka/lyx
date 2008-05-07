@@ -118,10 +118,10 @@ static QList<FamilyPair> familyData()
 
 namespace {
 
-template<class T>
+template<typename T>
 void fillCombo(QComboBox * combo, QList<T> list)
 {
-	QList<T>::const_iterator cit = list.begin();
+	typename QList<T>::const_iterator cit = list.begin();
 	for (; cit != list.end(); ++cit)
 		combo->addItem(cit->first);
 }

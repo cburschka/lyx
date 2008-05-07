@@ -19,6 +19,8 @@
 
 #include <QString>
 
+#include <utility>
+
 class QComboBox;
 class QLineEdit;
 class QCheckBox;
