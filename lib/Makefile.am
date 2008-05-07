@@ -1030,6 +1030,7 @@ dist_scripts_PYTHON = \
 	scripts/TeXFiles.py \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
+	scripts/csv2lyx.py \
 	scripts/date.py \
 	scripts/ext_copy.py \
 	scripts/fen2ascii.py \

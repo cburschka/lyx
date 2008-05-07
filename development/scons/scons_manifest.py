@@ -2820,6 +2820,7 @@ lib_scripts_files = Split('''
     TeXFiles.py
     clean_dvi.py
     convertDefault.py
+    csv2lyx.py
     date.py
     ext_copy.py
     fen2ascii.py
