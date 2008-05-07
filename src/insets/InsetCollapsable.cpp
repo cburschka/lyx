@@ -755,8 +755,10 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 {
 	status_ = status;
 	setButtonLabel();
-	if (status_ == Collapsed)
+	if (status_ == Collapsed) {
 		cur.leaveInset(*this);
+		mouse_hover_ = false;
+	}
 }
 
 
