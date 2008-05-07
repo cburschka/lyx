@@ -159,6 +159,8 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(colorCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(toggleallCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
+		SLOT(change_adaptor()));
 
 #ifdef Q_WS_MACX
 	// On Mac it's common to have tool windows which are always in the
