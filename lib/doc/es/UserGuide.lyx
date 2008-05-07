@@ -122,64 +122,10 @@ lyx-docs@lists.lyx.org
 \end_inset
 
 
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\emph on
-N.\InsetSpace \thinspace{}
-del t
-\emph default
-.: En este documento muchos términos aparecen sin traducir.
- En la mayoría de los casos se trata de comandos o argumentos de LaTeX que
- deben utilizarse tal como están.
- En menos casos se trata de menús o diálogos de la interfaz gráfica de LyX
- que aún están sin traducir.
-\end_layout
-
-\end_inset
-
+\newline
 
 \newline
 Versión 1.5.5
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-
-\emph on
-N.
- del t.
-\emph default
-: Si al intentar ver la salida pdf-latex obtienes un mensaje «Archivo de
- salida vacío» y errores de LaTeX (Use of 
-\backslash
-@xfootnotenext...), cambia en el preámbulo del documento «roman» por «Roman».
- O mejor, actualiza  los archivos
-\family typewriter
- spanish 
-\family default
-de 
-\series bold
-babel
-\series default
-.
- Más información sobre estos archivos en la sección 
-\begin_inset LatexCommand ref
-reference "sub:Estilo-spanish"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -871,19 +817,16 @@ e., si buscamos «estrella»
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Things like notes, floats, etc., the so called insets can be dissolved.
- This means that the inset is deleted and its content is left as normal
- text.
- Dissolving an inset is done by setting the cursor at the beginning of an
- inset and pressing 
+Los objetos insertados,como notas, flotantes, etc, se pueden disolver.Esto
+ significa que el objeto es borrado y su contenido queda como texto normal.Para
+ disolver un objeto se pone el cursor al principio del mismo y se pulsa
+ 
 \family sans
-Backspace
+Retroceso
 \family default
- or by setting the cursor to the end and pressing 
+ se coloca el cursor al final y se pulsa 
 \family sans
-Delete
+Supr
 \family default
 .
 \end_layout
@@ -1071,7 +1014,7 @@ name "Atajos de teclado"
 \begin_layout Standard
 No vamos a considerar todos los atajos de teclado.
  Al menos, hay dos mapas de teclado principales: CUA y Emacs.
- LyX usa CUA por defecto.
+ LyX usa CUA por omisión.
 \end_layout
 
 \begin_layout Standard
@@ -4060,7 +4003,7 @@ Enumeración*
 \family default
  es un topo.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -4069,10 +4012,10 @@ N.\InsetSpace \thinspace{}
 del t.
 \emph default
 : En la salida del documento en español las marcas no corresponden con su
- descripción; la causa se explica en la sección\InsetSpace ~
+ descripción; la causa se explica en la página\InsetSpace ~
 
-\begin_inset LatexCommand ref
-reference "sub:Estilo-spanish"
+\begin_inset LatexCommand pageref
+reference "min:En-español"
 
 \end_inset
 
@@ -4147,22 +4090,14 @@ del t.
 \emph default
 : Para documentos en español véase  la sección\InsetSpace ~
 
-\begin_inset LatexCommand ref
-reference "sub:Estilo-spanish"
+\begin_inset LatexCommand vpageref
+reference "min:En-español"
 
 \end_inset
 
 .
 \end_layout
 
-\end_inset
-
-
-\begin_inset Formula $^{}$
-\end_inset
-
-
-\begin_inset Formula $^{\text{}}$
 \end_inset
 
  
@@ -4280,7 +4215,7 @@ N.\InsetSpace \thinspace{}
 del t.:
 \emph default
  En los documentos en español, en la salida verás las siguientes etiquetas
- para cada nivel: <\InsetSpace ~
+ para cada nivel: \InsetSpace ~
  1.
  \InsetSpace ~
  
@@ -4301,19 +4236,10 @@ a
 
  
 \emph default
->
-\emph on
-.
- 
-\emph default
-Más información en la sección
-\emph on
-\InsetSpace ~
+Más información\InsetSpace ~
 
-\emph default
-
-\begin_inset LatexCommand ref
-reference "sub:Estilo-spanish"
+\begin_inset LatexCommand vpageref
+reference "min:En-español"
 
 \end_inset
 
@@ -4395,8 +4321,14 @@ reference "sec:Anidación"
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Minisec
 Enumeración* y Enumeración en documentos en español
+\begin_inset LatexCommand label
+name "min:En-español"
+
+\end_inset
+
+
 \begin_inset Foot
 status open
 
@@ -4407,38 +4339,7 @@ N.\InsetSpace \thinspace{}
 del t.
 \emph default
 : Esta sección no está en el original en inglés.
- Más detalles en los documentos 
-\family typewriter
-lists-spanish.lyx
-\family default
-, 
-\family typewriter
-lists-spanish.pdf
-\family default
-, en la página: 
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/LyX/Manuals"
-
-\end_inset
-
-
 \end_layout
-
-\end_inset
-
-
-\begin_inset OptArg
-status open
-
-\begin_layout Standard
-Enumeración* y Enumeración en español
-\end_layout
-
-\end_inset
-
-
-\begin_inset LatexCommand label
-name "sub:Estilo-spanish"
 
 \end_inset
 
@@ -4451,7 +4352,7 @@ Si el idioma establecido en las preferencias de LyX es español,
  
 \family default
 todos los documentos nuevos tienen este idioma como predeterminado.
- Por defecto, LyX carga el paquete 
+ Por omisión, LyX carga el paquete 
 \series bold
 babel
 \series default
@@ -4472,7 +4373,7 @@ El estilo
 \family typewriter
 spanish
 \family default
- establece por defecto un conjunto de formatos y características adaptado
+ establece por omisión un conjunto de formatos y características adaptado
  a los usos tipográficos propios del español.
  En particular, las marcas que aparecen en los ítems de una lista sin numerar
  y los caracteres que aparecen en una lista numerada, (entornos 
@@ -4537,40 +4438,6 @@ spanishsignitems
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Standard
-
-\series bold
-Nota
-\series default
-: Solo funcionan en español, si no generan error («undefined control sequence»),
- porque solo el estilo 
-\family typewriter
-spanish 
-\family default
-los reconoce
-\family typewriter
-.
-
-\family default
- Tampoco funcionan (aunque sin error) si se desactivan las listas de 
-\family typewriter
-spanish
-\family default
- con el comando descrito a continuación.
-
-\family typewriter
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 A partir de la versión 
 \family typewriter
 5.0a
@@ -4579,7 +4446,7 @@ A partir de la versión
 \family typewriter
 spanish
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -4601,15 +4468,15 @@ target "http://www.texytipografia.com/spanish.html"
 
 \end_inset
 
-.
+ o en CTAN.
 \end_layout
 
 \end_inset
 
 
 \family default
- ofrece la posibilidad de anular su predefinición de marcas y símbolos mediante
- la opción de paquete «es-nolists», insertada en el comando:
+ ofrece la posibilidad de anular sus valores predefinidos de marcas y símbolos
+ mediante la opción de paquete «es-nolists», insertada con el comando:
 \family typewriter
  
 \end_layout
@@ -4619,7 +4486,9 @@ target "http://www.texytipografia.com/spanish.html"
 \series bold
 
 \backslash
-usepackage[es-nolists]{babel}
+def
+\backslash
+spanishoptions{es-nolists}
 \end_layout
 
 \begin_layout Standard
@@ -4640,24 +4509,6 @@ Enumeración
 \family default
 .
  
-\end_layout
-
-\begin_layout Standard
-Si el comando se introduce en el campo 
-\family sans
-Paquete de idioma
-\family default
-, en el diálogo 
-\family sans
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Idioma
-\family default
-, el cambio afectará a 
-\emph on
-todos 
-\emph default
-los documentos en español.
 \end_layout
 
 \begin_layout Standard
@@ -4884,7 +4735,7 @@ Lista
 \family default
  tienen el mismo margen izquierdo.
 \newline
-Para cambiar la anchura por defecto, selecciona
+Para cambiar la anchura por omisión, selecciona
  los ítems en la lista.
  Ahora, en el menú 
 \family sans
@@ -4997,7 +4848,7 @@ Aún queda otra característica de
 \family sans
 Lista
 \family default
-: Como ves en los ejemplos, LyX, por defecto, alinea las etiquetas a la
+: Como ves en los ejemplos, LyX, por omisión, alinea las etiquetas a la
  izquierda.
  Puedes cambiar esto con 
 \family sans
@@ -6200,7 +6051,7 @@ figuras
 \begin_layout Standard
 (
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -8223,7 +8074,7 @@ status collapsed
 Relleno\InsetSpace ~
 
 \family default
- se decribe en la sección\InsetSpace ~
+ se describe en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Espacio-horizontal"
@@ -8334,7 +8185,7 @@ Centro
 \end_layout
 
 \begin_layout Standard
-En la mayoría de los casos la opción por defecto es justificado, en la que
+En la mayoría de los casos la opción por omisión es justificado, en la que
  el hueco entre palabras es variable y cada línea llena el espacio entre
  los márgenes izquierdo y derecho.
  Las otras tres opciones son evidentes, y se verían así:
@@ -8599,7 +8450,7 @@ linebreak[número]
 \backslash
 pagebreak
 \series default
-, descrito anterioriormente.
+, descrito anteriormente.
 \end_layout
 
 \begin_layout Standard
@@ -10655,7 +10506,7 @@ Normal
 \end_inset
 
 .
- Es el valor por defecto.
+ Es el valor por omisión.
  (combinación 
 \begin_inset ERT
 status collapsed
@@ -11304,7 +11155,7 @@ Estilo del texto
 \end_layout
 
 \begin_layout Standard
-Para reiniciar completamente el estilo a sus valores por defecto, usa 
+Para reiniciar completamente el estilo a sus valores por omisión, usa 
 \family sans
 M-c\InsetSpace ~
 Espacio
@@ -12490,7 +12341,7 @@ name "sub:División-con-guión"
 \end_layout
 
 \begin_layout Standard
-En Lyx no se parten las palabras a final de línea; sí se dividen en la salida,
+En LyX no se parten las palabras a final de línea; sí se dividen en la salida,
  automáticamente, por medio del paquete LaTeX 
 \series bold
 babel
@@ -13654,15 +13505,7 @@ name "cha:Notas-y-flotantes"
 Los temas tratados en este capítulo se desarrollan en profundidad en el
  manual 
 \emph on
-Objetos empotrados 
-\emph default
-(«
-\emph on
-Embedded Objects
-\emph default
-»)
-\emph on
-.
+Objetos incrustados.
  
 \emph default
 En él encontrarás también consejos y trucos para casos especiales.
@@ -13755,15 +13598,7 @@ Esto es un ejemplo de nota al pie dentro de una nota resaltada en gris.
  azul.
  La forma de hacerlo se explica en el manual
 \emph on
- Objetos empotrados 
-\emph default
-(«
-\emph on
-Embedded Objects
-\emph default
-»)
-\emph on
-.
+ Objetos incrustados.
 \end_layout
 
 \end_inset
@@ -13941,9 +13776,9 @@ En el archivo de salida, la nota al pie aparece como un superíndice numerado
  importa en qué capítulo esté la nota.
  LyX aún no soporta otros esquemas de numeración, pero puedes usarlos mediante
  comandos especiales de LaTeX.
- Se describen en el manual
+ Se describen en el manual 
 \emph on
- Embedded Objects.
+Objetos incrustados.
 \end_layout
 
 \begin_layout Section
@@ -14474,7 +14309,7 @@ Tabla
 \family default
 .
  Aparece un diálogo en el que se pide el número de filas y columnas.
- Por defecto, la tabla tiene líneas que enmarcan cada celda y la primera
+ Por omisión, la tabla tiene líneas que enmarcan cada celda y la primera
  fila aparece separada por una línea doble: la línea inferior de la primera
  fila y la línea superior de la segunda fila.
  Ejemplo de tabla:
@@ -18543,7 +18378,7 @@ Los flotantes girados son puestos siempre en su propia página (o columna
  (giran hacia la izquierda en páginas impares).
  En el manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
  se explica cómo forzar el sentido de rotación.
 \end_layout
@@ -19018,7 +18853,7 @@ Cuadros
 \emph default
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
  se explican con detalle todos los tipos de cuadros y sus características.
 \end_layout
@@ -19211,7 +19046,7 @@ Escape
 Tab
 \family default
  permite desplazarse horizontalmente por la ecuación; por ejemplo, por las
- celdas de una matriz o a través de una ecuación multi-línea.
+ celdas de una matriz o a través de una ecuación multilínea.
 \end_layout
 
 \begin_layout Standard
@@ -19281,7 +19116,7 @@ spce
 
 2x+1
 \series default
- y si quieres escibir 
+ y si quieres escribir 
 \begin_inset Formula $\sqrt{2x}+1$
 \end_inset
 
@@ -19986,19 +19821,11 @@ Barra\InsetSpace ~
 de\InsetSpace ~
 matemáticas
 \family default
-, contiene diversas funciones, como 
-\begin_inset Formula $\sin$
-\end_inset
-
- (seno), 
+, contiene diversas funciones, como seno, 
 \begin_inset Formula $\lim$
 \end_inset
 
-, 
-\emph on
-etc
-\emph default
-.
+, etc.
  (también se pueden insertar tecleando en una ecuación 
 \series bold
 
@@ -20035,7 +19862,7 @@ El empleo de macros de función generará también el espacio correcto alrededor
 
 \begin_layout Standard
 Para ciertos objetos matemáticos, como los límites, la macro cambia la forma
- de situar los subíndices, como se describe en sec.
+ de situar los subíndices, como se describe en la sec.
 \begin_inset Formula $\,$
 \end_inset
 
@@ -21011,7 +20838,7 @@ c
 \begin_inset Quotes frd
 \end_inset
 
- por defecto.
+ por omisión.
  Por ejemplo, la secuencia 
 \begin_inset Quotes fld
 \end_inset
@@ -21124,7 +20951,7 @@ C-I
 ntr
 \family default
 o se crea una fila nueva.
- Las ecuaciones multi-línea siempre están en modo presentación.
+ Las ecuaciones multilínea siempre están en modo presentación.
  Aquí hay un ejemplo:
 \end_layout
 
@@ -21158,7 +20985,7 @@ C-Tab.
 \end_layout
 
 \begin_layout Standard
-La ecuación multi-línea aquí descrita es del tipo 
+La ecuación multilínea aquí descrita es del tipo 
 \family typewriter
 Entorno
 \family sans
@@ -21265,7 +21092,7 @@ n
 \end_layout
 
 \begin_layout Standard
-Las ecuaciones multi-línea se pueden numerar línea por línea, mediante el
+Las ecuaciones multilínea se pueden numerar línea por línea, mediante el
  menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -22925,7 +22752,7 @@ Si una referencia cruzada no encuentra su etiqueta, en la salida verás dos
 \begin_layout Standard
 Las referencias se describen con detalle en el manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -23608,9 +23435,9 @@ name "Documentos ! Configuración"
 .
 
 \family default
- En dicho menú puedes establecer el estilo de cita por defecto.
+ En dicho menú puedes establecer el estilo de cita por omisión.
  Si pones un estilo de cita para una referencia prevalecerá sobre la opción
- por defecto.
+ por omisión.
  Para el estilo global usa los archivos de estilo de BibTeX como se explica
  en la sección anterior.
 \end_layout
@@ -23686,7 +23513,7 @@ o el botón
 \end_inset
 
  y surge una ventana para escribir el texto de la entrada.
- LyX propone por defecto la palabra más próxima al cursor.
+ LyX propone por omisión la palabra más próxima al cursor.
  
 \end_layout
 
@@ -23907,7 +23734,7 @@ Entornos de párrafo|(
 \end_layout
 
 \begin_layout Standard
-y otra entrada al final de la seción\InsetSpace ~
+y otra entrada al final de la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Código-LyX"
@@ -24286,7 +24113,7 @@ name "sub:Programas-para-índice"
 \end_layout
 
 \begin_layout Standard
-Por defecto, LyX usa el programa 
+Por omisión, LyX usa el programa 
 \family sans
 makeindex
 \family default
@@ -25028,26 +24855,22 @@ Respuesta: Wilhelm Conrad Röntgen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use conditional output inside places where you cannot insert branch insets,
- like inside equations, you can code special LaTeX definitions for each
- branch.
- For example you can define for the question branch
+Para usar salida condicional en lugares en los que no puedes insertar ramas,
+ como dentro de ecuaciones, puedes codificar en LaTeX definiciones especiales
+ para cada rama.
+ Por ejemplo, puedes definir para la rama pregunta
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-For an introduction to the LaTeX-syntax, see section\InsetSpace ~
+Para una introducción a la sintaxis de LaTeX, véase la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:LaTeX-Syntax"
+reference "sub:LaTeX-Sintaxis"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
@@ -25058,7 +24881,6 @@ reference "sub:LaTeX-Syntax"
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -25069,7 +24891,6 @@ question}[1]{#1}
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -25078,15 +24899,12 @@ answer}[1]{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and for the answer branch
+y para la rama respuesta
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -25097,7 +24915,6 @@ question}[1]{}
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -25106,8 +24923,6 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Branch Pregunta
 status open
 
@@ -25146,8 +24961,6 @@ answer}[1]{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Branch Respuesta
 status open
 
@@ -25186,30 +24999,31 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Now it is possible to use the commands 
+Ahora se pueden usar los comandos 
 \series bold
 
 \backslash
 question{\SpecialChar \ldots{}
 }
 \series default
- and 
+ y 
 \series bold
 
 \backslash
 answer{\SpecialChar \ldots{}
 }
 \series default
- to obtain conditional output.
- Here is an example formula where only the 
+ para obtener salida condicional.
+ Aquí hay un ejemplo de ecuación en la que sólo aparece la parte 
 \series bold
 
 \backslash
 question
 \series default
- part appears:
+:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula \[
 x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
 
@@ -25219,11 +25033,8 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inside math, the same effect can be achieved using math macros, see section
-\lang spanish
-\InsetSpace ~
+En ecuaciones, se puede conseguir el mismo efecto usando macros de ecuación,
+ véase la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Definición de macros"
@@ -25653,7 +25464,7 @@ Gráficos
 \end_layout
 
 \begin_layout Standard
-Las vistas se generan cuando cargas un documento en Lyx y cuando terminas
+Las vistas se generan cuando cargas un documento en LyX y cuando terminas
  de editar una ecuación o un gráfico.
  Las vistas inmediatas de un documento ya abierto 
 \emph on
@@ -25858,7 +25669,7 @@ Ignorar
 \end_layout
 
 \begin_layout Standard
-Por defecto, el archivo de diccionario empleado se determina por el idioma
+Por omisión, el archivo de diccionario empleado se determina por el idioma
  del documento que se establece en 
 \family sans
 Documento\SpecialChar \menuseparator
@@ -25952,7 +25763,7 @@ compuestas para que el diccionario admita palabras como «contrase
 Usar\InsetSpace ~
 codificación\InsetSpace ~
 de\InsetSpace ~
-entrada Utliza la codificación del documento establecida
+entrada Utiliza la codificación del documento establecida
  en el apartado 
 \family sans
 Idioma 
@@ -25985,7 +25796,7 @@ ispell
 \family default
  y si la revisión no funciona con palabras que tienen letras internacionales.
  Ha habido informes de que no trabaja con todos los diccionarios, por eso
- está desmarcado por defecto.
+ está desmarcado por omisión.
 \end_layout
 
 \begin_layout Section
@@ -26185,7 +25996,7 @@ Los botones de la barra de revisión mostrada tienen las siguientes funciones:
 
 \family sans
 Documento\SpecialChar \menuseparator
-Seguimento\InsetSpace ~
+Seguimiento\InsetSpace ~
 de\InsetSpace ~
 cambios\SpecialChar \menuseparator
 Seguir\InsetSpace ~
@@ -26611,7 +26422,7 @@ Elige idioma en la sección
 Idioma
 \family default
  de este diálogo.
- Por defecto es inglés.
+ Por omisión es inglés.
 \end_layout
 
 \begin_layout Standard
@@ -32549,7 +32360,7 @@ Rama
 \end_layout
 
 \begin_layout Standard
-Se decribe en la sección\InsetSpace ~
+Se describe en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Ramas"
@@ -32578,7 +32389,7 @@ Archivos
 \emph default
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -32609,7 +32420,7 @@ Cuadros
 \emph default
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -32690,7 +32501,7 @@ Encabezados en tablas largas
 \emph default
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -32833,9 +32644,9 @@ reference "sub:Cuadros-ERT"
 \end_layout
 
 \begin_layout Subsection
-Programa Listing
+Listado de programa
 \begin_inset LatexCommand index
-name "Programa listings"
+name "Listado de programa"
 
 \end_inset
 
@@ -32843,14 +32654,14 @@ name "Programa listings"
 \end_layout
 
 \begin_layout Standard
-Inserta un cuadro para código usando el programa.
+Inserta un cuadro para código usando el programa listings.
  El uso de listings se describe en el capítulo 
 \emph on
-Listings Código de Programa 
+Listado de programa 
 \emph default
 del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -32875,7 +32686,7 @@ n de idioma del sistema.
 \emph default
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
  Ahí se comparan los diversos métodos.
@@ -33190,7 +33001,7 @@ También el espacio entre líneas y el número de columnas, pero ten en cuenta
 La configuración de «listings» se explica en la sección correspondiente
  del manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
 .
 \end_layout
@@ -33314,7 +33125,7 @@ key "XeTeX"
 \end_layout
 
 \begin_layout Standard
-Lyx soporta salida en Unicode, que es especialmente útil en el caso de tener
+LyX soporta salida en Unicode, que es especialmente útil en el caso de tener
  muchos símbolos especiales o no alfabéticos.
  Si quieres usar esto (y en ese caso tu instalación LaTeX soporta Unicode),
  elige una de las cuatro variantes utf8 de la lista de abajo.
@@ -33986,7 +33797,7 @@ Este comando es necesario para alinear las celdas en la siguiente tabla
  larga.
  Véase el manual 
 \emph on
-Embedded Objects
+Objetos incrustados
 \emph default
  para más detalles.
 \end_layout
@@ -36193,26 +36004,21 @@ El cursor sigue a la barra de desplazamiento
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
 Pixmap Cache
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the option 
+Con la opción 
 \family sans
 Enable Pixmap Cache
 \family default
- enabled, LyX needs to redraw the screen less often.
- This results in better performance, especially on slow systems.
- On the other hand, the characters might look more fuzzy on screen.
- So whether you enable this or not depends on whether you prefer speed over
- aesthetics.
- Note that the Pixmap Cache is only available and useful under Mac\InsetSpace ~
-OS and
- Windows.
+ marcada, LyX necesita refrescar la pantalla con menor frecuencia.
+ Esto conlleva un mejor rendimiento, especialmente en sistemas lentos.
+ Por otra parte, los caracteres podrían mostrarse más borrosos.
+ Así que activar o no esta opción depende de si prefieres velocidad o estética.
+ Esta opción sólo está disponible en Mac\InsetSpace ~
+OS o Windows.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -36265,7 +36071,7 @@ Configuración.
 \end_layout
 
 \begin_layout Standard
-Por defecto, LyX usa 
+Por omisión, LyX usa 
 \family typewriter
 Times
 \family default
@@ -36321,7 +36127,7 @@ reference "cha:Unidades-disponibles"
 \end_layout
 
 \begin_layout Standard
-El tamaño de fuente por defecto es 10\InsetSpace \thinspace{}
+El tamaño de fuente por omisión es 10\InsetSpace \thinspace{}
 pt.
  Los tamaños se describen con detalle en la sección\InsetSpace ~
 
@@ -36637,7 +36443,7 @@ Idiom
 \family default
 a es el comando LaTeX que carga el paquete LaTeX encargado de gestionar
  las características del idioma.
- Por defecto es el comando 
+ Por omisión es el comando 
 \family sans
 
 \backslash
@@ -36780,7 +36586,7 @@ key "Arabic"
 \series bold
  
 \series default
-Por defecto, es el comando de 
+Por omisión, es el comando de 
 \series bold
 babel
 \series default
@@ -38171,7 +37977,7 @@ href
 \series default
  se explica en el manual
 \emph on
- Embedded Objects
+ Objetos incrustados
 \emph default
 .
  Crea un hiperenlace.
@@ -38822,7 +38628,7 @@ status collapsed
 
 \end_inset
 
- cómo configurar LyX para hebreo:
+ cómo configurar LyX para japonés:
 \newline
 
 \begin_inset LatexCommand url
@@ -38957,23 +38763,19 @@ mybibname
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-The command 
+El comando 
 \series bold
 
 \backslash
 bibname
 \series default
- is the name of the bibliography in the current document language.
- It is redefined here with the number 2 at the end to state that the following
- bibliography is the second one:
+ es el nombre de la bibliografía en el idoma del documento.
+ Aquí se redefine con el número 2 al final para establecer que la siguiente
+ bibliografía es la segunda:
 \end_layout
 
 \end_inset
