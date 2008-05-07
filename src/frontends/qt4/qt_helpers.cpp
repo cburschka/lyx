@@ -160,55 +160,6 @@ QString const qt_(string const & str)
 	return toqstr(_(str));
 }
 
-namespace {
-
-class Sorter
-{
-public:
-#if !defined(USE_WCHAR_T) && defined(__GNUC__)
-	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const
-	{
-		return lhs.first < rhs.first;
-	}
-#else
-	Sorter() : loc_ok(true)
-	{
-		try {
-			loc_ = locale("");
-		} catch (...) {
-			loc_ok = false;
-		}
-	}
-
-	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const
-	{
-		//  FIXME: would that be "QString::localeAwareCompare()"?
-		if (loc_ok)
-			return loc_(fromqstr(lhs.first), fromqstr(rhs.first));
-		else
-			return lhs.first < rhs.first;
-	}
-private:
-	locale loc_;
-	bool loc_ok;
-#endif
-};
-
-
-} // namespace anon
-
-
-QList<LanguagePair> languageData()
-{
-	QList<LanguagePair> list;
-	Languages::const_iterator it = languages.begin();
-	for (; it != languages.end(); ++it) {
-		list << LanguagePair(
-			qt_(it->second.display()), toqstr(it->second.lang()));
-	}
-	return list;
-}
-
 
 void rescanTexStyles()
 {

@@ -116,10 +116,23 @@ static QList<FamilyPair> familyData()
 	return families;
 }
 
+
+static QList<LanguagePair> languageData()
+{
+	QList<LanguagePair> list;
+	Languages::const_iterator it = languages.begin();
+	for (; it != languages.end(); ++it) {
+		list << LanguagePair(
+			qt_(it->second.display()), toqstr(it->second.lang()));
+	}
+	return list;
+}
+
+
 namespace {
 
 template<typename T>
-void fillCombo(QComboBox * combo, QList<T> list)
+void fillCombo(QComboBox * combo, QList<T> const & list)
 {
 	typename QList<T>::const_iterator cit = list.begin();
 	for (; cit != list.end(); ++cit)

@@ -16,7 +16,6 @@
 
 #include "GuiDialog.h"
 #include "ui_CharacterUi.h"
-#include "qt_helpers.h" // for LanguagePair
 #include "Font.h"
 
 #include <utility>
@@ -45,6 +44,7 @@ typedef std::pair<QString, FontShape>  ShapePair;
 typedef std::pair<QString, FontSize>   SizePair;
 typedef std::pair<QString, FontState>  BarPair;
 typedef std::pair<QString, ColorCode>  ColorPair;
+typedef std::pair<QString, QString>    LanguagePair;
 
 class GuiCharacter : public GuiDialog, public Ui::CharacterUi
 {

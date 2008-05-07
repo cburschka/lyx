@@ -13,19 +13,20 @@
 
 #include "GuiPrefs.h"
 
-#include "qt_helpers.h"
+#include "FileDialog.h"
 #include "GuiApplication.h"
+#include "GuiFontExample.h"
 #include "GuiFontLoader.h"
+#include "GuiKeySymbol.h"
+#include "qt_helpers.h"
 
 #include "BufferList.h"
 #include "Color.h"
 #include "ConverterCache.h"
-#include "FileDialog.h"
 #include "FuncRequest.h"
-#include "GuiFontExample.h"
-#include "GuiKeySymbol.h"
 #include "KeyMap.h"
 #include "KeySequence.h"
+#include "Language.h"
 #include "LyXAction.h"
 #include "PanelStack.h"
 #include "paper.h"
@@ -1658,12 +1659,11 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 
 	defaultLanguageCO->clear();
 
-	// store the lang identifiers for later
-	//foreach (LanguagePair const & lpair, languageData(false)) {
-	QList<LanguagePair> l = languageData();
-	foreach (LanguagePair const & lpair, l) {
-		defaultLanguageCO->addItem(lpair.first);
-		lang_.append(lpair.second);
+	Languages::const_iterator lit = languages.begin();
+	Languages::const_iterator lend = languages.end();
+	for (; lit != lend; ++lit) {
+		lang_.append(toqstr(lit->second.lang()));
+		defaultLanguageCO->addItem(qt_(lit->second.display()));
 	}
 }
 

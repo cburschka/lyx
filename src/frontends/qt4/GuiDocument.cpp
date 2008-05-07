@@ -510,10 +510,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 {
 	setupUi(this);
 
-	QList<LanguagePair> langs = languageData();	
-	for (int i = 0; i != langs.size(); ++i)
-		lang_.append(langs[i].second);
-
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -790,10 +786,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	// language & quotes
 
-	QList<LanguagePair>::const_iterator lit  = langs.begin();
-	QList<LanguagePair>::const_iterator lend = langs.end();
-	for (; lit != lend; ++lit)
-		langModule->languageCO->addItem(lit->first);
+	Languages::const_iterator lit = languages.begin();
+	Languages::const_iterator lend = languages.end();
+	for (; lit != lend; ++lit) {
+		lang_.append(toqstr(lit->second.lang()));
+		langModule->languageCO->addItem(qt_(lit->second.display()));
+	}
 
 	// Always put the default encoding in the first position.
 	// It is special because the displayed text is translated.

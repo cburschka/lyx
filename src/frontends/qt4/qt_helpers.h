@@ -19,8 +19,6 @@
 
 #include <QString>
 
-#include <utility>
-
 class QComboBox;
 class QLineEdit;
 class QCheckBox;
@@ -70,11 +68,6 @@ void setValid(QWidget * widget, bool valid);
 QString const qt_(std::string const & str);
 
 ///
-typedef std::pair<QString, QString> LanguagePair;
-
-///
-QList<LanguagePair> languageData();
-
 support::FileName libFileSearch(QString const & dir, QString const & name,
 				QString const & ext = QString());
 
