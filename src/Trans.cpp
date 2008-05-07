@@ -65,7 +65,6 @@ namespace lyx {
    |                  |    iota          |                  |
    |                  |    voiced_sound  |                  |
    |                  | semivoiced_sound |                  |
-   |                  |                  |LFUN_ACCENT_SPECIAL_CARON| special caron
    */
 static TeXAccent lyx_accent_table[] = {
 	{TEX_NOACCENT,   0,      "",                LFUN_NOACTION},
@@ -81,7 +80,6 @@ static TeXAccent lyx_accent_table[] = {
 	{TEX_TIE,        0x0361, "tie",             LFUN_ACCENT_TIE},
 	{TEX_BREVE,      0x0306, "breve",           LFUN_ACCENT_BREVE},
 	{TEX_CARON,      0x030c, "caron",           LFUN_ACCENT_CARON},
-//	{TEX_SPECIAL_CARON, 0x030c, "ooo",          LFUN_ACCENT_SPECIAL_CARON},
 	// Don't fix this typo for compatibility reasons!
 	{TEX_HUNGUML,    0x030b, "hugarian_umlaut", LFUN_ACCENT_HUNGARIAN_UMLAUT},
 	{TEX_UMLAUT,     0x0308, "umlaut",          LFUN_ACCENT_UMLAUT},

@@ -641,7 +641,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_MACRON:
 	case LFUN_ACCENT_OGONEK:
-	case LFUN_ACCENT_SPECIAL_CARON:
 	case LFUN_ACCENT_TIE:
 	case LFUN_ACCENT_TILDE:
 	case LFUN_ACCENT_UMLAUT:

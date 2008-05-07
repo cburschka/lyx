@@ -192,7 +192,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
-		{ LFUN_ACCENT_SPECIAL_CARON, "accent-special-caron", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_ACCENT_TIE
  * \li Action: Adds a tie \htmlonly (a&#865;)\endhtmlonly

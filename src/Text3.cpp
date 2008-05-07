@@ -1708,7 +1708,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_UNDERDOT:
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_CARON:
-	case LFUN_ACCENT_SPECIAL_CARON:
 	case LFUN_ACCENT_BREVE:
 	case LFUN_ACCENT_TIE:
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
@@ -2262,7 +2261,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_UNDERDOT:
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_CARON:
-	case LFUN_ACCENT_SPECIAL_CARON:
 	case LFUN_ACCENT_BREVE:
 	case LFUN_ACCENT_TIE:
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
