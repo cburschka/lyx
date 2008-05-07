@@ -115,7 +115,7 @@ static QList<FamilyPair> familyData()
 
 
 GuiCharacter::GuiCharacter(GuiView & lv)
-	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font),
+	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),
 	  toggleall_(false), reset_lang_(false)
 {
 	setupUi(this);
