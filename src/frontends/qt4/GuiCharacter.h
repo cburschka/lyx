@@ -57,10 +57,19 @@ protected Q_SLOTS:
 	void change_adaptor();
 
 private:
-	/// Apply changes
+	/// Dialog inherited methods
+	//@{
 	void applyView();
-	/// update
 	void updateContents();
+	bool initialiseParams(std::string const & data);
+	void clearParams() {}
+	void dispatchParams();
+	bool isBufferDependent() const { return true; }
+	FuncCode getLfun() const { return LFUN_FONT_FREE_UPDATE; }
+	//@}
+
+	///
+	void paramsToDialog(Font const & font);
 
 	QList<FamilyPair> family;
 	QList<SeriesPair> series;
@@ -71,47 +80,6 @@ private:
 	QList<LanguagePair> language;
 
 	///
-	bool initialiseParams(std::string const & data);
-	///
-	void clearParams() {}
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-	///
-	FuncCode getLfun() const { return LFUN_FONT_FREE_UPDATE; }
-
-	///
-	void setFamily(FontFamily);
-	///
-	void setSeries(FontSeries);
-	///
-	void setShape(FontShape);
-	///
-	void setSize(FontSize);
-	///
-	void setBar(FontState);
-	///
-	void setColor(ColorCode);
-	///
-	void setLanguage(QString const &);
-
-	///
-	FontFamily getFamily() const;
-	///
-	FontSeries getSeries() const;
-	///
-	FontShape getShape() const;
-	///
-	FontSize getSize() const;
-	///
-	FontState getBar() const;
-	///
-	ColorCode getColor() const;
-	///
-	QString getLanguage() const;
-
-private:
 	///
 	Font font_;
 	///

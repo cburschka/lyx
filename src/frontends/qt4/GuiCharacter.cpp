@@ -18,8 +18,11 @@
 #include "Font.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "Language.h"
+#include "Paragraph.h"
 
 
 using namespace std;
@@ -113,6 +116,17 @@ static QList<FamilyPair> familyData()
 	return families;
 }
 
+namespace {
+
+template<class T>
+void fillCombo(QComboBox * combo, QList<T> list)
+{
+	QList<T>::const_iterator cit = list.begin();
+	for (; cit != list.end(); ++cit)
+		combo->addItem(cit->first);
+}
+
+}
 
 GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),
@@ -146,37 +160,18 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	size   = sizeData();
 	bar    = barData();
 	color  = colorData();
-	language = languageData(true);
 
-	for (QList<FamilyPair>::const_iterator cit = family.begin();
-		cit != family.end(); ++cit) {
-		familyCO->addItem(cit->first);
-	}
+	language = languageData();
+	language.prepend(LanguagePair(qt_("Reset"), "reset"));
+	language.prepend(LanguagePair(qt_("No change"), "ignore"));
 
-	for (QList<SeriesPair>::const_iterator cit = series.begin();
-		cit != series.end(); ++cit) {
-		seriesCO->addItem(cit->first);
-	}
-	for (QList<ShapePair>::const_iterator cit = shape.begin();
-		cit != shape.end(); ++cit) {
-		shapeCO->addItem(cit->first);
-	}
-	for (QList<SizePair>::const_iterator cit = size.begin();
-		cit != size.end(); ++cit) {
-		sizeCO->addItem(cit->first);
-	}
-	for (QList<BarPair>::const_iterator cit = bar.begin();
-		cit != bar.end(); ++cit) {
-		miscCO->addItem(cit->first);
-	}
-	for (QList<ColorPair>::const_iterator cit = color.begin();
-		cit != color.end(); ++cit) {
-		colorCO->addItem(cit->first);
-	}
-	for (QList<LanguagePair>::const_iterator cit = language.begin();
-		cit != language.end(); ++cit) {
-		langCO->addItem(cit->first);
-	}
+	fillCombo(familyCO, family);
+	fillCombo(seriesCO, series);
+	fillCombo(sizeCO, size);
+	fillCombo(shapeCO, shape);
+	fillCombo(miscCO, bar);
+	fillCombo(colorCO, color);
+	fillCombo(langCO, language);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	bc().setOK(okPB);
@@ -213,13 +208,6 @@ void GuiCharacter::change_adaptor()
 	// stay the same between applys. Might be difficult though wrt to a
 	// moved cursor - jbl
 	slotApply();
-	familyCO->setCurrentIndex(0);
-	seriesCO->setCurrentIndex(0);
-	sizeCO->setCurrentIndex(0);
-	shapeCO->setCurrentIndex(0);
-	miscCO->setCurrentIndex(0);
-	langCO->setCurrentIndex(0);
-	colorCO->setCurrentIndex(0);
 }
 
 
@@ -235,13 +223,82 @@ static int findPos2nd(QList<P> const & vec, B const & val)
 
 void GuiCharacter::updateContents()
 {
-	familyCO->setCurrentIndex(findPos2nd(family, getFamily()));
-	seriesCO->setCurrentIndex(findPos2nd(series, getSeries()));
-	shapeCO->setCurrentIndex(findPos2nd(shape, getShape()));
-	sizeCO->setCurrentIndex(findPos2nd(size, getSize()));
-	miscCO->setCurrentIndex(findPos2nd(bar, getBar()));
-	colorCO->setCurrentIndex(findPos2nd(color, getColor()));
-	langCO->setCurrentIndex(findPos2nd(language, getLanguage()));
+	if (!autoapplyCB->isChecked())
+		return;
+	if (bufferview()->cursor().selection()) {
+		//FIXME: it would be better to check if each font attribute is constant
+		// for the selection range.
+		font_ = Font(ignore_font, ignore_language);
+	} else
+		font_ = bufferview()->cursor().current_font;
+
+	paramsToDialog(font_);
+}
+
+
+static FontState getBar(FontInfo const & fi)
+{
+	if (fi.emph() == FONT_TOGGLE)
+		return EMPH_TOGGLE;
+
+	if (fi.underbar() == FONT_TOGGLE)
+		return UNDERBAR_TOGGLE;
+
+	if (fi.noun() == FONT_TOGGLE)
+		return NOUN_TOGGLE;
+
+	if (fi.emph() == FONT_IGNORE
+	    && fi.underbar() == FONT_IGNORE
+	    && fi.noun() == FONT_IGNORE)
+		return IGNORE;
+
+	return INHERIT;
+}
+
+
+static void setBar(FontInfo & fi, FontState val)
+{
+	switch (val) {
+	case IGNORE:
+		fi.setEmph(FONT_IGNORE);
+		fi.setUnderbar(FONT_IGNORE);
+		fi.setNoun(FONT_IGNORE);
+		break;
+
+	case EMPH_TOGGLE:
+		fi.setEmph(FONT_TOGGLE);
+		break;
+
+	case UNDERBAR_TOGGLE:
+		fi.setUnderbar(FONT_TOGGLE);
+		break;
+
+	case NOUN_TOGGLE:
+		fi.setNoun(FONT_TOGGLE);
+		break;
+
+	case INHERIT:
+		fi.setEmph(FONT_INHERIT);
+		fi.setUnderbar(FONT_INHERIT);
+		fi.setNoun(FONT_INHERIT);
+		break;
+	}
+}
+
+
+void GuiCharacter::paramsToDialog(Font const & font)
+{
+	FontInfo const & fi = font.fontInfo();
+	familyCO->setCurrentIndex(findPos2nd(family, fi.family()));
+	seriesCO->setCurrentIndex(findPos2nd(series, fi.series()));
+	shapeCO->setCurrentIndex(findPos2nd(shape, fi.shape()));
+	sizeCO->setCurrentIndex(findPos2nd(size, fi.size()));
+	miscCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
+	colorCO->setCurrentIndex(findPos2nd(color, fi.color()));
+
+	QString const lang = (font.language() == ignore_language)
+		? "ignore" : toqstr(font.language()->lang());
+	langCO->setCurrentIndex(findPos2nd(language, lang));
 
 	toggleallCB->setChecked(toggleall_);
 }
@@ -249,13 +306,16 @@ void GuiCharacter::updateContents()
 
 void GuiCharacter::applyView()
 {
-	setFamily(family[familyCO->currentIndex()].second);
-	setSeries(series[seriesCO->currentIndex()].second);
-	setShape(shape[shapeCO->currentIndex()].second);
-	setSize(size[sizeCO->currentIndex()].second);
-	setBar(bar[miscCO->currentIndex()].second);
-	setColor(color[colorCO->currentIndex()].second);
-	setLanguage(language[langCO->currentIndex()].second);
+	FontInfo & fi = font_.fontInfo();
+	fi.setFamily(family[familyCO->currentIndex()].second);
+	fi.setSeries(series[seriesCO->currentIndex()].second);
+	fi.setShape(shape[shapeCO->currentIndex()].second);
+	fi.setSize(size[sizeCO->currentIndex()].second);
+	setBar(fi, bar[miscCO->currentIndex()].second);
+	fi.setColor(color[colorCO->currentIndex()].second);
+
+	font_.setLanguage(languages.getLanguage(
+		fromqstr(language[langCO->currentIndex()].second)));
 
 	toggleall_ = toggleallCB->isChecked();
 }
@@ -263,16 +323,19 @@ void GuiCharacter::applyView()
 
 bool GuiCharacter::initialiseParams(string const &)
 {
+	FontInfo & fi = font_.fontInfo();
+
 	// so that the user can press Ok
-	if (getFamily()    != IGNORE_FAMILY
-	    || getSeries() != IGNORE_SERIES
-	    || getShape()  != IGNORE_SHAPE
-	    || getSize()   != FONT_SIZE_IGNORE
-	    || getBar()    != IGNORE
-	    || getColor()  != Color_ignore
+	if (fi.family()    != IGNORE_FAMILY
+	    || fi.series() != IGNORE_SERIES
+	    || fi.shape()  != IGNORE_SHAPE
+	    || fi.size()   != FONT_SIZE_IGNORE
+	    || getBar(fi)  != IGNORE
+	    || fi.color()  != Color_ignore
 	    || font_.language() != ignore_language)
 		setButtonsValid(true);
 
+	paramsToDialog(font_);
 	return true;
 }
 
@@ -280,156 +343,6 @@ bool GuiCharacter::initialiseParams(string const &)
 void GuiCharacter::dispatchParams()
 {
 	dispatch(FuncRequest(getLfun(), font_.toString(toggleall_)));
-}
-
-
-FontFamily GuiCharacter::getFamily() const
-{
-	return font_.fontInfo().family();
-}
-
-
-void GuiCharacter::setFamily(FontFamily val)
-{
-	font_.fontInfo().setFamily(val);
-}
-
-
-FontSeries GuiCharacter::getSeries() const
-{
-	return font_.fontInfo().series();
-}
-
-
-void GuiCharacter::setSeries(FontSeries val)
-{
-	font_.fontInfo().setSeries(val);
-}
-
-
-FontShape GuiCharacter::getShape() const
-{
-	return font_.fontInfo().shape();
-}
-
-
-void GuiCharacter::setShape(FontShape val)
-{
-	font_.fontInfo().setShape(val);
-}
-
-
-FontSize GuiCharacter::getSize() const
-{
-	return font_.fontInfo().size();
-}
-
-
-void GuiCharacter::setSize(FontSize val)
-{
-	font_.fontInfo().setSize(val);
-}
-
-
-FontState GuiCharacter::getBar() const
-{
-	if (font_.fontInfo().emph() == FONT_TOGGLE)
-		return EMPH_TOGGLE;
-
-	if (font_.fontInfo().underbar() == FONT_TOGGLE)
-		return UNDERBAR_TOGGLE;
-
-	if (font_.fontInfo().noun() == FONT_TOGGLE)
-		return NOUN_TOGGLE;
-
-	if (font_.fontInfo().emph() == FONT_IGNORE
-	    && font_.fontInfo().underbar() == FONT_IGNORE
-	    && font_.fontInfo().noun() == FONT_IGNORE)
-		return IGNORE;
-
-	return INHERIT;
-}
-
-
-void GuiCharacter::setBar(FontState val)
-{
-	switch (val) {
-	case IGNORE:
-		font_.fontInfo().setEmph(FONT_IGNORE);
-		font_.fontInfo().setUnderbar(FONT_IGNORE);
-		font_.fontInfo().setNoun(FONT_IGNORE);
-		break;
-
-	case EMPH_TOGGLE:
-		font_.fontInfo().setEmph(FONT_TOGGLE);
-		break;
-
-	case UNDERBAR_TOGGLE:
-		font_.fontInfo().setUnderbar(FONT_TOGGLE);
-		break;
-
-	case NOUN_TOGGLE:
-		font_.fontInfo().setNoun(FONT_TOGGLE);
-		break;
-
-	case INHERIT:
-		font_.fontInfo().setEmph(FONT_INHERIT);
-		font_.fontInfo().setUnderbar(FONT_INHERIT);
-		font_.fontInfo().setNoun(FONT_INHERIT);
-		break;
-	}
-}
-
-
-ColorCode GuiCharacter::getColor() const
-{
-	return font_.fontInfo().color();
-}
-
-
-void GuiCharacter::setColor(ColorCode val)
-{
-	switch (val) {
-	case Color_ignore:
-	case Color_none:
-	case Color_black:
-	case Color_white:
-	case Color_red:
-	case Color_green:
-	case Color_blue:
-	case Color_cyan:
-	case Color_magenta:
-	case Color_yellow:
-	case Color_inherit:
-		font_.fontInfo().setColor(val);
-		break;
-	default:
-		break;
-	}
-}
-
-
-QString GuiCharacter::getLanguage() const
-{
-	if (reset_lang_)
-		return "reset";
-	if (font_.language())
-		return toqstr(font_.language()->lang());
-	return "ignore";
-}
-
-
-void GuiCharacter::setLanguage(QString const & val)
-{
-	if (val == "ignore")
-		font_.setLanguage(ignore_language);
-	else if (val == "reset") {
-		reset_lang_ = true;
-		// Ignored in getLanguage, but needed for dispatchParams
-		font_.setLanguage(buffer().params().language);
-	} else {
-		font_.setLanguage(languages.getLanguage(fromqstr(val)));
-	}
 }
 
 

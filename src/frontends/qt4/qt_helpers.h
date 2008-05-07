@@ -68,12 +68,10 @@ void setValid(QWidget * widget, bool valid);
 QString const qt_(std::string const & str);
 
 ///
-struct LanguagePair { QString first; QString second; };
+typedef std::pair<QString, QString> LanguagePair;
 
-/** If the caller is the character dialog, add "No change" and "Reset"
-*  to the vector.
-*/
-QList<LanguagePair> languageData(bool character_dlg);
+///
+QList<LanguagePair> languageData();
 
 support::FileName libFileSearch(QString const & dir, QString const & name,
 				QString const & ext = QString());

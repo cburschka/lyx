@@ -198,31 +198,14 @@ private:
 } // namespace anon
 
 
-QList<LanguagePair> languageData(bool character_dlg)
+QList<LanguagePair> languageData()
 {
-	size_t const offset = character_dlg ? 2 : 0;
-	vector<LanguagePair> langs(languages.size() + offset);
-
-	if (character_dlg) {
-		langs[0].first = qt_("No change");
-		langs[0].second = "ignore";
-		langs[1].first = qt_("Reset");
-		langs[1].second = "reset";
-	}
-
-	Languages::const_iterator it = languages.begin();
-	for (size_t i = 0; i != languages.size(); ++i, ++it) {
-		langs[i + offset].first  = qt_(it->second.display());
-		langs[i + offset].second = toqstr(it->second.lang());
-	}
-
-	// Don't sort "ignore" and "reset"
-	vector<LanguagePair>::iterator begin = langs.begin() + offset;
-	sort(begin, langs.end(), Sorter());
-
 	QList<LanguagePair> list;
-	foreach (LanguagePair const & l, langs)
-		list.append(l);
+	Languages::const_iterator it = languages.begin();
+	for (; it != languages.end(); ++it) {
+		list << LanguagePair(
+			qt_(it->second.display()), toqstr(it->second.lang()));
+	}
 	return list;
 }
 

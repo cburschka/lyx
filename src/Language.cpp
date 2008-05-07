@@ -33,6 +33,7 @@ Language latex_lang;
 Language const * default_language;
 Language const * ignore_language = &ignore_lang;
 Language const * latex_language = &latex_lang;
+Language const * reset_language = 0;
 
 
 bool Language::read(Lexer & lex)
@@ -90,8 +91,12 @@ void Languages::read(FileName const & filename)
 
 Language const * Languages::getLanguage(string const & language) const
 {
+	if (language == "reset")
+		return reset_language;
+	if (language == "ignore")
+		return ignore_language;
 	const_iterator it = languagelist.find(language);
-	return it == languagelist.end() ? 0 : &it->second;
+	return it == languagelist.end() ? reset_language : &it->second;
 }
 
 

@@ -94,10 +94,18 @@ private:
 	LanguageList languagelist;
 };
 
+/// Global singleton instance.
 extern Languages languages;
+/// Default language defined in LyXRC
 extern Language const * default_language;
+/// Used to indicate that the language should be left unchanged when
+/// applying a font change.
 extern Language const * ignore_language;
+/// Default language defined in LyXRC
 extern Language const * latex_language;
+/// Used to indicate that the language should be reset to the Buffer
+// language when applying a font change.
+extern Language const * reset_language;
 
 
 } // namespace lyx

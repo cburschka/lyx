@@ -510,7 +510,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 {
 	setupUi(this);
 
-	QList<LanguagePair> langs = languageData(false);	
+	QList<LanguagePair> langs = languageData();	
 	for (int i = 0; i != langs.size(); ++i)
 		lang_.append(langs[i].second);
 
