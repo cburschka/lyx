@@ -111,13 +111,21 @@ public:
 	/// Add extra stuff if not already there
 	void add_extra_stuff(std::string const &);
 
+	/*! 
+	 *  Add paragraph-level extra stuff if not already there. This
+	 *  will be reset at the next check_layout()
+	 */
+	void add_par_extra_stuff(std::string const &);
+
 	/// Do we need to output some \\begin_layout command before the
 	/// next characters?
 	bool need_layout;
 	/// Do we need to output some \\end_layout command
 	bool need_end_layout;
-	/// We may need to add something after this \\begin_layout command
+	/// We may need to add something after each \\begin_layout command
 	std::string extra_stuff;
+	/// We may need to add something after this \\begin_layout command
+	std::string par_extra_stuff;
 	/// If there has been an \\begin_deeper, we'll need a matching
 	/// \\end_deeper
 	bool need_end_deeper;
@@ -149,6 +157,9 @@ public:
 	TeXFont font;
 	/// font attributes of normal text
 	static TeXFont normalfont;
+
+private:
+	void begin_layout(std::ostream & os, Layout const * const & l);
 };
 
 

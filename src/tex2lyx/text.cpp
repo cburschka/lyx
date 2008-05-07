@@ -56,8 +56,8 @@ void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Context newcontext(context);
-	// Don't inherit the extra stuff
-	newcontext.extra_stuff.clear();
+	// Don't inherit the paragraph-level extra stuff
+	newcontext.par_extra_stuff.clear();
 	parse_text(p, os, flags, outer, newcontext);
 	// Make sure that we don't create invalid .lyx files
 	context.need_layout = newcontext.need_layout;
@@ -82,7 +82,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 	newcontext.need_end_layout = false;
 	newcontext.new_layout_allowed = false;
 	// Avoid warning by Context::~Context()
-	newcontext.extra_stuff.clear();
+	newcontext.par_extra_stuff.clear();
 	ostringstream os;
 	parse_text_snippet(p, os, flags, outer, newcontext);
 	return os.str();
@@ -845,8 +845,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parent_context.check_end_layout(os);
 		switch (context.layout->latextype) {
 		case  LATEX_LIST_ENVIRONMENT:
-			context.extra_stuff = "\\labelwidthstring "
-				+ p.verbatim_item() + '\n';
+			context.add_par_extra_stuff("\\labelwidthstring "
+						    + p.verbatim_item() + '\n');
 			p.skip_spaces();
 			break;
 		case  LATEX_BIB_ENVIRONMENT:
@@ -1506,11 +1506,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
-			context.add_extra_stuff("\\noindent\n");
+			context.add_par_extra_stuff("\\noindent\n");
 		}
 
 		else if (t.cs() == "appendix") {
-			context.add_extra_stuff("\\start_of_appendix\n");
+			context.add_par_extra_stuff("\\start_of_appendix\n");
 			// We need to start a new paragraph. Otherwise the
 			// appendix in 'bla\appendix\chapter{' would start
 			// too late.

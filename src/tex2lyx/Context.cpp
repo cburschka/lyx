@@ -24,16 +24,6 @@ namespace lyx {
 
 namespace {
 
-void begin_layout(ostream & os, Layout const * const & layout, TeXFont const & font,
-		  TeXFont const & normalfont)
-{
-	os << "\n\\begin_layout " << to_utf8(layout->name()) << "\n";
-	// FIXME: This is not enough for things like
-	// \\Huge par1 \\par par2
-	output_font_change(os, normalfont, font);
-}
-
-
 void end_layout(ostream & os)
 {
 	os << "\n\\end_layout\n";
@@ -102,9 +92,25 @@ Context::Context(bool need_layout_,
 
 Context::~Context()
 {
-	if (!extra_stuff.empty())
-		cerr << "Bug: Ignoring extra stuff '" << extra_stuff
-			  << '\'' << endl;
+	if (!par_extra_stuff.empty())
+		cerr << "Bug: Ignoring par-level extra stuff '" 
+		     << par_extra_stuff << '\'' << endl;
+}
+
+
+void Context::begin_layout(ostream & os, Layout const * const & l)
+{
+	os << "\n\\begin_layout " << to_utf8(l->name()) << "\n";
+	if (!extra_stuff.empty()) {
+		os << extra_stuff;
+	}
+	if (!par_extra_stuff.empty()) {
+		os << par_extra_stuff;
+		par_extra_stuff.erase();
+	}
+	// FIXME: This is not enough for things like
+	// \\Huge par1 \\par par2
+	output_font_change(os, normalfont, font);
 }
 
 
@@ -124,7 +130,7 @@ void Context::check_layout(ostream & os)
 					end_deeper(os);
 					deeper_paragraph = false;
 				}
-				begin_layout(os, layout, font, normalfont);
+				begin_layout(os, layout);
 				has_item = false;
 			} else {
 				// a standard paragraph in an
@@ -132,20 +138,15 @@ void Context::check_layout(ostream & os)
 				// that this may require a begin_deeper.
 				if (!deeper_paragraph)
 					begin_deeper(os);
-				begin_layout(os, &textclass.defaultLayout(),
-					     font, normalfont);
+				begin_layout(os, &textclass.defaultLayout());
 				deeper_paragraph = true;
 			}
 		} else {
 			// No list-like environment
-			begin_layout(os, layout, font, normalfont);
+			begin_layout(os, layout);
 		}
 		need_layout = false;
 		need_end_layout = true;
-		if (!extra_stuff.empty()) {
-			os << extra_stuff;
-			extra_stuff.erase();
-		}
 		os << "\n";
 		empty = false;
 	}
@@ -212,6 +213,13 @@ void Context::add_extra_stuff(string const & stuff)
 }
 
 
+void Context::add_par_extra_stuff(string const & stuff)
+{
+	if (!contains(par_extra_stuff, stuff))
+		par_extra_stuff += stuff;
+}
+
+
 void Context::dump(ostream & os, string const & desc) const
 {
 	os << "\n" << desc <<" [";
@@ -229,6 +237,8 @@ void Context::dump(ostream & os, string const & desc) const
 		os << "new_layout_allowed ";
 	if (!extra_stuff.empty())
 		os << "extrastuff=[" << extra_stuff << "] ";
+	if (!par_extra_stuff.empty())
+		os << "parextrastuff=[" << par_extra_stuff << "] ";
 	os << "textclass=" << textclass.name()
 	   << " layout=" << to_utf8(layout->name())
 	   << " parent_layout=" << to_utf8(parent_layout->name()) << "] font=["
