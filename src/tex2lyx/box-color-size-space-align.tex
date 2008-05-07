@@ -254,6 +254,9 @@ raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
 
+%set back to justified
+\raggedright{}
+
 \subsection{Horizontal spaces}
 
 Lines can have an hfill \hfill in the middle.
@@ -283,12 +286,18 @@ Lines can have vertical space \vspace{2cm} in the middle.
 Lines can have protected vertical space \vspace*{2cm} in the middle.
 
 We also handle skips:
-\bigskip
-\vspace{\bigskipamount}
-\medskip
-\vspace{\medskipamount}
-\smallskip
-\vspace{\smallskipamount}
+
+bigskip 1:\bigskip
+
+bigskip 2:\vspace{\bigskipamount}
+
+medskip 1:\medskip
+
+medskip 2:\vspace{\medskipamount}
+
+smallskip 1:\smallskip
+
+smallskip 2:\vspace{\smallskipamount}
 
 
 \end{document}
