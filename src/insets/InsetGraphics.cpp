@@ -959,16 +959,16 @@ void InsetGraphics::getGraphicsGroups(Buffer const & b, std::set<string> & ids)
 		if (it->lyxCode() == GRAPHICS_CODE) {
 			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
 			InsetGraphicsParams inspar = ins.getParams();
-			if (!inspar.groupId.empty()) {
+			if (!inspar.groupId.empty())
 				ids.insert(inspar.groupId);
-			}
 		}
 }
 
 
 string InsetGraphics::getGroupParams(Buffer const & b, std::string const & groupId)
 {
-	if (groupId.empty()) return string();
+	if (groupId.empty())
+		return string();
 	Inset & inset = b.inset();
 	InsetIterator it  = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
@@ -1011,11 +1011,12 @@ void InsetGraphics::unifyGraphicsGroups(Buffer const & b, std::string const & ar
 InsetGraphics * InsetGraphics::getCurrentGraphicsInset(Cursor const & cur)
 {
 	Inset * instmp = &cur.inset();
-	if (instmp->lyxCode() != GRAPHICS_CODE) instmp = cur.nextInset();
-	if (!instmp || instmp->lyxCode() != GRAPHICS_CODE) return 0;
+	if (instmp->lyxCode() != GRAPHICS_CODE)
+		instmp = cur.nextInset();
+	if (!instmp || instmp->lyxCode() != GRAPHICS_CODE)
+		return 0;
 
-	InsetGraphics & ins = static_cast<InsetGraphics &>(*instmp);
-	return &ins;
+	return static_cast<InsetGraphics *>(instmp);
 }
 
 } // namespace lyx

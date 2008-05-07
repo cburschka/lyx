@@ -894,7 +894,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SET_GRAPHICS_GROUP: {
 		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
-		if (!ins) break;
+		if (!ins)
+			break;
 
 		cur.recordUndoFullDocument();
 
