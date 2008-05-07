@@ -21,11 +21,10 @@
 #include "LyXFunc.h"
 
 #include "support/debug.h"
+#include "support/lassert.h"
 
 #include <QSettings>
 #include <QString>
-
-#include "support/lassert.h"
 
 #include <string>
 
