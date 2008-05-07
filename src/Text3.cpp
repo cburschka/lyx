@@ -893,17 +893,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SET_GRAPHICS_GROUP: {
-		Inset * instmp = &cur.inset();
-		if (instmp->lyxCode() != GRAPHICS_CODE) instmp = cur.nextInset();
-		if (!instmp || instmp->lyxCode() != GRAPHICS_CODE) break;
+		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
+		if (!ins) break;
 
 		cur.recordUndoFullDocument();
-		Inset & inset = *instmp;
-		InsetGraphics & ins = static_cast<InsetGraphics &>(inset);
 
 		string id = to_utf8(cmd.argument());
 		string grp = InsetGraphics::getGroupParams(bv->buffer(), id);
-		InsetGraphicsParams tmp, inspar = ins.getParams();
+		InsetGraphicsParams tmp, inspar = ins->getParams();
 
 		if (id.empty())
 			inspar.groupId = to_utf8(cmd.argument());
@@ -913,7 +910,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			inspar = tmp;
 		}
 
-		ins.setParams(inspar);
+		ins->setParams(inspar);
 	}
 
 	case LFUN_SPACE_INSERT:

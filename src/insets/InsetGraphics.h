@@ -57,6 +57,7 @@ public:
 	    Both groupId and params are taken from argument.
 	*/
 	static void unifyGraphicsGroups(Buffer const &,	std::string const &);
+	static InsetGraphics * getCurrentGraphicsInset(Cursor const &);
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
