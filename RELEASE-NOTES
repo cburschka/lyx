@@ -1,24 +1,14 @@
-This file lists interface changes that might affect users in 1.5.4, some 
-known problems in LyX 1.5.4 and some things you have to take into account
+This file lists interface changes that might affect users in 1.5.5, some 
+known problems in LyX 1.5.5 and some things you have to take into account
 when upgrading from earlier versions to a version of the 1.5.x series.
 Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Interface changes in version 1.5.4
+Known issues in version 1.5.5
 ------------------------------------
 
-- Due to a license conflict, the LaTeX-package "floatflt" that is used by LyX
-  for wrap figure floats has been removed from all major LaTeX-distributions.
-  Thus, we were forced to switch to the package "wrapfig". As consequence of this,
-  the look and positioning of wrap floats in your documents might slightly differ.
-  Please backup documents with wrap floats before upgrading and check the output.
-
-
-Known issues in version 1.5.4
-------------------------------------
-
-- If KDE 4 (the kdelibs4 package, for that matter) is installed, LyX might
+- If KDE 4.0 (the kdelibs4 package, for that matter) is installed, LyX might
   crash when previewing an EPS graphic (or any other graphic that is converted
   via EPS). This is a bug in the kdelibs package (the kimg_eps library, to be
   precise) included in the KDE 4 pre-releases and in KDE 4.0. The problem has
@@ -47,6 +37,16 @@ Known issues in version 1.5.4
   which will solve this bug, as well as allow more than just two keymaps. If you 
   have any input on this issue, please chime in on the developers mailing list,
   or add your comments to http://bugzilla.lyx.org/show_bug.cgi?id=4051.
+
+
+Interface changes as of version 1.5.4
+--------------------------------------
+
+- Due to a license conflict, the LaTeX-package "floatflt" that is used by LyX
+  for wrap figure floats has been removed from all major LaTeX-distributions.
+  Thus, we were forced to switch to the package "wrapfig". As consequence of this,
+  the look and positioning of wrap floats in your documents might slightly differ.
+  Please backup documents with wrap floats before upgrading and check the output.
 
 
 Caveats when upgrading from earlier versions to 1.5.x
