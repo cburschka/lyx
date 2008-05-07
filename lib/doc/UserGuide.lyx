@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 330
+\lyxformat 332
 \begin_document
 \begin_header
 \textclass scrbook
@@ -120,8 +120,14 @@ status collapsed
 \noindent
 If you have comments or error corrections, please send them to the LyX Documenta
 tion mailing list: 
-\family typewriter
-lyx-docs@lists.lyx.org
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
