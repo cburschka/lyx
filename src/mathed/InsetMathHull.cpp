@@ -635,15 +635,17 @@ void InsetMathHull::addRow(row_type row)
 		return;
 
 	bool numbered = numberedType();
+	docstring label;
 	if (type_ == hullMultline) {
-		if (row + 1 == nrows())
+		if (row + 1 == nrows()) {
 			nonum_[row] = true;
-		else
+			label = label_[row];
+		} else
 			numbered = false;
 	}
 
 	nonum_.insert(nonum_.begin() + row + 1, !numbered);
-	label_.insert(label_.begin() + row + 1, docstring());
+	label_.insert(label_.begin() + row + 1, label);
 	InsetMathGrid::addRow(row);
 }
 
@@ -664,6 +666,12 @@ void InsetMathHull::delRow(row_type row)
 {
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
+	if (row + 1 == nrows() && type_ == hullMultline) {
+		swap(nonum_[row - 1], nonum_[row]);
+		swap(label_[row - 1], label_[row]);
+		InsetMathGrid::delRow(row);
+		return;
+	}
 	InsetMathGrid::delRow(row);
 	// The last dummy row has no number info nor a label.
 	// Test nrows() + 1 because we have already erased the row.

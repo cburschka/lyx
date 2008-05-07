@@ -1,4 +1,4 @@
-#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -6,7 +6,6 @@
 \begin_preamble
 \usepackage{multicol}
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
-\usepackage{floatflt} % Temporaire - jusqu'à ce que LyX soit réparé
 \end_preamble
 \language french
 \inputencoding auto
@@ -4667,8 +4666,8 @@ URL L'adresse de la page personnelle de l'auteur, s'il le souhaite.
 \end_layout
 
 \begin_layout Description
-Mots-Clés (Keywords) Mots-clés ou phrases-clés, utilisé pour identifier
- les sujets discutés dans l'article.
+Mots-clés.(Keywords) Mots-clés ou phrases-clés, utilisé pour identifier les
+ sujets discutés dans l'article.
 \end_layout
 
 \begin_layout Description
@@ -4936,7 +4935,7 @@ Adresse
 \family sans
 Tirés_À_Part
 \family default
- (Offprint): (facultatif) Si plus d'un auteur : qui contacter pour demander
+ (Tiré à part): (facultatif) Si plus d'un auteur : qui contacter pour demander
  des tirés à part.
 \end_layout
 
@@ -5680,7 +5679,7 @@ Commentaires sur des Commandes Particulières
 
 \begin_layout Standard
 Je ne vais pas décrire l'emploi détaillé de chaque commande AASTeX : le
- Guide de l'Utilisateur d'AASTeX (
+ Guide de l'utilisateur d'AASTeX (
 \family typewriter
 aasguide.tex
 \family default
@@ -9744,7 +9743,7 @@ Mail
 \family sans
 Tirés_À_Part
 \family default
- (Offprints), 
+ (Tiré à parts), 
 \family sans
 Mots-Clés
 \family default
@@ -10022,7 +10021,7 @@ Pour utiliser les nouveaux environnements, vous devez faire ce qui suit
 \begin_layout Enumerate
 
 \emph on
-Désactiver babel
+(Dés)Activer babel
 \emph default
 , ce que vous ferez dans 
 \family sans
@@ -10659,7 +10658,7 @@ Slide
 \begin_layout Itemize
 
 \family sans
-SurCouche
+Surcouche
 \family default
  (
 \family sans
@@ -10754,7 +10753,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
  et 
 \family sans
@@ -10802,7 +10801,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
 , 
 \family sans
@@ -10824,7 +10823,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
 , 
 \family sans
@@ -10877,7 +10876,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
 , 
 \family sans
@@ -10916,7 +10915,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
 , 
 \family sans
@@ -10946,7 +10945,7 @@ Diapo
 \family default
 , 
 \family sans
-SurCouche
+Surcouche
 \family default
  et 
 \family sans
@@ -11039,7 +11038,7 @@ de surplus
  ne présentera aucun numéro de page.
  De plus, elle peut interférer avec une 
 \family sans
-SurCouche
+Surcouche
 \family default
  que vous aurez préparé pour accompagner la 
 \family sans
@@ -11051,7 +11050,7 @@ Diapo
 \begin_layout Standard
 Les environnements 
 \family sans
-SurCouche
+Surcouche
 \family default
  et 
 \family sans
@@ -11110,7 +11109,7 @@ Note
 \family default
  ou d'une 
 \family sans
-SurCouche
+Surcouche
 \family default
  dépasse la taille physique d'un transparent ou d'une feuille de papier,
  le surplus sera disposé sur une nouvelle page.
@@ -11120,7 +11119,7 @@ Notes
 \family default
  et 
 \family sans
-SurCouches
+Surcouches
 \family default
  n'auraient plus aucune utilité.
 \end_layout
@@ -11128,7 +11127,7 @@ SurCouches
 \begin_layout Subsubsection
 Utiliser des 
 \family sans
-SurCouches
+Surcouches
 \family default
  avec des 
 \family sans
@@ -11138,7 +11137,7 @@ Diapos
 \begin_layout Standard
 L'idée d'une 
 \family sans
-SurCouche
+Surcouche
 \family default
  est de créer une diapo qui vienne se superposer à une autre.
  Vous pouvez vouloir présenter une figure sur la 
@@ -11161,7 +11160,7 @@ Diapos
  pour que les graphiques se superposent.
  L'utilisation des 
 \family sans
-SurCouches
+Surcouches
 \family default
  rend les choses bien plus faciles.
 \end_layout
@@ -11169,7 +11168,7 @@ SurCouches
 \begin_layout Standard
 Chaque 
 \family sans
-SurCouche
+Surcouche
 \family default
  reçoit le numéro de page de la 
 \family sans
@@ -11200,7 +11199,7 @@ status collapsed
 \begin_layout Standard
 Des 
 \family sans
-SurCouches
+Surcouches
 \family default
  multiples auront donc 
 \family typewriter
@@ -11241,11 +11240,11 @@ Diapo
 \family default
  et sa 
 \family sans
-SurCouche
+Surcouche
 \family default
  paraissent n'en former plus qu'une ! Vous pouvez considérérer une 
 \family sans
-SurCouche
+Surcouche
 \family default
  comme 
 \begin_inset Quotes fld
@@ -11266,7 +11265,7 @@ slides
 \family default
  le laisse voir : le marqueur qui débute un environnement 
 \family sans
-SurCouche
+Surcouche
 \family default
  est moins long que celui d'une 
 \family sans
@@ -11276,7 +11275,7 @@ Diapo
  Enfin, sur le document imprimé apparaîtront des marques d'alignement aux
  quatre coins de la 
 \family sans
-SurCouche
+Surcouche
 \family default
  et de la 
 \family sans
@@ -11352,7 +11351,7 @@ Texte_Invisible
  
 \family sans
 \emph toggle
-SurCouche
+Surcouche
 \family default
 ), mais l'espace qu'ils auraient occupé sera laissé vide.
 \end_layout
@@ -11382,7 +11381,7 @@ Note
 \family default
 , ou 
 \family sans
-SurCouche
+Surcouche
 \family default
 , la fonction 
 \family sans
@@ -11415,7 +11414,7 @@ Diapo
 \family default
  et 
 \family sans
-SurCouche
+Surcouche
 \family default
  pour créer des diapos superposées :
 \end_layout
@@ -11435,7 +11434,7 @@ Diapo
 \family default
  elle-même que sur les 
 \family sans
-SurCouches
+Surcouches
 \family default
 .
 \end_layout
@@ -11443,7 +11442,7 @@ SurCouches
 \begin_layout Enumerate
 Avant chaque figure ou paragraphe qui ne devra apparaître que sur la 
 \family sans
-SurCouche
+Surcouche
 \family default
 , insérez un environnement 
 \family sans
@@ -11464,7 +11463,7 @@ Diapo
 \begin_layout Enumerate
 Commencez un environnement 
 \family sans
-SurCouche
+Surcouche
 \family default
  juste après l'environnement 
 \family sans
@@ -11480,7 +11479,7 @@ Diapo
 \family default
  dans l'environnement 
 \family sans
-SurCouche
+Surcouche
 \family default
 .
 \end_layout
@@ -11488,7 +11487,7 @@ SurCouche
 \begin_layout Enumerate
 Dans la 
 \family sans
-SurCouche
+Surcouche
 \family default
 , changez tous les 
 \family sans
@@ -11597,7 +11596,7 @@ name "sec:note-slides"
 \begin_layout Standard
 Comme une 
 \family sans
-SurCouche
+Surcouche
 \family default
 , une 
 \family sans
@@ -11627,7 +11626,7 @@ Note
 \family default
  est magenta éclatant, comme celui d'une 
 \family sans
-SurCouche
+Surcouche
 \family default
  ; et en longueur, il est intermédiaire entre celui d'une 
 \family sans
@@ -11635,7 +11634,7 @@ Diapo
 \family default
  (qui est plus long) et celui d'une 
 \family sans
-SurCouche
+Surcouche
 \family default
  (qui est plus court).
  De plus, une fois imprimée, une 
@@ -11706,7 +11705,7 @@ Diapos
 \family default
  et les 
 \family sans
-SurCouches
+Surcouches
 \family default
 , vous voudrez sûrement couper les longues 
 \family sans
@@ -11854,7 +11853,7 @@ Diapos
 \family default
  et 
 \family sans
-SurCouches
+Surcouches
 \family default
  sur des transparents et toutes vos 
 \family sans
@@ -11899,7 +11898,7 @@ Diapos
 \family default
  et les 
 \family sans
-SurCouches
+Surcouches
 \family default
 .
  De même, la commande 
@@ -12059,7 +12058,7 @@ modèle
 .
  Votre fichier de présentation LyX contiendra un exemple du triplet 
 \family sans
-Diapo -- SurCouche -- Note
+Diapo -- Surcouche -- Note
 \family default
 .
  De plus, la 
@@ -12068,7 +12067,7 @@ Diapo
 \family default
  et la 
 \family sans
-SurCouche
+Surcouche
 \family default
  contiennent un exemple de 
 \family sans
@@ -12414,7 +12413,7 @@ empattement
  mais toutes les équations mathématiques restent formatées dans la police
  habituelle 
 \family sans
-Roman
+Romain
 \family default
 .
 \end_layout
@@ -17802,7 +17801,7 @@ lacheck
 \end_layout
 
 \begin_layout Section
-Contrôle de Version sous LyX
+Contrôle de version sous LyX
 \end_layout
 
 \begin_layout Standard
@@ -17989,7 +17988,7 @@ ci -q -u -m"<description>" <nom_fichier>
 \begin_layout Subsubsection
 
 \family sans
-Nouvelle Version Éditable
+Nouvelle version éditable
 \end_layout
 
 \begin_layout Standard
@@ -19613,7 +19612,7 @@ roman
 \family typewriter
 
 \backslash
-Roman
+Romain
 \family default
 , 
 \family typewriter
@@ -20147,7 +20146,7 @@ renewcommand{
 \backslash
 labelenumi}{
 \backslash
-Roman{enumi}.}
+Romain{enumi}.}
 \end_layout
 
 \begin_layout LyX-Code
@@ -20293,7 +20292,7 @@ roman{}
 \family typewriter
 
 \backslash
-Roman{}
+Romain{}
 \family default
 , 
 \family typewriter
@@ -20920,7 +20919,7 @@ I
 \begin_inset Quotes frd
 \end_inset
 
- en Times Roman italique, dont la hauteur sera trois fois celle d'une ligne
+ en Times Romain italique, dont la hauteur sera trois fois celle d'une ligne
  de texte et qui dépasse de 1\InsetSpace ~
 em dans la marge.
  (Il faut donc avoir copié 

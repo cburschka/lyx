@@ -111,7 +111,7 @@
 \begin_body
 
 \begin_layout Title
-Guide de l'Utilisateur de LyX
+Guide de l'utilisateur de LyX
 \end_layout
 
 \begin_layout Author
@@ -685,7 +685,7 @@ status collapsed
 
 \begin_layout Standard
 Si vous prévoyez de faire cela, vous devriez aussi jeter un œil sur la fonction
- de Contrôle de Version dans LyX.
+ de Contrôle de version dans LyX.
  Lire 
 \emph on
 Options\InsetSpace ~
@@ -3606,7 +3606,7 @@ name "sub:Profondeur-section"
 
 \begin_layout Standard
 Vous pouvez aussi changer les niveaux de découpage qui seront numérotés
- et ceux qui apparaîtront dans la Table des Matières.
+ et ceux qui apparaîtront dans la Table des matières.
  Attention, cela n'enlève aucun de ces niveaux.
  Ces paramètres sont définis par la classe de document.
  Certaines classes commencent par 
@@ -8235,7 +8235,7 @@ key "latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Subsection
-Espacement Vertical
+Espacement vertical
 \begin_inset LatexCommand label
 name "sub:Espacement-Vertical"
 
@@ -8404,7 +8404,7 @@ Vous pouvez modifier la justification des paragraphes avec la fenêtre de
  dialogue  
 \family sans
 Éditer\SpecialChar \menuseparator
-Paramètres de Paragraphe
+Paramètres de paragraphe
 \family default
 .
  Il y a quatre possibilités: 
@@ -8585,7 +8585,7 @@ Flottants
 \end_layout
 
 \begin_layout Subsubsection
-Saut de Page (vide le tampon)
+Saut de page (vide le tampon)
 \begin_inset LatexCommand label
 name "sub:Saut-de-Page-vide-tampon"
 
@@ -9538,7 +9538,7 @@ name "Document ! Paramètres"
 
 .
  Vous pouvez y définir quelle police utiliser pour les trois familles de
- caractères Roman, 
+ caractères Romain, 
 \family sans
 Sans\InsetSpace ~
 Serif
@@ -10243,9 +10243,9 @@ Famille
 \labelwidthstring 00.00.0000
 
 \family sans
-Roman
+Romain
 \family default
- C'est la police Roman par défaut.
+ C'est la police romaine par défaut.
 \end_layout
 
 \begin_deeper
@@ -13455,7 +13455,7 @@ name "cha:Flottants-et-Notes"
 \begin_layout Standard
 Les sujets de ce chapitre sont traités en détail dans le manuel 
 \emph on
-Objets Insérés.
+Objets insérés.
  
 \emph default
 Vous y trouverez aussi des trucs et astuces pour les cas spéciaux.
@@ -13546,7 +13546,7 @@ Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
  La démarche à suivre pour obtenir ce résultat est expliqué dans le manuel
  
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
  
@@ -14658,7 +14658,7 @@ reference "sub:Cellules-de-tableau"
 Vous pouvez marquer plusieurs cellules d'une même ligne comme constituant
  une cellule multi-colonne en utilisant l'option 
 \family sans
-Multi-Colonnes
+Multi-colonnes
 \family default
 .
  Cette option fait que les cellules sont fusionnées en 
@@ -18004,7 +18004,7 @@ algorithme
 \end_layout
 
 \begin_layout Subsubsection
-Flottant d'Enrobage
+Flottant d'enrobage
 \begin_inset LatexCommand index
 name "Flottants ! Flottants d'enrobage"
 
@@ -18234,7 +18234,7 @@ Les flottants renversés sont toujours placés sur une page à part (ou une
  quand ils se trouvent sur une page paire).
  Changer le sens de rotation est expliqué dans le manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
 \end_layout
@@ -18362,7 +18362,7 @@ e
 \end_layout
 
 \begin_layout Subsection
-Placement des Flottants
+Placement des flottants
 \begin_inset LatexCommand label
 name "sub:Placement-des-Flottants"
 
@@ -18725,7 +18725,7 @@ Boîtes
 \emph default
  du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
  .
 \end_layout
@@ -21409,7 +21409,7 @@ Vous pouvez entrer diverses polices dans une formule.
 \begin_inset Formula $texte$
 \end_inset
 
-, mais pour les nombres le standard est le Roman.
+, mais pour les nombres le standard est le romain.
  Pour obtenir une police dans une formule, choisissez-la dans la palette
  mathématique en utilisant le bouton 
 \begin_inset Graphics
@@ -21482,7 +21482,7 @@ Commande LaTeX
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset Formula $\mathrm{Roman}$
+\begin_inset Formula $\mathrm{Romain}$
 \end_inset
 
 
@@ -22588,7 +22588,7 @@ Objets insérés
 \end_layout
 
 \begin_layout Section
-Table des Matières et autres Sommaires
+Table des matières et autres Sommaires
 \begin_inset LatexCommand index
 name "Table des matières"
 
@@ -22610,7 +22610,7 @@ name "sec:Tdm"
 \end_layout
 
 \begin_layout Subsection
-Table des Matières et Plan
+Table des matières et Plan
 \begin_inset LatexCommand label
 name "sub:Table-des-Matières"
 
@@ -22620,7 +22620,7 @@ name "sub:Table-des-Matières"
 \end_layout
 
 \begin_layout Standard
-La Table des Matières (TdM) est insérée à partir du menu 
+La Table des matières (TdM) est insérée à partir du menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Listes\InsetSpace ~
@@ -22636,9 +22636,9 @@ Matières
 \family sans
 Plan
 \family default
- s'ouvre et affiche toutes les entrées de la Table des Matières.
+ s'ouvre et affiche toutes les entrées de la Table des matières.
  Vous pouvez sauter à un endroit quelconque de votre document en cliquant
- sur la ligne correspondante de la Table des Matières.
+ sur la ligne correspondante de la Table des matières.
  C'est une alternative à l'utilisation du menu 
 \family sans
 Naviguer
@@ -25972,7 +25972,7 @@ reports
 \end_layout
 
 \begin_layout Section
-Suivi des Modifications
+Suivi des modifications
 \begin_inset LatexCommand index
 name "Suivi de modification"
 
@@ -29757,7 +29757,7 @@ Enregistre le document courant sous un nouveau nom pour en faire une copie.
 \end_layout
 
 \begin_layout Subsection
-Revenir à la Sauvegarde
+Revenir à la sauvegarde
 \end_layout
 
 \begin_layout Standard
@@ -29765,7 +29765,7 @@ Recharge le document courant à partir du disque.
 \end_layout
 
 \begin_layout Subsection
-Contrôle de Version
+Contrôle de version
 \end_layout
 
 \begin_layout Standard
@@ -29773,7 +29773,7 @@ Le contrôle de version est utilisé quand plusieurs personnes travaillent
  en même temps sur le même document.
  Il est décrit dans la section 
 \emph on
-Contrôle de Version avec LyX 
+Contrôle de version avec LyX 
 \emph default
 du manuel 
 \emph on
@@ -30084,7 +30084,7 @@ reference "sub:Imprimer"
 \end_layout
 
 \begin_layout Subsection
-Nouvelle Fenêtre et Ferme Fenêtre
+Nouvelle fenêtre et Ferme fenêtre
 \end_layout
 
 \begin_layout Standard
@@ -30161,7 +30161,7 @@ Sélectionne la totalité du document.
 \end_layout
 
 \begin_layout Subsection
-Rechercher et Remplacer
+Rechercher et remplacer
 \end_layout
 
 \begin_layout Standard
@@ -30185,7 +30185,7 @@ Cette commande déplace le paragraphe où se trouve le curseur d'un paragraphe
 \end_layout
 
 \begin_layout Subsection
-Style de Texte
+Style de texte
 \begin_inset LatexCommand index
 name "Dialogues ! Style du Texte"
 
@@ -30206,7 +30206,7 @@ reference "sub:Réglage-fin-avec"
 \end_layout
 
 \begin_layout Subsection
-Paramètres de Paragraphe
+Paramètres de paragraphe
 \begin_inset LatexCommand index
 name "Paragraphe ! Paramètres"
 
@@ -30280,7 +30280,7 @@ reference "cha:Formules-mathématiques"
 \end_layout
 
 \begin_layout Subsection
-Augmenter/Réduire la Profondeur de Liste
+Augmenter/Réduire la profondeur de liste
 \end_layout
 
 \begin_layout Standard
@@ -30413,7 +30413,7 @@ reference "sec:Apperçu-de-morceaux"
 \end_layout
 
 \begin_layout Subsection
-Mise à Jour
+Mise à jour
 \end_layout
 
 \begin_layout Standard
@@ -30931,7 +30931,7 @@ Trucs externes
 \emph default
  du manuel 
 \emph on
-Objets Insérés 
+Objets insérés 
 \emph default
 décrit en détail comment effectuer ces opérations.
 \end_layout
@@ -30962,7 +30962,7 @@ Boîtes
 \emph default
 du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
 \end_layout
@@ -30983,7 +30983,7 @@ reference "sec:Bibliographie"
 \end_layout
 
 \begin_layout Subsection
-Référence Croisée
+Référence croisée
 \end_layout
 
 \begin_layout Standard
@@ -31043,13 +31043,13 @@ Légendes pour Tableaux Longs
 \emph default
  du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
 \end_layout
 
 \begin_layout Subsection
-Entrée d'Index
+Entrée d'index
 \end_layout
 
 \begin_layout Standard
@@ -31064,7 +31064,7 @@ reference "sec:Index"
 \end_layout
 
 \begin_layout Subsection
-Entrée de Glossaire
+Entrée de glossaire
 \end_layout
 
 \begin_layout Standard
@@ -31141,7 +31141,7 @@ reference "sec:Notes-en-Bas"
 \end_layout
 
 \begin_layout Subsection
-Note en Marge
+Note en marge
 \end_layout
 
 \begin_layout Standard
@@ -31186,7 +31186,7 @@ reference "sub:Boites-ERT"
 \end_layout
 
 \begin_layout Subsection
-Listing de Code Source
+Listing de code source
 \begin_inset LatexCommand index
 name "Listing de Programme"
 
@@ -31203,7 +31203,7 @@ Listings de codes Sources
 \emph default
  du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
 \end_layout
@@ -31225,7 +31225,7 @@ Objets Externes
 \emph default
  du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
  Vous y trouverez une comparaison des différentes méthodes.
@@ -31300,7 +31300,7 @@ C-2
 \end_layout
 
 \begin_layout Subsection
-Note Suivante, Modification Suivante, Référence Croisée Suivante
+Note suivante, Modification suivante, Référence croisée suivante
 \end_layout
 
 \begin_layout Standard
@@ -31330,7 +31330,7 @@ name "Menu ! Document"
 \end_layout
 
 \begin_layout Subsection
-Suivi des Modifications
+Suivi des modifications
 \end_layout
 
 \begin_layout Standard
@@ -31466,7 +31466,7 @@ Les différentes rubriques de ce menu sont détaillées dans ce qui suit:
 \end_layout
 
 \begin_layout Subsubsection*
-Classe de Document
+Classe de document
 \end_layout
 
 \begin_layout Standard
@@ -31508,7 +31508,7 @@ reference "sec:Polices-et-Styles"
 \end_layout
 
 \begin_layout Subsubsection*
-Format du Texte
+Format du texte
 \end_layout
 
 \begin_layout Standard
@@ -31529,14 +31529,14 @@ e à l'écran.
 Les réglages de l'environnement Listing sont décrits dans la section corresponda
 nte du manuel 
 \emph on
-Objets Insérés
+Objets insérés
 \emph default
 .
  
 \end_layout
 
 \begin_layout Subsubsection*
-Format de la Page
+Format de la page
 \end_layout
 
 \begin_layout Standard
@@ -31852,7 +31852,7 @@ esint
 \end_layout
 
 \begin_layout Subsubsection*
-Placement des Flottants
+Placement des flottants
 \end_layout
 
 \begin_layout Standard
@@ -31975,9 +31975,9 @@ reference "sec:Dictionnaire-de-synonymes"
 \end_layout
 
 \begin_layout Subsection
-Compteur de Mots
+Compteur de mots
 \begin_inset LatexCommand index
-name "Compteur de Mots"
+name "Compteur de mots"
 
 \end_inset
 
@@ -32121,7 +32121,7 @@ reference "sub:Barres-d'outils"
 Il est aussi possible de définir des barres d'outils personnalisées, ce
  qui est décrit dans le manuel 
 \emph on
-Options Avancées .
+Options avancées .
 \end_layout
 
 \begin_layout Subsection
@@ -33207,7 +33207,7 @@ Insérer\SpecialChar \menuseparator
 
 \family sans
 Insérer\SpecialChar \menuseparator
-Référence Croisée
+Référence croisée
 \end_layout
 
 \end_inset
@@ -33525,7 +33525,7 @@ eX
 \family sans
 Insérer\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
-Sous-Document
+Sous-document
 \end_layout
 
 \end_inset
@@ -33635,7 +33635,7 @@ Synonymes
 \end_layout
 
 \begin_layout Subsection
-La barre d'outils Visualiser/Mise à Jour
+La barre d'outils Visualiser/Mise à jour
 \begin_inset LatexCommand index
 name "Barre d'outils ! Visualiser/Mise à jour"
 
@@ -33661,7 +33661,7 @@ name "Barre d'outils ! Visualiser/Mise à jour"
 \end_layout
 
 \begin_layout Standard
-La barre d'outils Visualise/Mise à Jour contient de gauche à droite les
+La barre d'outils Visualise/Mise à jour contient de gauche à droite les
  boutons suivants:
 \end_layout
 
@@ -35005,7 +35005,7 @@ Commande de début
 Auto\InsetSpace ~
 fin Homologue de 
 \family sans
-Auto début.
+Début auto.
  
 \family default
 Quand elle n'est pas activée, la commande 
