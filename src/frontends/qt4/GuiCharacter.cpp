@@ -309,8 +309,9 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	miscCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
 	colorCO->setCurrentIndex(findPos2nd(color, fi.color()));
 
-	QString const lang = (font.language() == ignore_language)
-		? "ignore" : toqstr(font.language()->lang());
+	// reset_language is a null pointer.
+	QString const lang = (font.language() == reset_language)
+		? "reset" : toqstr(font.language()->lang());
 	langCO->setCurrentIndex(findPos2nd(language, lang));
 
 	toggleallCB->setChecked(toggleall_);
@@ -336,6 +337,9 @@ void GuiCharacter::applyView()
 
 bool GuiCharacter::initialiseParams(string const &)
 {
+	if (autoapplyCB->isChecked())
+		return true;
+
 	FontInfo & fi = font_.fontInfo();
 
 	// so that the user can press Ok

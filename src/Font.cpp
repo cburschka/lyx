@@ -146,6 +146,8 @@ void Font::update(Font const & newfont,
 			setLanguage(default_language);
 		else
 			setLanguage(document_language);
+	else if (newfont.language() == reset_language)
+		setLanguage(document_language);
 	else if (newfont.language() != ignore_language)
 		setLanguage(newfont.language());
 }
@@ -642,9 +644,8 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 
 string Font::toString(bool const toggle) const
 {
-	string lang = "ignore";
-	if (language())
-		lang = language()->lang();
+	string const lang = (language() == reset_language)
+		? "reset" : language()->lang();
 
 	ostringstream os;
 	os << "family " << bits_.family() << '\n'
@@ -720,10 +721,7 @@ bool Font::fromString(string const & data, bool & toggle)
 
 		} else if (token == "language") {
 			string const next = lex.getString();
-			if (next == "ignore")
-				setLanguage(ignore_language);
-			else
-				setLanguage(languages.getLanguage(next));
+			setLanguage(languages.getLanguage(next));
 
 		} else if (token == "toggleall") {
 			toggle = lex.getBool();
