@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 332
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -12028,7 +12028,7 @@ Boîtes
 \emph default
 du manuel 
 \emph on
-Objets Insérés.
+Objets insérés.
  
 \end_layout
 
@@ -26960,7 +26960,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -29613,7 +29613,10 @@ mm à la place.
 
 \begin_layout Standard
 Voici un exemple de formule multi-lignes où on a désactivé la numérotation
- pour la deuxième ligne::
+ pour la deuxième ligne:
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -29629,7 +29632,7 @@ begin{subequations}
 
 \begin_inset Formula \begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
- & = & B^{2}-ZB-BZ+Z^{²}\nonumber \\
+ & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}\end{eqnarray}
 
 \end_inset
