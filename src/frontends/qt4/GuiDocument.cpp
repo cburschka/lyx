@@ -52,7 +52,7 @@
 
 #include <QCloseEvent>
 #include <QScrollBar>
-#include <QStandardItemModel.h>
+#include <QStandardItemModel>
 #include <QTextCursor>
 
 #include <sstream>

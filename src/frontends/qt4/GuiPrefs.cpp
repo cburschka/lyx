@@ -54,7 +54,7 @@
 #include <QPixmapCache>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QStandardItemModel.h>
+#include <QStandardItemModel>
 #include <QString>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
