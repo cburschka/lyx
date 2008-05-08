@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 331
+\lyxformat 332
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10897,7 +10897,7 @@ linebreak
 
 \end_inset
 
- lines
+lines
 \end_layout
 
 \end_inset
@@ -30884,6 +30884,20 @@ Day-Month-Year
 \begin_inset External
 	template Date
 	filename .
+
+\end_inset
+
+
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Remove the protected space when bug 4398 is fixed!
+\end_layout
 
 \end_inset
 

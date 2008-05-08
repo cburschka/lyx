@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 331
+\lyxformat 332
 \begin_document
 \begin_header
 \textclass scrbook
@@ -107,7 +107,7 @@
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
+\pagenumbering{Roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Índice general}{}
@@ -31208,6 +31208,26 @@ Día-Mes-Año.
 \end_inset
 
 
+\lang english
+
+\begin_inset Space ~
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Remove the protected space when bug 4398 is fixed!
+\end_layout
+
+\end_inset
+
+
+\lang spanish
+
 \begin_inset Newline newline
 \end_inset
 
@@ -32070,63 +32090,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Listado de programa ! list@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
+\emph on
 listings
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
