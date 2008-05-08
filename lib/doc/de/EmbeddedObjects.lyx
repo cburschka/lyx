@@ -161,7 +161,6 @@
   {LyX }}
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
-\usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
@@ -193,7 +192,7 @@
 \pdf_backref false
 \pdf_pagebackref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabel"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
