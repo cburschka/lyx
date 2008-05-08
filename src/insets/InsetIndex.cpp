@@ -49,17 +49,26 @@ int InsetIndex::latex(odocstream & os,
 	os << "\\index";
 	os << '{';
 	odocstringstream ods;
-	InsetText::latex(ods, runparams);
+	int i = InsetText::latex(ods, runparams);
+	bool sorted = false;
 	// correctly sort macros and formatted strings
 	// if we do find a command, prepend a plain text
 	// version of the content to get sorting right,
 	// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
 	// Don't do that if the user entered '@' himself, though.
 	if (contains(ods.str(), '\\') && !contains(ods.str(), '@')) {
-		if (InsetText::plaintext(os, runparams) > 0)
+		if (InsetText::plaintext(os, runparams) > 0) {
 			os << '@';
+			sorted = true;
+		}
 	}
-	int i = InsetText::latex(os, runparams);
+	// if a hierarchy tag '!' is used, ommit this in the post-@ part.
+	if (sorted && contains(ods.str(), '!')) {
+		string dummy;
+		// FIXME unicode
+		os << from_utf8(rsplit(to_utf8(ods.str()), dummy, '!'));
+	} else
+		i = InsetText::latex(os, runparams);
 	os << '}';
 	return i;
 }

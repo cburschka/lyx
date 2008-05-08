@@ -788,7 +788,7 @@ def convert_latexcommand_index(document):
           document.body.insert(i + 4, "\\end_inset")
           i += 2
         # Generic, \\ -> \backslash:
-        g = wrap_into_ert(g, r'\\', '\\backslash{}')
+        g = wrap_into_ert(g, r'\\', '\\backslash')
         g = wrap_into_ert(g, '{', '{')
         g = wrap_into_ert(g, '}', '}')
         document.body.insert(i + 3, g)
