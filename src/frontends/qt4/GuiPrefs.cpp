@@ -218,15 +218,6 @@ string const catLanguage = N_("Language Settings");
 string const catOutput = N_("Output");
 string const catFiles = N_("File Handling");
 
-static int findPos_helper(QStringList const & vec, QString const & val)
-{
-	for (int i = 0; i != vec.size(); ++i)
-		if (vec[i] == val)
-			return i;
-	return 0;
-}
-
-
 static void parseFontName(QString const & mangled0,
 	string & name, string & foundry)
 {
@@ -1659,12 +1650,7 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 
 	defaultLanguageCO->clear();
 
-	Languages::const_iterator lit = languages.begin();
-	Languages::const_iterator lend = languages.end();
-	for (; lit != lend; ++lit) {
-		lang_.append(toqstr(lit->second.lang()));
-		defaultLanguageCO->addItem(qt_(lit->second.display()));
-	}
+	defaultLanguageCO->setModel(guiApp->languageModel());
 }
 
 
@@ -1681,7 +1667,8 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_package = fromqstr(languagePackageED->text());
 	rc.language_command_begin = fromqstr(startCommandED->text());
 	rc.language_command_end = fromqstr(endCommandED->text());
-	rc.default_language = fromqstr(lang_[defaultLanguageCO->currentIndex()]);
+	rc.default_language = fromqstr(
+		defaultLanguageCO->itemData(defaultLanguageCO->currentIndex()).toString());
 }
 
 
@@ -1702,7 +1689,7 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 
-	int const pos = findPos_helper(lang_, toqstr(rc.default_language));
+	int const pos = defaultLanguageCO->findData(toqstr(rc.default_language));
 	defaultLanguageCO->setCurrentIndex(pos);
 }
 

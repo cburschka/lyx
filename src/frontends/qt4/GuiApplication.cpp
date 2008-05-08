@@ -30,6 +30,7 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -46,7 +47,6 @@
 #include "support/os.h"
 #include "support/Package.h"
 
-#include <QApplication>
 #include <QClipboard>
 #include <QEventLoop>
 #include <QFileOpenEvent>
@@ -57,6 +57,7 @@
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSocketNotifier>
+#include <QStandardItemModel>
 #include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
@@ -237,6 +238,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	connect(&general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
 	general_timer_.start();
+
 	
 #ifdef Q_WS_MACX
 	if (global_menubar_ == 0) {
@@ -244,7 +246,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		// and if no GuiView is visible.
 		global_menubar_ = new GlobalMenuBar();
 	}
-#endif	
+#endif
 }
 
 
@@ -457,6 +459,19 @@ void GuiApplication::exit(int status)
 void GuiApplication::execBatchCommands()
 {
 	LyX::ref().execBatchCommands();
+
+	language_model_ = new QStandardItemModel(this);
+	language_model_->insertColumns(0, 1);
+	int current_row;
+	Languages::const_iterator it = languages.begin();
+	Languages::const_iterator end = languages.end();
+	for (; it != end; ++it) {
+		current_row = language_model_->rowCount();
+		language_model_->insertRows(current_row, 1);
+		QModelIndex item = language_model_->index(current_row, 0);
+		language_model_->setData(item, qt_(it->second.display()), Qt::DisplayRole);
+		language_model_->setData(item, toqstr(it->second.lang()), Qt::UserRole);
+	}
 }
 
 

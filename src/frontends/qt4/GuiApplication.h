@@ -29,6 +29,7 @@
 #include <map>
 #include <vector>
 
+class QAbstractItemModel;
 class QSessionManager;
 
 namespace lyx {
@@ -105,6 +106,8 @@ public:
 	///
 	ColorCache & colorCache() { return color_cache_; }
 
+	QStandardItemModel * languageModel() { return language_model_; }
+
 	/// return a suitable serif font name.
 	virtual QString const romanFontName();
 
@@ -143,6 +146,8 @@ private:
 	FontLoader font_loader_;
 	///
 	ColorCache color_cache_;
+	///
+	QStandardItemModel * language_model_;
 	///
 	QTranslator qt_trans_;
 	///
