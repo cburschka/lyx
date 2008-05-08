@@ -472,6 +472,7 @@ void GuiApplication::execBatchCommands()
 		language_model_->setData(item, qt_(it->second.display()), Qt::DisplayRole);
 		language_model_->setData(item, toqstr(it->second.lang()), Qt::UserRole);
 	}
+	language_model_->sort(0);
 }
 
 
