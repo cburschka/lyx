@@ -331,9 +331,6 @@ public:
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
-
-private:
-	QStringList lang_;
 };
 
 

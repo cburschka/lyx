@@ -13,6 +13,13 @@
 
 #include "GuiDocument.h"
 
+#include "GuiApplication.h"
+#include "GuiBranches.h"
+#include "LaTeXHighlighter.h"
+#include "LengthCombo.h"
+#include "PanelStack.h"
+#include "Validator.h"
+
 #include "LayoutFile.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
@@ -23,27 +30,22 @@
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
-#include "GuiBranches.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LaTeXHighlighter.h"
 #include "Layout.h"
-#include "LengthCombo.h"
 #include "LyXRC.h" // defaultUnit
 #include "ModuleList.h"
 #include "OutputParams.h"
-#include "PanelStack.h"
 #include "PDFOptions.h"
 #include "qt_helpers.h"
 #include "Spacing.h"
-#include "Validator.h"
 
 #include "insets/InsetListingsParams.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include "frontends/alert.h"
@@ -785,13 +787,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	// language & quotes
-
-	Languages::const_iterator lit = languages.begin();
-	Languages::const_iterator lend = languages.end();
-	for (; lit != lend; ++lit) {
-		lang_.append(toqstr(lit->second.lang()));
-		langModule->languageCO->addItem(qt_(lit->second.display()));
-	}
+	langModule->languageCO->setModel(guiApp->languageModel());
 
 	// Always put the default encoding in the first position.
 	// It is special because the displayed text is translated.
@@ -1508,8 +1504,9 @@ void GuiDocument::apply(BufferParams & params)
 	}
 	params.quotes_language = lga;
 
-	int const pos = langModule->languageCO->currentIndex();
-	params.language = lyx::languages.getLanguage(fromqstr(lang_[pos]));
+	QString const lang = langModule->languageCO->itemData(
+		langModule->languageCO->currentIndex()).toString();
+	params.language = lyx::languages.getLanguage(fromqstr(lang));
 
 	// numbering
 	if (params.documentClass().hasTocLevels()) {
@@ -1732,15 +1729,6 @@ void GuiDocument::apply(BufferParams & params)
 }
 
 
-static int findPos(QStringList const & vec, QString const & val)
-{
-	for (int i = 0; i != vec.size(); ++i)
-		if (vec[i] == val)
-			return i;
-	return 0;
-}
-
-
 void GuiDocument::updateParams()
 {
 	updateParams(bp_);
@@ -1793,7 +1781,8 @@ void GuiDocument::updateParams(BufferParams const & params)
 		params.use_bibtopic);
 
 	// language & quotes
-	int const pos = findPos(lang_, toqstr(params.language->lang()));
+	int const pos = langModule->languageCO->findData(toqstr(
+		params.language->lang()));
 	langModule->languageCO->setCurrentIndex(pos);
 
 	langModule->quoteStyleCO->setCurrentIndex(

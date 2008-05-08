@@ -159,9 +159,6 @@ private:
 
 	GuiSelectionManager * selectionManager;
 
-	///
-	QStringList lang_;
-
 	/// Available modules
 	GuiIdListModel * availableModel() { return &modules_av_model_; }
 	/// Selected modules
