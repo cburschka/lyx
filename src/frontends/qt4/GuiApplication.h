@@ -29,8 +29,8 @@
 #include <map>
 #include <vector>
 
-class QAbstractItemModel;
 class QSessionManager;
+class QStandardItemModel;
 
 namespace lyx {
 
