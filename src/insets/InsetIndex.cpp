@@ -57,7 +57,10 @@ int InsetIndex::latex(odocstream & os,
 	// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
 	// Don't do that if the user entered '@' himself, though.
 	if (contains(ods.str(), '\\') && !contains(ods.str(), '@')) {
-		if (InsetText::plaintext(os, runparams) > 0) {
+		odocstringstream odss;
+		if (InsetText::plaintext(odss, runparams) > 0) {
+			// remove remaining \'s for the sorting part
+			os << subst(odss.str(), from_ascii("\\"), docstring());
 			os << '@';
 			sorted = true;
 		}
