@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -8652,7 +8652,16 @@ status collapsed
 Befehle ! X ! 
 \backslash
 xrightarrow
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 
@@ -27095,7 +27104,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -32436,7 +32445,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Pakete ! was
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 
@@ -34141,7 +34159,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Pakete ! was
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 

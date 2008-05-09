@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -8628,13 +8628,22 @@ xrightarrow
 \series default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Commands ! X ! 
 \backslash
 xrightarrow
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 
@@ -27006,7 +27015,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -29711,7 +29720,7 @@ begin{subequations}
 
 \begin_inset Formula \begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
- & = & B^{2}-ZB-BZ+Z^{²}\nonumber \\
+ & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}\end{eqnarray}
 
 \end_inset
@@ -32235,7 +32244,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Packages ! was
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 
@@ -33936,7 +33954,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Packages ! was
-\begin_inset VSpace 4mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
 \end_inset
 
 
