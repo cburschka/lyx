@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 330
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrbook
@@ -142,8 +142,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
- April 2008
+letzte Änderung: 9.
+ Mai 2008
 \end_layout
 
 \begin_layout Standard
@@ -5195,6 +5195,32 @@ X \SpecialChar \ldots{}
 
 \begin_layout Standard
 Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
+\end_layout
+
+\begin_layout Subsection
+Tabelle (CSV)
+\end_layout
+
+\begin_layout Standard
+Hiermit kann man CSV-Tabellen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+comma serated values
+\end_layout
+
+\end_inset
+
+ importieren, wenn diese nach den Regeln "Common Format and MIME Type for
+ Comma-Separated Values (CSV) Files", siehe 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tools.ietf.org/html/rfc4180"
+
+\end_inset
+
+, erstellt wurden.
 \end_layout
 
 \begin_layout Subsection
