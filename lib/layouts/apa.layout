@@ -296,13 +296,76 @@ Input stdfloats.inc
 Input stdcounters.inc
 
 NoStyle Part
-NoStyle Section
-NoStyle Subsection
-NoStyle Subsubsection
+NoStyle Part*
 NoStyle Chapter
-NoStyle Paragraph
-NoStyle Subparagraph
 NoStyle Chapter*
+
+Style Section*
+	Obsoletedby           Section
+End
+
+Style Subsection*
+	Obsoletedby           Subsection
+End
+
+Style Subsubsection*
+	Obsoletedby           Subsubsection
+End
+
+Style Paragraph*
+	Obsoletedby           Paragraph
+End
+
+Style Subparagraph*
+	Obsoletedby           Subparagraph
+End
+
+
+Style Section
+	LabelType             No_Label
+	Align                 Center
+	Font
+	  Series              Bold
+	  Size                Huge
+	EndFont
+End
+
+
+Style Subsection
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Larger
+	EndFont
+End
+
+
+Style Subsubsection
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Large
+	EndFont
+End
+
+
+Style Paragraph
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
+End
+
+
+Style Subparagraph
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Normal
+	  Shape               Italic
+	EndFont
+End
 
 
 Style Itemize
