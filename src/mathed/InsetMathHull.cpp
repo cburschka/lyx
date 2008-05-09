@@ -1248,8 +1248,10 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_NONUMBER: {
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
-		status.enabled(display());
+		bool const enable = (type_ == hullMultline) ?
+			(nrows() - 1 == cur.row()) : display();
 		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		status.enabled(enable);
 		status.setOnOff(numbered(r));
 		return true;
 	}
