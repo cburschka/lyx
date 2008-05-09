@@ -537,7 +537,25 @@ void LyXAction::init()
  */
 		{ LFUN_CHAR_RIGHT_SELECT, "char-right-select", ReadOnly | SingleParUpdate, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_BACKWARD
+ * \li Action: Moves the cursor to the logically previous beginning of a word.
+ * \li Notion: This is not the action which should be bound to the arrow keys,
+               because backwards may be left or right, depending on the
+               language. The arrow keys should be bound to #LFUN_WORD_LEFT or
+               #LFUN_WORD_RIGHT actions, which in turn may employ this one.
+ * \li Syntax: word-backward
+ * \endvar
+ */
 		{ LFUN_WORD_BACKWARD, "word-backward", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_BACKWARD_SELECT
+ * \li Action: Moves the cursor to the logically previous beginning of a word,
+			   adding the logically traversed text to the selection.
+ * \li Notion: See also #LFUN_WORD_BACKWARD.
+ * \li Syntax: word-backward-select
+ * \endvar
+ */
 		{ LFUN_WORD_BACKWARD_SELECT, "word-backward-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_CAPITALIZE, "word-capitalize", Noop, Edit },
 		{ LFUN_WORD_DELETE_BACKWARD, "word-delete-backward", Noop, Edit },
@@ -572,12 +590,73 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
+ * \li Action: Moves the cursor to the logically next beginning of a word.
+ * \li Notion: This is not the action which should be bound to the arrow keys,
+               because forward may be left or right, depending on the language.
+               The arrow keys should be bound to #LFUN_WORD_LEFT or
+               #LFUN_WORD_RIGHT actions, which in turn may employ this one.
+ * \li Syntax: word-forward
+ * \endvar
+ */
 		{ LFUN_WORD_FORWARD, "word-forward", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD_SELECT
+ * \li Action: Moves the cursor to the logically next beginning of a word, 
+  			   adding the logically traversed text to the selection.
+ * \li Notion: See also #LFUN_WORD_FORWARD.
+ * \li Syntax: word-forward-select
+ * \endvar
+ */
 		{ LFUN_WORD_FORWARD_SELECT, "word-forward-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_LEFT
+ * \li Action: Moves the cursor to the next beginning of a word "on the left".
+ * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
+			   "left" key is pressed. Generally, it moves the cursor to the 
+			   next beginning of a word on the left. However, in Bidi text this 
+			   become slightly more complicated, and there are different modes
+			   of cursor movement. In "visual mode", this moves left, plain and
+			   simple. In "logical mode", movement is logically forward in RTL
+			   paragraphs, and logically backwards in LTR paragraphs.
+ * \li Syntax: word-left
+ * \endvar
+ */
 		{ LFUN_WORD_LEFT, "word-left", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_LEFT_SELECT
+ * \li Action: Moves the cursor to the next beginning of a word "on the left",
+			   adding *logically* traversed text to the selection.
+ * \li Notion: See also #LFUN_WORD_LEFT for exact details of the movement.
+ * \li Syntax: word-left-select
+ * \endvar
+ */
 		{ LFUN_WORD_LEFT_SELECT, "word-left-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_LOWCASE, "word-lowcase", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
+ * \li Action: Moves the cursor to the next beginning of a word "on the right".
+ * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
+			   "right" key is pressed. Generally, it moves the cursor to the 
+			   next beginning of a word on the right. However, in Bidi text 
+			   this become slightly more complicated, and there are different
+			   modes of cursor movement. In "visual mode", this moves right,
+			   plain and simple. In "logical mode", movement is logically 
+			   forward in LTR paragraphs, and logically backwards in RTL 
+			   paragraphs.
+ * \li Syntax: word-right
+ * \endvar
+ */
 		{ LFUN_WORD_RIGHT, "word-right", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT_SELECT
+ * \li Action: Moves the cursor to the next beginning of a word "on the right",
+			   adding *logically* traversed text to the selection.
+ * \li Notion: See also #LFUN_WORD_RIGHT for exact details of the movement.
+ * \li Syntax: word-right-select
+ * \endvar
+ */
 		{ LFUN_WORD_RIGHT_SELECT, "word-right-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
 		{ LFUN_WORD_UPCASE, "word-upcase", Noop, Edit },
