@@ -38,6 +38,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Intro.lyx"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\it\clipart"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths-plain.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\apa.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\article-beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\scrarticle-beamer.layout"
  SetOutPath "$INSTDIR\Resources\images\math"
