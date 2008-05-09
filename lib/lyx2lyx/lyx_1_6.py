@@ -820,8 +820,8 @@ def revert_latexcommand_index(document):
             line = line[20:]
           if line.startswith("\\begin_layout Standard"):
             line = line[22:]
-          if line.startswith("\\begin_layout Plain"):
-            line = line[22:]
+          if line.startswith("\\begin_layout Plain Layout"):
+            line = line[26:]
           if line.startswith("\\end_layout"):
             line = line[11:]
           if line.startswith("\\end_inset"):
@@ -829,6 +829,7 @@ def revert_latexcommand_index(document):
           if line.startswith("status collapsed"):
             line = line[16:]
           line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
+          line = line.replace(r'\backslash', r'\textbackslash{}')
           content = content + line;
         document.body[i + 3] = "name " + '"' + content + '"'
         for k in range(i + 4, j - 2):
