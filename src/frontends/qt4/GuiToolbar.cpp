@@ -737,7 +737,7 @@ void GuiLayoutBox::addItemSort(docstring const & item, docstring const & categor
 	if (i < end) {
 		// find alphabetic position
 		while (i != end
-		       && model_->item(i, 0)->text().compare(titem) < 0 
+		       && model_->item(i, 0)->text().localeAwareCompare(titem) < 0 
 		       && (!sortedByCat || model_->item(i, 2)->text() == qcat))
 			++i;
 	}
