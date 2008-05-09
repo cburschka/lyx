@@ -2208,6 +2208,30 @@ def revert_graphics_group(document):
         i = i + 1
 
 
+def update_apa_styles(document):
+    ' Replace obsolete styles'
+
+    if document.textclass != "apa":
+        return
+
+    obsoletedby = { "Acknowledgments": "Acknowledgements",
+                    "Section*":        "Section",
+                    "Subsection*":     "Subsection",
+                    "Subsubsection*":  "Subsubsection",
+                    "Paragraph*":      "Paragraph",
+                    "Subparagraph*":   "Subparagraph"}
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            return
+
+        layout = document.body[i][14:]
+        if layout in obsoletedby:
+            document.body[i] = "\\begin_layout " + obsoletedby[layout]
+
+        i += 1
+
 ##
 # Conversion hub
 #
@@ -2269,9 +2293,11 @@ convert = [[277, [fix_wrong_tables]],
            [330, []],
            [331, [convert_ltcaption]],
            [332, []],
+           [333, [update_apa_styles]],
           ]
 
-revert =  [[331, [revert_graphics_group]],
+revert =  [[332, []],
+           [331, [revert_graphics_group]],
            [330, [revert_ltcaption]],
            [329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],
            [328, [revert_master]],

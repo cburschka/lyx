@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass[apa,apacite.sty]{article (APA)}
 # Author: Randy Gobbel <gobbel@andrew.cmu.edu>
 
-Format 7
+Format 4
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -63,6 +63,7 @@ Style RightHeader
 	  Size                Small
 	EndFont
 	Align                 Right
+	AlignPossible         Right
 End
 
 
@@ -263,6 +264,7 @@ Style CenteredCaption
 	ParSkip               0.4
 	TopSep                0.5
 	Align                 Center
+	AlignPossible         Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
 	OptionalArgs          1
@@ -271,6 +273,7 @@ Style CenteredCaption
 	EndFont
 	LatexName             centeredcaption
 	Align                 Center
+	AlignPossible         Center
 End
 
 
@@ -288,18 +291,66 @@ End
 
 Input stdsections.inc
 Input stdstarsections.inc
-Input stdinsets.inc
+
 Input stdfloats.inc
 Input stdcounters.inc
 
 NoStyle Part
-NoStyle Section
-NoStyle Subsection
-NoStyle Subsubsection
+NoStyle Part*
 NoStyle Chapter
-NoStyle Paragraph
-NoStyle Subparagraph
 NoStyle Chapter*
+NoStyle Section*
+NoStyle Subsection*
+NoStyle Subsubsection*
+NoStyle Paragraph*
+NoStyle Subparagraph*
+
+
+Style Section
+	LabelType             No_Label
+	Align                 Center
+	Font
+	  Series              Bold
+	  Size                Huge
+	EndFont
+End
+
+
+Style Subsection
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Larger
+	EndFont
+End
+
+
+Style Subsubsection
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Large
+	EndFont
+End
+
+
+Style Paragraph
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
+End
+
+
+Style Subparagraph
+	LabelType             No_Label
+	Font
+	  Series              Bold
+	  Size                Normal
+	  Shape               Italic
+	EndFont
+End
 
 
 Style Itemize
