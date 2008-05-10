@@ -1390,6 +1390,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_LABEL_GOTO, "label-goto", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LABEL_INSERT
+ * \li Action: Inserts label to text or displayed formula.
+ * \li Syntax: label-insert [<LABEL>]
+ * \li Params: <LABEL>: Requested label. If no label is given dialog requesting
+                        name will be opened.
+ * \endvar
+ */
 		{ LFUN_LABEL_INSERT, "label-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_REFERENCE_NEXT
