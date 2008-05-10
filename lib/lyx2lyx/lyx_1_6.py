@@ -812,10 +812,12 @@ def revert_latexcommand_index(document):
         document.body[i + 1] =  "LatexCommand index"
         # clean up multiline stuff
         content = ""
+        ert_end = 0
         for k in range(i + 3, j - 2):
           line = document.body[k]
           if line.startswith("\\begin_inset ERT"):
-            line = line[16:]
+              ert_end = find_end_of_inset(document.body, k + 1)
+              line = line[16:]
           if line.startswith("\\begin_inset Formula"):
             line = line[20:]
           if line.startswith("\\begin_layout Standard"):
@@ -828,8 +830,15 @@ def revert_latexcommand_index(document):
             line = line[10:]
           if line.startswith("status collapsed"):
             line = line[16:]
-          line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
-          line = line.replace(r'\backslash', r'\textbackslash{}')
+          if line.startswith("status open"):
+            line = line[11:]
+          # do not replace inside ERTs
+          if ert_end < k:
+              line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
+              line = line.replace(r'\backslash', r'\textbackslash{}')
+              line = line.replace(r'\InsetSpace ', r'')
+          else:
+              line = line.replace(r'\backslash', r'\\')
           content = content + line;
         document.body[i + 3] = "name " + '"' + content + '"'
         for k in range(i + 4, j - 2):
