@@ -1271,45 +1271,30 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += oss.str();
 	}
 
-	// only add \makeatletter and \makeatother when actually needed
-	bool makeatletter = false;
+	// Will be surrounded by \makeatletter and \makeatother when needed
+	docstring atlyxpreamble;
 
 	// Some macros LyX will need
 	docstring tmppreamble(from_ascii(features.getMacros()));
 
-	if (!tmppreamble.empty()) {
-		if (!makeatletter) {
-			lyxpreamble += "\n\\makeatletter\n";
-			makeatletter = true;
-		}
-		lyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+	if (!tmppreamble.empty())
+		atlyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"LyX specific LaTeX commands.\n"
 			+ tmppreamble + '\n';
-	}
 
 	// the text class specific preamble
 	tmppreamble = features.getTClassPreamble();
-	if (!tmppreamble.empty()) {
-		if (!makeatletter) {
-			lyxpreamble += "\n\\makeatletter\n";
-			makeatletter = true;
-		}
-		lyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+	if (!tmppreamble.empty())
+		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"Textclass specific LaTeX commands.\n"
 			+ tmppreamble + '\n';
-	}
 
 	/* the user-defined preamble */
-	if (!preamble.empty()) {
-		if (!makeatletter) {
-			lyxpreamble += "\n\\makeatletter\n";
-			makeatletter = true;
-		}
+	if (!preamble.empty())
 		// FIXME UNICODE
-		lyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"User specified LaTeX commands.\n"
 			+ from_utf8(preamble) + '\n';
-	}
 
 	// Itemize bullet settings need to be last in case the user
 	// defines their own bullets that use a package included
@@ -1343,16 +1328,14 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		}
 	}
 
-	if (!bullets_def.empty()) {
-		if (!makeatletter) {
-			lyxpreamble += "\n\\makeatletter\n";
-			makeatletter = true;
-		}
-		lyxpreamble += bullets_def + "}\n\n";
-	}
+	if (!bullets_def.empty())
+		atlyxpreamble += bullets_def + "}\n\n";
 
-	if (makeatletter)
-		lyxpreamble += "\\makeatother\n\n";
+	if (atlyxpreamble.find(from_ascii("@")) != docstring::npos)
+		lyxpreamble += "\n\\makeatletter\n"
+			+ atlyxpreamble + "\\makeatother\n\n";
+	else
+		lyxpreamble += '\n' + atlyxpreamble;
 
 	int const nlines =
 		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
