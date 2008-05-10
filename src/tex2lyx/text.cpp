@@ -809,9 +809,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	// they are commands not environments. They are furthermore switches that
 	// can be ended by another switches, but also by commands like \footnote or
 	// \parbox. So the only safe way is to leave them untouched.
-	else if (name == "center" || name == "flushleft" || name == "flushright" ||
-		 name == "singlespace" || name == "onehalfspace" ||
-		 name == "doublespace" || name == "spacing") {
+	else if (name == "center" || name == "centering" ||
+		name == "flushleft" || name == "flushright" ||
+		name == "singlespace" || name == "onehalfspace" ||
+		name == "doublespace" || name == "spacing") {
 		eat_whitespace(p, os, parent_context, false);
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
@@ -822,7 +823,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.add_extra_stuff("\\align left\n");
 		else if (name == "flushright")
 			parent_context.add_extra_stuff("\\align right\n");
-		else if (name == "center")
+		else if (name == "center" || name == "centering")
 			parent_context.add_extra_stuff("\\align center\n");
 		else if (name == "singlespace")
 			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
