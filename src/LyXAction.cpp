@@ -621,6 +621,7 @@ void LyXAction::init()
 			   simple. In "logical mode", movement is logically forward in RTL
 			   paragraphs, and logically backwards in LTR paragraphs.
  * \li Syntax: word-left
+ * \li Origin: dov, 28 Oct 2007
  * \endvar
  */
 		{ LFUN_WORD_LEFT, "word-left", ReadOnly | NoUpdate, Edit },
@@ -630,6 +631,7 @@ void LyXAction::init()
 			   adding *logically* traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_LEFT for exact details of the movement.
  * \li Syntax: word-left-select
+ * \li Origin: dov, 28 Oct 2007
  * \endvar
  */
 		{ LFUN_WORD_LEFT_SELECT, "word-left-select", ReadOnly | SingleParUpdate, Edit },
@@ -646,6 +648,7 @@ void LyXAction::init()
 			   forward in LTR paragraphs, and logically backwards in RTL 
 			   paragraphs.
  * \li Syntax: word-right
+ * \li Origin: dov, 28 Oct 2007
  * \endvar
  */
 		{ LFUN_WORD_RIGHT, "word-right", ReadOnly | NoUpdate, Edit },
@@ -655,6 +658,7 @@ void LyXAction::init()
 			   adding *logically* traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_RIGHT for exact details of the movement.
  * \li Syntax: word-right-select
+ * \li Origin: dov, 28 Oct 2007
  * \endvar
  */
 		{ LFUN_WORD_RIGHT_SELECT, "word-right-select", ReadOnly | SingleParUpdate, Edit },
