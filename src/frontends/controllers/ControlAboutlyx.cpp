@@ -64,7 +64,7 @@ void ControlAboutlyx::getCredits(ostream & ss) const
 
 string const ControlAboutlyx::getCopyright() const
 {
-	return to_utf8(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team"));
+	return to_utf8(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2008 LyX Team"));
 }
 
 
