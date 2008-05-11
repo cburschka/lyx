@@ -832,7 +832,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.add_extra_stuff("\\align left\n");
 		else if (name == "flushright" || name == "raggedleft")
 			parent_context.add_extra_stuff("\\align right\n");
-		else if (name == "center")
+		else if (name == "center" || name == "centering")
 			parent_context.add_extra_stuff("\\align center\n");
 		else if (name == "singlespace")
 			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
