@@ -53,7 +53,7 @@ DISTFILES = $(DISTFILES.common) Makevars \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
-DISTFILES.extra1 = lyx_pot.py postats.py pocheck.pl
+DISTFILES.extra1 = lyx_pot.py postats.py pocheck.pl Makefile.in POTFILES.in
 
 POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
