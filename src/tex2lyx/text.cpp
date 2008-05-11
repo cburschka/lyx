@@ -817,9 +817,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
 					  parent_context);
 
-	// Alignment settings
+	// Alignment settings and leading
 	else if (name == "center" || name == "flushleft" || name == "flushright" ||
-		 name == "centering" || name == "raggedright" || name == "raggedleft"
+		 name == "centering" || name == "raggedright" || name == "raggedleft" ||
 		 name == "singlespace" || name == "onehalfspace" ||
 		 name == "doublespace" || name == "spacing") {
 		eat_whitespace(p, os, parent_context, false);
@@ -832,7 +832,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.add_extra_stuff("\\align left\n");
 		else if (name == "flushright" || name == "raggedleft")
 			parent_context.add_extra_stuff("\\align right\n");
-		else
+		else  if (name == "center")
 			parent_context.add_extra_stuff("\\align center\n");
 		else if (name == "singlespace")
 			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
