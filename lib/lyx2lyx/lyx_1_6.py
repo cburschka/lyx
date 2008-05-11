@@ -832,11 +832,21 @@ def revert_latexcommand_index(document):
             line = line[16:]
           if line.startswith("status open"):
             line = line[11:]
+          # a lossless reversion is not possible
+          # try at least to handle some common insets and settings
           # do not replace inside ERTs
           if ert_end < k:
               line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
               line = line.replace(r'\backslash', r'\textbackslash{}')
-              line = line.replace(r'\InsetSpace ', r'')
+              line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
+              line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
+              line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
+              line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
+              line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
+              line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
+              line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
+              line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
+              line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
           else:
               line = line.replace(r'\backslash', r'\\')
           content = content + line;
