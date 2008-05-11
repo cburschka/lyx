@@ -1,31 +1,241 @@
-Public release of LyX version 1.5.4
+Public release of LyX version 1.5.5
 ====================================
 
-We are pleased to announce the release of LyX 1.5.4. This is a maintenance
-release. Besides the usual stability improvements and fixes, this release
-comes with major improvements in the handling of Chinese, Korean and
-Japanese (CJK) languages and scripts, and introduces some minor new
-features (such as a character count option).
+We are pleased to announce the release of LyX 1.5.5. Being the fourth
+maintenance release in the 1.5.x cycle, this release further improves
+the stability and usability of the application. Besides this, it also
+introduces some new features.
 
-While this release continues the stable 1.5.x series, work on the next
-major release, 1.6.0, is proceeding. A first alpha version of LyX 1.6.0
-will be released later this week for those who like the bleeding edge
-experience. Notwithstanding this, expect one or two more 1.5.x versions
-to be released, of which the last one will be able to read the 1.6 format.
+Most notably, LyX is now prepared to be compiled with Qt 4.4 that has
+just been released: the stability issues that occured in previous
+versions of LyX when compiled against Qt 4.4 have been resolved.
 
-All users, especially CJK users, are encouraged to upgrade to this 
-version.
-
-Caveat: We were forced to switch from the LaTeX package 'floatflt' to
-'wrapfig' for wrap figure floats due to a license problem that limited
-the availability of the former package. In general, this should improve
-your documents containing wrap figures, however, it is possible that the
-look and positioning of the floats changes due to the package change. If
-you have documents with wrap floats, please make a backup before upgrading
-and check the output.
+All users, especially users of Qt 4.4, are encouraged to upgrade to
+this version.
 
 A detailed list of changes is appended below, remaining known problems
 are listed in the file RELEASE-NOTES.
+
+
+What's new in version 1.5.5?
+----------------------------
+
+
+** Updates:
+***********
+
+* DOCUMENTATION AND LOCALIZATION
+
+- New Spanish translation of the math manual.
+
+- New French translation of the documentation file "Formula-numbering.lyx".
+
+- Updated Czech, French, Galician, German, Italian, Japanese, and
+  Romanian translation of the user interface.
+
+- Updated German User's Guide and Extended manual.
+
+- Updated French User's Guide.
+
+- Updated Italian Intro manual.
+
+
+* USER INTERFACE
+
+- Add support for the bm package.
+
+- New layout files "article (beamer)" and "article (koma + beamer)" that
+  support beamer's article mode.
+
+- Allow using the \binom command without the amsmath package.
+
+- Add support for \brace and \brack commands in mathed.
+
+
+* DOCUMENT INPUT/OUTPUT
+
+- New import option for comma-separated-value files.
+
+- Add support for the HTML-to-LaTeX converters gnuhtml2latex and
+  htmltolatex (bug 4615).
+
+- The commands \makeatletter and \makeatother are now only added to the
+  preamble when actually needed.
+
+- The command \textcolor is now converted when importing LaTeX files
+  (bug 2457).
+
+- Global line spacing settings are now imported when importing LaTeX
+  files.
+
+- The command \lyxline is now converted when importing LaTeX files
+  (bug 4795).
+
+
+* WINDOWS INSTALLER:
+
+- A metafile (EMF/WMF) to EPS conversion tool is included.
+  This tool uses a virtual printer called "Metafile to EPS Converter".
+
+- Full support for installation on a per-user basis, including limited
+  users.
+
+- Required files of ImageMagick and Ghostscript will be installed in the
+  LyX folder.
+
+
+* BUILD:
+
+- New configure option --enable-build-type allows to set all
+  compilation options for release, prerelease or development builds.
+  Please see the INSTALL file for more details.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix LaTeX import of aligned consecutive paragraphs (bug 4806).
+
+- Fix font size handling when importing LaTeX files (bug 4803 and
+  bug 4807).
+
+- After an inset, don't always revert to the language's default encoding
+  for latex output, but honor that specified in the document settings
+  (bug 4665).
+
+- Close font macros (such as \emph) before comments, greyedout, framed
+  and shaded notes, thus fixing a problem where documents couldn't be
+  compiled anymore.
+
+- Fix LaTeX error "unknown color 'ignore'" when setting text style
+  attributes in mathed (bug 4091).
+
+- Assure amsthm is loaded if a theorem is defined with \theoremstyle.
+
+- Fix LaTeX errors triggered by switching from ams article to ams plain
+  article.
+
+- Fix drawing of top and bottom rules in formal tables (bug 4554).
+
+- Fix reversion of OHM and ANGSTROM characters to LyX < 1.5.0 (rest of
+  bug 3313).
+
+- Check for the LaTeX packages "nicefrac" and "units" that are used by
+  LyX.
+
+- Check for PDF->PS, PDF->EPS and PS->EPS converters and use them (bug
+  3968).
+
+- Stop warning messages when a local layout file is opened. Fix bugs
+  caused by incorrect reloading of local layout files.
+
+- Use verbose htlatex command instead of oolatex, if available, since the
+  latter caused problems on some systems (bug 4604).
+
+- Use package amsbsy for bold math symbols obtained through the \boldsymbol
+  macro, such that bold super and subscripts have the correct size even
+  when not using the complete amsmath package.
+
+- Fix loading of lyx documents generated with csv2lyx (bug 4639).
+
+- Move \label{} outside of listings option caption={} because the listings
+  package prefers a separate label={} option.
+
+- Set the correct encoding when an ASCII encoded LaTeX file is imported
+  (bug 4719).
+
+- Parse the command \makebox correctly when importing LaTeX files
+  (bug 2504).
+
+- Import global paragraph settings correctly when importing LaTeX files
+  (bug 4773).
+
+- Use style guide-conforming headings in the APA layout (bug 4827).
+
+
+* USER INTERFACE:
+
+- Fix a crash on startup with Qt 4.4 (bug 4568).
+
+- Fix a crash that occured on some OSes when the character '{' was
+  inserted in the advanced input of the listings dialog (bug 4780).
+
+- Fix an assertion with compressed image files that do not have a
+  zip-extension.
+
+- Fix an assertion with incorrect argument for '-sysdir' command-line
+  switch (bug 4791).
+
+- Correctly apply font changes when several math matrix cells are selected
+  (bug 4566).
+
+- Allow deleting a label in a formula as well as the numbering with the
+  delete key (bug 2556).
+
+- Allow to enter starred math commands such as \tag* (bug 4584).
+
+- Load amsmath when \tag or \tag* is used (bug 4586).
+
+- Fix parameter input of the math commands \makebox and \framebox (bug
+  2461).
+
+- When cutting a selection do not leave a dangling paragraph (bug 3995).
+
+- Improve the behaviour when inserting a collapsable inset over a multi-
+  paragraph selection.
+
+- Fix the automatic uncollapsing of outliner during updates (bug 3740).
+
+- Correctly handle quotation marks in command preferences (bug 2016).
+
+- Remove the menu entries to swap rows/columns as this feature is not
+  implemented.
+
+- Fix wrong focusing of buttons in search dialog (bug 4194).
+
+- Disallow some Note variants in places where they would result in LaTeX
+  errors (part of bug 4180).
+
+- Use *.* to select all files in the file selection dialog on Windows.
+  Using shortcuts for navigation is now possible.
+
+- Fix \Vert symbol in the math panel (part of bug 4720).
+
+- correct numbering inside multiline environments (bug 518).
+
+- Fix typo in the script TeXFiles.py that scans for TeX files.
+
+- Remove the menu entry Insert -> Math -> Toggle math panels, since
+  it actually does not insert anything and its functionality is covered
+  by menu View - > Toolbars -> Math Panels (bug 4765).
+
+
+* DOCUMENTATION
+
+- Fix LaTeX errors in the Spanish Tutorial, UserGuide, and Intro manual.
+
+- Math manual:
+  - correct shortcuts for math fonts in section 11.1
+  - fix the description of the command \tag in section 19.4
+
+- Man page: document -geometry option, update Copyright date (bug 4740).
+
+- The tex2lyx man page was completely outdated and referred to reLyX in many
+  places (bug 2770). It has been cleaned up, but it is still outdated in
+  details.
+
+
+* BUILD/INSTALLATION:
+
+- fix the 'make check' target in src/support; one of the checks still 
+  fails (bug 4638)
+
+- fix the problems with compilation on gcc 4.3.0 with disabled pch headers.
+
+- fix some compilation warnings.
+
 
 
 What's new in version 1.5.4?
