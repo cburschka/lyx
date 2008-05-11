@@ -340,6 +340,9 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "graphicx")
 		; // ignore this
 
+	else if (name == "setspace")
+		; // ignore this
+
 	// activate this first when bug 20 is fixed, otherwise we have a regression
 	//else if (name == "setspace")
 	//	; // ignore this
