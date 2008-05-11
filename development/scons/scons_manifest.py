@@ -2391,7 +2391,6 @@ lib_examples_es_files = Split('''
     ItemizeBullets.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
-    mathed.lyx
     splash.lyx
 ''')
 
