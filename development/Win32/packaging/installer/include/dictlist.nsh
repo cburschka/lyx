@@ -10,15 +10,14 @@ List of Aspell dictionaries supported by LyX
 
   ${DICT} af-0.50-0 "Afrikaans" af 915
   ${DICT} ar-1.2-0 "Arabic" ar 4352
-  ${DICT} nb-0.50.1-0 "Bokmål" nb 3031
-  ${DICT} bg-4.0-0 "Bulgarian" bg 5345
+  ${DICT} bg-4.1-0 "Bulgarian" bg 5345
   ${DICT} ca-20040130-1 "Català" ca 1095
   ${DICT} cs-20040614-1 "Ceština" cs 2069
   ${DICT} da-1.4.42-1 "Dansk" da 3036
   ${DICT} de-20030222-1 "Deutsch" de 2872
   ${DICT} en-6.0-0 "English" en 1130
   ${DICT} es-0.50-2 "Español" es 2953
-  ${DICT} eo-0.50-2 "Esperanto" eo 3773
+  ${DICT} eo-2.1.20000225a-2 "Esperanto" eo 3773
   ${DICT} et-0.1.21-1 "Estonian" et 922
   ${DICT} fr-0.50-3 "Français" fr 4331
   ${DICT} gl-0.50-0 "Galego" gl 2974
@@ -29,11 +28,12 @@ List of Aspell dictionaries supported by LyX
   ${DICT} it-2.2_20050523-0 "Italiano" it 696
   ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
   ${DICT} nl-opentaal200711 "Nederlands" nl 1333
-  ${DICT} nn-0.50.1-1 "Nynorsk" nn 1930
+  ${DICT} nb-0.50.1-0 "Norsk (Bokmål)" nb 3031
+  ${DICT} nn-0.50.1-1 "Norsk (Nynorsk)" nn 1930
   ${DICT} fa-0.11-0 "Persian" fa 1667
   ${DICT} pl-6.0_20061121-0 "Polski" pl 1859
   ${DICT} pt_PT-20070510-0 "Português" pt_PT 319
-  ${DICT} pt_BR-20070411-0 "Português do Brasil" pt_BR 2453
+  ${DICT} pt_BR-20080221-1 "Português do Brasil" pt_BR 2453
   ${DICT} ro-0.50-2 "Româna" ro 341
   ${DICT} ru-0.99f7-1 "Russian" ru 1458
   ${DICT} gd-0.1.1-1 "Scottish" gd 194
