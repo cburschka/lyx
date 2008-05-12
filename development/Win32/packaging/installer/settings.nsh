@@ -14,6 +14,8 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_REVISION 0
 !define APP_VERSION_BUILD 0 # Start with 1 for the installer releases of each version
 
+!define /date APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}svn %Y%m%d" # Version to display
+
 #--------------------------------
 # Installer file name
 

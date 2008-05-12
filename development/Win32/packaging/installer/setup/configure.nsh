@@ -42,7 +42,7 @@ Section -InstallData
 
   # Registry information
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "" $INSTDIR
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "Version" "${APP_VERSION}"
+  WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "Version" "${APP_VERSION_NUMBER}"
 
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "LaTeX Path" $PathLaTeX
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "ImageMagick Path" $PathImageMagick
