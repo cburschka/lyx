@@ -22,7 +22,7 @@ Function PageReinstall
   # If so, some registry key like Software/Lyx16 should exist
   ReadRegStr $InstalledVersion SHELL_CONTEXT ${APP_REGKEY} "Version"
 
-  ${If} $InstalledVersion != "${APP_VERSION}"
+  ${If} $InstalledVersion != "${APP_VERSION_NUMBER}"
     # Different version, go ahead
     Abort
   ${EndIf}
