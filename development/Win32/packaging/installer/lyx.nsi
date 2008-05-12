@@ -11,16 +11,6 @@ Licence details for all installer scripts can be found in the file COPYING
 !include settings.nsh
 
 #--------------------------------
-# The following commands use makensis to compile two applications.
-# Although these applications are written in NSIS, they do not install anything.
-
-# Compile the launcher
-!system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
-
-# Compile Windows PDF view helper
-!system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
-
-#--------------------------------
 # Header files  
 
 !include include\declarations.nsh
@@ -34,6 +24,16 @@ Licence details for all installer scripts can be found in the file COPYING
 !include include\detection.nsh
 !include include\gui.nsh
 !include include\init.nsh
+
+#--------------------------------
+# The following commands use makensis to compile two applications.
+# Although these applications are written in NSIS, they do not install anything.
+
+# Compile the launcher
+!system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
+
+# Compile Windows PDF view helper
+!system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
 
 #--------------------------------
 # Setup
