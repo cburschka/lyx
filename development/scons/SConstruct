@@ -2006,15 +2006,12 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
         if os.path.isdir(os.path.join(env.Dir('$TOP_SRCDIR/lib/doc').abspath, lang)):
             toc = env.installTOC(os.path.join(share_dest_dir, 'doc', lang, 'TOC.lyx'),
                 languages[lang])
-            tocs.append(toc)
-            # doc_toc.build_toc needs a installed version of lyx2lyx to execute
-            env.Depends(toc, share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
         else:
             # this is for English
             toc = env.installTOC(os.path.join(share_dest_dir, 'doc', 'TOC.lyx'),
                 languages[lang])
-            tocs.append(toc)
-            env.Depends(toc, share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
+        tocs.append(toc)
+        env.Depends(toc, dirs)
     Alias('install', tocs)
     
     if platform_name == 'cygwin':
