@@ -64,13 +64,12 @@ void InsetFoot::updateLabels(ParIterator const & it)
 }
 
 
-void InsetFoot::addToToc(ParConstIterator const & cpit) const
+void InsetFoot::addToToc(DocIterator const & cpit)
 {
-	ParConstIterator pit = cpit;
-	pit.push_back(*this);
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("footnote");
-	// FIXME: we probably want the footnote number too.
 	docstring str;
 	str = custom_label_ + ": " + getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));

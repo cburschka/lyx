@@ -14,7 +14,7 @@
 #ifndef TOC_BACKEND_H
 #define TOC_BACKEND_H
 
-#include "ParIterator.h"
+#include "DocIterator.h"
 
 #include "support/strfwd.h"
 
@@ -39,7 +39,7 @@ public:
 	/// Default constructor for STL containers.
 	TocItem() {}
 	///
-	TocItem(ParConstIterator const & par_it,
+	TocItem(DocIterator const & dit,
 		int depth,
 		docstring const & s
 		);
@@ -59,7 +59,7 @@ public:
 
 protected:
 	/// Current position of item.
-	ParConstIterator par_it_;
+	DocIterator dit_;
 
 	/// nesting depth
 	int depth_;
@@ -92,7 +92,7 @@ public:
 	///
 	void update();
 	///
-	void updateItem(ParConstIterator const & pit);
+	void updateItem(DocIterator const & pit);
 
 	///
 	TocList const & tocs() const { return tocs_; }
@@ -105,7 +105,7 @@ public:
 	/// Return the first Toc Item before the cursor
 	TocIterator item(
 		std::string const & type, ///< Type of Toc.
-		ParConstIterator const & ///< The cursor location in the document.
+		DocIterator const & dit ///< The cursor location in the document.
 	) const;
 
 	///

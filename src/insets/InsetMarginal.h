@@ -39,7 +39,7 @@ public:
 	///
 	docstring editMessage() const;
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 private:
 	///
 	Inset * clone() const { return new InsetMarginal(*this); }

@@ -38,7 +38,7 @@ public:
 	///
 	void updateLabels(ParIterator const &);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

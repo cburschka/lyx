@@ -66,10 +66,10 @@ int InsetMarginal::docbook(odocstream & os,
 }
 
 
-void InsetMarginal::addToToc(ParConstIterator const & cpit) const
+void InsetMarginal::addToToc(DocIterator const & cpit)
 {
-	ParConstIterator pit = cpit;
-	pit.push_back(*this);
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("marginalnote");
 	docstring str;

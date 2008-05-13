@@ -880,7 +880,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetInclude::addToToc(ParConstIterator const & cpit) const
+void InsetInclude::addToToc(DocIterator const & cpit)
 {
 	TocBackend & backend = buffer().tocBackend();
 
@@ -895,8 +895,8 @@ void InsetInclude::addToToc(ParConstIterator const & cpit) const
 		Toc & toc = backend.toc("listing");
 		docstring str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
-		ParConstIterator pit = cpit;
-		pit.push_back(*this);
+		DocIterator pit = cpit;
+		pit.push_back(CursorSlice(*this));
 		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}

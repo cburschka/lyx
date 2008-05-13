@@ -427,7 +427,7 @@ void InsetCitation::updateLabels(ParIterator const &)
 }
 
 
-void InsetCitation::addToToc(ParConstIterator const & cpit) const
+void InsetCitation::addToToc(DocIterator const & cpit)
 {
 	Toc & toc = buffer().tocBackend().toc("citation");
 	toc.push_back(TocItem(cpit, 0, cache.screen_label));

@@ -22,6 +22,7 @@
 #include "Layout.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "insets/InsetOptArg.h"
@@ -43,15 +44,15 @@ namespace lyx {
 //
 ///////////////////////////////////////////////////////////////////////////
 
-TocItem::TocItem(ParConstIterator const & par_it, int d, docstring const & s)
-	: par_it_(par_it), depth_(d), str_(s)
+TocItem::TocItem(DocIterator const & dit, int d, docstring const & s)
+	: dit_(dit), depth_(d), str_(s)
 {
 }
 
 
 int TocItem::id() const
 {
-	return par_it_->id();
+	return dit_.paragraph().id();
 }
 
 
@@ -101,7 +102,7 @@ Toc & TocBackend::toc(string const & type)
 }
 
 
-void TocBackend::updateItem(ParConstIterator const & par_it)
+void TocBackend::updateItem(DocIterator const & dit)
 {
 	if (toc("tableofcontents").empty()) {
 		// FIXME: should not happen, 
@@ -113,32 +114,33 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.documentClass().min_toclevel();
 
-	TocIterator toc_item = item("tableofcontents", par_it);
+	TocIterator toc_item = item("tableofcontents", dit);
 
 	docstring tocstring;
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
-	InsetList::const_iterator it = toc_item->par_it_->insetList().begin();
-	InsetList::const_iterator end = toc_item->par_it_->insetList().end();
+	Paragraph & par = toc_item->dit_.paragraph();
+	InsetList::const_iterator it = par.insetList().begin();
+	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
 		Inset & inset = *it->inset;
 		if (inset.lyxCode() == OPTARG_CODE) {
 			if (!tocstring.empty())
 				break;
-			Paragraph const & par =
+			Paragraph const & inset_par =
 				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
-			if (!toc_item->par_it_->labelString().empty())
-				tocstring = toc_item->par_it_->labelString() + ' ';
-			tocstring += par.asString(false);
+			if (!par.labelString().empty())
+				tocstring = par.labelString() + ' ';
+			tocstring += inset_par.asString(false);
 			break;
 		}
 	}
 
-	int const toclevel = toc_item->par_it_->layout().toclevel;
+	int const toclevel = par.layout().toclevel;
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
-			tocstring = toc_item->par_it_->asString(true);
+			tocstring = par.asString(true);
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
 }
@@ -165,6 +167,7 @@ void TocBackend::update()
 		InsetList::const_iterator end = pit->insetList().end();
 		for (; it != end; ++it) {
 			Inset & inset = *it->inset;
+			pit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
 			inset.addToToc(pit);
 			switch (inset.lyxCode()) {
@@ -198,7 +201,7 @@ void TocBackend::update()
 
 
 TocIterator TocBackend::item(string const & type,
-		ParConstIterator const & par_it) const
+		DocIterator const & dit) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
@@ -212,7 +215,7 @@ TocIterator TocBackend::item(string const & type,
 
 	--it;
 
-	ParConstIterator par_it_text = par_it;
+	ParConstIterator par_it_text(dit);
 	if (par_it_text.inMathed()) {
 		// We are only interested in text so remove the math CursorSlice.
 		while (par_it_text.inMathed())
@@ -223,9 +226,9 @@ TocIterator TocBackend::item(string const & type,
 		// We verify that we don't compare contents of two
 		// different document. This happens when you
 		// have parent and child documents.
-		if (&it->par_it_[0].inset() != &par_it_text[0].inset())
+		if (&it->dit_[0].inset() != &par_it_text[0].inset())
 			continue;
-		if (it->par_it_ <= par_it_text)
+		if (it->dit_ <= par_it_text)
 			return it;
 	}
 

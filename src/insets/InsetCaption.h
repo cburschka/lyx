@@ -71,7 +71,7 @@ private:
 	///
 	void setCustomLabel(docstring const & label);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	/// 
 	virtual bool forceEmptyLayout(idx_type = 0) const { return true; }
 	/// Captions don't accept alignment, spacing, etc.

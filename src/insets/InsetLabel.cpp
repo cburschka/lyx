@@ -111,7 +111,7 @@ void InsetLabel::updateLabels(ParIterator const &)
 }
 
 
-void InsetLabel::addToToc(ParConstIterator const & cpit) const
+void InsetLabel::addToToc(DocIterator const & cpit)
 {
 	docstring const & label = getParam("name");
 	Toc & toc = buffer().tocBackend().toc("label");
@@ -124,7 +124,7 @@ void InsetLabel::addToToc(ParConstIterator const & cpit) const
 	Buffer::References::const_iterator it = refs.begin();
 	Buffer::References::const_iterator end = refs.end();
 	for (; it != end; ++it) {
-		ParConstIterator const ref_pit(it->second);
+		DocIterator const ref_pit(it->second);
 		toc.push_back(TocItem(ref_pit, 1, it->first->screenLabel()));
 	}
 }

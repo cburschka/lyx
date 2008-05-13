@@ -42,7 +42,7 @@ private:
 	/// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

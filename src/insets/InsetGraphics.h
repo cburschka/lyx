@@ -105,7 +105,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	/// Force inset into LTR environment if surroundings are RTL?

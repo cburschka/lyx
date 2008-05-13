@@ -67,7 +67,7 @@ public:
 	///
 	void updateLabels(ParIterator const & it);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 protected:
 	///
 	InsetRef(InsetRef const &);

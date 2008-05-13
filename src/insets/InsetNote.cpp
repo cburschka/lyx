@@ -221,10 +221,10 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::addToToc(ParConstIterator const & cpit) const
+void InsetNote::addToToc(DocIterator const & cpit)
 {
-	ParConstIterator pit = cpit;
-	pit.push_back(*this);
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("note");
 	docstring str;

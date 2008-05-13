@@ -423,7 +423,7 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-//void InsetInclude::addToToc(ParConstIterator const & cpit) const
+//void InsetInclude::addToToc(DocIterator const & cpit)
 //{
 //}
 

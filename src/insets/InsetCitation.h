@@ -54,7 +54,7 @@ public:
 	///
 	void updateLabels(ParIterator const & it);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 
 	///
 	static ParamInfo const & findInfo(std::string const &);

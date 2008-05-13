@@ -436,7 +436,7 @@ public:
 	virtual void addPreview(graphics::PreviewLoader &) const {}
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
-	virtual void addToToc(ParConstIterator const &) const {}
+	virtual void addToToc(DocIterator const &) {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents

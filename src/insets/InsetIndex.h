@@ -41,7 +41,7 @@ private:
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
 };

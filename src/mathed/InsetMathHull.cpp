@@ -236,7 +236,7 @@ void InsetMathHull::updateLabels(ParIterator const & it)
 }
 
 
-void InsetMathHull::addToToc(ParConstIterator const & pit) const
+void InsetMathHull::addToToc(DocIterator const & pit)
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -244,10 +244,6 @@ void InsetMathHull::addToToc(ParConstIterator const & pit) const
 		// MathParser.cpp).
 		return;
 	}
-
-	// FIXME: it would be way better to directly use InsetLabel instead of this
-	// label list. But it should be possible to copy&paste the code in
-	// InsetLabel::addToToc() anyway.
 
 	Toc & toc = buffer().tocBackend().toc("equation");
 

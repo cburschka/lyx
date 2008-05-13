@@ -53,7 +53,7 @@ public:
 	///
 	void updateLabels(ParIterator const & it);
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	void updateCommand(docstring const & new_label, bool updaterefs = true);
 protected:

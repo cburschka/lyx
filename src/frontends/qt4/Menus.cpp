@@ -42,6 +42,7 @@
 #include "LyX.h" // for lastfiles
 #include "LyXFunc.h"
 #include "Paragraph.h"
+#include "ParIterator.h"
 #include "Session.h"
 #include "TextClass.h"
 #include "TocBackend.h"

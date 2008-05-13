@@ -93,10 +93,10 @@ void InsetIndex::write(ostream & os) const
 }
 
 
-void InsetIndex::addToToc(ParConstIterator const & cpit) const
+void InsetIndex::addToToc(DocIterator const & cpit)
 {
-	ParConstIterator pit = cpit;
-	pit.push_back(*this);
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(*this));
 
 	Toc & toc = buffer().tocBackend().toc("index");
 	docstring str;

@@ -84,7 +84,7 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
-	void addToToc(ParConstIterator const &) const;
+	void addToToc(DocIterator const &);
 	///
 	void updateLabels(ParIterator const &);
 	///
