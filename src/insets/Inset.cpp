@@ -210,10 +210,18 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void Inset::doDispatch(Cursor & cur, FuncRequest &)
+void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 {
-	cur.noUpdate();
-	cur.undispatched();
+	switch (cmd.action) {
+	case LFUN_INSET_TOGGLE:
+		edit(cur, true);
+		cur.dispatched();
+		break;
+	default:
+		cur.noUpdate();
+		cur.undispatched();
+		break;
+	}
 }
 
 
@@ -243,9 +251,15 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		flag.enabled(false);
 		return true;
 
+	case LFUN_INSET_TOGGLE:
+		// remove this if we dissociate toggle from edit.
+		flag.enabled(editable() == IS_EDITABLE);
+		return true;
+
 	default:
-		return false;
+		break;
 	}
+	return false;
 }
 
 

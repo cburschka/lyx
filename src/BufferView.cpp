@@ -870,10 +870,9 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_NEXT_INSET_TOGGLE: 
 	case LFUN_NEXT_INSET_MODIFY: {
 		// this is the real function we want to invoke
-		FuncCode const code = 
-			(cmd.action == LFUN_NEXT_INSET_TOGGLE) 
+		FuncRequest tmpcmd = cmd;
+		tmpcmd.action = (cmd.action == LFUN_NEXT_INSET_TOGGLE) 
 			? LFUN_INSET_TOGGLE : LFUN_INSET_MODIFY;
-		FuncRequest const tmpcmd = FuncRequest(code, cmd.argument());
 		// if there is an inset at cursor, see whether it
 		// handles the lfun, other start from scratch
 		Inset * inset = cur.nextInset();
@@ -1279,8 +1278,9 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	
 	case LFUN_NEXT_INSET_TOGGLE: {
-		// this is the real function we want to invoke
-		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_TOGGLE, cmd.origin);
+		// create the the real function we want to invoke
+		FuncRequest tmpcmd = cmd;
+		tmpcmd.action = LFUN_INSET_TOGGLE;
 		// if there is an inset at cursor, see whether it
 		// wants to toggle.
 		Inset * inset = cur.nextInset();
@@ -1289,12 +1289,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				Cursor tmpcur = cur;
 				tmpcur.pushBackward(*inset);
 				inset->dispatch(tmpcur, tmpcmd);
-				if (tmpcur.result().dispatched()) {
+				if (tmpcur.result().dispatched())
 					cur.dispatched();
-				}
-			} else if (inset->editable() == Inset::IS_EDITABLE) {
-				inset->edit(cur, true);
-			}
+			} else 
+				inset->dispatch(cur, tmpcmd);
 		}
 		// if it did not work, try the underlying inset.
 		if (!inset || !cur.result().dispatched())
@@ -1309,8 +1307,9 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_NEXT_INSET_MODIFY: {
-		// this is the real function we want to invoke
-		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_MODIFY, cmd.argument());
+		// create the the real function we want to invoke
+		FuncRequest tmpcmd = cmd;
+		tmpcmd.action = LFUN_INSET_MODIFY;
 		// if there is an inset at cursor, see whether it
 		// can be modified.
 		Inset * inset = cur.nextInset();
