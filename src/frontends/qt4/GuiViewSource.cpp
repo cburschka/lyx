@@ -68,8 +68,15 @@ ViewSourceWidget::ViewSourceWidget(GuiViewSource & controller)
 
 void ViewSourceWidget::updateView()
 {
+	BufferView * view = controller_.bufferview();
+	if (!view) {
+		document_->setPlainText(QString());
+		setEnabled(false);
+		return;
+	}
 	if (autoUpdateCB->isChecked())
-		update(viewFullSourceCB->isChecked());
+		document_->setPlainText(controller_.getContent(
+			viewFullSourceCB->isChecked()));
 
 	GuiViewSource::Row row = controller_.getRows();
 	QTextCursor c = QTextCursor(viewSourceTV->document());
@@ -78,12 +85,6 @@ void ViewSourceWidget::updateView()
 	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
 		row.end - row.begin + 1);
 	viewSourceTV->setTextCursor(c);
-}
-
-
-void ViewSourceWidget::update(bool full_source)
-{
-	document_->setPlainText(controller_.getContent(full_source));
 }
 
 
@@ -105,6 +106,15 @@ GuiViewSource::~GuiViewSource()
 void GuiViewSource::updateView()
 {
 	widget_->updateView();
+}
+
+
+void GuiViewSource::enableView(bool enable)
+{
+	if (!enable)
+		// In the opposite case, updateView() will be called anyway.
+		widget_->updateView();
+	widget_->setEnabled(enable);
 }
 
 

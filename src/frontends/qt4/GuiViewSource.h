@@ -44,8 +44,6 @@ public:
 public Q_SLOTS:
 	// update content
 	void updateView();
-	///
-	void update(bool full_source);
 
 private:
 	///
@@ -78,6 +76,7 @@ public:
 	bool canApply() const { return true; }
 	bool canApplyToReadOnly() const { return true; }
 	void updateView();
+	void enableView(bool enable);
 	///@}
 
 	/// The title displayed by the dialog reflects source type.
