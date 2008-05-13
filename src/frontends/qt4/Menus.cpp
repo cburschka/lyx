@@ -294,7 +294,7 @@ public:
 	void expandToolbars();
 	void expandBranches(Buffer const * buf);
 	void expandCiteStyles(BufferView const *);
-	void expandGraphicsGroups(Buffer const * buf);
+	void expandGraphicsGroups(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -634,18 +634,28 @@ QString limitStringLength(docstring const & str)
 }
 
 
-void MenuDefinition::expandGraphicsGroups(Buffer const * buf)
+void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 {
+	if (!bv)
+		return;
+	Cursor const & cur = bv->cursor();
+	Buffer const & buf = bv->buffer();
 	set<string> grp;
-	InsetGraphics::getGraphicsGroups(*buf, grp);
+	InsetGraphics::getGraphicsGroups(buf, grp);
 	set<string>::const_iterator it = grp.begin();
 	set<string>::const_iterator end = grp.end();
-	if (grp.empty()) return;
+	if (grp.empty())
+		return;
 
+	InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
+	if (!ins)
+		return;
 	add(MenuItem(MenuItem::Separator));
-	add(MenuItem(MenuItem::Command, qt_("Clear group"), FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
+	if (!ins->getParams().groupId.empty())
+		add(MenuItem(MenuItem::Command, qt_("Clear group"), FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
 	for (; it != end; it++) {
-		add(MenuItem(MenuItem::Command, toqstr(*it), FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it),
+				FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
 	}
 }
 
@@ -1423,7 +1433,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::GraphicsGroups:
-			tomenu.expandGraphicsGroups(buf);
+			tomenu.expandGraphicsGroups(bv);
 			break;
 
 		case MenuItem::Submenu: {

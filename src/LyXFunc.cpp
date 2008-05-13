@@ -453,6 +453,20 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = false;
 		break;
 
+	// FIXME optimally this should be in Text::getStatus. In such a case the flags
+	// are not passed when using context menu. This way it works.
+	case LFUN_SET_GRAPHICS_GROUP: {
+		if (!view())
+			break;
+		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(view()->cursor());
+		if (!ins)
+			break;
+		if (!cmd.argument().empty())
+			flag.setOnOff(to_utf8(cmd.argument()) == ins->getParams().groupId);
+		enable = true;
+		break;
+	}
+
 	case LFUN_TOOLBAR_TOGGLE:
 	case LFUN_INSET_APPLY:
 	case LFUN_BUFFER_WRITE:

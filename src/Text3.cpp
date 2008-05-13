@@ -2273,7 +2273,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BUFFER_BEGIN_SELECT:
 	case LFUN_BUFFER_END_SELECT:
 	case LFUN_UNICODE_INSERT:
-	case LFUN_SET_GRAPHICS_GROUP:
 		// these are handled in our dispatch()
 		enable = true;
 		break;
