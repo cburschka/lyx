@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 332
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrbook
@@ -232,28 +232,11 @@ status collapsed
 \noindent
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
  de la documentation de LyX: 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{mailto:lyx-docs@lists.lyx.org?subject=LyX's EmbeddedObjects.lyx manual}{
-\end_layout
-
-\end_inset
-
-lyx-docs@lists.lyx.org
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-docs@lists.lyx.org"
+target "lyx-docs@lists.lyx.org?subject=EmbeddedObjects manual"
+type "mailto:"
 
 \end_inset
 
@@ -15193,8 +15176,7 @@ Vous pouvez aussi définir votre propre couleur avec la commande
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{nom de la couleur}{modèle de couleur}{valeurs de couleur}
+definecolor{nom de la couleur}{modèle de couleur}{valeurs de couleur}
 \end_layout
 
 \begin_layout Standard
@@ -15240,8 +15222,7 @@ vertfonce
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{vertfonce}{cmyk}{0.5, 0, 1, 0.5}
+definecolor{vertfonce}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
@@ -15257,8 +15238,7 @@ grisclair
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{grisclair}{gray}{0.8}
+definecolor{grisclair}{gray}{0.8}
 \end_layout
 
 \begin_layout Standard
@@ -15449,7 +15429,7 @@ colortbl
 \series default
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tableau avec colortbl
@@ -15802,6 +15782,7 @@ Si vous voulez plusieurs couleurs, définissez plusieurs formats de colonne.
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -16032,6 +16013,7 @@ arrayrulecolor{black}}
 
 
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -16154,22 +16136,6 @@ sd
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
 \end_layout
 
 \end_inset
@@ -16492,16 +16458,8 @@ em.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16559,16 +16517,8 @@ C
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16631,16 +16581,8 @@ em.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16716,16 +16658,8 @@ mm entre les lignes
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16754,8 +16688,7 @@ Quand vous voulez ajouter de l'espace à toutes les cases de tous les tableaux
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{extrarowheight}
+@ifundefined{extrarowheight}
 \begin_inset Newline newline
 \end_inset
 
@@ -16799,8 +16732,7 @@ sera chargé automatiquement par LyX quand vous utilisez des formats de tableaux
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
  dans la commande précédente.)
 \end_layout
@@ -26077,7 +26009,8 @@ marge
 \begin_inset Quotes frd
 \end_inset
 
-
+.
+ 
 \begin_inset Marginal
 status collapsed
 
@@ -26087,7 +26020,6 @@ C'est une note en marge.
 
 \end_inset
 
-.
  Cette boîte est la représentation de votre note dans LyX.
  Vous pouvez y entrer votre texte.
 \end_layout
@@ -26130,7 +26062,7 @@ reversemarginpar
 \begin_layout Standard
 sous forme de code TeX avant votre note de marge.
  Le nouveau positionnement est pris en compte pour toutes les notes en marge
- qui suivent
+ qui suivent 
 \begin_inset ERT
 status collapsed
 
@@ -26243,7 +26175,7 @@ UnTrèsLongMotEnMarge sans césure.
 
 \end_inset
 
-Comme dans le cas décrit dans la section
+ Comme dans le cas décrit dans la section
 \begin_inset Space ~
 \end_inset
 
@@ -26257,7 +26189,7 @@ reference "sub:Lignes-multiple-dans-cellule"
 , les mots trop longs ne peuvent pas subir de césure s'ils sont le premier
  mot d'une note en marge.
  Pour éviter ce problème, insérez la commande suivante sous forme de code
- TeX, avant le mot en question 
+ TeX, avant le mot en question: 
 \begin_inset Marginal
 status open
 
@@ -26279,7 +26211,7 @@ UnMotTrèsLongEnMarge avec une césure.
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -29134,19 +29066,6 @@ en code TeX avant le mot.
 \end_inset
 
  en code TeX.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagebreak 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31571,33 +31490,17 @@ Modèles
 \begin_layout Description
 Échiquier Ce modèle accepte les diagrammes de positions d'échec produits
  par le programme 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/XBoard}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-XBoard
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "XBoard"
+target "http://en.wikipedia.org/wiki/XBoard"
 
 \end_inset
 
+
+\series default
 .
 \end_layout
 
@@ -31668,64 +31571,18 @@ reference "tab:Comparaison-des-dates"
 \begin_layout Description
 LilyPond Ce modèle est utilisé avec des partitions musicales mises en forme
  par le programme 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/LilyPond}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-LilyPond
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LilyPond"
+target "http://en.wikipedia.org/wiki/LilyPond"
 
 \end_inset
 
+
+\series default
 .
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-La commande 
-\series bold
-
-\backslash
-linebreak
-\series default
- produit un saut de ligne en même temps que le texte est étiré jusqu'à la
- marge de la page.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -31758,48 +31615,22 @@ reference "sec:Graphics-Dialog"
 
 .
  La différence est que seules les images matricielles sont autorisées, ce
- qui veut dire que les images PDF et EPS ne sont pas acceptées
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SVG non plus, je suppose ? (NdT)
-\end_layout
-
-\end_inset
-
-.
+ qui veut dire que les images PDF et EPS ne sont pas acceptées.
 \end_layout
 
 \begin_layout Description
 XFig Ce modèle accepte les images créées avec le programme 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/Xfig}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-Xfig
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Xfig"
+target "http://en.wikipedia.org/wiki/Xfig"
 
 \end_inset
 
+
+\series default
 .
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 332
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrbook
@@ -236,28 +236,11 @@ status collapsed
 \noindent
 Si tienes comentarios o correcciones, por favor, escribe a la lista de correo
  de Documentación de LyX: 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{mailto:lyx-docs@lists.lyx.org?subject=LyX's es-ExtendedInsets manual}{
-\end_layout
-
-\end_inset
-
-lyx-docs@lists.lyx.org
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-docs@lists.lyx.org"
+target "lyx-docs@lists.lyx.org?subject=EmbeddedObjects manual"
+type "mailto:"
 
 \end_inset
 
@@ -14951,8 +14934,7 @@ Puedes definir tus propios colores con el comando
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{nombre del color}{modelo de color}{valores de color}
+definecolor{nombre del color}{modelo de color}{valores de color}
 \end_layout
 
 \begin_layout Standard
@@ -15004,8 +14986,7 @@ verde oscuro
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
+definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
@@ -15029,8 +15010,7 @@ gris claro
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{grisclaro}{gray}{0.8}
+definecolor{grisclaro}{gray}{0.8}
 \end_layout
 
 \begin_layout Standard
@@ -15537,6 +15517,7 @@ Si quieres tener varios colores, define más formatos de columna.
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -15766,6 +15747,7 @@ arrayrulecolor{black}}
 
 
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -16210,16 +16192,8 @@ em por defecto.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16277,16 +16251,8 @@ C
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16352,16 +16318,8 @@ em por defecto.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16433,16 +16391,8 @@ mm entre las filas
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16470,8 +16420,7 @@ Para añadir altura vertical extra a todas las celdas de todas las tablas,
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{extrarowheight}
+@ifundefined{extrarowheight}
 \begin_inset Newline newline
 \end_inset
 
@@ -16513,8 +16462,7 @@ array
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
 .)
 \end_layout
@@ -25776,9 +25724,10 @@ margen
 
 \begin_layout Standard
 Al lado hay un ejemplo de nota al margen.
+
 \family roman
 \series medium
-
+ 
 \begin_inset Marginal
 status open
 
@@ -25819,6 +25768,7 @@ reversemarginpar
 \begin_layout Standard
 en ERT antes de la nota.
  La nueva colocación es válida para todas las siguientes notas al margen.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -25936,7 +25886,7 @@ PalabraMuyLargaAlMargen no partida con guión.
 
 \family default
 \series default
-Como en el caso descrito en la sección
+ Como en el caso descrito en la sección
 \begin_inset Space ~
 \end_inset
 
@@ -25965,6 +25915,7 @@ en ERT antes de la palabra
 \family roman
 \series medium
 .
+ 
 \begin_inset Marginal
 status open
 
@@ -31164,33 +31115,17 @@ de
 
 ajedrez Esta plantilla soporta diagramas posicionales de ajedrez hechos
  con el programa 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/XBoard}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-XBoard
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "XBoard"
+target "http://en.wikipedia.org/wiki/XBoard"
 
 \end_inset
 
+
+\series default
 .
 \end_layout
 
@@ -31260,64 +31195,22 @@ reference "tab:Comparación-de"
 
 \begin_layout Description
 LilyPond Esta plantilla sirve para tipografiar notación musical con el programa
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/LilyPond}{
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
 
 \series bold
-LilyPond
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LilyPond"
+target "http://en.wikipedia.org/wiki/LilyPond"
 
 \end_inset
 
+
+\series default
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-El comando 
-\series bold
-
-\backslash
-linebreak
-\series default
- quiebra la línea de forma que el texto precedente se extiende hasta ajustarse
- al margen de página.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -31349,33 +31242,17 @@ reference "sec:Diálogo-Gráficos"
 
 \begin_layout Description
 XFig Esta plantilla soporta imágenes creadas con el programa 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/Xfig}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-Xfig
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Xfig"
+target "http://en.wikipedia.org/wiki/Xfig"
 
 \end_inset
 
+
+\series default
 .
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 332
+\lyxformat 333
 \begin_document
 \begin_header
 \textclass scrbook
@@ -253,29 +253,12 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 Wenn Sie Anmerkungen oder Korrekturvorschläge machen wollen, schreiben Sie
- bitte an: 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{mailto:lyx-docs@lists.lyx.org?subject=LyX's ExtendedInsets manual}{
-\end_layout
-
-\end_inset
-
-lyx-docs@lists.lyx.org
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+ bitte an:
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-docs@lists.lyx.org"
+target "lyx-docs@lists.lyx.org?subject=EmbeddedObjects manual"
+type "mailto:"
 
 \end_inset
 
@@ -11408,19 +11391,11 @@ Wenn Sie in einer Zelle mit fester Breite als erstes ein sehr langes Wort
  haben, kann LaTeX es ohne Trennhilfen nicht trennen.
  Wenn Sie LaTeX trotzdem die Trennung überlassen wollen, müssen Sie vor
  dem Wort etwas einfügen, damit es nicht wie der erste Eintrag aussieht.
- Fügen Sie den Befehl
-\end_layout
+ Fügen sie daher 0
+\begin_inset Space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
-\end_layout
-
-\begin_layout Standard
-als TeX-Code vor dem Wort ein.
+pt horizontalen Abstand vor dem Wort ein.
  Weil er keinen Platz belegt, ändert er die Druckausgabe nicht.
  Tabelle
 \begin_inset Space ~
@@ -11461,6 +11436,10 @@ Tabelle ohne und mit Silbentrennung
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Space \hfill{}
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
@@ -11574,16 +11553,8 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0pt}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0pt
 \end_inset
 
 einsehrlangesZellenwort
@@ -11674,110 +11645,6 @@ i
 
 
 \begin_inset Space \hfill{}
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features>
-<column alignment="center" valignment="middle" width="2.5cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ein\SpecialChar \-
-sehr\SpecialChar \-
-lan\SpecialChar \-
-ges\SpecialChar \-
-Zel\SpecialChar \-
-len\SpecialChar \-
-wort
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-i
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
 \end_inset
 
 
@@ -16339,6 +16206,7 @@ arrayrulecolor{black}}
 
 
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -16781,16 +16649,8 @@ em Leerraum ein.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16848,16 +16708,8 @@ C
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -16918,16 +16770,8 @@ em Leerraum ein.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -17003,16 +16847,8 @@ mm Leerraum zwischen den Zeilen
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{0pt}
-\end_layout
-
+\begin_inset Space \hspace*{}
+\length 0pt
 \end_inset
 
 
@@ -17040,8 +16876,7 @@ Wenn Sie die Höhe aller Zellen vergrößern wollen, können Sie das mit folgend
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{extrarowheight}
+@ifundefined{extrarowheight}
 \begin_inset Newline newline
 \end_inset
 
@@ -17084,8 +16919,7 @@ array
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
  vermeidet, dass es in diesem Fall doppelt geladen wird.)
 \end_layout
@@ -26188,6 +26022,7 @@ Rand
 
 \begin_layout Standard
 Hier am Rand sehen Sie eine Randnotiz.
+ 
 \begin_inset Marginal
 status open
 
@@ -26228,6 +26063,7 @@ reversemarginpar
 \begin_layout Standard
 als TeX-Code vor einer Randnotiz ein.
  Das gilt dann für alle folgenden Randnotizen.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -26324,7 +26160,20 @@ reversemarginpar
 \begin_inset VSpace bigskip
 \end_inset
 
-Ähnlich wie in Abschnitt
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+EinSehrLangesWort am Anfang, das umgebrochen wird.
+\end_layout
+
+\end_inset
+
+ Ähnlich wie in Abschnitt
 \begin_inset Space ~
 \end_inset
 
@@ -26337,33 +26186,17 @@ reference "uab:Mehrfache-Zeilen-in"
 
  beschrieben, können lange Worte nicht umgebrochen werden, wenn sie das
  erste Wort der Randnotiz sind.
- Um das zu vermeiden, können Sie den Befehl
-\end_layout
+ Um das zu vermeiden, fügen sie 0
+\begin_inset Space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
-\end_layout
-
-\begin_layout Standard
-als TeX-Code vor das Wort setzen, so wie hier:
+pt horizontalen Abstand vor dem Wort ein, so wie hier: 
 \begin_inset Marginal
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0pt}
-\end_layout
-
+\begin_inset Space \hspace{}
+\length 0pt
 \end_inset
 
 
@@ -31550,33 +31383,17 @@ Vorlagen
 
 \begin_layout Description
 Schachdiagramm unterstützt Schachdiagramme, die mit dem Programm 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/XBoard}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-XBoard
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "XBoard"
+target "http://en.wikipedia.org/wiki/XBoard"
 
 \end_inset
 
+
+\series default
  erzeugt wurden.
 \end_layout
 
@@ -31647,33 +31464,17 @@ reference "tab:Vergleich-der-Datums-Eingaben"
 
 \begin_layout Description
 LilyPond Mit dieser Vorlage können Sie Noten mit dem Programm 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/LilyPond}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-LilyPond
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LilyPond"
+target "http://en.wikipedia.org/wiki/LilyPond"
 
 \end_inset
 
+
+\series default
  schreiben.
 \end_layout
 
@@ -31710,33 +31511,17 @@ reference "abs:Grafik-Dialog"
 
 \begin_layout Description
 XFig Diese Vorlage unterstützt Bilder, die mit dem Programm 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://en.wikipedia.org/wiki/Xfig}{
-\end_layout
-
-\end_inset
-
-
 \series bold
-Xfig
-\series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Xfig"
+target "http://en.wikipedia.org/wiki/Xfig"
 
 \end_inset
 
+
+\series default
  erzeugt wurden.
 \end_layout
 
