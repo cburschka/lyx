@@ -415,7 +415,7 @@ char const * simplefeatures[] = {
 	"rotating",
 	"latexsym",
 	"pifont",
-	"subfig",
+	// subfig is handled in BufferParams.cpp
 	"varioref",
 	"prettyref",
 	/*For a successful cooperation of the `wrapfig' package with the

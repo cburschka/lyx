@@ -1296,6 +1296,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			"User specified LaTeX commands.\n"
 			+ from_utf8(preamble) + '\n';
 
+	// subfig loads internally the LaTeX package "caption". As caption is a very
+	// popular package, users will load it in the preamble. Therefore we must load
+	// subfig behind the user-defined preamble and check if the caption package
+	// was loaded or not.
+	// For the case that caption is loaded before subfig, there is the subfig
+	// option "caption=false". This option also works when a koma-script class is
+	// used and koma's own caption commands are used instead of caption.
+	if (features.isRequired("subfig")) {
+		atlyxpreamble += "\\usepackage{subfig}\n";
+		atlyxpreamble += "\\@ifundefined{showcaptionsetup}{}{%\n"
+			" \\PassOptionsToPackage{caption=false}{subfig}}\n";
+	}
+
 	// Itemize bullet settings need to be last in case the user
 	// defines their own bullets that use a package included
 	// in the user-defined preamble -- ARRae
