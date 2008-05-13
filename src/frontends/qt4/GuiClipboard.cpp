@@ -89,6 +89,7 @@ static FORMATETC cfFromMime(QString const & mimetype)
 
 class QWindowsMimeMetafile : public QWindowsMime {
 public:
+	QWindowsMimeMetafile() {}
 	bool canConvertFromMime(FORMATETC const & formatetc, QMimeData const * mimedata) const;
 	bool canConvertToMime(QString const & mimetype, IDataObject * pDataObj) const;
 	bool convertFromMime(FORMATETC const & formatetc, const QMimeData * mimedata, STGMEDIUM * pmedium) const;
@@ -170,7 +171,7 @@ QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
 	return formats;
 }
 
-static QWindowsMimeMetafile * metafileWindowsMime;
+static QWindowsMimeMetafile * metafileWindowsMime = 0;
 
 #endif // Q_WS_WIN
 
@@ -235,7 +236,7 @@ QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(QString const & mi
 	return ret;
 }
 
-static QMacPasteboardMimeGraphics * graphicsPasteboardMime;
+static QMacPasteboardMimeGraphics * graphicsPasteboardMime = 0;
 
 #endif // Q_WS_MACX
 
