@@ -95,7 +95,6 @@ dist_esexamples_DATA = \
 	examples/es/ItemizeBullets.lyx \
 	examples/es/ejemplo_con_lyx.lyx \
 	examples/es/ejemplo_sin_lyx.lyx \
-	examples/es/mathed.lyx \
 	examples/es/splash.lyx
 
 euexamplesdir = $(pkgdatadir)/examples/eu

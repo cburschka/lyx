@@ -1,7 +1,7 @@
 Function DeleteFiles
 
- # list with deleted files for LyX 1.5.5
- Delete "$INSTDIR\Resources\examples\fr\mathed.lyx"
+ # list with deleted files for LyX 1.5.6
+ Delete "$INSTDIR\Resources\examples\es\mathed.lyx"
 
 FunctionEnd
 
