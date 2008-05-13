@@ -1303,10 +1303,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// For the case that caption is loaded before subfig, there is the subfig
 	// option "caption=false". This option also works when a koma-script class is
 	// used and koma's own caption commands are used instead of caption.
+	// We use \PassOptionsToPackage here because the user could have already
+	// loaded subfig in the preamble.
 	if (features.isRequired("subfig")) {
-		atlyxpreamble += "\\usepackage{subfig}\n";
 		atlyxpreamble += "\\@ifundefined{showcaptionsetup}{}{%\n"
-			" \\PassOptionsToPackage{caption=false}{subfig}}\n";
+			" \\PassOptionsToPackage{caption=false}{subfig}}\n"
+			"\\usepackage{subfig}\n";
 	}
 
 	// Itemize bullet settings need to be last in case the user
