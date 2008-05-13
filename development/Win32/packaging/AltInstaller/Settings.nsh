@@ -42,7 +42,7 @@ BrandingText "LyXWinInstaller v3.24 - ${INSTALLER_VERSION}"
  !define PRODUCT_VERSION_OLD "LyX 1.5.4"
  !define PRODUCT_VERSION_SHORT_OLD "154"
  !define JabRefVersion "2.3.1" # could be an older version
- !define ImageMagickVersion_Old "6.3.7" # could be an older version
+ !define ImageMagickVersion_Old "6.3.8" # could be an older version
  !define GhostscriptVersion_Old "8.61" # could be an older version
  !define MiKTeXDeliveredVersion "2.7" # could be an older version
 !endif
@@ -57,14 +57,14 @@ BrandingText "LyXWinInstaller v3.24 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv49w32.exe"
  !define JabRefInstall "external\JabRef-2.3.1-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex.2.7.2960.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.7.3053.exe"
  !define JabRefVersion "2.3.1"
  !define MiKTeXDeliveredVersion "2.7"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.4.0"
+!define ImageMagickVersion "6.4.1"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"

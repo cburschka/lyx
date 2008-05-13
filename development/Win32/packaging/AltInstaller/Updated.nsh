@@ -4,6 +4,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\Console.dll"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\Microsoft.VC80.CRT.manifest"
+ File "${PRODUCT_SOURCEDIR}\bin\msvcp80.dll"
  File "${PRODUCT_SOURCEDIR}\bin\pdfview.exe"
  File "${PRODUCT_SOURCEDIR}\bin\System.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
@@ -12,7 +14,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
- File "${PRODUCT_SOURCEDIR}\Resources\generate_contributions.py"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
@@ -59,6 +60,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+ # File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
