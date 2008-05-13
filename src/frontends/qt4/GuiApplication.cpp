@@ -251,9 +251,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 
 GuiApplication::~GuiApplication()
-{
-	socket_notifiers_.clear();
-}
+{}
 
 
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
