@@ -475,7 +475,7 @@ QAbstractItemModel * GuiApplication::languageModel()
 		lang_model->setData(item, toqstr(it->second.lang()), Qt::UserRole);
 	}
 	language_model_ = new QSortFilterProxyModel(this);
-    language_model_->setSourceModel(lang_model);
+	language_model_->setSourceModel(lang_model);
 	language_model_->setSortLocaleAware(true);
 	return language_model_;
 }
