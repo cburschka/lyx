@@ -31,6 +31,7 @@
 
 class QSessionManager;
 class QAbstractItemModel;
+class QSortFilterProxyModel;
 
 namespace lyx {
 

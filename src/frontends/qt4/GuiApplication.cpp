@@ -157,8 +157,8 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(), current_view_(0),
-	global_menubar_(0), language_model_(0)
+	: QApplication(argc, argv), Application(), language_model_(0),
+	current_view_(0), global_menubar_(0)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
