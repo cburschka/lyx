@@ -14,7 +14,9 @@
 
 #include "GuiCharacter.h"
 
+#include "GuiApplication.h"
 #include "qt_helpers.h"
+
 #include "Font.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -24,6 +26,9 @@
 #include "Language.h"
 #include "Paragraph.h"
 
+#include <QAbstractItemModel>
+#include <QModelIndex>
+#include <QVariant>
 
 using namespace std;
 
@@ -120,10 +125,18 @@ static QList<FamilyPair> familyData()
 static QList<LanguagePair> languageData()
 {
 	QList<LanguagePair> list;
-	Languages::const_iterator it = languages.begin();
-	for (; it != languages.end(); ++it) {
-		list << LanguagePair(
-			qt_(it->second.display()), toqstr(it->second.lang()));
+	// FIXME (Abdel 14/05/2008): it would be nice if we could use this model
+	// directly in the language combo; but, as we need also the 'No Change' and
+	// 'Reset' items, this is not possible right now. Separating those two
+	// entries in radio buttons would be a better GUI IMHO.
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	// Make sure the items are sorted.
+	language_model->sort(0);
+
+	for (int i = 0; i != language_model->rowCount(); ++i) {
+		QModelIndex index = language_model->index(i, 0);
+		list << LanguagePair(index.data(Qt::DisplayRole).toString(),
+			index.data(Qt::UserRole).toString());
 	}
 	return list;
 }
