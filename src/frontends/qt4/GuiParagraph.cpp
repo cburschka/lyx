@@ -34,6 +34,8 @@
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSettings>
+#include <QVariant>
 
 #include <sstream>
 
@@ -362,6 +364,23 @@ LyXAlignment GuiParagraph::alignPossible() const
 LyXAlignment GuiParagraph::alignDefault() const
 {
 	return bufferview()->cursor().innerParagraph().layout().align;
+}
+
+
+void GuiParagraph::saveSession() const
+{
+	Dialog::saveSession();
+	QSettings settings;
+	settings.setValue(sessionKey() + "/autoapply", synchronizedViewCB->isChecked());
+}
+
+
+void GuiParagraph::restoreSession()
+{
+	Dialog::restoreSession();
+	QSettings settings;
+	synchronizedViewCB->setChecked(
+		settings.value(sessionKey() + "/autoapply").toBool());
 }
 
 
