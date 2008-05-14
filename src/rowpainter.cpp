@@ -304,19 +304,20 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	docstring s(&str[0], str.size());
 
-	if (selection || prev_change != Change::UNCHANGED) {
-		FontInfo copy = font;
-		if (selection) {
-			copy.setColor(Color_selectiontext);
-		} else if (prev_change == Change::DELETED) {
-			copy.setColor(Color_deletedtext);
-		} else if (prev_change == Change::INSERTED) {
-			copy.setColor(Color_addedtext);
-		}
-		x_ += pi_.pain.text(int(x_), yo_, s, copy);
-	} else {
+	if (!selection && prev_change == Change::UNCHANGED) {
 		x_ += pi_.pain.text(int(x_), yo_, s, font);
+		return;
 	}
+	
+	FontInfo copy = font;
+	if (selection)
+		copy.setColor(Color_selectiontext);
+	else if (prev_change == Change::DELETED)
+		copy.setColor(Color_deletedtext);
+	else if (prev_change == Change::INSERTED)
+		copy.setColor(Color_addedtext);
+
+	x_ += pi_.pain.text(int(x_), yo_, s, copy);
 }
 
 
