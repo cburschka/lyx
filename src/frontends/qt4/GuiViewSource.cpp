@@ -27,8 +27,10 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 
+#include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
+#include <QVariant>
 
 using namespace std;
 
@@ -179,6 +181,28 @@ QString GuiViewSource::title() const
 	}
 	LASSERT(false, /**/);
 	return QString();
+}
+
+
+void GuiViewSource::saveSession() const
+{
+	Dialog::saveSession();
+	QSettings settings;
+	settings.setValue(
+		sessionKey() + "/fullsource", widget_->viewFullSourceCB->isChecked());
+	settings.setValue(
+		sessionKey() + "/autoupdate", widget_->autoUpdateCB->isChecked());
+}
+
+
+void GuiViewSource::restoreSession()
+{
+	Dialog::restoreSession();
+	QSettings settings;
+	widget_->viewFullSourceCB->setChecked(
+		settings.value(sessionKey() + "/fullsource").toBool());
+	widget_->autoUpdateCB->setChecked(
+		settings.value(sessionKey() + "/autoupdate").toBool());
 }
 
 

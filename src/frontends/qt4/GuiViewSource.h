@@ -77,6 +77,8 @@ public:
 	bool canApplyToReadOnly() const { return true; }
 	void updateView();
 	void enableView(bool enable);
+	void saveSession() const;
+	void restoreSession();
 	///@}
 
 	/// The title displayed by the dialog reflects source type.
