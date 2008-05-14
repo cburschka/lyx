@@ -243,10 +243,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	}
 
 	// selected text?
-	pit_type const p0 = pi_.base.bv->cursor().selBegin().pit();
-	bool selection = row_.sel_beg > -1 && row_.sel_beg != row_.sel_end 
-		&& ((pit_ == p0 &&  (pos >= row_.sel_beg && pos < row_.sel_end))
-			|| (pit_ > p0 &&  pos < row_.sel_end));
+	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
 
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
@@ -254,8 +251,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		if (pos < font_span.first || pos > font_span.last)
 			break;
 
-		if (row_.sel_beg > -1 && row_.sel_beg != row_.sel_end && 
-			((pit_ == p0 && pos == row_.sel_beg) || pos == row_.sel_end))
+		bool const new_selection = pos >= row_.sel_beg && pos < row_.sel_end;
+		if (selection != new_selection)
 			break;
 
 		if (prev_change != par_.lookupChange(pos).type)
