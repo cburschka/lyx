@@ -2033,6 +2033,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			beg.pos() = row.sel_beg;
 			end.pit() = pit;
 			end.pos() = row.sel_end;
+			if (end.pos() == row.endpos()) {
+				// selection goes till the end of the row.
+				end.boundary(true);
+			}
 			drawRowSelection(pi, x, row, beg, end, beg_margin, end_margin);
 		}
 
