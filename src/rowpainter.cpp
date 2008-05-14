@@ -224,10 +224,6 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 {
 	// This method takes up 70% of time when typing
 	pos_type pos = bidi_.vis2log(vpos);
-	pos_type const end = row_.endpos();
-	FontSpan const font_span = par_.fontSpan(pos);
-	Change::Type const prev_change = par_.lookupChange(pos).type;
-
 	// first character
 	vector<char_type> str;
 	str.reserve(100);
@@ -242,6 +238,10 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		str[0] = par_.transformChar(c, pos);
 	}
 
+	pos_type const end = row_.endpos();
+	FontSpan const font_span = par_.fontSpan(pos);
+	// Track-change status.
+	Change::Type const change_type = par_.lookupChange(pos).type;
 	// selected text?
 	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
 
@@ -252,10 +252,12 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 			break;
 
 		bool const new_selection = pos >= row_.sel_beg && pos < row_.sel_end;
-		if (selection != new_selection)
+		if (new_selection != selection)
+			// Selection ends or starts here.
 			break;
 
-		if (prev_change != par_.lookupChange(pos).type)
+		if (change_type != par_.lookupChange(pos).type)
+			// Track change type has changed.
 			break;
 
 		char_type c = par_.getChar(pos);
@@ -304,7 +306,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	docstring s(&str[0], str.size());
 
-	if (!selection && prev_change == Change::UNCHANGED) {
+	if (!selection && change_type == Change::UNCHANGED) {
 		x_ += pi_.pain.text(int(x_), yo_, s, font);
 		return;
 	}
@@ -312,9 +314,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	FontInfo copy = font;
 	if (selection)
 		copy.setColor(Color_selectiontext);
-	else if (prev_change == Change::DELETED)
+	else if (change_type == Change::DELETED)
 		copy.setColor(Color_deletedtext);
-	else if (prev_change == Change::INSERTED)
+	else if (change_type == Change::INSERTED)
 		copy.setColor(Color_addedtext);
 
 	x_ += pi_.pain.text(int(x_), yo_, s, copy);
