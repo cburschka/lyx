@@ -66,6 +66,8 @@ private:
 	void dispatchParams();
 	bool isBufferDependent() const { return true; }
 	FuncCode getLfun() const { return LFUN_FONT_FREE_UPDATE; }
+	void saveSession() const;
+	void restoreSession();
 	//@}
 
 	///

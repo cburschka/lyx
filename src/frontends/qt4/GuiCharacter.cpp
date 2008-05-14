@@ -28,6 +28,7 @@
 
 #include <QAbstractItemModel>
 #include <QModelIndex>
+#include <QSettings>
 #include <QVariant>
 
 using namespace std;
@@ -375,6 +376,26 @@ bool GuiCharacter::initialiseParams(string const &)
 void GuiCharacter::dispatchParams()
 {
 	dispatch(FuncRequest(getLfun(), font_.toString(toggleall_)));
+}
+
+
+void GuiCharacter::saveSession() const
+{
+	Dialog::saveSession();
+	QSettings settings;
+	settings.setValue(sessionKey() + "/toggleall", toggleallCB->isChecked());
+	settings.setValue(sessionKey() + "/autoapply", autoapplyCB->isChecked());
+}
+
+
+void GuiCharacter::restoreSession()
+{
+	Dialog::restoreSession();
+	QSettings settings;
+	toggleallCB->setChecked(
+		settings.value(sessionKey() + "/toggleall").toBool());
+	autoapplyCB->setChecked(
+		settings.value(sessionKey() + "/autoapply").toBool());
 }
 
 
