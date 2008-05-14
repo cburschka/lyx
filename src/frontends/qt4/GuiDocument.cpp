@@ -50,9 +50,9 @@
 
 #include "frontends/alert.h"
 
+#include <QAbstractItemModel>
 #include <QCloseEvent>
 #include <QScrollBar>
-#include <QStandardItemModel>
 #include <QTextCursor>
 
 #include <sstream>
@@ -788,7 +788,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	// language & quotes
-	langModule->languageCO->setModel(guiApp->languageModel());
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
+	language_model->sort(0);
+	langModule->languageCO->setModel(language_model);
 
 	// Always put the default encoding in the first position.
 	// It is special because the displayed text is translated.

@@ -57,6 +57,7 @@
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSocketNotifier>
+#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QTextCodec>
 #include <QTimer>
@@ -156,7 +157,8 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(), current_view_(0), global_menubar_(0)
+	: QApplication(argc, argv), Application(), current_view_(0),
+	global_menubar_(0), language_model_(0)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
@@ -248,10 +250,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	}
 #endif
 }
-
-
-GuiApplication::~GuiApplication()
-{}
 
 
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
@@ -457,20 +455,29 @@ void GuiApplication::exit(int status)
 void GuiApplication::execBatchCommands()
 {
 	LyX::ref().execBatchCommands();
+}
 
-	language_model_ = new QStandardItemModel(this);
-	language_model_->insertColumns(0, 1);
+QAbstractItemModel * GuiApplication::languageModel()
+{
+	if (language_model_)
+		return language_model_;
+
+	QStandardItemModel * lang_model = new QStandardItemModel(this);
+	lang_model->insertColumns(0, 1);
 	int current_row;
 	Languages::const_iterator it = languages.begin();
 	Languages::const_iterator end = languages.end();
 	for (; it != end; ++it) {
-		current_row = language_model_->rowCount();
-		language_model_->insertRows(current_row, 1);
-		QModelIndex item = language_model_->index(current_row, 0);
-		language_model_->setData(item, qt_(it->second.display()), Qt::DisplayRole);
-		language_model_->setData(item, toqstr(it->second.lang()), Qt::UserRole);
+		current_row = lang_model->rowCount();
+		lang_model->insertRows(current_row, 1);
+		QModelIndex item = lang_model->index(current_row, 0);
+		lang_model->setData(item, qt_(it->second.display()), Qt::DisplayRole);
+		lang_model->setData(item, toqstr(it->second.lang()), Qt::UserRole);
 	}
-	language_model_->sort(0);
+	language_model_ = new QSortFilterProxyModel(this);
+    language_model_->setSourceModel(lang_model);
+	language_model_->setSortLocaleAware(true);
+	return language_model_;
 }
 
 

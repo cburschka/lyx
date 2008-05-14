@@ -46,6 +46,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include <QAbstractItemModel>
 #include <QCheckBox>
 #include <QColorDialog>
 #include <QFontDatabase>
@@ -54,7 +55,6 @@
 #include <QPixmapCache>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QStandardItemModel>
 #include <QString>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -1651,7 +1651,10 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 
 	defaultLanguageCO->clear();
 
-	defaultLanguageCO->setModel(guiApp->languageModel());
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
+	language_model->sort(0);
+	defaultLanguageCO->setModel(language_model);
 }
 
 

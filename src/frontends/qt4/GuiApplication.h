@@ -30,7 +30,7 @@
 #include <vector>
 
 class QSessionManager;
-class QStandardItemModel;
+class QAbstractItemModel;
 
 namespace lyx {
 
@@ -55,8 +55,6 @@ class GuiApplication : public QApplication, public Application
 
 public:
 	GuiApplication(int & argc, char ** argv);
-	///
-	virtual ~GuiApplication();
 
 	/// Method inherited from \c Application class
 	//@{
@@ -106,7 +104,7 @@ public:
 	///
 	ColorCache & colorCache() { return color_cache_; }
 
-	QStandardItemModel * languageModel() { return language_model_; }
+	QAbstractItemModel * languageModel();
 
 	/// return a suitable serif font name.
 	virtual QString const romanFontName();
@@ -147,7 +145,7 @@ private:
 	///
 	ColorCache color_cache_;
 	///
-	QStandardItemModel * language_model_;
+	QSortFilterProxyModel * language_model_;
 	///
 	QTranslator qt_trans_;
 	///
