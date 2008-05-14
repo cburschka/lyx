@@ -73,6 +73,8 @@ private:
 	void clearParams();
 	void dispatchParams();
 	bool isBufferDependent() const { return true; }
+	void saveSession() const;
+	void restoreSession();
 	/** Disconnect from the inset when the Apply button is pressed.
 	 *  Allows easy insertion of multiple citations.
 	 */

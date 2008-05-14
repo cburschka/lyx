@@ -31,7 +31,9 @@
 #include "support/lstrings.h"
 
 #include <QCloseEvent>
+#include <QSettings>
 #include <QShowEvent>
+#include <QVariant>
 
 #include <vector>
 #include <string>
@@ -727,6 +729,32 @@ void GuiCitation::dispatchParams()
 BiblioInfo const & GuiCitation::bibInfo() const
 {
 	return buffer().masterBibInfo();
+}
+
+
+void GuiCitation::saveSession() const
+{
+	Dialog::saveSession();
+	QSettings settings;
+	settings.setValue(
+		sessionKey() + "/regex", regexCB->isChecked());
+	settings.setValue(
+		sessionKey() + "/casesensitive", caseCB->isChecked());
+	settings.setValue(
+		sessionKey() + "/autofind", asTypeCB->isChecked());
+}
+
+
+void GuiCitation::restoreSession()
+{
+	Dialog::restoreSession();
+	QSettings settings;
+	regexCB->setChecked(
+		settings.value(sessionKey() + "/regex").toBool());
+	caseCB->setChecked(
+		settings.value(sessionKey() + "/casesensitive").toBool());
+	asTypeCB->setChecked(
+		settings.value(sessionKey() + "/autofind").toBool());
 }
 
 
