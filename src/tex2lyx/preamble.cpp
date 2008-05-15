@@ -83,7 +83,7 @@ const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
 "newcent", 0};
 
-// some ugly stuff
+// default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
 string h_options                 = string();
@@ -669,13 +669,13 @@ void parse_preamble(Parser & p, ostream & os,
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}
 
-		else if (t.cs() =="onehalfspacing")
+		else if (t.cs() == "onehalfspacing")
 			h_spacing = "onehalf";
 
-		else if (t.cs() =="doublespacing")
+		else if (t.cs() == "doublespacing")
 			h_spacing = "double";
 
-		else if (t.cs() =="setstretch")
+		else if (t.cs() == "setstretch")
 			h_spacing = "other " + p.verbatim_item();
 
 		else if (t.cs() == "begin") {
