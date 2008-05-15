@@ -548,6 +548,7 @@ void parse_preamble(Parser & p, ostream & os,
 		}
 
 		else if (t.cs() == "documentclass") {
+			vector<string>::iterator it;
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			delete_opt(opts, known_fontsizes);
@@ -570,6 +571,16 @@ void parse_preamble(Parser & p, ostream & os,
 			else if (is_known(h_language, known_ukrainian_languages))
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
+			// paper sides
+			if ((it = find(opts.begin(), opts.end(), "twoside")) != opts.end()) {
+				h_papersides = "2";
+				opts.erase(it);
+			}
+			// paper columns
+			if ((it = find(opts.begin(), opts.end(), "twocolumn")) != opts.end()) {
+				h_papercolumns = "2";
+				opts.erase(it);
+			}
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
 		}
