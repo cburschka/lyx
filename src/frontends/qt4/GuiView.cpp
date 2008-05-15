@@ -641,11 +641,18 @@ bool GuiView::event(QEvent * e)
 	}
 
 	case QEvent::ShortcutOverride: {
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+
+		if (ke->modifiers() & Qt::AltModifier && isFullScreen()
+			&& menuBar()->isHidden()) {
+				menuBar()->show();
+			// Continue with even.
+			return QMainWindow::event(e);
+		}
+
 		if (d.current_work_area_)
 			// Nothing special to do.
 			return QMainWindow::event(e);
-
-		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 
 		// Let Qt handle menu access and the Tab keys to navigate keys to navigate
 		// between controls.
@@ -1670,10 +1677,11 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
-	BufferView * bv = view();	
+	BufferView * bv = view();
 	// By default we won't need any update.
 	if (bv)
 		bv->cursor().updateFlags(Update::None);
+	bool dispatched = true;
 
 	switch(cmd.action) {
 		case LFUN_BUFFER_IMPORT:
@@ -1903,10 +1911,18 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		default:
-			return false;
+			dispatched = false;
+			break;
 	}
 
-	return true;
+	if (isFullScreen()) {
+		if (menuBar()->isVisible())
+			menuBar()->hide();
+		if (statusBar()->isVisible())
+			statusBar()->hide();
+	}
+
+	return dispatched;
 }
 
 
