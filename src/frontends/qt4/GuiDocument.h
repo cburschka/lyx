@@ -104,7 +104,7 @@ class GuiDocument : public GuiDialog, public Ui::DocumentUi
 public:
 	GuiDocument(GuiView & lv);
 
-	void updateParams(BufferParams const & params);
+	void paramsToDialog(BufferParams const & params);
 	void apply(BufferParams & params);
 
 	void updateFontsize(std::string const &, std::string const &);
@@ -114,15 +114,12 @@ public:
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
 
-public Q_SLOTS:
+private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
 	void set_listings_msg();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
-
-private Q_SLOTS:
-	void updateParams();
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);
@@ -163,13 +160,11 @@ private:
 	GuiIdListModel * availableModel() { return &modules_av_model_; }
 	/// Selected modules
 	GuiIdListModel * selectedModel() { return &modules_sel_model_; }
-private:
+
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
-	/// force content update
-	void forceUpdate();
 	///
 	void updateAvailableModules();
 	///

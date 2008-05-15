@@ -509,7 +509,7 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 GuiDocument::GuiDocument(GuiView & lv)
-	: GuiDialog(lv, "document", qt_("Document Settings")), current_id_(0)
+	: GuiDialog(lv, "document", qt_("Document Settings"))
 {
 	setupUi(this);
 
@@ -1318,7 +1318,7 @@ void GuiDocument::classChanged()
 				applyView();
 		}
 		bp_.useClassDefaults();
-		forceUpdate();
+		paramsToDialog(bp_);
 	}
 }
 
@@ -1733,13 +1733,7 @@ void GuiDocument::apply(BufferParams & params)
 }
 
 
-void GuiDocument::updateParams()
-{
-	updateParams(bp_);
-}
-
-
-void GuiDocument::updateParams(BufferParams const & params)
+void GuiDocument::paramsToDialog(BufferParams const & params)
 {
 	// set the default unit
 	Length::UNIT defaultUnit = Length::CM;
@@ -2081,26 +2075,8 @@ void GuiDocument::updateSelectedModules()
 
 void GuiDocument::updateContents()
 {
-	if (id() == current_id_)
-		return;
-
-	updateAvailableModules();
-	updateSelectedModules();
-	
-	//FIXME It'd be nice to make sure here that the selected
-	//modules are consistent: That required modules are actually
-	//selected, and that we don't have conflicts. If so, we could
-	//at least pop up a warning.
-	updateParams(bp_);
-	current_id_ = id();
-}
-
-
-void GuiDocument::forceUpdate()
-{
-	// reset to force dialog update
-	current_id_ = 0;
-	updateContents();
+	// Nothing to do here as the document settings is not cursor dependant.
+	return;
 }
 
 
@@ -2122,7 +2098,7 @@ void GuiDocument::useClassDefaults()
 		return;
 	}
 	bp_.useClassDefaults();
-	forceUpdate();
+	paramsToDialog(bp_);
 }
 
 
@@ -2157,10 +2133,21 @@ char const * GuiDocument::fontfamilies_gui[5] = {
 
 bool GuiDocument::initialiseParams(string const &)
 {
-	bp_ = buffer().params();
-	// Force update on next updateContent() round.
-	current_id_ = 0;
+	BufferView * view = bufferview();
+	if (!view) {
+		bp_ = BufferParams();
+		paramsToDialog(bp_);
+		return true;
+	}
+	bp_ = view->buffer().params();
 	loadModuleInfo();
+	updateAvailableModules();
+	updateSelectedModules();
+	//FIXME It'd be nice to make sure here that the selected
+	//modules are consistent: That required modules are actually
+	//selected, and that we don't have conflicts. If so, we could
+	//at least pop up a warning.
+	paramsToDialog(bp_);
 	return true;
 }
 
@@ -2173,7 +2160,8 @@ void GuiDocument::clearParams()
 
 BufferId GuiDocument::id() const
 {
-	return &buffer();
+	BufferView const * const view = bufferview();
+	return view? &view->buffer() : 0;
 }
 
 
