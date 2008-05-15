@@ -276,17 +276,6 @@ public:
 	TocModels toc_models_;
 };
 
-namespace {
-
-class MenuBar : public QMenuBar
-{
-public:
-	///
-	MenuBar() : QMenuBar(0) {}
-	void keyPressEvent(QKeyEvent * e) { QMenuBar::keyPressEvent(e); }
-};
-
-} // anon
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate), id_(id)
@@ -299,10 +288,6 @@ GuiView::GuiView(int id)
 	// they are greyed out.
 	theLyXFunc().setLyXView(this);
 	
-#ifndef Q_WS_MACX
-	setMenuBar(new MenuBar());
-#endif
-
 	// Fill up the menu bar.
 	guiApp->menus().fillMenuBar(menuBar(), this, true);
 
@@ -657,31 +642,20 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::ShortcutOverride: {
 
-#ifndef Q_WS_MACX
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-			if (!(ke->modifiers() & Qt::AltModifier)
-				|| ke->key() == Qt::Key_Alt)
-				return QMainWindow::event(e);			
-			MenuBar * menu_bar = static_cast<MenuBar *>(menuBar());
-			menu_bar->keyPressEvent(ke);
-			menu_bar->show();			
-			if (ke->isAccepted())
-				return true;
-			// Showing and hiding the menubar has the potential to create a bad
-			// flickering due to the window resizing. On Windows Vista, this flicker
-			// is not visible at all.
-			menu_bar->hide();			
-			// Otherwise continue with even.
+			// FIXME: we should also try to detect special LyX shortcut such as
+			// Alt-P and Alt-M
+			if (ke->modifiers() & Qt::AltModifier || ke->key() == Qt::Key_Alt)
+				menuBar()->show();
 			return QMainWindow::event(e);
 		}
-#endif
 
-		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.current_work_area_)
 			// Nothing special to do.
 			return QMainWindow::event(e);
 
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		// Let Qt handle menu access and the Tab keys to navigate keys to navigate
 		// between controls.
 		if (ke->modifiers() & Qt::AltModifier || ke->key() == Qt::Key_Tab 
