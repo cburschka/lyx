@@ -641,15 +641,20 @@ bool GuiView::event(QEvent * e)
 	}
 
 	case QEvent::ShortcutOverride: {
-		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 
-		if (ke->modifiers() & Qt::AltModifier && isFullScreen()
-			&& menuBar()->isHidden()) {
-				menuBar()->show();
+		if (isFullScreen() && menuBar()->isHidden()) {
+			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+			// FIXME: we should also try to detect special LyX shortcut such as
+			// Alt-P and Alt-M
+			if (!(ke->modifiers() & Qt::AltModifier)
+				|| ke->key() == Qt::Key_Alt)
+				return QMainWindow::event(e);			
+			menuBar()->show();
 			// Continue with even.
 			return QMainWindow::event(e);
 		}
 
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.current_work_area_)
 			// Nothing special to do.
 			return QMainWindow::event(e);
