@@ -276,6 +276,17 @@ public:
 	TocModels toc_models_;
 };
 
+namespace {
+
+class MenuBar : public QMenuBar
+{
+public:
+	///
+	MenuBar() : QMenuBar(0) {}
+	void keyPressEvent(QKeyEvent * e) { QMenuBar::keyPressEvent(e); }
+};
+
+} // anon
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate), id_(id)
@@ -288,6 +299,10 @@ GuiView::GuiView(int id)
 	// they are greyed out.
 	theLyXFunc().setLyXView(this);
 	
+#ifndef Q_WS_MACX
+	setMenuBar(new MenuBar());
+#endif
+
 	// Fill up the menu bar.
 	guiApp->menus().fillMenuBar(menuBar(), this, true);
 
@@ -642,17 +657,19 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::ShortcutOverride: {
 
+#ifndef Q_WS_MACX
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-			// FIXME: we should also try to detect special LyX shortcut such as
-			// Alt-P and Alt-M
 			if (!(ke->modifiers() & Qt::AltModifier)
 				|| ke->key() == Qt::Key_Alt)
 				return QMainWindow::event(e);			
-			menuBar()->show();
-			// Continue with even.
+			static_cast<MenuBar *>(menuBar())->keyPressEvent(ke);
+			if (ke->isAccepted())
+				return true;
+			// Otherwise continue with even.
 			return QMainWindow::event(e);
 		}
+#endif
 
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.current_work_area_)
@@ -1918,13 +1935,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		default:
 			dispatched = false;
 			break;
-	}
-
-	if (isFullScreen()) {
-		if (menuBar()->isVisible())
-			menuBar()->hide();
-		if (statusBar()->isVisible())
-			statusBar()->hide();
 	}
 
 	return dispatched;
