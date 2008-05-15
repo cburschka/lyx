@@ -646,7 +646,7 @@ bool GuiView::event(QEvent * e)
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			// FIXME: we should also try to detect special LyX shortcut such as
 			// Alt-P and Alt-M
-			if (ke->modifiers() & Qt::AltModifier || ke->key() == Qt::Key_Alt)
+			if (ke->modifiers() & Qt::AltModifier && ke->key() != Qt::Key_Alt)
 				menuBar()->show();
 			return QMainWindow::event(e);
 		}
