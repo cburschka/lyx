@@ -2229,7 +2229,7 @@ def revert_graphics_group(document):
 
 
 def update_apa_styles(document):
-    ' Replace obsolete styles'
+    ' Replace obsolete styles '
 
     if document.textclass != "apa":
         return
@@ -2251,6 +2251,34 @@ def update_apa_styles(document):
             document.body[i] = "\\begin_layout " + obsoletedby[layout]
 
         i += 1
+
+
+def convert_paper_sizes(document):
+    ' exchange size options legalpaper and executivepaper to correct order '
+    # routine is needed to fix http://bugzilla.lyx.org/show_bug.cgi?id=4868
+    i = 0
+    j = 0
+    i = find_token(document.header, "\\papersize executivepaper", 0)
+    if i != -1:
+        document.header[i] = "\\papersize legalpaper"
+        return
+    j = find_token(document.header, "\\papersize legalpaper", 0)
+    if j != -1:
+        document.header[j] = "\\papersize executivepaper"
+
+
+def revert_paper_sizes(document):
+    ' exchange size options legalpaper and executivepaper to correct order '
+    i = 0
+    j = 0
+    i = find_token(document.header, "\\papersize executivepaper", 0)
+    if i != -1:
+        document.header[i] = "\\papersize legalpaper"
+        return
+    j = find_token(document.header, "\\papersize legalpaper", 0)
+    if j != -1:
+        document.header[j] = "\\papersize executivepaper"
+
 
 ##
 # Conversion hub
@@ -2314,9 +2342,11 @@ convert = [[277, [fix_wrong_tables]],
            [331, [convert_ltcaption]],
            [332, []],
            [333, [update_apa_styles]],
+           [334, [convert_paper_sizes]],
           ]
 
-revert =  [[332, []],
+revert =  [[333, [revert_paper_sizes]],
+           [332, []],
            [331, [revert_graphics_group]],
            [330, [revert_ltcaption]],
            [329, [revert_leftarrowfill, revert_rightarrowfill, revert_upbracefill, revert_downbracefill]],

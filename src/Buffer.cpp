@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 333;
+int const LYX_FORMAT = 334;
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
