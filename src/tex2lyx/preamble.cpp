@@ -572,15 +572,18 @@ void parse_preamble(Parser & p, ostream & os,
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
 			// paper sides
-			if ((it = find(opts.begin(), opts.end(), "twoside")) != opts.end()) {
+			if ((it = find(opts.begin(), opts.end(), "twoside"))
+				 != opts.end()) {
 				h_papersides = "2";
 				opts.erase(it);
 			}
 			// paper columns
-			if ((it = find(opts.begin(), opts.end(), "twocolumn")) != opts.end()) {
+			if ((it = find(opts.begin(), opts.end(), "twocolumn"))
+				 != opts.end()) {
 				h_papercolumns = "2";
 				opts.erase(it);
 			}
+			// the remaining options
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
 		}
