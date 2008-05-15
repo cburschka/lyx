@@ -87,7 +87,10 @@ void GuiDialog::changed()
 
 void GuiDialog::enableView(bool enable)
 {
-	bc().setReadOnly(!enable);
+	if (!enable) {
+		bc().setReadOnly(true);
+		bc().setValid(false);
+	}
 	Dialog::enableView(enable);
 }
 
