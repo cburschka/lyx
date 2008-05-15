@@ -663,9 +663,15 @@ bool GuiView::event(QEvent * e)
 			if (!(ke->modifiers() & Qt::AltModifier)
 				|| ke->key() == Qt::Key_Alt)
 				return QMainWindow::event(e);			
-			static_cast<MenuBar *>(menuBar())->keyPressEvent(ke);
+			MenuBar * menu_bar = static_cast<MenuBar *>(menuBar());
+			menu_bar->keyPressEvent(ke);
+			menu_bar->show();			
 			if (ke->isAccepted())
 				return true;
+			// Showing and hiding the menubar has the potential to create a bad
+			// flickering due to the window resizing. On Windows Vista, this flicker
+			// is not visible at all.
+			menu_bar->hide();			
 			// Otherwise continue with even.
 			return QMainWindow::event(e);
 		}
@@ -1935,6 +1941,13 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		default:
 			dispatched = false;
 			break;
+	}
+
+	if (isFullScreen()) {
+		if (menuBar()->isVisible())
+			menuBar()->hide();
+		if (statusBar()->isVisible())
+			statusBar()->hide();
 	}
 
 	return dispatched;
