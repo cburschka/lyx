@@ -476,7 +476,9 @@ QAbstractItemModel * GuiApplication::languageModel()
 	}
 	language_model_ = new QSortFilterProxyModel(this);
 	language_model_->setSourceModel(lang_model);
+#if QT_VERSION >= 0x040300
 	language_model_->setSortLocaleAware(true);
+#endif
 	return language_model_;
 }
 
