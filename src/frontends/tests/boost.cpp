@@ -10,10 +10,8 @@
 
 #include <config.h>
 
-#include "support/lassert.h"
-
-#include <cstdlib>
-#include <exception>
+#include <iostream>
+#include <boost/assert.hpp>
 
 using namespace std;
 
@@ -22,7 +20,8 @@ namespace boost {
 #ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(exception const & /*e*/)
 {
-	LASSERT(false, /**/);
+	cerr<<"ASSERTION VIOLATED IN biblio test";
+	BOOST_ASSERT(false);
 }
 #endif
 
