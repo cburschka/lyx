@@ -217,20 +217,20 @@ TocIterator TocBackend::item(string const & type,
 
 	--it;
 
-	ParConstIterator par_it_text(dit);
-	if (par_it_text.inMathed()) {
+	DocIterator dit_text = dit;
+	if (dit_text.inMathed()) {
 		// We are only interested in text so remove the math CursorSlice.
-		while (par_it_text.inMathed())
-			par_it_text.pop_back();
+		while (dit_text.inMathed())
+			dit_text.pop_back();
 	}
 
 	for (; it != last; --it) {
 		// We verify that we don't compare contents of two
 		// different document. This happens when you
 		// have parent and child documents.
-		if (&it->dit_[0].inset() != &par_it_text[0].inset())
+		if (&it->dit_[0].inset() != &dit_text[0].inset())
 			continue;
-		if (it->dit_ <= par_it_text)
+		if (it->dit_ <= dit_text)
 			return it;
 	}
 
