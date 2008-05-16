@@ -83,6 +83,20 @@ const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
 "newcent", 0};
 
+const char * const known_paper_sizes[] = { "a3paper", "b3paper", "a4paper",
+"b4paper", "a5paper", "b5paper", "executivepaper", "legalpaper",
+"letterpaper", 0};
+
+const char * const known_class_paper_sizes[] = { "a4paper", "a5paper",
+"executivepaper", "legalpaper", "letterpaper", 0};
+
+const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin", 
+"bmargin", "headheight", "headsep", "footskip", "columnsep", 0};
+
+const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
+"rightmargin", "bottommargin", "headheight", "headsep", "footskip",
+"columnsep", 0};
+
 // default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
@@ -116,6 +130,7 @@ string h_papersides              = string();
 string h_paperpagestyle          = "default";
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
+string h_margins                 = "";
 
 
 void handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -335,6 +350,10 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "setspace")
 		; // ignore this
 
+	else if (name == "geometry")
+		; // Ignore this, the geometry settings are made by the \geometry
+		  // command. This command is handled below.
+
 	else if (is_known(name, known_languages)) {
 		if (is_known(name, known_french_languages))
 			h_language = "french";
@@ -411,6 +430,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\paperorientation " << h_paperorientation << "\n"
+	   << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
 	   << "\\paragraph_separation " << h_paragraph_separation << "\n"
@@ -571,6 +591,11 @@ void parse_preamble(Parser & p, ostream & os,
 			else if (is_known(h_language, known_ukrainian_languages))
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
+			// paper orientation
+			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
+				h_paperorientation = "landscape";
+				opts.erase(it);
+			}
 			// paper sides
 			if ((it = find(opts.begin(), opts.end(), "twoside"))
 				 != opts.end()) {
@@ -583,6 +608,11 @@ void parse_preamble(Parser & p, ostream & os,
 				h_papercolumns = "2";
 				opts.erase(it);
 			}
+			// paper sizes
+			// some size options are know to any document classes, other sizes
+			// are handled by the \geometry command of the geometry package
+			handle_opt(opts, known_class_paper_sizes, h_papersize);
+			delete_opt(opts, known_class_paper_sizes);
 			// the remaining options
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
@@ -686,6 +716,35 @@ void parse_preamble(Parser & p, ostream & os,
 			if (name == "document")
 				break;
 			h_preamble << "\\begin{" << name << "}";
+		}
+
+		else if (t.cs() == "geometry") {
+			h_use_geometry = "true";
+			vector<string> opts = split_options(p.getArg('{', '}'));
+			vector<string>::iterator it;
+			// paper orientation
+			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
+				h_paperorientation = "landscape";
+				opts.erase(it);
+			}
+			// paper size
+			handle_opt(opts, known_paper_sizes, h_papersize);
+			delete_opt(opts, known_paper_sizes);
+			// page margins
+			char const * const * margin = known_paper_margins;
+			int k = -1;
+			for (; *margin; ++margin) {
+				k += 1;
+				// search for the "=" in e.g. "lmargin=2cm" to get the value
+				for(int i = 0; i < opts.size(); i++) {
+					if (opts.at(i).find(*margin) != string::npos) {
+						string::size_type pos = opts.at(i).find("=");
+						string value = opts.at(i).substr(pos + 1);
+						string name = known_coded_paper_margins[k];
+						h_margins += "\\" + name + " " + value + "\n";
+					}
+				}
+			}
 		}
 
 		else if (t.cs() == "jurabibsetup") {
