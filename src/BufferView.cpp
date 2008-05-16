@@ -1055,7 +1055,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
-		int const id = convert<int>(to_utf8(cmd.argument()));
+		int const id = convert<int>(cmd.getArg(0));
+		int const pos = convert<int>(cmd.getArg(1));
 		int i = 0;
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
@@ -1072,6 +1073,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 			if (b == &buffer_) {
 				// Set the cursor
+				dit.pos() = pos;
 				setCursor(dit);
 				processUpdateFlags(Update::Force | Update::FitCursor);
 			} else {

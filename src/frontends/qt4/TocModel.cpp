@@ -219,13 +219,9 @@ void TocModels::goTo(int type, QModelIndex const & index) const
 	}
 
 	LASSERT(type >= 0 && type < int(models_.size()), /**/);
-
 	TocIterator const it = models_[type]->tocIterator(index);
-
 	LYXERR(Debug::GUI, "TocModels::goTo " << it->str());
-
-	string const tmp = convert<string>(it->id());
-	dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+	dispatch(it->action());
 }
 
 

@@ -76,7 +76,9 @@ docstring const TocItem::asString() const
 
 FuncRequest TocItem::action() const
 {
-	return FuncRequest(LFUN_PARAGRAPH_GOTO, convert<string>(id()));
+	string const arg = convert<string>(dit_.paragraph().id())
+		+ ' ' + convert<string>(dit_.pos());
+	return FuncRequest(LFUN_PARAGRAPH_GOTO, arg);
 }
 
 
