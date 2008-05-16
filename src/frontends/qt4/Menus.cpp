@@ -951,45 +951,13 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (cit->first == "tableofcontents")
 			continue;
 
-		string const & floatName = floatlist.getType(cit->first).listName();
-		QString label;
-		bool in_other_list = true;
-		if (!floatName.empty()) {
-			label = qt_(floatName);
-			in_other_list = false;
-		}
-		else if (cit->first == "child") {
-			label = qt_("Child Documents");
-			in_other_list = false;
-		} else if (cit->first == "graphics")
-			label = qt_("List of Graphics");
-		else if (cit->first == "equation")
-			label = qt_("List of Equations");
-		else if (cit->first == "index")
-			label = qt_("List of Indexes");
-		else if (cit->first == "listing") {
+		if (cit->first == "listing") {
 			// FIXME: the listing navigate menu causes a crash for unknown
 			// reason. See http://bugzilla.lyx.org/show_bug.cgi?id=4613
-			// This is a temporary fix:
-			//label = qt_("List of Listings");
 			continue;
 		}
-		else if (cit->first == "marginalnote")
-			label = qt_("List of Marginal notes");
-		else if (cit->first == "note")
-			label = qt_("List of Notes");
-		else if (cit->first == "footnote")
-			label = qt_("List of Footnotes");
-		else if (cit->first == "label")
-			label = qt_("Labels and References");
-		else if (cit->first == "citation")
-			label = qt_("List of Citations");
-		else
-			// This should not happen unless the entry is missing above.
-			label = qt_("Other floats: ") + toqstr(cit->first);
 
 		MenuDefinition submenu;
-
 		if (cit->second.size() >= 30) {
 			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
 			submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
@@ -997,20 +965,20 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			TocIterator ccit = cit->second.begin();
 			TocIterator eend = cit->second.end();
 			for (; ccit != eend; ++ccit) {
-				QString const label = limitStringLength(ccit->str());
-				submenu.add(MenuItem(MenuItem::Command, label,
+				submenu.add(MenuItem(MenuItem::Command,
+					limitStringLength(ccit->str()),
 					FuncRequest(ccit->action())));
 			}
 		}
 
-		MenuItem item(MenuItem::Submenu, label);
+		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
 		item.setSubmenu(submenu);
-		if (in_other_list)
-			other_lists.add(item);
-		else {
+		if (floatlist.typeExist(cit->first) || cit->first == "child") {
+			// Those two types deserve to be in the main menu.
 			item.setSubmenu(submenu);
 			add(item);
-		}
+		} else
+			other_lists.add(item);
 	}
 	if (!other_lists.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Other Lists"));
@@ -1018,16 +986,14 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		add(item);
 	}
 
-
 	// Handle normal TOC
 	cit = toc_list.find("tableofcontents");
 	if (cit == end) {
 		addWithStatusCheck(MenuItem(MenuItem::Command,
 				    qt_("No Table of contents"),
 				    FuncRequest()));
-	} else {
+	} else
 		expandToc2(cit->second, 0, cit->second.size(), 0);
-	}
 }
 
 

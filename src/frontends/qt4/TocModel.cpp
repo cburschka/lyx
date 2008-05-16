@@ -14,14 +14,11 @@
 #include "TocModel.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferView.h"
-#include "DocIterator.h"
 #include "Cursor.h"
-#include "FloatList.h"
+#include "DocIterator.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
-#include "TextClass.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -232,39 +229,6 @@ void TocModels::updateBackend() const
 }
 
 
-QString TocModels::guiName(string const & type) const
-{
-	if (type == "tableofcontents")
-		return qt_("Table of Contents");
-	if (type == "child")
-		return qt_("Child Documents");
-	if (type == "graphics")
-		return qt_("List of Graphics");
-	if (type == "equation")
-		return qt_("List of Equations");
-	if (type == "footnote")
-		return qt_("List of Footnotes");
-	if (type == "listing")
-		return qt_("List of Listings");
-	if (type == "index")
-		return qt_("List of Indexes");
-	if (type == "marginalnote")
-		return qt_("List of Marginal notes");
-	if (type == "note")
-		return qt_("List of Notes");
-	if (type == "citation")
-		return qt_("List of Citations");
-	if (type == "label")
-		return qt_("Labels and References");
-
-	FloatList const & floats = bv_->buffer().params().documentClass().floats();
-	if (floats.typeExist(type))
-		return qt_(floats.getType(type).listName());
-
-	return qt_(type);
-}
-
-
 void TocModels::reset(BufferView const * bv)
 {
 	bv_ = bv;
@@ -277,7 +241,7 @@ void TocModels::reset(BufferView const * bv)
 	TocList::const_iterator end = tocs.end();
 	for (; it != end; ++it) {
 		types_.push_back(toqstr(it->first));
-		type_names_.push_back(guiName(it->first));
+		type_names_.push_back(guiName(it->first, bv->buffer().params()));
 		models_.push_back(new TocModel(it->second));
 	}
 }

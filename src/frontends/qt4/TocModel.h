@@ -98,8 +98,6 @@ Q_SIGNALS:
 private:
 	///
 	void clear();
-	/// Return the guiname from a given cmdName of the TOC param
-	QString guiName(std::string const & type) const;
 	///
 	BufferView const * bv_;
 	///

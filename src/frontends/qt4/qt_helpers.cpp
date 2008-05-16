@@ -19,8 +19,11 @@
 
 #include "frontends/alert.h"
 
+#include "BufferParams.h"
+#include "FloatList.h"
 #include "Language.h"
 #include "Length.h"
+#include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/filetools.h"
@@ -473,5 +476,39 @@ QStringList fileFilters(QString const & desc)
 	}
 	return list;
 }
+
+
+QString guiName(string const & type, BufferParams const & bp)
+{
+	if (type == "tableofcontents")
+		return qt_("Table of Contents");
+	if (type == "child")
+		return qt_("Child Documents");
+	if (type == "graphics")
+		return qt_("List of Graphics");
+	if (type == "equation")
+		return qt_("List of Equations");
+	if (type == "footnote")
+		return qt_("List of Footnotes");
+	if (type == "listing")
+		return qt_("List of Listings");
+	if (type == "index")
+		return qt_("List of Indexes");
+	if (type == "marginalnote")
+		return qt_("List of Marginal notes");
+	if (type == "note")
+		return qt_("List of Notes");
+	if (type == "citation")
+		return qt_("List of Citations");
+	if (type == "label")
+		return qt_("Labels and References");
+
+	FloatList const & floats = bp.documentClass().floats();
+	if (floats.typeExist(type))
+		return qt_(floats.getType(type).listName());
+
+	return qt_(type);
+}
+
 
 } // namespace lyx

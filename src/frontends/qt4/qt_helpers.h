@@ -32,6 +32,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class BufferParams;
 class LyXErr;
 
 LyXErr & operator<<(LyXErr &, QString const &);
@@ -120,6 +121,10 @@ QString addExtension(QString const & name, QString const & extension);
 QString getExtension(QString const & name);
 QString makeAbsPath(QString const & relpath, QString const & base);
 QString changeExtension(QString const & oldname, QString const & ext);
+
+/// \return the display string associated with given type and buffer
+/// parameter.
+QString guiName(std::string const & type, BufferParams const & bp);
 
 } // namespace lyx
 
