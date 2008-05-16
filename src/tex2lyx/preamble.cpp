@@ -561,6 +561,7 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 		}
 
 		else if (t.cs() == "documentclass") {
+			vector<string>::iterator it;
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			delete_opt(opts, known_fontsizes);
@@ -583,6 +584,11 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			else if (is_known(h_language, known_ukrainian_languages))
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
+			// paper orientation
+			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
+				h_paperorientation = "landscape";
+				opts.erase(it);
+			}
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
 		}
@@ -671,13 +677,13 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}
 
-		else if (t.cs() =="onehalfspacing")
+		else if (t.cs() == "onehalfspacing")
 			h_spacing = "onehalf";
 
-		else if (t.cs() =="doublespacing")
+		else if (t.cs() == "doublespacing")
 			h_spacing = "double";
 
-		else if (t.cs() =="setstretch")
+		else if (t.cs() == "setstretch")
 			h_spacing = "other " + p.verbatim_item();
 
 		else if (t.cs() == "begin") {
