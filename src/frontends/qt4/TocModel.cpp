@@ -16,11 +16,11 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "DocIterator.h"
 #include "Cursor.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
-#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
@@ -204,9 +204,9 @@ QModelIndex TocModels::currentIndex(int type) const
 	if (type < 0 || !bv_)
 		return QModelIndex();
 
-	ParConstIterator it(bv_->cursor());
-	return models_[type]->modelIndex(bv_->buffer().masterBuffer()->
-		tocBackend().item(fromqstr(types_[type]), it));
+	TocIterator const it = bv_->buffer().masterBuffer()->tocBackend().item(
+		fromqstr(types_[type]), bv_->cursor());
+	return models_[type]->modelIndex(it);
 }
 
 
