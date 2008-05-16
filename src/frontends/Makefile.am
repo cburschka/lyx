@@ -27,7 +27,9 @@ liblyxfrontends_la_SOURCES = \
 
 ################################# Tests ################################
 
-EXTRA_DIST = tests/test_biblio
+EXTRA_DIST = \
+	tests/test_biblio \
+	tests/regfiles/biblio
 
 TESTS = \
 	tests/test_biblio
