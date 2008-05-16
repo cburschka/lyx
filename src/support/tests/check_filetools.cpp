@@ -14,14 +14,8 @@ namespace lyx {
 
 void test_normalizePath()
 {
-	cout << FileName("foo/../bar").absFilename() << endl;
-	cout << FileName("foo/./bar").absFilename() << endl;
-	cout << FileName("./foo/../bar").absFilename() << endl;
-	cout << FileName("./foo/./bar").absFilename() << endl;
 	cout << FileName("/foo/../bar").absFilename() << endl;
 	cout << FileName("/foo/./bar").absFilename() << endl;
-	cout << FileName("foo//bar").absFilename() << endl;
-	cout << FileName("./foo//bar").absFilename() << endl;
 	cout << FileName("/foo//bar").absFilename() << endl;
 }
 
