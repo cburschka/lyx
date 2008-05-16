@@ -344,10 +344,19 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BRANCH_INSERT
  * \li Action: Inserts branch inset.
  * \li Syntax: branch-insert <BRANCH-NAME>
- * \li Origin: vermeer, Aug 17 Aug 2003
+ * \li Origin: vermeer, 17 Aug 2003
  * \endvar
  */
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BOX_INSERT
+ * \li Action: Inserts Box inset.
+ * \li Syntax: box-insert [<TYPE>]
+ * \li Params: <TYPE>: Boxed|Frameless|Framed|ovalbox|Ovalbox|Shadowbox|Shaded|Doublebox \n
+                       Framed is the default one.
+ * \li Origin: vermeer, 7 Oct 2003
+ * \endvar
+ */
 		{ LFUN_BOX_INSERT, "box-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FLEX_INSERT
