@@ -645,7 +645,9 @@ bool GuiView::event(QEvent * e)
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			// FIXME: we should also try to detect special LyX shortcut such as
-			// Alt-P and Alt-M
+			// Alt-P and Alt-M. Right now there is a hack in
+			// GuiWorkArea::processKeySym() that hides again the menubar for
+			// those cases.
 			if (ke->modifiers() & Qt::AltModifier && ke->key() != Qt::Key_Alt)
 				menuBar()->show();
 			return QMainWindow::event(e);

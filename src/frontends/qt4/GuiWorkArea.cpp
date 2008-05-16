@@ -407,16 +407,16 @@ void GuiWorkArea::redraw()
 
 void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
+	if (lyx_view_->isFullScreen() && lyx_view_->menuBar()->isVisible()) {
+		// FIXME HACK: we should not have to do this here. See related comment
+		// in GuiView::event() (QEvent::ShortcutOverride)
+		lyx_view_->menuBar()->hide();
+	}
+
 	// In order to avoid bad surprise in the middle of an operation,
 	// we better stop the blinking cursor...
 	// the cursor gets restarted in GuiView::restartCursor()
 	stopBlinkingCursor();
-
-	if (lyx_view_->isFullScreen() && lyx_view_->menuBar()->isVisible()) {
-		// FIXME: we should not have to do this here. See related comment in
-		// GuiView::event().
-		lyx_view_->menuBar()->hide();
-	}
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
