@@ -67,6 +67,8 @@ void TocWidget::on_tocTV_activated(QModelIndex const & index)
 void TocWidget::on_tocTV_clicked(QModelIndex const & index)
 {
 	goTo(index);
+	// FIXME: It would be nice to return the focus to the work area in this
+	// case. But we need access to the GuiView!
 }
 
 
