@@ -390,6 +390,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SPACE_INSERT, "space-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_HYPERLINK_INSERT
+ * \li Action: Inserts hyperlinks into the document (clickable in pdf output).
+ * \li Notion: Hyperlink target can be set via selection + hyperlink-insert function.
+ * \li Syntax: href-insert [<TARGET>]
+ * \li Origin: CFO-G, 21 Nov 1997
+ * \endvar
+ */
 		{ LFUN_HYPERLINK_INSERT, "href-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SPECIALCHAR_INSERT
