@@ -597,12 +597,22 @@ void parse_preamble(Parser & p, ostream & os,
 				opts.erase(it);
 			}
 			// paper sides
+			if ((it = find(opts.begin(), opts.end(), "oneside"))
+				 != opts.end()) {
+				h_papersides = "1";
+				opts.erase(it);
+			}
 			if ((it = find(opts.begin(), opts.end(), "twoside"))
 				 != opts.end()) {
 				h_papersides = "2";
 				opts.erase(it);
 			}
 			// paper columns
+			if ((it = find(opts.begin(), opts.end(), "onecolumn"))
+				 != opts.end()) {
+				h_papercolumns = "1";
+				opts.erase(it);
+			}
 			if ((it = find(opts.begin(), opts.end(), "twocolumn"))
 				 != opts.end()) {
 				h_papercolumns = "2";
