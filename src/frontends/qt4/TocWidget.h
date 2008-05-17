@@ -43,9 +43,10 @@ protected Q_SLOTS:
 	///
 	void select(QModelIndex const & index);
 	///
-	void selectionChanged(const QModelIndex & current,
-		const QModelIndex & previous);
+	void goTo(QModelIndex const &);
 
+	void on_tocTV_activated(QModelIndex const &);
+	void on_tocTV_clicked(QModelIndex const &);
 	void on_updateTB_clicked();
 	void on_depthSL_valueChanged(int depth);
 	void on_typeCO_currentIndexChanged(int value);
@@ -53,7 +54,6 @@ protected Q_SLOTS:
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();
 	void on_moveOutTB_clicked();
-	void setTreeDepth() { setTreeDepth(depth_); }
 
 private:
 	///
@@ -62,11 +62,6 @@ private:
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
 	///
 	void setTreeDepth(int depth);
-	/// Reconnects the selection model change signal when TOC changed.
-	void reconnectSelectionModel();
-	/// Disconnects the selection model.
-	//This is a workaround for a problem of signals blocking.
-	void disconnectSelectionModel();
 
 	/// depth of list shown
 	int depth_;
