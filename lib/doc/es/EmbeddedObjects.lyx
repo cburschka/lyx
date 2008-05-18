@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 333
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass scrbook
@@ -26831,11 +26831,15 @@ Cuadros ! Configuración
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Tamaño
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Alineación
+Cuadros ! Tamaño
 \end_layout
 
 \end_inset
@@ -27040,10 +27044,21 @@ Ancho
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Alineación
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Cuadros ! Alineación
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Si has elegido un 
 \family sans
 Cuadro
@@ -27128,6 +27143,34 @@ Cuadro alineado abajo.
 \end_inset
 
  Ejemplo de línea de texto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+a shadow and the other one not.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

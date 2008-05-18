@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 333
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass scrbook
@@ -26433,11 +26433,15 @@ Boxes ! Box Dialog
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Size
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Alignment
+Boxes ! Size
 \end_layout
 
 \end_inset
@@ -26640,10 +26644,21 @@ Width
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Alignment
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Boxes ! Alignment
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 When you have chosen an 
 \family sans
 Inner
@@ -26728,6 +26743,32 @@ This box is bottom-aligned.
 \end_inset
 
  This is an example text line.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+a shadow and the other one not.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

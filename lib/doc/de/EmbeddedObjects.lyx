@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 333
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass scrbook
@@ -27066,6 +27066,16 @@ Boxen ! Box-Dialog-Fenster
 
 \begin_layout Subsection
 Box-Größe
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Boxen ! Größe
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27093,7 +27103,7 @@ reference "tab:Maßeinheiten"
 
 \end_inset
 
-aufgelistet.
+ aufgelistet.
  Das Feld
 \family sans
  Höhe
@@ -27357,6 +27367,29 @@ kante der Box ist in der Zeile.
 \end_inset
 
  Dies ist ein Beispieltext.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung:
+\series default
+ Die senkrechte Boxausrichtung kann in der Ausgabe verloren gehen wenn zwei
+ Boxen in einer Zeile sind und eine Box z.
+\begin_inset Space \thinspace{}
+\end_inset
+
+B.
+ schattiert ist, die andere abere nicht.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
