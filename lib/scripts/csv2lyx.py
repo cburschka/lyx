@@ -6,7 +6,6 @@
 # Licence details can be found in the file COPYING.
 
 # author Hartmut Haase
-# author Uwe Stöhr
 # author José Matos
 # Full author contact details are available in file CREDITS
 
