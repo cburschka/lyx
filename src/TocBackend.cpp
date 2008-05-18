@@ -176,6 +176,7 @@ void TocBackend::update()
 			case OPTARG_CODE: {
 				if (!tocstring.empty())
 					break;
+				pit.pos() = 0;
 				Paragraph const & par =
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!pit->labelString().empty())
@@ -192,6 +193,7 @@ void TocBackend::update()
 		int const toclevel = pit->layout().toclevel;
 		if (toclevel != Layout::NOT_IN_TOC
 		    && toclevel >= min_toclevel) {
+			pit.pos() = 0;
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(true);
