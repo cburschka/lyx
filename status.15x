@@ -34,6 +34,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- The importer for comma separated (*.csv) files has been rewritten. Now the
+  column separator character is automatically detected.
+
 - Paragraph line spacing settings are now imported when importing LaTeX
   files (bug 20).
 
