@@ -323,6 +323,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
+ * \li Action: Inserts quotes according to the type and quote-language preference.
+ * \li Action: Currently  English, Swedish, German, Polish, French, Danish quotes
+               are distinguished.
+ * \li Syntax: quote-insert [<TYPE>]
+ * \li Params: TYPE: 'single' for single quotes, otherwise double quotes will be used.
+ * \endvar
+ */
 		{ LFUN_QUOTE_INSERT, "quote-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INFO_INSERT
