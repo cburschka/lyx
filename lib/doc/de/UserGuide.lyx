@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 330
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass scrbook
@@ -950,7 +950,7 @@ LaTeX-Einstellung
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX!-Einstellungen
+LaTeX ! -Einstellungen
 \end_layout
 
 \end_inset
@@ -15968,7 +15968,7 @@ Wenn Sie dies in LyX lesen, sehen Sie keine Unterschiede, aber in der gedruckten
 \begin_layout Subsection
 Silbentrennung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Silbentrennung
@@ -15991,18 +15991,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! babel
+LaTeX! -Paket ! babel
 \end_layout
 
 \end_inset
@@ -31980,18 +31969,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! caption
+LaTeX ! -Paket ! caption
 \end_layout
 
 \end_inset
@@ -33234,7 +33212,7 @@ Thesaurus gibt es zur Zeit nur für die englische Sprache.
 status collapsed
 
 \begin_layout Plain Layout
-Anderungsverfolgung@Änderungsverfolgung
+Änderungsverfolgung
 \end_layout
 
 \end_inset
@@ -33244,7 +33222,7 @@ Anderungsverfolgung@Änderungsverfolgung
 status collapsed
 
 \begin_layout Plain Layout
-Dokument!Änderungsverfolgung
+Dokument ! Änderungsverfolgung
 \end_layout
 
 \end_inset
@@ -33583,18 +33561,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket!dvipost
+LaTeX ! -Paket ! dvipost
 \end_layout
 
 \end_inset
@@ -33826,18 +33793,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! inputenc
+LaTeX ! -Paket ! inputenc
 \end_layout
 
 \end_inset
@@ -33884,10 +33840,10 @@ OK
 \begin_layout Subsection
 Tastaturtabellen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tastatur!-tabellen
+Tastatur ! -tabellen
 \end_layout
 
 \end_inset
@@ -43999,18 +43955,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! caption
+LaTeX!-Paket ! caption
 \end_layout
 
 \end_inset
@@ -44054,21 +43999,10 @@ fancyhdr
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! fancyhdr
+LaTeX!-Paket ! fancyhdr
 \end_layout
 
 \end_inset
@@ -44112,21 +44046,10 @@ nomencl
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket! nomencl
+LaTeX!-Paket! nomencl
 \end_layout
 
 \end_inset
@@ -44170,21 +44093,10 @@ tipa
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! tipa
+LaTeX!-Paket ! tipa
 \end_layout
 
 \end_inset
@@ -44228,21 +44140,10 @@ wrapfig
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Paket ! wrapfig
+LaTeX!-Paket ! wrapfig
 \end_layout
 
 \end_inset
@@ -44529,6 +44430,43 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 
 \end_layout
 
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "NewInLyX16"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-Seite"
+target "http://wiki.lyx.org/LyX/NewInLyX16"
+
+\end_inset
+
+ über neue Funktionen in 
+\family sans
+LyX 1.6.0
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/NewInLyX16
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -44589,7 +44527,7 @@ bibname
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../biblio/LyXDocs.bib"
+bibfiles "../biblio/LyXDocs"
 options "../biblio/alphadin"
 
 \end_inset

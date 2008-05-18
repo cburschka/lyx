@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 331
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass scrbook
@@ -43647,6 +43647,43 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "NewInLyX16"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Página wiki"
+target "http://wiki.lyx.org/LyX/NewInLyX16"
+
+\end_inset
+
+ sobre características nuevas para la versión 
+\family sans
+LyX 1.6.0
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/NewInLyX16
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "spanish"
 
 \end_inset
@@ -43745,7 +43782,7 @@ bibname
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../biblio/LyXDocs.bib"
+bibfiles "../biblio/LyXDocs"
 options "../biblio/alphadin"
 
 \end_inset
