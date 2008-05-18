@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -300,7 +300,7 @@ Traducción de: Ignacio García
 \newline
 
 \family sans
-Versión 1.5.5
+Versión 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -24891,8 +24891,12 @@ name "Cuadros ! Configuración"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Tamaño
 \begin_inset LatexCommand index
-name "Cuadros ! Alineación"
+name "Cuadros ! Tamaño"
 
 \end_inset
 
@@ -25052,10 +25056,17 @@ Ancho
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Alineación
+\begin_inset LatexCommand index
+name "Cuadros ! Alineación"
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Si has elegido un 
 \family sans
 Cuadro\InsetSpace ~
@@ -25137,6 +25148,28 @@ Cuadro alineado abajo.
 \end_inset
 
  Ejemplo de línea de texto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+a shadow and the other one not.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

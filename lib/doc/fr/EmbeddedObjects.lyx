@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -294,7 +294,7 @@ version 1.5.2 - novembre 2007
 \newline
 
 \family sans
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -25049,8 +25049,12 @@ name "Boîtes ! Fenêtre de dialogue Boîte"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Taille
 \begin_inset LatexCommand index
-name "Boîtes ! Alignement"
+name "Boîtes ! Taille"
 
 \end_inset
 
@@ -25215,10 +25219,17 @@ Largeur
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Alignement
+\begin_inset LatexCommand index
+name "Boîtes ! Alignement"
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Quand vous avez choisi une 
 \family sans
 Boîte\InsetSpace ~
@@ -25300,6 +25311,28 @@ Cette boîte est alignée sur le bas.
 \end_inset
 
  Ceci est un exemple de texte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\lang english
+The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+a shadow and the other one not.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -307,12 +307,12 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 \newline
 
 \family sans
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Date
 letzte Änderung: 18.
- März 2008
+ Mai 2008
 \end_layout
 
 \begin_layout Standard
@@ -25527,7 +25527,7 @@ name "abs:Box-Dialog"
 
 
 \begin_inset LatexCommand index
-name "Boxen ! Box-Dialog-Fenster"
+name "Boxen ! Box-Einstellungen-Fenster"
 
 \end_inset
 
@@ -25535,7 +25535,13 @@ name "Boxen ! Box-Dialog-Fenster"
 \end_layout
 
 \begin_layout Subsection
-Box-Größe
+Größe
+\begin_inset LatexCommand index
+name "Boxen ! Größe"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25559,7 +25565,7 @@ reference "tab:Maßeinheiten"
 
 \end_inset
 
-aufgelistet.
+ aufgelistet.
  Das Feld
 \family sans
  Höhe
@@ -25788,6 +25794,26 @@ kante der Box ist in der Zeile.
 \end_inset
 
  Dies ist ein Beispieltext.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Die senkrechte Boxausrichtung kann in der Ausgabe verloren gehen wenn zwei
+ Boxen in einer Zeile sind und eine Box z.\InsetSpace \thinspace{}
+B.
+ schattiert ist, die andere abere nicht.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -286,7 +286,7 @@ author: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -24707,8 +24707,12 @@ name "Boxes ! Box Dialog"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Size
 \begin_inset LatexCommand index
-name "Boxes ! Alignment"
+name "Boxes ! Size"
 
 \end_inset
 
@@ -24867,10 +24871,17 @@ Width
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Alignment
+\begin_inset LatexCommand index
+name "Boxes ! Alignment"
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 When you have chosen an 
 \family sans
 Inner\InsetSpace ~
@@ -24952,6 +24963,26 @@ This box is bottom-aligned.
 \end_inset
 
  This is an example text line.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+a shadow and the other one not.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
