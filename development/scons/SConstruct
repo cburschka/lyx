@@ -1762,7 +1762,7 @@ if 'update_po' in BUILD_TARGETS:
         ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]
     )
     Alias('update_po', POTFILES_in)
-    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot, external_l10n
+    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot, external_l10n, formats_l10n
     # and combine them to lyx.po
     env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
     lyx_po = env.Command('$BUILDDIR/po/lyx.po',
@@ -1780,6 +1780,8 @@ if 'update_po' in BUILD_TARGETS:
                 '$LYX_POT -b $TOP_SRCDIR -t ui -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/external_l10n.pot', '$TOP_SRCDIR/lib/external_templates',
                 '$LYX_POT -b $TOP_SRCDIR -t external -o $TARGET $SOURCES'),
+             env.Command('$BUILDDIR/po/formats_l10n.pot', '$TOP_SRCDIR/lib/configure.py',
+                '$LYX_POT -b $TOP_SRCDIR -t formats -o $TARGET $SOURCES'),
              ], utils.env_cat),
             ['$MSGUNIQ -o $TARGET $SOURCE',
              '''$XGETTEXT --default-domain=${TARGET.base} \

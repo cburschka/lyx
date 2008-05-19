@@ -755,17 +755,24 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 	for (; fit != end ; ++fit) {
 		if ((*fit)->dummy())
 			continue;
-		QString label = toqstr((*fit)->prettyname());
-		QString const shortcut = toqstr((*fit)->shortcut());
+
+		docstring lab = from_utf8((*fit)->prettyname());
+		docstring scut = from_utf8((*fit)->shortcut());
+		docstring const tmplab = lab;
+ 
+		if (!scut.empty())
+			lab += char_type('|') + scut;
+		docstring lab_i18n = translateIfPossible(lab);
+		bool const untranslated = (lab == lab_i18n);
+		QString const shortcut = toqstr(split(lab_i18n, lab, '|'));
+		QString label = toqstr(lab);
+		if (untranslated)
+			// this might happen if the shortcut
+			// has been redefined
+			label = toqstr(translateIfPossible(tmplab));
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
-			// FIXME: This is a hack, we should rather solve
-			// FIXME: bug 2488 instead.
-			if ((*fit)->name() == "text")
-				label = qt_("Plain Text");
-			else if ((*fit)->name() == "textparagraph")
-				label = qt_("Plain Text, Join Lines");
 			label += "...";
 			break;
 		case MenuItem::ViewFormats:
@@ -778,12 +785,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 			LASSERT(false, /**/);
 			break;
 		}
-		// FIXME: if we had proper support for translating the
-		// format names defined in configure.py, there would
-		// not be a need to check whether the shortcut is
-		// correct. If we add it uncondiitonally, it would
-		// create useless warnings on bad shortcuts
-		if (!shortcut.isEmpty() && label.contains(shortcut))
+		if (!shortcut.isEmpty())
 			label += '|' + shortcut;
 
 		if (buf)

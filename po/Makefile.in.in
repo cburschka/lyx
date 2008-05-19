@@ -393,7 +393,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot external_l10n.pot
+l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
 	cat $^ | \
 	msguniq -o $(DOMAIN).po && rm -f  $^
 
@@ -419,6 +419,9 @@ i18n.inc: $(POFILES) postats.py
 
 external_l10n.pot: $(top_srcdir)/lib/external_templates
 	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t external ${top_srcdir}/lib/external_templates
+
+formats_l10n.pot: $(top_srcdir)/lib/configure.py
+	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t formats ${top_srcdir}/lib/configure.py
 
 force:
 
