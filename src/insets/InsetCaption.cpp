@@ -29,6 +29,7 @@
 #include "output_latex.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
+#include "ParIterator.h"
 #include "paragraph_funcs.h"
 #include "TocBackend.h"
 
@@ -115,12 +116,14 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstIterator const &) const
+void InsetCaption::addToToc(TocList & toclist, Buffer const & buf,
+	ParConstIterator const & cpit) const
 {
 	if (type_.empty())
 		return;
 
-	ParConstIterator pit = par_const_iterator_begin(*this);
+	ParConstIterator pit = cpit;
+	pit.push_back(CursorSlice(const_cast<InsetCaption &>(*this)));
 
 	Toc & toc = toclist[type_];
 	docstring const str = convert<docstring>(counter_)
