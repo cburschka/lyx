@@ -1281,13 +1281,13 @@ void PrefConverters::updateButtons()
 		|| from.name() == to.name());
 
 	int const cnr = convertersLW->currentItem()->type();
-	Converter const & c(form_->converters().get(cnr));
+	Converter const & c = form_->converters().get(cnr);
 	string const old_command = c.command;
 	string const old_flag = c.flags;
-	string const new_command(fromqstr(converterED->text()));
-	string const new_flag(fromqstr(converterFlagED->text()));
+	string const new_command = fromqstr(converterED->text());
+	string const new_flag = fromqstr(converterFlagED->text());
 
-	bool modified = (old_command != new_command) || (old_flag != new_flag);
+	bool modified = (old_command != new_command || old_flag != new_flag);
 
 	converterModifyPB->setEnabled(valid && known && modified);
 	converterNewPB->setEnabled(valid && !known);
@@ -1366,7 +1366,6 @@ void FormatValidator::fixup(QString & input) const
 		if (distance(formats_.begin(), cit) == nr()) {
 			input = toqstr(name);
 			return;
-
 		}
 	}
 }
