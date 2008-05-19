@@ -184,7 +184,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-05-19 09:12+0200\n"
-"PO-Revision-Date: 2008-05-07 12:09+0200\n"
+"PO-Revision-Date: 2008-05-19 16:11+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -11655,245 +11655,215 @@ msgstr ""
 
 #: lib/configure.py:236
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:239
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:242
-#, fuzzy
 msgid "Grace"
-msgstr "Niveaux de gris"
+msgstr "Grace"
 
 #: lib/configure.py:245
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:249
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:250
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:251
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: lib/configure.py:252
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:253
 msgid "PGM"
-msgstr ""
+msgstr "PGM"
 
 #: lib/configure.py:254
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: lib/configure.py:255
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:256
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:257
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:258
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:263
-#, fuzzy
 msgid "Plain text (chess output)"
-msgstr "Texte brut"
+msgstr "Texte brut (échecs)"
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "Texte brut"
+msgstr "Texte brut (image)"
 
 #: lib/configure.py:265
-#, fuzzy
 msgid "Plain text (Xfig output)"
-msgstr "Texte brut"
+msgstr "Texte brut (XFig)"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "&Adapter la sortie"
+msgstr "date (sortie)"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook"
-msgstr "Signets|S"
+msgstr "DocBook"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook|B"
-msgstr "Signets|S"
+msgstr "DocBook|B"
 
 #: lib/configure.py:268
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "NoWeb"
-msgstr "Sans"
+msgstr "NoWeb"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "Sans"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "LilyPond music"
-msgstr "LilyPond"
+msgstr "musique LilyPond"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LaTeX (plain)"
-msgstr "Options LaTe&X :"
+msgstr "LaTeX (normal)"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LaTeX (plain)|L"
-msgstr "Options LaTe&X :"
+msgstr "LaTeX (normal)|L"
 
 #: lib/configure.py:272
 msgid "LinuxDoc"
-msgstr ""
+msgstr "LinuxDoc"
 
 #: lib/configure.py:272
 msgid "LinuxDoc|x"
-msgstr ""
+msgstr "LinuxDoc|x"
 
 #: lib/configure.py:273
-#, fuzzy
 msgid "LaTeX (pdflatex)"
-msgstr "Mise à jour PDF (pdflatex)"
+msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
 msgid "Plain text"
 msgstr "Texte brut"
 
 #: lib/configure.py:274
-#, fuzzy
 msgid "Plain text|a"
-msgstr "Texte brut"
+msgstr "Texte brut|u"
 
 #: lib/configure.py:275
-#, fuzzy
 msgid "Plain text (pstotext)"
-msgstr "Texte brut"
+msgstr "Texte brut (pstotext)"
 
 #: lib/configure.py:276
-#, fuzzy
 msgid "Plain text (ps2ascii)"
-msgstr "Texte brut"
+msgstr "Texte brut (ps2ascii)"
 
 #: lib/configure.py:277
-#, fuzzy
 msgid "Plain text (catdvi)"
-msgstr "Texte brut"
+msgstr "Texte brut (catdvi)"
 
 #: lib/configure.py:278
 msgid "Plain Text, Join Lines"
 msgstr "Texte brut par Lignes"
 
 #: lib/configure.py:283
-#, fuzzy
 msgid "EPS"
-msgstr "PS"
+msgstr "EPS"
 
 #: lib/configure.py:284
-#, fuzzy
 msgid "Postscript"
-msgstr "Post Scriptum :"
+msgstr "Postscript"
 
 #: lib/configure.py:284
-#, fuzzy
 msgid "Postscript|t"
-msgstr "Post Scriptum :"
+msgstr "Postscript|t"
 
 #: lib/configure.py:288
-#, fuzzy
 msgid "PDF (ps2pdf)"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:288
-#, fuzzy
 msgid "PDF (ps2pdf)|P"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:289
-#, fuzzy
 msgid "PDF (pdflatex)"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:289
-#, fuzzy
 msgid "PDF (pdflatex)|F"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (dvipdfm)"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (dvipdfm)|m"
-msgstr "Visualise PDF (pdflatex)"
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:293
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:293
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:296
-#, fuzzy
 msgid "DraftDVI"
-msgstr "&Brouillon"
+msgstr "DraftDVI"
 
 #: lib/configure.py:299
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:299
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:302
-#, fuzzy
 msgid "Noteedit"
-msgstr "Note_À_l'Éditeur"
+msgstr "Noteedit"
 
 #: lib/configure.py:305
-#, fuzzy
 msgid "OpenDocument"
-msgstr "Ouvrir un document"
+msgstr "OpenDocument"
 
 #: lib/configure.py:308
-#, fuzzy
 msgid "date command"
-msgstr "Commande d'index :"
+msgstr "Commande date"
 
 #: lib/configure.py:309
 msgid "Comma-separated values"
-msgstr ""
+msgstr "Valeurs séparées par des virgules"
 
 #: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -11901,73 +11871,67 @@ msgstr "LyX"
 
 #: lib/configure.py:312
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:313
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:314
 msgid "CJK LyX 1.4.x (big5)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (big5)"
 
 #: lib/configure.py:315
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:316
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:317
-#, fuzzy
 msgid "LyX Preview"
-msgstr "Aperçu"
+msgstr "Prévisualisation LyX"
 
 #: lib/configure.py:318
 msgid "PDFTEX"
-msgstr ""
+msgstr "PDFTEX"
 
 #: lib/configure.py:319
-#, fuzzy
 msgid "Program"
-msgstr "Listing de code source"
+msgstr "Programme"
 
 #: lib/configure.py:320
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:321
-#, fuzzy
 msgid "Rich Text Format"
-msgstr "Texte police normale"
+msgstr "Format de texte enrichi"
 
 #: lib/configure.py:322
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:323
 msgid "Windows Metafile"
-msgstr ""
+msgstr "Windows Metafile"
 
 #: lib/configure.py:324
 msgid "Enhanced Metafile"
-msgstr ""
+msgstr "Enhanced Metafile"
 
 #: lib/configure.py:325
-#, fuzzy
 msgid "MS Word"
-msgstr "Mots"
+msgstr "MS Word"
 
 #: lib/configure.py:325
-#, fuzzy
 msgid "MS Word|W"
-msgstr "Mots"
+msgstr "MS Word|W"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "HTML (MS Word)"
-msgstr "Mots"
+msgstr "HTML (MS Word)"
 
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
@@ -14607,13 +14571,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "la somme de travail de ceux qui ont travaillé sur le projet LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
 msgstr ""
 "LyX est Copyright (C) 1995 par Matthias Ettrich,\n"
-"Équipe LyX 1995-2006"
+"Équipe LyX 1995-2008"
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:73
 msgid ""
