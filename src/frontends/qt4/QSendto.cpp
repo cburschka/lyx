@@ -118,7 +118,7 @@ void QSendto::update_contents()
 
 	for (vector<string>::const_iterator it = keys.begin();
 	     it < keys.end(); ++it) {
-		dialog_->formatLW->addItem(toqstr(*it));
+		dialog_->formatLW->addItem(qt_(*it));
 	}
 
 	dialog_->commandCO->addItem(toqstr(controller().getCommand()));
