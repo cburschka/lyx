@@ -139,9 +139,9 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 
 void FileFilterList::parse_filter(string const & filter)
 {
-	// Matches "TeX documents (*.tex)",
-	// storing "TeX documents " as group 1 and "*.tex" as group 2.
-	static boost::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
+	// Matches "LaTeX (plain) (*.tex)",
+	// storing "LaTeX (plain) " as group 1 and "*.tex" as group 2.
+	static boost::regex const filter_re("(.*)\\(([^(^)]+)\\) *$");
 
 	boost::match_results<string::const_iterator> what;
 	if (!boost::regex_search(filter, what, filter_re)) {
