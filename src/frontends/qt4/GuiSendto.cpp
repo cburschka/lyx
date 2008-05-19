@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "GuiSendto.h"
+#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "Converter.h"
@@ -83,7 +84,7 @@ void GuiSendTo::updateContents()
 
 	for (vector<string>::const_iterator it = keys.begin();
 	     it != keys.end(); ++it) {
-		formatLW->addItem(toqstr(*it));
+		formatLW->addItem(qt_(*it));
 	}
 
 	commandCO->addItem(command_);
