@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2008-05-05 21:00-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -6334,7 +6334,7 @@ msgstr "Adresã Expeditor"
 msgid "Sender Phone:"
 msgstr "Telefon Expeditor"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "Fax"
 
@@ -11791,6 +11791,322 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "Nuanþe de gri"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+#, fuzzy
+msgid "Plain text (chess output)"
+msgstr "Place"
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "Place"
+
+#: lib/configure.py:265
+#, fuzzy
+msgid "Plain text (Xfig output)"
+msgstr "Place"
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "A&dapteazã rezultatul"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook"
+msgstr "Semne de carte|S"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "Semne de carte|S"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb"
+msgstr "Nimic"
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "Nimic"
+
+#: lib/configure.py:270
+msgid "LilyPond music"
+msgstr ""
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "&Opþiuni LaTeX:"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "&Opþiuni LaTeX:"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:273
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "text LaTeX"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+#, fuzzy
+msgid "Plain text"
+msgstr "Place"
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "Plain text|a"
+msgstr "Place"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "Place"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "Place"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "Place"
+
+#: lib/configure.py:278
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Text ASCII ca linii"
+
+#: lib/configure.py:283
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript"
+msgstr "&Driver PostScript:"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript|t"
+msgstr "&Driver PostScript:"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)"
+msgstr "text LaTeX"
+
+#: lib/configure.py:288
+msgid "PDF (ps2pdf)|P"
+msgstr ""
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)"
+msgstr "text LaTeX"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)|F"
+msgstr "text LaTeX"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)"
+msgstr "text LaTeX"
+
+#: lib/configure.py:290
+msgid "PDF (dvipdfm)|m"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:296
+#, fuzzy
+msgid "DraftDVI"
+msgstr "Mod &ciornã"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
+msgid "Noteedit"
+msgstr "NotãCãtreEditor"
+
+#: lib/configure.py:305
+#, fuzzy
+msgid "OpenDocument"
+msgstr "Salvare &documente"
+
+#: lib/configure.py:308
+#, fuzzy
+msgid "date command"
+msgstr "Comenda de indexare"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr ""
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+#, fuzzy
+msgid "LyX"
+msgstr "Vizualizeazã DVI"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:317
+#, fuzzy
+msgid "LyX Preview"
+msgstr "Previzualizeazã|#P"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:319
+#, fuzzy
+msgid "Program"
+msgstr "Listare program"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:321
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "Font normal text"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word"
+msgstr "Cuvinte"
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word|W"
+msgstr "Cuvinte"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "HTML (MS Word)"
+msgstr "Cuvinte"
+
 #: src/Buffer.cpp:238
 #, fuzzy
 msgid "Could not remove temporary directory"
@@ -13678,52 +13994,42 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Selecteazã pînã la sfîrºitul documentului"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Nu existã nici un document deschis!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Nu existã nici un document deschis!"
 
-#: src/MenuBackend.cpp:544
-#, fuzzy
-msgid "Plain Text"
-msgstr "Place"
-
-#: src/MenuBackend.cpp:546
-#, fuzzy
-msgid "Plain Text, Join Lines"
-msgstr "Text ASCII ca linii"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 #, fuzzy
 msgid "Master Document"
 msgstr "Salvare &documente"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 #, fuzzy
 msgid "List of listings"
 msgstr "Listã de figuri"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 #, fuzzy
 msgid "Other floats"
 msgstr "Alte setãri de font"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "Nu existã cuprins"
 
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 #, fuzzy
 msgid " (auto)"
 msgstr "Datã"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Documente"
@@ -14920,11 +15226,6 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:733
-#, fuzzy
-msgid "LyX"
-msgstr "Vizualizeazã DVI"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 #, fuzzy
 msgid "unknown version"
@@ -15434,11 +15735,6 @@ msgstr "Setãri imprimantã"
 #, fuzzy
 msgid "Outputs"
 msgstr "Ieºire"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-#, fuzzy
-msgid "Plain text"
-msgstr "Place"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 #, fuzzy
@@ -16565,6 +16861,10 @@ msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
 
 #, fuzzy
+#~ msgid "Plain Text"
+#~ msgstr "Place"
+
+#, fuzzy
 #~ msgid "Swap Rows|S"
 #~ msgstr "Schimbã liniile între ele"
 
@@ -16682,9 +16982,6 @@ msgstr "Cuvînt necunoscut:"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "Utilizeazã explicit numele imprimantei"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "A&dapteazã rezultatul"
 
 #~ msgid "&Type:"
 #~ msgstr "&Tip:"

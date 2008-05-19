@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2008-05-10 04:42+0200\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -6304,7 +6304,7 @@ msgstr "Sender Address:"
 msgid "Sender Phone:"
 msgstr "Sender Phone:"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "Fax"
 
@@ -11429,6 +11429,322 @@ msgstr ""
 "Dne¹ní datum.\n"
 "Pro dal¹í informace si pøeètìte manuálovou stránku ('info date').\n"
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "Stupnì ¹edi"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+#, fuzzy
+msgid "Plain text (chess output)"
+msgstr "Prostý text"
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "Prostý text"
+
+#: lib/configure.py:265
+#, fuzzy
+msgid "Plain text (Xfig output)"
+msgstr "Prostý text"
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "Pøizpùsobit výst&up"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook"
+msgstr "Zálo¾ky|l"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "Zálo¾ky|l"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb"
+msgstr "®ádné"
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "®ádné"
+
+#: lib/configure.py:270
+#, fuzzy
+msgid "LilyPond music"
+msgstr "LilyPond"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "Parametry pro LaTe&X:"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "Parametry pro LaTe&X:"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:273
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "Aktualizovat PDF (pdflatex)"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+msgid "Plain text"
+msgstr "Prostý text"
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "Plain text|a"
+msgstr "Prostý text"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "Prostý text"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "Prostý text"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "Prostý text"
+
+#: lib/configure.py:278
+msgid "Plain Text, Join Lines"
+msgstr "Prostý text, spojit øádky"
+
+#: lib/configure.py:283
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript|t"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)|P"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)|F"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)|m"
+msgstr "Prohlí¾et PDF (pdflatex)"
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:296
+#, fuzzy
+msgid "DraftDVI"
+msgstr "&Koncept"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
+msgid "Noteedit"
+msgstr "NoteToEditor"
+
+#: lib/configure.py:305
+#, fuzzy
+msgid "OpenDocument"
+msgstr "Otevøít dokument"
+
+#: lib/configure.py:308
+#, fuzzy
+msgid "date command"
+msgstr "Pøíkaz &rejstøíku:"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr ""
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:317
+#, fuzzy
+msgid "LyX Preview"
+msgstr "Náhled"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:319
+#, fuzzy
+msgid "Program"
+msgstr "Výpis zdrojového kódu"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:321
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "Text. normální písmo"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word"
+msgstr "Words"
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word|W"
+msgstr "Words"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "HTML (MS Word)"
+msgstr "Words"
+
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
 msgstr "Nelze smazat pomocný adresáø"
@@ -13362,45 +13678,37 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 msgid "No Documents Open!"
 msgstr "®ádné otevøené dokumenty !"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 msgid "No Document Open!"
 msgstr "®ádné otevøené dokumenty !"
 
-#: src/MenuBackend.cpp:544
-msgid "Plain Text"
-msgstr "Jako prostý text"
-
-#: src/MenuBackend.cpp:546
-msgid "Plain Text, Join Lines"
-msgstr "Prostý text, spojit øádky"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 msgid "Master Document"
 msgstr "Hlavní dokument"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 msgid "List of listings"
 msgstr "Seznam výpisù"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 msgid "Other floats"
 msgstr "Dal¹í plovoucí objekty"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
 # TODO co to je?
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 msgid " (auto)"
 msgstr " (auto)"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 msgid "No Branch in Document!"
 msgstr "Dokument neobsahuje vìtvení !"
 
@@ -14515,10 +14823,6 @@ msgstr "Normální ikony"
 msgid "Big-sized icons"
 msgstr "Velké ikony"
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 msgid "unknown version"
 msgstr "neznámá verze"
@@ -14964,10 +15268,6 @@ msgstr "Jazyková nastavení"
 #: src/frontends/qt4/QPrefs.cpp:78
 msgid "Outputs"
 msgstr "Výstup"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-msgid "Plain text"
-msgstr "Prostý text"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 msgid "Date format"
@@ -16007,6 +16307,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
 
+#~ msgid "Plain Text"
+#~ msgstr "Jako prostý text"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "Pøehodit øádky|h"
 
@@ -16118,9 +16421,6 @@ msgstr "Neznámý u¾ivatel"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "Explicitní jméno tiskárny"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "Pøizpùsobit výst&up"
 
 #~ msgid "&Type:"
 #~ msgstr "&Typ:"

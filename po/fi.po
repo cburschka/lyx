@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2007-07-14 11:00+0300\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -6369,7 +6369,7 @@ msgstr "L‰hett‰j‰n osoite:"
 msgid "Sender Phone:"
 msgstr "L‰hett‰j‰n puh.:"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "Faksi"
 
@@ -11517,6 +11517,322 @@ msgstr ""
 "T‰m‰n p‰iv‰n p‰iv‰m‰‰r‰.\n"
 "Lue 'info date' jos haluat tiet‰‰ lis‰‰.\n"
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "Harmaas‰vyinen"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+#, fuzzy
+msgid "Plain text (chess output)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:265
+#, fuzzy
+msgid "Plain text (Xfig output)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "&Mukauta tuloste"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook"
+msgstr "Kirjanmerkit|#m"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "Kirjanmerkit|#m"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb"
+msgstr "Ei mik‰‰n"
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "Ei mik‰‰n"
+
+#: lib/configure.py:270
+#, fuzzy
+msgid "LilyPond music"
+msgstr "Lilypond nuottien ladonta"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "LaTeX-&valinnat:"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "LaTeX-&valinnat:"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:273
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "P‰ivit‰ PDF (pdflatex)"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+msgid "Plain text"
+msgstr "Perusteksti"
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "Plain text|a"
+msgstr "Perusteksti"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "Perusteksti"
+
+#: lib/configure.py:278
+msgid "Plain Text, Join Lines"
+msgstr "Perusteksti rivein‰"
+
+#: lib/configure.py:283
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript"
+msgstr "Jalkikirjoitus:"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript|t"
+msgstr "Jalkikirjoitus:"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)|P"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)|F"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)|m"
+msgstr "Katsele PDF (pdflatex)"
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:296
+#, fuzzy
+msgid "DraftDVI"
+msgstr "&Luonnostila"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
+msgid "Noteedit"
+msgstr "Huomautus toimittajalle"
+
+#: lib/configure.py:305
+#, fuzzy
+msgid "OpenDocument"
+msgstr "Asiakirja avautuu"
+
+#: lib/configure.py:308
+#, fuzzy
+msgid "date command"
+msgstr "Luo hakemisto -komento:"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr ""
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:317
+#, fuzzy
+msgid "LyX Preview"
+msgstr "Esikatselu|#E"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:319
+#, fuzzy
+msgid "Program"
+msgstr "Ohjelmalistaus"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:321
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "Tekstin tavallinen kirjasin"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word"
+msgstr "Sanat"
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word|W"
+msgstr "Sanat"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "HTML (MS Word)"
+msgstr "Sanat"
+
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
 msgstr "V‰liaikaisen hakemiston poistaminen ep‰onnistui"
@@ -13446,45 +13762,37 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Ladataanko levyll‰ oleva versio muistissa olevan asiakirjan p‰‰lle?"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 msgid "No Document Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
-#: src/MenuBackend.cpp:544
-msgid "Plain Text"
-msgstr "Perusteksti"
-
-#: src/MenuBackend.cpp:546
-msgid "Plain Text, Join Lines"
-msgstr "Perusteksti rivein‰"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 msgid "Master Document"
 msgstr "P‰‰asiakirja"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 msgid "List of listings"
 msgstr "Listausten luettelo"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 msgid "Other floats"
 msgstr "Muut kelluvat upotteet"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "Ei sis‰llysluetteloa"
 
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 #, fuzzy
 msgid " (auto)"
 msgstr "automaattinen"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 msgid "No Branch in Document!"
 msgstr "Asiakirja ei sis‰ll‰ haaroja!"
 
@@ -14598,10 +14906,6 @@ msgstr "Tavalliset ikoonit"
 msgid "Big-sized icons"
 msgstr "Isot ikoonit"
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 msgid "unknown version"
 msgstr "tuntematon versio"
@@ -15054,10 +15358,6 @@ msgstr "kieliasetukset"
 #: src/frontends/qt4/QPrefs.cpp:78
 msgid "Outputs"
 msgstr "Tulosteet"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-msgid "Plain text"
-msgstr "Perusteksti"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 msgid "Date format"
@@ -16087,6 +16387,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Tuntematon k‰ytt‰j‰"
 
+#~ msgid "Plain Text"
+#~ msgstr "Perusteksti"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "Vaihda rivit"
 
@@ -16187,9 +16490,6 @@ msgstr "Tuntematon k‰ytt‰j‰"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "K‰yt‰ tulostimen nime‰ eksplisiittisesti"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "&Mukauta tuloste"
 
 #~ msgid "&Type:"
 #~ msgstr "T&yyppi:"

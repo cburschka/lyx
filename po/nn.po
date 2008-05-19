@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2007-06-26 21:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -6344,7 +6344,7 @@ msgstr "SendarSinAdresse:"
 msgid "Sender Phone:"
 msgstr "Sendaren sin telefon:"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "Faks"
 
@@ -11475,6 +11475,321 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "Gråtonar"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+#, fuzzy
+msgid "Plain text (chess output)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:265
+#, fuzzy
+msgid "Plain text (Xfig output)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "S&end skrivar namn"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook"
+msgstr "Bokmerke|B"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "Bokmerke|B"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb"
+msgstr "Ingen"
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "Ingen"
+
+#: lib/configure.py:270
+msgid "LilyPond music"
+msgstr ""
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "LaTeX-&val:"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "LaTeX-&val:"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:273
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "Oppdater pdf (pdflatex)"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+msgid "Plain text"
+msgstr "Rein tekst"
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "Plain text|a"
+msgstr "Rein tekst"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "Rein tekst"
+
+#: lib/configure.py:278
+msgid "Plain Text, Join Lines"
+msgstr "Rein tekst, knyt saman linjer"
+
+#: lib/configure.py:283
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript|t"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)|P"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)|F"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)|m"
+msgstr "Vis pdf (pdflatex)"
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:296
+#, fuzzy
+msgid "DraftDVI"
+msgstr "Kla&dd"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
+msgid "Noteedit"
+msgstr "Notat_Til_Utgjevar"
+
+#: lib/configure.py:305
+#, fuzzy
+msgid "OpenDocument"
+msgstr "Opna eit dokument"
+
+#: lib/configure.py:308
+#, fuzzy
+msgid "date command"
+msgstr "Indeks kommando:"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr ""
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:317
+#, fuzzy
+msgid "LyX Preview"
+msgstr "Førehandsvising"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:319
+#, fuzzy
+msgid "Program"
+msgstr "Kodelister"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:321
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "Normal tekst skriftype"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word"
+msgstr "Ord"
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word|W"
+msgstr "Ord"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "HTML (MS Word)"
+msgstr "Ord"
+
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
@@ -13409,45 +13724,37 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Gå tilbake til den siste lagra versjonen av dokumentet?"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Ingen opne dokument!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 msgid "No Document Open!"
 msgstr "Ingen opne dokument!"
 
-#: src/MenuBackend.cpp:544
-msgid "Plain Text"
-msgstr "Rein tekst"
-
-#: src/MenuBackend.cpp:546
-msgid "Plain Text, Join Lines"
-msgstr "Rein tekst, knyt saman linjer"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 msgid "Master Document"
 msgstr "Hovuddokumentet"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 msgid "List of listings"
 msgstr "Liste over kodelister"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 msgid "Other floats"
 msgstr "Andre flytarar"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "Inga innhaldsliste"
 
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 msgid " (auto)"
 msgstr " (auto)"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 msgid "No Branch in Document!"
 msgstr "Ingen greiner i dokumentet!"
 
@@ -14558,10 +14865,6 @@ msgstr "Normale ikon"
 msgid "Big-sized icons"
 msgstr "Store ikon"
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 msgid "unknown version"
 msgstr "ukjent versjon"
@@ -15006,10 +15309,6 @@ msgstr "Språkval"
 #: src/frontends/qt4/QPrefs.cpp:78
 msgid "Outputs"
 msgstr "Eksportvegar"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-msgid "Plain text"
-msgstr "Rein tekst"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 msgid "Date format"
@@ -16045,6 +16344,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "ukjend brukar"
 
+#~ msgid "Plain Text"
+#~ msgstr "Rein tekst"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "Byt om på rader|d"
 
@@ -16138,9 +16440,6 @@ msgstr "ukjend brukar"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "Bruk namnet på skrivaren utan omsvøp "
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "S&end skrivar namn"
 
 #~ msgid "To &file:"
 #~ msgstr "Utskrift til &fil:"

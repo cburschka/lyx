@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -6298,7 +6298,7 @@ msgstr "发件人地址"
 msgid "Sender Phone:"
 msgstr "发件人电话"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "传真"
 
@@ -11443,6 +11443,322 @@ msgstr ""
 "今天的日期.\n"
 "详情请参阅 'info date'\n"
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "灰度"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+#, fuzzy
+msgid "Plain text (chess output)"
+msgstr "存文本"
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "存文本"
+
+#: lib/configure.py:265
+#, fuzzy
+msgid "Plain text (Xfig output)"
+msgstr "存文本"
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "Adapt outp&ut"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook"
+msgstr "书签(B)|B"
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "书签(B)|B"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb"
+msgstr "无"
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "无"
+
+#: lib/configure.py:270
+#, fuzzy
+msgid "LilyPond music"
+msgstr "LilyPond"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "LaTeX选项(&o)"
+
+#: lib/configure.py:271
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "LaTeX选项(&o)"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:273
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "更新PDF (pdflatex)"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+msgid "Plain text"
+msgstr "存文本"
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "Plain text|a"
+msgstr "存文本"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "存文本"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "存文本"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "存文本"
+
+#: lib/configure.py:278
+msgid "Plain Text, Join Lines"
+msgstr "纯文本, 连接段落"
+
+#: lib/configure.py:283
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "Postscript|t"
+msgstr "Post Scriptum:"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:288
+#, fuzzy
+msgid "PDF (ps2pdf)|P"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:289
+#, fuzzy
+msgid "PDF (pdflatex)|F"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:290
+#, fuzzy
+msgid "PDF (dvipdfm)|m"
+msgstr "显示PDF (pdflatex)"
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:296
+#, fuzzy
+msgid "DraftDVI"
+msgstr "草稿(&D)"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
+msgid "Noteedit"
+msgstr "NoteToEditor"
+
+#: lib/configure.py:305
+#, fuzzy
+msgid "OpenDocument"
+msgstr "打开文档"
+
+#: lib/configure.py:308
+#, fuzzy
+msgid "date command"
+msgstr "Index命令"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr ""
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:317
+#, fuzzy
+msgid "LyX Preview"
+msgstr "预览"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:319
+#, fuzzy
+msgid "Program"
+msgstr "程序列表"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:321
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "普通文本字体"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word"
+msgstr "单词数"
+
+#: lib/configure.py:325
+#, fuzzy
+msgid "MS Word|W"
+msgstr "单词数"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "HTML (MS Word)"
+msgstr "单词数"
+
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
 msgstr "无法删除临时目录"
@@ -13375,45 +13691,37 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "使用保存的版本吗?"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "无打开文档!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 msgid "No Document Open!"
 msgstr "无打开文档!"
 
-#: src/MenuBackend.cpp:544
-msgid "Plain Text"
-msgstr "纯文本"
-
-#: src/MenuBackend.cpp:546
-msgid "Plain Text, Join Lines"
-msgstr "纯文本, 连接段落"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 msgid "Master Document"
 msgstr "主文档"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 msgid "List of listings"
 msgstr "程序列表列表"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 msgid "Other floats"
 msgstr "其他浮动项"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "无目录"
 
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 msgid " (auto)"
 msgstr " (自动)"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 msgid "No Branch in Document!"
 msgstr "文档中无分支!"
 
@@ -14523,10 +14831,6 @@ msgstr "中图标"
 msgid "Big-sized icons"
 msgstr "大图标"
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 msgid "unknown version"
 msgstr "未知的版本"
@@ -14969,10 +15273,6 @@ msgstr "语言设置"
 #: src/frontends/qt4/QPrefs.cpp:78
 msgid "Outputs"
 msgstr "输出"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-msgid "Plain text"
-msgstr "存文本"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 msgid "Date format"
@@ -16000,6 +16300,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知用户"
 
+#~ msgid "Plain Text"
+#~ msgstr "纯文本"
+
 #~ msgid "Swap Rows|S"
 #~ msgstr "交换行(S)|S"
 
@@ -16147,6 +16450,3 @@ msgstr "未知用户"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "Use printer name explicitely"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "Adapt outp&ut"

@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-11 13:15+0200\n"
+"POT-Creation-Date: 2008-05-19 09:12+0200\n"
 "PO-Revision-Date: 2008-04-19 16:26+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX-team <lyx-docs@lists.lyx.org>\n"
@@ -6404,7 +6404,7 @@ msgstr "Absender-Adresse:"
 msgid "Sender Phone:"
 msgstr "Absender Telefon:"
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
 msgid "Fax"
 msgstr "Fax"
 
@@ -11535,6 +11535,286 @@ msgstr ""
 "Das heutige Datum.\n"
 "Bitte lesen Sie 'info date' für weitere Informationen.\n"
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr "Tgif"
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr "FIG"
+
+#: lib/configure.py:242
+msgid "Grace"
+msgstr "Grace"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr "FEN"
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr "BMP"
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr "GIF"
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr "JPEG"
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr "PBM"
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr "PGM"
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr "PNG"
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr "PPM"
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr "TIFF"
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr "XBM"
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr "XPM"
+
+#: lib/configure.py:263
+msgid "Plain text (chess output)"
+msgstr "Einfacher Text (Schach)"
+
+#: lib/configure.py:264
+msgid "Plain text (image)"
+msgstr "Einfacher Text (Bild)"
+
+#: lib/configure.py:265
+msgid "Plain text (Xfig output)"
+msgstr "Einfacher Text (XFig-Ausgabe)"
+
+#: lib/configure.py:266
+msgid "date (output)"
+msgstr "Datum (Ausgabe)"
+
+#: lib/configure.py:267
+msgid "DocBook"
+msgstr "DocBook"
+
+#: lib/configure.py:267
+msgid "DocBook|B"
+msgstr "DocBook|B"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr "Docbook (XML)"
+
+#: lib/configure.py:269
+msgid "NoWeb"
+msgstr "NoWeb"
+
+#: lib/configure.py:269
+msgid "NoWeb|N"
+msgstr "NoWeb|N"
+
+#: lib/configure.py:270
+msgid "LilyPond music"
+msgstr "LilyPond-Musik"
+
+#: lib/configure.py:271
+msgid "LaTeX (plain)"
+msgstr "LaTeX (normal)"
+
+#: lib/configure.py:271
+msgid "LaTeX (plain)|L"
+msgstr "LaTeX (normal)|L"
+
+#: lib/configure.py:272
+msgid "LinuxDoc"
+msgstr "LinuxDoc"
+
+#: lib/configure.py:272
+msgid "LinuxDoc|x"
+msgstr "LinuxDoc|x"
+
+#: lib/configure.py:273
+msgid "LaTeX (pdflatex)"
+msgstr "LaTeX (pdflatex)"
+
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+msgid "Plain text"
+msgstr "Einfacher Text"
+
+#: lib/configure.py:274
+msgid "Plain text|a"
+msgstr "Einfacher Text|E"
+
+#: lib/configure.py:275
+msgid "Plain text (pstotext)"
+msgstr "Einfacher Text (pstotext)"
+
+#: lib/configure.py:276
+msgid "Plain text (ps2ascii)"
+msgstr "Einfacher Text (ps2ascii)"
+
+#: lib/configure.py:277
+msgid "Plain text (catdvi)"
+msgstr "Einfacher Text (catdvi)"
+
+#: lib/configure.py:278
+msgid "Plain Text, Join Lines"
+msgstr "Einfacher Text, Zeilen verbinden"
+
+#: lib/configure.py:283
+msgid "EPS"
+msgstr "EPS"
+
+#: lib/configure.py:284
+msgid "Postscript"
+msgstr "Postscript"
+
+#: lib/configure.py:284
+msgid "Postscript|t"
+msgstr "Postscript|t"
+
+#: lib/configure.py:288
+msgid "PDF (ps2pdf)"
+msgstr "PDF (ps2pdf)"
+
+#: lib/configure.py:288
+msgid "PDF (ps2pdf)|P"
+msgstr "PDF (ps2pdf)|P"
+
+#: lib/configure.py:289
+msgid "PDF (pdflatex)"
+msgstr "PDF (pdflatex)"
+
+#: lib/configure.py:289
+msgid "PDF (pdflatex)|F"
+msgstr "PDF (pdflatex)|F"
+
+#: lib/configure.py:290
+msgid "PDF (dvipdfm)"
+msgstr "PDF (dvipdfm)"
+
+#: lib/configure.py:290
+msgid "PDF (dvipdfm)|m"
+msgstr "PDF (dvipdfm)|m"
+
+#: lib/configure.py:293
+msgid "DVI"
+msgstr "DVI"
+
+#: lib/configure.py:293
+msgid "DVI|D"
+msgstr "DVI|D"
+
+#: lib/configure.py:296
+msgid "DraftDVI"
+msgstr "DraftDVI"
+
+#: lib/configure.py:299
+msgid "HTML"
+msgstr "HTML"
+
+#: lib/configure.py:299
+msgid "HTML|H"
+msgstr "HTML|H"
+
+#: lib/configure.py:302
+msgid "Noteedit"
+msgstr "Noteedit"
+
+#: lib/configure.py:305
+msgid "OpenDocument"
+msgstr "OpenDocument"
+
+#: lib/configure.py:308
+msgid "date command"
+msgstr "date-Befehl"
+
+#: lib/configure.py:309
+msgid "Comma-separated values"
+msgstr "Komma-separierte Werte"
+
+#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:312
+msgid "LyX 1.3.x"
+msgstr "LyX 1.3.x"
+
+#: lib/configure.py:313
+msgid "LyX 1.4.x"
+msgstr "LyX 1.4.x"
+
+#: lib/configure.py:314
+msgid "CJK LyX 1.4.x (big5)"
+msgstr "CJK-LyX 1.4.x (big5)"
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr "CJK-LyX 1.4.x (euc-jp)"
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr "CJK-LyX 1.4.x (euc-kr)"
+
+#: lib/configure.py:317
+msgid "LyX Preview"
+msgstr "LyX-Vorschau"
+
+#: lib/configure.py:318
+msgid "PDFTEX"
+msgstr "PDFTEX"
+
+#: lib/configure.py:319
+msgid "Program"
+msgstr "Programm"
+
+#: lib/configure.py:320
+msgid "PSTEX"
+msgstr "PSTEX"
+
+#: lib/configure.py:321
+msgid "Rich Text Format"
+msgstr "Rich-Text-Format"
+
+#: lib/configure.py:322
+msgid "OpenOffice.Org (sxw)"
+msgstr "OpenOffice.org (sxw)"
+
+#: lib/configure.py:323
+msgid "Windows Metafile"
+msgstr "Windows-Metadatei (WMF)"
+
+#: lib/configure.py:324
+msgid "Enhanced Metafile"
+msgstr "Erweiterte Metadatei"
+
+#: lib/configure.py:325
+msgid "MS Word"
+msgstr "MS Word"
+
+#: lib/configure.py:325
+msgid "MS Word|W"
+msgstr "MS Word|W"
+
+#: lib/configure.py:326
+msgid "HTML (MS Word)"
+msgstr "HTML (MS Word)"
+
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
@@ -13540,44 +13820,36 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 msgid "No Documents Open!"
 msgstr "Keine Dokumente geöffnet!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
-#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
+#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
 msgid "No Document Open!"
 msgstr "Kein Dokument geöffnet!"
 
-#: src/MenuBackend.cpp:544
-msgid "Plain Text"
-msgstr "Einfacher Text"
-
-#: src/MenuBackend.cpp:546
-msgid "Plain Text, Join Lines"
-msgstr "Einfacher Text, Zeilen verbinden"
-
-#: src/MenuBackend.cpp:727
+#: src/MenuBackend.cpp:722
 msgid "Master Document"
 msgstr "Hauptdokument"
 
-#: src/MenuBackend.cpp:756
+#: src/MenuBackend.cpp:751
 msgid "List of listings"
 msgstr "Listingsverzeichnis"
 
-#: src/MenuBackend.cpp:760
+#: src/MenuBackend.cpp:755
 msgid "Other floats"
 msgstr "Andere Gleitobjekte"
 
-#: src/MenuBackend.cpp:770
+#: src/MenuBackend.cpp:765
 msgid "No Table of contents"
 msgstr "Kein Inhaltsverzeichnis"
 
-#: src/MenuBackend.cpp:816
+#: src/MenuBackend.cpp:811
 msgid " (auto)"
 msgstr " (automatisch)"
 
-#: src/MenuBackend.cpp:835
+#: src/MenuBackend.cpp:830
 msgid "No Branch in Document!"
 msgstr "Kein Zweig im Dokument!"
 
@@ -14696,10 +14968,6 @@ msgstr "Normale Symbole"
 msgid "Big-sized icons"
 msgstr "Große Symbole"
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:515
 msgid "unknown version"
 msgstr "unbekannte Version"
@@ -15150,10 +15418,6 @@ msgstr "Spracheinstellungen"
 #: src/frontends/qt4/QPrefs.cpp:78
 msgid "Outputs"
 msgstr "Ausgaben"
-
-#: src/frontends/qt4/QPrefs.cpp:176
-msgid "Plain text"
-msgstr "Einfacher Text"
 
 #: src/frontends/qt4/QPrefs.cpp:207
 msgid "Date format"
@@ -16196,6 +16460,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Plain Text"
+#~ msgstr "Einfacher Text"
 
 #~ msgid "Swap Rows|S"
 #~ msgstr "Zeilen vertauschen|v"
