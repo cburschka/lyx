@@ -2117,7 +2117,7 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(_("Examples|#E#e"),
 				  from_utf8(addPath(package().system_support().absFilename(), "examples"))));
 
-		docstring filter = formats.prettyName(format);
+		docstring filter = translateIfPossible(formats.prettyName(format));
 		filter += " (*.";
 		// FIXME UNICODE
 		filter += from_utf8(formats.extension(format));

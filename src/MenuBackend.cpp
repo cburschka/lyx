@@ -53,6 +53,7 @@ namespace lyx {
 using support::compare_ascii_no_case;
 using support::contains;
 using support::makeDisplayPath;
+using support::split;
 using support::token;
 
 using boost::bind;
@@ -534,16 +535,20 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		if ((*fit)->dummy())
 			continue;
 		docstring label = from_utf8((*fit)->prettyname());
-		docstring const shortcut = from_utf8((*fit)->shortcut());
+		docstring shortcut = from_utf8((*fit)->shortcut());
+
+		if (!shortcut.empty())
+			label += char_type('|') + shortcut;
+		docstring label_i18n = translateIfPossible(label);
+		bool const untranslated = (label == label_i18n);
+		shortcut = split(label_i18n, label, '|');
+		if (untranslated)
+			// this might happen if the shortcut
+			// has been redefined
+			label = translateIfPossible(label);
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
-			// FIXME: This is a hack, we should rather solve
-			// FIXME: bug 2488 instead.
-			if ((*fit)->name() == "text")
-				label = _("Plain Text");
-			else if ((*fit)->name() == "textparagraph")
-				label = _("Plain Text, Join Lines");
 			label += "...";
 			break;
 		case MenuItem::ViewFormats:
@@ -556,12 +561,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 			BOOST_ASSERT(false);
 			break;
 		}
-		// FIXME: if we had proper support for translating the
-		// format names defined in configure.py, there would
-		// not be a need to check whether the shortcut is
-		// correct. If we add it uncondiitonally, it would
-		// create useless warnings on bad shortcuts
-		if (!shortcut.empty() && contains(label, shortcut))
+		if (!shortcut.empty())
 			label += char_type('|') + shortcut;
 
 		if (buf)

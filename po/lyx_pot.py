@@ -194,6 +194,36 @@ def external_l10n(input_files, output, base):
     output.close()
 
 
+def formats_l10n(input_files, output, base):
+    '''Generate pot file from configure.py'''
+    output = open(output, 'w')
+    GuiName = re.compile(r'.*\Format\s+\S+\s+\S+\s+"([^"]*)"\s+(\S*)\s+.*')
+    GuiName2 = re.compile(r'.*\Format\s+\S+\s+\S+\s+([^"]\S+)\s+(\S*)\s+.*')
+    input = open(input_files[0])
+    for lineno, line in enumerate(input.readlines()):
+        label = ""
+        labelsc = ""
+        if GuiName.match(line):
+            label = GuiName.match(line).group(1)
+            shortcut = GuiName.match(line).group(2).replace('"', '')
+        elif GuiName2.match(line):
+            label = GuiName2.match(line).group(1)
+            shortcut = GuiName2.match(line).group(2).replace('"', '')
+        else:
+            continue
+        label = label.replace('\\', '\\\\').replace('"', '')
+        if shortcut != "":
+            labelsc = label + "|" + shortcut
+        if label != "":
+            print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                (relativePath(input_files[0], base), lineno+1, label)
+        if labelsc != "":
+            print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                (relativePath(input_files[0], base), lineno+1, labelsc)
+    input.close()
+    output.close()
+
+
 Usage = '''
 lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] -t|--type input_type input_files
 
@@ -208,6 +238,7 @@ where
         qt4: qt4 ui files
         languages: file lib/languages
         external: external templates file
+        formats: formats predefined in lib/configure.py
 '''
 
 if __name__ == '__main__':
@@ -227,7 +258,7 @@ if __name__ == '__main__':
             base = value
         elif opt in ['-t', '--type']:
             input_type = value
-    if input_type not in ['ui', 'layouts', 'qt4', 'languages', 'external'] or output is None:
+    if input_type not in ['ui', 'layouts', 'qt4', 'languages', 'external', 'formats'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
     if input_type == 'ui':
@@ -238,6 +269,8 @@ if __name__ == '__main__':
         qt4_l10n(args, output, base)
     elif input_type == 'external':
         external_l10n(args, output, base)
+    elif input_type == 'formats':
+        formats_l10n(args, output, base)
     else:
         languages_l10n(args, output, base)
 
