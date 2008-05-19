@@ -322,8 +322,8 @@ static void setComboxFont(QComboBox * cb, string const & family,
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefPlaintext::PrefPlaintext(QWidget * parent)
-	: PrefModule(qt_(catOutput), qt_("Plain text"), 0, parent)
+PrefPlaintext::PrefPlaintext(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("Plain text"), form)
 {
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
@@ -353,8 +353,8 @@ void PrefPlaintext::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefDate::PrefDate(QWidget * parent)
-	: PrefModule(qt_(catOutput), qt_("Date format"), 0, parent)
+PrefDate::PrefDate(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("Date format"), form)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(QString)),
@@ -380,8 +380,8 @@ void PrefDate::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefInput::PrefInput(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catEditing), qt_("Keyboard/Mouse"), form, parent)
+PrefInput::PrefInput(GuiPreferences * form)
+	: PrefModule(qt_(catEditing), qt_("Keyboard/Mouse"), form)
 {
 	setupUi(this);
 
@@ -416,9 +416,9 @@ void PrefInput::update(LyXRC const & rc)
 }
 
 
-QString PrefInput::testKeymap(QString keymap)
+QString PrefInput::testKeymap(QString const & keymap)
 {
-	return form_->browsekbmap(toqstr(internal_path(fromqstr(keymap))));
+	return form_->browsekbmap(internalPath(keymap));
 }
 
 
@@ -455,8 +455,8 @@ void PrefInput::on_keymapCB_toggled(bool keymap)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefCompletion::PrefCompletion(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catEditing), qt_("Input Completion"), form, parent)
+PrefCompletion::PrefCompletion(GuiPreferences * form)
+	: PrefModule(qt_(catEditing), qt_("Input Completion"), form)
 {
 	setupUi(this);
 
@@ -517,8 +517,8 @@ void PrefCompletion::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefLatex::PrefLatex(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catOutput), qt_("LaTeX"), form, parent)
+PrefLatex::PrefLatex(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("LaTeX"), form)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(QString)),
@@ -584,8 +584,8 @@ void PrefLatex::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Screen fonts"), form, parent)
+PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Screen fonts"), form)
 {
 	setupUi(this);
 
@@ -758,8 +758,8 @@ struct ColorSorter
 
 } // namespace anon
 
-PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Colors"), form, parent)
+PrefColors::PrefColors(GuiPreferences * form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Colors"), form)
 {
 	setupUi(this);
 
@@ -807,7 +807,7 @@ void PrefColors::apply(LyXRC & /*rc*/) const
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i)
 		if (curcolors_[i] != newcolors_[i])
-			form_->setColor(lcolors_[i], fromqstr(newcolors_[i]));
+			form_->setColor(lcolors_[i], newcolors_[i]);
 }
 
 
@@ -857,8 +857,8 @@ void PrefColors::change_lyxObjects_selection()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefDisplay::PrefDisplay(QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), 0, parent)
+PrefDisplay::PrefDisplay(GuiPreferences * form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), form)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -928,8 +928,8 @@ void PrefDisplay::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
-	: PrefModule(QString(), qt_("Paths"), form, parent)
+PrefPaths::PrefPaths(GuiPreferences * form)
+	: PrefModule(QString(), qt_("Paths"), form)
 {
 	setupUi(this);
 	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(select_exampledir()));
@@ -1041,8 +1041,8 @@ void PrefPaths::select_lyxpipe()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefSpellchecker::PrefSpellchecker(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLanguage), qt_("Spellchecker"), form, parent)
+PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
+	: PrefModule(qt_(catLanguage), qt_("Spellchecker"), form)
 {
 	setupUi(this);
 
@@ -1150,8 +1150,8 @@ void PrefSpellchecker::select_dict()
 /////////////////////////////////////////////////////////////////////
 
 
-PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catFiles), qt_("Converters"), form, parent)
+PrefConverters::PrefConverters(GuiPreferences * form)
+	: PrefModule(qt_(catFiles), qt_("Converters"), form)
 {
 	setupUi(this);
 
@@ -1347,10 +1347,23 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefFileformats
+// FormatValidator
 //
 /////////////////////////////////////////////////////////////////////
-//
+
+class FormatValidator : public QValidator
+{
+public:
+	FormatValidator(QWidget *, Formats const & f);
+	void fixup(QString & input) const;
+	QValidator::State validate(QString & input, int & pos) const;
+private:
+	virtual QString toString(Format const & format) const = 0;
+	int nr() const;
+	Formats const & formats_;
+};
+
+
 FormatValidator::FormatValidator(QWidget * parent, Formats const & f) 
 	: QValidator(parent), formats_(f)
 {
@@ -1362,9 +1375,9 @@ void FormatValidator::fixup(QString & input) const
 	Formats::const_iterator cit = formats_.begin();
 	Formats::const_iterator end = formats_.end();
 	for (; cit != end; ++cit) {
-		string const name = str(cit);
+		QString const name = toString(*cit);
 		if (distance(formats_.begin(), cit) == nr()) {
-			input = toqstr(name);
+			input = name;
 			return;
 		}
 	}
@@ -1377,9 +1390,9 @@ QValidator::State FormatValidator::validate(QString & input, int & /*pos*/) cons
 	Formats::const_iterator end = formats_.end();
 	bool unknown = true;
 	for (; unknown && cit != end; ++cit) {
-		string const name = str(cit);
+		QString const name = toString(*cit);
 		if (distance(formats_.begin(), cit) != nr())
-			unknown = toqstr(name) != input;
+			unknown = name != input;
 	}
 
 	if (unknown && !input.isEmpty()) 
@@ -1396,31 +1409,54 @@ int FormatValidator::nr() const
 }
 
 
-FormatNameValidator::FormatNameValidator(QWidget * parent, Formats const & f) 
-	: FormatValidator(parent, f)
+/////////////////////////////////////////////////////////////////////
+//
+// FormatNameValidator
+//
+/////////////////////////////////////////////////////////////////////
+
+class FormatNameValidator : public FormatValidator
 {
-}
+public:
+	FormatNameValidator(QWidget * parent, Formats const & f)
+		: FormatValidator(parent, f)
+	{}
+private:
+	QString toString(Format const & format) const
+	{
+		return toqstr(format.name());
+	}
+};
 
-string FormatNameValidator::str(Formats::const_iterator it) const
+
+/////////////////////////////////////////////////////////////////////
+//
+// FormatPrettynameValidator
+//
+/////////////////////////////////////////////////////////////////////
+
+class FormatPrettynameValidator : public FormatValidator
 {
-	return it->name();
-}
+public:
+	FormatPrettynameValidator(QWidget * parent, Formats const & f)
+		: FormatValidator(parent, f)
+	{}
+private:
+	QString toString(Format const & format) const
+	{
+		return toqstr(format.prettyname());
+	}
+};
 
 
-FormatPrettynameValidator::FormatPrettynameValidator(QWidget * parent, Formats const & f) 
-	: FormatValidator(parent, f)
-{
-}
+/////////////////////////////////////////////////////////////////////
+//
+// PrefFileformats
+//
+/////////////////////////////////////////////////////////////////////
 
-
-string FormatPrettynameValidator::str(Formats::const_iterator it) const
-{
-	return it->prettyname();
-}
-
-
-PrefFileformats::PrefFileformats(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catFiles), qt_("File formats"), form, parent)
+PrefFileformats::PrefFileformats(GuiPreferences * form)
+	: PrefModule(qt_(catFiles), qt_("File formats"), form)
 {
 	setupUi(this);
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
@@ -1618,8 +1654,8 @@ void PrefFileformats::on_formatRemovePB_clicked()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefLanguage::PrefLanguage(QWidget * parent)
-	: PrefModule(qt_(catLanguage), qt_("Language"), 0, parent)
+PrefLanguage::PrefLanguage(GuiPreferences * form)
+	: PrefModule(qt_(catLanguage), qt_("Language"), form)
 {
 	setupUi(this);
 
@@ -1703,8 +1739,8 @@ void PrefLanguage::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefPrinter::PrefPrinter(QWidget * parent)
-	: PrefModule(qt_(catOutput), qt_("Printer"), 0, parent)
+PrefPrinter::PrefPrinter(GuiPreferences * form)
+	: PrefModule(qt_(catOutput), qt_("Printer"), form)
 {
 	setupUi(this);
 
@@ -1801,8 +1837,8 @@ void PrefPrinter::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catLookAndFeel), qt_("User interface"), form, parent)
+PrefUserInterface::PrefUserInterface(GuiPreferences * form)
+	: PrefModule(qt_(catLookAndFeel), qt_("User interface"), form)
 {
 	setupUi(this);
 
@@ -1873,14 +1909,15 @@ void PrefUserInterface::select_ui()
 		uiFileED->setText(file);
 }
 
+
 /////////////////////////////////////////////////////////////////////
 //
 // PrefEdit
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefEdit::PrefEdit(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catEditing), qt_("Control"), form, parent)
+PrefEdit::PrefEdit(GuiPreferences * form)
+	: PrefModule(qt_(catEditing), qt_("Control"), form)
 {
 	setupUi(this);
 
@@ -1951,8 +1988,8 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 }
 
 
-PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
-	: PrefModule(qt_(catEditing), qt_("Shortcuts"), form, parent)
+PrefShortcuts::PrefShortcuts(GuiPreferences * form)
+	: PrefModule(qt_(catEditing), qt_("Shortcuts"), form)
 {
 	setupUi(this);
 
@@ -2069,7 +2106,7 @@ void PrefShortcuts::updateShortcutsTW()
 	KeyMap::BindingList::const_iterator it = bindinglist.begin();
 	KeyMap::BindingList::const_iterator it_end = bindinglist.end();
 	for (; it != it_end; ++it)
-		insertShortcutItem(it->request, it->sequence, item_type(it->tag));
+		insertShortcutItem(it->request, it->sequence, ItemType(it->tag));
 
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
@@ -2080,7 +2117,7 @@ void PrefShortcuts::updateShortcutsTW()
 }
 
 
-void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
+void PrefShortcuts::setItemType(QTreeWidgetItem * item, ItemType tag)
 {
 	item->setData(0, Qt::UserRole, QVariant(tag));
 	QFont font;
@@ -2105,14 +2142,14 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 
 
 QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
-		KeySequence const & seq, item_type tag)
+		KeySequence const & seq, ItemType tag)
 {
 	FuncCode action = lfun.action;
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name) 
 			+ ' ' + lfun.argument());
 	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
-	item_type item_tag = tag;
+	ItemType item_tag = tag;
 
 	QTreeWidgetItem * newItem = 0;
 	// for unbind items, try to find an existing item in the system bind list
@@ -2174,7 +2211,7 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	if (items.isEmpty())
 		return;
 	
-	item_type tag = static_cast<item_type>(items[0]->data(0, Qt::UserRole).toInt());
+	ItemType tag = static_cast<ItemType>(items[0]->data(0, Qt::UserRole).toInt());
 	if (tag == UserUnbind)
 		removePB->setText(qt_("Res&tore"));
 	else
@@ -2235,7 +2272,7 @@ void PrefShortcuts::on_removePB_pressed()
 		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
-		item_type tag = static_cast<item_type>(items[i]->data(0, Qt::UserRole).toInt());
+		ItemType tag = static_cast<ItemType>(items[i]->data(0, Qt::UserRole).toInt());
 		
 		switch (tag) {
 		case System: {
@@ -2357,8 +2394,8 @@ void PrefShortcuts::shortcut_clearPB_pressed()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefIdentity::PrefIdentity(QWidget * parent)
-	: PrefModule(QString(), qt_("Identity"), 0, parent)
+PrefIdentity::PrefIdentity(GuiPreferences * form)
+	: PrefModule(QString(), qt_("Identity"), form)
 {
 	setupUi(this);
 
@@ -2402,33 +2439,33 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
-	add(new PrefUserInterface(this));
-	add(new PrefEdit(this));
-	add(new PrefShortcuts(this));
-	add(new PrefScreenFonts(this));
-	add(new PrefColors(this));
-	add(new PrefDisplay);
-	add(new PrefInput(this));
-	add(new PrefCompletion(this));
+	addModule(new PrefUserInterface(this));
+	addModule(new PrefEdit(this));
+	addModule(new PrefShortcuts(this));
+	addModule(new PrefScreenFonts(this));
+	addModule(new PrefColors(this));
+	addModule(new PrefDisplay(this));
+	addModule(new PrefInput(this));
+	addModule(new PrefCompletion(this));
 
-	add(new PrefPaths(this));
+	addModule(new PrefPaths(this));
 
-	add(new PrefIdentity);
+	addModule(new PrefIdentity(this));
 
-	add(new PrefLanguage);
-	add(new PrefSpellchecker(this));
+	addModule(new PrefLanguage(this));
+	addModule(new PrefSpellchecker(this));
 
-	add(new PrefPrinter);
-	add(new PrefDate);
-	add(new PrefPlaintext);
-	add(new PrefLatex(this));
+	addModule(new PrefPrinter(this));
+	addModule(new PrefDate(this));
+	addModule(new PrefPlaintext(this));
+	addModule(new PrefLatex(this));
 
 	PrefConverters * converters = new PrefConverters(this);
 	PrefFileformats * formats = new PrefFileformats(this);
 	connect(formats, SIGNAL(formatsChanged()),
 			converters, SLOT(updateGui()));
-	add(converters);
-	add(formats);
+	addModule(converters);
+	addModule(formats);
 
 	prefsPS->setCurrentPanel(qt_("User interface"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
@@ -2445,7 +2482,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 }
 
 
-void GuiPreferences::add(PrefModule * module)
+void GuiPreferences::addModule(PrefModule * module)
 {
 	LASSERT(module, /**/);
 	if (module->category().isEmpty())
@@ -2539,9 +2576,9 @@ void GuiPreferences::dispatchParams()
 }
 
 
-void GuiPreferences::setColor(ColorCode col, string const & hex)
+void GuiPreferences::setColor(ColorCode col, QString const & hex)
 {
-	colors_.push_back(lcolor.getLyXName(col) + ' ' + hex);
+	colors_.push_back(lcolor.getLyXName(col) + ' ' + fromqstr(hex));
 }
 
 

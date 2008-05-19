@@ -46,9 +46,6 @@
 #include "ui_PrefIdentityUi.h"
 #include "ui_ShortcutUi.h"
 
-#include <QDialog>
-#include <QValidator>
-
 #include <string>
 #include <vector>
 
@@ -61,15 +58,90 @@ class Movers;
 
 namespace frontend {
 
-class GuiPreferences;
+class PrefModule;
+
+class GuiPreferences : public GuiDialog, public Ui::PrefsUi
+{
+	Q_OBJECT
+public:
+	GuiPreferences(GuiView & lv);
+
+	void apply(LyXRC & rc) const;
+	void updateRc(LyXRC const & rc);
+
+public Q_SLOTS:
+	void change_adaptor();
+
+public:
+	/// Apply changes
+	void applyView();
+	/// update (do we need this?)
+	void updateContents();
+
+	std::vector<PrefModule *> modules_;
+
+	///
+	bool initialiseParams(std::string const &);
+	///
+	void clearParams() {}
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return false; }
+
+	/// various file pickers
+	QString browsebind(QString const & file) const;
+	QString browseUI(QString const & file) const;
+	QString browsekbmap(QString const & file) const;
+	QString browsedict(QString const & file) const;
+
+	/// general browse
+	QString browse(QString const & file, QString const & title) const;
+
+	/// set a color
+	void setColor(ColorCode col, QString const & hex);
+
+	/// update the screen fonts after change
+	void updateScreenFonts();
+
+	/// adjust the prefs paper sizes
+	PAPER_SIZE toPaperSize(int i) const;
+	/// adjust the prefs paper sizes
+	int fromPaperSize(PAPER_SIZE papersize) const;
+
+	LyXRC & rc() { return rc_; }
+	Converters & converters() { return converters_; }
+	Formats & formats() { return formats_; }
+	Movers & movers() { return movers_; }
+
+private:
+	///
+	void addModule(PrefModule * module);
+
+	/// temporary lyxrc
+	LyXRC rc_;
+	/// temporary converters
+	Converters converters_;
+	/// temporary formats
+	Formats formats_;
+	/// temporary movers
+	Movers movers_;
+
+	/// A list of colors to be dispatched
+	std::vector<std::string> colors_;
+
+	bool redraw_gui_;
+	bool update_screen_font_;
+};
+
 
 class PrefModule : public QWidget
 {
 	Q_OBJECT
 public:
 	PrefModule(QString const & cat, QString const & t,
-			GuiPreferences * form = 0, QWidget * parent = 0)
-		: QWidget(parent), category_(cat), title_(t), form_(form)
+			GuiPreferences * form)
+		: QWidget(form), category_(cat), title_(t), form_(form)
 	{}
 
 	virtual void apply(LyXRC & rc) const = 0;
@@ -92,7 +164,7 @@ class PrefPlaintext : public PrefModule, public Ui::PrefPlaintextUi
 {
 	Q_OBJECT
 public:
-	PrefPlaintext(QWidget * parent = 0);
+	PrefPlaintext(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -103,7 +175,7 @@ class PrefDate : public PrefModule, public Ui::PrefDateUi
 {
 	Q_OBJECT
 public:
-	PrefDate(QWidget * parent = 0);
+	PrefDate(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -114,7 +186,7 @@ class PrefInput : public PrefModule, public Ui::PrefInputUi
 {
 	Q_OBJECT
 public:
-	PrefInput(GuiPreferences * form, QWidget * parent = 0);
+	PrefInput(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -125,7 +197,7 @@ private Q_SLOTS:
 	void on_keymapCB_toggled(bool);
 
 private:
-	QString testKeymap(QString keymap);
+	QString testKeymap(QString const & keymap);
 };
 
 
@@ -133,7 +205,7 @@ class PrefCompletion : public PrefModule, public Ui::PrefCompletionUi
 {
 	Q_OBJECT
 public:
-	PrefCompletion(GuiPreferences * form, QWidget * parent = 0);
+	PrefCompletion(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -144,7 +216,7 @@ class PrefLatex : public PrefModule, public Ui::PrefLatexUi
 {
 	Q_OBJECT
 public:
-	PrefLatex(GuiPreferences * form, QWidget * parent = 0);
+	PrefLatex(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -155,7 +227,7 @@ class PrefScreenFonts : public PrefModule, public Ui::PrefScreenFontsUi
 {
 	Q_OBJECT
 public:
-	PrefScreenFonts(GuiPreferences * form, QWidget * parent = 0);
+	PrefScreenFonts(GuiPreferences * form);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -171,7 +243,7 @@ class PrefColors : public PrefModule, public Ui::PrefColorsUi
 {
 	Q_OBJECT
 public:
-	PrefColors(GuiPreferences * form, QWidget * parent = 0);
+	PrefColors(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -182,12 +254,8 @@ private Q_SLOTS:
 
 private:
 	std::vector<ColorCode> lcolors_;
-	// FIXME the use of mutable here is required due to the
-	// fact that initialization is not done in the controller
-	// but in the constructor.
 	std::vector<QString> curcolors_;
 	std::vector<QString> newcolors_;
-
 };
 
 
@@ -195,7 +263,7 @@ class PrefDisplay : public PrefModule, public Ui::PrefDisplayUi
 {
 	Q_OBJECT
 public:
-	PrefDisplay(QWidget * parent = 0);
+	PrefDisplay(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -206,7 +274,7 @@ class PrefPaths : public PrefModule, public Ui::PrefPathsUi
 {
 	Q_OBJECT
 public:
-	PrefPaths(GuiPreferences * form, QWidget * parent = 0);
+	PrefPaths(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -226,7 +294,7 @@ class PrefSpellchecker : public PrefModule, public Ui::PrefSpellcheckerUi
 {
 	Q_OBJECT
 public:
-	PrefSpellchecker(GuiPreferences * form, QWidget * parent = 0);
+	PrefSpellchecker(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -240,7 +308,7 @@ class PrefConverters : public PrefModule, public Ui::PrefConvertersUi
 {
 	Q_OBJECT
 public:
-	PrefConverters(GuiPreferences * form, QWidget * parent = 0);
+	PrefConverters(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -260,41 +328,11 @@ private:
 };
 
 
-class FormatValidator : public QValidator
-{
-public:
-	FormatValidator(QWidget *, Formats const & f);
-	void fixup(QString & input) const;
-	QValidator::State validate(QString & input, int & pos) const;
-private:
-	virtual std::string str(Formats::const_iterator it) const = 0;
-	int nr() const;
-	Formats const & formats_;
-};
-
-
-class FormatNameValidator : public FormatValidator
-{
-public:
-	FormatNameValidator(QWidget *, Formats const & f);
-private:
-	std::string str(Formats::const_iterator it) const;
-};
-
-class FormatPrettynameValidator : public FormatValidator
-{
-public:
-	FormatPrettynameValidator(QWidget *, Formats const & f);
-private:
-	std::string str(Formats::const_iterator it) const;
-};
-
-
 class PrefFileformats : public PrefModule, public Ui::PrefFileformatsUi
 {
 	Q_OBJECT
 public:
-	PrefFileformats(GuiPreferences * form, QWidget * parent = 0);
+	PrefFileformats(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -327,7 +365,7 @@ class PrefLanguage : public PrefModule, public Ui::PrefLanguageUi
 {
 	Q_OBJECT
 public:
-	PrefLanguage(QWidget * parent = 0);
+	PrefLanguage(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -338,7 +376,7 @@ class PrefPrinter : public PrefModule, public Ui::PrefPrinterUi
 {
 	Q_OBJECT
 public:
-	PrefPrinter(QWidget * parent = 0);
+	PrefPrinter(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -349,7 +387,7 @@ class PrefUserInterface : public PrefModule, public Ui::PrefUi
 {
 	Q_OBJECT
 public:
-	PrefUserInterface(GuiPreferences * form, QWidget * parent = 0);
+	PrefUserInterface(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -363,7 +401,7 @@ class PrefEdit : public PrefModule, public Ui::PrefEditUi
 {
 	Q_OBJECT
 public:
-	PrefEdit(GuiPreferences * form, QWidget * parent = 0);
+	PrefEdit(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -382,25 +420,25 @@ class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
 {
 	Q_OBJECT
 private:
-	enum item_type {
-		System,		//< loaded from a bind file
-		UserBind,	//< \bind loaded from user.bind
-		UserUnbind,	//< \unbind loaded from user.bind, with corresponding
-					//<    entry in system bind file
+	enum ItemType {
+		System,         //< loaded from a bind file
+		UserBind,       //< \bind loaded from user.bind
+		UserUnbind,     //< \unbind loaded from user.bind, with corresponding
+		                //<    entry in system bind file
 		UserExtraUnbind	//< \unbind loaded from user.bind, without
-						//<    corresponding entry in system bind file.
+		                //<    corresponding entry in system bind file.
 	};
 public:
-	PrefShortcuts(GuiPreferences * form, QWidget * parent = 0);
+	PrefShortcuts(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 	void updateShortcutsTW();
 	void modifyShortcut();
 	///
-	void setItemType(QTreeWidgetItem * item, item_type tag);
+	void setItemType(QTreeWidgetItem * item, ItemType tag);
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
-		KeySequence const & shortcut, item_type tag);
+		KeySequence const & shortcut, ItemType tag);
 
 public Q_SLOTS:
 	void select_bind();
@@ -442,84 +480,10 @@ class PrefIdentity : public PrefModule, public Ui::PrefIdentityUi
 {
 	Q_OBJECT
 public:
-	PrefIdentity(QWidget * parent = 0);
+	PrefIdentity(GuiPreferences * form);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
-};
-
-
-class GuiPreferences : public GuiDialog, public Ui::PrefsUi
-{
-	Q_OBJECT
-public:
-	GuiPreferences(GuiView & lv);
-
-	void apply(LyXRC & rc) const;
-	void updateRc(LyXRC const & rc);
-
-public Q_SLOTS:
-	void change_adaptor();
-
-public:
-	///
-	void add(PrefModule * module);
-	/// Apply changes
-	void applyView();
-	/// update (do we need this?)
-	void updateContents();
-
-	std::vector<PrefModule *> modules_;
-
-	///
-	bool initialiseParams(std::string const &);
-	///
-	void clearParams() {}
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return false; }
-
-	/// various file pickers
-	QString browsebind(QString const & file) const;
-	QString browseUI(QString const & file) const;
-	QString browsekbmap(QString const & file) const;
-	QString browsedict(QString const & file) const;
-
-	/// general browse
-	QString browse(QString const & file, QString const & title) const;
-
-	/// set a color
-	void setColor(ColorCode col, std::string const & hex);
-
-	/// update the screen fonts after change
-	void updateScreenFonts();
-
-	/// adjust the prefs paper sizes
-	PAPER_SIZE toPaperSize(int i) const;
-	/// adjust the prefs paper sizes
-	int fromPaperSize(PAPER_SIZE papersize) const;
-
-	LyXRC & rc() { return rc_; }
-	Converters & converters() { return converters_; }
-	Formats & formats() { return formats_; }
-	Movers & movers() { return movers_; }
-
-private:
-	/// temporary lyxrc
-	LyXRC rc_;
-	/// temporary converters
-	Converters converters_;
-	/// temporary formats
-	Formats formats_;
-	/// temporary movers
-	Movers movers_;
-
-	/// A list of colors to be dispatched
-	std::vector<std::string> colors_;
-
-	bool redraw_gui_;
-	bool update_screen_font_;
 };
 
 
