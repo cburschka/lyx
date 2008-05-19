@@ -231,29 +231,21 @@ Abbildungen, Tabellen, Gleitobjekte, Notizen und Boxen
 
 \begin_layout Author
 vom LyX Team
-\size normal
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\size normal
-Übersetzung und Bearbeitung: Hartmut Haase
-\end_layout
-
-\end_inset
-
-
-\size default
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
+
+\size normal
+Übersetzung und Bearbeitung: Hartmut Haase
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
 Wenn Sie Anmerkungen oder Korrekturvorschläge machen wollen, schreiben Sie
- bitte an:
+ bitte an: 
 \begin_inset CommandInset href
 LatexCommand href
 name "lyx-docs@lists.lyx.org"
@@ -288,11 +280,6 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 
 \family sans
 Version 1.6svn
-\end_layout
-
-\begin_layout Date
-letzte Änderung: 18.
- März 2008
 \end_layout
 
 \begin_layout Standard
@@ -34250,40 +34237,83 @@ W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\bac
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "latexcompanion"
+
+\end_inset
+
+Frank Mittelbach and Michel Goossens: 
+\emph on
+The LaTeX Companion Second Edition.
+
+\emph default
+ Addison-Wesley, 2004
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "latexguide"
+
+\end_inset
+
+Helmut Kopka and Patrick W.
+ Daly: 
+\emph on
+A Guide to LaTeX Fourth Edition.
+
+\emph default
+ Addison-Wesley, 2003
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lamport"
+
+\end_inset
+
+Leslie Lamport: 
+\emph on
+LaTeX: A Document Preparation System.
+
+\emph default
+ Addison-Wesley, second edition, 1994
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "latex-praxisbuch"
+
+\end_inset
+
+Niedermair, Elke & Michael: 
+\emph on
+LaTeX-Praxisbuch
+\emph default
+, Franzis-Verlag, 2004
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "booktabs"
 
 \end_inset
 
+Dokumnetation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf}
-{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "booktabs"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf"
 
 \end_inset
 
 
-\series bold
-booktabs
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34303,36 +34333,19 @@ key "caption"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption-deu.pd
-f}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "caption"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption-deu.pdf"
 
 \end_inset
 
 
-\series bold
-caption
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34352,36 +34365,19 @@ key "endfloat"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloat.pdf}
-{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "endfloat"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloat.pdf"
 
 \end_inset
 
 
-\series bold
-endfloat
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34436,35 +34432,19 @@ key "wrapfig"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "wrapfig"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty"
 
 \end_inset
 
 
-\series bold
-wrapfig
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34541,36 +34521,19 @@ key "footmisc"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf}
-{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "footmisc"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf"
 
 \end_inset
 
 
-\series bold
-footmisc
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34590,35 +34553,19 @@ key "hypcap"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "hypcap"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf"
 
 \end_inset
 
 
-\series bold
-hypcap
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34638,36 +34585,19 @@ key "hyperref"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf}
-{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "hyperref"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
 
 \end_inset
 
 
-\series bold
-hyperref
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34687,36 +34617,19 @@ key "koma-script"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.p
-df}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "koma-script"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.pdf"
 
 \end_inset
 
 
-\series bold
-koma-script
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34732,70 +34645,23 @@ LaTeX-Pakete ! koma-script
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "latexguide"
-
-\end_inset
-
-Kopka, Helmut und Daly, Patrick W.: 
-\emph on
-A Guide to LaTeX Fourth Edition.
-
-\emph default
- Addison-Wesley, 2003
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "lamport"
-
-\end_inset
-
-Lamport, Leslie: 
-\emph on
-LaTeX: A Document Preparation System.
-
-\emph default
- Addison-Wesley, second edition, 1994
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "listings"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings.pdf}
-{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "listings"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings.pdf"
 
 \end_inset
 
 
-\series bold
-listings
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34815,36 +34681,19 @@ key "marginnote"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/marginnote.
-pdf}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "marginnote"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/marginnote.pdf"
 
 \end_inset
 
 
-\series bold
-marginnote
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34860,68 +34709,23 @@ LaTeX-Pakete ! marginnote
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "latexcompanion"
-
-\end_inset
-
-Mittelbach, Frank und Goossens, Michel: 
-\emph on
-The LaTeX Companion Second Edition.
-
-\emph default
- Addison-Wesley, 2004
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "latex-praxisbuch"
-
-\end_inset
-
-Niedermair, Elke & Michael: 
-\emph on
-LaTeX-Praxisbuch
-\emph default
-, Franzis-Verlag, 2004
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "pstricks"
 
 \end_inset
 
+Webseite des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://tug.org/PSTricks/main.cgi/}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "PSTricks"
+target "http://tug.org/PSTricks/"
 
 \end_inset
 
 
-\series bold
-PSTricks
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Internetseite
 \begin_inset Index
 status collapsed
 
@@ -34941,35 +34745,19 @@ key "sidecap"
 
 \end_inset
 
+Dokumentation des LaTeX-Pakets 
+\series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf}{
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "sidecap"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf"
 
 \end_inset
 
 
-\series bold
-sidecap
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
--Dokumentation im Internet
 \begin_inset Index
 status collapsed
 
@@ -34985,37 +34773,21 @@ LaTeX-Pakete ! sidecap
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "NewInLyX15"
+key "NewInLyX16"
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{http://wiki.lyx.org/LyX/NewInLyX15}{
-\end_layout
-
-\end_inset
-
-Wiki-Seite
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-Seite"
+target "http://wiki.lyx.org/LyX/NewInLyX16"
 
 \end_inset
 
  über neue Funktionen in 
 \family sans
-LyX 1.5.0
+LyX 1.6.0
 \family default
 .
 \end_layout
