@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -167,7 +167,7 @@ eunier-Guttin-Cluzel
 
 
 \newline
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -24857,26 +24857,22 @@ Réponse: Wilhelm Conrad Röntgen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use conditional output inside places where you cannot insert branch insets,
- like inside equations, you can code special LaTeX definitions for each
- branch.
- For example you can define for the question branch
+Pour utiliser la sortie conditionnelle à des endroits où vous ne pouvez
+ pas utiliser de branches, comme dans des équations, vous pouvez utiliser
+ des définitions LaTeX spéciales pour chaque branche.
+ Par exemple, vous pouvez définir pour la branche question
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-For an introduction to the LaTeX-syntax, see section\InsetSpace ~
+Pour une introduction à la syntaxe LaTeX, voir section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:LaTeX-Syntax"
+reference "sub:Syntaxe-de-Latex"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
@@ -24887,7 +24883,6 @@ reference "sub:LaTeX-Syntax"
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -24898,24 +24893,20 @@ question}[1]{#1}
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
 \backslash
-answer}[1]{}
+reponse}[1]{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and for the answer branch
+et pour la branche réponse
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
@@ -24926,23 +24917,18 @@ question}[1]{}
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcommand{
 \backslash
-answer}[1]{#1}
+reponse}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Branch Question
 status open
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -24961,7 +24947,7 @@ question}[1]{#1}
 \backslash
 newcommand{
 \backslash
-answer}[1]{}
+reponse}[1]{}
 \end_layout
 
 \end_inset
@@ -24975,14 +24961,10 @@ answer}[1]{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\begin_inset Branch Answer
+\begin_inset Branch Réponses
 status open
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -25001,7 +24983,7 @@ question}[1]{}
 \backslash
 newcommand{
 \backslash
-answer}[1]{#1}
+reponse}[1]{#1}
 \end_layout
 
 \end_inset
@@ -25015,32 +24997,30 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Now it is possible to use the commands 
+Il est maintenant possible d'utiliser les commandes  
 \series bold
 
 \backslash
 question{\SpecialChar \ldots{}
 }
 \series default
- and 
+ et 
 \series bold
 
 \backslash
-answer{\SpecialChar \ldots{}
+reponse{\SpecialChar \ldots{}
 }
 \series default
- to obtain conditional output.
- Here is an example formula where only the 
+ pour obtenir une sortie conditionnelle.
+ Voici un exemple de formule où seule la partie 
 \series bold
 
 \backslash
 question
 \series default
- part appears:
+ apparaît:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\reponse{x_{2}}=1\question{+\sqrt{3}}\reponse{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -25048,11 +25028,8 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inside math, the same effect can be achieved using math macros, see section
-\lang french
-\InsetSpace ~
+À l'intérieur du mode math, on peut obtenir le même effet en utilisant des
+ macros, voir section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Macros définies"
