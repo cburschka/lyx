@@ -1,5 +1,5 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 334
 \begin_document
 \begin_header
 \textclass book
@@ -18,21 +18,6 @@
 
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  bookmarksopen, bookmarksopenlevel=2,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={The LyX Tutorial},pdfsubject={LyX-documentation Tutorial},
-  pdfkeywords={LyX, documentation}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
 
 \fi % end if pdflatex is used
 
@@ -64,6 +49,22 @@
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -96,11 +97,19 @@ by the LyX Team
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you have comments or error corrections, please send them to the LyX Documenta
 tion mailing list, 
 \family typewriter
-lyx-docs@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 .
 \end_layout
@@ -111,24 +120,8 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-The latest PDF-version of this document can be found here:
-\newline
-
-\series bold
-http://wiki.lyx.org/LyX/DocumentationDevelopment#Tutorial
-\end_layout
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -244,9 +237,13 @@ Tutorial
 \emph on
 Tutorial
 \emph default
-, you should definitely check out Section\InsetSpace ~
+, you should definitely check out Section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexusers"
 
 \end_inset
@@ -286,7 +283,10 @@ Unnecessary.
  If you want to learn some of the neat tricks you can do with LaTeX in LyX,
  you can have a look at the 
 \emph on
-Embedded\InsetSpace ~
+Embedded
+\begin_inset Space ~
+\end_inset
+
 Objects
 \emph default
  manual.
@@ -304,7 +304,8 @@ Getting started with LyX
 
 \begin_layout Section
 Your first LyX document
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Your-first-LyX"
 
 \end_inset
@@ -352,7 +353,7 @@ Tutorial
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 They can also serve as good examples of how to use the many features of
  LyX.
 \end_layout
@@ -401,7 +402,7 @@ subtle
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The hints are located in yellow 
 \begin_inset Quotes eld
 \end_inset
@@ -434,7 +435,10 @@ examples
  Open the raw document, and use 
 \family sans
 File\SpecialChar \menuseparator
-Save\InsetSpace ~
+Save
+\begin_inset Space ~
+\end_inset
+
 As
 \family default
  to save a copy in your own directory for you to work on.
@@ -474,7 +478,10 @@ This is my first LyX document!
 Save your document with 
 \family sans
 File\SpecialChar \menuseparator
-Save\InsetSpace ~
+Save
+\begin_inset Space ~
+\end_inset
+
 As\SpecialChar \@.
 
 \end_layout
@@ -498,7 +505,7 @@ DVI
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You can save time by leaving the DVI-viewer running in the background.
  Then, you can use 
 \family sans
@@ -641,8 +648,14 @@ middle mouse button
 Find/Replace Use 
 \family sans
 Edit\SpecialChar \menuseparator
-Find\InsetSpace ~
-&\InsetSpace ~
+Find
+\begin_inset Space ~
+\end_inset
+
+&
+\begin_inset Space ~
+\end_inset
+
 Replace
 \family default
  (toolbar button 
@@ -655,7 +668,10 @@ Replace
 ) to search.
  In the dialog, search with the 
 \family sans
-Find\InsetSpace ~
+Find
+\begin_inset Space ~
+\end_inset
+
 Next
 \family default
  button, and use the 
@@ -666,7 +682,7 @@ Replace
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Close the window when you're done or leave it open if you find it more convenien
 t.
  Most dialog boxes in LyX can operate like this.
@@ -683,7 +699,10 @@ t.
 \end_layout
 
 \begin_layout Description
-Character\InsetSpace ~
+Character
+\begin_inset Space ~
+\end_inset
+
 Formatting You can 
 \emph on
 emphasize
@@ -700,7 +719,10 @@ Noun Style
  the 
 \family sans
 Edit\SpecialChar \menuseparator
-Text\InsetSpace ~
+Text
+\begin_inset Space ~
+\end_inset
+
 Style
 \family default
  dialog (toolbar button 
@@ -734,7 +756,8 @@ Of course, you haven't yet written enough to make most of these functions
 
 \begin_layout Subsection
 WYSIWYM: Whitespace in LyX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:whitespace"
 
 \end_inset
@@ -936,7 +959,7 @@ Environment
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You don't have to 
 \emph on
 select
@@ -1040,7 +1063,10 @@ Environment
 
 
 \family typewriter
-More\InsetSpace ~
+More
+\begin_inset Space ~
+\end_inset
+
 Stuff
 \family default
 
@@ -1052,7 +1078,10 @@ Stuff
 
 \begin_layout Standard
 It gets better.
- Go to the end of Section\InsetSpace ~
+ Go to the end of Section
+\begin_inset Space ~
+\end_inset
+
 1 again (after 
 \begin_inset Quotes eld
 \end_inset
@@ -1088,7 +1117,10 @@ Environment
 About This Document
 \family default
 .
- Section\InsetSpace ~
+ Section
+\begin_inset Space ~
+\end_inset
+
 
 \begin_inset Quotes eld
 \end_inset
@@ -1097,10 +1129,15 @@ More Stuff
 \begin_inset Quotes erd
 \end_inset
 
-, which used to be Section\InsetSpace ~
-2, has been automatically renumbered to Section\InsetSpace ~
-3!
- In true WYSIWYM fashion, you just need to identify the text that makes
+, which used to be Section
+\begin_inset Space ~
+\end_inset
+
+2, has been automatically renumbered to Section
+\begin_inset Space ~
+\end_inset
+
+3! In true WYSIWYM fashion, you just need to identify the text that makes
  up the section titles, and LyX takes care of numbering the sections and
  typesetting them.
 \end_layout
@@ -1171,10 +1208,16 @@ Subsection
 \end_inset
 
 .
- If you put yet another section before Section\InsetSpace ~
-2, Section\InsetSpace ~
-2 will be renumbered
- as Section 3, and the subsections will be renumbered to 
+ If you put yet another section before Section
+\begin_inset Space ~
+\end_inset
+
+2, Section
+\begin_inset Space ~
+\end_inset
+
+2 will be renumbered as Section 3, and the subsections will be renumbered
+ to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1224,9 +1267,13 @@ Chapter
 Section
 \family default
 s, but you're only allowed to use them in certain types (text classes) of
- LyX documents (see Section\InsetSpace ~
+ LyX documents (see Section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Document-Classes"
 
 \end_inset
@@ -1401,7 +1448,10 @@ item
 \emph default
 , one way is to use the 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset Space ~
+\end_inset
+
 Break
 \family default
 , which you get by typing 
@@ -1415,7 +1465,10 @@ Standard
 \family default
  environment (or just use the keybinding, 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset Space ~
+\end_inset
+
 s
 \family default
 ).
@@ -1429,7 +1482,7 @@ You've got a beautiful itemized list.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX won't let you select the first bullet unless you also select the paragraph
  
 \emph on
@@ -1489,7 +1542,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 But a typesetter's tab, which will change to fit the size of the largest
  term, not a pathetic, rigid, unchangeable typewriter 
 \family sans
@@ -1508,7 +1561,10 @@ List
  If you want to have more than one word in the definition, then separate
  the words with 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset Space ~
+\end_inset
+
 Blank
 \family default
 s.
@@ -1559,7 +1615,7 @@ LyX-Code
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 used in this Tutorial for the long typing examples
 \end_layout
 
@@ -1605,7 +1661,9 @@ Quote, LyX-Code,
 Verse
 \family default
  in
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 example_raw.lyx
@@ -1632,7 +1690,8 @@ The previous chapter hopefully allowed you to get used to writing in LyX.
 
 \begin_layout Section
 Document Classes
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Document-Classes"
 
 \end_inset
@@ -1655,7 +1714,7 @@ document class
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 for LaTeX users: this is equivalent to the LaTeX document class
 \end_layout
 
@@ -1681,7 +1740,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 That's usually the default document class
 \end_layout
 
@@ -1732,7 +1791,10 @@ style files
  For example, LyX supports typesetting (and extra environments) for the
  American Mathematics Society journals using the 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset Space ~
+\end_inset
+
 (AMS)
 \family default
  document class.
@@ -1756,33 +1818,33 @@ Extended Features
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Name
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Notes
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \end_layout
 
@@ -1791,18 +1853,18 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 one-sided, no chapters
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -1811,18 +1873,18 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 layout & environments for American Math Society
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \end_layout
 
@@ -1831,67 +1893,67 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 longer than article, two-sided
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report + front and back matter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 presentation
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 transparencies
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 letter
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 lots of extra environments for address, signature\SpecialChar \ldots{}
 
 \end_layout
@@ -1938,8 +2000,14 @@ template
 Open a new file with 
 \family sans
 File\SpecialChar \menuseparator
-New\InsetSpace ~
-from\InsetSpace ~
+New
+\begin_inset Space ~
+\end_inset
+
+from
+\begin_inset Space ~
+\end_inset
+
 Template
 \family default
 .
@@ -1958,7 +2026,10 @@ Environment
 \family default
  box, you'll see several environments, like the 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset Space ~
+\end_inset
+
 Address
 \family default
  environment, which don't even exist in most other document classes.
@@ -2020,12 +2091,15 @@ exercise
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 One warning, if you're writing from a template.
  If you erase all of the text in an environment --- for example, if you
  erase the whole 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset Space ~
+\end_inset
+
 Address
 \family default
  field so that you can replace it with your own --- and then you move the
@@ -2073,7 +2147,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You should not be using the letter any more, since the 
 \family sans
 Letter
@@ -2120,7 +2194,8 @@ example_raw.lyx
 
 \begin_layout Section
 Labels and Cross-References
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:labels"
 
 \end_inset
@@ -2133,7 +2208,7 @@ You can label section headings, list items, formulas, footnotes, and floats
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Floats are explained in the 
 \emph on
 User's Guide
@@ -2216,16 +2291,20 @@ Your first cross-reference
 \end_layout
 
 \begin_layout Standard
-Place the cursor somewhere in Section\InsetSpace ~
+Place the cursor somewhere in Section
+\begin_inset Space ~
+\end_inset
+
 2 of your document.
  Type 
 \end_layout
 
 \begin_layout LyX-Code
 If you want to know more about this document, then see 
-\newline
-Section , which can
- be found on page .
+\begin_inset Newline newline
+\end_inset
+
+Section , which can be found on page .
 \end_layout
 
 \begin_layout Standard
@@ -2240,7 +2319,10 @@ section
  --- choose 
 \family sans
 Insert\SpecialChar \menuseparator
-Cross\InsetSpace ~
+Cross
+\begin_inset Space ~
+\end_inset
+
 Reference
 \family default
  or the toolbar button 
@@ -2287,7 +2369,10 @@ Apply
 .
  (To be really correct, you should put a 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset Space ~
+\end_inset
+
 Blank
 \family default
  in between the word 
@@ -2315,7 +2400,10 @@ Cross-reference
 \begin_inset Quotes eld
 \end_inset
 
-Section\InsetSpace ~
+Section
+\begin_inset Space ~
+\end_inset
+
 2
 \begin_inset Quotes erd
 \end_inset
@@ -2324,12 +2412,18 @@ Section\InsetSpace ~
 \begin_inset Quotes eld
 \end_inset
 
-Page\InsetSpace ~
+Page
+\begin_inset Space ~
+\end_inset
+
 1
 \begin_inset Quotes erd
 \end_inset
 
- (or whatever page Section\InsetSpace ~
+ (or whatever page Section
+\begin_inset Space ~
+\end_inset
+
 2's title is on).
 \end_layout
 
@@ -2341,8 +2435,14 @@ Cross-Reference
 \family default
  dialog, clicking 
 \family sans
-Go\InsetSpace ~
-to\InsetSpace ~
+Go
+\begin_inset Space ~
+\end_inset
+
+to
+\begin_inset Space ~
+\end_inset
+
 Label
 \family default
  will move the cursor to the referenced label.
@@ -2355,7 +2455,10 @@ More fun with labels
 \begin_layout Standard
 We told you that LyX takes care about numbering cross-references; now you
  can test that.
- Add a new section before Section\InsetSpace ~
+ Add a new section before Section
+\begin_inset Space ~
+\end_inset
+
 2.
  Update the DVI view, and --- voilà! --- the section cross reference changed
  to 
@@ -2374,9 +2477,14 @@ About this Document
 \begin_inset Quotes erd
 \end_inset
 
- to a subsection, and the cross-reference will reference Subsection\InsetSpace ~
-2.1 instead
- of Section\InsetSpace ~
+ to a subsection, and the cross-reference will reference Subsection
+\begin_inset Space ~
+\end_inset
+
+2.1 instead of Section
+\begin_inset Space ~
+\end_inset
+
 3.
  The page reference won't change unless you add a whole page of text before
  the label, of course.
@@ -2413,11 +2521,15 @@ Paste
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 By the way, copying a chapter title may cause an error, because chapters
- aren't allowed in the article class, see section\InsetSpace ~
+ aren't allowed in the article class, see section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Document-Classes"
 
 \end_inset
@@ -2534,7 +2646,7 @@ A footnote can be cut and pasted like normal text.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 It may be easier to select it using the keyboard.
  You might accidentally open the footnote if you're trying to select the
  marker itself with the mouse.
@@ -2576,7 +2688,10 @@ Delete
 Margin notes can be added using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Marginal\InsetSpace ~
+Marginal
+\begin_inset Space ~
+\end_inset
+
 Note
 \family default
  or the toolbar button 
@@ -2637,7 +2752,8 @@ example_raw.lyx
 
 \begin_layout Section
 Bibliographies
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
@@ -2677,7 +2793,10 @@ The Lyx Tutorial, by the LyX Documentation Team
  Note that LyX automatically puts a number in a box before each reference.
  Click on the boxed reference number, and the 
 \family sans
-Bibliography\InsetSpace ~
+Bibliography
+\begin_inset Space ~
+\end_inset
+
 item
 \family default
  dialog box appears.
@@ -2755,7 +2874,10 @@ Add
 \begin_layout Standard
 The 
 \family sans
-Text\InsetSpace ~
+Text
+\begin_inset Space ~
+\end_inset
+
 after
 \family default
  field in the 
@@ -2779,7 +2901,10 @@ Label
 \family default
  field in the 
 \family sans
-Bibliography\InsetSpace ~
+Bibliography
+\begin_inset Space ~
+\end_inset
+
 item
 \family default
  dialog.
@@ -2815,11 +2940,23 @@ Return
  
 \family sans
 Insert\SpecialChar \menuseparator
-List\InsetSpace ~
-/\InsetSpace ~
+List
+\begin_inset Space ~
+\end_inset
+
+/
+\begin_inset Space ~
+\end_inset
+
 TOC\SpecialChar \menuseparator
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset Space ~
+\end_inset
+
+of
+\begin_inset Space ~
+\end_inset
+
 Contents
 \family default
 .
@@ -2912,7 +3049,10 @@ LaTeX is used by many scientists because it outputs great looking equations,
  commands can be typed in normally, but they will show up in a WYSIWYM fashion.
  If, on the other hand, you've never written in LaTeX, then the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Panel
 \family default
  will allow you to write professional-looking math quickly and easily.
@@ -2962,7 +3102,10 @@ Instead, we create a formula that will get typeset properly.
 \family sans
 Insert\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Inline\InsetSpace ~
+Inline
+\begin_inset Space ~
+\end_inset
+
 Formula
 \family default
 .
@@ -3009,10 +3152,15 @@ This math editor is another example of the WYSIWYM philosophy.
 sqrt
 \family default
 ; this can be frustrating, because you can't see what an expression looks
- like until you LaTeX the file, and may have to spend time to find e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-missing
- brackets.
+ like until you LaTeX the file, and may have to spend time to find e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+missing brackets.
  LyX doesn't attempt to get the expression to look perfect (WYSIWYG), but
  it gives you an extremely good idea of what the expression will look like.
  LaTeX then takes care of the professional typesetting.
@@ -3181,7 +3329,10 @@ Exponents and Indices
 \begin_layout Standard
 An exponent can be entered from the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
  (see below), but it's actually simpler just to type the caret key, 
@@ -3245,7 +3396,10 @@ The Math Toolbar
 \begin_layout Standard
 The 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
  is a convenient way to enter symbols or to perform complicated formula
@@ -3263,7 +3417,10 @@ Math
  menus.
  However, we're going to concentrate on using the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbars
 \family default
 , just to let you know what's out there; you can learn keyboard shortcuts
@@ -3325,7 +3482,10 @@ Math
 \begin_inset Quotes eld
 \end_inset
 
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 (auto)
 \begin_inset Quotes erd
 \end_inset
@@ -3340,7 +3500,10 @@ Greek and symbols
 \begin_layout Standard
 The 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
  which allow you to choose from a large array of symbols used in math: various
@@ -3460,9 +3623,18 @@ Delimiter
  However, those parentheses will be the same size as regular text, which
  will look bad if you have a big fraction or matrix inside the parentheses.
  So better use in this case one of the three delimiter buttons that insert
- directly e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-a (\InsetSpace \thinspace{}
+ directly e.
+\begin_inset Space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Space ~
+\end_inset
+
+a (
+\begin_inset Space \thinspace{}
+\end_inset
+
 ) pair.
 \end_layout
 
@@ -3472,7 +3644,10 @@ You can also put delimiters or a square root sign or a decoration on already
  Select the portion of the formula that you want to adjust, and then click
  on the button you want from the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
 .
@@ -3506,7 +3681,10 @@ To create a fraction, click on the fraction button
 
  in the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
 .
@@ -3642,7 +3820,10 @@ Space
 \begin_layout Standard
 Click on the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
  button 
@@ -3734,7 +3915,8 @@ example_raw.lyx
 
 \begin_layout Subsection
 Matrices
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:matrices"
 
 \end_inset
@@ -3753,7 +3935,10 @@ Click on the matrix button
 
  in the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
 .
@@ -3796,8 +3981,14 @@ If you need to change the number of rows and columns, use the menu
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Rows\InsetSpace \thinspace{}
-&\InsetSpace \thinspace{}
+Rows
+\begin_inset Space \thinspace{}
+\end_inset
+
+&
+\begin_inset Space \thinspace{}
+\end_inset
+
 Columns
 \family default
  or the math toolbar buttons 
@@ -3876,7 +4067,10 @@ Click on the display button
 
  in the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
 , which represents a couple lines of text before and after a centered blue
@@ -3959,12 +4153,15 @@ Exercise
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 After you've done it the hard way, give 
 \family sans
 Insert\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Cases\InsetSpace ~
+Cases
+\begin_inset Space ~
+\end_inset
+
 Environment
 \family default
  a try.
@@ -4041,7 +4238,10 @@ User's Guide
 \emph default
  and the 
 \emph on
-Embedded\InsetSpace ~
+Embedded
+\begin_inset Space ~
+\end_inset
+
 Objects
 \emph default
  manual for more information.
@@ -4070,7 +4270,10 @@ right button
 \emph default
  to get a 
 \family sans
-Table\InsetSpace ~
+Table
+\begin_inset Space ~
+\end_inset
+
 Settings
 \family default
  dialog box which allows extensive table editing.
@@ -4152,9 +4355,13 @@ Customization\SpecialChar \@.
 
 \begin_layout Itemize
 LyX can read LaTeX documents.
- See section\InsetSpace ~
+ See section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:tex2lyx"
 
 \end_inset
@@ -4172,7 +4379,8 @@ Generation of indexes and nomenclatures/glossaries is supported.
 
 \begin_layout Section
 LyX for LaTeX Users
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexusers"
 
 \end_inset
@@ -4202,12 +4410,18 @@ Because this is just a tutorial, we are only going to mention things that
  information here.
  The the 
 \emph on
-Extended\InsetSpace ~
+Extended
+\begin_inset Space ~
+\end_inset
+
 Features
 \emph default
  and the 
 \emph on
-Embedded\InsetSpace ~
+Embedded
+\begin_inset Space ~
+\end_inset
+
 Objects
 \emph default
  manual have a great deal of information on differences between LyX and
@@ -4224,7 +4438,10 @@ Anything that you enter in TeX mode will be passed straight to LaTeX, and
  You can use TeX commands in LyX by choosing 
 \family sans
 Insert\SpecialChar \menuseparator
-TeX\InsetSpace ~
+TeX
+\begin_inset Space ~
+\end_inset
+
 Code
 \family default
  (toolbar button 
@@ -4294,7 +4511,10 @@ gamma
  This will work for almost all, non-complicated math macros.
  This may be faster than using the 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset Space ~
+\end_inset
+
 Toolbar
 \family default
 , and will be especially convenient for experienced LaTeX users.
@@ -4327,9 +4547,13 @@ LyX can't do absolutely everything that LaTeX can do.
 \backslash
 usepackage{foo}
 \family default
- in the preamble (see section\InsetSpace ~
+ in the preamble (see section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
@@ -4344,7 +4568,8 @@ Importing LaTeX Documents ---
 tex2lyx
 \family default
 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:tex2lyx"
 
 \end_inset
@@ -4357,7 +4582,10 @@ You can import a LaTeX file into LyX by using the
 \family sans
 File\SpecialChar \menuseparator
 Import\SpecialChar \menuseparator
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset Space ~
+\end_inset
+
 (plain)
 \family default
  menu in LyX.
@@ -4467,7 +4695,10 @@ E
 \bar under
 x
 \bar default
-tra\InsetSpace ~
+tra
+\begin_inset Space ~
+\end_inset
+
 Options
 \family default
  area.
@@ -4475,7 +4706,8 @@ Options
 
 \begin_layout Subsubsection
 Other Preamble Matter
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -4490,7 +4722,10 @@ If you have special commands to put in the preamble of a LaTeX file, you
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset Space ~
+\end_inset
+
 Preamble
 \family default
  and type in the dialog window (or from the document settings dialog, depending
@@ -4511,8 +4746,14 @@ al references to be used in multiple documents.
 I
 \bar default
 nsert\SpecialChar \menuseparator
-List\InsetSpace ~
-/\InsetSpace ~
+List
+\begin_inset Space ~
+\end_inset
+
+/
+\begin_inset Space ~
+\end_inset
+
 T
 \bar under
 O
@@ -4522,7 +4763,10 @@ C\SpecialChar \menuseparator
 \bar under
 B
 \bar default
-ibTeX\InsetSpace ~
+ibTeX
+\begin_inset Space ~
+\end_inset
+
 Bibliography
 \family default
  to include a 
@@ -4548,9 +4792,13 @@ After you've done this, you can use citations from any bibliographies you're
 Insert\SpecialChar \menuseparator
 Citation
 \family default
- (see section\InsetSpace ~
+ (see section
+\begin_inset Space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
@@ -4577,7 +4825,10 @@ Sometimes when you LaTeX a document, there will be errors, things that LyX
  or LaTeX can't understand.
  When this happens, LyX will open a 
 \family sans
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset Space ~
+\end_inset
+
 Errors
 \family default
  dialog.
