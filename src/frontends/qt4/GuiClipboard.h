@@ -21,8 +21,6 @@
 namespace lyx {
 namespace frontend {
 
-class QWindowsMimeMetafile;
-
 /**
  * The Qt4 version of the Clipboard.
  */
@@ -54,8 +52,6 @@ private Q_SLOTS:
 	void on_dataChanged();
 
 private:
-	/// WMF Mime handler for Windows clipboard.
-	QWindowsMimeMetafile * wmf_mime_;
 	bool text_clipboard_empty_;
 	bool has_lyx_contents_;
 	bool has_graphics_contents_;
