@@ -229,6 +229,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
+		case LFUN_INSET_MODIFY:
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.enabled(true);
 			return true;
