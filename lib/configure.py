@@ -306,7 +306,7 @@ def checkFormatEntries(dtl_tools):
     #
     # entried that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
-\Format csv        csv    "Comma-separated values"  "" ""	""	"document"
+\Format csv        csv    "Table (CSV)"           "" ""	""	"document"
 \Format fax        ""      Fax                    "" ""	""	"document"
 \Format lyx        lyx     LyX                    "" ""	""	""
 \Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	"document"
