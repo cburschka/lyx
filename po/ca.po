@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-19 09:12+0200\n"
+"POT-Creation-Date: 2008-05-20 08:18+0200\n"
 "PO-Revision-Date: 2007-08-19 23:35+0200\n"
 "Last-Translator: Joan Montané <jmontane@gmail.com>\n"
 "Language-Team: catalan <ca@li.org>\n"
@@ -625,7 +625,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1600
+#: src/frontends/qt4/QPrefs.cpp:1639
 msgid "Language"
 msgstr "Idioma"
 
@@ -3843,7 +3843,7 @@ msgid "Acknowledgements."
 msgstr "Agraïments."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:305
+#: src/frontends/qt4/QPrefs.cpp:306
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -11738,7 +11738,7 @@ msgstr ""
 msgid "LaTeX (pdflatex)"
 msgstr "Actualitza el PDF (pdflatex)"
 
-#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:177
 msgid "Plain text"
 msgstr "Text pla"
 
@@ -11849,8 +11849,9 @@ msgid "date command"
 msgstr "Ordre Index:"
 
 #: lib/configure.py:309
-msgid "Comma-separated values"
-msgstr ""
+#, fuzzy
+msgid "Table (CSV)"
+msgstr "Taula"
 
 #: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -13818,38 +13819,38 @@ msgstr "Seleccionar fins al final del document"
 msgid "No Documents Open!"
 msgstr "No hi ha documents oberts!%t"
 
-#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
-#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 #, fuzzy
 msgid "No Document Open!"
 msgstr "No hi ha documents oberts!%t"
 
-#: src/MenuBackend.cpp:722
+#: src/MenuBackend.cpp:727
 #, fuzzy
 msgid "Master Document"
 msgstr "Vols salvar el document?"
 
-#: src/MenuBackend.cpp:751
+#: src/MenuBackend.cpp:756
 #, fuzzy
 msgid "List of listings"
 msgstr "Llista de figures"
 
-#: src/MenuBackend.cpp:755
+#: src/MenuBackend.cpp:760
 #, fuzzy
 msgid "Other floats"
 msgstr "Altres paràmetres de lletra"
 
-#: src/MenuBackend.cpp:765
+#: src/MenuBackend.cpp:770
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Taula de continguts"
 
-#: src/MenuBackend.cpp:811
+#: src/MenuBackend.cpp:816
 #, fuzzy
 msgid " (auto)"
 msgstr "Per defecte"
 
-#: src/MenuBackend.cpp:830
+#: src/MenuBackend.cpp:835
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Imprimeix el document"
@@ -14972,7 +14973,7 @@ msgstr ""
 msgid "About %1"
 msgstr "Quan al LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -15393,7 +15394,7 @@ msgstr "Escala (%)"
 msgid "Float Settings"
 msgstr "Paràmetres del flotant...|a"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:648
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
 msgid "Graphics"
 msgstr "Gràfics"
 
@@ -15452,113 +15453,113 @@ msgstr ""
 msgid "Paragraph Settings"
 msgstr "Paràmetres del paràgraf"
 
-#: src/frontends/qt4/QPrefs.cpp:76
+#: src/frontends/qt4/QPrefs.cpp:77
 msgid "Look and feel"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:77
+#: src/frontends/qt4/QPrefs.cpp:78
 msgid "Language settings"
 msgstr "Paràmetres d'idioma"
 
-#: src/frontends/qt4/QPrefs.cpp:78
+#: src/frontends/qt4/QPrefs.cpp:79
 msgid "Outputs"
 msgstr "Sortides"
 
-#: src/frontends/qt4/QPrefs.cpp:207
+#: src/frontends/qt4/QPrefs.cpp:208
 msgid "Date format"
 msgstr "Format de data"
 
-#: src/frontends/qt4/QPrefs.cpp:234
+#: src/frontends/qt4/QPrefs.cpp:235
 msgid "Keyboard"
 msgstr "Teclat"
 
-#: src/frontends/qt4/QPrefs.cpp:358
+#: src/frontends/qt4/QPrefs.cpp:359
 #, fuzzy
 msgid "Screen fonts"
 msgstr "Lletres en pantalla"
 
-#: src/frontends/qt4/QPrefs.cpp:521
+#: src/frontends/qt4/QPrefs.cpp:522
 msgid "Colors"
 msgstr "Colors"
 
-#: src/frontends/qt4/QPrefs.cpp:622 src/frontends/qt4/QPrefs.cpp:721
+#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
 msgid "Paths"
 msgstr "Camins"
 
-#: src/frontends/qt4/QPrefs.cpp:772
+#: src/frontends/qt4/QPrefs.cpp:773
 msgid "Select a document templates directory"
 msgstr "Seleccioneu un directori de plantilles"
 
-#: src/frontends/qt4/QPrefs.cpp:782
+#: src/frontends/qt4/QPrefs.cpp:783
 msgid "Select a temporary directory"
 msgstr "Seleccioneu un directori temporal"
 
-#: src/frontends/qt4/QPrefs.cpp:792
+#: src/frontends/qt4/QPrefs.cpp:793
 msgid "Select a backups directory"
 msgstr "Seleccioneu un directori de còpies de seguretat"
 
-#: src/frontends/qt4/QPrefs.cpp:802
+#: src/frontends/qt4/QPrefs.cpp:803
 msgid "Select a document directory"
 msgstr "Seleccioneu un directori de documents"
 
-#: src/frontends/qt4/QPrefs.cpp:812
+#: src/frontends/qt4/QPrefs.cpp:813
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:825 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Corrector ortogràfic"
 
-#: src/frontends/qt4/QPrefs.cpp:847
+#: src/frontends/qt4/QPrefs.cpp:848
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:849
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:851
+#: src/frontends/qt4/QPrefs.cpp:852
 #, fuzzy
 msgid "pspell (library)"
 msgstr "pspell (biblioteca)"
 
-#: src/frontends/qt4/QPrefs.cpp:854
+#: src/frontends/qt4/QPrefs.cpp:855
 msgid "aspell (library)"
 msgstr "aspell (biblioteca)"
 
-#: src/frontends/qt4/QPrefs.cpp:935
+#: src/frontends/qt4/QPrefs.cpp:936
 msgid "Converters"
 msgstr "Conversors"
 
-#: src/frontends/qt4/QPrefs.cpp:1133
+#: src/frontends/qt4/QPrefs.cpp:1134
 msgid "Copiers"
 msgstr "Copiadors"
 
-#: src/frontends/qt4/QPrefs.cpp:1386
+#: src/frontends/qt4/QPrefs.cpp:1387
 msgid "File formats"
 msgstr "Formats de fitxer"
 
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1617
 msgid "Format in use"
 msgstr "Format en ús"
 
-#: src/frontends/qt4/QPrefs.cpp:1579
+#: src/frontends/qt4/QPrefs.cpp:1618
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:1680
+#: src/frontends/qt4/QPrefs.cpp:1719
 msgid "Printer"
 msgstr "Impressora"
 
-#: src/frontends/qt4/QPrefs.cpp:1778 src/frontends/qt4/QPrefs.cpp:1979
+#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
 msgid "User interface"
 msgstr "Interfície d'usuari"
 
-#: src/frontends/qt4/QPrefs.cpp:1903
+#: src/frontends/qt4/QPrefs.cpp:1942
 msgid "Identity"
 msgstr "Identitat"
 
@@ -15734,11 +15735,11 @@ msgstr "Ref: "
 msgid "branch"
 msgstr "branca"
 
-#: src/insets/InsetCaption.cpp:95
+#: src/insets/InsetCaption.cpp:96
 msgid "Opened Caption Inset"
 msgstr ""
 
-#: src/insets/InsetCaption.cpp:304
+#: src/insets/InsetCaption.cpp:307
 msgid "Senseless!!! "
 msgstr "Sense sentit!!! "
 

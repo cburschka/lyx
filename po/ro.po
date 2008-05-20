@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-19 09:12+0200\n"
+"POT-Creation-Date: 2008-05-20 08:18+0200\n"
 "PO-Revision-Date: 2008-05-05 21:00-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -604,7 +604,7 @@ msgstr "Serii font"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1600
+#: src/frontends/qt4/QPrefs.cpp:1639
 msgid "Language"
 msgstr "Limbaj"
 
@@ -3778,7 +3778,7 @@ msgid "Acknowledgements."
 msgstr "Acknowledgements"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:305
+#: src/frontends/qt4/QPrefs.cpp:306
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -11919,7 +11919,7 @@ msgstr ""
 msgid "LaTeX (pdflatex)"
 msgstr "text LaTeX"
 
-#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:177
 #, fuzzy
 msgid "Plain text"
 msgstr "Place"
@@ -12029,8 +12029,9 @@ msgid "date command"
 msgstr "Comenda de indexare"
 
 #: lib/configure.py:309
-msgid "Comma-separated values"
-msgstr ""
+#, fuzzy
+msgid "Table (CSV)"
+msgstr "Tabel"
 
 #: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
 #, fuzzy
@@ -13999,37 +14000,37 @@ msgstr "Selecteazã pînã la sfîrºitul documentului"
 msgid "No Documents Open!"
 msgstr "Nu existã nici un document deschis!"
 
-#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
-#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Nu existã nici un document deschis!"
 
-#: src/MenuBackend.cpp:722
+#: src/MenuBackend.cpp:727
 #, fuzzy
 msgid "Master Document"
 msgstr "Salvare &documente"
 
-#: src/MenuBackend.cpp:751
+#: src/MenuBackend.cpp:756
 #, fuzzy
 msgid "List of listings"
 msgstr "Listã de figuri"
 
-#: src/MenuBackend.cpp:755
+#: src/MenuBackend.cpp:760
 #, fuzzy
 msgid "Other floats"
 msgstr "Alte setãri de font"
 
-#: src/MenuBackend.cpp:765
+#: src/MenuBackend.cpp:770
 msgid "No Table of contents"
 msgstr "Nu existã cuprins"
 
-#: src/MenuBackend.cpp:811
+#: src/MenuBackend.cpp:816
 #, fuzzy
 msgid " (auto)"
 msgstr "Datã"
 
-#: src/MenuBackend.cpp:830
+#: src/MenuBackend.cpp:835
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Documente"
@@ -15200,7 +15201,7 @@ msgstr ""
 msgid "About %1"
 msgstr "Despre LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
 msgid "Preferences"
 msgstr "Preferinþe"
 
@@ -15658,7 +15659,7 @@ msgstr "Smaller"
 msgid "Float Settings"
 msgstr "opþiuni suplimentare"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:648
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
 #, fuzzy
 msgid "Graphics"
 msgstr "&Graficã"
@@ -15722,126 +15723,126 @@ msgstr ""
 msgid "Paragraph Settings"
 msgstr "Cheie bibliograficã"
 
-#: src/frontends/qt4/QPrefs.cpp:76
+#: src/frontends/qt4/QPrefs.cpp:77
 msgid "Look and feel"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:77
+#: src/frontends/qt4/QPrefs.cpp:78
 #, fuzzy
 msgid "Language settings"
 msgstr "Setãri imprimantã"
 
-#: src/frontends/qt4/QPrefs.cpp:78
+#: src/frontends/qt4/QPrefs.cpp:79
 #, fuzzy
 msgid "Outputs"
 msgstr "Ieºire"
 
-#: src/frontends/qt4/QPrefs.cpp:207
+#: src/frontends/qt4/QPrefs.cpp:208
 #, fuzzy
 msgid "Date format"
 msgstr "&Formatul datei:"
 
-#: src/frontends/qt4/QPrefs.cpp:234
+#: src/frontends/qt4/QPrefs.cpp:235
 msgid "Keyboard"
 msgstr "Tastaturã"
 
-#: src/frontends/qt4/QPrefs.cpp:358
+#: src/frontends/qt4/QPrefs.cpp:359
 #, fuzzy
 msgid "Screen fonts"
 msgstr "Fonturi ecran"
 
-#: src/frontends/qt4/QPrefs.cpp:521
+#: src/frontends/qt4/QPrefs.cpp:522
 msgid "Colors"
 msgstr "Culori"
 
-#: src/frontends/qt4/QPrefs.cpp:622 src/frontends/qt4/QPrefs.cpp:721
+#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
 #, fuzzy
 msgid "Paths"
 msgstr "Part"
 
-#: src/frontends/qt4/QPrefs.cpp:772
+#: src/frontends/qt4/QPrefs.cpp:773
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/frontends/qt4/QPrefs.cpp:782
+#: src/frontends/qt4/QPrefs.cpp:783
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/frontends/qt4/QPrefs.cpp:792
+#: src/frontends/qt4/QPrefs.cpp:793
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/QPrefs.cpp:802
+#: src/frontends/qt4/QPrefs.cpp:803
 #, fuzzy
 msgid "Select a document directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/QPrefs.cpp:812
+#: src/frontends/qt4/QPrefs.cpp:813
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:825 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Verificator ortografic"
 
-#: src/frontends/qt4/QPrefs.cpp:847
+#: src/frontends/qt4/QPrefs.cpp:848
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:849
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:851
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:854
+#: src/frontends/qt4/QPrefs.cpp:855
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:935
+#: src/frontends/qt4/QPrefs.cpp:936
 #, fuzzy
 msgid "Converters"
 msgstr "&Convertoare"
 
-#: src/frontends/qt4/QPrefs.cpp:1133
+#: src/frontends/qt4/QPrefs.cpp:1134
 #, fuzzy
 msgid "Copiers"
 msgstr "Copii"
 
-#: src/frontends/qt4/QPrefs.cpp:1386
+#: src/frontends/qt4/QPrefs.cpp:1387
 #, fuzzy
 msgid "File formats"
 msgstr "Formate de &fiºier"
 
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1617
 #, fuzzy
 msgid "Format in use"
 msgstr "&Format:"
 
-#: src/frontends/qt4/QPrefs.cpp:1579
+#: src/frontends/qt4/QPrefs.cpp:1618
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:1680
+#: src/frontends/qt4/QPrefs.cpp:1719
 #, fuzzy
 msgid "Printer"
 msgstr "Imprimantã"
 
-#: src/frontends/qt4/QPrefs.cpp:1778 src/frontends/qt4/QPrefs.cpp:1979
+#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
 #, fuzzy
 msgid "User interface"
 msgstr "&Fiºier interfaþã utilizator:"
 
-#: src/frontends/qt4/QPrefs.cpp:1903
+#: src/frontends/qt4/QPrefs.cpp:1942
 #, fuzzy
 msgid "Identity"
 msgstr "&Indentare"
@@ -16027,12 +16028,12 @@ msgstr "MyRef"
 msgid "branch"
 msgstr "Cale fiºiere de rezervã:|#r"
 
-#: src/insets/InsetCaption.cpp:95
+#: src/insets/InsetCaption.cpp:96
 #, fuzzy
 msgid "Opened Caption Inset"
 msgstr "CenteredCaption"
 
-#: src/insets/InsetCaption.cpp:304
+#: src/insets/InsetCaption.cpp:307
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Fãrã sens: "

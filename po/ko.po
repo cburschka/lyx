@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-19 09:12+0200\n"
+"POT-Creation-Date: 2008-05-20 08:18+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -597,7 +597,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1600
+#: src/frontends/qt4/QPrefs.cpp:1639
 msgid "Language"
 msgstr "언어"
 
@@ -3770,7 +3770,7 @@ msgid "Acknowledgements."
 msgstr ""
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:305
+#: src/frontends/qt4/QPrefs.cpp:306
 msgid "LaTeX"
 msgstr ""
 
@@ -11648,7 +11648,7 @@ msgstr ""
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX 텍스트"
 
-#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:177
 #, fuzzy
 msgid "Plain text"
 msgstr "보통 문(Plain Text)"
@@ -11756,7 +11756,7 @@ msgid "date command"
 msgstr "수식 삽입"
 
 #: lib/configure.py:309
-msgid "Comma-separated values"
+msgid "Table (CSV)"
 msgstr ""
 
 #: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
@@ -13664,37 +13664,37 @@ msgstr "저장된 문서로 되돌릴까요?"
 msgid "No Documents Open!"
 msgstr "열려있는 문서가 없음!"
 
-#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
-#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 #, fuzzy
 msgid "No Document Open!"
 msgstr "열려있는 문서가 없음!"
 
-#: src/MenuBackend.cpp:722
+#: src/MenuBackend.cpp:727
 #, fuzzy
 msgid "Master Document"
 msgstr "문서 저장하기"
 
-#: src/MenuBackend.cpp:751
+#: src/MenuBackend.cpp:756
 #, fuzzy
 msgid "List of listings"
 msgstr "그림 목록"
 
-#: src/MenuBackend.cpp:755
+#: src/MenuBackend.cpp:760
 #, fuzzy
 msgid "Other floats"
 msgstr "날짜 형태(format)"
 
-#: src/MenuBackend.cpp:765
+#: src/MenuBackend.cpp:770
 msgid "No Table of contents"
 msgstr "목차 없음"
 
-#: src/MenuBackend.cpp:811
+#: src/MenuBackend.cpp:816
 #, fuzzy
 msgid " (auto)"
 msgstr "날짜"
 
-#: src/MenuBackend.cpp:830
+#: src/MenuBackend.cpp:835
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "문서 인쇄"
@@ -14762,7 +14762,7 @@ msgstr ""
 msgid "About %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
 #, fuzzy
 msgid "Preferences"
 msgstr "선택(Preferences)..."
@@ -15179,7 +15179,7 @@ msgstr "축적(Scale)"
 msgid "Float Settings"
 msgstr "뜨내기 구성(Float Settings)"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:648
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
 #, fuzzy
 msgid "Graphics"
 msgstr "그림(&Graphics)"
@@ -15236,120 +15236,120 @@ msgstr ""
 msgid "Paragraph Settings"
 msgstr "단락 구성(Paragraph Settings)"
 
-#: src/frontends/qt4/QPrefs.cpp:76
+#: src/frontends/qt4/QPrefs.cpp:77
 msgid "Look and feel"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:77
+#: src/frontends/qt4/QPrefs.cpp:78
 msgid "Language settings"
 msgstr "언어 구성"
 
-#: src/frontends/qt4/QPrefs.cpp:78
+#: src/frontends/qt4/QPrefs.cpp:79
 msgid "Outputs"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:207
+#: src/frontends/qt4/QPrefs.cpp:208
 msgid "Date format"
 msgstr "날짜 형태(format)"
 
-#: src/frontends/qt4/QPrefs.cpp:234
+#: src/frontends/qt4/QPrefs.cpp:235
 msgid "Keyboard"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:358
+#: src/frontends/qt4/QPrefs.cpp:359
 msgid "Screen fonts"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:521
+#: src/frontends/qt4/QPrefs.cpp:522
 #, fuzzy
 msgid "Colors"
 msgstr "색깔(&Colors)"
 
-#: src/frontends/qt4/QPrefs.cpp:622 src/frontends/qt4/QPrefs.cpp:721
+#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
 #, fuzzy
 msgid "Paths"
 msgstr "수식(Math)"
 
-#: src/frontends/qt4/QPrefs.cpp:772
+#: src/frontends/qt4/QPrefs.cpp:773
 msgid "Select a document templates directory"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/frontends/qt4/QPrefs.cpp:782
+#: src/frontends/qt4/QPrefs.cpp:783
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/frontends/qt4/QPrefs.cpp:792
+#: src/frontends/qt4/QPrefs.cpp:793
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "문서 directory를 선택하시오"
 
-#: src/frontends/qt4/QPrefs.cpp:802
+#: src/frontends/qt4/QPrefs.cpp:803
 msgid "Select a document directory"
 msgstr "문서 directory를 선택하시오"
 
-#: src/frontends/qt4/QPrefs.cpp:812
+#: src/frontends/qt4/QPrefs.cpp:813
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:825 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "철자 검사기 "
 
-#: src/frontends/qt4/QPrefs.cpp:847
+#: src/frontends/qt4/QPrefs.cpp:848
 msgid "ispell"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:849
 msgid "aspell"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "hspell"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:851
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:854
+#: src/frontends/qt4/QPrefs.cpp:855
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:935
+#: src/frontends/qt4/QPrefs.cpp:936
 #, fuzzy
 msgid "Converters"
 msgstr "중심(Center)"
 
-#: src/frontends/qt4/QPrefs.cpp:1133
+#: src/frontends/qt4/QPrefs.cpp:1134
 #, fuzzy
 msgid "Copiers"
 msgstr "바깥쪽(Outer)"
 
-#: src/frontends/qt4/QPrefs.cpp:1386
+#: src/frontends/qt4/QPrefs.cpp:1387
 msgid "File formats"
 msgstr "파일 형태(formats)"
 
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1617
 #, fuzzy
 msgid "Format in use"
 msgstr "형틀 짜기(Formatting)"
 
-#: src/frontends/qt4/QPrefs.cpp:1579
+#: src/frontends/qt4/QPrefs.cpp:1618
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:1680
+#: src/frontends/qt4/QPrefs.cpp:1719
 #, fuzzy
 msgid "Printer"
 msgstr "적분 삽입"
 
-#: src/frontends/qt4/QPrefs.cpp:1778 src/frontends/qt4/QPrefs.cpp:1979
+#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
 #, fuzzy
 msgid "User interface"
 msgstr "적분 삽입"
 
-#: src/frontends/qt4/QPrefs.cpp:1903
+#: src/frontends/qt4/QPrefs.cpp:1942
 #, fuzzy
 msgid "Identity"
 msgstr "색인 기재 사항(Index Entry)"
@@ -15519,11 +15519,11 @@ msgstr "노우트(Note) #:"
 msgid "branch"
 msgstr ""
 
-#: src/insets/InsetCaption.cpp:95
+#: src/insets/InsetCaption.cpp:96
 msgid "Opened Caption Inset"
 msgstr "열려있는 표제 삽입구(Opened Caption Inset)"
 
-#: src/insets/InsetCaption.cpp:304
+#: src/insets/InsetCaption.cpp:307
 msgid "Senseless!!! "
 msgstr ""
 

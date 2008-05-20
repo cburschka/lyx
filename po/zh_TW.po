@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-19 09:12+0200\n"
+"POT-Creation-Date: 2008-05-20 08:18+0200\n"
 "PO-Revision-Date: 2007-10-07 21:30+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -601,7 +601,7 @@ msgstr "字型系列"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1600
+#: src/frontends/qt4/QPrefs.cpp:1639
 msgid "Language"
 msgstr "語言"
 
@@ -3746,7 +3746,7 @@ msgid "Acknowledgements."
 msgstr "致謝。"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:305
+#: src/frontends/qt4/QPrefs.cpp:306
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -11554,7 +11554,7 @@ msgstr ""
 msgid "LaTeX (pdflatex)"
 msgstr "更新 PDF (pdflatex)"
 
-#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:176
+#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:177
 msgid "Plain text"
 msgstr "純文字"
 
@@ -11664,8 +11664,9 @@ msgid "date command"
 msgstr "索引命令："
 
 #: lib/configure.py:309
-msgid "Comma-separated values"
-msgstr ""
+#, fuzzy
+msgid "Table (CSV)"
+msgstr "表格"
 
 #: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -13618,32 +13619,32 @@ msgstr "還原成文件的已儲存版本？"
 msgid "No Documents Open!"
 msgstr "沒有文件開啟！"
 
-#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:576 src/MenuBackend.cpp:598
-#: src/MenuBackend.cpp:621 src/MenuBackend.cpp:707 src/MenuBackend.cpp:822
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 msgid "No Document Open!"
 msgstr "沒有文件開啟！"
 
-#: src/MenuBackend.cpp:722
+#: src/MenuBackend.cpp:727
 msgid "Master Document"
 msgstr "主控文件"
 
-#: src/MenuBackend.cpp:751
+#: src/MenuBackend.cpp:756
 msgid "List of listings"
 msgstr "表列清單"
 
-#: src/MenuBackend.cpp:755
+#: src/MenuBackend.cpp:760
 msgid "Other floats"
 msgstr "其他浮動"
 
-#: src/MenuBackend.cpp:765
+#: src/MenuBackend.cpp:770
 msgid "No Table of contents"
 msgstr "沒有內容表"
 
-#: src/MenuBackend.cpp:811
+#: src/MenuBackend.cpp:816
 msgid " (auto)"
 msgstr " (自動)"
 
-#: src/MenuBackend.cpp:830
+#: src/MenuBackend.cpp:835
 msgid "No Branch in Document!"
 msgstr "文件中沒有分支！"
 
@@ -14723,7 +14724,7 @@ msgstr ""
 msgid "About %1"
 msgstr "關於 %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -15121,7 +15122,7 @@ msgstr "比例%"
 msgid "Float Settings"
 msgstr "浮動設定值"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:648
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
 msgid "Graphics"
 msgstr "圖形"
 
@@ -15177,111 +15178,111 @@ msgstr ""
 msgid "Paragraph Settings"
 msgstr "段落設定值"
 
-#: src/frontends/qt4/QPrefs.cpp:76
+#: src/frontends/qt4/QPrefs.cpp:77
 msgid "Look and feel"
 msgstr "外觀感覺"
 
-#: src/frontends/qt4/QPrefs.cpp:77
+#: src/frontends/qt4/QPrefs.cpp:78
 msgid "Language settings"
 msgstr "語言設定值"
 
-#: src/frontends/qt4/QPrefs.cpp:78
+#: src/frontends/qt4/QPrefs.cpp:79
 msgid "Outputs"
 msgstr "輸出"
 
-#: src/frontends/qt4/QPrefs.cpp:207
+#: src/frontends/qt4/QPrefs.cpp:208
 msgid "Date format"
 msgstr "日期格式"
 
-#: src/frontends/qt4/QPrefs.cpp:234
+#: src/frontends/qt4/QPrefs.cpp:235
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: src/frontends/qt4/QPrefs.cpp:358
+#: src/frontends/qt4/QPrefs.cpp:359
 msgid "Screen fonts"
 msgstr "螢幕字型"
 
-#: src/frontends/qt4/QPrefs.cpp:521
+#: src/frontends/qt4/QPrefs.cpp:522
 msgid "Colors"
 msgstr "顏色"
 
-#: src/frontends/qt4/QPrefs.cpp:622 src/frontends/qt4/QPrefs.cpp:721
+#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
 msgid "Paths"
 msgstr "路徑"
 
-#: src/frontends/qt4/QPrefs.cpp:772
+#: src/frontends/qt4/QPrefs.cpp:773
 msgid "Select a document templates directory"
 msgstr "選取文件模板目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:782
+#: src/frontends/qt4/QPrefs.cpp:783
 msgid "Select a temporary directory"
 msgstr "選取暫存目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:792
+#: src/frontends/qt4/QPrefs.cpp:793
 msgid "Select a backups directory"
 msgstr "選取備份目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:802
+#: src/frontends/qt4/QPrefs.cpp:803
 msgid "Select a document directory"
 msgstr "選取文件目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:812
+#: src/frontends/qt4/QPrefs.cpp:813
 msgid "Give a filename for the LyX server pipe"
 msgstr "給出用於 LyX 伺服器管道的檔名"
 
-#: src/frontends/qt4/QPrefs.cpp:825 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "拼寫檢查器"
 
-#: src/frontends/qt4/QPrefs.cpp:847
+#: src/frontends/qt4/QPrefs.cpp:848
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:849
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:851
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "pspell (library)"
 msgstr "pspell (函式庫)"
 
-#: src/frontends/qt4/QPrefs.cpp:854
+#: src/frontends/qt4/QPrefs.cpp:855
 msgid "aspell (library)"
 msgstr "aspell (函式庫)"
 
-#: src/frontends/qt4/QPrefs.cpp:935
+#: src/frontends/qt4/QPrefs.cpp:936
 msgid "Converters"
 msgstr "轉換器"
 
-#: src/frontends/qt4/QPrefs.cpp:1133
+#: src/frontends/qt4/QPrefs.cpp:1134
 msgid "Copiers"
 msgstr "複製器"
 
-#: src/frontends/qt4/QPrefs.cpp:1386
+#: src/frontends/qt4/QPrefs.cpp:1387
 msgid "File formats"
 msgstr "檔案格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1617
 msgid "Format in use"
 msgstr "使用中格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1579
+#: src/frontends/qt4/QPrefs.cpp:1618
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "無法移除轉換器所使用的格式。先移除轉換器。"
 
-#: src/frontends/qt4/QPrefs.cpp:1680
+#: src/frontends/qt4/QPrefs.cpp:1719
 msgid "Printer"
 msgstr "印表機"
 
-#: src/frontends/qt4/QPrefs.cpp:1778 src/frontends/qt4/QPrefs.cpp:1979
+#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
 msgid "User interface"
 msgstr "使用者介面"
 
-#: src/frontends/qt4/QPrefs.cpp:1903
+#: src/frontends/qt4/QPrefs.cpp:1942
 msgid "Identity"
 msgstr "身分"
 
@@ -15445,11 +15446,11 @@ msgstr "未定義："
 msgid "branch"
 msgstr "分支"
 
-#: src/insets/InsetCaption.cpp:95
+#: src/insets/InsetCaption.cpp:96
 msgid "Opened Caption Inset"
 msgstr "開啟的題要內欄"
 
-#: src/insets/InsetCaption.cpp:304
+#: src/insets/InsetCaption.cpp:307
 msgid "Senseless!!! "
 msgstr "無意義 !!! "
 
