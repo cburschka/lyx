@@ -54,6 +54,12 @@ char const * const times_char = "sd";
 // List of known quote chars
 char const * const quote_char = ",'`<>";
 
+// Unicode characters needed by each quote type
+char_type const display_quote_char[2][5] = {
+	{ 0x201a, 0x2019, 0x2018, 0x2039, 0x203a},
+	{ 0x201e, 0x201d, 0x201c, 0x00ab, 0x00bb}
+};
+
 // Index of chars used for the quote. Index is [side, language]
 int quote_index[2][6] = {
 	{ 2, 1, 0, 0, 3, 4 },    // "'',,<>"
@@ -181,38 +187,8 @@ void InsetQuotes::parseString(string const & s)
 docstring InsetQuotes::displayString() const
 {
 	Language const * loclang = buffer().params().language;
-	string disp;
-	disp += quote_char[quote_index[side_][language_]];
-	if (times_ == DoubleQuotes)
-		disp += disp;
-
-
-	docstring retdisp;
-	if (disp == "<<")
-		retdisp = docstring(1, 0x00ab); //'«';
-	else if (disp == ">>")
-		retdisp = docstring(1, 0x00bb); //'»';
-#if 0
-	// The below are supposed to work, but something fails.
-	else if (disp == ",,")
-		retdisp = docstring(1, 0x201e);
-	else if (disp == "''")
-		retdisp == docstring(1, 0x201d);
-	else if (disp == "``")
-		retdisp == docstring(1, 0x201c);
-	else if (disp == "<")
-		retdisp = docstring(1, 0x2039);
-	else if (disp == ">")
-		retdisp = docstring(1, 0x203a);
-	else if (disp == ",")
-		retdisp = docstring(1, 0x201a);
-	else if (disp == "'")
-		retdisp = docstring(1, 0x2019);
-	else if (disp == "`")
-		retdisp = docstring(1, 0x2018);
-#endif
-	else
-		retdisp = from_ascii(disp);
+	int const index = quote_index[side_][language_];
+	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQuotes && prefixIs(loclang->code(), "fr")) {
