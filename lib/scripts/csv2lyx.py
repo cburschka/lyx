@@ -180,7 +180,7 @@ for j in range(num_rows):
     # write contents of one line
     ############################
     for i in range(len(rows[j])):
-        row.append( cell % rows[j][i])
+        row.append( cell % rows[j][i].replace('\\','\\backslash\n'))
 
     # If row has less columns than num_cols fill with blank entries
     for i in range(len(rows[j]), num_cols):
