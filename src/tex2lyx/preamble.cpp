@@ -746,7 +746,7 @@ void parse_preamble(Parser & p, ostream & os,
 			for (; *margin; ++margin) {
 				k += 1;
 				// search for the "=" in e.g. "lmargin=2cm" to get the value
-				for(int i = 0; i < opts.size(); i++) {
+				for(size_t i = 0; i != opts.size(); i++) {
 					if (opts.at(i).find(*margin) != string::npos) {
 						string::size_type pos = opts.at(i).find("=");
 						string value = opts.at(i).substr(pos + 1);
