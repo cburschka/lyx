@@ -292,7 +292,8 @@ bool needEnumCounterReset(ParIterator const & it)
 // set the label of a paragraph. This includes the counters.
 void setLabel(Buffer const & buf, ParIterator & it)
 {
-	DocumentClass const & textclass = buf.params().documentClass();
+	BufferParams const & bp = buf.masterBuffer()->params();
+	DocumentClass const & textclass = bp.documentClass();
 	Paragraph & par = it.paragraph();
 	Layout const & layout = par.layout();
 	Counters & counters = textclass.counters();
@@ -310,19 +311,19 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 	if (layout.margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), buf.params()));
+			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), bp));
 	} else {
 		par.params().labelWidthString(docstring());
 	}
 
 	switch(layout.labeltype) {
 	case LABEL_COUNTER:
-		if (layout.toclevel <= buf.params().secnumdepth
+		if (layout.toclevel <= bp.secnumdepth
 		    && (layout.latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout.counter);
 			par.params().labelString(
-				par.expandLabel(layout, buf.params()));
+				par.expandLabel(layout, bp));
 		} else
 			par.params().labelString(docstring());
 		break;
@@ -331,7 +332,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		// At some point of time we should do something more
 		// clever here, like:
 		//   par.params().labelString(
-		//    buf.params().user_defined_bullet(par.itemdepth).getText());
+		//    bp.user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
 		docstring itemlabel;
 		switch (par.itemdepth) {
@@ -400,7 +401,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		}
 
 		par.params().labelString(counters.counterLabel(
-			par.translateIfPossible(from_ascii(format), buf.params())));
+			par.translateIfPossible(from_ascii(format), bp)));
 
 		break;
 	}
@@ -434,8 +435,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 	case LABEL_STATIC:	
 	case LABEL_BIBLIO:
 		par.params().labelString(
-			par.translateIfPossible(layout.labelstring(), 
-						buf.params()));
+			par.translateIfPossible(layout.labelstring(), bp));
 		break;
 	}
 }
