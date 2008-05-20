@@ -191,7 +191,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetFloat::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buffer().params().documentClass().counters();
+	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 	bool const savesubflt = cnts.isSubfloat();
 

@@ -280,27 +280,28 @@ int InsetCaption::getCaptionText(odocstream & os,
 
 void InsetCaption::updateLabels(ParIterator const & it)
 {
-	DocumentClass const & tclass = buffer().params().documentClass();
+	Buffer const & master = *buffer().masterBuffer();
+	DocumentClass const & tclass = master.params().documentClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
 	// Memorize type for addToToc().
 	type_ = type;
 	in_subfloat_ = cnts.isSubfloat();
 	if (type.empty())
-		full_label_ = buffer().B_("Senseless!!! ");
+		full_label_ = master.B_("Senseless!!! ");
 	else {
 		// FIXME: life would be _much_ simpler if listings was
 		// listed in Floating.
 		docstring name;
 		if (type == "listing")
-			name = buffer().B_("Listing");
+			name = master.B_("Listing");
 		else
-			name = buffer().B_(tclass.floats().getType(type).name());
+			name = master.B_(tclass.floats().getType(type).name());
 		docstring counter = from_utf8(type);
 		if (in_subfloat_) {
 			counter = "sub-" + from_utf8(type);
 			name = bformat(_("Sub-%1$s"),
-				       buffer().B_(tclass.floats().getType(type).name()));
+				       master.B_(tclass.floats().getType(type).name()));
 		}
 		if (cnts.hasCounter(counter)) {
 			cnts.step(counter);
