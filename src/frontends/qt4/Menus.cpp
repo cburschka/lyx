@@ -953,12 +953,6 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (cit->first == "tableofcontents")
 			continue;
 
-		if (cit->first == "listing") {
-			// FIXME: the listing navigate menu causes a crash for unknown
-			// reason. See http://bugzilla.lyx.org/show_bug.cgi?id=4613
-			continue;
-		}
-
 		MenuDefinition submenu;
 		if (cit->second.size() >= 30) {
 			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);

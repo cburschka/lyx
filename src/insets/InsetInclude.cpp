@@ -896,7 +896,6 @@ void InsetInclude::addToToc(DocIterator const & cpit)
 		docstring str = convert<docstring>(toc.size() + 1)
 			+ ". " +  from_utf8(caption);
 		DocIterator pit = cpit;
-		pit.push_back(CursorSlice(*this));
 		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}
@@ -937,9 +936,10 @@ void InsetInclude::updateLabels(ParIterator const & it)
 		listings_label_.clear();
 		return;
 	}
-	Counters & counters = buffer().params().documentClass().counters();
+	Buffer const & master = *buffer().masterBuffer();
+	Counters & counters = master.params().documentClass().counters();
 	docstring const cnt = from_ascii("listing");
-	listings_label_ = buffer().B_("Program Listing");
+	listings_label_ = master.B_("Program Listing");
 	if (counters.hasCounter(cnt)) {
 		counters.step(cnt);
 		listings_label_ += " " + convert<docstring>(counters.value(cnt));
