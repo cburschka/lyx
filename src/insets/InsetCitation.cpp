@@ -94,13 +94,16 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 	string output;
 	switch (engine) {
 		case ENGINE_BASIC:
-			output = input;
+			if (input == "nocite")
+				output = input;
+			else
+				output = default_str;
 			break;
 
 		case ENGINE_NATBIB_AUTHORYEAR:
 		case ENGINE_NATBIB_NUMERICAL:
-			if (input == "cite" || input == "citefield" ||
-							input == "citetitle" || input == "cite*")
+			if (input == "cite" || input == "citefield"
+			    || input == "citetitle" || input == "cite*")
 				output = default_str;
 			else if (prefixIs(input, "foot"))
 				output = input.substr(4);
