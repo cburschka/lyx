@@ -228,7 +228,6 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	LYXERR0("CURSOR SIZE: " << cur.depth());
 	switch (cmd.action) {
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.enabled(true);
