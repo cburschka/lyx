@@ -909,6 +909,7 @@ void InsetInclude::addToToc(DocIterator const & cpit)
 	toc.push_back(TocItem(cpit, 0, str));
 
 	TocList & toclist = backend.tocs();
+	childbuffer->tocBackend().update();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();
 	TocList::const_iterator it = childtoclist.begin();
 	TocList::const_iterator const end = childtoclist.end();

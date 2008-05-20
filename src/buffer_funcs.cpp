@@ -509,6 +509,10 @@ void updateLabels(Buffer const & buf, bool childonly)
 	ParIterator parit = par_iterator_begin(buf.inset());
 	updateLabels(buf, parit);
 
+	if (master != &buf)
+		// TocBackend update will be done later.
+		return;
+
 	cbuf.tocBackend().update();
 	if (!childonly)
 		cbuf.structureChanged();
