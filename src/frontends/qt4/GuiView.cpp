@@ -2019,8 +2019,6 @@ void GuiView::restartCursor()
 
 	// Take this occasion to update the other GUI elements.
 	updateDialogs();
-	//
-	setFocus();
 }
 
 
