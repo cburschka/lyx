@@ -419,6 +419,13 @@ void LyXAction::init()
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
 		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_APPENDIX
+ * \li Action: Start (or remove) Appendix on the given cursor position.
+ * \li Syntax: appendix
+ * \li Origin: ettrich, 5 May 1998
+ * \endvar
+ */
 		{ LFUN_APPENDIX, "appendix", Noop, Edit },
 
 		{ LFUN_INDEX_INSERT, "index-insert", Noop, Edit },
