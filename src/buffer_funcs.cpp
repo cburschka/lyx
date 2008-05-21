@@ -710,10 +710,13 @@ void updateLabels(Buffer const & buf, bool childonly)
 		}
 	}
 
-	Buffer & cbuf = const_cast<Buffer &>(buf);
-	cbuf.tocBackend().update();
-	if (!childonly)
-		cbuf.structureChanged();
+	// The Toc backend of child documents will be done later in InsetInclude::addToToc()
+	if (master == &buf) {
+		Buffer & cbuf = const_cast<Buffer &>(buf);
+		cbuf.tocBackend().update();
+		if (!childonly)
+			cbuf.structureChanged();
+	}
 }
 
 

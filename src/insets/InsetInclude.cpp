@@ -915,10 +915,11 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 		}
 		return;
 	}
-	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
+	Buffer * childbuffer = getChildBuffer(buffer, params_);
 	if (!childbuffer)
 		return;
 
+	childbuffer->tocBackend().update();
 	TocList const & childtoclist = childbuffer->tocBackend().tocs();
 	TocList::const_iterator it = childtoclist.begin();
 	TocList::const_iterator const end = childtoclist.end();
