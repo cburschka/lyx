@@ -113,7 +113,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 			if (!toc_item->par_it_->getLabelstring().empty())
 				tocstring = toc_item->par_it_->getLabelstring() + ' ';
-			tocstring += par.asString(*buffer_, false);
+			tocstring += par.printableString(false);
 			break;
 		}
 	}
@@ -122,7 +122,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	if (toclevel != Layout::NOT_IN_TOC
 	    && toclevel >= min_toclevel
 		&& tocstring.empty())
-			tocstring = toc_item->par_it_->asString(*buffer_, true);
+			tocstring = toc_item->par_it_->printableString(true);
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
 }
@@ -158,7 +158,7 @@ void TocBackend::update()
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!pit->getLabelstring().empty())
 					tocstring = pit->getLabelstring() + ' ';
-				tocstring += par.asString(*buffer_, false);
+				tocstring += par.printableString(false);
 				break;
 			}
 			default:
@@ -172,7 +172,7 @@ void TocBackend::update()
 		    && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			if (tocstring.empty())
-				tocstring = pit->asString(*buffer_, true);
+				tocstring = pit->printableString(true);
 			toc.push_back(TocItem(pit, toclevel - min_toclevel,
 				tocstring));
 		}

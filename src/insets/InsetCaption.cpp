@@ -127,7 +127,7 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf,
 
 	Toc & toc = toclist[type_];
 	docstring const str = convert<docstring>(counter_)
-		+ ". " + pit->asString(buf, false);
+		+ ". " + pit->printableString(false);
 	toc.push_back(TocItem(pit, 0, str));
 }
 

@@ -2548,6 +2548,21 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 }
 
 
+docstring const Paragraph::printableString(bool label) const
+{
+	odocstringstream os;
+	if (label && !params().labelString().empty())
+		os << params().labelString() << ' ';
+	pos_type end = size();
+	for (pos_type i = 0; i < end; ++i) {
+		value_type const c = getChar(i);
+		if (isPrintable(c))
+			os.put(c);
+	}
+	return os.str();
+}
+
+
 // Convert the paragraph to a string.
 // Used for building the table of contents
 docstring const Paragraph::asString(Buffer const & buffer, bool label) const

@@ -101,6 +101,8 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	///
+	docstring const printableString(bool label) const;
+	///
 	docstring const asString(Buffer const &, bool label) const;
 	///
 	docstring const asString(Buffer const & buffer,
