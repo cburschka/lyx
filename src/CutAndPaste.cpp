@@ -90,7 +90,7 @@ bool checkPastePossible(int index)
 
 pair<PitPosPair, pit_type>
 pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
-		     DocumentClass const * const docclass, ErrorList & errorlist)
+		     DocumentClass const * const oldDocClass, ErrorList & errorlist)
 {
 	Buffer const & buffer = cur.buffer();
 	pit_type pit = cur.pit();
@@ -104,7 +104,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	DocumentClass const * const tc = buffer.params().documentClassPtr();
+	DocumentClass const * const newDocClass = 
+		buffer.params().documentClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -128,15 +129,27 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	}
 
 	// set the paragraphs to empty layout if necessary
-	// note that we are doing this if the empty layout is
-	// supposed to be the default, not just if it is forced
 	if (cur.inset().useEmptyLayout()) {
-		Layout const & layout =
-			buffer.params().documentClass().emptyLayout();
+		bool forceEmptyLayout = cur.inset().forceEmptyLayout();
+		Layout const & emptyLayout = newDocClass->emptyLayout();
+		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
-		for (ParagraphList::iterator par = insertion.begin();
-				par != end; ++par)
-			par->setLayout(layout);
+		ParagraphList::iterator par = insertion.begin();
+		for (; par != end; ++par) {
+			Layout const & parLayout = par->layout();
+			if (forceEmptyLayout || parLayout == defaultLayout)
+				par->setLayout(emptyLayout);
+		}
+	} else { // check if we need to reset form empty layout
+		Layout const & defaultLayout = newDocClass->defaultLayout();
+		Layout const & emptyLayout = newDocClass->emptyLayout();
+		ParagraphList::iterator const end = insertion.end();
+		ParagraphList::iterator par = insertion.begin();
+		for (; par != end; ++par) {
+			Layout const & parLayout = par->layout();
+			if (parLayout == emptyLayout)
+				par->setLayout(defaultLayout);
+		}
 	}
 
 	// Make sure there is no class difference.
@@ -146,7 +159,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// since we store pointers to insets at some places and we don't
 	// want to invalidate them.
 	insertion.swap(in.paragraphs());
-	cap::switchBetweenClasses(docclass, tc, in, errorlist);
+	cap::switchBetweenClasses(oldDocClass, newDocClass, in, errorlist);
 	insertion.swap(in.paragraphs());
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
