@@ -3435,13 +3435,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE:
-		if (tabularStackDirty() && theClipboard().isInternal() ||
+		if (!tabularStackDirty()) {
+			cell(cur.idx())->dispatch(cur, cmd);
+			break;
+		}
+		if (theClipboard().isInternal() ||
 		    !theClipboard().hasInternal() && theClipboard().hasLyXContents()) {
 			cur.recordUndoInset(INSERT_UNDO);
 			pasteClipboard(cur);
-			break;
 		}
-		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_FONT_EMPH:
