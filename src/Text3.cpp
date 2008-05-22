@@ -1306,6 +1306,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			return;
 
+		case mouse_button::none:
+		case mouse_button::button4:
+		case mouse_button::button5:
+			break;
 		} // switch (cmd.button())
 
 		break;
