@@ -418,6 +418,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TOC_INSERT
+ * \li Action: Inserts table of contents.
+ * \li Syntax: toc-insert
+ * \li Origin: Lgb, 27 May 97
+ * \endvar
+ */
 		{ LFUN_TOC_INSERT, "toc-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_APPENDIX
