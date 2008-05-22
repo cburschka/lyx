@@ -98,7 +98,12 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	/// Convert the paragraph to a string.
+	/// This method doesn't go inside insets, only printable characters in this
+	/// paragraph are used.
 	/// Used for building the table of contents
+	docstring const printableString(bool label) const;
+
+	/// Convert the paragraph to a string.
 	docstring asString(bool label) const;
 	///
 	docstring asString(pos_type beg, pos_type end, bool label) const;

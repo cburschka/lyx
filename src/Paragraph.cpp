@@ -2302,6 +2302,21 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 }
 
 
+docstring const Paragraph::printableString(bool label) const
+{
+	odocstringstream os;
+	if (label && !params().labelString().empty())
+		os << params().labelString() << ' ';
+	pos_type end = size();
+	for (pos_type i = 0; i < end; ++i) {
+		char_type const c = d->text_[i];
+		if (isPrintable(c))
+			os.put(c);
+	}
+	return os.str();
+}
+
+
 docstring Paragraph::asString(bool label) const
 {
 	return asString(0, size(), label);
