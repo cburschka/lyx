@@ -552,7 +552,7 @@ vector<docstring> availableSelections()
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
-			asciiSel += pit->asString(false);
+			asciiSel += pit->asString(AS_STR_INSETS);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, docstring::npos,
 						 from_ascii("..."));
@@ -770,7 +770,7 @@ void clearCutStack()
 docstring selection(size_t sel_index)
 {
 	return sel_index < theCuts.size()
-		? theCuts[sel_index].first.back().asString(false)
+		? theCuts[sel_index].first.back().asString(AS_STR_INSETS)
 		: docstring();
 }
 

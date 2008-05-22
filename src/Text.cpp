@@ -1377,7 +1377,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 	Layout const * layout = &(pars_[pit].layout());
 
 	docstring text;
-	docstring par_text = pars_[pit].asString(false);
+	docstring par_text = pars_[pit].asString();
 	string piece;
 	// the return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');
@@ -1527,7 +1527,7 @@ docstring Text::previousWord(CursorSlice const & sl) const
 		return docstring();
 	
 	Paragraph const & par = sl.paragraph();
-	return par.asString(from.pos(), to.pos(), false);
+	return par.asString(from.pos(), to.pos());
 }
 
 

@@ -110,7 +110,7 @@ int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 
 void InsetFlex::textString(odocstream & os) const
 {
-	os << paragraphs().begin()->asString(true);
+	os << paragraphs().begin()->asString(AS_STR_LABEL | AS_STR_INSETS);
 }
 
 

@@ -72,6 +72,15 @@ enum TextCase {
 };
 
 
+///
+enum AsStringParameter
+{
+	AS_STR_NONE = 0, ///< No option, only printable characters.
+	AS_STR_LABEL = 1, ///< Prefix with paragraph label.
+	AS_STR_INSETS = 2 ///< Go into insets.
+};
+
+
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph
 {
@@ -98,15 +107,15 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	/// Convert the paragraph to a string.
-	/// This method doesn't go inside insets, only printable characters in this
-	/// paragraph are used.
-	/// Used for building the table of contents
-	docstring const printableString(bool label) const;
-
-	/// Convert the paragraph to a string.
-	docstring asString(bool label) const;
+	/// \param AsStringParameter options. This can contain any combination of
+	/// asStringParameter values. Valid examples:
+	///		asString(AS_STR_LABEL)
+	///		asString(AS_STR_LABEL | AS_STR_INSETS)
+	///		asString(AS_STR_INSETS)
+	docstring asString(int options = AS_STR_NONE) const;
 	///
-	docstring asString(pos_type beg, pos_type end, bool label) const;
+	docstring asString(pos_type beg, pos_type end,
+		int options = AS_STR_NONE) const;
 
 	///
 	void write(std::ostream &, BufferParams const &,

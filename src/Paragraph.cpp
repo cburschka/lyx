@@ -2302,40 +2302,26 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 }
 
 
-docstring const Paragraph::printableString(bool label) const
+docstring Paragraph::asString(int options) const
 {
-	odocstringstream os;
-	if (label && !params().labelString().empty())
-		os << params().labelString() << ' ';
-	pos_type end = size();
-	for (pos_type i = 0; i < end; ++i) {
-		char_type const c = d->text_[i];
-		if (isPrintable(c))
-			os.put(c);
-	}
-	return os.str();
+	return asString(0, size(), options);
 }
 
 
-docstring Paragraph::asString(bool label) const
+docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 {
-	return asString(0, size(), label);
-}
-
-
-docstring Paragraph::asString(pos_type beg, pos_type end, bool label) const
-{
-
 	odocstringstream os;
 
-	if (beg == 0 && label && !d->params_.labelString().empty())
+	if (beg == 0 
+		&& options & AS_STR_LABEL
+		&& !d->params_.labelString().empty())
 		os << d->params_.labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
 		char_type const c = d->text_[i];
 		if (isPrintable(c))
 			os.put(c);
-		else if (c == META_INSET)
+		else if (c == META_INSET && options & AS_STR_INSETS)
 			getInset(i)->textString(os);
 	}
 

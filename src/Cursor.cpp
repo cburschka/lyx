@@ -1850,10 +1850,13 @@ void Cursor::errorMessage(docstring const & msg) const
 }
 
 
-docstring Cursor::selectionAsString(bool label) const
+docstring Cursor::selectionAsString(bool with_label) const
 {
 	if (!selection())
 		return docstring();
+
+	int const label = with_label
+		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
 
 	if (inTexted()) {
 		ParagraphList const & pars = text()->paragraphs();

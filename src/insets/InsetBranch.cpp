@@ -235,7 +235,7 @@ int InsetBranch::docbook(odocstream & os,
 void InsetBranch::textString(odocstream & os) const
 {
 	if (isBranchSelected())
-		os << paragraphs().begin()->asString(true);
+		os << paragraphs().begin()->asString(AS_STR_LABEL | AS_STR_INSETS);
 }
 
 
