@@ -1398,7 +1398,7 @@ DocumentClass const & BufferParams::documentClass() const
 }
 
 
-DocumentClass * BufferParams::documentClassPtr() const {
+DocumentClass const * BufferParams::documentClassPtr() const {
 	return doc_class_;
 }
 

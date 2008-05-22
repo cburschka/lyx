@@ -1532,7 +1532,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_, /**/);
 			
 			Buffer * buffer = lyx_view_->buffer();
-			DocumentClass * oldClass = buffer->params().documentClassPtr();
+			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
 			Cursor & cur = view()->cursor();
 			cur.recordUndoFullDocument();
 			
@@ -1561,7 +1561,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULES_CLEAR: {
 			LASSERT(lyx_view_, /**/);
 			Buffer * buffer = lyx_view_->buffer();
-			DocumentClass * oldClass = buffer->params().documentClassPtr();
+			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
 			buffer->params().makeDocumentClass();
@@ -1573,7 +1573,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULE_ADD: {
 			LASSERT(lyx_view_, /**/);
 			Buffer * buffer = lyx_view_->buffer();
-			DocumentClass * oldClass = buffer->params().documentClassPtr();
+			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
 			buffer->params().makeDocumentClass();
@@ -1598,7 +1598,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			//Save the old, possibly modular, layout for use in conversion.
-			DocumentClass * oldDocClass = buffer->params().documentClassPtr();
+			DocumentClass const * const oldDocClass = buffer->params().documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(argument);
 			buffer->params().makeDocumentClass();
@@ -1610,7 +1610,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_RELOAD: {
 			LASSERT(lyx_view_, /**/);
 			Buffer * buffer = lyx_view_->buffer();
-			DocumentClass * oldClass = buffer->params().documentClassPtr();
+			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
 			LayoutFileIndex bc = buffer->params().baseClassID();
 			LayoutFileList::get().reset(bc);
 			buffer->params().setBaseClass(bc);
@@ -1859,7 +1859,7 @@ bool LyXFunc::wasMetaKey() const
 }
 
 
-void LyXFunc::updateLayout(DocumentClass * oldlayout,Buffer * buffer)
+void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buffer)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
 	

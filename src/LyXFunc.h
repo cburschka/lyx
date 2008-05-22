@@ -130,7 +130,7 @@ private:
 	///
 	bool ensureBufferClean(BufferView * bv);
 	///
-	void updateLayout(DocumentClass * oldlayout, Buffer * buffer);
+	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp

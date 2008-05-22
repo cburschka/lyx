@@ -118,7 +118,7 @@ public:
 	DocumentClass const & documentClass() const;
 	/// \return A pointer to the DocumentClass currently in use: the BaseClass 
 	/// as modified by modules. 
-	DocumentClass * documentClassPtr() const;
+	DocumentClass const * documentClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
