@@ -126,8 +126,6 @@ The following new LyX functions have been introduced:
 
 - LFUN_FINISHED_BACKWARD, "".
 
-- LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding".
-
 - LFUN_INFO_INSERT, "info-insert".
 
 - LFUN_LAYOUT_RELOAD, "layout-reload".
@@ -140,6 +138,9 @@ The following new LyX functions have been introduced:
 
 - LFUN_INSET_EDIT, "inset-edit"
 
+- LFUN_SET_GRAPHICS_GROUP, "set-graphics-group"
+
+- LFUN_GRAPHICS_GROUPS_UNIFY, "graphics-groups-unify"
 
 The following new LyX functions have been removed:
 
@@ -163,6 +164,8 @@ The following new LyX functions have been removed:
 - LFUN_GRAPHICS_EDIT. Superseded by the more general LFUN_INSET_EDIT.
 
 - LFUN_ACCENT_SPECIAL_CARON.
+
+- LFUN_INSET_REFRESH.
 
 For the detailed description of LyX functions look into doxygen documentation.
 
