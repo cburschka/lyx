@@ -663,6 +663,7 @@ void GuiApplication::socketDataReceived(int fd)
 
 void GuiApplication::unregisterSocketCallback(int fd)
 {
+	socket_notifiers_[fd]->setEnabled(false);
 	socket_notifiers_.erase(fd);
 }
 
