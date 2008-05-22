@@ -440,19 +440,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = false;
 		break;
 
-	// FIXME: these cases should be hidden in GuiView::getStatus().
-	case LFUN_DIALOG_TOGGLE:
-	case LFUN_DIALOG_SHOW:
-	case LFUN_UI_TOGGLE:
-	case LFUN_DIALOG_UPDATE:
-		// FIXME: add special handling for about and prefs dialogs here
-		// which do not depend on GuiView.
-		if (lyx_view_)
-			return lyx_view_->getStatus(cmd);
-		else
-			enable = false;
-		break;
-
 	// FIXME optimally this should be in Text::getStatus. In such a case the flags
 	// are not passed when using context menu. This way it works.
 	case LFUN_SET_GRAPHICS_GROUP: {
@@ -466,20 +453,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = true;
 		break;
 	}
-
-	case LFUN_TOOLBAR_TOGGLE:
-	case LFUN_INSET_APPLY:
-	case LFUN_BUFFER_WRITE:
-	case LFUN_BUFFER_WRITE_AS:
-	case LFUN_SPLIT_VIEW:
-	case LFUN_CLOSE_TAB_GROUP:
-	case LFUN_COMPLETION_POPUP:
-	case LFUN_COMPLETION_INLINE:
-	case LFUN_COMPLETION_COMPLETE:
-		if (lyx_view_)
-			return lyx_view_->getStatus(cmd);
-		enable = false;
-		break;
 
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
 		flag.setOnOff(buf->isReadonly());
@@ -653,6 +626,16 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
+		// Does the view know something?
+		if (!lyx_view_) {
+			enable = false;
+			break;
+		}
+		if (lyx_view_->getStatus(cmd, flag))
+			break;
+
+		// If we have a BufferView, try cursor position and
+		// then the BufferView.
 		if (!view()) {
 			enable = false;
 			break;

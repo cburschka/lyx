@@ -82,7 +82,7 @@ public:
 	virtual void message(docstring const &) = 0;
 
 	///
-	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
+	virtual bool getStatus(FuncRequest const & cmd, FuncStatus & flag) = 0;
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
 	virtual bool dispatch(FuncRequest const & cmd) = 0;

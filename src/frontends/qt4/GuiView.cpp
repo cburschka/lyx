@@ -985,9 +985,8 @@ void GuiView::resetAutosaveTimers()
 }
 
 
-FuncStatus GuiView::getStatus(FuncRequest const & cmd)
+bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
-	FuncStatus flag;
 	bool enable = true;
 	Buffer * buf = buffer();
 
@@ -1077,10 +1076,6 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_APPLY: {
-		if (!buf) {
-			enable = false;
-			break;
-		}
 		string const name = cmd.getArg(0);
 		Inset * inset = getOpenInset(name);
 		if (inset) {
@@ -1093,7 +1088,7 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 			flag |= fs;
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
-			flag |= getStatus(fr);
+			flag |= lyx::getStatus(fr);
 		}
 		enable = flag.enabled();
 		break;
@@ -1118,16 +1113,13 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		break;
 
 	default:
-		if (!view()) {
-			enable = false;
-			break;
-		}
+		return false;
 	}
 
 	if (!enable)
 		flag.enabled(false);
 
-	return flag;
+	return true;
 }
 
 
