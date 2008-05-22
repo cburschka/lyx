@@ -124,13 +124,13 @@ in C++.
   compiler ensure that all cases are exhausted.
 
 	enum Foo {
-		foo,
-		bar
+		FOO_BAR1,
+		FOO_BAR2
 	};
 	Foo f = ...;
 	switch (f) {
-	case foo: ...; break;
-	case bar: ...; break;
+	case FOO_BAR1: ...; break;
+	case FOO_BAR2: ...; break;
 	default: ...; break; // not needed and would shadow a wrong use of Foo
 	}
 
@@ -254,18 +254,18 @@ Formatting
 	void mangle ()  // wrong
 
 * Enumerators
-	enum {
-		one = 1,
-		two = 2,
-		three = 3
+	enum Foo {
+		FOO_ONE = 1,
+		FOO_TWO = 2,
+		FOO_THREE = 3
 	};
 	-NOT-
 	enum { one = 1, two = 2, three 3 }; // wrong
 	-NOT-
 	enum {
-		ONE = 1,
-		TWO = 2,
-		THREE = 3
+		One = 1,
+		Two = 2,
+		Three = 3
 	};
 
 * Naming rules for classes
