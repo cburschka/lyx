@@ -773,6 +773,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_REPEAT, "repeat", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHARS_TRANSPOSE
+ * \li Action: Transposes the character at the cursor with the one before it.
+ * \li Syntax: chars-transpose
+ * \li Author: Lgb, 25 Apr 2001
+ * \endvar
+ */
 		{ LFUN_CHARS_TRANSPOSE, "chars-transpose", Noop, Edit },
 
 		{ LFUN_DEPTH_DECREMENT, "depth-decrement", Noop, Edit },
