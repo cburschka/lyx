@@ -176,13 +176,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
 		SLOT(change_adaptor()));
 
-#ifdef Q_WS_MACX
-	// On Mac it's common to have tool windows which are always in the
-	// foreground and are hidden when the main window is not focused.
-	setWindowFlags(Qt::Tool);
-	autoapplyCB->setChecked(true);
-#endif
-
 	family = familyData();
 	series = seriesData();
 	shape  = shapeData();
@@ -215,6 +208,13 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().addReadOnly(colorCO);
 	bc().addReadOnly(toggleallCB);
 	bc().addReadOnly(autoapplyCB);
+
+#ifdef Q_WS_MACX
+	// On Mac it's common to have tool windows which are always in the
+	// foreground and are hidden when the main window is not focused.
+	setWindowFlags(Qt::Tool);
+	autoapplyCB->setChecked(true);
+#endif
 
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
