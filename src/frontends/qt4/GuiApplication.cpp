@@ -724,6 +724,11 @@ void GuiApplication::exit(int status)
 
 void GuiApplication::execBatchCommands()
 {
+	// init the global menubar on Mac. This must be done after the session
+	// was recovered to know the "last files".
+	if (d->global_menubar_)
+		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
+
 	LyX::ref().execBatchCommands();
 }
 
@@ -1029,13 +1034,6 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
 	return menus().searchMenu(func, names);
-}
-
-
-void GuiApplication::initGlobalMenu()
-{
-	if (d->global_menubar_)
-		menus().fillMenuBar(d->global_menubar_, 0, true);
 }
 
 

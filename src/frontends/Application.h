@@ -218,11 +218,6 @@ public:
 	* read and create the menu structure
 	*/
 	virtual void readMenus(Lexer & lex) = 0;
-
-	/**
-	* initialize the global menubar on Mac
-	*/
-	virtual void initGlobalMenu() = 0;
 	
 	/**
 	* add a callback for socket read notification

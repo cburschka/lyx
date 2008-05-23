@@ -866,12 +866,7 @@ bool LyX::init()
 	// This must happen after package initialization and after lyxrc is
 	// read, therefore it can't be done by a static object.
 	ConverterCache::init();
-	
-	// init the global menubar on Mac. This must be done after the session
-	// was recovered to know the "last files".
-	if (use_gui)
-		theApp()->initGlobalMenu();
-	
+		
 	return true;
 }
 

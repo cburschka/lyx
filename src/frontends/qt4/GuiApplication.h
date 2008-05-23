@@ -67,7 +67,6 @@ public:
 	std::string const hexName(ColorCode col);
 	void updateColor(ColorCode col);
 	void readMenus(Lexer & lex);
-	void initGlobalMenu();
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names) const;
