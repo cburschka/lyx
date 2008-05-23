@@ -47,12 +47,18 @@
 #include "support/os.h"
 #include "support/Package.h"
 
+#ifdef Q_WS_MACX
+#include "support/linkback/LinkBackProxy.h"
+#endif
+
 #include <QClipboard>
 #include <QEventLoop>
 #include <QFileOpenEvent>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QMacPasteboardMime>
 #include <QMenuBar>
+#include <QMimeData>
 #include <QPixmapCache>
 #include <QRegExp>
 #include <QSessionManager>
@@ -71,12 +77,27 @@
 #undef None
 #endif
 
+#ifdef Q_WS_WIN
+#include <QVector>
+#include <QWindowsMime>
+#if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
+#include <wtypes.h>
+#endif
+#include <objidl.h>
+#endif // Q_WS_WIN
+
 #include <boost/bind.hpp>
 
 #include <exception>
 
 using namespace std;
 using namespace lyx::support;
+
+// FIXME: These strings are also used in GuiClipboard.cpp.
+static char const * const lyx_mime_type = "application/x-lyx";
+static char const * const pdf_mime_type = "application/pdf";
+static char const * const emf_mime_type = "image/x-emf";
+static char const * const wmf_mime_type = "image/x-wmf";
 
 namespace lyx {
 
@@ -147,18 +168,207 @@ public:
 	}
 };
 
+#ifdef Q_WS_MACX
+// QMacPasteboardMimeGraphics can only be compiled on Mac.
+
+class QMacPasteboardMimeGraphics : public QMacPasteboardMime
+{
+public:
+	QMacPasteboardMimeGraphics()
+		: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL)
+	{}
+
+	QString convertorName() { return "Graphics"; }
+
+	QString flavorFor(QString const & mime)
+	{
+		LYXERR(Debug::ACTION, "flavorFor " << mime);
+		if (mime == QLatin1String(pdf_mime_type))
+			return QLatin1String("com.adobe.pdf");
+		return QString();
+	}
+
+	QString mimeFor(QString flav)
+	{
+		LYXERR(Debug::ACTION, "mimeFor " << flav);
+		if (flav == QLatin1String("com.adobe.pdf"))
+			return QLatin1String(pdf_mime_type);
+		return QString();
+	}
+
+	bool canConvert(QString const & mime, QString flav)
+	{ return mimeFor(flav) == mime; }
+
+	QVariant convertToMime(QString const & mime, QList<QByteArray> data, QString flav)
+	{
+		if(data.count() > 1)
+			qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
+		return data.first();
+	}
+
+	QList<QByteArray> convertFromMime(QString const & mime, QVariant data, QString flav)
+	{
+		QList<QByteArray> ret;
+		ret.append(data.toByteArray());
+		return ret;
+	}
+};
+#endif
+
 ///////////////////////////////////////////////////////////////
 // You can find more platform specific stuff
 // at the end of this file...
 ///////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
+// Windows specific stuff goes here...
+
+#ifdef Q_WS_WIN
+// QWindowsMimeMetafile can only be compiled on Windows.
+
+static FORMATETC cfFromMime(QString const & mimetype)
+{
+	FORMATETC formatetc;
+	if (mimetype == emf_mime_type) {
+		formatetc.cfFormat = CF_ENHMETAFILE;
+		formatetc.tymed = TYMED_ENHMF;
+	} else if (mimetype == wmf_mime_type) {
+		formatetc.cfFormat = CF_METAFILEPICT;
+		formatetc.tymed = TYMED_MFPICT;
+	}
+	formatetc.ptd = 0;
+	formatetc.dwAspect = DVASPECT_CONTENT;
+	formatetc.lindex = -1;
+	return formatetc;
+}
+
+
+class QWindowsMimeMetafile : public QWindowsMime {
+public:
+	QWindowsMimeMetafile() {}
+
+	bool canConvertFromMime(FORMATETC const & formatetc,
+		QMimeData const * mimedata) const
+	{
+		return false;
+	}
+
+	bool canConvertToMime(QString const & mimetype,
+		IDataObject * pDataObj) const
+	{
+		if (mimetype != emf_mime_type && mimetype != wmf_mime_type)
+			return false;
+		FORMATETC formatetc = cfFromMime(mimetype);
+		return pDataObj->QueryGetData(&formatetc) == S_OK;
+	}
+
+	bool convertFromMime(FORMATETC const & formatetc,
+		const QMimeData * mimedata, STGMEDIUM * pmedium) const
+	{
+		return false;
+	}
+
+	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj,
+		QVariant::Type preferredType) const
+	{
+		QByteArray data;
+		if (!canConvertToMime(mimetype, pDataObj))
+			return data;
+
+		FORMATETC formatetc = cfFromMime(mimetype);
+		STGMEDIUM s;
+		if (pDataObj->GetData(&formatetc, &s) != S_OK)
+			return data;
+
+		int dataSize;
+		if (s.tymed == TYMED_ENHMF) {
+			dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, 0);
+			data.resize(dataSize);
+			dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize,
+				(LPBYTE)data.data());
+		} else if (s.tymed == TYMED_MFPICT) {
+			dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, 0);
+			data.resize(dataSize);
+			dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize,
+				(LPBYTE)data.data());
+		}
+		data.detach();
+		ReleaseStgMedium(&s);
+
+		return data;
+	}
+
+
+	QVector<FORMATETC> formatsForMime(QString const & mimeType,
+		QMimeData const * mimeData) const
+	{
+		QVector<FORMATETC> formats;
+		formats += cfFromMime(mimeType);
+		return formats;
+	}
+
+	QString mimeForFormat(FORMATETC const & formatetc) const
+	{
+		switch (formatetc.cfFormat) {
+		case CF_ENHMETAFILE:
+			return emf_mime_type; 
+		case CF_METAFILEPICT:
+			return wmf_mime_type;
+		}
+		return QString();
+	}
+};
+
+#endif // Q_WS_WIN
+
+////////////////////////////////////////////////////////////////////////
+// GuiApplication::Private definition and implementation.
+////////////////////////////////////////////////////////////////////////
+
+struct GuiApplication::Private
+{
+	Private(): global_menubar_(0)
+	{
+#ifdef Q_WS_MACX
+		// Create the global default menubar which is shown for the dialogs
+		// and if no GuiView is visible.
+		global_menubar_ = new GlobalMenuBar();
+#endif
+	}
+
+	/// Only used on mac.
+	GlobalMenuBar * global_menubar_;
+
+#ifdef Q_WS_MACX
+	/// Linkback mime handler for MacOSX.
+	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
+#endif
+
+#ifdef Q_WS_WIN
+	/// WMF Mime handler for Windows clipboard.
+	// FIXME for Windows Vista and Qt4 (see http://bugzilla.lyx.org/show_bug.cgi?id=4846)
+	// But this makes LyX crash on exit when LyX is compiled in release mode and if there
+	// is something in the clipboard.
+	QWindowsMimeMetafile wmf_mime_;
+#endif
+};
+
 
 GuiApplication * guiApp;
 
 
+GuiApplication::~GuiApplication()
+{
+#ifdef Q_WS_MACX
+	closeAllLinkBackLinks();
+#endif
+	delete d;
+}
+
+
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application(), language_model_(0),
-	current_view_(0), global_menubar_(0)
+	current_view_(0), d(new GuiApplication::Private)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
@@ -207,7 +417,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 #ifdef Q_WS_MACX
 	// This allows to translate the strings that appear in the LyX menu.
-	addMenuTranslator();
+	/// A translator suitable for the entries in the LyX menu.
+	/// Only needed with Qt/Mac.
+	installTranslator(new MenuTranslator(this));
 #endif
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(onLastWindowClosed()));
 
@@ -240,15 +452,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	connect(&general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
 	general_timer_.start();
-
-	
-#ifdef Q_WS_MACX
-	if (global_menubar_ == 0) {
-		// Create the global default menubar which is shown for the dialogs
-		// and if no GuiView is visible.
-		global_menubar_ = new GlobalMenuBar();
-	}
-#endif
 }
 
 
@@ -384,8 +587,8 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 {
 	// release the keyboard which might have been grabed by the global
 	// menubar on Mac to catch shortcuts even without any GuiView.
-	if (global_menubar_)
-		global_menubar_->releaseKeyboard();
+	if (d->global_menubar_)
+		d->global_menubar_->releaseKeyboard();
 
 	// create new view
 	updateIds(views_, view_ids_);
@@ -682,12 +885,6 @@ void GuiApplication::commitData(QSessionManager & sm)
 }
 
 
-void GuiApplication::addMenuTranslator()
-{
-	installTranslator(new MenuTranslator(this));
-}
-
-
 bool GuiApplication::unregisterView(int id)
 {
 	updateIds(views_, view_ids_);
@@ -770,15 +967,15 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 
 void GuiApplication::initGlobalMenu()
 {
-	if (global_menubar_)
-		menus().fillMenuBar(global_menubar_, 0, true);
+	if (d->global_menubar_)
+		menus().fillMenuBar(d->global_menubar_, 0, true);
 }
 
 
 void GuiApplication::onLastWindowClosed()
 {
-	if (global_menubar_)
-		global_menubar_->grabKeyboard();
+	if (d->global_menubar_)
+		d->global_menubar_->grabKeyboard();
 }
 
 

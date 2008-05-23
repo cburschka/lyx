@@ -56,6 +56,7 @@ class GuiApplication : public QApplication, public Application
 
 public:
 	GuiApplication(int & argc, char ** argv);
+	~GuiApplication();
 
 	/// Method inherited from \c Application class
 	//@{
@@ -85,6 +86,9 @@ public:
 	//@{
 	bool notify(QObject * receiver, QEvent * event);
 	void commitData(QSessionManager & sm);
+#ifdef Q_WS_X11
+	bool x11EventFilter(XEvent * ev);
+#endif
 	//@}
 
 	/// Create the main window with given geometry settings.
@@ -158,14 +162,6 @@ private:
 	/// are done.
 	QTimer general_timer_;
 
-#ifdef Q_WS_X11
-public:
-	bool x11EventFilter(XEvent * ev);
-#endif
-	/// A translator suitable for the entries in the LyX menu.
-	/// Only needed with Qt/Mac.
-	void addMenuTranslator();
-
 	/// Multiple views container.
 	/**
 	* Warning: This must not be a smart pointer as the destruction of the
@@ -178,8 +174,9 @@ public:
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events
 	GuiView * current_view_;
-	/// only used on mac
-	GlobalMenuBar * global_menubar_;
+	///
+	struct Private;
+	Private * const d;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

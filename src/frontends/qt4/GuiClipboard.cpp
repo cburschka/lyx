@@ -27,6 +27,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
 #ifdef Q_WS_MACX
 #include "support/linkback/LinkBackProxy.h"
 #endif // Q_WS_MACX
@@ -39,19 +40,9 @@
 #include <QDataStream>
 #include <QFile>
 #include <QImage>
-#include <QMacPasteboardMime>
 #include <QMimeData>
 #include <QString>
 #include <QStringList>
-
-#ifdef Q_WS_WIN
-#include <QVector>
-#include <QWindowsMime>
-#if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
-#include <wtypes.h>
-#endif
-#include <objidl.h>
-#endif // Q_WS_WIN
 
 #include <memory>
 #include <map>
@@ -68,178 +59,6 @@ namespace lyx {
 
 namespace frontend {
 
-#ifdef Q_WS_WIN
-
-static FORMATETC cfFromMime(QString const & mimetype)
-{
-	FORMATETC formatetc;
-	if (mimetype == emf_mime_type) {
-		formatetc.cfFormat = CF_ENHMETAFILE;
-		formatetc.tymed = TYMED_ENHMF;
-	} else if (mimetype == wmf_mime_type) {
-		formatetc.cfFormat = CF_METAFILEPICT;
-		formatetc.tymed = TYMED_MFPICT;
-	}
-	formatetc.ptd = 0;
-	formatetc.dwAspect = DVASPECT_CONTENT;
-	formatetc.lindex = -1;
-	return formatetc;
-}
-
-
-class QWindowsMimeMetafile : public QWindowsMime {
-public:
-	QWindowsMimeMetafile() {}
-	bool canConvertFromMime(FORMATETC const & formatetc, QMimeData const * mimedata) const;
-	bool canConvertToMime(QString const & mimetype, IDataObject * pDataObj) const;
-	bool convertFromMime(FORMATETC const & formatetc, const QMimeData * mimedata, STGMEDIUM * pmedium) const;
-	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj, QVariant::Type preferredType) const;
-	QVector<FORMATETC> formatsForMime(QString const & mimeType, QMimeData const * mimeData) const;
-	QString mimeForFormat(FORMATETC const &) const;
-};
-
-
-QString QWindowsMimeMetafile::mimeForFormat(FORMATETC const & formatetc) const
-{
-	QString f;
-	if (formatetc.cfFormat == CF_ENHMETAFILE)
-		f = emf_mime_type; 
-	else if (formatetc.cfFormat == CF_METAFILEPICT)
-		f = wmf_mime_type;
-	return f;
-}
-
-
-bool QWindowsMimeMetafile::canConvertFromMime(FORMATETC const & formatetc, 
-	QMimeData const * mimedata) const
-{
-	return false;
-}
-
-
-bool QWindowsMimeMetafile::canConvertToMime(QString const & mimetype,
-	IDataObject * pDataObj) const
-{
-	if (mimetype != emf_mime_type && mimetype != wmf_mime_type)
-		return false;
-	FORMATETC formatetc = cfFromMime(mimetype);
-	return pDataObj->QueryGetData(&formatetc) == S_OK;
-}
-
-
-bool QWindowsMimeMetafile::convertFromMime(FORMATETC const & formatetc,
-	QMimeData const * mimedata, STGMEDIUM * pmedium) const
-{
-	return false;
-}
-
-
-QVariant QWindowsMimeMetafile::convertToMime(QString const & mimetype,
-	IDataObject * pDataObj, QVariant::Type preferredType) const
-{
-	QByteArray data;
-	if (!canConvertToMime(mimetype, pDataObj))
-		return data;
-
-	FORMATETC formatetc = cfFromMime(mimetype);
-	STGMEDIUM s;
-	if (pDataObj->GetData(&formatetc, &s) != S_OK)
-		return data;
-
-	int dataSize;
-	if (s.tymed == TYMED_ENHMF) {
-		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, 0, 0);
-		data.resize(dataSize);
-		dataSize = GetEnhMetaFileBits(s.hEnhMetaFile, dataSize, (LPBYTE)data.data());
-	} else if (s.tymed == TYMED_MFPICT) {
-		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, 0, 0);
-		data.resize(dataSize);
-		dataSize = GetMetaFileBitsEx((HMETAFILE)s.hMetaFilePict, dataSize, (LPBYTE)data.data());
-	}
-	data.detach();
-	ReleaseStgMedium(&s);
-
-	return data;
-}
-
-
-QVector<FORMATETC> QWindowsMimeMetafile::formatsForMime(
-	QString const & mimetype, QMimeData const * mimedata) const
-{
-	QVector<FORMATETC> formats;
-	formats += cfFromMime(mimetype);
-	return formats;
-}
-
-static QWindowsMimeMetafile * metafileWindowsMime = 0;
-
-#endif // Q_WS_WIN
-
-#ifdef Q_WS_MACX
-
-class QMacPasteboardMimeGraphics : public QMacPasteboardMime {
-public:
-	QMacPasteboardMimeGraphics()
-		: QMacPasteboardMime(MIME_QT_CONVERTOR|MIME_ALL)
-	{}
-	QString convertorName();
-	QString flavorFor(QString const & mime);
-	QString mimeFor(QString flav);
-	bool canConvert(QString const & mime, QString flav);
-	QVariant convertToMime(QString const & mime, QList<QByteArray> data, QString flav);
-	QList<QByteArray> convertFromMime(QString const & mime, QVariant data, QString flav);
-};
-
-
-QString QMacPasteboardMimeGraphics::convertorName()
-{
-	return "Graphics";
-}
-
-
-QString QMacPasteboardMimeGraphics::flavorFor(QString const & mime)
-{
-	LYXERR(Debug::ACTION, "flavorFor " << mime);
-	if (mime == QLatin1String(pdf_mime_type))
-		return QLatin1String("com.adobe.pdf");
-	return QString();
-}
-
-
-QString QMacPasteboardMimeGraphics::mimeFor(QString flav)
-{
-	LYXERR(Debug::ACTION, "mimeFor " << flav);
-	if (flav == QLatin1String("com.adobe.pdf"))
-		return QLatin1String(pdf_mime_type);
-	return QString();
-}
-
-
-bool QMacPasteboardMimeGraphics::canConvert(QString const & mime, QString flav)
-{
-	return mimeFor(flav) == mime;
-}
-
-
-QVariant QMacPasteboardMimeGraphics::convertToMime(QString const & mime, QList<QByteArray> data, QString)
-{
-	if(data.count() > 1)
-		qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
-	return data.first();
-}
-
-
-QList<QByteArray> QMacPasteboardMimeGraphics::convertFromMime(QString const & mime, QVariant data, QString)
-{
-	QList<QByteArray> ret;
-	ret.append(data.toByteArray());
-	return ret;
-}
-
-static QMacPasteboardMimeGraphics * graphicsPasteboardMime = 0;
-
-#endif // Q_WS_MACX
-
 
 GuiClipboard::GuiClipboard()
 {
@@ -247,34 +66,6 @@ GuiClipboard::GuiClipboard()
 		this, SLOT(on_dataChanged()));
 	// initialize clipboard status.
 	on_dataChanged();
-	
-#ifdef Q_WS_MACX
-	if (!graphicsPasteboardMime)
-		graphicsPasteboardMime = new QMacPasteboardMimeGraphics();
-#endif // Q_WS_MACX
-
-#ifdef Q_WS_WIN
-	if (!metafileWindowsMime)
-		metafileWindowsMime = new QWindowsMimeMetafile();
-#endif // Q_WS_WIN
-}
-
-
-GuiClipboard::~GuiClipboard()
-{
-#ifdef Q_WS_WIN
-	if (metafileWindowsMime) {
-		delete metafileWindowsMime;
-		metafileWindowsMime = 0;
-	}
-#endif // Q_WS_WIN
-#ifdef Q_WS_MACX
-	closeAllLinkBackLinks();
-	if (graphicsPasteboardMime) {
-		delete graphicsPasteboardMime;
-		graphicsPasteboardMime = 0;
-	}
-#endif // Q_WS_MACX
 }
 
 
@@ -568,20 +359,18 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 		return source->hasImage();
 
 	// handle LinkBack for Mac
-#ifdef Q_WS_MACX
 	if (type == LinkBackGraphicsType)
+#ifdef Q_WS_MACX
 		return isLinkBackDataInPasteboard();
 #else
-	if (type == LinkBackGraphicsType)
 		return false;
 #endif // Q_WS_MACX
 	
 	// get mime data
 	QStringList const & formats = source->formats();
 	LYXERR(Debug::ACTION, "We found " << formats.size() << " formats");
-	for (int i = 0; i < formats.size(); ++i) {
+	for (int i = 0; i < formats.size(); ++i)
 		LYXERR(Debug::ACTION, "Found format " << formats[i]);
-	}
 
 	// compute mime for type
 	QString mime;

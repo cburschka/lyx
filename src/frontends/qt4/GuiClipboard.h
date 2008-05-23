@@ -21,6 +21,8 @@
 namespace lyx {
 namespace frontend {
 
+class QMacPasteboardMimeGraphics;
+
 /**
  * The Qt4 version of the Clipboard.
  */
@@ -29,7 +31,6 @@ class GuiClipboard: public QObject, public Clipboard
 	Q_OBJECT
 public:
 	GuiClipboard();
-	virtual ~GuiClipboard();
 
 	/** Clipboard overloaded methods
 	 */
