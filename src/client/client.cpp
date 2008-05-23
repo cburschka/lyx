@@ -14,10 +14,10 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
-#include "support/unicode.h"
+#include "support/FileNameList.h"
 #include "support/lstrings.h"
+#include "support/unicode.h"
 
-#include <boost/filesystem/operations.hpp>
 #include <boost/scoped_ptr.hpp>
 
 // getpid(), getppid()
@@ -58,7 +58,6 @@ using namespace std;
 using namespace lyx::support;
 
 using ::boost::scoped_ptr;
-namespace fs = ::boost::filesystem;
 
 namespace lyx {
 
@@ -75,28 +74,32 @@ string itoa(unsigned int i)
 /// Returns the absolute pathnames of all lyx local sockets in
 /// file system encoding.
 /// Parts stolen from lyx::support::DirList().
-vector<fs::path> lyxSockets(string const & dir, string const & pid)
+FileNameList lyxSockets(string const & dir, string const & pid)
 {
-	vector<fs::path> dirlist;
+	FileNameList dirlist;
 
-	fs::path dirpath(dir);
+	FileName dirpath(dir);
 
-	if (!fs::exists(dirpath) || !fs::is_directory(dirpath)) {
+	if (!dirpath.exists() || !dirpath.isDirectory()) {
 		lyxerr << dir << " does not exist or is not a directory."
 		       << endl;
 		return dirlist;
 	}
 
-	fs::directory_iterator beg((fs::path(dir)));
-	fs::directory_iterator end;
+	FileNameList dirs = dirpath.dirList("");
+	FileNameList::const_iterator it = dirs.begin();
+	FileNameList::const_iterator end = dirs.end();
 
-	for (; beg != end; ++beg) {
-		if (prefixIs(beg->leaf(), "lyx_tmpdir" + pid)) {
-			fs::path lyxsocket = beg->path() / "lyxsocket";
-			if (fs::exists(lyxsocket)) {
-				dirlist.push_back(lyxsocket);
-			}
-		}
+	for (; it != end; ++it) {
+		if (!it->isDirectory())
+			continue;
+		string const tmpdir = it->absFilename();
+		if (!suffixIs(tmpdir, "lyx_tmpdir" + pid))
+			continue;
+
+		FileName lyxsocket(tmpdir + "/lyxsocket");
+		if (lyxsocket.exists())
+			dirlist.push_back(lyxsocket);
 	}
 
 	return dirlist;
@@ -553,16 +556,16 @@ int main(int argc, char * argv[])
 	} else {
 		// We have to look for an address.
 		// serverPid can be empty.
-		vector<fs::path> addrs = lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
-		vector<fs::path>::const_iterator addr = addrs.begin();
-		vector<fs::path>::const_iterator end = addrs.end();
+		FileNameList addrs = lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
+		FileNameList::const_iterator addr = addrs.begin();
+		FileNameList::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {
 			// Caution: addr->string() is in filesystem encoding
-			server.reset(new LyXDataSocket(FileName(to_utf8(from_filesystem8bit(addr->string())))));
+			server.reset(new LyXDataSocket(*addr));
 			if (server->connected())
 				break;
 			lyxerr << "lyxclient: " << "Could not connect to "
-			     << addr->string() << endl;
+			     << addr->absFilename() << endl;
 		}
 		if (addr == end) {
 			lyxerr << "lyxclient: No suitable server found."
