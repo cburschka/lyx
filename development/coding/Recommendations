@@ -3,52 +3,53 @@ Scott Meyers, and are presented in their short form. These are not all the
 rules Meyers presents, only the most important of them. LyX does not yet
 follow these rules, but they should be the goal.
 
-- Use const and inline instead of #define
+- use const and inline instead of #define
 
-- Use the same form in corresponding calls to new and delete,
+- use the same form in corresponding calls to new and delete,
   i.e. write delete[] obj; if new obj[n]; was used to create
   the object and write delete obj; if you wrote new obj;
   Notice strings should be std::string's instead of char *'s.
 
-- Define a default constructor, copy constructor and an assignment
+- define a default constructor, copy constructor and an assignment
   operator for all classes with dynamically allocated memory that
-  do not inherit noncopyable
+  are not made noncopyable
 
-- make destructors virtual in base classes and only there.
+- do not define default constructor, copy constructor and an assignment
+  operator if the compiler generated one would do the same
 
-- assign to all data members in operator=.
+- make destructors virtual in base classes and only there
+
+- assign to all data members in operator=()
 
 - strive for class interfaces that are complete and minimal
 
 - differentiate among member functions, global functions and friend
-  functions.
+  functions
 
-- avoid data members in the public interface.
+- avoid data members in the public interface
 
 - use const whenever possible
 
 - pass and return objects by reference instead of by value
 
 - choose carefully between function overloading and
-  parameter defaulting.
+  parameter defaulting
 
 - never return a reference to a local object or a dereferenced
-  pointer initialized by new within the function.
+  pointer initialized by new within the function
 
-- use enums for integral constants.
+- use enums for integral constants
 
-- minimize compilation dependencies between files.
+- minimize compilation dependencies between files
 
 - pay attention to compiler warnings
 
 - differentiate between inheritance of interface and
-  inheritance of implementation.
+  inheritance of implementation
 
 - differentiate between inheritance and templates
 
-- know what functions C++ silently writes and calls.
-
-- ensure that global objects are initialized before they are used.
+- ensure that global objects are initialized before they are used
 
 - avoid conditions to 'if' and 'while' that span more than a line
 
@@ -61,11 +62,11 @@ Design. Addison-Wesley, 1992
 
 And one of mine: (Lgb)
 
-- When swiching on enums, refrain from using "default:" if possible.
+- when swiching on enums, refrain from using "default:" if possible
 
 
 And one of mine: (Andre')
 
 - try to implement your class in a way that the automatically generated
-  copy constructor and copy assignment work out-of-the box.
+  copy constructor and copy assignment work out-of-the box
 

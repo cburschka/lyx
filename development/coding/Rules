@@ -2,8 +2,8 @@ Rules for the code in LyX
 -------------------------
 [updated from the C++STYLE distributed with the GNU C++ Standard]
 
-The aim of this file is to serve as a guide for the developers, to aid us to
-get clean and uniform code. This document is still incomplete.
+The aim of this file is to serve as a guide for the developers, to aid
+us to get clean and uniform code. This document is incomplete.
 
 We really like to have new developers joining the LyX Project. However,
 we have had problems in the past with developers leaving the
@@ -95,8 +95,8 @@ in C++.
 	++T;
 	--U;
 	-NOT-
-	T++; // wrong
-	U--; // wrong
+	T++; // not used in LyX
+	U--; // not used in LyX
 
 - Try to minimize evaluation of the same code over and over. This is
   aimed especially at loops.
@@ -138,11 +138,10 @@ in C++.
 Exceptions
 ----------
 
-Even if LyX currently is not using exceptions we need to be aware of
-them. One important thing to realize is that you often do not have to
-use throw, try or catch to be exception safe. Let's look at the
-different types of exceptions safety: (These are taken from Herb
-Sutter's book[ExC++]
+Be aware of the presence of exceptions. One important thing to realize
+is that you often do not have to use throw, try or catch to be exception
+safe. Let's look at the different types of exceptions safety: (These are
+taken from Herb Sutter's book[ExC++]
 
 "
 1. Basic guarantee: Even in the presence of exceptions thrown by T or
@@ -194,11 +193,6 @@ without using try, throw or catch we should do so. In particular we
 should look over all destructors to ensure that they are as exception
 safe as possible.
 
-Later when more compiler support exceptions sufficiently well we will
-begin using them too. One reason for this is that the C++ standard
-library actually requires exceptions, e.g. "new" will throw
-bad_allocation if the requested memory is not available.
-
 
 Formatting
 ----------
@@ -207,13 +201,13 @@ Formatting
 	int a;
 	int b;
 	-NOT-
-	int a, b; // wrong
+	int a, b; // not used in LyX
   This is especially important when initialization is done at the same
   time:
 	string a = "Lars";
 	string b = "Gullik";
 	-NOT-
-	string a = "Lars", b = "Gullik"; // wrong
+	string a = "Lars", b = "Gullik"; // not used in LyX
 
 	[Note that 'string a = "Lars"' is formally calling a copy constructor 
 	on a temporary constructed from a string literal and therefore has the
@@ -230,20 +224,20 @@ Formatting
 	char * p = "flop";
 	char & c = *p;
 	-NOT-
-	char *p = "flop"; // wrong
-	char &c = *p;     // wrong
+	char *p = "flop"; // not used in LyX
+	char &c = *p;     // not used in LyX
 
   Some time ago we had a huge discussion on this subject and after
   convincing argumentation from Asger this is what we decided. Also note
   that we will have:
 	char const * p;
 	-NOT-
-	const char * p; // wrong
+	const char * p; // not used in LyX
 
 * Operator names and parentheses
 	operator==(type)
 	-NOT-
-	operator == (type)  // wrong
+	operator == (type)  // not used in LyX
 
   The == is part of the function name, separating it makes the
   declaration look like an expression.
@@ -251,7 +245,7 @@ Formatting
 * Function names and parentheses
 	void mangle()
 	-NOT-
-	void mangle ()  // wrong
+	void mangle ()  // not used in LyX
 
 * Enumerators
 	enum Foo {
@@ -260,13 +254,28 @@ Formatting
 		FOO_THREE = 3
 	};
 	-NOT-
-	enum { one = 1, two = 2, three 3 }; // wrong
+	enum { one = 1, two = 2, three 3 }; // not used in LyX
 	-NOT-
 	enum {
 		One = 1,
 		Two = 2,
 		Three = 3
 	};
+
+* Null pointers
+
+	Using a plain 0 is always correct and least effort to type. So:
+
+	void * p = 0;
+	-NOT-
+	void * p = NULL; // not used in LyX
+	-NOT-
+	void * p = '\0'; // not used in LyX
+	-NOT-
+	void * p = 42 - 7 * 6; // not used in LyX
+
+	Note: As an exception, imported third party code as well as code
+	interfacing the "native" APIs (src/support/os_*) can use NULL.
 
 * Naming rules for classes
 
@@ -314,8 +323,7 @@ Formatting
   - Avoid declaring global objects in the declaration file of the class.
     If the same variable is used for all objects, use a static member.
 
-  - Avoid global or static variables. An exception to this rule is
-    very private stuff like the math stack.
+  - Avoid global or static variables.
 
 
 * File headers
