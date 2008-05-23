@@ -1063,7 +1063,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 		if (bv) {
 			docstring const sel = bv->requestSelection();
 			if (!sel.empty())
-				selection_.put(sel);
+				d->selection_.put(sel);
 		}
 		break;
 	}
