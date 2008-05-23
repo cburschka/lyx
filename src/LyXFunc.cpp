@@ -433,13 +433,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
-	// FIXME: these cases should be hidden in GuiApplication::getStatus().
-	case LFUN_WINDOW_CLOSE:
-		if (theApp())
-			return theApp()->getStatus(cmd);
-		enable = false;
-		break;
-
 	// FIXME optimally this should be in Text::getStatus. In such a case the flags
 	// are not passed when using context menu. This way it works.
 	case LFUN_SET_GRAPHICS_GROUP: {
@@ -568,8 +561,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_BUFFER_NEW:
-	case LFUN_BUFFER_NEW_TEMPLATE:
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_COMMAND_PREFIX:
@@ -585,7 +576,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
-	case LFUN_FILE_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_MENU_OPEN:
 	case LFUN_SERVER_GET_NAME:
@@ -603,8 +593,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_EXPORT_CUSTOM:
 	case LFUN_BUFFER_PRINT:
 	case LFUN_PREFERENCES_SAVE:
-	case LFUN_SCREEN_FONT_UPDATE:
-	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
 	case LFUN_INSET_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
@@ -620,12 +608,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_LYXRC_APPLY:
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
-	case LFUN_WINDOW_NEW:
-	case LFUN_LYX_QUIT:
 		// these are handled in our dispatch()
 		break;
 
 	default:
+		if (!theApp()) {
+			enable = false;
+			break;
+		}
+		if (theApp()->getStatus(cmd, flag))
+			break;
+
 		// Does the view know something?
 		if (!lyx_view_) {
 			enable = false;
@@ -1392,40 +1385,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyxrc.write(makeAbsPath("preferences",
 						package().user_support().absFilename()),
 				    false);
-			break;
-		}
-
-		case LFUN_SET_COLOR: {
-			string lyx_name;
-			string const x11_name = split(argument, lyx_name, ' ');
-			if (lyx_name.empty() || x11_name.empty()) {
-				setErrorMessage(from_ascii(N_(
-						"Syntax: set-color <lyx_name>"
-						" <x11_name>")));
-				break;
-			}
-
-			bool const graphicsbg_changed =
-				(lyx_name == lcolor.getLyXName(Color_graphicsbg) &&
-				 x11_name != lcolor.getX11Name(Color_graphicsbg));
-
-			if (!lcolor.setColor(lyx_name, x11_name)) {
-				setErrorMessage(
-						bformat(_("Set-color \"%1$s\" failed "
-								       "- color is undefined or "
-								       "may not be redefined"),
-									   from_utf8(lyx_name)));
-				break;
-			}
-
-			theApp()->updateColor(lcolor.getFromLyXName(lyx_name));
-
-			if (graphicsbg_changed) {
-				// FIXME: The graphics cache no longer has a changeDisplay method.
-#if 0
-				graphics::GCache::get().changeDisplay(true);
-#endif
-			}
 			break;
 		}
 

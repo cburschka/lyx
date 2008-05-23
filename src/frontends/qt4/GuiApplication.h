@@ -53,7 +53,7 @@ public:
 
 	/// Method inherited from \c Application class
 	//@{
-	FuncStatus getStatus(FuncRequest const &);
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 	bool dispatch(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
@@ -65,7 +65,6 @@ public:
 	bool event(QEvent * e);
 	bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	std::string const hexName(ColorCode col);
-	void updateColor(ColorCode col);
 	void readMenus(Lexer & lex);
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);

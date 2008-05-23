@@ -31,6 +31,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferView.h"
+#include "Color.h"
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -489,9 +490,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 }
 
 
-FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
+bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 {
-	FuncStatus flag;
 	bool enable = true;
 
 	switch(cmd.action) {
@@ -500,17 +500,24 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
 		enable = d->view_ids_.size() > 0;
 		break;
 
+	case LFUN_BUFFER_NEW:
+	case LFUN_BUFFER_NEW_TEMPLATE:
+	case LFUN_FILE_OPEN:
+	case LFUN_SCREEN_FONT_UPDATE:
+	case LFUN_SET_COLOR:
+	case LFUN_WINDOW_NEW:
+	case LFUN_LYX_QUIT:
+		enable = true;
+		break;
+
 	default:
-		if (!current_view_) {
-			enable = false;
-			break;
-		}
+		return false;
 	}
 
 	if (!enable)
 		flag.enabled(false);
 
-	return flag;
+	return true;
 }
 
 	
@@ -587,6 +594,38 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		} else
 			current_view_->openDocument(to_utf8(cmd.argument()));
 		break;
+
+	case LFUN_SET_COLOR: {
+		string lyx_name;
+		string const x11_name = split(to_utf8(cmd.argument()), lyx_name, ' ');
+		if (lyx_name.empty() || x11_name.empty()) {
+			current_view_->message(
+				_("Syntax: set-color <lyx_name> <x11_name>"));
+			break;
+		}
+
+		string const graphicsbg = lcolor.getLyXName(Color_graphicsbg);
+		bool const graphicsbg_changed = lyx_name == graphicsbg
+			&& x11_name != graphicsbg;
+		if (graphicsbg_changed) {
+			// FIXME: The graphics cache no longer has a changeDisplay method.
+#if 0
+			graphics::GCache::get().changeDisplay(true);
+#endif
+		}
+
+		if (!lcolor.setColor(lyx_name, x11_name)) {
+			current_view_->message(
+					bformat(_("Set-color \"%1$s\" failed "
+							       "- color is undefined or "
+							       "may not be redefined"),
+								   from_utf8(lyx_name)));
+			break;
+		}
+		// Make sure we don't keep old colors in cache.
+		d->color_cache_.clear();
+		break;
+	}
 
 	default:
 		// Notify the caller that the action has not been dispatched.
@@ -912,13 +951,6 @@ bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 string const GuiApplication::hexName(ColorCode col)
 {
 	return ltrim(fromqstr(d->color_cache_.get(col).name()), "#");
-}
-
-
-void GuiApplication::updateColor(ColorCode)
-{
-	// FIXME: Bleh, can't we just clear them all at once ?
-	d->color_cache_.clear();
 }
 
 

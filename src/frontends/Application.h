@@ -169,7 +169,7 @@ public:
 	virtual ~Application() {}
 
 	///
-	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
+	virtual bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const = 0;
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
 	virtual bool dispatch(FuncRequest const & cmd) = 0;
@@ -208,11 +208,6 @@ public:
 	*      passing Color_white returns "ffffff".
 	*/
 	virtual std::string const hexName(ColorCode col) = 0;
-
-	/**
-	* update an altered GUI color
-	*/
-	virtual void updateColor(ColorCode col) = 0;
 
 	/**
 	* read and create the menu structure
