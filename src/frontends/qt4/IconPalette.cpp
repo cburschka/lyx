@@ -43,10 +43,11 @@ TearOff::TearOff(QWidget * parent)
 }
 
 
-void TearOff::mouseReleaseEvent(QMouseEvent * /*event*/)
+void TearOff::mouseReleaseEvent(QMouseEvent * event)
 {
 	// signal
 	tearOff();
+	event->accept();
 }
 
 
@@ -66,7 +67,7 @@ void TearOff::leaveEvent(QEvent * event)
 }
 
 
-void TearOff::paintEvent(QPaintEvent * /*event*/)
+void TearOff::paintEvent(QPaintEvent * event)
 {
 	QPainter p(this);
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
@@ -86,6 +87,7 @@ void TearOff::paintEvent(QPaintEvent * /*event*/)
 	if (highlighted_)
 		menuOpt.state |= QStyle::State_Selected;
 	style()->drawControl(QStyle::CE_MenuTearoff, &menuOpt, &p, this);
+	event->accept();
 }
 
 
@@ -149,7 +151,7 @@ void IconPalette::clicked(QAction * action)
 }
 
 
-void IconPalette::showEvent(QShowEvent * /*event*/)
+void IconPalette::showEvent(QShowEvent * event)
 {
 	resize(sizeHint());
 	setMaximumSize(sizeHint());
@@ -190,6 +192,7 @@ void IconPalette::showEvent(QShowEvent * /*event*/)
 	QRect r = rect();
 	r.moveTo(gpos.x() + hoffset, gpos.y() + voffset);
 	setGeometry(r);	
+	event->accept();
 }
 
 
@@ -227,7 +230,7 @@ void IconPalette::updateParent()
 }
 
 
-void IconPalette::paintEvent(QPaintEvent * /*event*/)
+void IconPalette::paintEvent(QPaintEvent * event)
 {
 	// draw border
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
@@ -247,6 +250,7 @@ void IconPalette::paintEvent(QPaintEvent * /*event*/)
 		frame.midLineWidth = 0;
 		style()->drawPrimitive(QStyle::PE_FrameMenu, &frame, &p, this);
 	}
+	event->accept();
 }
 
 
