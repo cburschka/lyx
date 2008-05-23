@@ -13,6 +13,7 @@
 
 #include "GuiBranches.h"
 
+#include "ColorCache.h"
 #include "GuiApplication.h"
 #include "Validator.h"
 #include "qt_helpers.h"

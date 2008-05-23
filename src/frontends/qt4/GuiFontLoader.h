@@ -15,6 +15,9 @@
 class QFont;
 
 namespace lyx {
+
+class FontInfo;
+
 namespace frontend {
 
 class GuiFontMetrics;

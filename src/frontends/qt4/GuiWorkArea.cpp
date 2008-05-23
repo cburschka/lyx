@@ -13,6 +13,10 @@
 
 #include "GuiWorkArea.h"
 
+#include "ColorCache.h"
+#include "FontLoader.h"
+#include "Menus.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"

@@ -13,6 +13,7 @@
 
 #include "GuiPrefs.h"
 
+#include "ColorCache.h"
 #include "FileDialog.h"
 #include "GuiApplication.h"
 #include "GuiFontExample.h"
@@ -23,6 +24,7 @@
 #include "BufferList.h"
 #include "Color.h"
 #include "ConverterCache.h"
+#include "FontEnums.h"
 #include "FuncRequest.h"
 #include "KeyMap.h"
 #include "KeySequence.h"
@@ -45,6 +47,7 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
+#include "frontends/FontLoader.h"
 
 #include <QAbstractItemModel>
 #include <QCheckBox>

@@ -13,14 +13,18 @@
 
 #include "GuiPainter.h"
 
+#include "ColorCache.h"
 #include "GuiApplication.h"
 #include "GuiFontLoader.h"
 #include "GuiFontMetrics.h"
 #include "GuiImage.h"
 #include "qt_helpers.h"
 
+#include "FontInfo.h"
 #include "Language.h"
 #include "LyXRC.h"
+
+#include "insets/Inset.h"
 
 #include "support/lassert.h"
 #include "support/debug.h"

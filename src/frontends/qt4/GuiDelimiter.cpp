@@ -15,8 +15,10 @@
 #include "GuiApplication.h"
 #include "GuiFontLoader.h"
 #include "GuiView.h"
-
 #include "qt_helpers.h"
+
+#include "FontInfo.h"
+
 #include "support/gettext.h"
 
 #include <QPixmap>

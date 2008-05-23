@@ -19,6 +19,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Cursor.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 

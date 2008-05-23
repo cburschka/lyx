@@ -14,10 +14,14 @@
 
 #include "GuiApplication.h"
 
-#include "qt_helpers.h"
+#include "ColorCache.h"
+#include "GuiClipboard.h"
 #include "GuiImage.h"
 #include "GuiKeySymbol.h"
+#include "GuiSelection.h"
 #include "GuiView.h"
+#include "Menus.h"
+#include "qt_helpers.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -89,6 +93,7 @@
 #include <boost/bind.hpp>
 
 #include <exception>
+#include <map>
 
 using namespace std;
 using namespace lyx::support;
@@ -327,7 +332,7 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): global_menubar_(0)
+	Private(): language_model_(0), global_menubar_(0)
 	{
 #ifdef Q_WS_MACX
 		// Create the global default menubar which is shown for the dialogs
@@ -335,6 +340,37 @@ struct GuiApplication::Private
 		global_menubar_ = new GlobalMenuBar();
 #endif
 	}
+
+	///
+	QSortFilterProxyModel * language_model_;
+	///
+	GuiClipboard clipboard_;
+	///
+	GuiSelection selection_;
+	///
+	FontLoader font_loader_;
+	///
+	ColorCache color_cache_;
+	///
+	QTranslator qt_trans_;
+	///
+	std::map<int, SocketNotifier *> socket_notifiers_;
+	///
+	Menus menus_;
+	/// this timer is used for any regular events one wants to
+	/// perform. at present it is used to check if forked processes
+	/// are done.
+	QTimer general_timer_;
+
+	/// Multiple views container.
+	/**
+	* Warning: This must not be a smart pointer as the destruction of the
+	* object is handled by Qt when the view is closed
+	* \sa Qt::WA_DeleteOnClose attribute.
+	*/
+	std::map<int, GuiView *> views_;
+	///
+	std::vector<int> view_ids_;
 
 	/// Only used on mac.
 	GlobalMenuBar * global_menubar_;
@@ -356,7 +392,6 @@ struct GuiApplication::Private
 
 GuiApplication * guiApp;
 
-
 GuiApplication::~GuiApplication()
 {
 #ifdef Q_WS_MACX
@@ -367,8 +402,7 @@ GuiApplication::~GuiApplication()
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(), language_model_(0),
-	current_view_(0), d(new GuiApplication::Private)
+	: QApplication(argc, argv),	current_view_(0), d(new GuiApplication::Private)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
@@ -403,10 +437,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// Short-named translator can be loaded from a long name, but not the
 	// opposite. Therefore, long name should be used without truncation.
 	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
-	if (qt_trans_.load(language_name,
+	if (d->qt_trans_.load(language_name,
 		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
 	{
-		installTranslator(&qt_trans_);
+		installTranslator(&d->qt_trans_);
 		// even if the language calls for RtL, don't do that
 		setLayoutDirection(Qt::LeftToRight);
 		LYXERR(Debug::GUI, "Successfully installed Qt translations for locale "
@@ -448,10 +482,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
 
-	general_timer_.setInterval(500);
-	connect(&general_timer_, SIGNAL(timeout()),
+	d->general_timer_.setInterval(500);
+	connect(&d->general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
-	general_timer_.start();
+	d->general_timer_.start();
 }
 
 
@@ -463,7 +497,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
 	switch(cmd.action) {
 
 	case LFUN_WINDOW_CLOSE:
-		enable = view_ids_.size() > 0;
+		enable = d->view_ids_.size() > 0;
 		break;
 
 	default:
@@ -506,7 +540,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_SCREEN_FONT_UPDATE: {
 		// handle the screen font changes.
-		font_loader_.update();
+		d->font_loader_.update();
 		// Backup current_view_
 		GuiView * view = current_view_;
 		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
@@ -567,7 +601,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 void GuiApplication::resetGui()
 {
 	map<int, GuiView *>::iterator it;
-	for (it = views_.begin(); it != views_.end(); ++it)
+	for (it = d->views_.begin(); it != d->views_.end(); ++it)
 		it->second->resetDialogs();
 
 	dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
@@ -591,9 +625,9 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 		d->global_menubar_->releaseKeyboard();
 
 	// create new view
-	updateIds(views_, view_ids_);
+	updateIds(d->views_, d->view_ids_);
 	int id = 0;
-	while (views_.find(id) != views_.end())
+	while (d->views_.find(id) != d->views_.end())
 		id++;
 	GuiView * view = new GuiView(id);
 	
@@ -602,8 +636,8 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 		view->setIconSize(current_view_->iconSize());
 
 	// register view
-	views_[id] = view;
-	updateIds(views_, view_ids_);
+	d->views_[id] = view;
+	updateIds(d->views_, d->view_ids_);
 
 	if (autoShow) {
 		view->show();
@@ -628,17 +662,50 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 }
 
 
-
-
 Clipboard & GuiApplication::clipboard()
 {
-	return clipboard_;
+	return d->clipboard_;
 }
 
 
 Selection & GuiApplication::selection()
 {
-	return selection_;
+	return d->selection_;
+}
+
+
+FontLoader & GuiApplication::fontLoader() 
+{
+	return d->font_loader_;
+}
+
+
+Menus const & GuiApplication::menus() const 
+{
+	return d->menus_;
+}
+
+
+Menus & GuiApplication::menus()
+{
+	return d->menus_; 
+}
+
+
+size_t GuiApplication::viewCount() const
+{
+	return d->view_ids_.size();
+}
+
+
+vector<int> const & GuiApplication::viewIds()
+{
+	return d->view_ids_;
+}
+
+ColorCache & GuiApplication::colorCache()
+{
+	return d->color_cache_;
 }
 
 
@@ -662,8 +729,8 @@ void GuiApplication::execBatchCommands()
 
 QAbstractItemModel * GuiApplication::languageModel()
 {
-	if (language_model_)
-		return language_model_;
+	if (d->language_model_)
+		return d->language_model_;
 
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
 	lang_model->insertColumns(0, 1);
@@ -677,12 +744,12 @@ QAbstractItemModel * GuiApplication::languageModel()
 		lang_model->setData(item, qt_(it->second.display()), Qt::DisplayRole);
 		lang_model->setData(item, toqstr(it->second.lang()), Qt::UserRole);
 	}
-	language_model_ = new QSortFilterProxyModel(this);
-	language_model_->setSourceModel(lang_model);
+	d->language_model_ = new QSortFilterProxyModel(this);
+	d->language_model_->setSourceModel(lang_model);
 #if QT_VERSION >= 0x040300
-	language_model_->setSortLocaleAware(true);
+	d->language_model_->setSortLocaleAware(true);
 #endif
-	return language_model_;
+	return d->language_model_;
 }
 
 
@@ -823,7 +890,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 
 bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 {
-	QColor const & qcol = color_cache_.get(col);
+	QColor const & qcol = d->color_cache_.get(col);
 	if (!qcol.isValid()) {
 		rgbcol.r = 0;
 		rgbcol.g = 0;
@@ -839,35 +906,35 @@ bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 
 string const GuiApplication::hexName(ColorCode col)
 {
-	return ltrim(fromqstr(color_cache_.get(col).name()), "#");
+	return ltrim(fromqstr(d->color_cache_.get(col).name()), "#");
 }
 
 
 void GuiApplication::updateColor(ColorCode)
 {
 	// FIXME: Bleh, can't we just clear them all at once ?
-	color_cache_.clear();
+	d->color_cache_.clear();
 }
 
 
 void GuiApplication::registerSocketCallback(int fd, SocketCallback func)
 {
 	SocketNotifier * sn = new SocketNotifier(this, fd, func);
-	socket_notifiers_[fd] = sn;
+	d->socket_notifiers_[fd] = sn;
 	connect(sn, SIGNAL(activated(int)), this, SLOT(socketDataReceived(int)));
 }
 
 
 void GuiApplication::socketDataReceived(int fd)
 {
-	socket_notifiers_[fd]->func_();
+	d->socket_notifiers_[fd]->func_();
 }
 
 
 void GuiApplication::unregisterSocketCallback(int fd)
 {
-	socket_notifiers_[fd]->setEnabled(false);
-	socket_notifiers_.erase(fd);
+	d->socket_notifiers_[fd]->setEnabled(false);
+	d->socket_notifiers_.erase(fd);
 }
 
 
@@ -887,52 +954,52 @@ void GuiApplication::commitData(QSessionManager & sm)
 
 bool GuiApplication::unregisterView(int id)
 {
-	updateIds(views_, view_ids_);
-	LASSERT(views_.find(id) != views_.end(), /**/);
-	LASSERT(views_[id], /**/);
+	updateIds(d->views_, d->view_ids_);
+	LASSERT(d->views_.find(id) != d->views_.end(), /**/);
+	LASSERT(d->views_[id], /**/);
 
 	map<int, GuiView *>::iterator it;
-	for (it = views_.begin(); it != views_.end(); ++it) {
+	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
 		if (it->first == id) {
-			views_.erase(id);
+			d->views_.erase(id);
 			break;
 		}
 	}
-	updateIds(views_, view_ids_);
+	updateIds(d->views_, d->view_ids_);
 	return true;
 }
 
 
 bool GuiApplication::closeAllViews()
 {
-	updateIds(views_, view_ids_);
-	if (views_.empty())
+	updateIds(d->views_, d->view_ids_);
+	if (d->views_.empty())
 		return true;
 
-	map<int, GuiView*> const cmap = views_;
+	map<int, GuiView*> const cmap = d->views_;
 	map<int, GuiView*>::const_iterator it;
 	for (it = cmap.begin(); it != cmap.end(); ++it) {
 		if (!it->second->close())
 			return false;
 	}
 
-	views_.clear();
-	view_ids_.clear();
+	d->views_.clear();
+	d->view_ids_.clear();
 	return true;
 }
 
 
 GuiView & GuiApplication::view(int id) const
 {
-	LASSERT(views_.find(id) != views_.end(), /**/);
-	return *views_.find(id)->second;
+	LASSERT(d->views_.find(id) != d->views_.end(), /**/);
+	return *d->views_.find(id)->second;
 }
 
 
 void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 {
-	vector<int>::const_iterator it = view_ids_.begin();
-	vector<int>::const_iterator const end = view_ids_.end();
+	vector<int>::const_iterator it = d->view_ids_.begin();
+	vector<int>::const_iterator const end = d->view_ids_.end();
 	for (; it != end; ++it)
 		view(*it).hideDialog(name, inset);
 }
@@ -941,8 +1008,8 @@ void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
 	Buffer const * buffer_ = 0;
-	vector<int>::const_iterator it = view_ids_.begin();
-	vector<int>::const_iterator const end = view_ids_.end();
+	vector<int>::const_iterator it = d->view_ids_.begin();
+	vector<int>::const_iterator const end = d->view_ids_.end();
 	for (; it != end; ++it) {
 		Buffer const * ptr = view(*it).updateInset(inset);
 		if (ptr)
