@@ -561,7 +561,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BUFFER_NEW:
-		if (viewCount() == 0
+		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
@@ -572,7 +572,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
-		if (viewCount() == 0 
+		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
@@ -583,7 +583,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FILE_OPEN:
-		if (viewCount() == 0
+		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
 			createView();
 			current_view_->openDocument(to_utf8(cmd.argument()));
@@ -659,7 +659,7 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 	GuiView * view = new GuiView(id);
 	
 	// copy the icon size from old view
-	if (viewCount() > 0)
+	if (current_view_)
 		view->setIconSize(current_view_->iconSize());
 
 	// register view
@@ -715,12 +715,6 @@ Menus const & GuiApplication::menus() const
 Menus & GuiApplication::menus()
 {
 	return d->menus_; 
-}
-
-
-size_t GuiApplication::viewCount() const
-{
-	return d->views_.size();
 }
 
 
@@ -986,6 +980,8 @@ void GuiApplication::unregisterView(GuiView * gv)
 {
 	LASSERT(d->views_[gv->id()] == gv, /**/);
 	d->views_.erase(gv->id());
+	if (current_view_ == gv)
+		current_view_ = 0;
 }
 
 

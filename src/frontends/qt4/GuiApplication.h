@@ -94,8 +94,6 @@ public:
 	///
 	void setCurrentView(GuiView * view) { current_view_ = view; }
 	///
-	size_t viewCount() const;
-	///
 	QVector<int> viewIds();
 
 	///
