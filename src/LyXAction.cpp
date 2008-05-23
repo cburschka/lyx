@@ -786,10 +786,41 @@ void LyXAction::init()
 		{ LFUN_DEPTH_INCREMENT, "depth-increment", Noop, Edit },
 		{ LFUN_ENVIRONMENT_INSERT, "environment-insert", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_BOLD
+ * \li Action: Toggles the bold font (selection-wise).
+ * \li Syntax: font-bold
+ * \endvar
+ */
 		{ LFUN_FONT_BOLD, "font-bold", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_TYPEWRITER
+ * \li Action: Toggles the typewriter font (selection-wise).
+ * \li Syntax: font-typewriter
+ * \endvar
+ */
 		{ LFUN_FONT_TYPEWRITER, "font-typewriter", Noop, Layout },
-		{ LFUN_FONT_DEFAULT, "font-default", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_UNDERLINE
+ * \li Action: Toggles underline in the font (selection-wise).
+ * \li Syntax: font-underline
+ * \endvar
+ */
+		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_EMPH
+ * \li Action: Toggles the emphasis in the font (selection-wise).
+ * \li Syntax: font-emph
+ * \endvar
+ */
 		{ LFUN_FONT_EMPH, "font-emph", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_DEFAULT
+ * \li Action: Reverts the settings of the font to the default values (selection-wise).
+ * \li Syntax: font-default
+ * \endvar
+ */
+		{ LFUN_FONT_DEFAULT, "font-default", Noop, Layout },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
 		{ LFUN_FONT_NOUN, "font-noun", Noop, Layout },
@@ -799,7 +830,6 @@ void LyXAction::init()
 		{ LFUN_FONT_ITAL, "font-ital", Noop, Layout },
 		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
-		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
 
 		{ LFUN_BIBITEM_INSERT, "bibitem-insert", Noop, Edit },
