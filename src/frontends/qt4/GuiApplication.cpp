@@ -369,9 +369,7 @@ struct GuiApplication::Private
 	* object is handled by Qt when the view is closed
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
-	std::map<int, GuiView *> views_;
-	///
-	std::vector<int> view_ids_;
+	map<int, GuiView *> views_;
 
 	/// Only used on mac.
 	GlobalMenuBar * global_menubar_;
@@ -497,7 +495,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	switch(cmd.action) {
 
 	case LFUN_WINDOW_CLOSE:
-		enable = d->view_ids_.size() > 0;
+		enable = d->views_.size() > 0;
 		break;
 
 	case LFUN_BUFFER_NEW:
@@ -647,15 +645,6 @@ void GuiApplication::resetGui()
 }
 
 
-static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
-{
-	ids.clear();
-	map<int, GuiView *>::const_iterator it;
-	for (it = stdmap.begin(); it != stdmap.end(); ++it)
-		ids.push_back(it->first);
-}
-
-
 void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 {
 	// release the keyboard which might have been grabed by the global
@@ -664,7 +653,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 		d->global_menubar_->releaseKeyboard();
 
 	// create new view
-	updateIds(d->views_, d->view_ids_);
 	int id = 0;
 	while (d->views_.find(id) != d->views_.end())
 		id++;
@@ -676,7 +664,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 
 	// register view
 	d->views_[id] = view;
-	updateIds(d->views_, d->view_ids_);
 
 	if (autoShow) {
 		view->show();
@@ -733,14 +720,20 @@ Menus & GuiApplication::menus()
 
 size_t GuiApplication::viewCount() const
 {
-	return d->view_ids_.size();
+	return d->views_.size();
 }
 
 
-vector<int> const & GuiApplication::viewIds()
+QVector<int> GuiApplication::viewIds()
 {
-	return d->view_ids_;
+	QVector<int> ids;
+	map<int, GuiView *>::const_iterator end = d->views_.end();
+	map<int, GuiView *>::const_iterator it = d->views_.begin();
+	for (; it != end; ++it)
+		ids.push_back(it->first);
+	return ids;
 }
+
 
 ColorCache & GuiApplication::colorCache()
 {
@@ -991,7 +984,6 @@ void GuiApplication::commitData(QSessionManager & sm)
 
 bool GuiApplication::unregisterView(int id)
 {
-	updateIds(d->views_, d->view_ids_);
 	LASSERT(d->views_.find(id) != d->views_.end(), /**/);
 	LASSERT(d->views_[id], /**/);
 
@@ -1002,14 +994,13 @@ bool GuiApplication::unregisterView(int id)
 			break;
 		}
 	}
-	updateIds(d->views_, d->view_ids_);
+
 	return true;
 }
 
 
 bool GuiApplication::closeAllViews()
 {
-	updateIds(d->views_, d->view_ids_);
 	if (d->views_.empty())
 		return true;
 
@@ -1021,7 +1012,6 @@ bool GuiApplication::closeAllViews()
 	}
 
 	d->views_.clear();
-	d->view_ids_.clear();
 	return true;
 }
 
@@ -1035,21 +1025,18 @@ GuiView & GuiApplication::view(int id) const
 
 void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 {
-	vector<int>::const_iterator it = d->view_ids_.begin();
-	vector<int>::const_iterator const end = d->view_ids_.end();
-	for (; it != end; ++it)
-		view(*it).hideDialog(name, inset);
+	map<int, GuiView *>::iterator end = d->views_.end();
+	for (map<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it)
+		it->second->hideDialog(name, inset);
 }
 
 
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
 	Buffer const * buffer_ = 0;
-	vector<int>::const_iterator it = d->view_ids_.begin();
-	vector<int>::const_iterator const end = d->view_ids_.end();
-	for (; it != end; ++it) {
-		Buffer const * ptr = view(*it).updateInset(inset);
-		if (ptr)
+	map<int, GuiView *>::iterator end = d->views_.end();
+	for (map<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
+		if (Buffer const * ptr = it->second->updateInset(inset))
 			buffer_ = ptr;
 	}
 	return buffer_;

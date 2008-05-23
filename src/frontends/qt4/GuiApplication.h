@@ -15,10 +15,9 @@
 
 #include "frontends/Application.h"
 
-#include <QObject>
 #include <QApplication>
-
-#include <vector>
+#include <QObject>
+#include <QVector>
 
 class QSessionManager;
 class QAbstractItemModel;
@@ -97,7 +96,7 @@ public:
 	///
 	size_t viewCount() const;
 	///
-	std::vector<int> const & viewIds();
+	QVector<int> viewIds();
 
 	///
 	ColorCache & colorCache();
