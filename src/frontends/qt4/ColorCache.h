@@ -16,32 +16,29 @@
 
 #include <QColor>
 
-#include <map>
-
 namespace lyx {
 
 struct RGBColor;
 
-
-// FIXME: use a fixed-size array not a map ?
-
 /**
  * Cache from Color to QColor.
  */
-class ColorCache {
+class ColorCache
+{
 public:
-	ColorCache() {}
+	ColorCache() { init(); }
 
 	/// get the given color
-	QColor const & get(ColorCode color) const;
+	QColor const & get(ColorCode color) const { return lcolors_[color]; }
 
 	/// clear all colors
-	void clear();
+	void clear() { init(); }
 
 private:
-	typedef std::map<ColorCode, QColor> lcolor_map;
-
-	mutable lcolor_map colormap;
+	///
+	void init();
+	///
+	QColor lcolors_[Color_ignore + 1];
 };
 
 ///

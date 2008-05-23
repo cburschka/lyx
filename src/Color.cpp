@@ -87,6 +87,10 @@ RGBColor rgbFromHexName(string const & x11hexname)
 
 ColorSet::ColorSet()
 {
+	char const * grey40 = "#666666";
+	char const * grey60 = "#999999";
+	char const * grey80 = "#cccccc";
+	//char const * grey90 = "#e5e5e5";
 	//  ColorCode, gui, latex, x11, lyx
 	static ColorEntry const items[] = {
 	{ Color_none, N_("none"), "none", "black", "none" },
@@ -106,9 +110,9 @@ ColorSet::ColorSet()
 		"selectiontext", "black", "selectiontext" },
 	{ Color_latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
 	{ Color_inlinecompletion, N_("inline completion"),
-		"inlinecompletion", "grey60", "inlinecompletion" },
+		"inlinecompletion", grey60, "inlinecompletion" },
 	{ Color_nonunique_inlinecompletion, N_("non-unique inline completion"),
-		"nonuniqueinlinecompletion", "grey80", "nonuniqueinlinecompletion" },
+		"nonuniqueinlinecompletion", grey80, "nonuniqueinlinecompletion" },
 	{ Color_preview, N_("previewed snippet"), "preview", "black", "preview" },
 	{ Color_notelabel, N_("note label"), "note", "yellow", "note" },
 	{ Color_notebg, N_("note background"), "notebg", "yellow", "notebg" },
@@ -141,12 +145,12 @@ ColorSet::ColorSet()
 	{ Color_mathmacrolabel, N_("Math macro label"), "mathmacrolabel", "#a19992", "mathmacrolabel" },
 	{ Color_mathmacroframe, N_("Math macro frame"), "mathmacroframe", "#ede2d8", "mathmacroframe" },
 	{ Color_mathmacroblend, N_("Math macro blended out"), "mathmacroblend", "black", "mathmacroblend" },
-	{ Color_mathmacrooldarg, N_("Math macro old parameter"), "mathmacrooldarg", "grey80", "mathmacrooldarg" },
+	{ Color_mathmacrooldarg, N_("Math macro old parameter"), "mathmacrooldarg", grey80, "mathmacrooldarg" },
 	{ Color_mathmacronewarg, N_("Math macro new parameter"), "mathmacronewarg", "black", "mathmacronewarg" },
 	{ Color_captionframe, N_("caption frame"), "captionframe", "DarkRed", "captionframe" },
 	{ Color_collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },
 	{ Color_collapsableframe, N_("collapsable inset frame"), "collapsableframe", "IndianRed", "collapsableframe" },
-	{ Color_insetbg, N_("inset background"), "insetbg", "grey80", "insetbg" },
+	{ Color_insetbg, N_("inset background"), "insetbg", grey80, "insetbg" },
 	{ Color_insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
 	{ Color_error, N_("LaTeX error"), "error", "Red", "error" },
 	{ Color_eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
@@ -159,7 +163,7 @@ ColorSet::ColorSet()
 	{ Color_tabularline, N_("table line"), "tabularline", "black", "tabularline" },
 	{ Color_tabularonoffline, N_("table on/off line"), "tabularonoffline",
 	     "LightSteelBlue", "tabularonoffline" },
-	{ Color_bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
+	{ Color_bottomarea, N_("bottom area"), "bottomarea", grey40, "bottomarea" },
 	{ Color_newpage, N_("new page"), "newpage", "Blue", "newpage" },
 	{ Color_pagebreak, N_("page break / line break"), "pagebreak", "RoyalBlue", "pagebreak" },
 	{ Color_buttonframe, N_("frame of button"), "buttonframe", "#dcd2c8", "buttonframe" },
