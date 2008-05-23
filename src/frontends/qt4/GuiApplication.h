@@ -112,7 +112,7 @@ public:
 	/// return a suitable monospaced font name.
 	QString const typewriterFontName();
 	///
-	bool unregisterView(int id);
+	void unregisterView(GuiView * gv);
 	///
 	GuiView & view(int id) const;
 

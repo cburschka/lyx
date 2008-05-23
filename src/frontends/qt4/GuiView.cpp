@@ -458,7 +458,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			it->second->saveSession();
 	}
 
-	guiApp->unregisterView(id_);
+	guiApp->unregisterView(this);
 	close_event->accept();
 }
 

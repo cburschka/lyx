@@ -982,20 +982,10 @@ void GuiApplication::commitData(QSessionManager & sm)
 }
 
 
-bool GuiApplication::unregisterView(int id)
+void GuiApplication::unregisterView(GuiView * gv)
 {
-	LASSERT(d->views_.find(id) != d->views_.end(), /**/);
-	LASSERT(d->views_[id], /**/);
-
-	map<int, GuiView *>::iterator it;
-	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
-		if (it->first == id) {
-			d->views_.erase(id);
-			break;
-		}
-	}
-
-	return true;
+	LASSERT(d->views_[gv->id()] == gv, /**/);
+	d->views_.erase(gv->id());
 }
 
 
