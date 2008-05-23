@@ -860,9 +860,15 @@ void LyXAction::init()
 		{ LFUN_FONT_DEFAULT, "font-default", Noop, Layout },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
-		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
-		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
+		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_STATE
+ * \li Action: Returns the info about the current font.
+ * \li Syntax: font-state
+ * \endvar
+ */
+		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 
 		{ LFUN_BIBITEM_INSERT, "bibitem-insert", Noop, Edit },
 		{ LFUN_CITATION_INSERT, "citation-insert", Noop, Edit },
