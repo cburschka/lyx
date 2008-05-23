@@ -342,10 +342,6 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
-	if (guiApp->currentView() == this)
-		guiApp->setCurrentView(0);
-	theLyXFunc().setLyXView(0);
-	
 	delete &d;
 }
 
@@ -427,8 +423,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		}
 	}
 
-	// Make sure that no LFUN use this close to be closed View.
-	theLyXFunc().setLyXView(0);
+	// Make sure that nothing will use this close to be closed View.
+	guiApp->unregisterView(this);
 
 	// Save toolbars configuration
 	if (isFullScreen()) {
@@ -458,7 +454,6 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			it->second->saveSession();
 	}
 
-	guiApp->unregisterView(this);
 	close_event->accept();
 }
 

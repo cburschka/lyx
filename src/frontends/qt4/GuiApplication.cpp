@@ -980,8 +980,10 @@ void GuiApplication::unregisterView(GuiView * gv)
 {
 	LASSERT(d->views_[gv->id()] == gv, /**/);
 	d->views_.erase(gv->id());
-	if (current_view_ == gv)
+	if (current_view_ == gv) {
 		current_view_ = 0;
+		theLyXFunc().setLyXView(0);
+	}
 }
 
 
