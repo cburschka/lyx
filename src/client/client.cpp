@@ -94,7 +94,7 @@ FileNameList lyxSockets(string const & dir, string const & pid)
 		if (!it->isDirectory())
 			continue;
 		string const tmpdir = it->absFilename();
-		if (!suffixIs(tmpdir, "lyx_tmpdir" + pid))
+		if (!contains(tmpdir, "lyx_tmpdir" + pid))
 			continue;
 
 		FileName lyxsocket(tmpdir + "/lyxsocket");
