@@ -795,7 +795,7 @@ void LyXAction::init()
 		{ LFUN_FONT_BOLD, "font-bold", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_TYPEWRITER
- * \li Action: Toggles the typewriter font (selection-wise).
+ * \li Action: Toggles the typewriter family font (selection-wise).
  * \li Syntax: font-typewriter
  * \endvar
  */
@@ -809,11 +809,48 @@ void LyXAction::init()
 		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_EMPH
- * \li Action: Toggles the emphasis in the font (selection-wise).
+ * \li Action: Toggles the emphasis font style (selection-wise).
  * \li Syntax: font-emph
  * \endvar
  */
 		{ LFUN_FONT_EMPH, "font-emph", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_NOUN
+ * \li Action: Toggles Noun text style font (selection-wise).
+ * \li Syntax: font-noun
+ * \endvar
+ */
+		{ LFUN_FONT_NOUN, "font-noun", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_ROMAN
+ * \li Action: Toggles Roman family font (selection-wise).
+ * \li Syntax: font-roman
+ * \endvar
+ */
+		{ LFUN_FONT_ROMAN, "font-roman", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_SANS
+ * \li Action: Toggles Sans Serif family font (selection-wise).
+ * \li Syntax: font-sans
+ * \endvar
+ */
+		{ LFUN_FONT_SANS, "font-sans", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_FRAK
+ * \li Action: Toggles Fraktur family font (math-mode, selection-wise).
+ * \li Syntax: font-frak
+ * \li Origin: vermeer, 10 Jan 2002
+ * \endvar
+ */
+		{ LFUN_FONT_FRAK, "font-frak", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_ITAL
+ * \li Action: Toggles Italics font shape (math-mode, selection-wise).
+ * \li Syntax: font-ital
+ * \li Origin: vermeer, 10 Jan 2002
+ * \endvar
+ */
+		{ LFUN_FONT_ITAL, "font-ital", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_DEFAULT
  * \li Action: Reverts the settings of the font to the default values (selection-wise).
@@ -823,11 +860,6 @@ void LyXAction::init()
 		{ LFUN_FONT_DEFAULT, "font-default", Noop, Layout },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
-		{ LFUN_FONT_NOUN, "font-noun", Noop, Layout },
-		{ LFUN_FONT_ROMAN, "font-roman", Noop, Layout },
-		{ LFUN_FONT_SANS, "font-sans", Noop, Layout },
-		{ LFUN_FONT_FRAK, "font-frak", Noop, Layout },
-		{ LFUN_FONT_ITAL, "font-ital", Noop, Layout },
 		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
