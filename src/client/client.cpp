@@ -78,7 +78,7 @@ FileNameList lyxSockets(string const & dir, string const & pid)
 {
 	FileNameList dirlist;
 
-	FileName dirpath(dir);
+	FileName dirpath(dir + "/");
 
 	if (!dirpath.exists() || !dirpath.isDirectory()) {
 		lyxerr << dir << " does not exist or is not a directory."
