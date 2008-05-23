@@ -1,8 +1,3 @@
-#include "libs/filesystem/src/exception.cpp"
-#include "libs/filesystem/src/operations.cpp"
-#include "libs/filesystem/src/path.cpp"
-#include "libs/filesystem/src/portability.cpp"
-
 //#include "libs/regex/src/cpp_regex_traits.cpp"
 //#include "libs/regex/src/c_regex_traits.cpp"
 #include "libs/regex/src/cregex.cpp"

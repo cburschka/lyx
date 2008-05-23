@@ -1,10 +1,5 @@
 #include <boost/config.hpp>
 #include <boost/detail/workaround.hpp>
-#include <boost/filesystem/config.hpp>
-#include <boost/filesystem/convenience.hpp>
-#include <boost/filesystem/exception.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/signals/connection.hpp>
 #include <boost/signals/detail/signal_base.hpp>

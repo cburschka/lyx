@@ -615,7 +615,7 @@ if conf.CheckLib('nsl'):
 
 # check available boost libs (since lyx1.4 does not use iostream)
 boost_libs = []
-for lib in ['signals', 'regex', 'filesystem']:
+for lib in ['signals', 'regex']:
     if os.path.isdir(os.path.join(top_src_dir, 'boost', 'libs', lib)):
         boost_libs.append(lib)
 

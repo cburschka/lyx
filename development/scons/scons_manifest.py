@@ -2779,25 +2779,6 @@ boost_libs_regex_src_extra_files = Split('''
 ''')
 
 
-boost_libs_filesystem_extra_files = Split('''
-    Makefile.am
-    filesystem.vcproj
-''')
-
-
-boost_libs_filesystem_src_files = Split('''
-    exception.cpp
-    operations.cpp
-    path.cpp
-    portability.cpp
-''')
-
-
-boost_libs_filesystem_src_extra_files = Split('''
-    Makefile.am
-    pch.h
-''')
-
 
 development_Win32_packaging_installer = Split('''
     license.rtf

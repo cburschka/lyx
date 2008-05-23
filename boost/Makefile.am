@@ -26,11 +26,6 @@ else
 
 liblyxboost_la_SOURCES = \
 	\
-	libs/filesystem/src/exception.cpp \
-	libs/filesystem/src/operations.cpp \
-	libs/filesystem/src/path.cpp \
-	libs/filesystem/src/portability.cpp \
-	\
 	libs/regex/src/c_regex_traits.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
 	libs/regex/src/cregex.cpp \
