@@ -572,7 +572,7 @@ int main(int argc, char * argv[])
 			       << endl;
 			return EXIT_FAILURE;
 		}
-		cerr << "lyxclient: " << "Connected to " << addr->string() << endl;
+		cerr << "lyxclient: " << "Connected to " << addr->absFilename() << endl;
 	}
 
 	int const serverfd = server->fd();
