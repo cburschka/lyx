@@ -399,7 +399,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			continue;
 		}
 
-		QVector<int> const ids = guiApp->viewIds();
+		QList<int> const ids = guiApp->viewIds();
 		for (int i = 0; i != ids.size(); ++i) {
 			if (id_ == ids[i])
 				continue;

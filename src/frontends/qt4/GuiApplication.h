@@ -17,7 +17,7 @@
 
 #include <QApplication>
 #include <QObject>
-#include <QVector>
+#include <QList>
 
 class QSessionManager;
 class QAbstractItemModel;
@@ -94,7 +94,7 @@ public:
 	///
 	void setCurrentView(GuiView * view) { current_view_ = view; }
 	///
-	QVector<int> viewIds();
+	QList<int> viewIds() const;
 
 	///
 	ColorCache & colorCache();

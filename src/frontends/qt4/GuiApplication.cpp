@@ -46,6 +46,7 @@
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
+#include "support/foreach.h"
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -59,6 +60,7 @@
 #include <QClipboard>
 #include <QEventLoop>
 #include <QFileOpenEvent>
+#include <QHash>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QMacPasteboardMime>
@@ -83,7 +85,7 @@
 #endif
 
 #ifdef Q_WS_WIN
-#include <QVector>
+#include <QList>
 #include <QWindowsMime>
 #if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
 #include <wtypes.h>
@@ -94,7 +96,6 @@
 #include <boost/bind.hpp>
 
 #include <exception>
-#include <map>
 
 using namespace std;
 using namespace lyx::support;
@@ -333,7 +334,8 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): language_model_(0), global_menubar_(0)
+	Private()
+		: language_model_(0), global_menubar_(0)
 	{
 #ifdef Q_WS_MACX
 		// Create the global default menubar which is shown for the dialogs
@@ -355,7 +357,7 @@ struct GuiApplication::Private
 	///
 	QTranslator qt_trans_;
 	///
-	std::map<int, SocketNotifier *> socket_notifiers_;
+	QHash<int, SocketNotifier *> socket_notifiers_;
 	///
 	Menus menus_;
 	/// this timer is used for any regular events one wants to
@@ -369,7 +371,7 @@ struct GuiApplication::Private
 	* object is handled by Qt when the view is closed
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
-	map<int, GuiView *> views_;
+	QHash<int, GuiView *> views_;
 
 	/// Only used on mac.
 	GlobalMenuBar * global_menubar_;
@@ -521,7 +523,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	
 bool GuiApplication::dispatch(FuncRequest const & cmd)
 {
-	switch(cmd.action) {
+	switch (cmd.action) {
 
 	case LFUN_WINDOW_NEW:
 		createView(toqstr(cmd.argument()));
@@ -567,8 +569,9 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
 			current_view_->show();
 			setActiveWindow(current_view_);
-		} else
+		} else {
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
+		}
 		break;
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
@@ -578,8 +581,9 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
 			if (!current_view_->buffer())
 				current_view_->close();
-		} else
+		} else {
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
+		}
 		break;
 
 	case LFUN_FILE_OPEN:
@@ -637,9 +641,9 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 void GuiApplication::resetGui()
 {
-	map<int, GuiView *>::iterator it;
+	QHash<int, GuiView *>::iterator it;
 	for (it = d->views_.begin(); it != d->views_.end(); ++it)
-		it->second->resetDialogs();
+		(*it)->resetDialogs();
 
 	dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 }
@@ -718,14 +722,9 @@ Menus & GuiApplication::menus()
 }
 
 
-QVector<int> GuiApplication::viewIds()
+QList<int> GuiApplication::viewIds() const
 {
-	QVector<int> ids;
-	map<int, GuiView *>::const_iterator end = d->views_.end();
-	map<int, GuiView *>::const_iterator it = d->views_.begin();
-	for (; it != end; ++it)
-		ids.push_back(it->first);
-	return ids;
+	return d->views_.keys();
 }
 
 
@@ -957,8 +956,7 @@ void GuiApplication::socketDataReceived(int fd)
 
 void GuiApplication::unregisterSocketCallback(int fd)
 {
-	d->socket_notifiers_[fd]->setEnabled(false);
-	d->socket_notifiers_.erase(fd);
+	d->socket_notifiers_.take(fd)->setEnabled(false);
 }
 
 
@@ -979,7 +977,7 @@ void GuiApplication::commitData(QSessionManager & sm)
 void GuiApplication::unregisterView(GuiView * gv)
 {
 	LASSERT(d->views_[gv->id()] == gv, /**/);
-	d->views_.erase(gv->id());
+	d->views_.remove(gv->id());
 	if (current_view_ == gv) {
 		current_view_ = 0;
 		theLyXFunc().setLyXView(0);
@@ -992,10 +990,9 @@ bool GuiApplication::closeAllViews()
 	if (d->views_.empty())
 		return true;
 
-	map<int, GuiView*> const cmap = d->views_;
-	map<int, GuiView*>::const_iterator it;
-	for (it = cmap.begin(); it != cmap.end(); ++it) {
-		if (!it->second->close())
+	QList<GuiView *> views = d->views_.values();
+	foreach (GuiView * view, views) {
+		if (!view->close())
 			return false;
 	}
 
@@ -1006,25 +1003,25 @@ bool GuiApplication::closeAllViews()
 
 GuiView & GuiApplication::view(int id) const
 {
-	LASSERT(d->views_.find(id) != d->views_.end(), /**/);
-	return *d->views_.find(id)->second;
+	LASSERT(d->views_.contains(id), /**/);
+	return *d->views_.value(id);
 }
 
 
 void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 {
-	map<int, GuiView *>::iterator end = d->views_.end();
-	for (map<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it)
-		it->second->hideDialog(name, inset);
+	QList<GuiView *> views = d->views_.values();
+	foreach (GuiView * view, views)
+		view->hideDialog(name, inset);
 }
 
 
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
 	Buffer const * buffer_ = 0;
-	map<int, GuiView *>::iterator end = d->views_.end();
-	for (map<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
-		if (Buffer const * ptr = it->second->updateInset(inset))
+	QHash<int, GuiView *>::iterator end = d->views_.end();
+	for (QHash<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
+		if (Buffer const * ptr = (*it)->updateInset(inset))
 			buffer_ = ptr;
 	}
 	return buffer_;
