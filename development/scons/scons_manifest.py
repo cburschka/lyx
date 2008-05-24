@@ -297,6 +297,7 @@ src_support_header_files = Split('''
     debug.h
     docstream.h
     docstring.h
+    docstring_list.h
     environment.h
     filetools.h
     foreach.h

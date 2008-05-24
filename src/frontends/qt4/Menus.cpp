@@ -55,6 +55,7 @@
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -269,7 +270,7 @@ public:
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
-	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names)
+	bool searchMenu(FuncRequest const & func, docstring_list & names)
 		const;
 	///
 	bool hasFunc(FuncRequest const &) const;
@@ -591,7 +592,7 @@ void MenuDefinition::checkShortcuts() const
 }
 
 
-bool MenuDefinition::searchMenu(FuncRequest const & func, vector<docstring> & names) const
+bool MenuDefinition::searchMenu(FuncRequest const & func, docstring_list & names) const
 {
 	const_iterator m = begin();
 	const_iterator m_end = end();
@@ -995,10 +996,10 @@ void MenuDefinition::expandToc(Buffer const * buf)
 
 void MenuDefinition::expandPasteRecent()
 {
-	vector<docstring> const sel = cap::availableSelections();
+	docstring_list const sel = cap::availableSelections();
 
-	vector<docstring>::const_iterator cit = sel.begin();
-	vector<docstring>::const_iterator end = sel.end();
+	docstring_list::const_iterator cit = sel.begin();
+	docstring_list::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
 		add(MenuItem(MenuItem::Command, toqstr(*cit),
@@ -1091,11 +1092,11 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		key = qstring_to_ucs4(toqstr(key).split(',')[0]);
 
 	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine());
-	vector<docstring> citeStrings =
+	docstring_list citeStrings =
 		buf->masterBibInfo().getCiteStrings(key, bv->buffer());
 
-	vector<docstring>::const_iterator cit = citeStrings.begin();
-	vector<docstring>::const_iterator end = citeStrings.end();
+	docstring_list::const_iterator cit = citeStrings.begin();
+	docstring_list::const_iterator end = citeStrings.end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = *cit;
@@ -1520,7 +1521,7 @@ void Menus::read(Lexer & lex)
 
 
 bool Menus::searchMenu(FuncRequest const & func,
-	vector<docstring> & names) const
+	docstring_list & names) const
 {
 	MenuDefinition menu;
 	d->expand(d->menubar_, menu, 0);

@@ -1036,7 +1036,7 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 
 
 bool GuiApplication::searchMenu(FuncRequest const & func,
-	vector<docstring> & names) const
+	docstring_list & names) const
 {
 	return d->menus_.searchMenu(func, names);
 }

@@ -13,8 +13,6 @@
 #ifndef MENUS_H
 #define MENUS_H
 
-#include "support/docstring.h"
-
 #include <QMenu>
 
 #include <vector>
@@ -24,6 +22,7 @@ class QMenuBar;
 
 namespace lyx {
 
+class docstring_list;
 class Lexer;
 class FuncRequest;
 
@@ -63,7 +62,7 @@ public:
 	
 	///
 	bool searchMenu(FuncRequest const & func,
-		std::vector<docstring> & names) const;
+		docstring_list & names) const;
 	///
 	void fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial = false);
 

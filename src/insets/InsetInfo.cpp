@@ -29,6 +29,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/docstring_list.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -205,7 +206,7 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case MENU_INFO: {
-		vector<docstring> names;
+		docstring_list names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action == LFUN_UNKNOWN_ACTION) {
 			setText(bformat(_("Unknown action %1$s"), from_utf8(name_)), bp.getFont(), false);

@@ -15,8 +15,10 @@
 
 #include "GuiApplication.h"
 #include "qt_helpers.h"
-#include "support/gettext.h"
 #include "Lexer.h"
+
+#include "support/docstring.h"
+#include "support/gettext.h"
 
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>

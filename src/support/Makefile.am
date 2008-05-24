@@ -46,6 +46,7 @@ liblyxsupport_la_SOURCES = \
 	docstream.h \
 	docstring.cpp \
 	docstring.h \
+	docstring_list.h \
 	environment.h \
 	environment.cpp \
 	ExceptionMessage.h \

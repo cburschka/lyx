@@ -66,7 +66,7 @@ public:
 	std::string const hexName(ColorCode col);
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
-	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names) const;
+	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
 	void hideDialogs(std::string const & name, Inset * inset) const;
 	Buffer const * updateInset(Inset const * inset) const;
 	//@}

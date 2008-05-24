@@ -14,7 +14,6 @@
 #include "ColorCode.h"
 
 #include "support/strfwd.h"
-#include "support/docstring.h"
 
 #include <boost/function.hpp>
 
@@ -25,6 +24,7 @@ namespace lyx {
 
 class BufferView;
 class Buffer;
+class docstring_list;
 class FuncRequest;
 class FuncStatus;
 class Inset;
@@ -223,7 +223,7 @@ public:
 	virtual void unregisterSocketCallback(int fd) = 0;
 
 	virtual bool searchMenu(FuncRequest const & func,
-		std::vector<docstring> & names) const = 0;
+		docstring_list & names) const = 0;
 };
 
 } // namespace frontend
