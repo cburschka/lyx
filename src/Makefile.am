@@ -164,7 +164,6 @@ SOURCEFILESCORE = \
 	TextClass.cpp \
 	TextMetrics.cpp \
 	TocBackend.cpp \
-	ToolbarBackend.cpp \
 	Trans.cpp \
 	Undo.cpp \
 	VCBackend.cpp \
@@ -264,7 +263,6 @@ HEADERFILESCORE = \
 	TextClass.h \
 	TextMetrics.h \
 	TocBackend.h \
-	ToolbarBackend.h \
 	Trans.h \
 	Undo.h \
 	update_flags.h \

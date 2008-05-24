@@ -132,6 +132,7 @@ SOURCEFILES = \
 	qt_helpers.cpp \
 	TocModel.cpp \
 	TocWidget.cpp \
+	ToolbarBackend.cpp \
 	Validator.cpp 
 
 NOMOCHEADER = \
@@ -151,7 +152,8 @@ NOMOCHEADER = \
 	GuiToolbars.h \
 	LaTeXHighlighter.h \
 	qt_i18n.h \
-	qt_helpers.h
+	qt_helpers.h \
+	ToolbarBackend.h
 
 MOCHEADER = \
 	Action.h \

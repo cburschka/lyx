@@ -115,7 +115,6 @@ src_header_files = Split('''
     TextMetrics.h
     Thesaurus.h
     TocBackend.h
-    ToolbarBackend.h
     Trans.h
     Undo.h
     VCBackend.h
@@ -210,7 +209,6 @@ src_pre_files = Split('''
     TextClass.cpp
     TextMetrics.cpp
     TocBackend.cpp
-    ToolbarBackend.cpp
     Trans.cpp
     Undo.cpp
     VCBackend.cpp
@@ -762,6 +760,7 @@ src_frontends_qt4_header_files = Split('''
     PanelStack.h
     TocModel.h
     TocWidget.h
+    ToolbarBackend.h
     Validator.h
     qt_helpers.h
     qt_i18n.h
@@ -852,6 +851,7 @@ src_frontends_qt4_files = Split('''
     PanelStack.cpp
     TocModel.cpp
     TocWidget.cpp
+    ToolbarBackend.cpp
     Validator.cpp
     qt_helpers.cpp
 ''')

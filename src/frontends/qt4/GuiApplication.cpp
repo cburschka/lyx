@@ -22,6 +22,7 @@
 #include "GuiView.h"
 #include "Menus.h"
 #include "qt_helpers.h"
+#include "ToolbarBackend.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -36,6 +37,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Language.h"
+#include "Lexer.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -749,6 +751,11 @@ void GuiApplication::exit(int status)
 
 void GuiApplication::execBatchCommands()
 {
+	// Read menus
+	if (!readUIFile(lyxrc.ui_file))
+		// Gives some error box here.
+		return;
+
 	// init the global menubar on Mac. This must be done after the session
 	// was recovered to know the "last files".
 	if (d->global_menubar_)
@@ -1038,6 +1045,100 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
 	return menus().searchMenu(func, names);
+}
+
+
+bool GuiApplication::readUIFile(string const & name, bool include)
+{
+	enum {
+		ui_menuset = 1,
+		ui_toolbars,
+		ui_toolbarset,
+		ui_include,
+		ui_last
+	};
+
+	LexerKeyword uitags[] = {
+		{ "include", ui_include },
+		{ "menuset", ui_menuset },
+		{ "toolbars", ui_toolbars },
+		{ "toolbarset", ui_toolbarset }
+	};
+
+	// Ensure that a file is read only once (prevents include loops)
+	static list<string> uifiles;
+	list<string>::const_iterator it  = uifiles.begin();
+	list<string>::const_iterator end = uifiles.end();
+	it = find(it, end, name);
+	if (it != end) {
+		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
+				    << "Is this an include loop?");
+		return false;
+	}
+
+	LYXERR(Debug::INIT, "About to read " << name << "...");
+
+
+	FileName ui_path;
+	if (include) {
+		ui_path = libFileSearch("ui", toqstr(name), "inc");
+		if (ui_path.empty())
+			ui_path = libFileSearch("ui",
+						changeExtension(toqstr(name), "inc"));
+	}
+	else
+		ui_path = libFileSearch("ui", toqstr(name), "ui");
+
+	if (ui_path.empty()) {
+		LYXERR(Debug::INIT, "Could not find " << name);
+		Alert::warning(_("Could not find UI defintion file"),
+			       bformat(_("Error while reading the configuration file\n%1$s.\n"
+				   "Please check your installation."), from_utf8(name)));
+		return false;
+	}
+
+	uifiles.push_back(name);
+
+	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
+	Lexer lex(uitags);
+	lex.setFile(ui_path);
+	if (!lex.isOK()) {
+		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
+		       << endl;
+	}
+
+	if (lyxerr.debugging(Debug::PARSER))
+		lex.printTable(lyxerr);
+
+	while (lex.isOK()) {
+		switch (lex.lex()) {
+		case ui_include: {
+			lex.next(true);
+			string const file = lex.getString();
+			if (!readUIFile(file, true))
+				return false;
+			break;
+		}
+		case ui_menuset:
+			readMenus(lex);
+			break;
+
+		case ui_toolbarset:
+			toolbarbackend.readToolbars(lex);
+			break;
+
+		case ui_toolbars:
+			toolbarbackend.readToolbarSettings(lex);
+			break;
+
+		default:
+			if (!rtrim(lex.getString()).empty())
+				lex.printError("LyX::ReadUIFile: "
+					       "Unknown menu tag: `$$Token'");
+			break;
+		}
+	}
+	return true;
 }
 
 

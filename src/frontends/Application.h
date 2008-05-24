@@ -208,11 +208,6 @@ public:
 	*      passing Color_white returns "ffffff".
 	*/
 	virtual std::string const hexName(ColorCode col) = 0;
-
-	/**
-	* read and create the menu structure
-	*/
-	virtual void readMenus(Lexer & lex) = 0;
 	
 	/**
 	* add a callback for socket read notification

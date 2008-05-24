@@ -40,7 +40,6 @@
 #include "Server.h"
 #include "ServerSocket.h"
 #include "Session.h"
-#include "ToolbarBackend.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -827,10 +826,6 @@ bool LyX::init()
 
 	pimpl_->lyxfunc_.initKeySequences(&pimpl_->toplevel_keymap_);
 
-	// Read menus
-	if (use_gui && !readUIFile(lyxrc.ui_file))
-		return false;
-
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
 
@@ -970,100 +965,6 @@ bool LyX::readRcFile(string const & name)
 	}
 	return true;
 }
-
-
-// Read the ui file `name'
-bool LyX::readUIFile(string const & name, bool include)
-{
-	enum {
-		ui_menuset = 1,
-		ui_toolbars,
-		ui_toolbarset,
-		ui_include,
-		ui_last
-	};
-
-	LexerKeyword uitags[] = {
-		{ "include", ui_include },
-		{ "menuset", ui_menuset },
-		{ "toolbars", ui_toolbars },
-		{ "toolbarset", ui_toolbarset }
-	};
-
-	// Ensure that a file is read only once (prevents include loops)
-	static list<string> uifiles;
-	list<string>::const_iterator it  = uifiles.begin();
-	list<string>::const_iterator end = uifiles.end();
-	it = find(it, end, name);
-	if (it != end) {
-		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
-				    << "Is this an include loop?");
-		return false;
-	}
-
-	LYXERR(Debug::INIT, "About to read " << name << "...");
-
-
-	FileName ui_path;
-	if (include) {
-		ui_path = libFileSearch("ui", name, "inc");
-		if (ui_path.empty())
-			ui_path = libFileSearch("ui",
-						changeExtension(name, "inc"));
-	}
-	else
-		ui_path = libFileSearch("ui", name, "ui");
-
-	if (ui_path.empty()) {
-		LYXERR(Debug::INIT, "Could not find " << name);
-		showFileError(name);
-		return false;
-	}
-
-	uifiles.push_back(name);
-
-	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
-	Lexer lex(uitags);
-	lex.setFile(ui_path);
-	if (!lex.isOK()) {
-		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
-		       << endl;
-	}
-
-	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable(lyxerr);
-
-	while (lex.isOK()) {
-		switch (lex.lex()) {
-		case ui_include: {
-			lex.next(true);
-			string const file = lex.getString();
-			if (!readUIFile(file, true))
-				return false;
-			break;
-		}
-		case ui_menuset:
-			theApp()->readMenus(lex);
-			break;
-
-		case ui_toolbarset:
-			toolbarbackend.readToolbars(lex);
-			break;
-
-		case ui_toolbars:
-			toolbarbackend.readToolbarSettings(lex);
-			break;
-
-		default:
-			if (!rtrim(lex.getString()).empty())
-				lex.printError("LyX::ReadUIFile: "
-					       "Unknown menu tag: `$$Token'");
-			break;
-		}
-	}
-	return true;
-}
-
 
 // Read the languages file `name'
 bool LyX::readLanguagesFile(string const & name)
