@@ -752,7 +752,7 @@ void GuiApplication::exit(int status)
 void GuiApplication::execBatchCommands()
 {
 	// Read menus
-	if (!readUIFile(lyxrc.ui_file))
+	if (!readUIFile(toqstr(lyxrc.ui_file)))
 		// Gives some error box here.
 		return;
 
@@ -1038,11 +1038,11 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
-	return menus().searchMenu(func, names);
+	return d->menus_.searchMenu(func, names);
 }
 
 
-bool GuiApplication::readUIFile(string const & name, bool include)
+bool GuiApplication::readUIFile(QString const & name, bool include)
 {
 	enum {
 		ui_menuset = 1,
@@ -1060,11 +1060,8 @@ bool GuiApplication::readUIFile(string const & name, bool include)
 	};
 
 	// Ensure that a file is read only once (prevents include loops)
-	static list<string> uifiles;
-	list<string>::const_iterator it  = uifiles.begin();
-	list<string>::const_iterator end = uifiles.end();
-	it = find(it, end, name);
-	if (it != end) {
+	static QStringList uifiles;
+	if (uifiles.contains(name)) {
 		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
 				    << "Is this an include loop?");
 		return false;
@@ -1072,22 +1069,20 @@ bool GuiApplication::readUIFile(string const & name, bool include)
 
 	LYXERR(Debug::INIT, "About to read " << name << "...");
 
-
 	FileName ui_path;
 	if (include) {
-		ui_path = libFileSearch("ui", toqstr(name), "inc");
+		ui_path = libFileSearch("ui", name, "inc");
 		if (ui_path.empty())
-			ui_path = libFileSearch("ui",
-						changeExtension(toqstr(name), "inc"));
+			ui_path = libFileSearch("ui", changeExtension(name, "inc"));
+	} else {
+		ui_path = libFileSearch("ui", name, "ui");
 	}
-	else
-		ui_path = libFileSearch("ui", toqstr(name), "ui");
 
 	if (ui_path.empty()) {
 		LYXERR(Debug::INIT, "Could not find " << name);
 		Alert::warning(_("Could not find UI defintion file"),
 			       bformat(_("Error while reading the configuration file\n%1$s.\n"
-				   "Please check your installation."), from_utf8(name)));
+				   "Please check your installation."), qstring_to_ucs4(name)));
 		return false;
 	}
 
@@ -1108,7 +1103,7 @@ bool GuiApplication::readUIFile(string const & name, bool include)
 		switch (lex.lex()) {
 		case ui_include: {
 			lex.next(true);
-			string const file = lex.getString();
+			QString const file = toqstr(lex.getString());
 			if (!readUIFile(file, true))
 				return false;
 			break;
