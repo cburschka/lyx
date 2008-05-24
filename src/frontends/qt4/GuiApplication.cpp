@@ -1035,12 +1035,6 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 }
 
 
-void GuiApplication::readMenus(Lexer & lex)
-{
-	menus().read(lex);
-}
-
-
 bool GuiApplication::searchMenu(FuncRequest const & func,
 	vector<docstring> & names) const
 {
@@ -1120,7 +1114,7 @@ bool GuiApplication::readUIFile(string const & name, bool include)
 			break;
 		}
 		case ui_menuset:
-			readMenus(lex);
+			d->menus_.read(lex);
 			break;
 
 		case ui_toolbarset:

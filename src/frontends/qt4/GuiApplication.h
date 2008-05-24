@@ -64,7 +64,6 @@ public:
 	bool event(QEvent * e);
 	bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	std::string const hexName(ColorCode col);
-	void readMenus(Lexer & lex);
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, std::vector<docstring> & names) const;
