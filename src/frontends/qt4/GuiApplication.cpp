@@ -102,13 +102,14 @@
 using namespace std;
 using namespace lyx::support;
 
-// FIXME: These strings are also used in GuiClipboard.cpp.
-static char const * const lyx_mime_type = "application/x-lyx";
-static char const * const pdf_mime_type = "application/pdf";
-static char const * const emf_mime_type = "image/x-emf";
-static char const * const wmf_mime_type = "image/x-wmf";
 
 namespace lyx {
+
+// defined in GuiClipboard.cpp.
+extern char const * const lyx_mime_type;
+extern char const * const pdf_mime_type;
+extern char const * const emf_mime_type;
+extern char const * const wmf_mime_type;
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {

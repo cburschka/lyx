@@ -50,12 +50,14 @@
 using namespace std;
 using namespace lyx::support;
 
-static char const * const lyx_mime_type = "application/x-lyx";
-static char const * const pdf_mime_type = "application/pdf";
-static char const * const emf_mime_type = "image/x-emf";
-static char const * const wmf_mime_type = "image/x-wmf";
 
 namespace lyx {
+
+char const * const lyx_mime_type = "application/x-lyx";
+char const * const pdf_mime_type = "application/pdf";
+char const * const emf_mime_type = "image/x-emf";
+char const * const wmf_mime_type = "image/x-wmf";
+
 
 namespace frontend {
 
