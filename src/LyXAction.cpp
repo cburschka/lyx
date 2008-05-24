@@ -1672,6 +1672,13 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MESSAGE
+ * \li Action: Shows message in statusbar (for script purposes).
+ * \li Syntax: message <STRING>
+ * \li Origin: Lgb, 8 Apr 2001
+ * \endvar
+ */
 		{ LFUN_MESSAGE, "message", NoBuffer, System },
 		{ LFUN_FLOAT_LIST, "float-list", Noop, Edit },
 		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
