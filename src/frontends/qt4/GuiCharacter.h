@@ -20,6 +20,9 @@
 
 #include <utility>
 
+#ifdef IGNORE
+#undef IGNORE
+#endif
 
 namespace lyx {
 namespace frontend {
