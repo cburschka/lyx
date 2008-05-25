@@ -30,8 +30,7 @@ What's new
 
 * USER INTERFACE
 
--  reenable quote display code, which was not working since 1.5.0.
-
+- Reenable quote display code, which was not working since 1.5.0.
 
 
 * DOCUMENT INPUT/OUTPUT
@@ -47,6 +46,8 @@ What's new
 
 - The paper layout and the number of text columns are now imported when
   importing LaTeX files (bug 4867).
+
+- Add support for Graphviz Dot files (bug 4882).
 
 
 * WINDOWS INSTALLER
@@ -69,9 +70,9 @@ What's new
 
 * USER INTERFACE
 
-- Fix display of filters such as "LaTeX (plain)" in the file dialog.
-
 - Fix crash related to the outline pane with some documents (bug 4857).
+
+- Fix display of filters such as "LaTeX (plain)" in the file dialog.
 
 
 * DOCUMENTATION AND LOCALIZATION

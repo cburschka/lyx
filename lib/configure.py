@@ -266,6 +266,7 @@ def checkFormatEntries(dtl_tools):
 \Format dateout    tmp    "date (output)"         "" ""	"%%"	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
+\Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
@@ -465,6 +466,9 @@ def checkConverterEntries():
 \converter agr        jpg        "gracebat -hardcopy -printfile $$o -hdevice JPEG $$i 2>/dev/null"	""
 \converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""''',
             ''])
+    #
+    checkProg('a Dot -> PDF converter', ['dot -Tpdf $$i -o $$o'],
+        rc_entry = [ r'\converter dot        pdf        "%%"	""'])
     #
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
