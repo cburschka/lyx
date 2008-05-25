@@ -1219,8 +1219,8 @@ void PrefConverters::updateGui()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		converterFromCO->addItem(toqstr(cit->prettyname()));
-		converterToCO->addItem(toqstr(cit->prettyname()));
+		converterFromCO->addItem(qt_(cit->prettyname()));
+		converterToCO->addItem(qt_(cit->prettyname()));
 	}
 
 	// currentRowChanged(int) is also triggered when updating the listwidget
@@ -1231,10 +1231,10 @@ void PrefConverters::updateGui()
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		string const name =
-			ccit->From->prettyname() + " -> " + ccit->To->prettyname();
+		QString const name =
+			qt_(ccit->From->prettyname()) + " -> " + qt_(ccit->To->prettyname());
 		int type = form_->converters().getNumber(ccit->From->name(), ccit->To->name());
-		new QListWidgetItem(toqstr(name), convertersLW, type);
+		new QListWidgetItem(name, convertersLW, type);
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
 	convertersLW->blockSignals(false);
@@ -1447,7 +1447,7 @@ public:
 private:
 	QString toString(Format const & format) const
 	{
-		return toqstr(format.prettyname());
+		return qt_(format.prettyname());
 	}
 };
 
@@ -1476,6 +1476,21 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 }
 
 
+namespace {
+
+string const l10n_shortcut(string const prettyname, string const shortcut)
+{
+	if (shortcut.empty())
+		return string();
+
+	string l10n_format =
+		to_utf8(_(prettyname + '|' + shortcut));
+	return split(l10n_format, '|');
+}
+
+}; // namespace anon
+
+
 void PrefFileformats::apply(LyXRC & /*rc*/) const
 {
 }
@@ -1498,8 +1513,8 @@ void PrefFileformats::updateView()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit)
-		formatsCB->addItem(toqstr(cit->prettyname()),
-							QVariant(form_->formats().getNumber(cit->name())) );
+		formatsCB->addItem(qt_(cit->prettyname()),
+				   QVariant(form_->formats().getNumber(cit->name())));
 
 	// restore selection
 	int const item = formatsCB->findText(current, Qt::MatchExactly);
@@ -1517,7 +1532,8 @@ void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 	formatED->setText(toqstr(f.name()));
 	copierED->setText(toqstr(form_->movers().command(f.name())));
 	extensionED->setText(toqstr(f.extension()));
-	shortcutED->setText(toqstr(f.shortcut()));
+	shortcutED->setText(
+		toqstr(l10n_shortcut(f.prettyname(), f.shortcut())));
 	viewerED->setText(toqstr(f.viewer()));
 	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
@@ -1567,7 +1583,11 @@ void PrefFileformats::on_editorED_textEdited(const QString & s)
 
 void PrefFileformats::on_shortcutED_textEdited(const QString & s)
 {
-	currentFormat().setShortcut(fromqstr(s));
+	string const new_shortcut = fromqstr(s);
+	if (new_shortcut == l10n_shortcut(currentFormat().prettyname(),
+					  currentFormat().shortcut()))
+		return;
+	currentFormat().setShortcut(new_shortcut);
 	changed();
 }
 
@@ -1603,11 +1623,11 @@ void PrefFileformats::on_formatsCB_editTextChanged(const QString &)
 
 void PrefFileformats::updatePrettyname()
 {
-	string const newname = fromqstr(formatsCB->currentText());
-	if (newname == currentFormat().prettyname())
+	QString const newname = formatsCB->currentText();
+	if (newname == qt_(currentFormat().prettyname()))
 		return;
 
-	currentFormat().setPrettyname(newname);
+	currentFormat().setPrettyname(fromqstr(newname));
 	formatsChanged();
 	updateView();
 	changed();
