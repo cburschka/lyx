@@ -1,4 +1,4 @@
-#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -71,6 +71,8 @@
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
+% für textumflossenen Bilder/Tabellen
+\usepackage{picinpar}
 \end_preamble
 \options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
@@ -142,8 +144,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 5.
- April 2008
+letzte Änderung: 22.
+ Mai 2008
 \end_layout
 
 \begin_layout Standard
@@ -3072,18 +3074,6 @@ bibunits
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Zunächst kreuzen Sie in
 \family sans
  Dokument\SpecialChar \menuseparator
@@ -3091,11 +3081,7 @@ Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
- (bei der xforms-Oberfläche unter 
-\family sans
-Extras
-\family default
-) 
+ 
 \family sans
 Abschnittsspezifisches\InsetSpace \space{}
 Literaturverzeichnis
@@ -3115,7 +3101,9 @@ end{btUnit}
  einschließen.
  Diese Befehle müssen als ERT eingefügt werden (
 \family sans
-Einfügen\SpecialChar \menuseparator
+Ein\SpecialChar \-
+fü\SpecialChar \-
+gen\SpecialChar \menuseparator
 Te
 \begin_inset ERT
 status collapsed
@@ -3147,19 +3135,6 @@ Strg+L
 btUnit
 \family default
  zitiert werden, enthalten.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -5950,8 +5925,182 @@ vollständig leer
  Ist sie das nicht, fasst LyX sie zu einem einzigen Absatz zusammen.
 \end_layout
 
+\begin_layout Subsection
+Table (CSV)
+\end_layout
+
+\begin_layout Standard
+Hiermit kann man CSV-Tabellen
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+comma separated values
+\end_layout
+
+\end_inset
+
+ importieren, wenn diese nach den Regeln 
+\begin_inset Quotes gld
+\end_inset
+
+Common Format and MIME Type for Comma-Separated Values (CSV) Files
+\begin_inset Quotes grd
+\end_inset
+
+, siehe 
+\begin_inset LatexCommand url
+target "http://tools.ietf.org/html/rfc4180"
+
+\end_inset
+
+, erstellt wurden.
+ 
+\end_layout
+
+\begin_layout Standard
+Sollte das Ergebnis nicht Ihren Vorstellungen entsprechen, sehen Sie sich
+ zunächst Ihre .csv-Datei an, um herauszufinden, welcher Spaltentrenner benutzt
+ wurde.
+ Als nächstes ersetzen Sie in 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+
+\family sans
+Konverter
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Table (CSV) -> Ly
+\begin_inset ERT
+status open
+
 \begin_layout Standard
 
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ im Feld 
+\family sans
+Konverter
+\family default
+ den Befehl
+\end_layout
+
+\begin_layout LyX-Code
+python -tt $$s/scripts/csv2lyx.py $$i $$o 
+\end_layout
+
+\begin_layout Standard
+durch 
+\end_layout
+
+\begin_layout LyX-Code
+python -tt $$s/scripts/csv2lyx.py -s 'x' $$i $$o
+\end_layout
+
+\begin_layout Standard
+wobei 
+\family typewriter
+x
+\family default
+ der Spaltentrenner ist (ein Zeichen).
+ Weitere Optionen zeigt Ihnen die Ausgabe von 
+\family typewriter
+\SpecialChar \ldots{}
+csv2lyx.py --help
+\family default
+:
+\end_layout
+
+\begin_layout LyX-Code
+Usage: csv2lyx [options] csvfile [file.lyx]
+\end_layout
+
+\begin_layout LyX-Code
+This script creates a LyX document containing a table created from a comma-
+\newline
+separ
+ated-value (CSV) file.
+ The resulting LyX file can be opened with LyX
+\newline
+1.5.0 or any later version.
+ If no options are given csv2lyx will try to infer
+\newline
+the CSV type of the csvfile,
+\end_layout
+
+\begin_layout LyX-Code
+Options: 
+\end_layout
+
+\begin_layout LyX-Code
+   -h, --help           show this help message and exit 
+\end_layout
+
+\begin_layout LyX-Code
+   -e CHAR, --excel=CHAR
+\end_layout
+
+\begin_layout LyX-Code
+                        CHAR corresponds to a CSV type:
+\end_layout
+
+\begin_layout LyX-Code
+                        'e': Excel-generated CSV file
+\end_layout
+
+\begin_layout LyX-Code
+                        't': Excel-generated TAB-delimited CSV file
+\end_layout
+
+\begin_layout LyX-Code
+   -s COLUMN_SEP, --separator=COLUMN_SEP
+\end_layout
+
+\begin_layout LyX-Code
+                        column separator
+\end_layout
+
+\begin_layout LyX-Code
+                        't' means Tab
+\end_layout
+
+\begin_layout LyX-Code
+Remarks: If your CSV file contains special characters (e.
+ g.
+ umlauts,
+\newline
+accented letters, etc.) make sure it is coded in UTF-8 (unicode).
+\end_layout
+
+\begin_layout LyX-Code
+Else LyX will loose some cell contents.
+ If your CSV file was not written
+\newline
+according to the "Common Format and MIME
+ Type for Comma-
+\end_layout
+
+\begin_layout LyX-Code
+Separated Values (CSV) Files" (http://tools.ietf.org/html/rfc4180)
+\end_layout
+
+\begin_layout LyX-Code
+there may be unexpected results.
 \end_layout
 
 \begin_layout Section
@@ -11772,6 +11921,888 @@ lettrine
 \end_layout
 
 \begin_layout Section
+Textumflossene Bilder und Tabellen
+\end_layout
+
+\begin_layout Standard
+In 
+\emph on
+Eigebettete Objekte
+\emph default
+ werden Umflossene Gleitobjekte beschrieben.
+ Sie liefern folgendes:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ oder 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie aber Text richtig um Bilder oder Tabellen fließen lassen wollen,
+ also auch so etwas:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+sollten Sie das LaTeX-Paket 
+\family sans
+pincinpar
+\family default
+ benutzen.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{window}[2,c,{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/mobius.eps
+	display color
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+},{}]
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+hspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hspace*{1em}
+\end_layout
+
+\end_inset
+
+Textumflossene Bilder oder Tabellen sind keine Gleitobjekte, weil sie dort
+ gedruckt werden, wo sie definiert wurden.
+ Dieser Typ wird benutzt, um Text um eine Abbildung herum 
+\emph on
+fließen
+\emph default
+ zu lassen, wobei der Text nur den Teil der Zeile benutzt, den die Abbildung
+ übrig lässt.
+ Er wird so eingefügt, wie Sie hier sehen, wenn das La\SpecialChar \-
+TeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert ist.
+ Die Bildeparameter können Sie mit einem Klick auf das Bild wie gewohnt
+ ändern.
+ Der erste Parameter in den eckigen Klammer, hier 2, definiert die Anzal
+ der Zeilen über dem Bild, der zweite, hier c, die Position des Bildes.
+ Die Abbildung nimmt 40\InsetSpace \thinspace{}
+% der Spaltenbreite ein.
+ Weitere Einzelheiten finden Sie in der Dokumentation von 
+\family typewriter
+picinpar
+\family default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{window}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Ungewöhnliche Absatzformen
 \begin_inset LatexCommand index
 name "Ungewöhnliche Absatzformen"
@@ -11789,18 +12820,7 @@ Mike Ressler
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
+status open
 
 \begin_layout Standard
 
@@ -12032,7 +13052,9 @@ Die Syntax ist
 
 \backslash
 parshape numlines #1indent #1length #2indent #2length \SpecialChar \ldots{}
- #nindent #nlength
+ 
+\newline
+#nindent #nlength
 \family default
 , wobei hier 
 \family typewriter
@@ -12053,22 +13075,6 @@ numlines
  legen die Einrückung und die Zeilenlänge ab dieser Einrückung fest.
  Das Aussehen wird nur auf den momentanen Absatz angewendet, für den folgenden
  wird alles auf normal zurückgesetzt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -14276,22 +15282,6 @@ Nicht implementierte Dinge (ERT verwenden)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 
 \family typewriter
 
@@ -14316,7 +15306,9 @@ eqnum
 \backslash
 setcounter{equation}
 \family default
- (2.12), Abkürzungen von Zeitschriftennamen (2.13.4), 
+ 
+\newline
+(2.12), Abkürzungen von Zeitschriftennamen (2.13.4), 
 \family typewriter
 
 \backslash
@@ -14418,22 +15410,6 @@ onecolumn
 twocolumn
 \family default
  (3.2).
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection

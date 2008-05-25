@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -182,8 +182,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
- April 2008
+letzte Änderung: 21.
+ Mai 2008
 \end_layout
 
 \begin_layout Standard
@@ -2631,19 +2631,6 @@ sequential numbering
 unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Note Note
 status open
 
@@ -2695,7 +2682,18 @@ paper
 \begin_inset Quotes grd
 \end_inset
 
--Dokumentklasse (nicht in allen LaTeX-Distributionen enthalten)
+-Dokumentklasse (nicht in allen LaTeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Distributionen enthalten)
 \end_layout
 
 \begin_layout Description
@@ -2711,23 +2709,9 @@ status collapsed
 
 \end_inset
 
-X) Artikel für Veröffentlichungen der American Physical Society (APS), des
- American Institute of Physics (AIP) und der Optical Society of America
- (OSA).
+X) Artikel für Veröffentlichungen der APS (American Physical Society), des
+ AIP (American Institute of Physics) und der OSA (Optical Society of America).
  Diese Klasse ist nicht mit allen LyX-Funktionen kompatibel.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -3759,25 +3743,6 @@ empty weder Seitenzahlen noch Überschriften.
 plain
 \family default
  nur Seitenzahlen.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\begin_inset LatexCommand label
-name "Sloppypar"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -3786,18 +3751,6 @@ name "Sloppypar"
 headings
 \family default
  Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit Nummer.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
  
 \begin_inset Note Note
 status open
@@ -6688,19 +6641,6 @@ Liste
 \family default
 -Umgebung haben Sie eine weitere Möglichkeit, das zu tun, aber mit einem
  anderen Aussehen.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -6717,26 +6657,13 @@ Liste
 \family default
 -Umgebungen ineinander oder in andere schachteln usw., wie bei den anderen
  Listen-Umgebungen auch.
- Lesen Sie Abschnitt 
+ In Abschnitt 
 \begin_inset LatexCommand vref
 reference "Umgebungen-schachteln"
 
 \end_inset
 
-ff, um mehr darüber zu erfahren.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
+ff erfahren Sie mehr darüber.
 \end_layout
 
 \begin_layout Standard
@@ -9697,38 +9624,12 @@ wir bedauern, Ihnen mitteilen zu müssen, dass wir Ihre Bestellung über 50
  Wir werden Sie auf die Warteliste setzen und Ihre Bestellung so schnell
  wie möglich liefern.
  In der Zwischenzeit danken wir Ihnen für Ihre Geduld.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Quotation
 Wir haben aber jetzt ein Sonderangebot für Rindfleisch.
  Wenn Sie interessiert sind, schicken Sie bitte das beigefügte Bestellformular
  zusammen mit einem Scheck an uns zurück.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Quotation
@@ -10745,18 +10646,6 @@ kg.
 
 \begin_layout Standard
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 
 \family roman
 \series medium
@@ -10801,22 +10690,6 @@ chen
  oder einfach mit 
 \family sans
 Strg+Leertaste.
- 
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -12088,19 +11961,6 @@ Keine\InsetSpace ~
 Zurücksetzen
 \family default
 ) sind:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -12841,23 +12701,6 @@ Verkleinern
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \noindent
 Wir wollen Sie 
@@ -14332,44 +14175,7 @@ reference "Sloppypar"
 
 \end_inset
 
-):
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes gld
-\end_inset
-
-Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
- wie eben oder mit einem Bindestrich zusammengefügt wie bei Programmiersprachen-
-Handbücher\SpecialChar \ldots{}
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
+).
 \end_layout
 
 \begin_layout Paragraph
@@ -28695,22 +28501,6 @@ Rechtschreibprüfung
 ):
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Rechtschreibprogramm
 \begin_inset LatexCommand index
@@ -28941,22 +28731,6 @@ Die vierte Möglichkeit ist, dass der Pfleger des Wörterbuchs das Problem
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Persönliches\InsetSpace ~
 Wörterbuch
@@ -35216,19 +34990,6 @@ gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -35317,10 +35078,8 @@ kreuzt
 \begin_layout Description
 Cursor-Positionen\InsetSpace ~
 wieder\InsetSpace ~
-herstellen Wenn dieser Parameter an\SpecialChar \-
-ge\SpecialChar \-
-kreuzt ist,
- wird der Cursor dort positioniert, wo er beim letzten Mal war.
+herstellen Der Cursor wird dort positioniert, wo
+ er beim letzten Mal war, wenn dieser Parameter angekreuzt ist.
 \end_layout
 
 \begin_layout Description
@@ -35841,7 +35600,10 @@ Seitenumbruch ist die Farbe für die Trennlinie zwischen zwei Seiten.
 
 \begin_layout Description
 Sonderzeichen ist die Farbe für Sonderzeichen (Einfügen\SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
+Son\SpecialChar \-
+der\SpecialChar \-
+zei\SpecialChar \-
+chen\SpecialChar \menuseparator
 \SpecialChar \ldots{}
 )
 \end_layout
@@ -36076,7 +35838,8 @@ derheiten handhabt.
 \family typewriter
 
 \backslash
-usepackage{babel}
+use\SpecialChar \-
+package{babel}
 \family default
 , der das Paket 
 \family typewriter
@@ -36131,7 +35894,8 @@ begin{arabtext}
 \family default
 , der gebraucht wird, um mithilfe des Paketes 
 \family sans
-ArabTeX
+Arab\SpecialChar \-
+TeX
 \family default
  Arabisch zu schreiben.
  siehe 
@@ -36408,8 +36172,20 @@ beim\InsetSpace ~
 Wechsel\InsetSpace ~
 der\InsetSpace ~
 Dokumentklasse\InsetSpace ~
-zurücksetzen entfernt beim Wechsel
- der Dokumentklasse alle von Hand gesetzten Dokumentklassen-Optionen.
+zurücksetzen ent\SpecialChar \-
+fernt beim Wechsel
+ der Dokumentklasse alle von Hand gesetzten Dokumentklassen
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+"=
+\end_layout
+
+\end_inset
+
+Optionen.
 \end_layout
 
 \begin_layout Description
@@ -37295,19 +37071,6 @@ LaTeX-Vorspann
 
 \begin_layout Standard
 Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
