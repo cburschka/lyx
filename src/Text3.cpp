@@ -2073,27 +2073,27 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_FONT_EMPH:
 		flag.setOnOff(fontinfo.emph() == FONT_ON);
-		return true;
+		break;
 
 	case LFUN_FONT_NOUN:
 		flag.setOnOff(fontinfo.noun() == FONT_ON);
-		return true;
+		break;
 
 	case LFUN_FONT_BOLD:
 		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
-		return true;
+		break;
 
 	case LFUN_FONT_SANS:
 		flag.setOnOff(fontinfo.family() == SANS_FAMILY);
-		return true;
+		break;
 
 	case LFUN_FONT_ROMAN:
 		flag.setOnOff(fontinfo.family() == ROMAN_FAMILY);
-		return true;
+		break;
 
 	case LFUN_FONT_TYPEWRITER:
 		flag.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
-		return true;
+		break;
 
 	case LFUN_CUT:
 	case LFUN_COPY:
