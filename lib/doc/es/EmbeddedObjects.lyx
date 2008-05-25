@@ -10904,16 +10904,7 @@ Tabla con líneas múltiples en celda
 
 \begin_layout Plain Layout
 líneas
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
 múltiples
@@ -11039,19 +11030,17 @@ cm y escoge centro en alineación vertical y horizontal.
 \end_inset
 
 cm, sólo aparece una línea.
- Para poner dos añadimos un salto de línea con el comando en ERT
-\end_layout
+ Para poner dos añadimos
+\lang english
+, a justified line break (shortcut 
+\family sans
+Ctrl-Shift-Return
+\family default
+) was added.
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-linebreak
-\end_layout
-
-\begin_layout Standard
-Si el texto es más ancho que la celda será automáticamente dividido en líneas.
+\lang spanish
+ Si el texto es más ancho que la celda será automáticamente dividido en
+ líneas.
 \end_layout
 
 \begin_layout Standard
@@ -11572,6 +11561,7 @@ LyX soporta multicolumnas directamente, pero hay que prestar atención a
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open

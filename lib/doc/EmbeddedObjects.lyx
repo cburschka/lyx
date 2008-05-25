@@ -10868,16 +10868,7 @@ Table with multiple lines in cells
 
 \begin_layout Plain Layout
 multiple
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
 lines
@@ -11003,21 +10994,13 @@ cm and choose centered for the vertical and horizontal alignment.
 \end_inset
 
 cm, only one line will appear.
- To get two lines, we add a line break with the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-linebreak
-\end_layout
-
-\begin_layout Standard
-in TeX-Code.
- If the text is wider than the set cell width it will automatically be broken
- to several lines.
+ To get two lines, a justified line break (shortcut 
+\family sans
+Ctrl-Shift-Return
+\family default
+) was added.
+ If the text is wider than the set cell width, it will automatically be
+ broken to several lines.
 \end_layout
 
 \begin_layout Standard
@@ -11531,6 +11514,7 @@ LyX supports multicolumns directly, but we have to take notice of the cell
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open

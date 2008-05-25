@@ -11147,19 +11147,10 @@ Tableau avec des lignes multiples dans une cellule
 
 \begin_layout Plain Layout
 Lignes
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- multiples
+multiples
 \end_layout
 
 \end_inset
@@ -11284,19 +11275,15 @@ cm et choisissez les alignements vertical et horizontal centrés.
 \end_inset
 
 cm, une seule ligne va apparaître.
- Pour avoir deux lignes, nous avons ajouté un saut de ligne avec la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-linebreak
-\end_layout
-
-\begin_layout Standard
-en code TeX.
+ Pour avoir deux lignes, 
+\lang english
+a justified line break (shortcut 
+\family sans
+Ctrl-Shift-Return
+\family default
+) was added
+\lang french
+.
  Si le texte est plus large que la taille de cellule choisie, il sera automatiqu
 ement découpé en plusieurs lignes.
 \end_layout
@@ -11819,6 +11806,7 @@ LyX gère directement les multi-colonnes, mais nous devons faire attention
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open

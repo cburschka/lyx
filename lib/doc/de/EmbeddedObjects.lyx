@@ -11210,19 +11210,10 @@ Tabelle mit mehrfachen Zeilen in einer Zelle
 
 \begin_layout Plain Layout
 zwei
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-linebreak 
-\end_layout
-
+\begin_inset Newline linebreak
 \end_inset
 
- Zeilen
+Zeilen
 \end_layout
 
 \end_inset
@@ -11344,20 +11335,13 @@ cm gesetzt und die vertikalen und horizontalen Ausrichtungen zentriert.
 \end_inset
 
 cm ist, würde er in einer Zeile gedruckt werden.
- Um zwei Zeilen zu bekommen, wurde folgender Befehl als TeX-Code zwischen
- die beiden Worten eingefügt:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-linebreak
-\end_layout
-
-\begin_layout Standard
-Wenn der Text länger ist, wird er automatisch umgebrochen.
+ Um zwei Zeilen zu bekommen, wurde ein rechtsbündiger Zeilenumbruch (Tastenkürze
+l 
+\family sans
+Strg-Shift-Enter
+\family default
+) eingefügt.
+ Wenn der Text länger ist, wird er automatisch umgebrochen.
 \end_layout
 
 \begin_layout Standard
