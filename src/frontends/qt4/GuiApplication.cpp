@@ -186,7 +186,7 @@ public:
 	QString flavorFor(QString const & mime)
 	{
 		LYXERR(Debug::ACTION, "flavorFor " << mime);
-		if (mime == QLatin1String(pdf_mime_type))
+		if (mime == QLatin1String(pdfMimeType()))
 			return QLatin1String("com.adobe.pdf");
 		return QString();
 	}
@@ -195,7 +195,7 @@ public:
 	{
 		LYXERR(Debug::ACTION, "mimeFor " << flav);
 		if (flav == QLatin1String("com.adobe.pdf"))
-			return QLatin1String(pdf_mime_type);
+			return QLatin1String(pdfMimeType());
 		return QString();
 	}
 
@@ -232,10 +232,10 @@ public:
 static FORMATETC cfFromMime(QString const & mimetype)
 {
 	FORMATETC formatetc;
-	if (mimetype == emf_mime_type) {
+	if (mimetype == emfMimeType()) {
 		formatetc.cfFormat = CF_ENHMETAFILE;
 		formatetc.tymed = TYMED_ENHMF;
-	} else if (mimetype == wmf_mime_type) {
+	} else if (mimetype == wmfMimeType()) {
 		formatetc.cfFormat = CF_METAFILEPICT;
 		formatetc.tymed = TYMED_MFPICT;
 	}
@@ -259,7 +259,7 @@ public:
 	bool canConvertToMime(QString const & mimetype,
 		IDataObject * pDataObj) const
 	{
-		if (mimetype != emf_mime_type && mimetype != wmf_mime_type)
+		if (mimetype != emfMimeType() && mimetype != wmfMimeType())
 			return false;
 		FORMATETC formatetc = cfFromMime(mimetype);
 		return pDataObj->QueryGetData(&formatetc) == S_OK;
@@ -314,9 +314,9 @@ public:
 	{
 		switch (formatetc.cfFormat) {
 		case CF_ENHMETAFILE:
-			return emf_mime_type; 
+			return emfMimeType(); 
 		case CF_METAFILEPICT:
-			return wmf_mime_type;
+			return wmfMimeType();
 		}
 		return QString();
 	}

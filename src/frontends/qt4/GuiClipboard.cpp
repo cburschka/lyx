@@ -55,10 +55,11 @@ namespace lyx {
 
 namespace frontend {
 
-char const * lyx_mime_type = "application/x-lyx";
-char const * pdf_mime_type = "application/pdf";
-char const * emf_mime_type = "image/x-emf";
-char const * wmf_mime_type = "image/x-wmf";
+
+QString const lyxMimeType(){ return "application/x-lyx"; }
+QString const pdfMimeType(){ return "application/pdf"; }
+QString const emfMimeType(){ return "image/x-emf"; }
+QString const wmfMimeType(){ return "image/x-wmf"; }
 
 
 GuiClipboard::GuiClipboard()
@@ -82,9 +83,9 @@ string const GuiClipboard::getAsLyX() const
 		return string();
 	}
 
-	if (source->hasFormat(lyx_mime_type)) {
+	if (source->hasFormat(lyxMimeType())) {
 		// data from ourself or some other LyX instance
-		QByteArray const ar = source->data(lyx_mime_type);
+		QByteArray const ar = source->data(lyxMimeType());
 		string const s(ar.data(), ar.count());
 		LYXERR(Debug::ACTION, s << "'");
 		return s;
@@ -257,10 +258,10 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	// get mime for type
 	QString mime;
 	switch (type) {
-	case PdfGraphicsType: mime = pdf_mime_type; break;
-	case LinkBackGraphicsType: mime = pdf_mime_type; break;
-	case EmfGraphicsType: mime = emf_mime_type; break;
-	case WmfGraphicsType: mime = wmf_mime_type; break;
+	case PdfGraphicsType: mime = pdfMimeType(); break;
+	case LinkBackGraphicsType: mime = pdfMimeType(); break;
+	case EmfGraphicsType: mime = emfMimeType(); break;
+	case WmfGraphicsType: mime = wmfMimeType(); break;
 	default: LASSERT(false, /**/);
 	}
 	
@@ -323,7 +324,7 @@ void GuiClipboard::put(string const & lyx, docstring const & text)
 	QMimeData * data = new QMimeData;
 	if (!lyx.empty()) {
 		QByteArray const qlyx(lyx.c_str(), lyx.size());
-		data->setData(lyx_mime_type, qlyx);
+		data->setData(lyxMimeType(), qlyx);
 	}
 	// Don't test for text.empty() since we want to be able to clear the
 	// clipboard.
@@ -337,7 +338,7 @@ bool GuiClipboard::hasLyXContents() const
 {
 	QMimeData const * const source =
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	return source && source->hasFormat(lyx_mime_type);
+	return source && source->hasFormat(lyxMimeType());
 }
 
 
@@ -376,9 +377,9 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	// compute mime for type
 	QString mime;
 	switch (type) {
-	case EmfGraphicsType: mime = emf_mime_type; break;
-	case WmfGraphicsType: mime = wmf_mime_type; break;
-	case PdfGraphicsType: mime = pdf_mime_type; break;
+	case EmfGraphicsType: mime = emfMimeType(); break;
+	case WmfGraphicsType: mime = wmfMimeType(); break;
+	case PdfGraphicsType: mime = pdfMimeType(); break;
 	default: LASSERT(false, /**/);
 	}
 	
