@@ -53,13 +53,12 @@ using namespace lyx::support;
 
 namespace lyx {
 
-char const * const lyx_mime_type = "application/x-lyx";
-char const * const pdf_mime_type = "application/pdf";
-char const * const emf_mime_type = "image/x-emf";
-char const * const wmf_mime_type = "image/x-wmf";
-
-
 namespace frontend {
+
+char const * lyx_mime_type = "application/x-lyx";
+char const * pdf_mime_type = "application/pdf";
+char const * emf_mime_type = "image/x-emf";
+char const * wmf_mime_type = "image/x-wmf";
 
 
 GuiClipboard::GuiClipboard()

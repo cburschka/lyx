@@ -58,6 +58,11 @@ private:
 	bool has_graphics_contents_;
 };
 
+extern char const * lyx_mime_type;
+extern char const * pdf_mime_type;
+extern char const * emf_mime_type;
+extern char const * wmf_mime_type;
+
 } // namespace frontend
 } // namespace lyx
 

@@ -105,17 +105,10 @@ using namespace lyx::support;
 
 namespace lyx {
 
-// defined in GuiClipboard.cpp.
-extern char const * const lyx_mime_type;
-extern char const * const pdf_mime_type;
-extern char const * const emf_mime_type;
-extern char const * const wmf_mime_type;
-
 frontend::Application * createApplication(int & argc, char * argv[])
 {
 	return new frontend::GuiApplication(argc, argv);
 }
-
 
 namespace frontend {
 
