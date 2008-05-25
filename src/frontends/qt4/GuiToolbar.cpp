@@ -15,13 +15,16 @@
 
 #include <config.h>
 
-#include "GuiView.h"
-#include "GuiCommandBuffer.h"
 #include "GuiToolbar.h"
-#include "LyXAction.h"
+
 #include "Action.h"
-#include "qt_helpers.h"
+#include "GuiApplication.h"
+#include "GuiCommandBuffer.h"
+#include "GuiView.h"
+#include "IconPalette.h"
 #include "InsertTableWidget.h"
+#include "qt_helpers.h"
+#include "Toolbars.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -29,13 +32,12 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "IconPalette.h"
 #include "Layout.h"
+#include "LyXAction.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "TextClass.h"
-#include "ToolbarBackend.h"
 
 #include "support/debug.h"
 #include "support/filetools.h"
@@ -881,7 +883,7 @@ public:
 			this, SLOT(setIconSize(QSize)));
 		setCheckable(true);
 		ToolbarInfo const * tbinfo = 
-			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
 		if (tbinfo)
 			// use the icon of first action for the toolbar button
 			setIcon(getIcon(tbinfo->items.begin()->func_, true));
@@ -897,7 +899,7 @@ public:
 		initialized_ = true;
 
 		ToolbarInfo const * tbinfo = 
-			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
 		if (!tbinfo) {
 			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
 			return;
@@ -952,7 +954,7 @@ public:
 		m->setTearOffEnabled(true);
 		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const * tbinfo = 
-			toolbarbackend.getDefinedToolbarInfo(tbitem_.name_);
+			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
 		if (!tbinfo) {
 			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
 			return;

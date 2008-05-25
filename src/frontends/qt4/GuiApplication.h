@@ -36,6 +36,7 @@ class GlobalMenuBar;
 class GuiWorkArea;
 class Menus;
 class SocketNotifier;
+class Toolbars;
 
 /// The Qt main application class
 /**
@@ -71,6 +72,8 @@ public:
 	Buffer const * updateInset(Inset const * inset) const;
 	//@}
 
+	Toolbars const & toolbars() const;
+	Toolbars & toolbars();
 	Menus const & menus() const;
 	Menus & menus();
 	/// Methods inherited from \c QApplication class

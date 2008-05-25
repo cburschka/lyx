@@ -22,7 +22,7 @@
 #include "GuiView.h"
 #include "Menus.h"
 #include "qt_helpers.h"
-#include "ToolbarBackend.h"
+#include "Toolbars.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -356,6 +356,10 @@ struct GuiApplication::Private
 	QHash<int, SocketNotifier *> socket_notifiers_;
 	///
 	Menus menus_;
+	///
+	/// The global instance
+	Toolbars toolbars_;
+
 	/// this timer is used for any regular events one wants to
 	/// perform. at present it is used to check if forked processes
 	/// are done.
@@ -703,6 +707,18 @@ Selection & GuiApplication::selection()
 FontLoader & GuiApplication::fontLoader() 
 {
 	return d->font_loader_;
+}
+
+
+Toolbars const & GuiApplication::toolbars() const 
+{
+	return d->toolbars_;
+}
+
+
+Toolbars & GuiApplication::toolbars()
+{
+	return d->toolbars_; 
 }
 
 
@@ -1107,11 +1123,11 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 			break;
 
 		case ui_toolbarset:
-			toolbarbackend.readToolbars(lex);
+			d->toolbars_.readToolbars(lex);
 			break;
 
 		case ui_toolbars:
-			toolbarbackend.readToolbarSettings(lex);
+			d->toolbars_.readToolbarSettings(lex);
 			break;
 
 		default:

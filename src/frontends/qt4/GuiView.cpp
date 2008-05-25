@@ -52,7 +52,7 @@
 #include "Paragraph.h"
 #include "TextClass.h"
 #include "Text.h"
-#include "ToolbarBackend.h"
+#include "Toolbars.h"
 #include "version.h"
 
 #include "support/lassert.h"
@@ -1749,7 +1749,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			string const name = cmd.getArg(0);
 			bool const allowauto = cmd.getArg(1) == "allowauto";
 			// it is possible to get current toolbar status like this,...
-			// but I decide to obey the order of ToolbarBackend::flags
+			// but I decide to obey the order of Toolbars::flags
 			// and disregard real toolbar status.
 			// toolbars_->saveToolbarInfo();
 			//

@@ -14,9 +14,11 @@
 
 #include "GuiToolbars.h"
 
+#include "GuiApplication.h"
 #include "GuiCommandBuffer.h"
 #include "GuiToolbar.h"
 #include "GuiView.h"
+#include "Toolbars.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -26,7 +28,6 @@
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "TextClass.h"
-#include "ToolbarBackend.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -95,33 +96,33 @@ void GuiToolbars::initFlags(ToolbarInfo & tbinfo)
 	}
 	/*
 	cout << "State " << info.state << " FLAGS: " << flags
-		<< " ON:" << (flags & ToolbarBackend::ON)
-		<< " OFF:" << (flags & ToolbarBackend::OFF)
-		<< " L:" << (flags & ToolbarBackend::LEFT)
-		<< " R:" << (flags & ToolbarBackend::RIGHT)
-		<< " T:" << (flags & ToolbarBackend::TOP)
-		<< " B:" << (flags & ToolbarBackend::BOTTOM)
-		<< " MA:" << (flags & ToolbarBackend::MATH)
-		<< " RE:" << (flags & ToolbarBackend::REVIEW)
-		<< " TB:" << (flags & ToolbarBackend::TABLE)
-		<< " AU:" << (flags & ToolbarBackend::AUTO)
+		<< " ON:" << (flags & Toolbars::ON)
+		<< " OFF:" << (flags & Toolbars::OFF)
+		<< " L:" << (flags & Toolbars::LEFT)
+		<< " R:" << (flags & Toolbars::RIGHT)
+		<< " T:" << (flags & Toolbars::TOP)
+		<< " B:" << (flags & Toolbars::BOTTOM)
+		<< " MA:" << (flags & Toolbars::MATH)
+		<< " RE:" << (flags & Toolbars::REVIEW)
+		<< " TB:" << (flags & Toolbars::TABLE)
+		<< " AU:" << (flags & Toolbars::AUTO)
 		<< endl;
 	*/
 	// now set the flags
-	tbinfo.flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
+	tbinfo.flags = static_cast<ToolbarInfo::Flags>(flags);
 }
 
 
 void GuiToolbars::init()
 {
-	ToolbarsMap::const_iterator it = toolbars_.begin();
+	ToolbarsMap::iterator it = toolbars_.begin();
 	for (; it != toolbars_.end(); ++it)
 		delete it->second;
 	toolbars_.clear();
 
 	// extracts the toolbars from the backend
-	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
 
 	// init flags will also add these toolbars to session if they
 	// are not already there (e.g. first run of lyx).
@@ -149,7 +150,7 @@ void GuiToolbars::init()
 			(last_loc == ToolbarSection::ToolbarInfo::LEFT && tb->info.posx != last_posx) ||
 			(last_loc == ToolbarSection::ToolbarInfo::RIGHT && tb->info.posx != last_posx) );
 		// find the backend item and add
-		for (cit = toolbarbackend.begin(); cit != end; ++cit)
+		for (cit = guiApp->toolbars().begin(); cit != end; ++cit)
 			if (cit->name == tb->key) {
 				add(*cit, newline);
 				last_loc = tb->info.location;
@@ -163,8 +164,8 @@ void GuiToolbars::init()
 
 void GuiToolbars::display(string const & name, bool show)
 {
-	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
 
 	for (; cit != end; ++cit) {
 		if (cit->name == name) {
@@ -176,7 +177,7 @@ void GuiToolbars::display(string const & name, bool show)
 				TurnOnFlag(ON);
 			else
 				TurnOnFlag(OFF);
-			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
+			cit->flags = static_cast<ToolbarInfo::Flags>(flags);
 			displayToolbar(*cit, show);
 		}
 	}
@@ -187,13 +188,13 @@ void GuiToolbars::display(string const & name, bool show)
 
 ToolbarInfo * GuiToolbars::getToolbarInfo(string const & name)
 {
-	return toolbarbackend.getUsedToolbarInfo(name);
+	return guiApp->toolbars().getUsedToolbarInfo(name);
 }
 
 
 void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 {
-	ToolbarInfo * tbi = toolbarbackend.getUsedToolbarInfo(name);
+	ToolbarInfo * tbi = guiApp->toolbars().getUsedToolbarInfo(name);
 
 	if (!tbi) {
 		LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
@@ -230,17 +231,17 @@ void GuiToolbars::toggleFullScreen(bool start_full_screen)
 {
 	// we need to know number of fullscreens until every
 	// LyXView has its own toolbar configuration
-	toolbarbackend.fullScreenWindows += start_full_screen ? 1 : -1;
+	guiApp->toolbars().fullScreenWindows += start_full_screen ? 1 : -1;
 
 	// extracts the toolbars from the backend
-	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
 	int flags = 0;
 
 	for (; cit != end; ++cit) {
 
 		if (start_full_screen) {
-			if (toolbarbackend.fullScreenWindows == 1)
+			if (guiApp->toolbars().fullScreenWindows == 1)
 				flags = cit->before_fullscreen = cit->flags;
 			TurnOffFlag(ON);
 			TurnOffFlag(AUTO);
@@ -261,8 +262,8 @@ void GuiToolbars::update(bool in_math, bool in_table, bool review,
 	updateIcons();
 
 	// extracts the toolbars from the backend
-	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
 
 	for (; cit != end; ++cit) {
 		if (cit->flags & ToolbarInfo::ON)
@@ -295,8 +296,8 @@ void GuiToolbars::saveToolbarInfo()
 {
 	ToolbarSection & tb = LyX::ref().session().toolbars();
 
-	for (ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-		cit != toolbarbackend.end(); ++cit) {
+	for (Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+		cit != guiApp->toolbars().end(); ++cit) {
 		ToolbarsMap::iterator it = toolbars_.find(cit->name);
 		LASSERT(it != toolbars_.end(), /**/);
 		// get toolbar info from session.
@@ -317,7 +318,7 @@ void GuiToolbars::saveToolbarInfo()
 			flags &= ~(info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::OFF : ToolbarInfo::ON);
 			flags |= (info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::ON : ToolbarInfo::OFF);
 			if (info.state == ToolbarSection::ToolbarInfo::ON)
-			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
+			cit->flags = static_cast<ToolbarInfo::Flags>(flags);
 		}
 		*/
 	}

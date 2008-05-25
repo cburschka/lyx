@@ -46,7 +46,7 @@
 #include "Session.h"
 #include "TextClass.h"
 #include "TocBackend.h"
-#include "ToolbarBackend.h"
+#include "Toolbars.h"
 
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
@@ -1012,13 +1012,13 @@ void MenuDefinition::expandToolbars()
 {
 	//
 	// extracts the toolbars from the backend
-	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
 
 	for (; cit != end; ++cit) {
 		QString label = qt_(cit->gui_name);
 		// frontends are not supposed to turn on/off toolbars,
-		// if they cannot update ToolbarBackend::flags. That
+		// if they cannot update Toolbars::flags. That
 		// is to say, ToolbarsBackend::flags should reflect
 		// the true state of toolbars.
 		//

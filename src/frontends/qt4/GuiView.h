@@ -32,7 +32,6 @@ class QShowEvent;
 namespace lyx {
 
 class Cursor;
-class ToolbarInfo;
 
 namespace frontend {
 
@@ -42,6 +41,7 @@ class GuiToolbar;
 class GuiWorkArea;
 class TabWorkArea;
 class TocModels;
+class ToolbarInfo;
 
 /**
  * GuiView - Qt4 implementation of LyXView

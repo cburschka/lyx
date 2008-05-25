@@ -21,12 +21,12 @@
 namespace lyx {
 
 class DocumentClass;
-class ToolbarInfo;
 
 namespace frontend {
 
 class GuiToolbar;
 class GuiView;
+class ToolbarInfo;
 
 class GuiToolbars
 {

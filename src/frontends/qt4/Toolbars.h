@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ToolbarBackend.h
+ * \file Toolbars.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -20,8 +20,9 @@
 
 namespace lyx {
 
-
 class Lexer;
+
+namespace frontend {
 
 class ToolbarItem {
 public:
@@ -109,20 +110,20 @@ private:
 
 
 ///
-class ToolbarBackend {
+class Toolbars {
 public:
-	typedef std::vector<ToolbarInfo> Toolbars;
+	typedef std::vector<ToolbarInfo> Infos;
 
-	ToolbarBackend();
+	Toolbars();
 
 	/// iterator for all toolbars
-	Toolbars::const_iterator begin() const { return usedtoolbars.begin(); }
+	Infos::const_iterator begin() const { return usedtoolbars.begin(); }
 
-	Toolbars::const_iterator end() const { return usedtoolbars.end(); }
+	Infos::const_iterator end() const { return usedtoolbars.end(); }
 
-	Toolbars::iterator begin() { return usedtoolbars.begin(); }
+	Infos::iterator begin() { return usedtoolbars.begin(); }
 
-	Toolbars::iterator end() { return usedtoolbars.end(); }
+	Infos::iterator end() { return usedtoolbars.end(); }
 
 	/// read toolbars from the file
 	void readToolbars(Lexer &);
@@ -141,17 +142,13 @@ public:
 
 private:
 	/// all the defined toolbars
-	Toolbars toolbars;
+	Infos toolbars;
 
 	/// toolbars listed
-	Toolbars usedtoolbars;
+	Infos usedtoolbars;
 };
 
-/// The global instance
-extern ToolbarBackend toolbarbackend;
-
-
-
+} // namespace frontend
 } // namespace lyx
 
 #endif // TOOLBAR_BACKEND_H

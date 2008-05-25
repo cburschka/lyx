@@ -30,15 +30,17 @@ namespace lyx {
 
 class DocumentClass;
 class Inset;
-class ToolbarItem;
 
 namespace frontend {
 
 class Action;
 class GuiCommandBuffer;
 class GuiLayoutFilterModel;
+class GuiToolbar;
 class GuiView;
 class LayoutItemDelegate;
+class ToolbarInfo;
+class ToolbarItem;
 
 class GuiLayoutBox : public QComboBox
 {

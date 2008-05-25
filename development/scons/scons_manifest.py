@@ -761,7 +761,7 @@ src_frontends_qt4_header_files = Split('''
     PanelStack.h
     TocModel.h
     TocWidget.h
-    ToolbarBackend.h
+    Toolbars.h
     Validator.h
     qt_helpers.h
     qt_i18n.h
@@ -852,7 +852,7 @@ src_frontends_qt4_files = Split('''
     PanelStack.cpp
     TocModel.cpp
     TocWidget.cpp
-    ToolbarBackend.cpp
+    Toolbars.cpp
     Validator.cpp
     qt_helpers.cpp
 ''')

@@ -1,5 +1,5 @@
 /**
- * \file ToolbarBackend.cpp
+ * \file Toolbars.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "ToolbarBackend.h"
+#include "Toolbars.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyXAction.h"
@@ -28,6 +28,7 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -44,9 +45,6 @@ private:
 };
 
 } // namespace anon
-
-
-ToolbarBackend toolbarbackend;
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -204,18 +202,18 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 /////////////////////////////////////////////////////////////////////////
 //
-// ToolbarBackend
+// Toolbars
 //
 /////////////////////////////////////////////////////////////////////////
 
 
-ToolbarBackend::ToolbarBackend()
+Toolbars::Toolbars()
 {
 	fullScreenWindows = 0;
 }
 
 
-void ToolbarBackend::readToolbars(Lexer & lex)
+void Toolbars::readToolbars(Lexer & lex)
 {
 	enum {
 		TO_TOOLBAR = 1,
@@ -229,7 +227,7 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbarset")) {
-		LYXERR0("ToolbarBackend::readToolbars: ERROR wrong token:`"
+		LYXERR0("Toolbars::readToolbars: ERROR wrong token:`"
 		       << lex.getString() << '\'');
 	}
 
@@ -251,7 +249,7 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 			quit = true;
 			break;
 		default:
-			lex.printError("ToolbarBackend::readToolbars: "
+			lex.printError("Toolbars::readToolbars: "
 				       "Unknown toolbar tag: `$$Token'");
 			break;
 		}
@@ -261,11 +259,11 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 }
 
 
-void ToolbarBackend::readToolbarSettings(Lexer & lex)
+void Toolbars::readToolbarSettings(Lexer & lex)
 {
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbars")) {
-		LYXERR0("ToolbarBackend::readToolbarSettings: ERROR wrong token:`"
+		LYXERR0("Toolbars::readToolbarSettings: ERROR wrong token:`"
 		       << lex.getString() << '\'');
 	}
 
@@ -278,15 +276,15 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 		if (!compare_ascii_no_case(name, "end"))
 			return;
 
-		Toolbars::iterator tcit = toolbars.begin();
-		Toolbars::iterator tend = toolbars.end();
+		Infos::iterator tcit = toolbars.begin();
+		Infos::iterator tend = toolbars.end();
 		for (; tcit != tend; ++tcit) {
 			if (tcit->name == name)
 				break;
 		}
 
 		if (tcit == tend) {
-			LYXERR0("ToolbarBackend: undefined toolbar " << name);
+			LYXERR0("Toolbars: undefined toolbar " << name);
 			return;
 		}
 
@@ -324,7 +322,7 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 				flag = ToolbarInfo::AUTO;
 			else {
 				LYXERR(Debug::ANY,
-					"ToolbarBackend::readToolbarSettings: unrecognised token:`"
+					"Toolbars::readToolbarSettings: unrecognised token:`"
 					<< *cit << '\'');
 			}
 			tcit->flags = static_cast<ToolbarInfo::Flags>(tcit->flags | flag);
@@ -335,21 +333,22 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 }
 
 
-ToolbarInfo const * ToolbarBackend::getDefinedToolbarInfo(string const & name) const
+ToolbarInfo const * Toolbars::getDefinedToolbarInfo(string const & name) const
 {
-	Toolbars::const_iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
+	Infos::const_iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
 	if (it == toolbars.end())
 		return 0;
 	return &(*it);
 }
 
 
-ToolbarInfo * ToolbarBackend::getUsedToolbarInfo(string const &name)
+ToolbarInfo * Toolbars::getUsedToolbarInfo(string const &name)
 {
-	Toolbars::iterator it = find_if(usedtoolbars.begin(), usedtoolbars.end(), ToolbarNamesEqual(name));
+	Infos::iterator it = find_if(usedtoolbars.begin(), usedtoolbars.end(), ToolbarNamesEqual(name));
 	if (it == usedtoolbars.end())
 		return 0;
 	return &(*it);
 }
 
+} // namespace frontend
 } // namespace lyx
