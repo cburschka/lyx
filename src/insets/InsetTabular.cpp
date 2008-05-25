@@ -1568,10 +1568,12 @@ void Tabular::setUsebox(idx_type cell, BoxType type)
 }
 
 
+// FIXME: Remove this routine because we cannot insert \parboxes when the user
+// adds line breaks, see bug 4886.
 Tabular::BoxType Tabular::getUsebox(idx_type cell) const
 {
-	if (column_info[cellColumn(cell)].p_width.zero() &&
-		!(isMultiColumn(cell) && !cellInfo(cell).p_width.zero()))
+	if ((!column_info[cellColumn(cell)].p_width.zero() && !isMultiColumn(cell)) ||
+		(isMultiColumn(cell) && !cellInfo(cell).p_width.zero()))
 		return BOX_NONE;
 	if (cellInfo(cell).usebox > 1)
 		return cellInfo(cell).usebox;
