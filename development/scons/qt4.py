@@ -352,9 +352,9 @@ def enable_modules(self, modules, debug=False) :
 				self.AppendUnique(LIBPATH=[os.path.join(self["QTDIR"],"lib",module)])
 				self.AppendUnique(CPPPATH=[os.path.join(self["QTDIR"],"include","qt4",module)])
 				modules.remove(module)
-		self.ParseConfig('PKG_CONFIG_PATH=%s/lib/pkgconfig pkg-config %s --libs --cflags'%
+		self.ParseConfig('PKG_CONFIG_PATH=%s/lib:%s/lib/pkgconfig pkg-config %s --libs --cflags'%
 		(
-			self['QTDIR'],
+			self['QTDIR'], self['QTDIR'],
 			' '.join(modules)))
 		return
 	if sys.platform == "win32" :
