@@ -41,7 +41,7 @@ void FuncStatus::unknown(bool b)
 	if (b)
 		v_ |= UNKNOWN;
 	else
-		v_ &= !UNKNOWN;
+		v_ &= ~UNKNOWN;
 }
 
 
@@ -55,7 +55,7 @@ bool FuncStatus::unknown() const
 void FuncStatus::enabled(bool b)
 {
 	if (b)
-		v_ &= !DISABLED;
+		v_ &= ~DISABLED;
 	else
 		v_ |= DISABLED;
 }

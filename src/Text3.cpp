@@ -1734,7 +1734,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_APPENDIX:
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
-		return true;
+		break;
 
 	case LFUN_BIBITEM_INSERT:
 		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO
@@ -1897,27 +1897,27 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_FONT_EMPH:
 		flag.setOnOff(font.emph() == Font::ON);
-		return true;
+		break;
 
 	case LFUN_FONT_NOUN:
 		flag.setOnOff(font.noun() == Font::ON);
-		return true;
+		break;
 
 	case LFUN_FONT_BOLD:
 		flag.setOnOff(font.series() == Font::BOLD_SERIES);
-		return true;
+		break;
 
 	case LFUN_FONT_SANS:
 		flag.setOnOff(font.family() == Font::SANS_FAMILY);
-		return true;
+		break;
 
 	case LFUN_FONT_ROMAN:
 		flag.setOnOff(font.family() == Font::ROMAN_FAMILY);
-		return true;
+		break;
 
 	case LFUN_FONT_CODE:
 		flag.setOnOff(font.family() == Font::TYPEWRITER_FAMILY);
-		return true;
+		break;
 
 	case LFUN_CUT:
 	case LFUN_COPY:
