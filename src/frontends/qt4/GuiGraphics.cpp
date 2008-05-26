@@ -245,6 +245,8 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
+	connect(groupId, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
 	displayscale->setValidator(new QIntValidator(displayscale));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
