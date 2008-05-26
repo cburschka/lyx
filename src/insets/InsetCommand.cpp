@@ -164,8 +164,8 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 			string const newtype = cmd.getArg(1);
 			status.enabled(p_.isCompatibleCommand(p_.code(), newtype));
 			status.setOnOff(newtype == p_.getCmdName());
-		} else
-			status.enabled(true);
+		} 
+		status.enabled(true);
 		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.enabled(true);

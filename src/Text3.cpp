@@ -1907,7 +1907,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_APPENDIX:
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
-		return true;
+		break;
 
 	case LFUN_BIBITEM_INSERT:
 		enable = (cur.paragraph().layout().labeltype == LABEL_BIBLIO

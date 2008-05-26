@@ -223,8 +223,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype")
 			flag.setOnOff(cmd.getArg(1) == params_.type);
-		else
-			flag.enabled(true);
+		flag.enabled(true);
 		return true;
 
 	case LFUN_INSET_DIALOG_UPDATE:
