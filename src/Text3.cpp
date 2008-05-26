@@ -2182,6 +2182,15 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = (cur.pos() > cur.paragraph().beginOfBody());
 		break;
 
+	case LFUN_SET_GRAPHICS_GROUP: {
+		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
+		if (!ins) 
+			enable = false;
+		else
+			flag.setOnOff(to_utf8(cmd.argument()) == ins->getParams().groupId);
+		break;
+	}
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
