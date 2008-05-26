@@ -142,8 +142,6 @@ scons/scons_manifest.py \
 scons/SConstruct \
 scons/scons_utils.py \
 cmake/boost/libs/signals/CMakeLists.txt \
-cmake/boost/libs/filesystem/CMakeLists.txt \
-cmake/boost/libs/iostreams/CMakeLists.txt \
 cmake/boost/libs/regex/CMakeLists.txt \
 cmake/boost/libs/CMakeLists.txt \
 cmake/boost/CMakeLists.txt \
