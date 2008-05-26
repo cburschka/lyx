@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>584</width>
+    <width>617</width>
     <height>373</height>
    </rect>
   </property>
@@ -121,7 +121,7 @@
       <string/>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Graphics" >
       <property name="geometry" >
@@ -541,7 +541,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>562</width>
+        <width>595</width>
         <height>293</height>
        </rect>
       </property>
@@ -707,7 +707,10 @@
              </sizepolicy>
             </property>
             <property name="text" >
-             <string>Initialize Group-Id:</string>
+             <string>&amp;Initialize Group Name:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>groupId</cstring>
             </property>
            </widget>
           </item>
