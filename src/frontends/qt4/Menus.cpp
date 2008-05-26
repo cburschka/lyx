@@ -639,21 +639,15 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 {
 	if (!bv)
 		return;
-	Cursor const & cur = bv->cursor();
-	Buffer const & buf = bv->buffer();
 	set<string> grp;
-	InsetGraphics::getGraphicsGroups(buf, grp);
-	set<string>::const_iterator it = grp.begin();
-	set<string>::const_iterator end = grp.end();
+	InsetGraphics::getGraphicsGroups(bv->buffer(), grp);
 	if (grp.empty())
 		return;
 
-	InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
-	if (!ins)
-		return;
-	add(MenuItem(MenuItem::Separator));
-	if (!ins->getParams().groupId.empty())
-		add(MenuItem(MenuItem::Command, qt_("Clear group"), FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
+	set<string>::const_iterator it = grp.begin();
+	set<string>::const_iterator end = grp.end();
+	add(MenuItem(MenuItem::Command, qt_("No Group"), 
+		     FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
 	for (; it != end; it++) {
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it),
 				FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
