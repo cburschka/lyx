@@ -83,7 +83,8 @@ public:
 	// to display or not.
 	graphics::Params as_grfxParams() const;
 
-	// Identification of the graphics template. No template equals empty string.
+	// FIXME UNICODE. Write functions need to use odostream instead of ostream firstly.
+	/// Identification of the graphics template. No template equals empty string.
 	std::string groupId;
 private:
 	/// Initialize the object to a default status.

@@ -20,6 +20,10 @@ namespace lyx {
 
 class Lexer;
 
+// FIXME UNICODE
+// Write functions need to use odostream instead of ostream before
+// we can use docstring instead of string.
+
 /// Options for PDF generation
 class PDFOptions {
 public:
