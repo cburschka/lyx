@@ -458,6 +458,14 @@ void LyXAction::init()
 		{ LFUN_LIST_INSERT, "list-insert", Noop, Edit },
 #endif
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_ESCAPE
+ * \li Action: Clears the selection. If no text is selected call #LFUN_FINISHED_FORWARD.
+ * \li Syntax: escape
+ * \li Origin: Lgb, 17 May 2001
+ * \endvar
+ */
+		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
 		{ LFUN_DELETE_BACKWARD_SKIP, "delete-backward-skip", Noop, Edit },
 		{ LFUN_DELETE_FORWARD_SKIP, "delete-forward-skip", Noop, Edit },
 		{ LFUN_DOWN, "down", ReadOnly | NoUpdate, Edit },
@@ -1672,16 +1680,7 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
 
-/*!
- * \var lyx::FuncCode lyx::LFUN_MESSAGE
- * \li Action: Shows message in statusbar (for script purposes).
- * \li Syntax: message <STRING>
- * \li Origin: Lgb, 8 Apr 2001
- * \endvar
- */
-		{ LFUN_MESSAGE, "message", NoBuffer, System },
 		{ LFUN_FLOAT_LIST, "float-list", Noop, Edit },
-		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
 
 		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
@@ -2081,7 +2080,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
-
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MESSAGE
+ * \li Action: Shows message in statusbar (for script purposes).
+ * \li Syntax: message <STRING>
+ * \li Origin: Lgb, 8 Apr 2001
+ * \endvar
+ */
+		{ LFUN_MESSAGE, "message", NoBuffer, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PREFERENCES_SAVE
  * \li Action: Save user preferences.
