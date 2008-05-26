@@ -186,7 +186,7 @@ public:
 	QString flavorFor(QString const & mime)
 	{
 		LYXERR(Debug::ACTION, "flavorFor " << mime);
-		if (mime == QLatin1String(pdfMimeType()))
+		if (mime == pdfMimeType())
 			return QLatin1String("com.adobe.pdf");
 		return QString();
 	}
@@ -195,7 +195,7 @@ public:
 	{
 		LYXERR(Debug::ACTION, "mimeFor " << flav);
 		if (flav == QLatin1String("com.adobe.pdf"))
-			return QLatin1String(pdfMimeType());
+			return pdfMimeType();
 		return QString();
 	}
 
