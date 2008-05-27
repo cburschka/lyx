@@ -321,18 +321,47 @@ GuiView::GuiView(int id)
 	// with some window manager under X11.
 	setMinimumSize(300, 200);
 
-	// Now take care of session management.
-	QSettings settings;
-
-	if (!lyxrc.allow_geometry_session) {
-		// No session handling, default to a sane size.
-		setGeometry(50, 50, 690, 510);
-		initToolbars();
-		settings.clear();
+	if (lyxrc.allow_geometry_session) {
+		// Now take care of session management.
+		restoreLayout();
 		return;
 	}
 
+	// No session handling, default to a sane size.
+	setGeometry(50, 50, 690, 510);
+	initToolbars();
+	// This enables to clear session data if any.
+	QSettings settings;
+	settings.clear();
+}
+
+
+GuiView::~GuiView()
+{
+	delete &d;
+}
+
+
+void GuiView::saveLayout() const
+{
+	QSettings settings;
 	QString const key = "view-" + QString::number(id_);
+#ifdef Q_WS_X11
+	settings.setValue(key + "/pos", pos());
+	settings.setValue(key + "/size", size());
+#else
+	settings.setValue(key + "/geometry", saveGeometry());
+#endif
+	settings.setValue(key + "/layout", saveState(0));
+	settings.setValue(key + "/icon_size", iconSize());
+}
+
+
+void GuiView::restoreLayout()
+{
+	QSettings settings;
+	QString const key = "view-" + QString::number(id_);
+	setIconSize(settings.value(key + "/icon_size").toSize());
 #ifdef Q_WS_X11
 	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
 	QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
@@ -344,14 +373,6 @@ GuiView::GuiView(int id)
 #endif
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
-
-	setIconSize(settings.value(key + "/icon_size").toSize());
-}
-
-
-GuiView::~GuiView()
-{
-	delete &d;
 }
 
 
@@ -525,18 +546,10 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Saving fullscreen requires additional tweaks in the toolbar code.
 	// It wouldn't also work under linux natively.
-	if (lyxrc.allow_geometry_session && !isFullScreen()) {
-		QSettings settings;
-		QString const key = "view-" + QString::number(id_);
-#ifdef Q_WS_X11
-		settings.setValue(key + "/pos", pos());
-		settings.setValue(key + "/size", size());
-#else
-		settings.setValue(key + "/geometry", saveGeometry());
-#endif
-		settings.setValue(key + "/icon_size", iconSize());
-		settings.setValue(key + "/layout", saveState(0));
-
+	if (lyxrc.allow_geometry_session) {
+		// Save this window geometry and layout.
+		saveLayout();
+		// Then the toolbar private states.
 		ToolbarMap::iterator end = d.toolbars_.end();
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
 			it->second->saveSession();
@@ -1993,9 +2006,6 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 
 void GuiView::toggleFullScreen()
 {
-	QSettings settings;
-	QString const key = "view-" + QString::number(id_);
-
 	if (isFullScreen()) {
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(false);
@@ -2005,21 +2015,19 @@ void GuiView::toggleFullScreen()
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		menuBar()->show();
 		statusBar()->show();
-		if (lyxrc.full_screen_toolbars) {
-			if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
-				initToolbars();
-		}
+		if (lyxrc.full_screen_toolbars)
+			restoreLayout();
 	} else {
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
 #if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
 #endif
+		saveLayout();
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		statusBar()->hide();
 		menuBar()->hide();
 		if (lyxrc.full_screen_toolbars) {
-			settings.setValue(key + "/layout", saveState(0));
 			ToolbarMap::iterator end = d.toolbars_.end();
 			for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
 				it->second->hide();

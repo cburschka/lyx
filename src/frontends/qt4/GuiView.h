@@ -246,6 +246,10 @@ public:
 
 private:
 	///
+	void saveLayout() const;
+	///
+	void restoreLayout();
+	///
 	GuiToolbar * toolbar(std::string const & name);
 	///
 	void constructToolbars();
