@@ -246,6 +246,12 @@ public:
 
 private:
 	///
+	GuiToolbar * toolbar(std::string const & name);
+	///
+	void constructToolbars();
+	///
+	void initToolbars();
+	///
 	void lfunUiToggle(FuncRequest const & cmd);
 
 	///

@@ -141,10 +141,13 @@ private:
 	QPixmap splash_;
 };
 
-} // namespace anon
-
+/// Toolbar store providing access to individual toolbars by name.
+typedef std::map<std::string, GuiToolbar *> ToolbarMap;
 
 typedef boost::shared_ptr<Dialog> DialogPtr;
+
+} // namespace anon
+
 
 struct GuiView::GuiViewPrivate
 {
@@ -170,7 +173,6 @@ struct GuiView::GuiViewPrivate
 		delete splitter_;
 		delete bg_widget_;
 		delete stack_widget_;
-		delete toolbars_;
 	}
 
 	QMenu * toolBarPopup(GuiView * parent)
@@ -244,7 +246,7 @@ public:
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
 	/// view's toolbars
-	GuiToolbars * toolbars_;
+	ToolbarMap toolbars_;
 	/// The main layout box.
 	/** 
 	 * \warning Don't Delete! The layout box is actually owned by
@@ -281,7 +283,7 @@ GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate), id_(id)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
-	d.toolbars_ = new GuiToolbars(*this);
+	constructToolbars();
 
 	// set ourself as the current view. This is needed for the menu bar
 	// filling, at least for the static special menu item on Mac. Otherwise
@@ -320,12 +322,17 @@ GuiView::GuiView(int id)
 	// with some window manager under X11.
 	setMinimumSize(300, 200);
 
-	if (!lyxrc.allow_geometry_session)
-		// No session handling, default to a sane size.
-		setGeometry(50, 50, 690, 510);
-
 	// Now take care of session management.
 	QSettings settings;
+
+	if (!lyxrc.allow_geometry_session) {
+		// No session handling, default to a sane size.
+		setGeometry(50, 50, 690, 510);
+		initToolbars();
+		settings.clear();
+		return;
+	}
+
 	QString const key = "view-" + QString::number(id_);
 #ifdef Q_WS_X11
 	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
@@ -336,6 +343,9 @@ GuiView::GuiView(int id)
 	if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
 		setGeometry(50, 50, 690, 510);
 #endif
+	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
+		initToolbars();
+
 	setIconSize(settings.value(key + "/icon_size").toSize());
 }
 
@@ -343,6 +353,83 @@ GuiView::GuiView(int id)
 GuiView::~GuiView()
 {
 	delete &d;
+}
+
+
+GuiToolbar * GuiView::toolbar(string const & name)
+{
+	ToolbarMap::iterator it = d.toolbars_.find(name);
+	if (it != d.toolbars_.end())
+		return it->second;
+
+	LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
+	message(bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name)));
+	return 0;
+}
+
+
+void GuiView::constructToolbars()
+{
+	ToolbarMap::iterator it = d.toolbars_.begin();
+	for (; it != d.toolbars_.end(); ++it)
+		delete it->second;
+	d.toolbars_.clear();
+
+	// extracts the toolbars from the backend
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
+	for (; cit != end; ++cit)
+		d.toolbars_[cit->name] =  new GuiToolbar(*cit, *this);
+}
+
+
+void GuiView::initToolbars()
+{
+	// extracts the toolbars from the backend
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
+	for (; cit != end; ++cit) {
+		GuiToolbar * tb = toolbar(cit->name);
+		if (!tb)
+			continue;
+		int const visibility = guiApp->toolbars().defaultVisibility(cit->name);
+		bool newline = true;
+		tb->setVisible(false);
+		tb->setVisibility(visibility);
+
+		if (visibility & Toolbars::TOP) {
+			if (newline)
+				addToolBarBreak(Qt::TopToolBarArea);
+			addToolBar(Qt::TopToolBarArea, tb);
+		}
+
+		if (visibility & Toolbars::BOTTOM) {
+			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+			addToolBarBreak(Qt::BottomToolBarArea);
+#endif
+			addToolBar(Qt::BottomToolBarArea, tb);
+		}
+
+		if (visibility & Toolbars::LEFT) {
+			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+			addToolBarBreak(Qt::LeftToolBarArea);
+#endif
+			addToolBar(Qt::LeftToolBarArea, tb);
+		}
+
+		if (visibility & Toolbars::RIGHT) {
+			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+			addToolBarBreak(Qt::RightToolBarArea);
+#endif
+			addToolBar(Qt::RightToolBarArea, tb);
+		}
+
+		if (visibility & Toolbars::ON)
+			tb->setVisible(true);
+	}
 }
 
 
@@ -428,7 +515,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// Save toolbars configuration
 	if (isFullScreen()) {
-		d.toolbars_->toggleFullScreen(!isFullScreen());
+//		d.toolbars_->toggleFullScreen(!isFullScreen());
 		updateDialogs();
 	}
 
@@ -447,7 +534,11 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		settings.setValue(key + "/geometry", saveGeometry());
 #endif
 		settings.setValue(key + "/icon_size", iconSize());
-		d.toolbars_->saveToolbarInfo();
+		settings.setValue(key + "/layout", saveState(0));
+
+		ToolbarMap::iterator end = d.toolbars_.end();
+		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+			it->second->saveSession();
 		// Now take care of all other dialogs:
 		map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
 		for (; it!= d.dialogs_.end(); ++it)
@@ -699,53 +790,6 @@ void GuiView::setBusy(bool busy)
 }
 
 
-GuiToolbar * GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
-{
-	GuiToolbar * toolBar = new GuiToolbar(tbinfo, *this);
-
-	if (tbinfo.flags & ToolbarInfo::TOP) {
-		if (newline)
-			addToolBarBreak(Qt::TopToolBarArea);
-		addToolBar(Qt::TopToolBarArea, toolBar);
-	}
-
-	if (tbinfo.flags & ToolbarInfo::BOTTOM) {
-// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
-		if (newline)
-			addToolBarBreak(Qt::BottomToolBarArea);
-#endif
-		addToolBar(Qt::BottomToolBarArea, toolBar);
-	}
-
-	if (tbinfo.flags & ToolbarInfo::LEFT) {
-// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
-		if (newline)
-			addToolBarBreak(Qt::LeftToolBarArea);
-#endif
-		addToolBar(Qt::LeftToolBarArea, toolBar);
-	}
-
-	if (tbinfo.flags & ToolbarInfo::RIGHT) {
-// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
-		if (newline)
-			addToolBarBreak(Qt::RightToolBarArea);
-#endif
-		addToolBar(Qt::RightToolBarArea, toolBar);
-	}
-
-	// The following does not work so I cannot restore to exact toolbar location
-	/*
-	ToolbarSection::ToolbarInfo & tbinfo = LyX::ref().session().toolbars().load(tbinfo.name);
-	toolBar->move(tbinfo.posx, tbinfo.posy);
-	*/
-
-	return toolBar;
-}
-
-
 GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
 	if (TabWorkArea * twa = d.currentTabWorkArea())
@@ -846,6 +890,7 @@ void GuiView::updateLayoutList()
 
 void GuiView::updateToolbars()
 {
+	ToolbarMap::iterator end = d.toolbars_.end();
 	if (d.current_work_area_) {
 		bool const math =
 			d.current_work_area_->bufferView().cursor().inMathed();
@@ -857,9 +902,11 @@ void GuiView::updateToolbars()
 		bool const mathmacrotemplate =
 			lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled();
 
-		d.toolbars_->update(math, table, review, mathmacrotemplate);
+		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+			it->second->update(math, table, review, mathmacrotemplate);
 	} else
-		d.toolbars_->update(false, false, false, false);
+		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+			it->second->update(false, false, false, false);
 }
 
 
@@ -1014,7 +1061,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE:
-		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
+		if (GuiToolbar * t = toolbar(cmd.getArg(0)))
+			flag.setOnOff(t->isVisible());
 		break;
 
 	case LFUN_UI_TOGGLE:
@@ -1693,7 +1741,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_COMMAND_EXECUTE: {
 			bool const show_it = cmd.argument() != "off";
-			d.toolbars_->showCommandBuffer(show_it);
+			// FIXME: this is a hack, "minibuffer" should not be
+			// hardcoded.
+			if (GuiToolbar * t = toolbar("minibuffer"))
+				t->setVisible(show_it);
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:
@@ -1747,32 +1798,8 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_TOOLBAR_TOGGLE: {
 			string const name = cmd.getArg(0);
-			bool const allowauto = cmd.getArg(1) == "allowauto";
-			// it is possible to get current toolbar status like this,...
-			// but I decide to obey the order of Toolbars::flags
-			// and disregard real toolbar status.
-			// toolbars_->saveToolbarInfo();
-			//
-			// toggle state on/off/auto
-			d.toolbars_->toggleToolbarState(name, allowauto);
-			// update toolbar
-			updateToolbars();
-
-			ToolbarInfo * tbi = d.toolbars_->getToolbarInfo(name);
-			if (!tbi) {
-				message(bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name)));
-				break;
-			}
-			docstring state;
-			if (tbi->flags & ToolbarInfo::ON)
-				state = _("on");
-			else if (tbi->flags & ToolbarInfo::OFF)
-				state = _("off");
-			else if (tbi->flags & ToolbarInfo::AUTO)
-				state = _("auto");
-
-			message(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
-			                   _(tbi->gui_name), state));
+			if (GuiToolbar * t = toolbar(name))
+				t->toggle();
 			break;
 		}
 
@@ -1959,8 +1986,12 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		return;
 	}
 
-	if (lyxrc.full_screen_toolbars)
-		d.toolbars_->toggleFullScreen(!isFullScreen());
+	if (lyxrc.full_screen_toolbars) {
+		ToolbarMap::iterator end = d.toolbars_.end();
+		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+			; //it->second->toggleFullScreen(!isFullScreen());
+	}
+//		d.toolbars_->toggleFullScreen(!isFullScreen());
 
 	if (isFullScreen()) {
 		for (int i = 0; i != d.splitter_->count(); ++i)
@@ -2063,7 +2094,7 @@ void GuiView::resetDialogs()
 	theLyXFunc().setLyXView(0);
 	// FIXME: the "math panels" toolbar takes an awful lot of time to
 	// initialise so we don't do that for the time being.
-	//d.toolbars_->init();
+	//initToolbars();
 	guiApp->menus().fillMenuBar(menuBar(), this);
 	if (d.layout_)
 		d.layout_->updateContents(true);

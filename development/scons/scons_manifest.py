@@ -746,7 +746,6 @@ src_frontends_qt4_header_files = Split('''
     GuiThesaurus.h
     GuiToc.h
     GuiToolbar.h
-    GuiToolbars.h
     GuiView.h
     GuiViewSource.h
     GuiVSpace.h
@@ -837,7 +836,6 @@ src_frontends_qt4_files = Split('''
     GuiThesaurus.cpp
     GuiToc.cpp
     GuiToolbar.cpp
-    GuiToolbars.cpp
     GuiView.cpp
     GuiViewSource.cpp
     GuiVSpace.cpp

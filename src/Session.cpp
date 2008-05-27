@@ -291,96 +291,6 @@ BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) co
 }
 
 
-void ToolbarSection::read(istream & is)
-{
-	string tmp;
-	do {
-		char c = is.peek();
-		if (c == '[')
-			break;
-		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
-			continue;
-
-		try {
-			// Read session info, saved as key/value pairs
-			// would better yell if pos returns npos
-			size_t pos = tmp.find_first_of(" = ");
-			// silently ignore lines without " = "
-			if (pos != string::npos) {
-				ToolbarItem item;
-				item.key = tmp.substr(0, pos);
-				int state;
-				int location;
-				istringstream value(tmp.substr(pos + 3));
-				value >> state;
-				value >> location;
-				value >> item.info.posx;
-				value >> item.info.posy;
-				item.info.state = ToolbarInfo::State(state);
-				item.info.location = ToolbarInfo::Location(location);
-				toolbars.push_back(item);
-			} else
-				LYXERR(Debug::INIT, "LyX: Warning: Ignore toolbar info: " << tmp);
-		} catch (...) {
-			LYXERR(Debug::INIT, "LyX: Warning: unknown Toolbar info: " << tmp);
-		}
-	} while (is.good());
-	// sort the toolbars by location, line and position
-	sort(toolbars.begin(), toolbars.end());
-}
-
-
-void ToolbarSection::write(ostream & os) const
-{
-	os << '\n' << sec_toolbars << '\n';
-	for (ToolbarList::const_iterator tb = toolbars.begin();
-		tb != toolbars.end(); ++tb) {
-		os << tb->key << " = "
-		  << static_cast<int>(tb->info.state) << " "
-		  << static_cast<int>(tb->info.location) << " "
-		  << tb->info.posx << " "
-		  << tb->info.posy << '\n';
-	}
-}
-
-
-ToolbarSection::ToolbarInfo & ToolbarSection::load(string const & name)
-{
-	for (ToolbarList::iterator tb = toolbars.begin();
-		tb != toolbars.end(); ++tb)
-		if (tb->key == name)
-			return tb->info;
-
-	// add a new item
-	ToolbarItem item;
-	item.key = name;
-	toolbars.push_back(item);
-	return toolbars.back().info;
-}
-
-
-bool operator<(ToolbarSection::ToolbarItem const & a, ToolbarSection::ToolbarItem const & b)
-{
-	ToolbarSection::ToolbarInfo lhs = a.info;
-	ToolbarSection::ToolbarInfo rhs = b.info;
-	// on if before off
-	if (lhs.state != rhs.state)
-		return static_cast<int>(lhs.state) < static_cast<int>(rhs.state);
-	// order of dock does not really matter
-	if (lhs.location != rhs.location)
-		return static_cast<int>(lhs.location) < static_cast<int>(rhs.location);
-	// if the same dock, the order depends on position
-	if (lhs.location == ToolbarSection::ToolbarInfo::TOP ||
-		lhs.location == ToolbarSection::ToolbarInfo::BOTTOM)
-		return lhs.posy < rhs.posy || (lhs.posy == rhs.posy && lhs.posx < rhs.posx);
-	else if (lhs.location == ToolbarSection::ToolbarInfo::LEFT ||
-		lhs.location == ToolbarSection::ToolbarInfo::RIGHT)
-		return lhs.posx < rhs.posx || (lhs.posx == rhs.posx && lhs.posy < rhs.posy);
-	return true;
-}
-
-
 void SessionInfoSection::read(istream & is)
 {
 	string tmp;
@@ -470,8 +380,6 @@ void Session::readFile()
 			lastFilePos().read(is);
 		else if (tmp == sec_bookmarks)
 			bookmarks().read(is);
-		else if (tmp == sec_toolbars)
-			toolbars().read(is);
 		else if (tmp == sec_session)
 			sessionInfo().read(is);
 		else
@@ -491,7 +399,6 @@ void Session::writeFile() const
 		lastOpened().write(os);
 		lastFilePos().write(os);
 		bookmarks().write(os);
-		toolbars().write(os);
 		sessionInfo().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "

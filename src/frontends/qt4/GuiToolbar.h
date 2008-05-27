@@ -112,16 +112,32 @@ class GuiToolbar : public QToolBar
 {
 	Q_OBJECT
 public:
+	///
 	GuiToolbar(ToolbarInfo const &, GuiView &);
+
+	///
+	void setVisibility(int visibility);
 
 	/// Add a button to the bar.
 	void add(ToolbarItem const & item);
-	/** update toolbar information
-	* ToolbarInfo will then be saved by session
-	*/
-	void saveInfo(ToolbarSection::ToolbarInfo & info);
+
+	/// Session key.
+	/**
+	 * This key must be used for any session setting.
+	 **/
+	QString sessionKey() const;
+	/// Save session settings.
+	void saveSession() const;
+	/// Restore session settings.
+	void restoreSession();
+
 	/// Refresh the contents of the bar.
-	void updateContents();
+	void update(bool in_math, bool in_table, bool review,
+		bool in_mathmacrotemplate);
+
+	///
+	void toggle();
+
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 
@@ -133,11 +149,18 @@ Q_SIGNALS:
 	void updated();
 
 private:
+	// load flags with saved values
+	void initFlags();
+	///
+	QString name_;
 	///
 	QList<Action *> actions_;
+	/// initial visibility flags
+	int visibility_;
+	///
+	bool allowauto_;
 	///
 	GuiView & owner_;
-
 	///
 	GuiLayoutBox * layout_;
 	///

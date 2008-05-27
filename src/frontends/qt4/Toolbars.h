@@ -51,8 +51,6 @@ public:
 		 std::string const & name = std::string(),
 		 docstring const & label = docstring());
 
-	~ToolbarItem();
-
 	/// item type
 	Type type_;
 	/// action
@@ -67,20 +65,6 @@ public:
 ///
 class ToolbarInfo {
 public:
-	/// toolbar flags
-	enum Flags {
-		ON = 1, //< show
-		OFF = 2, //< do not show
-		MATH = 4, //< show when in math
-		TABLE = 8, //< show when in table
-		TOP = 16, //< show at top
-		BOTTOM = 32, //< show at bottom
-		LEFT = 64, //< show at left
-		RIGHT = 128, //< show at right
-		REVIEW = 256, //< show when change tracking is enabled
-		AUTO = 512,  //< only if AUTO is set, when MATH, TABLE and REVIEW is used
-		MATHMACROTEMPLATE = 1024 //< show in math macro template
-	};
 	/// the toolbar items
 	typedef std::vector<ToolbarItem> Items;
 
@@ -95,10 +79,6 @@ public:
 	std::string gui_name;
 	/// toolbar contents
 	Items items;
-	/// flags
-	Flags flags;
-	/// store flags when coming to fullscreen mode
-	Flags before_fullscreen;
 
 	/// read a toolbar from the file
 	ToolbarInfo & read(Lexer &);
@@ -112,18 +92,33 @@ private:
 ///
 class Toolbars {
 public:
+	/// toolbar visibility flags
+	enum Visibility {
+		ON = 1, //< show
+		OFF = 2, //< do not show
+		TOP = 4, //< show at top
+		BOTTOM = 8, //< show at bottom
+		LEFT = 16, //< show at left
+		RIGHT = 32, //< show at right
+		AUTO = 64,  //< only if AUTO is set, when MATH, TABLE and REVIEW is used
+		MATH = 128, //< show when in math
+		TABLE = 256, //< show when in table
+		REVIEW = 512, //< show when change tracking is enabled
+		MATHMACROTEMPLATE = 1024 //< show in math macro template
+	};
+
 	typedef std::vector<ToolbarInfo> Infos;
 
-	Toolbars();
+	Toolbars() {}
 
 	/// iterator for all toolbars
-	Infos::const_iterator begin() const { return usedtoolbars.begin(); }
+	Infos::const_iterator begin() const { return toolbar_info_.begin(); }
 
-	Infos::const_iterator end() const { return usedtoolbars.end(); }
+	Infos::const_iterator end() const { return toolbar_info_.end(); }
 
-	Infos::iterator begin() { return usedtoolbars.begin(); }
+	Infos::iterator begin() { return toolbar_info_.begin(); }
 
-	Infos::iterator end() { return usedtoolbars.end(); }
+	Infos::iterator end() { return toolbar_info_.end(); }
 
 	/// read toolbars from the file
 	void readToolbars(Lexer &);
@@ -132,20 +127,15 @@ public:
 	void readToolbarSettings(Lexer &);
 
 	///
-	ToolbarInfo const * getDefinedToolbarInfo(std::string const & name) const;
+	ToolbarInfo const * info(std::string const & name) const;
 	///
-	ToolbarInfo * getUsedToolbarInfo(std::string const & name);
-
-	// FIXME should be deleted when every window has its own toolbar config.
-	/// number of toggleFullScreen calls, i.e. number of FullScreen windows.
-	int fullScreenWindows;
+	int defaultVisibility(std::string const & name) const;
 
 private:
 	/// all the defined toolbars
-	Infos toolbars;
-
-	/// toolbars listed
-	Infos usedtoolbars;
+	Infos toolbar_info_;
+	///
+	std::map<std::string, int> toolbar_visibility_;
 };
 
 } // namespace frontend

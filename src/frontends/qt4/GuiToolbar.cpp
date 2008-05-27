@@ -57,9 +57,11 @@
 #include <QListView>
 #include <QPainter>
 #include <QPixmap>
+#include <QSettings>
 #include <QSortFilterProxyModel>
 #include <QStandardItem>
 #include <QStandardItemModel>
+#include <QString>
 #include <QTextDocument>
 #include <QTextFrame>
 #include <QToolBar>
@@ -839,8 +841,8 @@ void GuiLayoutBox::selected(int index)
 
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
-	: QToolBar(qt_(tbinfo.gui_name), &owner), owner_(owner),
-	  layout_(0), command_buffer_(0)
+	: QToolBar(qt_(tbinfo.gui_name), &owner), visibility_(0),
+	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0)
 {
 	// give visual separation between adjacent toolbars
 	addSeparator();
@@ -848,10 +850,22 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	// TODO: save toolbar position
 	setMovable(true);
 
+	//
+	setObjectName(toqstr(tbinfo.name));
+
 	ToolbarInfo::item_iterator it = tbinfo.items.begin();
 	ToolbarInfo::item_iterator end = tbinfo.items.end();
 	for (; it != end; ++it)
 		add(*it);
+	
+	restoreSession();
+}
+
+
+void GuiToolbar::setVisibility(int visibility)
+{
+	visibility_ = visibility;
+	allowauto_ = visibility_ >= Toolbars::MATH;
 }
 
 
@@ -882,8 +896,7 @@ public:
 		connect(bar_, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
 		setCheckable(true);
-		ToolbarInfo const * tbinfo = 
-			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
+		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (tbinfo)
 			// use the icon of first action for the toolbar button
 			setIcon(getIcon(tbinfo->items.begin()->func_, true));
@@ -898,8 +911,7 @@ public:
 
 		initialized_ = true;
 
-		ToolbarInfo const * tbinfo = 
-			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
+		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (!tbinfo) {
 			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
 			return;
@@ -953,8 +965,7 @@ public:
 		m->setWindowTitle(label);
 		m->setTearOffEnabled(true);
 		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
-		ToolbarInfo const * tbinfo = 
-			guiApp->toolbars().getDefinedToolbarInfo(tbitem_.name_);
+		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (!tbinfo) {
 			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
 			return;
@@ -1023,42 +1034,21 @@ void GuiToolbar::add(ToolbarItem const & item)
 }
 
 
-void GuiToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
+void GuiToolbar::update(bool in_math, bool in_table, bool in_review, 
+	bool in_mathmacrotemplate)
 {
-	// if tbinfo.state == auto *do not* set on/off
-	if (tbinfo.state != ToolbarSection::ToolbarInfo::AUTO) {
-		if (GuiToolbar::isVisible())
-			tbinfo.state = ToolbarSection::ToolbarInfo::ON;
-		else
-			tbinfo.state = ToolbarSection::ToolbarInfo::OFF;
+	if (visibility_ & Toolbars::AUTO) {
+		bool show_it = in_math && (visibility_ & Toolbars::MATH)
+			|| in_table && (visibility_ & Toolbars::TABLE)
+			|| in_review && (visibility_ & Toolbars::REVIEW)
+			|| in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE);
+		setVisible(show_it);
 	}
-	//
-	// no need to save it here.
-	Qt::ToolBarArea loc = owner_.toolBarArea(this);
 
-	if (loc == Qt::TopToolBarArea)
-		tbinfo.location = ToolbarSection::ToolbarInfo::TOP;
-	else if (loc == Qt::BottomToolBarArea)
-		tbinfo.location = ToolbarSection::ToolbarInfo::BOTTOM;
-	else if (loc == Qt::RightToolBarArea)
-		tbinfo.location = ToolbarSection::ToolbarInfo::RIGHT;
-	else if (loc == Qt::LeftToolBarArea)
-		tbinfo.location = ToolbarSection::ToolbarInfo::LEFT;
-	else
-		tbinfo.location = ToolbarSection::ToolbarInfo::NOTSET;
-
-	// save toolbar position. They are not used to restore toolbar position
-	// now because move(x,y) does not work for toolbar.
-	tbinfo.posx = pos().x();
-	tbinfo.posy = pos().y();
-}
-
-
-void GuiToolbar::updateContents()
-{
 	// update visible toolbars only
 	if (!isVisible())
 		return;
+
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
 	for (int i = 0; i < actions_.size(); ++i)
@@ -1071,6 +1061,58 @@ void GuiToolbar::updateContents()
 	updated();
 }
 
+
+QString GuiToolbar::sessionKey() const
+{
+	return "view-" + QString::number(owner_.id()) + "/" + objectName();
+}
+
+
+void GuiToolbar::saveSession() const
+{
+	QSettings settings;
+	settings.setValue(sessionKey() + "/visibility", visibility_);
+}
+
+
+void GuiToolbar::restoreSession()
+{
+	QSettings settings;
+	setVisibility(settings.value(sessionKey() + "/visibility").toInt());
+}
+
+
+void GuiToolbar::toggle()
+{
+	docstring state;
+	if (allowauto_) {
+		if (!(visibility_ & Toolbars::AUTO)) {
+			visibility_ |= Toolbars::AUTO;
+			hide();
+			state = _("auto");
+		} else {
+			visibility_ &= ~Toolbars::AUTO;
+			if (isVisible()) {
+				hide();
+				state = _("off");
+			} else {
+				show();
+				state = _("on");
+			}
+		}
+	} else {
+		if (isVisible()) {
+			hide();
+			state = _("off");
+		} else {
+			show();
+			state = _("on");
+		}
+	}
+
+	owner_.message(bformat(_("Toolbar \"%1$s\" state set to %2$s"),
+		qstring_to_ucs4(windowTitle()), state));
+}
 
 } // namespace frontend
 } // namespace lyx

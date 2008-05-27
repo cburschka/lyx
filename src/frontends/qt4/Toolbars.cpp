@@ -32,18 +32,6 @@ namespace frontend {
 
 namespace {
 
-class ToolbarNamesEqual
-{
-public:
-	ToolbarNamesEqual(string const & name) : name_(name) {}
-	bool operator()(ToolbarInfo const & tbinfo) const
-	{
-		return tbinfo.name == name_;
-	}
-private:
-	string name_;
-};
-
 } // namespace anon
 
 
@@ -63,10 +51,6 @@ ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label
 	: type_(type), label_(label), name_(name)
 {
 }
-
-
-ToolbarItem::~ToolbarItem()
-{}
 
 
 void ToolbarInfo::add(ToolbarItem const & item)
@@ -207,12 +191,6 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 /////////////////////////////////////////////////////////////////////////
 
 
-Toolbars::Toolbars()
-{
-	fullScreenWindows = 0;
-}
-
-
 void Toolbars::readToolbars(Lexer & lex)
 {
 	enum {
@@ -242,7 +220,7 @@ void Toolbars::readToolbars(Lexer & lex)
 		case TO_TOOLBAR: {
 			ToolbarInfo tbinfo;
 			tbinfo.read(lex);
-			toolbars.push_back(tbinfo);
+			toolbar_info_.push_back(tbinfo);
 			break;
 			}
 		case TO_ENDTOOLBARSET:
@@ -276,19 +254,7 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 		if (!compare_ascii_no_case(name, "end"))
 			return;
 
-		Infos::iterator tcit = toolbars.begin();
-		Infos::iterator tend = toolbars.end();
-		for (; tcit != tend; ++tcit) {
-			if (tcit->name == name)
-				break;
-		}
-
-		if (tcit == tend) {
-			LYXERR0("Toolbars: undefined toolbar " << name);
-			return;
-		}
-
-		tcit->flags = static_cast<ToolbarInfo::Flags>(0);
+		int visibility = 0;
 		string flagstr = lex.getString();
 		lex.next(true);
 		vector<string> flags = getVectorFromString(flagstr);
@@ -297,58 +263,65 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 		vector<string>::const_iterator end = flags.end();
 
 		for (; cit != end; ++cit) {
-			int flag = 0;
+			Visibility flag = ON;
 			if (!compare_ascii_no_case(*cit, "off"))
-				flag = ToolbarInfo::OFF;
+				flag = OFF;
 			else if (!compare_ascii_no_case(*cit, "on"))
-				flag = ToolbarInfo::ON;
+				flag = ON;
 			else if (!compare_ascii_no_case(*cit, "math"))
-				flag = ToolbarInfo::MATH;
+				flag = MATH;
 			else if (!compare_ascii_no_case(*cit, "table"))
-				flag = ToolbarInfo::TABLE;
+				flag = TABLE;
 			else if (!compare_ascii_no_case(*cit, "mathmacrotemplate"))
-				flag = ToolbarInfo::MATHMACROTEMPLATE;
+				flag = MATHMACROTEMPLATE;
 			else if (!compare_ascii_no_case(*cit, "review"))
-				flag = ToolbarInfo::REVIEW;
+				flag = REVIEW;
 			else if (!compare_ascii_no_case(*cit, "top"))
-				flag = ToolbarInfo::TOP;
+				flag = TOP;
 			else if (!compare_ascii_no_case(*cit, "bottom"))
-				flag = ToolbarInfo::BOTTOM;
+				flag = BOTTOM;
 			else if (!compare_ascii_no_case(*cit, "left"))
-				flag = ToolbarInfo::LEFT;
+				flag = LEFT;
 			else if (!compare_ascii_no_case(*cit, "right"))
-				flag = ToolbarInfo::RIGHT;
+				flag = RIGHT;
 			else if (!compare_ascii_no_case(*cit, "auto"))
-				flag = ToolbarInfo::AUTO;
+				flag = AUTO;
 			else {
 				LYXERR(Debug::ANY,
 					"Toolbars::readToolbarSettings: unrecognised token:`"
 					<< *cit << '\'');
+				continue;
 			}
-			tcit->flags = static_cast<ToolbarInfo::Flags>(tcit->flags | flag);
+			visibility |= flag;
 		}
+		toolbar_visibility_[name] = visibility;
 
-		usedtoolbars.push_back(*tcit);
+		if (visibility >= MATH) {
+			if (ToolbarInfo const * ti = info(name))
+				const_cast<ToolbarInfo *>(ti)->gui_name += " (auto)";
+		}
 	}
 }
 
 
-ToolbarInfo const * Toolbars::getDefinedToolbarInfo(string const & name) const
+ToolbarInfo const * Toolbars::info(std::string const & name) const
 {
-	Infos::const_iterator it = find_if(toolbars.begin(), toolbars.end(), ToolbarNamesEqual(name));
-	if (it == toolbars.end())
-		return 0;
-	return &(*it);
+	Infos::const_iterator end = toolbar_info_.end();
+	for (Infos::const_iterator it = toolbar_info_.begin(); it != end; ++it)
+		if (it->name == name)
+			return &(*it);
+	return 0;
 }
 
 
-ToolbarInfo * Toolbars::getUsedToolbarInfo(string const &name)
+int Toolbars::defaultVisibility(std::string const & name) const
 {
-	Infos::iterator it = find_if(usedtoolbars.begin(), usedtoolbars.end(), ToolbarNamesEqual(name));
-	if (it == usedtoolbars.end())
-		return 0;
-	return &(*it);
+	map<string, int>::const_iterator it = toolbar_visibility_.find(name);
+	if (it != toolbar_visibility_.end())
+		return it->second;
+	return OFF | BOTTOM;
 }
+
 
 } // namespace frontend
 } // namespace lyx

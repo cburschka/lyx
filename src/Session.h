@@ -263,93 +263,6 @@ private:
 };
 
 
-class ToolbarSection : SessionSection
-{
-public:
-	/// information about a toolbar, not all information can be
-	/// saved/restored by all frontends, but this class provides
-	/// a superset of things that can be managed by session.
-	class ToolbarInfo
-	{
-	public:
-		///
-		ToolbarInfo()
-			: state(ON), location(NOTSET), posx(0), posy(0)
-		{}
-		///
-		//ToolbarInfo(int s, int loc, int x = 0, int y = 0)
-	//		: state(State(s)), location(Location(loc)), posx(x), posy(y)
-	//	{}
-
-	public:
-		enum State {
-			ON,
-			OFF,
-			AUTO
-		};
-
-		/// on/off/auto
-		State state;
-
-		/// location: this can be intepreted differently.
-		enum Location {
-			TOP,
-			BOTTOM,
-			LEFT,
-			RIGHT,
-			NOTSET
-		};
-
-		Location location;
-
-		/// x-position of the toolbar
-		int posx;
-
-		/// y-position of the toolbar
-		int posy;
-
-		/// potentially, icons
-	};
-
-	struct ToolbarItem {
-		std::string key;
-		ToolbarInfo info;
-	};
-
-	/// info for each toolbar
-	typedef std::vector<ToolbarItem> ToolbarList;
-
-
-public:
-	///
-	void read(std::istream & is);
-
-	///
-	void write(std::ostream & os) const;
-
-	/// return reference to toolbar info, create a new one if needed
-	ToolbarInfo & load(std::string const & name);
-
-	/// toolbar begin
-	ToolbarList::const_iterator begin() { return toolbars.begin(); }
-
-	/// toolbar end
-	ToolbarList::const_iterator end() { return toolbars.end(); }
-
-private:
-	/// toolbar information
-	ToolbarList toolbars;
-};
-
-/// comparison operator to sort toolbars, the rules are:
-///	    ON before OFF
-///     TOP < BOTTOM < LEFT < RIGHT
-///     Line at each side
-///     order in each line
-bool operator<(ToolbarSection::ToolbarItem const & a,
-	ToolbarSection::ToolbarItem const & b);
-
-
 class SessionInfoSection : SessionSection
 {
 public:
@@ -406,10 +319,6 @@ public:
 	///
 	BookmarksSection const & bookmarks() const { return bookmarks_; }
 	///
-	ToolbarSection & toolbars() { return toolbars_; }
-	///
-	ToolbarSection const & toolbars() const { return toolbars_; }
-	///
 	SessionInfoSection & sessionInfo() { return session_info; }
 	///
 	SessionInfoSection const & sessionInfo() const { return session_info; }
@@ -437,8 +346,6 @@ private:
 	LastFilePosSection last_file_pos;
 	///
 	BookmarksSection bookmarks_;
-	///
-	ToolbarSection toolbars_;
 	///
 	SessionInfoSection session_info;
 };

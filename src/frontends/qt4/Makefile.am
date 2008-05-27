@@ -116,7 +116,6 @@ SOURCEFILES = \
 	GuiThesaurus.cpp \
 	GuiToc.cpp \
 	GuiToolbar.cpp \
-	GuiToolbars.cpp \
 	GuiView.cpp \
 	GuiViewSource.cpp \
 	GuiVSpace.cpp \
@@ -149,7 +148,6 @@ NOMOCHEADER = \
 	GuiKeySymbol.h \
 	GuiMath.h \
 	GuiPainter.h \
-	GuiToolbars.h \
 	LaTeXHighlighter.h \
 	qt_i18n.h \
 	qt_helpers.h \

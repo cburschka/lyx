@@ -1004,27 +1004,12 @@ void MenuDefinition::expandPasteRecent()
 
 void MenuDefinition::expandToolbars()
 {
-	//
 	// extracts the toolbars from the backend
 	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
 	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
-
 	for (; cit != end; ++cit) {
-		QString label = qt_(cit->gui_name);
-		// frontends are not supposed to turn on/off toolbars,
-		// if they cannot update Toolbars::flags. That
-		// is to say, ToolbarsBackend::flags should reflect
-		// the true state of toolbars.
-		//
-		// menu is displayed as
-		//       on/off review
-		// and
-		//              review (auto)
-		// in the case of auto.
-		if (cit->flags & ToolbarInfo::AUTO)
-			label += qt_(" (auto)");
-		add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name + " allowauto")));
+		add(MenuItem(MenuItem::Command, qt_(cit->gui_name),
+			FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name)));
 	}
 }
 
