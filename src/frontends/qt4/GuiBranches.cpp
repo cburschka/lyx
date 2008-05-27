@@ -168,8 +168,7 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 		return;
 
 	docstring current_branch = qstring_to_ucs4(sel_branch);
-	Branch * branch =
-		branchlist_.find(current_branch);
+	Branch * branch = branchlist_.find(current_branch);
 	if (!branch)
 		return;
 
