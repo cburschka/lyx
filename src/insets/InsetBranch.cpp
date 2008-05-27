@@ -195,13 +195,10 @@ bool InsetBranch::isBranchSelected() const
 {
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
-	BranchList::const_iterator const end = branchlist.end();
-	BranchList::const_iterator it =
-		find_if(branchlist.begin(), end,
-			     BranchNamesEqual(params_.branch));
-	if (it == end)
+	Branch const * ourBranch = branchlist.find(params_.branch);
+	if (!ourBranch)
 		return false;
-	return it->getSelected();
+	return ourBranch->getSelected();
 }
 
 

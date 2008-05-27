@@ -115,17 +115,6 @@ private:
 };
 
 
-class BranchNamesEqual : public std::unary_function<Branch, bool> {
-public:
-	BranchNamesEqual(docstring const & name)
-		: name_(name) {}
-	bool operator()(Branch const & branch) const
-	{
-		return branch.getBranch() == name_;
-	}
-private:
-	docstring name_;
-};
 
 
 } // namespace lyx
