@@ -640,7 +640,7 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 	if (!bv)
 		return;
 	set<string> grp;
-	InsetGraphics::getGraphicsGroups(bv->buffer(), grp);
+	graphics::getGraphicsGroups(bv->buffer(), grp);
 	if (grp.empty())
 		return;
 

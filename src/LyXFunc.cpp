@@ -1410,7 +1410,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (argument.empty() || !lyx_view_->buffer())
 				break;
 			//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
-			InsetGraphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
+			graphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
 			lyx_view_->buffer()->markDirty();
 			updateFlags = Update::Force | Update::FitCursor;
 			break;

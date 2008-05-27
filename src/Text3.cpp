@@ -893,14 +893,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SET_GRAPHICS_GROUP: {
-		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
+		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins)
 			break;
 
 		cur.recordUndoFullDocument();
 
 		string id = to_utf8(cmd.argument());
-		string grp = InsetGraphics::getGroupParams(bv->buffer(), id);
+		string grp = graphics::getGroupParams(bv->buffer(), id);
 		InsetGraphicsParams tmp, inspar = ins->getParams();
 
 		if (id.empty())
@@ -2183,7 +2183,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_SET_GRAPHICS_GROUP: {
-		InsetGraphics * ins = InsetGraphics::getCurrentGraphicsInset(cur);
+		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins) 
 			enable = false;
 		else

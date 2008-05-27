@@ -949,8 +949,9 @@ string InsetGraphics::params2string(InsetGraphicsParams const & params,
 	return data.str();
 }
 
+namespace graphics {
 
-void InsetGraphics::getGraphicsGroups(Buffer const & b, std::set<string> & ids)
+void getGraphicsGroups(Buffer const & b, std::set<string> & ids)
 {
 	Inset & inset = b.inset();
 	InsetIterator it  = inset_iterator_begin(inset);
@@ -965,7 +966,7 @@ void InsetGraphics::getGraphicsGroups(Buffer const & b, std::set<string> & ids)
 }
 
 
-string InsetGraphics::getGroupParams(Buffer const & b, std::string const & groupId)
+string getGroupParams(Buffer const & b, std::string const & groupId)
 {
 	if (groupId.empty())
 		return string();
@@ -979,14 +980,14 @@ string InsetGraphics::getGroupParams(Buffer const & b, std::string const & group
 			if (inspar.groupId == groupId) {
 				InsetGraphicsParams tmp = inspar;
 				tmp.filename.erase();
-				return params2string(tmp, b);
+				return InsetGraphics::params2string(tmp, b);
 			}
 		}
 	return string();
 }
 
 
-void InsetGraphics::unifyGraphicsGroups(Buffer const & b, std::string const & argument)
+void unifyGraphicsGroups(Buffer const & b, std::string const & argument)
 {
 	InsetGraphicsParams params;
 	InsetGraphics::string2params(argument, b, params);
@@ -1008,7 +1009,7 @@ void InsetGraphics::unifyGraphicsGroups(Buffer const & b, std::string const & ar
 }
 
 
-InsetGraphics * InsetGraphics::getCurrentGraphicsInset(Cursor const & cur)
+InsetGraphics * getCurrentGraphicsInset(Cursor const & cur)
 {
 	Inset * instmp = &cur.inset();
 	if (instmp->lyxCode() != GRAPHICS_CODE)
@@ -1018,5 +1019,7 @@ InsetGraphics * InsetGraphics::getCurrentGraphicsInset(Cursor const & cur)
 
 	return static_cast<InsetGraphics *>(instmp);
 }
+
+} // namespace graphics
 
 } // namespace lyx
