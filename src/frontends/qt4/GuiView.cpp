@@ -1760,8 +1760,8 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			// hardcoded.
 			if (GuiToolbar * t = toolbar("minibuffer")) {
 				t->setVisible(show_it);
-				LASSERT(t->commandBuffer(), break);
-				t->commandBuffer()->setFocus();
+				if (show_it && t->commandBuffer())
+					t->commandBuffer()->setFocus();
 			}
 			break;
 		}
