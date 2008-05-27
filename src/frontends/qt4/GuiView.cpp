@@ -440,6 +440,8 @@ TocModels & GuiView::tocModels()
 
 void GuiView::setFocus()
 {
+	// Make sure LyXFunc points to the correct view.
+	theLyXFunc().setLyXView(this);
 	if (d.current_work_area_)
 		d.current_work_area_->setFocus();
 	else
