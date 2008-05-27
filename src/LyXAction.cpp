@@ -389,6 +389,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SELF_INSERT
  * \li Action: Inserts the given string (accordingly to the correct keymap).
+ * \li Notion: Automatically replace the currently selected. Depends on lyxrc
+               settings "auto_region_delete".
  * \li Syntax: self-insert <STRING>
  * \endvar
  */
