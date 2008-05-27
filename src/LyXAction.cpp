@@ -386,6 +386,12 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FLEX_INSERT, "flex-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SELF_INSERT
+ * \li Action: Inserts the given string (accordingly to the correct keymap).
+ * \li Syntax: self-insert <STRING>
+ * \endvar
+ */
 		{ LFUN_SELF_INSERT, "self-insert", SingleParUpdate, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SPACE_INSERT
