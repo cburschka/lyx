@@ -22,7 +22,6 @@
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
 #include "GuiToolbar.h"
-#include "GuiToolbars.h"
 #include "Menus.h"
 #include "TocModel.h"
 
@@ -1986,12 +1985,8 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		return;
 	}
 
-	if (lyxrc.full_screen_toolbars) {
-		ToolbarMap::iterator end = d.toolbars_.end();
-		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			; //it->second->toggleFullScreen(!isFullScreen());
-	}
-//		d.toolbars_->toggleFullScreen(!isFullScreen());
+	QSettings settings;
+	QString const key = "view-" + QString::number(id_);
 
 	if (isFullScreen()) {
 		for (int i = 0; i != d.splitter_->count(); ++i)
@@ -2002,6 +1997,10 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		menuBar()->show();
 		statusBar()->show();
+		if (lyxrc.full_screen_toolbars) {
+			if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
+				initToolbars();
+		}
 	} else {
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
@@ -2011,6 +2010,12 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		statusBar()->hide();
 		menuBar()->hide();
+		if (lyxrc.full_screen_toolbars) {
+			settings.setValue(key + "/layout", saveState(0));
+			ToolbarMap::iterator end = d.toolbars_.end();
+			for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
+				it->second->hide();
+		}
 	}
 }
 
