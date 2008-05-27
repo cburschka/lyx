@@ -2013,10 +2013,9 @@ void GuiView::toggleFullScreen()
 		setContentsMargins(0, 0, 0, 0);
 #endif
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
+		restoreLayout();
 		menuBar()->show();
 		statusBar()->show();
-		if (lyxrc.full_screen_toolbars)
-			restoreLayout();
 	} else {
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
