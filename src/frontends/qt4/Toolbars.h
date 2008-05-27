@@ -16,6 +16,7 @@
 #include "FuncRequest.h"
 
 #include <vector>
+#include <map>
 
 
 namespace lyx {
