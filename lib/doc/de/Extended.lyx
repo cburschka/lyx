@@ -51,8 +51,17 @@
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
-% für textumflossene Bilder/Tabellen
-\usepackage{picinpar}
+
+% Prüfung auf benötigte LaTeXPakete
+\usepackage{ifthen}
+
+% für textumflossenen Bilder/Tabellen
+% Prüfung auf picinpar
+\newboolean{picinpar}
+\IfFileExists{picinpar.sty}
+ {\usepackage{picinpar}
+  \setboolean{picinpar}{true}}
+ {\setboolean{picinpar}{false}}
 \end_preamble
 \options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
@@ -144,7 +153,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
+letzte Änderung: 28.
  Mai 2008
 \end_layout
 
@@ -3830,792 +3839,6 @@ lhead{
 resizebox{1in}{!}{
 \backslash
 includegraphics{logo.eps}}}
-\end_layout
-
-\begin_layout Section
-Sonderformate für Tabellen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tabelle!Sonderformat
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Für 99% der von Ihnen verwendeten Tabellen werden die normalen Formatiermöglichk
-eiten von LyX ausreichend sein.
- Wenn Sie im Feld 
-\family sans
-Breite:
-\family default
- einen Wert eintragen, wird für die Spalte eine feste Breite definiert.
- Im Feld 
-\family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument:
-\family default
- können Sie verschiedene Spaltentrenner definieren, zum Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-@
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-, mit dessen Hilfe beliebige Zeichen(folgen), insbesondere auch eine leere
- Zeichenkette, als Trenner zwischen den Tabellenspalten angegeben werden
- können.
- Das mag auf Anhieb nicht sehr sinnvoll erscheinen, eröffnet aber sehr viele
- Möglichkeiten.
- Dies lässt sich am besten anhand von Beispielen erläutern.
-\end_layout
-
-\begin_layout Subsection
-Zusätzlichen Leerraum in Spalten entfernen
-\end_layout
-
-\begin_layout Standard
-Dies ist eine Standard-Tabelle:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0">
-<row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Typ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beispiel
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Granit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mineral
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quarz
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Beachten Sie, dass sich der horizontale Trennstrich auf beiden Seiten ein
- wenig über den Text heraus erstreckt.
- Wenn Sie wollen, dass die Linie genau mit dem Text endet, können Sie einen
- leeren Spaltentrenner einfügen, der den von LaTeX standardmäßig eingefügten
- Leerraum unterbindet.
- Dies sieht dann so aus:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0pt" special="@{} l">
-<column alignment="left" valignment="top" width="0pt" special="l @{}">
-<row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Typ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beispiel
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Granit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mineral
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quarz
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hier wurden die Spaltenformate links auf 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-@{} |
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- und rechts auf 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-| @{}
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- gesetzt, um den jeweils äußeren Leerraum zu entfernen.
-\end_layout
-
-\begin_layout Subsection
-Ändern des Spaltentrennzeichens
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Spaltentrennzeichen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Angenommen, Sie wollten, aus welchem Grund auch immer, 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $\sqrt{\pi}$
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- umgeben von ein wenig Leerraum, als Trennung zwischen zwei Spalten verwenden:
- Schalten Sie einfach die senkrechten Trennstriche über das normale Menü
- ab und tragen dann für die rechte Spalte als besonderes Spaltenformat 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-@{~$
-\backslash
-sqrt{
-\backslash
-pi}$~} |
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- ein.
- Damit können Sie die folgende Tabelle erstellen:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt" special="@{~$\sqrt{\pi}$~}l">
-<row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Typ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beispiel
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Granit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mineral
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quarz
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Eine Spalte nach einem Dezimalpunkt ausrichten
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dezimalpunktausrichtung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Zugegeben, das letzte Beispiel war nicht sehr sinnvoll.
- Dafür ist das nächste um so praxisnäher: Eine Spalte der Tabelle soll Zahlen
- enthalten, die nach ihrem Dezimalpunkt ausgerichtet sind.
- Dies kann in LaTeX auf zwei verschiedene Weisen erreicht werden.
- Entweder wird der ganzzahlige Anteil rechtsbündig gesetzt, dann ein Dezimalpunk
-t als Spaltentrenner verwendet und der Nachkommateil in der folgenden Spalte
- linksbündig.
- Bei der anderen Variante wird der Dezimalpunkt beim ganzzahligen Anteil
- miteingegeben und dann zwischen den Spalten ein leerer Spaltentrenner verwendet.
- Dies wurde im folgenden Beispiel getan:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt" special="@{} l">
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ausdruck
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Wert 
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\pi$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1416
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\pi^{\pi}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-36.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-462
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $(\pi^{\pi})^{\pi}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-80663.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\pi^{\pi^{\pi}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3402
-\begin_inset Formula $\times10^{18}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Obwohl das in LyX noch etwas seltsam aussieht, wird LaTeX beim späteren
- Ausdruck daraus etwas erstellen, das wie eine zweispaltige Tabelle aussieht,
- bei der die rechte Spalte nach dem Dezimalpunkt ausgerichtet ist und die
- Überschrift darüber zentriert ist.
-\end_layout
-
-\begin_layout Standard
-Hier eine Schritt-für-Schritt-Beschreibung, wie diese Tabelle erstellt wurde:
- Legen Sie zunächst eine 3
-\begin_inset Formula $\times$
-\end_inset
-
-5 Tabelle an und schalten Sie alle Rahmen aus.
- Dann fügen Sie in der ersten Zeile wieder den unteren und in der ersten
- Spalte den rechten Rand ein.
- Geben Sie den Text für die erste Spalte ein, verwenden Sie als Ausrichtung
- 
-\emph on
-zentriert
-\emph default
-.
- Tragen Sie in der zweiten Spalte die ganzzahligen Anteile (inklusive Dezimalpun
-kt) ein, die Ausrichtung muss rechtsbündig sein.
- Für die dritte Spalte tragen Sie in 
-\family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument:
-\family default
- 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-@{}|
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- ein und geben in der Tabelle die Nachkommaanteile ein.
- Und zum Schluss noch die Spaltenüberschrift: Schreiben Sie 
-\emph on
-Wert
-\emph default
- in das oberste mittlere Feld, markieren das Wort und das (leere) Feld rechts
- daneben und klicken dann auf 
-\family sans
-Mehrfachspalte
-\family default
-.
- Einfach, nicht wahr?
-\end_layout
-
-\begin_layout Subsection
-Eine bessere Lösung für die Dezimalpunktausrichtung
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dezimalpunktausrichtung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eine Alternative für die Dezimalpunktausrichtung gibt das Paket 
-\family typewriter
-dcolumn
-\family default
-.
- Fügen Sie folgendes zum Vorspann hinzu:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-usepackage{dcolumn}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-newcolumntype{d}[1]{D{.}{.}{#1}}
-\end_layout
-
-\begin_layout Standard
-Um eine Spalte nach dem Dezimalpunkt auszurichten, schreiben Sie folgendes
- in das Feld 
-\family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument
-\family default
- des 
-\family sans
-Tabellen
-\family default
--
-\family sans
-Einstellungen
-\family default
--Menüs:
-\end_layout
-
-\begin_layout LyX-Code
-d{Anzahl der Dezimalstellen}
-\end_layout
-
-\begin_layout Standard
-Die Beispieltabelle wurde gelöscht.
- Sehen Sie sich die Datei 
-\family typewriter
-decimal.lyx
-\family default
- an (
-\family sans
-Datei
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Öffnen
-\family default
-\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-
-\family sans
-Beispiele
-\family default
-).
-\end_layout
-
-\begin_layout Standard
-Um die Spalte zu verbreitern, erhöhen Sie einfach die Dezimalstellen in
- 
-\family typewriter
-d{}
-\family default
-.
- Setzt man für eine einzelne Zelle die Option 
-\family sans
-Mehrfachspalte
-\family default
-, wird die Dezimalpunktausrichtung wieder aufgehoben.
- Ein Nachteil dieser Methode ist, dass keine mathematischen Formeln benutzt
- werden können, es sei denn, das Attribut 
-\family sans
-Mehrfachspalte
-\family default
- wurde gesetzt.
-\end_layout
-
-\begin_layout Standard
-Diese Methode bietet dieselbe Flexibilität wie das Paket 
-\family typewriter
-dcolumn
-\family default
-.
- Man könnte zum Beispiel den Ausrichtungstrenner ändern und unterschiedliche
- Trenner für andere Spalten benutzen, indem man im Vorspann mehrspaltige
- Typen definiert.
- Die Syntax ist wie folgt:
-\end_layout
-
-\begin_layout LyX-Code
-D{Eingabetrenner}{Ausgabetrenner}{Dezimalstellen}
-\end_layout
-
-\begin_layout Standard
-Der interessierte Leser sollte sich die Dokumentation des 
-\family typewriter
-dcolumn
-\family default
--Paketes ansehen, um weitere Einzelheiten zu erfahren.
-\end_layout
-
-\begin_layout Standard
-In der Datei TableExamples.lyx (
-\family sans
-Strg+O\SpecialChar \menuseparator
-Beispiele
-\family default
-) finden Sie noch mehr Beispiele für die Manipulation von Tabellen.
 \end_layout
 
 \begin_layout Section
@@ -10576,382 +9799,6 @@ a+
 \end_layout
 
 \begin_layout Section
-Zusätzlicher Leerraum zwischen Tabellenzeilen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Tabelle!zusätzlicher Leerraum
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-von 
-\noun on
-Mike Ressler
-\end_layout
-
-\begin_layout Standard
-In LaTeX ist es einfach möglich, zwischen zwei Zeilen einer Tabelle einen
- etwas größeren Zwischenraum einzufügen, indem man dem Zeilenende-Befehl
- (
-\family typewriter
-
-\backslash
-
-\backslash
-
-\family default
-) ein optionales Argument gibt.
- In LyX wurde dies noch nicht umgesetzt, deshalb sind hier zwei Tricks,
- wie Sie das trotzdem erreichen können.
-\end_layout
-
-\begin_layout Standard
-Der erste ist der formal richtige, aber etwas umständliche Weg.
- Fügen Sie im LaTeX-Vorspann den folgenden Befehl ein:
-\end_layout
-
-\begin_layout LyX-Code
-
-\family typewriter
-
-\backslash
-newcommand{
-\backslash
-extratablespace}[1]{
-\backslash
-noalign{vskip#1}}
-\end_layout
-
-\begin_layout Standard
-Dieser Befehl hat einen Parameter --- den Betrag des Abstands, den Sie einfügen
- wollen.
- Benutzen Sie diesen Befehl in der ersten Zeile 
-\emph on
-nach
-\emph default
- der Stelle, an der Sie den Leerraum haben wollen.
- Hier ein Beispiel:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mineralien
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kalzit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dolomit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quarz
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Graphit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-extratablespace{2ex}
-\end_layout
-
-\end_inset
-
-Fels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kalkstein
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sandstein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Granit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Andesit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Die zweite Methode ist schneller, wird aber Typographen und TeXperten aufstöhnen
- lassen: Fügen Sie einfach einen zusätzlichen Zeilenende-Befehl mit optionalem
- Argument an derselben Stelle ein.
- Hier sind keine weiteren Definitionen wie im ersten Beispiel notwendig,
- aber es wird mehr Leerraum eingefügt, als Sie angegeben haben.
- Denn es wird ja eine leere Zeile 
-\emph on
-plus
-\emph default
- dem angegebenen Leerraum eingefügt.
- Wenn dies zuviel Leerraum ist, geben Sie einfach einen negativen Wert als
- Parameter an:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mineralien
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kalzit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dolomit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quarz
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Graphit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-[-1ex]
-\end_layout
-
-\end_inset
-
- Fels
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kalkstein
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sandstein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Granit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Andesit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Es ist kurz, süß und macht die Arbeit schnell, obwohl es wirklich hässlich
- ist.
- Werfen Sie das verrottete Gemüse jetzt weg! Ich verspreche, ich würde so
- etwas niemals vorschlagen!
-\end_layout
-
-\begin_layout Section
 Initialen
 \begin_inset Index
 status collapsed
@@ -12065,6 +10912,33 @@ status collapsed
 
 
 \backslash
+ifpicinpar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket picinpar installie
+rt ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{window}[2,c,{
 \end_layout
 
@@ -12100,7 +10974,7 @@ hspace{-1em}
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12154,6 +11028,54 @@ end{window}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die folgende Teil wird gedruckt, wenn das LaTeX-Paket picinpar nicht installiert
+ ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie müssen das LaTeX-Paket picinpar installiert haben um das Beispiel in
+ der Ausgabe zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Ungewöhnliche Absatzformen
 \begin_inset Index
@@ -12176,7 +11098,7 @@ Mike Ressler
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12204,7 +11126,7 @@ varunit}{5.5in}
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 

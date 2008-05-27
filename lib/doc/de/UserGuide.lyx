@@ -164,7 +164,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
+letzte Änderung: 26.
  Mai 2008
 \end_layout
 
@@ -4160,63 +4160,28 @@ empty weder Seitenzahlen noch Überschriften.
 plain
 \family default
  nur Seitenzahlen.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Sloppypar"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-sloppypar
-\family default
- wird hier benötigt, weil LaTeX sonst über den Rand hinaus schreibt.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
 
 \family sans
 headings
-\family default
- Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit Nummer.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Headings"
 
 \end_inset
 
+
+\family default
+ Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit
+\begin_inset Newline linebreak
+\end_inset
+
+Nummer.
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
@@ -4958,22 +4923,11 @@ reference "URLs"
 \begin_inset Newline newline
 \end_inset
 
-Manchmal hilft 
-\family typewriter
-sloppypar
+Manchmal hilft es auch, den rechtsbündigen Zeilenumbruch (
+\family sans
+Strg+ Umschalt+ Return
 \family default
- weiter (siehe 
-\emph on
-Handbuchergänzungen
-\emph default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
- oder auch 
+) zu benutzen wie bei 
 \family sans
 \series bold
 headings
@@ -4982,7 +4936,26 @@ headings
  
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "Sloppypar"
+reference "Headings"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Meistens hilft 
+\family typewriter
+sloppypar
+\family default
+ weiter (siehe 
+\emph on
+Handbuchergänzungen
+\emph default
+ oder 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
 
 \end_inset
 
@@ -9885,6 +9858,13 @@ Der beste Weg zu erklären, was Sie mit schachteln erreichen können, sind
  Wir haben mehrere mit geschachtelten Umgebungen.
  Darin erklären wir, wie wir sie erzeugt haben, so dass Sie sie reproduzieren
  können.
+\begin_inset CommandInset label
+LatexCommand label
+name "Sloppypar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -16149,6 +16129,14 @@ reference "Sloppypar"
 
 \end_inset
 
+).
+\end_layout
+
+\begin_layout Enumerate
+Sie benutzen den rechtsbündigen Zeilenumbruch (
+\family sans
+Strg + Umschalt + Return
+\family default
 ).
 \end_layout
 
