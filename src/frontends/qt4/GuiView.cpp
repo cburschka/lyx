@@ -18,6 +18,7 @@
 #include "Dialog.h"
 #include "FileDialog.h"
 #include "GuiApplication.h"
+#include "GuiCommandBuffer.h"
 #include "GuiCompleter.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
@@ -1757,8 +1758,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			bool const show_it = cmd.argument() != "off";
 			// FIXME: this is a hack, "minibuffer" should not be
 			// hardcoded.
-			if (GuiToolbar * t = toolbar("minibuffer"))
+			if (GuiToolbar * t = toolbar("minibuffer")) {
 				t->setVisible(show_it);
+				LASSERT(t->commandBuffer(), break);
+				t->commandBuffer()->setFocus();
+			}
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:
