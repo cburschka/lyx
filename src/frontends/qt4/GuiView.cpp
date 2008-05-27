@@ -512,9 +512,9 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// Make sure that nothing will use this close to be closed View.
 	guiApp->unregisterView(this);
 
-	// Save toolbars configuration
 	if (isFullScreen()) {
-//		d.toolbars_->toggleFullScreen(!isFullScreen());
+		// Switch off fullscreen before closing.
+		toggleFullScreen();
 		updateDialogs();
 	}
 
@@ -1980,11 +1980,17 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		return;
 	}
 #endif
-	if (arg != "fullscreen") {
-		message(bformat("LFUN_UI_TOGGLE " + _("%1$s unknown command!"), from_utf8(arg)));
+	if (arg == "fullscreen") {
+		toggleFullScreen();
 		return;
 	}
 
+	message(bformat("LFUN_UI_TOGGLE " + _("%1$s unknown command!"), from_utf8(arg)));
+}
+
+
+void GuiView::toggleFullScreen()
+{
 	QSettings settings;
 	QString const key = "view-" + QString::number(id_);
 

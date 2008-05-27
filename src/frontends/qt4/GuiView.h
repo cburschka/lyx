@@ -253,7 +253,8 @@ private:
 	void initToolbars();
 	///
 	void lfunUiToggle(FuncRequest const & cmd);
-
+	///
+	void toggleFullScreen();
 	///
 	void insertLyXFile(docstring const & fname);
 	///
