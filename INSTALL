@@ -130,10 +130,10 @@ flags:
        --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
     If DIRECTORY is not specified, the current prefix is used.
 
-  o --with-version-suffix will install LyX as lyx-<version>, e.g. lyx-1.5.1
-    The LyX data directory will be something like <whatever>/lyx-1.5.1/.
-    Additionally your user configuration files will be found in e.g.
-    $HOME/.lyx-1.5.1
+  o --with-version-suffix[=VERSION] will install LyX as lyx-VERSION,
+    e.g. lyx-1.5.1. The LyX data directory will be something like 
+    <whatever>/lyx-1.5.1/. Additionally your user configuration files 
+    will be found in e.g. $HOME/.lyx-1.5.1
 
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
