@@ -152,6 +152,11 @@ private:
 	// load flags with saved values
 	void initFlags();
 	///
+	void fill();
+	///
+	void showEvent(QShowEvent *);
+
+	///
 	QString name_;
 	///
 	QList<Action *> actions_;
@@ -165,6 +170,8 @@ private:
 	GuiLayoutBox * layout_;
 	///
 	GuiCommandBuffer * command_buffer_;
+	///
+	ToolbarInfo const & tbinfo_;
 };
 
 } // namespace frontend

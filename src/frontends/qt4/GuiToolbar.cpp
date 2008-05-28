@@ -842,23 +842,32 @@ void GuiLayoutBox::selected(int index)
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(qt_(tbinfo.gui_name), &owner), visibility_(0),
-	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0)
+	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
+	  tbinfo_(tbinfo)
 {
-	// give visual separation between adjacent toolbars
-	addSeparator();
-
-	// TODO: save toolbar position
+	// Toolbar dragging is allowed.
 	setMovable(true);
-
-	//
+	// This is used by QMainWindow::restoreState for proper main window state
+	// restauration.
 	setObjectName(toqstr(tbinfo.name));
 
-	ToolbarInfo::item_iterator it = tbinfo.items.begin();
-	ToolbarInfo::item_iterator end = tbinfo.items.end();
-	for (; it != end; ++it)
-		add(*it);
-	
 	restoreSession();
+}
+
+
+void GuiToolbar::fill()
+{
+	ToolbarInfo::item_iterator it = tbinfo_.items.begin();
+	ToolbarInfo::item_iterator end = tbinfo_.items.end();
+	for (; it != end; ++it)
+		add(*it);	
+}
+
+
+void GuiToolbar::showEvent(QShowEvent * ev)
+{
+	fill();
+	ev->accept();
 }
 
 
