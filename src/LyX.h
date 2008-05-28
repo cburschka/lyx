@@ -120,10 +120,11 @@ private:
 	int init(int & argc, char * argv[]);
 
 	/// Load files passed at command-line.
+	/// return true on success false if we encounter an error
 	/**
 	This method is used only in non-GUI mode.
 	*/
-	void loadFiles();
+	bool loadFiles();
 
 	/// initial LyX set up
 	bool init();

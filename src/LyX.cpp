@@ -380,11 +380,12 @@ int LyX::exec(int & argc, char * argv[])
 			return exit_status;
 		}
 
-		loadFiles();
+		// this is correct, since return values are inverted.
+		exit_status = !loadFiles();
 
 		if (pimpl_->batch_command.empty() || pimpl_->buffer_list_.empty()) {
 			prepareExit();
-			return EXIT_SUCCESS;
+			return exit_status;
 		}
 
 		BufferList::iterator begin = pimpl_->buffer_list_.begin();
@@ -530,8 +531,10 @@ void LyX::addFileToLoad(string const & fname)
 }
 
 
-void LyX::loadFiles()
+bool LyX::loadFiles()
 {
+	LASSERT(!use_gui, /**/);
+	bool success = true;
 	vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
 	vector<string>::const_iterator end = pimpl_->files_to_load_.end();
 
@@ -551,9 +554,12 @@ void LyX::loadFiles()
 				for_each(el.begin(), el.end(),
 				boost::bind(&LyX::printError, this, _1));
 		}
-		else
+		else {
 			pimpl_->buffer_list_.release(buf);
+			success = false;
+		}
 	}
+	return success;
 }
 
 
@@ -565,15 +571,15 @@ void LyX::execBatchCommands()
 
 	// if reconfiguration is needed.
 	while (LayoutFileList::get().empty()) {
-	    switch (Alert::prompt(
-		    _("No textclass is found"),
-		    _("LyX cannot continue because no textclass is found. "
-		      "You can either reconfigure normally, or reconfigure using "
-		      "default textclasses, or quit LyX."),
-		    0, 2,
-		    _("&Reconfigure"),
-		    _("&Use Default"),
-		    _("&Exit LyX")))
+		switch (Alert::prompt(
+			_("No textclass is found"),
+			_("LyX cannot continue because no textclass is found. "
+				"You can either reconfigure normally, or reconfigure using "
+				"default textclasses, or quit LyX."),
+			0, 2,
+			_("&Reconfigure"),
+			_("&Use Default"),
+			_("&Exit LyX")))
 		{
 		case 0:
 			// regular reconfigure
