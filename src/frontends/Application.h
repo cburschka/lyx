@@ -103,7 +103,8 @@ initialisation should be done before the instanciation of this class.
  automatically destroyed by the parent WorkArea when its Buffer is
  closed.
 
- \todo Move all Buffer changing LFUN to LyXFunc or Cursor.
+ \todo Move all Buffer changing LFUN to Buffer::dispatch(),
+ LyXFunc::dispatch() or Cursor::dispatch().
  \todo BufferView::buffer() should only offer const access.
 
  The \c Painter is just a virtual interface to formalize each kind of
@@ -142,12 +143,11 @@ initialisation should be done before the instanciation of this class.
  multiple WorkAreas but this number can limited to one for another
  frontend. The idea is that the kernel should not know how a Buffer
  is displayed on screen; it's the frontend business.
- In the future, we may also have multiple Workareas showing
- simultaneously in the same GuiView (ex: with split window).
+ It is also possible to have multiple Workareas showing
+ simultaneously in the same GuiView (ex: with split window), thus
+ sharing the menubar and toolbars.
 
- \todo Implement split-window
-
- In any case, there would be only one WorkArea that gets the focus
+ In any case, there should be only one WorkArea that gets the focus
  at a time.
 
  With our current implementation using a QTabWidget, each Tab own its
