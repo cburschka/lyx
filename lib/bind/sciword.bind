@@ -82,10 +82,8 @@
 
 # Toggle: in text mode, switch to math, and vice versa. Also C-t.
 \bind "C-m"	"math-mode"
-# C-n is numbering equations now. Sciword had "C-Tab" mnemonic which conflicts with many things.
-# Numbering equations. Should perhaps simplify math-number and math-nonumber into one command since they are used in very different contexts. This and also math-macro stuff should be available in the Lyx menus!
-\bind "C-n"	"math-number"
-\bind "S-C-N" "math-nonumber"
+\bind "C-n"	"math-number-toggle"
+\bind "S-C-N"	"math-number-line-toggle"
 
 \bind "C-o"	"file-open"
 
