@@ -843,7 +843,7 @@ void GuiLayoutBox::selected(int index)
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(qt_(tbinfo.gui_name), &owner), visibility_(0),
 	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
-	  tbinfo_(tbinfo)
+	  tbinfo_(tbinfo), filled_(false)
 {
 	// Toolbar dragging is allowed.
 	setMovable(true);
@@ -857,10 +857,13 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 
 void GuiToolbar::fill()
 {
+	if (filled_)
+		return;
 	ToolbarInfo::item_iterator it = tbinfo_.items.begin();
 	ToolbarInfo::item_iterator end = tbinfo_.items.end();
 	for (; it != end; ++it)
 		add(*it);	
+	filled_ = true;
 }
 
 

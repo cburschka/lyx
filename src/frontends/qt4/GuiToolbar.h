@@ -172,6 +172,8 @@ private:
 	GuiCommandBuffer * command_buffer_;
 	///
 	ToolbarInfo const & tbinfo_;
+	///
+	bool filled_;
 };
 
 } // namespace frontend
