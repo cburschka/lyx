@@ -10922,8 +10922,11 @@ ifpicinpar
 status open
 
 \begin_layout Plain Layout
-Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket picinpar installie
-rt ist.
+Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert ist.
 \end_layout
 
 \end_inset
@@ -10999,10 +11002,12 @@ TeX-Paket
 picinpar
 \family default
  installiert ist.
- Die Bildeparameter können Sie mit einem Klick auf das Bild wie gewohnt
- ändern.
- Der erste Parameter in den eckigen Klammer, hier 2, definiert die Anzal
- der Zeilen über dem Bild, der zweite, hier c, die Position des Bildes.
+ Der erste Parameter in der eckigen
+\begin_inset Newline linebreak
+\end_inset
+
+Klammer, hier 2, definiert die Anzahl der Zeilen über dem Bild, der zweite,
+ hier c, die Position des Bildes.
  Die Abbildung nimmt 40
 \begin_inset Space \thinspace{}
 \end_inset
@@ -11013,6 +11018,7 @@ picinpar
 picinpar
 \family default
 .
+ Die Bildparameter können Sie mit einem Klick auf das Bild wie gewohnt ändern.
 \begin_inset ERT
 status collapsed
 
@@ -11046,8 +11052,11 @@ else
 status open
 
 \begin_layout Plain Layout
-Die folgende Teil wird gedruckt, wenn das LaTeX-Paket picinpar nicht installiert
- ist:
+Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ nicht installiert ist:
 \end_layout
 
 \end_inset
@@ -11056,8 +11065,11 @@ Die folgende Teil wird gedruckt, wenn das LaTeX-Paket picinpar nicht installiert
 \end_layout
 
 \begin_layout Standard
-Sie müssen das LaTeX-Paket picinpar installiert haben um das Beispiel in
- der Ausgabe zu sehen.
+Sie müssen das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert haben, um das Beispiel in der Ausgabe zu sehen.
 \end_layout
 
 \begin_layout Standard
