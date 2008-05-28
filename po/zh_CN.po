@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-19 11:08+0200\n"
+"POT-Creation-Date: 2008-05-28 21:56+0200\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -84,14 +84,14 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
-#: src/Buffer.cpp:2477 src/Buffer.cpp:2501 src/Buffer.cpp:2536
-#: src/LyXFunc.cpp:704 src/LyXFunc.cpp:840 src/LyXFunc.cpp:1018
-#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:415
+#: src/Buffer.cpp:2490 src/Buffer.cpp:2514 src/Buffer.cpp:2549
+#: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
+#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1296
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1378
-#: src/frontends/qt4/GuiView.cpp:1556 src/frontends/qt4/GuiView.cpp:1601
-#: src/frontends/qt4/GuiView.cpp:1654 src/insets/InsetBibtex.cpp:133
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1428
+#: src/frontends/qt4/GuiView.cpp:1606 src/frontends/qt4/GuiView.cpp:1651
+#: src/frontends/qt4/GuiView.cpp:1704 src/insets/InsetBibtex.cpp:133
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -165,7 +165,7 @@ msgstr "添加(&A)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:810
+#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "取消"
@@ -404,20 +404,20 @@ msgstr "内框--固定长度和换行"
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:270
 #: src/frontends/qt4/ui/TabularUi.ui:903 src/frontends/qt4/ui/TabularUi.ui:922
-#: src/frontends/qt4/ui/TabularUi.ui:970 src/frontends/qt4/GuiBox.cpp:68
-#: src/frontends/qt4/GuiBox.cpp:155 src/frontends/qt4/GuiBox.cpp:316
-#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiDocument.cpp:81
+#: src/frontends/qt4/ui/TabularUi.ui:970 src/frontends/qt4/GuiBox.cpp:72
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:320
+#: src/frontends/qt4/GuiBox.cpp:448 src/frontends/qt4/GuiDocument.cpp:81
 msgid "None"
 msgstr "无"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:317
-#: src/frontends/qt4/GuiBox.cpp:434 src/frontends/qt4/GuiBox.cpp:445
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:321
+#: src/frontends/qt4/GuiBox.cpp:438 src/frontends/qt4/GuiBox.cpp:449
 #: src/insets/InsetBox.cpp:149
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:435
-#: src/frontends/qt4/GuiBox.cpp:446 src/insets/InsetBox.cpp:151
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:439
+#: src/frontends/qt4/GuiBox.cpp:450 src/insets/InsetBox.cpp:151
 msgid "Minipage"
 msgstr "Minipage"
 
@@ -611,7 +611,7 @@ msgstr "字体系列"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:978
-#: src/frontends/qt4/GuiPrefs.cpp:1623
+#: src/frontends/qt4/GuiPrefs.cpp:1681
 msgid "Language"
 msgstr "语言"
 
@@ -832,7 +832,7 @@ msgid "&Size:"
 msgstr "大小(&S)："
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:179
+#: src/frontends/qt4/GuiDelimiter.cpp:181
 msgid "TeX Code: "
 msgstr "TeX代码: "
 
@@ -961,7 +961,7 @@ msgstr "灰度"
 #: src/frontends/qt4/ui/ExternalUi.ui:243
 #: src/frontends/qt4/ui/GraphicsUi.ui:683
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:68
-#: src/frontends/qt4/GuiBranches.cpp:43
+#: src/frontends/qt4/GuiBranches.cpp:44
 msgid "Color"
 msgstr "颜色"
 
@@ -1285,10 +1285,10 @@ msgid "Scr&een Display:"
 msgstr "屏幕显示"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:710
-msgid "Initialize Group-Id:"
+msgid "&Initialize Group Name:"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:723
+#: src/frontends/qt4/ui/GraphicsUi.ui:726
 msgid "Group-id to be set up from the current parameters"
 msgstr ""
 
@@ -1499,11 +1499,11 @@ msgstr "包含的文件名"
 msgid "&Include Type:"
 msgstr "包含类别(&I)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:345
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:346
 msgid "Include"
 msgstr "包含"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:336
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:337
 msgid "Input"
 msgstr "输入"
 
@@ -1511,7 +1511,7 @@ msgstr "输入"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:941
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
 msgstr "程序列表"
 
@@ -1610,7 +1610,7 @@ msgstr "外部(&u)"
 msgid "&Quote Style:"
 msgstr "引号风格(&Q):"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:296
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 msgid "Listing"
 msgstr "程序列表"
@@ -1941,6 +1941,125 @@ msgstr "加入目录(&L)"
 msgid "&Numbering"
 msgstr "编号(&N)"
 
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:976
+msgid "Page Layout"
+msgstr "页面布局"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "日期格式"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "选择一纸张大小，或用\"Custo\"定制"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "页首和页尾的样式"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "页样式(&s)"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "横向(&L)"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "纵向(&P)"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "格式(&F)："
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "方向"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "双面打印样式"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "双面文档(&T)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:44
+msgid "I&mmediate Apply"
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:123
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr "使用缺省对齐方式"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "使用默认对齐方式"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
+#, fuzzy
+msgid "Ri&ght"
+msgstr "右"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:140
+#, fuzzy
+msgid "C&enter"
+msgstr "居中"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:147
+msgid "&Left"
+msgstr "左(&L)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:154
+msgid "&Justified"
+msgstr "分散对齐(&J)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:164
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "段落对齐(&P)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:174
+msgid "Label Width"
+msgstr "标签宽度"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "This text defines the width of the paragraph label"
+msgstr "此文本定义段落标签宽度"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+#, fuzzy
+msgid "Lo&ngest label"
+msgstr "最长标签(&L)"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:212
+#, fuzzy
+msgid "Line &spacing"
+msgstr "行距(&i):"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1336
+#: src/frontends/qt4/GuiDocument.cpp:579
+msgid "Single"
+msgstr "单一"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:245
+msgid "1.5"
+msgstr "1.5"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:583
+msgid "Double"
+msgstr "双重"
+
 #: src/frontends/qt4/ui/PDFSupportUi.ui:41
 msgid "&Use hyperref support"
 msgstr ""
@@ -2064,125 +2183,6 @@ msgstr "份数"
 #, fuzzy
 msgid "&Numbered bookmarks"
 msgstr "编号公式(N)|N"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:976
-msgid "Page Layout"
-msgstr "页面布局"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "日期格式"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "选择一纸张大小，或用\"Custo\"定制"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "页首和页尾的样式"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "页样式(&s)"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "横向(&L)"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "纵向(&P)"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "格式(&F)："
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "方向"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "双面打印样式"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "双面文档(&T)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:44
-msgid "I&mmediate Apply"
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:123
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "使用缺省对齐方式"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:126
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "使用默认对齐方式"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:133
-#, fuzzy
-msgid "Ri&ght"
-msgstr "右"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:140
-#, fuzzy
-msgid "C&enter"
-msgstr "居中"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
-msgid "&Left"
-msgstr "左(&L)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:154
-msgid "&Justified"
-msgstr "分散对齐(&J)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:164
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "段落对齐(&P)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:174
-msgid "Label Width"
-msgstr "标签宽度"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:189
-#: src/frontends/qt4/ui/ParagraphUi.ui:196
-msgid "This text defines the width of the paragraph label"
-msgstr "此文本定义段落标签宽度"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:199
-#, fuzzy
-msgid "Lo&ngest label"
-msgstr "最长标签(&L)"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
-msgid "Line &spacing"
-msgstr "行距(&i):"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1336
-#: src/frontends/qt4/GuiDocument.cpp:579
-msgid "Single"
-msgstr "单一"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:245
-msgid "1.5"
-msgstr "1.5"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:583
-msgid "Double"
-msgstr "双重"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -2315,7 +2315,7 @@ msgstr "修改(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2182 src/frontends/qt4/GuiPrefs.cpp:2267
+#: src/frontends/qt4/GuiPrefs.cpp:2241 src/frontends/qt4/GuiPrefs.cpp:2326
 msgid "Remo&ve"
 msgstr "删除(&V)"
 
@@ -2367,7 +2367,7 @@ msgstr "显示图像(&G)"
 msgid "Instant &Preview:"
 msgstr "即时预览(&P)"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:217
+#: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:220
 #, fuzzy
 msgid "Editing"
 msgstr "退出."
@@ -3106,8 +3106,8 @@ msgstr "浏览(&W)..."
 msgid "&User interface file:"
 msgstr "用户界面文件(&U):"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:703
-#: src/frontends/qt4/GuiView.cpp:1654
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
+#: src/frontends/qt4/GuiView.cpp:1704
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -3554,7 +3554,8 @@ msgstr "在每页重复此行为表头"
 #: src/frontends/qt4/ui/TabularUi.ui:1125
 #: src/frontends/qt4/ui/TabularUi.ui:1166
 #: src/frontends/qt4/ui/TabularUi.ui:1197
-#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiView.cpp:1781
+#: src/frontends/qt4/ui/TabularUi.ui:1235
+#: src/frontends/qt4/GuiToolbar.cpp:1112 src/frontends/qt4/GuiToolbar.cpp:1121
 msgid "on"
 msgstr "打开"
 
@@ -3876,7 +3877,7 @@ msgstr ""
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
 #: lib/layouts/manpage.layout:18 lib/layouts/memoir.layout:30
-#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
+#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:16
 #: lib/layouts/powerdot.layout:106 lib/layouts/revtex.layout:22
 #: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:19
@@ -3911,12 +3912,12 @@ msgstr "证明:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "定理"
@@ -3929,9 +3930,9 @@ msgstr "定理 #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr "引理"
 
@@ -3944,8 +3945,9 @@ msgstr "引理 #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr "Corollary"
 
@@ -3957,8 +3959,9 @@ msgstr "Corollary #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr "Propositio"
 
@@ -3969,8 +3972,9 @@ msgstr "Proposition #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "猜想"
 
@@ -3988,7 +3992,7 @@ msgid "Criterion #:"
 msgstr "Criterion #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "Fact"
 
@@ -4009,9 +4013,9 @@ msgstr "Axiom #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "定义"
 
@@ -4022,10 +4026,10 @@ msgstr "定义 #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:823
+#: src/frontends/qt4/GuiDocument.cpp:823
 msgid "Example"
 msgstr "示例"
 
@@ -4044,9 +4048,9 @@ msgstr "条件 #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "问题"
 
@@ -4055,10 +4059,9 @@ msgid "Problem #:"
 msgstr "问题 #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "练习"
 
@@ -4069,9 +4072,9 @@ msgstr "练习 #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Remark"
 
@@ -4082,10 +4085,9 @@ msgstr "Remark #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Claim"
 
@@ -4115,13 +4117,13 @@ msgid "Notation #:"
 msgstr "Notation #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "Case"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #:"
 msgstr "Case #:"
 
@@ -4138,7 +4140,7 @@ msgstr "Case #:"
 #: lib/layouts/kluwer.layout:58 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:45 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:40 lib/layouts/memoir.layout:56
-#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:44
+#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:46
 #: lib/layouts/powerdot.layout:223 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:42
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
@@ -4160,7 +4162,7 @@ msgstr "章节"
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
 #: lib/layouts/ltugboat.layout:64 lib/layouts/memoir.layout:61
-#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:53
+#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:55
 #: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:56
 #: lib/layouts/siamltex.layout:59 lib/layouts/simplecv.layout:48
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
@@ -4178,7 +4180,7 @@ msgstr "子段"
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
-#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:62
+#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:64
 #: lib/layouts/revtex.layout:57 lib/layouts/revtex4.layout:64
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
@@ -4222,7 +4224,7 @@ msgstr "Subsubsection*"
 #: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
 #: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
 #: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:132 lib/layouts/revtex.layout:135
+#: lib/layouts/paper.layout:134 lib/layouts/revtex.layout:135
 #: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:142
 #: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
 #: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
@@ -4241,7 +4243,7 @@ msgstr "摘要---"
 #: lib/layouts/aastex.layout:276 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:193 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:171
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:176
 #: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:167
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:166 lib/layouts/svjour.inc:270
@@ -4323,7 +4325,7 @@ msgstr "编号列表"
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:91
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:129
-#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:103
+#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:105
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:19
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:27 lib/layouts/stdlists.inc:49
@@ -4355,7 +4357,7 @@ msgstr "列表"
 #: lib/layouts/iopart.layout:55 lib/layouts/isprs.layout:92
 #: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
 #: lib/layouts/llncs.layout:100 lib/layouts/ltugboat.layout:131
-#: lib/layouts/paper.layout:112 lib/layouts/powerdot.layout:39
+#: lib/layouts/paper.layout:114 lib/layouts/powerdot.layout:39
 #: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
 #: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:269
 #: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
@@ -4385,7 +4387,7 @@ msgstr "副标题"
 #: lib/layouts/ijmpd.layout:43 lib/layouts/iopart.layout:123
 #: lib/layouts/isprs.layout:75 lib/layouts/kluwer.layout:157
 #: lib/layouts/llncs.layout:175 lib/layouts/ltugboat.layout:150
-#: lib/layouts/paper.layout:122 lib/layouts/powerdot.layout:62
+#: lib/layouts/paper.layout:124 lib/layouts/powerdot.layout:62
 #: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
 #: lib/layouts/siamltex.layout:125 lib/layouts/svprobth.layout:52
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
@@ -4455,7 +4457,7 @@ msgid "Acknowledgements."
 msgstr "Acknowledgements."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
-#: src/frontends/qt4/GuiPrefs.cpp:521
+#: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -4476,7 +4478,7 @@ msgstr "Thesaurus"
 #: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
 #: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
 #: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:71
-#: lib/layouts/paper.layout:71 lib/layouts/revtex.layout:65
+#: lib/layouts/paper.layout:73 lib/layouts/revtex.layout:65
 #: lib/layouts/revtex4.layout:72 lib/layouts/siamltex.layout:71
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
@@ -4720,7 +4722,7 @@ msgstr "FitBitmap"
 
 #: lib/layouts/apa.layout:344 lib/layouts/egs.layout:86
 #: lib/layouts/kluwer.layout:93 lib/layouts/llncs.layout:78
-#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
+#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:82
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
 #: lib/layouts/svjour.inc:89
@@ -4739,7 +4741,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:389
+#: src/buffer_funcs.cpp:390
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -4759,14 +4761,9 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
-#: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
+#: lib/layouts/paper.layout:34 lib/layouts/scrartcl.layout:20
 #: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:12
 #: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
 #: lib/layouts/scrclass.inc:47 lib/layouts/stdsections.inc:11
@@ -4778,6 +4775,11 @@ msgstr "部分"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Part*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6426,7 +6428,7 @@ msgstr "Scene"
 
 #: lib/layouts/ijmpc.layout:79 lib/layouts/ijmpd.layout:82
 #: lib/layouts/iopart.layout:203 lib/layouts/kluwer.layout:281
-#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:246
+#: lib/layouts/paper.layout:179 lib/layouts/revtex4.layout:246
 #: lib/layouts/spie.layout:46 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "关键字："
@@ -6465,7 +6467,7 @@ msgid "Notation \\thenotation."
 msgstr "Notation \\arabic{notation}."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Theorem \\arabic{theorem}."
@@ -6796,11 +6798,11 @@ msgstr "CloseSection"
 msgid "Close Section"
 msgstr "Close Section"
 
-#: lib/layouts/paper.layout:149
+#: lib/layouts/paper.layout:154
 msgid "SubTitle"
 msgstr "副标题"
 
-#: lib/layouts/paper.layout:160
+#: lib/layouts/paper.layout:165
 msgid "Institution"
 msgstr "Institution"
 
@@ -7028,7 +7030,7 @@ msgstr "发件人地址"
 msgid "Sender Phone:"
 msgstr "发件人电话"
 
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:317
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:318
 msgid "Fax"
 msgstr "传真"
 
@@ -7857,56 +7859,56 @@ msgstr "Offprints"
 msgid "Offprints:"
 msgstr "Offprints:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "Corollary \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "Lemma \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Proposition \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "Conjecture \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Definition \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Example \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Problem \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Exercise @Section@.\\arabic{theorem}."
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "Remark \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "Claim \\arabic{theorem}"
@@ -8377,7 +8379,7 @@ msgstr "A-M|阿拉伯语(埃及)"
 msgid "Arabic (Arabi)"
 msgstr "A-M|阿拉伯语(埃及)"
 
-#: lib/languages:12 src/frontends/qt4/GuiSymbols.cpp:60
+#: lib/languages:12 src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Armenian"
 msgstr "亚美尼亚语"
 
@@ -8496,11 +8498,11 @@ msgid "German"
 msgstr "德语"
 
 #: lib/languages:44 lib/ui/stdtoolbars.inc:462
-#: src/frontends/qt4/GuiSymbols.cpp:58
+#: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Greek"
 msgstr "希腊文"
 
-#: lib/languages:45 src/frontends/qt4/GuiSymbols.cpp:61
+#: lib/languages:45 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Hebrew"
 msgstr "希伯来文"
 
@@ -8618,7 +8620,7 @@ msgstr "西班牙语"
 msgid "Swedish"
 msgstr "瑞典语"
 
-#: lib/languages:79 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:79 src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Thai"
 msgstr "泰文"
 
@@ -8828,7 +8830,7 @@ msgstr "粘贴选择(L)|L"
 msgid "Selection as Paragraphs|P"
 msgstr "粘贴选择为段落(P)|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:321 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "多列(M)|M"
 
@@ -8852,7 +8854,7 @@ msgstr "行右(R)|R"
 msgid "Alignment|i"
 msgstr "对齐(i)|i"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "添加行(A)|A"
 
@@ -8868,7 +8870,7 @@ msgstr "复制行"
 msgid "Swap Rows"
 msgstr "交换行"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "添加列(u)|u"
 
@@ -8884,27 +8886,27 @@ msgstr "复制列"
 msgid "Swap Columns"
 msgstr "交换列"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "左(L)|L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "中(C)|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "右(R)|R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:332 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "上(T)|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "中(N)|N"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "下(B)|B"
 
@@ -8936,7 +8938,7 @@ msgstr "对齐(A)|A"
 msgid "Add Row|R"
 msgstr "添加行(R)|R"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "删除"
 
@@ -8944,7 +8946,7 @@ msgstr "删除"
 msgid "Add Column|C"
 msgstr "添加列(C)|C"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "删除列(e)|e"
 
@@ -9189,7 +9191,7 @@ msgstr "菜单分隔(M)|M"
 msgid "Horizontal Line"
 msgstr "水平线"
 
-#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:183
+#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:182
 msgid "Page Break"
 msgstr "换页"
 
@@ -9657,8 +9659,8 @@ msgstr "格式化的引用"
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
 #: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:202
 #: lib/ui/stdcontext.inc:215 lib/ui/stdcontext.inc:292
-#: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:311
-#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "首选项(S)...|S"
 
@@ -10027,32 +10029,32 @@ msgstr ""
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:313
+#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:314
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "外部编辑文件"
 
-#: lib/ui/stdcontext.inc:323 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "顶部线(T)|T"
 
-#: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "底部线(B)|B"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "左方线(L)|L"
 
-#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "右方线(R)|R"
 
-#: lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "复制行(o)|o"
 
-#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "复制列(p)|p"
 
@@ -10526,11 +10528,11 @@ msgstr "打印文档"
 msgid "Check spelling"
 msgstr "拼写检查"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:998
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1009
 msgid "Undo"
 msgstr "撤消"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1007
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1018
 msgid "Redo"
 msgstr "重做"
 
@@ -11323,7 +11325,7 @@ msgstr "underleftrightarrow"
 msgid "underset"
 msgstr "underset"
 
-#: lib/ui/stdtoolbars.inc:356 src/frontends/qt4/GuiSymbols.cpp:86
+#: lib/ui/stdtoolbars.inc:356 src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Arrows"
 msgstr "Fletxes"
 
@@ -13201,7 +13203,7 @@ msgstr ""
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:251 src/frontends/qt4/GuiClipboard.cpp:345
+#: lib/configure.py:251 src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
 msgstr ""
 
@@ -13213,7 +13215,7 @@ msgstr ""
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:254 src/frontends/qt4/GuiClipboard.cpp:344
+#: lib/configure.py:254 src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
 msgstr ""
 
@@ -13266,232 +13268,238 @@ msgstr ""
 
 #: lib/configure.py:269
 #, fuzzy
+msgid "Graphviz Dot"
+msgstr "图形"
+
+#: lib/configure.py:270
+#, fuzzy
 msgid "NoWeb"
 msgstr "无"
 
-#: lib/configure.py:269
+#: lib/configure.py:270
 #, fuzzy
 msgid "NoWeb|N"
 msgstr "注释(N)|N"
 
-#: lib/configure.py:270
+#: lib/configure.py:271
 #, fuzzy
 msgid "LilyPond music"
 msgstr "LilyPond"
 
-#: lib/configure.py:271
+#: lib/configure.py:272
 #, fuzzy
 msgid "LaTeX (plain)"
 msgstr "LaTeX选项(&o)"
 
-#: lib/configure.py:271
+#: lib/configure.py:272
 #, fuzzy
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX选项(&o)"
 
-#: lib/configure.py:272
+#: lib/configure.py:273
 msgid "LinuxDoc"
 msgstr ""
 
-#: lib/configure.py:272
+#: lib/configure.py:273
 msgid "LinuxDoc|x"
 msgstr ""
 
-#: lib/configure.py:273
+#: lib/configure.py:274
 #, fuzzy
 msgid "LaTeX (pdflatex)"
 msgstr "更新PDF (pdflatex)"
 
-#: lib/configure.py:274 src/frontends/qt4/GuiPrefs.cpp:326
+#: lib/configure.py:275 src/frontends/qt4/GuiPrefs.cpp:329
 msgid "Plain text"
-msgstr "存文本"
-
-#: lib/configure.py:274
-#, fuzzy
-msgid "Plain text|a"
 msgstr "存文本"
 
 #: lib/configure.py:275
 #, fuzzy
-msgid "Plain text (pstotext)"
+msgid "Plain text|a"
 msgstr "存文本"
 
 #: lib/configure.py:276
 #, fuzzy
-msgid "Plain text (ps2ascii)"
+msgid "Plain text (pstotext)"
 msgstr "存文本"
 
 #: lib/configure.py:277
 #, fuzzy
-msgid "Plain text (catdvi)"
+msgid "Plain text (ps2ascii)"
 msgstr "存文本"
 
 #: lib/configure.py:278
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "存文本"
+
+#: lib/configure.py:279
 msgid "Plain Text, Join Lines"
 msgstr "纯文本, 连接段落"
 
-#: lib/configure.py:285
+#: lib/configure.py:286
 #, fuzzy
 msgid "BibTeX"
 msgstr "LaTeX"
 
-#: lib/configure.py:290
+#: lib/configure.py:291
 #, fuzzy
 msgid "EPS"
 msgstr "PS"
 
-#: lib/configure.py:291
+#: lib/configure.py:292
 #, fuzzy
 msgid "Postscript"
 msgstr "Post Scriptum:"
 
-#: lib/configure.py:291
+#: lib/configure.py:292
 #, fuzzy
 msgid "Postscript|t"
 msgstr "Post Scriptum:"
 
-#: lib/configure.py:295
+#: lib/configure.py:296
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:295
+#: lib/configure.py:296
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:296
+#: lib/configure.py:297
 #, fuzzy
 msgid "PDF (pdflatex)"
 msgstr "显示PDF (pdflatex)"
 
-#: lib/configure.py:296
+#: lib/configure.py:297
 #, fuzzy
 msgid "PDF (pdflatex)|F"
 msgstr "显示PDF (pdflatex)"
 
-#: lib/configure.py:297
+#: lib/configure.py:298
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:297
+#: lib/configure.py:298
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:300
+#: lib/configure.py:301
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:300
+#: lib/configure.py:301
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:303
+#: lib/configure.py:304
 #, fuzzy
 msgid "DraftDVI"
 msgstr "草稿(&D)"
 
-#: lib/configure.py:306
+#: lib/configure.py:307
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:306
+#: lib/configure.py:307
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:309
+#: lib/configure.py:310
 #, fuzzy
 msgid "Noteedit"
 msgstr "NoteToEditor"
 
-#: lib/configure.py:312
+#: lib/configure.py:313
 #, fuzzy
 msgid "OpenDocument"
 msgstr "打开文档"
 
-#: lib/configure.py:315
+#: lib/configure.py:316
 #, fuzzy
 msgid "date command"
 msgstr "下一命令"
 
-#: lib/configure.py:316
-msgid "Comma-separated values"
-msgstr ""
+#: lib/configure.py:317
+#, fuzzy
+msgid "Table (CSV)"
+msgstr "表"
 
-#: lib/configure.py:318 src/frontends/qt4/GuiView.cpp:636
-#: src/frontends/qt4/GuiView.cpp:637 src/mathed/MathMacroTemplate.cpp:536
+#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:737
+#: src/frontends/qt4/GuiView.cpp:738 src/mathed/MathMacroTemplate.cpp:536
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:319
+#: lib/configure.py:320
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:320
+#: lib/configure.py:321
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:321
+#: lib/configure.py:322
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:322
+#: lib/configure.py:323
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:323
+#: lib/configure.py:324
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:324
+#: lib/configure.py:325
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:325
+#: lib/configure.py:326
 #, fuzzy
 msgid "LyX Preview"
 msgstr "预览"
 
-#: lib/configure.py:326
+#: lib/configure.py:327
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:327
+#: lib/configure.py:328
 #, fuzzy
 msgid "Program"
 msgstr "程序列表"
 
-#: lib/configure.py:328
+#: lib/configure.py:329
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:329
+#: lib/configure.py:330
 #, fuzzy
 msgid "Rich Text Format"
 msgstr "普通文本字体"
 
-#: lib/configure.py:330
+#: lib/configure.py:331
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:331 src/frontends/qt4/GuiClipboard.cpp:341
+#: lib/configure.py:332 src/frontends/qt4/GuiClipboard.cpp:134
 #, fuzzy
 msgid "Windows Metafile"
 msgstr "打印到文件"
 
-#: lib/configure.py:332 src/frontends/qt4/GuiClipboard.cpp:340
+#: lib/configure.py:333 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:333
+#: lib/configure.py:334
 #, fuzzy
 msgid "MS Word"
 msgstr "单词数"
 
-#: lib/configure.py:333
+#: lib/configure.py:334
 #, fuzzy
 msgid "MS Word|W"
 msgstr "字数(W)|W"
 
-#: lib/configure.py:334
+#: lib/configure.py:335
 msgid "HTML (MS Word)"
 msgstr ""
 
@@ -13563,12 +13571,12 @@ msgstr "\\begin_header 缺失"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺失"
 
-#: src/Buffer.cpp:540 src/Buffer.cpp:546 src/BufferView.cpp:1114
-#: src/BufferView.cpp:1120
+#: src/Buffer.cpp:540 src/Buffer.cpp:546 src/BufferView.cpp:1125
+#: src/BufferView.cpp:1131
 msgid "Changes not shown in LaTeX output"
 msgstr "改变项没有输出至LaTeX输出"
 
-#: src/Buffer.cpp:541 src/BufferView.cpp:1115
+#: src/Buffer.cpp:541 src/BufferView.cpp:1126
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -13580,7 +13588,7 @@ msgstr ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:547 src/BufferView.cpp:1121
+#: src/Buffer.cpp:547 src/BufferView.cpp:1132
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -13672,9 +13680,9 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "覆盖文件吗？"
 
-#: src/Buffer.cpp:819 src/Exporter.cpp:49 src/LyXFunc.cpp:1018
-#: src/frontends/qt4/GuiClipboard.cpp:415 src/frontends/qt4/GuiView.cpp:1378
-#: src/frontends/qt4/GuiView.cpp:1556
+#: src/Buffer.cpp:819 src/Exporter.cpp:49 src/LyXFunc.cpp:980
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1428
+#: src/frontends/qt4/GuiView.cpp:1606
 msgid "&Overwrite"
 msgstr "覆盖(&O)"
 
@@ -13740,65 +13748,65 @@ msgstr "chktex执行出错"
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:2068
+#: src/Buffer.cpp:2081
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:2080
+#: src/Buffer.cpp:2093
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "预览段落 %1$s 之源代码"
 
-#: src/Buffer.cpp:2084
+#: src/Buffer.cpp:2097
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
 
-#: src/Buffer.cpp:2183
+#: src/Buffer.cpp:2196
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自动保存 %1$s"
 
-#: src/Buffer.cpp:2227
+#: src/Buffer.cpp:2240
 msgid "Autosave failed!"
 msgstr "自动保存失败!"
 
-#: src/Buffer.cpp:2250
+#: src/Buffer.cpp:2263
 msgid "Autosaving current document..."
 msgstr "自动保存当前文档..."
 
-#: src/Buffer.cpp:2298
+#: src/Buffer.cpp:2311
 msgid "Couldn't export file"
 msgstr "无法导出文件"
 
-#: src/Buffer.cpp:2299
+#: src/Buffer.cpp:2312
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "无导出格式 %1$s 的信息."
 
-#: src/Buffer.cpp:2336
+#: src/Buffer.cpp:2349
 msgid "File name error"
 msgstr "文件名出错"
 
-#: src/Buffer.cpp:2337
+#: src/Buffer.cpp:2350
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文档路径不能有空格"
 
-#: src/Buffer.cpp:2378
+#: src/Buffer.cpp:2391
 msgid "Document export cancelled."
 msgstr "取消导出文档"
 
-#: src/Buffer.cpp:2384
+#: src/Buffer.cpp:2397
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文档 %1$s 导出为 `%2$s'"
 
-#: src/Buffer.cpp:2390
+#: src/Buffer.cpp:2403
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文档导出为 %1$s"
 
-#: src/Buffer.cpp:2460
+#: src/Buffer.cpp:2473
 #, c-format
 msgid ""
 "The specified document\n"
@@ -13809,11 +13817,11 @@ msgstr ""
 "%1$s\n"
 "could not be read."
 
-#: src/Buffer.cpp:2462
+#: src/Buffer.cpp:2475
 msgid "Could not read document"
 msgstr "无法读取文档"
 
-#: src/Buffer.cpp:2472
+#: src/Buffer.cpp:2485
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -13824,19 +13832,19 @@ msgstr ""
 "\n"
 "使用此紧急版本吧?"
 
-#: src/Buffer.cpp:2475
+#: src/Buffer.cpp:2488
 msgid "Load emergency save?"
 msgstr "读入紧急保存的版本吗"
 
-#: src/Buffer.cpp:2476
+#: src/Buffer.cpp:2489
 msgid "&Recover"
 msgstr "恢复(&R)"
 
-#: src/Buffer.cpp:2476
+#: src/Buffer.cpp:2489
 msgid "&Load Original"
 msgstr "读取原版本(&L)"
 
-#: src/Buffer.cpp:2496
+#: src/Buffer.cpp:2509
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -13847,28 +13855,28 @@ msgstr ""
 "\n"
 "读取备份版本?"
 
-#: src/Buffer.cpp:2499
+#: src/Buffer.cpp:2512
 msgid "Load backup?"
 msgstr "读取备份版本?"
 
-#: src/Buffer.cpp:2500
+#: src/Buffer.cpp:2513
 msgid "&Load backup"
 msgstr "读取备份(&L)"
 
-#: src/Buffer.cpp:2500
+#: src/Buffer.cpp:2513
 msgid "Load &original"
 msgstr "读取原版本(&o)"
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2546
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "您希望从版本控制程序中读取文档 %1$s 吗?"
 
-#: src/Buffer.cpp:2535
+#: src/Buffer.cpp:2548
 msgid "Retrieve from version control?"
 msgstr "从版本控制程序中读取文档?"
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2549
 msgid "&Retrieve"
 msgstr "获取(&R)"
 
@@ -13934,7 +13942,7 @@ msgstr ""
 msgid "Class not found"
 msgstr "文件没有找到"
 
-#: src/BufferParams.cpp:1430 src/LyXFunc.cpp:735
+#: src/BufferParams.cpp:1430 src/LyXFunc.cpp:697
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -13942,7 +13950,7 @@ msgstr ""
 "%1$s\n"
 "could not be read."
 
-#: src/BufferParams.cpp:1432 src/LyXFunc.cpp:737
+#: src/BufferParams.cpp:1432 src/LyXFunc.cpp:699
 #, fuzzy
 msgid "Could not load class"
 msgstr "无法改变文档类"
@@ -13994,100 +14002,100 @@ msgstr "搜索出错"
 msgid "Error reading internal layout information"
 msgstr "通用信息"
 
-#: src/BufferView.cpp:176
+#: src/BufferView.cpp:177
 msgid "No more insets"
 msgstr "无嵌入项"
 
-#: src/BufferView.cpp:668
+#: src/BufferView.cpp:669
 msgid "Save bookmark"
 msgstr "保存书签"
 
-#: src/BufferView.cpp:1001
+#: src/BufferView.cpp:1012
 msgid "No further undo information"
 msgstr "无进一步恢复信息"
 
-#: src/BufferView.cpp:1010
+#: src/BufferView.cpp:1021
 msgid "No further redo information"
 msgstr "无进一步重做信息"
 
-#: src/BufferView.cpp:1164 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1175 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "未找到搜索词"
 
-#: src/BufferView.cpp:1188
+#: src/BufferView.cpp:1199
 msgid "Mark off"
 msgstr "Mark off"
 
-#: src/BufferView.cpp:1195
+#: src/BufferView.cpp:1206
 msgid "Mark on"
 msgstr "Mark on"
 
-#: src/BufferView.cpp:1202
+#: src/BufferView.cpp:1213
 msgid "Mark removed"
 msgstr "Mark removed"
 
-#: src/BufferView.cpp:1205
+#: src/BufferView.cpp:1216
 msgid "Mark set"
 msgstr "Mark set"
 
-#: src/BufferView.cpp:1252
+#: src/BufferView.cpp:1263
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1254
+#: src/BufferView.cpp:1265
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "切换至已读取文档(&S)"
 
-#: src/BufferView.cpp:1257
+#: src/BufferView.cpp:1268
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "已检查 %1$d 单词."
 
-#: src/BufferView.cpp:1259
+#: src/BufferView.cpp:1270
 #, fuzzy
 msgid "One word"
 msgstr "密码"
 
-#: src/BufferView.cpp:1262
+#: src/BufferView.cpp:1273
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1265
+#: src/BufferView.cpp:1276
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1268
+#: src/BufferView.cpp:1279
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1271
+#: src/BufferView.cpp:1282
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1284
 #, fuzzy
 msgid "Statistics"
 msgstr "状态"
 
-#: src/BufferView.cpp:1945
+#: src/BufferView.cpp:1962
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:1956
+#: src/BufferView.cpp:1973
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:1958
+#: src/BufferView.cpp:1975
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
 
-#: src/BufferView.cpp:2184
+#: src/BufferView.cpp:2201
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14098,26 +14106,26 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/BufferView.cpp:2186
+#: src/BufferView.cpp:2203
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/BufferView.cpp:2193
+#: src/BufferView.cpp:2210
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "无法读取 %1$s"
 
-#: src/BufferView.cpp:2194 src/output.cpp:39
+#: src/BufferView.cpp:2211 src/output.cpp:39
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/BufferView.cpp:2201
+#: src/BufferView.cpp:2218
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/BufferView.cpp:2202
+#: src/BufferView.cpp:2219
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -14140,315 +14148,315 @@ msgstr "ChkTeX 警告编号 # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX 警告编号 #"
 
-#: src/Color.cpp:92 src/insets/InsetBibtex.cpp:163
+#: src/Color.cpp:96 src/insets/InsetBibtex.cpp:163
 #: src/insets/InsetBibtex.cpp:188
 msgid "none"
 msgstr "无"
 
-#: src/Color.cpp:93
+#: src/Color.cpp:97
 msgid "black"
 msgstr "黑"
 
-#: src/Color.cpp:94
+#: src/Color.cpp:98
 msgid "white"
 msgstr "白"
 
-#: src/Color.cpp:95
+#: src/Color.cpp:99
 msgid "red"
 msgstr "红"
 
-#: src/Color.cpp:96
+#: src/Color.cpp:100
 msgid "green"
 msgstr "绿"
 
-#: src/Color.cpp:97
+#: src/Color.cpp:101
 msgid "blue"
 msgstr "蓝"
 
-#: src/Color.cpp:98
+#: src/Color.cpp:102
 msgid "cyan"
 msgstr "青"
 
-#: src/Color.cpp:99
+#: src/Color.cpp:103
 msgid "magenta"
 msgstr "洋红"
 
-#: src/Color.cpp:100
+#: src/Color.cpp:104
 msgid "yellow"
 msgstr "黄"
 
-#: src/Color.cpp:101
+#: src/Color.cpp:105
 msgid "cursor"
 msgstr "光标"
 
-#: src/Color.cpp:102
+#: src/Color.cpp:106
 msgid "background"
 msgstr "背景"
 
-#: src/Color.cpp:103
+#: src/Color.cpp:107
 msgid "text"
 msgstr "文字"
 
-#: src/Color.cpp:104
+#: src/Color.cpp:108
 msgid "selection"
 msgstr "章"
 
-#: src/Color.cpp:105
+#: src/Color.cpp:109
 #, fuzzy
 msgid "selected text"
 msgstr "删除的文本"
 
-#: src/Color.cpp:107
+#: src/Color.cpp:111
 msgid "LaTeX text"
 msgstr "LaTeX 文本"
 
-#: src/Color.cpp:108
+#: src/Color.cpp:112
 #, fuzzy
 msgid "inline completion"
 msgstr "嵌入(&I)"
 
-#: src/Color.cpp:110
+#: src/Color.cpp:114
 msgid "non-unique inline completion"
 msgstr ""
 
-#: src/Color.cpp:112
+#: src/Color.cpp:116
 msgid "previewed snippet"
 msgstr "预览图"
 
-#: src/Color.cpp:113
+#: src/Color.cpp:117
 #, fuzzy
 msgid "note label"
 msgstr "脚注"
 
-#: src/Color.cpp:114
+#: src/Color.cpp:118
 msgid "note background"
 msgstr "记事项背景"
 
-#: src/Color.cpp:115
+#: src/Color.cpp:119
 #, fuzzy
 msgid "comment label"
 msgstr "注释"
 
-#: src/Color.cpp:116
+#: src/Color.cpp:120
 msgid "comment background"
 msgstr "注释背景"
 
-#: src/Color.cpp:117
+#: src/Color.cpp:121
 #, fuzzy
 msgid "greyedout inset label"
 msgstr "灰度(greyedout)嵌入项"
 
-#: src/Color.cpp:118
+#: src/Color.cpp:122
 msgid "greyedout inset background"
 msgstr "灰度(greyedout)嵌入项背景"
 
-#: src/Color.cpp:119
+#: src/Color.cpp:123
 msgid "shaded box"
 msgstr "阴影边框"
 
-#: src/Color.cpp:120
+#: src/Color.cpp:124
 #, fuzzy
 msgid "branch label"
 msgstr "branch"
 
-#: src/Color.cpp:121
+#: src/Color.cpp:125
 #, fuzzy
 msgid "footnote label"
 msgstr "脚注"
 
-#: src/Color.cpp:122
+#: src/Color.cpp:126
 #, fuzzy
 msgid "index label"
 msgstr "插入标签"
 
-#: src/Color.cpp:123
+#: src/Color.cpp:127
 #, fuzzy
 msgid "margin note label"
 msgstr "跳至标签"
 
-#: src/Color.cpp:124
+#: src/Color.cpp:128
 #, fuzzy
 msgid "URL label"
 msgstr "标签"
 
-#: src/Color.cpp:125
+#: src/Color.cpp:129
 #, fuzzy
 msgid "URL text"
 msgstr "文字"
 
-#: src/Color.cpp:126
+#: src/Color.cpp:130
 msgid "depth bar"
 msgstr "depth bar"
 
-#: src/Color.cpp:127
+#: src/Color.cpp:131
 msgid "language"
 msgstr "语言"
 
-#: src/Color.cpp:128
+#: src/Color.cpp:132
 msgid "command inset"
 msgstr "命令嵌入项"
 
-#: src/Color.cpp:129
+#: src/Color.cpp:133
 msgid "command inset background"
 msgstr "命令嵌入项背景"
 
-#: src/Color.cpp:130
+#: src/Color.cpp:134
 msgid "command inset frame"
 msgstr "命令嵌入项边框"
 
-#: src/Color.cpp:131
+#: src/Color.cpp:135
 msgid "special character"
 msgstr "特殊字符"
 
-#: src/Color.cpp:132
+#: src/Color.cpp:136
 msgid "math"
 msgstr "公式"
 
-#: src/Color.cpp:133
+#: src/Color.cpp:137
 msgid "math background"
 msgstr "数学公式背景"
 
-#: src/Color.cpp:134
+#: src/Color.cpp:138
 msgid "graphics background"
 msgstr "图像背景"
 
-#: src/Color.cpp:135 src/Color.cpp:139
+#: src/Color.cpp:139 src/Color.cpp:143
 msgid "Math macro background"
 msgstr "数学宏背景"
 
-#: src/Color.cpp:136
+#: src/Color.cpp:140
 msgid "math frame"
 msgstr "公式边框"
 
-#: src/Color.cpp:137
+#: src/Color.cpp:141
 msgid "math corners"
 msgstr "格式边角"
 
-#: src/Color.cpp:138
+#: src/Color.cpp:142
 msgid "math line"
 msgstr "格式线条"
 
-#: src/Color.cpp:140
+#: src/Color.cpp:144
 #, fuzzy
 msgid "Math macro hovered background"
 msgstr "数学宏背景"
 
-#: src/Color.cpp:141
+#: src/Color.cpp:145
 #, fuzzy
 msgid "Math macro label"
 msgstr "数学宏"
 
-#: src/Color.cpp:142
+#: src/Color.cpp:146
 #, fuzzy
 msgid "Math macro frame"
 msgstr "公式边框"
 
-#: src/Color.cpp:143
+#: src/Color.cpp:147
 #, fuzzy
 msgid "Math macro blended out"
 msgstr "数学宏背景"
 
-#: src/Color.cpp:144
+#: src/Color.cpp:148
 #, fuzzy
 msgid "Math macro old parameter"
 msgstr "公式边框"
 
-#: src/Color.cpp:145
+#: src/Color.cpp:149
 #, fuzzy
 msgid "Math macro new parameter"
 msgstr "公式边框"
 
-#: src/Color.cpp:146
+#: src/Color.cpp:150
 msgid "caption frame"
 msgstr "标题框"
 
-#: src/Color.cpp:147
+#: src/Color.cpp:151
 msgid "collapsable inset text"
 msgstr "可折叠嵌入项文本"
 
-#: src/Color.cpp:148
+#: src/Color.cpp:152
 msgid "collapsable inset frame"
 msgstr "可折叠嵌入项边框"
 
-#: src/Color.cpp:149
+#: src/Color.cpp:153
 msgid "inset background"
 msgstr "嵌入项背景"
 
-#: src/Color.cpp:150
+#: src/Color.cpp:154
 msgid "inset frame"
 msgstr "嵌入项边框"
 
-#: src/Color.cpp:151
+#: src/Color.cpp:155
 msgid "LaTeX error"
 msgstr "LaTeX出错"
 
-#: src/Color.cpp:152
+#: src/Color.cpp:156
 msgid "end-of-line marker"
 msgstr "行尾标记"
 
-#: src/Color.cpp:153
+#: src/Color.cpp:157
 msgid "appendix marker"
 msgstr "附录标记"
 
-#: src/Color.cpp:154
+#: src/Color.cpp:158
 msgid "change bar"
 msgstr "change bar"
 
-#: src/Color.cpp:155
+#: src/Color.cpp:159
 msgid "Deleted text"
 msgstr "删除的文本"
 
-#: src/Color.cpp:156
+#: src/Color.cpp:160
 msgid "Added text"
 msgstr "添加的文本"
 
-#: src/Color.cpp:157
+#: src/Color.cpp:161
 msgid "added space markers"
 msgstr "added space markers"
 
-#: src/Color.cpp:158
+#: src/Color.cpp:162
 msgid "top/bottom line"
 msgstr "顶/底部边框"
 
-#: src/Color.cpp:159
+#: src/Color.cpp:163
 msgid "table line"
 msgstr "表格边框"
 
-#: src/Color.cpp:160
+#: src/Color.cpp:164
 msgid "table on/off line"
 msgstr "表格 on/off 边框"
 
-#: src/Color.cpp:162
+#: src/Color.cpp:166
 msgid "bottom area"
 msgstr "底部"
 
-#: src/Color.cpp:163
+#: src/Color.cpp:167
 #, fuzzy
 msgid "new page"
 msgstr "在页<页>"
 
-#: src/Color.cpp:164
+#: src/Color.cpp:168
 #, fuzzy
 msgid "page break / line break"
 msgstr "换页"
 
-#: src/Color.cpp:165
+#: src/Color.cpp:169
 msgid "frame of button"
 msgstr "按钮边框"
 
-#: src/Color.cpp:166
+#: src/Color.cpp:170
 msgid "button background"
 msgstr "按钮背景"
 
-#: src/Color.cpp:167
+#: src/Color.cpp:171
 msgid "button background under focus"
 msgstr "选中按钮背景"
 
-#: src/Color.cpp:168
+#: src/Color.cpp:172
 msgid "inherit"
 msgstr "inherit"
 
-#: src/Color.cpp:169
+#: src/Color.cpp:173
 msgid "ignore"
 msgstr "忽略"
 
@@ -14523,7 +14531,7 @@ msgstr "空白输出"
 msgid "An empty output file was generated."
 msgstr "产生了空白输出"
 
-#: src/CutAndPaste.cpp:503
+#: src/CutAndPaste.cpp:516
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -14536,11 +14544,11 @@ msgstr ""
 "because of class conversion from\n"
 "%3$s to %4$s"
 
-#: src/CutAndPaste.cpp:508
+#: src/CutAndPaste.cpp:521
 msgid "Changed Layout"
 msgstr "改变的布局"
 
-#: src/CutAndPaste.cpp:528
+#: src/CutAndPaste.cpp:541
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -14549,12 +14557,12 @@ msgstr ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 
-#: src/CutAndPaste.cpp:535
+#: src/CutAndPaste.cpp:548
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "打开的文本嵌入项"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1014
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:976
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -14564,7 +14572,7 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1017
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:979
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
@@ -14781,11 +14789,11 @@ msgstr "执行BibTeX"
 msgid "Running MakeIndex for nomencl."
 msgstr "Running MakeIndex for nomencl."
 
-#: src/LyX.cpp:100
+#: src/LyX.cpp:99
 msgid "Could not read configuration file"
 msgstr "无法读取配置文件"
 
-#: src/LyX.cpp:101
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1094
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14796,61 +14804,61 @@ msgstr ""
 "%1$s.\n"
 "请检查您的安装过程."
 
-#: src/LyX.cpp:110
+#: src/LyX.cpp:109
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: 重新配置用户目录"
 
-#: src/LyX.cpp:114
+#: src/LyX.cpp:113
 msgid "Done!"
 msgstr "完成！"
 
-#: src/LyX.cpp:467
+#: src/LyX.cpp:471
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "无法删除临时目录 %1$s"
 
-#: src/LyX.cpp:469
+#: src/LyX.cpp:473
 msgid "Unable to remove temporary directory"
 msgstr "无法删除临时目录"
 
-#: src/LyX.cpp:497
+#: src/LyX.cpp:501
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "未知命令行选项 `%1$s'. 退出."
 
-#: src/LyX.cpp:570
+#: src/LyX.cpp:579
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:571
+#: src/LyX.cpp:580
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:575
+#: src/LyX.cpp:584
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "重配置(R)|R"
 
-#: src/LyX.cpp:576
+#: src/LyX.cpp:585
 #, fuzzy
 msgid "&Use Default"
 msgstr "&Default"
 
-#: src/LyX.cpp:577 src/LyX.cpp:943
+#: src/LyX.cpp:586 src/LyX.cpp:946
 msgid "&Exit LyX"
 msgstr "退出 LyX (&E)"
 
-#: src/LyX.cpp:721 src/frontends/qt4/GuiView.cpp:535
+#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:847
+#: src/LyX.cpp:855
 msgid "Could not create temporary directory"
 msgstr "无法创建临时目录"
 
-#: src/LyX.cpp:848
+#: src/LyX.cpp:856
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14861,11 +14869,11 @@ msgstr ""
 "%1$s. 请确定此\n"
 "目录存在而且可写，然后重新尝试."
 
-#: src/LyX.cpp:936
+#: src/LyX.cpp:939
 msgid "Missing user LyX directory"
 msgstr "缺失LyX用户目录"
 
-#: src/LyX.cpp:937
+#: src/LyX.cpp:940
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14874,33 +14882,33 @@ msgstr ""
 "您指定了一不存在用户目录, %1$s.\n"
 "用来保存您的配置信息."
 
-#: src/LyX.cpp:942
+#: src/LyX.cpp:945
 msgid "&Create directory"
 msgstr "创建目录 (&C)"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:947
 msgid "No user LyX directory. Exiting."
 msgstr "无用户 LyX 目录。退出。"
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:951
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: 创建目录 %1$s"
 
-#: src/LyX.cpp:953
+#: src/LyX.cpp:956
 msgid "Failed to create directory. Exiting."
 msgstr "未能创建目录。退出。"
 
-#: src/LyX.cpp:1121
+#: src/LyX.cpp:1028
 msgid "List of supported debug flags:"
 msgstr "支持的调试符号"
 
-#: src/LyX.cpp:1125
+#: src/LyX.cpp:1032
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "设置调试级别至 %1$s"
 
-#: src/LyX.cpp:1136
+#: src/LyX.cpp:1043
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14943,39 +14951,39 @@ msgstr ""
 "\t-version        版本和编译信息\n"
 "详细使用方法请参阅 LyX 手册."
 
-#: src/LyX.cpp:1176
+#: src/LyX.cpp:1083 src/support/Package.cpp:560
 msgid "No system directory"
 msgstr "无系统目录"
 
-#: src/LyX.cpp:1177
+#: src/LyX.cpp:1084
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir 参数后缺省目录名"
 
-#: src/LyX.cpp:1188
+#: src/LyX.cpp:1095
 msgid "No user directory"
 msgstr "无用户目录"
 
-#: src/LyX.cpp:1189
+#: src/LyX.cpp:1096
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir 参数后缺失目录名"
 
-#: src/LyX.cpp:1200
+#: src/LyX.cpp:1107
 msgid "Incomplete command"
 msgstr "不完整命令"
 
-#: src/LyX.cpp:1201
+#: src/LyX.cpp:1108
 msgid "Missing command string after --execute switch"
 msgstr "--execute 参数后缺失命令"
 
-#: src/LyX.cpp:1212
+#: src/LyX.cpp:1119
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1225
+#: src/LyX.cpp:1132
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1230
+#: src/LyX.cpp:1137
 msgid "Missing filename for --import"
 msgstr "--import 参数缺失文件名"
 
@@ -15025,7 +15033,7 @@ msgstr "无操作"
 msgid "Unknown action"
 msgstr "未知操作"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:686
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:648
 msgid "Command disabled"
 msgstr "被禁止命令"
 
@@ -15033,15 +15041,15 @@ msgstr "被禁止命令"
 msgid "Command not allowed without any document open"
 msgstr "此命令在没有任何打开文档下不能执行"
 
-#: src/LyXFunc.cpp:671
+#: src/LyXFunc.cpp:633
 msgid "Document is read-only"
 msgstr "文档只读"
 
-#: src/LyXFunc.cpp:680
+#: src/LyXFunc.cpp:642
 msgid "This portion of the document is deleted."
 msgstr "此段文档已被删除"
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:661
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15052,11 +15060,11 @@ msgstr ""
 "\n"
 "您希望保存文档吗?"
 
-#: src/LyXFunc.cpp:702 src/frontends/qt4/GuiView.cpp:1653
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1703
 msgid "Save changed document?"
 msgstr "保存改变的文档?"
 
-#: src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:679
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15065,72 +15073,63 @@ msgstr ""
 "无法打印文档 %1$s.\n"
 "请检查打印机是否设置正确."
 
-#: src/LyXFunc.cpp:720
+#: src/LyXFunc.cpp:682
 msgid "Print document failed"
 msgstr "打印文件失败"
 
-#: src/LyXFunc.cpp:837
+#: src/LyXFunc.cpp:799
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何改变将被遗失. 您确定希望恢复 文件 %1$s 到磁盘上保存的版本吗?"
 
-#: src/LyXFunc.cpp:839
+#: src/LyXFunc.cpp:801
 msgid "Revert to saved document?"
 msgstr "使用磁盘上文档?"
 
-#: src/LyXFunc.cpp:840 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:160
 msgid "&Revert"
 msgstr "还原(&R)"
 
-#: src/LyXFunc.cpp:1054 src/Text3.cpp:1519
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1523
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/LyXFunc.cpp:1063
+#: src/LyXFunc.cpp:1025
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/LyXFunc.cpp:1311
+#: src/LyXFunc.cpp:1273
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "打开子文档 %1$s..."
 
-#: src/LyXFunc.cpp:1420
-msgid "Syntax: set-color <lyx_name> <x11_name>"
-msgstr "语法: set-color <lyx_name> <x11_name>"
-
-#: src/LyXFunc.cpp:1431
-#, c-format
-msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
-
-#: src/LyXFunc.cpp:1524
+#: src/LyXFunc.cpp:1452
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1455
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/LyXFunc.cpp:1804
+#: src/LyXFunc.cpp:1732
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:1806
+#: src/LyXFunc.cpp:1734
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "无法读取文档"
 
-#: src/LyXFunc.cpp:1843
+#: src/LyXFunc.cpp:1771
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
-#: src/LyXFunc.cpp:1864
+#: src/LyXFunc.cpp:1792
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
@@ -15874,11 +15873,11 @@ msgstr "显示布局 "
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1626 src/Text3.cpp:1638
+#: src/Text3.cpp:1630 src/Text3.cpp:1642
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:1784 src/Text3.cpp:1795
+#: src/Text3.cpp:1788 src/Text3.cpp:1799
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -16013,42 +16012,21 @@ msgstr ""
 msgid "Could not read template"
 msgstr "无法读取文档模板"
 
-#: src/buffer_funcs.cpp:386
+#: src/buffer_funcs.cpp:387
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:392
+#: src/buffer_funcs.cpp:393
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:395
+#: src/buffer_funcs.cpp:396
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.cpp:412 src/insets/InsetCaption.cpp:290
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
 msgid "Senseless!!! "
 msgstr "无意义!!!"
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "无调试信息"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-msgid "General information"
-msgstr "通用信息"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr "程序开发人员的通用调试信息"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "所有调试信息"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "调试 `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16148,36 +16126,45 @@ msgstr "用户目录"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:120
+#: src/frontends/qt4/GuiApplication.cpp:144
 #, fuzzy
 msgid "About %1"
 msgstr "关于LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:120
-#: src/frontends/qt4/GuiPrefs.cpp:2395
+#: src/frontends/qt4/GuiApplication.cpp:144
+#: src/frontends/qt4/GuiPrefs.cpp:2454
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/frontends/qt4/GuiApplication.cpp:121
+#: src/frontends/qt4/GuiApplication.cpp:145
 #, fuzzy
 msgid "Reconfigure"
 msgstr "重配置(R)|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:121
+#: src/frontends/qt4/GuiApplication.cpp:145
 #, fuzzy
 msgid "Quit %1"
 msgstr "退出LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:299
+#: src/frontends/qt4/GuiApplication.cpp:543
 msgid "Exiting."
 msgstr "退出."
 
-#: src/frontends/qt4/GuiApplication.cpp:593
+#: src/frontends/qt4/GuiApplication.cpp:605
+msgid "Syntax: set-color <lyx_name> <x11_name>"
+msgstr "语法: set-color <lyx_name> <x11_name>"
+
+#: src/frontends/qt4/GuiApplication.cpp:621
+#, c-format
+msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
+msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
+
+#: src/frontends/qt4/GuiApplication.cpp:910
 #, fuzzy
 msgid "The current document was closed."
 msgstr "打印文件失败"
 
-#: src/frontends/qt4/GuiApplication.cpp:603
+#: src/frontends/qt4/GuiApplication.cpp:920
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16185,16 +16172,21 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:607
-#: src/frontends/qt4/GuiApplication.cpp:613
+#: src/frontends/qt4/GuiApplication.cpp:924
+#: src/frontends/qt4/GuiApplication.cpp:930
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:611
+#: src/frontends/qt4/GuiApplication.cpp:928
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
+
+#: src/frontends/qt4/GuiApplication.cpp:1093
+#, fuzzy
+msgid "Could not find UI defintion file"
+msgstr "无法读取配置文件"
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
 msgid "Bibliography Entry Settings"
@@ -16206,10 +16198,10 @@ msgstr "BibTeX文献"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1277
-#: src/frontends/qt4/GuiExternal.cpp:718 src/frontends/qt4/GuiGraphics.cpp:760
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1137
-#: src/frontends/qt4/GuiView.cpp:1195 src/frontends/qt4/GuiView.cpp:1328
-#: src/frontends/qt4/GuiView.cpp:1447 src/frontends/qt4/GuiView.cpp:1526
+#: src/frontends/qt4/GuiExternal.cpp:718 src/frontends/qt4/GuiGraphics.cpp:762
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1187
+#: src/frontends/qt4/GuiView.cpp:1245 src/frontends/qt4/GuiView.cpp:1378
+#: src/frontends/qt4/GuiView.cpp:1497 src/frontends/qt4/GuiView.cpp:1576
 msgid "Documents|#o#O"
 msgstr "文档|#o#O"
 
@@ -16229,60 +16221,60 @@ msgstr "BibTeX 式样 (*.bst)"
 msgid "Select a BibTeX style"
 msgstr "选择一个BibTeX式样"
 
-#: src/frontends/qt4/GuiBox.cpp:52
+#: src/frontends/qt4/GuiBox.cpp:56
 #, fuzzy
 msgid "No frame"
 msgstr "无边框"
 
-#: src/frontends/qt4/GuiBox.cpp:52
+#: src/frontends/qt4/GuiBox.cpp:56
 msgid "Simple rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:53
+#: src/frontends/qt4/GuiBox.cpp:57
 #, fuzzy
 msgid "Oval frame, thin"
 msgstr "细椭圆框"
 
-#: src/frontends/qt4/GuiBox.cpp:53
+#: src/frontends/qt4/GuiBox.cpp:57
 #, fuzzy
 msgid "Oval frame, thick"
 msgstr "粗椭圆框"
 
-#: src/frontends/qt4/GuiBox.cpp:54
+#: src/frontends/qt4/GuiBox.cpp:58
 msgid "Drop shadow"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:54
+#: src/frontends/qt4/GuiBox.cpp:58
 #, fuzzy
 msgid "Shaded background"
 msgstr "记事项背景"
 
-#: src/frontends/qt4/GuiBox.cpp:55
+#: src/frontends/qt4/GuiBox.cpp:59
 msgid "Double rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:68 src/frontends/qt4/GuiBox.cpp:327
-#: src/frontends/qt4/GuiBox.cpp:362
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:331
+#: src/frontends/qt4/GuiBox.cpp:366
 msgid "Height"
 msgstr "高度"
 
-#: src/frontends/qt4/GuiBox.cpp:68 src/frontends/qt4/GuiBox.cpp:330
-#: src/frontends/qt4/GuiBox.cpp:365
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:334
+#: src/frontends/qt4/GuiBox.cpp:369
 msgid "Depth"
 msgstr "深度"
 
-#: src/frontends/qt4/GuiBox.cpp:69 src/frontends/qt4/GuiBox.cpp:197
-#: src/frontends/qt4/GuiBox.cpp:333 src/frontends/qt4/GuiBox.cpp:368
-#: src/frontends/qt4/GuiBox.cpp:413
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:201
+#: src/frontends/qt4/GuiBox.cpp:337 src/frontends/qt4/GuiBox.cpp:372
+#: src/frontends/qt4/GuiBox.cpp:417
 msgid "Total Height"
 msgstr "总高度"
 
-#: src/frontends/qt4/GuiBox.cpp:69 src/frontends/qt4/GuiBox.cpp:336
-#: src/frontends/qt4/GuiBox.cpp:371
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:340
+#: src/frontends/qt4/GuiBox.cpp:375
 msgid "Width"
 msgstr "宽度"
 
-#: src/frontends/qt4/GuiBox.cpp:74
+#: src/frontends/qt4/GuiBox.cpp:78
 msgid "Box Settings"
 msgstr "边框设定"
 
@@ -16290,20 +16282,20 @@ msgstr "边框设定"
 msgid "Branch Settings"
 msgstr "分支设定"
 
-#: src/frontends/qt4/GuiBranches.cpp:41
+#: src/frontends/qt4/GuiBranches.cpp:42
 msgid "Branch"
 msgstr "分支"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
+#: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "已激活"
 
-#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiBranches.cpp:145
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
 #: src/frontends/qt4/GuiDocument.cpp:1434
 msgid "Yes"
 msgstr "是"
 
-#: src/frontends/qt4/GuiBranches.cpp:71 src/frontends/qt4/GuiDocument.cpp:1433
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1433
 msgid "No"
 msgstr "否"
 
@@ -16329,7 +16321,7 @@ msgstr "修改于 %1$s\n"
 #: src/frontends/qt4/GuiCharacter.cpp:76 src/frontends/qt4/GuiCharacter.cpp:88
 #: src/frontends/qt4/GuiCharacter.cpp:106
 #: src/frontends/qt4/GuiCharacter.cpp:117
-#: src/frontends/qt4/GuiCharacter.cpp:195
+#: src/frontends/qt4/GuiCharacter.cpp:188
 msgid "No change"
 msgstr "无改变"
 
@@ -16341,7 +16333,7 @@ msgstr "小号大写字体"
 #: src/frontends/qt4/GuiCharacter.cpp:80 src/frontends/qt4/GuiCharacter.cpp:98
 #: src/frontends/qt4/GuiCharacter.cpp:109
 #: src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiCharacter.cpp:194
+#: src/frontends/qt4/GuiCharacter.cpp:187
 msgid "Reset"
 msgstr "重置"
 
@@ -16398,42 +16390,42 @@ msgstr "文本格式"
 msgid "Keys"
 msgstr "关键字(&K)"
 
-#: src/frontends/qt4/GuiClipboard.cpp:342
+#: src/frontends/qt4/GuiClipboard.cpp:135
 msgid "LinkBack PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:343
+#: src/frontends/qt4/GuiClipboard.cpp:136
 msgid "PDF"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:354
+#: src/frontends/qt4/GuiClipboard.cpp:147
 #, fuzzy
 msgid "pasted"
 msgstr "粘贴"
 
-#: src/frontends/qt4/GuiClipboard.cpp:363
+#: src/frontends/qt4/GuiClipboard.cpp:156
 #, c-format
 msgid "%1$s Files"
 msgstr ""
 
-#: src/frontends/qt4/GuiClipboard.cpp:373
+#: src/frontends/qt4/GuiClipboard.cpp:166
 #, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "选择另存为文件名"
 
-#: src/frontends/qt4/GuiClipboard.cpp:383 src/frontends/qt4/GuiView.cpp:1209
-#: src/frontends/qt4/GuiView.cpp:1348 src/frontends/qt4/GuiView.cpp:1364
-#: src/frontends/qt4/GuiView.cpp:1381 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1502
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1259
+#: src/frontends/qt4/GuiView.cpp:1398 src/frontends/qt4/GuiView.cpp:1414
+#: src/frontends/qt4/GuiView.cpp:1431 src/frontends/qt4/GuiView.cpp:1514
+#: src/frontends/qt4/GuiView.cpp:1552
 msgid "Canceled."
 msgstr "已取消。"
 
-#: src/frontends/qt4/GuiClipboard.cpp:413
+#: src/frontends/qt4/GuiClipboard.cpp:206
 #, fuzzy
 msgid "Overwrite external file?"
 msgstr "覆盖文件吗？"
 
-#: src/frontends/qt4/GuiClipboard.cpp:414
+#: src/frontends/qt4/GuiClipboard.cpp:207
 #, fuzzy, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr ""
@@ -16444,32 +16436,32 @@ msgstr ""
 msgid "Next command"
 msgstr "下一命令"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:44
+#: src/frontends/qt4/GuiDelimiter.cpp:46
 msgid "big[[delimiter size]]"
 msgstr "big[[delimiter size]]"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:45
+#: src/frontends/qt4/GuiDelimiter.cpp:47
 msgid "Big[[delimiter size]]"
 msgstr "Big[[delimiter size]]"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:48
 msgid "bigg[[delimiter size]]"
 msgstr "bigg[[delimiter size]]"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:49
 msgid "Bigg[[delimiter size]]"
 msgstr "Bigg[[delimiter size]]"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:71
+#: src/frontends/qt4/GuiDelimiter.cpp:73
 msgid "Math Delimiter"
 msgstr "Math Delimiter"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:107
-#: src/frontends/qt4/GuiDelimiter.cpp:108
+#: src/frontends/qt4/GuiDelimiter.cpp:109
+#: src/frontends/qt4/GuiDelimiter.cpp:110
 msgid "(None)"
 msgstr "(无)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:112
 msgid "Variable"
 msgstr "变量"
 
@@ -16908,15 +16900,15 @@ msgstr "选择外部文件"
 msgid "Float Settings"
 msgstr "浮动项设置"
 
-#: src/frontends/qt4/GuiGraphics.cpp:152 src/frontends/qt4/GuiPrefs.cpp:861
+#: src/frontends/qt4/GuiGraphics.cpp:152 src/frontends/qt4/GuiPrefs.cpp:864
 msgid "Graphics"
 msgstr "图形"
 
-#: src/frontends/qt4/GuiGraphics.cpp:747
+#: src/frontends/qt4/GuiGraphics.cpp:749
 msgid "Select graphics file"
 msgstr "选择图形文件"
 
-#: src/frontends/qt4/GuiGraphics.cpp:759
+#: src/frontends/qt4/GuiGraphics.cpp:761
 msgid "Clipart|#C#c"
 msgstr "图|#C#c"
 
@@ -16971,35 +16963,35 @@ msgstr "程序列表设置"
 msgid "No dialect"
 msgstr "无方言"
 
-#: src/frontends/qt4/GuiLog.cpp:101 src/frontends/qt4/GuiLog.cpp:175
+#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:177
 msgid "LaTeX Log"
 msgstr "LaTeX 记录"
 
-#: src/frontends/qt4/GuiLog.cpp:177
+#: src/frontends/qt4/GuiLog.cpp:179
 msgid "Literate Programming Build Log"
 msgstr "Literate Programming Build Log"
 
-#: src/frontends/qt4/GuiLog.cpp:179
+#: src/frontends/qt4/GuiLog.cpp:181
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx出错信息"
 
-#: src/frontends/qt4/GuiLog.cpp:181
+#: src/frontends/qt4/GuiLog.cpp:183
 msgid "Version Control Log"
 msgstr "版本控制记录"
 
-#: src/frontends/qt4/GuiLog.cpp:207
+#: src/frontends/qt4/GuiLog.cpp:209
 msgid "No LaTeX log file found."
 msgstr "无法找到LaTeX记录文件"
 
-#: src/frontends/qt4/GuiLog.cpp:210
+#: src/frontends/qt4/GuiLog.cpp:212
 msgid "No literate programming build log file found."
 msgstr "No literate programming build log file found."
 
-#: src/frontends/qt4/GuiLog.cpp:213
+#: src/frontends/qt4/GuiLog.cpp:215
 msgid "No lyx2lyx error log file found."
 msgstr "无法找到lyx2lyx出错信息文件"
 
-#: src/frontends/qt4/GuiLog.cpp:216
+#: src/frontends/qt4/GuiLog.cpp:218
 msgid "No version control log file found."
 msgstr "无法找到版本控制记录"
 
@@ -17033,243 +17025,243 @@ msgstr ""
 " Normally, you won't need to set this, since the largest label width of all "
 "the items is used."
 
-#: src/frontends/qt4/GuiPrefs.cpp:128
+#: src/frontends/qt4/GuiPrefs.cpp:131
 msgid "System files|#S#s"
 msgstr "系统文件|#S#s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:132
+#: src/frontends/qt4/GuiPrefs.cpp:135
 msgid "User files|#U#u"
 msgstr "用户文件|#U#u"
 
-#: src/frontends/qt4/GuiPrefs.cpp:216
+#: src/frontends/qt4/GuiPrefs.cpp:219
 #, fuzzy
 msgid "Look & Feel"
 msgstr "显示"
 
-#: src/frontends/qt4/GuiPrefs.cpp:218
+#: src/frontends/qt4/GuiPrefs.cpp:221
 #, fuzzy
 msgid "Language Settings"
 msgstr "语言设置"
 
-#: src/frontends/qt4/GuiPrefs.cpp:219
+#: src/frontends/qt4/GuiPrefs.cpp:222
 #, fuzzy
 msgid "Output"
 msgstr "输出"
 
-#: src/frontends/qt4/GuiPrefs.cpp:220
+#: src/frontends/qt4/GuiPrefs.cpp:223
 #, fuzzy
 msgid "File Handling"
 msgstr "字体处理"
 
-#: src/frontends/qt4/GuiPrefs.cpp:357
+#: src/frontends/qt4/GuiPrefs.cpp:360
 msgid "Date format"
 msgstr "日期格式"
 
-#: src/frontends/qt4/GuiPrefs.cpp:384
+#: src/frontends/qt4/GuiPrefs.cpp:387
 #, fuzzy
 msgid "Keyboard/Mouse"
 msgstr "键盘"
 
-#: src/frontends/qt4/GuiPrefs.cpp:459
+#: src/frontends/qt4/GuiPrefs.cpp:462
 #, fuzzy
 msgid "Input Completion"
 msgstr "标题"
 
-#: src/frontends/qt4/GuiPrefs.cpp:588
+#: src/frontends/qt4/GuiPrefs.cpp:591
 msgid "Screen fonts"
 msgstr "显示字体"
 
-#: src/frontends/qt4/GuiPrefs.cpp:762
+#: src/frontends/qt4/GuiPrefs.cpp:765
 msgid "Colors"
 msgstr "颜色"
 
-#: src/frontends/qt4/GuiPrefs.cpp:932
+#: src/frontends/qt4/GuiPrefs.cpp:935
 msgid "Paths"
 msgstr "路径"
 
-#: src/frontends/qt4/GuiPrefs.cpp:987
+#: src/frontends/qt4/GuiPrefs.cpp:990
 #, fuzzy
 msgid "Select directory for example files"
 msgstr "选择模板文件"
 
-#: src/frontends/qt4/GuiPrefs.cpp:996
+#: src/frontends/qt4/GuiPrefs.cpp:999
 msgid "Select a document templates directory"
 msgstr "选择一个文本模版目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1005
+#: src/frontends/qt4/GuiPrefs.cpp:1008
 msgid "Select a temporary directory"
 msgstr "选择一个临时目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1014
+#: src/frontends/qt4/GuiPrefs.cpp:1017
 msgid "Select a backups directory"
 msgstr "选择一个备份目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1023
+#: src/frontends/qt4/GuiPrefs.cpp:1026
 msgid "Select a document directory"
 msgstr "选择一个文件目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1032
+#: src/frontends/qt4/GuiPrefs.cpp:1035
 msgid "Give a filename for the LyX server pipe"
 msgstr "提供一个LyX服务器管道文件名"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1045
+#: src/frontends/qt4/GuiPrefs.cpp:1048
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
 msgid "Spellchecker"
 msgstr "拼写检查器"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1067
+#: src/frontends/qt4/GuiPrefs.cpp:1070
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1068
+#: src/frontends/qt4/GuiPrefs.cpp:1071
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1069
+#: src/frontends/qt4/GuiPrefs.cpp:1072
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1071
+#: src/frontends/qt4/GuiPrefs.cpp:1074
 msgid "pspell (library)"
 msgstr "pspell (库)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1074
+#: src/frontends/qt4/GuiPrefs.cpp:1077
 msgid "aspell (library)"
 msgstr "aspell (库)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1154
+#: src/frontends/qt4/GuiPrefs.cpp:1157
 msgid "Converters"
 msgstr "转换器"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1424
+#: src/frontends/qt4/GuiPrefs.cpp:1462
 msgid "File formats"
 msgstr "文件格式"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1602
+#: src/frontends/qt4/GuiPrefs.cpp:1660
 msgid "Format in use"
 msgstr "使用中格式"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1603
+#: src/frontends/qt4/GuiPrefs.cpp:1661
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "不能删除一个正被使用的格式。请先删除此转换器。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1708
+#: src/frontends/qt4/GuiPrefs.cpp:1766
 msgid "Printer"
 msgstr "打印机"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1806 src/frontends/qt4/GuiPrefs.cpp:2434
+#: src/frontends/qt4/GuiPrefs.cpp:1864 src/frontends/qt4/GuiPrefs.cpp:2493
 msgid "User interface"
 msgstr "用户界面"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1884
+#: src/frontends/qt4/GuiPrefs.cpp:1943
 #, fuzzy
 msgid "Control"
 msgstr "项"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1956
+#: src/frontends/qt4/GuiPrefs.cpp:2015
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(&h)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1961
+#: src/frontends/qt4/GuiPrefs.cpp:2020
 #, fuzzy
 msgid "Function"
 msgstr "函数"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1962
+#: src/frontends/qt4/GuiPrefs.cpp:2021
 #, fuzzy
 msgid "Shortcut"
 msgstr "快捷键(&h)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2038
+#: src/frontends/qt4/GuiPrefs.cpp:2097
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2042
+#: src/frontends/qt4/GuiPrefs.cpp:2101
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "音标(y)|y"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2046
+#: src/frontends/qt4/GuiPrefs.cpp:2105
 #, fuzzy
 msgid "Document and Window"
 msgstr "文档头出错"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2050
+#: src/frontends/qt4/GuiPrefs.cpp:2109
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2054
+#: src/frontends/qt4/GuiPrefs.cpp:2113
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS Miscellaneous"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2180 src/frontends/qt4/GuiPrefs.cpp:2247
+#: src/frontends/qt4/GuiPrefs.cpp:2239 src/frontends/qt4/GuiPrefs.cpp:2306
 #, fuzzy
 msgid "Res&tore"
 msgstr "恢复(&R)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2315 src/frontends/qt4/GuiPrefs.cpp:2322
-#: src/frontends/qt4/GuiPrefs.cpp:2329 src/frontends/qt4/GuiPrefs.cpp:2341
+#: src/frontends/qt4/GuiPrefs.cpp:2374 src/frontends/qt4/GuiPrefs.cpp:2381
+#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2400
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "未能创建目录。退出。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2316
+#: src/frontends/qt4/GuiPrefs.cpp:2375
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "未知函数"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2323
+#: src/frontends/qt4/GuiPrefs.cpp:2382
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2330
+#: src/frontends/qt4/GuiPrefs.cpp:2389
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2342
+#: src/frontends/qt4/GuiPrefs.cpp:2401
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "添加分支"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2362
+#: src/frontends/qt4/GuiPrefs.cpp:2421
 msgid "Identity"
 msgstr "身份"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2557
+#: src/frontends/qt4/GuiPrefs.cpp:2616
 msgid "Choose bind file"
 msgstr "选择快捷键文件"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2558
+#: src/frontends/qt4/GuiPrefs.cpp:2617
 msgid "LyX bind files (*.bind)"
 msgstr "LyX快捷键文件 (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2564
+#: src/frontends/qt4/GuiPrefs.cpp:2623
 msgid "Choose UI file"
 msgstr "选择用户界面文件"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2565
+#: src/frontends/qt4/GuiPrefs.cpp:2624
 msgid "LyX UI files (*.ui)"
 msgstr "LyX用户界面文件 (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2571
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 msgid "Choose keyboard map"
 msgstr "选择键盘映射"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2572
+#: src/frontends/qt4/GuiPrefs.cpp:2631
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX键盘映射 (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2578
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Choose personal dictionary"
 msgstr "选择用户目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2638
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2638
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -17305,7 +17297,7 @@ msgstr "跳至"
 msgid "Find and Replace"
 msgstr "查找并替换"
 
-#: src/frontends/qt4/GuiSendto.cpp:36
+#: src/frontends/qt4/GuiSendto.cpp:37
 msgid "Send Document to Command"
 msgstr "指定处理文档之命令"
 
@@ -17355,408 +17347,408 @@ msgstr "已检查一个单词."
 msgid "Spelling check completed"
 msgstr "拼写检查结束"
 
-#: src/frontends/qt4/GuiSymbols.cpp:51
+#: src/frontends/qt4/GuiSymbols.cpp:52
 #, fuzzy
 msgid "Basic Latin"
 msgstr "Variation"
 
-#: src/frontends/qt4/GuiSymbols.cpp:52
+#: src/frontends/qt4/GuiSymbols.cpp:53
 #, fuzzy
 msgid "Latin-1 Supplement"
 msgstr "Supplementary"
 
-#: src/frontends/qt4/GuiSymbols.cpp:53
+#: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Latin Extended-A"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:54
+#: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Latin Extended-B"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:55
+#: src/frontends/qt4/GuiSymbols.cpp:56
 #, fuzzy
 msgid "IPA Extensions"
 msgstr "后缀(&x):"
 
-#: src/frontends/qt4/GuiSymbols.cpp:56
+#: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "Spacing Modifier Letters"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:57
+#: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "Combining Diacritical Marks"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:59
+#: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Cyrillic"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:62
+#: src/frontends/qt4/GuiSymbols.cpp:63
 #, fuzzy
 msgid "Arabic"
 msgstr "A-M|阿拉伯语(埃及)"
 
-#: src/frontends/qt4/GuiSymbols.cpp:63
+#: src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Devanagari"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:64
+#: src/frontends/qt4/GuiSymbols.cpp:65
 #, fuzzy
 msgid "Bengali"
 msgstr "开始"
 
-#: src/frontends/qt4/GuiSymbols.cpp:65
+#: src/frontends/qt4/GuiSymbols.cpp:66
 msgid "Gurmukhi"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:66
+#: src/frontends/qt4/GuiSymbols.cpp:67
 #, fuzzy
 msgid "Gujarati"
 msgstr "SubVariation"
 
-#: src/frontends/qt4/GuiSymbols.cpp:67
+#: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Oriya"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:68
+#: src/frontends/qt4/GuiSymbols.cpp:69
 #, fuzzy
 msgid "Tamil"
 msgstr "邮件"
 
-#: src/frontends/qt4/GuiSymbols.cpp:69
+#: src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Telugu"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:70
+#: src/frontends/qt4/GuiSymbols.cpp:71
 #, fuzzy
 msgid "Kannada"
 msgstr "加拿大语"
 
-#: src/frontends/qt4/GuiSymbols.cpp:71
+#: src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Malayalam"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:73
+#: src/frontends/qt4/GuiSymbols.cpp:74
 #, fuzzy
 msgid "Lao"
 msgstr "显示布局 "
 
-#: src/frontends/qt4/GuiSymbols.cpp:74
+#: src/frontends/qt4/GuiSymbols.cpp:75
 #, fuzzy
 msgid "Tibetan"
 msgstr "beta"
 
-#: src/frontends/qt4/GuiSymbols.cpp:75
+#: src/frontends/qt4/GuiSymbols.cpp:76
 #, fuzzy
 msgid "Georgian"
 msgstr "德语"
 
-#: src/frontends/qt4/GuiSymbols.cpp:76
+#: src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Hangul Jamo"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:77
+#: src/frontends/qt4/GuiSymbols.cpp:78
 #, fuzzy
 msgid "Phonetic Extensions"
 msgstr "后缀(&x):"
 
-#: src/frontends/qt4/GuiSymbols.cpp:78
+#: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Latin Extended Additional"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:79
+#: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "Greek Extended"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:80
+#: src/frontends/qt4/GuiSymbols.cpp:81
 #, fuzzy
 msgid "General Punctuation"
 msgstr "通用信息"
 
-#: src/frontends/qt4/GuiSymbols.cpp:81
+#: src/frontends/qt4/GuiSymbols.cpp:82
 #, fuzzy
 msgid "Superscripts and Subscripts"
 msgstr "上标(S)|S"
 
-#: src/frontends/qt4/GuiSymbols.cpp:82
+#: src/frontends/qt4/GuiSymbols.cpp:83
 msgid "Currency Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:83
+#: src/frontends/qt4/GuiSymbols.cpp:84
 msgid "Combining Diacritical Marks for Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:84
+#: src/frontends/qt4/GuiSymbols.cpp:85
 #, fuzzy
 msgid "Letterlike Symbols"
 msgstr "音标(y)|y"
 
-#: src/frontends/qt4/GuiSymbols.cpp:85
+#: src/frontends/qt4/GuiSymbols.cpp:86
 #, fuzzy
 msgid "Number Forms"
 msgstr "行数"
 
-#: src/frontends/qt4/GuiSymbols.cpp:87
+#: src/frontends/qt4/GuiSymbols.cpp:88
 #, fuzzy
 msgid "Mathematical Operators"
 msgstr "Mathematica|a"
 
-#: src/frontends/qt4/GuiSymbols.cpp:88
+#: src/frontends/qt4/GuiSymbols.cpp:89
 #, fuzzy
 msgid "Miscellaneous Technical"
 msgstr "Miscel·lània"
 
-#: src/frontends/qt4/GuiSymbols.cpp:89
+#: src/frontends/qt4/GuiSymbols.cpp:90
 #, fuzzy
 msgid "Control Pictures"
 msgstr "猜想"
 
-#: src/frontends/qt4/GuiSymbols.cpp:90
+#: src/frontends/qt4/GuiSymbols.cpp:91
 msgid "Optical Character Recognition"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:91
+#: src/frontends/qt4/GuiSymbols.cpp:92
 msgid "Enclosed Alphanumerics"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:92
+#: src/frontends/qt4/GuiSymbols.cpp:93
 #, fuzzy
 msgid "Box Drawing"
 msgstr "边框设定"
 
-#: src/frontends/qt4/GuiSymbols.cpp:93
+#: src/frontends/qt4/GuiSymbols.cpp:94
 #, fuzzy
 msgid "Block Elements"
 msgstr "致谢"
 
-#: src/frontends/qt4/GuiSymbols.cpp:94
+#: src/frontends/qt4/GuiSymbols.cpp:95
 #, fuzzy
 msgid "Geometric Shapes"
 msgstr "斜字体文本"
 
-#: src/frontends/qt4/GuiSymbols.cpp:95
+#: src/frontends/qt4/GuiSymbols.cpp:96
 #, fuzzy
 msgid "Miscellaneous Symbols"
 msgstr "Miscel·lània"
 
-#: src/frontends/qt4/GuiSymbols.cpp:96
+#: src/frontends/qt4/GuiSymbols.cpp:97
 #, fuzzy
 msgid "Dingbats"
 msgstr "Dings 1"
 
-#: src/frontends/qt4/GuiSymbols.cpp:97
+#: src/frontends/qt4/GuiSymbols.cpp:98
 msgid "Miscellaneous Mathematical Symbols-A"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:98
+#: src/frontends/qt4/GuiSymbols.cpp:99
 msgid "CJK Symbols and Punctuation"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:99
+#: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "Hiragana"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:100
+#: src/frontends/qt4/GuiSymbols.cpp:101
 #, fuzzy
 msgid "Katakana"
 msgstr "加泰罗尼亚语"
 
-#: src/frontends/qt4/GuiSymbols.cpp:101
+#: src/frontends/qt4/GuiSymbols.cpp:102
 #, fuzzy
 msgid "Bopomofo"
 msgstr "行下(&m)"
 
-#: src/frontends/qt4/GuiSymbols.cpp:102
+#: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Hangul Compatibility Jamo"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:103
+#: src/frontends/qt4/GuiSymbols.cpp:104
 msgid "Kanbun"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:104
+#: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Enclosed CJK Letters and Months"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:105
+#: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "CJK Compatibility"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:106
+#: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "CJK Unified Ideographs"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:107
+#: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "Hangul Syllables"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:108
+#: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "High Surrogates"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:109
+#: src/frontends/qt4/GuiSymbols.cpp:110
 msgid "Private Use High Surrogates"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:110
+#: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "Low Surrogates"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:111
+#: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "Private Use Area"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:112
+#: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "CJK Compatibility Ideographs"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:113
+#: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "Alphabetic Presentation Forms"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:114
+#: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "Arabic Presentation Forms-A"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:115
+#: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Combining Half Marks"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:116
+#: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "CJK Compatibility Forms"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:117
+#: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "Small Form Variants"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:118
+#: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "Arabic Presentation Forms-B"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:119
+#: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Halfwidth and Fullwidth Forms"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:120
+#: src/frontends/qt4/GuiSymbols.cpp:121
 #, fuzzy
 msgid "Specials"
 msgstr "调试邮件"
 
-#: src/frontends/qt4/GuiSymbols.cpp:121
+#: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Linear B Syllabary"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:122
+#: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Linear B Ideograms"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:123
+#: src/frontends/qt4/GuiSymbols.cpp:124
 #, fuzzy
 msgid "Aegean Numbers"
 msgstr "页码"
 
-#: src/frontends/qt4/GuiSymbols.cpp:124
+#: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Ancient Greek Numbers"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:125
+#: src/frontends/qt4/GuiSymbols.cpp:126
 #, fuzzy
 msgid "Old Italic"
 msgstr "斜体"
 
-#: src/frontends/qt4/GuiSymbols.cpp:126
+#: src/frontends/qt4/GuiSymbols.cpp:127
 #, fuzzy
 msgid "Gothic"
 msgstr "coth"
 
-#: src/frontends/qt4/GuiSymbols.cpp:127
+#: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Ugaritic"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:128
+#: src/frontends/qt4/GuiSymbols.cpp:129
 msgid "Old Persian"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:129
+#: src/frontends/qt4/GuiSymbols.cpp:130
 #, fuzzy
 msgid "Deseret"
 msgstr "重置"
 
-#: src/frontends/qt4/GuiSymbols.cpp:130
+#: src/frontends/qt4/GuiSymbols.cpp:131
 #, fuzzy
 msgid "Shavian"
 msgstr "拉脱维亚语"
 
-#: src/frontends/qt4/GuiSymbols.cpp:131
+#: src/frontends/qt4/GuiSymbols.cpp:132
 msgid "Osmanya"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:132
+#: src/frontends/qt4/GuiSymbols.cpp:133
 #, fuzzy
 msgid "Cypriot Syllabary"
 msgstr "Corollary"
 
-#: src/frontends/qt4/GuiSymbols.cpp:133
+#: src/frontends/qt4/GuiSymbols.cpp:134
 #, fuzzy
 msgid "Kharoshthi"
 msgstr "varnothing"
 
-#: src/frontends/qt4/GuiSymbols.cpp:134
+#: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Byzantine Musical Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:135
+#: src/frontends/qt4/GuiSymbols.cpp:136
 #, fuzzy
 msgid "Musical Symbols"
 msgstr "音标(y)|y"
 
-#: src/frontends/qt4/GuiSymbols.cpp:136
+#: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Ancient Greek Musical Notation"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:137
+#: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Tai Xuan Jing Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:138
+#: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "Mathematical Alphanumeric Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:139
+#: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "CJK Unified Ideographs Extension B"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:140
+#: src/frontends/qt4/GuiSymbols.cpp:141
 msgid "CJK Compatibility Ideographs Supplement"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:141
+#: src/frontends/qt4/GuiSymbols.cpp:142
 #, fuzzy
 msgid "Tags"
 msgstr "页面"
 
-#: src/frontends/qt4/GuiSymbols.cpp:142
+#: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "Variation Selectors Supplement"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:143
+#: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Supplementary Private Use Area-A"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:144
+#: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Supplementary Private Use Area-B"
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:223
+#: src/frontends/qt4/GuiSymbols.cpp:224
 #, fuzzy
 msgid "Character: "
 msgstr "字符集"
 
-#: src/frontends/qt4/GuiSymbols.cpp:224
+#: src/frontends/qt4/GuiSymbols.cpp:225
 msgid "Code Point: "
 msgstr ""
 
-#: src/frontends/qt4/GuiSymbols.cpp:267
+#: src/frontends/qt4/GuiSymbols.cpp:268
 #, fuzzy
 msgid "Symbols"
 msgstr "符号"
@@ -17777,13 +17769,26 @@ msgstr "TeX信息"
 msgid "Outline"
 msgstr "概要"
 
-#: src/frontends/qt4/GuiToolbar.cpp:541
+#: src/frontends/qt4/GuiToolbar.cpp:545
 msgid "Filtering layouts with \""
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:544 src/frontends/qt4/GuiToolbar.cpp:593
+#: src/frontends/qt4/GuiToolbar.cpp:548 src/frontends/qt4/GuiToolbar.cpp:597
 msgid "Enter characters to filter the layout list."
 msgstr ""
+
+#: src/frontends/qt4/GuiToolbar.cpp:1104
+msgid "auto"
+msgstr "自动"
+
+#: src/frontends/qt4/GuiToolbar.cpp:1109 src/frontends/qt4/GuiToolbar.cpp:1118
+msgid "off"
+msgstr "关闭"
+
+#: src/frontends/qt4/GuiToolbar.cpp:1125
+#, c-format
+msgid "Toolbar \"%1$s\" state set to %2$s"
+msgstr "工具条 \"%1$s\" 状态设置为 %2$s"
 
 #: src/frontends/qt4/GuiVSpace.cpp:44
 msgid "Vertical Space Settings"
@@ -17798,74 +17803,79 @@ msgstr "版本"
 msgid "unknown version"
 msgstr "未知的版本"
 
-#: src/frontends/qt4/GuiView.cpp:183
+#: src/frontends/qt4/GuiView.cpp:185
 msgid "Small-sized icons"
 msgstr "小图标"
 
-#: src/frontends/qt4/GuiView.cpp:190
+#: src/frontends/qt4/GuiView.cpp:192
 msgid "Normal-sized icons"
 msgstr "中图标"
 
-#: src/frontends/qt4/GuiView.cpp:197
+#: src/frontends/qt4/GuiView.cpp:199
 msgid "Big-sized icons"
 msgstr "大图标"
 
-#: src/frontends/qt4/GuiView.cpp:1136
+#: src/frontends/qt4/GuiView.cpp:387
+#, c-format
+msgid "Unknown toolbar \"%1$s\""
+msgstr "未知工具条 \"%1$s\""
+
+#: src/frontends/qt4/GuiView.cpp:1186
 msgid "Select template file"
 msgstr "选择模板文件"
 
-#: src/frontends/qt4/GuiView.cpp:1138 src/frontends/qt4/GuiView.cpp:1527
+#: src/frontends/qt4/GuiView.cpp:1188 src/frontends/qt4/GuiView.cpp:1577
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1141 src/frontends/qt4/GuiView.cpp:1200
-#: src/frontends/qt4/GuiView.cpp:1453 src/frontends/qt4/GuiView.cpp:1534
+#: src/frontends/qt4/GuiView.cpp:1191 src/frontends/qt4/GuiView.cpp:1250
+#: src/frontends/qt4/GuiView.cpp:1503 src/frontends/qt4/GuiView.cpp:1584
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1158
+#: src/frontends/qt4/GuiView.cpp:1208
 msgid "Document not loaded."
 msgstr "文档未读入"
 
-#: src/frontends/qt4/GuiView.cpp:1194
+#: src/frontends/qt4/GuiView.cpp:1244
 msgid "Select document to open"
 msgstr "选择要打开的文档"
 
-#: src/frontends/qt4/GuiView.cpp:1196 src/frontends/qt4/GuiView.cpp:1329
-#: src/frontends/qt4/GuiView.cpp:1448
+#: src/frontends/qt4/GuiView.cpp:1246 src/frontends/qt4/GuiView.cpp:1379
+#: src/frontends/qt4/GuiView.cpp:1498
 msgid "Examples|#E#e"
 msgstr "示例|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1232
+#: src/frontends/qt4/GuiView.cpp:1282
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "打开文档 %1$s ..."
 
-#: src/frontends/qt4/GuiView.cpp:1241
+#: src/frontends/qt4/GuiView.cpp:1291
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文档 %1$s 已打开"
 
-#: src/frontends/qt4/GuiView.cpp:1243
+#: src/frontends/qt4/GuiView.cpp:1293
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "无法打开文档 %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1272
+#: src/frontends/qt4/GuiView.cpp:1322
 msgid "Couldn't import file"
 msgstr "无法导入文件"
 
-#: src/frontends/qt4/GuiView.cpp:1273
+#: src/frontends/qt4/GuiView.cpp:1323
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "无格式 %1$s 的导入信息."
 
-#: src/frontends/qt4/GuiView.cpp:1324
+#: src/frontends/qt4/GuiView.cpp:1374
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "选择导入文件 %1$s "
 
-#: src/frontends/qt4/GuiView.cpp:1375 src/frontends/qt4/GuiView.cpp:1551
+#: src/frontends/qt4/GuiView.cpp:1425 src/frontends/qt4/GuiView.cpp:1601
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -17875,41 +17885,41 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1555
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1605
 msgid "Overwrite document?"
 msgstr "覆盖文件?"
 
-#: src/frontends/qt4/GuiView.cpp:1386
+#: src/frontends/qt4/GuiView.cpp:1436
 #, c-format
 msgid "Importing %1$s..."
 msgstr "导入 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1389
+#: src/frontends/qt4/GuiView.cpp:1439
 msgid "imported."
 msgstr "导入的。"
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1441
 #, fuzzy
 msgid "file not imported!"
 msgstr "文件没有找到"
 
-#: src/frontends/qt4/GuiView.cpp:1446
+#: src/frontends/qt4/GuiView.cpp:1496
 msgid "Select LyX document to insert"
 msgstr "选择插入的LyX文档"
 
-#: src/frontends/qt4/GuiView.cpp:1487
+#: src/frontends/qt4/GuiView.cpp:1537
 msgid "Select file to insert"
 msgstr "选择插入文件"
 
-#: src/frontends/qt4/GuiView.cpp:1524
+#: src/frontends/qt4/GuiView.cpp:1574
 msgid "Choose a filename to save document as"
 msgstr "选择另存为文件名"
 
-#: src/frontends/qt4/GuiView.cpp:1556 src/frontends/qt4/GuiView.cpp:1601
+#: src/frontends/qt4/GuiView.cpp:1606 src/frontends/qt4/GuiView.cpp:1651
 msgid "&Rename"
 msgstr "重命名(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1597
+#: src/frontends/qt4/GuiView.cpp:1647
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -17920,16 +17930,16 @@ msgstr ""
 "\n"
 "Do you want to rename the document and try again?"
 
-#: src/frontends/qt4/GuiView.cpp:1600
+#: src/frontends/qt4/GuiView.cpp:1650
 msgid "Rename and save?"
 msgstr "改名并保存?"
 
-#: src/frontends/qt4/GuiView.cpp:1601
+#: src/frontends/qt4/GuiView.cpp:1651
 #, fuzzy
 msgid "&Retry"
 msgstr "恢复(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1651
+#: src/frontends/qt4/GuiView.cpp:1701
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -17940,39 +17950,21 @@ msgstr ""
 "\n"
 "您希望保存或取消这些变化?"
 
-#: src/frontends/qt4/GuiView.cpp:1654
+#: src/frontends/qt4/GuiView.cpp:1704
 msgid "&Discard"
 msgstr "放弃(&D)"
 
-#: src/frontends/qt4/GuiView.cpp:1747
+#: src/frontends/qt4/GuiView.cpp:1803
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "保存文件 %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1757
+#: src/frontends/qt4/GuiView.cpp:1813
 #, fuzzy
 msgid "All documents saved."
 msgstr "未保存文档"
 
-#: src/frontends/qt4/GuiView.cpp:1776
-#, c-format
-msgid "Unknown toolbar \"%1$s\""
-msgstr "未知工具条 \"%1$s\""
-
-#: src/frontends/qt4/GuiView.cpp:1783
-msgid "off"
-msgstr "关闭"
-
-#: src/frontends/qt4/GuiView.cpp:1785
-msgid "auto"
-msgstr "自动"
-
-#: src/frontends/qt4/GuiView.cpp:1787
-#, c-format
-msgid "Toolbar \"%1$s\" state set to %2$s"
-msgstr "工具条 \"%1$s\" 状态设置为 %2$s"
-
-#: src/frontends/qt4/GuiView.cpp:1971
+#: src/frontends/qt4/GuiView.cpp:2007
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -17991,25 +17983,25 @@ msgstr ""
 msgid "Literate Source"
 msgstr "LaTeX源程序"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1128
+#: src/frontends/qt4/GuiWorkArea.cpp:1132
 msgid " (changed)"
 msgstr " (改变)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1132
+#: src/frontends/qt4/GuiWorkArea.cpp:1136
 msgid " (read only)"
 msgstr " (只读)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1219
+#: src/frontends/qt4/GuiWorkArea.cpp:1223
 #, fuzzy
 msgid "Close File"
 msgstr "关闭"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1612
+#: src/frontends/qt4/GuiWorkArea.cpp:1616
 #, fuzzy
 msgid "Hide tab"
 msgstr "delta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1614
+#: src/frontends/qt4/GuiWorkArea.cpp:1618
 #, fuzzy
 msgid "Close tab"
 msgstr "关闭"
@@ -18023,54 +18015,49 @@ msgstr "浮动项设置"
 msgid "Click to detach"
 msgstr "单击"
 
-#: src/frontends/qt4/Menus.cpp:655
-#, fuzzy
-msgid "Clear group"
-msgstr "清除页面"
+#: src/frontends/qt4/Menus.cpp:649
+msgid "No Group"
+msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:699
+#: src/frontends/qt4/Menus.cpp:694
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "无打开文档!"
 
-#: src/frontends/qt4/Menus.cpp:725 src/frontends/qt4/Menus.cpp:804
-#: src/frontends/qt4/Menus.cpp:824 src/frontends/qt4/Menus.cpp:845
-#: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1047
-#: src/frontends/qt4/Menus.cpp:1078
+#: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
+#: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
+#: src/frontends/qt4/Menus.cpp:1052
 msgid "No Document Open!"
 msgstr "无打开文档!"
 
-#: src/frontends/qt4/Menus.cpp:942
+#: src/frontends/qt4/Menus.cpp:937
 msgid "Master Document"
 msgstr "主文档"
 
-#: src/frontends/qt4/Menus.cpp:965
+#: src/frontends/qt4/Menus.cpp:954
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:986
+#: src/frontends/qt4/Menus.cpp:975
 #, fuzzy
 msgid "Other Lists"
 msgstr "其他浮动项"
 
-#: src/frontends/qt4/Menus.cpp:995
+#: src/frontends/qt4/Menus.cpp:984
 msgid "No Table of contents"
 msgstr "无目录"
 
-#: src/frontends/qt4/Menus.cpp:1036
-msgid " (auto)"
-msgstr " (自动)"
-
-#: src/frontends/qt4/Menus.cpp:1055
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "No Branch in Document!"
 msgstr "文档中无分支!"
 
-#: src/frontends/qt4/Menus.cpp:1086
+#: src/frontends/qt4/Menus.cpp:1060
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "No font change defined."
 
-#: src/frontends/qt4/Menus.cpp:1605
+#: src/frontends/qt4/Menus.cpp:1579
 #, fuzzy
 msgid "No action defined!"
 msgstr "No font change defined."
@@ -18081,7 +18068,7 @@ msgstr "空格"
 
 #: src/frontends/qt4/Validator.cpp:175 src/insets/ExternalSupport.cpp:365
 #: src/insets/InsetBibtex.cpp:276 src/insets/InsetGraphics.cpp:586
-#: src/insets/InsetInclude.cpp:464
+#: src/insets/InsetInclude.cpp:465
 msgid "Invalid filename"
 msgstr "无效文件名"
 
@@ -18160,7 +18147,7 @@ msgid "Labels and References"
 msgstr "使用未引用的文献"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:277
-#: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:465
+#: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:466
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -18300,7 +18287,7 @@ msgstr "分支:"
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:217
 msgid "branch"
 msgstr "branch"
 
@@ -18308,12 +18295,12 @@ msgstr "branch"
 msgid "Opened Caption Inset"
 msgstr "Opened Caption Inset"
 
-#: src/insets/InsetCaption.cpp:302
+#: src/insets/InsetCaption.cpp:303
 #, c-format
 msgid "Sub-%1$s"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:187
+#: src/insets/InsetCitation.cpp:190
 #, fuzzy
 msgid "not cited"
 msgstr "被保护"
@@ -18354,7 +18341,7 @@ msgstr "命令项: "
 msgid "Unknown parameter name: "
 msgstr "未知参数名: "
 
-#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:121
+#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:122
 msgid "Missing \\end_inset at this point."
 msgstr "Missing \\end_inset at this point."
 
@@ -18415,7 +18402,7 @@ msgstr "打开的尾注项"
 msgid "footnote"
 msgstr "脚注"
 
-#: src/insets/InsetGraphics.cpp:464 src/insets/InsetInclude.cpp:542
+#: src/insets/InsetGraphics.cpp:464 src/insets/InsetInclude.cpp:543
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -18436,24 +18423,24 @@ msgstr "No conversion of %1$s is needed after all"
 msgid "Graphics file: %1$s"
 msgstr "图形文件: %1$s"
 
-#: src/insets/InsetInclude.cpp:339
+#: src/insets/InsetInclude.cpp:340
 msgid "Verbatim Input"
 msgstr "Verbatim Input"
 
-#: src/insets/InsetInclude.cpp:342
+#: src/insets/InsetInclude.cpp:343
 msgid "Verbatim Input*"
 msgstr "Verbatim Input*"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:630
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:631
 msgid "Recursive input"
 msgstr "迭代输入"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:631
+#: src/insets/InsetInclude.cpp:440 src/insets/InsetInclude.cpp:632
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "试图包含文件 %1$s 本身! 忽略包含."
 
-#: src/insets/InsetInclude.cpp:487
+#: src/insets/InsetInclude.cpp:488
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -18464,11 +18451,11 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:493
+#: src/insets/InsetInclude.cpp:494
 msgid "Different textclasses"
 msgstr "不同文档类"
 
-#: src/insets/InsetInclude.cpp:508
+#: src/insets/InsetInclude.cpp:509
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -18479,7 +18466,7 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:512
+#: src/insets/InsetInclude.cpp:513
 #, fuzzy
 msgid "Module not found"
 msgstr "文件没有找到"
@@ -18488,37 +18475,37 @@ msgstr "文件没有找到"
 msgid "Index"
 msgstr "索引"
 
-#: src/insets/InsetInfo.cpp:66
+#: src/insets/InsetInfo.cpp:67
 #, fuzzy
 msgid "Information regarding "
 msgstr "无编辑 %1$s 的信息"
 
-#: src/insets/InsetInfo.cpp:174
+#: src/insets/InsetInfo.cpp:175
 #, fuzzy
 msgid "Unknown Info: "
 msgstr "未知单词："
 
-#: src/insets/InsetInfo.cpp:198 src/insets/InsetInfo.cpp:203
+#: src/insets/InsetInfo.cpp:199 src/insets/InsetInfo.cpp:204
 #, fuzzy
 msgid "yes"
 msgstr "样式"
 
-#: src/insets/InsetInfo.cpp:198 src/insets/InsetInfo.cpp:203
+#: src/insets/InsetInfo.cpp:199 src/insets/InsetInfo.cpp:204
 #, fuzzy
 msgid "no"
 msgstr "撤消"
 
-#: src/insets/InsetInfo.cpp:211
+#: src/insets/InsetInfo.cpp:212
 #, fuzzy, c-format
 msgid "Unknown action %1$s"
 msgstr "未知操作"
 
-#: src/insets/InsetInfo.cpp:216
+#: src/insets/InsetInfo.cpp:217
 #, fuzzy, c-format
 msgid "No menu entry for action %1$s"
 msgstr "术语索引"
 
-#: src/insets/InsetInfo.cpp:244
+#: src/insets/InsetInfo.cpp:245
 #, fuzzy
 msgid "Unknown buffer info"
 msgstr "未知用户"
@@ -18686,16 +18673,16 @@ msgstr "以 '%1$s' 开头的参数有:  %2$s"
 msgid "Opened Marginal Note Inset"
 msgstr "打开的边注嵌入项"
 
-#: src/insets/InsetNewpage.cpp:180 src/insets/InsetNewpage.cpp:192
+#: src/insets/InsetNewpage.cpp:179 src/insets/InsetNewpage.cpp:191
 #, fuzzy
 msgid "New Page"
 msgstr "清除页面"
 
-#: src/insets/InsetNewpage.cpp:186
+#: src/insets/InsetNewpage.cpp:185
 msgid "Clear Page"
 msgstr "清除页面"
 
-#: src/insets/InsetNewpage.cpp:189
+#: src/insets/InsetNewpage.cpp:188
 msgid "Clear Double Page"
 msgstr "Clear Double Page"
 
@@ -18856,7 +18843,7 @@ msgstr "Protected Space|r"
 msgid "Unknown TOC type"
 msgstr "未知目录项"
 
-#: src/insets/InsetTabular.cpp:3053
+#: src/insets/InsetTabular.cpp:3055
 msgid "Opened table"
 msgstr "打开的表格"
 
@@ -18864,7 +18851,7 @@ msgstr "打开的表格"
 msgid "Opened Text Inset"
 msgstr "打开的文本嵌入项"
 
-#: src/insets/InsetVSpace.cpp:128
+#: src/insets/InsetVSpace.cpp:127
 msgid "Vertical Space"
 msgstr "竖向间隔"
 
@@ -19016,11 +19003,6 @@ msgstr "词语已被更新。"
 msgid " strings have been replaced."
 msgstr "词语已被更新。"
 
-#: src/mathed/InsetFormulaMacro.cpp:118
-#, c-format
-msgid " Macro: %1$s: "
-msgstr "宏：%1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19118,6 +19100,72 @@ msgstr "摘要"
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "引用: "
+
+#: src/support/Package.cpp:441
+msgid "LyX binary not found"
+msgstr "未找到LyX可执行文件"
+
+#: src/support/Package.cpp:442
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr "无法从命令行决定LyX可执行文件的目录 %1$s"
+
+#: src/support/Package.cpp:561
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+
+#: src/support/Package.cpp:642 src/support/Package.cpp:669
+msgid "File not found"
+msgstr "文件没有找到"
+
+#: src/support/Package.cpp:643
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+
+#: src/support/Package.cpp:670
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"无效 %1$s 环境变量.\n"
+"目录 %2$s 未包含 %3$s."
+
+#: src/support/Package.cpp:694
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"无效 %1$s 环境变量.\n"
+"%2$s 不是一个目录."
+
+#: src/support/Package.cpp:696
+msgid "Directory not found"
+msgstr "找不到目录"
+
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "无调试信息"
+
+#: src/support/debug.cpp:39
+msgid "General information"
+msgstr "通用信息"
 
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
@@ -19228,6 +19276,19 @@ msgstr "数学宏"
 msgid "RTL/Bidi"
 msgstr ""
 
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr "程序开发人员的通用调试信息"
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "所有调试信息"
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "调试 `%1$s' (%2$s)"
+
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"
 msgstr "zh_CN"
@@ -19259,6 +19320,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知用户"
+
+#, fuzzy
+#~ msgid "Clear group"
+#~ msgstr "清除页面"
+
+#~ msgid " (auto)"
+#~ msgstr " (自动)"
+
+#~ msgid " Macro: %1$s: "
+#~ msgstr "宏：%1$s: "
 
 #~ msgid "Plain Text"
 #~ msgstr "纯文本"
@@ -19441,53 +19512,6 @@ msgstr "未知用户"
 
 #~ msgid "You cannot set multicolumn vertically."
 #~ msgstr "不能竖向设置多列表格"
-
-#~ msgid "LyX binary not found"
-#~ msgstr "未找到LyX可执行文件"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr "无法从命令行决定LyX可执行文件的目录 %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-#~ msgstr ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-
-#~ msgid "File not found"
-#~ msgstr "文件没有找到"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "无效 %1$s 环境变量.\n"
-#~ "目录 %2$s 未包含 %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "无效 %1$s 环境变量.\n"
-#~ "%2$s 不是一个目录."
-
-#~ msgid "Directory not found"
-#~ msgstr "找不到目录"
 
 #, fuzzy
 #~ msgid "Japanese (non-CJK)"
