@@ -1428,6 +1428,19 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 			break;
 		}
 
+		case LFUN_BRANCH_ACTIVATE:
+		case LFUN_BRANCH_DEACTIVATE: {
+			BranchList & branchList = params().branchlist();
+			docstring const branchName = func.argument();
+			Branch * branch = branchList.find(branchName);
+			if (!branch)
+				LYXERR0("Branch " << branchName << " does not exist.");
+			else 
+				branch->setSelected(func.action == LFUN_BRANCH_ACTIVATE);
+			if (result)
+				*result = true;
+		}
+
 		default:
 			dispatched = false;
 	}

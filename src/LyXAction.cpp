@@ -2176,6 +2176,24 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_COMPLETION_COMPLETE, "complete", SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
+ * \li Action: Activate the branch
+ * \li Syntax: branch-activate <BRANCH>
+ * \li Params: <BRANCH>: The branch to activate
+ * \li Origin: rgh, 27 May 2008
+ * \endvar
+ */
+		{ LFUN_BRANCH_ACTIVATE, "branch-activate", Argument, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
+ * \li Action: De-activate the branch
+ * \li Syntax: branch-deactivate <BRANCH>
+ * \li Params: <BRANCH>: The branch to deactivate
+ * \li Origin: rgh, 27 May 2008
+ * \endvar
+ */
+		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", Argument, Buffer },
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS

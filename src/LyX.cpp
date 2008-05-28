@@ -163,7 +163,7 @@ struct LyX::Impl
 	/// has this user started lyx for the first time?
 	bool first_start;
 	/// the parsed command line batch command if any
-	string batch_command;
+	vector<string> batch_commands;
 };
 
 ///
@@ -383,7 +383,7 @@ int LyX::exec(int & argc, char * argv[])
 		// this is correct, since return values are inverted.
 		exit_status = !loadFiles();
 
-		if (pimpl_->batch_command.empty() || pimpl_->buffer_list_.empty()) {
+		if (pimpl_->batch_commands.empty() || pimpl_->buffer_list_.empty()) {
 			prepareExit();
 			return exit_status;
 		}
@@ -396,8 +396,12 @@ int LyX::exec(int & argc, char * argv[])
 			if (buf != buf->masterBuffer())
 				continue;
 			bool success = false;
-			buf->dispatch(pimpl_->batch_command, &success);
-			final_success |= success;
+			vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
+			vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
+			for (; bcit != bcend; bcit++) {
+				buf->dispatch(*bcit, &success);
+				final_success |= success;
+			}
 		}
 		prepareExit();
 		return !final_success;
@@ -613,12 +617,15 @@ void LyX::execBatchCommands()
 		pimpl_->application_->restoreGuiSession();
 
 	// Execute batch commands if available
-	if (pimpl_->batch_command.empty())
+	if (pimpl_->batch_commands.empty())
 		return;
 
-	LYXERR(Debug::INIT, "About to handle -x '" << pimpl_->batch_command << '\'');
-
-	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(pimpl_->batch_command));
+	vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
+	vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
+	for (; bcit != bcend; bcit++) {
+		LYXERR(Debug::INIT, "About to handle -x '" << *bcit << '\'');
+		pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(*bcit));
+	}
 }
 
 
@@ -1012,12 +1019,10 @@ bool LyX::readEncodingsFile(string const & enc_name,
 
 namespace {
 
-string batch;
-
 /// return the the number of arguments consumed
-typedef boost::function<int(string const &, string const &)> cmd_helper;
+typedef boost::function<int(string const &, string const &, string &)> cmd_helper;
 
-int parse_dbg(string const & arg, string const &)
+int parse_dbg(string const & arg, string const &, string &)
 {
 	if (arg.empty()) {
 		lyxerr << to_utf8(_("List of supported debug flags:")) << endl;
@@ -1032,7 +1037,7 @@ int parse_dbg(string const & arg, string const &)
 }
 
 
-int parse_help(string const &, string const &)
+int parse_help(string const &, string const &, string &)
 {
 	lyxerr <<
 		to_utf8(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -1060,7 +1065,7 @@ int parse_help(string const &, string const &)
 }
 
 
-int parse_version(string const &, string const &)
+int parse_version(string const &, string const &, string &)
 {
 	lyxerr << "LyX " << lyx_version
 	       << " (" << lyx_release_date << ")" << endl;
@@ -1072,7 +1077,7 @@ int parse_version(string const &, string const &)
 }
 
 
-int parse_sysdir(string const & arg, string const &)
+int parse_sysdir(string const & arg, string const &, string &)
 {
 	if (arg.empty()) {
 		Alert::error(_("No system directory"),
@@ -1084,7 +1089,7 @@ int parse_sysdir(string const & arg, string const &)
 }
 
 
-int parse_userdir(string const & arg, string const &)
+int parse_userdir(string const & arg, string const &, string &)
 {
 	if (arg.empty()) {
 		Alert::error(_("No user directory"),
@@ -1096,7 +1101,7 @@ int parse_userdir(string const & arg, string const &)
 }
 
 
-int parse_execute(string const & arg, string const &)
+int parse_execute(string const & arg, string const &, string & batch)
 {
 	if (arg.empty()) {
 		Alert::error(_("Incomplete command"),
@@ -1108,7 +1113,7 @@ int parse_execute(string const & arg, string const &)
 }
 
 
-int parse_export(string const & type, string const &)
+int parse_export(string const & type, string const &, string & batch)
 {
 	if (type.empty()) {
 		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
@@ -1121,7 +1126,7 @@ int parse_export(string const & type, string const &)
 }
 
 
-int parse_import(string const & type, string const & file)
+int parse_import(string const & type, string const & file, string & batch)
 {
 	if (type.empty()) {
 		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
@@ -1138,7 +1143,7 @@ int parse_import(string const & type, string const & file)
 }
 
 
-int parse_geometry(string const & arg1, string const &)
+int parse_geometry(string const & arg1, string const &, string &)
 {
 	geometryArg = arg1;
 #if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
@@ -1186,7 +1191,10 @@ void LyX::easyParse(int & argc, char * argv[])
 		string const arg2 =
 			(i + 2 < argc) ? to_utf8(from_local8bit(argv[i + 2])) : string();
 
-		int const remove = 1 + it->second(arg, arg2);
+		string batch;
+		int const remove = 1 + it->second(arg, arg2, batch);
+		if (!batch.empty())
+			pimpl_->batch_commands.push_back(batch);
 
 		// Now, remove used arguments by shifting
 		// the following ones remove places down.
@@ -1197,8 +1205,6 @@ void LyX::easyParse(int & argc, char * argv[])
 			--i;
 		}
 	}
-
-	pimpl_->batch_command = batch;
 }
 
 

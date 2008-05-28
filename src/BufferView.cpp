@@ -16,6 +16,7 @@
 
 #include "BufferView.h"
 
+#include "BranchList.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"
@@ -971,6 +972,16 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		}
 		break;
 
+	case LFUN_BRANCH_ACTIVATE: 
+	case LFUN_BRANCH_DEACTIVATE: {
+		bool enable = false;
+		docstring const branchName = cmd.argument();
+		if (!branchName.empty())
+			enable = buffer_.params().branchlist().find(branchName);
+		flag.enabled(enable);
+		break;
+	}
+
 	default:
 		flag.enabled(false);
 	}
@@ -1382,6 +1393,12 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
+
+	case LFUN_BRANCH_ACTIVATE:
+	case LFUN_BRANCH_DEACTIVATE:
+		buffer_.dispatch(cmd);
+		processUpdateFlags(Update::Force);
+		break;
 
 	default:
 		return false;

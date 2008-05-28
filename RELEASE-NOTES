@@ -63,6 +63,13 @@ Some of the LyX functions have changed names:
 - The functions LFUN_HTML_INSERT, "html-insert", LFUN_URL_INSERT, "url-insert" was
   superseded by LFUN_HYPERLINK_INSERT, "href-insert".
 
+- New functions LFUN_BRANCH_ACTIVATE, "branch-activate", and LFUN_BRANCH_DEACTIVATE, 
+  "branch-deactivate" have been introduced. These can be used in export mode to turn
+  branches on and off. Thus, something like:
+    lyx -e pdf2 -x "branch-activate answers" finalexam.lyx
+  could be used to export a pdf with the answers branch included, without one's having
+  to open LyX and activate the branch manually.
+
 
 The following new LyX functions have been introduced:
 
