@@ -41,8 +41,8 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL(itemClicked(QListWidgetItem *)),
-		this, SLOT(select(QListWidgetItem *)));
+	connect(errorsLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(select()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	bc().setCancel(closePB);
@@ -52,14 +52,14 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 void GuiErrorList::showEvent(QShowEvent * e)
 {
 	errorsLW->setCurrentRow(0);
-	select(errorsLW->item(0));
+	select();
 	e->accept();
 }
 
 
-void GuiErrorList::select(QListWidgetItem * wi)
+void GuiErrorList::select()
 {
-	int const item = errorsLW->row(wi);
+	int const item = errorsLW->row(errorsLW->currentItem());
 	goTo(item);
 	descriptionTB->setPlainText(toqstr(errorList()[item].description));
 }

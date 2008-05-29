@@ -30,7 +30,7 @@ public:
 
 public Q_SLOTS:
 	/// select an entry
-	void select(QListWidgetItem *);
+	void select();
 
 private:
 	///
