@@ -906,6 +906,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", ReadOnly, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_TABULAR
+ * \li Action: Launches the tabular settings dialog.
+ * \li Syntax: layout-tabular
+ * \li Origin: Jug, 31 Jul 2000
+ * \endvar
+ */
 		{ LFUN_LAYOUT_TABULAR, "layout-tabular", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_DROP_LAYOUTS_CHOICE
