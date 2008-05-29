@@ -32,7 +32,7 @@ public:
 	QErrorListDialog(QErrorList * form);
 
 public Q_SLOTS:
-	void select_adaptor(QListWidgetItem *);
+	void select_adaptor();
 protected:
 	void closeEvent(QCloseEvent *);
 	void showEvent(QShowEvent *);

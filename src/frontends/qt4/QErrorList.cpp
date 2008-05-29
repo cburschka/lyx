@@ -36,14 +36,14 @@ QErrorListDialog::QErrorListDialog(QErrorList * form)
 	setupUi(this);
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect( errorsLW, SIGNAL( itemClicked(QListWidgetItem *)),
-		this, SLOT(select_adaptor(QListWidgetItem *)));
+	connect(errorsLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(select_adaptor()));
 }
 
 
-void QErrorListDialog::select_adaptor(QListWidgetItem * item)
+void QErrorListDialog::select_adaptor()
 {
-	form_->select(item);
+	form_->select(errorsLW->currentItem());
 }
 
 
