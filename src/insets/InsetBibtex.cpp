@@ -155,7 +155,7 @@ docstring InsetBibtex::screenLabel() const
 docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
 {
 	docstring item = from_ascii("* ");
-	docstring tip = _("Databases:\n");
+	docstring tip = _("Databases:") + "\n";
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 
 	if (bibfilelist.empty()) {
@@ -180,14 +180,14 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			style = split(style, bibtotoc, char_type(','));
 	}
 
-	tip += _("Style File:\n");
+	tip += _("Style File:") +"\n";
 	tip += item;
 	if (!style.empty())
 		tip += style;
 	else
 		tip += _("none");
 
-	tip += _("\nLists: ");
+	tip += "\n" + _("Lists:") + " ";
 	docstring btprint = getParam("btprint");
 		if (btprint == "btPrintAll")
 			tip += _("all references");
