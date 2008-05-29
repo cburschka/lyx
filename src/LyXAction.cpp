@@ -389,7 +389,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SELF_INSERT
  * \li Action: Inserts the given string (accordingly to the correct keymap).
- * \li Notion: Automatically replace the currently selected. Depends on lyxrc
+ * \li Notion: Automatically replace the currently selected text. Depends on lyxrc
                settings "auto_region_delete".
  * \li Syntax: self-insert <STRING>
  * \endvar
@@ -1228,6 +1228,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
+ * \li Action: Breaks the current paragraph at the current location.
+ * \li Notion: Removes the selection.
+ * \li Syntax: break-paragraph [<LAYOUT>]
+ * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
+                         to default layout) when the cursor is at the end of
+                         the line.
+ * \endvar
+ */
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH_SKIP
@@ -2181,6 +2191,9 @@ void LyXAction::init()
  * \li Action: Activate the branch
  * \li Syntax: branch-activate <BRANCH>
  * \li Params: <BRANCH>: The branch to activate
+ * \li Sample: lyx -e pdf2 -x "branch-activate answers" finalexam.lyx \n
+               could be used to export a pdf with the answers branch included
+               without one's having to open LyX and activate the branch manually.
  * \li Origin: rgh, 27 May 2008
  * \endvar
  */
