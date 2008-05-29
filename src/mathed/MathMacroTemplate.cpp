@@ -1088,7 +1088,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			break;
 
 		case LFUN_IN_MATHMACROTEMPLATE:
-			flag.enabled();
+			flag.enabled(true);
 			break;
 
 		default:
