@@ -30,8 +30,6 @@ class ParagraphList;
  * - Decrease depth by one (or change layout to default layout) when
  *    keep_layout == false  
  * - keep current depth and layout when keep_layout == true
- * Be aware that the old or new paragraph does not contain any rows
- * after this.
  */
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
