@@ -199,7 +199,7 @@ Menuset
 		Item "VFill|F" "next-inset-modify vspace vfill"
 		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; next-inset-toggle"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|e" "next-inset-toggle"
 	End
 
 #
