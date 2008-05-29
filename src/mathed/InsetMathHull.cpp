@@ -1299,12 +1299,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
-		status.enabled(display());
+		status.setEnabled(display());
 		status.setOnOff(numberedType());
 		return true;
 	case LFUN_MATH_NUMBER_LINE_TOGGLE: {
@@ -1313,16 +1313,16 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		bool const enable = (type_ == hullMultline) ?
 			(nrows() - 1 == cur.row()) : display();
 		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-		status.enabled(enable);
+		status.setEnabled(enable);
 		status.setOnOff(numbered(r));
 		return true;
 	}
 	case LFUN_LABEL_INSERT:
-		status.enabled(type_ != hullSimple);
+		status.setEnabled(type_ != hullSimple);
 		return true;
 	case LFUN_INSET_INSERT:
 		if (cmd.getArg(0) == "label") {
-			status.enabled(type_ != hullSimple);
+			status.setEnabled(type_ != hullSimple);
 			return true;
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
@@ -1337,7 +1337,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.message(bformat(
 				from_utf8(N_("Can't change number of rows in '%1$s'")),
 				hullName(type_)));
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		}
 		if (!colChangeOK()
@@ -1347,7 +1347,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.message(bformat(
 				from_utf8(N_("Can't change number of columns in '%1$s'")),
 				hullName(type_)));
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		}
 		if ((type_ == hullSimple
@@ -1357,20 +1357,20 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.message(bformat(
 				from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
 				hullName(type_)));
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			status.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
 				hullName(type_)));
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		}
 		if (s == "valign-top" || s == "valign-middle"
 		 || s == "valign-bottom" || s == "align-left"
 		 || s == "align-center" || s == "align-right") {
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);

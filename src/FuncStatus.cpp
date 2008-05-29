@@ -52,7 +52,7 @@ bool FuncStatus::unknown() const
 }
 
 
-void FuncStatus::enabled(bool b)
+void FuncStatus::setEnabled(bool b)
 {
 	if (b)
 		v_ &= ~DISABLED;

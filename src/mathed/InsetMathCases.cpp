@@ -92,7 +92,7 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TABULAR_FEATURE: {
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
-			flag.enabled(false);
+			flag.setEnabled(false);
 			flag.message(bformat(
 				from_utf8(N_("No vertical grid lines in 'cases': feature %1$s")),
 				s));

@@ -713,30 +713,30 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:
 		if (layout_->isPassThru()) {
-			flag.enabled(false);
+			flag.setEnabled(false);
 			return true;
 		}
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open")
-			flag.enabled(status_ != Open);
+			flag.setEnabled(status_ != Open);
 		else if (cmd.argument() == "close")
-			flag.enabled(status_ == Open);
+			flag.setEnabled(status_ == Open);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty()) {
-			flag.enabled(true);
+			flag.setEnabled(true);
 			flag.setOnOff(status_ == Open);
 		} else
-			flag.enabled(false);
+			flag.setEnabled(false);
 		return true;
 
 	case LFUN_LANGUAGE:
-		flag.enabled(!layout_->isForceLtr());
+		flag.setEnabled(!layout_->isForceLtr());
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
-		flag.enabled(layout_->isMultiPar());
+		flag.setEnabled(layout_->isMultiPar());
 		return true;
 
 	default:

@@ -114,7 +114,7 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_MOTION:
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 	default:
 		return CommandInset::getStatus(cur, cmd, status);

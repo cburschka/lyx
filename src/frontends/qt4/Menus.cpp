@@ -352,7 +352,7 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 			}
 			if (enabled || !i.optional()) {
 				items_.push_back(i);
-				items_.back().status().enabled(enabled);
+				items_.back().status().setEnabled(enabled);
 			}
 		}
 		else

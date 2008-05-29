@@ -1161,7 +1161,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	string const arg = to_utf8(cmd.argument());
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE:
-		flag.enabled(false);
+		flag.setEnabled(false);
 		break;
 #if 0
 	case LFUN_TABULAR_FEATURE:
@@ -1192,7 +1192,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_NOUN:
 	case LFUN_FONT_ROMAN:
 	case LFUN_FONT_DEFAULT:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		break;
 	case LFUN_MATH_MUTATE:
 		//flag.setOnOff(mathcursor::formula()->hullType() == to_utf8(cmd.argument()));
@@ -1204,11 +1204,11 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_SPACE:
 	case LFUN_MATH_LIMITS:
 	case LFUN_MATH_EXTERN:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		break;
 
 	case LFUN_FONT_FRAK:
-		flag.enabled(currentMode() != TEXT_MODE);
+		flag.setEnabled(currentMode() != TEXT_MODE);
 		break;
 
 	case LFUN_MATH_INSERT: {
@@ -1219,12 +1219,12 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 			arg == "\\textsl"   || arg == "\\textup" ||
 			arg == "\\texttt"   || arg == "\\textbb" ||
 			arg == "\\textnormal";
-		flag.enabled(currentMode() != TEXT_MODE || textarg);
+		flag.setEnabled(currentMode() != TEXT_MODE || textarg);
 		break;
 	}
 
 	case LFUN_MATH_MATRIX:
-		flag.enabled(currentMode() == MATH_MODE);
+		flag.setEnabled(currentMode() == MATH_MODE);
 		break;
 
 	case LFUN_INSET_INSERT: {
@@ -1232,31 +1232,31 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// getStatus is not called with a valid reference and the
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
-		flag.enabled(name == "ref");
+		flag.setEnabled(name == "ref");
 		break;
 	}
 
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
 		// Don't do this with multi-cell selections
-		flag.enabled(cur.selBegin().idx() == cur.selEnd().idx());
+		flag.setEnabled(cur.selBegin().idx() == cur.selEnd().idx());
 		break;
 		
 	case LFUN_MATH_MACRO_FOLD:
 	case LFUN_MATH_MACRO_UNFOLD: {
 		Cursor it = cur;
 		bool found = findMacroToFoldUnfold(it, cmd.action == LFUN_MATH_MACRO_FOLD);
-		flag.enabled(found);
+		flag.setEnabled(found);
 		break;
 	}
 		
 	case LFUN_SPECIALCHAR_INSERT:
 		// FIXME: These would probably make sense in math-text mode
-		flag.enabled(false);
+		flag.setEnabled(false);
 		break;
 
 	case LFUN_INSET_DISSOLVE:
-		flag.enabled(!asHullInset());
+		flag.setEnabled(!asHullInset());
 		break;
 
 	default:

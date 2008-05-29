@@ -116,7 +116,7 @@ bool InsetNewline::getStatus(Cursor & cur, FuncRequest const & cmd,
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
 		}
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);

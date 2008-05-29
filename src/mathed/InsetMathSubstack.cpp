@@ -70,7 +70,7 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
 				from_utf8(name)));
-			flag.enabled(false);
+			flag.setEnabled(false);
 			return true;
 		}
 		return InsetMathGrid::getStatus(cur, cmd, flag);

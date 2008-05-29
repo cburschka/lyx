@@ -74,7 +74,7 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),	name_));
-			flag.enabled(false);
+			flag.setEnabled(false);
 			return true;
 		}
 		return InsetMathGrid::getStatus(cur, cmd, flag);

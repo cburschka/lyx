@@ -1341,13 +1341,13 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TABULAR_FEATURE: {
 		string const s = to_utf8(cmd.argument());
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
-			status.enabled(false);
+			status.setEnabled(false);
 			status.message(from_utf8(N_("Only one row")));
 			return true;
 		}
 		if (ncols() <= 1 &&
 		    (s == "delete-column" || s == "swap-column")) {
-			status.enabled(false);
+			status.setEnabled(false);
 			status.message(from_utf8(N_("Only one column")));
 			return true;
 		}
@@ -1355,7 +1355,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		     s == "delete-hline-above") ||
 		    (rowinfo_[cur.row() + 1].lines_ == 0 &&
 		     s == "delete-hline-below")) {
-			status.enabled(false);
+			status.setEnabled(false);
 			status.message(from_utf8(N_("No hline to delete")));
 			return true;
 		}
@@ -1364,7 +1364,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		     s == "delete-vline-left") ||
 		    (colinfo_[cur.col() + 1].lines_ == 0 &&
 		     s == "delete-vline-right")) {
-			status.enabled(false);
+			status.setEnabled(false);
 			status.message(from_utf8(N_("No vline to delete")));
 			return true;
 		}
@@ -1379,9 +1379,9 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		    s == "copy-column" || s == "swap-column" ||
 		    s == "add-vline-left" || s == "add-vline-right" ||
 		    s == "delete-vline-left" || s == "delete-vline-right")
-			status.enabled(true);
+			status.setEnabled(true);
 		else {
-			status.enabled(false);
+			status.setEnabled(false);
 			status.message(bformat(
 				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
 		}
@@ -1412,18 +1412,18 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 		}
 		status.setOnOff(cmd.argument()[0] == v_align_);
-		status.enabled(true);
+		status.setEnabled(true);
 #endif
 		return true;
 	}
 
 	case LFUN_CELL_SPLIT:
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 
 	case LFUN_CELL_BACKWARD:
 	case LFUN_CELL_FORWARD:
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 
 	default:

@@ -1175,7 +1175,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	if (!enable)
-		flag.enabled(false);
+		flag.setEnabled(false);
 
 	return true;
 }

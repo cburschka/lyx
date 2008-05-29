@@ -156,19 +156,19 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 	// suppress these
 	case LFUN_ERT_INSERT:
-		status.enabled(false);
+		status.setEnabled(false);
 		return true;
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype") {
 			string const newtype = cmd.getArg(1);
-			status.enabled(p_.isCompatibleCommand(p_.code(), newtype));
+			status.setEnabled(p_.isCompatibleCommand(p_.code(), newtype));
 			status.setOnOff(newtype == p_.getCmdName());
 		} 
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);

@@ -241,19 +241,19 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		// Allow modification of our data.
 		// This needs to be handled in the doDispatch method of our
 		// instantiatable children.
-		flag.enabled(true);
+		flag.setEnabled(true);
 		return true;
 
 	case LFUN_INSET_INSERT:
 		// Don't allow insertion of new insets.
 		// Every inset that wants to allow new insets from open
 		// dialogs needs to override this.
-		flag.enabled(false);
+		flag.setEnabled(false);
 		return true;
 
 	case LFUN_INSET_TOGGLE:
 		// remove this if we dissociate toggle from edit.
-		flag.enabled(editable() == IS_EDITABLE);
+		flag.setEnabled(editable() == IS_EDITABLE);
 		return true;
 
 	default:

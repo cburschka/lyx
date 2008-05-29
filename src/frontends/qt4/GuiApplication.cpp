@@ -515,7 +515,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	}
 
 	if (!enable)
-		flag.enabled(false);
+		flag.setEnabled(false);
 
 	return true;
 }

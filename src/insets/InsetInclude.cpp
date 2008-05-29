@@ -304,7 +304,7 @@ bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		return true;
 
 	default:

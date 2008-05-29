@@ -108,7 +108,7 @@ bool InsetBibtex::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		return true;
 
 	default:

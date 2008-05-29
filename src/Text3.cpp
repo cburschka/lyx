@@ -2298,7 +2298,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	    && (cur.empty() || !cur.inset().insetAllowed(code)))
 		enable = false;
 
-	flag.enabled(enable);
+	flag.setEnabled(enable);
 	return true;
 }
 

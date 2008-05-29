@@ -2745,7 +2745,7 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetText::getStatus(cur, cmd, status);
 	}
-	status.enabled(enabled);
+	status.setEnabled(enabled);
 	return true;
 }
 
@@ -3550,33 +3550,33 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::MULTICOLUMN:
-			status.enabled(sel_row_start == sel_row_end);
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
 		case Tabular::SET_ALL_LINES:
 		case Tabular::UNSET_ALL_LINES:
 		case Tabular::SET_BORDER_LINES:
-			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
 
 		case Tabular::TOGGLE_LINE_TOP:
-			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.topLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_BOTTOM:
-			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.bottomLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_LEFT:
-			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.leftLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_RIGHT:
-			status.enabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.rightLine(cur.idx()));
 			break;
 
@@ -3599,7 +3599,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::ALIGN_BLOCK:
-			status.enabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setEnabled(!tabular.getPWidth(cur.idx()).zero());
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_BLOCK);
 			break;
 
@@ -3693,7 +3693,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::TOGGLE_LTCAPTION:
-			status.enabled(sel_row_start == sel_row_end);
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 
@@ -3707,7 +3707,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		default:
 			status.clear();
-			status.enabled(false);
+			status.setEnabled(false);
 			break;
 		}
 		return true;
@@ -3716,7 +3716,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	// These are only enabled inside tabular
 	case LFUN_CELL_BACKWARD:
 	case LFUN_CELL_FORWARD:
-		status.enabled(true);
+		status.setEnabled(true);
 		return true;
 
 	// disable these with multiple cells selected
@@ -3738,7 +3738,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_WRAP_INSERT:
 	case LFUN_ERT_INSERT: {
 		if (tablemode(cur)) {
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		} else
 			return cell(cur.idx())->getStatus(cur, cmd, status);
@@ -3749,7 +3749,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP: {
 		if (tabular.getPWidth(cur.idx()).zero()) {
-			status.enabled(false);
+			status.setEnabled(false);
 			return true;
 		} else
 			return cell(cur.idx())->getStatus(cur, cmd, status);
@@ -3757,14 +3757,14 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_PASTE:
 		if (tabularStackDirty() && theClipboard().isInternal()) {
-			status.enabled(true);
+			status.setEnabled(true);
 			return true;
 		} else
 			return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_INSET_MODIFY:
 		if (insetCode(cmd.getArg(0)) == TABULAR_CODE) {
-			status.enabled(true);
+			status.setEnabled(true);
 			return true;
 		}
 		// Fall through

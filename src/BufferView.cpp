@@ -837,17 +837,17 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.enabled(buffer_.undo().hasUndoStack());
+		flag.setEnabled(buffer_.undo().hasUndoStack());
 		break;
 	case LFUN_REDO:
-		flag.enabled(buffer_.undo().hasRedoStack());
+		flag.setEnabled(buffer_.undo().hasRedoStack());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT:
 	case LFUN_BOOKMARK_SAVE:
 		// FIXME: Actually, these LFUNS should be moved to Text
-		flag.enabled(cur.inTexted());
+		flag.setEnabled(cur.inTexted());
 		break;
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
@@ -865,7 +865,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_STATISTICS:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		break;
 
 	case LFUN_NEXT_INSET_TOGGLE: 
@@ -883,18 +883,18 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_LABEL_GOTO: {
-		flag.enabled(!cmd.argument().empty()
+		flag.setEnabled(!cmd.argument().empty()
 		    || getInsetByCode<InsetRef>(cur, REF_CODE));
 		break;
 	}
 
 	case LFUN_CHANGES_TRACK:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		flag.setOnOff(buffer_.params().trackChanges);
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		flag.setOnOff(buffer_.params().outputChanges);
 		break;
 
@@ -906,7 +906,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		// In principle, these command should only be enabled if there
 		// is a change in the document. However, without proper
 		// optimizations, this will inevitably result in poor performance.
-		flag.enabled(true);
+		flag.setEnabled(true);
 		break;
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
@@ -919,25 +919,25 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_SCROLL:
 	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_DOWN_SELECT:
-		flag.enabled(true);
+		flag.setEnabled(true);
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		flag.enabled(cur.innerInsetOfType(TABULAR_CODE));
+		flag.setEnabled(cur.innerInsetOfType(TABULAR_CODE));
 		break;
 
 	case LFUN_LAYOUT:
-		flag.enabled(!cur.inset().forceEmptyLayout(cur.idx()));
+		flag.setEnabled(!cur.inset().forceEmptyLayout(cur.idx()));
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH:
-		flag.enabled(cur.inset().allowParagraphCustomization(cur.idx()));
+		flag.setEnabled(cur.inset().allowParagraphCustomization(cur.idx()));
 		break;
 
 	case LFUN_INSET_SETTINGS: {
 		InsetCode code = cur.inset().lyxCode();
 		if (cmd.getArg(0) == insetName(code)) {
-			flag.enabled(true);
+			flag.setEnabled(true);
 			break;
 		}
 		bool enable = false;
@@ -958,12 +958,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			default:
 				break;
 		}
-		flag.enabled(enable);
+		flag.setEnabled(enable);
 		break;
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		flag.enabled(cur.inset().lyxCode() != ERT_CODE &&
+		flag.setEnabled(cur.inset().lyxCode() != ERT_CODE &&
 			cur.inset().lyxCode() != LISTINGS_CODE);
 		if (cur.inset().lyxCode() == CAPTION_CODE) {
 			FuncStatus flag;
@@ -978,12 +978,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		docstring const branchName = cmd.argument();
 		if (!branchName.empty())
 			enable = buffer_.params().branchlist().find(branchName);
-		flag.enabled(enable);
+		flag.setEnabled(enable);
 		break;
 	}
 
 	default:
-		flag.enabled(false);
+		flag.setEnabled(false);
 	}
 
 	return flag;

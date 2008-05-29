@@ -389,7 +389,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
-		flag.enabled(false);
+		flag.setEnabled(false);
 		return flag;
 	}
 
@@ -399,7 +399,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_THESAURUS_ENTRY:
 #endif
 		flag.unknown(true);
-		flag.enabled(false);
+		flag.setEnabled(false);
 		break;
 
 	default:
@@ -422,7 +422,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		// no, exit directly
 		flag.message(from_utf8(N_("Command not allowed with"
 				    "out any document open")));
-		flag.enabled(false);
+		flag.setEnabled(false);
 		return flag;
 	}
 
@@ -624,14 +624,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	if (!enable)
-		flag.enabled(false);
+		flag.setEnabled(false);
 
 	// Can we use a readonly buffer?
 	if (buf && buf->isReadonly()
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("Document is read-only")));
-		flag.enabled(false);
+		flag.setEnabled(false);
 	}
 
 	// Are we in a DELETED change-tracking region?
@@ -640,7 +640,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("This portion of the document is deleted.")));
-		flag.enabled(false);
+		flag.setEnabled(false);
 	}
 
 	// the default error message if we disable the command

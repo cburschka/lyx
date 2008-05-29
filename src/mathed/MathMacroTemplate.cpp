@@ -1047,48 +1047,48 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 				num = convert<int>(arg);
 			bool on = (num >= optionals_
 				   && numargs_ < 9 && num <= numargs_ + 1);
-			flag.enabled(on);
+			flag.setEnabled(on);
 			break;
 		}
 
 		case LFUN_MATH_MACRO_APPEND_GREEDY_PARAM:
-			flag.enabled(numargs_ < 9);
+			flag.setEnabled(numargs_ < 9);
 			break;
 
 		case LFUN_MATH_MACRO_REMOVE_PARAM: {
 			int num = numargs_;
 			if (arg.size() != 0)
 				num = convert<int>(arg);
-			flag.enabled(num >= 1 && num <= numargs_);
+			flag.setEnabled(num >= 1 && num <= numargs_);
 			break;
 		}
 
 		case LFUN_MATH_MACRO_MAKE_OPTIONAL:
-			flag.enabled(numargs_ > 0
+			flag.setEnabled(numargs_ > 0
 				     && optionals_ < numargs_
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
-			flag.enabled(optionals_ > 0
+			flag.setEnabled(optionals_ > 0
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
-			flag.enabled(numargs_ < 9);
+			flag.setEnabled(numargs_ < 9);
 			break;
 
 		case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
-			flag.enabled(optionals_ > 0);
+			flag.setEnabled(optionals_ > 0);
 			break;
 
 		case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
-			flag.enabled(numargs_ == 0
+			flag.setEnabled(numargs_ == 0
 				     && type_ != MacroTypeDef);
 			break;
 
 		case LFUN_IN_MATHMACROTEMPLATE:
-			flag.enabled(true);
+			flag.setEnabled(true);
 			break;
 
 		default:
