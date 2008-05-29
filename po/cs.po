@@ -686,15 +686,15 @@ msgstr "&Najít:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:79
 msgid "Hit Enter to search, or click Go!"
-msgstr ""
+msgstr "Stisknìte enter nebo tlaèítko pro vyhledání"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "You can also hit Enter in the search box"
-msgstr ""
+msgstr "Mù¾ete také pou¾ít enter ve vyhledávacím poli"
 
 #: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Go!"
-msgstr ""
+msgstr "&Hledej"
 
 #: src/frontends/qt4/ui/CitationUi.ui:105
 msgid "Search Field:"
@@ -724,7 +724,7 @@ msgstr "Velikost &písmen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
-msgstr ""
+msgstr "&Vyhledávat pøi zadávání"
 
 #: src/frontends/qt4/ui/CitationUi.ui:221
 msgid "Formatting"
@@ -743,7 +743,6 @@ msgid "Force upper case in citation"
 msgstr "Vynutit velké písmo v citaci"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
-#, fuzzy
 msgid "Force u&pper case"
 msgstr "&Vynutit velké písmo"
 
@@ -764,7 +763,6 @@ msgid "Text to place before citation"
 msgstr "Text umístìný pøed citací"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
-#, fuzzy
 msgid "Text a&fter:"
 msgstr "T&ext za:"
 
@@ -773,7 +771,6 @@ msgid "Text to place after citation"
 msgstr "Text umístìný za citací"
 
 #: src/frontends/qt4/ui/CitationUi.ui:451
-#, fuzzy
 msgid "App&ly"
 msgstr "&Pou¾ít"
 
@@ -787,25 +784,23 @@ msgstr "&Vybrané citace:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
-msgstr ""
+msgstr "Klávesa enter funguje takté¾"
 
 #: src/frontends/qt4/ui/CitationUi.ui:560
 msgid "The delete key works, too"
-msgstr ""
+msgstr "Klávesa delete funguje takté¾"
 
 #: src/frontends/qt4/ui/CitationUi.ui:563
 msgid "D&elete"
 msgstr "&Smazat"
 
 #: src/frontends/qt4/ui/CitationUi.ui:594
-#, fuzzy
 msgid "Move the selected citation up (try Ctrl-Up)"
-msgstr "Pøesun oznaèené citace nahoru"
+msgstr "Pøesun oznaèené citace nahoru (Ctrl+nahoru)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
-#, fuzzy
 msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr "Pøesun oznaèené citace dolù"
+msgstr "Pøesun oznaèené citace dolù (Ctrl+dolù)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:621
 msgid "&Down"
@@ -873,9 +868,8 @@ msgid "O&pen"
 msgstr "O&tevøít"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:32
-#, fuzzy
 msgid "F&ile"
-msgstr "Soubor"
+msgstr "S&oubor"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:44 src/frontends/qt4/ui/ExternalUi.ui:51
 #: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
@@ -897,9 +891,8 @@ msgid "&Draft"
 msgstr "&Koncept"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:81
-#, fuzzy
 msgid "&Template"
-msgstr "©ablona"
+msgstr "©&ablona"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:120
 msgid "Available templates"
@@ -911,7 +904,6 @@ msgid "LaTe&X and LyX options"
 msgstr "Parametry pro LaTe&X a LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:143
-#, fuzzy
 msgid "LaTeX Options"
 msgstr "Parametry pro LaTe&X:"
 
@@ -981,9 +973,8 @@ msgid "Sca&le:"
 msgstr "&Lupa:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:340
-#, fuzzy
 msgid "Si&ze and Rotation"
-msgstr "Hledat citaci"
+msgstr "&Velikost a rotace"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:352
 msgid "Rotate"
@@ -1004,7 +995,6 @@ msgid "The origin of the rotation"
 msgstr "Poèátek otáèení"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:412
-#, fuzzy
 msgid "Ori&gin:"
 msgstr "&Poèátek:"
 
@@ -1285,13 +1275,12 @@ msgid "Sca&le on Screen (%):"
 msgstr "Mìøítko na o&brazovce (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:694
-#, fuzzy
 msgid "Scr&een Display:"
-msgstr "Zobrazit na displeji"
+msgstr "Zobrazit na &displeji"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:710
 msgid "&Initialize Group Name:"
-msgstr ""
+msgstr "Zalo¾ &jméno skupiny:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:726
 msgid "Group-id to be set up from the current parameters"
@@ -1311,19 +1300,19 @@ msgstr "________"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:47
 msgid "<-----------"
-msgstr ""
+msgstr "<-----------"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:52
 msgid "----------->"
-msgstr ""
+msgstr "----------->"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:57
 msgid "\\-----v-----/"
-msgstr ""
+msgstr "\\-----v-----/"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:62
 msgid "/-----^-----\\"
-msgstr ""
+msgstr "/-----^-----\\"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:71
 msgid "&Spacing:"
@@ -1520,22 +1509,19 @@ msgstr "&Editace"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Select if the current document is included to a master file"
-msgstr ""
+msgstr "Vyberte v pøípadì, ¾e je souèasný dokument vkládán do hlavního dokumentu."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:31
-#, fuzzy
 msgid "Select de&fault master document"
-msgstr "Nastavit standardní jazyk va¹ich dokumentù"
+msgstr "Nastavit &implicitnì hlavní dokument"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:46
-#, fuzzy
 msgid "&Master:"
-msgstr "&Jiný:"
+msgstr "&Hlavní dokument:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
-#, fuzzy
 msgid "Enter the name of the default master document"
-msgstr "Jméno standardní tiskárny"
+msgstr "Jméno implicitního hlavního dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid "Modules"
@@ -3247,23 +3233,21 @@ msgstr "Editovat &zkratku"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:31
 msgid "Type shortcut while the cursor is in this field"
-msgstr ""
+msgstr "Stiknìte zkratku, kdy¾ je kurzor v tomto poli"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:41
 msgid "Enter LyX function or command sequence"
-msgstr ""
+msgstr "Vlo¾te funkci LyX-u nebo sekvenci pøíkazù"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "S&mazat"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:58
-#, fuzzy
 msgid "&Function:"
-msgstr "Funkce:"
+msgstr "&Funkce:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:68
-#, fuzzy
 msgid "&Shortcut:"
 msgstr "&Zkratka:"
 
@@ -12960,28 +12944,27 @@ msgstr ""
 
 #: lib/configure.py:236
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:239
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:242
-#, fuzzy
 msgid "Grace"
-msgstr "Stupnì ¹edi"
+msgstr "Grace"
 
 #: lib/configure.py:245
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:249
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:250
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:251 src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
@@ -12989,12 +12972,11 @@ msgstr "JPEG"
 
 #: lib/configure.py:252
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:253
-#, fuzzy
 msgid "PGM"
-msgstr "PNG"
+msgstr "PGM"
 
 #: lib/configure.py:254 src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
@@ -13002,209 +12984,183 @@ msgstr "PNG"
 
 #: lib/configure.py:255
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:256
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:257
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:258
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:263
 msgid "Plain text (chess output)"
 msgstr ""
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "Prostý text"
+msgstr "Prostý text (obraz)"
 
 #: lib/configure.py:265
 msgid "Plain text (Xfig output)"
-msgstr ""
+msgstr "Prostý text (Xfig výstup)"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "Pøizpùsobit výst&up"
+msgstr "datum (výstup)"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook"
-msgstr "Zdrojový soubor DocBook-u"
+msgstr "DocBook"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook|B"
-msgstr "Zdrojový soubor DocBook-u"
+msgstr "DocBook|B"
 
 #: lib/configure.py:268
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Obrázky"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb"
-msgstr "®ádné"
+msgstr "NoWeb"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "Poznámka|n"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LilyPond music"
-msgstr "LilyPond"
+msgstr "LilyPond music"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)"
-msgstr "Parametry pro LaTe&X:"
+msgstr "LaTeX (prostý)"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)|L"
-msgstr "Parametry pro LaTe&X:"
+msgstr "LaTeX (prostý)|L"
 
 #: lib/configure.py:273
 msgid "LinuxDoc"
-msgstr ""
+msgstr "LinuxDoc"
 
 #: lib/configure.py:273
 msgid "LinuxDoc|x"
-msgstr ""
+msgstr "LinuxDoc|x"
 
 #: lib/configure.py:274
-#, fuzzy
 msgid "LaTeX (pdflatex)"
-msgstr "Aktualizovat PDF (pdflatex)"
+msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:275 src/frontends/qt4/GuiPrefs.cpp:329
 msgid "Plain text"
 msgstr "Prostý text"
 
 #: lib/configure.py:275
-#, fuzzy
 msgid "Plain text|a"
-msgstr "Prostý text"
+msgstr "Prostý text|r"
 
 #: lib/configure.py:276
-#, fuzzy
 msgid "Plain text (pstotext)"
-msgstr "Prostý text"
+msgstr "Prostý text (pstotext)"
 
 #: lib/configure.py:277
-#, fuzzy
 msgid "Plain text (ps2ascii)"
-msgstr "Prostý text"
+msgstr "Prostý text (ps2ascii)"
 
 #: lib/configure.py:278
-#, fuzzy
 msgid "Plain text (catdvi)"
-msgstr "Prostý text"
+msgstr "Prostý text (catdvi)"
 
 #: lib/configure.py:279
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, spojit øádky"
 
 #: lib/configure.py:286
-#, fuzzy
 msgid "BibTeX"
-msgstr "TeX"
+msgstr "BibTeX"
 
 #: lib/configure.py:291
-#, fuzzy
 msgid "EPS"
-msgstr "PS"
+msgstr "EPS"
 
 #: lib/configure.py:292
-#, fuzzy
 msgid "Postscript"
-msgstr "Post Scriptum:"
+msgstr "PostScript"
 
 #: lib/configure.py:292
-#, fuzzy
 msgid "Postscript|t"
-msgstr "Post Scriptum:"
+msgstr "Postscript|t"
 
 #: lib/configure.py:296
 msgid "PDF (ps2pdf)"
-msgstr ""
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:296
 msgid "PDF (ps2pdf)|P"
-msgstr ""
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:297
-#, fuzzy
 msgid "PDF (pdflatex)"
-msgstr "Prohlí¾et PDF (pdflatex)"
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:297
-#, fuzzy
 msgid "PDF (pdflatex)|F"
-msgstr "Prohlí¾et PDF (pdflatex)"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:298
 msgid "PDF (dvipdfm)"
-msgstr ""
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:298
 msgid "PDF (dvipdfm)|m"
-msgstr ""
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:301
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:301
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:304
-#, fuzzy
 msgid "DraftDVI"
-msgstr "&Koncept"
+msgstr "DraftDVI"
 
 #: lib/configure.py:307
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:307
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:310
-#, fuzzy
 msgid "Noteedit"
-msgstr "NoteToEditor"
+msgstr "Noteedit"
 
 #: lib/configure.py:313
-#, fuzzy
 msgid "OpenDocument"
-msgstr "Otevøít dokument"
+msgstr "OpenDocument"
 
 #: lib/configure.py:316
-#, fuzzy
 msgid "date command"
-msgstr "Dal¹í pøíkaz"
+msgstr "pøíkaz pro datum"
 
 #: lib/configure.py:317
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "Tabulka"
+msgstr "Tabulka (CSV)"
 
 #: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:737
 #: src/frontends/qt4/GuiView.cpp:738 src/mathed/MathMacroTemplate.cpp:536
@@ -13213,55 +13169,51 @@ msgstr "LyX"
 
 #: lib/configure.py:320
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:321
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:322
 msgid "LyX 1.5.x"
-msgstr ""
+msgstr "LyX 1.5.x"
 
 #: lib/configure.py:323
 msgid "CJK LyX 1.4.x (big5)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (big5)"
 
 #: lib/configure.py:324
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:325
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "LyX Preview"
-msgstr "Náhled"
+msgstr "LyX Náhled"
 
 #: lib/configure.py:327
-#, fuzzy
 msgid "PDFTEX"
-msgstr "PDF"
+msgstr "PDFTEX"
 
 #: lib/configure.py:328
-#, fuzzy
 msgid "Program"
-msgstr "Výpis zdrojového kódu"
+msgstr "Program"
 
 #: lib/configure.py:329
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:330
-#, fuzzy
 msgid "Rich Text Format"
-msgstr "Text. normální písmo"
+msgstr "Rich Text Format"
 
 #: lib/configure.py:331
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:332 src/frontends/qt4/GuiClipboard.cpp:134
 msgid "Windows Metafile"
@@ -13272,18 +13224,16 @@ msgid "Enhanced Metafile"
 msgstr "Roz¹íøený WMF"
 
 #: lib/configure.py:334
-#, fuzzy
 msgid "MS Word"
-msgstr "Words"
+msgstr "MS Word"
 
 #: lib/configure.py:334
-#, fuzzy
 msgid "MS Word|W"
-msgstr "Spoèítat slova|S"
+msgstr "MS Word|W"
 
 #: lib/configure.py:335
 msgid "HTML (MS Word)"
-msgstr ""
+msgstr "HTML (MS Word)"
 
 #: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1338
 #, c-format
@@ -16478,12 +16428,10 @@ msgid "Unable to read local layout file."
 msgstr "Nepodaøilo se naèíst lokální soubor s rozvr¾ením dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:1271
-#, fuzzy
 msgid "Select master document"
-msgstr "Hlavní dokument"
+msgstr "Vybrat hlavní dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
-#, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
@@ -17727,9 +17675,8 @@ msgid "No Branch in Document!"
 msgstr "Dokument neobsahuje vìtvení!"
 
 #: src/frontends/qt4/Menus.cpp:1060
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "®ádná akce není definována!"
+msgstr "®ádná citace v dosahu!"
 
 #: src/frontends/qt4/Menus.cpp:1579
 msgid "No action defined!"
@@ -17844,38 +17791,32 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetBibtex.cpp:132
-#, fuzzy
 msgid "Open Databases?"
-msgstr "&Databáze"
+msgstr "Otevøít databáze?"
 
 #: src/insets/InsetBibtex.cpp:133
 msgid "&Proceed"
-msgstr ""
+msgstr "&Pokraèovat"
 
 #: src/insets/InsetBibtex.cpp:151
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografie generovaná BibTeX-em"
 
 #: src/insets/InsetBibtex.cpp:158
-#, fuzzy
-msgid "Databases:\n"
-msgstr "&Databáze"
+msgid "Databases:"
+msgstr "Databáze:"
 
 #: src/insets/InsetBibtex.cpp:183
-#, fuzzy
-msgid "Style File:\n"
-msgstr "Zavøít soubor"
+msgid "Style File:"
+msgstr "Soubor se stylem:"
 
 #: src/insets/InsetBibtex.cpp:190
-#, fuzzy
-msgid ""
-"\n"
-"Lists: "
-msgstr "Seznam"
+msgid "Lists:"
+msgstr "Seznamy:"
 
 #: src/insets/InsetBibtex.cpp:201
 msgid "included in TOC"
-msgstr ""
+msgstr "zahrnuto v Obsahu"
 
 #: src/insets/InsetBibtex.cpp:297 src/insets/InsetBibtex.cpp:348
 msgid "Export Warning!"
@@ -18149,14 +18090,14 @@ msgid "no"
 msgstr "ne"
 
 #: src/insets/InsetInfo.cpp:212
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown action %1$s"
-msgstr "Neznámá akce"
+msgstr "Neznámá akce %1$s"
 
 #: src/insets/InsetInfo.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid "No menu entry for action %1$s"
-msgstr "®ádná polo¾ka menu pro "
+msgstr "®ádná polo¾ka menu pro %1$s"
 
 #: src/insets/InsetInfo.cpp:245
 msgid "Unknown buffer info"
@@ -18459,24 +18400,20 @@ msgid "Horizontal Fill (Rule)"
 msgstr "Horizontální výplò (èára)"
 
 #: src/insets/InsetSpace.cpp:106
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)"
-msgstr "Horizontální výplò (teèky)"
+msgstr "Horizontální výplò (levá ¹ipka)"
 
 #: src/insets/InsetSpace.cpp:109
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)"
-msgstr "Horizontální výplò (teèky)"
+msgstr "Horizontální výplò (pravá ¹ipka)"
 
 #: src/insets/InsetSpace.cpp:112
-#, fuzzy
 msgid "Horizontal Fill (Up Brace)"
-msgstr "Horizontální výplò (èára)"
+msgstr "Horizontální výplò (horní slo¾ená)"
 
 #: src/insets/InsetSpace.cpp:115
-#, fuzzy
 msgid "Horizontal Fill (Down Brace)"
-msgstr "Horizontální výplò (teèky)"
+msgstr "Horizontální výplò (dolní slo¾ená)"
 
 #: src/insets/InsetSpace.cpp:118
 #, c-format
