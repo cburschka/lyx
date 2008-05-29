@@ -27,7 +27,7 @@ class ParagraphList;
 /**
  * This breaks a paragraph at the specified position.
  * The new paragraph will:
- * - Decrease depth by one (or chenge layout to default layout when 
+ * - Decrease depth by one (or change layout to default layout) when
  *    keep_layout == false  
  * - keep current depth and layout when keep_layout == true
  * Be aware that the old or new paragraph does not contain any rows
