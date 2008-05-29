@@ -21,7 +21,6 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-
 #include "support/lassert.h"
 
 #include <map>
@@ -237,16 +236,14 @@ bool ColorSet::setColor(ColorCode col, string const & x11name)
 {
 	InfoTab::iterator it = infotab.find(col);
 	if (it == infotab.end()) {
-		lyxerr << "Color " << col << " not found in database."
-		       << endl;
+		LYXERR0("Color " << col << " not found in database.");
 		return false;
 	}
 
 	// "inherit" is returned for colors not in the database
 	// (and anyway should not be redefined)
 	if (col == Color_none || col == Color_inherit || col == Color_ignore) {
-		lyxerr << "Color " << getLyXName(col)
-		       << " may not be redefined" << endl;
+		LYXERR0("Color " << getLyXName(col) << " may not be redefined.");
 		return false;
 	}
 
@@ -280,8 +277,8 @@ ColorCode ColorSet::getFromLyXName(string const & lyxname) const
 	string const lcname = ascii_lowercase(lyxname);
 	Transform::const_iterator it = lyxcolors.find(lcname);
 	if (it == lyxcolors.end()) {
-		lyxerr << "ColorSet::getFromLyXName: Unknown color \""
-		       << lyxname << '"' << endl;
+		LYXERR0("ColorSet::getFromLyXName: Unknown color \""
+		       << lyxname << '"');
 		return Color_none;
 	}
 

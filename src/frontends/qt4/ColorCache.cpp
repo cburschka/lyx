@@ -22,6 +22,16 @@ void ColorCache::init()
 {
 	for (int col = 0; col <= Color_ignore; ++col)
 		lcolors_[col] = QColor(lcolor.getX11Name(ColorCode(col)).c_str());
+	initialized_ = true;
+}
+
+
+/// get the given color
+QColor const & ColorCache::get(ColorCode color) const
+{
+	if (!initialized_)
+		const_cast<ColorCache *>(this)->init();
+	return lcolors_[color];
 }
 
 

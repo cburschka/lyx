@@ -12,22 +12,21 @@
 
 #include "support/docstring.h"
 
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/unicode.h"
+
+#include <QFile>
 
 #include <locale>
 #include <iostream>
 #include <typeinfo>
 
-#include <QFile>
-
-#include "support/lassert.h"
-
 using namespace std;
 
-namespace lyx {
 
+namespace lyx {
 
 docstring const from_ascii(char const * ascii)
 {

@@ -200,7 +200,9 @@ public:
 	}
 
 	bool canConvert(QString const & mime, QString flav)
-	{ return mimeFor(flav) == mime; }
+	{
+		return mimeFor(flav) == mime;
+	}
 
 	QVariant convertToMime(QString const & mime, QList<QByteArray> data, QString flav)
 	{

@@ -663,7 +663,7 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_USETEMPDIR:
 			if (lexrc.next())
-				lyxerr << "Ignoring obsolete use_tempdir flag." << endl;
+				LYXERR0("Ignoring obsolete use_tempdir flag.");
 			break;
 
 		case RC_USELASTFILEPOS:
@@ -757,23 +757,18 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> typewriter_font_foundry;
 			break;
 
-		case RC_SET_COLOR:
-		{
-			string lyx_name, x11_name;
-
-			if (lexrc.next()) {
-				lyx_name = lexrc.getString();
-			} else {
+		case RC_SET_COLOR: {
+			if (!lexrc.next()) {
 				lexrc.printError("Missing color tag.");
 				break;
 			}
+			string lyx_name = lexrc.getString();
 
-			if (lexrc.next()) {
-				x11_name = lexrc.getString();
-			} else {
+			if (!lexrc.next()) {
 				lexrc.printError("Missing color name for color: `$$Token'");
 				break;
 			}
+			string x11_name = lexrc.getString();
 
 			ColorCode const col =
 				lcolor.getFromLyXName(lyx_name);
@@ -782,13 +777,11 @@ int LyXRC::read(Lexer & lexrc)
 			    col == Color_ignore)
 				break;
 
-			if (!lcolor.setColor(col, x11_name)) {
-				lyxerr << "Bad lyxrc set_color for "
-					<< lyx_name << endl;
-
-			}
+			if (!lcolor.setColor(col, x11_name))
+				LYXERR0("Bad lyxrc set_color for " << lyx_name);
 			break;
 		}
+
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
 			lexrc >> auto_region_delete;
@@ -832,9 +825,8 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> use_spell_lib;
 			break;
 		case RC_SPELL_COMMAND:
-			if (lexrc.next(true)) {
+			if (lexrc.next(true))
 				isp_command = lexrc.getString();
-			}
 			break;
 		case RC_ACCEPT_COMPOUND:
 			lexrc >> isp_accept_compound;
@@ -918,30 +910,24 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_COPIER: {
 			string fmt, command;
-			if (lexrc.next()) {
+			if (lexrc.next())
 				fmt = lexrc.getString();
-			}
-			if (lexrc.next(true)) {
+			if (lexrc.next(true))
 				command = lexrc.getString();
-			}
 			setMover(fmt, command);
 			break;
 		}
 
 		case RC_CONVERTER: {
 			string from, to, command, flags;
-			if (lexrc.next()) {
+			if (lexrc.next())
 				from = lexrc.getString();
-			}
-			if (lexrc.next()) {
+			if (lexrc.next())
 				to = lexrc.getString();
-			}
-			if (lexrc.next(true)) {
+			if (lexrc.next(true))
 				command = lexrc.getString();
-			}
-			if (lexrc.next()) {
+			if (lexrc.next())
 				flags = lexrc.getString();
-			}
 			if (command.empty())
 				theConverters().erase(from, to);
 			else
@@ -987,13 +973,13 @@ int LyXRC::read(Lexer & lexrc)
 				else if (flag == "vector")
 					flgs |= Format::vector;
 				else
-					lyxerr << "Ignoring unknown flag `"
+					LYXERR0("Ignoring unknown flag `"
 					       << flag << "' for format `"
-					       << format << "'." << endl;
+					       << format << "'.");
 			}
 			if (prettyname.empty()) {
 				if (theConverters().formatIsUsed(format))
-					LYXERR0( "Can't delete format " << format);
+					LYXERR0("Can't delete format " << format);
 				else
 					formats.erase(format);
 			} else {
@@ -1024,9 +1010,8 @@ int LyXRC::read(Lexer & lexrc)
 				else {
 					preview = PREVIEW_OFF;
 					if (tmp != "false" && tmp != "off")
-						lyxerr << "Unrecognized "
-							"preview status \""
-						       << tmp << '\n' << endl;
+						LYXERR0("Unrecognized preview status \""
+						       << tmp << '\n');
 				}
 			}
 			break;
@@ -1679,10 +1664,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_SET_COLOR:
 		for (int i = 0; i < Color_ignore; ++i) {
 			ColorCode lc = static_cast<ColorCode>(i);
-
-			string const col(lcolor.getX11Name(lc));
-			if (ignore_system_lyxrc ||
-			    col != system_lcolor.getX11Name(lc)) {
+			string const col = lcolor.getX11Name(lc);
+			if (ignore_system_lyxrc
+			    || col != system_lcolor.getX11Name(lc)) {
 				os << "\\set_color \""
 				   << lcolor.getLyXName(lc) << "\" \""
 				   << col << "\"\n";

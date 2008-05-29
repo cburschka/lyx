@@ -26,19 +26,21 @@ struct RGBColor;
 class ColorCache
 {
 public:
-	ColorCache() { init(); }
+	ColorCache() : initialized_(false) {}
 
 	/// get the given color
-	QColor const & get(ColorCode color) const { return lcolors_[color]; }
+	QColor const & get(ColorCode color) const;
 
 	/// clear all colors
-	void clear() { init(); }
+	void clear() { initialized_ = false; }
 
 private:
 	///
 	void init();
 	///
 	QColor lcolors_[Color_ignore + 1];
+	///
+	bool initialized_;
 };
 
 ///
