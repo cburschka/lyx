@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-28 21:56+0200\n"
+"POT-Creation-Date: 2008-05-29 16:22+0100\n"
 "PO-Revision-Date: 2007-11-26 23:26+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
@@ -1296,7 +1296,7 @@ msgid "&Initialize Group Name:"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:726
-msgid "Group-id to be set up from the current parameters"
+msgid "Group Name to be set up from the current parameters"
 msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
@@ -1952,125 +1952,6 @@ msgstr "&Listar en el índice general"
 msgid "&Numbering"
 msgstr "&Numeración"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:976
-msgid "Page Layout"
-msgstr "Diseño de página"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "Formato de fecha"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
-"Elegir un tamaño del papel concreto, o establecer uno propio con "
-"\"Personalizado\""
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "Estilo usado para el pie y el encabezado de página"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "&Estilo de página:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "A&paisado"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "&Retrato"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "&Formato:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "Orientación"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "Disponer la página para imprimir por las dos caras"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "Documento con dos &caras"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:44
-msgid "I&mmediate Apply"
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:123
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Usar la alineación predeterminada para este párrafo, cualquiera que sea."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:126
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "Usar la alineación &predeterminada del párrafo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:133
-msgid "Ri&ght"
-msgstr "&Derecha"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:140
-msgid "C&enter"
-msgstr "&Centro"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
-msgid "&Left"
-msgstr "&Izquierda"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:154
-msgid "&Justified"
-msgstr "&Justificado"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:164
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "&Sangrar párrafo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:174
-msgid "Label Width"
-msgstr "Ancho de etiqueta"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:189
-#: src/frontends/qt4/ui/ParagraphUi.ui:196
-msgid "This text defines the width of the paragraph label"
-msgstr "Este texto define el ancho de la etiqueta del párrafo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:199
-msgid "Lo&ngest label"
-msgstr "Etiqueta más &larga"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
-msgid "Line &spacing"
-msgstr "E&spaciado:"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1336
-#: src/frontends/qt4/GuiDocument.cpp:579
-msgid "Single"
-msgstr "Sencillo"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:245
-msgid "1.5"
-msgstr "1.5"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1342
-#: src/frontends/qt4/GuiDocument.cpp:583
-msgid "Double"
-msgstr "Doble"
-
 #: src/frontends/qt4/ui/PDFSupportUi.ui:41
 msgid "&Use hyperref support"
 msgstr ""
@@ -2194,6 +2075,125 @@ msgstr "Número de copias"
 #, fuzzy
 msgid "&Numbered bookmarks"
 msgstr "Ecuación numerada|c"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:976
+msgid "Page Layout"
+msgstr "Diseño de página"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "Formato de fecha"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr ""
+"Elegir un tamaño del papel concreto, o establecer uno propio con "
+"\"Personalizado\""
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "Estilo usado para el pie y el encabezado de página"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "&Estilo de página:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "A&paisado"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "&Retrato"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "&Formato:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "Orientación"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "Disponer la página para imprimir por las dos caras"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "Documento con dos &caras"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:44
+msgid "I&mmediate Apply"
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:123
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
+"Usar la alineación predeterminada para este párrafo, cualquiera que sea."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "Usar la alineación &predeterminada del párrafo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
+msgid "Ri&ght"
+msgstr "&Derecha"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:140
+msgid "C&enter"
+msgstr "&Centro"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:147
+msgid "&Left"
+msgstr "&Izquierda"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:154
+msgid "&Justified"
+msgstr "&Justificado"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:164
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "&Sangrar párrafo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:174
+msgid "Label Width"
+msgstr "Ancho de etiqueta"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "This text defines the width of the paragraph label"
+msgstr "Este texto define el ancho de la etiqueta del párrafo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+msgid "Lo&ngest label"
+msgstr "Etiqueta más &larga"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:212
+#, fuzzy
+msgid "Line &spacing"
+msgstr "E&spaciado:"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1336
+#: src/frontends/qt4/GuiDocument.cpp:579
+msgid "Single"
+msgstr "Sencillo"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:245
+msgid "1.5"
+msgstr "1.5"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:583
+msgid "Double"
+msgstr "Doble"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3936,12 +3936,12 @@ msgstr "Demostración:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Teorema"
@@ -3954,9 +3954,9 @@ msgstr "Teorema #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
 msgid "Lemma"
 msgstr "Lema"
 
@@ -3969,9 +3969,8 @@ msgstr "Lema #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
 msgid "Corollary"
 msgstr "Corolario"
 
@@ -3983,9 +3982,8 @@ msgstr "Corolario #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
 msgid "Proposition"
 msgstr "Proposición"
 
@@ -3996,9 +3994,8 @@ msgstr "Proposición #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
 msgid "Conjecture"
 msgstr "Conjetura"
 
@@ -4016,7 +4013,7 @@ msgid "Criterion #:"
 msgstr "Criterio #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
 msgid "Fact"
 msgstr "Hecho"
 
@@ -4037,9 +4034,9 @@ msgstr "Axioma #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Definición"
 
@@ -4050,10 +4047,10 @@ msgstr "Definición #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:823
+#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:823
 msgid "Example"
 msgstr "Ejemplo"
 
@@ -4072,9 +4069,9 @@ msgstr "Condición #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Problema"
 
@@ -4083,9 +4080,10 @@ msgid "Problem #:"
 msgstr "Problema #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Ejercicio"
 
@@ -4096,9 +4094,9 @@ msgstr "Ejercicio #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Observación"
 
@@ -4109,9 +4107,10 @@ msgstr "Observación #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Afirmación"
 
@@ -4141,13 +4140,13 @@ msgid "Notation #:"
 msgstr "Notación #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
 msgid "Case"
 msgstr "Caso"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:213
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
+#: lib/layouts/theorems.inc:207
 msgid "Case #:"
 msgstr "Caso #:"
 
@@ -4785,6 +4784,11 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "ComenzarFotograma"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:34 lib/layouts/scrartcl.layout:20
@@ -4799,11 +4803,6 @@ msgstr "Parte"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "ComenzarFotograma"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6490,7 +6489,7 @@ msgid "Notation \\thenotation."
 msgstr "Notación \\arabic{notation}."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Teorema \\arabic{theorem}."
@@ -7881,56 +7880,56 @@ msgstr "Separatas"
 msgid "Offprints:"
 msgstr "Separatas:"
 
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "Corolario \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "Lema \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Proposición \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "Conjetura \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Definición \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Ejemplo \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Problema \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Ejercicio @Section@.\\arabic{theorem}."
 
-#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "Observación \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "Afirmación \\arabic{theorem}"
@@ -9675,10 +9674,9 @@ msgstr "Referencias con formato"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:202
-#: lib/ui/stdcontext.inc:215 lib/ui/stdcontext.inc:292
-#: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:312
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Configuración...|g"
 
@@ -9869,6 +9867,11 @@ msgstr "RellenoVert"
 #, fuzzy
 msgid "Custom|C"
 msgstr "Personalizado"
+
+#: lib/ui/stdcontext.inc:202
+#, fuzzy
+msgid "Settings...|e"
+msgstr "Configuración...|g"
 
 #: lib/ui/stdcontext.inc:209
 #, fuzzy
@@ -14973,7 +14976,7 @@ msgstr ""
 "  -version       resumen de la versión e info. de compilación\n"
 "Lea la página del manual de LyX para más detalles."
 
-#: src/LyX.cpp:1083 src/support/Package.cpp:560
+#: src/LyX.cpp:1083
 msgid "No system directory"
 msgstr "Sin directorio del sistema"
 
@@ -16084,6 +16087,27 @@ msgstr "\\Alph{enumiv}."
 #: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
 msgid "Senseless!!! "
 msgstr "¡Sin sentido! "
+
+#: src/client/debug.cpp:39 src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "Ningún mensaje de depuración"
+
+#: src/client/debug.cpp:40 src/support/debug.cpp:39
+msgid "General information"
+msgstr "Información general"
+
+#: src/client/debug.cpp:41 src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr "Mensajes de depuración generales de los desarrolladores"
+
+#: src/client/debug.cpp:42 src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "Todos los mensajes de depuración"
+
+#: src/client/debug.cpp:86 src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Depurando `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -18264,19 +18288,17 @@ msgstr "Bibliografía BibTeX Generada"
 
 #: src/insets/InsetBibtex.cpp:158
 #, fuzzy
-msgid "Databases:\n"
+msgid "Databases:"
 msgstr "&Bases de datos"
 
 #: src/insets/InsetBibtex.cpp:183
 #, fuzzy
-msgid "Style File:\n"
+msgid "Style File:"
 msgstr "Cerrar"
 
 #: src/insets/InsetBibtex.cpp:190
 #, fuzzy
-msgid ""
-"\n"
-"Lists: "
+msgid "Lists:"
 msgstr "Lista"
 
 #: src/insets/InsetBibtex.cpp:201
@@ -19081,6 +19103,11 @@ msgstr "La cadena ha sido reemplazada."
 msgid " strings have been replaced."
 msgstr " cadenas han sido reemplazadas."
 
+#: src/mathed/InsetFormulaMacro.cpp:118
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Macro: %1$s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19178,74 +19205,6 @@ msgstr "Sinopsis: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Referencias: "
-
-#: src/support/Package.cpp:441
-msgid "LyX binary not found"
-msgstr "Binario LyX no encontrado"
-
-#: src/support/Package.cpp:442
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
-
-#: src/support/Package.cpp:561
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-"No se pudo determinar el directorio del sistema habiendo buscado en\n"
-"\t%1$s\n"
-"Use el parámetro '-sysdir' de la línea de comandos o ponga en la variable de "
-"entorno LYX_DIR_15x al directorio del sistema que contiene el archivo "
-"`chkconfig.ltx'."
-
-#: src/support/Package.cpp:642 src/support/Package.cpp:669
-msgid "File not found"
-msgstr "Archivo no encontrado"
-
-#: src/support/Package.cpp:643
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Opción %1$s no válida.\n"
-"El directorio %2$s no contiene %3$s."
-
-#: src/support/Package.cpp:670
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Variable de entorno %1$s no válida.\n"
-"El directorio %2$s no contiene %3$s."
-
-#: src/support/Package.cpp:694
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-"Variable de entorno %1$s no válida.\n"
-"%2$s no es un directorio."
-
-#: src/support/Package.cpp:696
-msgid "Directory not found"
-msgstr "Directorio no encontrado"
-
-#: src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "Ningún mensaje de depuración"
-
-#: src/support/debug.cpp:39
-msgid "General information"
-msgstr "Información general"
 
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
@@ -19356,19 +19315,6 @@ msgstr "macro ecuación"
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr "Mensajes de depuración generales de los desarrolladores"
-
-#: src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "Todos los mensajes de depuración"
-
-#: src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Depurando `%1$s' (%2$s)"
-
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"
 msgstr "es"
@@ -19401,15 +19347,61 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Usuario desconocido"
 
+#~ msgid "LyX binary not found"
+#~ msgstr "Binario LyX no encontrado"
+
+#~ msgid ""
+#~ "Unable to determine the path to the LyX binary from the command line %1$s"
+#~ msgstr ""
+#~ "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1"
+#~ "$s"
+
+#~ msgid ""
+#~ "Unable to determine the system directory having searched\n"
+#~ "\t%1$s\n"
+#~ "Use the '-sysdir' command line parameter or set the environment variable "
+#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
+#~ "ltx'."
+#~ msgstr ""
+#~ "No se pudo determinar el directorio del sistema habiendo buscado en\n"
+#~ "\t%1$s\n"
+#~ "Use el parámetro '-sysdir' de la línea de comandos o ponga en la variable "
+#~ "de entorno LYX_DIR_15x al directorio del sistema que contiene el archivo "
+#~ "`chkconfig.ltx'."
+
+#~ msgid "File not found"
+#~ msgstr "Archivo no encontrado"
+
+#~ msgid ""
+#~ "Invalid %1$s switch.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Opción %1$s no válida.\n"
+#~ "El directorio %2$s no contiene %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Variable de entorno %1$s no válida.\n"
+#~ "El directorio %2$s no contiene %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "%2$s is not a directory."
+#~ msgstr ""
+#~ "Variable de entorno %1$s no válida.\n"
+#~ "%2$s no es un directorio."
+
+#~ msgid "Directory not found"
+#~ msgstr "Directorio no encontrado"
+
 #, fuzzy
 #~ msgid "Clear group"
 #~ msgstr "Limpiar página"
 
 #~ msgid " (auto)"
 #~ msgstr " (auto)"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Macro: %1$s: "
 
 #~ msgid "Plain Text"
 #~ msgstr "Texto simple"
