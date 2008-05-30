@@ -441,7 +441,6 @@ void InsetSpaceParams::read(Lexer & lex)
 
 	if (lex.checkFor("\\length"))
 		lex >> length;
-	lex >> "\\end_inset";
 }
 
 
@@ -455,6 +454,7 @@ void InsetSpace::write(ostream & os) const
 void InsetSpace::read(Lexer & lex)
 {
 	params_.read(lex);
+	lex >> "\\end_inset";
 }
 
 
@@ -632,7 +632,11 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 	lex.setContext("InsetSpace::string2params");
 	lex >> "space";
 
-	params.read(lex);
+	// There are cases, such as when we are called via getStatus() from
+	// Dialog::canApply(), where we are just called with "space" rather
+	// than a full "space \type{}\n\\end_inset".
+	if (lex.isOK())
+		params.read(lex);
 }
 
 
