@@ -9,8 +9,6 @@ Columns                 1
 Sides                   1
 SecNumDepth             3
 TocDepth                3
-DefaultStyle            Standard
-
 
 
 Style Standard
@@ -144,9 +142,6 @@ Style Abstract
 	LeftMargin            ""
 	RightMargin           ""
 	ParIndent             ""
-	Preamble
-		\if@titlepage\else\if@center\else\def\endabstract{\par\bigskip}\fi\fi
-	EndPreamble
 End
 
 
