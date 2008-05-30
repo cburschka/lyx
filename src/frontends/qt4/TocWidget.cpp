@@ -135,6 +135,7 @@ void TocWidget::setTreeDepth(int depth)
 void TocWidget::on_typeCO_currentIndexChanged(int value)
 {
 	setTocModel(value);
+	gui_view_.setFocus();
 }
 
 
