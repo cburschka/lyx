@@ -13,8 +13,9 @@
 
 #include "TocWidget.h"
 
-#include "TocModel.h"
+#include "GuiView.h"
 #include "qt_helpers.h"
+#include "TocModel.h"
 
 #include "FuncRequest.h"
 #include "LyXFunc.h"
@@ -31,8 +32,8 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-TocWidget::TocWidget(TocModels & models, QWidget * parent)
-	: QWidget(parent), depth_(0), models_(models)
+TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
+	: QWidget(parent), depth_(0), gui_view_(gui_view)
 {
 	setupUi(this);
 
@@ -67,8 +68,7 @@ void TocWidget::on_tocTV_activated(QModelIndex const & index)
 void TocWidget::on_tocTV_clicked(QModelIndex const & index)
 {
 	goTo(index);
-	// FIXME: It would be nice to return the focus to the work area in this
-	// case. But we need access to the GuiView!
+	gui_view_.setFocus();
 }
 
 
@@ -77,7 +77,7 @@ void TocWidget::goTo(QModelIndex const & index)
 	LYXERR(Debug::GUI, "goto " << index.row()
 		<< ", " << index.column());
 
-	models_.goTo(typeCO->currentIndex(), index);
+	gui_view_.tocModels().goTo(typeCO->currentIndex(), index);
 }
 
 
@@ -86,7 +86,7 @@ void TocWidget::on_updateTB_clicked()
 	// The backend update can take some time so we disable
 	// the controls while waiting.
 	enableControls(false);
-	models_.updateBackend();
+	gui_view_.tocModels().updateBackend();
 }
 
 /* FIXME (Ugras 17/11/06):
@@ -132,6 +132,7 @@ void TocWidget::setTreeDepth(int depth)
 			tocTV->collapse(index);
 	}
 }
+
 
 void TocWidget::on_typeCO_currentIndexChanged(int value)
 {
@@ -207,7 +208,7 @@ void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
 
-	if (!models_.canOutline(typeCO->currentIndex()))
+	if (!gui_view_.tocModels().canOutline(typeCO->currentIndex()))
 		enable = false;
 
 	moveUpTB->setEnabled(enable);
@@ -223,13 +224,13 @@ void TocWidget::updateView()
 {
 	LYXERR(Debug::GUI, "In TocWidget::updateView()");
 	setTreeDepth(depth_);
-	select(models_.currentIndex(typeCO->currentIndex()));
+	select(gui_view_.tocModels().currentIndex(typeCO->currentIndex()));
 }
 
 
 void TocWidget::init(QString const & str)
 {
-	QStringList const & type_names = models_.typeNames();
+	QStringList const & type_names = gui_view_.tocModels().typeNames();
 	if (type_names.isEmpty()) {
 		enableControls(false);
 		typeCO->clear();
@@ -238,7 +239,7 @@ void TocWidget::init(QString const & str)
 		return;
 	}
 
-	int selected_type = models_.decodeType(str);
+	int selected_type = gui_view_.tocModels().decodeType(str);
 
 	QString const current_text = typeCO->currentText();
 	typeCO->blockSignals(true);
@@ -264,7 +265,7 @@ void TocWidget::init(QString const & str)
 void TocWidget::setTocModel(size_t type)
 {
 	bool controls_enabled = false;
-	QStandardItemModel * toc_model = models_.model(type);
+	QStandardItemModel * toc_model = gui_view_.tocModels().model(type);
 	if (toc_model) {
 		controls_enabled = toc_model->rowCount() > 0;
 		tocTV->setModel(toc_model);
@@ -278,7 +279,7 @@ void TocWidget::setTocModel(size_t type)
 	enableControls(controls_enabled);
 
 	if (controls_enabled) {
-		depthSL->setMaximum(models_.depth(type));
+		depthSL->setMaximum(gui_view_.tocModels().depth(type));
 		depthSL->setValue(depth_);
 	}
 

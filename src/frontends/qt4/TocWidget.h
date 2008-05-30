@@ -13,22 +13,24 @@
 #ifndef TOC_WIDGET_H
 #define TOC_WIDGET_H
 
-#include "GuiDialog.h"
-#include "GuiToc.h"
 #include "ui_TocUi.h"
 
+#include <QWidget>
+
+class QModelIndex;
 class QString;
 
 namespace lyx {
 namespace frontend {
 
-class TocModels;
+class GuiView;
 
 class TocWidget : public QWidget, public Ui::TocUi
 {
 	Q_OBJECT
 public:
-	TocWidget(TocModels & models, QWidget * parent = 0);
+	///
+	TocWidget(GuiView & gui_view, QWidget * parent = 0);
 
 	/// Initialise GUI.
 	void init(QString const & str);
@@ -66,7 +68,7 @@ private:
 	/// depth of list shown
 	int depth_;
 	///
-	TocModels & models_;
+	GuiView & gui_view_;
 };
 
 } // namespace frontend
