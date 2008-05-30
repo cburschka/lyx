@@ -108,6 +108,7 @@ void TocWidget::on_depthSL_valueChanged(int depth)
 	if (depth == depth_)
 		return;
 	setTreeDepth(depth);
+	gui_view_.setFocus();
 }
 
 
@@ -147,6 +148,7 @@ void TocWidget::outline(int func_code)
 	goTo(list[0]);
 	dispatch(FuncRequest(static_cast<FuncCode>(func_code)));
 	enableControls(true);
+	gui_view_.setFocus();
 }
 
 
