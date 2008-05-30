@@ -37,7 +37,7 @@ test "$autoversion" != "" && {
 }
 
 case $autoversion in
-    *' '2.5[2-9]|*' '2.60[ab]|*' '2.6[0-1])
+    *' '2.5[2-9]|*' '2.60[ab]|*' '2.6[0-2])
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
