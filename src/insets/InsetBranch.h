@@ -78,6 +78,8 @@ private:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
+	void addToToc(DocIterator const &);
+	///
 	InsetBranchParams const & params() const { return params_; }
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }

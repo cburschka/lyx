@@ -502,6 +502,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("List of Citations");
 	if (type == "label")
 		return qt_("Labels and References");
+	if (type == "branch")
+		return qt_("List of Branches");
 
 	FloatList const & floats = bp.documentClass().floats();
 	if (floats.typeExist(type))

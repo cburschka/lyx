@@ -25,6 +25,7 @@
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -270,6 +271,17 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 	lex.setContext("InsetBranch::string2params");
 	lex >> "branch" >> "Branch";
 	params.read(lex);
+}
+
+
+void InsetBranch::addToToc(DocIterator const & cpit)
+{
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(*this));
+
+	Toc & toc = buffer().tocBackend().toc("branch");
+	docstring const str = params_.branch + ": " + text_.getPar(0).asString();
+	toc.push_back(TocItem(pit, 0, str));
 }
 
 
