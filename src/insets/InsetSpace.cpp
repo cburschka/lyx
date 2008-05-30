@@ -446,7 +446,7 @@ void InsetSpaceParams::read(Lexer & lex)
 
 void InsetSpace::write(ostream & os) const
 {
-	os << "Space ";
+	os << "space ";
 	params_.write(os);
 }
 

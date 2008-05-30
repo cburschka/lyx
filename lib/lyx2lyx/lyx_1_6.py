@@ -2280,6 +2280,26 @@ def revert_paper_sizes(document):
         document.header[j] = "\\papersize executivepaper"
 
 
+def convert_InsetSpace(document):
+    " Convert '\\begin_inset Space foo' to '\\begin_inset space foo'"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Space", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset Space', '\\begin_inset space')
+
+
+def revert_InsetSpace(document):
+    " Revert '\\begin_inset space foo' to '\\begin_inset Space foo'"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset space", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset space', '\\begin_inset Space')
+
+
 ##
 # Conversion hub
 #
@@ -2343,9 +2363,11 @@ convert = [[277, [fix_wrong_tables]],
            [332, []],
            [333, [update_apa_styles]],
            [334, [convert_paper_sizes]],
+           [335, [convert_InsetSpace]],
           ]
 
-revert =  [[333, [revert_paper_sizes]],
+revert =  [[334, [revert_InsetSpace]],
+           [333, [revert_paper_sizes]],
            [332, []],
            [331, [revert_graphics_group]],
            [330, [revert_ltcaption]],

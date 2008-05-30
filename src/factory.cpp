@@ -528,7 +528,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {
 			inset.reset(new InsetListings(buf));
-		} else if (tmptok == "Space") {
+		} else if (tmptok == "space") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
 			inset.reset(new InsetTabular(buf));
