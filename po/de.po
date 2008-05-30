@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 11:19+0100\n"
+"POT-Creation-Date: 2008-05-30 16:29+0100\n"
 "PO-Revision-Date: 2008-05-28 22:09+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -3918,7 +3918,7 @@ msgstr "&Gleiten erlauben"
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
 #: lib/layouts/manpage.layout:18 lib/layouts/memoir.layout:30
-#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:16
+#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
 #: lib/layouts/powerdot.layout:106 lib/layouts/revtex.layout:22
 #: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:19
@@ -4180,7 +4180,7 @@ msgstr "Fall #:"
 #: lib/layouts/kluwer.layout:58 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:45 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:40 lib/layouts/memoir.layout:56
-#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:46
+#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:44
 #: lib/layouts/powerdot.layout:223 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:42
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
@@ -4202,7 +4202,7 @@ msgstr "Abschnitt"
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
 #: lib/layouts/ltugboat.layout:64 lib/layouts/memoir.layout:61
-#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:55
+#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:53
 #: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:56
 #: lib/layouts/siamltex.layout:59 lib/layouts/simplecv.layout:48
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
@@ -4220,7 +4220,7 @@ msgstr "Unterabschnitt"
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
-#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:64
+#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:62
 #: lib/layouts/revtex.layout:57 lib/layouts/revtex4.layout:64
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
@@ -4264,7 +4264,7 @@ msgstr "Unterunterabschn.*"
 #: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
 #: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
 #: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:134 lib/layouts/revtex.layout:135
+#: lib/layouts/paper.layout:132 lib/layouts/revtex.layout:135
 #: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:142
 #: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
 #: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
@@ -4283,7 +4283,7 @@ msgstr "Zusammenfassung---"
 #: lib/layouts/aastex.layout:276 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:193 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:176
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:167
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:166 lib/layouts/svjour.inc:270
@@ -4365,7 +4365,7 @@ msgstr "Aufzählung"
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:91
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:129
-#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:105
+#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:19
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:27 lib/layouts/stdlists.inc:49
@@ -4397,7 +4397,7 @@ msgstr "Liste"
 #: lib/layouts/iopart.layout:55 lib/layouts/isprs.layout:92
 #: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
 #: lib/layouts/llncs.layout:100 lib/layouts/ltugboat.layout:131
-#: lib/layouts/paper.layout:114 lib/layouts/powerdot.layout:39
+#: lib/layouts/paper.layout:112 lib/layouts/powerdot.layout:39
 #: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
 #: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:269
 #: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
@@ -4427,7 +4427,7 @@ msgstr "Untertitel"
 #: lib/layouts/ijmpd.layout:43 lib/layouts/iopart.layout:123
 #: lib/layouts/isprs.layout:75 lib/layouts/kluwer.layout:157
 #: lib/layouts/llncs.layout:175 lib/layouts/ltugboat.layout:150
-#: lib/layouts/paper.layout:124 lib/layouts/powerdot.layout:62
+#: lib/layouts/paper.layout:122 lib/layouts/powerdot.layout:62
 #: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
 #: lib/layouts/siamltex.layout:125 lib/layouts/svprobth.layout:52
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
@@ -4518,7 +4518,7 @@ msgstr "Thesaurus"
 #: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
 #: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
 #: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:71
-#: lib/layouts/paper.layout:73 lib/layouts/revtex.layout:65
+#: lib/layouts/paper.layout:71 lib/layouts/revtex.layout:65
 #: lib/layouts/revtex4.layout:72 lib/layouts/siamltex.layout:71
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
@@ -4761,7 +4761,7 @@ msgstr "Bitmap einpassen"
 
 #: lib/layouts/apa.layout:344 lib/layouts/egs.layout:86
 #: lib/layouts/kluwer.layout:93 lib/layouts/llncs.layout:78
-#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:82
+#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
 #: lib/layouts/svjour.inc:89
@@ -4807,7 +4807,7 @@ msgstr "BeginneRahmen"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
-#: lib/layouts/paper.layout:34 lib/layouts/scrartcl.layout:20
+#: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
 #: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:12
 #: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
 #: lib/layouts/scrclass.inc:47 lib/layouts/stdsections.inc:11
@@ -6457,7 +6457,7 @@ msgstr "Szene"
 
 #: lib/layouts/ijmpc.layout:79 lib/layouts/ijmpd.layout:82
 #: lib/layouts/iopart.layout:203 lib/layouts/kluwer.layout:281
-#: lib/layouts/paper.layout:179 lib/layouts/revtex4.layout:246
+#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:246
 #: lib/layouts/spie.layout:46 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "Schlagwörter:"
@@ -6814,11 +6814,11 @@ msgstr "SchließeAbschnitt"
 msgid "Close Section"
 msgstr "Schließe Abschnitt"
 
-#: lib/layouts/paper.layout:154
+#: lib/layouts/paper.layout:149
 msgid "SubTitle"
 msgstr "Untertitel"
 
-#: lib/layouts/paper.layout:165
+#: lib/layouts/paper.layout:160
 msgid "Institution"
 msgstr "Institution"
 
@@ -17975,6 +17975,11 @@ msgstr "Literaturverweise"
 msgid "Labels and References"
 msgstr "Marken und Querverweise"
 
+#: src/frontends/qt4/qt_helpers.cpp:506
+#, fuzzy
+msgid "List of Branches"
+msgstr "Grafiken"
+
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:277
 #: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:466
 msgid ""
@@ -18101,19 +18106,19 @@ msgstr "Box-Einfügung geöffnet"
 msgid "Box"
 msgstr "Box"
 
-#: src/insets/InsetBranch.cpp:54
+#: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "Zweig-Einfügung geöffnet"
 
-#: src/insets/InsetBranch.cpp:74 src/insets/InsetBranch.cpp:80
+#: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:81
 msgid "Branch: "
 msgstr "Zweig: "
 
-#: src/insets/InsetBranch.cpp:85
+#: src/insets/InsetBranch.cpp:86
 msgid "Undef: "
 msgstr "Undef.: "
 
-#: src/insets/InsetBranch.cpp:217
+#: src/insets/InsetBranch.cpp:218
 msgid "branch"
 msgstr "Zweig"
 
