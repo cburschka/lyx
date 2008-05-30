@@ -613,7 +613,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_BACKWARD_SELECT, "word-backward-select", ReadOnly | SingleParUpdate, Edit },
-		{ LFUN_WORD_CAPITALIZE, "word-capitalize", Noop, Edit },
 		{ LFUN_WORD_DELETE_BACKWARD, "word-delete-backward", Noop, Edit },
 		{ LFUN_WORD_DELETE_FORWARD, "word-delete-forward", Noop, Edit },
 /*!
@@ -691,7 +690,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_LEFT_SELECT, "word-left-select", ReadOnly | SingleParUpdate, Edit },
-		{ LFUN_WORD_LOWCASE, "word-lowcase", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
  * \li Action: Moves the cursor to the next beginning of a word "on the right".
@@ -719,7 +717,30 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_RIGHT_SELECT, "word-right-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_CAPITALIZE
+ * \li Action: Capitalizes the words in the selection (i.e. the first letters)
+               or the letter on the cursor position.
+ * \li Syntax: word-capitalize
+ * \endvar
+ */
+		{ LFUN_WORD_CAPITALIZE, "word-capitalize", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_UPCASE
+ * \li Action: Change the words in the selection or from the cursor position
+               to the end of word to the upper case.
+ * \li Syntax: word-upcase
+ * \endvar
+ */
 		{ LFUN_WORD_UPCASE, "word-upcase", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_LOWCASE
+ * \li Action: Change the words in the selection or from the cursor position
+               to the end of word to the lower case.
+ * \li Syntax: word-lowcase
+ * \endvar
+ */
+		{ LFUN_WORD_LOWCASE, "word-lowcase", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
