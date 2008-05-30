@@ -64,6 +64,8 @@ private:
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
 	///
 	void setTreeDepth(int depth);
+	///
+	void outline(int func_code);
 
 	/// depth of list shown
 	int depth_;

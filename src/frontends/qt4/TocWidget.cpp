@@ -126,10 +126,7 @@ void TocWidget::setTreeDepth(int depth)
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		if (getIndexDepth(index) < depth_)
-			tocTV->expand(index);
-		else
-			tocTV->collapse(index);
+		tocTV->setExpanded(index, getIndexDepth(index) < depth_);
 	}
 }
 
@@ -140,54 +137,40 @@ void TocWidget::on_typeCO_currentIndexChanged(int value)
 }
 
 
-void TocWidget::on_moveUpTB_clicked()
+void TocWidget::outline(int func_code)
 {
 	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
-	if (!list.isEmpty()) {
-		enableControls(false);
-		goTo(list[0]);
-		dispatch(FuncRequest(LFUN_OUTLINE_UP));
-		enableControls(true);
-	}
+	if (list.isEmpty())
+		return;
+	enableControls(false);
+	goTo(list[0]);
+	dispatch(FuncRequest(static_cast<FuncCode>(func_code)));
+	enableControls(true);
+}
+
+
+void TocWidget::on_moveUpTB_clicked()
+{
+	outline(LFUN_OUTLINE_UP);
 }
 
 
 void TocWidget::on_moveDownTB_clicked()
 {
-	enableControls(false);
-	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
-	if (!list.isEmpty()) {
-		enableControls(false);
-		goTo(list[0]);
-		dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
-		enableControls(true);
-	}
+	outline(LFUN_OUTLINE_DOWN);
 }
 
 
 void TocWidget::on_moveInTB_clicked()
 {
-	enableControls(false);
-	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
-	if (!list.isEmpty()) {
-		enableControls(false);
-		goTo(list[0]);
-		dispatch(FuncRequest(LFUN_OUTLINE_IN));
-		enableControls(true);
-	}
+	outline(LFUN_OUTLINE_IN);
 }
 
 
 void TocWidget::on_moveOutTB_clicked()
 {
-	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
-	if (!list.isEmpty()) {
-		enableControls(false);
-		goTo(list[0]);
-		dispatch(FuncRequest(LFUN_OUTLINE_OUT));
-		enableControls(true);
-	}
+	outline(LFUN_OUTLINE_OUT);
 }
 
 
