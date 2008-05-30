@@ -239,7 +239,18 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 		int const y0 = y + desc - 1;
 		int const y1 = y - asc + oddheight - 1;
 		int const y2 = (y0 + y1) / 2;
-		int const xoffset = (y0 - y1) / 2;
+		int xoffset = (y0 - y1) / 2;
+
+		//Two tests for very narrow insets
+		if (xoffset > x1 - x0
+		     && (params_.kind == InsetSpaceParams::LEFTARROWFILL
+			 || params_.kind == InsetSpaceParams::RIGHTARROWFILL))
+				xoffset = x1 - x0;
+		if (xoffset * 6 > (x1 - x0)
+		     && (params_.kind == InsetSpaceParams::UPBRACEFILL
+			 || params_.kind == InsetSpaceParams::DOWNBRACEFILL))
+				xoffset = (x1 - x0) / 6;
+
 		int const x2 = x0 + xoffset;
 		int const x3 = x1 - xoffset;
 		int const xm = (x0 + x1) / 2;
