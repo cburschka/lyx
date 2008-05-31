@@ -16,6 +16,7 @@
 
 #include <string>
 
+
 namespace lyx {
 
 void ColorCache::init()
@@ -27,11 +28,14 @@ void ColorCache::init()
 
 
 /// get the given color
-QColor const & ColorCache::get(ColorCode color) const
+QColor ColorCache::get(ColorCode color) const
 {
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
-	return lcolors_[color];
+	if (color <= Color_ignore)
+		return lcolors_[color];
+	// used by branches
+	return QColor(lcolor.getX11Name(color).c_str()); 
 }
 
 

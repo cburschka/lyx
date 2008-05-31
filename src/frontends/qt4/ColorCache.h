@@ -29,7 +29,7 @@ public:
 	ColorCache() : initialized_(false) {}
 
 	/// get the given color
-	QColor const & get(ColorCode color) const;
+	QColor get(ColorCode color) const;
 
 	/// clear all colors
 	void clear() { initialized_ = false; }

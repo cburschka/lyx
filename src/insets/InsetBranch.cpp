@@ -82,9 +82,8 @@ void InsetBranch::setButtonLabel()
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
 		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == Color_none) {
+		if (c == Color_none)
 			s = _("Undef: ") + s;
-		}
 	}
 	if (decoration() == InsetLayout::Classic)
 		setLabel(isOpen() ? s : getNewLabel(s) );
@@ -95,15 +94,13 @@ void InsetBranch::setButtonLabel()
 
 ColorCode InsetBranch::backgroundColor() const
 {
-	if (!params_.branch.empty()) {
-		// FIXME UNICODE
-		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == Color_none) {
-			c = Color_error;
-		}
-		return c;
-	} else
+	if (params_.branch.empty())
 		return Inset::backgroundColor();
+	// FIXME UNICODE
+	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
+	if (c == Color_none)
+		c = Color_error;
+	return c;
 }
 
 
