@@ -269,6 +269,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_ERT_INSERT, "ert-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FLOAT_INSERT
+ * \li Action: Inserts a float inset.
+ * \li Syntax: float-insert <TYPE>
+ * \li Params: <TYPE>: type of float depends on the used textclass. Usually
+                       "algorithm", "table", "figure" parameters can be given.
+ * \li Origin: Lgb, 27 Jun 2000
+ * \endvar
+ */
 		{ LFUN_FLOAT_INSERT, "float-insert", Noop, Edit },
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
