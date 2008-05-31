@@ -259,7 +259,6 @@ src_extra_files = Split('''
 
 src_client_header_files = Split('''
     Messages.h
-    debug.h
 ''')
 
 
