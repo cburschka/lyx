@@ -37,6 +37,8 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	void normalize(NormalStream & ns) const;
 	///
 	void octave(OctaveStream & os) const;

@@ -103,15 +103,15 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 }
 
 
-WriteStream::WriteStream(odocstream & os, bool fragile, bool latex)
+WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
-	  pendingspace_(false), line_(0)
+	  dryrun_(dryrun), pendingspace_(false), line_(0)
 {}
 
 
 WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
-	  pendingspace_(false), line_(0)
+	  dryrun_(false), pendingspace_(false), line_(0)
 {}
 
 

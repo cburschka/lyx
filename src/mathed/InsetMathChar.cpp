@@ -18,6 +18,8 @@
 #include "MetricsInfo.h"
 
 #include "Dimension.h"
+#include "Encoding.h"
+#include "LaTeXFeatures.h"
 #include "TextPainter.h"
 
 #include "frontends/FontMetrics.h"
@@ -132,6 +134,15 @@ void InsetMathChar::drawT(TextPainter & pain, int x, int y) const
 void InsetMathChar::write(WriteStream & os) const
 {
 	os.os().put(char_);
+}
+
+
+void InsetMathChar::validate(LaTeXFeatures & features) const
+{
+	if (char_ >= 0x80) {
+		encodings.validate(char_, features);
+		features.require("mathsym");
+	}
 }
 
 

@@ -198,7 +198,14 @@ static string const textcyr_def =
 	" \\def\\encodingdefault{T2A}}\n"
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
 	"\\DeclareFontEncoding{T2A}{}{}\n";
-	
+
+static string const mathsym_def =
+	"\\DeclareRobustCommand{\\mathsym}[1]{%\n"
+	" \\mathchoice{\\hbox{\\normalsize\\textrm{#1}}}%\n"
+	"  {\\hbox{\\normalsize\\textrm{#1}}}%\n"
+	"  {\\hbox{\\scriptsize\\textrm{#1}}}%\n"
+	"  {\\hbox{\\tiny\\textrm{#1}}}}\n";
+
 /////////////////////////////////////////////////////////////////////
 //
 // LaTeXFeatures
@@ -643,6 +650,9 @@ string const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("textcyr"))
 		macros << textcyr_def << '\n';
+
+	if (mustProvide("mathsym"))
+		macros << mathsym_def << '\n';
 
 	// quotes.
 	if (mustProvide("quotesinglbase"))

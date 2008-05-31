@@ -162,9 +162,9 @@ void MacroData::write(odocstream & os, bool overwriteRedefinition) const
 	}
 		
 	// output template
-	MathMacroTemplate const & tmpl 
-	= static_cast<MathMacroTemplate const &>(*inset);
-	WriteStream wi(os, false, true);
+	MathMacroTemplate const & tmpl =
+		static_cast<MathMacroTemplate const &>(*inset);
+	WriteStream wi(os, false, true, false);
 	tmpl.write(wi, overwriteRedefinition);
 }
 

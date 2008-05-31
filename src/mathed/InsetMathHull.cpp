@@ -420,7 +420,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		odocstringstream os;
-		WriteStream wi(os, false, true);
+		WriteStream wi(os, false, true, false);
 		write(wi);
 		dim.wid = os.str().size();
 		dim.asc = 1;
@@ -435,7 +435,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		odocstringstream os;
-		WriteStream wi(os, false, true);
+		WriteStream wi(os, false, true, false);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
 	}
@@ -445,7 +445,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 static docstring latexString(InsetMathHull const & inset)
 {
 	odocstringstream ls;
-	WriteStream wi(ls, false, false);
+	WriteStream wi(ls, false, false, false);
 	inset.write(wi);
 	return ls.str();
 }
@@ -1546,7 +1546,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
-	WriteStream wi(oss, false, false);
+	WriteStream wi(oss, false, false, false);
 	oss << "Formula ";
 	write(wi);
 	os << to_utf8(oss.str());
@@ -1575,7 +1575,7 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 		return tpain.textheight();
 	} else {
 		odocstringstream oss;
-		WriteStream wi(oss, false, true);
+		WriteStream wi(oss, false, true, false);
 		wi << cell(0);
 
 		docstring const str = oss.str();
@@ -1607,7 +1607,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
-		WriteStream wi(ls, false, false);
+		WriteStream wi(ls, false, false, false);
 		InsetMathGrid::write(wi);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");

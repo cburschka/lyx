@@ -31,7 +31,7 @@ class MathAtom;
 class WriteStream {
 public:
 	///
-	WriteStream(odocstream & os, bool fragile, bool latex);
+	WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun);
 	///
 	explicit WriteStream(odocstream & os);
 	///
@@ -42,6 +42,8 @@ public:
 	bool fragile() const { return fragile_; }
 	///
 	bool latex() const { return latex_; }
+	///
+	bool dryrun() const { return dryrun_; }
 	///
 	odocstream & os() { return os_; }
 	///
@@ -61,6 +63,8 @@ private:
 	bool firstitem_;
 	/// are we writing to .tex?
 	int latex_;
+	/// is it for preview?
+	bool dryrun_;
 	/// do we have a space pending?
 	bool pendingspace_;
 	///

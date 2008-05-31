@@ -12,8 +12,11 @@
 
 #include "InsetMathString.h"
 #include "MathStream.h"
-#include "MathStream.h"
 #include "MathSupport.h"
+
+#include "Encoding.h"
+
+#include "support/gettext.h"
 
 
 namespace lyx {
@@ -98,7 +101,56 @@ void InsetMathString::mathmlize(MathStream & os) const
 
 void InsetMathString::write(WriteStream & os) const
 {
-	os << str_;
+	if (!os.latex()) {
+		os << str_;
+		return;
+	}
+
+	// We need the latex macros defined in the unicodesymbols file.
+	// As they do not depend on the encoding, simply use the first
+	// available encoding.
+	Encodings::const_iterator encit = encodings.begin();
+	bool can_encode = encit != encodings.end();
+
+	docstring::const_iterator cit = str_.begin();
+	docstring::const_iterator end = str_.end();
+
+	bool in_mathsym = false;
+	while (cit != end) {
+		char_type const c = *cit;
+		try {
+			if (c < 0x80) {
+				if (in_mathsym) {
+					os << '}';
+					in_mathsym = false;
+				}
+				os << docstring(1, c);
+			} else if (can_encode) {
+				if (!in_mathsym) {
+					os << "\\mathsym{";
+					in_mathsym = true;
+				}
+				os << encit->latexChar(c, true);
+			} else {
+				throw EncodingException(c);
+			}
+		} catch (EncodingException & e) {
+			if (os.dryrun()) {
+				// FIXME: this is OK for View->Source
+				// but math preview will likely fail.
+				os << "<" << _("LyX Warning: ")
+				   << _("uncodable character") << " '";
+				os << docstring(1, e.failed_char);
+				os << "'>";
+			} else {
+				// throw again
+				throw(e);
+			}
+		}
+		++cit;
+	}
+	if (in_mathsym)
+		os << '}';
 }
 
 

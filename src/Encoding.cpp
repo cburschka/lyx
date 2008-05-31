@@ -323,17 +323,19 @@ void Encoding::init() const
 }
 
 
-docstring Encoding::latexChar(char_type c) const
+docstring Encoding::latexChar(char_type c, bool for_mathed) const
 {
 	// assure the used encoding is properly initialized
 	init();
 
-	if (c < start_encodable_)
-		return docstring(1, c);
-	if (encodable_.find(c) != encodable_.end())
-		return docstring(1, c);
+	if (!for_mathed) {
+		if (c < start_encodable_)
+			return docstring(1, c);
+		if (encodable_.find(c) != encodable_.end())
+			return docstring(1, c);
+	}
 
-	// c cannot be encoded in this encoding
+	// c cannot (or should not) be encoded in this encoding
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it == unicodesymbols.end())
 		throw EncodingException(c);

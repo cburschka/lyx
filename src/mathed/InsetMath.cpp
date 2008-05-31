@@ -47,7 +47,7 @@ void InsetMath::dump() const
 {
 	lyxerr << "---------------------------------------------" << endl;
 	odocstringstream os;
-	WriteStream wi(os, false, true);
+	WriteStream wi(os, false, true, false);
 	write(wi);
 	lyxerr << to_utf8(os.str());
 	lyxerr << "\n---------------------------------------------" << endl;
@@ -135,7 +135,7 @@ HullType InsetMath::getType() const
 ostream & operator<<(ostream & os, MathAtom const & at)
 {
 	odocstringstream oss;
-	WriteStream wi(oss, false, false);
+	WriteStream wi(oss, false, false, false);
 	at->write(wi);
 	return os << to_utf8(oss.str());
 }
@@ -143,7 +143,7 @@ ostream & operator<<(ostream & os, MathAtom const & at)
 
 odocstream & operator<<(odocstream & os, MathAtom const & at)
 {
-	WriteStream wi(os, false, false);
+	WriteStream wi(os, false, false, false);
 	at->write(wi);
 	return os;
 }

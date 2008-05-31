@@ -744,7 +744,16 @@ void Paragraph::Private::latexInset(
 		}
 	}
 
-	int tmp = inset->latex(os, runparams);
+	int tmp;
+
+	try {
+		tmp = inset->latex(os, runparams);
+	} catch (EncodingException & e) {
+		// add location information and throw again.
+		e.par_id = id_;
+		e.pos = i;
+		throw(e);
+	}
 
 	if (close) {
     	if (running_font.language()->lang() == "farsi")
