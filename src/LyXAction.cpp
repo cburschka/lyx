@@ -282,8 +282,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_FLOAT_WIDE_INSERT
  * \li Action: Inserts float insets as in #LFUN_FLOAT_INSERT but span multiple columns.
- * \li Notion: Corresponds to the "figure*" in LaTeX.
+ * \li Notion: Corresponds to the starred floats (figure*, table*, etc.) in LaTeX.
  * \li Syntax: float-wide-insert <TYPE>
+ * \li Params: <TYPE>: type of float depends on the used textclass. Usually
+                       "algorithm", "table", "figure" parameters can be given.
  * \li Origin: Lgb, 31 Oct 2001
  * \endvar
  */
