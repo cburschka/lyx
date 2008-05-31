@@ -164,7 +164,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 26.
+letzte Änderung: 30.
  Mai 2008
 \end_layout
 
@@ -1592,8 +1592,12 @@ suchen
 \family default
  ist aktiviert.
  Wurde der Suchbegriff gefunden, wird er markiert.
- Wenn Sie das Fenster schließen, können Sie mit der F3-Taste weitersuchen,
- aber nur vorwärts und ohne Unterscheidung zwischen groß und klein.
+ Wenn Sie das Fenster schließen, können Sie mit der 
+\family sans
+F3
+\family default
+-Taste weitersuchen, aber nur vorwärts und ohne Unterscheidung zwischen
+ groß und klein.
 \end_layout
 
 \begin_layout Standard
@@ -4850,7 +4854,7 @@ environment
  Alles zwischen den beiden Befehlen ist ein Absatz.
 \end_layout
 
-\begin_layout Quotation
+\begin_layout Standard
 
 \series bold
 Anmerkung
@@ -4876,101 +4880,20 @@ key "latex-einführung"
 \end_inset
 
 101.
- LaTeX hat offensichtlich Probleme, den Schreibmaschinenfont richtig umzubrechen.
-\begin_inset Newline newline
-\end_inset
-
-Man kann das mit der Trennhilfe 
-\begin_inset Quotes gld
-\end_inset
-
--
-\begin_inset Quotes grd
-\end_inset
-
- korrigieren, die über das Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Besondere
+ LaTeX hat offensichtlich Probleme, Zeichenketten, die aus Worten und Sonderzeic
+hen bestehen, richtig umzubrechen.
+ Wie man das korrigieren kann, finden Sie in Abschnitt
 \begin_inset Space \space{}
 \end_inset
 
-Formatierung
-\family default
-\SpecialChar \menuseparator
 
-\family sans
-Trennmöglichkeit
-\family default
- oder 
-\family sans
-Strg+
-\begin_inset Space \thinspace{}
-\end_inset
-
--
-\family default
- verfügbar ist.
- Manchmal hilft es auch, solche Textteile als URL zu definieren (siehe Abschnitt
- 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "URLs"
-
-\end_inset
-
-).
-\begin_inset Newline newline
-\end_inset
-
-Manchmal hilft es auch, den rechtsbündigen Zeilenumbruch (
-\family sans
-Strg+ Umschalt+ Return
-\family default
-) zu benutzen wie bei 
-\family sans
-\series bold
-headings
-\family default
-\series default
- 
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Headings"
+reference "Zeilenumbruch-manuell"
 
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-Meistens hilft 
-\family typewriter
-sloppypar
-\family default
- weiter (siehe 
-\emph on
-Handbuchergänzungen
-\emph default
- oder 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
-).
- Wenn Sie LaTeX nicht kennen oder das Konzept der Absatzumgebung völlig
- fremd für Sie ist, sollten Sie unbedingt das 
-\emph on
-Tutorium
-\emph default
- lesen.
- Das 
-\emph on
-Tutorium
-\emph default
- enthält auch viel mehr Beispiele als dieser Abschnitt.
 \end_layout
 
 \begin_layout Standard
@@ -12076,6 +11999,450 @@ Schrägstrich
 ): ftp://dante.ctan.org/tex-archive\SpecialChar \slash{}
 help\SpecialChar \slash{}
 Catalogue/entries/esint.html.
+\end_layout
+
+\begin_layout Standard
+Hier ist noch einmal das Beispiel aus Abschnitt
+\begin_inset Space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Absatzumgebungen"
+
+\end_inset
+
+, bei dem über den rechten Rand gedruckt wird:
+\end_layout
+
+\begin_layout Standard
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\end_layout
+
+\begin_layout Standard
+Es gibt jetzt verschiedene Möglichkeiten, dies zu korrigieren:
+\end_layout
+
+\begin_layout Standard
+\noindent
+1.
+ Sie können in der Nähe des Zeilenendes ein Leerzeichen einfügen:
+\end_layout
+
+\begin_layout Standard
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+environ ment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\end_layout
+
+\begin_layout Standard
+\noindent
+2.
+ Sie können das mit der Trennhilfe 
+\begin_inset Quotes gld
+\end_inset
+
+-
+\begin_inset Quotes grd
+\end_inset
+
+ korrigieren, die über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Besondere
+\begin_inset Space \space{}
+\end_inset
+
+Formatierung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Trennmöglichkeit
+\family default
+ oder 
+\family sans
+Strg+
+\begin_inset Space \thinspace{}
+\end_inset
+
+-
+\family default
+ verfügbar ist:
+\end_layout
+
+\begin_layout Standard
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+en\SpecialChar \-
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\end_layout
+
+\begin_layout Standard
+\noindent
+4.
+ Sie können einfach einen mit 
+\family sans
+Strg+Eingabe
+\family default
+ einen manuellen Zeilenumbruch einfügen, was aber nicht immer gut aussieht:
+\end_layout
+
+\begin_layout Standard
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+envi
+\begin_inset Newline newline
+\end_inset
+
+ronment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\end_layout
+
+\begin_layout Standard
+\noindent
+5.
+ Etwas besser ist es, den rechtsbündigen Zeilenumbruch (
+\family sans
+Strg+ Umschalt+ Return
+\family default
+) zu benutzen wie bei 
+\family sans
+\series bold
+headings
+\family default
+\series default
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "Headings"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin
+\begin_inset Newline linebreak
+\end_inset
+
+{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\end_layout
+
+\begin_layout Standard
+\noindent
+6.
+ Manchmal hilft es auch, solche Textteile als URL zu definieren (siehe Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "URLs"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+All diese Maßnahmen sind nur lokal, weil sie sich nur auf die Zeile auswirken,
+ in der das Problem auftrat.
+ Wenn Sie den Text des Absatzes ändern, kann es sein, dass Sie wieder korrigiere
+n müssen.
+\end_layout
+
+\begin_layout Standard
+Meistens hilft 
+\family typewriter
+sloppypar
+\family default
+ weiter (siehe 
+\emph on
+Handbuchergänzungen
+\emph default
+ oder 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
+
+\end_inset
+
+), bei dem Sie den Absatz oder mehrere mit den TeX-Code-Befehlen 
+\family typewriter
+
+\backslash
+begin{sloppypar}
+\family default
+ und 
+\family typewriter
+
+\backslash
+end{sloppypar}
+\family default
+ umgeben:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sloppy heisst salopp, schlampig.
+ LaTeX hält sich bei der obigen Anweisung nicht strikt an die Regeln für
+ das Absatz-Layout, sondern fügt mehr Leeraum in die Zeilen ein, wenn nicht
+ sauber umgebrochen werden kann.
+ Wenn Sie jetzt den Text des Absatzes ändern, müssen Sie sich nicht um die
+ Auswirkungen kümmern:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+Die Absatzumgebungen entsprechen meistens einer normalen LaTeX-Datei 
+\family typewriter
+
+\backslash
+begin{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+} ...
+
+\family default
+ 
+\family typewriter
+
+\backslash
+end{
+\family default
+\emph on
+environment
+\family typewriter
+\emph default
+}
+\family default
+.
+ Alles zwischen den beiden Befehlen ist ein Absatz.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn Sie LaTeX nicht kennen oder das Konzept der Absatzumgebung völlig fremd
+ für Sie ist, sollten Sie unbedingt das 
+\emph on
+Tutorium
+\emph default
+ lesen.
+ Das 
+\emph on
+Tutorium
+\emph default
+ enthält auch viel mehr Beispiele als dieser Abschnitt.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
