@@ -1,4 +1,4 @@
-#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -153,7 +153,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
+letzte Änderung: 30.
  Mai 2008
 \end_layout
 
@@ -11311,8 +11311,11 @@ ifpicinpar
 status open
 
 \begin_layout Standard
-Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket picinpar installie
-rt ist.
+Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert ist.
 \end_layout
 
 \end_inset
@@ -11388,9 +11391,7 @@ TeX-Paket
 picinpar
 \family default
  installiert ist.
- Die Bildeparameter können Sie mit einem Klick auf das Bild wie gewohnt
- ändern.
- Der erste Parameter in den eckigen Klammer, hier 2, definiert die Anzal
+ Der erste Parameter in der eckigen Klammer, hier 2, definiert die Anzal
  der Zeilen über dem Bild, der zweite, hier c, die Position des Bildes.
  Die Abbildung nimmt 40\InsetSpace \thinspace{}
 % der Spaltenbreite ein.
@@ -11399,6 +11400,8 @@ picinpar
 picinpar
 \family default
 .
+ Die Bildparameter können Sie mit einem Klick auf das Bild wie gewohnt ändern.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -11432,8 +11435,11 @@ else
 status open
 
 \begin_layout Standard
-Die folgende Teil wird gedruckt, wenn das LaTeX-Paket picinpar nicht installiert
- ist:
+Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ nicht installiert ist:
 \end_layout
 
 \end_inset
@@ -11442,8 +11448,11 @@ Die folgende Teil wird gedruckt, wenn das LaTeX-Paket picinpar nicht installiert
 \end_layout
 
 \begin_layout Standard
-Sie müssen das LaTeX-Paket picinpar installiert haben um das Beispiel in
- der Ausgabe zu sehen.
+Sie müssen das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert haben um das Beispiel in der Ausgabe zu sehen.
 \end_layout
 
 \begin_layout Standard
@@ -11480,7 +11489,7 @@ Mike Ressler
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11746,7 +11755,7 @@ Wie Sie sehen umfassen die Beispiele dieses Kapitels Nützliches und Seltsames.
  Während ich nicht erwarte, dass jemand jemals die Absatzform aus dem letzten
  Abschnitt benötigen wird,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
