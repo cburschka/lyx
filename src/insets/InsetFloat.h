@@ -30,7 +30,7 @@ public:
 	std::string type;
 	///
 	std::string placement;
-	///
+	/// span columns
 	bool wide;
 	///
 	bool sideways;

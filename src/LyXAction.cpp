@@ -279,6 +279,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FLOAT_INSERT, "float-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FLOAT_WIDE_INSERT
+ * \li Action: Inserts float insets as in #LFUN_FLOAT_INSERT but span multiple columns.
+ * \li Notion: Corresponds to the "figure*" in LaTeX.
+ * \li Syntax: float-wide-insert <TYPE>
+ * \li Origin: Lgb, 31 Oct 2001
+ * \endvar
+ */
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
 /*!
