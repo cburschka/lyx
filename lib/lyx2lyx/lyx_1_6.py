@@ -1423,8 +1423,13 @@ def revert_framed_notes(document):
             del document.body[i+1:k]
         else:
             document.body[i] = document.body[i].replace("\\begin_inset Box Shaded", "\\begin_inset Box Frameless")
-            document.body.insert(l + 1, "\\begin_inset Note Shaded\n" + status + "\n\\begin_layout Standard\n")
-            document.body.insert(m + 1, "\\end_layout\n\\end_inset")
+            subst1 = [document.body[l],
+                      "\\begin_inset Note Shaded",
+                      status,
+                      '\\begin_layout Standard']
+            document.body[l:l + 1] = subst1
+            subst2 = [document.body[m], "\\end_layout", "\\end_inset"]
+            document.body[m:m + 1] = subst2
         i = i + 1
 
 
