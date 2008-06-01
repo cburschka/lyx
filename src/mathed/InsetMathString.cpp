@@ -115,20 +115,20 @@ void InsetMathString::write(WriteStream & os) const
 	docstring::const_iterator cit = str_.begin();
 	docstring::const_iterator end = str_.end();
 
-	bool in_mathsym = false;
+	bool in_lyxmathsym = false;
 	while (cit != end) {
 		char_type const c = *cit;
 		try {
 			if (c < 0x80) {
-				if (in_mathsym) {
+				if (in_lyxmathsym) {
 					os << '}';
-					in_mathsym = false;
+					in_lyxmathsym = false;
 				}
 				os << docstring(1, c);
 			} else if (can_encode) {
-				if (!in_mathsym) {
-					os << "\\mathsym{";
-					in_mathsym = true;
+				if (!in_lyxmathsym) {
+					os << "\\lyxmathsym{";
+					in_lyxmathsym = true;
 				}
 				os << encit->latexChar(c, true);
 			} else {
@@ -149,7 +149,7 @@ void InsetMathString::write(WriteStream & os) const
 		}
 		++cit;
 	}
-	if (in_mathsym)
+	if (in_lyxmathsym)
 		os << '}';
 }
 

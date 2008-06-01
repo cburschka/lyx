@@ -199,8 +199,8 @@ static string const textcyr_def =
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
 	"\\DeclareFontEncoding{T2A}{}{}\n";
 
-static string const mathsym_def =
-	"\\DeclareRobustCommand{\\mathsym}[1]{%\n"
+static string const lyxmathsym_def =
+	"\\DeclareRobustCommand{\\lyxmathsym}[1]{%\n"
 	" \\begingroup\n"
 	" \\edef\\b@ld{bold}%\n"
 	" \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}%\n"
@@ -654,8 +654,8 @@ string const LaTeXFeatures::getMacros() const
 	if (mustProvide("textcyr"))
 		macros << textcyr_def << '\n';
 
-	if (mustProvide("mathsym"))
-		macros << mathsym_def << '\n';
+	if (mustProvide("lyxmathsym"))
+		macros << lyxmathsym_def << '\n';
 
 	// quotes.
 	if (mustProvide("quotesinglbase"))
