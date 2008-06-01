@@ -1455,8 +1455,8 @@ def revert_slash(document):
 
 def revert_nobreakdash(document):
     'Revert \\SpecialChar \\nobreakdash- to ERT'
-    found = 0
-    for i in range(len(document.body)):
+    i = 0
+    while i < len(document.body):
         line = document.body[i]
         r = re.compile(r'\\SpecialChar \\nobreakdash-')
         m = r.match(line)
@@ -1469,22 +1469,31 @@ def revert_nobreakdash(document):
                     '\\end_layout', '',
                     '\\end_inset', '']
             document.body[i:i+1] = subst
+            i = i + len(subst)
             j = find_token(document.header, "\\use_amsmath", 0)
             if j == -1:
                 document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
                 return
             document.header[j] = "\\use_amsmath 2"
+        else:
+            i = i + 1
 
 
 def revert_nocite_key(body, start, end):
-    'key "..." -> \nocite{...}'
+    'key "..." -> \nocite{...}' 
     r = re.compile(r'^key "(.*)"')
-    for i in range(start, end):
+    i = start
+    j = end
+    while i <= j:
         m = r.match(body[i])
         if m:
             body[i:i+1] = ["\\backslash", "nocite{" + m.group(1) + "}"]
+            j = j + 1 # because we added a line
+            i = i + 2     # skip that line
         else:
             body[i] = ""
+            i = i + 1
+    return j - end # how many lines we added
 
 
 def revert_nocite(document):
@@ -1495,18 +1504,23 @@ def revert_nocite(document):
         if i == -1:
             return
         i = i + 1
-        if (document.body[i] == "LatexCommand nocite"):
-            j = find_end_of_inset(document.body, i + 1)
-            if j == -1:
-                #this should not happen
-                document.warning("End of CommandInset citation not found in revert_nocite!")
-                revert_nocite_key(document.body, i + 1, len(document.body))
-                return
-            revert_nocite_key(document.body, i + 1, j)
-            document.body[i-1] = "\\begin_inset ERT"
-            document.body[i:i+1] = ["status collapsed", "", "\\begin_layout Standard"]
-            document.body[j+1:j+1] = ["\\end_layout", ""]
-            i = j
+        if (document.body[i] != "LatexCommand nocite"):
+            # note that we already incremented i
+            continue
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            #this should not happen
+            document.warning("End of CommandInset citation not found in revert_nocite!")
+            return
+        # NOTE The order of these is important.
+        document.body[i-1] = "\\begin_inset ERT"
+        # Do this before we insert lines before j+1
+        document.body[j+1:j+1] = ["\\end_layout", ""]
+        # Do this before we insert lines before i+1
+        addedlines = revert_nocite_key(document.body, i + 1, j)
+        # Nothing has been inserted before this one
+        document.body[i:i+1] = ["status collapsed", "", "\\begin_layout Standard"]
+        i = j + 3 + addedlines
 
 
 def revert_btprintall(document):
