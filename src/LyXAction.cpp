@@ -290,6 +290,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WRAP_INSERT
+ * \li Action: Inserts floats wrapped by the text around.
+ * \li Syntax: wrap-insert <TYPE>
+ * \li Params: <TYPE>: table|figure
+ * \li Origin: Dekel, 7 Apr 2002
+ * \endvar
+ */
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_OPTIONAL_INSERT
