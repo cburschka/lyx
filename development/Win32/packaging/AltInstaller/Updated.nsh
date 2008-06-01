@@ -14,7 +14,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Userguide.lyx"
@@ -35,6 +35,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Intro.lyx"
  #File /r "${PRODUCT_SOURCEDIR}\Resources\doc\it\clipart"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\jss.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  #File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
@@ -42,6 +43,8 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\parser_tools.py"
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\JSS-article.lyx"
  SetOutPath "$INSTDIR\Resources\man\man1"
  #File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\ui"
