@@ -1319,14 +1319,20 @@ def convert_framed_notes(document):
     i = 0
     while 1:
         i = find_tokens(document.body, ["\\begin_inset Note Framed", "\\begin_inset Note Shaded"], i)
-
         if i == -1:
             return
-        document.body[i] = document.body[i].replace("\\begin_inset Note", "\\begin_inset Box")
-        document.body.insert(i + 1, 'position "t"\nhor_pos "c"\nhas_inner_box 0\ninner_pos "t"\n' \
-        'use_parbox 0\nwidth "100col%"\nspecial "none"\nheight "1in"\n' \
-        'height_special "totalheight"')
-        i = i + 1
+        subst = [document.body[i].replace("\\begin_inset Note", "\\begin_inset Box"),
+                 'position "t"',
+                 'hor_pos "c"',
+                 'has_inner_box 0'
+                 'inner_pos "t"', 
+                 'use_parbox 0',
+                 'width "100col%"',
+                 'special "none"',
+                 'height "1in"',
+                 'height_special "totalheight"']
+        document.body[i:i+1] = subst
+        i = i + 9
 
 
 def convert_module_names(document):
