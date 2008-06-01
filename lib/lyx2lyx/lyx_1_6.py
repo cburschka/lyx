@@ -1435,11 +1435,18 @@ def revert_framed_notes(document):
 
 def revert_slash(document):
     'Revert \\SpecialChar \\slash{} to ERT'
+    r = re.compile(r'\\SpecialChar \\slash{}')
     for i in range(len(document.body)):
-        document.body[i] = document.body[i].replace('\\SpecialChar \\slash{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'slash{}\n\\end_layout\n\n\\end_inset\n\n')
+        m = r.match(document.body[i])
+        if m:
+          subst = ['\\begin_inset ERT',
+                   'status collapsed', '',
+                   '\\begin_layout Standard',
+                   '', '', '\\backslash',
+                   'slash{}',
+                   '\\end_layout', '',
+                   '\\end_inset', '']
+          document.body[i: i+1] = subst
 
 
 def revert_nobreakdash(document):
@@ -1451,10 +1458,14 @@ def revert_nobreakdash(document):
         m = r.match(line)
         if m:
             found = 1
-        document.body[i] = document.body[i].replace('\\SpecialChar \\nobreakdash-', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'nobreakdash-\n\\end_layout\n\n\\end_inset\n\n')
+        subst = ['\\begin_inset ERT',
+                 'status collapsed', '',
+                 '\\begin_layout Standard', '', '',
+                 '\\backslash',
+                 'nobreakdash-',
+                 '\\end_layout', '',
+                 '\\end_inset', '']
+        document.body[i:i+1] = subst
     if not found:
         return
     j = find_token(document.header, "\\use_amsmath", 0)
