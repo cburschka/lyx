@@ -1502,9 +1502,8 @@ def revert_nocite(document):
                 return
             revert_nocite_key(document.body, i + 1, j)
             document.body[i-1] = "\\begin_inset ERT"
-            document.body[i] = "status collapsed\n\n" \
-            "\\begin_layout Standard"
-            document.body.insert(j, "\\end_layout\n");
+            document.body[i:i+1] = ["status collapsed", "", "\\begin_layout Standard"]
+            document.body[j+1:j+1] = ["\\end_layout", ""]
             i = j
 
 
