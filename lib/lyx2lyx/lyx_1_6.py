@@ -1474,10 +1474,11 @@ def revert_nobreakdash(document):
 
 def revert_nocite_key(body, start, end):
     'key "..." -> \nocite{...}'
+    r = re.compile(r'^key "(.*)"')
     for i in range(start, end):
-        if (body[i][0:5] == 'key "'):
-            body[i] = body[i].replace('key "', "\\backslash\nnocite{")
-            body[i] = body[i].replace('"', "}")
+        m = r.match(body[i])
+        if m:
+            body[i:i+1] = ["\\backslash", "nocite{" + m.group(1) + "}"]
         else:
             body[i] = ""
 
