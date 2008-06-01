@@ -1,0 +1,11 @@
+#% Do not delete the line below; configure depends on this      
+#  \DeclareLaTeXClass[jss]{article (Journal of Statistical Software)}
+# Journal of Statistical Software (JSS) article textclass definition file
+# Author: Andreas Karlsson <andreas.karlsson@ltv.se>
+# License: GNU GPL version 2 or later
+# JSS LaTeX files can be downloaded from http://www.jstatsoft.org/JSSstyle.zip
+
+Format 4
+
+# Read the definitions from article.layout
+Input article.layout
