@@ -1542,6 +1542,7 @@ def revert_btprintall(document):
                 j = len(document.body)
             # this range isn't really right, but it should be OK, since we shouldn't
             # see more than one matching line in each inset
+            addedlines = 0
             for k in range(i, j):
                 if (document.body[k] == 'btprint "btPrintAll"'):
                     del document.body[k]
@@ -1553,7 +1554,8 @@ def revert_btprintall(document):
                              "\\end_layout",
                              "\\end_inset"]
                     document.body[i:i] = subst
-            i = j
+                    addlines = addedlines + len(subst) - 1
+            i = j + addedlines
 
 
 def revert_bahasam(document):
