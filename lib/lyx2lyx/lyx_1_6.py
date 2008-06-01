@@ -1436,7 +1436,8 @@ def revert_framed_notes(document):
 def revert_slash(document):
     'Revert \\SpecialChar \\slash{} to ERT'
     r = re.compile(r'\\SpecialChar \\slash{}')
-    for i in range(len(document.body)):
+    i = 0
+    while i < len(document.body):
         m = r.match(document.body[i])
         if m:
           subst = ['\\begin_inset ERT',
@@ -1447,6 +1448,9 @@ def revert_slash(document):
                    '\\end_layout', '',
                    '\\end_inset', '']
           document.body[i: i+1] = subst
+          i = i + len(subst)
+        else:
+          i = i + 1
 
 
 def revert_nobreakdash(document):
@@ -1865,7 +1869,7 @@ def convert_spaceinset(document):
             after = m.group(2)
             subst = [before, "\\begin_inset Space " + after, "\\end_inset"]
             document.body[i: i+1] = subst
-            i = i + 3
+            i = i + len(subst)
         else:
             i = i + 1
 
