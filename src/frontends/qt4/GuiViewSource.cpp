@@ -76,9 +76,8 @@ void ViewSourceWidget::updateView()
 		setEnabled(false);
 		return;
 	}
-	if (autoUpdateCB->isChecked())
-		document_->setPlainText(controller_.getContent(
-			viewFullSourceCB->isChecked()));
+	document_->setPlainText(controller_.getContent(
+		viewFullSourceCB->isChecked()));
 
 	GuiViewSource::Row row = controller_.getRows();
 	QTextCursor c = QTextCursor(viewSourceTV->document());
@@ -107,7 +106,8 @@ GuiViewSource::~GuiViewSource()
 
 void GuiViewSource::updateView()
 {
-	widget_->updateView();
+	if (widget_->autoUpdateCB->isChecked())
+		widget_->updateView();
 }
 
 
@@ -200,9 +200,9 @@ void GuiViewSource::restoreSession()
 	Dialog::restoreSession();
 	QSettings settings;
 	widget_->viewFullSourceCB->setChecked(
-		settings.value(sessionKey() + "/fullsource").toBool());
+		settings.value(sessionKey() + "/fullsource", false).toBool());
 	widget_->autoUpdateCB->setChecked(
-		settings.value(sessionKey() + "/autoupdate").toBool());
+		settings.value(sessionKey() + "/autoupdate", true).toBool());
 }
 
 
