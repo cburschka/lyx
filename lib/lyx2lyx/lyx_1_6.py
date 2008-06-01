@@ -1479,21 +1479,23 @@ def revert_nobreakdash(document):
             i = i + 1
 
 
+#Returns number of lines added/removed
 def revert_nocite_key(body, start, end):
     'key "..." -> \nocite{...}' 
     r = re.compile(r'^key "(.*)"')
     i = start
     j = end
-    while i <= j:
+    while i < j:
         m = r.match(body[i])
         if m:
             body[i:i+1] = ["\\backslash", "nocite{" + m.group(1) + "}"]
-            j = j + 1 # because we added a line
-            i = i + 2     # skip that line
+            j += 1     # because we added a line
+            i += 2     # skip that line
         else:
-            body[i] = ""
-            i = i + 1
-    return j - end # how many lines we added
+            del body[i]
+            j -= 1     # because we deleted a line
+            # no need to change i, since it now points to the next line
+    return j - end
 
 
 def revert_nocite(document):
@@ -1503,24 +1505,29 @@ def revert_nocite(document):
         i = find_token(document.body, "\\begin_inset CommandInset citation", i)
         if i == -1:
             return
-        i = i + 1
-        if (document.body[i] != "LatexCommand nocite"):
+        if (document.body[i+1] != "LatexCommand nocite"):
             # note that we already incremented i
+            i = i + 1
             continue
-        j = find_end_of_inset(document.body, i + 1)
-        if j == -1:
+        insetEnd = find_end_of_inset(document.body, i)
+        if insetEnd == -1:
             #this should not happen
             document.warning("End of CommandInset citation not found in revert_nocite!")
             return
-        # NOTE The order of these is important.
-        document.body[i-1] = "\\begin_inset ERT"
-        # Do this before we insert lines before j+1
-        document.body[j+1:j+1] = ["\\end_layout", ""]
-        # Do this before we insert lines before i+1
-        addedlines = revert_nocite_key(document.body, i + 1, j)
-        # Nothing has been inserted before this one
-        document.body[i:i+1] = ["status collapsed", "", "\\begin_layout Standard"]
-        i = j + 3 + addedlines
+
+        paramLocation = i + 2 #start of the inset's parameters
+        addedLines = 0
+        document.body[i:i+2] = \
+            ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Standard"]
+        # that added two lines
+        paramLocation += 2
+        insetEnd += 2
+        #print insetEnd, document.body[i: insetEnd + 1]
+        insetEnd += revert_nocite_key(document.body, paramLocation, insetEnd)
+        #print insetEnd, document.body[i: insetEnd + 1]
+        document.body.insert(insetEnd, "\\end_layout")
+        document.body.insert(insetEnd + 1, "")
+        i = insetEnd + 1
 
 
 def revert_btprintall(document):
