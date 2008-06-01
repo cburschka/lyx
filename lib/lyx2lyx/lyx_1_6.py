@@ -1625,10 +1625,10 @@ def revert_rotfloat(document):
             if floattype == "algorithm":
                 add_to_preamble(document,
                                 ['% Commands inserted by lyx2lyx for sideways algorithm float',
-                                 '\\usepackage{rotfloat}\n'
-                                 '\\floatstyle{ruled}\n'
-                                 '\\newfloat{algorithm}{tbp}{loa}\n'
-                                 '\\floatname{algorithm}{Algorithm}\n'])
+                                 '\\usepackage{rotfloat}',
+                                 '\\floatstyle{ruled}',
+                                 '\\newfloat{algorithm}{tbp}{loa}',
+                                 '\\floatname{algorithm}{Algorithm}'])
             else:
                 document.warning("Cannot create preamble definition for custom float" + floattype + ".")
             i = i + 1
