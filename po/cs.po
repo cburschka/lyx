@@ -1284,7 +1284,7 @@ msgstr "Zalo¾ &jméno skupiny:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:726
 msgid "Group Name to be set up from the current parameters"
-msgstr ""
+msgstr "Jméno skupiny obrázkù, která bude nastavena tìmito parametry"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -1493,7 +1493,7 @@ msgstr "Vstup (lze rekurzivnì)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:297 lib/layouts/manpage.layout:121
 msgid "Verbatim"
-msgstr "Verbatim"
+msgstr "Doslovnì"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
@@ -9563,7 +9563,7 @@ msgstr "Záporná tenká mezera|z"
 
 #: lib/ui/stdcontext.inc:174
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovina em mezety (Enskip)|e"
+msgstr "Polovina em mezery (Enskip)|e"
 
 #: lib/ui/stdcontext.inc:175
 msgid "Protected Half Quad Space (Enspace)|E"
@@ -9648,34 +9648,29 @@ msgstr "Nastavení...|N"
 
 # TODO nova stranka; viz wiki
 #: lib/ui/stdcontext.inc:209
-#, fuzzy
 msgid "Include|c"
-msgstr "Zahrnout (nová stránka)"
+msgstr "Zahrnout (nová stránka)|Z"
 
 # TODO lze i rekurzivne
 #: lib/ui/stdcontext.inc:210
-#, fuzzy
 msgid "Input|p"
-msgstr "Vstup (lze rekurzivnì)"
+msgstr "Vstup (lze rekurzivnì)|r"
 
 #: lib/ui/stdcontext.inc:211
-#, fuzzy
 msgid "Verbatim|V"
-msgstr "Verbatim"
+msgstr "Doslovnì|D"
 
 #: lib/ui/stdcontext.inc:212
 msgid "Verbatim (marked blanks)|b"
-msgstr ""
+msgstr "Doslovnì (vyznaèené mezery)|m"
 
 #: lib/ui/stdcontext.inc:213
-#, fuzzy
 msgid "Listing|L"
-msgstr "Výpis"
+msgstr "Výpis|p"
 
 #: lib/ui/stdcontext.inc:217
-#, fuzzy
 msgid "Edit included file...|E"
-msgstr "Zahrnout soubor...|s"
+msgstr "Editovat zahrnutý soubor...|E"
 
 #: lib/ui/stdcontext.inc:224 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
@@ -13004,7 +12999,7 @@ msgstr "XPM"
 
 #: lib/configure.py:263
 msgid "Plain text (chess output)"
-msgstr ""
+msgstr "Prostý text (¹achy)"
 
 #: lib/configure.py:264
 msgid "Plain text (image)"
@@ -15108,45 +15103,55 @@ msgstr ""
 "standardního jazyka dokumentu."
 
 #: src/LyXRC.cpp:2569
+#, fuzzy
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
 #: src/LyXRC.cpp:2574
+#, fuzzy
 msgid "The completion popup delay."
 msgstr ""
 
 #: src/LyXRC.cpp:2578
+#, fuzzy
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2582
+#, fuzzy
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2586
+#, fuzzy
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
 #: src/LyXRC.cpp:2590
+#, fuzzy
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
 #: src/LyXRC.cpp:2594
+#, fuzzy
 msgid "The inline completion delay."
 msgstr ""
 
 #: src/LyXRC.cpp:2598
+#, fuzzy
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2602
+#, fuzzy
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2606
+#, fuzzy
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
@@ -16634,6 +16639,9 @@ msgid ""
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
+"Vlo¾it mezeru i za konec øádky.\n"
+"Pozn. - chránìná polovièní em mezera se zmìní na\n "
+"vertikální mezeru, pokud bude pou¾ita na zaèátku odstavce!"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -17666,7 +17674,7 @@ msgstr "Kliknìte pro odpojení"
 
 #: src/frontends/qt4/Menus.cpp:649
 msgid "No Group"
-msgstr ""
+msgstr "®ádná skupina"
 
 #: src/frontends/qt4/Menus.cpp:694
 msgid "No Documents Open!"
@@ -17819,6 +17827,8 @@ msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
+"Vlo¾ka BibTeX-u zahrnuje  %1$s databází.\n"
+"Budete-li pokraèovat, v¹echny budou otevøeny."
 
 #: src/insets/InsetBibtex.cpp:132
 msgid "Open Databases?"
@@ -18818,7 +18828,7 @@ msgstr "Profilování RowPainter-u"
 
 #: src/support/debug.cpp:64
 msgid "scrolling debugging"
-msgstr ""
+msgstr "ladìní posouvání textu"
 
 #: src/support/debug.cpp:65
 msgid "Math macros"
