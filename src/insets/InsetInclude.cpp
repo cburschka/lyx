@@ -934,7 +934,7 @@ void InsetInclude::updateLabels(ParIterator const & it)
 
 	InsetListingsParams const par(to_utf8(params()["lstparams"]));
 	if (par.getParamValue("caption").empty()) {
-		listings_label_.clear();
+		listings_label_ = buffer().B_("Program Listing");
 		return;
 	}
 	Buffer const & master = *buffer().masterBuffer();
