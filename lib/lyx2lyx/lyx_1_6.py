@@ -1540,6 +1540,8 @@ def revert_btprintall(document):
                 #this should not happen
                 document.warning("End of CommandInset bibtex not found in revert_btprintall!")
                 j = len(document.body)
+            # this range isn't really right, but it should be OK, since we shouldn't
+            # see more than one matching line in each inset
             for k in range(i, j):
                 if (document.body[k] == 'btprint "btPrintAll"'):
                     del document.body[k]
@@ -1551,7 +1553,7 @@ def revert_btprintall(document):
                              "\\end_layout",
                              "\\end_inset"]
                     document.body[i:i] = subst
-            i = j
+            i = j + len(subst) - 1
 
 
 def revert_bahasam(document):
