@@ -1457,22 +1457,19 @@ def revert_nobreakdash(document):
         r = re.compile(r'\\SpecialChar \\nobreakdash-')
         m = r.match(line)
         if m:
-            found = 1
-        subst = ['\\begin_inset ERT',
-                 'status collapsed', '',
-                 '\\begin_layout Standard', '', '',
-                 '\\backslash',
-                 'nobreakdash-',
-                 '\\end_layout', '',
-                 '\\end_inset', '']
-        document.body[i:i+1] = subst
-    if not found:
-        return
-    j = find_token(document.header, "\\use_amsmath", 0)
-    if j == -1:
-        document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
-        return
-    document.header[j] = "\\use_amsmath 2"
+            subst = ['\\begin_inset ERT',
+                    'status collapsed', '',
+                    '\\begin_layout Standard', '', '',
+                    '\\backslash',
+                    'nobreakdash-',
+                    '\\end_layout', '',
+                    '\\end_inset', '']
+            document.body[i:i+1] = subst
+            j = find_token(document.header, "\\use_amsmath", 0)
+            if j == -1:
+                document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
+                return
+            document.header[j] = "\\use_amsmath 2"
 
 
 def revert_nocite_key(body, start, end):
