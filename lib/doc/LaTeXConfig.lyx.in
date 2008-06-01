@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -1623,6 +1623,36 @@ Notes: The document class
 \family default
  can be used to write articles for the journal published by the Institute
  of Physics (IOP).
+\end_layout
+
+\begin_layout Subsection
+jss
+\end_layout
+
+\begin_layout Description
+Found: @chk_jss@
+\end_layout
+
+\begin_layout Description
+CTAN: N/A
+\end_layout
+
+\begin_layout Description
+WWW: available from the site 
+\begin_inset LatexCommand url
+target "http://www.jstatsoft.org/downloads/JSSstyle.zip"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Notes: The document class
+\family sans
+ jss
+\family default
+ can be used to write articles for the Journal of Statistical Software (JSS).
 \end_layout
 
 \begin_layout Subsection

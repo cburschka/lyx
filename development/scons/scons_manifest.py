@@ -1507,6 +1507,7 @@ lib_templates_files = Split('''
     ijmpc.lyx
     ijmpd.lyx
     iop-article.lyx
+    JSS-article.lyx
     kluwer.lyx
     koma-letter2.lyx
     latex8.lyx
@@ -2737,6 +2738,7 @@ lib_layouts_files = Split('''
     iopart.layout
     isprs.layout
     jgrga.layout
+    jss.layout
     kluwer.layout
     latex8.layout
     letter.layout
