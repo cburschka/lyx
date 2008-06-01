@@ -204,19 +204,8 @@ static string const mathsym_def =
 	" \\begingroup\n"
 	" \\edef\\b@ld{bold}%\n"
 	" \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}%\n"
-	" \\def\\szone{\\ifx\\@currsize\\large\\footnotesize%\n"
-	"  \\else\\ifx\\@currsize\\Large\\normalsize%\n"
-	"  \\else\\ifx\\@currsize\\LARGE\\large%\n"
-	"  \\else\\ifx\\@currsize\\huge\\Large%\n"
-	"  \\else\\ifx\\@currsize\\Huge\\huge%\n"
-	"  \\else\\scriptsize\\fi\\fi\\fi\\fi\\fi}%\n"
-	" \\def\\sztwo{\\ifx\\@currsize\\Large\\scriptsize%\n"
-	"  \\else\\ifx\\@currsize\\LARGE\\normalsize%\n"
-	"  \\else\\ifx\\@currsize\\huge\\large%\n"
-	"  \\else\\ifx\\@currsize\\Huge\\Large%\n"
-	"  \\else\\tiny\\fi\\fi\\fi\\fi}%\n"
 	" \\mathchoice{\\hbox{\\rmorbf{#1}}}{\\hbox{\\rmorbf{#1}}}%\n"
-	"  {\\hbox{\\szone\\rmorbf{#1}}}{\\hbox{\\sztwo\\rmorbf{#1}}}%\n"
+	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}%\n"
 	" \\endgroup}\n";
 
 /////////////////////////////////////////////////////////////////////
@@ -471,7 +460,8 @@ char const * simplefeatures[] = {
 	"amsthm",
 	"listings",
 	"bm",
-	"pdfpages"
+	"pdfpages",
+	"relsize"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

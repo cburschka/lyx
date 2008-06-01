@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 328
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass article
@@ -956,7 +956,7 @@ slides
 foils
 \family default
  instead if it is available (see
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -3490,6 +3490,35 @@ longtable
  is needed by LyX to be able to output correctly multipage tables.
 \end_layout
 
+\begin_layout Subsection
+relsize
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "relsize"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/misc/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+relsize
+\family default
+ is needed by LyX to correctly size unicode symbols used as super or subscripts
+ in math.
+\end_layout
+
 \begin_layout Description
 
 \end_layout
@@ -4401,7 +4430,7 @@ Notes: The package
 subfig
 \family default
  is used by LyX to produce subfloats (i.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 e., subfigures, subtables, etc.).
