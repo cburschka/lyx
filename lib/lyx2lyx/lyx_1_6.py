@@ -1833,14 +1833,14 @@ def remove_extra_embedded_files(document):
 
 
 def convert_spaceinset(document):
-    " Convert '\\InsetSpace foo' to '\\begin_inset Space foo\n\\end_inset' "
-    for i in range(len(document.body)):
-        m = re.match(r'(.*)\\InsetSpace (.*)', document.body[i]) 
-        if m:
-            before = m.group(1)
-            after = m.group(2)
-            subst = [before, "\\begin_inset Space " + after, "\\end_inset"]
-            document.body[i: i+1] = subst
+   " Convert '\\InsetSpace foo' to '\\begin_inset Space foo\n\\end_inset' "
+   for i in range(len(document.body)):
+       m = re.match(r'(.*)\\InsetSpace (.*)', document.body[i])
+       if m:
+           before = m.group(1)
+           after = m.group(2)
+           subst = [before, "\\begin_inset Space " + after, "\\end_inset"]
+           document.body[i: i+1] = subst
 
 
 def revert_spaceinset(document):
