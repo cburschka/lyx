@@ -1553,7 +1553,7 @@ def revert_btprintall(document):
                              "\\end_layout",
                              "\\end_inset"]
                     document.body[i:i] = subst
-            i = j + len(subst) - 1
+            i = j
 
 
 def revert_bahasam(document):
