@@ -1524,10 +1524,14 @@ def revert_btprintall(document):
             for k in range(i, j):
                 if (document.body[k] == 'btprint "btPrintAll"'):
                     del document.body[k]
-                    document.body.insert(i, "\\begin_inset ERT\n" \
-                    "status collapsed\n\n\\begin_layout Standard\n\n" \
-                    "\\backslash\nnocite{*}\n" \
-                    "\\end_layout\n\\end_inset\n")
+                    subst = ["\\begin_inset ERT",
+                             "status collapsed", "",
+                             "\\begin_layout Standard", "",
+                             "\\backslash",
+                             "nocite{*}",
+                             "\\end_layout",
+                             "\\end_inset"]
+                    document.body[i:i] = subst
             i = j
 
 
