@@ -48,16 +48,6 @@ public:
 	/// dispatch an LFUN
 	void dispatchFunc(FuncCode action,
 		std::string const & arg = std::string()) const;
-	/// Insert a matrix
-	void dispatchMatrix(std::string const & str) const;
-	/// Insert a variable size delimiter
-	void dispatchDelim(std::string const & str) const;
-	/// Insert a big delimiter
-	void dispatchBigDelim(std::string const & str) const;
-	/** A request to the kernel to launch a dialog.
-	 *  \param name the dialog identifier.
-	 */
-	void showDialog(std::string const & name) const;
 
 	/// \return the math unicode symbol associated to a TeX name.
 	MathSymbol const & mathSymbol(std::string tex_name) const;

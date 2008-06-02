@@ -88,8 +88,9 @@ void GuiMathMatrix::slotOK()
 	QString const sh = halignED->text();
 	int const nx = columnsSB->value();
 	int const ny = rowsSB->value();
-	dispatchMatrix(fromqstr(
-		QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh)));
+	string const str = fromqstr(
+		QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh));
+	dispatchFunc(LFUN_MATH_MATRIX, str);
 	close();
 }
 

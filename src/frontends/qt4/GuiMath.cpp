@@ -69,30 +69,6 @@ void GuiMath::dispatchFunc(FuncCode action, string const & arg) const
 }
 
 
-void GuiMath::dispatchMatrix(string const & str) const
-{
-	dispatchFunc(LFUN_MATH_MATRIX, str);
-}
-
-
-void GuiMath::dispatchDelim(string const & str) const
-{
-	dispatchFunc(LFUN_MATH_DELIM, str);
-}
-
-
-void GuiMath::dispatchBigDelim(string const & str) const
-{
-	dispatchFunc(LFUN_MATH_BIGDELIM, str);
-}
-
-
-void GuiMath::showDialog(string const & name) const
-{
-	dispatchFunc(LFUN_DIALOG_SHOW, name);
-}
-
-
 MathSymbol const & GuiMath::mathSymbol(string tex_name) const
 {
 	map<string, MathSymbol>::const_iterator it =

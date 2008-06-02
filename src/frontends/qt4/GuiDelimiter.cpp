@@ -185,11 +185,11 @@ void GuiDelimiter::updateTeXCode(int size)
 void GuiDelimiter::on_insertPB_clicked()
 {
 	if (sizeCO->currentIndex() == 0)
-		dispatchDelim(fromqstr(tex_code_));
+		dispatchFunc(LFUN_MATH_DELIM, fromqstr(tex_code_));
 	else {
 		QString command = '"' + tex_code_ + '"';
 		command.replace(' ', "\" \"");
-		dispatchBigDelim(fromqstr(command));
+		dispatchFunc(LFUN_MATH_BIGDELIM, fromqstr(command));
 	}
  }
 
