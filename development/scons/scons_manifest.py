@@ -722,7 +722,6 @@ src_frontends_qt4_header_files = Split('''
     GuiLabel.h
     GuiListings.h
     GuiLog.h
-    GuiMath.h
     GuiMathMatrix.h
     GuiNomencl.h
     GuiNote.h
@@ -812,7 +811,6 @@ src_frontends_qt4_files = Split('''
     GuiLabel.cpp
     GuiListings.cpp
     GuiLog.cpp
-    GuiMath.cpp
     GuiMathMatrix.cpp
     GuiNomencl.cpp
     GuiNote.cpp

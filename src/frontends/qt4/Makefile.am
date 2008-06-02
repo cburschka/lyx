@@ -93,7 +93,6 @@ SOURCEFILES = \
 	GuiLabel.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
-	GuiMath.cpp \
 	GuiMathMatrix.cpp \
 	GuiNomencl.cpp \
 	GuiNote.cpp \
@@ -146,7 +145,6 @@ NOMOCHEADER = \
 	GuiIdListModel.h \
 	GuiImage.h \
 	GuiKeySymbol.h \
-	GuiMath.h \
 	GuiPainter.h \
 	LaTeXHighlighter.h \
 	qt_i18n.h \

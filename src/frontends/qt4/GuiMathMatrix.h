@@ -14,20 +14,24 @@
 #ifndef GUIMATHMATRIX_H
 #define GUIMATHMATRIX_H
 
-#include "GuiMath.h"
-#include "ui_MathMatrixUi.h"
+#include "GuiDialog.h"
 
-#include <QDialog>
+#include "ui_MathMatrixUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiMathMatrix : public GuiMath, public Ui::MathMatrixUi
+class GuiMathMatrix : public GuiDialog, public Ui::MathMatrixUi
 {
 	Q_OBJECT
 
 public:
 	GuiMathMatrix(GuiView & lv);
+
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return true; }
 
 public Q_SLOTS:
 	void slotOK();

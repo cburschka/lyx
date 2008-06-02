@@ -12,7 +12,8 @@
 #ifndef GUIDELIMITERDIALOG_H
 #define GUIDELIMITERDIALOG_H
 
-#include "GuiMath.h"
+#include "GuiDialog.h"
+
 #include "ui_DelimiterUi.h"
 
 class QListWidgetItem;
@@ -20,12 +21,17 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiDelimiter : public GuiMath, public Ui::DelimiterUi
+class GuiDelimiter : public GuiDialog, public Ui::DelimiterUi
 {
 	Q_OBJECT
 
 public:
 	GuiDelimiter(GuiView & lv);
+
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return true; }
 
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);

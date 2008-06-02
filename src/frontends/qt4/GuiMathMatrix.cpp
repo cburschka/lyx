@@ -15,6 +15,8 @@
 #include "EmptyTable.h"
 #include "qt_helpers.h"
 
+#include "FuncRequest.h"
+
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSpinBox>
@@ -25,7 +27,7 @@ namespace lyx {
 namespace frontend {
 
 GuiMathMatrix::GuiMathMatrix(GuiView & lv)
-	: GuiMath(lv, "mathmatrix", qt_("Math Matrix"))
+	: GuiDialog(lv, "mathmatrix", qt_("Math Matrix"))
 {
 	setupUi(this);
 
@@ -90,7 +92,7 @@ void GuiMathMatrix::slotOK()
 	int const ny = rowsSB->value();
 	string const str = fromqstr(
 		QString("%1 %2 %3 %4").arg(nx).arg(ny).arg(c).arg(sh));
-	dispatchFunc(LFUN_MATH_MATRIX, str);
+	dispatch(FuncRequest(LFUN_MATH_MATRIX, str));
 	close();
 }
 
