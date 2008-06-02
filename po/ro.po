@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2008-02-13 20:05-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -834,7 +834,7 @@ msgid "&Size:"
 msgstr "&Mãrime:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
 msgstr "Cod TeX"
 
@@ -1519,7 +1519,8 @@ msgstr "Intrare"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
 msgstr "Listare program"
 
@@ -16082,26 +16083,27 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Selecteazã pînã la sfîrºitul documentului"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versiune...|V"
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 #, fuzzy
 msgid "uncodable character"
 msgstr "caracter special"
@@ -16417,29 +16419,6 @@ msgstr "(\\\\alph{enumii})"
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Fãrã sens: "
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-#, fuzzy
-msgid "No debugging message"
-msgstr "(nu existã mesaje)"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-#, fuzzy
-msgid "General information"
-msgstr "Configurare LaTeX|L"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr ""
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr ""
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr ""
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16867,34 +16846,34 @@ msgstr ""
 msgid "Next command"
 msgstr "Comenzi utilizator"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Delimitator"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 #, fuzzy
 msgid "(None)"
 msgstr "Nimic"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 #, fuzzy
 msgid "Variable"
 msgstr "linie tabularã"
@@ -17502,7 +17481,7 @@ msgstr "Jurnal LaTeX|J"
 msgid "No version control log file found."
 msgstr "Controlul versiunii|v"
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 #, fuzzy
 msgid "Math Matrix"
 msgstr "Matrice"
@@ -18514,7 +18493,7 @@ msgstr "Documentul nu poate fi citit"
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 #, fuzzy
 msgid "LaTeX Source"
@@ -18573,8 +18552,8 @@ msgstr "Nu existã nici un document deschis!"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Nu existã nici un document deschis!"
@@ -18597,17 +18576,22 @@ msgstr "Alte setãri de font"
 msgid "No Table of contents"
 msgstr "Nu existã cuprins"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Baloane de ajutor|B"
+
+#: src/frontends/qt4/Menus.cpp:1040
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Documente"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "Salt la modificarea urmãtoare"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 #, fuzzy
 msgid "No action defined!"
 msgstr "Salt la modificarea urmãtoare"
@@ -18846,7 +18830,7 @@ msgstr "Cale fiºiere de rezervã:|#r"
 msgid "Undef: "
 msgstr "MyRef"
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 #, fuzzy
 msgid "branch"
 msgstr "Cale fiºiere de rezervã:|#r"
@@ -19720,6 +19704,16 @@ msgstr "Abstract "
 msgid "References: "
 msgstr "Referinþe"
 
+#: src/support/debug.cpp:38
+#, fuzzy
+msgid "No debugging message"
+msgstr "(nu existã mesaje)"
+
+#: src/support/debug.cpp:39
+#, fuzzy
+msgid "General information"
+msgstr "Configurare LaTeX|L"
+
 #: src/support/debug.cpp:40
 #, fuzzy
 msgid "Program initialisation"
@@ -19840,6 +19834,19 @@ msgstr "fundal mod matematic"
 
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
+msgstr ""
+
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr ""
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr ""
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
 #: src/support/filetools.cpp:247

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -843,7 +843,7 @@ msgid "&Size:"
 msgstr "&Tamaina:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 #, fuzzy
 msgid "TeX Code: "
 msgstr "TeX kodea|X"
@@ -1539,7 +1539,8 @@ msgstr "Sarrera"
 msgid "Verbatim"
 msgstr "Hitzez hitz"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 #, fuzzy
 msgid "Program Listing"
 msgstr "Programaren hasieratzea"
@@ -16186,26 +16187,27 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Leheneratu dokumentuaren gordetako bertsiora?"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Zentzurik ez diseinu honekin!"
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX bertsioa "
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 #, fuzzy
 msgid "uncodable character"
 msgstr "karaktere berezia"
@@ -16501,27 +16503,6 @@ msgstr "\\Alph{enumiv}."
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Zentzugabea."
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "Araztatze-mezurik ez"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-msgid "General information"
-msgstr "Informazio orokorra"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr "Garatzailkeen arazte-mezu orokorra"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "Araazte-mezu guztiak"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Arazten `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16933,32 +16914,32 @@ msgstr ""
 msgid "Next command"
 msgstr "Hurrengo komandoa"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
 msgstr "Matematika mugatzailea"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 msgid "(None)"
 msgstr "(Bat ere ez)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 #, fuzzy
 msgid "Variable"
 msgstr "Aldakorra"
@@ -17497,7 +17478,7 @@ msgstr "Ez da lyx2lyx errore-egunkaririk aurkitu."
 msgid "No version control log file found."
 msgstr "Ez da bertsio-kontrolaren egunkaririk aurkitu."
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 msgid "Math Matrix"
 msgstr "Matematika matrizea"
 
@@ -18474,7 +18455,7 @@ msgstr "Dokumentua ez da gorde"
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 #, fuzzy
 msgid "LaTeX Source"
@@ -18532,8 +18513,8 @@ msgstr "Ez da dokumenturik ireki!"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Ez da dokumenturik ireki!"
@@ -18556,17 +18537,22 @@ msgstr "Beste letra-ezarpen batzuk"
 msgid "No Table of contents"
 msgstr "Ez dago gaien aurkibiderik"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Tresna-barrak"
+
+#: src/frontends/qt4/Menus.cpp:1040
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Inprimatua dokumentua"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "Joan hurrengo aldaketara"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 #, fuzzy
 msgid "No action defined!"
 msgstr "Joan hurrengo aldaketara"
@@ -18802,7 +18788,7 @@ msgstr "Adarra: "
 msgid "Undef: "
 msgstr "DefGabe: "
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 #, fuzzy
 msgid "branch"
 msgstr "Adarra"
@@ -19628,6 +19614,14 @@ msgstr "Laburpena: "
 msgid "References: "
 msgstr "Erreferentziak: "
 
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "Araztatze-mezurik ez"
+
+#: src/support/debug.cpp:39
+msgid "General information"
+msgstr "Informazio orokorra"
+
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
 msgstr "Programaren hasieratzea"
@@ -19736,6 +19730,19 @@ msgstr "matematikaren atzeko planoa"
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
 msgstr ""
+
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr "Garatzailkeen arazte-mezu orokorra"
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "Araazte-mezu guztiak"
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Arazten `%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"

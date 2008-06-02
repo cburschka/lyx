@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -824,7 +824,7 @@ msgid "&Size:"
 msgstr "크기(&Size):"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 #, fuzzy
 msgid "TeX Code: "
 msgstr "TeX 코드(Code)|T"
@@ -1503,7 +1503,8 @@ msgstr ""
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 #, fuzzy
 msgid "Program Listing"
 msgstr "단락 구성(Paragraph settings)"
@@ -15505,25 +15506,26 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 msgid "LyX Warning: "
 msgstr ""
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 #, fuzzy
 msgid "uncodable character"
 msgstr "특수 문자"
@@ -15808,28 +15810,6 @@ msgstr ""
 
 #: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
 msgid "Senseless!!! "
-msgstr ""
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr ""
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-#, fuzzy
-msgid "General information"
-msgstr "TeX 정보"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr ""
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr ""
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
 #: src/frontends/qt4/BulletsModule.cpp:40
@@ -16230,33 +16210,33 @@ msgstr ""
 msgid "Next command"
 msgstr "수식 삽입"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
 msgstr "수식 구획 문자(Math Delimiter)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 #, fuzzy
 msgid "(None)"
 msgstr "노우트(Note)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 msgid "Variable"
 msgstr ""
 
@@ -16810,7 +16790,7 @@ msgstr ""
 msgid "No version control log file found."
 msgstr ""
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 #, fuzzy
 msgid "Math Matrix"
 msgstr "수식 선택 사항(Math Options)"
@@ -17768,7 +17748,7 @@ msgstr "문서 인쇄 실패"
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 #, fuzzy
 msgid "LaTeX Source"
@@ -17825,8 +17805,8 @@ msgstr "열려있는 문서가 없음!"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy
 msgid "No Document Open!"
 msgstr "열려있는 문서가 없음!"
@@ -17849,17 +17829,22 @@ msgstr "날짜 형태(format)"
 msgid "No Table of contents"
 msgstr "목차 없음"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "도구 단추들(Toolbars)|b"
+
+#: src/frontends/qt4/Menus.cpp:1040
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "문서 인쇄"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "인용구 형식(Citation Style)"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 msgid "No action defined!"
 msgstr ""
 
@@ -18086,7 +18071,7 @@ msgstr ""
 msgid "Undef: "
 msgstr "노우트(Note) #:"
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 msgid "branch"
 msgstr ""
 
@@ -18909,6 +18894,15 @@ msgstr ""
 msgid "References: "
 msgstr "참고 문헌(References):"
 
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr ""
+
+#: src/support/debug.cpp:39
+#, fuzzy
+msgid "General information"
+msgstr "TeX 정보"
+
 #: src/support/debug.cpp:40
 #, fuzzy
 msgid "Program initialisation"
@@ -19024,6 +19018,19 @@ msgstr "수식 선택 사항(Math Options)"
 
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
+msgstr ""
+
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr ""
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr ""
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
 #: src/support/filetools.cpp:247

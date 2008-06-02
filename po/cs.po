@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2008-04-22 22:01-0500\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -819,7 +819,7 @@ msgid "&Size:"
 msgstr "&Velikost:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
 msgstr "Kód TeX-u: "
 
@@ -1495,7 +1495,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -15103,55 +15104,45 @@ msgstr ""
 "standardního jazyka dokumentu."
 
 #: src/LyXRC.cpp:2569
-#, fuzzy
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
 #: src/LyXRC.cpp:2574
-#, fuzzy
 msgid "The completion popup delay."
 msgstr ""
 
 #: src/LyXRC.cpp:2578
-#, fuzzy
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2582
-#, fuzzy
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2586
-#, fuzzy
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
 #: src/LyXRC.cpp:2590
-#, fuzzy
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
 #: src/LyXRC.cpp:2594
-#, fuzzy
 msgid "The inline completion delay."
 msgstr ""
 
 #: src/LyXRC.cpp:2598
-#, fuzzy
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2602
-#, fuzzy
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2606
-#, fuzzy
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
@@ -15429,15 +15420,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Nesmyslné v tomto rozvr¾ení !"
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr "Zarovnání nepovoleno"
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -15445,11 +15436,12 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 msgid "uncodable character"
 msgstr "nekódovatelný znak"
 
@@ -15739,27 +15731,6 @@ msgstr "\\Alph{enumiv}."
 #: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "®ádné ladící výpisy"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-msgid "General information"
-msgstr "Obecné informace"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr "Obecné vývojáøské ladící výpisy"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "V¹echny ladící výpisy"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Ladìní `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16160,32 +16131,32 @@ msgstr "Soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat?"
 msgid "Next command"
 msgstr "Dal¹í pøíkaz"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr "big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr "Big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr "bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr "Bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
 msgstr "Mat. oddìlovaè"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 msgid "(None)"
 msgstr "(®ádné)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 msgid "Variable"
 msgstr "Promìnlivá"
 
@@ -16640,8 +16611,8 @@ msgid ""
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 "Vlo¾it mezeru i za konec øádky.\n"
-"Pozn. - chránìná polovièní em mezera se zmìní na\n "
-"vertikální mezeru, pokud bude pou¾ita na zaèátku odstavce!"
+"Pozn. - chránìná polovièní em mezera se zmìní na\n"
+" vertikální mezeru, pokud bude pou¾ita na zaèátku odstavce!"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -16715,7 +16686,7 @@ msgstr "Log chyb z lyx2lyx nenalezen."
 msgid "No version control log file found."
 msgstr "Log ze správy verzí nenalezen."
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 msgid "Math Matrix"
 msgstr "Matice"
 
@@ -17631,7 +17602,7 @@ msgstr "V¹echny dokumenty ulo¾eny."
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámý pøíkaz!"
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 msgid "LaTeX Source"
 msgstr "Zdrojový kód pro LaTeX"
@@ -17682,8 +17653,8 @@ msgstr "®ádné otevøené dokumenty !"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 msgid "No Document Open!"
 msgstr "®ádné otevøené dokumenty !"
 
@@ -17703,15 +17674,20 @@ msgstr "Dal¹í seznamy"
 msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Panely nástrojù|n"
+
+#: src/frontends/qt4/Menus.cpp:1040
 msgid "No Branch in Document!"
 msgstr "Dokument neobsahuje vìtvení!"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 msgid "No Citation in Scope!"
 msgstr "®ádná citace v dosahu!"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 msgid "No action defined!"
 msgstr "®ádná akce není definována!"
 
@@ -17930,7 +17906,7 @@ msgstr "Vìtev: "
 msgid "Undef: "
 msgstr "Nedef: "
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 msgid "branch"
 msgstr "vìtev"
 
@@ -18730,6 +18706,14 @@ msgstr "Abstrakt: "
 msgid "References: "
 msgstr "Reference: "
 
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "®ádné ladící výpisy"
+
+#: src/support/debug.cpp:39
+msgid "General information"
+msgstr "Obecné informace"
+
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
 msgstr "Inicializace programu"
@@ -18837,6 +18821,19 @@ msgstr "mat. makra"
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
+
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr "Obecné vývojáøské ladící výpisy"
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "V¹echny ladící výpisy"
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Ladìní `%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"

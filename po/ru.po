@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2007-12-17 22:55+1000\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -841,7 +841,7 @@ msgid "&Size:"
 msgstr "&Размер:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
 msgstr "Код TeX: "
 
@@ -1527,7 +1527,8 @@ msgstr "Вставить файл"
 msgid "Verbatim"
 msgstr "Дословно"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
 msgstr "Листинг программы"
 
@@ -16082,26 +16083,27 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Вернуться к сохранённой версии документа?"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Бессмысленно в этом формате!"
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr "Выравнивание не разрешено"
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX версии "
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 #, fuzzy
 msgid "uncodable character"
 msgstr "Специальный символ"
@@ -16403,28 +16405,6 @@ msgstr ""
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Нечувствительность: "
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "Нет отладочного сообщения"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-msgid "General information"
-msgstr "Общая информация"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-#, fuzzy
-msgid "Developers' general debug messages"
-msgstr "Все отладочные сообщения"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "Все отладочные сообщения"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Отладка `%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16838,33 +16818,33 @@ msgstr ""
 msgid "Next command"
 msgstr "Следующая команда"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Ограничители"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 msgid "(None)"
 msgstr "(Нет)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 #, fuzzy
 msgid "Variable"
 msgstr "Линии таблиц"
@@ -17402,7 +17382,7 @@ msgstr "Не найден лог-файл lyx2lyx."
 msgid "No version control log file found."
 msgstr "Журнал управления версиями не найден."
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 msgid "Math Matrix"
 msgstr "Матрица"
 
@@ -18361,7 +18341,7 @@ msgstr "Все документы сохранены."
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 msgid "LaTeX Source"
 msgstr "Исходный текст LaTeX"
@@ -18416,8 +18396,8 @@ msgstr "Нет открытых документов!"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 msgid "No Document Open!"
 msgstr "Нет открытого документа!"
 
@@ -18438,17 +18418,22 @@ msgstr "Другие плавающие объекты"
 msgid "No Table of contents"
 msgstr "Нет содержания"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Панели инструментов|П"
+
+#: src/frontends/qt4/Menus.cpp:1040
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Документ"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "Перейти к следующей ошибке"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 #, fuzzy
 msgid "No action defined!"
 msgstr "Перейти к следующей ошибке"
@@ -18681,7 +18666,7 @@ msgstr "Ветка: "
 msgid "Undef: "
 msgstr "Ссылка: "
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 msgid "branch"
 msgstr "Ветка"
 
@@ -19485,6 +19470,14 @@ msgstr "Аннотация: "
 msgid "References: "
 msgstr "Ссылки: "
 
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "Нет отладочного сообщения"
+
+#: src/support/debug.cpp:39
+msgid "General information"
+msgstr "Общая информация"
+
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
 msgstr "Инициализация программы"
@@ -19592,6 +19585,20 @@ msgstr "Математические макрокоманды"
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
 msgstr ""
+
+#: src/support/debug.cpp:67
+#, fuzzy
+msgid "Developers' general debug messages"
+msgstr "Все отладочные сообщения"
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "Все отладочные сообщения"
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Отладка `%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"

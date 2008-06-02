@@ -208,7 +208,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-30 16:29+0100\n"
+"POT-Creation-Date: 2008-06-02 16:22+0100\n"
 "PO-Revision-Date: 2008-05-28 17:24+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
@@ -1026,7 +1026,7 @@ msgid "&Size:"
 msgstr "&Taille :"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
 msgstr "Code TeX : "
 
@@ -1692,7 +1692,8 @@ msgstr "Incorporé (input)"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 msgid "Program Listing"
 msgstr "Listing de code source"
 
@@ -15738,15 +15739,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Revenir à la version enregistrée du document ?"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Aucun sens avec ce style !"
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr "Alignement non autorisé"
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -15755,11 +15756,12 @@ msgstr ""
 "précédemment.\n"
 "Utilise l'alignement par défaut."
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:134
 msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
 msgid "uncodable character"
 msgstr "caractère incodable"
 
@@ -16051,27 +16053,6 @@ msgstr "\\Alph{enumiv}."
 #: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
 msgid "Senseless!!! "
 msgstr "Absurde ! "
-
-#: src/client/debug.cpp:39 src/support/debug.cpp:38
-msgid "No debugging message"
-msgstr "Pas de message de débogage"
-
-#: src/client/debug.cpp:40 src/support/debug.cpp:39
-msgid "General information"
-msgstr "Information générale"
-
-#: src/client/debug.cpp:41 src/support/debug.cpp:67
-msgid "Developers' general debug messages"
-msgstr "Messages de débogage généraux pour les développeurs"
-
-#: src/client/debug.cpp:42 src/support/debug.cpp:68
-msgid "All debugging messages"
-msgstr "Tous les messages de débogage"
-
-#: src/client/debug.cpp:86 src/support/debug.cpp:113
-#, c-format
-msgid "Debugging `%1$s' (%2$s)"
-msgstr "Débogage de '%1$s' (%2$s)"
 
 #: src/frontends/qt4/BulletsModule.cpp:40
 msgid "Standard[[Bullets]]"
@@ -16475,32 +16456,32 @@ msgstr "Le fichier %1$s existe déjà, voulez-vous l'écraser ?"
 msgid "Next command"
 msgstr "Commande suivante"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
 msgstr "big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
 msgstr "Big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr "bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr "Bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
 msgstr "Délimiteurs mathématiques"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 msgid "(None)"
 msgstr "(Aucun)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 msgid "Variable"
 msgstr "Variable"
 
@@ -17033,7 +17014,7 @@ msgstr "Fichier log d'erreurs lyx2lyx introuvable."
 msgid "No version control log file found."
 msgstr "Fichier log du contrôle de version introuvable."
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 msgid "Math Matrix"
 msgstr "Matrice mathématique"
 
@@ -17950,7 +17931,7 @@ msgstr "Tous les documents sont enregistrés."
 msgid "%1$s unknown command!"
 msgstr "%1$s : commande inconnue !"
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 msgid "LaTeX Source"
 msgstr "Source LaTeX"
@@ -18001,8 +17982,8 @@ msgstr "Aucun document ouvert !"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 msgid "No Document Open!"
 msgstr "Aucun document ouvert !"
 
@@ -18022,15 +18003,20 @@ msgstr "Autres listes"
 msgid "No Table of contents"
 msgstr "Pas de table des matières"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Barres d'outils|B"
+
+#: src/frontends/qt4/Menus.cpp:1040
 msgid "No Branch in Document!"
 msgstr "Pas de branche dans le document"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 msgid "No Citation in Scope!"
 msgstr "Aucune citation accessible !"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 msgid "No action defined!"
 msgstr "Aucune action définie !"
 
@@ -18254,7 +18240,7 @@ msgstr "Branche : "
 msgid "Undef: "
 msgstr "Undef : "
 
-#: src/insets/InsetBranch.cpp:218
+#: src/insets/InsetBranch.cpp:215
 msgid "branch"
 msgstr "branche"
 
@@ -19062,6 +19048,14 @@ msgstr "Résumé : "
 msgid "References: "
 msgstr " Références : "
 
+#: src/support/debug.cpp:38
+msgid "No debugging message"
+msgstr "Pas de message de débogage"
+
+#: src/support/debug.cpp:39
+msgid "General information"
+msgstr "Information générale"
+
 #: src/support/debug.cpp:40
 msgid "Program initialisation"
 msgstr "Initialisation du programme"
@@ -19169,6 +19163,19 @@ msgstr "Macros mathématiques"
 #: src/support/debug.cpp:66
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
+
+#: src/support/debug.cpp:67
+msgid "Developers' general debug messages"
+msgstr "Messages de débogage généraux pour les développeurs"
+
+#: src/support/debug.cpp:68
+msgid "All debugging messages"
+msgstr "Tous les messages de débogage"
+
+#: src/support/debug.cpp:113
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "Débogage de '%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:247
 msgid "[[Replace with the code of your language]]"
