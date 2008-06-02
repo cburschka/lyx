@@ -291,6 +291,16 @@ void LyXAction::init()
  */
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FLOAT_LIST_INSERT
+ * \li Action: Inserts the list of floats in the document.
+ * \li Syntax: float-list-insert <TYPE>
+ * \li Params: <TYPE>: type of float depends on the used textclass. Usually
+                       "algorithm", "table", "figure" parameters can be given.
+ * \li Origin: Lgb, 3 May 2001
+ * \endvar
+ */
+		{ LFUN_FLOAT_LIST_INSERT, "float-list-insert", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_WRAP_INSERT
  * \li Action: Inserts floats wrapped by the text around.
  * \li Syntax: wrap-insert <TYPE>
@@ -1752,8 +1762,6 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_PRIMARY, "keymap-primary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
-
-		{ LFUN_FLOAT_LIST_INSERT, "float-list-insert", Noop, Edit },
 
 		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
