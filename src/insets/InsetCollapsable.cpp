@@ -659,7 +659,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FILE_INSERT:
 	case LFUN_FLEX_INSERT:
 	case LFUN_FLOAT_INSERT:
-	case LFUN_FLOAT_LIST:
+	case LFUN_FLOAT_LIST_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_TYPEWRITER:

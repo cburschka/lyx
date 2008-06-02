@@ -1753,7 +1753,7 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
 
-		{ LFUN_FLOAT_LIST, "float-list", Noop, Edit },
+		{ LFUN_FLOAT_LIST_INSERT, "float-list-insert", Noop, Edit },
 
 		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },

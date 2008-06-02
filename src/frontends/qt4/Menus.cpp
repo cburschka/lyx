@@ -807,7 +807,7 @@ void MenuDefinition::expandFloatListInsert(Buffer const * buf)
 	for (; cit != end; ++cit) {
 		addWithStatusCheck(MenuItem(MenuItem::Command,
 				    qt_(cit->second.listName()),
-				    FuncRequest(LFUN_FLOAT_LIST,
+				    FuncRequest(LFUN_FLOAT_LIST_INSERT,
 						cit->second.type())));
 	}
 }

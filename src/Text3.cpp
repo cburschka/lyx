@@ -1721,7 +1721,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			bv->translateAndInsert(cmd.argument()[0], this, cur);
 		break;
 
-	case LFUN_FLOAT_LIST: {
+	case LFUN_FLOAT_LIST_INSERT: {
 		DocumentClass const & tclass = bv->buffer().params().documentClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			cur.recordUndo();
@@ -1981,7 +1981,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_WRAP_INSERT:
 		code = WRAP_CODE;
 		break;
-	case LFUN_FLOAT_LIST:
+	case LFUN_FLOAT_LIST_INSERT:
 		code = FLOAT_LIST_CODE;
 		break;
 #if 0

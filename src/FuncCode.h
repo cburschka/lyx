@@ -214,7 +214,7 @@ enum FuncCode
 	LFUN_CELL_SPLIT,
 	LFUN_BUFFER_CHILD_OPEN,         // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
-	LFUN_FLOAT_LIST,                // Lgb 20010503
+	LFUN_FLOAT_LIST_INSERT,         // Lgb 20010503
 	// 155
 	LFUN_BUFFER_TOGGLE_READ_ONLY,   // Lgb 97-05-27
 	LFUN_VC_REGISTER,               // Lgb 97-07-01
