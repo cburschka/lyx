@@ -48,22 +48,12 @@ public:
 	/// dispatch an LFUN
 	void dispatchFunc(FuncCode action,
 		std::string const & arg = std::string()) const;
-	/// Insert a math symbol into the doc.
-	void dispatchInsert(std::string const & name) const;
-	/// Insert a subscript.
-	void dispatchSubscript() const;
-	/// Insert a superscript.
-	void dispatchSuperscript() const;
-	/// Insert a cube root
-	void dispatchCubeRoot() const;
 	/// Insert a matrix
 	void dispatchMatrix(std::string const & str) const;
 	/// Insert a variable size delimiter
 	void dispatchDelim(std::string const & str) const;
 	/// Insert a big delimiter
 	void dispatchBigDelim(std::string const & str) const;
-	/// Switch between display and inline
-	void dispatchToggleDisplay() const;
 	/** A request to the kernel to launch a dialog.
 	 *  \param name the dialog identifier.
 	 */
