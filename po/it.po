@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-06-02 16:34+0100\n"
-"PO-Revision-Date: 2008-05-27 00:23+0100\n"
+"PO-Revision-Date: 2008-06-02 19:43+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1269,12 +1269,10 @@ msgid "Scr&een Display:"
 msgstr "Visualizzazion&e a schermo"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:710
-#, fuzzy
 msgid "&Initialize Group Name:"
-msgstr "Identificativo di gruppo:"
+msgstr "&Identificativo di gruppo:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:726
-#, fuzzy
 msgid "Group Name to be set up from the current parameters"
 msgstr "Identificativo di gruppo a cui estendere i parametri correnti"
 
@@ -9663,7 +9661,6 @@ msgid "Custom|C"
 msgstr "Personalizzato|P"
 
 #: lib/ui/stdcontext.inc:202
-#, fuzzy
 msgid "Settings...|e"
 msgstr "Impostazioni...|m"
 
@@ -13042,9 +13039,8 @@ msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Grafica"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:270
 msgid "NoWeb"
@@ -13175,9 +13171,8 @@ msgid "date command"
 msgstr "Comando date"
 
 #: lib/configure.py:317
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "Tabella"
+msgstr "Tabella (CSV)"
 
 #: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:737
 #: src/frontends/qt4/GuiView.cpp:738 src/mathed/MathMacroTemplate.cpp:536
@@ -15959,9 +15954,8 @@ msgstr ""
 "documenti modificati prima di terminare."
 
 #: src/frontends/qt4/GuiApplication.cpp:1086
-#, fuzzy
 msgid "Could not find UI defintion file"
-msgstr "Non riesco a leggere il file di configurazione"
+msgstr "Non riesco a trovare il file UI delle definizioni"
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
 msgid "Bibliography Entry Settings"
@@ -17717,7 +17711,7 @@ msgstr "Cliccare qui per staccare"
 
 #: src/frontends/qt4/Menus.cpp:649
 msgid "No Group"
-msgstr ""
+msgstr "Nessun gruppo"
 
 #: src/frontends/qt4/Menus.cpp:694
 msgid "No Documents Open!"
@@ -17747,9 +17741,8 @@ msgid "No Table of contents"
 msgstr "Nessun indice generale"
 
 #: src/frontends/qt4/Menus.cpp:1021
-#, fuzzy
 msgid "Other Toolbars"
-msgstr "Barre degli strumenti|B"
+msgstr "Altre barre strumenti"
 
 #: src/frontends/qt4/Menus.cpp:1040
 msgid "No Branch in Document!"
@@ -17839,9 +17832,8 @@ msgid "Labels and References"
 msgstr "Etichette e riferimenti"
 
 #: src/frontends/qt4/qt_helpers.cpp:506
-#, fuzzy
 msgid "List of Branches"
-msgstr "Elenco delle immagini"
+msgstr "Elenco dei rami"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:277
 #: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:466
@@ -17891,21 +17883,16 @@ msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografia generata da BibTeX"
 
 #: src/insets/InsetBibtex.cpp:158
-#, fuzzy
 msgid "Databases:"
-msgstr "Basi di dati:\n"
+msgstr "Basi di dati:"
 
 #: src/insets/InsetBibtex.cpp:183
-#, fuzzy
 msgid "Style File:"
-msgstr "File di stile:\n"
+msgstr "File di stile:"
 
 #: src/insets/InsetBibtex.cpp:190
-#, fuzzy
 msgid "Lists:"
-msgstr ""
-"\n"
-"Elenchi: "
+msgstr "Elenchi:"
 
 #: src/insets/InsetBibtex.cpp:201
 msgid "included in TOC"
@@ -18942,29 +18929,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "Stringa non trovata!"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "Modulo non trovato"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "Stringa non trovata!"
-
-#~ msgid "Comma-separated values"
-#~ msgstr "Valori separati da virgola"
-
-#~ msgid "Clear group"
-#~ msgstr "Cancella gruppo"
-
-#~ msgid " (auto)"
-#~ msgstr " (auto)"
-
-#~ msgid "Plain Text"
-#~ msgstr "Tasto semplice, per linee"
-
-#~ msgid "Other floats: "
-#~ msgstr "Altri oggetti flottanti:"
