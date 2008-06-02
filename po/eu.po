@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -15246,7 +15246,7 @@ msgstr "MakeIndex exekutatzen."
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15279,39 +15279,39 @@ msgstr "Ezin da aldi baterako direktorioa ezabatu"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Birkonfiguratu|B"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 #, fuzzy
 msgid "&Use Default"
 msgstr "Lehenetsia"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15322,11 +15322,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -15335,33 +15335,33 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15405,44 +15405,44 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 #, fuzzy
 msgid "No system directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 #, fuzzy
 msgid "No user directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Indize-komandoa:"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
@@ -16636,12 +16636,12 @@ msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Huts egin du dokumentua inprimatzean"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16649,18 +16649,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"

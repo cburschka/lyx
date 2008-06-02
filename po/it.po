@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2008-05-27 00:23+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -14521,7 +14521,7 @@ msgstr "MakeIndex è in esecuzione per nomencl."
 msgid "Could not read configuration file"
 msgstr "Non riesco a leggere il file di configurazione"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14554,11 +14554,11 @@ msgstr "Non riesco a rimuovere la cartella temporanea"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "L'opzione `%1$s' della linea di comando è sbagliata. Abbandono."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr "Nessuna classe di documento trovata"
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -14567,27 +14567,27 @@ msgstr ""
 "documento. Occorre eseguire una riconfigurazione normale, oppure "
 "riconfigurare usando classi di documento predefinite, oppure uscire da LyX."
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 msgid "&Reconfigure"
 msgstr "&Riconfigura"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 msgid "&Use Default"
 msgstr "&Classi predefinite"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "&Esci da LyX"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "Non riesco a creare la cartella temporanea"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14598,11 +14598,11 @@ msgstr ""
 "in %1$s. Assicuratevi che questo percorso\n"
 "esista e sia scrivibile, poi provate nuovamente."
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "Manca la cartella utente di LyX"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14611,33 +14611,33 @@ msgstr ""
 "È stata specificata una cartella utente di LyX non esistente, %1$s.\n"
 "Questa è necessaria per mantenere la propria configurazione personale."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "&Crea cartella"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "Nessuna cartella utente di LyX. Esco."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: sto creando la cartella %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "Non è stato possibile creare la cartella. Esco."
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "Elenco delle opzioni di verifica supportate:"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Livello di verifica impostato a %1$s"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14682,39 +14682,39 @@ msgstr ""
 "\t-version       riassume la versione e le informazioni di compilazione.\n"
 "Vedere anche le pagine del manuale di LyX per maggiori dettagli."
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 msgid "No system directory"
 msgstr "Nessuna cartella di sistema"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "Manca la cartella per l'opzione -sysdir"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 msgid "No user directory"
 msgstr "Nessuna cartella utente"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "Manca la cartella per l'opzione -userdir"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 msgid "Incomplete command"
 msgstr "Comando non completo"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "Manca la stringa di comando dopo l'opzione --execute"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manca il tipo di file [es. latex, ps...] dopo l'opzione --export"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manca il tipo di file [es. latex, ps...] dopo l'opzione --import"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "Manca il nome file per --import"
 
@@ -15929,11 +15929,11 @@ msgstr ""
 "L'impostazione del colore \"%1$s\" è fallita: il colore non è definito o non "
 "può essere ridefinito."
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 msgid "The current document was closed."
 msgstr "Il documento corrente è stato chiuso."
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -15945,12 +15945,12 @@ msgstr ""
 "\n"
 "Eccezione: "
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr "Rilevato problema software"
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -15958,7 +15958,7 @@ msgstr ""
 "LyX ha rilevato una strana eccezione. Verrà tentato il salvataggio dei "
 "documenti modificati prima di terminare."
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Non riesco a leggere il file di configurazione"

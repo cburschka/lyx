@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2008-04-22 23:28+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -14543,7 +14543,7 @@ msgstr "nomencl用にMakeIndexを実行しています。"
 msgid "Could not read configuration file"
 msgstr "設定ファイルを読み込むことができませんでした"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14576,11 +14576,11 @@ msgstr "作業用ディレクトリを削除することができませんでし
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "コマンドラインオプション`%1$s'は誤りです。終了します。"
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr "テキストクラスが見つかりません。"
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -14589,27 +14589,27 @@ msgstr ""
 "ム再走査を行うか，既定のテキストクラスを使ってシステム再走査を行うか，あるい"
 "はLyXを終了するなどしてください。"
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 msgid "&Reconfigure"
 msgstr "システム再走査(&R)"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 msgid "&Use Default"
 msgstr "既定値を使用する(&U)"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "LyX を終了(&E)"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "作業ディレクトリを作成することができませんでした"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14620,11 +14620,11 @@ msgstr ""
 "ませんでした。このパスが存在し書き込み可能\n"
 "であることを確認して，再度実行してください。"
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "個人用 LyX ディレクトリがありません"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14633,33 +14633,33 @@ msgstr ""
 "実在しない個人用 LyX ディレクトリ「%1$s」を指定しました。\n"
 "このディレクトリは自分用の設定を保存しておくのに必要です。"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "ディレクトリを作成(&C)"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "個人用 LyX ディレクトリがありません。終了します。"
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: ディレクトリ「%1$s」を作成しています"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "ディレクトリを作成するのに失敗しました。終了します。"
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "サポートされているデバッグフラグの一覧:"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14703,39 +14703,39 @@ msgstr ""
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 msgid "No system directory"
 msgstr "システムディレクトリがありません"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 msgid "No user directory"
 msgstr "ユーザーディレクトリがありません"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "-usedirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 msgid "Incomplete command"
 msgstr "不完全なコマンド"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "--executeスイッチの後にコマンド文字列が必要です"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--exportスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--importスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "--importのファイル名が指定されていません"
 
@@ -15916,11 +15916,11 @@ msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 msgid "The current document was closed."
 msgstr "現在の文書は閉じられました。"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -15932,12 +15932,12 @@ msgstr ""
 "\n"
 "例外エラー: "
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr "ソフトウェア例外エラーが検出されました"
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -15945,7 +15945,7 @@ msgstr ""
 "LyXは何か非常におかしな例外エラーを検出したので、保存されていない全ての文書の"
 "保存を試み、終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "設定ファイルを読み込むことができませんでした"

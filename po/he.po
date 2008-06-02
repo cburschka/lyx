@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2008-02-20 12:39+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -14742,7 +14742,7 @@ msgstr ""
 msgid "Could not read configuration file"
 msgstr "לא יכול לקרוא קובץ הגדרות"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14772,37 +14772,37 @@ msgstr "לא מסוגל להסיר את התיקייה הזמנית"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Wrong command line option `%1$s'. Exiting."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 msgid "&Reconfigure"
 msgstr "הגדר מחדש"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 msgid "&Use Default"
 msgstr "השתמש בברירת מחדל"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "צא מ- LyX"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "לא יכול ליצור תיקייה זמנית"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14810,44 +14810,44 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "תיקיית משתמש LyX חסרה"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "צור תיקייה"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "אין תיקיית משתמש LyX. יוצא."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: יוצר תיקייה %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "נכשל ביצירת תיקייה. יוצא."
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "קובע רמת דיבאג ל- %1$s"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14890,39 +14890,39 @@ msgstr ""
 "\t-version        summarize version and build info\n"
 "Check the LyX man page for more details."
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 msgid "No system directory"
 msgstr "No system directory"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "Missing directory for -sysdir switch"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 msgid "No user directory"
 msgstr "No user directory"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "Missing directory for -userdir switch"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 msgid "Incomplete command"
 msgstr "Incomplete command"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "Missing command string after --execute switch"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Missing file type [eg latex, ps...] after --export switch"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Missing file type [eg latex, ps...] after --import switch"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "Missing filename for --import"
 
@@ -16020,12 +16020,12 @@ msgstr "תחביר: set-color <lyx_name> <x11_name>"
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "Set-color \"%1$s\" נכשל - הצבע אינו מוגדר או שאי-אפשר להגדירו מחדש"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -16037,19 +16037,19 @@ msgstr ""
 "\n"
 "חריגה: "
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr "זוהתה חריגה בתוכנה"
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr "LyX נתקל בחריגה ממש מוזרה, הוא ינסה כעת לשמור את כל המסמכים ולצאת."
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "לא יכול לקרוא קובץ הגדרות"

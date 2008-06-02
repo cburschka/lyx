@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -14797,7 +14797,7 @@ msgstr "Running MakeIndex for nomencl."
 msgid "Could not read configuration file"
 msgstr "无法读取配置文件"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14830,39 +14830,39 @@ msgstr "无法删除临时目录"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "未知命令行选项 `%1$s'. 退出."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "重配置(R)|R"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 #, fuzzy
 msgid "&Use Default"
 msgstr "&Default"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "退出 LyX (&E)"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "无法创建临时目录"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14873,11 +14873,11 @@ msgstr ""
 "%1$s. 请确定此\n"
 "目录存在而且可写，然后重新尝试."
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "缺失LyX用户目录"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14886,33 +14886,33 @@ msgstr ""
 "您指定了一不存在用户目录, %1$s.\n"
 "用来保存您的配置信息."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "创建目录 (&C)"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "无用户 LyX 目录。退出。"
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: 创建目录 %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "未能创建目录。退出。"
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "支持的调试符号"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "设置调试级别至 %1$s"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14955,39 +14955,39 @@ msgstr ""
 "\t-version        版本和编译信息\n"
 "详细使用方法请参阅 LyX 手册."
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 msgid "No system directory"
 msgstr "无系统目录"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir 参数后缺省目录名"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 msgid "No user directory"
 msgstr "无用户目录"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir 参数后缺失目录名"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 msgid "Incomplete command"
 msgstr "不完整命令"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "--execute 参数后缺失命令"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "--import 参数缺失文件名"
 
@@ -16164,12 +16164,12 @@ msgstr "语法: set-color <lyx_name> <x11_name>"
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "打印文件失败"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16177,18 +16177,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "无法读取配置文件"

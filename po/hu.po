@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2008-02-16 21:50+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -14789,7 +14789,7 @@ msgstr "MakeIndex futtatása nomencl-hez."
 msgid "Could not read configuration file"
 msgstr "Konfiguráció fájl nem olvasható"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14822,11 +14822,11 @@ msgstr "Ideiglenes könyvtár nem törölhetõ"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hibás parancssori kapcsoló `%1$s'. Kilépek."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr "Nem találtam szövegosztályt"
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -14835,27 +14835,27 @@ msgstr ""
 "manuálisan újra vagy beállíthatja az alapértelmezett szövegosztályokat, vagy "
 "kilép a LyX-bõl."
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 msgid "&Reconfigure"
 msgstr "Új&rakonfigurálás"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 msgid "&Use Default"
 msgstr "A&lapérték"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "&Kilépés LyX-bõl"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "Ideiglenes könyvtár nem hozható létre"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14866,11 +14866,11 @@ msgstr ""
 "%1$s. Ellenõrizze, hogy az elérési út létezik és\n"
 "írható, majd próbálja újra!"
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 msgid "Missing user LyX directory"
 msgstr "Nincs felhasználói LyX könyvtár"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14879,33 +14879,33 @@ msgstr ""
 "Nem létezõ LyX felhasználói könyvtárat adott meg, %1$s.\n"
 "Valahol tárolnia kell a saját beállításait."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 msgid "&Create directory"
 msgstr "&Könyvtár létrehozása"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "Nincs felhasználói LyX könyvtár. Kilépek."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Könyvtár létrehozása %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "Nem sikerült létrehozni a könyvtárat. Kilépek."
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "Támogatott nyomkövetési jelzõk listája:"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14948,39 +14948,39 @@ msgstr ""
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
 "Olvassa el a LyX kézikönyvet a további részletekért!"
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 msgid "No system directory"
 msgstr "Nincs rendszer könyvtár"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "Hiányzó könyvtár a -sysdir kapcsolóhoz"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 msgid "No user directory"
 msgstr "Nincs felhasználói könyvtár"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "Hiányzó könyvtár a -userdir kapcsolóhoz"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 msgid "Incomplete command"
 msgstr "Befejezetlen parancs"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "Hiányzó parancs az --execute kapcsoló után"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --export kapcsoló után"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --import kapcsoló után"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "Hiányzó fájlnév --import-hoz"
 
@@ -16170,12 +16170,12 @@ msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Nyomtatás sikertelen"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -16188,12 +16188,12 @@ msgstr ""
 "\n"
 "Kivétel: "
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr "Szoftveres kivétel történt"
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -16202,7 +16202,7 @@ msgstr ""
 "A LyX elkapott egy nagyon durva kivételt, meg fogja próbálni menteni a még "
 "mentetlen dokumentumokat és ki fog lépni."
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Konfiguráció fájl nem olvasható"

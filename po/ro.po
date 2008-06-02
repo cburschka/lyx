@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2008-02-13 20:05-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -15249,7 +15249,7 @@ msgstr "Execut MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Listã de slide-uri"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15282,42 +15282,42 @@ msgstr "&Utilizeazã director temporar"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Reconfigureazã|R"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 #, fuzzy
 msgid "&Use Default"
 msgstr "Implicit"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Ieºire"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 #, fuzzy
 msgid "LyX: "
 msgstr "Vizualizeazã DVI"
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15325,47 +15325,47 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Adaugã cuvîntul la dicþionarul personal"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Documentul specificat nu este un document LyX."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 #, fuzzy
 msgid "&Create directory"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 #, fuzzy
 msgid "No user LyX directory. Exiting."
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15389,42 +15389,42 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 #, fuzzy
 msgid "No system directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 #, fuzzy
 msgid "No user directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Comenda de indexare"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -16547,12 +16547,12 @@ msgstr ""
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Verteiler"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16560,18 +16560,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Listã de slide-uri"

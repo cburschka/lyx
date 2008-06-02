@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:22+0100\n"
+"POT-Creation-Date: 2008-06-02 16:34+0100\n"
 "PO-Revision-Date: 2007-12-17 22:55+1000\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -15163,7 +15163,7 @@ msgstr "Выполняю MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Не удаётся прочитать файл конфигурации"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1096
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1087
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15194,37 +15194,37 @@ msgstr "Выберите временный каталог"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Неверный параметр командной строки `%1$s'. Выходим."
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 msgid "&Reconfigure"
 msgstr "Переконфигурировать"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 msgid "&Use Default"
 msgstr "По умолчанию"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr "Выйти из LyXа"
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 msgid "Could not create temporary directory"
 msgstr "Невозможно создать временный каталог"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15235,46 +15235,46 @@ msgstr ""
 "%1$s. Проверьте, что этот путь существует,\n"
 "доступен для записи и попробуйте ещё раз."
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Нет каталога пользователя LyX. Завершение работы."
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Вы указали несуществующий каталог LyX."
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: создаю каталог "
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr "Нет каталога пользователя LyX. Завершение работы."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Создаётся каталог  %1$s"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr "Ошибка при создании каталога. Завершение работы."
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr "Список поддерживаемых флагов отладки:"
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Установить уровень отладки на %1$s"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15315,42 +15315,42 @@ msgstr ""
 "                  импортировать заданный файл в указанном формата\n"
 "Более подробное описание командной строки можно найти в документации (man)."
 
-#: src/LyX.cpp:1083
+#: src/LyX.cpp:1072
 #, fuzzy
 msgid "No system directory"
 msgstr "Каталог пользователя: "
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 msgid "Missing directory for -sysdir switch"
 msgstr "Отсутствует каталог для ключа -sysdir"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 #, fuzzy
 msgid "No user directory"
 msgstr "Каталог пользователя: "
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 msgid "Missing directory for -userdir switch"
 msgstr "Отсутствует каталог для ключа -userdir"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Следующая команда"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 msgid "Missing command string after --execute switch"
 msgstr "Отсутствует команда после ключа --execute"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --export"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --import"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 msgid "Missing filename for --import"
 msgstr "Не указано название файла для --import"
 
@@ -16535,12 +16535,12 @@ msgstr ""
 "Установка цвета не удалась \"%1$s\" - цвет не определён или не может быть "
 "переопределён"
 
-#: src/frontends/qt4/GuiApplication.cpp:912
+#: src/frontends/qt4/GuiApplication.cpp:903
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Печатать в файл"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:913
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -16553,12 +16553,12 @@ msgstr ""
 "\n"
 "Ошибка: "
 
-#: src/frontends/qt4/GuiApplication.cpp:926
-#: src/frontends/qt4/GuiApplication.cpp:932
+#: src/frontends/qt4/GuiApplication.cpp:917
+#: src/frontends/qt4/GuiApplication.cpp:923
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:921
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -16567,7 +16567,7 @@ msgstr ""
 "LyX получил сообщение о серьёзной ошибке, сейчас он попытается сохранить все "
 "документы и выйти."
 
-#: src/frontends/qt4/GuiApplication.cpp:1095
+#: src/frontends/qt4/GuiApplication.cpp:1086
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Не удаётся прочитать файл конфигурации"
