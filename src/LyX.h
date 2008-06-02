@@ -99,9 +99,6 @@ public:
 	/// Execute batch commands if available.
 	void execBatchCommands();
 
-	///
-	void addFileToLoad(std::string const &);
-
 private:
 	/// noncopyable
 	LyX(LyX const &);

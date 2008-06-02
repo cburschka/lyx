@@ -524,17 +524,6 @@ int LyX::init(int & argc, char * argv[])
 }
 
 
-void LyX::addFileToLoad(string const & fname)
-{
-	vector<string>::const_iterator cit = find(
-		pimpl_->files_to_load_.begin(), pimpl_->files_to_load_.end(),
-		fname);
-
-	if (cit == pimpl_->files_to_load_.end())
-		pimpl_->files_to_load_.push_back(fname);
-}
-
-
 bool LyX::loadFiles()
 {
 	LASSERT(!use_gui, /**/);

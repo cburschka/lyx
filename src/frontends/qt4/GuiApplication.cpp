@@ -865,17 +865,8 @@ bool GuiApplication::event(QEvent * e)
 	case QEvent::FileOpen: {
 		// Open a file; this happens only on Mac OS X for now
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-
-		if (!current_view_ || !current_view_->view())
-			// The application is not properly initialized yet.
-			// So we acknowledge the event and delay the file opening
-			// until LyX is ready.
-			// FIXME UNICODE: FileName accept an utf8 encoded string.
-			LyX::ref().addFileToLoad(fromqstr(foe->file()));
-		else
-			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
-				qstring_to_ucs4(foe->file())));
-
+		lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
+			qstring_to_ucs4(foe->file())));
 		e->accept();
 		return true;
 	}
