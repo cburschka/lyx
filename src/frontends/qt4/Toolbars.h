@@ -131,6 +131,8 @@ public:
 	ToolbarInfo const * info(std::string const & name) const;
 	///
 	int defaultVisibility(std::string const & name) const;
+	///
+	bool isMainToolbar(std::string const & name) const;
 
 private:
 	/// all the defined toolbars

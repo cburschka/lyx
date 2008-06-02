@@ -1004,12 +1004,23 @@ void MenuDefinition::expandPasteRecent()
 
 void MenuDefinition::expandToolbars()
 {
+	MenuDefinition other_lists;
 	// extracts the toolbars from the backend
 	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
 	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
 	for (; cit != end; ++cit) {
-		add(MenuItem(MenuItem::Command, qt_(cit->gui_name),
-			FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name)));
+		MenuItem const item(MenuItem::Command, qt_(cit->gui_name),
+				FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name));
+		if (guiApp->toolbars().isMainToolbar(cit->name))
+			add(item);
+		else
+			other_lists.add(item);
+	}
+
+	if (!other_lists.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("Other Toolbars"));
+		item.setSubmenu(other_lists);
+		add(item);
 	}
 }
 

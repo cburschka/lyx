@@ -323,5 +323,11 @@ int Toolbars::defaultVisibility(std::string const & name) const
 }
 
 
+bool Toolbars::isMainToolbar(std::string const & name) const
+{
+	return toolbar_visibility_.find(name) != toolbar_visibility_.end();
+}
+
+
 } // namespace frontend
 } // namespace lyx
