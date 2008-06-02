@@ -2076,16 +2076,16 @@ if 'installer' in BUILD_TARGETS:
         Exit(1)
     installer_files = ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' \
             % x for x in development_Win32_packaging_installer] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' \
-            % x for x in development_Win32_packaging_installer_components] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' \
-            % x for x in development_Win32_packaging_installer_dialogs] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' \
             % x for x in development_Win32_packaging_installer_graphics] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/gui/%s' \
+            % x for x in development_Win32_packaging_installer_gui] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' \
             % x for x in development_Win32_packaging_installer_include] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' \
-            % x for x in development_Win32_packaging_installer_lang]
+            % x for x in development_Win32_packaging_installer_lang] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/setup/%s' \
+            % x for x in development_Win32_packaging_installer_setup]
     if env.has_key('NSIS') and env['NSIS'] is not None:
         # create a builder to strip and install
         env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)

@@ -2782,29 +2782,6 @@ development_Win32_packaging_installer = Split('''
     license.rtf
     lyx.nsi
     settings.nsh
-    settings.user.nsh
-''')
-
-
-development_Win32_packaging_installer_components = Split('''
-    configure.nsh
-    core.nsh
-    dicts.nsh
-    external.nsh
-    langselect.nsh
-    reinstall.nsh
-    uninstall.nsh
-    user.nsh
-    viewer.nsh
-''')
-
-
-development_Win32_packaging_installer_dialogs = Split('''
-    external.ini
-    langselect.ini
-    reinstall.ini
-    user.ini
-    viewer.ini
 ''')
 
 
@@ -2814,14 +2791,23 @@ development_Win32_packaging_installer_graphics = Split('''
 ''')
 
 
+development_Win32_packaging_installer_gui = Split('''
+    external.nsh
+    langselect.nsh
+    reinstall.nsh
+''')
+
+
 development_Win32_packaging_installer_include = Split('''
     declarations.nsh
     detection.nsh
-    filelists.nsh
+    dictlist.nsh    
+    filelist.nsh
     gui.nsh
     init.nsh
-    lang.nsh
-    windows.nsh
+    langlist.nsh
+    nsis.nsh
+    variables.nsh
 ''')
 
 
@@ -2832,3 +2818,9 @@ development_Win32_packaging_installer_lang = Split('''
     italian.nsh
 ''')
 
+
+development_Win32_packaging_installer_setup = Split('''
+    configure.nsh
+    install.nsh
+    reinstall.nsh
+''')
