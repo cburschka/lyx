@@ -767,7 +767,12 @@ def revert_wrapfig_options(document):
 replacements = [
   [r'\\\"a', u'ä'], 
   [r'\\\"o', u'ö'], 
-  [r'\\\"u', u'ü']
+  [r'\\\"u', u'ü'],
+  [r'\\\'a', u'á'],
+  [r'\\\'e', u'é'],
+  [r'\\\'i', u'í'],
+  [r'\\\'o', u'ó'],
+  [r'\\\'u', u'ú']
 ]
 
 def convert_latexcommand_index(document):
