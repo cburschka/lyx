@@ -20,9 +20,12 @@
 # Commands that modify other parts of the text should not be added either.
 
 # syntax:
-# ucs4 command                    preamble flags
-# preamble can either be a feature known by the LaTeXFeatures class (e.g.
-# tipa), or a LaTeX command (e.g. \\usepackage{bla}).
+# ucs4 textcommand                textpreamble flags mathcommand mathpreamble
+# textcommand and textpreamble are used if the symbol occurs in textmode.
+# mathcommand and mathpreamble are used if the symbol occurs in mathmode.
+# Both mathcommand and mathpreamble are optional.
+# textpreamble and mathpreamble can either be a feature known by the LaTeXFeatures
+# class (e.g. tipa), or a LaTeX command (e.g. \\usepackage{bla}).
 # Known flags:
 # - combining This is a combining char that will get combined with a base char
 # - force     Always output replacement command
@@ -44,13 +47,13 @@
 0x00ae "\\textregistered"         "textcomp" "force" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
-0x00b1 "\\textpm"                 "textcomp" "force" # ± PLUS-MINUS SIGN
+0x00b1 "\\textpm"                 "textcomp" "force" "\pm" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" # µ MICRO SIGN
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
-0x00b7 "\\textperiodcentered"     "" "" # MIDDLE DOT
+0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
 0x00b8 "\\c\\ "                   "" "" # CEDILLA (command from latin1.def)
 0x00b9 "\\textonesuperior"        "textcomp" "force" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
@@ -82,7 +85,7 @@
 0x00d4 "\\^{O}"                   "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX
 0x00d5 "\\~{O}"                   "" "" # LATIN CAPITAL LETTER O WITH TILDE
 0x00d6 "\\\"{O}"                  "" "" # LATIN CAPITAL LETTER O WITH DIAERESIS
-0x00d7 "\\texttimes"              "textcomp" "force" # × MULTIPLICATION SIGN
+0x00d7 "\\texttimes"              "textcomp" "force" "\\times" # × MULTIPLICATION SIGN
 0x00d8 "\\O"                      "" "" # LATIN CAPITAL LETTER O WITH STROKE
 0x00d9 "\\`{U}"                   "" "" # LATIN CAPITAL LETTER U WITH GRAVE
 0x00da "\\'{U}"                   "" "" # LATIN CAPITAL LETTER U WITH ACUTE
@@ -114,7 +117,7 @@
 0x00f4 "\\^{o}"                   "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX
 0x00f5 "\\~{o}"                   "" "" # LATIN SMALL LETTER O WITH TILDE
 0x00f6 "\\\"{o}"                  "" "" # LATIN SMALL LETTER O WITH DIAERESIS
-0x00f7 "\\textdiv"                "textcomp" "force" # ÷ DIVISION SIGN
+0x00f7 "\\textdiv"                "textcomp" "force" "\\div" # ÷ DIVISION SIGN
 0x00f8 "\\o"                      "" "" # LATIN SMALL LETTER O WITH STROKE
 0x00f9 "\\`{u}"                   "" "" # LATIN SMALL LETTER U WITH GRAVE
 0x00fa "\\'{u}"                   "" "" # LATIN SMALL LETTER U WITH ACUTE
@@ -580,8 +583,8 @@
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
 0x02d4 "\\textraising{ }"         "tipa" "" # MODIFIER LETTER UP TACK
 0x02d5 "\\textlowering{ }"        "tipa" "" # MODIFIER LETTER DOWN TACK
-0x02d6 "\\ensuremath{+}"          "" "" # MODIFIER LETTER PLUS SIGN
-0x02d7 "\\ensuremath{-}"          "" "" # MODIFIER LETTER MINUS SIGN
+0x02d6 ""                         "" "" "+" # MODIFIER LETTER PLUS SIGN
+0x02d7 ""                         "" "" "-" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\u{ }"                   "" "" # BREVE
 0x02d9 "\\.{ }"                   "" "" # DOT ABOVE
 0x02da "\\r{ }"                   "" "" # RING ABOVE
@@ -1185,6 +1188,7 @@
 0x1e99 "\\r{y}"                   "" "" # LATIN SMALL LETTER Y WITH RING ABOVE
 #0x1e9a ""                         "" "" # LATIN SMALL LETTER A WITH RIGHT HALF RING
 #0x1e9b ""                         "" "" # LATIN SMALL LETTER LONG S WITH DOT ABOVE
+#0x1e9e ""                         "" "" # LATIN CAPITAL LETTER SHARP S
 0x1ea0 "\\d{A}"                   "" "" # LATIN CAPITAL LETTER A WITH DOT BELOW
 0x1ea1 "\\d{a}"                   "" "" # LATIN SMALL LETTER A WITH DOT BELOW
 #0x1ea2 ""                         "" "" # LATIN CAPITAL LETTER A WITH HOOK ABOVE
@@ -1347,54 +1351,53 @@
 0x2100 "\\LyXaccountof" "\\newcommand*\\LyXaccountof{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{c}}}" ""
 # use the following macro for the character ADRESSED TO THE SUBJECT
 0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" ""
-0x2102 "\\ensuremath{\\mathbb{C}}" "amssymb" "" # DOUBLE-STUCK CAPITAL C
+0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
 # use the following macro for the character CARE OF
 0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 # use the following macro for the character CADA UNA
 0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" ""
 0x2109 "°{}F"                     "" "" # DEGREE FARENHEIT
-0x210a "\\ensuremath{\\matscr{g}}" "mathrsfs" "" # SCRIPT SMALL G
-0x210b "\\ensuremath{\\matscr{H}}" "mathrsfs" "" # SCRIPT CAPITAL H
-0x210c "\\ensuremath{\\mathfrak{H}}" "amssymb" "" # BLACK-LETTER CAPITAL H
-0x210d "\\ensuremath{\\mathbb{H}}" "amssymb" "" # DOUBLE-STUCK CAPITAL H
-0x210e "\\ensuremath{h}"          "" "" # PLANCK CONSTANT
-0x210f "\\ensuremath{\\hbar}"     "amssymb" "" # PLANCK CONSTANT OVER TWO PI
-0x2110 "\\ensuremath{\\matscr{I}}" "mathrsfs" "" # SCRIPT CAPITAL I
-0x2111 "\\ensuremath{\\mathfrak{I}}" "amssymb" "" # BLACK-LETTER CAPITAL I
-0x2112 "\\ensuremath{\\matscr{L}}" "mathrsfs" "" # SCRIPT CAPITAL L
-0x2113 "\\ensuremath{\\ell}"      "" "" # SCRIPT SMALL L
-0x2115 "\\ensuremath{\\mathbb{N}}" "amssymb" "" # DOUBLE-STUCK CAPITAL N
+0x210b ""                         "" "" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
+0x210c ""                         "" "" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
+0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STUCK CAPITAL H
+0x210e ""                         "" "" "h" # PLANCK CONSTANT
+0x210f ""                         "" "" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
+0x2110 ""                         "" "" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
+0x2111 ""                         "" "" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
+0x2112 ""                         "" "" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
+0x2113 ""                         "" "" "\\ell" # SCRIPT SMALL L
+0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
-0x2118 "\\ensuremath{\\matscr{P}}" "mathrsfs" "" # SCRIPT CAPITAL P
-0x2119 "\\ensuremath{\\mathbb{P}}" "amssymb" "" # DOUBLE-STUCK CAPITAL P
-0x211a "\\ensuremath{\\mathbb{Q}}" "amssymb" "" # DOUBLE-STUCK CAPITAL Q
-0x211b "\\ensuremath{\\matscr{R}}" "mathrsfs" "" # SCRIPT CAPITAL R
-0x211c "\\ensuremath{\\mathfrak{R}}" "amssymb" "" # BLACK-LETTER CAPITAL R
-0x211d "\\ensuremath{\\mathbb{R}}" "amssymb" "" # DOUBLE-STUCK CAPITAL R
+0x2118 ""                         "" "" "\\mathscr{P}" "mathrsfs" # SCRIPT CAPITAL P
+0x2119 ""                         "" "" "\\mathbb{P}" "amssymb"# DOUBLE-STUCK CAPITAL P
+0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STUCK CAPITAL Q
+0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
+0x211c ""                         "" "" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
+0x211d ""                         "" "" "\\mathbb{R}" "amssymb" # DOUBLE-STUCK CAPITAL R
 0x211e "\\textrecipe"             "textcomp" "" # PRESCRIPTION TAKE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
-0x2124 "\\ensuremath{\\mathbb{Z}}" "amssymb" "" # DOUBLE-STUCK CAPITAL Z
+0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STUCK CAPITAL Z
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" # INVERTED OHM SIGN
-0x2128 "\\ensuremath{\\mathfrak{Z}}" "amssymb" "" # BLACK-LETTER CAPITAL Z
+0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 0x212a "K"                        "" "" # KELVIN SIGN
 0x212b "\\AA"                     "" "" # ANGSTROM SIGN
-0x212c "\\ensuremath{\\matscr{B}}" "mathrsfs" "" # SCRIPT CAPITAL B
-0x212d "\\ensuremath{\\mathfrak{C}}" "amssymb" "" # BLACK-LETTER CAPITAL C
+0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
+0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL
-0x212f "\\ensuremath{\\matscr{e}}" "mathrsfs" "" # SCRIPT SMALL E
-0x2130 "\\ensuremath{\\matscr{E}}" "mathrsfs" "" # SCRIPT CAPITAL E
-0x2131 "\\ensuremath{\\matscr{F}}" "mathrsfs" "" # SCRIPT CAPITAL F
-0x2133 "\\ensuremath{\\matscr{M}}" "mathrsfs" "" # SCRIPT CAPITAL M
-0x2134 "\\ensuremath{\\matscr{o}}" "mathrsfs" "" # SCRIPT SMALL O
-0x2135 "\\ensuremath{\\aleph}"    "amssymb" "" # ALEF SYMBOL
-0x2136 "\\ensuremath{\\beth}"     "amssymb" "" # BET SYMBOL
-0x2137 "\\ensuremath{\\gimel}"    "amssymb" "" # GIMEL SYMBOL
-0x2138 "\\ensuremath{\\daleth}"   "amssymb" "" # DALET SYMBOL
+0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
+0x2130 ""                         "" "" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
+0x2131 ""                         "" "" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
+0x2133 ""                         "" "" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
+0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
+0x2135 ""                         "" "" "\\aleph" "amssymb" # ALEF SYMBOL
+0x2136 ""                         "" "" "\\beth" "amssymb" # BET SYMBOL
+0x2137 ""                         "" "" "\\gimel" "amssymb" # GIMEL SYMBOL
+0x2138 ""                         "" "" "\\daleth" "amssymb" # DALET SYMBOL
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213b ""                         "" "" # FACSIMILE SIGN
 # use the following macro for the character AKTIESELSKAB
@@ -1463,41 +1466,41 @@
 #
 # arrows
 #
-0x2190 "\\textleftarrow"          "textcomp" "" # LEFTWARDS ARROW
-0x2191 "\\textuparrow"            "textcomp" "" # UPWARDS ARROW
-0x2192 "\\textrightarrow"         "textcomp" "" # RIGHTWARDS ARROW
-0x2193 "\\textdownarrow"          "textcomp" "" # DOWNWARDS ARROW
-0x2194 "\\ensuremath{\\leftrightarrow}" "" "" # LEFT RIGHT ARROW
-0x2195 "\\ensuremath{\\updownarrow}" "" "" # UP DOWN ARROW
+0x2190 "\\textleftarrow"          "textcomp" "" "\\leftarrow" # LEFTWARDS ARROW
+0x2191 "\\textuparrow"            "textcomp" "" "\\uparrow" # UPWARDS ARROW
+0x2192 "\\textrightarrow"         "textcomp" "" "\\rightarrow" # RIGHTWARDS ARROW
+0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
+0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
+0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
 #
 # math symbols
 #
 # besides textcomp only those used in Windows standard fonts
-0x2202 "\\ensuremath{\\partial}"  "" "" # PARTIAL DIFFERENTIAL
-0x2206 "\\ensuremath{\\Delta}"    "" "" # INCREMENT
-0x220f "\\ensuremath{\\prod}"     "" "" # N-ARY PRODUCT
-0x2211 "\\ensuremath{\\sum}"      "" "" # N-ARY SUMMATION
+0x2202 ""                         "" "" "\\partial" # PARTIAL DIFFERENTIAL
+0x2206 ""                         "" "" "\\Delta" # INCREMENT
+0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
+0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
 0x2212 "\\textminus"              "textcomp" "" # MINUS SIGN
-0x2215 "\\ensuremath{\\slash}"    "" "" # DIVISION SLASH
+0x2215 ""                         "" "" "\\slash" # DIVISION SLASH
 0x2217 "\\textasteriskcentered"   "textcomp" "" # ASTERISK OPERATOR
-0x2219 "\\ensuremath{\\centerdot}" "amssymb" "" # BULLET OPERATOR
+0x2219 ""                         "" "" "\\centerdot" "amssymb" # BULLET OPERATOR
 0x221a "\\textsurd"               "textcomp" "" # SQUARE ROOT
-0x221e "\\ensuremath{\\infty}"    "" "" # INFINITY
+0x221e ""                         "" "" "\\infty" # INFINITY
 # use the following macro for the character RIGHT ANGLE
 0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
-0x2229 "\\ensuremath{\\bigcap}"   "" "" # INTERSECTION
-0x222b "\\ensuremath{\\int}"      "" "" # INTEGRAL
-0x2248 "\\ensuremath{\\approx}"   "" "" # ALMOST EQUAL TO
-0x2260 "\\ensuremath{\\neq}"      "" "" # NOT EQUAL TO
-0x2261 "\\ensuremath{\\equiv}"    "" "" # IDENTICAL TO
-0x2264 "\\ensuremath{\\le}"       "" "" # LESS-THAN OR EQUAL TO
-0x2265 "\\ensuremath{\\ge}"       "" "" # GREATER-THAN OR EQUAL TO
+0x2229 ""                         "" "" "\\bigcap" # INTERSECTION
+0x222b ""                         "" "" "\\int" # INTEGRAL
+0x2248 ""                         "" "" "\\approx" # ALMOST EQUAL TO
+0x2260 ""                         "" "" "\\neq" # NOT EQUAL TO
+0x2261 ""                         "" "" "\\equiv" # IDENTICAL TO
+0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
+0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
 #
 # miscellaneous technical
 #
 0x2302 "{\\ascii\\DEL}"           "ascii" "" # HOUSE
-0x2310 "\\ensuremath{\\invneg}"   "wasysym" "" # REVERSED NOT SIGN
+0x2310 ""                         "" "" "\\invneg" "wasysym" # REVERSED NOT SIGN
 0x231a "\\Clocklogo"              "marvosym" "" # WATCH
 #0x2320 ""                         "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
@@ -1589,13 +1592,13 @@
 0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
 0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" # BLACK DIAMOND
 0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" # WHITE DIAMOND
-0x25ca "\\ensuremath{\\lozenge}"  "amssymb" "" # LOZENGE
-0x25cb "\\Circle"                 "wasysym" "" # CIRCLE
-0x25cf "\\CIRCLE"                 "wasysym" "" # BLACK CIRCLE
-0x25d0 "\\LEFTcircle"             "wasysym" "" # CIRCLE WITH LEFT HALF BLACK
-0x25d1 "\\RIGHTcircle"            "wasysym" "" # CIRCLE WITH RIGHT HALF BLACK
-0x25d6 "\\LEFTCIRCLE"             "wasysym" "" # LEFT HALF BLACK CIRCLE
-0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" # RIGHT HALF BLACK CIRCLE
+0x25ca ""                         "" "" "\\lozenge" "amssymb" # LOZENGE
+0x25cb "\\Circle"                 "wasysym" "" "\\Circle" "wasysym" # CIRCLE
+0x25cf "\\CIRCLE"                 "wasysym" "" "\\CIRCLE" "wasysym" # BLACK CIRCLE
+0x25d0 "\\LEFTcircle"             "wasysym" "" "\\LEFTcircle" "wasysym" # CIRCLE WITH LEFT HALF BLACK
+0x25d1 "\\RIGHTcircle"            "wasysym" "" "\\RIGHTcircle" "wasysym" # CIRCLE WITH RIGHT HALF BLACK
+0x25d6 "\\LEFTCIRCLE"             "wasysym" "" "\\LEFTCIRCLE" "wasysym" # LEFT HALF BLACK CIRCLE
+0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" "\\RIGHTCIRCLE" "wasysym" # RIGHT HALF BLACK CIRCLE
 0x25d8 "{\\ascii\\BS}"            "ascii" "" # INVERSE BULLET
 0x25d9 "{\\ascii\\LF}"            "ascii" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
@@ -1608,9 +1611,9 @@
 0x2605 "\\FiveStar"               "bbding" "" # BLACK STAR
 0x2606 "\\FiveStarOpen"           "bbding" "" # WHITE STAR
 0x260e "\\Telefon"                "marvosym" "" # BLACK TELEPHON
-0x2610 "\\Square"                 "wasysym" "" # BALLOT BOX
-0x2611 "\\CheckedBox"             "wasysym" "" # BALLOT BOX WITH CHECK
-0x2612 "\\XBox"                   "wasysym" "" # BALLOT BOX WITH X
+0x2610 "\\Square"                 "wasysym" "" "\\Square" "wasysym" # BALLOT BOX
+0x2611 "\\CheckedBox"             "wasysym" "" "\\CheckedBox" "wasysym" # BALLOT BOX WITH CHECK
+0x2612 "\\XBox"                   "wasysym" "" "\\XBox" "wasysym" # BALLOT BOX WITH X
 0x261a "\\HandCuffLeft"           "bbding" "" # BLACK LEFT POINTING INDEX
 0x261b "\\HandCuffRight"          "bbding" "" # BLACK RIGHT POINTING INDEX
 0x261c "\\HandLeft"               "bbding" "" # WHITE LEFT POINTING INDEX
@@ -1619,44 +1622,44 @@
 0x2623 "\\Biohazard"              "marvosym" "" # BIOHAZARD SIGN
 0x2625 "\\Ankh"                   "marvosym" "" # ANKH
 0x262f "\\Yinyang"                "marvosym" "" # YIN YANG
-0x2639 "\\frownie"                "wasysym" "" # WHITE FROWNING FACE
-0x263a "\\smiley"                 "wasysym" "" # WHITE SMILING FACE
-0x263b "\\blacksmiley"            "wasysym" "" # BLACK SMILING FACE
-0x263c "\\sun"                    "wasysym" "" # WHITE SUN WITH RAYS
-0x263d "\\rightmoon"              "wasysym" "" # FIRST QUARTER MOON
-0x263e "\\leftmoon"               "wasysym" "" # LAST QUARTER MOON
-0x263f "\\mercury"                "wasysym" "" # MERCURY
-0x2640 "\\female"                 "wasysym" "" # FEMALE SIGN
-0x2641 "\\earth"                  "wasysym" "" # EARTH
-0x2642 "\\male"                   "wasysym" "" # MALE SIGN
-0x2643 "\\jupiter"                "wasysym" "" # JUPITER
-0x2644 "\\saturn"                 "wasysym" "" # SATURN
-0x2645 "\\uranus"                 "wasysym" "" # URANUS
-0x2646 "\\neptune"                "wasysym" "" # NEPTUNE
-0x2647 "\\pluto"                  "wasysym" "" # PLUTO
-0x2648 "\\aries"                  "wasysym" "" # ARIES
-0x2649 "\\taurus"                 "wasysym" "" # TAURUS
-0x264a "\\gemini"                 "wasysym" "" # GEMINI
-0x264b "\\cancer"                 "wasysym" "" # CANCER
-0x264c "\\leo"                    "wasysym" "" # LEO
-0x264d "\\virgo"                  "wasysym" "" # VIRGO
-0x264e "\\libra"                  "wasysym" "" # LIBRA
-0x264f "\\scorpio"                "wasysym" "" # SCORPIO
-0x2650 "\\sagittarius"            "wasysym" "" # SAGITTARIUS
-0x2651 "\\capricornus"            "wasysym" "" # CAPRICORNUS
-0x2652 "\\aquarius"               "wasysym" "" # AQUARIUS
-0x2653 "\\pisces"                 "wasysym" "" # PISCES
-0x2660 "\\ensuremath{\\spadesuit}" "" "" # BLACK SPADE SUIT
-0x2661 "\\ensuremath{\\heartsuit}" "" "" # WHITE HEART SUIT
-0x2662 "\\ensuremath{\\diamondsuit}" "" "" # WHITE DIAMOND SUIT
-0x2663 "\\ensuremath{\\clubsuit}" "" "" # BLACK CLUB SUIT
-0x2664 "\\ensuremath{\\varspadesuit}" "txfonts" "" # WHITE SPADE SUIT
-0x2665 "\\ensuremath{\\varheartsuit}" "txfonts" "" # BLACK HEART SUIT
-0x2666 "\\ensuremath{\\vardiamondsuit}" "txfonts" "" # BLACK DIAMOND SUIT
-0x2667 "\\ensuremath{\\varclubsuit}" "txfonts" "" # WHITE CLUB SUIT
-0x2669 "\\quarternote"            "wasysym" "" # QUARTER NOTE
+0x2639 "\\frownie"                "wasysym" "" "\\frownie" "wasysym" # WHITE FROWNING FACE
+0x263a "\\smiley"                 "wasysym" "" "\\smiley" "wasysym" # WHITE SMILING FACE
+0x263b "\\blacksmiley"            "wasysym" "" "\\blacksmiley" "wasysym" # BLACK SMILING FACE
+0x263c "\\sun"                    "wasysym" "" "\\sun" "wasysym" # WHITE SUN WITH RAYS
+0x263d "\\rightmoon"              "wasysym" "" "\\rightmoon" "wasysym" # FIRST QUARTER MOON
+0x263e "\\leftmoon"               "wasysym" "" "\\leftmoon" "wasysym" # LAST QUARTER MOON
+0x263f "\\mercury"                "wasysym" "" "\\mercury" "wasysym" # MERCURY
+0x2640 "\\female"                 "wasysym" "" "\\female" "wasysym" # FEMALE SIGN
+0x2641 "\\earth"                  "wasysym" "" "\\earth" "wasysym" # EARTH
+0x2642 "\\male"                   "wasysym" "" "\\male" "wasysym" # MALE SIGN
+0x2643 "\\jupiter"                "wasysym" "" "\\jupiter" "wasysym" # JUPITER
+0x2644 "\\saturn"                 "wasysym" "" "\\saturn" "wasysym" # SATURN
+0x2645 "\\uranus"                 "wasysym" "" "\\uranus" "wasysym" # URANUS
+0x2646 "\\neptune"                "wasysym" "" "\\neptune" "wasysym" # NEPTUNE
+0x2647 "\\pluto"                  "wasysym" "" "\\pluto" "wasysym" # PLUTO
+0x2648 "\\aries"                  "wasysym" "" "\\aries" "wasysym" # ARIES
+0x2649 "\\taurus"                 "wasysym" "" "\\taurus" "wasysym" # TAURUS
+0x264a "\\gemini"                 "wasysym" "" "\\gemini" "wasysym" # GEMINI
+0x264b "\\cancer"                 "wasysym" "" "\\cancer" "wasysym" # CANCER
+0x264c "\\leo"                    "wasysym" "" "\\leo" "wasysym" # LEO
+0x264d "\\virgo"                  "wasysym" "" "\\virgo" "wasysym" # VIRGO
+0x264e "\\libra"                  "wasysym" "" "\\libra" "wasysym" # LIBRA
+0x264f "\\scorpio"                "wasysym" "" "\\scorpio" "wasysym" # SCORPIO
+0x2650 "\\sagittarius"            "wasysym" "" "\\sagittarius" "wasysym" # SAGITTARIUS
+0x2651 "\\capricornus"            "wasysym" "" "\\capricornus" "wasysym" # CAPRICORNUS
+0x2652 "\\aquarius"               "wasysym" "" "\\aquarius" "wasysym" # AQUARIUS
+0x2653 "\\pisces"                 "wasysym" "" "\\pisces" "wasysym" # PISCES
+0x2660 ""                         "" "" "\\spadesuit" # BLACK SPADE SUIT
+0x2661 ""                         "" "" "\\heartsuit" # WHITE HEART SUIT
+0x2662 ""                         "" "" "\\diamondsuit" # WHITE DIAMOND SUIT
+0x2663 ""                         "" "" "\\clubsuit" # BLACK CLUB SUIT
+0x2664 ""                         "" "" "\\varspadesuit" "txfonts" # WHITE SPADE SUIT
+0x2665 ""                         "" "" "\\varheartsuit" "txfonts" # BLACK HEART SUIT
+0x2666 ""                         "" "" "\\vardiamondsuit" "txfonts" # BLACK DIAMOND SUIT
+0x2667 ""                         "" "" "\\varclubsuit" "txfonts" # WHITE CLUB SUIT
+0x2669 "\\quarternote"            "wasysym" "" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
-0x266b "\\twonotes"               "wasysym" "" # BEAMED EIGHTH NOTES
+0x266b "\\twonotes"               "wasysym" "" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
 0x26a2 "\\FemaleFemale"           "marvosym" "" # DOUBLED FEMALE SIGN
 0x26a3 "\\MaleMale"               "marvosym" "" # DOUBLED MALE SIGN
 0x26a4 "\\FemaleMale"             "marvosym" "" # INTERLOCKED FEMALE AND MALE SIGN

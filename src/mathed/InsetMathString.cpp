@@ -106,12 +106,6 @@ void InsetMathString::write(WriteStream & os) const
 		return;
 	}
 
-	// We need the latex macros defined in the unicodesymbols file.
-	// As they do not depend on the encoding, simply use the first
-	// available encoding.
-	Encodings::const_iterator encit = encodings.begin();
-	bool can_encode = encit != encodings.end();
-
 	docstring::const_iterator cit = str_.begin();
 	docstring::const_iterator end = str_.end();
 
@@ -119,20 +113,19 @@ void InsetMathString::write(WriteStream & os) const
 	while (cit != end) {
 		char_type const c = *cit;
 		try {
-			if (c < 0x80) {
+			docstring command(1, c);
+			if (c < 0x80 || Encodings::latexMathChar(c, command)) {
 				if (in_lyxmathsym) {
 					os << '}';
 					in_lyxmathsym = false;
 				}
-				os << docstring(1, c);
-			} else if (can_encode) {
+				os << command;
+			} else {
 				if (!in_lyxmathsym) {
 					os << "\\lyxmathsym{";
 					in_lyxmathsym = true;
 				}
-				os << encit->latexChar(c, true);
-			} else {
-				throw EncodingException(c);
+				os << command;
 			}
 		} catch (EncodingException & e) {
 			if (os.dryrun()) {

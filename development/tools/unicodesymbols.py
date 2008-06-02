@@ -76,7 +76,7 @@ def complete(lines, start, stop):
                     combining = "combining"
                 else:
                     combining = ""
-                line = [i, '#0x%04x ""                         "" "%s" # %s' % (i, combining, name)]
+                line = [i, '#0x%04x ""                         "" "%s" "" "" # %s' % (i, combining, name)]
                 lines.insert(l, line)
 #                print lines[l]
                 l = l + 1

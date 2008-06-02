@@ -63,12 +63,12 @@ public:
 	/**
 	 * Convert \p c to something that LaTeX can understand.
 	 * This is either the character itself (if it is representable
-	 * in this encoding and \p for_mathed is false), or a LaTeX macro.
+	 * in this encoding), or a LaTeX macro.
 	 * If the character is not representable in this encoding, but no
 	 * LaTeX macro is known, a warning is given of lyxerr, and the
 	 * character is returned.
 	 */
-	docstring latexChar(char_type c, bool for_mathed = false) const;
+	docstring latexChar(char_type c) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
@@ -167,13 +167,18 @@ public:
 	 */
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
 	/**
+	 * Convert \p c to something that LaTeX can understand in math mode.
+	 * \return whether \p command is a math mode command
+	 */
+	static bool latexMathChar(char_type c, docstring & command);
+	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.
 	 * This does not depend on the used encoding, since the inputenc
 	 * package only maps the code point \p c to a command, it does not
 	 * make this command available.
 	 */
-	static void validate(char_type c, LaTeXFeatures & features);
+	static void validate(char_type c, LaTeXFeatures & features, bool for_mathed = false);
 
 private:
 	///

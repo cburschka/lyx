@@ -222,15 +222,22 @@ char_type const arabic_end = 0x06cc;
 
 /// Information about a single UCS4 character
 struct CharInfo {
-	/// LaTeX command for this character
-	docstring command;
-	/// Needed LaTeX preamble (or feature)
-	string preamble;
+	/// LaTeX command (text mode) for this character
+	docstring textcommand;
+	/// LaTeX command (math mode) for this character
+	docstring mathcommand;
+	/// Needed LaTeX preamble (or feature) for text mode
+	string textpreamble;
+	/// Needed LaTeX preamble (or feature) for math mode
+	string mathpreamble;
 	/// Is this a combining character?
 	bool combining;
-	/// Is \c preamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool feature;
+	bool textfeature;
+	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool mathfeature;
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
 	bool force;
@@ -323,23 +330,24 @@ void Encoding::init() const
 }
 
 
-docstring Encoding::latexChar(char_type c, bool for_mathed) const
+docstring Encoding::latexChar(char_type c) const
 {
 	// assure the used encoding is properly initialized
 	init();
 
-	if (!for_mathed) {
-		if (c < start_encodable_)
-			return docstring(1, c);
-		if (encodable_.find(c) != encodable_.end())
-			return docstring(1, c);
-	}
+	if (c < start_encodable_)
+		return docstring(1, c);
+	if (encodable_.find(c) != encodable_.end())
+		return docstring(1, c);
 
 	// c cannot (or should not) be encoded in this encoding
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it == unicodesymbols.end())
 		throw EncodingException(c);
-	return it->second.command;
+	// at least one of mathcommand and textcommand is nonempty
+	if (it->second.textcommand.empty())
+		return "\\ensuremath{" + it->second.mathcommand + '}';
+	return it->second.textcommand;
 }
 
 
@@ -362,14 +370,48 @@ vector<char_type> Encoding::symbolsList() const
 }
 
 
-void Encodings::validate(char_type c, LaTeXFeatures & features)
+bool Encodings::latexMathChar(char_type c, docstring & command)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-	if (it != unicodesymbols.end() && !it->second.preamble.empty()) {
-		if (it->second.feature)
-			features.require(it->second.preamble);
-		else
-			features.addPreambleSnippet(it->second.preamble);
+	if (it == unicodesymbols.end())
+		throw EncodingException(c);
+	if (it->second.mathcommand.empty()) {
+		if (it->second.textcommand.empty())
+			throw EncodingException(c);
+		command = it->second.textcommand;
+		return false;
+	}
+	command = it->second.mathcommand;
+	return true;
+}
+
+
+void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
+{
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it != unicodesymbols.end()) {
+		// at least one of mathcommand and textcommand is nonempty
+		bool const use_math = (for_mathed && !it->second.mathcommand.empty()) ||
+		                      (!for_mathed && it->second.textcommand.empty());
+		if (use_math) {
+			if (!it->second.mathpreamble.empty()) {
+				if (it->second.mathfeature)
+					features.require(it->second.mathpreamble);
+				else
+					features.addPreambleSnippet(it->second.mathpreamble);
+			}
+		} else {
+			if (!it->second.textpreamble.empty()) {
+				if (it->second.textfeature)
+					features.require(it->second.textpreamble);
+				else
+					features.addPreambleSnippet(it->second.textpreamble);
+			}
+			if (for_mathed) {
+				features.require("relsize");
+				features.require("lyxmathsym");
+			}
+		}
 	}
 }
 
@@ -427,14 +469,14 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 	if (it == unicodesymbols.end())
 		return false;
 
-	if (it->second.preamble != "textgreek" && it->second.preamble != "textcyr")
+	if (it->second.textpreamble != "textgreek" && it->second.textpreamble != "textcyr")
 		return false;
 
 	if (preamble.empty()) {
-		preamble = it->second.preamble;
+		preamble = it->second.textpreamble;
 		return true;
 	}
-	return it->second.preamble == preamble;
+	return it->second.textpreamble == preamble;
 }
 
 
@@ -471,13 +513,17 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 	// constructor depends on it.
 	Lexer symbolslex;
 	symbolslex.setFile(symbolsfile);
+	bool getNextToken = true;
 	while (symbolslex.isOK()) {
 		char_type symbol;
 		CharInfo info;
 		string flags;
 
-		if (!symbolslex.next(true))
-			break;
+		if (getNextToken) {
+			if (!symbolslex.next(true))
+				break;
+		} else
+			getNextToken = true;
 
 		istringstream is(symbolslex.getString());
 		// reading symbol directly does not work if
@@ -489,16 +535,16 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 
 		if (!symbolslex.next(true))
 			break;
-		info.command = symbolslex.getDocString();
+		info.textcommand = symbolslex.getDocString();
 		if (!symbolslex.next(true))
 			break;
-		info.preamble = symbolslex.getString();
+		info.textpreamble = symbolslex.getString();
 		if (!symbolslex.next(true))
 			break;
 		flags = symbolslex.getString();
 
 		info.combining = false;
-		info.feature = false;
+		info.textfeature = false;
 		info.force = false;
 		while (!flags.empty()) {
 			string flag;
@@ -513,14 +559,48 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				       << hex << symbol << dec
 				       << "'." << endl;
 		}
+		// mathcommand and mathpreamble have been added for 1.6.0.
+		// make them optional so that old files still work.
+		int const lineno = symbolslex.lineNumber();
+		bool breakout = false;
+		if (symbolslex.next(true)) {
+			if (symbolslex.lineNumber() != lineno) {
+				// line in old format without mathcommand and mathpreamble
+				getNextToken = false;
+			} else {
+				info.mathcommand = symbolslex.getDocString();
+				if (symbolslex.next(true)) {
+					if (symbolslex.lineNumber() != lineno) {
+						// line in new format with mathcommand only
+						getNextToken = false;
+					} else {
+						// line in new format with mathcommand and mathpreamble
+						info.mathpreamble = symbolslex.getString();
+					}
+				} else
+					breakout = true;
+			}
+		} else {
+			breakout = true;
+		}
 
-		if (!info.preamble.empty())
-			info.feature = info.preamble[0] != '\\';
+		if (!info.textpreamble.empty())
+			info.textfeature = info.textpreamble[0] != '\\';
+		if (!info.mathpreamble.empty())
+			info.mathfeature = info.mathpreamble[0] != '\\';
 
 		LYXERR(Debug::INFO, "Read unicode symbol " << symbol << " '"
-			<< to_utf8(info.command) << "' '" << info.preamble
-			<< "' " << info.combining << ' ' << info.feature);
-		unicodesymbols[symbol] = info;
+			<< to_utf8(info.textcommand) << "' '" << info.textpreamble
+			<< "' " << info.combining << ' ' << info.textfeature
+			<< " '" << to_utf8(info.mathcommand) << "' '"
+			<< info.mathpreamble << "' " << info.mathfeature);
+
+		// we assume that at least one command is nonempty when using unicodesymbols
+		if (!info.textcommand.empty() || !info.mathcommand.empty())
+			unicodesymbols[symbol] = info;
+
+		if (breakout)
+			break;
 	}
 
 	// Now read the encodings

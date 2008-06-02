@@ -139,11 +139,8 @@ void InsetMathChar::write(WriteStream & os) const
 
 void InsetMathChar::validate(LaTeXFeatures & features) const
 {
-	if (char_ >= 0x80) {
-		encodings.validate(char_, features);
-		features.require("relsize");
-		features.require("lyxmathsym");
-	}
+	if (char_ >= 0x80)
+		encodings.validate(char_, features, true);
 }
 
 
