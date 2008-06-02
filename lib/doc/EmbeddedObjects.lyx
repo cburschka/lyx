@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 334
+#LyX 1.6.0beta2 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrbook
@@ -426,7 +426,7 @@ Graphics
 \family default
  Here you can choose an image file and adjust its appearance in the output.
  The available units for the image size are explained in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -502,11 +502,11 @@ Clipping
  
 \family sans
 Get
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 from
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 File
@@ -515,15 +515,15 @@ File
  The option 
 \family sans
 Clip
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 to
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bounding
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box
@@ -537,7 +537,7 @@ box
 
 \family sans
 Extra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 options
@@ -545,7 +545,7 @@ options
  In this tab you can modify the appearance of the image within LyX and set
  the image to be a subfigure of a figure float with an own caption.
  Subfigures are explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -566,7 +566,7 @@ reference "sec:Figure-Floats"
  The option 
 \family sans
 Draft
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mode
@@ -579,25 +579,25 @@ mode
 The 
 \family sans
 Don't
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 unzip
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 on
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 export
 \family default
  option only affects zipped EPS-graphics, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -612,7 +612,7 @@ x.eps.gz
 
 Zipped EPS-graphics are useful to save disk space when you choose PostScript
  as output format, see appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -669,7 +669,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Image formats are explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -753,7 +753,7 @@ Figures ! Floats
 
 \begin_layout Standard
 For general explanations about floats, have a look at section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -786,7 +786,7 @@ Figure
 \end_inset
 
 Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 #:
@@ -795,7 +795,7 @@ Figure
 
  (# is the actual number).
  You can insert the image above the caption, like in Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -806,7 +806,7 @@ reference "fig:kill-plat"
 \end_inset
 
  or below the caption, like in Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -818,7 +818,7 @@ reference "fig:escher"
 
 .
  More about the caption placement is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -929,7 +929,7 @@ References ! to Figures
 \end_inset
 
 Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -966,7 +966,7 @@ Label
 \family sans
 Insert\SpecialChar \menuseparator
 Cross
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 reference
@@ -1003,7 +1003,7 @@ above
 \end_inset
 
 Referencing is explained in detail in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1019,41 +1019,10 @@ reference "sec:Referencing-Floats"
 \begin_layout Standard
 Normally only one image is inserted to a figure float, but sometimes you
  might want to use two images with separate subcaptions.
- This can be set in the tab 
-\family sans
-Extra
-\begin_inset Space ~
-\end_inset
-
-options
-\family default
- of the graphics dialog.
- Choose there the option 
-\family sans
-Subfigure
-\family default
- and enter the subcaption for the image in the caption field.
+ This can be done by inserting image floats into existing image floats.
  Note that only the main caption of the float is added to the List of Figures.
-\begin_inset Newline newline
-\end_inset
-
-Referencing subfigures is explained in section
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referencing-Subfigures"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Figure
-\begin_inset Space ~
+ Figure
+\begin_inset space ~
 \end_inset
 
 
@@ -1065,6 +1034,21 @@ reference "fig:Two-distorted-images"
 
  is an example of a figure float with two images set side by side.
  You can also set the images one below the other.
+ Figure
+\begin_inset space ~
+\end_inset
+
+?? and ?? are the subfigures.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fix this when bug 4910 is fixed!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1074,7 +1058,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -1087,7 +1071,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Undefinable structure
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Undefinable-structure"
+
+\end_inset
+
+Undefinable structure.
 \end_layout
 
 \end_inset
@@ -1109,7 +1099,7 @@ Undefinable structure
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -1122,7 +1112,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-Platypus"
 
+\end_inset
+
+A Platypus.
 \end_layout
 
 \end_inset
@@ -1145,7 +1141,7 @@ status open
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -1208,7 +1204,7 @@ Figures ! Image Formats
 \begin_layout Standard
 You can insert images in any known file format.
  But as explained in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1228,7 +1224,7 @@ Imagemagick
  you can use only the image formats that can directly be embedded in the
  output file format.
  The output file formats are explained in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1247,7 +1243,7 @@ Similar to fonts there are two types of image formats:
 
 \begin_layout Description
 Bitmap
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 images consist of pixel values, often in a compressed form.
@@ -1425,7 +1421,7 @@ status collapsed
 
 \begin_layout Description
 Vector
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 images consist of vectors and can therefore be scaled to any size without
@@ -1969,7 +1965,7 @@ contents
 
 \family sans
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Settings
@@ -1980,7 +1976,7 @@ Settings
  the current row.
  A given width will allow the cell to have line breaks and multiple paragraphs
  of text, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1998,7 +1994,7 @@ reference "sub:Multiple-Lines-in"
 
 Furthermore, you can mark one or multiple cells of one row as a multicolumn
  cell, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2038,7 +2034,7 @@ Note:
 
 It is also possible to enter a LaTeX-argument which is needed for special
  table formattings, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2072,7 +2068,7 @@ Using the style option
 Formal
 \family default
  will convert the table to a formal table as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2087,7 +2083,7 @@ reference "sec:Formal-Tables"
 \end_inset
 
 You can also add here space to table rows as decribed in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2119,7 +2115,7 @@ longtable
 
  that can run over several pages.
  Section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2459,7 +2455,7 @@ Table ! Floats
 
 \begin_layout Standard
 For general explanations about floats, have a look at section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2721,7 +2717,7 @@ The float appears as a collapsible box with a caption that has the label
 \end_inset
 
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 #:
@@ -2734,7 +2730,7 @@ Table
 
 \begin_layout Standard
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2788,7 +2784,7 @@ status collapsed
 
 \begin_layout Plain Layout
 For more information have a look at section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2818,7 +2814,7 @@ The package
 caption
 \series default
 , which is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2860,7 +2856,7 @@ Label
 \family sans
 Insert\SpecialChar \menuseparator
 Cross
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 reference
@@ -2878,7 +2874,7 @@ reference
 \end_inset
 
 Referencing is explained in detail in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2926,11 +2922,11 @@ Table ! Longtables
 If the table is too long to fit on one page, you can use the option 
 \family sans
 Use
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 long
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 table
@@ -2953,7 +2949,7 @@ Header
  except for the first page, if 
 \family sans
 First
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 header
@@ -2966,7 +2962,7 @@ header
 
 \family sans
 First
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 header
@@ -2985,7 +2981,7 @@ Footer
  except for the last page, if 
 \family sans
 Last
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 footer
@@ -2997,7 +2993,7 @@ footer
 
 \family sans
 Last
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 footer
@@ -3022,11 +3018,11 @@ Header,
  
 \family sans
 First
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 header, Footer, Last
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 footer.
@@ -5203,7 +5199,7 @@ status collapsed
 
 \begin_layout Plain Layout
 See greyed-out note in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -5247,7 +5243,7 @@ Footnotes can be inserted to every longtable cell.
  They appear at the bottom of the page where the table cell with the footnote
  appears.
  Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -5306,7 +5302,7 @@ LTleft}{value}
 
 \begin_layout Standard
 Where the value can have any of the units listed in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -5348,7 +5344,7 @@ The following longtable was left-aligned by setting
 LTleft
 \series default
  to 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -6065,11 +6061,11 @@ Note:
  a caption for it.
  For this reason you could have the case that e.g.
  Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2.4 follows on Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2.1 in the list of tables if there are two longtables without captions.
@@ -6475,7 +6471,7 @@ tab:
 
 \begin_layout Standard
 This is a reference to Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6505,7 +6501,7 @@ LaTeX-packages ! caption
 \end_inset
 
 , see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6541,7 +6537,7 @@ LTcapwidth
 \series default
 .
  Its default value is 4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in.
@@ -6561,7 +6557,7 @@ LTcapwidth}{width}
 
 \begin_layout Standard
 where the width could have one of the units listed in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6928,15 +6924,15 @@ LTcapwidth}{5cm}
 
 \begin_layout Plain Layout
 long full title with width set to 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm long full title with width set to 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm long full title with width set to 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -6945,15 +6941,15 @@ status open
 
 \begin_layout Plain Layout
 caption with width
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 =
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -7293,7 +7289,7 @@ LaTeX-packages ! caption
 
  is used, as in this document, the full page width is used for the caption
  when you use the default value of 4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in for 
@@ -7304,16 +7300,16 @@ LTcapwidth
 \series default
 .
  To get in this case exactly a 4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in wide caption, you can either use a value slightly different from 4.0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in, e.g.
  3.99
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in, or the LaTeX-command 
@@ -7370,7 +7366,7 @@ instead of LyX's caption box.
  The label to reference the table is inserted into the caption of the first
  header.
  Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -9430,7 +9426,7 @@ Behind the the
 \series default
  characters like the number of table columns before the current column.
  In Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -10972,7 +10968,7 @@ Adjusting a fixed width for a column, enables to enter text as a paragraph
 
 \begin_layout Standard
 To produce Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -10984,13 +10980,13 @@ reference "tab:Table-with-multiple"
 
 , create a 3×3 table, mark the first cell and right-click on it.
  In the appearing table dialog we set a cell width of 2.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm and choose centered for the vertical and horizontal alignment.
  The vertical alignment is used for all cells of the row.
  As our text is smaller than than 2.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm, only one line will appear.
@@ -11009,13 +11005,13 @@ If you have a long word in a cell with a fixed width, it cannot be hyphenated
  Therefore you need to insert something, to make the word not being the
  first entry.
  So add a horizontal space of 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt before the word.
  As the space is zero, it doesn't change the output.
  Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11054,7 +11050,7 @@ Table with and without hyphenation
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -11156,7 +11152,7 @@ i
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -11171,7 +11167,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 0pt
 \end_inset
 
@@ -11262,7 +11258,7 @@ i
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -11657,7 +11653,7 @@ i
 
 \begin_layout Standard
 To create for example Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11678,23 +11674,23 @@ multicolumn
 centered alignment
 \emph default
  and a width of 2.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm in the table dialog.
  The spanned columns should have exactly half the width of the multicolumn
  cell, so that you would adjust a width of 1.25
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm for the first column.
  The second column has then automatically a width of 1.25
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm (multicolumn width - width of first column).
  This was done for Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11862,7 +11858,7 @@ You can see that the first column has not the half width of the multicolumn
 
  because a cell is always a bit larger than its given width.
  Appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12293,7 +12289,7 @@ multirow{2}{2.5cm}{
 as TeX-Code.
  According to the command parameters the multirow spans now two rows and
  has a width of 2.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm.
@@ -12384,7 +12380,7 @@ Table ! Formal
 
 \begin_layout Standard
 Tables are often typeset in books similar to Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12824,7 +12820,7 @@ Spaces to table rows can be added using the
 Borders
 \family default
  tab of the table dialog as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12845,11 +12841,11 @@ In contrary to normal tables, formal tables have no vertical table lines.
 \end_inset
 
 The first and the last table line have a default width of 0.08
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em while the other lines have a default width of 0.05
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em.
@@ -12906,7 +12902,7 @@ midrule
 \series default
 .
  You can use all units listed in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12962,7 +12958,7 @@ s can manually be created by inserting the command as TeX-Code as first
 
 \begin_layout Standard
 The default for the width is 0.03
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em.
@@ -12984,13 +12980,13 @@ r{trimwidth}
 l{2pt}
 \emph default
  means that the line is trimmed from its left end by 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
  If you don't specify the trimwidth the lines are trimmed by the default
  of 0.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em.
@@ -13001,7 +12997,7 @@ em.
 \end_inset
 
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13055,7 +13051,7 @@ You might want to have overlapping
 cmidrule
 \series default
 s like in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13079,7 +13075,7 @@ morecmidrules
 
 \begin_layout Standard
 The command that was used for the second row of Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13219,7 +13215,7 @@ System
 
 \begin_layout Plain Layout
 Medipix
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 1
@@ -13232,7 +13228,7 @@ Medipix
 
 \begin_layout Plain Layout
 Medipix
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 2
@@ -13625,7 +13621,7 @@ Table ! Alignment
 \begin_layout Standard
 To align tables vertically in a text line the table must be inside a box.
  The box can then be vertically aligned as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13645,7 +13641,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Minipages are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13661,7 +13657,7 @@ reference "sec:Minipages"
 \end_inset
 
  box that has a width of 15
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 col%:
@@ -14320,7 +14316,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Raiseboxes are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14615,14 +14611,14 @@ If you only need colored text, mark the cells and choose a color in the
 \family sans
 Edit\SpecialChar \menuseparator
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
 \family default
 .
  This was used to create Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14720,7 +14716,7 @@ inside the command
 >{}
 \series default
  is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14816,11 +14812,11 @@ and the color values are comma separated numbers between 0 and 1 describing
 
 \begin_layout Standard
 You can e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 define the color "
@@ -14894,7 +14890,7 @@ To color characters in the table, mark the cells and use the LyX menu
 \family sans
 Edit\SpecialChar \menuseparator
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
@@ -14930,7 +14926,7 @@ Note:
 
 \begin_layout Standard
 To create Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14991,7 +14987,7 @@ The characters could now be colored using the menu
 \family sans
 Edit\SpecialChar \menuseparator
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
@@ -15267,7 +15263,7 @@ Color ! for Table Lines
 
 \begin_layout Standard
 As described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -15286,7 +15282,7 @@ arrayrulewidth
 \series default
 .
  It is set to 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt for all tables of this section.
@@ -15310,7 +15306,7 @@ arrayrulewidth}{1.5pt}
 \begin_layout Standard
 To color vertical lines for example with green, create the following column
  format in the document preamble, according to the description in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -15337,7 +15333,7 @@ vline}}
 
 \begin_layout Standard
 For Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -15499,7 +15495,7 @@ sd
 \end_inset
 
 To color horizontal lines for example with red, like in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -15743,7 +15739,7 @@ myHlineC}
 
 \begin_layout Standard
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -15982,11 +15978,11 @@ Borders
 
 \begin_layout Description
 Top
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 row will add space above the characters of the table row.
@@ -15996,7 +15992,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Formal tables are explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16012,7 +16008,7 @@ reference "sec:Formal-Tables"
 \end_inset
 
  LyX will insert as default 0.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em space.
@@ -16026,12 +16022,12 @@ em space.
 \end_inset
 
 
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 0pt
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -16056,7 +16052,7 @@ A
 
 \begin_layout Plain Layout
 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space top of row
@@ -16081,11 +16077,11 @@ C
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 0pt
 \end_inset
 
@@ -16103,20 +16099,20 @@ So inserting space to the top of row for normal tables is only useful when
 
 \begin_layout Description
 Bottom
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 row will add space below the characters of the table row.
  If the table is a formal table LyX will insert as default 0.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em space, for normal tables the default size is 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -16124,12 +16120,12 @@ pt.
 
 \begin_layout Description
 Between
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rows adds space between the current and the following row.
  If the table is a formal table LyX will insert as default 0.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em space.
@@ -16143,12 +16139,12 @@ em space.
 \end_inset
 
 
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 0pt
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -16176,7 +16172,7 @@ A
 \end_inset
 
  3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space between row 
@@ -16198,7 +16194,7 @@ mm space between row
 \end_inset
 
  3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space between row 
@@ -16216,11 +16212,11 @@ mm space between row
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 0pt
 \end_inset
 
@@ -16313,15 +16309,15 @@ Table Customization ! Special Cell Alignment
 \begin_layout Standard
 Sometimes it looks better when the cell entries of a column are aligned
  with a special character, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 with the decimal separator as in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16477,7 +16473,7 @@ This table was created with a 4×2 table.
 
 \begin_layout Standard
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16599,7 +16595,7 @@ relations
 
 \begin_layout Plain Layout
 24
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bottles
@@ -16671,7 +16667,7 @@ bottles
 
 \begin_layout Plain Layout
 768
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Pixels
@@ -16743,7 +16739,7 @@ Pixels
 
 \begin_layout Plain Layout
 6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -16834,7 +16830,7 @@ LaTeX-packages ! dcolumn
  that provides table cell alignments.
  But this unfortunately treats the cell entries as math and doesn't allow
  formulas in table cells: The first column of Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16849,7 +16845,7 @@ reference "tab:Several-table-cell"
 dcolumn
 \series default
  like the first column in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16861,7 +16857,7 @@ reference "tab:Alignments-when"
 
  and only with some tricks like the expected.
  The alignment of the second and third column of Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -16947,7 +16943,7 @@ units
 
 \begin_layout Plain Layout
 12x24
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bottles
@@ -16960,7 +16956,7 @@ bottles
 
 \begin_layout Plain Layout
 12x24
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -17005,7 +17001,7 @@ times
 
 \begin_layout Plain Layout
 1024x768
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Pixels
@@ -17018,7 +17014,7 @@ Pixels
 
 \begin_layout Plain Layout
 1024x768
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -17063,7 +17059,7 @@ times
 
 \begin_layout Plain Layout
 32x6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -17076,7 +17072,7 @@ cm
 
 \begin_layout Plain Layout
 32x6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -17150,7 +17146,7 @@ Table Customization ! Cell/Column Format
 
 \begin_layout Standard
 Calculating the needed width for spanned columns like in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17236,7 +17232,7 @@ where
 hspace{0pt}
 \series default
  avoids the problem of hyphenating the first word, as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17398,7 +17394,7 @@ as LaTeX-argument.
 
 \begin_layout Standard
 To create Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17632,11 +17628,11 @@ arrayrulewidth
 \series default
 .
  To set for example a line thickness of 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt, like in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17669,7 +17665,7 @@ in TeX-Code before the table or table float.
 arrayrulewidth
 \series default
  to 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt in TeX-Code behind the table or table float.
@@ -17707,7 +17703,7 @@ name "tab:Table-with-1.5"
 \end_inset
 
 Table with 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt thick lines
@@ -17845,11 +17841,11 @@ arrayrulewidth}{0.4pt}
 \end_inset
 
 To set the line thickness to 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt only for horizontal lines, like in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17988,7 +17984,7 @@ name "tab:Table-with-horizontal"
 \end_inset
 
 Table with 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt thick horizontal lines
@@ -18128,12 +18124,12 @@ myHline}
 \end_inset
 
 To set the line thickness to 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt only for vertical lines, create the following column format in the document
  preamble, according to the description in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18158,7 +18154,7 @@ vrule width 1.5pt}}
 
 \begin_layout Standard
 For Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18208,7 +18204,7 @@ name "tab:Table-with-vertical"
 \end_inset
 
 Table with 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt thick vertical lines
@@ -18773,7 +18769,7 @@ as first element of the first cell in the row of the multicolumn.
 
 \begin_layout Standard
 Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18843,7 +18839,7 @@ LaTeX-packages ! colortbl
 \end_inset
 
  that is used for colored tables in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18977,7 +18973,7 @@ Footnotes
  and 
 \family sans
 Margin
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Notes
@@ -18994,7 +18990,7 @@ Floats allow a high quality layout.
 , every float can be referenced in the text.
  Floats are therefore numbered.
  Referencing is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19025,7 +19021,7 @@ Caption
  The image or table is inserted above or below the caption in a separate
  paragraph within the float.
  More about the caption placement is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19065,7 +19061,7 @@ Float Types
 
 \begin_layout Standard
 Besides figure and table floats that are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19089,11 +19085,11 @@ Algorithm
  and 
 \series bold
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wrap
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Float
@@ -19187,7 +19183,7 @@ Userguide
 \emph default
 .
  Algorithm
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19198,7 +19194,7 @@ reference "alg:Example-Algorithm-float"
 \end_inset
 
  is an example of an algorithm float where -4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm vertical space was added at the end of the float to have the bottom rule
@@ -19219,7 +19215,7 @@ The float label is not automatically translated into the document language.
 
 \backslash
 floatname{algorithm}{your
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 name}
@@ -19229,7 +19225,7 @@ name}
 where 
 \family sans
 your
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 name
@@ -19254,11 +19250,11 @@ To insert the list of algorithms you can in this case not use the menu
 \family sans
 Insert\SpecialChar \menuseparator
 List
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 /
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 TOC\SpecialChar \menuseparator
@@ -19274,7 +19270,7 @@ List of Algorithms
 
 \backslash
 listof{algorithm}{your
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 name}
@@ -19284,7 +19280,7 @@ name}
 where 
 \family sans
 your
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 name
@@ -19336,7 +19332,7 @@ numberwithin
 , set in the tab 
 \family sans
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -19344,15 +19340,15 @@ Options
  in the document settings the option 
 \family sans
 Use
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 AMS
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 package
@@ -19442,11 +19438,11 @@ wrap
 Insert\SpecialChar \menuseparator
 Floats\SpecialChar \menuseparator
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wrap
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Float
@@ -19530,7 +19526,7 @@ status collapsed
 Installing a LaTeX-package is explained it in the 
 \emph on
 LaTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Configuration
@@ -19543,7 +19539,7 @@ Configuration
  The width and placement of the float is adjusted by right-clicking on the
  float box.
  Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19554,7 +19550,7 @@ reference "fig:This-is-a"
 \end_inset
 
  is an example text wrap float with a width of 40
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 col%.
@@ -19563,7 +19559,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Available units are explained in appendix
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19612,15 +19608,15 @@ status open
 Note:
 \series default
  Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 wrap float floats are fragile! E.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 having a figure too close to the bottom of the page can mess things up in
@@ -19772,7 +19768,7 @@ numberwithin
 , set in the tab 
 \family sans
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -19780,15 +19776,15 @@ Options
  in the document settings the option 
 \family sans
 Use
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 AMS
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 package
@@ -19798,7 +19794,7 @@ package
 
 \begin_layout Standard
 Please also have a look at section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19868,11 +19864,11 @@ Label
  will be inserted and the label window pops up asking for the label text.
  LyX offers as text the first words of the caption with a prefix.
  The prefix depends on the float type, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 for figure floats the prefix will be "
@@ -19932,18 +19928,18 @@ You can change labels at any time by clicking on the label box.
 The button 
 \family sans
 Go
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 to
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Label
 \family default
  in the cross-reference window sets the cursor before the referred label.
  The button text changes then to Go
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Back and you can use it to set the cursor back to the cross-reference.
@@ -20010,7 +20006,7 @@ reference "eq:Wgn"
 
 \begin_layout Description
 <page>: prints the page number: Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -20025,11 +20021,11 @@ reference "fig:Two-distorted-images"
 
 \begin_layout Description
 on
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <page>: prints the text "on page" and the page number: 
@@ -20044,15 +20040,15 @@ reference "fig:Two-distorted-images"
 
 \begin_layout Description
 <reference>
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 on
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <page>: prints the float number, the text "on page", and the page number:
@@ -20068,7 +20064,7 @@ reference "fig:Two-distorted-images"
 
 \begin_layout Description
 Formatted
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 reference: prints a self defined cross-reference format.
@@ -20097,11 +20093,11 @@ prettyref
 Note that the style <page> won't print the page number if the label is on
  the previous, the same, or the next page.
  You will e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 see the text 
@@ -20131,76 +20127,6 @@ e box.
 \end_layout
 
 \begin_layout Subsection
-Referencing Subfigures
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Referencing-Subfigures"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-References ! to Subfigures
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Currently referencing subfigures is not supported by LyX, so you have to
- use LaTeX-commands.
- The label is the created with the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-label{fig:YourLabelName}
-\end_layout
-
-\begin_layout Standard
-that is directly inserted into the subfigure caption field.
- To reference the label add this command in TeX-Code
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-ref{fig:YourLabelName}
-\end_layout
-
-\begin_layout Standard
-to the position in your document where the reference should be placed.
- Here is a reference to a subfigure: Subfigure
-\begin_inset Space ~
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ref{fig:Platypus}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
 Automatic Reference Naming
 \begin_inset Index
 status collapsed
@@ -20222,11 +20148,11 @@ hyperref
  provides a very useful feature that cross-references automatically include
  the name of the referenced floats (or text parts like sections).
  You save to write e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the name 
@@ -20326,13 +20252,13 @@ Note:
  in the 
 \family sans
 Formatted
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 reference
 \family default
  style, described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -20532,7 +20458,7 @@ Right-clicking on a float-box opens a dialog where you can alter the placement
 The option 
 \family sans
 Span
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 columns
@@ -20546,7 +20472,7 @@ columns
 The option 
 \family sans
 Rotate
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 sideways
@@ -20566,11 +20492,11 @@ You can use one ore more of the following options in the float dialog to
  set the placement for a particular float when you uncheck the option 
 \family sans
 Use
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 default
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 placement
@@ -20580,11 +20506,11 @@ placement
 
 \begin_layout Description
 Here
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 if
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 possible try to place the float on the position where it is inserted
@@ -20592,11 +20518,11 @@ possible try to place the float on the position where it is inserted
 
 \begin_layout Description
 Top
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page try to place the float on the top of the current page
@@ -20604,11 +20530,11 @@ page try to place the float on the top of the current page
 
 \begin_layout Description
 Bottom
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page try to place the float on the bottom of the current page
@@ -20616,11 +20542,11 @@ page try to place the float on the bottom of the current page
 
 \begin_layout Description
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 floats try to place the float on an own page 
@@ -20636,11 +20562,11 @@ always
  
 \family sans
 Here
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 if
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 possible
@@ -20648,11 +20574,11 @@ possible
 , then 
 \family sans
 Top
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page
@@ -20673,17 +20599,17 @@ By default, each option has its own rules:
 
 \family sans
 Top
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page
 \family default
  only floats occupying less than 70
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % of the page can be placed at the top of a page (
@@ -20700,17 +20626,17 @@ topfraction
 
 \family sans
 Bottom
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 page
 \family default
 : only floats occupying less than 30
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % of the page can be placed at the bottom of a page.
@@ -20728,17 +20654,17 @@ bottomfraction
 
 \family sans
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 floats
 \family default
 : only if more than 50
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % of the page are occupied by floats, several floats can be set together
@@ -20757,11 +20683,11 @@ If you don't like these rules, you can ignore them by using the additional
  option 
 \family sans
 Ignore
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 LaTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rules
@@ -20774,7 +20700,7 @@ You can also redefine the rules with LaTeX-commands that are given in parenthese
 s behind the rules description above.
  To increase for example the often too small default of the bottom-rule
  to 50
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % of the page, add this line to your document preamble:
@@ -20796,7 +20722,7 @@ Sometimes you might need, under all circumstances, a float to be placed
  For this case you can use the option 
 \family sans
 Here
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 definitely
@@ -20902,7 +20828,7 @@ LaTeX-packages ! endfloat
 
 \family sans
 [Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3.2 about here.]
@@ -20951,7 +20877,7 @@ Note: endfloat
 \series default
  doesn't provide an automatic translation for the text hint, you have to
  do this manually, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4 in 
@@ -21063,7 +20989,7 @@ Especially for wide tables you might have floats rotated.
  and use the option 
 \family sans
 Rotate
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 sideways
@@ -21090,7 +21016,7 @@ figuresright
 \begin_layout Standard
 Referencing rotated floats is the same like for normal floats, the caption
  format is also the same: Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21229,7 +21155,7 @@ Floats ! Side by side
 
 \begin_layout Standard
 To place floats side by side, like for Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21257,7 +21183,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Minipages are explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21273,11 +21199,11 @@ reference "sec:Minipages"
 \end_inset
 
  The width is set to 45
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -50
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 column% and the box alignment to 
@@ -21290,11 +21216,11 @@ Bottom
  The only difference is that the image unit 
 \family sans
 Column
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Width
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 %
@@ -21355,7 +21281,7 @@ Float on the left side.
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -21468,11 +21394,11 @@ Floats
 \family default
 .
  On the LyX screen captions appear as label, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21564,7 +21490,7 @@ captionsetup[float type]{format definition}
 \begin_layout Standard
 in the document preamble.
  For example the caption formats of Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21575,7 +21501,7 @@ reference "fig:This-is-an-fig"
 \end_inset
 
  and Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -21780,7 +21706,7 @@ letter (koma-script)
 report (koma-script)
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ), you can alternatively to the 
@@ -22092,7 +22018,7 @@ status collapsed
 
 \begin_layout Plain Layout
 See section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22152,7 +22078,7 @@ letter (koma-script)
 report (koma-script)
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ), you can alternatively to the 
@@ -22583,7 +22509,7 @@ TabBesEnd
 
 \begin_layout Standard
 Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22594,7 +22520,7 @@ reference "fig:cap-beside-fig"
 \end_inset
 
  and Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22682,7 +22608,7 @@ sidecaptionvpos{figure}{c}
 
 \begin_layout Standard
 This was used for Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22737,7 +22663,7 @@ LaTeX-packages ! hypcap
 \end_inset
 
 , described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23228,11 +23154,11 @@ Similar to the the table of contents where the sections of the document
 \family sans
 Insert\SpecialChar \menuseparator
 List
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 /
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 TOC
@@ -23294,7 +23220,7 @@ Note
 
 \begin_layout Description
 LyX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Note This note type is for internal notes that won't appear in the output.
@@ -23369,7 +23295,7 @@ This is text in a note box that only appears as comment in LaTeX-files.
 
 \begin_layout Description
 Greyed
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Out This note will appear in the output as grey text.
@@ -23530,7 +23456,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Framed boxes are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23593,7 +23519,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Colored boxes are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23627,7 +23553,7 @@ When you use the toolbar button
  to insert notes, a 
 \family sans
 LyX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Note
@@ -23699,7 +23625,7 @@ egroup}
 \begin_layout Standard
 The available colors and the method to define own colors is explained in
  section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23746,7 +23672,7 @@ The default frame width for
 Framed
 \family default
  notes is 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt; it can be changed by changing the size 
@@ -23757,7 +23683,7 @@ FrameRule
 \series default
 .
  The default space between the note content and the frame is 9
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt; it can be changed by changing the size 
@@ -23854,7 +23780,7 @@ Shaded
 \family default
  notes the default space between the note content and the note border is
  3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt; it can be changed by changing the size 
@@ -23881,7 +23807,7 @@ definecolor{shadebox}
 definecolor
 \series default
  command is explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23912,7 +23838,7 @@ inecolor
 color
 \series default
  in the preamble, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24214,7 +24140,7 @@ The footnote will appear in the output as a superscript number at the text
 \begin_layout Standard
 Footnotes can be referenced like floats: Insert a label into the footnote
  and cross-reference this label in the text as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24229,7 +24155,7 @@ reference "sec:Referencing-Floats"
 \end_inset
 
 This is a cross-reference of Footnote
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24247,7 +24173,7 @@ reference "foot:This-is-an"
 \end_inset
 
 To use footnotes within tables, you have to use minipages, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24259,7 +24185,7 @@ reference "sec:Minipages"
 
 .
  Footnotes within longtables are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24292,7 +24218,7 @@ As you don't know the number of the repeating footnote while you are writing
  the text, you have to store its number.
  For the following footnote mark example, these commands were inserted in
  TeX-Code behind Footnote
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24603,7 +24529,7 @@ numberwithin
 , set in the tab 
 \family sans
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -24611,15 +24537,15 @@ Options
  in the document settings the option 
 \family sans
 Use
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 AMS
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 package
@@ -24758,15 +24684,15 @@ Footnotes ! Placement
 If you have several footnotes in one page, they appear without vertical
  space between them at the bottom of the page.
  To make them better readable you can e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 add 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space with the following preamble command:
@@ -24802,7 +24728,7 @@ vspace{1.5mm}}}
 
 In a two-column document the footnotes appear at the bottom of every column,
  see Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24815,7 +24741,7 @@ reference "fig:Standard-footnote-placement"
 .
  If the footnotes should only appear at the bottom of the right column,
  as in Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24990,7 +24916,7 @@ ftnright
 
 In some scientific literature it is usual to collect the footnotes and print
  them in a separate paragraph at the the end of a section, like in Figure
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25177,7 +25103,7 @@ notesname}{Anmerkungen}
 
 The numbering of endnotes can be changed like the footnote numbering as
  described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25207,7 +25133,7 @@ theendnote
 @addtoreset
 \series default
  as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25242,7 +25168,7 @@ endnotemark[number]
 footnotemark
 \series default
 , described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25316,7 +25242,7 @@ Margin notes look and behave in LyX like footnotes.
 \family sans
 Insert\SpecialChar \menuseparator
 Marginal
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Note
@@ -25516,7 +25442,7 @@ AVeryLongMarginParWord that isn't hyphenated.
 \family default
 \series default
  Similar to the case described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25529,7 +25455,7 @@ reference "sub:Multiple-Lines-in"
 , long words cannot be hyphenated when they are the first word in a margin
  note.
  To avoid this, insert 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt horizontal space before the word
@@ -25541,7 +25467,7 @@ pt horizontal space before the word
 status open
 
 \begin_layout Plain Layout
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 0pt
 \end_inset
 
@@ -25676,7 +25602,7 @@ marginnote
 
 \begin_layout Standard
 where the offset is a length with one of the units listed in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -25692,7 +25618,7 @@ reference "tab:Units"
 \family roman
 \series medium
 For example the margin note beside this text line is shifted up 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm with the TeX-Code-command 
@@ -25715,7 +25641,7 @@ status open
 
 \begin_layout Plain Layout
 This margin note is shifted up 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm from its original position.
@@ -26183,7 +26109,7 @@ Boxes ! Introduction
 \begin_layout Standard
 Boxes are used to format a block of text.
  Boxes can be used to write documents with multiple languages, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26194,7 +26120,7 @@ reference "sec:Minipages"
 \end_inset
 
 , to frame texts, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26205,7 +26131,7 @@ reference "sec:Framed-Boxes"
 \end_inset
 
 , to prevent words to be hyphenated, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26216,7 +26142,7 @@ reference "sec:Prevent-Hyphenation"
 \end_inset
 
 , to align text, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26227,7 +26153,7 @@ reference "sub:Vertical-Alignment"
 \end_inset
 
 , or to set the background color of texts, see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26272,7 +26198,7 @@ Box (Minipage)
  The appearing box dialog offers the 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -26291,7 +26217,7 @@ Minipage
 Minipage
 \family default
  is the default for new boxes and is explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26306,7 +26232,7 @@ reference "sec:Minipages"
 Parbox
 \family default
  is described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26361,7 +26287,7 @@ Note:
  For an unknown reason you can only set the 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -26374,13 +26300,13 @@ None
  Boxes without an 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
 \family default
  type and without frames are explained in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26444,7 +26370,7 @@ Height
 \family default
 .
  The available units for the geometry are explained in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -26500,7 +26426,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Box height set to 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Depth
@@ -26522,11 +26448,11 @@ Depth
 \begin_layout Description
 Height This is the heigth of the text that is inside the box.
  A value of e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2 for this size will set the box heigth to 2 times the text height: 
@@ -26545,7 +26471,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Box height set to 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Height
@@ -26558,15 +26484,15 @@ Height
 
 \begin_layout Description
 Total
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Height This is the Height
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 +
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Depth: 
@@ -26585,11 +26511,11 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Box height set to 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Total
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Height
@@ -26617,7 +26543,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Box height set to 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Width
@@ -26646,7 +26572,7 @@ Boxes ! Alignment
 When you have chosen an 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -26740,11 +26666,11 @@ Note:
 \series default
  The vertical box aligment can be lost in the output when you have two boxes
  in a line and one has e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 a shadow and the other one not.
@@ -26767,7 +26693,7 @@ The horizontal box alignment can be set via LyX's paragraph dialog when
 When you have chosen an 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -26898,7 +26824,7 @@ To align the box content horizontally you can use LyX's paragraph dialog
  when you have chosen an 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -26944,7 +26870,7 @@ stretched.
 If you haven't set an 
 \family sans
 Inner
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box
@@ -27009,7 +26935,7 @@ Type
 
 \begin_layout Description
 Rectangular
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box This draws a rectangle frame around the box.
@@ -27045,16 +26971,16 @@ Rectangular box
 
 \begin_layout Description
 Oval
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 thin This draws an oval frame around the box.
  The frame line thickness has the size 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27083,16 +27009,16 @@ Oval box, thin
 
 \begin_layout Description
 Oval
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 thick This draws an oval frame around the box.
  The frame line thickness has the size 0.8
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27121,7 +27047,7 @@ Oval box, thick
 
 \begin_layout Description
 Shadow
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box This draws a rectangle frame with a shadow around the box.
@@ -27132,7 +27058,7 @@ box This draws a rectangle frame with a shadow around the box.
 fboxrule
 \series default
 , the shadow has a width of 4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27161,12 +27087,12 @@ Shadow box
 
 \begin_layout Description
 Double
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 box This draws a double-line rectangle frame around the box.
  The line thickness of the inner frame is 0.75
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -27176,7 +27102,7 @@ box This draws a double-line rectangle frame around the box.
 fboxrule
 \series default
 , the thickness of the outer frame is 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -27187,7 +27113,7 @@ fboxrule
 \series default
 .
  The distance between the lines is 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -27197,15 +27123,15 @@ fboxrule
 fboxrule
 \series default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 +
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 0.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27265,20 +27191,20 @@ The default value for the size
 fboxrule
 \series default
  is 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
  It can be changed with the following command in TeX-Code to e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt:
@@ -27331,15 +27257,15 @@ Rectangular box with
 fboxrule
 \series default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 =
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt
@@ -27371,7 +27297,7 @@ fboxrule}{0.4pt}
 
 The space between the frame and the box content is for all frame styles
  by default 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27397,7 +27323,7 @@ fboxsep}{10pt}
 
 \begin_layout Standard
 sets the value to 10
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt, like for the following box:
@@ -27440,15 +27366,15 @@ Rectangular box with
 fboxsep
 \series default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 =
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 10
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt
@@ -27499,7 +27425,7 @@ cornersize*{1cm}
 
 \begin_layout Standard
 sets the diameter to 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm.
@@ -27518,11 +27444,11 @@ cornersize{num}
 sets the diameter to 
 \family sans
 num
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ×
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 minimum(width and heigth of box)
@@ -27572,15 +27498,15 @@ Oval box with
 cornersize
 \series default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 =
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 1.5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -27616,7 +27542,7 @@ shadowsize
 \series default
 .
  It it set to 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt for the following box by this command:
@@ -27669,15 +27595,15 @@ Shadow box with
 shadowsize
 \series default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 =
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt
@@ -27744,7 +27670,7 @@ Minipages are useful when you write documents with different languages.
 \begin_layout Standard
 Below are two example minipages side by side.
  Their width is set to 45
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 col% and they are separated by a horizontal fill, that was inserted via
@@ -27752,12 +27678,12 @@ col% and they are separated by a horizontal fill, that was inserted via
 \family sans
 Insert\SpecialChar \menuseparator
 Special
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Formatting\SpecialChar \menuseparator
 Horizontal
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fill
@@ -27813,7 +27739,7 @@ Dies ist eine deutsche Fußnote.
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -28183,11 +28109,11 @@ h
 The document-wide paragraph settings are ignored within minipages.
  That means that there will be no space between paragraphs in minipages
  although you set it to e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -28200,7 +28126,7 @@ MedSkip
 \begin_layout Standard
 Minipages can also be used to set a background color for text parts, see
  section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -28478,12 +28404,12 @@ Of course the word now protrudes over the side margin.
 \family sans
 Insert\SpecialChar \menuseparator
 Special
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Formatting\SpecialChar \menuseparator
 Line
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Break
@@ -29052,7 +28978,7 @@ yellow
 \end_inset
 
 You can also define your own color as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -29067,11 +28993,11 @@ reference "sec:Colored-Tables"
 
 \begin_layout Standard
 To have e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 a red background for a word, insert the command
@@ -29192,7 +29118,7 @@ fboxrule
 fboxsep
 \series default
 , respectively, as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -29223,7 +29149,7 @@ was used.
 
 \begin_layout Standard
 Here is an example where the frame line thickness was set to 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm:
@@ -30396,11 +30322,11 @@ resizebox
 \begin_layout Standard
 The boxes can be combined in any order.
  E.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the command
@@ -30663,7 +30589,7 @@ File
 
 \begin_layout Description
 LyX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document Another LyX document; its content is directly inserted to your
@@ -30672,7 +30598,7 @@ Document Another LyX document; its content is directly inserted to your
 
 \begin_layout Description
 Plain
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text A text document; every of its text lines is inserted to your document
@@ -30681,15 +30607,15 @@ Text A text document; every of its text lines is inserted to your document
 
 \begin_layout Description
 Plain
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Join
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Lines A text document; its text lines are inserted as they are.
@@ -30698,7 +30624,7 @@ Lines A text document; its text lines are inserted as they are.
 
 \begin_layout Description
 External
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Material Files in various formats.
@@ -30706,7 +30632,7 @@ Material Files in various formats.
 
 \begin_layout Description
 Child
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document LyX or LaTeX-documents.
@@ -30744,7 +30670,7 @@ External Material
 Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
 External
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Material
@@ -30788,7 +30714,7 @@ Day-Month-Year
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -30819,7 +30745,7 @@ today
 \series default
  as TeX-Code.
  The different methods are compared in Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -30864,7 +30790,7 @@ External material
 Graphics
 \family default
  dialog as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31131,7 +31057,7 @@ External material is displayed in LyX either as box like this:
  or as image, depending on the setting in the 
 \family sans
 LyX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 View
@@ -31207,7 +31133,7 @@ Included documents are displayed in LyX as a box like this:
 Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
 Child
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Documents
@@ -31255,7 +31181,7 @@ The section numbering includes the sections of the included files in the
  The included example document has for example a subsection that is numbered
  as subsection of this section.
  Labels of included documents can be referenced: Subsection
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31365,7 +31291,7 @@ Input files don't start with a new page and don't end with a page break.
 Input files can be previewed in LyX when 
 \family sans
 Instant
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Preview
@@ -31373,11 +31299,11 @@ Preview
  is enabled in LyX's preferences under 
 \family sans
 Look
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 and
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 feel\SpecialChar \menuseparator
@@ -31447,7 +31373,7 @@ textvisiblespace
 Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
 Plain
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -31512,7 +31438,7 @@ verbatim
 
 \begin_layout Description
 Listings This type is described in chapter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31623,7 +31549,7 @@ By default, a listing starts a new paragraph in the output.
  The placement option 
 \family sans
 Inline
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 listing
@@ -31697,7 +31623,7 @@ p
 \end_inset
 
  corresponding to the float placement options described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31710,11 +31636,11 @@ reference "sec:Float-Placement"
 .
  The placement options can be mixed and are inserted without any separation,
  e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31754,7 +31680,7 @@ Caption
 \family default
 .
  Listings can be referenced like floats: Listing
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31860,7 +31786,7 @@ Courier
 In section 
 \family sans
 Line
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 numbering
@@ -31890,7 +31816,7 @@ You can furthermore specify a range of lines, only these will then appear
  The option 
 \family sans
 Extended
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 chars
@@ -31921,7 +31847,7 @@ Python
 \end_inset
 
 Extended
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 chars
@@ -31933,11 +31859,11 @@ chars
 \end_inset
 
 Space
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 as
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Symbol
@@ -31945,11 +31871,11 @@ Symbol
 \end_inset
 
 , range lines 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 8:
@@ -32050,7 +31976,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The other child document types are described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -32091,7 +32017,7 @@ Cross-Reference
 
 \begin_layout Standard
 Listing
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -32102,11 +32028,11 @@ reference "lst:file-listing"
 \end_inset
 
  is an example for a listing of a file; there the lines 10
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 15 of this LyX file are listed.
@@ -32149,7 +32075,7 @@ Text Layout
  in the 
 \family sans
 Listings
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 settings
@@ -32203,7 +32129,7 @@ name "cha:Units-available-in"
 
 \begin_layout Standard
 To understand the units described in this documentation, Table
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -32350,11 +32276,11 @@ pt
 
 \begin_layout Plain Layout
 point (72.27
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -32378,11 +32304,11 @@ pc
 
 \begin_layout Plain Layout
 pica (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -32406,11 +32332,11 @@ sp
 
 \begin_layout Plain Layout
 scaled point (65536
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 sp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -32434,11 +32360,11 @@ bp
 
 \begin_layout Plain Layout
 big point (72
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -32462,7 +32388,7 @@ dd
 
 \begin_layout Plain Layout
 didot (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd 
@@ -32470,7 +32396,7 @@ dd
 \end_inset
 
  0.376
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm)
@@ -32494,11 +32420,11 @@ cc
 
 \begin_layout Plain Layout
 cicero (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd)
@@ -32710,11 +32636,11 @@ mu
 
 \begin_layout Plain Layout
 math unit (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mu = 1/18
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em)
@@ -33175,7 +33101,7 @@ Export
 
 \begin_layout Description
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (ps2pdf) This uses the program 
@@ -33193,7 +33119,7 @@ dvips
 
 \begin_layout Description
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (dvipdfm) This uses the program 
@@ -33206,7 +33132,7 @@ dvipdfm
 
 \begin_layout Description
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (pdflatex) This uses the program 
@@ -33220,7 +33146,7 @@ pdftex
 It is recommended to use 
 \family sans
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (pdflatex)
@@ -33258,7 +33184,7 @@ View
 that uses 
 \family sans
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (pdflatex)
@@ -33268,7 +33194,7 @@ PDF
 
 \begin_layout Chapter
 Explanation of Equation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -33323,7 +33249,7 @@ tabcolsep
 \series default
  is the LaTeX-length between the cell text and the cell border, its default
  value is 6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -33334,7 +33260,7 @@ pt.
 arrayrulewidth
 \series default
  is the thickness of the cell border line, the default is 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -33342,7 +33268,7 @@ pt.
 
 \begin_layout Standard
 Following equation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -33370,7 +33296,7 @@ W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\
 
 \begin_layout Standard
 By setting equation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
