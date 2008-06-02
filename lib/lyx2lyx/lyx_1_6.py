@@ -1363,7 +1363,7 @@ def convert_framed_notes(document):
         subst = [document.body[i].replace("\\begin_inset Note", "\\begin_inset Box"),
                  'position "t"',
                  'hor_pos "c"',
-                 'has_inner_box 0'
+                 'has_inner_box 0',
                  'inner_pos "t"', 
                  'use_parbox 0',
                  'width "100col%"',
