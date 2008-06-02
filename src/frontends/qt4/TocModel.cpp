@@ -273,7 +273,12 @@ int TocModels::decodeType(QString const & str) const
 		// Default to Outliner.
 		new_type = "tableofcontents";
 	}
-	return types_.indexOf(new_type);
+	int const type = types_.indexOf(new_type);
+	if (type != -1)
+		return type;
+	// If everything else fails, settle on the table of contents which is
+	// guaranted to exist.
+	return types_.indexOf("tableofcontents");
 }
 
 } // namespace frontend
