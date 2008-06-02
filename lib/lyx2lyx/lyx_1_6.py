@@ -31,6 +31,17 @@ def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+# WARNING!
+# DO NOT do this:
+#   document.body[i] = wrap_insert_ert(...)
+# wrap_into_ert may returns a multiline string, which should NOT appear
+# in document.body. Insetad, do something like this:
+#   subst = wrap_inset_ert(...)
+#   subst = subst.split('\n')
+#   document.body[i:i+1] = subst
+#   i+= len(subst) - 1
+# where the last statement resets the counter to accord with the added
+# lines.
 def wrap_into_ert(string, src, dst):
     " Wrap a something into an ERT"
     return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n'
@@ -153,6 +164,8 @@ def convert_ltcaption(document):
 
         i = j + 1
 
+
+#FIXME Use of wrap_into_ert can confuse lyx2lyx
 def revert_ltcaption(document):
     i = 0
     while True:
@@ -748,6 +761,15 @@ def revert_wrapfig_options(document):
         i = i + 1
 
 
+# To convert and revert indices, we need to convert between LaTeX 
+# strings and LyXText. Here we do a minimal conversion to prevent 
+# crashes and data loss. Manual patch-up may be needed.
+replacements = [
+  [r'\\\"a', u'ä'], 
+  [r'\\\"o', u'ö'], 
+  [r'\\\"u', u'ü']
+]
+
 def convert_latexcommand_index(document):
     "Convert from LatexCommand form to collapsable form."
     i = 0
@@ -757,43 +779,53 @@ def convert_latexcommand_index(document):
             return
         if document.body[i + 1] != "LatexCommand index": # Might also be index_print
             return
-        fullcontent = document.body[i + 2][6:].strip('"')
-        document.body[i:i + 2] = ["\\begin_inset Index",
+        fullcontent = document.body[i + 2][5:]
+        fullcontent.strip()
+        fullcontent = fullcontent[1:-1]
+        document.body[i:i + 3] = ["\\begin_inset Index",
           "status collapsed",
           "\\begin_layout Standard"]
-        # Put here the conversions needed from LaTeX string to LyXText.
-        # Here we do a minimal conversion to prevent crashes and data loss.
-        # Manual patch-up may be needed.
-        # Umlauted characters (most common ones, can be extended):
-        fullcontent = fullcontent.replace(r'\\\"a', u'ä').replace(r'\\\"o', u'ö').replace(r'\\\"u', u'ü')
+        i += 3
+        # We are now on the blank line preceding "\end_inset"
+        # We will write the content here, into the inset.
+
+        # Do the LaTeX --> LyX text conversion
+        for rep in replacements:
+            fullcontent = fullcontent.replace(rep[0], rep[1])
         # Generic, \" -> ":
         fullcontent = wrap_into_ert(fullcontent, r'\"', '"')
-        #fullcontent = fullcontent.replace(r'\"', '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout standard\n"\n\\end_layout\n\\end_inset\n')
         # Math:
         r = re.compile('^(.*?)(\$.*?\$)(.*)')
-        g = fullcontent
-        while r.match(g):
-          m = r.match(g)
-          s = m.group(1)
-          f = m.group(2).replace('\\\\', '\\')
-          g = m.group(3)
-          if s:
-            # this is non-math!
-            s = wrap_into_ert(s, r'\\', '\\backslash')
-            s = wrap_into_ert(s, '{', '{')
-            s = wrap_into_ert(s, '}', '}')
-            document.body.insert(i + 3, s)
-            i += 1
-          document.body.insert(i + 3, "\\begin_inset Formula " + f)
-          document.body.insert(i + 4, "\\end_inset")
-          i += 2
-        # Generic, \\ -> \backslash:
-        g = wrap_into_ert(g, r'\\', '\\backslash')
-        g = wrap_into_ert(g, '{', '{')
-        g = wrap_into_ert(g, '}', '}')
-        document.body.insert(i + 3, g)
-        document.body[i + 4] = "\\end_layout"
-        i = i + 5
+        lines = fullcontent.split('\n')
+        for line in lines:
+          #document.warning("LINE: " + line)
+          #document.warning(str(i) + ":" + document.body[i])
+          #document.warning("LAST: " + document.body[-1])
+          g = line
+          while r.match(g):
+            m = r.match(g)
+            s = m.group(1)
+            f = m.group(2).replace('\\\\', '\\')
+            g = m.group(3)
+            if s:
+              # this is non-math!
+              s = wrap_into_ert(s, r'\\', '\\backslash')
+              s = wrap_into_ert(s, '{', '{')
+              s = wrap_into_ert(s, '}', '}')
+              subst = s.split('\n')
+              document.body[i:i] = subst
+              i += len(subst)
+            document.body.insert(i + 1, "\\begin_inset Formula " + f)
+            document.body.insert(i + 2, "\\end_inset")
+            i += 2
+          # Generic, \\ -> \backslash:
+          g = wrap_into_ert(g, r'\\', '\\backslash')
+          g = wrap_into_ert(g, '{', '{')
+          g = wrap_into_ert(g, '}', '}')
+          subst = g.split('\n')
+          document.body[i+1:i+1] = subst
+          i += len(subst)
+        document.body.insert(i + 1, "\\end_layout")
 
 
 def revert_latexcommand_index(document):
@@ -836,7 +868,9 @@ def revert_latexcommand_index(document):
           # try at least to handle some common insets and settings
           # do not replace inside ERTs
           if ert_end < k:
-              line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
+              # Do the LyX text --> LaTeX conversion
+              for rep in replacements:
+                line = line.replace(rep[1], rep[0])
               line = line.replace(r'\backslash', r'\textbackslash{}')
               line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
               line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
@@ -1633,37 +1667,49 @@ def revert_rotfloat(document):
             continue
         floattype = m.group(1)
         if floattype == "figure" or floattype == "table":
-            i = i + 1
+            i += 1
             continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
-            i = i + 1
+            i += 1
             continue
-        if get_value(document.body, 'sideways', i, j) != "false":
-            l = find_default_layout(document, i + 1, j)
-            if l == -1:
-                document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
-                return
-            document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout Standard\n\n\n\\backslash\n' \
-            'end{sideways' + floattype + '}\n\\end_layout\n\n\\end_inset\n'
-            del document.body[i+1:l-1]
-            document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout Standard\n\n\n\\backslash\n' \
-            'begin{sideways' + floattype + '}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
-            if floattype == "algorithm":
-                add_to_preamble(document,
-                                ['% Commands inserted by lyx2lyx for sideways algorithm float',
-                                 '\\usepackage{rotfloat}',
-                                 '\\floatstyle{ruled}',
-                                 '\\newfloat{algorithm}{tbp}{loa}',
-                                 '\\floatname{algorithm}{Algorithm}'])
-            else:
-                document.warning("Cannot create preamble definition for custom float" + floattype + ".")
-            i = i + 1
+        addedLines = 0
+        if get_value(document.body, 'sideways', i, j) == "false":
+            i += 1
             continue
-        i = i + 1
+        l = find_default_layout(document, i + 1, j)
+        if l == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
+            return
+        subst = ['\\begin_layout Standard',
+                  '\\begin_inset ERT',
+                  'status collapsed', '',
+                  '\\begin_layout Standard', '', '', 
+                  '\\backslash', '',
+                  'end{sideways' + floattype + '}',
+                  '\\end_layout', '', '\\end_inset']
+        document.body[j : j+1] = subst
+        addedLines = len(subst) - 1
+        del document.body[i+1 : l]
+        addedLines -= (l-1) - (i+1) 
+        subst = ['\\begin_inset ERT', 'status collapsed', '',
+                  '\\begin_layout Standard', '', '', '\\backslash', 
+                  'begin{sideways' + floattype + '}', 
+                  '\\end_layout', '', '\\end_inset', '',
+                  '\\end_layout', '']
+        document.body[i : i+1] = subst
+        addedLines += len(subst) - 1
+        if floattype == "algorithm":
+            add_to_preamble(document,
+                            ['% Commands inserted by lyx2lyx for sideways algorithm float',
+                              '\\usepackage{rotfloat}',
+                              '\\floatstyle{ruled}',
+                              '\\newfloat{algorithm}{tbp}{loa}',
+                              '\\floatname{algorithm}{Algorithm}'])
+        else:
+            document.warning("Cannot create preamble definition for custom float" + floattype + ".")
+        i += addedLines + 1
 
 
 def revert_widesideways(document):
@@ -1683,31 +1729,38 @@ def revert_widesideways(document):
             continue
         floattype = m.group(1)
         if floattype != "figure" and floattype != "table":
-            i = i + 1
+            i += 1
             continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
-            i = i + 1
+            i += 1
             continue
-        if get_value(document.body, 'sideways', i, j) != "false":
-            if get_value(document.body, 'wide', i, j) != "false":
-                l = find_default_layout(document, i + 1, j)
-                if l == -1:
-                    document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
-                    return
-                document.body[j] = '\\begin_layout Standard\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Standard\n\n\n\\backslash\n' \
-                'end{sideways' + floattype + '*}\n\\end_layout\n\n\\end_inset\n'
-                del document.body[i+1:l-1]
-                document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
-                '\\begin_layout Standard\n\n\n\\backslash\n' \
-                'begin{sideways' + floattype + '*}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n'
-                add_to_preamble(document,
-                                ['\\usepackage{rotfloat}\n'])
-                i = i + 1
-                continue
-        i = i + 1
+        if get_value(document.body, 'sideways', i, j) == "false" or \
+           get_value(document.body, 'wide', i, j) == "false":
+             i += 1
+             continue
+        l = find_default_layout(document, i + 1, j)
+        if l == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
+            return
+        subst = ['\\begin_layout Standard', '\\begin_inset ERT', 
+                  'status collapsed', '', 
+                  '\\begin_layout Standard', '', '', '\\backslash',
+                  'end{sideways' + floattype + '*}', 
+                  '\\end_layout', '', '\\end_inset']
+        document.body[j : j+1] = subst
+        addedLines = len(subst) - 1
+        del document.body[i+1:l-1]
+        addedLines -= (l-1) - (i+1)
+        subst = ['\\begin_inset ERT', 'status collapsed', '',
+                 '\\begin_layout Standard', '', '', '\\backslash',
+                 'begin{sideways' + floattype + '*}', '\\end_layout', '',
+                 '\\end_inset', '', '\\end_layout', '']
+        document.body[i : i+1] = subst
+        addedLines += len(subst) - 1
+        add_to_preamble(document, ['\\usepackage{rotfloat}\n'])
+        i += addedLines + 1
 
 
 def revert_inset_embedding(document, type):
@@ -1745,22 +1798,30 @@ def convert_subfig(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
-            i = i + 1
+            i += 1
             continue
         k = find_token(document.body, '\tsubcaption', i, j)
         if k == -1:
-            i = i + 1
+            i += 1
             continue
         l = find_token(document.body, '\tsubcaptionText', i, j)
         caption = document.body[l][16:].strip('"')
         savestr = document.body[i]
+        laststr = document.body[j]
         del document.body[l]
         del document.body[k]
-        document.body[i] = '\\begin_inset Float figure\nwide false\nsideways false\n' \
-        'status open\n\n\\begin_layout Plain Layout\n\\begin_inset Caption\n\n\\begin_layout Plain Layout\n' \
-        + caption + '\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout Plain Layout\n' + savestr
-        savestr = document.body[j]
-        document.body[j] = '\n\\end_layout\n\n\\end_inset\n' + savestr
+        addedLines = -2
+        subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
+                 'status open', '', '\\begin_layout Plain Layout', '\\begin_inset',
+                 'Caption', '', '\\begin_layout Plain Layout',
+                 caption, '\\end_layout', '', '\\end_inset', '', 
+                 '\\end_layout', '', '\\begin_layout Plain Layout', savestr]
+        document.body[i : i+1] = subst
+        addedLines += len(subst) - 1
+        subst = ['', '\\end_layout', '', '\\end_inset', laststr]
+        document.body[j : j+1] = subst
+        addedLines += len(subst) - 1
+        i += addedLines + 1
 
 
 def revert_subfig(document):
@@ -1921,26 +1982,53 @@ def convert_hfill(document):
         i = find_token(document.body, "\\hfill", i)
         if i == -1:
             return
-        document.body[i] = document.body[i].replace('\\hfill', '\n\\begin_inset Space \\hfill{}\n\\end_inset')
+        subst = document.body[i].replace('\\hfill', \
+                  '\n\\begin_inset Space \\hfill{}\n\\end_inset')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_hfills(document):
     ' Revert \\hfill commands '
-    for i in range(len(document.body)):
-        document.body[i] = document.body[i].replace('\\InsetSpace \\hfill{}', '\\hfill')
-        document.body[i] = document.body[i].replace('\\InsetSpace \\dotfill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'dotfill{}\n\\end_layout\n\n\\end_inset\n\n')
-        document.body[i] = document.body[i].replace('\\InsetSpace \\hrulefill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'hrulefill{}\n\\end_layout\n\n\\end_inset\n\n')
-
+    hfill = re.compile(r'\\hfill')
+    dotfill = re.compile(r'\\dotfill')
+    hrulefill = re.compile(r'\\hrulefill')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\InsetSpace", i)
+        if i == -1:
+            return
+        if hfill.search(document.body[i]):
+            document.body[i] = \
+              document.body[i].replace('\\InsetSpace \\hfill{}', '\\hfill')
+            i += 1
+            continue
+        if dotfill.search(document.body[i]):
+            subst = document.body[i].replace('\\InsetSpace \\dotfill{}', \
+              '\\begin_inset ERT\nstatus collapsed\n\n' \
+              '\\begin_layout Standard\n\n\n\\backslash\n' \
+              'dotfill{}\n\\end_layout\n\n\\end_inset\n\n')
+            subst = subst.split('\n')
+            document.body[i : i+1] = subst
+            i += len(subst)
+            continue
+        if hrulefill.search(document.body[i]):
+            subst = document.body[i].replace('\\InsetSpace \\hrulefill{}', \
+              '\\begin_inset ERT\nstatus collapsed\n\n' \
+              '\\begin_layout Standard\n\n\n\\backslash\n' \
+              'hrulefill{}\n\\end_layout\n\n\\end_inset\n\n')
+            subst = subst.split('\n')
+            document.body[i : i+1] = subst
+            i += len(subst)
+            continue
+        i += 1
 
 def revert_hspace(document):
     ' Revert \\InsetSpace \\hspace{} to ERT '
     i = 0
+    hspace = re.compile(r'\\hspace{}')
+    hstar  = re.compile(r'\\hspace\*{}')
     while True:
         i = find_token(document.body, "\\InsetSpace \\hspace", i)
         if i == -1:
@@ -1950,14 +2038,28 @@ def revert_hspace(document):
             document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
             return
         del document.body[i+1]
-        document.body[i] = document.body[i].replace('\\InsetSpace \\hspace*{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'hspace*{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
-        document.body[i] = document.body[i].replace('\\InsetSpace \\hspace{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'hspace{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
+        addedLines = -1
+        if hstar.search(document.body[i]):
+            subst = document.body[i].replace('\\InsetSpace \\hspace*{}', \
+              '\\begin_inset ERT\nstatus collapsed\n\n' \
+              '\\begin_layout Standard\n\n\n\\backslash\n' \
+              'hspace*{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
+            subst = subst.split('\n')
+            document.body[i : i+1] = subst
+            addedLines += len(subst) - 1
+            i += addedLines + 1
+            continue
+        if hspace.search(document.body[i]):
+            subst = document.body[i].replace('\\InsetSpace \\hspace{}', \
+              '\\begin_inset ERT\nstatus collapsed\n\n' \
+              '\\begin_layout Standard\n\n\n\\backslash\n' \
+              'hspace{' + length + '}\n\\end_layout\n\n\\end_inset\n\n')
+            subst = subst.split('\n')
+            document.body[i : i+1] = subst
+            addedLines += len(subst) - 1
+            i += addedLines + 1
+            continue
+        i += 1
 
 
 def revert_protected_hfill(document):
@@ -1972,10 +2074,13 @@ def revert_protected_hfill(document):
             document.warning("Malformed LyX document: Could not find end of space inset.")
             continue
         del document.body[j]
-        document.body[i] = document.body[i].replace('\\begin_inset Space \\hspace*{\\fill}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'hspace*{\n\\backslash\nfill}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = document.body[i].replace('\\begin_inset Space \\hspace*{\\fill}', \
+          '\\begin_inset ERT\nstatus collapsed\n\n' \
+          '\\begin_layout Standard\n\n\n\\backslash\n' \
+          'hspace*{\n\\backslash\nfill}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_leftarrowfill(document):
@@ -1990,10 +2095,13 @@ def revert_leftarrowfill(document):
             document.warning("Malformed LyX document: Could not find end of space inset.")
             continue
         del document.body[j]
-        document.body[i] = document.body[i].replace('\\begin_inset Space \\leftarrowfill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'leftarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = document.body[i].replace('\\begin_inset Space \\leftarrowfill{}', \
+          '\\begin_inset ERT\nstatus collapsed\n\n' \
+          '\\begin_layout Standard\n\n\n\\backslash\n' \
+          'leftarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_rightarrowfill(document):
@@ -2008,10 +2116,13 @@ def revert_rightarrowfill(document):
             document.warning("Malformed LyX document: Could not find end of space inset.")
             continue
         del document.body[j]
-        document.body[i] = document.body[i].replace('\\begin_inset Space \\rightarrowfill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'rightarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = document.body[i].replace('\\begin_inset Space \\rightarrowfill{}', \
+          '\\begin_inset ERT\nstatus collapsed\n\n' \
+          '\\begin_layout Standard\n\n\n\\backslash\n' \
+          'rightarrowfill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_upbracefill(document):
@@ -2026,10 +2137,13 @@ def revert_upbracefill(document):
             document.warning("Malformed LyX document: Could not find end of space inset.")
             continue
         del document.body[j]
-        document.body[i] = document.body[i].replace('\\begin_inset Space \\upbracefill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'upbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = document.body[i].replace('\\begin_inset Space \\upbracefill{}', \
+          '\\begin_inset ERT\nstatus collapsed\n\n' \
+          '\\begin_layout Standard\n\n\n\\backslash\n' \
+          'upbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_downbracefill(document):
@@ -2044,10 +2158,13 @@ def revert_downbracefill(document):
             document.warning("Malformed LyX document: Could not find end of space inset.")
             continue
         del document.body[j]
-        document.body[i] = document.body[i].replace('\\begin_inset Space \\downbracefill{}', \
-        '\\begin_inset ERT\nstatus collapsed\n\n' \
-        '\\begin_layout Standard\n\n\n\\backslash\n' \
-        'downbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = document.body[i].replace('\\begin_inset Space \\downbracefill{}', \
+          '\\begin_inset ERT\nstatus collapsed\n\n' \
+          '\\begin_layout Standard\n\n\n\\backslash\n' \
+          'downbracefill{}\n\\end_layout\n\n\\end_inset\n\n')
+        subst = subst.split('\n')
+        document.body[i : i+1] = subst
+        i += len(subst)
 
 
 def revert_local_layout(document):
@@ -2072,28 +2189,28 @@ def convert_pagebreaks(document):
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newpage newpage',
-                             '\\end_inset']
+                                '\\end_inset']
     i = 0
     while True:
         i = find_token(document.body, '\\pagebreak', i)
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newpage pagebreak',
-                             '\\end_inset']
+                                '\\end_inset']
     i = 0
     while True:
         i = find_token(document.body, '\\clearpage', i)
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newpage clearpage',
-                             '\\end_inset']
+                                '\\end_inset']
     i = 0
     while True:
         i = find_token(document.body, '\\cleardoublepage', i)
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newpage cleardoublepage',
-                             '\\end_inset']
+                                '\\end_inset']
 
 
 def revert_pagebreaks(document):
@@ -2122,14 +2239,14 @@ def convert_linebreaks(document):
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newline newline',
-                             '\\end_inset']
+                                '\\end_inset']
     i = 0
     while True:
         i = find_token(document.body, '\\linebreak', i)
         if i == -1:
             break
         document.body[i:i+1] = ['\\begin_inset Newline linebreak',
-                             '\\end_inset']
+                                '\\end_inset']
 
 
 def revert_linebreaks(document):
