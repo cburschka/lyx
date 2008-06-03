@@ -201,12 +201,12 @@ static string const textcyr_def =
 
 static string const lyxmathsym_def =
 	"\\DeclareRobustCommand{\\lyxmathsym}[1]{%\n"
-	" \\begingroup\n"
+	" \\ifmmode\\begingroup\n"
 	" \\edef\\b@ld{bold}%\n"
 	" \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}%\n"
 	" \\mathchoice{\\hbox{\\rmorbf{#1}}}{\\hbox{\\rmorbf{#1}}}%\n"
 	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}%\n"
-	" \\endgroup}\n";
+	" \\endgroup\\else#1\\fi}\n";
 
 /////////////////////////////////////////////////////////////////////
 //
