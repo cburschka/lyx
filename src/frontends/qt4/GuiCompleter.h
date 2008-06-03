@@ -31,7 +31,8 @@ class Buffer;
 namespace frontend {
 
 class GuiWorkArea;
-class RtlItemDelegate;
+class CompleterItemDelegate;
+class GuiCompletionModel;
 
 class GuiCompleter : private QCompleter
 {
@@ -139,7 +140,9 @@ private:
 	/// a coming reset here by setting it to false.
 	bool modelActive_;
 	///
-	RtlItemDelegate * rtlItemDelegate_;
+	CompleterItemDelegate * itemDelegate_;
+	///
+	GuiCompletionModel * model_;
 }; // GuiCompleter
 
 } // namespace frontend

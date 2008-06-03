@@ -43,11 +43,14 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-class RtlItemDelegate : public QItemDelegate
+class CompleterItemDelegate : public QItemDelegate
 {
 public:
-	explicit RtlItemDelegate(QObject * parent)
+	explicit CompleterItemDelegate(QObject * parent)
 		: QItemDelegate(parent), enabled_(false)
+	{}
+
+	~CompleterItemDelegate()
 	{}
 
 	void setEnabled(bool enabled = true)
@@ -70,23 +73,14 @@ protected:
 		reverse(stltext.begin(), stltext.end());
 		QItemDelegate::drawDisplay(painter, option, rect, toqstr(stltext));
 	}
-	
-private:
-	bool enabled_;
-};
 
-
-class PixmapItemDelegate : public QItemDelegate
-{
-public:
-	explicit PixmapItemDelegate(QObject * parent)
-		: QItemDelegate(parent)
-	{}
-
-protected:
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
 		   const QModelIndex &index) const
 	{
+		if (index.column() == 0) {
+			QItemDelegate::paint(painter, option, index);
+			return;
+		}
 		QStyleOptionViewItem opt = setOptions(index, option);
 		QVariant value = index.data(Qt::DisplayRole);
 		QPixmap pixmap = qvariant_cast<QPixmap>(value);
@@ -103,8 +97,10 @@ protected:
 		drawFocus(painter, opt, option.rect);
 		painter->restore();
 	}
-};
 
+private:
+	bool enabled_;
+};
 
 class GuiCompletionModel : public QAbstractListModel
 {
@@ -115,6 +111,12 @@ public:
 	{}
 	///
 	~GuiCompletionModel() { delete list_; }
+	///
+	void setList(CompletionList const * l) {
+		delete list_;
+		list_ = l;
+		reset();
+	}
 	///
 	bool sorted() const
 	{
@@ -183,7 +185,8 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	  modelActive_(false)
 {
 	// Setup the completion popup
-	setModel(new GuiCompletionModel(this, 0));
+	model_ = new GuiCompletionModel(this, 0);
+	setModel(model_);
 	setCompletionMode(QCompleter::PopupCompletion);
 	setWidget(gui_);
 	
@@ -198,9 +201,8 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	listView->setUniformRowHeights(true);
 	setPopup(listView);
 	
-	rtlItemDelegate_ = new RtlItemDelegate(this);
-	popup()->setItemDelegateForColumn(0, rtlItemDelegate_);
-	popup()->setItemDelegateForColumn(1, new PixmapItemDelegate(this));
+	itemDelegate_ = new CompleterItemDelegate(this);
+	popup()->setItemDelegate(itemDelegate_);
 	
 	// create timeout timers
 	popup_timer_.setSingleShot(true);
@@ -484,11 +486,11 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 
 	// turn the direction of the strings in the popup.
 	// Qt does not do that itself.
-	rtlItemDelegate_->setEnabled(rtl);
+	itemDelegate_->setEnabled(rtl);
 
 	// set new model
 	CompletionList const * list = cur.inset().createCompletionList(cur);
-	setModel(new GuiCompletionModel(this, list));
+	model_->setList(list);
 	modelActive_ = true;
 	if (list->sorted())
 		setModelSorting(QCompleter::CaseSensitivelySortedModel);
@@ -556,7 +558,7 @@ void GuiCompleter::asyncHidePopup()
 {
 	popup()->hide();
 	if (!inlineVisible())
-		setModel(new GuiCompletionModel(this, 0));
+		model_->setList(0);
 }
 
 
@@ -591,7 +593,7 @@ void GuiCompleter::hideInline(Cursor & cur)
 void GuiCompleter::asyncHideInline()
 {
 	if (!popupVisible())
-		setModel(new GuiCompletionModel(this, 0));
+		model_->setList(0);
 }
 
 
