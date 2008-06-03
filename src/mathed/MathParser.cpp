@@ -1109,8 +1109,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
-		else if (t.cs() == "ref" || t.cs() == "prettyref" ||
-				t.cs() == "pageref" || t.cs() == "vpageref" || t.cs() == "vref") {
+		else if (t.cs() == "ref" || t.cs() == "eqref" || t.cs() == "prettyref"
+			  || t.cs() == "pageref" || t.cs() == "vpageref" || t.cs() == "vref") {
 			cell->push_back(MathAtom(new InsetMathRef(t.cs())));
 			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);

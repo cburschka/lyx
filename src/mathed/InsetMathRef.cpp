@@ -148,6 +148,8 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 		features.require("varioref");
 	else if (commandname() == "prettyref")
 		features.require("prettyref");
+	else if (commandname() == "eqref")
+		features.require("amsmath");
 }
 
 
@@ -184,7 +186,7 @@ string const InsetMathRef::createDialogStr(string const & name) const
 
 
 InsetMathRef::ref_type_info InsetMathRef::types[] = {
-	{ from_ascii("ref"),       from_ascii(N_("Standard[[mathref]]")),              from_ascii(N_("Ref: "))},
+	{ from_ascii("ref"),       from_ascii(N_("Standard[[mathref]]")),   from_ascii(N_("Ref: "))},
 	{ from_ascii("eqref"),     from_ascii(N_("Equation")),              from_ascii(N_("EqRef: "))},
 	{ from_ascii("pageref"),   from_ascii(N_("Page Number")),           from_ascii(N_("Page: "))},
 	{ from_ascii("vpageref"),  from_ascii(N_("Textual Page Number")),   from_ascii(N_("TextPage: "))},
