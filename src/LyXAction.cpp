@@ -564,14 +564,14 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_BACKWARD
  * \li Action: Deletes one character in the backward direction (usually the "BackSpace" key).
- * \li Syntax: delete-backward
+ * \li Syntax: char-delete-backward
  * \endvar
  */
 		{ LFUN_CHAR_DELETE_BACKWARD, "char-delete-backward", SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_FORWARD
  * \li Action: Deletes one character in the backward direction (usually the "Delete" key).
- * \li Syntax: delete-forward
+ * \li Syntax: char-delete-forward
  * \endvar
  */
 		{ LFUN_CHAR_DELETE_FORWARD, "char-delete-forward", SingleParUpdate, Edit },
