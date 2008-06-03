@@ -1817,8 +1817,8 @@ def convert_subfig(document):
         del document.body[k]
         addedLines = -2
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
-                 'status open', '', '\\begin_layout Plain Layout', '\\begin_inset',
-                 'Caption', '', '\\begin_layout Plain Layout',
+                 'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption', 
+                 '', '\\begin_layout Plain Layout',
                  caption, '\\end_layout', '', '\\end_inset', '', 
                  '\\end_layout', '', '\\begin_layout Plain Layout', savestr]
         document.body[i : i+1] = subst
