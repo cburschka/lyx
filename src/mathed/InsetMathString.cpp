@@ -17,6 +17,8 @@
 #include "Encoding.h"
 
 #include "support/gettext.h"
+#include "support/lstrings.h"
+#include "support/textutils.h"
 
 
 namespace lyx {
@@ -127,6 +129,11 @@ void InsetMathString::write(WriteStream & os) const
 				}
 				os << command;
 			}
+			// We may need a space if the command contains a macro
+			// and the last char is ASCII.
+			if (lyx::support::contains(command, '\\')
+			    && isAlphaASCII(command[command.size() - 1]))
+				os.pendingSpace(true);
 		} catch (EncodingException & e) {
 			if (os.dryrun()) {
 				// FIXME: this is OK for View->Source
