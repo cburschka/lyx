@@ -113,6 +113,9 @@ void InsetCaption::addToToc(DocIterator const & cpit)
 	Toc & toc = buffer().tocBackend().toc(type_);
 	docstring const str = full_label_ + ". " + text_.getPar(0).asString();
 	toc.push_back(TocItem(pit, 0, str));
+
+	// Proceed with the rest of the inset.
+	InsetText::addToToc(cpit);
 }
 
 

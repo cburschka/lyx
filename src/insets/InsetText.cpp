@@ -426,11 +426,6 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-//void InsetInclude::addToToc(DocIterator const & cpit)
-//{
-//}
-
-
 void InsetText::updateLabels(ParIterator const & it)
 {
 	ParIterator it2 = it;

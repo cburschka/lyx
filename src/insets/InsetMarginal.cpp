@@ -75,6 +75,8 @@ void InsetMarginal::addToToc(DocIterator const & cpit)
 	docstring str;
 	str = getNewLabel(str);
 	toc.push_back(TocItem(pit, 0, str));
+	// Proceed with the rest of the inset.
+	InsetFootlike::addToToc(cpit);
 }
 
 } // namespace lyx
