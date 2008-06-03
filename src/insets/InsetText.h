@@ -137,6 +137,8 @@ public:
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
 	///
+	void addToToc(DocIterator const &);
+	///
 	Inset * clone() const { return new InsetText(*this); }
 	///
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);

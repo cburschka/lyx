@@ -12,6 +12,8 @@
 
 #include "InsetText.h"
 
+#include "insets/InsetOptArg.h"
+
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -43,6 +45,7 @@
 #include "TextClass.h"
 #include "Text.h"
 #include "TextMetrics.h"
+#include "TocBackend.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -440,6 +443,60 @@ void InsetText::updateLabels(ParIterator const & it)
 		Counters const savecnt = tclass.counters();
 		lyx::updateLabels(buffer(), it2);
 		tclass.counters() = savecnt;
+	}
+}
+
+
+void InsetText::addToToc(DocIterator const & cdit)
+{
+	DocIterator dit = cdit;
+	dit.push_back(CursorSlice(*this));
+	Toc & toc = buffer().tocBackend().toc("tableofcontents");
+
+	BufferParams const & bufparams = buffer_->params();
+	const int min_toclevel = bufparams.documentClass().min_toclevel();
+
+	// For each paragraph, traverse its insets and let them add
+	// their toc items
+	ParagraphList & pars = paragraphs();
+	pit_type pend = paragraphs().size();
+	for (pit_type pit = 0; pit != pend; ++pit) {
+		Paragraph const & par = pars[pit];
+		dit.pit() = pit;
+		// the string that goes to the toc (could be the optarg)
+		docstring tocstring;
+		InsetList::const_iterator it  = par.insetList().begin();
+		InsetList::const_iterator end = par.insetList().end();
+		for (; it != end; ++it) {
+			Inset & inset = *it->inset;
+			dit.pos() = it->pos;
+			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
+			inset.addToToc(dit);
+			switch (inset.lyxCode()) {
+			case OPTARG_CODE: {
+				if (!tocstring.empty())
+					break;
+				dit.pos() = 0;
+				Paragraph const & insetpar =
+					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
+				if (!par.labelString().empty())
+					tocstring = par.labelString() + ' ';
+				tocstring += insetpar.asString();
+				break;
+			}
+			default:
+				break;
+			}
+		}
+		/// now the toc entry for the paragraph
+		int const toclevel = par.layout().toclevel;
+		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
+			dit.pos() = 0;
+			// insert this into the table of contents
+			if (tocstring.empty())
+				tocstring = par.asString(AS_STR_LABEL);
+			toc.push_back(TocItem(dit, toclevel - min_toclevel, tocstring));
+		}
 	}
 }
 

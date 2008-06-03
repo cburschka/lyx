@@ -151,56 +151,8 @@ void TocBackend::updateItem(DocIterator const & dit)
 void TocBackend::update()
 {
 	tocs_.clear();
-
-	BufferParams const & bufparams = buffer_->params();
-	const int min_toclevel = bufparams.documentClass().min_toclevel();
-
-	Toc & toc = tocs_["tableofcontents"];
-	ParConstIterator pit = buffer_->par_iterator_begin();
-	ParConstIterator end = buffer_->par_iterator_end();
-	for (; pit != end; ++pit) {
-
-		// the string that goes to the toc (could be the optarg)
-		docstring tocstring;
-
-		// For each paragraph, traverse its insets and let them add
-		// their toc items
-		InsetList::const_iterator it = pit->insetList().begin();
-		InsetList::const_iterator end = pit->insetList().end();
-		for (; it != end; ++it) {
-			Inset & inset = *it->inset;
-			pit.pos() = it->pos;
-			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
-			inset.addToToc(pit);
-			switch (inset.lyxCode()) {
-			case OPTARG_CODE: {
-				if (!tocstring.empty())
-					break;
-				pit.pos() = 0;
-				Paragraph const & par =
-					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
-				if (!pit->labelString().empty())
-					tocstring = pit->labelString() + ' ';
-				tocstring += par.asString();
-				break;
-			}
-			default:
-				break;
-			}
-		}
-
-		/// now the toc entry for the paragraph
-		int const toclevel = pit->layout().toclevel;
-		if (toclevel != Layout::NOT_IN_TOC
-		    && toclevel >= min_toclevel) {
-			pit.pos() = 0;
-			// insert this into the table of contents
-			if (tocstring.empty())
-				tocstring = pit->asString(AS_STR_LABEL);
-			toc.push_back(TocItem(pit, toclevel - min_toclevel,
-				tocstring));
-		}
-	}
+	DocIterator dit;
+	buffer_->inset().addToToc(dit);
 }
 
 
