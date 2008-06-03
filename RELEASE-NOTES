@@ -63,7 +63,9 @@ Some of the LyX functions have changed names:
 - The functions LFUN_HTML_INSERT, "html-insert", LFUN_URL_INSERT, "url-insert" was
   superseded by LFUN_HYPERLINK_INSERT, "href-insert".
 
-- The functions LFUN_FLOAT_LIST has been renamed to LFUN_FLOAT_LIST_INSERT.
+- The function LFUN_FLOAT_LIST has been renamed to LFUN_FLOAT_LIST_INSERT.
+
+- The functions delete-back/forward has been renamed to char-delete-back/forward.
 
 The following new LyX functions have been introduced:
 
