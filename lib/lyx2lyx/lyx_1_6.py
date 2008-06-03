@@ -1800,19 +1800,19 @@ def convert_subfig(document):
         i = find_token(document.body, '\\begin_inset Graphics', i)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i)
-        if j == -1:
+        endInset = find_end_of_inset(document.body, i)
+        if endInset == -1:
             document.warning("Malformed lyx document: Missing '\\end_inset'.")
             i += 1
             continue
-        k = find_token(document.body, '\tsubcaption', i, j)
+        k = find_token(document.body, '\tsubcaption', i, endInset)
         if k == -1:
             i += 1
             continue
-        l = find_token(document.body, '\tsubcaptionText', i, j)
+        l = find_token(document.body, '\tsubcaptionText', i, endInset)
         caption = document.body[l][16:].strip('"')
         savestr = document.body[i]
-        laststr = document.body[j]
+        laststr = document.body[endInset]
         del document.body[l]
         del document.body[k]
         addedLines = -2
@@ -1823,8 +1823,9 @@ def convert_subfig(document):
                  '\\end_layout', '', '\\begin_layout Plain Layout', savestr]
         document.body[i : i+1] = subst
         addedLines += len(subst) - 1
-        subst = ['', '\\end_layout', '', '\\end_inset', laststr]
-        document.body[j : j+1] = subst
+        endInset += addedLines
+        subst = ['', '\\end_inset', '', '\\end_layout', laststr]
+        document.body[endInset : endInset+1] = subst
         addedLines += len(subst) - 1
         i += addedLines + 1
 
