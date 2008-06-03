@@ -31,7 +31,7 @@
 \bind "C-a"			"line-begin"
 \bind "C-b"			"char-backward"
 #bind "C-c"			"------" # see end of file
-\bind "C-d"			"delete-forward"
+\bind "C-d"			"char-delete-forward"
 \bind "C-e"			"line-end"
 \bind "C-f"			"char-forward"
 \bind "C-g"			"cancel"

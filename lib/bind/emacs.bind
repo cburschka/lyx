@@ -29,7 +29,7 @@
 \bind "C-a"			"line-begin"
 \bind "C-b"			"char-backward"
 #bind "C-c"			"------" // used as users prefix
-\bind "C-d"			"delete-forward"
+\bind "C-d"			"char-delete-forward"
 \bind "C-e"			"line-end"
 \bind "C-f"			"char-forward"
 \bind "C-g"			"cancel"

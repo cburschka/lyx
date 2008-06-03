@@ -36,8 +36,8 @@
 \bind "Prior"      "screen-up"
 \bind "Next"       "screen-down"
 \bind "Return"     "break-paragraph"
-\bind "Delete"     "delete-forward"
-\bind "BackSpace"  "delete-backward"
+\bind "Delete"     "char-delete-forward"
+\bind "BackSpace"  "char-delete-backward"
 
 \bind "KP_Enter"   "break-paragraph"
 \bind "KP_Right"   "char-right"

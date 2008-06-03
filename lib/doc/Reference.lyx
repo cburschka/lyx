@@ -8972,7 +8972,7 @@ copy; paste.
 \end_layout
 
 \begin_layout Subsection
-delete-backward
+char-delete-backward
 \end_layout
 
 \begin_layout Description
@@ -9041,12 +9041,12 @@ See Also:
 \end_layout
 
 \begin_layout Standard
-delete-forward; word-delete-forward; word-delete-backward; line-delete-forward;
+char-delete-forward; word-delete-forward; word-delete-backward; line-delete-forward;
  line-delete-backward.
 \end_layout
 
 \begin_layout Subsection
-delete-forward
+char-delete-forward
 \end_layout
 
 \begin_layout Description
@@ -9128,7 +9128,7 @@ See Also:
 \end_layout
 
 \begin_layout Standard
-delete-backward; word-delete-forward; word-delete-backward; line-delete-forward;
+char-delete-backward; word-delete-forward; word-delete-backward; line-delete-forward;
  line-delete-backward.
 \end_layout
 

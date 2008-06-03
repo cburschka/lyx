@@ -563,18 +563,18 @@ void LyXAction::init()
 		{ LFUN_CHAR_BACKWARD_SELECT, "char-backward-select", ReadOnly | SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_BACKWARD
- * \li Action: Deletes one character in the backward direction.
+ * \li Action: Deletes one character in the backward direction (usually the "BackSpace" key).
  * \li Syntax: delete-backward
  * \endvar
  */
-		{ LFUN_CHAR_DELETE_BACKWARD, "delete-backward", SingleParUpdate, Edit },
+		{ LFUN_CHAR_DELETE_BACKWARD, "char-delete-backward", SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_FORWARD
- * \li Action: Deletes one character in the backward direction.
+ * \li Action: Deletes one character in the backward direction (usually the "Delete" key).
  * \li Syntax: delete-forward
  * \endvar
  */
-		{ LFUN_CHAR_DELETE_FORWARD, "delete-forward", SingleParUpdate, Edit },
+		{ LFUN_CHAR_DELETE_FORWARD, "char-delete-forward", SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_FORWARD
  * \li Action: Moves the cursor one position logically forward.
