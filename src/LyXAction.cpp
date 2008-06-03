@@ -662,7 +662,19 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_BACKWARD_SELECT, "word-backward-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_DELETE_BACKWARD
+ * \li Action: Deletes characters to the begining of the word (usually the "C+BackSpace" key).
+ * \li Syntax: word-delete-backward
+ * \endvar
+ */
 		{ LFUN_WORD_DELETE_BACKWARD, "word-delete-backward", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_DELETE_FORWARD
+ * \li Action: Deletes characters to the end of the word (usually the "C+Delete" key).
+ * \li Syntax: word-delete-forward
+ * \endvar
+ */
 		{ LFUN_WORD_DELETE_FORWARD, "word-delete-forward", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FIND_FORWARD
