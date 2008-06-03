@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:34+0100\n"
+"POT-Creation-Date: 2008-06-03 20:16+0100\n"
 "PO-Revision-Date: 2008-05-28 22:09+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1667,7 +1667,7 @@ msgstr "&Andere:"
 msgid "&Quote Style:"
 msgstr "&Stil der Anführungszeichen:"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:300
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 msgid "Listing"
 msgstr "Listing"
@@ -7778,7 +7778,7 @@ msgstr "Fußnote"
 msgid "comment"
 msgstr "Kommentar"
 
-#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:295
+#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "Notiz"
 
@@ -15623,11 +15623,11 @@ msgstr ""
 "Es wird die Standardeinstellung verwendet."
 
 #: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/mathed/InsetMathString.cpp:134
+#: src/mathed/InsetMathString.cpp:141
 msgid "LyX Warning: "
 msgstr "LyX Warnung: "
 
-#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:142
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
@@ -15917,7 +15917,7 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:294
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
@@ -18112,7 +18112,7 @@ msgstr "Zweig"
 msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
-#: src/insets/InsetCaption.cpp:303
+#: src/insets/InsetCaption.cpp:306
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Unter-%1$s"
@@ -18208,7 +18208,7 @@ msgstr "Liste der %1$s"
 msgid "Opened Footnote Inset"
 msgstr "Fußnoten-Einfügung geöffnet"
 
-#: src/insets/InsetFoot.cpp:111
+#: src/insets/InsetFoot.cpp:113
 msgid "footnote"
 msgstr "Fußnote"
 
@@ -18282,7 +18282,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
 
-#: src/insets/InsetIndex.cpp:130
+#: src/insets/InsetIndex.cpp:132
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
@@ -18525,47 +18525,47 @@ msgstr "Einfügung für optionales Argument geöffnet"
 msgid "BROKEN: "
 msgstr "NICHT VORHANDEN:"
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "Querverweis: "
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "Gleichung"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "(Querverweis): "
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "Querverweis+Text: "
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "FormatRef: "
 msgstr "Formatiert: "
 
@@ -18647,7 +18647,7 @@ msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/InsetText.cpp:203
+#: src/insets/InsetText.cpp:206
 msgid "Opened Text Inset"
 msgstr "Text-Einfügung geöffnet"
 
@@ -18871,7 +18871,7 @@ msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
-#: src/mathed/InsetMathRef.cpp:185
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr "Standard[[mathref]]"
 

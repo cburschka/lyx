@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:34+0100\n"
+"POT-Creation-Date: 2008-06-03 20:16+0100\n"
 "PO-Revision-Date: 2007-10-07 21:30+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -1610,7 +1610,7 @@ msgstr "外側(&U)："
 msgid "&Quote Style:"
 msgstr "引言樣式(&Q)："
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:300
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 msgid "Listing"
 msgstr "列表"
@@ -7779,7 +7779,7 @@ msgstr "頁腳"
 msgid "comment"
 msgstr "註釋"
 
-#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:295
+#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "註記"
 
@@ -15658,12 +15658,12 @@ msgstr ""
 "設定為預設值。"
 
 #: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/mathed/InsetMathString.cpp:134
+#: src/mathed/InsetMathString.cpp:141
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:142
 #, fuzzy
 msgid "uncodable character"
 msgstr "特殊字元"
@@ -15954,7 +15954,7 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:294
 msgid "Senseless!!! "
 msgstr "無意義 !!! "
 
@@ -18225,7 +18225,7 @@ msgstr "分支"
 msgid "Opened Caption Inset"
 msgstr "開啟的題要內欄"
 
-#: src/insets/InsetCaption.cpp:303
+#: src/insets/InsetCaption.cpp:306
 #, c-format
 msgid "Sub-%1$s"
 msgstr ""
@@ -18328,7 +18328,7 @@ msgstr "%1$s 的清單"
 msgid "Opened Footnote Inset"
 msgstr "開啟的註腳內欄"
 
-#: src/insets/InsetFoot.cpp:111
+#: src/insets/InsetFoot.cpp:113
 msgid "footnote"
 msgstr "註腳"
 
@@ -18401,7 +18401,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "找不到檔案"
 
-#: src/insets/InsetIndex.cpp:130
+#: src/insets/InsetIndex.cpp:132
 msgid "Index"
 msgstr "索引"
 
@@ -18640,47 +18640,47 @@ msgstr "開啟的選擇性引數內欄"
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "參照："
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "方程式"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "方程式參照："
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "頁碼"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "頁面："
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "文字頁碼"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "文字頁："
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "標準+文字頁面"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "參照+文字："
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "美化參照"
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "FormatRef: "
 msgstr "格式化參照："
 
@@ -18777,7 +18777,7 @@ msgstr "不明的內容表型態"
 msgid "Opened table"
 msgstr "開啟的表格"
 
-#: src/insets/InsetText.cpp:203
+#: src/insets/InsetText.cpp:206
 msgid "Opened Text Inset"
 msgstr "開啟的文字內欄"
 
@@ -19001,7 +19001,7 @@ msgstr "建立新的數學文字環境 ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "已進入數學文字模式 (textrm)"
 
-#: src/mathed/InsetMathRef.cpp:185
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr "標準"
 

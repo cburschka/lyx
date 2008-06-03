@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:34+0100\n"
+"POT-Creation-Date: 2008-06-03 20:16+0100\n"
 "PO-Revision-Date: 2007-12-17 22:55+1000\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1622,7 +1622,7 @@ msgstr "&Другой:"
 msgid "&Quote Style:"
 msgstr "Вид кавычек:"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:300
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 msgid "Listing"
 msgstr "Листинг"
@@ -8101,7 +8101,7 @@ msgstr "сноска"
 msgid "comment"
 msgstr "комментарий"
 
-#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:295
+#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "Заметка"
 
@@ -16098,12 +16098,12 @@ msgid ""
 msgstr ""
 
 #: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/mathed/InsetMathString.cpp:134
+#: src/mathed/InsetMathString.cpp:141
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX версии "
 
-#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:142
 #, fuzzy
 msgid "uncodable character"
 msgstr "Специальный символ"
@@ -16401,7 +16401,7 @@ msgstr ""
 msgid "\\Alph{enumiv}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:294
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Нечувствительность: "
@@ -18674,7 +18674,7 @@ msgstr "Ветка"
 msgid "Opened Caption Inset"
 msgstr "Открытая вкладка подписи"
 
-#: src/insets/InsetCaption.cpp:303
+#: src/insets/InsetCaption.cpp:306
 #, c-format
 msgid "Sub-%1$s"
 msgstr ""
@@ -18779,7 +18779,7 @@ msgstr "Список из %1$s"
 msgid "Opened Footnote Inset"
 msgstr "Открытая вкладка сноски"
 
-#: src/insets/InsetFoot.cpp:111
+#: src/insets/InsetFoot.cpp:113
 msgid "footnote"
 msgstr "Заметка в подвал"
 
@@ -18843,7 +18843,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Модуль не найден."
 
-#: src/insets/InsetIndex.cpp:130
+#: src/insets/InsetIndex.cpp:132
 msgid "Index"
 msgstr "Предметный указатель"
 
@@ -19074,47 +19074,47 @@ msgstr "Раскрытая вкладка дополнительный аргументов"
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
 msgstr "Ссылка: "
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "Equation"
 msgstr "Уравнение"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 msgid "EqRef: "
 msgstr "Ссылка на формулу: "
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
 msgstr "Номер страницы"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page: "
 msgstr "Стр. от:"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "Textual Page Number"
 msgstr "Текстовый номер страницы"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 msgid "TextPage: "
 msgstr "ТекстСтр.:"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr "Обычный+Текстовый номер страницы"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Ref+Text: "
 msgstr "Ссылка+Текст:"
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr "Красивая ссылка"
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "Ф&ормат:"
@@ -19211,7 +19211,7 @@ msgstr "Неизвестный тип содержания"
 msgid "Opened table"
 msgstr "Открытая таблица"
 
-#: src/insets/InsetText.cpp:203
+#: src/insets/InsetText.cpp:206
 msgid "Opened Text Inset"
 msgstr "Открытая текстовая вкладка"
 
@@ -19436,7 +19436,7 @@ msgstr "создать новую внутритекстовую формулу ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "текстовый режим внутри формулы (textrm)"
 
-#: src/mathed/InsetMathRef.cpp:185
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr ""
 

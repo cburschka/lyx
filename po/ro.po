@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-02 16:34+0100\n"
+"POT-Creation-Date: 2008-06-03 20:16+0100\n"
 "PO-Revision-Date: 2008-02-13 20:05-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -1618,7 +1618,7 @@ msgstr "E&xterior:"
 msgid "&Quote Style:"
 msgstr "Stil de citare   "
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:300
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 msgid "Listing"
 msgstr "Listare"
@@ -7830,7 +7830,7 @@ msgstr "notã subsol"
 msgid "comment"
 msgstr "Comentariu"
 
-#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:295
+#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "notã"
 
@@ -16098,12 +16098,12 @@ msgid ""
 msgstr ""
 
 #: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/mathed/InsetMathString.cpp:134
+#: src/mathed/InsetMathString.cpp:141
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versiune...|V"
 
-#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:135
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:142
 #, fuzzy
 msgid "uncodable character"
 msgstr "caracter special"
@@ -16415,7 +16415,7 @@ msgstr "(\\\\alph{enumii})"
 msgid "\\Alph{enumiv}."
 msgstr "(\\\\alph{enumii})"
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:294
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Fãrã sens: "
@@ -18840,7 +18840,7 @@ msgstr "Cale fiºiere de rezervã:|#r"
 msgid "Opened Caption Inset"
 msgstr "CenteredCaption"
 
-#: src/insets/InsetCaption.cpp:303
+#: src/insets/InsetCaption.cpp:306
 #, c-format
 msgid "Sub-%1$s"
 msgstr ""
@@ -18952,7 +18952,7 @@ msgstr "Listã de tabele"
 msgid "Opened Footnote Inset"
 msgstr "Deschidere"
 
-#: src/insets/InsetFoot.cpp:111
+#: src/insets/InsetFoot.cpp:113
 #, fuzzy
 msgid "footnote"
 msgstr "Notã de subsol"
@@ -19019,7 +19019,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Reconfigureazã|R"
 
-#: src/insets/InsetIndex.cpp:130
+#: src/insets/InsetIndex.cpp:132
 msgid "Index"
 msgstr "Index"
 
@@ -19261,55 +19261,55 @@ msgstr "CenteredCaption"
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:187
 #, fuzzy
 msgid "Ref: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "Equation"
 msgstr "Citat"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "EqRef: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page Number"
 msgstr "Comutã sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page: "
 msgstr "Pagini"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Comutã sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "TextPage: "
 msgstr "Text dupã"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Text"
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -19408,7 +19408,7 @@ msgstr "necunoscut"
 msgid "Opened table"
 msgstr "Deschide un fiºier"
 
-#: src/insets/InsetText.cpp:203
+#: src/insets/InsetText.cpp:206
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Deschidere"
@@ -19668,7 +19668,7 @@ msgstr ""
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathRef.cpp:185
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr ""
 
