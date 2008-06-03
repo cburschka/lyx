@@ -51,7 +51,7 @@ enum OpenEncoding {
 };
 
 static int open_encoding_ = none;
-static bool cjk_inherited_ = false;
+static int cjk_inherited_ = 0;
 
 
 ParagraphList::const_iterator
@@ -316,9 +316,11 @@ TeXOnePar(Buffer const & buf,
 	runparams.moving_arg |= style.needprotect;
 
 	bool const maintext = text.isMainText(buf);
-	// we are at the beginning of an inset and CJK is already open.
-	if (pit == paragraphs.begin() && !maintext && open_encoding_ == CJK) {
-		cjk_inherited_ = true;
+	// we are at the beginning of an inset and CJK is already open;
+	// we count inheritation levels to get the inset nesting right.
+	if (pit == paragraphs.begin() && !maintext
+	    && (cjk_inherited_ > 0 || open_encoding_ == CJK)) {
+		cjk_inherited_ += 1;
 		open_encoding_ = none;
 	}
 
@@ -449,7 +451,7 @@ TeXOnePar(Buffer const & buf,
 				// the following is necessary after a CJK environment in a multilingual
 				// context (nesting issue).
 				if (par_language->encoding()->package() == Encoding::CJK &&
-				    open_encoding_ != CJK && !cjk_inherited_) {
+				    open_encoding_ != CJK && cjk_inherited_ == 0) {
 					os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
 					   << "}{}%\n";
 					open_encoding_ = CJK;
@@ -858,9 +860,10 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	// reset inherited encoding
-	if (cjk_inherited_) {
-		open_encoding_ = CJK;
-		cjk_inherited_ = false;
+	if (cjk_inherited_ > 0) {
+		cjk_inherited_ -= 1;
+		if (cjk_inherited_ == 0)
+			open_encoding_ = CJK;
 	}
 }
 
