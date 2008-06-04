@@ -536,9 +536,35 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::SCREEN_DOWN
+ * \li Action: Moves the cursor one page in downward direction.
+ * \li Syntax: screen-down
+ * \endvar
+ */
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_UP
+ * \li Action: Moves the cursor one page in upward direction.
+ * \li Syntax: screen-up
+ * \endvar
+ */
 		{ LFUN_SCREEN_UP, "screen-up", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_DOWN_SELECT
+ * \li Action: Moves the cursor one screen in downward direction adding the current
+               position to the selection.
+ * \li Syntax: screen-down-select
+ * \endvar
+ */
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_UP_SELECT
+ * \li Action: Moves the cursor one page in upward direction adding the current
+               position to the selection.
+ * \li Syntax: screen-up-select
+ * \endvar
+ */
 		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SCROLL
