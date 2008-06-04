@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16,6 +16,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -41,7 +42,8 @@
 
 \begin_layout Subsection
 Externer Unterabschnitt
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "uab:Externer-Unterabschnitt-2"
 
 \end_inset

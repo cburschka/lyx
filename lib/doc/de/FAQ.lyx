@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 329
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -149,8 +149,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-29.
- April 2008
+5.
+ Juni 2008
 \end_layout
 
 \begin_layout Standard
@@ -161,7 +161,15 @@ Dies ist eine Zusammenstellung der häufig gestellten Fragen zu LyX, dem
  Für weitergehende Hilfestellungen wenden Sie sich bitte an die Mailing
  Liste der LyX User Group, 
 \family typewriter
-lyx-users@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 , 
 \emph on
@@ -308,7 +316,7 @@ http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf
 \begin_layout Itemize
 Vorlesungsskripte (133 Seiten, 27 Abbildungen -- auf einem 486-er Rechner
  mit 33
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 MHz)
@@ -367,7 +375,7 @@ Barnsley
 , 
 \noun on
 M.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 J
@@ -379,7 +387,7 @@ Longley
 , 
 \noun on
 P.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 A
@@ -426,7 +434,7 @@ Ressler
 , 
 \noun on
 M.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 E
@@ -568,22 +576,22 @@ Wieviel Festplattenplatz benötigt LyX?
 
 \begin_layout Standard
 Die Binärdatei von LyX hat zur Zeit etwa 8
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 MB, die restlichen Dateien belegen weitere 25
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 MB, 17
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 MB davon sind Dokumentation! Sie können, um Platz zu sparen, von Ihnen nicht
  benötigte Übersetzungen löschen.
  Allerdings benötigen Sie darüber hinaus ein funktionierendes LaTeX wie
  etwa teTeX, das etwa 120
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 MB belegt, oder texlive und andere Programme
@@ -881,7 +889,7 @@ Importieren
 
 \family sans
 MS
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Word
@@ -907,11 +915,11 @@ Exportieren
 
 \family sans
 HTML
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (MS
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Word
@@ -929,13 +937,13 @@ Ex-por-tie-ren
 
 \family sans
 Rich
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Text
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1318,7 +1326,7 @@ Formatierung
 Horizontaler
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1479,7 +1487,7 @@ status collapsed
 \end_inset
 
 Platzierung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -1507,7 +1515,7 @@ Too many unprocessed floats
 LaTeX kann zu jedem Zeitpunkt nur eine begrenzte Anzahl an Gleitobjekten
  verwalten, die noch keine feste Position zugewiesen bekommen haben.
  Passt beispielsweise Abbildung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4 anhand der Standardvorgabe 
@@ -1519,7 +1527,7 @@ erst oben auf der Seite versuchen, dann unten, dann auf eine eigene Seite
 \end_inset
 
  noch an keine gute Stelle, im Text erscheint aber bereits Abbildung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 5, bleiben zunächst beide 
@@ -1552,7 +1560,7 @@ Formatierung
 Seite
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1788,9 +1796,18 @@ Ich will jemandem via EMail von meinem Problem berichten
 \end_layout
 
 \begin_layout Standard
-Schicken Sie eine EMail an die LyX-Benutzer Liste, 
+Schicken Sie eine EMail an die 
 \family typewriter
-lyx-users@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Benutzer Liste"
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
 .
  Wenn LyX abstürzt oder auf andere Weise Fehlfunktionen zeigt, schreiben
@@ -1851,10 +1868,15 @@ Rückmeldungen sind willkommen
 \begin_layout Standard
 Senden Sie Vorschläge für weitere Einträge, erstellte Rekordlängendokumente
  usw.
- an die LyX-Dokumentations-Mailingliste 
-\family typewriter
-lyxdoc@lists.lyx.org
-\family default
+ an die 
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-Dokumentations-Mailingliste"
+target "lyx-doc@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 

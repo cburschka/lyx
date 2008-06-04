@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 334
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrbook
@@ -153,8 +153,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 30.
- Mai 2008
+letzte Änderung: 5.
+ Juni 2008
 \end_layout
 
 \begin_layout Standard
@@ -423,7 +423,7 @@ Das LyX-Team hat das wegen Parsing/Kodierung gemacht.
 \family sans
 Ansicht\SpecialChar \menuseparator
 Quelle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ansehen 
@@ -437,7 +437,7 @@ kreuzen
 Vollständige
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -445,7 +445,7 @@ Vollständige
 Quelle
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -690,7 +690,7 @@ Drucken
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -809,7 +809,7 @@ Ansicht\SpecialChar \menuseparator
 PDF
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -817,7 +817,7 @@ PDF
 (ps2pdf)
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aufgerufen haben, wird die 
@@ -998,7 +998,7 @@ X\SpecialChar \ldots{}
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 können Sie eine LaTeX-Datei nach LyX importieren.
@@ -1414,11 +1414,11 @@ Unterdokument
  sollten Sie als 
 \family sans
 Art
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Einbindung:
@@ -1997,11 +1997,11 @@ mat
 
 \family sans
 Absätze
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 trennen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 durch:
@@ -2009,7 +2009,7 @@ durch:
  
 \family sans
 Vertikaler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -2123,7 +2123,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Protokoll
@@ -2357,7 +2357,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Kon\SpecialChar \-
@@ -2372,7 +2372,7 @@ tion
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 konfigurieren
@@ -2670,11 +2670,11 @@ Benutzerhandbuch
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 /
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -2819,7 +2819,7 @@ natbib
 \family default
 -Paket wahrscheinlich das richtige.
  Wenn Sie aber besondere Funktionen wie Kurztitel oder ibidem usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 benötigen, Sollten Sie das ziemlich neue 
@@ -3029,14 +3029,14 @@ Literaturverzeichnis
  kreuzen Sie 
 \family sans
 Abschnittsspezifisches
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Literaturverzeichnis
 \family default
  an.
  Jetzt fügen Sie mehrere BibTeX-Verzeichnisse ein, wie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -3144,7 +3144,7 @@ Mehrfache Literaturverzeichnisse, zum Beispiel ein Literaturverzeichnis
 bibtopic
 \family default
 -Paket, das man für abschnittsweise Literaturverzeichnisse (siehe Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -3156,7 +3156,7 @@ reference "Literaturverzeichnisse-abschnitssweise"
 
 ) benutzen kann, ermöglicht LyX auch dies, wenn Sie bereit sind, ein wenig
   LaTeX-Code (TeX-Code, siehe Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -3198,7 +3198,7 @@ Literaturverzeichnis
  
 \family sans
 Abschnittsspezifisches
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Literaturverzeichnis
@@ -3301,7 +3301,7 @@ Zum Beispiel haben wissenschaftliche Veröffentlichungen meist fünf Hauptteile:
  Jeder dieser Teile kann als separate LyX-Datei angelegt werden, die dann
  von einem Hauptdokument eingebunden werden, welches Titel, Autoren, Zusammenfas
 sung, Querverweise usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 enthält und die fünf eingefügten Dateien.
@@ -3400,19 +3400,19 @@ Unformatiert
  Über den Auswahlpunkt 
 \family sans
 Leerzeichen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 bei
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ausgabe
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 kennzeichnen
@@ -3451,7 +3451,7 @@ Querverweis
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und wählen die gewünschte.
@@ -3485,24 +3485,24 @@ Systemeinstellungen\SpecialChar \menuseparator
 Regional\SpecialChar \-
 ein\SpecialChar \-
 stellungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zugangshilfen\SpecialChar \menuseparator
 Tastenkürzel\SpecialChar \menuseparator
 Allgemeine
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Tastenkürzel\SpecialChar \menuseparator
 Arbeits\SpecialChar \-
 flä\SpecialChar \-
 che anzeigen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 an/aus
@@ -3540,7 +3540,7 @@ article
 book
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -3919,7 +3919,7 @@ Auflistungszeichen.
 Wenn Sie 
 \family sans
 Benutzerdef.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zeichen
@@ -4419,7 +4419,7 @@ Damit können Sie html-Dateien importieren.
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -4474,7 +4474,7 @@ reference "LaTeX-Dateien-nach-LyX"
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -4536,11 +4536,11 @@ Sprache
  und den 
 \family sans
 Stil
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Anführungszeichen
@@ -4550,7 +4550,7 @@ Anführungszeichen
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -4581,7 +4581,7 @@ Datei!Import!NoWeb
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -4620,7 +4620,7 @@ Sie können OpenOffice- und OpenDocument-Textdateien importieren aber zum
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -4648,7 +4648,7 @@ Datei!Import!Einfacher Text
 Datei\SpecialChar \menuseparator
 Importieren\SpecialChar \menuseparator
 Einfacher
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Text\SpecialChar \ldots{}
@@ -4671,11 +4671,11 @@ Einfacher Text, Zeilen verbinden
 Datei\SpecialChar \menuseparator
 Importieren\SpecialChar \menuseparator
 Einfacher
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Text, Zeilen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verbinden\SpecialChar \ldots{}
@@ -4944,11 +4944,11 @@ Datei!Export!HTML
 
 \begin_layout Standard
 LyX-Dokumente (z.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 B.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -5042,7 +5042,7 @@ s setzen.
 
 \begin_layout Description
 Tipp
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 1: Manchmal werden Dateien mit Bildern nicht konvertiert.
@@ -5074,7 +5074,7 @@ X
 
 \begin_layout Description
 Tipp
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2: Wenn es doch nicht funktioniert, sollten Sie vielleicht 
@@ -5108,7 +5108,7 @@ latex2html -no_subdir -no_navigation -split 0 -show_section_numbers $$i
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -5146,7 +5146,7 @@ tiert werden kann.
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -5319,7 +5319,7 @@ Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -5424,7 +5424,7 @@ n.
 
 \begin_layout Description
 Benötigtes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programm: 
@@ -5552,7 +5552,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 prüfen
@@ -5772,7 +5772,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 prüfen
@@ -5922,7 +5922,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (plain)
@@ -6018,7 +6018,7 @@ Non-breaking space (
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Geschütztes
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Leerzeichen
@@ -6590,7 +6590,7 @@ You should use either
 
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und 
@@ -6683,7 +6683,7 @@ Either
 ,'
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 or 
@@ -6693,7 +6693,7 @@ or
 ,''
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 will look better.
@@ -6703,13 +6703,13 @@ will look better.
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Kleiner
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 oder 
@@ -6813,7 +6813,7 @@ times$
 \family default
 \size default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6864,7 +6864,7 @@ Use
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 to begin quotation, not 
@@ -6881,7 +6881,7 @@ to begin quotation, not
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 am Anfang eines Zitats, nicht 
@@ -6904,7 +6904,7 @@ Use
 '
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 to end quotation, not 
@@ -6925,7 +6925,7 @@ to end quotation, not
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 am Ende eines Zitats, nicht
@@ -7260,7 +7260,7 @@ Mit diesem Befehl registrieren Sie Ihr Dokument bei der Versionskontrolle.
  Um es zu verändern, müssen Sie zuerst 
 \family sans
 Arbeitskopie
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 erzeugen
@@ -7722,7 +7722,7 @@ letter
  erstellt werden oder bestehende Klassen wie etwa 
 \family sans
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (AMS)
@@ -8112,7 +8112,7 @@ Wenn Sie den Menüpunkt
 \family sans
 Datei\SpecialChar \menuseparator
 Programm
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 er\SpecialChar \-
@@ -8149,7 +8149,7 @@ Befehl
 , sollte den Eintrag 
 \family typewriter
 build-script
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 $$i
@@ -8187,7 +8187,7 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
 Der zweite Teil sind die 
 \family sans
 Extra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 flags
@@ -8393,11 +8393,11 @@ Konverter
 
 \begin_layout Description
 das
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 literarische
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Format wird auf der Karteikarte 
@@ -8421,7 +8421,7 @@ NoWeb
  gesetzt, die 
 \family sans
 Datei
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Endung
@@ -8440,7 +8440,7 @@ Endung
 
 \begin_layout Description
 das
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Programmformat ist ein leeres Format, das nur dazu dient, das Ende der Konvertie
@@ -8512,7 +8512,7 @@ build-script $$i
  und 
 \family sans
 Extra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 flags
@@ -8677,7 +8677,7 @@ Scrap
  Der sechste ist für den Menüpunkt 
 \family sans
 Programm
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 erstellen
@@ -9093,7 +9093,7 @@ Michael Ende
 \size small
 \SpecialChar \ldots{}
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Draußen am südlichen Rand dieser großen Stadt, dort, wo schon die ersten
@@ -11019,7 +11019,7 @@ picinpar
 Klammer, hier 2, definiert die Anzahl der Zeilen über dem Bild, der zweite,
  hier c, die Position des Bildes.
  Die Abbildung nimmt 40
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % der Spaltenbreite ein.
@@ -11436,11 +11436,11 @@ http://www.ekima.de
 \family sans
 brückle\SpecialChar \menuseparator
 brückle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 als
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 pdf
@@ -11564,7 +11564,7 @@ amsbook -- Das AMS-Standardformat für Bücher (oder besser Monographien).
 , mit Kapitel (erste Zahl), Abschnitt (zweite Zahl) und Aussage (dritte
  Zahl).
  Theorem, Korollar, Proposition, Definition usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 werden wiederum gleichbehandelt.
@@ -11905,7 +11905,7 @@ Address
 \family sans
 \series medium
 Current
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Address
@@ -12022,13 +12022,13 @@ Datei
 
 \family sans
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12178,7 +12178,7 @@ Bitte beachten Sie auch, dass
 Astronomy & Astrophysics
 \emph default
  seit dem 1.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Januar 2001 nicht mehr von Springer, sondern von EDP Sciences herausgegeben
@@ -12213,7 +12213,7 @@ Neu\SpecialChar \ldots{}
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (
@@ -12224,18 +12224,18 @@ Strg+N
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vor\SpecialChar \-
 la\SpecialChar \-
 ge\SpecialChar \ldots{}
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (Strg+Umschalt+N)
@@ -12266,7 +12266,7 @@ article (A&A)
  im Menü 
 \family sans
 Einstellungen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument
@@ -12345,7 +12345,7 @@ fprints
 \family default
 : [optional] falls mehr als ein Autor beteiligt ist: An wen sollen Anfragen
  bzgl.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Reprints gestellt werden?
@@ -12368,13 +12368,13 @@ Datum
  Das hier verwendete Format ist: 
 \family typewriter
 Received:
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <date>; Ac\SpecialChar \-
 cept\SpecialChar \-
 ed
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <date>
@@ -12442,7 +12442,7 @@ Darüberhinaus werden drei zusätzliche LaTeX-Befehle verwendet, für die es
 and
 \family default
  trennt die Namen von mehreren Autoren bzw.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Adressen
@@ -12842,11 +12842,11 @@ en Leerraum ein:
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Variabler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 horiz.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -12858,7 +12858,7 @@ Abstand
 Schalten Sie in den LaTeX-Modus: 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 T
@@ -12888,7 +12888,7 @@ Setzen Sie den Cursor hinter den Text und fügen Sie im LaTeX-Modus die schließ
 de Klammer ein: 
 \family sans
 Strg+L
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -13051,11 +13051,11 @@ Es ist sehr ratsam, mit der beigefügten Vorlagedatei zu beginnen.
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 von
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Vorlage
@@ -13962,7 +13962,7 @@ Rekonfigurieren Sie LyX mit
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 konfigurieren
@@ -14054,7 +14054,7 @@ Ressler(1992)
  und nicht 
 \family typewriter
 Ressler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (1992)
@@ -14097,7 +14097,7 @@ graphicx
 plotone
 \family default
 - usw
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Befehle als TeX-Code in einer Gleitumgebung einsetzen, mir ist es aber nie
@@ -14536,7 +14536,7 @@ Both packages use basic citations; the natbib package should not be used.
 refcite
 \family default
  command, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g., 
@@ -14544,7 +14544,7 @@ g.,
 \end_inset
 
 See Ref.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14688,7 +14688,7 @@ Chil
 d
 \bar default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document
@@ -14716,18 +14716,18 @@ Datei
 
 \family sans
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vorlage
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und wählen die Datei 
@@ -14758,7 +14758,7 @@ Einstellungen\SpecialChar \menuseparator
 Sprach-Einstellungen\SpecialChar \menuseparator
 Sprache\SpecialChar \menuseparator
 Babel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden.
@@ -14800,7 +14800,7 @@ Das ijmpd-Paket behandelt Tabellenbeschriftungen ganz anders als LyX.
 \family sans
 Einfügen\SpecialChar \menuseparator
 Datei
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 einbinden
@@ -15032,18 +15032,18 @@ Datei
 
 \family sans
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vorlage
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und wählen die Datei 
@@ -15494,7 +15494,7 @@ Abschnitt
 Kapitel
 \emph default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 \SpecialChar \ldots{}
@@ -15503,7 +15503,7 @@ Kapitel
  modifiziert werden (in LyX einzugeben im Feld 
 \family sans
 Weitere
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Optionen
@@ -15719,11 +15719,11 @@ letter (koma-script)
 
 \family sans
 Teil
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.), Kapitel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15731,7 +15731,7 @@ Teil
 , 
 \family sans
 Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15749,7 +15749,7 @@ Abschnitt*
  
 \family sans
 Teil
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15757,7 +15757,7 @@ Teil
  und 
 \family sans
 Kapitel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15773,7 +15773,7 @@ article (koma-script)
 
 \family sans
 Kapitel*
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15781,7 +15781,7 @@ Kapitel*
 , 
 \family sans
 Abschnitt*
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15789,7 +15789,7 @@ Abschnitt*
  verhalten sich genauso wie 
 \family sans
 Kapitel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15797,7 +15797,7 @@ Kapitel
  und 
 \family sans
 Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Inhaltsverz.)
@@ -15856,7 +15856,7 @@ Schriftgröße, ohne die Struktur des Dokuments zu beeinflussen.
 
 \family sans
 Legende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Oben
@@ -15864,7 +15864,7 @@ Oben
  und 
 \family sans
 Legende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Unten
@@ -15887,7 +15887,7 @@ Legende
  für Tabellen nach 
 \family sans
 Legende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Oben
@@ -15895,7 +15895,7 @@ Oben
  und für Abbildungen nach 
 \family sans
 Legende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Unten
@@ -16098,7 +16098,7 @@ Betreff
 
 \family sans
 Innenseite
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 oben
@@ -16123,7 +16123,7 @@ article (koma-script)
 
 \family sans
 Innenseite
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 unten
@@ -16266,7 +16266,7 @@ X
 , 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -16274,7 +16274,7 @@ Zitat
 , 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
@@ -16786,7 +16786,7 @@ zes.
 Die Typen 
 \family sans
 Ihr
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zeichen
@@ -16794,7 +16794,7 @@ Zeichen
 , 
 \family sans
 Ihr
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Brief
@@ -16802,7 +16802,7 @@ Brief
 , 
 \family sans
 Mein
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zeichen
@@ -16938,7 +16938,7 @@ Grußformel
  
 \family sans
 Nächste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Adresse
@@ -17091,7 +17091,7 @@ Absatz-Einstellungen
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (
@@ -17150,7 +17150,7 @@ Beschreibung
 \begin_layout Standard
 Dies sind Format-Dateien für einige Zeitschriftenformate, die vom Springer-Verla
 g verwendet und auf
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -17712,7 +17712,7 @@ ren erstellen können.
  können: Die normale Klasse 
 \family sans
 slides
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (default)
@@ -17798,7 +17798,7 @@ Dokumentklasse
  
 \family sans
 slides
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (de\SpecialChar \-
@@ -17813,7 +17813,7 @@ Verändern Sie nicht die Einstellungen für
 \family sans
 Textformat\SpecialChar \menuseparator
 Zweispaltiges
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument
@@ -17946,11 +17946,11 @@ slides
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vorlage
@@ -17980,7 +17980,7 @@ fällt ist der Zeichensatz.
  Die Standardeinstellung entspricht der Größe 
 \family sans
 Noch
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 größer
@@ -17988,7 +17988,7 @@ größer
  im Zeichensatz 
 \family sans
 Sans
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Serif
@@ -18267,7 +18267,7 @@ e).
  In der gleichen Weise stellen 
 \family sans
 Unsichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18275,7 +18275,7 @@ Text
  und 
 \family sans
 Sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18306,7 +18306,7 @@ Notiz
 , 
 \family sans
 Unsichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18314,7 +18314,7 @@ Text
  und 
 \family sans
 Sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18383,7 +18383,7 @@ Folie
  Die Marke für diese Umgebung ist ein blauer Schriftzug 
 \family typewriter
 New
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Slide:
@@ -18401,7 +18401,7 @@ Folien sind vermutlich die einzigen Dokumente, bei denen Sie in LyX explizit
  wird der Text zwar automatisch auf eine neue Folie umgebrochen, doch dieses
  Vorgehen ist nicht ratsam, da diese zusätzliche Seite keinerlei Seitennummern
  usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 enthält.
@@ -18430,7 +18430,7 @@ Folie
 \family typewriter
 \noun on
 New
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Overlay
@@ -18441,7 +18441,7 @@ Overlay
 \family typewriter
 \emph on
 New
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Note:
@@ -18552,7 +18552,7 @@ s bekämen dann
 \end_inset
 
  usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 an die ursprüngliche Seitenzahl angehängt.
@@ -18601,7 +18601,7 @@ Sie könnten natürlich versuchen, mit unterschiedlich großen vertikalen Abstä
  herumzuprobieren, bis es passt, doch mit 
 \family sans
 Unsichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18609,7 +18609,7 @@ Text
  und 
 \family sans
 Sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18635,7 +18635,7 @@ in
  Wenn Sie 
 \family sans
 Unsichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18643,11 +18643,11 @@ Text
  schreiben, wird als Marke der Schriftzug 
 \family typewriter
 <Invisible
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Follows>
@@ -18661,7 +18661,7 @@ Follows>
 Für 
 \family sans
 Sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18669,11 +18669,11 @@ Text
  lautet die Marke 
 \family typewriter
 <Visible
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Follows>
@@ -18709,7 +18709,7 @@ Overlay
  und 
 \family sans
 (Un)sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18733,7 +18733,7 @@ Overlay
 -Folie erscheinen soll, fügen Sie eine 
 \family sans
 Unsichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18746,7 +18746,7 @@ Overlay
 -Folie bestimmten Text eine 
 \family sans
 Sichtbarer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -18837,7 +18837,7 @@ visible \SpecialChar \ldots{}
 \begin_layout Plain Layout
 \SpecialChar \ldots{}
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und müssen als TeX-Code markiert werden.
@@ -18913,7 +18913,7 @@ Folie
 \end_inset
 
  usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 angehängt.
@@ -19090,18 +19090,18 @@ Es existiert auch eine Vorlagedatei, die Sie als Grundgerüst für eigene
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vorlage\SpecialChar \ldots{}
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 an und wählen Sie als Vorlage die Datei 
@@ -19194,7 +19194,7 @@ forderung sein, genau diese Klasse zu verwenden, es
 Foils
 \family default
  (siehe Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -19376,7 +19376,7 @@ Dokumentklasse
  
 \family sans
 slides
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (FoilTe
@@ -19406,7 +19406,7 @@ Verändern Sie nicht die Einstellungen für
 \family sans
 Textformat\SpecialChar \menuseparator
 Zweispaltiges
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument
@@ -19432,7 +19432,7 @@ Die Standardschriftgröße ist 20pt, alternativ sind 17pt, 15pt und 30pt möglic
 Der Standardzeichensatz ist 
 \family sans
 Sans
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Serif
@@ -19640,7 +19640,7 @@ Dokumentklasse
 
 mm eingestellt.
  Dies ist dasselbe Seitenverhältnis wie bei einem 35
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mm Dia, wodurch die Arbeit mit diesem Medium erleichtert wird.
@@ -20166,7 +20166,7 @@ Definition*
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -20297,7 +20297,7 @@ begin{multicols}{4}
 
 \family sans
 My
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Logo
@@ -20313,7 +20313,7 @@ Restriction
 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Footer
@@ -20323,7 +20323,7 @@ Footer
 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -20333,7 +20333,7 @@ Header
 
 \family sans
 Left
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -20341,7 +20341,7 @@ Header
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -20635,7 +20635,7 @@ name "Foiltex-Kopf-und-fußzeilen"
 Die beiden Befehle 
 \family sans
 My
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Logo
@@ -20691,7 +20691,7 @@ Vertraulich
 Die anderen Ecken werden über die folgenden drei Befehle beeinflusst: 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Footer
@@ -20699,7 +20699,7 @@ Footer
  (Die Standardeinstellung ist die Seitennummer.), 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -20707,7 +20707,7 @@ Header
  (obere rechte Ecke), 
 \family sans
 Left
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -20804,7 +20804,7 @@ skip
 \family default
  verändert werden.
  Um zum Beispiel alle Titel 1
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 cm näher an den Text heranzurücken, geben Sie im LaTeX-Vorspann folgenden
@@ -21024,7 +21024,7 @@ Einstellungen\SpecialChar \ldots{}
 
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 das Seitenformat 
@@ -21343,13 +21343,13 @@ Falls sonst nichts anderes verwendet werden kann.
 FADE_IN
 \family default
 :
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+I
@@ -21373,11 +21373,11 @@ Sally wacht gerade auf
 
 \family sans
 INT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 I
@@ -21396,11 +21396,11 @@ nisse wiederzugeben.
 
 \family sans
 EXT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 E
@@ -21419,11 +21419,11 @@ STABEN gesetzt.
 
 \family sans
 Speaker
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 S
@@ -21439,11 +21439,11 @@ Die Person, die spricht.
 
 \family sans
 Parenthetical
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 P
@@ -21461,11 +21461,11 @@ Anweisungen für den Sprecher.
 
 \family sans
 Dialogue
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 D
@@ -21485,11 +21485,11 @@ Speaker
 
 \family sans
 Transition
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 T
@@ -21505,11 +21505,11 @@ Kameraanweisungen, etwa CUT TO:
 
 \family sans
 FADE OUT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+I
@@ -21519,11 +21519,11 @@ Umschalt+I
 
 \family sans
 Autor
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+A
@@ -21533,11 +21533,11 @@ Umschalt+A
 
 \family sans
 Titel
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+T
@@ -21547,11 +21547,11 @@ Umschalt+T
 
 \family sans
 Right_Address
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -21623,11 +21623,11 @@ Hollywood
 \family default
 , und unterliegt weniger Standards.
  Dieses Format sollte für Workshops u.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ä.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 geeignet sein.
@@ -21710,11 +21710,11 @@ Diesen Typ sollten Sie nicht benötigen, aber er ist für alles, was sonst
 
 \family sans
 Narrative
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -21731,11 +21731,11 @@ Wird verwendet, um Zustand der Bühne und Aktionen zu beschreiben.
 
 \family sans
 ACT
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 A
@@ -21755,11 +21755,11 @@ te Version zeigt römische
 
 \family sans
 ACT*
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+AT
@@ -21780,11 +21780,11 @@ ACT
 
 \family sans
 SCENE
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+S
@@ -21801,11 +21801,11 @@ Nicht automatisch nummeriert, die Nummer muss von Ihnen eingegeben werden
 
 \family sans
 AT_RISE:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+R
@@ -21827,11 +21827,11 @@ ges geschieht.
 
 \family sans
 Speaker
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 S
@@ -21847,11 +21847,11 @@ Titel des Sprechers/Schauspielers, zentriert in Großbuchstaben.
 
 \family sans
 Parenthetical
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 P
@@ -21874,11 +21874,11 @@ Dialogue
 
 \family sans
 Dialogue
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 D
@@ -21894,11 +21894,11 @@ Was der Sprecher sagt.
 
 \family sans
 CURTAIN
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+C
@@ -21914,11 +21914,11 @@ Der Vorhang fällt.
 
 \family sans
 Titel
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+T
@@ -21928,11 +21928,11 @@ Umschalt+T
 
 \family sans
 Autor
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+A
@@ -21942,11 +21942,11 @@ Umschalt+A
 
 \family sans
 Right_Address
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -21989,7 +21989,7 @@ status collapsed
 X4
 \family default
  arbeitet mit der Dokumentenklasse RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0 der American Physical Society (genauer dem 
@@ -22003,7 +22003,7 @@ X4
 Die Textklasse 
 \family sans
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (REVTe
@@ -22022,19 +22022,19 @@ X)
  von LyX basiert auf Version 3.1 von RevTeX.
  Leider ist diese mittlerweile obsolet, da sie nur mit LaTeX 2.09 funktioniert.
  Das bedeutet, dass einige RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3.1-Befehle als TeX-Code eingegeben werden müssen.
  Da RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0 auf die Arbeit mit LaTeX2e ausgerichtet wurde, ist auch LyX zusammen
  mit der Textklasse 
 \family sans
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (REVTe
@@ -22049,7 +22049,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4)
@@ -22063,7 +22063,7 @@ Dieser Text ist als ein
 Anhang
 \emph default
  zu der regulären Dokumentation des Paketes RevTeX
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 4.0 zu betrachten, deshalb werden hier keine der speziellen Makros beschrieben;
@@ -22116,7 +22116,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -22127,7 +22127,7 @@ X
 \begin_layout Standard
 Sie können nun Dokumente in dieser Klasse erstellen, entweder indem Sie
  ein bestehendes RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4-Dokument mittels 
@@ -22163,7 +22163,7 @@ Einstellungen
 \family default
 \SpecialChar \ldots{}
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 angeben.
@@ -22184,12 +22184,12 @@ Format
 \begin_layout Standard
 Die Namen der Absatzumgebungen entsprechen im allgemeinen den entsprechenden
  Befehlen aus RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0.
  Beachten Sie auch, dass (zumindest in RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0 
@@ -22239,13 +22239,13 @@ Wichtige Hinweise
 
 \begin_layout Standard
 Es gibt einige Besonderheiten in RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0, die möglicherweise Fehler hervorrufen, die in LyX sogar noch verwirrender
  erscheinen.
  In RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0 steht der 
@@ -22283,14 +22283,14 @@ keine
 \emph default
  Fußnoten, oder es können verrückte Dinge geschehen.
  Die Dokumentation zu RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4.0 enthält weitere Details dazu.
  Die Einträge 
 \family sans
 Autor
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Email
@@ -22298,7 +22298,7 @@ Email
 , 
 \family sans
 Autor
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 URL
@@ -22746,7 +22746,7 @@ status collapsed
 \end_inset
 
 section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22815,7 +22815,7 @@ Memoir supports basically all features of the standard book classes.
 
 \begin_layout Description
 Font
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
@@ -22823,7 +22823,7 @@ sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
 
 \begin_layout Description
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 style: The fancy page style is not supported, due to a command clash between
@@ -22834,7 +22834,7 @@ style: The fancy page style is not supported, due to a command clash between
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
@@ -22848,11 +22848,11 @@ Style
 chapterstyle
 \family default
  in the main text or in preamble (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -22873,7 +22873,7 @@ Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
 \family sans
 Insert\SpecialChar \menuseparator
 Short
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Title
@@ -22907,11 +22907,11 @@ empty
 \end_inset
 
 , i.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 e.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 without pagina).
@@ -22934,7 +22934,7 @@ article
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Extra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -22957,11 +22957,11 @@ real
 \begin_layout Description
 Oldfontcommands: By default, Memoir does not allow the use of the deprecated
  font commands, which have been used in the old LaTeX version 2.09 (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23044,11 +23044,11 @@ Abstract: You may wonder why an abstract is an extra feature.
 Chapterprecis: You may know this from belletristic: The contents of a chapter
  is shortly described below the title and also in the table of contents
  (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
