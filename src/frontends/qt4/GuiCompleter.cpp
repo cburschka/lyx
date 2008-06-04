@@ -47,31 +47,18 @@ class CompleterItemDelegate : public QItemDelegate
 {
 public:
 	explicit CompleterItemDelegate(QObject * parent)
-		: QItemDelegate(parent), enabled_(false)
+		: QItemDelegate(parent)
 	{}
 
 	~CompleterItemDelegate()
 	{}
 
-	void setEnabled(bool enabled = true)
-	{
-		enabled_ = enabled;
-	}
-	
 protected:
 	void drawDisplay(QPainter * painter,
 		QStyleOptionViewItem const & option,
 		QRect const & rect, QString const & text) const
 	{
-		if (!enabled_) {
-			QItemDelegate::drawDisplay(painter, option, rect, text);
-			return;
-		}
-
-		// FIXME: do this more elegantly
-		docstring stltext = qstring_to_ucs4(text);
-		reverse(stltext.begin(), stltext.end());
-		QItemDelegate::drawDisplay(painter, option, rect, toqstr(stltext));
+		QItemDelegate::drawDisplay(painter, option, rect, text);
 	}
 
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
@@ -97,9 +84,6 @@ protected:
 		drawFocus(painter, opt, option.rect);
 		painter->restore();
 	}
-
-private:
-	bool enabled_;
 };
 
 class GuiCompletionModel : public QAbstractListModel
@@ -474,19 +458,16 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	if (old.length() == 0)
 		old = last_selection_;
 
+
 	// set whether rtl
 	bool rtl = false;
 	if (cur.inTexted()) {
 		Paragraph const & par = cur.paragraph();
 		Font const font =
-		par.getFontSettings(cur.bv().buffer().params(), cur.pos());
+			par.getFontSettings(cur.bv().buffer().params(), cur.pos());
 		rtl = font.isVisibleRightToLeft();
 	}
 	popup()->setLayoutDirection(rtl ? Qt::RightToLeft : Qt::LeftToRight);
-
-	// turn the direction of the strings in the popup.
-	// Qt does not do that itself.
-	itemDelegate_->setEnabled(rtl);
 
 	// set new model
 	CompletionList const * list = cur.inset().createCompletionList(cur);

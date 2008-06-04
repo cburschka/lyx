@@ -838,8 +838,6 @@ void RowPainter::paintInlineCompletion(Font const & font)
 	// right to left?
 	if (rtl) {
 		swap(s1, s2);
-		reverse(s1.begin(), s1.end());
-		reverse(s2.begin(), s2.end());
 		swap(c1, c2);
 	}
 
