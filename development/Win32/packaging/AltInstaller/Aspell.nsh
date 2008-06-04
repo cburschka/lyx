@@ -256,7 +256,7 @@ Function InstallAspellDictionary
  StrCpy $AppSubfolder "Aspell"
  StrCpy $AppFiles "$APPDATA\Aspell\Dictionaries"
  Call CreateAppPathSub # function from LyXUtils.nsh
-	 
+ 
 FunctionEnd
 
 !endif # endif ${INSTALLER_TYPE} == "NotUpdate"
