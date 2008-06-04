@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 334
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrbook
@@ -43,7 +43,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
-\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -164,29 +164,13 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 30.
- Mai 2008
+letzte Änderung: 4.
+ Juni 2008
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
@@ -306,7 +290,7 @@ Fonts
 
 \begin_layout Description
 Windows
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 XP In diesem Fall gehen Sie wie gewohnt vor: Rechtsklick auf den Desktop-Hinterg
@@ -706,11 +690,11 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Aussehen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Handhabung\SpecialChar \menuseparator
@@ -812,7 +796,7 @@ Um LyX zu zwingen, Ihr System noch einmal zu durchforsten, sollten Sie
 Werkzeu\SpecialChar \-
 ge\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 konfigurieren
@@ -886,11 +870,11 @@ Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Als
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Dokument-Standards
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 speichern
@@ -982,7 +966,7 @@ lieren, wenn Sie das für nötig halten, und LyX neu konfigurieren (
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 konfigurieren
@@ -1100,7 +1084,7 @@ lyx-devel@lists.lyx.org
 \family sans
 Hilfe\SpecialChar \menuseparator
 Über
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ly
@@ -1116,11 +1100,11 @@ status collapsed
 
 X\SpecialChar \menuseparator
 Ruhm
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 und
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ehre
@@ -1187,13 +1171,13 @@ Bis auf ein paar kleine Unterschiede machen sie dasselbe wie bei jeder anderen
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 von
 \bar under
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1229,11 +1213,11 @@ unbenannt
 Der Befehl 
 \family sans
 Speicherung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 wieder
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 herstellen
@@ -1386,11 +1370,11 @@ Strg+V
 
 \family sans
 Suchen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ersetzen\SpecialChar \ldots{}
@@ -1400,11 +1384,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Suchen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 &
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ersetzen
@@ -1441,11 +1425,11 @@ Strg+C
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (vorherige
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Auswahl)
@@ -1460,7 +1444,7 @@ Auswahl)
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (speziell) 
@@ -1469,7 +1453,7 @@ fügt ausgewählten Text mit allen Sonderzeichen, Formatierungen und Umgebungen
  (
 \family sans
 Einfacher
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Text
@@ -1522,11 +1506,11 @@ Das Menü
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Suchen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 &
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ersetzen\SpecialChar \ldots{}
@@ -1550,15 +1534,15 @@ status collapsed
 
 \family sans
 X:
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Suchen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 und
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ersetzen
@@ -1574,7 +1558,7 @@ Suchen:
 Nächstes
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1585,7 +1569,7 @@ suchen
  Die Suchrichtung ist normalerweise vorwärts, es sei denn, 
 \family sans
 Rückwärts
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 suchen
@@ -1608,7 +1592,7 @@ Ersetzen
  anklicken, wird der markierte Begriff durch den Inhalt des Feldes 
 \family sans
 Ersetzen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 durch:
@@ -1618,7 +1602,7 @@ durch:
  Wenn Sie 
 \family sans
 Alles
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ersetzen
@@ -1630,7 +1614,7 @@ ersetzen
 Ersetzen
 \bar under
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -1644,7 +1628,7 @@ durch:
 Über den Umschaltknopf 
 \family sans
 Groß-/Kleinschreibung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 beachten
@@ -1674,11 +1658,11 @@ treffen
 Der Umschaltknopf 
 \family sans
 Nur
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ganze
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wörter
@@ -1713,7 +1697,7 @@ Treffer
 
 \begin_layout Standard
 Dinge wie Notizen, Gleitobjekte, usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 können aufgelöst werden.
@@ -2032,7 +2016,7 @@ Einstellungen
 Tabellen-Einstellungen
 \family default
 , siehe auch Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2056,7 +2040,7 @@ Einstellungen
 Querverweis
 \family default
 , siehe auch Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2259,17 +2243,17 @@ Abbruchtaste
 
 \family sans
 Pos
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 1
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2301,11 +2285,11 @@ Ende
 
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 und
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2367,7 +2351,7 @@ Strg
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (
@@ -2440,7 +2424,7 @@ Umschalt
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2448,7 +2432,7 @@ Umschalt
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (
@@ -2475,7 +2459,7 @@ Alt
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Meta)
@@ -2491,7 +2475,7 @@ staste eingesetzt.
 
 \family sans
 Alt+B
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 S
@@ -2566,11 +2550,11 @@ Compose
 
 \family sans
 Compose
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 e
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 '
@@ -2586,11 +2570,11 @@ e
 
 \family sans
 Compose
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 O
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -2606,11 +2590,11 @@ R
 
 \family sans
 Compose
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 <
@@ -2782,11 +2766,11 @@ status collapsed
 \begin_layout Plain Layout
 Wir werden im folgenden die englischen Namen beibehalten, wie Sie sie in
  den Menüs u.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ä.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 finden.
@@ -2828,7 +2812,7 @@ In LyX gibt es vier Standarddokumentklassen:
 
 \begin_layout Description
 article[
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (koma-script)] für Standardartikel
@@ -2836,7 +2820,7 @@ article[
 
 \begin_layout Description
 book[
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (koma-script)] für Bücher
@@ -2844,7 +2828,7 @@ book[
 
 \begin_layout Description
 letter[
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (DIN-Brief/german/koma-script)] für Briefe im deutschen Stil
@@ -2852,7 +2836,7 @@ letter[
 
 \begin_layout Description
 report[
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (koma-script)] für Standardberichte
@@ -2893,7 +2877,7 @@ Handbuchergänzungen
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (A&A) Journal-Artikel in Stil und Format von Astronomy & Astrophysics.
@@ -2901,7 +2885,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (AASTeX) Für Artikel, die von der American Astronomical Society herausgegeben
@@ -2910,7 +2894,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (AMS) Artikel im Stil und Format der AMS (American Mathematical Society).
@@ -2946,7 +2930,7 @@ unnumbered
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Elsevier) Layout für Journale der Elsevier-Gruppe
@@ -2954,7 +2938,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (IEEEtran) Layout für Journale des Institute of Electrical and Electronics
@@ -2963,7 +2947,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (IOP) Layout für Journale des Institute of Physics
@@ -2971,7 +2955,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Kluwer) Layout für Journale der Kluwer-Gruppe
@@ -2979,7 +2963,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (paper) für die 
@@ -3010,7 +2994,7 @@ Distributionen enthalten)
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (REVTe
@@ -3031,11 +3015,11 @@ X) Artikel für Veröffentlichungen der APS (American Physical Society), des
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (SPIE
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Proceedings) Layout für Journale der The International Society for Optical
@@ -3044,7 +3028,7 @@ Proceedings) Layout für Journale der The International Society for Optical
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Springer) Layouts für Journale der Springer-Gruppe
@@ -3052,7 +3036,7 @@ article
 
 \begin_layout Description
 article
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (TUGboat) Layout für TUGboat, das Journal der international TeX user Group
@@ -3061,13 +3045,13 @@ article
 
 \begin_layout Description
 book
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (AMS) Bücher im Stil und Format der AMS.
  Es wird nur die Standardnummerierung benutzt, in der Annahme, dass man
  Sätze usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nummerieren muss, aber nicht durchgehend.
@@ -3075,7 +3059,7 @@ nummerieren muss, aber nicht durchgehend.
 
 \begin_layout Description
 book
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Memoir) ein weiterer Ersatz für die Standardklassen
@@ -3116,7 +3100,7 @@ reference "Zusammengesetzte-Worte"
 
 \begin_layout Description
 curiculum
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 vitae für Lebensläufe
@@ -3144,7 +3128,7 @@ letter für Briefe im US-amerikanischen Stil
 
 \begin_layout Description
 presentation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (beamer) Layout für Präsentationen
@@ -3152,7 +3136,7 @@ presentation
 
 \begin_layout Description
 presentation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (FoilTe
@@ -3171,7 +3155,7 @@ X) für Projektionsfolien
 
 \begin_layout Description
 presentation
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (powerdot) Layout für Präsentationen
@@ -3214,7 +3198,7 @@ Eigenschaften
 
 \begin_layout Standard
 Jede Dokumentklasse hat Standardwerte, Tabelle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -3732,7 +3716,7 @@ Abschnitt
 Sie werden sich wahrscheinlich fragen, was 
 \family sans
 höchste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Abschnittsstufe
@@ -3888,11 +3872,11 @@ Schreibmaschine Hier legen Sie den Schreibmaschinen-Font fest.
 
 \begin_layout Description
 Echte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kapitälchen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden Manche Fonts erlauben auch, echte Kapitälchen (was auch der Unterschie
@@ -3901,7 +3885,7 @@ d sein mag) zu verwenden.
 
 \begin_layout Description
 Mediävalziffern
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden
@@ -3973,11 +3957,11 @@ Textformat
 
 \family sans
 Absätze
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 trennen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 durch:
@@ -4030,7 +4014,7 @@ Benutzerdefiniert
 
 \begin_layout Description
 Zweispaltiges
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument:
@@ -4227,7 +4211,7 @@ Zur Zeit unter /usr/share/texmf/doc/latex/fancyhdr/fancyhdr.dvi zu finden
 \end_deeper
 \begin_layout Description
 Doppelseitiges
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument
@@ -4354,11 +4338,11 @@ Unten
  
 \family sans
 Abstand
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zum
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Kopf
@@ -4367,11 +4351,11 @@ Kopf
  
 \family sans
 Abstand
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zum
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Fuß
@@ -4388,11 +4372,11 @@ Kopfzeilenhöhe
 Außerdem muss man aufpassen, dass 
 \family sans
 Abstand
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zum
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Fuß 
@@ -4404,11 +4388,11 @@ Fuß
  und 
 \family sans
 Abstand
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zum
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Kopf + Kopfzeilenhöhe 
@@ -4575,7 +4559,7 @@ ersten
  Liste usw.
 \emph on
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nicht
@@ -4675,11 +4659,11 @@ Textformat
  Dann wählen Sie bei 
 \family sans
 Absätze
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 trennen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 durch
@@ -4691,7 +4675,7 @@ Einrückung
  oder 
 \family sans
 Vertikaler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -4736,7 +4720,7 @@ gen
  Dort können Sie den 
 \family sans
 Absatz
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 einrücken
@@ -4760,7 +4744,7 @@ Einrückung
  oder 
 \family sans
 Vertikaler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -4872,18 +4856,18 @@ key "latex-einführung"
 \end_inset
 
 , S.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 21 und S.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 101.
  LaTeX hat offensichtlich Probleme, Zeichenketten, die aus Worten und Sonderzeic
 hen bestehen, richtig umzubrechen.
  Wie man das korrigieren kann, finden Sie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -4903,7 +4887,7 @@ Behälter
 \emph default
  für einen Absatz, der für ihn gewisse Eigenschaften enthält.
  Diese können Stil, Font, Ränder, Nummerierungsart, Marken usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 betreffen.
@@ -4946,7 +4930,7 @@ Werkzeugleiste.
  Was für Einträge Sie dort finden, hängt von der gewählten Dokumentklasse
  ab.
  Außerdem können Sie das Aussehen der Liste gestalten, wie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -6018,11 +6002,11 @@ Einstellungen
  Unter 
 \family sans
 Nummerierung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis
@@ -6160,7 +6144,7 @@ LyX hat drei Absatzumgebungen, um Zitate und Lyrik zu schreiben.
  Es sind 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (kurz)
@@ -6168,7 +6152,7 @@ Zitat
 , 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6190,7 +6174,7 @@ Gedicht
  in ein 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6269,7 +6253,7 @@ Nachdem wir die Gemeinsamkeiten dieser drei Umgebungen beschrieben haben,
  
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
@@ -6291,7 +6275,7 @@ Quote
  und 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6313,7 +6297,7 @@ Quotation
  besitzen nur einen Unterschied: 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (kurz)
@@ -6323,7 +6307,7 @@ Zitat
  
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -6347,7 +6331,7 @@ Zitat (kurz)
 Dies ist die 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (kurz)
@@ -6368,7 +6352,7 @@ Das Beispiel ist zu Ende.
  Hier ist ein weiteres, diesmal für die 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -6380,7 +6364,7 @@ Zitat
 Dies ist die 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6391,7 +6375,7 @@ Zitat
  einzurücken, dann ist 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6414,7 +6398,7 @@ Das war das andere Beispiel.
  Also: 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (kurz)
@@ -6424,7 +6408,7 @@ Zitat
  Sie sollten Zitate in einer 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (kurz)
@@ -6433,7 +6417,7 @@ Zitat
  Diejenigen, die Absätze durch Einrückung trennen, sollten die 
 \family sans
 Zitat
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (lang)
@@ -6813,7 +6797,7 @@ Standard
  bis 
 \family sans
 Dings
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -6828,7 +6812,7 @@ Wenn Sie
 Benutzerdef
 \family default
 .
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -6930,7 +6914,7 @@ Dokumentklasse
  Bei der hier verwendeten (
 \family sans
 book
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (koma-script)
@@ -7156,17 +7140,17 @@ taste
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Normales
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 /
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Geschütztes
 \bar under
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -7186,7 +7170,7 @@ reference "Variabler-horiz-Abstand"
 
 \begin_layout Description
 Zweites
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Beispiel: Hier sehen Sie, wie man ein geschütztes Leerzeichen in einer Marke
@@ -7407,11 +7391,11 @@ Rander@Ränder
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Breite
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marken
@@ -7492,7 +7476,7 @@ Einstellungen
 Der Text im Feld 
 \family sans
 Längste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke
@@ -7608,7 +7592,7 @@ L Die Standardausrichtung.
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 R Ein variabler horizontaler Abstand am Anfang der Marke richtet sie nach
@@ -7617,11 +7601,11 @@ R Ein variabler horizontaler Abstand am Anfang der Marke richtet sie nach
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Z
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
  Je ein variabler horizontaler Abstand am Anfang und am Ende zentriert die
@@ -7684,7 +7668,7 @@ Adresse
 Adress
 \family default
 e
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rechts
@@ -7711,7 +7695,7 @@ Adresse
 Adress
 \family default
 e
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -7753,7 +7737,7 @@ Adress
 e
 \family sans
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 rechts
@@ -7775,7 +7759,7 @@ Adress
 e
 \family sans
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 rechts
@@ -7784,7 +7768,7 @@ rechts
  
 \family sans
 Adresse
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 rechts
@@ -7818,7 +7802,7 @@ Adress
 e
 \family sans
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 rechts
@@ -7854,7 +7838,7 @@ Das war eine
 Adress
 \family default
 e
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -7909,7 +7893,7 @@ Adress
 e
 \family sans
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 rechts
@@ -7933,7 +7917,7 @@ Adresse
 Adress
 \family default
 e
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -8112,7 +8096,7 @@ Wir würden Ihnen gern ein Beispiel zeigen, aber das geht nicht, weil dieses
  Dokument die 
 \family sans
 book
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (koma-script
@@ -8230,7 +8214,7 @@ Eine ausführliche Beschreibung der
 Literaturverzeichnis
 \family default
 -Umgebung finden Sie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
  
@@ -8276,7 +8260,7 @@ dungen
  In LyX sehen Sie die Marke 
 \emph on
 Abbildung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -8284,7 +8268,7 @@ Nr:
  oder 
 \emph on
 Tabelle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -8489,7 +8473,7 @@ Anführungszeichen erreichen Sie nicht durch Eingabe von
 ",
 \family default
  weil das `
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ` erzeugt.
@@ -8772,7 +8756,7 @@ Datum
 
 \begin_layout Description
 Nicht
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 schachtelbar
@@ -8983,7 +8967,7 @@ Datum
 \end_deeper
 \begin_layout Description
 Vollständig
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 schachtelbar
@@ -9005,11 +8989,11 @@ schachtelbar!vollstandig@vollständig
 
 \family sans
 Gedicht, Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz), Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang), Auflistung, Aufzählung, Beschreibung, Liste, LyX-Code
@@ -9020,7 +9004,7 @@ Gedicht, Zitat
 \end_deeper
 \begin_layout Description
 Teilweise
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 schachtelbar
@@ -9052,7 +9036,7 @@ Standard
 \end_inset
 
  Adresse
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rechts,
@@ -9725,7 +9709,7 @@ Beschreibung
 Gedicht
 \family default
 -Umgebung usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 erzeugen können.
@@ -10091,7 +10075,7 @@ Beschreibung
 -, 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
@@ -10099,7 +10083,7 @@ Zitat
 -, 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)-
@@ -10743,7 +10727,7 @@ Aufzählung
  und wechseln nach 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -10764,7 +10748,7 @@ Adresse
 - und die 
 \family sans
 Adresse
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rechts
@@ -10772,7 +10756,7 @@ rechts
 -Umgebung hier hineinschachteln, dann ein weiteres geschachteltes 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -10794,7 +10778,7 @@ Adresse
 - und 
 \family sans
 Adresse
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 rechts
@@ -10866,7 +10850,7 @@ Auflistung
  innerhalb von 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (lang)
@@ -10874,7 +10858,7 @@ Zitat
  oder 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
@@ -10882,7 +10866,7 @@ Zitat
  schachteln können oder ein 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
@@ -10929,7 +10913,7 @@ Formatierung
 Horizontaler
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -10953,11 +10937,11 @@ Wert
  angeben, und nur bei 
 \family sans
 Variabler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 horiz.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -10997,11 +10981,11 @@ HFill
  
 \family sans
 Variable
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 horiz.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstände
@@ -11032,7 +11016,7 @@ nicht
 \begin_layout Quote
 \noindent
 Dieser Teil ist links
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Dieser Teil ist rechts
@@ -11041,11 +11025,11 @@ Dieser Teil ist rechts
 \begin_layout Quote
 \noindent
 Links
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Mitte
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Rechts
@@ -11054,15 +11038,15 @@ Rechts
 \begin_layout Quote
 \noindent
 Links
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 1/3 Links
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 Rechts
@@ -11072,14 +11056,14 @@ Rechts
 Das waren Beispiele in der 
 \family sans
 Zitat
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (kurz)
 \family default
 -Umgebung.
  Hier :
-\begin_inset Space \dotfill{}
+\begin_inset space \dotfill{}
 \end_inset
 
 : ist ein variabler horizontaler Abstand in einem Standardabsatz.
@@ -11101,19 +11085,19 @@ Liste
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 eins
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 zwei :drei
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 vier
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 fünf
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 sechs
@@ -11150,7 +11134,7 @@ Weitere Zwischenräume
 \begin_layout Standard
 Der folgende Zwischenraum wird nicht von LyX unterstützt, weil er nicht
  oft benutzt wird, so dass Sie TeX-Code (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -11228,7 +11212,7 @@ Die Auswahlmöglichkeiten sind also rechts vom Begriff
 \end_inset
 
 Herr Meier
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11316,7 +11300,7 @@ Zusätzlichen senkrechten Leerraum über oder unter einem Absatz fügt man
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Vertikaler
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand\SpecialChar \ldots{}
@@ -11325,15 +11309,15 @@ Abstand\SpecialChar \ldots{}
 , womit das Menü 
 \family sans
 Einstellungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 für
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 vertikalen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Abstand
@@ -11374,7 +11358,7 @@ VFill
 \family default
 s kann man deshalb benutzen, wenn man Text auf einer Seite zentrieren will
  oder ihn 2/3 oder 1/4 usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nach unten platzieren will.
@@ -11497,7 +11481,7 @@ Markenbreite
 
 \begin_layout Standard
 Siehe
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -11531,11 +11515,11 @@ Textformat
  unter 
 \family sans
 Absätze
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 trennen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 durch
@@ -11543,7 +11527,7 @@ durch
  aktiviert ist, ist auch 
 \family sans
 Absatz
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 einrücken
@@ -11575,15 +11559,15 @@ Ausrichtung
  Normalerweise ist 
 \family sans
 Voreinstellung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 des
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Absatztyps
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (xyz)
@@ -11641,7 +11625,7 @@ Eingabe
 Wenn Sie 
 \family sans
 Sofort
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 anzeigen
@@ -11736,7 +11720,7 @@ Formatierung
 
 \family sans
 Neue
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Seite
@@ -11796,15 +11780,15 @@ Enthält eine Seite auch Gleitobjekte, wird mit dem Befehl
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Neue
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Seite
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (Gleitobjekte
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ausgeben)
@@ -11816,19 +11800,19 @@ ausgeben)
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
 Neue
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ungerade
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Seite
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (Gleitobjekte
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ausgeben)
@@ -11952,7 +11936,7 @@ Formatierung
 
 \family sans
 Rechtsbündiger
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zeilen\SpecialChar \-
@@ -11989,7 +11973,7 @@ Sonderzeichen
 Umbruchfähiger
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12003,7 +11987,7 @@ Catalogue/entries/esint.html.
 
 \begin_layout Standard
 Hier ist noch einmal das Beispiel aus Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12101,7 +12085,7 @@ environment
 \family sans
 Einfügen\SpecialChar \menuseparator
 Besondere
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Formatierung
@@ -12114,7 +12098,7 @@ Trennmöglichkeit
  oder 
 \family sans
 Strg+
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
@@ -12472,7 +12456,7 @@ name "Normales-Leerzeichen"
 \begin_layout Standard
 Einige Sprachen fügen nach einem Punkt einen etwas größeren Abstand ein,
  und LyX befolgt diese Konvention (siehe Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12491,7 +12475,7 @@ Formatierung\SpecialChar \menuseparator
 Normales
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12501,7 +12485,7 @@ Leerzeichen
  oder 
 \family sans
 Strg+Alt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 -Leertaste
@@ -12607,7 +12591,7 @@ Leerzeichen!halbes
 Ein 
 \family sans
 Halbes
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Leerzeichen
@@ -12625,13 +12609,13 @@ geschützt
 
 \noun on
 D.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 E
 \noun default
 .
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12639,11 +12623,11 @@ E
 Knuth
 \noun default
  hat unser geliebtes Drucksetzprogramm entwickelt, d.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 h.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 TeX.
@@ -12663,7 +12647,7 @@ Formatierung
 
 \family sans
 Halbes
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Leerzeichen
@@ -12694,7 +12678,7 @@ space-insert Befehl
 Befehl
 \family default
  der Tabelle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12830,7 +12814,7 @@ normal
 
 \begin_layout Plain Layout
 1/3
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -12865,7 +12849,7 @@ protected
 
 \begin_layout Plain Layout
 1/3
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -12900,7 +12884,7 @@ thin
 
 \begin_layout Plain Layout
 1/6
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -12935,7 +12919,7 @@ enspace
 
 \begin_layout Plain Layout
 0.5
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -12970,7 +12954,7 @@ enskip
 
 \begin_layout Plain Layout
 0.5
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -13005,7 +12989,7 @@ quad
 
 \begin_layout Plain Layout
 1
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -13040,7 +13024,7 @@ qquad
 
 \begin_layout Plain Layout
 2
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -13075,7 +13059,7 @@ negthinspace
 
 \begin_layout Plain Layout
 -1/6
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 em
@@ -13196,7 +13180,7 @@ Es gibt zwei Fonttypen:
 
 \begin_layout Description
 Skalierbare
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fonts
@@ -13242,11 +13226,11 @@ OpenType
  und 
 \family typewriter
 Type
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 1
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Postscript
@@ -13278,7 +13262,7 @@ hrt werden müssen.
 In Postscript®- und PDF-Dokumenten sind 
 \family typewriter
 Type
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3
@@ -13298,7 +13282,7 @@ Wenn Sie wissen wollen, welche Fonts in einem PDF-Dokument benutzt werden,
 \family sans
 File\SpecialChar \menuseparator
 Document
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Properties\SpecialChar \menuseparator
@@ -13525,7 +13509,7 @@ rève
 \end_inset
 
  e +
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
  ̀ 
@@ -13569,7 +13553,7 @@ Schreibmaschine
 : 
 \family sans
 Times
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Roman
@@ -13579,11 +13563,11 @@ Roman
 Helvetica
 \family default
  -- skaliert auf 92
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 95% -- als serifenfreien Font und 
@@ -13596,7 +13580,7 @@ Courier
 
 Die Unterschiede zwischen Roman, serifenfrei und Schreibmaschine werden
  in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -13688,7 +13672,7 @@ Textstil
 
 ) können Sie die Fontgröße für Textteile ändern, wenn Sie wollen.
  Die möglichen Fontgrößen sind in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -13721,7 +13705,7 @@ Einstellungen\SpecialChar \menuseparator
 Bildschirmschriften
 \family default
  ändern, siehe auch Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -13793,7 +13777,7 @@ Sie klicken auf den Werkzeugleistenknopf
 , oder Sie drücken 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 K.
@@ -13852,7 +13836,7 @@ Sie klicken auf den Werkzeugleistenknopf
 , oder Sie drücken 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 H
@@ -13990,7 +13974,7 @@ Textstil
  mit 
 \family sans
 Keine
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Änderung
@@ -14010,7 +13994,7 @@ ung zurückgesetzt.
 Die sieben Fonteigenschaften und ihre möglichen Werte (plus 
 \family sans
 Keine
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Änderung
@@ -14057,7 +14041,7 @@ Roman
  (Tastenkürzel 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -14079,7 +14063,7 @@ Dies ist die Fontfamilie Sans Serif.
  (Tastenkürzel 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 S
@@ -14161,7 +14145,7 @@ Dies ist die Druckstärke fett.
  Fettdruck kann man mit 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 F
@@ -14443,7 +14427,7 @@ tiny
  oder winzig (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 T
@@ -14451,7 +14435,7 @@ T
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 1
@@ -14464,7 +14448,7 @@ Alt+S
 
 \family sans
 Sehr
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Klein
@@ -14495,7 +14479,7 @@ scriptsize
  oder sehr klein (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2
@@ -14539,7 +14523,7 @@ Tastenkürzel
 : 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3
@@ -14583,7 +14567,7 @@ Tastenkürzel:
  
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+S
@@ -14591,7 +14575,7 @@ Umschalt+S
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -14627,7 +14611,7 @@ normalsize
  oder normal Dies ist auch die Standardgröße (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -14671,7 +14655,7 @@ large
  oder groß (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 L
@@ -14679,7 +14663,7 @@ L
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 6
@@ -14719,7 +14703,7 @@ Large
  oder Größer (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+L
@@ -14727,7 +14711,7 @@ Umschalt+L
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 7
@@ -14740,7 +14724,7 @@ Alt+S
 
 \family sans
 Noch
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Größer
@@ -14771,7 +14755,7 @@ LARGE
  oder noch größer (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 8
@@ -14811,7 +14795,7 @@ huge
  oder riesig (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 H
@@ -14819,7 +14803,7 @@ H
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 9
@@ -14859,7 +14843,7 @@ Huge
  oder gigantisch (Tastenkürzel: 
 \family sans
 Alt+S
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Umschalt+H
@@ -14867,7 +14851,7 @@ Umschalt+H
  oder 
 \family sans
 Alt+S
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 0
@@ -14903,7 +14887,7 @@ noch einmal
  warnen:
 \size large
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 spielen
@@ -14989,7 +14973,7 @@ Dies ist unterstrichener Text.
 (Tastenkürzel = 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 U
@@ -15317,7 +15301,7 @@ dvi-Betrachter
 \begin_layout Standard
 Wenn Sie die endgültige Version Ihres Dokumentes mit fertigen Seitenumbrüchen,
  richtig nummerierten Fußnoten usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 sehen wollen, wählen Sie 
@@ -15365,15 +15349,15 @@ Betrachter
 
 \begin_layout Description
 Tipp
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 1
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 für
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -15388,7 +15372,7 @@ name "Tipp-für-xdvi"
 \end_inset
 
  Wenn Sie eine DIN
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 A4-Seite (fast) genau 21 cm x 29,8 cm sehen wollen, können Sie in 
@@ -15426,7 +15410,7 @@ xdvi -hl red -geometry 820x1024-0+0 -shrinkbutton2 7
 
 \begin_layout Description
 Tipp
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2: Lassen Sie das 
@@ -15473,15 +15457,15 @@ dvi
 
 \begin_layout Description
 Tipp
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 für
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 KDE:
@@ -15616,7 +15600,7 @@ Sie können aber auch den
 Konverter-Datei-Cache
 \family default
  aktivieren, siehe Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -15696,7 +15680,7 @@ Sie können aber auch den
 Konverter-Datei-Cache
 \family default
  aktivieren, siehe Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -15764,7 +15748,7 @@ Strg+P
  Das öffnet das 
 \family sans
 Dokument
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 drucken
@@ -15874,11 +15858,11 @@ Reihenfolge
 Mit 
 \family sans
 Ungerade
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seiten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 drucken
@@ -15886,11 +15870,11 @@ drucken
  und 
 \family sans
 Gerade
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seiten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 drucken
@@ -16257,7 +16241,7 @@ möglichkeit
 Strg+
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -.
@@ -16314,7 +16298,7 @@ X-Code
 Strg+
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 - 
@@ -16340,7 +16324,7 @@ Strg+
 Strg+
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 - in 
@@ -16392,7 +16376,7 @@ Sie fügen Trennmöglichkeiten ein (
 Strg+
 \family default
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -), und zwar an jeder infrage kommenden Stelle, weil Sie ja nicht wissen
@@ -16431,7 +16415,7 @@ Sie benutzen statt des Bindestrichs
 \end_inset
 
  als TeX-Code (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -16486,7 +16470,7 @@ Sie setzen den Abschnitt, in dem sich das zusammengesetzte Wort befindet,
 sloppypar
 \family default
  (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -16556,7 +16540,7 @@ Sonderzeichen
 Geschützter
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -16566,7 +16550,7 @@ Trennstrich
  oder 
 \family sans
 Strg+Alt+
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
@@ -16692,7 +16676,7 @@ Benutzen Sie ein
 Normales
 \bar under
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -16712,7 +16696,7 @@ Benutzen Sie einen kleinen Zwischenraum
 \end_inset
 
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -16738,7 +16722,7 @@ Satzendepunkt
  (
 \family sans
 Strg+
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 .
@@ -16760,7 +16744,7 @@ Mit den Korrekturen sehen die obigen Beispiele so aus:
 
 \begin_layout Itemize
 hier z.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 B.
@@ -16839,11 +16823,11 @@ Dokument-Einstellungen
 \family sans
 Sprache\SpecialChar \menuseparator
 Stil
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Anführungszeichen
@@ -17054,27 +17038,27 @@ Ligaturen
 \end_inset
 
 ff
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 fi
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 fl
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 ffi
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 ffl
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -17243,7 +17227,7 @@ ein
 Wir können es nicht näher erläutern, wie TeX und LaTeX Seitenumbrüche festlegen
  oder wie man das Verhalten beeinflussen kann.
  Einige LaTeX-Bücher im Literaturverzeichnis (zum Beispiel
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -17254,7 +17238,7 @@ key "latexcompanion"
 \end_inset
 
  oder
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -17605,7 +17589,7 @@ Fußnote
 
 .
  Umgekehrt können Sie auch eine Fußnote in gewöhnlichen Text (bzw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 den Text, in dem sich die Fußnote befindet) zurückwandeln, indem Sie den
@@ -17721,11 +17705,11 @@ Rand
 
 \begin_layout Standard
 Als Standardeinstellung verwendet LyX 1.9
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 cm (0.75
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zoll) als Breite für die Randnotizen.
@@ -17875,7 +17859,7 @@ Ausschnitt
  den y-Wert für 
 \family sans
 Links
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 unten
@@ -17885,11 +17869,11 @@ unten
  besten durch einen Klick auf 
 \family sans
 Lese
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aus
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Datei
@@ -18061,11 +18045,11 @@ pt
 
 \begin_layout Plain Layout
 Punkt (72.27
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -18089,11 +18073,11 @@ pc
 
 \begin_layout Plain Layout
 Pica (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -18117,11 +18101,11 @@ sp
 
 \begin_layout Plain Layout
 Scaled Point (65536
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 sp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -18145,11 +18129,11 @@ bp
 
 \begin_layout Plain Layout
 Big Point (72
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -18173,7 +18157,7 @@ dd
 
 \begin_layout Plain Layout
 Didot (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd 
@@ -18181,7 +18165,7 @@ dd
 \end_inset
 
  0.376
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm)
@@ -18205,11 +18189,11 @@ cc
 
 \begin_layout Plain Layout
 Cicero (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd)
@@ -18223,7 +18207,7 @@ dd)
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -18455,7 +18439,7 @@ mu
 
 \begin_layout Plain Layout
 Math Unit (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mu = 
@@ -18463,7 +18447,7 @@ mu =
 \end_inset
 
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em)
@@ -18500,7 +18484,7 @@ Datei:
 \family sans
 Zusatz-Optionen\SpecialChar \menuseparator
 in
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ly
@@ -18519,7 +18503,7 @@ status collapsed
 
 \family sans
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 anzeigen\SpecialChar \menuseparator
@@ -18539,7 +18523,7 @@ Die Abbildung kann auch gedreht werden (Feld
 Grafik
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -18665,7 +18649,7 @@ ImageMagick
 \family default
  im Hintergrund, um die Bilder ins richtige Format zu konvertieren.
  In den Abschnitten
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -18688,7 +18672,7 @@ reference "PDF-Version-anschauen"
 
 \begin_layout Description
 Pixelbilder
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Bitmaps) bestehen aus einzelnen Pixeln, oft in komprimierter Form.
@@ -18808,11 +18792,11 @@ er Kompression
 
 \begin_layout Description
 Skalierbare
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Grafiken
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Vektor-) bestehen aus Vektoren, die das Bild beschreiben, und lassen sich
@@ -18940,7 +18924,7 @@ dung
  In das rot umrahmte Feld rechts von 
 \emph on
 Abbildung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -18949,7 +18933,7 @@ Nr:
  Nach einem Klick oberhalb oder unterhalb von 
 \emph on
 Abbildung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -19055,7 +19039,7 @@ Das erscheint sehr einfach, aber bei der Positionierung des Bildtitels gibt
  oberhalb von 
 \emph on
 Abbildung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -19072,7 +19056,7 @@ reference "Abb:Platypus"
  unterhalb von 
 \emph on
 Abbildung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Nr:
@@ -19221,7 +19205,7 @@ Gleitobjekt-Platzierung
  mehrere Möglichkeiten, wenn Sie 
 \family sans
 Standard-Platzierung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -19231,11 +19215,11 @@ verwenden
 
 \begin_layout Description
 Anfang
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seite LyX versucht, das Gleitobjekt oben auf der aktuellen Seite einzufügen.
@@ -19244,11 +19228,11 @@ Seite LyX versucht, das Gleitobjekt oben auf der aktuellen Seite einzufügen.
 
 \begin_layout Description
 Ende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seite LyX versucht, das Gleitobjekt unten auf der aktuellen Seite einzufügen.
@@ -19257,15 +19241,15 @@ Seite LyX versucht, das Gleitobjekt unten auf der aktuellen Seite einzufügen.
 
 \begin_layout Description
 Seite
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mit
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Gleitobjekten Nur wenn mehr als 50
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 % einer Seite von Gleitobjekten belegt wird, wird eine neue Seite für weitere
@@ -19274,11 +19258,11 @@ Gleitobjekten Nur wenn mehr als 50
 
 \begin_layout Description
 Hier,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 wenn
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 möglich LyX versucht, das Gleitobjekt genau an der Stelle einzufügen, an
@@ -19303,15 +19287,15 @@ HHa
 
 \begin_layout Description
 Hier,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 auf
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 jeden
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fall: ist selbsterklärend.
@@ -19319,7 +19303,7 @@ Fall: ist selbsterklärend.
 
 \begin_layout Description
 Ignoriere
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 LaTe
@@ -19353,7 +19337,7 @@ Gleitobjekt-Platzierung
  Wenn Sie eine Möglichkeit angekreuzt haben, können Sie zusätzlich 
 \family sans
 Ignoriere
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 LaTe
@@ -20041,7 +20025,7 @@ und
 Wenn der Cursor in einer Zelle steht, sehen Sie unter 
 \family sans
 Rahmenlinien
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ein
@@ -20052,7 +20036,7 @@ ein
  In 
 \family sans
 Alle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Rahmenlinien
@@ -20079,7 +20063,7 @@ Stil
 Zusätzlicher
 \family default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -20091,7 +20075,7 @@ Abstand
 Eingebettete
 \emph default
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -20127,7 +20111,7 @@ Kopfzeile
 , 
 \family sans
 Erste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kopfzeile
@@ -20141,7 +20125,7 @@ Fußzeile
 Letzte
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -20149,7 +20133,7 @@ Letzte
 Fußzeile
 \family default
  finden Sie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -20175,19 +20159,19 @@ TableExamples.lyx
 
 \family sans
 Seitenumbruch
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nach
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aktuellen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zeile
@@ -20223,13 +20207,13 @@ Bearbeiten
 Zeilen
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
 \family sans
 &
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Spalten
@@ -20493,19 +20477,19 @@ Wird Ihre Tabelle zu breit, um auf eine normale Seite im Hochformat zu passen,
  können Sie die Option 
 \family sans
 Tabelle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 um
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 90
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Grad
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 drehen
@@ -20527,19 +20511,19 @@ drehen
  Außerdem ist es auch möglich, nur einzelne Zellen um 90° zu drehen (
 \family sans
 Zelle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 um
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 90
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Grad
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 drehen
@@ -20738,7 +20722,7 @@ Summe
 
 \begin_layout Plain Layout
 Beschr.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 1
@@ -20873,7 +20857,7 @@ Beschr.
 
 \begin_layout Plain Layout
 Beschr.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 2
@@ -21014,7 +20998,7 @@ Beschr.
 
 \begin_layout Plain Layout
 Beschr.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 3
@@ -21152,7 +21136,7 @@ Beschr.
 
 \begin_layout Plain Layout
 Beschr.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -22113,7 +22097,7 @@ WYSIWYM
  Geben Sie im Dialogfenster 
 \family sans
 Tabellen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Einstellungen
@@ -22418,7 +22402,7 @@ umbrüche eingehalten werden können.
 Aktivieren Sie die Option 
 \family sans
 Lange
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Tabelle
@@ -22439,7 +22423,7 @@ Tabellen-Einstellungen
 
 \family sans
 Erste
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Kopfzeile
@@ -22486,7 +22470,7 @@ Tabellen!Kopfzeile
  (mit Ausnahme der ersten, wenn 
 \family sans
 Erste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kopfzeile
@@ -22514,7 +22498,7 @@ Tabellen!Fuszeile@Fußzeile
  der letzten, wenn 
 \family sans
 Letzte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fußzeile
@@ -22526,7 +22510,7 @@ Fußzeile
 
 \family sans
 Letzte
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Fußzeile
@@ -22550,19 +22534,19 @@ Tabellen!letzte Fußzeile
 
 \family sans
 Seitenumbruch
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nach
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aktuellen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zeile:
@@ -22603,7 +22587,7 @@ Fußzeile
 , 
 \family sans
 Letzte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fußzeile
@@ -22615,7 +22599,7 @@ Kopfzeile
 , 
 \family sans
 Erste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kopfzeile
@@ -22636,19 +22620,19 @@ Wenn Sie mit dem dem Seitenumbruch nicht zufrieden sind, können Sie mit
  
 \family sans
 Seitenumbruch
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 nach
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aktuellen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Zeile
@@ -22665,7 +22649,7 @@ Breite:
  im Dialog 
 \family sans
 Tabellen-Einstellungen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bearbeiten
@@ -22682,7 +22666,7 @@ Eine Tabelle kann auch in eine Gleitobjekt-Umgebung eingebettet werden,
 Hinweis: 
 \family sans
 Lange
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Tabelle
@@ -22700,7 +22684,7 @@ Tabelle!Lange
  und 
 \family sans
 90°
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 drehen
@@ -22725,7 +22709,7 @@ status collapsed
 
 \family sans
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Kon\SpecialChar \-
@@ -22744,7 +22728,7 @@ Hier ist der Anfang einer langen Tabelle, bei der Sie durch Rechtsklick
  auf eine der ersten Zeilen auf der Karteikarte 
 \family sans
 Lange
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Tabelle
@@ -23396,7 +23380,7 @@ Wenn Sie eine neue Gleitobjekt-Umgebung für eine Tabelle anlegen, ist das
 Tabelle
 \series bold
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23423,7 +23407,7 @@ Ob die Tabelle über oder unter dem Titel steht, können Sie wie auch bei
 Tabelle
 \series bold
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23619,7 +23603,7 @@ Tabelle
 Tabelle
 \series bold
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23761,7 +23745,7 @@ name "Tab:Tabelle-ohne-Titel"
 \begin_layout Standard
 Ohne Titel wird die Tabelle nicht nummeriert, deshalb wird sie, falls Sie
  eine Marke für Querverweise (siehe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -23818,11 +23802,11 @@ name "Gleitobjekte"
 Gleitobjekte werden detailliert im Handbuch 
 \emph on
 Eingebettete
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Objekte, Kapitel
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 3
@@ -23855,11 +23839,11 @@ Minipage
 Minipages werden detailliert im Handbuch 
 \emph on
 Eingebettete
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Objekte, Kapitel
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 5
@@ -23969,7 +23953,7 @@ Sie können auch
 Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 Eingebettete
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Formel
@@ -23977,7 +23961,7 @@ Formel
  wählen oder die Tastenkürzel 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 M
@@ -23985,7 +23969,7 @@ M
 , 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 M
@@ -24008,7 +23992,7 @@ Um eine eigenständige Formel oder Gleichung zu erhalten, wählen Sie
 Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
 Abgesetzte
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Formel
@@ -24032,11 +24016,11 @@ Mathe-Modus
  zu schreiben, gibt es besondere Tastenkürzel, zum Beispiel 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 G
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 A
@@ -24048,11 +24032,11 @@ A
 , 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 G
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 B
@@ -24220,11 +24204,11 @@ Leertaste
 sqrt
 \family sans
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Leertaste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24232,11 +24216,11 @@ Leertaste
 2x
 \family sans
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Leertaste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24244,11 +24228,11 @@ Leertaste
 +
 \family sans
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Leertaste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -24705,7 +24689,7 @@ Beide Symbole werden automatisch angepasst.
  stellt und 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 L
@@ -24830,11 +24814,11 @@ Einstellungen
 
 \family sans
 Mathe-Optionen esint-Paket
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 automatisch
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -24981,11 +24965,11 @@ reference "Fontgrößen-Mathe"
 \end_inset
 
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 erzeugt eine Schablone für Brüche wie 
@@ -25019,7 +25003,7 @@ erzeugt eine Schablone für Brüche wie
 \end_inset
 
 Funktionen: siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -25034,7 +25018,7 @@ reference "Mathematische-Funktionen"
 
 \begin_layout Standard
 Die folgenden Symbole sind auch in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -25669,11 +25653,11 @@ Mathe-Optionen
  die Optionen 
 \family sans
 AMS-Mathe-Paket
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 automatisch
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -25681,7 +25665,7 @@ verwenden
  und 
 \family sans
 AMS-Mathe-Paket
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -25792,7 +25776,7 @@ Die Funktionen wie
 \end_inset
 
 , usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 kann man in Mathed auch mit Befehlen wie 
@@ -25802,7 +25786,7 @@ kann man in Mathed auch mit Befehlen wie
 sin
 \family default
  usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 eintippen.
@@ -26392,7 +26376,7 @@ Die Klammern aus dem Menü werden automatisch an die Größe ihres Inhaltes
 
 \backslash
 left( bla
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bla 
@@ -26457,7 +26441,7 @@ Variabel
 Wenn Sie sich erst nachträglich entschließen, eine mathematische Struktur
  mit Klammern, anderen mathematischen Symbolen oder Verzierungen zu versehen,
  können Sie das tun, indem Sie das, was innerhalb der Klammern usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 stehen soll, markieren.
@@ -26881,11 +26865,11 @@ Eine ganze Zeile der Gleichung kann man löschen, indem man den Cursor in
  die Zeile stellt und 
 \family sans
 Alt+M
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 W
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 D
@@ -26960,7 +26944,7 @@ Marke
  den Cursor in die Gleichung stellt und 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -26978,7 +26962,7 @@ Rechts von der Gleichung erscheint dann (#).
  
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -27025,7 +27009,7 @@ reference "mathed:fourth-eqn"
 Die Nummerierung einer Zeile kann man mit 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Umschalt+N
@@ -27034,7 +27018,7 @@ Umschalt+N
  Mit 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -27098,7 +27082,7 @@ reference "Makro-erzeugen"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -27130,7 +27114,7 @@ Makro: Makroname:
 \end_inset
 
 .
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -27220,7 +27204,7 @@ name "Makro!mit Argumenten"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -27252,7 +27236,7 @@ Makro: macrowarg: 2 +
 \end_inset
 
 .
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -27462,11 +27446,11 @@ Makro!sich darin bewegen
 
 \begin_layout Description
 Mit
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 den
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Pfeiltasten: Wenn man in ein Makro von links hineingeht, wird der Cursor
@@ -27485,11 +27469,11 @@ Leertaste
 
 \begin_layout Description
 Mit
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Maus: Wie gewöhnlich klicken Sie auf das gewünschte Argumentkästchen.
@@ -27575,7 +27559,7 @@ Mathe-Modus
  Roman zu setzen, benutzen Sie 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -27592,7 +27576,7 @@ R
 , ist es 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 F
@@ -27605,7 +27589,7 @@ F
 , erhält man mit 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 I
@@ -27783,7 +27767,7 @@ mathbf
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 I
@@ -27834,7 +27818,7 @@ mathcal
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 R
@@ -27932,7 +27916,7 @@ Voreinstellung
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Leertaste
@@ -27983,7 +27967,7 @@ textrm
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 K
@@ -28128,7 +28112,7 @@ serifenfrei
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 S
@@ -28179,7 +28163,7 @@ mathsf
 
 \family sans
 Alt+Z
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 F
@@ -28250,7 +28234,7 @@ In AMS-LaTeX ist es möglich, Zahlen und Spezialsymbole fett (aber nicht
 
 \backslash
 boldsymbol
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 {
@@ -28289,7 +28273,7 @@ Die verschiedenen Schriftstile sind hilfreich, um Variablennamen in einem
  Textmodus, den Sie durch 
 \family sans
 Alt+M
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 M
@@ -28500,7 +28484,7 @@ reference "eq:Bruch"
 \begin_layout Standard
 All diese Fontgrößen sind relativ, das heißt sie werden angepasst, wenn
  die gesamte Formel, Gleichung usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 und der umgebende Text in einer bestimmten Größe geschrieben werden.
@@ -28569,11 +28553,11 @@ Mathe-Optionen
  
 \family sans
 AMS-Mathe-Paket
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 automatisch
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden
@@ -28581,7 +28565,7 @@ verwenden
  oder 
 \family sans
 AMS-Mathe-Paket
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden
@@ -28602,7 +28586,7 @@ ungen benutzt werden, zum Beispiel der altdeutsche Frakturfont, der nach
 
 \backslash
 mathfrak
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 {g}
@@ -28624,7 +28608,7 @@ Fettschrift
 
 \backslash
 mathbb
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 {R}
@@ -28946,11 +28930,11 @@ Format
  mit 
 \family sans
 Gehe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zur
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke
@@ -29226,11 +29210,11 @@ Stellen Sie sicher, dass die Einträge im Dialogfenster
 \family sans
 Dokument-Einstellungen\SpecialChar \menuseparator
  Nummerierung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -29246,11 +29230,11 @@ name "Nummerierung"
  und 
 \family sans
 Im
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 aufführen
@@ -29272,11 +29256,11 @@ Fügen Sie den Befehl zum Erstellen des Inhaltsverzeichnisses an der gewünschte
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 /
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -29307,7 +29291,7 @@ Gliederung
 \family default
 .
  Näheres finden Sie unter Nr.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -29392,11 +29376,11 @@ en Stelle ein.
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 /
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -29672,7 +29656,7 @@ PDF-Eigenschaften
  im Feld 
 \family sans
 Zusätzliche
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Optionen
@@ -29722,11 +29706,11 @@ Dokument
 
 \family sans
 Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 hier
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 beginnen
@@ -29737,7 +29721,7 @@ beginnen
 en umgeändert.
  Die weitere Nummerierung ist wie gewohnt.
  Auf Anhänge kann natürlich auch verwiesen werden: siehe Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29796,7 +29780,7 @@ BibTeX-Datenbank
 \end_inset
 
 , was in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29816,7 +29800,7 @@ Sie können ein Literaturverzeichnis von Hand einfügen.
 Literaturverzeichnis
 \family default
  (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29928,7 +29912,7 @@ key "latexcompanion"
  Im zweiten Beispiel haben wir das Feld 
 \family sans
 Text
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 danach:
@@ -30053,13 +30037,13 @@ Einfügen\SpecialChar \menuseparator
 List
 \family default
 e
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 /
 \family sans
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -30239,7 +30223,7 @@ Im Dialogfenster können Sie auch Text, der vor oder nach dem Verweis erscheinen
 \end_inset
 
 Kapitel
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 3
@@ -30310,11 +30294,11 @@ Setzen Sie den Cursor zunächst ganz ans Ende des Dokuments und wählen Sie
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 /
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -30416,11 +30400,11 @@ X
 im Feld 
 \family sans
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Stichwortverzeichnis
@@ -30468,7 +30452,7 @@ Aufzählung
 Liste
 \emph default
  gruppieren wollen, erzeugen wir zunächst in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30488,7 +30472,7 @@ Liste
  Auflistung
 \emph default
  in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30507,7 +30491,7 @@ Liste ! Auflistung
  
 \series default
 in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30566,7 +30550,7 @@ Normalerweise erscheint ein Stichwort zusammen mit der Seitenzahl, wo es
  Aber manchmal wollen Sie einem Stichwort vielleicht mehrere aufeinanderfolgende
  Seiten zuordnen.
  Wenn Sie am Anfang von Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30581,7 +30565,7 @@ reference "Absatzumgebungen"
 Absatz ! -umgebungen|(
 \family default
  und am Ende von Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30893,7 +30877,7 @@ Mediävalziffern | oldstylenums
 \end_inset
 
 , der Mediävalziffern (siehe
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -30937,7 +30921,7 @@ Mediävalziffern|oldstylenums
 \family typewriter
 \series default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 command
@@ -30956,7 +30940,7 @@ command
 
 \backslash
 command{page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 number}
@@ -30968,7 +30952,7 @@ number}
 
 .
  In Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -31130,11 +31114,11 @@ eX
  im Feld 
 \family sans
 Befehl
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 für
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Stichwortverzeichnis 
@@ -31228,7 +31212,7 @@ Beschreibung
  und 
 \family sans
 Einsortieren
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 als
@@ -31327,7 +31311,7 @@ a
  Um das zu ändern, können Sie etwas ins Feld 
 \family sans
 Einsortieren
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 als
@@ -31424,13 +31408,13 @@ refpage
 
 \backslash
 norefeq,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
 \backslash
 norefpag,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31555,13 +31539,13 @@ nomrefpage
 
 \backslash
 nomnorefeq,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
 \backslash
 nomnorefpage,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31588,11 +31572,11 @@ mit
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 /
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -31796,7 +31780,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Eine Einführung in die LaTeX-Syntax ist in Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -31964,7 +31948,7 @@ x^{2}-2x-2\Rightarrow\Frage {x_{1}}\Antwort {x_{2}}=1\Frage {+\sqrt{3}}\Antwort 
 \begin_layout Standard
 Innerhalb von Formeln, kann dasselbe auch mit Hilfe von Makros geschehen,
  siehe Abschnitt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -32095,7 +32079,7 @@ Ein Spezialbefehl ist
 =
 \family default
 , der bei der Silbentrennung in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -32115,7 +32099,7 @@ Befehle der 3.
 sloppypar
 \family default
  in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -32387,7 +32371,7 @@ py\SpecialChar \-
 par
 \family default
  in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -32556,11 +32540,11 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Aussehen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Handhabung\SpecialChar \menuseparator
@@ -32569,7 +32553,7 @@ Grafik
  
 \family sans
 Sofortige
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Vorschau
@@ -32594,7 +32578,7 @@ LyX erzeugt Vorschauen von mathematischen Objekten.
  wenn Sie in dem entsprechenden Menü 
 \family sans
 Vorschau
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 anzeigen
@@ -32780,7 +32764,7 @@ Rechtschreibprüfung
 ibprogramm findet, ins Kästchen 
 \family sans
 Unbekanntes
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Wort
@@ -32856,7 +32840,7 @@ A
 lle
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -33087,15 +33071,15 @@ Es gibt vier Möglichkeiten, das zu vermeiden.
 Die einfachste ist, die 
 \family sans
 Standardkodierung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Sprache
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden
@@ -33149,7 +33133,7 @@ Latin1
 <
 \family default
 Meine
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Sprache
@@ -33182,7 +33166,7 @@ Die vierte Möglichkeit ist, dass der Pfleger des Wörterbuchs das Problem
 \end_deeper
 \begin_layout Subsubsection
 Persönliches
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wörterbuch
@@ -33252,7 +33236,7 @@ Weitere Optionen
 
 \family sans
 Alternative
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Sprache
@@ -33270,11 +33254,11 @@ Sprache
 
 \family sans
 Zusammengesetzte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wörter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 erlauben
@@ -33291,7 +33275,7 @@ aspell
 
 \family sans
 Eingabekodierung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden
@@ -33324,11 +33308,11 @@ HHa
 : Nun, mit dem Menü 
 \family sans
 Suchen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 &
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ersetzen
@@ -33406,7 +33390,7 @@ Wenn mehrere Personen ein Dokument zusammen bearbeiten, ist es sehr nützlich,
 Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verfolgen
@@ -33444,11 +33428,11 @@ Die Farben können Sie in
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Aussehen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Handhabung\SpecialChar \menuseparator
@@ -33496,7 +33480,7 @@ Diese Werkzeugleiste enthält folgende Schaltknöpfe:
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verfolgen
@@ -33521,15 +33505,15 @@ Strg+Umschalt+E
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 In
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ausgabe
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 anzeigen
@@ -33559,7 +33543,7 @@ anzeigen
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 akzeptieren
@@ -33578,7 +33562,7 @@ akzeptieren
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ablehnen
@@ -33597,7 +33581,7 @@ ablehnen
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zusammenfassen
@@ -33616,11 +33600,11 @@ zusammenfassen
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Alle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 akzeptieren
@@ -33639,11 +33623,11 @@ akzeptieren
  Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Alle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 ablehnen
@@ -33687,7 +33671,7 @@ X-Notiz
 \family sans
  Navigieren\SpecialChar \menuseparator
 Nächste
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Notiz
@@ -34083,15 +34067,15 @@ Sprache
  
 \family sans
 Standardkodierung
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 der
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Sprache
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verwenden
@@ -36931,7 +36915,7 @@ ISO8859-1
 \begin_deeper
 \begin_layout Standard
 ¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 diaeresis
@@ -36939,7 +36923,7 @@ diaeresis
 
 \begin_layout Standard
 ^ Â Ê Î Ô Û â ê î ô û
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 circumflex
@@ -36947,7 +36931,7 @@ circumflex
 
 \begin_layout Standard
 ` À È Ì Ò Ù à è ì ò ù
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 grave
@@ -36955,7 +36939,7 @@ grave
 
 \begin_layout Standard
 ´ Á É Í Ó Ú Ý á é í ó ú ý
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 acute
@@ -36963,7 +36947,7 @@ acute
 
 \begin_layout Standard
 ~ Ã Ñ Õ ã ñ õ
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 tilde
@@ -36971,7 +36955,7 @@ tilde
 
 \begin_layout Standard
 ¸Çç
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 cedilla
@@ -36979,7 +36963,7 @@ cedilla
 
 \begin_layout Standard
 ¯
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 macron
@@ -37001,7 +36985,7 @@ ISO8859-2
 \begin_deeper
 \begin_layout Standard
 ĤĴĥĵĈĜŜĉĝŝ
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 circumflex
@@ -37009,7 +36993,7 @@ circumflex
 
 \begin_layout Standard
 ŚŹśźŔĹĆŃŕĺćń
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 acute
@@ -37017,7 +37001,7 @@ acute
 
 \begin_layout Standard
 Ĩı̃Ũũ
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 tilde
@@ -37025,7 +37009,7 @@ tilde
 
 \begin_layout Standard
 ŞşŢţŖĻĢŗļģŅĶņķ
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 cedilla
@@ -37033,7 +37017,7 @@ cedilla
 
 \begin_layout Standard
 ĒēĀĪŌŪāı̄ōū
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 macron
@@ -37041,7 +37025,7 @@ macron
 
 \begin_layout Standard
 ŐŰőű
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 hungarian umlaut
@@ -37878,7 +37862,7 @@ Einfügen\SpecialChar \menuseparator
 Nomenklatureintrag
 \family default
 : siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -38260,7 +38244,7 @@ Postscript
 
 \begin_layout Standard
 Siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -38281,7 +38265,7 @@ Mathe-Kontrollflächen
 
 \begin_layout Standard
 Siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -38304,7 +38288,7 @@ Werkzeugleiste
 
 \begin_layout Standard
 Siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -38437,7 +38421,7 @@ Werkzeugleiste
 
 \begin_layout Standard
 Siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -38564,11 +38548,11 @@ Einstellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Konverter\SpecialChar \menuseparator
 Postscript
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ->
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fax
@@ -38840,7 +38824,7 @@ In Open Office muss
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 laden
@@ -38901,7 +38885,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (plain)->HTML
@@ -38966,7 +38950,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 (plain)->OpenDocument
@@ -39221,7 +39205,7 @@ Zweig
 \begin_layout Standard
 Dies geht nur, wenn Sie für Ihr Dokument mindestens einen Zweig definiert
  haben (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -39588,7 +39572,7 @@ Datum
 \begin_layout Standard
 Das eingefügte Datum wird so erscheinen, wie Sie es festgelegt haben (siehe
  Anhang
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -39662,7 +39646,7 @@ Nächste Änderung
 \begin_layout Standard
 Damit gelangen Sie von einer Änderung zur nächsten, wenn Sie die Änderungsverfol
 gung entsprechend Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -39699,7 +39683,7 @@ Gehe zur Marke (Strg+>)
 Wenn Sie mit 
 \family sans
 Nächster
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Querverweis
@@ -39856,7 +39840,7 @@ Mitarbeiter
 \family sans
 Hilfe\SpecialChar \menuseparator
 Über
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ly
@@ -39872,11 +39856,11 @@ status collapsed
 
 X\SpecialChar \menuseparator
 Ruhm
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 und
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ehre
@@ -39934,11 +39918,11 @@ Aussehen
 \family sans
 \series bold
 
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Handhabung
@@ -39964,7 +39948,7 @@ Durchsuchen\SpecialChar \ldots{}
 \begin_deeper
 \begin_layout Description
 Automatische
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Hilfe
@@ -39973,15 +39957,15 @@ Hilfe
 \begin_deeper
 \begin_layout Description
 Tooltips
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 im
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Hauptarbeitsbereich
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 anschalten gibt Hinweise bei Einfügungen
@@ -39995,15 +39979,15 @@ Sitzung
 \begin_deeper
 \begin_layout Description
 Erlaube
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Speichern/Wiederherstellen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fensterabmessungen Wenn dieser Parameter ange\SpecialChar \-
@@ -40013,11 +39997,11 @@ kreuzt ist, wird das LyX-Fenster
 
 \begin_layout Description
 Cursor-Positionen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 wieder
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 herstellen Wenn dieser Parameter an\SpecialChar \-
@@ -40028,23 +40012,23 @@ rt, wo er beim letzten Mal war.
 
 \begin_layout Description
 Geöffnete
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dateien
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 letzten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Sitzung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 laden ist selbsterklärend und hilfreich, wenn man längere Zeit mit denselben
@@ -40059,15 +40043,15 @@ Dokumente
 \begin_deeper
 \begin_layout Description
 Sicherung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokumente,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 alle\SpecialChar \ldots{}
@@ -40077,15 +40061,15 @@ Minuten Hier können Sie die automatische Datensicherung während einer
 
 \begin_layout Description
 Maximale
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anzahl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 letzter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dateien Außerdem können Sie angeben, wie viele Dateien LyX maximal anzeigen
@@ -40094,15 +40078,15 @@ Dateien Außerdem können Sie angeben, wie viele Dateien LyX maximal anzeigen
 
 \begin_layout Description
 Dokument
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Unterfenstern
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 öffnen Wenn dieser Parameter angekreuzt ist, wird das neue Dokument im selben
@@ -40149,7 +40133,7 @@ Schreibmaschine Auswahl einer Schrift mit festen Abständen.
 
 \begin_layout Description
 Vergrößerung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 % Hiermit können Sie die Größe der dargestellten Schriften festlegen, je
@@ -40158,7 +40142,7 @@ Vergrößerung
 
 \begin_layout Description
 Bildschirm
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
@@ -40168,7 +40152,7 @@ DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
 Schriftgrößen Hier können Sie die Größenverhältnisse der zehn verschiedenen,
  von LaTeX her bekannten, Schriftgrößen untereinander festlegen, siehe auch
  Seite
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -40185,35 +40169,35 @@ reference "Fontgröße"
 
 \begin_layout Description
 Pixmap
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Cache
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 benutzen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 um
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Darstellung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zeichen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 beschleunigen Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige
@@ -40224,7 +40208,7 @@ beschleunigen Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige
  Die Verwendung dieser Option hängt also davon ab, ob Sie Geschwindigkeit
  oder gute Ansicht bevorzugen.
  Beachten Sie, dass der Pixmap-Cache nur unter Mac
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 OS und Windows verfügbar und nützlich ist.
@@ -40251,7 +40235,7 @@ Farben In diesem Unterfenster werden die von LyX verwendeten Farben für
 \begin_layout Description
 Abstandsmarkierungen ist die Farbe, in der zum Beispiel ein variabler horizontal
 er Abstand dargestellt wird, siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -40282,11 +40266,11 @@ Auswahl ist die Hintergrundfarbe für markierten Text.
 
 \begin_layout Description
 Balken
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Tiefe ist die Farbe der Linien, die Sie hier links sehen.
@@ -40294,11 +40278,11 @@ Tiefe ist die Farbe der Linien, die Sie hier links sehen.
 
 \begin_layout Description
 Balken
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Änderung ist die Farbe, mit der Änderungen angezeigt werden, wenn Sie unter
@@ -40310,7 +40294,7 @@ Dokument\SpecialChar \menuseparator
  
 \family sans
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verfolgen
@@ -40325,7 +40309,7 @@ Befehlseinfügung Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit
 
 \begin_layout Description
 Befehlseinfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit
@@ -40334,7 +40318,7 @@ Befehlseinfügung
 
 \begin_layout Description
 Befehlseinfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit die
@@ -40347,7 +40331,7 @@ Cursor ist die Cursorfarbe.
 
 \begin_layout Description
 Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) wird nicht benutzt
@@ -40355,7 +40339,7 @@ Einfügung
 
 \begin_layout Description
 Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) ???
@@ -40363,11 +40347,11 @@ Einfügung
 
 \begin_layout Description
 Einklappbare
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) ist die Farbe, mit der der Text einer einklappbaren Einfügung --
@@ -40376,11 +40360,11 @@ Einfügung
 
 \begin_layout Description
 Einklappbare
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Text) ist die Farbe, mit der der Name einer einklappbaren Einfügung --
@@ -40393,7 +40377,7 @@ Fußnote
 
 \begin_layout Description
 Fußnoten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe der Fußnotenmarke.
@@ -40401,7 +40385,7 @@ Marke ist die Farbe der Fußnotenmarke.
 
 \begin_layout Description
 Gelöschter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text ist die Farbe, mit der gelöschter Text angezeigt wird, wenn Sie unter
@@ -40413,7 +40397,7 @@ Dokument\SpecialChar \menuseparator
  
 \family sans
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verfolgen
@@ -40423,7 +40407,7 @@ verfolgen
 
 \begin_layout Description
 Grafik
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von Schaltknöp
@@ -40440,7 +40424,7 @@ Grauschrift
 
 \begin_layout Description
 Grauschrift-Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Farbe, mit der das Wort 
@@ -40452,7 +40436,7 @@ Grauschrift
 
 \begin_layout Description
 Grauschrift-Einfügung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe der Grauschrift-Marke.
@@ -40464,7 +40448,7 @@ Hintergrund ist die Hintergrundfarbe des LyX-Fensters.
 
 \begin_layout Description
 Hinzugefügter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text ist die Farbe, mit der neuer Text angezeigt wird, wenn Sie unter 
@@ -40475,7 +40459,7 @@ Dokument\SpecialChar \menuseparator
  
 \family sans
 Änderungen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 verfolgen
@@ -40485,15 +40469,15 @@ verfolgen
 
 \begin_layout Description
 Knopf
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bei
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fokus) ist die Farbe, mit der zum Beispiel der Hintergrund von Einfügungen
@@ -40502,7 +40486,7 @@ Fokus) ist die Farbe, mit der zum Beispiel der Hintergrund von Einfügungen
 
 \begin_layout Description
 Knopf
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von Einfügunge
@@ -40511,7 +40495,7 @@ n wie LyX-Code oder URL dargestellt wird, wenn der Cursor nicht darauf zeigt.
 
 \begin_layout Description
 Knopf
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) ist die Farbe, mit der der Rahmen solcher Einfügungen gezeichnet
@@ -40520,7 +40504,7 @@ Knopf
 
 \begin_layout Description
 Kommentar
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Farbe, mit der das Wort 
@@ -40532,7 +40516,7 @@ Kommentar
 
 \begin_layout Description
 Kommentar
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe, mit der das Wort 
@@ -40575,11 +40559,11 @@ X-Text ist die Farbe, mit der der Text eines TeX-Code-Kästchens geschrieben
 
 \begin_layout Description
 Legende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) ist die Farbe, mit der eine Legende (siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -40598,7 +40582,7 @@ Mathe ist die Farbe, mit der ein mathematischer Ausdruck geschrieben wird.
 
 \begin_layout Description
 Mathe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Ecken) ist die Farbe, mit der ein mathematischer Ausdruck an den Ecken
@@ -40617,7 +40601,7 @@ nicht im Ausdruck
 
 \begin_layout Description
 Mathe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Hintergrundfarbe eines mathematischen Ausdrucks, wenn
@@ -40630,7 +40614,7 @@ nicht im Ausdruck
 
 \begin_layout Description
 Mathe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Linie) ist die Farbe, mit der das Rechteck umrahmt ist, in das Sie etwas
@@ -40639,7 +40623,7 @@ Mathe
 
 \begin_layout Description
 Mathe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Rahmen) ist die Farbe, mit der ein mathematischer Ausdruck an den Ecken
@@ -40656,7 +40640,7 @@ im Ausdruck
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ???
@@ -40664,11 +40648,11 @@ Mathe-Makro
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (schwebender
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Hintergrund) ???
@@ -40676,7 +40660,7 @@ Hintergrund) ???
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ???
@@ -40684,7 +40668,7 @@ Marke ???
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Rahmen ???
@@ -40692,11 +40676,11 @@ Rahmen ???
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 alter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Parameter ???
@@ -40704,7 +40688,7 @@ Parameter ???
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ausgeblendet ???
@@ -40712,11 +40696,11 @@ ausgeblendet ???
 
 \begin_layout Description
 Mathe-Makro
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 neuer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Parameter ???
@@ -40724,7 +40708,7 @@ Parameter ???
 
 \begin_layout Description
 Neue
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seite ist die Farbe, mit der die Linie für eine neue Seite gezeichnet wird.
@@ -40732,7 +40716,7 @@ Seite ist die Farbe, mit der die Linie für eine neue Seite gezeichnet wird.
 
 \begin_layout Description
 Notiz
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Hintergrund) ist die Hintergrundfarbe für die LyX-Notiz.
@@ -40740,7 +40724,7 @@ Notiz
 
 \begin_layout Description
 Notiz
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe, mit der das Wort 
@@ -40752,11 +40736,11 @@ Notiz
 
 \begin_layout Description
 Obere/untere
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Linie ist die Farbe, in der zum Beispiel eine horizontale Linie wie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -40771,7 +40755,7 @@ reference "Horizontale-Linien"
 
 \begin_layout Description
 Randnotiz
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe, mit der die Marke der Randnotiz beschriftet ist.
@@ -40779,7 +40763,7 @@ Marke ist die Farbe, mit der die Marke der Randnotiz beschriftet ist.
 
 \begin_layout Description
 Schattierte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box ist die Hintergrundfarbe für die schattierte Box.
@@ -40807,7 +40791,7 @@ Stichwortmarke ist die Farbe, mit der die Stichwortmarke beschriftet ist.
 
 \begin_layout Description
 Tabelle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Linie) ist die Farbe, mit der die Trennlinien zwischen Tabellenzellen gezeichne
@@ -40816,11 +40800,11 @@ t werden.
 
 \begin_layout Description
 Tabelle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 an/aus
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Linie ist die Farbe, mit der die nicht vorhandenen Trennlinien zwischen
@@ -40833,7 +40817,7 @@ Text ist die Farbe, mit der normaler Text geschrieben wird.
 
 \begin_layout Description
 URL
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ist die Farbe, mit der die URL-Marke beschriftet wird.
@@ -40841,7 +40825,7 @@ Marke ist die Farbe, mit der die URL-Marke beschriftet wird.
 
 \begin_layout Description
 URL
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text ist die Farbe, in der die URL geschrieben wird.
@@ -40849,7 +40833,7 @@ Text ist die Farbe, in der die URL geschrieben wird.
 
 \begin_layout Description
 Unterer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Bereich ???
@@ -40861,7 +40845,7 @@ Vorschau-Schnipsel ???
 
 \begin_layout Description
 Wortvervollständigung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (eindeutig) ist die Farbe, mit der die Vervollständigung angezeigt wird,
@@ -40870,7 +40854,7 @@ Wortvervollständigung
 
 \begin_layout Description
 Wortvervollständigung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mehrdeutig) ist die Farbe, mit der die Vervollständigungen angezeigt werden,
@@ -40884,7 +40868,7 @@ Zeilenende-Markierung ist die Farbe, mit der ein manueller Zeilenumbruch
 
 \begin_layout Description
 Zweig
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Marke ???
@@ -40897,7 +40881,7 @@ Grafik
 
 \begin_layout Description
 Grafik
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden sollen.
@@ -40906,7 +40890,7 @@ anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden sollen.
 
 \begin_layout Description
 Sofortige
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vorschau Hier legen Sie fest, wie schnell Grafiken in LyX dargestellt werden
@@ -40935,11 +40919,11 @@ Bearbeiten
 \begin_deeper
 \begin_layout Description
 Cursor
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 folgt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
@@ -40949,11 +40933,11 @@ Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
 \begin_deeper
 \begin_layout Description
 Umgebungen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 alphabetisch
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 sortieren wie der Name sagt 
@@ -40961,15 +40945,15 @@ sortieren wie der Name sagt
 
 \begin_layout Description
 Umgebungen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 nach
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kategorien
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 gruppieren wie der Name sagt
@@ -40993,23 +40977,23 @@ Im Auswahlfenster:
 
 \begin_layout Description
 Mathe-Makros
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 inline
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bearbeiten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 einer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Box ???
@@ -41017,35 +41001,35 @@ Box ???
 
 \begin_layout Description
 Mathe-Makros
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 inline
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bearbeiten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mit
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 dem
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Namen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Statuszeile ???
@@ -41053,31 +41037,31 @@ Statuszeile ???
 
 \begin_layout Description
 Mathe-Makros
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 inline
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bearbeiten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mit
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 einer
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Parameterliste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (wie
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 LyX
@@ -41099,7 +41083,7 @@ Vollbild
 \begin_deeper
 \begin_layout Description
 Werkzeugleisten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 weglassen
@@ -41107,7 +41091,7 @@ weglassen
 
 \begin_layout Description
 Scrollleisten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 weglassen
@@ -41115,7 +41099,7 @@ weglassen
 
 \begin_layout Description
 Tableiste
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 weglassen
@@ -41128,7 +41112,7 @@ Wenn eine dieser Optionen angekreuzt ist, wird die entsprechende Leiste
 
 \begin_layout Description
 Begrenze
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Textbreite
@@ -41137,11 +41121,11 @@ Textbreite
 \begin_deeper
 \begin_layout Description
 Benutzter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Bildschirmbereich
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (Pixel) begrenzt die Breite der Darstellung auf die festgelegte Pixelzahl.
@@ -41160,19 +41144,19 @@ Tastaturkürzel-Datei: ???
 
 \begin_layout Description
 Zeige
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Tastaturkürzel,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 die
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Folgendes
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 enthalten: der hier eingegebene Text wird in Tabelle darunter angezeigt,
@@ -41214,7 +41198,7 @@ Eingabevervollständigung
 
 \begin_layout Description
 Im
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -41223,7 +41207,7 @@ Text
 \begin_deeper
 \begin_layout Description
 Automatische
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inline-Vervollständigung hiermit versucht LyX, Worte zu vervollständigen.
@@ -41234,7 +41218,7 @@ Inline-Vervollständigung hiermit versucht LyX, Worte zu vervollständigen.
 
 \begin_layout Description
 Automatisches
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Popup hier werden die möglichen Vervollständigungen in einem Fenster angezeigt.
@@ -41244,7 +41228,7 @@ Popup hier werden die möglichen Vervollständigungen in einem Fenster angezeigt
 \end_deeper
 \begin_layout Description
 In
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Mathe
@@ -41253,7 +41237,7 @@ Mathe
 \begin_deeper
 \begin_layout Description
 Automatische
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inline-Vervollständigung
@@ -41261,7 +41245,7 @@ Inline-Vervollständigung
 
 \begin_layout Description
 Automatisches
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Popup 
@@ -41287,7 +41271,7 @@ Allgemein
 \begin_deeper
 \begin_layout Description
 s:
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inline-Vervollständigungsverzögerung
@@ -41295,7 +41279,7 @@ Inline-Vervollständigungsverzögerung
 
 \begin_layout Description
 s:
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Popup-Verzögerung
@@ -41308,27 +41292,27 @@ Verzögerungszeit in s, nach der die möglichen Vervollständigungen oder das
 
 \begin_layout Description
 Zeige
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Popup
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ohne
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Verzögerung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 mehrdeutige
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vervollständigungen
@@ -41336,28 +41320,28 @@ Vervollständigungen
 
 \begin_layout Description
 Benutze
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 \SpecialChar \ldots{}
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 um
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 lange
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vervollständigungen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zu
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 kürzen
@@ -41390,11 +41374,11 @@ Dokumentvorlagen Dieses Verzeichnis öffnet LyX, wenn Sie
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 von
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Vorlage\SpecialChar \ldots{}
@@ -41457,11 +41441,11 @@ Einstellungen\SpecialChar \menuseparator
 Optionen\SpecialChar \menuseparator
 Externe Programme\SpecialChar \menuseparator
 Pfad
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zur
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Ly
@@ -41499,7 +41483,7 @@ Tempor
 ä
 \family default
 res
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Verzeichnis Hier speichert LyX alle temporären Daten einer Sitzung.
@@ -41569,7 +41553,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Eine Einführung in die LaTeX-Syntax finden Sie in Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -41606,7 +41590,7 @@ Table
 
 \begin_layout Description
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anfang Wenn ein besonderes LaTeX-Paket benötigt wird, um in einer gewissen
@@ -41646,14 +41630,14 @@ selectlanguage{$$lang}
 
 \begin_layout Description
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ende ist das Gegenstück zu 
 \family sans
 \series bold
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anfang
@@ -41666,7 +41650,7 @@ l das Paket an- und abschaltet.
 
 \begin_layout Description
 Babel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden legt fest, ob 
@@ -41689,7 +41673,7 @@ babel
 
 \begin_layout Description
 Auto
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Beginn Wenn diese Option gesetzt wird, starten die Dokumente mit der gewählten
@@ -41698,7 +41682,7 @@ Beginn Wenn diese Option gesetzt wird, starten die Dokumente mit der gewählten
 \family sans
 \series bold
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anfang
@@ -41710,7 +41694,7 @@ Anfang
 \family sans
 \series bold
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anfang 
@@ -41721,14 +41705,14 @@ nicht die Standardeinstellung benutzen.
 
 \begin_layout Description
 Auto
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ende ist das Gegenstück zu 
 \family sans
 \series bold
 Auto
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Beginn
@@ -41739,7 +41723,7 @@ Beginn
 \family sans
 \series bold
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Ende
@@ -41750,7 +41734,7 @@ Ende
 
 \begin_layout Description
 Fremdsprachen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 markieren Wenn Sie dies ankreuzen, werden Texte in einer anderen Sprache
@@ -41764,7 +41748,7 @@ Rechts-nach-links-Sprachunterstützung für die entsprechenden Sprachen wie
 
 \begin_layout Description
 %RTL-Unterstützung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 aktivieren 
@@ -41818,11 +41802,11 @@ Druckbefehl ist der Befehl, den LyX/LaTeX zum Drucken benutzt.
 
 \begin_layout Description
 Optionen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Druckbefehl Die Erklärungen für die Optionen finden Sie in den 
@@ -41838,19 +41822,19 @@ s.
 
 \begin_layout Description
 Ausgabe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 an
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 den
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Drucker
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 anpassen Diese Option funktioniert nur für den 
@@ -41913,7 +41897,7 @@ http://unixhelp.ed.ac.uk/CGI/man-cgi?date
 
 \begin_layout Subsection
 Einfacher
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Text
@@ -41921,7 +41905,7 @@ Text
 
 \begin_layout Description
 Ausgabe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zeilenlänge ist selbsterklärend.
@@ -42000,11 +41984,11 @@ X-Befehl ist selbsterklärend.
 
 \begin_layout Description
 Befehl
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 für
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Stichwortverzeichnis ist selbsterklärend.
@@ -42012,7 +41996,7 @@ Stichwortverzeichnis ist selbsterklärend.
 
 \begin_layout Description
 DVI-Betrachter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Papiergrößen-Optionen bezieht sich auf xdvi.
@@ -42020,23 +42004,23 @@ Papiergrößen-Optionen bezieht sich auf xdvi.
 
 \begin_layout Description
 Klassenoptionen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 beim
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Wechsel
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokumentklasse
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zurücksetzen entfernt beim Wechsel der Dokumentklasse alle von Hand gesetzten
@@ -42098,7 +42082,7 @@ Konverter-Definition
 \family sans
 \series bold
 Von
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Format
@@ -42108,7 +42092,7 @@ Format
 \family sans
 \series bold
 Nach
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Format
@@ -42144,15 +42128,15 @@ Aktiv Wenn Sie dies ankreuzen, werden Konversionen solange zwischengespeichert,
  wie in 
 \family sans
 Maximales
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Alter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Tagen)
@@ -42165,15 +42149,15 @@ Tagen)
 
 \begin_layout Description
 Maximales
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Alter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Tagen): Aufbewahreungszeit
@@ -42264,7 +42248,7 @@ identisch.
 
 \begin_layout Description
 Einsortieren
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 als ???
@@ -42287,7 +42271,7 @@ Ansicht\SpecialChar \menuseparator
 
 \family default
  usw.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 zu sehen ist.
@@ -42393,7 +42377,7 @@ X: Dokument-Einstellungen
 
 \begin_layout Description
 Klassen-Standards
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden Hiermit setzen Sie alle Einstellungen auf die Standardwerte der
@@ -42402,11 +42386,11 @@ verwenden Hiermit setzen Sie alle Einstellungen auf die Standardwerte der
 
 \begin_layout Description
 Als
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument-Standards
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 speichern siehe 
@@ -42494,11 +42478,11 @@ Hier können Sie die in
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Aussehen
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 &
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 Handhabung
@@ -42529,7 +42513,7 @@ Serifenfrei
 \begin_deeper
 \begin_layout Description
 Skalierung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (%) Wenn Sie zum Beispiel den benutzten 11pt-Palatino-Font durch Helvetica
@@ -42545,7 +42529,7 @@ Schreibmaschine
 \begin_deeper
 \begin_layout Description
 Skalierung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (%) siehe oben.
@@ -42554,11 +42538,11 @@ Skalierung
 \end_deeper
 \begin_layout Description
 Echte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kapitälchen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden bedeutet, einen echten Font zu benutzen, anstatt Kapitälchen durch
@@ -42573,7 +42557,7 @@ name "Mediävalziffern"
 \end_inset
 
 Mediävalziffern
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verwenden bedeutet, Ziffern zu verwenden, die unter die Grundlinie reichen
@@ -42602,7 +42586,7 @@ http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm
 
 .
  Siehe auch Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -42648,7 +42632,7 @@ Zeilenabstand: hier können Sie einen auswählen oder selber definieren.
 
 \begin_layout Description
 Zweispaltiges
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dokument ist selbsterklärend
@@ -42666,7 +42650,7 @@ Listing-Einstellungen Wenn Sie im linken Feld ein ? eingeben, werden rechts
 \begin_deeper
 \begin_layout Description
 Überprüfung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 umgehen kreuzen Sie an, wenn Sie einen Parameter eingeben wollen, den LyX
@@ -42714,15 +42698,15 @@ Standard-Ränder
 
 \begin_layout Description
 Oben,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Unten,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Innen,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Außen ist selbsterklärend
@@ -42730,11 +42714,11 @@ Außen ist selbsterklärend
 
 \begin_layout Description
 Abstand
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zum
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Kopf ist der Abstand Unterkante Kopf bis Oberkante Rumpf (siehe auch 
@@ -42774,11 +42758,11 @@ headheight
 
 \begin_layout Description
 Abstand
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 zum
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fuß ist der Abstand Unterkante Rumpf bis Unterkante Fußzeile (siehe auch
@@ -42831,11 +42815,11 @@ reference "Rechtschreibprogramm"
 
 \begin_layout Description
 Stil
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Anführungszeichen siehe 
@@ -42862,19 +42846,19 @@ reference "Zeichentabellen"
 \begin_deeper
 \begin_layout Description
 Voreinstellungung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 der
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 gewählten
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Sprache siehe Abschnitt
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -42885,7 +42869,7 @@ reference "Zeichentabellen"
 \end_inset
 
  und Tabelle
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
  
@@ -42905,11 +42889,11 @@ Andere liefert eine Auswahl an Kodierungsmöglichkeiten.
 \end_deeper
 \begin_layout Section
 Nummerierung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 &
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Inhaltsverzeichnis
@@ -42962,7 +42946,7 @@ Jurabib
 
 \begin_layout Description
 Abschnittsspezifisches
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Literaturverzeichnis ???
@@ -42991,7 +42975,7 @@ name "PDF-Eigenschaften"
 
 \begin_layout Description
 hyperref-Unterstützung
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 benutzen kreuzen Sie an, wenn Sie das wollen.
@@ -43011,15 +42995,15 @@ Dokument-Informationen
 \begin_deeper
 \begin_layout Description
 Titel,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Autor,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Betreff,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Schlagworte sind selbsterklärend.
@@ -43027,11 +43011,11 @@ Schlagworte sind selbsterklärend.
 
 \begin_layout Description
 Informationen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 automatisch
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 eintragen ist selbsterklärend.
@@ -43039,11 +43023,11 @@ eintragen ist selbsterklärend.
 
 \begin_layout Description
 Im
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Vollbildmodus
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 öffnen ist selbsterklärend.
@@ -43058,15 +43042,15 @@ Hyperlinks
 \begin_deeper
 \begin_layout Description
 Links
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 am
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zeilenende
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 umbrechen ist selbsterklärend.
@@ -43074,15 +43058,15 @@ umbrechen ist selbsterklärend.
 
 \begin_layout Description
 Kein
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Rahmen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 um
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Links ist selbsterklärend.
@@ -43090,7 +43074,7 @@ Links ist selbsterklärend.
 
 \begin_layout Description
 Bibliographische
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Rückverweise ???
@@ -43098,11 +43082,11 @@ Rückverweise ???
 
 \begin_layout Description
 Rückverweis
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 auf
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Seitennummer ???
@@ -43116,7 +43100,7 @@ Lesezeichen
 \begin_deeper
 \begin_layout Description
 Lesezeichen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 erzeugen
@@ -43125,7 +43109,7 @@ erzeugen
 \begin_deeper
 \begin_layout Description
 Nummerierte
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Lesezeichen ist selbsterklärend.
@@ -43133,7 +43117,7 @@ Lesezeichen ist selbsterklärend.
 
 \begin_layout Description
 Lesezeichen
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 öffnen ???
@@ -43211,7 +43195,7 @@ Hinzufügen
 Verfügbare
 \family default
 n
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -43223,7 +43207,7 @@ Zweige
 
 \begin_layout Description
 Verfügbare
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Zweige listet alle verfügbaren Zweige auf und zeigt an, welcher aktiviert
@@ -43233,15 +43217,15 @@ Zweige listet alle verfügbaren Zweige auf und zeigt an, welcher aktiviert
 \begin_deeper
 \begin_layout Description
 Entfernen,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (De)aktivieren,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Farbe
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 ändern\SpecialChar \ldots{}
@@ -43255,11 +43239,11 @@ Eingebettete Dateien
 
 \begin_layout Description
 Weitere
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 eingebettete
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Dateien werden hier aufgelistet und können hinzugefügt und entfernt werden.
@@ -43297,7 +43281,7 @@ Einheiten
 \begin_layout Standard
 Um die in diesem Handbuch verwendeten Maßeinheiten zu verstehen, erläutert
  Tabelle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -43428,11 +43412,11 @@ in
 
 \begin_layout Plain Layout
 Zoll (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in = 2.54
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm
@@ -43456,11 +43440,11 @@ pt
 
 \begin_layout Plain Layout
 Punkt (72.27
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -43484,11 +43468,11 @@ pc
 
 \begin_layout Plain Layout
 Pica (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -43512,11 +43496,11 @@ sp
 
 \begin_layout Plain Layout
 skalierter Punkt (65536
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 sp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -43540,11 +43524,11 @@ bp
 
 \begin_layout Plain Layout
 großer Punkt (72
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -43568,7 +43552,7 @@ dd
 
 \begin_layout Plain Layout
 Didot (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd 
@@ -43576,7 +43560,7 @@ dd
 \end_inset
 
  0,376
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm)
@@ -43600,11 +43584,11 @@ cc
 
 \begin_layout Plain Layout
 Cicero (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd)
@@ -43820,11 +43804,11 @@ mathematische Maßeinheit
  
 \series default
 (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mu = 1/18
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em)
@@ -44764,6 +44748,22 @@ captions<Dokumentsprache>
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
 
 \end_inset
 
