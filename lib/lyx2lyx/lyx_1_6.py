@@ -1793,6 +1793,7 @@ def revert_external_embedding(document):
     revert_inset_embedding(document, 'External')
 
 
+# FIXME This code can still be cleaned up a fair bit.
 def convert_subfig(document):
     " Convert subfigures to subfloats. "
     i = 0
@@ -1816,6 +1817,7 @@ def convert_subfig(document):
         del document.body[l]
         del document.body[k]
         addedLines = -2
+        # savestr should no longer be needed here.
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption', 
                  '', '\\begin_layout Plain Layout',
@@ -1824,6 +1826,7 @@ def convert_subfig(document):
         document.body[i : i+1] = subst
         addedLines += len(subst) - 1
         endInset += addedLines
+        # There should be an easier way to do this.
         subst = ['', '\\end_inset', '', '\\end_layout', laststr]
         document.body[endInset : endInset+1] = subst
         addedLines += len(subst) - 1
