@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 333
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -323,7 +323,7 @@ This document explains LyX's math features and is furthermore a collection
  It is therefore required that you have read the section 
 \family typewriter
 Mathematical
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Formulas
@@ -370,7 +370,7 @@ Use AMS math package
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -610,7 +610,7 @@ Math
 \end_inset
 
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 (auto)
@@ -788,11 +788,11 @@ Math
 \family sans
 Edit\SpecialChar \menuseparator
 Rows
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 &
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Columns,
@@ -861,7 +861,7 @@ Mathematical text
  This mode is invoked with the the shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 m
@@ -1065,7 +1065,7 @@ spce
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 denotes a space character to be input.
@@ -1192,11 +1192,11 @@ in
 
 \begin_layout Plain Layout
 Inch (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in = 2,54
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm)
@@ -1220,11 +1220,11 @@ pt
 
 \begin_layout Plain Layout
 Point (72.27
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -1248,11 +1248,11 @@ pc
 
 \begin_layout Plain Layout
 Pica (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -1276,11 +1276,11 @@ sp
 
 \begin_layout Plain Layout
 scaled point (65536
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 sp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt)
@@ -1304,11 +1304,11 @@ bp
 
 \begin_layout Plain Layout
 big point (72
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 bp = 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 in)
@@ -1332,7 +1332,7 @@ dd
 
 \begin_layout Plain Layout
 Didot (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd 
@@ -1340,7 +1340,7 @@ dd
 \end_inset
 
  0.376
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm)
@@ -1364,11 +1364,11 @@ cc
 
 \begin_layout Plain Layout
 Cicero (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cc = 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 dd)
@@ -1456,7 +1456,7 @@ mu
 
 \begin_layout Plain Layout
 math unit (1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mu = 
@@ -1464,7 +1464,7 @@ mu =
 \end_inset
 
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 em)
@@ -2236,7 +2236,7 @@ r
 \emph default
  .
  l or r aligns the numerator to the left or right, resp.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 with the fraction stroke.
@@ -3475,11 +3475,11 @@ status collapsed
 
 \begin_layout Standard
 When displaying e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 isotopes
@@ -3600,7 +3600,7 @@ phantom
 \end_inset
 
  or the math toolbar button
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -3916,7 +3916,7 @@ vphantom
 \end_inset
 
  (toolbar button 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -3945,7 +3945,7 @@ hphantom
 \end_inset
 
  (toolbar button 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -4279,7 +4279,7 @@ underline
 
 \begin_layout Standard
 To double underline e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
@@ -4674,7 +4674,7 @@ ddots
 
 \begin_layout Plain Layout
 3×3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix with the different dots
@@ -4710,7 +4710,7 @@ The ellipses available in menu
 \family sans
 Insert\SpecialChar \menuseparator
 Special
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Character
@@ -4985,7 +4985,7 @@ r
 ×
 \series default
 4
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 matrix where the first column is left aligned, the second and third are
@@ -5061,7 +5061,7 @@ To add or delete rows and columns subsequently, the math toolbar buttons
 \end_inset
 
 , etc.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 , or the menu 
@@ -5121,7 +5121,7 @@ right
  (shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 parenthesis
@@ -5141,7 +5141,7 @@ reference "sub:Automatic-Bracket-Size"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -5211,7 +5211,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5259,7 +5259,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5307,7 +5307,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5335,7 +5335,7 @@ matrix
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -5389,7 +5389,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5437,7 +5437,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5485,7 +5485,7 @@ spce
 ×
 \series default
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 matrix
@@ -5513,7 +5513,7 @@ matrix
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -5524,11 +5524,11 @@ matrix
 \end_inset
 
 When e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -5633,11 +5633,11 @@ arraystretch
 \series default
 .
  To double e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the row separation, use the factor 2.
@@ -5723,7 +5723,7 @@ Brackets ! vertical
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -5947,7 +5947,7 @@ lfloor
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -6177,7 +6177,7 @@ rfloor
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -7012,7 +7012,7 @@ right
  the shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bracket
@@ -7147,11 +7147,11 @@ middle
  is additionally available for all brackets and limits.
  With this command the height of the following character is adapted to the
  one of the surrounding brackets, what is e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 needed for physical vectors:
@@ -7764,7 +7764,7 @@ jot
 \end_inset
 
  must be changed to -6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt before the formula with the command 
@@ -7783,7 +7783,7 @@ jot}{-6pt}
 jot
 \series default
  is set back after the formula to the standard value of 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt using the same command.
@@ -7837,7 +7837,7 @@ Arrows ! horizontal
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -8046,7 +8046,7 @@ hookleftarrow
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -8255,14 +8255,14 @@ hookrightarrow
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -8421,12 +8421,12 @@ rightleftharpoons
 \end_inset
 
 
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 25pt
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -8560,7 +8560,7 @@ dasharrow
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -8571,11 +8571,11 @@ dasharrow
 \end_inset
 
 Arrows used as accent like e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 vector arrows are listed in 
@@ -8824,7 +8824,7 @@ Arrows ! vertical
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -9008,7 +9008,7 @@ downarrow
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -9142,7 +9142,7 @@ nwarrow
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -9297,7 +9297,7 @@ Accents ! for one character
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -9610,7 +9610,7 @@ A
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -9872,7 +9872,7 @@ A
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -10060,11 +10060,11 @@ in mathematical text
  To convert an accented character to mathematical text, only the character
  under the accent may be converted.
  This applies also for all other conversions, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 to italic or bold.
@@ -10327,7 +10327,7 @@ Accents ! for several characters
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -10529,7 +10529,7 @@ A=B
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -10715,7 +10715,7 @@ A=B
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -11295,11 +11295,11 @@ Result
 \begin_layout Standard
 Negative spaces can lead to characters overlapping each other.
  Thus they can be used to enforce ligatures, what is e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 useful for summation operators: 
@@ -11546,7 +11546,7 @@ Spaces are needed for physical units, because the space between the value
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
 Thin
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Space
@@ -11598,7 +11598,7 @@ space between value and unit
 
 \begin_layout Plain Layout
 24
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 kW
@@ -11957,7 +11957,7 @@ For text, variable space can be inserted via the menu
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
 Horizontal
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Space
@@ -11967,12 +11967,12 @@ Space
 
 \begin_layout Standard
 This is a line with
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 2cm
 \end_inset
 
 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm space.
@@ -11980,7 +11980,7 @@ cm space.
 
 \begin_layout Standard
 This is a line with
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 maximum space.
@@ -12058,7 +12058,7 @@ To set
 mathsurround
 \series default
  to the value 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm, the command
@@ -12077,7 +12077,7 @@ mathsurround}{5mm}
 \begin_layout Standard
 is inserted in TeX-mode.
  5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space will now be set around all inline formulas:
@@ -12104,7 +12104,7 @@ This is a line with an inline formula
 \end_inset
 
  with 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm surrounding space.
@@ -12133,7 +12133,7 @@ To return to the predefined value,
 mathsurround
 \series default
  is set to the value 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -12193,7 +12193,7 @@ Boxes
  in the 
 \family typewriter
 Embedded
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Objects
@@ -13623,7 +13623,7 @@ colorbox
  color is chosen in the 
 \family sans
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
@@ -13640,7 +13640,7 @@ Style
 \family sans
 Edit\SpecialChar \menuseparator
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style\SpecialChar \menuseparator
@@ -13911,11 +13911,11 @@ black
  The four comma separated numbers are the portion factor for the corresponding
  colors of the color space.
  The factors can be in the range of 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 1.
@@ -14117,7 +14117,7 @@ status open
 \begin_layout Plain Layout
 This is a paragraph box.
  It is exactly 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm long and can also contain formulas: 
@@ -14155,7 +14155,7 @@ Inner Box
 Width
 \emph default
 : 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm, 
@@ -14227,7 +14227,7 @@ Boxes
  of the 
 \emph on
 Embedded
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Objects
@@ -14276,7 +14276,7 @@ linewidth
 \series default
  is hereby the line width set for the document.
  Because the frame is outside the parbox, 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 times the frame separation and the frame thickness must be subtracted from
@@ -14691,7 +14691,7 @@ Use esint package automatically
  must be set in the document settings under 
 \family sans
 Math
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -14700,7 +14700,7 @@ Options
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15008,7 +15008,7 @@ bigcup
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15279,7 +15279,7 @@ biguplus
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15328,7 +15328,7 @@ int
 oint
 \series default
 , resp.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in the style the operator limits are displayed, see 
@@ -15359,7 +15359,7 @@ d
  and using the keyboard shortcut 
 \family sans
 Alt-c
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 r
@@ -15432,7 +15432,7 @@ For multiple integrals there are the following commands:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15557,7 +15557,7 @@ sqiint
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15666,7 +15666,7 @@ dotsint
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -15819,7 +15819,7 @@ Inline
  (shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 l
@@ -16130,7 +16130,7 @@ mathclap
 \end_inset
 
  that sets the width of the limit to 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -16243,7 +16243,7 @@ Binary operators are surrounded by space when there is a character before
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -16610,7 +16610,7 @@ bullet
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -16944,7 +16944,7 @@ vee
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -17278,7 +17278,7 @@ triangleright
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -17547,11 +17547,11 @@ mathbin
 mathop
 \series default
  can e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 be used to use one limit for several operators:
@@ -18551,7 +18551,7 @@ normalsize
 .
  The font size can however not exceed a certain value.
  Is for example the document font size 12
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt, the command 
@@ -18726,7 +18726,7 @@ A
 \end_inset
 
 
-\begin_inset Space \hspace*{}
+\begin_inset space \hspace*{}
 \length 1cm
 \end_inset
 
@@ -18834,7 +18834,7 @@ Greek letters ! small
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19118,7 +19118,7 @@ vartheta
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19425,7 +19425,7 @@ rho
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19709,7 +19709,7 @@ omega
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19748,7 +19748,7 @@ Greek letters ! big
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19932,7 +19932,7 @@ Pi
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -20091,7 +20091,7 @@ Omega
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -20371,7 +20371,7 @@ Symbols ! mathematical
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -20630,7 +20630,7 @@ jmath
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -20929,7 +20929,7 @@ Bbbk
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -21188,7 +21188,7 @@ bot
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -22442,7 +22442,7 @@ All relations can also be inserted via the toolbar button
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -22874,7 +22874,7 @@ nmid
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -23306,7 +23306,7 @@ widehat=
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -23738,7 +23738,7 @@ nparallel
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -24976,7 +24976,7 @@ Command
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 1cm
 \end_inset
 
@@ -25138,7 +25138,7 @@ The following commands can only be used in mathematical text or in TeX-mode:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -25483,7 +25483,7 @@ i
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -25635,7 +25635,7 @@ L
 
 \begin_layout Plain Layout
 !
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 0mm
 \end_inset
 
@@ -25676,7 +25676,7 @@ spce
 
 \begin_layout Plain Layout
 ?
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 0mm
 \end_inset
 
@@ -25741,7 +25741,7 @@ j
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -25770,7 +25770,7 @@ The characters
 An exception are the commands 
 \series bold
 !
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 0mm
 \end_inset
 
@@ -25779,7 +25779,7 @@ An exception are the commands
  and 
 \series bold
 ?
-\begin_inset Space \hspace{}
+\begin_inset space \hspace{}
 \length 0mm
 \end_inset
 
@@ -25815,7 +25815,7 @@ With the following commands all letters can be accented.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -26143,7 +26143,7 @@ t ee
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -26477,7 +26477,7 @@ c e
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -27015,7 +27015,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}$
+\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}{}$
 \end_inset
 
 
@@ -27163,7 +27163,7 @@ Settings
  under 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Class
@@ -27194,7 +27194,7 @@ mathindent
 
 .
  Should the distance be 15
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm, the following command line is inserted in the LaTeX-preamble
@@ -27212,7 +27212,7 @@ mathindent}{15mm}
 
 \begin_layout Standard
 When no length is specified, the predefined value of 30
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt will be used.
@@ -27241,7 +27241,7 @@ Settings
  under 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Class
@@ -27516,12 +27516,12 @@ jot
 jot
 \series default
  is the value 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
  To create 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm additional line separation as in the previous example, the command
@@ -27626,7 +27626,7 @@ jot}{3pt}
 jot
 \series default
  is set to the value 3
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27685,7 +27685,7 @@ arraycolsep
 \end_inset
 
 column separation = 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -27714,7 +27714,7 @@ arraycolsep}{1cm}
 \begin_layout Standard
 inserted in TeX-mode, sets for all following formulas a column separation
  of 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm.
@@ -27725,7 +27725,7 @@ cm.
 arraycolsep
 \series default
  is set to 5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -27733,7 +27733,7 @@ pt.
 
 \begin_layout Standard
 A formula with 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm column separation:
@@ -27759,7 +27759,7 @@ C & \ne & A\end{eqnarray*}
 \end_inset
 
 A formula with the predefined column separation for matrices of 10
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt:
@@ -28014,11 +28014,11 @@ lefteqn
 \begin_layout Itemize
 The formula doesn't use the full page width.
  When e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the term 
@@ -28470,7 +28470,7 @@ reference "sub:Space"
 
 \begin_layout Standard
 The above example in the alignat environment where 1
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm space was inserted at the beginning of the second formula:
@@ -28546,7 +28546,7 @@ The first two columns contain the formula.
 Indented
 \series default
 , 30
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt space was inserted at the beginning of the first column.
@@ -28754,7 +28754,7 @@ multlinegap
 \series default
  specifies the distance of the first line from the left page margin.
  Predefined is the length 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -29153,7 +29153,7 @@ Numbered formulas can be created with the menu
 Insert\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Numbered
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Formula
@@ -29161,7 +29161,7 @@ Formula
  (shortcut 
 \family sans
 Ctrl-Alt
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 n
@@ -29172,7 +29172,7 @@ n
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Toggle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Numbering
@@ -29180,7 +29180,7 @@ Numbering
  (shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 n
@@ -29198,15 +29198,15 @@ When numbering is turned on in multiline formulas, all lines will be numbered.
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Toggle
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Numbering
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Line
@@ -29214,7 +29214,7 @@ Line
  (shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 N
@@ -29287,11 +29287,11 @@ equation
 
  and makes it easier to find labels in large documents because it marks
  it as formula label to divide it from e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 section labels.
@@ -29664,7 +29664,7 @@ reference "eq:f"
 By inserting the commands in TeX-mode, a space is created between the first
  two formulas.
  To revert this -5
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm vertical space is inserted after the command 
@@ -29696,7 +29696,7 @@ reference "sec:Formula-Styles"
 
 \series default
  is used, -7
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space is inserted instead.
@@ -30276,11 +30276,11 @@ A+B=C\end{equation}
 
 \begin_layout Standard
 To number e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 tables so that the number of the part is the sectioning,
@@ -31006,11 +31006,11 @@ Note:
 
 \begin_layout Standard
 The number of arguments is an integer in the range 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 9 and specifies how many arguments the new command should have.
@@ -31152,11 +31152,11 @@ For
 framebox
 \series default
  one can e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 define the command 
@@ -32047,7 +32047,7 @@ This chemical equation can directly be created as formula.
  changed by the shortcut 
 \family sans
 Alt-c
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 r
@@ -32211,7 +32211,7 @@ To avoid this, the comma is highlighted and changed to mathematical text
  (shortcut 
 \family sans
 Alt-m
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 m
@@ -32676,11 +32676,11 @@ status collapsed
 
 \begin_layout Standard
 The style is a number in the range of 0
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 3.
@@ -32813,7 +32813,7 @@ frac
 
 \begin_layout Standard
 When no fraction bar thickness is given, the predefined value of 0.4
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 pt will be used.
@@ -33256,7 +33256,7 @@ Packages ! hyperref
  support is enabled in the document settings dialog under 
 \family sans
 PDF
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Properties
@@ -33278,7 +33278,7 @@ Both problems can be solved by inserting at the end of the section heading
 \family sans
 Insert\SpecialChar \menuseparator
 Short
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Title
@@ -33507,7 +33507,7 @@ status open
 Note herby that the setting 
 \family sans
 Two-column
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 document
@@ -33520,7 +33520,7 @@ Settings
  under 
 \family sans
 Text
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -33555,11 +33555,11 @@ begin{multicols}{column number}
 \begin_layout Standard
 is written in TeX-mode.
  The column number is a number in the range of 2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 10.
@@ -33581,7 +33581,7 @@ in TeX-mode.
 \begin_layout Standard
 Due to the command some space is automatically added before the formula.
  To revert this, -6
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm vertical space is inserted before the formula.
@@ -33607,7 +33607,7 @@ reference "sec:Formula-Styles"
 
 \series default
  is used, -9
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 mm space is inserted instead.
@@ -33696,7 +33696,7 @@ wobei
 \end_inset
 
 
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 -rf-Puls beginnt sich the Magnetisierung zu entfokussieren, wodurch sich
@@ -33756,7 +33756,7 @@ reference "eq:within"
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 matrix is used with left aligned columns for the 
@@ -33781,11 +33781,11 @@ reference "sec:Matrices"
 \end_inset
 
  To set the description in a smaller size, before the matrix e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the command 
@@ -34338,7 +34338,7 @@ reference "sub:Font-Styles"
 \end_inset
 
 : 30
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 km/h
@@ -34361,7 +34361,7 @@ Percent and perthousand signs are set like physical units:
 \end_inset
 
 1,2
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 ‰ alcohol in blood
@@ -34370,7 +34370,7 @@ Percent and perthousand signs are set like physical units:
 \begin_layout Itemize
 The degree sign follows directly on the value: 15°, but not when it is used
  in units: 15
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 °C
@@ -34388,11 +34388,11 @@ In numbers with more than four digits the smallest space is inserted before
 \noun off
 \color none
 18
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 473
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 588
@@ -34400,7 +34400,7 @@ In numbers with more than four digits the smallest space is inserted before
 
 \begin_layout Itemize
 For dimensionings like 120×90×40
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 cm the multiplication sign 
@@ -34486,7 +34486,7 @@ Some characters and symbols can be created with several commands.
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -34813,7 +34813,7 @@ vert
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -35109,7 +35109,7 @@ Vert
 \end_inset
 
 
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 

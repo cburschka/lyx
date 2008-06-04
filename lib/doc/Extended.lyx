@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 325
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass book
@@ -14,23 +14,6 @@
 % set fonts for nicer pdf view
 \IfFileExists{lmodern.sty}
  {\usepackage{lmodern}}{}
-
-% link all cross references and URLs
-% in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={LyX's Extended manual},
-  pdfsubject={LyX's extended documentation},
-  pdfkeywords={LyX, Documentation, Extended}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in DVI output
- \usepackage[ps2pdf, colorlinks=true,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
 
 \fi % end if pdflatex is used
 
@@ -57,7 +40,22 @@ theorems-ams-extended
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "LyX's Extended manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's extended documentation"
+\pdf_keywords "LyX, Documentation, Extended"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -77,7 +75,6 @@ theorems-ams-extended
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -291,7 +288,7 @@ V
 \bar default
 iew\SpecialChar \menuseparator
 View
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -384,7 +381,7 @@ If there are any errors, insert error boxes in the document to mark where
 If you've run LaTeX using 
 \family sans
 View
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 DVI
@@ -397,7 +394,7 @@ xdvi
  If you've used 
 \family sans
 View
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 PostScript
@@ -425,7 +422,7 @@ dvips
 For 
 \family sans
 View
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 PostScript
@@ -444,7 +441,7 @@ P
 rint
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 , the output file has the extension 
@@ -583,7 +580,7 @@ tex2lyx
 
 \begin_layout Standard
 If you just want to put a piece of LaTeX code into a LyX file, see Section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -875,7 +872,7 @@ Chil
 d
 \bar default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document
@@ -1110,7 +1107,7 @@ Select
 L
 \bar default
 aTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1241,15 +1238,15 @@ hoffset
 voffset
 \family default
  are both 0 pt.,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 i.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 e.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 the page isn't shifted.
@@ -1485,7 +1482,7 @@ dirty tricks
 \end_inset
 
  given in Chapter
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1575,11 +1572,11 @@ ocument\SpecialChar \menuseparator
 L
 \bar default
 aTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Log
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 File
@@ -1942,7 +1939,7 @@ misuse
  any of them, like trying to manually insert lots of 
 \family sans
 Protected
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Blank
@@ -2058,13 +2055,13 @@ STOP! If you don't know what BibTeX is, or have a reasonably good idea of
  how to use it (
 \emph on
 e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
 \emph default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 setting up your own bibliographic databases), 
@@ -2211,11 +2208,11 @@ Alternative Citation Styles
 
 \begin_layout Standard
 Standard BibTeX uses numbers (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2229,11 +2226,11 @@ g.
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
  The most common one is the author-year style (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2446,11 +2443,11 @@ Scientific works
 \end_inset
 
 , you first need to create two bibliographic databases, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2490,14 +2487,14 @@ Extras
  Check 
 \family sans
 Sectionated
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bibliography
 \family default
 .
  Now you can insert multiple BibTeX references (as described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2585,11 +2582,11 @@ Multiple Bibliographies
 
 \begin_layout Standard
 Multiple bibliographies, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space \space{}
+\begin_inset space \space{}
 \end_inset
 
 a bibliography for each section or chapter of the document, are not supported
@@ -2600,11 +2597,11 @@ bibtopic
 \family default
  package, which is used for the creation of sectionated bibliographies in
  LyX (cf.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2616,11 +2613,11 @@ reference "sub:Sectionated-Bibliographies"
 
 ), provides an easy way to solve this task, if you are willing to use some
  LaTeX-Code (ERT, cf.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2676,7 +2673,7 @@ Extras
  Check 
 \family sans
 Sectionated
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 bibliography
@@ -2700,7 +2697,7 @@ end{btUnit}
  The bibliography will contain all references which have been cited in the
  current btUnit.
  N.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 B.: If you are using this approach, then 
@@ -2780,7 +2777,7 @@ ChiI
 d
 \bar default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document
@@ -2866,7 +2863,7 @@ g, while the included files are converted to LaTeX files which do not have
 Don't
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -2887,7 +2884,7 @@ verbatim
 
  included file allows you to include a file typeset exactly as it appears
  in the file, i.e.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 verbatim mode, with the characters set in a fixed-width typewriter font.
@@ -2899,15 +2896,15 @@ verbatim mode, with the characters set in a fixed-width typewriter font.
 M
 \bar default
 ark
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 spaces
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 output
@@ -2956,7 +2953,7 @@ fancy
 , as mentioned in the 
 \family sans
 User
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Guide
@@ -3037,7 +3034,7 @@ You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
  the page number appears in the central footer, simply include a command
  with a blank argument, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
@@ -3061,19 +3058,19 @@ Section
 \end_inset
 
  (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Section 3) in the upper left, the page number (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Page 4) in the upper right, your name in the lower left, and the date in
@@ -3166,7 +3163,7 @@ The thicknesses of the horizontal rules drawn beneath the header and above
  If you don't want one of the headers, set its thickness to 0.
  The header rule has a default thickness of 0.4pt, the footer rule is 0pt.
  Use the commands, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
@@ -4140,7 +4137,7 @@ Address This should be the author's permanent address.
 
 \begin_layout Description
 Current
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Address This should be the author's temporary address at the time of submission,
@@ -4527,7 +4524,7 @@ ettings
 Don't change the option 
 \family sans
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 style
@@ -4624,11 +4621,11 @@ maketitle
 
 \begin_layout Standard
 If you want to place footnotes in the header block, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 to state your present address, just use the standard footnote via 
@@ -4904,7 +4901,7 @@ table*
  Refer to the 
 \emph on
 User's
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Guide
@@ -4922,7 +4919,7 @@ dit\SpecialChar \menuseparator
 P
 \bar default
 aragraph
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Settings.
@@ -4953,7 +4950,7 @@ Figure
 S
 \bar default
 pan
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 columns
@@ -4989,7 +4986,7 @@ nsert\SpecialChar \menuseparator
 S
 \bar default
 pecial
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Character
@@ -4998,7 +4995,7 @@ Character
 H
 \bar default
 orizontal
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Fill
@@ -5010,7 +5007,7 @@ Fill
 Switch to LaTeX mode: 
 \family sans
 M-c
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 t
@@ -5036,7 +5033,7 @@ Position the cursor behind the caption text, switch to LaTeX mode and insert
  the closing brace: 
 \family sans
 M-c
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 t
@@ -6004,7 +6001,7 @@ Chil
 d
 \bar default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document
@@ -6117,7 +6114,7 @@ dit\SpecialChar \menuseparator
 P
 \bar default
 aragraph
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Settings
@@ -6159,11 +6156,11 @@ no
  
 \emph on
 e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6210,7 +6207,7 @@ plotone
 plotone
 \family default
 , etc.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 commands as ERT into a Figure Float box if you desire, but I never have
@@ -6585,7 +6582,7 @@ Both packages use basic citations; the natbib package should not be used.
 refcite
 \family default
  command, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g., 
@@ -6593,7 +6590,7 @@ g.,
 \end_inset
 
 See Ref.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -6737,7 +6734,7 @@ Chil
 d
 \bar default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Document
@@ -7109,7 +7106,7 @@ peculiar
 \end_inset
 
  commands of the package (see
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -7258,7 +7255,7 @@ View the resulting
 .dvi
 \family default
  document using, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g., 
@@ -7361,7 +7358,7 @@ opening
 
 .
  This is not implemented in LyX, so you must enter title, subtitle etc.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 between two ERT lines (
@@ -7488,7 +7485,7 @@ scrbook.cls
 scrlettr.cls
 \family default
 , resp.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of the Koma-Script family.
@@ -7586,7 +7583,7 @@ E
 x
 \bar default
 tra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -7897,11 +7894,11 @@ captionbelow
 Dictum
 \family default
 : can be used to set a bonmot, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 at the beginning of a chapter.
@@ -7912,7 +7909,7 @@ I
 \bar default
 nsert\SpecialChar \menuseparator
 Short
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Title
@@ -8367,7 +8364,7 @@ L
 O
 \shape default
 , resp.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 in the left margin.
@@ -8556,11 +8553,11 @@ Telephone
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
  This makes sense e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 for the 
@@ -8942,11 +8939,11 @@ Closing
 NextAddress
 \family default
  will start a new letter (i.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 e.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 you can write several letters per document).
@@ -9102,11 +9099,11 @@ ocument\SpecialChar \menuseparator
 T
 \bar default
 able
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 of
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Contents
@@ -9193,7 +9190,7 @@ http://www.springer.de/author/tex/help-journals.html
 svjour.inc
 \family default
 , which journal-specific layout files (such as, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g., 
@@ -9335,7 +9332,7 @@ ejour2
 
 \begin_layout Standard
 Limitations e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.: does not display the number for theorem-like layouts, just #.
@@ -9710,7 +9707,7 @@ slides (FoilTeX)
 \end_inset
 
 , check out section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -9850,7 +9847,7 @@ The option
 P
 \bar default
 age
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 style
@@ -9923,7 +9920,7 @@ Note
 \family default
 s.
  See section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -9961,11 +9958,11 @@ F
 \bar default
 ile\SpecialChar \menuseparator
 New
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 from
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -10008,7 +10005,7 @@ Largest
  in the 
 \family sans
 Sans
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Serif
@@ -10447,7 +10444,7 @@ Choosing the
 Slide
 \family default
  environment [in the manner described in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -10705,7 +10702,7 @@ s would have
 \end_inset
 
 , etc.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 appended to the page number of the parent 
@@ -10800,7 +10797,7 @@ VisibleText
  are two command-like paragraph environments that make all subsequent text
  invisible and visible, respectively.
  Note from section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11247,7 +11244,7 @@ clock
 \end_inset
 
  [see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11549,11 +11546,11 @@ F
 \bar default
 ile\SpecialChar \menuseparator
 New
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 from
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11655,7 +11652,7 @@ TeX emulation
 Foils
 \family default
  class [see section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11786,7 +11783,7 @@ slides (default)
 \end_inset
 
 , check out section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -11861,7 +11858,7 @@ lass
  entry in the 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -11870,7 +11867,7 @@ Layout
  There are some settings in the 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -11890,7 +11887,7 @@ Columns
  on the 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -11955,7 +11952,7 @@ Foil
 TeX provides extensive footer and header capabilities including a user-defined
  logo.
  See section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12516,7 +12513,7 @@ begin{multicols}{2}
 
 \family sans
 My
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Logo
@@ -12532,7 +12529,7 @@ Restriction
 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Footer
@@ -12542,7 +12539,7 @@ Footer
 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -12552,7 +12549,7 @@ Header
 
 \family sans
 Left
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -12560,7 +12557,7 @@ Header
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12590,7 +12587,7 @@ Foil
 \family default
 TeX that aren't directly supported by LyX but I'll tell you what they do
  and how to use them in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12771,17 +12768,17 @@ User's Guide.
  
 \family sans
 Itemize
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Bullet
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Selection
 \family default
  dialog described above in section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -12848,7 +12845,7 @@ name "sec:foilfoot"
 
 \family sans
 My
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Logo
@@ -12876,13 +12873,13 @@ TeX-
  
 \emph on
 e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
 \emph default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Confidential.
@@ -12893,7 +12890,7 @@ Confidential.
 The remaining page corners can be filled by 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Footer
@@ -12901,7 +12898,7 @@ Footer
  (which defaults to page numbers), 
 \family sans
 Right
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -12909,7 +12906,7 @@ Header
  (top right) and 
 \family sans
 Left
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Header
@@ -13240,7 +13237,7 @@ fancy
  page style setting in the 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -13469,7 +13466,7 @@ Used where nothing else works.
 FADE_IN
 \family default
 :
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -13495,7 +13492,7 @@ on Sally waking up.
 
 \family sans
 INT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z i
@@ -13514,7 +13511,7 @@ Introduces a new INTERIOR camera set-up.
 
 \family sans
 EXT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z e
@@ -13531,7 +13528,7 @@ Introduces a new EXTERIOR camera set-up.
 
 \family sans
 Speaker
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z s
@@ -13547,7 +13544,7 @@ The character speaking.
 
 \family sans
 Parenthetical
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z p
@@ -13565,7 +13562,7 @@ Instructions to the speaker.
 
 \family sans
 Dialogue
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z d
@@ -13585,7 +13582,7 @@ Speaker
 
 \family sans
 Transition
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z t
@@ -13596,11 +13593,11 @@ M-z t
 \family default
 Camera movement instruction.
  e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 CUT TO:
@@ -13610,7 +13607,7 @@ CUT TO:
 
 \family sans
 FADE OUT:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-I
@@ -13620,7 +13617,7 @@ M-z S-I
 
 \family sans
 Author
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-A
@@ -13630,7 +13627,7 @@ M-z S-A
 
 \family sans
 Title
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-T
@@ -13640,7 +13637,7 @@ M-z S-T
 
 \family sans
 Right_Address
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z r
@@ -13751,7 +13748,7 @@ You should not have to use this, but it is here for anything that does not
 
 \family sans
 Narrative
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z n
@@ -13768,7 +13765,7 @@ Used to describe stage setting and the action.
 
 \family sans
 ACT
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z a
@@ -13785,7 +13782,7 @@ Automatically numbered.
 
 \family sans
 ACT*
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S at
@@ -13806,7 +13803,7 @@ ACT.
 
 \family sans
 SCENE
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-S
@@ -13824,7 +13821,7 @@ Not automatically numbered.
 
 \family sans
 AT_RISE:
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-R
@@ -13841,7 +13838,7 @@ A special case of Narrative to describe the setting and action as the curtain
 
 \family sans
 Speaker
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z s
@@ -13857,7 +13854,7 @@ The speaker's (actor's) title, centered in all CAPS.
 
 \family sans
 Parenthetical
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z p
@@ -13880,7 +13877,7 @@ Dialogue
 
 \family sans
 Dialogue
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z d
@@ -13896,7 +13893,7 @@ What the Speaker says.
 
 \family sans
 CURTAIN
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-C
@@ -13912,7 +13909,7 @@ The curtain comes down.
 
 \family sans
 Title
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-T
@@ -13922,7 +13919,7 @@ M-z S-T
 
 \family sans
 Author
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z S-A
@@ -13932,7 +13929,7 @@ M-z S-A
 
 \family sans
 Right_Address
-\begin_inset Space \hfill{}
+\begin_inset space \hfill{}
 \end_inset
 
 M-z r
@@ -13964,7 +13961,7 @@ Amir Karger
 The 
 \family sans
 Revtex
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -13989,7 +13986,7 @@ Revtex
  LyX with the 
 \family sans
 RevTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -14041,7 +14038,7 @@ tex2lyx
 , or to use the 
 \family sans
 Revtex
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 4
@@ -14083,7 +14080,7 @@ E
 x
 \bar default
 tra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -14091,7 +14088,7 @@ Options
  field in the 
 \family sans
 Document
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Layout
@@ -14108,7 +14105,7 @@ Other preamble matter, like
 draft
 \family default
  etc.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 goes in the 
@@ -14118,7 +14115,7 @@ La
 T
 \family sans
 eX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Preamble
@@ -14220,7 +14217,7 @@ Author
 Also, the 
 \family sans
 Author
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Email
@@ -14228,7 +14225,7 @@ Email
 , 
 \family sans
 Author
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 URL
@@ -14277,7 +14274,7 @@ The main problem with this layout is that you can't use the optional arguments
  to LaTeX (which you'll need to do eventually to send it in to APS), you'll
  need to edit the LaTeX file with a text editor to add the optional arguments
  to set, e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g., the running title for the page headers.
@@ -14608,7 +14605,7 @@ status collapsed
 \end_inset
 
 section
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14677,7 +14674,7 @@ Memoir supports basically all features of the standard book classes.
 
 \begin_layout Description
 Font
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
@@ -14685,7 +14682,7 @@ sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
 
 \begin_layout Description
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 style: The fancy page style is not supported, due to a command clash between
@@ -14696,7 +14693,7 @@ style: The fancy page style is not supported, due to a command clash between
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Page
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Style
@@ -14710,11 +14707,11 @@ Style
 chapterstyle
 \family default
  in the main text or in preamble (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14735,7 +14732,7 @@ Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
 \family sans
 Insert\SpecialChar \menuseparator
 Short
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Title
@@ -14769,11 +14766,11 @@ empty
 \end_inset
 
 , i
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 e.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 without pagina).
@@ -14796,7 +14793,7 @@ article
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Extra
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Options
@@ -14819,11 +14816,11 @@ real
 \begin_layout Description
 Oldfontcommands: By default, Memoir does not allow the use of the deprecated
  font commands, which have been used in the old LaTeX version 2.09 (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14906,11 +14903,11 @@ Abstract: You may wonder why an abstract is an extra feature.
 Chapterprecis: You may know this from belletristic: The contents of a chapter
  is shortly described below the title and also in the table of contents
  (e.
-\begin_inset Space \thinspace{}
+\begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -14992,7 +14989,7 @@ ools
 C
 \bar default
 heck
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 TeX
@@ -15203,7 +15200,7 @@ ools\SpecialChar \menuseparator
 C
 \bar default
 heck
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 TeX
@@ -15312,15 +15309,15 @@ iew\SpecialChar \menuseparator
 R
 \bar default
 emove
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 All
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Error
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Boxes
@@ -15361,11 +15358,11 @@ chktex
 \family sans
 Edit\SpecialChar \menuseparator
 View
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 LaTeX
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Log
@@ -16168,7 +16165,7 @@ ile\SpecialChar \menuseparator
 V
 \bar default
 ersion
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Control
@@ -16203,15 +16200,15 @@ This command registers your document with RCS\SpecialChar \@.
  The document is now set in Read-Only mode and you have to 
 \family sans
 Check
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Out
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 For
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Edit
@@ -17304,7 +17301,7 @@ Conversion
 
 \begin_layout Description
 the
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17316,7 +17313,7 @@ literate
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 format Set up via the Formats tab, this is where the Noweb-specific pieces
@@ -17343,7 +17340,7 @@ NoWeb
 
 \begin_layout Description
 the
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -17351,7 +17348,7 @@ the
 Program
 \family default
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 format This is an empty format whose sole purpose is to be the endpoint
@@ -18250,7 +18247,7 @@ I.
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18262,7 +18259,7 @@ A.
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18274,7 +18271,7 @@ A.
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18418,7 +18415,7 @@ produces the somewhat out of hand numbering scheme: <
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18430,7 +18427,7 @@ A.1
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -18442,7 +18439,7 @@ a+
 \end_inset
 
 ,
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
