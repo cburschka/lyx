@@ -458,7 +458,6 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	if (old.length() == 0)
 		old = last_selection_;
 
-
 	// set whether rtl
 	bool rtl = false;
 	if (cur.inTexted()) {
