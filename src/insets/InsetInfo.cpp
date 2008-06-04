@@ -62,15 +62,17 @@ Inset * InsetInfo::editXY(Cursor &, int, int)
 void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 {
 	InsetText::draw(pi, x, y); 
-	if (mouse_hover_) {
-		odocstringstream os;
-		os << _("Information regarding ")
-		   <<_(nameTranslator().find(type_))
-		   << " " << from_utf8(name_);
-		pi.base.bv->message(os.str());
-	}
 }
 
+
+docstring InsetInfo::toolTip(BufferView const & bv, int x, int y) const
+{
+	odocstringstream os;
+	os << _("Information regarding ")
+	   << _(nameTranslator().find(type_))
+	   << " " << from_utf8(name_);
+	return os.str();
+}
 
 namespace {
 

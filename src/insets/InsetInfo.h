@@ -106,6 +106,8 @@ public:
 	void updateInfo();
 	///
 	bool setMouseHover(bool mouse_hover);
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 
 private:
 	/// The translator between the information type enum and corresponding string.
