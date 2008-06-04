@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass article
@@ -16,6 +16,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -34,6 +35,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -43,15 +45,15 @@ Foire Aux Questions de LyX, avec les Réponses
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Traduction : Mise à jour Date : 26/02/2003
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Original : Révision: 1.17, Date : 17/01/2003
 \end_layout
 
@@ -65,14 +67,16 @@ par l'Équipe LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
  de la documentation de LyX, 
 \family typewriter
 <lyx-docs@lists.lyx.org>
 \family default
 .
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Traduction en français par : 
 \noun on
 Adrien Rebollo
@@ -112,7 +116,8 @@ après
 \end_layout
 
 \begin_layout Abstract
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -151,7 +156,7 @@ presque-WYSIWYG
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : WYSIWYG est l'acronyme de 
 \begin_inset Quotes fld
 \end_inset
@@ -230,7 +235,7 @@ Mean
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : C'est-à-dire 
 \begin_inset Quotes fld
 \end_inset
@@ -276,8 +281,13 @@ Thèses (260 pages en un seul document, plus si l'on compte les fichiers
 \begin_deeper
 \begin_layout Itemize
 par exemple, 
-\begin_inset LatexCommand url
-target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf
+\end_layout
 
 \end_inset
 
@@ -286,7 +296,10 @@ target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
 
 \end_deeper
 \begin_layout Itemize
-Notes de cours (133 pages, 27 figures sur un 486 33\InsetSpace ~
+Notes de cours (133 pages, 27 figures sur un 486 33
+\begin_inset space ~
+\end_inset
+
 MHz !)
 \end_layout
 
@@ -309,8 +322,14 @@ Proceedings of the Second Continental Workshop on the Geoid in Europe
 \begin_layout Itemize
 Documentation de logiciels (le 
 \emph on
-Guide\InsetSpace ~
-de\InsetSpace ~
+Guide
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
 l'Utilisateur
 \emph default
  de LyX fait environ 120 pages)
@@ -323,8 +342,13 @@ Livres
 \begin_deeper
 \begin_layout Itemize
 voir 
-\begin_inset LatexCommand url
-target "http://www.postgresql.org/docs/awbook.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.postgresql.org/docs/awbook.html
+\end_layout
 
 \end_inset
 
@@ -385,7 +409,10 @@ Scénarios de pièces et de films
 \end_layout
 
 \begin_layout Itemize
-Projets d'affaires pour + d'1\InsetSpace ~
+Projets d'affaires pour + d'1
+\begin_inset space ~
+\end_inset
+
 M$ (US)
 \end_layout
 
@@ -395,8 +422,13 @@ Où commencer ?
 
 \begin_layout Standard
 Le site 
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -407,13 +439,19 @@ target "www.lyx.org"
  Après avoir installé LyX et l'avoir démarré pour la première fois, lisez
  le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset space ~
+\end_inset
+
 d'Apprentissage
 \emph default
  (
 \family sans
 Aide\SpecialChar \menuseparator
-Manuel\InsetSpace ~
+Manuel
+\begin_inset space ~
+\end_inset
+
 d'Apprentissage
 \family default
 ).
@@ -422,8 +460,13 @@ d'Apprentissage
 
 \begin_layout Standard
 Une autre introduction basique à LyX : 
-\begin_inset LatexCommand url
-target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.bilkent.edu.tr/~robin/lyxguide.pdf
+\end_layout
 
 \end_inset
 
@@ -472,18 +515,30 @@ LyX nécessite combien d'espace disque ?
 \end_layout
 
 \begin_layout Standard
-Sur mon système, l'exécutable LyX prend 2,0\InsetSpace ~
-Mo d'espace disque, et les fichiers
- auxiliaires en occupent encore 12,6\InsetSpace ~
-Mo (dont 9,1\InsetSpace ~
-Mo pour la documentation
- ! Vous pouvez effacer les langues qui ne vous servent pas pour économiser
- un peu d'espace).
+Sur mon système, l'exécutable LyX prend 2,0
+\begin_inset space ~
+\end_inset
+
+Mo d'espace disque, et les fichiers auxiliaires en occupent encore 12,6
+\begin_inset space ~
+\end_inset
+
+Mo (dont 9,1
+\begin_inset space ~
+\end_inset
+
+Mo pour la documentation ! Vous pouvez effacer les langues qui ne vous servent
+ pas pour économiser un peu d'espace).
  Bien sûr, il faut que vous ayez quelque chose comme teTeX installé, ce
- qui consomme un bon 115\InsetSpace ~
-Mo, ainsi que ghostscript, qui prend encore 10\InsetSpace ~
-Mo
- !
+ qui consomme un bon 115
+\begin_inset space ~
+\end_inset
+
+Mo, ainsi que ghostscript, qui prend encore 10
+\begin_inset space ~
+\end_inset
+
+Mo !
 \end_layout
 
 \begin_layout Subsection
@@ -503,8 +558,13 @@ Oui.
 a Qt2/3 ; et quand bien même, la version 1.0 de xforms sera distribuée sous
  la licence LGPL (au moment où ceci est écrit, le code source de versions
  préliminaires de xforms 1.0 est disponible à l'adresse 
-\begin_inset LatexCommand url
-target "ftp://ftp.lyx.org/pub/xforms/OpenSource/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.lyx.org/pub/xforms/OpenSource/
+\end_layout
 
 \end_inset
 
@@ -520,8 +580,13 @@ Où chercher sur la Toile, au sujet de LyX ?
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -529,8 +594,13 @@ target "www.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "bugzilla.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+bugzilla.lyx.org
+\end_layout
 
 \end_inset
 
@@ -538,8 +608,13 @@ target "bugzilla.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.devel.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -552,8 +627,13 @@ Les sites miroir comprennent :
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.mx.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.mx.lyx.org
+\end_layout
 
 \end_inset
 
@@ -561,8 +641,13 @@ target "www.mx.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.no.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.no.lyx.org
+\end_layout
 
 \end_inset
 
@@ -570,8 +655,13 @@ target "www.no.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.it.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.it.lyx.org
+\end_layout
 
 \end_inset
 
@@ -667,8 +757,13 @@ fr
 \end_inset
 
  ; voyez 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/internet/mailing.php3"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/internet/mailing.php3
+\end_layout
 
 \end_inset
 
@@ -690,8 +785,13 @@ C'est malin ! Où sont-elles archivées ?
 
 \begin_layout Itemize
 Announce : 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-announce@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -700,8 +800,13 @@ target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 
 \begin_layout Itemize
 Users : 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-users@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -710,8 +815,13 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 
 \begin_layout Itemize
 Devel : 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-devel@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -775,8 +885,13 @@ word2x produit des sorties LaTeX, HTML et texte brut.
 
 \begin_layout Description
 wvware (disponible à 
-\begin_inset LatexCommand url
-target "www.wvware.com"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.wvware.com
+\end_layout
 
 \end_inset
 
@@ -891,8 +1006,13 @@ La plupart des paquetages ci-dessus sont disponibles comme binaires précompilé
  pour un choix de systèmes Linux, et peut-être aussi pour d'autres systèmes.
  Les binaires de LyX sont disponibles au format RPM et dans quelques autres
  formats à l'adresse 
-\begin_inset LatexCommand url
-target "ftp://ftp.lyx.org/pub/lyx/bin/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.lyx.org/pub/lyx/bin/
+\end_layout
 
 \end_inset
 
@@ -901,8 +1021,13 @@ target "ftp://ftp.lyx.org/pub/lyx/bin/"
 
 \begin_layout Standard
 Le port Windows se trouve à 
-\begin_inset LatexCommand url
-target "http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html
+\end_layout
 
 \end_inset
 
@@ -922,7 +1047,7 @@ Le Vilain Texte Rouge, ou ERT
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : de l'anglais Evil Red Text.
 \end_layout
 
@@ -984,7 +1109,10 @@ Beaucoup de gens se sont plaints de l'insert ERT introduit avec la version
 Vous pouvez replier l'ERT comme n'importe quel autre flottant avec 
 \family sans
 Éditer\SpecialChar \menuseparator
-Ouvrir/Fermer\InsetSpace ~
+Ouvrir/Fermer
+\begin_inset space ~
+\end_inset
+
 Flottant
 \family default
  (par défaut le raccourci est 
@@ -1042,8 +1170,13 @@ Comment faire pour ?
 \end_inset
 
  voyez la collection impressionnante rassemblée par Herbert Voss à 
-\begin_inset LatexCommand url
-target "http://www.educat.hu-berlin.de/~voss/lyx"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.educat.hu-berlin.de/~voss/lyx
+\end_layout
 
 \end_inset
 
@@ -1302,35 +1435,50 @@ Il y a plusieurs commandes ERT à utiliser :
 \backslash
 enspace
 \family default
- (1/2\InsetSpace ~
+ (1/2
+\begin_inset space ~
+\end_inset
+
 em), 
 \family typewriter
 
 \backslash
 thinspace
 \family default
- (1/6\InsetSpace ~
+ (1/6
+\begin_inset space ~
+\end_inset
+
 em), 
 \family typewriter
 
 \backslash
 negthinspace
 \family default
- (-1/6\InsetSpace ~
+ (-1/6
+\begin_inset space ~
+\end_inset
+
 em), 
 \family typewriter
 
 \backslash
 quad
 \family default
- (1\InsetSpace ~
+ (1
+\begin_inset space ~
+\end_inset
+
 em), 
 \family typewriter
 
 \backslash
 qquad
 \family default
- (2\InsetSpace ~
+ (2
+\begin_inset space ~
+\end_inset
+
 em), 
 \family typewriter
 
@@ -1381,7 +1529,10 @@ in
 \family typewriter
 pt
 \family default
- (point = 1/72\InsetSpace ~
+ (point = 1/72
+\begin_inset space ~
+\end_inset
+
 pouce), 
 \family typewriter
 em
@@ -1518,8 +1669,14 @@ Document
  Dans le champ 
 \family sans
 Extra\SpecialChar \menuseparator
-Placement\InsetSpace ~
-des\InsetSpace ~
+Placement
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
 flottants
 \family default
 , mettez 
@@ -1558,7 +1715,7 @@ Too many unprocessed floats
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -1578,12 +1735,17 @@ Trop de flottants non traités
 \begin_layout Standard
 LaTeX ne peut gérer qu'un nombre limité d'éléments flottants qui flottent
  en même temps.
- Par exemple, si la Figure\InsetSpace ~
-4 ne trouve pas de bon emplacement (en utilisant
- les règles par défaut : haut de la page, puis bas, puis page à part) et
- si vient la Figure\InsetSpace ~
-5, les deux vont continuer à flotter ensemble jusqu'à
- ce qu'un bon emplacement soit disponible.
+ Par exemple, si la Figure
+\begin_inset space ~
+\end_inset
+
+4 ne trouve pas de bon emplacement (en utilisant les règles par défaut :
+ haut de la page, puis bas, puis page à part) et si vient la Figure
+\begin_inset space ~
+\end_inset
+
+5, les deux vont continuer à flotter ensemble jusqu'à ce qu'un bon emplacement
+ soit disponible.
  Si rien de correct n'apparaît, elles vont être placées à la fin du document.
  S'il y a trop d'éléments qui flottent ainsi, un compteur LaTeX atteint
  son maximum et émet une erreur 
@@ -1753,10 +1915,16 @@ Comment créer des fichiers PDF à partir de mon document LyX ?
 \end_layout
 
 \begin_layout Standard
-Lire la Section\InsetSpace ~
+Lire la Section
+\begin_inset space ~
+\end_inset
+
 5.3.6 du manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset space ~
+\end_inset
+
 Avancées
 \emph default
 .
@@ -1771,11 +1939,16 @@ acroread
 \end_layout
 
 \begin_layout Standard
-Ce problème et sa solution sont également discutés dans la Section\InsetSpace ~
-5.3.6 du
- manuel d'
+Ce problème et sa solution sont également discutés dans la Section
+\begin_inset space ~
+\end_inset
+
+5.3.6 du manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset space ~
+\end_inset
+
 Avancées
 \emph default
 .
@@ -1798,8 +1971,13 @@ Quelques utilisateurs ont signalé qu'ils ne pouvaient afficher les figures
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand url
-target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897
+\end_layout
 
 \end_inset
 
@@ -1846,7 +2024,10 @@ Vous n'avez toujours pas répondu à ma question !
 \begin_layout Standard
 Alors lisez la totalité des manuels, en particulier le 
 \emph on
-Manuel\InsetSpace ~
+Manuel
+\begin_inset space ~
+\end_inset
+
 d'Apprentissage
 \emph default
 .
@@ -1899,7 +2080,7 @@ Si LyX s'est planté, mettez la version de LyX, le système d'exploitation,
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 NdT : Terme utilisé dans 
 \family typewriter
 gdb

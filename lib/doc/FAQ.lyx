@@ -1,5 +1,5 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass article
@@ -16,6 +16,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -38,6 +39,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -49,12 +51,20 @@ LyX Frequently Asked Questions with Answers
 \begin_layout Author
 by the LyX Team
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list, <lyx-docs@lists.lyx.org>.
+tion mailing list, <
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+>.
 \end_layout
 
 \end_inset
@@ -69,7 +79,15 @@ This is the list of Frequently Asked Questions for LyX, the Open Source
  For further help, you may wish to contact the LyX User Group mailing list
  at 
 \family typewriter
-lyx-users@lists.lyx.org
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \family default
  
 \emph on
@@ -80,7 +98,8 @@ after
 \end_layout
 
 \begin_layout Abstract
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -194,8 +213,13 @@ Dissertations (260 pages in a single document, longer using include files)
 \begin_deeper
 \begin_layout Itemize
 for example, 
-\begin_inset LatexCommand url
-target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf
+\end_layout
 
 \end_inset
 
@@ -227,8 +251,13 @@ Books
 \begin_deeper
 \begin_layout Itemize
 see 
-\begin_inset LatexCommand url
-target "http://www.postgresql.org/docs/awbook.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.postgresql.org/docs/awbook.html
+\end_layout
 
 \end_inset
 
@@ -290,8 +319,13 @@ Where do I start?
 
 \begin_layout Standard
 The website 
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -309,8 +343,13 @@ Tutorial
 
 \begin_layout Standard
 Another basic introductory guide may be found at 
-\begin_inset LatexCommand url
-target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.bilkent.edu.tr/~robin/lyxguide.pdf
+\end_layout
 
 \end_inset
 
@@ -382,8 +421,13 @@ Yes.
 \begin_layout Standard
 Version 1.0 of xforms is available under the LGPL and its sources (and binaries)
  can be found from 
-\begin_inset LatexCommand url
-target "http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz
+\end_layout
 
 \end_inset
 
@@ -400,8 +444,13 @@ Where should I look on the World Wide Web for LyX stuff?
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -409,8 +458,13 @@ target "www.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "bugzilla.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+bugzilla.lyx.org
+\end_layout
 
 \end_inset
 
@@ -418,8 +472,13 @@ target "bugzilla.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.devel.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -432,8 +491,13 @@ Known mirror sites include:
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.mx.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.mx.lyx.org
+\end_layout
 
 \end_inset
 
@@ -441,8 +505,13 @@ target "www.mx.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.no.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.no.lyx.org
+\end_layout
 
 \end_inset
 
@@ -450,8 +519,13 @@ target "www.no.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.it.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.it.lyx.org
+\end_layout
 
 \end_inset
 
@@ -533,8 +607,13 @@ docs
 \end_inset
 
 ; definitely see 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/internet/mailing.php3"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/internet/mailing.php3
+\end_layout
 
 \end_inset
 
@@ -556,8 +635,13 @@ Okay, wise guy! Where are they archived?
 
 \begin_layout Itemize
 Announce: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-announce@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -566,8 +650,13 @@ target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 
 \begin_layout Itemize
 Users: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-users@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -576,8 +665,13 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 
 \begin_layout Itemize
 Devel: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-devel@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -755,8 +849,13 @@ Most of the above packages are available as precompiled binaries for a variety
  of Linux systems, perhaps others as well.
  The LyX binaries are available as RPMS and a few other formats and may
  be obtained from 
-\begin_inset LatexCommand url
-target "ftp://ftp.lyx.org/pub/lyx/bin/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.lyx.org/pub/lyx/bin/
+\end_layout
 
 \end_inset
 
@@ -896,8 +995,13 @@ how do I?
 \end_inset
 
  topics, see Herbert Voss' spectacular collection at 
-\begin_inset LatexCommand url
-target "http://tug.org/TeXnik/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://tug.org/TeXnik/
+\end_layout
 
 \end_inset
 
@@ -1621,8 +1725,13 @@ A couple of users reported that they couldn't get recent Ghostscript versions
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand url
-target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897
+\end_layout
 
 \end_inset
 
