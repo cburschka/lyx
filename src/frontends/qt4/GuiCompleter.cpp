@@ -54,13 +54,6 @@ public:
 	{}
 
 protected:
-	void drawDisplay(QPainter * painter,
-		QStyleOptionViewItem const & option,
-		QRect const & rect, QString const & text) const
-	{
-		QItemDelegate::drawDisplay(painter, option, rect, text);
-	}
-
 	void paint(QPainter *painter, const QStyleOptionViewItem &option,
 		   const QModelIndex &index) const
 	{
