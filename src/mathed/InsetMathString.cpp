@@ -111,24 +111,37 @@ void InsetMathString::write(WriteStream & os) const
 	docstring::const_iterator cit = str_.begin();
 	docstring::const_iterator end = str_.end();
 
-	bool in_lyxmathsym = false;
+	bool in_forced_mode = false;
 	while (cit != end) {
 		char_type const c = *cit;
 		try {
 			docstring command(1, c);
 			if (c < 0x80 || Encodings::latexMathChar(c, command)) {
-				if (in_lyxmathsym) {
+				if (os.textMode()) {
+					if (c < 0x80 && in_forced_mode) {
+						os << '}';
+						in_forced_mode = false;
+					}
+					if (c >= 0x80 && !in_forced_mode) {
+						os << "\\ensuremath{";
+						in_forced_mode = true;
+					}
+				} else if (in_forced_mode) {
 					os << '}';
-					in_lyxmathsym = false;
+					in_forced_mode = false;
 				}
-				os << command;
 			} else {
-				if (!in_lyxmathsym) {
+				if (os.textMode()) {
+					if (in_forced_mode) {
+						os << '}';
+						in_forced_mode = false;
+					}
+				} else if (!in_forced_mode) {
 					os << "\\lyxmathsym{";
-					in_lyxmathsym = true;
+					in_forced_mode = true;
 				}
-				os << command;
 			}
+			os << command;
 			// We may need a space if the command contains a macro
 			// and the last char is ASCII.
 			if (lyx::support::contains(command, '\\')
@@ -149,7 +162,7 @@ void InsetMathString::write(WriteStream & os) const
 		}
 		++cit;
 	}
-	if (in_lyxmathsym)
+	if (in_forced_mode)
 		os << '}';
 }
 

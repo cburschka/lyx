@@ -73,6 +73,11 @@ using cap::cutSelection;
 using cap::replaceSelection;
 using cap::selClearOrDel;
 
+char const * text_commands[] =
+{ "text", "textrm", "textsf", "texttt", "textmd", "textbf", "textup", "textit",
+  "textsl", "textsc" };
+int const num_text_commands = sizeof(text_commands) / sizeof(*text_commands);
+
 
 InsetMathNest::InsetMathNest(idx_type nargs)
 	: cells_(nargs), lock_(false), mouse_hover_(false)
@@ -336,7 +341,15 @@ MathData InsetMathNest::glue() const
 
 void InsetMathNest::write(WriteStream & os) const
 {
-	os << '\\' << name().c_str();
+	bool oldmode = os.textMode();
+	docstring const latex_name = name().c_str();
+	for (int i = 0; i < num_text_commands; ++i) {
+		if (latex_name == from_ascii(text_commands[i])) {
+			os.textMode(true);
+			break;
+		}
+	}
+	os << '\\' << latex_name;
 	for (size_t i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
 	if (nargs() == 0)
@@ -345,6 +358,7 @@ void InsetMathNest::write(WriteStream & os) const
 		os << "\\lyxlock";
 		os.pendingSpace(true);
 	}
+	os.textMode(oldmode);
 }
 
 

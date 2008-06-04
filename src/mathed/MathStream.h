@@ -54,6 +54,10 @@ public:
 	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
 	bool pendingSpace() const { return pendingspace_; }
+	/// tell whether we are in text mode or not when producing latex code
+	void textMode(bool textmode);
+	/// tell whether we are in text mode or not when producing latex code
+	bool textMode() const { return textmode_; }
 private:
 	///
 	odocstream & os_;
@@ -67,6 +71,8 @@ private:
 	bool dryrun_;
 	/// do we have a space pending?
 	bool pendingspace_;
+	/// are we in text mode when producing latex code?
+	bool textmode_;
 	///
 	int line_;
 };
