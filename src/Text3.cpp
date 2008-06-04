@@ -1393,9 +1393,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posForward();
 		break;
 	}
-#if 0
-	case LFUN_LIST_INSERT:
-#endif
 	case LFUN_CAPTION_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_NOTE_INSERT:
@@ -1984,11 +1981,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLOAT_LIST_INSERT:
 		code = FLOAT_LIST_CODE;
 		break;
-#if 0
-	case LFUN_LIST_INSERT:
-		code = LIST_CODE;
-		break;
-#endif
 	case LFUN_CAPTION_INSERT:
 		code = CAPTION_CODE;
 		break;

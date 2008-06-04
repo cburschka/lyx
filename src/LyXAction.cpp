@@ -498,11 +498,6 @@ void LyXAction::init()
  */
 		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
 
-
-#if 0
-		{ LFUN_LIST_INSERT, "list-insert", Noop, Edit },
-#endif
-
 /*!
  * \var lyx::FuncCode lyx::LFUN_ESCAPE
  * \li Action: Clears the selection. If no text is selected call #LFUN_FINISHED_FORWARD.
