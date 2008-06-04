@@ -506,8 +506,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
-		{ LFUN_DELETE_BACKWARD_SKIP, "delete-backward-skip", Noop, Edit },
-		{ LFUN_DELETE_FORWARD_SKIP, "delete-forward-skip", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_DOWN
  * \li Action: Moves the cursor one line in downward direction.
@@ -1349,15 +1347,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
-/*!
- * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH_SKIP
- * \li Action: Breaks the current paragraph at the current location,
-               unless used at the beginning of a line, where it sets
-               the label width string to empty.
- * \li Syntax: break-paragraph-skip
- * \endvar
- */
-		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings.

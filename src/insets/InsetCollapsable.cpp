@@ -735,7 +735,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPH_SKIP:
 		flag.setEnabled(layout_->isMultiPar());
 		return true;
 

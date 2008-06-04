@@ -731,21 +731,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		moveCursor(cur, false);
 		break;
 
-	case LFUN_DELETE_FORWARD_SKIP:
-		// Reverse the effect of LFUN_BREAK_PARAGRAPH_SKIP.
-		if (!cur.selection()) {
-			if (cur.pos() == cur.lastpos()) {
-				cursorForward(cur);
-				cursorBackward(cur);
-			}
-			erase(cur);
-			cur.resetAnchor();
-		} else {
-			cutSelection(cur, true, false);
-		}
-		break;
-
-
 	case LFUN_CHAR_DELETE_BACKWARD:
 		if (!cur.selection()) {
 			if (bv->getIntl().getTransManager().backspace()) {
@@ -763,35 +748,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_DELETE_BACKWARD_SKIP:
-		// Reverse the effect of LFUN_BREAK_PARAGRAPH_SKIP.
-		if (!cur.selection()) {
-			// FIXME: look here
-			//CursorSlice cur = cursor();
-			backspace(cur);
-			//anchor() = cur;
-		} else {
-			cutSelection(cur, true, false);
-		}
-		break;
-
 	case LFUN_BREAK_PARAGRAPH:
 		cap::replaceSelection(cur);
 		breakParagraph(cur, cmd.argument() == "inverse");
 		cur.resetAnchor();
 		break;
-
-	case LFUN_BREAK_PARAGRAPH_SKIP: {
-		// When at the beginning of a paragraph, remove
-		// indentation.  Otherwise, do the same as LFUN_BREAK_PARAGRAPH.
-		cap::replaceSelection(cur);
-		if (cur.pos() == 0)
-			cur.paragraph().params().labelWidthString(docstring());
-		else
-			breakParagraph(cur, false);
-		cur.resetAnchor();
-		break;
-	}
 
 	// TODO
 	// With the creation of LFUN_PARAGRAPH_PARAMS, this is now redundant,
@@ -2216,11 +2177,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_END:
 	case LFUN_CHAR_DELETE_FORWARD:
-	case LFUN_DELETE_FORWARD_SKIP:
 	case LFUN_CHAR_DELETE_BACKWARD:
-	case LFUN_DELETE_BACKWARD_SKIP:
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_INSERT:
 	case LFUN_WORD_UPCASE:
