@@ -513,12 +513,40 @@ void LyXAction::init()
 		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
 		{ LFUN_DELETE_BACKWARD_SKIP, "delete-backward-skip", Noop, Edit },
 		{ LFUN_DELETE_FORWARD_SKIP, "delete-forward-skip", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DOWN
+ * \li Action: Moves the cursor one line in downward direction.
+ * \li Syntax: down
+ * \endvar
+ */
 		{ LFUN_DOWN, "down", ReadOnly | NoUpdate, Edit },
-		{ LFUN_DOWN_SELECT, "down-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_UP
+ * \li Action: Moves the cursor one line in upward direction.
+ * \li Syntax: up
+ * \endvar
+ */
 		{ LFUN_UP, "up", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DOWN_SELECT
+ * \li Action: Moves the cursor one line in downward direction adding the current
+               position to the selection.
+ * \li Syntax: down-select
+ * \endvar
+ */
+		{ LFUN_DOWN_SELECT, "down-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_UP_SELECT
+ * \li Action: Moves the cursor one line in upward direction adding the current
+               position to the selection.
+ * \li Syntax: up-select
+ * \endvar
+ */
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
 		{ LFUN_SCREEN_DOWN, "screen-down", ReadOnly, Edit },
+		{ LFUN_SCREEN_UP, "screen-up", ReadOnly, Edit },
 		{ LFUN_SCREEN_DOWN_SELECT, "screen-down-select", ReadOnly, Edit },
+		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SCROLL
  * \li Action: Scroll the buffer view.
@@ -537,8 +565,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
-		{ LFUN_SCREEN_UP, "screen-up", ReadOnly, Edit },
-		{ LFUN_SCREEN_UP_SELECT, "screen-up-select", ReadOnly, Edit },
 
 		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
 /*!
