@@ -190,6 +190,7 @@ SectionEnd
 Section "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
 
  # remove LyX's config files
+ StrCpy $AppSubfolder ${PRODUCT_SUBFOLDER}
  Call un.DelAppPathSub # function from LyXUtils.nsh
   
 SectionEnd

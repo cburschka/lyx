@@ -56,37 +56,7 @@ Var InstallGSview
 Var InstallJabRef
 Var SVGPath
 # Variables used by all installer versions
-Var AspellInstallYes
-Var AspellBaseReg
-Var AspellMessage
-Var ImageMagickPath
-Var JabRefInstalled
-Var LatexPath
-Var MiKTeXInstalled
-Var PythonPath
-Var Answer
-Var AppPre
-Var AppSuff
-Var AppPath
-Var CreateDesktopIcon
-Var CreateFileAssociations
-Var DictCode
-Var FileName
-Var LangCode
-Var LangCodeSys
-Var LangName
-Var LangNameSys
-Var NewString
-Var OldString
-Var PathPrefix
-Var Pointer
-Var ProductRootKey
-Var RunNumber
-Var StartmenuFolder
-Var String
-Var Search
-Var UserList
-Var UserName
+!include "Variables.nsh"
 
 #--------------------------------
 # load some NSIS libraries
@@ -184,6 +154,7 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 !insertmacro MUI_LANGUAGE "Galician"
 !insertmacro MUI_LANGUAGE "Hungarian"
 !insertmacro MUI_LANGUAGE "Italian"
+!insertmacro MUI_LANGUAGE "Japanese"
 !insertmacro MUI_LANGUAGE "Norwegian"
 !insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Portuguese"
@@ -202,6 +173,7 @@ Page custom MissingProgramsPage MissingProgramsPage_LeaveFunction
 !include "lyx_languages\galician.nsh"
 !include "lyx_languages\hungarian.nsh"
 !include "lyx_languages\italian.nsh"
+!include "lyx_languages\japanese.nsh"
 !include "lyx_languages\norwegian.nsh"
 !include "lyx_languages\polish.nsh"
 !include "lyx_languages\portuguese.nsh"

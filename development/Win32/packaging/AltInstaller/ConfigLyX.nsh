@@ -56,7 +56,7 @@ Function ConfigureLyX
   ${if} $Acrobat == "Yes" # used for Acrobat / Adobe Reader
     # writes settings to the preferences file
     ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "75" "AcroPref"
-    # ${LineFind} macro from TextFunc.nsh # calls Function AcroPref
+    # ${LineFind} is a macro from TextFunc.nsh # calls Function AcroPref
   ${endif}
   
   # if a SVG to PDF converter ws found (e.g. Inkscape) define it in the preferences
@@ -121,7 +121,10 @@ Function ConfigureLyX
   # create the LyX Application Data folder for all users
   # this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
   # so we create this folder before LyX starts and copy there the session file
+  StrCpy $AppSubfolder ${PRODUCT_SUBFOLDER}
+  StrCpy $AppFiles "$INSTDIR\Resources\session"
   Call CreateAppPathSub # function from LyXUtils.nsh
+  Delete "$INSTDIR\Resources\session" # delete the session file in the INSTDIR because it is unneeded there
   
   # delete unnecessary files
   ${if} $DelPythonFiles == "True"
