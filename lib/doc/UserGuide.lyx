@@ -1,4 +1,4 @@
-#LyX 1.6.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
 \lyxformat 335
 \begin_document
 \begin_header
@@ -19121,17 +19121,21 @@ reference "cap:Two-distorted-images"
 \begin_inset space ~
 \end_inset
 
-?? and ?? are the subfigures.
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-Fix this when bug 4910 is fixed!
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Undefinable"
 
 \end_inset
 
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Platypus"
 
+\end_inset
+
+ are the subfigures.
 \end_layout
 
 \begin_layout Standard

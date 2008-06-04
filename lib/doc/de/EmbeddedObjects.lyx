@@ -1,4 +1,4 @@
-#LyX 1.6.0beta2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
 \lyxformat 335
 \begin_document
 \begin_header
@@ -1079,19 +1079,21 @@ reference "abb:Zwei-Teilabbildungen"
 \begin_inset space ~
 \end_inset
 
-?? und ?? sind die Teilabbildungen.
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-
-\lang english
-Fix this when bug 4910 is fixed!
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abb:Undefinierbar"
 
 \end_inset
 
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abb:Ein-Schnabeltier"
 
+\end_inset
+
+ sind die Teilabbildungen.
 \end_layout
 
 \begin_layout Standard
@@ -1114,9 +1116,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-M.
- C.
- Escher
+\begin_inset CommandInset label
+LatexCommand label
+name "abb:Undefinierbar"
+
+\end_inset
+
+Undefinierbar
 \end_layout
 
 \end_inset
@@ -1151,7 +1157,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "abb:Ein-Schnabeltier"
 
+\end_inset
+
+Ein Schnabeltier
 \end_layout
 
 \end_inset
@@ -21907,14 +21919,14 @@ Um Gleitobjekte nebeneinander zu setzen, wie bei Abbildung
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Gleitobjekt-links"
+reference "abb:Gleitobjekt-links"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Gleitobjekt-rechts"
+reference "abb:Gleitobjekt-rechts"
 
 \end_inset
 
@@ -22008,7 +22020,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Gleitobjekt-links"
+name "abb:Gleitobjekt-links"
 
 \end_inset
 
@@ -22058,7 +22070,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Gleitobjekt-rechts"
+name "abb:Gleitobjekt-rechts"
 
 \end_inset
 
