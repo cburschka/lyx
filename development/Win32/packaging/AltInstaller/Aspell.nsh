@@ -11,6 +11,11 @@ Function InstallAspell
    File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
    # copy the files and register Aspell
    CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
+   # finally copy the Aspell personal files to the Application folder of all users
+   # this assures that every user can have its own word list
+   StrCpy $AppSubfolder "Aspell"
+   StrCpy $AppFiles "$APPDATA\Aspell\Personal"
+   Call CreateAppPathSub # function from LyXUtils.nsh
    
    WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
    WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"
@@ -245,7 +250,13 @@ Function InstallAspellDictionary
  DownloadNow:
   ExecShell "open" "${AspellLocationExact}"
  DownloadLater:
-	 
+
+ # finally copy the Aspell dictionary files to the Application folder of all users
+ # this assures that every user can have its own word list
+ StrCpy $AppSubfolder "Aspell"
+ StrCpy $AppFiles "$APPDATA\Aspell\Dictionaries"
+ Call CreateAppPathSub # function from LyXUtils.nsh
+ 
 FunctionEnd
 
 !endif # endif ${INSTALLER_TYPE} == "NotUpdate"
@@ -258,6 +269,9 @@ Function un.UninstAspell
     ReadRegStr $1 SHCTX "Software\Aspell" "Base Path"
     # delete Aspells' install folder
     RMDir /r $1
+    # remove LyX's config files
+    StrCpy $AppSubfolder "Aspell"
+    Call un.DelAppPathSub # function from LyXUtils.nsh
     # unregister Aspell and its dictionaries
     DeleteRegKey SHCTX "Software\Aspell"
     DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell"

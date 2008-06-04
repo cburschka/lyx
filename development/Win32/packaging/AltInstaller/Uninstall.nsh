@@ -115,13 +115,7 @@ Section "un.LyX" un.SecUnProgramFiles
   RMDir /r "$0"
   # delete desktop icon
   Delete "$DESKTOP\LyX ${PRODUCT_VERSION}.lnk"
-  # delete registry entries
-  DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
-  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
-  DeleteRegKey HKCR "Applications\lyx.exe"
-  DeleteRegKey HKCR "Applications\lyx.bat"
-
+  
   # Aiksaurus
   !insertmacro FileCheck $5 "meanings.dat" "${AiksaurusDir}" # macro from LyXUtils.nsh
   ${if} $5 == "True"
@@ -136,11 +130,22 @@ Section "un.LyX" un.SecUnProgramFiles
   ${endif}
 
   # remove file extension .lyx
-  ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
-  ${if} $R0 == "${PRODUCT_REGNAME}"
-   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
-   DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+  ReadRegStr $0 SHCTX "${PRODUCT_DIR_REGKEY}" "OnlyWithLyX" # special entry to test if they were registered by this LyX version
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+   ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
+   ${if} $R0 == "${PRODUCT_REGNAME}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
+   ${endif}
   ${endif}
+  
+  # delete registry entries
+  DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey SHCTX "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey SHCTX "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY_2}"
+  DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegKey HKCR "Applications\lyx.bat"
 
   # the following can only be done with admin permissions
   ${if} $Answer == "yes" # if admin
@@ -185,6 +190,7 @@ SectionEnd
 Section "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
 
  # remove LyX's config files
+ StrCpy $AppSubfolder ${PRODUCT_SUBFOLDER}
  Call un.DelAppPathSub # function from LyXUtils.nsh
   
 SectionEnd

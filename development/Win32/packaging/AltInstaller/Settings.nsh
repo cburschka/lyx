@@ -19,12 +19,12 @@
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
 
-BrandingText "LyXWinInstaller v3.24 - ${INSTALLER_VERSION}"
+BrandingText "LyXWinInstaller v3.25 - ${INSTALLER_VERSION}"
 
 # to check later if this installer version is running at the same time
-!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-24-AltInstaller-${INSTALLER_VERSION}.exe"
-!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-24-AltInstaller-${INSTALLER2_VERSION}.exe"
-!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-24-AltInstaller-${INSTALLER3_VERSION}.exe"
+!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-25-AltInstaller-${INSTALLER_VERSION}.exe"
+!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-25-AltInstaller-${INSTALLER2_VERSION}.exe"
+!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-3-25-AltInstaller-${INSTALLER3_VERSION}.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 # Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -35,15 +35,16 @@ BrandingText "LyXWinInstaller v3.24 - ${INSTALLER_VERSION}"
 !define SHCNF_IDLIST 0
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
+!define PRODUCT_DIR_REGKEY_2 "Software\LyX\LyX-${PRODUCT_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX154"
- !define PRODUCT_VERSION_OLD "LyX 1.5.4"
- !define PRODUCT_VERSION_SHORT_OLD "154"
+ !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX155"
+ !define PRODUCT_VERSION_OLD "LyX 1.5.5"
+ !define PRODUCT_VERSION_SHORT_OLD "155"
  !define JabRefVersion "2.3.1" # could be an older version
  !define ImageMagickVersion_Old "6.3.8" # could be an older version
- !define GhostscriptVersion_Old "8.61" # could be an older version
+ !define GhostscriptVersion_Old "8.62" # could be an older version
  !define MiKTeXDeliveredVersion "2.7" # could be an older version
 !endif
 
