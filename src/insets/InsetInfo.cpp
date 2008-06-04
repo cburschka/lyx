@@ -65,7 +65,7 @@ void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring InsetInfo::toolTip(BufferView const & bv, int x, int y) const
+docstring InsetInfo::toolTip(BufferView const &, int, int) const
 {
 	odocstringstream os;
 	os << _("Information regarding ")
