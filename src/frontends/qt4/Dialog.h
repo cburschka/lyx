@@ -14,6 +14,8 @@
 
 #include "FuncCode.h"
 
+#include "insets/InsetCode.h"
+
 #include "support/strfwd.h"
 
 #include <QString>
@@ -25,6 +27,7 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class FuncRequest;
+class Inset;
 
 namespace frontend {
 
@@ -88,6 +91,9 @@ public:
 	/// It is passed to the Controller to be translated into a useable form.
 	virtual void showData(std::string const & data);
 	//@}
+
+	/// \return inset at current cursor location.
+	Inset * inset(InsetCode code) const;
 
 	/** Check whether we may apply our data.
 	 *

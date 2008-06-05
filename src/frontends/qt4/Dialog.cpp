@@ -16,9 +16,13 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
+
+#include "insets/Inset.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -201,6 +205,17 @@ void Dialog::hideView()
 bool Dialog::isVisibleView() const
 {
 	return asQWidget()->isVisible();
+}
+
+
+Inset * Dialog::inset(InsetCode code) const
+{
+	Inset * ins = bufferview()->cursor().innerInsetOfType(code);
+	if (!ins)
+		ins = bufferview()->cursor().nextInset();
+	if (!ins || ins->lyxCode() != code)
+		return 0;
+	return ins;
 }
 
 

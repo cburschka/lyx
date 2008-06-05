@@ -39,10 +39,6 @@ public:
 
 private Q_SLOTS:
 	void on_closePB_clicked();
-
-private:
-	///
-	InsetInfo * inset() const;
 };
 
 } // namespace frontend
