@@ -251,18 +251,12 @@ void InsetInfo::updateInfo()
 	}
 	case ICON_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
-		if (func.action == LFUN_UNKNOWN_ACTION)
-			break;
-		// We do not try to find icon for LFUN_MATH_* here because these icons are difficult
-		// to locate (see GuiToolbar.cpp) and if they are needed, they can be inserted more 
-		// easily as mathed.
-		string name = lyxaction.getActionName(func.action);
-		if (!func.argument().empty()) {
-			name += " " + to_utf8(func.argument());
-			name = subst(name, ' ', '_');
-		}
-		FileName file = libFileSearch("images", name, "png");
-		if (file.empty())
+		docstring icon_name = theApp()->iconName(func, true);
+		//FIXME: We should use the icon directly instead of going through
+		// FileName. The code below won't work if the icon is embedded in the
+		// executable through the Qt resource system.
+		FileName file(to_utf8(icon_name));
+		if (!file.exists())
 			break;
 		InsetGraphicsParams igp;
 		igp.filename = file;
