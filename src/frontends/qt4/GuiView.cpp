@@ -2079,7 +2079,7 @@ namespace {
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
-"findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
+"findreplace", "float", "graphics", "include", "index", "info", "nomenclature", "label", "log",
 "mathdelimiter", "mathmatrix", "note", "paragraph", "prefs", "print", 
 "ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 
@@ -2252,6 +2252,7 @@ Dialog * createGuiFloat(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiHSpace(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
+Dialog * createGuiInfo(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
@@ -2316,6 +2317,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiGraphics(*this);
 	if (name == "include")
 		return createGuiInclude(*this);
+	if (name == "info")
+		return createGuiInfo(*this);
 	if (name == "nomenclature")
 		return createGuiNomenclature(*this);
 	if (name == "label")

@@ -943,6 +943,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		bool enable = false;
 		InsetCode next_code = cur.nextInset()
 			? cur.nextInset()->lyxCode() : NO_CODE;
+		//FIXME: remove these special cases:
 		switch (next_code) {
 			case TABULAR_CODE:
 			case ERT_CODE:
@@ -952,6 +953,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			case BRANCH_CODE:
 			case BOX_CODE:
 			case LISTINGS_CODE:
+			case INFO_CODE:
 				enable = (cmd.argument().empty() ||
 					  cmd.getArg(0) == insetName(next_code));
 				break;

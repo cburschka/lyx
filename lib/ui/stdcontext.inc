@@ -347,4 +347,13 @@ Menuset
 		Item "Settings...|S" "inset-settings tabular"
 	End
 
+
+#
+# InsetInfo context menu
+#
+
+	Menu "context-info"
+		Item "Settings...|S" "inset-settings"
+	End
+
 End

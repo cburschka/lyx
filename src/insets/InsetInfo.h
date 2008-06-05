@@ -105,6 +105,10 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
+	bool showInsetDialog(BufferView * bv) const;
+	///
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	InsetCode lyxCode() const { return INFO_CODE; }
@@ -116,6 +120,8 @@ public:
 	bool setMouseHover(bool mouse_hover);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
 
 private:
 	/// The translator between the information type enum and corresponding string.

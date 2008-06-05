@@ -89,6 +89,7 @@ SOURCEFILES = \
 	GuiIdListModel.cpp \
 	GuiImage.cpp \
 	GuiInclude.cpp \
+	GuiInfo.cpp \
 	GuiKeySymbol.cpp \
 	GuiLabel.cpp \
 	GuiListings.cpp \
@@ -182,6 +183,7 @@ MOCHEADER = \
 	GuiHSpace.h \
 	GuiHyperlink.h \
 	GuiInclude.h \
+	GuiInfo.h \
 	GuiLabel.h \
 	GuiListings.h \
 	GuiLog.h \
@@ -247,6 +249,7 @@ UIFILES = \
 	HSpaceUi.ui \
 	HyperlinkUi.ui \
 	IncludeUi.ui \
+	InfoUi.ui \
 	LabelUi.ui \
 	LanguageUi.ui \
 	LaTeXUi.ui \

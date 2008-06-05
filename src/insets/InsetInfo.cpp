@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetGraphics.h"
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
@@ -136,6 +137,32 @@ void InsetInfo::write(ostream & os) const
 {
 	os << "Info\ntype  \"" << nameTranslator().find(type_)
 	   << "\"\narg   \"" << name_ << '\"';
+}
+
+
+bool InsetInfo::showInsetDialog(BufferView * bv) const
+{
+	bv->showDialog("info", "", const_cast<InsetInfo *>(this));
+	return true;
+}
+
+
+bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY:
+		flag.setEnabled(true);
+		break;
+	//FIXME: do something.
+	/*
+	*/
+
+	default:
+		return false;
+	}
+	return true;
 }
 
 
@@ -287,6 +314,12 @@ bool InsetInfo::setMouseHover(bool mouse_hover)
 {
 	mouse_hover_ = mouse_hover;
 	return true;
+}
+
+
+docstring InsetInfo::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-info");
 }
 
 } // namespace lyx
