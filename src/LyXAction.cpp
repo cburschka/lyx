@@ -750,6 +750,17 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FIND
+ * \li Action: Replace a string in the document.
+ * \li Syntax: word-replace [<DATA>]
+ * \li Params: <DATA>: data is of the form
+                       "<search> \n
+                        <replace> \n
+                        <casesensitive> <matchword> <all> <forward>"
+ * \li Origin: poenitz, Jan 7 2004
+ * \endvar
+ */
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
