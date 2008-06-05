@@ -403,10 +403,11 @@ support::FileNameList InsetBibtex::getBibFiles() const
 	for (; it != en; ++it) {
 		FileName const file = 
 			findtexfile(changeExtension(to_utf8(*it), "bib"), "bib");
-		
-		// If we didn't find a matching file name just fail silently
+
 		if (!file.empty())
 			vec.push_back(file);
+		else
+			LYXERR0("Couldn't find " + to_utf8(*it) + " in InsetBibtex::getBibFiles()!");
 	}
 	
 	return vec;
