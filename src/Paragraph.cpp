@@ -2508,8 +2508,8 @@ int Paragraph::checkBiblio(Buffer const & buffer)
 
 	// There was no inset at the beginning, so we need to create one with
 	// the key and label of the one we erased.
-	InsetBibitem * inset = new InsetBibitem(InsetCommandParams(BIBITEM_CODE));
-	inset->setBuffer(const_cast<Buffer &>(buffer));
+	InsetBibitem * inset = 
+		new InsetBibitem(buffer, InsetCommandParams(BIBITEM_CODE));
 	// restore values of previously deleted item in this par.
 	if (!oldkey.empty())
 		inset->setParam("key", oldkey);

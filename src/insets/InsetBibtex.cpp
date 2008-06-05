@@ -53,14 +53,14 @@ InsetBibtex::InsetBibtex(Buffer const & buf, InsetCommandParams const & p)
 	: InsetCommand(p, "bibtex")
 {
 	Inset::setBuffer(const_cast<Buffer &>(buf));
-	buffer_->invalidateBibfilesCache();
+	buffer_->invalidateBibinfoCache();
 }
 
 
 InsetBibtex::~InsetBibtex()
 {
 	if (buffer_)
-		buffer_->invalidateBibfilesCache();
+		buffer_->invalidateBibinfoCache();
 }
 
 

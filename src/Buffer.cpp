@@ -1353,7 +1353,7 @@ void Buffer::updateBibfilesCache() const
 }
 
 
-void Buffer::invalidateBibfilesCache() 
+void Buffer::invalidateBibinfoCache() 
 {
 	d->bibinfoCacheValid_ = false;
 }

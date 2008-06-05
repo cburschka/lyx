@@ -143,7 +143,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			return new InsetOptArg(buf);
 
 		case LFUN_BIBITEM_INSERT:
-			return new InsetBibitem(InsetCommandParams(BIBITEM_CODE));
+			return new InsetBibitem(buf, InsetCommandParams(BIBITEM_CODE));
 
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
@@ -227,7 +227,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case BIBITEM_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetBibitem(icp);
+				return new InsetBibitem(buf, icp);
 			}
 			
 			case BIBTEX_CODE: {
@@ -451,7 +451,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 		switch (code) {
 			case BIBITEM_CODE:
-				inset.reset(new InsetBibitem(inscmd));
+				inset.reset(new InsetBibitem(buf, inscmd));
 				break;
 			case BIBTEX_CODE:
 				inset.reset(new InsetBibtex(buf, inscmd));
