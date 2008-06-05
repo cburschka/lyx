@@ -19,7 +19,7 @@
 #include "support/gettext.h"
 #include "support/Translator.h"
 
-/* InsetInfo displays shortcuts, lyxrc, package and textclass 
+/* InsetInfo displays shortcuts, lyxrc, package and textclass
 availability and menu information in a non-editable boxed InsetText.
 
 Output of such an inset may vary from system to system, depending
@@ -30,15 +30,17 @@ uses it to display currently used shortcuts.
 
 This inset has two arguments: the type and argument of the information. The
 screen and latex output is the content of the information. An InsetInfo can
-have type "shortcut", "lyxrc", "package", "textclass", "menu", or "buffer".
-Arguments and outputs vary by type.
+have type "shortcuts", "shortcut", "lyxrc", "package", "textclass", "menu",
+or "buffer". Arguments and outputs vary by type.
 
-shortcut: argument of this type of InsetInfo is the name of the LFUN such as
+shortcuts: argument of this type of InsetInfo is the name of the LFUN such as
     "math-insert \alpha". The syntax is the same as what is used in the bind
     and ui files. The output of this inset is all shortcuts for this LFUN
     separated by comma.
 
-lyxrc: argument is the name of the rc entry such as "bind_file". Look in 
+shortcut: the same as shortcuts, but only output the last shortcut.
+
+lyxrc: argument is the name of the rc entry such as "bind_file". Look in
     src/LyXRC.h for available entries. The output is the content of this RC
     entry.
 
@@ -53,17 +55,21 @@ menu: argument is the name of the LFUN such as "paste". The syntax is the same
     triggers this LFUN. For example, "File > Paste", where '>' is actually
     \lyxarrow (an InsetSpecialChar).
 
-buffer: argument can be one of "name", "path", "class". This inset output the 
+icon: argument is the name of the LFUN such as "paste". The syntax is the same
+    as what is used in the bind and ui files. The output is the icon use in
+    the toolbar for this LFUN.
+
+buffer: argument can be one of "name", "path", "class". This inset output the
     filename, path, and textclass of this buffer.
 
-There is currently no GUI, no menu entry for this inset. A user can define a 
+There is currently no GUI, no menu entry for this inset. A user can define a
 shortcut for "info-insert" (e.g. C-S-I), and
 
-1. input the type and argument of this inset, e.g. "menu paste", in 
+1. input the type and argument of this inset, e.g. "menu paste", in
    the work area.
 2. select the text and run "info-insert" (e.g. press C-S-I).
 
-An alternative method is to enter command "info-insert type arg" in 
+An alternative method is to enter command "info-insert type arg" in
 the command buffer (view->Toolbar->Command Buffer).
 
 */
@@ -76,11 +82,13 @@ class InsetInfo : public InsetText {
 public:
 	enum info_type {
 		UNKNOWN_INFO,   // Invalid type
+		SHORTCUTS_INFO, // Keyboard shortcuts
 		SHORTCUT_INFO,  // Keyboard shortcut
 		LYXRC_INFO,     // RC entry
 		PACKAGE_INFO,   // Availability of package
 		TEXTCLASS_INFO, // Availability of textclass
 		MENU_INFO,      // Which menu item is used for certain function
+		ICON_INFO,      // which toolbar icon is used for certain function
 		BUFFER_INFO,    // Buffer related information
 	};
 

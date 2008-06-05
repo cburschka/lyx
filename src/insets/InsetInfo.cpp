@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "FuncRequest.h"
+#include "InsetGraphics.h"
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
@@ -31,6 +32,7 @@
 #include "support/docstream.h"
 #include "support/docstring_list.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
@@ -81,11 +83,13 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 	Translator<InsetInfo::info_type, string> 
 		translator(InsetInfo::UNKNOWN_INFO, "unknown");
 
+	translator.addPair(InsetInfo::SHORTCUTS_INFO, "shortcuts");
 	translator.addPair(InsetInfo::SHORTCUT_INFO, "shortcut");
 	translator.addPair(InsetInfo::LYXRC_INFO, "lyxrc");
 	translator.addPair(InsetInfo::PACKAGE_INFO, "package");
 	translator.addPair(InsetInfo::TEXTCLASS_INFO, "textclass");
 	translator.addPair(InsetInfo::MENU_INFO, "menu");
+	translator.addPair(InsetInfo::ICON_INFO, "icon");
 	translator.addPair(InsetInfo::BUFFER_INFO, "buffer");
 
 	return translator;
@@ -177,11 +181,21 @@ void InsetInfo::updateInfo()
 		setText(_("Unknown Info: ") + from_utf8(name_),
 			bp.getFont(), false);
 		break;
-	case SHORTCUT_INFO: {
+	case SHORTCUTS_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action != LFUN_UNKNOWN_ACTION)
 			setText(theTopLevelKeymap().printBindings(func),
 				bp.getFont(), false);
+		break;
+	}
+	case SHORTCUT_INFO: {
+		FuncRequest func = lyxaction.lookupFunc(name_);
+		if (func.action != LFUN_UNKNOWN_ACTION) {
+			KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
+			if (!bindings.empty())
+				setText(bindings.rbegin()->print(KeySequence::ForGui),
+					bp.getFont(), false);
+		}
 		break;
 	}
 	case LYXRC_INFO: {
@@ -233,6 +247,28 @@ void InsetInfo::updateInfo()
 				info.insertChar(i, names.back()[i], bp.getFont(), false);
 			names.pop_back();
 		}
+		break;
+	}
+	case ICON_INFO: {
+		FuncRequest func = lyxaction.lookupFunc(name_);
+		if (func.action == LFUN_UNKNOWN_ACTION)
+			break;
+		// We do not try to find icon for LFUN_MATH_* here because these icons are difficult
+		// to locate (see GuiToolbar.cpp) and if they are needed, they can be inserted more 
+		// easily as mathed.
+		string name = lyxaction.getActionName(func.action);
+		if (!func.argument().empty()) {
+			name += " " + to_utf8(func.argument());
+			name = subst(name, ' ', '_');
+		}
+		FileName file = libFileSearch("images", name, "png");
+		if (file.empty())
+			break;
+		InsetGraphicsParams igp;
+		igp.filename = file;
+		InsetGraphics * inset = new InsetGraphics(buffer());
+		inset->setParams(igp);
+		paragraphs().front().insertInset(0, inset, Change(Change::UNCHANGED));
 		break;
 	}
 	case BUFFER_INFO: {
