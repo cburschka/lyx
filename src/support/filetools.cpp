@@ -810,7 +810,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 	if (absfile.exists())
 		return absfile;
 
-	// No we try to find it using kpsewhich.
+	// Now we try to find it using kpsewhich.
 	// It seems from the kpsewhich manual page that it is safe to use
 	// kpsewhich without --format: "When the --format option is not
 	// given, the search path used when looking for a file is inferred
