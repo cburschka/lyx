@@ -651,7 +651,7 @@ void GuiLayoutBox::selected(int index)
 		resetFilter();
 		return;
 	}
-	lyxerr << "ERROR (layoutSelected): layout not found!" << endl;
+	LYXERR0("ERROR (layoutSelected): layout not found!");
 }
 
 
@@ -748,7 +748,7 @@ public:
 
 		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (!tbinfo) {
-			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
+			LYXERR0("Unknown toolbar " << tbitem_.name_);
 			return;
 		}
 		IconPalette * panel = new IconPalette(this);
@@ -802,7 +802,7 @@ public:
 		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
 		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (!tbinfo) {
-			lyxerr << "Unknown toolbar " << tbitem_.name_ << endl;
+			LYXERR0("Unknown toolbar " << tbitem_.name_);
 			return;
 		}
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
