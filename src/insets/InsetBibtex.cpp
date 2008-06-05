@@ -49,9 +49,19 @@ namespace Alert = frontend::Alert;
 namespace os = support::os;
 
 
-InsetBibtex::InsetBibtex(InsetCommandParams const & p)
+InsetBibtex::InsetBibtex(Buffer const & buf, InsetCommandParams const & p)
 	: InsetCommand(p, "bibtex")
-{}
+{
+	Inset::setBuffer(const_cast<Buffer &>(buf));
+	buffer_->invalidateBibfilesCache();
+}
+
+
+InsetBibtex::~InsetBibtex()
+{
+	if (buffer_)
+		buffer_->invalidateBibfilesCache();
+}
 
 
 ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)

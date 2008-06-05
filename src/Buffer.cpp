@@ -210,6 +210,8 @@ public:
 	// file, and then to construct the Buffer's bibinfo from that.
 	/// A cache for bibliography info
 	mutable BiblioInfo bibinfo_;
+	/// whether the bibinfo cache is valid
+	bool bibinfoCacheValid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfileStatus_;
 
@@ -243,7 +245,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0), 
-	  checksum_(0), wa_(0), undo_(parent)
+	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false)
 {
 	temppath = createBufferTmpDir();
 	lyxvc.setBuffer(&parent);
@@ -1346,6 +1348,14 @@ void Buffer::updateBibfilesCache() const
 				bibfiles.end());
 		}
 	}
+	// the bibinfo cache is now invalid
+	d->bibinfoCacheValid_ = false;
+}
+
+
+void Buffer::invalidateBibfilesCache() 
+{
+	d->bibinfoCacheValid_ = false;
 }
 
 
@@ -1377,23 +1387,26 @@ BiblioInfo const & Buffer::masterBibInfo() const
 
 BiblioInfo const & Buffer::localBibInfo() const
 {
-	support::FileNameList const & bibfilesCache = getBibfilesCache();
-	// compare the cached timestamps with the actual ones.
-	bool changed = false;
-	support::FileNameList::const_iterator ei = bibfilesCache.begin();
-	support::FileNameList::const_iterator en = bibfilesCache.end();
-	for (; ei != en; ++ ei) {
-		time_t lastw = ei->lastModified();
-		if (lastw != d->bibfileStatus_[*ei]) {
-			changed = true;
-			d->bibfileStatus_[*ei] = lastw;
-			break;
+	if (d->bibinfoCacheValid_) {
+		support::FileNameList const & bibfilesCache = getBibfilesCache();
+		// compare the cached timestamps with the actual ones.
+		support::FileNameList::const_iterator ei = bibfilesCache.begin();
+		support::FileNameList::const_iterator en = bibfilesCache.end();
+		for (; ei != en; ++ ei) {
+			time_t lastw = ei->lastModified();
+			if (lastw != d->bibfileStatus_[*ei]) {
+				d->bibinfoCacheValid_ = false;
+				d->bibfileStatus_[*ei] = lastw;
+				break;
+			}
 		}
 	}
 
-	if (changed) {
+	if (!d->bibinfoCacheValid_) {
+		d->bibinfo_.clear();
 		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 			it->fillWithBibKeys(d->bibinfo_, it);
+		d->bibinfoCacheValid_ = true;
 	}
 	return d->bibinfo_;
 }

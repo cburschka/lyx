@@ -233,7 +233,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			case BIBTEX_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetBibtex(icp);
+				return new InsetBibtex(buf, icp);
 			}
 			
 			case CITE_CODE: {
@@ -454,7 +454,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 				inset.reset(new InsetBibitem(inscmd));
 				break;
 			case BIBTEX_CODE:
-				inset.reset(new InsetBibtex(inscmd));
+				inset.reset(new InsetBibtex(buf, inscmd));
 				break;
 			case CITE_CODE: 
 				inset.reset(new InsetCitation(inscmd));

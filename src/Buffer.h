@@ -306,6 +306,8 @@ public:
 	/// Update the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache() const;
+	///
+	void invalidateBibfilesCache();
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	support::FileNameList const & getBibfilesCache() const;

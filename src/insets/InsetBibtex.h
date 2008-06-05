@@ -26,7 +26,9 @@ namespace lyx {
 class InsetBibtex : public InsetCommand {
 public:
 	///
-	InsetBibtex(InsetCommandParams const &);
+	InsetBibtex(Buffer const &, InsetCommandParams const &);
+	///
+	virtual ~InsetBibtex();
 	///
 	docstring screenLabel() const;
 	///
