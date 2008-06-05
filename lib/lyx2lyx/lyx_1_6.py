@@ -1838,7 +1838,7 @@ def revert_subfig(document):
     i = 0
     while 1:
         # whitespace intended (exclude \\begin_inset FloatList)
-        i = find_token(document.body, '\\begin_inset Float ', i)
+        i = find_tokens(document.body, ['\\begin_inset Float ', '\\begin_inset Wrap'], i)
         if i == -1:
             return
         j = 0

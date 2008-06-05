@@ -221,7 +221,7 @@ int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
 bool InsetWrap::insetAllowed(InsetCode code) const
 {
 	switch(code) {
-	case FLOAT_CODE:
+	case WRAP_CODE:
 	case FOOT_CODE:
 	case MARGIN_CODE:
 		return false;

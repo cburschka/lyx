@@ -195,7 +195,8 @@ void InsetFloat::updateLabels(ParIterator const & it)
 	string const saveflt = cnts.current_float();
 	bool const savesubflt = cnts.isSubfloat();
 
-	bool const subflt = it.innerInsetOfType(FLOAT_CODE);
+	bool const subflt = (it.innerInsetOfType(FLOAT_CODE)
+			     || it.innerInsetOfType(WRAP_CODE));
 	// floats can only embed subfloats of their own kind
 	if (subflt)
 		params_.type = saveflt;
