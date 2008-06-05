@@ -185,6 +185,8 @@ public:
 	int fontsSansScale;
 	/// the scale factor of the tt font
 	int fontsTypewriterScale;
+	/// the font used by the CJK command
+	std::string fontsCJK;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;

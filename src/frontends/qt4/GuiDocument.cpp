@@ -605,6 +605,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontsizeCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->cjkFontLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)),
@@ -1647,6 +1649,9 @@ void GuiDocument::apply(BufferParams & params)
 	params.fontsTypewriter =
 		tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
 
+	params.fontsCJK =
+		fromqstr(fontModule->cjkFontLE->text());
+
 	params.fontsSansScale = fontModule->scaleSansSB->value();
 
 	params.fontsTypewriterScale = fontModule->scaleTypewriterSB->value();
@@ -1944,6 +1949,12 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 		fontModule->fontsTypewriterCO->setCurrentIndex(n);
 		ttChanged(n);
 	}
+
+	if (!params.fontsCJK.empty())
+		fontModule->cjkFontLE->setText(
+			toqstr(params.fontsCJK));
+	else
+		fontModule->cjkFontLE->setText(QString());
 
 	fontModule->fontScCB->setChecked(params.fontsSC);
 	fontModule->fontOsfCB->setChecked(params.fontsOSF);

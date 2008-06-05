@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 335;
+int const LYX_FORMAT = 336;
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -459,6 +459,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().headsep.erase();
 	params().footskip.erase();
 	params().columnsep.erase();
+	params().fontsCJK.erase();
 	params().listings_params.clear();
 	params().clearLayoutModules();
 	params().pdfoptions().clear();

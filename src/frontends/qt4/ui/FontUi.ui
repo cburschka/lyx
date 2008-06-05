@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>232</height>
+    <width>414</width>
+    <height>268</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,7 +19,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="7" column="0" colspan="4" >
+   <item row="8" column="0" colspan="4" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -30,100 +30,92 @@
      <property name="sizeHint" >
       <size>
        <width>391</width>
-       <height>21</height>
+       <height>16</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="2" column="2" colspan="2" >
+   <item row="5" column="0" >
+    <widget class="QLabel" name="cjkFontLA" >
+     <property name="text" >
+      <string>C&amp;JK:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>cjkFontLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <widget class="QLineEdit" name="cjkFontLE" >
+     <property name="toolTip" >
+      <string>Input the font to be used for Chinese, Japanese or Korean (CJK) script</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" >
       <size>
-       <width>131</width>
+       <width>151</width>
        <height>20</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="4" column="3" >
-    <widget class="QSpinBox" name="scaleTypewriterSB" >
-     <property name="maximum" >
-      <number>200</number>
+   <item row="7" column="1" >
+    <widget class="QCheckBox" name="fontOsfCB" >
+     <property name="toolTip" >
+      <string>Use old style instead of lining figures</string>
      </property>
-     <property name="minimum" >
-      <number>10</number>
+     <property name="text" >
+      <string>Use &amp;Old Style Figures</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
-    <widget class="QLabel" name="scaleTypewriterLA" >
+   <item row="6" column="1" >
+    <widget class="QCheckBox" name="fontScCB" >
+     <property name="toolTip" >
+      <string>Use a real small caps shape, if the font provides one</string>
+     </property>
      <property name="text" >
-      <string>Sc&amp;ale (%):</string>
+      <string>Use true S&amp;mall Caps</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="fontsDefaultCO" >
+     <property name="toolTip" >
+      <string>Select the default family for the document</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QLabel" name="TextLabel2_2" >
+     <property name="text" >
+      <string>&amp;Base Size:</string>
      </property>
      <property name="buddy" >
-      <cstring>scaleTypewriterSB</cstring>
+      <cstring>fontsizeCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
-    <widget class="QComboBox" name="fontsTypewriterCO" />
+   <item row="0" column="3" >
+    <widget class="QComboBox" name="fontsizeCO" >
+     <property name="toolTip" >
+      <string/>
+     </property>
+    </widget>
    </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="fontsTypewriterLA" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="fontsDefaultLA" >
      <property name="text" >
-      <string>&amp;Typewriter:</string>
+      <string>&amp;Default Family:</string>
      </property>
      <property name="buddy" >
-      <cstring>fontsTypewriterCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QComboBox" name="fontsRomanCO" />
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="fontsRomanLA" >
-     <property name="text" >
-      <string>&amp;Roman:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>fontsRomanCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3" >
-    <widget class="QSpinBox" name="scaleSansSB" >
-     <property name="maximum" >
-      <number>200</number>
-     </property>
-     <property name="minimum" >
-      <number>10</number>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2" >
-    <widget class="QLabel" name="scaleSansLA" >
-     <property name="text" >
-      <string>S&amp;cale (%):</string>
-     </property>
-     <property name="buddy" >
-      <cstring>scaleSansSB</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" >
-    <widget class="QComboBox" name="fontsSansCO" />
-   </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="fontsSansLA" >
-     <property name="text" >
-      <string>&amp;Sans Serif:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>fontsSansCO</cstring>
+      <cstring>fontsDefaultCO</cstring>
      </property>
     </widget>
    </item>
@@ -140,45 +132,115 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="1" >
-    <widget class="QCheckBox" name="fontOsfCB" >
+   <item row="3" column="0" >
+    <widget class="QLabel" name="fontsSansLA" >
      <property name="text" >
-      <string>Use &amp;Old Style Figures</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" >
-    <widget class="QCheckBox" name="fontScCB" >
-     <property name="text" >
-      <string>Use true S&amp;mall Caps</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="fontsDefaultLA" >
-     <property name="text" >
-      <string>&amp;Default Family:</string>
+      <string>&amp;Sans Serif:</string>
      </property>
      <property name="buddy" >
-      <cstring>fontsDefaultCO</cstring>
+      <cstring>fontsSansCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="3" >
-    <widget class="QComboBox" name="fontsizeCO" />
+   <item row="3" column="1" >
+    <widget class="QComboBox" name="fontsSansCO" >
+     <property name="toolTip" >
+      <string>Select the Sans Serif (grotesque) typeface</string>
+     </property>
+    </widget>
    </item>
-   <item row="0" column="2" >
-    <widget class="QLabel" name="TextLabel2_2" >
+   <item row="3" column="2" >
+    <widget class="QLabel" name="scaleSansLA" >
      <property name="text" >
-      <string>&amp;Base Size:</string>
+      <string>S&amp;cale (%):</string>
      </property>
      <property name="buddy" >
-      <cstring>fontsizeCO</cstring>
+      <cstring>scaleSansSB</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QComboBox" name="fontsDefaultCO" />
+   <item row="3" column="3" >
+    <widget class="QSpinBox" name="scaleSansSB" >
+     <property name="toolTip" >
+      <string>Scale the Sans Serif font to match the base font's dimensions</string>
+     </property>
+     <property name="maximum" >
+      <number>200</number>
+     </property>
+     <property name="minimum" >
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="fontsRomanLA" >
+     <property name="text" >
+      <string>&amp;Roman:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>fontsRomanCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QComboBox" name="fontsRomanCO" >
+     <property name="toolTip" >
+      <string>Select the roman (serif) typeface</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="fontsTypewriterLA" >
+     <property name="text" >
+      <string>&amp;Typewriter:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>fontsTypewriterCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QComboBox" name="fontsTypewriterCO" >
+     <property name="toolTip" >
+      <string>Select the typewriter (monospaced) typeface</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <widget class="QLabel" name="scaleTypewriterLA" >
+     <property name="text" >
+      <string>Sc&amp;ale (%):</string>
+     </property>
+     <property name="buddy" >
+      <cstring>scaleTypewriterSB</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" >
+    <widget class="QSpinBox" name="scaleTypewriterSB" >
+     <property name="toolTip" >
+      <string>Scale the Typewriter font to match the base font's dimensions</string>
+     </property>
+     <property name="maximum" >
+      <number>200</number>
+     </property>
+     <property name="minimum" >
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>131</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

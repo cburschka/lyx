@@ -2500,6 +2500,13 @@ def revert_InsetSpace(document):
         document.body[i] = document.body[i].replace('\\begin_inset space', '\\begin_inset Space')
 
 
+def remove_fontsCJK(document):
+    ' Remove font_cjk param '
+    i = find_token(document.header, "\\font_cjk", 0)
+    if i != -1:
+        del document.header[i]
+
+
 def convert_plain_layout(document):
 	" Convert 'PlainLayout' to 'Plain Layout'" 
 	i = 0
@@ -2602,9 +2609,11 @@ convert = [[277, [fix_wrong_tables]],
            [333, [update_apa_styles]],
            [334, [convert_paper_sizes]],
            [335, [convert_InsetSpace]],
+           [336, []],
           ]
 
-revert =  [[334, [revert_InsetSpace]],
+revert =  [[335, [remove_fontsCJK]],
+           [334, [revert_InsetSpace]],
            [333, [revert_paper_sizes]],
            [332, []],
            [331, [revert_graphics_group]],

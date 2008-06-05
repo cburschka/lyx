@@ -522,6 +522,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> fontsSansScale;
 	} else if (token == "\\font_tt_scale") {
 		lex >> fontsTypewriterScale;
+	} else if (token == "\\font_cjk") {
+		lex >> fontsCJK;
 	} else if (token == "\\paragraph_separation") {
 		string parsep;
 		lex >> parsep;
@@ -727,7 +729,11 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\font_osf " << convert<string>(fontsOSF)
 	   << "\n\\font_sf_scale " << fontsSansScale
 	   << "\n\\font_tt_scale " << fontsTypewriterScale
-	   << "\n\\graphics " << graphicsDriver << '\n';
+	   << '\n';
+	if (!fontsCJK.empty()) {
+		os << "\\font_cjk " << fontsCJK << '\n';
+	}
+	os << "\n\\graphics " << graphicsDriver << '\n';
 
 	if (!float_placement.empty()) {
 		os << "\\float_placement " << float_placement << '\n';
