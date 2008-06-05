@@ -142,7 +142,7 @@ void InsetInfo::write(ostream & os) const
 
 bool InsetInfo::showInsetDialog(BufferView * bv) const
 {
-	bv->showDialog("info", "", const_cast<InsetInfo *>(this));
+	bv->showDialog("info");
 	return true;
 }
 
