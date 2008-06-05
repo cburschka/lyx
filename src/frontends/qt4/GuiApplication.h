@@ -16,11 +16,12 @@
 #include "frontends/Application.h"
 
 #include <QApplication>
-#include <QObject>
 #include <QList>
 
-class QSessionManager;
 class QAbstractItemModel;
+class QIcon;
+class QObject;
+class QSessionManager;
 class QSortFilterProxyModel;
 
 namespace lyx {
@@ -68,6 +69,7 @@ public:
 	void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
+	docstring iconName(FuncRequest const & f, bool unknown);
 	void hideDialogs(std::string const & name, Inset * inset) const;
 	Buffer const * updateInset(Inset const * inset) const;
 	//@}
@@ -141,6 +143,12 @@ private:
 }; // GuiApplication
 
 extern GuiApplication * guiApp;
+
+/// \return the icon file name for the given action.
+QString iconName(FuncRequest const & f, bool unknown);
+
+/// \return an icon for the given action.
+QIcon getIcon(FuncRequest const & f, bool unknown);
 
 } // namespace frontend
 } // namespace lyx

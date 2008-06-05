@@ -224,6 +224,9 @@ public:
 
 	virtual bool searchMenu(FuncRequest const & func,
 		docstring_list & names) const = 0;
+
+	/// \return the icon file name for the given action.
+	virtual docstring iconName(FuncRequest const & f, bool unknown) = 0;
 };
 
 } // namespace frontend

@@ -33,7 +33,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Layout.h"
-#include "LyXAction.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -43,7 +42,6 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/lyxalgo.h" // sorted
 
 #include <QAbstractItemDelegate>
 #include <QAbstractTextDocumentLayout>
@@ -70,186 +68,11 @@
 
 #include "support/lassert.h"
 
-#include <map>
-#include <vector>
-
 using namespace std;
 using namespace lyx::support;
 
-static void initializeResources()
-{
-	static bool initialized = false;
-	if (!initialized) {
-		Q_INIT_RESOURCE(Resources); 
-		initialized = true;
-	}
-}
-
-
 namespace lyx {
 namespace frontend {
-
-namespace {
-
-struct PngMap {
-	QString key;
-	QString value;
-};
-
-
-bool operator<(PngMap const & lhs, PngMap const & rhs)
-{
-		return lhs.key < rhs.key;
-}
-
-
-class CompareKey {
-public:
-	CompareKey(QString const & name) : name_(name) {}
-	bool operator()(PngMap const & other) const { return other.key == name_; }
-private:
-	QString const name_;
-};
-
-
-// this must be sorted alphabetically
-// Upper case comes before lower case
-PngMap sorted_png_map[] = {
-	{ "Bumpeq", "bumpeq2" },
-	{ "Cap", "cap2" },
-	{ "Cup", "cup2" },
-	{ "Delta", "delta2" },
-	{ "Downarrow", "downarrow2" },
-	{ "Gamma", "gamma2" },
-	{ "Lambda", "lambda2" },
-	{ "Leftarrow", "leftarrow2" },
-	{ "Leftrightarrow", "leftrightarrow2" },
-	{ "Longleftarrow", "longleftarrow2" },
-	{ "Longleftrightarrow", "longleftrightarrow2" },
-	{ "Longrightarrow", "longrightarrow2" },
-	{ "Omega", "omega2" },
-	{ "Phi", "phi2" },
-	{ "Pi", "pi2" },
-	{ "Psi", "psi2" },
-	{ "Rightarrow", "rightarrow2" },
-	{ "Sigma", "sigma2" },
-	{ "Subset", "subset2" },
-	{ "Supset", "supset2" },
-	{ "Theta", "theta2" },
-	{ "Uparrow", "uparrow2" },
-	{ "Updownarrow", "updownarrow2" },
-	{ "Upsilon", "upsilon2" },
-	{ "Vdash", "vdash3" },
-	{ "Vert", "vert2" },
-	{ "Xi", "xi2" },
-	{ "nLeftarrow", "nleftarrow2" },
-	{ "nLeftrightarrow", "nleftrightarrow2" },
-	{ "nRightarrow", "nrightarrow2" },
-	{ "nVDash", "nvdash3" },
-	{ "nvDash", "nvdash2" },
-	{ "textrm \\AA", "textrm_AA"},
-	{ "textrm \\O", "textrm_O"},
-	{ "vDash", "vdash2" }
-};
-
-size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
-
-
-QString findPng(QString const & name)
-{
-	PngMap const * const begin = sorted_png_map;
-	PngMap const * const end = begin + nr_sorted_png_map;
-	LASSERT(sorted(begin, end), /**/);
-
-	PngMap const * const it = find_if(begin, end, CompareKey(name));
-
-	QString png_name;
-	if (it != end) {
-		png_name = it->value;
-	} else {
-		png_name = name;
-		png_name.replace('_', "underscore");
-		png_name.replace(' ', '_');
-
-		// This way we can have "math-delim { }" on the toolbar.
-		png_name.replace('(', "lparen");
-		png_name.replace(')', "rparen");
-		png_name.replace('[', "lbracket");
-		png_name.replace(']', "rbracket");
-		png_name.replace('{', "lbrace");
-		png_name.replace('}', "rbrace");
-		png_name.replace('|', "bars");
-		png_name.replace(',', "thinspace");
-		png_name.replace(':', "mediumspace");
-		png_name.replace(';', "thickspace");
-		png_name.replace('!', "negthinspace");
-	}
-
-	LYXERR(Debug::GUI, "findPng(" << name << ")\n"
-		<< "Looking for math PNG called \"" << png_name << '"');
-	return png_name;
-}
-
-} // namespace anon
-
-
-/// return a icon for the given action
-static QIcon getIcon(FuncRequest const & f, bool unknown)
-{
-	initializeResources();
-	QPixmap pm;
-	QString name1;
-	QString name2;
-	QString path;
-	switch (f.action) {
-	case LFUN_MATH_INSERT:
-		if (!f.argument().empty()) {
-			path = "math/";
-			name1 = findPng(toqstr(f.argument()).mid(1));
-		}
-		break;
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-		path = "math/";
-		name1 = findPng(toqstr(f.argument()));
-		break;
-	case LFUN_CALL:
-		path = "commands/";
-		name1 = toqstr(f.argument());
-		break;
-	default:
-		name2 = toqstr(lyxaction.getActionName(f.action));
-		name1 = name2;
-
-		if (!f.argument().empty()) {
-			name1 = name2 + ' ' + toqstr(f.argument());
-			name1.replace(' ', '_');
-		}
-	}
-
-	string fullname = libFileSearch("images/" + path, name1, "png").absFilename();
-	if (pm.load(toqstr(fullname)))
-		return pm;
-
-	fullname = libFileSearch("images/" + path, name2, "png").absFilename();
-	if (pm.load(toqstr(fullname)))
-		return pm;
-
-	if (pm.load(":/images/" + path + name1 + ".png"))
-		return pm;
-
-	if (pm.load(":/images/" + path + name2 + ".png"))
-		return pm;
-
-	LYXERR(Debug::GUI, "Cannot find icon for command \""
-			   << lyxaction.getActionName(f.action)
-			   << '(' << to_utf8(f.argument()) << ")\"");
-	if (unknown)
-		pm.load(":/images/unknown.png");
-
-	return pm;
-}
-
 
 /////////////////////////////////////////////////////////////////////
 //
