@@ -122,6 +122,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (params()["key"] != old_key)
 			cur.bv().buffer().changeRefsIfUnique(old_key,
 				params()["key"], CITE_CODE);
+		buffer_->invalidateBibinfoCache();
 		break;
 	}
 
