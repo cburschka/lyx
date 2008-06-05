@@ -62,6 +62,7 @@
 #endif
 
 #include <QClipboard>
+#include <QDir>
 #include <QEventLoop>
 #include <QFileOpenEvent>
 #include <QHash>
@@ -414,14 +415,16 @@ public:
 		return mimeFor(flav) == mime;
 	}
 
-	QVariant convertToMime(QString const & mime, QList<QByteArray> data, QString flav)
+	QVariant convertToMime(QString const & /*mime*/, QList<QByteArray> data,
+		QString /*flav*/)
 	{
 		if(data.count() > 1)
 			qWarning("QMacPasteboardMimeGraphics: Cannot handle multiple member data");
 		return data.first();
 	}
 
-	QList<QByteArray> convertFromMime(QString const & mime, QVariant data, QString flav)
+	QList<QByteArray> convertFromMime(QString const & /*mime*/,
+		QVariant data, QString /*flav*/)
 	{
 		QList<QByteArray> ret;
 		ret.append(data.toByteArray());
