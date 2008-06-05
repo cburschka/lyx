@@ -1676,7 +1676,7 @@ def revert_rotfloat(document):
             continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in revert_rotfloat.")
             i += 1
             continue
         addedLines = 0
@@ -1738,7 +1738,7 @@ def revert_widesideways(document):
             continue
         j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in revert_widesideways.")
             i += 1
             continue
         if get_value(document.body, 'sideways', i, j) == "false" or \
@@ -1777,7 +1777,7 @@ def revert_inset_embedding(document, type):
             return
         j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in revert_inset_embedding.")
             i = i + 1
             continue
         k = find_token(document.body, "\tembed", i, j)
@@ -1803,7 +1803,7 @@ def convert_subfig(document):
             return
         endInset = find_end_of_inset(document.body, i)
         if endInset == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in convert_subfig.")
             i += 1
             continue
         k = find_token(document.body, '\tsubcaption', i, endInset)
@@ -1841,12 +1841,15 @@ def revert_subfig(document):
         i = find_token(document.body, '\\begin_inset Float ', i)
         if i == -1:
             return
-        while 1:
+        j = 0
+        addedLines = 0
+        while j != -1:
             j = find_end_of_inset(document.body, i)
             if j == -1:
-                document.warning("Malformed lyx document: Missing '\\end_inset' (float).")
-                i = i + 1
-                continue
+                document.warning("Malformed lyx document: Missing '\\end_inset' (float) at line " + str(i + len(document.header)) + ".\n\t" + document.body[i])
+                # document.warning(document.body[i-1] + "\n" + document.body[i+1])
+                i += 1
+                continue # this will get us back to the outer loop, since j == -1
             # look for embedded float (= subfloat)
             # whitespace intended (exclude \\begin_inset FloatList)
             k = find_token(document.body, '\\begin_inset Float ', i + 1, j)
@@ -1855,13 +1858,15 @@ def revert_subfig(document):
             l = find_end_of_inset(document.body, k)
             if l == -1:
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
-                i = i + 1
-                continue
+                i += 1
+                j == -1
+                continue # escape to the outer loop
             m = find_default_layout(document, k + 1, l)
             # caption?
             cap = find_token(document.body, '\\begin_inset Caption', k + 1, l)
             caption = ''
             shortcap = ''
+            capend = cap
             if cap != -1:
                 capend = find_end_of_inset(document.body, cap)
                 if capend == -1:
@@ -1910,22 +1915,32 @@ def revert_subfig(document):
                         caption += line.strip()
                 if len(label) > 0:
                     caption += "\\backslash\nlabel{" + label + "}"
-            document.body[l] = '\\begin_layout Plain Layout\n\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout Plain Layout\n\n}\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n\n\\begin_layout Plain Layout\n'
-            del document.body[cap:capend+1]
+            subst = '\\begin_layout Plain Layout\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                      '\\begin_layout Plain Layout\n\n}\n\\end_layout\n\n\\end_inset\n\n' \
+                      '\\end_layout\n\n\\begin_layout Plain Layout\n'
+            subst = subst.split('\n')
+            document.body[l : l+1] = subst
+            addedLines = len(subst) - 1
+            # this is before l and so is unchanged by the multiline insertion
+            if cap != capend:
+                del document.body[cap:capend+1]
+                addedLines -= (capend + 1 - cap)
             del document.body[k+1:m-1]
+            addedLines -= (m - 1 - (k + 1))
             insertion = '\\begin_inset ERT\nstatus collapsed\n\n' \
-            '\\begin_layout Plain Layout\n\n\\backslash\n' \
-            'subfloat'
+                        '\\begin_layout Plain Layout\n\n\\backslash\n' \
+                        'subfloat'
             if len(shortcap) > 0:
                 insertion = insertion + "[" + shortcap + "]"
             if len(caption) > 0:
                 insertion = insertion + "[" + caption + "]"
             insertion = insertion + '{%\n\\end_layout\n\n\\end_inset\n\n\\end_layout\n'
-            document.body[k] = insertion
+            insertion = insertion.split('\n')
+            document.body[k : k + 1] = insertion
+            addedLines += len(insertion) - 1
             add_to_preamble(document,
                             ['\\usepackage{subfig}\n'])
-        i = i + 1
+        i += addedLines + 1
 
 
 def revert_wrapplacement(document):
@@ -2300,7 +2315,7 @@ def revert_pdfpages(document):
             return
         j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in revert_pdfpages.")
             i = i + 1
             continue
         if get_value(document.body, 'template', i, j) == "PDFPages":
@@ -2402,7 +2417,7 @@ def revert_graphics_group(document):
             return
         j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed lyx document: Missing '\\end_inset'.")
+            document.warning("Malformed lyx document: Missing '\\end_inset' in revert_graphics_group.")
             i = i + 1
             continue
         k = find_token(document.body, "	groupId", i, j)
