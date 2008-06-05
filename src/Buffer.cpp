@@ -204,8 +204,14 @@ public:
 	/// documents), needed for appropriate update of natbib labels.
 	mutable support::FileNameList bibfilesCache_;
 
+	// FIXME The caching mechanism could be improved. At present, we have a 
+	// cache for each Buffer, that caches all the bibliography info for that
+	// Buffer. A more efficient solution would be to have a global cache per 
+	// file, and then to construct the Buffer's bibinfo from that.
 	/// A cache for bibliography info
 	mutable BiblioInfo bibinfo_;
+	/// Cache of timestamps of .bib files
+	map<FileName, time_t> bibfileStatus_;
 
 	mutable RefCache ref_cache_;
 
@@ -1369,10 +1375,7 @@ BiblioInfo const & Buffer::masterBibInfo() const
 
 
 BiblioInfo const & Buffer::localBibInfo() const
-{	
-	// cache the timestamp of the bibliography files.
-	static map<FileName, time_t> bibfileStatus;
-
+{
 	support::FileNameList const & bibfilesCache = getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
@@ -1380,9 +1383,9 @@ BiblioInfo const & Buffer::localBibInfo() const
 	support::FileNameList::const_iterator en = bibfilesCache.end();
 	for (; ei != en; ++ ei) {
 		time_t lastw = ei->lastModified();
-		if (lastw != bibfileStatus[*ei]) {
+		if (lastw != d->bibfileStatus_[*ei]) {
 			changed = true;
-			bibfileStatus[*ei] = lastw;
+			d->bibfileStatus_[*ei] = lastw;
 			break;
 		}
 	}
