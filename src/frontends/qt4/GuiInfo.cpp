@@ -52,8 +52,12 @@ void GuiInfo::on_closePB_clicked()
 
 InsetInfo * GuiInfo::inset() const
 {
-	return static_cast<InsetInfo *>(bufferview()->cursor().
-		innerInsetOfType(INFO_CODE));
+	Inset * ins = bufferview()->cursor().innerInsetOfType(INFO_CODE);
+	if (!ins)
+		ins = bufferview()->cursor().nextInset();
+	if (ins->lyxCode() != INFO_CODE)
+		return 0;
+	return static_cast<InsetInfo *>(ins);
 }
 
 
