@@ -2485,6 +2485,44 @@ def revert_InsetSpace(document):
         document.body[i] = document.body[i].replace('\\begin_inset space', '\\begin_inset Space')
 
 
+def convert_plain_layout(document):
+	" Convert 'PlainLayout' to 'Plain Layout'" 
+	i = 0
+	while True:
+		i = find_token(document.body, '\\begin_layout PlainLayout', i)
+		if i == -1:
+			return
+		document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
+		                                            '\\begin_layout Plain Layout')
+		i += 1
+
+
+def revert_plain_layout(document):
+	" Convert 'PlainLayout' to 'Plain Layout'" 
+	i = 0
+	while True:
+		i = find_token(document.body, '\\begin_layout Plain Layout', i)
+		if i == -1:
+			return
+		document.body[i] = document.body[i].replace('\\begin_layout Plain Layout', \
+		                                            '\\begin_layout PlainLayout')
+		i += 1
+
+def revert_plainlayout(document):
+	" Convert 'PlainLayout' to 'Plain Layout'" 
+	i = 0
+	while True:
+		i = find_token(document.body, '\\begin_layout PlainLayout', i)
+		if i == -1:
+			return
+		# This will be incorrect for some document classes, since Standard is not always
+		# the default. But (a) it is probably the best we can do and (b) it will actually
+		# work, in fact, since an unknown layout will be converted to default.
+		document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
+		                                            '\\begin_layout Standard')
+		i += 1
+
+
 ##
 # Conversion hub
 #
@@ -2535,7 +2573,7 @@ convert = [[277, [fix_wrong_tables]],
            [319, [convert_spaceinset, convert_hfill]],
            [320, []],
            [321, [convert_tablines]],
-           [322, []],
+           [322, [convert_plain_layout]],
            [323, [convert_pagebreaks]],
            [324, [convert_linebreaks]],
            [325, [convert_japanese_plain]],
@@ -2564,14 +2602,14 @@ revert =  [[334, [revert_InsetSpace]],
            [324, []],
            [323, [revert_linebreaks]],
            [322, [revert_pagebreaks]],
-           [321, [revert_local_layout]],
+           [321, [revert_local_layout, revert_plain_layout]],
            [320, [revert_tablines]],
            [319, [revert_protected_hfill]],
            [318, [revert_spaceinset, revert_hfills, revert_hspace]],
            [317, [remove_extra_embedded_files]],
            [316, [revert_wrapplacement]],
            [315, [revert_subfig]],
-           [314, [revert_colsep]],
+           [314, [revert_colsep, revert_plainlayout]],
            [313, []],
            [312, [revert_module_names]],
            [311, [revert_rotfloat, revert_widesideways]],
