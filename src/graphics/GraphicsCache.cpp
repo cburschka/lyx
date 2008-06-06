@@ -17,10 +17,11 @@
 
 #include "Format.h"
 
+#include "frontends/Application.h"
+
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
-#include "support/imagetools.h"
 
 #include <map>
 
@@ -74,7 +75,7 @@ vector<string> const & Cache::loadableFormats() const
 	Formats::const_iterator end   = formats.end();
 
 	// The formats natively loadable.
-	vector<string> nformat = loadableImageFormats();
+	vector<string> nformat = frontend::loadableImageFormats();
 	
 	vector<string>::const_iterator it = nformat.begin();
 	for (; it != nformat.end(); ++it) {

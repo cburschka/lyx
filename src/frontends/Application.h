@@ -229,6 +229,9 @@ public:
 	virtual docstring iconName(FuncRequest const & f, bool unknown) = 0;
 };
 
+/// Return the list of loadable formats.
+std::vector<std::string> loadableImageFormats();
+
 } // namespace frontend
 
 frontend::Application * theApp();

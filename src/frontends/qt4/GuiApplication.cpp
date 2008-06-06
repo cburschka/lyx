@@ -61,12 +61,14 @@
 #include "support/linkback/LinkBackProxy.h"
 #endif
 
+#include <QByteArray>
 #include <QClipboard>
 #include <QDir>
 #include <QEventLoop>
 #include <QFileOpenEvent>
 #include <QHash>
 #include <QIcon>
+#include <QImageReader>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QList>
@@ -129,6 +131,34 @@ frontend::Application * createApplication(int & argc, char * argv[])
 
 namespace frontend {
 
+
+/// Return the list of loadable formats.
+vector<string> loadableImageFormats()
+{
+	vector<string> fmts;
+
+	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats();
+
+	LYXERR(Debug::GRAPHICS,
+		"\nThe image loader can load the following directly:\n");
+
+	if (qt_formats.empty())
+		LYXERR(Debug::GRAPHICS, "\nQt4 Problem: No Format available!");
+
+	for (QList<QByteArray>::const_iterator it = qt_formats.begin(); it != qt_formats.end(); ++it) {
+
+		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
+
+		string ext = ascii_lowercase((const char *) *it);
+		// special case
+		if (ext == "jpeg")
+			ext = "jpg";
+		fmts.push_back(ext);
+	}
+
+	return fmts;
+}
+	
 ////////////////////////////////////////////////////////////////////////
 // Icon loading support code.
 ////////////////////////////////////////////////////////////////////////

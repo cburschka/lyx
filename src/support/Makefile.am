@@ -62,8 +62,6 @@ liblyxsupport_la_SOURCES = \
 	gettext.h \
 	gzstream.cpp \
 	gzstream.h \
-	imagetools.cpp \
-	imagetools.h \
 	kill.cpp \
 	lassert.h \
 	lassert.cpp \
