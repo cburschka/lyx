@@ -133,8 +133,14 @@ bool readyToDisplay(graphics::Loader const & loader)
 
 void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
+	if (displayGraphic(params_)) {
+		if (loader_.status() == graphics::WaitingToLoad)
+			loader_.startLoading();
+		if (!loader_.monitoring())
+			loader_.startMonitoring();
+	}
 
+	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 	if (image_ready) {
 		dim.wid = loader_.image()->width() + 2 * Inset::TEXT_TO_INSET_OFFSET;
 		dim.asc = loader_.image()->height();
@@ -172,13 +178,6 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
-	if (displayGraphic(params_)) {
-		if (loader_.status() == graphics::WaitingToLoad)
-			loader_.startLoading();
-		if (!loader_.monitoring())
-			loader_.startMonitoring();
-	}
-
 	// This will draw the graphics. If the graphics has not been
 	// loaded yet, we draw just a rectangle.
 
