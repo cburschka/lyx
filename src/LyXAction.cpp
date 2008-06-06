@@ -480,7 +480,22 @@ void LyXAction::init()
  */
 		{ LFUN_APPENDIX, "appendix", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INDEX_INSERT
+ * \li Action: Inserts Index entry.
+ * \li Notion: It automatically takes the word on the cursor position.
+ * \li Syntax: index-insert
+ * \li Origin: Angus, 3 Aug 2000
+ * \endvar
+ */
 		{ LFUN_INDEX_INSERT, "index-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INDEX_PRINT
+ * \li Action: Inserts list of Index entries on a new page.
+ * \li Syntax: index-print
+ * \li Origin: Lgb, 27 Feb 1997
+ * \endvar
+ */
 		{ LFUN_INDEX_PRINT, "index-print", Noop, Edit },
 
 		{ LFUN_NOMENCL_INSERT, "nomencl-insert", Noop, Edit },
@@ -836,6 +851,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_SELECT
  * \li Action: Puts the word where the cursor stands into the selection.
  * \li Syntax: word-select
+ * \li Author: Andre, 11 Sep 2002
  * \endvar
  */
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
