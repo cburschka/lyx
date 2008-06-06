@@ -15,6 +15,7 @@
 #include "Dialog.h"
 #include "GuiView.h"
 
+#include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {
@@ -44,6 +45,12 @@ protected:
 	bool initialiseParams(std::string const & /*data*/) { return true; }
 	void clearParams() {}
 	//@}
+	void closeEvent(QCloseEvent * ev)
+	{
+		clearParams();
+		Dialog::disconnect();
+		ev->accept();
+	}
 };
 
 } // namespace frontend
