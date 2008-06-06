@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-28 21:56+0200\n"
+"POT-Creation-Date: 2008-06-06 21:05+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -45,10 +45,10 @@ msgstr "Droetes"
 #: src/frontends/qt4/ui/ExternalUi.ui:679 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
-#: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/LogUi.ui:54
-#: src/frontends/qt4/ui/ParagraphUi.ui:99 src/frontends/qt4/ui/PrefsUi.ui:93
-#: src/frontends/qt4/ui/RefUi.ui:97 src/frontends/qt4/ui/SearchUi.ui:207
-#: src/frontends/qt4/ui/ShowFileUi.ui:55
+#: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/InfoUi.ui:71
+#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:99
+#: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:97
+#: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:141 src/frontends/qt4/ui/VSpaceUi.ui:59
@@ -91,15 +91,15 @@ msgstr "I va"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
-#: src/Buffer.cpp:2490 src/Buffer.cpp:2514 src/Buffer.cpp:2549
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:828
+#: src/Buffer.cpp:2507 src/Buffer.cpp:2531 src/Buffer.cpp:2566
 #: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/GuiDocument.cpp:1298
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1428
 #: src/frontends/qt4/GuiView.cpp:1606 src/frontends/qt4/GuiView.cpp:1651
-#: src/frontends/qt4/GuiView.cpp:1704 src/insets/InsetBibtex.cpp:133
+#: src/frontends/qt4/GuiView.cpp:1704 src/insets/InsetBibtex.cpp:143
 #, fuzzy
 msgid "&Cancel"
 msgstr "Rinoncî"
@@ -224,18 +224,18 @@ msgstr "Ådvins"
 msgid "&Content:"
 msgstr "Ådvins"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:69 src/insets/InsetBibtex.cpp:197
+#: src/frontends/qt4/ui/BibtexUi.ui:69 src/insets/InsetBibtex.cpp:207
 #, fuzzy
 msgid "all cited references"
 msgstr "Sititchî on rahuca"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:74 src/frontends/qt4/GuiBibtex.cpp:317
-#: src/insets/InsetBibtex.cpp:195
+#: src/insets/InsetBibtex.cpp:205
 #, fuzzy
 msgid "all uncited references"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:79 src/insets/InsetBibtex.cpp:193
+#: src/frontends/qt4/ui/BibtexUi.ui:79 src/insets/InsetBibtex.cpp:203
 #, fuzzy
 msgid "all references"
 msgstr "Sititchî on rahuca"
@@ -415,8 +415,8 @@ msgstr "Comincî pal difén|#R"
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1316
-#: src/frontends/qt4/GuiDocument.cpp:2089
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1318
+#: src/frontends/qt4/GuiDocument.cpp:2100
 #, fuzzy
 msgid "&Apply"
 msgstr "Mete èn oûve"
@@ -557,11 +557,11 @@ msgstr "Grandeu:|#G#Z"
 #: src/frontends/qt4/ui/TabularUi.ui:975 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:182 src/frontends/qt4/GuiDocument.cpp:80
 #: src/frontends/qt4/GuiDocument.cpp:95 src/frontends/qt4/GuiDocument.cpp:111
-#: src/frontends/qt4/GuiDocument.cpp:124 src/frontends/qt4/GuiDocument.cpp:636
-#: src/frontends/qt4/GuiDocument.cpp:673 src/frontends/qt4/GuiDocument.cpp:685
-#: src/frontends/qt4/GuiDocument.cpp:1154
-#: src/frontends/qt4/GuiDocument.cpp:1199
-#: src/frontends/qt4/GuiDocument.cpp:2130 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:124 src/frontends/qt4/GuiDocument.cpp:638
+#: src/frontends/qt4/GuiDocument.cpp:675 src/frontends/qt4/GuiDocument.cpp:687
+#: src/frontends/qt4/GuiDocument.cpp:1156
+#: src/frontends/qt4/GuiDocument.cpp:1201
+#: src/frontends/qt4/GuiDocument.cpp:2141 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:69 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Default"
@@ -692,7 +692,7 @@ msgstr "Grandeu des fontes:|#G"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:978
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:980
 #: src/frontends/qt4/GuiPrefs.cpp:1681
 msgid "Language"
 msgstr "Lingaedje"
@@ -800,7 +800,7 @@ msgid "Search Field:"
 msgstr "Aroke dins LaTeX"
 
 #: src/frontends/qt4/ui/CitationUi.ui:125
-#: src/frontends/qt4/GuiCitation.cpp:319
+#: src/frontends/qt4/GuiCitation.cpp:317
 #, fuzzy
 msgid "All Fields"
 msgstr "[nou fitchî]"
@@ -815,7 +815,7 @@ msgid "Entry Types:"
 msgstr "Sititchî ene etikete"
 
 #: src/frontends/qt4/ui/CitationUi.ui:170
-#: src/frontends/qt4/GuiCitation.cpp:334
+#: src/frontends/qt4/GuiCitation.cpp:332
 msgid "All Entry Types"
 msgstr ""
 
@@ -937,7 +937,7 @@ msgid "&Size:"
 msgstr "Grandeu:|#G#Z"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
-#: src/frontends/qt4/GuiDelimiter.cpp:181
+#: src/frontends/qt4/GuiDelimiter.cpp:275
 #, fuzzy
 msgid "TeX Code: "
 msgstr "LaTeX|#T"
@@ -1279,50 +1279,92 @@ msgstr "Toûrner di 90°|#9"
 msgid "FontUi"
 msgstr "Fonte: "
 
-#: src/frontends/qt4/ui/FontUi.ui:64
+#: src/frontends/qt4/ui/FontUi.ui:41
 #, fuzzy
-msgid "Sc&ale (%):"
+msgid "C&JK:"
+msgstr "Tape:"
+
+#: src/frontends/qt4/ui/FontUi.ui:51
+msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
+msgstr ""
+
+#: src/frontends/qt4/ui/FontUi.ui:71
+msgid "Use old style instead of lining figures"
+msgstr ""
+
+#: src/frontends/qt4/ui/FontUi.ui:74
+msgid "Use &Old Style Figures"
+msgstr ""
+
+#: src/frontends/qt4/ui/FontUi.ui:81
+msgid "Use a real small caps shape, if the font provides one"
+msgstr ""
+
+#: src/frontends/qt4/ui/FontUi.ui:84
+#, fuzzy
+msgid "Use true S&mall Caps"
+msgstr "Pititès grandès letes"
+
+#: src/frontends/qt4/ui/FontUi.ui:91
+#, fuzzy
+msgid "Select the default family for the document"
+msgstr "dins les tchûzes po cisse classe di documints"
+
+#: src/frontends/qt4/ui/FontUi.ui:98
+#, fuzzy
+msgid "&Base Size:"
+msgstr "Grandeu:|#G#Z"
+
+#: src/frontends/qt4/ui/FontUi.ui:115
+#, fuzzy
+msgid "&Default Family:"
+msgstr "Eployî èn ôte lingaedje|#T"
+
+#: src/frontends/qt4/ui/FontUi.ui:138
+#, fuzzy
+msgid "&Sans Serif:"
+msgstr "Fonte Sans Serif|#S"
+
+#: src/frontends/qt4/ui/FontUi.ui:148
+msgid "Select the Sans Serif (grotesque) typeface"
+msgstr ""
+
+#: src/frontends/qt4/ui/FontUi.ui:155
+#, fuzzy
+msgid "S&cale (%):"
 msgstr "Pitites(2)"
 
-#: src/frontends/qt4/ui/FontUi.ui:77
-#, fuzzy
-msgid "&Typewriter:"
-msgstr "Machine a scrîre"
+#: src/frontends/qt4/ui/FontUi.ui:165
+msgid "Scale the Sans Serif font to match the base font's dimensions"
+msgstr ""
 
-#: src/frontends/qt4/ui/FontUi.ui:90
+#: src/frontends/qt4/ui/FontUi.ui:178
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 #, fuzzy
 msgid "&Roman:"
 msgstr "Romane"
 
-#: src/frontends/qt4/ui/FontUi.ui:110
-#, fuzzy
-msgid "S&cale (%):"
-msgstr "Pitites(2)"
-
-#: src/frontends/qt4/ui/FontUi.ui:123
-#, fuzzy
-msgid "&Sans Serif:"
-msgstr "Fonte Sans Serif|#S"
-
-#: src/frontends/qt4/ui/FontUi.ui:146
-msgid "Use &Old Style Figures"
+#: src/frontends/qt4/ui/FontUi.ui:188
+msgid "Select the roman (serif) typeface"
 msgstr ""
 
-#: src/frontends/qt4/ui/FontUi.ui:153
+#: src/frontends/qt4/ui/FontUi.ui:195
 #, fuzzy
-msgid "Use true S&mall Caps"
-msgstr "Pititès grandès letes"
+msgid "&Typewriter:"
+msgstr "Machine a scrîre"
 
-#: src/frontends/qt4/ui/FontUi.ui:160
-#, fuzzy
-msgid "&Default Family:"
-msgstr "Eployî èn ôte lingaedje|#T"
+#: src/frontends/qt4/ui/FontUi.ui:205
+msgid "Select the typewriter (monospaced) typeface"
+msgstr ""
 
-#: src/frontends/qt4/ui/FontUi.ui:173
+#: src/frontends/qt4/ui/FontUi.ui:212
 #, fuzzy
-msgid "&Base Size:"
-msgstr "Grandeu:|#G#Z"
+msgid "Sc&ale (%):"
+msgstr "Pitites(2)"
+
+#: src/frontends/qt4/ui/FontUi.ui:222
+msgid "Scale the Typewriter font to match the base font's dimensions"
+msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:136
 #, fuzzy
@@ -1459,7 +1501,7 @@ msgid "&Initialize Group Name:"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:726
-msgid "Group-id to be set up from the current parameters"
+msgid "Group Name to be set up from the current parameters"
 msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
@@ -1535,7 +1577,7 @@ msgstr "Aroymint di coûtchî|#c"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
 #, fuzzy
 msgid "Custom"
 msgstr "A vosse môde"
@@ -1694,7 +1736,8 @@ msgstr "Intreye"
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:943
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:937
+#: src/insets/InsetInclude.cpp:943
 #, fuzzy
 msgid "Program Listing"
 msgstr "LyX VC: discrîjhaedje po cmincî"
@@ -1708,6 +1751,21 @@ msgstr "Djîveye des tåvleas"
 #, fuzzy
 msgid "&Edit"
 msgstr "Candjî"
+
+#: src/frontends/qt4/ui/InfoUi.ui:24
+#, fuzzy
+msgid "Information Type:"
+msgstr "Nole informåcion po disfé"
+
+#: src/frontends/qt4/ui/InfoUi.ui:34
+#, fuzzy
+msgid "Information Name:"
+msgstr "Nole informåcion po disfé"
+
+#: src/frontends/qt4/ui/InfoUi.ui:64
+#, fuzzy
+msgid "&New"
+msgstr "LaTeX "
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Select if the current document is included to a master file"
@@ -1798,7 +1856,7 @@ msgstr "Ôte...|#T"
 msgid "&Quote Style:"
 msgstr "Li sôrt di distis est metuwe"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:297
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetCaption.cpp:299
 #: src/insets/InsetListings.cpp:249 src/insets/InsetListings.cpp:251
 #, fuzzy
 msgid "Listing"
@@ -2183,7 +2241,7 @@ msgid "&Numbering"
 msgstr "Nombe"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:976
+#: src/frontends/qt4/GuiDocument.cpp:978
 #, fuzzy
 msgid "Page Layout"
 msgstr "Ôtès tchûzes po l' arindjmint del pådje"
@@ -2797,7 +2855,7 @@ msgstr ""
 msgid "Right-to-left language support"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2726
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2710
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2974,38 +3032,38 @@ msgid "Index command and options (makeindex, xindy)"
 msgstr "Fitchî des messaedjes LaTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:183
-#: src/frontends/qt4/GuiDocument.cpp:687
+#: src/frontends/qt4/GuiDocument.cpp:689
 #, fuzzy
 msgid "US letter"
 msgstr "Hintche|#H"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:188
-#: src/frontends/qt4/GuiDocument.cpp:688
+#: src/frontends/qt4/GuiDocument.cpp:690
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:193
-#: src/frontends/qt4/GuiDocument.cpp:689
+#: src/frontends/qt4/GuiDocument.cpp:691
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:198
-#: src/frontends/qt4/GuiDocument.cpp:690
+#: src/frontends/qt4/GuiDocument.cpp:692
 msgid "A3"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:203
-#: src/frontends/qt4/GuiDocument.cpp:691
+#: src/frontends/qt4/GuiDocument.cpp:693
 msgid "A4"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:208
-#: src/frontends/qt4/GuiDocument.cpp:692
+#: src/frontends/qt4/GuiDocument.cpp:694
 msgid "A5"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:213
-#: src/frontends/qt4/GuiDocument.cpp:695
+#: src/frontends/qt4/GuiDocument.cpp:697
 msgid "B5"
 msgstr ""
 
@@ -3052,7 +3110,7 @@ msgstr "Ridant ûzeu :"
 msgid "&PATH prefix:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2416
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2400
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3955,8 +4013,8 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1125
 #: src/frontends/qt4/ui/TabularUi.ui:1166
 #: src/frontends/qt4/ui/TabularUi.ui:1197
-#: src/frontends/qt4/ui/TabularUi.ui:1235
-#: src/frontends/qt4/GuiToolbar.cpp:1112 src/frontends/qt4/GuiToolbar.cpp:1121
+#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiToolbar.cpp:935
+#: src/frontends/qt4/GuiToolbar.cpp:944
 #, fuzzy
 msgid "on"
 msgstr "Deus|#D#w"
@@ -4310,7 +4368,7 @@ msgstr ""
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
 #: lib/layouts/manpage.layout:18 lib/layouts/memoir.layout:30
-#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:16
+#: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
 #: lib/layouts/powerdot.layout:106 lib/layouts/revtex.layout:22
 #: lib/layouts/revtex4.layout:26 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:19
@@ -4472,7 +4530,7 @@ msgstr "Po:"
 #: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
 #: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:823
+#: src/frontends/qt4/GuiDocument.cpp:825
 #, fuzzy
 msgid "Example"
 msgstr "Egzimpes"
@@ -4596,7 +4654,7 @@ msgstr "Aclaper"
 #: lib/layouts/kluwer.layout:58 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:45 lib/layouts/ltugboat.layout:45
 #: lib/layouts/manpage.layout:40 lib/layouts/memoir.layout:56
-#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:46
+#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:44
 #: lib/layouts/powerdot.layout:223 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:42
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
@@ -4619,7 +4677,7 @@ msgstr "Gåliotaedje"
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
 #: lib/layouts/ltugboat.layout:64 lib/layouts/memoir.layout:61
-#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:55
+#: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:53
 #: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:56
 #: lib/layouts/siamltex.layout:59 lib/layouts/simplecv.layout:48
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
@@ -4638,7 +4696,7 @@ msgstr "Gåliotaedje"
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
-#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:64
+#: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:62
 #: lib/layouts/revtex.layout:57 lib/layouts/revtex4.layout:64
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
@@ -4686,7 +4744,7 @@ msgstr "Gåliotaedje"
 #: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
 #: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
 #: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:134 lib/layouts/revtex.layout:135
+#: lib/layouts/paper.layout:132 lib/layouts/revtex.layout:135
 #: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:142
 #: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
 #: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
@@ -4705,7 +4763,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:276 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:193 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:176
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:167
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:166 lib/layouts/svjour.inc:270
@@ -4736,7 +4794,7 @@ msgstr "Ritrait"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:980
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:982
 #, fuzzy
 msgid "Bibliography"
 msgstr "Intreye bibiografike"
@@ -4796,7 +4854,7 @@ msgstr ""
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:91
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:129
-#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:105
+#: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:19
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:27 lib/layouts/stdlists.inc:49
@@ -4830,7 +4888,7 @@ msgstr "Royes"
 #: lib/layouts/iopart.layout:55 lib/layouts/isprs.layout:92
 #: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
 #: lib/layouts/llncs.layout:100 lib/layouts/ltugboat.layout:131
-#: lib/layouts/paper.layout:114 lib/layouts/powerdot.layout:39
+#: lib/layouts/paper.layout:112 lib/layouts/powerdot.layout:39
 #: lib/layouts/revtex.layout:90 lib/layouts/revtex4.layout:107
 #: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:269
 #: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
@@ -4861,7 +4919,7 @@ msgstr ""
 #: lib/layouts/ijmpd.layout:43 lib/layouts/iopart.layout:123
 #: lib/layouts/isprs.layout:75 lib/layouts/kluwer.layout:157
 #: lib/layouts/llncs.layout:175 lib/layouts/ltugboat.layout:150
-#: lib/layouts/paper.layout:124 lib/layouts/powerdot.layout:62
+#: lib/layouts/paper.layout:122 lib/layouts/powerdot.layout:62
 #: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
 #: lib/layouts/siamltex.layout:125 lib/layouts/svprobth.layout:52
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
@@ -4958,7 +5016,7 @@ msgstr ""
 #: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
 #: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
 #: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:71
-#: lib/layouts/paper.layout:73 lib/layouts/revtex.layout:65
+#: lib/layouts/paper.layout:71 lib/layouts/revtex.layout:65
 #: lib/layouts/revtex4.layout:72 lib/layouts/siamltex.layout:71
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
@@ -5051,10 +5109,10 @@ msgstr "Mape des tapes"
 msgid "[Acknowledgements]"
 msgstr ""
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1339
-#: src/frontends/qt4/GuiDocument.cpp:1349
-#: src/frontends/qt4/GuiDocument.cpp:1389
-#: src/frontends/qt4/GuiDocument.cpp:1408
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1341
+#: src/frontends/qt4/GuiDocument.cpp:1351
+#: src/frontends/qt4/GuiDocument.cpp:1391
+#: src/frontends/qt4/GuiDocument.cpp:1410
 #, fuzzy
 msgid "and"
 msgstr "Clintcheyes(2)"
@@ -5230,7 +5288,7 @@ msgstr ""
 
 #: lib/layouts/apa.layout:344 lib/layouts/egs.layout:86
 #: lib/layouts/kluwer.layout:93 lib/layouts/llncs.layout:78
-#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:82
+#: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
 #: lib/layouts/svjour.inc:89
@@ -5277,7 +5335,7 @@ msgstr "Toûrnaedje"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
-#: lib/layouts/paper.layout:34 lib/layouts/scrartcl.layout:20
+#: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
 #: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:12
 #: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
 #: lib/layouts/scrclass.inc:47 lib/layouts/stdsections.inc:11
@@ -7150,7 +7208,7 @@ msgstr "Deuzyinme"
 
 #: lib/layouts/ijmpc.layout:79 lib/layouts/ijmpd.layout:82
 #: lib/layouts/iopart.layout:203 lib/layouts/kluwer.layout:281
-#: lib/layouts/paper.layout:179 lib/layouts/revtex4.layout:246
+#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:246
 #: lib/layouts/spie.layout:46 lib/layouts/agu_stdtitle.inc:123
 #, fuzzy
 msgid "Keywords:"
@@ -7567,11 +7625,11 @@ msgstr "Gåliotaedje"
 msgid "Close Section"
 msgstr "Gåliotaedje"
 
-#: lib/layouts/paper.layout:154
+#: lib/layouts/paper.layout:149
 msgid "SubTitle"
 msgstr ""
 
-#: lib/layouts/paper.layout:165
+#: lib/layouts/paper.layout:160
 #, fuzzy
 msgid "Institution"
 msgstr "Sititchî on s' apinse"
@@ -8676,7 +8734,7 @@ msgstr "Pîd del pådje"
 msgid "comment"
 msgstr "Rawete:"
 
-#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:295
+#: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 #, fuzzy
 msgid "note"
 msgstr "Rawete"
@@ -10752,10 +10810,10 @@ msgstr "Sititchî on rahuca"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:202
-#: lib/ui/stdcontext.inc:215 lib/ui/stdcontext.inc:292
-#: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:312
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:347
+#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:458
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Gåliotaedje"
@@ -10947,6 +11005,11 @@ msgstr "Fitchî"
 msgid "Custom|C"
 msgstr "A vosse môde"
 
+#: lib/ui/stdcontext.inc:202
+#, fuzzy
+msgid "Settings...|e"
+msgstr "Gåliotaedje"
+
 #: lib/ui/stdcontext.inc:209
 #, fuzzy
 msgid "Include|c"
@@ -11005,20 +11068,20 @@ msgid "Justified Line Break|J"
 msgstr "Roye d' après|#y#N"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1007
-#: src/mathed/InsetMathNest.cpp:537
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: src/mathed/InsetMathNest.cpp:551
 msgid "Cut"
 msgstr "Côper"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1012
-#: src/mathed/InsetMathNest.cpp:545
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: src/mathed/InsetMathNest.cpp:559
 msgid "Copy"
 msgstr "Copyî"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:967
-#: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:517
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:531
 msgid "Paste"
 msgstr "Aclaper"
 
@@ -11704,11 +11767,11 @@ msgstr "Abaguer on documint"
 msgid "Check spelling"
 msgstr "Waitî TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1009
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1010
 msgid "Undo"
 msgstr "Disfé"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1018
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1019
 msgid "Redo"
 msgstr "Rifé"
 
@@ -12156,7 +12219,7 @@ msgid "Fractions"
 msgstr "Scriftôr matematike"
 
 #: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
-#: src/frontends/qt4/GuiDocument.cpp:974
+#: src/frontends/qt4/GuiDocument.cpp:976
 #, fuzzy
 msgid "Fonts"
 msgstr "Fonte: "
@@ -14927,7 +14990,7 @@ msgstr "Rawete:"
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1338
+#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1340
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
@@ -14952,60 +15015,60 @@ msgstr "Intreye bibiografike"
 msgid "before"
 msgstr "Môde di scrîjhaedje"
 
-#: src/Buffer.cpp:228
+#: src/Buffer.cpp:236
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:229
+#: src/Buffer.cpp:237
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:275
+#: src/Buffer.cpp:283
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:276
+#: src/Buffer.cpp:284
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:489
+#: src/Buffer.cpp:498
 #, fuzzy
 msgid "Unknown document class"
 msgstr "dins li classe ki vos avîz tchwezi"
 
-#: src/Buffer.cpp:490
+#: src/Buffer.cpp:499
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:494 src/Text.cpp:246
+#: src/Buffer.cpp:503 src/Text.cpp:246
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:498 src/Buffer.cpp:505 src/Buffer.cpp:525
+#: src/Buffer.cpp:507 src/Buffer.cpp:514 src/Buffer.cpp:534
 #, fuzzy
 msgid "Document header error"
 msgstr "Aroke dins LaTeX"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:513
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:524
+#: src/Buffer.cpp:533
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:540 src/Buffer.cpp:546 src/BufferView.cpp:1125
-#: src/BufferView.cpp:1131
+#: src/Buffer.cpp:549 src/Buffer.cpp:555 src/BufferView.cpp:1126
+#: src/BufferView.cpp:1132
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:541 src/BufferView.cpp:1126
+#: src/Buffer.cpp:550 src/BufferView.cpp:1127
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -15013,7 +15076,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:547 src/BufferView.cpp:1132
+#: src/Buffer.cpp:556 src/BufferView.cpp:1133
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -15021,213 +15084,213 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:688 src/Buffer.cpp:771
+#: src/Buffer.cpp:697 src/Buffer.cpp:780
 #, fuzzy
 msgid "Document format failure"
 msgstr "Documint"
 
-#: src/Buffer.cpp:689
+#: src/Buffer.cpp:698
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:726
+#: src/Buffer.cpp:735
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:727
+#: src/Buffer.cpp:736
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:736
+#: src/Buffer.cpp:745
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Nol advertixhmint d' oyu."
 
-#: src/Buffer.cpp:737
+#: src/Buffer.cpp:746
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:756
+#: src/Buffer.cpp:765
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:757
+#: src/Buffer.cpp:766
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:772
+#: src/Buffer.cpp:781
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:805
+#: src/Buffer.cpp:814
 #, fuzzy
 msgid "Backup failure"
 msgstr "Prémetu"
 
-#: src/Buffer.cpp:806
+#: src/Buffer.cpp:815
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:816
+#: src/Buffer.cpp:825
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:818
+#: src/Buffer.cpp:827
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:819 src/Exporter.cpp:49 src/LyXFunc.cpp:980
+#: src/Buffer.cpp:828 src/Exporter.cpp:49 src/LyXFunc.cpp:980
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1428
 #: src/frontends/qt4/GuiView.cpp:1606
 #, fuzzy
 msgid "&Overwrite"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:843
+#: src/Buffer.cpp:852
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Dji schape li documint"
 
-#: src/Buffer.cpp:856
+#: src/Buffer.cpp:865
 #, fuzzy
 msgid " could not write file!"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/Buffer.cpp:863
+#: src/Buffer.cpp:872
 #, fuzzy
 msgid " done."
 msgstr "Dischinde"
 
-#: src/Buffer.cpp:942
+#: src/Buffer.cpp:951
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:942
+#: src/Buffer.cpp:951
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:964
+#: src/Buffer.cpp:973
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:967
+#: src/Buffer.cpp:976
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:974
+#: src/Buffer.cpp:983
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:979
+#: src/Buffer.cpp:988
 #, fuzzy
 msgid "conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:1251
+#: src/Buffer.cpp:1260
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/Buffer.cpp:1264
+#: src/Buffer.cpp:1273
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1265
+#: src/Buffer.cpp:1274
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
 
-#: src/Buffer.cpp:2081
+#: src/Buffer.cpp:2098
 #, fuzzy
 msgid "Preview source code"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2093
+#: src/Buffer.cpp:2110
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2097
+#: src/Buffer.cpp:2114
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:2196
+#: src/Buffer.cpp:2213
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Schaper tot seu"
 
-#: src/Buffer.cpp:2240
+#: src/Buffer.cpp:2257
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/Buffer.cpp:2263
+#: src/Buffer.cpp:2280
 msgid "Autosaving current document..."
 msgstr "Dji schape tot seu li documint drovu..."
 
-#: src/Buffer.cpp:2311
+#: src/Buffer.cpp:2328
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/Buffer.cpp:2312
+#: src/Buffer.cpp:2329
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:2349
+#: src/Buffer.cpp:2366
 #, fuzzy
 msgid "File name error"
 msgstr "No do fitchî:|#F"
 
-#: src/Buffer.cpp:2350
+#: src/Buffer.cpp:2367
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2391
+#: src/Buffer.cpp:2408
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2397
+#: src/Buffer.cpp:2414
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2403
+#: src/Buffer.cpp:2420
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Documint rlomé ("
 
-#: src/Buffer.cpp:2473
+#: src/Buffer.cpp:2490
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -15235,12 +15298,12 @@ msgid ""
 "could not be read."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/Buffer.cpp:2475
+#: src/Buffer.cpp:2492
 #, fuzzy
 msgid "Could not read document"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:2485
+#: src/Buffer.cpp:2502
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15248,20 +15311,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "I gn a ene copeye di schapeye po ci documint ci."
 
-#: src/Buffer.cpp:2488
+#: src/Buffer.cpp:2505
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2489
+#: src/Buffer.cpp:2506
 #, fuzzy
 msgid "&Recover"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:2489
+#: src/Buffer.cpp:2506
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2509
+#: src/Buffer.cpp:2526
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15269,31 +15332,31 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2512
+#: src/Buffer.cpp:2529
 #, fuzzy
 msgid "Load backup?"
 msgstr "Noer"
 
-#: src/Buffer.cpp:2513
+#: src/Buffer.cpp:2530
 #, fuzzy
 msgid "&Load backup"
 msgstr "Noer"
 
-#: src/Buffer.cpp:2513
+#: src/Buffer.cpp:2530
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2546
+#: src/Buffer.cpp:2563
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Voloz-ve drovi li documint?"
 
-#: src/Buffer.cpp:2548
+#: src/Buffer.cpp:2565
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Voloz-ve drovi li documint?"
 
-#: src/Buffer.cpp:2549
+#: src/Buffer.cpp:2566
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Comincî pal difén|#R"
@@ -15342,27 +15405,27 @@ msgstr "L'adjinçmint do documint est metu"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/BufferParams.cpp:1418
+#: src/BufferParams.cpp:1424
 #, fuzzy, c-format
 msgid "The document class %1$s could not be found."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/BufferParams.cpp:1420
+#: src/BufferParams.cpp:1426
 #, fuzzy
 msgid "Class not found"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/BufferParams.cpp:1430 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1436 src/LyXFunc.cpp:697
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/BufferParams.cpp:1432 src/LyXFunc.cpp:699
+#: src/BufferParams.cpp:1438 src/LyXFunc.cpp:699
 #, fuzzy
 msgid "Could not load class"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/BufferParams.cpp:1468
+#: src/BufferParams.cpp:1474
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15371,17 +15434,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1472
+#: src/BufferParams.cpp:1478
 #, fuzzy
 msgid "Module not available"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/BufferParams.cpp:1473
+#: src/BufferParams.cpp:1479
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/BufferParams.cpp:1480
+#: src/BufferParams.cpp:1486
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15389,22 +15452,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1483
+#: src/BufferParams.cpp:1489
 #, fuzzy
 msgid "Package not available"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/BufferParams.cpp:1488
+#: src/BufferParams.cpp:1494
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1489 src/BufferParams.cpp:1495
+#: src/BufferParams.cpp:1495 src/BufferParams.cpp:1501
 #, fuzzy
 msgid "Read Error"
 msgstr "Aroke dins LaTeX"
 
-#: src/BufferParams.cpp:1494
+#: src/BufferParams.cpp:1500
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Nole informåcion po disfé"
@@ -15419,94 +15482,94 @@ msgstr "Pont d' ôte rawete"
 msgid "Save bookmark"
 msgstr "Dizo|#o#B"
 
-#: src/BufferView.cpp:1012
+#: src/BufferView.cpp:1013
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nole informåcion po disfé"
 
-#: src/BufferView.cpp:1021
+#: src/BufferView.cpp:1022
 msgid "No further redo information"
 msgstr " Nole informåcion po Rifé"
 
-#: src/BufferView.cpp:1175 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1176 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 #, fuzzy
 msgid "String not found!"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/BufferView.cpp:1199
+#: src/BufferView.cpp:1200
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/BufferView.cpp:1206
+#: src/BufferView.cpp:1207
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/BufferView.cpp:1213
+#: src/BufferView.cpp:1214
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/BufferView.cpp:1216
+#: src/BufferView.cpp:1217
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/BufferView.cpp:1263
+#: src/BufferView.cpp:1264
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1265
+#: src/BufferView.cpp:1266
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/BufferView.cpp:1268
+#: src/BufferView.cpp:1269
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:1270
+#: src/BufferView.cpp:1271
 #, fuzzy
 msgid "One word"
 msgstr "Mots clés:|#C#K"
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1274
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1276
+#: src/BufferView.cpp:1277
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1279
+#: src/BufferView.cpp:1280
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1282
+#: src/BufferView.cpp:1283
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1284
+#: src/BufferView.cpp:1285
 #, fuzzy
 msgid "Statistics"
 msgstr "Schaper"
 
-#: src/BufferView.cpp:1962
+#: src/BufferView.cpp:1963
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:1973
+#: src/BufferView.cpp:1974
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:1975
+#: src/BufferView.cpp:1976
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
 
-#: src/BufferView.cpp:2201
+#: src/BufferView.cpp:2202
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15514,28 +15577,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.cpp:2203
+#: src/BufferView.cpp:2204
 #, fuzzy
 msgid "Could not read file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/BufferView.cpp:2210
+#: src/BufferView.cpp:2211
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr " hagnons n' ont nén stî ratoûrnés"
 
-#: src/BufferView.cpp:2211 src/output.cpp:39
+#: src/BufferView.cpp:2212 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/BufferView.cpp:2218
+#: src/BufferView.cpp:2219
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2219
+#: src/BufferView.cpp:2220
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15554,360 +15617,360 @@ msgstr "Advertixhmint ChkTeX lim."
 msgid "ChkTeX warning id # "
 msgstr "Advertixhmint ChkTeX lim."
 
-#: src/Color.cpp:96 src/insets/InsetBibtex.cpp:163
-#: src/insets/InsetBibtex.cpp:188
+#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:173
+#: src/insets/InsetBibtex.cpp:198
 #, fuzzy
 msgid "none"
 msgstr "Fwait"
 
-#: src/Color.cpp:97
+#: src/Color.cpp:96
 #, fuzzy
 msgid "black"
 msgstr "Noer"
 
-#: src/Color.cpp:98
+#: src/Color.cpp:97
 #, fuzzy
 msgid "white"
 msgstr "Blanc"
 
-#: src/Color.cpp:99
+#: src/Color.cpp:98
 #, fuzzy
 msgid "red"
 msgstr "Rodje"
 
-#: src/Color.cpp:100
+#: src/Color.cpp:99
 #, fuzzy
 msgid "green"
 msgstr "Vert"
 
-#: src/Color.cpp:101
+#: src/Color.cpp:100
 #, fuzzy
 msgid "blue"
 msgstr "Bleu"
 
-#: src/Color.cpp:102
+#: src/Color.cpp:101
 #, fuzzy
 msgid "cyan"
 msgstr "Rinoncî"
 
-#: src/Color.cpp:103
+#: src/Color.cpp:102
 #, fuzzy
 msgid "magenta"
 msgstr "Madjenta"
 
-#: src/Color.cpp:104
+#: src/Color.cpp:103
 #, fuzzy
 msgid "yellow"
 msgstr "Djaene"
 
-#: src/Color.cpp:105
+#: src/Color.cpp:104
 msgid "cursor"
 msgstr ""
 
-#: src/Color.cpp:106
+#: src/Color.cpp:105
 #, fuzzy
 msgid "background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:107
+#: src/Color.cpp:106
 #, fuzzy
 msgid "text"
 msgstr "LaTeX "
 
-#: src/Color.cpp:108
+#: src/Color.cpp:107
 #, fuzzy
 msgid "selection"
 msgstr "Gåliotaedje"
 
-#: src/Color.cpp:109
+#: src/Color.cpp:108
 #, fuzzy
 msgid "selected text"
 msgstr "LaTeX "
 
-#: src/Color.cpp:111
+#: src/Color.cpp:110
 #, fuzzy
 msgid "LaTeX text"
 msgstr "LaTeX|#T"
 
-#: src/Color.cpp:112
+#: src/Color.cpp:111
 #, fuzzy
 msgid "inline completion"
 msgstr "Espåçmint"
 
-#: src/Color.cpp:114
+#: src/Color.cpp:113
 msgid "non-unique inline completion"
 msgstr ""
 
-#: src/Color.cpp:116
+#: src/Color.cpp:115
 msgid "previewed snippet"
 msgstr ""
 
-#: src/Color.cpp:117
+#: src/Color.cpp:116
 #, fuzzy
 msgid "note label"
 msgstr "Sititchî ene pînote"
 
-#: src/Color.cpp:118
+#: src/Color.cpp:117
 #, fuzzy
 msgid "note background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:119
+#: src/Color.cpp:118
 #, fuzzy
 msgid "comment label"
 msgstr "Rawete:"
 
-#: src/Color.cpp:120
+#: src/Color.cpp:119
 #, fuzzy
 msgid "comment background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:121
+#: src/Color.cpp:120
 #, fuzzy
 msgid "greyedout inset label"
 msgstr "inset drovu"
 
-#: src/Color.cpp:122
+#: src/Color.cpp:121
 #, fuzzy
 msgid "greyedout inset background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:123
+#: src/Color.cpp:122
 msgid "shaded box"
 msgstr ""
 
-#: src/Color.cpp:124
+#: src/Color.cpp:123
 #, fuzzy
 msgid "branch label"
 msgstr "Intreye bibiografike"
 
-#: src/Color.cpp:125
+#: src/Color.cpp:124
 #, fuzzy
 msgid "footnote label"
 msgstr "Sititchî ene pînote"
 
-#: src/Color.cpp:126
+#: src/Color.cpp:125
 #, fuzzy
 msgid "index label"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:127
+#: src/Color.cpp:126
 #, fuzzy
 msgid "margin note label"
 msgstr "Potchî sol rahuca|#G"
 
-#: src/Color.cpp:128
+#: src/Color.cpp:127
 #, fuzzy
 msgid "URL label"
 msgstr "Li tåvlea est stitchî"
 
-#: src/Color.cpp:129
+#: src/Color.cpp:128
 #, fuzzy
 msgid "URL text"
 msgstr "LaTeX "
 
-#: src/Color.cpp:130
+#: src/Color.cpp:129
 msgid "depth bar"
 msgstr ""
 
-#: src/Color.cpp:131
+#: src/Color.cpp:130
 #, fuzzy
 msgid "language"
 msgstr "Lingaedje"
 
-#: src/Color.cpp:132
+#: src/Color.cpp:131
 #, fuzzy
 msgid "command inset"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:133
+#: src/Color.cpp:132
 #, fuzzy
 msgid "command inset background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:134
+#: src/Color.cpp:133
 #, fuzzy
 msgid "command inset frame"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:135
+#: src/Color.cpp:134
 #, fuzzy
 msgid "special character"
 msgstr "Speciå:|#S"
 
-#: src/Color.cpp:136
+#: src/Color.cpp:135
 #, fuzzy
 msgid "math"
 msgstr "Matematike"
 
-#: src/Color.cpp:137
+#: src/Color.cpp:136
 #, fuzzy
 msgid "math background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:138
+#: src/Color.cpp:137
 #, fuzzy
 msgid "graphics background"
 msgstr "Môde aspougneu matematike"
 
-#: src/Color.cpp:139 src/Color.cpp:143
+#: src/Color.cpp:138 src/Color.cpp:142
 #, fuzzy
 msgid "Math macro background"
 msgstr "Môde aspougneu matematike"
 
-#: src/Color.cpp:140
+#: src/Color.cpp:139
 #, fuzzy
 msgid "math frame"
 msgstr "Môde matematike"
 
-#: src/Color.cpp:141
+#: src/Color.cpp:140
 #, fuzzy
 msgid "math corners"
 msgstr "Scriftôr matematike"
 
-#: src/Color.cpp:142
+#: src/Color.cpp:141
 #, fuzzy
 msgid "math line"
 msgstr "Scriftôr matematike"
 
-#: src/Color.cpp:144
+#: src/Color.cpp:143
 #, fuzzy
 msgid "Math macro hovered background"
 msgstr "Môde aspougneu matematike"
 
-#: src/Color.cpp:145
+#: src/Color.cpp:144
 #, fuzzy
 msgid "Math macro label"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:146
+#: src/Color.cpp:145
 #, fuzzy
 msgid "Math macro frame"
 msgstr "Môde matematike"
 
-#: src/Color.cpp:147
+#: src/Color.cpp:146
 #, fuzzy
 msgid "Math macro blended out"
 msgstr "Môde aspougneu matematike"
 
-#: src/Color.cpp:148
+#: src/Color.cpp:147
 #, fuzzy
 msgid "Math macro old parameter"
 msgstr "Môde matematike"
 
-#: src/Color.cpp:149
+#: src/Color.cpp:148
 #, fuzzy
 msgid "Math macro new parameter"
 msgstr "Môde matematike"
 
-#: src/Color.cpp:150
+#: src/Color.cpp:149
 #, fuzzy
 msgid "caption frame"
 msgstr "Môde matematike"
 
-#: src/Color.cpp:151
+#: src/Color.cpp:150
 #, fuzzy
 msgid "collapsable inset text"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:152
+#: src/Color.cpp:151
 #, fuzzy
 msgid "collapsable inset frame"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:153
+#: src/Color.cpp:152
 #, fuzzy
 msgid "inset background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:154
+#: src/Color.cpp:153
 #, fuzzy
 msgid "inset frame"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:155
+#: src/Color.cpp:154
 #, fuzzy
 msgid "LaTeX error"
 msgstr "Aroke dins LaTeX"
 
-#: src/Color.cpp:156
+#: src/Color.cpp:155
 #, fuzzy
 msgid "end-of-line marker"
 msgstr "inset drovu"
 
-#: src/Color.cpp:157
+#: src/Color.cpp:156
 #, fuzzy
 msgid "appendix marker"
 msgstr "inset drovu"
 
-#: src/Color.cpp:158
+#: src/Color.cpp:157
 #, fuzzy
 msgid "change bar"
 msgstr "(Candjî)"
 
-#: src/Color.cpp:159
+#: src/Color.cpp:158
 #, fuzzy
 msgid "Deleted text"
 msgstr "LaTeX "
 
-#: src/Color.cpp:160
+#: src/Color.cpp:159
 #, fuzzy
 msgid "Added text"
 msgstr "LaTeX "
 
-#: src/Color.cpp:161
+#: src/Color.cpp:160
 msgid "added space markers"
 msgstr ""
 
-#: src/Color.cpp:162
+#: src/Color.cpp:161
 #, fuzzy
 msgid "top/bottom line"
 msgstr "Tchwezi li roye shûvante"
 
-#: src/Color.cpp:163
+#: src/Color.cpp:162
 #, fuzzy
 msgid "table line"
 msgstr "Li tåvlea est stitchî"
 
-#: src/Color.cpp:164
+#: src/Color.cpp:163
 #, fuzzy
 msgid "table on/off line"
 msgstr "Li tåvlea est stitchî"
 
-#: src/Color.cpp:166
+#: src/Color.cpp:165
 #, fuzzy
 msgid "bottom area"
 msgstr "Dizo|#o#B"
 
-#: src/Color.cpp:167
+#: src/Color.cpp:166
 #, fuzzy
 msgid "new page"
 msgstr "Minipådje|#M"
 
-#: src/Color.cpp:168
+#: src/Color.cpp:167
 #, fuzzy
 msgid "page break / line break"
 msgstr "Côper li pådje"
 
-#: src/Color.cpp:169
+#: src/Color.cpp:168
 msgid "frame of button"
 msgstr ""
 
-#: src/Color.cpp:170
+#: src/Color.cpp:169
 #, fuzzy
 msgid "button background"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:171
+#: src/Color.cpp:170
 #, fuzzy
 msgid "button background under focus"
 msgstr "Sititchî ene etikete"
 
-#: src/Color.cpp:172
+#: src/Color.cpp:171
 msgid "inherit"
 msgstr "Eriter"
 
-#: src/Color.cpp:173
+#: src/Color.cpp:172
 msgid "ignore"
 msgstr "passer hute"
 
@@ -16044,20 +16107,20 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2130
+#: src/frontends/qt4/GuiDocument.cpp:2141
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Roman"
 msgstr "Romane"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2130
+#: src/frontends/qt4/GuiDocument.cpp:2141
 #: src/frontends/qt4/GuiListings.cpp:158
 #, fuzzy
 msgid "Sans Serif"
 msgstr "Fonte Sans Serif|#S"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2130
+#: src/frontends/qt4/GuiDocument.cpp:2141
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Typewriter"
 msgstr "Machine a scrîre"
@@ -16246,7 +16309,7 @@ msgstr "Enondaedje di MakeIndex"
 msgid "Could not read configuration file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1094
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1336
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16278,41 +16341,41 @@ msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:579
+#: src/LyX.cpp:568
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:580
+#: src/LyX.cpp:569
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:584
+#: src/LyX.cpp:573
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Rapontyî"
 
-#: src/LyX.cpp:585
+#: src/LyX.cpp:574
 #, fuzzy
 msgid "&Use Default"
 msgstr "Prémetu"
 
-#: src/LyX.cpp:586 src/LyX.cpp:946
+#: src/LyX.cpp:575 src/LyX.cpp:935
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/LyX.cpp:733 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
 #, fuzzy
 msgid "LyX: "
 msgstr "Rexhe"
 
-#: src/LyX.cpp:855
+#: src/LyX.cpp:844
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -16320,46 +16383,46 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:928
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: dji fwai li ridant "
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:929
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:934
 #, fuzzy
 msgid "&Create directory"
 msgstr "Aroke! Dji n' sai drovi li ridant:"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:936
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:940
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " eyèt dj' enonde l' apontiaedje ..."
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:945
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1017
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1021
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Livea di disbugaedje :"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1032
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16383,47 +16446,47 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1083 src/support/Package.cpp:560
+#: src/LyX.cpp:1072 src/support/Package.cpp:560
 #, fuzzy
 msgid "No system directory"
 msgstr "Ridant ûzeu :"
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1073
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1084
 #, fuzzy
 msgid "No user directory"
 msgstr "Ridant ûzeu :"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1085
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1096
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Enonder ene comande"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1097
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "I manke on nombe pol tchûze -dbg!"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1108
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1121
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1126
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
@@ -16533,7 +16596,7 @@ msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 msgid "&Revert"
 msgstr "Schaper"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1523
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1481
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
@@ -16575,455 +16638,455 @@ msgstr "Wilicome dins LyX !"
 msgid "Converting document to new document class..."
 msgstr "Dji ratoûne li documint dins si novele classe..."
 
-#: src/LyXRC.cpp:2403
+#: src/LyXRC.cpp:2387
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2408
+#: src/LyXRC.cpp:2392
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2412
+#: src/LyXRC.cpp:2396
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2404
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:2424
+#: src/LyXRC.cpp:2408
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 
-#: src/LyXRC.cpp:2428
+#: src/LyXRC.cpp:2412
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/LyXRC.cpp:2435
+#: src/LyXRC.cpp:2419
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/LyXRC.cpp:2439
+#: src/LyXRC.cpp:2423
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2443
+#: src/LyXRC.cpp:2427
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2447
+#: src/LyXRC.cpp:2431
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2451
+#: src/LyXRC.cpp:2435
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2461
+#: src/LyXRC.cpp:2445
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2465
+#: src/LyXRC.cpp:2449
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2476
+#: src/LyXRC.cpp:2460
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2480
+#: src/LyXRC.cpp:2464
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2484
+#: src/LyXRC.cpp:2468
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/LyXRC.cpp:2488
+#: src/LyXRC.cpp:2472
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Grandeu papî:|#G"
 
-#: src/LyXRC.cpp:2492
+#: src/LyXRC.cpp:2476
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:2496
+#: src/LyXRC.cpp:2480
 msgid "Select how LyX will display any graphics."
 msgstr ""
 
-#: src/LyXRC.cpp:2500
+#: src/LyXRC.cpp:2484
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2489
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:2509
+#: src/LyXRC.cpp:2493
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2513
+#: src/LyXRC.cpp:2497
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/LyXRC.cpp:2520
+#: src/LyXRC.cpp:2504
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2529
+#: src/LyXRC.cpp:2513
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:2533
+#: src/LyXRC.cpp:2517
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXRC.cpp:2537
+#: src/LyXRC.cpp:2521
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2541
+#: src/LyXRC.cpp:2525
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2545
+#: src/LyXRC.cpp:2529
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:2549
+#: src/LyXRC.cpp:2533
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2553
+#: src/LyXRC.cpp:2537
 msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
-#: src/LyXRC.cpp:2557
+#: src/LyXRC.cpp:2541
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:2561
+#: src/LyXRC.cpp:2545
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2565
+#: src/LyXRC.cpp:2549
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:2569
+#: src/LyXRC.cpp:2553
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:2573
+#: src/LyXRC.cpp:2557
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:2577
+#: src/LyXRC.cpp:2561
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/LyXRC.cpp:2581
+#: src/LyXRC.cpp:2565
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2585
+#: src/LyXRC.cpp:2569
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2574
 msgid "The completion popup delay."
 msgstr ""
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2578
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2582
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2602
+#: src/LyXRC.cpp:2586
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:2606
+#: src/LyXRC.cpp:2590
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:2610
+#: src/LyXRC.cpp:2594
 msgid "The inline completion delay."
 msgstr ""
 
-#: src/LyXRC.cpp:2614
+#: src/LyXRC.cpp:2598
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2618
+#: src/LyXRC.cpp:2602
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2622
+#: src/LyXRC.cpp:2606
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:2626
+#: src/LyXRC.cpp:2610
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:2631
+#: src/LyXRC.cpp:2615
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2638
+#: src/LyXRC.cpp:2622
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2642
+#: src/LyXRC.cpp:2626
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2646
+#: src/LyXRC.cpp:2630
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2650
+#: src/LyXRC.cpp:2634
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:2654
+#: src/LyXRC.cpp:2638
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2642
 msgid "The option for specifying the number of copies to print."
 msgstr ""
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2646
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2650
 msgid "The option to print only even pages."
 msgstr ""
 
-#: src/LyXRC.cpp:2670
+#: src/LyXRC.cpp:2654
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2674
+#: src/LyXRC.cpp:2658
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2678
+#: src/LyXRC.cpp:2662
 msgid "The option to print out in landscape."
 msgstr ""
 
-#: src/LyXRC.cpp:2682
+#: src/LyXRC.cpp:2666
 msgid "The option to print only odd pages."
 msgstr ""
 
-#: src/LyXRC.cpp:2686
+#: src/LyXRC.cpp:2670
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/LyXRC.cpp:2690
+#: src/LyXRC.cpp:2674
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2694
+#: src/LyXRC.cpp:2678
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/LyXRC.cpp:2698
+#: src/LyXRC.cpp:2682
 msgid "The option to reverse the order of the pages printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2702
+#: src/LyXRC.cpp:2686
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2706
+#: src/LyXRC.cpp:2690
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2710
+#: src/LyXRC.cpp:2694
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/LyXRC.cpp:2714
+#: src/LyXRC.cpp:2698
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:2718
+#: src/LyXRC.cpp:2702
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2722
+#: src/LyXRC.cpp:2706
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2730
+#: src/LyXRC.cpp:2714
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2734
+#: src/LyXRC.cpp:2718
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2740
+#: src/LyXRC.cpp:2724
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:2749
+#: src/LyXRC.cpp:2733
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2753
+#: src/LyXRC.cpp:2737
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2758
+#: src/LyXRC.cpp:2742
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2762
+#: src/LyXRC.cpp:2746
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 
-#: src/LyXRC.cpp:2766
+#: src/LyXRC.cpp:2750
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2773
+#: src/LyXRC.cpp:2757
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:2777
+#: src/LyXRC.cpp:2761
 msgid "What command runs the spellchecker?"
 msgstr ""
 
-#: src/LyXRC.cpp:2781
+#: src/LyXRC.cpp:2765
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2785
+#: src/LyXRC.cpp:2769
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2795
+#: src/LyXRC.cpp:2779
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2808
+#: src/LyXRC.cpp:2792
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2812
+#: src/LyXRC.cpp:2796
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2816
+#: src/LyXRC.cpp:2800
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2823
+#: src/LyXRC.cpp:2807
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -17067,26 +17130,27 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Tchwezi djusk' al difén do documint"
 
-#: src/Paragraph.cpp:1500 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1509 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
-#: src/Paragraph.cpp:1566
+#: src/Paragraph.cpp:1575
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1567
+#: src/Paragraph.cpp:1576
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2035 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/mathed/InsetMathString.cpp:154
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Modeye di LyX"
 
-#: src/Paragraph.cpp:2036
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:155
 #, fuzzy
 msgid "uncodable character"
 msgstr "Speciå:|#S"
@@ -17228,25 +17292,25 @@ msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
 msgid "Math editor mode"
 msgstr "Môde aspougneu matematike"
 
-#: src/Text3.cpp:831
+#: src/Text3.cpp:792
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "I manke èn årgumint"
 
-#: src/Text3.cpp:1072
+#: src/Text3.cpp:1033
 msgid "Layout "
 msgstr "Adjinçmint "
 
-#: src/Text3.cpp:1073
+#: src/Text3.cpp:1034
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/Text3.cpp:1630 src/Text3.cpp:1642
+#: src/Text3.cpp:1588 src/Text3.cpp:1600
 #, fuzzy
 msgid "Character set"
 msgstr "Tåve di caracteres:|#å#a"
 
-#: src/Text3.cpp:1788 src/Text3.cpp:1799
+#: src/Text3.cpp:1746 src/Text3.cpp:1757
 msgid "Paragraph layout set"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
@@ -17392,7 +17456,7 @@ msgstr ""
 msgid "\\Alph{enumiv}."
 msgstr "Gåliotaedje"
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:291
+#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:293
 msgid "Senseless!!! "
 msgstr ""
 
@@ -17499,45 +17563,45 @@ msgstr "Ridant ûzeu :"
 msgid "LyX: %1$s"
 msgstr "Rexhe"
 
-#: src/frontends/qt4/GuiApplication.cpp:144
+#: src/frontends/qt4/GuiApplication.cpp:385
 msgid "About %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:144
+#: src/frontends/qt4/GuiApplication.cpp:385
 #: src/frontends/qt4/GuiPrefs.cpp:2454
 #, fuzzy
 msgid "Preferences"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/GuiApplication.cpp:145
+#: src/frontends/qt4/GuiApplication.cpp:386
 #, fuzzy
 msgid "Reconfigure"
 msgstr "Rapontyî"
 
-#: src/frontends/qt4/GuiApplication.cpp:145
+#: src/frontends/qt4/GuiApplication.cpp:386
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:543
+#: src/frontends/qt4/GuiApplication.cpp:794
 #, fuzzy
 msgid "Exiting."
 msgstr "Moussî foû"
 
-#: src/frontends/qt4/GuiApplication.cpp:605
+#: src/frontends/qt4/GuiApplication.cpp:856
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:621
+#: src/frontends/qt4/GuiApplication.cpp:872
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:910
+#: src/frontends/qt4/GuiApplication.cpp:1152
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Rexhe so"
 
-#: src/frontends/qt4/GuiApplication.cpp:920
+#: src/frontends/qt4/GuiApplication.cpp:1162
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17545,18 +17609,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:924
-#: src/frontends/qt4/GuiApplication.cpp:930
+#: src/frontends/qt4/GuiApplication.cpp:1166
+#: src/frontends/qt4/GuiApplication.cpp:1172
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:928
+#: src/frontends/qt4/GuiApplication.cpp:1170
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1093
+#: src/frontends/qt4/GuiApplication.cpp:1335
 #, fuzzy
 msgid "Could not find UI defintion file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
@@ -17572,7 +17636,7 @@ msgid "BibTeX Bibliography"
 msgstr "Intreye bibiografike"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
-#: src/frontends/qt4/GuiDocument.cpp:1277
+#: src/frontends/qt4/GuiDocument.cpp:1279
 #: src/frontends/qt4/GuiExternal.cpp:718 src/frontends/qt4/GuiGraphics.cpp:762
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1187
 #: src/frontends/qt4/GuiView.cpp:1245 src/frontends/qt4/GuiView.cpp:1378
@@ -17676,11 +17740,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1434
+#: src/frontends/qt4/GuiDocument.cpp:1436
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1433
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1435
 #, fuzzy
 msgid "No"
 msgstr "Pititès grandès letes"
@@ -17784,7 +17848,7 @@ msgstr "Djaene"
 msgid "Text Style"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiCitation.cpp:320
+#: src/frontends/qt4/GuiCitation.cpp:318
 #, fuzzy
 msgid "Keys"
 msgstr "Tape:"
@@ -17834,36 +17898,36 @@ msgstr ""
 msgid "Next command"
 msgstr "Enonder ene comande"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:46
+#: src/frontends/qt4/GuiDelimiter.cpp:57
 #, fuzzy
 msgid "big[[delimiter size]]"
 msgstr "Côpeu"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:47
+#: src/frontends/qt4/GuiDelimiter.cpp:58
 #, fuzzy
 msgid "Big[[delimiter size]]"
 msgstr "Côpeu"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:48
+#: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:49
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDelimiter.cpp:73
+#: src/frontends/qt4/GuiDelimiter.cpp:165
 #, fuzzy
 msgid "Math Delimiter"
 msgstr "Côpeu"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:109
-#: src/frontends/qt4/GuiDelimiter.cpp:110
+#: src/frontends/qt4/GuiDelimiter.cpp:203
+#: src/frontends/qt4/GuiDelimiter.cpp:204
 #, fuzzy
 msgid "(None)"
 msgstr "Fwait"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:112
+#: src/frontends/qt4/GuiDelimiter.cpp:206
 #, fuzzy
 msgid "Variable"
 msgstr "Li tåvlea est stitchî"
@@ -17983,7 +18047,7 @@ msgid "Document Settings"
 msgstr "Documints"
 
 #: src/frontends/qt4/GuiDocument.cpp:566
-#: src/frontends/qt4/GuiDocument.cpp:1049
+#: src/frontends/qt4/GuiDocument.cpp:1051
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -17993,196 +18057,197 @@ msgstr ""
 msgid "Length"
 msgstr "Longueu|#L"
 
-#: src/frontends/qt4/GuiDocument.cpp:620 src/frontends/qt4/GuiDocument.cpp:626
-#: src/frontends/qt4/GuiDocument.cpp:632
+#: src/frontends/qt4/GuiDocument.cpp:622 src/frontends/qt4/GuiDocument.cpp:628
+#: src/frontends/qt4/GuiDocument.cpp:634
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:637
+#: src/frontends/qt4/GuiDocument.cpp:639
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:638
+#: src/frontends/qt4/GuiDocument.cpp:640
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/frontends/qt4/GuiDocument.cpp:639
+#: src/frontends/qt4/GuiDocument.cpp:641
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:674
+#: src/frontends/qt4/GuiDocument.cpp:676
 #, fuzzy
 msgid "empty"
 msgstr ", Parfondeu: "
 
-#: src/frontends/qt4/GuiDocument.cpp:675
+#: src/frontends/qt4/GuiDocument.cpp:677
 #, fuzzy
 msgid "plain"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/GuiDocument.cpp:676
+#: src/frontends/qt4/GuiDocument.cpp:678
 #, fuzzy
 msgid "headings"
 msgstr "Mape des tapes"
 
-#: src/frontends/qt4/GuiDocument.cpp:677
+#: src/frontends/qt4/GuiDocument.cpp:679
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:693
+#: src/frontends/qt4/GuiDocument.cpp:695
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:694
+#: src/frontends/qt4/GuiDocument.cpp:696
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:798
+#: src/frontends/qt4/GuiDocument.cpp:800
 #, fuzzy
 msgid "LaTeX default"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: src/frontends/qt4/GuiDocument.cpp:804
+#: src/frontends/qt4/GuiDocument.cpp:806
 #, fuzzy
 msgid "``text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:805
+#: src/frontends/qt4/GuiDocument.cpp:807
 #, fuzzy
 msgid "''text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:806
+#: src/frontends/qt4/GuiDocument.cpp:808
 #, fuzzy
 msgid ",,text``"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:807
+#: src/frontends/qt4/GuiDocument.cpp:809
 #, fuzzy
 msgid ",,text''"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:808
+#: src/frontends/qt4/GuiDocument.cpp:810
 #, fuzzy
 msgid "<<text>>"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:809
+#: src/frontends/qt4/GuiDocument.cpp:811
 #, fuzzy
 msgid ">>text<<"
 msgstr "LaTeX "
 
-#: src/frontends/qt4/GuiDocument.cpp:824
+#: src/frontends/qt4/GuiDocument.cpp:826
 #, fuzzy
 msgid "Numbered"
 msgstr "Nombe"
 
-#: src/frontends/qt4/GuiDocument.cpp:825
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:845
+#: src/frontends/qt4/GuiDocument.cpp:847
 msgid "Author-year"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: src/frontends/qt4/GuiDocument.cpp:848
 #, fuzzy
 msgid "Numerical"
 msgstr "Nombe"
 
-#: src/frontends/qt4/GuiDocument.cpp:911
+#: src/frontends/qt4/GuiDocument.cpp:913
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/GuiDocument.cpp:973 src/frontends/qt4/GuiDocument.cpp:987
+#: src/frontends/qt4/GuiDocument.cpp:975 src/frontends/qt4/GuiDocument.cpp:989
 #, fuzzy
 msgid "Document Class"
 msgstr "Documint rlomé ("
 
-#: src/frontends/qt4/GuiDocument.cpp:975
+#: src/frontends/qt4/GuiDocument.cpp:977
 #, fuzzy
 msgid "Text Layout"
 msgstr "Adjinçmint "
 
-#: src/frontends/qt4/GuiDocument.cpp:977
+#: src/frontends/qt4/GuiDocument.cpp:979
 #, fuzzy
 msgid "Page Margins"
 msgstr "Boirds"
 
-#: src/frontends/qt4/GuiDocument.cpp:979
+#: src/frontends/qt4/GuiDocument.cpp:981
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Nombe"
 
-#: src/frontends/qt4/GuiDocument.cpp:981
+#: src/frontends/qt4/GuiDocument.cpp:983
 msgid "PDF Properties"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:982
+#: src/frontends/qt4/GuiDocument.cpp:984
 #, fuzzy
 msgid "Math Options"
 msgstr "Co des ôtès tchûzes"
 
-#: src/frontends/qt4/GuiDocument.cpp:983
+#: src/frontends/qt4/GuiDocument.cpp:985
 #, fuzzy
 msgid "Float Placement"
 msgstr "Plaece des comas:|#L"
 
-#: src/frontends/qt4/GuiDocument.cpp:984
+#: src/frontends/qt4/GuiDocument.cpp:986
 #, fuzzy
 msgid "Bullets"
 msgstr "xxx Puces"
 
-#: src/frontends/qt4/GuiDocument.cpp:985
+#: src/frontends/qt4/GuiDocument.cpp:987
 #, fuzzy
 msgid "Branches"
 msgstr "Intreye bibiografike"
 
-#: src/frontends/qt4/GuiDocument.cpp:986 src/frontends/qt4/GuiDocument.cpp:998
+#: src/frontends/qt4/GuiDocument.cpp:988
+#: src/frontends/qt4/GuiDocument.cpp:1000
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "Adrovaedje LaTeX"
 
-#: src/frontends/qt4/GuiDocument.cpp:1227
+#: src/frontends/qt4/GuiDocument.cpp:1229
 #, fuzzy
 msgid "Layouts|#o#O"
 msgstr "Adjinçmint"
 
-#: src/frontends/qt4/GuiDocument.cpp:1229
+#: src/frontends/qt4/GuiDocument.cpp:1231
 #, fuzzy
 msgid "LyX Layout (*.layout)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiDocument.cpp:1231
-#: src/frontends/qt4/GuiDocument.cpp:1291
+#: src/frontends/qt4/GuiDocument.cpp:1233
+#: src/frontends/qt4/GuiDocument.cpp:1293
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1249
-#: src/frontends/qt4/GuiDocument.cpp:1308
-#: src/frontends/qt4/GuiDocument.cpp:2097
+#: src/frontends/qt4/GuiDocument.cpp:1251
+#: src/frontends/qt4/GuiDocument.cpp:1310
+#: src/frontends/qt4/GuiDocument.cpp:2108
 #, fuzzy
 msgid "Error"
 msgstr "Aroke"
 
-#: src/frontends/qt4/GuiDocument.cpp:1250
+#: src/frontends/qt4/GuiDocument.cpp:1252
 #, fuzzy
 msgid "Unable to read local layout file."
 msgstr "Ké papî"
 
-#: src/frontends/qt4/GuiDocument.cpp:1271
+#: src/frontends/qt4/GuiDocument.cpp:1273
 #, fuzzy
 msgid "Select master document"
 msgstr "Schaper li documint?"
 
-#: src/frontends/qt4/GuiDocument.cpp:1275
+#: src/frontends/qt4/GuiDocument.cpp:1277
 #, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "Documint"
 
-#: src/frontends/qt4/GuiDocument.cpp:1292
+#: src/frontends/qt4/GuiDocument.cpp:1294
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -18190,80 +18255,80 @@ msgid ""
 "keep the layout file in the same directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/GuiDocument.cpp:1298
 #, fuzzy
 msgid "&Set Layout"
 msgstr "Adjinçmint "
 
-#: src/frontends/qt4/GuiDocument.cpp:1308
-#: src/frontends/qt4/GuiDocument.cpp:2097
+#: src/frontends/qt4/GuiDocument.cpp:1310
+#: src/frontends/qt4/GuiDocument.cpp:2108
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Ké papî"
 
-#: src/frontends/qt4/GuiDocument.cpp:1313
-#: src/frontends/qt4/GuiDocument.cpp:2086
+#: src/frontends/qt4/GuiDocument.cpp:1315
+#: src/frontends/qt4/GuiDocument.cpp:2097
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "Waitîz dins les candjmints"
 
-#: src/frontends/qt4/GuiDocument.cpp:1314
-#: src/frontends/qt4/GuiDocument.cpp:2087
+#: src/frontends/qt4/GuiDocument.cpp:1316
+#: src/frontends/qt4/GuiDocument.cpp:2098
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1316
-#: src/frontends/qt4/GuiDocument.cpp:2089
+#: src/frontends/qt4/GuiDocument.cpp:1318
+#: src/frontends/qt4/GuiDocument.cpp:2100
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1343
+#: src/frontends/qt4/GuiDocument.cpp:1345
 #, c-format
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1348
+#: src/frontends/qt4/GuiDocument.cpp:1350
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1393
+#: src/frontends/qt4/GuiDocument.cpp:1395
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1399
+#: src/frontends/qt4/GuiDocument.cpp:1401
 #, fuzzy
 msgid "or"
 msgstr "Floatflt xxx|#F"
 
-#: src/frontends/qt4/GuiDocument.cpp:1402
+#: src/frontends/qt4/GuiDocument.cpp:1404
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1411
+#: src/frontends/qt4/GuiDocument.cpp:1413
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1417
+#: src/frontends/qt4/GuiDocument.cpp:1419
 msgid "WARNING: Some packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2109
+#: src/frontends/qt4/GuiDocument.cpp:2120
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Ôtès tchûzes po l' arindjmint del pådje"
 
-#: src/frontends/qt4/GuiDocument.cpp:2110
+#: src/frontends/qt4/GuiDocument.cpp:2121
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Ké papî"
 
-#: src/frontends/qt4/GuiDocument.cpp:2187
+#: src/frontends/qt4/GuiDocument.cpp:2198
 #, fuzzy
 msgid "Not Found"
 msgstr " nén cnoxhu"
@@ -18401,6 +18466,55 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "Documint"
 
+#: src/frontends/qt4/GuiInfo.cpp:46
+#, fuzzy
+msgid "unknown"
+msgstr " nén cnoxhu"
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+#, fuzzy
+msgid "shortcut"
+msgstr "Dji rgrete."
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+#, fuzzy
+msgid "shortcuts"
+msgstr "Dji rgrete."
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+msgid "lyxrc"
+msgstr ""
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+#, fuzzy
+msgid "package"
+msgstr "Mete el plaece"
+
+#: src/frontends/qt4/GuiInfo.cpp:46
+#, fuzzy
+msgid "textclass"
+msgstr "LaTeX "
+
+#: src/frontends/qt4/GuiInfo.cpp:47
+#, fuzzy
+msgid "menu"
+msgstr "Royes"
+
+#: src/frontends/qt4/GuiInfo.cpp:47
+#, fuzzy
+msgid "icon"
+msgstr "Deus|#D#w"
+
+#: src/frontends/qt4/GuiInfo.cpp:47
+#, fuzzy
+msgid "buffer"
+msgstr "Bleu"
+
+#: src/frontends/qt4/GuiInfo.cpp:51
+#, fuzzy
+msgid "Info"
+msgstr "Disfé"
+
 #: src/frontends/qt4/GuiLabel.cpp:37
 #, fuzzy
 msgid "Label"
@@ -18461,7 +18575,7 @@ msgstr "Nol advertixhmint d' oyu."
 msgid "No version control log file found."
 msgstr "Nol advertixhmint d' oyu."
 
-#: src/frontends/qt4/GuiMathMatrix.cpp:28
+#: src/frontends/qt4/GuiMathMatrix.cpp:30
 #, fuzzy
 msgid "Math Matrix"
 msgstr "Matrice"
@@ -19272,25 +19386,25 @@ msgstr "Nole informåcion po disfé"
 msgid "Outline"
 msgstr "Ôte...|#Ô#O"
 
-#: src/frontends/qt4/GuiToolbar.cpp:545
+#: src/frontends/qt4/GuiToolbar.cpp:368
 msgid "Filtering layouts with \""
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:548 src/frontends/qt4/GuiToolbar.cpp:597
+#: src/frontends/qt4/GuiToolbar.cpp:371 src/frontends/qt4/GuiToolbar.cpp:420
 msgid "Enter characters to filter the layout list."
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:1104
+#: src/frontends/qt4/GuiToolbar.cpp:927
 #, fuzzy
 msgid "auto"
 msgstr "Prémetu"
 
-#: src/frontends/qt4/GuiToolbar.cpp:1109 src/frontends/qt4/GuiToolbar.cpp:1118
+#: src/frontends/qt4/GuiToolbar.cpp:932 src/frontends/qt4/GuiToolbar.cpp:941
 #, fuzzy
 msgid "off"
 msgstr "Åwe"
 
-#: src/frontends/qt4/GuiToolbar.cpp:1125
+#: src/frontends/qt4/GuiToolbar.cpp:948
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
@@ -19480,7 +19594,7 @@ msgstr "L'adjinçmint do documint est metu"
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:95
+#: src/frontends/qt4/GuiViewSource.cpp:94
 #: src/frontends/qt4/GuiViewSource.cpp:176
 #, fuzzy
 msgid "LaTeX Source"
@@ -19539,8 +19653,8 @@ msgstr "I gn a nou documint di drovu!%t"
 
 #: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
 #: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:840
-#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1021
-#: src/frontends/qt4/Menus.cpp:1052
+#: src/frontends/qt4/Menus.cpp:922 src/frontends/qt4/Menus.cpp:1032
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy
 msgid "No Document Open!"
 msgstr "I gn a nou documint di drovu!%t"
@@ -19564,17 +19678,22 @@ msgstr "Ôte...|#Ô#O"
 msgid "No Table of contents"
 msgstr "Ådvins"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1021
+#, fuzzy
+msgid "Other Toolbars"
+msgstr "Dizeu|#u#T"
+
+#: src/frontends/qt4/Menus.cpp:1040
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Documint"
 
-#: src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1071
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "Potchî a l' aroke shûvante"
 
-#: src/frontends/qt4/Menus.cpp:1579
+#: src/frontends/qt4/Menus.cpp:1590
 #, fuzzy
 msgid "No action defined!"
 msgstr "Potchî a l' aroke shûvante"
@@ -19585,7 +19704,7 @@ msgid "space"
 msgstr "Mete el plaece"
 
 #: src/frontends/qt4/Validator.cpp:175 src/insets/ExternalSupport.cpp:365
-#: src/insets/InsetBibtex.cpp:276 src/insets/InsetGraphics.cpp:586
+#: src/insets/InsetBibtex.cpp:286 src/insets/InsetGraphics.cpp:586
 #: src/insets/InsetInclude.cpp:465
 #, fuzzy
 msgid "Invalid filename"
@@ -19668,81 +19787,84 @@ msgstr "Imådje"
 msgid "Labels and References"
 msgstr "Sititchî on rahuca"
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:277
+#: src/frontends/qt4/qt_helpers.cpp:506
+#, fuzzy
+msgid "List of Branches"
+msgstr "Djîveye des tåvleas"
+
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:466
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
 
-#: src/insets/Inset.cpp:327
+#: src/insets/Inset.cpp:334
 msgid "Opened inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetBibitem.cpp:78
+#: src/insets/InsetBibitem.cpp:87
 msgid "Keys must be unique!"
 msgstr ""
 
-#: src/insets/InsetBibitem.cpp:79
+#: src/insets/InsetBibitem.cpp:88
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:129
+#: src/insets/InsetBibtex.cpp:139
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:132
+#: src/insets/InsetBibtex.cpp:142
 #, fuzzy
 msgid "Open Databases?"
 msgstr "Båze di doneyes:"
 
-#: src/insets/InsetBibtex.cpp:133
+#: src/insets/InsetBibtex.cpp:143
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:151
+#: src/insets/InsetBibtex.cpp:161
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Rahucas prodûts pa BibTex"
 
-#: src/insets/InsetBibtex.cpp:158
+#: src/insets/InsetBibtex.cpp:168
 #, fuzzy
-msgid "Databases:\n"
+msgid "Databases:"
 msgstr "Båze di doneyes:"
 
-#: src/insets/InsetBibtex.cpp:183
+#: src/insets/InsetBibtex.cpp:193
 #, fuzzy
-msgid "Style File:\n"
+msgid "Style File:"
 msgstr "Cloyu"
 
-#: src/insets/InsetBibtex.cpp:190
+#: src/insets/InsetBibtex.cpp:200
 #, fuzzy
-msgid ""
-"\n"
-"Lists: "
+msgid "Lists:"
 msgstr "Royes"
 
-#: src/insets/InsetBibtex.cpp:201
+#: src/insets/InsetBibtex.cpp:211
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:297 src/insets/InsetBibtex.cpp:348
+#: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:298
+#: src/insets/InsetBibtex.cpp:308
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:349
+#: src/insets/InsetBibtex.cpp:359
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -19793,22 +19915,22 @@ msgstr "inset drovu"
 msgid "Box"
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:54
+#: src/insets/InsetBranch.cpp:55
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetBranch.cpp:74 src/insets/InsetBranch.cpp:80
+#: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:81
 #, fuzzy
 msgid "Branch: "
 msgstr "Intreye bibiografike"
 
-#: src/insets/InsetBranch.cpp:85
+#: src/insets/InsetBranch.cpp:86
 #, fuzzy
 msgid "Undef: "
 msgstr "Rah: "
 
-#: src/insets/InsetBranch.cpp:217
+#: src/insets/InsetBranch.cpp:215
 #, fuzzy
 msgid "branch"
 msgstr "Intreye bibiografike"
@@ -19818,7 +19940,7 @@ msgstr "Intreye bibiografike"
 msgid "Opened Caption Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetCaption.cpp:303
+#: src/insets/InsetCaption.cpp:305
 #, c-format
 msgid "Sub-%1$s"
 msgstr ""
@@ -19866,7 +19988,7 @@ msgstr "Enonder ene comande"
 msgid "Unknown parameter name: "
 msgstr "I manke èn årgumint"
 
-#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:122
+#: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:136
 msgid "Missing \\end_inset at this point."
 msgstr ""
 
@@ -19890,28 +20012,28 @@ msgstr "Co des ôtès tchûzes"
 msgid "Opened Flex Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:392
-#: src/insets/InsetFloat.cpp:402 src/insets/InsetFloat.cpp:412
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:393
+#: src/insets/InsetFloat.cpp:403 src/insets/InsetFloat.cpp:413
 #, fuzzy
 msgid "float: "
 msgstr "Pîd del pådje"
 
-#: src/insets/InsetFloat.cpp:280
+#: src/insets/InsetFloat.cpp:281
 #, fuzzy
 msgid "Opened Float Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetFloat.cpp:351
+#: src/insets/InsetFloat.cpp:352
 #, fuzzy
 msgid "float"
 msgstr "Pîd del pådje"
 
-#: src/insets/InsetFloat.cpp:404
+#: src/insets/InsetFloat.cpp:405
 #, fuzzy
 msgid " (sideways)"
 msgstr "Toûrner di 90°|#9"
 
-#: src/insets/InsetFloat.cpp:414
+#: src/insets/InsetFloat.cpp:415
 #, fuzzy
 msgid "subfloat: "
 msgstr "Pîd del pådje"
@@ -19930,7 +20052,7 @@ msgstr "Djîveye des tåvleas"
 msgid "Opened Footnote Inset"
 msgstr "inset drovu"
 
-#: src/insets/InsetFoot.cpp:111
+#: src/insets/InsetFoot.cpp:113
 #, fuzzy
 msgid "footnote"
 msgstr "Sititchî ene pînote"
@@ -19995,41 +20117,26 @@ msgstr ""
 msgid "Module not found"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/insets/InsetIndex.cpp:130
+#: src/insets/InsetIndex.cpp:132
 msgid "Index"
 msgstr "Index"
 
-#: src/insets/InsetInfo.cpp:67
+#: src/insets/InsetInfo.cpp:81
 #, fuzzy
 msgid "Information regarding "
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/insets/InsetInfo.cpp:175
-#, fuzzy
-msgid "Unknown Info: "
-msgstr "nén cnoxhu"
-
-#: src/insets/InsetInfo.cpp:199 src/insets/InsetInfo.cpp:204
+#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
 #, fuzzy
 msgid "yes"
 msgstr "Stîle:  "
 
-#: src/insets/InsetInfo.cpp:199 src/insets/InsetInfo.cpp:204
+#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
 #, fuzzy
 msgid "no"
 msgstr "Disfé"
 
-#: src/insets/InsetInfo.cpp:212
-#, fuzzy, c-format
-msgid "Unknown action %1$s"
-msgstr "Bouye nén cnoxhuwe"
-
-#: src/insets/InsetInfo.cpp:217
-#, c-format
-msgid "No menu entry for action %1$s"
-msgstr ""
-
-#: src/insets/InsetInfo.cpp:245
+#: src/insets/InsetInfo.cpp:338
 #, fuzzy
 msgid "Unknown buffer info"
 msgstr "Bouye nén cnoxhuwe"
@@ -20235,57 +20342,57 @@ msgstr "inset drovu"
 msgid "BROKEN: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:185
+#: src/insets/InsetRef.cpp:171 src/mathed/InsetMathRef.cpp:187
 #, fuzzy
 msgid "Ref: "
 msgstr "Rah: "
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "Equation"
 msgstr "Toûrnaedje"
 
-#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:186
+#: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
 #, fuzzy
 msgid "EqRef: "
 msgstr "Rah: "
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page Number"
 msgstr "Nou nombe"
 
-#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Page: "
 msgstr "Pådje: "
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Sititchî li limerô del pådje|#P"
 
-#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:174 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "TextPage: "
 msgstr "Sicrît"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Standard+Textual Page"
 msgstr "Sititchî li limerô del pådje|#P"
 
-#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Rah: "
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "PrettyRef"
 msgstr "Rah: "
 
-#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:176 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "FormatRef: "
 msgstr "Floatflt xxx|#F"
@@ -20384,7 +20491,7 @@ msgstr "Bouye nén cnoxhuwe"
 msgid "Opened table"
 msgstr "Drovi li fitchî d' aidance"
 
-#: src/insets/InsetText.cpp:203
+#: src/insets/InsetText.cpp:206
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "inset drovu"
@@ -20625,15 +20732,15 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:945
+#: src/mathed/InsetMathNest.cpp:959
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:948
+#: src/mathed/InsetMathNest.cpp:962
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathRef.cpp:185
+#: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr ""
 
@@ -20895,6 +21002,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Bouye nén cnoxhuwe"
+
+#, fuzzy
+#~ msgid "Unknown Info: "
+#~ msgstr "nén cnoxhu"
+
+#, fuzzy
+#~ msgid "Unknown action %1$s"
+#~ msgstr "Bouye nén cnoxhuwe"
 
 #, fuzzy
 #~ msgid "<- C&lear"
