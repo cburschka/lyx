@@ -302,6 +302,7 @@ src_support_header_files = Split('''
     foreach.h
     gettext.h
     gzstream.h
+    imagetools.h
     lassert.h
     limited_stack.h
     lstrings.h
@@ -336,8 +337,9 @@ src_support_files = Split('''
     docstring.cpp
     environment.cpp
     filetools.cpp
-    gzstream.cpp
     gettext.cpp
+    gzstream.cpp
+    imagetools.cpp
     kill.cpp
     lassert.cpp
     lstrings.cpp

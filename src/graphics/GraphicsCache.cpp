@@ -15,9 +15,12 @@
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 
+#include "Format.h"
+
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/imagetools.h"
 
 #include <map>
 
@@ -59,9 +62,44 @@ Cache::~Cache()
 }
 
 
-vector<string> Cache::loadableFormats() const
+vector<string> const & Cache::loadableFormats() const
 {
-	return Image::loadableFormats();
+	static vector<string> fmts;
+
+	if (!fmts.empty())
+		return fmts;
+
+	// The formats recognised by LyX
+	Formats::const_iterator begin = formats.begin();
+	Formats::const_iterator end   = formats.end();
+
+	// The formats natively loadable.
+	vector<string> nformat = loadableImageFormats();
+	
+	vector<string>::const_iterator it = nformat.begin();
+	for (; it != nformat.end(); ++it) {
+		for (Formats::const_iterator fit = begin; fit != end; ++fit) {
+			if (fit->extension() == *it) {
+				fmts.push_back(fit->name());
+				break;
+			}
+		}
+	}
+
+	if (lyxerr.debugging()) {
+		LYXERR(Debug::GRAPHICS, "LyX recognises the following image formats:");
+
+		vector<string>::const_iterator fbegin = fmts.begin();
+		vector<string>::const_iterator fend = fmts.end();
+		for (vector<string>::const_iterator fit = fbegin; fit != fend; ++fit) {
+			if (fit != fbegin)
+				LYXERR(Debug::GRAPHICS, ", ");
+			LYXERR(Debug::GRAPHICS, *fit);
+		}
+		LYXERR(Debug::GRAPHICS, '\n');
+	}
+
+	return fmts;
 }
 
 

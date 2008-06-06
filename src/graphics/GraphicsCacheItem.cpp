@@ -13,6 +13,8 @@
 #include <config.h>
 
 #include "GraphicsCacheItem.h"
+
+#include "GraphicsCache.h"
 #include "GraphicsConverter.h"
 #include "GraphicsImage.h"
 
@@ -320,8 +322,8 @@ void CacheItem::Impl::imageLoaded(bool success)
 
 static string const findTargetFormat(string const & from)
 {
-	typedef lyx::graphics::Image::FormatList FormatList;
-	FormatList const formats = lyx::graphics::Image::loadableFormats();
+	typedef vector<string> FormatList;
+	FormatList const & formats = Cache::get().loadableFormats();
 
 	 // There must be a format to load from.
 	LASSERT(!formats.empty(), /**/);

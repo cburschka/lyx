@@ -27,9 +27,6 @@ public:
 	/// Access to this class is through this static method.
 	static Image * newImage();
 
-	/// Return the list of loadable formats.
-	static FormatList loadableFormats();
-
 	/// Retrieve the buffered pixmap.
 	QPixmap const & qpixmap() const { return transformed_pixmap_; }
 

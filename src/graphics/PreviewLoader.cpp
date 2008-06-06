@@ -73,7 +73,7 @@ lyx::Converter const * setConverter()
 
 	typedef vector<string> FmtList;
 	typedef lyx::graphics::Cache GCache;
-	FmtList const loadableFormats = GCache::get().loadableFormats();
+	FmtList const & loadableFormats = GCache::get().loadableFormats();
 	FmtList::const_iterator it = loadableFormats.begin();
 	FmtList::const_iterator const end = loadableFormats.end();
 

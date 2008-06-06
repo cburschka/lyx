@@ -25,10 +25,6 @@ namespace graphics {
 // instance of a viable derived class.
 boost::function<Image *()> Image::newImage;
 
-/// Return the list of loadable formats.
-boost::function<Image::FormatList()> Image::loadableFormats;
-
-
 Dimension Image::scaledDimension(Params const & params) const
 {
 	// scale only when value > 0

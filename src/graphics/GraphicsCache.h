@@ -44,7 +44,7 @@ public:
 	 *  Other formats can be loaded if a converter to a loadable format
 	 *  can be defined.
 	 */
-	std::vector<std::string> loadableFormats() const;
+	std::vector<std::string> const & loadableFormats() const;
 
 	/// Add a graphics file to the cache.
 	void add(support::FileName const & file) const;

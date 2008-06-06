@@ -47,11 +47,6 @@ public:
 	static boost::function<Image *()> newImage;
 
 	///
-	typedef std::vector<std::string> FormatList;
-	/// Return the list of loadable formats.
-	static boost::function<FormatList()> loadableFormats;
-
-	///
 	virtual ~Image() {}
 
 	/// Create a copy

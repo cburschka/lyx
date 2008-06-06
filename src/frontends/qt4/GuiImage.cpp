@@ -39,67 +39,6 @@ Image * GuiImage::newImage()
 }
 
 
-/// Return the list of loadable formats.
-Image::FormatList GuiImage::loadableFormats()
-{
-	static FormatList fmts;
-
-	if (!fmts.empty())
-		return fmts;
-
-	// The formats recognised by LyX
-	Formats::const_iterator begin = formats.begin();
-	Formats::const_iterator end   = formats.end();
-
-	//LYXERR(Debug::GRAPHICS,
-	//	"D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
-	//	<< Pic.pictureFormat("D:/msys/.../banner.png"))
-	//if (Pic.pictureFormat("D:/msys/.../banner.png"))
-	//	LYXERR(Debug::GRAPHICS, "pictureFormat not returned NULL\n"
-	//		<< "Supported formats are: " << Pic.inputFormats());
-
-	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats();
-
-	LYXERR(Debug::GRAPHICS,
-		"\nThe image loader can load the following directly:\n");
-
-	if (qt_formats.empty())
-		LYXERR(Debug::GRAPHICS, "\nQt4 Problem: No Format available!");
-
-	for (QList<QByteArray>::const_iterator it = qt_formats.begin(); it != qt_formats.end(); ++it) {
-
-		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
-
-		string ext = ascii_lowercase((const char *) *it);
-
-		// special case
-		if (ext == "jpeg")
-			ext = "jpg";
-
-		for (Formats::const_iterator fit = begin; fit != end; ++fit) 
-			if (fit->extension() == ext) {
-				fmts.push_back(fit->name());
-				break;
-			}
-	}
-
-	if (lyxerr.debugging()) {
-		LYXERR(Debug::GRAPHICS, "Of these, LyX recognises the following formats:");
-
-		FormatList::const_iterator fbegin = fmts.begin();
-		FormatList::const_iterator fend   = fmts.end();
-		for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
-			if (fit != fbegin)
-				LYXERR(Debug::GRAPHICS, ", ");
-			LYXERR(Debug::GRAPHICS, *fit);
-		}
-		LYXERR(Debug::GRAPHICS, '\n');
-	}
-
-	return fmts;
-}
-
-
 GuiImage::GuiImage(GuiImage const & other)
 	: Image(other), original_(other.original_),
 	  transformed_(other.transformed_),
