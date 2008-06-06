@@ -1,5 +1,5 @@
 # Makefile for PO directory in any package using GNU gettext.
-# Copyright (C) 1995-1997, 2000-2005 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
+# Copyright (C) 1995-1997, 2000-2006 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
 #
 # This file can be copied and used freely without restrictions.  It can
 # be used in projects which are not available under the GNU General Public
@@ -8,7 +8,7 @@
 # Please note that the actual code of GNU gettext is covered by the GNU
 # General Public License and is *not* in the public domain.
 #
-# Origin: gettext-0.14.4
+# Origin: gettext-0.16
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -25,18 +25,36 @@ prefix = @prefix@
 exec_prefix = @exec_prefix@
 datarootdir = @datarootdir@
 datadir = @datadir@
-localedir = $(datadir)/locale
+localedir = @localedir@
 gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
-MKINSTALLDIRS = @MKINSTALLDIRS@
-mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
 
+# We use $(mkdir_p).
+# In automake <= 1.9.x, $(mkdir_p) is defined either as "mkdir -p --" or as
+# "$(mkinstalldirs)" or as "$(install_sh) -d". For these automake versions,
+# @install_sh@ does not start with $(SHELL), so we add it.
+# In automake >= 1.10, @mkdir_p@ is derived from ${MKDIR_P}, which is defined
+# either as "/path/to/mkdir -p" or ".../install-sh -c -d". For these automake
+# versions, $(mkinstalldirs) and $(install_sh) are unused.
+mkinstalldirs = $(SHELL) @install_sh@ -d
+install_sh = $(SHELL) @install_sh@
+MKDIR_P = @MKDIR_P@
+mkdir_p = @mkdir_p@
 
-GMSGFMT = @GMSGFMT@
-MSGFMT = @MSGFMT@
-XGETTEXT = @XGETTEXT@
+GMSGFMT_ = @GMSGFMT@
+GMSGFMT_no = @GMSGFMT@
+GMSGFMT_yes = @GMSGFMT_015@
+GMSGFMT = $(GMSGFMT_$(USE_MSGCTXT))
+MSGFMT_ = @MSGFMT@
+MSGFMT_no = @MSGFMT@
+MSGFMT_yes = @MSGFMT_015@
+MSGFMT = $(MSGFMT_$(USE_MSGCTXT))
+XGETTEXT_ = @XGETTEXT@
+XGETTEXT_no = @XGETTEXT@
+XGETTEXT_yes = @XGETTEXT_015@
+XGETTEXT = $(XGETTEXT_$(USE_MSGCTXT))
 MSGMERGE = msgmerge
 MSGMERGE_UPDATE = @MSGMERGE@ --update
 MSGINIT = msginit
@@ -49,13 +67,9 @@ UPDATEPOFILES = @UPDATEPOFILES@
 DUMMYPOFILES = @DUMMYPOFILES@
 DISTFILES.common = Makefile.in.in remove-potcdate.sin \
 $(DISTFILES.common.extra1) $(DISTFILES.common.extra2) $(DISTFILES.common.extra3)
-DISTFILES = $(DISTFILES.common) Makevars \
+DISTFILES = $(DISTFILES.common) Makevars POTFILES.in \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
-
-DISTFILES.extra1 = lyx_pot.py postats.py pocheck.pl Makefile.in POTFILES.in
-
-POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
 POTFILES = \
 
@@ -116,7 +130,6 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 # This target rebuilds $(DOMAIN).pot; it is an expensive operation.
 # Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
 $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
-	$(MAKE) l10n_pots
 	if test -n '$(MSGID_BUGS_ADDRESS)' || test '$(PACKAGE_BUGREPORT)' = '@'PACKAGE_BUGREPORT'@'; then \
 	  msgid_bugs_address='$(MSGID_BUGS_ADDRESS)'; \
 	else \
@@ -165,7 +178,7 @@ install: install-exec install-data
 install-exec:
 install-data: install-data-@USE_NLS@
 	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
+	  $(mkdir_p) $(DESTDIR)$(gettextsrcdir); \
 	  for file in $(DISTFILES.common) Makevars.template; do \
 	    $(INSTALL_DATA) $(srcdir)/$$file \
 			    $(DESTDIR)$(gettextsrcdir)/$$file; \
@@ -178,13 +191,13 @@ install-data: install-data-@USE_NLS@
 	fi
 install-data-no: all
 install-data-yes: all
-	$(mkinstalldirs) $(DESTDIR)$(datadir)
+	$(mkdir_p) $(DESTDIR)$(datadir)
 	@catalogs='$(CATALOGS)'; \
 	for cat in $$catalogs; do \
 	  cat=`basename $$cat`; \
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
-	  $(mkinstalldirs) $(DESTDIR)$$dir; \
+	  $(mkdir_p) $(DESTDIR)$$dir; \
 	  if test -r $$cat; then realcat=$$cat; else realcat=$(srcdir)/$$cat; fi; \
 	  $(INSTALL_DATA) $$realcat $(DESTDIR)$$dir/$(DOMAIN).mo; \
 	  echo "installing $$realcat as $(DESTDIR)$$dir/$(DOMAIN).mo"; \
@@ -224,19 +237,19 @@ installdirs: installdirs-exec installdirs-data
 installdirs-exec:
 installdirs-data: installdirs-data-@USE_NLS@
 	if test "$(PACKAGE)" = "gettext-tools"; then \
-	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
+	  $(mkdir_p) $(DESTDIR)$(gettextsrcdir); \
 	else \
 	  : ; \
 	fi
 installdirs-data-no:
 installdirs-data-yes:
-	$(mkinstalldirs) $(DESTDIR)$(datadir)
+	$(mkdir_p) $(DESTDIR)$(datadir)
 	@catalogs='$(CATALOGS)'; \
 	for cat in $$catalogs; do \
 	  cat=`basename $$cat`; \
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
-	  $(mkinstalldirs) $(DESTDIR)$$dir; \
+	  $(mkdir_p) $(DESTDIR)$$dir; \
 	  for lc in '' $(EXTRA_LOCALE_CATEGORIES); do \
 	    if test -n "$$lc"; then \
 	      if (cd $(DESTDIR)$(localedir)/$$lang && LC_ALL=C ls -l -d $$lc 2>/dev/null) | grep ' -> ' >/dev/null; then \
@@ -381,47 +394,7 @@ update-gmo: Makefile $(GMOFILES)
 
 Makefile: Makefile.in.in Makevars $(top_builddir)/config.status @POMAKEFILEDEPS@
 	cd $(top_builddir) \
-	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
-	       $(SHELL) ./config.status
-
-${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
-	LC_ALL=C ; export LC_ALL ; \
-	rm -f $@-t \
-	&& ( cd $(top_srcdir); \
-	     grep -l "_(\".*\")" `find src \( -name '*.h' -o -name '*.cpp' -o -name '*.cpp.in' \) -print` |\
-	     grep -v -e "src/support/Package.cpp$$" |\
-	     sort | uniq ) > $@-t \
-	&& mv $@-t $@
-
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
-	cat $^ | \
-	msguniq -o $(DOMAIN).po && rm -f  $^
-
-
-qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
-	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t qt4 ${top_srcdir}/src/frontends/qt4/ui/*.ui 
-
-layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc \
-		$(top_srcdir)/lib/layouts/*.module
-	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t layouts ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc ${top_srcdir}/lib/layouts/*.module
-
-languages_l10n.pot: $(top_srcdir)/lib/languages
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t languages ${top_srcdir}/lib/languages
-
-ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
-	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
-
-i18n.inc: $(POFILES) postats.py
-	(cd $(srcdir) ; python postats.py "$(VERSION)" $(POFILES)) >$@
-
-external_l10n.pot: $(top_srcdir)/lib/external_templates
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t external ${top_srcdir}/lib/external_templates
-
-formats_l10n.pot: $(top_srcdir)/lib/configure.py
-	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t formats ${top_srcdir}/lib/configure.py
+	  && $(SHELL) ./config.status $(subdir)/$@.in po-directories
 
 force:
 

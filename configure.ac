@@ -4,7 +4,7 @@ AC_INIT(LyX,1.6.0svn,[lyx-devel@lists.lyx.org],[lyx])
 AC_SUBST(LYX_DATE, ["Tue, Jun 3, 2008"])
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.cpp)
-AC_CONFIG_HEADERS([src/config.h])
+AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_AUX_DIR(config)
 
@@ -40,17 +40,6 @@ test -f ${srcdir}/po/POTFILES.in || touch ${srcdir}/po/POTFILES.in
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
 
-AC_PROG_AWK
-test "$AWK" = gawk && AWK="gawk --posix"
-
-#AC_PROG_RANLIB
-AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
-if test "x$KPSEWHICH" = xkpsewhich ; then
-    AC_DEFINE(HAVE_KPSEWHICH, 1,
-    [Define this if you have the kpsewhich program working on your system.])
-fi
-AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
-
 # Check for installed python
 AM_PATH_PYTHON(2.3,, :)
 
@@ -62,6 +51,7 @@ INSTALL_SCRIPT='${INSTALL}'
 
 ### we will also need a C compiler to compile GNU gettext
 AC_PROG_CC
+AC_GNU_SOURCE
 
 ### check for special systems
 AC_ISC_POSIX
@@ -238,6 +228,7 @@ fi
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
 AM_GNU_GETTEXT
+AM_GNU_GETTEXT_VERSION([0.16.1])
 AC_LANG_POP(C)
 
 # some standard header files

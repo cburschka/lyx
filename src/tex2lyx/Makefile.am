@@ -24,7 +24,7 @@ AM_CPPFLAGS += \
 	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src  \
-	-I$(top_builddir)/src \
+	-I$(top_builddir) \
 	$(BOOST_INCLUDES)
 
 

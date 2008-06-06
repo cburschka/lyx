@@ -77,7 +77,7 @@ private:
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
 #  else
-#    include "../intl/libintl.h"
+#    include "../../intl/libintl.h"
 #  endif
 
 // This is a more traditional variant.
