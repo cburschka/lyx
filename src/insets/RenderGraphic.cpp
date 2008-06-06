@@ -135,33 +135,36 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 
+	if (image_ready) {
+		dim.wid = loader_.image()->width() + 2 * Inset::TEXT_TO_INSET_OFFSET;
+		dim.asc = loader_.image()->height();
+		dim_ = dim;
+		return;
+	}
+
 	dim.asc = image_ready ? loader_.image()->height() : 50;
 	dim.des = 0;
 
-	if (image_ready) {
-		dim.wid = loader_.image()->width() + 2 * Inset::TEXT_TO_INSET_OFFSET;
-	} else {
-		int font_width = 0;
+	int font_width = 0;
 
-		FontInfo msgFont(mi.base.font);
-		msgFont.setFamily(SANS_FAMILY);
+	FontInfo msgFont(mi.base.font);
+	msgFont.setFamily(SANS_FAMILY);
 
-		// FIXME UNICODE
-		docstring const justname = from_utf8(params_.filename.onlyFileName());
-		if (!justname.empty()) {
-			msgFont.setSize(FONT_SIZE_FOOTNOTE);
-			font_width = theFontMetrics(msgFont).width(justname);
-		}
-
-		docstring const msg = statusMessage(params_, loader_.status());
-		if (!msg.empty()) {
-			msgFont.setSize(FONT_SIZE_TINY);
-			font_width = max(font_width,
-				theFontMetrics(msgFont).width(msg));
-		}
-
-		dim.wid = max(50, font_width + 15);
+	// FIXME UNICODE
+	docstring const justname = from_utf8(params_.filename.onlyFileName());
+	if (!justname.empty()) {
+		msgFont.setSize(FONT_SIZE_FOOTNOTE);
+		font_width = theFontMetrics(msgFont).width(justname);
 	}
+
+	docstring const msg = statusMessage(params_, loader_.status());
+	if (!msg.empty()) {
+		msgFont.setSize(FONT_SIZE_TINY);
+		font_width = max(font_width,
+			theFontMetrics(msgFont).width(msg));
+	}
+
+	dim.wid = max(50, font_width + 15);
 
 	dim_ = dim;
 }
