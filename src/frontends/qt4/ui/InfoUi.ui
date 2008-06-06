@@ -50,7 +50,7 @@
        <property name="sizeType" >
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>84</width>
          <height>20</height>
@@ -59,16 +59,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="okPB" >
+      <widget class="QPushButton" name="newPB" >
        <property name="text" >
-        <string>&amp;OK</string>
+        <string>&amp;New</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="cancelPB" >
+      <widget class="QPushButton" name="closePB" >
        <property name="text" >
-        <string>&amp;Cancel</string>
+        <string>&amp;Close</string>
        </property>
        <property name="default" >
         <bool>true</bool>
