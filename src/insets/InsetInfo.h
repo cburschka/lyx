@@ -109,6 +109,8 @@ public:
 	///
 	std::string infoName() const { return name_; }
 	///
+	bool validate(std::string const & argument) const;
+	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;

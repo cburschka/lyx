@@ -147,6 +147,13 @@ void InsetInfo::write(ostream & os) const
 }
 
 
+bool  InsetInfo::validate(string const & argument) const
+{
+	// FIXME!
+	return false;
+}
+
+
 bool InsetInfo::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("info");

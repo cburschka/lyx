@@ -93,7 +93,7 @@ public:
 	//@}
 
 	/// \return inset at current cursor location.
-	Inset * inset(InsetCode code) const;
+	Inset const * inset(InsetCode code) const;
 
 	/** Check whether we may apply our data.
 	 *

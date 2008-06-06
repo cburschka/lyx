@@ -208,7 +208,7 @@ bool Dialog::isVisibleView() const
 }
 
 
-Inset * Dialog::inset(InsetCode code) const
+Inset const * Dialog::inset(InsetCode code) const
 {
 	Inset * ins = bufferview()->cursor().innerInsetOfType(code);
 	if (!ins)
