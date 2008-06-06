@@ -53,6 +53,9 @@ public:
 	///
 	support::FileName const & filename() const;
 
+	/// Try to load a display format.
+	bool tryDisplayFormat() const;
+
 	/// It's in the cache. Now start the loading process.
 	void startLoading() const;
 

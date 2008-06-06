@@ -433,6 +433,9 @@ void Loader::Impl::startLoading()
 	if (status_ != WaitingToLoad)
 		return;
 
+	if (cached_item_->tryDisplayFormat())
+		return;
+
 	LoaderQueue::get().touch(cached_item_);
 }
 
