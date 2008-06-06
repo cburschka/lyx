@@ -69,6 +69,12 @@ void InsetInfo::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+string InsetInfo::infoType() const
+{
+	return nameTranslator().find(type_);
+}
+
+
 docstring InsetInfo::toolTip(BufferView const &, int, int) const
 {
 	odocstringstream os;

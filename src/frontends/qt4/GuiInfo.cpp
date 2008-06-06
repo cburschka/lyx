@@ -24,9 +24,11 @@
 #include "insets/InsetInfo.h"
 
 #include "support/debug.h"
+#include "support/lstrings.h"
 
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -37,14 +39,31 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////
 
+char const * info_types[] =
+{ "unknown", "shortcut", "shortcuts", "lyxrc", "package", "textclass", "menu", "icon", "buffer", "" };
+
+char const * info_types_gui[] =
+{ N_("unknown"), N_("shortcut"), N_("shortcuts"), N_("lyxrc"), N_("package"), N_("textclass"),
+  N_("menu"), N_("icon"), N_("buffer"), ""};
+
+
+
 GuiInfo::GuiInfo(GuiView & lv)
 	: DialogView(lv, "info", qt_("Info"))
 {
 	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+
+	connect(typeCO, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(nameLE, SIGNAL(textChanged(QString)), this, SLOT(change_adaptor()));
+
+	for (int n = 0; info_types[n][0]; ++n)
+		typeCO->addItem(qt_(info_types_gui[n]));
 }
 
 
-void GuiInfo::on_closePB_clicked()
+void GuiInfo::on_cancelPB_clicked()
 {
 	hide();
 }
@@ -61,6 +80,8 @@ void GuiInfo::applyView()
 	updateLabels(bufferview()->buffer());
 	bufferview()->updateMetrics();
 	bufferview()->buffer().changed();
+
+	hide();
 }
 
 
@@ -68,12 +89,17 @@ void GuiInfo::updateView()
 {
 	InsetInfo * ii = static_cast<InsetInfo *>(inset(INFO_CODE));
 	if (!ii) {
+		typeCO->setCurrentIndex(0);
+		nameLE->clear();
 		// FIXME: A New button to create an InsetInfo at the cursor location
 		// would be nice.
 		enableView(false);
 		return;
 	}
-	//FIXME: update the controls.
+
+	int type = findToken(info_types, ii->infoType());
+	typeCO->setCurrentIndex(type >= 0 ? type : 0);
+	nameLE->setText(toqstr(ii->infoName()));
 }
 
 

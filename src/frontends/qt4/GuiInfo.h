@@ -38,7 +38,7 @@ public:
 	//@}
 
 private Q_SLOTS:
-	void on_closePB_clicked();
+	void on_cancelPB_clicked();
 };
 
 } // namespace frontend

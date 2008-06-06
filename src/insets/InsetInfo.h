@@ -105,6 +105,10 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
+	std::string infoType() const;
+	///
+	std::string infoName() const { return name_; }
+	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
