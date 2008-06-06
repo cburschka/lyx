@@ -585,7 +585,6 @@ void LyXAction::init()
  */
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
 
-		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_BACKWARD
  * \li Action: Moves the cursor one position logically backwards.

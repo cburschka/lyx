@@ -179,6 +179,11 @@ The following new LyX functions have been removed:
 
 - LFUN_INSET_REFRESH.
 
+- LFUN_BREAK_PARAGRAPH_SKIP, LFUN_DELETE_BACKWARD_SKIP, LFUN_DELETE_FORWARD_SKIP.
+
+- LFUN_ERROR_NEXT
+
+
 For the detailed description of LyX functions look into doxygen documentation.
 
 
