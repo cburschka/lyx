@@ -47,6 +47,13 @@ GuiRef::GuiRef(GuiView & lv)
 	sort_ = false;
 	at_ref_ = false;
 
+	//FIXME: when/if we support the xr package for cross-reference
+	//between independant files. Those can be re-enabled.
+	refsL->setEnabled(false);
+	refsL->hide();
+	bufferCO->setEnabled(false);
+	bufferCO->hide();
+
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
