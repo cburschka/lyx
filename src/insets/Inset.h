@@ -103,6 +103,9 @@ public:
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;
+	/// This checks whether the Buffer * actually points to an open 
+	/// Buffer. It might not if that Buffer has been closed.
+	bool isBufferValid() const;
 
 	/// initialize view for this inset.
 	/**

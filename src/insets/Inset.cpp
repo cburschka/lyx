@@ -18,6 +18,7 @@
 
 #include "buffer_funcs.h"
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
@@ -145,6 +146,12 @@ Buffer & Inset::buffer()
 Buffer const & Inset::buffer() const
 {
 	return const_cast<Inset *>(this)->buffer();
+}
+
+
+bool Inset::isBufferValid() const
+{
+	return theBufferList().isLoaded(buffer_);
 }
 
 
