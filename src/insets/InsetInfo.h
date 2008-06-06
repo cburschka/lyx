@@ -135,6 +135,10 @@ private:
 	///
 	virtual Inset * clone() const { return new InsetInfo(*this); }
 	///
+	void error(std::string const & err);
+	///
+	void setText(docstring const & str);
+	///
 	info_type type_;
 	///
 	std::string name_;

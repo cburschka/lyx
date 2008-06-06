@@ -222,6 +222,19 @@ void InsetInfo::setInfo(string const & name)
 }
 
 
+void InsetInfo::error(string const & err)
+{
+	InsetText::setText(bformat(_(err), from_utf8(name_)), buffer().params().getFont(),
+		false);
+}
+
+
+void InsetInfo::setText(docstring const & str)
+{
+	InsetText::setText(str, buffer().params().getFont(), false);
+}
+
+
 void InsetInfo::updateInfo()
 {
 	InsetText::clear();
@@ -230,24 +243,24 @@ void InsetInfo::updateInfo()
 
 	switch (type_) {
 	case UNKNOWN_INFO:
-		setText(_("Unknown Info: ") + from_utf8(name_),
-			bp.getFont(), false);
+		error("Unknown Info: %1$s");
 		break;
+	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
-		if (func.action != LFUN_UNKNOWN_ACTION)
-			setText(theTopLevelKeymap().printBindings(func),
-				bp.getFont(), false);
-		break;
-	}
-	case SHORTCUT_INFO: {
-		FuncRequest func = lyxaction.lookupFunc(name_);
-		if (func.action != LFUN_UNKNOWN_ACTION) {
-			KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
-			if (!bindings.empty())
-				setText(bindings.rbegin()->print(KeySequence::ForGui),
-					bp.getFont(), false);
+		if (func.action == LFUN_UNKNOWN_ACTION) {
+			error("Unknown action %1$s");
+			break;
 		}
+		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
+		if (bindings.empty()) {
+			error("No binding for action %1$s");
+			break;
+		}
+		if (type_ == SHORTCUT_INFO)
+			setText(bindings.rbegin()->print(KeySequence::ForGui));
+		else
+			setText(theTopLevelKeymap().printBindings(func));
 		break;
 	}
 	case LYXRC_INFO: {
@@ -259,31 +272,28 @@ void InsetInfo::updateInfo()
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
-		setText(from_utf8(result), bp.getFont(), false);
+		setText(from_utf8(result));
 		break;
 	}
 	case PACKAGE_INFO:
 		// check in packages.lst
-		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"),
-			bp.getFont(), false);
+		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"));
 		break;
 	case TEXTCLASS_INFO: {
 		// name_ is the class name
-		setText(LayoutFileList::get().haveClass(name_) ? _("yes") : _("no"),
-		bp.getFont(), false);
+		setText(LayoutFileList::get().haveClass(name_) ? _("yes") : _("no"));
 		break;
 	}
 	case MENU_INFO: {
 		docstring_list names;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action == LFUN_UNKNOWN_ACTION) {
-			setText(bformat(_("Unknown action %1$s"), from_utf8(name_)), bp.getFont(), false);
+			error("Unknown action %1$s");
 			break;
 		}
 		// iterate through the menubackend to find it
 		if (!theApp()->searchMenu(func, names)) {
-			setText(bformat(_("No menu entry for action %1$s"), from_utf8(name_)),
-				bp.getFont(), false);
+			error("No menu entry for action %1$s");
 			break;
 		}
 		// if find, return its path.
@@ -319,14 +329,13 @@ void InsetInfo::updateInfo()
 	}
 	case BUFFER_INFO: {
 		if (name_ == "name")
-			setText(from_utf8(buffer().fileName().onlyFileName()),
-				bp.getFont(), false);
+			setText(from_utf8(buffer().fileName().onlyFileName()));
 		else if (name_ == "path")
-			setText(from_utf8(buffer().filePath()), bp.getFont(), false);
+			setText(from_utf8(buffer().filePath()));
 		else if (name_ == "class")
-			setText(from_utf8(bp.documentClass().name()), bp.getFont(), false);
+			setText(from_utf8(bp.documentClass().name()));
 		else
-			setText(_("Unknown buffer info"), bp.getFont(), false);
+			setText(_("Unknown buffer info"));
 		break;
 	}
 	}
