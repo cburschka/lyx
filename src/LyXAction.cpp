@@ -832,6 +832,12 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_RIGHT_SELECT, "word-right-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_SELECT
+ * \li Action: Puts the word where the cursor stands into the selection.
+ * \li Syntax: word-select
+ * \endvar
+ */
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_CAPITALIZE
