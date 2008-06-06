@@ -17,8 +17,6 @@
 
 namespace lyx {
 
-class InsetInfo;
-
 namespace frontend {
 
 class GuiInfo : public DialogView, public Ui::InfoUi
@@ -32,13 +30,22 @@ public:
 	//@{
 	void applyView();
 	void updateView();
-	void dispatchParams();
+	void dispatchParams() {}
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
 	//@}
 
 private Q_SLOTS:
-	void on_cancelPB_clicked();
+	void on_newPB_clicked();
+	void on_closePB_clicked();
+	void on_typeCO_currentIndexChanged(int);
+	void on_nameLE_textChanged(QString const &);
+
+private:
+	void paramsToDialog();
+	void dialogToParams();
+	QString type_;
+	QString name_;
 };
 
 } // namespace frontend

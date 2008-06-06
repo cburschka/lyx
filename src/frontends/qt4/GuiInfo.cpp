@@ -47,70 +47,104 @@ char const * info_types_gui[] =
   N_("menu"), N_("icon"), N_("buffer"), ""};
 
 
-
 GuiInfo::GuiInfo(GuiView & lv)
 	: DialogView(lv, "info", qt_("Info"))
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-
-	connect(typeCO, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(nameLE, SIGNAL(textChanged(QString)), this, SLOT(change_adaptor()));
-
+	typeCO->blockSignals(true);
 	for (int n = 0; info_types[n][0]; ++n)
 		typeCO->addItem(qt_(info_types_gui[n]));
+	typeCO->blockSignals(false);
 }
 
 
-void GuiInfo::on_cancelPB_clicked()
+void GuiInfo::on_newPB_clicked()
+{
+	dialogToParams();
+	docstring const argument = qstring_to_ucs4(type_ + ' ' + name_);
+	dispatch(FuncRequest(LFUN_INFO_INSERT, argument));
+}
+
+
+void GuiInfo::on_closePB_clicked()
 {
 	hide();
+}
+
+
+void GuiInfo::on_typeCO_currentIndexChanged(int)
+{
+	applyView();
+}
+
+
+void GuiInfo::on_nameLE_textChanged(QString const &)
+{
+	applyView();
 }
 
 
 void GuiInfo::applyView()
 {
-	InsetInfo * ii = static_cast<InsetInfo *>(inset(INFO_CODE));
-	if (!ii)
+	InsetInfo const * ii = static_cast<InsetInfo const *>(inset(INFO_CODE));
+	if (!ii) {
 		return;
+	}
 	
-	// FIXME: update the inset contents
+	dialogToParams();
+	docstring const argument = qstring_to_ucs4(type_ + ' ' + name_);
+	if (!ii->validate(argument))
+		return;
 
+	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
+	// FIXME: update the inset contents
 	updateLabels(bufferview()->buffer());
 	bufferview()->updateMetrics();
 	bufferview()->buffer().changed();
-
-	hide();
 }
 
 
 void GuiInfo::updateView()
 {
-	InsetInfo * ii = static_cast<InsetInfo *>(inset(INFO_CODE));
+	InsetInfo const * ii = static_cast<InsetInfo const *>(inset(INFO_CODE));
 	if (!ii) {
-		typeCO->setCurrentIndex(0);
-		nameLE->clear();
-		// FIXME: A New button to create an InsetInfo at the cursor location
-		// would be nice.
 		enableView(false);
 		return;
 	}
 
-	int type = findToken(info_types, ii->infoType());
+	type_ = toqstr(ii->infoType());
+	name_ = toqstr(ii->infoName());
+	paramsToDialog();
+}
+
+
+void GuiInfo::paramsToDialog()
+{
+	typeCO->blockSignals(true);
+	nameLE->blockSignals(true);
+	int type = findToken(info_types, fromqstr(type_));
 	typeCO->setCurrentIndex(type >= 0 ? type : 0);
-	nameLE->setText(toqstr(ii->infoName()));
+	nameLE->setText(name_);
+	typeCO->blockSignals(false);
+	nameLE->blockSignals(false);
+}
+
+
+void GuiInfo::dialogToParams()
+{
+	int type = typeCO->currentIndex();
+	if (type != -1)
+		type_ = info_types[type];
+	name_ = nameLE->text();
 }
 
 
 void GuiInfo::enableView(bool enable)
 {
-	//FIXME: enable controls that need enabling.
-}
-
-
-void GuiInfo::dispatchParams()
-{
+	typeCO->setEnabled(enable);
+	nameLE->setEnabled(enable);
+	newPB->setEnabled(!enable);
 }
 
 

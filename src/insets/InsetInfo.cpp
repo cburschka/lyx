@@ -147,10 +147,10 @@ void InsetInfo::write(ostream & os) const
 }
 
 
-bool  InsetInfo::validate(string const & argument) const
+bool  InsetInfo::validate(docstring const & argument) const
 {
 	// FIXME!
-	return false;
+	return true;
 }
 
 
@@ -165,13 +165,18 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
+	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_RELEASE:
+	case LFUN_MOUSE_MOTION:
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
+	case LFUN_COPY:
+	case LFUN_INSET_SETTINGS:
+		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		break;
-	//FIXME: do something.
-	/*
-	*/
 
 	default:
 		return false;
@@ -194,6 +199,11 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetText::doDispatch(cur, cmd);
 		break;
 
+	case LFUN_INSET_MODIFY:
+		setInfo(to_utf8(cmd.argument()));
+		cur.pos() = 0;
+		break;
+
 	default:
 		break;
 	}
@@ -208,6 +218,7 @@ void InsetInfo::setInfo(string const & name)
 	string type;
 	name_ = trim(split(name, type, ' '));
 	type_ = nameTranslator().find(type);
+	updateInfo();
 }
 
 
