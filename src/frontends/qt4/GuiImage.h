@@ -44,10 +44,8 @@ private:
 	virtual bool isDrawable() const { return true; }
 	/**
 	 * Load the image file into memory.
-	 * The process is asynchronous, so this method starts the loading.
-	 * When finished, the Image::finishedLoading signal is emitted.
 	 */
-	virtual void load(support::FileName const & filename);
+	bool load(support::FileName const & filename);
 	/**
 	 * Finishes the process of modifying transformed_, using
 	 * \c params to decide on color, grayscale etc.

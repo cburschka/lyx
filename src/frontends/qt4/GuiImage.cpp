@@ -64,21 +64,19 @@ unsigned int GuiImage::height() const
 }
 
 
-void GuiImage::load(FileName const & filename)
+bool GuiImage::load(FileName const & filename)
 {
 	if (!original_.isNull()) {
 		LYXERR(Debug::GRAPHICS, "Image is loaded already!");
-		finishedLoading(false);
-		return;
+		return false;
 	}
 
 	if (!original_.load(toqstr(filename.absFilename()))) {
 		LYXERR(Debug::GRAPHICS, "Unable to open image");
-		finishedLoading(false);
-		return;
+		return false;
 	}
 	transformed_ = original_;
-	finishedLoading(true);
+	return true;
 }
 
 

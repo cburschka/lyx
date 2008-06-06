@@ -67,12 +67,6 @@ public:
 	 */
 	void imageConverted(bool);
 
-	/** Get a notification when the image loading is done.
-	 *  Connected to a signal on_finish_ which is passed to
-	 *  lyx::graphics::Image::loadImage.
-	 */
-	void imageLoaded(bool);
-
 	/** Sets the status of the loading process. Also notifies
 	 *  listeners that the status has changed.
 	 */
@@ -115,9 +109,6 @@ public:
 
 	/// This signal is emitted when the image loading status changes.
 	boost::signal<void()> statusChanged;
-
-	/// The connection to the signal Image::finishedLoading
-	boost::signals::connection cl_;
 
 	/// The connection of the signal ConvProcess::finishedConversion,
 	boost::signals::connection cc_;
@@ -230,9 +221,6 @@ void CacheItem::Impl::reset()
 
 	status_ = WaitingToLoad;
 
-	if (cl_.connected())
-		cl_.disconnect();
-
 	if (cc_.connected())
 		cc_.disconnect();
 
@@ -289,15 +277,7 @@ void CacheItem::Impl::loadImage()
 
 	image_.reset(Image::newImage());
 
-	cl_.disconnect();
-	cl_ = image_->finishedLoading.connect(
-		boost::bind(&Impl::imageLoaded, this, _1));
-	image_->load(file_to_load_);
-}
-
-
-void CacheItem::Impl::imageLoaded(bool success)
-{
+	bool success = image_->load(file_to_load_);
 	string const text = success ? "succeeded" : "failed";
 	LYXERR(Debug::GRAPHICS, "Image loading " << text << '.');
 
@@ -307,8 +287,6 @@ void CacheItem::Impl::imageLoaded(bool success)
 
 	if (remove_loaded_file_ && unzipped_filename_ != file_to_load_)
 		file_to_load_.removeFile();
-
-	cl_.disconnect();
 
 	if (!success) {
 		setStatus(ErrorLoading);
