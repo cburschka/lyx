@@ -260,7 +260,7 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 	if (!isDrawingEnabled())
 		return;
 
-	drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
+	drawPixmap(x, y, qlimage.pixmap(), 0, 0, w, h);
 }
 
 
