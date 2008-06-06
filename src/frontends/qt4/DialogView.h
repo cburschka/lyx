@@ -45,6 +45,7 @@ protected:
 	bool initialiseParams(std::string const & /*data*/) { return true; }
 	void clearParams() {}
 	//@}
+	/// Any dialog that overrides this method should make sure to call it.
 	void closeEvent(QCloseEvent * ev)
 	{
 		clearParams();

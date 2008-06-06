@@ -137,8 +137,7 @@ void GuiCitation::cleanUp()
 void GuiCitation::closeEvent(QCloseEvent * e)
 {
 	clearSelection();
-	clearParams();
-	e->accept();
+	DialogView::closeEvent(e);
 }
 
 
