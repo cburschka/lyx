@@ -41,8 +41,7 @@ Image * GuiImage::newImage()
 
 GuiImage::GuiImage(GuiImage const & other)
 	: Image(other), original_(other.original_),
-	  transformed_(other.transformed_),
-	  transformed_pixmap_(other.transformed_pixmap_)
+	  transformed_(other.transformed_), is_transformed_(other.is_transformed_)
 {}
 
 
@@ -54,13 +53,13 @@ Image * GuiImage::clone() const
 
 unsigned int GuiImage::width() const
 {
-	return transformed_.width();
+	return is_transformed_ ? transformed_.width() : original_.width();
 }
 
 
 unsigned int GuiImage::height() const
 {
-	return transformed_.height();
+	return is_transformed_ ? transformed_.height() : original_.height();
 }
 
 
@@ -75,17 +74,17 @@ bool GuiImage::load(FileName const & filename)
 		LYXERR(Debug::GRAPHICS, "Unable to open image");
 		return false;
 	}
-	transformed_ = original_;
 	return true;
 }
 
 
 // This code is taken from KImageEffect::toGray
-static QImage & toGray(QImage & img)
+static QPixmap toGray(QPixmap const & pix)
 {
-	if (img.width() == 0 || img.height() == 0)
-		return img;
+	if (pix.width() == 0 || pix.height() == 0)
+		return pix;
 
+	QImage img = pix.toImage();
 	int const pixels = img.depth() > 8 ?
 		img.width() * img.height() : img.numColors();
 
@@ -97,7 +96,7 @@ static QImage & toGray(QImage & img)
 		int const val = qGray(data[i]);
 		data[i] = qRgba(val, val, val, qAlpha(data[i]));
 	}
-	return img;
+	return QPixmap::fromImage(img);
 }
 
 
@@ -106,14 +105,24 @@ bool GuiImage::setPixmap(Params const & params)
 	if (original_.isNull() || params.display == NoDisplay)
 		return false;
 
+	is_transformed_ = clip(params);
+	is_transformed_ |= rotate(params);
+	is_transformed_ |= scale(params);
+
 	switch (params.display) {
 	case GrayscaleDisplay: {
-		toGray(transformed_);
+		transformed_ = is_transformed_
+			? toGray(transformed_) :  toGray(original_);
+		is_transformed_ = true;
 		break;
 	}
 
 	case MonochromeDisplay: {
-		transformed_.convertToFormat(transformed_.format(), Qt::MonoOnly);
+		QImage img = is_transformed_
+			? transformed_.toImage() : original_.toImage();
+		img.convertToFormat(img.format(), Qt::MonoOnly);
+		transformed_ = QPixmap::fromImage(img);
+		is_transformed_ = true;
 		break;
 	}
 
@@ -121,19 +130,19 @@ bool GuiImage::setPixmap(Params const & params)
 		break;
 	}
 
-	transformed_pixmap_ = QPixmap::fromImage(transformed_);
+	if (!is_transformed_)
+		// Clear it out to save some memory.
+		transformed_ = QPixmap();
+
 	return true;
 }
 
 
-void GuiImage::clip(Params const & params)
+bool GuiImage::clip(Params const & params)
 {
-	if (transformed_.isNull())
-		return;
-
 	if (params.bb.empty())
 		// No clipping is necessary.
-		return;
+		return false;
 
 	int const new_width  = params.bb.xr - params.bb.xl;
 	int const new_height = params.bb.yt - params.bb.yb;
@@ -142,11 +151,11 @@ void GuiImage::clip(Params const & params)
 	// Bounding Box would be empty() in this case.
 	if (new_width > original_.width() || new_height > original_.height()) {
 		// Bounds are invalid.
-		return;
+		return false;
 	}
 
 	if (new_width == original_.width() && new_height == original_.height())
-		return;
+		return false;
 
 	int const xoffset_l = params.bb.xl;
 	int const yoffset_t = (original_.height() > int(params.bb.yt) ?
@@ -154,37 +163,40 @@ void GuiImage::clip(Params const & params)
 
 	transformed_ = original_.copy(xoffset_l, yoffset_t,
 				      new_width, new_height);
+	return true;
 }
 
 
-void GuiImage::rotate(Params const & params)
+bool GuiImage::rotate(Params const & params)
 {
-	if (transformed_.isNull())
-		return;
-
 	if (!params.angle)
-		return;
+		return false;
+
+	if (!is_transformed_)
+		transformed_ = original_;
 
 	QMatrix m;
 	m.rotate(-params.angle);
-
 	transformed_ = transformed_.transformed(m);
+	return true;
 }
 
 
-void GuiImage::scale(Params const & params)
+bool GuiImage::scale(Params const & params)
 {
-	if (transformed_.isNull())
-		return;
-
 	Dimension dim = scaledDimension(params);
 
 	if (dim.width() == width() && dim.height() == height())
-		return;
+		return false;
+
+	if (!is_transformed_)
+		transformed_ = original_;
 
 	QMatrix m;
 	m.scale(double(dim.width()) / width(), double(dim.height()) / height());
 	transformed_ = transformed_.transformed(m);
+
+	return true;
 }
 
 } // namespace graphics

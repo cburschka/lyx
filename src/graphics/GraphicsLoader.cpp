@@ -413,11 +413,6 @@ void Loader::Impl::createPixmap()
 
 	image_.reset(cached_item_->image()->clone());
 
-	// These do nothing if there's nothing to do
-	image_->clip(params_);
-	image_->rotate(params_);
-	image_->scale(params_);
-
 	bool const success = image_->setPixmap(params_);
 
 	if (success) {

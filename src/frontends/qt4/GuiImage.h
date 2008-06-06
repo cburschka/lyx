@@ -15,7 +15,6 @@
 
 #include "graphics/GraphicsImage.h"
 
-#include <QImage>
 #include <QPixmap>
 
 namespace lyx {
@@ -28,20 +27,18 @@ public:
 	static Image * newImage();
 
 	/// Retrieve the buffered pixmap.
-	QPixmap const & qpixmap() const { return transformed_pixmap_; }
-
-	/// Retrieve the buffered pixmap.
-	QImage const & qimage() const { return transformed_; }
+	QPixmap const & pixmap() const
+	{ return is_transformed_? transformed_ : original_; }
 
 private:
 	/// Create a copy
-	virtual Image * clone() const;
+	Image * clone() const;
 	/// Get the image width
-	virtual unsigned int width() const;
+	unsigned int width() const;
 	/// Get the image height
-	virtual unsigned int height() const;
+	unsigned int height() const;
 	// FIXME Is the image drawable ?
-	virtual bool isDrawable() const { return true; }
+	bool isDrawable() const { return true; }
 	/**
 	 * Load the image file into memory.
 	 */
@@ -51,13 +48,14 @@ private:
 	 * \c params to decide on color, grayscale etc.
 	 * \returns true if successful.
 	 */
-	virtual bool setPixmap(Params const & params);
+	bool setPixmap(Params const & params);
+
 	/// Clip the image using params.
-	virtual void clip(Params const & params);
+	bool clip(Params const & params);
 	/// Rotate the image using params.
-	virtual void rotate(Params const & params);
+	bool rotate(Params const & params);
 	/// Scale the image using params.
-	virtual void scale(Params const & params);
+	bool scale(Params const & params);
 
 	/// Access to the class is through newImage() and clone.
 	GuiImage() {}
@@ -65,12 +63,12 @@ private:
 	GuiImage(GuiImage const &);
 
 	/// The original loaded image.
-	QImage original_;
+	QPixmap original_;
 
 	/// The transformed image for display.
-	QImage transformed_;
+	QPixmap transformed_;
 	/// Buffer the pixmap itself
-	QPixmap transformed_pixmap_;
+	bool is_transformed_;
 };
 
 } // namespace graphics

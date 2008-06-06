@@ -80,15 +80,6 @@ public:
 	 */
 	virtual bool setPixmap(Params const & params) = 0;
 
-	/// Clip the image using params.
-	virtual void clip(Params const & params) = 0;
-
-	/// Rotate the image using params.
-	virtual void rotate(Params const & params) = 0;
-
-	/// Scale the image using params.
-	virtual void scale(Params const & params) = 0;
-
 protected:
 	/// Must define default c-tor explicitly as we define a copy c-tor.
 	Image() {}
