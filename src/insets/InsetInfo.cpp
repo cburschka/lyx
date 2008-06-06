@@ -56,9 +56,10 @@ InsetInfo::InsetInfo(Buffer const & buf, string const & name)
 }
 
 
-Inset * InsetInfo::editXY(Cursor &, int, int)
+Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
 {
-	return this;
+	cur.push(*this);
+	return InsetText::editXY(cur, x, y);
 }
 
 
@@ -168,19 +169,19 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	// FIXME: we should allow selection, copy etc...
+	// allow selection, copy but not cut, delete etc
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
-		// do not dispatch to InsetText
-		cur.dispatched();
+	case LFUN_COPY:
+	case LFUN_INSET_SETTINGS:
+		InsetText::doDispatch(cur, cmd);
 		break;
 
 	default:
-		InsetText::doDispatch(cur, cmd);
 		break;
 	}
 }

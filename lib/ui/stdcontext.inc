@@ -353,7 +353,7 @@ Menuset
 #
 
 	Menu "context-info"
-		Item "Settings...|S" "inset-settings"
+		Item "Settings...|S" "inset-settings info"
 	End
 
 End

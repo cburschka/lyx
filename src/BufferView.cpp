@@ -953,7 +953,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 			case BRANCH_CODE:
 			case BOX_CODE:
 			case LISTINGS_CODE:
-			case INFO_CODE:
 				enable = (cmd.argument().empty() ||
 					  cmd.getArg(0) == insetName(next_code));
 				break;
