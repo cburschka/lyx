@@ -1338,18 +1338,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INFO_INSERT: {
-		Inset * inset = createInset(cur.bv().buffer(), cmd);
-		if (!inset)
-			break;
-		// if an empty inset is created (cmd.argument() is empty)
-		// use current selection as parameter.
+		Inset * inset;
 		if (cmd.argument().empty() && cur.selection()) {
-			// use selected text as info to avoid a separate UI
+			// if command argument is empty use current selection as parameter.
 			docstring ds = cur.selectionAsString(false);
 			cutSelection(cur, true, false);
-			static_cast<InsetInfo *>(inset)->setInfo(to_utf8(ds));
-			static_cast<InsetInfo *>(inset)->updateInfo();
+			FuncRequest cmd0(cmd, ds);
+			inset = createInset(cur.bv().buffer(), cmd0);
+		} else {
+			inset = createInset(cur.bv().buffer(), cmd);
 		}
+		if (!inset)
+			break;
 		insertInset(cur, inset);
 		cur.posForward();
 		break;
