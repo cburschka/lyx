@@ -31,7 +31,7 @@ namespace frontend {
 static QString credits()
 {
 	QString res;
-	QFile file(toqstr(package().system_support().absFilename()) + "CREDITS");
+	QFile file(toqstr(package().system_support().absFilename()) + "/CREDITS");
 	QTextStream out(&res);
 
 	if (file.isReadable()) {
