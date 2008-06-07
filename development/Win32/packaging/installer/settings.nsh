@@ -7,6 +7,12 @@ These typically need to be modified for each LyX release
 */
 
 #--------------------------------
+# Windows version on which the complier is running
+
+!define COMPILER_OS VISTA
+#!define COMPILER_OS XP
+
+#--------------------------------
 # Version number
 
 !define APP_VERSION_MAJOR 1

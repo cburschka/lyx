@@ -38,7 +38,11 @@ SetCompressor /SOLID lzma
 !define FILES_LAUNCHER "..\..\launcher"
 !define FILES_PDFVIEW "..\..\pdfview"
 
-!define FILES_MSVC "$%SystemRoot%\WinSxS\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375"
+!if ${COMPILER_OS} == VISTA 
+  !define FILES_MSVC "$%SystemRoot%\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.21022.8_none_bcb86ed6ac711f91"
+!else
+  !define FILES_MSVC "$%SystemRoot%\WinSxS\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375"
+!endif
 !define FILES_PYTHON "${FILES_DEPS}\python"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
@@ -59,8 +63,8 @@ SetCompressor /SOLID lzma
 #--------------------------------
 # Locations of components to download
 
-!define MIRROR_SF1 "http://superb-west.dl.sourceforge.net/sourceforge"
-!define MIRROR_SF2 "http://mesh.dl.sourceforge.net/sourceforge"
+!define MIRROR_SF1 "http://downloads.sourceforge.net" # A random mirror is selected
+!define MIRROR_SF2 "http://downloads.sourceforge.net"
 
 !macro SourceForgeMirror ID FILENAME
   !define DOWNLOAD_${ID} "${MIRROR_SF1}/${FILENAME}"
