@@ -19,6 +19,7 @@ Win32/launcher/launcher.nsi \
 Win32/packaging/icons/lyx_doc.svg \
 Win32/packaging/icons/lyx_32x32.png \
 Win32/packaging/icons/lyx_doc_32x32.png \
+Win32/packaging/icons/lyx.ico \
 Win32/packaging/icons/lyx_32x32.ico \
 Win32/packaging/icons/lyx_32x32_16colors.png \
 Win32/packaging/icons/lyx.svg \
