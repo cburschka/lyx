@@ -498,7 +498,22 @@ void LyXAction::init()
  */
 		{ LFUN_INDEX_PRINT, "index-print", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NOMENCL_INSERT
+ * \li Action: Inserts Nomenclature entry.
+ * \li Notion: It automatically takes the word on the cursor position if no symbol is given.
+ * \li Syntax: nomencl-insert [<SYMBOL>]
+ * \li Origin: Ugras, 4 Nov 2006
+ * \endvar
+ */
 		{ LFUN_NOMENCL_INSERT, "nomencl-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NOMENCLATURE_PRINT
+ * \li Action: Inserts list of Nomenclature entries.
+ * \li Syntax: nomenclature-print
+ * \li Origin: Ugras, 4 Nov 2006
+ * \endvar
+ */
 		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop, Edit },
 
 		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
