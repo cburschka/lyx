@@ -179,7 +179,11 @@ dist_itclipartdoc_DATA = \
 
 jadocdir = $(pkgdatadir)/doc/ja
 dist_jadoc_DATA = \
-	ja/Intro.lyx
+	ja/FAQ.lyx \
+	ja/Intro.lyx \
+	ja/LaTeXConfig.lyx \
+	ja/Shortcuts.lyx \
+	ja/Tutorial.lyx
 
 jaclipartdocdir = $(pkgdatadir)/doc/ja/clipart
 dist_jaclipartdoc_DATA = \

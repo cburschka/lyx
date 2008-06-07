@@ -2222,7 +2222,11 @@ lib_doc_it_clipart_files = Split('''
 
 
 lib_doc_ja_files = Split('''
+    FAQ.lyx
     Intro.lyx
+    LaTeXConfig.lyx
+    Shortcuts.lyx
+    Tutorial.lyx
 ''')
 
 

@@ -1,0 +1,1639 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 335
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\newcommand{\PostScript}{PostScript\textregistered{}}
+\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,%
+bookmarkstype=toc]{hyperref}
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+\end_preamble
+\language japanese
+\inputencoding EUC-JP-pLaTeX
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXのよくある質問とその答
+\end_layout
+
+\begin_layout Author
+LyXプロジェクトチーム
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+コメントや誤りの訂正をお持ちの場合には、LyX文書化メーリングリスト<lyx-docs@lists.lyx.org>までお送り下さい。この文書の翻訳は、当初人見光太
+郎氏が行った貢献に基づいています。
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Abstract
+これは、高品質文書作成のためのWhat-You-See-Is-What-You-Mean環境を提供するオープンソース文書プロセッサLyXについてよくある質問のリ
+ストです。さらに詳しい情報が必要なときは、説明書を
+\emph on
+ひととおり読んだのちに
+\emph default
+、LyXユーザグループ・メーリングリスト
+\family typewriter
+lyx-users@lists.lyx.org
+\family default
+にコンタクトしてみるとよいでしょう。
+\end_layout
+
+\begin_layout Abstract
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+入門と一般的な情報
+\end_layout
+
+\begin_layout Subsection
+LyXとは何ですか? 
+\end_layout
+
+\begin_layout Standard
+LyXとは、コンピュータで文書を書くにあたって、古色蒼然たる「タイプライタ方式」の伝統を打ち破った、より近代的なアプローチを採用したプログラムです。LyXは、組
+版に長ける必要なしに、最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています。組版作業のほとんどは、著者ではなくコンピュータによって行わ
+れるので、LyXを使えば著者は執筆に専念できるのです。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+LyXでは、文書は「ほぼ
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+WYSIWYG
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」に表示されます。「ほぼ」というのは、改行や改頁は、印刷した文書の仕上りとまったく同じようには表示されないのです。しかしながら、LyXは最終的に、作成した文書の
+整形を実行する（LaTeXと呼ばれる）独立した組版プログラムを使うので、これらの表示が仕上りと一致しなくてはならない必要性はあまりありません。LyXが、快適なユ
+ーザーインタフェイスとして必要なものはすべて備える一方で、組版プログラムの方も、文書整形に必要なものすべてを備えるだけでなく、この上なくすばらしい整形を行うので
+す。
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ですから、改行や改頁は、もはやあなたの仕事ではないのです。次の小節が第何小節にあたるかを覚えておくことも、もはやあなたの仕事ではありませんし、節見出しに統一して
+使うフォントは何だったかを思い出すことも、もはやあなたの仕事ではありません。現在どのような
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+種類
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の文書を編集しているのか、あそこやここの文章がどのような
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+性質
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の段落なのかを、LyX（およびLaTeX）に教えてやりさえすれば、コンピュータが適切に組版をしてくれます。もちろん微調整のために、依然として低レベルでの整形を行
+うことも可能ではあります。しかし、LyXでの正しい方法は、ある文章が
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+なんであるか
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+をコンピュータに知らせることであって、それがどのようなデザインを持つべきかまで知らせることではありません。すなわち、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+LyXはWYSIWYM（What You See Is What You
+\color none
+ 
+\emph on
+\color inherit
+Mean
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+）編集の手段を提供するのだというのが適切でしょう。
+\end_layout
+
+\begin_layout Subsection
+わかりました。だけどそれは便利なの？
+\end_layout
+
+\begin_layout Standard
+もちろんです。これまでに、以下のようなタイプの文書が LyXでつくられました。
+\end_layout
+
+\begin_layout Itemize
+メモ
+\end_layout
+
+\begin_layout Itemize
+書簡
+\end_layout
+
+\begin_layout Itemize
+博士論文（単独の文書で260ページ、インクルードされたファイルまで含めるとそれ以上）
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+例えば、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+講義ノート（27個の図を含む133ページ、 33MHzの486マシンで！）
+\end_layout
+
+\begin_layout Itemize
+セミナーノート（500ページ以上）
+\end_layout
+
+\begin_layout Itemize
+学会会誌（Proceedings of the Second Continental Workshop on the Geoid in Europe,
+ (Finnish Geodetic Institute Report 98:4), 292ページ）
+\end_layout
+
+\begin_layout Itemize
+ソフトウェア説明書（LyXユーザーの手引きは約120ページ）
+\end_layout
+
+\begin_layout Itemize
+書籍
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PostgreSQLの本の例は
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.postgresql.org/docs/awbook.html
+\end_layout
+
+\end_inset
+
+を参照
+\end_layout
+
+\begin_layout Itemize
+Donnay, J-P., Barnsley, M.J., and Longley, P.A., eds., 2001, Remote Sensing and
+ Urban Analysis (Taylor and Francis: London).
+\end_layout
+
+\begin_layout Itemize
+Herbert Voss: Praktische Kryptologie mit Java, 286頁、多数の数式および図表。ISBN 3-8311-1458-
+7
+\end_layout
+
+\begin_layout Itemize
+Yann Collette and Patrick Siarry, Optimisation multiobjectifs, 2002, Eyrolles
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+査読付学術誌に発表された論文
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Astronomy & Astrophysics (Suetterlin, P.
+ 1998, A&A, 333, 305; Suetterlin, P.
+ & Wiehr, E.
+ 1998, A&A, 336, 367)
+\end_layout
+
+\begin_layout Itemize
+Astronomical Journal (Ressler, M.
+ E.
+ & Barsony, M.
+ 2001, AJ, 121, 1098)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+小説（2000年9月に出版される400ページ以上の小説；836ページの小説も進行中）
+\end_layout
+
+\begin_layout Itemize
+舞台・映画の台本
+\end_layout
+
+\begin_layout Itemize
+100万米ドル以上の仕事の企画書
+\end_layout
+
+\begin_layout Subsection
+どこから始めたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+LyXに関することであれば、まず最初に訪れるべきなのは、ウェブサイト
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
+
+\end_inset
+
+です。ニュース・用例・ダウンロード・その他多くのものがあります。LyXをインストールしたのち、初めて起動したら、入門篇（
+\family sans
+ヘルプ\SpecialChar \menuseparator
+LyX入門篇
+\family default
+）を読んでください。そう、ぜひともお願いします。
+\end_layout
+
+\begin_layout Standard
+これ以外にも
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.bilkent.edu.tr/~robin/lyxguide.pdf
+\end_layout
+
+\end_inset
+
+に、入門用のガイドがあります。
+\end_layout
+
+\begin_layout Subsection
+私のコンピュータでLyXは走るの？
+\end_layout
+
+\begin_layout Standard
+今のところ、LyXを動かすにはXウインドウシステムが必要です。OS/2とWin32用に移植したものも存在しますが、これらのシステム上でもXサーバをインストールし
+て、動かしておく必要があります。LyXが動くのがわかっているプラットホームは以下の通りです（他にも多数のプラットホームで動くはずです）。
+\end_layout
+
+\begin_layout Itemize
+Linux: RcedHat 4.2, 5.0, 5.1, 6.0, 6.1, SUSE 5.x, Mandrake 7.0, 7.2
+\end_layout
+
+\begin_layout Itemize
+SparcLinux: RedHat 6.0
+\end_layout
+
+\begin_layout Itemize
+Sun Solaris 2.6, 2.7
+\end_layout
+
+\begin_layout Itemize
+Tru64 Unix 4.0f
+\end_layout
+
+\begin_layout Itemize
+HP-UX
+\end_layout
+
+\begin_layout Itemize
+OSF1 flore V4.0 1091 alpha
+\end_layout
+
+\begin_layout Subsection
+LyXはハードディスク容量をどのくらい必要としますか？
+\end_layout
+
+\begin_layout Standard
+私のシステムでは、LyXのバイナリが2.0MBで、サポートファイルが12.6MB（うち9.1MBが説明書です！必要のない言語の説明書を削除するとディスク容量を節約でき
+ます）の容量を使っています。もちろん、teTeXのようなLaTeX頒布版が必要で、これが115MBを消費し、ghostscriptを含めればさらに10MBが必要
+です。
+\end_layout
+
+\begin_layout Subsection
+LyXは本当にオープンソースですか？
+\end_layout
+
+\begin_layout Standard
+はい。LyXが使用しているフリーのXツールキットxformsは、最近まではクローズド・ソースでしたが、今は違います。さらに、LyXが使っているもう一つののツール
+キットQtは、Troll Techが所有する製品ですが、LyXはそのオープンソース版を使用しています。LyXのソース自体も、GPLライセンスの下で利用可能ですか
+ら、LyXはオープンソースの要件を見たしています。
+\end_layout
+
+\begin_layout Standard
+xformsのバージョン1.0は、LGPLライセンスで利用可能であり、そのソース（とバイナリ）は、若干手を加える必要があるとは言え、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz
+\end_layout
+
+\end_inset
+
+で入手できます。Qtは、通常OS頒布版に付いてくるでしょう。
+\end_layout
+
+\begin_layout Section
+インターネット資源
+\end_layout
+
+\begin_layout Subsection
+LyX関連はWWWのどこを見ればよいでしょうか？
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+LyX のバグを報告するには、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+bugzilla.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+中身に興味がある場合は、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.devel.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+既知のミラーサイトには
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.mx.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.no.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.it.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+などがあります。
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+FTP経由ではどこでLyX関連のものを入手できますか？
+\end_layout
+
+\begin_layout Itemize
+ftp.lyx.org（別名ftp.via.ecp.frです）の/pub/lyx。
+\end_layout
+
+\begin_layout Subsection
+どんなメーリングリストがありますか？
+\end_layout
+
+\begin_layout Itemize
+lyx-announce@lists.lyx.org（トラフィックごく少）：LyX関連のアナウンス
+\end_layout
+
+\begin_layout Itemize
+lyx-users@lists.lyx.org（トラフィック中）：一般的な使い方の話題
+\end_layout
+
+\begin_layout Itemize
+lyx-devel@lists.lyx.org（トラフィック高）：開発およびデバッグの話題
+\end_layout
+
+\begin_layout Itemize
+lyx-docs@lists.lyx.org（トラフィックひじょうに少）：文書化に関する話題
+\end_layout
+
+\begin_layout Standard
+一般的に、これらのメーリングリストに登録する場合は、lyx-
+\emph on
+foo
+\emph default
+-subscribe@lists.lyx.org、やめる場合には lyx-
+\emph on
+foo
+\emph default
+-unsubscribe@lists.lyx.orgに、電子メールを送ることになります（
+\emph on
+foo
+\emph default
+の部分には「announce」、「users」、「devel」、「docs」のいずれか入ります。詳しくは
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/internet/mailing.php3
+\end_layout
+
+\end_inset
+
+を見てください）。
+\end_layout
+
+\begin_layout Subsection
+メーリングリストのアーカイブはどこかにありますか？
+\end_layout
+
+\begin_layout Standard
+もちろんですとも :-)
+\end_layout
+
+\begin_layout Subsection
+ふむ、かしこいですな。どこにアーカイブされているんですか？
+\end_layout
+
+\begin_layout Itemize
+Announce: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-announce@lists.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Users: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-users@lists.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Devel: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-devel@lists.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+他のワードプロセッサ・文書プロセッサとの互換性
+\end_layout
+
+\begin_layout Subsection
+LaTeXファイルを読み書きできますか？
+\end_layout
+
+\begin_layout Standard
+はい。LyXは、コンピュータにも人にも優しいLaTeXファイルを出力してくれます。また、LyX付属のtex2lyxプログラムは、LaTeXをLyXに変換します。
+このプログラムは完全ではありませんが、通常、少なくとも95%程度はうまく変換してくれます。
+\end_layout
+
+\begin_layout Subsection
+ワードのファイルは読み書きできますか？
+\end_layout
+
+\begin_layout Standard
+そう簡単ではありません。LyX
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+LaTeX
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+RTF
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+Wordか、その逆という順序で変換すると、ある程度は可能です。しかしながら、ワードはLyXやLaTeXのようなマークアップ言語ではないので、変換は通常難しく、ほ
+とんど意味のない結果しか得られません。
+\end_layout
+
+\begin_layout Standard
+しかしながら、いくつかの方法がユーザーから寄せられています。
+\end_layout
+
+\begin_layout Description
+word2x はLaTeX・HTML・平文テキストを出力できます。うちLaTeXは基本的に（きれいに）LyXに読み込めますが、私はしばしば、平文テキストを読み込
+んで、それを整形し直す方を好みます（もちろん元文書の整形のしかたがどうだったかを知っておく必要があります）。この文章を書いている時点では、オフィス2000のワー
+ドには対応していません。
+\end_layout
+
+\begin_layout Description
+wvware （www.wvware.com、または最新版はabisource CVSレポジトリで手にいれることができます。）これは以前にmsWordViewと呼ば
+れていたプログラムです。ひじょうに良好な、ただし見た目に基づいたLaTeX/HTMLを出力します。しかしながら、きわめて柔軟な設定が可能で、設定ファイル
+\family typewriter
+wvLaTeX.xml
+\family default
+で変換プロセスを制御できます。また最新のオフィス形式も扱えます。
+\end_layout
+
+\begin_layout Description
+Ted これはだれかがワードでつくったRTFファイルを送ってきたときに便利なエディタです。いい製品です。変換したバージョン（平文テキストかHTML）を自分自身に
+メールしてください。
+\end_layout
+
+\begin_layout Standard
+上の手段がすべてうまく行かなかった場合は、ワードでつくられたファイルを理解できる（WordPerfectやStarOffice/OpenOffice等の）ワード
+プロセッサで読み込んで、テキストファイルとして出力してください。それをLyXで読み込んで、手で整形します。
+\end_layout
+
+\begin_layout Standard
+私自身にとっては、この方法の方が他の方法よりも早くできます。ただし、頻繁にワードとLyXの間で変換するには向いていません。
+\end_layout
+
+\begin_layout Subsection
+HTMLファイルを読み書きできますか？
+\end_layout
+
+\begin_layout Standard
+いろいろありますが、「tth」変換プログラムを使えば、HTMLファイルを出力できます。反対にHTML
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+LaTeXの変換プログラムも多分あると思います。
+\end_layout
+
+\begin_layout Section
+LyXの入手とコンパイル
+\end_layout
+
+\begin_layout Subsection
+何が必要ですか？
+\end_layout
+
+\begin_layout Itemize
+LyX ソースコード: lyx-1.x.x.tar.gz
+\end_layout
+
+\begin_layout Itemize
+XForms ライブラリ: xforms-0.88かそれ以上（できるだけ最新のバージョンを使ってください）
+\end_layout
+
+\begin_layout Itemize
+LaTeX: teTeX-1.0かそれ以上のバージョンを強く薦めます
+\end_layout
+
+\begin_layout Itemize
+PostScript®のインタ ープリタ： ghostscript 7.0かそれ以上
+\end_layout
+
+\begin_layout Itemize
+比較的近代的なC++コンパイラ。gccを使っているなら、バージョン2.95.2以上が必要です。
+\end_layout
+
+\begin_layout Subsection
+どうやってコンパイルすればよいですか？
+\end_layout
+
+\begin_layout Itemize
+./configure
+\end_layout
+
+\begin_layout Itemize
+make
+\end_layout
+
+\begin_layout Itemize
+make install （これは通常はrootになって作業します。しかし、configureコマンドにフラグを指定すれば、rootになる必要はありません。）
+\end_layout
+
+\begin_layout Standard
+詳しくは INSTALLファイルを見てください。
+\end_layout
+
+\begin_layout Subsection
+コンパイルするのは嫌です。コンパイル済みのバイナリはどこにありますか？
+\end_layout
+
+\begin_layout Standard
+Linuxに属するシステムや、おそらく他のシステムの場合でも、上のパッケージのほとんどは、コンパイル済みのバイナリの形で入手することができます。LyXのバイナリ
+はRPM形式か、いくつかの他のフォーマットになっています。
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.lyx.org/pub/lyx/bin/
+\end_layout
+
+\end_inset
+
+を見てください。
+\end_layout
+
+\begin_layout Section
+Evil Red Text に関する質問（重要！）
+\end_layout
+
+\begin_layout Subsection
+Evil Red Text（あるいはERT）とは何ですか？
+\end_layout
+
+\begin_layout Standard
+ERT（Evil Red Text）とは、LyX文書に挿入された生の LaTeXコマンドのことをいいます。LyX開発グループのうちの野蛮人たちが、これを使うとL
+yX文書が醜くなるのに不平を述べた際に名づけた言葉です。より文明化した開発者たちは、少なくともこれがURT (Ugly Red Text)の名には値するものの、
+きわめて有用なことを知っていますが、ERTの名が定着してしまったようです。
+\end_layout
+
+\begin_layout Subsection
+どうすれば Evil Red Text を入力できるのでしょう？
+\end_layout
+
+\begin_layout Standard
+美的センスの問題はさておき、このFAQの答の多くにおいて、ERTを使うことが要求されます。「次のLaTeXコードを挿入してください」と書かれていたら次のようにし
+てください。
+\end_layout
+
+\begin_layout Enumerate
+TeXツールバーボタンを押すか、
+\family sans
+挿入(
+\bar under
+I
+\bar default
+)\SpecialChar \menuseparator
+
+\bar under
+T
+\bar default
+eX
+\family default
+を選択してください。
+\end_layout
+
+\begin_layout Enumerate
+それからコマンドを、通常書くように入力します。
+\end_layout
+
+\begin_layout Subsection
+新しいERT差込枠はほんとうに使いにくい！
+\end_layout
+
+\begin_layout Standard
+多くの人がバージョン1.2.0で導入されたERT差込枠について不平を述べています。しかしながら、懐かしいLaTeXフォントが墓場から帰ってくる希望はほとんどない（た
+いへんなハックだったのです）ので、以下のことを熟慮ください。
+\end_layout
+
+\begin_layout Itemize
+ERTは、他のフロートと同様に、
+\family sans
+編集(
+\bar under
+E
+\bar default
+)\SpecialChar \menuseparator
+フロートを開く/閉じる(
+\bar under
+L
+\bar default
+)
+\family default
+を使って閉じることができます（既定では、
+\family sans
+C-i
+\family default
+に割り当てられています）。
+\end_layout
+
+\begin_layout Itemize
+差込枠の適当なところを右クリックして出てくる特性ダイアログで「行中化」を設定することもできます。
+\end_layout
+
+\begin_layout Subsection
+他の方法はありませんか？
+\end_layout
+
+\begin_layout Standard
+LaTeXコマンドを「LaTeXプリアンブル」に挿入することもできます。プリアンブルに挿入したものは、処理するさいに生成されるLaTeXファイルにそのままわたさ
+れます。この方法は、非標準のLaTeXパッケージを使ったり、文書中で使うグローバルなショートカットを定義するのに特に便利な方法です。
+\end_layout
+
+\begin_layout Section
+LyXの使い方に関する質問
+\end_layout
+
+\begin_layout Standard
+この節では、真にもっともよく訊かれる質問の説明をしようと思います。そんなによく訊かれない質問や、「これはどうやったらいいの？」という類のトピックスの多くに関して
+は、Herbert Vossの 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://tug.org/TeXnik/
+\end_layout
+
+\end_inset
+
+にある膨大なコレクションを見てください。これをチェックしないでメーリングリストにメッセージを送るとひどい目にあうかもしれませんよ。
+\end_layout
+
+\begin_layout Subsection
+一般的な質問
+\end_layout
+
+\begin_layout Subsubsection
+タイトルの下の日付を消去するにはどうしたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+一番簡単な方法はメニューの
+\family sans
+レイアウト(
+\bar under
+L
+\bar default
+)\SpecialChar \menuseparator
+プリアンブル(
+\bar under
+R
+\bar default
+)
+\family default
+を開けて、
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+date{}
+\end_layout
+
+\begin_layout Standard
+という行をプリアンブルウインドウに加えてください。
+\end_layout
+
+\begin_layout Subsubsection
+箇条書き（記号／連番／記述）環境の行間を変えるにはどうしたらいいのですか？
+\end_layout
+
+\begin_layout Standard
+手動で調整する必要があります。例えば、ある一つのリストの間隔を変えたい場合はそのリストのはじめに次のLaTeXコードを加えてください。
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+itemsep}{0mm}
+\end_layout
+
+\begin_layout Subsubsection
+どうすれば節ごとに数式番号をつけることができるでしょうか？
+\end_layout
+
+\begin_layout Standard
+LaTeXプリアンブルに次の 2行を加えてください。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+@addtoreset{equation}{section} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+thesection.
+\backslash
+arabic{equation}}
+\end_layout
+
+\begin_layout Subsubsection
+同じことを図表番号に対してもできますか？
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+theequation
+\family default
+というところを
+\family typewriter
+
+\backslash
+thetable
+\family default
+または
+\family typewriter
+
+\backslash
+thefigure
+\family default
+で置き換えて、
+\family typewriter
+equation
+\family default
+を
+\family typewriter
+table
+\family default
+か
+\family typewriter
+figure
+\family default
+で置き換えてください。
+\backslash
+@addtoreset コマンドの行に含まれているのも忘れずに置き換えてください。
+\end_layout
+
+\begin_layout Subsubsection
+どうすれば脚注の番号を記号（星印・剣標等）に変えることができますか？
+\end_layout
+
+\begin_layout Standard
+LaTeXプリアンブルに
+\family typewriter
+
+\backslash
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+fnsymbol{footnote}}
+\family default
+を加えてください。
+\end_layout
+
+\begin_layout Subsubsection
+widowやorphanをなくすにはどうすればいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+widow（段落の最初の行だけが前のページの最後に行くこと）やorphan（段落の最後の行だけが次のページの最初にあること）をなくすには次の行をLaTeXプリア
+ンブルに加えてください。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+widowpenalty=10000 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+clubpenalty=10000 
+\end_layout
+
+\begin_layout Standard
+これも加えた方がいいでしょう。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+raggedbottom
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsubsection
+1.
+ a)のような形で始まるようなリストをつくるにはどうしたらいいですか?
+\end_layout
+
+\begin_layout Standard
+下のような形のリストがほしい場合、
+\end_layout
+
+\begin_layout LyX-Code
+1.
+ a) First alternative 
+\end_layout
+
+\begin_layout LyX-Code
+   b) Second alternative 
+\end_layout
+
+\begin_layout LyX-Code
+   c) Third alternative
+\end_layout
+
+\begin_layout Standard
+次のようにしてください。
+\end_layout
+
+\begin_layout LyX-Code
+1.
+ {} 
+\end_layout
+
+\begin_layout LyX-Code
+   a) First alternative 
+\end_layout
+
+\begin_layout LyX-Code
+   b) Second alternative 
+\end_layout
+
+\begin_layout LyX-Code
+   c) Third
+\end_layout
+
+\begin_layout Standard
+ここで{}はERT（TeXモード）で入力します（これは単に何かを入れなければならないので入れているだけで何も出力しません）。 
+\end_layout
+
+\begin_layout Standard
+手順を詳しく書くと、スタイルをenumerateにして、次にERTで括弧を入力します。環境の深さを変えてから、3つの項目を入力します。LyXが項目に自動的にラベ
+ルをつけてくれます。
+\end_layout
+
+\begin_layout Subsubsection
+LyXの中で単語数を数えるにはどうすればいいでしょう?
+\end_layout
+
+\begin_layout Standard
+スペルチェッカを走らせてください。スペルチェッカはチェックした単語の総数を表示します。文書内のすべての単語数を知りたいなら、スペルチェッカを走らせるときにカーソ
+ルが文書の一番はじめにあるように注意してください。
+\end_layout
+
+\begin_layout Subsubsection
+固定長の水平方向のスペースを挿入するにはどうすればいいでしょう?
+\end_layout
+
+\begin_layout Standard
+次のような ERTコマンドが使えます。
+\family typewriter
+
+\backslash
+enspace
+\family default
+ (1/2 em), 
+\family typewriter
+
+\backslash
+thinspace
+\family default
+ (1/6 em), 
+\family typewriter
+
+\backslash
+negthinspace
+\family default
+ (-1/6 em), 
+\family typewriter
+
+\backslash
+quad
+\family default
+ (1 em), 
+\family typewriter
+
+\backslash
+qquad
+\family default
+ (2 em), 
+\family typewriter
+
+\backslash
+hspace{
+\emph on
+length
+\emph default
+}
+\family default
+等。em は今使われているフォントの文字 m の幅とほぼ同じです。
+\family typewriter
+
+\backslash
+hspace{
+\emph on
+length
+\emph default
+}
+\family default
+の lengthにはすべての TeXの中で使える長さを入れます。使える単位は mm（ミリメーター）、cm（センチメーター）、in（インチ）、pt（points
+ = 1/72インチ）、em（文字mの幅）、ex（文字xの高さ）です。
+\end_layout
+
+\begin_layout Standard
+例: 
+\family typewriter
+
+\backslash
+hspace{1in}
+\family default
+, 
+\family typewriter
+
+\backslash
+hspace{2.5em}
+\family default
+等
+\end_layout
+
+\begin_layout Subsubsection
+どうすれば参照文献を[1][2][3][6]のようにではなく、[1,2,3,4]や [1-3,6]のように表示できますか?
+\end_layout
+
+\begin_layout Standard
+LaTeXプリアンブルに
+\family typewriter
+
+\backslash
+usepackage{cite}
+\family default
+という行を挿入してください。ほとんどのLaTeXディストリビューションにこのパッケージは含まれているはずです。LyXはこのパッケージをサポートしていて、cite
+tionダイアログにコンマで分けて複数の参照文献を挿入できます。つまり、一つ一つ参照する（例えば[Smalley_JCP][Jarrold_Sci]）かわりに[
+Smalley_JCP,Jarrold_Sci]のような形で参照します。
+\end_layout
+
+\begin_layout Subsection
+図に関する質問
+\end_layout
+
+\begin_layout Subsubsection
+「図」と「図フロート」の違いは何でしょうか？
+\end_layout
+
+\begin_layout Standard
+正確な定義ではありませんが、「図」は自分が実際に挿入したい図です。基本的には図のファイルの挿入を意味します。それに対して「図フロート」とは、論文の中の図に対応す
+るもので、図・見出し・図の番号などが含まれたものです。ほとんどの場合、まず図フロートを文中に挿入して、その中に図を入れます。
+\end_layout
+
+\begin_layout Standard
+表と表フロートの関係も同じです。まず表フロートを挿入して、その中に表を入れます。
+\end_layout
+
+\begin_layout Subsubsection
+自分の入れたい場所に正確に図を入れるにはどうしたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+レイアウト\SpecialChar \menuseparator
+文書
+\family default
+を選んでください。
+\family sans
+フロート配置
+\family default
+ボックスに
+\family typewriter
+!htp
+\family default
+と入力してください。これはLaTeXに図をもとの場所に配置することを真剣に試し、それがだめならページの上、それでもだめなら独立したページをつくるように指示してい
+ます。これはグローバルな設定で、すべての図の配置に対してこのルールが使われます。
+\end_layout
+
+\begin_layout Standard
+各々の図に関して、別のルールを使いたい場合は、図フロートを右クリックしてでてきたダイアログで図の振る舞いを変えてください。
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Quotes eld
+\end_inset
+
+Too many unprocessed floats
+\begin_inset Quotes erd
+\end_inset
+
+とはどういうことですか？
+\end_layout
+
+\begin_layout Standard
+LaTeXは決められた数のフロートしか一度に扱えません。例えば、図4がいい場所に配置できないとしましょう（デフォルトでは、ページの上、ページの下、独立したページ
+をつくる、という順序で試します）、そこに図5がきます。両方の図は良い配置場所が見つかるまで文書の最後に向かって漂い続けます。良い場所がずっと見つからない場合は文
+書の最後に配置されます。もし、このようなフロートの数が多すぎると、LaTeXはカウンターを使いきり、「too many unprocessed
+ floats」というエラーメッセージを出します。これは LaTeXのバグではありません。文書の長さに対して、図が多すぎるだけです。
+\end_layout
+
+\begin_layout Standard
+これを解決する一番簡単な方法は、どこかページを区切るのに向いている場所に
+\family typewriter
+
+\backslash
+clearpage
+\family default
+コマンドを挿入することです。ページブレイクは単に新しいページをはじめるだけですが、
+\family typewriter
+
+\backslash
+clearpage
+\family default
+は残っているフロートをすべて処理して新しいページをはじめます。ただし、文書の途中に何枚もの図がまとめて置かれることになります。そのような場合は、
+\family typewriter
+
+\backslash
+clearpage
+\family default
+を文中にいくつも挿入してバランスをとってください。
+\end_layout
+
+\begin_layout Subsection
+数式に関する質問
+\end_layout
+
+\begin_layout Subsubsection
+数式中に通常のテキストを入れるにはどうしたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+数式中で
+\family typewriter
+M-m m
+\family default
+とタイプしてmath textモードにしてください。
+\end_layout
+
+\begin_layout Subsubsection
+三乗根（それ以上）をつくるにはどうしたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+M-m r
+\family default
+とタイプして rootボックスを挿入してください。カーソルキーを使って、ボックスに入ります。 
+\end_layout
+
+\begin_layout Section
+LyXを動かすうえでの質問
+\end_layout
+
+\begin_layout Subsection
+コマンドラインから LyXファイルを LaTeXファイルに変換するにはどうしたらいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+ファイルの変換はバージョン 1.1.6で改良されました。コマンドラインで
+\end_layout
+
+\begin_layout LyX-Code
+lyx --export latex <yourfile>.lyx
+\end_layout
+
+\begin_layout Standard
+と入力するだけです。
+\end_layout
+
+\begin_layout Standard
+古いバージョンのLyXを使っている場合でも、同じ構文を使って変換できますが、Xが動いてなければなりません。LyXウインドウがスクリーンに出てくるからです。Xvf
+bコマンドが使えるなら、もう少し逃げ道があります。
+\family typewriter
+bash
+\family default
+を使っているなら次のコマンドを使ってください。
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+(Xvfb :1 -once -terminate &); rm <file>.tex; lyx -display :1 --export latex
+ <file>.lyx
+\end_layout
+
+\begin_layout Standard
+\noindent
+csh/tcsh なら次のようにします。
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
+ <file>.lyx
+\end_layout
+
+\begin_layout Standard
+この方法は Xが実際に動いてなくても使えます。
+\end_layout
+
+\begin_layout Subsection
+LyXで PDFファイルをつくるにはどうしたらいいのでしょう?
+\end_layout
+
+\begin_layout Standard
+説明書
+\emph on
+拡張機能篇
+\emph default
+の第5.3.6節を読んでください。
+\end_layout
+
+\begin_layout Subsection
+なぜ 
+\family typewriter
+acroread
+\family default
+ で見ると私の文書のフォントはこんなに汚いのですか?
+\end_layout
+
+\begin_layout Standard
+この問題とその解決方法も
+\emph on
+、
+\emph default
+説明書
+\emph on
+拡張機能篇
+\emph default
+の第5.3.6節に書いてあります。
+\end_layout
+
+\begin_layout Subsection
+どうして最新のGhostscriptでは行中の図をうまく描けないのでしょう?
+\end_layout
+
+\begin_layout Standard
+[注意：これは1.2.0より古いLyXのみに当てはまることです。1.2.0からは図を表示するコードが書き直されています。]
+\end_layout
+
+\begin_layout Standard
+数人のユーザーが最新のGhostscriptで行中の図が描写できないと知らせてくれました。これはGhostscriptのバグです。以下を見てください。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+このバグは、Ghostscript6.22以上に存在します。上で紹介したパッチをあてるとうまく描写できるようになります。GNU Ghostscript
+ 6.53 またはそれ以上のバージョンには、このフィックスがすでにほどこされています。
+\end_layout
+
+\begin_layout Section
+Windows上での LyXに関する質問
+\end_layout
+
+\begin_layout Subsection
+メニューとツールバーがちらつくのはなぜですか？
+\end_layout
+
+\begin_layout Standard
+おそらくあなたはXWin32 Xサーバを使っているでしょう。これはXWin32のバグです。この現象をなくすには、XWin32のUse Reserved
+ Colorsオプションを無効にして、ではなくPseudoColor ではなく、カラーモードを使ってください。
+\end_layout
+
+\begin_layout Section
+これ以上の情報を得る方法
+\end_layout
+
+\begin_layout Subsection
+あなたはまだ私の質問に答えてくれていません！
+\end_layout
+
+\begin_layout Standard
+それならば、説明書を特に入門篇を読んでください。説明書はたいへん良くできています（ついでですが、私もちょっと書いたのですよ :-) ）。もしあなたの問題がLaT
+eXに関することなら、
+\emph on
+LaTeX, A Document Preparation System, 2nd Ed.
+
+\emph default
+ by Leslie Lamport (1994)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+邦訳もでています。
+\end_layout
+
+\end_inset
+
+を参照してください。またLyXには数多くの用例も含まれています。
+\family sans
+ファイル\SpecialChar \menuseparator
+開く\SpecialChar \menuseparator
+用例
+\family default
+を試してみてください。
+\end_layout
+
+\begin_layout Subsection
+私の問題を誰かにメールで問い合わせたいのです。
+\end_layout
+
+\begin_layout Standard
+LyXのユーザーズリストlyx-users@lists.lyx.orgへ送ってください。またLyXがクラッシュする、機能しないという場合は開発者用のメーリングリスト
+ lyx-devel@lists.lyx.orgに送ってください。
+\end_layout
+
+\begin_layout Subsection
+メールで助けを求めるときには、どんな情報を書いておけばいいのでしょうか？
+\end_layout
+
+\begin_layout Standard
+LyXのバージョン、どのようなことを試したかの説明、それに実際に説明書類を読んだという証拠です。
+\end_layout
+
+\begin_layout Standard
+LyXがクラッシュする場合には、LyXのバージョン、オペレーティングシステム、xformsのバージョン（スクリーン描写に問題があると思われる場合）、それとどうす
+ればクラッシュするかという説明です。開発者がクラッシュを再現するのが簡単なほど、バグが直しやすくなります。可能ならgdbを使ってバックトレースを生成してその結果
+をメールに添付してください。これがどういう意味かわからなかったら、できるだけ正確にどのようなことをするとクラッシュするのかを説明してください。
+\end_layout
+
+\begin_layout Section
+管理上の情報と謝辞
+\end_layout
+
+\begin_layout Subsection
+フィードバックを歓迎します
+\end_layout
+
+\begin_layout Standard
+この FAQに関するコメント、提案、追加、文句等を
+\emph on
+lyx-docs@lists.lyx.org
+\emph default
+へ送ってください。
+\end_layout
+
+\begin_layout Subsection
+このFAQが利用可能なフォーマット
+\end_layout
+
+\begin_layout Standard
+このオリジナルのLyXファイルは、LyXのソース頒布版に含まれています。HTMLとASCIIに変換したものもすぐにウェブサイトに置かれる予定です。ドイツ語版は頒
+布版に含まれています。
+\end_layout
+
+\begin_layout Subsection
+著者および謝辞
+\end_layout
+
+\begin_layout Standard
+LyX-0.10.7をカバーした、このFAQのバージョン0.2.2まではBernhard Iselborn、David Johnson、Paul Evansが責任を持っ
+ています。バージョン0.3は初めから書き直され、LyX-1.0以上をカバーしています。現在のバージョンには、多くの人が各部分に貢献しました。このファイルは、それらを
+文書化チームのMike Resslerがまとめあげたものです。
+\end_layout
+
+\begin_layout Subsection
+免責および著作権
+\end_layout
+
+\begin_layout Standard
+私は、この文書中の何ものも、
+\begin_inset Formula $\pi$
+\end_inset
+
+の因子に至るまで正確であるとは主張しません。結局のところ、私は単なる天文学者なので、
+\begin_inset Formula $c=h=k=\pi=1$
+\end_inset
+
+と置くことにしたいのです。もし答が間違っていれば、我々は単に単位を定義し直すだけです。このファイルは、人の役に立つであろうという期待の下で頒布されていますが、
+\emph on
+いかなる保証も提供していません
+\emph default
+。これには、
+\emph on
+販売商品性
+\emph default
+や
+\emph on
+特定の目的への適合性
+\emph default
+への保証などを含みます。詳細に関しては、GNU General Public Licenseをご覧ください。いいかえれば、博士号口頭試問試験の前夜に、
+\begin_inset Formula $\textrm{m s}^{-1}$
+\end_inset
+
+の単位で表された基礎物理定数が、はたしてどうやったら
+\begin_inset Formula $\textrm{kg m s}^{-2}\textrm{ K}^{-1}$
+\end_inset
+
+で表された基礎物理定数に等しくなるのかと悩んでいるうちに、電源が落ちてしまって、保存をし忘れていたためにあなたの博士論文が消えてしまったとしても、私のせいではな
+いということです。このファイルは、LyX文書化チームのために書かれ、Copyright 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+copyright
+\end_layout
+
+\end_inset
+
+ 2000 by Michael E.
+ Resslerとなっています。
+\end_layout
+
+\end_body
+\end_document

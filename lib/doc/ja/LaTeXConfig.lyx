@@ -1,0 +1,4329 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 335
+\begin_document
+\begin_header
+\textclass article
+\language japanese
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+現在のLaTeX設定一覧
+\end_layout
+
+\begin_layout Author
+LyXが自動的に生成（編集しないでください）
+\end_layout
+
+\begin_layout Standard
+このファイルは、LyXが取り扱うことができるLaTeXの各追加機能について説明しています。以下に6つの節があります。
+\end_layout
+
+\begin_layout Enumerate
+現在のLaTeX装備の基本情報。特に、現在のLaTeXのバージョンが充分新しいかどうか確認してください。
+\end_layout
+
+\begin_layout Enumerate
+LyXが認識する標準フォント。いまのところ、少しのエントリしかありません。
+\end_layout
+
+\begin_layout Enumerate
+どのLaTeXの実装においても標準とみなされる文書クラス。この節は、完備性のためにのみ存在します。
+\end_layout
+
+\begin_layout Enumerate
+LyXが認識する非必須の文書クラス。これらのうち、いくつかがなく（「検出」項目が「いいえ」になっている）、その機能を必要とする場合には、最寄りのCTANのFTP
+サイト
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Comprehensive TeX Archive Networkに参加しているホストには、
+\end_layout
+
+\begin_layout LyX-Code
+ftp://ftp.dante.de/tex-archive
+\end_layout
+
+\begin_layout LyX-Code
+ftp://ctan.tug.org/tex-archive
+\end_layout
+
+\begin_layout LyX-Code
+ftp://ftp.tex.ac.uk/tex-archive
+\end_layout
+
+\begin_layout Plain Layout
+があります。これら3つの主要サイトにも列挙してあるように、これ以外に膨大な量のミラーサイトが存在します。
+\end_layout
+
+\end_inset
+
+から入手することができます。サイト内の場所は「CTAN」項目に示されています。検出された文書クラスのみが、LyXの文書レイアウトとして使うことができる点に留意し
+てください。
+\end_layout
+
+\begin_layout Enumerate
+LaTeX開発者が「必須」と太鼓判を押したパッケージ。これらは必ずなくてはなりませんが、使用中のLaTeX頒布版が少し古い場合には、存在しないものもあるかもしれ
+ません。
+\end_layout
+
+\begin_layout Enumerate
+作成中の文書のマージンを変更しようとするときにLyXが使用するパッケージ。いまのところ、これらが見つかるかどうかは、LyX内部で利用できる選択肢には影響しません
+。
+\end_layout
+
+\begin_layout Enumerate
+LyXに欲しい機能であり、LaTeX装備にも追加したいと思うような標準的なLaTeXパッケージ。いまのところ、これらが見つかるかどうかは、LyX内部で利用できる
+選択肢には影響しません。
+\end_layout
+
+\begin_layout Standard
+これらのパッケージのほとんどは、teTeXのような新しいTeX頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めたら、LyXにそのこ
+とを教えなくてはなりません。インストールし終えたら、メニュー項目
+\family sans
+ツール\SpecialChar \menuseparator
+システム再検出
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+あるいは、もしシステム全体の設定を変えたいならば、LyXシステムディレクトリ（既定では
+\family typewriter
+/usr/local/lib/lyx/
+\family default
+）でコマンド
+\family typewriter
+./configure
+\family default
+を実行してください。
+\end_layout
+
+\end_inset
+
+を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「???」となっているときは、何らかの理由
+で現在のLaTeX設定の一覧を取得できなかったことを示しています。もしteTeXをお使いならば、装備済みの新しいパッケージが見つからなかったことを示しているかも
+しれません。teTeXに設定を更新させるコマンド
+\family typewriter
+texhash
+\family default
+を実行し忘れた可能性があります。
+\end_layout
+
+\begin_layout Section
+フォント
+\end_layout
+
+\begin_layout Subsection
+ECフォント
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "ec"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+fonts/ec
+\end_layout
+
+\begin_layout Description
+備考： LaTeXでは
+\family sans
+ec
+\family default
+フォントを使うことは必須ではありませんが、これを使うことを強く推奨します。
+\family sans
+ec
+\family default
+フォントは、より自然な範囲のフォント寸法を揃えており、
+\family sans
+cmr10
+\family default
+のような古いフォントよりも優れたハイフネーションやカーニングを実現します。もし
+\family sans
+dc
+\family default
+フォントと呼ばれるフォントを装備しているのであれば、その後継である
+\family sans
+ec
+\family default
+フォントにアップグレードしてください。LyXは、このフォントが装備されていることを検知すれば、自動的に使用します。
+\end_layout
+
+\begin_layout Subsection
+Latin Modern
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "lmodern"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/lm/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+Latin Modern
+\family default
+フォントは、LaTeX標準フォント（Computer Modern）のPostScript®版です。このフォントを最終的にLaTeXの既定フォントとすることが企
+図されています。AEのような、他のComputer ModernのPostScript®版を使うよりも、この
+\family sans
+Latin Modern
+\family default
+フォントを使用することを推奨します。
+\end_layout
+
+\begin_layout Subsection
+Almost European (AE)
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "ae"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/ae/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+AE
+\family default
+パッケージは、LaTeXの標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではな
+く、
+\family sans
+Latin Modern
+\family default
+を使用することを推奨します。
+\end_layout
+
+\begin_layout Subsection
+Eco
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "eco"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/eco/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+eco
+\family default
+パッケージは、LyXが
+\family sans
+Computer Modern
+\family default
+フォント族の旧式の数字にアクセスするのに使用します。
+\end_layout
+
+\begin_layout Subsection
+psnfss
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "psnfss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/psnfss/
+\end_layout
+
+\begin_layout Description
+備考：
+\family sans
+ psnfss
+\family default
+群を使えば、LyXが使うフォントを、PostScript®プリンタで利用可能な35の伝統的フォントに変更することができるようになります。現在のところ、LyXにお
+ける
+\family sans
+psnfss
+\family default
+のサポートは限られています。
+\family sans
+文書\SpecialChar \menuseparator
+設定
+\family default
+の中でフォントの組み合せを選ぶことができるだけです。
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+psnfss
+\family default
+のバージョンによって、提供するフォントパッケージは異なります。LyXは古くなったパッケージもサポートしますが、つねに最新版が装備されているように留意されることを
+おすすめします。最近の
+\family sans
+psnfss
+\family default
+群は少なくとも次のものを含んでいます。
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (newest Palatino support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpazo"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (deprecated Palatino support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpple"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (newest Times support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptmx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (deprecated Times support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+utopia
+\family default
+ (Utopia).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "utopia"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+avant
+\family default
+ (Avant Garde).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "avant"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+bookman
+\family default
+ (Bookman).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "bookman"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+charter
+\family default
+ (Charter).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "charter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+newcent
+\family default
+ (New Century Gothic).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "newcent"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "chancery"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+fourier-GUTenberg
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "fourier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/fourier-GUT
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+fourier
+\family default
+パッケージは、Utopia PostScript®フォントのサポートを提供します。
+\family sans
+PSNFSS
+\family default
+群に付いてくる
+\family sans
+utopia
+\family default
+パッケージとは異なり、これは適当な数学フォントも提供します。もしこのパッケージが装備されていれば、Utopiaフォントを選択した際に、
+\family sans
+utopia
+\family default
+の代わりにこれが使われるようになります。
+\end_layout
+
+\begin_layout Subsection
+CM bright
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "cmbright"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/cmbright
+\end_layout
+
+\begin_layout Description
+備考： CM brightは、すばらしいサンセリフ数式フォントも同時に提供する、サンセリフフォントです。
+\end_layout
+
+\begin_layout Subsection
+Bera
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "bera"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/bera
+\end_layout
+
+\begin_layout Description
+備考： beraフォントは、Bitstream Veraのクローンであり、Bera Serif（slab-serifのローマン体）、Bera Sans（Frut
+igerの後継）、およびBera Mono（等間隔／タイプライタ）を含みます。
+\end_layout
+
+\begin_layout Subsection
+Concrete
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "ccfonts"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+macros/latex/contrib/ccfonts/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+ccfonts
+\family default
+パッケージは、Donald Knuthが書籍『
+\emph on
+Concrete Mathematics
+\emph default
+』ためにデザインしたフォントのサポートを提供します。本の題名からconcreteフォントと呼ばれています。
+\end_layout
+
+\begin_layout Subsection
+LuxiMono
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "luximono"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/LuxiMono/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+luximono
+\family default
+パッケージは、等間隔フォントであるLuxida Monoフォントのサポートを提供します。
+\end_layout
+
+\begin_layout Subsection
+tipa/tipx
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "tipa"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/tipa/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+tipa
+\family default
+パッケージは、『国際音声字母(IPA)』で定義されているように、発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、LyXの数式
+エディタあるいは挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号ダイアログから入力することができます。
+\end_layout
+
+\begin_layout Section
+標準LaTeX文書クラス
+\end_layout
+
+\begin_layout Standard
+本節で取り扱われている文書クラスは、LaTeXが提供している基本文書クラスです。特に、LaTeX2eが装備されている限り、これらはすべてお使いのシステム上に存在
+するはずです。したがって、あるクラスが検出されないと表示されている場合は、そのクラスをサポートするレイアウトファイルが見つからなかったことを意味します。
+\end_layout
+
+\begin_layout Subsection
+article
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "article"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 標準文書クラス
+\family sans
+article
+\family default
+は、論文や短い文章を植字するのに使われます。LaTeXの基本となる文書クラスです。
+\end_layout
+
+\begin_layout Subsection
+report
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "report"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 標準文書クラス
+\family sans
+report
+\family default
+は、
+\family sans
+article
+\family default
+に似ていますが、もう少し構造的です（各部をサポートしています）。
+\end_layout
+
+\begin_layout Subsection
+book
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "book"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 標準文書クラス
+\family sans
+book
+\family default
+は、名前の示すように、書籍を作ることを目的としています。特に章割りをサポートしています。
+\end_layout
+
+\begin_layout Subsection
+letter
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "letter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 標準文書クラス
+\family sans
+letter
+\family default
+は、おもに英語で手紙を書くための基本クラスです。
+\end_layout
+
+\begin_layout Subsection
+slides
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "slides"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 標準文書クラス
+\family sans
+slides
+\family default
+は、OHPを作成するためのものです。LyXによるサポートは充分とは言えません。可能ならば、代わりに
+\family sans
+foils
+\family default
+を使うことをお勧めします（
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ssec:foils"
+
+\end_inset
+
+参照）。
+\end_layout
+
+\begin_layout Subsection
+amsart
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "amsart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/amslatex/classes/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+amsart
+\family default
+は、
+\family sans
+article
+\family default
+クラスの同等品です。これは、AMS-LaTeXパッケージの一部であり、アメリカ数学会が開発した外観を持つ、数式の植字のために使われます。当学会の書籍や学術雑誌だ
+けでなく、他の数学文献での出版のための原稿を準備するために使うことが推奨されています。アメリカ数学会は、投稿文書をAMS-LaTeXで準備し、それを使っているこ
+とを謝辞に書くことを要請しています。LyXによるサポートはまだ制限されています。
+\end_layout
+
+\begin_layout Section
+追加的文書クラス
+\end_layout
+
+\begin_layout Subsection
+aa
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "aa"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし（FTPサイト
+\family typewriter
+ftp.edpsciences.org
+\family default
+のディレクトリ
+\family typewriter
+/pub/aa/
+\family default
+から利用可能）
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+aa
+\family default
+（バージョン5.01）は、EDPサイエンス社発行の科学専門誌『
+\emph on
+Astronomy and Astrophysics
+\emph default
+（天文学と天体物理学）』に論文を投稿するのに使うことができます。
+\end_layout
+
+\begin_layout Subsection
+aastex
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "aastex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし（アメリカ天文学会のFTPサイト
+\family typewriter
+ftp.aas.
+\family default
+orgのディレクトリ
+\family typewriter
+/pubs
+\family default
+から利用可能） 
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+aastex
+\family default
+は、アメリカの学術誌『
+\emph on
+Astrophysical Journal
+\emph default
+（天体物理学ジャーナル）』、『天文学ジャーナル（
+\emph on
+Astronomical Journal
+\emph default
+）』、『
+\emph on
+Publications of the Astronomical Society of the Pacific
+\emph default
+（太平洋天文学会誌）』へ投稿する論文を執筆するのに使用することができます。
+\end_layout
+
+\begin_layout Subsection
+アメリカ地球物理学会（AGU）発行の学術誌
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "jgrga"
+\end_inset
+
+, 
+\begin_inset Info
+type  "textclass"
+arg   "agums"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/aguplus
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+jgrga
+\family default
+は、アメリカ地球物理学会（AGU）が発行する『地球物理学研究誌（
+\emph on
+Journal of Geophysical Research
+\emph default
+）』への論文を執筆するのに使用することができます。
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+このレイアウトは二つの部分からなります。一つは一般的に用いられる部分
+\family typewriter
+aguplus.inc
+\family default
+で、もう一つはこの研究誌向けの部分
+\family typewriter
+jgrga.layout
+\family default
+です。このレイアウトはまだ完全にはテストされていません。これをアメリカ地球物理学会が発行する他の出版物に拡張することは、比較的容易だと思われます。
+\end_layout
+
+\begin_layout Standard
+文書クラス
+\family sans
+agums
+\family default
+（ファイル
+\family typewriter
+agums.layout
+\family default
+）は、アメリカ地球物理学会の編集者への最初の投稿を執筆する（例えば、審査用やコピーエディット用）のに使用することができます。
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+beamer
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "beamer"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/beamer
+\end_layout
+
+\begin_layout Description
+備考： プレゼンテーションとスライドを作成するためのLaTeXクラス。
+\end_layout
+
+\begin_layout Subsection
+broadway
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "broadway"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし（LyXソース頒布版の
+\family typewriter
+tex/
+\family default
+ディレクトリからインストールしなくてはなりません）
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+broadway
+\family default
+は、戯曲を書くためのものです。既存のLaTeXの文書クラスではなく、LyXとともに新たに頒布されているものです。
+\end_layout
+
+\begin_layout Subsection
+cl2emult
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "cl2emult"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+FTP: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+cl2emult
+\family default
+は、Springer社の書籍を共著で執筆するためのものです。
+\end_layout
+
+\begin_layout Subsection
+dinbrief
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "dinbrief"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/dinbrief/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+dinbrief
+\family default
+は、ドイツ語の慣習に則って書簡を書くのに使うことができます。
+\end_layout
+
+\begin_layout Subsection
+docbook
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "docbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.sgmltools.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+docbook
+\family default
+は、LaTeXの文書クラスではありません。Docbook SGMLの文書を生成するためにデザインされたものであり、そこから（
+\family typewriter
+jadetex
+\family default
+を通じて）HTMLやRTF、テキスト、あるいはdviをエクスポートすることができます。これを使うには、sgmltools v2.0パッケージが導入されていることが
+必要です。
+\end_layout
+
+\begin_layout Subsection
+dtk
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "dtk"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+usergrps/dante/dtk/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+dtk
+\family default
+は、ドイツTeXユーザーグループ誌「Die TeXnische Komödie」への論文を執筆するのに使うことができます。
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.dante.de
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+egs（欧州地球物理学会の各学術誌）
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "egs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+egs
+\family default
+は、欧州地球物理学科李への論文を執筆するのに使用することができます。
+\end_layout
+
+\begin_layout Subsection
+elsart
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "elsart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/elsevier/
+\end_layout
+
+\begin_layout Description
+WWW: 
+\family typewriter
+http://authors.elsevier.com/
+\end_layout
+
+\begin_layout Description
+備考： このパッケージは、Elsevier Science発行の各学術誌への論文を作成するために作られたものです。
+\end_layout
+
+\begin_layout Subsection
+entcs
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "entcs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://math.tulane.edu/~entcs/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+entcs
+\family default
+は、ENTCSシリーズや多くの学会報でも用いられる、Elsevier Science社発行『Electronic Notes in Theoretical
+ Computer Science』用の論文スタイルです。
+\end_layout
+
+\begin_layout Subsection
+europecv
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "europecv"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/europecv
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+europecv
+\family default
+は、欧州連合の公式ガイドライン（Europass）に則った履歴書を作成するために作られたものです。したがって、欧州言語能力の自己評価も含まれています。この文書ク
+ラスを用いた履歴書の例が、用例文書として提供されています。
+\end_layout
+
+\begin_layout Subsection
+extsizes
+\end_layout
+
+\begin_layout Description
+検出： 
+\family sans
+extarticle
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "extarticle"
+\end_inset
+
+, 
+\family sans
+extbook
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "extbook"
+\end_inset
+
+, 
+\family sans
+extreport
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "extreport"
+\end_inset
+
+, 
+\family sans
+extletter
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "extletter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/extsizes/
+\end_layout
+
+\begin_layout Description
+備考： これらの文書クラスは、対応する標準クラス（
+\family sans
+article
+\family default
+, 
+\family sans
+book
+\family default
+, \SpecialChar \ldots{}
+）を基に、文書内で使えるフォント寸法の数を増やしたものです。
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "ssec:foils"
+
+\end_inset
+
+foils
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "foils"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/foiltex/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+foils
+\family default
+（FoilTeXとも呼ばれます）は、スライドを作成する標準クラス
+\family sans
+slides
+\family default
+の代替物です。相互参照が可能となっており、少し綺麗なフォントを使用するなど、全般的に
+\family sans
+slides
+\family default
+を使用するよりは大きく改善されています。しかしながら、
+\family sans
+seminar
+\family default
+クラス（LyXは今のところサポートしていません）が持っているような、進んだ機能の一部は備えていません。ライセンスの制約の関係で、teTeXのような無料のTeX頒
+布版には含まれていないことに注意してください。
+\end_layout
+
+\begin_layout Subsection
+g-brief-en
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "g-brief-en"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/g-brief/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+g-brief-en
+\family default
+は、素敵な装いのビジネスレターを書くのに使うことができます。
+\end_layout
+
+\begin_layout Subsection
+g-brief-de
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "g-brief-de"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/g-brief/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+g-brief-de
+\family default
+は、ドイツ語のラベルを用いていること以外は、上記の
+\family sans
+g-brief-en
+\family default
+と同じです。
+\end_layout
+
+\begin_layout Subsection
+g-brief2
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "g-brief2"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/g-brief/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+g-brief2
+\family default
+は、素敵な装いのビジネスレターを書くのに使うことができます。
+\family sans
+g-brief
+\family default
+の後継として、より自由度が高くなっていますが、
+\family sans
+g-brief
+\family default
+との後方互換性はありません。この文書クラスのひな型文書がLyXに付属しています。
+\end_layout
+
+\begin_layout Subsection
+hollywood
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "hollywood"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし（LyXソース頒布版の
+\family typewriter
+tex/
+\family default
+サブディレクトリからインストールしなくてはなりません）
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+hollywood
+\family default
+はアメリカ映画産業向けのスペック・スクリプト（持ち込み原稿−依頼主なしに書かれた「投機的」脚本）を書くのに使うことができます。既存のLaTeXの文書クラスではな
+く、LyXとともに新たに頒布されているものです。
+\end_layout
+
+\begin_layout Subsection
+IEEEtran
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "IEEEtran"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/IEEEtran/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+IEEEtran
+\family default
+クラスは、大半のIEEE（電気電子学会）会誌への投稿に適した文書を生成します。このクラスを使おうとお考えならば、
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ieee.org
+\end_layout
+
+\end_inset
+
+のIEEE Author Informationのページをご参照ください。
+\family sans
+IEEEtran.cls
+\family default
+と
+\family sans
+IEEEtran.sty
+\family default
+の二種類のファイルがあることに注意してください。
+\family sans
+.sty
+\family default
+ファイルはLaTeX 2.09向けなので、LyXで使うには、
+\emph on
+必ず
+\family sans
+\emph default
+.cls
+\family default
+ファイルの方を入手しなくてはなりません。また、もし入手したファイルが
+\family sans
+ieeetran.cls
+\family default
+のように小文字になっている場合には、LyXが検知することができませんので、IEEEが大文字になっている新しいバージョンにアップグレードしてください。
+\end_layout
+
+\begin_layout Subsection
+ijmpc
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "ijmpc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
+\end_layout
+
+\end_inset
+
+から入手可能
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+ijmpc
+\family default
+は、World Scientific社が発行する『International Journal of Modern Physics C』（通常IJMPCと略称され
+る）へ投稿する論文を執筆するために用いることができます。
+\end_layout
+
+\begin_layout Subsection
+ijmpd
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "ijmpd"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
+\end_layout
+
+\end_inset
+
+から入手可能
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+ijmpd
+\family default
+は、World Scientific社が発行する『International Journal of Modern Physics D』（通常IJMPDと略称され
+る）へ投稿する論文を執筆するために用いることができます。
+\end_layout
+
+\begin_layout Subsection
+iopart
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "iopart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.iop.org/pub/journals/latex2e
+\end_layout
+
+\end_inset
+
+から入手可能
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+iopart
+\family default
+は、イギリス物理学会(IOP)が発行する学術誌への論文を執筆するために用いることができます。
+\end_layout
+
+\begin_layout Subsection
+日本語標準クラス
+\end_layout
+
+\begin_layout Description
+検出： 
+\family sans
+jreport
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "jreport"
+\end_inset
+
+, 
+\family sans
+jbook
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "jbook"
+\end_inset
+
+, 
+\family sans
+tarticle
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "tarticle"
+\end_inset
+
+, 
+\family sans
+treport
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "treport"
+\end_inset
+
+, 
+\family sans
+tbook
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "tbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+install/language/japanese/ptex.tds.zip
+\end_layout
+
+\begin_layout Description
+備考： これらの文書クラスは、LaTeXの基本文書クラス
+\family sans
+article
+\family default
+・
+\family sans
+report
+\family default
+・
+\family sans
+book
+\family default
+の別バージョンを提供します。これらは日本語を書くのに適したように修正されています。「t-」で始まるクラスは、伝統的な縦書きをするのに使用します。
+\end_layout
+
+\begin_layout Subsection
+日本語新標準クラス
+\end_layout
+
+\begin_layout Description
+検出： 
+\family sans
+jsarticle
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "jsarticle"
+\end_inset
+
+, 
+\family sans
+jsbook
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "jsbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/jsclasses/
+\end_layout
+
+\begin_layout Description
+備考： これらの文書クラスは、日本語を植字するのにより見栄えの良い、LaTeXの基本文書クラス
+\family sans
+article
+\family default
+・
+\family sans
+report
+\family default
+・
+\family sans
+book
+\family default
+の別バージョンを提供します。
+\family sans
+report
+\family default
+クラスと同等のものは、
+\family sans
+jsbook
+\family default
+クラスに「report」オプションを与えることで得ることができます。
+\end_layout
+
+\begin_layout Subsection
+jss
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "textclass"
+arg   "jss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: N/A
+\end_layout
+
+\begin_layout Description
+WWW: available from 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.jstatsoft.org/downloads/JSSstyle.zip
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+備考: 文書クラス
+\family sans
+jss
+\family default
+は、『Journal of Statistical Software (JSS)』への論文を執筆するのに用いることができます。
+\end_layout
+
+\begin_layout Subsection
+kluwer
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "kluwer"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: Kluwer Academic Publishersのサイト
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.wkap.nl/kaphtml.htm/STYLEFILES
+\end_layout
+
+\end_inset
+
+から入手可能
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+kluwer
+\family default
+は、『
+\emph on
+Astrophysics and Space Science
+\emph default
+（天体物理学と宇宙科学）』や『
+\emph on
+Solar Physics
+\emph default
+（太陽系物理学）』等、多くのKluwer Academic Publishers社発行の学術誌への論文を執筆するのに用いることができます（完全なリストについては
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.wkap.nl/jrnllist.htm/JRNLHOME
+\end_layout
+
+\end_inset
+
+をご参照ください）。
+\end_layout
+
+\begin_layout Description
+
+\end_layout
+
+\begin_layout Subsection
+KOMA-Script
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Koma-Script"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+検出： 
+\family sans
+scrartcl
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "scrartcl"
+\end_inset
+
+, 
+\family sans
+scrreprt
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "scrreprt"
+\end_inset
+
+, 
+\family sans
+scrbook
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "scrbook"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/koma-script/
+\end_layout
+
+\begin_layout Description
+備考： これらの文書クラスは、LaTeXの基本文書クラス
+\family sans
+article
+\family default
+・
+\family sans
+report
+\family default
+・
+\family sans
+book
+\family default
+の別バージョンを提供します。これらの出力は多少なりとも改善され、ヨーロッパの植字標準に適合するように修正されています。
+\end_layout
+
+\begin_layout Subsection
+KOMA-Script letter
+\end_layout
+
+\begin_layout Description
+検出： 
+\family sans
+scrlettr
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "scrlettr"
+\end_inset
+
+, 
+\family sans
+scrlttr2
+\family default
+: 
+\begin_inset Info
+type  "textclass"
+arg   "scrlttr2"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/koma-script/
+\end_layout
+
+\begin_layout Description
+備考： これらのletterクラスは、Koma-Scriptクラスに同梱されているものです（
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Koma-Script"
+
+\end_inset
+
+参照）。LyXは、古い（サポートの打ち切られた）
+\family sans
+scrlettr
+\family default
+クラスと、Koma-Script第2.9版（2002年6月21日リリース）で導入された、新しくはるかに自由度の高い
+\family sans
+scrlttr2
+\family default
+クラスの両方のレイアウトを提供しています。
+\end_layout
+
+\begin_layout Subsection
+latex8
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "latex8"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： クラス
+\family sans
+latex8
+\family default
+は、実体は、文書クラス
+\family sans
+article
+\family default
+にいくらかの追加機能を盛り込んだLaTeXスタイルファイルです。IEEEの学会へ提出するのに適した文書を作成します。各LaTeXファイル（BibTeXスタイルフ
+ァイルを含む）は、IEEE主催学会向けのAuthor Kitとともに頒布されています。
+\end_layout
+
+\begin_layout Subsection
+linuxdoc
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "linuxdoc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+linuxdoc
+\family default
+クラスは、LaTexの文書クラスではありません。これは、LinuxDoc-SGML文書を作成するためにデザインされたものであり、その文書からは、HTMLやRTF
+、テキストファイル、LaTeXファイル等にエクスポートをすることができます。これを使うためには、一連の
+\family sans
+sgml-tools
+\family default
+（
+\family sans
+LinuxDoc
+\family default
+とも呼ばれます）プログラムを装備している必要があります。 
+\end_layout
+
+\begin_layout Subsection
+llncs
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "llncs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+llncs
+\family default
+は、Springer社の学術誌『Lecture Notes in Computer Science（計算科学講義ノート）』へ提出する論文を執筆するのに用いること
+ができます。LaTeX文書は、以下のアドレスの、SpringerのFTPサイトから入手することができます。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+この文書クラスのLyXレイアウトファイルは、まだ不十分にしか検証されていません。
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+memoir
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "memoir"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/memoir/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+memoir
+\family default
+は、一般的なフィクションやノンフィクション、書籍・レポート・論文・草稿などの各形態の数学著作の植字に用いることができる柔軟性の高いクラスです。文書は、9・10・
+11・12・14・17ポイントを標準のフォント寸法として用いることができます。ご自身のデザインを作り出すことを可能にする多くの方法が提供されています。
+\end_layout
+
+\begin_layout Subsection
+moderncv
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "moderncv"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/moderncv
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+moderncv
+\family default
+は、素敵な履歴書を作成することを目的に作られたものです。これは、参考文献機能をサポートするので、学術分野の方には便利です。この文書クラスを用いた履歴書の例が、用
+例ファイルとして含まれています。
+\end_layout
+
+\begin_layout Subsection
+mwcls (mwart, mwbk, mwrep)
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "mwart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/mwcls/
+\end_layout
+
+\begin_layout Description
+備考： これらの文書クラスは、LaTeXの基本文書クラス
+\family sans
+article
+\family default
+・
+\family sans
+report
+\family default
+・
+\family sans
+book
+\family default
+の別バージョンを提供します。これらは、ポーランド語植字標準に適合するようにMarcin Woliñskiによって修正されたものです。
+\end_layout
+
+\begin_layout Subsection
+paper
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "paper"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/paper/
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+paper
+\family default
+は、標準クラス
+\family sans
+article
+\family default
+の代替物です。同様の機能を提供しますが、サンサリフ体の節見出しやヘディングなど、こちらのレイアウトの方を気に入られることでしょう。
+\end_layout
+
+\begin_layout Subsection
+powerdot
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "powerdot"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/powerdot
+\end_layout
+
+\begin_layout Description
+備考： プレゼンテーションやスライドを作成するためのLaTeXクラスです。
+\end_layout
+
+\begin_layout Subsection
+SPIE
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "spie"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://public.lanl.gov/kmh/spie/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+spie.cls
+\family default
+は、SPIE（国際光工学会）の学会報への投稿用のクラスです。草稿投稿についての詳しい情報は、SPIEウェブサイト
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
+\end_layout
+
+\end_inset
+
+にあります。
+\end_layout
+
+\begin_layout Subsection
+REVTeX
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "revtex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex209/contrib/revtex/
+\end_layout
+
+\begin_layout Description
+備考： REVTeX 3クラスを用いるこのクラスは、
+\family sans
+revtex4
+\family default
+クラスに引き継がれたので、代わりにそちらをお使いください（古い
+\family sans
+revtex
+\family default
+クラス文書は、たいへん容易に新しいクラスに切り替えることができます）。何らかの理由でこのクラスを使わなくてはならない場合には、LyXソース頒布版の
+\family typewriter
+tex/
+\family default
+サブディレクトリにある
+\family typewriter
+revtex.cls
+\family default
+を使用してください。
+\end_layout
+
+\begin_layout Subsection
+REVTeX 4
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "revtex4"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/revtex/
+\end_layout
+
+\begin_layout Description
+備考： REVTeX 4は、アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『P
+hysical Review Special Topics---Accelerators and Beams』）やアメリカ物理学協会、アメリカ光学会、アメリカ物
+理探査学会等の学術誌への草稿を提出するのに用いることができるクラスです。
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://publish.aps.org/revtex4/
+\end_layout
+
+\end_inset
+
+もご参照ください。
+\end_layout
+
+\begin_layout Subsection
+SIAMLTeX
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "siamltex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/siam/siamltex.tar
+\end_layout
+
+\begin_layout Description
+備考： アメリカ応用数理学会（ペンシルバニア州フィラデルフィア、SIAM）は、このLaTeXスタイルを提供することによって、SIAMスタイル標準にしたがった高品
+質な植字がなされることを望んでいます。
+\end_layout
+
+\begin_layout Subsection
+simplecv
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "simplecv"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/simplecv
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+simplecv
+\family default
+は、簡素ながらエレガントな履歴書を書く方法を提供せんとするものです。比較的簡潔なスタイルではありますが、学術関係者に便利な参考文献のサポートなど優れた機能を持っ
+ています。これは、長い間LyXとともに提供されてきた
+\family sans
+cv
+\family default
+クラスを再編したものです。名称変更が必要となったのは、CTANに別の
+\family sans
+cv
+\family default
+クラスが存在したためです。この文書クラスを用いた履歴書の例が、用例ファイルとして含まれています。
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "svglobal"
+
+\end_inset
+
+Springer社発行の学術誌一般
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "svglobal"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/springer/svjour/global
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.springeronline.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+Svglobal
+\family default
+は、特定のスタイルが提供されていない、すなわち上記Springer社のサイトにあるjournal author guidelinesが
+\family sans
+svglobal
+\family default
+スタイルを使うように指示している、Springer社発行の学術誌での出版に適したフォーマットです。対応する文書クラスファイルと関連したマテリアルは、Spring
+erのサイトにあります。レイアウトは二つの部分からなり、全てのSpringer発行誌に共通の
+\family typewriter
+svjour.inc
+\family default
+と、
+\family typewriter
+svjour.inc
+\family default
+を含み、特定のスタイルがない全てのSpringer発行誌に既定のスタイルである
+\family typewriter
+svglobal.layout
+\family default
+からなります。他のSpringer誌をサポートする自家製の
+\family typewriter
+sv<学術誌名>
+\family default
+をお作りになることもできます（意味はお分かりですね？）。クラスの既定として含まれている
+\family typewriter
+global
+\family default
+追加文書クラスオプションを指定する必要があることに注意してください。
+\end_layout
+
+\begin_layout Subsection
+Springer社発行『Journal of Geodesy』誌
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "svjog"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/springer/svjour/jog
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.springeronline.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+svjog
+\family default
+は、Springer Verlag社、特に『Journal of Geodesy（測地学誌）』で使われている組版形式のためのものです。まだ十分には検証されていま
+せん。詳しい情報については、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "svglobal"
+
+\end_inset
+
+節を参照してください。
+\end_layout
+
+\begin_layout Subsection
+Springer社発行『Probability Theory and Related Fields』誌
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "svprobth"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/springer/svjour/prothe
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.springeronline.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+svprobth
+\family default
+は、学術誌『Probability Theory and Related Fields（確率論と関連領域）』での出版に適したフォーマットです。詳細は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "svglobal"
+
+\end_inset
+
+節をご参照ください。
+\end_layout
+
+\begin_layout Subsection
+TUGboat
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "textclass"
+arg   "ltugboat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+plain/contrib/tugboat.tar
+\end_layout
+
+\begin_layout Description
+備考： 文書クラス
+\family sans
+ltugboat
+\family default
+は、TeXユーザーグループの『TUGboat』誌への論文を執筆するのに用いることができます。
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tug.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+国際写真学・リモートセンシング学会（ISPRS）
+\end_layout
+
+\begin_layout Description
+Found 
+\begin_inset Info
+type  "textclass"
+arg   "isprs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 該当なし
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+isprs
+\family default
+は、この学会の学術誌に論文を執筆するのに用いることができます。
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+必須パッケージ
+\end_layout
+
+\begin_layout Standard
+本節には、LaTeXメンテナたちが「必須」と宣言しているパッケージが列挙されています。もし一つでも検出されなかった場合には、お使いのLaTeXシステムをアップグ
+レードすることを真剣に考えるべきです。
+\end_layout
+
+\begin_layout Subsection
+array
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "array"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+array
+\family default
+パッケージは、LyXが表の中で「上揃え」以外の垂直揃えをできるようにするために必要です。
+\end_layout
+
+\begin_layout Subsection
+babel
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "babel"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/babel/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+babel
+\family default
+パッケージは、現在の文書をお好みの言語向けにカスタマイズすることを可能にします（
+\family sans
+文書
+\size normal
+\SpecialChar \menuseparator
+
+\size default
+設定
+\size normal
+\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+言語
+\family default
+\size default
+ダイアログを参照）。とりわけこのパッケージは、ハイフネーションと、「章」や「目次」のようなラベル全ての自動翻訳を担当します。もし、英語だけをお書きになり、英語以
+外の引用もしないのであれば、このパッケージは必要ありません。
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+お使いのLaTeX装備には、以下の言語のハイフネーションパターンが入っています：
+\begin_inset Info
+type  "package"
+arg   "languages"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+もしご利用になる言語がこのリストにない場合には、それが入るようにLaTeXの装備を再設定しなくてはなりません。teTeXの場合には、
+\family typewriter
+texconfig
+\family default
+を実行することになります。
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+bm
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "bm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+bm
+\family default
+パッケージは、ボールド体の数学記号にアクセスするコマンドを定義しています。基本となるコマンドは、引数をボールド体にする
+\family typewriter
+
+\backslash
+bm
+\family default
+コマンドです。引数は、一つの記号から数式表現まで、任意の数式オブジェクトをとることができます。使用可能なときには、
+\family typewriter
+
+\backslash
+hm
+\family default
+コマンド（
+\family typewriter
+
+\backslash
+heavysymbol
+\family default
+へのエイリアス）を使用すれば、極太フォントにアクセスすることができます。
+\family typewriter
+
+\backslash
+bm
+\family default
+コマンドは、
+\family sans
+amsmath
+\family default
+の
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+コマンドに似ていますが、
+\family sans
+bm
+\family default
+の方が処理のしかたが慎重です。このパッケージは、ボールド体用のシンボルフォントを通常の数式フォントに割り当ててしまうため、多くのシンボルフォントを割り当てる他の
+パッケージを使ってしまうと、シンボルフォントが枯渇してしまうことがあります。この場合には、
+\family typewriter
+
+\backslash
+boldsymbol
+\family default
+コマンドを使うとうまく行きます。
+\end_layout
+
+\begin_layout Subsection
+booktabs
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "booktabs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/booktabs/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+booktabs
+\family default
+パッケージは、LyXが正しくフォーマルな表を出力できるようにするために必要です。
+\end_layout
+
+\begin_layout Subsection
+color
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "color"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/graphics/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+color
+\family default
+パッケージは、LyXが色付き文字を取り扱うのに必要です。これらの色は、DVIプレビューウィンドウには表示されませんが、印刷出力やPostScript®プレビュー
+アでは、正しく出力されます。このパッケージは、
+\family sans
+graphics
+\family default
+パッケージに同梱されています。
+\end_layout
+
+\begin_layout Subsection
+graphicx
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "graphicx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/graphics/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+graphicx
+\family default
+パッケージは、LyXが（新しく導入された図挿入枠を使用して）PostScript®の図を挿入するのに必要です。図をスクリーンに表示するには、
+\family typewriter
+\size normal
+ghost
+\size default
+script
+\family default
+が必要です。設定スクリプトは、このパッケージが使用するべきグラフィックドライバは「
+\family sans
+
+\begin_inset Info
+type  "package"
+arg   "graphicsdriver"
+\end_inset
+
+
+\family default
+」
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ここで、「既定」と表示されているときは、お使いのLaTeX装備が、このパラメータに適した値を与えていることを示します。
+\end_layout
+
+\end_inset
+
+であると決定しました。
+\end_layout
+
+\begin_layout Subsection
+hyperref
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "hyperref"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/hyperref/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+hyperref
+\family default
+パッケージは、LyXが、お使いの文書のPDF特性を設定し、ハイパーリンクを作成することができるようになるために必要です。
+\end_layout
+
+\begin_layout Subsection
+longtable
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "longtable"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+longtable
+\family default
+パッケージは、 LyXが複数ページにわたる表を正しく出力することができるようになるために必要です。
+\end_layout
+
+\begin_layout Description
+
+\end_layout
+
+\begin_layout Subsection
+relsize
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "relsize"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/misc/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+relsize
+\family default
+パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、LyXが正しい寸法に調整するのに必要とします。
+\end_layout
+
+\begin_layout Subsection
+textcomp
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "textcomp"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/unpacked/textcomp.sty
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+textcomp
+\family default
+パッケージは、LyXがユーロ通貨記号のような特別な記号を出力するのに必要です。このパッケージは、LaTeX基本頒布の一部であり、お使いのシステムに既に装備されて
+いるはずです。
+\end_layout
+
+\begin_layout Subsection
+varioref
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "varioref"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+varioref
+\family default
+パッケージは、参照先ラベルのページ情報を伴った参照を生成するのに必要なコマンドを導入します。
+\end_layout
+
+\begin_layout Section
+用紙レイアウトパッケージ
+\end_layout
+
+\begin_layout Standard
+文書の余白を変更したいと、多くの人々が思います。LaTeXには、文書の余白を設定する組込みオプションがありますが、一部の人たちは、これらのオプションが提供する余
+白は大きすぎると感じて変更したいと思うようです。この目的のためには、
+\family sans
+geometry
+\family default
+パッケージを使うことができます。ただし、読みやすさのためには、一行が60文字から70文字以上にならないようにするべきです。
+\end_layout
+
+\begin_layout Subsection
+geometry
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "geometry"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/geometry/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+geometry
+\family default
+パッケージは、お使いの文書の用紙寸法や余白を任意に変えることを可能にします。しかしながら、このパッケージは
+\family sans
+a4
+\family default
+などの標準オプションのように、植字上正しいページレイアウトを提供するわけではありません。
+\end_layout
+
+\begin_layout Section
+モジュールが必要とするパッケージ
+\end_layout
+
+\begin_layout Subsection
+endnotes
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "endnotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/misc/endnotes.sty
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+endnotes
+\family default
+パッケージは、脚注を節の後ろに配置するのに、いくつかのモジュールが使用します（それゆえendnotesと呼ばれます）。
+\end_layout
+
+\begin_layout Subsection
+言語学モジュール
+\end_layout
+
+\begin_layout Subsubsection
+covington
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/covington/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+covington
+\family default
+パッケージは、連番用例や語句注解のような、言語学に便利な環境とコマンドを提供します。
+\end_layout
+
+\begin_layout Subsubsection
+csquotes
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "csquotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/csquotes/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+csquotes
+\family default
+パッケージは、実際の文書言語の慣習に適合した、文脈依存の引用符を提供します。言語学モジュールが文字様式Meaningのために使用します。
+\end_layout
+
+\begin_layout Subsubsection
+enumitem
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/enumitem/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+enumitem
+\family default
+パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
+\end_layout
+
+\begin_layout Subsection
+点字モジュール
+\end_layout
+
+\begin_layout Subsubsection
+braille
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "braille"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/braille/
+\end_layout
+
+\begin_layout Description
+脚注: 
+\family sans
+braille
+\family default
+パッケージは、視覚障害者のための点字を組版することを可能にします。
+\end_layout
+
+\begin_layout Section
+
+\series bold
+\size large
+その他のパッケージ
+\end_layout
+
+\begin_layout Subsection
+algorithm
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "algorithm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/algorithms/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+algorithm
+\family default
+パッケージは、LyXが「アルゴリズム」フロートを出力できるようにするために必要です。このパッケージは、短いアルゴリズムを複数ページにわたって配置したり、「アルゴ
+リズム目次」をサポートするために使われます。
+\end_layout
+
+\begin_layout Subsection
+bibtopic
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "bibtopic"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/bibtopic/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+bibtopic
+\family default
+パッケージは、BibTeXが生成する参考文献を節ごとに分割するのに使われます。
+\end_layout
+
+\begin_layout Subsection
+dvipost
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "dvipost"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+URL: 
+\family typewriter
+http://freshmeat.net/projects/dvipost/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+dvipost
+\family default
+はLaTeXやTeXが生成したDVIファイルの後処理器です。LyXが、変更追尾記号のDVI出力あるいはPostscript出力を生成するのに必要です。
+\family sans
+dvipost
+\family default
+が正しく動作するためには、teTeX第2版以降が必要です。
+\end_layout
+
+\begin_layout Subsection
+esint
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "esint"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/esint/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+esint
+\family default
+パッケージは、数学の積分記号を植字するのに用いられます。もっとも普通に使われる積分記号群は、このパッケージなしでも植字できますが、各々が別フォント由来なので、つ
+ねに整合的な外観を持つわけではありません。
+\family sans
+esint
+\family default
+パッケージは、全ての積分記号にわたる整合的な外観を提供するだけでなく、三重積分
+\family typewriter
+
+\backslash
+iiint
+\family default
+のようなより進んだ積分記号も提供します。
+\end_layout
+
+\begin_layout Subsection
+fancybox
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "fancybox"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/fancybox/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+fancybox
+\family default
+パッケージは、ボックスの周りに枠を描くのに必要です（挿入\SpecialChar \menuseparator
+ボックスメニュー）。
+\end_layout
+
+\begin_layout Subsection
+fancyhdr
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "fancyhdr"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/fancyhdr/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+fancyhdr
+\family default
+パッケージ（以前は
+\family sans
+fancyheadings
+\family default
+という名称でした）は、文書レイアウトポップアップで「装飾的（fancy）」を選択した時に用いられます。これは、2ページごとに交代するヘッダとフッタを提供します。
+\end_layout
+
+\begin_layout Subsection
+ifthen
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "ifthen"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/base/ifthen/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+ifthen
+\family default
+パッケージは、LaTeX文書用の条件分岐コマンド（
+\emph on
+if
+\emph default
+ 
+\emph on
+\SpecialChar \ldots{}
+ then \SpecialChar \ldots{}
+ else
+\emph default
+）を提供します。この機能は、いくつかのクラスやモジュールが必要とします。
+\end_layout
+
+\begin_layout Subsection
+jurabib
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "jurabib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/jurabib/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+jurabib
+\family default
+パッケージ（
+\color none
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.jurabib.org
+\end_layout
+
+\end_inset
+
+
+\color inherit
+）は、LyXで柔軟な参考文献スタイルを用いるために、
+\family sans
+\color none
+natbib
+\family default
+\color inherit
+の代わりとして使用することができます。本パッケージは、人文科学と法学で一般的な引用スタイル、及び脚注引用、ibid.表記（ibidem）等をサポートします。jur
+abib第0.6版以降が必要です。
+\end_layout
+
+\begin_layout Subsection
+listings
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "listings"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/listings/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+listings
+\family default
+パッケージは、LyXがプログラムリスト（ソースコードの断片）を表示するのに使われます。本パッケージは、多くのプログラム言語、文法強調表示、行番号等をサポートしま
+す。
+\end_layout
+
+\begin_layout Subsection
+natbib
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "natbib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/natbib/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+natbib
+\family default
+パッケージは、LyXが、利用可能な参考文献スタイルの大半への柔軟なインタフェースを生成するのに必要です（代わりに
+\family sans
+jurabib
+\family default
+を使用することもできます）。
+\end_layout
+
+\begin_layout Subsection
+nicefrac
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "nicefrac"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+nicefrac
+\family default
+パッケージは、LyXが本文サイズの分数（「3/5」など）を生成するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+nomencl
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "nomencl"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/nomencl/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+nomencl
+\family default
+パッケージは、LyXが用語定義（nomenclature）を生成するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+pdfpages
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "pdfpages"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/pdfpages
+\end_layout
+
+\begin_layout Description
+備考: 
+\family typewriter
+pdfpages
+\family default
+パッケージは、LyXが、
+\family sans
+挿入\SpecialChar \menuseparator
+ファイル\SpecialChar \menuseparator
+外部マテリアル
+\family default
+で複数ページのPDFファイルをインクルードするのに使用します。
+\end_layout
+
+\begin_layout Subsection
+prettyref
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "prettyref"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/prettyref
+\end_layout
+
+\begin_layout Description
+備考： 
+\family typewriter
+prettyref
+\family default
+パッケージは、参照ラベルを前置詞によって認識するコマンドを提供します。LyXは、「sec:mysection」の形式でラベルをつけますが、
+\family typewriter
+prettyref
+\family default
+は「sec:」の部分を解釈します。
+\end_layout
+
+\begin_layout Subsection
+preview
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "preview"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/preview
+\end_layout
+
+\begin_layout Description
+備考： 
+\family typewriter
+preview
+\family default
+パッケージは、LyXがLaTeX出力の一部をプレビューするのに必要です。特に、
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+操作性\SpecialChar \menuseparator
+図
+\family default
+で「
+\family sans
+自動プレビュー
+\family default
+」を有効にしているときに数式表示で使われます。
+\end_layout
+
+\begin_layout Subsection
+rotating
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "rotating"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/rotating
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+rotating
+\family default
+パッケージは、LyXが、お使いの文書の一部の向きを変えるときに必要とします。これは、PostScript®互換プリンタでのみ正しく動作することに注意してください
+。
+\end_layout
+
+\begin_layout Subsection
+rotfloat
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "rotfloat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/rotfloat
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+rotfloat
+\family default
+パッケージは、LyXがフロートを横向きに回転するのに使用します。この機能が真に機能するのは、PostScript®互換プリンタだけであることに注意してください。
+\end_layout
+
+\begin_layout Subsection
+subfig
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "subfigure"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/subfig
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+subfig
+\family default
+パッケージは、LyXがサブフロート（subfigure・subtable等）を生成するのに使用します。サブフロートは、それぞれにサブキャプションを付けて、他のフ
+ロート内に埋め込むことができるフロートです。
+\end_layout
+
+\begin_layout Subsection
+setspace
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "setspace"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/setspace/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+setspace
+\family default
+パッケージは、LyXが使用中の文書の行間を変更するのに使用します。
+\end_layout
+
+\begin_layout Subsection
+soul
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "soul"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/soul
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+soul
+\family default
+パッケージは、分かち書き可能な空白文字（語間空け）、下線引き、取消線およびその類似のものを提供します。本パッケージは、LyXが、変更追尾中の文書で取消線を出力す
+るのに必要です。
+\end_layout
+
+\begin_layout Subsection
+url
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "url"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/misc/url.sty
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+url
+\family default
+パッケージは、LyXがURLを正しく出力するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+units
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "units"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/units/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+units
+\family default
+パッケージは、LyXが数式内で単位を適切に組版するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+wrapfig
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "wrapfig"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/wrapfig/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+wrapfig
+\family default
+パッケージは、折返しフロートが挿入（
+\family sans
+挿入\SpecialChar \menuseparator
+フロート
+\family default
+メニュー）された時に、LyXが使用します。このパッケージによって、全ページ幅よりも狭い図フロートを生成して、本文がその周りで折り返すようにすることができます。
+\end_layout
+
+\begin_layout Subsection
+xargs
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "xargs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/xargs/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family typewriter
+xargs
+\family default
+パッケージは、非必須引数付きの数式マクロを挿入したとき、LyXが使用します。
+\end_layout
+
+\begin_layout Subsection
+xcolor
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "xcolor"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/xcolor
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+xcolor
+\family default
+パッケージは、LaTeXの標準
+\family sans
+color
+\family default
+パッケージではカバーされていない詳細なカラー機能を提供します。LyXは、カラーの変更追尾マークをつけるのにこのパッケージを使用します。
+\end_layout
+
+\end_body
+\end_document
